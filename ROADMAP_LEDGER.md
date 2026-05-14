@@ -92,12 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-004` / `5.6 DMPV3 packet carriage` is the next ordered row after FWD-003; user authority on 2026-05-14 reopened only the FWD-003 linkage-remediation gate and required pass/fail reporting before any FWD-004 work. Current FWD-003 gate result is `bounded_closed_current`; FWD-004 remains unopened by this pass pending user/PM authority to proceed. |
+| Current target architecture row | `FWD-005` / `5.1 External source interfaces and API ingress` is the next ordered row after FWD-004. FWD-003 is `bounded_closed_current`; FWD-004 closure gate now records 73/73 selected DMPV3 native Atlas IDs covered by direct or grouped comparison/queue evidence and is `bounded_closed_current`. FWD-005 remains unopened pending user/PM authority after this gate report. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
-FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; a later explicit user instruction reopened only FWD-003 before FWD-004. FWD-003 linkage remediation now records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and closes FWD-003 as `bounded_closed_current`; FWD-004 is not opened by this gate.
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs and is `bounded_closed_current`; FWD-005 is not opened by this gate.
 
 ### 3.1 Previous pointer closure retained
 
@@ -953,7 +953,7 @@ FWD-003 linkage remediation gate recorded 2026-05-14:
 
 #### FWD-004 — 5.6 DMPV3 packet carriage
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `foundation`
 
@@ -1020,6 +1020,21 @@ FWD-004 continuation evidence recorded 2026-05-14:
 - No FWD-004 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: DMPV3 proof blocks returned status 0: support spine prepared packet/review 41 passed, extension canonical leaf 3 passed, transform boundary 3 passed.
 - State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
+FWD-004 closure gate recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd004_closure_gate_20260514/`.
+- Current read manifest: `FWD004_CLOSURE_GATE_READ_MANIFEST.json`.
+- Selected Atlas/Bridge/active-code extract: `FWD004_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json`.
+- Three-way comparison report: `FWD004_THREE_WAY_COMPARISON_REPORT.json`.
+- Per-Atlas resolution table: `FWD004_PER_ATLAS_RECORD_RESOLUTION.tsv`.
+- Gate evidence: `FWD004_CLOSURE_GATE_EVIDENCE.md`.
+- Closure finding: selected native DMPV3 satisfaction records count `73`; primary active-code Atlas DMPV3 records count `4`; direct selected native Atlas links count `14`; grouped-satisfaction overlay count `59`; unresolved selected native Atlas IDs count `0`.
+- Group evidence: `ACABC-0015` / `ACATQ-0015` covers 24 transform-required native records through `ACATP-009-0001`; `ACABC-0016` / `ACATQ-0016` covers 21 missing native records through `ACATP-008-0001`; `ACABC-0017` / `ACATQ-0017` covers 28 partially-satisfied native records through `ACATP-007-0001` and `ACATP-007-0002`.
+- Validation observation: FWD-004 read manifest validates with status `0`; `git diff --check`, `python scripts/run_proof_block.py --check-all`, and the three DMPV3 targeted proof blocks returned status `0`; follow-on proof/status evidence is recorded in the closure gate report directory for this commit.
+- Source/test/config/fixture/data mutation: none.
+- State: `bounded_closed_current`.
+- Next row: `FWD-005` / `5.1 External source interfaces and API ingress`; FWD-005 remains unopened by this pass pending user/PM authority after this report.
 
 #### FWD-005 — 5.1 External source interfaces and API ingress
 
