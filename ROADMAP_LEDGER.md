@@ -92,12 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-006` / `5.2 Raw capture and source temporal law` ordered replay is recorded as `bounded_closed_current` by direct user authority on 2026-05-14. `FWD-007` / `5.3 Raw signal families` remains `evidence_blocked_pending_ordered_replay` and is the next ordered gate, but it is not opened by the FWD-006 replay. |
+| Current target architecture row | `FWD-007` / `5.3 Raw signal families` ordered replay is recorded as `bounded_closed_current` by direct user authority on 2026-05-14. `FWD-008` / `5.4 Financial and event calendar architecture` remains `evidence_blocked_pending_ordered_replay` and is the next ordered gate, but it is not opened by the FWD-007 replay. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
-FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is now recorded as `bounded_closed_current`, with FWD-007 and FWD-008 still blocked pending ordered replay.
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-007 ordered replay only; that replay is now recorded as `bounded_closed_current`, with FWD-008 still blocked pending ordered replay.
 
 ### 3.1 Previous pointer closure retained
 
@@ -1189,7 +1189,7 @@ FWD-006 continuation evidence recorded 2026-05-14:
 
 #### FWD-007 — 5.3 Raw signal families
 
-State: `evidence_blocked_pending_ordered_replay`
+State: `bounded_closed_current`
 
 Runtime position: `upstream_runtime`
 
@@ -1352,6 +1352,18 @@ FWD-006 ordered replay closure recorded 2026-05-14:
 - FWD-006 default-environment Tier A/B regression proof collected 609 unique nodes and captured 31/31 batch exit codes `0`, passed summaries totalling 609/609, with `PYTEST_DISABLE_PLUGIN_AUTOLOAD` unset.
 - No FWD-006 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice/vocabulary mutation was made.
 - Current state correction after ordered replay: FWD-006 is `bounded_closed_current`; FWD-007 and FWD-008 remain `evidence_blocked_pending_ordered_replay`; FWD-009 remains unopened.
+
+FWD-007 ordered replay closure recorded 2026-05-14:
+
+- Replay branch: `worker/fwd007-ordered-replay-20260514`; evidence path: `var/audit/active_code_atlas_001/fwd007_ordered_replay_20260514/`.
+- Scope: FWD-007 only. FWD-008 and FWD-009 were not opened by this replay.
+- Corrected FWD-007 report: `FWD007_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD007_RAW_SIGNAL_FAMILIES_ORDERED_REPLAY_CLOSURE_RECEIPT.md`; proof summary: `FWD007_ORDERED_REPLAY_PROOF_SUMMARY.json`.
+- `ACABC-0008` / `ACATQ-0008` is recorded as `comparison_status=partially_satisfied`; the original Bridge-native donor count `missing=22` is retained separately as Bridge-native status evidence, not silently relabelled.
+- FWD-007 result: 123/123 selected native raw-signal-family Atlas IDs covered by grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 0; unresolved selected IDs: 0.
+- FWD-007 targeted proof reruns returned status 0: `raw_signal_contract_copy_boundary_surface` 2 passed, `raw_signal_transform_boundary_surface` 2 passed, and `support_spine_prepared_packet_review_surface` 41 passed.
+- FWD-007 default-environment Tier A/B regression proof collected 609 unique nodes and captured 31/31 batch exit codes `0`, passed summaries totalling 609/609, with `PYTEST_DISABLE_PLUGIN_AUTOLOAD` unset.
+- No FWD-007 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice/vocabulary mutation was made.
+- Current state correction after ordered replay: FWD-006 and FWD-007 are `bounded_closed_current`; FWD-008 remains `evidence_blocked_pending_ordered_replay`; FWD-009 remains unopened.
 
 #### FWD-009 — 5.5 Prepared ingress and runtime context preparation
 
