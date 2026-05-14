@@ -1,0 +1,64 @@
+{
+  "leaf": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051",
+  "status": "RECORDED",
+  "classification": "PASS_pointer_and_050_artefacts_present",
+  "previous_pointer": "ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_050_RECORDED",
+  "new_pointer": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_RECORDED",
+  "expected_050_artefacts": [
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_050/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_050_REPORT.json",
+      "exists": true,
+      "byte_count": 13759,
+      "sha256": "88238d8380b43514b170dc12b5efce2c4bf813cb72082f9413ede3ad92b219b8"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_050/receipts/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_050_RECEIPT.md",
+      "exists": true,
+      "byte_count": 678,
+      "sha256": "5c2062f76cb48988e46191cab6390a7baefe5c92ee06c7b094069632e6eaae11"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_050/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_050_PROOF_STDOUT.txt",
+      "exists": true,
+      "byte_count": 9522,
+      "sha256": "f33b825d24ee6234fd1afe8b2d0d0bf3d9b593a847de89930e6afaeaa09a1eb2"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_050_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "byte_count": 9529,
+      "sha256": "cc3f4c8b736e50ce36b3ef18245d7ea5b2394810ead0526cf1f75e52dafc5bcd"
+    }
+  ],
+  "missing_count": 0,
+  "missing_paths": [],
+  "mutated_files": [
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/current_pointer_integrity_scan_051/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_REPORT.json",
+    "var/audit/active_code_atlas_001/current_pointer_integrity_scan_051/receipts/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_RECEIPT.md",
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_FULL_READ_MANIFEST.json"
+  ],
+  "not_mutated_by_this_leaf": [
+    "AGENTS.md",
+    "PLANS.md"
+  ],
+  "closed_boundaries": [
+    "runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation"
+  ],
+  "proof_status": "PASS_all_recorded_commands_exit_status_0",
+  "proof_commands_recorded": [
+    "git fsck --connectivity-only",
+    "git diff --check",
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+    "python scripts/run_proof_block.py --check-all",
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_FULL_READ_MANIFEST.json"
+  ],
+  "proof_observed_results": {
+    "git fsck --connectivity-only": 0,
+    "git diff --check": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": 0,
+    "python scripts/run_proof_block.py --check-all": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_FULL_READ_MANIFEST.json": 0
+  },
+  "proof_stdout_path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_051/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_051_PROOF_STDOUT.txt"
+}

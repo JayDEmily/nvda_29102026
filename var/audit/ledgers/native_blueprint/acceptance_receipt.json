@@ -1,0 +1,85 @@
+{
+  "receipt_name": "native_blueprint_acceptance_receipt",
+  "schema_version": "v1",
+  "status": "accepted",
+  "accepted_surface": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+  "accepted_by_control_stack": true,
+  "acceptance_date_utc": "2026-04-25T00:00:00Z",
+  "acceptance_basis": {
+    "document_self_sufficiency": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "lines": "739-750",
+        "reason": "The document states its own acceptance rule: each in-scope major capability must be assignable to package/subpackage, module, component form, seam owner, persistence owner, test family, traceability path, and structural status."
+      },
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "lines": "125-431",
+        "reason": "The sequential architecture surfaces are defined top-to-bottom with explicit implementation-truth status for all eighteen surfaces."
+      },
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "lines": "443-690",
+        "reason": "Target structure, component skeleton, ownership matrix, seam contract, shell policy, persistence, test architecture, reservations, module allocation, and traceability laws are present."
+      }
+    ],
+    "control_stack_alignment": [
+      {
+        "path": "AGENTS.md",
+        "lines": "12-22",
+        "reason": "The repo root control surface states that docs/11 is the authoritative architecture surface definition."
+      },
+      {
+        "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+        "lines": "76-83",
+        "reason": "The routing index declares docs/11 as the primary architecture authority."
+      },
+      {
+        "path": "docs/01_NORMATIVE_CORE.md",
+        "lines": "109-115",
+        "reason": "The normative core states that it is subordinate to docs/11 and must align to docs/11."
+      },
+      {
+        "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "lines": "42-48",
+        "reason": "Vocabulary governance is explicitly subordinate to docs/11."
+      }
+    ],
+    "supporting_receipts": [
+      {
+        "path": "var/audit/ledgers/native_blueprint/vocabulary_admission_report.json",
+        "lines": "1-73",
+        "reason": "The blueprint-specific vocabulary admission report exists and records the admitted architecture terms."
+      },
+      {
+        "path": "docs/vocabulary/vocabulary_registry.md",
+        "lines": "1-60",
+        "reason": "The vocabulary registry contains the architecture-surface terms admitted for docs/11."
+      },
+      {
+        "path": "var/audit/ledgers/native_blueprint/normative_reconciliation_report.json",
+        "lines": "1-34",
+        "reason": "The normative reconciliation report exists and records post-vocabulary alignment to docs/11."
+      }
+    ],
+    "git_history": [
+      {
+        "commit": "a0cd3a4",
+        "subject": "Align control surfaces to docs/11 native blueprint"
+      },
+      {
+        "commit": "48e2bf4",
+        "subject": "Complete vocabulary admission and registry alignment for docs/11"
+      },
+      {
+        "commit": "e993829",
+        "subject": "Apply normative reconciliation post-vocabulary; align control surfaces to docs/11 + vocabulary"
+      }
+    ]
+  },
+  "notes": [
+    "Acceptance of the architecture document does not claim runtime implementation completeness.",
+    "Implementation-truth statuses inside docs/11 remain the authoritative statement of current native maturity.",
+    "This receipt closes the prior contradiction where docs/11 was routed as authority but still labelled as a draft."
+  ]
+}

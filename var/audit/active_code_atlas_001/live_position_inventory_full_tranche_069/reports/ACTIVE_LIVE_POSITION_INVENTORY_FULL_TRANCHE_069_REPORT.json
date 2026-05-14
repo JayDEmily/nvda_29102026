@@ -1,0 +1,44 @@
+{
+  "authority": "Explicit current user instruction opened a full implementation tranche for Live Position and Inventory architecture rows 035-037, permitting source, tests, docs, receipts, manifests, and ROADMAP_LEDGER.md mutation only inside that boundary.",
+  "boundaries": {
+    "broker_execution_opened": false,
+    "capital_deployment_opened": false,
+    "dependency_versions_changed": false,
+    "exit_close_opened": false,
+    "generated_slice_rebuild": false,
+    "order_placement_opened": false,
+    "original_atlas_bridge_mutated": false,
+    "plans_md_mutated": false,
+    "vocabulary_mutated": false
+  },
+  "changed_paths": [
+    "src/nvda_desk/services/downstream_live_inventory_service.py",
+    "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+    "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/",
+    "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/"
+  ],
+  "created_utc": "2026-05-13T04:47:19Z",
+  "implementation_summary": [
+    "Added a Tier A test proving the workbook live-inventory compatibility wrapper preserves the bounded base-service inputs live_ids, inventory_id, capital_snapshot_id, and receipt_id.",
+    "Changed src/nvda_desk/services/downstream_live_inventory_service.py so its wrapper build_live_snapshot delegates those explicit bounded inputs to nvda_desk.downstream.live_inventory.DownstreamLiveInventoryService.",
+    "Updated NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md row 5.13 to replace stale not-run evidence with the 069 proof outcome while preserving unopened broker/fill-feedback/capital/exit boundaries."
+  ],
+  "initial_pointer": "ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_RECORDED",
+  "live_authority_result": "ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RECORDED",
+  "next": "Post-069 bounded continuation search.",
+  "proofs": {
+    "baseline_selected_status": "0",
+    "initial_manifest_validation_status": "status=0",
+    "live_position_inventory_architecture_surface_status": "0",
+    "selected_boundary_status": "0",
+    "targeted_test_status": "0"
+  },
+  "red_first_proof": {
+    "command": "PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py -q",
+    "observed_failure": "TypeError: DownstreamLiveInventoryService.build_live_snapshot() got an unexpected keyword argument inventory_id for the workbook compatibility wrapper.",
+    "status": "1"
+  },
+  "target": "ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069"
+}

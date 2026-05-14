@@ -1,0 +1,97 @@
+{
+  "leaf": "ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064",
+  "status": "RECORDED",
+  "classification": "PASS_working_tree_paths_confined_to_control_audit_ledger_surfaces_after_063",
+  "previous_pointer": "ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECORDED",
+  "new_pointer": "ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_RECORDED",
+  "title": "Audit working-tree paths against hard closed boundaries after 063 intake",
+  "git": {
+    "head": "180629fe80cc8b30d4cabd9f921023f45c355e63",
+    "branch": "worker/handoff-control-repair-c466",
+    "status_path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_GIT_STATUS.txt"
+  },
+  "path_classifications": [
+    {
+      "status": " M",
+      "path": "AGENTS.md",
+      "classification": "inherited_control_surface_change_from_uploaded_checkpoint"
+    },
+    {
+      "status": " M",
+      "path": "ROADMAP_LEDGER.md",
+      "classification": "mutable_live_ledger"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/receipts/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECEIPT.md",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF.patch",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF_NUMSTAT.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF_STAT.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FINAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_GIT_STATUS_BEFORE.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_PROOF_STDOUT.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_REPORT.json",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " A",
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FULL_READ_MANIFEST.json",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": " M",
+      "path": "var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    },
+    {
+      "status": "??",
+      "path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_GIT_STATUS.txt",
+      "classification": "audit_manifest_report_receipt_or_validator_side_effect"
+    }
+  ],
+  "violation_count": 0,
+  "violations": [],
+  "boundary_result": "no runtime/source/test/config/data/schema/fixture/dependency/vocabulary/original Atlas/Bridge/generated-slice path present",
+  "notes": [
+    "AGENTS.md remains modified relative to HEAD as inherited checkpoint state recorded by 063; this 064 leaf does not mutate AGENTS.md.",
+    "PLANS.md remains unmodified in the working tree."
+  ],
+  "proof_status": "PASS_all_recorded_exit_marked_commands_exit_status_0",
+  "proof_stdout_path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_PROOF_STDOUT.txt",
+  "proof_observed_results": {
+    "git status --short": 0,
+    "git fsck --connectivity-only": 0,
+    "git diff --check": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": 0,
+    "python scripts/run_proof_block.py --check-all": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_FULL_READ_MANIFEST.json": 0
+  }
+}

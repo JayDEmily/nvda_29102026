@@ -1,0 +1,58 @@
+{
+  "ledger_name": "active_code_atlas_external_source_api_ingress_surface_transform_required",
+  "schema_version": "1.0-local-surface-adjudication",
+  "status": "read_adjudicated_surface_slice",
+  "surface": "External source interfaces and API ingress",
+  "queue_row": "ACATQ-0001 / ACABC-0001",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-012-0001",
+      "title": "External ingress transform boundary excludes donor allocation, order, live-client, and persistence authority",
+      "surface": "External source interfaces and API ingress",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_added_no_source_repair",
+      "linked_bridge_record_ids": ["ACATQ-0001", "ACABC-0001"],
+      "linked_atlas_record_ids": [
+        "atlas_donor_allocation_001",
+        "atlas_donor_allocation_002",
+        "atlas_donor_allocation_003",
+        "atlas_donor_allocation_004",
+        "atlas_donor_allocation_005",
+        "atlas_donor_overnight_005",
+        "atlas_donor_config_017",
+        "atlas_donor_config_019"
+      ],
+      "normative_evidence": [
+        {"path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md", "line_start": 135, "line_end": 150},
+        {"path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md", "line_start": 58, "line_end": 65},
+        {"path": "docs/05_GUARDRAILS_CORE.md", "line_start": 30, "line_end": 40},
+        {"path": "docs/08_TESTING_AND_PROMOTION_CORE.md", "line_start": 41, "line_end": 48}
+      ],
+      "active_source_evidence": [
+        {"path": "src/nvda_desk/contracts/external_source.py", "line_start": 12, "line_end": 30},
+        {"path": "src/nvda_desk/contracts/external_source.py", "line_start": 37, "line_end": 76},
+        {"path": "src/nvda_desk/adapters/ingress/calendar_feed.py", "line_start": 1, "line_end": 12},
+        {"path": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py", "line_start": 1, "line_end": 21},
+        {"path": "src/nvda_desk/adapters/ingress/options_surface_feed.py", "line_start": 1, "line_end": 17}
+      ],
+      "active_test_evidence": [
+        {"path": "tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py", "line_start": 1, "line_end": 75}
+      ],
+      "proof_block_or_registry_evidence": [
+        {"path": "config/proof_blocks.yaml", "line_start": 249, "line_end": 265},
+        {"path": "config/retained_test_registry.yaml", "line_start": 273, "line_end": 294}
+      ],
+      "observed_behaviour_from_read_evidence": "The active row 5.1 source files do not import concrete live-client libraries, decision-owner/persistence-owner modules, or define donor allocation/order authority classes. External source/API ingress remains an outer-boundary typed-carrier and adapter surface rather than a place where allocation, order placement, runtime, persistence, or risk authority is imported.",
+      "test_first_gap_or_action": "A new Tier A transform-boundary family was written before source work. The family passed without source repair, proving transform-required donor allocation/config/overnight/API ideas are not silently admitted as native row 5.1 authority.",
+      "adjudication_notes": [
+        "ACABC-0001 is transform-required. Donor allocation, overnight, config, and client-like ideas remain evidence for later target-shape work, not authority to place allocation/order/client behaviour inside external source/API ingress.",
+        "The generated all-surface active-code Atlas was used only as navigation and not as semantic proof."
+      ],
+      "limitations": [
+        "This pass does not implement external API clients, allocation engines, order gateways, broker clients, overnight risk allocation, persistence writes, dependency additions, or live network IO.",
+        "This pass does not mutate source code, runtime trading behaviour, financial/risk policy, original Atlas/Bridge JSON, generated slices, or vocabulary data."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1413 @@
+{
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_FULL_READ_MANIFEST",
+  "updated_utc": "2026-05-11T17:38:00Z",
+  "branch": "worker/continue-after-row015-2026-05-11",
+  "base_commit": "03f0add",
+  "surface_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED",
+  "queue_row": {
+    "queue_record_id": "ACATQ-0036",
+    "comparison_record_id": "ACABC-0037"
+  },
+  "purpose": "Final row 026 manifest after review/explanation transform-boundary Tier A family, proof-block admission, surface records, receipt, and ledger update.",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 294
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 73600,
+      "line_count": 644,
+      "sha256": "2179ec549957e1d9ab484cb7675d7eb8717268f3889148becb41adda8805a69f",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 644
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 115274,
+      "line_count": 436,
+      "sha256": "40eede60ef41d89971e30b8b0cce930f02b26a1b5a8fe90a2613e9f4bce9a8d4",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 436
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 202
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 758
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 36961,
+      "line_count": 627,
+      "sha256": "244b5dff522b450484354aa3cf34e71862fd829642126875c47dbb9d351e7a54",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 627
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 204520,
+      "line_count": 3308,
+      "sha256": "5442be56985100a1272a814d920a45c2d9237e11280b63a8b365c04ef100ec94",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3308
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+      "byte_count": 10522,
+      "line_count": 225,
+      "sha256": "b5be8e1b43cbc64170cc81709c6999775f68680a6b15285c460505f7a8c379ab",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 225
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_queue.json",
+      "byte_count": 50504,
+      "line_count": 1195,
+      "sha256": "4666b73bdf49398d84d0ccb333c1f78afdb2576644eceb421112b874529b35c3",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1195
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json",
+      "byte_count": 1508592,
+      "line_count": 40447,
+      "sha256": "198aa49b3ee838d3e3a01241434bc4625fa636595e8b7d3f1e82f4fc13e4f99c",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3400
+        },
+        {
+          "start_line": 3401,
+          "end_line": 3600
+        },
+        {
+          "start_line": 3601,
+          "end_line": 3800
+        },
+        {
+          "start_line": 3801,
+          "end_line": 4000
+        },
+        {
+          "start_line": 4001,
+          "end_line": 4200
+        },
+        {
+          "start_line": 4201,
+          "end_line": 4400
+        },
+        {
+          "start_line": 4401,
+          "end_line": 4600
+        },
+        {
+          "start_line": 4601,
+          "end_line": 4800
+        },
+        {
+          "start_line": 4801,
+          "end_line": 5000
+        },
+        {
+          "start_line": 5001,
+          "end_line": 5200
+        },
+        {
+          "start_line": 5201,
+          "end_line": 5400
+        },
+        {
+          "start_line": 5401,
+          "end_line": 5600
+        },
+        {
+          "start_line": 5601,
+          "end_line": 5800
+        },
+        {
+          "start_line": 5801,
+          "end_line": 6000
+        },
+        {
+          "start_line": 6001,
+          "end_line": 6200
+        },
+        {
+          "start_line": 6201,
+          "end_line": 6400
+        },
+        {
+          "start_line": 6401,
+          "end_line": 6600
+        },
+        {
+          "start_line": 6601,
+          "end_line": 6800
+        },
+        {
+          "start_line": 6801,
+          "end_line": 7000
+        },
+        {
+          "start_line": 7001,
+          "end_line": 7200
+        },
+        {
+          "start_line": 7201,
+          "end_line": 7400
+        },
+        {
+          "start_line": 7401,
+          "end_line": 7600
+        },
+        {
+          "start_line": 7601,
+          "end_line": 7800
+        },
+        {
+          "start_line": 7801,
+          "end_line": 8000
+        },
+        {
+          "start_line": 8001,
+          "end_line": 8200
+        },
+        {
+          "start_line": 8201,
+          "end_line": 8400
+        },
+        {
+          "start_line": 8401,
+          "end_line": 8600
+        },
+        {
+          "start_line": 8601,
+          "end_line": 8800
+        },
+        {
+          "start_line": 8801,
+          "end_line": 9000
+        },
+        {
+          "start_line": 9001,
+          "end_line": 9200
+        },
+        {
+          "start_line": 9201,
+          "end_line": 9400
+        },
+        {
+          "start_line": 9401,
+          "end_line": 9600
+        },
+        {
+          "start_line": 9601,
+          "end_line": 9800
+        },
+        {
+          "start_line": 9801,
+          "end_line": 10000
+        },
+        {
+          "start_line": 10001,
+          "end_line": 10200
+        },
+        {
+          "start_line": 10201,
+          "end_line": 10400
+        },
+        {
+          "start_line": 10401,
+          "end_line": 10600
+        },
+        {
+          "start_line": 10601,
+          "end_line": 10800
+        },
+        {
+          "start_line": 10801,
+          "end_line": 11000
+        },
+        {
+          "start_line": 11001,
+          "end_line": 11200
+        },
+        {
+          "start_line": 11201,
+          "end_line": 11400
+        },
+        {
+          "start_line": 11401,
+          "end_line": 11600
+        },
+        {
+          "start_line": 11601,
+          "end_line": 11800
+        },
+        {
+          "start_line": 11801,
+          "end_line": 12000
+        },
+        {
+          "start_line": 12001,
+          "end_line": 12200
+        },
+        {
+          "start_line": 12201,
+          "end_line": 12400
+        },
+        {
+          "start_line": 12401,
+          "end_line": 12600
+        },
+        {
+          "start_line": 12601,
+          "end_line": 12800
+        },
+        {
+          "start_line": 12801,
+          "end_line": 13000
+        },
+        {
+          "start_line": 13001,
+          "end_line": 13200
+        },
+        {
+          "start_line": 13201,
+          "end_line": 13400
+        },
+        {
+          "start_line": 13401,
+          "end_line": 13600
+        },
+        {
+          "start_line": 13601,
+          "end_line": 13800
+        },
+        {
+          "start_line": 13801,
+          "end_line": 14000
+        },
+        {
+          "start_line": 14001,
+          "end_line": 14200
+        },
+        {
+          "start_line": 14201,
+          "end_line": 14400
+        },
+        {
+          "start_line": 14401,
+          "end_line": 14600
+        },
+        {
+          "start_line": 14601,
+          "end_line": 14800
+        },
+        {
+          "start_line": 14801,
+          "end_line": 15000
+        },
+        {
+          "start_line": 15001,
+          "end_line": 15200
+        },
+        {
+          "start_line": 15201,
+          "end_line": 15400
+        },
+        {
+          "start_line": 15401,
+          "end_line": 15600
+        },
+        {
+          "start_line": 15601,
+          "end_line": 15800
+        },
+        {
+          "start_line": 15801,
+          "end_line": 16000
+        },
+        {
+          "start_line": 16001,
+          "end_line": 16200
+        },
+        {
+          "start_line": 16201,
+          "end_line": 16400
+        },
+        {
+          "start_line": 16401,
+          "end_line": 16600
+        },
+        {
+          "start_line": 16601,
+          "end_line": 16800
+        },
+        {
+          "start_line": 16801,
+          "end_line": 17000
+        },
+        {
+          "start_line": 17001,
+          "end_line": 17200
+        },
+        {
+          "start_line": 17201,
+          "end_line": 17400
+        },
+        {
+          "start_line": 17401,
+          "end_line": 17600
+        },
+        {
+          "start_line": 17601,
+          "end_line": 17800
+        },
+        {
+          "start_line": 17801,
+          "end_line": 18000
+        },
+        {
+          "start_line": 18001,
+          "end_line": 18200
+        },
+        {
+          "start_line": 18201,
+          "end_line": 18400
+        },
+        {
+          "start_line": 18401,
+          "end_line": 18600
+        },
+        {
+          "start_line": 18601,
+          "end_line": 18800
+        },
+        {
+          "start_line": 18801,
+          "end_line": 19000
+        },
+        {
+          "start_line": 19001,
+          "end_line": 19200
+        },
+        {
+          "start_line": 19201,
+          "end_line": 19400
+        },
+        {
+          "start_line": 19401,
+          "end_line": 19600
+        },
+        {
+          "start_line": 19601,
+          "end_line": 19800
+        },
+        {
+          "start_line": 19801,
+          "end_line": 20000
+        },
+        {
+          "start_line": 20001,
+          "end_line": 20200
+        },
+        {
+          "start_line": 20201,
+          "end_line": 20400
+        },
+        {
+          "start_line": 20401,
+          "end_line": 20600
+        },
+        {
+          "start_line": 20601,
+          "end_line": 20800
+        },
+        {
+          "start_line": 20801,
+          "end_line": 21000
+        },
+        {
+          "start_line": 21001,
+          "end_line": 21200
+        },
+        {
+          "start_line": 21201,
+          "end_line": 21400
+        },
+        {
+          "start_line": 21401,
+          "end_line": 21600
+        },
+        {
+          "start_line": 21601,
+          "end_line": 21800
+        },
+        {
+          "start_line": 21801,
+          "end_line": 22000
+        },
+        {
+          "start_line": 22001,
+          "end_line": 22200
+        },
+        {
+          "start_line": 22201,
+          "end_line": 22400
+        },
+        {
+          "start_line": 22401,
+          "end_line": 22600
+        },
+        {
+          "start_line": 22601,
+          "end_line": 22800
+        },
+        {
+          "start_line": 22801,
+          "end_line": 23000
+        },
+        {
+          "start_line": 23001,
+          "end_line": 23200
+        },
+        {
+          "start_line": 23201,
+          "end_line": 23400
+        },
+        {
+          "start_line": 23401,
+          "end_line": 23600
+        },
+        {
+          "start_line": 23601,
+          "end_line": 23800
+        },
+        {
+          "start_line": 23801,
+          "end_line": 24000
+        },
+        {
+          "start_line": 24001,
+          "end_line": 24200
+        },
+        {
+          "start_line": 24201,
+          "end_line": 24400
+        },
+        {
+          "start_line": 24401,
+          "end_line": 24600
+        },
+        {
+          "start_line": 24601,
+          "end_line": 24800
+        },
+        {
+          "start_line": 24801,
+          "end_line": 25000
+        },
+        {
+          "start_line": 25001,
+          "end_line": 25200
+        },
+        {
+          "start_line": 25201,
+          "end_line": 25400
+        },
+        {
+          "start_line": 25401,
+          "end_line": 25600
+        },
+        {
+          "start_line": 25601,
+          "end_line": 25800
+        },
+        {
+          "start_line": 25801,
+          "end_line": 26000
+        },
+        {
+          "start_line": 26001,
+          "end_line": 26200
+        },
+        {
+          "start_line": 26201,
+          "end_line": 26400
+        },
+        {
+          "start_line": 26401,
+          "end_line": 26600
+        },
+        {
+          "start_line": 26601,
+          "end_line": 26800
+        },
+        {
+          "start_line": 26801,
+          "end_line": 27000
+        },
+        {
+          "start_line": 27001,
+          "end_line": 27200
+        },
+        {
+          "start_line": 27201,
+          "end_line": 27400
+        },
+        {
+          "start_line": 27401,
+          "end_line": 27600
+        },
+        {
+          "start_line": 27601,
+          "end_line": 27800
+        },
+        {
+          "start_line": 27801,
+          "end_line": 28000
+        },
+        {
+          "start_line": 28001,
+          "end_line": 28200
+        },
+        {
+          "start_line": 28201,
+          "end_line": 28400
+        },
+        {
+          "start_line": 28401,
+          "end_line": 28600
+        },
+        {
+          "start_line": 28601,
+          "end_line": 28800
+        },
+        {
+          "start_line": 28801,
+          "end_line": 29000
+        },
+        {
+          "start_line": 29001,
+          "end_line": 29200
+        },
+        {
+          "start_line": 29201,
+          "end_line": 29400
+        },
+        {
+          "start_line": 29401,
+          "end_line": 29600
+        },
+        {
+          "start_line": 29601,
+          "end_line": 29800
+        },
+        {
+          "start_line": 29801,
+          "end_line": 30000
+        },
+        {
+          "start_line": 30001,
+          "end_line": 30200
+        },
+        {
+          "start_line": 30201,
+          "end_line": 30400
+        },
+        {
+          "start_line": 30401,
+          "end_line": 30600
+        },
+        {
+          "start_line": 30601,
+          "end_line": 30800
+        },
+        {
+          "start_line": 30801,
+          "end_line": 31000
+        },
+        {
+          "start_line": 31001,
+          "end_line": 31200
+        },
+        {
+          "start_line": 31201,
+          "end_line": 31400
+        },
+        {
+          "start_line": 31401,
+          "end_line": 31600
+        },
+        {
+          "start_line": 31601,
+          "end_line": 31800
+        },
+        {
+          "start_line": 31801,
+          "end_line": 32000
+        },
+        {
+          "start_line": 32001,
+          "end_line": 32200
+        },
+        {
+          "start_line": 32201,
+          "end_line": 32400
+        },
+        {
+          "start_line": 32401,
+          "end_line": 32600
+        },
+        {
+          "start_line": 32601,
+          "end_line": 32800
+        },
+        {
+          "start_line": 32801,
+          "end_line": 33000
+        },
+        {
+          "start_line": 33001,
+          "end_line": 33200
+        },
+        {
+          "start_line": 33201,
+          "end_line": 33400
+        },
+        {
+          "start_line": 33401,
+          "end_line": 33600
+        },
+        {
+          "start_line": 33601,
+          "end_line": 33800
+        },
+        {
+          "start_line": 33801,
+          "end_line": 34000
+        },
+        {
+          "start_line": 34001,
+          "end_line": 34200
+        },
+        {
+          "start_line": 34201,
+          "end_line": 34400
+        },
+        {
+          "start_line": 34401,
+          "end_line": 34600
+        },
+        {
+          "start_line": 34601,
+          "end_line": 34800
+        },
+        {
+          "start_line": 34801,
+          "end_line": 35000
+        },
+        {
+          "start_line": 35001,
+          "end_line": 35200
+        },
+        {
+          "start_line": 35201,
+          "end_line": 35400
+        },
+        {
+          "start_line": 35401,
+          "end_line": 35600
+        },
+        {
+          "start_line": 35601,
+          "end_line": 35800
+        },
+        {
+          "start_line": 35801,
+          "end_line": 36000
+        },
+        {
+          "start_line": 36001,
+          "end_line": 36200
+        },
+        {
+          "start_line": 36201,
+          "end_line": 36400
+        },
+        {
+          "start_line": 36401,
+          "end_line": 36600
+        },
+        {
+          "start_line": 36601,
+          "end_line": 36800
+        },
+        {
+          "start_line": 36801,
+          "end_line": 37000
+        },
+        {
+          "start_line": 37001,
+          "end_line": 37200
+        },
+        {
+          "start_line": 37201,
+          "end_line": 37400
+        },
+        {
+          "start_line": 37401,
+          "end_line": 37600
+        },
+        {
+          "start_line": 37601,
+          "end_line": 37800
+        },
+        {
+          "start_line": 37801,
+          "end_line": 38000
+        },
+        {
+          "start_line": 38001,
+          "end_line": 38200
+        },
+        {
+          "start_line": 38201,
+          "end_line": 38400
+        },
+        {
+          "start_line": 38401,
+          "end_line": 38600
+        },
+        {
+          "start_line": 38601,
+          "end_line": 38800
+        },
+        {
+          "start_line": 38801,
+          "end_line": 39000
+        },
+        {
+          "start_line": 39001,
+          "end_line": 39200
+        },
+        {
+          "start_line": 39201,
+          "end_line": 39400
+        },
+        {
+          "start_line": 39401,
+          "end_line": 39600
+        },
+        {
+          "start_line": 39601,
+          "end_line": 39800
+        },
+        {
+          "start_line": 39801,
+          "end_line": 40000
+        },
+        {
+          "start_line": 40001,
+          "end_line": 40200
+        },
+        {
+          "start_line": 40201,
+          "end_line": 40400
+        },
+        {
+          "start_line": 40401,
+          "end_line": 40447
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/downstream/review_stage.py",
+      "byte_count": 2424,
+      "line_count": 72,
+      "sha256": "d34676bc332d06c3348d74667de93a9b1f6086d4cce09ba5a06fc9c10e04fb22",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 72
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/services/review_explanation_service.py",
+      "byte_count": 2009,
+      "line_count": 55,
+      "sha256": "3e8d26fe84b7d7f2030c3fb0e8042027f561b2387efdc5d9ce7fa0c0d077d3f6",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 55
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/services/downstream_review_service.py",
+      "byte_count": 727,
+      "line_count": 24,
+      "sha256": "9326f9802653e411072a05c3460d8f320c8c9fbac2d8c2d3c6bbd29491c9ab77",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 24
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/contracts/review.py",
+      "byte_count": 3843,
+      "line_count": 104,
+      "sha256": "73a2984b03267b72b4ddd9cbb7a7f9dfb3409e36ccab163dc0a9c89c550ad4e0",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 104
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/contracts/replay.py",
+      "byte_count": 265,
+      "line_count": 9,
+      "sha256": "869bc8252d6db2a3421ab111c84bc5871c53bc4afb04efcd1fdf11b0e6b464df",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/analysis/replay/service.py",
+      "byte_count": 2971,
+      "line_count": 88,
+      "sha256": "ba3b0693f5f8c2f60613aa27abc51182b7c707d3a5e2aab17ce22a7f91869075",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 88
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/persistence/research_logs.py",
+      "byte_count": 555,
+      "line_count": 19,
+      "sha256": "4892b155ee3a79420f350811a4213feca6d572044c7857a35e41d74e3ec2840c",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 19
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/repositories/research_logs.py",
+      "byte_count": 241,
+      "line_count": 7,
+      "sha256": "af54c6e075df73ed1df18a90e00533ecca74d92655171c721b401afc7c484174",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 7
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/repositories/review_repository.py",
+      "byte_count": 1215,
+      "line_count": 34,
+      "sha256": "ff6a0b26bdfc38c3d0cc8916fc90b06f482f48d3b97ba083f8d7031d9533d07b",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py",
+      "byte_count": 831,
+      "line_count": 24,
+      "sha256": "3e24656ed5812c279eb260ffe89d7a9d8cca8f415ca52114f67ad196f5d6df01",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 24
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+      "byte_count": 3437,
+      "line_count": 80,
+      "sha256": "20fcdf7e9c520d486e29199022762cca06dde9f412f63e1f4f50be82465e2410",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/review_runtime/test_review_contract_models.py",
+      "byte_count": 5048,
+      "line_count": 120,
+      "sha256": "9cedc1c523b7da073350012029a8ddb667641a9ec6d10d5b407e679652d8d54e",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 120
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+      "byte_count": 4118,
+      "line_count": 113,
+      "sha256": "282cb3e763d369c2005a157f42fe0b5af6e264b48cf53a72b6da3dff7da36ae7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 113
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json",
+      "byte_count": 4423,
+      "line_count": 107,
+      "sha256": "0126bd5edc669be9df237476e21d4c47ed47185c3f9d7dc263177d2c61af08ee",
+      "read_method": "row_generated_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 107
+        }
+      ],
+      "notes": "row 026 generated artefact read after writing"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md",
+      "byte_count": 4553,
+      "line_count": 67,
+      "sha256": "cdf91848e1b2c0c448cf4f77e56cd748ce796ebb21121ea190cc220ef230d85d",
+      "read_method": "row_generated_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 67
+        }
+      ],
+      "notes": "row 026 generated artefact read after writing"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/review_transform_boundary_pytest.stdout",
+      "byte_count": 715,
+      "line_count": 12,
+      "sha256": "4fbf054a09dd708ffb12f3267d5218c6d7c1f3656bd3a15388287f557ace395b",
+      "read_method": "command_output_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 12
+        }
+      ],
+      "notes": "proof output used for row 026 closure evidence"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/review_transform_boundary_surface.stdout",
+      "byte_count": 878,
+      "line_count": 14,
+      "sha256": "3a68d4de537df1946ece068856d9325ea4acf1b0d9a45ce22b6a8955614de5df",
+      "read_method": "command_output_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 14
+        }
+      ],
+      "notes": "proof output used for row 026 closure evidence"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/proof_blocks_check_all.stdout",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "bb91a7b72aa6cbbd28543866e00fb8f2fa0ac7af54ace0a2e326591a0c6fd678",
+      "read_method": "command_output_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "proof output used for row 026 closure evidence"
+    }
+  ]
+}

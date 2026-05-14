@@ -1,0 +1,20 @@
+AI_PATCH_V1
+repo: JayDEmily/NVDAV6
+base_branch: main
+target_branch: rescue/example-ai-patch-bridge
+scope: example unvetted sandbox rescue branch comment
+executor: rescue-branch
+mode: local_patch_fit_test_commit_push
+commit_policy: single_commit
+test_policy: rescue_unvetted
+
+payload_encoding: base64+gzip
+payload_raw_sha256: 486e2a98d369f5703df6c57a99ae63734992162f848aa815c8c66ba84d0dca2b
+payload_gzip_sha256: 3a88c3296ec8dfd5326fd95e92108936e43950eec04b87104768dbef54c08b1d
+payload_raw_bytes: 160
+payload_gzip_bytes: 122
+
+PAYLOAD_BEGIN
+H4sIAAAAAAAC/0vJTEtT0NVNzyxRSNTPzU/Oji9JLEpPLdErqFRIQhPg0tXVxVDFpa2tjanSwUFB11DHREEbRDg4cCmkpKYplCXm
+lKZqaCro2ikUlxRZcekqAEFRaklpUZ6Cen5OijqXNrJIXmq5OhcAvRYkRqAAAAA=
+PAYLOAD_END

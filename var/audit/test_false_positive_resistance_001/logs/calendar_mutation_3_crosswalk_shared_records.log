@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_calendar_reference_crosswalk_returns_detached_records __________
+
+    def test_calendar_reference_crosswalk_returns_detached_records() -> None:
+        projection = _require_module("nvda_desk.calendar.reference.projection")
+        crosswalk = _require_attr(projection, "financial_calendar_crosswalk")
+    
+        first = crosswalk()
+        first[0].runtime_tags.append("mutated")
+        first[0].projection_targets.append("mutated_target")
+    
+        second = crosswalk()
+>       assert "mutated" not in second[0].runtime_tags
+E       AssertionError: assert 'mutated' not in ['venue_holiday', 'calendar_authority', 'mutated']
+E        +  where ['venue_holiday', 'calendar_authority', 'mutated'] = FinancialCalendarCrosswalkRecord(source_event_type='market_holiday', runtime_tags=['venue_holiday', 'calendar_authority', 'mutated'], evaluation_tags=['session_structure'], projection_targets=['precursor_runtime_packet', 'mutated_target']).runtime_tags
+
+tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py:54: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py::test_calendar_reference_crosswalk_returns_detached_records - AssertionError: assert 'mutated' not in ['venue_holiday', 'calendar_authority', 'mutated']
+ +  where ['venue_holiday', 'calendar_authority', 'mutated'] = FinancialCalendarCrosswalkRecord(source_event_type='market_holiday', runtime_tags=['venue_holiday', 'calendar_authority', 'mutated'], evaluation_tags=['session_structure'], projection_targets=['precursor_runtime_packet', 'mutated_target']).runtime_tags
+1 failed in 0.45s

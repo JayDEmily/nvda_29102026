@@ -1,0 +1,33 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 3 items
+
+tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py . [ 33%]
+.F                                                                       [100%]
+
+=================================== FAILURES ===================================
+_ test_serial_lifecycle_plan_remains_candidate_material_not_opening_or_capital_payload _
+
+    def test_serial_lifecycle_plan_remains_candidate_material_not_opening_or_capital_payload() -> None:
+        plan = build_lifecycle_plan(
+            ExecutionExpressionOutput(
+                lead_playbook_id="playbook::demo",
+                active_playbook_ids=["playbook::demo"],
+            )
+        )
+
+        emitted_terms = set(_flatten_terms(plan))
+>       assert emitted_terms.isdisjoint(PROHIBITED_DOWNSTREAM_LIFECYCLE_TERMS)
+E       AssertionError: assert False
+E        +  where False = <built-in method isdisjoint of set object at 0x7f7397a60ac0>({'broker_order_id', 'capital_deployment_authority', 'open_position', 'order_placement', 'position_sizing'})
+E        +    where <built-in method isdisjoint of set object at 0x7f7397a60ac0> = {'action', 'attach_review', 'enter', 'open_position', 'steps'}.isdisjoint
+
+tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py:112: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py::test_serial_lifecycle_plan_remains_candidate_material_not_opening_or_capital_payload - AssertionError: assert False
+ +  where False = <built-in method isdisjoint of set object at 0x7f7397a60ac0>({'broker_order_id', 'capital_deployment_authority', 'open_position', 'order_placement', 'position_sizing'})
+ +    where <built-in method isdisjoint of set object at 0x7f7397a60ac0> = {'action', 'attach_review', 'enter', 'open_position', 'steps'}.isdisjoint
+========================= 1 failed, 2 passed in 0.27s ==========================

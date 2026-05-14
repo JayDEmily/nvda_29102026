@@ -1,0 +1,1669 @@
+{
+  "pack_id": "gate-132-bounded-trace-review-v1",
+  "source_fixture_pack_id": "gate-e-prepared-runtime",
+  "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+  "anchor_symbol": "NVDA",
+  "scenario_ids": [
+    "anchor_event_imminent",
+    "clear_window_continuation",
+    "lunch_flattened",
+    "imminent_pin_derisk",
+    "mild_down_block"
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "anchor_event_imminent",
+      "scenario_label": "Anchor event-imminent observation",
+      "scenario_family": "anchor",
+      "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+      "provenance_note": "Unchanged admitted prepared-runtime snapshot from the Gate E fixture pack.",
+      "expected_human_read": "Should look cautious but not insane: no moon-buying, event-aware derisk, no crash.",
+      "perturbations": [],
+      "prepared_snapshot": {
+        "ts": "2026-03-23T14:07:00Z",
+        "symbol": "NVDA",
+        "aligned_bar_ts": "2026-03-23T14:05:00Z",
+        "bar_age_seconds": 120,
+        "spot_price": 117.4,
+        "prior_close_price": null,
+        "session_open_price": 115.8,
+        "interval_volume_shares": 980000.0,
+        "cumulative_session_volume": 2180000.0,
+        "session_vwap": 116.3979,
+        "distance_to_vwap_pct": 0.861,
+        "vwap_slope_5m_pct": null,
+        "opening_range_high_5m": 118.5,
+        "opening_range_low_5m": 115.5,
+        "opening_range_break_count": 0,
+        "price_realised_vol_5m_pct": 0.0,
+        "price_realised_vol_15m_pct": 0.0,
+        "relative_volume_ratio": 0.8167,
+        "rolling_range_5m_pct": 1.7888,
+        "impulse_age_bars": 0,
+        "intraday_move_pct": 1.3817,
+        "normalised_features": {
+          "intraday_move_vs_rolling_range_5m": 0.7724,
+          "distance_to_vwap_vs_rolling_range_5m": 0.4813,
+          "intraday_move_vs_price_realised_vol_15m": null,
+          "front_iv_vs_front_realised_vol_ratio": null,
+          "next_iv_vs_next_realised_vol_ratio": null,
+          "atm_straddle_vs_spot_pct": 6.8143,
+          "near_spot_front_volume_share": 1.0,
+          "provenance": {
+            "intraday_move_vs_rolling_range_5m": [
+              "intraday_move_pct",
+              "rolling_range_5m_pct"
+            ],
+            "distance_to_vwap_vs_rolling_range_5m": [
+              "distance_to_vwap_pct",
+              "rolling_range_5m_pct"
+            ],
+            "intraday_move_vs_price_realised_vol_15m": [
+              "intraday_move_pct",
+              "price_realised_vol_15m_pct"
+            ],
+            "front_iv_vs_front_realised_vol_ratio": [
+              "front_atm_iv",
+              "front_realised_vol"
+            ],
+            "next_iv_vs_next_realised_vol_ratio": [
+              "next_atm_iv",
+              "next_realised_vol"
+            ],
+            "atm_straddle_vs_spot_pct": [
+              "atm_straddle_value",
+              "spot_price"
+            ],
+            "near_spot_front_volume_share": [
+              "front_volume_near_spot",
+              "front_expiry_total_volume"
+            ]
+          }
+        },
+        "prior_session_return_pct": 0.0,
+        "front_expiry": "2026-03-27T20:00:00Z",
+        "next_expiry": "2026-04-03T20:00:00Z",
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 0.695,
+        "next_atm_iv": 0.675,
+        "put_call_skew": 0.03,
+        "gamma_pressure_score": 1.0,
+        "call_put_imbalance": -0.0192,
+        "oi_concentration": 1.0,
+        "atm_straddle_value": 8.0,
+        "front_realised_vol": 0.0,
+        "next_realised_vol": 0.0,
+        "snapshot_sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "snapshot_window_minutes": 10,
+        "dominant_strike": 118.0,
+        "spot_to_pin_distance_pct": 0.5111,
+        "pin_progression_bias": "pinning_in",
+        "next_event_at": "2026-03-23T15:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:07:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T15:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
+        "precursor_runtime_packet": null,
+        "call_oi_near_spot": 13300.0,
+        "put_oi_near_spot": 13900.0,
+        "front_volume_near_spot": 3120.0,
+        "next_volume_near_spot": 670.0,
+        "nearby_strike_clusters": [
+          {
+            "strike": 118.0,
+            "side": "put",
+            "open_interest": 7100.0,
+            "volume": 820.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 118.0,
+            "side": "call",
+            "open_interest": 6600.0,
+            "volume": 760.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 117.0,
+            "side": "put",
+            "open_interest": 3600.0,
+            "volume": 410.0,
+            "distance_to_spot_pct": 0.3407
+          },
+          {
+            "strike": 117.0,
+            "side": "call",
+            "open_interest": 3400.0,
+            "volume": 390.0,
+            "distance_to_spot_pct": 0.3407
+          }
+        ],
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "front_atm_iv": 0.69,
+            "next_atm_iv": 0.66,
+            "put_call_skew": 0.06,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "front_atm_iv": 0.695,
+            "next_atm_iv": 0.675,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "front_atm_iv": 0.72,
+            "next_atm_iv": 0.67,
+            "put_call_skew": 0.04,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.0848
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 0.695
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 0.675
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 0.63
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "distance_to_pin_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "distance_to_pin_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "distance_to_pin_pct": 0.0848
+          }
+        ],
+        "lineage": {
+          "source_name": "gate_e_manual_pack",
+          "source_type": "bars_plus_chain_fixture",
+          "captured_at": "2026-03-23T13:55:00Z",
+          "chain_ts": "2026-03-23T14:07:00Z",
+          "aligned_bar_ts": "2026-03-23T14:05:00Z",
+          "bar_age_seconds": 120,
+          "event_ids": [
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ],
+          "precursor_lineage_keys": [],
+          "sequence_id": "seq-opening-balance"
+        }
+      },
+      "regime_input": {
+        "nvda_return_pct": 0.8,
+        "nq_return_pct": 0.5,
+        "es_return_pct": 0.3,
+        "sox_return_pct": 0.9,
+        "breadth_score": 0.67,
+        "concentration_score": 0.41,
+        "vix_level": 18.4,
+        "vvix_level": 84.0,
+        "us10y": 4.22,
+        "us2y": 4.04,
+        "usdjpy": 148.9
+      },
+      "inventory_state": {
+        "existing_inventory_pct": 10.0,
+        "fresh_cash_pct": 70.0,
+        "overnight_inventory_pct": 0.0,
+        "open_orders_count": 0,
+        "capital_lockup_pct": 12.0,
+        "cost_basis_gap_pct": 0.5,
+        "thesis_state_input": "valid",
+        "adverse_excursion_pct": -1.0,
+        "time_stop_minutes_remaining": 180,
+        "thesis_age_minutes": null
+      },
+      "risk_budget_remaining_pct": 68.0
+    },
+    {
+      "scenario_id": "clear_window_continuation",
+      "scenario_label": "Clear-window continuation sibling",
+      "scenario_family": "continuation",
+      "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+      "provenance_note": "Same anchor snapshot with bounded event, gamma, skew, and VWAP-distance adjustments to represent a calmer clear-window continuation state.",
+      "expected_human_read": "Should act like a normal supportive continuation: allow with one continuation playbook, not buy the moon.",
+      "perturbations": [
+        {
+          "field_name": "next_event_at",
+          "baseline_value": "2026-03-23 15:30:00+00:00",
+          "scenario_value": "2026-03-23 22:07:00+00:00",
+          "rationale": "Move the known event out of the same-session risk window."
+        },
+        {
+          "field_name": "gamma_pressure_score",
+          "baseline_value": "1.0",
+          "scenario_value": "0.35",
+          "rationale": "Reduce destabilising gamma to a still-plausible supportive level."
+        },
+        {
+          "field_name": "put_call_skew",
+          "baseline_value": "0.03",
+          "scenario_value": "0.01",
+          "rationale": "Soften downside skew without flipping market structure into fantasy."
+        },
+        {
+          "field_name": "spot_to_pin_distance_pct",
+          "baseline_value": "0.5111",
+          "scenario_value": "1.2",
+          "rationale": "Move modestly away from pin pressure."
+        },
+        {
+          "field_name": "distance_to_vwap_pct",
+          "baseline_value": "0.861",
+          "scenario_value": "0.25",
+          "rationale": "Tighten the anchor to VWAP without inventing a gap move."
+        },
+        {
+          "field_name": "relative_volume_ratio",
+          "baseline_value": "0.8167",
+          "scenario_value": "1.1",
+          "rationale": "Lift activity slightly to support continuation logic."
+        }
+      ],
+      "prepared_snapshot": {
+        "ts": "2026-03-23T14:07:00Z",
+        "symbol": "NVDA",
+        "aligned_bar_ts": "2026-03-23T14:05:00Z",
+        "bar_age_seconds": 120,
+        "spot_price": 117.4,
+        "prior_close_price": null,
+        "session_open_price": 115.8,
+        "interval_volume_shares": 980000.0,
+        "cumulative_session_volume": 2180000.0,
+        "session_vwap": 116.3979,
+        "distance_to_vwap_pct": 0.25,
+        "vwap_slope_5m_pct": null,
+        "opening_range_high_5m": 118.5,
+        "opening_range_low_5m": 115.5,
+        "opening_range_break_count": 0,
+        "price_realised_vol_5m_pct": 0.0,
+        "price_realised_vol_15m_pct": 0.35,
+        "relative_volume_ratio": 1.1,
+        "rolling_range_5m_pct": 1.7888,
+        "impulse_age_bars": 3,
+        "intraday_move_pct": 1.3817,
+        "normalised_features": {
+          "intraday_move_vs_rolling_range_5m": 0.7724,
+          "distance_to_vwap_vs_rolling_range_5m": 0.4813,
+          "intraday_move_vs_price_realised_vol_15m": null,
+          "front_iv_vs_front_realised_vol_ratio": null,
+          "next_iv_vs_next_realised_vol_ratio": null,
+          "atm_straddle_vs_spot_pct": 6.8143,
+          "near_spot_front_volume_share": 1.0,
+          "provenance": {
+            "intraday_move_vs_rolling_range_5m": [
+              "intraday_move_pct",
+              "rolling_range_5m_pct"
+            ],
+            "distance_to_vwap_vs_rolling_range_5m": [
+              "distance_to_vwap_pct",
+              "rolling_range_5m_pct"
+            ],
+            "intraday_move_vs_price_realised_vol_15m": [
+              "intraday_move_pct",
+              "price_realised_vol_15m_pct"
+            ],
+            "front_iv_vs_front_realised_vol_ratio": [
+              "front_atm_iv",
+              "front_realised_vol"
+            ],
+            "next_iv_vs_next_realised_vol_ratio": [
+              "next_atm_iv",
+              "next_realised_vol"
+            ],
+            "atm_straddle_vs_spot_pct": [
+              "atm_straddle_value",
+              "spot_price"
+            ],
+            "near_spot_front_volume_share": [
+              "front_volume_near_spot",
+              "front_expiry_total_volume"
+            ]
+          }
+        },
+        "prior_session_return_pct": 0.0,
+        "front_expiry": "2026-03-27T20:00:00Z",
+        "next_expiry": "2026-04-03T20:00:00Z",
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 0.695,
+        "next_atm_iv": 0.675,
+        "put_call_skew": 0.01,
+        "gamma_pressure_score": 0.35,
+        "call_put_imbalance": -0.0192,
+        "oi_concentration": 1.0,
+        "atm_straddle_value": 8.0,
+        "front_realised_vol": 0.0,
+        "next_realised_vol": 0.0,
+        "snapshot_sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "snapshot_window_minutes": 10,
+        "dominant_strike": 118.0,
+        "spot_to_pin_distance_pct": 1.2,
+        "pin_progression_bias": "pinning_in",
+        "next_event_at": "2026-03-23T22:07:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:07:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T22:07:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T22:07:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T22:07:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
+        "precursor_runtime_packet": null,
+        "call_oi_near_spot": 13300.0,
+        "put_oi_near_spot": 13900.0,
+        "front_volume_near_spot": 3120.0,
+        "next_volume_near_spot": 670.0,
+        "nearby_strike_clusters": [
+          {
+            "strike": 118.0,
+            "side": "put",
+            "open_interest": 7100.0,
+            "volume": 820.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 118.0,
+            "side": "call",
+            "open_interest": 6600.0,
+            "volume": 760.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 117.0,
+            "side": "put",
+            "open_interest": 3600.0,
+            "volume": 410.0,
+            "distance_to_spot_pct": 0.3407
+          },
+          {
+            "strike": 117.0,
+            "side": "call",
+            "open_interest": 3400.0,
+            "volume": 390.0,
+            "distance_to_spot_pct": 0.3407
+          }
+        ],
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "front_atm_iv": 0.69,
+            "next_atm_iv": 0.66,
+            "put_call_skew": 0.06,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "front_atm_iv": 0.695,
+            "next_atm_iv": 0.675,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "front_atm_iv": 0.72,
+            "next_atm_iv": 0.67,
+            "put_call_skew": 0.04,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.0848
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 0.695
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 0.675
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 0.63
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "distance_to_pin_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "distance_to_pin_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "distance_to_pin_pct": 0.0848
+          }
+        ],
+        "lineage": {
+          "source_name": "gate_e_manual_pack",
+          "source_type": "bars_plus_chain_fixture",
+          "captured_at": "2026-03-23T13:55:00Z",
+          "chain_ts": "2026-03-23T14:07:00Z",
+          "aligned_bar_ts": "2026-03-23T14:05:00Z",
+          "bar_age_seconds": 120,
+          "event_ids": [
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ],
+          "precursor_lineage_keys": [],
+          "sequence_id": "seq-opening-balance"
+        }
+      },
+      "regime_input": {
+        "nvda_return_pct": 0.8,
+        "nq_return_pct": 0.5,
+        "es_return_pct": 0.3,
+        "sox_return_pct": 0.9,
+        "breadth_score": 0.67,
+        "concentration_score": 0.41,
+        "vix_level": 18.4,
+        "vvix_level": 84.0,
+        "us10y": 4.22,
+        "us2y": 4.04,
+        "usdjpy": 148.9
+      },
+      "inventory_state": {
+        "existing_inventory_pct": 10.0,
+        "fresh_cash_pct": 70.0,
+        "overnight_inventory_pct": 0.0,
+        "open_orders_count": 0,
+        "capital_lockup_pct": 12.0,
+        "cost_basis_gap_pct": 0.5,
+        "thesis_state_input": "valid",
+        "adverse_excursion_pct": -1.0,
+        "time_stop_minutes_remaining": 180,
+        "thesis_age_minutes": null
+      },
+      "risk_budget_remaining_pct": 68.0
+    },
+    {
+      "scenario_id": "lunch_flattened",
+      "scenario_label": "Lunch-window flattened sibling",
+      "scenario_family": "timing_shift",
+      "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+      "provenance_note": "Same supportive clear-window sibling pushed into the lunch phase to check that the desk stops overreacting when timing goes flat.",
+      "expected_human_read": "Should look normal and quiet: allow posture, no active playbook, no explosion.",
+      "perturbations": [
+        {
+          "field_name": "ts",
+          "baseline_value": "2026-03-23 14:07:00+00:00",
+          "scenario_value": "2026-03-23 16:30:00+00:00",
+          "rationale": "Move the same signal cluster into the lunch-phase clock regime."
+        },
+        {
+          "field_name": "next_event_at",
+          "baseline_value": "2026-03-23 15:30:00+00:00",
+          "scenario_value": "2026-03-24 00:30:00+00:00",
+          "rationale": "Keep the event outside the same-session stress window so timing is the main change."
+        }
+      ],
+      "prepared_snapshot": {
+        "ts": "2026-03-23T16:30:00Z",
+        "symbol": "NVDA",
+        "aligned_bar_ts": "2026-03-23T16:30:00Z",
+        "bar_age_seconds": 120,
+        "spot_price": 117.4,
+        "prior_close_price": null,
+        "session_open_price": 115.8,
+        "interval_volume_shares": 980000.0,
+        "cumulative_session_volume": 2180000.0,
+        "session_vwap": 116.3979,
+        "distance_to_vwap_pct": 0.25,
+        "vwap_slope_5m_pct": null,
+        "opening_range_high_5m": 118.5,
+        "opening_range_low_5m": 115.5,
+        "opening_range_break_count": 0,
+        "price_realised_vol_5m_pct": 0.0,
+        "price_realised_vol_15m_pct": 0.35,
+        "relative_volume_ratio": 1.1,
+        "rolling_range_5m_pct": 1.7888,
+        "impulse_age_bars": 3,
+        "intraday_move_pct": 1.3817,
+        "normalised_features": {
+          "intraday_move_vs_rolling_range_5m": 0.7724,
+          "distance_to_vwap_vs_rolling_range_5m": 0.4813,
+          "intraday_move_vs_price_realised_vol_15m": null,
+          "front_iv_vs_front_realised_vol_ratio": null,
+          "next_iv_vs_next_realised_vol_ratio": null,
+          "atm_straddle_vs_spot_pct": 6.8143,
+          "near_spot_front_volume_share": 1.0,
+          "provenance": {
+            "intraday_move_vs_rolling_range_5m": [
+              "intraday_move_pct",
+              "rolling_range_5m_pct"
+            ],
+            "distance_to_vwap_vs_rolling_range_5m": [
+              "distance_to_vwap_pct",
+              "rolling_range_5m_pct"
+            ],
+            "intraday_move_vs_price_realised_vol_15m": [
+              "intraday_move_pct",
+              "price_realised_vol_15m_pct"
+            ],
+            "front_iv_vs_front_realised_vol_ratio": [
+              "front_atm_iv",
+              "front_realised_vol"
+            ],
+            "next_iv_vs_next_realised_vol_ratio": [
+              "next_atm_iv",
+              "next_realised_vol"
+            ],
+            "atm_straddle_vs_spot_pct": [
+              "atm_straddle_value",
+              "spot_price"
+            ],
+            "near_spot_front_volume_share": [
+              "front_volume_near_spot",
+              "front_expiry_total_volume"
+            ]
+          }
+        },
+        "prior_session_return_pct": 0.0,
+        "front_expiry": "2026-03-27T20:00:00Z",
+        "next_expiry": "2026-04-03T20:00:00Z",
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 0.695,
+        "next_atm_iv": 0.675,
+        "put_call_skew": 0.01,
+        "gamma_pressure_score": 0.35,
+        "call_put_imbalance": -0.0192,
+        "oi_concentration": 1.0,
+        "atm_straddle_value": 8.0,
+        "front_realised_vol": 0.0,
+        "next_realised_vol": 0.0,
+        "snapshot_sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "snapshot_window_minutes": 10,
+        "dominant_strike": 118.0,
+        "spot_to_pin_distance_pct": 1.2,
+        "pin_progression_bias": "pinning_in",
+        "next_event_at": "2026-03-24T00:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T16:30:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-24T00:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-24T00:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-24T00:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
+        "precursor_runtime_packet": null,
+        "call_oi_near_spot": 13300.0,
+        "put_oi_near_spot": 13900.0,
+        "front_volume_near_spot": 3120.0,
+        "next_volume_near_spot": 670.0,
+        "nearby_strike_clusters": [
+          {
+            "strike": 118.0,
+            "side": "put",
+            "open_interest": 7100.0,
+            "volume": 820.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 118.0,
+            "side": "call",
+            "open_interest": 6600.0,
+            "volume": 760.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 117.0,
+            "side": "put",
+            "open_interest": 3600.0,
+            "volume": 410.0,
+            "distance_to_spot_pct": 0.3407
+          },
+          {
+            "strike": 117.0,
+            "side": "call",
+            "open_interest": 3400.0,
+            "volume": 390.0,
+            "distance_to_spot_pct": 0.3407
+          }
+        ],
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "front_atm_iv": 0.69,
+            "next_atm_iv": 0.66,
+            "put_call_skew": 0.06,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "front_atm_iv": 0.695,
+            "next_atm_iv": 0.675,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "front_atm_iv": 0.72,
+            "next_atm_iv": 0.67,
+            "put_call_skew": 0.04,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.0848
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 0.695
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 0.675
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 0.63
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "distance_to_pin_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "distance_to_pin_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "distance_to_pin_pct": 0.0848
+          }
+        ],
+        "lineage": {
+          "source_name": "gate_e_manual_pack",
+          "source_type": "bars_plus_chain_fixture",
+          "captured_at": "2026-03-23T13:55:00Z",
+          "chain_ts": "2026-03-23T14:07:00Z",
+          "aligned_bar_ts": "2026-03-23T14:05:00Z",
+          "bar_age_seconds": 120,
+          "event_ids": [
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ],
+          "precursor_lineage_keys": [],
+          "sequence_id": "seq-opening-balance"
+        }
+      },
+      "regime_input": {
+        "nvda_return_pct": 0.8,
+        "nq_return_pct": 0.5,
+        "es_return_pct": 0.3,
+        "sox_return_pct": 0.9,
+        "breadth_score": 0.67,
+        "concentration_score": 0.41,
+        "vix_level": 18.4,
+        "vvix_level": 84.0,
+        "us10y": 4.22,
+        "us2y": 4.04,
+        "usdjpy": 148.9
+      },
+      "inventory_state": {
+        "existing_inventory_pct": 10.0,
+        "fresh_cash_pct": 70.0,
+        "overnight_inventory_pct": 0.0,
+        "open_orders_count": 0,
+        "capital_lockup_pct": 12.0,
+        "cost_basis_gap_pct": 0.5,
+        "thesis_state_input": "valid",
+        "adverse_excursion_pct": -1.0,
+        "time_stop_minutes_remaining": 180,
+        "thesis_age_minutes": null
+      },
+      "risk_budget_remaining_pct": 68.0
+    },
+    {
+      "scenario_id": "imminent_pin_derisk",
+      "scenario_label": "Imminent-event pin-pressure sibling",
+      "scenario_family": "event_pin",
+      "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+      "provenance_note": "Same anchor snapshot with a much closer event and tighter pin distance, but without changing the whole market tape.",
+      "expected_human_read": "Should derisk and stay small; still not a moon shot.",
+      "perturbations": [
+        {
+          "field_name": "next_event_at",
+          "baseline_value": "2026-03-23 15:30:00+00:00",
+          "scenario_value": "2026-03-23 14:19:00+00:00",
+          "rationale": "Pull the known event into the immediate pre-event window."
+        },
+        {
+          "field_name": "spot_to_pin_distance_pct",
+          "baseline_value": "0.5111",
+          "scenario_value": "0.08",
+          "rationale": "Increase pin pressure while staying inside a plausible near-strike move."
+        }
+      ],
+      "prepared_snapshot": {
+        "ts": "2026-03-23T14:07:00Z",
+        "symbol": "NVDA",
+        "aligned_bar_ts": "2026-03-23T14:05:00Z",
+        "bar_age_seconds": 120,
+        "spot_price": 117.4,
+        "prior_close_price": null,
+        "session_open_price": 115.8,
+        "interval_volume_shares": 980000.0,
+        "cumulative_session_volume": 2180000.0,
+        "session_vwap": 116.3979,
+        "distance_to_vwap_pct": 0.861,
+        "vwap_slope_5m_pct": null,
+        "opening_range_high_5m": 118.5,
+        "opening_range_low_5m": 115.5,
+        "opening_range_break_count": 0,
+        "price_realised_vol_5m_pct": 0.0,
+        "price_realised_vol_15m_pct": 0.0,
+        "relative_volume_ratio": 0.8167,
+        "rolling_range_5m_pct": 1.7888,
+        "impulse_age_bars": 0,
+        "intraday_move_pct": 1.3817,
+        "normalised_features": {
+          "intraday_move_vs_rolling_range_5m": 0.7724,
+          "distance_to_vwap_vs_rolling_range_5m": 0.4813,
+          "intraday_move_vs_price_realised_vol_15m": null,
+          "front_iv_vs_front_realised_vol_ratio": null,
+          "next_iv_vs_next_realised_vol_ratio": null,
+          "atm_straddle_vs_spot_pct": 6.8143,
+          "near_spot_front_volume_share": 1.0,
+          "provenance": {
+            "intraday_move_vs_rolling_range_5m": [
+              "intraday_move_pct",
+              "rolling_range_5m_pct"
+            ],
+            "distance_to_vwap_vs_rolling_range_5m": [
+              "distance_to_vwap_pct",
+              "rolling_range_5m_pct"
+            ],
+            "intraday_move_vs_price_realised_vol_15m": [
+              "intraday_move_pct",
+              "price_realised_vol_15m_pct"
+            ],
+            "front_iv_vs_front_realised_vol_ratio": [
+              "front_atm_iv",
+              "front_realised_vol"
+            ],
+            "next_iv_vs_next_realised_vol_ratio": [
+              "next_atm_iv",
+              "next_realised_vol"
+            ],
+            "atm_straddle_vs_spot_pct": [
+              "atm_straddle_value",
+              "spot_price"
+            ],
+            "near_spot_front_volume_share": [
+              "front_volume_near_spot",
+              "front_expiry_total_volume"
+            ]
+          }
+        },
+        "prior_session_return_pct": 0.0,
+        "front_expiry": "2026-03-27T20:00:00Z",
+        "next_expiry": "2026-04-03T20:00:00Z",
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 0.695,
+        "next_atm_iv": 0.675,
+        "put_call_skew": 0.03,
+        "gamma_pressure_score": 1.0,
+        "call_put_imbalance": -0.0192,
+        "oi_concentration": 1.0,
+        "atm_straddle_value": 8.0,
+        "front_realised_vol": 0.0,
+        "next_realised_vol": 0.0,
+        "snapshot_sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "snapshot_window_minutes": 10,
+        "dominant_strike": 118.0,
+        "spot_to_pin_distance_pct": 0.08,
+        "pin_progression_bias": "pinning_in",
+        "next_event_at": "2026-03-23T14:19:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:07:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T14:19:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T14:19:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T14:19:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
+        "precursor_runtime_packet": null,
+        "call_oi_near_spot": 13300.0,
+        "put_oi_near_spot": 13900.0,
+        "front_volume_near_spot": 3120.0,
+        "next_volume_near_spot": 670.0,
+        "nearby_strike_clusters": [
+          {
+            "strike": 118.0,
+            "side": "put",
+            "open_interest": 7100.0,
+            "volume": 820.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 118.0,
+            "side": "call",
+            "open_interest": 6600.0,
+            "volume": 760.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 117.0,
+            "side": "put",
+            "open_interest": 3600.0,
+            "volume": 410.0,
+            "distance_to_spot_pct": 0.3407
+          },
+          {
+            "strike": 117.0,
+            "side": "call",
+            "open_interest": 3400.0,
+            "volume": 390.0,
+            "distance_to_spot_pct": 0.3407
+          }
+        ],
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "front_atm_iv": 0.69,
+            "next_atm_iv": 0.66,
+            "put_call_skew": 0.06,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "front_atm_iv": 0.695,
+            "next_atm_iv": 0.675,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "front_atm_iv": 0.72,
+            "next_atm_iv": 0.67,
+            "put_call_skew": 0.04,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.0848
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 0.695
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 0.675
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 0.63
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "distance_to_pin_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "distance_to_pin_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "distance_to_pin_pct": 0.0848
+          }
+        ],
+        "lineage": {
+          "source_name": "gate_e_manual_pack",
+          "source_type": "bars_plus_chain_fixture",
+          "captured_at": "2026-03-23T13:55:00Z",
+          "chain_ts": "2026-03-23T14:07:00Z",
+          "aligned_bar_ts": "2026-03-23T14:05:00Z",
+          "bar_age_seconds": 120,
+          "event_ids": [
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ],
+          "precursor_lineage_keys": [],
+          "sequence_id": "seq-opening-balance"
+        }
+      },
+      "regime_input": {
+        "nvda_return_pct": 0.8,
+        "nq_return_pct": 0.5,
+        "es_return_pct": 0.3,
+        "sox_return_pct": 0.9,
+        "breadth_score": 0.67,
+        "concentration_score": 0.41,
+        "vix_level": 18.4,
+        "vvix_level": 84.0,
+        "us10y": 4.22,
+        "us2y": 4.04,
+        "usdjpy": 148.9
+      },
+      "inventory_state": {
+        "existing_inventory_pct": 10.0,
+        "fresh_cash_pct": 70.0,
+        "overnight_inventory_pct": 0.0,
+        "open_orders_count": 0,
+        "capital_lockup_pct": 12.0,
+        "cost_basis_gap_pct": 0.5,
+        "thesis_state_input": "valid",
+        "adverse_excursion_pct": -1.0,
+        "time_stop_minutes_remaining": 180,
+        "thesis_age_minutes": null
+      },
+      "risk_budget_remaining_pct": 68.0
+    },
+    {
+      "scenario_id": "mild_down_block",
+      "scenario_label": "Mild-downside blocked sibling",
+      "scenario_family": "stress_probe",
+      "anchor_snapshot_ts": "2026-03-23T14:07:00Z",
+      "provenance_note": "Small downside price stress paired with a more defensive regime packet to check that the runtime blocks sanely instead of freewheeling.",
+      "expected_human_read": "Should not explode; a hard block or equivalent stand-down is fine here.",
+      "perturbations": [
+        {
+          "field_name": "spot_price",
+          "baseline_value": "117.4",
+          "scenario_value": "117.2239",
+          "rationale": "Shift spot down by 0.15% only."
+        },
+        {
+          "field_name": "distance_to_vwap_pct",
+          "baseline_value": "0.861",
+          "scenario_value": "1.041",
+          "rationale": "Push the downside move further away from VWAP while staying modest."
+        },
+        {
+          "field_name": "put_call_skew",
+          "baseline_value": "0.03",
+          "scenario_value": "0.08",
+          "rationale": "Slightly increase downside skew rather than inventing panic."
+        },
+        {
+          "field_name": "front_atm_iv",
+          "baseline_value": "0.695",
+          "scenario_value": "0.71",
+          "rationale": "Nudge front IV upward without a volatility explosion."
+        },
+        {
+          "field_name": "regime_input",
+          "baseline_value": "supportive_runtime_fixture.regime_input",
+          "scenario_value": "stressed_runtime_fixture.regime_input",
+          "rationale": "Use an explicitly defensive regime companion packet to test the stand-down path."
+        }
+      ],
+      "prepared_snapshot": {
+        "ts": "2026-03-23T14:07:00Z",
+        "symbol": "NVDA",
+        "aligned_bar_ts": "2026-03-23T14:05:00Z",
+        "bar_age_seconds": 120,
+        "spot_price": 117.2239,
+        "prior_close_price": null,
+        "session_open_price": 115.8,
+        "interval_volume_shares": 980000.0,
+        "cumulative_session_volume": 2180000.0,
+        "session_vwap": 116.3979,
+        "distance_to_vwap_pct": 1.041,
+        "vwap_slope_5m_pct": null,
+        "opening_range_high_5m": 118.5,
+        "opening_range_low_5m": 115.5,
+        "opening_range_break_count": 0,
+        "price_realised_vol_5m_pct": 0.0,
+        "price_realised_vol_15m_pct": 0.0,
+        "relative_volume_ratio": 0.8167,
+        "rolling_range_5m_pct": 1.7888,
+        "impulse_age_bars": 0,
+        "intraday_move_pct": 1.3817,
+        "normalised_features": {
+          "intraday_move_vs_rolling_range_5m": 0.7724,
+          "distance_to_vwap_vs_rolling_range_5m": 0.4813,
+          "intraday_move_vs_price_realised_vol_15m": null,
+          "front_iv_vs_front_realised_vol_ratio": null,
+          "next_iv_vs_next_realised_vol_ratio": null,
+          "atm_straddle_vs_spot_pct": 6.8143,
+          "near_spot_front_volume_share": 1.0,
+          "provenance": {
+            "intraday_move_vs_rolling_range_5m": [
+              "intraday_move_pct",
+              "rolling_range_5m_pct"
+            ],
+            "distance_to_vwap_vs_rolling_range_5m": [
+              "distance_to_vwap_pct",
+              "rolling_range_5m_pct"
+            ],
+            "intraday_move_vs_price_realised_vol_15m": [
+              "intraday_move_pct",
+              "price_realised_vol_15m_pct"
+            ],
+            "front_iv_vs_front_realised_vol_ratio": [
+              "front_atm_iv",
+              "front_realised_vol"
+            ],
+            "next_iv_vs_next_realised_vol_ratio": [
+              "next_atm_iv",
+              "next_realised_vol"
+            ],
+            "atm_straddle_vs_spot_pct": [
+              "atm_straddle_value",
+              "spot_price"
+            ],
+            "near_spot_front_volume_share": [
+              "front_volume_near_spot",
+              "front_expiry_total_volume"
+            ]
+          }
+        },
+        "prior_session_return_pct": 0.0,
+        "front_expiry": "2026-03-27T20:00:00Z",
+        "next_expiry": "2026-04-03T20:00:00Z",
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 0.71,
+        "next_atm_iv": 0.675,
+        "put_call_skew": 0.08,
+        "gamma_pressure_score": 1.0,
+        "call_put_imbalance": -0.0192,
+        "oi_concentration": 1.0,
+        "atm_straddle_value": 8.0,
+        "front_realised_vol": 0.0,
+        "next_realised_vol": 0.0,
+        "snapshot_sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "snapshot_window_minutes": 10,
+        "dominant_strike": 118.0,
+        "spot_to_pin_distance_pct": 0.5111,
+        "pin_progression_bias": "pinning_in",
+        "next_event_at": "2026-03-23T15:30:00Z",
+        "live_event_snapshot": {
+          "requested_at": "2026-03-23T14:07:00Z",
+          "symbol": "NVDA",
+          "query_window": {
+            "lookback_minutes": 240,
+            "lookahead_minutes": 1440
+          },
+          "next_event": {
+            "record_id": "evt::1",
+            "event_id": "evt-1",
+            "event_at": "2026-03-23T15:30:00Z",
+            "event_type": "macro",
+            "label": "Fed speaker",
+            "event_class": null,
+            "semantic_phase": "known_risk",
+            "materiality_tier": "posture_relevant",
+            "provenance_count": 1,
+            "lineage_keys": [
+              "src:ir:evt-1"
+            ]
+          },
+          "nearby_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "material_events": [
+            {
+              "record_id": "evt::1",
+              "event_id": "evt-1",
+              "event_at": "2026-03-23T15:30:00Z",
+              "event_type": "macro",
+              "label": "Fed speaker",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:ir:evt-1"
+              ]
+            },
+            {
+              "record_id": "evt::2",
+              "event_id": "evt-2",
+              "event_at": "2026-03-24T12:30:00Z",
+              "event_type": "macro",
+              "label": "CPI",
+              "event_class": null,
+              "semantic_phase": "known_risk",
+              "materiality_tier": "posture_relevant",
+              "provenance_count": 1,
+              "lineage_keys": [
+                "src:macro:evt-2"
+              ]
+            }
+          ],
+          "lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ]
+        },
+        "precursor_runtime_packet": null,
+        "call_oi_near_spot": 13300.0,
+        "put_oi_near_spot": 13900.0,
+        "front_volume_near_spot": 3120.0,
+        "next_volume_near_spot": 670.0,
+        "nearby_strike_clusters": [
+          {
+            "strike": 118.0,
+            "side": "put",
+            "open_interest": 7100.0,
+            "volume": 820.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 118.0,
+            "side": "call",
+            "open_interest": 6600.0,
+            "volume": 760.0,
+            "distance_to_spot_pct": 0.5111
+          },
+          {
+            "strike": 117.0,
+            "side": "put",
+            "open_interest": 3600.0,
+            "volume": 410.0,
+            "distance_to_spot_pct": 0.3407
+          },
+          {
+            "strike": 117.0,
+            "side": "call",
+            "open_interest": 3400.0,
+            "volume": 390.0,
+            "distance_to_spot_pct": 0.3407
+          }
+        ],
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "front_atm_iv": 0.69,
+            "next_atm_iv": 0.66,
+            "put_call_skew": 0.06,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "front_atm_iv": 0.695,
+            "next_atm_iv": 0.675,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "front_atm_iv": 0.72,
+            "next_atm_iv": 0.67,
+            "put_call_skew": 0.04,
+            "gamma_pressure_score": 1.0,
+            "spot_to_pin_distance_pct": 0.0848
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 0.695
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 0.675
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 0.63
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T14:02:00Z",
+            "distance_to_pin_pct": 1.7241
+          },
+          {
+            "ts": "2026-03-23T14:07:00Z",
+            "distance_to_pin_pct": 0.5111
+          },
+          {
+            "ts": "2026-03-23T14:12:00Z",
+            "distance_to_pin_pct": 0.0848
+          }
+        ],
+        "lineage": {
+          "source_name": "gate_e_manual_pack",
+          "source_type": "bars_plus_chain_fixture",
+          "captured_at": "2026-03-23T13:55:00Z",
+          "chain_ts": "2026-03-23T14:07:00Z",
+          "aligned_bar_ts": "2026-03-23T14:05:00Z",
+          "bar_age_seconds": 120,
+          "event_ids": [
+            "evt-1",
+            "evt-2"
+          ],
+          "event_lineage_keys": [
+            "src:ir:evt-1",
+            "src:macro:evt-2"
+          ],
+          "precursor_lineage_keys": [],
+          "sequence_id": "seq-opening-balance"
+        }
+      },
+      "regime_input": {
+        "nvda_return_pct": -3.5,
+        "nq_return_pct": -1.4,
+        "es_return_pct": -0.9,
+        "sox_return_pct": -2.2,
+        "breadth_score": 0.28,
+        "concentration_score": 0.84,
+        "vix_level": 31.0,
+        "vvix_level": 122.0,
+        "us10y": 4.6,
+        "us2y": 4.8,
+        "usdjpy": 143.4
+      },
+      "inventory_state": {
+        "existing_inventory_pct": 10.0,
+        "fresh_cash_pct": 70.0,
+        "overnight_inventory_pct": 0.0,
+        "open_orders_count": 0,
+        "capital_lockup_pct": 12.0,
+        "cost_basis_gap_pct": 0.5,
+        "thesis_state_input": "valid",
+        "adverse_excursion_pct": -1.0,
+        "time_stop_minutes_remaining": 180,
+        "thesis_age_minutes": null
+      },
+      "risk_budget_remaining_pct": 68.0
+    }
+  ]
+}

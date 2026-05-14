@@ -1,0 +1,34 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> scripts/run_proof_block.py:3:1
+   |
+ 1 |   """Run a named proof block from config/proof_blocks.yaml."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import argparse
+ 6 | | import json
+ 7 | | import shlex
+ 8 | | import subprocess
+ 9 | | import sys
+10 | | from pathlib import Path
+11 | | from typing import Any
+12 | |
+13 | | import yaml
+   | |___________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> tests/tier_b/proof_model/test_proof_executor_contract.py:223:5
+    |
+222 |   def test_proof_block_runner_resolves_python_to_current_interpreter() -> None:
+223 | /     import scripts.run_proof_block as runner
+224 | |     import sys
+    | |______________^
+225 |
+226 |       assert runner._resolve_command("python -m pytest tests")[:3] == [
+    |
+help: Organize imports
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.

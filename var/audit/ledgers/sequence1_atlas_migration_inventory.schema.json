@@ -1,0 +1,87 @@
+{
+  "$id": "sequence1_atlas_migration_inventory.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "properties": {
+    "classification_counts": {
+      "type": "object"
+    },
+    "implementation_opened": {
+      "const": false
+    },
+    "record_count": {
+      "const": 1716
+    },
+    "records": {
+      "items": {
+        "properties": {
+          "implementation_opened_now": {
+            "const": false
+          },
+          "primary_classification": {
+            "enum": [
+              "already migrated",
+              "partially migrated",
+              "selected for migration",
+              "requires vocabulary admission first",
+              "requires test/specimen authority first",
+              "requires packet/DMP seam work first",
+              "requires runtime implementation",
+              "requires proof/promotion alignment",
+              "generated evidence only",
+              "historical evidence only",
+              "excluded by user",
+              "not opened by route",
+              "unknown/blocking"
+            ]
+          }
+        },
+        "required": [
+          "record_id",
+          "stable_record_key",
+          "source_slice_filename",
+          "record_title_or_name",
+          "brief_summary_of_atlas_intent",
+          "relevant_governed_vocabulary_terms",
+          "normative_authority_touched",
+          "native_architecture_surface_touched",
+          "primary_classification",
+          "current_migration_state_rationale",
+          "next_required_authority_class",
+          "implementation_opened_now"
+        ],
+        "type": "object"
+      },
+      "maxItems": 1716,
+      "minItems": 1716,
+      "type": "array"
+    },
+    "route_authority_only": {
+      "const": true
+    },
+    "schema_version": {
+      "const": "v1"
+    },
+    "sequence": {
+      "const": "Sequence 1"
+    },
+    "slice_count": {
+      "const": 18
+    },
+    "source_tar_sha256": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "sequence",
+    "source_tar_sha256",
+    "route_authority_only",
+    "implementation_opened",
+    "slice_count",
+    "record_count",
+    "classification_counts",
+    "records"
+  ],
+  "title": "Sequence 1 Atlas Migration Inventory",
+  "type": "object"
+}

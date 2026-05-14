@@ -1,0 +1,501 @@
+{
+  "created_utc": "2026-05-13T05:42:01Z",
+  "target": "ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074_INITIAL",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 216625,
+      "line_count": 581,
+      "sha256": "b9533c8d5f5e80dc35f05515520f264f57af39c3f7216e6e848262daaffb052c",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 581
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 76
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 84
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "byte_count": 5346,
+      "line_count": 142,
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 142
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 81
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "byte_count": 5587,
+      "line_count": 147,
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 147
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 342
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 120
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 202
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "byte_count": 1944,
+      "line_count": 50,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 50
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/vocabulary/vocabulary_registry.md",
+      "byte_count": 2244,
+      "line_count": 79,
+      "sha256": "765496d0603adbf2ad467fdc818cdb5a206fe7f680ee0ef2cceeb343ab1920c1",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 758
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 807
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3561
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "byte_count": 9921,
+      "line_count": 287,
+      "sha256": "ebaee7d6db27640420b70fd5c13fb1027fc3f94a6dda58451be645e7efb75195",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 287
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/downstream/live_inventory.py",
+      "byte_count": 10734,
+      "line_count": 271,
+      "sha256": "a6396c72bfff50c180adfb40c13f9edc1054d37f228e11e81f49f55d48ab1777",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 271
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/repositories/position_repository.py",
+      "byte_count": 2485,
+      "line_count": 61,
+      "sha256": "cd76b391ad0bde378245958576b94fd73d42021e6b43f06f627e8c36644ec291",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 61
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/persistence/receipt_ledger.py",
+      "byte_count": 2146,
+      "line_count": 64,
+      "sha256": "5284f30d10bc74d9017373a2cd09ecbf3d71709fc4b7571fd52a3b6f7fc4fcb3",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 64
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/runtime/orchestrator.py",
+      "byte_count": 12796,
+      "line_count": 321,
+      "sha256": "a4d3ef3dd76f2b76f6c23bb369ed31029bab819315b804e57211a428a42eaa3c",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 321
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "src/nvda_desk/services/downstream_live_inventory_service.py",
+      "byte_count": 961,
+      "line_count": 27,
+      "sha256": "c95267253031445a9e29ed14f31dfe2ece56f4117bf7787f71b14eee19cb9b3b",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 27
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+      "byte_count": 11630,
+      "line_count": 295,
+      "sha256": "fe9bde4d99df6937b756253665a7c0c43e153b44063d19c790462bc2d2cbb2c5",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 295
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py",
+      "byte_count": 3665,
+      "line_count": 110,
+      "sha256": "5ce367a93c6ae015f194e880b33c771c9e1c78a1fb173c4c241413e7a4d4e3fa",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 110
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py",
+      "byte_count": 5590,
+      "line_count": 164,
+      "sha256": "74ff66c78eec6bfcd365019b7d24982eefc29b16d3e3e3b94af1741279b5edc6",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 164
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/runtime/test_runtime_orchestrator_surface.py",
+      "byte_count": 7735,
+      "line_count": 188,
+      "sha256": "a2201b037b10d4b547d4333e0b9e43b50e9cb6b18af4613994fa58cc671b54b5",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 188
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/persistence/test_position_repository_surface.py",
+      "byte_count": 3423,
+      "line_count": 92,
+      "sha256": "0d3fd39f7fc0a0444721fe90742b89618f457b4d9255f41d848ac0bd2506c7b5",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 92
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/persistence/test_receipt_ledger_surface.py",
+      "byte_count": 2864,
+      "line_count": 79,
+      "sha256": "b4dd1c9c024523fe9dfc64677fd9e9cb0299218ee3e6d74cd58325bd46490004",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+      "byte_count": 3731,
+      "line_count": 93,
+      "sha256": "452f96c62b00df53333fac3b7c8afb9cb86c204e06b2300f040a1e6f9a1e42e7",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 93
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 24949,
+      "line_count": 195,
+      "sha256": "90015ceeb66fb9c55d29dbebf8146d2b33b3c3bd948d8297ddc3b7f59c56fca6",
+      "read_method": "manual_full_file_read_for_post_inventory_runtime_readiness_bundle_074_initial_intake",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": "Initial current full-read manifest before mutation for post-inventory runtime-readiness bundle 074."
+    }
+  ]
+}

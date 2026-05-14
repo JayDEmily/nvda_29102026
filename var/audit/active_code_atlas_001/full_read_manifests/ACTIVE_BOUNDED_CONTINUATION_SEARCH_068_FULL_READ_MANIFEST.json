@@ -1,0 +1,156 @@
+{
+  "created_utc": "2026-05-13T05:55:00Z",
+  "target": "ACTIVE_BOUNDED_CONTINUATION_SEARCH_068",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 207546,
+      "line_count": 575,
+      "sha256": "59dd622cbf26d2aad72692bed05b34585888590bc9244d3a738bdd206e140378",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 575
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_REPORT.json",
+      "byte_count": 2842,
+      "line_count": 47,
+      "sha256": "7f6e94469a6ae9c55046e3e7d846d8f1162c0f2da396a654fed5a18ed8906c9c",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 47
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/receipts/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_RECEIPT.md",
+      "byte_count": 794,
+      "line_count": 10,
+      "sha256": "08610cf5717303edaba1a45c6f05746cee90ee3d124b61b187d699e568da7fe0",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 10
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_FULL_READ_MANIFEST.json",
+      "byte_count": 5484,
+      "line_count": 141,
+      "sha256": "1119fbbd680b253757cbfa03557d2dbb5ba7f33919370ddae2ede12ca6fef250",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 141
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_FINAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "byte_count": 431,
+      "line_count": 17,
+      "sha256": "6495527d053f01e8b82edab0e5c9745cd1eb53fd25c5d6017177df91a8b11c60",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/bounded_continuation_search_068/reports/ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_REPORT.json",
+      "byte_count": 9265,
+      "line_count": 125,
+      "sha256": "da39cc78bb96f21429f6486df8e63090914458abd122b94456f7ef7e06ab1f06",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 125
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/bounded_continuation_search_068/receipts/ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_RECEIPT.md",
+      "byte_count": 1053,
+      "line_count": 10,
+      "sha256": "a298441a422dc1f3037df8ead8a3d2cae2d23f551c526cfc29eafef6abc129e3",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 10
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/bounded_continuation_search_068/reports/ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_PROOF_STDOUT.txt",
+      "byte_count": 13881,
+      "line_count": 156,
+      "sha256": "cb3c65dcd82247a0f3048585c1d4a2d1a63119b5d5dcc8ea6f5b50e20cb89a93",
+      "read_method": "manual_full_file_read_plus_active_bounded_continuation_search_068_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 156
+        }
+      ],
+      "notes": "Current target controlling/material evidence for bounded continuation search 068."
+    }
+  ]
+}

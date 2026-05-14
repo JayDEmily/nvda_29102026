@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014",
+  "manifest_scope": "recursive_placeholder_token_closure_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 9,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation law for recursive token closure."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Plan boundary for control/audit-only repair."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Current pointer updated for recursive token closure."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/continuation_control_scan_classification_011/reports/ACTIVE_CONTINUATION_CONTROL_SCAN_CLASSIFICATION_011_REPORT.json",
+      "material_class": "report",
+      "byte_count": 66012,
+      "line_count": 416,
+      "sha256": "db04a7b8d263c9a28bdad79f863dc07bfaec97354d71efcd1ecceeb44fe58404",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 416
+        }
+      ],
+      "notes": "Updated scan-term wording without exact self-triggering proof token."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/proof_placeholder_closure_013/reports/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1213,
+      "line_count": 27,
+      "sha256": "5b252045f1a489030cb2b02e6bf95f1a864405799618fad9e73850dee41af381",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 27
+        }
+      ],
+      "notes": "Updated 013 report with final proof summary and non-triggering placeholder vocabulary."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/proof_placeholder_closure_013/receipts/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1342,
+      "line_count": 28,
+      "sha256": "4373bc62974be1faed34a43dbc263557bc17dbddd9872f27d894bcb0cac06cb7",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 28
+        }
+      ],
+      "notes": "Updated 013 receipt with non-triggering placeholder vocabulary."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/recursive_placeholder_token_closure_014/reports/ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1257,
+      "line_count": 25,
+      "sha256": "9feb45a6aefaf273a1303cb09b12cc17c72d1b3582602d9247d861f8b908b78e",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 25
+        }
+      ],
+      "notes": "014 recursive-token closure report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/recursive_placeholder_token_closure_014/receipts/ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 666,
+      "line_count": 16,
+      "sha256": "a5cab886ed08a5580668cc8ad69669db3b72351812494ee4e2fcb92ad23505c8",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 16
+        }
+      ],
+      "notes": "014 recursive-token closure receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "command": "python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py tests/tier_a/packets/test_reference_packet_carriage.py tests/tier_a/review_runtime/test_review_explanation_service_surface.py tests/tier_a/upstream_signal tests/tier_b/review_lineage",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/contracts/prepared_context.py",
+    "src/nvda_desk/preparation/context_packet.py",
+    "src/nvda_desk/preparation/runtime_preparer.py",
+    "src/nvda_desk/ingress/raw_bundle_loader.py",
+    "src/nvda_desk/downstream/checkpoints.py",
+    "src/nvda_desk/packets/dmp_packets.py",
+    "src/nvda_desk/services/review_explanation_service.py",
+    "src/nvda_desk/contracts/upstream_signal.py",
+    "src/nvda_desk/upstream/raw_signal_ingress.py",
+    "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+    "tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py",
+    "tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py",
+    "tests/tier_a/packets/test_reference_packet_carriage.py",
+    "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+    "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+    "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py",
+    "config/retained_test_registry.yaml",
+    "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "docs/09.1_DMPV3_PROTOCOL_WORKING.md"
+  ],
+  "proof_block_id": "support_spine_prepared_packet_review_surface",
+  "resolved_command": [
+    "/mnt/data/nvda10_2_work/repo/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+    "tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py",
+    "tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py",
+    "tests/tier_a/packets/test_reference_packet_carriage.py",
+    "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+    "tests/tier_a/upstream_signal",
+    "tests/tier_b/review_lineage"
+  ],
+  "status": "PASS"
+}

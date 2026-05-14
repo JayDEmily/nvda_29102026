@@ -1,0 +1,152 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_034_PARALLEL_RISK_LANE_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_surface_record_created",
+  "surface": "Parallel risk lane",
+  "method": "Manual full-read adjudication with new Tier A transform-boundary family before any donor parallel-risk import or source refactor.",
+  "limitation_statement": "This record covers row034 parallel-risk transform-boundary evidence only; it does not prove live inventory, downstream capital, opening, or exit/close surfaces.",
+  "surface_limitation": "Covers donor transform-boundary exclusion for current native parallel-risk lane files and carriers only.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-034-0001",
+      "title": "Parallel risk lane rejects transform-required donor stack and downstream authority shapes",
+      "surface": "Parallel risk lane",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_no_source_repair_required",
+      "linked_bridge_record_ids": [
+        "ACATQ-0020",
+        "ACABC-0020"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_parallel_risk_transform_required_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/01_NORMATIVE_CORE.md",
+          "line_start": 72,
+          "line_end": 87
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 254,
+          "line_end": 269
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 160,
+          "line_end": 160
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+          "queue_record_id": "ACATQ-0020",
+          "comparison_record_id": "ACABC-0020",
+          "execution_priority": 33,
+          "bridge_record_count": 17,
+          "required_action": "write_new_test_family_before_code"
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/parallel_risk.py",
+          "line_start": 1,
+          "line_end": 486
+        },
+        {
+          "path": "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+          "line_start": 1,
+          "line_end": 18
+        },
+        {
+          "path": "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+          "line_start": 1,
+          "line_end": 107
+        },
+        {
+          "path": "src/nvda_desk/risk/parallel/evaluate.py",
+          "line_start": 1,
+          "line_end": 227
+        },
+        {
+          "path": "src/nvda_desk/services/parallel_risk_lane_service.py",
+          "line_start": 1,
+          "line_end": 162
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 94
+        },
+        {
+          "path": "tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py",
+          "line_start": 1,
+          "line_end": 198
+        },
+        {
+          "path": "tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py",
+          "line_start": 1,
+          "line_end": 157
+        },
+        {
+          "path": "tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py",
+          "line_start": 1,
+          "line_end": 106
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 430,
+          "line_end": 444
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1974,
+          "line_end": 1994
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3167,
+          "line_end": 3174
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3301,
+          "line_end": 3302
+        }
+      ],
+      "bounded_source_repair_summary": "No source code repair was required in row034. The new Tier A transform-boundary family passed against the native parallel-risk files after formatting and proof-block admission.",
+      "proof_evidence": {
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/parallel_risk_lane_surface_transform_required/reports/parallel_risk_transform_boundary_final.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "3 passed",
+        "proof_block_status_path": "var/audit/active_code_atlas_001/parallel_risk_lane_surface_transform_required/reports/parallel_risk_transform_boundary_proof_block_final.status",
+        "proof_block_result": "0",
+        "proof_block_summary": "3 passed",
+        "existing_parallel_risk_proof_block_status_path": "var/audit/active_code_atlas_001/parallel_risk_lane_surface_transform_required/reports/parallel_risk_lane_authority_surface_after_row034.status",
+        "existing_parallel_risk_proof_block_result": "0",
+        "existing_parallel_risk_proof_block_summary": "37 passed"
+      },
+      "active_behaviour_summary": "The current native parallel-risk lane remains an independent risk surface: it does not import donor risk-lane modules, does not redeclare transform-required donor symbols, and its envelope/lane-packet carrier fields stay disjoint from downstream capital/opening/broker/live-position authority shapes.",
+      "closed_boundaries_confirmed": [
+        "serial candidate formation remains separate",
+        "capital deployment remains closed",
+        "broker/opening remains closed",
+        "live inventory remains closed",
+        "exit/close remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated Atlas slices not rebuilt",
+        "row035 live inventory work not opened in row034"
+      ]
+    }
+  ]
+}

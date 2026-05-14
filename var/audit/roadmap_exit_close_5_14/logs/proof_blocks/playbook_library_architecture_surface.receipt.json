@@ -1,0 +1,30 @@
+{
+  "command": "python -m pytest tests/tier_a/playbook tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/contracts/playbook.py",
+    "src/nvda_desk/contracts/eligibility.py",
+    "src/nvda_desk/config/playbook_registry.py",
+    "src/nvda_desk/playbooks/library.py",
+    "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+    "src/nvda_desk/cognition/serial/eligibility.py",
+    "src/nvda_desk/services/playbook_eligibility_service.py",
+    "config/playbook_registry.example.yaml",
+    "tests/tier_a/playbook/test_playbook_library_architecture_surface.py",
+    "tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py",
+    "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+    "config/retained_test_registry.yaml",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md"
+  ],
+  "proof_block_id": "playbook_library_architecture_surface",
+  "resolved_command": [
+    "/mnt/data/nvda10_2_work/repo/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/playbook",
+    "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,65 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 5 items
+
+tests/tier_a/downstream_runtime/test_downstream_contract_models.py ....F [100%]
+
+=================================== FAILURES ===================================
+____ test_live_inventory_contracts_detach_nested_caller_owned_payload_state ____
+
+    def test_live_inventory_contracts_detach_nested_caller_owned_payload_state() -> None:
+        position_payload = {"symbol": "NVDA", "metadata": {"source": "fill"}}
+        capital_payload = {"cash": 1000.0, "metadata": {"source": "ledger"}}
+        position_state = LivePositionState(position_id="pos-1", source_payload=position_payload)
+        capital_state = LiveCapitalState(snapshot_id="cap-1", source_payload=capital_payload)
+        snapshot = DownstreamLiveInventorySnapshot(
+            inventory_id="inventory-1",
+            live_ids=["pos-1"],
+            position_states=[position_state],
+            capital_state=capital_state,
+        )
+
+        position_payload["metadata"]["source"] = "caller-mutated"
+        capital_payload["metadata"]["source"] = "caller-mutated"
+        position_state.source_payload["metadata"]["source"] = "state-mutated"
+        capital_state.source_payload["metadata"]["source"] = "state-mutated"
+
+>       assert snapshot.position_states[0].source_payload == {
+            "symbol": "NVDA",
+            "metadata": {"source": "fill"},
+        }
+E       AssertionError: assert {'metadata': ...mbol': 'NVDA'} == {'metadata': ...mbol': 'NVDA'}
+E
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'metadata': {'source': 'state-mutated'}} != {'metadata': {'source': 'fill'}}
+E
+E         Full diff:
+E           {
+E               'metadata': {
+E         -         'source': 'fill',
+E         +         'source': 'state-mutated',
+E               },
+E               'symbol': 'NVDA',
+E           }
+
+tests/tier_a/downstream_runtime/test_downstream_contract_models.py:103: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/downstream_runtime/test_downstream_contract_models.py::test_live_inventory_contracts_detach_nested_caller_owned_payload_state - AssertionError: assert {'metadata': ...mbol': 'NVDA'} == {'metadata': ...mbol': 'NVDA'}
+
+  Omitting 1 identical items, use -vv to show
+  Differing items:
+  {'metadata': {'source': 'state-mutated'}} != {'metadata': {'source': 'fill'}}
+
+  Full diff:
+    {
+        'metadata': {
+  -         'source': 'fill',
+  +         'source': 'state-mutated',
+        },
+        'symbol': 'NVDA',
+    }
+========================= 1 failed, 4 passed in 0.33s ==========================

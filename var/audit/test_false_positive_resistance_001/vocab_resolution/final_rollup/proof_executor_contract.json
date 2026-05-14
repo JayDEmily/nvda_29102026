@@ -1,0 +1,21 @@
+{
+  "command": "python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "scripts/run_proof_block.py",
+    "config/proof_blocks.yaml",
+    "tests/tier_b/proof_model/test_proof_executor_contract.py",
+    "Makefile",
+    "config/retained_test_registry.yaml",
+    "project_control/remote_bridge/REMOTE_BRIDGE_BLUEPRINT.md"
+  ],
+  "proof_block_id": "proof_executor_contract",
+  "resolved_command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_b/proof_model/test_proof_executor_contract.py"
+  ],
+  "status": "PASS"
+}

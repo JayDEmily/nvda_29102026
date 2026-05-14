@@ -1,0 +1,15 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_add_new_admission_plan_rejects_blank_governance_metadata _________
+
+    def test_add_new_admission_plan_rejects_blank_governance_metadata() -> None:
+>       with pytest.raises(ValueError, match="stage_owner must be a non-empty string"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py:223: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py::test_add_new_admission_plan_rejects_blank_governance_metadata - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.22s
+.                                                                        [100%]
+1 passed in 0.13s

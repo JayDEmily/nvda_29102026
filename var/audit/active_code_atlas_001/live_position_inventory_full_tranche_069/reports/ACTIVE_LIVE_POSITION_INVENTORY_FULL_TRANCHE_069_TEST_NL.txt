@@ -1,0 +1,195 @@
+     1	from __future__ import annotations
+     2	
+     3	import ast
+     4	import importlib
+     5	from pathlib import Path
+     6	
+     7	import pytest
+     8	
+     9	from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+    10	from nvda_desk.services.downstream_live_inventory_service import (
+    11	    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
+    12	)
+    13	from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+    14	from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+    15	from nvda_desk.repositories.position_repository import PositionRepository
+    16	
+    17	
+    18	def _require_module(module_path: str):
+    19	    try:
+    20	        return importlib.import_module(module_path)
+    21	    except ModuleNotFoundError as exc:
+    22	        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+    23	
+    24	
+    25	def _require_attr(module, attr_name: str):
+    26	    if not hasattr(module, attr_name):
+    27	        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    28	    return getattr(module, attr_name)
+    29	
+    30	
+    31	def test_downstream_live_inventory_service_surface_is_present() -> None:
+    32	    live_inventory = _require_module("nvda_desk.downstream.live_inventory")
+    33	    assert live_inventory.__name__ == "nvda_desk.downstream.live_inventory"
+    34	    assert _require_attr(live_inventory, "DownstreamLiveInventoryService") is getattr(live_inventory, "DownstreamLiveInventoryService")
+    35	
+    36	
+    37	def test_live_inventory_snapshot_reads_position_and_capital_state_copy_safely() -> None:
+    38	    positions = PositionRepository()
+    39	    capital = CapitalStateRepository()
+    40	    positions.write_position(
+    41	        "pos-1",
+    42	        {"symbol": "NVDA", "declared_exposure": 12.5, "metadata": {"source": "fill"}},
+    43	    )
+    44	    capital.write_snapshot("cap-1", {"cash": 1000.0, "metadata": {"source": "ledger"}})
+    45	
+    46	    snapshot = DownstreamLiveInventoryService(
+    47	        position_repository=positions,
+    48	        capital_state_repository=capital,
+    49	    ).build_live_snapshot(receipt_id="inv-r1")
+    50	
+    51	    assert snapshot.live_ids == ["pos-1"]
+    52	    assert snapshot.position_states[0].position_id == "pos-1"
+    53	    assert snapshot.position_states[0].source_payload["metadata"] == {"source": "fill"}
+    54	    assert snapshot.capital_state is not None
+    55	    assert snapshot.capital_state.snapshot_id == "cap-1"
+    56	    assert snapshot.exposure_state.position_count == 1
+    57	    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 12.5}
+    58	    assert snapshot.inventory_receipt is not None
+    59	    assert snapshot.inventory_receipt.position_ids == ["pos-1"]
+    60	    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-1"
+    61	
+    62	    snapshot.position_states[0].source_payload["metadata"]["source"] = "mutated"
+    63	    assert positions.read_position("pos-1") == {
+    64	        "symbol": "NVDA",
+    65	        "declared_exposure": 12.5,
+    66	        "metadata": {"source": "fill"},
+    67	    }
+    68	
+    69	
+    70	def test_live_inventory_receipt_write_is_explicit_and_append_only() -> None:
+    71	    positions = PositionRepository()
+    72	    receipts = ReceiptLedger()
+    73	    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 1.5})
+    74	
+    75	    service = DownstreamLiveInventoryService(
+    76	        position_repository=positions,
+    77	        receipt_ledger=receipts,
+    78	    )
+    79	    snapshot = service.build_live_snapshot(receipt_id="inv-r1")
+    80	
+    81	    stored = receipts.read_receipt("inv-r1")
+    82	    assert stored is not None
+    83	    assert stored["receipt_kind"] == "live_inventory_snapshot"
+    84	    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
+    85	    with pytest.raises(ValueError, match="duplicate receipt_id"):
+    86	        service.build_live_snapshot(receipt_id="inv-r1")
+    87	
+    88	
+    89	def test_live_inventory_does_not_invent_undeclared_exposure() -> None:
+    90	    positions = PositionRepository()
+    91	    positions.write_position("pos-1", {"symbol": "NVDA", "quantity": 100})
+    92	
+    93	    snapshot = DownstreamLiveInventoryService(position_repository=positions).build_live_snapshot()
+    94	
+    95	    assert snapshot.exposure_state.open_position_ids == ["pos-1"]
+    96	    assert snapshot.exposure_state.declared_exposure_by_symbol == {}
+    97	
+    98	
+    99	def test_live_inventory_module_does_not_import_broker_or_candidate_authority() -> None:
+   100	    source = Path("src/nvda_desk/downstream/live_inventory.py").read_text(encoding="utf-8")
+   101	    tree = ast.parse(source)
+   102	    imported = set()
+   103	    for node in ast.walk(tree):
+   104	        if isinstance(node, ast.Import):
+   105	            imported.update(alias.name for alias in node.names)
+   106	        elif isinstance(node, ast.ImportFrom) and node.module:
+   107	            imported.add(node.module)
+   108	
+   109	    forbidden_roots = (
+   110	        "nvda_desk.adapters.egress",
+   111	        "nvda_desk.domain.execution",
+   112	        "nvda_desk.cognition.serial",
+   113	        "nvda_desk.ingress.raw_bundle_loader",
+   114	    )
+   115	    assert not any(
+   116	        module == root or module.startswith(root + ".")
+   117	        for module in imported
+   118	        for root in forbidden_roots
+   119	    )
+   120	
+   121	
+   122	def test_live_inventory_rejects_empty_live_inventory_identifiers() -> None:
+   123	    service = DownstreamLiveInventoryService()
+   124	
+   125	    with pytest.raises(ValueError, match="live_id must be non-empty"):
+   126	        service.build_live_snapshot(live_ids=["  "])
+   127	
+   128	    with pytest.raises(ValueError, match="inventory_id must be non-empty"):
+   129	        service.build_live_snapshot(inventory_id="  ")
+   130	
+   131	    with pytest.raises(ValueError, match="receipt_id must be non-empty"):
+   132	        service.build_live_snapshot(receipt_id="  ")
+   133	
+   134	
+   135	def test_live_inventory_requested_ids_are_normalised_before_repository_read() -> None:
+   136	    positions = PositionRepository()
+   137	    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 2.5})
+   138	
+   139	    snapshot = DownstreamLiveInventoryService(position_repository=positions).build_live_snapshot(
+   140	        live_ids=[" pos-1 "]
+   141	    )
+   142	
+   143	    assert snapshot.live_ids == ["pos-1"]
+   144	    assert snapshot.position_states[0].position_id == "pos-1"
+   145	    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 2.5}
+   146	
+   147	
+   148	def test_live_inventory_reads_requested_capital_snapshot_not_latest_snapshot() -> None:
+   149	    positions = PositionRepository()
+   150	    capital = CapitalStateRepository()
+   151	    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 1.0})
+   152	    capital.write_snapshot("cap-1", {"cash": 1000.0})
+   153	    capital.write_snapshot("cap-2", {"cash": 900.0})
+   154	
+   155	    snapshot = DownstreamLiveInventoryService(
+   156	        position_repository=positions,
+   157	        capital_state_repository=capital,
+   158	    ).build_live_snapshot(capital_snapshot_id=" cap-1 ")
+   159	
+   160	    assert snapshot.capital_state is not None
+   161	    assert snapshot.capital_state.snapshot_id == "cap-1"
+   162	    assert snapshot.capital_state.source_payload == {"cash": 1000.0}
+   163	
+   164	
+   165	def test_workbook_live_inventory_wrapper_preserves_bounded_readback_inputs() -> None:
+   166	    positions = PositionRepository()
+   167	    capital = CapitalStateRepository()
+   168	    receipts = ReceiptLedger()
+   169	    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 3.0})
+   170	    capital.write_snapshot("cap-older", {"cash": 1000.0})
+   171	    capital.write_snapshot("cap-selected", {"cash": 900.0})
+   172	
+   173	    snapshot = WorkbookDownstreamLiveInventoryService(
+   174	        position_repository=positions,
+   175	        capital_state_repository=capital,
+   176	        receipt_ledger=receipts,
+   177	    ).build_live_snapshot(
+   178	        live_ids=[" pos-1 "],
+   179	        inventory_id=" inv-1 ",
+   180	        capital_snapshot_id=" cap-selected ",
+   181	        receipt_id=" receipt-1 ",
+   182	    )
+   183	
+   184	    assert snapshot.inventory_id == "inv-1"
+   185	    assert snapshot.live_ids == ["pos-1"]
+   186	    assert snapshot.capital_state is not None
+   187	    assert snapshot.capital_state.snapshot_id == "cap-selected"
+   188	    assert snapshot.inventory_receipt is not None
+   189	    assert snapshot.inventory_receipt.receipt_id == "receipt-1"
+   190	    assert snapshot.inventory_receipt.inventory_id == "inv-1"
+   191	    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-selected"
+   192	    stored = receipts.read_receipt("receipt-1")
+   193	    assert stored is not None
+   194	    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
+   195	

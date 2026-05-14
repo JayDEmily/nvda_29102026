@@ -1,0 +1,13 @@
+{
+  "bundle_root": "/mnt/data/seq10_recreate/input_extract/NVDA9_SEQUENCE10_WORKER_INPUT_BUNDLE_REVIEW_EXPLANATION_AUDITABILITY_NO_WHEELHOUSES_2026-05-05",
+  "created_utc": "2026-05-05T12:46:07Z",
+  "missing_rows": 0,
+  "notes": [
+    "Checkpoint 1 read ledger: no production code edits; Sequence 10 audit/read ledger files created only."
+  ],
+  "read_full_rows": 75,
+  "sequence": "10",
+  "source_repo_root": "/mnt/data/seq10_recreate/source_extract/NVIDIA9_remotetest-main",
+  "total_bytes_read": 1911793,
+  "total_rows": 75
+}

@@ -1,0 +1,405 @@
+{
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_TRANSFORM_REQUIRED_FULL_READ_MANIFEST",
+  "updated_utc": "2026-05-11T11:56:10+00:00",
+  "branch": "worker/full-read-manifest-hardening-001",
+  "base_commit": "81bf755",
+  "surface_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_TRANSFORM_REQUIRED",
+  "queue_row": "ACATQ-0004 / ACABC-0004",
+  "purpose": "Record full-read evidence before and after raw capture/source temporal law transform-required proof-family work; regenerated after row 015 mutations so stale entries are not used for closure.",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 294
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 54446,
+      "line_count": 633,
+      "sha256": "b4a9b6d484359c05d9b8f7f5da0be4093ec9532f4007d7224f5f6b4d69bd7d5e",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 633
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 95382,
+      "line_count": 425,
+      "sha256": "40b27c9a28f10113a1826a9e078d88b97bc6f5c3ea9532aee30379b8431f3263",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 425
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 202
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 758
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 32076,
+      "line_count": 527,
+      "sha256": "e420820de475ece2be66441a8ddb8517d0e13c53105c6f5ad26717a3a8118f49",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 527
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 194195,
+      "line_count": 3159,
+      "sha256": "6bfb43e410d28490a01804489524adac2bf573677339d942de6a5d3fc75ca36a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3159
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/contracts/temporal.py",
+      "byte_count": 3332,
+      "line_count": 96,
+      "sha256": "35d17eb1ef76b03f34ec6cc5d925a9e544c417436b9586aa4cec39a971f91b96",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 96
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+      "byte_count": 4881,
+      "line_count": 128,
+      "sha256": "382f6133db24edbe936445a106d3f539d04c2cb5564998e3b44cbc517134b7ff",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 128
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/contracts/upstream_signal.py",
+      "byte_count": 2799,
+      "line_count": 79,
+      "sha256": "74959d8e045b37038d416f35a2426ad3d681bb91a72d3300249f6e91497b58dd",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/upstream/raw_signal_ingress.py",
+      "byte_count": 2510,
+      "line_count": 79,
+      "sha256": "b363325d88ae66387d83cd3922929c81a95cd6d3cd9bc3d2d4f5c8480aca3882",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+      "byte_count": 4953,
+      "line_count": 113,
+      "sha256": "538a691a0c42f484b3695b20699b426ff087d9dcd9c7a23e5b17a9bd9895732b",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 113
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/temporal/test_source_temporal_standard_surface.py",
+      "byte_count": 2063,
+      "line_count": 55,
+      "sha256": "b24d7f351839aa5eeea4b1eaae8713566a558edeb77b39c30713a3164094991a",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 55
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py",
+      "byte_count": 1957,
+      "line_count": 56,
+      "sha256": "312be8e435972df3792dc66ece0e17c9c8e28d62d9a4c7db3bda5cc2db484b6b",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 56
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_transform_required/raw_capture_transform_boundary_active_code_atlas_records.json",
+      "byte_count": 3884,
+      "line_count": 94,
+      "sha256": "9bc0c1fafc6ce0a8126d0024afbebd3ef0885b92f8f410933a578a7758c2b306",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 94
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md",
+      "byte_count": 2188,
+      "line_count": 46,
+      "sha256": "a1fbb3deb360dcf64a126fb48e06ae71a442c8e0ab6cdda1e8ab57f50d4a3003",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 46
+        }
+      ],
+      "notes": ""
+    }
+  ]
+}

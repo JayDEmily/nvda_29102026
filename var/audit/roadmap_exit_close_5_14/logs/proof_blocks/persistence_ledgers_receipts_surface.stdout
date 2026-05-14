@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_2_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 22 items
+
+tests/tier_a/persistence/test_append_only_repository_surfaces.py ..      [  9%]
+tests/tier_a/persistence/test_capital_state_repository_surface.py ...    [ 22%]
+tests/tier_a/persistence/test_execution_records_repository_surface.py .. [ 31%]
+                                                                         [ 31%]
+tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py . [ 36%]
+..                                                                       [ 45%]
+tests/tier_a/persistence/test_position_repository_surface.py ...         [ 59%]
+tests/tier_a/persistence/test_receipt_ledger_surface.py ...              [ 72%]
+tests/tier_a/persistence/test_research_logs_owner_surface.py ..          [ 81%]
+tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py . [ 86%]
+.                                                                        [ 90%]
+tests/tier_a/review_runtime/test_review_repository_surface.py ..         [100%]
+
+============================== 22 passed in 0.38s ==============================
+proof_block_id=persistence_ledgers_receipts_surface
+command=python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py

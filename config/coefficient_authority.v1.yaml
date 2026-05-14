@@ -1,0 +1,82 @@
+authority_id: "coefficient_authority_\u00761"
+schema_version: v1
+workbook_source_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+notes:
+  - Workbook-derived coefficient authority promoted into typed runtime config.
+  - Runtime never reads the workbook directly.
+records:
+  - coefficient_id: risk_vix_caution_threshold
+    owner_stage: posture
+    surface_class: baseline_only_surface
+    baseline_value: 24.0
+    hard_floor: 18.0
+    hard_cap: 40.0
+    transform_family: baseline_only_so_far
+    runtime_mutable: false
+    workbook_ref:
+      workbook_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+      sheet_name: Runtime_Surface_Drivers
+      cell_range: B8:H8
+      lineage_note: repo-native posture caution threshold promoted from workbook runtime-surface row.
+    notes:
+      - Baseline-only in the admitted subset.
+  - coefficient_id: risk_vix_hot_threshold
+    owner_stage: posture
+    surface_class: baseline_only_surface
+    baseline_value: 32.0
+    hard_floor: 24.0
+    hard_cap: 50.0
+    transform_family: baseline_only_so_far
+    runtime_mutable: false
+    workbook_ref:
+      workbook_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+      sheet_name: Runtime_Surface_Drivers
+      cell_range: B9:H9
+      lineage_note: repo-native posture hot threshold promoted from workbook runtime-surface row.
+    notes:
+      - Baseline-only in the admitted subset.
+  - coefficient_id: max_risk_per_trade
+    owner_stage: posture
+    surface_class: mutable_runtime_surface
+    baseline_value: 0.35
+    hard_floor: 0.1
+    hard_cap: 0.55
+    transform_family: clamp
+    runtime_mutable: true
+    workbook_ref:
+      workbook_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+      sheet_name: Runtime_Surface_Drivers
+      cell_range: B10:H10
+      lineage_note: admitted mutable posture cap with bounded runtime clamp policy.
+    notes:
+      - negative_gamma_stress may clamp the cap down but not expand it.
+  - coefficient_id: hedge_required
+    owner_stage: posture
+    surface_class: mutable_runtime_surface
+    baseline_value: false
+    hard_floor: FALSE_ONLY
+    hard_cap: TRUE_ONLY
+    transform_family: suppression_veto
+    runtime_mutable: true
+    workbook_ref:
+      workbook_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+      sheet_name: Runtime_Surface_Drivers
+      cell_range: B12:H12
+      lineage_note: admitted boolean posture overlay surface.
+    notes:
+      - negative_gamma_stress may force the hedge requirement on.
+modifier_policies:
+  - policy_id: negative_gamma_stress
+    owner_stage: posture
+    admitted_surfaces:
+      - max_risk_per_trade
+      - hedge_required
+    effects:
+      - coefficient_id: max_risk_per_trade
+        transform_family: clamp
+        effective_value: 0.25
+        rationale: Clamp risk budget under stress instead of widening discretion.
+      - coefficient_id: hedge_required
+        transform_family: suppression_veto
+        effective_value: true
+        rationale: Require the hedge overlay under stress.

@@ -1,0 +1,26 @@
+...........F                                                             [100%]
+=================================== FAILURES ===================================
+____ test_external_payload_boundary_rejects_nested_authority_or_secret_keys ____
+
+    def test_external_payload_boundary_rejects_nested_authority_or_secret_keys() -> None:
+        result = validate_external_payload_boundary(
+            interface=_market_spec(),
+            payload={
+                "symbol": "NVDA",
+                "metadata": {
+                    "provider": "recorded-fixture",
+                    "api_key": "not-admitted",
+                    "trade_allowed": True,
+                },
+            },
+        )
+    
+>       assert result.accepted is False
+E       AssertionError: assert True is False
+E        +  where True = ExternalSourceValidationResult(accepted=True, source_id='recorded-nvda-market-snapshot', source_family=<ExternalSource...ess_mode=<ExternalIngressMode.RECORDED_API_RESPONSE: 'recorded_api_response'>, rejection_reason=None, rejected_keys=()).accepted
+
+tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py:208: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py::test_external_payload_boundary_rejects_nested_authority_or_secret_keys - AssertionError: assert True is False
+ +  where True = ExternalSourceValidationResult(accepted=True, source_id='recorded-nvda-market-snapshot', source_family=<ExternalSource...ess_mode=<ExternalIngressMode.RECORDED_API_RESPONSE: 'recorded_api_response'>, rejection_reason=None, rejected_keys=()).accepted
+1 failed, 11 passed in 1.05s

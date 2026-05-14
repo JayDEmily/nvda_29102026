@@ -1,0 +1,59 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+_____ test_dmpv3_extensions_cannot_replace_canonical_semantic_dependencies _____
+
+    def test_dmpv3_extensions_cannot_replace_canonical_semantic_dependencies() -> None:
+        packet = build_dmp_v3_packet(
+            packet_id="pkt-semantic-dependency-guard-1",
+            dataschema="TemporalContextOutput",
+            data={"state": "ready"},
+            packetrole="stage_packet",
+            module_id="temporal_context",
+            grammar_role="serial_runtime",
+            behaviour_class="stage_output",
+            emitted_at=datetime(2026, 4, 21, 10, 5, tzinfo=UTC),
+            traceid="trace-semantic-dependency-guard",
+            runid="run-semantic-dependency-guard",
+            dependencyids=["canonical-dependency-1", "canonical-dependency-2"],
+            dmpextensions={
+                "nvda": {
+                    "semantic_dependencies": ["injected-dependency"],
+                    "execution_context": {"stack_id": "stack-semantic-dependency-guard"},
+                }
+            },
+        )
+    
+        assert packet.lineage.dependencyids == [
+            "canonical-dependency-1",
+            "canonical-dependency-2",
+        ]
+>       assert packet.dmpextensions["nvda"]["semantic_dependencies"] == [
+            "canonical-dependency-1",
+            "canonical-dependency-2",
+        ]
+E       AssertionError: assert ['injected-dependency'] == ['canonical-d...dependency-2']
+E         
+E         At index 0 diff: 'injected-dependency' != 'canonical-dependency-1'
+E         Right contains one more item: 'canonical-dependency-2'
+E         
+E         Full diff:
+E           [
+E         +     'injected-dependency',
+E         -     'canonical-dependency-1',
+E         -     'canonical-dependency-2',
+E           ]
+
+tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py:66: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py::test_dmpv3_extensions_cannot_replace_canonical_semantic_dependencies - AssertionError: assert ['injected-dependency'] == ['canonical-d...dependency-2']
+  
+  At index 0 diff: 'injected-dependency' != 'canonical-dependency-1'
+  Right contains one more item: 'canonical-dependency-2'
+  
+  Full diff:
+    [
+  +     'injected-dependency',
+  -     'canonical-dependency-1',
+  -     'canonical-dependency-2',
+    ]
+1 failed, 2 passed in 0.97s

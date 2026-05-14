@@ -1,0 +1,8 @@
+path	exists	type
+AGENTS.md	yes	file
+PLANS.md	yes	file
+pyproject.toml	yes	file
+src	yes	directory
+tests	yes	directory
+docs	yes	directory
+var/audit	yes	directory

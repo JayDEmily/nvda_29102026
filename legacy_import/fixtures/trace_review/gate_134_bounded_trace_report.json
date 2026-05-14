@@ -1,0 +1,1302 @@
+{
+  "narrative_summary": [
+    "anchor_event_imminent: permission=allow; playbooks=['none']; final_risk=derisk; recommendation=0.0000; cda_action=stand_down; authorised=0.0000; overlay=derisk; terminal=derisk",
+    "clear_window_continuation: permission=allow; playbooks=['continuation_ladder']; final_risk=allow; recommendation=1.0000; cda_action=deploy; authorised=55.0000; overlay=allow; terminal=allow",
+    "lunch_flattened: permission=allow; playbooks=['none']; final_risk=allow; recommendation=0.0000; cda_action=stand_down; authorised=0.0000; overlay=allow; terminal=allow",
+    "imminent_pin_derisk: permission=allow; playbooks=['none']; final_risk=derisk; recommendation=0.0000; cda_action=stand_down; authorised=0.0000; overlay=derisk; terminal=derisk",
+    "mild_down_block: permission=derisk; playbooks=['none']; final_risk=block; recommendation=0.0000; cda_action=stand_down; authorised=0.0000; overlay=block; terminal=block"
+  ],
+  "pack_id": "gate-132-bounded-trace-review-v1",
+  "runs": [
+    {
+      "active_playbook_ids": [],
+      "admissibility_surface": {
+        "admissibility_version": "eligibility_admissibility.v1",
+        "admissible_family_ids": [],
+        "admissible_playbook_ids": [],
+        "admissible_setup_variant_ids": [],
+        "no_trade_reasons": [
+          "event_window_veto",
+          "macro_event_window_veto"
+        ],
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection"
+        ],
+        "permission_state": "allow",
+        "watch_family_ids": [],
+        "watch_only_playbook_ids": [],
+        "watch_setup_variant_ids": []
+      },
+      "candidate_ownership": {
+        "adjudicated_playbook_ids": [],
+        "admitted_playbook_ids": [],
+        "contradiction_resolution": null,
+        "lead_playbook_id": null,
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection",
+          "no_admitted_candidate_promoted"
+        ],
+        "ownership_version": "execution_candidate_ownership.v1",
+        "watch_only_playbook_ids": []
+      },
+      "capital_deployment_action": "stand_down",
+      "capital_deployment_authorised_pct": 0.0,
+      "capital_deployment_opportunity_pct": 0.0,
+      "checkpoint_observations": [
+        {
+          "checkpoint_name": "downstream_seam.capital_deployment_authority.decision_observed",
+          "input_snapshot": {
+            "buying_power": 1000.0,
+            "consequence_class": "no_carry",
+            "lead_playbook_id": null,
+            "opportunity_target_pct": 0.0,
+            "permission_state": "allow",
+            "posture_cap_pct": 55.0,
+            "terminal_risk_action": "derisk",
+            "weather_state": "elevated_translation_pressure"
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "authorised_notional_usd": 0.0,
+            "deployment_action": "stand_down",
+            "rationale_codes": [
+              "lead_playbook:none",
+              "posture_permission:allow",
+              "terminal_risk:derisk",
+              "terminal_risk_scalar:0.6500",
+              "buying_power:1000.0000",
+              "opportunity_target_pct:0.0000",
+              "posture_cap_pct:55.0000",
+              "posture_cap_source:permission_state:allow",
+              "opportunity_source:no_opening_capacity",
+              "weather_state:elevated_translation_pressure",
+              "consequence_class:no_carry",
+              "stand_down:no_lead_playbook"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.opening_authorisation.decision_observed",
+          "input_snapshot": {
+            "capital_decision_present": true,
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_weather_state": "elevated_translation_pressure",
+            "serial_ladder_shape_sum": 0.0
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "decision_owner": "capital_deployment_authority_service",
+            "immediate_opening_slice_pct": null,
+            "policy_status": "delegated_to_existing_owner",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff",
+              "independent_parallel_risk_lane",
+              "capital_deployment_authority_decision",
+              "capital_state",
+              "positions",
+              "position_instances",
+              "signal_receipts",
+              "veto_receipts",
+              "risk_block_receipts",
+              "order_event_receipts",
+              "fill_event_receipts",
+              "recommendation_history_reservation"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.placement_handoff.reservation_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "lead_setup_variant_id": null
+          },
+          "output_snapshot": {
+            "policy_status": "state_attached_no_policy",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff"
+            ],
+            "reservation_future_home": "downstream_recommendation_history_reader"
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.review_packet.preserved_seam_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_lane_id": "independent_parallel_risk_lane",
+            "parallel_weather_state": "elevated_translation_pressure",
+            "terminal_risk_action": "derisk"
+          },
+          "output_snapshot": {
+            "capital_decision_present": true,
+            "downstream_policy_freeze_state": "architecture_only_no_policy",
+            "review_packet_keys": [
+              "admissibility_surface",
+              "candidate_governance",
+              "candidate_ownership",
+              "capital_deployment_authority",
+              "conflicts",
+              "contradictions",
+              "desk_readout",
+              "downstream_architecture_receipt",
+              "economic_accountability",
+              "effective_policy",
+              "eligibility",
+              "event_options_stress_policy",
+              "event_window_governance",
+              "execution",
+              "execution_recommendation",
+              "failure_taxonomy",
+              "final_risk_join",
+              "hierarchy_summary",
+              "modifier_control_law",
+              "module_attribution",
+              "options_flow",
+              "overlay_risk_decision",
+              "parallel_risk_lane",
+              "parallel_risk_lane_summary",
+              "phase_carry_policy",
+              "posture",
+              "promotion_evidence",
+              "regime",
+              "rejected_playbooks",
+              "review_eligibility",
+              "review_governance",
+              "review_lineage",
+              "signal_conflict_density",
+              "stability_scorecards",
+              "stage_local_handoff",
+              "stage_reason_packets",
+              "stage_summaries",
+              "temporal",
+              "terminal_risk_application",
+              "terminal_risk_decision"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        }
+      ],
+      "desk_window": "open_disorder",
+      "downstream_deferred_domains": [
+        "opening_policy",
+        "placement_readiness_policy",
+        "placement_handoff_policy",
+        "live_inventory_health_policy",
+        "position_management_policy",
+        "capital_rotation_policy",
+        "exit_policy",
+        "close_execution_policy"
+      ],
+      "downstream_policy_freeze_state": "architecture_only_no_policy",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 8.2583,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 83,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should look cautious but not insane: no moon-buying, event-aware derisk, no crash.",
+      "final_risk_action": "derisk",
+      "options_behavior_cluster": "balanced_options_state",
+      "overlay_risk_decision": {
+        "action": "derisk",
+        "confidence_scalar": 0.65,
+        "reasons": [
+          "volatility_caution_derisk"
+        ],
+        "vix_change_pct_15m": 13.5268,
+        "vix_level": 18.4,
+        "vvix_change_pct_15m": 6.0,
+        "vvix_level": 84.0
+      },
+      "permission_state": "allow",
+      "recommendation_target_pct": 0.0,
+      "scenario_id": "anchor_event_imminent",
+      "summary": "window=open_disorder; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=derisk",
+      "terminal_risk_application": {
+        "application_version": "terminal_risk_application.v1",
+        "final_decision": {
+          "action": "derisk",
+          "confidence_scalar": 0.65,
+          "reasons": [
+            "volatility_caution_derisk"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 6.0,
+          "vvix_level": 84.0
+        },
+        "notes": [
+          "overlay_evaluation_preserved_before_terminal_application"
+        ],
+        "overlap_classes": [
+          "overlay_derisk_no_terminal_override"
+        ],
+        "overlay_decision": {
+          "action": "derisk",
+          "confidence_scalar": 0.65,
+          "reasons": [
+            "volatility_caution_derisk"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 6.0,
+          "vvix_level": 84.0
+        },
+        "posture_permission_state": "allow"
+      }
+    },
+    {
+      "active_playbook_ids": [
+        "continuation_ladder"
+      ],
+      "admissibility_surface": {
+        "admissibility_version": "eligibility_admissibility.v1",
+        "admissible_family_ids": [
+          "trend_continuation"
+        ],
+        "admissible_playbook_ids": [
+          "continuation_ladder"
+        ],
+        "admissible_setup_variant_ids": [
+          "opening_drive_continuation"
+        ],
+        "no_trade_reasons": [],
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection"
+        ],
+        "permission_state": "allow",
+        "watch_family_ids": [
+          "compression_release",
+          "term_structure_dislocation"
+        ],
+        "watch_only_playbook_ids": [
+          "compression_breakout",
+          "term_structure_dislocation"
+        ],
+        "watch_setup_variant_ids": [
+          "midday_compression_release",
+          "front_next_curve_dislocation"
+        ]
+      },
+      "candidate_ownership": {
+        "adjudicated_playbook_ids": [
+          "continuation_ladder"
+        ],
+        "admitted_playbook_ids": [
+          "continuation_ladder"
+        ],
+        "contradiction_resolution": "single_candidate_clear",
+        "lead_playbook_id": "continuation_ladder",
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection",
+          "lead_selected_from_admitted_candidate_pool"
+        ],
+        "ownership_version": "execution_candidate_ownership.v1",
+        "watch_only_playbook_ids": [
+          "compression_breakout",
+          "term_structure_dislocation"
+        ]
+      },
+      "capital_deployment_action": "deploy",
+      "capital_deployment_authorised_pct": 55.0,
+      "capital_deployment_opportunity_pct": 55.0,
+      "checkpoint_observations": [
+        {
+          "checkpoint_name": "downstream_seam.capital_deployment_authority.decision_observed",
+          "input_snapshot": {
+            "buying_power": 1000.0,
+            "consequence_class": "normal",
+            "lead_playbook_id": "continuation_ladder",
+            "opportunity_target_pct": 55.0,
+            "permission_state": "allow",
+            "posture_cap_pct": 55.0,
+            "terminal_risk_action": "allow",
+            "weather_state": "supportive_background"
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 55.0,
+            "authorised_notional_usd": 550.0,
+            "deployment_action": "deploy",
+            "rationale_codes": [
+              "lead_playbook:continuation_ladder",
+              "posture_permission:allow",
+              "terminal_risk:allow",
+              "terminal_risk_scalar:1.0000",
+              "buying_power:1000.0000",
+              "opportunity_target_pct:55.0000",
+              "posture_cap_pct:55.0000",
+              "posture_cap_source:permission_state:allow",
+              "opportunity_source:posture_fresh_deployable_capital_pct_times_serial_shape",
+              "weather_state:supportive_background",
+              "consequence_class:normal",
+              "deploy:bounded_fresh_capital_authorised"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.opening_authorisation.decision_observed",
+          "input_snapshot": {
+            "capital_decision_present": true,
+            "lead_playbook_id": "continuation_ladder",
+            "parallel_consequence_class": "normal",
+            "parallel_weather_state": "supportive_background",
+            "serial_ladder_shape_sum": 1.0
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 55.0,
+            "decision_owner": "capital_deployment_authority_service",
+            "immediate_opening_slice_pct": 11.0,
+            "policy_status": "delegated_to_existing_owner",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff",
+              "independent_parallel_risk_lane",
+              "capital_deployment_authority_decision",
+              "capital_state",
+              "positions",
+              "position_instances",
+              "signal_receipts",
+              "veto_receipts",
+              "risk_block_receipts",
+              "order_event_receipts",
+              "fill_event_receipts",
+              "recommendation_history_reservation"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.placement_handoff.reservation_observed",
+          "input_snapshot": {
+            "lead_playbook_id": "continuation_ladder",
+            "lead_setup_variant_id": "opening_drive_continuation"
+          },
+          "output_snapshot": {
+            "policy_status": "state_attached_no_policy",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff"
+            ],
+            "reservation_future_home": "downstream_recommendation_history_reader"
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.review_packet.preserved_seam_observed",
+          "input_snapshot": {
+            "lead_playbook_id": "continuation_ladder",
+            "parallel_consequence_class": "normal",
+            "parallel_lane_id": "independent_parallel_risk_lane",
+            "parallel_weather_state": "supportive_background",
+            "terminal_risk_action": "allow"
+          },
+          "output_snapshot": {
+            "capital_decision_present": true,
+            "downstream_policy_freeze_state": "architecture_only_no_policy",
+            "review_packet_keys": [
+              "admissibility_surface",
+              "candidate_governance",
+              "candidate_ownership",
+              "capital_deployment_authority",
+              "conflicts",
+              "contradictions",
+              "desk_readout",
+              "downstream_architecture_receipt",
+              "economic_accountability",
+              "effective_policy",
+              "eligibility",
+              "event_window_governance",
+              "execution",
+              "execution_recommendation",
+              "failure_taxonomy",
+              "final_risk_join",
+              "hierarchy_summary",
+              "modifier_control_law",
+              "module_attribution",
+              "options_flow",
+              "overlay_risk_decision",
+              "parallel_risk_lane",
+              "parallel_risk_lane_summary",
+              "phase_carry_policy",
+              "posture",
+              "promotion_evidence",
+              "regime",
+              "rejected_playbooks",
+              "review_eligibility",
+              "review_governance",
+              "review_lineage",
+              "signal_conflict_density",
+              "stability_scorecards",
+              "stage_local_handoff",
+              "stage_reason_packets",
+              "stage_summaries",
+              "temporal",
+              "terminal_risk_application",
+              "terminal_risk_decision"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        }
+      ],
+      "desk_window": "early_anchor",
+      "downstream_deferred_domains": [
+        "opening_policy",
+        "placement_readiness_policy",
+        "placement_handoff_policy",
+        "live_inventory_health_policy",
+        "position_management_policy",
+        "capital_rotation_policy",
+        "exit_policy",
+        "close_execution_policy"
+      ],
+      "downstream_policy_freeze_state": "architecture_only_no_policy",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.65,
+        "hedge_required": false,
+        "max_risk_per_trade": 0.35,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 55.0,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 480,
+      "event_window_state": "clear_window",
+      "expected_human_read": "Should act like a normal supportive continuation: allow with one continuation playbook, not buy the moon.",
+      "final_risk_action": "allow",
+      "options_behavior_cluster": "balanced_options_state",
+      "overlay_risk_decision": {
+        "action": "allow",
+        "confidence_scalar": 1.0,
+        "reasons": [
+          "risk_gateway_clear"
+        ],
+        "vix_change_pct_15m": 5.5268,
+        "vix_level": 18.4,
+        "vvix_change_pct_15m": 0.0,
+        "vvix_level": 84.0
+      },
+      "permission_state": "allow",
+      "recommendation_target_pct": 1.0,
+      "scenario_id": "clear_window_continuation",
+      "summary": "window=early_anchor; permission=allow; families=['trend_continuation']; setups=['opening_drive_continuation']; playbooks=['continuation_ladder']; final_risk=allow",
+      "terminal_risk_application": {
+        "application_version": "terminal_risk_application.v1",
+        "final_decision": {
+          "action": "allow",
+          "confidence_scalar": 1.0,
+          "reasons": [
+            "risk_gateway_clear"
+          ],
+          "vix_change_pct_15m": 5.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 0.0,
+          "vvix_level": 84.0
+        },
+        "notes": [
+          "overlay_evaluation_preserved_before_terminal_application"
+        ],
+        "overlap_classes": [
+          "overlay_allow_no_terminal_override"
+        ],
+        "overlay_decision": {
+          "action": "allow",
+          "confidence_scalar": 1.0,
+          "reasons": [
+            "risk_gateway_clear"
+          ],
+          "vix_change_pct_15m": 5.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 0.0,
+          "vvix_level": 84.0
+        },
+        "posture_permission_state": "allow"
+      }
+    },
+    {
+      "active_playbook_ids": [],
+      "admissibility_surface": {
+        "admissibility_version": "eligibility_admissibility.v1",
+        "admissible_family_ids": [],
+        "admissible_playbook_ids": [],
+        "admissible_setup_variant_ids": [],
+        "no_trade_reasons": [],
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection"
+        ],
+        "permission_state": "allow",
+        "watch_family_ids": [
+          "compression_release",
+          "term_structure_dislocation"
+        ],
+        "watch_only_playbook_ids": [
+          "compression_breakout",
+          "term_structure_dislocation"
+        ],
+        "watch_setup_variant_ids": [
+          "midday_compression_release",
+          "front_next_curve_dislocation"
+        ]
+      },
+      "candidate_ownership": {
+        "adjudicated_playbook_ids": [],
+        "admitted_playbook_ids": [],
+        "contradiction_resolution": null,
+        "lead_playbook_id": null,
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection",
+          "watch_only_candidates_not_promoted_to_execution"
+        ],
+        "ownership_version": "execution_candidate_ownership.v1",
+        "watch_only_playbook_ids": [
+          "compression_breakout",
+          "term_structure_dislocation"
+        ]
+      },
+      "capital_deployment_action": "stand_down",
+      "capital_deployment_authorised_pct": 0.0,
+      "capital_deployment_opportunity_pct": 0.0,
+      "checkpoint_observations": [
+        {
+          "checkpoint_name": "downstream_seam.capital_deployment_authority.decision_observed",
+          "input_snapshot": {
+            "buying_power": 1000.0,
+            "consequence_class": "no_carry",
+            "lead_playbook_id": null,
+            "opportunity_target_pct": 0.0,
+            "permission_state": "allow",
+            "posture_cap_pct": 55.0,
+            "terminal_risk_action": "allow",
+            "weather_state": "supportive_background"
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "authorised_notional_usd": 0.0,
+            "deployment_action": "stand_down",
+            "rationale_codes": [
+              "lead_playbook:none",
+              "posture_permission:allow",
+              "terminal_risk:allow",
+              "terminal_risk_scalar:1.0000",
+              "buying_power:1000.0000",
+              "opportunity_target_pct:0.0000",
+              "posture_cap_pct:55.0000",
+              "posture_cap_source:permission_state:allow",
+              "opportunity_source:no_opening_capacity",
+              "weather_state:supportive_background",
+              "consequence_class:no_carry",
+              "stand_down:no_lead_playbook"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.opening_authorisation.decision_observed",
+          "input_snapshot": {
+            "capital_decision_present": true,
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_weather_state": "supportive_background",
+            "serial_ladder_shape_sum": 0.0
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "decision_owner": "capital_deployment_authority_service",
+            "immediate_opening_slice_pct": null,
+            "policy_status": "delegated_to_existing_owner",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff",
+              "independent_parallel_risk_lane",
+              "capital_deployment_authority_decision",
+              "capital_state",
+              "positions",
+              "position_instances",
+              "signal_receipts",
+              "veto_receipts",
+              "risk_block_receipts",
+              "order_event_receipts",
+              "fill_event_receipts",
+              "recommendation_history_reservation"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.placement_handoff.reservation_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "lead_setup_variant_id": null
+          },
+          "output_snapshot": {
+            "policy_status": "state_attached_no_policy",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff"
+            ],
+            "reservation_future_home": "downstream_recommendation_history_reader"
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.review_packet.preserved_seam_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_lane_id": "independent_parallel_risk_lane",
+            "parallel_weather_state": "supportive_background",
+            "terminal_risk_action": "allow"
+          },
+          "output_snapshot": {
+            "capital_decision_present": true,
+            "downstream_policy_freeze_state": "architecture_only_no_policy",
+            "review_packet_keys": [
+              "admissibility_surface",
+              "candidate_governance",
+              "candidate_ownership",
+              "capital_deployment_authority",
+              "conflicts",
+              "contradictions",
+              "desk_readout",
+              "downstream_architecture_receipt",
+              "economic_accountability",
+              "effective_policy",
+              "eligibility",
+              "event_window_governance",
+              "execution",
+              "execution_recommendation",
+              "failure_taxonomy",
+              "final_risk_join",
+              "hierarchy_summary",
+              "modifier_control_law",
+              "module_attribution",
+              "options_flow",
+              "overlay_risk_decision",
+              "parallel_risk_lane",
+              "parallel_risk_lane_summary",
+              "phase_carry_policy",
+              "posture",
+              "promotion_evidence",
+              "regime",
+              "rejected_playbooks",
+              "review_eligibility",
+              "review_governance",
+              "review_lineage",
+              "signal_conflict_density",
+              "stability_scorecards",
+              "stage_local_handoff",
+              "stage_reason_packets",
+              "stage_summaries",
+              "temporal",
+              "terminal_risk_application",
+              "terminal_risk_decision"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        }
+      ],
+      "desk_window": "lunch",
+      "downstream_deferred_domains": [
+        "opening_policy",
+        "placement_readiness_policy",
+        "placement_handoff_policy",
+        "live_inventory_health_policy",
+        "position_management_policy",
+        "capital_rotation_policy",
+        "exit_policy",
+        "close_execution_policy"
+      ],
+      "downstream_policy_freeze_state": "architecture_only_no_policy",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.65,
+        "hedge_required": false,
+        "max_risk_per_trade": 0.35,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 55.0,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 480,
+      "event_window_state": "clear_window",
+      "expected_human_read": "Should look normal and quiet: allow posture, no active playbook, no explosion.",
+      "final_risk_action": "allow",
+      "options_behavior_cluster": "balanced_options_state",
+      "overlay_risk_decision": {
+        "action": "allow",
+        "confidence_scalar": 1.0,
+        "reasons": [
+          "risk_gateway_clear"
+        ],
+        "vix_change_pct_15m": 5.5268,
+        "vix_level": 18.4,
+        "vvix_change_pct_15m": 0.0,
+        "vvix_level": 84.0
+      },
+      "permission_state": "allow",
+      "recommendation_target_pct": 0.0,
+      "scenario_id": "lunch_flattened",
+      "summary": "window=lunch; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=allow",
+      "terminal_risk_application": {
+        "application_version": "terminal_risk_application.v1",
+        "final_decision": {
+          "action": "allow",
+          "confidence_scalar": 1.0,
+          "reasons": [
+            "risk_gateway_clear"
+          ],
+          "vix_change_pct_15m": 5.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 0.0,
+          "vvix_level": 84.0
+        },
+        "notes": [
+          "overlay_evaluation_preserved_before_terminal_application"
+        ],
+        "overlap_classes": [
+          "overlay_allow_no_terminal_override"
+        ],
+        "overlay_decision": {
+          "action": "allow",
+          "confidence_scalar": 1.0,
+          "reasons": [
+            "risk_gateway_clear"
+          ],
+          "vix_change_pct_15m": 5.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 0.0,
+          "vvix_level": 84.0
+        },
+        "posture_permission_state": "allow"
+      }
+    },
+    {
+      "active_playbook_ids": [],
+      "admissibility_surface": {
+        "admissibility_version": "eligibility_admissibility.v1",
+        "admissible_family_ids": [],
+        "admissible_playbook_ids": [],
+        "admissible_setup_variant_ids": [],
+        "no_trade_reasons": [
+          "event_window_veto",
+          "macro_event_window_veto"
+        ],
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection"
+        ],
+        "permission_state": "allow",
+        "watch_family_ids": [],
+        "watch_only_playbook_ids": [],
+        "watch_setup_variant_ids": []
+      },
+      "candidate_ownership": {
+        "adjudicated_playbook_ids": [],
+        "admitted_playbook_ids": [],
+        "contradiction_resolution": null,
+        "lead_playbook_id": null,
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection",
+          "no_admitted_candidate_promoted"
+        ],
+        "ownership_version": "execution_candidate_ownership.v1",
+        "watch_only_playbook_ids": []
+      },
+      "capital_deployment_action": "stand_down",
+      "capital_deployment_authorised_pct": 0.0,
+      "capital_deployment_opportunity_pct": 0.0,
+      "checkpoint_observations": [
+        {
+          "checkpoint_name": "downstream_seam.capital_deployment_authority.decision_observed",
+          "input_snapshot": {
+            "buying_power": 1000.0,
+            "consequence_class": "no_carry",
+            "lead_playbook_id": null,
+            "opportunity_target_pct": 0.0,
+            "permission_state": "allow",
+            "posture_cap_pct": 55.0,
+            "terminal_risk_action": "derisk",
+            "weather_state": "elevated_translation_pressure"
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "authorised_notional_usd": 0.0,
+            "deployment_action": "stand_down",
+            "rationale_codes": [
+              "lead_playbook:none",
+              "posture_permission:allow",
+              "terminal_risk:derisk",
+              "terminal_risk_scalar:0.6500",
+              "buying_power:1000.0000",
+              "opportunity_target_pct:0.0000",
+              "posture_cap_pct:55.0000",
+              "posture_cap_source:permission_state:allow",
+              "opportunity_source:no_opening_capacity",
+              "weather_state:elevated_translation_pressure",
+              "consequence_class:no_carry",
+              "stand_down:no_lead_playbook"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.opening_authorisation.decision_observed",
+          "input_snapshot": {
+            "capital_decision_present": true,
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_weather_state": "elevated_translation_pressure",
+            "serial_ladder_shape_sum": 0.0
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "decision_owner": "capital_deployment_authority_service",
+            "immediate_opening_slice_pct": null,
+            "policy_status": "delegated_to_existing_owner",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff",
+              "independent_parallel_risk_lane",
+              "capital_deployment_authority_decision",
+              "capital_state",
+              "positions",
+              "position_instances",
+              "signal_receipts",
+              "veto_receipts",
+              "risk_block_receipts",
+              "order_event_receipts",
+              "fill_event_receipts",
+              "recommendation_history_reservation"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.placement_handoff.reservation_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "lead_setup_variant_id": null
+          },
+          "output_snapshot": {
+            "policy_status": "state_attached_no_policy",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff"
+            ],
+            "reservation_future_home": "downstream_recommendation_history_reader"
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.review_packet.preserved_seam_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_lane_id": "independent_parallel_risk_lane",
+            "parallel_weather_state": "elevated_translation_pressure",
+            "terminal_risk_action": "derisk"
+          },
+          "output_snapshot": {
+            "capital_decision_present": true,
+            "downstream_policy_freeze_state": "architecture_only_no_policy",
+            "review_packet_keys": [
+              "admissibility_surface",
+              "candidate_governance",
+              "candidate_ownership",
+              "capital_deployment_authority",
+              "conflicts",
+              "contradictions",
+              "desk_readout",
+              "downstream_architecture_receipt",
+              "economic_accountability",
+              "effective_policy",
+              "eligibility",
+              "event_options_stress_policy",
+              "event_window_governance",
+              "execution",
+              "execution_recommendation",
+              "failure_taxonomy",
+              "final_risk_join",
+              "hierarchy_summary",
+              "modifier_control_law",
+              "module_attribution",
+              "options_flow",
+              "overlay_risk_decision",
+              "parallel_risk_lane",
+              "parallel_risk_lane_summary",
+              "phase_carry_policy",
+              "posture",
+              "promotion_evidence",
+              "regime",
+              "rejected_playbooks",
+              "review_eligibility",
+              "review_governance",
+              "review_lineage",
+              "signal_conflict_density",
+              "stability_scorecards",
+              "stage_local_handoff",
+              "stage_reason_packets",
+              "stage_summaries",
+              "temporal",
+              "terminal_risk_application",
+              "terminal_risk_decision"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        }
+      ],
+      "desk_window": "open_disorder",
+      "downstream_deferred_domains": [
+        "opening_policy",
+        "placement_readiness_policy",
+        "placement_handoff_policy",
+        "live_inventory_health_policy",
+        "position_management_policy",
+        "capital_rotation_policy",
+        "exit_policy",
+        "close_execution_policy"
+      ],
+      "downstream_policy_freeze_state": "architecture_only_no_policy",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 8.2583,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 12,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should derisk and stay small; still not a moon shot.",
+      "final_risk_action": "derisk",
+      "options_behavior_cluster": "balanced_options_state",
+      "overlay_risk_decision": {
+        "action": "derisk",
+        "confidence_scalar": 0.65,
+        "reasons": [
+          "volatility_caution_derisk"
+        ],
+        "vix_change_pct_15m": 13.5268,
+        "vix_level": 18.4,
+        "vvix_change_pct_15m": 6.0,
+        "vvix_level": 84.0
+      },
+      "permission_state": "allow",
+      "recommendation_target_pct": 0.0,
+      "scenario_id": "imminent_pin_derisk",
+      "summary": "window=open_disorder; permission=allow; families=['none']; setups=['none']; playbooks=['none']; final_risk=derisk",
+      "terminal_risk_application": {
+        "application_version": "terminal_risk_application.v1",
+        "final_decision": {
+          "action": "derisk",
+          "confidence_scalar": 0.65,
+          "reasons": [
+            "volatility_caution_derisk"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 6.0,
+          "vvix_level": 84.0
+        },
+        "notes": [
+          "overlay_evaluation_preserved_before_terminal_application"
+        ],
+        "overlap_classes": [
+          "overlay_derisk_no_terminal_override"
+        ],
+        "overlay_decision": {
+          "action": "derisk",
+          "confidence_scalar": 0.65,
+          "reasons": [
+            "volatility_caution_derisk"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 18.4,
+          "vvix_change_pct_15m": 6.0,
+          "vvix_level": 84.0
+        },
+        "posture_permission_state": "allow"
+      }
+    },
+    {
+      "active_playbook_ids": [],
+      "admissibility_surface": {
+        "admissibility_version": "eligibility_admissibility.v1",
+        "admissible_family_ids": [],
+        "admissible_playbook_ids": [],
+        "admissible_setup_variant_ids": [],
+        "no_trade_reasons": [
+          "event_window_veto",
+          "macro_event_window_veto"
+        ],
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection"
+        ],
+        "permission_state": "derisk",
+        "watch_family_ids": [],
+        "watch_only_playbook_ids": [],
+        "watch_setup_variant_ids": []
+      },
+      "candidate_ownership": {
+        "adjudicated_playbook_ids": [],
+        "admitted_playbook_ids": [],
+        "contradiction_resolution": null,
+        "lead_playbook_id": null,
+        "notes": [
+          "stage5_limited_to_admissibility_and_watch_status",
+          "stage6_owns_candidate_ranking_and_lead_selection",
+          "no_admitted_candidate_promoted"
+        ],
+        "ownership_version": "execution_candidate_ownership.v1",
+        "watch_only_playbook_ids": []
+      },
+      "capital_deployment_action": "stand_down",
+      "capital_deployment_authorised_pct": 0.0,
+      "capital_deployment_opportunity_pct": 0.0,
+      "checkpoint_observations": [
+        {
+          "checkpoint_name": "downstream_seam.capital_deployment_authority.decision_observed",
+          "input_snapshot": {
+            "buying_power": 1000.0,
+            "consequence_class": "no_carry",
+            "lead_playbook_id": null,
+            "opportunity_target_pct": 0.0,
+            "permission_state": "derisk",
+            "posture_cap_pct": 30.0,
+            "terminal_risk_action": "block",
+            "weather_state": "impaired_background"
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "authorised_notional_usd": 0.0,
+            "deployment_action": "stand_down",
+            "rationale_codes": [
+              "lead_playbook:none",
+              "posture_permission:derisk",
+              "terminal_risk:block",
+              "terminal_risk_scalar:0.0000",
+              "buying_power:1000.0000",
+              "opportunity_target_pct:0.0000",
+              "posture_cap_pct:30.0000",
+              "posture_cap_source:permission_state:derisk",
+              "opportunity_source:no_opening_capacity",
+              "weather_state:impaired_background",
+              "consequence_class:no_carry",
+              "stand_down:no_lead_playbook"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.opening_authorisation.decision_observed",
+          "input_snapshot": {
+            "capital_decision_present": true,
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_weather_state": "impaired_background",
+            "serial_ladder_shape_sum": 0.0
+          },
+          "output_snapshot": {
+            "authorised_deployable_pct": 0.0,
+            "decision_owner": "capital_deployment_authority_service",
+            "immediate_opening_slice_pct": null,
+            "policy_status": "delegated_to_existing_owner",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff",
+              "independent_parallel_risk_lane",
+              "capital_deployment_authority_decision",
+              "capital_state",
+              "positions",
+              "position_instances",
+              "signal_receipts",
+              "veto_receipts",
+              "risk_block_receipts",
+              "order_event_receipts",
+              "fill_event_receipts",
+              "recommendation_history_reservation"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.placement_handoff.reservation_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "lead_setup_variant_id": null
+          },
+          "output_snapshot": {
+            "policy_status": "state_attached_no_policy",
+            "reads_from": [
+              "serial_candidate",
+              "stage_local_handoff"
+            ],
+            "reservation_future_home": "downstream_recommendation_history_reader"
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        },
+        {
+          "checkpoint_name": "downstream_seam.review_packet.preserved_seam_observed",
+          "input_snapshot": {
+            "lead_playbook_id": null,
+            "parallel_consequence_class": "no_carry",
+            "parallel_lane_id": "independent_parallel_risk_lane",
+            "parallel_weather_state": "impaired_background",
+            "terminal_risk_action": "block"
+          },
+          "output_snapshot": {
+            "capital_decision_present": true,
+            "downstream_policy_freeze_state": "architecture_only_no_policy",
+            "review_packet_keys": [
+              "admissibility_surface",
+              "candidate_governance",
+              "candidate_ownership",
+              "capital_deployment_authority",
+              "conflicts",
+              "contradictions",
+              "desk_readout",
+              "downstream_architecture_receipt",
+              "economic_accountability",
+              "effective_policy",
+              "eligibility",
+              "event_options_stress_policy",
+              "event_window_governance",
+              "execution",
+              "execution_recommendation",
+              "failure_taxonomy",
+              "final_risk_join",
+              "hierarchy_summary",
+              "modifier_control_law",
+              "module_attribution",
+              "options_flow",
+              "overlay_risk_decision",
+              "parallel_risk_lane",
+              "parallel_risk_lane_summary",
+              "phase_carry_policy",
+              "posture",
+              "promotion_evidence",
+              "regime",
+              "rejected_playbooks",
+              "review_eligibility",
+              "review_governance",
+              "review_lineage",
+              "signal_conflict_density",
+              "stability_scorecards",
+              "stage_local_handoff",
+              "stage_reason_packets",
+              "stage_summaries",
+              "temporal",
+              "terminal_risk_application",
+              "terminal_risk_decision"
+            ]
+          },
+          "timestamp": "2026-03-23T14:07:00Z"
+        }
+      ],
+      "desk_window": "open_disorder",
+      "downstream_deferred_domains": [
+        "opening_policy",
+        "placement_readiness_policy",
+        "placement_handoff_policy",
+        "live_inventory_health_policy",
+        "position_management_policy",
+        "capital_rotation_policy",
+        "exit_policy",
+        "close_execution_policy"
+      ],
+      "downstream_policy_freeze_state": "architecture_only_no_policy",
+      "effective_surfaces": {
+        "distance_to_vwap_soft_limit_pct": 1.5,
+        "entry_gate_score_floor": 0.74,
+        "hedge_required": true,
+        "max_risk_per_trade": 0.2,
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "target_fresh_deployable_pct": 6.6066,
+        "zone_score_threshold": 0.5
+      },
+      "event_minutes_remaining": 83,
+      "event_window_state": "event_imminent_window",
+      "expected_human_read": "Should not explode; a hard block or equivalent stand-down is fine here.",
+      "final_risk_action": "block",
+      "options_behavior_cluster": "balanced_options_state",
+      "overlay_risk_decision": {
+        "action": "block",
+        "confidence_scalar": 0.0,
+        "reasons": [
+          "volatility_shock_block"
+        ],
+        "vix_change_pct_15m": 13.5268,
+        "vix_level": 31.0,
+        "vvix_change_pct_15m": 19.5,
+        "vvix_level": 122.0
+      },
+      "permission_state": "derisk",
+      "recommendation_target_pct": 0.0,
+      "scenario_id": "mild_down_block",
+      "summary": "window=open_disorder; permission=derisk; families=['none']; setups=['none']; playbooks=['none']; final_risk=block",
+      "terminal_risk_application": {
+        "application_version": "terminal_risk_application.v1",
+        "final_decision": {
+          "action": "block",
+          "confidence_scalar": 0.0,
+          "reasons": [
+            "volatility_shock_block"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 31.0,
+          "vvix_change_pct_15m": 19.5,
+          "vvix_level": 122.0
+        },
+        "notes": [
+          "overlay_evaluation_preserved_before_terminal_application"
+        ],
+        "overlap_classes": [
+          "overlay_block_no_terminal_override"
+        ],
+        "overlay_decision": {
+          "action": "block",
+          "confidence_scalar": 0.0,
+          "reasons": [
+            "volatility_shock_block"
+          ],
+          "vix_change_pct_15m": 13.5268,
+          "vix_level": 31.0,
+          "vvix_change_pct_15m": 19.5,
+          "vvix_level": 122.0
+        },
+        "posture_permission_state": "derisk"
+      }
+    }
+  ],
+  "scenario_ids": [
+    "anchor_event_imminent",
+    "clear_window_continuation",
+    "lunch_flattened",
+    "imminent_pin_derisk",
+    "mild_down_block"
+  ]
+}

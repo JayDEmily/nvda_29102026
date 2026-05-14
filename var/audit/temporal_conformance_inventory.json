@@ -1,0 +1,988 @@
+{
+  "schema_version": "v1",
+  "branch": "work/temporal-standard-tranche-2-conformance-audit-proof-remediation-20260422",
+  "baseline_commit": "912ade700d4516551404c437c06660632b1dc479",
+  "authoritative_baseline_ref": "temporal-standard-tranche-1-authoritative-closeout-20260422",
+  "inventory": [
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/preparation/__init__.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/preparation/runtime_preparer.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "aligned_bar_at",
+        "bar_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L112,L118-L119,L125-L126,L128,L149,L153-L154,L272,L275,L335-L338,L340-L342",
+        "next_event_at:L150-L154,L318",
+        "aligned_bar_at:L22,L55-L56,L122,L128,L241,L290",
+        "bar_at:L22,L55-L56,L89,L94-L95,L101,L105,L113,L121-L123,L128,L197,L206,L224,L228,L241,L270,L276,L290"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "Prepared runtime snapshots still use module-local temporal fields such as `observed_at`, `next_event_at`, `aligned_bar_at`, and `bar_at`, so the preparation substrate has not yet been normalised to the admitted source temporal standard.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/ingress/__init__.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/ingress/options_mapper.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/ingress/regime_mapper.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "starts_at",
+        "ends_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L14,L31",
+        "next_event_at:L15,L32",
+        "starts_at:L24",
+        "ends_at:L25"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The temporal ingress mapper requires `observed_at` and `next_event_at` and builds `TemporalContextInput` from that local grammar rather than from the admitted source temporal fields.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/ingress/translator.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The translator emits `StageInputBundle.temporal` through `build_temporal_input`, so it currently propagates the nonconformant temporal carrier into the serial-runtime seam.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/stage_inputs.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The stage-input bundle is structurally tied to `TemporalContextInput`, so the seam itself cannot become tranche-2-conformant without contract remediation in Tranche 3.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/packets.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L115,L139,L163-L164,L228"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "This surface owns or proves packet emission-time carriage only and does not assert source observation time or repo persistence timing as packet time.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/packets/dmp_packets.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L27,L63,L94,L118,L135,L166,L187,L215"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "This surface owns or proves packet emission-time carriage only and does not assert source observation time or repo persistence timing as packet time.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/parallel_risk.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "recorded_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L33",
+        "next_event_at:L34",
+        "recorded_at:L89",
+        "emitted_at:L155,L184,L202,L230"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "Module 8 contract models still expose `observed_at`, `next_event_at`, and `recorded_at` instead of the admitted source-time and repo-process timing field set.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/services/parallel_risk_lane_service.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L26,L38,L57,L69"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The service entrypoint still accepts a `StageInputBundle` whose temporal carrier is nonconformant and returns lane packets built from that carrier, so truthful conformance depends on upstream Tranche 3 contract remediation.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/risk/parallel/evaluate.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L29,L41,L69"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The evaluator builds `ParallelRiskLanePacket.environment_assessment` from `temporal_input.observed_at` and `temporal_input.next_event_at`, so the emitted payload still depends on the retired local grammar.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L22",
+        "next_event_at:L19,L23"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The environment-assessment domain surface copies `observed_at` and `next_event_at` directly into the output model, so the domain shape itself remains nonconformant.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/persistence/parallel_risk_observations.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "recorded_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L54,L59",
+        "recorded_at:L41,L54,L59"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The append-only persistence helper records `recorded_at` and defaults it from `datetime.now(UTC)`, rather than separating lawful source observation time from `persisted_at_utc` repo process timing.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/testing/harnesses/__init__.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/testing/harnesses/canonical_runtime.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "recorded_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L186,L212,L242,L246,L311,L325,L421",
+        "next_event_at:L166,L219,L247,L427,L434",
+        "recorded_at:L325",
+        "emitted_at:L311"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The workbook specimen harness still maps workbook truth into `temporal.observed_at`, emits packets at that value, and records observation persistence through `recorded_at`, so it requires the deferred contract/persistence rewrite.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/runtime/orchestrator.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L98-L99,L132,L167,L174,L186,L231-L234,L237-L238",
+        "emitted_at:L186"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The orchestrator derives trace/run tokens from `stage_input_bundle.temporal.observed_at` and passes that same value as `emitted_at` for every stage packet, which overloads packet emission time with source observation time.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/serial/__init__.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/serial/eligibility.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/serial/options_flow.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/cognition/serial/posture.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/temporal/event_windows.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "starts_at",
+        "ends_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L11,L15,L20,L22",
+        "next_event_at:L20",
+        "starts_at:L15,L22",
+        "ends_at:L15"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The temporal domain helper still computes activity from `observed_at`, `starts_at`, and `ends_at`, which is the pre-admission local grammar.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/temporal/session_clock.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L8,L10"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The session-clock classifier still keys the temporal stage from `observed_at` rather than an admitted source-time surface.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/regime/classification.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/options_flow/surface_state.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/posture/modifier_application.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/posture/permission.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/execution/__init__.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/execution/candidate_expression.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/domain/execution/lifecycle_plan.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/temporal.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "starts_at",
+        "ends_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L23,L32",
+        "next_event_at:L24,L35",
+        "starts_at:L14",
+        "ends_at:L15"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "The canonical temporal contracts still define `observed_at`, `next_event_at`, `starts_at`, and `ends_at`, so the primary temporal grammar itself has not yet been reconciled to the repo-wide standard.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/regime.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "source",
+      "surface_path": "src/nvda_desk/contracts/options_flow.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "Vocabulary governance and receipt language: `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`; `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`; temporal-law reuse from `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50.",
+      "current_conformance_status": "needs proof/test remediation only",
+      "truthful_basis": "The governed vocabulary can now express tranche-2 temporal receipt language, but this proof surface did not yet assert the tranche-1 temporal terms and tranche-2 conformance-classification terms.",
+      "next_action": "Extend this proof surface in L3 so it asserts the already-governed tranche-1 temporal terms and the newly-admitted tranche-2 receipt classifications."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/packets/test_reference_packet_carriage.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L29,L66"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "This surface owns or proves packet emission-time carriage only and does not assert source observation time or repo persistence timing as packet time.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "recorded_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L30,L62,L81",
+        "next_event_at:L63",
+        "recorded_at:L41",
+        "emitted_at:L72"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface encodes the current `observed_at`/`next_event_at`/`recorded_at` contract shapes, so truthful repair depends on Tranche 3 code and contract remediation first.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/parallel_risk/test_parallel_risk_dmp_fixture_root.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "starts_at",
+        "ends_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L23",
+        "next_event_at:L24",
+        "starts_at:L28",
+        "ends_at:L29",
+        "emitted_at:L44,L72"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface exercises the current bootstrap path through `observed_at`, `next_event_at`, and event-window timestamps, so it must defer until the underlying runtime and contract shapes are remediated.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L16",
+        "emitted_at:L24"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface instantiates the current nonconformant temporal carrier (`TemporalContextInput(observed_at=...)`) and therefore defers with the Tranche 3 contract rewrite.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "emitted_at:L20,L52"
+      ],
+      "applicable_temporal_rules": "`docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L32 packet emission-time rule; `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L44-L46 source observation time vs repo process timing separation.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "This surface owns or proves packet emission-time carriage only and does not assert source observation time or repo persistence timing as packet time.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/runtime/test_runtime_orchestrator_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L40,L83"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface codifies the current orchestrator behaviour built from `TemporalContextInput(observed_at=...)`, including the fallback mapping that still names `observed_at` directly.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L15"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface exercises stage-packet emission through the current `observed_at` temporal carrier, so truthful remediation must wait for the Tranche 3 runtime rewrite.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L55"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface validates workbook specimen emission through `temporal.observed_at` and the current observation-record shape, so it remains coupled to deferred harness and persistence remediation.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L19,L28",
+        "next_event_at:L20"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface asserts the workbook mapping into `temporal.observed_at` and `temporal.next_event_at`, so it must defer with the underlying harness contract rewrite.",
+      "next_action": "Tranche 3: refactor this surface onto the admitted source temporal standard and reroute any related proof surfaces afterwards."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/persistence/test_execution_records_repository_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "observed_at",
+        "next_event_at",
+        "recorded_at",
+        "starts_at",
+        "ends_at",
+        "emitted_at"
+      ],
+      "evidence_lines": [
+        "observed_at:L22",
+        "next_event_at:L23",
+        "recorded_at:L54",
+        "starts_at:L27",
+        "ends_at:L28",
+        "emitted_at:L41"
+      ],
+      "applicable_temporal_rules": "`docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md` L31-L50 repo-wide source temporal standard; `docs/05.1_GUARDRAILS_WORKING.md` L24-L28 anti-drift rule against module-local temporal grammars; `docs/09.1_DMPV3_PROTOCOL_WORKING.md` L28-L36 where packet carriage or persistence is involved.",
+      "current_conformance_status": "needs code/persistence remediation in Tranche 3",
+      "truthful_basis": "This proof surface asserts `recorded_at` and the current workbook/bootstrap temporal carrier, so truthful repair depends on the deferred persistence and contract rewrite.",
+      "next_action": "Tranche 3: separate admitted source observation fields from packet emission time and remove the local temporal grammar."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/persistence/test_position_repository_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_a/persistence/test_research_logs_owner_surface.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_b/review_lineage/test_bounded_trace_review_regime.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_b/review_lineage/test_review_effective_policy_lineage.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    },
+    {
+      "surface_kind": "proof",
+      "surface_path": "tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py",
+      "temporal_fields_or_concepts_present": [
+        "none"
+      ],
+      "evidence_lines": [
+        "none"
+      ],
+      "applicable_temporal_rules": "`docs/05.1_GUARDRAILS_WORKING.md` L27-L28 checked for accidental temporal divergence; no direct source-temporal ownership surface is asserted here.",
+      "current_conformance_status": "already conformant",
+      "truthful_basis": "No source-temporal or repo-process timing grammar is owned or asserted in this surface, so no tranche-1 temporal rule is violated here.",
+      "next_action": "None in this tranche beyond retaining truthful classification."
+    }
+  ]
+}

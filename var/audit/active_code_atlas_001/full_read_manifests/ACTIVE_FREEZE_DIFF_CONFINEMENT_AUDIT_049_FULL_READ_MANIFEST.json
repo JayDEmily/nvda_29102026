@@ -1,0 +1,96 @@
+{
+  "created_utc": "2026-05-13T00:00:00Z",
+  "target": "ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface; diff classified but not mutated by 049."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan; diff classified but not mutated by 049."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 191689,
+      "line_count": 544,
+      "sha256": "f2af4dc10ccaefad10a11c951bc88b5cd126ea44e4390ee54164f61568b69c12",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 544
+        }
+      ],
+      "notes": "Mutable live ledger after pointer advancement to 049."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/freeze_diff_AGENTS_PLANS_049.diff",
+      "byte_count": 10222,
+      "line_count": 64,
+      "sha256": "2a79988db9f2ac1174aa7c9d4a7cf411c75b4df3730b2b9158027c21715fdae3",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 64
+        }
+      ],
+      "notes": "Captured AGENTS/PLANS diff classified by 049."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_REPORT.json",
+      "byte_count": 3723,
+      "line_count": 75,
+      "sha256": "dbd4b60c58c823e9214b83f1abda08b21b8f42034c72fafc83d68529b3a32aac",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 75
+        }
+      ],
+      "notes": "049 report after final proof update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/receipts/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_RECEIPT.md",
+      "byte_count": 682,
+      "line_count": 9,
+      "sha256": "aee3c967e2884f0230554ce1827da4178c0a6e7b9fb94b2d728ec62558c81642",
+      "read_method": "manual_full_file_read_plus_freeze_diff_confinement_audit_049_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "049 receipt after final proof update."
+    }
+  ]
+}

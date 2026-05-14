@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-05-11T10:02:07Z",
+  "surface": "Persistence, ledgers, and receipts",
+  "target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_005_PERSISTENCE_LEDGERS_RECEIPTS_SURFACE_NEW_TEST_FAMILY",
+  "queue_record_id": "ACATQ-0040",
+  "comparison_record_id": "ACABC-0041",
+  "status": "PASS",
+  "source_repair_performed": false,
+  "mutated_source_paths": [],
+  "validation_commands": [
+    {
+      "name": "targeted_new_tier_a_family",
+      "command": "PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_persistence_session_boundary_surface.py -q",
+      "exit_code": 0,
+      "observed_output": "3 passed in 0.47s",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/reports/test_persistence_session_boundary_surface_output.txt"
+    },
+    {
+      "name": "persistence_session_boundary_surface_proof_block",
+      "command": "PYTHONPATH=src python scripts/run_proof_block.py --block persistence_session_boundary_surface",
+      "exit_code": 0,
+      "observed_output": "3 passed in 0.47s; proof_block_id=persistence_session_boundary_surface",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/reports/proof_block_persistence_session_boundary_surface_output.txt"
+    },
+    {
+      "name": "persistence_ledgers_receipts_surface_proof_block",
+      "command": "PYTHONPATH=src python scripts/run_proof_block.py --block persistence_ledgers_receipts_surface",
+      "exit_code": 0,
+      "observed_output": "31 passed in 1.20s; proof_block_id=persistence_ledgers_receipts_surface",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/reports/proof_block_persistence_ledgers_receipts_surface_output.txt"
+    },
+    {
+      "name": "proof_block_manifest_check_all",
+      "command": "PYTHONPATH=src python scripts/run_proof_block.py --check-all",
+      "exit_code": 0,
+      "observed_output": "proof_blocks_check_all=PASS count=20",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/reports/proof_block_manifest_check_all_output.txt"
+    },
+    {
+      "name": "surface_records_and_registry_validator",
+      "command": "PYTHONPATH=src python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+      "exit_code": 0,
+      "observed_output": "validation_status=PASS error_count=0 warning_count=0; tier_a_test_count=96; tier_b_test_count=12",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/reports/validate_surface_records_and_registry_output.txt"
+    }
+  ],
+  "changed_files_expected": [
+    "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+    "config/proof_blocks.yaml",
+    "config/retained_test_registry.yaml",
+    "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/persistence_session_boundary_active_code_atlas_records.json",
+    "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/persistence_session_boundary_validation_report.json",
+    "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_005_PERSISTENCE_LEDGERS_RECEIPTS_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+    "var/audit/active_code_atlas_001/reports/validate_surface_records_and_registry_output.json",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md"
+  ],
+  "limitations": [
+    "The new family proves the native active boundary and non-admission of donor db.* APIs; it does not implement SQL-backed persistence, schema creation, or seed-data semantics.",
+    "The generated all-surface active-code Atlas remains structural inventory only."
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_039_DOWNSTREAM_CAPITAL_DEPLOYMENT_AUTHORITY_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_surface_record_created",
+  "surface": "Downstream capital deployment authority",
+  "method": "Manual full-read adjudication with new retained Tier B transform-boundary family before any donor cognition import or source refactor.",
+  "limitation_statement": "This record covers row039 downstream capital deployment transform-required evidence only; it does not prove opening placement readiness or exit/close closure.",
+  "surface_limitation": "Covers donor posture hard-invariant transform-boundary exclusion for current native capital deployment authority files and contracts only.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-039-0001",
+      "title": "Downstream capital deployment rejects donor posture hard-invariant schema material",
+      "surface": "Downstream capital deployment authority",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_b_family_no_source_repair_required",
+      "linked_bridge_record_ids": [
+        "ACATQ-0028",
+        "ACABC-0028"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_cognition_025"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/01_NORMATIVE_CORE.md",
+          "line_start": 72,
+          "line_end": 87
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 305,
+          "line_end": 320
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 163,
+          "line_end": 163
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+          "queue_record_id": "ACATQ-0028",
+          "comparison_record_id": "ACABC-0028",
+          "execution_priority": 45,
+          "bridge_record_count": 1,
+          "required_action": "write_new_test_family_before_code"
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/capital/__init__.py",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "src/nvda_desk/capital/authority.py",
+          "line_start": 1,
+          "line_end": 220
+        },
+        {
+          "path": "src/nvda_desk/contracts/capital.py",
+          "line_start": 1,
+          "line_end": 179
+        },
+        {
+          "path": "src/nvda_desk/domain/capital/__init__.py",
+          "line_start": 1,
+          "line_end": 1
+        },
+        {
+          "path": "src/nvda_desk/domain/capital/deployment.py",
+          "line_start": 1,
+          "line_end": 16
+        },
+        {
+          "path": "src/nvda_desk/services/capital_deployment_service.py",
+          "line_start": 1,
+          "line_end": 40
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 85
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+          "line_start": 1,
+          "line_end": 265
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+          "line_start": 1,
+          "line_end": 61
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py",
+          "line_start": 1,
+          "line_end": 18
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py",
+          "line_start": 1,
+          "line_end": 34
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py",
+          "line_start": 1,
+          "line_end": 124
+        },
+        {
+          "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py",
+          "line_start": 1,
+          "line_end": 65
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 446,
+          "line_end": 460
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2680,
+          "line_end": 2700
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3193,
+          "line_end": 3205
+        }
+      ],
+      "bounded_source_repair_summary": "No source code repair was required in row039. The new Tier B transform-boundary family passed against the native capital deployment authority files after proof-block and retained-registry admission.",
+      "proof_evidence": {
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/reports/capital_deployment_transform_boundary_final.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "3 passed",
+        "proof_block_status_path": "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/reports/capital_deployment_transform_boundary_proof_block_final.status",
+        "proof_block_result": "0",
+        "proof_block_summary": "3 passed",
+        "existing_capital_proof_block_status_path": "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/reports/downstream_capital_deployment_authority_surface_after_row039.status",
+        "existing_capital_proof_block_result": "0",
+        "existing_capital_proof_block_summary": "26 passed"
+      },
+      "active_behaviour_summary": "The current native downstream capital deployment authority consumes posture-related truth only as downstream pre-deployment/candidate material. It does not import or redeclare the donor PostureHardInvariantsSurface schema, does not expose donor hard-invariant payload fields on CapitalDeploymentAuthorityInput, and keeps posture hard-stop effects represented as the bounded downstream_pre_deployment block path.",
+      "closed_boundaries_confirmed": [
+        "opening placement mechanics remain closed",
+        "broker execution remains closed",
+        "runtime trading remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated Atlas slices not rebuilt",
+        "row040 opening placement readiness work not opened in row039"
+      ]
+    }
+  ]
+}

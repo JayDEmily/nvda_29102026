@@ -1,0 +1,73 @@
+{
+  "ledger_name": "capital_deployment_authority_runtime_reconciliation_ledger",
+  "status": "closed",
+  "parent_brief": {
+    "path": "var/audit/briefs/2026-04-28_CAPITAL_DEPLOYMENT_AUTHORITY_RUNTIME_RECONCILIATION.md",
+    "sha256": "4ae97a59292ae8f854be0df681911bc0fad36c85294b7890c2b82599f24475c2"
+  },
+  "scope": {
+    "new_atlas_tranche_opened": false,
+    "full_atlas_batch_processed": false,
+    "virtual_environment_created": false,
+    "dependency_installation_performed": false,
+    "target_surface": "capital deployment authority proof-hardening runtime reconciliation"
+  },
+  "plan": [
+    {
+      "step": 1,
+      "status": "closed",
+      "description": "Read active control and proof-hardening surfaces."
+    },
+    {
+      "step": 2,
+      "status": "closed",
+      "description": "Prove available execution surfaces."
+    },
+    {
+      "step": 3,
+      "status": "closed",
+      "description": "Run targeted capital deployment Tier A proof."
+    },
+    {
+      "step": 4,
+      "status": "closed",
+      "description": "Run full repo tests."
+    },
+    {
+      "step": 5,
+      "status": "closed",
+      "description": "Reconcile proof-hardening brief and ledger truth."
+    },
+    {
+      "step": 6,
+      "status": "closed",
+      "description": "Package reviewed repo zip."
+    }
+  ],
+  "verification": {
+    "targeted_capital_deployment_pytest": {
+      "command_equivalent": "pytest tests/tier_a/capital_deployment -q",
+      "execution_surface": "Python 3.13.5 in-kernel runtime with repo src on sys.path",
+      "result": "pass",
+      "passed": 8
+    },
+    "full_repo_pytest": {
+      "command_equivalent": "pytest tests -q -p no:cacheprovider --disable-warnings",
+      "execution_surface": "Python 3.13.5 in-kernel runtime with repo src on sys.path",
+      "result": "pass",
+      "passed": 133
+    },
+    "shell_default_python": "blocked_default_opt_pyvenv_site_startup_hung",
+    "usr_bin_python3": "starts_cleanly_but_missing_pytest_pydantic",
+    "no_virtual_environment_created": true,
+    "no_dependency_installation_performed": true
+  },
+  "closeout_state": {
+    "status": "closed",
+    "proof_hardening_runtime_blockers_resolved": true,
+    "promotion_ready": true,
+    "carry_forward_blockers": [
+      "broader Tier A presence-proof replacement remains future bounded work"
+    ]
+  }
+}

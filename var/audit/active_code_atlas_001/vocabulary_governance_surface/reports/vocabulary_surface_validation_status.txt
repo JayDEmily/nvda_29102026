@@ -1,0 +1,6 @@
+candidate_review_cli_pytest_status=0
+vocabulary_governance_conformance_candidate_pytest_status=0
+vocabulary_synonym_audit_clean_check_status=0
+git_diff_check_status=0
+surface_records_json_parse_status=0
+surface_validation_json_parse_status=0

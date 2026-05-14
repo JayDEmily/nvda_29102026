@@ -1,0 +1,36 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_proof_executor_runs_manifest_commands_without_shell_evaluation ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-4/test_proof_executor_runs_manif0')
+
+    def test_proof_executor_runs_manifest_commands_without_shell_evaluation(tmp_path: Path) -> None:
+        owned = tmp_path / "owned.txt"
+        owned.write_text("owned\n", encoding="utf-8")
+        _write_temp_proof_manifest(
+            tmp_path,
+            [
+                {
+                    "proof_block_id": "no_shell_block",
+                    "tier": "Tier B",
+                    "lifecycle": "test_only",
+                    "command": "python -c 'import sys; sys.exit(0)' ; touch shell_injection_marker.txt",
+                    "owns": ["owned.txt"],
+                }
+            ],
+        )
+    
+        completed = _run_temp_proof_executor(tmp_path, "--block", "no_shell_block")
+    
+        assert completed.returncode == 0
+>       assert not (tmp_path / "shell_injection_marker.txt").exists()
+E       AssertionError: assert not True
+E        +  where True = exists()
+E        +    where exists = (PosixPath('/tmp/pytest-of-root/pytest-4/test_proof_executor_runs_manif0') / 'shell_injection_marker.txt').exists
+
+tests/tier_b/proof_model/test_proof_executor_contract.py:407: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_runs_manifest_commands_without_shell_evaluation - AssertionError: assert not True
+ +  where True = exists()
+ +    where exists = (PosixPath('/tmp/pytest-of-root/pytest-4/test_proof_executor_runs_manif0') / 'shell_injection_marker.txt').exists
+1 failed in 3.81s

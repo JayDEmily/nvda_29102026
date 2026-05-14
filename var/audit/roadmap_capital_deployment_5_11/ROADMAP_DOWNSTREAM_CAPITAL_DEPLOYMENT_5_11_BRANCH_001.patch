@@ -1,0 +1,917 @@
+diff --git a/Makefile b/Makefile
+index 38c6052..cc6a040 100644
+--- a/Makefile
++++ b/Makefile
+@@ -30,6 +30,7 @@ help:
+ 		"persistence-ledger-check verify 5.16 persistence/ledger receipt surfaces" \
+ 			"support-spine-check verify prepared/DMP/review support-spine surfaces" \
+ 		"serial-spine-check verify serial desk-cognition spine surfaces" \
++			"capital-deployment-check verify 5.11 downstream capital deployment surfaces" \
+ 		"proof-block      run scripts/run_proof_block.py with BLOCK=<name>" \
+ 		"bridge-on        start AI patch bridge watcher" \
+ 		"bridge-off       stop AI patch bridge watcher" \
+@@ -193,6 +194,21 @@ live-inventory-check:
+ 	@grep -Fq "live_position_inventory_architecture_surface" config/proof_blocks.yaml
+ 	@echo "live position/inventory architecture surfaces present"
+ 
++.PHONY: capital-deployment-check
++capital-deployment-check:
++	@test -f src/nvda_desk/contracts/capital.py
++	@test -f src/nvda_desk/capital/authority.py
++	@test -f src/nvda_desk/services/capital_deployment_service.py
++	@test -f tests/tier_a/capital_deployment/test_capital_contract_models.py
++	@grep -Fq "CapitalDeploymentInputTrace" src/nvda_desk/contracts/capital.py
++	@grep -Fq "CapitalDeploymentReceipt" src/nvda_desk/contracts/capital.py
++	@grep -Fq "downstream_pre_deployment_allowed" src/nvda_desk/contracts/capital.py
++	@grep -Fq "build_capital_deployment_receipt" src/nvda_desk/capital/authority.py
++	@grep -Fq "evaluate_with_receipt" src/nvda_desk/services/capital_deployment_service.py
++	@grep -Fq "downstream_capital_deployment_authority_surface" config/proof_blocks.yaml
++	@grep -Fq "capital_deployment_traceability_hardening" config/retained_test_registry.yaml
++	@echo "downstream capital deployment authority surfaces present"
++
+ .PHONY: proof-block
+ proof-block:
+ 	@test -n "$(BLOCK)" || (echo "Usage: make proof-block BLOCK=<name>" >&2; exit 2)
+diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
+index 083dd7d..9711653 100644
+--- a/ROADMAP_LEDGER.md
++++ b/ROADMAP_LEDGER.md
+@@ -57,14 +57,14 @@ Stop conditions remain the real stop conditions in `AGENTS.md`: missing required
+ 
+ | Field | Value |
+ |---|---|
+-| Current phase | Authority decision boundary after bounded 5.13 live inventory opening |
++| Current phase | Authority decision boundary after bounded 5.11 downstream capital deployment opening |
+ | Selector | Existing Atlas roadmap evidence and this ledger; do **not** rebuild bridge/candidate queues |
+ | Current target tranche | `USER_AUTHORITY_DECISION_REQUIRED` |
+-| Current target architecture row | `authority_boundary_after_live_inventory_5_13` |
+-| Reason | User instruction `proceed` opened the recommended row `5.13 Live position and inventory architecture` for bounded read/write state and repository invariant hardening only. That bounded branch has now been acted on and no further held row is open without a new authority decision. |
+-| Next supporting tranche | `roadmap_downstream_capital_deployment_authority` / row `5.11` is the recommended next opening only if the user explicitly opens downstream capital deployment authority. |
+-| Explicit hold | Runtime trading behaviour, financial/risk/capital authority beyond 5.13 state readback, market/calendar runtime authority, dependency changes, external network/API client implementation, broker adapters, opening/placement, exit/close, and reserved architecture rows remain closed without explicit user authority. |
+-| Pause instruction | Stop at this authority boundary. Implementation must not start on 5.11 or any other held row until the user provides an explicit authority-opening instruction. |
++| Current target architecture row | `authority_boundary_after_capital_deployment_5_11` |
++| Reason | User instruction `proceed Next gate: 5.11 Downstream capital deployment authority` explicitly opened row `5.11` for bounded fresh-capital decision contract hardening only. That bounded branch has now been acted on and no further held row is open without a new authority decision. |
++| Next supporting tranche | `roadmap_parallel_risk_lane` / row `5.8` is the recommended next opening only if the user explicitly opens parallel-risk runtime authority. |
++| Explicit hold | Runtime trading behaviour beyond bounded 5.11 decision contracts, parallel-risk runtime authority, market/calendar runtime authority, dependency changes, external network/API client implementation, broker adapters, opening/placement, exit/close, and reserved architecture rows remain closed without explicit user authority. |
++| Pause instruction | Stop at this authority boundary. Implementation must not start on 5.8 or any other held row until the user provides an explicit authority-opening instruction. |
+ 
+ ---
+ 
+@@ -183,7 +183,7 @@ This table is the live state machine. Update it directly.
+ | Rank | Score | Tranche ID | Architecture row / surface | Records | Original roadmap posture | Live execution state | Current rule / next action | Latest evidence / receipt |
+ |---:|---:|---|---|---:|---|---|---|---|
+ | 1 | 40 | `roadmap_vocabulary_governance_interface` | `5.18 Vocabulary governance interface` | 10 | Selected candidate-only in Gate 6 | `acted_on_bounded` | Do not reselect as untouched. Reconcile only if new vocabulary sub-tranche is explicitly opened. | GitHub post-vocabulary workflow commit `6a03b2b`; vocabulary workflow admissions through `ATLAS_FEATURE_ADMISSION_025`; source roadmap: `var/audit/atlas_roadmap/2026-05-01_ATLAS_ROADMAP_CANDIDATE_SELECTION_RECEIPT.md`. |
+-| 2 | 33 | `roadmap_downstream_capital_deployment_authority` | Downstream capital deployment authority | 2 | High score but placeholder/runtime-sensitive | `hold_runtime_authority` | Hold until the user explicitly opens financial/runtime authority. Do not sneak through proof/ledger work. | Original roadmap score only; no runtime authority opened. |
++| 2 | 33 | `roadmap_downstream_capital_deployment_authority` | `5.11 Downstream capital deployment authority` | 2 | High score but placeholder/runtime-sensitive | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded capital-deployment sub-tranche or explicit downstream runtime authority. | `ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001`; receipt `var/audit/roadmap_capital_deployment_5_11/ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001_RECEIPT.md`; proof block `downstream_capital_deployment_authority_surface` proves explicit input traces, pre-deployment block precedence, decision receipt output, and no placement authority. |
+ | 3 | 29 | `roadmap_testing_proof_and_checkpoint_surfaces` | `5.17 Testing, proof, and checkpoint surfaces` | 72 | Not selected in Gate 6 due broader proof-surface blast radius | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded proof/checkpoint sub-tranche. | `ROADMAP_5_17_PROOF_CHECKPOINT_HARDENING_001`; receipt `var/audit/roadmap_5_17/ROADMAP_5_17_PROOF_CHECKPOINT_HARDENING_RECEIPT.md`; `--check-all` and `proof_executor_contract` proof block admitted and proven. |
+ | 4 | 29 | `roadmap_persistence_ledgers_and_receipts` | `5.16 Persistence, ledgers, and receipts` | 97 | Not selected in Gate 6; high governance leverage | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded persistence/ledger/receipt sub-tranche. | `ROADMAP_5_16_PERSISTENCE_LEDGER_RECEIPT_HARDENING_001`; receipt `var/audit/roadmap_5_16/ROADMAP_5_16_PERSISTENCE_LEDGER_RECEIPT_HARDENING_RECEIPT.md`; full pytest `296 passed`; named proof block `persistence_ledgers_receipts_surface` admitted and proven. |
+ | 5 | 27 | `roadmap_live_position_and_inventory_architecture` | `5.13 Live position and inventory architecture` | 38 | Placeholder; runtime/data sensitive | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded live-inventory/state sub-tranche or explicit downstream runtime authority. | `ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001`; receipt `var/audit/roadmap_live_inventory_5_13/ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001_RECEIPT.md`; proof block `live_position_inventory_architecture_surface` proves repo-native position/capital readback, declared-exposure-only summaries, explicit inventory receipt write, and no broker/candidate/raw-source import authority. |
+@@ -243,8 +243,8 @@ No remaining row in this ledger is both unacted and open. The remaining roadmap
+ 
+ | Tranche ID | Current state | Authority needed before selection |
+ |---|---|---|
+-| `roadmap_downstream_capital_deployment_authority` | `hold_runtime_authority` | financial/capital deployment authority |
+-| `roadmap_live_position_and_inventory_architecture` | `hold_runtime_authority` | live inventory/data authority |
++| `roadmap_downstream_capital_deployment_authority` | `acted_on_bounded` | reopen only with explicit downstream capital authority |
++| `roadmap_live_position_and_inventory_architecture` | `acted_on_bounded` | reopen only with explicit live inventory/data authority |
+ | `roadmap_parallel_risk_lane` | `hold_runtime_authority` | risk/runtime lane authority |
+ | `roadmap_playbook_library_architecture` | `hold_reserved` | architecture reservation change |
+ | `roadmap_opening_architecture_and_placement_readiness` | `hold_runtime_authority` | trading/opening placement authority |
+@@ -272,6 +272,7 @@ Append one row per real pass. Keep this compact; detailed proof belongs in recei
+ | 2026-05-09 | `HELD_ROW_READ_SET_AND_PROOF_MATRIX_001` | planning/read-set matrix | Matrixed eight held rows with blueprint anchors, authority phrases, candidate read sets, file existence, line counts, SHA256, and proof gates | row matrix `var/audit/roadmap_planning/HELD_ROW_READ_SET_AND_PROOF_MATRIX_001_ROW_MATRIX.tsv`; file ledger `var/audit/roadmap_planning/HELD_ROW_READ_SET_AND_PROOF_MATRIX_001_FILE_LEDGER.tsv`; receipt `var/audit/roadmap_planning/HELD_ROW_READ_SET_AND_PROOF_MATRIX_001_RECEIPT.md` | continue planning queue to next authority-opening brief |
+ | 2026-05-09 | `NEXT_AUTHORITY_OPENING_BRIEF_001` | authority decision brief | Prepared recommended next opening: row `5.13` live position/inventory architecture, with exact authority phrase, gate, likely touched files, prohibited boundaries, and proof target | brief `docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md`; receipt `var/audit/roadmap_planning/NEXT_AUTHORITY_OPENING_BRIEF_001_RECEIPT.md` | `USER_AUTHORITY_DECISION_REQUIRED`; no implementation authority open |
+ | 2026-05-09 | `ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001` | `5.13` / `roadmap_live_position_and_inventory_architecture` | `hold_runtime_authority` → `acted_on_bounded` for bounded read/write state and repository invariant hardening only | baseline I1 proof `7 passed`; targeted I1 proof `15 passed`; broad downstream/persistence/capital proof `44 passed`; proof block `live_position_inventory_architecture_surface` `15 passed`; `proof_blocks --check-all` `PASS count=9`; full pytest attempted and stopped with pre-existing vocabulary synonym escalation from planning docs (`322 passed`, `1 failed`); receipt `var/audit/roadmap_live_inventory_5_13/ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001_RECEIPT.md` | `USER_AUTHORITY_DECISION_REQUIRED`; recommended next opening is `5.11` only if explicitly authorised |
++| 2026-05-09 | `ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001` | `5.11` / `roadmap_downstream_capital_deployment_authority` | `hold_runtime_authority` → `acted_on_bounded` for bounded fresh-capital decision contract and receipt hardening only | baseline capital deployment proof `16 passed`; targeted capital deployment proof `21 passed`; broad capital/downstream/persistence proof `35 passed`; proof block `downstream_capital_deployment_authority_surface` `21 passed`; `proof_blocks --check-all` `PASS count=10`; full pytest attempted and stopped with pre-existing vocabulary synonym escalation from planning docs (`381 passed`, `1 failed`); receipt `var/audit/roadmap_capital_deployment_5_11/ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001_RECEIPT.md` | `USER_AUTHORITY_DECISION_REQUIRED`; recommended next opening is `5.8` only if explicitly authorised |
+ 
+ ---
+ 
+diff --git a/config/proof_blocks.yaml b/config/proof_blocks.yaml
+index 399e68f..b58c9a0 100644
+--- a/config/proof_blocks.yaml
++++ b/config/proof_blocks.yaml
+@@ -176,3 +176,24 @@ proof_blocks:
+       - config/retained_test_registry.yaml
+       - docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
++
++  - proof_block_id: downstream_capital_deployment_authority_surface
++    tier: Tier A
++    lifecycle: admitted_for_roadmap_downstream_capital_deployment_5_11_branch_001
++    command: >-
++      python -m pytest tests/tier_a/capital_deployment
++    owns:
++      - src/nvda_desk/contracts/capital.py
++      - src/nvda_desk/capital/authority.py
++      - src/nvda_desk/domain/capital/deployment.py
++      - src/nvda_desk/services/capital_deployment_service.py
++      - src/nvda_desk/packets/dmp_packets.py
++      - tests/tier_a/capital_deployment/test_capital_contract_models.py
++      - tests/tier_a/capital_deployment/test_capital_authority_service_surface.py
++      - tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py
++      - tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py
++      - tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py
++      - tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py
++      - config/retained_test_registry.yaml
++      - docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
++      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+diff --git a/config/retained_test_registry.yaml b/config/retained_test_registry.yaml
+index d3e3f0e..46dad73 100644
+--- a/config/retained_test_registry.yaml
++++ b/config/retained_test_registry.yaml
+@@ -2738,3 +2738,23 @@ tier_a_registry_reconciliation_inventory:
+     registry_status: registered_for_live_position_inventory_architecture_surface
+   - path: tests/tier_a/persistence/test_capital_state_repository_surface.py
+     registry_status: registered_for_live_position_inventory_architecture_surface
++
++- test_family_id: capital_deployment_traceability_hardening
++  native_status: retained_seed_tier_a
++  bounded_family: capital_deployment
++  native_test_path: tests/tier_a/capital_deployment/test_capital_contract_models.py
++  migration_status: native_test_hardened
++  normative_basis:
++  - docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md
++  - docs/08_TESTING_AND_PROMOTION_CORE.md
++  architecture_basis:
++  - contracts/capital.py
++  - capital/authority.py
++  - services/capital_deployment_service.py
++  code_reread_completed: true
++  docstring_reread_completed: true
++  docstring_alignment_status: 5.11 hardening requires explicit input trace tokens and receipt output without opening placement mechanics.
++  native_reauthor_required: false
++  admission_reason: Downstream capital deployment authority must identify serial, pre-deployment, parallel-risk, final-risk, capital-state, and bounded-policy inputs before emitting deploy/stand-down truth.
++  forbidden_carry_forward: Broker execution, opening placement mechanics, candidate formation, serial-stage decisions, parallel-risk generation, and hidden portfolio mutation must not enter this proof family.
++  notes: Registered by ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001 as a bounded authority-opening proof family.
+diff --git a/docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md b/docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+index 97fa4fb..37c36f1 100644
+--- a/docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
++++ b/docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+@@ -256,3 +256,11 @@ Required proof: serial spine tests must prove the governed six-stage order, reje
+ - Allowed changes: live-inventory contract models, repository identifier-record readbacks, live-inventory service snapshot construction, Tier A repository/downstream tests, proof-block manifests, Makefile checks, retained-test registry entries, receipts, and the mutable roadmap ledger.
+ - Prohibited changes: broker placement, order execution, new candidate formation, raw signal preparation, capital deployment sizing, ungoverned capital mutation, dependency files, original Atlas/Bridge JSON, generated Atlas slices, and historical receipts.
+ - Completion claim limit: this branch may prove live inventory state/readback and receipt hardening only. It must not claim broker placement, capital deployment, exit/close, or live trading behaviour.
++
++## ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001 — bounded 5.11 authority opening
++
++- Scope: row `5.11 Downstream capital deployment authority` is open only for bounded fresh-capital decision contract hardening.
++- Allowed changes: capital contract models, capital authority/service/domain helpers, capital deployment Tier A tests, capital decision DMP packet tests, proof-block manifests, Makefile checks, retained-test registry entries, receipts, and the mutable roadmap ledger.
++- Prohibited changes: opening placement mechanics, broker placement, order execution, candidate formation, serial-stage decisions, parallel-risk generation, live API/network clients, dependency files, original Atlas/Bridge JSON, generated Atlas slices, and historical receipts.
++- Required proof: capital authority inputs must carry explicit serial-candidate, downstream-pre-deployment, parallel-risk, final-risk, capital-state, and bounded-policy trace tokens; downstream pre-deployment blocks must dominate sizing; decisions and receipts must identify consumed inputs and emitted deploy/stand-down truth without opening placement authority.
++- Completion claim limit: this branch may prove bounded 5.11 capital deployment decision and receipt hardening only. It must not claim broker execution, opening placement readiness, parallel-risk implementation, candidate formation, or full live trading behaviour.
+diff --git a/docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md b/docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+index ee7a524..8686a5b 100644
+--- a/docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
++++ b/docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+@@ -54,3 +54,11 @@ The overlay opens no live broker, order, position-sizing, capital-deployment, li
+ - Exposure rule: exposure summaries may include only exposure values already declared in stored position payloads; the live-inventory service must not invent valuation or risk policy from quantity alone.
+ - Bootstrap/fallback rule: without repository state, the lawful fallback remains an architecture-only snapshot over explicit `live_ids` with no position payload, capital state, or invented exposure.
+ - Traceability reference: `ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001` and `var/audit/roadmap_live_inventory_5_13/ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001_RECEIPT.md`.
++
++## ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001 — capital deployment ownership supplement
++
++- Authoritative writer: `src/nvda_desk/capital/authority.py` owns bounded downstream capital deployment decisions and capital-deployment receipt construction for row `5.11`.
++- Primary readers: downstream opening architecture, persistence/receipt ledgers, and review/replay may consume the capital deployment decision and receipt output.
++- Lawful inputs: serial candidate material, downstream pre-deployment allow/block truth, parallel-risk packet identity, final-risk receipt identity, capital-state snapshot identity, bounded deployment policy identity, coefficient/modifier bounds, and temporal context.
++- Forbidden mixing: capital deployment authority must not form candidates, generate parallel risk, perform serial-stage decisions, open broker placement, mutate live inventory, or treat opening mechanics as part of the capital decision.
++- Traceability rule: every deploy/stand-down decision must carry an input trace that names the serial candidate, pre-deployment receipt, final-risk receipt, capital-state snapshot, bounded policy, and any parallel-risk packet consumed.
+diff --git a/src/nvda_desk/capital/authority.py b/src/nvda_desk/capital/authority.py
+index a70c98f..3e156d1 100644
+--- a/src/nvda_desk/capital/authority.py
++++ b/src/nvda_desk/capital/authority.py
+@@ -6,11 +6,17 @@ from nvda_desk.contracts.capital import (
+     CapitalDeploymentAuthorityAction,
+     CapitalDeploymentAuthorityInput,
+     CapitalDeploymentDecision,
++    CapitalDeploymentInputTrace,
++    CapitalDeploymentReceipt,
+ )
+ 
+ _CONSUMED_INPUTS = [
+     "serial_candidate",
++    "downstream_pre_deployment_result",
+     "parallel_risk_envelope",
++    "final_risk_product",
++    "capital_state",
++    "bounded_deployment_policy",
+     "coefficient_modifier_authority",
+     "temporal_context",
+ ]
+@@ -19,9 +25,28 @@ _CONSUMED_INPUTS = [
+ class CapitalDeploymentAuthorityService:
+     """Own bounded downstream capital-deployment authority evaluation."""
+ 
+-    def evaluate(self, context: CapitalDeploymentAuthorityInput) -> CapitalDeploymentDecision:
++    def evaluate(
++        self,
++        context: CapitalDeploymentAuthorityInput,
++        *,
++        receipt_id: str | None = None,
++    ) -> CapitalDeploymentDecision:
+         """Return one bounded downstream capital deployment decision."""
+-        return evaluate_capital_deployment(context)
++        return evaluate_capital_deployment(context, receipt_id=receipt_id)
++
++    def evaluate_with_receipt(
++        self,
++        context: CapitalDeploymentAuthorityInput,
++        *,
++        receipt_id: str,
++    ) -> CapitalDeploymentReceipt:
++        """Return one receipt tying the decision to its consumed inputs."""
++        decision = self.evaluate(context, receipt_id=receipt_id)
++        return build_capital_deployment_receipt(
++            receipt_id=receipt_id,
++            context=context,
++            decision=decision,
++        )
+ 
+ 
+ def _bounded_deployable_pct(context: CapitalDeploymentAuthorityInput) -> float:
+@@ -34,12 +59,27 @@ def _authorised_notional(context: CapitalDeploymentAuthorityInput, deployable_pc
+     return round(context.available_capital_usd * (deployable_pct / 100.0), 2)
+ 
+ 
++def _input_trace(context: CapitalDeploymentAuthorityInput) -> CapitalDeploymentInputTrace:
++    """Return the explicit input trace consumed by capital deployment authority."""
++    return CapitalDeploymentInputTrace(
++        serial_candidate_id=context.serial_candidate_id,
++        downstream_pre_deployment_receipt_id=context.downstream_pre_deployment_receipt_id,
++        parallel_risk_packet_id=context.parallel_risk_packet_id,
++        final_risk_receipt_id=context.final_risk_receipt_id,
++        capital_state_snapshot_id=context.capital_state_snapshot_id,
++        bounded_policy_id=context.bounded_policy_id,
++        consumed_inputs=list(_CONSUMED_INPUTS),
++    )
++
++
+ def _decision(
++    context: CapitalDeploymentAuthorityInput,
+     *,
+     action: CapitalDeploymentAuthorityAction,
+     deployable_pct: float = 0.0,
+     notional_usd: float = 0.0,
+     rationale: list[str],
++    receipt_id: str | None = None,
+ ) -> CapitalDeploymentDecision:
+     """Return an auditable decision carrying the closed Sequence 9 action vocabulary."""
+     return CapitalDeploymentDecision(
+@@ -48,34 +88,50 @@ def _decision(
+         authorised_notional_usd=notional_usd,
+         consumed_inputs=list(_CONSUMED_INPUTS),
+         rationale=rationale,
++        input_trace=_input_trace(context),
++        capital_deployment_receipt_id=receipt_id,
+     )
+ 
+ 
+ def evaluate_capital_deployment(
+     context: CapitalDeploymentAuthorityInput,
++    *,
++    receipt_id: str | None = None,
+ ) -> CapitalDeploymentDecision:
+     """Return one bounded downstream capital deployment decision.
+ 
+-    Precedence is deterministic: parallel/final risk hard blocks dominate,
+-    serial ineligibility produces no-trade, risk or coefficient compression
+-    reduces deployment, temporal elevated event risk reduces deployment, and
+-    only a clean bounded context continues. Serial confidence is deliberately
+-    not used for sizing.
++    Precedence is deterministic: downstream pre-deployment blocks dominate,
++    parallel/final risk hard blocks dominate, serial ineligibility produces
++    no-trade, risk or coefficient compression reduces deployment, temporal
++    elevated event risk reduces deployment, and only a clean bounded context
++    continues. Serial confidence is deliberately not used for sizing.
+     """
++    if not context.downstream_pre_deployment_allowed:
++        return _decision(
++            context,
++            action=CapitalDeploymentAuthorityAction.BLOCK,
++            rationale=["downstream_pre_deployment_blocked_candidate"],
++            receipt_id=receipt_id,
++        )
++
+     if (
+         context.final_risk_action != "proceed"
+         or context.parallel_risk_envelope_state == "block"
+         or bool(context.parallel_risk_hard_blocks)
+     ):
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.BLOCK,
+             rationale=["parallel_or_final_risk_block_dominates"],
++            receipt_id=receipt_id,
+         )
+ 
+     if not context.serial_candidate_eligible:
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.NO_TRADE,
+             rationale=["serial_candidate_not_eligible"],
++            receipt_id=receipt_id,
+         )
+ 
+     deployable_pct = _bounded_deployable_pct(context)
+@@ -83,24 +139,30 @@ def evaluate_capital_deployment(
+ 
+     if deployable_pct <= 0.0 or authorised <= 0.0:
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.NO_TRADE,
+             rationale=["no_positive_downstream_deployment_authorised"],
++            receipt_id=receipt_id,
+         )
+ 
+     if deployable_pct < context.requested_deployable_pct:
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.REDUCE,
+             deployable_pct=deployable_pct,
+             notional_usd=authorised,
+             rationale=["parallel_risk_envelope_reduced_requested_deployment"],
++            receipt_id=receipt_id,
+         )
+ 
+     if deployable_pct < context.coefficient_min_deployable_floor_pct:
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.REDUCE,
+             deployable_pct=deployable_pct,
+             notional_usd=authorised,
+             rationale=["coefficient_floor_not_satisfied"],
++            receipt_id=receipt_id,
+         )
+ 
+     if context.parallel_risk_caution_flags or context.parallel_risk_envelope_state in {
+@@ -108,23 +170,51 @@ def evaluate_capital_deployment(
+         "caution",
+     }:
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.REDUCE,
+             deployable_pct=deployable_pct,
+             notional_usd=authorised,
+             rationale=["parallel_risk_caution_requires_reduction"],
++            receipt_id=receipt_id,
+         )
+ 
+     if context.temporal_event_window_active and context.temporal_event_risk == "elevated":
+         return _decision(
++            context,
+             action=CapitalDeploymentAuthorityAction.REDUCE,
+             deployable_pct=deployable_pct,
+             notional_usd=authorised,
+             rationale=["temporal_event_window_elevated_risk"],
++            receipt_id=receipt_id,
+         )
+ 
+     return _decision(
++        context,
+         action=CapitalDeploymentAuthorityAction.CONTINUE,
+         deployable_pct=deployable_pct,
+         notional_usd=authorised,
+         rationale=["serial_parallel_coefficient_and_temporal_inputs_allow_continuation"],
++        receipt_id=receipt_id,
++    )
++
++
++def build_capital_deployment_receipt(
++    *,
++    receipt_id: str,
++    context: CapitalDeploymentAuthorityInput,
++    decision: CapitalDeploymentDecision,
++) -> CapitalDeploymentReceipt:
++    """Return a receipt without opening placement mechanics or broker execution."""
++    trace = decision.input_trace or _input_trace(context)
++    return CapitalDeploymentReceipt(
++        receipt_id=receipt_id,
++        decision=decision,
++        input_trace=trace,
++        emitted_output={
++            "action": decision.action.value,
++            "authorised_deployable_pct": decision.authorised_deployable_pct,
++            "authorised_notional_usd": decision.authorised_notional_usd,
++            "rationale": list(decision.rationale),
++        },
++        placement_authority_opened=False,
+     )
+diff --git a/src/nvda_desk/contracts/capital.py b/src/nvda_desk/contracts/capital.py
+index a7b65f2..c03ef64 100644
+--- a/src/nvda_desk/contracts/capital.py
++++ b/src/nvda_desk/contracts/capital.py
+@@ -3,8 +3,9 @@
+ from __future__ import annotations
+ 
+ from enum import StrEnum
++from typing import Any
+ 
+-from pydantic import BaseModel, ConfigDict, Field, model_validator
++from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+ 
+ CAPITAL_DEPLOYMENT_DECISION_DATASCHEMA = (
+     "urn:nvda:schema:capital_deployment_authority.decision:1.0.0"
+@@ -20,32 +21,85 @@ class CapitalDeploymentAuthorityAction(StrEnum):
+     BLOCK = "block"
+ 
+ 
++class CapitalDeploymentInputTrace(BaseModel):
++    """Receipt trace for the inputs consumed by capital deployment authority."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    serial_candidate_id: str
++    downstream_pre_deployment_receipt_id: str
++    parallel_risk_packet_id: str | None = None
++    final_risk_receipt_id: str
++    capital_state_snapshot_id: str
++    bounded_policy_id: str
++    consumed_inputs: list[str] = Field(default_factory=list)
++
++
+ class CapitalDeploymentAuthorityInput(BaseModel):
+     """Inputs consumed by downstream capital deployment authority.
+ 
+-    The model consumes preserved serial-candidate truth, parallel-risk envelope
+-    truth, coefficient/modifier bounds, and temporal/context signals. Serial
+-    confidence is accepted only as auditable candidate metadata and is not used
+-    as a position-size or notional-sizing input.
++    The model consumes preserved serial-candidate truth, downstream
++    pre-deployment truth, parallel-risk envelope truth, final-risk truth,
++    explicit capital state, bounded policy, coefficient/modifier bounds, and
++    temporal/context signals. Serial confidence is accepted only as auditable
++    candidate metadata and is not used as a position-size or notional-sizing
++    input.
+     """
+ 
+     model_config = ConfigDict(extra="forbid")
+ 
+-    final_risk_action: str = "proceed"
+-    serial_candidate_id: str = "unknown"
++    final_risk_action: str
++    final_risk_receipt_id: str
++    serial_candidate_id: str
+     serial_candidate_eligible: bool = True
+     serial_confidence: float | None = Field(default=None, ge=0.0, le=1.0)
++    downstream_pre_deployment_allowed: bool = True
++    downstream_pre_deployment_receipt_id: str
++    parallel_risk_packet_id: str | None = None
+     parallel_risk_envelope_state: str = "broad"
+     parallel_risk_hard_blocks: list[str] = Field(default_factory=list)
+     parallel_risk_caution_flags: list[str] = Field(default_factory=list)
+     coefficient_min_deployable_floor_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+     temporal_event_window_active: bool = False
+     temporal_event_risk: str = "normal"
+-    available_capital_usd: float = Field(default=0.0, ge=0.0)
+-    requested_deployable_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+-    max_deployable_pct: float = Field(default=0.0, ge=0.0, le=100.0)
++    capital_state_snapshot_id: str
++    available_capital_usd: float = Field(ge=0.0)
++    bounded_policy_id: str
++    requested_deployable_pct: float = Field(ge=0.0, le=100.0)
++    max_deployable_pct: float = Field(ge=0.0, le=100.0)
+     inventory_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+ 
++    @field_validator(
++        "final_risk_action",
++        "final_risk_receipt_id",
++        "serial_candidate_id",
++        "downstream_pre_deployment_receipt_id",
++        "capital_state_snapshot_id",
++        "bounded_policy_id",
++    )
++    @classmethod
++    def validate_required_token(cls, value: str) -> str:
++        """Require trace tokens to be explicit and non-empty."""
++        token = str(value).strip()
++        if not token:
++            raise ValueError("capital deployment authority trace tokens must be non-empty")
++        if token == "unknown":
++            raise ValueError("capital deployment authority trace tokens must not be 'unknown'")
++        return token
++
++    @field_validator("parallel_risk_packet_id")
++    @classmethod
++    def validate_optional_trace_token(cls, value: str | None) -> str | None:
++        """Require optional trace tokens to be non-empty when present."""
++        if value is None:
++            return None
++        token = str(value).strip()
++        if not token:
++            raise ValueError("optional trace tokens must be non-empty when present")
++        if token == "unknown":
++            raise ValueError("optional trace tokens must not be 'unknown'")
++        return token
++
+     @model_validator(mode="after")
+     def validate_deployable_floor(self) -> "CapitalDeploymentAuthorityInput":
+         """Ensure the coefficient floor does not exceed the risk-authorised cap."""
+@@ -70,3 +124,17 @@ class CapitalDeploymentDecision(BaseModel):
+     authorised_notional_usd: float = Field(default=0.0, ge=0.0)
+     consumed_inputs: list[str] = Field(default_factory=list)
+     rationale: list[str] = Field(default_factory=list)
++    input_trace: CapitalDeploymentInputTrace | None = None
++    capital_deployment_receipt_id: str | None = None
++
++
++class CapitalDeploymentReceipt(BaseModel):
++    """Receipt tying one capital deployment authority decision to its inputs."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    receipt_id: str
++    decision: CapitalDeploymentDecision
++    input_trace: CapitalDeploymentInputTrace
++    emitted_output: dict[str, Any]
++    placement_authority_opened: bool = False
+diff --git a/src/nvda_desk/domain/capital/deployment.py b/src/nvda_desk/domain/capital/deployment.py
+index dbe40b8..2fd23dd 100644
+--- a/src/nvda_desk/domain/capital/deployment.py
++++ b/src/nvda_desk/domain/capital/deployment.py
+@@ -6,7 +6,11 @@ from nvda_desk.capital.authority import evaluate_capital_deployment
+ from nvda_desk.contracts.capital import CapitalDeploymentAuthorityInput
+ 
+ 
+-def compute_deployment_plan(context: CapitalDeploymentAuthorityInput) -> dict:
++def compute_deployment_plan(
++    context: CapitalDeploymentAuthorityInput,
++    *,
++    receipt_id: str | None = None,
++) -> dict:
+     """Return one serialisable downstream capital deployment plan."""
+-    decision = evaluate_capital_deployment(context)
++    decision = evaluate_capital_deployment(context, receipt_id=receipt_id)
+     return decision.model_dump(mode="json")
+diff --git a/src/nvda_desk/services/capital_deployment_service.py b/src/nvda_desk/services/capital_deployment_service.py
+index 8e16b18..615d4c7 100644
+--- a/src/nvda_desk/services/capital_deployment_service.py
++++ b/src/nvda_desk/services/capital_deployment_service.py
+@@ -2,16 +2,39 @@
+ 
+ from __future__ import annotations
+ 
+-from nvda_desk.capital.authority import evaluate_capital_deployment
++from nvda_desk.capital.authority import (
++    build_capital_deployment_receipt,
++    evaluate_capital_deployment,
++)
+ from nvda_desk.contracts.capital import (
+     CapitalDeploymentAuthorityInput,
+     CapitalDeploymentDecision,
++    CapitalDeploymentReceipt,
+ )
+ 
+ 
+ class CapitalDeploymentService:
+     """Coordinate capital deployment without absorbing authority logic."""
+ 
+-    def evaluate(self, context: CapitalDeploymentAuthorityInput) -> CapitalDeploymentDecision:
++    def evaluate(
++        self,
++        context: CapitalDeploymentAuthorityInput,
++        *,
++        receipt_id: str | None = None,
++    ) -> CapitalDeploymentDecision:
+         """Return one capital deployment decision."""
+-        return evaluate_capital_deployment(context)
++        return evaluate_capital_deployment(context, receipt_id=receipt_id)
++
++    def evaluate_with_receipt(
++        self,
++        context: CapitalDeploymentAuthorityInput,
++        *,
++        receipt_id: str,
++    ) -> CapitalDeploymentReceipt:
++        """Return one decision receipt without opening placement mechanics."""
++        decision = self.evaluate(context, receipt_id=receipt_id)
++        return build_capital_deployment_receipt(
++            receipt_id=receipt_id,
++            context=context,
++            decision=decision,
++        )
+diff --git a/tests/tier_a/capital_deployment/test_capital_authority_service_surface.py b/tests/tier_a/capital_deployment/test_capital_authority_service_surface.py
+index e6139dd..1c39c78 100644
+--- a/tests/tier_a/capital_deployment/test_capital_authority_service_surface.py
++++ b/tests/tier_a/capital_deployment/test_capital_authority_service_surface.py
+@@ -4,6 +4,8 @@ import importlib
+ 
+ import pytest
+ 
++from nvda_desk.contracts.capital import CapitalDeploymentAuthorityInput
++
+ 
+ def _require_module(module_path: str):
+     try:
+@@ -18,10 +20,39 @@ def _require_attr(module, attr_name: str):
+     return getattr(module, attr_name)
+ 
+ 
++def _input() -> CapitalDeploymentAuthorityInput:
++    return CapitalDeploymentAuthorityInput(
++        final_risk_action="proceed",
++        final_risk_receipt_id="final-risk-service-001",
++        serial_candidate_id="candidate-service-001",
++        downstream_pre_deployment_allowed=True,
++        downstream_pre_deployment_receipt_id="pre-deployment-service-001",
++        parallel_risk_packet_id="parallel-risk-service-001",
++        capital_state_snapshot_id="capital-state-service-001",
++        available_capital_usd=10_000.0,
++        bounded_policy_id="bounded-policy-service-001",
++        requested_deployable_pct=5.0,
++        max_deployable_pct=5.0,
++    )
++
++
+ def test_capital_authority_service_surfaces_are_present() -> None:
+     authority = _require_module("nvda_desk.capital.authority")
+     orchestration = _require_module("nvda_desk.services.capital_deployment_service")
+ 
+     _require_attr(authority, "CapitalDeploymentAuthorityService")
+     _require_attr(authority, "evaluate_capital_deployment")
++    _require_attr(authority, "build_capital_deployment_receipt")
+     _require_attr(orchestration, "CapitalDeploymentService")
++
++
++def test_capital_authority_service_emits_receipt_without_placement_authority() -> None:
++    orchestration = _require_module("nvda_desk.services.capital_deployment_service")
++    service = orchestration.CapitalDeploymentService()
++    receipt = service.evaluate_with_receipt(_input(), receipt_id="capital-service-receipt-001")
++
++    assert receipt.receipt_id == "capital-service-receipt-001"
++    assert receipt.decision.capital_deployment_receipt_id == "capital-service-receipt-001"
++    assert receipt.input_trace.serial_candidate_id == "candidate-service-001"
++    assert receipt.placement_authority_opened is False
++    assert "authorised_notional_usd" in receipt.emitted_output
+diff --git a/tests/tier_a/capital_deployment/test_capital_contract_models.py b/tests/tier_a/capital_deployment/test_capital_contract_models.py
+index e42502a..62fd75d 100644
+--- a/tests/tier_a/capital_deployment/test_capital_contract_models.py
++++ b/tests/tier_a/capital_deployment/test_capital_contract_models.py
+@@ -10,6 +10,7 @@ from nvda_desk.contracts.capital import (
+     CapitalDeploymentAuthorityAction,
+     CapitalDeploymentAuthorityInput,
+     CapitalDeploymentDecision,
++    CapitalDeploymentReceipt,
+ )
+ from nvda_desk.contracts.downstream import (
+     DownstreamOpeningSnapshot,
+@@ -18,31 +19,48 @@ from nvda_desk.contracts.downstream import (
+ )
+ 
+ 
++def _input(**overrides: object) -> CapitalDeploymentAuthorityInput:
++    payload = {
++        "final_risk_action": "proceed",
++        "final_risk_receipt_id": "final-risk-receipt-001",
++        "serial_candidate_id": "candidate-001",
++        "serial_candidate_eligible": True,
++        "serial_confidence": 0.72,
++        "downstream_pre_deployment_allowed": True,
++        "downstream_pre_deployment_receipt_id": "pre-deployment-allow-001",
++        "parallel_risk_packet_id": "parallel-risk-packet-001",
++        "parallel_risk_envelope_state": "broad",
++        "capital_state_snapshot_id": "capital-snapshot-001",
++        "available_capital_usd": 250_000.0,
++        "bounded_policy_id": "bounded-policy-001",
++        "requested_deployable_pct": 40.0,
++        "max_deployable_pct": 12.5,
++        "inventory_pct": 75.0,
++    }
++    payload.update(overrides)
++    return CapitalDeploymentAuthorityInput(**payload)
++
++
+ def test_capital_contract_models_enforce_explicit_capital_state_and_policy_bounds() -> None:
+     """Capital authority input requires bounded capital state and deployment policy."""
+-    input_model = CapitalDeploymentAuthorityInput(
+-        final_risk_action="proceed",
+-        serial_candidate_id="candidate-001",
+-        serial_candidate_eligible=True,
+-        serial_confidence=0.72,
+-        parallel_risk_envelope_state="broad",
+-        available_capital_usd=250_000.0,
+-        requested_deployable_pct=40.0,
+-        max_deployable_pct=12.5,
+-        inventory_pct=75.0,
+-    )
++    input_model = _input()
+     decision = CapitalDeploymentDecision(
+         action=CapitalDeploymentAuthorityAction.REDUCE,
+         authorised_deployable_pct=12.5,
+         authorised_notional_usd=31_250.0,
+         consumed_inputs=[
+             "serial_candidate",
++            "downstream_pre_deployment_result",
+             "parallel_risk_envelope",
++            "final_risk_product",
++            "capital_state",
++            "bounded_deployment_policy",
+             "coefficient_modifier_authority",
+             "temporal_context",
+         ],
+         rationale=["bounded capital authority"],
+     )
++    assert input_model.capital_state_snapshot_id == "capital-snapshot-001"
+     assert input_model.available_capital_usd == 250_000.0
+     assert input_model.requested_deployable_pct == 40.0
+     assert input_model.max_deployable_pct == 12.5
+@@ -51,14 +69,9 @@ def test_capital_contract_models_enforce_explicit_capital_state_and_policy_bound
+     assert decision.authorised_deployable_pct == 12.5
+     assert decision.authorised_notional_usd == 31_250.0
+     with pytest.raises(ValidationError):
+-        CapitalDeploymentAuthorityInput(final_risk_action="proceed", available_capital_usd=-1.0)
++        _input(available_capital_usd=-1.0)
+     with pytest.raises(ValidationError):
+-        CapitalDeploymentAuthorityInput(
+-            final_risk_action="proceed",
+-            available_capital_usd=100_000.0,
+-            requested_deployable_pct=101.0,
+-            max_deployable_pct=10.0,
+-        )
++        _input(requested_deployable_pct=101.0, max_deployable_pct=10.0)
+     with pytest.raises(ValidationError):
+         CapitalDeploymentDecision(
+             action=CapitalDeploymentAuthorityAction.CONTINUE,
+@@ -67,19 +80,33 @@ def test_capital_contract_models_enforce_explicit_capital_state_and_policy_bound
+         )
+ 
+ 
++def test_capital_input_requires_traceable_preconditions() -> None:
++    """Fresh-capital authority may not evaluate anonymous preconditions."""
++    with pytest.raises(ValidationError):
++        _input(serial_candidate_id="unknown")
++    with pytest.raises(ValidationError):
++        _input(downstream_pre_deployment_receipt_id="")
++    with pytest.raises(ValidationError):
++        _input(final_risk_receipt_id="unknown")
++    with pytest.raises(ValidationError):
++        _input(capital_state_snapshot_id="")
++    with pytest.raises(ValidationError):
++        _input(bounded_policy_id="unknown")
++
++
+ def test_capital_authority_sizes_from_explicit_capital_state_not_constant_notional() -> None:
+     """Capital authority sizes from supplied capital state and bounded policy."""
+     first = evaluate_capital_deployment(
+-        CapitalDeploymentAuthorityInput(
+-            final_risk_action="proceed",
++        _input(
++            capital_state_snapshot_id="capital-snapshot-large",
+             available_capital_usd=250_000.0,
+             requested_deployable_pct=12.0,
+             max_deployable_pct=12.0,
+         )
+     )
+     second = evaluate_capital_deployment(
+-        CapitalDeploymentAuthorityInput(
+-            final_risk_action="proceed",
++        _input(
++            capital_state_snapshot_id="capital-snapshot-small",
+             available_capital_usd=40_000.0,
+             requested_deployable_pct=12.0,
+             max_deployable_pct=12.0,
+@@ -97,12 +124,7 @@ def test_capital_authority_sizes_from_explicit_capital_state_not_constant_notion
+ def test_capital_authority_blocks_when_final_risk_does_not_proceed() -> None:
+     """Final risk non-proceed action blocks deployment regardless of capital state."""
+     decision = evaluate_capital_deployment(
+-        CapitalDeploymentAuthorityInput(
+-            final_risk_action="block",
+-            available_capital_usd=250_000.0,
+-            requested_deployable_pct=50.0,
+-            max_deployable_pct=12.0,
+-        )
++        _input(final_risk_action="block", requested_deployable_pct=50.0, max_deployable_pct=12.0)
+     )
+     assert decision.action is CapitalDeploymentAuthorityAction.BLOCK
+     assert decision.authorised_deployable_pct == 0.0
+@@ -110,6 +132,35 @@ def test_capital_authority_blocks_when_final_risk_does_not_proceed() -> None:
+     assert "parallel_or_final_risk_block_dominates" in decision.rationale
+ 
+ 
++def test_capital_authority_blocks_when_pre_deployment_disallows_candidate() -> None:
++    """Downstream pre-deployment allow/block truth dominates fresh-capital sizing."""
++    decision = evaluate_capital_deployment(_input(downstream_pre_deployment_allowed=False))
++    assert decision.action is CapitalDeploymentAuthorityAction.BLOCK
++    assert decision.authorised_deployable_pct == 0.0
++    assert decision.authorised_notional_usd == 0.0
++    assert decision.rationale == ["downstream_pre_deployment_blocked_candidate"]
++
++
++def test_capital_decision_carries_input_trace_without_opening_placement() -> None:
++    """Capital decision receipt identifies inputs and does not carry placement authority."""
++    context = _input()
++    decision = evaluate_capital_deployment(context, receipt_id="capital-receipt-001")
++    receipt = CapitalDeploymentReceipt(
++        receipt_id="capital-receipt-001",
++        decision=decision,
++        input_trace=decision.input_trace,
++        emitted_output=decision.model_dump(mode="json"),
++    )
++    assert decision.capital_deployment_receipt_id == "capital-receipt-001"
++    assert decision.input_trace is not None
++    assert decision.input_trace.serial_candidate_id == "candidate-001"
++    assert decision.input_trace.downstream_pre_deployment_receipt_id == "pre-deployment-allow-001"
++    assert decision.input_trace.final_risk_receipt_id == "final-risk-receipt-001"
++    assert decision.input_trace.capital_state_snapshot_id == "capital-snapshot-001"
++    assert decision.input_trace.bounded_policy_id == "bounded-policy-001"
++    assert receipt.placement_authority_opened is False
++
++
+ def test_downstream_opening_authorisation_shell_round_trips_without_capital_sizing() -> None:
+     """Downstream opening carries authorisation shape without owning notional sizing."""
+     reservation = DownstreamRecommendationHistoryReservation(
+diff --git a/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py b/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py
+index f196bff..28be47a 100644
+--- a/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py
++++ b/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py
+@@ -12,16 +12,22 @@ from nvda_desk.contracts.capital import (
+ def _input(**overrides: object) -> CapitalDeploymentAuthorityInput:
+     payload = {
+         "final_risk_action": "proceed",
++        "final_risk_receipt_id": "final-risk-seq9",
+         "serial_candidate_id": "serial-candidate-seq9",
+         "serial_candidate_eligible": True,
+         "serial_confidence": 0.91,
++        "downstream_pre_deployment_allowed": True,
++        "downstream_pre_deployment_receipt_id": "pre-deployment-seq9",
++        "parallel_risk_packet_id": "parallel-risk-envelope-seq9",
+         "parallel_risk_envelope_state": "broad",
+         "parallel_risk_hard_blocks": [],
+         "parallel_risk_caution_flags": [],
+         "coefficient_min_deployable_floor_pct": 2.0,
+         "temporal_event_window_active": False,
+         "temporal_event_risk": "normal",
++        "capital_state_snapshot_id": "capital-state-seq9",
+         "available_capital_usd": 100_000.0,
++        "bounded_policy_id": "bounded-policy-seq9",
+         "requested_deployable_pct": 10.0,
+         "max_deployable_pct": 10.0,
+         "inventory_pct": 0.0,
+@@ -30,6 +36,15 @@ def _input(**overrides: object) -> CapitalDeploymentAuthorityInput:
+     return CapitalDeploymentAuthorityInput(**payload)
+ 
+ 
++def test_sequence9_downstream_pre_deployment_block_dominates() -> None:
++    """Downstream pre-deployment block dominates before sizing is considered."""
++    decision = evaluate_capital_deployment(_input(downstream_pre_deployment_allowed=False))
++    assert decision.action is CapitalDeploymentAuthorityAction.BLOCK
++    assert decision.authorised_deployable_pct == 0.0
++    assert decision.authorised_notional_usd == 0.0
++    assert decision.rationale == ["downstream_pre_deployment_blocked_candidate"]
++
++
+ def test_sequence9_parallel_risk_block_dominates_serial_candidate() -> None:
+     """Parallel risk hard block dominates even when serial candidate is eligible."""
+     decision = evaluate_capital_deployment(
+@@ -72,10 +87,16 @@ def test_sequence9_clean_context_continues() -> None:
+     assert decision.action is CapitalDeploymentAuthorityAction.CONTINUE
+     assert decision.consumed_inputs == [
+         "serial_candidate",
++        "downstream_pre_deployment_result",
+         "parallel_risk_envelope",
++        "final_risk_product",
++        "capital_state",
++        "bounded_deployment_policy",
+         "coefficient_modifier_authority",
+         "temporal_context",
+     ]
++    assert decision.input_trace is not None
++    assert decision.input_trace.final_risk_receipt_id == "final-risk-seq9"
+ 
+ 
+ def test_sequence9_coefficient_floor_reduces_reachable_requested_deployment() -> None:
+diff --git a/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py b/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py
+index ea7d513..9355716 100644
+--- a/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py
++++ b/tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py
+@@ -17,15 +17,23 @@ def test_sequence9_capital_decision_packet_uses_canonical_dmpv3_shell() -> None:
+     """Capital decision is carried as a canonical downstream DMPV3 packet."""
+     decision = evaluate_capital_deployment(
+         CapitalDeploymentAuthorityInput(
++            final_risk_action="proceed",
++            final_risk_receipt_id="final-risk-seq9",
+             serial_candidate_id="serial-candidate-seq9",
+             serial_candidate_eligible=True,
+             serial_confidence=0.77,
++            downstream_pre_deployment_allowed=True,
++            downstream_pre_deployment_receipt_id="pre-deployment-seq9",
++            parallel_risk_packet_id="parallel-risk-envelope-packet-seq9",
+             parallel_risk_envelope_state="broad",
+             coefficient_min_deployable_floor_pct=2.0,
++            capital_state_snapshot_id="capital-state-seq9",
+             available_capital_usd=100_000.0,
++            bounded_policy_id="bounded-policy-seq9",
+             requested_deployable_pct=10.0,
+             max_deployable_pct=10.0,
+-        )
++        ),
++        receipt_id="capital-deployment-receipt-seq9",
+     )
+     packet = build_capital_deployment_packet(
+         packet_id="capital-deployment-decision-seq9",
+@@ -45,6 +53,8 @@ def test_sequence9_capital_decision_packet_uses_canonical_dmpv3_shell() -> None:
+     assert packet.producer.module_id == "capital_deployment_authority"
+     assert packet.producer.grammar_role == "downstream_capital_authority"
+     assert packet.data.action is CapitalDeploymentAuthorityAction.CONTINUE
++    assert packet.data.input_trace is not None
++    assert packet.data.capital_deployment_receipt_id == "capital-deployment-receipt-seq9"
+     assert packet.lineage.parentids == [
+         "serial-candidate-packet-seq5",
+         "parallel-risk-envelope-packet-seq7",

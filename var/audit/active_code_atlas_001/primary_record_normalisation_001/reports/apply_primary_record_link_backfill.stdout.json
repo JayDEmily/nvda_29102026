@@ -1,0 +1,221 @@
+{
+  "schema_version": "primary_record_normalisation_v1",
+  "status": "PASS",
+  "classification_note": "AUDIT_LINKAGE_METADATA_BACKFILL_ONLY",
+  "source_repo_branch": "worker/handoff-control-repair-c466",
+  "source_repo_head_before_backfill": "92643e319d75ca5f4124cd42bcbf1fe59fbae520",
+  "limitation_statement": "This normalisation pass adds explicit ACABC/ACATQ audit links to read-adjudicated primary source records where the bounded post-row044 reconciliation already established NIS-to-primary linkage. It does not mutate runtime/source/test/dependency/vocabulary/original Atlas/Bridge/generated-slice material and does not prove feature maturity.",
+  "source_record_file_before": {
+    "path": "var/audit/active_code_atlas_001/vocabulary_governance_surface/vocabulary_governance_active_code_atlas_records.json",
+    "byte_count": 27348,
+    "line_count": 666,
+    "sha256": "2d6a0a129a807b951dc47763aab748ab150e389fb66393e4d69457a26dcc2b4d"
+  },
+  "source_record_file_after": {
+    "path": "var/audit/active_code_atlas_001/vocabulary_governance_surface/vocabulary_governance_active_code_atlas_records.json",
+    "byte_count": 29336,
+    "line_count": 692,
+    "sha256": "aae060e4b1f1156797a4af16f0acae1a74c70b895c0ffc1abeb87496fc3c2167"
+  },
+  "reconciliation_input": {
+    "path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/primary_linkage_gap_reconciliation_002.json",
+    "byte_count": 11712,
+    "line_count": 311,
+    "sha256": "b2ed6474442bccc69eec97be3acd5802860fecb2281c1abddc1d7156c5fe7a7f"
+  },
+  "allowed_backfill": {
+    "ACAV-001-0001": [
+      "ACABC-0047",
+      "ACATQ-0046"
+    ],
+    "ACAV-001-0002": [
+      "ACABC-0046",
+      "ACATQ-0045"
+    ],
+    "ACAV-001-0003": [
+      "ACABC-0046",
+      "ACATQ-0045"
+    ],
+    "ACAV-001-0004": [
+      "ACABC-0047",
+      "ACATQ-0046"
+    ],
+    "ACAV-001-0005": [
+      "ACABC-0047",
+      "ACATQ-0046"
+    ],
+    "ACAV-001-0006": [
+      "ACABC-0048"
+    ],
+    "ACAV-001-0007": [
+      "ACABC-0046",
+      "ACATQ-0045"
+    ],
+    "ACAV-001-0008": [
+      "ACABC-0045",
+      "ACATQ-0044"
+    ]
+  },
+  "expected_no_primary_link_comparison_ids": [
+    "ACABC-0035"
+  ],
+  "changed_record_count": 8,
+  "added_link_count": 15,
+  "changed_records": [
+    {
+      "active_code_atlas_record_id": "ACAV-001-0001",
+      "links_before": [
+        "NIS-0101"
+      ],
+      "links_after": [
+        "NIS-0101",
+        "ACABC-0047",
+        "ACATQ-0046"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0002",
+      "links_before": [
+        "NIS-0102"
+      ],
+      "links_after": [
+        "NIS-0102",
+        "ACABC-0046",
+        "ACATQ-0045"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0003",
+      "links_before": [
+        "NIS-0103"
+      ],
+      "links_after": [
+        "NIS-0103",
+        "ACABC-0046",
+        "ACATQ-0045"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0004",
+      "links_before": [
+        "NIS-0104"
+      ],
+      "links_after": [
+        "NIS-0104",
+        "ACABC-0047",
+        "ACATQ-0046"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0005",
+      "links_before": [
+        "NIS-0105"
+      ],
+      "links_after": [
+        "NIS-0105",
+        "ACABC-0047",
+        "ACATQ-0046"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0006",
+      "links_before": [
+        "NIS-0106"
+      ],
+      "links_after": [
+        "NIS-0106",
+        "ACABC-0048"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0007",
+      "links_before": [
+        "NIS-0107"
+      ],
+      "links_after": [
+        "NIS-0107",
+        "ACABC-0046",
+        "ACATQ-0045"
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0008",
+      "links_before": [
+        "NIS-0108",
+        "NIS-0109",
+        "NIS-0110"
+      ],
+      "links_after": [
+        "NIS-0108",
+        "NIS-0109",
+        "NIS-0110",
+        "ACABC-0045",
+        "ACATQ-0044"
+      ]
+    }
+  ],
+  "added_links": [
+    {
+      "active_code_atlas_record_id": "ACAV-001-0001",
+      "link_added": "ACABC-0047"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0001",
+      "link_added": "ACATQ-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0002",
+      "link_added": "ACABC-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0002",
+      "link_added": "ACATQ-0045"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0003",
+      "link_added": "ACABC-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0003",
+      "link_added": "ACATQ-0045"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0004",
+      "link_added": "ACABC-0047"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0004",
+      "link_added": "ACATQ-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0005",
+      "link_added": "ACABC-0047"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0005",
+      "link_added": "ACATQ-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0006",
+      "link_added": "ACABC-0048"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0007",
+      "link_added": "ACABC-0046"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0007",
+      "link_added": "ACATQ-0045"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0008",
+      "link_added": "ACABC-0045"
+    },
+    {
+      "active_code_atlas_record_id": "ACAV-001-0008",
+      "link_added": "ACATQ-0044"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_capital_state_repository_rejects_empty_id_and_duplicate_after_normalisation _
+
+    def test_capital_state_repository_rejects_empty_id_and_duplicate_after_normalisation() -> None:
+        repository = CapitalStateRepository()
+    
+        with pytest.raises(ValueError, match="snapshot_id must be non-empty"):
+            repository.write_snapshot("  ", {"cash": 1000.0})
+    
+        repository.write_snapshot("cap-1", {"cash": 1000.0})
+>       with pytest.raises(ValueError, match="duplicate snapshot_id: cap-1"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/persistence/test_capital_state_repository_surface.py:65: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_capital_state_repository_surface.py::test_capital_state_repository_rejects_empty_id_and_duplicate_after_normalisation - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.18s

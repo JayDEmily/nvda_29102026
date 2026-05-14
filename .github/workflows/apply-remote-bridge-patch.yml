@@ -1,0 +1,167 @@
+name: Apply Remote Bridge Patch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'remote_bridge_inbox/apply_patches/**/*.patch'
+  workflow_dispatch:
+    inputs:
+      patch_path:
+        description: 'Repo-relative patch path to apply'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apply-remote-bridge-patch-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  apply-patch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Resolve patch files
+        id: resolve
+        shell: bash
+        env:
+          INPUT_PATCH_PATH: ${{ inputs.patch_path }}
+        run: |
+          set -euo pipefail
+          mkdir -p var/audit/remote_bridge_receipts
+
+          if [[ -n "${INPUT_PATCH_PATH:-}" ]]; then
+            if [[ "$INPUT_PATCH_PATH" = /* || "$INPUT_PATCH_PATH" == *".."* ]]; then
+              echo "Unsafe patch path: $INPUT_PATCH_PATH" >&2
+              exit 1
+            fi
+            if [[ ! -f "$INPUT_PATCH_PATH" ]]; then
+              echo "Patch path not found: $INPUT_PATCH_PATH" >&2
+              exit 1
+            fi
+            printf '%s\n' "$INPUT_PATCH_PATH" > var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt
+          else
+            find remote_bridge_inbox/apply_patches -type f -name '*.patch' 2>/dev/null | sort > var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt || true
+          fi
+
+          if [[ ! -s var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt ]]; then
+            echo "No remote bridge patch files to apply"
+            echo "has_patches=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "has_patches=true" >> "$GITHUB_OUTPUT"
+          echo "Patch files:"
+          cat var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt
+
+      - name: Apply patches
+        if: steps.resolve.outputs.has_patches == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r patch_path; do
+            [[ -n "$patch_path" ]] || continue
+            echo "Checking $patch_path"
+            git apply --check "$patch_path"
+            echo "Applying $patch_path"
+            git apply "$patch_path"
+            rm -f "$patch_path"
+          done < var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt
+
+      - name: Run config control assertions
+        if: steps.resolve.outputs.has_patches == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          proof_path = Path('config/proof_blocks.yaml')
+          registry_path = Path('config/retained_test_registry.yaml')
+          proof = yaml.safe_load(proof_path.read_text(encoding='utf-8'))
+          registry = yaml.safe_load(registry_path.read_text(encoding='utf-8'))
+
+          assert proof['schema_version'] == 'v1'
+          assert any(
+              block.get('block_id') == 'vocabulary_governance_conformance'
+              for block in proof.get('blocks', [])
+          )
+
+          family_ids = [
+              item.get('test_family_id')
+              for item in registry.get('retained_seed_tier_a', [])
+          ]
+          for required in (
+              'vocabulary_candidate_schema_contracts',
+              'vocabulary_document_json_helpers',
+          ):
+              assert required in family_ids, required
+
+          inventory = registry['tier_a_registry_reconciliation_inventory']
+          assert inventory['tier_a_test_count'] == 75
+          assert inventory['counts']['registered_retained_seed_tier_a'] == 75
+          inventory_paths = [item['path'] for item in inventory['entries']]
+          for required_path in (
+              'tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py',
+              'tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py',
+          ):
+              assert required_path in inventory_paths, required_path
+
+          print('config control assertions passed')
+          PY
+
+      - name: Write receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p var/audit/remote_bridge_receipts
+          receipt="var/audit/remote_bridge_receipts/apply_remote_bridge_patch_${GITHUB_RUN_ID}.md"
+          {
+            echo "# Remote bridge patch apply receipt"
+            echo
+            echo "Status: ${{ steps.resolve.outputs.has_patches == 'true' && 'PATCH_APPLIED' || 'NO_PATCHES_FOUND' }}"
+            echo
+            echo "Repository: $GITHUB_REPOSITORY"
+            echo "Target branch: $GITHUB_REF_NAME"
+            echo "Starting SHA: $GITHUB_SHA"
+            echo "Run ID: $GITHUB_RUN_ID"
+            echo "Run attempt: $GITHUB_RUN_ATTEMPT"
+            echo "Actor: $GITHUB_ACTOR"
+            echo "Completed UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo
+            echo "## Patch files"
+            if [[ -s var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt ]]; then
+              sed 's/^/- /' var/audit/remote_bridge_receipts/apply_remote_bridge_patch_files.txt
+            else
+              echo "- none"
+            fi
+            echo
+            echo "## Proof"
+            echo "- git apply --check: passed for all listed patches"
+            echo "- config control assertions: passed when patches were present"
+          } > "$receipt"
+
+      - name: Commit result
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Apply remote bridge patch payload"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

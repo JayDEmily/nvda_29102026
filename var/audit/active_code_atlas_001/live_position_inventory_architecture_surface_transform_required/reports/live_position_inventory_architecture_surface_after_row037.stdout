@@ -1,0 +1,19 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 23 items
+
+tests/tier_a/downstream_runtime/test_downstream_contract_models.py ..... [ 21%]
+                                                                         [ 21%]
+tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py . [ 26%]
+.......                                                                  [ 56%]
+tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py . [ 60%]
+.                                                                        [ 65%]
+tests/tier_a/persistence/test_position_repository_surface.py ....        [ 82%]
+tests/tier_a/persistence/test_capital_state_repository_surface.py ....   [100%]
+
+============================== 23 passed in 0.23s ==============================
+proof_block_id=live_position_inventory_architecture_surface
+command=python -m pytest tests/tier_a/downstream_runtime/test_downstream_contract_models.py tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py tests/tier_a/persistence/test_position_repository_surface.py tests/tier_a/persistence/test_capital_state_repository_surface.py

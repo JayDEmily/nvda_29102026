@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T00:00:00Z",
+  "target": "ACTIVE_WORKING_TREE_BOUNDARY_AUDIT_046",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_working_tree_boundary_audit_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Current target working-tree boundary audit. Control files read in full before mutation; generated report/receipt read for manifest metadata after proof update."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_working_tree_boundary_audit_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target working-tree boundary audit. Control files read in full before mutation; generated report/receipt read for manifest metadata after proof update."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 188378,
+      "line_count": 541,
+      "sha256": "27a7a9fc9b72188b1d7d06ed932d280d54b8d6f3e38ad24e8e3b6e221ec8b4f9",
+      "read_method": "manual_full_file_read_plus_working_tree_boundary_audit_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 541
+        }
+      ],
+      "notes": "Current target working-tree boundary audit. Control files read in full before mutation; generated report/receipt read for manifest metadata after proof update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/working_tree_boundary_audit_046/reports/ACTIVE_WORKING_TREE_BOUNDARY_AUDIT_046_REPORT.json",
+      "byte_count": 17350,
+      "line_count": 246,
+      "sha256": "ad52cc9a309ac9e702cf14ee9861cfd5950b9d37d33d2ed277ca0888f480ef1a",
+      "read_method": "manual_full_file_read_plus_working_tree_boundary_audit_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 246
+        }
+      ],
+      "notes": "Current target working-tree boundary audit. Control files read in full before mutation; generated report/receipt read for manifest metadata after proof update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/working_tree_boundary_audit_046/receipts/ACTIVE_WORKING_TREE_BOUNDARY_AUDIT_046_RECEIPT.md",
+      "byte_count": 719,
+      "line_count": 10,
+      "sha256": "dc37e0e429a3ed6806c4ba5837c46b352cd18354434143bb92ff4a91db47f124",
+      "read_method": "manual_full_file_read_plus_working_tree_boundary_audit_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 10
+        }
+      ],
+      "notes": "Current target working-tree boundary audit. Control files read in full before mutation; generated report/receipt read for manifest metadata after proof update."
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "atlas_slice_summary": {
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 46,
+      "later_test_first_leaf": 97
+    },
+    "native_satisfaction_status_counts": {
+      "missing": 45,
+      "partially_satisfied": 52,
+      "transform_required": 46
+    },
+    "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json",
+    "proof_resolution_counts": {
+      "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 91,
+      "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 52
+    },
+    "record_count": 143
+  },
+  "authority_classes": [
+    {
+      "authority_class": "review packet carriage",
+      "classification": "already_satisfied",
+      "current_status": "native thin seam present",
+      "evidence": [
+        {
+          "fact": "ReviewPacket and ReviewLineage are present with extra=forbid models.",
+          "line_end": 19,
+          "line_start": 8,
+          "path": "src/nvda_desk/contracts/review.py"
+        },
+        {
+          "fact": "build_review_packet and attach_lineage emit typed review packet and lineage payloads.",
+          "line_end": 66,
+          "line_start": 44,
+          "path": "src/nvda_desk/downstream/review_stage.py"
+        },
+        {
+          "fact": "Tier A review-stage surface requires ReviewStageService and packet helper functions.",
+          "line_end": 25,
+          "line_start": 21,
+          "path": "tests/tier_a/review_runtime/test_review_stage_surface.py"
+        }
+      ],
+      "gap": null,
+      "next_action": "Retain in final proof; no trading-decision logic change required."
+    },
+    {
+      "authority_class": "explanation surfaces",
+      "classification": "already_satisfied",
+      "current_status": "deterministic explanation builder present",
+      "evidence": [
+        {
+          "fact": "ReviewExplanationService consumes review packet, policy, lineage, and packet lineage to emit deterministic explanation output.",
+          "line_end": 41,
+          "line_start": 13,
+          "path": "src/nvda_desk/services/review_explanation_service.py"
+        },
+        {
+          "fact": "Tier B lineage test asserts resolved surfaces and coefficients remain visible in explanation output.",
+          "line_end": 98,
+          "line_start": 53,
+          "path": "tests/tier_b/review_lineage/test_review_effective_policy_lineage.py"
+        }
+      ],
+      "gap": null,
+      "next_action": "Retain in final proof; no strategy mutation permitted."
+    },
+    {
+      "authority_class": "replay receipts",
+      "classification": "already_satisfied",
+      "current_status": "bounded analysis-only replay service present",
+      "evidence": [
+        {
+          "fact": "ReplayPacketLineage carries packet IDs and replay run ID.",
+          "line_end": 9,
+          "line_start": 6,
+          "path": "src/nvda_desk/contracts/replay.py"
+        },
+        {
+          "fact": "ReplayEvaluationService builds lineage and deterministic comparison results without live runtime flow.",
+          "line_end": 80,
+          "line_start": 36,
+          "path": "src/nvda_desk/analysis/replay/service.py"
+        },
+        {
+          "fact": "Tier A replay test checks analysis-only home, comparison output, lineage, and absence of analysis.scenarios importers.",
+          "line_end": 77,
+          "line_start": 43,
+          "path": "tests/tier_a/analysis/test_replay_evaluation_surface.py"
+        }
+      ],
+      "gap": null,
+      "next_action": "Retain in final proof."
+    },
+    {
+      "authority_class": "decision trace assembly",
+      "classification": "already_satisfied",
+      "current_status": "thin-seam lineage assembly present for review/replay basis reconstruction",
+      "evidence": [
+        {
+          "fact": "ReviewLineagePacket and PacketLineageSurface expose event/surface/modifier/coefficient and packet lineage carriers.",
+          "line_end": 62,
+          "line_start": 51,
+          "path": "src/nvda_desk/contracts/review.py"
+        },
+        {
+          "fact": "Tier B lineage test requires PacketLineageSurface, ReplayPacketLineage, DMPV3 contract, and dmp_v3 fixture root.",
+          "line_end": 35,
+          "line_start": 22,
+          "path": "tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py"
+        }
+      ],
+      "gap": "Generated Atlas material includes richer decision-trace ideas outside the current thin seam; no hidden runtime-decision mutation is lawful in Sequence 10.",
+      "next_action": "Do not broaden into runtime decision logic; keep as review-only lineage carriers."
+    },
+    {
+      "authority_class": "failure taxonomy",
+      "classification": "implemented_in_this_gate",
+      "current_status": "bounded native review-only contract/test support implemented; final proof pending",
+      "deferred_to": "Gate 5 test-first bounded migration inside Sequence 10",
+      "evidence": [
+        {
+          "fact": "FailureTaxonomyRecord currently has primary_failure_class and rationale only.",
+          "line_end": 33,
+          "line_start": 29,
+          "path": "src/nvda_desk/contracts/review.py"
+        },
+        {
+          "fact": "Legacy review surface includes bounded ReviewFailureClass, ReviewResolutionClass, blocked_trade, non_action, evidence_floor, and rationale.",
+          "line_end": 318,
+          "line_start": 264,
+          "path": "legacy_import/source/nvda_desk/schemas/review.py"
+        },
+        {
+          "fact": "Atlas slice states the donor failure-taxonomy packet carries resolution, blocked/non-action flags, evidence floor, and rationale.",
+          "line_end": 4860,
+          "line_start": 4860,
+          "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json"
+        }
+      ],
+      "gap": "Native contract does not yet expose bounded failure class/resolution or non-action/block flags.",
+      "implemented_in_gate": "Gate 5",
+      "next_action": "Run final Sequence 10 proof set and package final worker output."
+    },
+    {
+      "authority_class": "ugly-day/non-action review",
+      "classification": "implemented_in_this_gate",
+      "current_status": "bounded native review-only contract/test support implemented; final proof pending",
+      "deferred_to": "Gate 5 test-first bounded migration inside Sequence 10",
+      "evidence": [
+        {
+          "fact": "EconomicAccountabilityRecord currently carries diagnosis/posture/timing/execution/sizing only.",
+          "line_end": 42,
+          "line_start": 35,
+          "path": "src/nvda_desk/contracts/review.py"
+        },
+        {
+          "fact": "Legacy economic contribution packet includes bounded tags and non_action accountability.",
+          "line_end": 329,
+          "line_start": 288,
+          "path": "legacy_import/source/nvda_desk/schemas/review.py"
+        },
+        {
+          "fact": "Atlas slice states economic-accountability fields include diagnosis, posture, timing, execution, sizing, and non-action.",
+          "line_end": 5173,
+          "line_start": 5173,
+          "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json"
+        }
+      ],
+      "gap": "Native accountability record lacks non_action accountability carriage and bounded contribution labels.",
+      "implemented_in_gate": "Gate 5",
+      "next_action": "Run final Sequence 10 proof set and package final worker output."
+    },
+    {
+      "authority_class": "bad read vs bad expression vs bad sizing vs bad luck classification",
+      "classification": "implemented_in_this_gate",
+      "current_status": "bounded native review-only contract/test support implemented; final proof pending",
+      "deferred_to": "Gate 5 test-first bounded migration inside Sequence 10",
+      "evidence": [
+        {
+          "fact": "Current native failure record uses unbounded string/None primary_failure_class and no resolution class.",
+          "line_end": 33,
+          "line_start": 29,
+          "path": "src/nvda_desk/contracts/review.py"
+        },
+        {
+          "fact": "Legacy review failure and resolution enums include data_provenance_failure, execution_expression_failure, sizing_failure, and bad_luck.",
+          "line_end": 286,
+          "line_start": 264,
+          "path": "legacy_import/source/nvda_desk/schemas/review.py"
+        },
+        {
+          "fact": "Generated review slice carries the richer bounded failure-taxonomy packet obligation.",
+          "line_end": 4860,
+          "line_start": 4860,
+          "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json"
+        }
+      ],
+      "gap": "Native surface cannot currently prove bounded bad-read/bad-expression/bad-sizing/bad-luck classification.",
+      "implemented_in_gate": "Gate 5",
+      "next_action": "Run final Sequence 10 proof set and package final worker output."
+    },
+    {
+      "authority_class": "review proof and retained-test alignment",
+      "classification": "already_satisfied",
+      "current_status": "retained-test registry and proof logs already bind review/replay families",
+      "evidence": [
+        {
+          "fact": "Registry records review_runtime_trace_replay_contract and successor review packet/stage/explanation blockers.",
+          "line_end": 402,
+          "line_start": 326,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "fact": "Registry records review lineage, bounded trace, and effective-policy lineage test families.",
+          "line_end": 1730,
+          "line_start": 1588,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "fact": "Checkpoint 2 preserved uv/import/baseline targeted pytest status evidence.",
+          "line_end": 20,
+          "line_start": 1,
+          "path": "var/audit/proof_logs/sequence10/gate2_summary.json"
+        }
+      ],
+      "gap": "Gate 5 additions, if made, must update proof artefacts and may update retained registry only if retained-test truth changes.",
+      "next_action": "Use final proof set; no registry change yet."
+    }
+  ],
+  "gate4_result": "PASS_SEQUENCE10_GATE4_GAP_INVENTORY_WITH_GATE5_REQUIRED",
+  "gate5_result": "GATE5_SOURCE_DELTA_READY_FOR_PROOF",
+  "generated_at_utc": "2026-05-05T14:28:38.801367+00:00",
+  "inventory_id": "sequence10_review_explanation_auditability_inventory",
+  "non_selected_large_atlas_surfaces": {
+    "classification": "explicitly_deferred",
+    "lawful_reason": "The selected Sequence 10 authority classes are bounded to review/explanation/auditability. The generated slice contains 143 records, including broader research/evaluation/imported attribution/SLV experiment surfaces that remain richer than the native thin seam and are not opened for strategy or runtime redesign here.",
+    "sample_matching_records": {
+      "failure": [
+        {
+          "atlas_record_id": "atlas_donor_eval_008",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_eval_failure_mode_summary_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0157"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_012",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_blueprint_leaf",
+          "intent_unit_id": "iu_eval_walk_forward_output_contract",
+          "native_satisfaction_status": "transform_required",
+          "satisfaction_record_id": "NIS-0161"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_016",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_blueprint_leaf",
+          "intent_unit_id": "iu_eval_fragility_output_contract",
+          "native_satisfaction_status": "transform_required",
+          "satisfaction_record_id": "NIS-0165"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_019",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_eval_ranked_variant_summary_contract",
+          "native_satisfaction_status": "missing",
+          "satisfaction_record_id": "NIS-0168"
+        },
+        {
+          "atlas_record_id": "atlas_donor_review_024",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/review.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_review_failure_packet_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0333"
+        },
+        {
+          "atlas_record_id": "atlas_donor_cognition_060",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/cognition.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_cognition_review_explanation_output_model_rebuild",
+          "native_satisfaction_status": "missing",
+          "satisfaction_record_id": "NIS-0594"
+        },
+        {
+          "atlas_record_id": "atlas_donor_research_service_006",
+          "donor_path": "legacy_import/source/nvda_desk/services/research.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_research_service_build_horizon_discovery_summary",
+          "native_satisfaction_status": "missing",
+          "satisfaction_record_id": "NIS-0799"
+        },
+        {
+          "atlas_record_id": "atlas_donor_imported_review_attribution_003",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/imported_modules/review_attribution.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_imported_profitlossledgercontractoutput",
+          "native_satisfaction_status": "missing",
+          "satisfaction_record_id": "NIS-0879"
+        }
+      ],
+      "non_action": [
+        {
+          "atlas_record_id": "atlas_donor_review_024",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/review.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_review_failure_packet_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0333"
+        },
+        {
+          "atlas_record_id": "atlas_donor_review_025",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/review.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_review_economic_contribution_packet_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0334"
+        }
+      ],
+      "replay": [
+        {
+          "atlas_record_id": "atlas_donor_replay_001",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/replay.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_replay_schema_boundary",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0063"
+        },
+        {
+          "atlas_record_id": "atlas_donor_replay_005",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/replay.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_replay_schema_contracts",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0067"
+        },
+        {
+          "atlas_record_id": "atlas_donor_research_001",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/research.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_research_schema_boundary",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0068"
+        },
+        {
+          "atlas_record_id": "atlas_donor_research_004",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/research.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_research_schema_contracts",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0071"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_001",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_eval_schema_boundary",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0150"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_007",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_eval_run_list_response_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0156"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_008",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "extend_existing_same_invariant",
+          "implementation_leaf_type": "later_test_first_leaf",
+          "intent_unit_id": "iu_eval_failure_mode_summary_contract",
+          "native_satisfaction_status": "partially_satisfied",
+          "satisfaction_record_id": "NIS-0157"
+        },
+        {
+          "atlas_record_id": "atlas_donor_eval_012",
+          "donor_path": "legacy_import/source/nvda_desk/schemas/eval.py",
+          "existing_test_decision": "new_test_family_required",
+          "implementation_leaf_type": "later_blueprint_leaf",
+          "intent_unit_id": "iu_eval_walk_forward_output_contract",
+          "native_satisfaction_status": "transform_required",
+          "satisfaction_record_id": "NIS-0161"
+        }
+      ]
+    }
+  },
+  "scope_boundary": "review/explanation/auditability only; no Sequence 11; no runtime trading decision mutation",
+  "selected_gate5_gaps": [
+    "failure taxonomy",
+    "ugly-day/non-action review",
+    "bad read vs bad expression vs bad sizing vs bad luck classification"
+  ],
+  "sequence": 10,
+  "source_basis": "NVDA9_SEQUENCE10_INTERIM_02_SOURCE_WITH_VENV_PROOF_LOGS_2026-05-05.tar.gz"
+}

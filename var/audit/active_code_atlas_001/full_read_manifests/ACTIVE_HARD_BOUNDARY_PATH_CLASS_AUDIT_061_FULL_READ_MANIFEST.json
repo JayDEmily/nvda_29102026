@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T03:38:15Z",
+  "target": "ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_hard_boundary_path_class_audit_061_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_hard_boundary_path_class_audit_061_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 201427,
+      "line_count": 559,
+      "sha256": "61eeaf8bc250e940be4b8d91b78c24ff647f0d1a4947ef178a086e5f1310f3d9",
+      "read_method": "manual_full_file_read_plus_active_hard_boundary_path_class_audit_061_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 559
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/hard_boundary_path_class_audit_061/reports/ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061_REPORT.json",
+      "byte_count": 2528,
+      "line_count": 42,
+      "sha256": "d7e3f53014d1ab7846e55c59c88c4920a8c6da99a40a36538a34b036414c8090",
+      "read_method": "manual_full_file_read_plus_active_hard_boundary_path_class_audit_061_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 42
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/hard_boundary_path_class_audit_061/receipts/ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061_RECEIPT.md",
+      "byte_count": 603,
+      "line_count": 9,
+      "sha256": "6676cf66d6fa54d9804da3ae178af8367fb715eb087027ff0916160665dabb8e",
+      "read_method": "manual_full_file_read_plus_active_hard_boundary_path_class_audit_061_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

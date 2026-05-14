@@ -1,0 +1,44 @@
+{
+  "ledger_name": "legacy_runtime_inventory",
+  "schema_version": "v1",
+  "status": "seeded_not_started",
+  "ledger_status_values": [
+    "seeded_not_started",
+    "in_progress",
+    "complete"
+  ],
+  "phase_owner": "phase_1_legacy_runtime_inventory",
+  "purpose": "Runtime-only donor inventory for legacy intent migration.",
+  "classification_values": [
+    "active_candidate",
+    "support_only",
+    "dead_or_unclear"
+  ],
+  "inclusion_rule_class_values": [
+    "runtime_code",
+    "runtime_adjacent_support_config_schema",
+    "runtime_dependent_fixture_or_reference",
+    "excluded_planning_report_or_historical"
+  ],
+  "evidence_type_values": [
+    "observed_directly",
+    "inferred",
+    "unclear"
+  ],
+  "required_record_fields": [
+    "legacy_file_id",
+    "path",
+    "file_type",
+    "runtime_role",
+    "imports",
+    "imported_by",
+    "config_dependencies",
+    "classification",
+    "inclusion_rule_class",
+    "read_complete",
+    "source_lines",
+    "evidence_type",
+    "notes"
+  ],
+  "records": []
+}

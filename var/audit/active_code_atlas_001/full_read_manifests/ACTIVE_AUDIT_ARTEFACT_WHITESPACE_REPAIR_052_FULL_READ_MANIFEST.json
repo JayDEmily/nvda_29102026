@@ -1,0 +1,111 @@
+{
+  "created_utc": "2026-05-13T00:00:00Z",
+  "target": "ACTIVE_AUDIT_ARTEFACT_WHITESPACE_REPAIR_052",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by 052."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by 052."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 194596,
+      "line_count": 547,
+      "sha256": "1fc47f9d86129ae4f40978f76b1339cd9d94050a5dd8faac3b5b36fa8c62c5d0",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 547
+        }
+      ],
+      "notes": "Mutable live ledger after pointer advancement to 052."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/freeze_diff_AGENTS_PLANS_049.diff",
+      "byte_count": 10208,
+      "line_count": 63,
+      "sha256": "ee8a92c1921a78f44b894a700967cd886f673ef59b6d842746faed20ea0324c9",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 63
+        }
+      ],
+      "notes": "Audit artefact whitespace target repaired/checked by 052."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/long_run_stop_trigger_scan_classification_047/reports/long_run_stop_trigger_scan.txt",
+      "byte_count": 32579,
+      "line_count": 71,
+      "sha256": "5e7a6ff72bd7c2db5e5cf253bbbf7f786627893a32619a180fa88b2396f7d151",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 71
+        }
+      ],
+      "notes": "Audit artefact whitespace target repaired/checked by 052."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/audit_artefact_whitespace_repair_052/reports/ACTIVE_AUDIT_ARTEFACT_WHITESPACE_REPAIR_052_REPORT.json",
+      "byte_count": 3632,
+      "line_count": 61,
+      "sha256": "0ccb57c67ca6d0c8a7b4b04408537a6cd781bb4655ee6a197875ca096beb0483",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 61
+        }
+      ],
+      "notes": "052 report after final proof rerun update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/audit_artefact_whitespace_repair_052/receipts/ACTIVE_AUDIT_ARTEFACT_WHITESPACE_REPAIR_052_RECEIPT.md",
+      "byte_count": 875,
+      "line_count": 10,
+      "sha256": "656fd5c939f409007621ac14696d6813647277d044f219de7b2add2f73b8d98c",
+      "read_method": "manual_full_file_read_plus_audit_artefact_whitespace_repair_052_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 10
+        }
+      ],
+      "notes": "052 receipt after final proof rerun update."
+    }
+  ]
+}

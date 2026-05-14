@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_OFFICIAL_SOURCE_ESCALATION_ROUTING_ALIGNMENT_005_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_OFFICIAL_SOURCE_ESCALATION_ROUTING_ALIGNMENT_005",
+  "manifest_scope": "official_source_escalation_routing_alignment_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 8,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation law authority confirming ordinary leaf blockers are not user-facing stop conditions."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_PLANS_CURRENT_WORKSTREAM_BOUNDARY_ALIGNMENT_009 proof passed."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_DURABILITY_CHECKPOINT_INDEX_010 proof passed."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/official_source_escalation_routing_alignment_005/reports/official_source_escalation_scan.txt",
+      "material_class": "scan_report",
+      "byte_count": 644,
+      "line_count": 2,
+      "sha256": "b6fcb4b2f4b4491d62ba9528db3e6e269bfc3c366d2c1113a2478b13bf707076",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "notes": "Scan report identifying live official-source escalation stop wording."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/official_source_escalation_routing_alignment_005/reports/ACTIVE_OFFICIAL_SOURCE_ESCALATION_ROUTING_ALIGNMENT_005_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1727,
+      "line_count": 29,
+      "sha256": "074e56b749d1421793dc89c744acffb2d39d898d118fb956517e6e5f72ab8a45",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 29
+        }
+      ],
+      "notes": "Final PASS report re-read after proof update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/official_source_escalation_routing_alignment_005/receipts/ACTIVE_OFFICIAL_SOURCE_ESCALATION_ROUTING_ALIGNMENT_005_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1630,
+      "line_count": 30,
+      "sha256": "f8c6ee00087f8ebb9fe3301134afeaf3d02326ffa3164e4e4746f4de432d4d20",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 30
+        }
+      ],
+      "notes": "Final PASS receipt re-read after proof update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/official_source_escalation_routing_alignment_005/reports/ACTIVE_OFFICIAL_SOURCE_ESCALATION_ROUTING_ALIGNMENT_005_PROOF.txt",
+      "material_class": "proof_output",
+      "byte_count": 10189,
+      "line_count": 146,
+      "sha256": "7b7f689e544c337368ea728c4dee8335167b9cedf3c49914ef6d5bbe463ae324",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 146
+        }
+      ],
+      "notes": "Captured proof output for official-source escalation routing alignment."
+    }
+  ]
+}

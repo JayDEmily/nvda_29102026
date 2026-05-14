@@ -1,0 +1,1114 @@
+{
+  "layer_id": "layer_01_us_market_structure",
+  "title": "U.S. market-structure calendar",
+  "description": "U.S. cash-market closures, half-days, OCC monthly expiry anchors, and month/quarter-end markers for NVDA desk routing.",
+  "calendar_year": 2026,
+  "events": [
+    {
+      "event_id": "us-nyse-holiday-2026-01-01",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - New Year's Day",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-01-19",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Martin Luther King Jr. Day",
+      "start_date": "2026-01-19",
+      "end_date": "2026-01-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-02-16",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Washington's Birthday / Presidents Day",
+      "start_date": "2026-02-16",
+      "end_date": "2026-02-16",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-04-03",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Good Friday",
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-05-25",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Memorial Day",
+      "start_date": "2026-05-25",
+      "end_date": "2026-05-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-06-19",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Juneteenth National Independence Day",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-07-03",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Independence Day observed",
+      "start_date": "2026-07-03",
+      "end_date": "2026-07-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-09-07",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Labor Day",
+      "start_date": "2026-09-07",
+      "end_date": "2026-09-07",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-11-26",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Thanksgiving Day",
+      "start_date": "2026-11-26",
+      "end_date": "2026-11-26",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-holiday-2026-12-25",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_holiday",
+      "title": "NYSE closed - Christmas Day",
+      "start_date": "2026-12-25",
+      "end_date": "2026-12-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "us_cash_closed",
+        "us_options_closed",
+        "non_session_day"
+      ],
+      "evaluation_tags": [
+        "holiday_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar; OCC 2026 holiday schedule",
+      "notes_md": "Treat as no regular U.S. cash session. Pre/post-market logic may still differ by venue."
+    },
+    {
+      "event_id": "us-nyse-halfday-2026-11-27",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_half_day",
+      "title": "NYSE early close - day after Thanksgiving",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-27",
+      "start_time_local": "09:30",
+      "end_time_local": "13:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "us_cash_half_day",
+        "thin_afternoon_session",
+        "carry_rules_tighten"
+      ],
+      "evaluation_tags": [
+        "half_day_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar",
+      "notes_md": "NYSE cash markets close 1:00 p.m. ET. Eligible options close 1:15 p.m. ET."
+    },
+    {
+      "event_id": "us-options-halfday-2026-11-27",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "options_half_day",
+      "title": "U.S. eligible options early close - day after Thanksgiving",
+      "start_date": "2026-11-27",
+      "end_date": "2026-11-27",
+      "start_time_local": "09:30",
+      "end_time_local": "13:15",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "us_options_half_day",
+        "expiry_mechanics_watch"
+      ],
+      "evaluation_tags": [
+        "half_day_session",
+        "options_session_variant"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar",
+      "notes_md": "Eligible listed options close 1:15 p.m. ET."
+    },
+    {
+      "event_id": "us-nyse-halfday-2026-12-24",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "market_half_day",
+      "title": "NYSE early close - Christmas Eve",
+      "start_date": "2026-12-24",
+      "end_date": "2026-12-24",
+      "start_time_local": "09:30",
+      "end_time_local": "13:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "us_cash_half_day",
+        "thin_afternoon_session",
+        "carry_rules_tighten"
+      ],
+      "evaluation_tags": [
+        "half_day_session"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar",
+      "notes_md": "NYSE cash markets close 1:00 p.m. ET. Eligible options close 1:15 p.m. ET."
+    },
+    {
+      "event_id": "us-options-halfday-2026-12-24",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "options_half_day",
+      "title": "U.S. eligible options early close - Christmas Eve",
+      "start_date": "2026-12-24",
+      "end_date": "2026-12-24",
+      "start_time_local": "09:30",
+      "end_time_local": "13:15",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "us_options_half_day",
+        "expiry_mechanics_watch"
+      ],
+      "evaluation_tags": [
+        "half_day_session",
+        "options_session_variant"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NYSE 2026 holiday calendar",
+      "notes_md": "Eligible listed options close 1:15 p.m. ET."
+    },
+    {
+      "event_id": "us-opex-2026-01-16",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - January 2026",
+      "start_date": "2026-01-16",
+      "end_date": "2026-01-16",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-02-20",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - February 2026",
+      "start_date": "2026-02-20",
+      "end_date": "2026-02-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-03-20",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - March 2026",
+      "start_date": "2026-03-20",
+      "end_date": "2026-03-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-04-17",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - April 2026",
+      "start_date": "2026-04-17",
+      "end_date": "2026-04-17",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-05-15",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - May 2026",
+      "start_date": "2026-05-15",
+      "end_date": "2026-05-15",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-06-18",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - June 2026",
+      "start_date": "2026-06-18",
+      "end_date": "2026-06-18",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-07-17",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - July 2026",
+      "start_date": "2026-07-17",
+      "end_date": "2026-07-17",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-08-21",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - August 2026",
+      "start_date": "2026-08-21",
+      "end_date": "2026-08-21",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-09-18",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - September 2026",
+      "start_date": "2026-09-18",
+      "end_date": "2026-09-18",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-10-16",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - October 2026",
+      "start_date": "2026-10-16",
+      "end_date": "2026-10-16",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-11-20",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - November 2026",
+      "start_date": "2026-11-20",
+      "end_date": "2026-11-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-opex-2026-12-18",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "monthly_options_expiry",
+      "title": "U.S. monthly equity/index options expiration - December 2026",
+      "start_date": "2026-12-18",
+      "end_date": "2026-12-18",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "monthly_opex",
+        "expiry_state_elevated",
+        "gamma_pin_risk"
+      ],
+      "evaluation_tags": [
+        "expiry_day",
+        "options_structure_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "OCC 2026 Holiday and Expiration Schedule",
+      "notes_md": "Use as a scheduled expiry-state anchor. June 2026 monthly expiry falls on June 18 because June 19 is an OCC holiday."
+    },
+    {
+      "event_id": "us-month-end-2026-01-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of January 2026",
+      "start_date": "2026-01-30",
+      "end_date": "2026-01-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-02-27",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of February 2026",
+      "start_date": "2026-02-27",
+      "end_date": "2026-02-27",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-03-31",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of March 2026",
+      "start_date": "2026-03-31",
+      "end_date": "2026-03-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window",
+        "quarter_end_marker"
+      ],
+      "evaluation_tags": [
+        "month_end",
+        "quarter_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-04-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of April 2026",
+      "start_date": "2026-04-30",
+      "end_date": "2026-04-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-05-29",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of May 2026",
+      "start_date": "2026-05-29",
+      "end_date": "2026-05-29",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-06-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of June 2026",
+      "start_date": "2026-06-30",
+      "end_date": "2026-06-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window",
+        "quarter_end_marker"
+      ],
+      "evaluation_tags": [
+        "month_end",
+        "quarter_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-07-31",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of July 2026",
+      "start_date": "2026-07-31",
+      "end_date": "2026-07-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-08-31",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of August 2026",
+      "start_date": "2026-08-31",
+      "end_date": "2026-08-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-09-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of September 2026",
+      "start_date": "2026-09-30",
+      "end_date": "2026-09-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window",
+        "quarter_end_marker"
+      ],
+      "evaluation_tags": [
+        "month_end",
+        "quarter_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-10-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of October 2026",
+      "start_date": "2026-10-30",
+      "end_date": "2026-10-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-11-30",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of November 2026",
+      "start_date": "2026-11-30",
+      "end_date": "2026-11-30",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window"
+      ],
+      "evaluation_tags": [
+        "month_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    },
+    {
+      "event_id": "us-month-end-2026-12-31",
+      "layer_id": "layer_01_us_market_structure",
+      "event_type": "month_end_marker",
+      "title": "Last U.S. trading session of December 2026",
+      "start_date": "2026-12-31",
+      "end_date": "2026-12-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "NYSE",
+        "US_OPTIONS"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "month_end_marker",
+        "rebalance_window",
+        "quarter_end_marker"
+      ],
+      "evaluation_tags": [
+        "month_end",
+        "quarter_end"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Derived from NYSE 2026 holiday calendar",
+      "notes_md": "Calendar marker only. Do not assume signal value until testing demonstrates usefulness."
+    }
+  ]
+}

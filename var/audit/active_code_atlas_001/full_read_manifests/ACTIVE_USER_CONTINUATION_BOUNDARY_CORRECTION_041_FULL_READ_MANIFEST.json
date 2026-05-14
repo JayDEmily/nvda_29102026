@@ -1,0 +1,126 @@
+{
+  "created_utc": "2026-05-13T00:00:00+00:00",
+  "target": "ACTIVE_USER_CONTINUATION_BOUNDARY_CORRECTION_041",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 185670,
+      "line_count": 538,
+      "sha256": "c4981d5b386f37b4ee62d7dcb3915e40b391557c88ecfbf501d1eb14f804e230",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 538
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_REPORT.json",
+      "byte_count": 5210,
+      "line_count": 116,
+      "sha256": "4b328f461c170fb5f97a6d3df413ec2edcd5ccf45effc64838f45e19ae1b0beb",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/receipts/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_RECEIPT.md",
+      "byte_count": 2479,
+      "line_count": 46,
+      "sha256": "120e995f4bd668850152d5be5845bc5760a02fa663e9cdc69d17b07623e78c46",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 46
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_FULL_READ_MANIFEST.json",
+      "byte_count": 3872,
+      "line_count": 96,
+      "sha256": "950fb9d169f6104c147ab8d1b475a0006f9072436e7ad29d474c103de97b3ac5",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 96
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/user_continuation_boundary_correction_041/reports/ACTIVE_USER_CONTINUATION_BOUNDARY_CORRECTION_041_REPORT.json",
+      "byte_count": 3891,
+      "line_count": 91,
+      "sha256": "04044b866f169969028c7d9cf43bffd18f2eed0436a4f6014f7039487415f0ed",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 91
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/user_continuation_boundary_correction_041/receipts/ACTIVE_USER_CONTINUATION_BOUNDARY_CORRECTION_041_RECEIPT.md",
+      "byte_count": 1548,
+      "line_count": 35,
+      "sha256": "2e26b7866d05c62fda2c53d6adee5040528f6aa2795d0ca00390bdcc5141a57a",
+      "read_method": "manual_full_file_read_plus_current_target_generated_artifact_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 35
+        }
+      ],
+      "notes": "Current target user continuation-boundary correction pass; material file included for ledger/report/receipt proof."
+    }
+  ]
+}

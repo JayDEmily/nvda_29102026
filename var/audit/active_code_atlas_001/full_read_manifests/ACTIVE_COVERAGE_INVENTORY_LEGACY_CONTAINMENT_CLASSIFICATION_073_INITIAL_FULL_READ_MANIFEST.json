@@ -1,0 +1,426 @@
+{
+  "created_utc": "2026-05-13T05:24:57Z",
+  "target": "ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073_INITIAL",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 214784,
+      "line_count": 580,
+      "sha256": "88d14cc61ca6db8037b91fe9cb681ee2605e3eb60caf20d0f0b9f1ec60dcc81a",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 580
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 76
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 84
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 81
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "byte_count": 5587,
+      "line_count": 147,
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 147
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 202
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "byte_count": 1944,
+      "line_count": 50,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 50
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/vocabulary/vocabulary_registry.md",
+      "byte_count": 2244,
+      "line_count": 79,
+      "sha256": "765496d0603adbf2ad467fdc818cdb5a206fe7f680ee0ef2cceeb343ab1920c1",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 758
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 24479,
+      "line_count": 195,
+      "sha256": "24aca6a38d768c5b9202b60d5aa25b8f7aab0397598565d456a8d3aa3d4d6267",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 807
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3561
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "legacy_import/README.md",
+      "byte_count": 1246,
+      "line_count": 30,
+      "sha256": "2dc89be3b4a279e76bc5e66826e92628d3f2861a42c7e28a873418f970ee19e6",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 30
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "pyproject.toml",
+      "byte_count": 1223,
+      "line_count": 70,
+      "sha256": "5cad081faececb68712b30b00b0caf572e36939135baa4f80d4f57fd965f4184",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 70
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+      "byte_count": 1790,
+      "line_count": 50,
+      "sha256": "432fed82847ba4c3468fdc3d8b2c75873cf735dd751da3e84135b314fecc9469",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 50
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py",
+      "byte_count": 2612,
+      "line_count": 83,
+      "sha256": "c8e4e3459a19b4f6cff6529008cb81d7d8db0ca77c6a919f6f812ab096ed7c14",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 83
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py",
+      "byte_count": 5590,
+      "line_count": 164,
+      "sha256": "74ff66c78eec6bfcd365019b7d24982eefc29b16d3e3e3b94af1741279b5edc6",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 164
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py",
+      "byte_count": 2126,
+      "line_count": 61,
+      "sha256": "c1cca4dfddcbaf757d1b150e261044c9103a3468b83d1ac9ffb48671e021c6e4",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 61
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+      "byte_count": 3994,
+      "line_count": 102,
+      "sha256": "a3016ac2a2b1ce3bec322c1a13bca32c2c38eadb9407dd29ceb97f273a86df4a",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 102
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+      "byte_count": 3163,
+      "line_count": 94,
+      "sha256": "dd4a7fcbb935ddcf763e8f8dd77dbc0d5d2180c57be3a5f4f636c6acdf717546",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 94
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+      "byte_count": 4118,
+      "line_count": 113,
+      "sha256": "282cb3e763d369c2005a157f42fe0b5af6e264b48cf53a72b6da3dff7da36ae7",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 113
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py",
+      "byte_count": 3817,
+      "line_count": 112,
+      "sha256": "9062ffb9043aa8cd596506465aa63e27d81970cafa315cae9693ab15acc695a8",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 112
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py",
+      "byte_count": 2590,
+      "line_count": 82,
+      "sha256": "e318099236ee2092f429de0359b676aaad762ede4f3dc22726a42cc2788a7e7b",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 82
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    },
+    {
+      "path": "tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py",
+      "byte_count": 2039,
+      "line_count": 62,
+      "sha256": "70e285e8e601ef43794433802dc213d950c63554167c4d03070302ed12a03de4",
+      "read_method": "manual_full_file_read_for_coverage_inventory_legacy_containment_classification_073_initial",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 62
+        }
+      ],
+      "notes": "Initial manifest before containment-test classification mutation."
+    }
+  ]
+}

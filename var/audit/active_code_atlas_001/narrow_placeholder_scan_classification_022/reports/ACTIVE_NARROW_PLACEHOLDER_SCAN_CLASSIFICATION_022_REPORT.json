@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022",
+  "status": "PASS",
+  "scope": "classify_post_021_narrow_placeholder_scan",
+  "scan_file": "/tmp/narrow_placeholder_scan_after_021.txt",
+  "raw_scan_sha256": "bc199af42c26689d06878b3dc952691a7c6f7d4f9766cb31d1fad26f7d6ec339",
+  "scan_hit_count": 14,
+  "category_counts": {
+    "validator_pass_field_name_not_placeholder": 1,
+    "identifier_or_path_string": 2,
+    "ordinary_control_language_lowest_authority": 1,
+    "current_closure_wording_references_closed_stale_phrase": 2,
+    "historical_ledger_identifier_or_pre_repair_evidence": 5,
+    "historical_full_read_caveat_already_superseded": 2,
+    "manifest_note_describing_scan_scope": 1
+  },
+  "new_live_control_defect_selected": false,
+  "classification_records": [
+    {
+      "scan_line_number": 1,
+      "source_location": "var/audit/active_code_atlas_001/durability_checkpoint_index_012/reports/ACTIVE_DURABILITY_CHECKPOINT_INDEX_012_REPORT.json:31",
+      "category": "validator_pass_field_name_not_placeholder"
+    },
+    {
+      "scan_line_number": 2,
+      "source_location": "PLANS.md:5",
+      "category": "identifier_or_path_string"
+    },
+    {
+      "scan_line_number": 3,
+      "source_location": "PLANS.md:115",
+      "category": "ordinary_control_language_lowest_authority"
+    },
+    {
+      "scan_line_number": 4,
+      "source_location": "PLANS.md:565",
+      "category": "identifier_or_path_string"
+    },
+    {
+      "scan_line_number": 5,
+      "source_location": "ROADMAP_LEDGER.md:94",
+      "category": "current_closure_wording_references_closed_stale_phrase"
+    },
+    {
+      "scan_line_number": 6,
+      "source_location": "ROADMAP_LEDGER.md:340",
+      "category": "historical_ledger_identifier_or_pre_repair_evidence"
+    },
+    {
+      "scan_line_number": 7,
+      "source_location": "ROADMAP_LEDGER.md:341",
+      "category": "historical_ledger_identifier_or_pre_repair_evidence"
+    },
+    {
+      "scan_line_number": 8,
+      "source_location": "ROADMAP_LEDGER.md:377",
+      "category": "historical_ledger_identifier_or_pre_repair_evidence"
+    },
+    {
+      "scan_line_number": 9,
+      "source_location": "ROADMAP_LEDGER.md:402",
+      "category": "historical_ledger_identifier_or_pre_repair_evidence"
+    },
+    {
+      "scan_line_number": 10,
+      "source_location": "ROADMAP_LEDGER.md:404",
+      "category": "historical_ledger_identifier_or_pre_repair_evidence"
+    },
+    {
+      "scan_line_number": 11,
+      "source_location": "ROADMAP_LEDGER.md:456",
+      "category": "current_closure_wording_references_closed_stale_phrase"
+    },
+    {
+      "scan_line_number": 12,
+      "source_location": "var/audit/active_code_atlas_001/historical_full_read_caveat_supersession_008/reports/ACTIVE_HISTORICAL_FULL_READ_CAVEAT_SUPERSESSION_008_REPORT.json:17",
+      "category": "historical_full_read_caveat_already_superseded"
+    },
+    {
+      "scan_line_number": 13,
+      "source_location": "var/audit/active_code_atlas_001/handoff_control_repair_001/receipts/ACTIVE_CODE_ATLAS_HANDOFF_CONTROL_REPAIR_001_RECEIPT.md:172",
+      "category": "historical_full_read_caveat_already_superseded"
+    },
+    {
+      "scan_line_number": 14,
+      "source_location": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_STALE_PROOF_RERUN_WORDING_CLOSURE_021_FULL_READ_MANIFEST.json:40",
+      "category": "manifest_note_describing_scan_scope"
+    }
+  ],
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_23_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

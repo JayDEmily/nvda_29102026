@@ -1,0 +1,19 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_raw_bundle_loader_requires_source_observation_truth_not_capture_clock_only _
+
+    def test_raw_bundle_loader_requires_source_observation_truth_not_capture_clock_only() -> None:
+        ingress_module = _require_module("nvda_desk.ingress.raw_bundle_loader")
+        loader = _require_attr(ingress_module, "RawBundleLoader")()
+        capture_time = datetime(2026, 4, 21, 9, 31, 45)
+    
+>       with pytest.raises(
+            ValueError,
+            match="source temporal standard requires source_time_utc or source_date",
+        ):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/ingress/test_raw_bundle_loader_surface.py:101: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/ingress/test_raw_bundle_loader_surface.py::test_raw_bundle_loader_requires_source_observation_truth_not_capture_clock_only - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed, 2 passed in 1.27s

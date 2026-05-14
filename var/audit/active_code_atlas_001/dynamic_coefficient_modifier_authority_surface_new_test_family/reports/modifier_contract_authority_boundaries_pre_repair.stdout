@@ -1,0 +1,107 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 5 items
+
+tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py .. [ 40%]
+.FF                                                                      [100%]
+
+=================================== FAILURES ===================================
+__ test_modifier_runtime_packet_detaches_caller_owned_lists_and_coefficients ___
+
+    def test_modifier_runtime_packet_detaches_caller_owned_lists_and_coefficients() -> None:
+        """Runtime packets must not retain caller-owned modifier lineage containers."""
+    
+        active_modifier_ids = ["negative_gamma_stress"]
+        policy_ids = ["negative_gamma_stress"]
+        resolved_surfaces = ["max_risk_per_trade"]
+        resolved = _resolved_coefficient()
+    
+        packet = ModifierRuntimePacket(
+            packet_id="modifier-packet-fixture",
+            active_modifier_ids=active_modifier_ids,
+            policy_ids=policy_ids,
+            resolved_surfaces=resolved_surfaces,
+            resolved_coefficients=[resolved],
+        )
+    
+        active_modifier_ids.append("mutated")
+        policy_ids.append("mutated")
+        resolved_surfaces.append("mutated")
+        resolved.modifier_inputs.append("mutated")
+    
+        assert packet.active_modifier_ids == ["negative_gamma_stress"]
+        assert packet.policy_ids == ["negative_gamma_stress"]
+        assert packet.resolved_surfaces == ["max_risk_per_trade"]
+>       assert packet.resolved_coefficients[0].modifier_inputs == ["negative_gamma_stress"]
+E       AssertionError: assert ['negative_ga...s', 'mutated'] == ['negative_gamma_stress']
+E         
+E         Left contains one more item: 'mutated'
+E         
+E         Full diff:
+E           [
+E               'negative_gamma_stress',
+E         +     'mutated',
+E           ]
+
+tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py:116: AssertionError
+__ test_modifier_replay_receipt_detaches_caller_owned_lists_and_coefficients ___
+
+    def test_modifier_replay_receipt_detaches_caller_owned_lists_and_coefficients() -> None:
+        """Replay receipts must preserve immutable replay lineage after construction."""
+    
+        active_modifier_ids = ["negative_gamma_stress"]
+        closed_authority_classes = ["capital_deployment_decision"]
+        resolved = _resolved_coefficient()
+    
+        receipt = ModifierReplayReceipt(
+            authority_id="coefficient_authority.v1",
+            schema_version="v1",
+            owner_stage="posture",
+            active_modifier_ids=active_modifier_ids,
+            resolved_coefficients=[resolved],
+            replay_fingerprint="fixture-fingerprint",
+            closed_authority_classes=closed_authority_classes,
+        )
+    
+        active_modifier_ids.append("mutated")
+        closed_authority_classes.append("mutated")
+        resolved.modifier_inputs.append("mutated")
+    
+        assert receipt.active_modifier_ids == ["negative_gamma_stress"]
+        assert receipt.closed_authority_classes == ["capital_deployment_decision"]
+>       assert receipt.resolved_coefficients[0].modifier_inputs == ["negative_gamma_stress"]
+E       AssertionError: assert ['negative_ga...s', 'mutated'] == ['negative_gamma_stress']
+E         
+E         Left contains one more item: 'mutated'
+E         
+E         Full diff:
+E           [
+E               'negative_gamma_stress',
+E         +     'mutated',
+E           ]
+
+tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py:142: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py::test_modifier_runtime_packet_detaches_caller_owned_lists_and_coefficients - AssertionError: assert ['negative_ga...s', 'mutated'] == ['negative_gamma_stress']
+  
+  Left contains one more item: 'mutated'
+  
+  Full diff:
+    [
+        'negative_gamma_stress',
+  +     'mutated',
+    ]
+FAILED tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py::test_modifier_replay_receipt_detaches_caller_owned_lists_and_coefficients - AssertionError: assert ['negative_ga...s', 'mutated'] == ['negative_gamma_stress']
+  
+  Left contains one more item: 'mutated'
+  
+  Full diff:
+    [
+        'negative_gamma_stress',
+  +     'mutated',
+    ]
+========================= 2 failed, 3 passed in 1.04s ==========================

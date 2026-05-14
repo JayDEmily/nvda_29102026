@@ -1,0 +1,32 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_active_work/source_snapshot
+configfile: pyproject.toml
+plugins: metadata-3.1.1, anyio-4.13.0, json-report-1.5.0, Faker-40.1.2, asyncio-1.3.0, cov-7.0.0, ddtrace-4.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 113 items
+
+tests/tier_a/vocabulary/test_vocabulary_schema_contract.py ..            [  1%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py .. [  3%]
+....                                                                     [  7%]
+tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py ....... [ 13%]
+.                                                                        [ 14%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py . [ 15%]
+.......                                                                  [ 21%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py . [ 22%]
+....                                                                     [ 25%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py . [ 26%]
+............                                                             [ 37%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py . [ 38%]
+........                                                                 [ 45%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py . [ 46%]
+..............                                                           [ 58%]
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py .    [ 59%]
+tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py .     [ 60%]
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py ..... [ 64%]
+.......................................                                  [ 99%]
+tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py .            [100%]
+
+============================= 113 passed in 21.98s =============================
+proof_block_id=vocabulary_governance_conformance_candidate
+command=python -m pytest tests/tier_a/vocabulary/test_vocabulary_schema_contract.py tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py

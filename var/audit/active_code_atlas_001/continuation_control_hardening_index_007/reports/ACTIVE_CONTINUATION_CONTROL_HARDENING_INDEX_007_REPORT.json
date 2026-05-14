@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_CONTINUATION_CONTROL_HARDENING_INDEX_007",
+  "status": "PASS",
+  "scope": "handoff_control_index_for_continuation_law_hardening",
+  "latest_head_before_pass": "4a7903f8d62f8938d19198b940d1b54700e5a0df",
+  "branch": "worker/handoff-control-repair-c466",
+  "recent_commit_chain": [
+    "4a7903f Classify continuation control scan",
+    "4f9eb24 Align official-source escalation routing",
+    "92bbc64 Supersede historical stop wording",
+    "d68aae6 Align full-read blocker routing",
+    "d3c2b1b Align continuation stop conditions",
+    "63dea1a Record user-directed continuation law",
+    "b3fceb9 Record primary queue normalisation",
+    "92643e3 Record post-row044 bounded linkage reconciliation",
+    "61200f7 Create bounded linkage-gap intake packet",
+    "89c9730 Repair c466 handoff control surface"
+  ],
+  "continuation_control_commits": [
+    {
+      "short": "63dea1a",
+      "title": "Record user-directed continuation law",
+      "purpose": "root AGENTS continuation law"
+    },
+    {
+      "short": "d3c2b1b",
+      "title": "Align continuation stop conditions",
+      "purpose": "AGENTS/PLANS bounded-leaf blocker routing"
+    },
+    {
+      "short": "d68aae6",
+      "title": "Align full-read blocker routing",
+      "purpose": "full-read infeasibility is leaf blocker not user stop"
+    },
+    {
+      "short": "92bbc64",
+      "title": "Supersede historical stop wording",
+      "purpose": "historical rows/receipts no longer live stop authority"
+    },
+    {
+      "short": "4f9eb24",
+      "title": "Align official-source escalation routing",
+      "purpose": "vendor/API uncertainty is selected-leaf blocker, not user stop"
+    },
+    {
+      "short": "4a7903f",
+      "title": "Classify continuation control scan",
+      "purpose": "post-005 scan classification selected no new live contradiction"
+    }
+  ],
+  "durability_checkpoint": {
+    "path": "/mnt/data/NVDA10_2_CONTINUATION_CONTROL_HARDENING_4a7903f_2026-05-12.tar.gz",
+    "sha256": "f64702115746f7c83ee4d231130f1fdae004a2f629f96515d904161581a11935",
+    "smoke": "PASS: clean status, fsck 0, skip_archive_count 11, physical_archive_count 0, seven manifests validate PASS"
+  },
+  "live_boundaries": {
+    "runtime_source_test_refactor_dependency_vocabulary_original_atlas_bridge_generated_slice_mutation": "closed_unless_explicitly_opened",
+    "archive_payload_restore_or_reliance": "closed_unless_live_control_routes_archive_into_scope",
+    "ordinary_gates_proofs_commits_packages": "continuation_points_not_user_stops"
+  },
+  "current_selected_target_after_index": "continue lawful control/audit/evidence/manifest/receipt/ledger hardening under AGENTS.md section 1A",
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_8_stale_hash_mismatch_count_0_full_read_false_count_0"
+  },
+  "latest_head_after_previous_pass": "4a7903f8d62f8938d19198b940d1b54700e5a0df"
+}

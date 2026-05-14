@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_DEPENDENCY_ORDER_CURRENT_TARGET_WORDING_ALIGNMENT_027",
+  "status": "PASS",
+  "scope": "align_ROADMAP_dependency_order_row_19_current_target_wording",
+  "selected_live_control_defect": true,
+  "defect": "ROADMAP_LEDGER.md section 2A row 19 still described the post-row044 reconciliation target as the current live target even though the current pointer had advanced through later control/audit leaves.",
+  "repair_records": [
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "location": "section 2A row 19",
+      "change": "changed stale current-live-target wording to recorded-history wording and directed live target selection to the current pointer table"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "location": "current pointer and history row",
+      "change": "advanced pointer to ACTIVE_DEPENDENCY_ORDER_CURRENT_TARGET_WORDING_ALIGNMENT_027_RECORDED"
+    },
+    {
+      "path": "PLANS.md",
+      "location": "status/current workstream",
+      "change": "recorded dependency-order current-target wording alignment 027 as control/audit leaf"
+    }
+  ],
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "selected_current_manifest_validation_pre_final_report_update": "PASS_manifest_count_1_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

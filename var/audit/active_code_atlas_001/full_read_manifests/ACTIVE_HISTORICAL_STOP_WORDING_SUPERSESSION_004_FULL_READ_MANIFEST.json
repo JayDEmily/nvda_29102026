@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004",
+  "manifest_scope": "historical_stop_wording_supersession_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 9,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation law authority read for supersession classification."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_PLANS_CURRENT_WORKSTREAM_BOUNDARY_ALIGNMENT_009 proof passed."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_DURABILITY_CHECKPOINT_INDEX_010 proof passed."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/receipts/ACTIVE_CODE_ATLAS_EXECUTION_CADENCE_PLAN_CLARIFICATION_RECEIPT.md",
+      "material_class": "historical_receipt",
+      "byte_count": 1155,
+      "line_count": 21,
+      "sha256": "8fe6f64e5696766393be04264215fb8e15266b28d92e152537719f792a21932e",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 21
+        }
+      ],
+      "notes": "Historical stale stop wording read and classified as superseded evidence."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_stop_wording_supersession_004/reports/historical_stop_wording_scan.txt",
+      "material_class": "scan_report",
+      "byte_count": 3240,
+      "line_count": 6,
+      "sha256": "5e10beec1ba80aab2aeeea8e24c2f310ff9b1625939d53876ec21feb5266092f",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 6
+        }
+      ],
+      "notes": "Historical wording scan read."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_stop_wording_supersession_004/reports/ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004_REPORT.json",
+      "material_class": "report",
+      "byte_count": 5022,
+      "line_count": 63,
+      "sha256": "fe2a58be873a2678d36640ade029f56117089cc4f081d28ee50584f91475efa1",
+      "read_method": "line_numbered_full_read_in_worker_thread_after_proof_update",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 63
+        }
+      ],
+      "notes": "Re-read after proof-result update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_stop_wording_supersession_004/receipts/ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 2069,
+      "line_count": 36,
+      "sha256": "c8915431d50807a29e307d1f9f68c8f96f79a76f1874c222d37a97a17e2477d4",
+      "read_method": "line_numbered_full_read_in_worker_thread_after_proof_update",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 36
+        }
+      ],
+      "notes": "Re-read after proof-result update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_stop_wording_supersession_004/reports/ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004_PROOF.txt",
+      "material_class": "proof_output",
+      "byte_count": 626,
+      "line_count": 22,
+      "sha256": "c1ae585d106a083801342fd51e78f00a7bba84158e662dc963cd1fc735b15962",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 22
+        }
+      ],
+      "notes": "Captured proof output for this pass."
+    }
+  ],
+  "boundaries": [
+    "Historical receipts are not rewritten.",
+    "No runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation opened.",
+    "No _archive payload restored or used."
+  ]
+}

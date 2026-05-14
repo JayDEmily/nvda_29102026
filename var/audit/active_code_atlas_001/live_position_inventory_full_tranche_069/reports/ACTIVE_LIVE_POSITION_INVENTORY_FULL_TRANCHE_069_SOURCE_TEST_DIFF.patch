@@ -1,0 +1,74 @@
+diff --git a/src/nvda_desk/services/downstream_live_inventory_service.py b/src/nvda_desk/services/downstream_live_inventory_service.py
+index 2b2f265..59462b8 100644
+--- a/src/nvda_desk/services/downstream_live_inventory_service.py
++++ b/src/nvda_desk/services/downstream_live_inventory_service.py
+@@ -12,6 +12,16 @@ class DownstreamLiveInventoryService(_DownstreamLiveInventoryService):
+     """Workbook-owned alias of the bounded downstream live-inventory service."""
+ 
+     def build_live_snapshot(
+-        self, live_ids: list[str] | None = None
++        self,
++        live_ids: list[str] | None = None,
++        *,
++        inventory_id: str = "live-inventory",
++        capital_snapshot_id: str | None = None,
++        receipt_id: str | None = None,
+     ) -> DownstreamLiveInventorySnapshot:
+-        return super().build_live_snapshot(live_ids=live_ids)
++        return super().build_live_snapshot(
++            live_ids=live_ids,
++            inventory_id=inventory_id,
++            capital_snapshot_id=capital_snapshot_id,
++            receipt_id=receipt_id,
++        )
+diff --git a/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py b/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
+index 39c5d38..1bd0aa4 100644
+--- a/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
++++ b/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
+@@ -7,6 +7,9 @@ from pathlib import Path
+ import pytest
+ 
+ from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++from nvda_desk.services.downstream_live_inventory_service import (
++    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
++)
+ from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+ from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+ from nvda_desk.repositories.position_repository import PositionRepository
+@@ -157,3 +160,36 @@ def test_live_inventory_reads_requested_capital_snapshot_not_latest_snapshot() -
+     assert snapshot.capital_state is not None
+     assert snapshot.capital_state.snapshot_id == "cap-1"
+     assert snapshot.capital_state.source_payload == {"cash": 1000.0}
++
++
++def test_workbook_live_inventory_wrapper_preserves_bounded_readback_inputs() -> None:
++    positions = PositionRepository()
++    capital = CapitalStateRepository()
++    receipts = ReceiptLedger()
++    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 3.0})
++    capital.write_snapshot("cap-older", {"cash": 1000.0})
++    capital.write_snapshot("cap-selected", {"cash": 900.0})
++
++    snapshot = WorkbookDownstreamLiveInventoryService(
++        position_repository=positions,
++        capital_state_repository=capital,
++        receipt_ledger=receipts,
++    ).build_live_snapshot(
++        live_ids=[" pos-1 "],
++        inventory_id=" inv-1 ",
++        capital_snapshot_id=" cap-selected ",
++        receipt_id=" receipt-1 ",
++    )
++
++    assert snapshot.inventory_id == "inv-1"
++    assert snapshot.live_ids == ["pos-1"]
++    assert snapshot.capital_state is not None
++    assert snapshot.capital_state.snapshot_id == "cap-selected"
++    assert snapshot.inventory_receipt is not None
++    assert snapshot.inventory_receipt.receipt_id == "receipt-1"
++    assert snapshot.inventory_receipt.inventory_id == "inv-1"
++    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-selected"
++    stored = receipts.read_receipt("receipt-1")
++    assert stored is not None
++    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
++

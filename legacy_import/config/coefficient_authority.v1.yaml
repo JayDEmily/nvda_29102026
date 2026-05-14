@@ -1,0 +1,318 @@
+schema_version: "coefficient_authority.v1"
+authority_version: "2026-03-31.tranche1"
+notes:
+  - "Gate 123 typed authority surface for the admitted tranche-one coefficient universe."
+  - "The governed file is narrower than the salvage coefficients registry on purpose."
+  - "Mutable runtime surfaces activate in Gate 124; temporal thresholds and timing parameters activate in Gate 126."
+
+mutable_numeric_surfaces:
+  - surface_id: "entry_gate_score_floor"
+    owner_stage: "eligibility"
+    units: "score_fraction_0_to_1"
+    bound_class: "score_threshold"
+    asymmetry: "narrow_bidirectional"
+    baseline: 0.65
+    minimum: 0.50
+    maximum: 0.85
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["clock_envelope", "event_window_state", "signal_conflict_state", "permission_state"]
+    activation_gate: "Gate 124"
+    notes:
+      - "Eligibility floor stays inside score space rather than free-form optimisation space."
+  - surface_id: "zone_score_threshold"
+    owner_stage: "eligibility"
+    units: "score_fraction_0_to_1"
+    bound_class: "score_threshold"
+    asymmetry: "narrow_bidirectional"
+    baseline: 0.50
+    minimum: 0.35
+    maximum: 0.80
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["clock_envelope", "dealer_pressure_state", "signal_conflict_state", "permission_state"]
+    activation_gate: "Gate 124"
+  - surface_id: "distance_to_vwap_soft_limit_pct"
+    owner_stage: "execution"
+    units: "percent"
+    bound_class: "one_sided_clamp"
+    asymmetry: "narrow_bidirectional"
+    baseline: 1.50
+    minimum: 0.40
+    maximum: 3.00
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["clock_envelope", "gamma_state", "dealer_pressure_state", "options_behavior_cluster"]
+    activation_gate: "Gate 124"
+  - surface_id: "risk_vix_caution_threshold"
+    owner_stage: "posture"
+    units: "volatility_index_points"
+    bound_class: "score_threshold"
+    asymmetry: "narrow_bidirectional"
+    baseline: 24.0
+    minimum: 18.0
+    maximum: 40.0
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["volatility_regime", "event_window_state", "signal_conflict_state"]
+    activation_gate: "Gate 124"
+  - surface_id: "risk_vix_hot_threshold"
+    owner_stage: "posture"
+    units: "volatility_index_points"
+    bound_class: "score_threshold"
+    asymmetry: "narrow_bidirectional"
+    baseline: 32.0
+    minimum: 24.0
+    maximum: 50.0
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["volatility_regime", "event_window_state", "signal_conflict_state"]
+    activation_gate: "Gate 124"
+  - surface_id: "max_risk_per_trade"
+    owner_stage: "execution"
+    units: "percent"
+    bound_class: "one_sided_clamp"
+    asymmetry: "downward_friendly"
+    baseline: 0.35
+    minimum: 0.10
+    maximum: 0.55
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["inventory_posture_state", "fresh_vs_inventory_state", "permission_state", "gamma_state"]
+    activation_gate: "Gate 124"
+  - surface_id: "target_fresh_deployable_pct"
+    owner_stage: "execution"
+    units: "percent"
+    bound_class: "one_sided_clamp"
+    asymmetry: "downward_only"
+    baseline: 55.0
+    minimum: 0.0
+    maximum: 55.0
+    transform_family: "state_conditioned_modifier"
+    allowed_upstream_drivers: ["inventory_posture_state", "fresh_vs_inventory_state", "permission_state", "capital_lockup_state"]
+    activation_gate: "Gate 124"
+
+mutable_boolean_surfaces:
+  - surface_id: "hedge_required"
+    owner_stage: "execution"
+    units: "boolean_flag"
+    bound_class: "boolean_requirement"
+    asymmetry: "boolean_only"
+    baseline: false
+    transform_family: "boolean_override"
+    allowed_upstream_drivers: ["gamma_state", "signal_conflict_state", "permission_state"]
+    activation_gate: "Gate 124"
+
+temporal_thresholds:
+  - threshold_id: "open_disorder_relvol_min"
+    owner_stage: "temporal"
+    units: "ratio"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 1.40
+    minimum: 1.10
+    maximum: 1.90
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["relative_volume_ratio"]
+    workbook_ref: "Temporal_Step1_Framework!H6:I6"
+    activation_gate: "Gate 126"
+  - threshold_id: "open_disorder_rv5_bps_min"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 80
+    minimum: 50
+    maximum: 140
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["rv5_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H7:I7"
+    activation_gate: "Gate 126"
+  - threshold_id: "open_disorder_vwap_dist_bps_min"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 60
+    minimum: 35
+    maximum: 110
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["distance_to_vwap_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H8:I8"
+    activation_gate: "Gate 126"
+  - threshold_id: "anchor_vwap_dist_bps_max"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 35
+    minimum: 15
+    maximum: 60
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["distance_to_vwap_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H9:I9"
+    activation_gate: "Gate 126"
+  - threshold_id: "anchor_rv5_bps_max"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 60
+    minimum: 35
+    maximum: 90
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["rv5_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H10:I10"
+    activation_gate: "Gate 126"
+  - threshold_id: "anchor_relvol_min"
+    owner_stage: "temporal"
+    units: "ratio"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 0.90
+    minimum: 0.60
+    maximum: 1.10
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["relative_volume_ratio"]
+    workbook_ref: "Temporal_Step1_Framework!H11:I11"
+    activation_gate: "Gate 126"
+  - threshold_id: "anchor_relvol_max"
+    owner_stage: "temporal"
+    units: "ratio"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 1.40
+    minimum: 1.20
+    maximum: 1.70
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["relative_volume_ratio"]
+    workbook_ref: "Temporal_Step1_Framework!H12:I12"
+    activation_gate: "Gate 126"
+  - threshold_id: "anchor_impulse_age_min"
+    owner_stage: "temporal"
+    units: "minutes"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 5
+    minimum: 2
+    maximum: 10
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["impulse_age_minutes"]
+    workbook_ref: "Temporal_Step1_Framework!H13:I13"
+    activation_gate: "Gate 126"
+  - threshold_id: "compression_rv5_bps_max"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 35
+    minimum: 15
+    maximum: 55
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["rv5_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H14:I14"
+    activation_gate: "Gate 126"
+  - threshold_id: "compression_range5_bps_max"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 40
+    minimum: 20
+    maximum: 65
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["range5_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H15:I15"
+    activation_gate: "Gate 126"
+  - threshold_id: "compression_vwap_dist_bps_max"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 25
+    minimum: 10
+    maximum: 45
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["distance_to_vwap_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H16:I16"
+    activation_gate: "Gate 126"
+  - threshold_id: "compression_relvol_max"
+    owner_stage: "temporal"
+    units: "ratio"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 0.90
+    minimum: 0.60
+    maximum: 1.10
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["relative_volume_ratio"]
+    workbook_ref: "Temporal_Step1_Framework!H17:I17"
+    activation_gate: "Gate 126"
+  - threshold_id: "trend_vwap_slope_bps_min"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 15
+    minimum: 8
+    maximum: 30
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["vwap_slope_5m_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H18:I18"
+    activation_gate: "Gate 126"
+  - threshold_id: "trend_vwap_dist_bps_min"
+    owner_stage: "temporal"
+    units: "basis_points"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 30
+    minimum: 15
+    maximum: 55
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["distance_to_vwap_bps"]
+    workbook_ref: "Temporal_Step1_Framework!H19:I19"
+    activation_gate: "Gate 126"
+  - threshold_id: "trend_relvol_min"
+    owner_stage: "temporal"
+    units: "ratio"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 1.05
+    minimum: 0.90
+    maximum: 1.35
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["relative_volume_ratio"]
+    workbook_ref: "Temporal_Step1_Framework!H20:I20"
+    activation_gate: "Gate 126"
+  - threshold_id: "trend_impulse_age_max"
+    owner_stage: "temporal"
+    units: "minutes"
+    bound_class: "state_definition_threshold"
+    asymmetry: "semantic_threshold"
+    baseline: 5
+    minimum: 2
+    maximum: 10
+    transform_family: "threshold_compare"
+    allowed_upstream_drivers: ["impulse_age_minutes"]
+    workbook_ref: "Temporal_Step1_Framework!H21:I21"
+    activation_gate: "Gate 126"
+
+timing_parameters:
+  - parameter_id: "power_hour_window_min"
+    owner_stage: "temporal"
+    units: "minutes"
+    bound_class: "timing_parameter"
+    asymmetry: "clock_window"
+    baseline: 60
+    minimum: 45
+    maximum: 75
+    transform_family: "clock_window"
+    allowed_upstream_drivers: ["minutes_to_close"]
+    workbook_ref: "Temporal_Step1_Framework!H22:I22"
+    activation_gate: "Gate 126"
+  - parameter_id: "unwind_window_min"
+    owner_stage: "temporal"
+    units: "minutes"
+    bound_class: "timing_parameter"
+    asymmetry: "clock_window"
+    baseline: 30
+    minimum: 20
+    maximum: 45
+    transform_family: "clock_window"
+    allowed_upstream_drivers: ["minutes_to_close"]
+    workbook_ref: "Temporal_Step1_Framework!H23:I23"
+    activation_gate: "Gate 126"

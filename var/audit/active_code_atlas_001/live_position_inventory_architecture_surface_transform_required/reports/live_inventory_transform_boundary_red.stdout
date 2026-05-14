@@ -1,0 +1,81 @@
+..FFF.                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_live_inventory_contracts_reject_transform_required_donor_payload_keys[LivePositionState-identity_field0] _
+
+model_type = <class 'nvda_desk.contracts.downstream.LivePositionState'>
+identity_field = {'position_id': 'pos-1'}
+
+    @pytest.mark.parametrize(
+        ("model_type", "identity_field"),
+        (
+            (LivePositionState, {"position_id": "pos-1"}),
+            (LiveCapitalState, {"snapshot_id": "cap-1"}),
+        ),
+    )
+    def test_live_inventory_contracts_reject_transform_required_donor_payload_keys(
+        model_type, identity_field: dict[str, str]
+    ) -> None:
+        donor_payload = {
+            "symbol": "NVDA",
+            "metadata": {
+                "candidate_shape": "shadow_challenger",
+                "FillBiasAdjusterContractOutput": {"execution_context_score": 0.8},
+            },
+        }
+
+>       with pytest.raises(ValidationError, match="transform-required donor"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py:139: Failed
+_ test_live_inventory_contracts_reject_transform_required_donor_payload_keys[LiveCapitalState-identity_field1] _
+
+model_type = <class 'nvda_desk.contracts.downstream.LiveCapitalState'>
+identity_field = {'snapshot_id': 'cap-1'}
+
+    @pytest.mark.parametrize(
+        ("model_type", "identity_field"),
+        (
+            (LivePositionState, {"position_id": "pos-1"}),
+            (LiveCapitalState, {"snapshot_id": "cap-1"}),
+        ),
+    )
+    def test_live_inventory_contracts_reject_transform_required_donor_payload_keys(
+        model_type, identity_field: dict[str, str]
+    ) -> None:
+        donor_payload = {
+            "symbol": "NVDA",
+            "metadata": {
+                "candidate_shape": "shadow_challenger",
+                "FillBiasAdjusterContractOutput": {"execution_context_score": 0.8},
+            },
+        }
+
+>       with pytest.raises(ValidationError, match="transform-required donor"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py:139: Failed
+_ test_live_inventory_snapshot_builder_rejects_repository_donor_transform_payloads _
+
+    def test_live_inventory_snapshot_builder_rejects_repository_donor_transform_payloads() -> None:
+        positions = PositionRepository()
+        positions.write_position(
+            "pos-1",
+            {
+                "symbol": "NVDA",
+                "declared_exposure": 1.0,
+                "metadata": {"fill_feedback_router": {"status": "donor-shape"}},
+            },
+        )
+
+>       with pytest.raises(ValidationError, match="transform-required donor"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py:154: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py::test_live_inventory_contracts_reject_transform_required_donor_payload_keys[LivePositionState-identity_field0] - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+FAILED tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py::test_live_inventory_contracts_reject_transform_required_donor_payload_keys[LiveCapitalState-identity_field1] - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+FAILED tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py::test_live_inventory_snapshot_builder_rejects_repository_donor_transform_payloads - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+3 failed, 3 passed in 0.23s

@@ -1,0 +1,17 @@
+vocabulary_governance_conformance_candidate	PASS	0	113 passed in 22.16s
+vocabulary_synonym_audit_clean_check	PASS	0	vocabulary_synonym_audit=PASS candidates=0
+vocabulary_candidate_review_clean_check	PASS	0	vocabulary_candidate_review=PASS blocked_candidates=0
+proof_executor_contract	PASS	0	19 passed in 17.87s
+persistence_ledgers_receipts_surface	PASS	0	27 passed in 0.36s
+support_spine_prepared_packet_review_surface	PASS	0	33 passed in 0.38s
+serial_desk_cognition_spine_surface	PASS	0	21 passed in 0.34s
+roadmap_external_source_api_ingress_authority_surface	PASS	0	17 passed in 0.38s
+live_position_inventory_architecture_surface	PASS	0	22 passed in 0.26s
+downstream_capital_deployment_authority_surface	PASS	0	25 passed in 0.24s
+parallel_risk_lane_authority_surface	PASS	0	33 passed in 0.45s
+financial_event_calendar_authority_surface	PASS	0	12 passed in 0.41s
+dynamic_coefficient_modifier_authority_surface	PASS	0	17 passed in 0.58s
+opening_placement_readiness_surface	PASS	0	11 passed in 0.21s
+playbook_library_architecture_surface	PASS	0	18 passed in 0.67s
+exit_close_architecture_surface	PASS	0	73 passed in 0.32s
+tier_a_remaining_coverage_inventory	PASS	0	50 passed in 0.81s

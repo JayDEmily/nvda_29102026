@@ -1,0 +1,909 @@
+diff --git a/NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md b/NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md
+index 6e39d7e..235bcd3 100644
+--- a/NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md
++++ b/NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md
+@@ -162,11 +162,11 @@ This replacement is conservative: no row is upgraded to `implemented` merely bec
+ | 5.10 | Playbook library architecture | playbook library authority. | `Provisional`. | `reserved`. | `src/nvda_desk/config/playbook_registry.py`; `src/nvda_desk/config/playbook_registry.example.yaml`; `src/nvda_desk/services/playbook_eligibility_service.py`; `src/nvda_desk/domain/eligibility/playbook_compilation.py` | `tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py` present; not run in this gate. | Blueprint status is `reserved`; target allocation requires later admissibility. | Planning/admissibility only; do not implement playbook library behaviour yet. |
+ | 5.11 | Downstream capital deployment authority | capital deployment authority. | `Locked`. | `placeholder`. | `src/nvda_desk/capital/authority.py`; `src/nvda_desk/domain/capital/deployment.py`; `src/nvda_desk/services/capital_deployment_service.py`; `src/nvda_desk/contracts/capital.py` | `tests/tier_a/capital_deployment/*` present; not run in this gate. | Blueprint status is `placeholder`; mature capital deployment behaviour is not established here. | Use tests-first downstream authority repair if opened by user. |
+ | 5.12 | Opening architecture and placement readiness | downstream opening authority. | `Provisional`. | `placeholder`. | `src/nvda_desk/downstream/opening.py`; `src/nvda_desk/services/downstream_opening_service.py`; `src/nvda_desk/domain/downstream/opening.py` | `tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py`; placement boundary tests present; not run in this gate. | Opening/placement readiness remains placeholder without current handoff proof. | Keep downstream opening as bounded future implementation target. |
+-| 5.13 | Live position and inventory architecture | live inventory and position authorities. | `Provisional`. | `placeholder`. | `src/nvda_desk/downstream/live_inventory.py`; `src/nvda_desk/domain/downstream/live_inventory.py`; `src/nvda_desk/repositories/position_repository.py`; `src/nvda_desk/repositories/capital_state_repository.py` | `tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py`; persistence repository tests present; not run in this gate. | Live state writer/reader consistency not proven here. | Require repository and fill-feedback invariant proof before upgrade. |
++| 5.13 | Live position and inventory architecture | live inventory and position authorities. | `Provisional`. | `placeholder`. | `src/nvda_desk/downstream/live_inventory.py`; `src/nvda_desk/services/downstream_live_inventory_service.py`; `src/nvda_desk/domain/downstream/live_inventory.py`; `src/nvda_desk/repositories/position_repository.py`; `src/nvda_desk/repositories/capital_state_repository.py`; `src/nvda_desk/runtime/orchestrator.py` | `tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py`; `tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py`; `tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py`; `tests/tier_a/runtime/test_runtime_orchestrator_surface.py`; persistence repository tests; `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074` recorded targeted repair set 28 passed, `live_position_inventory_architecture_surface` 31 passed, authority boundary 4 passed, transform boundary 6 passed, and remaining coverage inventory 56 passed. | Bounded repo-native read/write state now rejects empty, duplicate, and replayed fill-evidence identities before mutation; runtime can attach either a read-only service-built inventory snapshot or an explicit reconciled snapshot but rejects orphaned/ambiguous inventory inputs. Broker placement, capital deployment, exit/close behaviour, and strategy-decision mutation remain unopened. | Keep as bounded live-inventory seam; require explicit authority before opening broker/order placement, capital deployment, exit/close, or strategy decision behaviour. |
+ | 5.14 | Exit and close architecture | exit and close authority. | `Provisional`. | `reserved`. | No dedicated exit/close package observed at top level; related shells may exist under `src/nvda_desk/domain/execution/lifecycle_plan.py` and downstream state/review surfaces. | No dedicated exit-policy test family observed by filename inventory; not run in this gate. | Blueprint status is `reserved`; exact native allocation is unresolved. | Admissibility/reservation resolution before code implementation. |
+ | 5.15 | Review and explanation layer | review and explanation authorities. | `Locked`. | `thin_seam`. | `src/nvda_desk/review/*`; `src/nvda_desk/replay/*`; `src/nvda_desk/services/review_*`; `src/nvda_desk/contracts/review*.py`; `src/nvda_desk/testing/bounded_trace_review.py` | `tests/tier_a/review_runtime/*`; `tests/tier_b/review_*`; GAP-006 review replay targeted test recorded passed; not rerun here. | GAP-006 proves bounded review-replay repair, not whole explanation layer maturity. | Use bounded proof as evidence; run review/replay determinism proof before status upgrade. |
+-| 5.16 | Persistence, ledgers, and receipts | persistence and ledger authorities. | `Locked`. | `thin_seam`. | `src/nvda_desk/persistence/*`; `src/nvda_desk/repositories/*`; `alembic/*`; `var/audit/*`; `assembly_reports/*` | `tests/tier_a/persistence/*`; `tests/tier_a/migrations/*`; not run in this gate. | Durable-state ownership and replayability are visible but not proven here. | Run repository/migration/ledger validation before implementation claims. |
+-| 5.17 | Testing, proof, and checkpoint surfaces | testing and proof authorities. | `Locked`. | `thin_seam`. | `tests/*`; `config/retained_test_registry.yaml`; `config/proof_blocks.yaml`; `scripts/run_proof_block.py`; `docs/08*` | Tier A/B/C tests and proof config present; this gate did not run pytest, compile, or proof blocks. | Testing authority is present but dirty pre-existing audit files and no current run block completion claims. | Select live tests at worker execution time; do not freeze stale file lists. |
++| 5.16 | Persistence, ledgers, and receipts | persistence and ledger authorities. | `Locked`. | `thin_seam`. | `src/nvda_desk/persistence/*`; `src/nvda_desk/repositories/*`; `alembic/*`; `var/audit/*`; `assembly_reports/*` | `tests/tier_a/persistence/*`; `tests/tier_a/migrations/*`; `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074` recorded `persistence_ledgers_receipts_surface` 36 passed. | Receipt-ledger list-by-kind readback is now copy-safe for live-inventory reconciliation receipts; broader persistence remains thin-seam unless a future tranche opens durable storage/backends. | Keep as bounded ledger/repository seam; rerun repository/migration/ledger validation when additional persistence behaviours are opened. |
++| 5.17 | Testing, proof, and checkpoint surfaces | testing and proof authorities. | `Locked`. | `thin_seam`. | `tests/*`; `config/retained_test_registry.yaml`; `config/proof_blocks.yaml`; `scripts/run_proof_block.py`; `docs/08*` | `ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073` records `tier_a_remaining_coverage_inventory` passing with 53 tests; `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074` records the same block passing with 56 tests after adding dynamic legacy-import containment and runtime/inventory hardening tests. | Legacy containment now distinguishes raw guard strings from AST imports and also checks constant-target dynamic imports to the quarantined legacy subsystem. This remains native-runtime/native-proof containment evidence, not a blanket semantic acceptance of legacy references. | Keep legacy containment as import/dynamic-import native-runtime/native-proof protection; route any broader string-execution or runtime loading policy to a separately opened proof-hardening tranche. |
+ | 5.18 | Vocabulary governance interface | vocabulary governance authority. | `Locked`. | `thin_seam`. | `docs/10*`; `docs/vocabulary/*`; `data/vocabulary/*`; `src/nvda_desk/vocabulary_builder.py`; `src/nvda_desk/vocabulary_synonym_audit.py`; `src/scripts/build_canonical_vocabulary.py`; `scripts/vocabulary_synonym_audit.py` | `tests/tier_a/vocabulary/*`; `tests/tier_b/options_flow_support/test_options_flow_history_lane_vocabulary.py`; vocabulary-specific architecture map present; not run in this gate. | This is the provisional first tranche; status remains `thin_seam` until candidate queue and tests-first plan confirm it. | Proceed with Gate 3 candidate queue confirmation for `roadmap_vocabulary_governance_interface` before implementation. |
+ 
+ ## 8. First-tranche implication
+diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
+index 0704a41..337d39d 100644
+--- a/ROADMAP_LEDGER.md
++++ b/ROADMAP_LEDGER.md
+@@ -89,14 +89,14 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
+ 
+ | Field | Value |
+ |---|---|
+-| Current phase | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062_RECORDED`; checked pointer and 061 report/receipt/manifest artefacts before advancing to 062. |
+-| Selector | Selected current-pointer integrity scan after 061 hard-boundary audit. |
+-| Current target tranche | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062_RECORDED` |
+-| Current target architecture row | `Check live pointer and 061 artefact integrity; ledger/report/receipt/manifest only; AGENTS.md and PLANS.md remain frozen; runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation closed`. |
+-| Reason | Pointer advancement should be backed by the immediately previous target artefacts. |
+-| Next supporting tranche | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
+-| Explicit hold | Runtime trading behaviour, source implementation changes of any kind, test implementation changes of any kind, dependency changes, original Atlas/Bridge JSON mutation, generated Atlas slice rebuild, vocabulary data mutation/admission, and refactor work remain closed unless the current pointer or explicit current user instruction opens that exact boundary. Test-first ordering is necessary before later behaviour code, but it does not itself open source/test mutation. VENV/proof tooling may be used only if required by governed proof setup without dependency mutation. |
+-| Stop condition | Context/token exhaustion, tool/runtime exhaustion that prevents further lawful progress in the current response, or an explicit current user instruction to stop/report/handoff/package. Exhausted bounded leaves, full-read infeasibility for one selected leaf, platform/vendor/API uncertainty for one selected leaf, missing material for one leaf, closed mutation boundaries, commits, packages, proof passes, reports, receipts, manifests, ledger-history repairs, artefact coverage audits, boundary audits, scan classifications, current-pointer integrity scans, short wall-clock work duration, and coherent response opportunities are not stop conditions while other lawful control/audit work remains available. |
++| Current phase | `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED`; current user authority opened a major post-inventory runtime-readiness implementation bundle after 073 and then bounded continuation search recorded no distinct lawful executable work remaining inside that opened bundle. |
++| Selector | Selected post-073 runtime/inventory readiness bundle: classify the next proof/coverage boundary, open read-only runtime inventory consumption, harden fill-feedback/inventory reconciliation, harden persistence/receipts, add negative-boundary proof, update docs/ledger/manifests/receipts, then run bounded continuation search. |
++| Current target tranche | `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` |
++| Current target architecture row | `5.13 Live position and inventory architecture`, with supporting `5.16 Persistence, ledgers, and receipts` and `5.17 Testing, proof, and checkpoint surfaces`; source/test/docs/receipt/manifest/ledger mutation was opened only for the user-authorised post-inventory runtime-readiness bundle. `PLANS.md` remained frozen; dependency/original Atlas/Bridge/generated-slice/vocabulary/runtime trading/new broker order placement/broker execution/capital deployment/exit-close/strategy-decision mutation remained closed. |
++| Reason | Bundle 074 classified the post-073 proof boundary as import/dynamic-import containment plus live-inventory runtime-readiness hardening. It added constant-target dynamic legacy-import containment, rejected empty/duplicate/replayed fill-evidence identities before position mutation, added read-only runtime attachment of an explicit reconciled live-inventory snapshot, rejected orphaned or ambiguous runtime inventory inputs, and added copy-safe receipt-ledger filtering by receipt kind. Red proof first recorded 6 failures / 22 passes for missing behaviour; targeted repair proof recorded 28 passed; `live_position_inventory_architecture_surface` recorded 31 passed; authority boundary 4 passed; transform boundary 6 passed; `tier_a_remaining_coverage_inventory` 56 passed; `persistence_ledgers_receipts_surface` 36 passed; `scripts/run_proof_block.py --check-all` recorded `proof_blocks_check_all=PASS count=46`. |
++| Next supporting tranche | `STOP_CONDITION_POST_074_NO_DISTINCT_WORK_REMAINS_INSIDE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE`; bounded search found no further lawful executable work inside the opened post-inventory runtime-readiness bundle. Fresh user/PM authority is required before opening broader string-execution policy, another architecture surface, dependency changes, vocabulary mutation, original Atlas/Bridge mutation, generated-slice rebuild, runtime trading, new broker order placement, broker execution, capital deployment, exit/close, or strategy-decision behaviour. |
++| Explicit hold | Runtime trading action behaviour, source/test/doc changes outside the authorised post-inventory runtime-readiness bundle, dependency changes, original Atlas/Bridge JSON mutation, generated Atlas slice rebuild, vocabulary data mutation/admission, unrelated refactor work, new order placement, broker execution, capital deployment, exit/close behaviour, and strategy-decision behaviour remain closed unless a later current pointer or explicit current user instruction opens that exact boundary. `PLANS.md` remains frozen. |
++| Stop condition | Context/token exhaustion, tool/runtime exhaustion that prevents further lawful progress in the current response, explicit current user stop/report/handoff/package instruction, explicit live authority forbidding further execution, or bounded continuation search proving no lawful executable work remains. Exhausted bounded leaves, proof passes, receipts, manifests, packages, commits, queue exhaustion, and temporary uncertainty are not stop conditions while another lawful executable leaf remains. |
+ 
+ ### 3A. Historical stop-wording supersession note
+ 
+@@ -235,7 +235,7 @@ This table is the live state machine. Update it directly.
+ | 2 | 33 | `roadmap_downstream_capital_deployment_authority` | `5.11 Downstream capital deployment authority` | 2 | High score but placeholder/runtime-sensitive | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded capital-deployment sub-tranche or explicit downstream runtime authority. | `ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001`; receipt `var/audit/roadmap_capital_deployment_5_11/ROADMAP_DOWNSTREAM_CAPITAL_DEPLOYMENT_5_11_BRANCH_001_RECEIPT.md`; proof block `downstream_capital_deployment_authority_surface` proves explicit input traces, pre-deployment block precedence, decision receipt output, and no placement authority. |
+ | 3 | 29 | `roadmap_testing_proof_and_checkpoint_surfaces` | `5.17 Testing, proof, and checkpoint surfaces` | 72 | Not selected in Gate 6 due broader proof-surface blast radius | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded proof/checkpoint sub-tranche. | `ROADMAP_5_17_PROOF_CHECKPOINT_HARDENING_001`; receipt `var/audit/roadmap_5_17/ROADMAP_5_17_PROOF_CHECKPOINT_HARDENING_RECEIPT.md`; `--check-all` and `proof_executor_contract` proof block admitted and proven. `TEST_FALSE_POSITIVE_RESISTANCE_AUDIT_001` added selected-family false-positive hardening for `proof_executor_contract`: five known-bad tests, two killed mutation probes, three-run determinism check; receipt `var/audit/test_false_positive_resistance_001/TEST_FALSE_POSITIVE_RESISTANCE_AUDIT_001_PROOF_EXECUTOR_CONTRACT_RECEIPT.md`. |
+ | 4 | 29 | `roadmap_persistence_ledgers_and_receipts` | `5.16 Persistence, ledgers, and receipts` | 97 | Not selected in Gate 6; high governance leverage | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded persistence/ledger/receipt sub-tranche. | `ROADMAP_5_16_PERSISTENCE_LEDGER_RECEIPT_HARDENING_001`; receipt `var/audit/roadmap_5_16/ROADMAP_5_16_PERSISTENCE_LEDGER_RECEIPT_HARDENING_RECEIPT.md`; full pytest `296 passed`; named proof block `persistence_ledgers_receipts_surface` admitted and proven. |
+-| 5 | 27 | `roadmap_live_position_and_inventory_architecture` | `5.13 Live position and inventory architecture` | 38 | Placeholder; runtime/data sensitive | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded live-inventory/state sub-tranche or explicit downstream runtime authority. | `ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001`; receipt `var/audit/roadmap_live_inventory_5_13/ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001_RECEIPT.md`; proof block `live_position_inventory_architecture_surface` proves repo-native position/capital readback, declared-exposure-only summaries, explicit inventory receipt write, and no broker/candidate/raw-source import authority. |
++| 5 | 27 | `roadmap_live_position_and_inventory_architecture` | `5.13 Live position and inventory architecture` | 38 | Placeholder; runtime/data sensitive | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded live-inventory/state sub-tranche or explicit downstream runtime authority. | `ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001`; receipt `var/audit/roadmap_live_inventory_5_13/ROADMAP_LIVE_POSITION_INVENTORY_5_13_BRANCH_001_RECEIPT.md`; proof block `live_position_inventory_architecture_surface` proves repo-native position/capital readback, declared-exposure-only summaries, explicit inventory receipt write, and no broker/candidate/raw-source import authority. `ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069` added red-first coverage for the workbook compatibility wrapper and proved explicit `inventory_id`, requested `capital_snapshot_id`, and explicit `receipt_id` pass-through; receipt `var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/receipts/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RECEIPT.md`; proof block recorded 24 passed. `ACTIVE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_071` added executed fill-evidence reconciliation into live position state, read-only runtime live-inventory receipt attachment, and boundary proof hardening; receipt `var/audit/active_code_atlas_001/fill_feedback_live_runtime_inventory_bundle_071/receipts/ACTIVE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_071_RECEIPT.md`; selected inventory/runtime set recorded 43 passed and proof block `live_position_inventory_architecture_surface` recorded 28 passed. |
+ | 6 | 27 | `roadmap_prepared_ingress_and_runtime_context_preparation` | Prepared ingress and runtime context preparation | 51 | Thin seam | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new prepared-ingress sub-tranche. | `ROADMAP_SUPPORT_SPINE_5H_BRANCH_001`; receipt `var/audit/roadmap_support_spine_5h/ROADMAP_SUPPORT_SPINE_5H_BRANCH_001_RECEIPT.md`; prepared-context payload, fingerprint, checkpoint, packet, and source temporal standard preservation proof admitted. |
+ | 7 | 27 | `roadmap_parallel_risk_lane` | `5.8 Parallel risk lane` | 57 | Thin seam but risk/runtime-facing | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded parallel-risk sub-tranche or explicit broader risk-runtime authority. | `ROADMAP_PARALLEL_RISK_LANE_5_8_BRANCH_001`; receipt `var/audit/roadmap_parallel_risk_5_8/ROADMAP_PARALLEL_RISK_LANE_5_8_BRANCH_001_RECEIPT.md`; proof block `parallel_risk_lane_authority_surface` proves input trace, hidden authority-key rejection, hard-block envelope invariants, duplicate observation-ID rejection, and no broker/order/capital-placement authority. |
+ | 8 | 25 | `roadmap_dmpv3_packet_carriage` | DMPV3 packet carriage | 73 | Thin seam | `acted_on_bounded` | Do not reselect as untouched. Reopen only for a new bounded packet-carriage sub-tranche. | `ROADMAP_SUPPORT_SPINE_5H_BRANCH_001`; canonical `prepared_context_packet` and `review_explanation_packet` builder proof passed. |
+@@ -508,6 +508,29 @@ Append one row per real pass. Keep this compact; detailed proof belongs in recei
+ | 2026-05-13 | `ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061` | Audit working-tree paths against hard closed boundaries | `ACTIVE_FROZEN_CONTROL_NO_NEW_MUTATION_AUDIT_060_RECORDED` → `ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061_RECORDED` | Audited `git status --short` path classes after 060. Result `PASS_working_tree_paths_confined_to_control_audit_ledger_surfaces`: no source/test/runtime/dependency/vocabulary/original Atlas/Bridge/generated-slice paths were present in the working tree. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` and `PLANS.md` remained frozen by this leaf. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
+ | 2026-05-13 | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062` | Check live pointer and 061 artefact integrity | `ACTIVE_HARD_BOUNDARY_PATH_CLASS_AUDIT_061_RECORDED` → `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062_RECORDED` | Checked that the live pointer after 061 and the expected 061 report/receipt/full-read-manifest artefacts were present before advancing the pointer. Result `PASS_pointer_and_061_artefacts_present`. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` and `PLANS.md` remained frozen. No runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation was opened. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
+ 
++| 2026-05-13 | `ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063` | Record inherited AGENTS.md harness-refresh intake state | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062_RECORDED` → `ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECORDED` | Recorded that `AGENTS.md` was already modified relative to HEAD at intake from the user-supplied harness-refresh tarball; bounded the inherited diff as control-surface state without mutating `AGENTS.md` or `PLANS.md` in this leaf. Updated only `ROADMAP_LEDGER.md` plus report/receipt/manifest/diff-status evidence. Runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation remained closed. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
++
++| 2026-05-13 | `ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064` | Audit working-tree paths against hard closed boundaries after 063 intake | `ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECORDED` → `ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_RECORDED` | Classified current working-tree paths after the inherited AGENTS harness-refresh intake record. Result `PASS_working_tree_paths_confined_to_control_audit_ledger_surfaces_after_063`: paths are confined to inherited `AGENTS.md`, mutable `ROADMAP_LEDGER.md`, active-code-Atlas audit/report/receipt/manifest artefacts, and the manifest-validator side-effect output. `PLANS.md` remained unmodified; no source/test/runtime/config/data/schema/fixture/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice path was present. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
++
++| 2026-05-13 | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065` | Check live pointer and 064 artefact integrity | `ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_RECORDED` → `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_RECORDED` | Checked that the live pointer after 064 and the expected 064 report, receipt, and full-read manifest artefacts were present before advancing the pointer. Result `PASS_pointer_and_064_artefacts_present`. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` inherited diff remained recorded state; `PLANS.md` remained unmodified; no runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation was opened. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this leaf is not a stop point. |
++
++| 2026-05-13 | `ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066` | Audit proof-chain status across 063, 064, and 065 before selecting further work | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_RECORDED` → `ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_RECORDED` | Reconciled 063, 064, and 065 reports, receipts, proof stdout, final manifest validation stdout, and full-read manifests. Result `PASS_063_064_065_proof_chain_statuses_reconciled`. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` inherited diff remained recorded state; `PLANS.md` remained unmodified; no runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation was opened. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this proof-chain status audit is not a stop point. |
++
++
++| 2026-05-13 | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067` | Check live pointer and 066 artefact integrity | `ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_RECORDED` → `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_RECORDED` | Checked that the live pointer after 066 and the expected 066 report, receipt, and full-read manifest artefacts were present before advancing the pointer. Result `PASS_pointer_and_066_artefacts_present`. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` inherited diff remained recorded state; `PLANS.md` remained unmodified; no runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation was opened. | Continue immediately to the next distinct lawful control/audit/evidence/manifest/receipt/ledger hardening leaf; this current-pointer integrity scan is not a stop point. |
++
++
++| 2026-05-13 | `ACTIVE_BOUNDED_CONTINUATION_SEARCH_068` | Bounded continuation search after 067 current-pointer integrity scan | `ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_RECORDED` → `ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_RECORDED` | Searched live authority, current pointer, hard boundaries, 067 artefacts, and current working-tree path classes. Result `STOP_CONDITION_BOUNDED_CONTINUATION_SEARCH_NO_DISTINCT_LAWFUL_EXECUTABLE_WORK_REMAINS`. No distinct non-recursive lawful executable repo leaf remains without fresh user/PM authority; another pointer-only scan would be recursive self-amplification rather than distinct work. Updated only ledger/report/receipt/manifest evidence. `AGENTS.md` inherited diff remained recorded state; `PLANS.md` remained unmodified; no runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation was opened. | Stop condition reached under `AGENTS.md`: bounded continuation search proves no lawful executable work remains. |
++| 2026-05-13 | `ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069` | Full implementation tranche for Live Position and Inventory rows 035-037 | `ACTIVE_BOUNDED_CONTINUATION_SEARCH_068_RECORDED` → `ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RECORDED` | Explicit user authority opened source, tests, docs, receipts, manifests, and ledger mutation for rows 035-037 only. Initial selected baseline was 17 passed. A red-first test exposed that `src/nvda_desk/services/downstream_live_inventory_service.py` rejected the bounded base-service inputs `inventory_id`, `capital_snapshot_id`, and `receipt_id` (`TypeError`, red status 1). The wrapper was repaired to pass those inputs through to the bounded downstream service. Current map row 5.13 was updated to replace stale "not run in this gate" evidence with the 069 proof outcome. Targeted test file recorded 9 passed; selected live-inventory boundary set recorded 18 passed; proof block `live_position_inventory_architecture_surface` recorded 24 passed. `PLANS.md` remained frozen; no dependency, original Atlas/Bridge, generated-slice, vocabulary, order-placement, broker-execution, capital-deployment, or exit/close mutation was opened. | Continue immediately to post-069 bounded continuation search; proof passes and tranche completion are not stop conditions if another lawful executable leaf remains. |
++| 2026-05-13 | `ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070` | Bounded continuation search after rows 035-037 implementation tranche | `ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RECORDED` → `ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_RECORDED` | Searched the user-opened rows 035-037 boundary, changed source/test/doc paths, proof outputs, hard holds, and remaining candidate work. Result `STOP_CONDITION_POST_069_NO_DISTINCT_LIVE_INVENTORY_WORK_REMAINS_WITHIN_OPENED_BOUNDARY`. Continuing would require fresh authority for fill-feedback/live-runtime integration, another architecture surface, dependency/vocabulary/generated-slice/original Atlas/Bridge mutation, or the explicitly closed order-placement/broker/capital-deployment/exit-close behaviours. | Stop condition reached under the live pointer: bounded continuation search found no distinct lawful executable work remaining inside the opened Live Position and Inventory tranche. |
++
++| 2026-05-13 | `ACTIVE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_071` | Three-tranche fill-feedback/live-runtime inventory implementation bundle | `ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_RECORDED` → `ACTIVE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_071_RECORDED` | Explicit user authority opened source, tests, docs, receipts, manifests, ledger, and relevant audit artefacts for three bounded tranches only: A) executed/fill evidence updating or reconciling live inventory state, B) live-runtime services consuming reconciled live inventory state consistently, C) inventory proof hardening. Red-first Tranche A/B proof failed with missing `reconcile_fill_evidence`, missing repository `replace_position`, and unsupported `live_inventory_service` runtime attachment. Implemented repo-native executed fill-evidence reconciliation into `PositionRepository`, append-only reconciliation receipts, read-only runtime `runtime_live_inventory` attachment, and boundary rejection for broker/order-placement request keys. Added proof-hardening tests for reconciliation identity, placement-authority key rejection, repository replacement copy boundary, and runtime request-key rejection. Selected inventory/runtime set recorded 43 passed; proof blocks recorded 28 passed for `live_position_inventory_architecture_surface`, 3 passed for `live_position_inventory_authority_boundary_surface`, and 6 passed for `live_position_inventory_transform_boundary_surface`. A broader discretionary run of `tier_a_remaining_coverage_inventory` remained blocked by pre-existing legacy-containment string-scan findings in transform-boundary test files and is not used as closure proof for this bundle. `PLANS.md` remained frozen; no dependency, vocabulary, original Atlas/Bridge, generated-slice, new broker order placement, broker execution, capital deployment, exit/close, or strategy-decision mutation was opened. | Continue immediately to post-bundle bounded continuation search; proof passes and tranche completion are not stop conditions if another lawful executable leaf remains inside the opened bundle. |
++| 2026-05-13 | `ACTIVE_POST_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_BOUNDED_SEARCH_072` | Bounded continuation search after three-tranche fill-feedback/live-runtime inventory bundle | `ACTIVE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_071_RECORDED` → `ACTIVE_POST_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_BOUNDED_SEARCH_072_RECORDED` | Searched the user-opened bundle boundary, changed source/test/doc paths, proof outputs, hard holds, and remaining candidate work. Result `STOP_CONDITION_POST_071_NO_DISTINCT_WORK_REMAINS_INSIDE_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE`. Continuing would require fresh authority for new broker order placement, broker execution, capital deployment, exit/close, strategy-decision behaviour, another architecture surface, dependency/vocabulary/generated-slice/original Atlas/Bridge mutation, or unrelated refactor work. | Stop condition reached under the live pointer: bounded continuation search found no distinct lawful executable work remaining inside the opened three-tranche bundle. |
++| 2026-05-13 | `ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073` | Classify and repair legacy-containment false positive in remaining coverage inventory | `ACTIVE_POST_FILL_FEEDBACK_LIVE_RUNTIME_INVENTORY_BUNDLE_BOUNDED_SEARCH_072_RECORDED` → `ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073_RECORDED` | Current user authority opened code inspection and update for the failing remaining coverage inventory plus checkpoint packaging. Red proof reproduced `tier_a_remaining_coverage_inventory` failure with 1 failed and 51 passed: the imported-module containment test flagged nine transform-boundary test files only because they contained the string `legacy_import` while proving donor-root non-import boundaries. Repaired `tests/tier_a/legacy_imported/test_imported_module_containment_surface.py` to classify containment by AST import statements for `legacy_import` and `nvda_desk.legacy.imported`, and added an explicit transform-boundary guard-string test proving those files may name donor roots without importing them. Targeted containment proof recorded 3 passed; `tier_a_remaining_coverage_inventory` recorded 53 passed; `scripts/run_proof_block.py --check-all` recorded `proof_blocks_check_all=PASS count=46`. `PLANS.md` remained frozen; no dependency, vocabulary, original Atlas/Bridge, generated-slice, runtime trading, new broker order placement, broker execution, capital deployment, exit/close, strategy-decision, or unrelated implementation mutation was opened. | Stop for explicit current user tarball/output request after final proof/package; fresh authority required for any dynamic-import/string-execution policy hardening or separate architecture surface. |
++| 2026-05-13 | `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074` | Major post-inventory runtime-readiness implementation bundle | `ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073_RECORDED` → `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074_RECORDED` | Current user authority opened a multi-tranche bundle for post-073 runtime/inventory readiness. Tranche A classified the next proof/coverage boundary as import/dynamic-import containment rather than raw legacy guard-string references and added constant-target dynamic legacy-import protection. Tranche B opened the next read-only runtime inventory consumer path by allowing `DeskRuntimeOrchestrator.run_once` to attach an explicit reconciled `DownstreamLiveInventorySnapshot` while preserving serial decision output and statelessness. Tranche C hardened fill-feedback reconciliation by rejecting empty evidence batches, duplicate fill-evidence IDs in the same batch, and replayed fill-evidence IDs already present on a position before mutation/double-counting. Tranche D added copy-safe receipt-ledger filtering by receipt kind for live-inventory reconciliation auditability. Tranche E added negative-boundary proof for no broker/order-placement/capital/exit/strategy authority and ambiguous/orphaned runtime inventory input rejection. Red proof recorded 6 failed and 22 passed before implementation; targeted repair set recorded 28 passed; `live_position_inventory_architecture_surface` recorded 31 passed; authority boundary 4 passed; transform boundary 6 passed; `tier_a_remaining_coverage_inventory` 56 passed; `persistence_ledgers_receipts_surface` 36 passed; `scripts/run_proof_block.py --check-all` recorded `proof_blocks_check_all=PASS count=46`. `PLANS.md` remained frozen; no dependency, vocabulary, original Atlas/Bridge, generated-slice, runtime trading, new broker order placement, broker execution, capital deployment, exit/close, strategy-decision, or unrelated implementation mutation was opened. | Continue immediately to post-bundle bounded continuation search; proof passes and tranche completion are not stop conditions if another lawful executable leaf remains inside the opened bundle. |
++| 2026-05-13 | `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075` | Bounded continuation search after post-inventory runtime-readiness bundle | `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074_RECORDED` → `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` | Searched the opened post-inventory runtime-readiness bundle boundary, changed source/test/doc paths, proof outputs, hard holds, and remaining candidate work. Result `STOP_CONDITION_POST_074_NO_DISTINCT_WORK_REMAINS_INSIDE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE`. Remaining candidate work would require fresh authority for broader string-execution policy, another architecture surface, dependency/vocabulary/generated-slice/original Atlas/Bridge mutation, runtime trading, new broker order placement, broker execution, capital deployment, exit/close, strategy-decision behaviour, or unrelated refactor work. | Stop condition reached under the live pointer: bounded continuation search found no distinct lawful executable work remaining inside the opened major post-inventory runtime-readiness bundle. |
++
++
+ ## 12. Hard boundaries
+ 
+ Unless explicitly opened by the user, keep closed:
+diff --git a/src/nvda_desk/downstream/live_inventory.py b/src/nvda_desk/downstream/live_inventory.py
+index 548882e..3f648b5 100644
+--- a/src/nvda_desk/downstream/live_inventory.py
++++ b/src/nvda_desk/downstream/live_inventory.py
+@@ -2,7 +2,7 @@
+ 
+ from __future__ import annotations
+ 
+-from collections.abc import Iterable
++from collections.abc import Iterable, Mapping
+ from copy import deepcopy
+ from typing import Any
+ 
+@@ -69,6 +69,95 @@ class DownstreamLiveInventoryService:
+             inventory_receipt=receipt,
+         )
+ 
++    def reconcile_fill_evidence(
++        self,
++        fill_evidence: Iterable[Mapping[str, Any]],
++        *,
++        reconciliation_id: str,
++        inventory_id: str = "live-inventory",
++        capital_snapshot_id: str | None = None,
++        receipt_id: str | None = None,
++    ) -> DownstreamLiveInventorySnapshot:
++        """Reconcile executed fill evidence into repo-native live-inventory state."""
++
++        if self._position_repository is None:
++            raise ValueError("position_repository is required for fill reconciliation")
++
++        normalised_reconciliation_id = _normalise_token(
++            reconciliation_id, "reconciliation_id"
++        )
++        normalised_events = [_normalise_fill_evidence_event(event) for event in fill_evidence]
++        if not normalised_events:
++            raise ValueError("fill_evidence must contain at least one event")
++        _assert_unique_fill_evidence_ids(normalised_events)
++
++        grouped_payloads: dict[str, dict[str, Any]] = {}
++        for event in normalised_events:
++            position_id = event["position_id"]
++            payload = grouped_payloads.get(position_id)
++            if payload is None:
++                existing = self._position_repository.read_position(position_id)
++                payload = deepcopy(existing) if existing is not None else {}
++                payload.setdefault("fill_evidence_ids", [])
++                payload.setdefault("fill_evidence", [])
++                grouped_payloads[position_id] = payload
++
++            existing_fill_ids = _normalised_existing_fill_ids(payload.get("fill_evidence_ids"))
++            if event["fill_evidence_id"] in existing_fill_ids:
++                raise ValueError(f"duplicate fill_evidence_id: {event['fill_evidence_id']}")
++
++            if event.get("symbol") and not payload.get("symbol"):
++                payload["symbol"] = event["symbol"]
++
++            declared_delta = _optional_float(event.get("declared_exposure_delta"))
++            if declared_delta is not None:
++                current_declared = _optional_float(payload.get("declared_exposure")) or 0.0
++                payload["declared_exposure"] = current_declared + declared_delta
++
++            payload["fill_evidence_ids"].append(event["fill_evidence_id"])
++            payload["fill_evidence"].append(deepcopy(event))
++            payload["inventory_reconciliation_id"] = normalised_reconciliation_id
++
++        for position_id, payload in grouped_payloads.items():
++            if self._position_repository.read_position(position_id) is None:
++                self._position_repository.write_position(position_id, payload)
++            else:
++                self._position_repository.replace_position(position_id, payload)
++
++        reconciled_position_ids = list(grouped_payloads)
++        snapshot = self.build_live_snapshot(
++            live_ids=reconciled_position_ids,
++            inventory_id=inventory_id,
++            capital_snapshot_id=capital_snapshot_id,
++        )
++        normalised_receipt_id = receipt_id
++        receipt = None
++        if normalised_receipt_id is not None:
++            receipt = InventoryStateReceipt(
++                receipt_id=_normalise_token(normalised_receipt_id, "receipt_id"),
++                inventory_id=_normalise_token(inventory_id, "inventory_id"),
++                position_ids=reconciled_position_ids,
++                capital_snapshot_id=snapshot.capital_state.snapshot_id
++                if snapshot.capital_state
++                else None,
++            )
++            if self._receipt_ledger is not None:
++                receipt_payload = receipt.model_dump()
++                receipt_payload.update(
++                    {
++                        "reconciliation_id": normalised_reconciliation_id,
++                        "fill_evidence_ids": [
++                            event["fill_evidence_id"] for event in normalised_events
++                        ],
++                    }
++                )
++                self._receipt_ledger.append_receipt(
++                    receipt.receipt_id,
++                    "live_inventory_reconciliation",
++                    receipt_payload,
++                )
++        return snapshot.model_copy(update={"inventory_receipt": receipt})
++
+     def _read_position_states(self, requested_ids: list[str]) -> list[LivePositionState]:
+         if self._position_repository is None:
+             return [LivePositionState(position_id=position_id) for position_id in requested_ids]
+@@ -108,6 +197,57 @@ class DownstreamLiveInventoryService:
+         )
+ 
+ 
++_FILL_EVIDENCE_FORBIDDEN_KEYS = frozenset(
++    {
++        "broker_order_id",
++        "order_submitted",
++        "execution_allowed",
++        "capital_deployment_receipt_id",
++        "opening_authorisation",
++        "placement_handoff",
++    }
++)
++
++
++def _normalise_fill_evidence_event(event: Mapping[str, Any]) -> dict[str, Any]:
++    payload = deepcopy(dict(event))
++    forbidden = set(payload) & _FILL_EVIDENCE_FORBIDDEN_KEYS
++    if forbidden:
++        joined = ", ".join(sorted(forbidden))
++        raise ValueError(f"fill evidence cannot carry placement authority keys: {joined}")
++    payload["fill_evidence_id"] = _normalise_token(
++        payload.get("fill_evidence_id", ""), "fill_evidence_id"
++    )
++    payload["position_id"] = _normalise_token(payload.get("position_id", ""), "position_id")
++    if "symbol" in payload:
++        symbol = _optional_text(payload["symbol"])
++        if symbol is not None:
++            payload["symbol"] = symbol
++        else:
++            payload.pop("symbol")
++    declared_delta = _optional_float(payload.get("declared_exposure_delta"))
++    if declared_delta is not None:
++        payload["declared_exposure_delta"] = declared_delta
++    return payload
++
++
++def _assert_unique_fill_evidence_ids(events: list[dict[str, Any]]) -> None:
++    observed: set[str] = set()
++    for event in events:
++        evidence_id = event["fill_evidence_id"]
++        if evidence_id in observed:
++            raise ValueError(f"duplicate fill_evidence_id: {evidence_id}")
++        observed.add(evidence_id)
++
++
++def _normalised_existing_fill_ids(values: Any) -> set[str]:
++    if values is None:
++        return set()
++    if not isinstance(values, list):
++        raise ValueError("fill_evidence_ids must be a list")
++    return {_normalise_token(value, "fill_evidence_id") for value in values}
++
++
+ def _build_exposure_state(position_states: Iterable[LivePositionState]) -> InventoryExposureState:
+     ids: list[str] = []
+     exposures: dict[str, float] = {}
+diff --git a/src/nvda_desk/persistence/receipt_ledger.py b/src/nvda_desk/persistence/receipt_ledger.py
+index 0035455..3b8349f 100644
+--- a/src/nvda_desk/persistence/receipt_ledger.py
++++ b/src/nvda_desk/persistence/receipt_ledger.py
+@@ -49,6 +49,18 @@ class ReceiptLedger:
+ 
+         return deepcopy(self._receipts)
+ 
++    def list_receipts_by_kind(self, receipt_kind: str) -> list[dict[str, Any]]:
++        """Return stored receipts of one kind in append order."""
++
++        normalised_kind = _normalise_token(receipt_kind, "receipt_kind")
++        return deepcopy(
++            [
++                receipt
++                for receipt in self._receipts
++                if receipt["receipt_kind"] == normalised_kind
++            ]
++        )
++
+ 
+ def _normalise_token(value: str, field_name: str) -> str:
+     token = str(value).strip()
+diff --git a/src/nvda_desk/runtime/orchestrator.py b/src/nvda_desk/runtime/orchestrator.py
+index ad50142..d7aed50 100644
+--- a/src/nvda_desk/runtime/orchestrator.py
++++ b/src/nvda_desk/runtime/orchestrator.py
+@@ -10,6 +10,8 @@ from typing import Any
+ 
+ from pydantic import ValidationError
+ 
++from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
++
+ from nvda_desk.contracts.execution import ExecutionExpressionInput, StageLocalHandoffSurface
+ from nvda_desk.contracts.serial_spine import (
+     SERIAL_SPINE_STAGE_ORDER,
+@@ -75,21 +77,40 @@ class DeskRuntimeOrchestrator:
+ 
+         return self.stage_order
+ 
+-    def run_once(self, stage_inputs: Mapping[str, Any] | StageInputBundle) -> dict[str, Any]:
++    def run_once(
++        self,
++        stage_inputs: Mapping[str, Any] | StageInputBundle,
++        *,
++        live_inventory_service: Any | None = None,
++        live_inventory_request: Mapping[str, Any] | None = None,
++        live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any] | None = None,
++    ) -> dict[str, Any]:
+         """Return one bounded runtime pass from the admitted stage-input boundary."""
+ 
+         bundle = _coerce_admitted_bundle(stage_inputs)
+         if bundle is None:
+             normalised_stage_inputs = _normalise_stage_inputs(stage_inputs)
+             executed = [name for name in self.stage_order if name in normalised_stage_inputs]
+-            return {
++            receipt = {
+                 "stage_order": list(self.stage_order),
+                 "executed_stages": executed,
+                 "missing_stages": [
+                     name for name in self.stage_order if name not in normalised_stage_inputs
+                 ],
+             }
+-        return self._run_serial_bundle(bundle)
++            return _attach_runtime_live_inventory(
++                receipt,
++                live_inventory_service=live_inventory_service,
++                live_inventory_request=live_inventory_request,
++                live_inventory_snapshot=live_inventory_snapshot,
++            )
++        receipt = self._run_serial_bundle(bundle)
++        return _attach_runtime_live_inventory(
++            receipt,
++            live_inventory_service=live_inventory_service,
++            live_inventory_request=live_inventory_request,
++            live_inventory_snapshot=live_inventory_snapshot,
++        )
+ 
+     def _run_serial_bundle(self, stage_input_bundle: StageInputBundle) -> dict[str, Any]:
+         source_time_utc = _require_source_time_utc(stage_input_bundle)
+@@ -219,6 +240,44 @@ class DeskRuntimeOrchestrator:
+         return packets
+ 
+ 
++def _attach_runtime_live_inventory(
++    receipt: dict[str, Any],
++    *,
++    live_inventory_service: Any | None,
++    live_inventory_request: Mapping[str, Any] | None,
++    live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any] | None,
++) -> dict[str, Any]:
++    if live_inventory_service is not None and live_inventory_snapshot is not None:
++        raise ValueError("live_inventory_service and live_inventory_snapshot cannot both be supplied")
++    if live_inventory_service is None and live_inventory_snapshot is None:
++        if live_inventory_request is not None:
++            raise ValueError("live_inventory_request requires live_inventory_service")
++        return receipt
++    if live_inventory_snapshot is not None:
++        snapshot = _coerce_live_inventory_snapshot(live_inventory_snapshot)
++    else:
++        request = dict(live_inventory_request or {})
++        allowed_keys = {"live_ids", "inventory_id", "capital_snapshot_id", "receipt_id"}
++        extra_keys = set(request) - allowed_keys
++        if extra_keys:
++            joined = ", ".join(sorted(extra_keys))
++            raise ValueError(f"live_inventory_request contains unsupported keys: {joined}")
++        snapshot = live_inventory_service.build_live_snapshot(**request)
++    receipt["runtime_live_inventory"] = snapshot.model_dump(mode="json")
++    receipt["runtime_live_inventory_policy_effect"] = (
++        "read_only_no_serial_decision_change"
++    )
++    return receipt
++
++
++def _coerce_live_inventory_snapshot(
++    live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any],
++) -> DownstreamLiveInventorySnapshot:
++    if isinstance(live_inventory_snapshot, DownstreamLiveInventorySnapshot):
++        return live_inventory_snapshot
++    return DownstreamLiveInventorySnapshot.model_validate(live_inventory_snapshot)
++
++
+ def _coerce_admitted_bundle(
+     stage_inputs: Mapping[str, Any] | StageInputBundle,
+ ) -> StageInputBundle | None:
+diff --git a/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py b/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
+index 39c5d38..4000618 100644
+--- a/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
++++ b/tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
+@@ -7,6 +7,9 @@ from pathlib import Path
+ import pytest
+ 
+ from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++from nvda_desk.services.downstream_live_inventory_service import (
++    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
++)
+ from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+ from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+ from nvda_desk.repositories.position_repository import PositionRepository
+@@ -157,3 +160,202 @@ def test_live_inventory_reads_requested_capital_snapshot_not_latest_snapshot() -
+     assert snapshot.capital_state is not None
+     assert snapshot.capital_state.snapshot_id == "cap-1"
+     assert snapshot.capital_state.source_payload == {"cash": 1000.0}
++
++
++def test_workbook_live_inventory_wrapper_preserves_bounded_readback_inputs() -> None:
++    positions = PositionRepository()
++    capital = CapitalStateRepository()
++    receipts = ReceiptLedger()
++    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 3.0})
++    capital.write_snapshot("cap-older", {"cash": 1000.0})
++    capital.write_snapshot("cap-selected", {"cash": 900.0})
++
++    snapshot = WorkbookDownstreamLiveInventoryService(
++        position_repository=positions,
++        capital_state_repository=capital,
++        receipt_ledger=receipts,
++    ).build_live_snapshot(
++        live_ids=[" pos-1 "],
++        inventory_id=" inv-1 ",
++        capital_snapshot_id=" cap-selected ",
++        receipt_id=" receipt-1 ",
++    )
++
++    assert snapshot.inventory_id == "inv-1"
++    assert snapshot.live_ids == ["pos-1"]
++    assert snapshot.capital_state is not None
++    assert snapshot.capital_state.snapshot_id == "cap-selected"
++    assert snapshot.inventory_receipt is not None
++    assert snapshot.inventory_receipt.receipt_id == "receipt-1"
++    assert snapshot.inventory_receipt.inventory_id == "inv-1"
++    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-selected"
++    stored = receipts.read_receipt("receipt-1")
++    assert stored is not None
++    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
++
++
++def test_live_inventory_reconciles_executed_fill_evidence_into_position_state() -> None:
++    positions = PositionRepository()
++    receipts = ReceiptLedger()
++    service = DownstreamLiveInventoryService(
++        position_repository=positions,
++        receipt_ledger=receipts,
++    )
++
++    snapshot = service.reconcile_fill_evidence(
++        [
++            {
++                "fill_evidence_id": "fill-1",
++                "position_id": " pos-1 ",
++                "symbol": "NVDA",
++                "declared_exposure_delta": 12.5,
++                "filled_quantity": 5,
++                "source": "execution_event_repository",
++            },
++            {
++                "fill_evidence_id": "fill-2",
++                "position_id": "pos-1",
++                "symbol": "NVDA",
++                "declared_exposure_delta": -2.5,
++                "filled_quantity": -1,
++                "source": "execution_event_repository",
++            },
++        ],
++        reconciliation_id=" recon-1 ",
++        inventory_id=" inv-reconciled ",
++        receipt_id=" receipt-recon-1 ",
++    )
++
++    assert snapshot.inventory_id == "inv-reconciled"
++    assert snapshot.live_ids == ["pos-1"]
++    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 10.0}
++    assert positions.read_position("pos-1") == {
++        "symbol": "NVDA",
++        "declared_exposure": 10.0,
++        "fill_evidence_ids": ["fill-1", "fill-2"],
++        "fill_evidence": [
++            {
++                "fill_evidence_id": "fill-1",
++                "position_id": "pos-1",
++                "symbol": "NVDA",
++                "declared_exposure_delta": 12.5,
++                "filled_quantity": 5,
++                "source": "execution_event_repository",
++            },
++            {
++                "fill_evidence_id": "fill-2",
++                "position_id": "pos-1",
++                "symbol": "NVDA",
++                "declared_exposure_delta": -2.5,
++                "filled_quantity": -1,
++                "source": "execution_event_repository",
++            },
++        ],
++        "inventory_reconciliation_id": "recon-1",
++    }
++    assert snapshot.inventory_receipt is not None
++    assert snapshot.inventory_receipt.receipt_id == "receipt-recon-1"
++    assert snapshot.inventory_receipt.position_ids == ["pos-1"]
++    stored = receipts.read_receipt("receipt-recon-1")
++    assert stored is not None
++    assert stored["receipt_kind"] == "live_inventory_reconciliation"
++    assert stored["payload"]["reconciliation_id"] == "recon-1"
++    assert stored["payload"]["fill_evidence_ids"] == ["fill-1", "fill-2"]
++
++
++def test_live_inventory_reconciliation_requires_explicit_fill_evidence_identity() -> None:
++    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
++
++    with pytest.raises(ValueError, match="fill_evidence_id must be non-empty"):
++        service.reconcile_fill_evidence(
++            [{"fill_evidence_id": "  ", "position_id": "pos-1"}],
++            reconciliation_id="recon-1",
++        )
++
++    with pytest.raises(ValueError, match="position_id must be non-empty"):
++        service.reconcile_fill_evidence(
++            [{"fill_evidence_id": "fill-1", "position_id": "  "}],
++            reconciliation_id="recon-1",
++        )
++
++
++def test_live_inventory_reconciliation_rejects_placement_authority_keys() -> None:
++    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
++
++    with pytest.raises(ValueError, match="placement authority keys: broker_order_id"):
++        service.reconcile_fill_evidence(
++            [
++                {
++                    "fill_evidence_id": "fill-1",
++                    "position_id": "pos-1",
++                    "broker_order_id": "broker-1",
++                }
++            ],
++            reconciliation_id="recon-1",
++        )
++
++def test_live_inventory_reconciliation_rejects_empty_fill_evidence() -> None:
++    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
++
++    with pytest.raises(ValueError, match="fill_evidence must contain at least one event"):
++        service.reconcile_fill_evidence([], reconciliation_id="recon-1")
++
++
++def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation() -> None:
++    positions = PositionRepository()
++    service = DownstreamLiveInventoryService(position_repository=positions)
++
++    with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
++        service.reconcile_fill_evidence(
++            [
++                {
++                    "fill_evidence_id": "fill-1",
++                    "position_id": "pos-1",
++                    "symbol": "NVDA",
++                    "declared_exposure_delta": 1.0,
++                },
++                {
++                    "fill_evidence_id": " fill-1 ",
++                    "position_id": "pos-1",
++                    "symbol": "NVDA",
++                    "declared_exposure_delta": 99.0,
++                },
++            ],
++            reconciliation_id="recon-1",
++        )
++
++    assert positions.read_position("pos-1") is None
++
++
++def test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting() -> None:
++    positions = PositionRepository()
++    positions.write_position(
++        "pos-1",
++        {
++            "symbol": "NVDA",
++            "declared_exposure": 10.0,
++            "fill_evidence_ids": ["fill-1"],
++            "fill_evidence": [{"fill_evidence_id": "fill-1", "position_id": "pos-1"}],
++        },
++    )
++    service = DownstreamLiveInventoryService(position_repository=positions)
++
++    with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
++        service.reconcile_fill_evidence(
++            [
++                {
++                    "fill_evidence_id": "fill-1",
++                    "position_id": "pos-1",
++                    "symbol": "NVDA",
++                    "declared_exposure_delta": 99.0,
++                }
++            ],
++            reconciliation_id="recon-2",
++        )
++
++    assert positions.read_position("pos-1") == {
++        "symbol": "NVDA",
++        "declared_exposure": 10.0,
++        "fill_evidence_ids": ["fill-1"],
++        "fill_evidence": [{"fill_evidence_id": "fill-1", "position_id": "pos-1"}],
++    }
+diff --git a/tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py b/tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py
+index 6363457..bbc12a6 100644
+--- a/tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py
++++ b/tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py
+@@ -108,3 +108,17 @@ def test_live_inventory_snapshot_builder_accepts_inventory_readback_inputs_only(
+     assert {"self", "live_ids", "inventory_id", "capital_snapshot_id", "receipt_id"}.issubset(
+         parameter_names
+     )
++
++def test_live_inventory_reconciliation_accepts_fill_evidence_inputs_only() -> None:
++    signature = inspect.signature(DownstreamLiveInventoryService.reconcile_fill_evidence)
++    parameter_names = set(signature.parameters)
++
++    assert parameter_names.isdisjoint(PROHIBITED_BUILD_PARAMETERS)
++    assert {
++        "self",
++        "fill_evidence",
++        "reconciliation_id",
++        "inventory_id",
++        "capital_snapshot_id",
++        "receipt_id",
++    }.issubset(parameter_names)
+diff --git a/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py b/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
+index ecf2ebe..a6fb748 100644
+--- a/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
++++ b/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
+@@ -1,9 +1,21 @@
+ from __future__ import annotations
+ 
++import ast
+ from pathlib import Path
+ 
+ REPO_ROOT = Path(__file__).resolve().parents[3]
+-LEGACY_TERMS = ("legacy_import", "nvda_desk.legacy.imported")
++LEGACY_IMPORT_PREFIXES = ("legacy_import", "nvda_desk.legacy.imported")
++TRANSFORM_BOUNDARY_GUARD_FILES = (
++    Path("tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py"),
++    Path("tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py"),
++    Path("tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py"),
++    Path("tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py"),
++    Path("tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py"),
++    Path("tests/tier_a/review_runtime/test_review_transform_boundary_surface.py"),
++    Path("tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py"),
++    Path("tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py"),
++    Path("tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py"),
++)
+ 
+ 
+ def _native_python_paths() -> list[Path]:
+@@ -19,16 +31,75 @@ def _native_python_paths() -> list[Path]:
+     return sorted(candidates)
+ 
+ 
++def _imported_modules(path: Path) -> set[str]:
++    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
++    modules: set[str] = set()
++    for node in ast.walk(tree):
++        if isinstance(node, ast.Import):
++            modules.update(alias.name for alias in node.names)
++        elif isinstance(node, ast.ImportFrom) and node.module:
++            modules.add(node.module)
++    return modules
++
++
++def _legacy_imports(path: Path) -> set[str]:
++    return {
++        module
++        for module in _imported_modules(path)
++        if any(
++            module == prefix or module.startswith(f"{prefix}.")
++            for prefix in LEGACY_IMPORT_PREFIXES
++        )
++    }
++
++
++def _legacy_dynamic_import_targets(path: Path) -> set[str]:
++    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
++    targets: set[str] = set()
++    for node in ast.walk(tree):
++        if not isinstance(node, ast.Call) or not node.args:
++            continue
++        func = node.func
++        is_dynamic_import = (
++            isinstance(func, ast.Name)
++            and func.id == "__import__"
++            or isinstance(func, ast.Attribute)
++            and func.attr == "import_module"
++            and isinstance(func.value, ast.Name)
++            and func.value.id == "importlib"
++        )
++        if not is_dynamic_import:
++            continue
++        first_arg = node.args[0]
++        if isinstance(first_arg, ast.Constant) and isinstance(first_arg.value, str):
++            module = first_arg.value
++            if any(
++                module == prefix or module.startswith(f"{prefix}.")
++                for prefix in LEGACY_IMPORT_PREFIXES
++            ):
++                targets.add(module)
++    return targets
++
++
+ def test_imported_module_subsystem_remains_outside_native_runtime_and_native_proof() -> None:
+     assert not (REPO_ROOT / "src/nvda_desk/legacy/imported").exists()
+ 
+-    offending_paths: list[str] = []
++    offending_imports: dict[str, list[str]] = {}
+     for path in _native_python_paths():
+-        text = path.read_text(encoding="utf-8")
+-        if any(term in text for term in LEGACY_TERMS):
+-            offending_paths.append(path.relative_to(REPO_ROOT).as_posix())
++        legacy_imports = _legacy_imports(path)
++        if legacy_imports:
++            offending_imports[path.relative_to(REPO_ROOT).as_posix()] = sorted(legacy_imports)
++
++    assert offending_imports == {}
++
++
++def test_transform_boundary_guard_strings_are_not_imported_legacy_modules() -> None:
++    """Transform-boundary tests may name donor roots while proving non-imports."""
+ 
+-    assert offending_paths == []
++    for relative_path in TRANSFORM_BOUNDARY_GUARD_FILES:
++        path = REPO_ROOT / relative_path
++        assert "legacy_import" in path.read_text(encoding="utf-8")
++        assert _legacy_imports(path) == set()
+ 
+ 
+ def test_imported_module_archive_tree_is_explicitly_quarantined() -> None:
+@@ -48,3 +119,12 @@ def test_imported_module_archive_tree_is_explicitly_quarantined() -> None:
+     assert 'packages = ["src/nvda_desk", "scripts"]' in pyproject_text
+     assert "/tests" in pyproject_text
+     assert "legacy_import" not in pyproject_text
++
++def test_native_runtime_and_proof_do_not_dynamic_import_legacy_subsystem() -> None:
++    offending_dynamic_imports: dict[str, list[str]] = {}
++    for path in _native_python_paths():
++        targets = _legacy_dynamic_import_targets(path)
++        if targets:
++            offending_dynamic_imports[path.relative_to(REPO_ROOT).as_posix()] = sorted(targets)
++
++    assert offending_dynamic_imports == {}
+diff --git a/tests/tier_a/persistence/test_receipt_ledger_surface.py b/tests/tier_a/persistence/test_receipt_ledger_surface.py
+index 9b3a3c2..24d2815 100644
+--- a/tests/tier_a/persistence/test_receipt_ledger_surface.py
++++ b/tests/tier_a/persistence/test_receipt_ledger_surface.py
+@@ -77,3 +77,28 @@ def test_receipt_ledger_normalises_ids_and_rejects_duplicate_after_normalisation
+     }
+     with pytest.raises(ValueError, match="duplicate receipt_id: receipt-1"):
+         ledger.append_receipt("receipt-1", "proof", {"ok": False})
++
++def test_receipt_ledger_lists_receipts_by_kind_copy_safely() -> None:
++    ledger = ReceiptLedger()
++    ledger.append_receipt("receipt-1", "live_inventory_reconciliation", {"position_ids": ["pos-1"]})
++    ledger.append_receipt("receipt-2", "proof", {"passed": True})
++    ledger.append_receipt("receipt-3", " live_inventory_reconciliation ", {"position_ids": ["pos-2"]})
++
++    inventory_receipts = ledger.list_receipts_by_kind(" live_inventory_reconciliation ")
++    inventory_receipts[0]["payload"]["position_ids"].append("mutated")
++
++    assert ledger.list_receipts_by_kind("live_inventory_reconciliation") == [
++        {
++            "receipt_id": "receipt-1",
++            "receipt_kind": "live_inventory_reconciliation",
++            "payload": {"position_ids": ["pos-1"]},
++        },
++        {
++            "receipt_id": "receipt-3",
++            "receipt_kind": "live_inventory_reconciliation",
++            "payload": {"position_ids": ["pos-2"]},
++        },
++    ]
++    assert ledger.list_receipts_by_kind("proof") == [
++        {"receipt_id": "receipt-2", "receipt_kind": "proof", "payload": {"passed": True}}
++    ]
+diff --git a/tests/tier_a/runtime/test_runtime_orchestrator_surface.py b/tests/tier_a/runtime/test_runtime_orchestrator_surface.py
+index 318c077..53042af 100644
+--- a/tests/tier_a/runtime/test_runtime_orchestrator_surface.py
++++ b/tests/tier_a/runtime/test_runtime_orchestrator_surface.py
+@@ -126,3 +126,134 @@ def test_runtime_orchestrator_does_not_treat_utc_wall_clock_as_us_market_opening
+     assert receipt["stage_outputs"]["temporal"]["source_time_utc"] == "2026-04-21T09:31:00Z"
+     assert receipt["stage_outputs"]["temporal"]["source_timezone_raw"] == "America/New_York"
+     assert receipt["stage_outputs"]["temporal"]["session_state"] == "pre_open"
++
++
++def test_runtime_orchestrator_can_attach_live_inventory_snapshot_without_changing_serial_decision() -> None:
++    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++    from nvda_desk.repositories.position_repository import PositionRepository
++
++    runtime = _require_module("nvda_desk.runtime.orchestrator")
++    orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
++    positions = PositionRepository()
++    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 10.0})
++
++    receipt = orchestrator.run_once(
++        StageInputBundle(
++            temporal=TemporalContextInput(
++                source_time_utc=datetime(2026, 4, 21, 13, 31, tzinfo=UTC),
++                source_timezone_raw="America/New_York",
++            ),
++            regime=MarketRegimeContextInput(
++                nvda_return_pct=0.1,
++                nq_return_pct=0.05,
++                vix_level=20.0,
++            ),
++            options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
++        ),
++        live_inventory_service=DownstreamLiveInventoryService(position_repository=positions),
++        live_inventory_request={"inventory_id": "runtime-inv", "live_ids": [" pos-1 "]},
++    )
++
++    assert receipt["stage_order"] == [
++        "temporal",
++        "regime",
++        "options_flow",
++        "posture",
++        "eligibility",
++        "execution",
++    ]
++    assert receipt["stage_outputs"]["execution"]["scaling_plan"] == ["stand_down"]
++    assert receipt["runtime_live_inventory"]["inventory_id"] == "runtime-inv"
++    assert receipt["runtime_live_inventory"]["live_ids"] == ["pos-1"]
++    assert receipt["runtime_live_inventory"]["exposure_state"] == {
++        "position_count": 1,
++        "open_position_ids": ["pos-1"],
++        "declared_exposure_by_symbol": {"NVDA": 10.0},
++    }
++    assert receipt["runtime_live_inventory_policy_effect"] == "read_only_no_serial_decision_change"
++    assert orchestrator.__dict__ == {}
++
++
++def test_runtime_live_inventory_attachment_rejects_unsupported_request_keys() -> None:
++    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++
++    runtime = _require_module("nvda_desk.runtime.orchestrator")
++    orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
++
++    with pytest.raises(ValueError, match="unsupported keys: broker_order_id"):
++        orchestrator.run_once(
++            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
++            live_inventory_service=DownstreamLiveInventoryService(),
++            live_inventory_request={"broker_order_id": "broker-1"},
++        )
++
++def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read() -> None:
++    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++    from nvda_desk.repositories.position_repository import PositionRepository
++
++    runtime = _require_module("nvda_desk.runtime.orchestrator")
++    orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
++    positions = PositionRepository()
++    snapshot = DownstreamLiveInventoryService(position_repository=positions).reconcile_fill_evidence(
++        [
++            {
++                "fill_evidence_id": "fill-1",
++                "position_id": "pos-1",
++                "symbol": "NVDA",
++                "declared_exposure_delta": 7.5,
++            }
++        ],
++        reconciliation_id="recon-runtime-1",
++        inventory_id="runtime-reconciled",
++        receipt_id="runtime-inv-receipt-1",
++    )
++
++    receipt = orchestrator.run_once(
++        StageInputBundle(
++            temporal=TemporalContextInput(
++                source_time_utc=datetime(2026, 4, 21, 13, 31, tzinfo=UTC),
++                source_timezone_raw="America/New_York",
++            ),
++            regime=MarketRegimeContextInput(
++                nvda_return_pct=0.1,
++                nq_return_pct=0.05,
++                vix_level=20.0,
++            ),
++            options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
++        ),
++        live_inventory_snapshot=snapshot,
++    )
++
++    assert receipt["stage_outputs"]["execution"]["scaling_plan"] == ["stand_down"]
++    assert receipt["runtime_live_inventory"]["inventory_id"] == "runtime-reconciled"
++    assert receipt["runtime_live_inventory"]["live_ids"] == ["pos-1"]
++    assert receipt["runtime_live_inventory"]["inventory_receipt"] == {
++        "receipt_id": "runtime-inv-receipt-1",
++        "inventory_id": "runtime-reconciled",
++        "position_ids": ["pos-1"],
++        "capital_snapshot_id": None,
++        "policy_freeze_state": "architecture_only_no_policy",
++    }
++    assert receipt["runtime_live_inventory_policy_effect"] == "read_only_no_serial_decision_change"
++    assert orchestrator.__dict__ == {}
++
++
++def test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs() -> None:
++    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
++    from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
++
++    runtime = _require_module("nvda_desk.runtime.orchestrator")
++    orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
++
++    with pytest.raises(ValueError, match="live_inventory_request requires live_inventory_service"):
++        orchestrator.run_once(
++            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
++            live_inventory_request={"inventory_id": "orphan"},
++        )
++
++    with pytest.raises(ValueError, match="cannot both be supplied"):
++        orchestrator.run_once(
++            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
++            live_inventory_service=DownstreamLiveInventoryService(),
++            live_inventory_snapshot=DownstreamLiveInventorySnapshot(inventory_id="snapshot"),
++        )

@@ -1,0 +1,13 @@
+{
+  "ledger_name": "intent_to_architecture_map",
+  "schema_version": "v1",
+  "status": "seeded_not_started",
+  "ledger_status_values": [
+    "seeded_not_started",
+    "in_progress",
+    "complete"
+  ],
+  "phase_owner": "phase_4_owner_mapping",
+  "purpose": "Mapping from recovered donor intent units to lawful owners in the rebuilt architecture.",
+  "records": []
+}

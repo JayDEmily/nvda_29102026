@@ -1,0 +1,376 @@
+# Salvaged and normalized from master archive source: strategy_variants_starter.yaml
+# Status: example-only, not wired into runtime.
+# Purpose: preserve config / coefficient / variant structure for later promotion under current repo architecture.
+
+version: "0.1-draft"
+project: "NVDA Runtime v4"
+notes:
+  - "Starter strategy variants generated from the thread."
+  - "Variants reference the module registry and coefficients registry."
+  - "These are named profiles, not promises of performance."
+  - "Use evaluator output to review variants, not to auto-apply changes."
+
+defaults:
+  base_variant: "baseline"
+  inherit_missing_from: "baseline"
+  clamp_scores: true
+  require_human_review_for_live_use: true
+
+variants:
+  baseline:
+    description: "Neutral baseline profile using starter defaults from the thread."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S02"
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S06"
+        - "S07"
+        - "S08"
+        - "S09"
+        - "S10"
+        - "S11"
+        - "S12"
+        - "S13"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights: {}
+      coefficients: {}
+      runtime:
+        decision_layer:
+          L3_01_entry_gate:
+            score_floor: 0.65
+        execution_layer:
+          require_entry_gate_pass: true
+          require_validated_strike: true
+
+  conservative:
+    description: "Higher caution profile. Stronger gate, lower risk budget, tighter macro suppression."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S02"
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S06"
+        - "S07"
+        - "S08"
+        - "S10"
+        - "S12"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S06: 0.25
+        S08: 0.20
+        S04: 0.20
+        S07: 0.10
+      coefficients:
+        S03:
+          anomaly_threshold: 1.15
+        S06:
+          vix_risk_threshold: 20.0
+          vvix_spread: 12.0
+        L3_01:
+          score_floor: 0.72
+        L3_03:
+          zone_score_threshold: 0.60
+        L4_02:
+          max_risk_per_trade: 250.0
+      runtime:
+        safety:
+          block_if_macro_risk_off: true
+          block_if_no_valid_strike: true
+
+  aggressive:
+    description: "Looser entry profile intended for wider exploratory simulation only."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S02"
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S06"
+        - "S07"
+        - "S08"
+        - "S09"
+        - "S10"
+        - "S11"
+        - "S12"
+        - "S13"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S04: 0.30
+        S07: 0.20
+        S06: 0.15
+      coefficients:
+        L3_01:
+          score_floor: 0.55
+        L3_03:
+          zone_score_threshold: 0.40
+        L4_02:
+          max_risk_per_trade: 750.0
+        L4_03:
+          latency_ms: 120
+      runtime:
+        execution_layer:
+          require_entry_gate_pass: true
+          require_validated_strike: true
+
+  macro_defensive:
+    description: "Macro-heavy profile prioritizing risk-off detection and suppression."
+    enabled_modules:
+      layer1_signals:
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S06"
+        - "S08"
+        - "S10"
+        - "S12"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S06: 0.30
+        S12: 0.20
+        S08: 0.20
+        S04: 0.15
+      coefficients:
+        S06:
+          vix_risk_threshold: 19.0
+          vvix_spread: 10.0
+          yield_trigger: 4.10
+        S12:
+          spread_threshold: 12.0
+        L3_01:
+          score_floor: 0.70
+      runtime:
+        safety:
+          block_if_macro_risk_off: true
+
+  gamma_heavy:
+    description: "Emphasizes gamma clustering, SLV validation, and strike-zone structure."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S08"
+        - "S09"
+        - "S10"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S04: 0.35
+        S08: 0.25
+        S05: 0.15
+      coefficients:
+        S04:
+          proximity_range_pct: 1.25
+          min_gamma_density: 0.15
+        S08:
+          gamma_density_threshold: 0.12
+          vwap_proximity_pct: 1.25
+        L3_03:
+          gamma_weight: 0.50
+          vwap_weight: 0.25
+          oi_weight: 0.25
+
+  iv_rv_focus:
+    description: "Volatility-structure profile centered on IV/RV and corridor behavior."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S02"
+        - "S03"
+        - "S05"
+        - "S08"
+        - "S10"
+        - "S12"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S03: 0.30
+        S05: 0.20
+        S02: 0.15
+      coefficients:
+        S03:
+          anomaly_threshold: 1.10
+          compression_threshold: 1.00
+        S05:
+          flatten_threshold: 0.015
+        L3_01:
+          score_floor: 0.62
+
+  divergence_focus:
+    description: "Peer-relative profile emphasizing divergence and execution context."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S03"
+        - "S04"
+        - "S06"
+        - "S07"
+        - "S10"
+        - "S11"
+        - "S14"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S07: 0.25
+        S14: 0.20
+        S06: 0.20
+      coefficients:
+        S07:
+          window_minutes: 15
+          correlation_threshold: 0.65
+        L3_01:
+          score_floor: 0.60
+
+  ladder_strict:
+    description: "Strict structural profile requiring stronger ladder and zone validation."
+    enabled_modules:
+      layer1_signals:
+        - "S01"
+        - "S03"
+        - "S04"
+        - "S05"
+        - "S06"
+        - "S08"
+        - "S10"
+      layer2_scoring:
+        - "C00"
+      layer3_decision:
+        - "L3_01"
+        - "L3_02"
+        - "L3_03"
+        - "L3_04"
+      layer4_execution:
+        - "L4_01"
+        - "L4_02"
+        - "L4_03"
+        - "L4_04"
+    overrides:
+      weights:
+        S08: 0.30
+        S04: 0.25
+      coefficients:
+        L3_03:
+          zone_score_threshold: 0.65
+          gamma_min: 0.08
+          vwap_dist_max_pct: 0.75
+        L3_02:
+          strike_count: 4
+          spread_pct: 2.0
+        L3_01:
+          score_floor: 0.68
+      runtime:
+        execution_layer:
+          require_validated_strike: true
+
+evaluation_profiles:
+  baseline_eval:
+    description: "Default post-run evaluator profile."
+    compare_against: "baseline"
+    include_no_trade_runs: true
+  strict_eval:
+    description: "Stricter evaluator profile for trimming weak variants."
+    compare_against: "baseline"
+    include_no_trade_runs: true
+    overrides:
+      min_trade_count: 5
+      high_confidence_cutoff: 0.80
+      conflict_score_cutoff: 0.40
+
+notes:
+  - "Variants are intended to be layered on top of runtime_settings.yaml and coefficients_registry.yaml."
+  - "Fields not overridden inherit from baseline and the base registries."
+  - "Use evaluator outputs to decide whether a variant should survive."

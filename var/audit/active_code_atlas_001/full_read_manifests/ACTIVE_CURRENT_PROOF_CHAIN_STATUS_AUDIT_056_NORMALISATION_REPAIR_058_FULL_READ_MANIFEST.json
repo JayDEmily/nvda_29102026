@@ -1,0 +1,96 @@
+{
+  "created_utc": "2026-05-13T03:36:29Z",
+  "target": "ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_056_NORMALISATION_REPAIR_058",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 199065,
+      "line_count": 556,
+      "sha256": "7b814e3d50f252b5db2338b45399fd9c54bf5308e2d8ed5c4dffe1779158f49c",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 556
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_056/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_056_REPORT.json",
+      "byte_count": 8779,
+      "line_count": 165,
+      "sha256": "3853a4ff45ce7b2bbc7dcdc2606cc4997d2110614fe84f43cae8b31cdc69c559",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 165
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_056_normalisation_repair_058/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_056_NORMALISATION_REPAIR_058_REPORT.json",
+      "byte_count": 2845,
+      "line_count": 42,
+      "sha256": "2574519ee9ccd7939653856de4c0d18f3ab899ed75eb035a7e4d51b3e2f39831",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 42
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_056_normalisation_repair_058/receipts/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_056_NORMALISATION_REPAIR_058_RECEIPT.md",
+      "byte_count": 635,
+      "line_count": 9,
+      "sha256": "e9ba6797d5b3232a0c30eaa59abacc0c951ab5f5a7f440077b153429795446fe",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_056_normalisation_repair_058_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

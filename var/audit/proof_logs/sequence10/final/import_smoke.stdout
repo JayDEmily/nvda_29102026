@@ -1,0 +1,14 @@
+import_ok asyncpg 0.31.0
+import_ok fastapi 0.135.1
+import_ok ibapi 9.81.1-1
+import_ok orjson 3.11.7
+import_ok polars 1.39.3
+import_ok psycopg 3.3.3
+import_ok pydantic 2.12.5
+import_ok yaml 6.0.3
+import_ok sqlalchemy 2.0.48
+import_ok pytest 9.0.3
+import_ok black 26.3.1
+import_ok ruff unknown
+import_ok nvda_desk unknown
+openai_spec=None

@@ -1,0 +1,80 @@
+diff --git a/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py b/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
+index ecf2ebe..f0b9e28 100644
+--- a/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
++++ b/tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
+@@ -1,9 +1,21 @@
+ from __future__ import annotations
+ 
++import ast
+ from pathlib import Path
+ 
+ REPO_ROOT = Path(__file__).resolve().parents[3]
+-LEGACY_TERMS = ("legacy_import", "nvda_desk.legacy.imported")
++LEGACY_IMPORT_PREFIXES = ("legacy_import", "nvda_desk.legacy.imported")
++TRANSFORM_BOUNDARY_GUARD_FILES = (
++    Path("tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py"),
++    Path("tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py"),
++    Path("tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py"),
++    Path("tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py"),
++    Path("tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py"),
++    Path("tests/tier_a/review_runtime/test_review_transform_boundary_surface.py"),
++    Path("tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py"),
++    Path("tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py"),
++    Path("tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py"),
++)
+ 
+ 
+ def _native_python_paths() -> list[Path]:
+@@ -19,16 +31,47 @@ def _native_python_paths() -> list[Path]:
+     return sorted(candidates)
+ 
+ 
++def _imported_modules(path: Path) -> set[str]:
++    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
++    modules: set[str] = set()
++    for node in ast.walk(tree):
++        if isinstance(node, ast.Import):
++            modules.update(alias.name for alias in node.names)
++        elif isinstance(node, ast.ImportFrom) and node.module:
++            modules.add(node.module)
++    return modules
++
++
++def _legacy_imports(path: Path) -> set[str]:
++    return {
++        module
++        for module in _imported_modules(path)
++        if any(
++            module == prefix or module.startswith(f"{prefix}.")
++            for prefix in LEGACY_IMPORT_PREFIXES
++        )
++    }
++
++
+ def test_imported_module_subsystem_remains_outside_native_runtime_and_native_proof() -> None:
+     assert not (REPO_ROOT / "src/nvda_desk/legacy/imported").exists()
+ 
+-    offending_paths: list[str] = []
++    offending_imports: dict[str, list[str]] = {}
+     for path in _native_python_paths():
+-        text = path.read_text(encoding="utf-8")
+-        if any(term in text for term in LEGACY_TERMS):
+-            offending_paths.append(path.relative_to(REPO_ROOT).as_posix())
++        legacy_imports = _legacy_imports(path)
++        if legacy_imports:
++            offending_imports[path.relative_to(REPO_ROOT).as_posix()] = sorted(legacy_imports)
++
++    assert offending_imports == {}
++
++
++def test_transform_boundary_guard_strings_are_not_imported_legacy_modules() -> None:
++    """Transform-boundary tests may name donor roots while proving non-imports."""
+ 
+-    assert offending_paths == []
++    for relative_path in TRANSFORM_BOUNDARY_GUARD_FILES:
++        path = REPO_ROOT / relative_path
++        assert "legacy_import" in path.read_text(encoding="utf-8")
++        assert _legacy_imports(path) == set()
+ 
+ 
+ def test_imported_module_archive_tree_is_explicitly_quarantined() -> None:

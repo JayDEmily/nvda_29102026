@@ -1,0 +1,9 @@
+b5d89a1 Plan roadmap execution queue
+fd8b6ff Harden roadmap 5.1 external ingress authority boundary
+e179abe Harden roadmap serial desk cognition spine
+f3076e7 Harden roadmap support spine packet surfaces
+f9dc46c Harden roadmap 5.16 persistence ledger surfaces
+faad8d4 Harden roadmap 5.17 proof checkpoint surfaces
+e1da7c3 Record sandbox setup in roadmap ledger
+6b6c11d Install frozen roadmap governance and ledger
+28c21f5 Baseline from NVDA10 latest main tarball

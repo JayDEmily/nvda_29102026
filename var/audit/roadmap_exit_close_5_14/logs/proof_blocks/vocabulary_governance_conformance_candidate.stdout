@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_2_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 109 items
+
+tests/tier_a/vocabulary/test_vocabulary_schema_contract.py ..            [  1%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py .. [  3%]
+....                                                                     [  7%]
+tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py ....... [ 13%]
+.                                                                        [ 14%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py . [ 15%]
+.......                                                                  [ 22%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py . [ 22%]
+....                                                                     [ 26%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py . [ 27%]
+..........                                                               [ 36%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py . [ 37%]
+.......                                                                  [ 44%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py . [ 44%]
+.............                                                            [ 56%]
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py .    [ 57%]
+tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py .     [ 58%]
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py ..... [ 63%]
+.......................................                                  [ 99%]
+tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py .            [100%]
+
+============================= 109 passed in 11.39s =============================
+proof_block_id=vocabulary_governance_conformance_candidate
+command=python -m pytest tests/tier_a/vocabulary/test_vocabulary_schema_contract.py tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py

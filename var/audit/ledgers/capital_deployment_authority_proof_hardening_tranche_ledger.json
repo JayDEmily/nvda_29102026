@@ -1,0 +1,53 @@
+{
+  "ledger_name": "capital_deployment_authority_proof_hardening_tranche_ledger",
+  "status": "closed_runtime_reconciled",
+  "parent_brief": {
+    "path": "var/audit/briefs/2026-04-28_CAPITAL_DEPLOYMENT_AUTHORITY_PROOF_HARDENING_TRANCHE.md",
+    "sha256": "6a5a8ecce6006fb1d37c2defbace911d8653f9124523c4ee6e8153c83b051bc8"
+  },
+  "scope": {
+    "new_atlas_tranche_opened": false,
+    "full_atlas_batch_processed": false,
+    "virtual_environment_created": false,
+    "target_surface": "capital deployment authority proof hardening"
+  },
+  "leaves": [
+    {
+      "id": "CAP-PROOF-L01",
+      "type": "control_reconciliation",
+      "status": "closed"
+    },
+    {
+      "id": "CAP-PROOF-L02",
+      "type": "test_first_proof",
+      "status": "closed"
+    },
+    {
+      "id": "CAP-PROOF-L03",
+      "type": "code_conformance",
+      "status": "closed"
+    },
+    {
+      "id": "CAP-PROOF-L04",
+      "type": "mandatory_closeout",
+      "status": "closed"
+    }
+  ],
+  "verification": {
+    "targeted_capital_pytest": "pass_8_passed",
+    "full_suite_pytest": "pass_133_passed",
+    "execution_surface": "python_3_13_5_in_kernel_runtime_with_repo_src_on_sys_path",
+    "shell_default_python": "blocked_default_opt_pyvenv_site_startup_hung",
+    "usr_bin_python3": "starts_cleanly_but_missing_pytest_pydantic",
+    "ledger_json_parse": "pass",
+    "ledger_schema_json_parse": "pass",
+    "brief_sha_matches_ledger": "pass"
+  },
+  "closeout_state": {
+    "status": "closed_runtime_reconciled",
+    "promotion_ready": true,
+    "carry_forward_blockers": [
+      "broader Tier A presence-proof replacement remains future bounded work"
+    ]
+  }
+}

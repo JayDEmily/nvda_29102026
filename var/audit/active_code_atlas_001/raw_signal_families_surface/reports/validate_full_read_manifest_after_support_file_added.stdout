@@ -1,0 +1,26 @@
+{
+  "validation_status": "FAIL",
+  "error_count": 8,
+  "warning_count": 0,
+  "errors": [
+    "manifest_entry_stale_byte_count:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:9:config/proof_blocks.yaml:manifest=32076:actual=32095",
+    "manifest_entry_stale_sha256:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:9:config/proof_blocks.yaml:manifest='e420820de475ece2be66441a8ddb8517d0e13c53105c6f5ad26717a3a8118f49':actual='92f0c2ed658a3d9d5f84b8af26f76587b3f9aa5b3df10523641ec5afc8d5d043'",
+    "manifest_entry_stale_byte_count:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:13:src/nvda_desk/upstream/raw_signal_ingress.py:manifest=2510:actual=3071",
+    "manifest_entry_stale_line_count:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:13:src/nvda_desk/upstream/raw_signal_ingress.py:manifest=79:actual=93",
+    "manifest_entry_stale_sha256:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:13:src/nvda_desk/upstream/raw_signal_ingress.py:manifest='b363325d88ae66387d83cd3922929c81a95cd6d3cd9bc3d2d4f5c8480aca3882':actual='2053f67035bcb83a8ed955f6b7b6a62a7f781164ed39ffa546c36a20301c359f'",
+    "manifest_entry_stale_byte_count:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:16:tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:manifest=3859:actual=5054",
+    "manifest_entry_stale_line_count:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:16:tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:manifest=106:actual=140",
+    "manifest_entry_stale_sha256:var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json:16:tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:manifest='d26164b2256f344e7b5cce347a36d9c75820289971c0c687f1e75d90a19490f1':actual='3785469305cdf260b89d121bceb69915ef3bca278110274d8de9b42f1197af4f'"
+  ],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE_FULL_READ_MANIFEST.json",
+      "entry_count": 19,
+      "unique_path_count": 19,
+      "stale_hash_mismatch_count": 3,
+      "full_read_false_count": 0
+    }
+  ]
+}

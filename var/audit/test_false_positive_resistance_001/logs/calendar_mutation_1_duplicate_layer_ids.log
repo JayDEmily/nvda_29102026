@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______________ test_calendar_manifest_rejects_duplicate_layer_ids ______________
+
+    def test_calendar_manifest_rejects_duplicate_layer_ids() -> None:
+        payload = _manifest()
+        payload["layers"].append(deepcopy(payload["layers"][0]))
+    
+>       with pytest.raises(ValueError, match="duplicate calendar layer_id"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py:126: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py::test_calendar_manifest_rejects_duplicate_layer_ids - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.69s

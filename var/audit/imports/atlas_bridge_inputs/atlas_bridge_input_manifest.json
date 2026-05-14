@@ -1,0 +1,72 @@
+{
+  "manifest_name": "atlas_bridge_input_manifest",
+  "status": "evidence_only",
+  "purpose": "Repo-local read-only Atlas evidence bundle for Gate 2 of the Atlas-to-Native Intent Satisfaction Bridge.",
+  "source_provenance": {
+    "portability_note": "Original sandbox-local source paths are intentionally omitted. Portable provenance is recorded by source artefact name plus checksum.",
+    "atlas_archive": {
+      "source_artifact_name": "NVDA6_intent_atlas_repo_with_final_patch_applied.zip",
+      "sha256": "4774fba5ccfa19d4ac6e877ceb70c29acec195671817810c8ab54e38c28698f5"
+    },
+    "atlas_closeout_report": {
+      "source_artifact_name": "NVDA6_intent_atlas_salvage_closeout_report.md",
+      "sha256": "411fb81edc23b071fe79cc02fcf6952389764288028fbb1992f9c7c4d946a897",
+      "original_packaged_sha256": "b16e96d373a5e363e5b97bd14ff9c3d4936f88e7658a67852880d1ba66b5b795",
+      "repair_note": "Repo-local closeout report owner-classification counts were reconciled to co-packaged legacy_intent_atlas.json and legacy_owner_map_view.json."
+    }
+  },
+  "imported_at_utc": "2026-04-25T23:45:09Z",
+  "imported_files": [
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+      "sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    },
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_file_coverage_view.json",
+      "sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    },
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_owner_map_view.json",
+      "sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    },
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_rebuild_queue_view.json",
+      "sha256": "3e23821ed9ab1254e9a72c01877b99dfd6fe7ce6b0d7ef52451c4c0e0325cf01",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    },
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_exclusion_register.json",
+      "sha256": "6d744e4a27ab6dfea74385d40ab244bcce564c335d59567d70aabd0f2496bfdb",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    },
+    {
+      "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/NVDA6_intent_atlas_salvage_closeout_report.md",
+      "sha256": "411fb81edc23b071fe79cc02fcf6952389764288028fbb1992f9c7c4d946a897",
+      "status": "evidence_only",
+      "mutable_during_bridge_gate2": false
+    }
+  ],
+  "bundle_reconciliation": {
+    "reconciled_at_utc": "2026-04-26T01:11:09Z",
+    "reason": "Closeout report owner-classification counts did not match co-packaged Atlas owner evidence.",
+    "authoritative_owner_classification_counts": {
+      "direct_owner_records": 28,
+      "inferred_owner_records": 1029,
+      "unresolved_owner_records": 659,
+      "total_records": 1716
+    },
+    "authority_basis": [
+      "legacy_intent_atlas.json owner_confidence counts",
+      "legacy_owner_map_view.json owner_confidence record_count sums",
+      "legacy_owner_map_view.json record_ids exactly match legacy_intent_atlas.json atlas_record_id set"
+    ]
+  }
+}

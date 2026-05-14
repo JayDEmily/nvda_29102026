@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_BROAD_HYGIENE_SCAN_CLASSIFICATION_015_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_BROAD_HYGIENE_SCAN_CLASSIFICATION_015",
+  "manifest_scope": "broad_hygiene_scan_classification_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation law for broad hygiene classification."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Plan continuation and blocker-routing wording classified."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Current pointer updated for broad hygiene classification."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/broad_hygiene_scan_classification_015/reports/broad_hygiene_scan_after_014.txt",
+      "material_class": "scan",
+      "byte_count": 171392,
+      "line_count": 234,
+      "sha256": "2cc0751bb1df9136878c74301485841ec725dbef239e0c016aec8e1188c9955c",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 234
+        }
+      ],
+      "notes": "Broad hygiene scan input classified in full."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/broad_hygiene_scan_classification_015/reports/ACTIVE_BROAD_HYGIENE_SCAN_CLASSIFICATION_015_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1965,
+      "line_count": 35,
+      "sha256": "a680b0d7a8b8e750cf130ef2bd841b2132407a6e04cb6e5769a91adc9084866d",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 35
+        }
+      ],
+      "notes": "Broad hygiene classification report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/broad_hygiene_scan_classification_015/receipts/ACTIVE_BROAD_HYGIENE_SCAN_CLASSIFICATION_015_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 846,
+      "line_count": 22,
+      "sha256": "0523b16d7f8f49e77af1db201f40d7b967a8dce5e2ad22e31cdbbb69b551e3c1",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 22
+        }
+      ],
+      "notes": "Broad hygiene classification receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    }
+  ]
+}

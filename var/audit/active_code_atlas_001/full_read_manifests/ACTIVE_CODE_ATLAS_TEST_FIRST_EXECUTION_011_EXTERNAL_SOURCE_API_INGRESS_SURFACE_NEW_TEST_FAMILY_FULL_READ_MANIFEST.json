@@ -1,0 +1,2248 @@
+{
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_011_EXTERNAL_SOURCE_API_INGRESS_SURFACE_NEW_TEST_FAMILY_FULL_READ_MANIFEST",
+  "updated_utc": "2026-05-11T11:25:03+00:00",
+  "branch": "worker/full-read-manifest-hardening-001",
+  "base_commit": "bded1e4",
+  "surface_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_011_EXTERNAL_SOURCE_API_INGRESS_SURFACE_NEW_TEST_FAMILY",
+  "queue_row": "ACATQ-0002 / ACABC-0002",
+  "purpose": "Record full-read evidence before external source/API ingress new-family surface work.",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 294
+        }
+      ]
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 48010,
+      "line_count": 629,
+      "sha256": "b0e8bf5ed19d99560ebd8604c3630b762df75cd303d182415a736c027a38d5aa",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 629
+        }
+      ]
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 89043,
+      "line_count": 421,
+      "sha256": "98d21bd7420354f66f890a30d01702406a29eabf25b8c479acd1ce6c34f05f79",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 421
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_QUEUE_001.md",
+      "byte_count": 7885,
+      "line_count": 81,
+      "sha256": "936ba346029d0d25a6fa81b116380a6c15b9b5a943d019b305894064fc497c21",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 81
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1273
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+      "byte_count": 187370,
+      "line_count": 5168,
+      "sha256": "0a8c4384addfebd1551d7b8e54c43242bc1e1f74b39db7bd4da636f187cdc2ce",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3400
+        },
+        {
+          "start_line": 3401,
+          "end_line": 3600
+        },
+        {
+          "start_line": 3601,
+          "end_line": 3800
+        },
+        {
+          "start_line": 3801,
+          "end_line": 4000
+        },
+        {
+          "start_line": 4001,
+          "end_line": 4200
+        },
+        {
+          "start_line": 4201,
+          "end_line": 4400
+        },
+        {
+          "start_line": 4401,
+          "end_line": 4600
+        },
+        {
+          "start_line": 4601,
+          "end_line": 4800
+        },
+        {
+          "start_line": 4801,
+          "end_line": 5000
+        },
+        {
+          "start_line": 5001,
+          "end_line": 5168
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_record_join.json",
+      "byte_count": 3446907,
+      "line_count": 80751,
+      "sha256": "880c22cd3f678d285cee68c5db6dd9e34615bbd52d05f67ddd26bbaf4f8c24be",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3400
+        },
+        {
+          "start_line": 3401,
+          "end_line": 3600
+        },
+        {
+          "start_line": 3601,
+          "end_line": 3800
+        },
+        {
+          "start_line": 3801,
+          "end_line": 4000
+        },
+        {
+          "start_line": 4001,
+          "end_line": 4200
+        },
+        {
+          "start_line": 4201,
+          "end_line": 4400
+        },
+        {
+          "start_line": 4401,
+          "end_line": 4600
+        },
+        {
+          "start_line": 4601,
+          "end_line": 4800
+        },
+        {
+          "start_line": 4801,
+          "end_line": 5000
+        },
+        {
+          "start_line": 5001,
+          "end_line": 5200
+        },
+        {
+          "start_line": 5201,
+          "end_line": 5400
+        },
+        {
+          "start_line": 5401,
+          "end_line": 5600
+        },
+        {
+          "start_line": 5601,
+          "end_line": 5800
+        },
+        {
+          "start_line": 5801,
+          "end_line": 6000
+        },
+        {
+          "start_line": 6001,
+          "end_line": 6200
+        },
+        {
+          "start_line": 6201,
+          "end_line": 6400
+        },
+        {
+          "start_line": 6401,
+          "end_line": 6600
+        },
+        {
+          "start_line": 6601,
+          "end_line": 6800
+        },
+        {
+          "start_line": 6801,
+          "end_line": 7000
+        },
+        {
+          "start_line": 7001,
+          "end_line": 7200
+        },
+        {
+          "start_line": 7201,
+          "end_line": 7400
+        },
+        {
+          "start_line": 7401,
+          "end_line": 7600
+        },
+        {
+          "start_line": 7601,
+          "end_line": 7800
+        },
+        {
+          "start_line": 7801,
+          "end_line": 8000
+        },
+        {
+          "start_line": 8001,
+          "end_line": 8200
+        },
+        {
+          "start_line": 8201,
+          "end_line": 8400
+        },
+        {
+          "start_line": 8401,
+          "end_line": 8600
+        },
+        {
+          "start_line": 8601,
+          "end_line": 8800
+        },
+        {
+          "start_line": 8801,
+          "end_line": 9000
+        },
+        {
+          "start_line": 9001,
+          "end_line": 9200
+        },
+        {
+          "start_line": 9201,
+          "end_line": 9400
+        },
+        {
+          "start_line": 9401,
+          "end_line": 9600
+        },
+        {
+          "start_line": 9601,
+          "end_line": 9800
+        },
+        {
+          "start_line": 9801,
+          "end_line": 10000
+        },
+        {
+          "start_line": 10001,
+          "end_line": 10200
+        },
+        {
+          "start_line": 10201,
+          "end_line": 10400
+        },
+        {
+          "start_line": 10401,
+          "end_line": 10600
+        },
+        {
+          "start_line": 10601,
+          "end_line": 10800
+        },
+        {
+          "start_line": 10801,
+          "end_line": 11000
+        },
+        {
+          "start_line": 11001,
+          "end_line": 11200
+        },
+        {
+          "start_line": 11201,
+          "end_line": 11400
+        },
+        {
+          "start_line": 11401,
+          "end_line": 11600
+        },
+        {
+          "start_line": 11601,
+          "end_line": 11800
+        },
+        {
+          "start_line": 11801,
+          "end_line": 12000
+        },
+        {
+          "start_line": 12001,
+          "end_line": 12200
+        },
+        {
+          "start_line": 12201,
+          "end_line": 12400
+        },
+        {
+          "start_line": 12401,
+          "end_line": 12600
+        },
+        {
+          "start_line": 12601,
+          "end_line": 12800
+        },
+        {
+          "start_line": 12801,
+          "end_line": 13000
+        },
+        {
+          "start_line": 13001,
+          "end_line": 13200
+        },
+        {
+          "start_line": 13201,
+          "end_line": 13400
+        },
+        {
+          "start_line": 13401,
+          "end_line": 13600
+        },
+        {
+          "start_line": 13601,
+          "end_line": 13800
+        },
+        {
+          "start_line": 13801,
+          "end_line": 14000
+        },
+        {
+          "start_line": 14001,
+          "end_line": 14200
+        },
+        {
+          "start_line": 14201,
+          "end_line": 14400
+        },
+        {
+          "start_line": 14401,
+          "end_line": 14600
+        },
+        {
+          "start_line": 14601,
+          "end_line": 14800
+        },
+        {
+          "start_line": 14801,
+          "end_line": 15000
+        },
+        {
+          "start_line": 15001,
+          "end_line": 15200
+        },
+        {
+          "start_line": 15201,
+          "end_line": 15400
+        },
+        {
+          "start_line": 15401,
+          "end_line": 15600
+        },
+        {
+          "start_line": 15601,
+          "end_line": 15800
+        },
+        {
+          "start_line": 15801,
+          "end_line": 16000
+        },
+        {
+          "start_line": 16001,
+          "end_line": 16200
+        },
+        {
+          "start_line": 16201,
+          "end_line": 16400
+        },
+        {
+          "start_line": 16401,
+          "end_line": 16600
+        },
+        {
+          "start_line": 16601,
+          "end_line": 16800
+        },
+        {
+          "start_line": 16801,
+          "end_line": 17000
+        },
+        {
+          "start_line": 17001,
+          "end_line": 17200
+        },
+        {
+          "start_line": 17201,
+          "end_line": 17400
+        },
+        {
+          "start_line": 17401,
+          "end_line": 17600
+        },
+        {
+          "start_line": 17601,
+          "end_line": 17800
+        },
+        {
+          "start_line": 17801,
+          "end_line": 18000
+        },
+        {
+          "start_line": 18001,
+          "end_line": 18200
+        },
+        {
+          "start_line": 18201,
+          "end_line": 18400
+        },
+        {
+          "start_line": 18401,
+          "end_line": 18600
+        },
+        {
+          "start_line": 18601,
+          "end_line": 18800
+        },
+        {
+          "start_line": 18801,
+          "end_line": 19000
+        },
+        {
+          "start_line": 19001,
+          "end_line": 19200
+        },
+        {
+          "start_line": 19201,
+          "end_line": 19400
+        },
+        {
+          "start_line": 19401,
+          "end_line": 19600
+        },
+        {
+          "start_line": 19601,
+          "end_line": 19800
+        },
+        {
+          "start_line": 19801,
+          "end_line": 20000
+        },
+        {
+          "start_line": 20001,
+          "end_line": 20200
+        },
+        {
+          "start_line": 20201,
+          "end_line": 20400
+        },
+        {
+          "start_line": 20401,
+          "end_line": 20600
+        },
+        {
+          "start_line": 20601,
+          "end_line": 20800
+        },
+        {
+          "start_line": 20801,
+          "end_line": 21000
+        },
+        {
+          "start_line": 21001,
+          "end_line": 21200
+        },
+        {
+          "start_line": 21201,
+          "end_line": 21400
+        },
+        {
+          "start_line": 21401,
+          "end_line": 21600
+        },
+        {
+          "start_line": 21601,
+          "end_line": 21800
+        },
+        {
+          "start_line": 21801,
+          "end_line": 22000
+        },
+        {
+          "start_line": 22001,
+          "end_line": 22200
+        },
+        {
+          "start_line": 22201,
+          "end_line": 22400
+        },
+        {
+          "start_line": 22401,
+          "end_line": 22600
+        },
+        {
+          "start_line": 22601,
+          "end_line": 22800
+        },
+        {
+          "start_line": 22801,
+          "end_line": 23000
+        },
+        {
+          "start_line": 23001,
+          "end_line": 23200
+        },
+        {
+          "start_line": 23201,
+          "end_line": 23400
+        },
+        {
+          "start_line": 23401,
+          "end_line": 23600
+        },
+        {
+          "start_line": 23601,
+          "end_line": 23800
+        },
+        {
+          "start_line": 23801,
+          "end_line": 24000
+        },
+        {
+          "start_line": 24001,
+          "end_line": 24200
+        },
+        {
+          "start_line": 24201,
+          "end_line": 24400
+        },
+        {
+          "start_line": 24401,
+          "end_line": 24600
+        },
+        {
+          "start_line": 24601,
+          "end_line": 24800
+        },
+        {
+          "start_line": 24801,
+          "end_line": 25000
+        },
+        {
+          "start_line": 25001,
+          "end_line": 25200
+        },
+        {
+          "start_line": 25201,
+          "end_line": 25400
+        },
+        {
+          "start_line": 25401,
+          "end_line": 25600
+        },
+        {
+          "start_line": 25601,
+          "end_line": 25800
+        },
+        {
+          "start_line": 25801,
+          "end_line": 26000
+        },
+        {
+          "start_line": 26001,
+          "end_line": 26200
+        },
+        {
+          "start_line": 26201,
+          "end_line": 26400
+        },
+        {
+          "start_line": 26401,
+          "end_line": 26600
+        },
+        {
+          "start_line": 26601,
+          "end_line": 26800
+        },
+        {
+          "start_line": 26801,
+          "end_line": 27000
+        },
+        {
+          "start_line": 27001,
+          "end_line": 27200
+        },
+        {
+          "start_line": 27201,
+          "end_line": 27400
+        },
+        {
+          "start_line": 27401,
+          "end_line": 27600
+        },
+        {
+          "start_line": 27601,
+          "end_line": 27800
+        },
+        {
+          "start_line": 27801,
+          "end_line": 28000
+        },
+        {
+          "start_line": 28001,
+          "end_line": 28200
+        },
+        {
+          "start_line": 28201,
+          "end_line": 28400
+        },
+        {
+          "start_line": 28401,
+          "end_line": 28600
+        },
+        {
+          "start_line": 28601,
+          "end_line": 28800
+        },
+        {
+          "start_line": 28801,
+          "end_line": 29000
+        },
+        {
+          "start_line": 29001,
+          "end_line": 29200
+        },
+        {
+          "start_line": 29201,
+          "end_line": 29400
+        },
+        {
+          "start_line": 29401,
+          "end_line": 29600
+        },
+        {
+          "start_line": 29601,
+          "end_line": 29800
+        },
+        {
+          "start_line": 29801,
+          "end_line": 30000
+        },
+        {
+          "start_line": 30001,
+          "end_line": 30200
+        },
+        {
+          "start_line": 30201,
+          "end_line": 30400
+        },
+        {
+          "start_line": 30401,
+          "end_line": 30600
+        },
+        {
+          "start_line": 30601,
+          "end_line": 30800
+        },
+        {
+          "start_line": 30801,
+          "end_line": 31000
+        },
+        {
+          "start_line": 31001,
+          "end_line": 31200
+        },
+        {
+          "start_line": 31201,
+          "end_line": 31400
+        },
+        {
+          "start_line": 31401,
+          "end_line": 31600
+        },
+        {
+          "start_line": 31601,
+          "end_line": 31800
+        },
+        {
+          "start_line": 31801,
+          "end_line": 32000
+        },
+        {
+          "start_line": 32001,
+          "end_line": 32200
+        },
+        {
+          "start_line": 32201,
+          "end_line": 32400
+        },
+        {
+          "start_line": 32401,
+          "end_line": 32600
+        },
+        {
+          "start_line": 32601,
+          "end_line": 32800
+        },
+        {
+          "start_line": 32801,
+          "end_line": 33000
+        },
+        {
+          "start_line": 33001,
+          "end_line": 33200
+        },
+        {
+          "start_line": 33201,
+          "end_line": 33400
+        },
+        {
+          "start_line": 33401,
+          "end_line": 33600
+        },
+        {
+          "start_line": 33601,
+          "end_line": 33800
+        },
+        {
+          "start_line": 33801,
+          "end_line": 34000
+        },
+        {
+          "start_line": 34001,
+          "end_line": 34200
+        },
+        {
+          "start_line": 34201,
+          "end_line": 34400
+        },
+        {
+          "start_line": 34401,
+          "end_line": 34600
+        },
+        {
+          "start_line": 34601,
+          "end_line": 34800
+        },
+        {
+          "start_line": 34801,
+          "end_line": 35000
+        },
+        {
+          "start_line": 35001,
+          "end_line": 35200
+        },
+        {
+          "start_line": 35201,
+          "end_line": 35400
+        },
+        {
+          "start_line": 35401,
+          "end_line": 35600
+        },
+        {
+          "start_line": 35601,
+          "end_line": 35800
+        },
+        {
+          "start_line": 35801,
+          "end_line": 36000
+        },
+        {
+          "start_line": 36001,
+          "end_line": 36200
+        },
+        {
+          "start_line": 36201,
+          "end_line": 36400
+        },
+        {
+          "start_line": 36401,
+          "end_line": 36600
+        },
+        {
+          "start_line": 36601,
+          "end_line": 36800
+        },
+        {
+          "start_line": 36801,
+          "end_line": 37000
+        },
+        {
+          "start_line": 37001,
+          "end_line": 37200
+        },
+        {
+          "start_line": 37201,
+          "end_line": 37400
+        },
+        {
+          "start_line": 37401,
+          "end_line": 37600
+        },
+        {
+          "start_line": 37601,
+          "end_line": 37800
+        },
+        {
+          "start_line": 37801,
+          "end_line": 38000
+        },
+        {
+          "start_line": 38001,
+          "end_line": 38200
+        },
+        {
+          "start_line": 38201,
+          "end_line": 38400
+        },
+        {
+          "start_line": 38401,
+          "end_line": 38600
+        },
+        {
+          "start_line": 38601,
+          "end_line": 38800
+        },
+        {
+          "start_line": 38801,
+          "end_line": 39000
+        },
+        {
+          "start_line": 39001,
+          "end_line": 39200
+        },
+        {
+          "start_line": 39201,
+          "end_line": 39400
+        },
+        {
+          "start_line": 39401,
+          "end_line": 39600
+        },
+        {
+          "start_line": 39601,
+          "end_line": 39800
+        },
+        {
+          "start_line": 39801,
+          "end_line": 40000
+        },
+        {
+          "start_line": 40001,
+          "end_line": 40200
+        },
+        {
+          "start_line": 40201,
+          "end_line": 40400
+        },
+        {
+          "start_line": 40401,
+          "end_line": 40600
+        },
+        {
+          "start_line": 40601,
+          "end_line": 40800
+        },
+        {
+          "start_line": 40801,
+          "end_line": 41000
+        },
+        {
+          "start_line": 41001,
+          "end_line": 41200
+        },
+        {
+          "start_line": 41201,
+          "end_line": 41400
+        },
+        {
+          "start_line": 41401,
+          "end_line": 41600
+        },
+        {
+          "start_line": 41601,
+          "end_line": 41800
+        },
+        {
+          "start_line": 41801,
+          "end_line": 42000
+        },
+        {
+          "start_line": 42001,
+          "end_line": 42200
+        },
+        {
+          "start_line": 42201,
+          "end_line": 42400
+        },
+        {
+          "start_line": 42401,
+          "end_line": 42600
+        },
+        {
+          "start_line": 42601,
+          "end_line": 42800
+        },
+        {
+          "start_line": 42801,
+          "end_line": 43000
+        },
+        {
+          "start_line": 43001,
+          "end_line": 43200
+        },
+        {
+          "start_line": 43201,
+          "end_line": 43400
+        },
+        {
+          "start_line": 43401,
+          "end_line": 43600
+        },
+        {
+          "start_line": 43601,
+          "end_line": 43800
+        },
+        {
+          "start_line": 43801,
+          "end_line": 44000
+        },
+        {
+          "start_line": 44001,
+          "end_line": 44200
+        },
+        {
+          "start_line": 44201,
+          "end_line": 44400
+        },
+        {
+          "start_line": 44401,
+          "end_line": 44600
+        },
+        {
+          "start_line": 44601,
+          "end_line": 44800
+        },
+        {
+          "start_line": 44801,
+          "end_line": 45000
+        },
+        {
+          "start_line": 45001,
+          "end_line": 45200
+        },
+        {
+          "start_line": 45201,
+          "end_line": 45400
+        },
+        {
+          "start_line": 45401,
+          "end_line": 45600
+        },
+        {
+          "start_line": 45601,
+          "end_line": 45800
+        },
+        {
+          "start_line": 45801,
+          "end_line": 46000
+        },
+        {
+          "start_line": 46001,
+          "end_line": 46200
+        },
+        {
+          "start_line": 46201,
+          "end_line": 46400
+        },
+        {
+          "start_line": 46401,
+          "end_line": 46600
+        },
+        {
+          "start_line": 46601,
+          "end_line": 46800
+        },
+        {
+          "start_line": 46801,
+          "end_line": 47000
+        },
+        {
+          "start_line": 47001,
+          "end_line": 47200
+        },
+        {
+          "start_line": 47201,
+          "end_line": 47400
+        },
+        {
+          "start_line": 47401,
+          "end_line": 47600
+        },
+        {
+          "start_line": 47601,
+          "end_line": 47800
+        },
+        {
+          "start_line": 47801,
+          "end_line": 48000
+        },
+        {
+          "start_line": 48001,
+          "end_line": 48200
+        },
+        {
+          "start_line": 48201,
+          "end_line": 48400
+        },
+        {
+          "start_line": 48401,
+          "end_line": 48600
+        },
+        {
+          "start_line": 48601,
+          "end_line": 48800
+        },
+        {
+          "start_line": 48801,
+          "end_line": 49000
+        },
+        {
+          "start_line": 49001,
+          "end_line": 49200
+        },
+        {
+          "start_line": 49201,
+          "end_line": 49400
+        },
+        {
+          "start_line": 49401,
+          "end_line": 49600
+        },
+        {
+          "start_line": 49601,
+          "end_line": 49800
+        },
+        {
+          "start_line": 49801,
+          "end_line": 50000
+        },
+        {
+          "start_line": 50001,
+          "end_line": 50200
+        },
+        {
+          "start_line": 50201,
+          "end_line": 50400
+        },
+        {
+          "start_line": 50401,
+          "end_line": 50600
+        },
+        {
+          "start_line": 50601,
+          "end_line": 50800
+        },
+        {
+          "start_line": 50801,
+          "end_line": 51000
+        },
+        {
+          "start_line": 51001,
+          "end_line": 51200
+        },
+        {
+          "start_line": 51201,
+          "end_line": 51400
+        },
+        {
+          "start_line": 51401,
+          "end_line": 51600
+        },
+        {
+          "start_line": 51601,
+          "end_line": 51800
+        },
+        {
+          "start_line": 51801,
+          "end_line": 52000
+        },
+        {
+          "start_line": 52001,
+          "end_line": 52200
+        },
+        {
+          "start_line": 52201,
+          "end_line": 52400
+        },
+        {
+          "start_line": 52401,
+          "end_line": 52600
+        },
+        {
+          "start_line": 52601,
+          "end_line": 52800
+        },
+        {
+          "start_line": 52801,
+          "end_line": 53000
+        },
+        {
+          "start_line": 53001,
+          "end_line": 53200
+        },
+        {
+          "start_line": 53201,
+          "end_line": 53400
+        },
+        {
+          "start_line": 53401,
+          "end_line": 53600
+        },
+        {
+          "start_line": 53601,
+          "end_line": 53800
+        },
+        {
+          "start_line": 53801,
+          "end_line": 54000
+        },
+        {
+          "start_line": 54001,
+          "end_line": 54200
+        },
+        {
+          "start_line": 54201,
+          "end_line": 54400
+        },
+        {
+          "start_line": 54401,
+          "end_line": 54600
+        },
+        {
+          "start_line": 54601,
+          "end_line": 54800
+        },
+        {
+          "start_line": 54801,
+          "end_line": 55000
+        },
+        {
+          "start_line": 55001,
+          "end_line": 55200
+        },
+        {
+          "start_line": 55201,
+          "end_line": 55400
+        },
+        {
+          "start_line": 55401,
+          "end_line": 55600
+        },
+        {
+          "start_line": 55601,
+          "end_line": 55800
+        },
+        {
+          "start_line": 55801,
+          "end_line": 56000
+        },
+        {
+          "start_line": 56001,
+          "end_line": 56200
+        },
+        {
+          "start_line": 56201,
+          "end_line": 56400
+        },
+        {
+          "start_line": 56401,
+          "end_line": 56600
+        },
+        {
+          "start_line": 56601,
+          "end_line": 56800
+        },
+        {
+          "start_line": 56801,
+          "end_line": 57000
+        },
+        {
+          "start_line": 57001,
+          "end_line": 57200
+        },
+        {
+          "start_line": 57201,
+          "end_line": 57400
+        },
+        {
+          "start_line": 57401,
+          "end_line": 57600
+        },
+        {
+          "start_line": 57601,
+          "end_line": 57800
+        },
+        {
+          "start_line": 57801,
+          "end_line": 58000
+        },
+        {
+          "start_line": 58001,
+          "end_line": 58200
+        },
+        {
+          "start_line": 58201,
+          "end_line": 58400
+        },
+        {
+          "start_line": 58401,
+          "end_line": 58600
+        },
+        {
+          "start_line": 58601,
+          "end_line": 58800
+        },
+        {
+          "start_line": 58801,
+          "end_line": 59000
+        },
+        {
+          "start_line": 59001,
+          "end_line": 59200
+        },
+        {
+          "start_line": 59201,
+          "end_line": 59400
+        },
+        {
+          "start_line": 59401,
+          "end_line": 59600
+        },
+        {
+          "start_line": 59601,
+          "end_line": 59800
+        },
+        {
+          "start_line": 59801,
+          "end_line": 60000
+        },
+        {
+          "start_line": 60001,
+          "end_line": 60200
+        },
+        {
+          "start_line": 60201,
+          "end_line": 60400
+        },
+        {
+          "start_line": 60401,
+          "end_line": 60600
+        },
+        {
+          "start_line": 60601,
+          "end_line": 60800
+        },
+        {
+          "start_line": 60801,
+          "end_line": 61000
+        },
+        {
+          "start_line": 61001,
+          "end_line": 61200
+        },
+        {
+          "start_line": 61201,
+          "end_line": 61400
+        },
+        {
+          "start_line": 61401,
+          "end_line": 61600
+        },
+        {
+          "start_line": 61601,
+          "end_line": 61800
+        },
+        {
+          "start_line": 61801,
+          "end_line": 62000
+        },
+        {
+          "start_line": 62001,
+          "end_line": 62200
+        },
+        {
+          "start_line": 62201,
+          "end_line": 62400
+        },
+        {
+          "start_line": 62401,
+          "end_line": 62600
+        },
+        {
+          "start_line": 62601,
+          "end_line": 62800
+        },
+        {
+          "start_line": 62801,
+          "end_line": 63000
+        },
+        {
+          "start_line": 63001,
+          "end_line": 63200
+        },
+        {
+          "start_line": 63201,
+          "end_line": 63400
+        },
+        {
+          "start_line": 63401,
+          "end_line": 63600
+        },
+        {
+          "start_line": 63601,
+          "end_line": 63800
+        },
+        {
+          "start_line": 63801,
+          "end_line": 64000
+        },
+        {
+          "start_line": 64001,
+          "end_line": 64200
+        },
+        {
+          "start_line": 64201,
+          "end_line": 64400
+        },
+        {
+          "start_line": 64401,
+          "end_line": 64600
+        },
+        {
+          "start_line": 64601,
+          "end_line": 64800
+        },
+        {
+          "start_line": 64801,
+          "end_line": 65000
+        },
+        {
+          "start_line": 65001,
+          "end_line": 65200
+        },
+        {
+          "start_line": 65201,
+          "end_line": 65400
+        },
+        {
+          "start_line": 65401,
+          "end_line": 65600
+        },
+        {
+          "start_line": 65601,
+          "end_line": 65800
+        },
+        {
+          "start_line": 65801,
+          "end_line": 66000
+        },
+        {
+          "start_line": 66001,
+          "end_line": 66200
+        },
+        {
+          "start_line": 66201,
+          "end_line": 66400
+        },
+        {
+          "start_line": 66401,
+          "end_line": 66600
+        },
+        {
+          "start_line": 66601,
+          "end_line": 66800
+        },
+        {
+          "start_line": 66801,
+          "end_line": 67000
+        },
+        {
+          "start_line": 67001,
+          "end_line": 67200
+        },
+        {
+          "start_line": 67201,
+          "end_line": 67400
+        },
+        {
+          "start_line": 67401,
+          "end_line": 67600
+        },
+        {
+          "start_line": 67601,
+          "end_line": 67800
+        },
+        {
+          "start_line": 67801,
+          "end_line": 68000
+        },
+        {
+          "start_line": 68001,
+          "end_line": 68200
+        },
+        {
+          "start_line": 68201,
+          "end_line": 68400
+        },
+        {
+          "start_line": 68401,
+          "end_line": 68600
+        },
+        {
+          "start_line": 68601,
+          "end_line": 68800
+        },
+        {
+          "start_line": 68801,
+          "end_line": 69000
+        },
+        {
+          "start_line": 69001,
+          "end_line": 69200
+        },
+        {
+          "start_line": 69201,
+          "end_line": 69400
+        },
+        {
+          "start_line": 69401,
+          "end_line": 69600
+        },
+        {
+          "start_line": 69601,
+          "end_line": 69800
+        },
+        {
+          "start_line": 69801,
+          "end_line": 70000
+        },
+        {
+          "start_line": 70001,
+          "end_line": 70200
+        },
+        {
+          "start_line": 70201,
+          "end_line": 70400
+        },
+        {
+          "start_line": 70401,
+          "end_line": 70600
+        },
+        {
+          "start_line": 70601,
+          "end_line": 70800
+        },
+        {
+          "start_line": 70801,
+          "end_line": 71000
+        },
+        {
+          "start_line": 71001,
+          "end_line": 71200
+        },
+        {
+          "start_line": 71201,
+          "end_line": 71400
+        },
+        {
+          "start_line": 71401,
+          "end_line": 71600
+        },
+        {
+          "start_line": 71601,
+          "end_line": 71800
+        },
+        {
+          "start_line": 71801,
+          "end_line": 72000
+        },
+        {
+          "start_line": 72001,
+          "end_line": 72200
+        },
+        {
+          "start_line": 72201,
+          "end_line": 72400
+        },
+        {
+          "start_line": 72401,
+          "end_line": 72600
+        },
+        {
+          "start_line": 72601,
+          "end_line": 72800
+        },
+        {
+          "start_line": 72801,
+          "end_line": 73000
+        },
+        {
+          "start_line": 73001,
+          "end_line": 73200
+        },
+        {
+          "start_line": 73201,
+          "end_line": 73400
+        },
+        {
+          "start_line": 73401,
+          "end_line": 73600
+        },
+        {
+          "start_line": 73601,
+          "end_line": 73800
+        },
+        {
+          "start_line": 73801,
+          "end_line": 74000
+        },
+        {
+          "start_line": 74001,
+          "end_line": 74200
+        },
+        {
+          "start_line": 74201,
+          "end_line": 74400
+        },
+        {
+          "start_line": 74401,
+          "end_line": 74600
+        },
+        {
+          "start_line": 74601,
+          "end_line": 74800
+        },
+        {
+          "start_line": 74801,
+          "end_line": 75000
+        },
+        {
+          "start_line": 75001,
+          "end_line": 75200
+        },
+        {
+          "start_line": 75201,
+          "end_line": 75400
+        },
+        {
+          "start_line": 75401,
+          "end_line": 75600
+        },
+        {
+          "start_line": 75601,
+          "end_line": 75800
+        },
+        {
+          "start_line": 75801,
+          "end_line": 76000
+        },
+        {
+          "start_line": 76001,
+          "end_line": 76200
+        },
+        {
+          "start_line": 76201,
+          "end_line": 76400
+        },
+        {
+          "start_line": 76401,
+          "end_line": 76600
+        },
+        {
+          "start_line": 76601,
+          "end_line": 76800
+        },
+        {
+          "start_line": 76801,
+          "end_line": 77000
+        },
+        {
+          "start_line": 77001,
+          "end_line": 77200
+        },
+        {
+          "start_line": 77201,
+          "end_line": 77400
+        },
+        {
+          "start_line": 77401,
+          "end_line": 77600
+        },
+        {
+          "start_line": 77601,
+          "end_line": 77800
+        },
+        {
+          "start_line": 77801,
+          "end_line": 78000
+        },
+        {
+          "start_line": 78001,
+          "end_line": 78200
+        },
+        {
+          "start_line": 78201,
+          "end_line": 78400
+        },
+        {
+          "start_line": 78401,
+          "end_line": 78600
+        },
+        {
+          "start_line": 78601,
+          "end_line": 78800
+        },
+        {
+          "start_line": 78801,
+          "end_line": 79000
+        },
+        {
+          "start_line": 79001,
+          "end_line": 79200
+        },
+        {
+          "start_line": 79201,
+          "end_line": 79400
+        },
+        {
+          "start_line": 79401,
+          "end_line": 79600
+        },
+        {
+          "start_line": 79601,
+          "end_line": 79800
+        },
+        {
+          "start_line": 79801,
+          "end_line": 80000
+        },
+        {
+          "start_line": 80001,
+          "end_line": 80200
+        },
+        {
+          "start_line": 80201,
+          "end_line": 80400
+        },
+        {
+          "start_line": 80401,
+          "end_line": 80600
+        },
+        {
+          "start_line": 80601,
+          "end_line": 80751
+        }
+      ]
+    },
+    {
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "byte_count": 7552,
+      "line_count": 186,
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 186
+        }
+      ]
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 81
+        }
+      ]
+    },
+    {
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "byte_count": 10717,
+      "line_count": 264,
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 264
+        }
+      ]
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 202
+        }
+      ]
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 758
+        }
+      ]
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ]
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 29129,
+      "line_count": 460,
+      "sha256": "8dff81cca379d5d0d6c2bc4fb3f70425091bf86d99f55bd2d3ae12f49a691501",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 460
+        }
+      ]
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 189556,
+      "line_count": 3090,
+      "sha256": "da47232616e1e174b95cc060801129d5301e22f88162675506771019e0cba790",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3090
+        }
+      ]
+    },
+    {
+      "path": "src/nvda_desk/contracts/external_source.py",
+      "byte_count": 5597,
+      "line_count": 179,
+      "sha256": "ff8b32b39a369851ddee1fd4f69cdc769f6b64e607c6805fa5c46a539f2aae82",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 179
+        }
+      ]
+    },
+    {
+      "path": "src/nvda_desk/adapters/ingress/calendar_feed.py",
+      "byte_count": 386,
+      "line_count": 12,
+      "sha256": "14be45461dc4d450294f92f35f7e243c4bdfd23d189739a0ff0b39ae505bcc76",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+      "byte_count": 780,
+      "line_count": 21,
+      "sha256": "4e9c94e3658768c18db4ccc2d7541647e60a1978b859f81770b9067da853f0db",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+      "byte_count": 667,
+      "line_count": 17,
+      "sha256": "7a216cb67634d55e82d8ba6ca0adfc1dd4356b2b79508dee954187709e87b714",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "src/nvda_desk/adapters/egress/broker_protocol.py",
+      "byte_count": 991,
+      "line_count": 26,
+      "sha256": "7854ba084fe49e566557db037ca8039fc7937efac1db8725422dfeea02f0b5fb",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py",
+      "byte_count": 7290,
+      "line_count": 210,
+      "sha256": "aac83ecb5364a3404be8235251cadb5d4a14dba17368e60709fd34c4b14f01c4",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 210
+        }
+      ]
+    },
+    {
+      "path": "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+      "byte_count": 1671,
+      "line_count": 42,
+      "sha256": "3f929592bb82bf058bc93360e4b814f544755f44bb7bd7dc81d1e2af99b8abf8",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "tests/tier_a/api/test_api_boundary_surface.py",
+      "byte_count": 2219,
+      "line_count": 53,
+      "sha256": "bef00037bdea70611ed63bf17e6d287d288bc845d2479ab2612545a088aabc4e",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+      "byte_count": 4134,
+      "line_count": 92,
+      "sha256": "d6bf06c2120ff2ebdfe6cb73dc26bee3a83b6c9378e0335c79dc68c0b28527a0",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 92
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface/external_source_api_ingress_active_code_atlas_records.json",
+      "byte_count": 4532,
+      "line_count": 110,
+      "sha256": "fb4844b24e4e2396885b2233625055557976b5559b388ca3f6f5ccc4168a7753",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 110
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_010_EXTERNAL_SOURCE_API_INGRESS_SURFACE_RECEIPT.md",
+      "byte_count": 3149,
+      "line_count": 66,
+      "sha256": "4ae010ce913ba1ef0602cbc3ee6200657b08a439ee584ef4e47bc1d22b9f2f68",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "tests/tier_a/adapters_ingress/test_external_source_contract_surface.py",
+      "byte_count": 3010,
+      "line_count": 86,
+      "sha256": "c671d5f0efc1472f886ec2246290509a880e446947f49f40ec9f0addb43c4482",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 86
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface_new_test_family/external_source_contract_active_code_atlas_records.json",
+      "byte_count": 4127,
+      "line_count": 100,
+      "sha256": "f34ed3a4318214b2ba46d6990090e714678499b8f46bb12a279230f0f3263cef",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 100
+        }
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_011_EXTERNAL_SOURCE_API_INGRESS_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "byte_count": 2886,
+      "line_count": 65,
+      "sha256": "7f8aef6d936a53e73e177ff87d85c7253bff9d1307822006016665148f0a7151",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface_new_test_family/reports/external_source_contract_surface_pytest.txt",
+      "byte_count": 98,
+      "line_count": 2,
+      "sha256": "20b00d9cc4a3409a3582614799f69f2a82d46a590612cb448479055fd731933d",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/external_source_api_ingress_surface_new_test_family/reports/external_source_contract_surface_proof_block.txt",
+      "byte_count": 876,
+      "line_count": 14,
+      "sha256": "de9c716b0123b15b1a7e49595a9dfb3d817cfbde1b7b5ecc849403021eb1023f",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": []
+    }
+  ]
+}

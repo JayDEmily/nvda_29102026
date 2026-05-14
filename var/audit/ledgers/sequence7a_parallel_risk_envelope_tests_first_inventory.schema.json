@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "black_run": {
+      "const": false
+    },
+    "created_at_utc": {
+      "type": "string"
+    },
+    "forbidden_authority_opened": {
+      "type": "object"
+    },
+    "json_parse_status": {
+      "type": "string"
+    },
+    "pytest_run": {
+      "const": false
+    },
+    "read_ledger_summary": {
+      "type": "object"
+    },
+    "record_reconciliation_summary": {
+      "type": "object"
+    },
+    "records": {
+      "type": "array"
+    },
+    "result": {
+      "const": "PASS_TESTS_FIRST_NOT_SEQUENCE7_PASS"
+    },
+    "ruff_run": {
+      "const": false
+    },
+    "runtime_implementation_opened": {
+      "const": false
+    },
+    "runtime_source_modified": {
+      "const": false
+    },
+    "schema_version": {
+      "const": "sequence7a_parallel_risk_envelope_tests_first_inventory.v1"
+    },
+    "sequence": {
+      "const": "Sequence 7A"
+    },
+    "sequence8_opened": {
+      "const": false
+    },
+    "source_lock": {
+      "type": "object"
+    },
+    "tests_first_files": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "tranche": {
+      "type": "string"
+    },
+    "venv_built": {
+      "const": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "sequence",
+    "tranche",
+    "result",
+    "source_lock",
+    "read_ledger_summary",
+    "record_reconciliation_summary",
+    "tests_first_files",
+    "runtime_implementation_opened",
+    "sequence8_opened",
+    "records"
+  ],
+  "title": "Sequence 7A parallel risk envelope tests-first inventory",
+  "type": "object"
+}

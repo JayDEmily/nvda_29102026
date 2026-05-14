@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_CLOSEOUT_REPORTING_BOUNDARY_ALIGNMENT_026_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_CLOSEOUT_REPORTING_BOUNDARY_ALIGNMENT_026",
+  "manifest_scope": "closeout_reporting_boundary_alignment_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation/closeout authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 90499,
+      "line_count": 668,
+      "sha256": "adc5f22b6a79c4c31b063027fd54fbd6fb05ddb4bff4471a5721ae1f5705d597",
+      "read_method": "prior_full_read_plus_targeted_section_16_read_and_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 668
+        }
+      ],
+      "notes": "Updated status/current workstream and section 16 closeout/reporting boundary wording."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 175417,
+      "line_count": 515,
+      "sha256": "bbb5333f7184d8caf6c6adbfa4b6b468aaa2e722a7c40e5ab6ea71185ea71a1d",
+      "read_method": "prior_full_read_plus_current_pointer_read_and_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 515
+        }
+      ],
+      "notes": "Updated current pointer and history row for closeout reporting boundary alignment 026."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/closeout_reporting_boundary_alignment_026/reports/ACTIVE_CLOSEOUT_REPORTING_BOUNDARY_ALIGNMENT_026_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1707,
+      "line_count": 37,
+      "sha256": "5b2d63144ddc8bb34994605b8432069bfcdedd348ef0d17100e678cc404408a9",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 37
+        }
+      ],
+      "notes": "Closeout reporting boundary alignment report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/closeout_reporting_boundary_alignment_026/receipts/ACTIVE_CLOSEOUT_REPORTING_BOUNDARY_ALIGNMENT_026_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1032,
+      "line_count": 20,
+      "sha256": "4a53cf60f0cad68bd24a5f342d29ed38768714b3c0bae39231e21806394346c6",
+      "read_method": "line_numbered_full_read_after_creation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Closeout reporting boundary alignment receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/manifest_validator_reference_scan_025/reports/ACTIVE_MANIFEST_VALIDATOR_REFERENCE_SCAN_025_REPORT.json",
+      "material_class": "prior_report",
+      "byte_count": 1424,
+      "line_count": 36,
+      "sha256": "dce2357a3a64d58c4e5b7dfaf8ae09666ce1b3f7ccc5bb5b7e35c841ef0456f3",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 36
+        }
+      ],
+      "notes": "Prior current-chain 025 report used as predecessor state."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/manifest_validator_reference_scan_025/receipts/ACTIVE_MANIFEST_VALIDATOR_REFERENCE_SCAN_025_RECEIPT.md",
+      "material_class": "prior_receipt",
+      "byte_count": 833,
+      "line_count": 20,
+      "sha256": "3b0e668b81d0654f60062fffc00e542482cec9b81d2c01625d0a082243cc4f0f",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 025 receipt used as predecessor state."
+    }
+  ],
+  "notes": "Dedicated manifest for closeout reporting boundary alignment 026."
+}

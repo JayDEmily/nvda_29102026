@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________ test_calendar_operational_surfaces_are_present ________________
+
+    def test_calendar_operational_surfaces_are_present() -> None:
+        operational = _require_module("nvda_desk.calendar.operational.events")
+        assert operational.__name__ == "nvda_desk.calendar.operational.events"
+    
+        for attr_name in (
+            "MarketEventDTO",
+            "SessionCalendarDTO",
+            "OperationalEventRepository",
+            "OperationalSessionRepository",
+        ):
+>           assert _require_attr(operational, attr_name) is getattr(operational, attr_name)
+E           AssertionError: assert <object object at 0x7f6e0bdb2dd0> is <class 'nvda_desk.calendar.operational.events.MarketEventDTO'>
+E            +  where <object object at 0x7f6e0bdb2dd0> = _require_attr(<module 'nvda_desk.calendar.operational.events' from '/mnt/data/nvda10_active_work/source_snapshot/src/nvda_desk/calendar/operational/events.py'>, 'MarketEventDTO')
+E            +  and   <class 'nvda_desk.calendar.operational.events.MarketEventDTO'> = getattr(<module 'nvda_desk.calendar.operational.events' from '/mnt/data/nvda10_active_work/source_snapshot/src/nvda_desk/calendar/operational/events.py'>, 'MarketEventDTO')
+
+tests/tier_a/calendar_operational/test_calendar_operational_surface.py:32: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/calendar_operational/test_calendar_operational_surface.py::test_calendar_operational_surfaces_are_present - AssertionError: assert <object object at 0x7f6e0bdb2dd0> is <class 'nvda_desk.calendar.operational.events.MarketEventDTO'>
+ +  where <object object at 0x7f6e0bdb2dd0> = _require_attr(<module 'nvda_desk.calendar.operational.events' from '/mnt/data/nvda10_active_work/source_snapshot/src/nvda_desk/calendar/operational/events.py'>, 'MarketEventDTO')
+ +  and   <class 'nvda_desk.calendar.operational.events.MarketEventDTO'> = getattr(<module 'nvda_desk.calendar.operational.events' from '/mnt/data/nvda10_active_work/source_snapshot/src/nvda_desk/calendar/operational/events.py'>, 'MarketEventDTO')
+1 failed in 0.19s

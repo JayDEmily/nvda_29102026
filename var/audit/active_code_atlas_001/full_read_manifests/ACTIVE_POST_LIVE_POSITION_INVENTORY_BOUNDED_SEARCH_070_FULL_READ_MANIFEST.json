@@ -1,0 +1,946 @@
+{
+  "created_utc": "2026-05-13T04:48:22Z",
+  "target": "ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 210655,
+      "line_count": 577,
+      "sha256": "c05670886b0c06c383201bb76f77cc2c82a6b1e6ac36af2b659b3b01ed746bf8",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 577
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 24223,
+      "line_count": 195,
+      "sha256": "f90e4a6a8d05ae13871454f0d8fecd5e070ce979f514b6c31c01d0b470fbd93b",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 84
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 202
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 758
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 342
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 120
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md",
+      "byte_count": 3427,
+      "line_count": 82,
+      "sha256": "c82a19f69575ec7edee2c03dd3173f3e8e085624238c02b7c1d4f92023e42b95",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 82
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 76
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 807
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3561
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/downstream/live_inventory.py",
+      "byte_count": 5701,
+      "line_count": 155,
+      "sha256": "b7a18fdc8d0e6f608972c7236a60f1a27e046073eff104bfa5e6b2bda47cbca4",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 155
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/services/downstream_live_inventory_service.py",
+      "byte_count": 961,
+      "line_count": 27,
+      "sha256": "c95267253031445a9e29ed14f31dfe2ece56f4117bf7787f71b14eee19cb9b3b",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 27
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/domain/downstream/live_inventory.py",
+      "byte_count": 518,
+      "line_count": 13,
+      "sha256": "0b8589e1608a14faf99d8cfa05174a917ce2f12a4bcddc0dba6905e7ac36aef3",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "byte_count": 9921,
+      "line_count": 287,
+      "sha256": "ebaee7d6db27640420b70fd5c13fb1027fc3f94a6dda58451be645e7efb75195",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 287
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/repositories/position_repository.py",
+      "byte_count": 1994,
+      "line_count": 51,
+      "sha256": "a86d5851fc8bc8188ef124b7b0aa9c74f996256821bb377bcc790d0060116b66",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/repositories/capital_state_repository.py",
+      "byte_count": 2010,
+      "line_count": 51,
+      "sha256": "89d7c8a7c55d315c12652875ffed5237096e09e2d7ed6397e651856331768fa1",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "src/nvda_desk/persistence/receipt_ledger.py",
+      "byte_count": 2146,
+      "line_count": 64,
+      "sha256": "5284f30d10bc74d9017373a2cd09ecbf3d71709fc4b7571fd52a3b6f7fc4fcb3",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 64
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+      "byte_count": 7857,
+      "line_count": 194,
+      "sha256": "15c2154e59ca81a17d1ab0eb92bc90e909820b52c776fb2d8a564e7207064d91",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 194
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py",
+      "byte_count": 3665,
+      "line_count": 110,
+      "sha256": "5ce367a93c6ae015f194e880b33c771c9e1c78a1fb173c4c241413e7a4d4e3fa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 110
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py",
+      "byte_count": 5590,
+      "line_count": 164,
+      "sha256": "74ff66c78eec6bfcd365019b7d24982eefc29b16d3e3e3b94af1741279b5edc6",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 164
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_contract_models.py",
+      "byte_count": 4785,
+      "line_count": 125,
+      "sha256": "ad3d6e4eec49c281bc77721b7cd49c709688594b83f1bfaf6beade0775f264ef",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 125
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py",
+      "byte_count": 1724,
+      "line_count": 42,
+      "sha256": "6b3153b87c012f5deff9c6820f40de5732ceab8b4cd7988d57da881476ac97c0",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 42
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/persistence/test_position_repository_surface.py",
+      "byte_count": 2586,
+      "line_count": 69,
+      "sha256": "7eda83d58af64d276487af6fc646f43c9d9a8e09f8bdd4b7de45f34634141462",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 69
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+      "byte_count": 2499,
+      "line_count": 68,
+      "sha256": "fe5dc41ad8069cdbfe0c511878c94588dc53b6965fedbad92de0a9d555cdaae1",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 68
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "scripts/run_proof_block.py",
+      "byte_count": 7599,
+      "line_count": 217,
+      "sha256": "4d6a1f58bd8ce7981e76c18af942632b61ae21caed86a6a210caf4a1ba63577f",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 217
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+      "byte_count": 10522,
+      "line_count": 225,
+      "sha256": "b5be8e1b43cbc64170cc81709c6999775f68680a6b15285c460505f7a8c379ab",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 225
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_INITIAL_FULL_READ_MANIFEST.json",
+      "byte_count": 17168,
+      "line_count": 471,
+      "sha256": "6ebdeb487ba7002bf617f113d0a68b2e2bf0f6fafaf1c7983f7ecf407b31ee85",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 471
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_INITIAL_MANIFEST_VALIDATION_STATUS.txt",
+      "byte_count": 9,
+      "line_count": 1,
+      "sha256": "a473a68c3ae7e452594a85ad042d3c0a5ed5c70c630ab3d86f2d0d1d973e229c",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_INITIAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "byte_count": 447,
+      "line_count": 17,
+      "sha256": "d8ef8280b09eab5e8da9e6f6b842e6c9bd315392f557d6574e98db4d9f4fe2a1",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_BASELINE_PYTEST_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_BASELINE_PYTEST_STDOUT.txt",
+      "byte_count": 99,
+      "line_count": 2,
+      "sha256": "0fb77daa0743a605a6858ae6d7d796331893dad7f48d74c001c7697e1640c9cb",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RED_PYTEST_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RED_PYTEST_STDOUT.txt",
+      "byte_count": 1745,
+      "line_count": 28,
+      "sha256": "3381b7eaac16af9ec7c8bdcc9bb6414037011756feb1d17ec55efff1cd43f038",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 28
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_TARGETED_PYTEST_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_TARGETED_PYTEST_STDOUT.txt",
+      "byte_count": 98,
+      "line_count": 2,
+      "sha256": "3a62e05c7c3caf9770ade396f5ab56743ae5baebd8caf17f0d1f62bb7eaab348",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_SELECTED_PYTEST_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_SELECTED_PYTEST_STDOUT.txt",
+      "byte_count": 99,
+      "line_count": 2,
+      "sha256": "13044bacc6307829903f6644f6acc927db932aea5040256690ae58aee2d982ed",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_PROOF_BLOCK_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_PROOF_BLOCK_STDOUT.txt",
+      "byte_count": 1641,
+      "line_count": 20,
+      "sha256": "94857fe1aedf06eddb28ed21c22fe97962273a78ae925bbd087091525c866bda",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_PROOF_BLOCK_RECEIPT.json",
+      "byte_count": 1925,
+      "line_count": 34,
+      "sha256": "5f911ac63d5c7599c771e8f20c734a58fe7fb33e4ab7dde24fc68535583db3d6",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_SOURCE_TEST_DIFF.patch",
+      "byte_count": 3629,
+      "line_count": 74,
+      "sha256": "a91daf2221b0905c5d2a1c5d14cd5ecf65a51bde202edf319f097ae9f145ad57",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 74
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_SOURCE_TEST_DIFF_STAT.txt",
+      "byte_count": 198,
+      "line_count": 3,
+      "sha256": "7051a5a616308e65a7677b4ed48dbaa27a6cca3216465635f51f6be3ea42f0a1",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/reports/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_REPORT.json",
+      "byte_count": 2600,
+      "line_count": 44,
+      "sha256": "aa6e89108e1aa859164fdf9fe4730341cc6ea1cd00419a2e80306f2d356eebd4",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 44
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/live_position_inventory_full_tranche_069/receipts/ACTIVE_LIVE_POSITION_INVENTORY_FULL_TRANCHE_069_RECEIPT.md",
+      "byte_count": 1280,
+      "line_count": 18,
+      "sha256": "ff739937e29422d3de48f2527856a980bd27c35e61600667ee9148b6ef0baba5",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 18
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_GIT_STATUS_BEFORE_FINAL_PROOF.txt",
+      "byte_count": 5488,
+      "line_count": 44,
+      "sha256": "6a7ec0d52984c88443679d9be6713ea23f522079996798cbf379651e974e3be2",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 44
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_GIT_DIFF_CHECK_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_GIT_DIFF_CHECK_STDOUT.txt",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_SURFACE_REGISTRY_VALIDATION_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_SURFACE_REGISTRY_VALIDATION_STDOUT.txt",
+      "byte_count": 8119,
+      "line_count": 89,
+      "sha256": "78edde0e231ec51c10a6f724de2ffae87c02a16888ca58f75e60f7b2070a18fb",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 89
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_LIVE_INVENTORY_PROOF_BLOCK_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_LIVE_INVENTORY_PROOF_BLOCK_STDOUT.txt",
+      "byte_count": 1641,
+      "line_count": 20,
+      "sha256": "2aa1c2a79017e754b647781245920aa6b8dd23bc6d7a55432ceb821e2178feb7",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_LIVE_INVENTORY_PROOF_BLOCK_RECEIPT.json",
+      "byte_count": 1925,
+      "line_count": 34,
+      "sha256": "5f911ac63d5c7599c771e8f20c734a58fe7fb33e4ab7dde24fc68535583db3d6",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_PROOF_CHECK_ALL_STATUS.txt",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_PROOF_CHECK_ALL_STDOUT.txt",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "70ba7f39fddf1a4051d9fcafdf425166d0e4b559318caa2c41db8be0ec72df20",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_PROOF_CHECK_ALL_RECEIPT.json",
+      "byte_count": 46197,
+      "line_count": 805,
+      "sha256": "f522ee8a0a6589f85d377a5120d5dda0a0d4723c5ee379ff04b5f5c0a93c245e",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 805
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/reports/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_REPORT.json",
+      "byte_count": 2111,
+      "line_count": 34,
+      "sha256": "a7c17d9fb665956bc84590030dd8695a1c5fe81e347d67e93b8b088d1a034d5a",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_live_position_inventory_bounded_search_070/receipts/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_RECEIPT.md",
+      "byte_count": 1106,
+      "line_count": 17,
+      "sha256": "9e20aeef5df97d511fbf312db60557c359dd885de8aba286c0d1b047ad77dec9",
+      "read_method": "manual_full_file_read_for_active_post_live_position_inventory_bounded_search_070_final_closure",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current final closure manifest for rows 035-037 tranche and post-069 bounded search."
+    }
+  ]
+}

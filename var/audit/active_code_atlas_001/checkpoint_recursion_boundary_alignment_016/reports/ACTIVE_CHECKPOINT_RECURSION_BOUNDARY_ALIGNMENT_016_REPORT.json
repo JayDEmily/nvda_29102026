@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_CHECKPOINT_RECURSION_BOUNDARY_ALIGNMENT_016",
+  "status": "PASS",
+  "scope": "prevent_checkpoint_package_index_recursion_loop",
+  "updated_files": [
+    "AGENTS.md",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md"
+  ],
+  "rule": "Durability checkpoints preserve work but do not automatically create a recursive obligation to index/package the immediately previous package. Continue to the next distinct lawful control/audit/evidence/manifest/receipt/ledger/planning-hardening leaf unless recursive checkpoint indexing is explicitly requested.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_17_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

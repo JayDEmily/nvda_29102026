@@ -1,0 +1,3 @@
+vocabulary_synonym_audit=PASS candidates=2 vocabulary_touched=False
+vocabulary_synonym_audit=BLOCKED unresolved_candidates=2
+exit_code=1

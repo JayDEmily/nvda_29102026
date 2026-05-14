@@ -1,0 +1,94 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-11T11:54:45Z",
+  "status": "read_adjudicated_transform_boundary_new_tier_a_family_no_source_repair",
+  "surface": "Raw capture and source temporal law",
+  "method": "Surface records were confirmed from files listed in the row 015 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates a transform boundary for selected raw-capture/source-temporal files only. It does not import or recreate donor database/session/backfill/provider jobs and does not adjudicate raw signal family semantics beyond selected boundary evidence.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-015-0001",
+      "title": "Transform-required raw-capture donor material is bounded away from native source-temporal owner files",
+      "surface": "Raw capture and source temporal law",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "transform_boundary_new_tier_a_family_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0004",
+        "ACABC-0004"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_raw_capture_source_temporal_transform_cluster_001"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+          "line_start": 18,
+          "line_end": 37
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 152,
+          "line_end": 167
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/temporal.py",
+          "line_start": 10,
+          "line_end": 30
+        },
+        {
+          "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+          "line_start": 11,
+          "line_end": 32
+        },
+        {
+          "path": "src/nvda_desk/contracts/upstream_signal.py",
+          "line_start": 10,
+          "line_end": 79
+        },
+        {
+          "path": "src/nvda_desk/upstream/raw_signal_ingress.py",
+          "line_start": 1,
+          "line_end": 79
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py",
+          "line_start": 6,
+          "line_end": 56
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 179,
+          "line_end": 194
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 338,
+          "line_end": 358
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3100,
+          "line_end": 3101
+        }
+      ],
+      "adjudication_notes": [
+        "The new Tier A transform-boundary family proves selected native raw-capture/source-temporal files do not recreate donor SQLAlchemy/session/backfill/database runtime names.",
+        "The boundary also proves selected files do not import cognition, downstream, risk, service, or runtime owner packages.",
+        "No source repair was required; the current selected files already satisfy the transform-boundary proof."
+      ],
+      "non_claims": [
+        "Does not implement provider-specific raw capture jobs.",
+        "Does not prove all raw signal family semantics.",
+        "Does not authorise source refactor, dependencies, live API, broker, capital, or runtime trading work."
+      ]
+    }
+  ]
+}

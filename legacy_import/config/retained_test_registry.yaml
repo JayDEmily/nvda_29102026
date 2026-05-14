@@ -1,0 +1,192 @@
+version: 1
+registry_id: retained_test_registry_bridge_v1
+status: advisory bridge registry
+purpose: >-
+  Single bridge registry for carrying retained test value from the recovered legacy repo
+  into the future fresh repo reset. This file is not yet wired into the current proof
+  executor. Current execution authority remains tests/conftest.py plus
+  config/proof_blocks.yaml.
+source_snapshot:
+  branch: work/gate-297-parallel-risk-lane-canonical-dmpv3-20260416
+  checkpoint_zip: Surgery_Plan_Part_3_option1_runtime_refinement_complete_checkpoint_2026-04-17.zip
+  bridge_basis:
+    - docs/status/2026-04-17_OPTION1_FAMILY_TRIAGE_LEDGER.md
+    - docs/status/2026-04-17_OPTION1_PROMOTION_PASS_STATUS.md
+    - docs/status/2026-04-17_OPTION1_RUNTIME_REFINEMENT_STATUS.md
+    - docs/status/2026-04-17_OPTION1_MANIFEST_RESIDUE_CLEANUP_STATUS.md
+rules:
+  retained_seed_tier_a_definition: >-
+    Carry first into the new repo. These files protect enduring runtime, packet,
+    vocabulary, or inspectability contracts that appear worth preserving after the
+    future reset.
+  shadow_review_queue_definition: >-
+    Read before import. These files still contain live value, but they are mixed,
+    historical, artifact-coupled, or need splitting/re-authoring before they should
+    block the future repo.
+  archival_or_reauthor_definition: >-
+    Do not port verbatim. Leave behind, archive as evidence only, or re-author from
+    scratch if the future repo still needs the idea.
+current_repo_active_tier_a:
+  authoritative_source: tests/conftest.py
+  count: 28
+  tests:
+    - tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py
+    - tests/test_gate148_review_trace_replay_runtime.py
+    - tests/test_gate179_repo_wide_vocabulary_hygiene.py
+    - tests/test_gate190_capital_deployment_authority_integration.py
+    - tests/test_gate239_main_serial_step6_recommendation_boundary.py
+    - tests/test_gate243_options_flow_history_record_contract.py
+    - tests/test_gate245_options_flow_history_persistence_and_non_interference.py
+    - tests/test_gate246_options_flow_history_runtime_replay.py
+    - tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py
+    - tests/test_gate248_upstream_prepared_runtime_contracts.py
+    - tests/test_gate249_cross_asset_regime_ingestion.py
+    - tests/test_gate250_same_bucket_participation_baseline.py
+    - tests/test_gate251_upstream_raw_to_cognition_wiring.py
+    - tests/test_gate252_upstream_non_interference_and_sanity_traces.py
+    - tests/test_gate259_proof_executor_contract.py
+    - tests/test_gate264_capital_deployment_authority_fresh_capital_correction.py
+    - tests/test_gate265_parallel_risk_and_trace_boundary.py
+    - tests/test_gate267_downstream_schema_and_service_shells.py
+    - tests/test_gate268_repo_native_state_reader_integration.py
+    - tests/test_gate269_downstream_review_receipt_and_no_policy.py
+    - tests/test_gate271_downstream_runtime_read_boundaries.py
+    - tests/test_gate275_downstream_opening_immediate_slice_derivation.py
+    - tests/test_gate277_corrected_seam_checkpoints.py
+    - tests/test_gate289_dmp_v3_packet_shell_fixtures.py
+    - tests/test_gate289_dmp_v3_proof_manifest_routing.py
+    - tests/test_gate289_dmp_v3_review_replay_lineage.py
+    - tests/test_gate294_router_closeout_override_pack.py
+    - tests/test_gate297_parallel_risk_lane_canonical_dmp_v3.py
+future_repo_seed_tier_a:
+  count: 22
+  tests:
+    - path: tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py
+      reason: enduring financial-calendar to DMP carriage seam
+    - path: tests/test_gate148_review_trace_replay_runtime.py
+      reason: enduring inspectability and replay truth contract
+    - path: tests/test_gate179_repo_wide_vocabulary_hygiene.py
+      reason: vocabulary registry hygiene remains foundational even after reset
+    - path: tests/test_gate190_capital_deployment_authority_integration.py
+      reason: downstream CDA additivity and no-eighth-stage invariant
+    - path: tests/test_gate239_main_serial_step6_recommendation_boundary.py
+      reason: stateless recommendation boundary should survive the reset
+    - path: tests/test_gate243_options_flow_history_record_contract.py
+      reason: bounded options-history record contract
+    - path: tests/test_gate245_options_flow_history_persistence_and_non_interference.py
+      reason: append-only persistence and non-interference invariant
+    - path: tests/test_gate246_options_flow_history_runtime_replay.py
+      reason: runtime-only replay slice already split from closeout residue
+    - path: tests/test_gate248_upstream_prepared_runtime_contracts.py
+      reason: prepared packet contract with real upstream value
+    - path: tests/test_gate249_cross_asset_regime_ingestion.py
+      reason: live regime-ingestion contract
+    - path: tests/test_gate250_same_bucket_participation_baseline.py
+      reason: participation-baseline reconstruction contract
+    - path: tests/test_gate251_upstream_raw_to_cognition_wiring.py
+      reason: raw-to-cognition runtime wiring contract
+    - path: tests/test_gate264_capital_deployment_authority_fresh_capital_correction.py
+      reason: fresh-capital authority correction belongs downstream and remains high value
+    - path: tests/test_gate265_parallel_risk_and_trace_boundary.py
+      reason: anti-duplication and trace-boundary invariant
+    - path: tests/test_gate267_downstream_schema_and_service_shells.py
+      reason: downstream runtime shell contract without policy invention
+    - path: tests/test_gate268_repo_native_state_reader_integration.py
+      reason: repo-native state-reader integration boundary
+    - path: tests/test_gate269_downstream_review_receipt_and_no_policy.py
+      reason: downstream inspectability receipt without policy invention
+    - path: tests/test_gate271_downstream_runtime_read_boundaries.py
+      reason: runtime-only downstream read boundary split from cleanup residue
+    - path: tests/test_gate275_downstream_opening_immediate_slice_derivation.py
+      reason: opening slice derives from CDA total and ladder shape
+    - path: tests/test_gate277_corrected_seam_checkpoints.py
+      reason: strongest seam anti-leakage checkpoint family
+    - path: tests/test_gate289_dmp_v3_packet_shell_fixtures.py
+      reason: packet-shell fixtures remain useful while DMPV3 remains the transport surface
+    - path: tests/test_gate297_parallel_risk_lane_canonical_dmp_v3.py
+      reason: canonical parallel-risk DMPV3 carriage contract
+shadow_review_queue:
+  count: 18
+  tests:
+    - path: tests/test_gate188_capital_deployment_authority_contract.py
+      reason: strong downstream schema/value; review whether to merge with gate190 or keep standalone
+    - path: tests/test_gate236_main_serial_step3_contract_isolation.py
+      reason: durable stage-boundary contract, not yet promoted
+    - path: tests/test_gate237_main_serial_step4_permission_envelope.py
+      reason: live boundary invariant with prior vocabulary-note sensitivity
+    - path: tests/test_gate238_main_serial_step5_playbook_decontamination.py
+      reason: strong non-interference check, not yet promoted
+    - path: tests/test_gate240_main_serial_cross_step_boundary_enforcement.py
+      reason: durable serial-to-downstream ownership law
+    - path: tests/test_gate241_main_serial_acceptance_corpus_revalidation.py
+      reason: useful determinism witness but partly artifact-locking
+    - path: tests/test_gate242_options_flow_history_lane_vocabulary_and_boundary.py
+      reason: useful lane boundary and vocabulary check, but mostly governance-facing
+    - path: tests/test_gate244_options_flow_history_runtime_tap.py
+      reason: real runtime value but currently narrower than retained persistence/record set
+    - path: tests/test_gate246_options_flow_history_replay_closeout.py
+      reason: keep only if the closeout half is removed; runtime half already preserved in gate246 runtime replay
+    - path: tests/test_gate125_review_visible_lineage.py
+      reason: runtime lineage value mixed with pack-closeout residue
+    - path: tests/test_gate132_bounded_trace_scenario_pack.py
+      reason: bounded fixture discipline still useful as support evidence
+    - path: tests/test_gate133_bounded_trace_review_regime.py
+      reason: good sanity witness, but not core blocking proof
+    - path: tests/test_gate134_bounded_trace_reporting.py
+      reason: artifact witness, not yet worth seed Tier A
+    - path: tests/test_tranche_a_review_replay.py
+      reason: review honesty value remains, but current form is history-bound
+    - path: tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py
+      reason: active in the current repo, but likely needs trimming before future import because coverage-map/closeout residue remains
+    - path: tests/test_gate252_upstream_non_interference_and_sanity_traces.py
+      reason: active in the current repo, but likely needs splitting before future import because closeout-state residue remains
+    - path: tests/test_gate259_proof_executor_contract.py
+      reason: keep conceptually only if the future repo keeps the proof-block executor model; otherwise re-author from the new testing regime
+    - path: tests/test_gate289_dmp_v3_review_replay_lineage.py
+      reason: inspectability value likely survives, but read again once the future review packet shape is settled
+archival_or_reauthor:
+  count: 13
+  tests:
+    - path: tests/test_upstream_signal_followup_corrections.py
+      reason: old proof-law wording freeze with low forward value after reset
+    - path: tests/test_review_attribution_contracts.py
+      reason: tied to old imported-module ordering
+    - path: tests/test_gate230_opening_position_seam_and_downstream_handoff.py
+      reason: historical router and pack state dominate; only re-author if a smaller seam invariant is still needed
+    - path: tests/test_gate260_initial_block_population_and_pilot.py
+      reason: manifest/bootstrap residue removed from active CDA truth
+    - path: tests/test_gate266_downstream_architecture_pack_install.py
+      reason: ownership idea is useful, but file is dominated by pack-install state and should not be ported verbatim
+    - path: tests/test_gate270_downstream_architecture_closeout.py
+      reason: bootstrap closeout and execution-log residue
+    - path: tests/test_gate271_downstream_architecture_cleanup.py
+      reason: superseded for runtime carry by tests/test_gate271_downstream_runtime_read_boundaries.py
+    - path: tests/test_gate272_downstream_opening_corrective_pack_install.py
+      reason: corrective pack-install state rather than enduring runtime behaviour
+    - path: tests/test_gate279_proof_boundary_reconciliation_step4_manifest.py
+      reason: manifest-only governance proof; only re-author if the new repo keeps an equivalent manifest layer
+    - path: tests/test_gate289_dmp_v3_proof_manifest_routing.py
+      reason: current manifest-routing proof is coupled to the legacy repo recovery shape and should be re-authored if needed
+    - path: tests/test_gate294_router_closeout_override_pack.py
+      reason: legacy router closeout override is specific to this recovery tranche
+    - path: tests/test_gate246_options_flow_history_replay_closeout.py
+      reason: runtime carry already preserved in the split runtime-only file
+    - path: tests/test_context_scanner_contracts.py
+      reason: historical control-surface/helper shape; revisit only if the future repo keeps the same scanner layer
+superseded_by_runtime_splits:
+  mappings:
+    - old_test: tests/test_gate246_options_flow_history_replay_closeout.py
+      replacement: tests/test_gate246_options_flow_history_runtime_replay.py
+      bridge_rule: carry the runtime-only replacement, leave the closeout-heavy original behind
+    - old_test: tests/test_gate271_downstream_architecture_cleanup.py
+      replacement: tests/test_gate271_downstream_runtime_read_boundaries.py
+      bridge_rule: carry the runtime-only replacement, leave the cleanup-heavy original behind
+notes:
+  - >-
+    This registry is intentionally stricter than the current repo active Tier A list. The
+    current repo still keeps some control-surface and mixed files active for truthful
+    recovery proof, while the future repo should start from a leaner retained seed.
+  - >-
+    The future repo should make this file, or its successor, the single retained-test
+    authority rather than splitting retention truth across tests/conftest.py,
+    config/proof_blocks.yaml, and status ledgers.

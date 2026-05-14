@@ -1,0 +1,45 @@
+{
+  "candidate_review_cli_pytest_summary": "16 passed in 17.93s",
+  "error_count": 0,
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+  "linked_atlas_record_count": 10,
+  "linked_bridge_record_count": 10,
+  "record_count": 10,
+  "record_status_counts": {
+    "read_adjudicated_partial_transform": 1,
+    "read_adjudicated_present": 5,
+    "read_adjudicated_present_with_native_shape": 2,
+    "read_adjudicated_transformed_boundary": 1,
+    "tier_a_test_extended_and_passed_no_source_repair": 1
+  },
+  "source_repair_performed": false,
+  "surface": "Vocabulary governance interface",
+  "surface_limitation": "This vocabulary-governance surface slice is read-adjudicated for the cited files only. It does not convert the full structural inventory into an accepted all-surface primary active-code Atlas.",
+  "test_and_check_statuses": {
+    "candidate_review_cli_pytest_status": 0,
+    "git_diff_check_status": 0,
+    "surface_records_json_parse_status": 0,
+    "surface_validation_json_parse_status": 0,
+    "vocabulary_governance_conformance_candidate_pytest_status": 0,
+    "vocabulary_synonym_audit_clean_check_status": 0,
+    "surface_records_and_registry_validation_status": 0
+  },
+  "test_extension_performed": true,
+  "updated_utc": "2026-05-11T07:24:31Z",
+  "validation_status": "PASS",
+  "vocabulary_governance_conformance_candidate_pytest_summary": "114 passed in 39.43s",
+  "vocabulary_synonym_audit_clean_check_summary": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False",
+  "warning_count": 0,
+  "evidence_range_and_registry_validation": {
+    "surface_records_and_registry_validation_status": 0,
+    "git_diff_check_status": 0,
+    "surface_record_file_count": 3,
+    "surface_record_count": 16,
+    "evidence_entry_count": 106,
+    "unique_evidence_path_count": 38,
+    "tier_a_declared_total": 95,
+    "tier_a_entry_count": 95,
+    "tier_b_declared_total": 12,
+    "tier_b_entry_count": 12
+  }
+}

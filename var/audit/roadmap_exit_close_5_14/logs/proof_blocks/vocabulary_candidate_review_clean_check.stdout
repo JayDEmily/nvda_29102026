@@ -1,0 +1,23 @@
+{
+  "schema_version": "v1",
+  "trigger": "vocabulary_candidate_review_summary",
+  "vocabulary_path": "data/vocabulary/canonical_vocabulary.json",
+  "candidates_path": "tests/fixtures/vocabulary_candidate_review/clean_candidates.json",
+  "summary": {
+    "statuses": {
+      "admissible": 1,
+      "quarantined": 0,
+      "invalid": 0
+    },
+    "actions": {
+      "enrich_existing": 1,
+      "add_new": 0,
+      "alias_only": 0,
+      "quarantine": 0
+    }
+  },
+  "blocked_candidates": []
+}
+vocabulary_candidate_review=PASS blocked_candidates=0
+proof_block_id=vocabulary_candidate_review_clean_check
+command=python scripts/vocabulary_candidate_review.py --candidates tests/fixtures/vocabulary_candidate_review/clean_candidates.json --summary-only --check-clean

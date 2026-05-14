@@ -1,0 +1,226 @@
+{
+  "schema_version": "full_read_manifest_v1",
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_041_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_NEW_TEST_FAMILY_FULL_READ_MANIFEST",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "target_tranche": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_041_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_NEW_TEST_FAMILY",
+  "architecture_row": "5.12 Opening architecture and placement readiness",
+  "entry_count": 27,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 77723,
+      "line_count": 646,
+      "sha256": "6d37d01550859ff15d8e1d406698dffb5cdb9be6e5145c63673ea44c723b86de",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 128680,
+      "line_count": 438,
+      "sha256": "68d01177caf89d2fb21fd5f3f8e2a328d6ecc79ad6316030adc7206ad6d5fd8a",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 43751,
+      "line_count": 763,
+      "sha256": "d04962bef2f13dfe6819a2f7556c51100b3df91e6cd9490a6eac6d9980f24a7c",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 216834,
+      "line_count": 3495,
+      "sha256": "823f9153b4119df730af927eac28d6c8798a0a038dd97f6fb6f776e327f74ccc",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+      "byte_count": 187370,
+      "line_count": 5168,
+      "sha256": "0a8c4384addfebd1551d7b8e54c43242bc1e1f74b39db7bd4da636f187cdc2ce",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md",
+      "byte_count": 3427,
+      "line_count": 82,
+      "sha256": "c82a19f69575ec7edee2c03dd3173f3e8e085624238c02b7c1d4f92023e42b95",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "byte_count": 9368,
+      "line_count": 270,
+      "sha256": "dcfac8e9c7b8af7eb922425f684b3473a42852d17b5afdde1af6d33dbb0e211e",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/contracts/execution.py",
+      "byte_count": 1239,
+      "line_count": 36,
+      "sha256": "f6d316847b81559c9736fb1a3711fd4956559b4acfbb165b6f8f2f76cc23a8b6",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/domain/downstream/opening.py",
+      "byte_count": 1211,
+      "line_count": 33,
+      "sha256": "370163944681988fcf8fb553283109482038d6e425421f07aea3370abf4b16ca",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/downstream/opening.py",
+      "byte_count": 4360,
+      "line_count": 119,
+      "sha256": "5ea401aac31504b094d100d1bc502da3072a5f698fefe7bd9df34b4a12e4c704",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/services/downstream_opening_service.py",
+      "byte_count": 1431,
+      "line_count": 37,
+      "sha256": "36b921abf7bda44fd9e381b7f8ef264dbf90a2796d4f4eb78de25d83b5a04122",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "src/nvda_desk/adapters/egress/broker_protocol.py",
+      "byte_count": 991,
+      "line_count": 26,
+      "sha256": "7854ba084fe49e566557db037ca8039fc7937efac1db8725422dfeea02f0b5fb",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py",
+      "byte_count": 3822,
+      "line_count": 102,
+      "sha256": "09d3a6dfbcdebaef8ae4bfe236e689847b8e654e0cea32b6e6942f88b8983f9c",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py",
+      "byte_count": 808,
+      "line_count": 24,
+      "sha256": "964e7b27b4e76efc8639a8318390478e3031629c6629726c37e1c734cf2f308e",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py",
+      "byte_count": 6029,
+      "line_count": 161,
+      "sha256": "818d3d2e8262e70ce7eaa4d24f52812d21b3247b6fac06e25a1d5cc8258b3598",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+      "byte_count": 1671,
+      "line_count": 42,
+      "sha256": "3f929592bb82bf058bc93360e4b814f544755f44bb7bd7dc81d1e2af99b8abf8",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_new_test_family/opening_authority_boundary_active_code_atlas_records.json",
+      "byte_count": 6988,
+      "line_count": 160,
+      "sha256": "bb18e4af02b90848accfde15f3ad12b3e96cf94cbec64b2b1f43116e9376a7a6",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_041_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "byte_count": 2470,
+      "line_count": 46,
+      "sha256": "b69688fb1a6aad7626f310a3b630eea4c7b4f06bacdfa48ec2d9a7c4cd73fea4",
+      "full_read": true,
+      "read_method": "full_manual_read_this_worker_gate"
+    }
+  ]
+}

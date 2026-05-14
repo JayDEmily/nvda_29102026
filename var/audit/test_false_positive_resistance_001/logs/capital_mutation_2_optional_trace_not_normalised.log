@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_capital_optional_parallel_risk_trace_token_is_normalised _________
+
+    def test_capital_optional_parallel_risk_trace_token_is_normalised() -> None:
+        input_model = _input(parallel_risk_packet_id=" parallel-risk-packet-001 ")
+    
+>       assert input_model.parallel_risk_packet_id == "parallel-risk-packet-001"
+E       AssertionError: assert ' parallel-risk-packet-001 ' == 'parallel-risk-packet-001'
+E         
+E         - parallel-risk-packet-001
+E         +  parallel-risk-packet-001 
+E         ? +                        +
+
+tests/tier_a/capital_deployment/test_capital_contract_models.py:211: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/capital_deployment/test_capital_contract_models.py::test_capital_optional_parallel_risk_trace_token_is_normalised - AssertionError: assert ' parallel-risk-packet-001 ' == 'parallel-risk-packet-001'
+  
+  - parallel-risk-packet-001
+  +  parallel-risk-packet-001 
+  ? +                        +
+1 failed in 0.45s

@@ -1,0 +1,30 @@
+{
+  "command": "python -m pytest tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py tests/tier_a/adapters_egress/test_broker_boundary_surface.py tests/tier_a/api/test_api_boundary_surface.py tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/contracts/external_source.py",
+    "src/nvda_desk/adapters/ingress/calendar_feed.py",
+    "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+    "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+    "src/nvda_desk/adapters/egress/broker_protocol.py",
+    "tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py",
+    "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+    "tests/tier_a/api/test_api_boundary_surface.py",
+    "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+    "config/retained_test_registry.yaml",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md"
+  ],
+  "proof_block_id": "roadmap_external_source_api_ingress_authority_surface",
+  "resolved_command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py",
+    "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+    "tests/tier_a/api/test_api_boundary_surface.py",
+    "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+  ],
+  "status": "PASS"
+}

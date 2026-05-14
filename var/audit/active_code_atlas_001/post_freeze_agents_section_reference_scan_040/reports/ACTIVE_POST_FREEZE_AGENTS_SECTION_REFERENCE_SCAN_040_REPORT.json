@@ -1,0 +1,116 @@
+{
+  "id": "ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040",
+  "created_local_date": "2026-05-13",
+  "purpose": "Classify the first post-freeze legacy 1A/compressed-section reference scan without mutating frozen AGENTS.md or PLANS.md.",
+  "inputs": [
+    "AGENTS.md",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/post_freeze_agents_section_reference_scan.txt",
+    "039 report/receipt/manifest evidence"
+  ],
+  "scan_scope": [
+    "AGENTS.md",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/control_surface_freeze_ledger_only_alignment_039",
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CONTROL_SURFACE_FREEZE_LEDGER_ONLY_ALIGNMENT_039_FULL_READ_MANIFEST.json"
+  ],
+  "scan_result": {
+    "total_hits": 32,
+    "hit_path_counts": {
+      "ROADMAP_LEDGER.md": 32
+    },
+    "live_agents_md_hits": 0,
+    "live_plans_md_hits": 0,
+    "roadmap_ledger_historical_hits": 32
+  },
+  "classification": "PASS_no_live_AGENTS_or_PLANS_defect_selected",
+  "classification_basis": "All 32 scan hits were in historical ROADMAP_LEDGER.md rows retained as point-in-time evidence. No hit occurred in live AGENTS.md or PLANS.md text; the freeze model therefore did not require a second AGENTS/PLANS mutation.",
+  "changed_files": [
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_REPORT.json",
+    "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/receipts/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_RECEIPT.md",
+    "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/post_freeze_agents_section_reference_scan.txt",
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_FULL_READ_MANIFEST.json",
+    "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_PROOF_STDOUT.txt",
+    "var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json"
+  ],
+  "boundary": {
+    "agents_md_mutated": false,
+    "plans_md_mutated": false,
+    "roadmap_ledger_mutated_as_live_pointer": true,
+    "runtime_source_test_config_mutation": false,
+    "dependency_mutation": false,
+    "vocabulary_mutation": false,
+    "original_atlas_bridge_json_mutation": false,
+    "generated_slice_mutation": false,
+    "archive_payload_restored_or_used": false
+  },
+  "file_metadata_after_ledger_update": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 183573,
+      "line_count": 535,
+      "sha256": "d4e75bf63398584dfc3cf265e1f2ad28cd7fc2b432ed506895d6ccb2df6e85b0"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_freeze_agents_section_reference_scan_040/reports/post_freeze_agents_section_reference_scan.txt",
+      "byte_count": 31943,
+      "line_count": 32,
+      "sha256": "6d68cd715251c5d2b64f643f2a8ae558162f1ec493f0dd60193cbaefc03aa16d"
+    }
+  ],
+  "proof_commands_recorded": [
+    "git fsck --connectivity-only",
+    "git diff --check",
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+    "python scripts/run_proof_block.py --check-all",
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_FULL_READ_MANIFEST.json"
+  ],
+  "proof_observed_results": {
+    "git fsck --connectivity-only": {
+      "exit_status": 0
+    },
+    "git diff --check": {
+      "exit_status": 0
+    },
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": {
+      "exit_status": 0,
+      "validation_status": "PASS",
+      "error_count": 0,
+      "warning_count": 0,
+      "surface_record_count": 65,
+      "unique_evidence_path_count": 203
+    },
+    "python scripts/run_proof_block.py --check-all": {
+      "exit_status": 0,
+      "proof_blocks_check_all": "PASS",
+      "count": 46
+    },
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_FREEZE_AGENTS_SECTION_REFERENCE_SCAN_040_FULL_READ_MANIFEST.json": {
+      "exit_status": 0,
+      "validation_status": "PASS",
+      "error_count": 0,
+      "warning_count": 0,
+      "entry_count": 6,
+      "unique_path_count": 6,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  },
+  "manifest_scope_note": "Proof stdout and validator side-effect output are intentionally excluded from the selected full-read manifest to avoid self-staleness.",
+  "proof_status": "PASS_all_recorded_commands_exit_status_0"
+}

@@ -1,0 +1,31 @@
+{
+  "report_id": "ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_REPORT",
+  "status": "PASS",
+  "changed_control_files": [
+    "AGENTS.md",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md"
+  ],
+  "created_files": [
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_FULL_READ_MANIFEST.json",
+    "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/receipts/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_RECEIPT.md",
+    "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/reports/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_REPORT.json",
+    "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/reports/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_PROOF.txt"
+  ],
+  "alignment_effect": [
+    "Full-read remains required for claims and mutation support.",
+    "If full sequential reading is infeasible for one selected leaf, that leaf is blocked and affected claims become Unknown.",
+    "During a continue-until-tokens run, the worker records the blocker and continues to the next lawful control/audit leaf instead of presenting a user-facing stop."
+  ],
+  "forbidden_boundaries_untouched": [
+    "runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation",
+    "_archive restore or reliance"
+  ],
+  "next_action": "Continue lawful control/audit/evidence/manifest/receipt/ledger hardening until context/token exhaustion or explicit user stop instruction.",
+  "proof_results": {
+    "git_diff_check": "PASS_no_output_after_header",
+    "surface_records_and_registry": "PASS_error_count_0_warning_count_0",
+    "proof_blocks_check_all": "PASS_count_46",
+    "manifest_validation": "PASS_manifest_count_4_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

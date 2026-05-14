@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 5 items
+
+tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py . [ 20%]
+....                                                                     [100%]
+
+============================== 5 passed in 0.23s ===============================

@@ -1,0 +1,383 @@
+version: 1
+manifest_id: governed_block_proof_manifest_v1
+status: active authority
+law_anchor:
+  agents: AGENTS.md
+  plans: PLANS.md
+  process_law: docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md
+  testing_law: docs/08_TESTING_AND_PROMOTION.md
+  gate_map: docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md
+executor_contract:
+  script: scripts/run_proof_block.py
+  make_target: proof-block
+  authority_rule: The manifest defines block scope and proof classes. The executor may not infer scope from git diff, folder heuristics, or chat context.
+defaults:
+  tier_b_shadow_mode: repo_wide_pytest
+  shadow_runner: make shadow-test
+  broad_proof_runner: make check
+blocks:
+  ingress_calendar:
+    canonical_label: Ingress + Calendar
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/upstream_signal_ingress.py
+    - src/nvda_desk/services/real_data_loader.py
+    - src/nvda_desk/services/event_store.py
+    - src/nvda_desk/services/chain_to_cognition.py
+    - src/nvda_desk/schemas/checkpoints.py
+    shared_contract_surfaces:
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/schemas/events.py
+    - src/nvda_desk/schemas/dataset.py
+    - docs/03_DOMAIN_MODEL.md
+    tier_a_blocking_tests:
+    - tests/test_upstream_signal_followup_corrections.py
+    - tests/test_gate247_upstream_signal_coverage_map_and_scope_lock.py
+    - tests/test_gate248_upstream_prepared_runtime_contracts.py
+    - tests/test_gate249_cross_asset_regime_ingestion.py
+    - tests/test_gate250_same_bucket_participation_baseline.py
+    - tests/test_gate251_upstream_raw_to_cognition_wiring.py
+    - tests/test_gate252_upstream_non_interference_and_sanity_traces.py
+    - tests/test_gate280_proof_boundary_reconciliation_ingress_manifest.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - superseded_or_duplicate_ingress_governance_families
+    promotion_rules_from_shadow_to_blocking:
+    - If repo-wide shadow proof fails inside owned_surfaces or shared_contract_surfaces named by the active gate, promote the failing family into Tier A before closeout.
+    broad_proof_promotion_conditions:
+    - runtime packet contracts widen beyond declared ingress scope
+    - active pack explicitly promotes broad proof
+  cognitive_serial_stack:
+    canonical_label: Cognitive Serial Stack
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/temporal_context.py
+    - src/nvda_desk/services/market_regime_context.py
+    - src/nvda_desk/services/options_flow_context.py
+    - src/nvda_desk/services/posture_risk.py
+    - src/nvda_desk/services/playbook_eligibility.py
+    - src/nvda_desk/services/execution_expression.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/schemas/dmp.py
+    - src/nvda_desk/schemas/dmp_envelope.py
+    tier_a_blocking_tests:
+    - tests/test_gate239_main_serial_step6_recommendation_boundary.py
+    - tests/test_gate289_dmp_v3_packet_shell_fixtures.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - historical_serial_stack_cleanup_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any repo-wide shadow failure that lands inside the serial-stack owned or shared contract surfaces declared by the active gate.
+    broad_proof_promotion_conditions:
+    - DMP carriage changes
+    - active pack explicitly promotes broad proof
+  independent_parallel_risk_lane:
+    canonical_label: Independent Parallel Risk Lane
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/parallel_risk_lane.py
+    - src/nvda_desk/schemas/parallel_risk.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/services/capital_deployment_authority.py
+    - src/nvda_desk/services/review_explanation.py
+    - src/nvda_desk/services/risk_gateway.py
+    - docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md
+    tier_a_blocking_tests:
+    - tests/test_gate265_parallel_risk_and_trace_boundary.py
+    - tests/test_gate289_dmp_v3_packet_shell_fixtures.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - historical_parallel_risk_lane_foundation_families_outside_owned_scope
+    promotion_rules_from_shadow_to_blocking:
+    - If shadow proof reveals a failure inside cognition runtime, cognition schema, CDA, review carriage, risk gateway, or runtime ledger surfaces named as shared contracts by the active gate, promote that family into Tier A before closeout.
+    broad_proof_promotion_conditions:
+    - DMP or review carriage changes
+    - active pack explicitly promotes broad proof
+  dmp_packet_carriage:
+    canonical_label: DMP / Packet Carriage
+    checkpoint_required: false
+    docstring_required_for_modified_boundaries: false
+    owned_surfaces:
+    - src/nvda_desk/schemas/dmp.py
+    - src/nvda_desk/schemas/dmp_envelope.py
+    shared_contract_surfaces:
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/services/review_explanation.py
+    - src/nvda_desk/schemas/parallel_risk.py
+    - src/nvda_desk/services/parallel_risk_lane.py
+    - src/nvda_desk/schemas/financial_calendar.py
+    - src/nvda_desk/services/financial_calendar_reference.py
+    - src/nvda_desk/services/financial_calendar_import.py
+    - src/nvda_desk/services/imported_modules/tranche_a.py
+    tier_a_blocking_tests:
+    - tests/test_gate89_financial_calendar_crosswalk_and_dmp_lane.py
+    - tests/test_gate289_dmp_v3_packet_shell_fixtures.py
+    - tests/test_gate297_parallel_risk_lane_canonical_dmp_v3.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - superseded_dmp_shape_audit_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any shadow failure that lands inside packet carriage or downstream packet readers named by the active gate.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  vocabulary_dictionary_protocol:
+    canonical_label: Vocabulary / Dictionary Protocol
+    checkpoint_required: false
+    docstring_required_for_modified_boundaries: false
+    owned_surfaces:
+    - scripts/build_canonical_vocabulary.py
+    - docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json
+    - docs/vocabulary/README.md
+    - docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md
+    shared_contract_surfaces:
+    - src/nvda_desk/schemas/parallel_risk.py
+    - src/nvda_desk/services/parallel_risk_lane.py
+    - src/nvda_desk/services/financial_calendar_reference.py
+    - src/nvda_desk/schemas/financial_calendar.py
+    - fixtures/dmp_v3/gate289_review_stage_packet.json
+    tier_a_blocking_tests:
+    - tests/test_gate179_repo_wide_vocabulary_hygiene.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - historical_vocabulary_or_alias_cleanup_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any repo-wide shadow failure that lands inside the canonical vocabulary builder, committed dictionary, workbook authority, vocabulary README, or packet fixtures that encode admitted durable vocabulary.
+    broad_proof_promotion_conditions:
+    - packet-carriage vocabulary changes escape declared surfaces
+    - active pack explicitly promotes broad proof
+  review_carriage:
+    canonical_label: Review Carriage
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/review_explanation.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/schemas/calibration.py
+    - src/nvda_desk/schemas/dmp.py
+    tier_a_blocking_tests:
+    - tests/test_gate148_review_trace_replay_runtime.py
+    - tests/test_gate289_dmp_v3_review_replay_lineage.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - superseded_review_trace_cleanup_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any review or packet-reader failure inside owned or shared surfaces named by the active gate.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  capital_deployment_authority_service:
+    canonical_label: Capital Deployment Authority Service
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/capital_deployment_authority.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/services/parallel_risk_lane.py
+    - src/nvda_desk/services/risk_gateway.py
+    tier_a_blocking_tests:
+    - tests/test_gate189_capital_deployment_authority_service.py
+    - tests/test_gate190_capital_deployment_authority_integration.py
+    - tests/test_gate264_capital_deployment_authority_fresh_capital_correction.py
+    - tests/test_gate277_corrected_seam_checkpoints.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - superseded_cda_reconciliation_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any shadow failure inside CDA owned scope or its declared shared contract surfaces.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  risk_gateway_compatibility:
+    canonical_label: Risk Gateway Compatibility Seam
+    checkpoint_required: false
+    docstring_required_for_modified_boundaries: false
+    owned_surfaces:
+    - src/nvda_desk/services/risk_gateway.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/services/capital_deployment_authority.py
+    - src/nvda_desk/services/review_explanation.py
+    - src/nvda_desk/schemas/cognition.py
+    tier_a_blocking_tests:
+    - tests/test_gate121_final_risk_gateway_join.py
+    - tests/test_gate147_overlay_terminal_risk_runtime.py
+    - tests/test_gate230_opening_position_seam_and_downstream_handoff.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - final_risk_join_cleanup_families_outside_owned_scope
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any shadow failure inside declared compatibility seam readers or writers.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  workflow_pack_hardening:
+    canonical_label: Workflow Pack Hardening
+    checkpoint_required: false
+    docstring_required_for_modified_boundaries: false
+    owned_surfaces:
+    - AGENTS.md
+    - README.md
+    - docs/00_CONTROL_SURFACE_ROUTING_INDEX.md
+    - docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md
+    - docs/08_TESTING_AND_PROMOTION.md
+    - config/proof_blocks.yaml
+    shared_contract_surfaces:
+    - scripts/run_proof_block.py
+    - PLANS.md
+    - docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md
+    - CHANGELOG.jsonl
+    tier_a_blocking_tests:
+    - tests/test_gate289_dmp_v3_proof_manifest_routing.py
+    - tests/test_gate294_router_closeout_override_pack.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - archive_only_or_superseded_workflow_hardening_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any repo-wide shadow failure that lands inside workflow-law, pack-import, proof-manifest, router, or execution-governance surfaces owned by the active hardening block.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  downstream_architecture_bootstrap:
+    canonical_label: Downstream Architecture Bootstrap
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/schemas/downstream.py
+    - src/nvda_desk/services/downstream_opening.py
+    - src/nvda_desk/services/downstream_live_inventory.py
+    - src/nvda_desk/services/downstream_review.py
+    - src/nvda_desk/services/downstream_state.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/schemas/cognition.py
+    - src/nvda_desk/services/execution_records.py
+    - src/nvda_desk/schemas/execution_records.py
+    - src/nvda_desk/services/review_packets.py
+    - src/nvda_desk/services/review_explanation.py
+    - src/nvda_desk/schemas/review.py
+    - src/nvda_desk/schemas/trace_review.py
+    - docs/07_RUNTIME_SURFACE_OWNERSHIP_AND_DOWNSTREAM_CONSUMER_LEDGER.md
+    tier_a_blocking_tests:
+    - tests/test_gate266_downstream_architecture_pack_install.py
+    - tests/test_gate267_downstream_schema_and_service_shells.py
+    - tests/test_gate268_repo_native_state_reader_integration.py
+    - tests/test_gate269_downstream_review_receipt_and_no_policy.py
+    - tests/test_gate270_downstream_architecture_closeout.py
+    - tests/test_gate271_downstream_architecture_cleanup.py
+    - tests/test_gate275_downstream_opening_immediate_slice_derivation.py
+    - tests/test_gate277_corrected_seam_checkpoints.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - downstream_architecture_cleanup_families_outside_owned_scope
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any repo-wide shadow failure that lands inside the downstream architecture owned surfaces or declared shared contract surfaces touched by the active gate.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  options_flow_history_runtime_lane:
+    canonical_label: Options Flow History Runtime Lane
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/services/options_flow_history.py
+    - src/nvda_desk/schemas/options_flow_history.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/db/models.py
+    - src/nvda_desk/schemas/options.py
+    - alembic/versions/20260409_0008_options_flow_history_lane.py
+    tier_a_blocking_tests:
+    - tests/test_gate243_options_flow_history_record_contract.py
+    - tests/test_gate245_options_flow_history_persistence_and_non_interference.py
+    - tests/test_gate246_options_flow_history_runtime_replay.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - options_flow_history_bootstrap_and_closeout_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any shadow failure that lands inside the bounded options-flow observational lane, its persistence surface, or its runtime non-interference boundary.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  downstream_runtime_state_and_opening:
+    canonical_label: Downstream Runtime State and Opening
+    checkpoint_required: true
+    docstring_required_for_modified_boundaries: true
+    owned_surfaces:
+    - src/nvda_desk/schemas/downstream.py
+    - src/nvda_desk/services/downstream_opening.py
+    - src/nvda_desk/services/downstream_live_inventory.py
+    - src/nvda_desk/services/downstream_review.py
+    - src/nvda_desk/services/downstream_state.py
+    shared_contract_surfaces:
+    - src/nvda_desk/services/cognition_runtime.py
+    - src/nvda_desk/services/execution_records.py
+    - src/nvda_desk/schemas/execution_records.py
+    - src/nvda_desk/schemas/cognition.py
+    tier_a_blocking_tests:
+    - tests/test_gate267_downstream_schema_and_service_shells.py
+    - tests/test_gate268_repo_native_state_reader_integration.py
+    - tests/test_gate269_downstream_review_receipt_and_no_policy.py
+    - tests/test_gate271_downstream_runtime_read_boundaries.py
+    - tests/test_gate275_downstream_opening_immediate_slice_derivation.py
+    - tests/test_gate277_corrected_seam_checkpoints.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - downstream_architecture_bootstrap_and_closeout_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any shadow failure that lands inside runtime downstream state attachment, no-policy opening shells, downstream review receipt carriage, or corrected seam checkpoints.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof
+  governance_router_surfaces:
+    canonical_label: Governance / Router Surfaces
+    checkpoint_required: false
+    docstring_required_for_modified_boundaries: false
+    owned_surfaces:
+    - AGENTS.md
+    - PLANS.md
+    - README.md
+    - docs/06_REPO_PROCESS_AND_TRANCHE_LAW.md
+    - docs/08_TESTING_AND_PROMOTION.md
+    - docs/planning/2026-03-24_CANONICAL_VISION_GATE_MAP_v1.md
+    - config/proof_blocks.yaml
+    - scripts/run_proof_block.py
+    - Makefile
+    shared_contract_surfaces:
+    - docs/planning/2026-04-10_GOVERNED_BLOCK_PROOF_MANIFEST_IMPLEMENTATION_GATES_v1.md
+    - docs/planning/2026-04-10_GOVERNED_BLOCK_PROOF_MANIFEST_IMPLEMENTATION_LEAVES_v1.json
+    - docs/planning/2026-04-10_GOVERNED_BLOCK_PROOF_MANIFEST_IMPLEMENTATION_EXECUTION_LOG_v1.md
+    tier_a_blocking_tests:
+    - tests/test_document_hygiene.py
+    - tests/test_planning_state_integrity.py
+    - tests/test_planning_gate_authority_consistency.py
+    - tests/test_gate257_alpha_blocking_proof_reset.py
+    - tests/test_gate258_proof_manifest_contract.py
+    - tests/test_gate259_proof_executor_contract.py
+    - tests/test_gate260_initial_block_population_and_pilot.py
+    - tests/test_gate272_downstream_opening_corrective_pack_install.py
+    - tests/test_gate279_proof_boundary_reconciliation_step4_manifest.py
+    tier_b_shadow_tests:
+    - repo_wide_pytest
+    tier_c_cleanup_families:
+    - archive_only_or_superseded_governance_test_families
+    promotion_rules_from_shadow_to_blocking:
+    - Promote any repo-wide shadow failure that lands inside AGENTS, PLANS, README, docs/06, docs/08, the canonical gate map, the manifest, the executor, or active pack router surfaces.
+    broad_proof_promotion_conditions:
+    - active pack explicitly promotes broad proof

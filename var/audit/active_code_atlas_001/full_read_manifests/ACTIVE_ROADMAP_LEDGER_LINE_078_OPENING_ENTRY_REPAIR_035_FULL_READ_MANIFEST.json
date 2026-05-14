@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_ROADMAP_LEDGER_LINE_078_OPENING_ENTRY_REPAIR_035_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_ROADMAP_LEDGER_LINE_078_OPENING_ENTRY_REPAIR_035",
+  "manifest_scope": "roadmap_ledger_line_078_opening_entry_control_repair",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 5,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation and mutation-boundary authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 95630,
+      "line_count": 674,
+      "sha256": "2cf029e768cbc1b57e02048010d1ad309c64ed4ff3d712748794fa464d7a1d62",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 674
+        }
+      ],
+      "notes": "Updated status/current workstream/progress row for 035."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 181728,
+      "line_count": 529,
+      "sha256": "433d00f0f0c155561373e1bc7b098832fbde65d98abd1bbcbca648bda9254eea",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 529
+        }
+      ],
+      "notes": "Updated line 078/current pointer/history row for 035."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/roadmap_ledger_line_078_opening_entry_repair_035/reports/ACTIVE_ROADMAP_LEDGER_LINE_078_OPENING_ENTRY_REPAIR_035_REPORT.json",
+      "material_class": "report",
+      "byte_count": 2457,
+      "line_count": 36,
+      "sha256": "b52f4ca848e05df46bce79536d3d1ba16863337429fa28e7a12e414dd3090e81",
+      "read_method": "line_numbered_full_read_after_generation_and_proof_summary_update",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 36
+        }
+      ],
+      "notes": "035 report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/roadmap_ledger_line_078_opening_entry_repair_035/receipts/ACTIVE_ROADMAP_LEDGER_LINE_078_OPENING_ENTRY_REPAIR_035_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1540,
+      "line_count": 26,
+      "sha256": "281b305b7f6f0761e78012b7692ff14bd4683e5566bfafbf9d4479550f98b947",
+      "read_method": "line_numbered_full_read_after_creation_and_proof_summary_update",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 26
+        }
+      ],
+      "notes": "035 receipt."
+    }
+  ]
+}

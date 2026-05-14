@@ -1,0 +1,5 @@
+# Stage1E
+
+Stage1E.0: `FOUND`.
+
+Stage1E.1: `FOUND_EQUIVALENT`; prior `FOUND_EXACT` claim corrected by `NVDA10_STAGE1E0_STAGE1E1_RESOLUTION_REPORT_2026-05-08.tar.gz`.

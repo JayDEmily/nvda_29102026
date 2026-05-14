@@ -1,0 +1,16 @@
+............F                                                            [100%]
+=================================== FAILURES ===================================
+_ test_capital_deployment_receipt_rejects_opening_authorisation_payload_in_emitted_output _
+
+    def test_capital_deployment_receipt_rejects_opening_authorisation_payload_in_emitted_output() -> None:
+        context = _input()
+        decision = evaluate_capital_deployment(context, receipt_id="capital-receipt-opening-smuggle-001")
+
+>       with pytest.raises(ValidationError, match="opening or broker authority"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/capital_deployment/test_capital_contract_models.py:250: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/capital_deployment/test_capital_contract_models.py::test_capital_deployment_receipt_rejects_opening_authorisation_payload_in_emitted_output - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+1 failed, 12 passed in 0.25s

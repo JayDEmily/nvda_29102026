@@ -1,0 +1,612 @@
+{
+  "slice_name": "downstream_capital_deployment_authority",
+  "blueprint_surface": "Downstream capital deployment authority",
+  "status": "derived_materialised_slice",
+  "record_count": 2,
+  "source_files": {
+    "native_intent_satisfaction_ledger": {
+      "path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+      "sha256": "a1863186138db7f4ca900b4e241d900675ca1545998e0fcfc84127dd13fb223a",
+      "record_count": 1716
+    },
+    "legacy_intent_atlas": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+      "sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+      "record_count": 1716
+    },
+    "legacy_file_coverage_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_file_coverage_view.json",
+      "sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+      "file_count": 128
+    },
+    "legacy_owner_map_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_owner_map_view.json",
+      "sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+      "owner_count": 82
+    }
+  },
+  "counts": {
+    "native_satisfaction_status": {
+      "partially_satisfied": 1,
+      "transform_required": 1
+    },
+    "implementation_leaf_type": {
+      "later_blueprint_leaf": 1,
+      "later_test_first_leaf": 1
+    },
+    "implementation_leaf_required": {
+      "True": 2
+    },
+    "blueprint_surface_status": {
+      "placeholder": 2
+    },
+    "proof_resolution": {
+      "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 1,
+      "{'tier': 'Tier B', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 1
+    },
+    "existing_test_decision": {
+      "extend_existing_same_invariant": 1,
+      "new_test_family_required": 1
+    }
+  },
+  "records": [
+    {
+      "satisfaction_record_id": "NIS-0278",
+      "atlas_record_id": "atlas_donor_downstream_018",
+      "intent_unit_id": "iu_downstream_opening_authorisation_result_contract",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0278",
+        "atlas_record_id": "atlas_donor_downstream_018",
+        "intent_unit_id": "iu_downstream_opening_authorisation_result_contract",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/downstream.py",
+          "line_start": 168,
+          "line_end": 175,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Downstream capital deployment authority",
+        "blueprint_surface_status": "placeholder",
+        "target_owner": "capital deployment authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 305,
+            "line_end": 321,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Downstream capital deployment authority",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "capital deployment authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "placeholder",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "partially_satisfied",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 305,
+            "line_end": 321,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 14655,
+            "line_end": 14692,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/contracts/capital.py",
+            "line_start": 13,
+            "line_end": 24,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/capital/authority.py",
+            "line_start": 19,
+            "line_end": 26,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/contracts/downstream.py",
+            "line_start": 18,
+            "line_end": 34,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/downstream/opening.py",
+            "line_start": 8,
+            "line_end": 12,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+            "line_start": 25,
+            "line_end": 44,
+            "evidence_type": "test"
+          },
+          {
+            "path": "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+            "line_start": 25,
+            "line_end": 31,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "extend_existing",
+          "proof_block_action": "extend_existing"
+        },
+        "existing_test_decision": "extend_existing_same_invariant",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6A audited this Downstream capital deployment authority record. Native capital deployment surfaces exist and provide a bounded CapitalDeploymentAuthorityInput, CapitalDeploymentDecision, action enum, authorised_notional_usd output, and evaluation service. The Atlas intent also requires an opening-authorisation result shell carrying recommendation_history_reservation, authorised_deployable_pct, immediate_opening_slice_pct, and serial_ladder_shape_sum. The native capital/downstream surfaces read for this slice do not provide that full OpeningAuthorisationResult contract. Native satisfaction is therefore partial. Gate 7 proof resolution remains staged.\nGate 7A proof resolution: Tier A proof posture; test-family action extend_existing; existing-test decision extend_existing_same_invariant; proof-block action extend_existing; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_downstream_018",
+        "source_file": "legacy_import/source/nvda_desk/schemas/downstream.py",
+        "source_line_start": 168,
+        "source_line_end": 175,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "OpeningAuthorisationResult",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Extends DownstreamShellResult with mandatory recommendation-history reservation plus optional bounded authorised deployable, immediate opening slice, and non-negative serial ladder shape sum.",
+        "intended_behaviour": "Represent the architecture-only opening-authorisation result shell.",
+        "inputs": [
+          "DownstreamShellResult fields",
+          "recommendation_history_reservation",
+          "authorised_deployable_pct",
+          "immediate_opening_slice_pct",
+          "serial_ladder_shape_sum"
+        ],
+        "outputs": [
+          "typed opening-authorisation result"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "pydantic.Field",
+          "DownstreamShellResult",
+          "DownstreamRecommendationHistoryReservation"
+        ],
+        "packet_or_schema_effects": [
+          "Defines opening-authorisation result shell carriage."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "authorised_deployable_pct default=None ge=0.0 le=100.0",
+          "immediate_opening_slice_pct default=None ge=0.0 le=100.0",
+          "serial_ladder_shape_sum default=None ge=0.0"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "Optional percentages and serial_ladder_shape_sum may be null; recommendation_history_reservation is mandatory here.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_downstream_opening_authorisation_result_contract",
+        "intent_unit_summary": "Architecture-only result shell for opening authorisation.",
+        "operating_model_role": "opening-authorisation result shell",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": [
+          "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+        ]
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 22,
+          "coverage_range_index": 17,
+          "source_file": "legacy_import/source/nvda_desk/schemas/downstream.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 237,
+          "range_line_start": 168,
+          "range_line_end": 175,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0559",
+      "atlas_record_id": "atlas_donor_cognition_025",
+      "intent_unit_id": "iu_cognition_posture_hard_invariants_surface",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0559",
+        "atlas_record_id": "atlas_donor_cognition_025",
+        "intent_unit_id": "iu_cognition_posture_hard_invariants_surface",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/cognition.py",
+          "line_start": 392,
+          "line_end": 400,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Downstream capital deployment authority",
+        "blueprint_surface_status": "placeholder",
+        "target_owner": "capital deployment authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 305,
+            "line_end": 321,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Downstream capital deployment authority",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "capital deployment authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "placeholder",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "transform_required",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 305,
+            "line_end": 321,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 30330,
+            "line_end": 30377,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/contracts/posture.py",
+            "line_start": 13,
+            "line_end": 24,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/domain/posture/permission.py",
+            "line_start": 19,
+            "line_end": 68,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/contracts/capital.py",
+            "line_start": 13,
+            "line_end": 24,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/capital/authority.py",
+            "line_start": 19,
+            "line_end": 26,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+            "line_start": 41,
+            "line_end": 52,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier B",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_blueprint_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6A audited this Downstream capital deployment authority record. The Atlas intent is a posture hard-invariants surface with block_active, hard_block_reasons, and zero_deployable_required. Native posture contracts carry permission_state, local_envelope, hard_invariants, and reasons, and Tier B boundary proof keeps posture output separate from capital deployment decision fields. Native capital deployment surfaces provide stand_down and zero authorised_notional_usd when final_risk_action is not proceed, but they do not own or expose the typed posture hard-invariants fields. The useful native expression therefore requires owner/surface transformation rather than treating the current capital-deployment target as satisfied. Gate 7 proof resolution remains staged.\nGate 7A proof resolution: Tier B proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_blueprint_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_cognition_025",
+        "source_file": "legacy_import/source/nvda_desk/schemas/cognition.py",
+        "source_line_start": 392,
+        "source_line_end": 400,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "PostureHardInvariantsSurface",
+        "evidence_status": "observed_directly",
+        "state_reads": [],
+        "state_writes": [],
+        "config_or_coefficient_effects": [],
+        "branch_conditions": [],
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_cognition_posture_hard_invariants_surface",
+        "intent_unit_summary": "Posture hard invariants surface.",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": [
+          "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+        ],
+        "observed_behaviour": "Carries the typed posture hard invariants surface using fields for block_active, hard_block_reasons, zero_deployable_required.",
+        "intended_behaviour": "Posture-owned hard-stop surface preserved apart from later annotations.",
+        "inputs": [
+          "block_active",
+          "hard_block_reasons",
+          "zero_deployable_required"
+        ],
+        "outputs": [
+          "typed posture hard invariants surface"
+        ],
+        "external_dependencies": [
+          "pydantic.BaseModel",
+          "pydantic.ConfigDict",
+          "pydantic.Field"
+        ],
+        "packet_or_schema_effects": [
+          "Defines the posture hard invariants surface used by later cognition runtime layers."
+        ],
+        "thresholds_or_literals": [
+          "list-valued fields default_factory=list where declared"
+        ],
+        "error_null_empty_semantics": "Repeated fields default empty and optional fields may be null where declared.",
+        "operating_model_role": "posture hard invariants surface"
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 32,
+          "coverage_range_index": 24,
+          "source_file": "legacy_import/source/nvda_desk/schemas/cognition.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 1016,
+          "range_line_start": 392,
+          "range_line_end": 400,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

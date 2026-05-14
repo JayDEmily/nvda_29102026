@@ -1,0 +1,8 @@
+ROADMAP_LEDGER.md
+data/vocabulary/vocabulary_touch_stamp.json
+docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+scripts/vocabulary_synonym_audit.py
+src/nvda_desk/vocabulary_synonym_audit.py
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py
+var/vocabulary/synonym_candidates.json

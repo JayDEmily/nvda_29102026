@@ -1,0 +1,15 @@
+{
+  "import_smoke_required_substrings_present": {
+    "import_ok polars 1.39.3": true,
+    "openai_spec=None": true
+  },
+  "pytest_passed_count": 19,
+  "statuses": {
+    "import_smoke": "0",
+    "targeted_baseline_pytest": "0",
+    "uv_install_build_backend": "0",
+    "uv_install_repo_dev": "0",
+    "uv_pip_check": "0",
+    "venv_create": "0"
+  }
+}

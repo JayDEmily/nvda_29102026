@@ -1,0 +1,15 @@
+{
+  "non_claims": [
+    "Specimen designs are not mutation execution evidence.",
+    "Full false-positive resistance is not claimed.",
+    "Current code output is not used as oracle."
+  ],
+  "pre_hardening_counts": {
+    "smoke-only": 38,
+    "weak assertion": 6
+  },
+  "specimen_rows": 44,
+  "status": "known_bad_specimen_design_complete_for_previously_weak_rows",
+  "sweep_scope": "pre-hardening smoke-only and weak Tier A tests",
+  "unique_files": 41
+}

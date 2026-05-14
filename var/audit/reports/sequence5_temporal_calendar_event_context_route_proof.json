@@ -1,0 +1,41 @@
+{
+  "schema_version": "sequence5_route_proof.v1",
+  "sequence": "Sequence 5",
+  "tranche": "S5-TEMP-B1 \u2014 Temporal / calendar / event-context migration",
+  "result": "PASS",
+  "created_at_utc": "2026-05-04T05:51:04Z",
+  "source_lock_verified": true,
+  "route_authority_only": true,
+  "static_proof_only": true,
+  "venv_built": false,
+  "runtime_source_modified": false,
+  "tests_modified": false,
+  "normative_docs_modified": false,
+  "vocabulary_registry_modified": false,
+  "generated_atlas_slices_modified": false,
+  "original_atlas_bridge_inputs_modified": false,
+  "pyproject_modified": false,
+  "uv_lock_modified": false,
+  "sequence6_opened": false,
+  "self_accepted": false,
+  "atlas_slice_count_expected": 18,
+  "atlas_slice_count_observed": 18,
+  "atlas_slice_record_count_observed": 1716,
+  "sequence1_record_count_expected": 1716,
+  "sequence1_record_count_observed": 1716,
+  "sequence5_selected_record_count": 394,
+  "mandatory_slice_counts": {
+    "financial_and_event_calendar_architecture.json": 117,
+    "opening_architecture_and_placement_readiness.json": 74,
+    "raw_capture_and_source_temporal_law.json": 108
+  },
+  "selected_mandatory_slice_counts": {
+    "financial_and_event_calendar_architecture.json": 117,
+    "opening_architecture_and_placement_readiness.json": 74,
+    "raw_capture_and_source_temporal_law.json": 108
+  },
+  "json_parse_failures": [],
+  "read_ledger_path": "sequence5_worker_output_2026-05-04/sequence5_read_ledger.json",
+  "proof_logs_dir": "sequence5_worker_output_2026-05-04/proof_logs",
+  "next_pm_gate": "PM audit of returned Sequence 5 output artefacts."
+}

@@ -1,0 +1,159 @@
+{
+  "bounded_migration": {
+    "changed_capital_sizing_logic": false,
+    "changed_dependency_locks": false,
+    "changed_runtime_decision_logic": false,
+    "changed_trade_execution_logic": false,
+    "changed_vocabulary_registry": false,
+    "review_contract_additions": [
+      "ReviewFailureClass",
+      "ReviewResolutionClass",
+      "EconomicContributionTag",
+      "FailureTaxonomyRecord bounded labels",
+      "EconomicAccountabilityRecord non_action tag"
+    ]
+  },
+  "external_wheelhouses": {
+    "dev_zip": {
+      "included_in_output": false,
+      "path": "/mnt/data/nvda55_dev_build_support_wheelhouse_v4_black_ruff_pytest_editables_py3135_2026-05-02.zip",
+      "sha256": "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249",
+      "size_bytes": 15199214
+    },
+    "runtime_zip": {
+      "included_in_output": false,
+      "path": "/mnt/data/nvda55_runtime_wheelhouse_v5_ibapi_polars1393_py3135_2026-05-02.zip",
+      "sha256": "498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1",
+      "size_bytes": 64236501
+    }
+  },
+  "gates": [
+    {
+      "evidence": "Checkpoint 1 lock/status logs; read ledger carried forward.",
+      "gate": 1,
+      "name": "Input lock, extraction, and source authority",
+      "status": "pass"
+    },
+    {
+      "absence_count": 0,
+      "gate": 2,
+      "name": "Required full-read ledger",
+      "read_ledger_rows": 75,
+      "status": "pass"
+    },
+    {
+      "evidence": "Checkpoint 2 proof logs; baseline targeted pytest status 0.",
+      "gate": 3,
+      "name": "Offline VENV and baseline proof",
+      "status": "pass"
+    },
+    {
+      "evidence": "sequence10_review_explanation_auditability_inventory.json and gap report.",
+      "gate": 4,
+      "name": "Sequence 10 gap inventory",
+      "status": "pass_with_gate5_required"
+    },
+    {
+      "gate": 5,
+      "name": "Test-first bounded migration",
+      "post_impl_status": "0",
+      "status": "pass",
+      "test_first_status": "1"
+    },
+    {
+      "cache_scan_printed_paths": 0,
+      "gate": 6,
+      "name": "Proof, hygiene, candidate source, worker output TAR",
+      "pytest_passed": 21,
+      "status": "pass_pending_pm_acceptance",
+      "vocabulary_candidate_count": 0
+    }
+  ],
+  "proof_commands": [
+    {
+      "name": "Gate 5 test-first review contract test",
+      "note": "",
+      "required": true,
+      "status": "1",
+      "stderr": "var/audit/proof_logs/sequence10/gate5/test_first_review_contract_models.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/gate5/test_first_review_contract_models.stdout"
+    },
+    {
+      "name": "Final uv pip check",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/uv_pip_check_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/uv_pip_check_after_black.stdout"
+    },
+    {
+      "name": "Final import smoke",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/import_smoke_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/import_smoke_after_black.stdout"
+    },
+    {
+      "name": "Final targeted pytest aggregate",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/pytest_targeted_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/pytest_targeted_after_black.stdout"
+    },
+    {
+      "name": "Final Ruff check",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/ruff_check_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/ruff_check_after_black.stdout"
+    },
+    {
+      "name": "Final Black check",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/black_check_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/black_check_after_black.stdout"
+    },
+    {
+      "name": "Vocabulary candidate check",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/vocabulary_candidate_check.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/vocabulary_candidate_check.stdout"
+    },
+    {
+      "name": "Candidate cache scan",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/final/cache_scan_after_black.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/final/cache_scan_after_black.stdout"
+    },
+    {
+      "name": "Checkpoint 2 baseline targeted pytest",
+      "note": "",
+      "required": true,
+      "status": "0",
+      "stderr": "var/audit/proof_logs/sequence10/targeted_baseline_pytest.stderr",
+      "stdout": "var/audit/proof_logs/sequence10/targeted_baseline_pytest.stdout"
+    }
+  ],
+  "required_substrings": {
+    "import_ok_polars_1_39_3": true,
+    "openai_absent": true
+  },
+  "result": "PASS_SEQUENCE10_REVIEW_EXPLANATION_AUDITABILITY",
+  "scope": "review/explanation/auditability migration only",
+  "sequence": 10,
+  "sequence_11_opened": false,
+  "source_input": {
+    "filename": "NVDA9_SEQUENCE9_ACCEPTED_SOURCE_DOWNSTREAM_CAPITAL_PREDEPLOYMENT_CLOSED_2026-05-05.tar.gz",
+    "sha256": "1a25092827a6b3211a3326de09641da12f3d02e45b22e06725161d2f836dcb3f",
+    "size_bytes": 3027131
+  }
+}

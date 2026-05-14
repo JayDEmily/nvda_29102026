@@ -1,0 +1,55 @@
+{
+  "ledger_name": "atlas_surface_slice_pack_tranche_ledger",
+  "schema_version": "1.0",
+  "status": "closed",
+  "promotion_ready": true,
+  "runtime_implementation_opened": false,
+  "parent_brief": {
+    "path": "var/audit/briefs/2026-04-28_ATLAS_SURFACE_SLICE_PACK_TRANCHE.md",
+    "sha256": "ad03a7e003286b12485531f545ba5416c35c0336935e3618f76d13e1da49a8e4"
+  },
+  "slice_pack": {
+    "manifest_path": "var/audit/atlas_surface_slices/atlas_surface_slice_manifest.json",
+    "manifest_sha256": "9d1ded6cf6c9d00f41f9ee4fc48857937a9cf4a13ad1705aeff19dd8a31051f1",
+    "checksum_manifest_path": "var/audit/atlas_surface_slices/atlas_surface_slice_checksums.json",
+    "checksum_manifest_sha256": "e9a59e0c2d23e63e4a329d66b02d989b278f5205102b9acd446f824a11688b0b",
+    "slice_schema_path": "var/audit/atlas_surface_slices/atlas_surface_slice.schema.json",
+    "slice_schema_sha256": "fb857c021ac5113218702879cb8f4ae1186310dd5de8439f042216d83c79240b",
+    "slice_count": 18,
+    "total_records_across_slices": 1716
+  },
+  "verification": {
+    "source_native_record_count": 1716,
+    "source_raw_record_count": 1716,
+    "duplicate_native_atlas_record_ids": [],
+    "duplicate_raw_atlas_record_ids": [],
+    "native_records_missing_raw_atlas_record": [],
+    "coverage_refs_not_in_native_ledger": [],
+    "owner_refs_not_in_native_ledger": [],
+    "duplicate_atlas_record_ids_across_slices": [],
+    "slice_total_matches_native_record_count": true,
+    "generated_file_checksum_count": 20,
+    "materialisation_validation_result": "passed"
+  },
+  "leaves": [
+    {
+      "leaf_id": "ATLAS-SLICE-L01",
+      "status": "closed",
+      "purpose": "route and plan admission"
+    },
+    {
+      "leaf_id": "ATLAS-SLICE-L02",
+      "status": "closed",
+      "purpose": "materialise per-blueprint-surface slices"
+    },
+    {
+      "leaf_id": "ATLAS-SLICE-L03",
+      "status": "closed",
+      "purpose": "validate and close out slice pack"
+    }
+  ],
+  "carry_forward_blockers": [
+    "Large generated surface slices may still need sub-splitting into multiple future implementation tranches.",
+    "Slice files are derived evidence only and do not prove active code/test alignment."
+  ]
+}

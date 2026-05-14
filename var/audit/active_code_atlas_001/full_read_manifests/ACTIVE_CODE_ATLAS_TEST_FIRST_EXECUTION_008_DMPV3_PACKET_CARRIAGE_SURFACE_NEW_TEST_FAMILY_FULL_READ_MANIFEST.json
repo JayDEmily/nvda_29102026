@@ -1,0 +1,5084 @@
+{
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_008_DMPV3_PACKET_CARRIAGE_SURFACE_NEW_TEST_FAMILY_FULL_READ_MANIFEST",
+  "updated_utc": "2026-05-11T11:06:15.917378+00:00",
+  "branch": "worker/full-read-manifest-hardening-001",
+  "base_commit": "14dce0eb75c692351c0a185c470936b2db4e8813",
+  "surface_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_008_DMPV3_PACKET_CARRIAGE_SURFACE_NEW_TEST_FAMILY",
+  "next_pointer_after_row": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_009_DMPV3_PACKET_CARRIAGE_SURFACE_TRANSFORM_REQUIRED",
+  "queue_row": "ACATQ-0016 / ACABC-0016",
+  "purpose": "Full-read manifest for DMPV3 row 008 closure. Structural inventory/comparison inputs remain navigation only.",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 294
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 43490,
+      "line_count": 626,
+      "sha256": "0004e979ef997ee18f0a15f1e8561dcac2510798d1ce01845dc3ca3685757967",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 626
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 84470,
+      "line_count": 418,
+      "sha256": "d8c98a0e86c0da2679a90bdd8f006906d05a44f5802a87fa4a40309d243e61e3",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 418
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_QUEUE_001.md",
+      "byte_count": 7885,
+      "line_count": 81,
+      "sha256": "936ba346029d0d25a6fa81b116380a6c15b9b5a943d019b305894064fc497c21",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 640
+        },
+        {
+          "start_line": 641,
+          "end_line": 720
+        },
+        {
+          "start_line": 721,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 880
+        },
+        {
+          "start_line": 881,
+          "end_line": 960
+        },
+        {
+          "start_line": 961,
+          "end_line": 1040
+        },
+        {
+          "start_line": 1041,
+          "end_line": 1120
+        },
+        {
+          "start_line": 1121,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1273
+        }
+      ],
+      "notes": "structural/navigation input only; not semantic proof"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+      "byte_count": 187370,
+      "line_count": 5168,
+      "sha256": "0a8c4384addfebd1551d7b8e54c43242bc1e1f74b39db7bd4da636f187cdc2ce",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 640
+        },
+        {
+          "start_line": 641,
+          "end_line": 720
+        },
+        {
+          "start_line": 721,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 880
+        },
+        {
+          "start_line": 881,
+          "end_line": 960
+        },
+        {
+          "start_line": 961,
+          "end_line": 1040
+        },
+        {
+          "start_line": 1041,
+          "end_line": 1120
+        },
+        {
+          "start_line": 1121,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1280
+        },
+        {
+          "start_line": 1281,
+          "end_line": 1360
+        },
+        {
+          "start_line": 1361,
+          "end_line": 1440
+        },
+        {
+          "start_line": 1441,
+          "end_line": 1520
+        },
+        {
+          "start_line": 1521,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1680
+        },
+        {
+          "start_line": 1681,
+          "end_line": 1760
+        },
+        {
+          "start_line": 1761,
+          "end_line": 1840
+        },
+        {
+          "start_line": 1841,
+          "end_line": 1920
+        },
+        {
+          "start_line": 1921,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2080
+        },
+        {
+          "start_line": 2081,
+          "end_line": 2160
+        },
+        {
+          "start_line": 2161,
+          "end_line": 2240
+        },
+        {
+          "start_line": 2241,
+          "end_line": 2320
+        },
+        {
+          "start_line": 2321,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2480
+        },
+        {
+          "start_line": 2481,
+          "end_line": 2560
+        },
+        {
+          "start_line": 2561,
+          "end_line": 2640
+        },
+        {
+          "start_line": 2641,
+          "end_line": 2720
+        },
+        {
+          "start_line": 2721,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 2880
+        },
+        {
+          "start_line": 2881,
+          "end_line": 2960
+        },
+        {
+          "start_line": 2961,
+          "end_line": 3040
+        },
+        {
+          "start_line": 3041,
+          "end_line": 3120
+        },
+        {
+          "start_line": 3121,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3280
+        },
+        {
+          "start_line": 3281,
+          "end_line": 3360
+        },
+        {
+          "start_line": 3361,
+          "end_line": 3440
+        },
+        {
+          "start_line": 3441,
+          "end_line": 3520
+        },
+        {
+          "start_line": 3521,
+          "end_line": 3600
+        },
+        {
+          "start_line": 3601,
+          "end_line": 3680
+        },
+        {
+          "start_line": 3681,
+          "end_line": 3760
+        },
+        {
+          "start_line": 3761,
+          "end_line": 3840
+        },
+        {
+          "start_line": 3841,
+          "end_line": 3920
+        },
+        {
+          "start_line": 3921,
+          "end_line": 4000
+        },
+        {
+          "start_line": 4001,
+          "end_line": 4080
+        },
+        {
+          "start_line": 4081,
+          "end_line": 4160
+        },
+        {
+          "start_line": 4161,
+          "end_line": 4240
+        },
+        {
+          "start_line": 4241,
+          "end_line": 4320
+        },
+        {
+          "start_line": 4321,
+          "end_line": 4400
+        },
+        {
+          "start_line": 4401,
+          "end_line": 4480
+        },
+        {
+          "start_line": 4481,
+          "end_line": 4560
+        },
+        {
+          "start_line": 4561,
+          "end_line": 4640
+        },
+        {
+          "start_line": 4641,
+          "end_line": 4720
+        },
+        {
+          "start_line": 4721,
+          "end_line": 4800
+        },
+        {
+          "start_line": 4801,
+          "end_line": 4880
+        },
+        {
+          "start_line": 4881,
+          "end_line": 4960
+        },
+        {
+          "start_line": 4961,
+          "end_line": 5040
+        },
+        {
+          "start_line": 5041,
+          "end_line": 5120
+        },
+        {
+          "start_line": 5121,
+          "end_line": 5168
+        }
+      ],
+      "notes": "structural/navigation input only; not semantic proof"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_record_join.json",
+      "byte_count": 3446907,
+      "line_count": 80751,
+      "sha256": "880c22cd3f678d285cee68c5db6dd9e34615bbd52d05f67ddd26bbaf4f8c24be",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 640
+        },
+        {
+          "start_line": 641,
+          "end_line": 720
+        },
+        {
+          "start_line": 721,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 880
+        },
+        {
+          "start_line": 881,
+          "end_line": 960
+        },
+        {
+          "start_line": 961,
+          "end_line": 1040
+        },
+        {
+          "start_line": 1041,
+          "end_line": 1120
+        },
+        {
+          "start_line": 1121,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1280
+        },
+        {
+          "start_line": 1281,
+          "end_line": 1360
+        },
+        {
+          "start_line": 1361,
+          "end_line": 1440
+        },
+        {
+          "start_line": 1441,
+          "end_line": 1520
+        },
+        {
+          "start_line": 1521,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1680
+        },
+        {
+          "start_line": 1681,
+          "end_line": 1760
+        },
+        {
+          "start_line": 1761,
+          "end_line": 1840
+        },
+        {
+          "start_line": 1841,
+          "end_line": 1920
+        },
+        {
+          "start_line": 1921,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2080
+        },
+        {
+          "start_line": 2081,
+          "end_line": 2160
+        },
+        {
+          "start_line": 2161,
+          "end_line": 2240
+        },
+        {
+          "start_line": 2241,
+          "end_line": 2320
+        },
+        {
+          "start_line": 2321,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2480
+        },
+        {
+          "start_line": 2481,
+          "end_line": 2560
+        },
+        {
+          "start_line": 2561,
+          "end_line": 2640
+        },
+        {
+          "start_line": 2641,
+          "end_line": 2720
+        },
+        {
+          "start_line": 2721,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 2880
+        },
+        {
+          "start_line": 2881,
+          "end_line": 2960
+        },
+        {
+          "start_line": 2961,
+          "end_line": 3040
+        },
+        {
+          "start_line": 3041,
+          "end_line": 3120
+        },
+        {
+          "start_line": 3121,
+          "end_line": 3200
+        },
+        {
+          "start_line": 3201,
+          "end_line": 3280
+        },
+        {
+          "start_line": 3281,
+          "end_line": 3360
+        },
+        {
+          "start_line": 3361,
+          "end_line": 3440
+        },
+        {
+          "start_line": 3441,
+          "end_line": 3520
+        },
+        {
+          "start_line": 3521,
+          "end_line": 3600
+        },
+        {
+          "start_line": 3601,
+          "end_line": 3680
+        },
+        {
+          "start_line": 3681,
+          "end_line": 3760
+        },
+        {
+          "start_line": 3761,
+          "end_line": 3840
+        },
+        {
+          "start_line": 3841,
+          "end_line": 3920
+        },
+        {
+          "start_line": 3921,
+          "end_line": 4000
+        },
+        {
+          "start_line": 4001,
+          "end_line": 4080
+        },
+        {
+          "start_line": 4081,
+          "end_line": 4160
+        },
+        {
+          "start_line": 4161,
+          "end_line": 4240
+        },
+        {
+          "start_line": 4241,
+          "end_line": 4320
+        },
+        {
+          "start_line": 4321,
+          "end_line": 4400
+        },
+        {
+          "start_line": 4401,
+          "end_line": 4480
+        },
+        {
+          "start_line": 4481,
+          "end_line": 4560
+        },
+        {
+          "start_line": 4561,
+          "end_line": 4640
+        },
+        {
+          "start_line": 4641,
+          "end_line": 4720
+        },
+        {
+          "start_line": 4721,
+          "end_line": 4800
+        },
+        {
+          "start_line": 4801,
+          "end_line": 4880
+        },
+        {
+          "start_line": 4881,
+          "end_line": 4960
+        },
+        {
+          "start_line": 4961,
+          "end_line": 5040
+        },
+        {
+          "start_line": 5041,
+          "end_line": 5120
+        },
+        {
+          "start_line": 5121,
+          "end_line": 5200
+        },
+        {
+          "start_line": 5201,
+          "end_line": 5280
+        },
+        {
+          "start_line": 5281,
+          "end_line": 5360
+        },
+        {
+          "start_line": 5361,
+          "end_line": 5440
+        },
+        {
+          "start_line": 5441,
+          "end_line": 5520
+        },
+        {
+          "start_line": 5521,
+          "end_line": 5600
+        },
+        {
+          "start_line": 5601,
+          "end_line": 5680
+        },
+        {
+          "start_line": 5681,
+          "end_line": 5760
+        },
+        {
+          "start_line": 5761,
+          "end_line": 5840
+        },
+        {
+          "start_line": 5841,
+          "end_line": 5920
+        },
+        {
+          "start_line": 5921,
+          "end_line": 6000
+        },
+        {
+          "start_line": 6001,
+          "end_line": 6080
+        },
+        {
+          "start_line": 6081,
+          "end_line": 6160
+        },
+        {
+          "start_line": 6161,
+          "end_line": 6240
+        },
+        {
+          "start_line": 6241,
+          "end_line": 6320
+        },
+        {
+          "start_line": 6321,
+          "end_line": 6400
+        },
+        {
+          "start_line": 6401,
+          "end_line": 6480
+        },
+        {
+          "start_line": 6481,
+          "end_line": 6560
+        },
+        {
+          "start_line": 6561,
+          "end_line": 6640
+        },
+        {
+          "start_line": 6641,
+          "end_line": 6720
+        },
+        {
+          "start_line": 6721,
+          "end_line": 6800
+        },
+        {
+          "start_line": 6801,
+          "end_line": 6880
+        },
+        {
+          "start_line": 6881,
+          "end_line": 6960
+        },
+        {
+          "start_line": 6961,
+          "end_line": 7040
+        },
+        {
+          "start_line": 7041,
+          "end_line": 7120
+        },
+        {
+          "start_line": 7121,
+          "end_line": 7200
+        },
+        {
+          "start_line": 7201,
+          "end_line": 7280
+        },
+        {
+          "start_line": 7281,
+          "end_line": 7360
+        },
+        {
+          "start_line": 7361,
+          "end_line": 7440
+        },
+        {
+          "start_line": 7441,
+          "end_line": 7520
+        },
+        {
+          "start_line": 7521,
+          "end_line": 7600
+        },
+        {
+          "start_line": 7601,
+          "end_line": 7680
+        },
+        {
+          "start_line": 7681,
+          "end_line": 7760
+        },
+        {
+          "start_line": 7761,
+          "end_line": 7840
+        },
+        {
+          "start_line": 7841,
+          "end_line": 7920
+        },
+        {
+          "start_line": 7921,
+          "end_line": 8000
+        },
+        {
+          "start_line": 8001,
+          "end_line": 8080
+        },
+        {
+          "start_line": 8081,
+          "end_line": 8160
+        },
+        {
+          "start_line": 8161,
+          "end_line": 8240
+        },
+        {
+          "start_line": 8241,
+          "end_line": 8320
+        },
+        {
+          "start_line": 8321,
+          "end_line": 8400
+        },
+        {
+          "start_line": 8401,
+          "end_line": 8480
+        },
+        {
+          "start_line": 8481,
+          "end_line": 8560
+        },
+        {
+          "start_line": 8561,
+          "end_line": 8640
+        },
+        {
+          "start_line": 8641,
+          "end_line": 8720
+        },
+        {
+          "start_line": 8721,
+          "end_line": 8800
+        },
+        {
+          "start_line": 8801,
+          "end_line": 8880
+        },
+        {
+          "start_line": 8881,
+          "end_line": 8960
+        },
+        {
+          "start_line": 8961,
+          "end_line": 9040
+        },
+        {
+          "start_line": 9041,
+          "end_line": 9120
+        },
+        {
+          "start_line": 9121,
+          "end_line": 9200
+        },
+        {
+          "start_line": 9201,
+          "end_line": 9280
+        },
+        {
+          "start_line": 9281,
+          "end_line": 9360
+        },
+        {
+          "start_line": 9361,
+          "end_line": 9440
+        },
+        {
+          "start_line": 9441,
+          "end_line": 9520
+        },
+        {
+          "start_line": 9521,
+          "end_line": 9600
+        },
+        {
+          "start_line": 9601,
+          "end_line": 9680
+        },
+        {
+          "start_line": 9681,
+          "end_line": 9760
+        },
+        {
+          "start_line": 9761,
+          "end_line": 9840
+        },
+        {
+          "start_line": 9841,
+          "end_line": 9920
+        },
+        {
+          "start_line": 9921,
+          "end_line": 10000
+        },
+        {
+          "start_line": 10001,
+          "end_line": 10080
+        },
+        {
+          "start_line": 10081,
+          "end_line": 10160
+        },
+        {
+          "start_line": 10161,
+          "end_line": 10240
+        },
+        {
+          "start_line": 10241,
+          "end_line": 10320
+        },
+        {
+          "start_line": 10321,
+          "end_line": 10400
+        },
+        {
+          "start_line": 10401,
+          "end_line": 10480
+        },
+        {
+          "start_line": 10481,
+          "end_line": 10560
+        },
+        {
+          "start_line": 10561,
+          "end_line": 10640
+        },
+        {
+          "start_line": 10641,
+          "end_line": 10720
+        },
+        {
+          "start_line": 10721,
+          "end_line": 10800
+        },
+        {
+          "start_line": 10801,
+          "end_line": 10880
+        },
+        {
+          "start_line": 10881,
+          "end_line": 10960
+        },
+        {
+          "start_line": 10961,
+          "end_line": 11040
+        },
+        {
+          "start_line": 11041,
+          "end_line": 11120
+        },
+        {
+          "start_line": 11121,
+          "end_line": 11200
+        },
+        {
+          "start_line": 11201,
+          "end_line": 11280
+        },
+        {
+          "start_line": 11281,
+          "end_line": 11360
+        },
+        {
+          "start_line": 11361,
+          "end_line": 11440
+        },
+        {
+          "start_line": 11441,
+          "end_line": 11520
+        },
+        {
+          "start_line": 11521,
+          "end_line": 11600
+        },
+        {
+          "start_line": 11601,
+          "end_line": 11680
+        },
+        {
+          "start_line": 11681,
+          "end_line": 11760
+        },
+        {
+          "start_line": 11761,
+          "end_line": 11840
+        },
+        {
+          "start_line": 11841,
+          "end_line": 11920
+        },
+        {
+          "start_line": 11921,
+          "end_line": 12000
+        },
+        {
+          "start_line": 12001,
+          "end_line": 12080
+        },
+        {
+          "start_line": 12081,
+          "end_line": 12160
+        },
+        {
+          "start_line": 12161,
+          "end_line": 12240
+        },
+        {
+          "start_line": 12241,
+          "end_line": 12320
+        },
+        {
+          "start_line": 12321,
+          "end_line": 12400
+        },
+        {
+          "start_line": 12401,
+          "end_line": 12480
+        },
+        {
+          "start_line": 12481,
+          "end_line": 12560
+        },
+        {
+          "start_line": 12561,
+          "end_line": 12640
+        },
+        {
+          "start_line": 12641,
+          "end_line": 12720
+        },
+        {
+          "start_line": 12721,
+          "end_line": 12800
+        },
+        {
+          "start_line": 12801,
+          "end_line": 12880
+        },
+        {
+          "start_line": 12881,
+          "end_line": 12960
+        },
+        {
+          "start_line": 12961,
+          "end_line": 13040
+        },
+        {
+          "start_line": 13041,
+          "end_line": 13120
+        },
+        {
+          "start_line": 13121,
+          "end_line": 13200
+        },
+        {
+          "start_line": 13201,
+          "end_line": 13280
+        },
+        {
+          "start_line": 13281,
+          "end_line": 13360
+        },
+        {
+          "start_line": 13361,
+          "end_line": 13440
+        },
+        {
+          "start_line": 13441,
+          "end_line": 13520
+        },
+        {
+          "start_line": 13521,
+          "end_line": 13600
+        },
+        {
+          "start_line": 13601,
+          "end_line": 13680
+        },
+        {
+          "start_line": 13681,
+          "end_line": 13760
+        },
+        {
+          "start_line": 13761,
+          "end_line": 13840
+        },
+        {
+          "start_line": 13841,
+          "end_line": 13920
+        },
+        {
+          "start_line": 13921,
+          "end_line": 14000
+        },
+        {
+          "start_line": 14001,
+          "end_line": 14080
+        },
+        {
+          "start_line": 14081,
+          "end_line": 14160
+        },
+        {
+          "start_line": 14161,
+          "end_line": 14240
+        },
+        {
+          "start_line": 14241,
+          "end_line": 14320
+        },
+        {
+          "start_line": 14321,
+          "end_line": 14400
+        },
+        {
+          "start_line": 14401,
+          "end_line": 14480
+        },
+        {
+          "start_line": 14481,
+          "end_line": 14560
+        },
+        {
+          "start_line": 14561,
+          "end_line": 14640
+        },
+        {
+          "start_line": 14641,
+          "end_line": 14720
+        },
+        {
+          "start_line": 14721,
+          "end_line": 14800
+        },
+        {
+          "start_line": 14801,
+          "end_line": 14880
+        },
+        {
+          "start_line": 14881,
+          "end_line": 14960
+        },
+        {
+          "start_line": 14961,
+          "end_line": 15040
+        },
+        {
+          "start_line": 15041,
+          "end_line": 15120
+        },
+        {
+          "start_line": 15121,
+          "end_line": 15200
+        },
+        {
+          "start_line": 15201,
+          "end_line": 15280
+        },
+        {
+          "start_line": 15281,
+          "end_line": 15360
+        },
+        {
+          "start_line": 15361,
+          "end_line": 15440
+        },
+        {
+          "start_line": 15441,
+          "end_line": 15520
+        },
+        {
+          "start_line": 15521,
+          "end_line": 15600
+        },
+        {
+          "start_line": 15601,
+          "end_line": 15680
+        },
+        {
+          "start_line": 15681,
+          "end_line": 15760
+        },
+        {
+          "start_line": 15761,
+          "end_line": 15840
+        },
+        {
+          "start_line": 15841,
+          "end_line": 15920
+        },
+        {
+          "start_line": 15921,
+          "end_line": 16000
+        },
+        {
+          "start_line": 16001,
+          "end_line": 16080
+        },
+        {
+          "start_line": 16081,
+          "end_line": 16160
+        },
+        {
+          "start_line": 16161,
+          "end_line": 16240
+        },
+        {
+          "start_line": 16241,
+          "end_line": 16320
+        },
+        {
+          "start_line": 16321,
+          "end_line": 16400
+        },
+        {
+          "start_line": 16401,
+          "end_line": 16480
+        },
+        {
+          "start_line": 16481,
+          "end_line": 16560
+        },
+        {
+          "start_line": 16561,
+          "end_line": 16640
+        },
+        {
+          "start_line": 16641,
+          "end_line": 16720
+        },
+        {
+          "start_line": 16721,
+          "end_line": 16800
+        },
+        {
+          "start_line": 16801,
+          "end_line": 16880
+        },
+        {
+          "start_line": 16881,
+          "end_line": 16960
+        },
+        {
+          "start_line": 16961,
+          "end_line": 17040
+        },
+        {
+          "start_line": 17041,
+          "end_line": 17120
+        },
+        {
+          "start_line": 17121,
+          "end_line": 17200
+        },
+        {
+          "start_line": 17201,
+          "end_line": 17280
+        },
+        {
+          "start_line": 17281,
+          "end_line": 17360
+        },
+        {
+          "start_line": 17361,
+          "end_line": 17440
+        },
+        {
+          "start_line": 17441,
+          "end_line": 17520
+        },
+        {
+          "start_line": 17521,
+          "end_line": 17600
+        },
+        {
+          "start_line": 17601,
+          "end_line": 17680
+        },
+        {
+          "start_line": 17681,
+          "end_line": 17760
+        },
+        {
+          "start_line": 17761,
+          "end_line": 17840
+        },
+        {
+          "start_line": 17841,
+          "end_line": 17920
+        },
+        {
+          "start_line": 17921,
+          "end_line": 18000
+        },
+        {
+          "start_line": 18001,
+          "end_line": 18080
+        },
+        {
+          "start_line": 18081,
+          "end_line": 18160
+        },
+        {
+          "start_line": 18161,
+          "end_line": 18240
+        },
+        {
+          "start_line": 18241,
+          "end_line": 18320
+        },
+        {
+          "start_line": 18321,
+          "end_line": 18400
+        },
+        {
+          "start_line": 18401,
+          "end_line": 18480
+        },
+        {
+          "start_line": 18481,
+          "end_line": 18560
+        },
+        {
+          "start_line": 18561,
+          "end_line": 18640
+        },
+        {
+          "start_line": 18641,
+          "end_line": 18720
+        },
+        {
+          "start_line": 18721,
+          "end_line": 18800
+        },
+        {
+          "start_line": 18801,
+          "end_line": 18880
+        },
+        {
+          "start_line": 18881,
+          "end_line": 18960
+        },
+        {
+          "start_line": 18961,
+          "end_line": 19040
+        },
+        {
+          "start_line": 19041,
+          "end_line": 19120
+        },
+        {
+          "start_line": 19121,
+          "end_line": 19200
+        },
+        {
+          "start_line": 19201,
+          "end_line": 19280
+        },
+        {
+          "start_line": 19281,
+          "end_line": 19360
+        },
+        {
+          "start_line": 19361,
+          "end_line": 19440
+        },
+        {
+          "start_line": 19441,
+          "end_line": 19520
+        },
+        {
+          "start_line": 19521,
+          "end_line": 19600
+        },
+        {
+          "start_line": 19601,
+          "end_line": 19680
+        },
+        {
+          "start_line": 19681,
+          "end_line": 19760
+        },
+        {
+          "start_line": 19761,
+          "end_line": 19840
+        },
+        {
+          "start_line": 19841,
+          "end_line": 19920
+        },
+        {
+          "start_line": 19921,
+          "end_line": 20000
+        },
+        {
+          "start_line": 20001,
+          "end_line": 20080
+        },
+        {
+          "start_line": 20081,
+          "end_line": 20160
+        },
+        {
+          "start_line": 20161,
+          "end_line": 20240
+        },
+        {
+          "start_line": 20241,
+          "end_line": 20320
+        },
+        {
+          "start_line": 20321,
+          "end_line": 20400
+        },
+        {
+          "start_line": 20401,
+          "end_line": 20480
+        },
+        {
+          "start_line": 20481,
+          "end_line": 20560
+        },
+        {
+          "start_line": 20561,
+          "end_line": 20640
+        },
+        {
+          "start_line": 20641,
+          "end_line": 20720
+        },
+        {
+          "start_line": 20721,
+          "end_line": 20800
+        },
+        {
+          "start_line": 20801,
+          "end_line": 20880
+        },
+        {
+          "start_line": 20881,
+          "end_line": 20960
+        },
+        {
+          "start_line": 20961,
+          "end_line": 21040
+        },
+        {
+          "start_line": 21041,
+          "end_line": 21120
+        },
+        {
+          "start_line": 21121,
+          "end_line": 21200
+        },
+        {
+          "start_line": 21201,
+          "end_line": 21280
+        },
+        {
+          "start_line": 21281,
+          "end_line": 21360
+        },
+        {
+          "start_line": 21361,
+          "end_line": 21440
+        },
+        {
+          "start_line": 21441,
+          "end_line": 21520
+        },
+        {
+          "start_line": 21521,
+          "end_line": 21600
+        },
+        {
+          "start_line": 21601,
+          "end_line": 21680
+        },
+        {
+          "start_line": 21681,
+          "end_line": 21760
+        },
+        {
+          "start_line": 21761,
+          "end_line": 21840
+        },
+        {
+          "start_line": 21841,
+          "end_line": 21920
+        },
+        {
+          "start_line": 21921,
+          "end_line": 22000
+        },
+        {
+          "start_line": 22001,
+          "end_line": 22080
+        },
+        {
+          "start_line": 22081,
+          "end_line": 22160
+        },
+        {
+          "start_line": 22161,
+          "end_line": 22240
+        },
+        {
+          "start_line": 22241,
+          "end_line": 22320
+        },
+        {
+          "start_line": 22321,
+          "end_line": 22400
+        },
+        {
+          "start_line": 22401,
+          "end_line": 22480
+        },
+        {
+          "start_line": 22481,
+          "end_line": 22560
+        },
+        {
+          "start_line": 22561,
+          "end_line": 22640
+        },
+        {
+          "start_line": 22641,
+          "end_line": 22720
+        },
+        {
+          "start_line": 22721,
+          "end_line": 22800
+        },
+        {
+          "start_line": 22801,
+          "end_line": 22880
+        },
+        {
+          "start_line": 22881,
+          "end_line": 22960
+        },
+        {
+          "start_line": 22961,
+          "end_line": 23040
+        },
+        {
+          "start_line": 23041,
+          "end_line": 23120
+        },
+        {
+          "start_line": 23121,
+          "end_line": 23200
+        },
+        {
+          "start_line": 23201,
+          "end_line": 23280
+        },
+        {
+          "start_line": 23281,
+          "end_line": 23360
+        },
+        {
+          "start_line": 23361,
+          "end_line": 23440
+        },
+        {
+          "start_line": 23441,
+          "end_line": 23520
+        },
+        {
+          "start_line": 23521,
+          "end_line": 23600
+        },
+        {
+          "start_line": 23601,
+          "end_line": 23680
+        },
+        {
+          "start_line": 23681,
+          "end_line": 23760
+        },
+        {
+          "start_line": 23761,
+          "end_line": 23840
+        },
+        {
+          "start_line": 23841,
+          "end_line": 23920
+        },
+        {
+          "start_line": 23921,
+          "end_line": 24000
+        },
+        {
+          "start_line": 24001,
+          "end_line": 24080
+        },
+        {
+          "start_line": 24081,
+          "end_line": 24160
+        },
+        {
+          "start_line": 24161,
+          "end_line": 24240
+        },
+        {
+          "start_line": 24241,
+          "end_line": 24320
+        },
+        {
+          "start_line": 24321,
+          "end_line": 24400
+        },
+        {
+          "start_line": 24401,
+          "end_line": 24480
+        },
+        {
+          "start_line": 24481,
+          "end_line": 24560
+        },
+        {
+          "start_line": 24561,
+          "end_line": 24640
+        },
+        {
+          "start_line": 24641,
+          "end_line": 24720
+        },
+        {
+          "start_line": 24721,
+          "end_line": 24800
+        },
+        {
+          "start_line": 24801,
+          "end_line": 24880
+        },
+        {
+          "start_line": 24881,
+          "end_line": 24960
+        },
+        {
+          "start_line": 24961,
+          "end_line": 25040
+        },
+        {
+          "start_line": 25041,
+          "end_line": 25120
+        },
+        {
+          "start_line": 25121,
+          "end_line": 25200
+        },
+        {
+          "start_line": 25201,
+          "end_line": 25280
+        },
+        {
+          "start_line": 25281,
+          "end_line": 25360
+        },
+        {
+          "start_line": 25361,
+          "end_line": 25440
+        },
+        {
+          "start_line": 25441,
+          "end_line": 25520
+        },
+        {
+          "start_line": 25521,
+          "end_line": 25600
+        },
+        {
+          "start_line": 25601,
+          "end_line": 25680
+        },
+        {
+          "start_line": 25681,
+          "end_line": 25760
+        },
+        {
+          "start_line": 25761,
+          "end_line": 25840
+        },
+        {
+          "start_line": 25841,
+          "end_line": 25920
+        },
+        {
+          "start_line": 25921,
+          "end_line": 26000
+        },
+        {
+          "start_line": 26001,
+          "end_line": 26080
+        },
+        {
+          "start_line": 26081,
+          "end_line": 26160
+        },
+        {
+          "start_line": 26161,
+          "end_line": 26240
+        },
+        {
+          "start_line": 26241,
+          "end_line": 26320
+        },
+        {
+          "start_line": 26321,
+          "end_line": 26400
+        },
+        {
+          "start_line": 26401,
+          "end_line": 26480
+        },
+        {
+          "start_line": 26481,
+          "end_line": 26560
+        },
+        {
+          "start_line": 26561,
+          "end_line": 26640
+        },
+        {
+          "start_line": 26641,
+          "end_line": 26720
+        },
+        {
+          "start_line": 26721,
+          "end_line": 26800
+        },
+        {
+          "start_line": 26801,
+          "end_line": 26880
+        },
+        {
+          "start_line": 26881,
+          "end_line": 26960
+        },
+        {
+          "start_line": 26961,
+          "end_line": 27040
+        },
+        {
+          "start_line": 27041,
+          "end_line": 27120
+        },
+        {
+          "start_line": 27121,
+          "end_line": 27200
+        },
+        {
+          "start_line": 27201,
+          "end_line": 27280
+        },
+        {
+          "start_line": 27281,
+          "end_line": 27360
+        },
+        {
+          "start_line": 27361,
+          "end_line": 27440
+        },
+        {
+          "start_line": 27441,
+          "end_line": 27520
+        },
+        {
+          "start_line": 27521,
+          "end_line": 27600
+        },
+        {
+          "start_line": 27601,
+          "end_line": 27680
+        },
+        {
+          "start_line": 27681,
+          "end_line": 27760
+        },
+        {
+          "start_line": 27761,
+          "end_line": 27840
+        },
+        {
+          "start_line": 27841,
+          "end_line": 27920
+        },
+        {
+          "start_line": 27921,
+          "end_line": 28000
+        },
+        {
+          "start_line": 28001,
+          "end_line": 28080
+        },
+        {
+          "start_line": 28081,
+          "end_line": 28160
+        },
+        {
+          "start_line": 28161,
+          "end_line": 28240
+        },
+        {
+          "start_line": 28241,
+          "end_line": 28320
+        },
+        {
+          "start_line": 28321,
+          "end_line": 28400
+        },
+        {
+          "start_line": 28401,
+          "end_line": 28480
+        },
+        {
+          "start_line": 28481,
+          "end_line": 28560
+        },
+        {
+          "start_line": 28561,
+          "end_line": 28640
+        },
+        {
+          "start_line": 28641,
+          "end_line": 28720
+        },
+        {
+          "start_line": 28721,
+          "end_line": 28800
+        },
+        {
+          "start_line": 28801,
+          "end_line": 28880
+        },
+        {
+          "start_line": 28881,
+          "end_line": 28960
+        },
+        {
+          "start_line": 28961,
+          "end_line": 29040
+        },
+        {
+          "start_line": 29041,
+          "end_line": 29120
+        },
+        {
+          "start_line": 29121,
+          "end_line": 29200
+        },
+        {
+          "start_line": 29201,
+          "end_line": 29280
+        },
+        {
+          "start_line": 29281,
+          "end_line": 29360
+        },
+        {
+          "start_line": 29361,
+          "end_line": 29440
+        },
+        {
+          "start_line": 29441,
+          "end_line": 29520
+        },
+        {
+          "start_line": 29521,
+          "end_line": 29600
+        },
+        {
+          "start_line": 29601,
+          "end_line": 29680
+        },
+        {
+          "start_line": 29681,
+          "end_line": 29760
+        },
+        {
+          "start_line": 29761,
+          "end_line": 29840
+        },
+        {
+          "start_line": 29841,
+          "end_line": 29920
+        },
+        {
+          "start_line": 29921,
+          "end_line": 30000
+        },
+        {
+          "start_line": 30001,
+          "end_line": 30080
+        },
+        {
+          "start_line": 30081,
+          "end_line": 30160
+        },
+        {
+          "start_line": 30161,
+          "end_line": 30240
+        },
+        {
+          "start_line": 30241,
+          "end_line": 30320
+        },
+        {
+          "start_line": 30321,
+          "end_line": 30400
+        },
+        {
+          "start_line": 30401,
+          "end_line": 30480
+        },
+        {
+          "start_line": 30481,
+          "end_line": 30560
+        },
+        {
+          "start_line": 30561,
+          "end_line": 30640
+        },
+        {
+          "start_line": 30641,
+          "end_line": 30720
+        },
+        {
+          "start_line": 30721,
+          "end_line": 30800
+        },
+        {
+          "start_line": 30801,
+          "end_line": 30880
+        },
+        {
+          "start_line": 30881,
+          "end_line": 30960
+        },
+        {
+          "start_line": 30961,
+          "end_line": 31040
+        },
+        {
+          "start_line": 31041,
+          "end_line": 31120
+        },
+        {
+          "start_line": 31121,
+          "end_line": 31200
+        },
+        {
+          "start_line": 31201,
+          "end_line": 31280
+        },
+        {
+          "start_line": 31281,
+          "end_line": 31360
+        },
+        {
+          "start_line": 31361,
+          "end_line": 31440
+        },
+        {
+          "start_line": 31441,
+          "end_line": 31520
+        },
+        {
+          "start_line": 31521,
+          "end_line": 31600
+        },
+        {
+          "start_line": 31601,
+          "end_line": 31680
+        },
+        {
+          "start_line": 31681,
+          "end_line": 31760
+        },
+        {
+          "start_line": 31761,
+          "end_line": 31840
+        },
+        {
+          "start_line": 31841,
+          "end_line": 31920
+        },
+        {
+          "start_line": 31921,
+          "end_line": 32000
+        },
+        {
+          "start_line": 32001,
+          "end_line": 32080
+        },
+        {
+          "start_line": 32081,
+          "end_line": 32160
+        },
+        {
+          "start_line": 32161,
+          "end_line": 32240
+        },
+        {
+          "start_line": 32241,
+          "end_line": 32320
+        },
+        {
+          "start_line": 32321,
+          "end_line": 32400
+        },
+        {
+          "start_line": 32401,
+          "end_line": 32480
+        },
+        {
+          "start_line": 32481,
+          "end_line": 32560
+        },
+        {
+          "start_line": 32561,
+          "end_line": 32640
+        },
+        {
+          "start_line": 32641,
+          "end_line": 32720
+        },
+        {
+          "start_line": 32721,
+          "end_line": 32800
+        },
+        {
+          "start_line": 32801,
+          "end_line": 32880
+        },
+        {
+          "start_line": 32881,
+          "end_line": 32960
+        },
+        {
+          "start_line": 32961,
+          "end_line": 33040
+        },
+        {
+          "start_line": 33041,
+          "end_line": 33120
+        },
+        {
+          "start_line": 33121,
+          "end_line": 33200
+        },
+        {
+          "start_line": 33201,
+          "end_line": 33280
+        },
+        {
+          "start_line": 33281,
+          "end_line": 33360
+        },
+        {
+          "start_line": 33361,
+          "end_line": 33440
+        },
+        {
+          "start_line": 33441,
+          "end_line": 33520
+        },
+        {
+          "start_line": 33521,
+          "end_line": 33600
+        },
+        {
+          "start_line": 33601,
+          "end_line": 33680
+        },
+        {
+          "start_line": 33681,
+          "end_line": 33760
+        },
+        {
+          "start_line": 33761,
+          "end_line": 33840
+        },
+        {
+          "start_line": 33841,
+          "end_line": 33920
+        },
+        {
+          "start_line": 33921,
+          "end_line": 34000
+        },
+        {
+          "start_line": 34001,
+          "end_line": 34080
+        },
+        {
+          "start_line": 34081,
+          "end_line": 34160
+        },
+        {
+          "start_line": 34161,
+          "end_line": 34240
+        },
+        {
+          "start_line": 34241,
+          "end_line": 34320
+        },
+        {
+          "start_line": 34321,
+          "end_line": 34400
+        },
+        {
+          "start_line": 34401,
+          "end_line": 34480
+        },
+        {
+          "start_line": 34481,
+          "end_line": 34560
+        },
+        {
+          "start_line": 34561,
+          "end_line": 34640
+        },
+        {
+          "start_line": 34641,
+          "end_line": 34720
+        },
+        {
+          "start_line": 34721,
+          "end_line": 34800
+        },
+        {
+          "start_line": 34801,
+          "end_line": 34880
+        },
+        {
+          "start_line": 34881,
+          "end_line": 34960
+        },
+        {
+          "start_line": 34961,
+          "end_line": 35040
+        },
+        {
+          "start_line": 35041,
+          "end_line": 35120
+        },
+        {
+          "start_line": 35121,
+          "end_line": 35200
+        },
+        {
+          "start_line": 35201,
+          "end_line": 35280
+        },
+        {
+          "start_line": 35281,
+          "end_line": 35360
+        },
+        {
+          "start_line": 35361,
+          "end_line": 35440
+        },
+        {
+          "start_line": 35441,
+          "end_line": 35520
+        },
+        {
+          "start_line": 35521,
+          "end_line": 35600
+        },
+        {
+          "start_line": 35601,
+          "end_line": 35680
+        },
+        {
+          "start_line": 35681,
+          "end_line": 35760
+        },
+        {
+          "start_line": 35761,
+          "end_line": 35840
+        },
+        {
+          "start_line": 35841,
+          "end_line": 35920
+        },
+        {
+          "start_line": 35921,
+          "end_line": 36000
+        },
+        {
+          "start_line": 36001,
+          "end_line": 36080
+        },
+        {
+          "start_line": 36081,
+          "end_line": 36160
+        },
+        {
+          "start_line": 36161,
+          "end_line": 36240
+        },
+        {
+          "start_line": 36241,
+          "end_line": 36320
+        },
+        {
+          "start_line": 36321,
+          "end_line": 36400
+        },
+        {
+          "start_line": 36401,
+          "end_line": 36480
+        },
+        {
+          "start_line": 36481,
+          "end_line": 36560
+        },
+        {
+          "start_line": 36561,
+          "end_line": 36640
+        },
+        {
+          "start_line": 36641,
+          "end_line": 36720
+        },
+        {
+          "start_line": 36721,
+          "end_line": 36800
+        },
+        {
+          "start_line": 36801,
+          "end_line": 36880
+        },
+        {
+          "start_line": 36881,
+          "end_line": 36960
+        },
+        {
+          "start_line": 36961,
+          "end_line": 37040
+        },
+        {
+          "start_line": 37041,
+          "end_line": 37120
+        },
+        {
+          "start_line": 37121,
+          "end_line": 37200
+        },
+        {
+          "start_line": 37201,
+          "end_line": 37280
+        },
+        {
+          "start_line": 37281,
+          "end_line": 37360
+        },
+        {
+          "start_line": 37361,
+          "end_line": 37440
+        },
+        {
+          "start_line": 37441,
+          "end_line": 37520
+        },
+        {
+          "start_line": 37521,
+          "end_line": 37600
+        },
+        {
+          "start_line": 37601,
+          "end_line": 37680
+        },
+        {
+          "start_line": 37681,
+          "end_line": 37760
+        },
+        {
+          "start_line": 37761,
+          "end_line": 37840
+        },
+        {
+          "start_line": 37841,
+          "end_line": 37920
+        },
+        {
+          "start_line": 37921,
+          "end_line": 38000
+        },
+        {
+          "start_line": 38001,
+          "end_line": 38080
+        },
+        {
+          "start_line": 38081,
+          "end_line": 38160
+        },
+        {
+          "start_line": 38161,
+          "end_line": 38240
+        },
+        {
+          "start_line": 38241,
+          "end_line": 38320
+        },
+        {
+          "start_line": 38321,
+          "end_line": 38400
+        },
+        {
+          "start_line": 38401,
+          "end_line": 38480
+        },
+        {
+          "start_line": 38481,
+          "end_line": 38560
+        },
+        {
+          "start_line": 38561,
+          "end_line": 38640
+        },
+        {
+          "start_line": 38641,
+          "end_line": 38720
+        },
+        {
+          "start_line": 38721,
+          "end_line": 38800
+        },
+        {
+          "start_line": 38801,
+          "end_line": 38880
+        },
+        {
+          "start_line": 38881,
+          "end_line": 38960
+        },
+        {
+          "start_line": 38961,
+          "end_line": 39040
+        },
+        {
+          "start_line": 39041,
+          "end_line": 39120
+        },
+        {
+          "start_line": 39121,
+          "end_line": 39200
+        },
+        {
+          "start_line": 39201,
+          "end_line": 39280
+        },
+        {
+          "start_line": 39281,
+          "end_line": 39360
+        },
+        {
+          "start_line": 39361,
+          "end_line": 39440
+        },
+        {
+          "start_line": 39441,
+          "end_line": 39520
+        },
+        {
+          "start_line": 39521,
+          "end_line": 39600
+        },
+        {
+          "start_line": 39601,
+          "end_line": 39680
+        },
+        {
+          "start_line": 39681,
+          "end_line": 39760
+        },
+        {
+          "start_line": 39761,
+          "end_line": 39840
+        },
+        {
+          "start_line": 39841,
+          "end_line": 39920
+        },
+        {
+          "start_line": 39921,
+          "end_line": 40000
+        },
+        {
+          "start_line": 40001,
+          "end_line": 40080
+        },
+        {
+          "start_line": 40081,
+          "end_line": 40160
+        },
+        {
+          "start_line": 40161,
+          "end_line": 40240
+        },
+        {
+          "start_line": 40241,
+          "end_line": 40320
+        },
+        {
+          "start_line": 40321,
+          "end_line": 40400
+        },
+        {
+          "start_line": 40401,
+          "end_line": 40480
+        },
+        {
+          "start_line": 40481,
+          "end_line": 40560
+        },
+        {
+          "start_line": 40561,
+          "end_line": 40640
+        },
+        {
+          "start_line": 40641,
+          "end_line": 40720
+        },
+        {
+          "start_line": 40721,
+          "end_line": 40800
+        },
+        {
+          "start_line": 40801,
+          "end_line": 40880
+        },
+        {
+          "start_line": 40881,
+          "end_line": 40960
+        },
+        {
+          "start_line": 40961,
+          "end_line": 41040
+        },
+        {
+          "start_line": 41041,
+          "end_line": 41120
+        },
+        {
+          "start_line": 41121,
+          "end_line": 41200
+        },
+        {
+          "start_line": 41201,
+          "end_line": 41280
+        },
+        {
+          "start_line": 41281,
+          "end_line": 41360
+        },
+        {
+          "start_line": 41361,
+          "end_line": 41440
+        },
+        {
+          "start_line": 41441,
+          "end_line": 41520
+        },
+        {
+          "start_line": 41521,
+          "end_line": 41600
+        },
+        {
+          "start_line": 41601,
+          "end_line": 41680
+        },
+        {
+          "start_line": 41681,
+          "end_line": 41760
+        },
+        {
+          "start_line": 41761,
+          "end_line": 41840
+        },
+        {
+          "start_line": 41841,
+          "end_line": 41920
+        },
+        {
+          "start_line": 41921,
+          "end_line": 42000
+        },
+        {
+          "start_line": 42001,
+          "end_line": 42080
+        },
+        {
+          "start_line": 42081,
+          "end_line": 42160
+        },
+        {
+          "start_line": 42161,
+          "end_line": 42240
+        },
+        {
+          "start_line": 42241,
+          "end_line": 42320
+        },
+        {
+          "start_line": 42321,
+          "end_line": 42400
+        },
+        {
+          "start_line": 42401,
+          "end_line": 42480
+        },
+        {
+          "start_line": 42481,
+          "end_line": 42560
+        },
+        {
+          "start_line": 42561,
+          "end_line": 42640
+        },
+        {
+          "start_line": 42641,
+          "end_line": 42720
+        },
+        {
+          "start_line": 42721,
+          "end_line": 42800
+        },
+        {
+          "start_line": 42801,
+          "end_line": 42880
+        },
+        {
+          "start_line": 42881,
+          "end_line": 42960
+        },
+        {
+          "start_line": 42961,
+          "end_line": 43040
+        },
+        {
+          "start_line": 43041,
+          "end_line": 43120
+        },
+        {
+          "start_line": 43121,
+          "end_line": 43200
+        },
+        {
+          "start_line": 43201,
+          "end_line": 43280
+        },
+        {
+          "start_line": 43281,
+          "end_line": 43360
+        },
+        {
+          "start_line": 43361,
+          "end_line": 43440
+        },
+        {
+          "start_line": 43441,
+          "end_line": 43520
+        },
+        {
+          "start_line": 43521,
+          "end_line": 43600
+        },
+        {
+          "start_line": 43601,
+          "end_line": 43680
+        },
+        {
+          "start_line": 43681,
+          "end_line": 43760
+        },
+        {
+          "start_line": 43761,
+          "end_line": 43840
+        },
+        {
+          "start_line": 43841,
+          "end_line": 43920
+        },
+        {
+          "start_line": 43921,
+          "end_line": 44000
+        },
+        {
+          "start_line": 44001,
+          "end_line": 44080
+        },
+        {
+          "start_line": 44081,
+          "end_line": 44160
+        },
+        {
+          "start_line": 44161,
+          "end_line": 44240
+        },
+        {
+          "start_line": 44241,
+          "end_line": 44320
+        },
+        {
+          "start_line": 44321,
+          "end_line": 44400
+        },
+        {
+          "start_line": 44401,
+          "end_line": 44480
+        },
+        {
+          "start_line": 44481,
+          "end_line": 44560
+        },
+        {
+          "start_line": 44561,
+          "end_line": 44640
+        },
+        {
+          "start_line": 44641,
+          "end_line": 44720
+        },
+        {
+          "start_line": 44721,
+          "end_line": 44800
+        },
+        {
+          "start_line": 44801,
+          "end_line": 44880
+        },
+        {
+          "start_line": 44881,
+          "end_line": 44960
+        },
+        {
+          "start_line": 44961,
+          "end_line": 45040
+        },
+        {
+          "start_line": 45041,
+          "end_line": 45120
+        },
+        {
+          "start_line": 45121,
+          "end_line": 45200
+        },
+        {
+          "start_line": 45201,
+          "end_line": 45280
+        },
+        {
+          "start_line": 45281,
+          "end_line": 45360
+        },
+        {
+          "start_line": 45361,
+          "end_line": 45440
+        },
+        {
+          "start_line": 45441,
+          "end_line": 45520
+        },
+        {
+          "start_line": 45521,
+          "end_line": 45600
+        },
+        {
+          "start_line": 45601,
+          "end_line": 45680
+        },
+        {
+          "start_line": 45681,
+          "end_line": 45760
+        },
+        {
+          "start_line": 45761,
+          "end_line": 45840
+        },
+        {
+          "start_line": 45841,
+          "end_line": 45920
+        },
+        {
+          "start_line": 45921,
+          "end_line": 46000
+        },
+        {
+          "start_line": 46001,
+          "end_line": 46080
+        },
+        {
+          "start_line": 46081,
+          "end_line": 46160
+        },
+        {
+          "start_line": 46161,
+          "end_line": 46240
+        },
+        {
+          "start_line": 46241,
+          "end_line": 46320
+        },
+        {
+          "start_line": 46321,
+          "end_line": 46400
+        },
+        {
+          "start_line": 46401,
+          "end_line": 46480
+        },
+        {
+          "start_line": 46481,
+          "end_line": 46560
+        },
+        {
+          "start_line": 46561,
+          "end_line": 46640
+        },
+        {
+          "start_line": 46641,
+          "end_line": 46720
+        },
+        {
+          "start_line": 46721,
+          "end_line": 46800
+        },
+        {
+          "start_line": 46801,
+          "end_line": 46880
+        },
+        {
+          "start_line": 46881,
+          "end_line": 46960
+        },
+        {
+          "start_line": 46961,
+          "end_line": 47040
+        },
+        {
+          "start_line": 47041,
+          "end_line": 47120
+        },
+        {
+          "start_line": 47121,
+          "end_line": 47200
+        },
+        {
+          "start_line": 47201,
+          "end_line": 47280
+        },
+        {
+          "start_line": 47281,
+          "end_line": 47360
+        },
+        {
+          "start_line": 47361,
+          "end_line": 47440
+        },
+        {
+          "start_line": 47441,
+          "end_line": 47520
+        },
+        {
+          "start_line": 47521,
+          "end_line": 47600
+        },
+        {
+          "start_line": 47601,
+          "end_line": 47680
+        },
+        {
+          "start_line": 47681,
+          "end_line": 47760
+        },
+        {
+          "start_line": 47761,
+          "end_line": 47840
+        },
+        {
+          "start_line": 47841,
+          "end_line": 47920
+        },
+        {
+          "start_line": 47921,
+          "end_line": 48000
+        },
+        {
+          "start_line": 48001,
+          "end_line": 48080
+        },
+        {
+          "start_line": 48081,
+          "end_line": 48160
+        },
+        {
+          "start_line": 48161,
+          "end_line": 48240
+        },
+        {
+          "start_line": 48241,
+          "end_line": 48320
+        },
+        {
+          "start_line": 48321,
+          "end_line": 48400
+        },
+        {
+          "start_line": 48401,
+          "end_line": 48480
+        },
+        {
+          "start_line": 48481,
+          "end_line": 48560
+        },
+        {
+          "start_line": 48561,
+          "end_line": 48640
+        },
+        {
+          "start_line": 48641,
+          "end_line": 48720
+        },
+        {
+          "start_line": 48721,
+          "end_line": 48800
+        },
+        {
+          "start_line": 48801,
+          "end_line": 48880
+        },
+        {
+          "start_line": 48881,
+          "end_line": 48960
+        },
+        {
+          "start_line": 48961,
+          "end_line": 49040
+        },
+        {
+          "start_line": 49041,
+          "end_line": 49120
+        },
+        {
+          "start_line": 49121,
+          "end_line": 49200
+        },
+        {
+          "start_line": 49201,
+          "end_line": 49280
+        },
+        {
+          "start_line": 49281,
+          "end_line": 49360
+        },
+        {
+          "start_line": 49361,
+          "end_line": 49440
+        },
+        {
+          "start_line": 49441,
+          "end_line": 49520
+        },
+        {
+          "start_line": 49521,
+          "end_line": 49600
+        },
+        {
+          "start_line": 49601,
+          "end_line": 49680
+        },
+        {
+          "start_line": 49681,
+          "end_line": 49760
+        },
+        {
+          "start_line": 49761,
+          "end_line": 49840
+        },
+        {
+          "start_line": 49841,
+          "end_line": 49920
+        },
+        {
+          "start_line": 49921,
+          "end_line": 50000
+        },
+        {
+          "start_line": 50001,
+          "end_line": 50080
+        },
+        {
+          "start_line": 50081,
+          "end_line": 50160
+        },
+        {
+          "start_line": 50161,
+          "end_line": 50240
+        },
+        {
+          "start_line": 50241,
+          "end_line": 50320
+        },
+        {
+          "start_line": 50321,
+          "end_line": 50400
+        },
+        {
+          "start_line": 50401,
+          "end_line": 50480
+        },
+        {
+          "start_line": 50481,
+          "end_line": 50560
+        },
+        {
+          "start_line": 50561,
+          "end_line": 50640
+        },
+        {
+          "start_line": 50641,
+          "end_line": 50720
+        },
+        {
+          "start_line": 50721,
+          "end_line": 50800
+        },
+        {
+          "start_line": 50801,
+          "end_line": 50880
+        },
+        {
+          "start_line": 50881,
+          "end_line": 50960
+        },
+        {
+          "start_line": 50961,
+          "end_line": 51040
+        },
+        {
+          "start_line": 51041,
+          "end_line": 51120
+        },
+        {
+          "start_line": 51121,
+          "end_line": 51200
+        },
+        {
+          "start_line": 51201,
+          "end_line": 51280
+        },
+        {
+          "start_line": 51281,
+          "end_line": 51360
+        },
+        {
+          "start_line": 51361,
+          "end_line": 51440
+        },
+        {
+          "start_line": 51441,
+          "end_line": 51520
+        },
+        {
+          "start_line": 51521,
+          "end_line": 51600
+        },
+        {
+          "start_line": 51601,
+          "end_line": 51680
+        },
+        {
+          "start_line": 51681,
+          "end_line": 51760
+        },
+        {
+          "start_line": 51761,
+          "end_line": 51840
+        },
+        {
+          "start_line": 51841,
+          "end_line": 51920
+        },
+        {
+          "start_line": 51921,
+          "end_line": 52000
+        },
+        {
+          "start_line": 52001,
+          "end_line": 52080
+        },
+        {
+          "start_line": 52081,
+          "end_line": 52160
+        },
+        {
+          "start_line": 52161,
+          "end_line": 52240
+        },
+        {
+          "start_line": 52241,
+          "end_line": 52320
+        },
+        {
+          "start_line": 52321,
+          "end_line": 52400
+        },
+        {
+          "start_line": 52401,
+          "end_line": 52480
+        },
+        {
+          "start_line": 52481,
+          "end_line": 52560
+        },
+        {
+          "start_line": 52561,
+          "end_line": 52640
+        },
+        {
+          "start_line": 52641,
+          "end_line": 52720
+        },
+        {
+          "start_line": 52721,
+          "end_line": 52800
+        },
+        {
+          "start_line": 52801,
+          "end_line": 52880
+        },
+        {
+          "start_line": 52881,
+          "end_line": 52960
+        },
+        {
+          "start_line": 52961,
+          "end_line": 53040
+        },
+        {
+          "start_line": 53041,
+          "end_line": 53120
+        },
+        {
+          "start_line": 53121,
+          "end_line": 53200
+        },
+        {
+          "start_line": 53201,
+          "end_line": 53280
+        },
+        {
+          "start_line": 53281,
+          "end_line": 53360
+        },
+        {
+          "start_line": 53361,
+          "end_line": 53440
+        },
+        {
+          "start_line": 53441,
+          "end_line": 53520
+        },
+        {
+          "start_line": 53521,
+          "end_line": 53600
+        },
+        {
+          "start_line": 53601,
+          "end_line": 53680
+        },
+        {
+          "start_line": 53681,
+          "end_line": 53760
+        },
+        {
+          "start_line": 53761,
+          "end_line": 53840
+        },
+        {
+          "start_line": 53841,
+          "end_line": 53920
+        },
+        {
+          "start_line": 53921,
+          "end_line": 54000
+        },
+        {
+          "start_line": 54001,
+          "end_line": 54080
+        },
+        {
+          "start_line": 54081,
+          "end_line": 54160
+        },
+        {
+          "start_line": 54161,
+          "end_line": 54240
+        },
+        {
+          "start_line": 54241,
+          "end_line": 54320
+        },
+        {
+          "start_line": 54321,
+          "end_line": 54400
+        },
+        {
+          "start_line": 54401,
+          "end_line": 54480
+        },
+        {
+          "start_line": 54481,
+          "end_line": 54560
+        },
+        {
+          "start_line": 54561,
+          "end_line": 54640
+        },
+        {
+          "start_line": 54641,
+          "end_line": 54720
+        },
+        {
+          "start_line": 54721,
+          "end_line": 54800
+        },
+        {
+          "start_line": 54801,
+          "end_line": 54880
+        },
+        {
+          "start_line": 54881,
+          "end_line": 54960
+        },
+        {
+          "start_line": 54961,
+          "end_line": 55040
+        },
+        {
+          "start_line": 55041,
+          "end_line": 55120
+        },
+        {
+          "start_line": 55121,
+          "end_line": 55200
+        },
+        {
+          "start_line": 55201,
+          "end_line": 55280
+        },
+        {
+          "start_line": 55281,
+          "end_line": 55360
+        },
+        {
+          "start_line": 55361,
+          "end_line": 55440
+        },
+        {
+          "start_line": 55441,
+          "end_line": 55520
+        },
+        {
+          "start_line": 55521,
+          "end_line": 55600
+        },
+        {
+          "start_line": 55601,
+          "end_line": 55680
+        },
+        {
+          "start_line": 55681,
+          "end_line": 55760
+        },
+        {
+          "start_line": 55761,
+          "end_line": 55840
+        },
+        {
+          "start_line": 55841,
+          "end_line": 55920
+        },
+        {
+          "start_line": 55921,
+          "end_line": 56000
+        },
+        {
+          "start_line": 56001,
+          "end_line": 56080
+        },
+        {
+          "start_line": 56081,
+          "end_line": 56160
+        },
+        {
+          "start_line": 56161,
+          "end_line": 56240
+        },
+        {
+          "start_line": 56241,
+          "end_line": 56320
+        },
+        {
+          "start_line": 56321,
+          "end_line": 56400
+        },
+        {
+          "start_line": 56401,
+          "end_line": 56480
+        },
+        {
+          "start_line": 56481,
+          "end_line": 56560
+        },
+        {
+          "start_line": 56561,
+          "end_line": 56640
+        },
+        {
+          "start_line": 56641,
+          "end_line": 56720
+        },
+        {
+          "start_line": 56721,
+          "end_line": 56800
+        },
+        {
+          "start_line": 56801,
+          "end_line": 56880
+        },
+        {
+          "start_line": 56881,
+          "end_line": 56960
+        },
+        {
+          "start_line": 56961,
+          "end_line": 57040
+        },
+        {
+          "start_line": 57041,
+          "end_line": 57120
+        },
+        {
+          "start_line": 57121,
+          "end_line": 57200
+        },
+        {
+          "start_line": 57201,
+          "end_line": 57280
+        },
+        {
+          "start_line": 57281,
+          "end_line": 57360
+        },
+        {
+          "start_line": 57361,
+          "end_line": 57440
+        },
+        {
+          "start_line": 57441,
+          "end_line": 57520
+        },
+        {
+          "start_line": 57521,
+          "end_line": 57600
+        },
+        {
+          "start_line": 57601,
+          "end_line": 57680
+        },
+        {
+          "start_line": 57681,
+          "end_line": 57760
+        },
+        {
+          "start_line": 57761,
+          "end_line": 57840
+        },
+        {
+          "start_line": 57841,
+          "end_line": 57920
+        },
+        {
+          "start_line": 57921,
+          "end_line": 58000
+        },
+        {
+          "start_line": 58001,
+          "end_line": 58080
+        },
+        {
+          "start_line": 58081,
+          "end_line": 58160
+        },
+        {
+          "start_line": 58161,
+          "end_line": 58240
+        },
+        {
+          "start_line": 58241,
+          "end_line": 58320
+        },
+        {
+          "start_line": 58321,
+          "end_line": 58400
+        },
+        {
+          "start_line": 58401,
+          "end_line": 58480
+        },
+        {
+          "start_line": 58481,
+          "end_line": 58560
+        },
+        {
+          "start_line": 58561,
+          "end_line": 58640
+        },
+        {
+          "start_line": 58641,
+          "end_line": 58720
+        },
+        {
+          "start_line": 58721,
+          "end_line": 58800
+        },
+        {
+          "start_line": 58801,
+          "end_line": 58880
+        },
+        {
+          "start_line": 58881,
+          "end_line": 58960
+        },
+        {
+          "start_line": 58961,
+          "end_line": 59040
+        },
+        {
+          "start_line": 59041,
+          "end_line": 59120
+        },
+        {
+          "start_line": 59121,
+          "end_line": 59200
+        },
+        {
+          "start_line": 59201,
+          "end_line": 59280
+        },
+        {
+          "start_line": 59281,
+          "end_line": 59360
+        },
+        {
+          "start_line": 59361,
+          "end_line": 59440
+        },
+        {
+          "start_line": 59441,
+          "end_line": 59520
+        },
+        {
+          "start_line": 59521,
+          "end_line": 59600
+        },
+        {
+          "start_line": 59601,
+          "end_line": 59680
+        },
+        {
+          "start_line": 59681,
+          "end_line": 59760
+        },
+        {
+          "start_line": 59761,
+          "end_line": 59840
+        },
+        {
+          "start_line": 59841,
+          "end_line": 59920
+        },
+        {
+          "start_line": 59921,
+          "end_line": 60000
+        },
+        {
+          "start_line": 60001,
+          "end_line": 60080
+        },
+        {
+          "start_line": 60081,
+          "end_line": 60160
+        },
+        {
+          "start_line": 60161,
+          "end_line": 60240
+        },
+        {
+          "start_line": 60241,
+          "end_line": 60320
+        },
+        {
+          "start_line": 60321,
+          "end_line": 60400
+        },
+        {
+          "start_line": 60401,
+          "end_line": 60480
+        },
+        {
+          "start_line": 60481,
+          "end_line": 60560
+        },
+        {
+          "start_line": 60561,
+          "end_line": 60640
+        },
+        {
+          "start_line": 60641,
+          "end_line": 60720
+        },
+        {
+          "start_line": 60721,
+          "end_line": 60800
+        },
+        {
+          "start_line": 60801,
+          "end_line": 60880
+        },
+        {
+          "start_line": 60881,
+          "end_line": 60960
+        },
+        {
+          "start_line": 60961,
+          "end_line": 61040
+        },
+        {
+          "start_line": 61041,
+          "end_line": 61120
+        },
+        {
+          "start_line": 61121,
+          "end_line": 61200
+        },
+        {
+          "start_line": 61201,
+          "end_line": 61280
+        },
+        {
+          "start_line": 61281,
+          "end_line": 61360
+        },
+        {
+          "start_line": 61361,
+          "end_line": 61440
+        },
+        {
+          "start_line": 61441,
+          "end_line": 61520
+        },
+        {
+          "start_line": 61521,
+          "end_line": 61600
+        },
+        {
+          "start_line": 61601,
+          "end_line": 61680
+        },
+        {
+          "start_line": 61681,
+          "end_line": 61760
+        },
+        {
+          "start_line": 61761,
+          "end_line": 61840
+        },
+        {
+          "start_line": 61841,
+          "end_line": 61920
+        },
+        {
+          "start_line": 61921,
+          "end_line": 62000
+        },
+        {
+          "start_line": 62001,
+          "end_line": 62080
+        },
+        {
+          "start_line": 62081,
+          "end_line": 62160
+        },
+        {
+          "start_line": 62161,
+          "end_line": 62240
+        },
+        {
+          "start_line": 62241,
+          "end_line": 62320
+        },
+        {
+          "start_line": 62321,
+          "end_line": 62400
+        },
+        {
+          "start_line": 62401,
+          "end_line": 62480
+        },
+        {
+          "start_line": 62481,
+          "end_line": 62560
+        },
+        {
+          "start_line": 62561,
+          "end_line": 62640
+        },
+        {
+          "start_line": 62641,
+          "end_line": 62720
+        },
+        {
+          "start_line": 62721,
+          "end_line": 62800
+        },
+        {
+          "start_line": 62801,
+          "end_line": 62880
+        },
+        {
+          "start_line": 62881,
+          "end_line": 62960
+        },
+        {
+          "start_line": 62961,
+          "end_line": 63040
+        },
+        {
+          "start_line": 63041,
+          "end_line": 63120
+        },
+        {
+          "start_line": 63121,
+          "end_line": 63200
+        },
+        {
+          "start_line": 63201,
+          "end_line": 63280
+        },
+        {
+          "start_line": 63281,
+          "end_line": 63360
+        },
+        {
+          "start_line": 63361,
+          "end_line": 63440
+        },
+        {
+          "start_line": 63441,
+          "end_line": 63520
+        },
+        {
+          "start_line": 63521,
+          "end_line": 63600
+        },
+        {
+          "start_line": 63601,
+          "end_line": 63680
+        },
+        {
+          "start_line": 63681,
+          "end_line": 63760
+        },
+        {
+          "start_line": 63761,
+          "end_line": 63840
+        },
+        {
+          "start_line": 63841,
+          "end_line": 63920
+        },
+        {
+          "start_line": 63921,
+          "end_line": 64000
+        },
+        {
+          "start_line": 64001,
+          "end_line": 64080
+        },
+        {
+          "start_line": 64081,
+          "end_line": 64160
+        },
+        {
+          "start_line": 64161,
+          "end_line": 64240
+        },
+        {
+          "start_line": 64241,
+          "end_line": 64320
+        },
+        {
+          "start_line": 64321,
+          "end_line": 64400
+        },
+        {
+          "start_line": 64401,
+          "end_line": 64480
+        },
+        {
+          "start_line": 64481,
+          "end_line": 64560
+        },
+        {
+          "start_line": 64561,
+          "end_line": 64640
+        },
+        {
+          "start_line": 64641,
+          "end_line": 64720
+        },
+        {
+          "start_line": 64721,
+          "end_line": 64800
+        },
+        {
+          "start_line": 64801,
+          "end_line": 64880
+        },
+        {
+          "start_line": 64881,
+          "end_line": 64960
+        },
+        {
+          "start_line": 64961,
+          "end_line": 65040
+        },
+        {
+          "start_line": 65041,
+          "end_line": 65120
+        },
+        {
+          "start_line": 65121,
+          "end_line": 65200
+        },
+        {
+          "start_line": 65201,
+          "end_line": 65280
+        },
+        {
+          "start_line": 65281,
+          "end_line": 65360
+        },
+        {
+          "start_line": 65361,
+          "end_line": 65440
+        },
+        {
+          "start_line": 65441,
+          "end_line": 65520
+        },
+        {
+          "start_line": 65521,
+          "end_line": 65600
+        },
+        {
+          "start_line": 65601,
+          "end_line": 65680
+        },
+        {
+          "start_line": 65681,
+          "end_line": 65760
+        },
+        {
+          "start_line": 65761,
+          "end_line": 65840
+        },
+        {
+          "start_line": 65841,
+          "end_line": 65920
+        },
+        {
+          "start_line": 65921,
+          "end_line": 66000
+        },
+        {
+          "start_line": 66001,
+          "end_line": 66080
+        },
+        {
+          "start_line": 66081,
+          "end_line": 66160
+        },
+        {
+          "start_line": 66161,
+          "end_line": 66240
+        },
+        {
+          "start_line": 66241,
+          "end_line": 66320
+        },
+        {
+          "start_line": 66321,
+          "end_line": 66400
+        },
+        {
+          "start_line": 66401,
+          "end_line": 66480
+        },
+        {
+          "start_line": 66481,
+          "end_line": 66560
+        },
+        {
+          "start_line": 66561,
+          "end_line": 66640
+        },
+        {
+          "start_line": 66641,
+          "end_line": 66720
+        },
+        {
+          "start_line": 66721,
+          "end_line": 66800
+        },
+        {
+          "start_line": 66801,
+          "end_line": 66880
+        },
+        {
+          "start_line": 66881,
+          "end_line": 66960
+        },
+        {
+          "start_line": 66961,
+          "end_line": 67040
+        },
+        {
+          "start_line": 67041,
+          "end_line": 67120
+        },
+        {
+          "start_line": 67121,
+          "end_line": 67200
+        },
+        {
+          "start_line": 67201,
+          "end_line": 67280
+        },
+        {
+          "start_line": 67281,
+          "end_line": 67360
+        },
+        {
+          "start_line": 67361,
+          "end_line": 67440
+        },
+        {
+          "start_line": 67441,
+          "end_line": 67520
+        },
+        {
+          "start_line": 67521,
+          "end_line": 67600
+        },
+        {
+          "start_line": 67601,
+          "end_line": 67680
+        },
+        {
+          "start_line": 67681,
+          "end_line": 67760
+        },
+        {
+          "start_line": 67761,
+          "end_line": 67840
+        },
+        {
+          "start_line": 67841,
+          "end_line": 67920
+        },
+        {
+          "start_line": 67921,
+          "end_line": 68000
+        },
+        {
+          "start_line": 68001,
+          "end_line": 68080
+        },
+        {
+          "start_line": 68081,
+          "end_line": 68160
+        },
+        {
+          "start_line": 68161,
+          "end_line": 68240
+        },
+        {
+          "start_line": 68241,
+          "end_line": 68320
+        },
+        {
+          "start_line": 68321,
+          "end_line": 68400
+        },
+        {
+          "start_line": 68401,
+          "end_line": 68480
+        },
+        {
+          "start_line": 68481,
+          "end_line": 68560
+        },
+        {
+          "start_line": 68561,
+          "end_line": 68640
+        },
+        {
+          "start_line": 68641,
+          "end_line": 68720
+        },
+        {
+          "start_line": 68721,
+          "end_line": 68800
+        },
+        {
+          "start_line": 68801,
+          "end_line": 68880
+        },
+        {
+          "start_line": 68881,
+          "end_line": 68960
+        },
+        {
+          "start_line": 68961,
+          "end_line": 69040
+        },
+        {
+          "start_line": 69041,
+          "end_line": 69120
+        },
+        {
+          "start_line": 69121,
+          "end_line": 69200
+        },
+        {
+          "start_line": 69201,
+          "end_line": 69280
+        },
+        {
+          "start_line": 69281,
+          "end_line": 69360
+        },
+        {
+          "start_line": 69361,
+          "end_line": 69440
+        },
+        {
+          "start_line": 69441,
+          "end_line": 69520
+        },
+        {
+          "start_line": 69521,
+          "end_line": 69600
+        },
+        {
+          "start_line": 69601,
+          "end_line": 69680
+        },
+        {
+          "start_line": 69681,
+          "end_line": 69760
+        },
+        {
+          "start_line": 69761,
+          "end_line": 69840
+        },
+        {
+          "start_line": 69841,
+          "end_line": 69920
+        },
+        {
+          "start_line": 69921,
+          "end_line": 70000
+        },
+        {
+          "start_line": 70001,
+          "end_line": 70080
+        },
+        {
+          "start_line": 70081,
+          "end_line": 70160
+        },
+        {
+          "start_line": 70161,
+          "end_line": 70240
+        },
+        {
+          "start_line": 70241,
+          "end_line": 70320
+        },
+        {
+          "start_line": 70321,
+          "end_line": 70400
+        },
+        {
+          "start_line": 70401,
+          "end_line": 70480
+        },
+        {
+          "start_line": 70481,
+          "end_line": 70560
+        },
+        {
+          "start_line": 70561,
+          "end_line": 70640
+        },
+        {
+          "start_line": 70641,
+          "end_line": 70720
+        },
+        {
+          "start_line": 70721,
+          "end_line": 70800
+        },
+        {
+          "start_line": 70801,
+          "end_line": 70880
+        },
+        {
+          "start_line": 70881,
+          "end_line": 70960
+        },
+        {
+          "start_line": 70961,
+          "end_line": 71040
+        },
+        {
+          "start_line": 71041,
+          "end_line": 71120
+        },
+        {
+          "start_line": 71121,
+          "end_line": 71200
+        },
+        {
+          "start_line": 71201,
+          "end_line": 71280
+        },
+        {
+          "start_line": 71281,
+          "end_line": 71360
+        },
+        {
+          "start_line": 71361,
+          "end_line": 71440
+        },
+        {
+          "start_line": 71441,
+          "end_line": 71520
+        },
+        {
+          "start_line": 71521,
+          "end_line": 71600
+        },
+        {
+          "start_line": 71601,
+          "end_line": 71680
+        },
+        {
+          "start_line": 71681,
+          "end_line": 71760
+        },
+        {
+          "start_line": 71761,
+          "end_line": 71840
+        },
+        {
+          "start_line": 71841,
+          "end_line": 71920
+        },
+        {
+          "start_line": 71921,
+          "end_line": 72000
+        },
+        {
+          "start_line": 72001,
+          "end_line": 72080
+        },
+        {
+          "start_line": 72081,
+          "end_line": 72160
+        },
+        {
+          "start_line": 72161,
+          "end_line": 72240
+        },
+        {
+          "start_line": 72241,
+          "end_line": 72320
+        },
+        {
+          "start_line": 72321,
+          "end_line": 72400
+        },
+        {
+          "start_line": 72401,
+          "end_line": 72480
+        },
+        {
+          "start_line": 72481,
+          "end_line": 72560
+        },
+        {
+          "start_line": 72561,
+          "end_line": 72640
+        },
+        {
+          "start_line": 72641,
+          "end_line": 72720
+        },
+        {
+          "start_line": 72721,
+          "end_line": 72800
+        },
+        {
+          "start_line": 72801,
+          "end_line": 72880
+        },
+        {
+          "start_line": 72881,
+          "end_line": 72960
+        },
+        {
+          "start_line": 72961,
+          "end_line": 73040
+        },
+        {
+          "start_line": 73041,
+          "end_line": 73120
+        },
+        {
+          "start_line": 73121,
+          "end_line": 73200
+        },
+        {
+          "start_line": 73201,
+          "end_line": 73280
+        },
+        {
+          "start_line": 73281,
+          "end_line": 73360
+        },
+        {
+          "start_line": 73361,
+          "end_line": 73440
+        },
+        {
+          "start_line": 73441,
+          "end_line": 73520
+        },
+        {
+          "start_line": 73521,
+          "end_line": 73600
+        },
+        {
+          "start_line": 73601,
+          "end_line": 73680
+        },
+        {
+          "start_line": 73681,
+          "end_line": 73760
+        },
+        {
+          "start_line": 73761,
+          "end_line": 73840
+        },
+        {
+          "start_line": 73841,
+          "end_line": 73920
+        },
+        {
+          "start_line": 73921,
+          "end_line": 74000
+        },
+        {
+          "start_line": 74001,
+          "end_line": 74080
+        },
+        {
+          "start_line": 74081,
+          "end_line": 74160
+        },
+        {
+          "start_line": 74161,
+          "end_line": 74240
+        },
+        {
+          "start_line": 74241,
+          "end_line": 74320
+        },
+        {
+          "start_line": 74321,
+          "end_line": 74400
+        },
+        {
+          "start_line": 74401,
+          "end_line": 74480
+        },
+        {
+          "start_line": 74481,
+          "end_line": 74560
+        },
+        {
+          "start_line": 74561,
+          "end_line": 74640
+        },
+        {
+          "start_line": 74641,
+          "end_line": 74720
+        },
+        {
+          "start_line": 74721,
+          "end_line": 74800
+        },
+        {
+          "start_line": 74801,
+          "end_line": 74880
+        },
+        {
+          "start_line": 74881,
+          "end_line": 74960
+        },
+        {
+          "start_line": 74961,
+          "end_line": 75040
+        },
+        {
+          "start_line": 75041,
+          "end_line": 75120
+        },
+        {
+          "start_line": 75121,
+          "end_line": 75200
+        },
+        {
+          "start_line": 75201,
+          "end_line": 75280
+        },
+        {
+          "start_line": 75281,
+          "end_line": 75360
+        },
+        {
+          "start_line": 75361,
+          "end_line": 75440
+        },
+        {
+          "start_line": 75441,
+          "end_line": 75520
+        },
+        {
+          "start_line": 75521,
+          "end_line": 75600
+        },
+        {
+          "start_line": 75601,
+          "end_line": 75680
+        },
+        {
+          "start_line": 75681,
+          "end_line": 75760
+        },
+        {
+          "start_line": 75761,
+          "end_line": 75840
+        },
+        {
+          "start_line": 75841,
+          "end_line": 75920
+        },
+        {
+          "start_line": 75921,
+          "end_line": 76000
+        },
+        {
+          "start_line": 76001,
+          "end_line": 76080
+        },
+        {
+          "start_line": 76081,
+          "end_line": 76160
+        },
+        {
+          "start_line": 76161,
+          "end_line": 76240
+        },
+        {
+          "start_line": 76241,
+          "end_line": 76320
+        },
+        {
+          "start_line": 76321,
+          "end_line": 76400
+        },
+        {
+          "start_line": 76401,
+          "end_line": 76480
+        },
+        {
+          "start_line": 76481,
+          "end_line": 76560
+        },
+        {
+          "start_line": 76561,
+          "end_line": 76640
+        },
+        {
+          "start_line": 76641,
+          "end_line": 76720
+        },
+        {
+          "start_line": 76721,
+          "end_line": 76800
+        },
+        {
+          "start_line": 76801,
+          "end_line": 76880
+        },
+        {
+          "start_line": 76881,
+          "end_line": 76960
+        },
+        {
+          "start_line": 76961,
+          "end_line": 77040
+        },
+        {
+          "start_line": 77041,
+          "end_line": 77120
+        },
+        {
+          "start_line": 77121,
+          "end_line": 77200
+        },
+        {
+          "start_line": 77201,
+          "end_line": 77280
+        },
+        {
+          "start_line": 77281,
+          "end_line": 77360
+        },
+        {
+          "start_line": 77361,
+          "end_line": 77440
+        },
+        {
+          "start_line": 77441,
+          "end_line": 77520
+        },
+        {
+          "start_line": 77521,
+          "end_line": 77600
+        },
+        {
+          "start_line": 77601,
+          "end_line": 77680
+        },
+        {
+          "start_line": 77681,
+          "end_line": 77760
+        },
+        {
+          "start_line": 77761,
+          "end_line": 77840
+        },
+        {
+          "start_line": 77841,
+          "end_line": 77920
+        },
+        {
+          "start_line": 77921,
+          "end_line": 78000
+        },
+        {
+          "start_line": 78001,
+          "end_line": 78080
+        },
+        {
+          "start_line": 78081,
+          "end_line": 78160
+        },
+        {
+          "start_line": 78161,
+          "end_line": 78240
+        },
+        {
+          "start_line": 78241,
+          "end_line": 78320
+        },
+        {
+          "start_line": 78321,
+          "end_line": 78400
+        },
+        {
+          "start_line": 78401,
+          "end_line": 78480
+        },
+        {
+          "start_line": 78481,
+          "end_line": 78560
+        },
+        {
+          "start_line": 78561,
+          "end_line": 78640
+        },
+        {
+          "start_line": 78641,
+          "end_line": 78720
+        },
+        {
+          "start_line": 78721,
+          "end_line": 78800
+        },
+        {
+          "start_line": 78801,
+          "end_line": 78880
+        },
+        {
+          "start_line": 78881,
+          "end_line": 78960
+        },
+        {
+          "start_line": 78961,
+          "end_line": 79040
+        },
+        {
+          "start_line": 79041,
+          "end_line": 79120
+        },
+        {
+          "start_line": 79121,
+          "end_line": 79200
+        },
+        {
+          "start_line": 79201,
+          "end_line": 79280
+        },
+        {
+          "start_line": 79281,
+          "end_line": 79360
+        },
+        {
+          "start_line": 79361,
+          "end_line": 79440
+        },
+        {
+          "start_line": 79441,
+          "end_line": 79520
+        },
+        {
+          "start_line": 79521,
+          "end_line": 79600
+        },
+        {
+          "start_line": 79601,
+          "end_line": 79680
+        },
+        {
+          "start_line": 79681,
+          "end_line": 79760
+        },
+        {
+          "start_line": 79761,
+          "end_line": 79840
+        },
+        {
+          "start_line": 79841,
+          "end_line": 79920
+        },
+        {
+          "start_line": 79921,
+          "end_line": 80000
+        },
+        {
+          "start_line": 80001,
+          "end_line": 80080
+        },
+        {
+          "start_line": 80081,
+          "end_line": 80160
+        },
+        {
+          "start_line": 80161,
+          "end_line": 80240
+        },
+        {
+          "start_line": 80241,
+          "end_line": 80320
+        },
+        {
+          "start_line": 80321,
+          "end_line": 80400
+        },
+        {
+          "start_line": 80401,
+          "end_line": 80480
+        },
+        {
+          "start_line": 80481,
+          "end_line": 80560
+        },
+        {
+          "start_line": 80561,
+          "end_line": 80640
+        },
+        {
+          "start_line": 80641,
+          "end_line": 80720
+        },
+        {
+          "start_line": 80721,
+          "end_line": 80751
+        }
+      ],
+      "notes": "structural/navigation input only; not semantic proof"
+    },
+    {
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "byte_count": 5489,
+      "line_count": 187,
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 187
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "byte_count": 2617,
+      "line_count": 39,
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 195
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 640
+        },
+        {
+          "start_line": 641,
+          "end_line": 720
+        },
+        {
+          "start_line": 721,
+          "end_line": 758
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 27715,
+      "line_count": 428,
+      "sha256": "571f5eddbb827166c4b0be80b9e18a4b6dd8af9fbad8f9e426e0c66008bf16e4",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 428
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 186627,
+      "line_count": 3046,
+      "sha256": "6d2e1e86886e345ad01ff812da74f531432b9a71b36bdf2ea730f1347a4ccfec",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 480
+        },
+        {
+          "start_line": 481,
+          "end_line": 560
+        },
+        {
+          "start_line": 561,
+          "end_line": 640
+        },
+        {
+          "start_line": 641,
+          "end_line": 720
+        },
+        {
+          "start_line": 721,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 880
+        },
+        {
+          "start_line": 881,
+          "end_line": 960
+        },
+        {
+          "start_line": 961,
+          "end_line": 1040
+        },
+        {
+          "start_line": 1041,
+          "end_line": 1120
+        },
+        {
+          "start_line": 1121,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1280
+        },
+        {
+          "start_line": 1281,
+          "end_line": 1360
+        },
+        {
+          "start_line": 1361,
+          "end_line": 1440
+        },
+        {
+          "start_line": 1441,
+          "end_line": 1520
+        },
+        {
+          "start_line": 1521,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1680
+        },
+        {
+          "start_line": 1681,
+          "end_line": 1760
+        },
+        {
+          "start_line": 1761,
+          "end_line": 1840
+        },
+        {
+          "start_line": 1841,
+          "end_line": 1920
+        },
+        {
+          "start_line": 1921,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2080
+        },
+        {
+          "start_line": 2081,
+          "end_line": 2160
+        },
+        {
+          "start_line": 2161,
+          "end_line": 2240
+        },
+        {
+          "start_line": 2241,
+          "end_line": 2320
+        },
+        {
+          "start_line": 2321,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2480
+        },
+        {
+          "start_line": 2481,
+          "end_line": 2560
+        },
+        {
+          "start_line": 2561,
+          "end_line": 2640
+        },
+        {
+          "start_line": 2641,
+          "end_line": 2720
+        },
+        {
+          "start_line": 2721,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 2880
+        },
+        {
+          "start_line": 2881,
+          "end_line": 2960
+        },
+        {
+          "start_line": 2961,
+          "end_line": 3040
+        },
+        {
+          "start_line": 3041,
+          "end_line": 3046
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/contracts/packets.py",
+      "byte_count": 8370,
+      "line_count": 252,
+      "sha256": "61b54ba3993f547466be9aca48379bd95dcbdbb535bf1362cdfbb69be9e55b8a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 252
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/packets/dmp_packets.py",
+      "byte_count": 15208,
+      "line_count": 408,
+      "sha256": "029af4c848fd11c2a60ad08a05ac8192f00e92b08afc7bd0f93554d15dc620bf",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 160
+        },
+        {
+          "start_line": 161,
+          "end_line": 240
+        },
+        {
+          "start_line": 241,
+          "end_line": 320
+        },
+        {
+          "start_line": 321,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 408
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/schemas/dmp.py",
+      "byte_count": 327,
+      "line_count": 12,
+      "sha256": "d6b7ef711d2df900570918fd580c03322b13c6af55b571f10096155387ec6535",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/schemas/dmp_envelope.py",
+      "byte_count": 493,
+      "line_count": 23,
+      "sha256": "1cd10073c3878b89979dfd58b7531ff295db108b9914b5fd956be29a3d184375",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/contracts/dataset_packets.py",
+      "byte_count": 1400,
+      "line_count": 41,
+      "sha256": "721534bffeb4afe04f2dc47edb88e38cb3588624d677479f55650f0f1294e953",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "src/nvda_desk/packets/__init__.py",
+      "byte_count": 36,
+      "line_count": 1,
+      "sha256": "1bd7a17075098ed69b98294e0dd6653e0ad7785ab2b2fc9b8ef6ddf7f204140d",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "tests/tier_a/packets/test_reference_packet_carriage.py",
+      "byte_count": 6208,
+      "line_count": 154,
+      "sha256": "61a55a2caed8bb9e0497a8a980d413cb0790a8a3d1c3fa8afc07eed93b37ca41",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 154
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py",
+      "byte_count": 2571,
+      "line_count": 72,
+      "sha256": "45dfe7e719fb31b6b8aae23b28cc0bd82d8cdcec3456f46acf9b48286ecd107d",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/dmpv3_packet_carriage_active_code_atlas_records.json",
+      "byte_count": 6432,
+      "line_count": 146,
+      "sha256": "c1ef06c7cee85e125ee984a420d44ae84475f4341935b2979b07f1e7447a4181",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        },
+        {
+          "start_line": 81,
+          "end_line": 146
+        }
+      ],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_007_DMPV3_PACKET_CARRIAGE_SURFACE_RECEIPT.md",
+      "byte_count": 4123,
+      "line_count": 72,
+      "sha256": "c48de2bfa620545420adfa5c5d9a7bbea10d506dd3b7fca32ca07e8481a79eb7",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/dmpv3_extension_canonical_leaf_active_code_atlas_records.json",
+      "byte_count": 4214,
+      "line_count": 96,
+      "sha256": "97741249e96ba1224a0911b44d4796854c6dd8f4b19bfbde85d0c78c3b0e1422",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_008_DMPV3_PACKET_CARRIAGE_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "byte_count": 3902,
+      "line_count": 64,
+      "sha256": "d155aaf79a62bf6580e985a53e6cb1d67ab03048ee374c8df10198301e0716e4",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/dmpv3_extension_canonical_leaf_pre_repair_pytest.txt",
+      "byte_count": 2593,
+      "line_count": 59,
+      "sha256": "53a07e04179494c1ffacfb923589e5850441745391d3f52b9936a40f30034a57",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/dmpv3_extension_canonical_leaf_pre_repair_pytest.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/dmpv3_extension_canonical_leaf_post_repair_pytest.txt",
+      "byte_count": 98,
+      "line_count": 2,
+      "sha256": "c69b8aca4c7fecb6b04161c76c5abcd40b2a41ecf4e5419302cadf88471a09c9",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/proof_block_dmpv3_extension_canonical_leaf_surface_output.txt",
+      "byte_count": 799,
+      "line_count": 13,
+      "sha256": "eb2b2d8095245d533e98cd1184ff080dcc13ea40f3dc9a1f87e1d1198463a9c0",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/proof_block_manifest_check_all_output.txt",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "7da035e690b32580bbf550b87ee743d43af4e5e2bd760b9f3488be39f4f6d274",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/reports/validate_surface_records_and_registry_output.txt",
+      "byte_count": 2550,
+      "line_count": 53,
+      "sha256": "904096173cba905da3886aabb3463380b5db4b25235f86533177405831ecf2f1",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/reports/validate_surface_records_and_registry_output.json",
+      "byte_count": 2550,
+      "line_count": 53,
+      "sha256": "904096173cba905da3886aabb3463380b5db4b25235f86533177405831ecf2f1",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "row 008 closure file"
+    }
+  ]
+}

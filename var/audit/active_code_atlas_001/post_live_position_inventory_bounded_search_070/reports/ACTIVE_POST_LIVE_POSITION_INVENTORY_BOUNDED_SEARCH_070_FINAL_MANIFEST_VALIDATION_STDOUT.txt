@@ -1,0 +1,17 @@
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_LIVE_POSITION_INVENTORY_BOUNDED_SEARCH_070_FULL_READ_MANIFEST.json",
+      "entry_count": 63,
+      "unique_path_count": 63,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  ]
+}

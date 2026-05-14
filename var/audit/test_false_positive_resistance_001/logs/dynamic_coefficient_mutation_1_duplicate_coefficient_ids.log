@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_coefficient_authority_rejects_duplicate_coefficient_ids _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-22/test_coefficient_authority_rej0')
+
+    def test_coefficient_authority_rejects_duplicate_coefficient_ids(tmp_path: Path) -> None:
+        payload = deepcopy(_load_authority_payload())
+        payload["records"].append(deepcopy(payload["records"][0]))
+        authority_path = _write_authority_payload(tmp_path, payload)
+    
+        authority_module = _require_module("nvda_desk.config.coefficient_authority")
+        service_cls = _require_attr(authority_module, "CoefficientAuthorityService")
+        service = service_cls(authority_path)
+    
+>       with pytest.raises(ValueError, match="coefficient_id values must be unique"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py:167: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py::test_coefficient_authority_rejects_duplicate_coefficient_ids - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.75s

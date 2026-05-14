@@ -1,0 +1,9 @@
+ M ROADMAP_LEDGER.md
+ M data/vocabulary/vocabulary_touch_stamp.json
+ M docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+ M docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+ M scripts/vocabulary_synonym_audit.py
+ M src/nvda_desk/vocabulary_synonym_audit.py
+ M tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py
+ M var/vocabulary/synonym_candidates.json
+?? var/audit/global_admission_reconciliation_001/

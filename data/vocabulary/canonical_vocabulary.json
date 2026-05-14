@@ -1,0 +1,763 @@
+{
+  "schema_version": "v1",
+  "registry_version": "2026-04-22",
+  "notes": [
+    "Scaffold baseline. Extend only through the governed vocabulary workflow.",
+    "Financial-calendar reference terms are admitted because the active Tier A shell already treats them as blocking governed names.",
+    "Stage Input Bundle is admitted as the cognition-ingress-owned internal carrier at the prepared-substrate to serial-runtime seam.",
+    "Module 7 admits the canonical DMPV3 packet-carriage contract surfaces and mandatory outer-envelope field terms.",
+    "Module 8 admits the bootstrap parallel-risk lane and write-only persistence terms needed for the lawful Stage A runtime path.",
+    "Temporal standard tranche 1 admits the source temporal standard, its governed source fields, and workbook temporal provenance terms.",
+    "Temporal standard tranche 2 admits the conformance inventory and classification terms used for temporal audit receipts."
+  ],
+  "entries": [
+    {
+      "canonical_slug": "temporal_context",
+      "canonical_label": "Temporal Context",
+      "category": "stage",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalContextOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "market_regime_context",
+      "canonical_label": "Market Regime Context",
+      "category": "stage",
+      "stage_owner": "market_regime_context",
+      "maps_to_contract": "MarketRegimeContextOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "options_flow_context",
+      "canonical_label": "Options and Flow Context",
+      "category": "stage",
+      "stage_owner": "options_flow_context",
+      "maps_to_contract": "OptionsFlowContextOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "posture_risk_permission",
+      "canonical_label": "Posture and Risk Permission",
+      "category": "stage",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "PostureRiskPermissionOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "playbook_eligibility",
+      "canonical_label": "Playbook Eligibility",
+      "category": "stage",
+      "stage_owner": "playbook_eligibility",
+      "maps_to_contract": "PlaybookEligibilityOutput",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "expression_execution",
+      "canonical_label": "Expression and Execution",
+      "category": "stage",
+      "stage_owner": "expression_execution",
+      "maps_to_contract": "ExpressionExecutionOutput",
+      "allowed_aliases": [
+        "execution expression"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "parallel_risk_lane",
+      "canonical_label": "Parallel Risk Lane",
+      "category": "workflow",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskLanePacket",
+      "allowed_aliases": [
+        "parallel lane"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "dmp_v3",
+      "canonical_label": "DMP V3",
+      "category": "protocol",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope",
+      "allowed_aliases": [
+        "dmpv3"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "dmp_v3_envelope",
+      "canonical_label": "DmpV3Envelope",
+      "category": "protocol_surface",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "dmp_v3_packet",
+      "canonical_label": "DmpV3Packet",
+      "category": "protocol_surface",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Packet",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "desk_module_packet_v3",
+      "canonical_label": "DeskModulePacketV3",
+      "category": "protocol_surface",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DeskModulePacketV3",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "packetrole",
+      "canonical_label": "packetrole",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.packetrole",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "producer",
+      "canonical_label": "producer",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.producer",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "lineage",
+      "canonical_label": "lineage",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.lineage",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "validation",
+      "canonical_label": "validation",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.validation",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "summary",
+      "canonical_label": "summary",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.summary",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "dmpextensions",
+      "canonical_label": "dmpextensions",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.dmpextensions",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "module_id",
+      "canonical_label": "module_id",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Producer.module_id",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "module_version",
+      "canonical_label": "module_version",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Producer.module_version",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "module_instance_id",
+      "canonical_label": "module_instance_id",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Producer.module_instance_id",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "grammar_role",
+      "canonical_label": "grammar_role",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Producer.grammar_role",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "behaviour_class",
+      "canonical_label": "behaviour_class",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Producer.behaviour_class",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "traceid",
+      "canonical_label": "traceid",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.traceid",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "runid",
+      "canonical_label": "runid",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.runid",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "scenarioid",
+      "canonical_label": "scenarioid",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Envelope.scenarioid",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "financial_calendar_reference_bundle",
+      "canonical_label": "Financial Calendar Reference Bundle",
+      "category": "reference_data",
+      "stage_owner": "calendar_reference",
+      "maps_to_contract": "ImportedReferenceBundle",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "financial_calendar_crosswalk",
+      "canonical_label": "Financial Calendar Crosswalk",
+      "category": "reference_data",
+      "stage_owner": "calendar_reference",
+      "maps_to_contract": "FinancialCalendarCrosswalkRecord",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "financial_calendar_import_record",
+      "canonical_label": "Financial Calendar Import Record",
+      "category": "reference_data",
+      "stage_owner": "calendar_reference",
+      "maps_to_contract": "FinancialCalendarImportRecord",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "coefficient_authority",
+      "canonical_label": "Coefficient Authority",
+      "category": "authority_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientAuthorityDocument",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "mutable_runtime_surface",
+      "canonical_label": "Mutable Runtime Surface",
+      "category": "authority_class",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientAuthorityRecord",
+      "allowed_aliases": [
+        "runtime mutable"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "baseline_only_surface",
+      "canonical_label": "Baseline-only Surface",
+      "category": "authority_class",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientAuthorityRecord",
+      "allowed_aliases": [
+        "baseline only surface"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "effective_coefficient_lineage",
+      "canonical_label": "Effective Coefficient Lineage",
+      "category": "review_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "ResolvedCoefficientValue",
+      "allowed_aliases": [
+        "effective lineage"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "state_conditioned_modifier",
+      "canonical_label": "State-conditioned Modifier",
+      "category": "authority_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "ModifierPolicyRecord",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "bounded_dynamic_coefficient",
+      "canonical_label": "Bounded Dynamic Coefficient",
+      "category": "authority_class",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientAuthorityRecord",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "review_horizon",
+      "canonical_label": "Review Horizon",
+      "category": "promotion_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientReviewHorizon",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "champion_challenger_evaluation",
+      "canonical_label": "Champion/Challenger Evaluation",
+      "category": "promotion_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientPromotionEvaluation",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "live_paper_historical_evaluation_separation",
+      "canonical_label": "Live-paper / Historical Evaluation Separation",
+      "category": "promotion_rule",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "CoefficientEvaluationSeparationRule",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "stage_input_bundle",
+      "canonical_label": "Stage Input Bundle",
+      "category": "carrier",
+      "stage_owner": "cognition_ingress",
+      "maps_to_contract": "StageInputBundle",
+      "allowed_aliases": [
+        "stageinputbundle"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "environment_assessment",
+      "canonical_label": "Environment Assessment",
+      "category": "parallel_risk_surface",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskEnvironmentAssessment",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "candidate_audit",
+      "canonical_label": "Candidate Audit",
+      "category": "parallel_risk_surface",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskCandidateAuditSurface",
+      "allowed_aliases": [],
+      "disallowed_phrases": [
+        "def audit candidate",
+        "return audit candidate"
+      ],
+      "notes": []
+    },
+    {
+      "canonical_slug": "stage_read_state",
+      "canonical_label": "Stage-read State",
+      "category": "parallel_risk_surface",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskStageReadRecord",
+      "allowed_aliases": [
+        "stage read state",
+        "stage state"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "dependency_packet_ids",
+      "canonical_label": "Dependency Packet IDs",
+      "category": "protocol_field",
+      "stage_owner": "cross_stage_protocol",
+      "maps_to_contract": "DmpV3Lineage.dependencyids",
+      "allowed_aliases": [
+        "dependencyids"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "parallel_risk_observation_store",
+      "canonical_label": "Parallel-risk Observation Store",
+      "category": "persistence_surface",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskObservationStore",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "write_only_persistence",
+      "canonical_label": "Write-only Persistence",
+      "category": "persistence_rule",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskObservationStore.append_observation",
+      "allowed_aliases": [
+        "write only persistence"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "append_only_observation_record",
+      "canonical_label": "Append-only Observation Record",
+      "category": "persistence_surface",
+      "stage_owner": "parallel_risk_lane",
+      "maps_to_contract": "ParallelRiskObservationRecord",
+      "allowed_aliases": [
+        "append only observation record"
+      ],
+      "disallowed_phrases": [],
+      "notes": []
+    },
+    {
+      "canonical_slug": "source_temporal_standard",
+      "canonical_label": "Source Temporal Standard",
+      "category": "authority_surface",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Repo-wide source temporal grammar admitted in docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md."
+      ]
+    },
+    {
+      "canonical_slug": "source_time_raw",
+      "canonical_label": "source_time_raw",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_time_raw",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream of the DMPV3 outer envelope."
+      ]
+    },
+    {
+      "canonical_slug": "source_time_kind",
+      "canonical_label": "source_time_kind",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_time_kind",
+      "allowed_aliases": [
+        "source kind"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream of the DMPV3 outer envelope."
+      ]
+    },
+    {
+      "canonical_slug": "source_timezone_raw",
+      "canonical_label": "source_timezone_raw",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_timezone_raw",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream of the DMPV3 outer envelope."
+      ]
+    },
+    {
+      "canonical_slug": "source_time_utc",
+      "canonical_label": "source_time_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_time_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream of the DMPV3 outer envelope."
+      ]
+    },
+    {
+      "canonical_slug": "source_date",
+      "canonical_label": "source_date",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_date",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream of the DMPV3 outer envelope."
+      ]
+    },
+    {
+      "canonical_slug": "captured_at_utc",
+      "canonical_label": "captured_at_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.captured_at_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Distinct from source observation time."
+      ]
+    },
+    {
+      "canonical_slug": "persisted_at_utc",
+      "canonical_label": "persisted_at_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.persisted_at_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Distinct from source observation time."
+      ]
+    },
+    {
+      "canonical_slug": "source_provider",
+      "canonical_label": "source_provider",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_provider",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Upstream provider identity only."
+      ]
+    },
+    {
+      "canonical_slug": "source_channel",
+      "canonical_label": "source_channel",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.source_channel",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Provider-local acquisition channel or lane."
+      ]
+    },
+    {
+      "canonical_slug": "time_granularity",
+      "canonical_label": "time_granularity",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SourceTemporalStandard.time_granularity",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Source temporal standard field. Records admitted source observation granularity."
+      ]
+    },
+    {
+      "canonical_slug": "next_event_time_utc",
+      "canonical_label": "next_event_time_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalContextInput.next_event_time_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Derived temporal-context field for the next relevant event time after source observation time."
+      ]
+    },
+    {
+      "canonical_slug": "window_start_utc",
+      "canonical_label": "window_start_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalEventWindow.window_start_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal event-window boundary field admitted for governed UTC window starts."
+      ]
+    },
+    {
+      "canonical_slug": "window_end_utc",
+      "canonical_label": "window_end_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalEventWindow.window_end_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal event-window boundary field admitted for governed UTC window ends."
+      ]
+    },
+    {
+      "canonical_slug": "runtime_bar_time_utc",
+      "canonical_label": "runtime_bar_time_utc",
+      "category": "protocol_field",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "PreparedRuntimeSnapshot.runtime_bar_time_utc",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Prepared-runtime alignment field for the bar time derived from admitted source temporal data."
+      ]
+    },
+    {
+      "canonical_slug": "temporal_conformance_inventory",
+      "canonical_label": "Temporal Conformance Inventory",
+      "category": "audit_surface",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalConformanceInventory",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Governed tranche audit inventory surface for repo-wide temporal conformance receipts."
+      ]
+    },
+    {
+      "canonical_slug": "already_conformant",
+      "canonical_label": "Already Conformant",
+      "category": "audit_classification",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalConformanceClassification.already_conformant",
+      "allowed_aliases": [
+        "conformant"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal conformance classification for a surface that already obeys the admitted temporal law."
+      ]
+    },
+    {
+      "canonical_slug": "needs_proof_test_remediation_only",
+      "canonical_label": "Needs Proof/Test Remediation Only",
+      "category": "audit_classification",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalConformanceClassification.needs_proof_test_remediation_only",
+      "allowed_aliases": [
+        "needs proof remediation only"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal conformance classification for a surface where truthful remediation is limited to proof or governor updates."
+      ]
+    },
+    {
+      "canonical_slug": "needs_code_persistence_remediation_in_tranche_3",
+      "canonical_label": "Needs Code/Persistence Remediation in Tranche 3",
+      "category": "audit_classification",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalConformanceClassification.needs_code_persistence_remediation_in_tranche_3",
+      "allowed_aliases": [
+        "needs code remediation"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal conformance classification for a surface that cannot become conformant without runtime or persistence changes deferred to Tranche 3."
+      ]
+    },
+    {
+      "canonical_slug": "reserved_blocked",
+      "canonical_label": "Reserved / Blocked",
+      "category": "audit_classification",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "TemporalConformanceClassification.reserved_blocked",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Temporal conformance classification for a surface that remains lawfully reserved or blocked in the current tranche."
+      ]
+    },
+    {
+      "canonical_slug": "workbook_temporal_provenance",
+      "canonical_label": "Workbook Temporal Provenance",
+      "category": "authority_surface",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SignalWorkbookTemporalProvenanceRule",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Workbook-specific temporal provenance rule admitted in docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md."
+      ]
+    },
+    {
+      "canonical_slug": "field_level_provenance",
+      "canonical_label": "Field-level Provenance",
+      "category": "authority_surface",
+      "stage_owner": "temporal_context",
+      "maps_to_contract": "SignalWorkbookTemporalProvenanceRule.field_level_provenance",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Preserves per-field source-date truth when a workbook row blends different source dates."
+      ]
+    }
+  ]
+}

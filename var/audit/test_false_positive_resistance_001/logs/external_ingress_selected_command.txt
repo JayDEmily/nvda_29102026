@@ -1,0 +1,1 @@
+PYTHONPATH=src:. python -m pytest tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py tests/tier_a/adapters_egress/test_broker_boundary_surface.py tests/tier_a/api/test_api_boundary_surface.py tests/tier_a/ingress/test_raw_bundle_loader_surface.py -q

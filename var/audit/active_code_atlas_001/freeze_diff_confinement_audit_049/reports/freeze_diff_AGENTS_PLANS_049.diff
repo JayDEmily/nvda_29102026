@@ -1,0 +1,63 @@
+diff --git a/AGENTS.md b/AGENTS.md
+index 6f60ede..a0c8d11 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -15,6 +15,20 @@ This file governs worker behaviour unless explicitly overridden by direct user i
+
+ ---
+
++## 0A. Control-Surface Freeze Law
++
++`AGENTS.md` and `PLANS.md` are frozen standing control surfaces after the one-off freeze/ledger alignment pass recorded in `ROADMAP_LEDGER.md`.
++
++Routine execution must not mutate either file for progress tracking, gate bookkeeping, status refreshes, historical-row cleanup, or ordinary continuation hardening. Use `ROADMAP_LEDGER.md` for progressive execution state.
++
++A future mutation to `AGENTS.md` or `PLANS.md` is lawful only when one of these is true:
++- the current user instruction explicitly opens that exact control surface;
++- a concrete governance defect cannot be truthfully resolved in `ROADMAP_LEDGER.md`, a receipt, or a report alone.
++
++Any such mutation must be one bounded governance-control leaf with current full-read manifest evidence, receipt evidence, validation evidence, and a ledger entry. It must preserve the rule that `ROADMAP_LEDGER.md` is the mutable live pointer.
++
++---
++
+ ## 1. Primary Execution Law
+
+ Continue lawful work until one of the following occurs:
+diff --git a/PLANS.md b/PLANS.md
+index 481dec7..3d42032 100644
+--- a/PLANS.md
++++ b/PLANS.md
+@@ -2,12 +2,24 @@
+
+ Status: **live root operating plan; `ACTIVE_CODE_ATLAS_STRUCTURAL_INVENTORY_001` accepted only as static scaffold/triage; vocabulary-governance, testing/proof/checkpoint, persistence/ledgers/receipts, DMPV3 packet carriage rows 007-009, external source/API ingress rows 010-012, and raw capture/source temporal law rows 013-015, raw signal families rows 016-018, financial/event calendar architecture rows 019-020, prepared ingress/runtime context rows 021-023, review/explanation rows 024-026, dynamic coefficient/modifier rows 027-029, playbook library architecture row 030, serial desk-cognition spine rows 031-032, and parallel risk lane rows 033-034, live position/inventory architecture rows 035-037, and downstream capital deployment authority rows 038-039 and opening architecture/placement readiness rows 040-042 and exit/close row 043 read-adjudicated; `CONTROL_SURFACE_HARDENING_001_FULL_READ_MANIFEST` installed; primary active-code Atlas synthesis recorded; primary-to-Bridge comparison recorded; primary linkage gap reconciliation recorded; row 044 playbook transform-required residual queue gap read-adjudicated; post-row044 primary synthesis refresh recorded; primary-to-Bridge comparison refresh recorded; bounded post-row044 linkage-gap reconciliation recorded; primary-record normalisation recorded; current primary-to-Bridge comparison links 46/46 execution queue rows with only comparison-only `ACABC-0035` remaining visible as nonqueue audit/navigation evidence; root/plan continuation stop-condition alignment recorded so bounded-leaf exhaustion, closed-boundary blockers, and full-read infeasibility for one leaf route to the next lawful control/audit leaf rather than a user-facing stop while a continue-until-tokens instruction is active; current-pointer integrity scan 023 recorded; full-manifest validator scope clarification 024 recorded; manifest-validator reference scan 025 recorded; closeout reporting boundary alignment 026 recorded; dependency-order current-target wording alignment 027 recorded; historical planning status quarantine 028 recorded; post-028 live-control scan classification 029 recorded; five-hour support-spine runway authority quarantine 030 recorded; validator side-effect output exclusion 031 recorded; historical runway current-next-target wording 032 recorded; source/test explicit-hold alignment 033 recorded; post-033 boundary scan classification 034 recorded; ROADMAP_LEDGER line 078 opening dependency entry repair 035 recorded; post-035 live-control scan classification 036 recorded; current-pointer integrity scan 037 recorded**
+
+-Current controlling workstream: `ACTIVE_CODE_ATLAS_STRUCTURAL_INVENTORY_001` → surface-by-surface read adjudication with mandatory `FULL_READ_MANIFEST`; primary active-code Atlas synthesis target `ACTIVE_CODE_ATLAS_PRIMARY_SYNTHESIS_001_PENDING_QUEUE_EXHAUSTION_RECONCILIATION`, comparison target `ACTIVE_CODE_ATLAS_PRIMARY_TO_BRIDGE_COMPARISON_001`, linkage-gap reconciliation target `ACTIVE_CODE_ATLAS_PRIMARY_LINKAGE_GAP_RECONCILIATION_001`, post-row044 linkage-gap reconciliation target `ACTIVE_CODE_ATLAS_PRIMARY_LINKAGE_GAP_RECONCILIATION_002_POST_ROW044_RECONCILIATION`, and primary-record normalisation target `ACTIVE_CODE_ATLAS_PRIMARY_RECORD_NORMALISATION_001_RECORDED_QUEUE_LINKS_46_OF_46` have evidence recorded; the current comparison has no unresolved execution queue row selected; no further architecture/refactor/source/test target is opened by this plan without a fresh live authority selection, but this does not close lawful control, audit, evidence, manifest, receipt, ledger, handoff, or planning-hardening work under `AGENTS.md` section 1A during a user-authorised continue-until-tokens run; current-pointer integrity scan 023, full-manifest validator scope clarification 024, and manifest-validator reference scan 025, closeout reporting boundary alignment 026, dependency-order current-target wording alignment 027, historical planning status quarantine 028, and post-028 live-control scan classification 029, five-hour support-spine runway authority quarantine 030, validator side-effect output exclusion 031, and historical runway current-next-target wording 032 and source/test explicit-hold alignment 033 and post-033 boundary scan classification 034 and ROADMAP_LEDGER line 078 opening dependency entry repair 035 and post-035 live-control scan classification 036 and current-pointer integrity scan 037 are recorded as control/audit leaves and open no runtime/source/test boundary.
++Current controlling workstream: `ACTIVE_CODE_ATLAS_STRUCTURAL_INVENTORY_001` → surface-by-surface read adjudication with mandatory `FULL_READ_MANIFEST`; primary active-code Atlas synthesis target `ACTIVE_CODE_ATLAS_PRIMARY_SYNTHESIS_001_PENDING_QUEUE_EXHAUSTION_RECONCILIATION`, comparison target `ACTIVE_CODE_ATLAS_PRIMARY_TO_BRIDGE_COMPARISON_001`, linkage-gap reconciliation target `ACTIVE_CODE_ATLAS_PRIMARY_LINKAGE_GAP_RECONCILIATION_001`, post-row044 linkage-gap reconciliation target `ACTIVE_CODE_ATLAS_PRIMARY_LINKAGE_GAP_RECONCILIATION_002_POST_ROW044_RECONCILIATION`, and primary-record normalisation target `ACTIVE_CODE_ATLAS_PRIMARY_RECORD_NORMALISATION_001_RECORDED_QUEUE_LINKS_46_OF_46` have evidence recorded; the current comparison has no unresolved execution queue row selected; no further architecture/refactor/source/test target is opened by this plan without a fresh live authority selection, but this does not close lawful control, audit, evidence, manifest, receipt, ledger, handoff, or planning-hardening work under `AGENTS.md` section 1 during a user-authorised continue-until-tokens run; current-pointer integrity scan 023, full-manifest validator scope clarification 024, and manifest-validator reference scan 025, closeout reporting boundary alignment 026, dependency-order current-target wording alignment 027, historical planning status quarantine 028, and post-028 live-control scan classification 029, five-hour support-spine runway authority quarantine 030, validator side-effect output exclusion 031, and historical runway current-next-target wording 032 and source/test explicit-hold alignment 033 and post-033 boundary scan classification 034 and ROADMAP_LEDGER line 078 opening dependency entry repair 035 and post-035 live-control scan classification 036 and current-pointer integrity scan 037 are recorded as control/audit leaves and open no runtime/source/test boundary.
+
+ This plan supersedes the prior `TEST_FALSE_POSITIVE_RESISTANCE_AUDIT_001` root plan as the active planning surface. The prior test-trust work is retained as evidence in `ROADMAP_LEDGER.md` and `var/audit/test_false_positive_resistance_001/`; it is not deleted or relitigated by this plan.
+
+ ---
+
++## 0. Frozen standing-plan rule
++
++This file is a frozen standing plan after `ACTIVE_CONTROL_SURFACE_FREEZE_LEDGER_ONLY_ALIGNMENT_039` is recorded in `ROADMAP_LEDGER.md`.
++
++The live execution pointer, progressive pass history, next target, blockers, proof summaries, and post-freeze status changes belong in `ROADMAP_LEDGER.md`, not in this file.
++
++The status line, current-workstream paragraph, progress ledger, decision log, and validation log below are retained as point-in-time planning/control evidence at the freeze boundary. They must not be refreshed for routine execution. If they conflict with `ROADMAP_LEDGER.md`, follow the authority order and use `ROADMAP_LEDGER.md` for mutable current state.
++
++A future edit to `PLANS.md` is lawful only by explicit current user instruction opening this file, or by a concrete governance defect that cannot be truthfully resolved in `ROADMAP_LEDGER.md`, a receipt, or a report alone. Any future edit must be one bounded governance-control leaf with current full-read manifest, receipt, validation, and ledger evidence, and must preserve this ledger-only progression model.
++
++---
++
+ ## 1. Objective
+
+ Create a primary active-code Atlas after surface-specific full-read adjudication: a repo-native evidence corpus that maps current active source, tests, configs, data, contracts, schemas, receipts, and docstrings into the same eighteen architecture surfaces used by the Atlas Bridge.
+@@ -657,7 +669,7 @@ If a selected leaf is blocked by uncertainty about a platform, SDK, API, cloud s
+
+ ## 16. Required closeout evidence for real stops or explicit reports
+
+-Do not use this section as permission to stop. A closeout/report is required only when `AGENTS.md` section 1A permits a real stop, or when the current user instruction explicitly asks for a report, stop, handoff, package, or closeout.
++Do not use this section as permission to stop. A closeout/report is required only when `AGENTS.md` sections 1 and 15 permit a real stop, or when the current user instruction explicitly asks for a report, stop, handoff, package, or closeout.
+
+ When a real closeout/report is required, report:

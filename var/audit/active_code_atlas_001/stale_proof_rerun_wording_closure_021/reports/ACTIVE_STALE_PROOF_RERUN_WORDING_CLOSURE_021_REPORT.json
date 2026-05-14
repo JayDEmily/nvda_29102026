@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_STALE_PROOF_RERUN_WORDING_CLOSURE_021",
+  "status": "PASS",
+  "scope": "close_stale_pre_final_proof_rerun_receipt_wording",
+  "updated_files": [
+    "var/audit/active_code_atlas_001/durability_checkpoint_index_012/receipts/ACTIVE_DURABILITY_CHECKPOINT_INDEX_012_RECEIPT.md",
+    "var/audit/active_code_atlas_001/proof_placeholder_closure_013/receipts/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_RECEIPT.md"
+  ],
+  "control_effect": "Stale pre-final rerun wording in current-chain receipts is closed as historical point-in-time wording and tied to later validator-passing reports/manifests.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_22_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

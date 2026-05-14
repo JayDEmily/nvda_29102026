@@ -1,0 +1,15 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_2_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 13 items
+
+tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py . [  7%]
+....                                                                     [ 38%]
+tests/tier_a/config/test_coefficient_modifier_replay_surface.py ..       [ 53%]
+tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py ...... [100%]
+
+============================== 13 passed in 0.86s ==============================
+proof_block_id=dynamic_coefficient_modifier_authority_surface
+command=python -m pytest tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py tests/tier_a/config/test_coefficient_modifier_replay_surface.py tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py

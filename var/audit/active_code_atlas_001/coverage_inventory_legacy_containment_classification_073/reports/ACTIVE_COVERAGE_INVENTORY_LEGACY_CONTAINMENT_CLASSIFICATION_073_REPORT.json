@@ -1,0 +1,41 @@
+{
+  "target": "ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073",
+  "created_utc": "2026-05-13T05:28:17Z",
+  "classification": "coverage_inventory_legacy_containment_false_positive_repaired",
+  "red_proof": {
+    "command": "PYTHONPATH=src python scripts/run_proof_block.py --block tier_a_remaining_coverage_inventory",
+    "status": 1,
+    "observed": "1 failed, 51 passed",
+    "failing_test": "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py::test_imported_module_subsystem_remains_outside_native_runtime_and_native_proof",
+    "reason": "raw text scan flagged nine transform-boundary tests that intentionally mention legacy_import while proving non-import boundaries",
+    "stdout": "reports/ACTIVE_COVERAGE_INVENTORY_LEGACY_CONTAINMENT_CLASSIFICATION_073_RED_PROOF_STDOUT.txt"
+  },
+  "repair": {
+    "mutated_files": [
+      "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+      "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "ROADMAP_LEDGER.md"
+    ],
+    "test_change": "imported-module containment now checks AST import statements for legacy_import and nvda_desk.legacy.imported rather than raw string presence",
+    "classification_change": "transform-boundary guard strings are allowed only as non-import evidence; the new test asserts the nine guard files contain legacy_import text and import no legacy modules"
+  },
+  "green_proof": {
+    "targeted_containment": "python -m pytest tests/tier_a/legacy_imported/test_imported_module_containment_surface.py -q -> 3 passed",
+    "remaining_coverage": "PYTHONPATH=src python scripts/run_proof_block.py --block tier_a_remaining_coverage_inventory -> status 0, 53 passed",
+    "check_all": "PYTHONPATH=src python scripts/run_proof_block.py --check-all -> status 0, proof_blocks_check_all=PASS count=46",
+    "diff_check": "git diff --check -> status 0",
+    "surface_registry": "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py -> status 0"
+  },
+  "boundaries": {
+    "plans_md_modified": false,
+    "dependency_versions_changed": false,
+    "opened_runtime_trading": false,
+    "opened_broker_order_placement": false,
+    "opened_broker_execution": false,
+    "opened_capital_deployment": false,
+    "opened_exit_close_behaviour": false,
+    "opened_strategy_decision_behaviour": false,
+    "opened_original_atlas_bridge_or_generated_slice_mutation": false
+  },
+  "stop_condition": "explicit_current_user_tarball_output_request_after_073"
+}

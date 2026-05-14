@@ -1,0 +1,162 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_031_SERIAL_DESK_COGNITION_SPINE_SURFACE",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_surface_record_created",
+  "surface": "Serial desk-cognition spine",
+  "method": "Manual full-read adjudication of row031 control, normative, source, test, proof, registry, and queue evidence; test-before-source red/green repair bounded to serial execution contract payload detachment.",
+  "limitation_statement": "This is static structural and proof-evidence record for the row031 selected slice only. It does not prove full donor semantic parity, implementation maturity outside the cited surface, or future row032 transform closure.",
+  "surface_limitation": "This record covers the existing Tier A serial execution contract family and bounded execution-contract nested payload detachment. It does not adjudicate the row032 serial transform-required cluster, parallel risk lane, capital deployment, broker/opening, exit/close, live inventory, or original Atlas/Bridge JSON.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-031-0001",
+      "title": "Serial execution contract carriers detach nested caller-owned payloads before downstream authority can leak in",
+      "surface": "Serial desk-cognition spine",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_with_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0019",
+        "ACABC-0019"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_serial_desk_cognition_partially_satisfied_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/01_NORMATIVE_CORE.md",
+          "line_start": 54,
+          "line_end": 70
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 237,
+          "line_end": 252
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 159,
+          "line_end": 159
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+          "queue_record_id": "ACATQ-0019",
+          "comparison_record_id": "ACABC-0019",
+          "execution_priority": 34,
+          "bridge_record_count": 30,
+          "required_action": "extend_existing_test_family_before_code"
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/execution.py",
+          "line_start": 1,
+          "line_end": 36
+        },
+        {
+          "path": "src/nvda_desk/contracts/serial_spine.py",
+          "line_start": 9,
+          "line_end": 118
+        },
+        {
+          "path": "src/nvda_desk/runtime/orchestrator.py",
+          "line_start": 78,
+          "line_end": 166
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/serial_recommendation/test_execution_contract_models.py",
+          "line_start": 1,
+          "line_end": 89
+        },
+        {
+          "path": "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+          "line_start": 1,
+          "line_end": 127
+        },
+        {
+          "path": "tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py",
+          "line_start": 1,
+          "line_end": 118
+        },
+        {
+          "path": "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+          "line_start": 1,
+          "line_end": 37
+        },
+        {
+          "path": "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+          "line_start": 1,
+          "line_end": 46
+        },
+        {
+          "path": "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+          "line_start": 1,
+          "line_end": 45
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 273,
+          "line_end": 292
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 969,
+          "line_end": 985
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1026,
+          "line_end": 1045
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2682,
+          "line_end": 2704
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2706,
+          "line_end": 2725
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2727,
+          "line_end": 2746
+        }
+      ],
+      "bounded_source_repair_summary": "Extended the existing execution contract Tier A family before source repair. The new red test proved ExecutionExpressionInput, ExecutionExpressionOutput, and StageLocalHandoffSurface retained nested caller-owned payloads. The bounded source repair adds a shared pydantic before-validator that deep-copies field values for those execution-contract carriers only.",
+      "proof_evidence": {
+        "pre_repair_targeted_pytest_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/reports/execution_contract_models_pre_repair.status",
+        "pre_repair_targeted_pytest_result": "1",
+        "pre_repair_targeted_pytest_summary": "1 failed, 3 passed",
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/reports/execution_contract_models_final.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "4 passed",
+        "proof_block_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/reports/serial_desk_cognition_spine_surface_final.status",
+        "proof_block_result": "0",
+        "proof_block_summary": "22 passed"
+      },
+      "active_behaviour_summary": "The native serial desk-cognition spine remains a bounded candidate-formation surface. Execution contract carriers reject top-level capital authority fields and now detach nested caller-owned serial payloads before later caller mutation can smuggle capital-deployment authority into serial inputs, outputs, or stage-local handoff surfaces.",
+      "closed_boundaries_confirmed": [
+        "parallel risk lane remains independent",
+        "capital deployment authority remains closed",
+        "live position management remains closed",
+        "broker placement and live order execution remain closed",
+        "source ingestion remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated Atlas slices not rebuilt",
+        "row032 transform-required serial cluster not opened in this row031 pass"
+      ]
+    }
+  ]
+}

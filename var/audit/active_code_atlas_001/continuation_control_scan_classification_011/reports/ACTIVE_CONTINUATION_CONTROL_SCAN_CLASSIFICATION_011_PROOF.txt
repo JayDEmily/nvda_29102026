@@ -1,0 +1,7 @@
+git_diff_check
+surface_records_registry
+PASS errors=0 warnings=0
+proof_block_check_all
+proof_blocks_check_all=PASS count=46
+selected_current_full_read_manifest_validation_with_011
+FAIL manifests=12 errors=4 warnings=0 stale=1 full_read_false=0

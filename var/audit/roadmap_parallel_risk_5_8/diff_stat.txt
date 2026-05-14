@@ -1,0 +1,109 @@
+ Makefile                                           |  16 ++
+ ROADMAP_LEDGER.md                                  |  17 +-
+ config/proof_blocks.yaml                           |  19 ++
+ config/retained_test_registry.yaml                 |  61 ++++--
+ docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md       |  12 ++
+ ...UNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md |   9 +
+ src/nvda_desk/contracts/parallel_risk.py           |  48 ++++-
+ .../persistence/parallel_risk_observations.py      |   4 +
+ src/nvda_desk/risk/parallel/evaluate.py            |  76 +++++++
+ .../test_parallel_risk_contract_models.py          |  38 ++++
+ .../test_parallel_risk_evaluation_surface.py       |  74 +++++++
+ .../test_parallel_risk_lane_service_surface.py     |  17 ++
+ ...test_parallel_risk_observation_store_surface.py |  20 ++
+ ...AP_PARALLEL_RISK_LANE_5_8_BRANCH_001_RECEIPT.md | 123 ++++++++++++
+ .../roadmap_parallel_risk_5_8/changed_files.txt    |  13 ++
+ var/audit/roadmap_parallel_risk_5_8/diff_stat.txt  |  14 ++
+ .../git_status_before_commit.txt                   |  14 ++
+ .../logs/baseline_parallel_risk_pytest.status      |   1 +
+ .../logs/baseline_parallel_risk_pytest.stderr      |   0
+ .../logs/baseline_parallel_risk_pytest.stdout      |   2 +
+ .../logs/black_check_touched_python.status         |   1 +
+ .../logs/black_check_touched_python.stderr         |   4 +
+ .../logs/black_check_touched_python.stdout         |   0
+ .../black_check_touched_python_after_format.status |   1 +
+ .../black_check_touched_python_after_format.stderr |   2 +
+ .../black_check_touched_python_after_format.stdout |   0
+ .../broad_risk_capital_downstream_pytest.status    |   1 +
+ .../broad_risk_capital_downstream_pytest.stderr    |   0
+ .../broad_risk_capital_downstream_pytest.stdout    |   2 +
+ .../logs/cache_artifacts_after_cleanup.txt         |   0
+ .../logs/full_pytest.status                        |   1 +
+ .../logs/full_pytest.stderr                        |   0
+ .../logs/full_pytest.stdout                        |  30 +++
+ .../logs/git_diff_check.status                     |   1 +
+ .../logs/git_diff_check.stderr                     |   0
+ .../logs/git_diff_check.stdout                     |   0
+ .../logs/git_diff_check_after_receipt.status       |   1 +
+ .../logs/git_diff_check_after_receipt.stderr       |   0
+ .../logs/git_diff_check_after_receipt.stdout       |   1 +
+ .../git_diff_check_after_retained_eof_fix.status   |   1 +
+ .../git_diff_check_after_retained_eof_fix.stderr   |   0
+ .../git_diff_check_after_retained_eof_fix.stdout   |   0
+ .../logs/git_diff_check_final.status               |   1 +
+ .../logs/git_diff_check_final.stderr               |   0
+ .../logs/git_diff_check_final.stdout               |   0
+ .../logs/git_diff_check_final_receipt.status       |   1 +
+ .../logs/git_diff_check_final_receipt.stderr       |   0
+ .../logs/git_diff_check_final_receipt.stdout       |   0
+ .../logs/make_clean_caches.status                  |   1 +
+ .../logs/make_clean_caches.stderr                  |   0
+ .../logs/make_clean_caches.stdout                  |   2 +
+ .../logs/make_parallel_risk_check.status           |   1 +
+ .../logs/make_parallel_risk_check.stderr           |   0
+ .../logs/make_parallel_risk_check.stdout           |   1 +
+ ...e_parallel_risk_check_after_registry_fix.status |   1 +
+ ...e_parallel_risk_check_after_registry_fix.stderr |   0
+ ...e_parallel_risk_check_after_registry_fix.stdout |   1 +
+ .../logs/make_parallel_risk_check_final.status     |   1 +
+ .../logs/make_parallel_risk_check_final.stderr     |   0
+ .../logs/make_parallel_risk_check_final.stdout     |   1 +
+ .../logs/make_parallel_risk_check_post_yaml.status |   1 +
+ .../logs/make_parallel_risk_check_post_yaml.stderr |   0
+ .../logs/make_parallel_risk_check_post_yaml.stdout |   1 +
+ .../logs/make_proof_block_parallel_risk.status     |   1 +
+ .../logs/make_proof_block_parallel_risk.stderr     |   0
+ .../logs/make_proof_block_parallel_risk.stdout     |  33 +++
+ .../make_proof_block_parallel_risk_final.status    |   1 +
+ .../make_proof_block_parallel_risk_final.stderr    |   0
+ .../make_proof_block_parallel_risk_final.stdout    |  33 +++
+ .../logs/proof_blocks_check_all.status             |   1 +
+ .../logs/proof_blocks_check_all.stderr             |   0
+ .../logs/proof_blocks_check_all.stdout             |   1 +
+ ...roof_blocks_check_all_after_registry_fix.status |   1 +
+ ...roof_blocks_check_all_after_registry_fix.stderr |   0
+ ...roof_blocks_check_all_after_registry_fix.stdout |   1 +
+ .../logs/proof_blocks_check_all_final.status       |   1 +
+ .../logs/proof_blocks_check_all_final.stderr       |   0
+ .../logs/proof_blocks_check_all_final.stdout       |   1 +
+ .../logs/py_compile_touched.status                 |   1 +
+ .../logs/py_compile_touched.stderr                 |   0
+ .../logs/py_compile_touched.stdout                 |   0
+ .../logs/ruff_touched_python.status                |   1 +
+ .../logs/ruff_touched_python.stderr                |   0
+ .../logs/ruff_touched_python.stdout                |   1 +
+ .../logs/ruff_touched_python_after_format.status   |   1 +
+ .../logs/ruff_touched_python_after_format.stderr   |   0
+ .../logs/ruff_touched_python_after_format.stdout   |   1 +
+ .../logs/targeted_parallel_risk_pytest.status      |   1 +
+ .../logs/targeted_parallel_risk_pytest.stderr      |   0
+ .../logs/targeted_parallel_risk_pytest.stdout      |   2 +
+ ...rgeted_parallel_risk_pytest_after_format.status |   1 +
+ ...rgeted_parallel_risk_pytest_after_format.stderr |   0
+ ...rgeted_parallel_risk_pytest_after_format.stdout |   2 +
+ .../logs/yaml_parse_surfaces.status                |   1 +
+ .../logs/yaml_parse_surfaces.stderr                |  28 +++
+ .../logs/yaml_parse_surfaces.stdout                |   1 +
+ .../logs/yaml_parse_surfaces_after_fix.status      |   1 +
+ .../logs/yaml_parse_surfaces_after_fix.stderr      |  28 +++
+ .../logs/yaml_parse_surfaces_after_fix.stdout      |   1 +
+ .../logs/yaml_parse_surfaces_after_move.status     |   1 +
+ .../logs/yaml_parse_surfaces_after_move.stderr     |   0
+ .../logs/yaml_parse_surfaces_after_move.stdout     |   2 +
+ .../logs/yaml_parse_surfaces_final.status          |   1 +
+ .../logs/yaml_parse_surfaces_final.stderr          |   0
+ .../logs/yaml_parse_surfaces_final.stdout          |   2 +
+ .../proof_blocks_check_all_receipt.json            | 223 +++++++++++++++++++++
+ ...locks_check_all_receipt_after_registry_fix.json | 223 +++++++++++++++++++++
+ .../proof_blocks_check_all_receipt_final.json      | 223 +++++++++++++++++++++
+ 108 files changed, 1428 insertions(+), 29 deletions(-)

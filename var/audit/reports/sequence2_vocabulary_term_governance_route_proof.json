@@ -1,0 +1,104 @@
+{
+  "schema_version": "v1",
+  "sequence": "Sequence 2",
+  "tranche": "S2-VOCAB-B1",
+  "created_at_utc": "2026-05-04T02:54:35Z",
+  "result": "PASS",
+  "source_lock_verified": true,
+  "read_set_files_present": true,
+  "read_summary": {
+    "required_file_count": 52,
+    "required_files_read_in_full": 52,
+    "supporting_files_read_in_full": 14,
+    "required_missing_count": 0
+  },
+  "json_surfaces_parsed": {
+    "sequence1_inventory": true,
+    "atlas_surface_slice_manifest": true,
+    "atlas_surface_slice_checksums": true,
+    "synonym_candidates": true
+  },
+  "inventory_assertions": {
+    "record_count": 1716,
+    "expected_record_count": 1716,
+    "slice_count": 18,
+    "expected_slice_count": 18,
+    "materialized_slice_file_count": 18,
+    "route_authority_only": true,
+    "implementation_opened": false,
+    "records_without_relevant_terms": 0,
+    "term_mentions": 8580,
+    "unique_term_count": 41,
+    "synonym_candidate_count": 0,
+    "manifest_keys": [
+      "checksum_manifest_path",
+      "generated_at_utc",
+      "manifest_name",
+      "purpose",
+      "schema_version",
+      "source_files",
+      "status",
+      "surfaces",
+      "validation"
+    ],
+    "checksums_keys": [
+      "generated_at_utc",
+      "generated_file_checksums",
+      "manifest_name",
+      "schema_version",
+      "source_files",
+      "status"
+    ],
+    "slice_record_counts": {
+      "dmpv3_packet_carriage.json": 73,
+      "downstream_capital_deployment_authority.json": 2,
+      "dynamic_coefficient_and_modifier_authority.json": 193,
+      "exit_and_close_architecture.json": 90,
+      "external_source_interfaces_and_api_ingress.json": 234,
+      "financial_and_event_calendar_architecture.json": 117,
+      "live_position_and_inventory_architecture.json": 38,
+      "opening_architecture_and_placement_readiness.json": 74,
+      "parallel_risk_lane.json": 57,
+      "persistence_ledgers_and_receipts.json": 97,
+      "playbook_library_architecture.json": 95,
+      "prepared_ingress_and_runtime_context_preparation.json": 51,
+      "raw_capture_and_source_temporal_law.json": 108,
+      "raw_signal_families.json": 123,
+      "review_and_explanation_layer.json": 143,
+      "serial_desk_cognition_spine.json": 139,
+      "testing_proof_and_checkpoint_surfaces.json": 72,
+      "vocabulary_governance_interface.json": 10
+    }
+  },
+  "term_classification_counts": {
+    "admitted_existing_term": 41
+  },
+  "blocked_terms": [],
+  "closed_scope_files_modified": [],
+  "sequence3_entry_posture": "READY_FOR_PM_AUDIT_OF_SEQUENCE2_CLOSEOUT_AND_SEQUENCE3_READINESS",
+  "changed_files": {
+    "changed_files": [
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.json",
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.schema.json",
+      "var/audit/reports/sequence2_vocabulary_term_governance_closeout_receipt.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_report.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_route_proof.json"
+    ],
+    "added_files": [
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.json",
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.schema.json",
+      "var/audit/reports/sequence2_vocabulary_term_governance_closeout_receipt.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_report.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_route_proof.json"
+    ],
+    "removed_files": [],
+    "allowed_repo_outputs": [
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.json",
+      "var/audit/ledgers/sequence2_vocabulary_term_governance_ledger.schema.json",
+      "var/audit/reports/sequence2_vocabulary_term_governance_closeout_receipt.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_report.md",
+      "var/audit/reports/sequence2_vocabulary_term_governance_route_proof.json"
+    ],
+    "unauthorised_changes": []
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "register_name": "native_blueprint_stabilisation_provenance_register",
+  "schema_version": "v1",
+  "status": "complete",
+  "purpose": "Pin the observed baselines, commits, and supporting artefacts that produced the accepted native blueprint baseline required by Bridge Gate 1.",
+  "baseline_branch": "work/native-blueprint-v0.5",
+  "baseline_commits": [
+    {
+      "commit": "a0cd3a4",
+      "subject": "Align control surfaces to docs/11 native blueprint",
+      "role": "introduces docs/11 and initial control-stack routing"
+    },
+    {
+      "commit": "48e2bf4",
+      "subject": "Complete vocabulary admission and registry alignment for docs/11",
+      "role": "admits blueprint-specific durable terms into the vocabulary system"
+    },
+    {
+      "commit": "e993829",
+      "subject": "Apply normative reconciliation post-vocabulary; align control surfaces to docs/11 + vocabulary",
+      "role": "records normative reconciliation and finalises control-surface alignment after vocabulary admission"
+    }
+  ],
+  "artefacts": [
+    {
+      "artifact_role": "stabilisation_execplan",
+      "path": "docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md",
+      "status": "executed"
+    },
+    {
+      "artifact_role": "blueprint_authority",
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "evidence_lines": "1-758"
+    },
+    {
+      "artifact_role": "acceptance_receipt",
+      "path": "var/audit/ledgers/native_blueprint/acceptance_receipt.json",
+      "status": "accepted"
+    },
+    {
+      "artifact_role": "normative_reconciliation_report",
+      "path": "var/audit/ledgers/native_blueprint/normative_reconciliation_report.json",
+      "evidence_lines": "1-34"
+    },
+    {
+      "artifact_role": "vocabulary_admission_report",
+      "path": "var/audit/ledgers/native_blueprint/vocabulary_admission_report.json",
+      "evidence_lines": "1-73"
+    }
+  ],
+  "validation": {
+    "docs11_exists": true,
+    "docs11_acceptance_receipt_exists": true,
+    "docs11_sequential_order_observed": true,
+    "docs11_all_rooms_have_implementation_truth_status": true,
+    "native_blueprint_vocabulary_report_exists": true,
+    "native_blueprint_normative_reconciliation_report_exists": true
+  },
+  "notes": [
+    "This register records blueprint stabilisation provenance only. It does not execute the Bridge.",
+    "The later Bridge route-cutover commit 1c17127 is downstream governance for Stage 2 activation, not part of the blueprint stabilisation baseline."
+  ]
+}

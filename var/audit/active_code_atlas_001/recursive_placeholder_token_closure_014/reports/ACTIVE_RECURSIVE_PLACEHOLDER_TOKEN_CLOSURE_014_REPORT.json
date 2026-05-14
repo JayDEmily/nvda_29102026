@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014",
+  "status": "PASS",
+  "scope": "remove_fresh_self_triggering_placeholder_tokens_from_live_reports",
+  "updated_files": [
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/proof_placeholder_closure_013/receipts/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_RECEIPT.md",
+    "var/audit/active_code_atlas_001/continuation_control_scan_classification_011/reports/ACTIVE_CONTINUATION_CONTROL_SCAN_CLASSIFICATION_011_REPORT.json",
+    "var/audit/active_code_atlas_001/proof_placeholder_closure_013/reports/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_REPORT.json"
+  ],
+  "live_placeholder_values_remaining": false,
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_15_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

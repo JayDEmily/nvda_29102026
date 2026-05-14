@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_POST_033_BOUNDARY_SCAN_CLASSIFICATION_034",
+  "status": "PASS",
+  "scope": "classify_scoped_post_033_boundary_scan",
+  "scan_target_count": 5,
+  "scan_hit_count": 87,
+  "classification_counts": {
+    "closed_source_test_boundary_terms": 14,
+    "historical_runway_terms": 12,
+    "continuation_terms": 52,
+    "historical_pause_terms": 9
+  },
+  "new_live_control_defect_selected": false,
+  "decision": "No new live control defect was selected. Remaining hits are expected current closed-boundary wording, historical runway wording, continuation-law wording, or historical pause examples already superseded by current authority.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "selected_current_manifest_validation_pre_final_report_update": "PASS_manifest_count_1_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

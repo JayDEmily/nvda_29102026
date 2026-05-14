@@ -1,0 +1,99 @@
+{
+  "specversion": "1.0",
+  "dmpversion": "3.0.0",
+  "id": "gate289::temporal::001",
+  "source": "urn:nvda:producer:temporal_context",
+  "type": "urn:nvda:packet:temporal_context.stage_output",
+  "time": "2026-04-16T09:31:00",
+  "datacontenttype": "application/json",
+  "dataschema": "urn:nvda:schema:temporal_context.output:1.0.0",
+  "traceid": "trace::gate289::temporal",
+  "runid": "run::gate289::temporal",
+  "scenarioid": "fixture",
+  "packetrole": "stage_output",
+  "producer": {
+    "module_id": "temporal_context",
+    "module_version": "1.0.0",
+    "module_instance_id": "temporal_context::fixture",
+    "grammar_role": "temporal_context",
+    "stage_name": "temporal",
+    "behaviour_class": "stage_output"
+  },
+  "lineage": {
+    "parentids": [
+      "pkt-parent-000"
+    ],
+    "dependencyids": [
+      "pkt-input-001"
+    ],
+    "derivedfrom": "temporal_context_from_declared_dependencies",
+    "replayref": null,
+    "sourceartifactids": [],
+    "inputfingerprint": null,
+    "reviewtraceid": null,
+    "replaytraceid": null,
+    "decisiontraceid": null
+  },
+  "validation": {
+    "status": "valid",
+    "checks": [
+      {
+        "name": "schema_validation",
+        "passed": true
+      }
+    ],
+    "violations": []
+  },
+  "summary": {
+    "headline": "Opening window classified cleanly.",
+    "keyflags": [],
+    "humanstate": "Opening window classified cleanly."
+  },
+  "data": {
+    "session_phase": "open_disorder",
+    "desk_window": "open_drive",
+    "phase_confidence": 0.91,
+    "clock_envelope": "closed",
+    "behavioural_phase": null,
+    "signal_coverage_ratio": 0.0,
+    "minutes_since_open": 12,
+    "minutes_to_close": 378,
+    "expiry_days_remaining": null,
+    "expiry_cycle_state": "weekly_front",
+    "event_minutes_remaining": null,
+    "event_proximity_state": "clear",
+    "event_window_state": "none",
+    "event_overlap_class": "single_event",
+    "event_risk_timing_class": "priced_risk",
+    "event_carry_sensitivity": "intraday_only",
+    "event_timing_profile": null,
+    "active_event_family": null,
+    "calendar_closure_classes": [],
+    "session_bridge_rules": [],
+    "next_session_open_hint": null,
+    "recent_path_tag": "trend_up",
+    "carryover_state": "clean",
+    "reasons": [
+      "opening drive intact"
+    ]
+  },
+  "dmpextensions": {
+    "nvda": {
+      "execution_context": {
+        "stack_id": "stack_live_v1",
+        "coefficient_set_id": "coeff_default_v1",
+        "registry_version": "dmp_v3_live",
+        "environment_tag": "fixture"
+      },
+      "schema_identifiers": {
+        "payload_model_name": "TemporalContextOutput",
+        "payload_module_path": "nvda_desk.schemas.cognition",
+        "input_model_name": "TemporalContextInput",
+        "output_model_name": "TemporalContextOutput"
+      },
+      "semantic_dependencies": [
+        "temporal_state_v3"
+      ]
+    }
+  }
+}

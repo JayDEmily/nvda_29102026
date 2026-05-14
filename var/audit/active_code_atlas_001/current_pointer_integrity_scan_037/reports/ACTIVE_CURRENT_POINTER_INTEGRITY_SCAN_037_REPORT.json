@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037",
+  "status": "PASS",
+  "scope": "current_pointer_integrity_scan_after_036",
+  "prior_target": "ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_RECORDED",
+  "new_target": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037_RECORDED",
+  "checks": {
+    "current_phase_points_to_036_before_update_recorded_in_history": true,
+    "current_target_now_points_to_037_after_update": true,
+    "prior_036_artifacts_exist": true,
+    "runtime_source_test_boundary_opened": false,
+    "archive_payload_restored_or_used": false
+  },
+  "prior_artifact_metadata": [
+    {
+      "path": "var/audit/active_code_atlas_001/post_035_live_control_scan_classification_036/reports/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_REPORT.json",
+      "byte_count": 48283,
+      "line_count": 1177,
+      "sha256": "e87eb4556458b3a98c14e133e8d85ee2d51ac227962e53386b63e530c8ed5c5c"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_035_live_control_scan_classification_036/receipts/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_RECEIPT.md",
+      "byte_count": 1214,
+      "line_count": 25,
+      "sha256": "e8889e099e78100ed219a63ea6bdde7fb6e042caef648a238ffc25936f7d0512"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_FULL_READ_MANIFEST.json",
+      "byte_count": 4955,
+      "line_count": 139,
+      "sha256": "215663f2ea1b1b0e9056d8f28d2e677d00620d50fbd60f3d1e230793b69662a5"
+    }
+  ],
+  "new_live_control_defect_selected": false,
+  "decision": "No new live control defect was selected. The 036 report, receipt, and explicit current full-read manifest exist; ROADMAP_LEDGER.md now records 037 as the current control/audit leaf without opening runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice boundaries.",
+  "proof": {
+    "git_diff_check": "external_current_command_evidence_required",
+    "surface_records_registry": "external_current_command_evidence_required",
+    "proof_block_check_all": "external_current_command_evidence_required",
+    "selected_current_manifest_validation": "external_current_command_evidence_required_after_manifest_generation"
+  }
+}

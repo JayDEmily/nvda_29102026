@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037",
+  "manifest_scope": "current_pointer_integrity_scan_after_036",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 8,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 97113,
+      "line_count": 676,
+      "sha256": "d5b7a3353decbae182d8777bdf8f556c33d75277570cda6a59204a0c2a01f8a1",
+      "read_method": "line_numbered_full_read_current_pass_plus_mutation_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 676
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 183838,
+      "line_count": 531,
+      "sha256": "7e4860afeee6091d4ad8ce2ec0a60e850d5c3232c712d47ebd82ec743b388a40",
+      "read_method": "line_numbered_full_read_current_pass_plus_mutation_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 531
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_035_live_control_scan_classification_036/reports/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_REPORT.json",
+      "material_class": "prior_target_report_named_by_ledger",
+      "byte_count": 48283,
+      "line_count": 1177,
+      "sha256": "e87eb4556458b3a98c14e133e8d85ee2d51ac227962e53386b63e530c8ed5c5c",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1177
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_035_live_control_scan_classification_036/receipts/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_RECEIPT.md",
+      "material_class": "prior_target_receipt_named_by_ledger",
+      "byte_count": 1214,
+      "line_count": 25,
+      "sha256": "e8889e099e78100ed219a63ea6bdde7fb6e042caef648a238ffc25936f7d0512",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 25
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_FULL_READ_MANIFEST.json",
+      "material_class": "prior_target_manifest_named_by_receipt",
+      "byte_count": 4955,
+      "line_count": 139,
+      "sha256": "215663f2ea1b1b0e9056d8f28d2e677d00620d50fbd60f3d1e230793b69662a5",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 139
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_037/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037_REPORT.json",
+      "material_class": "report",
+      "byte_count": 2280,
+      "line_count": 43,
+      "sha256": "00bf75fc29e2f0cb44537aeb79a67ab59878065b50a15ba17233e4819b1acfac",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 43
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_037/receipts/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_037_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1169,
+      "line_count": 25,
+      "sha256": "22f7ba50d854d7527ce83fbbf8d90002b4dea1cb6bc06c0a0bc1688aab37f0c5",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 25
+        }
+      ],
+      "notes": "037 current-pointer integrity manifest entry."
+    }
+  ]
+}

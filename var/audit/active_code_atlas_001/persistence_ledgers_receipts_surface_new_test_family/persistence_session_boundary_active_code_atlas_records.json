@@ -1,0 +1,177 @@
+{
+  "schema_version": "v1",
+  "ledger_name": "active_code_atlas_surface_records",
+  "created_utc": "2026-05-11T10:00:00Z",
+  "status": "read_adjudicated_surface_records_for_active_code_atlas_test_first_execution_005",
+  "surface": "Persistence, ledgers, and receipts",
+  "method": "Surface-by-surface read adjudication. The generated all-surface active-code Atlas and Bridge comparison were used only as navigation; active-code records below are backed by normative, source, test, and registry/proof evidence read for this pass.",
+  "limitation_statement": "This is static structural/read evidence only. Test execution status is recorded separately in the validation report and receipts.",
+  "surface_limitation": "This pass covers ACATQ-0040 / ACABC-0041 donor db.* missing/new-test-family records only. It does not admit SQLAlchemy schema/seed/engine behaviour, original donor db package recreation, or runtime trading persistence policy.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-005-0001",
+      "title": "Persistence package boundary exports only the active native receipt-ledger surface, not donor db schema/seed/engine APIs",
+      "surface": "Persistence, ledgers, and receipts",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_admitted_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0040",
+        "ACABC-0041"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_db_base_001",
+        "atlas_donor_db_base_002",
+        "atlas_donor_db_package_001",
+        "atlas_donor_db_package_002",
+        "atlas_donor_db_models_001",
+        "atlas_donor_db_seed_001"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+          "line_start": 5,
+          "line_end": 18
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 390,
+          "line_end": 405
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 568,
+          "line_end": 591
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/persistence/__init__.py",
+          "line_start": 1,
+          "line_end": 5
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+          "line_start": 24,
+          "line_end": 38
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 106,
+          "line_end": 118
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1935,
+          "line_end": 1954
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2806,
+          "line_end": 2914
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "The active persistence package re-exports ReceiptLedger only. The new Tier A test locks out donor db.* API names such as Base, create_engine_from_url, create_session_factory, create_schema, and seed_dev_data from that package boundary.",
+      "test_first_gap_or_action": "ACABC-0041 required a new Tier A family for missing donor db.* records. The new family proves the active package boundary rather than recreating the donor db package.",
+      "adjudication_notes": [
+        "The donor db.* records were treated as intent-navigation inputs only, not as source implementation authority.",
+        "No source repair was opened because the active package boundary already passed the new blocker."
+      ],
+      "limitations": [
+        "This record does not claim that all future persistence/schema migration work is complete.",
+        "This record does not inspect original donor Atlas JSON as source truth; Bridge/join files were used only for queue navigation."
+      ]
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-005-0002",
+      "title": "PersistenceSessionFactory is a bounded in-memory session seam, not an external engine/sessionmaker seam",
+      "surface": "Persistence, ledgers, and receipts",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_admitted_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0040",
+        "ACABC-0041"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_db_session_001",
+        "atlas_donor_db_session_002",
+        "atlas_donor_db_session_003",
+        "atlas_donor_db_seed_003",
+        "atlas_donor_db_seed_004",
+        "atlas_donor_db_seed_005",
+        "atlas_donor_db_seed_006",
+        "atlas_donor_db_seed_007",
+        "atlas_donor_db_seed_008",
+        "atlas_donor_db_seed_009",
+        "atlas_donor_db_seed_010",
+        "atlas_donor_db_seed_011"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+          "line_start": 5,
+          "line_end": 18
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 390,
+          "line_end": 405
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 568,
+          "line_end": 591
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/persistence/session_factory.py",
+          "line_start": 1,
+          "line_end": 19
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+          "line_start": 11,
+          "line_end": 21
+        },
+        {
+          "path": "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+          "line_start": 41,
+          "line_end": 57
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 106,
+          "line_end": 118
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1935,
+          "line_end": 1954
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2913,
+          "line_end": 2914
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "PersistenceSessionFactory.session yields a fresh InMemoryPersistenceSession for each context. The new Tier A test proves session isolation and rejects accidental exposure of external-engine, sessionmaker, declarative Base, schema, and seed helper surfaces on the active session module.",
+      "test_first_gap_or_action": "A distinct new Tier A family was admitted before any source mutation. The bounded test passes against current source, so donor db session/seed ideas remain unimplemented and source repair stayed closed.",
+      "adjudication_notes": [
+        "This is a boundary/non-admission blocker, not an implementation of SQL-backed persistence.",
+        "The native seam remains thin by blueprint status; this pass records the active seam honestly rather than upgrading maturity."
+      ],
+      "limitations": [
+        "This record does not prove database durability, migrations beyond the existing lifecycle placeholder, or seed-data semantics.",
+        "This pass did not inspect or mutate dependencies, VENV configuration, or original donor Atlas/Bridge JSON."
+      ]
+    }
+  ]
+}

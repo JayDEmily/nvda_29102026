@@ -1,0 +1,5365 @@
+{
+  "report_name": "native_intent_satisfaction_validation_report",
+  "schema_version": "v1",
+  "status": "bridge_complete",
+  "recorded_at_utc": "2026-04-26T08:45:16Z",
+  "gate2": {
+    "manifest_validation_result": {
+      "result": "pass",
+      "details": [
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+          "manifest_sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+          "observed_sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+          "matches_manifest": true
+        },
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_file_coverage_view.json",
+          "manifest_sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+          "observed_sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+          "matches_manifest": true
+        },
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_owner_map_view.json",
+          "manifest_sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+          "observed_sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+          "matches_manifest": true
+        },
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_rebuild_queue_view.json",
+          "manifest_sha256": "3e23821ed9ab1254e9a72c01877b99dfd6fe7ce6b0d7ef52451c4c0e0325cf01",
+          "observed_sha256": "3e23821ed9ab1254e9a72c01877b99dfd6fe7ce6b0d7ef52451c4c0e0325cf01",
+          "matches_manifest": true
+        },
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/legacy_exclusion_register.json",
+          "manifest_sha256": "6d744e4a27ab6dfea74385d40ab244bcce564c335d59567d70aabd0f2496bfdb",
+          "observed_sha256": "6d744e4a27ab6dfea74385d40ab244bcce564c335d59567d70aabd0f2496bfdb",
+          "matches_manifest": true
+        },
+        {
+          "repo_relative_path": "var/audit/imports/atlas_bridge_inputs/NVDA6_intent_atlas_salvage_closeout_report.md",
+          "manifest_sha256": "411fb81edc23b071fe79cc02fcf6952389764288028fbb1992f9c7c4d946a897",
+          "observed_sha256": "411fb81edc23b071fe79cc02fcf6952389764288028fbb1992f9c7c4d946a897",
+          "matches_manifest": true
+        }
+      ]
+    },
+    "coverage_result": {
+      "result": "pass",
+      "summary": "Coverage view contains no uncovered accepted donor ranges for the imported Atlas scope.",
+      "file_status_counts": {
+        "complete": 128
+      },
+      "coverage_range_count": 1716,
+      "atlas_record_count": 1716,
+      "blockers": []
+    },
+    "granularity_result": {
+      "result": "pass",
+      "summary": "Atlas records carry the required adjudication fields, valid donor ranges, and one-to-one coverage-range mapping.",
+      "missing_field_records": [],
+      "invalid_range_records": [],
+      "one_to_one_range_mapping": {
+        "atlas_record_count": 1716,
+        "coverage_range_count": 1716,
+        "duplicate_coverage_record_ids": [],
+        "missing_coverage_record_ids": []
+      }
+    },
+    "exclusion_explicitness_result": {
+      "result": "pass",
+      "summary": "No Atlas records are excluded and the exclusion register explicitly records no observed exclusions for all covered donor files.",
+      "excluded_status_count": 0,
+      "nonnull_exclusion_reasons": 0,
+      "exclusion_register_status": "in_progress",
+      "exclusion_register_note_count": 128,
+      "covered_file_count": 128
+    },
+    "closeout_consistency_result": {
+      "result": "pass",
+      "summary": "Closeout owner-classification counts are consistent with the manifest reconciliation block, legacy_intent_atlas.json, and legacy_owner_map_view.json.",
+      "closeout_counts": {
+        "total_records": 1716,
+        "remaining_uncovered": 0,
+        "direct_owner_records": 28,
+        "inferred_owner_records": 1029,
+        "unresolved_owner_records": 659,
+        "stale_owner_paths": 0
+      },
+      "atlas_owner_confidence_counts": {
+        "direct": 28,
+        "inferred": 1029,
+        "unresolved": 659
+      },
+      "owner_map_owner_confidence_counts": {
+        "inferred": 1029,
+        "direct": 28,
+        "unresolved": 659
+      },
+      "owner_map_record_count_sum": 1716,
+      "owner_map_record_ids_match_atlas": true,
+      "manifest_reconciliation_counts": {
+        "direct_owner_records": 28,
+        "inferred_owner_records": 1029,
+        "unresolved_owner_records": 659,
+        "total_records": 1716
+      }
+    },
+    "overall_gate2_result": "pass",
+    "blockers": []
+  },
+  "gate3": {
+    "result": "pass",
+    "summary": "docs/11 was read in full; all eighteen sequential architecture surfaces are present in 5.1-5.18 order; each architecture surface declares an implementation-truth status; target-owner mapping remains bounded by docs/11 and subordinate normative/code evidence.",
+    "blueprint_path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+    "blueprint_checksum_sha256": "e9ee6e5e4410a932040d8836af38f6a9d4099520a887348bd4e97bd5ddefae2c",
+    "accepted_by_control_stack": true,
+    "acceptance_receipt_path": "var/audit/ledgers/native_blueprint/acceptance_receipt.json",
+    "sequential_architecture_surface_count": 18,
+    "sequential_order_observed": true,
+    "all_architecture_surfaces_have_implementation_truth_status": true,
+    "implementation_truth_counts": {
+      "thin_seam": 13,
+      "reserved": 2,
+      "placeholder": 3
+    },
+    "target_owner_mapping_rule_clear": true,
+    "architecture_surface_headings": [
+      {
+        "surface_order": 1,
+        "surface_name": "External source interfaces and API ingress",
+        "heading_line": 135,
+        "implementation_truth_status_line": 142,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 2,
+        "surface_name": "Raw capture and source temporal law",
+        "heading_line": 152,
+        "implementation_truth_status_line": 159,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 3,
+        "surface_name": "Raw signal families",
+        "heading_line": 169,
+        "implementation_truth_status_line": 176,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 4,
+        "surface_name": "Financial and event calendar architecture",
+        "heading_line": 186,
+        "implementation_truth_status_line": 193,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 5,
+        "surface_name": "Prepared ingress and runtime context preparation",
+        "heading_line": 203,
+        "implementation_truth_status_line": 210,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 6,
+        "surface_name": "DMPV3 packet carriage",
+        "heading_line": 220,
+        "implementation_truth_status_line": 227,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 7,
+        "surface_name": "Serial desk-cognition spine",
+        "heading_line": 237,
+        "implementation_truth_status_line": 244,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 8,
+        "surface_name": "Parallel risk lane",
+        "heading_line": 254,
+        "implementation_truth_status_line": 261,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 9,
+        "surface_name": "Dynamic coefficient and modifier authority",
+        "heading_line": 271,
+        "implementation_truth_status_line": 278,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 10,
+        "surface_name": "Playbook library architecture",
+        "heading_line": 288,
+        "implementation_truth_status_line": 295,
+        "implementation_truth_status": "reserved"
+      },
+      {
+        "surface_order": 11,
+        "surface_name": "Downstream capital deployment authority",
+        "heading_line": 305,
+        "implementation_truth_status_line": 312,
+        "implementation_truth_status": "placeholder"
+      },
+      {
+        "surface_order": 12,
+        "surface_name": "Opening architecture and placement readiness",
+        "heading_line": 322,
+        "implementation_truth_status_line": 329,
+        "implementation_truth_status": "placeholder"
+      },
+      {
+        "surface_order": 13,
+        "surface_name": "Live position and inventory architecture",
+        "heading_line": 339,
+        "implementation_truth_status_line": 346,
+        "implementation_truth_status": "placeholder"
+      },
+      {
+        "surface_order": 14,
+        "surface_name": "Exit and close architecture",
+        "heading_line": 356,
+        "implementation_truth_status_line": 363,
+        "implementation_truth_status": "reserved"
+      },
+      {
+        "surface_order": 15,
+        "surface_name": "Review and explanation layer",
+        "heading_line": 373,
+        "implementation_truth_status_line": 380,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 16,
+        "surface_name": "Persistence, ledgers, and receipts",
+        "heading_line": 390,
+        "implementation_truth_status_line": 397,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 17,
+        "surface_name": "Testing, proof, and checkpoint surfaces",
+        "heading_line": 407,
+        "implementation_truth_status_line": 414,
+        "implementation_truth_status": "thin_seam"
+      },
+      {
+        "surface_order": 18,
+        "surface_name": "Vocabulary governance interface",
+        "heading_line": 424,
+        "implementation_truth_status_line": 431,
+        "implementation_truth_status": "thin_seam"
+      }
+    ],
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 125,
+        "line_end": 439,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "var/audit/ledgers/native_blueprint/acceptance_receipt.json",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "ledger"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 712,
+        "line_end": 722,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 337,
+        "line_end": 346,
+        "evidence_type": "normative"
+      }
+    ],
+    "blockers": []
+  },
+  "gate4": {
+    "result": "pass",
+    "summary": "Gate 4 mapped every accepted Atlas intent record to a docs/11 architecture surface and blueprint surface, with later Gate 5, Gate 6, and Gate 7 fields left as staged placeholders.",
+    "atlas_record_count": 1716,
+    "satisfaction_record_count": 1716,
+    "unique_satisfaction_record_ids": 1716,
+    "duplicate_satisfaction_record_ids": [],
+    "missing_atlas_record_ids": [],
+    "extra_atlas_record_ids": [],
+    "records_missing_docs11_evidence": [],
+    "records_using_direct_atlas_owner_candidate_mapping": [],
+    "records_using_vernacular_authority": [],
+    "records_with_non_placeholder_later_gate_values": [],
+    "blocked_blueprint_records": [],
+    "blueprint_surface_counts": {
+      "DMPV3 packet carriage": 73,
+      "Downstream capital deployment authority": 2,
+      "Dynamic coefficient and modifier authority": 193,
+      "Exit and close architecture": 90,
+      "External source interfaces and API ingress": 234,
+      "Financial and event calendar architecture": 117,
+      "Live position and inventory architecture": 38,
+      "Opening architecture and placement readiness": 74,
+      "Parallel risk lane": 57,
+      "Persistence, ledgers, and receipts": 97,
+      "Playbook library architecture": 95,
+      "Prepared ingress and runtime context preparation": 51,
+      "Raw capture and source temporal law": 108,
+      "Raw signal families": 123,
+      "Review and explanation layer": 143,
+      "Serial desk-cognition spine": 139,
+      "Testing, proof, and checkpoint surfaces": 72,
+      "Vocabulary governance interface": 10
+    },
+    "blockers": []
+  },
+  "gate5": {
+    "result": "pass",
+    "summary": "Gate 5 classified vocabulary gates for all satisfaction records using existing accepted blueprint surface language and Bridge schema language; Gate 6 was not started.",
+    "satisfaction_record_count": 1716,
+    "vocabulary_gate_status_counts": {
+      "passed_reuse_existing": 1716
+    },
+    "term_result_counts": {
+      "reused_existing": 15444
+    },
+    "term_kind_counts": {
+      "architecture_surface": 1716,
+      "enum_value": 12012,
+      "owner_name": 1716
+    },
+    "records_missing_vocabulary_gate": [],
+    "records_with_blocked_vocabulary_gate": [],
+    "records_with_unchecked_terms": [],
+    "records_advanced_to_gate6_status": [],
+    "records_advanced_to_gate7_status": [],
+    "gate6_started": false,
+    "gate7_started": false,
+    "blockers": []
+  },
+  "gate6a_downstream_capital_deployment_authority": {
+    "result": "pass",
+    "scope": "Gate 6A execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Downstream capital deployment authority",
+    "target_owner": "capital deployment authority",
+    "records_audited": [
+      "NIS-0278",
+      "NIS-0559"
+    ],
+    "record_count": 2,
+    "status_counts_for_slice": {
+      "partially_satisfied": 1,
+      "transform_required": 1
+    },
+    "global_native_satisfaction_status_counts": {
+      "partially_satisfied": 1,
+      "pending_gate6": 1714,
+      "transform_required": 1
+    },
+    "remaining_pending_gate6_count": 1714,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 305,
+        "line_end": 321,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 14655,
+        "line_end": 14692,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 30330,
+        "line_end": 30377,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "src/nvda_desk/contracts/capital.py",
+        "line_start": 13,
+        "line_end": 24,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/capital/authority.py",
+        "line_start": 19,
+        "line_end": 26,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/posture.py",
+        "line_start": 13,
+        "line_end": 24,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+        "line_start": 41,
+        "line_end": 52,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6b_vocabulary_governance_interface": {
+    "result": "pass",
+    "scope": "Gate 6B execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Vocabulary governance interface",
+    "target_owner": "vocabulary governance authority",
+    "records_audited": [
+      "NIS-0101",
+      "NIS-0102",
+      "NIS-0103",
+      "NIS-0104",
+      "NIS-0105",
+      "NIS-0106",
+      "NIS-0107",
+      "NIS-0108",
+      "NIS-0109",
+      "NIS-0110"
+    ],
+    "record_count": 10,
+    "status_counts_for_slice": {
+      "partially_satisfied": 3,
+      "missing": 3,
+      "already_satisfied": 1,
+      "transform_required": 3
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1704,
+      "partially_satisfied": 4,
+      "missing": 3,
+      "already_satisfied": 1,
+      "transform_required": 4
+    },
+    "remaining_pending_gate6_count": 1704,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 424,
+        "line_end": 439,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5234,
+        "line_end": 5284,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5285,
+        "line_end": 5335,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5336,
+        "line_end": 5381,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5382,
+        "line_end": 5446,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5447,
+        "line_end": 5498,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5499,
+        "line_end": 5555,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5556,
+        "line_end": 5599,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5600,
+        "line_end": 5648,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5649,
+        "line_end": 5697,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+        "line_start": 5698,
+        "line_end": 5743,
+        "evidence_type": "atlas"
+      },
+      {
+        "path": "src/nvda_desk/schemas/vocabulary.py",
+        "line_start": 1,
+        "line_end": 177,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/vocabulary_builder.py",
+        "line_start": 1,
+        "line_end": 379,
+        "evidence_type": "code"
+      },
+      {
+        "path": "scripts/build_canonical_vocabulary.py",
+        "line_start": 1,
+        "line_end": 14,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+        "line_start": 1,
+        "line_end": 112,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6c_live_position_and_inventory_architecture": {
+    "result": "pass",
+    "scope": "Gate 6C execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Live position and inventory architecture",
+    "target_owner": "live inventory and position authorities",
+    "records_audited": [
+      "NIS-0033",
+      "NIS-0163",
+      "NIS-0272",
+      "NIS-0273",
+      "NIS-0281",
+      "NIS-0282",
+      "NIS-0316",
+      "NIS-0319",
+      "NIS-0327",
+      "NIS-0328",
+      "NIS-0558",
+      "NIS-0570",
+      "NIS-0685",
+      "NIS-0837",
+      "NIS-0890",
+      "NIS-0896",
+      "NIS-0899",
+      "NIS-0951",
+      "NIS-0952",
+      "NIS-0953",
+      "NIS-0954",
+      "NIS-0956",
+      "NIS-0958",
+      "NIS-0959",
+      "NIS-0960",
+      "NIS-1004",
+      "NIS-1086",
+      "NIS-1092",
+      "NIS-1224",
+      "NIS-1318",
+      "NIS-1321",
+      "NIS-1380",
+      "NIS-1452",
+      "NIS-1453",
+      "NIS-1454",
+      "NIS-1458",
+      "NIS-1459",
+      "NIS-1603"
+    ],
+    "record_count": 38,
+    "status_counts_for_slice": {
+      "already_satisfied": 2,
+      "partially_satisfied": 14,
+      "missing": 5,
+      "transform_required": 17
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1666,
+      "partially_satisfied": 18,
+      "missing": 8,
+      "already_satisfied": 3,
+      "transform_required": 21
+    },
+    "remaining_pending_gate6_count": 1666,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 339,
+        "line_end": 355,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/contracts/downstream.py",
+        "line_start": 1,
+        "line_end": 34,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/downstream/live_inventory.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/downstream/live_inventory.py",
+        "line_start": 1,
+        "line_end": 10,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/downstream/state_reader.py",
+        "line_start": 1,
+        "line_end": 15,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/downstream_live_inventory_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/downstream_state_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/position_repository.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/persistence/execution_records.py",
+        "line_start": 1,
+        "line_end": 21,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/execution.py",
+        "line_start": 1,
+        "line_end": 26,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/domain/execution/lifecycle_plan.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/execution_service.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/persistence/test_position_repository_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/persistence/test_execution_records_repository_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6d_prepared_ingress_and_runtime_context_preparation": {
+    "result": "pass",
+    "scope": "Gate 6D execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Prepared ingress and runtime context preparation",
+    "target_owner": "runtime preparation authority",
+    "records_audited": [
+      "NIS-0097",
+      "NIS-0357",
+      "NIS-0360",
+      "NIS-0362",
+      "NIS-0363",
+      "NIS-0364",
+      "NIS-0366",
+      "NIS-0370",
+      "NIS-0373",
+      "NIS-0375",
+      "NIS-0377",
+      "NIS-1031",
+      "NIS-1034",
+      "NIS-1036",
+      "NIS-1142",
+      "NIS-1146",
+      "NIS-1147",
+      "NIS-1148",
+      "NIS-1149",
+      "NIS-1150",
+      "NIS-1151",
+      "NIS-1240",
+      "NIS-1241",
+      "NIS-1242",
+      "NIS-1243",
+      "NIS-1244",
+      "NIS-1245",
+      "NIS-1247",
+      "NIS-1248",
+      "NIS-1249",
+      "NIS-1250",
+      "NIS-1251",
+      "NIS-1252",
+      "NIS-1253",
+      "NIS-1254",
+      "NIS-1256",
+      "NIS-1257",
+      "NIS-1325",
+      "NIS-1326",
+      "NIS-1327",
+      "NIS-1328",
+      "NIS-1329",
+      "NIS-1333",
+      "NIS-1334",
+      "NIS-1335",
+      "NIS-1337",
+      "NIS-1338",
+      "NIS-1339",
+      "NIS-1340",
+      "NIS-1341",
+      "NIS-1343"
+    ],
+    "record_count": 51,
+    "status_counts_for_slice": {
+      "partially_satisfied": 18,
+      "missing": 31,
+      "transform_required": 2
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1615,
+      "transform_required": 23,
+      "partially_satisfied": 36,
+      "missing": 39,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 1615,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 203,
+        "line_end": 219,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "line_start": 1,
+        "line_end": 115,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/preparation/runtime_preparer.py",
+        "line_start": 1,
+        "line_end": 437,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/ingress/translator.py",
+        "line_start": 1,
+        "line_end": 41,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/ingress/options_mapper.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/ingress/regime_mapper.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+        "line_start": 1,
+        "line_end": 80,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/trace_review.py",
+        "line_start": 1,
+        "line_end": 31,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/options_flow.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/regime.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/temporal.py",
+        "line_start": 1,
+        "line_end": 95,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/domain/options_flow/surface_state.py",
+        "line_start": 1,
+        "line_end": 51,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/regime/classification.py",
+        "line_start": 1,
+        "line_end": 52,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/temporal/event_windows.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/temporal/session_clock.py",
+        "line_start": 1,
+        "line_end": 18,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/options_flow_context_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/regime_context_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/temporal_context_service.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+        "line_start": 1,
+        "line_end": 138,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py",
+        "line_start": 1,
+        "line_end": 128,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/upstream_cognition/test_cognition_ingress_translation_coordinator.py",
+        "line_start": 1,
+        "line_end": 81,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/upstream_cognition/test_regime_ingress_surface.py",
+        "line_start": 1,
+        "line_end": 30,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6e_external_source_interfaces_and_api_ingress": {
+    "result": "pass",
+    "scope": "Gate 6E execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "External source interfaces and API ingress",
+    "target_owner": "ingress and adapter authorities",
+    "records_audited": [
+      "NIS-0111",
+      "NIS-0112",
+      "NIS-0113",
+      "NIS-0114",
+      "NIS-0115",
+      "NIS-0141",
+      "NIS-0172",
+      "NIS-0179",
+      "NIS-0180",
+      "NIS-0181",
+      "NIS-0182",
+      "NIS-0183",
+      "NIS-0184",
+      "NIS-0185",
+      "NIS-0186",
+      "NIS-0187",
+      "NIS-0188",
+      "NIS-0189",
+      "NIS-0190",
+      "NIS-0191",
+      "NIS-0192",
+      "NIS-0193",
+      "NIS-0194",
+      "NIS-0195",
+      "NIS-0218",
+      "NIS-0263",
+      "NIS-0267",
+      "NIS-0269",
+      "NIS-0274",
+      "NIS-0283",
+      "NIS-0287",
+      "NIS-0318",
+      "NIS-0331",
+      "NIS-0557",
+      "NIS-0561",
+      "NIS-0576",
+      "NIS-0577",
+      "NIS-0580",
+      "NIS-0581",
+      "NIS-0597",
+      "NIS-0598",
+      "NIS-0680",
+      "NIS-0681",
+      "NIS-0698",
+      "NIS-0699",
+      "NIS-0700",
+      "NIS-0701",
+      "NIS-0702",
+      "NIS-0703",
+      "NIS-0704",
+      "NIS-0705",
+      "NIS-0706",
+      "NIS-0707",
+      "NIS-0708",
+      "NIS-0709",
+      "NIS-0710",
+      "NIS-0711",
+      "NIS-0712",
+      "NIS-0713",
+      "NIS-0714",
+      "NIS-0715",
+      "NIS-0716",
+      "NIS-0717",
+      "NIS-0718",
+      "NIS-0719",
+      "NIS-0720",
+      "NIS-0721",
+      "NIS-0722",
+      "NIS-0723",
+      "NIS-0724",
+      "NIS-0725",
+      "NIS-0726",
+      "NIS-0727",
+      "NIS-0728",
+      "NIS-0729",
+      "NIS-0762",
+      "NIS-0827",
+      "NIS-0955",
+      "NIS-0957",
+      "NIS-0985",
+      "NIS-0986",
+      "NIS-0987",
+      "NIS-0988",
+      "NIS-0989",
+      "NIS-0990",
+      "NIS-0991",
+      "NIS-0992",
+      "NIS-0993",
+      "NIS-0994",
+      "NIS-0995",
+      "NIS-0996",
+      "NIS-0997",
+      "NIS-0998",
+      "NIS-0999",
+      "NIS-1000",
+      "NIS-1001",
+      "NIS-1037",
+      "NIS-1038",
+      "NIS-1039",
+      "NIS-1040",
+      "NIS-1041",
+      "NIS-1042",
+      "NIS-1043",
+      "NIS-1045",
+      "NIS-1046",
+      "NIS-1047",
+      "NIS-1049",
+      "NIS-1050",
+      "NIS-1051",
+      "NIS-1052",
+      "NIS-1053",
+      "NIS-1108",
+      "NIS-1125",
+      "NIS-1170",
+      "NIS-1175",
+      "NIS-1231",
+      "NIS-1233",
+      "NIS-1235",
+      "NIS-1237",
+      "NIS-1265",
+      "NIS-1450",
+      "NIS-1455",
+      "NIS-1460",
+      "NIS-1461",
+      "NIS-1462",
+      "NIS-1531",
+      "NIS-1532",
+      "NIS-1533",
+      "NIS-1534",
+      "NIS-1535",
+      "NIS-1536",
+      "NIS-1537",
+      "NIS-1538",
+      "NIS-1539",
+      "NIS-1540",
+      "NIS-1541",
+      "NIS-1542",
+      "NIS-1543",
+      "NIS-1544",
+      "NIS-1545",
+      "NIS-1546",
+      "NIS-1547",
+      "NIS-1548",
+      "NIS-1549",
+      "NIS-1550",
+      "NIS-1551",
+      "NIS-1552",
+      "NIS-1553",
+      "NIS-1554",
+      "NIS-1555",
+      "NIS-1556",
+      "NIS-1557",
+      "NIS-1558",
+      "NIS-1559",
+      "NIS-1560",
+      "NIS-1561",
+      "NIS-1562",
+      "NIS-1563",
+      "NIS-1564",
+      "NIS-1565",
+      "NIS-1566",
+      "NIS-1567",
+      "NIS-1568",
+      "NIS-1569",
+      "NIS-1570",
+      "NIS-1571",
+      "NIS-1572",
+      "NIS-1573",
+      "NIS-1574",
+      "NIS-1575",
+      "NIS-1576",
+      "NIS-1577",
+      "NIS-1578",
+      "NIS-1579",
+      "NIS-1580",
+      "NIS-1581",
+      "NIS-1582",
+      "NIS-1583",
+      "NIS-1584",
+      "NIS-1585",
+      "NIS-1586",
+      "NIS-1587",
+      "NIS-1588",
+      "NIS-1589",
+      "NIS-1590",
+      "NIS-1591",
+      "NIS-1592",
+      "NIS-1593",
+      "NIS-1671",
+      "NIS-1672",
+      "NIS-1673",
+      "NIS-1674",
+      "NIS-1675",
+      "NIS-1676",
+      "NIS-1677",
+      "NIS-1678",
+      "NIS-1679",
+      "NIS-1680",
+      "NIS-1681",
+      "NIS-1682",
+      "NIS-1683",
+      "NIS-1684",
+      "NIS-1685",
+      "NIS-1686",
+      "NIS-1687",
+      "NIS-1688",
+      "NIS-1689",
+      "NIS-1690",
+      "NIS-1691",
+      "NIS-1692",
+      "NIS-1693",
+      "NIS-1694",
+      "NIS-1695",
+      "NIS-1696",
+      "NIS-1697",
+      "NIS-1698",
+      "NIS-1699",
+      "NIS-1700",
+      "NIS-1701",
+      "NIS-1702",
+      "NIS-1703",
+      "NIS-1704",
+      "NIS-1705",
+      "NIS-1706",
+      "NIS-1707",
+      "NIS-1708",
+      "NIS-1709",
+      "NIS-1710",
+      "NIS-1711",
+      "NIS-1712",
+      "NIS-1713",
+      "NIS-1714",
+      "NIS-1715",
+      "NIS-1716"
+    ],
+    "record_count": 234,
+    "status_counts_for_slice": {
+      "transform_required": 76,
+      "partially_satisfied": 48,
+      "missing": 110
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1381,
+      "transform_required": 99,
+      "partially_satisfied": 84,
+      "missing": 149,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 1381,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 135,
+        "line_end": 151,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+        "line_start": 1,
+        "line_end": 20,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+        "line_start": 1,
+        "line_end": 18,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/adapters/egress/broker_protocol.py",
+        "line_start": 1,
+        "line_end": 26,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/adapters/egress/api_dto_adapter.py",
+        "line_start": 1,
+        "line_end": 45,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/api/app.py",
+        "line_start": 1,
+        "line_end": 60,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/api/deps.py",
+        "line_start": 1,
+        "line_end": 31,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/api/http/app.py",
+        "line_start": 1,
+        "line_end": 7,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/entry/asgi.py",
+        "line_start": 1,
+        "line_end": 26,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/entry/cli.py",
+        "line_start": 1,
+        "line_end": 54,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "line_start": 1,
+        "line_end": 115,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/common.py",
+        "line_start": 1,
+        "line_end": 39,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/reference_data.py",
+        "line_start": 1,
+        "line_end": 57,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+        "line_start": 1,
+        "line_end": 42,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/api/test_api_boundary_surface.py",
+        "line_start": 1,
+        "line_end": 52,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/api/test_api_dto_boundary_surface.py",
+        "line_start": 1,
+        "line_end": 88,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/entry/test_entry_boundary_surface.py",
+        "line_start": 1,
+        "line_end": 53,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6f_dynamic_coefficient_and_modifier_authority": {
+    "result": "pass",
+    "scope": "Gate 6F execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Dynamic coefficient and modifier authority",
+    "target_owner": "coefficient and modifier authorities",
+    "records_audited": [
+      "NIS-0164",
+      "NIS-0166",
+      "NIS-0173",
+      "NIS-0174",
+      "NIS-0175",
+      "NIS-0176",
+      "NIS-0177",
+      "NIS-0178",
+      "NIS-0325",
+      "NIS-0417",
+      "NIS-0418",
+      "NIS-0419",
+      "NIS-0420",
+      "NIS-0421",
+      "NIS-0422",
+      "NIS-0423",
+      "NIS-0424",
+      "NIS-0426",
+      "NIS-0428",
+      "NIS-0430",
+      "NIS-0431",
+      "NIS-0432",
+      "NIS-0433",
+      "NIS-0434",
+      "NIS-0435",
+      "NIS-0436",
+      "NIS-0437",
+      "NIS-0438",
+      "NIS-0439",
+      "NIS-0440",
+      "NIS-0441",
+      "NIS-0442",
+      "NIS-0443",
+      "NIS-0444",
+      "NIS-0445",
+      "NIS-0446",
+      "NIS-0447",
+      "NIS-0448",
+      "NIS-0449",
+      "NIS-0450",
+      "NIS-0451",
+      "NIS-0452",
+      "NIS-0453",
+      "NIS-0454",
+      "NIS-0477",
+      "NIS-0479",
+      "NIS-0480",
+      "NIS-0481",
+      "NIS-0482",
+      "NIS-0484",
+      "NIS-0485",
+      "NIS-0486",
+      "NIS-0487",
+      "NIS-0488",
+      "NIS-0489",
+      "NIS-0490",
+      "NIS-0491",
+      "NIS-0492",
+      "NIS-0493",
+      "NIS-0494",
+      "NIS-0495",
+      "NIS-0496",
+      "NIS-0497",
+      "NIS-0498",
+      "NIS-0499",
+      "NIS-0500",
+      "NIS-0501",
+      "NIS-0502",
+      "NIS-0503",
+      "NIS-0504",
+      "NIS-0505",
+      "NIS-0506",
+      "NIS-0507",
+      "NIS-0508",
+      "NIS-0509",
+      "NIS-0510",
+      "NIS-0511",
+      "NIS-0512",
+      "NIS-0513",
+      "NIS-0514",
+      "NIS-0515",
+      "NIS-0516",
+      "NIS-0517",
+      "NIS-0518",
+      "NIS-0519",
+      "NIS-0520",
+      "NIS-0521",
+      "NIS-0522",
+      "NIS-0523",
+      "NIS-0524",
+      "NIS-0525",
+      "NIS-0526",
+      "NIS-0528",
+      "NIS-0530",
+      "NIS-0531",
+      "NIS-0532",
+      "NIS-0533",
+      "NIS-0534",
+      "NIS-0571",
+      "NIS-0585",
+      "NIS-0617",
+      "NIS-0618",
+      "NIS-0619",
+      "NIS-0620",
+      "NIS-0621",
+      "NIS-0622",
+      "NIS-0623",
+      "NIS-0624",
+      "NIS-0625",
+      "NIS-0626",
+      "NIS-0627",
+      "NIS-0628",
+      "NIS-0629",
+      "NIS-0630",
+      "NIS-0631",
+      "NIS-0632",
+      "NIS-0633",
+      "NIS-0635",
+      "NIS-0636",
+      "NIS-0637",
+      "NIS-0639",
+      "NIS-0640",
+      "NIS-0642",
+      "NIS-0644",
+      "NIS-0645",
+      "NIS-0647",
+      "NIS-0649",
+      "NIS-0651",
+      "NIS-0652",
+      "NIS-0653",
+      "NIS-0654",
+      "NIS-0655",
+      "NIS-0656",
+      "NIS-0657",
+      "NIS-0658",
+      "NIS-0659",
+      "NIS-0660",
+      "NIS-0661",
+      "NIS-0662",
+      "NIS-0663",
+      "NIS-0664",
+      "NIS-0665",
+      "NIS-0666",
+      "NIS-0667",
+      "NIS-1071",
+      "NIS-1109",
+      "NIS-1110",
+      "NIS-1111",
+      "NIS-1112",
+      "NIS-1113",
+      "NIS-1114",
+      "NIS-1115",
+      "NIS-1116",
+      "NIS-1117",
+      "NIS-1118",
+      "NIS-1119",
+      "NIS-1120",
+      "NIS-1121",
+      "NIS-1122",
+      "NIS-1123",
+      "NIS-1124",
+      "NIS-1126",
+      "NIS-1127",
+      "NIS-1368",
+      "NIS-1496",
+      "NIS-1600",
+      "NIS-1619",
+      "NIS-1645",
+      "NIS-1646",
+      "NIS-1647",
+      "NIS-1648",
+      "NIS-1649",
+      "NIS-1650",
+      "NIS-1651",
+      "NIS-1652",
+      "NIS-1653",
+      "NIS-1654",
+      "NIS-1655",
+      "NIS-1656",
+      "NIS-1657",
+      "NIS-1658",
+      "NIS-1659",
+      "NIS-1660",
+      "NIS-1661",
+      "NIS-1662",
+      "NIS-1663",
+      "NIS-1664",
+      "NIS-1665",
+      "NIS-1666",
+      "NIS-1667",
+      "NIS-1668",
+      "NIS-1669",
+      "NIS-1670"
+    ],
+    "record_count": 193,
+    "status_counts_for_slice": {
+      "transform_required": 43,
+      "partially_satisfied": 66,
+      "missing": 84
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1188,
+      "transform_required": 142,
+      "partially_satisfied": 150,
+      "missing": 233,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 1188,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 271,
+        "line_end": 286,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/config/coefficient_authority.py",
+        "line_start": 1,
+        "line_end": 94,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/config/config_surface.py",
+        "line_start": 1,
+        "line_end": 42,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/config/runtime_settings.py",
+        "line_start": 1,
+        "line_end": 36,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+        "line_start": 1,
+        "line_end": 96,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/coefficient_authority.py",
+        "line_start": 1,
+        "line_end": 140,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/modifiers.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/services/coefficient_authority_service.py",
+        "line_start": 1,
+        "line_end": 10,
+        "evidence_type": "code"
+      },
+      {
+        "path": "config/coefficient_authority.v1.yaml",
+        "line_start": 1,
+        "line_end": 82,
+        "evidence_type": "config"
+      },
+      {
+        "path": "config/runtime_settings.example.yaml",
+        "line_start": 1,
+        "line_end": 1,
+        "evidence_type": "config"
+      },
+      {
+        "path": "tests/tier_a/config/test_config_authority_surface.py",
+        "line_start": 1,
+        "line_end": 55,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+        "line_start": 1,
+        "line_end": 54,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6g_review_and_explanation_layer": {
+    "result": "pass",
+    "scope": "Gate 6G execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Review and explanation layer",
+    "target_owner": "review and explanation authorities",
+    "records_audited": [
+      "NIS-0063",
+      "NIS-0067",
+      "NIS-0068",
+      "NIS-0071",
+      "NIS-0150",
+      "NIS-0156",
+      "NIS-0157",
+      "NIS-0161",
+      "NIS-0165",
+      "NIS-0168",
+      "NIS-0169",
+      "NIS-0171",
+      "NIS-0313",
+      "NIS-0314",
+      "NIS-0324",
+      "NIS-0333",
+      "NIS-0334",
+      "NIS-0335",
+      "NIS-0594",
+      "NIS-0687",
+      "NIS-0688",
+      "NIS-0781",
+      "NIS-0782",
+      "NIS-0783",
+      "NIS-0784",
+      "NIS-0785",
+      "NIS-0786",
+      "NIS-0787",
+      "NIS-0788",
+      "NIS-0789",
+      "NIS-0790",
+      "NIS-0791",
+      "NIS-0792",
+      "NIS-0793",
+      "NIS-0794",
+      "NIS-0795",
+      "NIS-0796",
+      "NIS-0797",
+      "NIS-0798",
+      "NIS-0799",
+      "NIS-0877",
+      "NIS-0878",
+      "NIS-0879",
+      "NIS-0880",
+      "NIS-0881",
+      "NIS-0882",
+      "NIS-0883",
+      "NIS-0884",
+      "NIS-0885",
+      "NIS-0886",
+      "NIS-0887",
+      "NIS-0888",
+      "NIS-0889",
+      "NIS-0947",
+      "NIS-0948",
+      "NIS-0949",
+      "NIS-0950",
+      "NIS-1003",
+      "NIS-1087",
+      "NIS-1088",
+      "NIS-1089",
+      "NIS-1091",
+      "NIS-1273",
+      "NIS-1274",
+      "NIS-1275",
+      "NIS-1276",
+      "NIS-1277",
+      "NIS-1278",
+      "NIS-1279",
+      "NIS-1280",
+      "NIS-1281",
+      "NIS-1282",
+      "NIS-1283",
+      "NIS-1284",
+      "NIS-1285",
+      "NIS-1286",
+      "NIS-1287",
+      "NIS-1359",
+      "NIS-1361",
+      "NIS-1362",
+      "NIS-1364",
+      "NIS-1365",
+      "NIS-1366",
+      "NIS-1367",
+      "NIS-1370",
+      "NIS-1371",
+      "NIS-1373",
+      "NIS-1374",
+      "NIS-1375",
+      "NIS-1376",
+      "NIS-1377",
+      "NIS-1378",
+      "NIS-1379",
+      "NIS-1481",
+      "NIS-1482",
+      "NIS-1484",
+      "NIS-1485",
+      "NIS-1486",
+      "NIS-1487",
+      "NIS-1488",
+      "NIS-1489",
+      "NIS-1490",
+      "NIS-1493",
+      "NIS-1495",
+      "NIS-1497",
+      "NIS-1498",
+      "NIS-1500",
+      "NIS-1501",
+      "NIS-1502",
+      "NIS-1503",
+      "NIS-1504",
+      "NIS-1610",
+      "NIS-1611",
+      "NIS-1612",
+      "NIS-1613",
+      "NIS-1614",
+      "NIS-1615",
+      "NIS-1616",
+      "NIS-1617",
+      "NIS-1618",
+      "NIS-1620",
+      "NIS-1621",
+      "NIS-1622",
+      "NIS-1623",
+      "NIS-1626",
+      "NIS-1627",
+      "NIS-1628",
+      "NIS-1629",
+      "NIS-1630",
+      "NIS-1631",
+      "NIS-1632",
+      "NIS-1633",
+      "NIS-1634",
+      "NIS-1635",
+      "NIS-1636",
+      "NIS-1637",
+      "NIS-1638",
+      "NIS-1639",
+      "NIS-1640",
+      "NIS-1641",
+      "NIS-1642",
+      "NIS-1643",
+      "NIS-1644"
+    ],
+    "record_count": 143,
+    "status_counts_for_slice": {
+      "partially_satisfied": 52,
+      "transform_required": 46,
+      "missing": 45
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 1045,
+      "transform_required": 188,
+      "partially_satisfied": 202,
+      "missing": 278,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 1045,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 373,
+        "line_end": 388,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/downstream/review_stage.py",
+        "line_start": 1,
+        "line_end": 65,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/review_explanation_service.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/downstream_review_service.py",
+        "line_start": 1,
+        "line_end": 20,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/review.py",
+        "line_start": 1,
+        "line_end": 62,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/analysis/replay/service.py",
+        "line_start": 1,
+        "line_end": 83,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/persistence/research_logs.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/research_logs.py",
+        "line_start": 1,
+        "line_end": 7,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/review_repository.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+        "line_start": 1,
+        "line_end": 80,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6h_serial_desk_cognition_spine": {
+    "result": "pass",
+    "scope": "Gate 6H execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Serial desk-cognition spine",
+    "target_owner": "serial desk-cognition authority",
+    "records_audited": [
+      "NIS-0043",
+      "NIS-0535",
+      "NIS-0537",
+      "NIS-0538",
+      "NIS-0539",
+      "NIS-0540",
+      "NIS-0541",
+      "NIS-0544",
+      "NIS-0549",
+      "NIS-0551",
+      "NIS-0552",
+      "NIS-0553",
+      "NIS-0554",
+      "NIS-0555",
+      "NIS-0572",
+      "NIS-0573",
+      "NIS-0574",
+      "NIS-0575",
+      "NIS-0584",
+      "NIS-0586",
+      "NIS-0588",
+      "NIS-0589",
+      "NIS-0591",
+      "NIS-0592",
+      "NIS-0593",
+      "NIS-0678",
+      "NIS-0682",
+      "NIS-0683",
+      "NIS-0686",
+      "NIS-0830",
+      "NIS-0831",
+      "NIS-0832",
+      "NIS-0833",
+      "NIS-0834",
+      "NIS-0836",
+      "NIS-0838",
+      "NIS-0839",
+      "NIS-0840",
+      "NIS-0841",
+      "NIS-0843",
+      "NIS-0844",
+      "NIS-0865",
+      "NIS-0866",
+      "NIS-0867",
+      "NIS-0868",
+      "NIS-0869",
+      "NIS-0870",
+      "NIS-0871",
+      "NIS-0873",
+      "NIS-0874",
+      "NIS-0875",
+      "NIS-0876",
+      "NIS-0905",
+      "NIS-0906",
+      "NIS-0907",
+      "NIS-0908",
+      "NIS-0909",
+      "NIS-0910",
+      "NIS-0912",
+      "NIS-0913",
+      "NIS-0914",
+      "NIS-0915",
+      "NIS-0916",
+      "NIS-0917",
+      "NIS-0918",
+      "NIS-0919",
+      "NIS-0920",
+      "NIS-0921",
+      "NIS-0922",
+      "NIS-0923",
+      "NIS-0924",
+      "NIS-1014",
+      "NIS-1015",
+      "NIS-1016",
+      "NIS-1017",
+      "NIS-1018",
+      "NIS-1019",
+      "NIS-1020",
+      "NIS-1098",
+      "NIS-1099",
+      "NIS-1100",
+      "NIS-1101",
+      "NIS-1102",
+      "NIS-1103",
+      "NIS-1104",
+      "NIS-1105",
+      "NIS-1106",
+      "NIS-1107",
+      "NIS-1219",
+      "NIS-1220",
+      "NIS-1221",
+      "NIS-1222",
+      "NIS-1225",
+      "NIS-1226",
+      "NIS-1227",
+      "NIS-1228",
+      "NIS-1345",
+      "NIS-1346",
+      "NIS-1347",
+      "NIS-1348",
+      "NIS-1349",
+      "NIS-1350",
+      "NIS-1351",
+      "NIS-1352",
+      "NIS-1353",
+      "NIS-1354",
+      "NIS-1355",
+      "NIS-1357",
+      "NIS-1358",
+      "NIS-1421",
+      "NIS-1422",
+      "NIS-1423",
+      "NIS-1424",
+      "NIS-1425",
+      "NIS-1426",
+      "NIS-1427",
+      "NIS-1429",
+      "NIS-1430",
+      "NIS-1431",
+      "NIS-1432",
+      "NIS-1433",
+      "NIS-1434",
+      "NIS-1435",
+      "NIS-1436",
+      "NIS-1437",
+      "NIS-1438",
+      "NIS-1439",
+      "NIS-1440",
+      "NIS-1441",
+      "NIS-1594",
+      "NIS-1595",
+      "NIS-1596",
+      "NIS-1597",
+      "NIS-1598",
+      "NIS-1599",
+      "NIS-1601",
+      "NIS-1606",
+      "NIS-1608",
+      "NIS-1609"
+    ],
+    "record_count": 139,
+    "status_counts_for_slice": {
+      "partially_satisfied": 30,
+      "transform_required": 109
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 906,
+      "transform_required": 297,
+      "partially_satisfied": 232,
+      "missing": 278,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 906,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 237,
+        "line_end": 252,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/runtime/orchestrator.py",
+        "line_start": 1,
+        "line_end": 272,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/serial/options_flow.py",
+        "line_start": 1,
+        "line_end": 11,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/serial/posture.py",
+        "line_start": 1,
+        "line_end": 23,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/serial/eligibility.py",
+        "line_start": 1,
+        "line_end": 15,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/options_flow_context_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/posture_service.py",
+        "line_start": 1,
+        "line_end": 36,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/eligibility_service.py",
+        "line_start": 1,
+        "line_end": 14,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/options_flow.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/posture.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/eligibility.py",
+        "line_start": 1,
+        "line_end": 18,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_a/runtime/test_runtime_orchestrator_surface.py",
+        "line_start": 1,
+        "line_end": 86,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+        "line_start": 1,
+        "line_end": 77,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+        "line_start": 1,
+        "line_end": 46,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+        "line_start": 1,
+        "line_end": 88,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6i_raw_signal_families": {
+    "result": "pass",
+    "scope": "6I execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Raw signal families",
+    "target_owner": "raw signal family authorities",
+    "records_audited": [
+      "NIS-0052",
+      "NIS-0053",
+      "NIS-0054",
+      "NIS-0056",
+      "NIS-0057",
+      "NIS-0058",
+      "NIS-0059",
+      "NIS-0060",
+      "NIS-0061",
+      "NIS-0062",
+      "NIS-0142",
+      "NIS-0154",
+      "NIS-0159",
+      "NIS-0222",
+      "NIS-0223",
+      "NIS-0224",
+      "NIS-0225",
+      "NIS-0226",
+      "NIS-0227",
+      "NIS-0228",
+      "NIS-0229",
+      "NIS-0230",
+      "NIS-0232",
+      "NIS-0233",
+      "NIS-0235",
+      "NIS-0237",
+      "NIS-0239",
+      "NIS-0241",
+      "NIS-0242",
+      "NIS-0243",
+      "NIS-0244",
+      "NIS-0245",
+      "NIS-0246",
+      "NIS-0247",
+      "NIS-0248",
+      "NIS-0249",
+      "NIS-0250",
+      "NIS-0251",
+      "NIS-0252",
+      "NIS-0253",
+      "NIS-0254",
+      "NIS-0255",
+      "NIS-0256",
+      "NIS-0257",
+      "NIS-0260",
+      "NIS-0310",
+      "NIS-0321",
+      "NIS-0322",
+      "NIS-0332",
+      "NIS-0349",
+      "NIS-0372",
+      "NIS-0478",
+      "NIS-0527",
+      "NIS-0529",
+      "NIS-0536",
+      "NIS-0547",
+      "NIS-0550",
+      "NIS-0634",
+      "NIS-0842",
+      "NIS-0845",
+      "NIS-0846",
+      "NIS-0847",
+      "NIS-0848",
+      "NIS-0849",
+      "NIS-0850",
+      "NIS-0851",
+      "NIS-0852",
+      "NIS-0853",
+      "NIS-0854",
+      "NIS-0855",
+      "NIS-0872",
+      "NIS-0911",
+      "NIS-1006",
+      "NIS-1067",
+      "NIS-1143",
+      "NIS-1144",
+      "NIS-1145",
+      "NIS-1152",
+      "NIS-1153",
+      "NIS-1154",
+      "NIS-1155",
+      "NIS-1156",
+      "NIS-1157",
+      "NIS-1158",
+      "NIS-1159",
+      "NIS-1160",
+      "NIS-1161",
+      "NIS-1162",
+      "NIS-1163",
+      "NIS-1178",
+      "NIS-1179",
+      "NIS-1182",
+      "NIS-1184",
+      "NIS-1185",
+      "NIS-1186",
+      "NIS-1187",
+      "NIS-1188",
+      "NIS-1190",
+      "NIS-1191",
+      "NIS-1192",
+      "NIS-1194",
+      "NIS-1195",
+      "NIS-1196",
+      "NIS-1197",
+      "NIS-1198",
+      "NIS-1199",
+      "NIS-1200",
+      "NIS-1202",
+      "NIS-1203",
+      "NIS-1204",
+      "NIS-1205",
+      "NIS-1206",
+      "NIS-1207",
+      "NIS-1208",
+      "NIS-1229",
+      "NIS-1246",
+      "NIS-1260",
+      "NIS-1356",
+      "NIS-1372",
+      "NIS-1428",
+      "NIS-1475",
+      "NIS-1491",
+      "NIS-1492"
+    ],
+    "record_count": 123,
+    "status_counts_for_slice": {
+      "partially_satisfied": 33,
+      "missing": 22,
+      "transform_required": 68
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 783,
+      "transform_required": 365,
+      "partially_satisfied": 265,
+      "missing": 300,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 783,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 169,
+        "line_end": 184,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+        "line_start": 1,
+        "line_end": 20,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+        "line_start": 1,
+        "line_end": 18,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "line_start": 1,
+        "line_end": 115,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/options_flow/surface_state.py",
+        "line_start": 1,
+        "line_end": 51,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/options_flow.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/contracts/options_flow_history.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/repositories/options_flow_history_repository.py",
+        "line_start": 1,
+        "line_end": 21,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/options_flow_context_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/options_flow_history/test_options_flow_contract_models.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6j_financial_and_event_calendar_architecture": {
+    "result": "pass",
+    "scope": "6J execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Financial and event calendar architecture",
+    "target_owner": "financial calendar authority",
+    "records_audited": [
+      "NIS-0378",
+      "NIS-0379",
+      "NIS-0380",
+      "NIS-0381",
+      "NIS-0382",
+      "NIS-0383",
+      "NIS-0384",
+      "NIS-0385",
+      "NIS-0386",
+      "NIS-0387",
+      "NIS-0388",
+      "NIS-0389",
+      "NIS-0390",
+      "NIS-0391",
+      "NIS-0393",
+      "NIS-0394",
+      "NIS-0395",
+      "NIS-0396",
+      "NIS-0397",
+      "NIS-0398",
+      "NIS-0399",
+      "NIS-0400",
+      "NIS-0401",
+      "NIS-0402",
+      "NIS-0403",
+      "NIS-0404",
+      "NIS-0405",
+      "NIS-0406",
+      "NIS-0407",
+      "NIS-0408",
+      "NIS-0409",
+      "NIS-0410",
+      "NIS-0411",
+      "NIS-0412",
+      "NIS-0413",
+      "NIS-0414",
+      "NIS-0415",
+      "NIS-0456",
+      "NIS-0457",
+      "NIS-0458",
+      "NIS-0459",
+      "NIS-0460",
+      "NIS-0461",
+      "NIS-0462",
+      "NIS-0463",
+      "NIS-0464",
+      "NIS-0465",
+      "NIS-0467",
+      "NIS-0468",
+      "NIS-0469",
+      "NIS-0470",
+      "NIS-0472",
+      "NIS-0473",
+      "NIS-0474",
+      "NIS-0475",
+      "NIS-0476",
+      "NIS-0800",
+      "NIS-0801",
+      "NIS-0802",
+      "NIS-0803",
+      "NIS-0804",
+      "NIS-0805",
+      "NIS-0806",
+      "NIS-0807",
+      "NIS-0808",
+      "NIS-0809",
+      "NIS-0810",
+      "NIS-0811",
+      "NIS-0812",
+      "NIS-0813",
+      "NIS-0814",
+      "NIS-0815",
+      "NIS-0816",
+      "NIS-0817",
+      "NIS-0818",
+      "NIS-0819",
+      "NIS-0820",
+      "NIS-0821",
+      "NIS-0822",
+      "NIS-0823",
+      "NIS-0824",
+      "NIS-0962",
+      "NIS-0963",
+      "NIS-1022",
+      "NIS-1023",
+      "NIS-1024",
+      "NIS-1025",
+      "NIS-1026",
+      "NIS-1028",
+      "NIS-1029",
+      "NIS-1033",
+      "NIS-1074",
+      "NIS-1288",
+      "NIS-1289",
+      "NIS-1290",
+      "NIS-1291",
+      "NIS-1292",
+      "NIS-1293",
+      "NIS-1294",
+      "NIS-1295",
+      "NIS-1296",
+      "NIS-1297",
+      "NIS-1298",
+      "NIS-1299",
+      "NIS-1300",
+      "NIS-1301",
+      "NIS-1302",
+      "NIS-1303",
+      "NIS-1304",
+      "NIS-1305",
+      "NIS-1306",
+      "NIS-1307",
+      "NIS-1331",
+      "NIS-1332",
+      "NIS-1336",
+      "NIS-1342",
+      "NIS-1344"
+    ],
+    "record_count": 117,
+    "status_counts_for_slice": {
+      "partially_satisfied": 102,
+      "transform_required": 15
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 666,
+      "transform_required": 380,
+      "partially_satisfied": 367,
+      "missing": 300,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 666,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 186,
+        "line_end": 201,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/calendar/operational/events.py",
+        "line_start": 1,
+        "line_end": 63,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/calendar/reference/importer.py",
+        "line_start": 1,
+        "line_end": 93,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/calendar/reference/projection.py",
+        "line_start": 1,
+        "line_end": 161,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/reference/calendar_import.py",
+        "line_start": 1,
+        "line_end": 8,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/reference/calendar_projection.py",
+        "line_start": 1,
+        "line_end": 21,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/reference_data.py",
+        "line_start": 1,
+        "line_end": 57,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_a/calendar_operational/test_calendar_operational_surface.py",
+        "line_start": 1,
+        "line_end": 53,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py",
+        "line_start": 1,
+        "line_end": 49,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6k_raw_capture_and_source_temporal_law": {
+    "result": "pass",
+    "scope": "6K execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Raw capture and source temporal law",
+    "target_owner": "raw capture and source-temporal authorities",
+    "records_audited": [
+      "NIS-0047",
+      "NIS-0050",
+      "NIS-0055",
+      "NIS-0064",
+      "NIS-0065",
+      "NIS-0070",
+      "NIS-0073",
+      "NIS-0074",
+      "NIS-0075",
+      "NIS-0076",
+      "NIS-0077",
+      "NIS-0078",
+      "NIS-0079",
+      "NIS-0080",
+      "NIS-0081",
+      "NIS-0082",
+      "NIS-0091",
+      "NIS-0093",
+      "NIS-0122",
+      "NIS-0123",
+      "NIS-0124",
+      "NIS-0126",
+      "NIS-0127",
+      "NIS-0128",
+      "NIS-0129",
+      "NIS-0130",
+      "NIS-0131",
+      "NIS-0132",
+      "NIS-0133",
+      "NIS-0136",
+      "NIS-0144",
+      "NIS-0145",
+      "NIS-0148",
+      "NIS-0149",
+      "NIS-0155",
+      "NIS-0158",
+      "NIS-0160",
+      "NIS-0167",
+      "NIS-0170",
+      "NIS-0199",
+      "NIS-0202",
+      "NIS-0205",
+      "NIS-0210",
+      "NIS-0212",
+      "NIS-0214",
+      "NIS-0231",
+      "NIS-0234",
+      "NIS-0236",
+      "NIS-0238",
+      "NIS-0240",
+      "NIS-0258",
+      "NIS-0259",
+      "NIS-0317",
+      "NIS-0339",
+      "NIS-0358",
+      "NIS-0359",
+      "NIS-0361",
+      "NIS-0365",
+      "NIS-0367",
+      "NIS-0371",
+      "NIS-0374",
+      "NIS-0392",
+      "NIS-0416",
+      "NIS-0425",
+      "NIS-0595",
+      "NIS-0596",
+      "NIS-0599",
+      "NIS-0600",
+      "NIS-0602",
+      "NIS-0604",
+      "NIS-0605",
+      "NIS-0606",
+      "NIS-0608",
+      "NIS-0609",
+      "NIS-0610",
+      "NIS-0611",
+      "NIS-0612",
+      "NIS-0613",
+      "NIS-0614",
+      "NIS-0615",
+      "NIS-0616",
+      "NIS-0743",
+      "NIS-0745",
+      "NIS-0747",
+      "NIS-0749",
+      "NIS-0752",
+      "NIS-0753",
+      "NIS-0758",
+      "NIS-0759",
+      "NIS-0760",
+      "NIS-0761",
+      "NIS-0775",
+      "NIS-1055",
+      "NIS-1073",
+      "NIS-1076",
+      "NIS-1082",
+      "NIS-1180",
+      "NIS-1181",
+      "NIS-1183",
+      "NIS-1189",
+      "NIS-1193",
+      "NIS-1255",
+      "NIS-1330",
+      "NIS-1360",
+      "NIS-1363",
+      "NIS-1369",
+      "NIS-1605",
+      "NIS-1607"
+    ],
+    "record_count": 108,
+    "status_counts_for_slice": {
+      "transform_required": 66,
+      "partially_satisfied": 31,
+      "missing": 11
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 558,
+      "transform_required": 446,
+      "partially_satisfied": 398,
+      "missing": 311,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 558,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 152,
+        "line_end": 167,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "line_start": 1,
+        "line_end": 115,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+        "line_start": 1,
+        "line_end": 80,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/temporal.py",
+        "line_start": 1,
+        "line_end": 95,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/domain/temporal/session_clock.py",
+        "line_start": 1,
+        "line_end": 18,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/temporal/event_windows.py",
+        "line_start": 1,
+        "line_end": 25,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+        "line_start": 1,
+        "line_end": 138,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6l_persistence,_ledgers,_and_receipts": {
+    "result": "pass",
+    "scope": "6L execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Persistence, ledgers, and receipts",
+    "target_owner": "persistence and ledger authorities",
+    "records_audited": [
+      "NIS-0029",
+      "NIS-0030",
+      "NIS-0031",
+      "NIS-0032",
+      "NIS-0034",
+      "NIS-0035",
+      "NIS-0036",
+      "NIS-0042",
+      "NIS-0044",
+      "NIS-0048",
+      "NIS-0051",
+      "NIS-0118",
+      "NIS-0119",
+      "NIS-0120",
+      "NIS-0121",
+      "NIS-0265",
+      "NIS-0266",
+      "NIS-0271",
+      "NIS-0280",
+      "NIS-0668",
+      "NIS-0669",
+      "NIS-0670",
+      "NIS-0671",
+      "NIS-0672",
+      "NIS-0673",
+      "NIS-0674",
+      "NIS-0675",
+      "NIS-0676",
+      "NIS-0677",
+      "NIS-0684",
+      "NIS-0693",
+      "NIS-0694",
+      "NIS-0695",
+      "NIS-0696",
+      "NIS-0697",
+      "NIS-0741",
+      "NIS-0764",
+      "NIS-0766",
+      "NIS-0767",
+      "NIS-0768",
+      "NIS-0769",
+      "NIS-0770",
+      "NIS-0771",
+      "NIS-0772",
+      "NIS-0773",
+      "NIS-0774",
+      "NIS-0776",
+      "NIS-0777",
+      "NIS-0778",
+      "NIS-0779",
+      "NIS-0780",
+      "NIS-1077",
+      "NIS-1078",
+      "NIS-1079",
+      "NIS-1080",
+      "NIS-1081",
+      "NIS-1083",
+      "NIS-1084",
+      "NIS-1085",
+      "NIS-1393",
+      "NIS-1394",
+      "NIS-1395",
+      "NIS-1396",
+      "NIS-1397",
+      "NIS-1398",
+      "NIS-1399",
+      "NIS-1400",
+      "NIS-1401",
+      "NIS-1402",
+      "NIS-1403",
+      "NIS-1404",
+      "NIS-1405",
+      "NIS-1406",
+      "NIS-1407",
+      "NIS-1408",
+      "NIS-1409",
+      "NIS-1410",
+      "NIS-1411",
+      "NIS-1412",
+      "NIS-1413",
+      "NIS-1414",
+      "NIS-1416",
+      "NIS-1417",
+      "NIS-1418",
+      "NIS-1419",
+      "NIS-1420",
+      "NIS-1442",
+      "NIS-1443",
+      "NIS-1444",
+      "NIS-1445",
+      "NIS-1446",
+      "NIS-1447",
+      "NIS-1448",
+      "NIS-1449",
+      "NIS-1456",
+      "NIS-1457",
+      "NIS-1463"
+    ],
+    "record_count": 97,
+    "status_counts_for_slice": {
+      "partially_satisfied": 56,
+      "transform_required": 23,
+      "missing": 18
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 461,
+      "partially_satisfied": 454,
+      "transform_required": 469,
+      "missing": 329,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 461,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 390,
+        "line_end": 405,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/persistence/execution_records.py",
+        "line_start": 1,
+        "line_end": 21,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/persistence/models.py",
+        "line_start": 1,
+        "line_end": 40,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/persistence/parallel_risk_observations.py",
+        "line_start": 1,
+        "line_end": 85,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/persistence/research_logs.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/capital_state_repository.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/execution_event_repository.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/market_observation_repository.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/module_registry.py",
+        "line_start": 1,
+        "line_end": 20,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/options_flow_history_repository.py",
+        "line_start": 1,
+        "line_end": 21,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/repositories/position_repository.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/persistence/test_execution_records_repository_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6m_playbook_library_architecture": {
+    "result": "pass",
+    "scope": "6M execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Playbook library architecture",
+    "target_owner": "playbook library authority",
+    "records_audited": [
+      "NIS-0039",
+      "NIS-0041",
+      "NIS-0268",
+      "NIS-0289",
+      "NIS-0290",
+      "NIS-0291",
+      "NIS-0292",
+      "NIS-0293",
+      "NIS-0294",
+      "NIS-0295",
+      "NIS-0296",
+      "NIS-0297",
+      "NIS-0298",
+      "NIS-0299",
+      "NIS-0300",
+      "NIS-0301",
+      "NIS-0302",
+      "NIS-0303",
+      "NIS-0304",
+      "NIS-0305",
+      "NIS-0306",
+      "NIS-0307",
+      "NIS-0308",
+      "NIS-0309",
+      "NIS-0326",
+      "NIS-0329",
+      "NIS-0542",
+      "NIS-0543",
+      "NIS-0546",
+      "NIS-0563",
+      "NIS-0564",
+      "NIS-0565",
+      "NIS-0566",
+      "NIS-0567",
+      "NIS-0568",
+      "NIS-0569",
+      "NIS-0578",
+      "NIS-0587",
+      "NIS-0825",
+      "NIS-0826",
+      "NIS-0828",
+      "NIS-0829",
+      "NIS-0835",
+      "NIS-0925",
+      "NIS-0965",
+      "NIS-0966",
+      "NIS-0967",
+      "NIS-0968",
+      "NIS-0969",
+      "NIS-0970",
+      "NIS-0971",
+      "NIS-0972",
+      "NIS-0973",
+      "NIS-0974",
+      "NIS-0975",
+      "NIS-0976",
+      "NIS-0977",
+      "NIS-0978",
+      "NIS-0979",
+      "NIS-0980",
+      "NIS-0981",
+      "NIS-0982",
+      "NIS-0983",
+      "NIS-0984",
+      "NIS-1007",
+      "NIS-1008",
+      "NIS-1009",
+      "NIS-1010",
+      "NIS-1011",
+      "NIS-1012",
+      "NIS-1013",
+      "NIS-1215",
+      "NIS-1415",
+      "NIS-1464",
+      "NIS-1465",
+      "NIS-1466",
+      "NIS-1467",
+      "NIS-1468",
+      "NIS-1469",
+      "NIS-1470",
+      "NIS-1471",
+      "NIS-1472",
+      "NIS-1473",
+      "NIS-1474",
+      "NIS-1476",
+      "NIS-1477",
+      "NIS-1478",
+      "NIS-1479",
+      "NIS-1480",
+      "NIS-1499",
+      "NIS-1507",
+      "NIS-1508",
+      "NIS-1602",
+      "NIS-1624",
+      "NIS-1625"
+    ],
+    "record_count": 95,
+    "status_counts_for_slice": {
+      "transform_required": 64,
+      "partially_satisfied": 31
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 366,
+      "partially_satisfied": 485,
+      "transform_required": 533,
+      "missing": 329,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 366,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 288,
+        "line_end": 303,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/config/playbook_registry.py",
+        "line_start": 1,
+        "line_end": 28,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/config/runtime_settings.py",
+        "line_start": 1,
+        "line_end": 36,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/playbook_eligibility_service.py",
+        "line_start": 1,
+        "line_end": 14,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+        "line_start": 1,
+        "line_end": 23,
+        "evidence_type": "code"
+      },
+      {
+        "path": "config/playbook_registry.example.yaml",
+        "line_start": 1,
+        "line_end": 1,
+        "evidence_type": "config"
+      },
+      {
+        "path": "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+        "line_start": 1,
+        "line_end": 52,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6n_exit_and_close_architecture": {
+    "result": "pass",
+    "scope": "6N execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Exit and close architecture",
+    "target_owner": "exit and close authority",
+    "records_audited": [
+      "NIS-0037",
+      "NIS-0038",
+      "NIS-0040",
+      "NIS-0045",
+      "NIS-0046",
+      "NIS-0049",
+      "NIS-0066",
+      "NIS-0069",
+      "NIS-0072",
+      "NIS-0096",
+      "NIS-0098",
+      "NIS-0100",
+      "NIS-0125",
+      "NIS-0137",
+      "NIS-0138",
+      "NIS-0139",
+      "NIS-0140",
+      "NIS-0143",
+      "NIS-0146",
+      "NIS-0147",
+      "NIS-0151",
+      "NIS-0152",
+      "NIS-0153",
+      "NIS-0162",
+      "NIS-0262",
+      "NIS-0264",
+      "NIS-0275",
+      "NIS-0276",
+      "NIS-0284",
+      "NIS-0285",
+      "NIS-0311",
+      "NIS-0312",
+      "NIS-0320",
+      "NIS-0323",
+      "NIS-0330",
+      "NIS-0545",
+      "NIS-0742",
+      "NIS-0744",
+      "NIS-0746",
+      "NIS-0748",
+      "NIS-0750",
+      "NIS-0751",
+      "NIS-0754",
+      "NIS-0755",
+      "NIS-0756",
+      "NIS-0763",
+      "NIS-0765",
+      "NIS-0891",
+      "NIS-0892",
+      "NIS-0893",
+      "NIS-0894",
+      "NIS-0895",
+      "NIS-0897",
+      "NIS-0898",
+      "NIS-0900",
+      "NIS-0901",
+      "NIS-0902",
+      "NIS-0903",
+      "NIS-0904",
+      "NIS-1002",
+      "NIS-1005",
+      "NIS-1054",
+      "NIS-1059",
+      "NIS-1060",
+      "NIS-1061",
+      "NIS-1062",
+      "NIS-1064",
+      "NIS-1065",
+      "NIS-1066",
+      "NIS-1068",
+      "NIS-1069",
+      "NIS-1070",
+      "NIS-1072",
+      "NIS-1075",
+      "NIS-1308",
+      "NIS-1309",
+      "NIS-1310",
+      "NIS-1311",
+      "NIS-1312",
+      "NIS-1313",
+      "NIS-1314",
+      "NIS-1315",
+      "NIS-1316",
+      "NIS-1317",
+      "NIS-1319",
+      "NIS-1320",
+      "NIS-1322",
+      "NIS-1323",
+      "NIS-1324",
+      "NIS-1494"
+    ],
+    "record_count": 90,
+    "status_counts_for_slice": {
+      "missing": 47,
+      "transform_required": 43
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 276,
+      "partially_satisfied": 485,
+      "transform_required": 576,
+      "missing": 376,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 276,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 356,
+        "line_end": 371,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/contracts/execution.py",
+        "line_start": 1,
+        "line_end": 26,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/domain/execution/lifecycle_plan.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/execution_service.py",
+        "line_start": 1,
+        "line_end": 19,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/serial_recommendation/test_execution_contract_models.py",
+        "line_start": 1,
+        "line_end": 48,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6o_opening_architecture_and_placement_readiness": {
+    "result": "pass",
+    "scope": "6O execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Opening architecture and placement readiness",
+    "target_owner": "downstream opening authority",
+    "records_audited": [
+      "NIS-0196",
+      "NIS-0197",
+      "NIS-0198",
+      "NIS-0200",
+      "NIS-0201",
+      "NIS-0203",
+      "NIS-0204",
+      "NIS-0206",
+      "NIS-0207",
+      "NIS-0208",
+      "NIS-0209",
+      "NIS-0211",
+      "NIS-0213",
+      "NIS-0215",
+      "NIS-0216",
+      "NIS-0217",
+      "NIS-0219",
+      "NIS-0220",
+      "NIS-0221",
+      "NIS-0270",
+      "NIS-0279",
+      "NIS-0286",
+      "NIS-0288",
+      "NIS-0315",
+      "NIS-0689",
+      "NIS-0757",
+      "NIS-0856",
+      "NIS-0857",
+      "NIS-0858",
+      "NIS-0859",
+      "NIS-0860",
+      "NIS-0861",
+      "NIS-0862",
+      "NIS-0863",
+      "NIS-0864",
+      "NIS-1165",
+      "NIS-1166",
+      "NIS-1168",
+      "NIS-1171",
+      "NIS-1172",
+      "NIS-1173",
+      "NIS-1209",
+      "NIS-1210",
+      "NIS-1211",
+      "NIS-1212",
+      "NIS-1214",
+      "NIS-1216",
+      "NIS-1217",
+      "NIS-1218",
+      "NIS-1451",
+      "NIS-1505",
+      "NIS-1506",
+      "NIS-1509",
+      "NIS-1510",
+      "NIS-1511",
+      "NIS-1512",
+      "NIS-1513",
+      "NIS-1514",
+      "NIS-1515",
+      "NIS-1516",
+      "NIS-1517",
+      "NIS-1518",
+      "NIS-1519",
+      "NIS-1520",
+      "NIS-1521",
+      "NIS-1522",
+      "NIS-1523",
+      "NIS-1524",
+      "NIS-1525",
+      "NIS-1526",
+      "NIS-1527",
+      "NIS-1528",
+      "NIS-1529",
+      "NIS-1530"
+    ],
+    "record_count": 74,
+    "status_counts_for_slice": {
+      "transform_required": 61,
+      "missing": 7,
+      "partially_satisfied": 6
+    },
+    "global_native_satisfaction_status_counts": {
+      "pending_gate6": 202,
+      "partially_satisfied": 491,
+      "transform_required": 637,
+      "missing": 383,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 202,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 322,
+        "line_end": 337,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/downstream/opening.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/downstream/opening.py",
+        "line_start": 1,
+        "line_end": 10,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/downstream_opening_service.py",
+        "line_start": 1,
+        "line_end": 13,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/downstream.py",
+        "line_start": 1,
+        "line_end": 34,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py",
+        "line_start": 1,
+        "line_end": 27,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/downstream_runtime/test_downstream_contract_models.py",
+        "line_start": 1,
+        "line_end": 32,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6p_dmpv3_packet_carriage": {
+    "result": "pass",
+    "scope": "6P execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "DMPV3 packet carriage",
+    "target_owner": "DMPV3 packet authority",
+    "records_audited": [
+      "NIS-0001",
+      "NIS-0002",
+      "NIS-0003",
+      "NIS-0004",
+      "NIS-0005",
+      "NIS-0006",
+      "NIS-0007",
+      "NIS-0008",
+      "NIS-0009",
+      "NIS-0010",
+      "NIS-0011",
+      "NIS-0012",
+      "NIS-0013",
+      "NIS-0014",
+      "NIS-0015",
+      "NIS-0016",
+      "NIS-0017",
+      "NIS-0018",
+      "NIS-0019",
+      "NIS-0020",
+      "NIS-0021",
+      "NIS-0022",
+      "NIS-0023",
+      "NIS-0024",
+      "NIS-0025",
+      "NIS-0026",
+      "NIS-0027",
+      "NIS-0028",
+      "NIS-0134",
+      "NIS-0135",
+      "NIS-0336",
+      "NIS-0348",
+      "NIS-0353",
+      "NIS-0355",
+      "NIS-0483",
+      "NIS-0548",
+      "NIS-0556",
+      "NIS-0560",
+      "NIS-0562",
+      "NIS-0583",
+      "NIS-0601",
+      "NIS-0603",
+      "NIS-0607",
+      "NIS-0638",
+      "NIS-0641",
+      "NIS-0643",
+      "NIS-0646",
+      "NIS-0648",
+      "NIS-0650",
+      "NIS-0961",
+      "NIS-1056",
+      "NIS-1057",
+      "NIS-1058",
+      "NIS-1063",
+      "NIS-1128",
+      "NIS-1129",
+      "NIS-1130",
+      "NIS-1131",
+      "NIS-1132",
+      "NIS-1133",
+      "NIS-1134",
+      "NIS-1135",
+      "NIS-1136",
+      "NIS-1137",
+      "NIS-1138",
+      "NIS-1139",
+      "NIS-1140",
+      "NIS-1141",
+      "NIS-1201",
+      "NIS-1213",
+      "NIS-1223",
+      "NIS-1232",
+      "NIS-1604"
+    ],
+    "record_count": 73,
+    "status_counts_for_slice": {
+      "partially_satisfied": 28,
+      "missing": 21,
+      "transform_required": 24
+    },
+    "global_native_satisfaction_status_counts": {
+      "partially_satisfied": 519,
+      "transform_required": 661,
+      "missing": 404,
+      "pending_gate6": 129,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 129,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 220,
+        "line_end": 235,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/contracts/packets.py",
+        "line_start": 1,
+        "line_end": 248,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/packets/dmp_packets.py",
+        "line_start": 1,
+        "line_end": 251,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/schemas/dmp.py",
+        "line_start": 1,
+        "line_end": 12,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/schemas/dmp_envelope.py",
+        "line_start": 1,
+        "line_end": 23,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "tests/tier_a/packets/test_reference_packet_carriage.py",
+        "line_start": 1,
+        "line_end": 84,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+        "line_start": 1,
+        "line_end": 77,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py",
+        "line_start": 1,
+        "line_end": 68,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6q_testing_proof_and_checkpoint_surfaces": {
+    "result": "pass",
+    "scope": "6Q execution slice only; full Gate 6 remains in progress.",
+    "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+    "target_owner": "testing and proof authorities",
+    "records_audited": [
+      "NIS-0095",
+      "NIS-0099",
+      "NIS-0116",
+      "NIS-0117",
+      "NIS-0261",
+      "NIS-0277",
+      "NIS-0356",
+      "NIS-0368",
+      "NIS-0369",
+      "NIS-0376",
+      "NIS-0429",
+      "NIS-0455",
+      "NIS-0466",
+      "NIS-0471",
+      "NIS-0582",
+      "NIS-0590",
+      "NIS-0679",
+      "NIS-0690",
+      "NIS-0691",
+      "NIS-0692",
+      "NIS-0730",
+      "NIS-0731",
+      "NIS-0732",
+      "NIS-0733",
+      "NIS-0734",
+      "NIS-0735",
+      "NIS-0736",
+      "NIS-0737",
+      "NIS-0738",
+      "NIS-0739",
+      "NIS-0740",
+      "NIS-0926",
+      "NIS-0927",
+      "NIS-0928",
+      "NIS-0929",
+      "NIS-0930",
+      "NIS-0931",
+      "NIS-0932",
+      "NIS-0933",
+      "NIS-0934",
+      "NIS-0935",
+      "NIS-0936",
+      "NIS-0937",
+      "NIS-0938",
+      "NIS-0939",
+      "NIS-0940",
+      "NIS-0941",
+      "NIS-0942",
+      "NIS-0943",
+      "NIS-0944",
+      "NIS-0945",
+      "NIS-0946",
+      "NIS-0964",
+      "NIS-1021",
+      "NIS-1027",
+      "NIS-1030",
+      "NIS-1032",
+      "NIS-1035",
+      "NIS-1044",
+      "NIS-1048",
+      "NIS-1093",
+      "NIS-1094",
+      "NIS-1095",
+      "NIS-1096",
+      "NIS-1097",
+      "NIS-1164",
+      "NIS-1167",
+      "NIS-1169",
+      "NIS-1174",
+      "NIS-1176",
+      "NIS-1177",
+      "NIS-1483"
+    ],
+    "record_count": 72,
+    "status_counts_for_slice": {
+      "transform_required": 28,
+      "partially_satisfied": 44
+    },
+    "global_native_satisfaction_status_counts": {
+      "partially_satisfied": 563,
+      "transform_required": 689,
+      "missing": 404,
+      "pending_gate6": 57,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 57,
+    "gate6_complete": false,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 407,
+        "line_end": 422,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/downstream/checkpoints.py",
+        "line_start": 1,
+        "line_end": 7,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/testing/bounded_trace_review.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/testing/harnesses/canonical_runtime.py",
+        "line_start": 1,
+        "line_end": 83,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+        "line_start": 1,
+        "line_end": 456,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "line_start": 1,
+        "line_end": 195,
+        "evidence_type": "code"
+      },
+      {
+        "path": "config/proof_blocks.yaml",
+        "line_start": 1,
+        "line_end": 5,
+        "evidence_type": "config"
+      },
+      {
+        "path": "config/retained_test_registry.yaml",
+        "line_start": 1,
+        "line_end": 2025,
+        "evidence_type": "config"
+      },
+      {
+        "path": "tests/tier_b/proof_model/test_proof_executor_contract.py",
+        "line_start": 1,
+        "line_end": 22,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py",
+        "line_start": 1,
+        "line_end": 47,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6r_parallel_risk_lane": {
+    "result": "pass",
+    "scope": "6R execution slice completed remaining Gate 6 records.",
+    "blueprint_surface": "Parallel risk lane",
+    "target_owner": "parallel risk authority",
+    "records_audited": [
+      "NIS-0083",
+      "NIS-0084",
+      "NIS-0085",
+      "NIS-0086",
+      "NIS-0087",
+      "NIS-0088",
+      "NIS-0089",
+      "NIS-0090",
+      "NIS-0092",
+      "NIS-0094",
+      "NIS-0337",
+      "NIS-0338",
+      "NIS-0340",
+      "NIS-0341",
+      "NIS-0342",
+      "NIS-0343",
+      "NIS-0344",
+      "NIS-0345",
+      "NIS-0346",
+      "NIS-0347",
+      "NIS-0350",
+      "NIS-0351",
+      "NIS-0352",
+      "NIS-0354",
+      "NIS-0427",
+      "NIS-0579",
+      "NIS-1090",
+      "NIS-1230",
+      "NIS-1234",
+      "NIS-1236",
+      "NIS-1238",
+      "NIS-1239",
+      "NIS-1258",
+      "NIS-1259",
+      "NIS-1261",
+      "NIS-1262",
+      "NIS-1263",
+      "NIS-1264",
+      "NIS-1266",
+      "NIS-1267",
+      "NIS-1268",
+      "NIS-1269",
+      "NIS-1270",
+      "NIS-1271",
+      "NIS-1272",
+      "NIS-1381",
+      "NIS-1382",
+      "NIS-1383",
+      "NIS-1384",
+      "NIS-1385",
+      "NIS-1386",
+      "NIS-1387",
+      "NIS-1388",
+      "NIS-1389",
+      "NIS-1390",
+      "NIS-1391",
+      "NIS-1392"
+    ],
+    "record_count": 57,
+    "status_counts_for_slice": {
+      "partially_satisfied": 32,
+      "transform_required": 25
+    },
+    "global_native_satisfaction_status_counts": {
+      "partially_satisfied": 595,
+      "transform_required": 714,
+      "missing": 404,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 0,
+    "gate6_complete": true,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "supporting_evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "line_start": 254,
+        "line_end": 269,
+        "evidence_type": "blueprint"
+      },
+      {
+        "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+        "line_start": 774,
+        "line_end": 784,
+        "evidence_type": "normative"
+      },
+      {
+        "path": "src/nvda_desk/risk/parallel/evaluate.py",
+        "line_start": 1,
+        "line_end": 139,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "line_start": 1,
+        "line_end": 160,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/services/final_risk_service.py",
+        "line_start": 1,
+        "line_end": 16,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/contracts/parallel_risk.py",
+        "line_start": 1,
+        "line_end": 362,
+        "evidence_type": "schema"
+      },
+      {
+        "path": "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+        "line_start": 1,
+        "line_end": 16,
+        "evidence_type": "code"
+      },
+      {
+        "path": "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+        "line_start": 1,
+        "line_end": 40,
+        "evidence_type": "code"
+      },
+      {
+        "path": "tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py",
+        "line_start": 1,
+        "line_end": 83,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py",
+        "line_start": 1,
+        "line_end": 57,
+        "evidence_type": "test"
+      },
+      {
+        "path": "tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py",
+        "line_start": 1,
+        "line_end": 99,
+        "evidence_type": "test"
+      }
+    ],
+    "blockers": []
+  },
+  "gate6_closeout": {
+    "result": "pass",
+    "scope": "Gate 6 closeout only; full Gate 6 native satisfaction audit closed before Gate 7.",
+    "completed_slices": [
+      "6A",
+      "6B",
+      "6C",
+      "6D",
+      "6E",
+      "6F",
+      "6G",
+      "6H",
+      "6I",
+      "6J",
+      "6K",
+      "6L",
+      "6M",
+      "6N",
+      "6O",
+      "6P",
+      "6Q",
+      "6R"
+    ],
+    "global_native_satisfaction_status_counts": {
+      "partially_satisfied": 595,
+      "transform_required": 714,
+      "missing": 404,
+      "already_satisfied": 3
+    },
+    "remaining_pending_gate6_count": 0,
+    "gate6_complete": true,
+    "gate7_started": false,
+    "proof_resolution_left_pending_gate7": true,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "closeout_verification": {
+      "json_parse_passed": true,
+      "pending_gate6_zero": true,
+      "gate7_fields_left_pending": true,
+      "changed_paths_limited_to_authorised_ledgers": true,
+      "runtime_and_tests_unchanged": true
+    },
+    "blockers": [],
+    "closed_at_utc": "2026-04-26T07:04:16Z"
+  },
+  "gate7a_downstream_capital_deployment_authority": {
+    "result": "pass",
+    "scope": "Gate 7A proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Downstream capital deployment authority",
+    "target_owner": "capital deployment authority",
+    "record_count": 2,
+    "proof_tier_counts": {
+      "Tier A": 1,
+      "Tier B": 1
+    },
+    "test_family_action_counts": {
+      "admit_new": 1,
+      "extend_existing": 1
+    },
+    "proof_block_action_counts": {
+      "admit_new": 1,
+      "extend_existing": 1
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 1,
+      "new_test_family_required": 1
+    },
+    "implementation_leaf_required_counts": {
+      "true": 2
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 1,
+      "later_test_first_leaf": 1
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 2
+    },
+    "docstring_declaration_required_counts": {
+      "true": 2
+    },
+    "remaining_pending_gate7_count": 1714,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:20:32Z"
+  },
+  "gate7b_vocabulary_governance_interface": {
+    "result": "pass",
+    "scope": "Gate 7B proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Vocabulary governance interface",
+    "target_owner": null,
+    "record_count": 10,
+    "proof_tier_counts": {
+      "Tier A": 10
+    },
+    "test_family_action_counts": {
+      "admit_new": 6,
+      "extend_existing": 3,
+      "reuse_existing": 1
+    },
+    "proof_block_action_counts": {
+      "admit_new": 6,
+      "extend_existing": 3,
+      "none": 1
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 3,
+      "new_test_family_required": 6,
+      "no_test_change_required": 1
+    },
+    "implementation_leaf_required_counts": {
+      "false": 1,
+      "true": 9
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 3,
+      "later_test_first_leaf": 6,
+      "none": 1
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 10
+    },
+    "docstring_declaration_required_counts": {
+      "false": 1,
+      "true": 9
+    },
+    "remaining_pending_gate7_count": 1704,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:21:12Z"
+  },
+  "gate7c_live_position_and_inventory_architecture": {
+    "result": "pass",
+    "scope": "Gate 7C proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Live position and inventory architecture",
+    "target_owner": null,
+    "record_count": 38,
+    "proof_tier_counts": {
+      "Tier A": 38
+    },
+    "test_family_action_counts": {
+      "admit_new": 22,
+      "extend_existing": 14,
+      "reuse_existing": 2
+    },
+    "proof_block_action_counts": {
+      "admit_new": 22,
+      "extend_existing": 14,
+      "none": 2
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 14,
+      "new_test_family_required": 22,
+      "no_test_change_required": 2
+    },
+    "implementation_leaf_required_counts": {
+      "false": 2,
+      "true": 36
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 17,
+      "later_test_first_leaf": 19,
+      "none": 2
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 38
+    },
+    "docstring_declaration_required_counts": {
+      "false": 2,
+      "true": 36
+    },
+    "remaining_pending_gate7_count": 1666,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:23:44Z"
+  },
+  "gate7d_prepared_ingress_and_runtime_context_preparation": {
+    "result": "pass",
+    "scope": "Gate 7D proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Prepared ingress and runtime context preparation",
+    "target_owner": null,
+    "record_count": 51,
+    "proof_tier_counts": {
+      "Tier A": 51
+    },
+    "test_family_action_counts": {
+      "admit_new": 33,
+      "extend_existing": 18
+    },
+    "proof_block_action_counts": {
+      "admit_new": 33,
+      "extend_existing": 18
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 18,
+      "new_test_family_required": 33
+    },
+    "implementation_leaf_required_counts": {
+      "true": 51
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 2,
+      "later_test_first_leaf": 49
+    },
+    "checkpoint_declaration_required_counts": {
+      "true": 51
+    },
+    "docstring_declaration_required_counts": {
+      "true": 51
+    },
+    "remaining_pending_gate7_count": 1615,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:24:38Z"
+  },
+  "gate7e_external_source_interfaces_and_api_ingress": {
+    "result": "pass",
+    "scope": "Gate 7E proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "External source interfaces and API ingress",
+    "target_owner": null,
+    "record_count": 234,
+    "proof_tier_counts": {
+      "Tier A": 234
+    },
+    "test_family_action_counts": {
+      "admit_new": 186,
+      "extend_existing": 48
+    },
+    "proof_block_action_counts": {
+      "admit_new": 186,
+      "extend_existing": 48
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 48,
+      "new_test_family_required": 186
+    },
+    "implementation_leaf_required_counts": {
+      "true": 234
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 76,
+      "later_test_first_leaf": 158
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 234
+    },
+    "docstring_declaration_required_counts": {
+      "true": 234
+    },
+    "remaining_pending_gate7_count": 1381,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:26:32Z"
+  },
+  "gate7f_dynamic_coefficient_and_modifier_authority": {
+    "result": "pass",
+    "scope": "Gate 7F proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Dynamic coefficient and modifier authority",
+    "target_owner": null,
+    "record_count": 193,
+    "proof_tier_counts": {
+      "Tier A": 193
+    },
+    "test_family_action_counts": {
+      "admit_new": 127,
+      "extend_existing": 66
+    },
+    "proof_block_action_counts": {
+      "admit_new": 127,
+      "extend_existing": 66
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 66,
+      "new_test_family_required": 127
+    },
+    "implementation_leaf_required_counts": {
+      "true": 193
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 43,
+      "later_test_first_leaf": 150
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 193
+    },
+    "docstring_declaration_required_counts": {
+      "true": 193
+    },
+    "remaining_pending_gate7_count": 1188,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:28:23Z"
+  },
+  "gate7g_review_and_explanation_layer": {
+    "result": "pass",
+    "scope": "Gate 7G proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Review and explanation layer",
+    "target_owner": null,
+    "record_count": 143,
+    "proof_tier_counts": {
+      "Tier A": 143
+    },
+    "test_family_action_counts": {
+      "admit_new": 91,
+      "extend_existing": 52
+    },
+    "proof_block_action_counts": {
+      "admit_new": 91,
+      "extend_existing": 52
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 52,
+      "new_test_family_required": 91
+    },
+    "implementation_leaf_required_counts": {
+      "true": 143
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 46,
+      "later_test_first_leaf": 97
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 143
+    },
+    "docstring_declaration_required_counts": {
+      "true": 143
+    },
+    "remaining_pending_gate7_count": 1045,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:31:03Z"
+  },
+  "gate7h_serial_desk_cognition_spine": {
+    "result": "pass",
+    "scope": "Gate 7H proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Serial desk-cognition spine",
+    "target_owner": null,
+    "record_count": 139,
+    "proof_tier_counts": {
+      "Tier A": 139
+    },
+    "test_family_action_counts": {
+      "admit_new": 109,
+      "extend_existing": 30
+    },
+    "proof_block_action_counts": {
+      "admit_new": 109,
+      "extend_existing": 30
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 30,
+      "new_test_family_required": 109
+    },
+    "implementation_leaf_required_counts": {
+      "true": 139
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 109,
+      "later_test_first_leaf": 30
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 139
+    },
+    "docstring_declaration_required_counts": {
+      "true": 139
+    },
+    "remaining_pending_gate7_count": 906,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:31:16Z"
+  },
+  "gate7i_raw_signal_families": {
+    "result": "pass",
+    "scope": "Gate 7I proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Raw signal families",
+    "target_owner": null,
+    "record_count": 123,
+    "proof_tier_counts": {
+      "Tier A": 123
+    },
+    "test_family_action_counts": {
+      "admit_new": 90,
+      "extend_existing": 33
+    },
+    "proof_block_action_counts": {
+      "admit_new": 90,
+      "extend_existing": 33
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 33,
+      "new_test_family_required": 90
+    },
+    "implementation_leaf_required_counts": {
+      "true": 123
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 68,
+      "later_test_first_leaf": 55
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 123
+    },
+    "docstring_declaration_required_counts": {
+      "true": 123
+    },
+    "remaining_pending_gate7_count": 783,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:33:09Z"
+  },
+  "gate7j_financial_and_event_calendar_architecture": {
+    "result": "pass",
+    "scope": "Gate 7J proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Financial and event calendar architecture",
+    "target_owner": null,
+    "record_count": 117,
+    "proof_tier_counts": {
+      "Tier A": 117
+    },
+    "test_family_action_counts": {
+      "admit_new": 15,
+      "extend_existing": 102
+    },
+    "proof_block_action_counts": {
+      "admit_new": 15,
+      "extend_existing": 102
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 102,
+      "new_test_family_required": 15
+    },
+    "implementation_leaf_required_counts": {
+      "true": 117
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 15,
+      "later_test_first_leaf": 102
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 117
+    },
+    "docstring_declaration_required_counts": {
+      "true": 117
+    },
+    "remaining_pending_gate7_count": 666,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:33:28Z"
+  },
+  "gate7k_raw_capture_and_source_temporal_law": {
+    "result": "pass",
+    "scope": "Gate 7K proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Raw capture and source temporal law",
+    "target_owner": null,
+    "record_count": 108,
+    "proof_tier_counts": {
+      "Tier A": 108
+    },
+    "test_family_action_counts": {
+      "admit_new": 77,
+      "extend_existing": 31
+    },
+    "proof_block_action_counts": {
+      "admit_new": 77,
+      "extend_existing": 31
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 31,
+      "new_test_family_required": 77
+    },
+    "implementation_leaf_required_counts": {
+      "true": 108
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 66,
+      "later_test_first_leaf": 42
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 108
+    },
+    "docstring_declaration_required_counts": {
+      "true": 108
+    },
+    "remaining_pending_gate7_count": 558,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:33:55Z"
+  },
+  "gate7l_persistence_ledgers_and_receipts": {
+    "result": "pass",
+    "scope": "Gate 7L proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Persistence, ledgers, and receipts",
+    "target_owner": null,
+    "record_count": 97,
+    "proof_tier_counts": {
+      "Tier A": 97
+    },
+    "test_family_action_counts": {
+      "admit_new": 41,
+      "extend_existing": 56
+    },
+    "proof_block_action_counts": {
+      "admit_new": 41,
+      "extend_existing": 56
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 56,
+      "new_test_family_required": 41
+    },
+    "implementation_leaf_required_counts": {
+      "true": 97
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 23,
+      "later_test_first_leaf": 74
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 97
+    },
+    "docstring_declaration_required_counts": {
+      "true": 97
+    },
+    "remaining_pending_gate7_count": 461,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:36:11Z"
+  },
+  "gate7m_playbook_library_architecture": {
+    "result": "pass",
+    "scope": "Gate 7M proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Playbook library architecture",
+    "target_owner": null,
+    "record_count": 95,
+    "proof_tier_counts": {
+      "Tier A": 95
+    },
+    "test_family_action_counts": {
+      "admit_new": 64,
+      "extend_existing": 31
+    },
+    "proof_block_action_counts": {
+      "admit_new": 64,
+      "extend_existing": 31
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 31,
+      "new_test_family_required": 64
+    },
+    "implementation_leaf_required_counts": {
+      "true": 95
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 64,
+      "later_test_first_leaf": 31
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 95
+    },
+    "docstring_declaration_required_counts": {
+      "true": 95
+    },
+    "remaining_pending_gate7_count": 366,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:38:11Z"
+  },
+  "gate7n_exit_and_close_architecture": {
+    "result": "pass",
+    "scope": "Gate 7N proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Exit and close architecture",
+    "target_owner": null,
+    "record_count": 90,
+    "proof_tier_counts": {
+      "Tier A": 90
+    },
+    "test_family_action_counts": {
+      "admit_new": 90
+    },
+    "proof_block_action_counts": {
+      "admit_new": 90
+    },
+    "existing_test_decision_counts": {
+      "new_test_family_required": 90
+    },
+    "implementation_leaf_required_counts": {
+      "true": 90
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 43,
+      "later_test_first_leaf": 47
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 90
+    },
+    "docstring_declaration_required_counts": {
+      "true": 90
+    },
+    "remaining_pending_gate7_count": 276,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:38:32Z"
+  },
+  "gate7o_opening_architecture_and_placement_readiness": {
+    "result": "pass",
+    "scope": "Gate 7O proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Opening architecture and placement readiness",
+    "target_owner": null,
+    "record_count": 74,
+    "proof_tier_counts": {
+      "Tier A": 74
+    },
+    "test_family_action_counts": {
+      "admit_new": 68,
+      "extend_existing": 6
+    },
+    "proof_block_action_counts": {
+      "admit_new": 68,
+      "extend_existing": 6
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 6,
+      "new_test_family_required": 68
+    },
+    "implementation_leaf_required_counts": {
+      "true": 74
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 61,
+      "later_test_first_leaf": 13
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 74
+    },
+    "docstring_declaration_required_counts": {
+      "true": 74
+    },
+    "remaining_pending_gate7_count": 202,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:39:28Z"
+  },
+  "gate7p_dmpv3_packet_carriage": {
+    "result": "pass",
+    "scope": "Gate 7P proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "DMPV3 packet carriage",
+    "target_owner": null,
+    "record_count": 73,
+    "proof_tier_counts": {
+      "Tier A": 73
+    },
+    "test_family_action_counts": {
+      "admit_new": 45,
+      "extend_existing": 28
+    },
+    "proof_block_action_counts": {
+      "admit_new": 45,
+      "extend_existing": 28
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 28,
+      "new_test_family_required": 45
+    },
+    "implementation_leaf_required_counts": {
+      "true": 73
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 24,
+      "later_test_first_leaf": 49
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 73
+    },
+    "docstring_declaration_required_counts": {
+      "true": 73
+    },
+    "remaining_pending_gate7_count": 129,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:42:02Z"
+  },
+  "gate7q_testing_proof_and_checkpoint_surfaces": {
+    "result": "pass",
+    "scope": "Gate 7Q proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+    "target_owner": null,
+    "record_count": 72,
+    "proof_tier_counts": {
+      "Tier B": 72
+    },
+    "test_family_action_counts": {
+      "admit_new": 28,
+      "extend_existing": 44
+    },
+    "proof_block_action_counts": {
+      "admit_new": 28,
+      "extend_existing": 44
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 44,
+      "new_test_family_required": 28
+    },
+    "implementation_leaf_required_counts": {
+      "true": 72
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 28,
+      "later_test_first_leaf": 44
+    },
+    "checkpoint_declaration_required_counts": {
+      "true": 72
+    },
+    "docstring_declaration_required_counts": {
+      "true": 72
+    },
+    "remaining_pending_gate7_count": 57,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:42:31Z"
+  },
+  "gate7r_parallel_risk_lane": {
+    "result": "pass",
+    "scope": "Gate 7R proof/checkpoint resolution slice only; Gate 6 satisfaction values preserved; Gate 8 not started.",
+    "blueprint_surface": "Parallel risk lane",
+    "target_owner": null,
+    "record_count": 57,
+    "proof_tier_counts": {
+      "Tier A": 57
+    },
+    "test_family_action_counts": {
+      "admit_new": 25,
+      "extend_existing": 32
+    },
+    "proof_block_action_counts": {
+      "admit_new": 25,
+      "extend_existing": 32
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 32,
+      "new_test_family_required": 25
+    },
+    "implementation_leaf_required_counts": {
+      "true": 57
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 25,
+      "later_test_first_leaf": 32
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 57
+    },
+    "docstring_declaration_required_counts": {
+      "true": 57
+    },
+    "remaining_pending_gate7_count": 0,
+    "gate6_status_preserved": true,
+    "gate7_started": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "completed_at_utc": "2026-04-26T07:46:09Z"
+  },
+  "gate7_closeout": {
+    "result": "pass",
+    "scope": "Gate 7 closeout only; proof/checkpoint resolution audit closed before Gate 8.",
+    "completed_slices": [
+      "7A",
+      "7B",
+      "7C",
+      "7D",
+      "7E",
+      "7F",
+      "7G",
+      "7H",
+      "7I",
+      "7J",
+      "7K",
+      "7L",
+      "7M",
+      "7N",
+      "7O",
+      "7P",
+      "7Q",
+      "7R"
+    ],
+    "proof_tier_counts": {
+      "Tier A": 1643,
+      "Tier B": 73
+    },
+    "test_family_action_counts": {
+      "admit_new": 1118,
+      "extend_existing": 595,
+      "reuse_existing": 3
+    },
+    "proof_block_action_counts": {
+      "admit_new": 1118,
+      "extend_existing": 595,
+      "none": 3
+    },
+    "existing_test_decision_counts": {
+      "extend_existing_same_invariant": 595,
+      "new_test_family_required": 1118,
+      "no_test_change_required": 3
+    },
+    "implementation_leaf_required_counts": {
+      "false": 3,
+      "true": 1713
+    },
+    "implementation_leaf_type_counts": {
+      "later_blueprint_leaf": 714,
+      "later_test_first_leaf": 999,
+      "none": 3
+    },
+    "checkpoint_declaration_required_counts": {
+      "false": 1593,
+      "true": 123
+    },
+    "docstring_declaration_required_counts": {
+      "false": 3,
+      "true": 1713
+    },
+    "remaining_pending_gate7_count": 0,
+    "gate7_complete": true,
+    "gate8_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "authorised_files_only": true,
+    "blockers": [],
+    "closed_at_utc": "2026-04-26T07:47:28Z"
+  },
+  "gate8_validation": {
+    "result": "pass",
+    "scope": "Gate 8 whole-ledger validation only after Gate 7 closeout; no Gate 9 closeout and no implementation work.",
+    "schema_validation": {
+      "result": "pass",
+      "schema_source": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md lines 514-685",
+      "pre_validation_error_count": 11941,
+      "pre_validation_error_type_counts": {
+        "'gate7_closed' is not one of ['draft', 'in_progress', 'complete', 'blocked', 'superseded']": 1,
+        "'proof_law' is not one of ['atlas', 'blueprint', 'normative', 'vocabulary', 'test', 'proof_block', 'code', 'config', 'schema', 'packet', 'docstring', 'ledger', 'tool_output']": 5148,
+        "'bridge_execplan' is not one of ['atlas', 'blueprint', 'normative', 'vocabulary', 'test', 'proof_block', 'code', 'config', 'schema', 'packet', 'docstring', 'ledger', 'tool_output']": 3432,
+        "'retained_test_registry' is not one of ['atlas', 'blueprint', 'normative', 'vocabulary', 'test', 'proof_block', 'code', 'config', 'schema', 'packet', 'docstring', 'ledger', 'tool_output']": 1716,
+        "'proof_block_registry' is not one of ['atlas', 'blueprint', 'normative', 'vocabulary', 'test', 'proof_block', 'code', 'config', 'schema', 'packet', 'docstring', 'ledger', 'tool_output']": 1644
+      },
+      "post_validation_error_count": 0,
+      "post_validation_sample_errors": [],
+      "schema_corrections_applied": {
+        "ledger_status_normalised_to_schema_enum": true,
+        "evidence_type_normalisation_counts": {
+          "proof_law->normative": 5148,
+          "bridge_execplan->normative": 3432,
+          "retained_test_registry->config": 1716,
+          "proof_block_registry->proof_block": 1644
+        }
+      }
+    },
+    "duplicate_id_validation": {
+      "result": "pass",
+      "record_count": 1716,
+      "unique_satisfaction_record_ids": 1716,
+      "duplicate_satisfaction_record_ids": []
+    },
+    "semantic_validation": {
+      "result": "pass",
+      "rules_source": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md lines 694-715",
+      "failure_count": 0,
+      "warning_count": 6,
+      "rule_results": [
+        {
+          "rule": 1,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 2,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 3,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 4,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 6,
+          "sample_failures": [],
+          "sample_warnings": [
+            {
+              "rule": 4,
+              "record_id": "NIS-0110",
+              "msg": "donor_provenance range differs from coverage-view disposition range but same atlas_record_id is present in the coverage view",
+              "extra": {
+                "ledger_range": [
+                  "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+                  101,
+                  103
+                ],
+                "coverage_range": [
+                  "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+                  101,
+                  104
+                ]
+              }
+            },
+            {
+              "rule": 4,
+              "record_id": "NIS-1226",
+              "msg": "donor_provenance range differs from coverage-view disposition range but same atlas_record_id is present in the coverage view",
+              "extra": {
+                "ledger_range": [
+                  "legacy_import/source/nvda_desk/services/imported_modules/posture_enrichers.py",
+                  221,
+                  262
+                ],
+                "coverage_range": [
+                  "legacy_import/source/nvda_desk/services/imported_modules/posture_enrichers.py",
+                  220,
+                  262
+                ]
+              }
+            },
+            {
+              "rule": 4,
+              "record_id": "NIS-1253",
+              "msg": "donor_provenance range differs from coverage-view disposition range but same atlas_record_id is present in the coverage view",
+              "extra": {
+                "ledger_range": [
+                  "legacy_import/source/nvda_desk/services/options_flow_context.py",
+                  265,
+                  273
+                ],
+                "coverage_range": [
+                  "legacy_import/source/nvda_desk/services/options_flow_context.py",
+                  264,
+                  273
+                ]
+              }
+            },
+            {
+              "rule": 4,
+              "record_id": "NIS-1289",
+              "msg": "donor_provenance range differs from coverage-view disposition range but same atlas_record_id is present in the coverage view",
+              "extra": {
+                "ledger_range": [
+                  "legacy_import/source/nvda_desk/services/financial_calendar_projection.py",
+                  56,
+                  57
+                ],
+                "coverage_range": [
+                  "legacy_import/source/nvda_desk/services/financial_calendar_projection.py",
+                  56,
+                  99
+                ]
+              }
+            },
+            {
+              "rule": 4,
+              "record_id": "NIS-1309",
+              "msg": "donor_provenance range differs from coverage-view disposition range but same atlas_record_id is present in the coverage view",
+              "extra": {
+                "ledger_range": [
+                  "legacy_import/source/nvda_desk/services/imported_modules/execution_lifecycle.py",
+                  37,
+                  40
+                ],
+                "coverage_range": [
+                  "legacy_import/source/nvda_desk/services/imported_modules/execution_lifecycle.py",
+                  37,
+                  43
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "rule": 5,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 6,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 7,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 8,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 9,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 10,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 11,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 12,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 13,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 14,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        },
+        {
+          "rule": 15,
+          "result": "pass",
+          "failure_count": 0,
+          "warning_count": 0,
+          "sample_failures": [],
+          "sample_warnings": []
+        }
+      ],
+      "semantic_corrections_applied": {
+        "reserved_surface_direct_leaf_type_records_normalised_to_later_blueprint_leaf": 78,
+        "record_ids": [
+          "NIS-0037",
+          "NIS-0038",
+          "NIS-0040",
+          "NIS-0045",
+          "NIS-0046",
+          "NIS-0049",
+          "NIS-0066",
+          "NIS-0069",
+          "NIS-0072",
+          "NIS-0096",
+          "NIS-0098",
+          "NIS-0100",
+          "NIS-0125",
+          "NIS-0137",
+          "NIS-0143",
+          "NIS-0146",
+          "NIS-0147",
+          "NIS-0151",
+          "NIS-0152",
+          "NIS-0153",
+          "NIS-0162",
+          "NIS-0262",
+          "NIS-0264",
+          "NIS-0289",
+          "NIS-0290",
+          "NIS-0291",
+          "NIS-0292",
+          "NIS-0293",
+          "NIS-0294",
+          "NIS-0296",
+          "NIS-0297",
+          "NIS-0298",
+          "NIS-0299",
+          "NIS-0300",
+          "NIS-0301",
+          "NIS-0302",
+          "NIS-0304",
+          "NIS-0305",
+          "NIS-0307",
+          "NIS-0308",
+          "NIS-0309",
+          "NIS-0311",
+          "NIS-0312",
+          "NIS-0320",
+          "NIS-0330",
+          "NIS-0742",
+          "NIS-0744",
+          "NIS-0746",
+          "NIS-0748",
+          "NIS-0750",
+          "NIS-0751",
+          "NIS-0754",
+          "NIS-0755",
+          "NIS-0756",
+          "NIS-0763",
+          "NIS-0765",
+          "NIS-0893",
+          "NIS-0895",
+          "NIS-0897",
+          "NIS-0898",
+          "NIS-0900",
+          "NIS-0901",
+          "NIS-0902",
+          "NIS-0965",
+          "NIS-0966",
+          "NIS-0967",
+          "NIS-0968",
+          "NIS-0970",
+          "NIS-0972",
+          "NIS-0973",
+          "NIS-0975",
+          "NIS-0976",
+          "NIS-0977",
+          "NIS-0981",
+          "NIS-0982",
+          "NIS-0983",
+          "NIS-1002",
+          "NIS-1494"
+        ]
+      },
+      "nonblocking_warnings": {
+        "coverage_view_exact_range_mismatch_same_atlas_record_id": 6,
+        "record_ids": [
+          "NIS-0110",
+          "NIS-1226",
+          "NIS-1253",
+          "NIS-1289",
+          "NIS-1309",
+          "NIS-1533"
+        ],
+        "basis": "The completed Atlas record donor range remains in donor_provenance; the coverage view contains the same atlas_record_id on the same donor file but with a broader or adjacent disposition range."
+      }
+    },
+    "placeholder_validation": {
+      "result": "pass",
+      "pending_gate6_count": 0,
+      "pending_gate7_count": 0
+    },
+    "final_counts": {
+      "native_satisfaction_status_counts": {
+        "partially_satisfied": 595,
+        "transform_required": 714,
+        "missing": 404,
+        "already_satisfied": 3
+      },
+      "proof_tier_counts": {
+        "Tier A": 1643,
+        "Tier B": 73
+      },
+      "implementation_leaf_type_counts": {
+        "later_test_first_leaf": 921,
+        "later_blueprint_leaf": 792,
+        "none": 3
+      }
+    },
+    "gate9_started": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "proof_block_registry_modified": false,
+    "retained_test_registry_modified": false,
+    "authorised_files_only": true,
+    "validated_at_utc": "2026-04-26T08:13:49Z",
+    "blockers": []
+  },
+  "gate9_closeout": {
+    "result": "pass",
+    "scope": "Gate 9 closeout only after Gate 8 validation; no implementation work and no Gate 10 work.",
+    "source_head_before_gate9": "934c69e0705d5934ff9cbd9ac943679bfcae88b4",
+    "source_branch_before_gate9": "work/bridge-gate9-closeout-20260426",
+    "gate5_baseline_commit": "03b8c36",
+    "gate8_validation_commit": "934c69e0705d5934ff9cbd9ac943679bfcae88b4",
+    "required_gate_status": {
+      "gate6_closed": true,
+      "gate7_closed": true,
+      "gate8_validated": true
+    },
+    "schema_validation_previously_passed": true,
+    "duplicate_id_validation_previously_passed": true,
+    "semantic_validation_previously_passed": true,
+    "final_record_counts": {
+      "record_count": 1716,
+      "native_satisfaction_status_counts": {
+        "already_satisfied": 3,
+        "missing": 404,
+        "partially_satisfied": 595,
+        "transform_required": 714
+      },
+      "proof_tier_counts": {
+        "Tier A": 1643,
+        "Tier B": 73
+      },
+      "existing_test_decision_counts": {
+        "extend_existing_same_invariant": 595,
+        "new_test_family_required": 1118,
+        "no_test_change_required": 3
+      },
+      "checkpoint_declaration_required_counts": {
+        "false": 1593,
+        "true": 123
+      },
+      "docstring_declaration_required_counts": {
+        "false": 3,
+        "true": 1713
+      },
+      "implementation_leaf_required_counts": {
+        "false": 3,
+        "true": 1713
+      },
+      "implementation_leaf_type_counts": {
+        "later_blueprint_leaf": 792,
+        "later_test_first_leaf": 921,
+        "none": 3
+      },
+      "pending_gate6_count": 0,
+      "pending_gate7_tier_count": 0,
+      "pending_gate7_existing_test_decision_count": 0,
+      "pending_gate7_implementation_leaf_type_count": 0,
+      "null_checkpoint_declaration_required_count": 0,
+      "null_docstring_declaration_required_count": 0
+    },
+    "changed_files_since_gate5_baseline": [
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_provenance_register.json",
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_validation_report.json"
+    ],
+    "authorised_files_only_since_gate5_baseline": true,
+    "authorised_ledger_files": [
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_provenance_register.json",
+      "var/audit/ledgers/intent_migration/native_intent_satisfaction_validation_report.json"
+    ],
+    "implementation_leaves_executed": false,
+    "runtime_implementation_performed": false,
+    "feature_test_modification_performed": false,
+    "vocabulary_admission_performed": false,
+    "proof_block_registry_modified": false,
+    "retained_test_registry_modified": false,
+    "gate10_started": false,
+    "working_tree_status_before_closeout_edit": "## work/bridge-gate9-closeout-20260426",
+    "blockers": [],
+    "closed_at_utc": "2026-04-26T08:45:16Z"
+  }
+}

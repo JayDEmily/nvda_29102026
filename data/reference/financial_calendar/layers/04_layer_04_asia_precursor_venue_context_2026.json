@@ -1,0 +1,1826 @@
+{
+  "layer_id": "layer_04_asia_precursor_venue_context",
+  "title": "Asia precursor venue context",
+  "description": "Japan, Hong Kong, and mainland China venue-state facts that reduce overnight surprise and explain why precursor signals may be absent, distorted, or partly available.",
+  "calendar_year": 2026,
+  "events": [
+    {
+      "event_id": "jpx-cash-2026-01-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - New Year holidays",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-01-12",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Coming of Age Day",
+      "start_date": "2026-01-12",
+      "end_date": "2026-01-12",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-02-11",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - National Foundation Day",
+      "start_date": "2026-02-11",
+      "end_date": "2026-02-11",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-02-23",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Emperor's Birthday",
+      "start_date": "2026-02-23",
+      "end_date": "2026-02-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-03-20",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Vernal Equinox",
+      "start_date": "2026-03-20",
+      "end_date": "2026-03-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-04-29",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Showa Day",
+      "start_date": "2026-04-29",
+      "end_date": "2026-04-29",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-05-04",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Golden Week holiday block",
+      "start_date": "2026-05-04",
+      "end_date": "2026-05-06",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-07-20",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Marine Day",
+      "start_date": "2026-07-20",
+      "end_date": "2026-07-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-08-11",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Mountain Day",
+      "start_date": "2026-08-11",
+      "end_date": "2026-08-11",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-09-21",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Silver Week holiday block",
+      "start_date": "2026-09-21",
+      "end_date": "2026-09-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-10-12",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Sports Day",
+      "start_date": "2026-10-12",
+      "end_date": "2026-10-12",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-11-03",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Culture Day",
+      "start_date": "2026-11-03",
+      "end_date": "2026-11-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-11-23",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Labor Thanksgiving Day",
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-cash-2026-12-31",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_cash_holiday",
+      "title": "JPX cash market closed - Market Holiday",
+      "start_date": "2026-12-31",
+      "end_date": "2026-12-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_CASH"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX market holidays 2026",
+      "notes_md": "Use as precursor-market availability context before U.S. open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-01-12",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-01-12",
+      "start_date": "2026-01-12",
+      "end_date": "2026-01-12",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-02-11",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-02-11",
+      "start_date": "2026-02-11",
+      "end_date": "2026-02-11",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-02-23",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-02-23",
+      "start_date": "2026-02-23",
+      "end_date": "2026-02-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-03-20",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-03-20",
+      "start_date": "2026-03-20",
+      "end_date": "2026-03-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-04-29",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-04-29",
+      "start_date": "2026-04-29",
+      "end_date": "2026-04-29",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-05-04",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-05-04",
+      "start_date": "2026-05-04",
+      "end_date": "2026-05-04",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-05-05",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-05-05",
+      "start_date": "2026-05-05",
+      "end_date": "2026-05-05",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-05-06",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-05-06",
+      "start_date": "2026-05-06",
+      "end_date": "2026-05-06",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-07-20",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-07-20",
+      "start_date": "2026-07-20",
+      "end_date": "2026-07-20",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-08-11",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-08-11",
+      "start_date": "2026-08-11",
+      "end_date": "2026-08-11",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-09-21",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-09-21",
+      "start_date": "2026-09-21",
+      "end_date": "2026-09-21",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-09-22",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-09-22",
+      "start_date": "2026-09-22",
+      "end_date": "2026-09-22",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-09-23",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-09-23",
+      "start_date": "2026-09-23",
+      "end_date": "2026-09-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-10-12",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-10-12",
+      "start_date": "2026-10-12",
+      "end_date": "2026-10-12",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-open-2026-11-03",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_open",
+      "title": "JPX derivatives holiday trading open - 2026-11-03",
+      "start_date": "2026-11-03",
+      "end_date": "2026-11-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "jpx_derivatives_open",
+        "holiday_trading_active",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "asia_holiday_trading"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Important distinction: cash market closed, derivatives market open."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-closed-2026-01-02",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_closed",
+      "title": "JPX derivatives holiday trading not open - New Year holiday - not open",
+      "start_date": "2026-01-02",
+      "end_date": "2026-01-02",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "low",
+      "runtime_tags": [
+        "jpx_derivatives_closed",
+        "holiday_trading_exception"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Explicit exception so the runtime does not assume all Japan holidays have derivatives holiday trading."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-closed-2026-11-23",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_closed",
+      "title": "JPX derivatives holiday trading not open - BCP test exception - not open",
+      "start_date": "2026-11-23",
+      "end_date": "2026-11-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "low",
+      "runtime_tags": [
+        "jpx_derivatives_closed",
+        "holiday_trading_exception"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Explicit exception so the runtime does not assume all Japan holidays have derivatives holiday trading."
+    },
+    {
+      "event_id": "jpx-deriv-holiday-closed-2026-12-31",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "jpx_derivatives_holiday_closed",
+      "title": "JPX derivatives holiday trading not open - New Year's Eve - not open",
+      "start_date": "2026-12-31",
+      "end_date": "2026-12-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Tokyo",
+      "jurisdiction": "JP",
+      "venues": [
+        "JPX_DERIVATIVES"
+      ],
+      "entities": [],
+      "impact_level": "low",
+      "runtime_tags": [
+        "jpx_derivatives_closed",
+        "holiday_trading_exception"
+      ],
+      "evaluation_tags": [
+        "asia_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "JPX derivatives holiday trading schedule 2026",
+      "notes_md": "Explicit exception so the runtime does not assume all Japan holidays have derivatives holiday trading."
+    },
+    {
+      "event_id": "hkex-cash-2026-01-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - New Year's Day",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-02-17",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Lunar New Year block",
+      "start_date": "2026-02-17",
+      "end_date": "2026-02-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-04-03",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Good Friday",
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-03",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-04-06",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Ching Ming / Easter block",
+      "start_date": "2026-04-06",
+      "end_date": "2026-04-07",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-05-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Labour Day",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-05-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Day following Buddha's Birthday",
+      "start_date": "2026-05-25",
+      "end_date": "2026-05-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-06-19",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Tuen Ng Festival",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-07-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - HKSAR Establishment Day",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-10-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - National Day",
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-10-19",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Day following Chung Yeung Festival",
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-cash-2026-12-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_cash_holiday",
+      "title": "HKEX securities market closed - Christmas Day",
+      "start_date": "2026-12-25",
+      "end_date": "2026-12-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "Hong Kong securities market holiday."
+    },
+    {
+      "event_id": "hkex-half-day-2026-02-16",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_half_day",
+      "title": "HKEX half-day / non-settlement day - Eve of Lunar New Year",
+      "start_date": "2026-02-16",
+      "end_date": "2026-02-16",
+      "start_time_local": "09:30",
+      "end_time_local": "12:00",
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_half_day",
+        "hk_non_settlement_day",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_half_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "No afternoon trading session."
+    },
+    {
+      "event_id": "hkex-half-day-2026-12-24",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_half_day",
+      "title": "HKEX half-day / non-settlement day - Christmas Eve",
+      "start_date": "2026-12-24",
+      "end_date": "2026-12-24",
+      "start_time_local": "09:30",
+      "end_time_local": "12:00",
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_half_day",
+        "hk_non_settlement_day",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_half_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "No afternoon trading session."
+    },
+    {
+      "event_id": "hkex-half-day-2026-12-31",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "hkex_half_day",
+      "title": "HKEX half-day / non-settlement day - New Year's Eve",
+      "start_date": "2026-12-31",
+      "end_date": "2026-12-31",
+      "start_time_local": "09:30",
+      "end_time_local": "12:00",
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK",
+      "venues": [
+        "HKEX_SECURITIES"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "hkex_half_day",
+        "hk_non_settlement_day",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "hk_half_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX 2026 securities holiday circular",
+      "notes_md": "No afternoon trading session."
+    },
+    {
+      "event_id": "stock-connect-2026-01-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - New Year block",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-02",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-02-16",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Lunar New Year / Spring Festival block",
+      "start_date": "2026-02-16",
+      "end_date": "2026-02-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-04-03",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Good Friday / Ching Ming / Easter block",
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-07",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-05-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Labour Day block",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-05",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-05-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Buddha holiday",
+      "start_date": "2026-05-25",
+      "end_date": "2026-05-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-06-19",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Tuen Ng Festival",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-07-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - HKSAR Establishment Day",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-01",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-09-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Mid-Autumn Festival",
+      "start_date": "2026-09-25",
+      "end_date": "2026-09-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-10-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - National Day block",
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-07",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-10-19",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Chung Yeung follow-on",
+      "start_date": "2026-10-19",
+      "end_date": "2026-10-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-2026-12-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_closed",
+      "title": "Stock Connect closed - Christmas Day",
+      "start_date": "2026-12-25",
+      "end_date": "2026-12-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_NORTHBOUND",
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "stock_connect_closed",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_closed"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "Closed because Hong Kong and/or Shanghai/Shenzhen side is unavailable."
+    },
+    {
+      "event_id": "stock-connect-halfday-2026-12-24",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_half_day",
+      "title": "Stock Connect half-day - Southbound half day on Christmas Eve",
+      "start_date": "2026-12-24",
+      "end_date": "2026-12-24",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "low",
+      "runtime_tags": [
+        "stock_connect_half_day",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_half_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "The HKEX calendar marks Southbound as half day; Northbound remains blank."
+    },
+    {
+      "event_id": "stock-connect-halfday-2026-12-31",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "stock_connect_half_day",
+      "title": "Stock Connect half-day - Southbound half day on New Year's Eve",
+      "start_date": "2026-12-31",
+      "end_date": "2026-12-31",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Hong_Kong",
+      "jurisdiction": "HK/CN",
+      "venues": [
+        "STOCK_CONNECT_SOUTHBOUND"
+      ],
+      "entities": [],
+      "impact_level": "low",
+      "runtime_tags": [
+        "stock_connect_half_day",
+        "asia_connectivity_state"
+      ],
+      "evaluation_tags": [
+        "stock_connect_half_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "HKEX Stock Connect 2026 trading calendar",
+      "notes_md": "The HKEX calendar marks Southbound as half day; Northbound remains blank."
+    },
+    {
+      "event_id": "cn-a-share-2026-01-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - New Year",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-02",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-02-16",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - Spring Festival",
+      "start_date": "2026-02-16",
+      "end_date": "2026-02-23",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-04-06",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - Qingming Festival",
+      "start_date": "2026-04-06",
+      "end_date": "2026-04-06",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-05-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - Labour Day block",
+      "start_date": "2026-05-01",
+      "end_date": "2026-05-05",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-06-19",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - Dragon Boat Festival",
+      "start_date": "2026-06-19",
+      "end_date": "2026-06-19",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-09-25",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - Mid-Autumn Festival",
+      "start_date": "2026-09-25",
+      "end_date": "2026-09-25",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    },
+    {
+      "event_id": "cn-a-share-2026-10-01",
+      "layer_id": "layer_04_asia_precursor_venue_context",
+      "event_type": "mainland_cash_holiday",
+      "title": "Mainland A-share market closed - National Day block",
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-07",
+      "start_time_local": null,
+      "end_time_local": null,
+      "timezone": "Asia/Shanghai",
+      "jurisdiction": "CN",
+      "venues": [
+        "SZSE",
+        "SSE_PROXY"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mainland_cash_closed",
+        "asia_precursor_state"
+      ],
+      "evaluation_tags": [
+        "cn_holiday"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "SZSE 2026 trading calendar; HKEX Stock Connect 2026 calendar",
+      "notes_md": "Use SZSE as the canonical published mainland schedule in this bundle; Shanghai closure is corroborated by HKEX Stock Connect calendar."
+    }
+  ]
+}

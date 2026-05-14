@@ -1,0 +1,121 @@
+{
+  "created_utc": "2026-05-13T03:34:48Z",
+  "target": "ACTIVE_AGGREGATE_FULL_READ_MANIFEST_STALENESS_CLASSIFICATION_053",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 196403,
+      "line_count": 553,
+      "sha256": "2e3dc169fe67438e51d90ee18b3aaaadc83d41790585cf2ce872a75e23b5a6e3",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 553
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/aggregate_full_read_manifest_staleness_classification_053/reports/ACTIVE_AGGREGATE_FULL_READ_MANIFEST_STALENESS_CLASSIFICATION_053_REPORT.json",
+      "byte_count": 3628,
+      "line_count": 49,
+      "sha256": "e3cd1055833aa273415939599a0169c5f56537804a4c61405d2c2a280492da1b",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 49
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/aggregate_full_read_manifest_staleness_classification_053/receipts/ACTIVE_AGGREGATE_FULL_READ_MANIFEST_STALENESS_CLASSIFICATION_053_RECEIPT.md",
+      "byte_count": 625,
+      "line_count": 9,
+      "sha256": "4b1939da231dd04fa570093c943a8ada583311e0bfc6117dca466233387de82a",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/aggregate_full_read_manifest_staleness_classification_053/reports/aggregate_validate_all_full_read_manifests.stdout.json",
+      "byte_count": 347518,
+      "line_count": 1829,
+      "sha256": "a86ceeee4c72b9d5dfa520d811490c99bc57b6f8f3e4e0467f8536c4431b873f",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1829
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/aggregate_full_read_manifest_staleness_classification_053/reports/aggregate_validate_all_full_read_manifests.stderr.txt",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/aggregate_full_read_manifest_staleness_classification_053/reports/aggregate_validate_all_full_read_manifests.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "read_method": "manual_full_file_read_plus_active_aggregate_full_read_manifest_staleness_classification_053_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+blank_metadata_guard_mutation_status=1
+blank_metadata_post_revert_status=0

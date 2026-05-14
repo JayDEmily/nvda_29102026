@@ -1,0 +1,60 @@
+name: PR Preflight
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-preflight-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    name: Makefile preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+
+      - name: Show toolchain
+        run: |
+          set -euo pipefail
+          python --version
+          command -v python3.13 || true
+          git --version
+
+      - name: Install repo
+        run: make install
+
+      - name: Compile source and tests
+        run: make compile
+
+      - name: Run tests
+        run: make test
+
+      - name: Run PR preflight gates
+        run: make pr-preflight
+
+      - name: Check remote bridge blueprint doctrine
+        run: make bridge-blueprint-check
+
+      - name: Check proof-block executor doctrine
+        run: make proof-executor-check

@@ -1,0 +1,15 @@
+{
+  "atlas_record_count_joined": 1716,
+  "bridge_record_count_accounted_for": 1716,
+  "classification_note": "STATIC_STRUCTURAL_TRIAGE_ONLY",
+  "comparison_record_count": 48,
+  "error_count": 0,
+  "errors": [],
+  "git_diff_check_status": 0,
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+  "queue_record_count": 46,
+  "record_join_count": 1716,
+  "validation_status": "PASS",
+  "warning_count": 0,
+  "warnings": []
+}

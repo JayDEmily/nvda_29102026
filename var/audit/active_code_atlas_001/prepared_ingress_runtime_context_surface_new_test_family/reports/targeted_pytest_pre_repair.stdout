@@ -1,0 +1,38 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 1 item
+
+tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py F [100%]
+
+=================================== FAILURES ===================================
+______ test_prepared_runtime_snapshot_as_mapping_detaches_nested_payload _______
+
+    def test_prepared_runtime_snapshot_as_mapping_detaches_nested_payload() -> None:
+        snapshot = prepare_runtime_snapshot(
+            snapshot_id="prepared-copy-boundary",
+            payload={
+                "source_time_utc": datetime(2026, 4, 21, 9, 31, 45),
+                "raw_context": {"windows": [{"event_id": "earnings"}]},
+            },
+        )
+    
+        exported = snapshot.as_mapping()
+        exported["raw_context"]["windows"][0]["event_id"] = "mutated"
+    
+>       assert snapshot.payload["raw_context"]["windows"][0]["event_id"] == "earnings"
+E       AssertionError: assert 'mutated' == 'earnings'
+E         
+E         - earnings
+E         + mutated
+
+tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py:20: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py::test_prepared_runtime_snapshot_as_mapping_detaches_nested_payload - AssertionError: assert 'mutated' == 'earnings'
+  
+  - earnings
+  + mutated
+============================== 1 failed in 0.77s ===============================

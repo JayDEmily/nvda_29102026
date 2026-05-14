@@ -1,0 +1,28 @@
+{
+  "execution_boundary": {
+    "runtime_implementation_opened": false,
+    "sequence7b_required_for_runtime_implementation": true,
+    "sequence8_opened": false,
+    "tests_and_specimens_written": true
+  },
+  "normative_authority_gate": "sufficient_for_tests_first_parallel_risk_envelope_tests_and_specimen_authority",
+  "proof_references": {
+    "json_parse_proof": "json_parse_proof.log + json_parse_slices_proof.log",
+    "read_ledger": "sequence7a_read_ledger.tsv",
+    "record_reconciliation": "record_reconciliation_proof.log",
+    "static_syntax_proof": "sequence7a_static_syntax_proof.log"
+  },
+  "result": "PASS_TESTS_FIRST_NOT_SEQUENCE7_PASS",
+  "schema_version": "sequence7a_parallel_risk_envelope_route_proof.v1",
+  "sequence": "Sequence 7A",
+  "source_delta_policy": {
+    "allowed": "Sequence 7A tests/specimens/audit artefacts only",
+    "forbidden_files_untouched": [
+      "generated Atlas slices",
+      "original Atlas/Bridge JSON inputs",
+      "pyproject.toml",
+      "uv.lock",
+      "wheelhouses"
+    ]
+  }
+}

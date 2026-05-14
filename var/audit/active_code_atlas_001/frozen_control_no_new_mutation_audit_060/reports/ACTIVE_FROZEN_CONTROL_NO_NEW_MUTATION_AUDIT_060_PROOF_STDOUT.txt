@@ -1,0 +1,137 @@
+$ git fsck --connectivity-only
+exit_status=0
+--- stdout ---
+
+--- stderr ---
+
+
+$ git diff --check
+exit_status=0
+--- stdout ---
+
+--- stderr ---
+
+
+$ python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py
+exit_status=0
+--- stdout ---
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+  "evidence_range_validation": {
+    "surface_record_file_count": 44,
+    "surface_record_files": [
+      "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/dmpv3_packet_carriage_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/dmpv3_extension_canonical_leaf_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_transform_required/dmpv3_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface/downstream_capital_deployment_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/downstream_capital_deployment_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/dynamic_coefficient_modifier_authority_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/dynamic_modifier_contract_authority_boundaries_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/dynamic_modifier_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/exit_close_architecture_surface_transform_required/exit_close_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/external_source_api_ingress_surface/external_source_api_ingress_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/external_source_api_ingress_surface_new_test_family/external_source_contract_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/external_source_api_ingress_surface_transform_required/external_source_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/financial_event_calendar_architecture_surface/financial_event_calendar_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/financial_event_calendar_architecture_surface_transform_required/financial_event_calendar_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface/live_position_inventory_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface_new_test_family/live_inventory_authority_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface_transform_required/live_inventory_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface/opening_placement_readiness_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_new_test_family/opening_authority_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_transform_required/opening_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/parallel_risk_lane_surface/parallel_risk_lane_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/parallel_risk_lane_surface_transform_required/parallel_risk_lane_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/persistence_ledgers_receipts_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_new_test_family/persistence_session_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface_transform_required/module_registry_repository_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/playbook_library_architecture_surface/playbook_library_architecture_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/playbook_library_architecture_surface_transform_required/playbook_library_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface/prepared_ingress_runtime_context_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_new_test_family/prepared_runtime_snapshot_contract_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_transform_required/prepared_runtime_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface/raw_capture_source_temporal_law_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_new_test_family/source_temporal_standard_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_transform_required/raw_capture_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_signal_families_surface/raw_signal_families_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_signal_families_surface_new_test_family/raw_signal_contract_copy_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_signal_families_surface_transform_required/raw_signal_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface/review_explanation_layer_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/review_contract_authority_boundaries_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/serial_desk_cognition_spine_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/serial_desk_cognition_spine_transform_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/testing_proof_checkpoint_surface/testing_proof_checkpoint_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/testing_proof_checkpoint_surface_transform_required/testing_proof_checkpoint_transform_required_records.json",
+      "var/audit/active_code_atlas_001/vocabulary_governance_surface/vocabulary_governance_active_code_atlas_records.json"
+    ],
+    "surface_record_count": 65,
+    "evidence_entry_count": 730,
+    "unique_evidence_path_count": 203
+  },
+  "retained_registry_inventory_validation": {
+    "tier_a_registry_reconciliation_inventory": {
+      "declared_total": 120,
+      "entry_count": 120,
+      "status_counts": {
+        "registered_retained_seed_tier_a": 120
+      },
+      "declared_counts": {
+        "registered_retained_seed_tier_a": 120,
+        "tier_a_file_registered_outside_retained_seed_tier_a": 0,
+        "pending_explicit_registry_record": 0
+      },
+      "duplicate_path_count": 0
+    },
+    "tier_b_registry_reconciliation_inventory": {
+      "declared_total": 13,
+      "entry_count": 13,
+      "status_counts": {
+        "registered_retained_tier_b": 13
+      },
+      "declared_counts": {
+        "registered_retained_tier_b": 13,
+        "tier_b_file_registered_outside_retained_tier_b": 0,
+        "pending_explicit_registry_record": 0,
+        "covered_by_command_or_owns_after_amendment": 13
+      },
+      "duplicate_path_count": 0
+    }
+  }
+}
+--- stderr ---
+
+
+$ python scripts/run_proof_block.py --check-all
+exit_status=0
+--- stdout ---
+proof_blocks_check_all=PASS count=46
+--- stderr ---
+
+
+$ python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FROZEN_CONTROL_NO_NEW_MUTATION_AUDIT_060_FULL_READ_MANIFEST.json
+exit_status=0
+--- stdout ---
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FROZEN_CONTROL_NO_NEW_MUTATION_AUDIT_060_FULL_READ_MANIFEST.json",
+      "entry_count": 6,
+      "unique_path_count": 6,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  ]
+}
+--- stderr ---

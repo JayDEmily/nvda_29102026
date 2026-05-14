@@ -1,0 +1,242 @@
+{
+  "schema_version": "primary_linkage_gap_reconciliation_v1",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "reconciliation_recorded_with_unresolved_execution_gap",
+  "classification_note": "AUDIT_RECONCILIATION_ONLY",
+  "limitation_statement": "Linkage-gap reconciliation is audit evidence only. It explains unmatched primary-to-Bridge links and selects the next bounded target where an execution-queue gap remains; it does not mutate primary records, source, tests, Atlas/Bridge inputs, vocabulary, dependencies, or generated slices.",
+  "source_repo_branch": "worker/row031-serial-desk-continuation",
+  "source_repo_head": "34c2a88",
+  "inputs": {
+    "primary_active_code_atlas_path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+    "primary_to_bridge_comparison_path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+    "native_intent_satisfaction_ledger_path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+    "static_comparison_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "execution_queue_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json"
+  },
+  "summary": {
+    "input_queue_gap_count": 4,
+    "input_comparison_gap_count": 6,
+    "queue_reconciliation_status_counts": {
+      "reconciled_via_comparison_group_satisfaction_links": 3,
+      "unresolved_execution_queue_linkage_gap": 1
+    },
+    "comparison_reconciliation_status_counts": {
+      "nonqueue_confirm_only_gap": 1,
+      "reconciled_by_primary_satisfaction_record_links": 4,
+      "unresolved_primary_linkage_gap": 1
+    },
+    "unresolved_execution_queue_gap_count": 1,
+    "unresolved_comparison_gap_count": 1,
+    "unresolved_execution_queue_gap_ids": [
+      "ACATQ-0025"
+    ],
+    "unresolved_comparison_gap_ids": [
+      "ACABC-0025"
+    ],
+    "next_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_044_PLAYBOOK_LIBRARY_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED"
+  },
+  "comparison_reconciliations": [
+    {
+      "comparison_record_id": "ACABC-0025",
+      "surface": "Playbook library architecture",
+      "comparison_status": "transform_required",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "reconciliation_status": "unresolved_primary_linkage_gap",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [],
+      "same_surface_primary_record_ids": [
+        "ACATP-030-0001"
+      ],
+      "recommended_next_action": "create_or_repair_read_adjudicated_primary_record_linkage_before_full_reconciliation_claim"
+    },
+    {
+      "comparison_record_id": "ACABC-0035",
+      "surface": "Live position and inventory architecture",
+      "comparison_status": "already_satisfied",
+      "test_first_queue_action": "confirm_existing_proof_only_no_refactor",
+      "reconciliation_status": "nonqueue_confirm_only_gap",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [],
+      "same_surface_primary_record_ids": [
+        "ACATP-035-0001",
+        "ACATP-036-0001",
+        "ACATP-037-0001"
+      ],
+      "recommended_next_action": "retain_as_comparison_only_non_execution_gap_no_test_or_source_row_selected"
+    },
+    {
+      "comparison_record_id": "ACABC-0045",
+      "surface": "Vocabulary governance interface",
+      "comparison_status": "transform_required",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [
+        {
+          "primary_record_id": "ACAV-001-0008",
+          "satisfaction_record_id": "NIS-0108"
+        },
+        {
+          "primary_record_id": "ACAV-001-0008",
+          "satisfaction_record_id": "NIS-0109"
+        },
+        {
+          "primary_record_id": "ACAV-001-0008",
+          "satisfaction_record_id": "NIS-0110"
+        }
+      ],
+      "same_surface_primary_record_ids": [
+        "ACAV-001-0001",
+        "ACAV-001-0002",
+        "ACAV-001-0003",
+        "ACAV-001-0004",
+        "ACAV-001-0005",
+        "ACAV-001-0006",
+        "ACAV-001-0007",
+        "ACAV-001-0008",
+        "ACAV-001-0009",
+        "ACAV-001-0010"
+      ],
+      "recommended_next_action": "optionally backfill explicit ACABC/ACATQ links in a future primary-record-normalisation pass"
+    },
+    {
+      "comparison_record_id": "ACABC-0046",
+      "surface": "Vocabulary governance interface",
+      "comparison_status": "partially_satisfied",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [
+        {
+          "primary_record_id": "ACAV-001-0002",
+          "satisfaction_record_id": "NIS-0102"
+        },
+        {
+          "primary_record_id": "ACAV-001-0003",
+          "satisfaction_record_id": "NIS-0103"
+        },
+        {
+          "primary_record_id": "ACAV-001-0007",
+          "satisfaction_record_id": "NIS-0107"
+        }
+      ],
+      "same_surface_primary_record_ids": [
+        "ACAV-001-0001",
+        "ACAV-001-0002",
+        "ACAV-001-0003",
+        "ACAV-001-0004",
+        "ACAV-001-0005",
+        "ACAV-001-0006",
+        "ACAV-001-0007",
+        "ACAV-001-0008",
+        "ACAV-001-0009",
+        "ACAV-001-0010"
+      ],
+      "recommended_next_action": "optionally backfill explicit ACABC/ACATQ links in a future primary-record-normalisation pass"
+    },
+    {
+      "comparison_record_id": "ACABC-0047",
+      "surface": "Vocabulary governance interface",
+      "comparison_status": "partially_satisfied",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [
+        {
+          "primary_record_id": "ACAV-001-0001",
+          "satisfaction_record_id": "NIS-0101"
+        },
+        {
+          "primary_record_id": "ACAV-001-0004",
+          "satisfaction_record_id": "NIS-0104"
+        },
+        {
+          "primary_record_id": "ACAV-001-0005",
+          "satisfaction_record_id": "NIS-0105"
+        }
+      ],
+      "same_surface_primary_record_ids": [
+        "ACAV-001-0001",
+        "ACAV-001-0002",
+        "ACAV-001-0003",
+        "ACAV-001-0004",
+        "ACAV-001-0005",
+        "ACAV-001-0006",
+        "ACAV-001-0007",
+        "ACAV-001-0008",
+        "ACAV-001-0009",
+        "ACAV-001-0010"
+      ],
+      "recommended_next_action": "optionally backfill explicit ACABC/ACATQ links in a future primary-record-normalisation pass"
+    },
+    {
+      "comparison_record_id": "ACABC-0048",
+      "surface": "Vocabulary governance interface",
+      "comparison_status": "already_satisfied",
+      "test_first_queue_action": "confirm_existing_proof_only_no_refactor",
+      "reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "direct_primary_record_ids": [],
+      "nis_linked_primary_records": [
+        {
+          "primary_record_id": "ACAV-001-0006",
+          "satisfaction_record_id": "NIS-0106"
+        }
+      ],
+      "same_surface_primary_record_ids": [
+        "ACAV-001-0001",
+        "ACAV-001-0002",
+        "ACAV-001-0003",
+        "ACAV-001-0004",
+        "ACAV-001-0005",
+        "ACAV-001-0006",
+        "ACAV-001-0007",
+        "ACAV-001-0008",
+        "ACAV-001-0009",
+        "ACAV-001-0010"
+      ],
+      "recommended_next_action": "optionally backfill explicit ACABC/ACATQ links in a future primary-record-normalisation pass"
+    }
+  ],
+  "queue_reconciliations": [
+    {
+      "queue_record_id": "ACATQ-0025",
+      "comparison_record_id": "ACABC-0025",
+      "surface": "Playbook library architecture",
+      "required_action": "write_new_test_family_before_code",
+      "reconciliation_status": "unresolved_execution_queue_linkage_gap",
+      "direct_primary_record_ids": [],
+      "comparison_reconciliation_status": "unresolved_primary_linkage_gap",
+      "recommended_next_action": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_044_PLAYBOOK_LIBRARY_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED"
+    },
+    {
+      "queue_record_id": "ACATQ-0044",
+      "comparison_record_id": "ACABC-0045",
+      "surface": "Vocabulary governance interface",
+      "required_action": "write_new_test_family_before_code",
+      "reconciliation_status": "reconciled_via_comparison_group_satisfaction_links",
+      "direct_primary_record_ids": [],
+      "comparison_reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "recommended_next_action": "optionally backfill explicit ACATQ link in a future primary-record-normalisation pass"
+    },
+    {
+      "queue_record_id": "ACATQ-0045",
+      "comparison_record_id": "ACABC-0046",
+      "surface": "Vocabulary governance interface",
+      "required_action": "write_new_test_family_before_code",
+      "reconciliation_status": "reconciled_via_comparison_group_satisfaction_links",
+      "direct_primary_record_ids": [],
+      "comparison_reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "recommended_next_action": "optionally backfill explicit ACATQ link in a future primary-record-normalisation pass"
+    },
+    {
+      "queue_record_id": "ACATQ-0046",
+      "comparison_record_id": "ACABC-0047",
+      "surface": "Vocabulary governance interface",
+      "required_action": "extend_existing_test_family_before_code",
+      "reconciliation_status": "reconciled_via_comparison_group_satisfaction_links",
+      "direct_primary_record_ids": [],
+      "comparison_reconciliation_status": "reconciled_by_primary_satisfaction_record_links",
+      "recommended_next_action": "optionally backfill explicit ACATQ link in a future primary-record-normalisation pass"
+    }
+  ]
+}

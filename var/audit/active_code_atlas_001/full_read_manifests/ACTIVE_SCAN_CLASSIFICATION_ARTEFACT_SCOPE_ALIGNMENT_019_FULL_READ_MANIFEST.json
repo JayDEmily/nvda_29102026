@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_SCAN_CLASSIFICATION_ARTEFACT_SCOPE_ALIGNMENT_019_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_SCAN_CLASSIFICATION_ARTEFACT_SCOPE_ALIGNMENT_019",
+  "manifest_scope": "scan_classification_artefact_scope_alignment_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 9,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation authority; unchanged but governs this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Updated section 8A prior scan-classification artefact scope rule."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Updated current pointer and ledger row for scan-classification artefact scope alignment."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/continuation_control_scan_classification_011/reports/ACTIVE_CONTINUATION_CONTROL_SCAN_CLASSIFICATION_011_REPORT.json",
+      "material_class": "report",
+      "byte_count": 66012,
+      "line_count": 416,
+      "sha256": "db04a7b8d263c9a28bdad79f863dc07bfaec97354d71efcd1ecceeb44fe58404",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 416
+        }
+      ],
+      "notes": "Example prior scan-classification report that quotes historical hits and is now excluded from default fresh scans."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/scan_scope_hygiene_alignment_017/reports/ACTIVE_SCAN_SCOPE_HYGIENE_ALIGNMENT_017_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1305,
+      "line_count": 24,
+      "sha256": "5c0783a4b52faa722a808fb597765cbd8200d1559634ec22d4d89d3744c067ed",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 24
+        }
+      ],
+      "notes": "Previous scan-scope hygiene report used as control context."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/proof_output_transcript_scope_alignment_018/reports/ACTIVE_PROOF_OUTPUT_TRANSCRIPT_SCOPE_ALIGNMENT_018_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1797,
+      "line_count": 28,
+      "sha256": "3b61b4bdf7bde7e7afc7575412559b9df9a67a489183d5b023abbd90f9a15aef",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 28
+        }
+      ],
+      "notes": "Prior leaf showing proof-output transcript scope alignment."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/scan_classification_artefact_scope_alignment_019/reports/ACTIVE_SCAN_CLASSIFICATION_ARTEFACT_SCOPE_ALIGNMENT_019_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1290,
+      "line_count": 23,
+      "sha256": "58721af0d367963af620ac030b82c4d095f8608a9ceecd120b172fa17d0b2d1a",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 23
+        }
+      ],
+      "notes": "019 scan-classification artefact scope alignment report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/scan_classification_artefact_scope_alignment_019/receipts/ACTIVE_SCAN_CLASSIFICATION_ARTEFACT_SCOPE_ALIGNMENT_019_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1254,
+      "line_count": 24,
+      "sha256": "664c4622a5d49ef322494a5304e2fdefb0534b82d6a42042dcc283fd79911f8e",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 24
+        }
+      ],
+      "notes": "019 scan-classification artefact scope alignment receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    }
+  ],
+  "notes": "Dedicated manifest for prior scan-classification artefact scope alignment."
+}

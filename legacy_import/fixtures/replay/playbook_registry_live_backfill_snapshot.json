@@ -1,0 +1,264 @@
+{
+  "ordered_playbooks": [
+    "continuation_ladder",
+    "compression_breakout",
+    "pin_reversion",
+    "negative_gamma_flush",
+    "front_expiry_pin_pressure",
+    "term_structure_dislocation",
+    "skew_pressure_reversal"
+  ],
+  "ordered_setup_variants": [
+    "opening_drive_continuation",
+    "midday_compression_release",
+    "late_session_pin_reversion",
+    "negative_gamma_flush_probe",
+    "front_expiry_pin_build",
+    "front_next_curve_dislocation",
+    "skew_relaxation_reversal"
+  ],
+  "playbook_profiles": {
+    "continuation_ladder": {
+      "family_id": "trend_continuation",
+      "setup_variant_id": "opening_drive_continuation",
+      "horizon": "intraday",
+      "eligible_action_bias": "add",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hold",
+      "watch_hedge_overlay": false,
+      "template_id": "continuation_ladder_exec"
+    },
+    "compression_breakout": {
+      "family_id": "compression_release",
+      "setup_variant_id": "midday_compression_release",
+      "horizon": "intraday",
+      "eligible_action_bias": "add",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hold",
+      "watch_hedge_overlay": false,
+      "template_id": "compression_breakout_exec"
+    },
+    "pin_reversion": {
+      "family_id": "pin_behaviour",
+      "setup_variant_id": "late_session_pin_reversion",
+      "horizon": "intraday",
+      "eligible_action_bias": "trim",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hold",
+      "watch_hedge_overlay": false,
+      "template_id": "pin_reversion_exec"
+    },
+    "negative_gamma_flush": {
+      "family_id": "gamma_destabilisation",
+      "setup_variant_id": "negative_gamma_flush_probe",
+      "horizon": "intraday",
+      "eligible_action_bias": "add",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hedge",
+      "watch_hedge_overlay": true,
+      "template_id": "negative_gamma_flush_exec"
+    },
+    "front_expiry_pin_pressure": {
+      "family_id": "pin_behaviour",
+      "setup_variant_id": "front_expiry_pin_build",
+      "horizon": "intraday",
+      "eligible_action_bias": "trim",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hold",
+      "watch_hedge_overlay": false,
+      "template_id": "front_expiry_pin_pressure_exec"
+    },
+    "term_structure_dislocation": {
+      "family_id": "term_structure_dislocation",
+      "setup_variant_id": "front_next_curve_dislocation",
+      "horizon": "intraday",
+      "eligible_action_bias": "add",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hold",
+      "watch_hedge_overlay": false,
+      "template_id": "term_structure_dislocation_exec"
+    },
+    "skew_pressure_reversal": {
+      "family_id": "skew_pressure_transition",
+      "setup_variant_id": "skew_relaxation_reversal",
+      "horizon": "intraday",
+      "eligible_action_bias": "hedge",
+      "eligible_sizing_fraction": 0.0,
+      "watch_action_bias": "hedge",
+      "watch_hedge_overlay": true,
+      "template_id": "skew_pressure_reversal_exec"
+    }
+  },
+  "setup_variants": {
+    "opening_drive_continuation": {
+      "family_id": "trend_continuation",
+      "execution_expression_id": "continuation_ladder_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "continuation_ladder"
+    },
+    "midday_compression_release": {
+      "family_id": "compression_release",
+      "execution_expression_id": "compression_breakout_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "compression_breakout"
+    },
+    "late_session_pin_reversion": {
+      "family_id": "pin_behaviour",
+      "execution_expression_id": "pin_reversion_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "pin_reversion"
+    },
+    "negative_gamma_flush_probe": {
+      "family_id": "gamma_destabilisation",
+      "execution_expression_id": "negative_gamma_flush_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "negative_gamma_flush"
+    },
+    "front_expiry_pin_build": {
+      "family_id": "pin_behaviour",
+      "execution_expression_id": "front_expiry_pin_pressure_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "front_expiry_pin_pressure"
+    },
+    "front_next_curve_dislocation": {
+      "family_id": "term_structure_dislocation",
+      "execution_expression_id": "term_structure_dislocation_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "term_structure_dislocation"
+    },
+    "skew_relaxation_reversal": {
+      "family_id": "skew_pressure_transition",
+      "execution_expression_id": "skew_pressure_reversal_exec",
+      "horizon": "intraday",
+      "legacy_playbook_id": "skew_pressure_reversal"
+    }
+  },
+  "families": {
+    "trend_continuation": {
+      "title": "Trend Continuation",
+      "thesis": "Persistent directional tape with supportive breadth and non-hostile options context."
+    },
+    "compression_release": {
+      "title": "Compression Release",
+      "thesis": "Compressed tape or options surface releases into directional range expansion."
+    },
+    "pin_behaviour": {
+      "title": "Pin Behaviour",
+      "thesis": "Strike-magnet behaviour dominates and favours mean reversion or controlled trim. "
+    },
+    "gamma_destabilisation": {
+      "title": "Gamma Destabilisation",
+      "thesis": "Dealer pressure amplifies price movement and supports flush-style or hedge-led responses."
+    },
+    "term_structure_dislocation": {
+      "title": "Term Structure Dislocation",
+      "thesis": "Front-versus-next expiry dislocation distorts the curve and creates a normalisation setup."
+    },
+    "skew_pressure_transition": {
+      "title": "Skew Pressure Transition",
+      "thesis": "Skew pressure relaxes or reverses without a full destabilised flush."
+    }
+  },
+  "execution_templates": {
+    "continuation_ladder_exec": {
+      "entry_style": "trend_ladder_3_step",
+      "scaling_step_factors": [
+        0.2,
+        0.3,
+        0.5
+      ],
+      "default_inventory_action": "add",
+      "default_fresh_capital_action": "add",
+      "thesis_invalidation_state": "trend_structure_broken",
+      "exit_reasons": [
+        "trim_into_extension",
+        "exit_on_breadth_reversal"
+      ]
+    },
+    "compression_breakout_exec": {
+      "entry_style": "compression_release_ladder",
+      "scaling_step_factors": [
+        0.3,
+        0.3,
+        0.4
+      ],
+      "default_inventory_action": "add",
+      "default_fresh_capital_action": "add",
+      "thesis_invalidation_state": "compression_failed_or_event_window_opened",
+      "exit_reasons": [
+        "trim_after_range_expansion",
+        "exit_if_breakout_fails_back_into_range"
+      ]
+    },
+    "pin_reversion_exec": {
+      "entry_style": "pin_fade_scaler",
+      "scaling_step_factors": [
+        0.5,
+        0.5
+      ],
+      "default_inventory_action": "trim",
+      "default_fresh_capital_action": "hold",
+      "thesis_invalidation_state": "pin_released_or_flow_reaccelerated",
+      "exit_reasons": [
+        "exit_on_pin_release",
+        "reduce_as_close_window_ends"
+      ]
+    },
+    "negative_gamma_flush_exec": {
+      "entry_style": "probe_then_hedge",
+      "scaling_step_factors": [
+        0.1,
+        0.15
+      ],
+      "default_inventory_action": "hedge",
+      "default_fresh_capital_action": "add",
+      "thesis_invalidation_state": "flush_accelerates_or_bounce_fails",
+      "exit_reasons": [
+        "de-risk_into_bounce",
+        "exit_if_hostile_flush_reaccelerates"
+      ]
+    },
+    "front_expiry_pin_pressure_exec": {
+      "entry_style": "front_pin_scaler",
+      "scaling_step_factors": [
+        0.35,
+        0.65
+      ],
+      "default_inventory_action": "trim",
+      "default_fresh_capital_action": "hold",
+      "thesis_invalidation_state": "pin_build_failed_or_released",
+      "exit_reasons": [
+        "take_profit_into_pin",
+        "exit_on_pin_release"
+      ]
+    },
+    "term_structure_dislocation_exec": {
+      "entry_style": "term_dislocation_probe",
+      "scaling_step_factors": [
+        0.25,
+        0.35
+      ],
+      "default_inventory_action": "hold",
+      "default_fresh_capital_action": "add",
+      "thesis_invalidation_state": "term_structure_normalised",
+      "exit_reasons": [
+        "reduce_into_curve_normalisation",
+        "exit_if_dislocation_fades"
+      ]
+    },
+    "skew_pressure_reversal_exec": {
+      "entry_style": "skew_reversal_scaler",
+      "scaling_step_factors": [
+        0.2,
+        0.3
+      ],
+      "default_inventory_action": "hedge",
+      "default_fresh_capital_action": "add",
+      "thesis_invalidation_state": "skew_reversal_failed",
+      "exit_reasons": [
+        "de_risk_as_skew_normalises",
+        "exit_if_reversal_fails"
+      ]
+    }
+  }
+}

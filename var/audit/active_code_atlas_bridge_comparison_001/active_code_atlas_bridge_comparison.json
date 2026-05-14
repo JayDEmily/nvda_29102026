@@ -1,0 +1,5168 @@
+{
+  "generated_at_utc": "2026-05-11T03:04:19.416340+00:00",
+  "guardrails": [
+    "donor Atlas is evidence only, not runtime authority",
+    "active code is observed reality only, not correctness authority",
+    "docstrings are separate low-authority evidence",
+    "static comparison is not proof execution",
+    "tests must be written or extended before any implementation/refactor leaf"
+  ],
+  "inputs": {
+    "active_code_atlas_path": "var/audit/active_code_atlas_001/active_code_atlas.json",
+    "active_code_record_count": 4075,
+    "atlas_path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+    "atlas_record_count": 1716,
+    "blueprint_path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+    "bridge_path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+    "bridge_record_count": 1716,
+    "current_state_map_path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md"
+  },
+  "ledger_name": "active_code_atlas_bridge_comparison",
+  "record_level_join_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_record_join.json",
+  "records": [
+    {
+      "active_code_record_count_same_surface_owner": 135,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 12,
+        "function": 25,
+        "function_docstring": 21,
+        "module": 14,
+        "module_docstring": 15,
+        "test_function": 17,
+        "test_helper_function": 12,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 48,
+        "runtime_or_contract": 51,
+        "test": 35
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 48,
+        "runtime_behaviour": 37,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 31,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 76,
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 76
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 76
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 76,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0001",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-AFC5AA087C26",
+        "ACA-DB499491F5E8",
+        "ACA-B056D10B9AAC",
+        "ACA-6B69911278A2",
+        "ACA-BE5A69AE6593",
+        "ACA-335D32A43F9E",
+        "ACA-660F10B42A30",
+        "ACA-E109E152A80B",
+        "ACA-CDAEA8705812",
+        "ACA-826B24DC9E5A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_allocation_001",
+        "atlas_donor_allocation_002",
+        "atlas_donor_allocation_003",
+        "atlas_donor_allocation_004",
+        "atlas_donor_allocation_005",
+        "atlas_donor_overnight_005",
+        "atlas_donor_config_017",
+        "atlas_donor_config_019",
+        "atlas_donor_config_020",
+        "atlas_donor_config_021"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/adapters/__init__.py",
+        "src/nvda_desk/adapters/egress/__init__.py",
+        "src/nvda_desk/adapters/egress/api_dto_adapter.py",
+        "src/nvda_desk/adapters/egress/broker_protocol.py",
+        "src/nvda_desk/adapters/ingress/__init__.py",
+        "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+        "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+        "src/nvda_desk/api/__init__.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "ingress and adapter authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 76
+        },
+        "proof_block_action_counts": {
+          "admit_new": 76
+        },
+        "proof_tier_counts": {
+          "Tier A": 76
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 76
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 135,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 12,
+        "function": 25,
+        "function_docstring": 21,
+        "module": 14,
+        "module_docstring": 15,
+        "test_function": 17,
+        "test_helper_function": 12,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 48,
+        "runtime_or_contract": 51,
+        "test": 35
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 48,
+        "runtime_behaviour": 37,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 31,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 110,
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 110
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 110
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 110,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0002",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-AFC5AA087C26",
+        "ACA-DB499491F5E8",
+        "ACA-B056D10B9AAC",
+        "ACA-6B69911278A2",
+        "ACA-BE5A69AE6593",
+        "ACA-335D32A43F9E",
+        "ACA-660F10B42A30",
+        "ACA-E109E152A80B",
+        "ACA-CDAEA8705812",
+        "ACA-826B24DC9E5A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_config_008",
+        "atlas_donor_config_009",
+        "atlas_donor_config_010",
+        "atlas_donor_config_011",
+        "atlas_donor_config_012",
+        "atlas_donor_config_013",
+        "atlas_donor_config_014",
+        "atlas_donor_config_015",
+        "atlas_donor_config_016",
+        "atlas_donor_config_018"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/adapters/__init__.py",
+        "src/nvda_desk/adapters/egress/__init__.py",
+        "src/nvda_desk/adapters/egress/api_dto_adapter.py",
+        "src/nvda_desk/adapters/egress/broker_protocol.py",
+        "src/nvda_desk/adapters/ingress/__init__.py",
+        "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+        "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+        "src/nvda_desk/api/__init__.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "ingress and adapter authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 110
+        },
+        "proof_block_action_counts": {
+          "admit_new": 110
+        },
+        "proof_tier_counts": {
+          "Tier A": 110
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 110
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 135,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 12,
+        "function": 25,
+        "function_docstring": 21,
+        "module": 14,
+        "module_docstring": 15,
+        "test_function": 17,
+        "test_helper_function": 12,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 48,
+        "runtime_or_contract": 51,
+        "test": 35
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 48,
+        "runtime_behaviour": 37,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 31,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 48,
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 48
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 48
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 48,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0003",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-AFC5AA087C26",
+        "ACA-DB499491F5E8",
+        "ACA-B056D10B9AAC",
+        "ACA-6B69911278A2",
+        "ACA-BE5A69AE6593",
+        "ACA-335D32A43F9E",
+        "ACA-660F10B42A30",
+        "ACA-E109E152A80B",
+        "ACA-CDAEA8705812",
+        "ACA-826B24DC9E5A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_config_001",
+        "atlas_donor_execution_records_001",
+        "atlas_donor_downstream_003",
+        "atlas_donor_downstream_007",
+        "atlas_donor_downstream_027",
+        "atlas_donor_main_001",
+        "atlas_donor_main_002",
+        "atlas_donor_api_deps_001",
+        "atlas_donor_api_deps_002",
+        "atlas_donor_api_deps_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/adapters/__init__.py",
+        "src/nvda_desk/adapters/egress/__init__.py",
+        "src/nvda_desk/adapters/egress/api_dto_adapter.py",
+        "src/nvda_desk/adapters/egress/broker_protocol.py",
+        "src/nvda_desk/adapters/ingress/__init__.py",
+        "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "src/nvda_desk/adapters/ingress/market_snapshot_feed.py",
+        "src/nvda_desk/adapters/ingress/options_surface_feed.py",
+        "src/nvda_desk/api/__init__.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "ingress and adapter authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 48
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 48
+        },
+        "proof_tier_counts": {
+          "Tier A": 48
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 48
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 49,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 8,
+        "class_docstring": 8,
+        "function": 13,
+        "function_docstring": 8,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 2,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 19,
+        "runtime_or_contract": 24,
+        "test": 5
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 19,
+        "runtime_behaviour": 21,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 4,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 66,
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 66
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 66
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 66,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0004",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-593ACEA1291C",
+        "ACA-CC786ED169E4",
+        "ACA-528187BAF144",
+        "ACA-9CF0345A7565",
+        "ACA-348D6BD1F88F",
+        "ACA-FC191F6A9C0B",
+        "ACA-A376247AA90F",
+        "ACA-A33C8B30462B",
+        "ACA-16B1173E0E9B",
+        "ACA-98669BCDB1B8"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_module_006",
+        "atlas_donor_module_009",
+        "atlas_donor_options_004",
+        "atlas_donor_research_003",
+        "atlas_donor_risk_009",
+        "atlas_donor_risk_011",
+        "atlas_donor_options_flow_history_005",
+        "atlas_donor_options_flow_history_006",
+        "atlas_donor_options_flow_history_007",
+        "atlas_donor_temporal_surface_002"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/upstream_signal.py",
+        "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "src/nvda_desk/upstream/raw_signal_ingress.py",
+        "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "raw capture and source-temporal authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 66
+        },
+        "proof_block_action_counts": {
+          "admit_new": 66
+        },
+        "proof_tier_counts": {
+          "Tier A": 66
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 66
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 49,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 8,
+        "class_docstring": 8,
+        "function": 13,
+        "function_docstring": 8,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 2,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 19,
+        "runtime_or_contract": 24,
+        "test": 5
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 19,
+        "runtime_behaviour": 21,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 4,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 11,
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 11
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 11
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 11,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0005",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-593ACEA1291C",
+        "ACA-CC786ED169E4",
+        "ACA-528187BAF144",
+        "ACA-9CF0345A7565",
+        "ACA-348D6BD1F88F",
+        "ACA-FC191F6A9C0B",
+        "ACA-A376247AA90F",
+        "ACA-A33C8B30462B",
+        "ACA-16B1173E0E9B",
+        "ACA-98669BCDB1B8"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_db_models_003",
+        "atlas_donor_db_models_005",
+        "atlas_donor_db_models_007",
+        "atlas_donor_db_models_009",
+        "atlas_donor_db_models_012",
+        "atlas_donor_db_models_013",
+        "atlas_donor_db_models_018",
+        "atlas_donor_db_models_019",
+        "atlas_donor_db_models_020",
+        "atlas_donor_db_models_021"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/upstream_signal.py",
+        "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "src/nvda_desk/upstream/raw_signal_ingress.py",
+        "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "raw capture and source-temporal authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 11
+        },
+        "proof_block_action_counts": {
+          "admit_new": 11
+        },
+        "proof_tier_counts": {
+          "Tier A": 11
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 11
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 49,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 8,
+        "class_docstring": 8,
+        "function": 13,
+        "function_docstring": 8,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 2,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 19,
+        "runtime_or_contract": 24,
+        "test": 5
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 19,
+        "runtime_behaviour": 21,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 4,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 31,
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 31
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 31
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 31,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0006",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-593ACEA1291C",
+        "ACA-CC786ED169E4",
+        "ACA-528187BAF144",
+        "ACA-9CF0345A7565",
+        "ACA-348D6BD1F88F",
+        "ACA-FC191F6A9C0B",
+        "ACA-A376247AA90F",
+        "ACA-A33C8B30462B",
+        "ACA-16B1173E0E9B",
+        "ACA-98669BCDB1B8"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_replay_002",
+        "atlas_donor_replay_003",
+        "atlas_donor_session_clock_001",
+        "atlas_donor_session_clock_002",
+        "atlas_donor_session_clock_003",
+        "atlas_donor_session_clock_004",
+        "atlas_donor_session_clock_005",
+        "atlas_donor_session_clock_006",
+        "atlas_donor_session_clock_007",
+        "atlas_donor_session_clock_008"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/upstream_signal.py",
+        "src/nvda_desk/ingress/raw_bundle_loader.py",
+        "src/nvda_desk/upstream/raw_signal_ingress.py",
+        "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "raw capture and source-temporal authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 31
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 31
+        },
+        "proof_tier_counts": {
+          "Tier A": 31
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 31
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 22,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 1,
+        "class_docstring": 1,
+        "function": 2,
+        "function_docstring": 2,
+        "module": 2,
+        "module_docstring": 2,
+        "test_function": 7,
+        "test_helper_function": 2,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 5,
+        "runtime_or_contract": 5,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 5,
+        "runtime_behaviour": 3,
+        "runtime_module": 2,
+        "surface_summary": 1,
+        "test_contract": 9,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 68,
+      "blueprint_surface": "Raw signal families",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 68
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 68
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 68,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0007",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-BD50C624D4B0",
+        "ACA-BA6C6A8BCAA4",
+        "ACA-C4CFA4004D64",
+        "ACA-217474C2AAF0",
+        "ACA-F696CC0678CF",
+        "ACA-DDFF481701FF",
+        "ACA-12A28140F0EB",
+        "ACA-53DD04907C25",
+        "ACA-4FED189BCA45",
+        "ACA-F9EAC93286C7"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_overnight_006",
+        "atlas_donor_eval_005",
+        "atlas_donor_eval_010",
+        "atlas_donor_market_009",
+        "atlas_donor_review_001",
+        "atlas_donor_review_012",
+        "atlas_donor_review_013",
+        "atlas_donor_review_023",
+        "atlas_donor_parallel_risk_014",
+        "atlas_donor_dataset_017"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/upstream/__init__.py",
+        "src/nvda_desk/upstream/raw_signal_coverage.py",
+        "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+        "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "raw signal family authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 68
+        },
+        "proof_block_action_counts": {
+          "admit_new": 68
+        },
+        "proof_tier_counts": {
+          "Tier A": 68
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 68
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 22,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 1,
+        "class_docstring": 1,
+        "function": 2,
+        "function_docstring": 2,
+        "module": 2,
+        "module_docstring": 2,
+        "test_function": 7,
+        "test_helper_function": 2,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 5,
+        "runtime_or_contract": 5,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 5,
+        "runtime_behaviour": 3,
+        "runtime_module": 2,
+        "surface_summary": 1,
+        "test_contract": 9,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 22,
+      "blueprint_surface": "Raw signal families",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 22
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 22
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 22,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0008",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-BD50C624D4B0",
+        "ACA-BA6C6A8BCAA4",
+        "ACA-C4CFA4004D64",
+        "ACA-217474C2AAF0",
+        "ACA-F696CC0678CF",
+        "ACA-DDFF481701FF",
+        "ACA-12A28140F0EB",
+        "ACA-53DD04907C25",
+        "ACA-4FED189BCA45",
+        "ACA-F9EAC93286C7"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_options_units_001",
+        "atlas_donor_options_units_002",
+        "atlas_donor_options_units_003",
+        "atlas_donor_options_units_004",
+        "atlas_donor_options_units_005",
+        "atlas_donor_options_units_006",
+        "atlas_donor_slv_001",
+        "atlas_donor_slv_002",
+        "atlas_donor_slv_003",
+        "atlas_donor_slv_004"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/upstream/__init__.py",
+        "src/nvda_desk/upstream/raw_signal_coverage.py",
+        "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+        "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "raw signal family authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 22
+        },
+        "proof_block_action_counts": {
+          "admit_new": 22
+        },
+        "proof_tier_counts": {
+          "Tier A": 22
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 22
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 22,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 1,
+        "class_docstring": 1,
+        "function": 2,
+        "function_docstring": 2,
+        "module": 2,
+        "module_docstring": 2,
+        "test_function": 7,
+        "test_helper_function": 2,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 5,
+        "runtime_or_contract": 5,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 5,
+        "runtime_behaviour": 3,
+        "runtime_module": 2,
+        "surface_summary": 1,
+        "test_contract": 9,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 33,
+      "blueprint_surface": "Raw signal families",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 33
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 33
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 33,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0009",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-BD50C624D4B0",
+        "ACA-BA6C6A8BCAA4",
+        "ACA-C4CFA4004D64",
+        "ACA-217474C2AAF0",
+        "ACA-F696CC0678CF",
+        "ACA-DDFF481701FF",
+        "ACA-12A28140F0EB",
+        "ACA-53DD04907C25",
+        "ACA-4FED189BCA45",
+        "ACA-F9EAC93286C7"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_options_001",
+        "atlas_donor_options_002",
+        "atlas_donor_options_003",
+        "atlas_donor_options_005",
+        "atlas_donor_market_001",
+        "atlas_donor_market_002",
+        "atlas_donor_market_003",
+        "atlas_donor_market_004",
+        "atlas_donor_market_005",
+        "atlas_donor_market_006"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/upstream/__init__.py",
+        "src/nvda_desk/upstream/raw_signal_coverage.py",
+        "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+        "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "raw signal family authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 33
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 33
+        },
+        "proof_tier_counts": {
+          "Tier A": 33
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 33
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 100,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 8,
+        "class_docstring": 8,
+        "data_file": 9,
+        "file": 2,
+        "function": 25,
+        "function_docstring": 13,
+        "module": 8,
+        "module_docstring": 8,
+        "test_function": 9,
+        "test_helper_function": 6,
+        "test_module": 3
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 29,
+        "runtime_or_contract": 50,
+        "test": 18
+      },
+      "active_record_type_counts": {
+        "data_reference": 9,
+        "docstring_claim": 29,
+        "repo_file": 2,
+        "runtime_behaviour": 33,
+        "runtime_module": 8,
+        "surface_summary": 1,
+        "test_contract": 15,
+        "test_module": 3
+      },
+      "atlas_record_count_joined": 15,
+      "blueprint_surface": "Financial and event calendar architecture",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 15
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 15
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 15,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0010",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 201,
+        "line_start": 186,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-9AD2FA1A0783",
+        "ACA-25ACFBB8BE91",
+        "ACA-301C5E2760E6",
+        "ACA-F4025DBA7792",
+        "ACA-1D36C58C82B3",
+        "ACA-3021558C41FD",
+        "ACA-3D42EF56886A",
+        "ACA-429D6D35001D",
+        "ACA-F2F0BF349B56",
+        "ACA-51D8CE7A66A5"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_event_store_service_001",
+        "atlas_donor_event_store_service_002",
+        "atlas_donor_event_store_service_003",
+        "atlas_donor_event_store_service_004",
+        "atlas_donor_event_store_service_005",
+        "atlas_donor_event_store_service_006",
+        "atlas_donor_event_store_service_007",
+        "atlas_donor_event_store_service_008",
+        "atlas_donor_event_store_service_009",
+        "atlas_donor_event_store_service_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/reference/financial_calendar/README.md",
+        "data/reference/financial_calendar/SHA256SUMS.json",
+        "data/reference/financial_calendar/financial_calendar_master_2026.json",
+        "data/reference/financial_calendar/layers/01_layer_01_us_market_structure_2026.json",
+        "data/reference/financial_calendar/layers/02_layer_02_us_macro_policy_2026.json",
+        "data/reference/financial_calendar/layers/03_layer_03_nvda_sector_catalysts_2026.json",
+        "data/reference/financial_calendar/layers/04_layer_04_asia_precursor_venue_context_2026.json",
+        "data/reference/financial_calendar/repo_manifest.json",
+        "data/reference/financial_calendar/source_manifest.json"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "financial calendar authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 15
+        },
+        "proof_block_action_counts": {
+          "admit_new": 15
+        },
+        "proof_tier_counts": {
+          "Tier A": 15
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 15
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 100,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 8,
+        "class_docstring": 8,
+        "data_file": 9,
+        "file": 2,
+        "function": 25,
+        "function_docstring": 13,
+        "module": 8,
+        "module_docstring": 8,
+        "test_function": 9,
+        "test_helper_function": 6,
+        "test_module": 3
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 29,
+        "runtime_or_contract": 50,
+        "test": 18
+      },
+      "active_record_type_counts": {
+        "data_reference": 9,
+        "docstring_claim": 29,
+        "repo_file": 2,
+        "runtime_behaviour": 33,
+        "runtime_module": 8,
+        "surface_summary": 1,
+        "test_contract": 15,
+        "test_module": 3
+      },
+      "atlas_record_count_joined": 102,
+      "blueprint_surface": "Financial and event calendar architecture",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 102
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 102
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 102,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0011",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 201,
+        "line_start": 186,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-9AD2FA1A0783",
+        "ACA-25ACFBB8BE91",
+        "ACA-301C5E2760E6",
+        "ACA-F4025DBA7792",
+        "ACA-1D36C58C82B3",
+        "ACA-3021558C41FD",
+        "ACA-3D42EF56886A",
+        "ACA-429D6D35001D",
+        "ACA-F2F0BF349B56",
+        "ACA-51D8CE7A66A5"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_events_001",
+        "atlas_donor_events_002",
+        "atlas_donor_events_003",
+        "atlas_donor_events_004",
+        "atlas_donor_events_005",
+        "atlas_donor_events_006",
+        "atlas_donor_events_007",
+        "atlas_donor_events_008",
+        "atlas_donor_events_009",
+        "atlas_donor_events_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/reference/financial_calendar/README.md",
+        "data/reference/financial_calendar/SHA256SUMS.json",
+        "data/reference/financial_calendar/financial_calendar_master_2026.json",
+        "data/reference/financial_calendar/layers/01_layer_01_us_market_structure_2026.json",
+        "data/reference/financial_calendar/layers/02_layer_02_us_macro_policy_2026.json",
+        "data/reference/financial_calendar/layers/03_layer_03_nvda_sector_catalysts_2026.json",
+        "data/reference/financial_calendar/layers/04_layer_04_asia_precursor_venue_context_2026.json",
+        "data/reference/financial_calendar/repo_manifest.json",
+        "data/reference/financial_calendar/source_manifest.json"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "financial calendar authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 102
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 102
+        },
+        "proof_tier_counts": {
+          "Tier A": 102
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 102
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 132,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 7,
+        "class_docstring": 7,
+        "file": 2,
+        "function": 40,
+        "function_docstring": 18,
+        "module": 10,
+        "module_docstring": 10,
+        "test_function": 17,
+        "test_helper_function": 13,
+        "test_module": 7
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 35,
+        "runtime_or_contract": 57,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 35,
+        "repo_file": 2,
+        "runtime_behaviour": 47,
+        "runtime_module": 10,
+        "surface_summary": 1,
+        "test_contract": 30,
+        "test_module": 7
+      },
+      "atlas_record_count_joined": 2,
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 2
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 2
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 2,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0012",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-31CE0183BC5D",
+        "ACA-C307619E857A",
+        "ACA-3E4C03ACA99A",
+        "ACA-93A8F1AFCFA6",
+        "ACA-7559DE4AA818",
+        "ACA-3512ABED53F7",
+        "ACA-B37FD7E86CB9",
+        "ACA-8CD695D9F313",
+        "ACA-9D428F41E6C0",
+        "ACA-A3998B54F637"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_dataset_007",
+        "atlas_donor_options_flow_context_006"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/ingress/__init__.py",
+        "src/nvda_desk/cognition/ingress/options_mapper.py",
+        "src/nvda_desk/cognition/ingress/regime_mapper.py",
+        "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+        "src/nvda_desk/cognition/ingress/translator.py",
+        "src/nvda_desk/contracts/prepared_context.py",
+        "src/nvda_desk/contracts/stage_inputs.py",
+        "src/nvda_desk/preparation/__init__.py",
+        "src/nvda_desk/preparation/context_packet.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "runtime preparation authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 2
+        },
+        "proof_block_action_counts": {
+          "admit_new": 2
+        },
+        "proof_tier_counts": {
+          "Tier A": 2
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 2
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 132,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 7,
+        "class_docstring": 7,
+        "file": 2,
+        "function": 40,
+        "function_docstring": 18,
+        "module": 10,
+        "module_docstring": 10,
+        "test_function": 17,
+        "test_helper_function": 13,
+        "test_module": 7
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 35,
+        "runtime_or_contract": 57,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 35,
+        "repo_file": 2,
+        "runtime_behaviour": 47,
+        "runtime_module": 10,
+        "surface_summary": 1,
+        "test_contract": 30,
+        "test_module": 7
+      },
+      "atlas_record_count_joined": 31,
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 31
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 31
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 31,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0013",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-31CE0183BC5D",
+        "ACA-C307619E857A",
+        "ACA-3E4C03ACA99A",
+        "ACA-93A8F1AFCFA6",
+        "ACA-7559DE4AA818",
+        "ACA-3512ABED53F7",
+        "ACA-B37FD7E86CB9",
+        "ACA-8CD695D9F313",
+        "ACA-9D428F41E6C0",
+        "ACA-A3998B54F637"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_dataset_005",
+        "atlas_donor_dataset_009",
+        "atlas_donor_dataset_011",
+        "atlas_donor_dataset_020",
+        "atlas_donor_dataset_022",
+        "atlas_donor_service_chain_to_cognition_007",
+        "atlas_donor_service_market_regime_context_005",
+        "atlas_donor_service_market_regime_context_006",
+        "atlas_donor_service_market_regime_context_007",
+        "atlas_donor_service_market_regime_context_008"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/ingress/__init__.py",
+        "src/nvda_desk/cognition/ingress/options_mapper.py",
+        "src/nvda_desk/cognition/ingress/regime_mapper.py",
+        "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+        "src/nvda_desk/cognition/ingress/translator.py",
+        "src/nvda_desk/contracts/prepared_context.py",
+        "src/nvda_desk/contracts/stage_inputs.py",
+        "src/nvda_desk/preparation/__init__.py",
+        "src/nvda_desk/preparation/context_packet.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "runtime preparation authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 31
+        },
+        "proof_block_action_counts": {
+          "admit_new": 31
+        },
+        "proof_tier_counts": {
+          "Tier A": 31
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 31
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 132,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 7,
+        "class_docstring": 7,
+        "file": 2,
+        "function": 40,
+        "function_docstring": 18,
+        "module": 10,
+        "module_docstring": 10,
+        "test_function": 17,
+        "test_helper_function": 13,
+        "test_module": 7
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 35,
+        "runtime_or_contract": 57,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 35,
+        "repo_file": 2,
+        "runtime_behaviour": 47,
+        "runtime_module": 10,
+        "surface_summary": 1,
+        "test_contract": 30,
+        "test_module": 7
+      },
+      "atlas_record_count_joined": 18,
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 18
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 18
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 18,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0014",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-31CE0183BC5D",
+        "ACA-C307619E857A",
+        "ACA-3E4C03ACA99A",
+        "ACA-93A8F1AFCFA6",
+        "ACA-7559DE4AA818",
+        "ACA-3512ABED53F7",
+        "ACA-B37FD7E86CB9",
+        "ACA-8CD695D9F313",
+        "ACA-9D428F41E6C0",
+        "ACA-A3998B54F637"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_trace_review_003",
+        "atlas_donor_dataset_002",
+        "atlas_donor_dataset_008",
+        "atlas_donor_dataset_015",
+        "atlas_donor_dataset_018",
+        "atlas_donor_service_chain_to_cognition_002",
+        "atlas_donor_service_chain_to_cognition_005",
+        "atlas_donor_service_market_regime_context_001",
+        "atlas_donor_options_flow_context_001",
+        "atlas_donor_options_flow_context_002"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/ingress/__init__.py",
+        "src/nvda_desk/cognition/ingress/options_mapper.py",
+        "src/nvda_desk/cognition/ingress/regime_mapper.py",
+        "src/nvda_desk/cognition/ingress/temporal_mapper.py",
+        "src/nvda_desk/cognition/ingress/translator.py",
+        "src/nvda_desk/contracts/prepared_context.py",
+        "src/nvda_desk/contracts/stage_inputs.py",
+        "src/nvda_desk/preparation/__init__.py",
+        "src/nvda_desk/preparation/context_packet.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "runtime preparation authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 18
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 18
+        },
+        "proof_tier_counts": {
+          "Tier A": 18
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 18
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 81,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "class_docstring": 10,
+        "file": 1,
+        "function": 19,
+        "function_docstring": 17,
+        "markdown_document": 2,
+        "module": 6,
+        "module_docstring": 6,
+        "test_function": 7,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 4,
+        "docstring": 33,
+        "runtime_or_contract": 35,
+        "test": 9
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 33,
+        "normative_or_control_document": 2,
+        "repo_file": 1,
+        "runtime_behaviour": 29,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 7,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 24,
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 24
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 24
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 24,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0015",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-CD8B175793A2",
+        "ACA-D857A0ABBAEA",
+        "ACA-24186A94F312",
+        "ACA-F6BF4A75715B",
+        "ACA-43FB4417ACCF",
+        "ACA-C88BD322831F",
+        "ACA-37D213FC98FD",
+        "ACA-3A6EF3E3E7D3",
+        "ACA-3BD53C4E5484",
+        "ACA-681A65D7E508"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_parallel_risk_018",
+        "atlas_donor_parallel_risk_020",
+        "atlas_donor_cognition_026",
+        "atlas_donor_domain_temporal_state_002",
+        "atlas_donor_service_carry_handoff_003",
+        "atlas_donor_service_carry_handoff_004",
+        "atlas_donor_service_carry_handoff_005",
+        "atlas_donor_service_review_packets_001",
+        "atlas_donor_service_review_packets_002",
+        "atlas_donor_service_review_packets_003"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+        "docs/09_DMPV3_PROTOCOL_CORE.md",
+        "src/nvda_desk/contracts/dataset_packets.py",
+        "src/nvda_desk/contracts/packets.py",
+        "src/nvda_desk/packets/__init__.py",
+        "src/nvda_desk/packets/dmp_packets.py",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/dmp_envelope.py",
+        "tests/tier_a/packets/.gitkeep"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "DMPV3 packet authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 24
+        },
+        "proof_block_action_counts": {
+          "admit_new": 24
+        },
+        "proof_tier_counts": {
+          "Tier A": 24
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 24
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 81,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "class_docstring": 10,
+        "file": 1,
+        "function": 19,
+        "function_docstring": 17,
+        "markdown_document": 2,
+        "module": 6,
+        "module_docstring": 6,
+        "test_function": 7,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 4,
+        "docstring": 33,
+        "runtime_or_contract": 35,
+        "test": 9
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 33,
+        "normative_or_control_document": 2,
+        "repo_file": 1,
+        "runtime_behaviour": 29,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 7,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 21,
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 21
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 21
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 21,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0016",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-CD8B175793A2",
+        "ACA-D857A0ABBAEA",
+        "ACA-24186A94F312",
+        "ACA-F6BF4A75715B",
+        "ACA-43FB4417ACCF",
+        "ACA-C88BD322831F",
+        "ACA-37D213FC98FD",
+        "ACA-3A6EF3E3E7D3",
+        "ACA-3BD53C4E5484",
+        "ACA-681A65D7E508"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_temporal_surface_009",
+        "atlas_donor_temporal_surface_010",
+        "atlas_donor_parallel_risk_001",
+        "atlas_donor_parallel_risk_013",
+        "atlas_donor_state_policy_007",
+        "atlas_donor_cognition_014",
+        "atlas_donor_cognition_022",
+        "atlas_donor_cognition_028",
+        "atlas_donor_cognition_049",
+        "atlas_donor_domain_temporal_state_004"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+        "docs/09_DMPV3_PROTOCOL_CORE.md",
+        "src/nvda_desk/contracts/dataset_packets.py",
+        "src/nvda_desk/contracts/packets.py",
+        "src/nvda_desk/packets/__init__.py",
+        "src/nvda_desk/packets/dmp_packets.py",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/dmp_envelope.py",
+        "tests/tier_a/packets/.gitkeep"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "DMPV3 packet authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 21
+        },
+        "proof_block_action_counts": {
+          "admit_new": 21
+        },
+        "proof_tier_counts": {
+          "Tier A": 21
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 21
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 81,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "class_docstring": 10,
+        "file": 1,
+        "function": 19,
+        "function_docstring": 17,
+        "markdown_document": 2,
+        "module": 6,
+        "module_docstring": 6,
+        "test_function": 7,
+        "test_module": 2
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 4,
+        "docstring": 33,
+        "runtime_or_contract": 35,
+        "test": 9
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 33,
+        "normative_or_control_document": 2,
+        "repo_file": 1,
+        "runtime_behaviour": 29,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 7,
+        "test_module": 2
+      },
+      "atlas_record_count_joined": 28,
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 28
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 28
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 28,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0017",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-CD8B175793A2",
+        "ACA-D857A0ABBAEA",
+        "ACA-24186A94F312",
+        "ACA-F6BF4A75715B",
+        "ACA-43FB4417ACCF",
+        "ACA-C88BD322831F",
+        "ACA-37D213FC98FD",
+        "ACA-3A6EF3E3E7D3",
+        "ACA-3BD53C4E5484",
+        "ACA-681A65D7E508"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_dmp_envelope_001",
+        "atlas_donor_dmp_envelope_002",
+        "atlas_donor_dmp_envelope_003",
+        "atlas_donor_dmp_envelope_004",
+        "atlas_donor_dmp_envelope_005",
+        "atlas_donor_dmp_envelope_006",
+        "atlas_donor_dmp_envelope_007",
+        "atlas_donor_dmp_envelope_008",
+        "atlas_donor_dmp_envelope_009",
+        "atlas_donor_dmp_envelope_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+        "docs/09_DMPV3_PROTOCOL_CORE.md",
+        "src/nvda_desk/contracts/dataset_packets.py",
+        "src/nvda_desk/contracts/packets.py",
+        "src/nvda_desk/packets/__init__.py",
+        "src/nvda_desk/packets/dmp_packets.py",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/dmp_envelope.py",
+        "tests/tier_a/packets/.gitkeep"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "DMPV3 packet authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 28
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 28
+        },
+        "proof_tier_counts": {
+          "Tier A": 28
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 28
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 92,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 6,
+        "class_docstring": 6,
+        "file": 1,
+        "function": 20,
+        "function_docstring": 5,
+        "module": 10,
+        "module_docstring": 10,
+        "test_function": 17,
+        "test_helper_function": 10,
+        "test_module": 6
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 36,
+        "test": 33
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "repo_file": 1,
+        "runtime_behaviour": 26,
+        "runtime_module": 10,
+        "surface_summary": 1,
+        "test_contract": 27,
+        "test_module": 6
+      },
+      "atlas_record_count_joined": 109,
+      "blueprint_surface": "Serial desk-cognition spine",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 109
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 109
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 109,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0018",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 252,
+        "line_start": 237,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-E0D98DBFF3F3",
+        "ACA-FDE7262ED856",
+        "ACA-9477EBA1BDFD",
+        "ACA-90330963EA65",
+        "ACA-A4ED2DA7BFCA",
+        "ACA-5280825E652E",
+        "ACA-D5A8B630A129",
+        "ACA-5E67259B6F1F",
+        "ACA-2D03AD8274A7",
+        "ACA-E3A94299E2D8"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_cognition_057",
+        "atlas_donor_services_imported_modules_pkg_001",
+        "atlas_donor_legacy_extraction_001",
+        "atlas_donor_legacy_extraction_002",
+        "atlas_donor_legacy_extraction_005",
+        "atlas_donor_imported_market_context_synthesis_001",
+        "atlas_donor_imported_market_context_synthesis_002",
+        "atlas_donor_imported_market_context_synthesis_003",
+        "atlas_donor_imported_market_context_synthesis_004",
+        "atlas_donor_imported_market_context_synthesis_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/serial/__init__.py",
+        "src/nvda_desk/cognition/serial/eligibility.py",
+        "src/nvda_desk/cognition/serial/options_flow.py",
+        "src/nvda_desk/cognition/serial/posture.py",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/services/eligibility_service.py",
+        "src/nvda_desk/services/execution_service.py",
+        "src/nvda_desk/services/options_flow_context_service.py",
+        "src/nvda_desk/services/posture_service.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "serial desk-cognition authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 109
+        },
+        "proof_block_action_counts": {
+          "admit_new": 109
+        },
+        "proof_tier_counts": {
+          "Tier A": 109
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 109
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 92,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 6,
+        "class_docstring": 6,
+        "file": 1,
+        "function": 20,
+        "function_docstring": 5,
+        "module": 10,
+        "module_docstring": 10,
+        "test_function": 17,
+        "test_helper_function": 10,
+        "test_module": 6
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 36,
+        "test": 33
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "repo_file": 1,
+        "runtime_behaviour": 26,
+        "runtime_module": 10,
+        "surface_summary": 1,
+        "test_contract": 27,
+        "test_module": 6
+      },
+      "atlas_record_count_joined": 30,
+      "blueprint_surface": "Serial desk-cognition spine",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 30
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 30
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 30,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0019",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 252,
+        "line_start": 237,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-E0D98DBFF3F3",
+        "ACA-FDE7262ED856",
+        "ACA-9477EBA1BDFD",
+        "ACA-90330963EA65",
+        "ACA-A4ED2DA7BFCA",
+        "ACA-5280825E652E",
+        "ACA-D5A8B630A129",
+        "ACA-5E67259B6F1F",
+        "ACA-2D03AD8274A7",
+        "ACA-E3A94299E2D8"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_module_002",
+        "atlas_donor_cognition_001",
+        "atlas_donor_cognition_003",
+        "atlas_donor_cognition_004",
+        "atlas_donor_cognition_005",
+        "atlas_donor_cognition_006",
+        "atlas_donor_cognition_007",
+        "atlas_donor_cognition_010",
+        "atlas_donor_cognition_015",
+        "atlas_donor_cognition_017"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/serial/__init__.py",
+        "src/nvda_desk/cognition/serial/eligibility.py",
+        "src/nvda_desk/cognition/serial/options_flow.py",
+        "src/nvda_desk/cognition/serial/posture.py",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/services/eligibility_service.py",
+        "src/nvda_desk/services/execution_service.py",
+        "src/nvda_desk/services/options_flow_context_service.py",
+        "src/nvda_desk/services/posture_service.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "serial desk-cognition authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 30
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 30
+        },
+        "proof_tier_counts": {
+          "Tier A": 30
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 30
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 163,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 18,
+        "class_docstring": 18,
+        "file": 1,
+        "function": 48,
+        "function_docstring": 23,
+        "module": 8,
+        "module_docstring": 10,
+        "test_function": 24,
+        "test_helper_function": 4,
+        "test_module": 8
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 51,
+        "runtime_or_contract": 74,
+        "test": 36
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 51,
+        "repo_file": 1,
+        "runtime_behaviour": 66,
+        "runtime_module": 8,
+        "surface_summary": 1,
+        "test_contract": 28,
+        "test_module": 8
+      },
+      "atlas_record_count_joined": 25,
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 25
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 25
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 25,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0020",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 269,
+        "line_start": 254,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4BD6971DE03A",
+        "ACA-C689CF1429D7",
+        "ACA-B138A328ACF1",
+        "ACA-A5B1C7FD4A6C",
+        "ACA-F1F004F364F3",
+        "ACA-F05E7DD72AA0",
+        "ACA-73AEF353A893",
+        "ACA-016DCBCAFFF3",
+        "ACA-ADB7EBFF21C7",
+        "ACA-FB128002166D"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_risk_002",
+        "atlas_donor_risk_003",
+        "atlas_donor_risk_004",
+        "atlas_donor_risk_005",
+        "atlas_donor_risk_006",
+        "atlas_donor_risk_007",
+        "atlas_donor_risk_008",
+        "atlas_donor_risk_010",
+        "atlas_donor_risk_012",
+        "atlas_donor_calibration_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/parallel_risk.py",
+        "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+        "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+        "src/nvda_desk/risk/parallel/__init__.py",
+        "src/nvda_desk/risk/parallel/evaluate.py",
+        "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+        "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "tests/tier_a/parallel_risk/.gitkeep"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "parallel risk authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 25
+        },
+        "proof_block_action_counts": {
+          "admit_new": 25
+        },
+        "proof_tier_counts": {
+          "Tier A": 25
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 25
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 163,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 18,
+        "class_docstring": 18,
+        "file": 1,
+        "function": 48,
+        "function_docstring": 23,
+        "module": 8,
+        "module_docstring": 10,
+        "test_function": 24,
+        "test_helper_function": 4,
+        "test_module": 8
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 51,
+        "runtime_or_contract": 74,
+        "test": 36
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 51,
+        "repo_file": 1,
+        "runtime_behaviour": 66,
+        "runtime_module": 8,
+        "surface_summary": 1,
+        "test_contract": 28,
+        "test_module": 8
+      },
+      "atlas_record_count_joined": 32,
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 32
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 32
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 32,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0021",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 269,
+        "line_start": 254,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4BD6971DE03A",
+        "ACA-C689CF1429D7",
+        "ACA-B138A328ACF1",
+        "ACA-A5B1C7FD4A6C",
+        "ACA-F1F004F364F3",
+        "ACA-F05E7DD72AA0",
+        "ACA-73AEF353A893",
+        "ACA-016DCBCAFFF3",
+        "ACA-ADB7EBFF21C7",
+        "ACA-FB128002166D"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_risk_001",
+        "atlas_donor_parallel_risk_002",
+        "atlas_donor_parallel_risk_003",
+        "atlas_donor_parallel_risk_005",
+        "atlas_donor_parallel_risk_006",
+        "atlas_donor_parallel_risk_007",
+        "atlas_donor_parallel_risk_008",
+        "atlas_donor_parallel_risk_009",
+        "atlas_donor_parallel_risk_010",
+        "atlas_donor_parallel_risk_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/parallel_risk.py",
+        "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+        "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+        "src/nvda_desk/risk/parallel/__init__.py",
+        "src/nvda_desk/risk/parallel/evaluate.py",
+        "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+        "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "tests/tier_a/parallel_risk/.gitkeep"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "parallel risk authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 32
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 32
+        },
+        "proof_tier_counts": {
+          "Tier A": 32
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 32
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 161,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 13,
+        "config_file": 3,
+        "function": 30,
+        "function_docstring": 47,
+        "markdown_document": 1,
+        "module": 9,
+        "module_docstring": 10,
+        "test_function": 19,
+        "test_helper_function": 10,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 70,
+        "runtime_or_contract": 56,
+        "test": 33
+      },
+      "active_record_type_counts": {
+        "config_contract": 3,
+        "docstring_claim": 70,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 44,
+        "runtime_module": 9,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 43,
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 43
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 43
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 43,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0022",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-765E7B08A173",
+        "ACA-273A06F2C7DB",
+        "ACA-83ED724F2DBD",
+        "ACA-957C61D45EAE",
+        "ACA-E3CF725C565A",
+        "ACA-A586D76E8925",
+        "ACA-A91AF4BFA6CF",
+        "ACA-D28BD6B66EE6",
+        "ACA-2E5A65F532B7",
+        "ACA-3EA42028C68D"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_eval_015",
+        "atlas_donor_eval_017",
+        "atlas_donor_review_016",
+        "atlas_donor_calibration_004",
+        "atlas_donor_calibration_005",
+        "atlas_donor_calibration_008",
+        "atlas_donor_calibration_010",
+        "atlas_donor_calibration_012",
+        "atlas_donor_calibration_014",
+        "atlas_donor_calibration_015"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "config/runtime_settings.example.yaml",
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md",
+        "src/nvda_desk/cognition/modifiers/__init__.py",
+        "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+        "src/nvda_desk/config/coefficient_authority.py",
+        "src/nvda_desk/config/config_surface.py",
+        "src/nvda_desk/config/runtime_settings.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "coefficient and modifier authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 43
+        },
+        "proof_block_action_counts": {
+          "admit_new": 43
+        },
+        "proof_tier_counts": {
+          "Tier A": 43
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 43
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 161,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 13,
+        "config_file": 3,
+        "function": 30,
+        "function_docstring": 47,
+        "markdown_document": 1,
+        "module": 9,
+        "module_docstring": 10,
+        "test_function": 19,
+        "test_helper_function": 10,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 70,
+        "runtime_or_contract": 56,
+        "test": 33
+      },
+      "active_record_type_counts": {
+        "config_contract": 3,
+        "docstring_claim": 70,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 44,
+        "runtime_module": 9,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 84,
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 84
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 84
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 84,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0023",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-765E7B08A173",
+        "ACA-273A06F2C7DB",
+        "ACA-83ED724F2DBD",
+        "ACA-957C61D45EAE",
+        "ACA-E3CF725C565A",
+        "ACA-A586D76E8925",
+        "ACA-A91AF4BFA6CF",
+        "ACA-D28BD6B66EE6",
+        "ACA-2E5A65F532B7",
+        "ACA-3EA42028C68D"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_config_005",
+        "atlas_donor_config_006",
+        "atlas_donor_config_007",
+        "atlas_donor_calibration_024",
+        "atlas_donor_calibration_025",
+        "atlas_donor_calibration_027",
+        "atlas_donor_calibration_029",
+        "atlas_donor_calibration_031",
+        "atlas_donor_calibration_032",
+        "atlas_donor_calibration_033"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "config/runtime_settings.example.yaml",
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md",
+        "src/nvda_desk/cognition/modifiers/__init__.py",
+        "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+        "src/nvda_desk/config/coefficient_authority.py",
+        "src/nvda_desk/config/config_surface.py",
+        "src/nvda_desk/config/runtime_settings.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "coefficient and modifier authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 84
+        },
+        "proof_block_action_counts": {
+          "admit_new": 84
+        },
+        "proof_tier_counts": {
+          "Tier A": 84
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 84
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 161,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 14,
+        "class_docstring": 13,
+        "config_file": 3,
+        "function": 30,
+        "function_docstring": 47,
+        "markdown_document": 1,
+        "module": 9,
+        "module_docstring": 10,
+        "test_function": 19,
+        "test_helper_function": 10,
+        "test_module": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 70,
+        "runtime_or_contract": 56,
+        "test": 33
+      },
+      "active_record_type_counts": {
+        "config_contract": 3,
+        "docstring_claim": 70,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 44,
+        "runtime_module": 9,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 4
+      },
+      "atlas_record_count_joined": 66,
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 66
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 66
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 66,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0024",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-765E7B08A173",
+        "ACA-273A06F2C7DB",
+        "ACA-83ED724F2DBD",
+        "ACA-957C61D45EAE",
+        "ACA-E3CF725C565A",
+        "ACA-A586D76E8925",
+        "ACA-A91AF4BFA6CF",
+        "ACA-D28BD6B66EE6",
+        "ACA-2E5A65F532B7",
+        "ACA-3EA42028C68D"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_config_002",
+        "atlas_donor_config_003",
+        "atlas_donor_config_004",
+        "atlas_donor_calibration_001",
+        "atlas_donor_calibration_002",
+        "atlas_donor_calibration_003",
+        "atlas_donor_calibration_006",
+        "atlas_donor_calibration_007",
+        "atlas_donor_state_policy_001",
+        "atlas_donor_state_policy_003"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "config/runtime_settings.example.yaml",
+        "docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md",
+        "src/nvda_desk/cognition/modifiers/__init__.py",
+        "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+        "src/nvda_desk/config/coefficient_authority.py",
+        "src/nvda_desk/config/config_surface.py",
+        "src/nvda_desk/config/runtime_settings.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "coefficient and modifier authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 66
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 66
+        },
+        "proof_tier_counts": {
+          "Tier A": 66
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 66
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 65,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 6,
+        "class_docstring": 6,
+        "config_file": 1,
+        "function": 26,
+        "function_docstring": 8,
+        "module": 6,
+        "module_docstring": 6,
+        "test_function": 2,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 20,
+        "runtime_or_contract": 39,
+        "test": 5
+      },
+      "active_record_type_counts": {
+        "config_contract": 1,
+        "docstring_claim": 20,
+        "runtime_behaviour": 32,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 4,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 64,
+      "blueprint_surface": "Playbook library architecture",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 64
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 64
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 64,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0025",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 303,
+        "line_start": 288,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DBC3CEA45BCB",
+        "ACA-28BD47A3D79D",
+        "ACA-4869B40EFD72",
+        "ACA-E14B8DB4B76F",
+        "ACA-F4A1A8271C8F",
+        "ACA-0DB68F5BA3CD",
+        "ACA-71BC5B8D1607",
+        "ACA-A3036EAE8FDE",
+        "ACA-1EFE0746FCEB",
+        "ACA-99076C571FC7"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_import_registry_011",
+        "atlas_donor_import_registry_013",
+        "atlas_donor_downstream_008",
+        "atlas_donor_playbook_registry_007",
+        "atlas_donor_playbook_registry_015",
+        "atlas_donor_playbook_registry_018",
+        "atlas_donor_review_017",
+        "atlas_donor_review_020",
+        "atlas_donor_cognition_008",
+        "atlas_donor_cognition_009"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/config/playbook_registry.py",
+        "src/nvda_desk/contracts/playbook.py",
+        "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+        "src/nvda_desk/playbooks/__init__.py",
+        "src/nvda_desk/playbooks/library.py",
+        "src/nvda_desk/services/playbook_eligibility_service.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "playbook library authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 64
+        },
+        "proof_block_action_counts": {
+          "admit_new": 64
+        },
+        "proof_tier_counts": {
+          "Tier A": 64
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 64
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 65,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 6,
+        "class_docstring": 6,
+        "config_file": 1,
+        "function": 26,
+        "function_docstring": 8,
+        "module": 6,
+        "module_docstring": 6,
+        "test_function": 2,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1,
+        "docstring": 20,
+        "runtime_or_contract": 39,
+        "test": 5
+      },
+      "active_record_type_counts": {
+        "config_contract": 1,
+        "docstring_claim": 20,
+        "runtime_behaviour": 32,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 4,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 31,
+      "blueprint_surface": "Playbook library architecture",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 31
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 31
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 31,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0026",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 303,
+        "line_start": 288,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DBC3CEA45BCB",
+        "ACA-28BD47A3D79D",
+        "ACA-4869B40EFD72",
+        "ACA-E14B8DB4B76F",
+        "ACA-F4A1A8271C8F",
+        "ACA-0DB68F5BA3CD",
+        "ACA-71BC5B8D1607",
+        "ACA-A3036EAE8FDE",
+        "ACA-1EFE0746FCEB",
+        "ACA-99076C571FC7"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_playbook_registry_001",
+        "atlas_donor_playbook_registry_002",
+        "atlas_donor_playbook_registry_003",
+        "atlas_donor_playbook_registry_004",
+        "atlas_donor_playbook_registry_005",
+        "atlas_donor_playbook_registry_006",
+        "atlas_donor_playbook_registry_008",
+        "atlas_donor_playbook_registry_009",
+        "atlas_donor_playbook_registry_010",
+        "atlas_donor_playbook_registry_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/config/playbook_registry.py",
+        "src/nvda_desk/contracts/playbook.py",
+        "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+        "src/nvda_desk/playbooks/__init__.py",
+        "src/nvda_desk/playbooks/library.py",
+        "src/nvda_desk/services/playbook_eligibility_service.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "playbook library authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 31
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 31
+        },
+        "proof_tier_counts": {
+          "Tier A": 31
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 31
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 115,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 7,
+        "class_docstring": 7,
+        "file": 1,
+        "function": 14,
+        "function_docstring": 31,
+        "module": 6,
+        "module_docstring": 9,
+        "test_function": 25,
+        "test_helper_function": 8,
+        "test_module": 6
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 47,
+        "runtime_or_contract": 27,
+        "test": 39
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 47,
+        "repo_file": 1,
+        "runtime_behaviour": 21,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 33,
+        "test_module": 6
+      },
+      "atlas_record_count_joined": 1,
+      "blueprint_surface": "Downstream capital deployment authority",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 1
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 1
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 1,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0027",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 320,
+        "line_start": 305,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-837F61EAD64F",
+        "ACA-B14C9243BEAB",
+        "ACA-E2CC24D4595F",
+        "ACA-4D10FA5C4B91",
+        "ACA-3A4D1A5F47A7",
+        "ACA-F2307FFB99E0",
+        "ACA-CDF7F20DC9A3",
+        "ACA-F9D4BED797B0",
+        "ACA-1D144D2F6AA1",
+        "ACA-6F8BB45FFFD6"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_downstream_018"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/capital/__init__.py",
+        "src/nvda_desk/capital/authority.py",
+        "src/nvda_desk/contracts/capital.py",
+        "src/nvda_desk/domain/capital/__init__.py",
+        "src/nvda_desk/domain/capital/deployment.py",
+        "src/nvda_desk/services/capital_deployment_service.py",
+        "tests/tier_a/capital_deployment/.gitkeep",
+        "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+        "tests/tier_a/capital_deployment/test_capital_contract_models.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "capital deployment authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 1
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 1
+        },
+        "proof_tier_counts": {
+          "Tier A": 1
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 1
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 115,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 7,
+        "class_docstring": 7,
+        "file": 1,
+        "function": 14,
+        "function_docstring": 31,
+        "module": 6,
+        "module_docstring": 9,
+        "test_function": 25,
+        "test_helper_function": 8,
+        "test_module": 6
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 47,
+        "runtime_or_contract": 27,
+        "test": 39
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 47,
+        "repo_file": 1,
+        "runtime_behaviour": 21,
+        "runtime_module": 6,
+        "surface_summary": 1,
+        "test_contract": 33,
+        "test_module": 6
+      },
+      "atlas_record_count_joined": 1,
+      "blueprint_surface": "Downstream capital deployment authority",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 1
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 1
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 1,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0028",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 320,
+        "line_start": 305,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier B",
+      "sample_active_code_record_ids": [
+        "ACA-837F61EAD64F",
+        "ACA-B14C9243BEAB",
+        "ACA-E2CC24D4595F",
+        "ACA-4D10FA5C4B91",
+        "ACA-3A4D1A5F47A7",
+        "ACA-F2307FFB99E0",
+        "ACA-CDF7F20DC9A3",
+        "ACA-F9D4BED797B0",
+        "ACA-1D144D2F6AA1",
+        "ACA-6F8BB45FFFD6"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_cognition_025"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/capital/__init__.py",
+        "src/nvda_desk/capital/authority.py",
+        "src/nvda_desk/contracts/capital.py",
+        "src/nvda_desk/domain/capital/__init__.py",
+        "src/nvda_desk/domain/capital/deployment.py",
+        "src/nvda_desk/services/capital_deployment_service.py",
+        "tests/tier_a/capital_deployment/.gitkeep",
+        "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+        "tests/tier_a/capital_deployment/test_capital_contract_models.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "capital deployment authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 1
+        },
+        "proof_block_action_counts": {
+          "admit_new": 1
+        },
+        "proof_tier_counts": {
+          "Tier B": 1
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 1
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 30,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 2,
+        "class_docstring": 2,
+        "function": 9,
+        "function_docstring": 5,
+        "markdown_document": 1,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 1,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 10,
+        "runtime_or_contract": 14,
+        "test": 4
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 10,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 11,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 3,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 61,
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 61
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 61
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 61,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0029",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DC8C23F03ED0",
+        "ACA-7621BDB1404D",
+        "ACA-2AB53347F8ED",
+        "ACA-22F2194CD0E3",
+        "ACA-63724751101B",
+        "ACA-F390DFE941D9",
+        "ACA-DED82C4DB5B3",
+        "ACA-4C9E7B5D8C36",
+        "ACA-FA6DFA8A1DB1",
+        "ACA-F6E4374ED9BC"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_execution_records_002",
+        "atlas_donor_execution_records_003",
+        "atlas_donor_execution_records_004",
+        "atlas_donor_execution_records_006",
+        "atlas_donor_execution_records_007",
+        "atlas_donor_execution_records_009",
+        "atlas_donor_execution_records_010",
+        "atlas_donor_execution_records_012",
+        "atlas_donor_execution_records_013",
+        "atlas_donor_execution_records_014"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md",
+        "src/nvda_desk/domain/downstream/opening.py",
+        "src/nvda_desk/downstream/opening.py",
+        "src/nvda_desk/services/downstream_opening_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "downstream opening authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 61
+        },
+        "proof_block_action_counts": {
+          "admit_new": 61
+        },
+        "proof_tier_counts": {
+          "Tier A": 61
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 61
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 30,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 2,
+        "class_docstring": 2,
+        "function": 9,
+        "function_docstring": 5,
+        "markdown_document": 1,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 1,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 10,
+        "runtime_or_contract": 14,
+        "test": 4
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 10,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 11,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 3,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 7,
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 7
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 7
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 7,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0030",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DC8C23F03ED0",
+        "ACA-7621BDB1404D",
+        "ACA-2AB53347F8ED",
+        "ACA-22F2194CD0E3",
+        "ACA-63724751101B",
+        "ACA-F390DFE941D9",
+        "ACA-DED82C4DB5B3",
+        "ACA-4C9E7B5D8C36",
+        "ACA-FA6DFA8A1DB1",
+        "ACA-F6E4374ED9BC"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_downstream_010",
+        "atlas_donor_downstream_019",
+        "atlas_donor_downstream_026",
+        "atlas_donor_downstream_028",
+        "atlas_donor_review_006",
+        "atlas_donor_downstream_review_service_003",
+        "atlas_donor_db_models_017"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md",
+        "src/nvda_desk/domain/downstream/opening.py",
+        "src/nvda_desk/downstream/opening.py",
+        "src/nvda_desk/services/downstream_opening_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "downstream opening authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 7
+        },
+        "proof_block_action_counts": {
+          "admit_new": 7
+        },
+        "proof_tier_counts": {
+          "Tier A": 7
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 7
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 30,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 2,
+        "class_docstring": 2,
+        "function": 9,
+        "function_docstring": 5,
+        "markdown_document": 1,
+        "module": 3,
+        "module_docstring": 3,
+        "test_function": 1,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 10,
+        "runtime_or_contract": 14,
+        "test": 4
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 10,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 11,
+        "runtime_module": 3,
+        "surface_summary": 1,
+        "test_contract": 3,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 6,
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 6
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 6
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 6,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0031",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DC8C23F03ED0",
+        "ACA-7621BDB1404D",
+        "ACA-2AB53347F8ED",
+        "ACA-22F2194CD0E3",
+        "ACA-63724751101B",
+        "ACA-F390DFE941D9",
+        "ACA-DED82C4DB5B3",
+        "ACA-4C9E7B5D8C36",
+        "ACA-FA6DFA8A1DB1",
+        "ACA-F6E4374ED9BC"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_service_downstream_opening_002",
+        "atlas_donor_service_downstream_opening_003",
+        "atlas_donor_service_downstream_opening_005",
+        "atlas_donor_service_downstream_opening_008",
+        "atlas_donor_service_downstream_opening_009",
+        "atlas_donor_service_downstream_opening_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-05-09_NEXT_AUTHORITY_OPENING_BRIEF_001.md",
+        "src/nvda_desk/domain/downstream/opening.py",
+        "src/nvda_desk/downstream/opening.py",
+        "src/nvda_desk/services/downstream_opening_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "downstream opening authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 6
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 6
+        },
+        "proof_tier_counts": {
+          "Tier A": 6
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 6
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 66,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 4,
+        "class_docstring": 4,
+        "function": 23,
+        "function_docstring": 12,
+        "markdown_document": 1,
+        "module": 5,
+        "module_docstring": 5,
+        "test_function": 8,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 32,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 27,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 10,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 17,
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 17
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 17
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 17,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0032",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DDF6A44EB21B",
+        "ACA-83B7347CE742",
+        "ACA-4C0AABC368E6",
+        "ACA-4513B3C24BDF",
+        "ACA-3ED3DBEE919E",
+        "ACA-BC88CBDB563D",
+        "ACA-DD0B6616CD68",
+        "ACA-5D625C67971A",
+        "ACA-738C730D4F9B",
+        "ACA-84B49B776971"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_import_registry_005",
+        "atlas_donor_review_010",
+        "atlas_donor_review_018",
+        "atlas_donor_review_019",
+        "atlas_donor_cognition_024",
+        "atlas_donor_imported_posture_enrichers_003",
+        "atlas_donor_imported_execution_lifecycle_001",
+        "atlas_donor_imported_execution_lifecycle_010",
+        "atlas_donor_service_downstream_state_005",
+        "atlas_donor_service_module_evaluators_003"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md",
+        "src/nvda_desk/domain/downstream/live_inventory.py",
+        "src/nvda_desk/downstream/live_inventory.py",
+        "src/nvda_desk/repositories/capital_state_repository.py",
+        "src/nvda_desk/repositories/position_repository.py",
+        "src/nvda_desk/services/downstream_live_inventory_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "live inventory and position authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 17
+        },
+        "proof_block_action_counts": {
+          "admit_new": 17
+        },
+        "proof_tier_counts": {
+          "Tier A": 17
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 17
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 66,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 4,
+        "class_docstring": 4,
+        "function": 23,
+        "function_docstring": 12,
+        "markdown_document": 1,
+        "module": 5,
+        "module_docstring": 5,
+        "test_function": 8,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 32,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 27,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 10,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 5,
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 5
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 5
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 5,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0033",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DDF6A44EB21B",
+        "ACA-83B7347CE742",
+        "ACA-4C0AABC368E6",
+        "ACA-4513B3C24BDF",
+        "ACA-3ED3DBEE919E",
+        "ACA-BC88CBDB563D",
+        "ACA-DD0B6616CD68",
+        "ACA-5D625C67971A",
+        "ACA-738C730D4F9B",
+        "ACA-84B49B776971"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_eval_014",
+        "atlas_donor_review_007",
+        "atlas_donor_legacy_extraction_004",
+        "atlas_donor_service_downstream_state_004",
+        "atlas_donor_service_downstream_state_006"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md",
+        "src/nvda_desk/domain/downstream/live_inventory.py",
+        "src/nvda_desk/downstream/live_inventory.py",
+        "src/nvda_desk/repositories/capital_state_repository.py",
+        "src/nvda_desk/repositories/position_repository.py",
+        "src/nvda_desk/services/downstream_live_inventory_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "live inventory and position authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 5
+        },
+        "proof_block_action_counts": {
+          "admit_new": 5
+        },
+        "proof_tier_counts": {
+          "Tier A": 5
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 5
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 66,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 4,
+        "class_docstring": 4,
+        "function": 23,
+        "function_docstring": 12,
+        "markdown_document": 1,
+        "module": 5,
+        "module_docstring": 5,
+        "test_function": 8,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 32,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 27,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 10,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 14,
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 14
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 14
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 14,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0034",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DDF6A44EB21B",
+        "ACA-83B7347CE742",
+        "ACA-4C0AABC368E6",
+        "ACA-4513B3C24BDF",
+        "ACA-3ED3DBEE919E",
+        "ACA-BC88CBDB563D",
+        "ACA-DD0B6616CD68",
+        "ACA-5D625C67971A",
+        "ACA-738C730D4F9B",
+        "ACA-84B49B776971"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_downstream_012",
+        "atlas_donor_downstream_013",
+        "atlas_donor_downstream_021",
+        "atlas_donor_downstream_022",
+        "atlas_donor_cognition_036",
+        "atlas_donor_imported_execution_lifecycle_007",
+        "atlas_donor_service_downstream_live_inventory_003",
+        "atlas_donor_service_downstream_live_inventory_004",
+        "atlas_donor_service_downstream_state_002",
+        "atlas_donor_execution_records_service_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md",
+        "src/nvda_desk/domain/downstream/live_inventory.py",
+        "src/nvda_desk/downstream/live_inventory.py",
+        "src/nvda_desk/repositories/capital_state_repository.py",
+        "src/nvda_desk/repositories/position_repository.py",
+        "src/nvda_desk/services/downstream_live_inventory_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "live inventory and position authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 14
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 14
+        },
+        "proof_tier_counts": {
+          "Tier A": 14
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 14
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 66,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 4,
+        "class_docstring": 4,
+        "function": 23,
+        "function_docstring": 12,
+        "markdown_document": 1,
+        "module": 5,
+        "module_docstring": 5,
+        "test_function": 8,
+        "test_helper_function": 2,
+        "test_module": 1
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 21,
+        "runtime_or_contract": 32,
+        "test": 11
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 21,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 27,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 10,
+        "test_module": 1
+      },
+      "atlas_record_count_joined": 2,
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_existing_test_decision_counts": {
+        "no_test_change_required": 2
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "already_satisfied": 2
+      },
+      "bridge_proof_block_action": "none",
+      "bridge_record_count": 2,
+      "bridge_test_family_action": "reuse_existing",
+      "comparison_record_id": "ACABC-0035",
+      "comparison_status": "already_satisfied",
+      "implementation_leaf_type": "none",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DDF6A44EB21B",
+        "ACA-83B7347CE742",
+        "ACA-4C0AABC368E6",
+        "ACA-4513B3C24BDF",
+        "ACA-3ED3DBEE919E",
+        "ACA-BC88CBDB563D",
+        "ACA-DD0B6616CD68",
+        "ACA-5D625C67971A",
+        "ACA-738C730D4F9B",
+        "ACA-84B49B776971"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_service_downstream_live_inventory_001",
+        "atlas_donor_service_downstream_live_inventory_002"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md",
+        "src/nvda_desk/domain/downstream/live_inventory.py",
+        "src/nvda_desk/downstream/live_inventory.py",
+        "src/nvda_desk/repositories/capital_state_repository.py",
+        "src/nvda_desk/repositories/position_repository.py",
+        "src/nvda_desk/services/downstream_live_inventory_service.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py"
+      ],
+      "status_basis": [
+        "Bridge marks all records already_satisfied and active-code Atlas has runtime/contract plus test evidence classes.",
+        "Still provisional_static: no pytest/proof-block execution was run in this comparison gate."
+      ],
+      "target_owner": "live inventory and position authorities",
+      "test_first_queue_action": "confirm_existing_proof_only_no_refactor",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "no_test_change_required": 2
+        },
+        "proof_block_action_counts": {
+          "none": 2
+        },
+        "proof_tier_counts": {
+          "Tier A": 2
+        },
+        "required_action": "confirm_existing_proof_only_no_refactor",
+        "test_family_action_counts": {
+          "reuse_existing": 2
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 43,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 5,
+        "class_docstring": 5,
+        "function": 16,
+        "function_docstring": 7,
+        "markdown_document": 1,
+        "module": 4,
+        "module_docstring": 4
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 2,
+        "docstring": 16,
+        "runtime_or_contract": 25,
+        "test": 0
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 16,
+        "normative_or_control_document": 1,
+        "runtime_behaviour": 21,
+        "runtime_module": 4,
+        "surface_summary": 1
+      },
+      "atlas_record_count_joined": 90,
+      "blueprint_surface": "Exit and close architecture",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 90
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 47,
+        "transform_required": 43
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 90,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0036",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 371,
+        "line_start": 356,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DF7EA1E464B1",
+        "ACA-B2A5F4919A6B",
+        "ACA-CFB90127A5AF",
+        "ACA-1DB7FA4C0985",
+        "ACA-361E45CA7F03",
+        "ACA-17F0DB16AF80",
+        "ACA-F67FC1E4A456",
+        "ACA-A90ECE5FF897",
+        "ACA-20F4B7176C19",
+        "ACA-065619F7674C"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_import_registry_009",
+        "atlas_donor_import_registry_010",
+        "atlas_donor_import_registry_012",
+        "atlas_donor_module_004",
+        "atlas_donor_module_005",
+        "atlas_donor_module_008",
+        "atlas_donor_replay_004",
+        "atlas_donor_research_002",
+        "atlas_donor_research_005",
+        "atlas_donor_trace_review_002"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/audit/normative_document_updates/closeout_note.md",
+        "src/nvda_desk/contracts/exit_close.py",
+        "src/nvda_desk/domain/execution/lifecycle_plan.py",
+        "src/nvda_desk/downstream/exit_close.py",
+        "src/nvda_desk/services/exit_close_service.py"
+      ],
+      "status_basis": [
+        "Bridge group mixes transform_required with other states; use transform_required until adjudicated."
+      ],
+      "target_owner": "exit and close authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 90
+        },
+        "proof_block_action_counts": {
+          "admit_new": 90
+        },
+        "proof_tier_counts": {
+          "Tier A": 90
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 90
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 136,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 27,
+        "class_docstring": 14,
+        "file": 1,
+        "function": 15,
+        "function_docstring": 6,
+        "markdown_document": 1,
+        "module": 14,
+        "module_docstring": 11,
+        "test_function": 22,
+        "test_helper_function": 15,
+        "test_module": 9
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 31,
+        "runtime_or_contract": 56,
+        "test": 46
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 31,
+        "normative_or_control_document": 1,
+        "repo_file": 1,
+        "runtime_behaviour": 42,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 37,
+        "test_module": 9
+      },
+      "atlas_record_count_joined": 46,
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 46
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 46
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 46,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0037",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DE3909B6C157",
+        "ACA-640B0D7E0BE2",
+        "ACA-F3C406D9254D",
+        "ACA-A8AC493F17C1",
+        "ACA-17DF5C2394AA",
+        "ACA-CF91B7356E41",
+        "ACA-1C2474099AA7",
+        "ACA-2CBA0C82C12B",
+        "ACA-14BE55447303",
+        "ACA-FA198C9F481F"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_eval_012",
+        "atlas_donor_eval_016",
+        "atlas_donor_eval_020",
+        "atlas_donor_review_015",
+        "atlas_donor_imported_review_attribution_001",
+        "atlas_donor_imported_review_attribution_002",
+        "atlas_donor_imported_review_attribution_012",
+        "atlas_donor_imported_review_attribution_013",
+        "atlas_donor_service_module_evaluators_002",
+        "atlas_donor_review_attribution_001"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/audit/normative_document_updates/statement_trace_matrix_rebuild_basis.md",
+        "src/nvda_desk/analysis/replay/__init__.py",
+        "src/nvda_desk/analysis/replay/service.py",
+        "src/nvda_desk/contracts/replay.py",
+        "src/nvda_desk/contracts/review.py",
+        "src/nvda_desk/contracts/review_replay.py",
+        "src/nvda_desk/contracts/trace_review.py",
+        "src/nvda_desk/downstream/review_stage.py",
+        "src/nvda_desk/replay/__init__.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "review and explanation authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 46
+        },
+        "proof_block_action_counts": {
+          "admit_new": 46
+        },
+        "proof_tier_counts": {
+          "Tier A": 46
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 46
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 136,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 27,
+        "class_docstring": 14,
+        "file": 1,
+        "function": 15,
+        "function_docstring": 6,
+        "markdown_document": 1,
+        "module": 14,
+        "module_docstring": 11,
+        "test_function": 22,
+        "test_helper_function": 15,
+        "test_module": 9
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 31,
+        "runtime_or_contract": 56,
+        "test": 46
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 31,
+        "normative_or_control_document": 1,
+        "repo_file": 1,
+        "runtime_behaviour": 42,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 37,
+        "test_module": 9
+      },
+      "atlas_record_count_joined": 45,
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 45
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 45
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 45,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0038",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DE3909B6C157",
+        "ACA-640B0D7E0BE2",
+        "ACA-F3C406D9254D",
+        "ACA-A8AC493F17C1",
+        "ACA-17DF5C2394AA",
+        "ACA-CF91B7356E41",
+        "ACA-1C2474099AA7",
+        "ACA-2CBA0C82C12B",
+        "ACA-14BE55447303",
+        "ACA-FA198C9F481F"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_eval_019",
+        "atlas_donor_cognition_060",
+        "atlas_donor_research_service_006",
+        "atlas_donor_imported_review_attribution_003",
+        "atlas_donor_imported_review_attribution_004",
+        "atlas_donor_imported_review_attribution_005",
+        "atlas_donor_imported_review_attribution_006",
+        "atlas_donor_imported_review_attribution_007",
+        "atlas_donor_imported_review_attribution_008",
+        "atlas_donor_imported_review_attribution_009"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/audit/normative_document_updates/statement_trace_matrix_rebuild_basis.md",
+        "src/nvda_desk/analysis/replay/__init__.py",
+        "src/nvda_desk/analysis/replay/service.py",
+        "src/nvda_desk/contracts/replay.py",
+        "src/nvda_desk/contracts/review.py",
+        "src/nvda_desk/contracts/review_replay.py",
+        "src/nvda_desk/contracts/trace_review.py",
+        "src/nvda_desk/downstream/review_stage.py",
+        "src/nvda_desk/replay/__init__.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "review and explanation authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 45
+        },
+        "proof_block_action_counts": {
+          "admit_new": 45
+        },
+        "proof_tier_counts": {
+          "Tier A": 45
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 45
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 136,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 27,
+        "class_docstring": 14,
+        "file": 1,
+        "function": 15,
+        "function_docstring": 6,
+        "markdown_document": 1,
+        "module": 14,
+        "module_docstring": 11,
+        "test_function": 22,
+        "test_helper_function": 15,
+        "test_module": 9
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 3,
+        "docstring": 31,
+        "runtime_or_contract": 56,
+        "test": 46
+      },
+      "active_record_type_counts": {
+        "docstring_claim": 31,
+        "normative_or_control_document": 1,
+        "repo_file": 1,
+        "runtime_behaviour": 42,
+        "runtime_module": 14,
+        "surface_summary": 1,
+        "test_contract": 37,
+        "test_module": 9
+      },
+      "atlas_record_count_joined": 52,
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 52
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 52
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 52,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0039",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-DE3909B6C157",
+        "ACA-640B0D7E0BE2",
+        "ACA-F3C406D9254D",
+        "ACA-A8AC493F17C1",
+        "ACA-17DF5C2394AA",
+        "ACA-CF91B7356E41",
+        "ACA-1C2474099AA7",
+        "ACA-2CBA0C82C12B",
+        "ACA-14BE55447303",
+        "ACA-FA198C9F481F"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_replay_001",
+        "atlas_donor_replay_005",
+        "atlas_donor_research_001",
+        "atlas_donor_research_004",
+        "atlas_donor_eval_001",
+        "atlas_donor_eval_007",
+        "atlas_donor_eval_008",
+        "atlas_donor_eval_022",
+        "atlas_donor_review_004",
+        "atlas_donor_review_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "docs/audit/normative_document_updates/statement_trace_matrix_rebuild_basis.md",
+        "src/nvda_desk/analysis/replay/__init__.py",
+        "src/nvda_desk/analysis/replay/service.py",
+        "src/nvda_desk/contracts/replay.py",
+        "src/nvda_desk/contracts/review.py",
+        "src/nvda_desk/contracts/review_replay.py",
+        "src/nvda_desk/contracts/trace_review.py",
+        "src/nvda_desk/downstream/review_stage.py",
+        "src/nvda_desk/replay/__init__.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "review and explanation authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 52
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 52
+        },
+        "proof_tier_counts": {
+          "Tier A": 52
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 52
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 1944,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "audit_evidence_file": 1778,
+        "class": 17,
+        "class_docstring": 17,
+        "file": 1,
+        "function": 38,
+        "function_docstring": 18,
+        "markdown_document": 3,
+        "module": 17,
+        "module_docstring": 17,
+        "test_function": 24,
+        "test_helper_function": 5,
+        "test_module": 8
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1783,
+        "docstring": 52,
+        "runtime_or_contract": 72,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "atlas_bridge_evidence": 31,
+        "audit_receipt_or_ledger": 1747,
+        "docstring_claim": 52,
+        "normative_or_control_document": 3,
+        "repo_file": 1,
+        "runtime_behaviour": 55,
+        "runtime_module": 17,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 8
+      },
+      "atlas_record_count_joined": 23,
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 23
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 23
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 23,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0040",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-95C5710D1E7D",
+        "ACA-1A73E30C9A64",
+        "ACA-B4B58DA46789",
+        "ACA-AA3E4CE3BDA9",
+        "ACA-5F7963F2363B",
+        "ACA-9B5409E18A5A",
+        "ACA-8E5D6C4EF214",
+        "ACA-4A3F12EB23B7",
+        "ACA-2D73C070E7A8",
+        "ACA-46B9BEB1302B"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_import_registry_002",
+        "atlas_donor_import_registry_003",
+        "atlas_donor_import_registry_004",
+        "atlas_donor_import_registry_006",
+        "atlas_donor_import_registry_007",
+        "atlas_donor_import_registry_008",
+        "atlas_donor_module_001",
+        "atlas_donor_module_003",
+        "atlas_donor_module_007",
+        "atlas_donor_module_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "ROADMAP_LEDGER.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+        "src/nvda_desk/persistence/__init__.py",
+        "src/nvda_desk/persistence/execution_records.py",
+        "src/nvda_desk/persistence/migrations/__init__.py",
+        "src/nvda_desk/persistence/migrations/layout.py",
+        "src/nvda_desk/persistence/models.py",
+        "src/nvda_desk/persistence/parallel_risk_observations.py"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "persistence and ledger authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 23
+        },
+        "proof_block_action_counts": {
+          "admit_new": 23
+        },
+        "proof_tier_counts": {
+          "Tier A": 23
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 23
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 1944,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "audit_evidence_file": 1778,
+        "class": 17,
+        "class_docstring": 17,
+        "file": 1,
+        "function": 38,
+        "function_docstring": 18,
+        "markdown_document": 3,
+        "module": 17,
+        "module_docstring": 17,
+        "test_function": 24,
+        "test_helper_function": 5,
+        "test_module": 8
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1783,
+        "docstring": 52,
+        "runtime_or_contract": 72,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "atlas_bridge_evidence": 31,
+        "audit_receipt_or_ledger": 1747,
+        "docstring_claim": 52,
+        "normative_or_control_document": 3,
+        "repo_file": 1,
+        "runtime_behaviour": 55,
+        "runtime_module": 17,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 8
+      },
+      "atlas_record_count_joined": 18,
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 18
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 18
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 18,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0041",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-95C5710D1E7D",
+        "ACA-1A73E30C9A64",
+        "ACA-B4B58DA46789",
+        "ACA-AA3E4CE3BDA9",
+        "ACA-5F7963F2363B",
+        "ACA-9B5409E18A5A",
+        "ACA-8E5D6C4EF214",
+        "ACA-4A3F12EB23B7",
+        "ACA-2D73C070E7A8",
+        "ACA-46B9BEB1302B"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_db_base_001",
+        "atlas_donor_db_base_002",
+        "atlas_donor_db_session_001",
+        "atlas_donor_db_session_002",
+        "atlas_donor_db_session_003",
+        "atlas_donor_db_package_001",
+        "atlas_donor_db_package_002",
+        "atlas_donor_db_models_001",
+        "atlas_donor_db_seed_001",
+        "atlas_donor_db_seed_003"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "ROADMAP_LEDGER.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+        "src/nvda_desk/persistence/__init__.py",
+        "src/nvda_desk/persistence/execution_records.py",
+        "src/nvda_desk/persistence/migrations/__init__.py",
+        "src/nvda_desk/persistence/migrations/layout.py",
+        "src/nvda_desk/persistence/models.py",
+        "src/nvda_desk/persistence/parallel_risk_observations.py"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "persistence and ledger authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 18
+        },
+        "proof_block_action_counts": {
+          "admit_new": 18
+        },
+        "proof_tier_counts": {
+          "Tier A": 18
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 18
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 1944,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "audit_evidence_file": 1778,
+        "class": 17,
+        "class_docstring": 17,
+        "file": 1,
+        "function": 38,
+        "function_docstring": 18,
+        "markdown_document": 3,
+        "module": 17,
+        "module_docstring": 17,
+        "test_function": 24,
+        "test_helper_function": 5,
+        "test_module": 8
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 1783,
+        "docstring": 52,
+        "runtime_or_contract": 72,
+        "test": 37
+      },
+      "active_record_type_counts": {
+        "atlas_bridge_evidence": 31,
+        "audit_receipt_or_ledger": 1747,
+        "docstring_claim": 52,
+        "normative_or_control_document": 3,
+        "repo_file": 1,
+        "runtime_behaviour": 55,
+        "runtime_module": 17,
+        "surface_summary": 1,
+        "test_contract": 29,
+        "test_module": 8
+      },
+      "atlas_record_count_joined": 56,
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 56
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 56
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 56,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0042",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-95C5710D1E7D",
+        "ACA-1A73E30C9A64",
+        "ACA-B4B58DA46789",
+        "ACA-AA3E4CE3BDA9",
+        "ACA-5F7963F2363B",
+        "ACA-9B5409E18A5A",
+        "ACA-8E5D6C4EF214",
+        "ACA-4A3F12EB23B7",
+        "ACA-2D73C070E7A8",
+        "ACA-46B9BEB1302B"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_import_registry_001",
+        "atlas_donor_options_flow_history_001",
+        "atlas_donor_options_flow_history_002",
+        "atlas_donor_options_flow_history_003",
+        "atlas_donor_options_flow_history_004",
+        "atlas_donor_module_registry_service_001",
+        "atlas_donor_module_registry_service_002",
+        "atlas_donor_module_registry_service_003",
+        "atlas_donor_module_registry_service_004",
+        "atlas_donor_module_registry_service_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "ROADMAP_LEDGER.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+        "src/nvda_desk/persistence/__init__.py",
+        "src/nvda_desk/persistence/execution_records.py",
+        "src/nvda_desk/persistence/migrations/__init__.py",
+        "src/nvda_desk/persistence/migrations/layout.py",
+        "src/nvda_desk/persistence/models.py",
+        "src/nvda_desk/persistence/parallel_risk_observations.py"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "persistence and ledger authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 56
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 56
+        },
+        "proof_tier_counts": {
+          "Tier A": 56
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 56
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 232,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "config_file": 7,
+        "control_file": 6,
+        "file": 15,
+        "markdown_document": 38,
+        "schema_file": 1,
+        "test_function": 101,
+        "test_helper_function": 37,
+        "test_module": 26
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 65,
+        "docstring": 0,
+        "runtime_or_contract": 3,
+        "test": 164
+      },
+      "active_record_type_counts": {
+        "build_or_environment_contract": 5,
+        "config_contract": 2,
+        "normative_or_control_document": 38,
+        "project_control_surface": 6,
+        "repo_file": 15,
+        "schema_contract": 1,
+        "surface_summary": 1,
+        "test_contract": 138,
+        "test_module": 26
+      },
+      "atlas_record_count_joined": 28,
+      "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 28
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 28
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 28,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0043",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 422,
+        "line_start": 407,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier B",
+      "sample_active_code_record_ids": [
+        "ACA-8100B4E31F75",
+        "ACA-5AAC3445EE70",
+        "ACA-03AA918A3255",
+        "ACA-8D07ABE8CB46",
+        "ACA-A85BB45057C7",
+        "ACA-FD4F1AEF89C1",
+        "ACA-D6189619A3E7",
+        "ACA-0CD2B48EE80D",
+        "ACA-EB232759F74E",
+        "ACA-E833F21DE839"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_trace_review_001",
+        "atlas_donor_trace_review_005",
+        "atlas_donor_downstream_001",
+        "atlas_donor_downstream_017",
+        "atlas_donor_dataset_001",
+        "atlas_donor_dataset_013",
+        "atlas_donor_dataset_014",
+        "atlas_donor_dataset_021",
+        "atlas_donor_calibration_013",
+        "atlas_donor_financial_calendar_001"
+      ],
+      "source_paths_sample": [
+        ".env.example",
+        ".python-version",
+        "AGENTS.md",
+        "CURRENT_PROJECT_STATE.md",
+        "Makefile",
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "PLANS.md",
+        "PROJECT_STRUCTURE.md",
+        "README.md",
+        "config/proof_blocks.yaml"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "testing and proof authorities",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 28
+        },
+        "proof_block_action_counts": {
+          "admit_new": 28
+        },
+        "proof_tier_counts": {
+          "Tier B": 28
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 28
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 232,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "config_file": 7,
+        "control_file": 6,
+        "file": 15,
+        "markdown_document": 38,
+        "schema_file": 1,
+        "test_function": 101,
+        "test_helper_function": 37,
+        "test_module": 26
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 65,
+        "docstring": 0,
+        "runtime_or_contract": 3,
+        "test": 164
+      },
+      "active_record_type_counts": {
+        "build_or_environment_contract": 5,
+        "config_contract": 2,
+        "normative_or_control_document": 38,
+        "project_control_surface": 6,
+        "repo_file": 15,
+        "schema_contract": 1,
+        "surface_summary": 1,
+        "test_contract": 138,
+        "test_module": 26
+      },
+      "atlas_record_count_joined": 44,
+      "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 44
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 44
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 44,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0044",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 422,
+        "line_start": 407,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier B",
+      "sample_active_code_record_ids": [
+        "ACA-8100B4E31F75",
+        "ACA-5AAC3445EE70",
+        "ACA-03AA918A3255",
+        "ACA-8D07ABE8CB46",
+        "ACA-A85BB45057C7",
+        "ACA-FD4F1AEF89C1",
+        "ACA-D6189619A3E7",
+        "ACA-0CD2B48EE80D",
+        "ACA-EB232759F74E",
+        "ACA-E833F21DE839"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_checkpoints_001",
+        "atlas_donor_checkpoints_002",
+        "atlas_donor_testing_package_001",
+        "atlas_donor_downstream_checkpointing_001",
+        "atlas_donor_downstream_checkpointing_002",
+        "atlas_donor_downstream_checkpointing_003",
+        "atlas_donor_fixtures_001",
+        "atlas_donor_fixtures_002",
+        "atlas_donor_fixtures_003",
+        "atlas_donor_fixtures_004"
+      ],
+      "source_paths_sample": [
+        ".env.example",
+        ".python-version",
+        "AGENTS.md",
+        "CURRENT_PROJECT_STATE.md",
+        "Makefile",
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "PLANS.md",
+        "PROJECT_STRUCTURE.md",
+        "README.md",
+        "config/proof_blocks.yaml"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "testing and proof authorities",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 44
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 44
+        },
+        "proof_tier_counts": {
+          "Tier B": 44
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 44
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 271,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "data_file": 4,
+        "file": 1,
+        "function": 77,
+        "function_docstring": 7,
+        "markdown_document": 6,
+        "module": 5,
+        "module_docstring": 3,
+        "test_function": 121,
+        "test_helper_function": 19,
+        "test_module": 17
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 8,
+        "docstring": 10,
+        "runtime_or_contract": 96,
+        "test": 157
+      },
+      "active_record_type_counts": {
+        "data_reference": 4,
+        "docstring_claim": 10,
+        "normative_or_control_document": 6,
+        "repo_file": 1,
+        "runtime_behaviour": 87,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 140,
+        "test_module": 17
+      },
+      "atlas_record_count_joined": 3,
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 3
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 3
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 3,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0045",
+      "comparison_status": "transform_required",
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4E433135B224",
+        "ACA-71559A492350",
+        "ACA-1AB710AEF86E",
+        "ACA-0187DDE1BD58",
+        "ACA-3A871F1A1E03",
+        "ACA-7C34F8618A15",
+        "ACA-259493877B05",
+        "ACA-A493F2B04061",
+        "ACA-1A650ACE7EB0",
+        "ACA-B1C6D04FE70A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_vocabulary_008",
+        "atlas_donor_vocabulary_009",
+        "atlas_donor_vocabulary_010"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/vocabulary/README.md",
+        "data/vocabulary/canonical_vocabulary.json",
+        "data/vocabulary/feeder/README.md",
+        "data/vocabulary/vocabulary_touch_stamp.json",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "docs/reference/vocabulary_dictionary_system_audit.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md"
+      ],
+      "status_basis": [
+        "Bridge marks records transform_required; active evidence cannot be imported without target-shape/test-first work.",
+        "Active-code Atlas has same-surface evidence, but this only supports test-first migration planning."
+      ],
+      "target_owner": "vocabulary governance authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 3
+        },
+        "proof_block_action_counts": {
+          "admit_new": 3
+        },
+        "proof_tier_counts": {
+          "Tier A": 3
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 3
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 271,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "data_file": 4,
+        "file": 1,
+        "function": 77,
+        "function_docstring": 7,
+        "markdown_document": 6,
+        "module": 5,
+        "module_docstring": 3,
+        "test_function": 121,
+        "test_helper_function": 19,
+        "test_module": 17
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 8,
+        "docstring": 10,
+        "runtime_or_contract": 96,
+        "test": 157
+      },
+      "active_record_type_counts": {
+        "data_reference": 4,
+        "docstring_claim": 10,
+        "normative_or_control_document": 6,
+        "repo_file": 1,
+        "runtime_behaviour": 87,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 140,
+        "test_module": 17
+      },
+      "atlas_record_count_joined": 3,
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_existing_test_decision_counts": {
+        "new_test_family_required": 3
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 3
+      },
+      "bridge_proof_block_action": "admit_new",
+      "bridge_record_count": 3,
+      "bridge_test_family_action": "admit_new",
+      "comparison_record_id": "ACABC-0046",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4E433135B224",
+        "ACA-71559A492350",
+        "ACA-1AB710AEF86E",
+        "ACA-0187DDE1BD58",
+        "ACA-3A871F1A1E03",
+        "ACA-7C34F8618A15",
+        "ACA-259493877B05",
+        "ACA-A493F2B04061",
+        "ACA-1A650ACE7EB0",
+        "ACA-B1C6D04FE70A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_vocabulary_002",
+        "atlas_donor_vocabulary_003",
+        "atlas_donor_vocabulary_007"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/vocabulary/README.md",
+        "data/vocabulary/canonical_vocabulary.json",
+        "data/vocabulary/feeder/README.md",
+        "data/vocabulary/vocabulary_touch_stamp.json",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "docs/reference/vocabulary_dictionary_system_audit.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md"
+      ],
+      "status_basis": [
+        "Bridge marks records missing, but active-code Atlas has same-surface evidence; treat as partial static surface evidence, not satisfaction."
+      ],
+      "target_owner": "vocabulary governance authority",
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "new_test_family_required": 3
+        },
+        "proof_block_action_counts": {
+          "admit_new": 3
+        },
+        "proof_tier_counts": {
+          "Tier A": 3
+        },
+        "required_action": "write_new_test_family_before_code",
+        "test_family_action_counts": {
+          "admit_new": 3
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 271,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "data_file": 4,
+        "file": 1,
+        "function": 77,
+        "function_docstring": 7,
+        "markdown_document": 6,
+        "module": 5,
+        "module_docstring": 3,
+        "test_function": 121,
+        "test_helper_function": 19,
+        "test_module": 17
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 8,
+        "docstring": 10,
+        "runtime_or_contract": 96,
+        "test": 157
+      },
+      "active_record_type_counts": {
+        "data_reference": 4,
+        "docstring_claim": 10,
+        "normative_or_control_document": 6,
+        "repo_file": 1,
+        "runtime_behaviour": 87,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 140,
+        "test_module": 17
+      },
+      "atlas_record_count_joined": 3,
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_existing_test_decision_counts": {
+        "extend_existing_same_invariant": 3
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 3
+      },
+      "bridge_proof_block_action": "extend_existing",
+      "bridge_record_count": 3,
+      "bridge_test_family_action": "extend_existing",
+      "comparison_record_id": "ACABC-0047",
+      "comparison_status": "partially_satisfied",
+      "implementation_leaf_type": "later_test_first_leaf",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4E433135B224",
+        "ACA-71559A492350",
+        "ACA-1AB710AEF86E",
+        "ACA-0187DDE1BD58",
+        "ACA-3A871F1A1E03",
+        "ACA-7C34F8618A15",
+        "ACA-259493877B05",
+        "ACA-A493F2B04061",
+        "ACA-1A650ACE7EB0",
+        "ACA-B1C6D04FE70A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_vocabulary_001",
+        "atlas_donor_vocabulary_004",
+        "atlas_donor_vocabulary_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/vocabulary/README.md",
+        "data/vocabulary/canonical_vocabulary.json",
+        "data/vocabulary/feeder/README.md",
+        "data/vocabulary/vocabulary_touch_stamp.json",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "docs/reference/vocabulary_dictionary_system_audit.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md"
+      ],
+      "status_basis": [
+        "Active-code Atlas has same-surface evidence, but Bridge does not show full satisfaction."
+      ],
+      "target_owner": "vocabulary governance authority",
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "extend_existing_same_invariant": 3
+        },
+        "proof_block_action_counts": {
+          "extend_existing": 3
+        },
+        "proof_tier_counts": {
+          "Tier A": 3
+        },
+        "required_action": "extend_existing_test_family_before_code",
+        "test_family_action_counts": {
+          "extend_existing": 3
+        }
+      }
+    },
+    {
+      "active_code_record_count_same_surface_owner": 271,
+      "active_construct_type_counts": {
+        "architecture_surface_row": 1,
+        "class": 10,
+        "data_file": 4,
+        "file": 1,
+        "function": 77,
+        "function_docstring": 7,
+        "markdown_document": 6,
+        "module": 5,
+        "module_docstring": 3,
+        "test_function": 121,
+        "test_helper_function": 19,
+        "test_module": 17
+      },
+      "active_evidence_class_counts": {
+        "control_or_receipt": 8,
+        "docstring": 10,
+        "runtime_or_contract": 96,
+        "test": 157
+      },
+      "active_record_type_counts": {
+        "data_reference": 4,
+        "docstring_claim": 10,
+        "normative_or_control_document": 6,
+        "repo_file": 1,
+        "runtime_behaviour": 87,
+        "runtime_module": 5,
+        "surface_summary": 1,
+        "test_contract": 140,
+        "test_module": 17
+      },
+      "atlas_record_count_joined": 1,
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_existing_test_decision_counts": {
+        "no_test_change_required": 1
+      },
+      "bridge_native_satisfaction_status_counts": {
+        "already_satisfied": 1
+      },
+      "bridge_proof_block_action": "none",
+      "bridge_record_count": 1,
+      "bridge_test_family_action": "reuse_existing",
+      "comparison_record_id": "ACABC-0048",
+      "comparison_status": "already_satisfied",
+      "implementation_leaf_type": "none",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "notes": "Static comparison only: no proof execution, source/test mutation, refactor, original Atlas/Bridge mutation, generated slice rebuild, dependency, VENV, black, or ruff opened.",
+      "proof_tier": "Tier A",
+      "sample_active_code_record_ids": [
+        "ACA-4E433135B224",
+        "ACA-71559A492350",
+        "ACA-1AB710AEF86E",
+        "ACA-0187DDE1BD58",
+        "ACA-3A871F1A1E03",
+        "ACA-7C34F8618A15",
+        "ACA-259493877B05",
+        "ACA-A493F2B04061",
+        "ACA-1A650ACE7EB0",
+        "ACA-B1C6D04FE70A"
+      ],
+      "sample_atlas_record_ids": [
+        "atlas_donor_vocabulary_006"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "data/vocabulary/README.md",
+        "data/vocabulary/canonical_vocabulary.json",
+        "data/vocabulary/feeder/README.md",
+        "data/vocabulary/vocabulary_touch_stamp.json",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "docs/reference/vocabulary_dictionary_system_audit.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/README.md"
+      ],
+      "status_basis": [
+        "Bridge marks all records already_satisfied and active-code Atlas has runtime/contract plus test evidence classes.",
+        "Still provisional_static: no pytest/proof-block execution was run in this comparison gate."
+      ],
+      "target_owner": "vocabulary governance authority",
+      "test_first_queue_action": "confirm_existing_proof_only_no_refactor",
+      "test_first_queue_basis": {
+        "existing_test_decision_counts": {
+          "no_test_change_required": 1
+        },
+        "proof_block_action_counts": {
+          "none": 1
+        },
+        "proof_tier_counts": {
+          "Tier A": 1
+        },
+        "required_action": "confirm_existing_proof_only_no_refactor",
+        "test_family_action_counts": {
+          "reuse_existing": 1
+        }
+      }
+    }
+  ],
+  "schema_version": "1.0-draft",
+  "source_repo_branch": "active-code-atlas-planning-001",
+  "source_repo_head": "bc37bd0c97dd",
+  "status": "static_structural_comparison_triage_only",
+  "summary": {
+    "active_code_record_count_total_available": 4075,
+    "atlas_record_count_joined": 1716,
+    "bridge_record_count_accounted_for": 1716,
+    "comparison_record_count": 48,
+    "comparison_records_by_surface": {
+      "DMPV3 packet carriage": 3,
+      "Downstream capital deployment authority": 2,
+      "Dynamic coefficient and modifier authority": 3,
+      "Exit and close architecture": 1,
+      "External source interfaces and API ingress": 3,
+      "Financial and event calendar architecture": 2,
+      "Live position and inventory architecture": 4,
+      "Opening architecture and placement readiness": 3,
+      "Parallel risk lane": 2,
+      "Persistence, ledgers, and receipts": 3,
+      "Playbook library architecture": 2,
+      "Prepared ingress and runtime context preparation": 3,
+      "Raw capture and source temporal law": 3,
+      "Raw signal families": 3,
+      "Review and explanation layer": 3,
+      "Serial desk-cognition spine": 2,
+      "Testing, proof, and checkpoint surfaces": 2,
+      "Vocabulary governance interface": 4
+    },
+    "comparison_status_counts": {
+      "already_satisfied": 2,
+      "partially_satisfied": 28,
+      "transform_required": 18
+    },
+    "record_level_join_count": 1716,
+    "record_level_join_status_counts": {
+      "active_symbol_and_surface_test_evidence_present": 35,
+      "active_symbol_present_different_surface_or_owner": 54,
+      "same_surface_evidence_only": 1627
+    },
+    "test_first_action_counts": {
+      "confirm_existing_proof_only_no_refactor": 2,
+      "extend_existing_test_family_before_code": 17,
+      "write_new_test_family_before_code": 29
+    },
+    "test_first_queue_record_count": 46
+  },
+  "classification_note": "STATIC_STRUCTURAL_TRIAGE_ONLY",
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status."
+}

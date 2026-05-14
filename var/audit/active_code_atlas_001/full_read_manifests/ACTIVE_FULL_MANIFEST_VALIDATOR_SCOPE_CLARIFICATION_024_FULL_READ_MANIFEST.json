@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_FULL_MANIFEST_VALIDATOR_SCOPE_CLARIFICATION_024_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_FULL_MANIFEST_VALIDATOR_SCOPE_CLARIFICATION_024",
+  "manifest_scope": "full_manifest_validator_scope_clarification_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 8,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "prior_full_read_plus_current_authority_check",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 89312,
+      "line_count": 665,
+      "sha256": "a630d08017bfb3c9033d78e6ff7431c644ca975b02c571cb9a413edff2b11744",
+      "read_method": "prior_full_read_plus_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 665
+        }
+      ],
+      "notes": "Updated manifest validator scope rule and progress row."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 173162,
+      "line_count": 511,
+      "sha256": "b62497e45538f71c17943382ae1af1e8ab9e8cca338245764ed6568b6a8df2e7",
+      "read_method": "prior_full_read_plus_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 511
+        }
+      ],
+      "notes": "Updated current pointer and ledger row for validator scope clarification 024."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_manifest_validator_scope_clarification_024/reports/ACTIVE_FULL_MANIFEST_VALIDATOR_SCOPE_CLARIFICATION_024_REPORT.json",
+      "material_class": "report",
+      "byte_count": 7398,
+      "line_count": 139,
+      "sha256": "226971f2ef477bba1f2a83015ff2a2fb78c2e65fd88b8257e9487dd955482987",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 139
+        }
+      ],
+      "notes": "Manifest validator scope clarification report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_manifest_validator_scope_clarification_024/receipts/ACTIVE_FULL_MANIFEST_VALIDATOR_SCOPE_CLARIFICATION_024_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1139,
+      "line_count": 20,
+      "sha256": "c1311389cd96a90fdac96f572fd2ecafb30d8ef3d1877873ae5c7cd1a2c118ac",
+      "read_method": "line_numbered_full_read_after_creation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Manifest validator scope clarification receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_023/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_023_REPORT.json",
+      "material_class": "prior_report",
+      "byte_count": 2175,
+      "line_count": 52,
+      "sha256": "176247ce11a100ed49b379876ac6e042cb8063fc57193a4d85ceaf45711ca665",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 52
+        }
+      ],
+      "notes": "023 current-pointer integrity scan report used as selected-current-manifest proof context."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_023_FULL_READ_MANIFEST.json",
+      "material_class": "prior_manifest",
+      "byte_count": 6071,
+      "line_count": 172,
+      "sha256": "1ddba99d5f6f4a2fe06b49011018e65e05fbb597c17edeff54368719537a13cd",
+      "read_method": "full_file_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 172
+        }
+      ],
+      "notes": "023 selected current manifest used for comparison against no-argument historical-universe validation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator whose argument/no-argument scope is clarified."
+    }
+  ],
+  "notes": "Dedicated manifest for full-manifest validator scope clarification 024."
+}

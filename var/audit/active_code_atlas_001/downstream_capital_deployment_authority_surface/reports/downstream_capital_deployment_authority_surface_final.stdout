@@ -1,0 +1,22 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 26 items
+
+tests/tier_a/capital_deployment/test_capital_authority_service_surface.py . [  3%]
+.                                                                        [  7%]
+tests/tier_a/capital_deployment/test_capital_contract_models.py ........ [ 38%]
+.....                                                                    [ 57%]
+tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py . [ 61%]
+                                                                         [ 61%]
+tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py . [ 65%]
+                                                                         [ 65%]
+tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py . [ 69%]
+.......                                                                  [ 96%]
+tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py . [100%]
+
+============================== 26 passed in 0.25s ==============================
+proof_block_id=downstream_capital_deployment_authority_surface
+command=python -m pytest tests/tier_a/capital_deployment

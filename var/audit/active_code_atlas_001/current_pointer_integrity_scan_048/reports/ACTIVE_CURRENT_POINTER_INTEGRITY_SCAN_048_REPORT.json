@@ -1,0 +1,65 @@
+{
+  "id": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_048",
+  "created_local_date": "2026-05-13",
+  "purpose": "Check that the live pointer after 047 and the 047 scan/report/receipt/manifest artefacts are present before continuing.",
+  "checked_pointer_before_update": "ACTIVE_LONG_RUN_STOP_TRIGGER_SCAN_CLASSIFICATION_047_RECORDED",
+  "pointer_text_present_before_update": true,
+  "artefact_checks": [
+    {
+      "path": "var/audit/active_code_atlas_001/long_run_stop_trigger_scan_classification_047/reports/long_run_stop_trigger_scan.txt",
+      "exists": true,
+      "byte_count": 32584,
+      "line_count": 71,
+      "sha256": "1ca1c4f95116cd082250730921dee5f1f6bcd729f439ea9b1538339046211b0b"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/long_run_stop_trigger_scan_classification_047/reports/ACTIVE_LONG_RUN_STOP_TRIGGER_SCAN_CLASSIFICATION_047_REPORT.json",
+      "exists": true,
+      "byte_count": 46751,
+      "line_count": 560,
+      "sha256": "a66fab090d6bba62c1d6bed02dd93990be07a46782c2c10cbcfbe0b9772a056f"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/long_run_stop_trigger_scan_classification_047/receipts/ACTIVE_LONG_RUN_STOP_TRIGGER_SCAN_CLASSIFICATION_047_RECEIPT.md",
+      "exists": true,
+      "byte_count": 790,
+      "line_count": 10,
+      "sha256": "3f2da041106ef5a4637466a5f50dfbadbcaa4ab3b354dd19499734080f2c7ec8"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_LONG_RUN_STOP_TRIGGER_SCAN_CLASSIFICATION_047_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "byte_count": 4188,
+      "line_count": 96,
+      "sha256": "d509f467ae1404f6a3973a663a41dd6da546c0a4bb6710be11ddcf0b7dfb4f9d"
+    }
+  ],
+  "missing_artefacts": [],
+  "classification": "PASS_pointer_and_047_artefacts_present",
+  "changed_files": [
+    "ROADMAP_LEDGER.md"
+  ],
+  "boundary": {
+    "AGENTS.md": "frozen; no mutation in this leaf",
+    "PLANS.md": "frozen; no mutation in this leaf",
+    "ROADMAP_LEDGER.md": "mutated as live ledger only",
+    "runtime_source_test_dependency_vocabulary_original_atlas_bridge_generated_slice": "closed; no mutation",
+    "_archive_tar_payloads": "not restored or used"
+  },
+  "proof_commands_recorded": [
+    "git fsck --connectivity-only",
+    "git diff --check",
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+    "python scripts/run_proof_block.py --check-all",
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_048_FULL_READ_MANIFEST.json"
+  ],
+  "proof_observed_results": {
+    "git fsck --connectivity-only": 0,
+    "git diff --check": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": 0,
+    "python scripts/run_proof_block.py --check-all": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_048_FULL_READ_MANIFEST.json": 0
+  },
+  "proof_status": "PASS_all_recorded_commands_exit_status_0",
+  "proof_stdout_path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_048/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_048_PROOF_STDOUT.txt"
+}

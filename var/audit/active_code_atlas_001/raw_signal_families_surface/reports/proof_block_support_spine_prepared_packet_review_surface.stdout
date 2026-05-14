@@ -1,0 +1,80 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 10 items / 6 errors
+
+==================================== ERRORS ====================================
+_ ERROR collecting tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py _
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py:8: in <module>
+    from nvda_desk.ingress.raw_bundle_loader import load_api_payload
+E   ModuleNotFoundError: No module named 'nvda_desk'
+_ ERROR collecting tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py _
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py:5: in <module>
+    from nvda_desk.downstream.checkpoints import PreparedIngressCheckpoint
+E   ModuleNotFoundError: No module named 'nvda_desk'
+___ ERROR collecting tests/tier_a/packets/test_reference_packet_carriage.py ____
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/packets/test_reference_packet_carriage.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/packets/test_reference_packet_carriage.py:5: in <module>
+    from nvda_desk.contracts.packets import DeskModulePacketV3, DmpV3Envelope
+E   ModuleNotFoundError: No module named 'nvda_desk'
+_ ERROR collecting tests/tier_a/review_runtime/test_review_explanation_service_surface.py _
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/review_runtime/test_review_explanation_service_surface.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/review_runtime/test_review_explanation_service_surface.py:7: in <module>
+    from nvda_desk.contracts.review import (
+E   ModuleNotFoundError: No module named 'nvda_desk'
+_ ERROR collecting tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py _
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:5: in <module>
+    from nvda_desk.contracts.upstream_signal import RawUpstreamSignalInput
+E   ModuleNotFoundError: No module named 'nvda_desk'
+_ ERROR collecting tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py _
+ImportError while importing test module '/mnt/data/nvda10_row015_continue_work/repo/tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py:5: in <module>
+    from nvda_desk.contracts.dataset_packets import build_dataset_packet_signal_view
+E   ModuleNotFoundError: No module named 'nvda_desk'
+=========================== short test summary info ============================
+ERROR tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py
+ERROR tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
+ERROR tests/tier_a/packets/test_reference_packet_carriage.py
+ERROR tests/tier_a/review_runtime/test_review_explanation_service_surface.py
+ERROR tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py
+ERROR tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 6 errors during collection !!!!!!!!!!!!!!!!!!!!
+============================== 6 errors in 0.86s ===============================
+proof_block_id=support_spine_prepared_packet_review_surface
+command=python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py tests/tier_a/packets/test_reference_packet_carriage.py tests/tier_a/review_runtime/test_review_explanation_service_surface.py tests/tier_a/upstream_signal tests/tier_b/review_lineage

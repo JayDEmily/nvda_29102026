@@ -1,0 +1,6 @@
+reformatted tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py
+reformatted src/nvda_desk/contracts/serial_spine.py
+reformatted tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py
+
+All done! ✨ 🍰 ✨
+3 files reformatted, 1 file left unchanged.

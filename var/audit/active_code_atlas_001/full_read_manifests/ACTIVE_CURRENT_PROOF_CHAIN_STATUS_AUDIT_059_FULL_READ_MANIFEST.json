@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T03:36:29Z",
+  "target": "ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_059",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_059_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_059_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 199748,
+      "line_count": 557,
+      "sha256": "f15c7369a0b13523748964a15e13f3ef6b022d95d9afbd8d380b3fdb57c08b71",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_059_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 557
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_059/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_059_REPORT.json",
+      "byte_count": 9742,
+      "line_count": 185,
+      "sha256": "fc35224edae5026645175d226c5f26a1b08601352cffeca7ef625f59a1f7485b",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_059_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 185
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_059/receipts/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_059_RECEIPT.md",
+      "byte_count": 610,
+      "line_count": 9,
+      "sha256": "bbe24a4cc6ca9a39b8b16277eb4970f8df50c069a5881ea46338cee241309d82",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_059_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

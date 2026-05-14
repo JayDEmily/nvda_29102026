@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033",
+  "manifest_scope": "source_test_explicit_hold_alignment_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 94112,
+      "line_count": 672,
+      "sha256": "86243b855a9714e541faf2a22041b073b09244711c6d9fce29893d46b2232e06",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 672
+        }
+      ],
+      "notes": "Updated status/current workstream/progress row for 033."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 180406,
+      "line_count": 527,
+      "sha256": "f84294b204dc18e04f347dcef74c8bb553a6886ec2736ffeb35ca57573bdb7a3",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 527
+        }
+      ],
+      "notes": "Updated current pointer, explicit hold, hard-boundary rows, and history row for 033."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/source_test_explicit_hold_alignment_033/reports/ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1337,
+      "line_count": 20,
+      "sha256": "391018b99bf01325cae8b6add749541c442f5bcd134547255742f9389b3f73cf",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "033 report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/source_test_explicit_hold_alignment_033/receipts/ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 925,
+      "line_count": 20,
+      "sha256": "4b8107387dfc22fc1ff4db9a17520f7be51fa4fe771e889d0dacf779fd3219c4",
+      "read_method": "line_numbered_full_read_after_creation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "033 receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_runway_current_next_target_wording_032/reports/ACTIVE_HISTORICAL_RUNWAY_CURRENT_NEXT_TARGET_WORDING_032_REPORT.json",
+      "material_class": "prior_report",
+      "byte_count": 1199,
+      "line_count": 20,
+      "sha256": "63ecda1637863defa9a525502d02b80917402b4c6c3a02684e294356786c8d63",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 032 report used as predecessor state."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_runway_current_next_target_wording_032/receipts/ACTIVE_HISTORICAL_RUNWAY_CURRENT_NEXT_TARGET_WORDING_032_RECEIPT.md",
+      "material_class": "prior_receipt",
+      "byte_count": 907,
+      "line_count": 20,
+      "sha256": "ddcfa387fbe43e4bb443f6af0a8005601c3de3e3bfbd36f7e085a5b58e0b18e2",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 032 receipt used as predecessor state."
+    }
+  ],
+  "notes": "Dedicated manifest for source/test explicit-hold alignment 033. Validator mutable output is intentionally excluded."
+}

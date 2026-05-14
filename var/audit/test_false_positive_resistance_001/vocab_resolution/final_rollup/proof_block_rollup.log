@@ -1,0 +1,77 @@
+=== vocabulary_governance_conformance_candidate ===
+status=0
+summary=113 passed in 21.98s
+=== vocabulary_synonym_audit_clean_check ===
+status=0
+summary=vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False
+=== vocabulary_candidate_review_clean_check ===
+status=0
+stdout:       "quarantine": 0
+stdout:     }
+stdout:   },
+stdout:   "blocked_candidates": []
+stdout: }
+stdout: vocabulary_candidate_review=PASS blocked_candidates=0
+stdout: proof_block_id=vocabulary_candidate_review_clean_check
+stdout: command=python scripts/vocabulary_candidate_review.py --candidates tests/fixtures/vocabulary_candidate_review/clean_candidates.json --summary-only --check-clean
+=== proof_executor_contract ===
+status=0
+stdout: collected 19 items
+stdout: 
+stdout: tests/tier_b/proof_model/test_proof_executor_contract.py ............... [ 78%]
+stdout: ....                                                                     [100%]
+stdout: 
+stdout: ============================= 19 passed in 17.95s ==============================
+stdout: proof_block_id=proof_executor_contract
+stdout: command=python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py
+=== persistence_ledgers_receipts_surface ===
+status=0
+stdout: tests/tier_a/persistence/test_research_logs_owner_surface.py ..          [ 81%]
+stdout: tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py . [ 85%]
+stdout: .                                                                        [ 88%]
+stdout: tests/tier_a/review_runtime/test_review_repository_surface.py ...        [100%]
+stdout: 
+stdout: ============================== 27 passed in 0.33s ==============================
+stdout: proof_block_id=persistence_ledgers_receipts_surface
+stdout: command=python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py
+=== support_spine_prepared_packet_review_surface ===
+status=0
+stdout: tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py ..  [ 78%]
+stdout: tests/tier_b/review_lineage/test_bounded_trace_review_regime.py ..       [ 84%]
+stdout: tests/tier_b/review_lineage/test_review_effective_policy_lineage.py ...  [ 93%]
+stdout: tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py ..      [100%]
+stdout: 
+stdout: ============================== 33 passed in 0.36s ==============================
+stdout: proof_block_id=support_spine_prepared_packet_review_surface
+stdout: command=python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py tests/tier_a/packets/test_reference_packet_carriage.py tests/tier_a/review_runtime/test_review_explanation_service_surface.py tests/tier_a/upstream_signal tests/tier_b/review_lineage
+=== serial_desk_cognition_spine_surface ===
+status=0 # serial_desk_cognition_spine_surface
+summary=21 passed in 0.33s
+=== roadmap_external_source_api_ingress_authority_surface ===
+status=0
+summary=============================== 17 passed in 0.32s ============================== proof_block_id=roadmap_external_source_api_ingress_authority_surface 
+=== live_position_inventory_architecture_surface ===
+status=0
+summary=============================== 22 passed in 0.23s ============================== proof_block_id=live_position_inventory_architecture_surface 
+=== downstream_capital_deployment_authority_surface ===
+status=0
+summary=============================== 25 passed in 0.23s ============================== proof_block_id=downstream_capital_deployment_authority_surface 
+=== parallel_risk_lane_authority_surface ===
+status=0
+summary=============================== 33 passed in 0.41s ============================== proof_block_id=parallel_risk_lane_authority_surface 
+=== financial_event_calendar_authority_surface ===
+status=0
+summary=============================== 12 passed in 0.40s ============================== proof_block_id=financial_event_calendar_authority_surface 
+=== dynamic_coefficient_modifier_authority_surface ===
+status=0
+summary=============================== 17 passed in 0.59s ============================== proof_block_id=dynamic_coefficient_modifier_authority_surface 
+=== opening_placement_readiness_surface ===
+status=0
+summary=============================== 11 passed in 0.22s ============================== proof_block_id=opening_placement_readiness_surface 
+=== playbook_library_architecture_surface ===
+status=0
+summary=============================== 18 passed in 0.59s ============================== proof_block_id=playbook_library_architecture_surface 
+=== exit_close_architecture_surface ===
+status=0
+summary=73 passed; proof_block_id=exit_close_architecture_surface
+rollup_status=0

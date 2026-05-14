@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_023",
+  "status": "PASS",
+  "scope": "current_pointer_integrity_scan_after_022",
+  "checked_pointer_target": "ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_RECORDED",
+  "current_phase": "ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_RECORDED",
+  "current_target_tranche": "ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_RECORDED",
+  "expected_artefacts": [
+    {
+      "path": "var/audit/active_code_atlas_001/narrow_placeholder_scan_classification_022/reports/ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_REPORT.json",
+      "exists": true,
+      "is_file": true,
+      "byte_count": 4005,
+      "line_count": 103,
+      "sha256": "f06e537a4e1a6cfec55acbe1f41b229824017518f44699b7074e5cedaf41a20e"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/narrow_placeholder_scan_classification_022/receipts/ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_RECEIPT.md",
+      "exists": true,
+      "is_file": true,
+      "byte_count": 934,
+      "line_count": 20,
+      "sha256": "e16919170efa231db8c5cf6d7be0c7ec168e8881433fbd190d45975b3b9d1e23"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_NARROW_PLACEHOLDER_SCAN_CLASSIFICATION_022_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "is_file": true,
+      "byte_count": 3897,
+      "line_count": 108,
+      "sha256": "9ad95bde1e6b117950225933936da3c8413645a95b777d9731516cba1f49d2c9"
+    }
+  ],
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "new_live_control_defect_selected": false,
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_1_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

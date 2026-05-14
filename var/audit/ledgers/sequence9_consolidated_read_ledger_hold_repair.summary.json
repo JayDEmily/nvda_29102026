@@ -1,0 +1,22 @@
+{
+  "absence_count": 4,
+  "categories": [
+    "atlas_slices_and_bridge_evidence",
+    "downstream_capital_audit_evidence",
+    "downstream_capital_dmp_risk_coefficient_temporal_surfaces",
+    "downstream_capital_test_evidence",
+    "external_sequence8_aggregate_authority_pack",
+    "external_sequence8_inner_artifact_read_surfaces",
+    "governing_docs",
+    "legacy_downstream_capital_surfaces",
+    "pm_named_governing_docs",
+    "prior_sequence_1_to_8_source_tree_ledgers_reports_specimens",
+    "root_control_dependency_authority"
+  ],
+  "origins": [
+    "candidate_source_tree",
+    "external_sequence8_aggregate",
+    "generated_external_extraction"
+  ],
+  "row_count": 349
+}

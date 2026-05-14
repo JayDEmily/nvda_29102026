@@ -1,0 +1,567 @@
+{
+  "provenance": {
+    "source_name": "gate_e_manual_pack",
+    "source_type": "bars_plus_chain_fixture",
+    "captured_at": "2026-03-23T13:55:00Z",
+    "symbol": "NVDA",
+    "note": "Deterministic Gate E prepared-runtime fixture"
+  },
+  "bars": [
+    {
+      "ts": "2026-03-23T14:00:00Z",
+      "open": 115.8,
+      "high": 116.3,
+      "low": 115.5,
+      "close": 116.0,
+      "volume": 1200000.0
+    },
+    {
+      "ts": "2026-03-23T14:05:00Z",
+      "open": 116.0,
+      "high": 117.6,
+      "low": 115.9,
+      "close": 117.4,
+      "volume": 980000.0
+    },
+    {
+      "ts": "2026-03-23T14:10:00Z",
+      "open": 117.4,
+      "high": 118.1,
+      "low": 117.2,
+      "close": 117.9,
+      "volume": 910000.0
+    },
+    {
+      "ts": "2026-03-23T14:15:00Z",
+      "open": 117.9,
+      "high": 118.5,
+      "low": 117.6,
+      "close": 118.2,
+      "volume": 860000.0
+    }
+  ],
+  "option_chain_snapshots": [
+    {
+      "ts": "2026-03-23T14:02:00Z",
+      "symbol": "NVDA",
+      "sequence": {
+        "sequence_id": "seq-opening-balance",
+        "snapshot_index": 0,
+        "snapshot_count": 3,
+        "window_minutes": 10
+      },
+      "quotes": [
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "call",
+          "bid": 3.7,
+          "ask": 3.9,
+          "last": null,
+          "iv": 0.66,
+          "delta": null,
+          "gamma": 0.09,
+          "oi": 3500.0,
+          "volume": 420.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "put",
+          "bid": 4.3,
+          "ask": 4.5,
+          "last": null,
+          "iv": 0.72,
+          "delta": null,
+          "gamma": 0.11,
+          "oi": 3900.0,
+          "volume": 480.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 3.3,
+          "ask": 3.5,
+          "last": null,
+          "iv": 0.67,
+          "delta": null,
+          "gamma": 0.1,
+          "oi": 6400.0,
+          "volume": 720.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 4.7,
+          "ask": 4.9,
+          "last": null,
+          "iv": 0.74,
+          "delta": null,
+          "gamma": 0.13,
+          "oi": 6900.0,
+          "volume": 760.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "call",
+          "bid": 2.9,
+          "ask": 3.1,
+          "last": null,
+          "iv": 0.69,
+          "delta": null,
+          "gamma": 0.12,
+          "oi": 3100.0,
+          "volume": 360.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "put",
+          "bid": 5.0,
+          "ask": 5.2,
+          "last": null,
+          "iv": 0.76,
+          "delta": null,
+          "gamma": 0.14,
+          "oi": 3000.0,
+          "volume": 340.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 5.9,
+          "ask": 6.2,
+          "last": null,
+          "iv": 0.64,
+          "delta": null,
+          "gamma": 0.07,
+          "oi": 4200.0,
+          "volume": 310.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 6.6,
+          "ask": 6.9,
+          "last": null,
+          "iv": 0.68,
+          "delta": null,
+          "gamma": 0.08,
+          "oi": 4500.0,
+          "volume": 340.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 8.7,
+          "ask": 9.0,
+          "last": null,
+          "iv": 0.61,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 3800.0,
+          "volume": 250.0
+        },
+        {
+          "ts": "2026-03-23T14:02:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 9.2,
+          "ask": 9.6,
+          "last": null,
+          "iv": 0.64,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 4000.0,
+          "volume": 270.0
+        }
+      ]
+    },
+    {
+      "ts": "2026-03-23T14:07:00Z",
+      "symbol": "NVDA",
+      "sequence": {
+        "sequence_id": "seq-opening-balance",
+        "snapshot_index": 1,
+        "snapshot_count": 3,
+        "window_minutes": 10
+      },
+      "quotes": [
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "call",
+          "bid": 4.0,
+          "ask": 4.2,
+          "last": null,
+          "iv": 0.68,
+          "delta": null,
+          "gamma": 0.1,
+          "oi": 3400.0,
+          "volume": 390.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "put",
+          "bid": 3.8,
+          "ask": 4.0,
+          "last": null,
+          "iv": 0.71,
+          "delta": null,
+          "gamma": 0.1,
+          "oi": 3600.0,
+          "volume": 410.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 3.6,
+          "ask": 3.8,
+          "last": null,
+          "iv": 0.69,
+          "delta": null,
+          "gamma": 0.11,
+          "oi": 6600.0,
+          "volume": 760.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 4.1,
+          "ask": 4.3,
+          "last": null,
+          "iv": 0.75,
+          "delta": null,
+          "gamma": 0.14,
+          "oi": 7100.0,
+          "volume": 820.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "call",
+          "bid": 3.2,
+          "ask": 3.4,
+          "last": null,
+          "iv": 0.71,
+          "delta": null,
+          "gamma": 0.13,
+          "oi": 3300.0,
+          "volume": 380.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "put",
+          "bid": 4.5,
+          "ask": 4.8,
+          "last": null,
+          "iv": 0.78,
+          "delta": null,
+          "gamma": 0.15,
+          "oi": 3200.0,
+          "volume": 360.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 6.2,
+          "ask": 6.5,
+          "last": null,
+          "iv": 0.66,
+          "delta": null,
+          "gamma": 0.07,
+          "oi": 4300.0,
+          "volume": 320.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 6.0,
+          "ask": 6.3,
+          "last": null,
+          "iv": 0.69,
+          "delta": null,
+          "gamma": 0.08,
+          "oi": 4600.0,
+          "volume": 350.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 9.0,
+          "ask": 9.4,
+          "last": null,
+          "iv": 0.62,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 3900.0,
+          "volume": 255.0
+        },
+        {
+          "ts": "2026-03-23T14:07:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 8.8,
+          "ask": 9.2,
+          "last": null,
+          "iv": 0.64,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 4050.0,
+          "volume": 280.0
+        }
+      ]
+    },
+    {
+      "ts": "2026-03-23T14:12:00Z",
+      "symbol": "NVDA",
+      "sequence": {
+        "sequence_id": "seq-opening-balance",
+        "snapshot_index": 2,
+        "snapshot_count": 3,
+        "window_minutes": 10
+      },
+      "quotes": [
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "call",
+          "bid": 4.5,
+          "ask": 4.7,
+          "last": null,
+          "iv": 0.69,
+          "delta": null,
+          "gamma": 0.1,
+          "oi": 3300.0,
+          "volume": 370.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 117.0,
+          "side": "put",
+          "bid": 3.5,
+          "ask": 3.7,
+          "last": null,
+          "iv": 0.7,
+          "delta": null,
+          "gamma": 0.09,
+          "oi": 3500.0,
+          "volume": 390.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 4.1,
+          "ask": 4.3,
+          "last": null,
+          "iv": 0.7,
+          "delta": null,
+          "gamma": 0.11,
+          "oi": 6800.0,
+          "volume": 790.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 3.8,
+          "ask": 4.0,
+          "last": null,
+          "iv": 0.74,
+          "delta": null,
+          "gamma": 0.13,
+          "oi": 7200.0,
+          "volume": 840.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "call",
+          "bid": 3.7,
+          "ask": 3.9,
+          "last": null,
+          "iv": 0.72,
+          "delta": null,
+          "gamma": 0.13,
+          "oi": 3400.0,
+          "volume": 410.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-03-27T20:00:00Z",
+          "strike": 119.0,
+          "side": "put",
+          "bid": 4.2,
+          "ask": 4.5,
+          "last": null,
+          "iv": 0.77,
+          "delta": null,
+          "gamma": 0.14,
+          "oi": 3250.0,
+          "volume": 365.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 6.4,
+          "ask": 6.8,
+          "last": null,
+          "iv": 0.66,
+          "delta": null,
+          "gamma": 0.07,
+          "oi": 4400.0,
+          "volume": 330.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-04-03T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 5.8,
+          "ask": 6.1,
+          "last": null,
+          "iv": 0.68,
+          "delta": null,
+          "gamma": 0.08,
+          "oi": 4700.0,
+          "volume": 360.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "call",
+          "bid": 9.1,
+          "ask": 9.5,
+          "last": null,
+          "iv": 0.62,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 3920.0,
+          "volume": 260.0
+        },
+        {
+          "ts": "2026-03-23T14:12:00Z",
+          "expiry": "2026-04-17T20:00:00Z",
+          "strike": 118.0,
+          "side": "put",
+          "bid": 8.6,
+          "ask": 9.0,
+          "last": null,
+          "iv": 0.63,
+          "delta": null,
+          "gamma": 0.05,
+          "oi": 4060.0,
+          "volume": 282.0
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "record_id": "evt::1",
+      "symbol": "NVDA",
+      "event_id": "evt-1",
+      "event_at": "2026-03-23T15:30:00Z",
+      "event_type": "macro",
+      "label": "Fed speaker",
+      "event_class": null,
+      "semantic_phase": "known_risk",
+      "materiality_tier": "posture_relevant",
+      "provenance": [
+        {
+          "source": "policy_release_calendar",
+          "source_class": "policy_calendar",
+          "source_document": "fed_speakers",
+          "observed_at": "2026-03-22T20:00:00Z",
+          "freshness_state": "current",
+          "confidence_tier": "corroborated",
+          "conflict_disposition": "latest_corroborated_wins",
+          "outage_policy": null,
+          "lineage_key": "src:ir:evt-1",
+          "notes": []
+        }
+      ],
+      "lineage_keys": [
+        "src:ir:evt-1"
+      ],
+      "conflict_notes": [],
+      "tags": [
+        "fed"
+      ]
+    },
+    {
+      "record_id": "evt::2",
+      "symbol": null,
+      "event_id": "evt-2",
+      "event_at": "2026-03-24T12:30:00Z",
+      "event_type": "macro",
+      "label": "CPI",
+      "event_class": null,
+      "semantic_phase": "known_risk",
+      "materiality_tier": "posture_relevant",
+      "provenance": [
+        {
+          "source": "macro_release_calendar",
+          "source_class": "macro_calendar",
+          "source_document": "macro_schedule",
+          "observed_at": "2026-03-22T20:00:00Z",
+          "freshness_state": "current",
+          "confidence_tier": "corroborated",
+          "conflict_disposition": "latest_corroborated_wins",
+          "outage_policy": null,
+          "lineage_key": "src:macro:evt-2",
+          "notes": []
+        }
+      ],
+      "lineage_keys": [
+        "src:macro:evt-2"
+      ],
+      "conflict_notes": [],
+      "tags": [
+        "inflation"
+      ]
+    }
+  ]
+}

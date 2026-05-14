@@ -1,0 +1,438 @@
+{
+  "fixture_pack_id": "gate-f-replay-regression-v1",
+  "stack_definitions": [
+    {
+      "stack_id": "core_full_stack",
+      "label": "Core full stack",
+      "description": "All major playbooks enabled with neutral weights.",
+      "enabled_playbooks": [
+        "continuation_ladder",
+        "negative_gamma_flush",
+        "pin_reversion",
+        "compression_breakout"
+      ],
+      "disabled_playbooks": [],
+      "module_weights": {
+        "compression_breakout": 1.0,
+        "continuation_ladder": 1.0,
+        "execution_expression": 1.0,
+        "negative_gamma_flush": 1.0,
+        "pin_reversion": 1.0
+      },
+      "sub_coefficients": {}
+    },
+    {
+      "stack_id": "defensive_focus_stack",
+      "label": "Defensive focus stack",
+      "description": "Only continuation and pin-reversion remain live, with tighter execution and more hostile volatility coefficients.",
+      "enabled_playbooks": [
+        "continuation_ladder",
+        "pin_reversion"
+      ],
+      "disabled_playbooks": [
+        "negative_gamma_flush",
+        "compression_breakout"
+      ],
+      "module_weights": {
+        "continuation_ladder": 0.8,
+        "execution_expression": 0.7,
+        "pin_reversion": 0.7
+      },
+      "sub_coefficients": {
+        "front_atm_iv": 1.05,
+        "gamma_pressure_score": 1.1,
+        "vix_level": 1.1
+      }
+    }
+  ],
+  "coefficient_sets": [
+    {
+      "set_id": "full_stack_base",
+      "stack_id": "core_full_stack",
+      "label": "Full stack baseline",
+      "module_weights": {},
+      "sub_coefficients": {}
+    },
+    {
+      "set_id": "defensive_stack_tight",
+      "stack_id": "defensive_focus_stack",
+      "label": "Defensive stack with tight execution",
+      "module_weights": {},
+      "sub_coefficients": {}
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "trend",
+      "ts": "2026-03-23T14:15:00+00:00",
+      "expectation": {
+        "expected_veto": false,
+        "expected_playbooks": [
+          "continuation_ladder"
+        ],
+        "expected_permission_state": "allow"
+      },
+      "payload": {
+        "ts": "2026-03-23T10:15:00-04:00",
+        "next_expiry": "2026-03-27T16:00:00-04:00",
+        "prior_session_return_pct": 0.4,
+        "intraday_move_pct": 0.6,
+        "nvda_return_pct": 1.1,
+        "nq_return_pct": 0.5,
+        "es_return_pct": 0.3,
+        "sox_return_pct": 1.0,
+        "breadth_score": 0.72,
+        "concentration_score": 0.35,
+        "vix_level": 16.0,
+        "vvix_level": 48.0,
+        "us10y": 4.15,
+        "us2y": 4.0,
+        "usdjpy": 149.2,
+        "spot_price": 122.0,
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 34.0,
+        "next_atm_iv": 34.5,
+        "put_call_skew": 0.0,
+        "gamma_pressure_score": 0.22,
+        "call_put_imbalance": 0.05,
+        "oi_concentration": 0.35,
+        "atm_straddle_value": 3.0,
+        "front_realised_vol": 36.0,
+        "next_realised_vol": 35.0,
+        "spot_to_pin_distance_pct": 1.2,
+        "call_oi_near_spot": 12000.0,
+        "put_oi_near_spot": 9000.0,
+        "front_volume_near_spot": 2800.0,
+        "next_volume_near_spot": 2400.0,
+        "vanna_proxy": 0.05,
+        "charm_proxy": 0.03,
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T09:55:00-04:00",
+            "front_atm_iv": 34.4,
+            "next_atm_iv": 34.8,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 0.28,
+            "spot_to_pin_distance_pct": 1.25
+          },
+          {
+            "ts": "2026-03-23T10:15:00-04:00",
+            "front_atm_iv": 34.0,
+            "next_atm_iv": 34.5,
+            "put_call_skew": 0.0,
+            "gamma_pressure_score": 0.22,
+            "spot_to_pin_distance_pct": 1.2
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 34.0
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 34.5
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 35.0
+          }
+        ],
+        "inventory_state": {
+          "existing_inventory_pct": 5.0,
+          "fresh_cash_pct": 80.0,
+          "overnight_inventory_pct": 0.0,
+          "open_orders_count": 0
+        },
+        "risk_budget_remaining_pct": 75.0
+      }
+    },
+    {
+      "scenario_id": "flush",
+      "ts": "2026-03-23T14:40:00+00:00",
+      "expectation": {
+        "expected_veto": false,
+        "expected_playbooks": [
+          "negative_gamma_flush"
+        ],
+        "expected_permission_state": "allow"
+      },
+      "payload": {
+        "ts": "2026-03-23T10:40:00-04:00",
+        "next_expiry": "2026-03-27T16:00:00-04:00",
+        "prior_session_return_pct": -0.8,
+        "intraday_move_pct": -2.4,
+        "nvda_return_pct": -1.8,
+        "nq_return_pct": -0.7,
+        "es_return_pct": -0.4,
+        "sox_return_pct": -1.1,
+        "breadth_score": 0.56,
+        "concentration_score": 0.48,
+        "vix_level": 22.0,
+        "vvix_level": 74.0,
+        "us10y": 4.2,
+        "us2y": 4.05,
+        "usdjpy": 148.4,
+        "spot_price": 111.0,
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 46.0,
+        "next_atm_iv": 44.0,
+        "put_call_skew": 0.55,
+        "gamma_pressure_score": 0.78,
+        "call_put_imbalance": 0.15,
+        "oi_concentration": 0.52,
+        "atm_straddle_value": 5.0,
+        "front_realised_vol": 40.0,
+        "next_realised_vol": 39.0,
+        "spot_to_pin_distance_pct": 0.8,
+        "call_oi_near_spot": 8000.0,
+        "put_oi_near_spot": 14000.0,
+        "front_volume_near_spot": 5200.0,
+        "next_volume_near_spot": 4600.0,
+        "vanna_proxy": 0.15,
+        "charm_proxy": 0.12,
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T10:00:00-04:00",
+            "front_atm_iv": 43.0,
+            "next_atm_iv": 42.0,
+            "put_call_skew": 0.42,
+            "gamma_pressure_score": 0.66,
+            "spot_to_pin_distance_pct": 1.1
+          },
+          {
+            "ts": "2026-03-23T10:40:00-04:00",
+            "front_atm_iv": 46.0,
+            "next_atm_iv": 44.0,
+            "put_call_skew": 0.55,
+            "gamma_pressure_score": 0.78,
+            "spot_to_pin_distance_pct": 0.8
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 46.0
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 44.0
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 41.0
+          }
+        ],
+        "inventory_state": {
+          "existing_inventory_pct": 8.0,
+          "fresh_cash_pct": 82.0,
+          "overnight_inventory_pct": 0.0,
+          "open_orders_count": 0,
+          "thesis_state_input": "valid"
+        },
+        "risk_budget_remaining_pct": 70.0
+      }
+    },
+    {
+      "scenario_id": "event",
+      "ts": "2026-03-23T15:55:00+00:00",
+      "expectation": {
+        "expected_veto": true,
+        "expected_playbooks": [],
+        "expected_permission_state": "allow"
+      },
+      "payload": {
+        "ts": "2026-03-23T11:55:00-04:00",
+        "next_expiry": "2026-03-27T16:00:00-04:00",
+        "next_event_at": "2026-03-23T12:10:00-04:00",
+        "prior_session_return_pct": 0.4,
+        "intraday_move_pct": 0.7,
+        "nvda_return_pct": 0.8,
+        "nq_return_pct": 0.6,
+        "es_return_pct": 0.4,
+        "sox_return_pct": 0.9,
+        "breadth_score": 0.65,
+        "concentration_score": 0.35,
+        "vix_level": 18.0,
+        "vvix_level": 50.0,
+        "us10y": 4.2,
+        "us2y": 4.01,
+        "usdjpy": 149.2,
+        "spot_price": 121.0,
+        "front_dte": 4,
+        "next_dte": 11,
+        "front_atm_iv": 34.0,
+        "next_atm_iv": 34.5,
+        "put_call_skew": 0.0,
+        "gamma_pressure_score": 0.22,
+        "call_put_imbalance": 0.05,
+        "oi_concentration": 0.35,
+        "atm_straddle_value": 3.0,
+        "front_realised_vol": 36.0,
+        "next_realised_vol": 35.0,
+        "spot_to_pin_distance_pct": 1.2,
+        "call_oi_near_spot": 12000.0,
+        "put_oi_near_spot": 9000.0,
+        "front_volume_near_spot": 2800.0,
+        "next_volume_near_spot": 2400.0,
+        "vanna_proxy": 0.05,
+        "charm_proxy": 0.03,
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T11:30:00-04:00",
+            "front_atm_iv": 34.4,
+            "next_atm_iv": 34.8,
+            "put_call_skew": 0.03,
+            "gamma_pressure_score": 0.28,
+            "spot_to_pin_distance_pct": 1.25
+          },
+          {
+            "ts": "2026-03-23T11:55:00-04:00",
+            "front_atm_iv": 34.0,
+            "next_atm_iv": 34.5,
+            "put_call_skew": 0.0,
+            "gamma_pressure_score": 0.22,
+            "spot_to_pin_distance_pct": 1.2
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 4,
+            "atm_iv": 34.0
+          },
+          {
+            "tenor_dte": 11,
+            "atm_iv": 34.5
+          },
+          {
+            "tenor_dte": 25,
+            "atm_iv": 35.0
+          }
+        ],
+        "inventory_state": {
+          "existing_inventory_pct": 5.0,
+          "fresh_cash_pct": 80.0,
+          "overnight_inventory_pct": 0.0,
+          "open_orders_count": 0
+        },
+        "risk_budget_remaining_pct": 75.0
+      }
+    },
+    {
+      "scenario_id": "pin",
+      "ts": "2026-03-23T18:20:00+00:00",
+      "expectation": {
+        "expected_veto": false,
+        "expected_playbooks": [
+          "pin_reversion"
+        ],
+        "expected_permission_state": "allow"
+      },
+      "payload": {
+        "ts": "2026-03-23T14:20:00-04:00",
+        "next_expiry": "2026-03-27T16:00:00-04:00",
+        "prior_session_return_pct": 0.1,
+        "intraday_move_pct": 0.05,
+        "nvda_return_pct": 0.15,
+        "nq_return_pct": 0.1,
+        "es_return_pct": 0.05,
+        "sox_return_pct": 0.12,
+        "breadth_score": 0.55,
+        "concentration_score": 0.5,
+        "vix_level": 17.0,
+        "vvix_level": 50.0,
+        "us10y": 4.18,
+        "us2y": 4.02,
+        "usdjpy": 149.5,
+        "spot_price": 120.0,
+        "front_dte": 1,
+        "next_dte": 8,
+        "front_atm_iv": 32.0,
+        "next_atm_iv": 33.0,
+        "put_call_skew": 0.05,
+        "gamma_pressure_score": 0.1,
+        "call_put_imbalance": 0.0,
+        "oi_concentration": 0.9,
+        "atm_straddle_value": 2.2,
+        "front_realised_vol": 34.0,
+        "next_realised_vol": 35.0,
+        "spot_to_pin_distance_pct": 0.05,
+        "call_oi_near_spot": 22000.0,
+        "put_oi_near_spot": 20000.0,
+        "front_volume_near_spot": 9000.0,
+        "next_volume_near_spot": 3500.0,
+        "vanna_proxy": 0.0,
+        "charm_proxy": 0.0,
+        "repeated_snapshot_sequence": [
+          {
+            "ts": "2026-03-23T13:20:00-04:00",
+            "front_atm_iv": 32.5,
+            "next_atm_iv": 33.2,
+            "put_call_skew": 0.07,
+            "gamma_pressure_score": 0.14,
+            "spot_to_pin_distance_pct": 0.22
+          },
+          {
+            "ts": "2026-03-23T14:20:00-04:00",
+            "front_atm_iv": 32.0,
+            "next_atm_iv": 33.0,
+            "put_call_skew": 0.05,
+            "gamma_pressure_score": 0.1,
+            "spot_to_pin_distance_pct": 0.05
+          }
+        ],
+        "tenor_iv_curve": [
+          {
+            "tenor_dte": 1,
+            "atm_iv": 32.0
+          },
+          {
+            "tenor_dte": 8,
+            "atm_iv": 33.0
+          },
+          {
+            "tenor_dte": 22,
+            "atm_iv": 34.0
+          }
+        ],
+        "pin_progression_sequence": [
+          {
+            "ts": "2026-03-23T13:20:00-04:00",
+            "distance_to_pin_pct": 0.22
+          },
+          {
+            "ts": "2026-03-23T14:20:00-04:00",
+            "distance_to_pin_pct": 0.05
+          }
+        ],
+        "inventory_state": {
+          "existing_inventory_pct": 40.0,
+          "fresh_cash_pct": 45.0,
+          "overnight_inventory_pct": 10.0,
+          "open_orders_count": 0
+        },
+        "risk_budget_remaining_pct": 45.0
+      }
+    }
+  ],
+  "walk_forward_slices": [
+    {
+      "slice_id": "train_window",
+      "label": "Train window",
+      "scenario_ids": [
+        "trend",
+        "flush"
+      ]
+    },
+    {
+      "slice_id": "holdout_window",
+      "label": "Holdout window",
+      "scenario_ids": [
+        "event",
+        "pin"
+      ]
+    }
+  ]
+}

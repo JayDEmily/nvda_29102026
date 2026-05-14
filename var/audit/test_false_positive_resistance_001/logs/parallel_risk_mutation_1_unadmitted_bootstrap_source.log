@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_parallel_risk_input_trace_rejects_unadmitted_bootstrap_source ______
+
+    def test_parallel_risk_input_trace_rejects_unadmitted_bootstrap_source() -> None:
+        try:
+            ParallelRiskInputTrace(
+                bootstrap_input_packet_id="bootstrap-unadmitted",
+                bootstrap_source="live_broker_packet",
+                admitted_semantic_inputs=["temporal_input"],
+            )
+        except ValueError as exc:
+            assert "parallel_risk_bootstrap_source_not_admitted" in str(exc)
+        else:  # pragma: no cover - defensive proof clarity
+>           raise AssertionError("unadmitted bootstrap source was accepted")
+E           AssertionError: unadmitted bootstrap source was accepted
+
+tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py::test_parallel_risk_input_trace_rejects_unadmitted_bootstrap_source - AssertionError: unadmitted bootstrap source was accepted
+1 failed in 0.39s

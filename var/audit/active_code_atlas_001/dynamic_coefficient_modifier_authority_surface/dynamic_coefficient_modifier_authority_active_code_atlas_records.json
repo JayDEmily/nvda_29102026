@@ -1,0 +1,95 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE",
+  "created_utc": "2026-05-11T17:58:00Z",
+  "status": "read_adjudicated_existing_tier_a_family_extension_with_bounded_source_repair",
+  "surface": "Dynamic coefficient and modifier authority",
+  "method": "Surface records were confirmed from files listed in the row 027 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates selected state-conditioned modifier posture-envelope copy-boundary behaviour. It does not adjudicate every coefficient, modifier, playbook, risk, capital, or serial-cognition consumer surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-027-0001",
+      "title": "State-conditioned modifier application detaches nested posture envelope state",
+      "surface": "Dynamic coefficient and modifier authority",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_extension_with_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0024",
+        "ACABC-0024"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_dynamic_modifier_partial_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 271,
+          "line_end": 286
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+          "line_start": 77,
+          "line_end": 99
+        },
+        {
+          "path": "src/nvda_desk/config/coefficient_authority.py",
+          "line_start": 56,
+          "line_end": 101
+        },
+        {
+          "path": "src/nvda_desk/contracts/modifiers.py",
+          "line_start": 6,
+          "line_end": 40
+        },
+        {
+          "path": "src/nvda_desk/contracts/posture.py",
+          "line_start": 21,
+          "line_end": 26
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+          "line_start": 236,
+          "line_end": 256
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 443,
+          "line_end": 459
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 153,
+          "line_end": 172
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3151,
+          "line_end": 3152
+        }
+      ],
+      "adjudication_notes": [
+        "The existing Tier A state-conditioned modifier family was extended before source repair to prove modifier application does not share nested posture-envelope state with its input posture object.",
+        "The pre-repair targeted proof failed because apply_posture_modifiers shallow-copied local_envelope, allowing mutation of nested output payloads to alter the input posture envelope.",
+        "The bounded repair added a deep copy at the modifier application boundary and repaired the clean-bundle proof command for the existing dynamic coefficient/modifier proof block."
+      ],
+      "non_claims": [
+        "Does not prove every coefficient/modifier donor obligation.",
+        "Does not authorise capital deployment, source-data ingestion, hidden strategy changes, or unbounded runtime mutation.",
+        "Does not upgrade the whole 5.9 surface to implemented.",
+        "Does not change dependencies, original Atlas/Bridge JSON, generated Atlas slices, or vocabulary data."
+      ]
+    }
+  ]
+}

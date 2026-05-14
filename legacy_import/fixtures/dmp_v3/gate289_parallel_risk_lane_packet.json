@@ -1,0 +1,179 @@
+{
+  "specversion": "1.0",
+  "dmpversion": "3.0.0",
+  "id": "parallel-risk::candidate_semantics::gate289",
+  "source": "urn:nvda:producer:independent_parallel_risk_lane",
+  "type": "urn:nvda:packet:parallel_risk_lane.module_output",
+  "time": "2026-04-16T09:35:00",
+  "datacontenttype": "application/json",
+  "dataschema": "urn:nvda:schema:parallel_risk_lane.output:1.0.0",
+  "traceid": "trace::gate289::parallel-risk",
+  "runid": "run::gate289::parallel-risk",
+  "scenarioid": "fixture",
+  "packetrole": "module_output",
+  "producer": {
+    "module_id": "independent_parallel_risk_lane",
+    "module_version": "1.0.0",
+    "module_instance_id": "independent_parallel_risk_lane::default",
+    "grammar_role": "parallel_risk_lane",
+    "stage_name": "independent_parallel_risk_lane",
+    "behaviour_class": "module_output"
+  },
+  "lineage": {
+    "parentids": [
+      "parallel-risk::market_translation::gate289"
+    ],
+    "dependencyids": [
+      "parallel-risk::market_translation::gate289"
+    ],
+    "sourceartifactids": [
+      "artifact::parallel-risk::fixture"
+    ]
+  },
+  "validation": {
+    "status": "valid",
+    "checks": [
+      {
+        "name": "schema_validation",
+        "passed": true
+      }
+    ],
+    "violations": []
+  },
+  "summary": {
+    "headline": "parallel-risk lane / market=set / candidate=set",
+    "keyflags": [
+      "stage_reads=1",
+      "market_surface=yes",
+      "candidate_surface=yes"
+    ],
+    "humanstate": "parallel-risk lane / market=set / candidate=set"
+  },
+  "data": {
+    "lane_id": "independent_parallel_risk_lane",
+    "serial_spine_preserved": true,
+    "co_resident_from_session_start": true,
+    "arbiter_active": false,
+    "invariant_reads": [
+      {
+        "surface": "serial_grammar_order",
+        "governance_status": "invariant_direct_read",
+        "used": true,
+        "note": "fixture invariant"
+      }
+    ],
+    "stage_output_reads": [
+      {
+        "stage": "temporal",
+        "status": "used",
+        "note": "fixture temporal read"
+      }
+    ],
+    "temporal_surface": {
+      "session_phase": "open_disorder",
+      "behavioural_phase": "open_disorder",
+      "desk_window": "open_drive",
+      "clock_envelope": "open",
+      "minutes_since_open": 12,
+      "minutes_to_close": 378,
+      "calendar_closure_classes": [],
+      "session_bridge_rules": [],
+      "next_session_open_hint": null,
+      "event_minutes_remaining": null,
+      "event_window_state": "none",
+      "event_overlap_class": "none",
+      "event_risk_timing_class": "normal",
+      "event_carry_sensitivity": "low",
+      "event_timing_profile": null,
+      "active_event_family": null,
+      "active_event_class": "macro",
+      "expiry_days_remaining": 1,
+      "expiry_cycle_state": "weekly_front",
+      "session_clock_governance": "invariant_direct_read",
+      "behavioural_phase_governance": "invariant_direct_read",
+      "event_source_governance": "invariant_direct_read",
+      "expiry_source_governance": "invariant_direct_read",
+      "calendar_source_governance": "invariant_direct_read",
+      "lineage_keys": [
+        "calendar:none"
+      ],
+      "notes": [
+        "fixture temporal surface"
+      ]
+    },
+    "market_translation_surface": {
+      "volatility_regime": "contained",
+      "breadth_state": "broadening",
+      "sector_leadership_state": "semis_up",
+      "signal_conflict_state": "clean",
+      "cross_asset_pressure_score": 0.1,
+      "beta_leadership_score": 0.6,
+      "term_structure_state": "normal",
+      "gamma_state": "supportive",
+      "dealer_pressure_state": "stable",
+      "pin_risk_state": "low",
+      "options_behavior_cluster": "supportive",
+      "flow_tension_score": 0.2,
+      "strike_cluster_state": "orderly",
+      "repeated_snapshot_state": "confirmed",
+      "skew_evolution_state": "stable",
+      "pin_progression_state": "none",
+      "dependency_activation_state": "active_enough_to_matter_now",
+      "active_enough_to_matter_now": true,
+      "dislocation_state": "neutral",
+      "environmental_weather_state": "supportive_background",
+      "slower_background_context": [
+        "macro quiet"
+      ],
+      "fast_translation_context": [
+        "flow aligned"
+      ],
+      "notes": [
+        "fixture market translation"
+      ]
+    },
+    "candidate_audit_surface": {
+      "candidate_state": "active_candidate",
+      "active_family_ids": [
+        "breakout"
+      ],
+      "active_setup_variant_ids": [
+        "breakout_orb"
+      ],
+      "lead_family_id": "breakout",
+      "lead_setup_variant_id": "breakout_orb",
+      "lead_playbook_id": "orb_long",
+      "environmental_weather_state": "supportive_background",
+      "fragility_dimensions": [],
+      "consequence_class": "normal",
+      "anti_duplication_primary_binding_point": "execution_expression_output",
+      "descriptive_secondary_reads": [
+        "execution_expression_output"
+      ],
+      "duplicate_caution_suppressed": true,
+      "notes": [
+        "fixture candidate audit"
+      ]
+    },
+    "notes": [
+      "fixture packet"
+    ]
+  },
+  "dmpextensions": {
+    "nvda": {
+      "execution_context": {
+        "stack_id": null,
+        "coefficient_set_id": null,
+        "registry_version": "parallel_risk_lane@2.0.0",
+        "environment_tag": "live_runtime"
+      },
+      "schema_identifiers": {
+        "payload_model_name": "ParallelRiskLanePayload",
+        "payload_module_path": "nvda_desk.schemas.parallel_risk",
+        "input_model_name": null,
+        "output_model_name": "ParallelRiskLanePayload"
+      },
+      "semantic_dependencies": []
+    }
+  }
+}

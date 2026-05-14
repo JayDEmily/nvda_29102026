@@ -1,0 +1,33 @@
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "source_record_file_count": 43,
+  "record_count": 64,
+  "surface_count": 18,
+  "surface_counts": {
+    "DMPV3 packet carriage": 4,
+    "Downstream capital deployment authority": 2,
+    "Dynamic coefficient and modifier authority": 3,
+    "Exit and close architecture": 1,
+    "External source interfaces and API ingress": 3,
+    "Financial and event calendar architecture": 2,
+    "Live position and inventory architecture": 3,
+    "Opening architecture and placement readiness": 3,
+    "Parallel risk lane": 2,
+    "Persistence, ledgers, and receipts": 9,
+    "Playbook library architecture": 1,
+    "Prepared ingress and runtime context preparation": 3,
+    "Raw capture and source temporal law": 3,
+    "Raw signal families": 4,
+    "Review and explanation layer": 3,
+    "Serial desk-cognition spine": 2,
+    "Testing, proof, and checkpoint surfaces": 6,
+    "Vocabulary governance interface": 10
+  },
+  "duplicate_record_id_count": 0,
+  "limitation_statement": "Primary active-code Atlas synthesized only from read-adjudicated surface records; this does not import donor Atlas behaviour, mutate runtime code, or prove feature maturity.",
+  "output_path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json"
+}

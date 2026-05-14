@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 2 items
+
+tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py . [ 50%]
+.                                                                        [100%]
+
+============================== 2 passed in 0.46s ===============================

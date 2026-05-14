@@ -1,0 +1,201 @@
+{
+  "authority": "parallel_risk_independent_envelope_only",
+  "expected_packet": {
+    "data": {
+      "arbiter_active": false,
+      "co_resident_from_session_start": true,
+      "environment_assessment": {
+        "assessment": "bounded_environment_assessment",
+        "assessment_basis": "bootstrap_temporal_input",
+        "captured_at_utc": null,
+        "invariant_reads": [
+          "serial_spine_preserved",
+          "parallel_risk_lane_is_independent_and_additive",
+          "module_8_bootstrap_adapter_only"
+        ],
+        "next_event_time_utc": "2026-04-21T10:00:00Z",
+        "notes": [
+          "environment_assessment_only",
+          "serial_spine_preserved",
+          "stage_a_uses_module_8_bootstrap_input_only"
+        ],
+        "persisted_at_utc": null,
+        "source_channel": null,
+        "source_date": null,
+        "source_provider": null,
+        "source_time_kind": "timestamp",
+        "source_time_raw": null,
+        "source_time_utc": "2026-04-21T09:31:00Z",
+        "source_timezone_raw": null,
+        "time_granularity": "timestamp",
+        "window_ids": [
+          "earnings_window"
+        ],
+        "window_tags": [
+          "earnings",
+          "scheduled_event_window_active"
+        ]
+      },
+      "invariant_reads": [
+        "serial_spine_preserved",
+        "parallel_risk_lane_is_independent_and_additive",
+        "module_8_bootstrap_adapter_only"
+      ],
+      "lane_id": "parallel_risk_lane",
+      "notes": [
+        "stage_a_bootstrap_complete",
+        "stage_b_reserved_without_lawful_upstream_packets",
+        "stage_c_reserved_without_lawful_upstream_packets"
+      ],
+      "risk_envelope": {
+        "caution_flags": [
+          "scheduled_event_window_active",
+          "front_term_structure_backwardation",
+          "vix_elevated"
+        ],
+        "contributions": [
+          {
+            "reason": "scheduled_event_window_active",
+            "source_family": "temporal_event_context",
+            "state": "caution"
+          },
+          {
+            "reason": "front_term_structure_backwardation",
+            "source_family": "options_repricing_context",
+            "state": "caution"
+          },
+          {
+            "reason": "vix_elevated",
+            "source_family": "market_volatility_context",
+            "state": "caution"
+          }
+        ],
+        "decision_authority": "independent_risk_envelope_only",
+        "envelope_state": "caution",
+        "hard_blocks": [],
+        "state_ladder": [
+          "tight",
+          "broad",
+          "caution",
+          "block"
+        ]
+      },
+      "serial_spine_preserved": true,
+      "stage_read_state": [
+        {
+          "note": "Stage Input Bundle temporal primitive admitted for independent risk-envelope input",
+          "stage_name": "temporal",
+          "state": "bootstrap_input_used"
+        },
+        {
+          "note": "Stage Input Bundle regime primitive admitted for independent risk-envelope input",
+          "stage_name": "regime",
+          "state": "bootstrap_input_used"
+        },
+        {
+          "note": "Stage Input Bundle options-flow primitive admitted for independent risk-envelope input",
+          "stage_name": "options_flow",
+          "state": "bootstrap_input_used"
+        },
+        {
+          "note": "posture is downstream of the bootstrap path",
+          "stage_name": "posture",
+          "state": "not_yet_available"
+        },
+        {
+          "note": "eligibility is downstream of the bootstrap path",
+          "stage_name": "eligibility",
+          "state": "not_yet_available"
+        },
+        {
+          "note": "execution is downstream of the bootstrap path",
+          "stage_name": "execution",
+          "state": "not_yet_available"
+        },
+        {
+          "note": "review remains downstream of the parallel-risk lane",
+          "stage_name": "review",
+          "state": "not_yet_available"
+        }
+      ]
+    },
+    "datacontenttype": "application/json",
+    "dataschema": "urn:nvda:schema:parallel_risk_lane.output:1.0.0",
+    "dmpextensions": {
+      "nvda": {
+        "parallel_risk": {
+          "stage_b": "reserved_without_lawful_upstream_packets",
+          "stage_c": "reserved_without_lawful_upstream_packets"
+        },
+        "schema_identifiers": {
+          "output_model_name": "ParallelRiskPreparationPacket",
+          "payload_model_name": "ParallelRiskPreparationPacket",
+          "payload_module_path": "nvda_desk.contracts.parallel_risk"
+        },
+        "semantic_dependencies": []
+      }
+    },
+    "dmpversion": "3.0.0",
+    "id": "dmp::parallel_risk::output::sequence7-specimen",
+    "lineage": {
+      "decisiontraceid": null,
+      "dependencyids": [
+        "dmp::parallel_risk::bootstrap_input::sequence7-specimen"
+      ],
+      "derivedfrom": null,
+      "inputfingerprint": null,
+      "parentids": [
+        "dmp::parallel_risk::bootstrap_input::sequence7-specimen"
+      ],
+      "replayref": null,
+      "replaytraceid": null,
+      "reviewtraceid": null,
+      "sourceartifactids": []
+    },
+    "packetrole": "parallel_risk_packet",
+    "producer": {
+      "behaviour_class": "module_output",
+      "grammar_role": "parallel_risk_lane",
+      "module_id": "parallel_risk_lane",
+      "module_instance_id": "parallel_risk_lane::default",
+      "module_version": "native",
+      "stage_name": null
+    },
+    "runid": "run-sequence7-specimen",
+    "scenarioid": "tests-first",
+    "source": "urn:nvda:producer:parallel_risk_lane",
+    "specversion": "1.0",
+    "summary": {
+      "headline": "parallel-risk stage-a output emitted",
+      "humanstate": "valid",
+      "keyflags": [
+        "stage_a_bootstrap",
+        "environment_assessment_only"
+      ]
+    },
+    "time": "2026-05-06T05:23:41.377989Z",
+    "traceid": "trace-sequence7-specimen",
+    "type": "urn:nvda:packet:parallel_risk_packet",
+    "validation": {
+      "checks": [
+        {
+          "name": "schema_validation",
+          "passed": true
+        }
+      ],
+      "status": "valid",
+      "violations": []
+    }
+  },
+  "forbidden_fields": [
+    "authorised_deployable_pct",
+    "authorised_notional_usd",
+    "position_size",
+    "brokerage_order",
+    "lead_playbook_id",
+    "review_explanation",
+    "coefficient_modifier"
+  ],
+  "sequence": 7,
+  "specimen_id": "sequence7_parallel_risk_envelope_expected_packet"
+}

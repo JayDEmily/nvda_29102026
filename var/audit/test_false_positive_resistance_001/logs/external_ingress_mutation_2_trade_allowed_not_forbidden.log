@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_external_payload_boundary_rejects_each_critical_authority_or_secret_key _
+
+    def test_external_payload_boundary_rejects_each_critical_authority_or_secret_key() -> None:
+        critical_keys = (
+            "api_key",
+            "auth_header",
+            "authorised_notional_usd",
+            "brokerage_order",
+            "execution_receipt",
+            "order_qty",
+            "persistence_write_path",
+            "position_size",
+            "secret",
+            "trade_allowed",
+        )
+    
+        for key in critical_keys:
+            result = validate_external_payload_boundary(
+                interface=_market_spec(),
+                payload={"symbol": "NVDA", key: "not-admitted"},
+            )
+    
+>           assert result.accepted is False, key
+E           AssertionError: trade_allowed
+E           assert True is False
+E            +  where True = ExternalSourceValidationResult(accepted=True, source_id='recorded-nvda-market-snapshot', source_family=<ExternalSource...ess_mode=<ExternalIngressMode.RECORDED_API_RESPONSE: 'recorded_api_response'>, rejection_reason=None, rejected_keys=()).accepted
+
+tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py:175: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py::test_external_payload_boundary_rejects_each_critical_authority_or_secret_key - AssertionError: trade_allowed
+assert True is False
+ +  where True = ExternalSourceValidationResult(accepted=True, source_id='recorded-nvda-market-snapshot', source_family=<ExternalSource...ess_mode=<ExternalIngressMode.RECORDED_API_RESPONSE: 'recorded_api_response'>, rejection_reason=None, rejected_keys=()).accepted
+1 failed in 0.38s

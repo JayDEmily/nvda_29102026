@@ -1,0 +1,569 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:nvda:ledger:serial-runtime-parallel-risk-packet-boundary-alignment:2026-04-22:schema",
+  "title": "NVDA Tranche Execution Ledger",
+  "description": "Machine-readable execution ledger for a single bounded tranche. This ledger is a child of one standalone brief and is not an architecture blueprint.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ledger_version",
+    "ledger_type",
+    "tranche_slug",
+    "status",
+    "parent_brief",
+    "authority",
+    "scope",
+    "steps",
+    "deliverables",
+    "evidence",
+    "deferred_work",
+    "change_control",
+    "closeout"
+  ],
+  "properties": {
+    "ledger_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "ledger_type": {
+      "const": "tranche_execution_ledger"
+    },
+    "tranche_slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "planned",
+        "in_progress",
+        "blocked",
+        "complete",
+        "rejected",
+        "superseded"
+      ]
+    },
+    "created_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parent_brief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "date",
+        "artifact_path",
+        "sha256",
+        "status",
+        "relationship"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "artifact_path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "superseded",
+            "withdrawn"
+          ]
+        },
+        "relationship": {
+          "const": "child_execution_ledger_of_brief"
+        }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "blueprint_reference",
+        "control_surfaces",
+        "boundary_law"
+      ],
+      "properties": {
+        "blueprint_reference": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "purpose",
+            "mutable_in_this_tranche"
+          ],
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "purpose": {
+              "type": "string"
+            },
+            "mutable_in_this_tranche": {
+              "type": "boolean"
+            }
+          }
+        },
+        "control_surfaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "role",
+              "status"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "role": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "binding",
+                  "reference",
+                  "local_supplement"
+                ]
+              }
+            }
+          }
+        },
+        "boundary_law": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "typed_native_surfaces",
+            "first_deliberate_dmp_boundary",
+            "parallel_risk_packet_inputs",
+            "forbidden_reads",
+            "prohibited_expansion"
+          ],
+          "properties": {
+            "typed_native_surfaces": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "first_deliberate_dmp_boundary": {
+              "type": "string"
+            },
+            "parallel_risk_packet_inputs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "forbidden_reads": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "prohibited_expansion": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objective",
+        "required_end_state",
+        "non_goals"
+      ],
+      "properties": {
+        "objective": {
+          "type": "string"
+        },
+        "required_end_state": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "non_goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step_id",
+          "title",
+          "status",
+          "definition",
+          "outputs_required",
+          "acceptance_criteria",
+          "evidence_refs"
+        ],
+        "properties": {
+          "step_id": {
+            "type": "string",
+            "pattern": "^S\\d+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "not_started",
+              "in_progress",
+              "blocked",
+              "done",
+              "rejected"
+            ]
+          },
+          "definition": {
+            "type": "string"
+          },
+          "outputs_required": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance_criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidenceRef"
+            }
+          }
+        }
+      }
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "deliverable_id",
+          "name",
+          "status"
+        ],
+        "properties": {
+          "deliverable_id": {
+            "type": "string",
+            "pattern": "^D\\d+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "planned",
+              "in_progress",
+              "complete",
+              "rejected"
+            ]
+          },
+          "artifact_path": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidenceRef"
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code_refs",
+        "proof_outputs",
+        "artifacts",
+        "git"
+      ],
+      "properties": {
+        "code_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "ref_id",
+              "path",
+              "line_start",
+              "line_end",
+              "claim"
+            ],
+            "properties": {
+              "ref_id": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "line_start": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "line_end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "claim": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "proof_outputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "proof_id",
+              "command",
+              "status"
+            ],
+            "properties": {
+              "proof_id": {
+                "type": "string"
+              },
+              "command": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "not_run",
+                  "passed",
+                  "failed"
+                ]
+              },
+              "output_excerpt": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "artifact_id",
+              "path",
+              "kind",
+              "status"
+            ],
+            "properties": {
+              "artifact_id": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "report",
+                  "specimen",
+                  "packet",
+                  "receipt",
+                  "other"
+                ]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "planned",
+                  "present",
+                  "missing"
+                ]
+              }
+            }
+          }
+        },
+        "git": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "baseline_ref",
+            "work_branch",
+            "head_commit",
+            "closeout_tag",
+            "touched_files"
+          ],
+          "properties": {
+            "baseline_ref": {
+              "type": "string"
+            },
+            "work_branch": {
+              "type": "string"
+            },
+            "head_commit": {
+              "type": "string"
+            },
+            "closeout_tag": {
+              "type": "string"
+            },
+            "touched_files": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "deferred_work": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item",
+          "reason",
+          "status"
+        ],
+        "properties": {
+          "item": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "deferred",
+              "out_of_scope",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "change_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_change_classes",
+        "forbidden_change_classes"
+      ],
+      "properties": {
+        "allowed_change_classes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_change_classes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "closeout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definition_of_done",
+        "current_assessment",
+        "ready_to_close"
+      ],
+      "properties": {
+        "definition_of_done": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "current_assessment": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ready_to_close": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "ref_id"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "code",
+            "proof",
+            "artifact",
+            "git",
+            "brief"
+          ]
+        },
+        "ref_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

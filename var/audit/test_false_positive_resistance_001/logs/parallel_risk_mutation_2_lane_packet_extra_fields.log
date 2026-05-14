@@ -1,0 +1,20 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_parallel_risk_lane_packet_rejects_hidden_capital_authority_fields ____
+
+    def test_parallel_risk_lane_packet_rejects_hidden_capital_authority_fields() -> None:
+        assessment = ParallelRiskEnvironmentAssessment(source_time_utc=datetime(2026, 4, 21, 9, 31))
+        trace = ParallelRiskInputTrace(
+            bootstrap_input_packet_id="bootstrap-hidden-field",
+            bootstrap_source="stage_input_bundle.temporal",
+            admitted_semantic_inputs=["temporal_input"],
+        )
+    
+>       with pytest.raises(ValidationError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py:170: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py::test_parallel_risk_lane_packet_rejects_hidden_capital_authority_fields - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+1 failed in 0.37s

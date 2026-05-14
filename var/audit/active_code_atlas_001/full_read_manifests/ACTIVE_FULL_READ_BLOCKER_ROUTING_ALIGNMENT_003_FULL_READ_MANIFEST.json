@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003",
+  "manifest_scope": "full_read_blocker_routing_control_repair",
+  "status": "control_repair_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root full-read blocker routing wording changed in section 4A."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_PLANS_CURRENT_WORKSTREAM_BOUNDARY_ALIGNMENT_009 proof passed."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Refreshed after ACTIVE_DURABILITY_CHECKPOINT_INDEX_010 proof passed."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/receipts/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 1751,
+      "line_count": 31,
+      "sha256": "2573504829133c0fce7d1c41198af48f865e0bcd22111b5f7c9fee986fdd9ed5",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 31
+        }
+      ],
+      "notes": "Receipt read after proof-result update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/reports/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1813,
+      "line_count": 31,
+      "sha256": "ab470f96a1e0be380b0bb5bb2a24b5132deff5afc83447cafdc8ce80105eb078",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 31
+        }
+      ],
+      "notes": "Report read after proof-result update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_blocker_routing_alignment_003/reports/ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003_PROOF.txt",
+      "material_class": "proof_output",
+      "byte_count": 555,
+      "line_count": 20,
+      "sha256": "dc846ef5cf7ea28cf21388987121ede6d41f333dc4631be94beea00b3d03265e",
+      "read_method": "line_numbered_full_read_in_worker_thread",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Captured proof output for this pass."
+    }
+  ],
+  "boundaries": [
+    "No runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation opened.",
+    "No _archive payload restored or used."
+  ],
+  "notes": "Dedicated manifest for aligning full-read infeasibility handling with continue-until-tokens control law.",
+  "last_refresh_reason": "ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004 refreshed changed ROADMAP entry only; other entries retain prior pass evidence.",
+  "last_refreshed_paths": [
+    "ROADMAP_LEDGER.md"
+  ]
+}

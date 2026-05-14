@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ test_coefficient_authority_rejects_duplicate_policy_effect_coefficients ____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-23/test_coefficient_authority_rej0')
+
+    def test_coefficient_authority_rejects_duplicate_policy_effect_coefficients(
+        tmp_path: Path,
+    ) -> None:
+        payload = deepcopy(_load_authority_payload())
+        payload["modifier_policies"][0]["effects"].append(
+            deepcopy(payload["modifier_policies"][0]["effects"][0])
+        )
+        authority_path = _write_authority_payload(tmp_path, payload)
+    
+        authority_module = _require_module("nvda_desk.config.coefficient_authority")
+        service_cls = _require_attr(authority_module, "CoefficientAuthorityService")
+        service = service_cls(authority_path)
+    
+>       with pytest.raises(ValueError, match="duplicate modifier effect coefficients"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py:184: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py::test_coefficient_authority_rejects_duplicate_policy_effect_coefficients - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.74s

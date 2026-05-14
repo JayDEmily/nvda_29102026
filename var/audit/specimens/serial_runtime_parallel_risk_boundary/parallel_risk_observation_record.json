@@ -1,0 +1,39 @@
+{
+  "bounded_observation_payload": {
+    "input_dataschema": "urn:nvda:schema:parallel_risk_lane.bootstrap_input:1.0.0",
+    "lane_dataschema": "urn:nvda:schema:parallel_risk_lane.output:1.0.0",
+    "lane_packet_role": "parallel_risk_packet",
+    "summary_headline": "parallel-risk stage-a output emitted",
+    "summary_humanstate": "valid",
+    "summary_keyflags": [
+      "stage_a_bootstrap",
+      "environment_assessment_only"
+    ]
+  },
+  "captured_at_utc": null,
+  "dependencyids": [
+    "dmp::parallel_risk::bootstrap_input::20260421T093100Z"
+  ],
+  "input_packet_ids": [
+    "dmp::parallel_risk::bootstrap_input::20260421T093100Z"
+  ],
+  "observation_id": "observation::serial_runtime_parallel_risk_boundary::20260421T093100Z",
+  "output_packet_ids": [
+    "dmp::parallel_risk::output::20260421T093100Z"
+  ],
+  "parentids": [
+    "dmp::parallel_risk::bootstrap_input::20260421T093100Z"
+  ],
+  "persisted_at_utc": "2026-04-21T09:32:00Z",
+  "runid": "run::serial_runtime::20260421T093100Z",
+  "scenarioid": "live",
+  "source_channel": null,
+  "source_date": null,
+  "source_provider": null,
+  "source_time_kind": "timestamp",
+  "source_time_raw": null,
+  "source_time_utc": "2026-04-21T09:31:00Z",
+  "source_timezone_raw": null,
+  "time_granularity": "timestamp",
+  "traceid": "trace::serial_runtime::20260421T093100Z"
+}

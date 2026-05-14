@@ -1,0 +1,602 @@
+{
+  "manifest_name": "atlas_surface_slice_manifest",
+  "schema_version": "1.0",
+  "status": "closed",
+  "generated_at_utc": "2026-04-28T01:26:07Z",
+  "purpose": "Materialised blueprint_surface slices for bounded Atlas migration work.",
+  "source_files": {
+    "native_intent_satisfaction_ledger": {
+      "path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+      "sha256": "a1863186138db7f4ca900b4e241d900675ca1545998e0fcfc84127dd13fb223a",
+      "record_count": 1716
+    },
+    "legacy_intent_atlas": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+      "sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+      "record_count": 1716
+    },
+    "legacy_file_coverage_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_file_coverage_view.json",
+      "sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+      "file_count": 128
+    },
+    "legacy_owner_map_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_owner_map_view.json",
+      "sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+      "owner_count": 82
+    }
+  },
+  "validation": {
+    "native_record_count": 1716,
+    "raw_record_count": 1716,
+    "duplicate_native_atlas_record_ids": [],
+    "duplicate_raw_atlas_record_ids": [],
+    "native_records_missing_raw_atlas_record": [],
+    "coverage_refs_not_in_native_ledger": [],
+    "owner_refs_not_in_native_ledger": [],
+    "slice_count": 18,
+    "total_records_across_slices": 1716,
+    "duplicate_atlas_record_ids_across_slices": [],
+    "slice_total_matches_native_record_count": true
+  },
+  "surfaces": [
+    {
+      "blueprint_surface": "DMPV3 packet carriage",
+      "slice_name": "dmpv3_packet_carriage",
+      "path": "var/audit/atlas_surface_slices/slices/dmpv3_packet_carriage.json",
+      "record_count": 73,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 21,
+          "partially_satisfied": 28,
+          "transform_required": 24
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 24,
+          "later_test_first_leaf": 49
+        },
+        "implementation_leaf_required": {
+          "True": 73
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 73
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 45,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 28
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 28,
+          "new_test_family_required": 45
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Downstream capital deployment authority",
+      "slice_name": "downstream_capital_deployment_authority",
+      "path": "var/audit/atlas_surface_slices/slices/downstream_capital_deployment_authority.json",
+      "record_count": 2,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 1,
+          "transform_required": 1
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 1,
+          "later_test_first_leaf": 1
+        },
+        "implementation_leaf_required": {
+          "True": 2
+        },
+        "blueprint_surface_status": {
+          "placeholder": 2
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 1,
+          "{'tier': 'Tier B', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 1
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 1,
+          "new_test_family_required": 1
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "slice_name": "dynamic_coefficient_and_modifier_authority",
+      "path": "var/audit/atlas_surface_slices/slices/dynamic_coefficient_and_modifier_authority.json",
+      "record_count": 193,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 84,
+          "partially_satisfied": 66,
+          "transform_required": 43
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 43,
+          "later_test_first_leaf": 150
+        },
+        "implementation_leaf_required": {
+          "True": 193
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 193
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 127,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 66
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 66,
+          "new_test_family_required": 127
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Exit and close architecture",
+      "slice_name": "exit_and_close_architecture",
+      "path": "var/audit/atlas_surface_slices/slices/exit_and_close_architecture.json",
+      "record_count": 90,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 47,
+          "transform_required": 43
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 90
+        },
+        "implementation_leaf_required": {
+          "True": 90
+        },
+        "blueprint_surface_status": {
+          "reserved": 90
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 90
+        },
+        "existing_test_decision": {
+          "new_test_family_required": 90
+        }
+      }
+    },
+    {
+      "blueprint_surface": "External source interfaces and API ingress",
+      "slice_name": "external_source_interfaces_and_api_ingress",
+      "path": "var/audit/atlas_surface_slices/slices/external_source_interfaces_and_api_ingress.json",
+      "record_count": 234,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 110,
+          "partially_satisfied": 48,
+          "transform_required": 76
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 76,
+          "later_test_first_leaf": 158
+        },
+        "implementation_leaf_required": {
+          "True": 234
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 234
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 186,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 48
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 48,
+          "new_test_family_required": 186
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Financial and event calendar architecture",
+      "slice_name": "financial_and_event_calendar_architecture",
+      "path": "var/audit/atlas_surface_slices/slices/financial_and_event_calendar_architecture.json",
+      "record_count": 117,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 102,
+          "transform_required": 15
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 15,
+          "later_test_first_leaf": 102
+        },
+        "implementation_leaf_required": {
+          "True": 117
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 117
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 15,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 102
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 102,
+          "new_test_family_required": 15
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Live position and inventory architecture",
+      "slice_name": "live_position_and_inventory_architecture",
+      "path": "var/audit/atlas_surface_slices/slices/live_position_and_inventory_architecture.json",
+      "record_count": 38,
+      "counts": {
+        "native_satisfaction_status": {
+          "already_satisfied": 2,
+          "missing": 5,
+          "partially_satisfied": 14,
+          "transform_required": 17
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 17,
+          "later_test_first_leaf": 19,
+          "none": 2
+        },
+        "implementation_leaf_required": {
+          "False": 2,
+          "True": 36
+        },
+        "blueprint_surface_status": {
+          "placeholder": 38
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 22,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 14,
+          "{'tier': 'Tier A', 'test_family_action': 'reuse_existing', 'proof_block_action': 'none'}": 2
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 14,
+          "new_test_family_required": 22,
+          "no_test_change_required": 2
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "slice_name": "opening_architecture_and_placement_readiness",
+      "path": "var/audit/atlas_surface_slices/slices/opening_architecture_and_placement_readiness.json",
+      "record_count": 74,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 7,
+          "partially_satisfied": 6,
+          "transform_required": 61
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 61,
+          "later_test_first_leaf": 13
+        },
+        "implementation_leaf_required": {
+          "True": 74
+        },
+        "blueprint_surface_status": {
+          "placeholder": 74
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 68,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 6
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 6,
+          "new_test_family_required": 68
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Parallel risk lane",
+      "slice_name": "parallel_risk_lane",
+      "path": "var/audit/atlas_surface_slices/slices/parallel_risk_lane.json",
+      "record_count": 57,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 32,
+          "transform_required": 25
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 25,
+          "later_test_first_leaf": 32
+        },
+        "implementation_leaf_required": {
+          "True": 57
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 57
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 25,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 32
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 32,
+          "new_test_family_required": 25
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "slice_name": "persistence_ledgers_and_receipts",
+      "path": "var/audit/atlas_surface_slices/slices/persistence_ledgers_and_receipts.json",
+      "record_count": 97,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 18,
+          "partially_satisfied": 56,
+          "transform_required": 23
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 23,
+          "later_test_first_leaf": 74
+        },
+        "implementation_leaf_required": {
+          "True": 97
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 97
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 41,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 56
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 56,
+          "new_test_family_required": 41
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Playbook library architecture",
+      "slice_name": "playbook_library_architecture",
+      "path": "var/audit/atlas_surface_slices/slices/playbook_library_architecture.json",
+      "record_count": 95,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 31,
+          "transform_required": 64
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 95
+        },
+        "implementation_leaf_required": {
+          "True": 95
+        },
+        "blueprint_surface_status": {
+          "reserved": 95
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 64,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 31
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 31,
+          "new_test_family_required": 64
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "slice_name": "prepared_ingress_and_runtime_context_preparation",
+      "path": "var/audit/atlas_surface_slices/slices/prepared_ingress_and_runtime_context_preparation.json",
+      "record_count": 51,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 31,
+          "partially_satisfied": 18,
+          "transform_required": 2
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 2,
+          "later_test_first_leaf": 49
+        },
+        "implementation_leaf_required": {
+          "True": 51
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 51
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 33,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 18
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 18,
+          "new_test_family_required": 33
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Raw capture and source temporal law",
+      "slice_name": "raw_capture_and_source_temporal_law",
+      "path": "var/audit/atlas_surface_slices/slices/raw_capture_and_source_temporal_law.json",
+      "record_count": 108,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 11,
+          "partially_satisfied": 31,
+          "transform_required": 66
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 66,
+          "later_test_first_leaf": 42
+        },
+        "implementation_leaf_required": {
+          "True": 108
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 108
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 77,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 31
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 31,
+          "new_test_family_required": 77
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Raw signal families",
+      "slice_name": "raw_signal_families",
+      "path": "var/audit/atlas_surface_slices/slices/raw_signal_families.json",
+      "record_count": 123,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 22,
+          "partially_satisfied": 33,
+          "transform_required": 68
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 68,
+          "later_test_first_leaf": 55
+        },
+        "implementation_leaf_required": {
+          "True": 123
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 123
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 90,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 33
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 33,
+          "new_test_family_required": 90
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Review and explanation layer",
+      "slice_name": "review_and_explanation_layer",
+      "path": "var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json",
+      "record_count": 143,
+      "counts": {
+        "native_satisfaction_status": {
+          "missing": 45,
+          "partially_satisfied": 52,
+          "transform_required": 46
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 46,
+          "later_test_first_leaf": 97
+        },
+        "implementation_leaf_required": {
+          "True": 143
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 143
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 91,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 52
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 52,
+          "new_test_family_required": 91
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Serial desk-cognition spine",
+      "slice_name": "serial_desk_cognition_spine",
+      "path": "var/audit/atlas_surface_slices/slices/serial_desk_cognition_spine.json",
+      "record_count": 139,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 30,
+          "transform_required": 109
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 109,
+          "later_test_first_leaf": 30
+        },
+        "implementation_leaf_required": {
+          "True": 139
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 139
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 109,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 30
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 30,
+          "new_test_family_required": 109
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+      "slice_name": "testing_proof_and_checkpoint_surfaces",
+      "path": "var/audit/atlas_surface_slices/slices/testing_proof_and_checkpoint_surfaces.json",
+      "record_count": 72,
+      "counts": {
+        "native_satisfaction_status": {
+          "partially_satisfied": 44,
+          "transform_required": 28
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 28,
+          "later_test_first_leaf": 44
+        },
+        "implementation_leaf_required": {
+          "True": 72
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 72
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier B', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 28,
+          "{'tier': 'Tier B', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 44
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 44,
+          "new_test_family_required": 28
+        }
+      }
+    },
+    {
+      "blueprint_surface": "Vocabulary governance interface",
+      "slice_name": "vocabulary_governance_interface",
+      "path": "var/audit/atlas_surface_slices/slices/vocabulary_governance_interface.json",
+      "record_count": 10,
+      "counts": {
+        "native_satisfaction_status": {
+          "already_satisfied": 1,
+          "missing": 3,
+          "partially_satisfied": 3,
+          "transform_required": 3
+        },
+        "implementation_leaf_type": {
+          "later_blueprint_leaf": 3,
+          "later_test_first_leaf": 6,
+          "none": 1
+        },
+        "implementation_leaf_required": {
+          "False": 1,
+          "True": 9
+        },
+        "blueprint_surface_status": {
+          "thin_seam": 10
+        },
+        "proof_resolution": {
+          "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 6,
+          "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 3,
+          "{'tier': 'Tier A', 'test_family_action': 'reuse_existing', 'proof_block_action': 'none'}": 1
+        },
+        "existing_test_decision": {
+          "extend_existing_same_invariant": 3,
+          "new_test_family_required": 6,
+          "no_test_change_required": 1
+        }
+      }
+    }
+  ],
+  "checksum_manifest_path": "var/audit/atlas_surface_slices/atlas_surface_slice_checksums.json"
+}

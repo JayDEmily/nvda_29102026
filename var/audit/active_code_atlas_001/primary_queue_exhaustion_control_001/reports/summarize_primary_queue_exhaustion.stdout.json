@@ -1,0 +1,97 @@
+{
+  "schema_version": "primary_queue_exhaustion_control_v1",
+  "status": "PASS",
+  "classification_note": "AUDIT_CONTROL_ROLLUP_ONLY",
+  "source_repo_branch": "worker/handoff-control-repair-c466",
+  "source_repo_head": "92643e319d75ca5f4124cd42bcbf1fe59fbae520",
+  "limitation_statement": "This control rollup records the post-row044 audit queue state from already generated primary synthesis, primary-to-Bridge comparison, and bounded linkage reconciliation artefacts. It does not mutate primary records, source, tests, runtime behaviour, dependencies, vocabulary data, original Atlas/Bridge JSON, or generated slices. It does not prove feature maturity.",
+  "inputs": {
+    "primary_active_code_atlas": {
+      "path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+      "byte_count": 256146,
+      "line_count": 6342,
+      "sha256": "943c6fc6db242271a311e4267a7a3060a0557e743eadf11d177ee7c91d555e64"
+    },
+    "primary_synthesis_report": {
+      "path": "var/audit/active_code_atlas_001/primary_synthesis/reports/primary_active_code_atlas_synthesis_report.json",
+      "byte_count": 1338,
+      "line_count": 33,
+      "sha256": "223c43e8bac8fe49b01168cd82386cd805a03dc324a9c74e330e8f68e0f908d8"
+    },
+    "primary_to_bridge_comparison": {
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+      "byte_count": 22132,
+      "line_count": 543,
+      "sha256": "777ddf86401fd9fbc7b778edb5515098c39b0037f99e502facbe64c9152c6675"
+    },
+    "primary_to_bridge_comparison_report": {
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/reports/primary_to_bridge_comparison_report.json",
+      "byte_count": 8505,
+      "line_count": 123,
+      "sha256": "f25169262d78015ae4a2d567c038e39ab71c031a427a5ae71e28663e0e7b6d05"
+    },
+    "post_row044_linkage_reconciliation": {
+      "path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/primary_linkage_gap_reconciliation_002.json",
+      "byte_count": 11712,
+      "line_count": 311,
+      "sha256": "b2ed6474442bccc69eec97be3acd5802860fecb2281c1abddc1d7156c5fe7a7f"
+    },
+    "post_row044_linkage_reconciliation_report": {
+      "path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/reports/primary_linkage_gap_reconciliation_002_report.json",
+      "byte_count": 1225,
+      "line_count": 25,
+      "sha256": "9b3b9a11cb4959067272305b363fc0d992e1b19423ab1fcfca7a70114b095fa6"
+    }
+  },
+  "summary": {
+    "primary_record_count": 65,
+    "primary_surface_count": 18,
+    "primary_source_record_file_count": 44,
+    "primary_synthesis_status": "PASS",
+    "primary_synthesis_error_count": 0,
+    "primary_synthesis_warning_count": 0,
+    "primary_to_bridge_comparison_status": "PASS",
+    "primary_to_bridge_comparison_warning_count": 36,
+    "execution_queue_record_count": 46,
+    "primary_linked_execution_queue_record_count": 43,
+    "post_row044_queue_gap_ids": [
+      "ACATQ-0044",
+      "ACATQ-0045",
+      "ACATQ-0046"
+    ],
+    "post_row044_comparison_gap_ids": [
+      "ACABC-0035",
+      "ACABC-0045",
+      "ACABC-0046",
+      "ACABC-0047",
+      "ACABC-0048"
+    ],
+    "reconciled_queue_ids": [
+      "ACATQ-0044",
+      "ACATQ-0045",
+      "ACATQ-0046"
+    ],
+    "reconciled_comparison_ids": [
+      "ACABC-0035",
+      "ACABC-0045",
+      "ACABC-0046",
+      "ACABC-0047",
+      "ACABC-0048"
+    ],
+    "unresolved_execution_queue_gap_count_after_reconciliation": 0,
+    "unresolved_execution_queue_gap_ids_after_reconciliation": [],
+    "unresolved_comparison_gap_count_after_reconciliation": 0,
+    "unresolved_comparison_gap_ids_after_reconciliation": [],
+    "next_target": "no_execution_queue_gap_selected_by_current_primary_to_bridge_comparison_plus_reconciliation_overlay"
+  },
+  "guardrails": [
+    "primary active-code Atlas remains an audit/read-adjudicated snapshot, not normative runtime truth",
+    "comparator warnings are retained as navigation warnings and are not silently rewritten",
+    "no runtime/source/test/dependency/vocabulary/original Atlas/Bridge/generated slice mutation is opened",
+    "future primary-record-normalisation or architecture/refactor work requires explicit live authority"
+  ],
+  "errors": [],
+  "warnings": [
+    "primary_to_bridge_comparison_report_retains_navigation_warnings; this control summary does not rewrite comparator output"
+  ]
+}

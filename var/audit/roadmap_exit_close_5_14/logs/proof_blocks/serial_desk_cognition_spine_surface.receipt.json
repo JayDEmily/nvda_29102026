@@ -1,0 +1,31 @@
+{
+  "command": "python -m pytest tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py tests/tier_a/serial_recommendation tests/tier_b/serial_boundaries",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/contracts/serial_spine.py",
+    "src/nvda_desk/runtime/orchestrator.py",
+    "src/nvda_desk/contracts/execution.py",
+    "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py",
+    "tests/tier_a/serial_recommendation/test_execution_contract_models.py",
+    "tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py",
+    "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+    "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+    "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+    "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+    "config/retained_test_registry.yaml",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md"
+  ],
+  "proof_block_id": "serial_desk_cognition_spine_surface",
+  "resolved_command": [
+    "/mnt/data/nvda10_2_work/repo/.venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "tests/tier_a/serial_recommendation",
+    "tests/tier_b/serial_boundaries"
+  ],
+  "status": "PASS"
+}

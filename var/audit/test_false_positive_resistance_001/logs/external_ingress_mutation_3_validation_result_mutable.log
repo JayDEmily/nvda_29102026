@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____________ test_external_source_validation_result_is_immutable ______________
+
+    def test_external_source_validation_result_is_immutable() -> None:
+        result = validate_external_payload_boundary(
+            interface=_market_spec(),
+            payload={"symbol": "NVDA", "bid": 123.45},
+        )
+    
+>       with pytest.raises(ValidationError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+
+tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py:186: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py::test_external_source_validation_result_is_immutable - Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+1 failed in 0.37s

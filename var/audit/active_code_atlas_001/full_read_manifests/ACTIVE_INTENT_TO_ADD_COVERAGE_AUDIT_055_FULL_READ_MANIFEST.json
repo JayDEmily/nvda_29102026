@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T03:33:15Z",
+  "target": "ACTIVE_INTENT_TO_ADD_COVERAGE_AUDIT_055",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_intent_to_add_coverage_audit_055_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_intent_to_add_coverage_audit_055_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 196403,
+      "line_count": 553,
+      "sha256": "2e3dc169fe67438e51d90ee18b3aaaadc83d41790585cf2ce872a75e23b5a6e3",
+      "read_method": "manual_full_file_read_plus_active_intent_to_add_coverage_audit_055_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 553
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/intent_to_add_coverage_audit_055/reports/ACTIVE_INTENT_TO_ADD_COVERAGE_AUDIT_055_REPORT.json",
+      "byte_count": 13136,
+      "line_count": 118,
+      "sha256": "51276e53556f348891b8df6bb7b0e2468e14f3bd6e77587bc391dc5babbba151",
+      "read_method": "manual_full_file_read_plus_active_intent_to_add_coverage_audit_055_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 118
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/intent_to_add_coverage_audit_055/receipts/ACTIVE_INTENT_TO_ADD_COVERAGE_AUDIT_055_RECEIPT.md",
+      "byte_count": 601,
+      "line_count": 9,
+      "sha256": "7977af019f7a8c508bd176ac3653e37f1de1fa8bf659e9ff4dab73139f6506eb",
+      "read_method": "manual_full_file_read_plus_active_intent_to_add_coverage_audit_055_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

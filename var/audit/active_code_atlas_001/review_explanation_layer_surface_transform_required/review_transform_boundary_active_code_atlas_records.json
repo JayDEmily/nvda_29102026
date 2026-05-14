@@ -1,0 +1,107 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-11T17:32:00Z",
+  "status": "read_adjudicated_transform_required_new_tier_a_family_no_source_repair",
+  "surface": "Review and explanation layer",
+  "method": "Surface records were confirmed from files listed in the row 026 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates selected transform-required review/replay/evaluation donor obligations as native review-only and replay-only boundaries. It does not adjudicate every review, replay, repository, explanation, downstream execution, broker, capital, or risk surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-026-0001",
+      "title": "Transform-required review/replay donor obligations stay native review-only and exclude donor service imports",
+      "surface": "Review and explanation layer",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "transform_required_new_tier_a_family_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0036",
+        "ACABC-0037"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_eval_012",
+        "atlas_donor_replay_transform_cluster",
+        "atlas_donor_research_transform_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 373,
+          "line_end": 388
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/downstream/review_stage.py",
+          "line_start": 44,
+          "line_end": 72
+        },
+        {
+          "path": "src/nvda_desk/services/review_explanation_service.py",
+          "line_start": 13,
+          "line_end": 55
+        },
+        {
+          "path": "src/nvda_desk/analysis/replay/service.py",
+          "line_start": 36,
+          "line_end": 88
+        },
+        {
+          "path": "src/nvda_desk/persistence/research_logs.py",
+          "line_start": 9,
+          "line_end": 19
+        },
+        {
+          "path": "src/nvda_desk/repositories/review_repository.py",
+          "line_start": 9,
+          "line_end": 34
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 113
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 615,
+          "line_end": 627
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 555,
+          "line_end": 573
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3082,
+          "line_end": 3084
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3219,
+          "line_end": 3220
+        }
+      ],
+      "adjudication_notes": [
+        "The transform-required Tier A review boundary family was written before source repair.",
+        "The targeted proof passed without source repair because selected native review/replay files do not import legacy donor schemas/services and the active review outputs remain review-only rather than runtime-trading, broker, capital, or risk authority carriers.",
+        "Donor eval/replay/research obligations are preserved as migration evidence that must be re-expressed through native review and explanation seams rather than imported directly."
+      ],
+      "non_claims": [
+        "Does not prove full donor eval/replay/research semantic parity.",
+        "Does not prove all review/replay/repository/explanation surfaces.",
+        "Does not upgrade the whole 5.15 surface to implemented.",
+        "Does not authorise trading, capital, risk, broker, order, or live runtime behaviour."
+      ]
+    }
+  ]
+}

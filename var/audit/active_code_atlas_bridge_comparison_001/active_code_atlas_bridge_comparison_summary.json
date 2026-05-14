@@ -1,0 +1,87 @@
+{
+  "comparison_summary": {
+    "active_code_record_count_total_available": 4075,
+    "atlas_record_count_joined": 1716,
+    "bridge_record_count_accounted_for": 1716,
+    "comparison_record_count": 48,
+    "comparison_records_by_surface": {
+      "DMPV3 packet carriage": 3,
+      "Downstream capital deployment authority": 2,
+      "Dynamic coefficient and modifier authority": 3,
+      "Exit and close architecture": 1,
+      "External source interfaces and API ingress": 3,
+      "Financial and event calendar architecture": 2,
+      "Live position and inventory architecture": 4,
+      "Opening architecture and placement readiness": 3,
+      "Parallel risk lane": 2,
+      "Persistence, ledgers, and receipts": 3,
+      "Playbook library architecture": 2,
+      "Prepared ingress and runtime context preparation": 3,
+      "Raw capture and source temporal law": 3,
+      "Raw signal families": 3,
+      "Review and explanation layer": 3,
+      "Serial desk-cognition spine": 2,
+      "Testing, proof, and checkpoint surfaces": 2,
+      "Vocabulary governance interface": 4
+    },
+    "comparison_status_counts": {
+      "already_satisfied": 2,
+      "partially_satisfied": 28,
+      "transform_required": 18
+    },
+    "record_level_join_count": 1716,
+    "record_level_join_status_counts": {
+      "active_symbol_and_surface_test_evidence_present": 35,
+      "active_symbol_present_different_surface_or_owner": 54,
+      "same_surface_evidence_only": 1627
+    },
+    "test_first_action_counts": {
+      "confirm_existing_proof_only_no_refactor": 2,
+      "extend_existing_test_family_before_code": 17,
+      "write_new_test_family_before_code": 29
+    },
+    "test_first_queue_record_count": 46
+  },
+  "record_join_summary": {
+    "guardrail": "symbol/surface matches are static adjudication evidence only, not proof of correctness",
+    "join_status_counts": {
+      "active_symbol_and_surface_test_evidence_present": 35,
+      "active_symbol_present_different_surface_or_owner": 54,
+      "same_surface_evidence_only": 1627
+    },
+    "record_join_count": 1716
+  },
+  "test_queue_summary": {
+    "proof_tier_counts": {
+      "Tier A": 43,
+      "Tier B": 3
+    },
+    "queue_record_count": 46,
+    "required_action_counts": {
+      "extend_existing_test_family_before_code": 17,
+      "write_new_test_family_before_code": 29
+    },
+    "surface_counts": {
+      "DMPV3 packet carriage": 3,
+      "Downstream capital deployment authority": 2,
+      "Dynamic coefficient and modifier authority": 3,
+      "Exit and close architecture": 1,
+      "External source interfaces and API ingress": 3,
+      "Financial and event calendar architecture": 2,
+      "Live position and inventory architecture": 3,
+      "Opening architecture and placement readiness": 3,
+      "Parallel risk lane": 2,
+      "Persistence, ledgers, and receipts": 3,
+      "Playbook library architecture": 2,
+      "Prepared ingress and runtime context preparation": 3,
+      "Raw capture and source temporal law": 3,
+      "Raw signal families": 3,
+      "Review and explanation layer": 3,
+      "Serial desk-cognition spine": 2,
+      "Testing, proof, and checkpoint surfaces": 2,
+      "Vocabulary governance interface": 3
+    }
+  },
+  "classification_note": "STATIC_STRUCTURAL_TRIAGE_ONLY",
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status."
+}

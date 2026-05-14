@@ -1,0 +1,588 @@
+{
+  "$id": "atlas_tranche_roadmap_ledger.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "candidate_selection": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "selected_candidate": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "tranche_id": {
+                  "type": "string"
+                },
+                "source_slice_path": {
+                  "type": "string"
+                },
+                "blueprint_surface": {
+                  "type": "string"
+                },
+                "selection_status": {
+                  "const": "candidate_only_selection_completed"
+                },
+                "candidate_only": {
+                  "const": true
+                },
+                "selection_reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tranche_id",
+                "source_slice_path",
+                "blueprint_surface",
+                "selection_status",
+                "candidate_only",
+                "selection_reason"
+              ]
+            }
+          ]
+        },
+        "status": {
+          "enum": [
+            "not_opened_in_gate_5",
+            "candidate_only_selection_completed",
+            "candidate_selection_blocked"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "selected_candidate"
+      ]
+    },
+    "coverage_reconciliation": {
+      "type": "object"
+    },
+    "gate": {
+      "enum": [
+        "Worker Gate 5",
+        "Worker Gate 6"
+      ]
+    },
+    "implementation_boundary": {
+      "additionalProperties": true,
+      "properties": {
+        "statement": {
+          "type": "string"
+        },
+        "status": {
+          "const": "implementation_closed"
+        }
+      },
+      "required": [
+        "status",
+        "statement"
+      ],
+      "type": "object"
+    },
+    "ledger_id": {
+      "const": "atlas_tranche_roadmap_ledger"
+    },
+    "roadmap_method": {
+      "type": "object"
+    },
+    "roadmap_tranches": {
+      "items": {
+        "additionalProperties": true,
+        "properties": {
+          "blueprint_surface": {
+            "type": "string"
+          },
+          "candidate_only_flag": {
+            "type": "boolean"
+          },
+          "candidate_selection_status": {
+            "enum": [
+              "not_opened_in_gate_5",
+              "not_selected_in_gate_6",
+              "candidate_only_selected_in_gate_6",
+              "candidate_selection_blocked_in_gate_6"
+            ]
+          },
+          "dependency_notes": {
+            "type": [
+              "string",
+              "array"
+            ]
+          },
+          "docs11_mapping": {
+            "properties": {
+              "docs11_owner_or_seam_reference": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docs11_status_or_reservation_notes": {
+                "type": [
+                  "object",
+                  "string",
+                  "array",
+                  "null"
+                ]
+              },
+              "docs11_surface_match": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "docs11_surface_order_or_section_reference": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "mapping_confidence": {
+                "type": "string"
+              },
+              "mapping_notes": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "docs11_surface_match",
+              "docs11_surface_order_or_section_reference",
+              "docs11_owner_or_seam_reference",
+              "docs11_status_or_reservation_notes",
+              "mapping_confidence",
+              "mapping_notes"
+            ],
+            "type": "object"
+          },
+          "implementation_boundary": {
+            "properties": {
+              "statement": {
+                "type": "string"
+              },
+              "status": {
+                "const": "implementation_closed"
+              }
+            },
+            "required": [
+              "status",
+              "statement"
+            ],
+            "type": "object"
+          },
+          "implementation_leaf_type_summary": {
+            "type": "object"
+          },
+          "included_record_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "included_record_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "included_record_selector": {
+            "type": "string"
+          },
+          "likely_phase": {
+            "enum": [
+              "blueprint-first",
+              "test-first",
+              "code-conformance",
+              "closeout-only",
+              "mixed-needs-future-split"
+            ]
+          },
+          "native_owner_or_seam_notes": {
+            "type": [
+              "object",
+              "string",
+              "array"
+            ]
+          },
+          "proof_family_notes": {
+            "type": [
+              "object",
+              "string",
+              "array"
+            ]
+          },
+          "record_count_basis": {
+            "type": "string"
+          },
+          "risk_notes": {
+            "type": [
+              "string",
+              "array"
+            ]
+          },
+          "satisfaction_state_summary": {
+            "type": "object"
+          },
+          "source_slice_name": {
+            "type": "string"
+          },
+          "source_slice_path": {
+            "type": "string"
+          },
+          "source_slice_record_count": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "split_reason": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "roadmap_planned_tranche_only_candidate_selection_not_opened",
+              "roadmap_planned_tranche_not_selected",
+              "roadmap_planned_tranche_candidate_only_selected",
+              "roadmap_planned_tranche_candidate_selection_blocked"
+            ]
+          },
+          "tranche_id": {
+            "type": "string"
+          },
+          "vocabulary_handling_notes": {
+            "type": [
+              "object",
+              "string",
+              "array"
+            ]
+          }
+        },
+        "required": [
+          "tranche_id",
+          "blueprint_surface",
+          "source_slice_name",
+          "source_slice_path",
+          "source_slice_record_count",
+          "included_record_count",
+          "included_record_selector",
+          "included_record_ids",
+          "record_count_basis",
+          "satisfaction_state_summary",
+          "implementation_leaf_type_summary",
+          "likely_phase",
+          "docs11_mapping",
+          "native_owner_or_seam_notes",
+          "vocabulary_handling_notes",
+          "proof_family_notes",
+          "dependency_notes",
+          "risk_notes",
+          "split_reason",
+          "status",
+          "candidate_only_flag",
+          "candidate_selection_status",
+          "implementation_boundary"
+        ],
+        "type": "object",
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "candidate_selection_status": {
+                  "const": "not_opened_in_gate_5"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidate_only_flag": {
+                  "const": false
+                },
+                "status": {
+                  "const": "roadmap_planned_tranche_only_candidate_selection_not_opened"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "candidate_selection_status": {
+                  "const": "not_selected_in_gate_6"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidate_only_flag": {
+                  "const": false
+                },
+                "status": {
+                  "const": "roadmap_planned_tranche_not_selected"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "candidate_selection_status": {
+                  "const": "candidate_only_selected_in_gate_6"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidate_only_flag": {
+                  "const": true
+                },
+                "status": {
+                  "const": "roadmap_planned_tranche_candidate_only_selected"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "candidate_selection_status": {
+                  "const": "candidate_selection_blocked_in_gate_6"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidate_only_flag": {
+                  "const": false
+                },
+                "status": {
+                  "const": "roadmap_planned_tranche_candidate_selection_blocked"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "route_state": {
+      "type": "object"
+    },
+    "source_lock": {
+      "type": "object"
+    },
+    "source_slice_summary": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "roadmap_ledger_created_candidate_selection_not_opened",
+        "roadmap_candidate_only_selection_completed",
+        "roadmap_candidate_selection_blocked"
+      ]
+    },
+    "validation_summary": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "ledger_id",
+    "status",
+    "gate",
+    "source_lock",
+    "route_state",
+    "validation_summary",
+    "roadmap_method",
+    "source_slice_summary",
+    "roadmap_tranches",
+    "coverage_reconciliation",
+    "candidate_selection",
+    "implementation_boundary"
+  ],
+  "title": "Atlas tranche roadmap ledger",
+  "type": "object",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "gate": {
+            "const": "Worker Gate 5"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "roadmap_ledger_created_candidate_selection_not_opened"
+          },
+          "candidate_selection": {
+            "properties": {
+              "status": {
+                "const": "not_opened_in_gate_5"
+              },
+              "selected_candidate": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        "not": {
+          "properties": {
+            "roadmap_tranches": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "candidate_selection_status": {
+                    "const": "candidate_only_selected_in_gate_6"
+                  },
+                  "candidate_only_flag": {
+                    "const": true
+                  },
+                  "status": {
+                    "const": "roadmap_planned_tranche_candidate_only_selected"
+                  }
+                },
+                "required": [
+                  "candidate_selection_status",
+                  "candidate_only_flag",
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "roadmap_candidate_only_selection_completed"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gate": {
+            "const": "Worker Gate 6"
+          },
+          "candidate_selection": {
+            "properties": {
+              "status": {
+                "const": "candidate_only_selection_completed"
+              },
+              "selected_candidate": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "tranche_id": {
+                    "type": "string"
+                  },
+                  "source_slice_path": {
+                    "type": "string"
+                  },
+                  "blueprint_surface": {
+                    "type": "string"
+                  },
+                  "selection_status": {
+                    "const": "candidate_only_selection_completed"
+                  },
+                  "candidate_only": {
+                    "const": true
+                  },
+                  "selection_reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "tranche_id",
+                  "source_slice_path",
+                  "blueprint_surface",
+                  "selection_status",
+                  "candidate_only",
+                  "selection_reason"
+                ]
+              }
+            }
+          },
+          "roadmap_tranches": {
+            "contains": {
+              "type": "object",
+              "properties": {
+                "candidate_selection_status": {
+                  "const": "candidate_only_selected_in_gate_6"
+                },
+                "candidate_only_flag": {
+                  "const": true
+                },
+                "status": {
+                  "const": "roadmap_planned_tranche_candidate_only_selected"
+                }
+              },
+              "required": [
+                "candidate_selection_status",
+                "candidate_only_flag",
+                "status"
+              ]
+            },
+            "minContains": 1,
+            "maxContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "roadmap_candidate_selection_blocked"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gate": {
+            "const": "Worker Gate 6"
+          },
+          "candidate_selection": {
+            "properties": {
+              "status": {
+                "const": "candidate_selection_blocked"
+              },
+              "selected_candidate": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        "not": {
+          "properties": {
+            "roadmap_tranches": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "candidate_selection_status": {
+                    "const": "candidate_only_selected_in_gate_6"
+                  },
+                  "candidate_only_flag": {
+                    "const": true
+                  },
+                  "status": {
+                    "const": "roadmap_planned_tranche_candidate_only_selected"
+                  }
+                },
+                "required": [
+                  "candidate_selection_status",
+                  "candidate_only_flag",
+                  "status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

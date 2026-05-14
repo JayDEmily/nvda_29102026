@@ -1,0 +1,95 @@
+{
+  "created_utc": "2026-05-11T04:22:28Z",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_003_TESTING_PROOF_CHECKPOINT_SURFACE_TRANSFORM_REQUIRED",
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+  "method": "Same-surface transform-required queue row: add new Tier B retained test family and proof block before source; run direct test, proof block, manifest check, and proof-model suite; no source repair because tests passed.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-003-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 58,
+          "line_start": 10,
+          "path": "src/nvda_desk/downstream/checkpoints.py"
+        },
+        {
+          "line_end": 61,
+          "line_start": 13,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 39,
+          "line_start": 19,
+          "path": "src/nvda_desk/preparation/context_packet.py"
+        },
+        {
+          "line_end": 103,
+          "line_start": 100,
+          "path": "src/nvda_desk/preparation/context_packet.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 65,
+          "line_start": 1,
+          "path": "tests/tier_b/proof_model/test_checkpoint_receipt_contract.py"
+        }
+      ],
+      "adjudication_notes": [
+        "This row addresses the same-surface transform-required queue row ACATQ-0042/ACABC-0043 at the proof/checkpoint boundary, without claiming all donor checkpoint semantics are now fully implemented."
+      ],
+      "classification": "read_adjudicated_surface_record",
+      "limitations": [
+        "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+        "This transform-required testing/proof/checkpoint slice is read-adjudicated for the cited files only. It does not convert the full structural inventory into an accepted all-surface primary active-code Atlas."
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_checkpoints_001",
+        "atlas_donor_checkpoints_002",
+        "atlas_donor_downstream_checkpointing_001",
+        "atlas_donor_downstream_checkpointing_003"
+      ],
+      "linked_bridge_record_ids": [
+        "NIS-0116",
+        "NIS-0117",
+        "NIS-0690",
+        "NIS-0692",
+        "ACATQ-0042",
+        "ACABC-0043"
+      ],
+      "normative_evidence": [
+        {
+          "line_end": 62,
+          "line_start": 29,
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md"
+        },
+        {
+          "line_end": 422,
+          "line_start": 407,
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "A new retained Tier B proof family now verifies that PreparedIngressCheckpoint emits detached checkpoint receipt payloads, preserves prepared-context lineage, remains valid without failed enrichments, and degrades when failed enrichments exist.",
+      "proof_block_or_registry_evidence": [
+        {
+          "line_end": 78,
+          "line_start": 66,
+          "path": "config/proof_blocks.yaml"
+        },
+        {
+          "line_end": 2760,
+          "line_start": 2759,
+          "path": "config/retained_test_registry.yaml"
+        }
+      ],
+      "record_status": "new_tier_b_test_family_added_and_passed_no_source_repair",
+      "surface": "Testing, proof, and checkpoint surfaces",
+      "test_first_gap_or_action": "New Tier B test family and proof block added before source. Existing source passed; no source repair required.",
+      "title": "Prepared-ingress checkpoint receipt contract promoted to retained Tier B proof family"
+    }
+  ],
+  "schema_version": "1.0",
+  "status": "new_test_family_added_no_source_repair",
+  "surface": "Testing, proof, and checkpoint surfaces",
+  "surface_limitation": "This transform-required testing/proof/checkpoint slice is read-adjudicated for the cited files only. It does not convert the full structural inventory into an accepted all-surface primary active-code Atlas."
+}

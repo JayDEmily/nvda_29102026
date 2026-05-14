@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_SCAN_SCOPE_HYGIENE_ALIGNMENT_017_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_SCAN_SCOPE_HYGIENE_ALIGNMENT_017",
+  "manifest_scope": "scan_scope_hygiene_alignment_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 6,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation law used for scan-scope hygiene."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 87453,
+      "line_count": 663,
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ],
+      "notes": "Updated with scan-scope hygiene rule."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 170852,
+      "line_count": 507,
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ],
+      "notes": "Current pointer updated for scan-scope hygiene."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/scan_scope_hygiene_alignment_017/reports/ACTIVE_SCAN_SCOPE_HYGIENE_ALIGNMENT_017_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1305,
+      "line_count": 24,
+      "sha256": "5c0783a4b52faa722a808fb597765cbd8200d1559634ec22d4d89d3744c067ed",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 24
+        }
+      ],
+      "notes": "Scan-scope hygiene report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/scan_scope_hygiene_alignment_017/receipts/ACTIVE_SCAN_SCOPE_HYGIENE_ALIGNMENT_017_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 759,
+      "line_count": 16,
+      "sha256": "a15bf6b8606ab88531f8a98019c1a0f769139a6c5b058d11bced8a2f832ac6ad",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 16
+        }
+      ],
+      "notes": "Scan-scope hygiene receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py",
+      "material_class": "validator",
+      "byte_count": 7285,
+      "line_count": 177,
+      "sha256": "f1fedac95e735d0d8d6e0febc70bc25476e55e3e83f646eee2794daaa3ff92ee",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 177
+        }
+      ],
+      "notes": "Manifest validator used for this pass."
+    }
+  ]
+}

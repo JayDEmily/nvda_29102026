@@ -1,0 +1,175 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_030_PLAYBOOK_LIBRARY_ARCHITECTURE_SURFACE",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_existing_tier_a_family_with_bounded_source_repair",
+  "surface": "Playbook library architecture",
+  "method": "Surface record confirmed from row 030 FULL_READ_MANIFEST files. The generated all-surface active-code Atlas and bridge comparison were used only for navigation; active claims are backed by current source, tests, proof block, and retained registry evidence.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates the existing Tier A playbook-library family for registry shape, eligibility constraints, selection metadata receipt boundaries, duplicate rejection, hidden-authority rejection, and nested caller-metadata detachment. It does not adjudicate every serial cognition, parallel risk, capital deployment, broker, opening, exit/close, or downstream execution surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-030-0001",
+      "title": "Playbook library metadata carriers reject closed authority and detach caller-owned selection metadata",
+      "surface": "Playbook library architecture",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_with_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0026",
+        "ACABC-0026"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_playbook_registry_001",
+        "atlas_donor_playbook_registry_002",
+        "atlas_donor_playbook_registry_003",
+        "atlas_donor_playbook_registry_004",
+        "atlas_donor_playbook_registry_005",
+        "atlas_donor_playbook_registry_006",
+        "atlas_donor_playbook_registry_008",
+        "atlas_donor_playbook_registry_009",
+        "atlas_donor_playbook_registry_010",
+        "atlas_donor_playbook_registry_011"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 288,
+          "line_end": 303
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 151,
+          "line_end": 163
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_QUEUE_001.md",
+          "line_start": 52,
+          "line_end": 53
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/playbook.py",
+          "line_start": 13,
+          "line_end": 61
+        },
+        {
+          "path": "src/nvda_desk/contracts/playbook.py",
+          "line_start": 71,
+          "line_end": 173
+        },
+        {
+          "path": "src/nvda_desk/config/playbook_registry.py",
+          "line_start": 23,
+          "line_end": 45
+        },
+        {
+          "path": "src/nvda_desk/config/playbook_registry.py",
+          "line_start": 48,
+          "line_end": 89
+        },
+        {
+          "path": "src/nvda_desk/config/playbook_registry.py",
+          "line_start": 122,
+          "line_end": 155
+        },
+        {
+          "path": "src/nvda_desk/playbooks/library.py",
+          "line_start": 14,
+          "line_end": 25
+        },
+        {
+          "path": "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+          "line_start": 20,
+          "line_end": 76
+        },
+        {
+          "path": "src/nvda_desk/cognition/serial/eligibility.py",
+          "line_start": 11,
+          "line_end": 22
+        },
+        {
+          "path": "src/nvda_desk/services/playbook_eligibility_service.py",
+          "line_start": 11,
+          "line_end": 25
+        },
+        {
+          "path": "config/playbook_registry.example.yaml",
+          "line_start": 1,
+          "line_end": 27
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/playbook/test_playbook_library_architecture_surface.py",
+          "line_start": 1,
+          "line_end": 283
+        },
+        {
+          "path": "tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py",
+          "line_start": 1,
+          "line_end": 92
+        },
+        {
+          "path": "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+          "line_start": 1,
+          "line_end": 46
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 512,
+          "line_end": 531
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2211,
+          "line_end": 2230
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2232,
+          "line_end": 2252
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2572,
+          "line_end": 2588
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3256,
+          "line_end": 3259
+        }
+      ],
+      "bounded_source_repair_summary": "The row 030 checkpoint changed playbook contract and registry validators to deep-copy nested selection/constraint metadata into PlaybookDefinition, PlaybookEligibilityConstraint, PlaybookRegistryDocument, and PlaybookMetadataReceipt carriers. The matching Tier A extension proves caller-owned nested metadata mutation does not leak into those carriers or generated receipts.",
+      "proof_evidence": {
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/playbook_library_architecture_surface/reports/targeted_playbook_pytest.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "22 passed",
+        "proof_block_status_path": "var/audit/active_code_atlas_001/playbook_library_architecture_surface/reports/playbook_library_architecture_surface_proof_block.status",
+        "proof_block_result": "0",
+        "proof_block_summary": "22 passed"
+      },
+      "active_behaviour_summary": "The native playbook-library surface remains a registry/eligibility metadata carrier. It rejects hidden closed authority in metadata, rejects duplicate playbook IDs and duplicate YAML keys, filters receipts through explicit family/setup inputs, blocks receipt emission when playbook permission is closed, and detaches nested caller-owned selection metadata before runtime consumers receive receipt carriers.",
+      "closed_boundaries_confirmed": [
+        "capital deployment remains closed",
+        "raw source ingestion remains closed",
+        "uncontrolled strategy mutation remains closed",
+        "hidden coefficient ownership remains closed",
+        "broker placement and live order execution remain closed",
+        "exit/close behaviour remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated all-surface Atlas remains navigation-only"
+      ]
+    }
+  ]
+}

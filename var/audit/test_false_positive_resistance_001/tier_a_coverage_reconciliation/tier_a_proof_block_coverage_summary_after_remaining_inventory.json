@@ -1,0 +1,15 @@
+{
+  "covered_by_command_or_owns_count": 95,
+  "covered_by_proof_block_command_count": 95,
+  "covered_by_proof_block_owns_count": 84,
+  "in_retained_registry_count": 92,
+  "not_in_proof_block_command": [],
+  "not_in_proof_block_command_or_owns": [],
+  "not_in_retained_registry": [
+    "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+    "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py",
+    "tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py"
+  ],
+  "proof_block_count": 17,
+  "tier_a_pytest_file_count": 95
+}

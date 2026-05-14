@@ -1,0 +1,22 @@
+[
+  {
+    "category": "source_tree/prior_sequence_8_ledgers_reports",
+    "path": "/mnt/data/seq9_repair_live/repaired/NVIDIA9_remotetest-main/var/audit/ledgers/sequence8*",
+    "status": "hard-missing-in-source-tree; satisfied-by-external-sequence8-aggregate"
+  },
+  {
+    "category": "source_tree/prior_sequence_8_ledgers_reports",
+    "path": "/mnt/data/seq9_repair_live/repaired/NVIDIA9_remotetest-main/var/audit/reports/sequence8*",
+    "status": "hard-missing-in-source-tree; satisfied-by-external-sequence8-aggregate"
+  },
+  {
+    "category": "source_tree/prior_sequence_7b_ledgers_reports",
+    "path": "/mnt/data/seq9_repair_live/repaired/NVIDIA9_remotetest-main/var/audit/ledgers/sequence7b*",
+    "status": "optional-if-present-missing; sequence7a surfaces present"
+  },
+  {
+    "category": "source_tree/prior_sequence_7b_ledgers_reports",
+    "path": "/mnt/data/seq9_repair_live/repaired/NVIDIA9_remotetest-main/var/audit/reports/sequence7b*",
+    "status": "optional-if-present-missing; sequence7a surfaces present"
+  }
+]

@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_current_ingress_adapters_do_not_import_concrete_network_clients _____
+
+    def test_current_ingress_adapters_do_not_import_concrete_network_clients() -> None:
+        adapter_files = sorted((REPO_ROOT / "src/nvda_desk/adapters/ingress").glob("*.py"))
+        assert [path.name for path in adapter_files] == [
+            "__init__.py",
+            "calendar_feed.py",
+            "market_snapshot_feed.py",
+            "options_surface_feed.py",
+        ]
+    
+        imported_roots: set[str] = set()
+        for path in adapter_files:
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    imported_roots.update(alias.name.split(".", maxsplit=1)[0] for alias in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.module:
+                    imported_roots.add(node.module.split(".", maxsplit=1)[0])
+    
+>       assert imported_roots.isdisjoint(FORBIDDEN_CLIENT_IMPORTS) is True
+E       AssertionError: assert False is True
+E        +  where False = <built-in method isdisjoint of set object at 0x7f5826a3a880>({'aiohttp', 'httpx', 'openai', 'requests', 'websocket'})
+E        +    where <built-in method isdisjoint of set object at 0x7f5826a3a880> = {'__future__', 'nvda_desk', 'requests', 'typing'}.isdisjoint
+
+tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py:119: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py::test_current_ingress_adapters_do_not_import_concrete_network_clients - AssertionError: assert False is True
+ +  where False = <built-in method isdisjoint of set object at 0x7f5826a3a880>({'aiohttp', 'httpx', 'openai', 'requests', 'websocket'})
+ +    where <built-in method isdisjoint of set object at 0x7f5826a3a880> = {'__future__', 'nvda_desk', 'requests', 'typing'}.isdisjoint
+1 failed in 0.36s

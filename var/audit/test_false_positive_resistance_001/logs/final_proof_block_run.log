@@ -1,0 +1,12 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_repo_work/NVDA10_2_COHESIVE_WORKER_HANDOFF_2026-05-10/source_snapshot
+configfile: pyproject.toml
+collected 19 items
+
+tests/tier_b/proof_model/test_proof_executor_contract.py ............... [ 78%]
+....                                                                     [100%]
+
+============================= 19 passed in 26.36s ==============================
+proof_block_id=proof_executor_contract
+command=python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py

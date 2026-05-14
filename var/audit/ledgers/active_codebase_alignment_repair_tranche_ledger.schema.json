@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ActiveCodebaseAlignmentRepairTrancheLedger",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "tranche_id",
+    "status",
+    "parent_brief",
+    "scope",
+    "leaves",
+    "verification",
+    "carry_forward_blockers"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "v1"
+    },
+    "tranche_id": {
+      "const": "active_codebase_alignment_repair_tranche"
+    },
+    "status": {
+      "enum": [
+        "open",
+        "closed"
+      ]
+    },
+    "parent_brief": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "scope": {
+      "type": "object"
+    },
+    "leaves": {
+      "type": "array",
+      "minItems": 4
+    },
+    "verification": {
+      "type": "object"
+    },
+    "carry_forward_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

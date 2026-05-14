@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_HISTORICAL_RUNWAY_CURRENT_NEXT_TARGET_WORDING_032",
+  "status": "PASS",
+  "scope": "quarantine_stale_current_next_target_wording_inside_historical_runway_note",
+  "defect": "ROADMAP_LEDGER.md section 2 had already quarantined the five-hour support-spine runway as historical, but the first retained list item still said current next target after external source/API ingress row 012.",
+  "repair": "Changed that retained list item to historical then-next target so current work is selected from the current pointer/current authority, not stale runway text.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "selected_current_manifest_validation_pre_final_report_update": "PASS_manifest_count_1_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

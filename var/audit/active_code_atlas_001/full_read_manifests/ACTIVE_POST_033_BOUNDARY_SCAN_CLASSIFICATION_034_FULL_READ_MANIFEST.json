@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_POST_033_BOUNDARY_SCAN_CLASSIFICATION_034_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_POST_033_BOUNDARY_SCAN_CLASSIFICATION_034",
+  "manifest_scope": "post_033_boundary_scan_classification_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 94829,
+      "line_count": 673,
+      "sha256": "cc03435fff9900892a0e1c17b3cc25b28e0e1c3ac724765eb25233023c00c127",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 673
+        }
+      ],
+      "notes": "Updated status/current workstream/progress row for 034."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 180385,
+      "line_count": 527,
+      "sha256": "16dc1456f97a41dff5e0b9c93045bf832b9f9f5efaab86a93f460a728b0884df",
+      "read_method": "line_numbered_full_read_current_pass_plus_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 527
+        }
+      ],
+      "notes": "Updated current pointer/history row for 034."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_033_boundary_scan_classification_034/reports/ACTIVE_POST_033_BOUNDARY_SCAN_CLASSIFICATION_034_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1271,
+      "line_count": 28,
+      "sha256": "2a46dff69c18889d7dcd0b69d853ab79463277bcb7030f79c5c81666295b8b90",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 28
+        }
+      ],
+      "notes": "034 report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_033_boundary_scan_classification_034/receipts/ACTIVE_POST_033_BOUNDARY_SCAN_CLASSIFICATION_034_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 775,
+      "line_count": 20,
+      "sha256": "1eb05b786848830c08442c3f56caa636597acd02b306b96b49313639bfc69cdc",
+      "read_method": "line_numbered_full_read_after_creation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "034 receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/source_test_explicit_hold_alignment_033/reports/ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033_REPORT.json",
+      "material_class": "prior_report",
+      "byte_count": 1337,
+      "line_count": 20,
+      "sha256": "391018b99bf01325cae8b6add749541c442f5bcd134547255742f9389b3f73cf",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 033 report used as predecessor state."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/source_test_explicit_hold_alignment_033/receipts/ACTIVE_SOURCE_TEST_EXPLICIT_HOLD_ALIGNMENT_033_RECEIPT.md",
+      "material_class": "prior_receipt",
+      "byte_count": 925,
+      "line_count": 20,
+      "sha256": "4b8107387dfc22fc1ff4db9a17520f7be51fa4fe771e889d0dacf779fd3219c4",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 033 receipt used as predecessor state."
+    }
+  ],
+  "notes": "Dedicated manifest for post-033 boundary scan classification 034. Validator mutable output is intentionally excluded."
+}

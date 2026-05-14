@@ -1,0 +1,321 @@
+{
+  "created_utc": "2026-05-13T05:25:00Z",
+  "target": "ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 205615,
+      "line_count": 569,
+      "sha256": "57246aeb5a4dcb64789b6e4d52a9d7a83ac6832a9dd8fd4375d39026669946cd",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 569
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_REPORT.json",
+      "byte_count": 4549,
+      "line_count": 77,
+      "sha256": "60a16de73883cd3fbb997caea4674384e02b60a14f3181fc0b2674c0537cd9b2",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 77
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/receipts/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECEIPT.md",
+      "byte_count": 1195,
+      "line_count": 11,
+      "sha256": "80ea5740224a2f2b57411be9bce9b14ce6da3d37f164604d2448a24ea73aa8e5",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 11
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_PROOF_STDOUT.txt",
+      "byte_count": 10244,
+      "line_count": 133,
+      "sha256": "5585385f8b49a8cc200ddbd54854a87293fd8deb5e55c42ca49fc9feb4b9f8d0",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 133
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FINAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "byte_count": 438,
+      "line_count": 17,
+      "sha256": "27ac6320a398ceec9a3e3455da3c3dfe0e0fc0d30d8aa37a7fbfcfb6c221cf7f",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FULL_READ_MANIFEST.json",
+      "byte_count": 8353,
+      "line_count": 201,
+      "sha256": "940f84dcdc2f67aa5b1e8f634dc34c4b6c21fb481e18f0c2136ad95b93af5736",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 201
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_REPORT.json",
+      "byte_count": 5117,
+      "line_count": 97,
+      "sha256": "e7b5ab0b4b65dae2080f683d68554ddf34b6d6ad3ebab960c500ff52e01fd10a",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 97
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/receipts/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_RECEIPT.md",
+      "byte_count": 983,
+      "line_count": 11,
+      "sha256": "1533c52e6971f16a20f9c958f417930fa35c85db67f02f5ffed7f4b2639fc8f5",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 11
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_PROOF_STDOUT.txt",
+      "byte_count": 11174,
+      "line_count": 136,
+      "sha256": "54928ee047e51c1f9c0080a1e82af070bed5a0d8f4c63932cc29585c085a2354",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 136
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_063_hard_boundary_path_audit_064/reports/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_FINAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "byte_count": 436,
+      "line_count": 17,
+      "sha256": "ab4681f6db2ffe22d334fe4b70ef76ffdadbbd5391970204c72952aa234bd423",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_063_HARD_BOUNDARY_PATH_AUDIT_064_FULL_READ_MANIFEST.json",
+      "byte_count": 6182,
+      "line_count": 156,
+      "sha256": "34eb277574c68de84f08854d15a8d5f630c94f685e17429fc8ee16dbeddb25f3",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 156
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_065/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_REPORT.json",
+      "byte_count": 4502,
+      "line_count": 51,
+      "sha256": "56c935f785edb4063599f9855ec9764e25e876f08b2c5ef1785a3e35738909d2",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_065/receipts/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_RECEIPT.md",
+      "byte_count": 786,
+      "line_count": 11,
+      "sha256": "aa6a79cb11ebc079fe015661b64c414d6a3e633170fb3c8147a85032491dc628",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 11
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_065/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_PROOF_STDOUT.txt",
+      "byte_count": 11853,
+      "line_count": 141,
+      "sha256": "facf47eca60731eeb4bdf8b49bc1f9a586a61e84ca31dc5fc8ca9955b2b41662",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 141
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_065/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_FINAL_MANIFEST_VALIDATION_STDOUT.txt",
+      "byte_count": 431,
+      "line_count": 17,
+      "sha256": "861cfb9449ddd7d807f63c0cdcc9ef2e7072f7df6e64679e98864e0b4955d6aa",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_065_FULL_READ_MANIFEST.json",
+      "byte_count": 5488,
+      "line_count": 141,
+      "sha256": "6ba719445cc43a41f50cb36176292e53ca4d5c92d1ff76c4452367a41a9e8a5d",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 141
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_066/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_REPORT.json",
+      "byte_count": 4812,
+      "line_count": 111,
+      "sha256": "0f5b1ae11fe2195a5dc31bb2410e1d5a9e9268cf6b403d2de61438614f52b0d1",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 111
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_066/receipts/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_RECEIPT.md",
+      "byte_count": 908,
+      "line_count": 9,
+      "sha256": "92ee097e05efdabb5ba32c761ce14873e97cbac36677e9acfc7d0eb361369e75",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_066/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_PROOF_STDOUT.txt",
+      "byte_count": 12552,
+      "line_count": 146,
+      "sha256": "e078407841a42867ee9432db5b14f8acfbb77bfbe32e1d7214139b41052ab4a1",
+      "read_method": "manual_full_file_read_plus_active_current_proof_chain_status_audit_066_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 146
+        }
+      ],
+      "notes": "Current target controlling/material evidence for proof-chain audit 066."
+    }
+  ]
+}

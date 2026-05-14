@@ -1,0 +1,107 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 5 items
+
+tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py . [ 20%]
+...F                                                                     [100%]
+
+=================================== FAILURES ===================================
+_ test_non_interference_boundary_strips_nested_forbidden_runtime_keys_from_trace_payload _
+
+    def test_non_interference_boundary_strips_nested_forbidden_runtime_keys_from_trace_payload() -> None:
+        raw_signal = RawUpstreamSignalInput(
+            source_id="signal-feed-4",
+            signal_family_id="market_depth_imbalance",
+            scope_id="sequence-gap006-upstream",
+            payload={
+                "imbalance": 0.63,
+                "metadata": {
+                    "venue": "NASDAQ",
+                    "trade_allowed": True,
+                    "nested": {"authorised_notional_usd": 2_000_000, "lot_count": 7},
+                },
+                "observations": [
+                    {"depth": 10, "order_qty": 500},
+                    {"depth": 12, "venue": "ARCA"},
+                ],
+            },
+        )
+    
+        result = ingest_raw_upstream_signal(
+            raw_signal=raw_signal,
+            dataset_packet_payload=_dataset_packet_payload(),
+            admitted_signal_families={"market_depth_imbalance"},
+        )
+    
+        assert result.quarantined is False
+>       assert result.trace_envelope["payload"] == {
+            "imbalance": 0.63,
+            "metadata": {"venue": "NASDAQ", "nested": {"lot_count": 7}},
+            "observations": [{"depth": 10}, {"depth": 12, "venue": "ARCA"}],
+        }
+E       AssertionError: assert {'imbalance':...ue': 'ARCA'}]} == {'imbalance':...ue': 'ARCA'}]}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'observations': [{'depth': 10, 'order_qty': 500}, {'depth': 12, 'venue': 'ARCA'}]} != {'observations': [{'depth': 10}, {'depth': 12, 'venue': 'ARCA'}]}
+E         {'metadata': {'nested': {'authorised_notional_usd': 2000000, 'lot_count': 7}, 'trade_allowed': True, 'venue': 'NASDAQ'}} != {'metadata': {'nested': {'lot_count': 7}, 'venue': 'NASDAQ'}}
+E         
+E         Full diff:
+E           {
+E               'imbalance': 0.63,
+E               'metadata': {
+E                   'nested': {
+E         +             'authorised_notional_usd': 2000000,
+E                       'lot_count': 7,
+E                   },
+E         +         'trade_allowed': True,
+E                   'venue': 'NASDAQ',
+E               },
+E               'observations': [
+E                   {
+E                       'depth': 10,
+E         +             'order_qty': 500,
+E                   },
+E                   {
+E                       'depth': 12,
+E                       'venue': 'ARCA',
+E                   },
+E               ],
+E           }
+
+tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:135: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py::test_non_interference_boundary_strips_nested_forbidden_runtime_keys_from_trace_payload - AssertionError: assert {'imbalance':...ue': 'ARCA'}]} == {'imbalance':...ue': 'ARCA'}]}
+  
+  Omitting 1 identical items, use -vv to show
+  Differing items:
+  {'observations': [{'depth': 10, 'order_qty': 500}, {'depth': 12, 'venue': 'ARCA'}]} != {'observations': [{'depth': 10}, {'depth': 12, 'venue': 'ARCA'}]}
+  {'metadata': {'nested': {'authorised_notional_usd': 2000000, 'lot_count': 7}, 'trade_allowed': True, 'venue': 'NASDAQ'}} != {'metadata': {'nested': {'lot_count': 7}, 'venue': 'NASDAQ'}}
+  
+  Full diff:
+    {
+        'imbalance': 0.63,
+        'metadata': {
+            'nested': {
+  +             'authorised_notional_usd': 2000000,
+                'lot_count': 7,
+            },
+  +         'trade_allowed': True,
+            'venue': 'NASDAQ',
+        },
+        'observations': [
+            {
+                'depth': 10,
+  +             'order_qty': 500,
+            },
+            {
+                'depth': 12,
+                'venue': 'ARCA',
+            },
+        ],
+    }
+========================= 1 failed, 4 passed in 1.22s ==========================

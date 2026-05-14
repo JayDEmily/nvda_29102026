@@ -1,0 +1,9 @@
+ ROADMAP_LEDGER.md                                  |  17 +-
+ data/vocabulary/vocabulary_touch_stamp.json        |   2 +-
+ docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md       |  18 +--
+ ...UNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md |  14 +-
+ scripts/vocabulary_synonym_audit.py                |   2 +-
+ src/nvda_desk/vocabulary_synonym_audit.py          | 145 +++++++++++++++++
+ .../test_vocabulary_synonym_candidate_audit.py     | 180 ++++++++++++++++++++-
+ var/vocabulary/synonym_candidates.json             |   2 +-
+ 8 files changed, 347 insertions(+), 33 deletions(-)

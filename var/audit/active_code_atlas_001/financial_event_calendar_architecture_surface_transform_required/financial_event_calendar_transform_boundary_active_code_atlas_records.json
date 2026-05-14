@@ -1,0 +1,120 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_020_FINANCIAL_EVENT_CALENDAR_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-11T14:35:00Z",
+  "status": "read_adjudicated_new_tier_a_family_transform_boundary_no_source_repair",
+  "surface": "Financial and event calendar architecture",
+  "method": "Surface records were confirmed from files listed in the row 020 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates transform-boundary proof for selected native financial/event calendar reference, projection, operational, and calendar-feed files. It does not adjudicate donor event-store/event-ingestion service implementation, live calendar/network fetches, candidate formation, capital sizing, or runtime trading behaviour.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-020-0001",
+      "title": "Native financial-calendar files exclude donor event service and runtime owners",
+      "surface": "Financial and event calendar architecture",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_transform_required_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0010",
+        "ACABC-0010"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_event_store_service_001",
+        "atlas_donor_event_ingestion_service_001"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 186,
+          "line_end": 201
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 531,
+          "line_end": 539
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 156,
+          "line_end": 156
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/reference_data.py",
+          "line_start": 53,
+          "line_end": 75
+        },
+        {
+          "path": "src/nvda_desk/calendar/reference/importer.py",
+          "line_start": 17,
+          "line_end": 25
+        },
+        {
+          "path": "src/nvda_desk/calendar/reference/importer.py",
+          "line_start": 69,
+          "line_end": 135
+        },
+        {
+          "path": "src/nvda_desk/calendar/reference/projection.py",
+          "line_start": 17,
+          "line_end": 253
+        },
+        {
+          "path": "src/nvda_desk/calendar/operational/events.py",
+          "line_start": 9,
+          "line_end": 63
+        },
+        {
+          "path": "src/nvda_desk/adapters/ingress/calendar_feed.py",
+          "line_start": 1,
+          "line_end": 12
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 61
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 426,
+          "line_end": 441
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 457,
+          "line_end": 478
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3010,
+          "line_end": 3013
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3069,
+          "line_end": 3072
+        }
+      ],
+      "adjudication_notes": [
+        "The new Tier A family parses selected native financial/event calendar files and rejects donor event-store/event-ingestion service imports and runtime owner imports.",
+        "The same family rejects recreation of donor event-store/ingestion service symbols such as EventStoreService, EventIngestionService, EventStoreQuery, LiveEventStore, normalise_event_ingestion, and build_live_event_snapshot.",
+        "Targeted proof passed without source repair; the transform-required donor cluster was represented as a boundary guard, not imported as native runtime behaviour."
+      ],
+      "non_claims": [
+        "Does not prove donor event-store or event-ingestion service behaviour.",
+        "Does not upgrade the whole 5.4 surface to implemented.",
+        "Does not authorise live calendar/network fetches, candidate formation, broker/order, capital sizing, risk-policy, dependency, or runtime trading behaviour."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "command": "python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/persistence/receipt_ledger.py",
+    "src/nvda_desk/persistence/execution_records.py",
+    "src/nvda_desk/persistence/research_logs.py",
+    "src/nvda_desk/repositories/position_repository.py",
+    "src/nvda_desk/repositories/capital_state_repository.py",
+    "src/nvda_desk/repositories/review_repository.py",
+    "src/nvda_desk/repositories/execution_event_repository.py",
+    "src/nvda_desk/repositories/market_observation_repository.py",
+    "src/nvda_desk/repositories/options_flow_history_repository.py",
+    "tests/tier_a/persistence/test_receipt_ledger_surface.py",
+    "tests/tier_a/persistence/test_execution_records_repository_surface.py",
+    "tests/tier_a/persistence/test_position_repository_surface.py",
+    "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+    "tests/tier_a/persistence/test_research_logs_owner_surface.py",
+    "tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py",
+    "tests/tier_a/persistence/test_append_only_repository_surfaces.py",
+    "tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py",
+    "tests/tier_a/review_runtime/test_review_repository_surface.py",
+    "config/retained_test_registry.yaml",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md"
+  ],
+  "proof_block_id": "persistence_ledgers_receipts_surface",
+  "resolved_command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/persistence",
+    "tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py",
+    "tests/tier_a/review_runtime/test_review_repository_surface.py"
+  ],
+  "status": "PASS"
+}

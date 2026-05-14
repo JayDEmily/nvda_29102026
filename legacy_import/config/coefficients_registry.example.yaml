@@ -1,0 +1,564 @@
+# Salvaged and normalized from master archive source: coefficients_registry_starter.yaml
+# Status: example-only, not wired into runtime.
+# Purpose: preserve config / coefficient / variant structure for later promotion under current repo architecture.
+
+version: "0.1-draft"
+project: "NVDA Runtime v4 / Evaluator v5"
+notes:
+  - "Starter coefficients registry generated from the thread."
+  - "This file is intended to separate weights and tunables from module code."
+  - "Ranges are suggested exploration bands, not approved live-trading values."
+  - "Raw capture modules generally do not carry score weights."
+  - "All score-producing modules should clamp outputs to [0.0, 1.0] unless explicitly documented otherwise."
+
+globals:
+  score_min: 0.0
+  score_max: 1.0
+  default_weight_placeholder: 0.10
+  clamp_scores: true
+
+runtime:
+  layer1_signals:
+    S01:
+      module: "vwap_roc.py"
+      weight: 0.10
+      enabled: true
+      coefficients:
+        lookback_points:
+          value: 2
+          test_min: 2
+          test_max: 12
+          step: 1
+          notes: "Number of VWAP snapshots compared."
+        smoothing_alpha:
+          value: 0.00
+          test_min: 0.00
+          test_max: 0.50
+          step: 0.05
+          notes: "Optional smoothing factor."
+        up_slope_threshold:
+          value: 0.0005
+          test_min: 0.0001
+          test_max: 0.01
+          step: 0.0001
+          notes: "Threshold for bullish VWAP slope classification."
+        down_slope_threshold:
+          value: -0.0005
+          test_min: -0.01
+          test_max: -0.0001
+          step: 0.0001
+          notes: "Threshold for bearish VWAP slope classification."
+
+    S02:
+      module: "realized_volatility_engine.py"
+      weight: 0.12
+      enabled: true
+      coefficients:
+        bars_per_day:
+          value: 390
+          test_min: 78
+          test_max: 390
+          step: 1
+          notes: "Depends on bar resolution."
+        annualization_days:
+          value: 252
+          test_min: 200
+          test_max: 365
+          step: 1
+          notes: "Annualization factor."
+        compression_ratio:
+          value: 0.85
+          test_min: 0.70
+          test_max: 1.00
+          step: 0.01
+          notes: "Threshold for short-term RV compression versus longer-term RV."
+
+    S03:
+      module: "iv_vs_rv_analysis.py"
+      weight: 0.15
+      enabled: true
+      coefficients:
+        anomaly_threshold:
+          value: 1.20
+          test_min: 1.05
+          test_max: 1.50
+          step: 0.05
+          notes: "IV/RV threshold for expensive vol."
+        compression_threshold:
+          value: 1.05
+          test_min: 0.90
+          test_max: 1.15
+          step: 0.01
+          notes: "IV/RV convergence threshold."
+        atm_delta_band:
+          value: 0.10
+          test_min: 0.05
+          test_max: 0.20
+          step: 0.01
+          notes: "ATM option selection band."
+
+    S04:
+      module: "gamma_pressure.py"
+      weight: 0.25
+      enabled: true
+      coefficients:
+        proximity_range_pct:
+          value: 1.50
+          test_min: 0.50
+          test_max: 3.00
+          step: 0.10
+          notes: "Band around spot for gamma clustering."
+        min_gamma_density:
+          value: 0.20
+          test_min: 0.05
+          test_max: 0.50
+          step: 0.05
+          notes: "Threshold for pin-style clustering."
+        min_strike_count:
+          value: 3
+          test_min: 2
+          test_max: 8
+          step: 1
+          notes: "Minimum nearby strikes."
+
+    S05:
+      module: "vol_corridor.py"
+      weight: 0.15
+      enabled: true
+      coefficients:
+        flatten_threshold:
+          value: 0.02
+          test_min: 0.005
+          test_max: 0.05
+          step: 0.005
+          notes: "Front versus mid IV spread compression threshold."
+        atm_delta_band:
+          value: 0.10
+          test_min: 0.05
+          test_max: 0.20
+          step: 0.01
+          notes: "ATM IV extraction band."
+
+    S06:
+      module: "macro_signal_score.py"
+      weight: 0.20
+      enabled: true
+      coefficients:
+        vix_risk_threshold:
+          value: 22.0
+          test_min: 15.0
+          test_max: 35.0
+          step: 1.0
+          notes: "Risk threshold for VIX."
+        vvix_spread:
+          value: 15.0
+          test_min: 5.0
+          test_max: 30.0
+          step: 1.0
+          notes: "VVIX-VIX spread threshold."
+        yield_trigger:
+          value: 4.25
+          test_min: 3.00
+          test_max: 6.00
+          step: 0.05
+          notes: "10Y yield pressure threshold."
+        fx_risk_floor:
+          value: 140.0
+          test_min: 120.0
+          test_max: 170.0
+          step: 1.0
+          notes: "USDJPY stress threshold."
+
+    S07:
+      module: "peer_divergence.py"
+      weight: 0.15
+      enabled: true
+      coefficients:
+        window_minutes:
+          value: 10
+          test_min: 5
+          test_max: 60
+          step: 5
+          notes: "Lookback window for peer correlation."
+        correlation_threshold:
+          value: 0.70
+          test_min: 0.30
+          test_max: 0.95
+          step: 0.05
+          notes: "Threshold for coherence."
+        score_clip_min:
+          value: 0.00
+          test_min: 0.00
+          test_max: 0.50
+          step: 0.05
+          notes: "Lower clip for remapped score."
+        score_clip_max:
+          value: 1.00
+          test_min: 0.50
+          test_max: 1.00
+          step: 0.05
+          notes: "Upper clip for remapped score."
+
+    S08:
+      module: "slv_overlay_score.py"
+      weight: 0.15
+      enabled: true
+      coefficients:
+        gamma_density_threshold:
+          value: 0.15
+          test_min: 0.05
+          test_max: 0.50
+          step: 0.05
+          notes: "Minimum gamma density."
+        vwap_proximity_pct:
+          value: 1.50
+          test_min: 0.25
+          test_max: 3.00
+          step: 0.05
+          notes: "Allowed distance from VWAP."
+
+    S09:
+      module: "skew_inflection.py"
+      weight: 0.10
+      enabled: true
+      coefficients:
+        skew_change_threshold:
+          value: 0.20
+          test_min: 0.05
+          test_max: 0.50
+          step: 0.01
+          notes: "Skew-flip detection threshold."
+
+    S10:
+      module: "phase_detector.py"
+      weight: 0.05
+      enabled: true
+      coefficients:
+        open_start_time:
+          value: "09:30"
+          test_min: null
+          test_max: null
+          step: null
+          notes: "Market open time."
+        ramp_end_time:
+          value: "10:30"
+          test_min: null
+          test_max: null
+          step: null
+          notes: "End of opening ramp."
+        lunch_start_time:
+          value: "11:30"
+          test_min: null
+          test_max: null
+          step: null
+          notes: "Optional lunch phase boundary."
+
+    S11:
+      module: "volume_spike_filter.py"
+      weight: 0.10
+      enabled: true
+      coefficients:
+        spike_threshold:
+          value: 3.0
+          test_min: 1.5
+          test_max: 6.0
+          step: 0.25
+          notes: "Volume multiple over baseline."
+        baseline_window:
+          value: 20
+          test_min: 5
+          test_max: 100
+          step: 5
+          notes: "Volume baseline window."
+
+    S12:
+      module: "vix_spread_detector.py"
+      weight: 0.10
+      enabled: true
+      coefficients:
+        spread_threshold:
+          value: 15.0
+          test_min: 5.0
+          test_max: 30.0
+          step: 1.0
+          notes: "VVIX-VIX spread threshold."
+
+    S13:
+      module: "archetype_matcher.py"
+      weight: 0.08
+      enabled: true
+      coefficients:
+        squeeze_std_threshold:
+          value: 0.50
+          test_min: 0.10
+          test_max: 2.00
+          step: 0.05
+          notes: "Squeeze classifier."
+        breakout_std_threshold:
+          value: 2.00
+          test_min: 0.50
+          test_max: 5.00
+          step: 0.10
+          notes: "Breakout classifier."
+
+    S14:
+      module: "execution_context_score.py"
+      weight: 0.10
+      enabled: true
+      coefficients:
+        macro_weight:
+          value: 0.50
+          test_min: 0.10
+          test_max: 0.80
+          step: 0.05
+          notes: "Weight on macro subscore."
+        peer_weight:
+          value: 0.30
+          test_min: 0.10
+          test_max: 0.60
+          step: 0.05
+          notes: "Weight on peer subscore."
+        volume_weight:
+          value: 0.20
+          test_min: 0.10
+          test_max: 0.50
+          step: 0.05
+          notes: "Weight on breakout/trap subscore."
+
+  layer2_scoring:
+    C00:
+      module: "engine_score.py"
+      enabled: true
+      coefficients:
+        high_confidence_threshold:
+          value: 0.75
+          test_min: 0.60
+          test_max: 0.90
+          step: 0.05
+          notes: "Threshold for high confidence."
+        medium_confidence_threshold:
+          value: 0.50
+          test_min: 0.30
+          test_max: 0.75
+          step: 0.05
+          notes: "Threshold for medium confidence."
+        missing_weight_default:
+          value: 0.10
+          test_min: 0.00
+          test_max: 0.25
+          step: 0.01
+          notes: "Fallback module weight."
+
+  layer3_decision:
+    L3_01:
+      module: "entry_gate.py"
+      enabled: true
+      coefficients:
+        score_floor:
+          value: 0.65
+          test_min: 0.40
+          test_max: 0.90
+          step: 0.05
+          notes: "Minimum score for entry eligibility."
+    L3_02:
+      module: "ladder_constructor.py"
+      enabled: true
+      coefficients:
+        strike_count:
+          value: 5
+          test_min: 3
+          test_max: 10
+          step: 1
+          notes: "Number of strikes in ladder."
+        spread_pct:
+          value: 2.50
+          test_min: 0.50
+          test_max: 5.00
+          step: 0.25
+          notes: "Ladder spread around spot."
+    L3_03:
+      module: "slv_validator.py"
+      enabled: true
+      coefficients:
+        gamma_weight:
+          value: 0.40
+          test_min: 0.10
+          test_max: 0.70
+          step: 0.05
+          notes: "Gamma component weight."
+        vwap_weight:
+          value: 0.30
+          test_min: 0.10
+          test_max: 0.70
+          step: 0.05
+          notes: "VWAP component weight."
+        oi_weight:
+          value: 0.30
+          test_min: 0.10
+          test_max: 0.70
+          step: 0.05
+          notes: "Open-interest component weight."
+        gamma_min:
+          value: 0.05
+          test_min: 0.01
+          test_max: 0.20
+          step: 0.01
+          notes: "Minimum gamma before credit."
+        vwap_dist_max_pct:
+          value: 1.00
+          test_min: 0.25
+          test_max: 3.00
+          step: 0.05
+          notes: "Max VWAP distance for full score."
+        zone_score_threshold:
+          value: 0.50
+          test_min: 0.20
+          test_max: 0.80
+          step: 0.05
+          notes: "Validation threshold."
+    L3_04:
+      module: "fill_bias_adjuster.py"
+      enabled: true
+      coefficients:
+        vwap_slope_weight:
+          value: 0.60
+          test_min: 0.10
+          test_max: 0.90
+          step: 0.05
+          notes: "Weight on VWAP slope."
+        gamma_skew_weight:
+          value: 0.40
+          test_min: 0.10
+          test_max: 0.90
+          step: 0.05
+          notes: "Weight on gamma skew."
+
+  layer4_execution:
+    L4_01:
+      module: "entry_planner.py"
+      enabled: true
+      coefficients:
+        lower_bias_threshold:
+          value: 0.50
+          test_min: 0.10
+          test_max: 0.90
+          step: 0.05
+          notes: "Threshold for preferring lower ladder strikes."
+    L4_02:
+      module: "position_allocator.py"
+      enabled: true
+      coefficients:
+        max_risk_per_trade:
+          value: 500.0
+          test_min: 50.0
+          test_max: 5000.0
+          step: 50.0
+          notes: "Placeholder risk budget."
+        premium_multiplier:
+          value: 1.20
+          test_min: 0.50
+          test_max: 3.00
+          step: 0.05
+          notes: "Placeholder strike-distance to premium mapping."
+    L4_03:
+      module: "order_simulator.py"
+      enabled: true
+      coefficients:
+        latency_ms:
+          value: 80
+          test_min: 5
+          test_max: 500
+          step: 5
+          notes: "Placeholder execution latency."
+        slippage_cap:
+          value: 0.50
+          test_min: 0.01
+          test_max: 2.00
+          step: 0.01
+          notes: "Max simulated slippage."
+        vwap_slippage_factor:
+          value: 0.02
+          test_min: 0.001
+          test_max: 0.10
+          step: 0.001
+          notes: "VWAP-distance slippage factor."
+
+  layer5_positions:
+    P03:
+      module: "trailing_stop.py"
+      enabled: false
+      coefficients:
+        trailing_stop_pct:
+          value: 0.10
+          test_min: 0.02
+          test_max: 0.30
+          step: 0.01
+          notes: "Trailing stop percentage."
+    P04:
+      module: "take_profit.py"
+      enabled: false
+      coefficients:
+        tp_pct:
+          value: 0.20
+          test_min: 0.05
+          test_max: 1.00
+          step: 0.05
+          notes: "Take-profit percentage."
+    P05:
+      module: "dynamic_partial_exit_model.py"
+      enabled: false
+      coefficients:
+        partial_exit_floor:
+          value: 0.25
+          test_min: 0.10
+          test_max: 0.75
+          step: 0.05
+          notes: "Minimum partial exit fraction."
+
+evaluator:
+  EVAL04:
+    module: "variant_performance_tracker.py"
+    enabled: true
+    coefficients:
+      min_trade_count:
+        value: 1
+        test_min: 1
+        test_max: 50
+        step: 1
+        notes: "Minimum trades before including a variant in ranking."
+  EVAL05:
+    module: "confidence_divergence_logger.py"
+    enabled: true
+    coefficients:
+      high_confidence_cutoff:
+        value: 0.75
+        test_min: 0.60
+        test_max: 0.90
+        step: 0.05
+        notes: "Threshold for high-confidence failure analysis."
+      medium_confidence_cutoff:
+        value: 0.50
+        test_min: 0.30
+        test_max: 0.75
+        step: 0.05
+        notes: "Threshold for medium-confidence failure analysis."
+  EVAL02:
+    module: "signal_conflict_detector.py"
+    enabled: true
+    coefficients:
+      conflict_score_cutoff:
+        value: 0.50
+        test_min: 0.20
+        test_max: 0.90
+        step: 0.05
+        notes: "Threshold for flagging a conflict."
+  EVAL03:
+    module: "macro_alignment_checker.py"
+    enabled: true
+    coefficients:
+      anomaly_pnl_sigma:
+        value: 2.0
+        test_min: 1.0
+        test_max: 5.0
+        step: 0.25
+        notes: "Sigma threshold for macro-alignment anomaly flagging."

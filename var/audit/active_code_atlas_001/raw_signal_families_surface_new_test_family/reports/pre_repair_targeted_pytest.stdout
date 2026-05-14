@@ -1,0 +1,81 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 2 items
+
+tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py . [ 50%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+_________ test_raw_signal_input_detaches_payload_from_caller_mutation __________
+
+    def test_raw_signal_input_detaches_payload_from_caller_mutation() -> None:
+        caller_payload = {
+            "imbalance": 0.42,
+            "nested": {"venue": "NASDAQ", "depth": [10, 12]},
+        }
+    
+        raw_signal = RawUpstreamSignalInput(
+            source_id="signal-feed-contract",
+            signal_family_id="market_depth_imbalance",
+            scope_id="sequence-gap006-upstream",
+            payload=caller_payload,
+        )
+    
+        caller_payload["imbalance"] = 0.99
+        caller_payload["nested"]["venue"] = "MUTATED"
+        caller_payload["nested"]["depth"].append(99)
+    
+>       assert raw_signal.payload == {
+            "imbalance": 0.42,
+            "nested": {"venue": "NASDAQ", "depth": [10, 12]},
+        }
+E       AssertionError: assert {'imbalance':...': 'MUTATED'}} == {'imbalance':...e': 'NASDAQ'}}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Differing items:
+E         {'nested': {'depth': [10, 12, 99], 'venue': 'MUTATED'}} != {'nested': {'depth': [10, 12], 'venue': 'NASDAQ'}}
+E         
+E         Full diff:
+E           {
+E               'imbalance': 0.42,
+E               'nested': {
+E                   'depth': [
+E                       10,
+E                       12,
+E         +             99,
+E                   ],
+E         -         'venue': 'NASDAQ',
+E         ?                   ^ ^ --
+E         +         'venue': 'MUTATED',
+E         ?                   ^^^ ^^
+E               },
+E           }
+
+tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py:37: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py::test_raw_signal_input_detaches_payload_from_caller_mutation - AssertionError: assert {'imbalance':...': 'MUTATED'}} == {'imbalance':...e': 'NASDAQ'}}
+  
+  Omitting 1 identical items, use -vv to show
+  Differing items:
+  {'nested': {'depth': [10, 12, 99], 'venue': 'MUTATED'}} != {'nested': {'depth': [10, 12], 'venue': 'NASDAQ'}}
+  
+  Full diff:
+    {
+        'imbalance': 0.42,
+        'nested': {
+            'depth': [
+                10,
+                12,
+  +             99,
+            ],
+  -         'venue': 'NASDAQ',
+  ?                   ^ ^ --
+  +         'venue': 'MUTATED',
+  ?                   ^^^ ^^
+        },
+    }
+========================= 1 failed, 1 passed in 1.08s ==========================

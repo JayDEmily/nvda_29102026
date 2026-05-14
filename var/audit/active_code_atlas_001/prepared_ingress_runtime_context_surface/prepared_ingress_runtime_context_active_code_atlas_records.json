@@ -1,0 +1,94 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_021_PREPARED_INGRESS_RUNTIME_CONTEXT_PREPARATION_SURFACE",
+  "created_utc": "2026-05-11T15:15:00Z",
+  "status": "read_adjudicated_existing_tier_a_family_bounded_source_repair",
+  "surface": "Prepared ingress and runtime context preparation",
+  "method": "Surface records were confirmed from files listed in the row 021 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates prepared runtime snapshot copy-boundary behaviour for the selected runtime-preparer path. It does not adjudicate all cognition ingress mapping, downstream runtime decisions, risk/capital authority, or full prepared-ingress implementation maturity.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-021-0001",
+      "title": "Prepared runtime snapshots detach nested caller payload before runtime context preparation",
+      "surface": "Prepared ingress and runtime context preparation",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0014",
+        "ACABC-0014"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_prepared_ingress_cluster_001"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 203,
+          "line_end": 218
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 531,
+          "line_end": 539
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 157,
+          "line_end": 157
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 5,
+          "line_end": 11
+        },
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 27,
+          "line_end": 62
+        },
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 237,
+          "line_end": 270
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+          "line_start": 170,
+          "line_end": 183
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 135,
+          "line_end": 160
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1246,
+          "line_end": 1262
+        }
+      ],
+      "adjudication_notes": [
+        "The existing Tier A prepared-runtime family was extended before source repair to prove caller-owned nested legacy payload containers cannot mutate a prepared runtime snapshot after preparation.",
+        "The pre-repair targeted test failed because prepare_runtime_snapshot used a shallow dict copy of caller payload input.",
+        "The bounded repair deep-copies the payload mapping before alignment, derivation, and PreparedRuntimeSnapshot construction."
+      ],
+      "non_claims": [
+        "Does not prove all prepared-ingress or cognition-ingress mappings.",
+        "Does not upgrade the whole 5.5 surface to implemented.",
+        "Does not authorise serial cognition decisions, risk decisions, capital decisions, direct persistence writes, dependency changes, or runtime trading behaviour."
+      ]
+    }
+  ]
+}

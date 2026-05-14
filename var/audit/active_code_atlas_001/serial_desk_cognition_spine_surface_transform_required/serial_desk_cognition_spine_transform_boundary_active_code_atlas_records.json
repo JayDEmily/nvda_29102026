@@ -1,0 +1,164 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_032_SERIAL_DESK_COGNITION_SPINE_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_surface_record_created",
+  "surface": "Serial desk-cognition spine",
+  "method": "Manual full-read adjudication with new Tier A transform-boundary family before bounded lifecycle-plan source repair.",
+  "limitation_statement": "This record covers row032 serial transform-boundary evidence only; it does not prove donor semantic parity or downstream surfaces.",
+  "surface_limitation": "Covers donor import/symbol exclusion and lifecycle-plan candidate-only boundary for selected serial files; does not close parallel risk, capital deployment, opening, exit/close, or live inventory.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-032-0001",
+      "title": "Serial transform boundary keeps lifecycle plan as candidate material rather than opening or capital payload",
+      "surface": "Serial desk-cognition spine",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_with_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0018",
+        "ACABC-0018"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_serial_desk_cognition_transform_required_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/01_NORMATIVE_CORE.md",
+          "line_start": 54,
+          "line_end": 70
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 237,
+          "line_end": 252
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 159,
+          "line_end": 159
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+          "queue_record_id": "ACATQ-0018",
+          "comparison_record_id": "ACABC-0018",
+          "execution_priority": 35,
+          "bridge_record_count": 109,
+          "required_action": "write_new_test_family_before_code"
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/cognition/serial/eligibility.py",
+          "line_start": 1,
+          "line_end": 22
+        },
+        {
+          "path": "src/nvda_desk/cognition/serial/options_flow.py",
+          "line_start": 1,
+          "line_end": 11
+        },
+        {
+          "path": "src/nvda_desk/cognition/serial/posture.py",
+          "line_start": 1,
+          "line_end": 23
+        },
+        {
+          "path": "src/nvda_desk/contracts/execution.py",
+          "line_start": 1,
+          "line_end": 36
+        },
+        {
+          "path": "src/nvda_desk/contracts/serial_spine.py",
+          "line_start": 1,
+          "line_end": 118
+        },
+        {
+          "path": "src/nvda_desk/domain/execution/candidate_expression.py",
+          "line_start": 1,
+          "line_end": 21
+        },
+        {
+          "path": "src/nvda_desk/domain/execution/lifecycle_plan.py",
+          "line_start": 1,
+          "line_end": 12
+        },
+        {
+          "path": "src/nvda_desk/services/execution_service.py",
+          "line_start": 1,
+          "line_end": 26
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 112
+        },
+        {
+          "path": "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+          "line_start": 1,
+          "line_end": 31
+        },
+        {
+          "path": "tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py",
+          "line_start": 1,
+          "line_end": 128
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 294,
+          "line_end": 312
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1047,
+          "line_end": 1068
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3144,
+          "line_end": 3152
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3307,
+          "line_end": 3312
+        }
+      ],
+      "bounded_source_repair_summary": "Added a new transform-boundary Tier A file before source repair. Pre-repair proof failed because lifecycle_plan emitted open_position inside serial candidate material. The bounded repair changed only src/nvda_desk/domain/execution/lifecycle_plan.py to emit candidate_ready/prepare_candidate_review instead of opening-position terminology.",
+      "proof_evidence": {
+        "pre_repair_targeted_pytest_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/reports/serial_transform_boundary_pre_repair.status",
+        "pre_repair_targeted_pytest_result": "1",
+        "pre_repair_targeted_pytest_summary": "1 failed, 2 passed",
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/reports/serial_transform_boundary_final.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "3 passed",
+        "new_proof_block_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/reports/serial_transform_boundary_proof_block_final.status",
+        "new_proof_block_result": "0",
+        "new_proof_block_summary": "3 passed",
+        "existing_serial_proof_block_status_path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/reports/serial_desk_cognition_spine_surface_after_row032.status",
+        "existing_serial_proof_block_result": "0",
+        "existing_serial_proof_block_summary": "25 passed"
+      },
+      "active_behaviour_summary": "Selected native serial files avoid donor cognition/execution imports and donor transform symbols. The serial lifecycle plan remains candidate material and no longer emits opening/capital payload terms before downstream authorities adjudicate them.",
+      "closed_boundaries_confirmed": [
+        "parallel risk remains downstream and independent",
+        "capital deployment remains closed",
+        "broker placement/live order execution remains closed",
+        "live inventory remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated Atlas slices not rebuilt",
+        "row033 parallel risk not opened in row032"
+      ]
+    }
+  ]
+}

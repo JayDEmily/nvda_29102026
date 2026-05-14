@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atlas_surface_slice.schema.json",
+  "title": "Atlas surface slice",
+  "type": "object",
+  "required": [
+    "slice_name",
+    "blueprint_surface",
+    "record_count",
+    "source_files",
+    "counts",
+    "records"
+  ],
+  "properties": {
+    "slice_name": {
+      "type": "string"
+    },
+    "blueprint_surface": {
+      "type": "string"
+    },
+    "record_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_files": {
+      "type": "object"
+    },
+    "counts": {
+      "type": "object"
+    },
+    "records": {
+      "type": "array"
+    }
+  }
+}

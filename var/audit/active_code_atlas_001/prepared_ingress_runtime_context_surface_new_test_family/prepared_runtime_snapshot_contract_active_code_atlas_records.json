@@ -1,0 +1,104 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_022_PREPARED_INGRESS_RUNTIME_CONTEXT_PREPARATION_SURFACE_NEW_TEST_FAMILY",
+  "created_utc": "2026-05-11T15:55:00Z",
+  "status": "read_adjudicated_new_tier_a_family_bounded_source_repair",
+  "surface": "Prepared ingress and runtime context preparation",
+  "method": "Surface records were confirmed from files listed in the row 022 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates the prepared runtime snapshot outbound mapping copy boundary for the selected runtime-preparer path. It does not adjudicate all cognition ingress mapping, downstream runtime decisions, risk/capital authority, or full prepared-ingress implementation maturity.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-022-0001",
+      "title": "Prepared runtime snapshot mapping exports detach nested prepared payload state",
+      "surface": "Prepared ingress and runtime context preparation",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0013",
+        "ACABC-0013"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_prepared_ingress_cluster_002"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 203,
+          "line_end": 218
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 531,
+          "line_end": 539
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 157,
+          "line_end": 157
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 5,
+          "line_end": 11
+        },
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 27,
+          "line_end": 62
+        },
+        {
+          "path": "src/nvda_desk/preparation/runtime_preparer.py",
+          "line_start": 237,
+          "line_end": 270
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py",
+          "line_start": 1,
+          "line_end": 20
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 577,
+          "line_end": 587
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1263,
+          "line_end": 1279
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3027,
+          "line_end": 3029
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3200,
+          "line_end": 3203
+        }
+      ],
+      "adjudication_notes": [
+        "A new Tier A prepared-runtime snapshot contract family was written before source repair to prove exported mapping views cannot mutate nested prepared payload state.",
+        "The pre-repair targeted test failed because PreparedRuntimeSnapshot.as_mapping returned a shallow dict copy.",
+        "The bounded repair changed as_mapping to return a deepcopy of the prepared payload."
+      ],
+      "non_claims": [
+        "Does not prove all prepared-ingress or cognition-ingress mappings.",
+        "Does not upgrade the whole 5.5 surface to implemented.",
+        "Does not authorise serial cognition decisions, risk decisions, capital decisions, direct persistence writes, dependency changes, or runtime trading behaviour."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "covered_by_command_or_owns_count": 95,
+  "covered_by_proof_block_command_count": 95,
+  "covered_by_proof_block_owns_count": 84,
+  "in_retained_registry_count": 92,
+  "not_in_proof_block_command": [],
+  "not_in_proof_block_command_or_owns": [],
+  "not_in_retained_registry": [
+    "tests/tier_a/config/test_coefficient_modifier_replay_surface.py",
+    "tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py",
+    "tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py"
+  ],
+  "proof_block_count": 17,
+  "tier_a_pytest_file_count": 95
+}

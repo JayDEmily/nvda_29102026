@@ -1,0 +1,26 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_active_code_atlas_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 31 items
+
+tests/tier_a/persistence/test_append_only_repository_surfaces.py ...     [  9%]
+tests/tier_a/persistence/test_capital_state_repository_surface.py ....   [ 22%]
+tests/tier_a/persistence/test_execution_records_repository_surface.py .. [ 29%]
+                                                                         [ 29%]
+tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py . [ 32%]
+...                                                                      [ 41%]
+tests/tier_a/persistence/test_persistence_session_boundary_surface.py .. [ 48%]
+.                                                                        [ 51%]
+tests/tier_a/persistence/test_position_repository_surface.py ....        [ 64%]
+tests/tier_a/persistence/test_receipt_ledger_surface.py ....             [ 77%]
+tests/tier_a/persistence/test_research_logs_owner_surface.py ..          [ 83%]
+tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py . [ 87%]
+.                                                                        [ 90%]
+tests/tier_a/review_runtime/test_review_repository_surface.py ...        [100%]
+
+============================== 31 passed in 1.20s ==============================
+proof_block_id=persistence_ledgers_receipts_surface
+command=python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py

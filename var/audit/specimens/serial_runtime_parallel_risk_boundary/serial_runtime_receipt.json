@@ -1,0 +1,676 @@
+{
+  "executed_stages": [
+    "temporal",
+    "regime",
+    "options_flow",
+    "posture",
+    "eligibility",
+    "execution"
+  ],
+  "missing_stages": [],
+  "stage_dependencies": {
+    "eligibility": [
+      "posture"
+    ],
+    "execution": [
+      "temporal",
+      "regime",
+      "options_flow",
+      "posture",
+      "eligibility"
+    ],
+    "options_flow": [],
+    "posture": [
+      "regime"
+    ],
+    "regime": [],
+    "temporal": []
+  },
+  "stage_local_handoff": {
+    "execution_post_modifier_pre_final_risk": {
+      "active_playbook_ids": [],
+      "final_risk_join": {
+        "ready": false
+      },
+      "lead_playbook_id": null,
+      "scaling_plan": [
+        "stand_down"
+      ]
+    },
+    "lineage_tags": []
+  },
+  "stage_order": [
+    "temporal",
+    "regime",
+    "options_flow",
+    "posture",
+    "eligibility",
+    "execution"
+  ],
+  "stage_outputs": {
+    "eligibility": {
+      "active_family_ids": [],
+      "active_setup_variant_ids": [],
+      "admissibility_surface": {
+        "no_trade_reasons": [],
+        "permission_state": "allow"
+      }
+    },
+    "execution": {
+      "active_playbook_ids": [],
+      "final_risk_join": {
+        "ready": false
+      },
+      "lead_playbook_id": null,
+      "scaling_plan": [
+        "stand_down"
+      ]
+    },
+    "options_flow": {
+      "gamma_state": "active",
+      "reasons": [
+        "next_dte_gt_front_dte",
+        "spot_price_present"
+      ],
+      "skew_state": "unknown",
+      "term_structure_state": "contango"
+    },
+    "posture": {
+      "hard_invariants": [],
+      "local_envelope": {
+        "active_modifier_ids": [],
+        "effective_coefficients": {
+          "hedge_required": {
+            "baseline_value": false,
+            "coefficient_id": "hedge_required",
+            "effective_value": false,
+            "modifier_inputs": [],
+            "owner_stage": "posture",
+            "runtime_mutable": true,
+            "surface_class": "mutable_runtime_surface",
+            "transform_family": "suppression_veto",
+            "workbook_ref": "Runtime_Surface_Drivers!B12:H12"
+          },
+          "max_risk_per_trade": {
+            "baseline_value": 0.35,
+            "coefficient_id": "max_risk_per_trade",
+            "effective_value": 0.35,
+            "modifier_inputs": [],
+            "owner_stage": "posture",
+            "runtime_mutable": true,
+            "surface_class": "mutable_runtime_surface",
+            "transform_family": "clamp",
+            "workbook_ref": "Runtime_Surface_Drivers!B10:H10"
+          },
+          "risk_vix_caution_threshold": {
+            "baseline_value": 24.0,
+            "coefficient_id": "risk_vix_caution_threshold",
+            "effective_value": 24.0,
+            "modifier_inputs": [],
+            "owner_stage": "posture",
+            "runtime_mutable": false,
+            "surface_class": "baseline_only_surface",
+            "transform_family": "baseline_only_so_far",
+            "workbook_ref": "Runtime_Surface_Drivers!B8:H8"
+          },
+          "risk_vix_hot_threshold": {
+            "baseline_value": 32.0,
+            "coefficient_id": "risk_vix_hot_threshold",
+            "effective_value": 32.0,
+            "modifier_inputs": [],
+            "owner_stage": "posture",
+            "runtime_mutable": false,
+            "surface_class": "baseline_only_surface",
+            "transform_family": "baseline_only_so_far",
+            "workbook_ref": "Runtime_Surface_Drivers!B9:H9"
+          }
+        },
+        "hedge_required": false,
+        "max_risk_per_trade": 0.35,
+        "resolved_surfaces": [
+          "risk_vix_caution_threshold",
+          "risk_vix_hot_threshold",
+          "max_risk_per_trade",
+          "hedge_required"
+        ],
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "vix_level": 20.0,
+        "volatility_regime": "normal"
+      },
+      "permission_state": "allow",
+      "reasons": [
+        "bounded_cross_asset_state"
+      ]
+    },
+    "regime": {
+      "cross_asset_pressure_score": 0.05,
+      "reasons": [
+        "bounded_cross_asset_state"
+      ],
+      "vix_level": 20.0,
+      "volatility_regime": "normal"
+    },
+    "temporal": {
+      "active_tags": [],
+      "captured_at_utc": null,
+      "next_event_time_utc": null,
+      "persisted_at_utc": null,
+      "session_state": "opening",
+      "source_channel": null,
+      "source_date": null,
+      "source_provider": null,
+      "source_time_kind": "timestamp",
+      "source_time_raw": null,
+      "source_time_utc": "2026-04-21T09:31:00Z",
+      "source_timezone_raw": null,
+      "time_granularity": "timestamp"
+    }
+  },
+  "stage_packet_ids": {
+    "eligibility": "dmp::serial::eligibility::20260421T093100Z",
+    "execution": "dmp::serial::execution::20260421T093100Z",
+    "options_flow": "dmp::serial::options_flow::20260421T093100Z",
+    "posture": "dmp::serial::posture::20260421T093100Z",
+    "regime": "dmp::serial::regime::20260421T093100Z",
+    "temporal": "dmp::serial::temporal::20260421T093100Z"
+  },
+  "stage_packets": {
+    "eligibility": {
+      "data": {
+        "active_family_ids": [],
+        "active_setup_variant_ids": [],
+        "admissibility_surface": {
+          "no_trade_reasons": [],
+          "permission_state": "allow"
+        }
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "PlaybookEligibilityOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "PlaybookEligibilityOutput",
+            "payload_model_name": "PlaybookEligibilityOutput",
+            "payload_module_path": "nvda_desk.contracts.eligibility"
+          },
+          "semantic_dependencies": [
+            "dmp::serial::posture::20260421T093100Z"
+          ]
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::eligibility::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [
+          "dmp::serial::posture::20260421T093100Z"
+        ],
+        "derivedfrom": "eligibility_from_posture",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [
+          "dmp::serial::posture::20260421T093100Z"
+        ],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "playbook_eligibility",
+        "module_id": "playbook_eligibility",
+        "module_instance_id": "playbook_eligibility::runtime",
+        "module_version": "native",
+        "stage_name": "eligibility"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:playbook_eligibility",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "active_families=none",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    },
+    "execution": {
+      "data": {
+        "active_playbook_ids": [],
+        "final_risk_join": {
+          "ready": false
+        },
+        "lead_playbook_id": null,
+        "scaling_plan": [
+          "stand_down"
+        ]
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "ExecutionExpressionOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "ExecutionExpressionOutput",
+            "payload_model_name": "ExecutionExpressionOutput",
+            "payload_module_path": "nvda_desk.contracts.execution"
+          },
+          "semantic_dependencies": [
+            "dmp::serial::temporal::20260421T093100Z",
+            "dmp::serial::regime::20260421T093100Z",
+            "dmp::serial::options_flow::20260421T093100Z",
+            "dmp::serial::posture::20260421T093100Z",
+            "dmp::serial::eligibility::20260421T093100Z"
+          ]
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::execution::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [
+          "dmp::serial::temporal::20260421T093100Z",
+          "dmp::serial::regime::20260421T093100Z",
+          "dmp::serial::options_flow::20260421T093100Z",
+          "dmp::serial::posture::20260421T093100Z",
+          "dmp::serial::eligibility::20260421T093100Z"
+        ],
+        "derivedfrom": "execution_from_temporal+regime+options_flow+posture+eligibility",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [
+          "dmp::serial::eligibility::20260421T093100Z"
+        ],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "expression_execution",
+        "module_id": "expression_execution",
+        "module_instance_id": "expression_execution::runtime",
+        "module_version": "native",
+        "stage_name": "execution"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:expression_execution",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "lead_playbook_id=none",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    },
+    "options_flow": {
+      "data": {
+        "gamma_state": "active",
+        "reasons": [
+          "next_dte_gt_front_dte",
+          "spot_price_present"
+        ],
+        "skew_state": "unknown",
+        "term_structure_state": "contango"
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "OptionsFlowContextOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "OptionsFlowContextOutput",
+            "payload_model_name": "OptionsFlowContextOutput",
+            "payload_module_path": "nvda_desk.contracts.options_flow"
+          },
+          "semantic_dependencies": []
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::options_flow::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [],
+        "derivedfrom": "options_flow_from_declared_stage_inputs",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [
+          "dmp::serial::regime::20260421T093100Z"
+        ],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "options_flow_context",
+        "module_id": "options_flow_context",
+        "module_instance_id": "options_flow_context::runtime",
+        "module_version": "native",
+        "stage_name": "options_flow"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:options_flow_context",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "term_structure_state=contango",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    },
+    "posture": {
+      "data": {
+        "hard_invariants": [],
+        "local_envelope": {
+          "active_modifier_ids": [],
+          "effective_coefficients": {
+            "hedge_required": {
+              "baseline_value": false,
+              "coefficient_id": "hedge_required",
+              "effective_value": false,
+              "modifier_inputs": [],
+              "owner_stage": "posture",
+              "runtime_mutable": true,
+              "surface_class": "mutable_runtime_surface",
+              "transform_family": "suppression_veto",
+              "workbook_ref": "Runtime_Surface_Drivers!B12:H12"
+            },
+            "max_risk_per_trade": {
+              "baseline_value": 0.35,
+              "coefficient_id": "max_risk_per_trade",
+              "effective_value": 0.35,
+              "modifier_inputs": [],
+              "owner_stage": "posture",
+              "runtime_mutable": true,
+              "surface_class": "mutable_runtime_surface",
+              "transform_family": "clamp",
+              "workbook_ref": "Runtime_Surface_Drivers!B10:H10"
+            },
+            "risk_vix_caution_threshold": {
+              "baseline_value": 24.0,
+              "coefficient_id": "risk_vix_caution_threshold",
+              "effective_value": 24.0,
+              "modifier_inputs": [],
+              "owner_stage": "posture",
+              "runtime_mutable": false,
+              "surface_class": "baseline_only_surface",
+              "transform_family": "baseline_only_so_far",
+              "workbook_ref": "Runtime_Surface_Drivers!B8:H8"
+            },
+            "risk_vix_hot_threshold": {
+              "baseline_value": 32.0,
+              "coefficient_id": "risk_vix_hot_threshold",
+              "effective_value": 32.0,
+              "modifier_inputs": [],
+              "owner_stage": "posture",
+              "runtime_mutable": false,
+              "surface_class": "baseline_only_surface",
+              "transform_family": "baseline_only_so_far",
+              "workbook_ref": "Runtime_Surface_Drivers!B9:H9"
+            }
+          },
+          "hedge_required": false,
+          "max_risk_per_trade": 0.35,
+          "resolved_surfaces": [
+            "risk_vix_caution_threshold",
+            "risk_vix_hot_threshold",
+            "max_risk_per_trade",
+            "hedge_required"
+          ],
+          "risk_vix_caution_threshold": 24.0,
+          "risk_vix_hot_threshold": 32.0,
+          "vix_level": 20.0,
+          "volatility_regime": "normal"
+        },
+        "permission_state": "allow",
+        "reasons": [
+          "bounded_cross_asset_state"
+        ]
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "PostureRiskOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "PostureRiskOutput",
+            "payload_model_name": "PostureRiskOutput",
+            "payload_module_path": "nvda_desk.contracts.posture"
+          },
+          "semantic_dependencies": [
+            "dmp::serial::regime::20260421T093100Z"
+          ]
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::posture::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [
+          "dmp::serial::regime::20260421T093100Z"
+        ],
+        "derivedfrom": "posture_from_regime",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [
+          "dmp::serial::options_flow::20260421T093100Z"
+        ],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "posture_risk_permission",
+        "module_id": "posture_risk_permission",
+        "module_instance_id": "posture_risk_permission::runtime",
+        "module_version": "native",
+        "stage_name": "posture"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:posture_risk_permission",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "permission_state=allow",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    },
+    "regime": {
+      "data": {
+        "cross_asset_pressure_score": 0.05,
+        "reasons": [
+          "bounded_cross_asset_state"
+        ],
+        "vix_level": 20.0,
+        "volatility_regime": "normal"
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "MarketRegimeContextOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "MarketRegimeContextOutput",
+            "payload_model_name": "MarketRegimeContextOutput",
+            "payload_module_path": "nvda_desk.contracts.regime"
+          },
+          "semantic_dependencies": []
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::regime::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [],
+        "derivedfrom": "regime_from_declared_stage_inputs",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [
+          "dmp::serial::temporal::20260421T093100Z"
+        ],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "market_regime_context",
+        "module_id": "market_regime_context",
+        "module_instance_id": "market_regime_context::runtime",
+        "module_version": "native",
+        "stage_name": "regime"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:market_regime_context",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "volatility_regime=normal",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    },
+    "temporal": {
+      "data": {
+        "active_tags": [],
+        "captured_at_utc": null,
+        "next_event_time_utc": null,
+        "persisted_at_utc": null,
+        "session_state": "opening",
+        "source_channel": null,
+        "source_date": null,
+        "source_provider": null,
+        "source_time_kind": "timestamp",
+        "source_time_raw": null,
+        "source_time_utc": "2026-04-21T09:31:00Z",
+        "source_timezone_raw": null,
+        "time_granularity": "timestamp"
+      },
+      "datacontenttype": "application/json",
+      "dataschema": "TemporalContextOutput",
+      "dmpextensions": {
+        "nvda": {
+          "schema_identifiers": {
+            "output_model_name": "TemporalContextOutput",
+            "payload_model_name": "TemporalContextOutput",
+            "payload_module_path": "nvda_desk.contracts.temporal"
+          },
+          "semantic_dependencies": []
+        }
+      },
+      "dmpversion": "3.0.0",
+      "id": "dmp::serial::temporal::20260421T093100Z",
+      "lineage": {
+        "decisiontraceid": null,
+        "dependencyids": [],
+        "derivedfrom": "temporal_from_declared_stage_inputs",
+        "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+        "parentids": [],
+        "replayref": null,
+        "replaytraceid": null,
+        "reviewtraceid": null,
+        "sourceartifactids": []
+      },
+      "packetrole": "stage_packet",
+      "producer": {
+        "behaviour_class": "stage_output",
+        "grammar_role": "temporal_context",
+        "module_id": "temporal_context",
+        "module_instance_id": "temporal_context::runtime",
+        "module_version": "native",
+        "stage_name": "temporal"
+      },
+      "runid": "run::serial_runtime::20260421T093100Z",
+      "scenarioid": "live",
+      "source": "urn:nvda:producer:temporal_context",
+      "specversion": "1.0",
+      "summary": {
+        "headline": "session_state=opening",
+        "humanstate": "valid",
+        "keyflags": []
+      },
+      "time": "2026-04-22T13:05:50.373599Z",
+      "traceid": "trace::serial_runtime::20260421T093100Z",
+      "type": "urn:nvda:packet:stage_packet",
+      "validation": {
+        "checks": [
+          {
+            "name": "schema_validation",
+            "passed": true
+          }
+        ],
+        "status": "valid",
+        "violations": []
+      }
+    }
+  }
+}

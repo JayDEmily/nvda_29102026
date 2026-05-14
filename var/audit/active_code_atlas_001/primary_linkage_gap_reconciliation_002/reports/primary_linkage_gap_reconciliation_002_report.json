@@ -1,0 +1,25 @@
+{
+  "error_count": 0,
+  "errors": [],
+  "limitation_statement": "Post-row044 linkage-gap reconciliation is audit evidence only. It classifies the bounded residual primary-to-Bridge queue/comparison gaps from the bounded evidence packet; it does not mutate primary active-code Atlas records, source, tests, Atlas/Bridge inputs, vocabulary, dependencies, or generated slices.",
+  "output_path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/primary_linkage_gap_reconciliation_002.json",
+  "summary": {
+    "comparison_reconciliation_status_counts": {
+      "nonqueue_confirm_only_gap_retained_no_execution_row": 1,
+      "reconciled_by_primary_satisfaction_record_links": 4
+    },
+    "input_comparison_gap_count": 5,
+    "input_queue_gap_count": 3,
+    "next_target": "no_unresolved_execution_queue_gap_in_bounded_post_row044_packet",
+    "queue_reconciliation_status_counts": {
+      "reconciled_via_comparison_group_satisfaction_links": 3
+    },
+    "unresolved_comparison_gap_count": 0,
+    "unresolved_comparison_gap_ids": [],
+    "unresolved_execution_queue_gap_count": 0,
+    "unresolved_execution_queue_gap_ids": []
+  },
+  "validation_status": "PASS",
+  "warning_count": 0,
+  "warnings": []
+}

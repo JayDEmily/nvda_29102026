@@ -1,0 +1,165 @@
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_035_LIVE_POSITION_INVENTORY_ARCHITECTURE_SURFACE",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "read_adjudicated_surface_record_created",
+  "surface": "Live position and inventory architecture",
+  "method": "Manual full-read adjudication with existing Tier A family extension before bounded live-inventory contract source repair.",
+  "limitation_statement": "This record covers row035 live position/inventory existing-family evidence only; it does not prove row036 new-family or row037 transform closure.",
+  "surface_limitation": "Covers live inventory contract nested payload/model detachment and existing proof block only.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-035-0001",
+      "title": "Live inventory contracts detach nested caller-owned position and capital payload state",
+      "surface": "Live position and inventory architecture",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_with_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0034",
+        "ACABC-0034"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_live_inventory_partially_satisfied_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/01_NORMATIVE_CORE.md",
+          "line_start": 72,
+          "line_end": 87
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 339,
+          "line_end": 354
+        },
+        {
+          "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+          "line_start": 165,
+          "line_end": 165
+        }
+      ],
+      "navigation_evidence": [
+        {
+          "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+          "queue_record_id": "ACATQ-0034",
+          "comparison_record_id": "ACABC-0034",
+          "execution_priority": 41,
+          "bridge_record_count": 14,
+          "required_action": "extend_existing_test_family_before_code"
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/downstream.py",
+          "line_start": 1,
+          "line_end": 153
+        },
+        {
+          "path": "src/nvda_desk/downstream/live_inventory.py",
+          "line_start": 1,
+          "line_end": 155
+        },
+        {
+          "path": "src/nvda_desk/domain/downstream/live_inventory.py",
+          "line_start": 1,
+          "line_end": 13
+        },
+        {
+          "path": "src/nvda_desk/downstream/state_reader.py",
+          "line_start": 1,
+          "line_end": 17
+        },
+        {
+          "path": "src/nvda_desk/repositories/position_repository.py",
+          "line_start": 1,
+          "line_end": 51
+        },
+        {
+          "path": "src/nvda_desk/repositories/capital_state_repository.py",
+          "line_start": 1,
+          "line_end": 51
+        },
+        {
+          "path": "src/nvda_desk/persistence/receipt_ledger.py",
+          "line_start": 1,
+          "line_end": 64
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/downstream_runtime/test_downstream_contract_models.py",
+          "line_start": 1,
+          "line_end": 125
+        },
+        {
+          "path": "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+          "line_start": 1,
+          "line_end": 159
+        },
+        {
+          "path": "tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py",
+          "line_start": 1,
+          "line_end": 42
+        },
+        {
+          "path": "tests/tier_a/persistence/test_position_repository_surface.py",
+          "line_start": 1,
+          "line_end": 69
+        },
+        {
+          "path": "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+          "line_start": 1,
+          "line_end": 68
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 368,
+          "line_end": 388
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1612,
+          "line_end": 1628
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 1646,
+          "line_end": 1662
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3213,
+          "line_end": 3222
+        }
+      ],
+      "bounded_source_repair_summary": "Extended the existing downstream contract Tier A family before source repair. Pre-repair proof failed because DownstreamLiveInventorySnapshot retained nested caller-owned LivePositionState and LiveCapitalState payloads. The bounded repair adds a deepcopy field validator for live-inventory contract carriers only.",
+      "proof_evidence": {
+        "pre_repair_targeted_pytest_status_path": "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface/reports/downstream_contract_models_pre_repair.status",
+        "pre_repair_targeted_pytest_result": "1",
+        "pre_repair_targeted_pytest_summary": "1 failed, 4 passed",
+        "targeted_pytest_status_path": "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface/reports/downstream_contract_models_final.status",
+        "targeted_pytest_result": "0",
+        "targeted_pytest_summary": "5 passed",
+        "proof_block_status_path": "var/audit/active_code_atlas_001/live_position_inventory_architecture_surface/reports/live_position_inventory_architecture_surface_final.status",
+        "proof_block_result": "0",
+        "proof_block_summary": "23 passed"
+      },
+      "active_behaviour_summary": "Live inventory contract carriers now detach nested caller-owned position/capital payload state before later caller mutation can smuggle stale or downstream authority into inventory snapshots.",
+      "closed_boundaries_confirmed": [
+        "capital deployment remains separate",
+        "broker/opening remains closed",
+        "exit/close remains closed",
+        "original Atlas/Bridge JSON not mutated",
+        "generated Atlas slices not rebuilt",
+        "row036 new-family live-inventory work not opened in row035"
+      ]
+    }
+  ]
+}

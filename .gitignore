@@ -1,0 +1,12 @@
+# Placeholder blueprint repo
+.venv/
+__pycache__/
+*.pyc
+tmp/
+
+
+# AI patch bridge runtime state
+.ai_patch_bridge/
+
+# Codex local runtime state
+.codex

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Testing Governance Reconciliation Tranche Ledger",
+  "type": "object",
+  "required": [
+    "ledger_id",
+    "status",
+    "promotion_ready",
+    "parent_brief",
+    "leaves",
+    "verification"
+  ],
+  "properties": {
+    "ledger_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "promotion_ready": {
+      "type": "boolean"
+    },
+    "parent_brief": {
+      "type": "object"
+    },
+    "leaves": {
+      "type": "array"
+    },
+    "verification": {
+      "type": "object"
+    }
+  }
+}

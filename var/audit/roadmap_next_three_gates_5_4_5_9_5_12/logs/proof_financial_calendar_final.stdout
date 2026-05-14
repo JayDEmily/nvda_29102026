@@ -1,0 +1,17 @@
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3.13 scripts/run_proof_block.py --block financial_event_calendar_authority_surface
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_2_work/repo
+configfile: pyproject.toml
+collected 9 items
+
+tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py . [ 11%]
+...                                                                      [ 44%]
+tests/tier_a/calendar_operational/test_calendar_operational_surface.py . [ 55%]
+.                                                                        [ 66%]
+tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py . [ 77%]
+..                                                                       [100%]
+
+============================== 9 passed in 0.20s ===============================
+proof_block_id=financial_event_calendar_authority_surface
+command=python -m pytest tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py tests/tier_a/calendar_operational/test_calendar_operational_surface.py tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py

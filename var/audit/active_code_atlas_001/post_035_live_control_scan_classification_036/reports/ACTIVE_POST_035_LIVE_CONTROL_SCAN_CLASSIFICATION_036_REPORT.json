@@ -1,0 +1,1177 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036",
+  "status": "PASS",
+  "scope": "classify_scoped_post_035_live_control_scan",
+  "scan_target_count": 3,
+  "scan_hit_count": 263,
+  "classification_counts": {
+    "continuation_stop_terms": 136,
+    "closed_boundary_terms": 69,
+    "dependency_history_terms": 118,
+    "current_035_036_terms": 27
+  },
+  "new_live_control_defect_selected": false,
+  "decision": "No new live control defect was selected. Remaining hits are expected current continuation-law wording, current closed-boundary wording, retained dependency-order/history wording, historical pause/stop examples, or current 035/036 repair evidence.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "scan_hits": [
+    {
+      "path": "AGENTS.md",
+      "line": 9,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Any `PLANS.md`, `ROADMAP_LEDGER.md`, worker brief, Codex plan, subtree instruction, or external handoff must comply with this file."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 13,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "## 1A. User-directed continuation law"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 15,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "For any user-authorised long-running repo, document, sandbox, audit, or project execution task, work must continue until context/token exhaustion unless the current user instruction explicitly states a different stopping condition."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 17,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Passing gates, successful proofs, commits, packages, bounded-leaf completion, queue exhaustion inside one audit packet, or ordinary next-leaf selection are not reasons to stop. They are continuation points."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 19,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "If a selected bounded leaf exhausts, select the next lawful bounded leaf inside the active authority. If no substantive mutation leaf is open, continue with lawful control, audit, evidence, manifest, receipt, handoff, or ledger hardening rather than stopping."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 21,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Durability checkpoints are evidence-preservation artefacts, not recursive work generators. After a package is created and smoke-tested, record or cite its proof when useful, then continue to the next distinct lawful control/audit/evidence/manifest/receipt/ledg"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 23,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "This rule supersedes lower-priority `PLANS.md`, `ROADMAP_LEDGER.md`, receipt, package, or closeout wording that treats an ordinary successful checkpoint or exhausted bounded leaf as a user-facing stop condition during a user-authorised long run."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 78,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "`PROJECT_EXECUTION_METHOD.md`, if present, is setup guidance for creating or repairing `PLANS.md` / `EXEC_PLAN.md`. It is not active stop-condition authority once live `AGENTS.md`, `PLANS.md`, and `ROADMAP_LEDGER.md` exist, unless the user explicitly reopens i"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 120,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Search, grep, AST extraction, generated inventories, summaries, and prior chat memory may assist discovery. They cannot satisfy the full-read requirement. If full sequential reading cannot be proven for a selected leaf, record that leaf as blocked with exact u"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 144,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- downloaded handoff tarballs unless explicitly requested"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 170,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "9. Record receipts, ledger state, commit/patch/package evidence."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 171,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "10. Continue to the next lawful ledger target."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 192,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Every execution pass must update `ROADMAP_LEDGER.md` before stopping, packaging, committing, or handing off."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 200,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "For long-running repo, document, sandbox, audit, or project execution tasks: do not stop merely because a gate passed, proof passed, package was created, commit was made, patch was prepared, or the next tranche was selected."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 202,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "A passing checkpoint is a continuation point, not a response point."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 204,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Within the authorised scope, continue selecting and executing the next lawful bounded leaf yourself, preserving the required order:"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 213,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "8. Commit/package when useful."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 214,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "9. Continue to the next lawful leaf if no real stop condition exists."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 216,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Soft stop points are not user-facing stop conditions. These include:"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 223,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- a package being created;"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 230,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms"
+      ],
+      "text": "For a user-authorised long run where the current user instruction says to continue until token exhaustion, missing material, contradictory lower authority, proof/test failure, or a closed mutation boundary is a **bounded-leaf blocker**, not a user-facing stop "
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 232,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Stop and report only when the current user instruction explicitly asks for a stop/report/handoff/package, or when tool/runtime/context/token exhaustion prevents further lawful progress in the current response."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 234,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "If stopping, the closeout must name the exact real stop condition. Do not present a soft milestone, ordinary next-leaf selection, successful internal batch, package creation, proof pass, exhausted bounded leaf, missing material for one leaf, or a closed mutati"
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 246,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "Dependency changes are closed unless explicitly authorised."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 283,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "A closeout is required only when a real stop condition occurs under section 1A or when the current user instruction explicitly asks for a report, stop, handoff, package, or closeout."
+    },
+    {
+      "path": "AGENTS.md",
+      "line": 294,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- package path/hash if created;"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 3,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms",
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "Status: **live root operating plan; `ACTIVE_CODE_ATLAS_STRUCTURAL_INVENTORY_001` accepted only as static scaffold/triage; vocabulary-governance, testing/proof/checkpoint, persistence/ledgers/receipts, DMPV3 packet carriage rows 007-009, external source/API ing"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 5,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms",
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "Current controlling workstream: `ACTIVE_CODE_ATLAS_STRUCTURAL_INVENTORY_001` \u2192 surface-by-surface read adjudication with mandatory `FULL_READ_MANIFEST`; primary active-code Atlas synthesis target `ACTIVE_CODE_ATLAS_PRIMARY_SYNTHESIS_001_PENDING_QUEUE_EXHAUSTIO"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 53,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "1. `5.18 Vocabulary governance interface` \u2014 already accepted as a bounded read-adjudicated pass; foundational language, alias, and term control."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 54,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "2. `5.17 Testing, proof, and checkpoint surfaces` \u2014 already accepted/repaired as bounded proof infrastructure."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 55,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "3. `5.16 Persistence, ledgers, and receipts` \u2014 rows 1-3 already read-adjudicated in the current ledger."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 56,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "4. `5.6 DMPV3 packet carriage` \u2014 rows 007-009 read-adjudicated with bounded extension-merge repairs and transform-boundary proof."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 57,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "5. `5.1 External source interfaces and API ingress` \u2014 rows 010-012 read-adjudicated."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 58,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "6. `5.2 Raw capture and source temporal law` \u2014 rows 013-015 read-adjudicated with bounded source-temporal proof and transform-boundary evidence."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 59,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "7. `5.3 Raw signal families` \u2014 rows 016-018 read-adjudicated with bounded recursive trace-authority stripping, carrier copy-boundary repair, support-spine proof-command/fixture fallout repair, and retained Tier A raw-signal copy-boundary and transform-boundary"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 60,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "8. `5.4 Financial and event calendar architecture` \u2014 rows 019-020 read-adjudicated with bounded nested manifest-authority rejection, clean-bundle proof-command repair, and transform-boundary proof."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 61,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "9. `5.5 Prepared ingress and runtime context preparation` \u2014 rows 021-023 read-adjudicated with bounded copy-boundary repairs and transform-boundary proof."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 62,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "10. `5.15 Review and explanation layer` \u2014 rows 024-026 read-adjudicated."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 63,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "11. `5.9 Dynamic coefficient and modifier authority` \u2014 rows 027-029 read-adjudicated."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 64,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "12. `5.10 Playbook library architecture` \u2014 rows 030 and 044 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 65,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "13. `5.7 Serial desk-cognition spine` \u2014 rows 031-032 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 66,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "14. `5.8 Parallel risk lane` \u2014 rows 033-034 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 67,
+      "classifications": [
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "15. `5.13 Live position and inventory architecture` \u2014 rows 035-037 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 68,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "16. `5.11 Downstream capital deployment authority` \u2014 rows 038-039 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 69,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "17. `5.12 Opening architecture and placement readiness` \u2014 rows 040-042 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 70,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "18. `5.14 Exit and close architecture` \u2014 row 043 read-adjudicated"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 72,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Do not restart vocabulary, proof/checkpoint, or persistence rows merely because their blueprint numbers appear later or earlier. Reopen an accepted surface only for a concrete defect recorded against its receipts, ledger rows, proof evidence, or manifest evide"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 252,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "| `external_dependencies` | `external_dependencies` | Imports, package dependencies, files, clocks, network/API/broker surfaces, environment variables. |"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 336,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Search, grep, AST extraction, generated inventories, summaries, and prior chat memory may assist discovery but cannot satisfy the full-read requirement. If full sequential reading cannot be proven for a selected leaf, the worker must record that leaf as blocke"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 348,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "## 8. Git and checkpoint rules"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 357,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "6. A commit is a checkpoint, not proof that the active-code Atlas exists."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 358,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "7. Before packaging or external handoff, record branch name, commit hash, status, changed files, validation command output, artefact paths, and hashes."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 364,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Passing a gate, proof block, targeted test, validation command, commit, package, or ledger update is a continuation point, not a user-facing stop point. A worker must continue to the next lawful target while current user authority and the live ledger still aut"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 366,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Do not pause at ordinary gate boundaries merely to ask whether to proceed. During a user-authorised long run whose current instruction says to continue until tokens are exhausted, continue through the surface-by-surface workflow until context/token exhaustion,"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 368,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Durability checkpoints and package smoke tests preserve work; they do not create an automatic recursive obligation to index/package the immediately previous package again. After recording useful checkpoint proof, continue to the next distinct lawful control/au"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 372,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "The following are bounded-leaf blockers, not user-facing stop conditions while other lawful control/audit work remains available:"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 377,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "4. the next attempted step would mutate a closed surface, including runtime trading behaviour, financial/risk authority, dependency files, original Atlas/Bridge JSON, generated Atlas slices, vocabulary data/admissions, or unapproved refactor work;"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 380,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "For each bounded-leaf blocker, record the blocker in the relevant receipt/ledger, mark affected claims `Unknown` or `blocked`, and select the next lawful control, audit, evidence, manifest, receipt, ledger, or planning-hardening leaf inside current authority. "
+    },
+    {
+      "path": "PLANS.md",
+      "line": 395,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- patch/commit/package evidence is produced."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 518,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "- implementation/refactor remains closed."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 562,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "| 2026-05-11 | Gate 5 | Prepared the later three-way comparison method and statuses; refactor and test implementation remain closed. | `var/audit/active_code_atlas_001/ACTIVE_CODE_ATLAS_001_THREE_WAY_COMPARISON_PLAN.md`; `var/audit/active_code_atlas_001/receip"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 565,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-12 | Primary active-code Atlas synthesis | Synthesised the primary active-code Atlas from 43 read-adjudicated surface-record files: 64 records across all 18 governed surfaces; no source/test/runtime mutation. | `var/audit/active_code_atlas_001/primar"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 572,
+      "classifications": [
+        "current_035_036_terms"
+      ],
+      "text": "| 2026-05-12 | Bounded post-row044 linkage-gap reconciliation | Read bounded packet in full; generated bounded-packet reconciliation report `PASS`; reconciled queue rows `ACATQ-0044`, `ACATQ-0045`, `ACATQ-0046`; retained `ACABC-0035` as nonqueue confirm-only g"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 573,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-12 | Primary-record audit-link normalisation | Added explicit ACABC/ACATQ audit links to 8 read-adjudicated vocabulary-governance primary records from bounded post-row044 reconciliation evidence; regenerated primary synthesis and primary-to-Bridge co"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 574,
+      "classifications": [
+        "current_035_036_terms"
+      ],
+      "text": "| 2026-05-12 | Primary queue-exhaustion control rollup | Recorded post-normalisation audit queue state: current comparison queue gap IDs `[]`; comparison-only gap IDs `['ACABC-0035']`; reconciliation overlay unresolved execution queue gap count `0`; reconcilia"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 581,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "| 2026-05-12 | Source/test explicit-hold alignment 033 | Tightened the current pointer and hard-boundaries table so source and test implementation changes remain closed unless current live authority explicitly opens the exact boundary; test-first ordering is n"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 582,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms"
+      ],
+      "text": "| 2026-05-12 | Post-033 boundary scan classification 034 | Classified scoped post-033 boundary scan hits after source/test explicit-hold alignment. Hits were expected current closed-boundary wording, historical runway wording, continuation-law wording, or hist"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 583,
+      "classifications": [
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| 2026-05-12 | ROADMAP_LEDGER line 078 opening dependency entry repair 035 | Repaired the dependency-order entry for `5.12 Opening architecture and placement readiness` so rows 040-042 are retained dependency-order history/read-adjudicated evidence only, not t"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 584,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms",
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| 2026-05-13 | Post-035 live-control scan classification 036 | Classified scoped post-035 live-control scan hits after the ROADMAP_LEDGER line 078 repair. Hits were expected current continuation-law wording, current closed-boundary wording, retained dependency"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 586,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | Vocabulary governance surface | Read-adjudicated the first surface slice from cited vocabulary-governance normative/source/test evidence; wrote 10 surface records; added one Tier A candidate-review CLI immutability test before source; vocabulary"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 587,
+      "classifications": [
+        "continuation_stop_terms",
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | Testing/proof/checkpoint surface row 1 | Read-adjudicated the first testing/proof/checkpoint queue row from cited proof/checkpoint/harness source and test evidence; wrote 5 surface records; added one Tier B proof-executor check-all non-execution"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 588,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "| 2026-05-11 | Testing/proof/checkpoint surface row 2 | Addressed the same-surface transform-required row by adding a new retained Tier B checkpoint receipt proof family before source; added proof block and retained-test registry entry; checkpoint proof block "
+    },
+    {
+      "path": "PLANS.md",
+      "line": 590,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | Persistence/ledgers/receipts surface row 1 | Read-adjudicated the current persistence/ledger/receipt queue row from cited normative/source/test evidence; wrote 6 surface records; extended the existing Tier A append-only repository test family be"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 591,
+      "classifications": [
+        "continuation_stop_terms",
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | Persistence/ledgers/receipts surface row 2 | Read-adjudicated the new-test-family persistence/ledger/receipt queue row from cited normative/source/test evidence; wrote 2 surface records; added retained Tier A `persistence_session_boundary_surfac"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 592,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | Persistence/ledgers/receipts surface row 3 | Read-adjudicated the transform-required persistence/ledger/receipt queue row; wrote 1 surface record; added retained Tier A `module_registry_repository_surface` before source; the new test initially f"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 594,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_007_DMPV3_PACKET_CARRIAGE_SURFACE` | DMPV3 packet carriage extend-existing row and canonical schema-identifier extension guard | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_007_DMPV3_PACKET_CARRIAGE_SURFACE` \u2192"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 596,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_009_DMPV3_PACKET_CARRIAGE_SURFACE_TRANSFORM_REQUIRED` | DMPV3 packet carriage transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_009_DMPV3_PACKET_CARRIAGE_SURFACE_TRANSFORM_REQUIRED"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 597,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_010_EXTERNAL_SOURCE_API_INGRESS_SURFACE` | External source/API ingress extend-existing boundary family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_010_EXTERNAL_SOURCE_API_INGRESS_SURFACE` \u2192 `ACTIVE_CODE_ATLA"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 598,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_011_EXTERNAL_SOURCE_API_INGRESS_SURFACE_NEW_TEST_FAMILY` | External source/API ingress new Tier A contract-boundary family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_011_EXTERNAL_SOURCE_API_INGRESS_SURFACE_"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 599,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_012_EXTERNAL_SOURCE_API_INGRESS_SURFACE_TRANSFORM_REQUIRED` | External source/API ingress transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_012_EXTERNAL_SOURCE_API_INGRESS_SURFACE_"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 600,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_013_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE` | Raw capture/source temporal law extend-existing Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_013_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE` \u2192 `ACTIVE"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 601,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_014_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_NEW_TEST_FAMILY` | Raw capture/source temporal law new Tier A source-temporal contract family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_014_RAW_CAPTURE_SOURCE_TE"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 602,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_TRANSFORM_REQUIRED` | Raw capture/source temporal law transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_015_RAW_CAPTURE_SOURCE_TEMPORAL_"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 603,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE` | Raw signal families existing Tier A family extension | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_016_RAW_SIGNAL_FAMILIES_SURFACE` \u2192 `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 604,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_017_RAW_SIGNAL_FAMILIES_SURFACE_NEW_TEST_FAMILY` | Raw signal families new Tier A copy-boundary family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_017_RAW_SIGNAL_FAMILIES_SURFACE_NEW_TEST_FAMILY` \u2192 `ACTIVE_C"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 605,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_018_RAW_SIGNAL_FAMILIES_SURFACE_TRANSFORM_REQUIRED` | Raw signal families transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_018_RAW_SIGNAL_FAMILIES_SURFACE_TRANSFORM_REQUIRED` \u2192 `A"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 606,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_019_FINANCIAL_EVENT_CALENDAR_ARCHITECTURE_SURFACE` | Financial/event calendar existing Tier A family extension | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_019_FINANCIAL_EVENT_CALENDAR_ARCHITECTURE_SURFACE` \u2192"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 607,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_020_FINANCIAL_EVENT_CALENDAR_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED` | Financial/event calendar transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_020_FINANCIAL_EVENT_CALENDAR_ARCH"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 608,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_021_PREPARED_INGRESS_RUNTIME_CONTEXT_PREPARATION_SURFACE` | Prepared ingress/runtime context existing Tier A family extension | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_021_PREPARED_INGRESS_RUNTIME_CONTEXT_"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 609,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_022_PREPARED_INGRESS_RUNTIME_CONTEXT_PREPARATION_SURFACE_NEW_TEST_FAMILY` | Prepared ingress/runtime context new Tier A snapshot-contract family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_022_PREPARED_INGRE"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 610,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_023_PREPARED_INGRESS_RUNTIME_CONTEXT_PREPARATION_SURFACE_TRANSFORM_REQUIRED` | Prepared ingress/runtime context transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_023_PREPARED_INGRE"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 611,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE` | Review/explanation existing Tier A family extension | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE` \u2192 `ACTIVE_CODE_ATLAS_TEST_FIRST_E"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 612,
+      "classifications": [
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY` | Review/explanation new Tier A authority-boundary family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMIL"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 613,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED` | Review/explanation transform-boundary Tier A family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUI"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 614,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE` | Dynamic coefficient/modifier existing Tier A family extension | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURF"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 615,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "| 2026-05-11 | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_028_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_NEW_TEST_FAMILY` | Dynamic coefficient/modifier new Tier A modifier-contract authority-boundary family | `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_028_DYNAM"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 621,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- The uploaded package contains 1,716 Atlas/Bridge records, not 1,719."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 647,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "No VENV, `black`, `ruff`, governed pytest/proof-block execution, runtime import, source implementation change, test implementation change, dependency change, vocabulary mutation, original Atlas/Bridge mutation, generated Atlas slice rebuild, or refactor was op"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 653,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "If a selected leaf is blocked by uncertainty about a platform, SDK, API, cloud service, dependency, CI behaviour, test-framework behaviour, or vendor-specific behaviour, do not choose a direction until authoritative documentation has been checked. During a use"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 659,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Do not use this section as permission to stop. A closeout/report is required only when `AGENTS.md` section 1A permits a real stop, or when the current user instruction explicitly asks for a report, stop, handoff, package, or closeout."
+    },
+    {
+      "path": "PLANS.md",
+      "line": 663,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- exact real stop condition, explicit user-requested report boundary, or context/tool/token exhaustion condition;"
+    },
+    {
+      "path": "PLANS.md",
+      "line": 671,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "- package path/hash if created;"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 35,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "6. Update this ledger before any package, handoff, commit, or stop."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 36,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "7. Continue to the next lawful row while authorised scope remains."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 38,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Passing gates, proof, commits, packages, or target selection are continuation points, not stop points."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 48,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "3. `5.5 Prepared ingress and runtime context preparation` \u2014 deterministic prepared substrate and checkpoint handoff surfaces."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 52,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "Current execution must obey the live current pointer and hard boundaries below: runtime trading behaviour, financial/capital/risk decision policy, dependency files, external network/API clients, original Atlas/Bridge JSON, generated Atlas slices, historical re"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 54,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "The user-directed continuation law in `AGENTS.md` controls long-running execution: work continues until context/token exhaustion unless the current user instruction explicitly states a different stopping condition. A passing leaf, proof, commit, package, row u"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 63,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "2. `5.17 Testing, proof, and checkpoint surfaces` \u2014 accepted/repaired bounded proof infrastructure; do not restart without concrete defect."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 64,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "3. `5.16 Persistence, ledgers, and receipts` \u2014 accepted/read-adjudicated rows 004-006 in this ledger; do not rewind without concrete defect."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 65,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "4. `5.6 DMPV3 packet carriage` \u2014 rows 007-009 read-adjudicated with bounded extension-merge repairs and transform-boundary proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 66,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "5. `5.1 External source interfaces and API ingress` \u2014 rows 010-012 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 67,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "6. `5.2 Raw capture and source temporal law` \u2014 rows 013-015 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 68,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "7. `5.3 Raw signal families` \u2014 rows 016-018 read-adjudicated with bounded recursive trace-authority stripping, carrier copy-boundary repair, support-spine proof-command/fixture fallout repair, and retained Tier A raw-signal copy-boundary and transform-boundary"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 69,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "8. `5.4 Financial and event calendar architecture` \u2014 rows 019-020 read-adjudicated with bounded nested manifest-authority rejection, clean-bundle proof-command repair, and transform-boundary proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 70,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "9. `5.5 Prepared ingress and runtime context preparation` \u2014 rows 021-023 read-adjudicated with bounded copy-boundary repairs and transform-boundary proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 71,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "10. `5.15 Review and explanation layer` \u2014 rows 024-026 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 72,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "11. `5.9 Dynamic coefficient and modifier authority` \u2014 rows 027-029 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 73,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "12. `5.10 Playbook library architecture` \u2014 rows 030 and residual row 044 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 74,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "13. `5.7 Serial desk-cognition spine` \u2014 rows 031-032 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 75,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "14. `5.8 Parallel risk lane` \u2014 rows 033-034 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 76,
+      "classifications": [
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "15. `5.13 Live position and inventory architecture` \u2014 rows 035-037 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 77,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "16. `5.11 Downstream capital deployment authority` \u2014 rows 038-039 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 78,
+      "classifications": [
+        "closed_boundary_terms",
+        "dependency_history_terms"
+      ],
+      "text": "17. `5.12 Opening architecture and placement readiness` \u2014 rows 040-042 are retained dependency-order history/read-adjudicated row evidence only. This entry is not the current live target and does not reopen opening, placement-readiness, source, test, runtime, "
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 79,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "18. `5.14 Exit and close architecture` \u2014 row 043 read-adjudicated."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 80,
+      "classifications": [
+        "dependency_history_terms"
+      ],
+      "text": "19. `Post-row044 primary linkage-gap reconciliation` \u2014 recorded audit linkage reconciliation target. It is not a new architecture surface and not a restart of row 030. Do not infer the current live target from this dependency-order history entry; use the `Curr"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 92,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms",
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| Current phase | `ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_RECORDED`; scoped post-035 live-control scan classified current continuation-law wording, current closed-boundary wording, retained dependency-order/history wording, historical pause/stop "
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 93,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms",
+        "dependency_history_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| Selector | Current user instruction authorised continuation until tokens are exhausted. Historical rows, receipts, and package notes that mention pauses, exhausted authorised scope, fresh authority required, or broader stop conditions are historical evidence"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 94,
+      "classifications": [
+        "current_035_036_terms"
+      ],
+      "text": "| Current target tranche | `ACTIVE_POST_035_LIVE_CONTROL_SCAN_CLASSIFICATION_036_RECORDED` |"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 95,
+      "classifications": [
+        "current_035_036_terms"
+      ],
+      "text": "| Current target architecture row | `post-035 live-control scan classification; no runtime/source/test/refactor boundary opened`. |"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 96,
+      "classifications": [
+        "continuation_stop_terms",
+        "current_035_036_terms"
+      ],
+      "text": "| Reason | User instruction requires continuation past the 035 repair. The next lawful control/audit leaf classified scoped post-035 live-control scan hits and selected no new live control defect. |"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 97,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms"
+      ],
+      "text": "| Next supporting tranche | Continue the next lawful control/audit/evidence/manifest/receipt/ledger hardening leaf under `AGENTS.md` section 1A until context/token exhaustion or an explicit user stop instruction. If a selected leaf is blocked by stale historic"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 98,
+      "classifications": [
+        "closed_boundary_terms"
+      ],
+      "text": "| Explicit hold | Runtime trading behaviour, source implementation changes of any kind, test implementation changes of any kind, dependency changes, original Atlas/Bridge JSON mutation, generated Atlas slice rebuild, vocabulary data mutation/admission, and ref"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 99,
+      "classifications": [
+        "continuation_stop_terms",
+        "closed_boundary_terms"
+      ],
+      "text": "| Stop condition | Context/token exhaustion, tool/runtime exhaustion that prevents further lawful progress in the current response, or an explicit current user instruction to stop/report/handoff/package. Exhausted bounded leaves, full-read infeasibility for on"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 101,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "### 3A. Historical stop-wording supersession note"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 103,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "Historical rows, receipts, and package notes may retain earlier wording such as `planning_only_pause`, `paused per user instruction`, `fresh live authority required`, broader `real stop conditions`, or `exhausted authorised scope`. Those phrases are preserved "
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 105,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "If historical stop wording conflicts with the current continue-until-tokens instruction, record the conflict as superseded historical wording and continue to the next lawful control/audit/evidence/manifest/receipt/ledger hardening leaf. Do not rewrite historic"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 113,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "This is point-in-time planning evidence, not live stop authority. For current execution, use the `Current pointer` table and the continuation law in `AGENTS.md` section 1A."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 119,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "The rows below describe the **local sandbox repo state** only. External project acceptance remains a separate PM/user decision unless the user explicitly accepts a package."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "line": 123,
+      "classifications": [
+        "continuation_stop_terms"
+      ],
+      "text": "| `local_committed_packaged` | Work exists in this sandbox repo as commits plus reset-safe packages. It may be used for local planning and diff packaging. | `5.17`, `5.16`, support-spine rows, `5.7`, `5.1` | Treat as acted-on in this sandbox unless the user re"
+    }
+  ],
+  "proof": {
+    "git_diff_check": "external_current_command_evidence_required",
+    "surface_records_registry": "external_current_command_evidence_required",
+    "proof_block_check_all": "external_current_command_evidence_required",
+    "selected_current_manifest_validation": "external_current_command_evidence_required_after_manifest_generation"
+  }
+}

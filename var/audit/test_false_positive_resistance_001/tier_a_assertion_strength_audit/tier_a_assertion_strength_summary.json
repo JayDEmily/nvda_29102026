@@ -1,0 +1,23 @@
+{
+  "classification_counts": {
+    "smoke-only": 38,
+    "strong behavioural assertion": 337,
+    "weak assertion": 6
+  },
+  "files_needing_followup": 41,
+  "files_provisionally_assertion_strong": 54,
+  "method_limits": [
+    "AST-assisted assertion-shape audit; flags weak/smoke paths for human follow-up.",
+    "Does not by itself prove behavioural correctness or false-positive resistance.",
+    "Current runtime output was not used as an oracle."
+  ],
+  "tier_a_pytest_files": 95,
+  "tier_a_test_functions": 381,
+  "trust_status_counts": {
+    "mixed_assertions_review_required": 22,
+    "not_trusted_surface_presence_only": 38,
+    "not_trusted_weak_assertion_only": 6,
+    "provisionally_strong_assertion_path_present": 251,
+    "provisionally_strong_exception_oracle_present": 64
+  }
+}

@@ -1,0 +1,2678 @@
+{
+  "slice_name": "vocabulary_governance_interface",
+  "blueprint_surface": "Vocabulary governance interface",
+  "status": "derived_materialised_slice",
+  "record_count": 10,
+  "source_files": {
+    "native_intent_satisfaction_ledger": {
+      "path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+      "sha256": "a1863186138db7f4ca900b4e241d900675ca1545998e0fcfc84127dd13fb223a",
+      "record_count": 1716
+    },
+    "legacy_intent_atlas": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+      "sha256": "059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38",
+      "record_count": 1716
+    },
+    "legacy_file_coverage_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_file_coverage_view.json",
+      "sha256": "822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212",
+      "file_count": 128
+    },
+    "legacy_owner_map_view": {
+      "path": "var/audit/imports/atlas_bridge_inputs/legacy_owner_map_view.json",
+      "sha256": "105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d",
+      "owner_count": 82
+    }
+  },
+  "counts": {
+    "native_satisfaction_status": {
+      "already_satisfied": 1,
+      "missing": 3,
+      "partially_satisfied": 3,
+      "transform_required": 3
+    },
+    "implementation_leaf_type": {
+      "later_blueprint_leaf": 3,
+      "later_test_first_leaf": 6,
+      "none": 1
+    },
+    "implementation_leaf_required": {
+      "False": 1,
+      "True": 9
+    },
+    "blueprint_surface_status": {
+      "thin_seam": 10
+    },
+    "proof_resolution": {
+      "{'tier': 'Tier A', 'test_family_action': 'admit_new', 'proof_block_action': 'admit_new'}": 6,
+      "{'tier': 'Tier A', 'test_family_action': 'extend_existing', 'proof_block_action': 'extend_existing'}": 3,
+      "{'tier': 'Tier A', 'test_family_action': 'reuse_existing', 'proof_block_action': 'none'}": 1
+    },
+    "existing_test_decision": {
+      "extend_existing_same_invariant": 3,
+      "new_test_family_required": 6,
+      "no_test_change_required": 1
+    }
+  },
+  "records": [
+    {
+      "satisfaction_record_id": "NIS-0101",
+      "atlas_record_id": "atlas_donor_vocabulary_001",
+      "intent_unit_id": "iu_vocabulary_schema_boundary",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0101",
+        "atlas_record_id": "atlas_donor_vocabulary_001",
+        "intent_unit_id": "iu_vocabulary_schema_boundary",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 1,
+          "line_end": 15,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "partially_satisfied",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5234,
+            "line_end": 5284,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "docstring"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 17,
+            "line_end": 26,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 81,
+            "line_end": 87,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 157,
+            "line_end": 177,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/vocabulary_builder.py",
+            "line_start": 361,
+            "line_end": 379,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+            "line_start": 24,
+            "line_end": 35,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "extend_existing",
+          "proof_block_action": "extend_existing"
+        },
+        "existing_test_decision": "extend_existing_same_invariant",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. Native vocabulary governance surfaces exist as a lightweight dataclass schema module, document-to-dict conversion, dictionary construction helper, canonical vocabulary builder, and Tier A schema-surface test. The Atlas intent also records Pydantic, StrEnum, orjson, JSON text/path parsing, and serialisation helper behaviour that is not fully present on the native schema surface. Native satisfaction is therefore partial. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action extend_existing; existing-test decision extend_existing_same_invariant; proof-block action extend_existing; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_001",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 1,
+        "source_line_end": 15,
+        "record_type": "supporting_contract",
+        "construct_type": "module",
+        "symbol_name": "nvda_desk.schemas.vocabulary",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Defines canonical vocabulary governance schema contracts and JSON serialisation helpers using orjson and Pydantic model validators.",
+        "intended_behaviour": "Provide typed vocabulary file and entry contracts plus bounded validation and serialisation helpers for governed runtime terms.",
+        "inputs": [
+          "module import"
+        ],
+        "outputs": [
+          "vocabulary governance schema surface"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "enum.StrEnum",
+          "pathlib.Path",
+          "typing.Self",
+          "orjson",
+          "pydantic.BaseModel",
+          "pydantic.ConfigDict",
+          "pydantic.Field",
+          "pydantic.model_validator"
+        ],
+        "packet_or_schema_effects": [
+          "Creates schema contracts and helper methods for the canonical vocabulary file."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "No runtime branch logic at module scope.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_schema_boundary",
+        "intent_unit_summary": "Schema seam for canonical vocabulary governance contracts and helpers.",
+        "operating_model_role": "vocabulary governance schema boundary",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": [
+          "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+        ]
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 0,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 1,
+          "range_line_end": 15,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0102",
+      "atlas_record_id": "atlas_donor_vocabulary_002",
+      "intent_unit_id": "iu_vocabulary_schema_contracts",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0102",
+        "atlas_record_id": "atlas_donor_vocabulary_002",
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 18,
+          "line_end": 27,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "missing",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5285,
+            "line_end": 5335,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 17,
+            "line_end": 26,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 28,
+            "line_end": 39,
+            "evidence_type": "code"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires a bounded VocabularyCategory enum for stage, playbook_family, setup_variant, execution_expression, horizon, compatibility_surface, data_classification, and workflow. The native VocabularyEntry surface carries category as a plain string and validates it only as a non-empty string. No native bounded category enum was observed on the read schema surface. Native satisfaction is missing. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_002",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 18,
+        "source_line_end": 27,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "VocabularyCategory",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Defines the bounded vocabulary category set stage, playbook_family, setup_variant, execution_expression, horizon, compatibility_surface, data_classification, and workflow.",
+        "intended_behaviour": "Constrain category assignment for governed vocabulary entries.",
+        "inputs": [
+          "enum value selection"
+        ],
+        "outputs": [
+          "validated vocabulary-category enum member"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "enum.StrEnum"
+        ],
+        "packet_or_schema_effects": [
+          "Constrains category in VocabularyEntry."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "stage",
+          "playbook_family",
+          "setup_variant",
+          "execution_expression",
+          "horizon",
+          "compatibility_surface",
+          "data_classification",
+          "workflow"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "Invalid values fail enum coercion.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "intent_unit_summary": "Bounded vocabulary entry/document contracts and helper behaviours.",
+        "operating_model_role": "vocabulary category contract",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 1,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 18,
+          "range_line_end": 27,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0103",
+      "atlas_record_id": "atlas_donor_vocabulary_003",
+      "intent_unit_id": "iu_vocabulary_schema_contracts",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0103",
+        "atlas_record_id": "atlas_donor_vocabulary_003",
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 29,
+          "line_end": 33,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "missing",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5336,
+            "line_end": 5381,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 17,
+            "line_end": 26,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires a RawDerivedTag enum and a raw_or_derived entry field. The native VocabularyEntry surface exposes canonical_slug, canonical_label, category, stage_owner, maps_to_contract, allowed_aliases, disallowed_phrases, and notes, but no raw_or_derived field or bounded raw/derived enum was observed on the read schema surface. Native satisfaction is missing. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_003",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 29,
+        "source_line_end": 33,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "RawDerivedTag",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Defines the raw/derived tag vocabulary raw, derived, and not_applicable.",
+        "intended_behaviour": "Constrain raw_or_derived tagging for governed vocabulary entries.",
+        "inputs": [
+          "enum value selection"
+        ],
+        "outputs": [
+          "validated raw-derived enum member"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "enum.StrEnum"
+        ],
+        "packet_or_schema_effects": [
+          "Constrains raw_or_derived in VocabularyEntry."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "raw",
+          "derived",
+          "not_applicable"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "Invalid values fail enum coercion.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "intent_unit_summary": "Bounded vocabulary entry/document contracts and helper behaviours.",
+        "operating_model_role": "vocabulary raw-derived tag contract",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 2,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 29,
+          "range_line_end": 33,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0104",
+      "atlas_record_id": "atlas_donor_vocabulary_004",
+      "intent_unit_id": "iu_vocabulary_schema_contracts",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0104",
+        "atlas_record_id": "atlas_donor_vocabulary_004",
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 35,
+          "line_end": 52,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "partially_satisfied",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5382,
+            "line_end": 5446,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 17,
+            "line_end": 26,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 28,
+            "line_end": 79,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+            "line_start": 24,
+            "line_end": 35,
+            "evidence_type": "test"
+          },
+          {
+            "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+            "line_start": 37,
+            "line_end": 112,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "extend_existing",
+          "proof_block_action": "extend_existing"
+        },
+        "existing_test_decision": "extend_existing_same_invariant",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. Native VocabularyEntry exists as a frozen dataclass with canonical slug, canonical label, category, stage owner, contract mapping, aliases, disallowed phrases, notes, and validation for required string fields plus alias/disallowed hygiene. The Atlas intent also requires optional family, setup_variant, execution_expression, horizon, raw_or_derived, Pydantic-style field constraints, and explicit extra-field forbiddance. Native satisfaction is therefore partial. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action extend_existing; existing-test decision extend_existing_same_invariant; proof-block action extend_existing; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_004",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 35,
+        "source_line_end": 52,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "VocabularyEntry",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Defines one governed vocabulary entry with canonical slug and label, category, stage owner, optional family/setup/expression/horizon fields, raw_or_derived tag, contract mapping, allowed aliases, disallowed phrases, and notes, forbidding extra fields.",
+        "intended_behaviour": "Carry one governed runtime vocabulary item.",
+        "inputs": [
+          "canonical_slug",
+          "canonical_label",
+          "category",
+          "stage_owner",
+          "family",
+          "setup_variant",
+          "execution_expression",
+          "horizon",
+          "raw_or_derived",
+          "maps_to_contract",
+          "allowed_aliases",
+          "disallowed_phrases",
+          "notes"
+        ],
+        "outputs": [
+          "validated vocabulary entry"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "pydantic.BaseModel",
+          "pydantic.ConfigDict",
+          "pydantic.Field",
+          "VocabularyCategory",
+          "RawDerivedTag"
+        ],
+        "packet_or_schema_effects": [
+          "Constrains entries in VocabularyDocument."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "extra=forbid",
+          "min_length=1 on canonical_slug, canonical_label, stage_owner, maps_to_contract",
+          "raw_or_derived default not_applicable",
+          "default_factory=list on allowed_aliases, disallowed_phrases, notes"
+        ],
+        "branch_conditions": [
+          "family, setup_variant, execution_expression, and horizon may be null"
+        ],
+        "error_null_empty_semantics": "Optional descriptor fields default to null and list fields default to empty lists.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "intent_unit_summary": "Bounded vocabulary entry/document contracts and helper behaviours.",
+        "operating_model_role": "vocabulary entry contract",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 3,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 35,
+          "range_line_end": 52,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0105",
+      "atlas_record_id": "atlas_donor_vocabulary_005",
+      "intent_unit_id": "iu_vocabulary_schema_contracts",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0105",
+        "atlas_record_id": "atlas_donor_vocabulary_005",
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 55,
+          "line_end": 63,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "partially_satisfied",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5447,
+            "line_end": 5498,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 81,
+            "line_end": 87,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 88,
+            "line_end": 156,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 167,
+            "line_end": 177,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+            "line_start": 24,
+            "line_end": 35,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "extend_existing",
+          "proof_block_action": "extend_existing"
+        },
+        "existing_test_decision": "extend_existing_same_invariant",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. Native VocabularyDocument exists as a frozen dataclass with schema_version, registry_version, notes, entries, validation, and dictionary construction support. The Atlas intent is satisfied for the top-level document carrier shape, but its Pydantic extra-forbid model surface and JSON text/path helper methods are not present on the native document class. Native satisfaction is therefore partial. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action extend_existing; existing-test decision extend_existing_same_invariant; proof-block action extend_existing; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_005",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 55,
+        "source_line_end": 63,
+        "record_type": "supporting_contract",
+        "construct_type": "class",
+        "symbol_name": "VocabularyDocument",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Defines the canonical vocabulary file with schema version, registry version, notes list, and entry list, forbidding extra fields.",
+        "intended_behaviour": "Carry the full governed vocabulary document used by enforcement tests.",
+        "inputs": [
+          "schema_version",
+          "registry_version",
+          "notes",
+          "entries"
+        ],
+        "outputs": [
+          "validated vocabulary document"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "pydantic.BaseModel",
+          "pydantic.ConfigDict",
+          "pydantic.Field",
+          "VocabularyEntry"
+        ],
+        "packet_or_schema_effects": [
+          "Constrains the top-level vocabulary file before helper validation and serialisation methods run."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "extra=forbid",
+          "min_length=1 on schema_version and registry_version",
+          "default_factory=list on notes and entries"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "Notes and entries default to empty lists.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_schema_contracts",
+        "intent_unit_summary": "Bounded vocabulary entry/document contracts and helper behaviours.",
+        "operating_model_role": "vocabulary document contract",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 4,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 55,
+          "range_line_end": 63,
+          "disposition": "captured_as_supporting_contract"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0106",
+      "atlas_record_id": "atlas_donor_vocabulary_006",
+      "intent_unit_id": "iu_vocabulary_helper_behaviours",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0106",
+        "atlas_record_id": "atlas_donor_vocabulary_006",
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 65,
+          "line_end": 85,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "already_satisfied",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5499,
+            "line_end": 5555,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 88,
+            "line_end": 156,
+            "evidence_type": "code"
+          },
+          {
+            "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+            "line_start": 37,
+            "line_end": 112,
+            "evidence_type": "test"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "reuse_existing",
+          "proof_block_action": "none"
+        },
+        "existing_test_decision": "no_test_change_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": false,
+        "implementation_leaf_required": false,
+        "implementation_leaf_type": "none",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. Native VocabularyDocument.validate enforces duplicate slug rejection, duplicate label rejection, canonical label/alias collision rejection, alias ownership collision rejection, canonical slug/alias collision rejection, and disallowed-phrase collision checks. The Tier A vocabulary schema contract test exercises the duplicate slug, alias collision, disallowed phrase collision, and self-alias rejection paths. Native satisfaction is already satisfied for this uniqueness and alias-hygiene behaviour. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action reuse_existing; existing-test decision no_test_change_required; proof-block action none; checkpoint declaration required false; docstring declaration required false; implementation leaf none. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_006",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 65,
+        "source_line_end": 85,
+        "record_type": "behaviour_block",
+        "construct_type": "method",
+        "symbol_name": "VocabularyDocument._validate_uniqueness",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Validates post-model uniqueness by rejecting duplicate canonical slugs, duplicate canonical labels, canonical labels reused as aliases, aliases shared by multiple entries, and canonical slugs reused as aliases.",
+        "intended_behaviour": "Enforce bounded uniqueness and alias hygiene inside the vocabulary document after model construction.",
+        "inputs": [
+          "self.entries"
+        ],
+        "outputs": [
+          "self on success"
+        ],
+        "state_reads": [
+          "entry.canonical_slug",
+          "entry.canonical_label",
+          "entry.allowed_aliases"
+        ],
+        "state_writes": [],
+        "external_dependencies": [
+          "setdefault",
+          "ValueError"
+        ],
+        "packet_or_schema_effects": [
+          "Adds after-validation integrity constraints to VocabularyDocument beyond simple field typing."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "error messages for duplicate slugs, duplicate labels, canonical label as alias, alias reused by multiple entries, and canonical slug as alias"
+        ],
+        "branch_conditions": [
+          "Raise ValueError when duplicate slugs are found",
+          "Raise ValueError when duplicate labels are found",
+          "Raise ValueError when canonical_label appears in allowed_aliases",
+          "Raise ValueError when one alias belongs to multiple canonical slugs",
+          "Raise ValueError when canonical_slug appears in allowed_aliases"
+        ],
+        "error_null_empty_semantics": "Validation operates over the current entries list and raises on integrity violations rather than returning partial results.",
+        "side_effects": [
+          "Builds an alias index during validation."
+        ],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "intent_unit_summary": "Helper behaviours for validating and serialising the vocabulary document.",
+        "operating_model_role": "vocabulary integrity-validation behaviour",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 5,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 65,
+          "range_line_end": 85,
+          "disposition": "captured_as_behaviour_block"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0107",
+      "atlas_record_id": "atlas_donor_vocabulary_007",
+      "intent_unit_id": "iu_vocabulary_helper_behaviours",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0107",
+        "atlas_record_id": "atlas_donor_vocabulary_007",
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 87,
+          "line_end": 88,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "missing",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5556,
+            "line_end": 5599,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 81,
+            "line_end": 87,
+            "evidence_type": "schema"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 157,
+            "line_end": 177,
+            "evidence_type": "code"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_test_first_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires an entry_index helper that returns a canonical_slug to VocabularyEntry mapping. The native VocabularyDocument surface provides validation, to_dict, and vocabulary_document_from_dict, but no entry_index projection helper was observed on the read schema surface. Native satisfaction is missing. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_test_first_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_007",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 87,
+        "source_line_end": 88,
+        "record_type": "behaviour_block",
+        "construct_type": "method",
+        "symbol_name": "VocabularyDocument.entry_index",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Builds a dict keyed by canonical_slug over the current entry list.",
+        "intended_behaviour": "Provide fast slug-to-entry lookup for vocabulary consumers.",
+        "inputs": [
+          "self.entries"
+        ],
+        "outputs": [
+          "dict mapping canonical_slug to VocabularyEntry"
+        ],
+        "state_reads": [
+          "entry.canonical_slug"
+        ],
+        "state_writes": [],
+        "external_dependencies": [
+          "dict comprehension"
+        ],
+        "packet_or_schema_effects": [
+          "Projects the entries list into a keyed lookup mapping."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "An empty entries list returns an empty dict.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "intent_unit_summary": "Helper behaviours for validating and serialising the vocabulary document.",
+        "operating_model_role": "vocabulary entry-index projection behaviour",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 6,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 87,
+          "range_line_end": 88,
+          "disposition": "captured_as_behaviour_block"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0108",
+      "atlas_record_id": "atlas_donor_vocabulary_008",
+      "intent_unit_id": "iu_vocabulary_helper_behaviours",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0108",
+        "atlas_record_id": "atlas_donor_vocabulary_008",
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 90,
+          "line_end": 95,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "transform_required",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5600,
+            "line_end": 5648,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 167,
+            "line_end": 177,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/vocabulary_builder.py",
+            "line_start": 365,
+            "line_end": 379,
+            "evidence_type": "code"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_blueprint_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires JSON text parsing directly on VocabularyDocument. The native schema surface constructs a document from an already-decoded dictionary, while canonical JSON emission is owned by the vocabulary builder path. The useful behaviour therefore requires native transformation into dictionary/builder-owned JSON handling rather than treating the legacy from_json_text method as satisfied on the schema class. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_blueprint_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_008",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 90,
+        "source_line_end": 95,
+        "record_type": "behaviour_block",
+        "construct_type": "method",
+        "symbol_name": "VocabularyDocument.from_json_text",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Loads JSON text with orjson, rejects non-object top-level payloads, and validates the result into VocabularyDocument.",
+        "intended_behaviour": "Construct a governed vocabulary document directly from JSON text.",
+        "inputs": [
+          "text"
+        ],
+        "outputs": [
+          "VocabularyDocument"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "orjson.loads",
+          "ValueError",
+          "VocabularyDocument.model_validate"
+        ],
+        "packet_or_schema_effects": [
+          "Creates a vocabulary document from JSON text input."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "error message vocabulary JSON must decode to an object"
+        ],
+        "branch_conditions": [
+          "Raise ValueError when decoded JSON is not a dict",
+          "Otherwise validate the decoded object into VocabularyDocument"
+        ],
+        "error_null_empty_semantics": "Malformed JSON or invalid document structure fails during decode or model validation.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "intent_unit_summary": "Helper behaviours for validating and serialising the vocabulary document.",
+        "operating_model_role": "vocabulary JSON parse behaviour",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 7,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 90,
+          "range_line_end": 95,
+          "disposition": "captured_as_behaviour_block"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0109",
+      "atlas_record_id": "atlas_donor_vocabulary_009",
+      "intent_unit_id": "iu_vocabulary_helper_behaviours",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0109",
+        "atlas_record_id": "atlas_donor_vocabulary_009",
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 97,
+          "line_end": 99,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "transform_required",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5649,
+            "line_end": 5697,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 167,
+            "line_end": 177,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/vocabulary_builder.py",
+            "line_start": 377,
+            "line_end": 379,
+            "evidence_type": "code"
+          },
+          {
+            "path": "scripts/build_canonical_vocabulary.py",
+            "line_start": 1,
+            "line_end": 14,
+            "evidence_type": "code"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_blueprint_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires file-path JSON loading directly on VocabularyDocument. The native schema surface accepts decoded dictionaries, and file-backed vocabulary generation is expressed through the canonical vocabulary builder and CLI script path. The useful behaviour therefore requires native transformation into builder or script ownership rather than treating the legacy from_json_path method as satisfied on the schema class. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_blueprint_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_009",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 97,
+        "source_line_end": 99,
+        "record_type": "behaviour_block",
+        "construct_type": "method",
+        "symbol_name": "VocabularyDocument.from_json_path",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Reads UTF-8 text from a filesystem path and delegates to from_json_text.",
+        "intended_behaviour": "Construct a governed vocabulary document from a JSON file path.",
+        "inputs": [
+          "path"
+        ],
+        "outputs": [
+          "VocabularyDocument"
+        ],
+        "state_reads": [
+          "Path(path).read_text(encoding=\"utf-8\")"
+        ],
+        "state_writes": [],
+        "external_dependencies": [
+          "pathlib.Path",
+          "VocabularyDocument.from_json_text"
+        ],
+        "packet_or_schema_effects": [
+          "Creates a vocabulary document from file-backed JSON text."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "utf-8 encoding"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "File read failures raise from Path.read_text and invalid JSON/document content fails downstream.",
+        "side_effects": [
+          "Reads a file from disk."
+        ],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "intent_unit_summary": "Helper behaviours for validating and serialising the vocabulary document.",
+        "operating_model_role": "vocabulary file-load behaviour",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 8,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 97,
+          "range_line_end": 99,
+          "disposition": "captured_as_behaviour_block"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "satisfaction_record_id": "NIS-0110",
+      "atlas_record_id": "atlas_donor_vocabulary_010",
+      "intent_unit_id": "iu_vocabulary_helper_behaviours",
+      "satisfaction_record": {
+        "satisfaction_record_id": "NIS-0110",
+        "atlas_record_id": "atlas_donor_vocabulary_010",
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "donor_provenance": {
+          "path": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "line_start": 101,
+          "line_end": 103,
+          "evidence_type": "atlas"
+        },
+        "blueprint_surface": "Vocabulary governance interface",
+        "blueprint_surface_status": "thin_seam",
+        "target_owner": "vocabulary governance authority",
+        "target_owner_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          }
+        ],
+        "vocabulary_gate": {
+          "status": "passed_reuse_existing",
+          "terms": [
+            {
+              "term": "Vocabulary governance interface",
+              "term_kind": "architecture_surface",
+              "result": "reused_existing"
+            },
+            {
+              "term": "vocabulary governance authority",
+              "term_kind": "owner_name",
+              "result": "reused_existing"
+            },
+            {
+              "term": "thin_seam",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate6",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            },
+            {
+              "term": "pending_gate7",
+              "term_kind": "enum_value",
+              "result": "reused_existing"
+            }
+          ]
+        },
+        "native_satisfaction_status": "transform_required",
+        "native_evidence": [
+          {
+            "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+            "line_start": 424,
+            "line_end": 439,
+            "evidence_type": "blueprint"
+          },
+          {
+            "path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+            "line_start": 5698,
+            "line_end": 5743,
+            "evidence_type": "atlas"
+          },
+          {
+            "path": "src/nvda_desk/schemas/vocabulary.py",
+            "line_start": 157,
+            "line_end": 164,
+            "evidence_type": "code"
+          },
+          {
+            "path": "src/nvda_desk/vocabulary_builder.py",
+            "line_start": 365,
+            "line_end": 379,
+            "evidence_type": "code"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 29,
+            "line_end": 39,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 135,
+            "line_end": 149,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+            "line_start": 179,
+            "line_end": 192,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 404,
+            "line_end": 455,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+            "line_start": 459,
+            "line_end": 472,
+            "evidence_type": "normative"
+          },
+          {
+            "path": "config/retained_test_registry.yaml",
+            "line_start": 1,
+            "line_end": 10,
+            "evidence_type": "config"
+          },
+          {
+            "path": "config/proof_blocks.yaml",
+            "line_start": 1,
+            "line_end": 5,
+            "evidence_type": "proof_block"
+          }
+        ],
+        "proof_resolution": {
+          "tier": "Tier A",
+          "test_family_action": "admit_new",
+          "proof_block_action": "admit_new"
+        },
+        "existing_test_decision": "new_test_family_required",
+        "checkpoint_declaration_required": false,
+        "docstring_declaration_required": true,
+        "implementation_leaf_required": true,
+        "implementation_leaf_type": "later_blueprint_leaf",
+        "blocked_reason": null,
+        "decision_notes": "Gate 6B audited this Vocabulary governance interface record. The Atlas intent requires document-owned JSON text serialisation. The native schema surface provides validated dictionary emission through to_dict, and JSON text writing is expressed in the canonical vocabulary builder. The useful behaviour therefore requires native transformation into dictionary/builder-owned serialisation rather than treating the legacy to_json_text method as satisfied on the schema class. Gate 7 proof resolution remains staged.\nGate 7B proof resolution: Tier A proof posture; test-family action admit_new; existing-test decision new_test_family_required; proof-block action admit_new; checkpoint declaration required false; docstring declaration required true; implementation leaf later_blueprint_leaf. Governing proof surfaces are cited in native_evidence."
+      },
+      "legacy_intent_record": {
+        "atlas_record_id": "atlas_donor_vocabulary_010",
+        "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+        "source_line_start": 101,
+        "source_line_end": 103,
+        "record_type": "behaviour_block",
+        "construct_type": "method",
+        "symbol_name": "VocabularyDocument.to_json_text",
+        "evidence_status": "observed_directly",
+        "observed_behaviour": "Serialises the model dump to indented JSON text using orjson and decodes the bytes as UTF-8.",
+        "intended_behaviour": "Emit the governed vocabulary document as canonical JSON text.",
+        "inputs": [
+          "self.model_dump(mode=\"json\")"
+        ],
+        "outputs": [
+          "UTF-8 JSON text"
+        ],
+        "state_reads": [],
+        "state_writes": [],
+        "external_dependencies": [
+          "orjson.dumps",
+          "orjson.OPT_INDENT_2"
+        ],
+        "packet_or_schema_effects": [
+          "Serialises a validated vocabulary document back to JSON text."
+        ],
+        "config_or_coefficient_effects": [],
+        "thresholds_or_literals": [
+          "orjson.OPT_INDENT_2",
+          "utf-8 decode"
+        ],
+        "branch_conditions": [],
+        "error_null_empty_semantics": "Serialises the current model state without custom null handling beyond model_dump JSON mode.",
+        "side_effects": [],
+        "known_bug_or_defect_caveat": null,
+        "intent_unit_id": "iu_vocabulary_helper_behaviours",
+        "intent_unit_summary": "Helper behaviours for validating and serialising the vocabulary document.",
+        "operating_model_role": "vocabulary JSON serialisation behaviour",
+        "lawful_owner_candidate": "unresolved",
+        "owner_confidence": "unresolved",
+        "proof_family": "unresolved",
+        "status": "observed",
+        "blockers": [],
+        "exclusion_reason": null,
+        "notes": []
+      },
+      "coverage_refs": [
+        {
+          "coverage_file_index": 11,
+          "coverage_range_index": 9,
+          "source_file": "legacy_import/source/nvda_desk/schemas/vocabulary.py",
+          "file_status": "complete",
+          "bounded_batch_status": "in_progress",
+          "file_line_start": 1,
+          "file_line_end": 104,
+          "range_line_start": 101,
+          "range_line_end": 104,
+          "disposition": "captured_as_behaviour_block"
+        }
+      ],
+      "owner_refs": [
+        {
+          "owner_map_index": 63,
+          "lawful_owner_candidate": "unresolved",
+          "owner_confidence": "unresolved",
+          "record_count": 659,
+          "status_counts": {
+            "observed": 659
+          },
+          "proof_families": [
+            "unresolved"
+          ],
+          "notes": [
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this schema family."
+            ],
+            [
+              "Active doctrine reviewed in this run governs vocabulary policy but does not directly name the lawful native code owner for this schema family."
+            ],
+            [
+              "Owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this domain wrapper family."
+            ],
+            [
+              "Active doctrine reviewed in this run does not directly name the lawful native owner for this imported-module schema family."
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

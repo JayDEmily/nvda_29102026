@@ -1,0 +1,361 @@
+{
+  "classification_note": "bounded audit/control manifest for primary-record audit-link normalisation and queue-exhaustion rollup only",
+  "entries": [
+    {
+      "byte_count": 14866,
+      "full_read": true,
+      "line_count": 301,
+      "notes": "Control file re-read and manifest metadata refreshed during ACTIVE_FULL_READ_BLOCKER_ROUTING_ALIGNMENT_003 after full-read blocker routing wording changed.",
+      "path": "AGENTS.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "read_ranges": [
+        {
+          "end_line": 303,
+          "start_line": 1
+        }
+      ],
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ]
+    },
+    {
+      "byte_count": 87453,
+      "full_read": true,
+      "line_count": 663,
+      "notes": "Refreshed after ACTIVE_PLANS_CURRENT_WORKSTREAM_BOUNDARY_ALIGNMENT_009 proof passed.",
+      "path": "PLANS.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "read_ranges": [
+        {
+          "end_line": 658,
+          "start_line": 1
+        }
+      ],
+      "sha256": "f9366351afc1432464ad76a7cbf928322e2ba920f2d4253f6804a134f8a220aa",
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 663
+        }
+      ]
+    },
+    {
+      "byte_count": 170852,
+      "full_read": true,
+      "line_count": 507,
+      "notes": "Refreshed after ACTIVE_DURABILITY_CHECKPOINT_INDEX_010 proof passed.",
+      "path": "ROADMAP_LEDGER.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_with_post_mutation_diff_review",
+      "read_ranges": [
+        {
+          "end_line": 462,
+          "start_line": 1
+        }
+      ],
+      "sha256": "5a44353b1a156bff56345ef55bc68dc0d285ac82dbaf5c1a0340d3be66560925",
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 507
+        }
+      ]
+    },
+    {
+      "byte_count": 4989,
+      "full_read": true,
+      "line_count": 117,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 117,
+          "start_line": 1
+        }
+      ],
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee"
+    },
+    {
+      "byte_count": 8442,
+      "full_read": true,
+      "line_count": 202,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 202,
+          "start_line": 1
+        }
+      ],
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944"
+    },
+    {
+      "byte_count": 40449,
+      "full_read": true,
+      "line_count": 758,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 758,
+          "start_line": 1
+        }
+      ],
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a"
+    },
+    {
+      "byte_count": 23626,
+      "full_read": true,
+      "line_count": 195,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 195,
+          "start_line": 1
+        }
+      ],
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9"
+    },
+    {
+      "byte_count": 11712,
+      "full_read": true,
+      "line_count": 311,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/primary_linkage_gap_reconciliation_002.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 311,
+          "start_line": 1
+        }
+      ],
+      "sha256": "b2ed6474442bccc69eec97be3acd5802860fecb2281c1abddc1d7156c5fe7a7f"
+    },
+    {
+      "byte_count": 1225,
+      "full_read": true,
+      "line_count": 25,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_linkage_gap_reconciliation_002/reports/primary_linkage_gap_reconciliation_002_report.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 25,
+          "start_line": 1
+        }
+      ],
+      "sha256": "9b3b9a11cb4959067272305b363fc0d992e1b19423ab1fcfca7a70114b095fa6"
+    },
+    {
+      "byte_count": 7223,
+      "full_read": true,
+      "line_count": 162,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_record_normalisation_001/tools/apply_primary_record_link_backfill.py",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 162,
+          "start_line": 1
+        }
+      ],
+      "sha256": "ba8463bfa6dbf200c84c09e62144b8f55c4a51fcad839e3da841441218724196"
+    },
+    {
+      "byte_count": 5570,
+      "full_read": true,
+      "line_count": 221,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_record_normalisation_001/reports/ACTIVE_CODE_ATLAS_PRIMARY_RECORD_NORMALISATION_001_REPORT.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 221,
+          "start_line": 1
+        }
+      ],
+      "sha256": "bc73959197729e79e432b2528d1decfe4398d4ae7e128bfdcbba28c3154fc892"
+    },
+    {
+      "byte_count": 5570,
+      "full_read": true,
+      "line_count": 221,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_record_normalisation_001/reports/apply_primary_record_link_backfill.stdout.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 221,
+          "start_line": 1
+        }
+      ],
+      "sha256": "bc73959197729e79e432b2528d1decfe4398d4ae7e128bfdcbba28c3154fc892"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_record_normalisation_001/reports/apply_primary_record_link_backfill.status",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 1,
+          "start_line": 1
+        }
+      ],
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 1845,
+      "full_read": true,
+      "line_count": 47,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_record_normalisation_001/receipts/ACTIVE_CODE_ATLAS_PRIMARY_RECORD_NORMALISATION_001_RECEIPT.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 47,
+          "start_line": 1
+        }
+      ],
+      "sha256": "deb49dbb0c67f45ad95cf3aca1fc2938148b65857f35100543ccab89250bdd95"
+    },
+    {
+      "byte_count": 29336,
+      "full_read": true,
+      "line_count": 692,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_surface/vocabulary_governance_active_code_atlas_records.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 692,
+          "start_line": 1
+        }
+      ],
+      "sha256": "aae060e4b1f1156797a4af16f0acae1a74c70b895c0ffc1abeb87496fc3c2167"
+    },
+    {
+      "byte_count": 1338,
+      "full_read": true,
+      "line_count": 33,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_synthesis/reports/primary_active_code_atlas_synthesis_report.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 33,
+          "start_line": 1
+        }
+      ],
+      "sha256": "223c43e8bac8fe49b01168cd82386cd805a03dc324a9c74e330e8f68e0f908d8"
+    },
+    {
+      "byte_count": 18697,
+      "full_read": true,
+      "line_count": 470,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 470,
+          "start_line": 1
+        }
+      ],
+      "sha256": "b1f784bf37ca7028c3fad1e399d5d3c2873d58865e0afdcdee7a174355eb6795"
+    },
+    {
+      "byte_count": 8364,
+      "full_read": true,
+      "line_count": 122,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/reports/primary_to_bridge_comparison_report.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 122,
+          "start_line": 1
+        }
+      ],
+      "sha256": "2a2df74e853ebeec70fc2ae85d2e121acf6ba2643eb98652b89daa037ce84e16"
+    },
+    {
+      "byte_count": 10687,
+      "full_read": true,
+      "line_count": 194,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_queue_exhaustion_control_001/tools/summarize_primary_queue_exhaustion.py",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 194,
+          "start_line": 1
+        }
+      ],
+      "sha256": "f452760a309870afec889abd6ed045535aa32c4a267b4d17de1554bd2f7ff8c1"
+    },
+    {
+      "byte_count": 4809,
+      "full_read": true,
+      "line_count": 98,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_queue_exhaustion_control_001/reports/ACTIVE_CODE_ATLAS_PRIMARY_QUEUE_EXHAUSTION_CONTROL_001_REPORT.json",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 98,
+          "start_line": 1
+        }
+      ],
+      "sha256": "8e3ed307439a1d6fd972366b3e568ab451b00818178c9b6833a162c8f72e9ad4"
+    },
+    {
+      "byte_count": 1654,
+      "full_read": true,
+      "line_count": 35,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_queue_exhaustion_control_001/ACTIVE_CODE_ATLAS_PRIMARY_QUEUE_EXHAUSTION_CONTROL_001.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 35,
+          "start_line": 1
+        }
+      ],
+      "sha256": "c1a08af0cc909602301757ee890de3d98b1b1c6df513d29330dd692a28d9d520"
+    },
+    {
+      "byte_count": 1462,
+      "full_read": true,
+      "line_count": 32,
+      "notes": "Selected controlling/material evidence for primary-record audit-link normalisation and queue-exhaustion control rollup.",
+      "path": "var/audit/active_code_atlas_001/primary_queue_exhaustion_control_001/receipts/ACTIVE_CODE_ATLAS_PRIMARY_QUEUE_EXHAUSTION_CONTROL_001_RECEIPT.md",
+      "read_method": "line_numbered_full_read_in_worker_thread_or_author_generated_then_full_read",
+      "read_ranges": [
+        {
+          "end_line": 32,
+          "start_line": 1
+        }
+      ],
+      "sha256": "47a9cec140d68942487f422088d43eb31f34ec5f8178c8cdccc9ca4206ac7cd0"
+    }
+  ],
+  "schema_version": "full_read_manifest_v1",
+  "target": "ACTIVE_CODE_ATLAS_PRIMARY_RECORD_NORMALISATION_001_RECORDED_QUEUE_LINKS_46_OF_46",
+  "full_read_false_count": 0,
+  "entry_count": 22,
+  "last_refresh_reason": "ACTIVE_HISTORICAL_STOP_WORDING_SUPERSESSION_004 refreshed changed ROADMAP entry only; other entries retain prior pass evidence.",
+  "last_refreshed_paths": [
+    "ROADMAP_LEDGER.md"
+  ]
+}

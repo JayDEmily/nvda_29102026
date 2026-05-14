@@ -1,0 +1,28 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_prepared_context_packet_carries_failed_enrichment_as_degraded_validation _
+
+    def test_prepared_context_packet_carries_failed_enrichment_as_degraded_validation() -> None:
+        snapshot = _prepared_snapshot()
+        snapshot.failed_enrichments.append("calendar_reference_projection_missing")
+    
+        packet = build_prepared_context_packet(
+            packet_id="prepared-context-degraded",
+            snapshot=snapshot,
+            traceid="trace-degraded",
+            runid="run-degraded",
+        )
+    
+>       assert packet.validation.status == "degraded"
+E       AssertionError: assert 'valid' == 'degraded'
+E         
+E         - degraded
+E         + valid
+
+tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py:109: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py::test_prepared_context_packet_carries_failed_enrichment_as_degraded_validation - AssertionError: assert 'valid' == 'degraded'
+  
+  - degraded
+  + valid
+1 failed in 0.68s

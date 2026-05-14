@@ -1,0 +1,128 @@
+{
+  "data": {
+    "bootstrap_source": "serial_runtime.stage_packets.temporal",
+    "invariant_reads": [
+      "serial_spine_preserved",
+      "parallel_risk_lane_is_independent_and_additive",
+      "module_8_bootstrap_adapter_only"
+    ],
+    "lane_id": "parallel_risk_lane",
+    "serial_spine_preserved": true,
+    "stage_read_state": [
+      {
+        "note": "selected temporal stage packet admitted for live semantic read in this tranche",
+        "stage_name": "temporal",
+        "state": "bootstrap_input_used"
+      },
+      {
+        "note": "serial runtime regime packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "stage_name": "regime",
+        "state": "not_admitted_for_live_semantic_read"
+      },
+      {
+        "note": "serial runtime options-flow packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "stage_name": "options_flow",
+        "state": "not_admitted_for_live_semantic_read"
+      },
+      {
+        "note": "serial runtime posture packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "stage_name": "posture",
+        "state": "not_admitted_for_live_semantic_read"
+      },
+      {
+        "note": "serial runtime eligibility packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "stage_name": "eligibility",
+        "state": "not_admitted_for_live_semantic_read"
+      },
+      {
+        "note": "serial runtime execution packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "stage_name": "execution",
+        "state": "not_admitted_for_live_semantic_read"
+      },
+      {
+        "note": "review remains downstream of the parallel-risk lane",
+        "stage_name": "review",
+        "state": "not_yet_available"
+      }
+    ],
+    "temporal_input": {
+      "captured_at_utc": null,
+      "next_event_time_utc": null,
+      "persisted_at_utc": null,
+      "source_channel": null,
+      "source_date": null,
+      "source_provider": null,
+      "source_time_kind": "timestamp",
+      "source_time_raw": null,
+      "source_time_utc": "2026-04-21T09:31:00Z",
+      "source_timezone_raw": null,
+      "time_granularity": "timestamp",
+      "windows": []
+    }
+  },
+  "datacontenttype": "application/json",
+  "dataschema": "urn:nvda:schema:parallel_risk_lane.bootstrap_input:1.0.0",
+  "dmpextensions": {
+    "nvda": {
+      "schema_identifiers": {
+        "output_model_name": "ParallelRiskPreparationPacket",
+        "payload_model_name": "ParallelRiskPreparationPacket",
+        "payload_module_path": "nvda_desk.contracts.parallel_risk"
+      },
+      "semantic_dependencies": [
+        "dmp::serial::temporal::20260421T093100Z"
+      ]
+    }
+  },
+  "dmpversion": "3.0.0",
+  "id": "dmp::parallel_risk::bootstrap_input::20260421T093100Z",
+  "lineage": {
+    "decisiontraceid": null,
+    "dependencyids": [
+      "dmp::serial::temporal::20260421T093100Z"
+    ],
+    "derivedfrom": "parallel_risk_bootstrap_from_serial_runtime_temporal_packet",
+    "inputfingerprint": "fce0119e36f0c6a9e30797513191b0e6c4fcebe4b8895ede1014d25666279dbb",
+    "parentids": [
+      "dmp::serial::temporal::20260421T093100Z"
+    ],
+    "replayref": null,
+    "replaytraceid": null,
+    "reviewtraceid": null,
+    "sourceartifactids": []
+  },
+  "packetrole": "parallel_risk_bootstrap_input",
+  "producer": {
+    "behaviour_class": "bootstrap_adapter_output",
+    "grammar_role": "parallel_risk_lane",
+    "module_id": "parallel_risk_lane_bootstrap_adapter",
+    "module_instance_id": "parallel_risk_lane_bootstrap_adapter::default",
+    "module_version": "native",
+    "stage_name": "parallel_risk_lane"
+  },
+  "runid": "run::serial_runtime::20260421T093100Z",
+  "scenarioid": "live",
+  "source": "urn:nvda:producer:parallel_risk_lane_bootstrap_adapter",
+  "specversion": "1.0",
+  "summary": {
+    "headline": "parallel-risk bootstrap input emitted",
+    "humanstate": "bootstrap_ready",
+    "keyflags": [
+      "stage_a_bootstrap",
+      "module_8_owned_adapter"
+    ]
+  },
+  "time": "2026-04-22T13:05:50.373599Z",
+  "traceid": "trace::serial_runtime::20260421T093100Z",
+  "type": "urn:nvda:packet:parallel_risk_bootstrap_input",
+  "validation": {
+    "checks": [
+      {
+        "name": "schema_validation",
+        "passed": true
+      }
+    ],
+    "status": "valid",
+    "violations": []
+  }
+}

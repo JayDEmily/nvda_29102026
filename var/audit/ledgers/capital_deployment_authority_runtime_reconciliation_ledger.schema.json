@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CapitalDeploymentAuthorityRuntimeReconciliationLedger",
+  "type": "object",
+  "required": [
+    "ledger_name",
+    "status",
+    "parent_brief",
+    "scope",
+    "plan",
+    "verification",
+    "closeout_state"
+  ],
+  "properties": {
+    "ledger_name": {
+      "const": "capital_deployment_authority_runtime_reconciliation_ledger"
+    },
+    "status": {
+      "type": "string"
+    },
+    "parent_brief": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        }
+      }
+    },
+    "scope": {
+      "type": "object"
+    },
+    "plan": {
+      "type": "array"
+    },
+    "verification": {
+      "type": "object"
+    },
+    "closeout_state": {
+      "type": "object"
+    }
+  }
+}

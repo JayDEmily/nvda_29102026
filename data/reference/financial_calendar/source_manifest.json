@@ -1,0 +1,188 @@
+{
+  "manifest_id": "financial_calendar_bundle_v1_sources",
+  "generated_at_utc": "2026-03-27T05:49:43Z",
+  "calendar_year": 2026,
+  "sources": [
+    {
+      "source_id": "nyse_hours_calendar_2026",
+      "kind": "official",
+      "provider": "NYSE",
+      "url": "https://www.nyse.com/trade/hours-calendars",
+      "used_for": [
+        "US cash holidays",
+        "US half-days",
+        "U.S. session hours"
+      ]
+    },
+    {
+      "source_id": "occ_holiday_and_expiration_2026",
+      "kind": "official",
+      "provider": "OCC",
+      "url": "https://infomemo.theocc.com/infomemos?number=57897",
+      "used_for": [
+        "Monthly options expirations",
+        "OCC holidays"
+      ]
+    },
+    {
+      "source_id": "fed_fomc_2026",
+      "kind": "official",
+      "provider": "Federal Reserve",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "used_for": [
+        "FOMC meeting windows",
+        "SEP flags"
+      ]
+    },
+    {
+      "source_id": "bls_cpi_2026",
+      "kind": "official",
+      "provider": "BLS",
+      "url": "https://www.bls.gov/schedule/news_release/cpi.htm",
+      "used_for": [
+        "CPI release dates"
+      ]
+    },
+    {
+      "source_id": "bls_ppi_2026",
+      "kind": "official",
+      "provider": "BLS",
+      "url": "https://www.bls.gov/schedule/news_release/ppi.htm",
+      "used_for": [
+        "PPI release dates"
+      ]
+    },
+    {
+      "source_id": "bls_employment_2026",
+      "kind": "official",
+      "provider": "BLS",
+      "url": "https://www.bls.gov/schedule/news_release/empsit.htm",
+      "used_for": [
+        "Employment Situation release dates"
+      ]
+    },
+    {
+      "source_id": "bea_release_schedule_2026",
+      "kind": "official",
+      "provider": "BEA",
+      "url": "https://www.bea.gov/news/schedule",
+      "used_for": [
+        "GDP release dates",
+        "PCE/Personal Income and Outlays release dates"
+      ]
+    },
+    {
+      "source_id": "jpx_market_holidays_2026",
+      "kind": "official",
+      "provider": "JPX",
+      "url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/index.html",
+      "used_for": [
+        "JPX cash-market holidays"
+      ]
+    },
+    {
+      "source_id": "jpx_derivatives_holiday_trading_2026",
+      "kind": "official",
+      "provider": "JPX",
+      "url": "https://www.jpx.co.jp/english/derivatives/rules/holidaytrading/index.html",
+      "used_for": [
+        "JPX derivatives holiday-trading open/closed exceptions"
+      ]
+    },
+    {
+      "source_id": "hkex_securities_holiday_2026",
+      "kind": "official",
+      "provider": "HKEX",
+      "url": "https://www.hkex.com.hk/-/media/HKEX-Market/Services/Circulars-and-Notices/Participant-and-Members-Circulars/SEHK/2025/ce_SEHK_CT_075_2025.pdf",
+      "used_for": [
+        "HKEX securities holidays",
+        "HKEX half-days"
+      ]
+    },
+    {
+      "source_id": "hkex_stock_connect_2026",
+      "kind": "official",
+      "provider": "HKEX",
+      "url": "https://www.hkex.com.hk/-/media/HKEX-Market/Mutual-Market/Stock-Connect/Reference-Materials/Trading-Hour%2C-Trading-and-Settlement-Calendar/2026-Calendar_pdf_e.pdf",
+      "used_for": [
+        "Stock Connect closures",
+        "Stock Connect half-days",
+        "Shanghai/Shenzhen closure corroboration"
+      ]
+    },
+    {
+      "source_id": "szse_calendar_2026",
+      "kind": "official",
+      "provider": "SZSE",
+      "url": "https://www.szse.cn/English/services/trading/calendar/index.html",
+      "used_for": [
+        "Mainland China A-share holiday spans"
+      ]
+    },
+    {
+      "source_id": "nvidia_ir_events",
+      "kind": "official",
+      "provider": "NVIDIA Investor Relations",
+      "url": "https://investor.nvidia.com/events-and-presentations/events-and-presentations/default.aspx",
+      "used_for": [
+        "Upcoming NVDA earnings date"
+      ]
+    },
+    {
+      "source_id": "nvidia_ir_financial_reports",
+      "kind": "official",
+      "provider": "NVIDIA Investor Relations",
+      "url": "https://investor.nvidia.com/financial-info/financial-reports/default.aspx",
+      "used_for": [
+        "Past NVDA earnings date"
+      ]
+    },
+    {
+      "source_id": "microsoft_ir_q2_fy2026",
+      "kind": "official",
+      "provider": "Microsoft Investor Relations",
+      "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2026-q2/press-release-webcast",
+      "used_for": [
+        "Microsoft earnings date"
+      ]
+    },
+    {
+      "source_id": "meta_ir_q4_2025",
+      "kind": "official",
+      "provider": "Meta Investor Relations",
+      "url": "https://investor.atmeta.com/investor-news/press-release-details/2026/Meta-Reports-Fourth-Quarter-and-Full-Year-2025-Results/default.aspx",
+      "used_for": [
+        "Meta earnings date",
+        "Meta capex guidance context"
+      ]
+    },
+    {
+      "source_id": "amazon_ir_q4_2025",
+      "kind": "official",
+      "provider": "Amazon Investor Relations",
+      "url": "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/",
+      "used_for": [
+        "Amazon earnings date",
+        "AWS / capex read-through context"
+      ]
+    },
+    {
+      "source_id": "alphabet_ir_q4_2025",
+      "kind": "official",
+      "provider": "Alphabet Investor Relations",
+      "url": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Fourth-Quarter-and-Fiscal-Year-2025-Financial-Results-Conference-Call-2026-_PQVrgzUKX/default.aspx",
+      "used_for": [
+        "Alphabet earnings date announcement"
+      ]
+    },
+    {
+      "source_id": "apple_q1_2026_results",
+      "kind": "official",
+      "provider": "Apple Investor Relations / Newsroom",
+      "url": "https://www.apple.com/au/newsroom/2026/01/apple-reports-first-quarter-results/",
+      "used_for": [
+        "Apple earnings date"
+      ]
+    }
+  ]
+}

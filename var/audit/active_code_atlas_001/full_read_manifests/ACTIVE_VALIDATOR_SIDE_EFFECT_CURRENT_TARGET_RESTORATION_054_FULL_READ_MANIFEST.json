@@ -1,0 +1,96 @@
+{
+  "created_utc": "2026-05-13T03:33:15Z",
+  "target": "ACTIVE_VALIDATOR_SIDE_EFFECT_CURRENT_TARGET_RESTORATION_054",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Frozen standing control surface read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Frozen standing plan read for boundary proof; not mutated by this leaf."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 195751,
+      "line_count": 551,
+      "sha256": "cdc52a5a7c42c34385c65c89a4b4898d4b804b2a0a82cad72ad0a07d99f3f628",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 551
+        }
+      ],
+      "notes": "Mutable live ledger after this leaf update."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/validator_side_effect_current_target_restoration_054/reports/ACTIVE_VALIDATOR_SIDE_EFFECT_CURRENT_TARGET_RESTORATION_054_REPORT.json",
+      "byte_count": 2937,
+      "line_count": 44,
+      "sha256": "51d12e42f3d07b202695434d2ce6acc7e8758d115f0cfa085fd62f5e3710dc95",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 44
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/validator_side_effect_current_target_restoration_054/receipts/ACTIVE_VALIDATOR_SIDE_EFFECT_CURRENT_TARGET_RESTORATION_054_RECEIPT.md",
+      "byte_count": 659,
+      "line_count": 9,
+      "sha256": "c6ae985d7a34d18a6cc8a86bd0e6df734d8208b12ee23e9540b758392c500ccb",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json",
+      "byte_count": 449,
+      "line_count": 17,
+      "sha256": "c39beee423c060df8c4b24c903e0a8f900c2fd48cf26d4af5957573784ee9769",
+      "read_method": "manual_full_file_read_plus_active_validator_side_effect_current_target_restoration_054_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Current target material file for this leaf."
+    }
+  ]
+}

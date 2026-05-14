@@ -1,0 +1,63 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_non_interference_boundary_strips_forbidden_runtime_keys_from_trace_payload _
+
+    def test_non_interference_boundary_strips_forbidden_runtime_keys_from_trace_payload() -> None:
+        raw_signal = RawUpstreamSignalInput(
+            source_id="signal-feed-3",
+            signal_family_id="market_depth_imbalance",
+            scope_id="sequence-gap006-upstream",
+            payload={
+                "imbalance": 0.51,
+                "trade_allowed": True,
+                "authorised_notional_usd": 1_000_000,
+                "brokerage_order": {"side": "BUY"},
+            },
+        )
+    
+        result = ingest_raw_upstream_signal(
+            raw_signal=raw_signal,
+            dataset_packet_payload=_dataset_packet_payload(),
+            admitted_signal_families={"market_depth_imbalance"},
+        )
+    
+        assert result.quarantined is False
+>       assert result.trace_envelope["payload"] == {"imbalance": 0.51}
+E       AssertionError: assert {'authorised_...llowed': True} == {'imbalance': 0.51}
+E         
+E         Omitting 1 identical items, use -vv to show
+E         Left contains 3 more items:
+E         {'authorised_notional_usd': 1000000,
+E          'brokerage_order': {'side': 'BUY'},
+E          'trade_allowed': True}
+E         
+E         Full diff:
+E           {
+E         +     'authorised_notional_usd': 1000000,
+E         +     'brokerage_order': {
+E         +         'side': 'BUY',
+E         +     },
+E               'imbalance': 0.51,
+E         +     'trade_allowed': True,
+E           }
+
+tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py:105: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py::test_non_interference_boundary_strips_forbidden_runtime_keys_from_trace_payload - AssertionError: assert {'authorised_...llowed': True} == {'imbalance': 0.51}
+  
+  Omitting 1 identical items, use -vv to show
+  Left contains 3 more items:
+  {'authorised_notional_usd': 1000000,
+   'brokerage_order': {'side': 'BUY'},
+   'trade_allowed': True}
+  
+  Full diff:
+    {
+  +     'authorised_notional_usd': 1000000,
+  +     'brokerage_order': {
+  +         'side': 'BUY',
+  +     },
+        'imbalance': 0.51,
+  +     'trade_allowed': True,
+    }
+1 failed in 0.38s

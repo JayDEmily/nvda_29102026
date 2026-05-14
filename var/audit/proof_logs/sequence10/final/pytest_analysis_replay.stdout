@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /tmp/seq10_final_work/final/NVIDIA9_remotetest-main
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 2 items
+
+tests/tier_a/analysis/test_replay_evaluation_surface.py ..               [100%]
+
+============================== 2 passed in 1.90s ===============================

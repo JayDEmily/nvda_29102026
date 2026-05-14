@@ -1,0 +1,15 @@
+src/nvda_desk/contracts/parallel_risk.py
+src/nvda_desk/contracts/temporal.py
+src/nvda_desk/domain/temporal/session_clock.py
+src/nvda_desk/services/temporal_context_service.py
+tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py
+tests/tier_a/runtime/test_runtime_orchestrator_surface.py
+tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py
+var/audit/ledgers/sequence10_1_changed_files.txt
+var/audit/ledgers/sequence10_1_consolidated_read_ledger.summary.json
+var/audit/ledgers/sequence10_1_consolidated_read_ledger.tsv
+var/audit/ledgers/sequence10_1_read_set_absence_register.json
+var/audit/proof_logs/sequence10_1/sequence10_1_py_compile_changed_files.status
+var/audit/reports/sequence10_1_module_substitution_readiness_report.md
+var/audit/reports/sequence10_1_provider_timestamp_normalisation_audit.md
+var/audit/reports/sequence10_1_temporal_truth_contract_gap_report.md

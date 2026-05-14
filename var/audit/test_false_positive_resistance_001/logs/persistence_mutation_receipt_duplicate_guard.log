@@ -1,0 +1,22 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_receipt_ledger_normalises_ids_and_rejects_duplicate_after_normalisation _
+
+    def test_receipt_ledger_normalises_ids_and_rejects_duplicate_after_normalisation() -> None:
+        ledger = ReceiptLedger()
+    
+        ledger.append_receipt(" receipt-1 ", " proof ", {"ok": True})
+    
+        assert ledger.read_receipt("receipt-1") == {
+            "receipt_id": "receipt-1",
+            "receipt_kind": "proof",
+            "payload": {"ok": True},
+        }
+>       with pytest.raises(ValueError, match="duplicate receipt_id: receipt-1"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/persistence/test_receipt_ledger_surface.py:78: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_receipt_ledger_surface.py::test_receipt_ledger_normalises_ids_and_rejects_duplicate_after_normalisation - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed in 0.19s

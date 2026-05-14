@@ -1,0 +1,1273 @@
+{
+  "guardrails": [
+    "write/extend tests before any source implementation or refactor",
+    "do not mutate vocabulary data unless a vocabulary-mutation gate is explicitly opened",
+    "do not mutate original Atlas/Bridge JSON or generated surface slices",
+    "do not open runtime trading, capital deployment, broker/API dependency, or refactor work from this queue artefact"
+  ],
+  "ledger_name": "active_code_atlas_test_first_execution_queue",
+  "purpose": "Deterministic ordering of the comparison-derived test-first queue. This does not implement tests or source changes.",
+  "recommended_first_tranche": {
+    "comparison_record_ids": [
+      "ACABC-0047",
+      "ACABC-0046",
+      "ACABC-0045"
+    ],
+    "queue_record_ids": [
+      "ACATQ-0046",
+      "ACATQ-0045",
+      "ACATQ-0044"
+    ],
+    "reason": "Smallest non-runtime governance surface with Tier A queue rows; good first tests-first tranche before any runtime/refactor work.",
+    "surface": "Vocabulary governance interface",
+    "tranche_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_001_VOCABULARY_GOVERNANCE_SURFACE"
+  },
+  "records": [
+    {
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_record_count": 3,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0047",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 1,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0046",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "vocabulary governance authority"
+    },
+    {
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_record_count": 3,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0046",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 2,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0045",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "vocabulary governance authority"
+    },
+    {
+      "blueprint_surface": "Vocabulary governance interface",
+      "bridge_record_count": 3,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0045",
+      "comparison_status": "transform_required",
+      "execution_priority": 3,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 439,
+        "line_start": 424,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0044",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "vocabulary governance authority"
+    },
+    {
+      "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+      "bridge_record_count": 44,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0044",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 4,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 422,
+        "line_start": 407,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier B",
+      "queue_record_id": "ACATQ-0043",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "testing and proof authorities"
+    },
+    {
+      "blueprint_surface": "Testing, proof, and checkpoint surfaces",
+      "bridge_record_count": 28,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0043",
+      "comparison_status": "transform_required",
+      "execution_priority": 5,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 422,
+        "line_start": 407,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier B",
+      "queue_record_id": "ACATQ-0042",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "testing and proof authorities"
+    },
+    {
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_record_count": 56,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0042",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 6,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0041",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "persistence and ledger authorities"
+    },
+    {
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_record_count": 18,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0041",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 7,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0040",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "persistence and ledger authorities"
+    },
+    {
+      "blueprint_surface": "Persistence, ledgers, and receipts",
+      "bridge_record_count": 23,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0040",
+      "comparison_status": "transform_required",
+      "execution_priority": 8,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 405,
+        "line_start": 390,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0039",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "persistence and ledger authorities"
+    },
+    {
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_record_count": 28,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0017",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 9,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0017",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "DMPV3 packet authority"
+    },
+    {
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_record_count": 21,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0016",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 10,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0016",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "DMPV3 packet authority"
+    },
+    {
+      "blueprint_surface": "DMPV3 packet carriage",
+      "bridge_record_count": 24,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0015",
+      "comparison_status": "transform_required",
+      "execution_priority": 11,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 235,
+        "line_start": 220,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0015",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "DMPV3 packet authority"
+    },
+    {
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_record_count": 48,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0003",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 12,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0003",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "ingress and adapter authorities"
+    },
+    {
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_record_count": 110,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0002",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 13,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0002",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "ingress and adapter authorities"
+    },
+    {
+      "blueprint_surface": "External source interfaces and API ingress",
+      "bridge_record_count": 76,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0001",
+      "comparison_status": "transform_required",
+      "execution_priority": 14,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 150,
+        "line_start": 135,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0001",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "ingress and adapter authorities"
+    },
+    {
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_record_count": 31,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0006",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 15,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0006",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "raw capture and source-temporal authorities"
+    },
+    {
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_record_count": 11,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0005",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 16,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0005",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "raw capture and source-temporal authorities"
+    },
+    {
+      "blueprint_surface": "Raw capture and source temporal law",
+      "bridge_record_count": 66,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0004",
+      "comparison_status": "transform_required",
+      "execution_priority": 17,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 167,
+        "line_start": 152,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0004",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "raw capture and source-temporal authorities"
+    },
+    {
+      "blueprint_surface": "Raw signal families",
+      "bridge_record_count": 33,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0009",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 18,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0009",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "raw signal family authorities"
+    },
+    {
+      "blueprint_surface": "Raw signal families",
+      "bridge_record_count": 22,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0008",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 19,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0008",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "raw signal family authorities"
+    },
+    {
+      "blueprint_surface": "Raw signal families",
+      "bridge_record_count": 68,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0007",
+      "comparison_status": "transform_required",
+      "execution_priority": 20,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 184,
+        "line_start": 169,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0007",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "raw signal family authorities"
+    },
+    {
+      "blueprint_surface": "Financial and event calendar architecture",
+      "bridge_record_count": 102,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0011",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 21,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 201,
+        "line_start": 186,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0011",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "financial calendar authority"
+    },
+    {
+      "blueprint_surface": "Financial and event calendar architecture",
+      "bridge_record_count": 15,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0010",
+      "comparison_status": "transform_required",
+      "execution_priority": 22,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 201,
+        "line_start": 186,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0010",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "financial calendar authority"
+    },
+    {
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_record_count": 18,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0014",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 23,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0014",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "runtime preparation authority"
+    },
+    {
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_record_count": 31,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0013",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 24,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0013",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "runtime preparation authority"
+    },
+    {
+      "blueprint_surface": "Prepared ingress and runtime context preparation",
+      "bridge_record_count": 2,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0012",
+      "comparison_status": "transform_required",
+      "execution_priority": 25,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 218,
+        "line_start": 203,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0012",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "runtime preparation authority"
+    },
+    {
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_record_count": 52,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0039",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 26,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0038",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "review and explanation authorities"
+    },
+    {
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_record_count": 45,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0038",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 27,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0037",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "review and explanation authorities"
+    },
+    {
+      "blueprint_surface": "Review and explanation layer",
+      "bridge_record_count": 46,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0037",
+      "comparison_status": "transform_required",
+      "execution_priority": 28,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 388,
+        "line_start": 373,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0036",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "review and explanation authorities"
+    },
+    {
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_record_count": 66,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0024",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 29,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0024",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "coefficient and modifier authorities"
+    },
+    {
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_record_count": 84,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0023",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 30,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0023",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "coefficient and modifier authorities"
+    },
+    {
+      "blueprint_surface": "Dynamic coefficient and modifier authority",
+      "bridge_record_count": 43,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0022",
+      "comparison_status": "transform_required",
+      "execution_priority": 31,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 286,
+        "line_start": 271,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0022",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "coefficient and modifier authorities"
+    },
+    {
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_record_count": 32,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0021",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 32,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 269,
+        "line_start": 254,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0021",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "parallel risk authority"
+    },
+    {
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_record_count": 25,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0020",
+      "comparison_status": "transform_required",
+      "execution_priority": 33,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 269,
+        "line_start": 254,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0020",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "parallel risk authority"
+    },
+    {
+      "blueprint_surface": "Serial desk-cognition spine",
+      "bridge_record_count": 30,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0019",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 34,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 252,
+        "line_start": 237,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0019",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "serial desk-cognition authority"
+    },
+    {
+      "blueprint_surface": "Serial desk-cognition spine",
+      "bridge_record_count": 109,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0018",
+      "comparison_status": "transform_required",
+      "execution_priority": 35,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 252,
+        "line_start": 237,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0018",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "serial desk-cognition authority"
+    },
+    {
+      "blueprint_surface": "Playbook library architecture",
+      "bridge_record_count": 31,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0026",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 36,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 303,
+        "line_start": 288,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0026",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "playbook library authority"
+    },
+    {
+      "blueprint_surface": "Playbook library architecture",
+      "bridge_record_count": 64,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0025",
+      "comparison_status": "transform_required",
+      "execution_priority": 37,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 303,
+        "line_start": 288,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0025",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "playbook library authority"
+    },
+    {
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_record_count": 6,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0031",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 38,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0031",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "downstream opening authority"
+    },
+    {
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_record_count": 7,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0030",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 39,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0030",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "downstream opening authority"
+    },
+    {
+      "blueprint_surface": "Opening architecture and placement readiness",
+      "bridge_record_count": 61,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0029",
+      "comparison_status": "transform_required",
+      "execution_priority": 40,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 337,
+        "line_start": 322,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0029",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "downstream opening authority"
+    },
+    {
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_record_count": 14,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0034",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 41,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0034",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "live inventory and position authorities"
+    },
+    {
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_record_count": 5,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0033",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 42,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0033",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "live inventory and position authorities"
+    },
+    {
+      "blueprint_surface": "Live position and inventory architecture",
+      "bridge_record_count": 17,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0032",
+      "comparison_status": "transform_required",
+      "execution_priority": 43,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 354,
+        "line_start": 339,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0032",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "live inventory and position authorities"
+    },
+    {
+      "blueprint_surface": "Downstream capital deployment authority",
+      "bridge_record_count": 1,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0027",
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 44,
+      "implementation_leaf_type": "later_test_first_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 320,
+        "line_start": 305,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0027",
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "capital deployment authority"
+    },
+    {
+      "blueprint_surface": "Downstream capital deployment authority",
+      "bridge_record_count": 1,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0028",
+      "comparison_status": "transform_required",
+      "execution_priority": 45,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 320,
+        "line_start": 305,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier B",
+      "queue_record_id": "ACATQ-0028",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "capital deployment authority"
+    },
+    {
+      "blueprint_surface": "Exit and close architecture",
+      "bridge_record_count": 90,
+      "closed_boundaries": [
+        "no source implementation change in this queue artefact",
+        "no test implementation change in this comparison gate",
+        "no refactor",
+        "no original Atlas/Bridge JSON mutation",
+        "no generated Atlas slice rebuild",
+        "no vocabulary mutation"
+      ],
+      "comparison_record_id": "ACABC-0036",
+      "comparison_status": "transform_required",
+      "execution_priority": 46,
+      "implementation_leaf_type": "later_blueprint_leaf",
+      "must_happen_before": "any source refactor, feature import, donor Atlas implementation, or status upgrade claim",
+      "normative_surface_evidence": {
+        "line_end": 371,
+        "line_start": 356,
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+      },
+      "priority_basis": "control/governance and lower-runtime-risk surfaces first; extend existing proof before new families where same surface priority ties; refactor remains closed",
+      "proof_tier": "Tier A",
+      "queue_record_id": "ACATQ-0035",
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "exit and close authority"
+    }
+  ],
+  "schema_version": "1.0-draft",
+  "status": "ordered_queue_ready_no_tests_written_proposed_only",
+  "classification_note": "STATIC_STRUCTURAL_TRIAGE_ONLY",
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status."
+}

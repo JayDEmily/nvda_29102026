@@ -1,0 +1,141 @@
+{
+  "created_utc": "2026-05-13T05:40:00Z",
+  "target": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 116
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 206438,
+      "line_count": 572,
+      "sha256": "f9c4aca54842b0ec2a9d2566101d60ec6eb105880e1a388d639a744a74bdd334",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 572
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_066/reports/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_REPORT.json",
+      "byte_count": 4812,
+      "line_count": 111,
+      "sha256": "0f5b1ae11fe2195a5dc31bb2410e1d5a9e9268cf6b403d2de61438614f52b0d1",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 111
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_proof_chain_status_audit_066/receipts/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_RECEIPT.md",
+      "byte_count": 908,
+      "line_count": 9,
+      "sha256": "92ee097e05efdabb5ba32c761ce14873e97cbac36677e9acfc7d0eb361369e75",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CURRENT_PROOF_CHAIN_STATUS_AUDIT_066_FULL_READ_MANIFEST.json",
+      "byte_count": 13001,
+      "line_count": 321,
+      "sha256": "7c119c4e124b732e9227e59845cdf1d2126e8db40925abe98852e6159c4d12f3",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 321
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_REPORT.json",
+      "byte_count": 2842,
+      "line_count": 47,
+      "sha256": "7f6e94469a6ae9c55046e3e7d846d8f1162c0f2da396a654fed5a18ed8906c9c",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 47
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/receipts/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_RECEIPT.md",
+      "byte_count": 794,
+      "line_count": 10,
+      "sha256": "08610cf5717303edaba1a45c6f05746cee90ee3d124b61b187d699e568da7fe0",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 10
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/current_pointer_integrity_scan_067/reports/ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_067_PROOF_STDOUT.txt",
+      "byte_count": 13229,
+      "line_count": 151,
+      "sha256": "0b423c37b8a9ad0ed38e3c9307750c2511a89f97a7f5aee9f2c5b574303b97dd",
+      "read_method": "manual_full_file_read_plus_active_current_pointer_integrity_scan_067_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 151
+        }
+      ],
+      "notes": "Current target controlling/material evidence for current-pointer integrity scan 067."
+    }
+  ]
+}

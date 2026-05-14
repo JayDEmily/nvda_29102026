@@ -1,0 +1,77 @@
+{
+  "leaf": "ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063",
+  "status": "RECORDED",
+  "classification": "PASS_inherited_agents_harness_refresh_detected_and_bounded",
+  "previous_pointer": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_062_RECORDED",
+  "new_pointer": "ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECORDED",
+  "title": "Record inherited AGENTS.md harness refresh state at intake",
+  "source_tarball": {
+    "path": "/mnt/data/NVDA10_2_HARNESS_LAW_AGENTS_REFRESH_2026-05-13.tar.gz",
+    "sha256": "c94046045105ac1f3cad7bf2e02b82019b923daa0c72d5672e38ddd6dfbe2cec",
+    "size_observed": "60M via ls -lh"
+  },
+  "git": {
+    "head": "180629fe80cc8b30d4cabd9f921023f45c355e63",
+    "branch": "worker/handoff-control-repair-c466",
+    "status_before_leaf": [
+      " M AGENTS.md",
+      "?? var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/"
+    ]
+  },
+  "observed_inherited_working_tree_state": {
+    "AGENTS.md": "modified relative to HEAD before this leaf; treated as inherited checkpoint state from the user-supplied harness-refresh tarball",
+    "diff_stat": "AGENTS.md | 523 ++++++++++++--------------------------------------------------\n 1 file changed, 98 insertions(+), 425 deletions(-)",
+    "diff_numstat": "98\t425\tAGENTS.md",
+    "diff_patch_path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF.patch",
+    "diff_patch_note": "Diff artifact is whitespace-sanitised as an audit artefact so git diff --check can inspect the working tree; canonical diff remains reproducible from AGENTS.md against HEAD."
+  },
+  "control_read_metadata_after_intake": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 3248,
+      "line_count": 116,
+      "sha256": "c2e604fd7314959b6799c239d72af6c04a1d805cc74805d53ac975d9f70610d6"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 202052,
+      "line_count": 560,
+      "sha256": "eb03de67449fb2e5cc2b7be55e6a6434db81c8b775a81d3141efd8ab64e0ba21"
+    }
+  ],
+  "mutated_by_this_leaf": [
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_REPORT.json",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/receipts/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_RECEIPT.md",
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FULL_READ_MANIFEST.json",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_GIT_STATUS_BEFORE.txt",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF_STAT.txt",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF_NUMSTAT.txt",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_AGENTS_DIFF.patch",
+    "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_PROOF_STDOUT.txt"
+  ],
+  "not_mutated_by_this_leaf": [
+    "AGENTS.md",
+    "PLANS.md"
+  ],
+  "boundary_result": "runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation remained closed",
+  "proof_status": "PASS_all_recorded_exit_marked_commands_exit_status_0",
+  "proof_stdout_path": "var/audit/active_code_atlas_001/agents_harness_refresh_intake_audit_063/reports/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_PROOF_STDOUT.txt",
+  "proof_observed_results": {
+    "git fsck --connectivity-only": 0,
+    "git diff --check": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": 0,
+    "python scripts/run_proof_block.py --check-all": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_AGENTS_HARNESS_REFRESH_INTAKE_AUDIT_063_FULL_READ_MANIFEST.json": 0
+  },
+  "proof_artifact_repairs": [
+    "sanitised generated AGENTS diff patch trailing whitespace",
+    "removed trailing blank line from proof stdout artefact"
+  ]
+}

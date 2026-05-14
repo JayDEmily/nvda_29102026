@@ -1,0 +1,63 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 11 items
+
+tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py ...... [ 54%]
+....F                                                                    [100%]
+
+=================================== FAILURES ===================================
+_______ test_apply_posture_modifiers_detaches_nested_envelope_from_input _______
+
+    def test_apply_posture_modifiers_detaches_nested_envelope_from_input() -> None:
+        """Modifier application must not share nested caller envelope state."""
+    
+        modifier_module = _require_module("nvda_desk.cognition.modifiers.state_conditioned")
+        posture_contracts = _require_module("nvda_desk.contracts.posture")
+    
+        service = _require_attr(modifier_module, "StateConditionedModifierService")()
+        permission_state = _require_attr(posture_contracts, "PermissionState")
+        posture_output = _require_attr(posture_contracts, "PostureRiskOutput")
+        packet = service.build_packet(
+            active_modifier_ids=["negative_gamma_stress"], owner_stage="posture"
+        )
+        original = posture_output(
+            permission_state=permission_state.ALLOW,
+            local_envelope={"source_context": {"source": "fixture"}},
+        )
+    
+        adjusted = service.apply_posture_modifiers(posture=original, modifier_packet=packet)
+        adjusted.local_envelope["source_context"]["source"] = "mutated"
+    
+>       assert original.local_envelope["source_context"] == {"source": "fixture"}
+E       AssertionError: assert {'source': 'mutated'} == {'source': 'fixture'}
+E         
+E         Differing items:
+E         {'source': 'mutated'} != {'source': 'fixture'}
+E         
+E         Full diff:
+E           {
+E         -     'source': 'fixture',
+E         ?                ^^^ ^^
+E         +     'source': 'mutated',
+E         ?                ^^ ^^ +
+E           }
+
+tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py:256: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py::test_apply_posture_modifiers_detaches_nested_envelope_from_input - AssertionError: assert {'source': 'mutated'} == {'source': 'fixture'}
+  
+  Differing items:
+  {'source': 'mutated'} != {'source': 'fixture'}
+  
+  Full diff:
+    {
+  -     'source': 'fixture',
+  ?                ^^^ ^^
+  +     'source': 'mutated',
+  ?                ^^ ^^ +
+    }
+========================= 1 failed, 10 passed in 2.17s =========================

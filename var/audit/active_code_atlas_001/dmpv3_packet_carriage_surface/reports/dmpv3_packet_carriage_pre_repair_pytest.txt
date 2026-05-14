@@ -1,0 +1,44 @@
+.....F                                                                   [100%]
+=================================== FAILURES ===================================
+______ test_dmpv3_extensions_cannot_replace_canonical_schema_identifiers _______
+
+    def test_dmpv3_extensions_cannot_replace_canonical_schema_identifiers() -> None:
+        packet = build_dmp_v3_packet(
+            packet_id="pkt-extension-guard-1",
+            dataschema="TemporalContextOutput",
+            data={"state": "ready"},
+            packetrole="stage_packet",
+            module_id="temporal_context",
+            grammar_role="serial_runtime",
+            behaviour_class="stage_output",
+            stage_name="temporal_context",
+            emitted_at=datetime(2026, 4, 21, 9, 45, tzinfo=UTC),
+            traceid="trace-extension-guard",
+            runid="run-extension-guard",
+            dmpextensions={
+                "nvda": {
+                    "schema_identifiers": {
+                        "payload_model_name": "InjectedPayload",
+                        "payload_module_path": "not.canonical",
+                        "output_model_name": "InjectedEnvelope",
+                    },
+                    "execution_context": {"stack_id": "stack-extension-guard"},
+                }
+            },
+        )
+    
+        schema_identifiers = packet.dmpextensions["nvda"]["schema_identifiers"]
+>       assert schema_identifiers["payload_model_name"] == "dict"
+E       AssertionError: assert 'InjectedPayload' == 'dict'
+E         
+E         - dict
+E         + InjectedPayload
+
+tests/tier_a/packets/test_reference_packet_carriage.py:148: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/packets/test_reference_packet_carriage.py::test_dmpv3_extensions_cannot_replace_canonical_schema_identifiers - AssertionError: assert 'InjectedPayload' == 'dict'
+  
+  - dict
+  + InjectedPayload
+1 failed, 5 passed in 0.96s
+exit_status=1

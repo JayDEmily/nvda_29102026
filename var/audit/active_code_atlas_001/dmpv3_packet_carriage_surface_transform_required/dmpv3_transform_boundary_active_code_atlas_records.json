@@ -1,0 +1,130 @@
+{
+  "ledger_name": "active_code_atlas_dmpv3_packet_carriage_surface_transform_required",
+  "schema_version": "1.0-local-surface-adjudication",
+  "status": "read_adjudicated_surface_slice",
+  "surface": "DMPV3 packet carriage",
+  "queue_row": "ACATQ-0015 / ACABC-0015",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-009-0001",
+      "title": "DMPV3 transform-required donor packet services remain outside native packet authority",
+      "surface": "DMPV3 packet carriage",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_added_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0015",
+        "ACABC-0015"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_parallel_risk_018",
+        "atlas_donor_parallel_risk_020",
+        "atlas_donor_cognition_026",
+        "atlas_donor_domain_temporal_state_002",
+        "atlas_donor_service_carry_handoff_003",
+        "atlas_donor_service_review_packets_001",
+        "atlas_donor_service_imported_market_substrate_005",
+        "atlas_donor_service_imported_execution_planning_005",
+        "atlas_donor_service_imported_posture_enrichers_005"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+          "line_start": 19,
+          "line_end": 30
+        },
+        {
+          "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+          "line_start": 31,
+          "line_end": 58
+        },
+        {
+          "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+          "line_start": 155,
+          "line_end": 165
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 220,
+          "line_end": 235
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 514,
+          "line_end": 540
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 714,
+          "line_end": 735
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/packets.py",
+          "line_start": 86,
+          "line_end": 123
+        },
+        {
+          "path": "src/nvda_desk/contracts/packets.py",
+          "line_start": 127,
+          "line_end": 252
+        },
+        {
+          "path": "src/nvda_desk/packets/dmp_packets.py",
+          "line_start": 13,
+          "line_end": 87
+        },
+        {
+          "path": "src/nvda_desk/schemas/dmp.py",
+          "line_start": 1,
+          "line_end": 12
+        },
+        {
+          "path": "src/nvda_desk/schemas/dmp_envelope.py",
+          "line_start": 1,
+          "line_end": 23
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 52
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 176,
+          "line_end": 191
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 354,
+          "line_end": 374
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2865,
+          "line_end": 2867
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 2946,
+          "line_end": 2951
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "Native DMPV3 packet authority remains the canonical contract and builder surface. The compatibility modules under schemas/dmp.py and schemas/dmp_envelope.py re-export canonical objects rather than owning a parallel grammar. The transform-required donor packet/service names are not present as native nvda_desk service modules or packet classes.",
+      "test_first_gap_or_action": "A new Tier A transform-boundary family was written before source work. It passed without source repair, proving the existing active repo keeps donor ReviewPacketService, CarryHandoffBuilder, imported service emitters, ParallelRiskLanePacket, PostureLocalEnvelopeSurface, and ClockEnvelope outside native packet authority while preserving thin compatibility wrappers.",
+      "adjudication_notes": [
+        "ACABC-0015 is a transform-required DMPV3 row. Its donor packet/service wrappers are evidence for a native boundary blocker, not authority to recreate donor service modules or local envelope classes.",
+        "The generated all-surface active-code Atlas was used only as navigation and not as semantic proof."
+      ],
+      "limitations": [
+        "This pass does not implement donor ReviewPacketService, CarryHandoffBuilder, imported market substrate, imported execution planning, imported posture enricher, ParallelRiskLanePacket, PostureLocalEnvelopeSurface, or ClockEnvelope surfaces.",
+        "This pass does not mutate runtime trading behaviour, financial/risk policy, dependencies, original Atlas/Bridge JSON, generated slices, vocabulary data, or source code."
+      ]
+    }
+  ]
+}

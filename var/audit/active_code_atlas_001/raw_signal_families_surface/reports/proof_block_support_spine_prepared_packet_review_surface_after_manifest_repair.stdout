@@ -1,0 +1,93 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda10_row015_continue_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0, asyncio-1.3.0, Faker-40.1.2, cov-7.0.0, json-report-1.5.0, ddtrace-4.4.0, metadata-3.1.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 35 items
+
+tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py . [  2%]
+.F.                                                                      [ 11%]
+tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py . [ 14%]
+...                                                                      [ 22%]
+tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py . [ 25%]
+                                                                         [ 25%]
+tests/tier_a/packets/test_reference_packet_carriage.py ......            [ 42%]
+tests/tier_a/review_runtime/test_review_explanation_service_surface.py . [ 45%]
+..                                                                       [ 51%]
+tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py . [ 54%]
+....                                                                     [ 65%]
+tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py . [ 68%]
+..                                                                       [ 74%]
+tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py ..  [ 80%]
+tests/tier_b/review_lineage/test_bounded_trace_review_regime.py ..       [ 85%]
+tests/tier_b/review_lineage/test_review_effective_policy_lineage.py ...  [ 94%]
+tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py ..      [100%]
+
+=================================== FAILURES ===================================
+_______ test_preparation_runtime_dataset_makes_optional_absence_explicit _______
+
+    def test_preparation_runtime_dataset_makes_optional_absence_explicit() -> None:
+        preparer = _require_module("nvda_desk.preparation.runtime_preparer")
+        assert preparer.__name__ == "nvda_desk.preparation.runtime_preparer"
+        prepare_runtime_dataset = _require_attr(preparer, "prepare_runtime_dataset")
+        assert prepare_runtime_dataset is getattr(preparer, "prepare_runtime_dataset")
+    
+        dataset = prepare_runtime_dataset(
+>           load_api_payload(
+                {
+                    "snapshot_id": "snap-absence",
+                    "market_snapshot": {"spot_price": 100.0},
+                    "options_surface": {},
+                }
+            )
+        )
+
+tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py:114: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/ingress/raw_bundle_loader.py:128: in load_api_payload
+    return _build_bundle(payload, source_kind="api_payload")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+payload = {'market_snapshot': {'spot_price': 100.0}, 'options_surface': {}, 'snapshot_id': 'snap-absence'}
+
+    def _build_bundle(payload: Mapping[str, Any], *, source_kind: str) -> RealDataBundle:
+        market_snapshot = _build_market_snapshot(payload)
+        options_surface = _build_options_surface(payload, market_snapshot=market_snapshot)
+        temporal_sources = (payload, market_snapshot, options_surface)
+        return RealDataBundle(
+            snapshot_id=(
+                str(payload["snapshot_id"])
+                if "snapshot_id" in payload and payload["snapshot_id"] is not None
+                else None
+            ),
+            market_snapshot=market_snapshot,
+            options_surface=options_surface,
+>           provenance=RawBundleProvenance(
+                source_kind=source_kind,
+                transport="mapping",
+                source_time_raw=_first_present(temporal_sources, "source_time_raw"),
+                source_time_kind=_first_present(temporal_sources, "source_time_kind"),
+                source_timezone_raw=_first_present(temporal_sources, "source_timezone_raw"),
+                source_time_utc=_first_present(temporal_sources, "source_time_utc"),
+                source_date=_first_present(temporal_sources, "source_date"),
+                captured_at_utc=_first_present(temporal_sources, "captured_at_utc"),
+                persisted_at_utc=_first_present(temporal_sources, "persisted_at_utc"),
+                source_provider=_first_present(temporal_sources, "source_provider"),
+                source_channel=_first_present(temporal_sources, "source_channel"),
+                time_granularity=_first_present(temporal_sources, "time_granularity"),
+            ),
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for RawBundleProvenance
+E         Value error, source temporal standard requires source_time_utc or source_date [type=value_error, input_value={'source_kind': 'api_payl...time_granularity': None}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.13/v/value_error
+
+src/nvda_desk/ingress/raw_bundle_loader.py:102: ValidationError
+=========================== short test summary info ============================
+FAILED tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py::test_preparation_runtime_dataset_makes_optional_absence_explicit - pydantic_core._pydantic_core.ValidationError: 1 validation error for RawBundleProvenance
+  Value error, source temporal standard requires source_time_utc or source_date [type=value_error, input_value={'source_kind': 'api_payl...time_granularity': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+========================= 1 failed, 34 passed in 1.62s =========================
+proof_block_id=support_spine_prepared_packet_review_surface
+command=env PYTHONPATH=src python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py tests/tier_a/packets/test_reference_packet_carriage.py tests/tier_a/review_runtime/test_review_explanation_service_surface.py tests/tier_a/upstream_signal tests/tier_b/review_lineage

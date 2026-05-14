@@ -1,0 +1,72 @@
+{
+  "surface": "Persistence, ledgers, and receipts",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_004_PERSISTENCE_LEDGERS_RECEIPTS_SURFACE",
+  "queue_basis": {
+    "queue_record_id": "ACATQ-0041",
+    "comparison_record_id": "ACABC-0042",
+    "required_action": "extend_existing_test_family_before_code",
+    "proof_tier": "Tier A"
+  },
+  "status": "PASS",
+  "source_repair_performed": false,
+  "structural_inventory_used_as": "navigation_only",
+  "records_written": 6,
+  "test_extension": {
+    "path": "tests/tier_a/persistence/test_append_only_repository_surfaces.py",
+    "test_name": "test_append_only_observation_repositories_do_not_expose_keyed_mutators",
+    "line_start": 39,
+    "line_end": 64,
+    "purpose": "Prove append-only execution-event and market-observation stores expose no public keyed overwrite/update/delete/upsert/write mutators."
+  },
+  "commands": [
+    {
+      "name": "targeted_append_only_test",
+      "command": "PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_append_only_repository_surfaces.py -q",
+      "exit_code": 0,
+      "observed_output": "3 passed in 0.48s",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/reports/test_append_only_repository_surfaces_output.txt"
+    },
+    {
+      "name": "persistence_ledgers_receipts_surface_proof_block",
+      "command": "PYTHONPATH=src python scripts/run_proof_block.py --block persistence_ledgers_receipts_surface",
+      "exit_code": 0,
+      "observed_output": "28 passed in 1.10s; proof_block_id=persistence_ledgers_receipts_surface",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/reports/proof_block_persistence_ledgers_receipts_surface_output.txt"
+    },
+    {
+      "name": "proof_block_manifest_check_all",
+      "command": "PYTHONPATH=src python scripts/run_proof_block.py --check-all",
+      "exit_code": 0,
+      "observed_output": "proof_blocks_check_all=PASS count=19",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/reports/proof_block_manifest_check_all_output.txt"
+    },
+    {
+      "name": "surface_records_and_registry_validator",
+      "command": "PYTHONPATH=src python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+      "exit_code": 0,
+      "observed_output": "validation_status=PASS; error_count=0; warning_count=0; surface_record_count=22; evidence_entry_count=160",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/reports/validate_surface_records_and_registry_output.txt"
+    },
+    {
+      "name": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "observed_output": "git_diff_check_exit_code=0",
+      "report_path": "var/audit/active_code_atlas_001/persistence_ledgers_receipts_surface/reports/git_diff_check_output.txt"
+    }
+  ],
+  "boundary_observations": [
+    "No source file was changed.",
+    "No original Atlas/Bridge JSON was changed.",
+    "No generated Atlas slices were rebuilt.",
+    "No vocabulary data was changed.",
+    "No runtime trading, capital, financial-risk policy, dependency, VENV, black, or ruff work was opened."
+  ],
+  "next_pointer_basis": {
+    "queue_record_id": "ACATQ-0040",
+    "comparison_record_id": "ACABC-0041",
+    "required_action": "write_new_test_family_before_code",
+    "surface": "Persistence, ledgers, and receipts",
+    "proof_tier": "Tier A"
+  }
+}

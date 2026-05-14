@@ -1,0 +1,75 @@
+{
+  "leaf": "ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049",
+  "status": "RECORDED",
+  "classification": "PASS_freeze_diff_confined_to_one_off_control_surface_boundary",
+  "previous_pointer": "ACTIVE_CURRENT_POINTER_INTEGRITY_SCAN_048_RECORDED",
+  "new_pointer": "ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_RECORDED",
+  "inspected_diff_command": "git diff -- AGENTS.md PLANS.md",
+  "diff_path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/freeze_diff_AGENTS_PLANS_049.diff",
+  "diff_exit_code": 0,
+  "diff_sha256": "2a79988db9f2ac1174aa7c9d4a7cf411c75b4df3730b2b9158027c21715fdae3",
+  "diff_byte_count": 10222,
+  "file_classifications": [
+    {
+      "file": "AGENTS.md",
+      "diff_exit_code": 0,
+      "hunks": [
+        {
+          "hunk": "@@ -15,6 +15,20 @@",
+          "classification": "expected_one_off_freeze_control_law_insert",
+          "selected_defect": false,
+          "reason": "Adds only Control-Surface Freeze Law that freezes AGENTS.md/PLANS.md and routes progressive execution state to ROADMAP_LEDGER.md."
+        }
+      ]
+    },
+    {
+      "file": "PLANS.md",
+      "diff_exit_code": 0,
+      "hunks": [
+        {
+          "hunk": "@@ -2,12 +2,24 @@",
+          "classification": "expected_one_off_freeze_plan_insert_and_section_reference_repair",
+          "selected_defect": false,
+          "reason": "Adds Frozen standing-plan rule and repairs stale AGENTS section 1A wording to current section 1 at the freeze boundary."
+        },
+        {
+          "hunk": "@@ -657,7 +669,7 @@",
+          "classification": "expected_stale_section_reference_repair",
+          "selected_defect": false,
+          "reason": "Repairs closeout authority reference from obsolete section 1A to current sections 1 and 15; no progress/status refresh."
+        }
+      ]
+    }
+  ],
+  "selected_defect_count": 0,
+  "mutated_files": [
+    "ROADMAP_LEDGER.md",
+    "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/freeze_diff_AGENTS_PLANS_049.diff",
+    "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_REPORT.json",
+    "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/receipts/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_RECEIPT.md",
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_FULL_READ_MANIFEST.json"
+  ],
+  "not_mutated_by_this_leaf": [
+    "AGENTS.md",
+    "PLANS.md"
+  ],
+  "closed_boundaries": [
+    "runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation"
+  ],
+  "proof_status": "PASS_all_recorded_commands_exit_status_0",
+  "proof_commands_recorded": [
+    "git fsck --connectivity-only",
+    "git diff --check",
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py",
+    "python scripts/run_proof_block.py --check-all",
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_FULL_READ_MANIFEST.json"
+  ],
+  "proof_observed_results": {
+    "git fsck --connectivity-only": 0,
+    "git diff --check": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py": 0,
+    "python scripts/run_proof_block.py --check-all": 0,
+    "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_FULL_READ_MANIFEST.json": 0
+  },
+  "proof_stdout_path": "var/audit/active_code_atlas_001/freeze_diff_confinement_audit_049/reports/ACTIVE_FREEZE_DIFF_CONFINEMENT_AUDIT_049_PROOF_STDOUT.txt"
+}

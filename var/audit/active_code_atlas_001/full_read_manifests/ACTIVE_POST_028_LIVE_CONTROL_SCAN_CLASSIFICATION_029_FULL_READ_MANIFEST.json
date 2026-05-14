@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "manifest_id": "ACTIVE_POST_028_LIVE_CONTROL_SCAN_CLASSIFICATION_029_FULL_READ_MANIFEST",
+  "target_tranche": "ACTIVE_POST_028_LIVE_CONTROL_SCAN_CLASSIFICATION_029",
+  "manifest_scope": "post_028_live_control_scan_classification_control_audit",
+  "status": "control_audit_manifest_current_hashes_full_read_true",
+  "entry_count": 7,
+  "full_read_false_count": 0,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "material_class": "control",
+      "byte_count": 14866,
+      "line_count": 301,
+      "sha256": "d87e5d3ccc7aabc964d61ea353b6a9b3b1eed519864170c9a3efca609564f703",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 301
+        }
+      ],
+      "notes": "Root continuation authority; unchanged in this pass."
+    },
+    {
+      "path": "PLANS.md",
+      "material_class": "control",
+      "byte_count": 90817,
+      "line_count": 668,
+      "sha256": "2af347cc94d0f094c36e76821d00e7a2188736f2bb21147f8a1eec14ff9e0379",
+      "read_method": "prior_full_read_plus_status_line_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 668
+        }
+      ],
+      "notes": "Updated status/current workstream to record 029."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "material_class": "control",
+      "byte_count": 179005,
+      "line_count": 523,
+      "sha256": "23bf4237e419022371df346714793da27b153fe2d93730b876fa6cb5ba77f051",
+      "read_method": "prior_full_read_plus_current_pointer_history_row_diff_review",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 523
+        }
+      ],
+      "notes": "Updated current pointer and history row for 029."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_028_live_control_scan_classification_029/reports/ACTIVE_POST_028_LIVE_CONTROL_SCAN_CLASSIFICATION_029_REPORT.json",
+      "material_class": "report",
+      "byte_count": 1593,
+      "line_count": 34,
+      "sha256": "1d581d03810b3f75315fcfd18054300d7eff7c34c275a1bf6384bb0fae7aa705",
+      "read_method": "line_numbered_full_read_after_generation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": "Post-028 live-control scan classification report."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/post_028_live_control_scan_classification_029/receipts/ACTIVE_POST_028_LIVE_CONTROL_SCAN_CLASSIFICATION_029_RECEIPT.md",
+      "material_class": "receipt",
+      "byte_count": 886,
+      "line_count": 20,
+      "sha256": "e453991a421e5ebdad68de52bcf498921f043f2390b9d1c7634193e0ed7221f5",
+      "read_method": "line_numbered_full_read_after_creation",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Post-028 live-control scan classification receipt."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_planning_status_quarantine_028/reports/ACTIVE_HISTORICAL_PLANNING_STATUS_QUARANTINE_028_REPORT.json",
+      "material_class": "prior_report",
+      "byte_count": 1855,
+      "line_count": 42,
+      "sha256": "cb8e2f815baf604d4066ca85dca273a13a2c6b6c10750259a80133fbd741d860",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 42
+        }
+      ],
+      "notes": "Prior current-chain 028 report used as predecessor state."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/historical_planning_status_quarantine_028/receipts/ACTIVE_HISTORICAL_PLANNING_STATUS_QUARANTINE_028_RECEIPT.md",
+      "material_class": "prior_receipt",
+      "byte_count": 988,
+      "line_count": 20,
+      "sha256": "2bbff37644acb38fac93f6c5544538abe9c995c0ad7fb455bc2d2c61954ce578",
+      "read_method": "line_numbered_full_read_current_pass",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 20
+        }
+      ],
+      "notes": "Prior current-chain 028 receipt used as predecessor state."
+    }
+  ],
+  "notes": "Dedicated manifest for post-028 live-control scan classification 029."
+}

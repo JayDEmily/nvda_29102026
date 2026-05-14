@@ -1,0 +1,42 @@
+{
+  "checkpoint_receipt_contract_proof_block_summary": "============================== 2 passed in 0.53s ===============================; proof_block_id=checkpoint_receipt_contract",
+  "checkpoint_receipt_contract_pytest_summary": "2 passed in 0.56s",
+  "error_count": 0,
+  "limitation_statement": "This is static structural evidence only. It does not prove semantic correctness, native satisfaction, implementation maturity, or test pass status.",
+  "linked_atlas_record_count": 4,
+  "linked_bridge_record_count": 6,
+  "new_test_family_added": true,
+  "proof_blocks_check_all_summary": "proof_blocks_check_all=PASS count=19",
+  "proof_model_pytest_summary": "22 passed in 32.88s",
+  "record_count": 1,
+  "record_status_counts": {
+    "new_tier_b_test_family_added_and_passed_no_source_repair": 1
+  },
+  "source_repair_performed": false,
+  "surface": "Testing, proof, and checkpoint surfaces",
+  "surface_limitation": "This transform-required testing/proof/checkpoint slice is read-adjudicated for the cited files only. It does not convert the full structural inventory into an accepted all-surface primary active-code Atlas.",
+  "test_and_check_statuses": {
+    "checkpoint_receipt_contract_proof_block_status": 0,
+    "checkpoint_receipt_contract_pytest_status": 0,
+    "git_diff_check_status": 0,
+    "proof_blocks_check_all_status": 0,
+    "proof_model_pytest_status": 0,
+    "surface_records_and_registry_validation_status": 0
+  },
+  "test_extension_performed": true,
+  "updated_utc": "2026-05-11T07:24:31Z",
+  "validation_status": "PASS",
+  "warning_count": 0,
+  "evidence_range_and_registry_validation": {
+    "surface_records_and_registry_validation_status": 0,
+    "git_diff_check_status": 0,
+    "surface_record_file_count": 3,
+    "surface_record_count": 16,
+    "evidence_entry_count": 106,
+    "unique_evidence_path_count": 38,
+    "tier_a_declared_total": 95,
+    "tier_a_entry_count": 95,
+    "tier_b_declared_total": 12,
+    "tier_b_entry_count": 12
+  }
+}

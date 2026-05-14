@@ -1,0 +1,119 @@
+............FFF......FF....F                                             [100%]
+=================================== FAILURES ===================================
+________ test_live_inventory_reconciliation_rejects_empty_fill_evidence ________
+
+    def test_live_inventory_reconciliation_rejects_empty_fill_evidence() -> None:
+        service = DownstreamLiveInventoryService(position_repository=PositionRepository())
+    
+>       with pytest.raises(ValueError, match="fill_evidence must contain at least one event"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py:300: Failed
+_ test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation _
+
+    def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation() -> None:
+        positions = PositionRepository()
+        service = DownstreamLiveInventoryService(position_repository=positions)
+    
+>       with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py:308: Failed
+_ test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting _
+
+    def test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting() -> None:
+        positions = PositionRepository()
+        positions.write_position(
+            "pos-1",
+            {
+                "symbol": "NVDA",
+                "declared_exposure": 10.0,
+                "fill_evidence_ids": ["fill-1"],
+                "fill_evidence": [{"fill_evidence_id": "fill-1", "position_id": "pos-1"}],
+            },
+        )
+        service = DownstreamLiveInventoryService(position_repository=positions)
+    
+>       with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py:343: Failed
+_ test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read _
+
+    def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read() -> None:
+        from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+        from nvda_desk.repositories.position_repository import PositionRepository
+    
+        runtime = _require_module("nvda_desk.runtime.orchestrator")
+        orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
+        positions = PositionRepository()
+        snapshot = DownstreamLiveInventoryService(position_repository=positions).reconcile_fill_evidence(
+            [
+                {
+                    "fill_evidence_id": "fill-1",
+                    "position_id": "pos-1",
+                    "symbol": "NVDA",
+                    "declared_exposure_delta": 7.5,
+                }
+            ],
+            reconciliation_id="recon-runtime-1",
+            inventory_id="runtime-reconciled",
+            receipt_id="runtime-inv-receipt-1",
+        )
+    
+>       receipt = orchestrator.run_once(
+            StageInputBundle(
+                temporal=TemporalContextInput(
+                    source_time_utc=datetime(2026, 4, 21, 13, 31, tzinfo=UTC),
+                    source_timezone_raw="America/New_York",
+                ),
+                regime=MarketRegimeContextInput(
+                    nvda_return_pct=0.1,
+                    nq_return_pct=0.05,
+                    vix_level=20.0,
+                ),
+                options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
+            ),
+            live_inventory_snapshot=snapshot,
+        )
+E       TypeError: DeskRuntimeOrchestrator.run_once() got an unexpected keyword argument 'live_inventory_snapshot'. Did you mean 'live_inventory_service'?
+
+tests/tier_a/runtime/test_runtime_orchestrator_surface.py:211: TypeError
+_ test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs __
+
+    def test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs() -> None:
+        from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+        from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
+    
+        runtime = _require_module("nvda_desk.runtime.orchestrator")
+        orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
+    
+>       with pytest.raises(ValueError, match="live_inventory_request requires live_inventory_service"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/runtime/test_runtime_orchestrator_surface.py:248: Failed
+____________ test_receipt_ledger_lists_receipts_by_kind_copy_safely ____________
+
+    def test_receipt_ledger_lists_receipts_by_kind_copy_safely() -> None:
+        ledger = ReceiptLedger()
+        ledger.append_receipt("receipt-1", "live_inventory_reconciliation", {"position_ids": ["pos-1"]})
+        ledger.append_receipt("receipt-2", "proof", {"passed": True})
+        ledger.append_receipt("receipt-3", " live_inventory_reconciliation ", {"position_ids": ["pos-2"]})
+    
+>       inventory_receipts = ledger.list_receipts_by_kind(" live_inventory_reconciliation ")
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'ReceiptLedger' object has no attribute 'list_receipts_by_kind'
+
+tests/tier_a/persistence/test_receipt_ledger_surface.py:87: AttributeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py::test_live_inventory_reconciliation_rejects_empty_fill_evidence - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py::test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py::test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/runtime/test_runtime_orchestrator_surface.py::test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read - TypeError: DeskRuntimeOrchestrator.run_once() got an unexpected keyword argument 'live_inventory_snapshot'. Did you mean 'live_inventory_service'?
+FAILED tests/tier_a/runtime/test_runtime_orchestrator_surface.py::test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/persistence/test_receipt_ledger_surface.py::test_receipt_ledger_lists_receipts_by_kind_copy_safely - AttributeError: 'ReceiptLedger' object has no attribute 'list_receipts_by_kind'
+6 failed, 22 passed in 1.11s

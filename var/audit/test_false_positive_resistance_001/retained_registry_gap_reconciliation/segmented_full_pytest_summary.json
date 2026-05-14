@@ -1,0 +1,71 @@
+{
+  "one_shot_full_pytest_status": "timeout_incomplete_no_status_file",
+  "segments": [
+    {
+      "no_tests": false,
+      "passed": 383,
+      "segment": "tier_a",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_a.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_a.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 19,
+      "segment": "tier_b_proof_model",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/proof_model_single_after_registry_reconciliation.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/proof_model_single_after_registry_reconciliation.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 2,
+      "segment": "tier_b_options_flow_support",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_options_flow_support.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_options_flow_support.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 9,
+      "segment": "tier_b_review_lineage",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_review_lineage.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_review_lineage.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 3,
+      "segment": "tier_b_review_replay",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_review_replay.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_review_replay.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 7,
+      "segment": "tier_b_serial_boundaries",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_serial_boundaries.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_serial_boundaries.stdout.log"
+    },
+    {
+      "no_tests": false,
+      "passed": 2,
+      "segment": "tier_b_upstream_support",
+      "status": "0",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_upstream_support.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_b_upstream_support.stdout.log"
+    },
+    {
+      "no_tests": true,
+      "passed": 0,
+      "segment": "tier_c",
+      "status": "5",
+      "stderr": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_c.stderr.log",
+      "stdout": "var/audit/test_false_positive_resistance_001/retained_registry_gap_reconciliation/segmented_full_tests_tier_c.stdout.log"
+    }
+  ],
+  "tier_c_note": "pytest exit code 5 means no tests collected under tests/tier_c",
+  "total_passed_segments_excluding_no_tests": 425
+}

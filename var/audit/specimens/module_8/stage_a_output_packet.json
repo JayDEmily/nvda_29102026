@@ -1,0 +1,159 @@
+{
+  "data": {
+    "arbiter_active": false,
+    "co_resident_from_session_start": true,
+    "environment_assessment": {
+      "assessment": "bounded_environment_assessment",
+      "assessment_basis": "bootstrap_temporal_input",
+      "captured_at_utc": null,
+      "invariant_reads": [
+        "serial_spine_preserved",
+        "parallel_risk_lane_is_independent_and_additive",
+        "module_8_bootstrap_adapter_only"
+      ],
+      "next_event_time_utc": null,
+      "notes": [
+        "environment_assessment_only",
+        "serial_spine_preserved",
+        "stage_a_uses_module_8_bootstrap_input_only",
+        "next_event_absent"
+      ],
+      "persisted_at_utc": null,
+      "source_channel": null,
+      "source_date": "2026-03-01",
+      "source_provider": null,
+      "source_time_kind": "date",
+      "source_time_raw": null,
+      "source_time_utc": null,
+      "source_timezone_raw": null,
+      "time_granularity": "date",
+      "window_ids": [],
+      "window_tags": []
+    },
+    "invariant_reads": [
+      "serial_spine_preserved",
+      "parallel_risk_lane_is_independent_and_additive",
+      "module_8_bootstrap_adapter_only"
+    ],
+    "lane_id": "parallel_risk_lane",
+    "notes": [
+      "stage_a_bootstrap_complete",
+      "stage_b_reserved_without_lawful_upstream_packets",
+      "stage_c_reserved_without_lawful_upstream_packets"
+    ],
+    "serial_spine_preserved": true,
+    "stage_read_state": [
+      {
+        "note": "accepted baseline exposes temporal input through Stage Input Bundle only",
+        "stage_name": "temporal",
+        "state": "bootstrap_input_used"
+      },
+      {
+        "note": "no lawful native upstream regime packet exists in the accepted baseline",
+        "stage_name": "regime",
+        "state": "not_yet_available"
+      },
+      {
+        "note": "no lawful native upstream options packet exists in the accepted baseline",
+        "stage_name": "options_flow",
+        "state": "not_yet_available"
+      },
+      {
+        "note": "posture is downstream of the bootstrap path",
+        "stage_name": "posture",
+        "state": "not_yet_available"
+      },
+      {
+        "note": "eligibility is downstream of the bootstrap path",
+        "stage_name": "eligibility",
+        "state": "not_yet_available"
+      },
+      {
+        "note": "execution is downstream of the bootstrap path",
+        "stage_name": "execution",
+        "state": "not_yet_available"
+      },
+      {
+        "note": "review remains downstream of the parallel-risk lane",
+        "stage_name": "review",
+        "state": "not_yet_available"
+      }
+    ]
+  },
+  "datacontenttype": "application/json",
+  "dataschema": "urn:nvda:schema:parallel_risk_lane.output:1.0.0",
+  "dmpextensions": {
+    "nvda": {
+      "parallel_risk": {
+        "stage_b": "reserved_without_lawful_upstream_packets",
+        "stage_c": "reserved_without_lawful_upstream_packets"
+      },
+      "schema_identifiers": {
+        "output_model_name": "ParallelRiskPreparationPacket",
+        "payload_model_name": "ParallelRiskPreparationPacket",
+        "payload_module_path": "nvda_desk.contracts.parallel_risk"
+      },
+      "semantic_dependencies": [],
+      "specimen": {
+        "anchor_row_ref": "Anchor_Data!A7:AE7",
+        "classification": "governed-workbook-derived bounded specimen",
+        "manual_promotion": true,
+        "not_live_runtime_authority": true,
+        "workbook_path": "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+      }
+    }
+  },
+  "dmpversion": "3.0.0",
+  "id": "module-8-parallel-risk-output-workbook-specimen-20260301",
+  "lineage": {
+    "decisiontraceid": null,
+    "dependencyids": [
+      "module-8-parallel-risk-bootstrap-workbook-specimen-20260301"
+    ],
+    "derivedfrom": "reference-ledger::Anchor_Data!A7:AE7",
+    "inputfingerprint": "sha256:5793b29c69fd0699577468192a60b9905f7bb9e4e9d81b6fcf0e146bb98bd08d",
+    "parentids": [
+      "module-8-parallel-risk-bootstrap-workbook-specimen-20260301"
+    ],
+    "replayref": null,
+    "replaytraceid": null,
+    "reviewtraceid": null,
+    "sourceartifactids": [
+      "data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx"
+    ]
+  },
+  "packetrole": "parallel_risk_packet",
+  "producer": {
+    "behaviour_class": "module_output",
+    "grammar_role": "parallel_risk_lane",
+    "module_id": "parallel_risk_lane",
+    "module_instance_id": "parallel_risk_lane::default",
+    "module_version": "native",
+    "stage_name": null
+  },
+  "runid": "run::module_8_parallel_risk_workbook_specimen",
+  "scenarioid": "workbook_specimen",
+  "source": "urn:nvda:producer:parallel_risk_lane",
+  "specversion": "1.0",
+  "summary": {
+    "headline": "parallel-risk stage-a output emitted",
+    "humanstate": "valid",
+    "keyflags": [
+      "stage_a_bootstrap",
+      "environment_assessment_only"
+    ]
+  },
+  "time": "2026-04-22T00:00:00Z",
+  "traceid": "trace::module_8_parallel_risk_workbook_specimen",
+  "type": "urn:nvda:packet:parallel_risk_packet",
+  "validation": {
+    "checks": [
+      {
+        "name": "schema_validation",
+        "passed": true
+      }
+    ],
+    "status": "valid",
+    "violations": []
+  }
+}

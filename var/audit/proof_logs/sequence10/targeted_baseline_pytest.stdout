@@ -1,0 +1,25 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/seq10_ck2_from_2A_work/source/NVIDIA9_remotetest-main
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 19 items
+
+tests/tier_a/review_runtime/test_review_contract_models.py .             [  5%]
+tests/tier_a/review_runtime/test_review_explanation_service_surface.py . [ 10%]
+                                                                         [ 10%]
+tests/tier_a/review_runtime/test_review_stage_surface.py .               [ 15%]
+tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py ..  [ 26%]
+tests/tier_b/review_lineage/test_bounded_trace_review_regime.py ..       [ 36%]
+tests/tier_b/review_lineage/test_review_effective_policy_lineage.py ...  [ 52%]
+tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py ..      [ 63%]
+tests/tier_a/analysis/test_replay_evaluation_surface.py ..               [ 73%]
+tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py . [ 78%]
+                                                                         [ 78%]
+tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py . [ 84%]
+                                                                         [ 84%]
+tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py . [ 89%]
+                                                                         [ 89%]
+tests/tier_b/upstream_support/test_bounded_trace_scenario_pack.py ..     [100%]
+
+============================== 19 passed in 0.68s ==============================

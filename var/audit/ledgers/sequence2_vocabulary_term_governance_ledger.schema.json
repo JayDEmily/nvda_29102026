@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NVDA9 Sequence 2 Vocabulary Term Governance Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sequence",
+    "tranche",
+    "created_at_utc",
+    "result",
+    "source_lock",
+    "inventory_assertions",
+    "term_classification_counts",
+    "terms",
+    "record_outcomes",
+    "sequence3_entry_posture"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "string"
+    },
+    "tranche": {
+      "type": "string"
+    },
+    "created_at_utc": {
+      "type": "string"
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "HOLD",
+        "LAWFUL_STOP",
+        "FAIL"
+      ]
+    },
+    "source_lock": {
+      "type": "object"
+    },
+    "read_summary": {
+      "type": "object"
+    },
+    "inventory_assertions": {
+      "type": "object"
+    },
+    "term_classification_counts": {
+      "type": "object"
+    },
+    "terms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "term",
+          "classification",
+          "mention_count",
+          "record_count",
+          "slice_count",
+          "sequence3_blocker"
+        ],
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "classification": {
+            "enum": [
+              "admitted_existing_term",
+              "mapped_to_existing_registry_entry",
+              "rejected_not_governed_term",
+              "deferred_not_blocking_sequence3",
+              "admission_required_blocking",
+              "unknown_blocking"
+            ]
+          },
+          "sequence3_blocker": {
+            "type": "boolean"
+          },
+          "mention_count": {
+            "type": "integer"
+          },
+          "record_count": {
+            "type": "integer"
+          },
+          "slice_count": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "record_outcomes": {
+      "type": "array"
+    },
+    "sequence3_entry_posture": {
+      "type": "string"
+    }
+  }
+}

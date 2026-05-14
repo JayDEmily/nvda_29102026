@@ -1,0 +1,470 @@
+{
+  "schema_version": "primary_to_bridge_comparison_v1",
+  "created_utc": "2026-05-12T00:00:00Z",
+  "status": "comparison_generated_with_gaps",
+  "classification_note": "AUDIT_COMPARISON_ONLY",
+  "limitation_statement": "Primary-to-Bridge comparison is audit/navigation evidence only. It compares synthesized read-adjudicated active-code Atlas records with read-only Atlas/Bridge artefacts; it does not prove semantic correctness, native satisfaction, implementation maturity, or feature import.",
+  "source_repo_branch": "worker/handoff-control-repair-c466",
+  "source_repo_head": "92643e3",
+  "inputs": {
+    "primary_active_code_atlas_path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+    "legacy_intent_atlas_path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json",
+    "native_intent_satisfaction_ledger_path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+    "static_comparison_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "static_record_join_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_record_join.json",
+    "execution_queue_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json"
+  },
+  "guardrails": [
+    "donor Atlas remains read-only evidence",
+    "native satisfaction ledger remains read-only evidence",
+    "static comparison and queue remain navigation evidence",
+    "primary active-code Atlas records are read-adjudicated evidence, not semantic satisfaction claims",
+    "no source, test, runtime, dependency, vocabulary, original Atlas/Bridge, or generated slice mutation is authorised by this comparison"
+  ],
+  "summary": {
+    "primary_record_count": 65,
+    "primary_surface_count": 18,
+    "atlas_record_count": 1716,
+    "bridge_record_count": 1716,
+    "static_comparison_record_count": 48,
+    "static_record_join_count": 1716,
+    "execution_queue_record_count": 46,
+    "primary_linked_atlas_or_navigation_id_count": 190,
+    "primary_linked_satisfaction_record_count": 29,
+    "primary_linked_comparison_group_count": 47,
+    "primary_linked_execution_queue_record_count": 46,
+    "execution_queue_records_without_primary_link_count": 0,
+    "comparison_groups_without_primary_link_count": 1,
+    "primary_record_status_counts": {
+      "existing_tier_a_family_bounded_source_repair": 2,
+      "existing_tier_a_family_confirmed_no_source_repair": 1,
+      "existing_tier_a_family_extended_bounded_source_repair": 5,
+      "existing_tier_a_family_extended_no_source_repair": 5,
+      "existing_tier_a_family_extension_no_source_repair": 1,
+      "existing_tier_a_family_extension_with_bounded_source_repair": 1,
+      "existing_tier_a_family_with_bounded_source_repair": 6,
+      "new_tier_a_family_added_bounded_source_repair": 1,
+      "new_tier_a_family_added_no_source_repair": 4,
+      "new_tier_a_family_admitted_bounded_source_repair": 1,
+      "new_tier_a_family_admitted_no_source_repair": 2,
+      "new_tier_a_family_bounded_source_repair": 2,
+      "new_tier_a_family_no_source_repair": 1,
+      "new_tier_a_family_no_source_repair_required": 2,
+      "new_tier_a_family_transform_required_no_source_repair": 2,
+      "new_tier_a_family_with_bounded_source_repair": 4,
+      "new_tier_a_transform_boundary_family_with_bounded_source_repair": 3,
+      "new_tier_b_family_no_source_repair_required": 1,
+      "new_tier_b_test_family_added_and_passed_no_source_repair": 1,
+      "queue_status_after_pass": 1,
+      "read_adjudicated_partial_transform": 2,
+      "read_adjudicated_present": 5,
+      "read_adjudicated_present_but_bounded": 1,
+      "read_adjudicated_present_but_thin": 1,
+      "read_adjudicated_present_with_native_shape": 2,
+      "read_adjudicated_transformed_boundary": 1,
+      "tier_a_family_extended_and_passed_no_source_repair": 1,
+      "tier_a_test_extended_and_passed_no_source_repair": 1,
+      "tier_b_test_extended_and_passed_no_source_repair": 1,
+      "transform_boundary_new_tier_a_family_no_source_repair": 3,
+      "transform_required_new_tier_a_family_no_source_repair": 1
+    },
+    "primary_surface_counts": {
+      "DMPV3 packet carriage": 4,
+      "Downstream capital deployment authority": 2,
+      "Dynamic coefficient and modifier authority": 3,
+      "Exit and close architecture": 1,
+      "External source interfaces and API ingress": 3,
+      "Financial and event calendar architecture": 2,
+      "Live position and inventory architecture": 3,
+      "Opening architecture and placement readiness": 3,
+      "Parallel risk lane": 2,
+      "Persistence, ledgers, and receipts": 9,
+      "Playbook library architecture": 2,
+      "Prepared ingress and runtime context preparation": 3,
+      "Raw capture and source temporal law": 3,
+      "Raw signal families": 4,
+      "Review and explanation layer": 3,
+      "Serial desk-cognition spine": 2,
+      "Testing, proof, and checkpoint surfaces": 6,
+      "Vocabulary governance interface": 10
+    },
+    "static_comparison_status_counts": {
+      "already_satisfied": 2,
+      "partially_satisfied": 28,
+      "transform_required": 18
+    },
+    "execution_queue_required_action_counts": {
+      "extend_existing_test_family_before_code": 17,
+      "write_new_test_family_before_code": 29
+    }
+  },
+  "surface_records": [
+    {
+      "surface_comparison_id": "ACAPBC-0001",
+      "surface": "DMPV3 packet carriage",
+      "primary_record_count": 4,
+      "bridge_record_count": 73,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 16,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-007-0001",
+        "ACATP-007-0002",
+        "ACATP-008-0001",
+        "ACATP-009-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0002",
+      "surface": "Downstream capital deployment authority",
+      "primary_record_count": 2,
+      "bridge_record_count": 2,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 2,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-038-0001",
+        "ACATP-039-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0003",
+      "surface": "Dynamic coefficient and modifier authority",
+      "primary_record_count": 3,
+      "bridge_record_count": 193,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 3,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-027-0001",
+        "ACATP-028-0001",
+        "ACATP-029-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0004",
+      "surface": "Exit and close architecture",
+      "primary_record_count": 1,
+      "bridge_record_count": 90,
+      "comparison_group_count": 1,
+      "execution_queue_record_count": 1,
+      "primary_linked_atlas_record_count": 1,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 1,
+      "primary_linked_execution_queue_record_count": 1,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-043-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0005",
+      "surface": "External source interfaces and API ingress",
+      "primary_record_count": 3,
+      "bridge_record_count": 234,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 16,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-010-0001",
+        "ACATP-011-0001",
+        "ACATP-012-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0006",
+      "surface": "Financial and event calendar architecture",
+      "primary_record_count": 2,
+      "bridge_record_count": 117,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 3,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-019-0001",
+        "ACATP-020-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0007",
+      "surface": "Live position and inventory architecture",
+      "primary_record_count": 3,
+      "bridge_record_count": 38,
+      "comparison_group_count": 4,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 19,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [
+        "ACABC-0035"
+      ],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-035-0001",
+        "ACATP-036-0001",
+        "ACATP-037-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0008",
+      "surface": "Opening architecture and placement readiness",
+      "primary_record_count": 3,
+      "bridge_record_count": 74,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 23,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-040-0001",
+        "ACATP-041-0001",
+        "ACATP-042-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0009",
+      "surface": "Parallel risk lane",
+      "primary_record_count": 2,
+      "bridge_record_count": 57,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 2,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-033-0001",
+        "ACATP-034-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0010",
+      "surface": "Persistence, ledgers, and receipts",
+      "primary_record_count": 9,
+      "bridge_record_count": 97,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 38,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-004-0001",
+        "ACATP-004-0002",
+        "ACATP-004-0003",
+        "ACATP-004-0004",
+        "ACATP-004-0005",
+        "ACATP-004-0006",
+        "ACATP-005-0001",
+        "ACATP-005-0002",
+        "ACATP-006-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0011",
+      "surface": "Playbook library architecture",
+      "primary_record_count": 2,
+      "bridge_record_count": 95,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 20,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-030-0001",
+        "ACATP-044-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0012",
+      "surface": "Prepared ingress and runtime context preparation",
+      "primary_record_count": 3,
+      "bridge_record_count": 51,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 4,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-021-0001",
+        "ACATP-022-0001",
+        "ACATP-023-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0013",
+      "surface": "Raw capture and source temporal law",
+      "primary_record_count": 3,
+      "bridge_record_count": 108,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 3,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-013-0001",
+        "ACATP-014-0001",
+        "ACATP-015-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0014",
+      "surface": "Raw signal families",
+      "primary_record_count": 4,
+      "bridge_record_count": 123,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 4,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-016-0001",
+        "ACATP-016-0002",
+        "ACATP-017-0001",
+        "ACATP-018-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0015",
+      "surface": "Review and explanation layer",
+      "primary_record_count": 3,
+      "bridge_record_count": 143,
+      "comparison_group_count": 3,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 5,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 3,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-024-0001",
+        "ACATP-025-0001",
+        "ACATP-026-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0016",
+      "surface": "Serial desk-cognition spine",
+      "primary_record_count": 2,
+      "bridge_record_count": 139,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 2,
+      "primary_linked_satisfaction_record_count": 0,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-031-0001",
+        "ACATP-032-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0017",
+      "surface": "Testing, proof, and checkpoint surfaces",
+      "primary_record_count": 6,
+      "bridge_record_count": 72,
+      "comparison_group_count": 2,
+      "execution_queue_record_count": 2,
+      "primary_linked_atlas_record_count": 19,
+      "primary_linked_satisfaction_record_count": 19,
+      "primary_linked_comparison_group_count": 2,
+      "primary_linked_execution_queue_record_count": 2,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACATP-002-0001",
+        "ACATP-002-0002",
+        "ACATP-002-0003",
+        "ACATP-002-0004",
+        "ACATP-002-0005",
+        "ACATP-003-0001"
+      ]
+    },
+    {
+      "surface_comparison_id": "ACAPBC-0018",
+      "surface": "Vocabulary governance interface",
+      "primary_record_count": 10,
+      "bridge_record_count": 10,
+      "comparison_group_count": 4,
+      "execution_queue_record_count": 3,
+      "primary_linked_atlas_record_count": 10,
+      "primary_linked_satisfaction_record_count": 10,
+      "primary_linked_comparison_group_count": 4,
+      "primary_linked_execution_queue_record_count": 3,
+      "comparison_group_ids_without_primary_link": [],
+      "execution_queue_ids_without_primary_link": [],
+      "sample_primary_record_ids": [
+        "ACAV-001-0001",
+        "ACAV-001-0002",
+        "ACAV-001-0003",
+        "ACAV-001-0004",
+        "ACAV-001-0005",
+        "ACAV-001-0006",
+        "ACAV-001-0007",
+        "ACAV-001-0008",
+        "ACAV-001-0009",
+        "ACAV-001-0010"
+      ]
+    }
+  ],
+  "queue_gap_records": [],
+  "comparison_gap_records": [
+    {
+      "comparison_record_id": "ACABC-0035",
+      "surface": "Live position and inventory architecture",
+      "target_owner": "live inventory and position authorities",
+      "comparison_status": "already_satisfied",
+      "test_first_queue_action": "confirm_existing_proof_only_no_refactor",
+      "gap_status": "not_linked_by_primary_active_code_atlas_record",
+      "recommended_next_action": "audit_linkage_or_record_explicit_no_primary_record_reason_before_status_upgrade"
+    }
+  ]
+}

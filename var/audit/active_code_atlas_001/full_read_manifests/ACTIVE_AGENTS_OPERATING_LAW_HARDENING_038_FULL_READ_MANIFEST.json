@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T00:00:00+00:00",
+  "target": "ACTIVE_AGENTS_OPERATING_LAW_HARDENING_038",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 16341,
+      "line_count": 524,
+      "sha256": "d105b8bf2ec8c28542f0304315fc2603436358e47616ac1c1aaacc846f3db462",
+      "read_method": "manual_and_direct_full_file_read_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 524
+        }
+      ],
+      "notes": "Current target control-file hardening pass; material file included for AGENTS operating law rewrite or ledger/receipt/report proof."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 97113,
+      "line_count": 676,
+      "sha256": "d5b7a3353decbae182d8777bdf8f556c33d75277570cda6a59204a0c2a01f8a1",
+      "read_method": "manual_and_direct_full_file_read_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 676
+        }
+      ],
+      "notes": "Current target control-file hardening pass; material file included for AGENTS operating law rewrite or ledger/receipt/report proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 185046,
+      "line_count": 532,
+      "sha256": "355a8498e6a06fcf9c2aa3de6a16477768d9d746765a0168bc3240ea4a1b02ae",
+      "read_method": "manual_and_direct_full_file_read_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 532
+        }
+      ],
+      "notes": "Current target control-file hardening pass; material file included for AGENTS operating law rewrite or ledger/receipt/report proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_operating_law_hardening_038/reports/ACTIVE_AGENTS_OPERATING_LAW_HARDENING_038_REPORT.json",
+      "byte_count": 1756,
+      "line_count": 36,
+      "sha256": "70fc74fcae4aa846fed85e8bb7ba9f678ed0e12b3b1c1022bd91736d66f725f2",
+      "read_method": "manual_and_direct_full_file_read_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 36
+        }
+      ],
+      "notes": "Current target control-file hardening pass; material file included for AGENTS operating law rewrite or ledger/receipt/report proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/agents_operating_law_hardening_038/receipts/ACTIVE_AGENTS_OPERATING_LAW_HARDENING_038_RECEIPT.md",
+      "byte_count": 2092,
+      "line_count": 39,
+      "sha256": "e00d5056bf074a49d9ef13459dfc1e78e0e123daa64e3514ae9d40d1e57ad5fd",
+      "read_method": "manual_and_direct_full_file_read_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 39
+        }
+      ],
+      "notes": "Current target control-file hardening pass; material file included for AGENTS operating law rewrite or ledger/receipt/report proof."
+    }
+  ]
+}

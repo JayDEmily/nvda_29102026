@@ -1,0 +1,100 @@
+{
+  "ledger_name": "active_code_atlas_external_source_api_ingress_surface_new_test_family",
+  "schema_version": "1.0-local-surface-adjudication",
+  "status": "read_adjudicated_surface_slice",
+  "surface": "External source interfaces and API ingress",
+  "queue_row": "ACATQ-0002 / ACABC-0002",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-011-0001",
+      "title": "External source contract boundary is independent of adapter wiring and live clients",
+      "surface": "External source interfaces and API ingress",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_added_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0002",
+        "ACABC-0002"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_external_source_005",
+        "atlas_donor_external_source_006",
+        "atlas_donor_external_source_007",
+        "atlas_donor_external_source_008"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 135,
+          "line_end": 150
+        },
+        {
+          "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+          "line_start": 58,
+          "line_end": 65
+        },
+        {
+          "path": "docs/05_GUARDRAILS_CORE.md",
+          "line_start": 30,
+          "line_end": 40
+        },
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/external_source.py",
+          "line_start": 12,
+          "line_end": 30
+        },
+        {
+          "path": "src/nvda_desk/contracts/external_source.py",
+          "line_start": 60,
+          "line_end": 76
+        },
+        {
+          "path": "src/nvda_desk/contracts/external_source.py",
+          "line_start": 79,
+          "line_end": 127
+        },
+        {
+          "path": "src/nvda_desk/contracts/external_source.py",
+          "line_start": 143,
+          "line_end": 168
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/adapters_ingress/test_external_source_contract_surface.py",
+          "line_start": 1,
+          "line_end": 86
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 234,
+          "line_end": 247
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 254,
+          "line_end": 272
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "The external-source contract surface admits only non-network ingress modes, rejects live network and credential authority in interface specs, rejects nested authority keys during carrier construction, and preserves copied recorded payload material for downstream validation.",
+      "test_first_gap_or_action": "A new Tier A external-source contract family was written before source work. The family passed without source repair after row 010's recursive boundary repair, and it separates the contract boundary from adapter wiring, broker protocol, API route, and raw bundle loader proof.",
+      "adjudication_notes": [
+        "ACABC-0002 is a new-test-family row for row 5.1. This record admits an independent native contract-boundary proof family without opening live external API clients, credentials, broker execution, or dependency changes.",
+        "The generated all-surface active-code Atlas was used only as navigation and not as semantic proof."
+      ],
+      "limitations": [
+        "This pass does not implement external API clients, broker clients, credentials, dependency additions, live network IO, or adapter behaviour beyond the existing contract proof.",
+        "This pass does not mutate source code, runtime trading behaviour, financial/risk policy, original Atlas/Bridge JSON, generated slices, or vocabulary data."
+      ]
+    }
+  ]
+}

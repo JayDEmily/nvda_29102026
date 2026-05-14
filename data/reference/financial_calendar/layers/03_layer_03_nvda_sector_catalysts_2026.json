@@ -1,0 +1,220 @@
+{
+  "layer_id": "layer_03_nvda_sector_catalysts",
+  "title": "NVDA and direct read-through corporate catalysts",
+  "description": "Confirmed company-specific and read-through corporate events. Only include causally relevant names, not every earnings report on the planet.",
+  "calendar_year": 2026,
+  "events": [
+    {
+      "event_id": "corp-nvda-2026-02-25",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "NVIDIA Q4 FY2026 financial results",
+      "start_date": "2026-02-25",
+      "end_date": "2026-02-25",
+      "start_time_local": "14:00",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "NVDA"
+      ],
+      "impact_level": "high",
+      "runtime_tags": [
+        "nvda_earnings",
+        "sector_catalyst"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "nvda_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NVIDIA investor relations financial reports / news release",
+      "notes_md": "Confirmed company-specific catalyst. Core event for NVDA posture and event-window logic."
+    },
+    {
+      "event_id": "corp-nvda-2026-05-20",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "NVIDIA Q1 FY2027 financial results",
+      "start_date": "2026-05-20",
+      "end_date": "2026-05-20",
+      "start_time_local": "00:00",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "NVDA"
+      ],
+      "impact_level": "high",
+      "runtime_tags": [
+        "nvda_earnings",
+        "sector_catalyst",
+        "upcoming_confirmed"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "nvda_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "NVIDIA investor relations events calendar",
+      "notes_md": "Upcoming confirmed event from NVIDIA IR events page. Exact release time can be refined when NVIDIA publishes the earnings press release."
+    },
+    {
+      "event_id": "corp-msft-2026-01-28",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "Microsoft FY2026 Q2 financial results",
+      "start_date": "2026-01-28",
+      "end_date": "2026-01-28",
+      "start_time_local": "14:30",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "MSFT"
+      ],
+      "impact_level": "high",
+      "runtime_tags": [
+        "direct_readthrough_earnings",
+        "hyperscaler_capex_readthrough"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "readthrough_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Microsoft investor relations FY26 Q2 earnings page",
+      "notes_md": "Direct read-through candidate because Microsoft is a major AI infrastructure buyer and capex signal carrier."
+    },
+    {
+      "event_id": "corp-googl-2026-02-04",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "Alphabet Q4 2025 and fiscal year results",
+      "start_date": "2026-02-04",
+      "end_date": "2026-02-04",
+      "start_time_local": "13:30",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "GOOGL",
+        "GOOG"
+      ],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "direct_readthrough_earnings",
+        "hyperscaler_capex_readthrough"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "readthrough_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Alphabet investor relations news / Q4 2025 results",
+      "notes_md": "Direct read-through candidate for cloud / AI spend interpretation."
+    },
+    {
+      "event_id": "corp-meta-2026-01-28",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "Meta Q4 2025 and full-year results",
+      "start_date": "2026-01-28",
+      "end_date": "2026-01-28",
+      "start_time_local": "13:30",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "META"
+      ],
+      "impact_level": "high",
+      "runtime_tags": [
+        "direct_readthrough_earnings",
+        "ai_capex_readthrough"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "readthrough_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Meta investor relations Q4 2025 results / earnings announcement",
+      "notes_md": "Direct read-through candidate because Meta capex and AI infrastructure commentary can materially affect NVDA demand perception."
+    },
+    {
+      "event_id": "corp-amzn-2026-02-05",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "Amazon Q4 2025 financial results",
+      "start_date": "2026-02-05",
+      "end_date": "2026-02-05",
+      "start_time_local": "14:00",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "AMZN"
+      ],
+      "impact_level": "high",
+      "runtime_tags": [
+        "direct_readthrough_earnings",
+        "hyperscaler_capex_readthrough"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "readthrough_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Amazon investor relations Q4 2025 results / event details",
+      "notes_md": "Direct read-through candidate because AWS/AI infrastructure commentary may affect NVDA demand expectations."
+    },
+    {
+      "event_id": "corp-aapl-2026-01-29",
+      "layer_id": "layer_03_nvda_sector_catalysts",
+      "event_type": "earnings_release",
+      "title": "Apple Q1 2026 financial results",
+      "start_date": "2026-01-29",
+      "end_date": "2026-01-29",
+      "start_time_local": "14:00",
+      "end_time_local": null,
+      "timezone": "America/Los_Angeles",
+      "jurisdiction": "US",
+      "venues": [
+        "NASDAQ_US_EQ"
+      ],
+      "entities": [
+        "AAPL"
+      ],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "mega_cap_tech_earnings",
+        "broad_risk_sentiment"
+      ],
+      "evaluation_tags": [
+        "earnings_day",
+        "mega_cap_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Apple investor relations / newsroom Q1 2026 results",
+      "notes_md": "Broader mega-cap tech sentiment marker rather than a primary NVDA demand read-through."
+    }
+  ]
+}

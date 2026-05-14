@@ -1,0 +1,67 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 4 items
+
+tests/tier_a/serial_recommendation/test_execution_contract_models.py ... [ 75%]
+F                                                                        [100%]
+
+=================================== FAILURES ===================================
+__ test_execution_contract_models_detach_nested_serial_payloads_from_callers ___
+
+    def test_execution_contract_models_detach_nested_serial_payloads_from_callers() -> None:
+        contracts = _require_module("nvda_desk.contracts.execution")
+
+        input_model = _require_attr(contracts, "ExecutionExpressionInput")
+        output_model = _require_attr(contracts, "ExecutionExpressionOutput")
+        handoff_model = _require_attr(contracts, "StageLocalHandoffSurface")
+
+        temporal_payload = {"stage": {"trace": ["source"]}}
+        final_risk_join = {"join": {"components": ["serial_expression"]}}
+        handoff_payload = {"handoff": {"lineage": ["execution_stage"]}}
+
+        execution_input = input_model(temporal=temporal_payload)
+        execution_output = output_model(final_risk_join=final_risk_join)
+        stage_handoff = handoff_model(
+            execution_post_modifier_pre_final_risk=handoff_payload,
+        )
+
+        temporal_payload["stage"]["trace"].append("capital_deployment_authority")
+        final_risk_join["join"]["components"].append("capital_deployment_authority")
+        handoff_payload["handoff"]["lineage"].append("capital_deployment_authority")
+
+>       assert execution_input.temporal == {"stage": {"trace": ["source"]}}
+E       AssertionError: assert {'stage': {'t..._authority']}} == {'stage': {'t...: ['source']}}
+E
+E         Differing items:
+E         {'stage': {'trace': ['source', 'capital_deployment_authority']}} != {'stage': {'trace': ['source']}}
+E
+E         Full diff:
+E           {
+E               'stage': {
+E                   'trace': [
+E                       'source',
+E         +             'capital_deployment_authority',
+E                   ],
+E               },
+E           }
+
+tests/tier_a/serial_recommendation/test_execution_contract_models.py:84: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/serial_recommendation/test_execution_contract_models.py::test_execution_contract_models_detach_nested_serial_payloads_from_callers - AssertionError: assert {'stage': {'t..._authority']}} == {'stage': {'t...: ['source']}}
+
+  Differing items:
+  {'stage': {'trace': ['source', 'capital_deployment_authority']}} != {'stage': {'trace': ['source']}}
+
+  Full diff:
+    {
+        'stage': {
+            'trace': [
+                'source',
+  +             'capital_deployment_authority',
+            ],
+        },
+    }
+========================= 1 failed, 3 passed in 0.23s ==========================

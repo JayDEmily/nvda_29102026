@@ -1,0 +1,96 @@
+{
+  "ledger_name": "active_code_atlas_dmpv3_packet_carriage_surface_new_test_family",
+  "schema_version": "1.0-local-surface-adjudication",
+  "status": "read_adjudicated_surface_slice",
+  "surface": "DMPV3 packet carriage",
+  "queue_row": "ACATQ-0016 / ACABC-0016",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-008-0001",
+      "title": "DMPV3 repo-owned nvda extension leaves preserve canonical semantic-dependency truth",
+      "surface": "DMPV3 packet carriage",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_added_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0016",
+        "ACABC-0016"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_temporal_surface_009",
+        "atlas_donor_parallel_risk_013",
+        "atlas_donor_state_policy_007",
+        "atlas_donor_cognition_049",
+        "atlas_donor_domain_temporal_state_004"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+          "line_start": 95,
+          "line_end": 113
+        },
+        {
+          "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+          "line_start": 141,
+          "line_end": 153
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 220,
+          "line_end": 235
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 514,
+          "line_end": 540
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 714,
+          "line_end": 735
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/packets.py",
+          "line_start": 198,
+          "line_end": 214
+        },
+        {
+          "path": "src/nvda_desk/packets/dmp_packets.py",
+          "line_start": 13,
+          "line_end": 87
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py",
+          "line_start": 9,
+          "line_end": 72
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 161,
+          "line_end": 174
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 335,
+          "line_end": 353
+        }
+      ],
+      "observed_behaviour_from_read_evidence": "DMPV3 packet construction now preserves caller-supplied custom extension leaves while restoring repo-owned nvda.schema_identifiers and nvda.semantic_dependencies after extension merge. Semantic dependency annotations therefore remain tied to canonical lineage dependency IDs rather than caller-supplied injected values.",
+      "test_first_gap_or_action": "A new Tier A DMPV3 extension canonical-leaf family was written before source repair. The pre-repair run failed because custom dmpextensions.nvda.semantic_dependencies could replace canonical dependency lineage. The bounded repair restores canonical semantic_dependencies after custom extension merge while preserving unrelated custom extension leaves.",
+      "adjudication_notes": [
+        "ACABC-0016 is a new-test-family DMPV3 row with donor records marked missing or same-surface evidence only. This record does not import those donor domain classes; it hardens the native packet-carriage seam so missing donor semantics cannot be smuggled through caller-supplied nvda extension leaves.",
+        "The generated all-surface active-code Atlas was used only as navigation and not as semantic proof."
+      ],
+      "limitations": [
+        "This pass does not implement donor TemporalStateFeaturePayload, ParallelRiskTemporalSurface, RuntimeStateVector, financial-calendar, coefficient, cognition, or carry-market service classes.",
+        "This pass does not open runtime trading, financial/risk policy, broker/API execution, dependency, vocabulary, original Atlas/Bridge JSON, generated slice, or refactor work."
+      ]
+    }
+  ]
+}

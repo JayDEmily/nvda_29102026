@@ -1,0 +1,19 @@
+ M Makefile
+ M ROADMAP_LEDGER.md
+ M config/playbook_registry.example.yaml
+ M config/proof_blocks.yaml
+ M config/retained_test_registry.yaml
+ M docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md
+ M docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+ M src/nvda_desk/cognition/serial/eligibility.py
+ M src/nvda_desk/config/__init__.py
+ M src/nvda_desk/config/playbook_registry.py
+ M src/nvda_desk/contracts/__init__.py
+ M src/nvda_desk/contracts/eligibility.py
+ M src/nvda_desk/domain/eligibility/playbook_compilation.py
+ M src/nvda_desk/services/playbook_eligibility_service.py
+?? docs/planning/2026-05-09_RESERVED_ROW_5_14_AUTHORITY_DECISION_BRIEF_001.md
+?? src/nvda_desk/contracts/playbook.py
+?? src/nvda_desk/playbooks/
+?? tests/tier_a/playbook/
+?? var/audit/roadmap_playbook_5_10/

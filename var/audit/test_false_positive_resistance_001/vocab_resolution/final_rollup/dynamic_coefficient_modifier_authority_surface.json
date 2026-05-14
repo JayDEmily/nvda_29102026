@@ -1,0 +1,28 @@
+{
+  "command": "python -m pytest tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py tests/tier_a/config/test_coefficient_modifier_replay_surface.py tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+  "exit_code": 0,
+  "mode": "run",
+  "owns": [
+    "src/nvda_desk/contracts/coefficient_authority.py",
+    "src/nvda_desk/contracts/modifiers.py",
+    "src/nvda_desk/config/coefficient_authority.py",
+    "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+    "config/coefficient_authority.v1.yaml",
+    "tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py",
+    "tests/tier_a/config/test_coefficient_modifier_replay_surface.py",
+    "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+    "config/retained_test_registry.yaml",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md"
+  ],
+  "proof_block_id": "dynamic_coefficient_modifier_authority_surface",
+  "resolved_command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py",
+    "tests/tier_a/config/test_coefficient_modifier_replay_surface.py",
+    "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py"
+  ],
+  "status": "PASS"
+}

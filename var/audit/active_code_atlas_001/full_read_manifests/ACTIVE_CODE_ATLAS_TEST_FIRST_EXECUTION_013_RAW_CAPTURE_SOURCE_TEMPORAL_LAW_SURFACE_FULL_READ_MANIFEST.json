@@ -1,0 +1,405 @@
+{
+  "manifest_id": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_013_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_FULL_READ_MANIFEST",
+  "updated_utc": "2026-05-11T11:46:42+00:00",
+  "branch": "worker/full-read-manifest-hardening-001",
+  "base_commit": "9ac677d",
+  "surface_target": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_013_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE",
+  "queue_row": "ACATQ-0006 / ACABC-0006",
+  "purpose": "Record full-read evidence before and after raw capture/source temporal law surface work; regenerated after bounded row 013 mutations so stale entries are not used for closure.",
+  "structural_inventory_status": "navigation_only_not_semantic_authority",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 12477,
+      "line_count": 294,
+      "sha256": "8abad544cd424e978f0270466f9b26ebef098745034ec2af8138ada892e748e7",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 294
+        }
+      ],
+      "notes": "root authority/control intake"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 51215,
+      "line_count": 631,
+      "sha256": "6dce2a9ad81d260253fa2710a56266158d08dad16b9e17d2d5c30d8e4214d2fe",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 631
+        }
+      ],
+      "notes": "active plan/current pointer/dependency-order rules; regenerated after row 013 update"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 92220,
+      "line_count": 423,
+      "sha256": "c365b3cb09ce3a37aba9a88d94bd7cc448e1f97fdc21c9bc20f9d640bf999c93",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 423
+        }
+      ],
+      "notes": "live ledger/current pointer and row 013 history; regenerated after row 013 update"
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "source temporal standard governing row 5.2"
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 202
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 758
+        }
+      ],
+      "notes": "blueprint row 5.2 governing surface"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 23626,
+      "line_count": 195,
+      "sha256": "b29656c43d129c4e23843c949ae51b95434ec000704ecc9a9c550b8f9f26c8a9",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 30669,
+      "line_count": 494,
+      "sha256": "5021e6dd3cb6adae6d9dbb0d09478e61112d11889baf343a1cdee204fbc5be1c",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 494
+        }
+      ],
+      "notes": "proof block config; regenerated after adding row 013 proof block"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 191227,
+      "line_count": 3114,
+      "sha256": "7de24ab535926453aa5df40d55a72d1b69659cf0210f61298fb8abfb6a710d77",
+      "read_method": "manual_chunked_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 200
+        },
+        {
+          "start_line": 201,
+          "end_line": 400
+        },
+        {
+          "start_line": 401,
+          "end_line": 600
+        },
+        {
+          "start_line": 601,
+          "end_line": 800
+        },
+        {
+          "start_line": 801,
+          "end_line": 1000
+        },
+        {
+          "start_line": 1001,
+          "end_line": 1200
+        },
+        {
+          "start_line": 1201,
+          "end_line": 1400
+        },
+        {
+          "start_line": 1401,
+          "end_line": 1600
+        },
+        {
+          "start_line": 1601,
+          "end_line": 1800
+        },
+        {
+          "start_line": 1801,
+          "end_line": 2000
+        },
+        {
+          "start_line": 2001,
+          "end_line": 2200
+        },
+        {
+          "start_line": 2201,
+          "end_line": 2400
+        },
+        {
+          "start_line": 2401,
+          "end_line": 2600
+        },
+        {
+          "start_line": 2601,
+          "end_line": 2800
+        },
+        {
+          "start_line": 2801,
+          "end_line": 3000
+        },
+        {
+          "start_line": 3001,
+          "end_line": 3114
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+      "byte_count": 4881,
+      "line_count": 128,
+      "sha256": "382f6133db24edbe936445a106d3f539d04c2cb5564998e3b44cbc517134b7ff",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 128
+        }
+      ],
+      "notes": "selected active raw-capture implementation; regenerated after bounded source repair"
+    },
+    {
+      "path": "src/nvda_desk/contracts/temporal.py",
+      "byte_count": 3332,
+      "line_count": 96,
+      "sha256": "35d17eb1ef76b03f34ec6cc5d925a9e544c417436b9586aa4cec39a971f91b96",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 96
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/upstream/raw_signal_ingress.py",
+      "byte_count": 2510,
+      "line_count": 79,
+      "sha256": "b363325d88ae66387d83cd3922929c81a95cd6d3cd9bc3d2d4f5c8480aca3882",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "src/nvda_desk/contracts/upstream_signal.py",
+      "byte_count": 2799,
+      "line_count": 79,
+      "sha256": "74959d8e045b37038d416f35a2426ad3d681bb91a72d3300249f6e91497b58dd",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 79
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+      "byte_count": 4953,
+      "line_count": 113,
+      "sha256": "538a691a0c42f484b3695b20699b426ff087d9dcd9c7a23e5b17a9bd9895732b",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 113
+        }
+      ],
+      "notes": "existing Tier A family extended before repair; regenerated after fixture/test update"
+    },
+    {
+      "path": "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+      "byte_count": 3859,
+      "line_count": 106,
+      "sha256": "d26164b2256f344e7b5cce347a36d9c75820289971c0c687f1e75d90a19490f1",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 106
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py",
+      "byte_count": 2552,
+      "line_count": 71,
+      "sha256": "9116dba0afa273638ce4c6006ba027357c20512fbdb851f24e7ae6ba9fd1b124",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 71
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface/raw_capture_source_temporal_law_active_code_atlas_records.json",
+      "byte_count": 3951,
+      "line_count": 94,
+      "sha256": "71d4fd125d54afe508a697f5fb54c44fc4ea21d148cfb1663d6746748dba2c02",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 94
+        }
+      ],
+      "notes": "row 013 surface record output"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_013_RAW_CAPTURE_SOURCE_TEMPORAL_LAW_SURFACE_RECEIPT.md",
+      "byte_count": 3551,
+      "line_count": 69,
+      "sha256": "1a0c618dba5bb34da9c92db468206e9a0a41b3ae55887829f6d5de94c59ec2b6",
+      "read_method": "manual_console_full_read",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 69
+        }
+      ],
+      "notes": "row 013 receipt output"
+    }
+  ]
+}

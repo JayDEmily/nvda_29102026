@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-05-13T00:00:00+00:00",
+  "target": "ACTIVE_CONTROL_SURFACE_FREEZE_LEDGER_ONLY_ALIGNMENT_039",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 10026,
+      "line_count": 443,
+      "sha256": "6dd58a94acce5b3215cf320153fbec2a59fb7cda9339b4eb13b4620a7859dbc9",
+      "read_method": "manual_full_file_read_plus_bounded_diff_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 443
+        }
+      ],
+      "notes": "Current target control-file freeze/ledger-only alignment pass; material file included for governance mutation or ledger/receipt/report proof."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 98240,
+      "line_count": 688,
+      "sha256": "49487422f2f7fd0d603752ec26db9a0fa369b34fe81b219f03bc5e2f7f15f66e",
+      "read_method": "manual_full_file_read_plus_bounded_diff_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 688
+        }
+      ],
+      "notes": "Current target control-file freeze/ledger-only alignment pass; material file included for governance mutation or ledger/receipt/report proof."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 182510,
+      "line_count": 534,
+      "sha256": "cc83d4aeb8d4b151ee916ccc3ad5f63836927496927b9d89cf4372937798bb75",
+      "read_method": "manual_full_file_read_plus_bounded_diff_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 534
+        }
+      ],
+      "notes": "Current target control-file freeze/ledger-only alignment pass; material file included for governance mutation or ledger/receipt/report proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/control_surface_freeze_ledger_only_alignment_039/reports/ACTIVE_CONTROL_SURFACE_FREEZE_LEDGER_ONLY_ALIGNMENT_039_REPORT.json",
+      "byte_count": 3881,
+      "line_count": 84,
+      "sha256": "61eb6e8151ef3652b838963816f27d321df326d3fccc4f99366f81a2c332afc7",
+      "read_method": "manual_full_file_read_plus_bounded_diff_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 84
+        }
+      ],
+      "notes": "Current target control-file freeze/ledger-only alignment pass; material file included for governance mutation or ledger/receipt/report proof."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/control_surface_freeze_ledger_only_alignment_039/receipts/ACTIVE_CONTROL_SURFACE_FREEZE_LEDGER_ONLY_ALIGNMENT_039_RECEIPT.md",
+      "byte_count": 2545,
+      "line_count": 46,
+      "sha256": "da8cfffa88e9c88ddc47b8f1ae1ca1d6290d8a74ac6526343746ced1e120ccac",
+      "read_method": "manual_full_file_read_plus_bounded_diff_current_target",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 46
+        }
+      ],
+      "notes": "Current target control-file freeze/ledger-only alignment pass; material file included for governance mutation or ledger/receipt/report proof."
+    }
+  ]
+}

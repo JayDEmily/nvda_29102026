@@ -1,0 +1,31 @@
+{
+  "report_id": "ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_REPORT",
+  "status": "PASS",
+  "changed_control_files": [
+    "AGENTS.md",
+    "PLANS.md",
+    "ROADMAP_LEDGER.md"
+  ],
+  "created_files": [
+    "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_FULL_READ_MANIFEST.json",
+    "var/audit/active_code_atlas_001/root_continuation_stop_condition_alignment_002/receipts/ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_RECEIPT.md",
+    "var/audit/active_code_atlas_001/root_continuation_stop_condition_alignment_002/reports/ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_REPORT.json",
+    "var/audit/active_code_atlas_001/root_continuation_stop_condition_alignment_002/reports/ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_PROOF.txt"
+  ],
+  "alignment_effect": [
+    "AGENTS.md section 8 reclassifies missing material, lower-authority contradiction, proof/test failure, and closed boundary as bounded-leaf blockers under continue-until-tokens authority.",
+    "PLANS.md section 8A mirrors the same bounded-leaf blocker semantics.",
+    "ROADMAP_LEDGER.md current pointer moved to ACTIVE_ROOT_CONTINUATION_STOP_CONDITION_ALIGNMENT_002_RECORDED."
+  ],
+  "forbidden_boundaries_untouched": [
+    "runtime/source/test/refactor/dependency/vocabulary/original Atlas/Bridge/generated-slice mutation",
+    "_archive restore or reliance"
+  ],
+  "next_action": "Continue lawful control/audit/evidence/manifest/receipt/ledger hardening until context/token exhaustion or explicit user stop instruction.",
+  "proof_results": {
+    "git_diff_check": "PASS_no_output_after_status_header",
+    "surface_records_and_registry": "PASS_error_count_0_warning_count_0",
+    "proof_blocks_check_all": "PASS_count_46",
+    "manifest_validation": "PASS_manifest_count_3_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}

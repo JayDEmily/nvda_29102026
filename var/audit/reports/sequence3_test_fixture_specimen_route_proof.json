@@ -1,0 +1,49 @@
+{
+  "schema_version": "sequence3_route_proof.v1",
+  "sequence": "Sequence 3",
+  "result": "PASS",
+  "source_lock_verified": true,
+  "required_read_set_file_count": 64,
+  "required_read_set_read_in_full": true,
+  "atlas_slice_files_accounted_for": 18,
+  "sequence1_record_count": 1716,
+  "sequence2_record_outcome_count": 1716,
+  "duplicate_record_assignment_count": 0,
+  "unassigned_record_count": 0,
+  "disposition_counts": {
+    "existing_specimen_home_sufficient": 595,
+    "future_fixture_required_before_implementation": 1073,
+    "future_packet_specimen_required_in_sequence4": 45,
+    "no_fixture_required_for_record": 3
+  },
+  "blocked_record_count": 0,
+  "runtime_implementation_opened": false,
+  "normative_docs_modified": false,
+  "vocabulary_registry_modified": false,
+  "generated_atlas_slices_modified": false,
+  "pyproject_or_uvlock_modified": false,
+  "fixture_relies_on_fake_runtime_behaviour": false,
+  "sequence4_readiness_flag": true,
+  "sequence4_packet_specimen_records_identified": 45,
+  "candidate_source_self_accepted": false,
+  "pm_adjudication_required": true,
+  "proof_inputs": {
+    "ledger": "var/audit/ledgers/sequence3_test_fixture_specimen_inventory.json",
+    "schema": "var/audit/ledgers/sequence3_test_fixture_specimen_inventory.schema.json",
+    "report": "var/audit/reports/sequence3_test_fixture_specimen_report.md",
+    "coverage_table": "var/audit/reports/sequence3_test_fixture_specimen_home_coverage_table.md"
+  },
+  "blockers": [],
+  "closed_surfaces_unchanged_by_diff": true,
+  "changed_files_count": 6,
+  "changed_files": [
+    "var/audit/ledgers/sequence3_test_fixture_specimen_inventory.json",
+    "var/audit/ledgers/sequence3_test_fixture_specimen_inventory.schema.json",
+    "var/audit/reports/sequence3_test_fixture_specimen_closeout_receipt.md",
+    "var/audit/reports/sequence3_test_fixture_specimen_home_coverage_table.md",
+    "var/audit/reports/sequence3_test_fixture_specimen_report.md",
+    "var/audit/reports/sequence3_test_fixture_specimen_route_proof.json"
+  ],
+  "source_change_scope": "Only Sequence 3 var/audit ledger/report artefacts were added.",
+  "proof_log_directory": "/mnt/data/sequence3_worker_logs"
+}

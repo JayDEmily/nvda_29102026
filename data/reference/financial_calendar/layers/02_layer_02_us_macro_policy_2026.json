@@ -1,0 +1,1976 @@
+{
+  "layer_id": "layer_02_us_macro_policy",
+  "title": "U.S. macro and policy calendar",
+  "description": "Hard scheduled U.S. macro and policy catalysts to reduce surprise and support posture, evaluation slicing, and carry rules.",
+  "calendar_year": 2026,
+  "events": [
+    {
+      "event_id": "us-fomc-2026-01-28",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-01-28",
+      "start_date": "2026-01-27",
+      "end_date": "2026-01-28",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-03-18",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-03-18 (SEP)",
+      "start_date": "2026-03-17",
+      "end_date": "2026-03-18",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window",
+        "sep_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-04-29",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-04-29",
+      "start_date": "2026-04-28",
+      "end_date": "2026-04-29",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-06-17",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-06-17 (SEP)",
+      "start_date": "2026-06-16",
+      "end_date": "2026-06-17",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window",
+        "sep_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-07-29",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-07-29",
+      "start_date": "2026-07-28",
+      "end_date": "2026-07-29",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-09-16",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-09-16 (SEP)",
+      "start_date": "2026-09-15",
+      "end_date": "2026-09-16",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window",
+        "sep_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-10-28",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-10-28",
+      "start_date": "2026-10-27",
+      "end_date": "2026-10-28",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-fomc-2026-12-09",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "fomc_window",
+      "title": "FOMC meeting window ending 2026-12-09 (SEP)",
+      "start_date": "2026-12-08",
+      "end_date": "2026-12-09",
+      "start_time_local": "00:00",
+      "end_time_local": "16:00",
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_risk_window",
+        "fomc_window",
+        "sep_window"
+      ],
+      "evaluation_tags": [
+        "macro_day",
+        "fomc_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "Federal Reserve FOMC 2026 meeting calendar",
+      "notes_md": "Decision typically arrives on day two around 2:00 p.m. ET; treat as event-imminent and event-live state, not as directional alpha."
+    },
+    {
+      "event_id": "us-cpi-2025-12",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2025-12",
+      "start_date": "2026-01-13",
+      "end_date": "2026-01-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2025-12. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-01",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-01",
+      "start_date": "2026-02-13",
+      "end_date": "2026-02-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-01. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-02",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-02",
+      "start_date": "2026-03-11",
+      "end_date": "2026-03-11",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-02. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-03",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-03",
+      "start_date": "2026-04-10",
+      "end_date": "2026-04-10",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-03. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-04",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-04",
+      "start_date": "2026-05-12",
+      "end_date": "2026-05-12",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-04. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-05",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-05",
+      "start_date": "2026-06-10",
+      "end_date": "2026-06-10",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-05. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-06",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-06",
+      "start_date": "2026-07-14",
+      "end_date": "2026-07-14",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-06. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-07",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-07",
+      "start_date": "2026-08-12",
+      "end_date": "2026-08-12",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-07. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-08",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-08",
+      "start_date": "2026-09-11",
+      "end_date": "2026-09-11",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-08. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-09",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-09",
+      "start_date": "2026-10-14",
+      "end_date": "2026-10-14",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-09. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-10",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-10",
+      "start_date": "2026-11-10",
+      "end_date": "2026-11-10",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-10. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-cpi-2026-11",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "cpi_release",
+      "title": "CPI release for 2026-11",
+      "start_date": "2026-12-10",
+      "end_date": "2026-12-10",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "cpi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "cpi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS CPI release schedule 2026",
+      "notes_md": "Reference month 2026-11. Use as a scheduled macro-risk marker."
+    },
+    {
+      "event_id": "us-ppi-2025-11",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2025-11",
+      "start_date": "2026-01-14",
+      "end_date": "2026-01-14",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2025-11. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2025-12",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2025-12",
+      "start_date": "2026-01-30",
+      "end_date": "2026-01-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2025-12. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-01",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-01",
+      "start_date": "2026-02-27",
+      "end_date": "2026-02-27",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-01. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-02",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-02",
+      "start_date": "2026-03-18",
+      "end_date": "2026-03-18",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-02. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-03",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-03",
+      "start_date": "2026-04-14",
+      "end_date": "2026-04-14",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-03. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-04",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-04",
+      "start_date": "2026-05-13",
+      "end_date": "2026-05-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-04. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-05",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-05",
+      "start_date": "2026-06-11",
+      "end_date": "2026-06-11",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-05. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-06",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-06",
+      "start_date": "2026-07-15",
+      "end_date": "2026-07-15",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-06. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-07",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-07",
+      "start_date": "2026-08-13",
+      "end_date": "2026-08-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-07. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-08",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-08",
+      "start_date": "2026-09-10",
+      "end_date": "2026-09-10",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-08. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-09",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-09",
+      "start_date": "2026-10-15",
+      "end_date": "2026-10-15",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-09. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-10",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-10",
+      "start_date": "2026-11-13",
+      "end_date": "2026-11-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-10. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-ppi-2026-11",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "ppi_release",
+      "title": "PPI release for 2026-11",
+      "start_date": "2026-12-15",
+      "end_date": "2026-12-15",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "ppi_release",
+        "inflation_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "ppi_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS PPI release schedule 2026",
+      "notes_md": "Reference month 2026-11. Lower desk priority than CPI/FOMC but still an inflation-state input."
+    },
+    {
+      "event_id": "us-employment-2025-12",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2025-12",
+      "start_date": "2026-01-09",
+      "end_date": "2026-01-09",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2025-12. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-01",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-01",
+      "start_date": "2026-02-11",
+      "end_date": "2026-02-11",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-01. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-02",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-02",
+      "start_date": "2026-03-06",
+      "end_date": "2026-03-06",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-02. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-03",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-03",
+      "start_date": "2026-04-03",
+      "end_date": "2026-04-03",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-03. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-04",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-04",
+      "start_date": "2026-05-08",
+      "end_date": "2026-05-08",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-04. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-05",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-05",
+      "start_date": "2026-06-05",
+      "end_date": "2026-06-05",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-05. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-06",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-06",
+      "start_date": "2026-07-02",
+      "end_date": "2026-07-02",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-06. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-07",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-07",
+      "start_date": "2026-08-07",
+      "end_date": "2026-08-07",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-07. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-08",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-08",
+      "start_date": "2026-09-04",
+      "end_date": "2026-09-04",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-08. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-09",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-09",
+      "start_date": "2026-10-02",
+      "end_date": "2026-10-02",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-09. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-10",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-10",
+      "start_date": "2026-11-06",
+      "end_date": "2026-11-06",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-10. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-employment-2026-11",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "employment_situation_release",
+      "title": "Employment Situation release for 2026-11",
+      "start_date": "2026-12-04",
+      "end_date": "2026-12-04",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "high",
+      "runtime_tags": [
+        "macro_release",
+        "employment_release",
+        "payrolls_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "employment_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BLS Employment Situation release schedule 2026",
+      "notes_md": "Reference month 2026-11. This is the NFP/payrolls anchor for desk state."
+    },
+    {
+      "event_id": "us-pce-pio-2025-12",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2025-12",
+      "start_date": "2026-02-20",
+      "end_date": "2026-02-20",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2025-12. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-01",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-01",
+      "start_date": "2026-03-13",
+      "end_date": "2026-03-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-01. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-02",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-02",
+      "start_date": "2026-04-09",
+      "end_date": "2026-04-09",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-02. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-03",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-03",
+      "start_date": "2026-04-30",
+      "end_date": "2026-04-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-03. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-04",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-04",
+      "start_date": "2026-05-28",
+      "end_date": "2026-05-28",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-04. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-05",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-05",
+      "start_date": "2026-06-25",
+      "end_date": "2026-06-25",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-05. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-06",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-06",
+      "start_date": "2026-07-30",
+      "end_date": "2026-07-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-06. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-07",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-07",
+      "start_date": "2026-08-26",
+      "end_date": "2026-08-26",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-07. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-08",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-08",
+      "start_date": "2026-09-30",
+      "end_date": "2026-09-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-08. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-09",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-09",
+      "start_date": "2026-10-29",
+      "end_date": "2026-10-29",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-09. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-10",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-10",
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-25",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-10. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-pce-pio-2026-11",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "pce_release",
+      "title": "Personal Income and Outlays / PCE release for 2026-11",
+      "start_date": "2026-12-23",
+      "end_date": "2026-12-23",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "pce_release",
+        "income_outlays_release"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "pce_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA Personal Income and Outlays release schedule 2026",
+      "notes_md": "Reference month 2026-11. Useful inflation-growth context; still secondary to FOMC/CPI/payrolls for immediate posture."
+    },
+    {
+      "event_id": "us-gdp-2025-q4-second_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP second estimate for 2025-Q4",
+      "start_date": "2026-03-13",
+      "end_date": "2026-03-13",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "second_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Second Estimate for 2025-Q4. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2025-q4-third_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP third estimate for 2025-Q4",
+      "start_date": "2026-04-09",
+      "end_date": "2026-04-09",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "third_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Third Estimate for 2025-Q4. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q1-advance_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP advance estimate for 2026-Q1",
+      "start_date": "2026-04-30",
+      "end_date": "2026-04-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "advance_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Advance Estimate for 2026-Q1. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q1-second_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP second estimate for 2026-Q1",
+      "start_date": "2026-05-28",
+      "end_date": "2026-05-28",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "second_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Second Estimate for 2026-Q1. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q1-third_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP third estimate for 2026-Q1",
+      "start_date": "2026-06-25",
+      "end_date": "2026-06-25",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "third_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Third Estimate for 2026-Q1. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q2-advance_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP advance estimate for 2026-Q2",
+      "start_date": "2026-07-30",
+      "end_date": "2026-07-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "advance_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Advance Estimate for 2026-Q2. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q2-second_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP second estimate for 2026-Q2",
+      "start_date": "2026-08-26",
+      "end_date": "2026-08-26",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "second_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Second Estimate for 2026-Q2. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q2-third_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP third estimate for 2026-Q2",
+      "start_date": "2026-09-30",
+      "end_date": "2026-09-30",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "third_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Third Estimate for 2026-Q2. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q3-advance_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP advance estimate for 2026-Q3",
+      "start_date": "2026-10-29",
+      "end_date": "2026-10-29",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "advance_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Advance Estimate for 2026-Q3. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q3-second_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP second estimate for 2026-Q3",
+      "start_date": "2026-11-25",
+      "end_date": "2026-11-25",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "second_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Second Estimate for 2026-Q3. Calendar marker; relevance should be validated rather than assumed."
+    },
+    {
+      "event_id": "us-gdp-2026-q3-third_estimate",
+      "layer_id": "layer_02_us_macro_policy",
+      "event_type": "gdp_release",
+      "title": "GDP third estimate for 2026-Q3",
+      "start_date": "2026-12-23",
+      "end_date": "2026-12-23",
+      "start_time_local": "08:30",
+      "end_time_local": null,
+      "timezone": "America/New_York",
+      "jurisdiction": "US",
+      "venues": [
+        "US_MACRO"
+      ],
+      "entities": [],
+      "impact_level": "medium",
+      "runtime_tags": [
+        "macro_release",
+        "gdp_release",
+        "third_estimate"
+      ],
+      "evaluation_tags": [
+        "macro_release_day",
+        "gdp_day"
+      ],
+      "source_status": "official_confirmed",
+      "source_document": "BEA release schedule 2026 / Gross Domestic Product release page",
+      "notes_md": "Third Estimate for 2026-Q3. Calendar marker; relevance should be validated rather than assumed."
+    }
+  ]
+}

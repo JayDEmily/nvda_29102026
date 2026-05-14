@@ -1,0 +1,16 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/nvda_work/repo
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 12 items
+
+tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py . [  8%]
+                                                                         [  8%]
+tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py . [ 16%]
+........                                                                 [ 83%]
+tests/tier_a/adapters_egress/test_broker_boundary_surface.py ..          [100%]
+
+============================== 12 passed in 0.20s ==============================
+proof_block_id=opening_placement_readiness_surface
+command=python -m pytest tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py tests/tier_a/adapters_egress/test_broker_boundary_surface.py

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "target_tranche": "ACTIVE_PROOF_OUTPUT_TRANSCRIPT_SCOPE_ALIGNMENT_018",
+  "status": "PASS",
+  "scope": "align_prior_proof_output_transcript_scan_scope",
+  "triggering_evidence": {
+    "scan_file": "/tmp/current_chain_scan_after_017.txt",
+    "scan_hit": "var/audit/active_code_atlas_001/proof_placeholder_closure_013/reports/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_PROOF.txt contains point-in-time FAIL text from the 013 leaf before later supersession",
+    "current_supersession_evidence": [
+      "var/audit/active_code_atlas_001/proof_placeholder_closure_013/reports/ACTIVE_PROOF_PLACEHOLDER_CLOSURE_013_REPORT.json",
+      "var/audit/active_code_atlas_001/recursive_placeholder_token_closure_014/reports/ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014_REPORT.json",
+      "var/audit/active_code_atlas_001/recursive_placeholder_token_closure_014/receipts/ACTIVE_RECURSIVE_PLACEHOLDER_TOKEN_CLOSURE_014_RECEIPT.md"
+    ]
+  },
+  "control_change": "PLANS.md section 8A now excludes prior proof-output transcripts from default diagnostic hygiene scans unless explicitly selected, and states that point-in-time proof transcript failures are not live proof status when later current manifests/reports supersede them.",
+  "runtime_source_test_mutation_opened": false,
+  "dependency_mutation_opened": false,
+  "vocabulary_data_mutation_opened": false,
+  "original_atlas_bridge_mutation_opened": false,
+  "generated_slice_rebuild_opened": false,
+  "archive_payload_restored_or_used": false,
+  "proof": {
+    "git_diff_check": "PASS_no_output",
+    "surface_records_registry": "PASS_error_count_0_warning_count_0",
+    "proof_block_check_all": "PASS_count_46",
+    "full_read_manifest_validation": "PASS_manifest_count_19_stale_hash_mismatch_count_0_full_read_false_count_0"
+  }
+}
