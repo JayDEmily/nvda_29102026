@@ -1,0 +1,98 @@
+atlas_record_id	native_status	resolution_mode	direct_active_records	group_comparison	group_queue	group_active_records
+atlas_donor_db_base_001	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_base_002	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_models_001	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_package_001	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_package_002	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_001	missing	direct_and_grouped	ACATP-005-0001	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_003	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_004	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_005	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_006	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_007	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_008	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_009	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_010	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_seed_011	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_session_001	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_session_002	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_db_session_003	missing	direct_and_grouped	ACATP-005-0002	ACABC-0041	ACATQ-0040	ACATP-005-0001,ACATP-005-0002
+atlas_donor_downstream_005	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_downstream_006	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_downstream_011	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_downstream_020	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_execution_records_service_001	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_002	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_003	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_004	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_005	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_006	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_007	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_008	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_015	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_016	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_execution_records_service_022	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_001	partially_satisfied	direct_and_grouped	ACATP-004-0001	ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_002	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_003	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_004	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_006	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_007	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_008	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_import_registry_service_001	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_002	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_003	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_004	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_005	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_006	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_007	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_008	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_009	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_010	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_011	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_012	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_013	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_014	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_015	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_016	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_017	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_018	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_019	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_020	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_021	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_022	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_024	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_025	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_026	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_027	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_import_registry_service_028	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_legacy_extraction_003	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_module_001	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_module_003	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_module_007	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_module_010	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_module_registry_service_001	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_module_registry_service_002	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_module_registry_service_003	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_module_registry_service_004	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_module_registry_service_005	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_options_flow_history_001	partially_satisfied	direct_and_grouped	ACATP-004-0003	ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_options_flow_history_002	partially_satisfied	direct_and_grouped	ACATP-004-0003	ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_options_flow_history_003	partially_satisfied	direct_and_grouped	ACATP-004-0003	ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_options_flow_history_004	partially_satisfied	direct_and_grouped	ACATP-004-0003	ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_package_root_001	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_package_root_002	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_promotion_service_001	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_promotion_service_002	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_promotion_service_003	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_promotion_service_004	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_promotion_service_005	transform_required	direct_and_grouped	ACATP-006-0001	ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_schemas_imported_modules_pkg_001	transform_required	grouped_satisfaction_overlay		ACABC-0040	ACATQ-0039	ACATP-006-0001
+atlas_donor_service_options_flow_history_001	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_002	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_003	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_004	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_005	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_007	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_008	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006
+atlas_donor_service_options_flow_history_009	partially_satisfied	grouped_satisfaction_overlay		ACABC-0042	ACATQ-0041	ACATP-004-0001,ACATP-004-0002,ACATP-004-0003,ACATP-004-0004,ACATP-004-0005,ACATP-004-0006

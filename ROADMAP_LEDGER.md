@@ -92,12 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-003` / `5.16 Persistence, ledgers, and receipts`; user authority on 2026-05-14 reopened only the FWD-003 closure-grade read and three-way comparison gate before any FWD-004 work. Current FWD-003 gate result is `blocked_current` because direct active-code Atlas linkage covers 38/97 selected persistence Atlas IDs and leaves 59 selected native Atlas IDs without explicit active-record linkage. |
+| Current target architecture row | `FWD-004` / `5.6 DMPV3 packet carriage` is the next ordered row after FWD-003; user authority on 2026-05-14 reopened only the FWD-003 linkage-remediation gate and required pass/fail reporting before any FWD-004 work. Current FWD-003 gate result is `bounded_closed_current`; FWD-004 remains unopened by this pass pending user/PM authority to proceed. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
-FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; a later explicit user instruction reopened only FWD-003 before FWD-004. FWD-003 now remains `blocked_current` pending direct Atlas/Bridge linkage resolution; FWD-004 is not opened by this gate.
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; a later explicit user instruction reopened only FWD-003 before FWD-004. FWD-003 linkage remediation now records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and closes FWD-003 as `bounded_closed_current`; FWD-004 is not opened by this gate.
 
 ### 3.1 Previous pointer closure retained
 
@@ -854,7 +854,7 @@ FWD-002 status-capture merge gate recorded 2026-05-14:
 
 #### FWD-003 — 5.16 Persistence, ledgers, and receipts
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `foundation`
 
@@ -936,6 +936,20 @@ FWD-003 closure-grade comparison gate recorded 2026-05-14:
 - Current comparison finding: selected native persistence satisfaction records count `97`; primary active-code Atlas persistence records count `9`; direct active-record linked Atlas IDs count `38`; selected native Atlas IDs without explicit active-record linkage count `59`.
 - State: `blocked_current`; FWD-003 cannot be marked `bounded_closed_current` until the 59 direct Atlas/Bridge linkage gaps are either explicitly linked to active-code records or lawfully resolved by recorded grouped-satisfaction evidence.
 - Next gate: resolve `FWD003_DIRECT_ATLAS_BRIDGE_LINKAGE_GAP_AFTER_CURRENT_THREE_WAY_COMPARISON`; FWD-004 remains unopened.
+
+FWD-003 linkage remediation gate recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_linkage_remediation_20260514/`.
+- Current read manifest: `FWD003_LINKAGE_REMEDIATION_READ_MANIFEST.json`.
+- Linkage remediation report: `FWD003_LINKAGE_REMEDIATION_REPORT.json`.
+- Per-Atlas resolution table: `FWD003_LINKAGE_REMEDIATION_PER_ATLAS_RECORD.tsv`.
+- Gate evidence: `FWD003_LINKAGE_REMEDIATION_EVIDENCE.md`.
+- Remediation finding: the prior 59 selected native persistence Atlas IDs without direct one-to-one active-code linkage are all covered by grouped-satisfaction overlay through their selected Bridge comparison (`ACABC-*`) and queue (`ACATQ-*`) records, whose active-code records explicitly link to the same group records.
+- Current coverage: selected native persistence satisfaction records count `97`; direct-and-grouped coverage count `38`; grouped-satisfaction overlay count `59`; unresolved Atlas IDs count `0`.
+- Validation observation: remediation read manifest validates with status `0`, `error_count=0`, `warning_count=0`; follow-on proof/status evidence is recorded in the remediation report directory for this commit.
+- Source/test/config/fixture/data mutation: none.
+- State: `bounded_closed_current`; FWD-003 is closed for this bounded gate.
+- Next row: `FWD-004` / `5.6 DMPV3 packet carriage`; FWD-004 remains unopened by this pass pending user/PM authority after this report.
 
 #### FWD-004 — 5.6 DMPV3 packet carriage
 
