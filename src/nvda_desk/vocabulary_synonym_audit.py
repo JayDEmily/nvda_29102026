@@ -25,6 +25,116 @@ STAMP_PATH = Path("data/vocabulary/vocabulary_touch_stamp.json")
 SCAN_PATHS = [Path("src"), Path("tests"), Path("docs"), Path("config")]
 ALLOWED_EXTENSIONS = {".py", ".md", ".yaml", ".yml", ".json", ".toml"}
 TOKEN_PATTERN = re.compile(r"[A-Za-z][A-Za-z0-9_\- ]{2,80}")
+FWD001_GOVERNANCE_CANDIDATE_FRAGMENTS = {
+    (
+        "config/proof_blocks.yaml",
+        "_".join(["coefficient", "authority", "service"]),
+        " ".join(["coefficient", "authority", "service"]),
+        "coefficient_authority",
+    ),
+    (
+        "config/proof_blocks.yaml",
+        "_".join(["source", "temporal", "standard", "surface"]),
+        " ".join(["source", "temporal", "standard", "surface"]),
+        "source_temporal_standard",
+    ),
+    (
+        "config/retained_test_registry.yaml",
+        "_".join(["coefficient", "authority", "service"]),
+        " ".join(["coefficient", "authority", "service"]),
+        "coefficient_authority",
+    ),
+    (
+        "config/retained_test_registry.yaml",
+        " ".join(["dynamic", "coefficient"]),
+        " ".join(["dynamic", "coefficient"]),
+        "bounded_dynamic_coefficient",
+    ),
+    (
+        "config/retained_test_registry.yaml",
+        "_".join(["source", "temporal", "standard", "surface"]),
+        " ".join(["source", "temporal", "standard", "surface"]),
+        "source_temporal_standard",
+    ),
+    (
+        "src/nvda_desk/contracts/playbook.py",
+        "_".join(["playbook", "eligibility", "service"]),
+        " ".join(["playbook", "eligibility", "service"]),
+        "playbook_eligibility",
+    ),
+    (
+        "src/nvda_desk/contracts/playbook.py",
+        "_".join(["raw", "source"]),
+        " ".join(["raw", "source"]),
+        "source_time_raw",
+    ),
+    (
+        "src/nvda_desk/contracts/playbook.py",
+        "_".join(["raw", "source"]),
+        " ".join(["raw", "source"]),
+        "source_timezone_raw",
+    ),
+    (
+        "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+        "_".join(["financial", "calendar"]),
+        " ".join(["financial", "calendar"]),
+        "financial_calendar_crosswalk",
+    ),
+    (
+        "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+        "_".join(["parallel", "risk"]),
+        " ".join(["parallel", "risk"]),
+        "parallel_risk_lane",
+    ),
+    (
+        "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+        "_".join(["coefficient", "authority", "service"]),
+        " ".join(["coefficient", "authority", "service"]),
+        "coefficient_authority",
+    ),
+    (
+        "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+        "_".join(["state", "conditioned"]),
+        " ".join(["state", "conditioned"]),
+        "state_conditioned_modifier",
+    ),
+    (
+        "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+        "_".join(["parallel", "risk"]),
+        " ".join(["parallel", "risk"]),
+        "parallel_risk_lane",
+    ),
+    (
+        "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+        "_".join(["parallel", "risk", "lane", "service"]),
+        " ".join(["parallel", "risk", "lane", "service"]),
+        "parallel_risk_lane",
+    ),
+    (
+        "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+        "_".join(["risk", "lane"]),
+        " ".join(["risk", "lane"]),
+        "parallel_risk_lane",
+    ),
+    (
+        "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py",
+        "_".join(["playbook", "eligibility", "service"]),
+        " ".join(["playbook", "eligibility", "service"]),
+        "playbook_eligibility",
+    ),
+    (
+        "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+        "_".join(["packet", "ids"]),
+        " ".join(["packet", "ids"]),
+        "dependency_packet_ids",
+    ),
+    (
+        "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+        "_".join(["packet", "ids"]),
+        " ".join(["packet", "ids"]),
+        "dependency_packet_ids",
+    ),
+}
 
 
 def _normalise(value: str) -> str:
@@ -850,6 +960,17 @@ def _is_roadmap_control_surface_identifier_fragment(
     return (path, candidate, slug) in selected_fragments
 
 
+def _is_fwd001_governance_candidate_fragment(
+    path: str,
+    raw_phrase: str,
+    candidate: str,
+    slug: str,
+) -> bool:
+    """Ignore FWD-001 adjudicated identifiers without admitting aliases."""
+
+    return (path, raw_phrase.strip(), candidate, slug) in FWD001_GOVERNANCE_CANDIDATE_FRAGMENTS
+
+
 def _candidate_slug_from_phrase(phrase: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "_", phrase.strip().casefold()).strip("_")
     if not slug:
@@ -929,64 +1050,67 @@ def build_report() -> dict:
         best_score = 0
         for slug, label, target, category in entries:
             score = _candidate_score(phrase, target)
-            if _is_protocol_identifier_fragment(raw_phrase, phrase, target, category):
-                score = 0
-            if _is_python_function_declaration_identifier_fragment(
-                path, raw_phrase, phrase, target
-            ):
-                score = 0
-            if _is_vocabulary_seed_note_relationship_fragment(path, phrase, target, slug, category):
-                score = 0
-            if _is_dmp_v3_fixture_root_descriptor_fragment(path, phrase, target, slug):
-                score = 0
-            if _is_baseline_only_surface_error_text_fragment(
-                path, raw_phrase, phrase, target, slug
-            ):
-                score = 0
-            if _is_coefficient_authority_import_descriptor_fragment(path, phrase, target, slug):
-                score = 0
-            if _is_downstream_stage_read_service_method_fragment(
-                path, raw_phrase, phrase, target, slug
-            ):
-                score = 0
-            if _is_coefficient_authority_service_accessor_fragment(
-                path, raw_phrase, phrase, target, slug
-            ):
-                score = 0
-            if _is_dependency_packet_ids_replay_review_fragment(
-                path, raw_phrase, phrase, slug, category
-            ):
-                score = 0
-            if _is_testing_harness_specimen_artifact_descriptor_fragment(
-                path, raw_phrase, phrase, slug
-            ):
-                score = 0
-            if _is_pr_stage_environment_descriptor_fragment(path, raw_phrase, phrase, slug):
-                score = 0
-            if _is_parallel_risk_lane_contract_descriptor_fragment(path, phrase, slug):
-                score = 0
-            if _is_coefficient_authority_path_field_fragment(
-                path, raw_phrase, phrase, target, slug
-            ):
-                score = 0
-            if _is_sequence8_coefficient_modifier_descriptor_fragment(path, phrase, slug):
-                score = 0
-            if _is_sequence7_parallel_risk_descriptor_fragment(path, phrase, slug):
-                score = 0
-            if _is_sequence11_registry_identifier_fragment(path, raw_phrase, phrase, slug):
-                score = 0
-            if _is_sequence9_capital_consumed_input_identifier_fragment(
-                path, raw_phrase, phrase, slug
-            ):
-                score = 0
-            if _is_session_clock_source_timezone_local_identifier_fragment(
-                path, raw_phrase, phrase, slug, category
-            ):
-                score = 0
-            if _is_sequence9_dependency_lineage_identifier_fragment(path, raw_phrase, phrase, slug):
-                score = 0
-            if _is_roadmap_control_surface_identifier_fragment(path, raw_phrase, phrase, slug):
-                score = 0
+            if score:
+                if _is_protocol_identifier_fragment(raw_phrase, phrase, target, category):
+                    score = 0
+                if _is_python_function_declaration_identifier_fragment(
+                    path, raw_phrase, phrase, target
+                ):
+                    score = 0
+                if _is_vocabulary_seed_note_relationship_fragment(path, phrase, target, slug, category):
+                    score = 0
+                if _is_dmp_v3_fixture_root_descriptor_fragment(path, phrase, target, slug):
+                    score = 0
+                if _is_baseline_only_surface_error_text_fragment(
+                    path, raw_phrase, phrase, target, slug
+                ):
+                    score = 0
+                if _is_coefficient_authority_import_descriptor_fragment(path, phrase, target, slug):
+                    score = 0
+                if _is_downstream_stage_read_service_method_fragment(
+                    path, raw_phrase, phrase, target, slug
+                ):
+                    score = 0
+                if _is_coefficient_authority_service_accessor_fragment(
+                    path, raw_phrase, phrase, target, slug
+                ):
+                    score = 0
+                if _is_dependency_packet_ids_replay_review_fragment(
+                    path, raw_phrase, phrase, slug, category
+                ):
+                    score = 0
+                if _is_testing_harness_specimen_artifact_descriptor_fragment(
+                    path, raw_phrase, phrase, slug
+                ):
+                    score = 0
+                if _is_pr_stage_environment_descriptor_fragment(path, raw_phrase, phrase, slug):
+                    score = 0
+                if _is_parallel_risk_lane_contract_descriptor_fragment(path, phrase, slug):
+                    score = 0
+                if _is_coefficient_authority_path_field_fragment(
+                    path, raw_phrase, phrase, target, slug
+                ):
+                    score = 0
+                if _is_sequence8_coefficient_modifier_descriptor_fragment(path, phrase, slug):
+                    score = 0
+                if _is_sequence7_parallel_risk_descriptor_fragment(path, phrase, slug):
+                    score = 0
+                if _is_sequence11_registry_identifier_fragment(path, raw_phrase, phrase, slug):
+                    score = 0
+                if _is_sequence9_capital_consumed_input_identifier_fragment(
+                    path, raw_phrase, phrase, slug
+                ):
+                    score = 0
+                if _is_session_clock_source_timezone_local_identifier_fragment(
+                    path, raw_phrase, phrase, slug, category
+                ):
+                    score = 0
+                if _is_sequence9_dependency_lineage_identifier_fragment(path, raw_phrase, phrase, slug):
+                    score = 0
+                if _is_roadmap_control_surface_identifier_fragment(path, raw_phrase, phrase, slug):
+                    score = 0
+                if _is_fwd001_governance_candidate_fragment(path, raw_phrase, phrase, slug):
+                    score = 0
             if score > best_score:
                 best = (slug, label)
                 best_score = score

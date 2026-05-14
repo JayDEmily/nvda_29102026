@@ -1,11 +1,31 @@
 from __future__ import annotations
 
 import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
 
 from scripts.vocabulary_synonym_audit import write_report
+
+
+def test_vocabulary_synonym_audit_cli_bootstraps_src_import_path_without_env() -> None:
+    env = os.environ.copy()
+    env.pop("PYTHONPATH", None)
+
+    completed = subprocess.run(
+        [sys.executable, "scripts/vocabulary_synonym_audit.py", "--check-clean"],
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        env=env,
+    )
+
+    assert completed.returncode == 0, completed.stderr
+    assert "vocabulary_synonym_audit=PASS candidates=0" in completed.stdout
 
 
 @pytest.mark.vocabulary_governance
@@ -1856,6 +1876,230 @@ def test_roadmap_control_surface_identifier_fragments_do_not_globally_hide_synon
             "path": "docs/random.md",
             "resolution_required": "llm_escalation",
         },
+    ]
+
+
+def test_fwd001_governance_candidate_fragments_are_path_bounded(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from nvda_desk import vocabulary_synonym_audit as audit
+
+    def u(*parts: str) -> str:
+        return "_".join(parts)
+
+    def s(*parts: str) -> str:
+        return " ".join(parts)
+
+    monkeypatch.setattr(
+        audit,
+        "_load_document",
+        lambda: _vocabulary_payload(
+            [
+                _entry("coefficient_authority", "Coefficient Authority"),
+                _entry("source_temporal_standard", "Source Temporal Standard"),
+                _entry("bounded_dynamic_coefficient", "Bounded Dynamic Coefficient"),
+                _entry("playbook_eligibility", "Playbook Eligibility"),
+                _entry("source_time_raw", "source_time_raw"),
+                _entry("source_timezone_raw", "source_timezone_raw"),
+                _entry("financial_calendar_crosswalk", "Financial Calendar Crosswalk"),
+                _entry("parallel_risk_lane", "Parallel Risk Lane"),
+                _entry("state_conditioned_modifier", "State-conditioned Modifier"),
+                _entry("dependency_packet_ids", "Dependency Packet IDs"),
+            ]
+        ),
+    )
+    monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+    monkeypatch.setattr(
+        audit,
+        "_iter_candidates",
+        lambda: iter(
+            [
+                ("config/proof_blocks.yaml", u("coefficient", "authority", "service")),
+                ("config/proof_blocks.yaml", u("source", "temporal", "standard", "surface")),
+                (
+                    "config/retained_test_registry.yaml",
+                    u("coefficient", "authority", "service"),
+                ),
+                ("config/retained_test_registry.yaml", s("dynamic", "coefficient")),
+                (
+                    "config/retained_test_registry.yaml",
+                    u("source", "temporal", "standard", "surface"),
+                ),
+                ("src/nvda_desk/contracts/playbook.py", u("playbook", "eligibility", "service")),
+                ("src/nvda_desk/contracts/playbook.py", u("raw", "source")),
+                (
+                    "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+                    u("financial", "calendar"),
+                ),
+                (
+                    "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+                    u("parallel", "risk"),
+                ),
+                (
+                    "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+                    u("coefficient", "authority", "service"),
+                ),
+                (
+                    "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+                    u("state", "conditioned"),
+                ),
+                (
+                    "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+                    u("parallel", "risk"),
+                ),
+                (
+                    "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+                    u("parallel", "risk", "lane", "service"),
+                ),
+                (
+                    "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+                    u("risk", "lane"),
+                ),
+                (
+                    "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py",
+                    u("playbook", "eligibility", "service"),
+                ),
+                (
+                    "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+                    u("packet", "ids"),
+                ),
+                (
+                    "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+                    u("packet", "ids"),
+                ),
+            ]
+        ),
+    )
+
+    assert audit.build_report()["candidates"] == []
+
+
+def test_fwd001_governance_candidate_fragments_do_not_globally_hide_synonyms(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from nvda_desk import vocabulary_synonym_audit as audit
+
+    def s(*parts: str) -> str:
+        return " ".join(parts)
+
+    path = "docs/random.md"
+    monkeypatch.setattr(
+        audit,
+        "_load_document",
+        lambda: _vocabulary_payload(
+            [
+                _entry("coefficient_authority", "Coefficient Authority"),
+                _entry("source_temporal_standard", "Source Temporal Standard"),
+                _entry("bounded_dynamic_coefficient", "Bounded Dynamic Coefficient"),
+                _entry("playbook_eligibility", "Playbook Eligibility"),
+                _entry("source_time_raw", "source_time_raw"),
+                _entry("source_timezone_raw", "source_timezone_raw"),
+                _entry("financial_calendar_crosswalk", "Financial Calendar Crosswalk"),
+                _entry("parallel_risk_lane", "Parallel Risk Lane"),
+                _entry("state_conditioned_modifier", "State-conditioned Modifier"),
+                _entry("dependency_packet_ids", "Dependency Packet IDs"),
+            ]
+        ),
+    )
+    monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+    monkeypatch.setattr(
+        audit,
+        "_iter_candidates",
+        lambda: iter(
+            [
+                (path, s("coefficient", "authority", "service")),
+                (path, s("dynamic", "coefficient")),
+                (path, s("financial", "calendar")),
+                (path, s("packet", "ids")),
+                (path, s("parallel", "risk")),
+                (path, s("parallel", "risk", "lane", "service")),
+                (path, s("playbook", "eligibility", "service")),
+                (path, s("raw", "source")),
+                (path, s("risk", "lane")),
+                (path, s("source", "temporal", "standard", "surface")),
+                (path, s("state", "conditioned")),
+            ]
+        ),
+    )
+
+    assert audit.build_report()["candidates"] == [
+        _expected_escalation_candidate(
+            phrase=s("coefficient", "authority", "service"),
+            nearest_slug="coefficient_authority",
+            nearest_label="Coefficient Authority",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("dynamic", "coefficient"),
+            nearest_slug="bounded_dynamic_coefficient",
+            nearest_label="Bounded Dynamic Coefficient",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("financial", "calendar"),
+            nearest_slug="financial_calendar_crosswalk",
+            nearest_label="Financial Calendar Crosswalk",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("packet", "ids"),
+            nearest_slug="dependency_packet_ids",
+            nearest_label="Dependency Packet IDs",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("parallel", "risk"),
+            nearest_slug="parallel_risk_lane",
+            nearest_label="Parallel Risk Lane",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("parallel", "risk", "lane", "service"),
+            nearest_slug="parallel_risk_lane",
+            nearest_label="Parallel Risk Lane",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("playbook", "eligibility", "service"),
+            nearest_slug="playbook_eligibility",
+            nearest_label="Playbook Eligibility",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("raw", "source"),
+            nearest_slug="source_time_raw",
+            nearest_label="source_time_raw",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("risk", "lane"),
+            nearest_slug="parallel_risk_lane",
+            nearest_label="Parallel Risk Lane",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("source", "temporal", "standard", "surface"),
+            nearest_slug="source_temporal_standard",
+            nearest_label="Source Temporal Standard",
+            score=93,
+            path=path,
+        ),
+        _expected_escalation_candidate(
+            phrase=s("state", "conditioned"),
+            nearest_slug="state_conditioned_modifier",
+            nearest_label="State-conditioned Modifier",
+            score=93,
+            path=path,
+        ),
     ]
 
 

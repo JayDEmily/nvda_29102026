@@ -92,7 +92,7 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-000` control-surface freeze confirmation before implementation; then `FWD-001` / `5.18 Vocabulary governance interface`. |
+| Current target architecture row | `FWD-002` / `5.17 Testing, proof, and checkpoint surfaces` after FWD-001 bounded closure evidence recorded on 2026-05-14. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
@@ -705,7 +705,7 @@ The following rows are execution rows, not suggestions. Workers move in order.
 
 #### FWD-001 — 5.18 Vocabulary governance interface
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `foundation`
 
@@ -754,6 +754,17 @@ Close evidence:
 - receipt path;
 - ledger row state update;
 - next row: `FWD-002`.
+
+FWD-001 bounded closure evidence recorded 2026-05-14:
+
+- Candidate blocker reproduced against the baseline with `env PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean` as `unresolved_candidates=17`.
+- Candidate-level adjudication artefact: `var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_VOCABULARY_SYNONYM_CANDIDATE_ADJUDICATION.md`; all 17 candidates are recorded as `REJECTED_WITH_EVIDENCE`, with no alias or canonical-term admission.
+- Evidence inventory artefact: `var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_EVIDENCE_INVENTORY.md`.
+- Boundary receipt: `var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md`.
+- Read-status manifest: `var/audit/active_code_atlas_001/full_read_manifests/FWD001_VOCABULARY_GOVERNANCE_FULL_READ_MANIFEST.json`; the manifest distinguishes full reads from sectional current-evidence reads.
+- Local bounded repair added exact path/raw-phrase/nearest-slug FWD-001 fragment handling in `src/nvda_desk/vocabulary_synonym_audit.py`, exact-command wrapper bootstrapping in `scripts/vocabulary_synonym_audit.py`, pytest path ordering in `pyproject.toml`, and proof tests in `tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py`.
+- Current proof observed: `python scripts/vocabulary_synonym_audit.py --check-clean` returned `EXIT:0` with `candidates=0`; targeted synonym audit tests returned `47 passed`; `vocabulary_synonym_audit_clean_check` returned `EXIT:0`; `vocabulary_governance_conformance_candidate` returned `117 passed`; `proof_blocks_check_all=PASS count=46`; Tier A returned `590 passed`; Tier B returned `48 passed`; combined Tier A/Tier B returned `638 passed`; `git diff --check` returned `EXIT:0`.
+- Next row: `FWD-002`.
 
 #### FWD-002 — 5.17 Testing, proof, and checkpoint surfaces
 
