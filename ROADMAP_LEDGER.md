@@ -92,12 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-005` / `5.1 External source interfaces and API ingress` is the next ordered row after FWD-004. FWD-003 is `bounded_closed_current`; FWD-004 closure gate now records 73/73 selected DMPV3 native Atlas IDs covered by direct or grouped comparison/queue evidence plus deterministic Tier A/B batch regression proof for 639/639 collected nodes across 32/32 batches, and is `bounded_closed_current`. FWD-005 remains unopened pending user/PM authority after this gate report. |
+| Current target architecture row | `FWD-006` / `5.2 Raw capture and source temporal law` is the next ordered row after FWD-005. FWD-003, FWD-004, and FWD-005 are `bounded_closed_current`. FWD-005 closure gate records 234/234 selected external-source/API-ingress native Atlas IDs covered by direct or grouped comparison/queue evidence plus adaptive Tier A/B batch regression proof for 639/639 collected nodes across 51/51 captured execution receipts. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
-FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 is not opened by this gate.
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`; FWD-006 is not opened by the FWD-005 gate.
 
 ### 3.1 Previous pointer closure retained
 
@@ -1039,7 +1039,7 @@ FWD-004 closure gate recorded 2026-05-14:
 
 #### FWD-005 — 5.1 External source interfaces and API ingress
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `upstream_runtime`
 
@@ -1097,7 +1097,23 @@ FWD-005 continuation evidence recorded 2026-05-14:
 - Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
 - No FWD-005 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: external/API ingress proof blocks returned status 0: authority surface 19 passed, contract surface 4 passed, transform boundary 3 passed.
-- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+- Historical state before FWD-005 closure gate: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; targeted proof success alone did not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
+FWD-005 closure gate recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/`.
+- Regression evidence directory: `var/audit/active_code_atlas_001/fwd005_regression_batch_proof_20260514/`.
+- Three-way comparison report: `FWD005_THREE_WAY_COMPARISON_REPORT.json`.
+- Closure receipt: `FWD005_EXTERNAL_SOURCE_API_INGRESS_CLOSURE_RECEIPT.md`.
+- Read manifest: `FWD005_CLOSURE_GATE_READ_MANIFEST.json`.
+- Closure result: 234/234 selected native external-source/API-ingress Atlas IDs are covered by direct active-code links or grouped comparison/queue satisfaction evidence; unresolved selected IDs: 0.
+- Coverage split: 8 direct selected native Atlas links and 226 grouped-satisfaction overlay links across comparison groups `ACABC-0001`, `ACABC-0002`, and `ACABC-0003` and queue rows `ACATQ-0001`, `ACATQ-0002`, and `ACATQ-0003`.
+- Targeted proof reruns returned status 0: `roadmap_external_source_api_ingress_authority_surface` (`19 passed`), `external_source_contract_surface` (`4 passed`), and `external_source_transform_boundary_surface` (`3 passed`).
+- Broad regression proof records 639 collected unique Tier A/B pytest nodes assigned exactly once across 51 captured execution receipts after splitting the original uncaptured batch 31 into deterministic singleton receipts; all used receipt exit codes are 0 and passed summaries total 639.
+- Initial proof-block invocations missing `--block` returned status 2; retained as non-closure setup-error evidence only and not used for closure.
+- No FWD-005 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice mutation was made.
+- State: `bounded_closed_current`.
+- Next row: `FWD-006` / `5.2 Raw capture and source temporal law`; FWD-006 remains unopened by this pass pending user/PM authority after this report.
 
 #### FWD-006 — 5.2 Raw capture and source temporal law
 
