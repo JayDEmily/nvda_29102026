@@ -1,0 +1,56 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_proof_executor_emits_block_header_before_child_output __________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-7/test_proof_executor_emits_bloc0')
+
+    def test_proof_executor_emits_block_header_before_child_output(tmp_path: Path) -> None:
+        owned = tmp_path / "owned.txt"
+        owned.write_text("owned\n", encoding="utf-8")
+        _write_temp_proof_manifest(
+            tmp_path,
+            [
+                {
+                    "proof_block_id": "ordered_output_block",
+                    "tier": "Tier B",
+                    "lifecycle": "test_only",
+                    "command": "python -c 'print(\"child-output\")'",
+                    "owns": ["owned.txt"],
+                }
+            ],
+        )
+
+        completed = _run_temp_proof_executor(tmp_path, "--block", "ordered_output_block")
+
+        assert completed.returncode == 0
+>       assert completed.stdout.splitlines() == [
+            "proof_block_id=ordered_output_block",
+            "command=python -c 'print(\"child-output\")'",
+            "child-output",
+        ]
+E       assert ['child-outpu...d-output")\''] == ['proof_block...child-output']
+E
+E         At index 0 diff: 'child-output' != 'proof_block_id=ordered_output_block'
+E
+E         Full diff:
+E           [
+E         +     'child-output',
+E               'proof_block_id=ordered_output_block',
+E               'command=python -c \'print("child-output")\'',
+E         -     'child-output',
+E           ]
+
+tests/tier_b/proof_model/test_proof_executor_contract.py:431: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_emits_block_header_before_child_output - assert ['child-outpu...d-output")\''] == ['proof_block...child-output']
+
+  At index 0 diff: 'child-output' != 'proof_block_id=ordered_output_block'
+
+  Full diff:
+    [
+  +     'child-output',
+        'proof_block_id=ordered_output_block',
+        'command=python -c \'print("child-output")\'',
+  -     'child-output',
+    ]
+1 failed in 4.52s

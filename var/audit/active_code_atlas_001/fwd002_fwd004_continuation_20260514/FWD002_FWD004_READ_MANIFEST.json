@@ -1,0 +1,479 @@
+{
+  "created_for": "FWD-002 through FWD-004 continuation 2026-05-14",
+  "entries": [
+    {
+      "byte_count": 8827,
+      "chunk_ranges": [
+        "1-184"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 184,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "AGENTS.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "root control; displayed in full through nl output",
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da"
+    },
+    {
+      "byte_count": 99334,
+      "chunk_ranges": [
+        "1-140",
+        "141-380 partial",
+        "381-660 partial",
+        "661-707"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 707,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "PLANS.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "root control; displayed in chunks but historical/progress middle was tool-ellipsised; not closure-grade full read",
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672"
+    },
+    {
+      "byte_count": 266724,
+      "chunk_ranges": [
+        "1-120",
+        "621-923"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 1655,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "ROADMAP_LEDGER.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "live pointer and FWD row authority; relevant sections displayed; not closure-grade full file read",
+      "sha256": "c3ee4467693dcb683b0dea7d1a35a7238ab4aed4b146bbe2924b66ef48004705"
+    },
+    {
+      "byte_count": 3465,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 84,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2"
+    },
+    {
+      "byte_count": 4989,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 117,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee"
+    },
+    {
+      "byte_count": 1084,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 23,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614"
+    },
+    {
+      "byte_count": 5346,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 142,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae"
+    },
+    {
+      "byte_count": 418,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 13,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8"
+    },
+    {
+      "byte_count": 5680,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 159,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d"
+    },
+    {
+      "byte_count": 392,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 13,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed"
+    },
+    {
+      "byte_count": 7552,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 186,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540"
+    },
+    {
+      "byte_count": 3529,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 51,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551"
+    },
+    {
+      "byte_count": 4080,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 81,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c"
+    },
+    {
+      "byte_count": 918,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 21,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d"
+    },
+    {
+      "byte_count": 5587,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 147,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07"
+    },
+    {
+      "byte_count": 34740,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 342,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b"
+    },
+    {
+      "byte_count": 10717,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 264,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-003 governing persistence/ledger doc; not displayed in this pass",
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045"
+    },
+    {
+      "byte_count": 12060,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 120,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-003 working persistence/ledger doc; not displayed in this pass",
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8"
+    },
+    {
+      "byte_count": 8442,
+      "chunk_ranges": [
+        "partial"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 202,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 governing proof doctrine; displayed in same command as other output but command output was ellipsised; not closure-grade full read",
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944"
+    },
+    {
+      "byte_count": 401,
+      "chunk_ranges": [
+        "1-13"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 13,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 working companion; displayed in full after docs/08 output",
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1"
+    },
+    {
+      "byte_count": 5489,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 187,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-004 governing DMPV3 doc; not displayed in this pass",
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe"
+    },
+    {
+      "byte_count": 2617,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 39,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-004 working companion; not displayed in this pass",
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a"
+    },
+    {
+      "byte_count": 1944,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 50,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8"
+    },
+    {
+      "byte_count": 2726,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 33,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "global normative stack required by row; not displayed in this pass",
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b"
+    },
+    {
+      "byte_count": 40449,
+      "chunk_ranges": [
+        "220-423"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 758,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002/FWD-003/FWD-004 blocks displayed; not full file",
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a"
+    },
+    {
+      "byte_count": 25393,
+      "chunk_ranges": [
+        "150-175"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 195,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "rows 5.6/5.16/5.17 displayed; not full file",
+      "sha256": "abccce77e4b3e7847582b9521f47c2e3cf78918221f0bd4e002878de270932e6"
+    },
+    {
+      "byte_count": 7623,
+      "chunk_ranges": [
+        "1-217"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 217,
+      "mutation_relevance": "mutated",
+      "path": "scripts/run_proof_block.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 touched proof executor; displayed in full",
+      "sha256": "debb39005c70a286556b8d2ae3f6a8189e29bf99c1b22b64673acf031ef8badd"
+    },
+    {
+      "byte_count": 14293,
+      "chunk_ranges": [
+        "1-431"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 457,
+      "mutation_relevance": "mutated",
+      "path": "tests/tier_b/proof_model/test_proof_executor_contract.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 touched proof executor tests; displayed in full before mutation",
+      "sha256": "63339294cde496512aa4279e8cb242ae751a22450d9149ed22d6b00cba1146c6"
+    },
+    {
+      "byte_count": 2699,
+      "chunk_ranges": [
+        "1-65"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 65,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/tier_b/proof_model/test_checkpoint_receipt_contract.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 checkpoint proof model; displayed in full",
+      "sha256": "f4604f4df6374d9e99a2457baca853a908c18ab73300ea2bcd3ccf5a26d4ec2e"
+    },
+    {
+      "byte_count": 2071,
+      "chunk_ranges": [
+        "1-58"
+      ],
+      "exists": true,
+      "full_read": true,
+      "line_count": 58,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "src/nvda_desk/downstream/checkpoints.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-002 checkpoint receipt source; displayed in full",
+      "sha256": "01956e18fb19374be7a735f2f9e44bbce6f5f8eafb1a24880320cbab0e2437aa"
+    },
+    {
+      "byte_count": 45809,
+      "chunk_ranges": [
+        "relevant proof_block_id list"
+      ],
+      "exists": true,
+      "full_read": false,
+      "line_count": 807,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "config/proof_blocks.yaml",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "proof block manifest; parsed/inspected for relevant blocks; not displayed in full",
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995"
+    },
+    {
+      "byte_count": 221383,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 3561,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "config/retained_test_registry.yaml",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "retained test registry; not displayed in full",
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25"
+    },
+    {
+      "byte_count": 3764,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 76,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/AGENTS.override.md",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "test override required if tests touched; line count confirmed only, not displayed",
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2"
+    },
+    {
+      "byte_count": 1880,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 57,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-003 targeted proof file executed; not displayed in full",
+      "sha256": "742003a1354fc7acb5a191e9e3d7d6591e231b01e927700932a279dd56662798"
+    },
+    {
+      "byte_count": 1557,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 48,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/tier_a/persistence/test_module_registry_repository_surface.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-003 targeted proof file executed; not displayed in full",
+      "sha256": "ccefabc591bae5336a03bf4257e89f75a793d1f6f9974c76d7b0c094a666d47f"
+    },
+    {
+      "byte_count": 2571,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 72,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-004 targeted proof file executed; not displayed in full",
+      "sha256": "45dfe7e719fb31b6b8aae23b28cc0bd82d8cdcec3456f46acf9b48286ecd107d"
+    },
+    {
+      "byte_count": 2188,
+      "chunk_ranges": [],
+      "exists": true,
+      "full_read": false,
+      "line_count": 52,
+      "mutation_relevance": "evidence_or_authority",
+      "path": "tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py",
+      "read_method": "terminal_display_or_targeted_command_output",
+      "reason": "FWD-004 targeted proof file executed; not displayed in full",
+      "sha256": "40acde2f80b7e2d69b3d5c62f65105e48fe1449eec92f2686c67f2b79a76b699"
+    }
+  ],
+  "manifest_id": "FWD002_FWD004_READ_MANIFEST",
+  "truthfulness_note": "This manifest is current-state evidence but not closure-grade for FWD-002..FWD-004 because several required global and row-specific authority files were not fully displayed/read in this pass, and it was created after the FWD-002 proof-executor mutation."
+}

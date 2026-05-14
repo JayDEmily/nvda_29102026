@@ -194,8 +194,8 @@ def main() -> int:
     summary = _validate_block(block)
     command = summary["command"]
 
-    print(f"proof_block_id={args.block}")
-    print(f"command={command}")
+    print(f"proof_block_id={args.block}", flush=True)
+    print(f"command={command}", flush=True)
     resolved_command = _resolve_command(command)
     completed = subprocess.run(resolved_command, check=False)
     _write_receipt(
