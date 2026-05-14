@@ -1329,6 +1329,18 @@ FWD-006 through FWD-008 closure gates recorded 2026-05-14:
 - States: FWD-006 `bounded_closed_current`; FWD-007 `bounded_closed_current`; FWD-008 `bounded_closed_current`.
 - Next row: `FWD-009` / `5.5 Prepared ingress and runtime context preparation`; FWD-009 remains unopened by this pass.
 
+
+FWD-006 through FWD-008 forensic audit correction recorded 2026-05-14:
+
+- Audit branch: `worker/fwd006-fwd008-forensic-audit-20260514`; report path: `var/audit/active_code_atlas_001/fwd006_fwd008_forensic_audit_20260514/reports/FWD006_FWD008_FORENSIC_AUDIT_REPORT.md` and `.json`.
+- The earlier combined closure commit `c13f491` is not accepted as clean final closure evidence.
+- Material evidence defect: FWD-006 closure report labelled `ACABC-0005` / `ACATQ-0005` as `missing`, while the static Bridge comparison and test-first queue record the group as `partially_satisfied` for 11 rows.
+- Material evidence defect: FWD-007 closure report labelled `ACABC-0008` / `ACATQ-0008` as `missing`, while the static Bridge comparison and test-first queue record the group as `partially_satisfied` for 22 rows.
+- Procedural defect: FWD-006, FWD-007, and FWD-008 were closed in one combined commit/final report rather than preserving a clean ordered gate stop/review boundary between rows.
+- Regression-proof repair evidence: the audit reran the 609 collected Tier A/B nodes under default pytest plugin autoload and captured 31/31 batch exit codes `0`, passed summaries totalling 609/609.
+- Current state correction: treat FWD-006, FWD-007, and FWD-008 as `evidence_blocked_pending_ordered_replay`, not accepted closed, until replayed from FWD-006 in order with corrected Bridge-status evidence and captured proof.
+- FWD-009 remains unopened.
+
 #### FWD-009 — 5.5 Prepared ingress and runtime context preparation
 
 State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
