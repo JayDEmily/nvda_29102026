@@ -1,0 +1,4 @@
+ M ROADMAP_LEDGER.md
+ M var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json
+?? var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/
+?? var/audit/active_code_atlas_001/fwd006_fwd008_regression_batch_proof_20260514/

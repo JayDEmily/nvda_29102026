@@ -930,7 +930,7 @@ FWD-003 continuation evidence recorded 2026-05-14:
 - Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
 - No FWD-003 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: persistence proof blocks returned status 0: persistence ledgers/receipts 36 passed, session boundary 3 passed, module registry repository 3 passed.
-- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+- Historical state before closure gate: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; targeted proof success alone did not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
 
 
 FWD-003 closure-grade comparison gate recorded 2026-05-14:
@@ -1029,7 +1029,7 @@ FWD-004 continuation evidence recorded 2026-05-14:
 - Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
 - No FWD-004 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: DMPV3 proof blocks returned status 0: support spine prepared packet/review 41 passed, extension canonical leaf 3 passed, transform boundary 3 passed.
-- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+- Historical state before closure gate: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; targeted proof success alone did not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
 
 FWD-004 closure gate recorded 2026-05-14:
 
@@ -1127,7 +1127,7 @@ FWD-005 closure gate recorded 2026-05-14:
 
 #### FWD-006 — 5.2 Raw capture and source temporal law
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `upstream_runtime`
 
@@ -1185,11 +1185,11 @@ FWD-006 continuation evidence recorded 2026-05-14:
 - Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
 - No FWD-006 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: raw/source-temporal proof blocks returned status 0: raw bundle loader 3 passed, transform boundary 3 passed, source temporal standard 4 passed.
-- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+- Historical state before closure gate: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; targeted proof success alone did not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
 
 #### FWD-007 — 5.3 Raw signal families
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `upstream_runtime`
 
@@ -1251,7 +1251,7 @@ FWD-007 continuation evidence recorded 2026-05-14:
 
 #### FWD-008 — 5.4 Financial and event calendar architecture
 
-State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+State: `bounded_closed_current`
 
 Runtime position: `upstream_runtime`
 
@@ -1310,6 +1310,24 @@ FWD-008 continuation evidence recorded 2026-05-14:
 - No FWD-008 source/config/test/fixture/data mutation was made.
 - Targeted proof observation: calendar proof blocks returned status 0: authority surface 13 passed, transform boundary 2 passed.
 - State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
+FWD-006 through FWD-008 closure gates recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/`.
+- Regression evidence directory: `var/audit/active_code_atlas_001/fwd006_fwd008_regression_batch_proof_20260514/`.
+- FWD-006 report: `FWD006_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_CLOSURE_RECEIPT.md`; read manifest: `FWD006_CLOSURE_GATE_READ_MANIFEST.json`.
+- FWD-006 result: 108/108 selected native raw-capture/source-temporal Atlas IDs covered by grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 0; unresolved selected IDs: 0.
+- FWD-006 targeted proof reruns returned status 0: `raw_capture_source_temporal_law_surface`, `raw_capture_transform_boundary_surface`, and `source_temporal_standard_surface`.
+- FWD-007 report: `FWD007_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD007_RAW_SIGNAL_FAMILIES_CLOSURE_RECEIPT.md`; read manifest: `FWD007_CLOSURE_GATE_READ_MANIFEST.json`.
+- FWD-007 result: 123/123 selected native raw-signal-family Atlas IDs covered by grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 0; unresolved selected IDs: 0.
+- FWD-007 targeted proof reruns returned status 0: `raw_signal_contract_copy_boundary_surface` and `raw_signal_transform_boundary_surface`.
+- FWD-008 report: `FWD008_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD008_FINANCIAL_EVENT_CALENDAR_CLOSURE_RECEIPT.md`; read manifest: `FWD008_CLOSURE_GATE_READ_MANIFEST.json`.
+- FWD-008 result: 117/117 selected native financial/event-calendar Atlas IDs covered by direct active-code links or grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 2; grouped-satisfaction overlay links: 115; unresolved selected IDs: 0.
+- FWD-008 targeted proof reruns returned status 0: `financial_event_calendar_authority_surface` and `financial_event_calendar_transform_boundary_surface`.
+- Broad regression proof records 609 collected unique Tier A/B pytest nodes assigned exactly once across 32 captured execution receipts; all used receipt exit codes are 0 and passed summaries total 609. Some selected receipts use `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1` to avoid third-party plugin teardown interference; earlier attempts that printed pass summaries without exit-code receipts are retained as superseded setup evidence only.
+- No FWD-006, FWD-007, or FWD-008 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice mutation was made.
+- States: FWD-006 `bounded_closed_current`; FWD-007 `bounded_closed_current`; FWD-008 `bounded_closed_current`.
+- Next row: `FWD-009` / `5.5 Prepared ingress and runtime context preparation`; FWD-009 remains unopened by this pass.
 
 #### FWD-009 — 5.5 Prepared ingress and runtime context preparation
 
