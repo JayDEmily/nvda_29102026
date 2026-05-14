@@ -7,9 +7,9 @@
   "manifest_count": 1,
   "manifests": [
     {
-      "manifest": "var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/FWD005_CLOSURE_GATE_READ_MANIFEST.json",
-      "entry_count": 335,
-      "unique_path_count": 335,
+      "manifest": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/VOCABULARY_SUPPRESSION_REMOVAL_READ_MANIFEST.json",
+      "entry_count": 68,
+      "unique_path_count": 68,
       "stale_hash_mismatch_count": 0,
       "full_read_false_count": 0
     }

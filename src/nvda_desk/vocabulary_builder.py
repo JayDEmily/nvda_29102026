@@ -43,6 +43,8 @@ def build_document() -> VocabularyDocument:
                 "stage",
                 "temporal_context",
                 "TemporalContextOutput",
+                allowed_aliases=["temporal event context"],
+                disallowed_phrases=["temporal context seq5"],
             ),
             VocabularyEntry(
                 "market_regime_context",
@@ -71,6 +73,7 @@ def build_document() -> VocabularyDocument:
                 "stage",
                 "playbook_eligibility",
                 "PlaybookEligibilityOutput",
+                disallowed_phrases=["playbook eligibility service"],
             ),
             VocabularyEntry(
                 "expression_execution",
@@ -86,7 +89,13 @@ def build_document() -> VocabularyDocument:
                 "workflow",
                 "parallel_risk_lane",
                 "ParallelRiskLanePacket",
-                allowed_aliases=["parallel lane"],
+                allowed_aliases=["parallel lane", "parallel risk", "risk lane"],
+                disallowed_phrases=[
+                    "parallel risk lane dataschema",
+                    "parallel risk lane packet",
+                    "parallel risk lane service",
+                    "roadmap parallel risk lane",
+                ],
             ),
             VocabularyEntry(
                 "dmp_v3",
@@ -95,6 +104,7 @@ def build_document() -> VocabularyDocument:
                 "cross_stage_protocol",
                 "DmpV3Envelope",
                 allowed_aliases=["dmpv3"],
+                disallowed_phrases=["dmp v3 root"],
             ),
             VocabularyEntry(
                 "dmp_v3_envelope",
@@ -224,6 +234,7 @@ def build_document() -> VocabularyDocument:
                 "reference_data",
                 "calendar_reference",
                 "FinancialCalendarCrosswalkRecord",
+                allowed_aliases=["financial calendar"],
             ),
             VocabularyEntry(
                 "financial_calendar_import_record",
@@ -238,6 +249,14 @@ def build_document() -> VocabularyDocument:
                 "authority_surface",
                 "posture_risk_permission",
                 "CoefficientAuthorityDocument",
+                disallowed_phrases=[
+                    "coefficient authority import",
+                    "coefficient authority marker",
+                    "coefficient authority path",
+                    "coefficient authority seq8",
+                    "coefficient authority service",
+                    "coefficient modifier authority",
+                ],
             ),
             VocabularyEntry(
                 "mutable_runtime_surface",
@@ -254,6 +273,7 @@ def build_document() -> VocabularyDocument:
                 "posture_risk_permission",
                 "CoefficientAuthorityRecord",
                 allowed_aliases=["baseline only surface"],
+                disallowed_phrases=["baseline only"],
             ),
             VocabularyEntry(
                 "effective_coefficient_lineage",
@@ -269,6 +289,11 @@ def build_document() -> VocabularyDocument:
                 "authority_surface",
                 "posture_risk_permission",
                 "ModifierPolicyRecord",
+                allowed_aliases=["state conditioned"],
+                disallowed_phrases=[
+                    "state conditioned modifier surface",
+                    "state conditioned modifier tests",
+                ],
             ),
             VocabularyEntry(
                 "bounded_dynamic_coefficient",
@@ -276,6 +301,7 @@ def build_document() -> VocabularyDocument:
                 "authority_class",
                 "posture_risk_permission",
                 "CoefficientAuthorityRecord",
+                allowed_aliases=["bounded coefficient", "dynamic coefficient"],
             ),
             VocabularyEntry(
                 "review_horizon",
@@ -305,6 +331,11 @@ def build_document() -> VocabularyDocument:
                 "cognition_ingress",
                 "StageInputBundle",
                 allowed_aliases=["stageinputbundle"],
+                disallowed_phrases=[
+                    "sequence7 stage input bundle",
+                    "specimen stage input bundle",
+                    "stage input bundle json",
+                ],
             ),
             VocabularyEntry(
                 "environment_assessment",
@@ -312,6 +343,11 @@ def build_document() -> VocabularyDocument:
                 "parallel_risk_surface",
                 "parallel_risk_lane",
                 "ParallelRiskEnvironmentAssessment",
+                disallowed_phrases=[
+                    "bounded environment assessment",
+                    "environment assessment import",
+                    "environment assessment only",
+                ],
             ),
             VocabularyEntry(
                 "candidate_audit",
@@ -328,6 +364,7 @@ def build_document() -> VocabularyDocument:
                 "parallel_risk_lane",
                 "ParallelRiskStageReadRecord",
                 allowed_aliases=["stage read state", "stage state"],
+                disallowed_phrases=["bootstrap stage read state", "read state"],
             ),
             VocabularyEntry(
                 "dependency_packet_ids",
@@ -335,7 +372,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_field",
                 "cross_stage_protocol",
                 "DmpV3Lineage.dependencyids",
-                allowed_aliases=["dependencyids"],
+                allowed_aliases=["dependencyids", "packet ids"],
             ),
             VocabularyEntry(
                 "parallel_risk_observation_store",
@@ -359,6 +396,7 @@ def build_document() -> VocabularyDocument:
                 "parallel_risk_lane",
                 "ParallelRiskObservationRecord",
                 allowed_aliases=["append only observation record"],
+                disallowed_phrases=["append only observation record json"],
             ),
             VocabularyEntry(
                 "source_temporal_standard",
@@ -366,6 +404,10 @@ def build_document() -> VocabularyDocument:
                 "authority_surface",
                 "temporal_context",
                 "SourceTemporalStandard",
+                disallowed_phrases=[
+                    "source temporal standard field",
+                    "source temporal standard surface",
+                ],
                 notes=[
                     "Repo-wide source temporal grammar admitted in docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md."
                 ],
@@ -376,6 +418,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_field",
                 "temporal_context",
                 "SourceTemporalStandard.source_time_raw",
+                disallowed_phrases=["raw source"],
                 notes=["Source temporal standard field. Upstream of the DMPV3 outer envelope."],
             ),
             VocabularyEntry(
@@ -393,6 +436,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_field",
                 "temporal_context",
                 "SourceTemporalStandard.source_timezone_raw",
+                allowed_aliases=["source timezone"],
                 notes=["Source temporal standard field. Upstream of the DMPV3 outer envelope."],
             ),
             VocabularyEntry(

@@ -1,0 +1,1 @@
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src python -m pytest -q tests/tier_b/proof_model/test_proof_executor_contract.py::test_candidate_review_clean_check_proof_block_is_manifest_owned
