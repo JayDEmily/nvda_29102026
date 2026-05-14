@@ -7,11 +7,11 @@
   "manifest_count": 1,
   "manifests": [
     {
-      "manifest": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_074_075_FINAL_FULL_READ_MANIFEST.json",
-      "entry_count": 53,
-      "unique_path_count": 53,
+      "manifest": "var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json",
+      "entry_count": 37,
+      "unique_path_count": 37,
       "stale_hash_mismatch_count": 0,
-      "full_read_false_count": 0
+      "full_read_false_count": 35
     }
   ]
 }

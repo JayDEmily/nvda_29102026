@@ -92,10 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-003` / `5.16 Persistence, ledgers, and receipts`; FWD-002 closure remediation recorded on 2026-05-14 accepted the bounded proof-executor repair with closure-grade manifest/evidence, while FWD-003 and FWD-004 remain observations only from the prior continuation pass. |
+| Current target architecture row | `FWD-010` / `5.9 Dynamic coefficient and modifier authority`; FWD-002 was merged to `main` after exact combined Tier A+B status capture, and FWD-003 through FWD-009 have continuation evidence recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison` rather than closed. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
+
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row is recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; next current pointer is `FWD-010` if authority opens continuation beyond assigned FWD-009.
 
 ### 3.1 Previous pointer closure retained
 
@@ -843,9 +845,16 @@ FWD-002 closure remediation recorded 2026-05-14:
 - FWD-003 and FWD-004 remain observations only from the prior continuation pass and are not closed by this pass.
 - Next current pointer: `FWD-003`.
 
+FWD-002 status-capture merge gate recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Status/merge evidence: `FWD002_STATUS_CAPTURE_AND_MERGE_DECISION.md`.
+- Exact combined command status file: `reports/FWD002_EXACT_COMBINED_PYTEST.exitcode` with value `0`; output `639 passed in 70.10s` in `reports/FWD002_EXACT_COMBINED_PYTEST.out`.
+- Merge result: merged `worker/fwd-002-through-fwd-004-proof-persistence-dmpv3` to `main` with merge commit `258ec1c`, deleted the completed worker branch, and opened continuation branch `worker/fwd-003-through-fwd-009-closure-continuation`.
+
 #### FWD-003 — 5.16 Persistence, ledgers, and receipts
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `foundation`
 
@@ -903,9 +912,19 @@ FWD-003 bounded continuation evidence recorded 2026-05-14:
 - Targeted proof observations: persistence surface proof command returned `36 passed in 0.77s`; persistence session boundary returned `3 passed in 0.22s`; module registry repository surface returned `3 passed in 0.21s`.
 - State: `targeted_proof_observed_pending_full_authority_read`; not closed because `docs/07*`, all FWD-003 receipts/manifests, active-code Atlas records, Atlas/Bridge rows, and selected source/test/config files were not full-read in closure-grade sequence.
 
+FWD-003 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD003_PERSISTENCE_LEDGER_RECEIPT_CLOSURE_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-003 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: persistence proof blocks returned status 0: persistence ledgers/receipts 36 passed, session boundary 3 passed, module registry repository 3 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-004 — 5.6 DMPV3 packet carriage
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `foundation`
 
@@ -963,9 +982,19 @@ FWD-004 bounded continuation evidence recorded 2026-05-14:
 - Targeted proof observations: support-spine prepared packet/review command returned `41 passed in 0.83s`; DMPV3 extension canonical leaf command returned `3 passed in 0.39s`; DMPV3 transform-boundary command returned `3 passed in 0.42s`.
 - State: `targeted_proof_observed_pending_full_authority_read`; not closed because `docs/09*`, all FWD-004 receipts/manifests, active-code Atlas records, Atlas/Bridge rows, and selected DMPV3 source/test/config files were not full-read in closure-grade sequence.
 
+FWD-004 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD004_DMPV3_PACKET_CARRIAGE_CLOSURE_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-004 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: DMPV3 proof blocks returned status 0: support spine prepared packet/review 41 passed, extension canonical leaf 3 passed, transform boundary 3 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-005 — 5.1 External source interfaces and API ingress
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `upstream_runtime`
 
@@ -1015,9 +1044,19 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-006`.
 
+FWD-005 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD005_EXTERNAL_SOURCE_API_INGRESS_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-005 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: external/API ingress proof blocks returned status 0: authority surface 19 passed, contract surface 4 passed, transform boundary 3 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-006 — 5.2 Raw capture and source temporal law
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `upstream_runtime`
 
@@ -1067,9 +1106,19 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-007`.
 
+FWD-006 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-006 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: raw/source-temporal proof blocks returned status 0: raw bundle loader 3 passed, transform boundary 3 passed, source temporal standard 4 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-007 — 5.3 Raw signal families
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `upstream_runtime`
 
@@ -1119,9 +1168,19 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-008`.
 
+FWD-007 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD007_RAW_SIGNAL_FAMILIES_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-007 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: raw signal proof blocks returned status 0: contract copy boundary 2 passed, transform boundary 2 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-008 — 5.4 Financial and event calendar architecture
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `upstream_runtime`
 
@@ -1171,9 +1230,19 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-009`.
 
+FWD-008 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD008_FINANCIAL_EVENT_CALENDAR_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-008 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: calendar proof blocks returned status 0: authority surface 13 passed, transform boundary 2 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+
 #### FWD-009 — 5.5 Prepared ingress and runtime context preparation
 
-State: `planned_forward_reconciliation`
+State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
 
 Runtime position: `preparation`
 
@@ -1222,6 +1291,16 @@ Close evidence:
 - receipt path;
 - ledger row state update;
 - next row: `FWD-010`.
+
+FWD-009 continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/`.
+- Row evidence: `FWD009_PREPARED_INGRESS_RUNTIME_CONTEXT_EVIDENCE.md`.
+- Boundary receipt: `FWD003_FWD009_BOUNDARY_RECEIPT.md`.
+- Read manifest: `FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json`; conservative status records incomplete closure-grade full-read proof for selected large authority/source/test/config/fixture/receipt/Atlas/Bridge inputs.
+- No FWD-009 source/config/test/fixture/data mutation was made.
+- Targeted proof observation: prepared ingress proof blocks returned status 0: support spine prepared packet/review 41 passed, runtime snapshot contract 1 passed, runtime transform boundary 3 passed.
+- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
 
 #### FWD-010 — 5.9 Dynamic coefficient and modifier authority
 
