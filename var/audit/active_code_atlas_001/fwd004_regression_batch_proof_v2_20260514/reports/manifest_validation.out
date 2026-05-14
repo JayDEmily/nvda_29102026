@@ -1,0 +1,17 @@
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/active_code_atlas_001/fwd004_regression_batch_proof_v2_20260514/FWD004_TIER_AB_BATCH_REGRESSION_READ_MANIFEST.json",
+      "entry_count": 239,
+      "unique_path_count": 239,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  ]
+}
