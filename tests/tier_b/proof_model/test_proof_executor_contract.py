@@ -409,6 +409,32 @@ def test_proof_executor_check_all_does_not_execute_manifest_commands(tmp_path: P
     assert not marker.exists()
 
 
+def test_proof_executor_emits_block_header_before_child_output(tmp_path: Path) -> None:
+    owned = tmp_path / "owned.txt"
+    owned.write_text("owned\n", encoding="utf-8")
+    _write_temp_proof_manifest(
+        tmp_path,
+        [
+            {
+                "proof_block_id": "ordered_output_block",
+                "tier": "Tier B",
+                "lifecycle": "test_only",
+                "command": "python -c 'print(\"child-output\")'",
+                "owns": ["owned.txt"],
+            }
+        ],
+    )
+
+    completed = _run_temp_proof_executor(tmp_path, "--block", "ordered_output_block")
+
+    assert completed.returncode == 0
+    assert completed.stdout.splitlines() == [
+        "proof_block_id=ordered_output_block",
+        "command=python -c 'print(\"child-output\")'",
+        "child-output",
+    ]
+
+
 def test_proof_executor_runs_manifest_commands_without_shell_evaluation(tmp_path: Path) -> None:
     owned = tmp_path / "owned.txt"
     owned.write_text("owned\n", encoding="utf-8")

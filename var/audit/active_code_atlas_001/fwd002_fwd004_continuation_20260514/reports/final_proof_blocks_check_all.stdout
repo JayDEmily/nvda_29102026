@@ -1,0 +1,2 @@
+COMMAND python scripts/run_proof_block.py --check-all
+proof_blocks_check_all=PASS count=46

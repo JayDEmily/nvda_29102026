@@ -92,7 +92,7 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-002` / `5.17 Testing, proof, and checkpoint surfaces` after FWD-001 bounded closure evidence recorded on 2026-05-14. |
+| Current target architecture row | `FWD-002` / `5.17 Testing, proof, and checkpoint surfaces`; bounded FWD-002..FWD-004 continuation evidence recorded on 2026-05-14, but FWD-002 remains the next closure gate because the pass recorded a proof-executor repair plus incomplete closure-grade full authority intake. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
@@ -818,6 +818,17 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-003`.
 
+FWD-002 bounded continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/`.
+- Row evidence: `FWD002_TESTING_PROOF_CHECKPOINT_EVIDENCE.md`.
+- Read manifest: `FWD002_FWD004_READ_MANIFEST.json`; current-state manifest only, not closure-grade, because several required global and row-specific authority files were not fully read and the manifest was created after the FWD-002 mutation.
+- Defect found: proof block transcript output was not chronologically coherent under captured/redirected output; child command output could appear before `proof_block_id` and `command` header lines.
+- Test-first evidence: added `tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_emits_block_header_before_child_output`; pre-repair targeted proof failed with the child output before the proof header; post-repair targeted proof returned `1 passed in 4.47s`.
+- Bounded repair: `scripts/run_proof_block.py` now flushes `proof_block_id` and `command` prints before `subprocess.run`.
+- Proof evidence: proof executor contract suite `21 passed in 37.09s`; proof executor block output `21 passed in 37.16s`; `python scripts/run_proof_block.py --check-all` returned `proof_blocks_check_all=PASS count=46`; final Tier B returned `49 passed in 36.71s`; final Tier A returned `590 passed in 32.60s`; final combined Tier A+B returned `639 passed in 72.10s`; `git diff --check` returned status `0`.
+- State: `bounded_repair_recorded_pending_full_authority_read`; not closed; current target remains `FWD-002` until the required full-read and row comparison gates are completed.
+
 #### FWD-003 — 5.16 Persistence, ledgers, and receipts
 
 State: `planned_forward_reconciliation`
@@ -870,6 +881,14 @@ Close evidence:
 - ledger row state update;
 - next row: `FWD-004`.
 
+FWD-003 bounded continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/`.
+- Row evidence: `FWD003_PERSISTENCE_LEDGER_RECEIPT_EVIDENCE.md`.
+- No FWD-003 source/config/test mutation was made.
+- Targeted proof observations: persistence surface proof command returned `36 passed in 0.77s`; persistence session boundary returned `3 passed in 0.22s`; module registry repository surface returned `3 passed in 0.21s`.
+- State: `targeted_proof_observed_pending_full_authority_read`; not closed because `docs/07*`, all FWD-003 receipts/manifests, active-code Atlas records, Atlas/Bridge rows, and selected source/test/config files were not full-read in closure-grade sequence.
+
 #### FWD-004 — 5.6 DMPV3 packet carriage
 
 State: `planned_forward_reconciliation`
@@ -921,6 +940,14 @@ Close evidence:
 - receipt path;
 - ledger row state update;
 - next row: `FWD-005`.
+
+FWD-004 bounded continuation evidence recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/`.
+- Row evidence: `FWD004_DMPV3_PACKET_CARRIAGE_EVIDENCE.md`.
+- No FWD-004 source/config/test mutation was made.
+- Targeted proof observations: support-spine prepared packet/review command returned `41 passed in 0.83s`; DMPV3 extension canonical leaf command returned `3 passed in 0.39s`; DMPV3 transform-boundary command returned `3 passed in 0.42s`.
+- State: `targeted_proof_observed_pending_full_authority_read`; not closed because `docs/09*`, all FWD-004 receipts/manifests, active-code Atlas records, Atlas/Bridge rows, and selected DMPV3 source/test/config files were not full-read in closure-grade sequence.
 
 #### FWD-005 — 5.1 External source interfaces and API ingress
 
