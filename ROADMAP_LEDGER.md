@@ -92,7 +92,7 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-002` / `5.17 Testing, proof, and checkpoint surfaces`; bounded FWD-002..FWD-004 continuation evidence recorded on 2026-05-14, but FWD-002 remains the next closure gate because the pass recorded a proof-executor repair plus incomplete closure-grade full authority intake. |
+| Current target architecture row | `FWD-003` / `5.16 Persistence, ledgers, and receipts`; FWD-002 closure remediation recorded on 2026-05-14 accepted the bounded proof-executor repair with closure-grade manifest/evidence, while FWD-003 and FWD-004 remain observations only from the prior continuation pass. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
@@ -768,7 +768,7 @@ FWD-001 bounded closure evidence recorded 2026-05-14:
 
 #### FWD-002 — 5.17 Testing, proof, and checkpoint surfaces
 
-State: `planned_forward_reconciliation`
+State: `closed_bounded_closure_remediation_accepted`
 
 Runtime position: `foundation`
 
@@ -828,6 +828,20 @@ FWD-002 bounded continuation evidence recorded 2026-05-14:
 - Bounded repair: `scripts/run_proof_block.py` now flushes `proof_block_id` and `command` prints before `subprocess.run`.
 - Proof evidence: proof executor contract suite `21 passed in 37.09s`; proof executor block output `21 passed in 37.16s`; `python scripts/run_proof_block.py --check-all` returned `proof_blocks_check_all=PASS count=46`; final Tier B returned `49 passed in 36.71s`; final Tier A returned `590 passed in 32.60s`; final combined Tier A+B returned `639 passed in 72.10s`; `git diff --check` returned status `0`.
 - State: `bounded_repair_recorded_pending_full_authority_read`; not closed; current target remains `FWD-002` until the required full-read and row comparison gates are completed.
+
+FWD-002 closure remediation recorded 2026-05-14:
+
+- Evidence directory: `var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/`.
+- Closure-grade manifest: `FWD002_CLOSURE_GRADE_READ_MANIFEST.json` with 127 entries covering root authority, numbered normative authority, route authority, config, source, tests, FWD-002 prior receipts/records/proof outputs, and Atlas/Bridge row evidence.
+- Remediation evidence: `FWD002_CLOSURE_REMEDIATION_EVIDENCE.md`.
+- Decision: `ACCEPTED_AS_BOUNDED_FWD002_REPAIR`.
+- Reproduced proof: ordering regression `1 passed in 2.80s`; `python scripts/run_proof_block.py --check-all` returned `proof_blocks_check_all=PASS count=46`; proof executor contract suite returned `21 passed in 24.50s`.
+- Final validation captured status `0` for `git diff --check`, proof-block check-all, proof executor contract suite, Tier B, and Tier A; the exact combined `PYTHONPATH=src pytest -q tests/tier_a tests/tier_b` command emitted `639 passed in 46.16s` in an investigation transcript but did not produce a captured status file under the tool boundary, so main-branch merge is held pending captured combined status or explicit user/PM authority.
+- New source/test/config mutation in this remediation pass: none. The previously committed source/test repair is accepted as bounded to proof-output ordering.
+- Runtime trading behaviour affected: no.
+- FWD-002 state: `closed_bounded_closure_remediation_accepted`.
+- FWD-003 and FWD-004 remain observations only from the prior continuation pass and are not closed by this pass.
+- Next current pointer: `FWD-003`.
 
 #### FWD-003 — 5.16 Persistence, ledgers, and receipts
 
