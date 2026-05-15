@@ -1,0 +1,67 @@
+{
+  "row": "FWD-016",
+  "surface": "5.13 Live position and inventory architecture",
+  "created_at": "2026-05-15T00:00:00Z",
+  "selected_bridge_record_ids": [
+    "ACABC-0034",
+    "ACABC-0033",
+    "ACABC-0032"
+  ],
+  "queue_record_ids": [
+    "ACATQ-0034",
+    "ACATQ-0033",
+    "ACATQ-0032"
+  ],
+  "selected_atlas_id_count": 36,
+  "covered_selected_ids": 36,
+  "unresolved_selected_ids": 0,
+  "comparison_status_counts": {
+    "partially_satisfied": 2,
+    "transform_required": 1
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "partially_satisfied": 14,
+    "missing": 5,
+    "transform_required": 17
+  },
+  "active_code_atlas_records": [
+    "ACATP-035-0001",
+    "ACATP-036-0001",
+    "ACATP-037-0001"
+  ],
+  "direct_or_grouped_evidence": {
+    "row035": "existing Tier A family with bounded source repair; ACABC-0034 has 14 partially_satisfied bridge records",
+    "row036": "authority boundary new Tier A family no source repair; ACABC-0033 has 5 missing bridge records now covered by grouped ordered replay proof",
+    "row037": "transform boundary new Tier A family with prior bounded source repair; ACABC-0032 has 17 transform_required bridge records"
+  },
+  "source_files": [
+    "src/nvda_desk/contracts/downstream.py",
+    "src/nvda_desk/downstream/live_inventory.py",
+    "src/nvda_desk/domain/downstream/live_inventory.py",
+    "src/nvda_desk/downstream/state_reader.py",
+    "src/nvda_desk/services/downstream_live_inventory_service.py",
+    "src/nvda_desk/services/downstream_state_service.py",
+    "src/nvda_desk/repositories/position_repository.py",
+    "src/nvda_desk/repositories/capital_state_repository.py",
+    "src/nvda_desk/persistence/receipt_ledger.py",
+    "src/nvda_desk/runtime/orchestrator.py"
+  ],
+  "test_files": [
+    "tests/tier_a/downstream_runtime/test_downstream_contract_models.py",
+    "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+    "tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py",
+    "tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py",
+    "tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py",
+    "tests/tier_a/persistence/test_position_repository_surface.py",
+    "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+    "tests/tier_a/runtime/test_runtime_orchestrator_surface.py"
+  ],
+  "proof_blocks": [
+    "live_position_inventory_architecture_surface",
+    "live_position_inventory_authority_boundary_surface",
+    "live_position_inventory_transform_boundary_surface"
+  ],
+  "source_mutation_required": false,
+  "test_mutation_required": false,
+  "vocabulary_candidates_pre_adjudication_payload_preserved": "not_applicable_no_candidates_produced"
+}

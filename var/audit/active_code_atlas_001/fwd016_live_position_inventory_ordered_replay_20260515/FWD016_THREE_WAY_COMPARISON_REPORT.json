@@ -1,0 +1,125 @@
+{
+  "row": "FWD-016",
+  "surface": "5.13 Live position and inventory architecture",
+  "decision": "bounded_closed_current_supported_by_ordered_replay_evidence",
+  "normative_and_blueprint_target_behaviour": {
+    "purpose": "Live position, inventory, exposure, and capital-state read/write structure after entry.",
+    "evidence": [
+      {
+        "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+        "lines": "339-354"
+      },
+      {
+        "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "lines": "166-166"
+      },
+      {
+        "path": "ROADMAP_LEDGER.md",
+        "lines": "1885-1935"
+      }
+    ],
+    "lawful_inputs": [
+      "execution receipts",
+      "fill/state updates",
+      "capital state",
+      "position repository state",
+      "risk limits"
+    ],
+    "lawful_outputs": [
+      "live inventory snapshot",
+      "position state",
+      "exposure state",
+      "capital/inventory receipts"
+    ],
+    "forbidden_behaviours": [
+      "new candidate formation",
+      "raw signal preparation",
+      "direct broker placement decisions",
+      "ungoverned capital mutation",
+      "FWD-017 exit/close authority"
+    ]
+  },
+  "intent_atlas_bridge_evidence": {
+    "selected_bridge_records": [
+      {
+        "comparison_record_id": "ACABC-0034",
+        "queue_record_id": "ACATQ-0034",
+        "bridge_record_count": 14,
+        "comparison_status": "partially_satisfied",
+        "bridge_native_satisfaction_status_counts": {
+          "partially_satisfied": 14
+        }
+      },
+      {
+        "comparison_record_id": "ACABC-0033",
+        "queue_record_id": "ACATQ-0033",
+        "bridge_record_count": 5,
+        "comparison_status": "partially_satisfied",
+        "bridge_native_satisfaction_status_counts": {
+          "missing": 5
+        }
+      },
+      {
+        "comparison_record_id": "ACABC-0032",
+        "queue_record_id": "ACATQ-0032",
+        "bridge_record_count": 17,
+        "comparison_status": "transform_required",
+        "bridge_native_satisfaction_status_counts": {
+          "transform_required": 17
+        }
+      }
+    ],
+    "comparison_status_counts": {
+      "partially_satisfied": 2,
+      "transform_required": 1
+    },
+    "bridge_native_satisfaction_status_counts": {
+      "partially_satisfied": 14,
+      "missing": 5,
+      "transform_required": 17
+    },
+    "counts_kept_separate": true,
+    "original_atlas_bridge_json_mutated": false,
+    "invented_bridge_links": false
+  },
+  "active_code_current_repo_behaviour": {
+    "summary": "Current native live-inventory code builds copy-safe live inventory snapshots, reconciles fill-evidence into repository state, exposes read-only runtime inventory attachment, writes receipts through ReceiptLedger when requested, and rejects placement/broker/execution/opening/donor transform payload leakage.",
+    "evidence": [
+      {
+        "path": "src/nvda_desk/downstream/live_inventory.py",
+        "lines": "21-70",
+        "claim": "build_live_snapshot reads repository/capital state, exposure, and optional receipt without policy decisions"
+      },
+      {
+        "path": "src/nvda_desk/downstream/live_inventory.py",
+        "lines": "72-159",
+        "claim": "reconcile_fill_evidence updates position repository from fill evidence and can write reconciliation receipt"
+      },
+      {
+        "path": "src/nvda_desk/contracts/downstream.py",
+        "lines": "149-205",
+        "claim": "live inventory contract models are copy-safe and inventory-only"
+      },
+      {
+        "path": "src/nvda_desk/runtime/orchestrator.py",
+        "lines": "243-269",
+        "claim": "runtime live inventory attachment is read-only and does not alter serial decision policy"
+      }
+    ]
+  },
+  "test_first_plan": {
+    "pre_source_mutation_tests_run": [
+      "live_position_inventory_architecture_surface",
+      "live_position_inventory_authority_boundary_surface",
+      "live_position_inventory_transform_boundary_surface",
+      "targeted_live_inventory_pytest"
+    ],
+    "result": "existing targeted proof passed; no source/test/config mutation required in this ordered replay",
+    "source_mutation_allowed_but_not_used": true
+  },
+  "gap_status": {
+    "unresolved_selected_ids": 0,
+    "remaining_blocker": null,
+    "closure_scope": "bounded current ordered replay; blueprint remains Provisional/placeholder and does not imply full final live trading maturity"
+  }
+}
