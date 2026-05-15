@@ -1,0 +1,1 @@
+CMD: git status --short
