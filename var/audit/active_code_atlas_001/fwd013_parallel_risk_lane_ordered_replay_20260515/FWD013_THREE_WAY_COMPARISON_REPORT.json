@@ -1,0 +1,194 @@
+{
+  "schema_version": "fwd_ordered_replay_three_way_comparison_v1",
+  "created_utc": "2026-05-15T01:45:25.781279+00:00",
+  "surface": "FWD-013 \u2014 5.8 Parallel risk lane",
+  "decision": "bounded_closed_current",
+  "selected_bridge_comparison_record_ids": [
+    "ACABC-0020",
+    "ACABC-0021"
+  ],
+  "selected_queue_record_ids": [
+    "ACATQ-0021",
+    "ACATQ-0020"
+  ],
+  "selected_native_atlas_record_count": 57,
+  "covered_selected_native_atlas_record_count": 57,
+  "unresolved_selected_native_atlas_record_count": 0,
+  "direct_native_atlas_link_count": 0,
+  "grouped_satisfaction_overlay_count": 57,
+  "comparison_status_counts": {
+    "transform_required": 25,
+    "partially_satisfied": 32
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "transform_required": 25,
+    "partially_satisfied": 32
+  },
+  "status_validation": {
+    "comparison_status_counts_and_bridge_native_satisfaction_counts_kept_separate": true,
+    "selected_counts_match_bridge_rows": true,
+    "unresolved_ids_empty": true
+  },
+  "normative_target": {
+    "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md": "lines 254-269: independent risk assessment outside serial spine; prohibits candidate formation, capital sizing, serial-stage mutation, and hidden upstream reads",
+    "docs/01_NORMATIVE_CORE.md": "lines 71-80: independent parallel risk lane is distinct from serial, pre-deployment, capital, execution, and inventory; does not form candidate or allocate capital",
+    "docs/03_DOMAIN_MODEL_CORE.md": "lines 64-70: Parallel Risk Lane separately assesses present environment while serial spine forms candidate",
+    "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md": "lines 106-119: independent parallel risk output answers environmental conclusion, not candidate formation"
+  },
+  "active_repo_behaviour": {
+    "source_files": [
+      "src/nvda_desk/contracts/parallel_risk.py",
+      "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+      "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+      "src/nvda_desk/risk/parallel/__init__.py",
+      "src/nvda_desk/risk/parallel/evaluate.py",
+      "src/nvda_desk/services/parallel_risk_lane_service.py",
+      "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+      "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+      "src/nvda_desk/persistence/parallel_risk_observations.py"
+    ],
+    "test_families": [
+      "tests/tier_a/parallel_risk",
+      "tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py",
+      "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py",
+      "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py",
+      "tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py",
+      "tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py"
+    ],
+    "observed_boundary": "Current native surface validates bounded parallel-risk input/output packets, environment/risk envelope assessment, write-only observation persistence, DMP packet build paths, transform-boundary exclusions, and serial-runtime boundary specimens while excluding serial candidate formation, capital deployment sizing, broker/order authority, hidden upstream reads, and downstream authority shapes."
+  },
+  "primary_active_code_atlas_evidence": [
+    {
+      "path": "var/audit/active_code_atlas_001/parallel_risk_lane_surface/parallel_risk_lane_active_code_atlas_records.json",
+      "record_ids": [
+        "ACATP-033-0001"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_parallel_risk_partially_satisfied_cluster"
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/parallel_risk_lane_surface_transform_required/parallel_risk_lane_transform_boundary_active_code_atlas_records.json",
+      "record_ids": [
+        "ACATP-034-0001"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_parallel_risk_transform_required_cluster"
+      ]
+    }
+  ],
+  "comparison_records": [
+    {
+      "comparison_record_id": "ACABC-0020",
+      "blueprint_surface": "Parallel risk lane",
+      "comparison_status": "transform_required",
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 25
+      },
+      "atlas_record_count_joined": 25,
+      "active_code_record_count_same_surface_owner": 163,
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "proof_tier": "Tier A",
+      "sample_atlas_record_ids": [
+        "atlas_donor_risk_002",
+        "atlas_donor_risk_003",
+        "atlas_donor_risk_004",
+        "atlas_donor_risk_005",
+        "atlas_donor_risk_006",
+        "atlas_donor_risk_007",
+        "atlas_donor_risk_008",
+        "atlas_donor_risk_010",
+        "atlas_donor_risk_012",
+        "atlas_donor_calibration_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/parallel_risk.py",
+        "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+        "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+        "src/nvda_desk/risk/parallel/__init__.py",
+        "src/nvda_desk/risk/parallel/evaluate.py",
+        "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+        "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "tests/tier_a/parallel_risk/.gitkeep"
+      ],
+      "target_owner": "parallel risk authority",
+      "implementation_leaf_type": "later_blueprint_leaf"
+    },
+    {
+      "comparison_record_id": "ACABC-0021",
+      "blueprint_surface": "Parallel risk lane",
+      "comparison_status": "partially_satisfied",
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 32
+      },
+      "atlas_record_count_joined": 32,
+      "active_code_record_count_same_surface_owner": 163,
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "proof_tier": "Tier A",
+      "sample_atlas_record_ids": [
+        "atlas_donor_risk_001",
+        "atlas_donor_parallel_risk_002",
+        "atlas_donor_parallel_risk_003",
+        "atlas_donor_parallel_risk_005",
+        "atlas_donor_parallel_risk_006",
+        "atlas_donor_parallel_risk_007",
+        "atlas_donor_parallel_risk_008",
+        "atlas_donor_parallel_risk_009",
+        "atlas_donor_parallel_risk_010",
+        "atlas_donor_parallel_risk_011"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/contracts/parallel_risk.py",
+        "src/nvda_desk/domain/parallel_risk/candidate_audit.py",
+        "src/nvda_desk/domain/parallel_risk/environment_assessment.py",
+        "src/nvda_desk/risk/parallel/__init__.py",
+        "src/nvda_desk/risk/parallel/evaluate.py",
+        "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "src/nvda_desk/testing/harnesses/module_8_parallel_risk_workbook_specimen.py",
+        "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "tests/tier_a/parallel_risk/.gitkeep"
+      ],
+      "target_owner": "parallel risk authority",
+      "implementation_leaf_type": "later_test_first_leaf"
+    }
+  ],
+  "queue_records": [
+    {
+      "queue_record_id": "ACATQ-0021",
+      "comparison_record_id": "ACABC-0021",
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_record_count": 32,
+      "comparison_status": "partially_satisfied",
+      "execution_priority": 32,
+      "required_action": "extend_existing_test_family_before_code",
+      "target_owner": "parallel risk authority",
+      "proof_tier": "Tier A",
+      "implementation_leaf_type": "later_test_first_leaf"
+    },
+    {
+      "queue_record_id": "ACATQ-0020",
+      "comparison_record_id": "ACABC-0020",
+      "blueprint_surface": "Parallel risk lane",
+      "bridge_record_count": 25,
+      "comparison_status": "transform_required",
+      "execution_priority": 33,
+      "required_action": "write_new_test_family_before_code",
+      "target_owner": "parallel risk authority",
+      "proof_tier": "Tier A",
+      "implementation_leaf_type": "later_blueprint_leaf"
+    }
+  ],
+  "test_first_plan": {
+    "mutation_required": false,
+    "basis": "Existing row033/row034 Tier A proof families already cover the selected FWD-013 comparison groups. Current ordered replay reran targeted proof blocks and targeted pytest before closure-grade broader proof; no new invariant gap requiring source/config/test mutation was observed."
+  },
+  "mutation_decision": {
+    "source_config_fixture_mutation_required": false,
+    "test_mutation_required": false,
+    "original_atlas_bridge_json_mutation_required": false,
+    "generated_slice_rebuild_required": false
+  }
+}
