@@ -56,3 +56,16 @@ No source, tests, config, runtime semantics, vocabulary artefacts, original Atla
 ## Boundary statement
 
 FWD-018 remains unopened. Review/explanation authority is not claimed by this receipt.
+
+## Batched broad proof hardening update — 2026-05-15
+
+A bounded proof-hardening pass added directory-level Tier A/Tier B batch proof after PM/user rejection of monolithic timeout evidence.
+
+- audit directory: `var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/`;
+- proof summary: `FWD017_BATCHED_BROAD_PROOF_SUMMARY.json`;
+- receipt: `FWD017_BATCHED_BROAD_PROOF_RECEIPT.md`;
+- Tier A batches: `31` with captured exit code `0` for every batch and `563` total passed tests across batch summaries;
+- Tier B batches: `7` with captured exit code `0` for every batch and `49` total passed tests across batch summaries;
+- total non-zero batch exit codes: `0`.
+
+The earlier monolithic timeout captures remain non-proof. FWD-018 remains unopened.

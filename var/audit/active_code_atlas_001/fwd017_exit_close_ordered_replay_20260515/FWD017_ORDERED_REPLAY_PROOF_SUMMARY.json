@@ -270,5 +270,16 @@
   "fwd018_opened": false,
   "source_test_config_mutation": false,
   "original_atlas_bridge_json_mutation": false,
-  "vocabulary_candidates_produced": false
+  "vocabulary_candidates_produced": false,
+  "batched_broad_proof_hardening_20260515": {
+    "audit_directory": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/",
+    "summary": "FWD017_BATCHED_BROAD_PROOF_SUMMARY.json",
+    "receipt": "FWD017_BATCHED_BROAD_PROOF_RECEIPT.md",
+    "tier_a_batches": 31,
+    "tier_a_passed_total": 563,
+    "tier_b_batches": 7,
+    "tier_b_passed_total": 49,
+    "all_batched_pytest_status_zero": true,
+    "note": "Supersedes the earlier optional monolithic Tier A/B timeout caveat for broad proof acceptance; timeout captures remain non-proof."
+  }
 }

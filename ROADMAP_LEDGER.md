@@ -2017,6 +2017,18 @@ Ordered replay closure note 2026-05-15:
 - no source/test/config/runtime/vocabulary/original Atlas/Bridge/generated-slice mutation was made by this replay;
 - FWD-018 remains unopened.
 
+
+Batched broad proof hardening note 2026-05-15:
+
+- audit directory: `var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/`;
+- proof summary: `FWD017_BATCHED_BROAD_PROOF_SUMMARY.json`;
+- receipt: `FWD017_BATCHED_BROAD_PROOF_RECEIPT.md`;
+- reason: PM/user acceptance required Tier A/Tier B proof to be batched into smaller groups instead of relying on monolithic timeout captures;
+- Tier A batch proof: `31` batches, all exit `0`, `563` passed tests total;
+- Tier B batch proof: `7` batches, all exit `0`, `49` passed tests total;
+- no source/test/config/runtime/vocabulary/original Atlas/Bridge/generated-slice/proof-registry mutation was made by this proof-hardening pass;
+- FWD-018 remains unopened.
+
 #### FWD-018 — 5.15 Review and explanation layer
 
 State: `planned_forward_reconciliation`
