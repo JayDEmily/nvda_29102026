@@ -1,0 +1,345 @@
+{
+  "bridge_native_satisfaction_status_counts": {
+    "partially_satisfied": 102,
+    "transform_required": 15
+  },
+  "comparison_status_counts": {
+    "partially_satisfied": 102,
+    "transform_required": 15
+  },
+  "counts": {
+    "comparison_groups": 2,
+    "current_covered_native_atlas_ids": 117,
+    "current_unresolved_native_atlas_ids": 0,
+    "direct_native_atlas_links": 2,
+    "grouped_satisfaction_overlay_count": 115,
+    "primary_active_code_records": 2,
+    "queue_records": 2,
+    "selected_native_bridge_records": 117
+  },
+  "created_utc": "2026-05-15T00:45:23Z",
+  "decision": "bounded_closed_current",
+  "decision_basis": [
+    "Authority, surface records, source/test evidence, current surface slice, Bridge comparison, queue records, and proof outputs were read for this ordered replay.",
+    "Active repo behaviour satisfies the selected row proof blocks in the current checkout.",
+    "Primary active-code Atlas records link to the selected comparison groups and current source/test evidence.",
+    "Atlas intent evidence remains candidate intent and is bounded through the current surface slice.",
+    "Bridge-native satisfaction status counts are retained separately from comparison status counts.",
+    "No source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated slice/vocabulary mutation was made."
+  ],
+  "group_evidence": [
+    {
+      "active_code_record_ids": [
+        "ACATP-020-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 15
+      },
+      "comparison_record_id": "ACABC-0010",
+      "comparison_status": "transform_required",
+      "direct_native_atlas_record_ids": [
+        "atlas_donor_event_ingestion_service_001",
+        "atlas_donor_event_store_service_001"
+      ],
+      "direct_native_link_count": 2,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_event_ingestion_service_002",
+        "atlas_donor_event_ingestion_service_003",
+        "atlas_donor_event_ingestion_service_004",
+        "atlas_donor_event_ingestion_service_005",
+        "atlas_donor_event_store_service_002",
+        "atlas_donor_event_store_service_003",
+        "atlas_donor_event_store_service_004",
+        "atlas_donor_event_store_service_005",
+        "atlas_donor_event_store_service_006",
+        "atlas_donor_event_store_service_007",
+        "atlas_donor_event_store_service_008",
+        "atlas_donor_event_store_service_009",
+        "atlas_donor_event_store_service_010"
+      ],
+      "grouped_satisfaction_overlay_count": 13,
+      "native_record_count": 15,
+      "native_slice_status_group_used_for_record_ids": "transform_required",
+      "queue_comparison_status": "transform_required",
+      "queue_record_id": "ACATQ-0010",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    },
+    {
+      "active_code_record_ids": [
+        "ACATP-019-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 102
+      },
+      "comparison_record_id": "ACABC-0011",
+      "comparison_status": "partially_satisfied",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_events_001",
+        "atlas_donor_events_002",
+        "atlas_donor_events_003",
+        "atlas_donor_events_004",
+        "atlas_donor_events_005",
+        "atlas_donor_events_006",
+        "atlas_donor_events_007",
+        "atlas_donor_events_008",
+        "atlas_donor_events_009",
+        "atlas_donor_events_010",
+        "atlas_donor_events_011",
+        "atlas_donor_events_012",
+        "atlas_donor_events_013",
+        "atlas_donor_events_014",
+        "atlas_donor_events_016",
+        "atlas_donor_events_017",
+        "atlas_donor_events_018",
+        "atlas_donor_events_019",
+        "atlas_donor_events_020",
+        "atlas_donor_events_021",
+        "atlas_donor_events_022",
+        "atlas_donor_events_023",
+        "atlas_donor_events_024",
+        "atlas_donor_events_025",
+        "atlas_donor_events_026",
+        "atlas_donor_events_027",
+        "atlas_donor_events_028",
+        "atlas_donor_events_029",
+        "atlas_donor_events_030",
+        "atlas_donor_events_031",
+        "atlas_donor_events_032",
+        "atlas_donor_events_033",
+        "atlas_donor_events_034",
+        "atlas_donor_events_035",
+        "atlas_donor_events_036",
+        "atlas_donor_events_037",
+        "atlas_donor_events_038",
+        "atlas_donor_events_service_001",
+        "atlas_donor_events_service_002",
+        "atlas_donor_events_service_003",
+        "atlas_donor_events_service_004",
+        "atlas_donor_events_service_005",
+        "atlas_donor_events_service_006",
+        "atlas_donor_events_service_007",
+        "atlas_donor_events_service_008",
+        "atlas_donor_events_service_009",
+        "atlas_donor_events_service_010",
+        "atlas_donor_financial_calendar_002",
+        "atlas_donor_financial_calendar_003",
+        "atlas_donor_financial_calendar_004",
+        "atlas_donor_financial_calendar_005",
+        "atlas_donor_financial_calendar_006",
+        "atlas_donor_financial_calendar_007",
+        "atlas_donor_financial_calendar_008",
+        "atlas_donor_financial_calendar_009",
+        "atlas_donor_financial_calendar_010",
+        "atlas_donor_financial_calendar_011",
+        "atlas_donor_financial_calendar_013",
+        "atlas_donor_financial_calendar_014",
+        "atlas_donor_financial_calendar_015",
+        "atlas_donor_financial_calendar_016",
+        "atlas_donor_financial_calendar_018",
+        "atlas_donor_financial_calendar_019",
+        "atlas_donor_financial_calendar_020",
+        "atlas_donor_financial_calendar_021",
+        "atlas_donor_financial_calendar_022",
+        "atlas_donor_financial_calendar_projection_001",
+        "atlas_donor_financial_calendar_projection_002",
+        "atlas_donor_financial_calendar_projection_003",
+        "atlas_donor_financial_calendar_projection_004",
+        "atlas_donor_financial_calendar_projection_005",
+        "atlas_donor_financial_calendar_projection_006",
+        "atlas_donor_financial_calendar_projection_007",
+        "atlas_donor_financial_calendar_projection_008",
+        "atlas_donor_financial_calendar_projection_009",
+        "atlas_donor_financial_calendar_projection_010",
+        "atlas_donor_financial_calendar_projection_011",
+        "atlas_donor_financial_calendar_projection_012",
+        "atlas_donor_financial_calendar_projection_013",
+        "atlas_donor_financial_calendar_projection_014",
+        "atlas_donor_financial_calendar_projection_015",
+        "atlas_donor_financial_calendar_projection_016",
+        "atlas_donor_financial_calendar_projection_017",
+        "atlas_donor_financial_calendar_projection_018",
+        "atlas_donor_financial_calendar_projection_019",
+        "atlas_donor_financial_calendar_projection_020",
+        "atlas_donor_service_carry_replay_007",
+        "atlas_donor_service_chain_to_cognition_004",
+        "atlas_donor_service_financial_calendar_import_002",
+        "atlas_donor_service_financial_calendar_import_003",
+        "atlas_donor_service_financial_calendar_import_004",
+        "atlas_donor_service_financial_calendar_import_005",
+        "atlas_donor_service_financial_calendar_import_006",
+        "atlas_donor_service_financial_calendar_import_008",
+        "atlas_donor_service_financial_calendar_import_009",
+        "atlas_donor_service_financial_calendar_reference_002",
+        "atlas_donor_service_financial_calendar_reference_003",
+        "atlas_donor_temporal_context_007",
+        "atlas_donor_temporal_context_008",
+        "atlas_donor_temporal_context_012",
+        "atlas_donor_temporal_context_018",
+        "atlas_donor_temporal_context_020"
+      ],
+      "grouped_satisfaction_overlay_count": 102,
+      "native_record_count": 102,
+      "native_slice_status_group_used_for_record_ids": "partially_satisfied",
+      "queue_comparison_status": "partially_satisfied",
+      "queue_record_id": "ACATQ-0011",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    }
+  ],
+  "inputs": {
+    "active_code_records": [
+      "var/audit/active_code_atlas_001/financial_event_calendar_architecture_surface/financial_event_calendar_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/financial_event_calendar_architecture_surface_transform_required/financial_event_calendar_transform_boundary_active_code_atlas_records.json"
+    ],
+    "bridge_comparison": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "queue": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+    "surface_slice": "var/audit/atlas_surface_slices/slices/financial_and_event_calendar_architecture.json"
+  },
+  "primary_active_code_records": [
+    {
+      "active_code_atlas_record_id": "ACATP-019-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 75,
+          "line_start": 53,
+          "path": "src/nvda_desk/contracts/reference_data.py"
+        },
+        {
+          "line_end": 25,
+          "line_start": 17,
+          "path": "src/nvda_desk/calendar/reference/importer.py"
+        },
+        {
+          "line_end": 84,
+          "line_start": 69,
+          "path": "src/nvda_desk/calendar/reference/importer.py"
+        },
+        {
+          "line_end": 122,
+          "line_start": 93,
+          "path": "src/nvda_desk/calendar/reference/importer.py"
+        },
+        {
+          "line_end": 211,
+          "line_start": 112,
+          "path": "src/nvda_desk/calendar/reference/projection.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 85,
+          "line_start": 51,
+          "path": "tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py"
+        },
+        {
+          "line_end": 119,
+          "line_start": 88,
+          "path": "tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py"
+        },
+        {
+          "line_end": 163,
+          "line_start": 154,
+          "path": "tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_financial_event_calendar_cluster_001"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0011",
+        "ACABC-0011"
+      ],
+      "non_claims": [
+        "Does not prove live financial-calendar fetches or online source ingestion.",
+        "Does not upgrade the whole 5.4 surface to implemented.",
+        "Does not authorise candidate formation, capital sizing, broker/order, risk-policy, dependency, or runtime trading behaviour."
+      ],
+      "title": "Checked calendar reference manifests reject hidden runtime decision authority before projection"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-020-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 75,
+          "line_start": 53,
+          "path": "src/nvda_desk/contracts/reference_data.py"
+        },
+        {
+          "line_end": 25,
+          "line_start": 17,
+          "path": "src/nvda_desk/calendar/reference/importer.py"
+        },
+        {
+          "line_end": 135,
+          "line_start": 69,
+          "path": "src/nvda_desk/calendar/reference/importer.py"
+        },
+        {
+          "line_end": 253,
+          "line_start": 17,
+          "path": "src/nvda_desk/calendar/reference/projection.py"
+        },
+        {
+          "line_end": 63,
+          "line_start": 9,
+          "path": "src/nvda_desk/calendar/operational/events.py"
+        },
+        {
+          "line_end": 12,
+          "line_start": 1,
+          "path": "src/nvda_desk/adapters/ingress/calendar_feed.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 61,
+          "line_start": 1,
+          "path": "tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_event_store_service_001",
+        "atlas_donor_event_ingestion_service_001"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0010",
+        "ACABC-0010"
+      ],
+      "non_claims": [
+        "Does not prove donor event-store or event-ingestion service behaviour.",
+        "Does not upgrade the whole 5.4 surface to implemented.",
+        "Does not authorise live calendar/network fetches, candidate formation, broker/order, capital sizing, risk-policy, dependency, or runtime trading behaviour."
+      ],
+      "title": "Native financial-calendar files exclude donor event service and runtime owners"
+    }
+  ],
+  "schema_version": "fwd008_ordered_replay_three_way_comparison_v1",
+  "source_branch": "worker/fwd008-fwd009-ordered-replay-20260514",
+  "source_head_before_commit": "830cc2a",
+  "status_validation_errors": [],
+  "surface": "FWD-008 / 5.4 Financial and event calendar architecture",
+  "targeted_proof": {
+    "fwd008_financial_event_calendar_authority_surface": {
+      "exit_code": 0,
+      "passed_summary": 13,
+      "stdout_tail": "plugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 13 items\n\ntests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py . [  7%]\n......                                                                   [ 53%]\ntests/tier_a/calendar_operational/test_calendar_operational_surface.py . [ 61%]\n.                                                                        [ 69%]\ntests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py . [ 76%]\n...                                                                      [100%]\n\n============================== 13 passed in 0.50s =============================="
+    },
+    "fwd008_financial_event_calendar_transform_boundary_surface": {
+      "exit_code": 0,
+      "passed_summary": 2,
+      "stdout_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/data/nvda10_worker_exec\nconfigfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 2 items\n\ntests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py . [ 50%]\n.                                                                        [100%]\n\n============================== 2 passed in 0.10s ==============================="
+    }
+  },
+  "test_first_plan": {
+    "basis": "Existing retained Tier A proof families and source repairs already cover the selected row invariants; this ordered replay records current evidence and reruns targeted proof without widening source/test scope.",
+    "required_new_test_mutation": "none_for_ordered_replay"
+  },
+  "unresolved_native_atlas_record_ids": []
+}
