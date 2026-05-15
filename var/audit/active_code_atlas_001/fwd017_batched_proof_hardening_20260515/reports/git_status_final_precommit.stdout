@@ -1,0 +1,5 @@
+ M ROADMAP_LEDGER.md
+ M var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_EXIT_CLOSE_ORDERED_REPLAY_CLOSURE_RECEIPT.md
+ M var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_ORDERED_REPLAY_PROOF_SUMMARY.json
+ M var/vocabulary/synonym_candidates.json
+?? var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/
