@@ -1,0 +1,313 @@
+{
+  "bridge_native_satisfaction_status_counts": {
+    "missing": 31,
+    "partially_satisfied": 18,
+    "transform_required": 2
+  },
+  "comparison_status_counts": {
+    "partially_satisfied": 49,
+    "transform_required": 2
+  },
+  "counts": {
+    "comparison_groups": 3,
+    "current_covered_native_atlas_ids": 51,
+    "current_unresolved_native_atlas_ids": 0,
+    "direct_native_atlas_links": 2,
+    "grouped_satisfaction_overlay_count": 49,
+    "primary_active_code_records": 3,
+    "queue_records": 3,
+    "selected_native_bridge_records": 51
+  },
+  "created_utc": "2026-05-15T00:45:23Z",
+  "decision": "bounded_closed_current",
+  "decision_basis": [
+    "Authority, surface records, source/test evidence, current surface slice, Bridge comparison, queue records, and proof outputs were read for this ordered replay.",
+    "Active repo behaviour satisfies the selected row proof blocks in the current checkout.",
+    "Primary active-code Atlas records link to the selected comparison groups and current source/test evidence.",
+    "Atlas intent evidence remains candidate intent and is bounded through the current surface slice.",
+    "Bridge-native satisfaction status counts are retained separately from comparison status counts.",
+    "No source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated slice/vocabulary mutation was made."
+  ],
+  "group_evidence": [
+    {
+      "active_code_record_ids": [
+        "ACATP-023-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 2
+      },
+      "comparison_record_id": "ACABC-0012",
+      "comparison_status": "transform_required",
+      "direct_native_atlas_record_ids": [
+        "atlas_donor_dataset_007",
+        "atlas_donor_options_flow_context_006"
+      ],
+      "direct_native_link_count": 2,
+      "group_resolved_native_atlas_record_ids": [],
+      "grouped_satisfaction_overlay_count": 0,
+      "native_record_count": 2,
+      "native_slice_status_group_used_for_record_ids": "transform_required",
+      "queue_comparison_status": "transform_required",
+      "queue_record_id": "ACATQ-0012",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    },
+    {
+      "active_code_record_ids": [
+        "ACATP-022-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 31
+      },
+      "comparison_record_id": "ACABC-0013",
+      "comparison_status": "partially_satisfied",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_dataset_005",
+        "atlas_donor_dataset_009",
+        "atlas_donor_dataset_011",
+        "atlas_donor_dataset_020",
+        "atlas_donor_dataset_022",
+        "atlas_donor_options_flow_context_005",
+        "atlas_donor_options_flow_context_008",
+        "atlas_donor_options_flow_context_009",
+        "atlas_donor_options_flow_context_010",
+        "atlas_donor_options_flow_context_011",
+        "atlas_donor_options_flow_context_012",
+        "atlas_donor_options_flow_context_013",
+        "atlas_donor_options_flow_context_014",
+        "atlas_donor_options_flow_context_015",
+        "atlas_donor_options_flow_context_017",
+        "atlas_donor_options_flow_context_018",
+        "atlas_donor_service_chain_to_cognition_007",
+        "atlas_donor_service_market_regime_context_005",
+        "atlas_donor_service_market_regime_context_006",
+        "atlas_donor_service_market_regime_context_007",
+        "atlas_donor_service_market_regime_context_008",
+        "atlas_donor_service_market_regime_context_009",
+        "atlas_donor_service_market_regime_context_010",
+        "atlas_donor_temporal_context_002",
+        "atlas_donor_temporal_context_003",
+        "atlas_donor_temporal_context_004",
+        "atlas_donor_temporal_context_013",
+        "atlas_donor_temporal_context_015",
+        "atlas_donor_temporal_context_016",
+        "atlas_donor_temporal_context_017",
+        "atlas_donor_temporal_context_019"
+      ],
+      "grouped_satisfaction_overlay_count": 31,
+      "native_record_count": 31,
+      "native_slice_status_group_used_for_record_ids": "missing",
+      "queue_comparison_status": "partially_satisfied",
+      "queue_record_id": "ACATQ-0013",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    },
+    {
+      "active_code_record_ids": [
+        "ACATP-021-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 18
+      },
+      "comparison_record_id": "ACABC-0014",
+      "comparison_status": "partially_satisfied",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_dataset_002",
+        "atlas_donor_dataset_008",
+        "atlas_donor_dataset_015",
+        "atlas_donor_dataset_018",
+        "atlas_donor_options_flow_context_001",
+        "atlas_donor_options_flow_context_002",
+        "atlas_donor_options_flow_context_003",
+        "atlas_donor_options_flow_context_004",
+        "atlas_donor_service_chain_to_cognition_002",
+        "atlas_donor_service_chain_to_cognition_005",
+        "atlas_donor_service_market_regime_context_001",
+        "atlas_donor_temporal_context_001",
+        "atlas_donor_temporal_context_005",
+        "atlas_donor_temporal_context_009",
+        "atlas_donor_temporal_context_010",
+        "atlas_donor_temporal_context_011",
+        "atlas_donor_temporal_context_014",
+        "atlas_donor_trace_review_003"
+      ],
+      "grouped_satisfaction_overlay_count": 18,
+      "native_record_count": 18,
+      "native_slice_status_group_used_for_record_ids": "partially_satisfied",
+      "queue_comparison_status": "partially_satisfied",
+      "queue_record_id": "ACATQ-0014",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    }
+  ],
+  "inputs": {
+    "active_code_records": [
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface/prepared_ingress_runtime_context_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_new_test_family/prepared_runtime_snapshot_contract_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_transform_required/prepared_runtime_transform_boundary_active_code_atlas_records.json"
+    ],
+    "bridge_comparison": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "queue": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+    "surface_slice": "var/audit/atlas_surface_slices/slices/prepared_ingress_and_runtime_context_preparation.json"
+  },
+  "primary_active_code_records": [
+    {
+      "active_code_atlas_record_id": "ACATP-021-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 11,
+          "line_start": 5,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 62,
+          "line_start": 27,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 270,
+          "line_start": 237,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 183,
+          "line_start": 170,
+          "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_prepared_ingress_cluster_001"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0014",
+        "ACABC-0014"
+      ],
+      "non_claims": [
+        "Does not prove all prepared-ingress or cognition-ingress mappings.",
+        "Does not upgrade the whole 5.5 surface to implemented.",
+        "Does not authorise serial cognition decisions, risk decisions, capital decisions, direct persistence writes, dependency changes, or runtime trading behaviour."
+      ],
+      "title": "Prepared runtime snapshots detach nested caller payload before runtime context preparation"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-022-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 11,
+          "line_start": 5,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 62,
+          "line_start": 27,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 270,
+          "line_start": 237,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 20,
+          "line_start": 1,
+          "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_prepared_ingress_cluster_002"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0013",
+        "ACABC-0013"
+      ],
+      "non_claims": [
+        "Does not prove all prepared-ingress or cognition-ingress mappings.",
+        "Does not upgrade the whole 5.5 surface to implemented.",
+        "Does not authorise serial cognition decisions, risk decisions, capital decisions, direct persistence writes, dependency changes, or runtime trading behaviour."
+      ],
+      "title": "Prepared runtime snapshot mapping exports detach nested prepared payload state"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-023-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 78,
+          "line_start": 65,
+          "path": "src/nvda_desk/preparation/runtime_preparer.py"
+        },
+        {
+          "line_end": 90,
+          "line_start": 1,
+          "path": "src/nvda_desk/preparation/context_packet.py"
+        },
+        {
+          "line_end": 43,
+          "line_start": 1,
+          "path": "src/nvda_desk/contracts/prepared_context.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 82,
+          "line_start": 1,
+          "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_dataset_007",
+        "atlas_donor_options_flow_context_006"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0012",
+        "ACABC-0012"
+      ],
+      "non_claims": [
+        "Does not prove all prepared-ingress or cognition-ingress mappings.",
+        "Does not upgrade the whole 5.5 surface to implemented.",
+        "Does not authorise serial cognition decisions, options-flow service behaviour, risk decisions, capital decisions, direct persistence writes, dependency changes, or runtime trading behaviour."
+      ],
+      "title": "Prepared runtime transform boundary excludes donor dataset/event/service shapes from selected native carriers"
+    }
+  ],
+  "schema_version": "fwd009_ordered_replay_three_way_comparison_v1",
+  "source_branch": "worker/fwd008-fwd009-ordered-replay-20260514",
+  "source_head_before_commit": "830cc2a",
+  "status_validation_errors": [],
+  "surface": "FWD-009 / 5.5 Prepared ingress and runtime context preparation",
+  "targeted_proof": {
+    "fwd009_prepared_runtime_snapshot_contract_surface": {
+      "exit_code": 0,
+      "passed_summary": 1,
+      "stdout_tail": "command=env PYTHONPATH=src python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/data/nvda10_worker_exec\nconfigfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 1 item\n\ntests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py . [100%]\n\n============================== 1 passed in 0.10s ==============================="
+    },
+    "fwd009_prepared_runtime_transform_boundary_surface": {
+      "exit_code": 0,
+      "passed_summary": 3,
+      "stdout_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/data/nvda10_worker_exec\nconfigfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py . [ 33%]\n..                                                                       [100%]\n\n============================== 3 passed in 0.11s ==============================="
+    },
+    "fwd009_support_spine_prepared_packet_review_surface": {
+      "exit_code": 0,
+      "passed_summary": 41,
+      "stdout_tail": "tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py . [ 56%]\n.                                                                        [ 58%]\ntests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py . [ 60%]\n....                                                                     [ 70%]\ntests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py . [ 73%]\n..                                                                       [ 78%]\ntests/tier_b/review_lineage/test_bounded_trace_review_determinism.py ..  [ 82%]\ntests/tier_b/review_lineage/test_bounded_trace_review_regime.py ..       [ 87%]\ntests/tier_b/review_lineage/test_review_effective_policy_lineage.py ...  [ 95%]\ntests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py ..      [100%]\n\n============================== 41 passed in 0.49s =============================="
+    }
+  },
+  "test_first_plan": {
+    "basis": "Existing retained Tier A proof families and source repairs already cover the selected row invariants; this ordered replay records current evidence and reruns targeted proof without widening source/test scope.",
+    "required_new_test_mutation": "none_for_ordered_replay"
+  },
+  "unresolved_native_atlas_record_ids": []
+}
