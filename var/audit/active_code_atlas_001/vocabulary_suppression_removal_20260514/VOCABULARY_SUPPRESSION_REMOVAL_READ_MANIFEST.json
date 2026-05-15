@@ -1,0 +1,552 @@
+{
+  "schema_version": "v1",
+  "manifest_id": "VOCABULARY_SUPPRESSION_REMOVAL_READ_MANIFEST",
+  "created_for": "PM-authorised FWD-001 / 5.18 vocabulary suppression removal remediation",
+  "source_tarball": "/mnt/data/NVDA10_2026-05-14_WORKER_FWD005_CLOSED_c8c7825.tar.gz",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 8827,
+      "line_count": 184,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 99334,
+      "line_count": 707,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 289142,
+      "line_count": 1846,
+      "sha256": "689817aea5d4b87d66bbb56113d24d2bf3e4d3eb896ed8052eae7f4f5bc663b0",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 25393,
+      "line_count": 195,
+      "sha256": "abccce77e4b3e7847582b9521f47c2e3cf78918221f0bd4e002878de270932e6",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "byte_count": 1084,
+      "line_count": 23,
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "byte_count": 418,
+      "line_count": 13,
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "byte_count": 5346,
+      "line_count": 142,
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "byte_count": 392,
+      "line_count": 13,
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "byte_count": 5680,
+      "line_count": 159,
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "byte_count": 7552,
+      "line_count": 186,
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "byte_count": 918,
+      "line_count": 21,
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "byte_count": 5587,
+      "line_count": 147,
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "byte_count": 10717,
+      "line_count": 264,
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "byte_count": 2617,
+      "line_count": 39,
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "byte_count": 5489,
+      "line_count": 187,
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "byte_count": 2726,
+      "line_count": 33,
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "byte_count": 1944,
+      "line_count": 50,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "src/nvda_desk/vocabulary_synonym_audit.py",
+      "byte_count": 10483,
+      "line_count": 310,
+      "sha256": "cfd1eb16b8798715a53a20f900c022b04d985fde7ae00b090c6de22855d47036",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "src/nvda_desk/vocabulary_builder.py",
+      "byte_count": 25105,
+      "line_count": 639,
+      "sha256": "8241bd86868afe06816913640f990851e96da0ec1b20e9f6ccd4e7438cf92ea3",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "src/nvda_desk/schemas/vocabulary.py",
+      "byte_count": 31037,
+      "line_count": 718,
+      "sha256": "c3a64a06f379b89e2a0b08937bcfa498c3ec22292537229d0f6d07cf00e37942",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "scripts/vocabulary_synonym_audit.py",
+      "byte_count": 650,
+      "line_count": 26,
+      "sha256": "218cd7d6ee854cd04d92a80e4d3eaf0e81f12bad107bc7a371bdd55c182231b2",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "scripts/vocabulary_candidate_review.py",
+      "byte_count": 6731,
+      "line_count": 194,
+      "sha256": "17878497f9f21042f6d9f52b2dfa75e36e623fdb2c85047df57112c333f62241",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "scripts/build_canonical_vocabulary.py",
+      "byte_count": 641,
+      "line_count": 28,
+      "sha256": "e241a7c444dfb0e00464b1c3ec6924758dddcf66cce8c03c0407bfe126d1899e",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "data/vocabulary/canonical_vocabulary.json",
+      "byte_count": 27254,
+      "line_count": 818,
+      "sha256": "4c3775ae6c21c419e8d35bca7ff44c9e2595d609cefa21abece8260eaded96f5",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "data/vocabulary/vocabulary_touch_stamp.json",
+      "byte_count": 88,
+      "line_count": 3,
+      "sha256": "86296f91c08652aabc26b1d4fc80da8ce5aaab732b6c9994cf958933cd7bedc4",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/vocabulary/synonym_candidates.json",
+      "byte_count": 238,
+      "line_count": 8,
+      "sha256": "a48fc1f36ad78a2c054c2d57a09ec4c84b6694f9b92b9fe9a66a579d95ab92da",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py",
+      "byte_count": 1376,
+      "line_count": 36,
+      "sha256": "48e171e51b6b03bd8fd2239817d12f3ae1d2d7f147a082b8393eef7b50999c89",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py",
+      "byte_count": 885,
+      "line_count": 26,
+      "sha256": "abbc3017171310962acc053ff0d9aaa9c2eff5607b9268a81e5d2fd5c53097b7",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py",
+      "byte_count": 991,
+      "line_count": 25,
+      "sha256": "5dda589d5486f82146f4ed4eaf25ff9421a48e0b1d8995f8bd88449bc0280797",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py",
+      "byte_count": 9789,
+      "line_count": 278,
+      "sha256": "fa801297cf36dba727ab8c4c6e993d1ba3a11ff648a121424f75192b8cbbe23f",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py",
+      "byte_count": 5980,
+      "line_count": 172,
+      "sha256": "d161f3cfd2232baf6f64e30f5c64bfe808197903eca819d44c28076329d41755",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py",
+      "byte_count": 4222,
+      "line_count": 132,
+      "sha256": "275d6d12dd1aa63eaad7e73b60cd2e0281351766a3a0e7bbe75dbf77407ece57",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py",
+      "byte_count": 3059,
+      "line_count": 95,
+      "sha256": "c5176d6e4d67659dc7a76b0db34b5502f078714593c051b4d8e7b7cab20bf991",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py",
+      "byte_count": 13939,
+      "line_count": 463,
+      "sha256": "f780d2fc5b8a8229682cbd8d06d08b70caf006d8319b45a3afa3ba4646b88357",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py",
+      "byte_count": 3325,
+      "line_count": 93,
+      "sha256": "9c9499d1278c2c9103bde77147e0cd4903e3ce45709c50f6f050ffa6ed971063",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py",
+      "byte_count": 1655,
+      "line_count": 42,
+      "sha256": "446568bfec07737c0c51cc5ad4d6f47d45e1be31ce3a60ae56abd6431f0eeddf",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py",
+      "byte_count": 3260,
+      "line_count": 95,
+      "sha256": "16d933649798c8f27e90e09613873abc83757c1298ef9ec02e5f406b96c5f6e5",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py",
+      "byte_count": 2702,
+      "line_count": 86,
+      "sha256": "ecf5489db0855d9b1433ede1caf4dccdc364a06c66acea564d0ae963f0575ae3",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py",
+      "byte_count": 5802,
+      "line_count": 163,
+      "sha256": "7686b5797689bb81c37b165e7f5d45eb7b375cc7c98473d751dfbf7ed27ff954",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+      "byte_count": 4149,
+      "line_count": 118,
+      "sha256": "ba79cca9dea0b207a20d03130d823a11c8e5a15464bc27b2093c528535d39270",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py",
+      "byte_count": 14252,
+      "line_count": 403,
+      "sha256": "2390522b21a31777d32c2cbbe438415208d8f5203645c49e8d3428ef6355f861",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py",
+      "byte_count": 687,
+      "line_count": 20,
+      "sha256": "8928caec2cf7e619a6db54278bf637e0b89fd7221d0f656b6b516bf6e27dfcc6",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/VOCABULARY_SUPPRESSION_INVENTORY.md",
+      "byte_count": 9298,
+      "line_count": 52,
+      "sha256": "c785757e2c40e4a8dde169160f20708bc31f168857580ddef6d381e94d60af31",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/VOCABULARY_SUPPRESSION_REMOVAL_DECISIONS.md",
+      "byte_count": 6668,
+      "line_count": 65,
+      "sha256": "c2d5019ded3a6bf592bc10657cf96246a34fb9b34395e2a5a40b26fa1a88664c",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/VOCABULARY_SUPPRESSION_REMOVAL_RECEIPT.md",
+      "byte_count": 3789,
+      "line_count": 71,
+      "sha256": "7274d45aec49be6b95f8becbbcce8863c2ca9d0efc36405ed68fff6e60388784",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/pre_mutation_full_read_byte_log.txt",
+      "byte_count": 5648,
+      "line_count": 33,
+      "sha256": "611f86520002090d361f527abc02ade0d3d0e8928da4161db39f88ae90e82b7a",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/final_impacted_files_full_read_log.txt",
+      "byte_count": 417414,
+      "line_count": 4235,
+      "sha256": "88c2f3fe91676445d967d9762935cb2f922616065df03877017fa9fcb47be491",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/post_source_suppression_removal_check_clean.stdout",
+      "byte_count": 127,
+      "line_count": 2,
+      "sha256": "7882fe64a233bdf1a1cf6daea0e69b53e598f691c9e6d3bd7b0ce73d1dc14ab8",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/post_governed_handling_check_clean.stdout",
+      "byte_count": 67,
+      "line_count": 1,
+      "sha256": "557028ec015e377d4be252cf0a5e317fae1060dcf451cd1792e1c80e253789dc",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/final_after_stamp_vocabulary_synonym_audit_check_clean.stdout",
+      "byte_count": 68,
+      "line_count": 1,
+      "sha256": "53cb2ad26db607ac543c73dcc8a74f802eeb71f647f33e296b83e1de88307a37",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/vocabulary_synonym_audit_check_clean_final.stdout",
+      "byte_count": 68,
+      "line_count": 1,
+      "sha256": "53cb2ad26db607ac543c73dcc8a74f802eeb71f647f33e296b83e1de88307a37",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/targeted_synonym_candidate_audit_pytest.stdout",
+      "byte_count": 99,
+      "line_count": 2,
+      "sha256": "1927fa542244d990351956a4ae8043ec4003d99e899af50c800f616fa9a0270c",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/tier_a_vocabulary_pytest.stdout",
+      "byte_count": 180,
+      "line_count": 3,
+      "sha256": "bfb9fb0812057aca3eeb0a5dfc08e1052d02b092891165b2ecdc332f6f379d6a",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/proof_blocks_check_all.stdout",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "70ba7f39fddf1a4051d9fcafdf425166d0e4b559318caa2c41db8be0ec72df20",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/tier_a_pytest.stdout",
+      "byte_count": 661,
+      "line_count": 9,
+      "sha256": "8d0a2e496897ca65ec0c02d20a9c24443af9005e5061383e26de79de0a0efc91",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/tier_b_batch_summary.json",
+      "byte_count": 12021,
+      "line_count": 231,
+      "sha256": "ed2c988239f8fa3007cb73db436b13ba8757fdba298d68e0ead871ff581b9897",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/reports/final_source_suppression_forbidden_search.stdout",
+      "byte_count": 258,
+      "line_count": 4,
+      "sha256": "0c6501e5d6e58cdda0b92f4dde9dc1a01c56c40971a593aa1060408ddd419d38",
+      "full_read": true,
+      "read_method": "full_file_read_recorded_in_conversation_or_audit_log"
+    }
+  ]
+}

@@ -17,8 +17,12 @@
       "category": "stage",
       "stage_owner": "temporal_context",
       "maps_to_contract": "TemporalContextOutput",
-      "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "allowed_aliases": [
+        "temporal event context"
+      ],
+      "disallowed_phrases": [
+        "temporal context seq5"
+      ],
       "notes": []
     },
     {
@@ -58,7 +62,9 @@
       "stage_owner": "playbook_eligibility",
       "maps_to_contract": "PlaybookEligibilityOutput",
       "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "playbook eligibility service"
+      ],
       "notes": []
     },
     {
@@ -80,9 +86,16 @@
       "stage_owner": "parallel_risk_lane",
       "maps_to_contract": "ParallelRiskLanePacket",
       "allowed_aliases": [
-        "parallel lane"
+        "parallel lane",
+        "parallel risk",
+        "risk lane"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "parallel risk lane dataschema",
+        "parallel risk lane packet",
+        "parallel risk lane service",
+        "roadmap parallel risk lane"
+      ],
       "notes": []
     },
     {
@@ -94,7 +107,9 @@
       "allowed_aliases": [
         "dmpv3"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "dmp v3 root"
+      ],
       "notes": []
     },
     {
@@ -283,7 +298,9 @@
       "category": "reference_data",
       "stage_owner": "calendar_reference",
       "maps_to_contract": "FinancialCalendarCrosswalkRecord",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "financial calendar"
+      ],
       "disallowed_phrases": [],
       "notes": []
     },
@@ -304,7 +321,14 @@
       "stage_owner": "posture_risk_permission",
       "maps_to_contract": "CoefficientAuthorityDocument",
       "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "coefficient authority import",
+        "coefficient authority marker",
+        "coefficient authority path",
+        "coefficient authority seq8",
+        "coefficient authority service",
+        "coefficient modifier authority"
+      ],
       "notes": []
     },
     {
@@ -328,7 +352,9 @@
       "allowed_aliases": [
         "baseline only surface"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "baseline only"
+      ],
       "notes": []
     },
     {
@@ -349,8 +375,13 @@
       "category": "authority_surface",
       "stage_owner": "posture_risk_permission",
       "maps_to_contract": "ModifierPolicyRecord",
-      "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "allowed_aliases": [
+        "state conditioned"
+      ],
+      "disallowed_phrases": [
+        "state conditioned modifier surface",
+        "state conditioned modifier tests"
+      ],
       "notes": []
     },
     {
@@ -359,7 +390,10 @@
       "category": "authority_class",
       "stage_owner": "posture_risk_permission",
       "maps_to_contract": "CoefficientAuthorityRecord",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "bounded coefficient",
+        "dynamic coefficient"
+      ],
       "disallowed_phrases": [],
       "notes": []
     },
@@ -402,7 +436,11 @@
       "allowed_aliases": [
         "stageinputbundle"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "sequence7 stage input bundle",
+        "specimen stage input bundle",
+        "stage input bundle json"
+      ],
       "notes": []
     },
     {
@@ -412,7 +450,11 @@
       "stage_owner": "parallel_risk_lane",
       "maps_to_contract": "ParallelRiskEnvironmentAssessment",
       "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "bounded environment assessment",
+        "environment assessment import",
+        "environment assessment only"
+      ],
       "notes": []
     },
     {
@@ -438,7 +480,10 @@
         "stage read state",
         "stage state"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "bootstrap stage read state",
+        "read state"
+      ],
       "notes": []
     },
     {
@@ -448,7 +493,8 @@
       "stage_owner": "cross_stage_protocol",
       "maps_to_contract": "DmpV3Lineage.dependencyids",
       "allowed_aliases": [
-        "dependencyids"
+        "dependencyids",
+        "packet ids"
       ],
       "disallowed_phrases": [],
       "notes": []
@@ -484,7 +530,9 @@
       "allowed_aliases": [
         "append only observation record"
       ],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "append only observation record json"
+      ],
       "notes": []
     },
     {
@@ -494,7 +542,10 @@
       "stage_owner": "temporal_context",
       "maps_to_contract": "SourceTemporalStandard",
       "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "source temporal standard field",
+        "source temporal standard surface"
+      ],
       "notes": [
         "Repo-wide source temporal grammar admitted in docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md."
       ]
@@ -506,7 +557,9 @@
       "stage_owner": "temporal_context",
       "maps_to_contract": "SourceTemporalStandard.source_time_raw",
       "allowed_aliases": [],
-      "disallowed_phrases": [],
+      "disallowed_phrases": [
+        "raw source"
+      ],
       "notes": [
         "Source temporal standard field. Upstream of the DMPV3 outer envelope."
       ]
@@ -531,7 +584,9 @@
       "category": "protocol_field",
       "stage_owner": "temporal_context",
       "maps_to_contract": "SourceTemporalStandard.source_timezone_raw",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "source timezone"
+      ],
       "disallowed_phrases": [],
       "notes": [
         "Source temporal standard field. Upstream of the DMPV3 outer envelope."

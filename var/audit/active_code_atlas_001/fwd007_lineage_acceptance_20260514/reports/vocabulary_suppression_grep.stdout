@@ -1,0 +1,4 @@
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:397:        "FWD001_GOVERNANCE_CANDIDATE_FRAGMENTS",
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:398:        "_is_fwd001_governance_candidate_fragment",
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:399:        "selected_fragments",
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:400:        "path-bound",

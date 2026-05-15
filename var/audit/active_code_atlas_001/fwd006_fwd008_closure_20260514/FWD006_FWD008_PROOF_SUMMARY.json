@@ -1,0 +1,95 @@
+{
+  "schema_version": "fwd006_fwd008_proof_summary_v1",
+  "created_utc": "2026-05-14T13:35:00Z",
+  "branch": "worker/fwd006-fwd008-closure-20260514",
+  "head": "15fe16a",
+  "targeted_proofs": {
+    "FWD006": {
+      "raw_capture_source_temporal_law_surface": {
+        "receipt_stem": "proof_raw_capture_source_temporal_law_surface",
+        "exitcode": "0",
+        "stdout_tail": [
+          "tests/tier_a/ingress/test_raw_bundle_loader_surface.py ...               [100%]",
+          "",
+          "============================== 3 passed in 0.56s ==============================="
+        ]
+      },
+      "raw_capture_transform_boundary_surface": {
+        "receipt_stem": "proof_raw_capture_transform_boundary_surface",
+        "exitcode": "0",
+        "stdout_tail": [
+          "tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py ... [100%]",
+          "",
+          "============================== 3 passed in 0.14s ==============================="
+        ]
+      },
+      "source_temporal_standard_surface": {
+        "receipt_stem": "proof_source_temporal_standard_surface",
+        "exitcode": "0",
+        "stdout_tail": [
+          "tests/tier_a/temporal/test_source_temporal_standard_surface.py ....      [100%]",
+          "",
+          "============================== 4 passed in 0.36s ==============================="
+        ]
+      }
+    },
+    "FWD007": {
+      "raw_signal_contract_copy_boundary_surface": {
+        "receipt_stem": "proof_raw_signal_contract_copy_boundary_surface_rerun",
+        "exitcode": "0",
+        "stdout_tail": [
+          ".                                                                        [100%]",
+          "",
+          "============================== 2 passed in 0.38s ==============================="
+        ]
+      },
+      "raw_signal_transform_boundary_surface": {
+        "receipt_stem": "proof_raw_signal_transform_boundary_surface_rerun",
+        "exitcode": "0",
+        "stdout_tail": [
+          ".                                                                        [100%]",
+          "",
+          "============================== 2 passed in 0.18s ==============================="
+        ]
+      }
+    },
+    "FWD008": {
+      "financial_event_calendar_authority_surface": {
+        "receipt_stem": "proof_financial_event_calendar_authority_surface_rerun",
+        "exitcode": "0",
+        "stdout_tail": [
+          "...                                                                      [100%]",
+          "",
+          "============================== 13 passed in 0.69s =============================="
+        ]
+      },
+      "financial_event_calendar_transform_boundary_surface": {
+        "receipt_stem": "proof_financial_event_calendar_transform_boundary_surface_rerun",
+        "exitcode": "0",
+        "stdout_tail": [
+          ".                                                                        [100%]",
+          "",
+          "============================== 2 passed in 0.15s ==============================="
+        ]
+      }
+    }
+  },
+  "tier_ab_batch_regression": {
+    "status": "PASS",
+    "collected_node_count": 609,
+    "unique_node_count": 609,
+    "batch_count": 31,
+    "used_receipt_count": 32,
+    "all_used_exitcodes_zero": true,
+    "passed_summary_total": 609,
+    "passed_total_matches_collected_count": true
+  },
+  "final_validation": {
+    "git_diff_check_final_exitcode": "0",
+    "proof_blocks_check_all_final_exitcode": "0",
+    "proof_blocks_check_all_final_tail": [
+      "proof_blocks_check_all=PASS count=46"
+    ],
+    "git_status_precommit_path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/reports/git_status_precommit.out"
+  }
+}

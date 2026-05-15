@@ -1,0 +1,1 @@
+rg -n "FWD001_GOVERNANCE|_is_fwd001_governance_candidate_fragment|selected_fragments|path-bound suppression|_is_sequence[0-9]|_is_roadmap_control_surface_identifier_fragment" tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py src/nvda_desk/vocabulary_synonym_audit.py

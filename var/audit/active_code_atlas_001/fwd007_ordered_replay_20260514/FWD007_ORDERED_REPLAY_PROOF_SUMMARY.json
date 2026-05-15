@@ -1,0 +1,55 @@
+{
+  "schema_version": "fwd007_ordered_replay_proof_summary_v1",
+  "branch": "worker/fwd007-ordered-replay-20260514",
+  "head_before_commit": "fa3fe10",
+  "targeted_proof": {
+    "raw_signal_contract_copy_boundary_surface": {
+      "exit_code": 0,
+      "passed_summary": 2
+    },
+    "raw_signal_transform_boundary_surface": {
+      "exit_code": 0,
+      "passed_summary": 2
+    },
+    "support_spine_prepared_packet_review_surface": {
+      "exit_code": 0,
+      "passed_summary": 41
+    }
+  },
+  "tier_ab_default_batch": {
+    "decision": "PASS",
+    "unique_node_count": 609,
+    "batch_count": 31,
+    "executed_batch_count": 31,
+    "all_batches_executed": true,
+    "all_used_exit_codes_zero": true,
+    "assignment_once_only": true,
+    "passed_summary_total": 609,
+    "passed_total_matches_unique_nodes": true
+  },
+  "proof_blocks_check_all": {
+    "exit_code": 0,
+    "summary": "proof_blocks_check_all=PASS count=46"
+  },
+  "comparison_report_decision": "bounded_closed_current",
+  "coverage_counts": {
+    "selected_native_bridge_records": 123,
+    "primary_active_code_records": 4,
+    "comparison_groups": 3,
+    "queue_records": 3,
+    "direct_native_atlas_links": 0,
+    "grouped_satisfaction_overlay_count": 123,
+    "current_covered_native_atlas_ids": 123,
+    "current_unresolved_native_atlas_ids": 0
+  },
+  "comparison_status_counts": {
+    "transform_required": 68,
+    "partially_satisfied": 55
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "transform_required": 68,
+    "missing": 22,
+    "partially_satisfied": 33
+  },
+  "decision": "PASS"
+}

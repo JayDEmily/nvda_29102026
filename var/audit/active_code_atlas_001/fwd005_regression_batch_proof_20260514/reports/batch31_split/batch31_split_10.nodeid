@@ -1,0 +1,1 @@
+tests/tier_b/proof_model/test_proof_executor_contract.py::test_candidate_review_clean_check_proof_block_is_manifest_owned

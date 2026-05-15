@@ -1,0 +1,1 @@
+PYTHONPATH=src timeout 30s python -m pytest -q tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py::test_live_inventory_reads_requested_capital_snapshot_not_latest_snapshot

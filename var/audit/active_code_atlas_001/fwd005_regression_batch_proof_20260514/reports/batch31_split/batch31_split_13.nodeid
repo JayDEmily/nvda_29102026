@@ -1,0 +1,1 @@
+tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_rejects_missing_owned_paths_before_running

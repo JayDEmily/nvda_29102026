@@ -1,0 +1,46 @@
+  1310	- No FWD-008 source/config/test/fixture/data mutation was made.
+  1311	- Targeted proof observation: calendar proof blocks returned status 0: authority surface 13 passed, transform boundary 2 passed.
+  1312	- State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`; not closed because targeted proof success alone does not satisfy the row's required closure-grade full-read, evidence inventory, and three-way comparison gates.
+  1313	
+  1314	FWD-006 through FWD-008 closure gates recorded 2026-05-14:
+  1315	
+  1316	- Evidence directory: `var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/`.
+  1317	- Regression evidence directory: `var/audit/active_code_atlas_001/fwd006_fwd008_regression_batch_proof_20260514/`.
+  1318	- FWD-006 report: `FWD006_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_CLOSURE_RECEIPT.md`; read manifest: `FWD006_CLOSURE_GATE_READ_MANIFEST.json`.
+  1319	- FWD-006 result: 108/108 selected native raw-capture/source-temporal Atlas IDs covered by grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 0; unresolved selected IDs: 0.
+  1320	- FWD-006 targeted proof reruns returned status 0: `raw_capture_source_temporal_law_surface`, `raw_capture_transform_boundary_surface`, and `source_temporal_standard_surface`.
+  1321	- FWD-007 report: `FWD007_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD007_RAW_SIGNAL_FAMILIES_CLOSURE_RECEIPT.md`; read manifest: `FWD007_CLOSURE_GATE_READ_MANIFEST.json`.
+  1322	- FWD-007 result: 123/123 selected native raw-signal-family Atlas IDs covered by grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 0; unresolved selected IDs: 0.
+  1323	- FWD-007 targeted proof reruns returned status 0: `raw_signal_contract_copy_boundary_surface` and `raw_signal_transform_boundary_surface`.
+  1324	- FWD-008 report: `FWD008_THREE_WAY_COMPARISON_REPORT.json`; receipt: `FWD008_FINANCIAL_EVENT_CALENDAR_CLOSURE_RECEIPT.md`; read manifest: `FWD008_CLOSURE_GATE_READ_MANIFEST.json`.
+  1325	- FWD-008 result: 117/117 selected native financial/event-calendar Atlas IDs covered by direct active-code links or grouped comparison/queue satisfaction evidence; direct selected native Atlas links: 2; grouped-satisfaction overlay links: 115; unresolved selected IDs: 0.
+  1326	- FWD-008 targeted proof reruns returned status 0: `financial_event_calendar_authority_surface` and `financial_event_calendar_transform_boundary_surface`.
+  1327	- Broad regression proof records 609 collected unique Tier A/B pytest nodes assigned exactly once across 32 captured execution receipts; all used receipt exit codes are 0 and passed summaries total 609. Some selected receipts use `PYTEST_DISABLE_PLUGIN_AUTOLOAD=1` to avoid third-party plugin teardown interference; earlier attempts that printed pass summaries without exit-code receipts are retained as superseded setup evidence only.
+  1328	- No FWD-006, FWD-007, or FWD-008 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice mutation was made.
+  1329	- States: FWD-006 `bounded_closed_current`; FWD-007 `bounded_closed_current`; FWD-008 `bounded_closed_current`.
+  1330	- Next row: `FWD-009` / `5.5 Prepared ingress and runtime context preparation`; FWD-009 remains unopened by this pass.
+  1331	
+  1332	
+  1333	FWD-006 through FWD-008 forensic audit correction recorded 2026-05-14:
+  1334	
+  1335	- Audit branch: `worker/fwd006-fwd008-forensic-audit-20260514`; report path: `var/audit/active_code_atlas_001/fwd006_fwd008_forensic_audit_20260514/reports/FWD006_FWD008_FORENSIC_AUDIT_REPORT.md` and `.json`.
+  1336	- The earlier combined closure commit `c13f491` is not accepted as clean final closure evidence.
+  1337	- Material evidence defect: FWD-006 closure report labelled `ACABC-0005` / `ACATQ-0005` as `missing`, while the static Bridge comparison and test-first queue record the group as `partially_satisfied` for 11 rows.
+  1338	- Material evidence defect: FWD-007 closure report labelled `ACABC-0008` / `ACATQ-0008` as `missing`, while the static Bridge comparison and test-first queue record the group as `partially_satisfied` for 22 rows.
+  1339	- Procedural defect: FWD-006, FWD-007, and FWD-008 were closed in one combined commit/final report rather than preserving a clean ordered gate stop/review boundary between rows.
+  1340	- Regression-proof repair evidence: the audit reran the 609 collected Tier A/B nodes under default pytest plugin autoload and captured 31/31 batch exit codes `0`, passed summaries totalling 609/609.
+  1341	- Current state correction: treat FWD-006, FWD-007, and FWD-008 as `evidence_blocked_pending_ordered_replay`, not accepted closed, until replayed from FWD-006 in order with corrected Bridge-status evidence and captured proof.
+  1342	- FWD-009 remains unopened.
+  1343	
+  1344	#### FWD-009 — 5.5 Prepared ingress and runtime context preparation
+  1345	
+  1346	State: `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`
+  1347	
+  1348	Runtime position: `preparation`
+  1349	
+  1350	Why this row exists: Converts upstream truth into runtime-ready substrate and stage input carriers without making runtime decisions.
+  1351	
+  1352	Prior-history rule: existing `acted_on_bounded` history remains evidence. The worker must not restart this surface as blank and must not claim the surface is complete merely because prior bounded rows exist.
+  1353	
+  1354	Required authority:
+  1355	

@@ -1,0 +1,299 @@
+{
+  "status": "PASS",
+  "collected_node_count": 609,
+  "unique_node_count": 609,
+  "duplicate_node_count": 0,
+  "batch_size": 20,
+  "batch_count": 31,
+  "assignment_once_only": "PASS",
+  "used_receipt_count": 32,
+  "all_used_exitcodes_zero": true,
+  "passed_summary_total": 609,
+  "passed_total_matches_collected_count": true,
+  "environment_notes": [
+    "Some batches use PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 to avoid third-party plugin teardown interference; the pytest commands remain ordinary repo Tier A/B node executions.",
+    "Earlier non-selected attempts that printed pass summaries without exit-code receipts are retained as superseded setup evidence and not used for this proof."
+  ],
+  "batches": [
+    {
+      "batch": "batch_001",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_001_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_002",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_002_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_003",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_003_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_004",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_004_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_005",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_005_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_006",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_006_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_007",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_007_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_008",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_008_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_009",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_009_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_010",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_010_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_011",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_011_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_012",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_012_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_013",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_013_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_014",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_014_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_015",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_015_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_016",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_016_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_017",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_017_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_018",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_018_autoload_off"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_019",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_019_singleexec"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_020",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_020_singleexec"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_021",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_021_singleexec2"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_022",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_022_singleexec2"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_023",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_023_singleexec2"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_024",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_024_singleexec2"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_025",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_025_singleexec2"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_026",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_026_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_027",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_027_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_028",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_028_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_029",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_029_part1_autoload",
+        "batch_029_part2_autoload"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_030",
+      "node_count": 20,
+      "used_receipts": [
+        "batch_030_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 20
+    },
+    {
+      "batch": "batch_031",
+      "node_count": 9,
+      "used_receipts": [
+        "batch_031_autoload_single"
+      ],
+      "exitcode_zero": true,
+      "passed_summary": 9
+    }
+  ]
+}

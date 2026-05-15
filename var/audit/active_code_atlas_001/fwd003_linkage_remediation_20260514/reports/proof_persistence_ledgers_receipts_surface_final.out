@@ -1,0 +1,27 @@
+proof_block_id=persistence_ledgers_receipts_surface
+command=python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/fwd003_linkage_work/repo
+configfile: pyproject.toml
+plugins: metadata-3.1.1, cov-7.0.0, anyio-4.13.0, ddtrace-4.4.0, json-report-1.5.0, Faker-40.1.2, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 36 items
+
+tests/tier_a/persistence/test_append_only_repository_surfaces.py ...     [  8%]
+tests/tier_a/persistence/test_capital_state_repository_surface.py ....   [ 19%]
+tests/tier_a/persistence/test_execution_records_repository_surface.py .. [ 25%]
+                                                                         [ 25%]
+tests/tier_a/persistence/test_module_registry_repository_surface.py ...  [ 33%]
+tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py . [ 36%]
+...                                                                      [ 44%]
+tests/tier_a/persistence/test_persistence_session_boundary_surface.py .. [ 50%]
+.                                                                        [ 52%]
+tests/tier_a/persistence/test_position_repository_surface.py .....       [ 66%]
+tests/tier_a/persistence/test_receipt_ledger_surface.py .....            [ 80%]
+tests/tier_a/persistence/test_research_logs_owner_surface.py ..          [ 86%]
+tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py . [ 88%]
+.                                                                        [ 91%]
+tests/tier_a/review_runtime/test_review_repository_surface.py ...        [100%]
+
+============================== 36 passed in 0.67s ==============================

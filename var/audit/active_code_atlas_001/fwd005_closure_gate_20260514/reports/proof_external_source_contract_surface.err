@@ -1,0 +1,4 @@
+usage: run_proof_block.py [-h] [--block BLOCK] [--describe DESCRIBE]
+                          [--check CHECK] [--check-all] [--receipt RECEIPT]
+                          [--list] [--json] [--detailed]
+run_proof_block.py: error: unrecognized arguments: external_source_contract_surface

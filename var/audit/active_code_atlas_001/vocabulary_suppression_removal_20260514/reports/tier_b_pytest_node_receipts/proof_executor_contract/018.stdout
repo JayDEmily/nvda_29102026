@@ -1,0 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0 -- /opt/pyvenv/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/data/vocab_suppression_work/repo
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_check_all_rejects_non_mapping_entries <- ../../nvda10_fwd004_gate/repo/tests/tier_b/proof_model/test_proof_executor_contract.py PASSED
+
+============================== 1 passed in 2.12s ===============================

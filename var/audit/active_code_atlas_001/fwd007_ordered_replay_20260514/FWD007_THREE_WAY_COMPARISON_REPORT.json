@@ -1,0 +1,294 @@
+{
+  "schema_version": "fwd007_ordered_replay_closure_gate_v2",
+  "created_utc": "2026-05-14T15:23:42.922427Z",
+  "surface": "FWD-007 / 5.3 Raw signal families",
+  "source_branch": "worker/fwd007-ordered-replay-20260514",
+  "source_head_before_commit": "fa3fe10",
+  "inputs": {
+    "primary_active_code_atlas_path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+    "primary_to_bridge_comparison_path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+    "static_bridge_comparison_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "test_first_queue_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+    "atlas_surface_slice_path": "var/audit/atlas_surface_slices/slices/raw_signal_families.json",
+    "surface_record_paths": [
+      "var/audit/active_code_atlas_001/raw_signal_families_surface/raw_signal_families_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_signal_families_surface_new_test_family/raw_signal_contract_copy_boundary_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/raw_signal_families_surface_transform_required/raw_signal_transform_boundary_active_code_atlas_records.json"
+    ],
+    "superseded_combined_report_path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD007_THREE_WAY_COMPARISON_REPORT.json",
+    "forensic_audit_report_path": "var/audit/active_code_atlas_001/fwd006_fwd008_forensic_audit_20260514/reports/FWD006_FWD008_FORENSIC_AUDIT_REPORT.json",
+    "fwd006_ordered_replay_report_path": "var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/FWD006_THREE_WAY_COMPARISON_REPORT.json"
+  },
+  "counts": {
+    "selected_native_bridge_records": 123,
+    "primary_active_code_records": 4,
+    "comparison_groups": 3,
+    "queue_records": 3,
+    "direct_native_atlas_links": 0,
+    "grouped_satisfaction_overlay_count": 123,
+    "current_covered_native_atlas_ids": 123,
+    "current_unresolved_native_atlas_ids": 0
+  },
+  "comparison_status_counts": {
+    "transform_required": 68,
+    "partially_satisfied": 55
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "transform_required": 68,
+    "missing": 22,
+    "partially_satisfied": 33
+  },
+  "group_evidence": [
+    {
+      "comparison_record_id": "ACABC-0007",
+      "queue_record_id": "ACATQ-0007",
+      "comparison_status": "transform_required",
+      "queue_comparison_status": "transform_required",
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 68
+      },
+      "native_slice_status_group_used_for_record_ids": "transform_required",
+      "native_record_count": 68,
+      "direct_native_link_count": 0,
+      "grouped_satisfaction_overlay_count": 68,
+      "active_code_record_ids": [
+        "ACATP-018-0001"
+      ],
+      "direct_native_atlas_record_ids": [],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_overnight_006",
+        "atlas_donor_eval_005",
+        "atlas_donor_eval_010",
+        "atlas_donor_market_009",
+        "atlas_donor_review_001",
+        "atlas_donor_review_012",
+        "atlas_donor_review_013",
+        "atlas_donor_review_023",
+        "atlas_donor_parallel_risk_014",
+        "atlas_donor_dataset_017",
+        "atlas_donor_state_policy_002",
+        "atlas_donor_state_policy_051",
+        "atlas_donor_state_policy_053",
+        "atlas_donor_cognition_002",
+        "atlas_donor_cognition_013",
+        "atlas_donor_cognition_016",
+        "atlas_donor_config_models_015",
+        "atlas_donor_imported_posture_enrichers_008",
+        "atlas_donor_imported_market_substrate_001",
+        "atlas_donor_imported_market_substrate_002",
+        "atlas_donor_imported_market_substrate_003",
+        "atlas_donor_imported_market_substrate_004",
+        "atlas_donor_imported_market_substrate_005",
+        "atlas_donor_imported_market_substrate_006",
+        "atlas_donor_imported_market_substrate_007",
+        "atlas_donor_imported_market_substrate_008",
+        "atlas_donor_imported_market_substrate_009",
+        "atlas_donor_imported_market_substrate_010",
+        "atlas_donor_imported_market_substrate_011",
+        "atlas_donor_imported_context_scanners_008",
+        "atlas_donor_imported_tranche_a_007",
+        "atlas_donor_service_module_evaluators_005",
+        "atlas_donor_service_carry_market_008",
+        "atlas_donor_service_market_regime_context_002",
+        "atlas_donor_service_market_regime_context_003",
+        "atlas_donor_service_market_regime_context_004",
+        "atlas_donor_service_market_regime_context_011",
+        "atlas_donor_service_market_regime_context_012",
+        "atlas_donor_service_slv_market_001",
+        "atlas_donor_service_slv_market_002",
+        "atlas_donor_service_slv_market_003",
+        "atlas_donor_service_slv_market_004",
+        "atlas_donor_service_slv_market_005",
+        "atlas_donor_service_slv_market_006",
+        "atlas_donor_service_slv_market_007",
+        "atlas_donor_service_slv_market_008",
+        "atlas_donor_service_slv_market_009",
+        "atlas_donor_service_slv_market_010",
+        "atlas_donor_service_imported_market_substrate_001",
+        "atlas_donor_service_imported_market_substrate_002",
+        "atlas_donor_service_imported_market_substrate_003",
+        "atlas_donor_service_imported_market_substrate_004",
+        "atlas_donor_service_imported_market_substrate_006",
+        "atlas_donor_service_imported_market_substrate_007",
+        "atlas_donor_service_imported_market_substrate_008",
+        "atlas_donor_service_imported_market_substrate_009",
+        "atlas_donor_service_imported_market_substrate_010",
+        "atlas_donor_service_imported_market_substrate_011",
+        "atlas_donor_service_imported_market_substrate_012",
+        "atlas_donor_service_imported_posture_enrichers_011",
+        "atlas_donor_options_flow_context_007",
+        "atlas_donor_risk_gateway_003",
+        "atlas_donor_context_scanners_012",
+        "atlas_donor_slv_experiments_014",
+        "atlas_donor_tranche_a_service_008",
+        "atlas_donor_playbook_eligibility_service_012",
+        "atlas_donor_review_explanation_service_011",
+        "atlas_donor_review_explanation_service_012"
+      ],
+      "status_validation": {
+        "comparison_status_matches_queue": true,
+        "comparison_status_distinct_from_bridge_native_status_counts": true
+      }
+    },
+    {
+      "comparison_record_id": "ACABC-0008",
+      "queue_record_id": "ACATQ-0008",
+      "comparison_status": "partially_satisfied",
+      "queue_comparison_status": "partially_satisfied",
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 22
+      },
+      "native_slice_status_group_used_for_record_ids": "missing",
+      "native_record_count": 22,
+      "direct_native_link_count": 0,
+      "grouped_satisfaction_overlay_count": 22,
+      "active_code_record_ids": [
+        "ACATP-017-0001"
+      ],
+      "direct_native_atlas_record_ids": [],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_options_units_001",
+        "atlas_donor_options_units_002",
+        "atlas_donor_options_units_003",
+        "atlas_donor_options_units_004",
+        "atlas_donor_options_units_005",
+        "atlas_donor_options_units_006",
+        "atlas_donor_slv_001",
+        "atlas_donor_slv_002",
+        "atlas_donor_slv_003",
+        "atlas_donor_slv_004",
+        "atlas_donor_slv_005",
+        "atlas_donor_slv_006",
+        "atlas_donor_slv_007",
+        "atlas_donor_slv_008",
+        "atlas_donor_slv_009",
+        "atlas_donor_slv_010",
+        "atlas_donor_slv_011",
+        "atlas_donor_slv_012",
+        "atlas_donor_slv_013",
+        "atlas_donor_slv_014",
+        "atlas_donor_slv_015",
+        "atlas_donor_slv_018"
+      ],
+      "status_validation": {
+        "comparison_status_matches_queue": true,
+        "comparison_status_distinct_from_bridge_native_status_counts": true
+      }
+    },
+    {
+      "comparison_record_id": "ACABC-0009",
+      "queue_record_id": "ACATQ-0009",
+      "comparison_status": "partially_satisfied",
+      "queue_comparison_status": "partially_satisfied",
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 33
+      },
+      "native_slice_status_group_used_for_record_ids": "partially_satisfied",
+      "native_record_count": 33,
+      "direct_native_link_count": 0,
+      "grouped_satisfaction_overlay_count": 33,
+      "active_code_record_ids": [
+        "ACATP-016-0001",
+        "ACATP-016-0002"
+      ],
+      "direct_native_atlas_record_ids": [],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_options_001",
+        "atlas_donor_options_002",
+        "atlas_donor_options_003",
+        "atlas_donor_options_005",
+        "atlas_donor_market_001",
+        "atlas_donor_market_002",
+        "atlas_donor_market_003",
+        "atlas_donor_market_004",
+        "atlas_donor_market_005",
+        "atlas_donor_market_006",
+        "atlas_donor_market_007",
+        "atlas_donor_market_008",
+        "atlas_donor_market_011",
+        "atlas_donor_market_012",
+        "atlas_donor_market_014",
+        "atlas_donor_market_016",
+        "atlas_donor_market_018",
+        "atlas_donor_market_020",
+        "atlas_donor_market_021",
+        "atlas_donor_service_market_state_001",
+        "atlas_donor_service_market_state_002",
+        "atlas_donor_service_market_state_005",
+        "atlas_donor_service_market_state_007",
+        "atlas_donor_service_market_state_008",
+        "atlas_donor_service_market_state_009",
+        "atlas_donor_service_market_state_010",
+        "atlas_donor_service_market_state_011",
+        "atlas_donor_service_market_state_013",
+        "atlas_donor_service_market_state_014",
+        "atlas_donor_service_market_state_015",
+        "atlas_donor_service_market_state_017",
+        "atlas_donor_service_market_state_018",
+        "atlas_donor_service_market_state_019"
+      ],
+      "status_validation": {
+        "comparison_status_matches_queue": true,
+        "comparison_status_distinct_from_bridge_native_status_counts": true
+      }
+    }
+  ],
+  "primary_active_code_records": [
+    {
+      "active_code_record_id": "ACATP-016-0001",
+      "title": "Raw upstream signal ingestion emits trace-only envelopes and recursively strips runtime-decision authority",
+      "source_record_path": "var/audit/active_code_atlas_001/raw_signal_families_surface/raw_signal_families_active_code_atlas_records.json",
+      "linked_bridge_record_ids": [
+        "ACATQ-0009",
+        "ACABC-0009"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_raw_signal_families_cluster_001"
+      ]
+    },
+    {
+      "active_code_record_id": "ACATP-016-0002",
+      "title": "Raw signal coverage map declares admitted signal families and rejects unlisted family scope",
+      "source_record_path": "var/audit/active_code_atlas_001/raw_signal_families_surface/raw_signal_families_active_code_atlas_records.json",
+      "linked_bridge_record_ids": [
+        "ACATQ-0009",
+        "ACABC-0009"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_raw_signal_families_cluster_002"
+      ]
+    },
+    {
+      "active_code_record_id": "ACATP-017-0001",
+      "title": "Raw upstream signal carrier rejects extra authority and detaches caller-owned payload containers",
+      "source_record_path": "var/audit/active_code_atlas_001/raw_signal_families_surface_new_test_family/raw_signal_contract_copy_boundary_active_code_atlas_records.json",
+      "linked_bridge_record_ids": [
+        "ACATQ-0008",
+        "ACABC-0008"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_raw_signal_families_cluster_003"
+      ]
+    },
+    {
+      "active_code_record_id": "ACATP-018-0001",
+      "title": "Native raw-signal files exclude donor schema/preparation/runtime owners",
+      "source_record_path": "var/audit/active_code_atlas_001/raw_signal_families_surface_transform_required/raw_signal_transform_boundary_active_code_atlas_records.json",
+      "linked_bridge_record_ids": [
+        "ACATQ-0007",
+        "ACABC-0007"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_raw_signal_families_cluster_004"
+      ]
+    }
+  ],
+  "unresolved_native_atlas_record_ids": [],
+  "status_validation_errors": [],
+  "decision": "bounded_closed_current",
+  "decision_basis": [
+    "All 123 selected raw-signal native Atlas IDs are covered by grouped comparison/queue satisfaction evidence.",
+    "ACABC-0008 / ACATQ-0008 is recorded as comparison_status=partially_satisfied, while its Bridge-native donor count remains missing=22; these are separate evidence dimensions.",
+    "No source/test/config/data/fixture/original Atlas/Bridge/generated-slice mutation is required for this ordered replay evidence repair."
+  ]
+}

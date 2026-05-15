@@ -1,0 +1,187 @@
+{
+  "schema_version": "full_read_manifest_v1",
+  "created_utc": "2026-05-14T13:40:00Z",
+  "scope": "FWD006 closure-grade full-read and three-way comparison",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 8827,
+      "line_count": 184,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da"
+    },
+    {
+      "path": "PLANS.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 99334,
+      "line_count": 707,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 291779,
+      "line_count": 1864,
+      "sha256": "67d0d7d3f5f5e18a01e4c75027d3d12b5eb55cacd7ab50d158018b1bdd889444"
+    },
+    {
+      "path": "CURRENT_PROJECT_STATE.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 836,
+      "line_count": 22,
+      "sha256": "91a603921e260464087e07885c84fe419c86d188f6d54a6d51a660e66e690188"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 25393,
+      "line_count": 195,
+      "sha256": "abccce77e4b3e7847582b9521f47c2e3cf78918221f0bd4e002878de270932e6"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 258134,
+      "line_count": 6368,
+      "sha256": "5007c16260175388169222734b3d4209dbbb88511a8f0dda22422f7a7bd546a1"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 18697,
+      "line_count": 470,
+      "sha256": "b1f784bf37ca7028c3fad1e399d5d3c2873d58865e0afdcdee7a174355eb6795"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 187370,
+      "line_count": 5168,
+      "sha256": "0a8c4384addfebd1551d7b8e54c43242bc1e1f74b39db7bd4da636f187cdc2ce"
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_regression_batch_proof_20260514/reports/batch_regression_report.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 6587,
+      "line_count": 299,
+      "sha256": "204cb2f2fba010780a580ba826a696538dfbb5a05cde88ce3ec605821d65aadb"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_FWD008_PROOF_SUMMARY.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 3695,
+      "line_count": 95,
+      "sha256": "8b1473311c238fbebff15489d3d40efc383b2a9380fcc07128f6a750821f9a5f"
+    },
+    {
+      "path": "var/audit/atlas_surface_slices/slices/raw_capture_and_source_temporal_law.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 1155933,
+      "line_count": 30645,
+      "sha256": "6ff386c4e7b49cb453f45806950698e1a21fc9707d969279a5243ef87f99f2ac"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface/raw_capture_source_temporal_law_active_code_atlas_records.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 3951,
+      "line_count": 94,
+      "sha256": "71d4fd125d54afe508a697f5fb54c44fc4ea21d148cfb1663d6746748dba2c02"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_new_test_family/source_temporal_standard_active_code_atlas_records.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 3558,
+      "line_count": 84,
+      "sha256": "ffbdc95d99cf3bc64f7d9f91b30eea31aecd69554ba994a0ba837266c8174398"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_transform_required/raw_capture_transform_boundary_active_code_atlas_records.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 3884,
+      "line_count": 94,
+      "sha256": "9bc0c1fafc6ce0a8126d0024afbebd3ef0885b92f8f410933a578a7758c2b306"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_THREE_WAY_COMPARISON_REPORT.json",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 8192,
+      "line_count": 199,
+      "sha256": "feada380b3ff1a9862daea58ee860b49372e768c7b7fcdd83e8f73bade055ed7"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_CLOSURE_RECEIPT.md",
+      "reason": "FWD006 closure authority/evidence input",
+      "full_read": true,
+      "read_method": "full_file_text_read_for_closure_grade_comparison",
+      "byte_count": 1184,
+      "line_count": 27,
+      "sha256": "65688633d7c8fec4a94b2087bf3a8cbe6f262e30e55de5118331b56a9170e270"
+    }
+  ]
+}

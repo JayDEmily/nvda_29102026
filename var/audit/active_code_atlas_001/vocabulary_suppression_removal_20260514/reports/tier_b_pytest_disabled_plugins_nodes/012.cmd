@@ -1,0 +1,1 @@
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src python -m pytest -q tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_block_runner_resolves_python_to_current_interpreter

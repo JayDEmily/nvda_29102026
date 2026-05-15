@@ -1,0 +1,227 @@
+{
+  "schema_version": "fwd004_dmpv3_closure_gate_v1",
+  "created_utc": "2026-05-14T10:33:38Z",
+  "surface": "FWD-004 / 5.6 DMPV3 packet carriage",
+  "source_branch": "worker/fwd-003-through-fwd-009-closure-continuation",
+  "source_head": "78f0caa",
+  "inputs": {
+    "primary_active_code_atlas_path": "var/audit/active_code_atlas_001/primary_active_code_atlas.json",
+    "primary_to_bridge_comparison_path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+    "static_bridge_comparison_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "test_first_queue_path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+    "native_intent_satisfaction_ledger_path": "var/audit/ledgers/intent_migration/native_intent_satisfaction_ledger.json",
+    "atlas_surface_slice_path": "var/audit/atlas_surface_slices/slices/dmpv3_packet_carriage.json",
+    "legacy_intent_atlas_path": "var/audit/imports/atlas_bridge_inputs/legacy_intent_atlas.json"
+  },
+  "counts": {
+    "selected_native_bridge_records": 73,
+    "primary_active_code_records": 4,
+    "comparison_groups": 3,
+    "queue_records": 3,
+    "direct_native_atlas_links": 14,
+    "navigation_or_cluster_links_not_native_atlas_ids": 2,
+    "grouped_satisfaction_overlay_count": 59,
+    "current_covered_native_atlas_ids": 73,
+    "current_unresolved_native_atlas_ids": 0
+  },
+  "status_counts": {
+    "partially_satisfied": 28,
+    "missing": 21,
+    "transform_required": 24
+  },
+  "group_evidence": [
+    {
+      "native_status": "transform_required",
+      "comparison_record_id": "ACABC-0015",
+      "queue_record_id": "ACATQ-0015",
+      "native_record_count": 24,
+      "direct_native_link_count": 9,
+      "previously_unlinked_group_resolved_count": 15,
+      "active_code_record_ids": [
+        "ACATP-009-0001"
+      ],
+      "direct_native_atlas_record_ids": [
+        "atlas_donor_cognition_026",
+        "atlas_donor_domain_temporal_state_002",
+        "atlas_donor_parallel_risk_018",
+        "atlas_donor_parallel_risk_020",
+        "atlas_donor_service_carry_handoff_003",
+        "atlas_donor_service_imported_execution_planning_005",
+        "atlas_donor_service_imported_market_substrate_005",
+        "atlas_donor_service_imported_posture_enrichers_005",
+        "atlas_donor_service_review_packets_001"
+      ],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_service_carry_handoff_004",
+        "atlas_donor_service_carry_handoff_005",
+        "atlas_donor_service_review_packets_002",
+        "atlas_donor_service_review_packets_003",
+        "atlas_donor_service_review_packets_004",
+        "atlas_donor_service_review_packets_005",
+        "atlas_donor_service_review_packets_006",
+        "atlas_donor_service_review_packets_007",
+        "atlas_donor_service_review_packets_008",
+        "atlas_donor_service_review_packets_009",
+        "atlas_donor_service_review_packets_010",
+        "atlas_donor_service_review_packets_011",
+        "atlas_donor_service_review_packets_012",
+        "atlas_donor_service_review_packets_013",
+        "atlas_donor_service_review_packets_014"
+      ]
+    },
+    {
+      "native_status": "missing",
+      "comparison_record_id": "ACABC-0016",
+      "queue_record_id": "ACATQ-0016",
+      "native_record_count": 21,
+      "direct_native_link_count": 5,
+      "previously_unlinked_group_resolved_count": 16,
+      "active_code_record_ids": [
+        "ACATP-008-0001"
+      ],
+      "direct_native_atlas_record_ids": [
+        "atlas_donor_cognition_049",
+        "atlas_donor_domain_temporal_state_004",
+        "atlas_donor_parallel_risk_013",
+        "atlas_donor_state_policy_007",
+        "atlas_donor_temporal_surface_009"
+      ],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_cognition_014",
+        "atlas_donor_cognition_022",
+        "atlas_donor_cognition_028",
+        "atlas_donor_cognition_runtime_service_011",
+        "atlas_donor_config_models_019",
+        "atlas_donor_config_models_022",
+        "atlas_donor_config_models_024",
+        "atlas_donor_config_models_027",
+        "atlas_donor_config_models_029",
+        "atlas_donor_config_models_031",
+        "atlas_donor_domain_temporal_state_008",
+        "atlas_donor_parallel_risk_001",
+        "atlas_donor_posture_risk_003",
+        "atlas_donor_service_carry_market_004",
+        "atlas_donor_service_financial_calendar_reference_001",
+        "atlas_donor_temporal_surface_010"
+      ]
+    },
+    {
+      "native_status": "partially_satisfied",
+      "comparison_record_id": "ACABC-0017",
+      "queue_record_id": "ACATQ-0017",
+      "native_record_count": 28,
+      "direct_native_link_count": 0,
+      "previously_unlinked_group_resolved_count": 28,
+      "active_code_record_ids": [
+        "ACATP-007-0001",
+        "ACATP-007-0002"
+      ],
+      "direct_native_atlas_record_ids": [],
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_dmp_001",
+        "atlas_donor_dmp_002",
+        "atlas_donor_dmp_003",
+        "atlas_donor_dmp_004",
+        "atlas_donor_dmp_005",
+        "atlas_donor_dmp_006",
+        "atlas_donor_dmp_007",
+        "atlas_donor_dmp_008",
+        "atlas_donor_dmp_009",
+        "atlas_donor_dmp_010",
+        "atlas_donor_dmp_011",
+        "atlas_donor_dmp_012",
+        "atlas_donor_dmp_013",
+        "atlas_donor_dmp_014",
+        "atlas_donor_dmp_015",
+        "atlas_donor_dmp_016",
+        "atlas_donor_dmp_017",
+        "atlas_donor_dmp_018",
+        "atlas_donor_dmp_envelope_001",
+        "atlas_donor_dmp_envelope_002",
+        "atlas_donor_dmp_envelope_003",
+        "atlas_donor_dmp_envelope_004",
+        "atlas_donor_dmp_envelope_005",
+        "atlas_donor_dmp_envelope_006",
+        "atlas_donor_dmp_envelope_007",
+        "atlas_donor_dmp_envelope_008",
+        "atlas_donor_dmp_envelope_009",
+        "atlas_donor_dmp_envelope_010"
+      ]
+    }
+  ],
+  "primary_active_code_records": [
+    {
+      "active_code_atlas_record_id": "ACATP-007-0001",
+      "title": "DMPV3 packets use one canonical envelope and bounded producer-role grammar",
+      "record_status": "existing_tier_a_family_extended_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0017",
+        "ACABC-0017"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_packet_carriage_cluster_001"
+      ],
+      "source_surface_record_file": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/dmpv3_packet_carriage_active_code_atlas_records.json"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-007-0002",
+      "title": "DMPV3 nvda extension merge preserves canonical schema identifiers after test-first repair",
+      "record_status": "existing_tier_a_family_extended_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0017",
+        "ACABC-0017"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_packet_extension_cluster_001"
+      ],
+      "source_surface_record_file": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/dmpv3_packet_carriage_active_code_atlas_records.json"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-008-0001",
+      "title": "DMPV3 repo-owned nvda extension leaves preserve canonical semantic-dependency truth",
+      "record_status": "new_tier_a_family_added_bounded_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0016",
+        "ACABC-0016"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_temporal_surface_009",
+        "atlas_donor_parallel_risk_013",
+        "atlas_donor_state_policy_007",
+        "atlas_donor_cognition_049",
+        "atlas_donor_domain_temporal_state_004"
+      ],
+      "source_surface_record_file": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/dmpv3_extension_canonical_leaf_active_code_atlas_records.json"
+    },
+    {
+      "active_code_atlas_record_id": "ACATP-009-0001",
+      "title": "DMPV3 transform-required donor packet services remain outside native packet authority",
+      "record_status": "new_tier_a_family_added_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0015",
+        "ACABC-0015"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_parallel_risk_018",
+        "atlas_donor_parallel_risk_020",
+        "atlas_donor_cognition_026",
+        "atlas_donor_domain_temporal_state_002",
+        "atlas_donor_service_carry_handoff_003",
+        "atlas_donor_service_review_packets_001",
+        "atlas_donor_service_imported_market_substrate_005",
+        "atlas_donor_service_imported_execution_planning_005",
+        "atlas_donor_service_imported_posture_enrichers_005"
+      ],
+      "source_surface_record_file": "var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_transform_required/dmpv3_transform_boundary_active_code_atlas_records.json"
+    }
+  ],
+  "unresolved_native_atlas_record_ids": [],
+  "decision": "bounded_closed_current",
+  "decision_basis": [
+    "Every selected native DMPV3 Bridge row is inside one of the three DMPV3 comparison groups ACABC-0015, ACABC-0016, ACABC-0017.",
+    "Each comparison group has a matching execution queue row ACATQ-0015, ACATQ-0016, ACATQ-0017.",
+    "Primary active-code DMPV3 records explicitly link to each selected comparison group and queue row.",
+    "Direct one-to-one native Atlas links cover 14 selected native Atlas IDs; the remaining 59 are resolved by grouped-satisfaction overlay, not invented links.",
+    "Original Atlas/Bridge JSON and generated slices remain read-only evidence."
+  ]
+}
