@@ -1,0 +1,173 @@
+{
+  "schema_version": "fwd_ordered_replay_three_way_comparison_v1",
+  "created_utc": "2026-05-15T01:33:46.709399+00:00",
+  "surface": "FWD-012 \u2014 5.7 Serial desk-cognition spine",
+  "decision": "bounded_closed_current",
+  "selected_bridge_comparison_record_ids": [
+    "ACABC-0018",
+    "ACABC-0019"
+  ],
+  "selected_queue_record_ids": [
+    "ACATQ-0018",
+    "ACATQ-0019"
+  ],
+  "selected_native_atlas_record_count": 139,
+  "covered_selected_native_atlas_record_count": 139,
+  "unresolved_selected_native_atlas_record_count": 0,
+  "direct_native_atlas_link_count": 0,
+  "grouped_satisfaction_overlay_count": 139,
+  "comparison_status_counts": {
+    "transform_required": 109,
+    "partially_satisfied": 30
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "transform_required": 109,
+    "partially_satisfied": 30
+  },
+  "status_validation": {
+    "comparison_status_counts_and_bridge_native_satisfaction_counts_kept_separate": true,
+    "selected_counts_match_bridge_rows": true,
+    "unresolved_ids_empty": true
+  },
+  "normative_target": {
+    "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md": "lines 237-252: ordered candidate formation; prohibits parallel risk, capital deployment, live position management, and unassigned persistence writes",
+    "docs/01_NORMATIVE_CORE.md": "lines 54-70: serial desk-cognition consists of six stages and does not own parallel risk or capital deployment",
+    "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md": "lines 83-104: serial output and serial stage outputs have bounded meaning and must not be treated as parallel risk or capital authority"
+  },
+  "active_repo_behaviour": {
+    "source_files": [
+      "src/nvda_desk/contracts/serial_spine.py",
+      "src/nvda_desk/runtime/orchestrator.py",
+      "src/nvda_desk/contracts/execution.py",
+      "src/nvda_desk/cognition/serial/eligibility.py",
+      "src/nvda_desk/cognition/serial/options_flow.py",
+      "src/nvda_desk/cognition/serial/posture.py",
+      "src/nvda_desk/services/execution_service.py"
+    ],
+    "test_families": [
+      "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+      "tests/tier_a/serial_recommendation",
+      "tests/tier_b/serial_boundaries"
+    ],
+    "observed_boundary": "Current native surface emits ordered serial stage packets and candidate material, and excludes capital deployment, broker/order placement, live inventory ownership, donor imports, and transform-required donor symbols within the selected test/proof families."
+  },
+  "primary_active_code_atlas_evidence": [
+    {
+      "path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/serial_desk_cognition_spine_active_code_atlas_records.json",
+      "record_ids": [
+        "ACATP-031-0001"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_serial_desk_cognition_partially_satisfied_cluster"
+      ]
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/serial_desk_cognition_spine_transform_boundary_active_code_atlas_records.json",
+      "record_ids": [
+        "ACATP-032-0001"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_serial_desk_cognition_transform_required_cluster"
+      ]
+    }
+  ],
+  "comparison_records": [
+    {
+      "comparison_record_id": "ACABC-0018",
+      "blueprint_surface": "Serial desk-cognition spine",
+      "comparison_status": "transform_required",
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 109
+      },
+      "atlas_record_count_joined": 109,
+      "active_code_record_count_same_surface_owner": 92,
+      "test_first_queue_action": "write_new_test_family_before_code",
+      "proof_tier": "Tier A",
+      "sample_atlas_record_ids": [
+        "atlas_donor_cognition_057",
+        "atlas_donor_services_imported_modules_pkg_001",
+        "atlas_donor_legacy_extraction_001",
+        "atlas_donor_legacy_extraction_002",
+        "atlas_donor_legacy_extraction_005",
+        "atlas_donor_imported_market_context_synthesis_001",
+        "atlas_donor_imported_market_context_synthesis_002",
+        "atlas_donor_imported_market_context_synthesis_003",
+        "atlas_donor_imported_market_context_synthesis_004",
+        "atlas_donor_imported_market_context_synthesis_005"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/serial/__init__.py",
+        "src/nvda_desk/cognition/serial/eligibility.py",
+        "src/nvda_desk/cognition/serial/options_flow.py",
+        "src/nvda_desk/cognition/serial/posture.py",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/services/eligibility_service.py",
+        "src/nvda_desk/services/execution_service.py",
+        "src/nvda_desk/services/options_flow_context_service.py",
+        "src/nvda_desk/services/posture_service.py"
+      ]
+    },
+    {
+      "comparison_record_id": "ACABC-0019",
+      "blueprint_surface": "Serial desk-cognition spine",
+      "comparison_status": "partially_satisfied",
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 30
+      },
+      "atlas_record_count_joined": 30,
+      "active_code_record_count_same_surface_owner": 92,
+      "test_first_queue_action": "extend_existing_test_family_before_code",
+      "proof_tier": "Tier A",
+      "sample_atlas_record_ids": [
+        "atlas_donor_module_002",
+        "atlas_donor_cognition_001",
+        "atlas_donor_cognition_003",
+        "atlas_donor_cognition_004",
+        "atlas_donor_cognition_005",
+        "atlas_donor_cognition_006",
+        "atlas_donor_cognition_007",
+        "atlas_donor_cognition_010",
+        "atlas_donor_cognition_015",
+        "atlas_donor_cognition_017"
+      ],
+      "source_paths_sample": [
+        "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+        "src/nvda_desk/cognition/serial/__init__.py",
+        "src/nvda_desk/cognition/serial/eligibility.py",
+        "src/nvda_desk/cognition/serial/options_flow.py",
+        "src/nvda_desk/cognition/serial/posture.py",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/services/eligibility_service.py",
+        "src/nvda_desk/services/execution_service.py",
+        "src/nvda_desk/services/options_flow_context_service.py",
+        "src/nvda_desk/services/posture_service.py"
+      ]
+    }
+  ],
+  "test_first_plan": {
+    "required_action": "no new test or source mutation required in this ordered replay because row031 and row032 serial evidence already created retained test/source repairs and current targeted proof passes",
+    "proof_families": [
+      "serial_desk_cognition_spine_surface",
+      "serial_desk_cognition_spine_transform_boundary_surface",
+      "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+      "tests/tier_a/serial_recommendation",
+      "tests/tier_b/serial_boundaries"
+    ],
+    "closed_authorities": [
+      "parallel risk independence",
+      "capital deployment authority",
+      "live position management",
+      "broker/order execution",
+      "source ingestion",
+      "exit/close behaviour",
+      "FWD-013 parallel-risk row"
+    ]
+  },
+  "unresolved_native_atlas_record_ids": [],
+  "non_claims": [
+    "Does not claim full donor semantic parity.",
+    "Does not open FWD-013 parallel risk lane.",
+    "Does not open runtime trading, capital deployment, broker execution, or live inventory mutation."
+  ]
+}
