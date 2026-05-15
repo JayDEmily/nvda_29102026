@@ -1,0 +1,86 @@
+{
+  "broader_proof": [
+    "proof_blocks_check_all",
+    "tier_b_pytest",
+    "tier_a_pytest",
+    "git_diff_check"
+  ],
+  "commands": [
+    {
+      "name": "dynamic_coefficient_modifier_authority_surface",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.stdout",
+      "stdout_tail": "configfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 18 items\n\ntests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py . [  5%]\n....                                                                     [ 27%]\ntests/tier_a/config/test_coefficient_modifier_replay_surface.py ..       [ 38%]\ntests/tier_a/modifiers/test_state_conditioned_modifier_surface.py ...... [ 72%]\n.....                                                                    [100%]\n\n============================== 18 passed in 0.68s =============================="
+    },
+    {
+      "name": "modifier_contract_authority_boundaries_surface",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.stdout",
+      "stdout_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/data/fwd010_work/repo\nconfigfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 5 items\n\ntests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py .. [ 40%]\n...                                                                      [100%]\n\n============================== 5 passed in 0.23s ==============================="
+    },
+    {
+      "name": "dynamic_modifier_transform_boundary_surface",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.stdout",
+      "stdout_tail": "============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0\nrootdir: /mnt/data/fwd010_work/repo\nconfigfile: pyproject.toml\nplugins: json-report-1.5.0, anyio-4.13.0, asyncio-1.3.0, ddtrace-4.4.0, cov-7.0.0, metadata-3.1.1, Faker-40.1.2\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 3 items\n\ntests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py . [ 33%]\n..                                                                       [100%]\n\n============================== 3 passed in 0.09s ==============================="
+    },
+    {
+      "name": "targeted_dynamic_pytest",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.stdout",
+      "stdout_tail": "..........................                                               [100%]\n26 passed in 0.66s"
+    },
+    {
+      "name": "git_diff_check",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.stdout",
+      "stdout_tail": ""
+    },
+    {
+      "name": "proof_blocks_check_all",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.stdout",
+      "stdout_tail": "proof_blocks_check_all=PASS count=46"
+    },
+    {
+      "name": "tier_b_pytest",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.stdout",
+      "stdout_tail": ".................................................                        [100%]\n49 passed in 23.98s"
+    },
+    {
+      "name": "tier_a_pytest",
+      "status": "0",
+      "status_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.status",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.stderr",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.stdout",
+      "stdout_tail": "........................................................................ [ 12%]\n........................................................................ [ 25%]\n........................................................................ [ 38%]\n........................................................................ [ 51%]\n........................................................................ [ 64%]\n........................................................................ [ 77%]\n........................................................................ [ 90%]\n........................................................                 [100%]\n560 passed in 18.61s"
+    }
+  ],
+  "created_utc": "2026-05-15T12:00:00+10:00",
+  "side_effects": [
+    "Tier A pytest rewrote var/vocabulary/synonym_candidates.json to a fixture fingerprint; it was inspected as a generated side effect and reset before commit."
+  ],
+  "status": "proof_passed_current",
+  "surface": "FWD-010 / 5.9 Dynamic coefficient and modifier authority",
+  "targeted_proof_blocks": [
+    "dynamic_coefficient_modifier_authority_surface",
+    "modifier_contract_authority_boundaries_surface",
+    "dynamic_modifier_transform_boundary_surface"
+  ],
+  "updated_after_broader_proof_utc": "2026-05-15T12:20:00+10:00"
+}
