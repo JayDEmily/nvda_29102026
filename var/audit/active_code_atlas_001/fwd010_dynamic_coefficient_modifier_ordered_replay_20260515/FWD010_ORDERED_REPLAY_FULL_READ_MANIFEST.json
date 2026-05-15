@@ -1,0 +1,1069 @@
+{
+  "branch": "worker/fwd010-dynamic-coefficient-authority-20260515",
+  "created_utc": "2026-05-15T12:40:00+10:00",
+  "entries": [
+    {
+      "byte_count": 8827,
+      "full_read": true,
+      "line_count": 184,
+      "mutation_relevance": "evidence_only",
+      "path": "AGENTS.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da"
+    },
+    {
+      "byte_count": 99334,
+      "full_read": true,
+      "line_count": 707,
+      "mutation_relevance": "evidence_only",
+      "path": "PLANS.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672"
+    },
+    {
+      "byte_count": 301693,
+      "full_read": true,
+      "line_count": 1933,
+      "mutation_relevance": "ledger_update",
+      "path": "ROADMAP_LEDGER.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "63bb168275ad46412b8caacfc67639e5df4878fc38f07ea0dd86c822a4c886cb"
+    },
+    {
+      "byte_count": 3465,
+      "full_read": true,
+      "line_count": 84,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2"
+    },
+    {
+      "byte_count": 4989,
+      "full_read": true,
+      "line_count": 117,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee"
+    },
+    {
+      "byte_count": 1084,
+      "full_read": true,
+      "line_count": 23,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614"
+    },
+    {
+      "byte_count": 5346,
+      "full_read": true,
+      "line_count": 142,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae"
+    },
+    {
+      "byte_count": 418,
+      "full_read": true,
+      "line_count": 13,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8"
+    },
+    {
+      "byte_count": 5680,
+      "full_read": true,
+      "line_count": 159,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d"
+    },
+    {
+      "byte_count": 392,
+      "full_read": true,
+      "line_count": 13,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed"
+    },
+    {
+      "byte_count": 7552,
+      "full_read": true,
+      "line_count": 186,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540"
+    },
+    {
+      "byte_count": 3529,
+      "full_read": true,
+      "line_count": 51,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551"
+    },
+    {
+      "byte_count": 4080,
+      "full_read": true,
+      "line_count": 81,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c"
+    },
+    {
+      "byte_count": 918,
+      "full_read": true,
+      "line_count": 21,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d"
+    },
+    {
+      "byte_count": 5587,
+      "full_read": true,
+      "line_count": 147,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07"
+    },
+    {
+      "byte_count": 34740,
+      "full_read": true,
+      "line_count": 342,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b"
+    },
+    {
+      "byte_count": 10717,
+      "full_read": true,
+      "line_count": 264,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045"
+    },
+    {
+      "byte_count": 12060,
+      "full_read": true,
+      "line_count": 120,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8"
+    },
+    {
+      "byte_count": 8442,
+      "full_read": true,
+      "line_count": 202,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944"
+    },
+    {
+      "byte_count": 401,
+      "full_read": true,
+      "line_count": 13,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1"
+    },
+    {
+      "byte_count": 5489,
+      "full_read": true,
+      "line_count": 187,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe"
+    },
+    {
+      "byte_count": 2617,
+      "full_read": true,
+      "line_count": 39,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a"
+    },
+    {
+      "byte_count": 1944,
+      "full_read": true,
+      "line_count": 50,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8"
+    },
+    {
+      "byte_count": 2726,
+      "full_read": true,
+      "line_count": 33,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b"
+    },
+    {
+      "byte_count": 40449,
+      "full_read": true,
+      "line_count": 758,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a"
+    },
+    {
+      "byte_count": 25393,
+      "full_read": true,
+      "line_count": 195,
+      "mutation_relevance": "evidence_only",
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "abccce77e4b3e7847582b9521f47c2e3cf78918221f0bd4e002878de270932e6"
+    },
+    {
+      "byte_count": 3764,
+      "full_read": true,
+      "line_count": 76,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/AGENTS.override.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2"
+    },
+    {
+      "byte_count": 33842,
+      "full_read": true,
+      "line_count": 898,
+      "mutation_relevance": "evidence_only",
+      "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c7f661d3ae6270b17a1fea45aa116561fd724f4fbae317ef0e1c7d2df009b3b1"
+    },
+    {
+      "byte_count": 45809,
+      "full_read": true,
+      "line_count": 807,
+      "mutation_relevance": "evidence_only",
+      "path": "config/proof_blocks.yaml",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995"
+    },
+    {
+      "byte_count": 221383,
+      "full_read": true,
+      "line_count": 3561,
+      "mutation_relevance": "evidence_only",
+      "path": "config/retained_test_registry.yaml",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25"
+    },
+    {
+      "byte_count": 3220,
+      "full_read": true,
+      "line_count": 82,
+      "mutation_relevance": "evidence_only",
+      "path": "config/coefficient_authority.v1.yaml",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "386e58544973991b5443a5ab9bde8679525f95c332482fa4a6182ca90eb8fa43"
+    },
+    {
+      "byte_count": 39,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "config/runtime_settings.example.yaml",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "a5d5b3cc6fbf3466589747054fdc6124553b21b0ee7e4241bea2f88603a8f30d"
+    },
+    {
+      "byte_count": 2192893,
+      "full_read": true,
+      "line_count": 58515,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/atlas_surface_slices/slices/dynamic_coefficient_and_modifier_authority.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "5cc79428f54d26b9ab7caf0c1cc1a5aff53945480085ed5eaa7bab82816361be"
+    },
+    {
+      "byte_count": 187370,
+      "full_read": true,
+      "line_count": 5168,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "0a8c4384addfebd1551d7b8e54c43242bc1e1f74b39db7bd4da636f187cdc2ce"
+    },
+    {
+      "byte_count": 59918,
+      "full_read": true,
+      "line_count": 1273,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121"
+    },
+    {
+      "byte_count": 2430,
+      "full_read": true,
+      "line_count": 65,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_BRIDGE_COMPARISON_001_SUMMARY.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "fd853002c924f4f03f3c6e3a9d9f9506982d9a6250b12eba38f989a9b4360419"
+    },
+    {
+      "byte_count": 7064,
+      "full_read": true,
+      "line_count": 69,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_BRIDGE_COMPARISON_001_TEST_FIRST_QUEUE.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "13b2796ec7a251cc55bc5bdaf71be3f373bb99a1dffa2e03eab56b20c474ad08"
+    },
+    {
+      "byte_count": 7885,
+      "full_read": true,
+      "line_count": 81,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_QUEUE_001.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "936ba346029d0d25a6fa81b116380a6c15b9b5a943d019b305894064fc497c21"
+    },
+    {
+      "byte_count": 40002,
+      "full_read": true,
+      "line_count": 1766,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_FULL_READ_MANIFEST.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "7dc0e33174eb51ddfc92db3a7f591029d9b650f70a10642662a2e6e66723f89b"
+    },
+    {
+      "byte_count": 58111,
+      "full_read": true,
+      "line_count": 2180,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_028_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_NEW_TEST_FAMILY_FULL_READ_MANIFEST.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "edc13da9cab14b1851c82a2ba0011f6a29979cc05da699f705c82180aab8e6ad"
+    },
+    {
+      "byte_count": 57030,
+      "full_read": true,
+      "line_count": 2212,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_029_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_TRANSFORM_REQUIRED_FULL_READ_MANIFEST.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "2ca15b6d3c55f251f54ebcddef894deb4beca5f04c080693247d71996ad33012"
+    },
+    {
+      "byte_count": 4111,
+      "full_read": true,
+      "line_count": 95,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/dynamic_coefficient_modifier_authority_active_code_atlas_records.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "22176c1efe070cb64077c4227209d4a82c50ee25cfb0e959d58adb06d5b6330e"
+    },
+    {
+      "byte_count": 5368,
+      "full_read": true,
+      "line_count": 67,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e395b6d5474720d86dd721d85f2f150426078f3fbcc9228345793213e407c234"
+    },
+    {
+      "byte_count": 4435,
+      "full_read": true,
+      "line_count": 90,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/dynamic_modifier_contract_authority_boundaries_active_code_atlas_records.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "b6d43a596e987534805d45d6d8424caac4af195c313374174729293df860310c"
+    },
+    {
+      "byte_count": 2886,
+      "full_read": true,
+      "line_count": 59,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_028_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "adca0d81d029872739217181b43bae43bc47e2e62d92eba47d0d19c5bc80296d"
+    },
+    {
+      "byte_count": 4945,
+      "full_read": true,
+      "line_count": 126,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/dynamic_modifier_transform_boundary_active_code_atlas_records.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e6eed51ec8fe35fc45bca5907fe2ec4b84ce1729f9d6fee68a995ceeaf8bcf0b"
+    },
+    {
+      "byte_count": 2273,
+      "full_read": true,
+      "line_count": 49,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_029_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "954ae7e3f96edc2508fdd0a984e5a6ed874e9310dce272869ad1bbf2a61791a6"
+    },
+    {
+      "byte_count": 5635,
+      "full_read": true,
+      "line_count": 104,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/roadmap_next_three_gates_5_4_5_9_5_12/ROADMAP_NEXT_THREE_HELD_GATES_5_4_5_9_5_12_BRANCH_001_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "63ed0bfd31ff7a10ce936eccd2e6defe6ed613768e328823232c99df23e63ec5"
+    },
+    {
+      "byte_count": 7275,
+      "full_read": true,
+      "line_count": 180,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/config/coefficient_authority.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "562ce89401e1256a4254371803610062a68fc6847f727c950570e62d542ab5b0"
+    },
+    {
+      "byte_count": 1502,
+      "full_read": true,
+      "line_count": 42,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/config/config_surface.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "10c3483b0404259ea085d37dc058e6b29f87f42915065a885b23562ea97203fc"
+    },
+    {
+      "byte_count": 1228,
+      "full_read": true,
+      "line_count": 37,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/config/runtime_settings.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c6fceea1847732e7155fa8b744dd035f69be1f58e08f795133f925a710ddf1e1"
+    },
+    {
+      "byte_count": 409,
+      "full_read": true,
+      "line_count": 15,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/cognition/modifiers/__init__.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9b5d71c1f49a09300a7e1e0c5ff0a72fc0f696a4d2326bbec97d57c52526c290"
+    },
+    {
+      "byte_count": 4268,
+      "full_read": true,
+      "line_count": 110,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/cognition/modifiers/state_conditioned.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "0395c53ed9e5800ad89611b84bc84c286220daeaa454aa41fde9b11dfe8ac37b"
+    },
+    {
+      "byte_count": 8892,
+      "full_read": true,
+      "line_count": 213,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/contracts/coefficient_authority.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "798022bb668940b645b3daf2bd78fb86e9944af82476809ec771b1c012d016d9"
+    },
+    {
+      "byte_count": 3092,
+      "full_read": true,
+      "line_count": 83,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/contracts/modifiers.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "c7e5be4813b3407243bc8a7fe8fe3e87186173c9548d96b4d99bde3aa6b8d13f"
+    },
+    {
+      "byte_count": 745,
+      "full_read": true,
+      "line_count": 26,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/contracts/posture.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "58e8ab3259b9b1c0cab55a099c53f19a7ab7e963507910bf2ce8e1774f18522f"
+    },
+    {
+      "byte_count": 337,
+      "full_read": true,
+      "line_count": 10,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/services/coefficient_authority_service.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "8b3b87abc4d6ccc6de7d3cb698acf5a2403cb29ed7ed25702b3f52c0f530f97d"
+    },
+    {
+      "byte_count": 425,
+      "full_read": true,
+      "line_count": 11,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/domain/posture/modifier_application.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "407a04549bfc30628c7eaeca1d56f0df9b2af1363c5557002cf948e072df5b6b"
+    },
+    {
+      "byte_count": 2223,
+      "full_read": true,
+      "line_count": 54,
+      "mutation_relevance": "evidence_only",
+      "path": "src/nvda_desk/config/bundle_loader.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "46047c59d9bdca7fcf5841e7336482aee2dca4db442eaf528466a44eb0141001"
+    },
+    {
+      "byte_count": 3548,
+      "full_read": true,
+      "line_count": 62,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/config/test_config_authority_surface.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "3daaba8ffabd5b362e5e105d5103ee5adf8cd7acc721b3d5e430d1f5be7ac2fc"
+    },
+    {
+      "byte_count": 6000,
+      "full_read": true,
+      "line_count": 140,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "3194c8c48ad326f5c4d4a0ca08ee985f3b82e5e7f189ddb42f7d827b9013b309"
+    },
+    {
+      "byte_count": 1813,
+      "full_read": true,
+      "line_count": 40,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/config/test_coefficient_modifier_replay_surface.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "3fd8a87689c8ce48ad4b428325b641c27c7bfeddd61ab28ce0ebc80453564a86"
+    },
+    {
+      "byte_count": 11895,
+      "full_read": true,
+      "line_count": 256,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "44768f4241b6e645214441da98a85ae5793f11ab82e090c330e1f0ec3a6f3d4d"
+    },
+    {
+      "byte_count": 5010,
+      "full_read": true,
+      "line_count": 142,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "3528e002201d1e26dc977017a2a250b6566bf159a7be02b10ee95bb8526c3d37"
+    },
+    {
+      "byte_count": 3994,
+      "full_read": true,
+      "line_count": 102,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "a3016ac2a2b1ce3bec322c1a13bca32c2c38eadb9407dd29ceb97f273a86df4a"
+    },
+    {
+      "byte_count": 3019,
+      "full_read": true,
+      "line_count": 59,
+      "mutation_relevance": "evidence_only",
+      "path": "tests/fixtures/sequence8/coefficient_modifier_authority_specimen.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "f97521e486ed82e08a94230da880e848f261c2fa0d4be4f6adb99249b89b44b2"
+    },
+    {
+      "byte_count": 26234,
+      "full_read": true,
+      "line_count": 614,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_THREE_WAY_COMPARISON_REPORT.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "dc370e1e5392c30a8c92c7674cdefa4d4d390ca2036af28fc4396b3b63054f15"
+    },
+    {
+      "byte_count": 8503,
+      "full_read": true,
+      "line_count": 86,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "946bee879219261f8816b91c7a779821eb182bc7979d1342881931e929c499f5"
+    },
+    {
+      "byte_count": 4059,
+      "full_read": true,
+      "line_count": 74,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_DYNAMIC_COEFFICIENT_MODIFIER_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9f38af784312d26b65b9d17c65a536d286f24f5c3d2a8aeb35d7a54e76aa13da"
+    },
+    {
+      "byte_count": 554,
+      "full_read": true,
+      "line_count": 8,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_BOUNDARY_RECEIPT.md",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "6e15b1cd3a7d23745ea7dffcdb25d8927d844aadedf07b15adda605a2c1a98b4"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 1261,
+      "full_read": true,
+      "line_count": 17,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_coefficient_modifier_authority_surface.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9be36cbeaffe47a7ddfe6cd8c5292245a8b00e1f17cbdbbf3b6b0105df24760c"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 881,
+      "full_read": true,
+      "line_count": 14,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/dynamic_modifier_transform_boundary_surface.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "14eabe6f6b956d54df92bf66147d0242e64c7c032439ee09e27d60631a2ea9ea"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_after_manifest.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_after_manifest.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_after_manifest.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_final.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_final.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_diff_check_final.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_precommit.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_precommit.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 200,
+      "full_read": true,
+      "line_count": 3,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_precommit.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "4614e1e33a00b862553624b7116e230130560bac261937cdf91beb5252b10273"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_short.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_short.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 96,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/git_status_short.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "458b8dac16b3a632b2ec50f0ccb5f7f8adda3cbcf5bf43efd473c9b62fe83f51"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 875,
+      "full_read": true,
+      "line_count": 14,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/modifier_contract_authority_boundaries_surface.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "a540bdfd1223335ef92df454f75a8360ff7d1a7a134cd76d90916ca14792a3a6"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 37,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/proof_blocks_check_all.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "70ba7f39fddf1a4051d9fcafdf425166d0e4b559318caa2c41db8be0ec72df20"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 99,
+      "full_read": true,
+      "line_count": 2,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/targeted_dynamic_pytest.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "378eb421133f232b2004d871e2d364df2786de31a2fed15d4af4f91288e260ed"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 661,
+      "full_read": true,
+      "line_count": 9,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_a_pytest.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "0f5db13299d76b7605ecabd5d0c437ae5ba3eb0427a21b0b95987374f5247e60"
+    },
+    {
+      "byte_count": 2,
+      "full_read": true,
+      "line_count": 1,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.status",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "byte_count": 0,
+      "full_read": true,
+      "line_count": 0,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.stderr",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "byte_count": 100,
+      "full_read": true,
+      "line_count": 2,
+      "mutation_relevance": "evidence_only",
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/reports/tier_b_pytest.stdout",
+      "read_method": "current ordered-replay file intake",
+      "reason": "FWD-010 ordered replay authority/source/test/evidence intake",
+      "sha256": "5ae799ea04676ac086540752fcd28e1a403434030fefb5cf70a7e4f2a0513219"
+    }
+  ],
+  "missing_paths": [],
+  "scope": "ordered replay from latest packaged repo; FWD-008/FWD-009 not reopened; FWD-011 not opened",
+  "surface": "FWD-010 / 5.9 Dynamic coefficient and modifier authority"
+}

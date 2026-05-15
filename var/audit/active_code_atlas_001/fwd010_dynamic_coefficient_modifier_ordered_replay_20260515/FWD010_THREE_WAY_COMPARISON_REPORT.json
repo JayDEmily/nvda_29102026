@@ -1,0 +1,614 @@
+{
+  "branch": "worker/fwd010-dynamic-coefficient-authority-20260515",
+  "bridge_native_satisfaction_status_counts": {
+    "missing": 84,
+    "partially_satisfied": 66,
+    "transform_required": 43
+  },
+  "comparison_status_counts": {
+    "partially_satisfied": 150,
+    "transform_required": 43
+  },
+  "counts": {
+    "comparison_groups": 3,
+    "current_covered_native_atlas_ids": 193,
+    "current_unresolved_native_atlas_ids": 0,
+    "direct_native_atlas_links": 0,
+    "grouped_satisfaction_overlay_count": 193,
+    "primary_active_code_records": 3,
+    "queue_records": 3,
+    "selected_native_bridge_records": 193
+  },
+  "created_utc": "2026-05-15T12:00:00+10:00",
+  "decision": "bounded_closed_current",
+  "decision_basis": [
+    "FWD-010 was opened by explicit user authority from the latest packaged repo and FWD-008/FWD-009 were not reopened.",
+    "Current source/test/config evidence for row 5.9 was compared against the current surface slice, Bridge comparison groups, queue records, and prior active-code Atlas surface records.",
+    "All 193 selected native Dynamic coefficient and modifier authority Atlas IDs are covered by direct active-code comparison linkage or grouped Bridge/native satisfaction overlay evidence.",
+    "The active repo proof blocks for dynamic coefficient/modifier replay, modifier contract authority boundaries, and transform boundary all pass in the current checkout.",
+    "Comparison status counts and Bridge-native satisfaction status counts are retained separately.",
+    "No source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice/vocabulary mutation was made."
+  ],
+  "group_evidence": [
+    {
+      "active_code_record_ids": [
+        "ACATP-027-0001",
+        "ACATP-027-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "partially_satisfied": 66
+      },
+      "comparison_record_id": "ACABC-0024",
+      "comparison_status": "partially_satisfied",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_calibration_001",
+        "atlas_donor_calibration_002",
+        "atlas_donor_calibration_003",
+        "atlas_donor_calibration_006",
+        "atlas_donor_calibration_007",
+        "atlas_donor_config_002",
+        "atlas_donor_config_003",
+        "atlas_donor_config_004",
+        "atlas_donor_config_models_001",
+        "atlas_donor_config_models_003",
+        "atlas_donor_config_models_008",
+        "atlas_donor_config_models_011",
+        "atlas_donor_config_models_012",
+        "atlas_donor_config_models_013",
+        "atlas_donor_config_models_014",
+        "atlas_donor_config_models_016",
+        "atlas_donor_config_models_017",
+        "atlas_donor_config_models_018",
+        "atlas_donor_config_models_023",
+        "atlas_donor_config_models_025",
+        "atlas_donor_config_models_030",
+        "atlas_donor_config_models_032",
+        "atlas_donor_config_models_033",
+        "atlas_donor_config_models_034",
+        "atlas_donor_config_models_037",
+        "atlas_donor_config_models_038",
+        "atlas_donor_config_models_040",
+        "atlas_donor_config_models_046",
+        "atlas_donor_config_models_047",
+        "atlas_donor_config_models_048",
+        "atlas_donor_config_runtime_001",
+        "atlas_donor_config_runtime_002",
+        "atlas_donor_config_runtime_003",
+        "atlas_donor_service_config_surface_005",
+        "atlas_donor_service_config_surface_006",
+        "atlas_donor_service_config_surface_008",
+        "atlas_donor_service_config_surface_009",
+        "atlas_donor_service_config_surface_016",
+        "atlas_donor_service_config_surface_019",
+        "atlas_donor_state_conditioned_modifier_service_001",
+        "atlas_donor_state_conditioned_modifier_service_002",
+        "atlas_donor_state_conditioned_modifier_service_003",
+        "atlas_donor_state_conditioned_modifier_service_004",
+        "atlas_donor_state_conditioned_modifier_service_005",
+        "atlas_donor_state_conditioned_modifier_service_006",
+        "atlas_donor_state_conditioned_modifier_service_007",
+        "atlas_donor_state_conditioned_modifier_service_008",
+        "atlas_donor_state_conditioned_modifier_service_009",
+        "atlas_donor_state_conditioned_modifier_service_010",
+        "atlas_donor_state_conditioned_modifier_service_011",
+        "atlas_donor_state_conditioned_modifier_service_012",
+        "atlas_donor_state_policy_001",
+        "atlas_donor_state_policy_003",
+        "atlas_donor_state_policy_004",
+        "atlas_donor_state_policy_005",
+        "atlas_donor_state_policy_006",
+        "atlas_donor_state_policy_008",
+        "atlas_donor_state_policy_009",
+        "atlas_donor_state_policy_010",
+        "atlas_donor_state_policy_011",
+        "atlas_donor_state_policy_052",
+        "atlas_donor_state_policy_054",
+        "atlas_donor_state_policy_055",
+        "atlas_donor_state_policy_056",
+        "atlas_donor_state_policy_057",
+        "atlas_donor_state_policy_058"
+      ],
+      "grouped_satisfaction_overlay_count": 66,
+      "native_record_count": 66,
+      "native_slice_status_groups_used_for_record_ids": [
+        "partially_satisfied"
+      ],
+      "proof_tier": "Tier A",
+      "queue_comparison_status": "partially_satisfied",
+      "queue_record_id": "ACATQ-0024",
+      "required_action": "extend_existing_test_family_before_code",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    },
+    {
+      "active_code_record_ids": [
+        "ACATP-028-0001",
+        "ACATP-028-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "missing": 84
+      },
+      "comparison_record_id": "ACABC-0023",
+      "comparison_status": "partially_satisfied",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_calibration_024",
+        "atlas_donor_calibration_025",
+        "atlas_donor_calibration_027",
+        "atlas_donor_calibration_029",
+        "atlas_donor_calibration_031",
+        "atlas_donor_calibration_032",
+        "atlas_donor_calibration_033",
+        "atlas_donor_config_005",
+        "atlas_donor_config_006",
+        "atlas_donor_config_007",
+        "atlas_donor_config_models_002",
+        "atlas_donor_config_models_004",
+        "atlas_donor_config_models_005",
+        "atlas_donor_config_models_006",
+        "atlas_donor_config_models_007",
+        "atlas_donor_config_models_009",
+        "atlas_donor_config_models_010",
+        "atlas_donor_config_models_020",
+        "atlas_donor_config_models_021",
+        "atlas_donor_config_models_026",
+        "atlas_donor_config_models_028",
+        "atlas_donor_config_models_035",
+        "atlas_donor_config_models_036",
+        "atlas_donor_config_models_039",
+        "atlas_donor_config_models_041",
+        "atlas_donor_config_models_042",
+        "atlas_donor_config_models_043",
+        "atlas_donor_config_models_044",
+        "atlas_donor_config_models_045",
+        "atlas_donor_service_config_surface_002",
+        "atlas_donor_service_config_surface_003",
+        "atlas_donor_service_config_surface_004",
+        "atlas_donor_service_config_surface_007",
+        "atlas_donor_service_config_surface_010",
+        "atlas_donor_service_config_surface_011",
+        "atlas_donor_service_config_surface_012",
+        "atlas_donor_service_config_surface_013",
+        "atlas_donor_service_config_surface_014",
+        "atlas_donor_service_config_surface_015",
+        "atlas_donor_service_config_surface_017",
+        "atlas_donor_service_config_surface_020",
+        "atlas_donor_state_conditioned_modifier_service_013",
+        "atlas_donor_state_conditioned_modifier_service_014",
+        "atlas_donor_state_conditioned_modifier_service_015",
+        "atlas_donor_state_conditioned_modifier_service_016",
+        "atlas_donor_state_policy_012",
+        "atlas_donor_state_policy_013",
+        "atlas_donor_state_policy_014",
+        "atlas_donor_state_policy_015",
+        "atlas_donor_state_policy_016",
+        "atlas_donor_state_policy_017",
+        "atlas_donor_state_policy_018",
+        "atlas_donor_state_policy_019",
+        "atlas_donor_state_policy_020",
+        "atlas_donor_state_policy_021",
+        "atlas_donor_state_policy_022",
+        "atlas_donor_state_policy_023",
+        "atlas_donor_state_policy_024",
+        "atlas_donor_state_policy_025",
+        "atlas_donor_state_policy_026",
+        "atlas_donor_state_policy_027",
+        "atlas_donor_state_policy_028",
+        "atlas_donor_state_policy_029",
+        "atlas_donor_state_policy_030",
+        "atlas_donor_state_policy_031",
+        "atlas_donor_state_policy_032",
+        "atlas_donor_state_policy_033",
+        "atlas_donor_state_policy_034",
+        "atlas_donor_state_policy_035",
+        "atlas_donor_state_policy_036",
+        "atlas_donor_state_policy_037",
+        "atlas_donor_state_policy_038",
+        "atlas_donor_state_policy_039",
+        "atlas_donor_state_policy_040",
+        "atlas_donor_state_policy_041",
+        "atlas_donor_state_policy_042",
+        "atlas_donor_state_policy_043",
+        "atlas_donor_state_policy_044",
+        "atlas_donor_state_policy_045",
+        "atlas_donor_state_policy_046",
+        "atlas_donor_state_policy_047",
+        "atlas_donor_state_policy_048",
+        "atlas_donor_state_policy_049",
+        "atlas_donor_state_policy_050"
+      ],
+      "grouped_satisfaction_overlay_count": 84,
+      "native_record_count": 84,
+      "native_slice_status_groups_used_for_record_ids": [
+        "missing"
+      ],
+      "proof_tier": "Tier A",
+      "queue_comparison_status": "partially_satisfied",
+      "queue_record_id": "ACATQ-0023",
+      "required_action": "write_new_test_family_before_code",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    },
+    {
+      "active_code_record_ids": [
+        "ACATP-029-0001",
+        "ACATP-029-0001"
+      ],
+      "bridge_native_satisfaction_status_counts": {
+        "transform_required": 43
+      },
+      "comparison_record_id": "ACABC-0022",
+      "comparison_status": "transform_required",
+      "direct_native_atlas_record_ids": [],
+      "direct_native_link_count": 0,
+      "group_resolved_native_atlas_record_ids": [
+        "atlas_donor_calibration_004",
+        "atlas_donor_calibration_005",
+        "atlas_donor_calibration_008",
+        "atlas_donor_calibration_010",
+        "atlas_donor_calibration_012",
+        "atlas_donor_calibration_014",
+        "atlas_donor_calibration_015",
+        "atlas_donor_calibration_016",
+        "atlas_donor_calibration_017",
+        "atlas_donor_calibration_018",
+        "atlas_donor_calibration_019",
+        "atlas_donor_calibration_020",
+        "atlas_donor_calibration_021",
+        "atlas_donor_calibration_022",
+        "atlas_donor_calibration_023",
+        "atlas_donor_calibration_026",
+        "atlas_donor_calibration_028",
+        "atlas_donor_calibration_030",
+        "atlas_donor_calibration_034",
+        "atlas_donor_calibration_035",
+        "atlas_donor_calibration_036",
+        "atlas_donor_calibration_037",
+        "atlas_donor_calibration_038",
+        "atlas_donor_cognition_037",
+        "atlas_donor_cognition_051",
+        "atlas_donor_cognition_runtime_service_007",
+        "atlas_donor_eval_015",
+        "atlas_donor_eval_017",
+        "atlas_donor_replay_compare_service_010",
+        "atlas_donor_review_016",
+        "atlas_donor_review_explanation_service_016",
+        "atlas_donor_service_carry_replay_004",
+        "atlas_donor_slv_experiments_010",
+        "atlas_donor_state_conditioned_modifier_service_017",
+        "atlas_donor_state_conditioned_modifier_service_018",
+        "atlas_donor_state_conditioned_modifier_service_019",
+        "atlas_donor_state_conditioned_modifier_service_020",
+        "atlas_donor_state_conditioned_modifier_service_021",
+        "atlas_donor_state_conditioned_modifier_service_022",
+        "atlas_donor_state_conditioned_modifier_service_023",
+        "atlas_donor_state_conditioned_modifier_service_024",
+        "atlas_donor_state_conditioned_modifier_service_025",
+        "atlas_donor_state_conditioned_modifier_service_026"
+      ],
+      "grouped_satisfaction_overlay_count": 43,
+      "native_record_count": 43,
+      "native_slice_status_groups_used_for_record_ids": [
+        "transform_required"
+      ],
+      "proof_tier": "Tier A",
+      "queue_comparison_status": "transform_required",
+      "queue_record_id": "ACATQ-0022",
+      "required_action": "write_new_test_family_before_code",
+      "status_validation": {
+        "comparison_status_distinct_from_bridge_native_status_counts": true,
+        "comparison_status_matches_queue": true
+      }
+    }
+  ],
+  "inputs": {
+    "active_code_records": [
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/dynamic_coefficient_modifier_authority_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/dynamic_modifier_contract_authority_boundaries_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/dynamic_modifier_transform_boundary_active_code_atlas_records.json"
+    ],
+    "bridge_comparison": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_bridge_comparison.json",
+    "prior_receipts": [
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_RECEIPT.md",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_028_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_029_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md",
+      "var/audit/roadmap_next_three_gates_5_4_5_9_5_12/ROADMAP_NEXT_THREE_HELD_GATES_5_4_5_9_5_12_BRANCH_001_RECEIPT.md"
+    ],
+    "queue": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+    "surface_slice": "var/audit/atlas_surface_slices/slices/dynamic_coefficient_and_modifier_authority.json"
+  },
+  "non_claims": [
+    "Does not upgrade the whole 5.9 blueprint implementation-truth status beyond the bounded current row evidence.",
+    "Does not open capital deployment, source-data ingestion, hidden strategy change, broker/order execution, playbook import, or unbounded live self-tuning authority.",
+    "Does not proceed to FWD-011."
+  ],
+  "primary_active_code_records": [
+    {
+      "active_code_atlas_record_id": "ACATP-027-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 99,
+          "line_start": 77,
+          "path": "src/nvda_desk/cognition/modifiers/state_conditioned.py"
+        },
+        {
+          "line_end": 101,
+          "line_start": 56,
+          "path": "src/nvda_desk/config/coefficient_authority.py"
+        },
+        {
+          "line_end": 40,
+          "line_start": 6,
+          "path": "src/nvda_desk/contracts/modifiers.py"
+        },
+        {
+          "line_end": 26,
+          "line_start": 21,
+          "path": "src/nvda_desk/contracts/posture.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 256,
+          "line_start": 236,
+          "path": "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py"
+        }
+      ],
+      "adjudication_notes": [
+        "The existing Tier A state-conditioned modifier family was extended before source repair to prove modifier application does not share nested posture-envelope state with its input posture object.",
+        "The pre-repair targeted proof failed because apply_posture_modifiers shallow-copied local_envelope, allowing mutation of nested output payloads to alter the input posture envelope.",
+        "The bounded repair added a deep copy at the modifier application boundary and repaired the clean-bundle proof command for the existing dynamic coefficient/modifier proof block."
+      ],
+      "classification": "read_adjudicated_surface_record",
+      "linked_atlas_record_ids": [
+        "atlas_donor_dynamic_modifier_partial_cluster"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0024",
+        "ACABC-0024"
+      ],
+      "non_claims": [
+        "Does not prove every coefficient/modifier donor obligation.",
+        "Does not authorise capital deployment, source-data ingestion, hidden strategy changes, or unbounded runtime mutation.",
+        "Does not upgrade the whole 5.9 surface to implemented.",
+        "Does not change dependencies, original Atlas/Bridge JSON, generated Atlas slices, or vocabulary data."
+      ],
+      "normative_evidence": [
+        {
+          "line_end": 48,
+          "line_start": 41,
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md"
+        },
+        {
+          "line_end": 286,
+          "line_start": 271,
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "line_end": 459,
+          "line_start": 443,
+          "path": "config/proof_blocks.yaml"
+        },
+        {
+          "line_end": 172,
+          "line_start": 153,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "line_end": 3152,
+          "line_start": 3151,
+          "path": "config/retained_test_registry.yaml"
+        }
+      ],
+      "record_status": "existing_tier_a_family_extension_with_bounded_source_repair",
+      "source_file": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface/dynamic_coefficient_modifier_authority_active_code_atlas_records.json",
+      "surface": "Dynamic coefficient and modifier authority",
+      "title": "State-conditioned modifier application detaches nested posture envelope state"
+    },
+    {
+      "active_behaviour_summary": "Modifier runtime packets and replay receipts remain Pydantic extra-forbid contract carriers. They reject top-level execution/capital authority fields and now detach active modifier IDs, policy IDs, resolved surfaces, closed authority classes, and nested resolved-coefficient lineage state from caller-owned inputs.",
+      "active_code_atlas_record_id": "ACATP-028-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 83,
+          "line_start": 9,
+          "path": "src/nvda_desk/contracts/modifiers.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 142,
+          "line_start": 1,
+          "path": "tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py"
+        }
+      ],
+      "classification": "read_adjudicated_surface_record",
+      "closed_boundaries_confirmed": [
+        "no broker execution authority admitted",
+        "no capital sizing authority admitted",
+        "no source ingestion authority admitted",
+        "no live self-tuning authority admitted",
+        "no original Atlas/Bridge JSON mutated",
+        "generated all-surface Atlas remains navigation-only"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_dynamic_modifier_contract_cluster"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0023",
+        "ACABC-0023"
+      ],
+      "normative_evidence": [
+        {
+          "line_end": 48,
+          "line_start": 41,
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md"
+        },
+        {
+          "line_end": 286,
+          "line_start": 271,
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "line_end": 472,
+          "line_start": 461,
+          "path": "config/proof_blocks.yaml"
+        },
+        {
+          "line_end": 3036,
+          "line_start": 3018,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "line_end": 3087,
+          "line_start": 3078,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "line_end": 3171,
+          "line_start": 3170,
+          "path": "config/retained_test_registry.yaml"
+        }
+      ],
+      "record_status": "new_tier_a_family_with_bounded_source_repair",
+      "source_file": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/dynamic_modifier_contract_authority_boundaries_active_code_atlas_records.json",
+      "surface": "Dynamic coefficient and modifier authority",
+      "test_first_evidence": {
+        "failure_summary": "New Tier A family failed before source repair because ModifierRuntimePacket and ModifierReplayReceipt retained caller-owned nested ResolvedCoefficientValue instances whose modifier_inputs could be mutated after packet or receipt construction. The bounded repair detaches coefficient lineage lists and nested coefficient models on contract construction.",
+        "post_repair_result": "0",
+        "post_repair_status_path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/reports/modifier_contract_authority_boundaries_post_repair.status",
+        "pre_repair_result": "1",
+        "pre_repair_status_path": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_new_test_family/reports/modifier_contract_authority_boundaries_pre_repair.status"
+      },
+      "title": "Modifier contracts reject closed authority and detach caller-owned coefficient lineage"
+    },
+    {
+      "active_behaviour_summary": "The native dynamic coefficient/modifier surface remains a lean coefficient-authority and modifier-contract implementation. Selected active files do not import donor schema/service stacks, do not redeclare selected donor state-policy grammar classes, and compatibility wrappers forward only to native owners.",
+      "active_code_atlas_record_id": "ACATP-029-0001",
+      "active_source_evidence": [
+        {
+          "line_end": 15,
+          "line_start": 1,
+          "path": "src/nvda_desk/cognition/modifiers/__init__.py"
+        },
+        {
+          "line_end": 110,
+          "line_start": 1,
+          "path": "src/nvda_desk/cognition/modifiers/state_conditioned.py"
+        },
+        {
+          "line_end": 180,
+          "line_start": 1,
+          "path": "src/nvda_desk/config/coefficient_authority.py"
+        },
+        {
+          "line_end": 213,
+          "line_start": 20,
+          "path": "src/nvda_desk/contracts/coefficient_authority.py"
+        },
+        {
+          "line_end": 83,
+          "line_start": 9,
+          "path": "src/nvda_desk/contracts/modifiers.py"
+        },
+        {
+          "line_end": 10,
+          "line_start": 1,
+          "path": "src/nvda_desk/services/coefficient_authority_service.py"
+        },
+        {
+          "line_end": 11,
+          "line_start": 1,
+          "path": "src/nvda_desk/domain/posture/modifier_application.py"
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "line_end": 102,
+          "line_start": 1,
+          "path": "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py"
+        }
+      ],
+      "classification": "read_adjudicated_surface_record",
+      "closed_boundaries_confirmed": [
+        "donor state-policy grammar not admitted as active native authority",
+        "donor state-conditioned service stack not imported into active native surface",
+        "capital deployment remains closed",
+        "broker execution remains closed",
+        "source ingestion remains closed",
+        "live self-tuning remains closed",
+        "generated all-surface Atlas remains navigation-only"
+      ],
+      "donor_navigation_evidence": [
+        {
+          "line_end": 44,
+          "line_start": 13,
+          "path": "legacy_import/source/nvda_desk/services/state_conditioned_modifier.py"
+        },
+        {
+          "line_end": 190,
+          "line_start": 124,
+          "path": "legacy_import/source/nvda_desk/services/state_conditioned_modifier.py"
+        }
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_state_conditioned_modifier_transform_cluster"
+      ],
+      "linked_bridge_record_ids": [
+        "ACATQ-0022",
+        "ACABC-0022"
+      ],
+      "normative_evidence": [
+        {
+          "line_end": 48,
+          "line_start": 41,
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md"
+        },
+        {
+          "line_end": 286,
+          "line_start": 271,
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md"
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "line_end": 491,
+          "line_start": 474,
+          "path": "config/proof_blocks.yaml"
+        },
+        {
+          "line_end": 3060,
+          "line_start": 3037,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "line_end": 3087,
+          "line_start": 3078,
+          "path": "config/retained_test_registry.yaml"
+        },
+        {
+          "line_end": 3195,
+          "line_start": 3194,
+          "path": "config/retained_test_registry.yaml"
+        }
+      ],
+      "record_status": "transform_boundary_new_tier_a_family_no_source_repair",
+      "source_file": "var/audit/active_code_atlas_001/dynamic_coefficient_modifier_authority_surface_transform_required/dynamic_modifier_transform_boundary_active_code_atlas_records.json",
+      "surface": "Dynamic coefficient and modifier authority",
+      "title": "Dynamic modifier transform boundary excludes donor state-policy/service grammar"
+    }
+  ],
+  "surface": "FWD-010 / 5.9 Dynamic coefficient and modifier authority",
+  "unresolved_native_atlas_record_ids": []
+}
