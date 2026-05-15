@@ -1451,7 +1451,7 @@ FWD-009 ordered replay closure recorded 2026-05-15:
 
 #### FWD-010 — 5.9 Dynamic coefficient and modifier authority
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `cross_cutting_runtime`
 
@@ -1514,7 +1514,7 @@ FWD-010 ordered replay closure recorded 2026-05-15:
 
 #### FWD-011 — 5.10 Playbook library architecture
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `cross_cutting_runtime`
 
