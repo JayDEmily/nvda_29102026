@@ -92,12 +92,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, `FWD-010` / `5.9 Dynamic coefficient and modifier authority`, `FWD-011` / `5.10 Playbook library architecture`, `FWD-012` / `5.7 Serial desk-cognition spine`, and `FWD-013` / `5.8 Parallel risk lane` ordered replays are recorded as `bounded_closed_current`. `FWD-014` / `5.11 Downstream capital deployment authority` is the next ordered row but remains unopened by the 2026-05-15 FWD-013-only continuation authority. |
+| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, `FWD-010` / `5.9 Dynamic coefficient and modifier authority`, `FWD-011` / `5.10 Playbook library architecture`, `FWD-012` / `5.7 Serial desk-cognition spine`, `FWD-013` / `5.8 Parallel risk lane`, and `FWD-014` / `5.11 Downstream capital deployment authority` ordered replays are recorded as `bounded_closed_current`. `FWD-015` / `5.12 Opening architecture and placement readiness` is the next ordered row but remains unopened by the 2026-05-15 FWD-014-only rectification authority. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
-FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-007 ordered replay only; that replay is now recorded as `bounded_closed_current`. A later assigned worker brief accepted and merged the FWD-007 lineage, then replayed FWD-008 and FWD-009 in order; both are recorded as `bounded_closed_current`. A later direct user instruction opened FWD-010 only; FWD-010 is recorded as `bounded_closed_current`. Later user continuation instructions opened FWD-011, FWD-012, and FWD-013 in order; each is recorded as `bounded_closed_current`, with FWD-014 next but unopened by the FWD-013 authority.
+FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-007 ordered replay only; that replay is now recorded as `bounded_closed_current`. A later assigned worker brief accepted and merged the FWD-007 lineage, then replayed FWD-008 and FWD-009 in order; both are recorded as `bounded_closed_current`. A later direct user instruction opened FWD-010 only; FWD-010 is recorded as `bounded_closed_current`. Later user continuation instructions opened FWD-011, FWD-012, and FWD-013 in order; each is recorded as `bounded_closed_current`. A later PM/user rectification instruction corrected FWD-010/FWD-011 row-state header hygiene and opened FWD-014 only; FWD-014 is recorded as `bounded_closed_current`, with FWD-015 next but unopened by the FWD-014 authority.
 
 ### 3.1 Previous pointer closure retained
 
@@ -1451,7 +1451,7 @@ FWD-009 ordered replay closure recorded 2026-05-15:
 
 #### FWD-010 — 5.9 Dynamic coefficient and modifier authority
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `cross_cutting_runtime`
 
@@ -1514,7 +1514,7 @@ FWD-010 ordered replay closure recorded 2026-05-15:
 
 #### FWD-011 — 5.10 Playbook library architecture
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `cross_cutting_runtime`
 
@@ -1706,7 +1706,7 @@ FWD-013 ordered replay closure recorded 2026-05-15:
 
 #### FWD-014 — 5.11 Downstream capital deployment authority
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `downstream_authority`
 
@@ -1755,6 +1755,19 @@ Close evidence:
 - receipt path;
 - ledger row state update;
 - next row: `FWD-015`.
+
+FWD-014 ordered replay closure recorded 2026-05-15:
+
+- Replay branch: `worker/fwd014-downstream-capital-deployment-rectified-20260515`; evidence path: `var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/`.
+- Scope: FWD-014 only after bounded FWD-010/FWD-011 ledger hygiene correction. FWD-015 and later rows were not opened.
+- Current report: `FWD014_THREE_WAY_COMPARISON_REPORT.json`; evidence inventory: `FWD014_EVIDENCE_INVENTORY.json`; proof summary: `FWD014_ORDERED_REPLAY_PROOF_SUMMARY.json`; receipt: `FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md`; boundary receipt: `FWD014_BOUNDARY_RECEIPT.md`.
+- FWD-014 result: 2/2 selected native downstream capital deployment Atlas IDs covered by direct active-code links or grouped comparison/queue satisfaction evidence; direct active-code linked Atlas IDs: 2; direct same-symbol join count: 1; grouped-satisfaction overlay links: 0; unresolved selected IDs: 0.
+- FWD-014 targeted proof reruns returned status 0: `downstream_capital_deployment_authority_surface` 26 passed, `downstream_capital_deployment_transform_boundary_surface` 3 passed, and targeted capital/persistence/transform pytest 33 passed.
+- FWD-014 broader proof returned status 0: manifest validator PASS, `git diff --check`, and `run_proof_block.py --check-all` PASS count 46.
+- FWD-014 comparison status counts and Bridge-native satisfaction status counts were retained separately: comparison `{'partially_satisfied': 1, 'transform_required': 1}`; Bridge-native `{'partially_satisfied': 1, 'transform_required': 1}`.
+- Semantic finding: current native capital deployment is a bounded downstream authority seam that consumes serial candidate material, downstream pre-deployment result, parallel/final risk, capital state, bounded policy, coefficient and temporal context, then emits deploy/stand-down action, deployable percentage, authorised notional, and receipt output without candidate formation, serial stage decisions, parallel-risk generation, opening placement mechanics, broker/order execution, hidden placement authority, or donor hard-invariant schema import.
+- No FWD-014 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice/vocabulary mutation was made.
+- Current state correction after ordered replay: FWD-014 is `bounded_closed_current`; FWD-015 is the next ordered row but remains unopened by this FWD-014 authority.
 
 #### FWD-015 — 5.12 Opening architecture and placement readiness
 
