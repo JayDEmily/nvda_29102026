@@ -1,0 +1,534 @@
+{
+  "row": "FWD-018",
+  "surface": "5.15 Review and explanation layer",
+  "result": "bounded_closed_current",
+  "commands": [
+    {
+      "name": "git_diff_check",
+      "command": "git diff --check",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check.stderr",
+      "stdout_tail": ""
+    },
+    {
+      "name": "git_diff_check_final",
+      "command": "git diff --check",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check_final.stderr",
+      "stdout_tail": ""
+    },
+    {
+      "name": "git_diff_check_post_map",
+      "command": "git diff --check",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check_post_map.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_diff_check_post_map.stderr",
+      "stdout_tail": ""
+    },
+    {
+      "name": "git_status",
+      "command": "git status --short",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_status.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/git_status.stderr",
+      "stdout_tail": "?? var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/"
+    },
+    {
+      "name": "proof_blocks_check_all",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --check-all",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_blocks_check_all.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_blocks_check_all.stderr",
+      "stdout_tail": "proof_blocks_check_all=PASS count=46"
+    },
+    {
+      "name": "proof_blocks_check_all_final",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --check-all",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_blocks_check_all_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_blocks_check_all_final.stderr",
+      "stdout_tail": "proof_blocks_check_all=PASS count=46"
+    },
+    {
+      "name": "proof_review_contract_authority_boundaries_surface",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block review_contract_authority_boundaries_surface",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_review_contract_authority_boundaries_surface.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_review_contract_authority_boundaries_surface.stderr",
+      "stdout_tail": "\ntests/tier_a/review_runtime/test_review_contract_authority_boundaries.py . [ 16%]\n.....                                                                    [100%]\n\n============================== 6 passed in 0.41s ==============================="
+    },
+    {
+      "name": "proof_review_transform_boundary_surface",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block review_transform_boundary_surface",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_review_transform_boundary_surface.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_review_transform_boundary_surface.stderr",
+      "stdout_tail": "\ntests/tier_a/review_runtime/test_review_transform_boundary_surface.py .. [ 66%]\n.                                                                        [100%]\n\n============================== 3 passed in 0.44s ==============================="
+    },
+    {
+      "name": "proof_support_spine_prepared_packet_review_surface",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block support_spine_prepared_packet_review_surface",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_support_spine_prepared_packet_review_surface.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/proof_support_spine_prepared_packet_review_surface.stderr",
+      "stdout_tail": "tests/tier_b/review_lineage/test_bounded_trace_review_regime.py ..       [ 87%]\ntests/tier_b/review_lineage/test_review_effective_policy_lineage.py ...  [ 95%]\ntests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py ..      [100%]\n\n============================== 41 passed in 0.77s =============================="
+    },
+    {
+      "name": "targeted_review_explanation_pytest",
+      "command": "env PYTHONPATH=src python -m pytest -q tests/tier_a/review_runtime tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py tests/tier_a/analysis/test_replay_evaluation_surface.py tests/tier_b/review_lineage tests/tier_b/review_replay",
+      "status": "124",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/targeted_review_explanation_pytest.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/targeted_review_explanation_pytest.stderr",
+      "stdout_tail": ""
+    },
+    {
+      "name": "targeted_review_explanation_pytest_rerun",
+      "command": "env PYTHONPATH=src python -m pytest -q tests/tier_a/review_runtime tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py tests/tier_a/analysis/test_replay_evaluation_surface.py tests/tier_b/review_lineage tests/tier_b/review_replay",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/targeted_review_explanation_pytest_rerun.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/targeted_review_explanation_pytest_rerun.stderr",
+      "stdout_tail": "...................................                                      [100%]\n35 passed in 0.94s"
+    },
+    {
+      "name": "validate_full_read_manifest_final",
+      "command": "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/validate_full_read_manifest_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/validate_full_read_manifest_final.stderr",
+      "stdout_tail": "      \"stale_hash_mismatch_count\": 0,\n      \"full_read_false_count\": 0\n    }\n  ]\n}"
+    },
+    {
+      "name": "validate_full_read_manifest_post_map",
+      "command": "python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/validate_full_read_manifest_post_map.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/validate_full_read_manifest_post_map.stderr",
+      "stdout_tail": "      \"stale_hash_mismatch_count\": 0,\n      \"full_read_false_count\": 0\n    }\n  ]\n}"
+    },
+    {
+      "name": "vocabulary_synonym_audit_check_clean",
+      "command": "env PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/vocabulary_synonym_audit_check_clean.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/vocabulary_synonym_audit_check_clean.stderr",
+      "stdout_tail": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False"
+    },
+    {
+      "name": "vocabulary_synonym_audit_check_clean_final",
+      "command": "env PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean",
+      "status": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/vocabulary_synonym_audit_check_clean_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/vocabulary_synonym_audit_check_clean_final.stderr",
+      "stdout_tail": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False"
+    }
+  ],
+  "batch_summary": {
+    "tier_a_non_vocabulary_directory_batches": [
+      {
+        "name": "tier_a_01_adapters_egress",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.19s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_01_adapters_egress.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_01_adapters_egress.stderr"
+      },
+      {
+        "name": "tier_a_02_adapters_ingress",
+        "status": "0",
+        "stdout_tail": "19 passed in 0.39s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_02_adapters_ingress.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_02_adapters_ingress.stderr"
+      },
+      {
+        "name": "tier_a_03_analysis",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.91s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_03_analysis.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_03_analysis.stderr"
+      },
+      {
+        "name": "tier_a_04_api",
+        "status": "0",
+        "stdout_tail": "4 passed in 0.55s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_04_api.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_04_api.stderr"
+      },
+      {
+        "name": "tier_a_05_calendar_operational",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.20s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_05_calendar_operational.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_05_calendar_operational.stderr"
+      },
+      {
+        "name": "tier_a_06_calendar_reference",
+        "status": "0",
+        "stdout_tail": "4 passed in 0.73s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_06_calendar_reference.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_06_calendar_reference.stderr"
+      },
+      {
+        "name": "tier_a_07_capital_deployment",
+        "status": "0",
+        "stdout_tail": "26 passed in 0.41s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_07_capital_deployment.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_07_capital_deployment.stderr"
+      },
+      {
+        "name": "tier_a_08_config",
+        "status": "0",
+        "stdout_tail": "9 passed in 0.92s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_08_config.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_08_config.stderr"
+      },
+      {
+        "name": "tier_a_09_downstream_runtime",
+        "status": "0",
+        "stdout_tail": "112 passed in 0.57s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_09_downstream_runtime.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_09_downstream_runtime.stderr"
+      },
+      {
+        "name": "tier_a_10_entry",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.56s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_10_entry.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_10_entry.stderr"
+      },
+      {
+        "name": "tier_a_11_financial_calendar",
+        "status": "0",
+        "stdout_tail": "9 passed in 0.77s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_11_financial_calendar.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_11_financial_calendar.stderr"
+      },
+      {
+        "name": "tier_a_12_ingress",
+        "status": "0",
+        "stdout_tail": "3 passed in 0.56s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_12_ingress.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_12_ingress.stderr"
+      },
+      {
+        "name": "tier_a_13_legacy_imported",
+        "status": "0",
+        "stdout_tail": "4 passed in 0.89s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_13_legacy_imported.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_13_legacy_imported.stderr"
+      },
+      {
+        "name": "tier_a_14_migrations",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.19s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_14_migrations.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_14_migrations.stderr"
+      },
+      {
+        "name": "tier_a_15_modifiers",
+        "status": "0",
+        "stdout_tail": "19 passed in 0.62s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_15_modifiers.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_15_modifiers.stderr"
+      },
+      {
+        "name": "tier_a_16_observability",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.48s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_16_observability.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_16_observability.stderr"
+      },
+      {
+        "name": "tier_a_17_options_flow_history",
+        "status": "0",
+        "stdout_tail": "8 passed in 0.54s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_17_options_flow_history.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_17_options_flow_history.stderr"
+      },
+      {
+        "name": "tier_a_18_packets",
+        "status": "0",
+        "stdout_tail": "12 passed in 0.41s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_18_packets.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_18_packets.stderr"
+      },
+      {
+        "name": "tier_a_19_parallel_risk",
+        "status": "0",
+        "stdout_tail": "28 passed in 0.86s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_19_parallel_risk.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_19_parallel_risk.stderr"
+      },
+      {
+        "name": "tier_a_20_persistence",
+        "status": "0",
+        "stdout_tail": "31 passed in 0.65s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_20_persistence.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_20_persistence.stderr"
+      },
+      {
+        "name": "tier_a_21_playbook",
+        "status": "0",
+        "stdout_tail": "68 passed in 1.27s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_21_playbook.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_21_playbook.stderr"
+      },
+      {
+        "name": "tier_a_22_reference_data",
+        "status": "0",
+        "stdout_tail": "3 passed in 0.36s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_22_reference_data.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_22_reference_data.stderr"
+      },
+      {
+        "name": "tier_a_23_review_runtime",
+        "status": "0",
+        "stdout_tail": "20 passed in 0.40s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_23_review_runtime.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_23_review_runtime.stderr"
+      },
+      {
+        "name": "tier_a_24_runtime",
+        "status": "0",
+        "stdout_tail": "10 passed in 0.58s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_24_runtime.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_24_runtime.stderr"
+      },
+      {
+        "name": "tier_a_25_seam_boundaries",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.58s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_25_seam_boundaries.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_25_seam_boundaries.stderr"
+      },
+      {
+        "name": "tier_a_26_serial_recommendation",
+        "status": "0",
+        "stdout_tail": "16 passed in 0.38s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_26_serial_recommendation.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_26_serial_recommendation.stderr"
+      },
+      {
+        "name": "tier_a_27_temporal",
+        "status": "0",
+        "stdout_tail": "7 passed in 0.36s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_27_temporal.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_27_temporal.stderr"
+      },
+      {
+        "name": "tier_a_28_testing_harnesses",
+        "status": "0",
+        "stdout_tail": "7 passed in 0.62s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_28_testing_harnesses.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_28_testing_harnesses.stderr"
+      },
+      {
+        "name": "tier_a_29_upstream_cognition",
+        "status": "0",
+        "stdout_tail": "21 passed in 0.47s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_29_upstream_cognition.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_29_upstream_cognition.stderr"
+      },
+      {
+        "name": "tier_a_30_upstream_signal",
+        "status": "0",
+        "stdout_tail": "12 passed in 0.53s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_30_upstream_signal.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_batches/tier_a_30_upstream_signal.stderr"
+      }
+    ],
+    "tier_a_vocabulary_file_batches": [
+      {
+        "name": "tier_a_vocab_01_test_dmp_v3_vocabulary_terms",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.23s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_01_test_dmp_v3_vocabulary_terms.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_01_test_dmp_v3_vocabulary_terms.stderr"
+      },
+      {
+        "name": "tier_a_vocab_02_test_financial_calendar_vocabulary_terms",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.26s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_02_test_financial_calendar_vocabulary_terms.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_02_test_financial_calendar_vocabulary_terms.stderr"
+      },
+      {
+        "name": "tier_a_vocab_03_test_parallel_risk_lane_vocabulary_terms",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.30s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_03_test_parallel_risk_lane_vocabulary_terms.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_03_test_parallel_risk_lane_vocabulary_terms.stderr"
+      },
+      {
+        "name": "tier_a_vocab_04_test_vocabulary_candidate_admission_plan_contracts",
+        "status": "0",
+        "stdout_tail": "13 passed in 0.31s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_04_test_vocabulary_candidate_admission_plan_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_04_test_vocabulary_candidate_admission_plan_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_05_test_vocabulary_candidate_admission_review_contracts",
+        "status": "0",
+        "stdout_tail": "9 passed in 0.27s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_05_test_vocabulary_candidate_admission_review_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_05_test_vocabulary_candidate_admission_review_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_06_test_vocabulary_candidate_classification_contracts",
+        "status": "0",
+        "stdout_tail": "8 passed in 0.26s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_06_test_vocabulary_candidate_classification_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_06_test_vocabulary_candidate_classification_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_07_test_vocabulary_candidate_payload_contracts",
+        "status": "0",
+        "stdout_tail": "5 passed in 0.18s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_07_test_vocabulary_candidate_payload_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_07_test_vocabulary_candidate_payload_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_08_test_vocabulary_candidate_review_cli_contracts_rerun",
+        "status": "0",
+        "stdout_tail": "16 passed in 18.22s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_08_test_vocabulary_candidate_review_cli_contracts_rerun.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_08_test_vocabulary_candidate_review_cli_contracts_rerun.stderr"
+      },
+      {
+        "name": "tier_a_vocab_09_test_vocabulary_candidate_schema_contracts",
+        "status": "0",
+        "stdout_tail": "6 passed in 0.21s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_09_test_vocabulary_candidate_schema_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_09_test_vocabulary_candidate_schema_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_10_test_vocabulary_canonical_builder_parity",
+        "status": "0",
+        "stdout_tail": "4 passed in 0.34s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_10_test_vocabulary_canonical_builder_parity.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_10_test_vocabulary_canonical_builder_parity.stderr"
+      },
+      {
+        "name": "tier_a_vocab_11_test_vocabulary_document_json_helpers",
+        "status": "0",
+        "stdout_tail": "5 passed in 0.23s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_11_test_vocabulary_document_json_helpers.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_11_test_vocabulary_document_json_helpers.stderr"
+      },
+      {
+        "name": "tier_a_vocab_12_test_vocabulary_json_helper_contracts",
+        "status": "0",
+        "stdout_tail": "8 passed in 0.25s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_12_test_vocabulary_json_helper_contracts.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_12_test_vocabulary_json_helper_contracts.stderr"
+      },
+      {
+        "name": "tier_a_vocab_13_test_vocabulary_required_baseline_terms",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.21s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_13_test_vocabulary_required_baseline_terms.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_13_test_vocabulary_required_baseline_terms.stderr"
+      },
+      {
+        "name": "tier_a_vocab_14_test_vocabulary_schema_contract",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.24s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_14_test_vocabulary_schema_contract.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_14_test_vocabulary_schema_contract.stderr"
+      },
+      {
+        "name": "tier_a_vocab_15_test_vocabulary_synonym_candidate_audit",
+        "status": "0",
+        "stdout_tail": "17 passed in 7.66s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_15_test_vocabulary_synonym_candidate_audit.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_15_test_vocabulary_synonym_candidate_audit.stderr"
+      },
+      {
+        "name": "tier_a_vocab_16_test_vocabulary_workflow_surface",
+        "status": "0",
+        "stdout_tail": "1 passed in 0.22s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_16_test_vocabulary_workflow_surface.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_a_vocabulary_file_batches/tier_a_vocab_16_test_vocabulary_workflow_surface.stderr"
+      }
+    ],
+    "tier_b_directory_batches": [
+      {
+        "name": "tier_b_01_capital_deployment",
+        "status": "0",
+        "stdout_tail": "3 passed in 0.45s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_01_capital_deployment.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_01_capital_deployment.stderr"
+      },
+      {
+        "name": "tier_b_02_options_flow_support",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.37s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_02_options_flow_support.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_02_options_flow_support.stderr"
+      },
+      {
+        "name": "tier_b_03_proof_model_final",
+        "status": "0",
+        "stdout_tail": "23 passed in 38.28s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_03_proof_model_final.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_03_proof_model_final.stderr"
+      },
+      {
+        "name": "tier_b_04_review_lineage_final",
+        "status": "0",
+        "stdout_tail": "9 passed in 0.45s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_04_review_lineage_final.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_04_review_lineage_final.stderr"
+      },
+      {
+        "name": "tier_b_05_review_replay_final",
+        "status": "0",
+        "stdout_tail": "3 passed in 0.37s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_05_review_replay_final.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_05_review_replay_final.stderr"
+      },
+      {
+        "name": "tier_b_06_serial_boundaries_final",
+        "status": "0",
+        "stdout_tail": "7 passed in 0.59s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_06_serial_boundaries_final.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_06_serial_boundaries_final.stderr"
+      },
+      {
+        "name": "tier_b_07_upstream_support_final",
+        "status": "0",
+        "stdout_tail": "2 passed in 0.41s",
+        "stdout_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_07_upstream_support_final.stdout",
+        "stderr_path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/reports/tier_b_batches/tier_b_07_upstream_support_final.stderr"
+      }
+    ],
+    "tier_a_non_vocabulary_directory_batch_count": 30,
+    "tier_a_non_vocabulary_passed_total": 465,
+    "tier_a_vocabulary_file_batch_count": 16,
+    "tier_a_vocabulary_passed_total": 98,
+    "tier_a_total_passed": 563,
+    "tier_b_batch_count": 7,
+    "tier_b_total_passed": 49,
+    "non_proof_timeout_or_superseded_attempts": [
+      {
+        "name": "tier_a_31_vocabulary",
+        "status": "124",
+        "stdout_tail": "98 passed in 25.72s",
+        "reason": "not counted as proof; superseded, timed out, or no captured status"
+      },
+      {
+        "name": "tier_b_03_proof_model",
+        "status": "124",
+        "stdout_tail": "...................",
+        "reason": "not counted as proof; superseded, timed out, or no captured status"
+      },
+      {
+        "name": "tier_b_03_proof_model_rerun",
+        "status": "124",
+        "stdout_tail": "....................",
+        "reason": "not counted as proof; superseded, timed out, or no captured status"
+      }
+    ]
+  },
+  "proof_integrity_note": "Batched broad proof uses only selected items with captured status 0. Timeout/no-status/superseded attempts are listed separately and not counted."
+}

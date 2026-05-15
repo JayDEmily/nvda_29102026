@@ -1,0 +1,101 @@
+{
+  "row": "FWD-018",
+  "surface": "5.15 Review and explanation layer",
+  "result": "bounded_closed_current",
+  "normative_target": {
+    "blueprint_path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+    "lines": "373-388",
+    "lawful_inputs": "runtime receipts; packets; decisions; proof outputs; ledger entries; replay artefacts",
+    "lawful_outputs": "review records; explanation packets; replay comparison outputs; audit summaries",
+    "prohibited_decisions": "online self-learning; live trading decisions; production state mutation; hidden strategy changes"
+  },
+  "active_code_atlas_current_repo": {
+    "row": "FWD-018",
+    "surface": "5.15 Review and explanation layer",
+    "source_files": [
+      "src/nvda_desk/contracts/review.py",
+      "src/nvda_desk/downstream/review_stage.py",
+      "src/nvda_desk/services/review_explanation_service.py",
+      "src/nvda_desk/analysis/replay/service.py",
+      "src/nvda_desk/replay/review_compare.py",
+      "src/nvda_desk/repositories/review_repository.py",
+      "src/nvda_desk/testing/bounded_trace_review.py"
+    ],
+    "test_files": [
+      "tests/tier_a/review_runtime",
+      "tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py",
+      "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+      "tests/tier_b/review_lineage",
+      "tests/tier_b/review_replay"
+    ],
+    "atlas_record_paths": [
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface/review_explanation_layer_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/review_contract_authority_boundaries_active_code_atlas_records.json",
+      "var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json"
+    ],
+    "selected_active_code_records": 3,
+    "linked_atlas_record_ids": [
+      "atlas_donor_eval_012",
+      "atlas_donor_replay_transform_cluster",
+      "atlas_donor_research_transform_cluster",
+      "atlas_donor_review_explanation_cluster_001",
+      "atlas_donor_review_explanation_cluster_002"
+    ],
+    "linked_bridge_record_ids": [
+      "ACABC-0037",
+      "ACABC-0038",
+      "ACABC-0039",
+      "ACATQ-0036",
+      "ACATQ-0037",
+      "ACATQ-0038"
+    ],
+    "record_titles": [
+      "Review explanations emit detached JSON-safe coefficient snapshots without mutating policy lineage",
+      "Review contracts reject top-level execution authority and detach lineage inputs",
+      "Transform-required review/replay donor obligations stay native review-only and exclude donor service imports"
+    ],
+    "proof_blocks": [
+      "support_spine_prepared_packet_review_surface",
+      "review_contract_authority_boundaries_surface",
+      "review_transform_boundary_surface"
+    ],
+    "no_source_test_config_mutation_required": true
+  },
+  "intent_atlas_bridge_evidence": {
+    "linked_atlas_record_ids": [
+      "atlas_donor_eval_012",
+      "atlas_donor_replay_transform_cluster",
+      "atlas_donor_research_transform_cluster",
+      "atlas_donor_review_explanation_cluster_001",
+      "atlas_donor_review_explanation_cluster_002"
+    ],
+    "linked_bridge_record_ids": [
+      "ACABC-0037",
+      "ACABC-0038",
+      "ACABC-0039",
+      "ACATQ-0036",
+      "ACATQ-0037",
+      "ACATQ-0038"
+    ],
+    "invented_bridge_links": "none; reused existing active-code atlas linked_bridge_record_ids"
+  },
+  "comparison_status_counts": {
+    "partially_satisfied": 2,
+    "transform_required": 1
+  },
+  "bridge_native_satisfaction_status_counts": {
+    "partially_satisfied": 2,
+    "transform_required": 1
+  },
+  "decision": "Current review/explanation code is a bounded post-runtime review/replay seam. It consumes completed runtime evidence and emits review/explanation/replay artefacts without becoming live decision authority.",
+  "forbidden_behaviours_ruled_out": [
+    "online self-learning",
+    "live trading decisions",
+    "production state mutation",
+    "hidden strategy changes",
+    "broker/order execution",
+    "exit/close authority",
+    "live inventory mutation"
+  ],
+  "mutation_required": false
+}

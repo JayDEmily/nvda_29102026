@@ -1,0 +1,1 @@
+env PYTHONPATH=src python -m pytest -q tests/tier_a/review_runtime tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py tests/tier_a/analysis/test_replay_evaluation_surface.py tests/tier_b/review_lineage tests/tier_b/review_replay

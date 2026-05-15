@@ -1,0 +1,2260 @@
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface/review_explanation_layer_active_code_atlas_records.json =====
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE",
+  "created_utc": "2026-05-11T16:40:00Z",
+  "status": "read_adjudicated_existing_tier_a_family_extension_no_source_repair",
+  "surface": "Review and explanation layer",
+  "method": "Surface records were confirmed from files listed in the row 024 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates selected review explanation service output detachment and coefficient snapshot behaviour. It does not adjudicate every review, replay, repository, or downstream explanation surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-024-0001",
+      "title": "Review explanations emit detached JSON-safe coefficient snapshots without mutating policy lineage",
+      "surface": "Review and explanation layer",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "existing_tier_a_family_extension_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0038",
+        "ACABC-0039"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_review_explanation_cluster_001"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 373,
+          "line_end": 388
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/services/review_explanation_service.py",
+          "line_start": 13,
+          "line_end": 55
+        },
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 82,
+          "line_end": 99
+        },
+        {
+          "path": "src/nvda_desk/contracts/modifiers.py",
+          "line_start": 6,
+          "line_end": 17
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+          "line_start": 81,
+          "line_end": 110
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 135,
+          "line_end": 160
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 556,
+          "line_end": 575
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3181,
+          "line_end": 3182
+        }
+      ],
+      "adjudication_notes": [
+        "The existing Tier A review explanation family was extended before source repair to prove resolved coefficient outputs are detached JSON-safe snapshots rather than live Pydantic model references.",
+        "The targeted proof passed without source repair because ReviewExplanationService already emits coefficient.model_dump() snapshots and copies lineage lists."
+      ],
+      "non_claims": [
+        "Does not prove all review/replay/repository surfaces.",
+        "Does not upgrade the whole 5.15 surface to implemented.",
+        "Does not authorise trading, capital, risk, broker, or live runtime behaviour."
+      ]
+    }
+  ]
+}
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface/review_explanation_layer_active_code_atlas_records.json =====
+
+===== BEGIN src/nvda_desk/services/review_explanation_service.py =====
+"""Build deterministic explanation surfaces for downstream review consumers."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.review import (
+    EffectivePolicySnapshot,
+    PacketLineageSurface,
+    ReviewLineagePacket,
+    ReviewPacket,
+)
+
+
+class ReviewExplanationService:
+    """Translate review-lineage facts into deterministic explanation text."""
+
+    def build_explanation(
+        self,
+        *,
+        review_packet: ReviewPacket,
+        effective_policy: EffectivePolicySnapshot,
+        review_lineage: ReviewLineagePacket,
+        packet_lineage: PacketLineageSurface,
+    ) -> dict:
+        summary = review_packet.summary or ""
+        resolved_surfaces = list(
+            review_lineage.resolved_surfaces or effective_policy.resolved_surfaces
+        )
+        packet_ids = list(packet_lineage.packet_ids)
+        source_packet_ids = list(packet_lineage.source_packet_ids)
+        missing_material = []
+        if not summary:
+            missing_material.append("review_packet.summary")
+        if not resolved_surfaces:
+            missing_material.append("resolved_surfaces")
+        if not packet_ids:
+            missing_material.append("packet_lineage.packet_ids")
+
+        surfaces_text = ", ".join(resolved_surfaces)
+        packet_ids_text = ", ".join(packet_ids)
+        resolved_coefficients = [
+            coefficient.model_dump()
+            for coefficient in (
+                review_lineage.resolved_coefficients or effective_policy.resolved_coefficients
+            )
+        ]
+        return {
+            "summary": summary,
+            "resolved_surfaces": resolved_surfaces,
+            "packet_ids": packet_ids,
+            "source_packet_ids": source_packet_ids,
+            "resolved_coefficients": resolved_coefficients,
+            "missing_review_material": missing_material,
+            "lineage_complete": not missing_material,
+            "explanation": f"{summary} | surfaces={surfaces_text} | packets={packet_ids_text}".strip(),
+        }
+
+===== END src/nvda_desk/services/review_explanation_service.py =====
+
+===== BEGIN src/nvda_desk/contracts/review.py =====
+from __future__ import annotations
+
+from enum import StrEnum
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field
+
+from nvda_desk.contracts.modifiers import ResolvedCoefficientValue
+
+
+class ReviewFailureClass(StrEnum):
+    """Bounded review failure classes for decision-basis reconstruction."""
+
+    DIAGNOSIS_FAILURE = "diagnosis_failure"
+    POSTURE_POLICY_FAILURE = "posture_policy_failure"
+    ELIGIBILITY_FAILURE = "eligibility_failure"
+    EXECUTION_EXPRESSION_FAILURE = "execution_expression_failure"
+    SIZING_FAILURE = "sizing_failure"
+    DATA_PROVENANCE_FAILURE = "data_provenance_failure"
+    ONTOLOGY_FAILURE = "ontology_failure"
+
+
+class ReviewResolutionClass(StrEnum):
+    """Bounded review outcomes for action, non-action, ambiguity, and luck."""
+
+    ACTION_TAKEN = "action_taken"
+    NON_ACTION = "non_action"
+    BLOCKED_TRADE = "blocked_trade"
+    UNKNOWN = "unknown"
+    UNRESOLVED = "unresolved"
+    BAD_LUCK = "bad_luck"
+    ONTOLOGY_FAILURE = "ontology_failure"
+
+
+class EconomicContributionTag(StrEnum):
+    """Bounded economic-accountability labels for review-only attribution."""
+
+    VALUE_ADD = "value_add"
+    CAPITAL_PRESERVATION = "capital_preservation"
+    NEUTRAL = "neutral"
+    VALUE_LEAK = "value_leak"
+    UNKNOWN = "unknown"
+
+
+class ReviewPacket(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    packet_id: str | None = None
+    summary: str | None = None
+    sections: list[str] = Field(default_factory=list)
+
+
+class ReviewLineage(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    event_ids: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[str] = Field(default_factory=list)
+    resolved_coefficients: list[ResolvedCoefficientValue] = Field(default_factory=list)
+
+
+class PromotionEvidence(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    ready_for_candidate_review: bool = False
+    required_sections: list[str] = Field(default_factory=list)
+    missing_sections: list[str] = Field(default_factory=list)
+
+
+class FailureTaxonomyRecord(BaseModel):
+    model_config = ConfigDict(extra="forbid", use_enum_values=True)
+    primary_failure_class: ReviewFailureClass | None = None
+    resolution: ReviewResolutionClass = ReviewResolutionClass.UNKNOWN
+    blocked_trade: bool = False
+    non_action: bool = False
+    evidence_floor: dict[str, Any] | None = None
+    rationale: list[str] = Field(default_factory=list)
+
+
+class EconomicAccountabilityRecord(BaseModel):
+    model_config = ConfigDict(extra="forbid", use_enum_values=True)
+    diagnosis: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    posture: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    timing: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    execution: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    sizing: EconomicContributionTag = EconomicContributionTag.UNKNOWN
+    non_action: EconomicContributionTag = EconomicContributionTag.NEUTRAL
+
+
+class EffectivePolicySnapshot(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    policy_ids: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[str] = Field(default_factory=list)
+    resolved_coefficients: list[ResolvedCoefficientValue] = Field(default_factory=list)
+
+
+class ReviewLineagePacket(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    event_lineage_keys: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[str] = Field(default_factory=list)
+    modifier_policy_ids: list[str] = Field(default_factory=list)
+    resolved_coefficients: list[ResolvedCoefficientValue] = Field(default_factory=list)
+
+
+class PacketLineageSurface(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    packet_ids: list[str] = Field(default_factory=list)
+    source_packet_ids: list[str] = Field(default_factory=list)
+
+===== END src/nvda_desk/contracts/review.py =====
+
+===== BEGIN src/nvda_desk/contracts/modifiers.py =====
+from __future__ import annotations
+
+from copy import deepcopy
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+
+class ResolvedCoefficientValue(BaseModel):
+    """One resolved coefficient snapshot with baseline/effective lineage."""
+
+    model_config = ConfigDict(extra="forbid")
+    coefficient_id: str
+    owner_stage: str
+    surface_class: str
+    baseline_value: float | bool
+    effective_value: float | bool
+    transform_family: str
+    modifier_inputs: list[str] = Field(default_factory=list)
+    workbook_ref: str
+    runtime_mutable: bool = False
+
+    @model_validator(mode="after")
+    def detach_modifier_inputs(self) -> "ResolvedCoefficientValue":
+        """Detach caller-owned modifier lineage lists on model construction."""
+
+        self.modifier_inputs = list(self.modifier_inputs)
+        return self
+
+
+def _detached_coefficient(
+    coefficient: ResolvedCoefficientValue | dict[str, Any],
+) -> ResolvedCoefficientValue:
+    if isinstance(coefficient, ResolvedCoefficientValue):
+        return ResolvedCoefficientValue.model_validate(deepcopy(coefficient.model_dump()))
+    return ResolvedCoefficientValue.model_validate(deepcopy(dict(coefficient)))
+
+
+class ModifierRuntimePacket(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    packet_id: str | None = None
+    active_modifier_ids: list[str] = Field(default_factory=list)
+    policy_ids: list[str] = Field(default_factory=list)
+    resolved_surfaces: list[str] = Field(default_factory=list)
+    resolved_coefficients: list[ResolvedCoefficientValue] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def detach_lineage_lists(self) -> "ModifierRuntimePacket":
+        """Detach caller-owned modifier packet lineage containers."""
+
+        self.active_modifier_ids = list(self.active_modifier_ids)
+        self.policy_ids = list(self.policy_ids)
+        self.resolved_surfaces = list(self.resolved_surfaces)
+        self.resolved_coefficients = [
+            _detached_coefficient(coefficient)
+            for coefficient in self.resolved_coefficients
+        ]
+        return self
+
+
+class ModifierReplayReceipt(BaseModel):
+    """Deterministic replay receipt for bounded coefficient/modifier authority."""
+
+    model_config = ConfigDict(extra="forbid")
+    authority_id: str
+    schema_version: str
+    owner_stage: str
+    active_modifier_ids: list[str] = Field(default_factory=list)
+    resolved_coefficients: list[ResolvedCoefficientValue] = Field(default_factory=list)
+    replay_fingerprint: str
+    closed_authority_classes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def detach_lineage_lists(self) -> "ModifierReplayReceipt":
+        """Detach caller-owned replay lineage containers."""
+
+        self.active_modifier_ids = list(self.active_modifier_ids)
+        self.resolved_coefficients = [
+            _detached_coefficient(coefficient)
+            for coefficient in self.resolved_coefficients
+        ]
+        self.closed_authority_classes = list(self.closed_authority_classes)
+        return self
+
+===== END src/nvda_desk/contracts/modifiers.py =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_explanation_service_surface.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+from nvda_desk.contracts.review import (
+    EffectivePolicySnapshot,
+    PacketLineageSurface,
+    ReviewLineagePacket,
+    ReviewPacket,
+)
+from nvda_desk.services.review_explanation_service import ReviewExplanationService
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_review_explanation_service_surface_is_present() -> None:
+    service = _require_module("nvda_desk.services.review_explanation_service")
+    assert service.__name__ == "nvda_desk.services.review_explanation_service"
+    assert _require_attr(service, "ReviewExplanationService") is getattr(service, "ReviewExplanationService")
+
+
+def test_review_explanation_marks_missing_material_without_inventing_lineage() -> None:
+    service = ReviewExplanationService()
+    explanation = service.build_explanation(
+        review_packet=ReviewPacket(),
+        effective_policy=EffectivePolicySnapshot(),
+        review_lineage=ReviewLineagePacket(),
+        packet_lineage=PacketLineageSurface(),
+    )
+
+    packet_id_key = "_".join(["packet", "ids"])
+    source_packet_id_key = "_".join(["source", "packet", "ids"])
+
+    assert explanation["lineage_complete"] is False
+    assert explanation["missing_review_material"] == [
+        "review_packet.summary",
+        "resolved_surfaces",
+        "packet_lineage." + packet_id_key,
+    ]
+    assert explanation[packet_id_key] == []
+    assert explanation[source_packet_id_key] == []
+
+
+def test_review_explanation_output_is_detached_from_lineage_inputs() -> None:
+    review_packet = ReviewPacket(summary="Review ready")
+    effective_policy = EffectivePolicySnapshot(resolved_surfaces=["policy_surface"])
+    review_lineage = ReviewLineagePacket(resolved_surfaces=["lineage_surface"])
+    packet_id_key = "_".join(["packet", "ids"])
+    source_packet_id_key = "_".join(["source", "packet", "ids"])
+    packet_lineage = PacketLineageSurface(
+        **{packet_id_key: ["packet-1"], source_packet_id_key: ["source-1"]}
+    )
+
+    output = ReviewExplanationService().build_explanation(
+        review_packet=review_packet,
+        effective_policy=effective_policy,
+        review_lineage=review_lineage,
+        packet_lineage=packet_lineage,
+    )
+    output["resolved_surfaces"].append("mutated")
+    output[packet_id_key].append("mutated")
+
+    assert review_lineage.resolved_surfaces == ["lineage_surface"]
+    assert getattr(packet_lineage, packet_id_key) == ["packet-1"]
+    assert output["lineage_complete"] is True
+
+
+def test_review_explanation_resolved_coefficients_are_detached_json_safe_snapshots() -> None:
+    from nvda_desk.contracts.modifiers import ResolvedCoefficientValue
+
+    coefficient = ResolvedCoefficientValue(
+        coefficient_id="coef-1",
+        owner_stage="review",
+        surface_class="review_explanation",
+        baseline_value=1.0,
+        effective_value=1.25,
+        transform_family="bounded_review",
+        modifier_inputs=["policy-a"],
+        workbook_ref="workbook#coef-1",
+    )
+    output = ReviewExplanationService().build_explanation(
+        review_packet=ReviewPacket(summary="Review ready"),
+        effective_policy=EffectivePolicySnapshot(resolved_surfaces=["policy_surface"]),
+        review_lineage=ReviewLineagePacket(
+            resolved_surfaces=["lineage_surface"],
+            resolved_coefficients=[coefficient],
+        ),
+        packet_lineage=PacketLineageSurface(packet_ids=["packet-1"]),
+    )
+
+    output["resolved_coefficients"][0]["effective_value"] = 99.0
+    output["resolved_coefficients"][0]["modifier_inputs"].append("mutated")
+
+    assert coefficient.effective_value == 1.25
+    assert coefficient.modifier_inputs == ["policy-a"]
+    assert output["resolved_coefficients"][0]["coefficient_id"] == "coef-1"
+    assert all(isinstance(item, dict) for item in output["resolved_coefficients"])
+
+===== END tests/tier_a/review_runtime/test_review_explanation_service_surface.py =====
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/review_contract_authority_boundaries_active_code_atlas_records.json =====
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY",
+  "created_utc": "2026-05-11T17:05:00Z",
+  "status": "read_adjudicated_new_tier_a_family_no_source_repair",
+  "surface": "Review and explanation layer",
+  "method": "Surface records were confirmed from files listed in the row 025 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates selected review contract top-level execution-authority rejection and review-lineage input detachment. It does not adjudicate every review, replay, repository, explanation, downstream execution, broker, capital, or risk surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-025-0001",
+      "title": "Review contracts reject top-level execution authority and detach lineage inputs",
+      "surface": "Review and explanation layer",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "new_tier_a_family_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0037",
+        "ACABC-0038"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_review_explanation_cluster_002"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 373,
+          "line_end": 388
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 45,
+          "line_end": 49
+        },
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 66,
+          "line_end": 73
+        },
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 86,
+          "line_end": 90
+        },
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 93,
+          "line_end": 98
+        },
+        {
+          "path": "src/nvda_desk/contracts/review.py",
+          "line_start": 101,
+          "line_end": 104
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py",
+          "line_start": 1,
+          "line_end": 48
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 603,
+          "line_end": 613
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 538,
+          "line_end": 554
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3063,
+          "line_end": 3065
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3198,
+          "line_end": 3199
+        }
+      ],
+      "adjudication_notes": [
+        "The new Tier A review contract authority-boundary family was written before source repair.",
+        "The targeted proof passed without source repair because the selected review Pydantic contracts already use extra=forbid and ReviewLineagePacket detaches caller-provided lists on construction.",
+        "This is a contract-boundary proof for top-level execution-authority fields and lineage input detachment, not a nested evidence-floor authority proof."
+      ],
+      "non_claims": [
+        "Does not prove nested evidence_floor authority stripping or nested arbitrary dictionary payload sanitisation.",
+        "Does not prove all review/replay/repository/explanation surfaces.",
+        "Does not upgrade the whole 5.15 surface to implemented.",
+        "Does not authorise trading, capital, risk, broker, order, or live runtime behaviour."
+      ]
+    }
+  ]
+}
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/review_contract_authority_boundaries_active_code_atlas_records.json =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py =====
+from __future__ import annotations
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.contracts.review import (
+    EffectivePolicySnapshot,
+    FailureTaxonomyRecord,
+    PacketLineageSurface,
+    ReviewLineagePacket,
+    ReviewPacket,
+)
+
+REVIEW_CONTRACTS = (
+    ReviewPacket,
+    EffectivePolicySnapshot,
+    ReviewLineagePacket,
+    PacketLineageSurface,
+    FailureTaxonomyRecord,
+)
+FORBIDDEN_EXECUTION_FIELDS = {
+    "trade_allowed": True,
+    "broker_order_id": "order-1",
+    "capital_sizing": {"notional": 1_000_000},
+    "risk_limit_override": True,
+}
+
+
+@pytest.mark.parametrize("model_type", REVIEW_CONTRACTS)
+def test_review_contracts_reject_top_level_execution_authority_fields(model_type) -> None:
+    for field_name, value in FORBIDDEN_EXECUTION_FIELDS.items():
+        with pytest.raises(ValidationError, match="Extra inputs are not permitted"):
+            model_type(**{field_name: value})
+
+
+def test_review_lineage_packet_detaches_input_lists_from_caller() -> None:
+    surfaces = ["review_surface"]
+    policy_ids = ["policy-1"]
+    packet = ReviewLineagePacket(
+        resolved_surfaces=surfaces,
+        modifier_policy_ids=policy_ids,
+    )
+
+    surfaces.append("mutated")
+    policy_ids.append("mutated")
+
+    assert packet.resolved_surfaces == ["review_surface"]
+    assert packet.modifier_policy_ids == ["policy-1"]
+
+===== END tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py =====
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json =====
+{
+  "schema_version": "active_code_atlas_surface_records_v1",
+  "ledger_name": "ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED",
+  "created_utc": "2026-05-11T17:32:00Z",
+  "status": "read_adjudicated_transform_required_new_tier_a_family_no_source_repair",
+  "surface": "Review and explanation layer",
+  "method": "Surface records were confirmed from files listed in the row 026 FULL_READ_MANIFEST. The generated all-surface structural inventory was used only for navigation.",
+  "limitation_statement": "This file is a surface-specific active-code Atlas slice, not acceptance of the generated all-surface active-code Atlas as semantic truth.",
+  "surface_limitation": "This pass adjudicates selected transform-required review/replay/evaluation donor obligations as native review-only and replay-only boundaries. It does not adjudicate every review, replay, repository, explanation, downstream execution, broker, capital, or risk surface.",
+  "records": [
+    {
+      "active_code_atlas_record_id": "ACATP-026-0001",
+      "title": "Transform-required review/replay donor obligations stay native review-only and exclude donor service imports",
+      "surface": "Review and explanation layer",
+      "classification": "read_adjudicated_surface_record",
+      "record_status": "transform_required_new_tier_a_family_no_source_repair",
+      "linked_bridge_record_ids": [
+        "ACATQ-0036",
+        "ACABC-0037"
+      ],
+      "linked_atlas_record_ids": [
+        "atlas_donor_eval_012",
+        "atlas_donor_replay_transform_cluster",
+        "atlas_donor_research_transform_cluster"
+      ],
+      "normative_evidence": [
+        {
+          "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+          "line_start": 41,
+          "line_end": 48
+        },
+        {
+          "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+          "line_start": 373,
+          "line_end": 388
+        }
+      ],
+      "active_source_evidence": [
+        {
+          "path": "src/nvda_desk/downstream/review_stage.py",
+          "line_start": 44,
+          "line_end": 72
+        },
+        {
+          "path": "src/nvda_desk/services/review_explanation_service.py",
+          "line_start": 13,
+          "line_end": 55
+        },
+        {
+          "path": "src/nvda_desk/analysis/replay/service.py",
+          "line_start": 36,
+          "line_end": 88
+        },
+        {
+          "path": "src/nvda_desk/persistence/research_logs.py",
+          "line_start": 9,
+          "line_end": 19
+        },
+        {
+          "path": "src/nvda_desk/repositories/review_repository.py",
+          "line_start": 9,
+          "line_end": 34
+        }
+      ],
+      "active_test_evidence": [
+        {
+          "path": "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+          "line_start": 1,
+          "line_end": 113
+        }
+      ],
+      "proof_block_or_registry_evidence": [
+        {
+          "path": "config/proof_blocks.yaml",
+          "line_start": 615,
+          "line_end": 627
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 555,
+          "line_end": 573
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3082,
+          "line_end": 3084
+        },
+        {
+          "path": "config/retained_test_registry.yaml",
+          "line_start": 3219,
+          "line_end": 3220
+        }
+      ],
+      "adjudication_notes": [
+        "The transform-required Tier A review boundary family was written before source repair.",
+        "The targeted proof passed without source repair because selected native review/replay files do not import legacy donor schemas/services and the active review outputs remain review-only rather than runtime-trading, broker, capital, or risk authority carriers.",
+        "Donor eval/replay/research obligations are preserved as migration evidence that must be re-expressed through native review and explanation seams rather than imported directly."
+      ],
+      "non_claims": [
+        "Does not prove full donor eval/replay/research semantic parity.",
+        "Does not prove all review/replay/repository/explanation surfaces.",
+        "Does not upgrade the whole 5.15 surface to implemented.",
+        "Does not authorise trading, capital, risk, broker, order, or live runtime behaviour."
+      ]
+    }
+  ]
+}
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json =====
+
+===== BEGIN src/nvda_desk/downstream/review_stage.py =====
+"""Build review-stage packets from runtime-visible facts only."""
+
+from __future__ import annotations
+
+from typing import Iterable
+
+from nvda_desk.contracts.modifiers import ResolvedCoefficientValue
+from nvda_desk.contracts.review import ReviewLineage, ReviewPacket
+
+
+class ReviewStageService:
+    """Construct review packets and attach deterministic lineage surfaces."""
+
+    def build_review_packet(
+        self,
+        *,
+        packet_id: str | None = None,
+        summary: str | None = None,
+        sections: Iterable[str] = (),
+    ) -> ReviewPacket:
+        return build_review_packet(packet_id=packet_id, summary=summary, sections=sections)
+
+    def attach_lineage(
+        self,
+        *,
+        packet: ReviewPacket,
+        event_ids: Iterable[str] = (),
+        resolved_surfaces: Iterable[str] = (),
+        resolved_coefficients: Iterable[ResolvedCoefficientValue] = (),
+    ) -> dict:
+        return attach_lineage(
+            packet=packet,
+            event_ids=event_ids,
+            resolved_surfaces=resolved_surfaces,
+            resolved_coefficients=resolved_coefficients,
+        )
+
+    def attach_imported_citations(
+        self, *, packet: ReviewPacket, citations: Iterable[str] = ()
+    ) -> dict:
+        return attach_imported_citations(packet=packet, citations=citations)
+
+
+def build_review_packet(
+    *, packet_id: str | None = None, summary: str | None = None, sections: Iterable[str] = ()
+) -> ReviewPacket:
+    """Return one typed review packet from runtime-visible text sections."""
+
+    return ReviewPacket(packet_id=packet_id, summary=summary, sections=list(sections))
+
+
+def attach_lineage(
+    *,
+    packet: ReviewPacket,
+    event_ids: Iterable[str] = (),
+    resolved_surfaces: Iterable[str] = (),
+    resolved_coefficients: Iterable[ResolvedCoefficientValue] = (),
+) -> dict:
+    """Attach deterministic lineage metadata to one review packet."""
+
+    lineage = ReviewLineage(
+        event_ids=list(event_ids),
+        resolved_surfaces=list(resolved_surfaces),
+        resolved_coefficients=list(resolved_coefficients),
+    )
+    return {"review_packet": packet.model_dump(), "lineage": lineage.model_dump()}
+
+
+def attach_imported_citations(*, packet: ReviewPacket, citations: Iterable[str] = ()) -> dict:
+    """Attach import-stage citations without changing review semantics."""
+
+    return {"review_packet": packet.model_dump(), "imported_citations": list(citations)}
+
+===== END src/nvda_desk/downstream/review_stage.py =====
+
+===== BEGIN src/nvda_desk/analysis/replay/service.py =====
+"""Replay and comparison services for the bounded analysis-only subsystem."""
+
+from __future__ import annotations
+
+from copy import deepcopy
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Mapping
+
+from nvda_desk.contracts.replay import ReplayPacketLineage
+
+DEFAULT_REPLAY_FIXTURE_ROOT = Path("fixtures/replay")
+
+
+@dataclass(frozen=True)
+class ReplayFixtureSource:
+    """Describe the admitted replay fixture root without invoking live runtime flows."""
+
+    fixture_root: Path
+    readme_path: Path
+
+
+@dataclass(frozen=True)
+class ReplayComparisonResult:
+    """Hold deterministic comparison output for bounded replay/evaluation work."""
+
+    baseline_name: str
+    candidate_name: str
+    differing_fields: tuple[str, ...]
+    baseline_only_fields: tuple[str, ...]
+    candidate_only_fields: tuple[str, ...]
+    baseline_snapshot: dict[str, Any]
+    candidate_snapshot: dict[str, Any]
+
+
+class ReplayEvaluationService:
+    """Build replay lineage and compare prepared or fixture-backed artefacts."""
+
+    def describe_fixture_source(
+        self, fixture_root: Path = DEFAULT_REPLAY_FIXTURE_ROOT
+    ) -> ReplayFixtureSource:
+        resolved_root = fixture_root.resolve()
+        return ReplayFixtureSource(
+            fixture_root=resolved_root,
+            readme_path=(resolved_root / "README.md").resolve(),
+        )
+
+    def build_lineage(
+        self,
+        *,
+        packet_ids: list[str],
+        replay_run_id: str | None = None,
+    ) -> ReplayPacketLineage:
+        return ReplayPacketLineage(packet_ids=list(packet_ids), replay_run_id=replay_run_id)
+
+    def compare_outputs(
+        self,
+        *,
+        baseline: Mapping[str, Any],
+        candidate: Mapping[str, Any],
+        baseline_name: str = "baseline",
+        candidate_name: str = "candidate",
+    ) -> ReplayComparisonResult:
+        baseline_snapshot = deepcopy(dict(baseline))
+        candidate_snapshot = deepcopy(dict(candidate))
+        baseline_keys = set(baseline_snapshot)
+        candidate_keys = set(candidate_snapshot)
+        shared_keys = baseline_keys & candidate_keys
+        differing_fields = tuple(
+            sorted(key for key in shared_keys if baseline_snapshot[key] != candidate_snapshot[key])
+        )
+        return ReplayComparisonResult(
+            baseline_name=baseline_name,
+            candidate_name=candidate_name,
+            differing_fields=differing_fields,
+            baseline_only_fields=tuple(sorted(baseline_keys - candidate_keys)),
+            candidate_only_fields=tuple(sorted(candidate_keys - baseline_keys)),
+            baseline_snapshot=baseline_snapshot,
+            candidate_snapshot=candidate_snapshot,
+        )
+
+
+def describe_replay_fixture_source(
+    fixture_root: Path = DEFAULT_REPLAY_FIXTURE_ROOT,
+) -> ReplayFixtureSource:
+    """Describe the admitted replay fixture root via the bounded analysis service."""
+
+    return ReplayEvaluationService().describe_fixture_source(fixture_root)
+
+===== END src/nvda_desk/analysis/replay/service.py =====
+
+===== BEGIN src/nvda_desk/persistence/research_logs.py =====
+"""Persist replay, evaluation, and research artefacts outside live trading state."""
+
+from __future__ import annotations
+
+from copy import deepcopy
+from typing import Any, Mapping
+
+
+class ResearchLogsRepository:
+    """Append-only repository for bounded research and evaluation artefacts."""
+
+    def __init__(self):
+        self._logs: list[dict[str, Any]] = []
+
+    def append_log(self, log: Mapping[str, Any]) -> None:
+        self._logs.append(deepcopy(dict(log)))
+
+    def list_logs(self) -> list[dict[str, Any]]:
+        return deepcopy(self._logs)
+
+===== END src/nvda_desk/persistence/research_logs.py =====
+
+===== BEGIN src/nvda_desk/repositories/review_repository.py =====
+"""Persist review packets and lineage records in one bounded in-memory store."""
+
+from __future__ import annotations
+
+from copy import deepcopy
+from typing import Any, Mapping
+
+
+class ReviewRepository:
+    """Deterministic in-memory repository for review outputs."""
+
+    def __init__(self):
+        self._packets: dict[str, dict[str, Any]] = {}
+
+    def write_packet(self, packet_id: str, packet: Mapping[str, Any]) -> None:
+        """Store one review packet by identifier."""
+
+        normalised_id = str(packet_id).strip()
+        if not normalised_id:
+            raise ValueError("packet_id must be non-empty")
+        if normalised_id in self._packets:
+            raise ValueError(f"duplicate packet_id: {normalised_id}")
+        self._packets[normalised_id] = deepcopy(dict(packet))
+
+    def read_packet(self, packet_id: str) -> dict[str, Any] | None:
+        """Return one stored review packet, if present."""
+
+        packet = self._packets.get(str(packet_id).strip())
+        return deepcopy(packet) if packet is not None else None
+
+    def list_packets(self) -> list[dict[str, Any]]:
+        """Return stored review packets in insertion order."""
+
+        return deepcopy(list(self._packets.values()))
+
+===== END src/nvda_desk/repositories/review_repository.py =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_transform_boundary_surface.py =====
+from __future__ import annotations
+
+import ast
+import importlib
+from pathlib import Path
+
+ACTIVE_REVIEW_FILES = (
+    Path("src/nvda_desk/downstream/review_stage.py"),
+    Path("src/nvda_desk/services/review_explanation_service.py"),
+    Path("src/nvda_desk/services/downstream_review_service.py"),
+    Path("src/nvda_desk/contracts/review.py"),
+    Path("src/nvda_desk/contracts/replay.py"),
+    Path("src/nvda_desk/analysis/replay/service.py"),
+    Path("src/nvda_desk/persistence/research_logs.py"),
+    Path("src/nvda_desk/repositories/research_logs.py"),
+    Path("src/nvda_desk/repositories/review_repository.py"),
+)
+DONOR_IMPORT_PREFIXES = (
+    "legacy_import",
+    "nvda_desk.schemas.eval",
+    "nvda_desk.schemas.replay",
+    "nvda_desk.schemas.research",
+    "nvda_desk.services.replay",
+    "nvda_desk.services.research",
+    "nvda_desk.services.evaluation_log",
+    "nvda_desk.services.module_evaluators",
+)
+REVIEW_ONLY_FIELDS = {
+    "review_packet",
+    "lineage",
+    "imported_citations",
+    "summary",
+    "resolved_surfaces",
+    "packet_ids",
+    "source_packet_ids",
+    "resolved_coefficients",
+    "missing_review_material",
+    "lineage_complete",
+    "explanation",
+}
+FORBIDDEN_RUNTIME_FIELDS = {
+    "trade_allowed",
+    "broker_order_id",
+    "capital_sizing",
+    "risk_limit_override",
+    "promoted_to_runtime",
+}
+
+
+def _imports(path: Path) -> list[str]:
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    imported: list[str] = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            imported.extend(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            imported.append(node.module)
+    return imported
+
+
+def test_native_review_transform_boundary_excludes_legacy_donor_imports() -> None:
+    offenders: list[str] = []
+    for path in ACTIVE_REVIEW_FILES:
+        for imported in _imports(path):
+            if any(imported == prefix or imported.startswith(f"{prefix}.") for prefix in DONOR_IMPORT_PREFIXES):
+                offenders.append(f"{path}:{imported}")
+
+    assert offenders == []
+
+
+def test_native_review_stage_keeps_imported_citations_review_only() -> None:
+    review_stage = importlib.import_module("nvda_desk.downstream.review_stage")
+    packet = review_stage.build_review_packet(packet_id="review-1", summary="review only")
+    with_citations = review_stage.attach_imported_citations(
+        packet=packet,
+        citations=["legacy donor eval output requires native transformation"],
+    )
+    with_lineage = review_stage.attach_lineage(
+        packet=packet,
+        event_ids=["event-1"],
+        resolved_surfaces=["review and explanation layer"],
+    )
+
+    assert set(with_citations) == {"review_packet", "imported_citations"}
+    assert set(with_lineage) == {"review_packet", "lineage"}
+    assert set(with_citations).isdisjoint(FORBIDDEN_RUNTIME_FIELDS)
+    assert set(with_lineage).isdisjoint(FORBIDDEN_RUNTIME_FIELDS)
+
+
+def test_native_review_explanation_outputs_remain_review_only() -> None:
+    review_contracts = importlib.import_module("nvda_desk.contracts.review")
+    service_module = importlib.import_module("nvda_desk.services.review_explanation_service")
+    service = service_module.ReviewExplanationService()
+
+    output = service.build_explanation(
+        review_packet=review_contracts.ReviewPacket(packet_id="review-1", summary="summary"),
+        effective_policy=review_contracts.EffectivePolicySnapshot(
+            policy_ids=["policy-1"],
+            resolved_surfaces=["review and explanation layer"],
+        ),
+        review_lineage=review_contracts.ReviewLineagePacket(
+            event_lineage_keys=["event-1"],
+            resolved_surfaces=["review and explanation layer"],
+            modifier_policy_ids=["policy-1"],
+        ),
+        packet_lineage=review_contracts.PacketLineageSurface(
+            packet_ids=["packet-1"],
+            source_packet_ids=["source-packet-1"],
+        ),
+    )
+
+    assert set(output).issubset(REVIEW_ONLY_FIELDS)
+    assert set(output).isdisjoint(FORBIDDEN_RUNTIME_FIELDS)
+
+===== END tests/tier_a/review_runtime/test_review_transform_boundary_surface.py =====
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE_RECEIPT.md =====
+# ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE receipt
+
+## Status
+
+Read-adjudicated review/explanation row with an existing Tier A family extension. No source repair was needed.
+
+## Files read in full
+
+The row-specific `FULL_READ_MANIFEST` records the controlling and selected material files used for this pass:
+
+`var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE_FULL_READ_MANIFEST.json`
+
+The generated all-surface active-code Atlas was treated as navigation/scaffold only and was not used as semantic authority.
+
+## Files modified
+
+- `tests/tier_a/review_runtime/test_review_explanation_service_surface.py`
+- `var/audit/active_code_atlas_001/review_explanation_layer_surface/review_explanation_layer_active_code_atlas_records.json`
+- `var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE_FULL_READ_MANIFEST.json`
+- `PLANS.md`
+- `ROADMAP_LEDGER.md`
+- validation/report files under `var/audit/active_code_atlas_001/review_explanation_layer_surface/reports/`
+
+## Test-first result
+
+Extended the existing Tier A review explanation service family before source repair.
+
+The targeted proof passed without source repair:
+
+```text
+4 passed
+```
+
+The added assertion proves resolved coefficient output is a detached JSON-safe snapshot and does not mutate the source policy-lineage model.
+
+## Validation run
+
+- Targeted review explanation family: `4 passed`.
+- `support_spine_prepared_packet_review_surface` proof block: `41 passed`.
+- Proof-block manifest check: `proof_blocks_check_all=PASS count=33`.
+- Row `FULL_READ_MANIFEST` validator: pass with zero stale hash mismatches.
+- Surface-record/registry validator: pass with zero errors and zero warnings.
+- `git diff --check`: exit `0`.
+
+## Unchanged
+
+No source repair, dependency, VENV, original Atlas/Bridge JSON, generated slice, vocabulary data, runtime trading behaviour, financial/risk policy, broker/order path, capital authority, or unrelated refactor work was opened.
+
+## Next pointer
+
+`ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY` / queue row `ACATQ-0037` / `ACABC-0038`.
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_024_REVIEW_EXPLANATION_LAYER_SURFACE_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY_RECEIPT.md =====
+# ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY_RECEIPT
+
+## Result
+
+Row `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY` was executed as a bounded review/explanation layer new Tier A family pass.
+
+Queue linkage:
+
+- `ACATQ-0037`
+- `ACABC-0038`
+- Surface: `5.15 Review and explanation layer`
+- Required action: `write_new_test_family_before_code`
+
+## What changed
+
+- Created row-specific `FULL_READ_MANIFEST` for controlling files and selected material files.
+- Added retained Tier A family `tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py` before any source repair.
+- Added proof block `review_contract_authority_boundaries_surface` to `config/proof_blocks.yaml`.
+- Added retained-test registry admission for `review_contract_authority_boundaries_surface` and raised Tier A registry count to `109` in `config/retained_test_registry.yaml`.
+- Added read-adjudicated active-code Atlas surface record `ACATP-025-0001`.
+- Updated `PLANS.md` and `ROADMAP_LEDGER.md` to advance the live pointer to `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED`.
+
+## Files read in full under manifest
+
+The row 025 `FULL_READ_MANIFEST` records full reads for controlling files and selected material files, including:
+
+- `AGENTS.md`
+- `PLANS.md`
+- `ROADMAP_LEDGER.md`
+- `docs/01_NORMATIVE_CORE.md`
+- `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md`
+- `docs/08_TESTING_AND_PROMOTION_CORE.md`
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`
+- `NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md`
+- `config/proof_blocks.yaml`
+- `config/retained_test_registry.yaml`
+- `var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_queue.json`
+- `var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json`
+- `src/nvda_desk/contracts/review.py`
+- `tests/tier_a/review_runtime/test_review_contract_models.py`
+- `tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py`
+- `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/review_contract_authority_boundaries_active_code_atlas_records.json`
+- this receipt
+
+## Validation
+
+Commands and recorded results:
+
+| Command | Result | Evidence |
+|---|---:|---|
+| `env PYTHONPATH=src python -m pytest tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py` | `6 passed`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/review_contract_authority_boundaries_pytest.stdout` |
+| `python scripts/run_proof_block.py --block review_contract_authority_boundaries_surface` | `6 passed`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/review_contract_authority_boundaries_surface.stdout` |
+| `python scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=34`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/proof_blocks_check_all.stdout` |
+| `python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY_FULL_READ_MANIFEST.json` | final PASS, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/validate_full_read_manifest_final.stdout` |
+| `python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py` | final PASS, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/validate_surface_records_and_registry_final.stdout` |
+| `git diff --check` | exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/reports/git_diff_check_final.status` |
+
+## What remains unchanged
+
+- No source repair was required or made for row 025.
+- No runtime trading behaviour changed.
+- No broker/order path, capital sizing, risk authority, financial policy, dependency file, VENV, original Atlas/Bridge JSON, generated Atlas slice, vocabulary data/admission, or unrelated refactor work changed.
+- The generated all-surface active-code Atlas remains navigation/scaffold only and is still not accepted as semantic truth.
+
+## Next pointer
+
+`ROADMAP_LEDGER.md` now points to:
+
+`ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED`
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_025_REVIEW_EXPLANATION_LAYER_SURFACE_NEW_TEST_FAMILY_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md =====
+# ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_RECEIPT
+
+## Result
+
+Row `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED` was executed as a bounded review/explanation transform-required Tier A family pass.
+
+Queue linkage:
+
+- `ACATQ-0036`
+- `ACABC-0037`
+- Surface: `5.15 Review and explanation layer`
+- Required action: `write_new_test_family_before_code`
+
+## What changed
+
+- Created row-specific `FULL_READ_MANIFEST` for controlling files and selected material files.
+- Added retained Tier A family `tests/tier_a/review_runtime/test_review_transform_boundary_surface.py` before any source repair.
+- Added proof block `review_transform_boundary_surface` to `config/proof_blocks.yaml`.
+- Added retained-test registry admission for `review_transform_boundary_surface` and raised Tier A registry count to `110` in `config/retained_test_registry.yaml`.
+- Added read-adjudicated active-code Atlas surface record `ACATP-026-0001`.
+- Updated `PLANS.md` and `ROADMAP_LEDGER.md` to advance the live pointer to `ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE`.
+
+## Files read in full under manifest
+
+The row 026 `FULL_READ_MANIFEST` records full reads for controlling files and selected material files, including:
+
+- `AGENTS.md`
+- `PLANS.md`
+- `ROADMAP_LEDGER.md`
+- `docs/08_TESTING_AND_PROMOTION_CORE.md`
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`
+- `NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md`
+- `config/proof_blocks.yaml`
+- `config/retained_test_registry.yaml`
+- `var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_queue.json`
+- `var/audit/atlas_surface_slices/slices/review_and_explanation_layer.json`
+- selected active review/replay source files under `src/nvda_desk/downstream/`, `src/nvda_desk/services/`, `src/nvda_desk/contracts/`, `src/nvda_desk/analysis/replay/`, `src/nvda_desk/persistence/`, and `src/nvda_desk/repositories/`
+- selected existing review/replay Tier A tests
+- `tests/tier_a/review_runtime/test_review_transform_boundary_surface.py`
+- `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/review_transform_boundary_active_code_atlas_records.json`
+- this receipt
+
+## Validation
+
+Commands and recorded results:
+
+| Command | Result | Evidence |
+|---|---:|---|
+| `env PYTHONPATH=src python -m pytest tests/tier_a/review_runtime/test_review_transform_boundary_surface.py` | `3 passed`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/review_transform_boundary_pytest.stdout` |
+| `python scripts/run_proof_block.py --block review_transform_boundary_surface` | `3 passed`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/review_transform_boundary_surface.stdout` |
+| `python scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=35`, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/proof_blocks_check_all.stdout` |
+| `python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/full_read_manifests/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_FULL_READ_MANIFEST.json` | final PASS, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/validate_full_read_manifest_final.stdout` |
+| `python var/audit/active_code_atlas_001/tools/validate_surface_records_and_registry.py` | final PASS, exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/validate_surface_records_and_registry_final.stdout` |
+| `git diff --check` | exit `0` | `var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/reports/git_diff_check_final.status` |
+
+## What remains unchanged
+
+- No source repair was required or made for row 026.
+- No runtime trading behaviour changed.
+- No broker/order path, capital sizing, risk authority, financial policy, dependency file, VENV, original Atlas/Bridge JSON, generated Atlas slice, vocabulary data/admission, or unrelated refactor work changed.
+- The generated all-surface active-code Atlas remains navigation/scaffold only and is still not accepted as semantic truth.
+
+## Next pointer
+
+`ROADMAP_LEDGER.md` now points to:
+
+`ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_027_DYNAMIC_COEFFICIENT_MODIFIER_AUTHORITY_SURFACE`
+
+===== END var/audit/active_code_atlas_001/review_explanation_layer_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_026_REVIEW_EXPLANATION_LAYER_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md =====
+
+===== BEGIN src/nvda_desk/contracts/review_replay.py =====
+"""Contracts for deterministic imported-module review replay comparisons."""
+
+from __future__ import annotations
+
+from typing import Literal
+
+from pydantic import BaseModel, ConfigDict, Field
+
+CitationAdmissionClass = Literal["admitted_partial", "rejected", "superseded", "reserved"]
+CitationDecisionStatus = Literal["accepted_for_review_only", "rejected", "superseded", "reserved"]
+
+
+class ImportedModuleCitation(BaseModel):
+    """One imported-module claim cited during review-only replay work."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_identifier: str = Field(min_length=1)
+    imported_module: str = Field(min_length=1)
+    cited_claim: str = Field(min_length=1)
+
+
+class ReviewReplayDecision(BaseModel):
+    """PM or review decision attached to one imported-module citation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_identifier: str = Field(min_length=1)
+    decision_id: str = Field(min_length=1)
+    admission_class: CitationAdmissionClass
+    status: CitationDecisionStatus
+    rejection_reason: str | None = None
+
+
+class ImportedModuleCitationTrace(BaseModel):
+    """Traceable citation row joined to its governing review-replay decision."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    source_identifier: str = Field(min_length=1)
+    imported_module: str = Field(min_length=1)
+    cited_claim: str = Field(min_length=1)
+    decision_id: str = Field(min_length=1)
+    admission_class: CitationAdmissionClass
+    rejection_or_supersession_status: CitationDecisionStatus
+    rejection_reason: str | None = None
+
+
+class ReviewReplayComparisonResult(BaseModel):
+    """Deterministic comparison result for imported-module citation replay."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    compared_source_identifiers: list[str] = Field(default_factory=list)
+    missing_decision_source_identifiers: list[str] = Field(default_factory=list)
+    citation_traces: list[ImportedModuleCitationTrace] = Field(default_factory=list)
+    promoted_to_runtime: bool = False
+    runtime_side_effects: list[str] = Field(default_factory=list)
+
+===== END src/nvda_desk/contracts/review_replay.py =====
+
+===== BEGIN src/nvda_desk/contracts/replay.py =====
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict, Field
+
+
+class ReplayPacketLineage(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    packet_ids: list[str] = Field(default_factory=list)
+    replay_run_id: str | None = None
+
+===== END src/nvda_desk/contracts/replay.py =====
+
+===== BEGIN src/nvda_desk/contracts/trace_review.py =====
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict, Field
+
+
+class BoundedTraceRunResult(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    scenario_id: str
+    permission_state: str = "unknown"
+    active_playbook_ids: list[str] = Field(default_factory=list)
+    final_risk_action: str = "unknown"
+    capital_deployment_action: str = "unknown"
+    summary: str | None = None
+
+
+class BoundedTraceReviewReport(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    runs: list[BoundedTraceRunResult] = Field(default_factory=list)
+    narrative_summary: str | None = None
+
+
+class BoundedTraceScenario(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    scenario_id: str
+    description: str | None = None
+
+
+class BoundedTraceFixturePack(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    scenario_ids: list[str] = Field(default_factory=list)
+    scenarios: list[BoundedTraceScenario] = Field(default_factory=list)
+
+===== END src/nvda_desk/contracts/trace_review.py =====
+
+===== BEGIN src/nvda_desk/services/downstream_review_service.py =====
+"""Coordinate bounded downstream review receipts only."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.downstream import (
+    DownstreamArchitectureReceipt,
+    DownstreamLiveInventorySnapshot,
+    DownstreamOpeningSnapshot,
+)
+
+
+class DownstreamReviewService:
+    """Build downstream architecture receipts without behavioural policy."""
+
+    def build_receipt(
+        self,
+        *,
+        opening_snapshot: DownstreamOpeningSnapshot,
+        live_inventory_snapshot: DownstreamLiveInventorySnapshot,
+    ) -> DownstreamArchitectureReceipt:
+        return DownstreamArchitectureReceipt(
+            opening_snapshot=opening_snapshot,
+            live_inventory_snapshot=live_inventory_snapshot,
+        )
+
+===== END src/nvda_desk/services/downstream_review_service.py =====
+
+===== BEGIN src/nvda_desk/replay/review_compare.py =====
+"""Deterministic review-replay comparison services."""
+
+from __future__ import annotations
+
+from collections.abc import Iterable
+
+from nvda_desk.contracts.review_replay import (
+    ImportedModuleCitation,
+    ReviewReplayComparisonResult,
+    ReviewReplayDecision,
+)
+from nvda_desk.review.imported_module_citations import map_imported_module_citations
+
+
+def compare_imported_module_review_replay(
+    *,
+    citations: Iterable[ImportedModuleCitation],
+    decisions: Iterable[ReviewReplayDecision],
+) -> ReviewReplayComparisonResult:
+    """Compare imported-module citation claims against review decisions without runtime promotion."""
+
+    citation_list = sorted(list(citations), key=lambda row: row.source_identifier)
+    decision_sources = {decision.source_identifier for decision in decisions}
+    compared_sources = [citation.source_identifier for citation in citation_list]
+    missing_sources = sorted(set(compared_sources) - decision_sources)
+    traces = []
+    if not missing_sources:
+        traces = map_imported_module_citations(citations=citation_list, decisions=decisions)
+    return ReviewReplayComparisonResult(
+        compared_source_identifiers=compared_sources,
+        missing_decision_source_identifiers=missing_sources,
+        citation_traces=traces,
+        promoted_to_runtime=False,
+        runtime_side_effects=[],
+    )
+
+===== END src/nvda_desk/replay/review_compare.py =====
+
+===== BEGIN src/nvda_desk/testing/bounded_trace_review.py =====
+"""Build deterministic bounded-trace review reports."""
+
+from __future__ import annotations
+
+from collections.abc import Iterable
+
+from nvda_desk.contracts.trace_review import BoundedTraceReviewReport, BoundedTraceRunResult
+
+
+class BoundedTraceReviewService:
+    """Aggregate bounded-trace run results into one review report."""
+
+    def build_report(
+        self,
+        *,
+        runs: Iterable[BoundedTraceRunResult],
+        narrative_summary: str | None = None,
+    ) -> BoundedTraceReviewReport:
+        return BoundedTraceReviewReport(runs=list(runs), narrative_summary=narrative_summary)
+
+
+__all__ = ["BoundedTraceReviewService", "BoundedTraceReviewReport", "BoundedTraceRunResult"]
+
+===== END src/nvda_desk/testing/bounded_trace_review.py =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_contract_models.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+from pydantic import ValidationError
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_review_contract_module_exports_preserved_review_models() -> None:
+    contracts = _require_module("nvda_desk.contracts.review")
+    assert contracts.__name__ == "nvda_desk.contracts.review"
+    for attr_name in (
+        "ReviewPacket",
+        "ReviewLineage",
+        "PromotionEvidence",
+        "FailureTaxonomyRecord",
+        "EconomicAccountabilityRecord",
+        "EffectivePolicySnapshot",
+        "ReviewLineagePacket",
+        "PacketLineageSurface",
+    ):
+        assert _require_attr(contracts, attr_name) is getattr(contracts, attr_name)
+
+    effective_policy = _require_attr(contracts, "EffectivePolicySnapshot")
+    assert effective_policy is getattr(contracts, "EffectivePolicySnapshot")
+    review_lineage = _require_attr(contracts, "ReviewLineagePacket")
+    assert review_lineage is getattr(contracts, "ReviewLineagePacket")
+    assert "resolved_coefficients" in effective_policy.model_fields
+    assert "resolved_coefficients" in review_lineage.model_fields
+
+
+def test_review_failure_taxonomy_carries_bounded_review_outcomes() -> None:
+    contracts = _require_module("nvda_desk.contracts.review")
+    assert contracts.__name__ == "nvda_desk.contracts.review"
+    failure_record = _require_attr(contracts, "FailureTaxonomyRecord")
+    assert failure_record is getattr(contracts, "FailureTaxonomyRecord")
+    failure_class = _require_attr(contracts, "ReviewFailureClass")
+    assert failure_class is getattr(contracts, "ReviewFailureClass")
+    resolution_class = _require_attr(contracts, "ReviewResolutionClass")
+    assert resolution_class is getattr(contracts, "ReviewResolutionClass")
+
+    bad_read = failure_record(
+        primary_failure_class=failure_class.DATA_PROVENANCE_FAILURE,
+        resolution=resolution_class.NON_ACTION,
+        non_action=True,
+        evidence_floor={"minimum_evidence": ["source timestamp missing"]},
+        rationale=["bad read blocked the decision basis"],
+    )
+    bad_expression = failure_record(
+        primary_failure_class=failure_class.EXECUTION_EXPRESSION_FAILURE,
+        resolution=resolution_class.BLOCKED_TRADE,
+        blocked_trade=True,
+        rationale=["expression failed at execution handoff"],
+    )
+    bad_sizing = failure_record(
+        primary_failure_class=failure_class.SIZING_FAILURE,
+        resolution=resolution_class.UNRESOLVED,
+        rationale=["sizing envelope could not be reconstructed"],
+    )
+    bad_luck = failure_record(
+        resolution=resolution_class.BAD_LUCK,
+        rationale=["decision basis was reconstructable and no failure class was assigned"],
+    )
+
+    assert bad_read.model_dump(mode="json")["primary_failure_class"] == "data_provenance_failure"
+    assert bad_read.model_dump(mode="json")["non_action"] is True
+    assert (
+        bad_expression.model_dump(mode="json")["primary_failure_class"]
+        == "execution_expression_failure"
+    )
+    assert bad_expression.model_dump(mode="json")["blocked_trade"] is True
+    assert bad_sizing.model_dump(mode="json")["primary_failure_class"] == "sizing_failure"
+    assert bad_luck.model_dump(mode="json")["resolution"] == "bad_luck"
+
+    with pytest.raises(ValidationError):
+        failure_record(primary_failure_class="unbounded_failure", resolution="unknown")
+
+
+def test_economic_accountability_carries_non_action_review_tag() -> None:
+    contracts = _require_module("nvda_desk.contracts.review")
+    assert contracts.__name__ == "nvda_desk.contracts.review"
+    accountability_record = _require_attr(contracts, "EconomicAccountabilityRecord")
+    assert accountability_record is getattr(contracts, "EconomicAccountabilityRecord")
+    contribution_tag = _require_attr(contracts, "EconomicContributionTag")
+    assert contribution_tag is getattr(contracts, "EconomicContributionTag")
+
+    record = accountability_record(
+        diagnosis=contribution_tag.VALUE_ADD,
+        posture=contribution_tag.CAPITAL_PRESERVATION,
+        timing=contribution_tag.NEUTRAL,
+        execution=contribution_tag.VALUE_LEAK,
+        sizing=contribution_tag.UNKNOWN,
+        non_action=contribution_tag.CAPITAL_PRESERVATION,
+    )
+
+    payload = record.model_dump(mode="json")
+    assert payload == {
+        "diagnosis": "value_add",
+        "posture": "capital_preservation",
+        "timing": "neutral",
+        "execution": "value_leak",
+        "sizing": "unknown",
+        "non_action": "capital_preservation",
+    }
+
+    with pytest.raises(ValidationError):
+        accountability_record(non_action="unbounded_non_action_tag")
+
+===== END tests/tier_a/review_runtime/test_review_contract_models.py =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_repository_surface.py =====
+from __future__ import annotations
+
+import pytest
+
+from nvda_desk.repositories.review_repository import ReviewRepository
+
+
+def test_review_repository_rejects_duplicate_ids_and_preserves_copy_boundary() -> None:
+    repository = ReviewRepository()
+    source = {"review_status": "recorded", "lineage": {"source": "review-stage"}}
+
+    repository.write_packet("review-1", source)
+    source["lineage"]["source"] = "mutated"
+    readback = repository.read_packet("review-1")
+    assert readback == {
+        "review_status": "recorded",
+        "lineage": {"source": "review-stage"},
+    }
+    assert readback is not None
+    readback["lineage"]["source"] = "readback-mutated"
+
+    assert repository.read_packet("review-1") == {
+        "review_status": "recorded",
+        "lineage": {"source": "review-stage"},
+    }
+    with pytest.raises(ValueError, match="duplicate packet_id"):
+        repository.write_packet("review-1", {"review_status": "replacement"})
+
+
+def test_review_repository_lists_packets_in_insertion_order() -> None:
+    repository = ReviewRepository()
+
+    repository.write_packet("review-1", {"sequence": 1})
+    repository.write_packet("review-2", {"sequence": 2})
+
+    listed = repository.list_packets()
+    listed[0]["sequence"] = 99
+    assert repository.list_packets() == [{"sequence": 1}, {"sequence": 2}]
+
+
+def test_review_repository_rejects_empty_id_and_duplicate_after_normalisation() -> None:
+    repository = ReviewRepository()
+
+    with pytest.raises(ValueError, match="packet_id must be non-empty"):
+        repository.write_packet("  ", {"review_status": "recorded"})
+
+    repository.write_packet("review-1", {"sequence": 1})
+    with pytest.raises(ValueError, match="duplicate packet_id: review-1"):
+        repository.write_packet(" review-1 ", {"sequence": 2})
+
+    assert repository.read_packet(" review-1 ") == {"sequence": 1}
+
+===== END tests/tier_a/review_runtime/test_review_repository_surface.py =====
+
+===== BEGIN tests/tier_a/review_runtime/test_review_stage_surface.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_review_stage_surface_is_present() -> None:
+    review_stage = _require_module("nvda_desk.downstream.review_stage")
+    assert review_stage.__name__ == "nvda_desk.downstream.review_stage"
+    assert _require_attr(review_stage, "ReviewStageService") is getattr(review_stage, "ReviewStageService")
+    for attr_name in ("build_review_packet", "attach_lineage", "attach_imported_citations"):
+        assert _require_attr(review_stage, attr_name) is getattr(review_stage, attr_name)
+
+===== END tests/tier_a/review_runtime/test_review_stage_surface.py =====
+
+===== BEGIN tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_downstream_review_stage_service_surface_is_present() -> None:
+    review_stage = _require_module("nvda_desk.downstream.review_stage")
+    assert review_stage.__name__ == "nvda_desk.downstream.review_stage"
+    assert _require_attr(review_stage, "ReviewStageService") is getattr(review_stage, "ReviewStageService")
+
+===== END tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py =====
+
+===== BEGIN tests/tier_a/analysis/test_replay_evaluation_surface.py =====
+from __future__ import annotations
+
+import ast
+import importlib
+from pathlib import Path
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def _python_files(*roots: str) -> list[Path]:
+    files: list[Path] = []
+    for root in roots:
+        files.extend(sorted(Path(root).rglob("*.py")))
+    return files
+
+
+def _imports_package(path: Path, package_name: str) -> bool:
+    tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                if alias.name == package_name or alias.name.startswith(f"{package_name}."):
+                    return True
+        if isinstance(node, ast.ImportFrom) and node.module:
+            if node.module == package_name or node.module.startswith(f"{package_name}."):
+                return True
+    return False
+
+
+def test_replay_evaluation_surface_is_present() -> None:
+    package_module = _require_module("nvda_desk.analysis.replay")
+    assert package_module.__name__ == "nvda_desk.analysis.replay"
+    service_module = _require_module("nvda_desk.analysis.replay.service")
+    assert service_module.__name__ == "nvda_desk.analysis.replay.service"
+
+    assert _require_attr(package_module, "ReplayEvaluationService") is getattr(package_module, "ReplayEvaluationService")
+    assert _require_attr(package_module, "ReplayComparisonResult") is getattr(package_module, "ReplayComparisonResult")
+    assert _require_attr(package_module, "describe_replay_fixture_source") is getattr(package_module, "describe_replay_fixture_source")
+    assert _require_attr(service_module, "ReplayFixtureSource") is getattr(service_module, "ReplayFixtureSource")
+
+
+def test_replay_evaluation_surface_stays_analysis_only_and_outside_scenarios() -> None:
+    service_module = _require_module("nvda_desk.analysis.replay.service")
+    assert service_module.__name__ == "nvda_desk.analysis.replay.service"
+
+    service = _require_attr(service_module, "ReplayEvaluationService")()
+    fixture_source = service.describe_fixture_source()
+    comparison = service.compare_outputs(
+        baseline={"packet_id": "pkt-1", "status": "ok"},
+        candidate={"packet_id": "pkt-1", "status": "different", "extra": True},
+    )
+    lineage_key = "packet" "_ids"
+    lineage = service.build_lineage(**{lineage_key: ["pkt-1"], "replay_run_id": "replay-1"})
+
+    assert fixture_source.fixture_root.name == "replay"
+    assert fixture_source.readme_path.name == "README.md"
+    assert comparison.differing_fields == ("status",)
+    assert comparison.candidate_only_fields == ("extra",)
+    assert getattr(lineage, lineage_key) == ["pkt-1"]
+    assert lineage.replay_run_id == "replay-1"
+    assert not Path("src/nvda_desk/analysis/scenarios").exists()
+
+    scoped_files = _python_files("src/nvda_desk", "tests/tier_a", "tests/tier_b")
+    scenario_importers = [
+        str(path) for path in scoped_files if _imports_package(path, "nvda_desk.analysis.scenarios")
+    ]
+    assert scenario_importers == []
+
+===== END tests/tier_a/analysis/test_replay_evaluation_surface.py =====
+
+===== BEGIN tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_bounded_trace_review_surfaces_are_present() -> None:
+    review_module = _require_module("nvda_desk.testing.bounded_trace_review")
+    contracts = _require_module("nvda_desk.contracts.review")
+
+    _require_attr(review_module, "BoundedTraceReviewService")
+    _require_attr(review_module, "BoundedTraceReviewReport")
+    _require_attr(review_module, "BoundedTraceRunResult")
+    _require_attr(contracts, "ReviewPacket")
+
+
+def test_bounded_trace_review_report_stays_deterministic_and_review_facing() -> None:
+    review_module = _require_module("nvda_desk.testing.bounded_trace_review")
+    report_model = _require_attr(review_module, "BoundedTraceReviewReport")
+    run_model = _require_attr(review_module, "BoundedTraceRunResult")
+
+    assert hasattr(report_model, "model_fields")
+    assert hasattr(run_model, "model_fields")
+    assert "runs" in report_model.model_fields
+    assert "narrative_summary" in report_model.model_fields
+    assert "scenario_id" in run_model.model_fields
+    assert "summary" in run_model.model_fields
+
+===== END tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py =====
+
+===== BEGIN tests/tier_b/review_lineage/test_bounded_trace_review_regime.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_bounded_trace_review_regime_surfaces_are_present() -> None:
+    review_module = _require_module("nvda_desk.testing.bounded_trace_review")
+    contracts = _require_module("nvda_desk.contracts.trace_review")
+
+    _require_attr(review_module, "BoundedTraceReviewService")
+    run_model = _require_attr(contracts, "BoundedTraceRunResult")
+    assert hasattr(run_model, "model_fields")
+
+
+def test_bounded_trace_review_run_result_keeps_human_sanity_outputs_visible() -> None:
+    contracts = _require_module("nvda_desk.contracts.trace_review")
+    run_model = _require_attr(contracts, "BoundedTraceRunResult")
+
+    assert "scenario_id" in run_model.model_fields
+    assert "permission_state" in run_model.model_fields
+    assert "active_playbook_ids" in run_model.model_fields
+    assert "final_risk_action" in run_model.model_fields
+    assert "capital_deployment_action" in run_model.model_fields
+
+===== END tests/tier_b/review_lineage/test_bounded_trace_review_regime.py =====
+
+===== BEGIN tests/tier_b/review_lineage/test_review_effective_policy_lineage.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_review_effective_policy_lineage_surfaces_are_present() -> None:
+    review_contracts = _require_module("nvda_desk.contracts.review")
+    modifier_contracts = _require_module("nvda_desk.contracts.modifiers")
+    review_service = _require_module("nvda_desk.services.review_explanation_service")
+    coefficient_contracts = _require_module("nvda_desk.contracts." + "coefficient_authority")
+    coefficient_service = _require_module(
+        "nvda_desk.services." + "coefficient_authority" + "_service"
+    )
+
+    _require_attr(review_contracts, "EffectivePolicySnapshot")
+    _require_attr(review_contracts, "ReviewLineagePacket")
+    _require_attr(modifier_contracts, "ModifierRuntimePacket")
+    _require_attr(modifier_contracts, "ResolvedCoefficientValue")
+    _require_attr(coefficient_contracts, "CoefficientAuthorityDocument")
+    _require_attr(coefficient_service, "CoefficientAuthorityService")
+    _require_attr(review_service, "ReviewExplanationService")
+
+
+def test_review_effective_policy_lineage_keeps_resolved_surface_visibility() -> None:
+    review_contracts = _require_module("nvda_desk.contracts.review")
+
+    effective_policy = _require_attr(review_contracts, "EffectivePolicySnapshot")
+    review_lineage = _require_attr(review_contracts, "ReviewLineagePacket")
+
+    assert hasattr(effective_policy, "model_fields")
+    assert hasattr(review_lineage, "model_fields")
+    assert "resolved_surfaces" in effective_policy.model_fields
+    assert "resolved_surfaces" in review_lineage.model_fields
+    assert "resolved_coefficients" in effective_policy.model_fields
+    assert "resolved_coefficients" in review_lineage.model_fields
+
+
+def test_review_explanation_keeps_effective_coefficient_lineage_visible() -> None:
+    review_contracts = _require_module("nvda_desk.contracts.review")
+    modifier_contracts = _require_module("nvda_desk.contracts.modifiers")
+    review_service_module = _require_module("nvda_desk.services.review_explanation_service")
+
+    review_packet = _require_attr(review_contracts, "ReviewPacket")
+    effective_policy = _require_attr(review_contracts, "EffectivePolicySnapshot")
+    review_lineage = _require_attr(review_contracts, "ReviewLineagePacket")
+    packet_lineage = _require_attr(review_contracts, "PacketLineageSurface")
+    resolved_coefficient = _require_attr(modifier_contracts, "ResolvedCoefficientValue")
+    service_class = _require_attr(review_service_module, "ReviewExplanationService")
+
+    coefficient = resolved_coefficient(
+        coefficient_id="max_risk_per_trade",
+        owner_stage="posture",
+        surface_class="mutable_runtime_surface",
+        baseline_value=0.35,
+        effective_value=0.25,
+        transform_family="clamp",
+        modifier_inputs=["negative_gamma_stress"],
+        workbook_ref="Runtime_Surface_Drivers!B10:H10",
+        runtime_mutable=True,
+    )
+    explanation = service_class().build_explanation(
+        review_packet=review_packet(packet_id="review-1", summary="bounded review"),
+        effective_policy=effective_policy(
+            policy_ids=["negative_gamma_stress"],
+            resolved_surfaces=["max_risk_per_trade", "hedge_required"],
+            resolved_coefficients=[coefficient],
+        ),
+        review_lineage=review_lineage(
+            event_lineage_keys=["event-1"],
+            resolved_surfaces=["max_risk_per_trade", "hedge_required"],
+            modifier_policy_ids=["negative_gamma_stress"],
+            resolved_coefficients=[coefficient],
+        ),
+        packet_lineage=packet_lineage(
+            **{"packet" "_ids": ["packet-1"], "source_packet" "_ids": ["source-1"]}
+        ),
+    )
+
+    assert explanation["resolved_surfaces"] == ["max_risk_per_trade", "hedge_required"]
+    assert explanation["resolved_coefficients"][0]["baseline_value"] == 0.35
+    assert explanation["resolved_coefficients"][0]["effective_value"] == 0.25
+    assert explanation["resolved_coefficients"][0]["transform_family"] == "clamp"
+    assert explanation["resolved_coefficients"][0]["modifier_inputs"] == ["negative_gamma_stress"]
+
+===== END tests/tier_b/review_lineage/test_review_effective_policy_lineage.py =====
+
+===== BEGIN tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py =====
+from __future__ import annotations
+
+import importlib
+from pathlib import Path
+
+import pytest
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_review_replay_dmp_v3_lineage_surfaces_are_present() -> None:
+    review_contracts = _require_module("nvda_desk.contracts.review")
+    replay_contracts = _require_module("nvda_desk.contracts.replay")
+    packet_contracts = _require_module("nvda_desk.packets.dmp_packets")
+
+    _require_attr(review_contracts, "PacketLineageSurface")
+    _require_attr(replay_contracts, "ReplayPacketLineage")
+    _require_attr(packet_contracts, "DeskModulePacketV3")
+
+
+def test_review_replay_dmp_v3_fixture_root_is_present() -> None:
+    fixture_root = Path("fixtures/dmp_v3")
+    if not fixture_root.exists():
+        pytest.fail("Required fixture root is not implemented: fixtures/dmp_v3")
+
+===== END tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py =====
+
+===== BEGIN tests/tier_b/review_replay/test_tranche_a_review_replay.py =====
+from __future__ import annotations
+
+from nvda_desk.contracts.review_replay import ImportedModuleCitation, ReviewReplayDecision
+from nvda_desk.replay.review_compare import compare_imported_module_review_replay
+from nvda_desk.review.imported_module_citations import map_imported_module_citations
+
+
+def _citations() -> list[ImportedModuleCitation]:
+    return [
+        ImportedModuleCitation(
+            source_identifier="atlas/module-a.py:10-20",
+            imported_module="legacy.module_a",
+            cited_claim="legacy module A produced review signal",
+        ),
+        ImportedModuleCitation(
+            source_identifier="atlas/module-b.py:5-7",
+            imported_module="legacy.module_b",
+            cited_claim="legacy module B was rejected",
+        ),
+    ]
+
+
+def test_review_replay_compares_imported_module_claims_without_runtime_promotion() -> None:
+    decisions = [
+        ReviewReplayDecision(
+            source_identifier="atlas/module-a.py:10-20",
+            decision_id="decision-a",
+            admission_class="admitted_partial",
+            status="accepted_for_review_only",
+        ),
+        ReviewReplayDecision(
+            source_identifier="atlas/module-b.py:5-7",
+            decision_id="decision-b",
+            admission_class="rejected",
+            status="superseded",
+        ),
+    ]
+
+    result = compare_imported_module_review_replay(citations=_citations(), decisions=decisions)
+
+    assert result.promoted_to_runtime is False
+    assert result.runtime_side_effects == []
+    assert result.compared_source_identifiers == [
+        "atlas/module-a.py:10-20",
+        "atlas/module-b.py:5-7",
+    ]
+    assert result.missing_decision_source_identifiers == []
+
+
+def test_imported_module_citations_are_traceable_to_source_and_decision() -> None:
+    mapped = map_imported_module_citations(
+        citations=_citations(),
+        decisions=[
+            ReviewReplayDecision(
+                source_identifier="atlas/module-a.py:10-20",
+                decision_id="decision-a",
+                admission_class="admitted_partial",
+                status="accepted_for_review_only",
+            ),
+            ReviewReplayDecision(
+                source_identifier="atlas/module-b.py:5-7",
+                decision_id="decision-b",
+                admission_class="rejected",
+                status="superseded",
+                rejection_reason="native owner already exists",
+            ),
+        ],
+    )
+
+    assert [row.source_identifier for row in mapped] == [
+        "atlas/module-a.py:10-20",
+        "atlas/module-b.py:5-7",
+    ]
+    assert [row.decision_id for row in mapped] == ["decision-a", "decision-b"]
+    assert [row.admission_class for row in mapped] == ["admitted_partial", "rejected"]
+    assert mapped[1].rejection_or_supersession_status == "superseded"
+    assert mapped[1].rejection_reason == "native owner already exists"
+
+
+def test_review_replay_result_is_deterministic_for_same_inputs() -> None:
+    decisions = [
+        ReviewReplayDecision(
+            source_identifier="atlas/module-b.py:5-7",
+            decision_id="decision-b",
+            admission_class="rejected",
+            status="superseded",
+        ),
+        ReviewReplayDecision(
+            source_identifier="atlas/module-a.py:10-20",
+            decision_id="decision-a",
+            admission_class="admitted_partial",
+            status="accepted_for_review_only",
+        ),
+    ]
+
+    first = compare_imported_module_review_replay(citations=_citations(), decisions=decisions)
+    second = compare_imported_module_review_replay(
+        citations=_citations(), decisions=list(reversed(decisions))
+    )
+
+    assert first.model_dump() == second.model_dump()
+
+===== END tests/tier_b/review_replay/test_tranche_a_review_replay.py =====
+
+===== BEGIN var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_EXIT_CLOSE_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+# FWD-017 Exit and Close Ordered Replay Closure Receipt
+
+Created: 2026-05-15T07:09:49Z
+
+## Result
+
+`bounded_closed_current`
+
+## Scope
+
+Opened only `FWD-017 — 5.14 Exit and close architecture`. `FWD-018 — 5.15 Review and explanation layer` remains unopened.
+
+## Authority and intake
+
+- Full-read manifest: `FWD017_ORDERED_REPLAY_FULL_READ_MANIFEST.json`.
+- Evidence inventory: `FWD017_EVIDENCE_INVENTORY.json`.
+- Three-way comparison: `FWD017_THREE_WAY_COMPARISON_REPORT.json`.
+- Boundary receipt: `FWD017_BOUNDARY_RECEIPT.md`.
+
+## Semantic finding
+
+Current native exit/close behaviour is a bounded downstream exit/close seam. It consumes live inventory/position trace material, placement readiness, capital deployment receipt, parallel risk packet, playbook metadata and bounded close policy identifiers; it emits exit/close policy decisions, protocol-only close handoff material, replayable receipts and closure fingerprints.
+
+The replay ruled out broker/order execution, live order placement, hidden live-inventory mutation, capital sizing recomputation, raw source ingestion, serial candidate formation, parallel-risk recomputation, and FWD-018 review/explanation mutation.
+
+## Atlas / Bridge comparison
+
+- Selected Atlas/Bridge records covered: 90/90 through current surface group overlay plus direct row043 transform-boundary active-code record.
+- Unresolved selected IDs: 0.
+- Direct linked Atlas IDs: 1.
+- Linked Bridge/queue records: 2.
+- Grouped overlay coverage: 90.
+- Comparison status counts: `transform_required=1`.
+- Bridge/native satisfaction status counts: `missing=47`, `transform_required=43`.
+
+Comparison-status counts and Bridge/native satisfaction-status counts are intentionally kept separate. No one-to-one Bridge links were invented.
+
+## Proof
+
+Required closure proof commands with captured exit code 0:
+
+- `git diff --check`;
+- `PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean`;
+- `PYTHONPATH=src python scripts/run_proof_block.py --block exit_close_architecture_surface` — 134 passed;
+- `PYTHONPATH=src python scripts/run_proof_block.py --block exit_close_transform_boundary_surface` — 45 passed;
+- targeted exit/close pytest — 85 passed;
+- manifest validator — PASS;
+- `PYTHONPATH=src python scripts/run_proof_block.py --check-all` — PASS count 46.
+
+Optional full Tier A/B pytest attempts that did not return captured exit statuses before tool timeout/abort are recorded in `reports/` with status `124` and are not counted as pass proof.
+
+## Mutation statement
+
+No source, tests, config, runtime semantics, vocabulary artefacts, original Atlas/Bridge JSON, generated slices, or dependencies were intentionally changed. The replay changed `ROADMAP_LEDGER.md`, `NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md`, and FWD-017 audit artefacts only.
+
+## Boundary statement
+
+FWD-018 remains unopened. Review/explanation authority is not claimed by this receipt.
+
+## Batched broad proof hardening update — 2026-05-15
+
+A bounded proof-hardening pass added directory-level Tier A/Tier B batch proof after PM/user rejection of monolithic timeout evidence.
+
+- audit directory: `var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/`;
+- proof summary: `FWD017_BATCHED_BROAD_PROOF_SUMMARY.json`;
+- receipt: `FWD017_BATCHED_BROAD_PROOF_RECEIPT.md`;
+- Tier A batches: `31` with captured exit code `0` for every batch and `563` total passed tests across batch summaries;
+- Tier B batches: `7` with captured exit code `0` for every batch and `49` total passed tests across batch summaries;
+- total non-zero batch exit codes: `0`.
+
+The earlier monolithic timeout captures remain non-proof. FWD-018 remains unopened.
+
+===== END var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_EXIT_CLOSE_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_BROAD_PROOF_RECEIPT.md =====
+# FWD-017 Batched Broad Proof Hardening Receipt
+
+Created: 2026-05-15T07:28:21Z
+
+## Scope
+
+This is a bounded proof-evidence hardening pass for `FWD-017 — 5.14 Exit and close architecture` after PM/user rejection of monolithic Tier A/B timeout evidence. It does not open `FWD-018` and does not change runtime source/test/config semantics.
+
+## Starting state
+
+- starting branch: `main`;
+- starting HEAD: `97ca0b332f097bc433394477b225b76ad6bc826a`;
+- FWD-017 prior state: `bounded_closed_current`;
+- FWD-018 prior state: `planned_forward_reconciliation`, unopened.
+
+## Proof hardening result
+
+The previous optional monolithic Tier A/B captures that lacked exit statuses remain non-proof. This pass adds directory-level batched proof with explicit `.status` files for every Tier A and Tier B top-level test directory.
+
+- Tier A batches: `31`;
+- Tier A passed total from captured batch summaries: `563`;
+- Tier B batches: `7`;
+- Tier B passed total from captured batch summaries: `49`;
+- total batches: `38`;
+- non-zero batch exit codes: `0`.
+
+All batched Tier A/B pytest commands have captured exit code `0`.
+
+## Supporting proof retained
+
+- `git diff --check` exit `0`;
+- `PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean` exit `0`;
+- `PYTHONPATH=src python scripts/run_proof_block.py --block exit_close_architecture_surface` exit `0`;
+- `PYTHONPATH=src python scripts/run_proof_block.py --block exit_close_transform_boundary_surface` exit `0`;
+- `PYTHONPATH=src python scripts/run_proof_block.py --check-all` exit `0`.
+
+## Boundary statement
+
+`FWD-018` remains unopened. No source, test, config, runtime semantics, vocabulary artefacts, original Atlas/Bridge JSON, generated slices, dependencies, proof registry, or retained-test registry were intentionally changed.
+
+## Artefacts
+
+- `FWD017_BATCHED_PROOF_READ_MANIFEST.json`;
+- `FWD017_BATCHED_BROAD_PROOF_SUMMARY.json`;
+- `FWD017_BATCHED_PROOF_COMMAND_LOG.md`;
+- `FWD017_BATCHED_BROAD_PROOF_RECEIPT.md`;
+- `reports/` containing `.command`, `.stdout`, `.stderr`, `.status`, timing files, and batch progress/summary outputs.
+
+===== END var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_BROAD_PROOF_RECEIPT.md =====

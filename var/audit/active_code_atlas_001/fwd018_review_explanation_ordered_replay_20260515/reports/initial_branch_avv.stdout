@@ -1,0 +1,7 @@
+  main                                                     01af85e Merge FWD-017 batched proof hardening
+  worker/fwd-003-through-fwd-009-closure-continuation      c8c7825 Close FWD-005 closure gate
+  worker/fwd006-fwd008-closure-20260514                    c13f491 Close FWD-006 through FWD-008 gates
+  worker/fwd006-fwd008-forensic-audit-20260514             c5c7e0c Record FWD-006 through FWD-008 forensic audit hold
+  worker/fwd006-ordered-replay-20260514                    fa3fe10 Close FWD-006 ordered replay gate
+* worker/fwd018-review-explanation-ordered-replay-20260515 01af85e Merge FWD-017 batched proof hardening
+  worker/vocabulary-suppression-removal-20260514           15fe16a Remove vocabulary synonym suppression logic
