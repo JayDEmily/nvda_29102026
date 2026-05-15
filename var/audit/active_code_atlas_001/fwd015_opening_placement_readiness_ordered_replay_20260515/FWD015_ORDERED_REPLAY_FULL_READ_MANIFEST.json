@@ -1,0 +1,523 @@
+{
+  "schema_version": "full_read_manifest_v1",
+  "manifest_id": "FWD015_ORDERED_REPLAY_FULL_READ_MANIFEST",
+  "created_utc": "2026-05-15T02:47:39.178971+00:00",
+  "target_tranche": "FWD-015 \u2014 5.12 Opening architecture and placement readiness ordered replay",
+  "architecture_row": "5.12 Opening architecture and placement readiness",
+  "entry_count": 57,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 8827,
+      "line_count": 184,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 99334,
+      "line_count": 707,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 312763,
+      "line_count": 1996,
+      "sha256": "e51fde239cc055f9c2688a669cefa19cf8ebd99f713a631b8ffdaf3b815e4940",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "README.md",
+      "byte_count": 71,
+      "line_count": 3,
+      "sha256": "a44d697feeb452d41429cd056701ea568ac215b00ab31a15b6300c9bc12a71d9",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "pyproject.toml",
+      "byte_count": 1249,
+      "line_count": 71,
+      "sha256": "e78bb32ac088a884379130b03450fc01d77a6a994281145b6d6c9a14b30df2e6",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "byte_count": 1084,
+      "line_count": 23,
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "byte_count": 5346,
+      "line_count": 142,
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "byte_count": 418,
+      "line_count": 13,
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "byte_count": 5680,
+      "line_count": 159,
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "byte_count": 392,
+      "line_count": 13,
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "byte_count": 7552,
+      "line_count": 186,
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "byte_count": 918,
+      "line_count": 21,
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "byte_count": 5587,
+      "line_count": 147,
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "byte_count": 10717,
+      "line_count": 264,
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "byte_count": 5489,
+      "line_count": 187,
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "byte_count": 2617,
+      "line_count": 39,
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "byte_count": 1944,
+      "line_count": 50,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "byte_count": 2726,
+      "line_count": 33,
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "intent_migration/AGENTS.override.md",
+      "byte_count": 2674,
+      "line_count": 61,
+      "sha256": "30594d481f6c1d0d86eb8d45f2959e21ff93dd8955160a63f5933094c208aa82",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 45809,
+      "line_count": 807,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 25393,
+      "line_count": 195,
+      "sha256": "abccce77e4b3e7847582b9521f47c2e3cf78918221f0bd4e002878de270932e6",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "byte_count": 9921,
+      "line_count": 287,
+      "sha256": "ebaee7d6db27640420b70fd5c13fb1027fc3f94a6dda58451be645e7efb75195",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/contracts/execution.py",
+      "byte_count": 1239,
+      "line_count": 36,
+      "sha256": "f6d316847b81559c9736fb1a3711fd4956559b4acfbb165b6f8f2f76cc23a8b6",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/contracts/capital.py",
+      "byte_count": 6544,
+      "line_count": 179,
+      "sha256": "eaca3aa747495269fec8bc7ba0770711c7cf09260d660506ae10b4df875e34fe",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/domain/downstream/opening.py",
+      "byte_count": 1211,
+      "line_count": 33,
+      "sha256": "370163944681988fcf8fb553283109482038d6e425421f07aea3370abf4b16ca",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/downstream/opening.py",
+      "byte_count": 4360,
+      "line_count": 119,
+      "sha256": "5ea401aac31504b094d100d1bc502da3072a5f698fefe7bd9df34b4a12e4c704",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/services/downstream_opening_service.py",
+      "byte_count": 1431,
+      "line_count": 37,
+      "sha256": "36b921abf7bda44fd9e381b7f8ef264dbf90a2796d4f4eb78de25d83b5a04122",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "src/nvda_desk/adapters/egress/broker_protocol.py",
+      "byte_count": 991,
+      "line_count": 26,
+      "sha256": "7854ba084fe49e566557db037ca8039fc7937efac1db8725422dfeea02f0b5fb",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py",
+      "byte_count": 808,
+      "line_count": 24,
+      "sha256": "964e7b27b4e76efc8639a8318390478e3031629c6629726c37e1c734cf2f308e",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py",
+      "byte_count": 6029,
+      "line_count": 161,
+      "sha256": "818d3d2e8262e70ce7eaa4d24f52812d21b3247b6fac06e25a1d5cc8258b3598",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py",
+      "byte_count": 3822,
+      "line_count": 102,
+      "sha256": "09d3a6dfbcdebaef8ae4bfe236e689847b8e654e0cea32b6e6942f88b8983f9c",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py",
+      "byte_count": 3302,
+      "line_count": 97,
+      "sha256": "b0a0bc6b165e89094004b578a1201e6afd74de976fddc91df2c19f2758e2d21e",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+      "byte_count": 1671,
+      "line_count": 42,
+      "sha256": "3f929592bb82bf058bc93360e4b814f544755f44bb7bd7dc81d1e2af99b8abf8",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/atlas_surface_slices/slices/opening_architecture_and_placement_readiness.json",
+      "byte_count": 750858,
+      "line_count": 19712,
+      "sha256": "922dc71e8adae63865e46c82d3641d4a21611b78927fdd73f5c39aafc61f9490",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface/opening_placement_readiness_active_code_atlas_records.json",
+      "byte_count": 6274,
+      "line_count": 151,
+      "sha256": "fac9e66dd7dbd4bc77ac0eb3f0258904a6ac2a3761b1cdfc66d83e5fab6de35f",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_new_test_family/opening_authority_boundary_active_code_atlas_records.json",
+      "byte_count": 6988,
+      "line_count": 160,
+      "sha256": "bb18e4af02b90848accfde15f3ad12b3e96cf94cbec64b2b1f43116e9376a7a6",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_transform_required/opening_transform_boundary_active_code_atlas_records.json",
+      "byte_count": 7896,
+      "line_count": 183,
+      "sha256": "c0ad7c7c5f3b1ae08742459e392717a26fb333b22da7aa1910bb16bfdeff6808",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/primary_to_bridge_comparison/primary_to_bridge_comparison.json",
+      "byte_count": 18697,
+      "line_count": 470,
+      "sha256": "b1f784bf37ca7028c3fad1e399d5d3c2873d58865e0afdcdee7a174355eb6795",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_040_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_RECEIPT.md",
+      "byte_count": 2212,
+      "line_count": 45,
+      "sha256": "cd676ddee8cb03dc2c2eae6145d14fe18e2f86efea280502ef52aa847795ee15",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_new_test_family/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_041_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_NEW_TEST_FAMILY_RECEIPT.md",
+      "byte_count": 2470,
+      "line_count": 46,
+      "sha256": "b69688fb1a6aad7626f310a3b630eea4c7b4f06bacdfa48ec2d9a7c4cd73fea4",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/opening_architecture_placement_readiness_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_042_OPENING_ARCHITECTURE_PLACEMENT_READINESS_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md",
+      "byte_count": 2484,
+      "line_count": 47,
+      "sha256": "66bdca155013d35b6fd328e1abfed6a7562e964f6ed2934a6bf505dd3c76d87b",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "byte_count": 3820,
+      "line_count": 101,
+      "sha256": "84dd7f1f67e3a3baf585cdccba99c14fdb11dd2c6503af69348ee2d986530640",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "byte_count": 106849,
+      "line_count": 1729,
+      "sha256": "5561fad01d2e846ede1fb87c040d593327167dc459603fc7c36a37505272baab",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_THREE_WAY_COMPARISON_REPORT.json",
+      "byte_count": 14734,
+      "line_count": 347,
+      "sha256": "e4f644a2907467c7a9db4d5ff2bb0df8bda6914a0c371effdc3c2472590b6334",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "byte_count": 6702,
+      "line_count": 80,
+      "sha256": "32ba297f9f619d2520912e1130023b0af5d82d2e46e8adb21de0c3764d0434b9",
+      "full_read": true,
+      "read_method": "current_worker_full_file_read_after_FWD015_ledger_update_for_manifest_freshness",
+      "reason": "FWD-015 governing authority, opening/placement source/test/proof, FWD-014 upstream closure evidence, or Atlas/Bridge comparison evidence required by ordered replay."
+    }
+  ]
+}
