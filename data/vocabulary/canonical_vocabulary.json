@@ -128,7 +128,9 @@
       "category": "protocol_surface",
       "stage_owner": "cross_stage_protocol",
       "maps_to_contract": "DmpV3Packet",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "DMPV3 packet"
+      ],
       "disallowed_phrases": [],
       "notes": []
     },
@@ -313,6 +315,332 @@
       "allowed_aliases": [],
       "disallowed_phrases": [],
       "notes": []
+    },
+    {
+      "canonical_slug": "event_calendar",
+      "canonical_label": "Event Calendar",
+      "category": "reference_data",
+      "stage_owner": "calendar_reference",
+      "maps_to_contract": "EventCalendarProjection",
+      "allowed_aliases": [
+        "event calendar architecture",
+        "event calendar ownership"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.4 and FWD-008 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "raw_signal_families",
+      "canonical_label": "Raw Signal Families",
+      "category": "authority_surface",
+      "stage_owner": "upstream_raw_signal",
+      "maps_to_contract": "RawSignalFamilyCoverage",
+      "allowed_aliases": [
+        "raw signal",
+        "raw signal family"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.3 and FWD-007 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "prepared_ingress",
+      "canonical_label": "Prepared Ingress",
+      "category": "authority_surface",
+      "stage_owner": "prepared_ingress",
+      "maps_to_contract": "PreparedRuntimeContextBuilder",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.5 and FWD-009 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "runtime_context",
+      "canonical_label": "Runtime Context",
+      "category": "carrier",
+      "stage_owner": "prepared_ingress",
+      "maps_to_contract": "PreparedRuntimeSnapshot",
+      "allowed_aliases": [
+        "admitted runtime context",
+        "prepared runtime context",
+        "project runtime context",
+        "runtime context preparation"
+      ],
+      "disallowed_phrases": [
+        "ithout runtime context",
+        "pared runtime context"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 as the prepared substrate consumed downstream."
+      ]
+    },
+    {
+      "canonical_slug": "serial_desk_cognition",
+      "canonical_label": "Serial Desk-cognition",
+      "category": "workflow",
+      "stage_owner": "serial_desk_cognition",
+      "maps_to_contract": "SerialDeskCognitionPacket",
+      "allowed_aliases": [
+        "serial cognition",
+        "serial desk cognition authority",
+        "serial desk cognition behaviour",
+        "serial desk cognition output",
+        "serial desk cognition spine"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.7 and FWD-012 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "serial_candidate",
+      "canonical_label": "Serial Candidate",
+      "category": "carrier",
+      "stage_owner": "serial_desk_cognition",
+      "maps_to_contract": "serial_candidate_id",
+      "allowed_aliases": [
+        "serial candidate eligible",
+        "serial candidate formation",
+        "serial candidate id",
+        "serial candidate material",
+        "serial candidate outputs",
+        "serial candidate rebuild",
+        "serial candidate selection"
+      ],
+      "disallowed_phrases": [
+        "serial candidate 001",
+        "serial candidate 002",
+        "serial candidate 003",
+        "serial candidate 004",
+        "serial candidate 005",
+        "serial candidate 006",
+        "serial candidate 007",
+        "serial candidate 008",
+        "serial candidate row039",
+        "serial candidate row041",
+        "serial candidate row042",
+        "serial candidate seq9"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 for the candidate material consumed by capital/opening seams."
+      ]
+    },
+    {
+      "canonical_slug": "capital_deployment_decision",
+      "canonical_label": "Capital Deployment Decision",
+      "category": "authority_surface",
+      "stage_owner": "downstream_capital_deployment",
+      "maps_to_contract": "CapitalDeploymentDecision",
+      "allowed_aliases": [
+        "capital deployment",
+        "fresh capital deployment decision"
+      ],
+      "disallowed_phrases": [
+        "capital deployment decision dataschema",
+        "capital deployment decision emitted",
+        "capital deployment decision seq9",
+        "consumes capital deployment decision"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.11 and FWD-014 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "opening_architecture",
+      "canonical_label": "Opening Architecture",
+      "category": "authority_surface",
+      "stage_owner": "downstream_opening",
+      "maps_to_contract": "DownstreamOpeningService",
+      "allowed_aliases": [
+        "downstream opening architecture"
+      ],
+      "disallowed_phrases": [
+        "stream opening architecture"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.12 and FWD-015 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "downstream_opening",
+      "canonical_label": "Downstream Opening",
+      "category": "authority_surface",
+      "stage_owner": "downstream_opening",
+      "maps_to_contract": "DownstreamOpeningSnapshot",
+      "allowed_aliases": [
+        "downstream opening authorisation",
+        "downstream opening authority",
+        "downstream opening service"
+      ],
+      "disallowed_phrases": [
+        "a downstream opening",
+        "collapsing downstream opening",
+        "preserving downstream opening",
+        "the downstream opening",
+        "what downstream opening"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 for the bounded opening seam."
+      ]
+    },
+    {
+      "canonical_slug": "placement_readiness",
+      "canonical_label": "Placement Readiness",
+      "category": "authority_surface",
+      "stage_owner": "downstream_opening",
+      "maps_to_contract": "PlacementReadinessResult",
+      "allowed_aliases": [
+        "opening placement readiness",
+        "placement readiness id",
+        "placement readiness result"
+      ],
+      "disallowed_phrases": [
+        "evaluate placement readiness",
+        "placement readiness 001",
+        "placement readiness tests"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 as the non-executing readiness output of the opening seam."
+      ]
+    },
+    {
+      "canonical_slug": "placement_handoff",
+      "canonical_label": "Placement Handoff",
+      "category": "carrier",
+      "stage_owner": "downstream_opening",
+      "maps_to_contract": "PlacementHandoffMaterial",
+      "allowed_aliases": [
+        "placement handoff material"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 as protocol-only handoff material, not broker execution."
+      ]
+    },
+    {
+      "canonical_slug": "broker_protocol",
+      "canonical_label": "Broker Protocol",
+      "category": "protocol",
+      "stage_owner": "downstream_opening",
+      "maps_to_contract": "BrokerBoundaryMode",
+      "allowed_aliases": [
+        "broker protocol only"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 as a protocol boundary term, not concrete broker execution."
+      ]
+    },
+    {
+      "canonical_slug": "live_position",
+      "canonical_label": "Live Position",
+      "category": "authority_surface",
+      "stage_owner": "live_inventory",
+      "maps_to_contract": "LivePositionSnapshot",
+      "allowed_aliases": [
+        "live position management",
+        "live position state"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.13 terminology only; FWD-016 remains unopened."
+      ]
+    },
+    {
+      "canonical_slug": "inventory_architecture",
+      "canonical_label": "Inventory Architecture",
+      "category": "authority_surface",
+      "stage_owner": "live_inventory",
+      "maps_to_contract": "LiveInventorySnapshot",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.13 terminology only; FWD-016 remains unopened."
+      ]
+    },
+    {
+      "canonical_slug": "exit_architecture",
+      "canonical_label": "Exit Architecture",
+      "category": "authority_surface",
+      "stage_owner": "exit_close",
+      "maps_to_contract": "ExitCloseDecision",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.14 terminology only; exit/close remains unopened."
+      ]
+    },
+    {
+      "canonical_slug": "close_architecture",
+      "canonical_label": "Close Architecture",
+      "category": "authority_surface",
+      "stage_owner": "exit_close",
+      "maps_to_contract": "ExitCloseDecision",
+      "allowed_aliases": [],
+      "disallowed_phrases": [
+        "and close architecture"
+      ],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.14 terminology only; exit/close remains unopened."
+      ]
+    },
+    {
+      "canonical_slug": "review_layer",
+      "canonical_label": "Review Layer",
+      "category": "review_surface",
+      "stage_owner": "review_explanation",
+      "maps_to_contract": "ReviewTrace",
+      "allowed_aliases": [
+        "review layer outputs"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.15 terminology only."
+      ]
+    },
+    {
+      "canonical_slug": "explanation_layer",
+      "canonical_label": "Explanation Layer",
+      "category": "review_surface",
+      "stage_owner": "review_explanation",
+      "maps_to_contract": "ExplanationTrace",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.15 terminology only."
+      ]
+    },
+    {
+      "canonical_slug": "playbook_library",
+      "canonical_label": "Playbook Library",
+      "category": "authority_surface",
+      "stage_owner": "playbook_library",
+      "maps_to_contract": "PlaybookRegistry",
+      "allowed_aliases": [
+        "playbook library architecture",
+        "playbook library authority",
+        "playbook library ownership"
+      ],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.10 and FWD-011 closure language."
+      ]
+    },
+    {
+      "canonical_slug": "modifier_authority",
+      "canonical_label": "Modifier Authority",
+      "category": "authority_surface",
+      "stage_owner": "posture_risk_permission",
+      "maps_to_contract": "ModifierPolicyRecord",
+      "allowed_aliases": [],
+      "disallowed_phrases": [],
+      "notes": [
+        "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.9 and FWD-010 closure language."
+      ]
     },
     {
       "canonical_slug": "coefficient_authority",

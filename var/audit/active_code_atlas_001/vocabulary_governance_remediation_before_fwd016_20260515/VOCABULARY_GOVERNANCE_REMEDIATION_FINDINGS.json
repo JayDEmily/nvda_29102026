@@ -1,0 +1,126 @@
+{
+  "defects_resolved": [
+    "DEF-001",
+    "DEF-002",
+    "DEF-003"
+  ],
+  "remaining_blockers": [],
+  "fwd016_opened": false,
+  "terms": [
+    {
+      "term": "opening architecture",
+      "decision": "admit_new_term",
+      "canonical_slug": "opening_architecture"
+    },
+    {
+      "term": "placement readiness",
+      "decision": "admit_new_term",
+      "canonical_slug": "placement_readiness"
+    },
+    {
+      "term": "placement handoff",
+      "decision": "admit_new_term",
+      "canonical_slug": "placement_handoff"
+    },
+    {
+      "term": "downstream opening",
+      "decision": "admit_new_term",
+      "canonical_slug": "downstream_opening"
+    },
+    {
+      "term": "broker protocol",
+      "decision": "admit_new_term",
+      "canonical_slug": "broker_protocol"
+    },
+    {
+      "term": "capital deployment decision",
+      "decision": "admit_new_term",
+      "canonical_slug": "capital_deployment_decision"
+    },
+    {
+      "term": "serial candidate",
+      "decision": "admit_new_term",
+      "canonical_slug": "serial_candidate"
+    },
+    {
+      "term": "live position",
+      "decision": "admit_new_term",
+      "canonical_slug": "live_position"
+    },
+    {
+      "term": "inventory architecture",
+      "decision": "admit_new_term",
+      "canonical_slug": "inventory_architecture"
+    },
+    {
+      "term": "exit architecture",
+      "decision": "admit_new_term",
+      "canonical_slug": "exit_architecture"
+    },
+    {
+      "term": "close architecture",
+      "decision": "admit_new_term",
+      "canonical_slug": "close_architecture"
+    },
+    {
+      "term": "review layer",
+      "decision": "admit_new_term",
+      "canonical_slug": "review_layer"
+    },
+    {
+      "term": "explanation layer",
+      "decision": "admit_new_term",
+      "canonical_slug": "explanation_layer"
+    },
+    {
+      "term": "parallel risk lane",
+      "decision": "already_governed_exact",
+      "canonical_slug": "parallel_risk_lane"
+    },
+    {
+      "term": "serial desk-cognition",
+      "decision": "admit_new_term",
+      "canonical_slug": "serial_desk_cognition"
+    },
+    {
+      "term": "dynamic coefficient",
+      "decision": "already_governed_alias",
+      "canonical_slug": "bounded_dynamic_coefficient"
+    },
+    {
+      "term": "modifier authority",
+      "decision": "admit_new_term",
+      "canonical_slug": "modifier_authority"
+    },
+    {
+      "term": "playbook library",
+      "decision": "admit_new_term",
+      "canonical_slug": "playbook_library"
+    },
+    {
+      "term": "prepared ingress",
+      "decision": "admit_new_term",
+      "canonical_slug": "prepared_ingress"
+    },
+    {
+      "term": "runtime context",
+      "decision": "admit_new_term",
+      "canonical_slug": "runtime_context"
+    },
+    {
+      "term": "raw signal families",
+      "decision": "admit_new_term",
+      "canonical_slug": "raw_signal_families"
+    },
+    {
+      "term": "event calendar",
+      "decision": "admit_new_term",
+      "canonical_slug": "event_calendar"
+    },
+    {
+      "term": "DMPV3 packet",
+      "decision": "admit_alias_only",
+      "canonical_slug": "dmp_v3_packet"
+    }
+  ]
+}

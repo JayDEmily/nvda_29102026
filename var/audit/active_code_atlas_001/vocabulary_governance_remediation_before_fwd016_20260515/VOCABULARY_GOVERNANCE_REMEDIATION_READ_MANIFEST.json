@@ -1,0 +1,439 @@
+{
+  "schema_version": "v1",
+  "tranche": "vocabulary_governance_remediation_before_fwd016_20260515",
+  "entry_count": 54,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "exists": true,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "line_count": 184,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "PLANS.md",
+      "exists": true,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "line_count": 707,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "exists": true,
+      "sha256": "aaac63688d85a776cb6fe9f603179e12a0ea03872ab8ed3731b7a26be1983168",
+      "line_count": 2019,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "exists": true,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "line_count": 50,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "exists": true,
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+      "line_count": 33,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/vocabulary/README.md",
+      "exists": true,
+      "sha256": "e76cc9c284641d194283f0a3194d0b81d2a603fd5f5c01b042f3b0fbe0e74439",
+      "line_count": 23,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+      "exists": true,
+      "sha256": "0cce16eb35b95f03684c035da751f4344b10e8ca6f1e671b1cf697e2f9a56f56",
+      "line_count": 213,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/vocabulary/vocabulary_registry.md",
+      "exists": true,
+      "sha256": "6e36303918d4326a31288827adb7015439694e8f8d8ce0907b0b7c5422ce8b84",
+      "line_count": 163,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "exists": true,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "line_count": 758,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "exists": true,
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "line_count": 807,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "exists": true,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "line_count": 3561,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "src/nvda_desk/vocabulary_builder.py",
+      "exists": true,
+      "sha256": "c3e30f2a7b6b7d5a6965aedb8e7994cad4e637b279370126fc4f17aa88cfa145",
+      "line_count": 925,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "src/nvda_desk/vocabulary_synonym_audit.py",
+      "exists": true,
+      "sha256": "cfd1eb16b8798715a53a20f900c022b04d985fde7ae00b090c6de22855d47036",
+      "line_count": 310,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "src/nvda_desk/schemas/vocabulary.py",
+      "exists": true,
+      "sha256": "c3a64a06f379b89e2a0b08937bcfa498c3ec22292537229d0f6d07cf00e37942",
+      "line_count": 718,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "scripts/build_canonical_vocabulary.py",
+      "exists": true,
+      "sha256": "e241a7c444dfb0e00464b1c3ec6924758dddcf66cce8c03c0407bfe126d1899e",
+      "line_count": 28,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "data/vocabulary/canonical_vocabulary.json",
+      "exists": true,
+      "sha256": "7357932451f4edbaf0df16253fabe6094f74dd1e77a909172d84c9a1e2207cca",
+      "line_count": 1146,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/vocabulary/synonym_candidates.json",
+      "exists": true,
+      "sha256": "1578b62835329a0377ca44c82eb8c814adbd97767ef9132e36b8cf577315c34c",
+      "line_count": 8,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "exists": true,
+      "sha256": "93ae55a9913f05056b71bdb6b49d2e0ff846e246f7db5d4522b4a114f2b42a14",
+      "line_count": 196,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "/mnt/data/GLOBAL_PM_ACCEPTANCE_FORENSIC_AUDIT_REPORT.md",
+      "exists": true,
+      "sha256": "b4ff1aa10b8cd9ba5ffa6a154dca912453eb87c4333965a80d4f8ea9134f7ee3",
+      "line_count": 379,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "6e15b1cd3a7d23745ea7dffcdb25d8927d844aadedf07b15adda605a2c1a98b4",
+      "line_count": 8,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_DYNAMIC_COEFFICIENT_MODIFIER_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "9f38af784312d26b65b9d17c65a536d286f24f5c3d2a8aeb35d7a54e76aa13da",
+      "line_count": 74,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "daf0a148368405c9bea28e7048f4047c39d900992f0886662fe625f294de4f06",
+      "line_count": 1069,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "946bee879219261f8816b91c7a779821eb182bc7979d1342881931e929c499f5",
+      "line_count": 86,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "dc370e1e5392c30a8c92c7674cdefa4d4d390ca2036af28fc4396b3b63054f15",
+      "line_count": 614,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "52e01c7cee4726fa87af1c0e055b31b319f8e95e7e85025fe91452063a2dfe27",
+      "line_count": 21,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "02857585d1c24d966fb2f68ddfd98dd327d4094ca49061f4dd7b7e9e375e3cfb",
+      "line_count": 568,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "42c62a89dcb13505ee324e03aeeacd1c78d9f35ed25140f1e172cea92dd573ca",
+      "line_count": 101,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_PLAYBOOK_LIBRARY_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "b7b7dc6eae363772dded34138d61a6ebcfa374766a62d9bdcdc2ff666d5891b5",
+      "line_count": 66,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "8db7fa236b3c818d507f5042fd365d5deef72942a1a8ce429128e39e52ca0021",
+      "line_count": 225,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "b9e7029b02cebf25cc7101deb1378b59990d524d8dbbffa6f01a0f85da0fdb3f",
+      "line_count": 20,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "d520408212c5e46279c51728805afc27ed90e4075a5a312b65cad3e80cb47c27",
+      "line_count": 541,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "ee7732afff4ed76cf456d8a8922326b3a1bc0ba5c659d507ad11f5cce9c31119",
+      "line_count": 106,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_SERIAL_DESK_COGNITION_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "4f0e111dda8bd1b8850d12d8090cfc71d566bb2e181911f798464e8effe66481",
+      "line_count": 67,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "d896fc060816be1dcbeef1a65457bc91da2e466e964e32ca37950bd0bfdd4f11",
+      "line_count": 173,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "ab7b95110d132b9c77bcec67eb697c9cc011bb43ceb3e6c198fd6ab231400dc7",
+      "line_count": 22,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "ddadae7dcb299e361968abdc130563d0dc70b7ca6836af616ed50c6284e42995",
+      "line_count": 554,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "ea9198d712a4ac5f737ff22dc5d2bd39ea5f1abcd4bbd7392879d7d48aee1f88",
+      "line_count": 89,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_PARALLEL_RISK_LANE_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "e78dbc908ff1b151fa89517756dfe28b53fbd2e2fb100a97b517f5d239bf5ee4",
+      "line_count": 45,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "18c57856f3d561bc1b4592483084f17a8ab53235db7ea65e7eb91b20ac68d344",
+      "line_count": 194,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "68f4291fb1b90922ae8d41f788d16b642855c46a64d88c19c76a9a46278c2b76",
+      "line_count": 23,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "84dd7f1f67e3a3baf585cdccba99c14fdb11dd2c6503af69348ee2d986530640",
+      "line_count": 101,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_EVIDENCE_INVENTORY.json",
+      "exists": true,
+      "sha256": "7c45ed513d0bfbf9b05930154925a5097de8f404c98194dad55a5a0f2af44771",
+      "line_count": 65,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "5561fad01d2e846ede1fb87c040d593327167dc459603fc7c36a37505272baab",
+      "line_count": 1729,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "32ba297f9f619d2520912e1130023b0af5d82d2e46e8adb21de0c3764d0434b9",
+      "line_count": 80,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "e4f644a2907467c7a9db4d5ff2bb0df8bda6914a0c371effdc3c2472590b6334",
+      "line_count": 347,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_BOUNDARY_RECEIPT.md",
+      "exists": true,
+      "sha256": "9640624fb8161e8f9054988d5866f419e45d34c8a4e4a69b43b5754345e1bf8a",
+      "line_count": 23,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_EVIDENCE_INVENTORY.json",
+      "exists": true,
+      "sha256": "68262130a12af33cad32d484ae62f1f2e0cca393e67373619ff78b6d8f1f9530",
+      "line_count": 160,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_OPENING_PLACEMENT_READINESS_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "exists": true,
+      "sha256": "a69bf799e72387c5b08f3ca9158ac1f02543f6021bc9927c0b32e1af203b01ef",
+      "line_count": 105,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "876c2d55843f3dded290864fcc9f9a953b3513deebd40ebbd978e2fb5ec9d4cc",
+      "line_count": 523,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "944052dc8666ebb54515e2fbb5c8168f97cb2e71bf984acd920a7c6e2ab0a02b",
+      "line_count": 78,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_THREE_WAY_COMPARISON_REPORT.json",
+      "exists": true,
+      "sha256": "55c7824ca43d871302e873c3bd8ac617e095f244f4f364fc4fc58fe33012111a",
+      "line_count": 279,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/ledger_hygiene_fwd010_fwd011_state_headers_20260515/LEDGER_HYGIENE_FWD010_FWD011_PROOF_SUMMARY.json",
+      "exists": true,
+      "sha256": "e92d4243301aa65c15110df42df5a053c01a80a2d9755017746ad4731884171a",
+      "line_count": 21,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/ledger_hygiene_fwd010_fwd011_state_headers_20260515/LEDGER_HYGIENE_FWD010_FWD011_READ_MANIFEST.json",
+      "exists": true,
+      "sha256": "b22e2ec9dac6be5c32d3fd12a84d7317a587fa2bcccf11466d406b514b2f27a6",
+      "line_count": 585,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/ledger_hygiene_fwd010_fwd011_state_headers_20260515/LEDGER_HYGIENE_FWD010_FWD011_RECEIPT.md",
+      "exists": true,
+      "sha256": "a5601049cf8b6335d2ce6254bb5d27b0dfc658c31cf2e326232b6f86af8a6bce",
+      "line_count": 33,
+      "full_read": true,
+      "read_transcript": "reports/authority_and_fwd010_015_full_read_transcript.txt"
+    }
+  ]
+}
