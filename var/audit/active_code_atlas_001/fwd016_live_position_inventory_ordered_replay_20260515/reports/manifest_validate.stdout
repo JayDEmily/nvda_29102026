@@ -1,0 +1,17 @@
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "entry_count": 62,
+      "unique_path_count": 62,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  ]
+}

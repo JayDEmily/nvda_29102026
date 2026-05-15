@@ -1,0 +1,2 @@
+proof_block_id=live_position_inventory_transform_boundary_surface
+command=env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py
