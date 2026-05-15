@@ -1,0 +1,14 @@
+proof_block_id=review_contract_authority_boundaries_surface
+command=env PYTHONPATH=src python -m pytest tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/fwd018_work/repo
+configfile: pyproject.toml
+plugins: Faker-40.1.2, anyio-4.13.0, ddtrace-4.4.0, json-report-1.5.0, metadata-3.1.1, cov-7.0.0, asyncio-1.3.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 6 items
+
+tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py . [ 16%]
+.....                                                                    [100%]
+
+============================== 6 passed in 0.41s ===============================
