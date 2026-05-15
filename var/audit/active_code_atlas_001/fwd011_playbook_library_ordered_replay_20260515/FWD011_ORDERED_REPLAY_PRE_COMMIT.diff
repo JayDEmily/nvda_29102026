@@ -1,0 +1,49 @@
+diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
+index ed20fa5..d6dbe0f 100644
+--- a/ROADMAP_LEDGER.md
++++ b/ROADMAP_LEDGER.md
+@@ -92,7 +92,7 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
+ | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
+ | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
+ | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
+-| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, and `FWD-010` / `5.9 Dynamic coefficient and modifier authority` ordered replays are recorded as `bounded_closed_current`. `FWD-011` / `5.10 Playbook library architecture` is the next ordered row but remains unopened by the 2026-05-15 FWD-010-only user authority. |
++| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, `FWD-010` / `5.9 Dynamic coefficient and modifier authority`, and `FWD-011` / `5.10 Playbook library architecture` ordered replays are recorded as `bounded_closed_current`. `FWD-012` / `5.7 Serial desk-cognition spine` is the next ordered row but remains unopened by the 2026-05-15 FWD-011-only continuation authority. |
+ | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
+ | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
+ | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
+@@ -1564,6 +1564,18 @@ Close evidence:
+ - ledger row state update;
+ - next row: `FWD-012`.
+ 
++FWD-011 ordered replay closure recorded 2026-05-15:
++
++- Replay branch: `worker/fwd011-playbook-library-ordered-replay-20260515`; evidence path: `var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/`.
++- Scope: FWD-011 only as the next primary row by explicit user authority. FWD-008 and FWD-009 were checked for reopen triggers and were not reopened. FWD-012 was not opened.
++- Current report: `FWD011_THREE_WAY_COMPARISON_REPORT.json`; proof summary: `FWD011_ORDERED_REPLAY_PROOF_SUMMARY.json`; receipt: `FWD011_PLAYBOOK_LIBRARY_ORDERED_REPLAY_CLOSURE_RECEIPT.md`; boundary receipt: `FWD011_BOUNDARY_RECEIPT.md`.
++- FWD-011 result: 95/95 selected native playbook-library Atlas IDs covered by direct active-code record links or grouped comparison/queue satisfaction evidence; direct active-code record linked Atlas IDs: 20; direct same-symbol join links: 2; grouped-satisfaction overlay links: 75; unresolved selected IDs: 0.
++- FWD-011 targeted proof reruns returned status 0: `playbook_library_architecture_surface` 70 passed, `playbook_library_transform_boundary_surface` 48 passed, and targeted playbook pytest 70 passed.
++- FWD-011 broader proof returned status 0: manifest validator PASS, `git diff --check`, `run_proof_block.py --check-all`, `tests/tier_b` 49 passed, and `tests/tier_a` rerun 560 passed. The first bundled Tier A capture timed out before producing an exit status and is not used as proof; the rerun is the authoritative captured exit-code proof.
++- FWD-011 comparison status counts and Bridge-native satisfaction status counts were retained separately: comparison `{'partially_satisfied': 31, 'transform_required': 64}`; Bridge-native `{'partially_satisfied': 31, 'transform_required': 64}`.
++- No FWD-011 source/config/test/fixture/data/dependency/original Atlas/Bridge JSON/generated-slice/vocabulary mutation was made.
++- Current state correction after ordered replay: FWD-011 is `bounded_closed_current`; FWD-012 is the next ordered row but remains unopened by this FWD-011 authority.
++
+ #### FWD-012 — 5.7 Serial desk-cognition spine
+ 
+ State: `planned_forward_reconciliation`
+diff --git a/var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json b/var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json
+index 49ccaeb..5802f44 100644
+--- a/var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json
++++ b/var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json
+@@ -7,9 +7,9 @@
+   "manifest_count": 1,
+   "manifests": [
+     {
+-      "manifest": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+-      "entry_count": 106,
+-      "unique_path_count": 106,
++      "manifest": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
++      "entry_count": 62,
++      "unique_path_count": 62,
+       "stale_hash_mismatch_count": 0,
+       "full_read_false_count": 0
+     }

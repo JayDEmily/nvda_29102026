@@ -7,9 +7,9 @@
   "manifest_count": 1,
   "manifests": [
     {
-      "manifest": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
-      "entry_count": 106,
-      "unique_path_count": 106,
+      "manifest": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "entry_count": 62,
+      "unique_path_count": 62,
       "stale_hash_mismatch_count": 0,
       "full_read_false_count": 0
     }
