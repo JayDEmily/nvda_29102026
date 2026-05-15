@@ -1,0 +1,200 @@
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md:4:Branch: `worker/fwd-001-vocabulary-governance-blocker-resolution`
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md:8:The reproduced synonym-candidate blocker is resolved in the current checkout.
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md:16:Before repair, the substantive baseline audit produced `unresolved_candidates=17`. After repair, the exact audit command produces `candidates=0`.
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md:25:- Remaining candidate blocker: none observed in the current audit report.
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md:54:- The remaining blocker was not semantic after the wrapper/import and proof-runner path issues were corrected.
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_EVIDENCE_INVENTORY.md:4:Branch: `worker/fwd-001-vocabulary-governance-blocker-resolution`
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_VOCABULARY_SYNONYM_CANDIDATE_ADJUDICATION.md:4:Branch: `worker/fwd-001-vocabulary-governance-blocker-resolution`
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_VOCABULARY_SYNONYM_CANDIDATE_ADJUDICATION.md:13:vocabulary_synonym_audit=BLOCKED unresolved_candidates=17
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_VOCABULARY_SYNONYM_CANDIDATE_ADJUDICATION.md:31:| candidate_number | candidate_id when available | term | proposed synonym/family | source file | source line/record | current status | authority read | decision | decision basis | files changed | tests run | remaining blocker |
+var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_VOCABULARY_SYNONYM_CANDIDATE_ADJUDICATION.md:53:The repair table contains one extra tuple for `raw_source` against `source_timezone_raw` as a nearest-slug defensive variant, but the reproduced blocker contains 17 candidates. The adjudication count remains 17.
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/FWD002_CLOSURE_REMEDIATION_EVIDENCE.md:143:## Remaining blockers
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/FWD002_CLOSURE_REMEDIATION_EVIDENCE.md:147:Repository merge blocker: the mandatory combined `PYTHONPATH=src pytest -q tests/tier_a tests/tier_b` closeout command did not produce a captured exit status under the tool boundary, so merge to `main` is not performed by this pass.
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:107:tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py::test_exit_close_policy_rejects_inconsistent_unblocked_state PASSED
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:517:tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py::test_candidate_review_cli_does_not_mutate_canonical_vocabulary_file vocabulary_candidate_review=PASS blocked_candidates=0
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:521:tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py::test_candidate_review_cli_check_clean_returns_nonzero_for_blocked_candidates PASSED
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:523:tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py::test_candidate_review_cli_report_exposes_blocked_candidates PASSED
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:561:  "blocked_candidates": []
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:563:vocabulary_candidate_review=PASS blocked_candidates=0
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:565:tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py::test_candidate_review_cli_writes_blocked_receipt {
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:601:  "blocked_candidates": [
+var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/reports/final_combined_tier_a_tier_b_timeout_investigation.stdout:620:vocabulary_candidate_review=BLOCKED blocked_candidates=1
+var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD002_FWD004_BOUNDARY_RECEIPT.md:37:Real stop condition reached for this response: remaining lawful row closure work requires full authority intake beyond the available response context. The repo state is packaged for PM audit with row-level blockers recorded rather than falsely closing rows.
+var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD002_TESTING_PROOF_CHECKPOINT_EVIDENCE.md:92:## remaining blockers
+var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD003_PERSISTENCE_LEDGER_RECEIPT_EVIDENCE.md:68:## remaining blockers
+var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD004_DMPV3_PACKET_CARRIAGE_EVIDENCE.md:68:## remaining blockers
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_CLOSURE_GATE_EVIDENCE.md:9:FWD-003 was not advanced to `bounded_closed_current`. The row remains blocked after current three-way comparison.
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_CLOSURE_GATE_EVIDENCE.md:102:These validation passes do not close FWD-003 because the blocker is evidence-linkage coverage, not failing runtime proof.
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:22:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:55:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:76:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:86:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:318:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:346:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:376:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:386:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:618:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:646:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:672:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:682:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:914:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:942:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:972:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:982:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1214:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1242:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1267:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1277:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1509:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1537:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1563:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1573:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1805:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1833:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1858:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:1868:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2100:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2121:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2130:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2134:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2148:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2157:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2160:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2169:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2172:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2182:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2414:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2431:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2438:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2442:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2464:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2473:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2476:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2485:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2488:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2498:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2730:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2748:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2755:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2759:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2773:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2782:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2785:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2794:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2797:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:2807:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3039:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3057:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3064:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3068:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3082:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3091:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3094:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3103:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3106:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3116:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3348:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3372:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3381:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3385:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3399:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3408:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3411:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3420:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3423:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3433:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3665:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3682:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3689:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3693:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3709:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3718:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3721:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3730:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3733:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3743:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3975:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3992:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:3999:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4003:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4022:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4031:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4034:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4043:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4046:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4056:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4288:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4305:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4312:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4316:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4335:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4344:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4347:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4356:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4359:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4369:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4601:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4624:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4633:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4637:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4658:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4667:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4670:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4679:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4682:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4692:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4924:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4955:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4964:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4968:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4989:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:4998:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5001:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5010:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5013:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5023:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5255:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5272:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5281:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5285:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5299:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5308:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5311:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5320:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5323:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5333:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5565:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5584:        "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5593:        "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5597:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5611:          "lawful_owner_candidate": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5620:              "Owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5623:              "Compatibility finalisation is observed directly here; lawful native owner remains unresolved on currently reviewed doctrine evidence."
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5632:          "owner_confidence": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5635:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5645:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5877:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5908:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5931:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:5941:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6173:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6203:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6226:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6236:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6468:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6502:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6525:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6535:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6767:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6801:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6832:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:6842:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7074:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7108:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7139:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7149:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7381:        "blockers": [],
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7437:        "proof_family": "unresolved",
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7460:            "unresolved"
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7470:        "blocked_reason": null,
+var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_SELECTED_ATLAS_BRIDGE_ACTIVE_RECORDS.json:7702:        "blockers": [],

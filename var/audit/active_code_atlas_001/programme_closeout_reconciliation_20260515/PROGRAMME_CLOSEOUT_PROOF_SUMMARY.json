@@ -1,0 +1,79 @@
+{
+  "generated_utc": "2026-05-15T08:54:07.857640+00:00",
+  "result": "bounded_reconciled_current",
+  "commands": [
+    {
+      "name": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "duration_seconds": "0.154",
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "git_diff_check_final",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "duration_seconds": "0.161",
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "git_diff_check_post_report",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "duration_seconds": "0.176",
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "proof_blocks_check_all",
+      "command": "python scripts/run_proof_block.py --check-all",
+      "exit_code": 0,
+      "duration_seconds": "1.904",
+      "stdout_tail": "proof_blocks_check_all=PASS count=46\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "proof_blocks_check_all_final",
+      "command": "python scripts/run_proof_block.py --check-all",
+      "exit_code": 0,
+      "duration_seconds": "2.095",
+      "stdout_tail": "proof_blocks_check_all=PASS count=46\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "vocabulary_synonym_audit_clean",
+      "command": "python scripts/vocabulary_synonym_audit.py --check-clean",
+      "exit_code": 0,
+      "duration_seconds": "10.767",
+      "stdout_tail": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "vocabulary_synonym_audit_clean_final",
+      "command": "python scripts/vocabulary_synonym_audit.py --check-clean",
+      "exit_code": 0,
+      "duration_seconds": "7.269",
+      "stdout_tail": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False\n",
+      "stderr_tail": ""
+    }
+  ],
+  "batched_pytest_summary": {
+    "counted_batch_count": 53,
+    "nonzero_count": 0,
+    "passed_total": 612,
+    "tier_a_passed_total": 563,
+    "tier_b_passed_total": 49,
+    "no_status_attempts": [
+      "tests_tier_a_31_vocabulary",
+      "tests_tier_b_03_proof_model",
+      "tests_tier_b_03_proof_model_rerun"
+    ]
+  },
+  "proof_claim": "Only status-0 captures are counted as proof. No-status attempts are recorded but not counted.",
+  "boundaries": {
+    "no_feature_row_opened": true,
+    "no_source_test_config_runtime_vocabulary_atlas_bridge_generated_slice_dependency_mutation": true
+  }
+}

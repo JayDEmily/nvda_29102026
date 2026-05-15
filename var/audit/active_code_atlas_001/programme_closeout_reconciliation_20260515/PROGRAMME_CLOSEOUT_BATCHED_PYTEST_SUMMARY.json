@@ -1,0 +1,386 @@
+{
+  "status_file_count": 53,
+  "counted_batch_count": 53,
+  "nonzero_count": 0,
+  "passed_total": 612,
+  "tier_a_passed_total": 563,
+  "tier_b_passed_total": 49,
+  "no_status_attempts": [
+    "tests_tier_a_31_vocabulary",
+    "tests_tier_b_03_proof_model",
+    "tests_tier_b_03_proof_model_rerun"
+  ],
+  "batches": [
+    {
+      "name": "tests_tier_a_01_adapters_egress",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 5.763,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.26s\n"
+    },
+    {
+      "name": "tests_tier_a_02_adapters_ingress",
+      "exit_code": 0,
+      "passed_count": 19,
+      "duration_seconds": 5.905,
+      "stdout_tail": "...................                                                      [100%]\n19 passed in 0.68s\n"
+    },
+    {
+      "name": "tests_tier_a_03_analysis",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 6.107,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 1.14s\n"
+    },
+    {
+      "name": "tests_tier_a_04_api",
+      "exit_code": 0,
+      "passed_count": 4,
+      "duration_seconds": 5.734,
+      "stdout_tail": "....                                                                     [100%]\n4 passed in 0.63s\n"
+    },
+    {
+      "name": "tests_tier_a_05_calendar_operational",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 4.898,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.22s\n"
+    },
+    {
+      "name": "tests_tier_a_06_calendar_reference",
+      "exit_code": 0,
+      "passed_count": 4,
+      "duration_seconds": 5.903,
+      "stdout_tail": "....                                                                     [100%]\n4 passed in 0.81s\n"
+    },
+    {
+      "name": "tests_tier_a_07_capital_deployment",
+      "exit_code": 0,
+      "passed_count": 26,
+      "duration_seconds": 5.461,
+      "stdout_tail": "..........................                                               [100%]\n26 passed in 0.47s\n"
+    },
+    {
+      "name": "tests_tier_a_08_config",
+      "exit_code": 0,
+      "passed_count": 9,
+      "duration_seconds": 6.269,
+      "stdout_tail": ".........                                                                [100%]\n9 passed in 1.15s\n"
+    },
+    {
+      "name": "tests_tier_a_09_downstream_runtime",
+      "exit_code": 0,
+      "passed_count": 112,
+      "duration_seconds": 6.763,
+      "stdout_tail": "........................................................................ [ 64%]\n........................................                                 [100%]\n112 passed in 0.66s\n"
+    },
+    {
+      "name": "tests_tier_a_10_entry",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 7.157,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.52s\n"
+    },
+    {
+      "name": "tests_tier_a_11_financial_calendar",
+      "exit_code": 0,
+      "passed_count": 9,
+      "duration_seconds": 6.0,
+      "stdout_tail": ".........                                                                [100%]\n9 passed in 0.68s\n"
+    },
+    {
+      "name": "tests_tier_a_12_ingress",
+      "exit_code": 0,
+      "passed_count": 3,
+      "duration_seconds": 5.0,
+      "stdout_tail": "...                                                                      [100%]\n3 passed in 0.55s\n"
+    },
+    {
+      "name": "tests_tier_a_13_legacy_imported",
+      "exit_code": 0,
+      "passed_count": 4,
+      "duration_seconds": 6.0,
+      "stdout_tail": "....                                                                     [100%]\n4 passed in 1.05s\n"
+    },
+    {
+      "name": "tests_tier_a_14_migrations",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 5.0,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.20s\n"
+    },
+    {
+      "name": "tests_tier_a_15_modifiers",
+      "exit_code": 0,
+      "passed_count": 19,
+      "duration_seconds": 5.0,
+      "stdout_tail": "...................                                                      [100%]\n19 passed in 0.62s\n"
+    },
+    {
+      "name": "tests_tier_a_16_observability",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 6.0,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.57s\n"
+    },
+    {
+      "name": "tests_tier_a_17_options_flow_history",
+      "exit_code": 0,
+      "passed_count": 8,
+      "duration_seconds": 6.0,
+      "stdout_tail": "........                                                                 [100%]\n8 passed in 0.53s\n"
+    },
+    {
+      "name": "tests_tier_a_18_packets",
+      "exit_code": 0,
+      "passed_count": 12,
+      "duration_seconds": 5.0,
+      "stdout_tail": "............                                                             [100%]\n12 passed in 0.47s\n"
+    },
+    {
+      "name": "tests_tier_a_19_parallel_risk",
+      "exit_code": 0,
+      "passed_count": 28,
+      "duration_seconds": 5.0,
+      "stdout_tail": "............................                                             [100%]\n28 passed in 0.59s\n"
+    },
+    {
+      "name": "tests_tier_a_20_persistence",
+      "exit_code": 0,
+      "passed_count": 31,
+      "duration_seconds": 6.0,
+      "stdout_tail": "...............................                                          [100%]\n31 passed in 0.63s\n"
+    },
+    {
+      "name": "tests_tier_a_21_playbook",
+      "exit_code": 0,
+      "passed_count": 68,
+      "duration_seconds": 6.0,
+      "stdout_tail": "....................................................................     [100%]\n68 passed in 1.38s\n"
+    },
+    {
+      "name": "tests_tier_a_22_reference_data",
+      "exit_code": 0,
+      "passed_count": 3,
+      "duration_seconds": 5.0,
+      "stdout_tail": "...                                                                      [100%]\n3 passed in 0.38s\n"
+    },
+    {
+      "name": "tests_tier_a_23_review_runtime",
+      "exit_code": 0,
+      "passed_count": 20,
+      "duration_seconds": 5.0,
+      "stdout_tail": "....................                                                     [100%]\n20 passed in 0.49s\n"
+    },
+    {
+      "name": "tests_tier_a_24_runtime",
+      "exit_code": 0,
+      "passed_count": 10,
+      "duration_seconds": 5.0,
+      "stdout_tail": "..........                                                               [100%]\n10 passed in 0.58s\n"
+    },
+    {
+      "name": "tests_tier_a_25_seam_boundaries",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.55s\n"
+    },
+    {
+      "name": "tests_tier_a_26_serial_recommendation",
+      "exit_code": 0,
+      "passed_count": 16,
+      "duration_seconds": 6.0,
+      "stdout_tail": "................                                                         [100%]\n16 passed in 0.50s\n"
+    },
+    {
+      "name": "tests_tier_a_27_temporal",
+      "exit_code": 0,
+      "passed_count": 7,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".......                                                                  [100%]\n7 passed in 0.38s\n"
+    },
+    {
+      "name": "tests_tier_a_28_testing_harnesses",
+      "exit_code": 0,
+      "passed_count": 7,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".......                                                                  [100%]\n7 passed in 0.58s\n"
+    },
+    {
+      "name": "tests_tier_a_29_upstream_cognition",
+      "exit_code": 0,
+      "passed_count": 21,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".....................                                                    [100%]\n21 passed in 0.44s\n"
+    },
+    {
+      "name": "tests_tier_a_30_upstream_signal",
+      "exit_code": 0,
+      "passed_count": 12,
+      "duration_seconds": 5.0,
+      "stdout_tail": "............                                                             [100%]\n12 passed in 0.43s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_01_test_dmp_v3_vocabulary_terms",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.30s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_02_test_financial_calendar_vocabulary_terms",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.18s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_03_test_parallel_risk_lane_vocabulary_terms",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 4.0,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.17s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_04_test_vocabulary_candidate_admission_plan_contracts",
+      "exit_code": 0,
+      "passed_count": 13,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".............                                                            [100%]\n13 passed in 0.22s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_05_test_vocabulary_candidate_admission_review_contracts",
+      "exit_code": 0,
+      "passed_count": 9,
+      "duration_seconds": 4.0,
+      "stdout_tail": ".........                                                                [100%]\n9 passed in 0.20s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_06_test_vocabulary_candidate_classification_contracts",
+      "exit_code": 0,
+      "passed_count": 8,
+      "duration_seconds": 5.0,
+      "stdout_tail": "........                                                                 [100%]\n8 passed in 0.22s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_07_test_vocabulary_candidate_payload_contracts",
+      "exit_code": 0,
+      "passed_count": 5,
+      "duration_seconds": 3.125,
+      "stdout_tail": ".....                                                                    [100%]\n5 passed in 0.29s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_candidate_review_cli_contracts",
+      "exit_code": 0,
+      "passed_count": 16,
+      "duration_seconds": 20.798,
+      "stdout_tail": "................                                                         [100%]\n16 passed in 18.31s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_candidate_schema_contracts",
+      "exit_code": 0,
+      "passed_count": 6,
+      "duration_seconds": 2.669,
+      "stdout_tail": "......                                                                   [100%]\n6 passed in 0.22s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_canonical_builder_parity",
+      "exit_code": 0,
+      "passed_count": 4,
+      "duration_seconds": 2.463,
+      "stdout_tail": "....                                                                     [100%]\n4 passed in 0.22s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_document_json_helpers",
+      "exit_code": 0,
+      "passed_count": 5,
+      "duration_seconds": 2.921,
+      "stdout_tail": ".....                                                                    [100%]\n5 passed in 0.23s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_json_helper_contracts",
+      "exit_code": 0,
+      "passed_count": 8,
+      "duration_seconds": 3.012,
+      "stdout_tail": "........                                                                 [100%]\n8 passed in 0.30s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_required_baseline_terms",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 2.636,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.21s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_schema_contract",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 2.73,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.18s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_synonym_candidate_audit",
+      "exit_code": 0,
+      "passed_count": 17,
+      "duration_seconds": 9.879,
+      "stdout_tail": ".................                                                        [100%]\n17 passed in 7.45s\n"
+    },
+    {
+      "name": "tests_tier_a_31_vocabulary_file_test_vocabulary_workflow_surface",
+      "exit_code": 0,
+      "passed_count": 1,
+      "duration_seconds": 2.685,
+      "stdout_tail": ".                                                                        [100%]\n1 passed in 0.21s\n"
+    },
+    {
+      "name": "tests_tier_b_01_capital_deployment",
+      "exit_code": 0,
+      "passed_count": 3,
+      "duration_seconds": 6.0,
+      "stdout_tail": "...                                                                      [100%]\n3 passed in 0.46s\n"
+    },
+    {
+      "name": "tests_tier_b_02_options_flow_support",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 5.0,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.36s\n"
+    },
+    {
+      "name": "tests_tier_b_03_proof_model_detached",
+      "exit_code": 0,
+      "passed_count": 23,
+      "duration_seconds": 41.0,
+      "stdout_tail": ".......................                                                  [100%]\n23 passed in 37.15s\n"
+    },
+    {
+      "name": "tests_tier_b_04_review_lineage",
+      "exit_code": 0,
+      "passed_count": 9,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".........                                                                [100%]\n9 passed in 0.44s\n"
+    },
+    {
+      "name": "tests_tier_b_05_review_replay",
+      "exit_code": 0,
+      "passed_count": 3,
+      "duration_seconds": 5.0,
+      "stdout_tail": "...                                                                      [100%]\n3 passed in 0.36s\n"
+    },
+    {
+      "name": "tests_tier_b_06_serial_boundaries",
+      "exit_code": 0,
+      "passed_count": 7,
+      "duration_seconds": 5.0,
+      "stdout_tail": ".......                                                                  [100%]\n7 passed in 0.48s\n"
+    },
+    {
+      "name": "tests_tier_b_07_upstream_support",
+      "exit_code": 0,
+      "passed_count": 2,
+      "duration_seconds": 5.0,
+      "stdout_tail": "..                                                                       [100%]\n2 passed in 0.34s\n"
+    }
+  ]
+}
