@@ -1,0 +1,141 @@
+{
+  "schema_version": "v1",
+  "status": "PASS_WITH_DISCLOSED_RECONSTRUCTION_LIMIT",
+  "fwd016_opened": false,
+  "exact_original_152_candidates_fully_reconstructed": false,
+  "reported_transient_candidate_count_from_prior_report": 152,
+  "reconstructable_phrase_decision_count": 88,
+  "disallowed_phrase_audit_count": 58,
+  "suspicious_disallowed_phrase_count": 0,
+  "required_proof_status": {
+    "git_diff_check_final": "0",
+    "vocabulary_canonical_builder_parity_pytest": "0",
+    "proof_block_vocabulary_synonym_audit_clean_check": "0",
+    "proof_block_vocabulary_governance_conformance_candidate_bg": "0",
+    "proof_blocks_check_all": "0",
+    "vocabulary_synonym_audit_check_clean": "0"
+  },
+  "commands": [
+    {
+      "name": "git_diff_check",
+      "command": "git diff --check",
+      "exit_code": "0",
+      "duration_seconds": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_diff_check.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_diff_check.stderr",
+      "note": null,
+      "summary_tail": "",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "git_diff_check_final",
+      "command": "git diff --check",
+      "exit_code": "0",
+      "duration_seconds": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_diff_check_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_diff_check_final.stderr",
+      "note": null,
+      "summary_tail": "",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "git_status_short",
+      "command": "git status --short",
+      "exit_code": "0",
+      "duration_seconds": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_status_short.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_status_short.stderr",
+      "note": null,
+      "summary_tail": "M ROADMAP_LEDGER.md | M tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py | ?? var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "git_status_short_final",
+      "command": "git status --short",
+      "exit_code": "0",
+      "duration_seconds": "0",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_status_short_final.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/git_status_short_final.stderr",
+      "note": null,
+      "summary_tail": "M ROADMAP_LEDGER.md | M tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py | ?? var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "proof_block_vocabulary_governance_conformance_candidate",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block vocabulary_governance_conformance_candidate",
+      "exit_code": "124",
+      "duration_seconds": "unknown",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate.stderr",
+      "note": "NO_PASS_CLAIM: wrapper command timed out/aborted before status capture; use proof_block_vocabulary_governance_conformance_candidate_bg for captured exit-code evidence.",
+      "summary_tail": "............                                                             [ 46%] | tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py . [ 47%] | ........                                                                 [ 56%] | tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py . [ 57%] | ............",
+      "claim_status": "no_pass_claim"
+    },
+    {
+      "name": "proof_block_vocabulary_governance_conformance_candidate_bg",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block vocabulary_governance_conformance_candidate",
+      "exit_code": "0",
+      "duration_seconds": "31",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate_bg.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate_bg.stderr",
+      "note": null,
+      "summary_tail": "tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py ..... [ 85%] | ............                                                             [ 98%] | tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py .            [100%] | ============================= 90 passed in 23.61s ==============================",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "proof_block_vocabulary_governance_conformance_candidate_rerun",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block vocabulary_governance_conformance_candidate",
+      "exit_code": "124",
+      "duration_seconds": "unknown",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate_rerun.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_governance_conformance_candidate_rerun.stderr",
+      "note": "NO_PASS_CLAIM: wrapper command timed out/aborted before status capture; use proof_block_vocabulary_governance_conformance_candidate_bg for captured exit-code evidence.",
+      "summary_tail": "tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py ..... [ 85%] | ............                                                             [ 98%] | tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py .            [100%] | ============================= 90 passed in 24.31s ==============================",
+      "claim_status": "no_pass_claim"
+    },
+    {
+      "name": "proof_block_vocabulary_synonym_audit_clean_check",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --block vocabulary_synonym_audit_clean_check",
+      "exit_code": "0",
+      "duration_seconds": "9",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_synonym_audit_clean_check.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_block_vocabulary_synonym_audit_clean_check.stderr",
+      "note": null,
+      "summary_tail": "proof_block_id=vocabulary_synonym_audit_clean_check | command=python scripts/vocabulary_synonym_audit.py --check-clean | vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "proof_blocks_check_all",
+      "command": "env PYTHONPATH=src python scripts/run_proof_block.py --check-all",
+      "exit_code": "0",
+      "duration_seconds": "2",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_blocks_check_all.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/proof_blocks_check_all.stderr",
+      "note": null,
+      "summary_tail": "proof_blocks_check_all=PASS count=46",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "vocabulary_canonical_builder_parity_pytest",
+      "command": "env PYTHONPATH=src python -m pytest -q tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py",
+      "exit_code": "0",
+      "duration_seconds": "5",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/vocabulary_canonical_builder_parity_pytest.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/vocabulary_canonical_builder_parity_pytest.stderr",
+      "note": null,
+      "summary_tail": "....                                                                     [100%] | 4 passed in 0.26s",
+      "claim_status": "pass_claim_allowed"
+    },
+    {
+      "name": "vocabulary_synonym_audit_check_clean",
+      "command": "env PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean",
+      "exit_code": "0",
+      "duration_seconds": "7",
+      "stdout_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/vocabulary_synonym_audit_check_clean.stdout",
+      "stderr_path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/reports/vocabulary_synonym_audit_check_clean.stderr",
+      "note": null,
+      "summary_tail": "vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False",
+      "claim_status": "pass_claim_allowed"
+    }
+  ]
+}

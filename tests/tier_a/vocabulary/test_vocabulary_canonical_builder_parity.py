@@ -110,3 +110,40 @@ def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
         for line in registry_text.splitlines()
         if line.startswith("### ")
     )
+
+
+def test_disallowed_phrase_guardrails_and_evidence_appendix() -> None:
+    native_builder = _require_module("nvda_desk.vocabulary_builder")
+    payload = native_builder.build_canonical_payload()
+
+    disallowed: list[str] = []
+    governed_terms: set[str] = set()
+    for entry in payload["entries"]:
+        governed_terms.add(entry["canonical_label"].casefold())
+        governed_terms.update(alias.casefold() for alias in entry.get("allowed_aliases", []))
+        disallowed.extend(entry.get("disallowed_phrases", []))
+
+    normalised_disallowed = [phrase.casefold() for phrase in disallowed]
+    assert len(normalised_disallowed) == len(set(normalised_disallowed))
+    assert not (set(normalised_disallowed) & governed_terms)
+
+    appendix_path = Path(
+        "var/audit/active_code_atlas_001/"
+        "vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/"
+        "VOCABULARY_CANDIDATE_ADJUDICATION_APPENDIX.json"
+    )
+    if not appendix_path.exists():
+        pytest.fail(f"Required adjudication evidence artefact missing: {appendix_path}")
+    appendix = json.loads(appendix_path.read_text(encoding="utf-8"))
+    represented_disallowed = {
+        record["normalised_phrase"]
+        for record in appendix["records"]
+        if record["decision"] == "disallowed_non_term_phrase"
+    }
+    fragment_like_disallowed = {
+        "ithout runtime context",
+        "pared runtime context",
+        "stream opening architecture",
+        "and close architecture",
+    }
+    assert fragment_like_disallowed <= represented_disallowed
