@@ -1,0 +1,1270 @@
+{
+  "generated_utc": "2026-05-15T08:52:28.658197+00:00",
+  "entry_count": 158,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "line_count": 184,
+      "byte_count": 8827,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "PLANS.md",
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "line_count": 707,
+      "byte_count": 99334,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "sha256": "34b231dbba9a567b30cadf78f43e3ced8cbb0d90475e723dd2e2c9650394cb16",
+      "line_count": 2124,
+      "byte_count": 323623,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a44d697feeb452d41429cd056701ea568ac215b00ab31a15b6300c9bc12a71d9",
+      "line_count": 3,
+      "byte_count": 71,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "e78bb32ac088a884379130b03450fc01d77a6a994281145b6d6c9a14b30df2e6",
+      "line_count": 71,
+      "byte_count": 1249,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "sha256": "d8b539ffa6977cec7cff58474e41c762da1b8f4e9817435c78dc14704f8c127e",
+      "line_count": 193,
+      "byte_count": 19682,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "line_count": 76,
+      "byte_count": 3764,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "intent_migration/AGENTS.override.md",
+      "sha256": "30594d481f6c1d0d86eb8d45f2959e21ff93dd8955160a63f5933094c208aa82",
+      "line_count": 61,
+      "byte_count": 2674,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "sha256": "b9e22dd47238543e1fe1bfe72112d531245cad9fff0ec6f23f2a9b44150f6995",
+      "line_count": 807,
+      "byte_count": 45809,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "line_count": 3561,
+      "byte_count": 221383,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "line_count": 84,
+      "byte_count": 3465,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614",
+      "line_count": 23,
+      "byte_count": 1084,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "line_count": 117,
+      "byte_count": 4989,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8",
+      "line_count": 13,
+      "byte_count": 418,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+      "line_count": 142,
+      "byte_count": 5346,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed",
+      "line_count": 13,
+      "byte_count": 392,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d",
+      "line_count": 159,
+      "byte_count": 5680,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "line_count": 51,
+      "byte_count": 3529,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+      "line_count": 186,
+      "byte_count": 7552,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d",
+      "line_count": 21,
+      "byte_count": 918,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "line_count": 81,
+      "byte_count": 4080,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "line_count": 342,
+      "byte_count": 34740,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "line_count": 147,
+      "byte_count": 5587,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "line_count": 120,
+      "byte_count": 12060,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+      "line_count": 264,
+      "byte_count": 10717,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "line_count": 13,
+      "byte_count": 401,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "line_count": 202,
+      "byte_count": 8442,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+      "line_count": 39,
+      "byte_count": 2617,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+      "line_count": 187,
+      "byte_count": 5489,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+      "line_count": 33,
+      "byte_count": 2726,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "line_count": 50,
+      "byte_count": 1944,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "line_count": 758,
+      "byte_count": 40449,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+      "sha256": "0cce16eb35b95f03684c035da751f4344b10e8ca6f1e671b1cf697e2f9a56f56",
+      "line_count": 213,
+      "byte_count": 15639,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/vocabulary/README.md",
+      "sha256": "e76cc9c284641d194283f0a3194d0b81d2a603fd5f5c01b042f3b0fbe0e74439",
+      "line_count": 23,
+      "byte_count": 962,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "docs/vocabulary/vocabulary_registry.md",
+      "sha256": "6e36303918d4326a31288827adb7015439694e8f8d8ce0907b0b7c5422ce8b84",
+      "line_count": 163,
+      "byte_count": 6677,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd001_vocabulary_governance_20260514/FWD001_BOUNDARY_RECEIPT.md",
+      "sha256": "18b04064a0af21390c0757f1274b8e82fa1b08b6084425e7fffcb8d1771de81b",
+      "line_count": 62,
+      "byte_count": 3160,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd002_closure_remediation_20260514/FWD002_CLOSURE_GRADE_READ_MANIFEST.json",
+      "sha256": "99c2fdeac2a2bc3966feab308385dec88e781ff896f76c2a2a193ed420bce82b",
+      "line_count": 1025,
+      "byte_count": 69631,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD002_FWD004_READ_MANIFEST.json",
+      "sha256": "3abdbf10b97d3425441774e69324335d3a1b4db56db28e7a157f246fa1f00703",
+      "line_count": 479,
+      "byte_count": 18774,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD002_FWD004_BOUNDARY_RECEIPT.md",
+      "sha256": "29d83023fb7cdc0a9702284359b099a35376057ac779cb09273be1bb905a3a3e",
+      "line_count": 37,
+      "byte_count": 2076,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd002_fwd004_continuation_20260514/FWD003_PERSISTENCE_LEDGER_RECEIPT_EVIDENCE.md",
+      "sha256": "65d99338f8653380ac7602a2df7c2c5fa8b2bfa3cfead4c2b1a157b44683f450",
+      "line_count": 79,
+      "byte_count": 3290,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "a51ff6b049de292f3952bc798749ee0963020edecce6250201ada2145ab39231",
+      "line_count": 2110,
+      "byte_count": 95767,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_closure_gate_20260514/FWD003_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "8a1e6ba4c9dd68965d9c5719d9e847384b60efb779368485d018338ee9599663",
+      "line_count": 163,
+      "byte_count": 7237,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD003_FWD009_CLOSURE_GRADE_READ_MANIFEST.json",
+      "sha256": "e31dd158555eed220135741cf6f639885aa6cb704c5efee7fb00e6607572bc82",
+      "line_count": 491,
+      "byte_count": 27436,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD003_FWD009_BOUNDARY_RECEIPT.md",
+      "sha256": "7b81e0fb63b85dc2d4b636578ce81557e4d7081b837e88b42dc989e38990bc5a",
+      "line_count": 47,
+      "byte_count": 3772,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD003_PERSISTENCE_LEDGER_RECEIPT_CLOSURE_EVIDENCE.md",
+      "sha256": "2187056963e5fbc2174c6584cc128186d9f82d474813f797e4ae51dc29b7d6f4",
+      "line_count": 91,
+      "byte_count": 6321,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_linkage_remediation_20260514/FWD003_LINKAGE_REMEDIATION_READ_MANIFEST.json",
+      "sha256": "397383521366e21ed317280b6ca5bf06017872bf1662dc5356d1da7016163d0c",
+      "line_count": 710,
+      "byte_count": 25133,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd003_linkage_remediation_20260514/FWD003_LINKAGE_REMEDIATION_PROOF_SUMMARY.json",
+      "sha256": "b94bbe7579a6947d35c320d0fd5ae8f7e55b84b65759ff141bd84281a19118cf",
+      "line_count": 159,
+      "byte_count": 12701,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd004_closure_gate_20260514/FWD004_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "afb1a815890c514c5cd786a9fc9a67ff056a626bfa3bad68d253b2024e7d8844",
+      "line_count": 750,
+      "byte_count": 36467,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd004_closure_gate_20260514/FWD004_PROOF_SUMMARY.json",
+      "sha256": "75dd195e41d63db50eae898637d2bc1fb62eab8474d1d4ad9dbc55f817672880",
+      "line_count": 88,
+      "byte_count": 4599,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd004_closure_gate_20260514/FWD004_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "ba0dedc4dd9ff9f5796760d98d508d6b6c0f64ad00ff169cb88f4924107b4b5e",
+      "line_count": 227,
+      "byte_count": 9665,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd004_regression_batch_proof_v2_20260514/FWD004_TIER_AB_BATCH_REGRESSION_READ_MANIFEST.json",
+      "sha256": "7651369836460af7dbc6ab368a7fd51d824a7e0d33629e9ee72b835ca22b2724",
+      "line_count": 2642,
+      "byte_count": 145119,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd004_regression_batch_proof_v2_20260514/FWD004_TIER_AB_BATCH_REGRESSION_PROOF_SUMMARY.json",
+      "sha256": "60671c72fc999b3067034abfe400debffd509e5a6d37b1a86e7c61845cc2a60c",
+      "line_count": 14,
+      "byte_count": 392,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/FWD005_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "fd3c7e0aa724a361c7f65f8700abfb6eadade788df9aa83c110b429e8732df68",
+      "line_count": 3698,
+      "byte_count": 195647,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/FWD005_EXTERNAL_SOURCE_API_INGRESS_CLOSURE_RECEIPT.md",
+      "sha256": "bc7695d886f1882cea5363ccb5678a1ae02088c64aa5640c4a0b8ce4cdb8ff9a",
+      "line_count": 27,
+      "byte_count": 1109,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/FWD005_PROOF_SUMMARY.json",
+      "sha256": "a5a6d48c44252dd46b52c4eb18182d02e6e256a576c52efc71c0cad008d9dc83",
+      "line_count": 56,
+      "byte_count": 4868,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd005_closure_gate_20260514/FWD005_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "0fbb62a9dd1203684dd86a5d28853879f0684c93aed75a30ed40e593814a8295",
+      "line_count": 371,
+      "byte_count": 15628,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd005_regression_batch_proof_20260514/FWD005_TIER_AB_BATCH_REGRESSION_PROOF_SUMMARY.json",
+      "sha256": "a0b2ce4143c2737d0cfe1c6d1ebde0f28bd374ba020cf52759e7463ca2e2ce33",
+      "line_count": 22,
+      "byte_count": 1025,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "bfe9104b2d87041bbe86b9b915e6a974a4b249f6086788717d5713b09898ce6a",
+      "line_count": 187,
+      "byte_count": 8115,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD007_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "991099bff79d3a67c33c68b34836c602acaf17e0a54e087dd0e3e7f612e428d2",
+      "line_count": 187,
+      "byte_count": 8053,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD008_CLOSURE_GATE_READ_MANIFEST.json",
+      "sha256": "17bf3f4a30893bc4bf730db949f6f84eb4f30add244fc85a12e2b0c32747a379",
+      "line_count": 178,
+      "byte_count": 7674,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_CLOSURE_RECEIPT.md",
+      "sha256": "65688633d7c8fec4a94b2087bf3a8cbe6f262e30e55de5118331b56a9170e270",
+      "line_count": 27,
+      "byte_count": 1184,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD007_RAW_SIGNAL_FAMILIES_CLOSURE_RECEIPT.md",
+      "sha256": "d1a4c174e2befc05b332ab26cad92fc7897dc14f0ec1881457c015d5e59964ed",
+      "line_count": 27,
+      "byte_count": 1089,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD008_FINANCIAL_EVENT_CALENDAR_CLOSURE_RECEIPT.md",
+      "sha256": "0fe717031079c65dc76ec3c18c876811b9e8d868f08c1e000dbfecef98773098",
+      "line_count": 27,
+      "byte_count": 1144,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_FWD008_PROOF_SUMMARY.json",
+      "sha256": "8b1473311c238fbebff15489d3d40efc383b2a9380fcc07128f6a750821f9a5f",
+      "line_count": 95,
+      "byte_count": 3695,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD006_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "feada380b3ff1a9862daea58ee860b49372e768c7b7fcdd83e8f73bade055ed7",
+      "line_count": 199,
+      "byte_count": 8192,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD007_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "340edd20ee4b25a42eb1e533d5179cb96436ba17d9a55e42128f22cf8ab130e0",
+      "line_count": 216,
+      "byte_count": 9089,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/FWD008_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "a805d1a4b9c2746312f3ec1b05ba9588ce109f59ef832932b201601a9fb8cfdd",
+      "line_count": 192,
+      "byte_count": 8453,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_fwd008_forensic_audit_20260514/FWD006_FWD008_FORENSIC_AUDIT_INSPECTION_MANIFEST.json",
+      "sha256": "04ae13c1e8519eb2858ab13e3025e7f14ed6db0972b5a07fcbf48509b943b287",
+      "line_count": 133,
+      "byte_count": 6570,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/FWD006_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "efa86e0b40ad64fbe54025922ed3d2a593ebbab2a29bcd385bdce28256c9d34d",
+      "line_count": 1852,
+      "byte_count": 92409,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "d0aa45278df850baa56bc6a45fabc83ffb5a79484bf219a2ac7932decf0766a4",
+      "line_count": 45,
+      "byte_count": 3154,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/FWD006_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "07fe39728e614b1cc8a46628a5da2ed0ddf7406395da6485f2702b629797bbf5",
+      "line_count": 80,
+      "byte_count": 4382,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/FWD006_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "4124c4e646ac711075aa2544cb0af16e62412501dbfd75e83f0991d8cd6ec5f1",
+      "line_count": 221,
+      "byte_count": 10096,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_lineage_acceptance_20260514/FWD007_LINEAGE_ACCEPTANCE_READ_MANIFEST.json",
+      "sha256": "64be66d36a51bda79a6f487fa1921040b7bcb7848754aa8b10eb3039e4e7487b",
+      "line_count": 6960,
+      "byte_count": 372539,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_lineage_acceptance_20260514/FWD007_LINEAGE_ACCEPTANCE_RECEIPT.md",
+      "sha256": "e55047d496963bd11a7deb3130d58f14b3dd3f7eefc0009a44877d7c8d48d49b",
+      "line_count": 28,
+      "byte_count": 1203,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_ordered_replay_20260514/FWD007_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "f905bcd09ff80a5e2c5edc7facfbca1ebc880fbedac6a118572a870b869f8db6",
+      "line_count": 681,
+      "byte_count": 31705,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_ordered_replay_20260514/FWD007_RAW_SIGNAL_FAMILIES_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "0f20631d3029d29fabf429d034d2b4d7af49a4369e5e362885f7fb402296b6c8",
+      "line_count": 40,
+      "byte_count": 1975,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_ordered_replay_20260514/FWD007_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "96ebe6bfadc7dfd7142b1619901c199d6639de8d8c28c67208e0eb41efdcd5c7",
+      "line_count": 55,
+      "byte_count": 1577,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd007_ordered_replay_20260514/FWD007_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "be2fa0be6eefeeb747c9a2f528ba095df46069bd3cbe2d48df4c8ca03f58532e",
+      "line_count": 294,
+      "byte_count": 12900,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD008_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "e640a57eed2ae6299dbabd34e09d005f21b0feae8c2f5e157b4fafcb1bb69782",
+      "line_count": 502,
+      "byte_count": 21293,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD009_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "bb852972c4d80337147f678f100c3c9f9995aad58e07eac687cb25ee475a808b",
+      "line_count": 622,
+      "byte_count": 26434,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD008_FINANCIAL_EVENT_CALENDAR_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "bce78e3feb5af6096f1fa05095201530b5fcd291292484ae772f3186176a3b3b",
+      "line_count": 49,
+      "byte_count": 2637,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD008_FWD009_BOUNDARY_RECEIPT.md",
+      "sha256": "ca21514034a8d84a7223ec598133942810b5351e4ab4a6a4c1627158dc6dbbe1",
+      "line_count": 28,
+      "byte_count": 1261,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD009_PREPARED_INGRESS_CONTEXT_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "d3a064950c4205e9db0ef0957a63f104bf0898e46add14efd591c7a3bfa5473c",
+      "line_count": 49,
+      "byte_count": 2656,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD008_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "6376a2f84dfa8e98eaa2e32c7f7145baef5823145b310e0da993eb49ff3491d5",
+      "line_count": 68,
+      "byte_count": 4477,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD009_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "ec557bba6740a1532e6830588cc1198fa93ed173985adb5e1d0ed60cf550ba6f",
+      "line_count": 74,
+      "byte_count": 5464,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD008_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "2567230796c0128ddf666eccc79b0933e01eb3f4ee25489f4d6c10e5352a2e92",
+      "line_count": 345,
+      "byte_count": 15447,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/FWD009_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "870d6c0d3011647c3fa87c02256a85a5416d3d3016b829981530dfb84517bb5f",
+      "line_count": 313,
+      "byte_count": 14814,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "daf0a148368405c9bea28e7048f4047c39d900992f0886662fe625f294de4f06",
+      "line_count": 1069,
+      "byte_count": 49596,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_BOUNDARY_RECEIPT.md",
+      "sha256": "6e15b1cd3a7d23745ea7dffcdb25d8927d844aadedf07b15adda605a2c1a98b4",
+      "line_count": 8,
+      "byte_count": 554,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_DYNAMIC_COEFFICIENT_MODIFIER_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "9f38af784312d26b65b9d17c65a536d286f24f5c3d2a8aeb35d7a54e76aa13da",
+      "line_count": 74,
+      "byte_count": 4059,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "946bee879219261f8816b91c7a779821eb182bc7979d1342881931e929c499f5",
+      "line_count": 86,
+      "byte_count": 8503,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd010_dynamic_coefficient_modifier_ordered_replay_20260515/FWD010_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "dc370e1e5392c30a8c92c7674cdefa4d4d390ca2036af28fc4396b3b63054f15",
+      "line_count": 614,
+      "byte_count": 26234,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "02857585d1c24d966fb2f68ddfd98dd327d4094ca49061f4dd7b7e9e375e3cfb",
+      "line_count": 568,
+      "byte_count": 29514,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_BOUNDARY_RECEIPT.md",
+      "sha256": "52e01c7cee4726fa87af1c0e055b31b319f8e95e7e85025fe91452063a2dfe27",
+      "line_count": 21,
+      "byte_count": 1408,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_PLAYBOOK_LIBRARY_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "b7b7dc6eae363772dded34138d61a6ebcfa374766a62d9bdcdc2ff666d5891b5",
+      "line_count": 66,
+      "byte_count": 3230,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "42c62a89dcb13505ee324e03aeeacd1c78d9f35ed25140f1e172cea92dd573ca",
+      "line_count": 101,
+      "byte_count": 7146,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "8db7fa236b3c818d507f5042fd365d5deef72942a1a8ce429128e39e52ca0021",
+      "line_count": 225,
+      "byte_count": 10443,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "d520408212c5e46279c51728805afc27ed90e4075a5a312b65cad3e80cb47c27",
+      "line_count": 541,
+      "byte_count": 27764,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_BOUNDARY_RECEIPT.md",
+      "sha256": "b9e7029b02cebf25cc7101deb1378b59990d524d8dbbffa6f01a0f85da0fdb3f",
+      "line_count": 20,
+      "byte_count": 1034,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_SERIAL_DESK_COGNITION_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "4f0e111dda8bd1b8850d12d8090cfc71d566bb2e181911f798464e8effe66481",
+      "line_count": 67,
+      "byte_count": 3301,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "ee7732afff4ed76cf456d8a8922326b3a1bc0ba5c659d507ad11f5cce9c31119",
+      "line_count": 106,
+      "byte_count": 8569,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/FWD012_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "d896fc060816be1dcbeef1a65457bc91da2e466e964e32ca37950bd0bfdd4f11",
+      "line_count": 173,
+      "byte_count": 7430,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "ddadae7dcb299e361968abdc130563d0dc70b7ca6836af616ed50c6284e42995",
+      "line_count": 554,
+      "byte_count": 28044,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_BOUNDARY_RECEIPT.md",
+      "sha256": "ab7b95110d132b9c77bcec67eb697c9cc011bb43ceb3e6c198fd6ab231400dc7",
+      "line_count": 22,
+      "byte_count": 936,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_PARALLEL_RISK_LANE_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "e78dbc908ff1b151fa89517756dfe28b53fbd2e2fb100a97b517f5d239bf5ee4",
+      "line_count": 45,
+      "byte_count": 1743,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "ea9198d712a4ac5f737ff22dc5d2bd39ea5f1abcd4bbd7392879d7d48aee1f88",
+      "line_count": 89,
+      "byte_count": 9599,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd013_parallel_risk_lane_ordered_replay_20260515/FWD013_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "18c57856f3d561bc1b4592483084f17a8ab53235db7ea65e7eb91b20ac68d344",
+      "line_count": 194,
+      "byte_count": 8893,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "5561fad01d2e846ede1fb87c040d593327167dc459603fc7c36a37505272baab",
+      "line_count": 1729,
+      "byte_count": 106849,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_BOUNDARY_RECEIPT.md",
+      "sha256": "68f4291fb1b90922ae8d41f788d16b642855c46a64d88c19c76a9a46278c2b76",
+      "line_count": 23,
+      "byte_count": 1335,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "84dd7f1f67e3a3baf585cdccba99c14fdb11dd2c6503af69348ee2d986530640",
+      "line_count": 101,
+      "byte_count": 3820,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "32ba297f9f619d2520912e1130023b0af5d82d2e46e8adb21de0c3764d0434b9",
+      "line_count": 80,
+      "byte_count": 6702,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "e4f644a2907467c7a9db4d5ff2bb0df8bda6914a0c371effdc3c2472590b6334",
+      "line_count": 347,
+      "byte_count": 14734,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_EVIDENCE_INVENTORY.json",
+      "sha256": "7c45ed513d0bfbf9b05930154925a5097de8f404c98194dad55a5a0f2af44771",
+      "line_count": 65,
+      "byte_count": 2504,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "876c2d55843f3dded290864fcc9f9a953b3513deebd40ebbd978e2fb5ec9d4cc",
+      "line_count": 523,
+      "byte_count": 31299,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_BOUNDARY_RECEIPT.md",
+      "sha256": "9640624fb8161e8f9054988d5866f419e45d34c8a4e4a69b43b5754345e1bf8a",
+      "line_count": 23,
+      "byte_count": 1386,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_OPENING_PLACEMENT_READINESS_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "a69bf799e72387c5b08f3ca9158ac1f02543f6021bc9927c0b32e1af203b01ef",
+      "line_count": 105,
+      "byte_count": 4174,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "944052dc8666ebb54515e2fbb5c8168f97cb2e71bf984acd920a7c6e2ab0a02b",
+      "line_count": 78,
+      "byte_count": 7682,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "55c7824ca43d871302e873c3bd8ac617e095f244f4f364fc4fc58fe33012111a",
+      "line_count": 279,
+      "byte_count": 16208,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_EVIDENCE_INVENTORY.json",
+      "sha256": "68262130a12af33cad32d484ae62f1f2e0cca393e67373619ff78b6d8f1f9530",
+      "line_count": 160,
+      "byte_count": 6694,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "1612e2c55c34959576170f6c7300185a9103d2cf22490ab90b052ec650ee682c",
+      "line_count": 1188,
+      "byte_count": 48992,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_BOUNDARY_RECEIPT.md",
+      "sha256": "7e423cf3a71d80716d0b284151099600cb02169bceadeb4686b60b8bb4419865",
+      "line_count": 24,
+      "byte_count": 1377,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_LIVE_POSITION_INVENTORY_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "925fe7536cb585a7dce7775ee6742d9a22fb30ab2d3a0ed315216b19c92fac18",
+      "line_count": 57,
+      "byte_count": 3254,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "a8091136fbdf23524a3f5632bc8a1b4cbc58c71e2ec20dc4d3d7783eb8530751",
+      "line_count": 217,
+      "byte_count": 16423,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "1a4248d403c4755f8d6ac9dbeac5eef80fdbb33ada7f721efc6b1ae0281250d5",
+      "line_count": 125,
+      "byte_count": 4409,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_EVIDENCE_INVENTORY.json",
+      "sha256": "347abe142380e51c8a7d492d5bd81cc0bd5b44421f0386b8dd381e99edf92eb9",
+      "line_count": 67,
+      "byte_count": 2764,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_PROOF_READ_MANIFEST.json",
+      "sha256": "da283ea9fa035be876cf9c91e6ca00ae4b46aeb176a9c90e172bedeb91e4384e",
+      "line_count": 68,
+      "byte_count": 2129,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_BROAD_PROOF_RECEIPT.md",
+      "sha256": "5d178a00734fbe859f8fbef0cb0ef0ac40b0a6797c02a0a6183ed8ab3484fb87",
+      "line_count": 47,
+      "byte_count": 2097,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_BROAD_PROOF_SUMMARY.json",
+      "sha256": "8eeb1330943474ace014ceb997e68750890a06f0870feadc931051236dc3047b",
+      "line_count": 423,
+      "byte_count": 18589,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/BATCHED_PYTEST_PROGRESS.json",
+      "sha256": "4f1a518fe701ff730054d5ea3651f691ddd1f4c7bcc67b0de575847e5bf9569d",
+      "line_count": 458,
+      "byte_count": 9453,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/BATCHED_PYTEST_SUMMARY.json",
+      "sha256": "8f4ea39ffd039f164a359ed040b23af3c6f662eb6d27102692123372b171570d",
+      "line_count": 460,
+      "byte_count": 10384,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_batched_proof_hardening_20260515/FWD017_BATCHED_PROOF_COMMAND_LOG.md",
+      "sha256": "daec42c9afa4d0703604dc538de8197d14a91c08a0183c4104951d43a5f31f33",
+      "line_count": 224,
+      "byte_count": 5834,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "205c4cb191a11d0e34e6579d60085f36a80ce5cfd5ea502956caf63381707885",
+      "line_count": 1272,
+      "byte_count": 55710,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_BOUNDARY_RECEIPT.md",
+      "sha256": "2576c7af7a95a05a78cbc83a9beb68a1a68644d44f616574d130fd5d0e82e3e3",
+      "line_count": 28,
+      "byte_count": 1292,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_EXIT_CLOSE_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "2b02b8c2fd6fa0704d009ea3e02edfbf316a1daab10a4033ac338479bcf054e7",
+      "line_count": 71,
+      "byte_count": 3676,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "2182c43662b79676dbbc838aa543736fe0818255dbbc353a1551312eb15d380b",
+      "line_count": 285,
+      "byte_count": 19110,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "210e41becd1ece05b06131163bc39f58fb96606fbefc947d3ec253aaf8136e90",
+      "line_count": 119,
+      "byte_count": 4965,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/FWD017_EVIDENCE_INVENTORY.json",
+      "sha256": "48ead71602ef1d21ce0ea44f49c38afe9e85260c4bb9b6b126acd8f0b0fd64e1",
+      "line_count": 345,
+      "byte_count": 13022,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "sha256": "10dd372749952f8979498d0aab2364ec3f9c72421ecdad459f7b11aca4d1ead7",
+      "line_count": 1556,
+      "byte_count": 66915,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_BOUNDARY_RECEIPT.md",
+      "sha256": "dfd60c6698b52ec6233f3afe68b477e10ea5c301db5f493e415a772eb523b9e1",
+      "line_count": 19,
+      "byte_count": 557,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_REVIEW_EXPLANATION_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "sha256": "b1f250f8e2281644121d5962d714a09f7d1640deb7e0b45e503213adcb684a15",
+      "line_count": 50,
+      "byte_count": 3008,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "sha256": "40b46f4a5e04b49c386d30199f90fb48bbde33cba964ad320647dc3164b95b40",
+      "line_count": 534,
+      "byte_count": 37106,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_THREE_WAY_COMPARISON_REPORT.json",
+      "sha256": "b804327f0f3b5b5eb06f7af4a24aec8291b4de437d4db6675dcb4d27c2071f89",
+      "line_count": 101,
+      "byte_count": 4164,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd018_review_explanation_ordered_replay_20260515/FWD018_EVIDENCE_INVENTORY.json",
+      "sha256": "0724a8f39e961ab1d6f9ef3f5151bb5a17e8e343ee25ba7981e14c3459d5cb34",
+      "line_count": 52,
+      "byte_count": 2173,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/ARCHITECTURE_MAP_FRESHNESS_DECISION.md",
+      "sha256": "2a77001d05d4499fc8d267f096f4b9c2e27b95ac962744dca80744f7f7fcb198",
+      "line_count": 15,
+      "byte_count": 828,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/DURABLE_TERM_ADJUDICATION_REPORT.md",
+      "sha256": "add9e6edfd5268d3ccc82e0c22799fb725dd36c3a7b9b49005c6bfc88f14a4d2",
+      "line_count": 37,
+      "byte_count": 8441,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/GLOBAL_COMMAND_LOG_COMPAT.md",
+      "sha256": "3345bbad86dc423b6c3ee00b71e4f56f9a5b29e152b1451c10c16f76ce71524d",
+      "line_count": 145,
+      "byte_count": 6769,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/VOCABULARY_GOVERNANCE_REMEDIATION_RECEIPT.md",
+      "sha256": "65531351e088c56c2c493a902a1f98db2d18276edc61e536b37f6266ee06b2b1",
+      "line_count": 41,
+      "byte_count": 2150,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/VOCABULARY_HASH_COVERAGE_REMEDIATION_REPORT.md",
+      "sha256": "c270ba7c20606588bed595e2b0eaa8cf0b975c586fc3bbf13574af0a37fcdbce",
+      "line_count": 37,
+      "byte_count": 3048,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/VOCABULARY_GOVERNANCE_REMEDIATION_FINDINGS.json",
+      "sha256": "8d98eca4ac8949895b8d6ba999c6e8ee35df7f9124c2c247735e797b43de6219",
+      "line_count": 126,
+      "byte_count": 3134,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/VOCABULARY_GOVERNANCE_REMEDIATION_PROOF_SUMMARY.json",
+      "sha256": "076fe19285adff469503f7163c87d009477ec0def149a13fd59138c1a7a28d37",
+      "line_count": 139,
+      "byte_count": 11869,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/VOCABULARY_GOVERNANCE_REMEDIATION_READ_MANIFEST.json",
+      "sha256": "e51c2bf832c31e149a0cec20c8ca7f543687fdd656c4534e6ac214074d05b568",
+      "line_count": 439,
+      "byte_count": 20000,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_ADJUDICATION_APPENDIX.md",
+      "sha256": "780cdf36d13da6b64b296036cb86cbd19b0bf6ab7fbe8c64310e808ed1eadcec",
+      "line_count": 96,
+      "byte_count": 34278,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_EVIDENCE_HARDENING_RECEIPT.md",
+      "sha256": "bfa2d7ccbdd61f7087361d99b86608746fef6eb861a1d6b4f27ed80d1bbba5d2",
+      "line_count": 32,
+      "byte_count": 1572,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_DISALLOWED_PHRASE_AUDIT.md",
+      "sha256": "af1c04e07f82acba8d3b4e5876d87f20f0254a5d08c3b7bd4475c7b2e4d95b40",
+      "line_count": 64,
+      "byte_count": 14609,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_ADJUDICATION_APPENDIX.json",
+      "sha256": "6fbdafd45b1e1dd4e335360d56f6bff346ffad9f7e06361aef2ef0165766ee66",
+      "line_count": 1763,
+      "byte_count": 79018,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_EVIDENCE_HARDENING_PROOF_SUMMARY.json",
+      "sha256": "a054e00d0c3e3db5f2324db2827548de8e2a7d1a0a8515ca27db01db1dfa7a00",
+      "line_count": 141,
+      "byte_count": 10179,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_EVIDENCE_HARDENING_READ_MANIFEST.json",
+      "sha256": "b03a6df1b4e78a2e59cb2bf77972d01b25b103e8a4eff8663c176a4966f23675",
+      "line_count": 173,
+      "byte_count": 5884,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_DISALLOWED_PHRASE_AUDIT.json",
+      "sha256": "a7794428b2519326be7160437330ed5707d0dcc169cb677e84fc384ceada03ce",
+      "line_count": 938,
+      "byte_count": 50504,
+      "read_status": "full_read_to_transcript_after_closeout_mutation",
+      "reason": "programme closeout reconciliation authority/evidence intake and current-hash record"
+    }
+  ]
+}
