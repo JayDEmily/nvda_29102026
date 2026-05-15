@@ -1,0 +1,66 @@
+### git branch --show-current
+main
+### git status --short
+### git rev-parse HEAD
+7e101bcd8437b807abf0e4bd66240f95d3fbe05b
+### git rev-parse main
+7e101bcd8437b807abf0e4bd66240f95d3fbe05b
+### git log --oneline --decorate --graph --all -40
+*   7e101bc (HEAD -> main) Merge FWD-015 opening placement ordered replay
+|\  
+| * 6b99990 Close FWD-015 opening placement ordered replay
+|/  
+*   567277b Merge FWD-014 downstream capital deployment ordered replay
+|\  
+| * 4ec08c0 Close FWD-014 downstream capital deployment ordered replay
+| * c055783 Correct FWD-010 and FWD-011 ledger state headers
+|/  
+*   a12650a Merge FWD-013 parallel risk lane ordered replay
+|\  
+| * 361db21 Close FWD-013 parallel risk lane ordered replay
+|/  
+*   772d089 Merge FWD-012 serial desk-cognition ordered replay
+|\  
+| * f347d33 Close FWD-012 serial desk-cognition ordered replay
+|/  
+*   ed8475b Merge FWD-011 playbook library ordered replay
+|\  
+| * 08dd8c4 Close FWD-011 playbook library ordered replay
+|/  
+*   c27e35a Merge FWD-010 ordered replay
+|\  
+| * c87cf29 Close FWD-010 dynamic coefficient ordered replay
+|/  
+*   b424ade Merge FWD-008 and FWD-009 ordered replay
+|\  
+| * 2859d0c Close FWD-008 and FWD-009 ordered replay
+|/  
+*   830cc2a Merge FWD-007 ordered replay lineage
+|\  
+| * 5a3b0f5 Accept FWD-007 ordered replay lineage
+| * e0a39aa Close FWD-007 ordered replay gate
+| * fa3fe10 (worker/fwd006-ordered-replay-20260514) Close FWD-006 ordered replay gate
+| * c5c7e0c (worker/fwd006-fwd008-forensic-audit-20260514) Record FWD-006 through FWD-008 forensic audit hold
+| * c13f491 (worker/fwd006-fwd008-closure-20260514) Close FWD-006 through FWD-008 gates
+| * 15fe16a (worker/vocabulary-suppression-removal-20260514) Remove vocabulary synonym suppression logic
+| * c8c7825 (worker/fwd-003-through-fwd-009-closure-continuation) Close FWD-005 closure gate
+| * a63967f Record FWD-004 Tier AB batch proof
+| * 861d260 Close FWD-004 closure gate
+| * 78f0caa Close FWD-003 linkage remediation gate
+| * 6507f7d Record FWD-003 closure gate blocker
+| * 818c287 Record FWD-003 through FWD-009 continuation evidence
+|/  
+*   258ec1c Merge FWD-002 closure remediation
+|\  
+| * dffca14 Record FWD-002 closure remediation
+| * d83271c Record FWD-002 through FWD-004 continuation evidence
+|/  
+* 37e770c Resolve FWD-001 vocabulary synonym blocker
+* f26b09f Baseline V2 control surface and roadmap ledger
+### git branch -avv
+* main                                                7e101bc Merge FWD-015 opening placement ordered replay
+  worker/fwd-003-through-fwd-009-closure-continuation c8c7825 Close FWD-005 closure gate
+  worker/fwd006-fwd008-closure-20260514               c13f491 Close FWD-006 through FWD-008 gates
+  worker/fwd006-fwd008-forensic-audit-20260514        c5c7e0c Record FWD-006 through FWD-008 forensic audit hold
+  worker/fwd006-ordered-replay-20260514               fa3fe10 Close FWD-006 ordered replay gate
+  worker/vocabulary-suppression-removal-20260514      15fe16a Remove vocabulary synonym suppression logic

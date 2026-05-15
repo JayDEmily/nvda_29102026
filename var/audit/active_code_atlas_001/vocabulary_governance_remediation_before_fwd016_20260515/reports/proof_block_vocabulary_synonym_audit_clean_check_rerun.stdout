@@ -1,0 +1,3 @@
+proof_block_id=vocabulary_synonym_audit_clean_check
+command=python scripts/vocabulary_synonym_audit.py --check-clean
+vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False

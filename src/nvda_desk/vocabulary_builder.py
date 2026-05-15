@@ -15,10 +15,15 @@ from nvda_desk.schemas.vocabulary import VocabularyDocument, VocabularyEntry
 
 OUTPUT_PATH = Path("data/vocabulary/canonical_vocabulary.json")
 GOVERNED_SOURCE_PATHS = [
+    Path("docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md"),
+    Path("docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md"),
+    Path("docs/vocabulary/README.md"),
+    Path("docs/vocabulary/CONSOLIDATION_WORKFLOW.md"),
+    Path("docs/vocabulary/vocabulary_registry.md"),
+    Path("scripts/build_canonical_vocabulary.py"),
     Path("src/nvda_desk/schemas/vocabulary.py"),
     Path("src/nvda_desk/vocabulary_builder.py"),
-    Path("docs/vocabulary/CONSOLIDATION_WORKFLOW.md"),
-    Path("docs/vocabulary/README.md"),
+    Path("src/nvda_desk/vocabulary_synonym_audit.py"),
     Path("data/vocabulary/canonical_vocabulary.json"),
 ]
 
@@ -119,6 +124,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_surface",
                 "cross_stage_protocol",
                 "DmpV3Packet",
+                allowed_aliases=["DMPV3 packet"],
             ),
             VocabularyEntry(
                 "desk_module_packet_v3",
@@ -242,6 +248,286 @@ def build_document() -> VocabularyDocument:
                 "reference_data",
                 "calendar_reference",
                 "FinancialCalendarImportRecord",
+            ),
+            VocabularyEntry(
+                "event_calendar",
+                "Event Calendar",
+                "reference_data",
+                "calendar_reference",
+                "EventCalendarProjection",
+                allowed_aliases=["event calendar architecture", "event calendar ownership"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.4 and FWD-008 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "raw_signal_families",
+                "Raw Signal Families",
+                "authority_surface",
+                "upstream_raw_signal",
+                "RawSignalFamilyCoverage",
+                allowed_aliases=["raw signal", "raw signal family"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.3 and FWD-007 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "prepared_ingress",
+                "Prepared Ingress",
+                "authority_surface",
+                "prepared_ingress",
+                "PreparedRuntimeContextBuilder",
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.5 and FWD-009 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "runtime_context",
+                "Runtime Context",
+                "carrier",
+                "prepared_ingress",
+                "PreparedRuntimeSnapshot",
+                allowed_aliases=[
+                    "admitted runtime context",
+                    "prepared runtime context",
+                    "project runtime context",
+                    "runtime context preparation",
+                ],
+                disallowed_phrases=["ithout runtime context", "pared runtime context"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 as the prepared substrate consumed downstream."
+                ],
+            ),
+            VocabularyEntry(
+                "serial_desk_cognition",
+                "Serial Desk-cognition",
+                "workflow",
+                "serial_desk_cognition",
+                "SerialDeskCognitionPacket",
+                allowed_aliases=[
+                    "serial cognition",
+                    "serial desk cognition authority",
+                    "serial desk cognition behaviour",
+                    "serial desk cognition output",
+                    "serial desk cognition spine",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.7 and FWD-012 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "serial_candidate",
+                "Serial Candidate",
+                "carrier",
+                "serial_desk_cognition",
+                "serial_candidate_id",
+                allowed_aliases=[
+                    "serial candidate eligible",
+                    "serial candidate formation",
+                    "serial candidate id",
+                    "serial candidate material",
+                    "serial candidate outputs",
+                    "serial candidate rebuild",
+                    "serial candidate selection",
+                ],
+                disallowed_phrases=[
+                    "serial candidate 001",
+                    "serial candidate 002",
+                    "serial candidate 003",
+                    "serial candidate 004",
+                    "serial candidate 005",
+                    "serial candidate 006",
+                    "serial candidate 007",
+                    "serial candidate 008",
+                    "serial candidate row039",
+                    "serial candidate row041",
+                    "serial candidate row042",
+                    "serial candidate seq9",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 for the candidate material consumed by capital/opening seams."
+                ],
+            ),
+            VocabularyEntry(
+                "capital_deployment_decision",
+                "Capital Deployment Decision",
+                "authority_surface",
+                "downstream_capital_deployment",
+                "CapitalDeploymentDecision",
+                allowed_aliases=["capital deployment", "fresh capital deployment decision"],
+                disallowed_phrases=[
+                    "capital deployment decision dataschema",
+                    "capital deployment decision emitted",
+                    "capital deployment decision seq9",
+                    "consumes capital deployment decision",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.11 and FWD-014 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "opening_architecture",
+                "Opening Architecture",
+                "authority_surface",
+                "downstream_opening",
+                "DownstreamOpeningService",
+                allowed_aliases=["downstream opening architecture"],
+                disallowed_phrases=["stream opening architecture"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.12 and FWD-015 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "downstream_opening",
+                "Downstream Opening",
+                "authority_surface",
+                "downstream_opening",
+                "DownstreamOpeningSnapshot",
+                allowed_aliases=[
+                    "downstream opening authorisation",
+                    "downstream opening authority",
+                    "downstream opening service",
+                ],
+                disallowed_phrases=[
+                    "a downstream opening",
+                    "collapsing downstream opening",
+                    "preserving downstream opening",
+                    "the downstream opening",
+                    "what downstream opening",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 for the bounded opening seam."
+                ],
+            ),
+            VocabularyEntry(
+                "placement_readiness",
+                "Placement Readiness",
+                "authority_surface",
+                "downstream_opening",
+                "PlacementReadinessResult",
+                allowed_aliases=[
+                    "opening placement readiness",
+                    "placement readiness id",
+                    "placement readiness result",
+                ],
+                disallowed_phrases=[
+                    "evaluate placement readiness",
+                    "placement readiness 001",
+                    "placement readiness tests",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 as the non-executing readiness output of the opening seam."
+                ],
+            ),
+            VocabularyEntry(
+                "placement_handoff",
+                "Placement Handoff",
+                "carrier",
+                "downstream_opening",
+                "PlacementHandoffMaterial",
+                allowed_aliases=["placement handoff material"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 as protocol-only handoff material, not broker execution."
+                ],
+            ),
+            VocabularyEntry(
+                "broker_protocol",
+                "Broker Protocol",
+                "protocol",
+                "downstream_opening",
+                "BrokerBoundaryMode",
+                allowed_aliases=["broker protocol only"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 as a protocol boundary term, not concrete broker execution."
+                ],
+            ),
+            VocabularyEntry(
+                "live_position",
+                "Live Position",
+                "authority_surface",
+                "live_inventory",
+                "LivePositionSnapshot",
+                allowed_aliases=["live position management", "live position state"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.13 terminology only; FWD-016 remains unopened."
+                ],
+            ),
+            VocabularyEntry(
+                "inventory_architecture",
+                "Inventory Architecture",
+                "authority_surface",
+                "live_inventory",
+                "LiveInventorySnapshot",
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.13 terminology only; FWD-016 remains unopened."
+                ],
+            ),
+            VocabularyEntry(
+                "exit_architecture",
+                "Exit Architecture",
+                "authority_surface",
+                "exit_close",
+                "ExitCloseDecision",
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.14 terminology only; exit/close remains unopened."
+                ],
+            ),
+            VocabularyEntry(
+                "close_architecture",
+                "Close Architecture",
+                "authority_surface",
+                "exit_close",
+                "ExitCloseDecision",
+                disallowed_phrases=["and close architecture"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.14 terminology only; exit/close remains unopened."
+                ],
+            ),
+            VocabularyEntry(
+                "review_layer",
+                "Review Layer",
+                "review_surface",
+                "review_explanation",
+                "ReviewTrace",
+                allowed_aliases=["review layer outputs"],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.15 terminology only."
+                ],
+            ),
+            VocabularyEntry(
+                "explanation_layer",
+                "Explanation Layer",
+                "review_surface",
+                "review_explanation",
+                "ExplanationTrace",
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.15 terminology only."
+                ],
+            ),
+            VocabularyEntry(
+                "playbook_library",
+                "Playbook Library",
+                "authority_surface",
+                "playbook_library",
+                "PlaybookRegistry",
+                allowed_aliases=[
+                    "playbook library architecture",
+                    "playbook library authority",
+                    "playbook library ownership",
+                ],
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.10 and FWD-011 closure language."
+                ],
+            ),
+            VocabularyEntry(
+                "modifier_authority",
+                "Modifier Authority",
+                "authority_surface",
+                "posture_risk_permission",
+                "ModifierPolicyRecord",
+                notes=[
+                    "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.9 and FWD-010 closure language."
+                ],
             ),
             VocabularyEntry(
                 "coefficient_authority",

@@ -40,3 +40,73 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     committed = json.loads(vocab_path.read_text(encoding="utf-8"))
     assert committed == wrapper_build_document().to_dict()
     assert committed == native_build_document().to_dict()
+
+
+def test_governed_source_hashes_cover_authoritative_vocabulary_surfaces() -> None:
+    native_builder = _require_module("nvda_desk.vocabulary_builder")
+    governed_paths = {str(path) for path in _require_attr(native_builder, "GOVERNED_SOURCE_PATHS")}
+
+    required_hash_sources = {
+        "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/vocabulary/README.md",
+        "docs/vocabulary/CONSOLIDATION_WORKFLOW.md",
+        "docs/vocabulary/vocabulary_registry.md",
+        "scripts/build_canonical_vocabulary.py",
+        "src/nvda_desk/schemas/vocabulary.py",
+        "src/nvda_desk/vocabulary_builder.py",
+        "src/nvda_desk/vocabulary_synonym_audit.py",
+        "data/vocabulary/canonical_vocabulary.json",
+    }
+    assert required_hash_sources <= governed_paths
+    assert "var/vocabulary/synonym_candidates.json" not in governed_paths
+
+    hashes = native_builder.governed_source_hashes()
+    assert required_hash_sources <= set(hashes)
+    assert "var/vocabulary/synonym_candidates.json" not in hashes
+
+
+def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
+    native_builder = _require_module("nvda_desk.vocabulary_builder")
+    payload = native_builder.build_canonical_payload()
+
+    governed_terms = set()
+    for entry in payload["entries"]:
+        governed_terms.add(entry["canonical_label"].casefold())
+        governed_terms.add(entry["canonical_slug"].replace("_", " ").casefold())
+        governed_terms.update(alias.casefold() for alias in entry.get("allowed_aliases", []))
+
+    required_terms = {
+        "opening architecture",
+        "placement readiness",
+        "placement handoff",
+        "downstream opening",
+        "broker protocol",
+        "capital deployment decision",
+        "serial candidate",
+        "live position",
+        "inventory architecture",
+        "exit architecture",
+        "close architecture",
+        "review layer",
+        "explanation layer",
+        "parallel risk lane",
+        "serial desk-cognition",
+        "dynamic coefficient",
+        "modifier authority",
+        "playbook library",
+        "prepared ingress",
+        "runtime context",
+        "raw signal families",
+        "event calendar",
+        "dmpv3 packet",
+    }
+    assert required_terms <= governed_terms
+
+    registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+    registry_required_terms = required_terms - {"dynamic coefficient", "dmpv3 packet"}
+    assert {f"### {term}" for term in registry_required_terms} <= set(
+        f"### {line.strip().removeprefix('### ').casefold()}"
+        for line in registry_text.splitlines()
+        if line.startswith("### ")
+    )
