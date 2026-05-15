@@ -1,0 +1,3728 @@
+# FWD-017 row-specific full-read transcript
+
+===== BEGIN src/nvda_desk/contracts/exit_close.py =====
+"""Bounded exit/close contracts for row 5.14."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+from typing import Any, Literal
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+ExitCloseAction = Literal["hold", "trim", "close"]
+ExitCloseState = Literal["hold", "trim_ready", "close_ready", "blocked"]
+
+EXIT_CLOSE_FORBIDDEN_AUTHORITY_KEYS = frozenset(
+    {
+        "active_import_registry",
+        "atlas_candidate_import",
+        "bridge_projection_cache",
+        "broker_order_id",
+        "broker_execution",
+        "capital_deployment_override",
+        "capital_resizing_authority",
+        "capital_sizing",
+        "carry_policy_rollover",
+        "close_execution_adapter",
+        "close_order_ticket",
+        "closure_fill_router",
+        "db_position_mutation",
+        "donor_replay_cursor",
+        "execution_bridge_order",
+        "execution_record_snapshot",
+        "exit_backtest_lane",
+        "exit_policy_import_registry",
+        "exit_research_signal",
+        "external_source_ingress",
+        "fill_feedback_ingestion",
+        "hidden_live_inventory_write",
+        "historical_trace_review",
+        "imported_exit_model",
+        "intraday_rebalance_plan",
+        "legacy_exit_runner",
+        "live_broker_close_order",
+        "live_inventory_patch",
+        "live_order_placement",
+        "market_source_refresh",
+        "new_candidate",
+        "order_execution",
+        "overnight_carry_decision",
+        "overnight_gap_policy",
+        "parallel_risk_recompute",
+        "placement_authorisation_replay",
+        "portfolio_rebalance",
+        "position_repository_write",
+        "raw_ingress_snapshot",
+        "research_notebook_trace",
+        "review_explanation_override",
+        "risk_budget_reallocation",
+        "serial_candidate_rebuild",
+        "source_api_poll",
+        "state_reader_override",
+        "stop_loss_import_registry",
+        "take_profit_import_registry",
+        "trace_review_mutation",
+        "trailing_stop_import_registry",
+        "unbounded_exit_strategy",
+        "upstream_signal_refresh",
+        "wire_broker_submit",
+    }
+)
+
+
+def find_forbidden_exit_close_authority_keys(value: Any) -> list[str]:
+    """Return forbidden authority-key names found anywhere in a nested payload."""
+
+    found: set[str] = set()
+
+    def walk(node: Any) -> None:
+        if isinstance(node, dict):
+            for key, child in node.items():
+                key_text = str(key)
+                if key_text in EXIT_CLOSE_FORBIDDEN_AUTHORITY_KEYS:
+                    found.add(key_text)
+                walk(child)
+        elif isinstance(node, (list, tuple, set)):
+            for child in node:
+                walk(child)
+
+    walk(value)
+    return sorted(found)
+
+
+def _fingerprint(payload: dict[str, Any]) -> str:
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), default=str)
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+class ExitCloseInputTrace(BaseModel):
+    """Trace proving exit/close consumed admitted downstream state only."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    live_inventory_receipt_id: str = Field(min_length=1)
+    position_id: str = Field(min_length=1)
+    playbook_metadata_receipt_ids: tuple[str, ...] = Field(default_factory=tuple)
+    placement_readiness_id: str = Field(min_length=1)
+    capital_deployment_receipt_id: str = Field(min_length=1)
+    parallel_risk_packet_id: str = Field(min_length=1)
+    close_policy_id: str = Field(min_length=1)
+    consumed_inputs: tuple[str, ...] = Field(
+        default=(
+            "live_inventory_snapshot",
+            "playbook_metadata_receipts",
+            "placement_readiness_result",
+            "capital_deployment_receipt",
+            "parallel_risk_packet",
+            "bounded_close_policy",
+        )
+    )
+    context: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("context")
+    @classmethod
+    def _reject_hidden_authority_keys(cls, value: dict[str, Any]) -> dict[str, Any]:
+        forbidden = find_forbidden_exit_close_authority_keys(value)
+        if forbidden:
+            raise ValueError(
+                "exit/close input trace contains forbidden authority keys: " + ", ".join(forbidden)
+            )
+        return value
+
+
+class ExitClosePolicyDecision(BaseModel):
+    """Bounded exit-policy decision without broker execution."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    decision_id: str = Field(min_length=1)
+    position_id: str = Field(min_length=1)
+    requested_action: ExitCloseAction
+    exit_state: ExitCloseState
+    trigger_ids: tuple[str, ...] = Field(default_factory=tuple)
+    blocked_reasons: tuple[str, ...] = Field(default_factory=tuple)
+    input_trace: ExitCloseInputTrace
+    broker_execution_opened: bool = False
+    live_inventory_mutated: bool = False
+    capital_sizing_recomputed: bool = False
+
+    @model_validator(mode="after")
+    def _validate_state_consistency(self) -> "ExitClosePolicyDecision":
+        expected_state = {
+            "hold": "hold",
+            "trim": "trim_ready",
+            "close": "close_ready",
+        }[self.requested_action]
+        if self.blocked_reasons:
+            if self.exit_state != "blocked":
+                raise ValueError("blocked exit/close decisions must use exit_state='blocked'")
+        elif self.exit_state != expected_state:
+            raise ValueError("exit_state must match requested_action when not blocked")
+        if self.broker_execution_opened:
+            raise ValueError("exit/close policy decision must not open broker execution")
+        if self.live_inventory_mutated:
+            raise ValueError("exit/close policy decision must not mutate live inventory")
+        if self.capital_sizing_recomputed:
+            raise ValueError("exit/close policy decision must not recompute capital sizing")
+        return self
+
+
+class CloseHandoffMaterial(BaseModel):
+    """Protocol-only close handoff material for a future broker boundary."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    handoff_id: str = Field(min_length=1)
+    decision_id: str = Field(min_length=1)
+    position_id: str = Field(min_length=1)
+    close_intent_preview: dict[str, Any] = Field(default_factory=dict)
+    broker_boundary_mode: str = "protocol_only"
+    broker_protocol_only: bool = True
+    execution_allowed: bool = False
+    live_order_placement_opened: bool = False
+
+    @model_validator(mode="after")
+    def _validate_protocol_only(self) -> "CloseHandoffMaterial":
+        if self.broker_boundary_mode != "protocol_only":
+            raise ValueError("close handoff may use broker_boundary_mode='protocol_only' only")
+        if (
+            not self.broker_protocol_only
+            or self.execution_allowed
+            or self.live_order_placement_opened
+        ):
+            raise ValueError("close handoff must remain non-executing protocol-only material")
+        forbidden = find_forbidden_exit_close_authority_keys(self.close_intent_preview)
+        if forbidden:
+            raise ValueError(
+                "close handoff preview contains forbidden authority keys: " + ", ".join(forbidden)
+            )
+        return self
+
+
+class ExitCloseReceipt(BaseModel):
+    """Receipt tying one exit/close decision to replayable position-closure evidence."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    receipt_id: str = Field(min_length=1)
+    decision: ExitClosePolicyDecision
+    input_trace: ExitCloseInputTrace
+    close_handoff: CloseHandoffMaterial | None = None
+    emitted_output: dict[str, Any] = Field(default_factory=dict)
+    position_closure_replay_fingerprint: str
+    broker_execution_opened: bool = False
+    live_inventory_mutated: bool = False
+
+    @model_validator(mode="after")
+    def _validate_receipt_boundary(self) -> "ExitCloseReceipt":
+        if self.broker_execution_opened:
+            raise ValueError("exit/close receipt must not open broker execution")
+        if self.live_inventory_mutated:
+            raise ValueError("exit/close receipt must not mutate live inventory")
+        if self.input_trace != self.decision.input_trace:
+            raise ValueError("exit/close receipt input_trace must match decision input_trace")
+        forbidden = find_forbidden_exit_close_authority_keys(self.emitted_output)
+        if forbidden:
+            raise ValueError(
+                "exit/close emitted output contains forbidden authority keys: "
+                + ", ".join(forbidden)
+            )
+        return self
+
+
+def fingerprint_exit_close_replay(
+    *,
+    decision: ExitClosePolicyDecision,
+    close_handoff: CloseHandoffMaterial | None = None,
+) -> str:
+    """Return deterministic replay fingerprint for a bounded exit/close result."""
+
+    return _fingerprint(
+        {
+            "decision": decision.model_dump(mode="json"),
+            "close_handoff": close_handoff.model_dump(mode="json") if close_handoff else None,
+        }
+    )
+
+===== END src/nvda_desk/contracts/exit_close.py =====
+
+===== BEGIN src/nvda_desk/downstream/exit_close.py =====
+"""Build bounded exit/close policy decisions and non-executing handoff receipts."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.exit_close import (
+    CloseHandoffMaterial,
+    ExitCloseAction,
+    ExitCloseInputTrace,
+    ExitClosePolicyDecision,
+    ExitCloseReceipt,
+    fingerprint_exit_close_replay,
+)
+
+
+class ExitCloseService:
+    """Own bounded row 5.14 exit/close evaluation without broker execution."""
+
+    def evaluate_policy(
+        self,
+        *,
+        input_trace: ExitCloseInputTrace,
+        requested_action: ExitCloseAction,
+        trigger_ids: tuple[str, ...] = (),
+        decision_id: str = "exit-close-decision",
+        position_open: bool = True,
+    ) -> ExitClosePolicyDecision:
+        return evaluate_exit_close_policy(
+            input_trace=input_trace,
+            requested_action=requested_action,
+            trigger_ids=trigger_ids,
+            decision_id=decision_id,
+            position_open=position_open,
+        )
+
+    def build_handoff(
+        self,
+        *,
+        decision: ExitClosePolicyDecision,
+        broker_boundary_mode: str = "protocol_only",
+    ) -> CloseHandoffMaterial:
+        return build_close_handoff(
+            decision=decision,
+            broker_boundary_mode=broker_boundary_mode,
+        )
+
+    def build_receipt(
+        self,
+        *,
+        receipt_id: str,
+        decision: ExitClosePolicyDecision,
+        close_handoff: CloseHandoffMaterial | None = None,
+    ) -> ExitCloseReceipt:
+        return build_exit_close_receipt(
+            receipt_id=receipt_id,
+            decision=decision,
+            close_handoff=close_handoff,
+        )
+
+
+def evaluate_exit_close_policy(
+    *,
+    input_trace: ExitCloseInputTrace,
+    requested_action: ExitCloseAction,
+    trigger_ids: tuple[str, ...] = (),
+    decision_id: str = "exit-close-decision",
+    position_open: bool = True,
+) -> ExitClosePolicyDecision:
+    """Return a bounded exit/close policy decision from admitted downstream inputs."""
+
+    blocked_reasons: tuple[str, ...] = ()
+    if not position_open:
+        blocked_reasons = ("position_not_open",)
+    elif requested_action in {"trim", "close"} and not trigger_ids:
+        blocked_reasons = ("exit_or_close_trigger_required",)
+
+    exit_state = "blocked"
+    if not blocked_reasons:
+        exit_state = {
+            "hold": "hold",
+            "trim": "trim_ready",
+            "close": "close_ready",
+        }[requested_action]
+
+    return ExitClosePolicyDecision(
+        decision_id=decision_id,
+        position_id=input_trace.position_id,
+        requested_action=requested_action,
+        exit_state=exit_state,
+        trigger_ids=trigger_ids,
+        blocked_reasons=blocked_reasons,
+        input_trace=input_trace,
+    )
+
+
+def build_close_handoff(
+    *,
+    decision: ExitClosePolicyDecision,
+    broker_boundary_mode: str = "protocol_only",
+) -> CloseHandoffMaterial:
+    """Return protocol-only handoff material for trim/close-ready decisions."""
+
+    if decision.exit_state not in {"trim_ready", "close_ready"}:
+        raise ValueError("close handoff requires trim_ready or close_ready decision")
+    return CloseHandoffMaterial(
+        handoff_id=f"{decision.decision_id}::close-handoff",
+        decision_id=decision.decision_id,
+        position_id=decision.position_id,
+        broker_boundary_mode=broker_boundary_mode,
+        close_intent_preview={
+            "position_id": decision.position_id,
+            "decision_id": decision.decision_id,
+            "requested_action": decision.requested_action,
+            "exit_state": decision.exit_state,
+            "trigger_ids": list(decision.trigger_ids),
+            "close_policy_id": decision.input_trace.close_policy_id,
+        },
+    )
+
+
+def build_exit_close_receipt(
+    *,
+    receipt_id: str,
+    decision: ExitClosePolicyDecision,
+    close_handoff: CloseHandoffMaterial | None = None,
+) -> ExitCloseReceipt:
+    """Return replayable exit/close receipt without live order placement."""
+
+    fingerprint = fingerprint_exit_close_replay(
+        decision=decision,
+        close_handoff=close_handoff,
+    )
+    return ExitCloseReceipt(
+        receipt_id=receipt_id,
+        decision=decision,
+        input_trace=decision.input_trace,
+        close_handoff=close_handoff,
+        emitted_output={
+            "decision_id": decision.decision_id,
+            "position_id": decision.position_id,
+            "requested_action": decision.requested_action,
+            "exit_state": decision.exit_state,
+            "blocked_reasons": list(decision.blocked_reasons),
+            "close_handoff_id": close_handoff.handoff_id if close_handoff else None,
+        },
+        position_closure_replay_fingerprint=fingerprint,
+    )
+
+
+def replay_exit_close_receipt(receipt: ExitCloseReceipt) -> str:
+    """Recompute the replay fingerprint for a previously emitted exit/close receipt."""
+
+    return fingerprint_exit_close_replay(
+        decision=receipt.decision,
+        close_handoff=receipt.close_handoff,
+    )
+
+===== END src/nvda_desk/downstream/exit_close.py =====
+
+===== BEGIN src/nvda_desk/services/exit_close_service.py =====
+"""Service wrapper for bounded exit/close row 5.14 surfaces."""
+
+from __future__ import annotations
+
+from nvda_desk.downstream.exit_close import ExitCloseService
+
+__all__ = ["ExitCloseService"]
+
+===== END src/nvda_desk/services/exit_close_service.py =====
+
+===== BEGIN src/nvda_desk/contracts/downstream.py =====
+"""Native downstream contract shells for post-capital opening surfaces."""
+
+from __future__ import annotations
+
+from copy import deepcopy
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+
+class _DetachedMutableModel(BaseModel):
+    """Base model that detaches caller-owned mutable field values."""
+
+    @field_validator("*", mode="before")
+    @classmethod
+    def _detach_mutable_values(cls, value):
+        return deepcopy(value)
+
+
+_LIVE_INVENTORY_TRANSFORM_REQUIRED_DONOR_PAYLOAD_KEYS = frozenset(
+    {
+        "adjudication_disposition",
+        "candidate_shape",
+        "champion_candidate_id",
+        "comparison_outcome",
+        "execution_context_score",
+        "fill_bias_adjuster",
+        "fill_feedback_router",
+        "FillBiasAdjusterContractOutput",
+        "FillFeedbackRouterContractOutput",
+        "LadderReplayRungOutcome",
+        "override_disposition",
+        "PostureRiskInput",
+        "risk_budget_remaining_pct",
+        "shadow_challenger_ids",
+        "StrategicLadderValidatorOutput",
+    }
+)
+
+
+def _payload_keys(value: Any):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield str(key)
+            yield from _payload_keys(child)
+    elif isinstance(value, (list, tuple, set)):
+        for child in value:
+            yield from _payload_keys(child)
+
+
+def _reject_live_inventory_transform_required_donor_payload(value: Any):
+    observed = set(_payload_keys(value))
+    forbidden = observed & _LIVE_INVENTORY_TRANSFORM_REQUIRED_DONOR_PAYLOAD_KEYS
+    if forbidden:
+        joined = ", ".join(sorted(forbidden))
+        raise ValueError(
+            "live inventory source_payload cannot carry transform-required donor "
+            f"payload keys: {joined}"
+        )
+    return value
+
+
+_PLACEMENT_HANDOFF_BROKER_EXECUTION_KEYS = frozenset(
+    {
+        "broker_execution_receipt",
+        "broker_order_id",
+        "execution_allowed",
+        "fill_event_id",
+        "live_broker_adapter",
+        "order_submitted",
+    }
+)
+
+_PLACEMENT_HANDOFF_EXECUTION_RECORD_DONOR_KEYS = frozenset(
+    {
+        "broker_execution_record",
+        "execution_fill_id",
+        "execution_record_id",
+        "ExecutionRecord",
+        "fill_price_usd",
+    }
+)
+
+
+def _reject_placement_handoff_broker_execution_payload(value: Any):
+    observed = set(_payload_keys(value))
+    execution_record_keys = observed & _PLACEMENT_HANDOFF_EXECUTION_RECORD_DONOR_KEYS
+    if execution_record_keys:
+        joined = ", ".join(sorted(execution_record_keys))
+        raise ValueError(
+            "placement handoff order_intent_preview cannot carry execution record "
+            f"donor keys: {joined}"
+        )
+    forbidden = observed & _PLACEMENT_HANDOFF_BROKER_EXECUTION_KEYS
+    if forbidden:
+        joined = ", ".join(sorted(forbidden))
+        raise ValueError(
+            "placement handoff order_intent_preview cannot carry broker execution "
+            f"keys: {joined}"
+        )
+    return value
+
+
+class DownstreamStateSnapshot(BaseModel):
+    """Bounded read model for downstream state snapshots."""
+
+    model_config = ConfigDict(extra="forbid")
+    stage: str = "downstream"
+    position_ids: list[str] = Field(default_factory=list)
+
+
+class DownstreamStateReadResult(BaseModel):
+    """Receipt-bearing downstream state read result."""
+
+    model_config = ConfigDict(extra="forbid")
+    snapshot: DownstreamStateSnapshot
+    receipt_id: str | None = None
+
+
+class DownstreamRecommendationHistoryReservation(BaseModel):
+    """Reserve recommendation-history capacity before opening placement."""
+
+    model_config = ConfigDict(extra="forbid")
+    reservation_id: str
+    source_candidate_id: str
+    reserved_entry_count: int = Field(default=0, ge=0)
+
+
+class OpeningAuthorisationResult(BaseModel):
+    """Downstream opening-authorisation shell after capital authority."""
+
+    model_config = ConfigDict(extra="forbid")
+    recommendation_history_reservation: DownstreamRecommendationHistoryReservation
+    authorised_deployable_pct: float = Field(ge=0.0, le=100.0)
+    immediate_opening_slice_pct: float = Field(ge=0.0, le=100.0)
+    serial_ladder_shape_sum: float = Field(ge=0.0, le=100.0)
+    policy_freeze_state: str = "architecture_only_no_policy"
+
+
+class DownstreamOpeningSnapshot(BaseModel):
+    """Opening snapshot owned by downstream opening architecture."""
+
+    model_config = ConfigDict(extra="forbid")
+    opening_ids: list[str] = Field(default_factory=list)
+    opening_authorisation: OpeningAuthorisationResult | None = None
+    policy_freeze_state: str = "architecture_only_no_policy"
+
+
+class LivePositionState(_DetachedMutableModel):
+    """Copy-safe live position state owned by live inventory architecture."""
+
+    model_config = ConfigDict(extra="forbid")
+    position_id: str
+    source_payload: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("source_payload", mode="before")
+    @classmethod
+    def _reject_transform_required_donor_payload(cls, value):
+        return _reject_live_inventory_transform_required_donor_payload(value)
+
+
+class LiveCapitalState(_DetachedMutableModel):
+    """Copy-safe capital-state read owned by live inventory architecture."""
+
+    model_config = ConfigDict(extra="forbid")
+    snapshot_id: str
+    source_payload: dict[str, Any] = Field(default_factory=dict)
+
+    @field_validator("source_payload", mode="before")
+    @classmethod
+    def _reject_transform_required_donor_payload(cls, value):
+        return _reject_live_inventory_transform_required_donor_payload(value)
+
+
+class InventoryExposureState(_DetachedMutableModel):
+    """Exposure summary derived only from declared position payload fields."""
+
+    model_config = ConfigDict(extra="forbid")
+    position_count: int = Field(default=0, ge=0)
+    open_position_ids: list[str] = Field(default_factory=list)
+    declared_exposure_by_symbol: dict[str, float] = Field(default_factory=dict)
+
+
+class InventoryStateReceipt(_DetachedMutableModel):
+    """Receipt payload for one live inventory snapshot build."""
+
+    model_config = ConfigDict(extra="forbid")
+    receipt_id: str
+    inventory_id: str
+    position_ids: list[str] = Field(default_factory=list)
+    capital_snapshot_id: str | None = None
+    policy_freeze_state: str = "architecture_only_no_policy"
+
+
+class DownstreamLiveInventorySnapshot(_DetachedMutableModel):
+    """Live inventory snapshot without deployment sizing or broker authority."""
+
+    model_config = ConfigDict(extra="forbid")
+    inventory_id: str = "live-inventory"
+    live_ids: list[str] = Field(default_factory=list)
+    position_states: list[LivePositionState] = Field(default_factory=list)
+    capital_state: LiveCapitalState | None = None
+    exposure_state: InventoryExposureState = Field(default_factory=InventoryExposureState)
+    inventory_receipt: InventoryStateReceipt | None = None
+    policy_freeze_state: str = "architecture_only_no_policy"
+
+
+class DownstreamArchitectureReceipt(BaseModel):
+    """Receipt tying downstream opening and inventory snapshots together."""
+
+    model_config = ConfigDict(extra="forbid")
+    opening_snapshot: DownstreamOpeningSnapshot
+    live_inventory_snapshot: DownstreamLiveInventorySnapshot
+    policy_freeze_state: str = "architecture_only_no_policy"
+
+
+class PlacementReadinessInputTrace(BaseModel):
+    """Trace proving placement readiness consumed capital authority output only."""
+
+    model_config = ConfigDict(extra="forbid")
+    capital_deployment_receipt_id: str
+    serial_candidate_id: str
+    placement_constraint_ids: list[str] = Field(default_factory=list)
+    broker_boundary_mode: str = "protocol_only"
+
+    @field_validator("broker_boundary_mode")
+    @classmethod
+    def _require_protocol_only_boundary(cls, value: str) -> str:
+        if value != "protocol_only":
+            raise ValueError("broker_boundary_mode must be protocol_only")
+        return value
+
+
+class PlacementHandoffMaterial(BaseModel):
+    """Non-executing handoff material for a future broker boundary."""
+
+    model_config = ConfigDict(extra="forbid")
+    handoff_id: str
+    order_intent_preview: dict[str, Any] = Field(default_factory=dict)
+    broker_protocol_only: bool = True
+    execution_allowed: bool = False
+
+    @field_validator("order_intent_preview", mode="before")
+    @classmethod
+    def _reject_broker_execution_payload(cls, value):
+        return _reject_placement_handoff_broker_execution_payload(value)
+
+    @field_validator("broker_protocol_only")
+    @classmethod
+    def _require_protocol_only_handoff(cls, value: bool) -> bool:
+        if value is not True:
+            raise ValueError("broker_protocol_only must remain true")
+        return value
+
+    @field_validator("execution_allowed")
+    @classmethod
+    def _forbid_execution_allowed(cls, value: bool) -> bool:
+        if value is not False:
+            raise ValueError("execution_allowed must remain false")
+        return value
+
+
+class PlacementReadinessResult(BaseModel):
+    """Opening/placement readiness result without concrete broker execution."""
+
+    model_config = ConfigDict(extra="forbid")
+    readiness_id: str
+    readiness_state: str
+    blocked_reasons: list[str] = Field(default_factory=list)
+    input_trace: PlacementReadinessInputTrace
+    placement_handoff: PlacementHandoffMaterial | None = None
+    broker_execution_opened: bool = False
+    capital_sizing_recomputed: bool = False
+
+    @field_validator("broker_execution_opened")
+    @classmethod
+    def _forbid_broker_execution_opened(cls, value: bool) -> bool:
+        if value is not False:
+            raise ValueError("broker_execution_opened must remain false")
+        return value
+
+    @field_validator("capital_sizing_recomputed")
+    @classmethod
+    def _forbid_capital_sizing_recomputed(cls, value: bool) -> bool:
+        if value is not False:
+            raise ValueError("capital_sizing_recomputed must remain false")
+        return value
+
+===== END src/nvda_desk/contracts/downstream.py =====
+
+===== BEGIN src/nvda_desk/downstream/opening.py =====
+"""Build bounded downstream opening and placement-readiness snapshots."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.capital import (
+    CapitalDeploymentAuthorityAction,
+    CapitalDeploymentDecision,
+)
+from nvda_desk.contracts.downstream import (
+    DownstreamOpeningSnapshot,
+    PlacementHandoffMaterial,
+    PlacementReadinessInputTrace,
+    PlacementReadinessResult,
+)
+
+
+class DownstreamOpeningService:
+    """Create truthful opening snapshots without injecting policy."""
+
+    def build_opening_snapshot(
+        self, opening_ids: list[str] | None = None
+    ) -> DownstreamOpeningSnapshot:
+        return DownstreamOpeningSnapshot(opening_ids=list(opening_ids or []))
+
+    def evaluate_placement_readiness(
+        self,
+        *,
+        decision: CapitalDeploymentDecision,
+        serial_candidate_id: str,
+        placement_constraint_ids: list[str] | None = None,
+        broker_boundary_mode: str = "protocol_only",
+        readiness_id: str = "placement-readiness",
+    ) -> PlacementReadinessResult:
+        """Evaluate non-executing opening readiness from capital authority output."""
+
+        return evaluate_placement_readiness(
+            decision=decision,
+            serial_candidate_id=serial_candidate_id,
+            placement_constraint_ids=placement_constraint_ids,
+            broker_boundary_mode=broker_boundary_mode,
+            readiness_id=readiness_id,
+        )
+
+
+def _require_protocol_only_boundary(mode: str) -> None:
+    if mode != "protocol_only":
+        raise ValueError("placement readiness may use broker_boundary_mode='protocol_only' only")
+
+
+def _trace(
+    *,
+    decision: CapitalDeploymentDecision,
+    serial_candidate_id: str,
+    placement_constraint_ids: list[str],
+    broker_boundary_mode: str,
+) -> PlacementReadinessInputTrace:
+    receipt_id = decision.capital_deployment_receipt_id
+    if not receipt_id:
+        raise ValueError("placement readiness requires capital_deployment_receipt_id")
+    if not serial_candidate_id.strip():
+        raise ValueError("placement readiness requires serial_candidate_id")
+    return PlacementReadinessInputTrace(
+        capital_deployment_receipt_id=receipt_id,
+        serial_candidate_id=serial_candidate_id,
+        placement_constraint_ids=list(placement_constraint_ids),
+        broker_boundary_mode=broker_boundary_mode,
+    )
+
+
+def evaluate_placement_readiness(
+    *,
+    decision: CapitalDeploymentDecision,
+    serial_candidate_id: str,
+    placement_constraint_ids: list[str] | None = None,
+    broker_boundary_mode: str = "protocol_only",
+    readiness_id: str = "placement-readiness",
+) -> PlacementReadinessResult:
+    """Return readiness/handoff material without opening broker execution."""
+
+    _require_protocol_only_boundary(broker_boundary_mode)
+    constraints = list(placement_constraint_ids or [])
+    trace = _trace(
+        decision=decision,
+        serial_candidate_id=serial_candidate_id,
+        placement_constraint_ids=constraints,
+        broker_boundary_mode=broker_boundary_mode,
+    )
+    blocked_reasons: list[str] = []
+    if decision.action != CapitalDeploymentAuthorityAction.CONTINUE:
+        blocked_reasons.append(f"capital_deployment_action_{decision.action.value}")
+    if decision.authorised_deployable_pct <= 0.0:
+        blocked_reasons.append("no_authorised_deployable_percentage")
+    if decision.authorised_notional_usd <= 0.0:
+        blocked_reasons.append("no_authorised_notional")
+
+    if blocked_reasons:
+        return PlacementReadinessResult(
+            readiness_id=readiness_id,
+            readiness_state="blocked",
+            blocked_reasons=blocked_reasons,
+            input_trace=trace,
+        )
+
+    handoff = PlacementHandoffMaterial(
+        handoff_id=f"{readiness_id}::handoff",
+        order_intent_preview={
+            "serial_candidate_id": serial_candidate_id,
+            "capital_deployment_receipt_id": decision.capital_deployment_receipt_id,
+            "authorised_deployable_pct": decision.authorised_deployable_pct,
+            "authorised_notional_usd": decision.authorised_notional_usd,
+            "placement_constraint_ids": constraints,
+        },
+    )
+    return PlacementReadinessResult(
+        readiness_id=readiness_id,
+        readiness_state="ready_for_protocol_handoff",
+        input_trace=trace,
+        placement_handoff=handoff,
+    )
+
+===== END src/nvda_desk/downstream/opening.py =====
+
+===== BEGIN src/nvda_desk/downstream/live_inventory.py =====
+"""Build bounded live-inventory snapshots."""
+
+from __future__ import annotations
+
+from collections.abc import Iterable, Mapping
+from copy import deepcopy
+from typing import Any
+
+from nvda_desk.contracts.downstream import (
+    DownstreamLiveInventorySnapshot,
+    InventoryExposureState,
+    InventoryStateReceipt,
+    LiveCapitalState,
+    LivePositionState,
+)
+from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+from nvda_desk.repositories.position_repository import PositionRepository
+
+
+class DownstreamLiveInventoryService:
+    """Create truthful live-inventory snapshots without injecting policy."""
+
+    def __init__(
+        self,
+        *,
+        position_repository: PositionRepository | None = None,
+        capital_state_repository: CapitalStateRepository | None = None,
+        receipt_ledger: ReceiptLedger | None = None,
+    ):
+        self._position_repository = position_repository
+        self._capital_state_repository = capital_state_repository
+        self._receipt_ledger = receipt_ledger
+
+    def build_live_snapshot(
+        self,
+        live_ids: list[str] | None = None,
+        *,
+        inventory_id: str = "live-inventory",
+        capital_snapshot_id: str | None = None,
+        receipt_id: str | None = None,
+    ) -> DownstreamLiveInventorySnapshot:
+        """Build one inventory snapshot from repo-native state without policy decisions."""
+
+        requested_ids = _normalise_id_list(live_ids)
+        position_states = self._read_position_states(requested_ids)
+        capital_state = self._read_capital_state(capital_snapshot_id)
+        exposure_state = _build_exposure_state(position_states)
+        receipt = None
+        if receipt_id is not None:
+            receipt = InventoryStateReceipt(
+                receipt_id=_normalise_token(receipt_id, "receipt_id"),
+                inventory_id=_normalise_token(inventory_id, "inventory_id"),
+                position_ids=[state.position_id for state in position_states],
+                capital_snapshot_id=capital_state.snapshot_id if capital_state else None,
+            )
+            if self._receipt_ledger is not None:
+                self._receipt_ledger.append_receipt(
+                    receipt.receipt_id,
+                    "live_inventory_snapshot",
+                    receipt.model_dump(),
+                )
+        return DownstreamLiveInventorySnapshot(
+            inventory_id=_normalise_token(inventory_id, "inventory_id"),
+            live_ids=[state.position_id for state in position_states] or requested_ids,
+            position_states=position_states,
+            capital_state=capital_state,
+            exposure_state=exposure_state,
+            inventory_receipt=receipt,
+        )
+
+    def reconcile_fill_evidence(
+        self,
+        fill_evidence: Iterable[Mapping[str, Any]],
+        *,
+        reconciliation_id: str,
+        inventory_id: str = "live-inventory",
+        capital_snapshot_id: str | None = None,
+        receipt_id: str | None = None,
+    ) -> DownstreamLiveInventorySnapshot:
+        """Reconcile executed fill evidence into repo-native live-inventory state."""
+
+        if self._position_repository is None:
+            raise ValueError("position_repository is required for fill reconciliation")
+
+        normalised_reconciliation_id = _normalise_token(
+            reconciliation_id, "reconciliation_id"
+        )
+        normalised_events = [_normalise_fill_evidence_event(event) for event in fill_evidence]
+        if not normalised_events:
+            raise ValueError("fill_evidence must contain at least one event")
+        _assert_unique_fill_evidence_ids(normalised_events)
+
+        grouped_payloads: dict[str, dict[str, Any]] = {}
+        for event in normalised_events:
+            position_id = event["position_id"]
+            payload = grouped_payloads.get(position_id)
+            if payload is None:
+                existing = self._position_repository.read_position(position_id)
+                payload = deepcopy(existing) if existing is not None else {}
+                payload.setdefault("fill_evidence_ids", [])
+                payload.setdefault("fill_evidence", [])
+                grouped_payloads[position_id] = payload
+
+            existing_fill_ids = _normalised_existing_fill_ids(payload.get("fill_evidence_ids"))
+            if event["fill_evidence_id"] in existing_fill_ids:
+                raise ValueError(f"duplicate fill_evidence_id: {event['fill_evidence_id']}")
+
+            if event.get("symbol") and not payload.get("symbol"):
+                payload["symbol"] = event["symbol"]
+
+            declared_delta = _optional_float(event.get("declared_exposure_delta"))
+            if declared_delta is not None:
+                current_declared = _optional_float(payload.get("declared_exposure")) or 0.0
+                payload["declared_exposure"] = current_declared + declared_delta
+
+            payload["fill_evidence_ids"].append(event["fill_evidence_id"])
+            payload["fill_evidence"].append(deepcopy(event))
+            payload["inventory_reconciliation_id"] = normalised_reconciliation_id
+
+        for position_id, payload in grouped_payloads.items():
+            if self._position_repository.read_position(position_id) is None:
+                self._position_repository.write_position(position_id, payload)
+            else:
+                self._position_repository.replace_position(position_id, payload)
+
+        reconciled_position_ids = list(grouped_payloads)
+        snapshot = self.build_live_snapshot(
+            live_ids=reconciled_position_ids,
+            inventory_id=inventory_id,
+            capital_snapshot_id=capital_snapshot_id,
+        )
+        normalised_receipt_id = receipt_id
+        receipt = None
+        if normalised_receipt_id is not None:
+            receipt = InventoryStateReceipt(
+                receipt_id=_normalise_token(normalised_receipt_id, "receipt_id"),
+                inventory_id=_normalise_token(inventory_id, "inventory_id"),
+                position_ids=reconciled_position_ids,
+                capital_snapshot_id=snapshot.capital_state.snapshot_id
+                if snapshot.capital_state
+                else None,
+            )
+            if self._receipt_ledger is not None:
+                receipt_payload = receipt.model_dump()
+                receipt_payload.update(
+                    {
+                        "reconciliation_id": normalised_reconciliation_id,
+                        "fill_evidence_ids": [
+                            event["fill_evidence_id"] for event in normalised_events
+                        ],
+                    }
+                )
+                self._receipt_ledger.append_receipt(
+                    receipt.receipt_id,
+                    "live_inventory_reconciliation",
+                    receipt_payload,
+                )
+        return snapshot.model_copy(update={"inventory_receipt": receipt})
+
+    def _read_position_states(self, requested_ids: list[str]) -> list[LivePositionState]:
+        if self._position_repository is None:
+            return [LivePositionState(position_id=position_id) for position_id in requested_ids]
+
+        if requested_ids:
+            records = [
+                self._position_repository.read_position_record(position_id)
+                for position_id in requested_ids
+            ]
+            records = [record for record in records if record is not None]
+        else:
+            records = self._position_repository.list_position_records()
+
+        return [
+            LivePositionState(
+                position_id=str(record["position_id"]),
+                source_payload=deepcopy(dict(record["position"])),
+            )
+            for record in records
+        ]
+
+    def _read_capital_state(self, snapshot_id: str | None) -> LiveCapitalState | None:
+        if self._capital_state_repository is None:
+            return None
+        if snapshot_id is None:
+            records = self._capital_state_repository.list_snapshot_records()
+            if not records:
+                return None
+            record = records[-1]
+        else:
+            record = self._capital_state_repository.read_snapshot_record(snapshot_id)
+            if record is None:
+                return None
+        return LiveCapitalState(
+            snapshot_id=str(record["snapshot_id"]),
+            source_payload=deepcopy(dict(record["snapshot"])),
+        )
+
+
+_FILL_EVIDENCE_FORBIDDEN_KEYS = frozenset(
+    {
+        "broker_order_id",
+        "order_submitted",
+        "execution_allowed",
+        "capital_deployment_receipt_id",
+        "opening_authorisation",
+        "placement_handoff",
+    }
+)
+
+
+def _normalise_fill_evidence_event(event: Mapping[str, Any]) -> dict[str, Any]:
+    payload = deepcopy(dict(event))
+    forbidden = set(payload) & _FILL_EVIDENCE_FORBIDDEN_KEYS
+    if forbidden:
+        joined = ", ".join(sorted(forbidden))
+        raise ValueError(f"fill evidence cannot carry placement authority keys: {joined}")
+    payload["fill_evidence_id"] = _normalise_token(
+        payload.get("fill_evidence_id", ""), "fill_evidence_id"
+    )
+    payload["position_id"] = _normalise_token(payload.get("position_id", ""), "position_id")
+    if "symbol" in payload:
+        symbol = _optional_text(payload["symbol"])
+        if symbol is not None:
+            payload["symbol"] = symbol
+        else:
+            payload.pop("symbol")
+    declared_delta = _optional_float(payload.get("declared_exposure_delta"))
+    if declared_delta is not None:
+        payload["declared_exposure_delta"] = declared_delta
+    return payload
+
+
+def _assert_unique_fill_evidence_ids(events: list[dict[str, Any]]) -> None:
+    observed: set[str] = set()
+    for event in events:
+        evidence_id = event["fill_evidence_id"]
+        if evidence_id in observed:
+            raise ValueError(f"duplicate fill_evidence_id: {evidence_id}")
+        observed.add(evidence_id)
+
+
+def _normalised_existing_fill_ids(values: Any) -> set[str]:
+    if values is None:
+        return set()
+    if not isinstance(values, list):
+        raise ValueError("fill_evidence_ids must be a list")
+    return {_normalise_token(value, "fill_evidence_id") for value in values}
+
+
+def _build_exposure_state(position_states: Iterable[LivePositionState]) -> InventoryExposureState:
+    ids: list[str] = []
+    exposures: dict[str, float] = {}
+    for state in position_states:
+        ids.append(state.position_id)
+        symbol = _optional_text(state.source_payload.get("symbol"))
+        declared_exposure = _optional_float(state.source_payload.get("declared_exposure"))
+        if symbol and declared_exposure is not None:
+            exposures[symbol] = exposures.get(symbol, 0.0) + declared_exposure
+    return InventoryExposureState(
+        position_count=len(ids),
+        open_position_ids=ids,
+        declared_exposure_by_symbol=exposures,
+    )
+
+
+def _normalise_id_list(values: list[str] | None) -> list[str]:
+    if values is None:
+        return []
+    return [_normalise_token(value, "live_id") for value in values]
+
+
+def _normalise_token(value: str, field_name: str) -> str:
+    token = str(value).strip()
+    if not token:
+        raise ValueError(f"{field_name} must be non-empty")
+    return token
+
+
+def _optional_text(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+def _optional_float(value: Any) -> float | None:
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+===== END src/nvda_desk/downstream/live_inventory.py =====
+
+===== BEGIN src/nvda_desk/services/downstream_live_inventory_service.py =====
+"""Compatibility wrapper for workbook-owned downstream live-inventory service path."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
+from nvda_desk.downstream.live_inventory import (
+    DownstreamLiveInventoryService as _DownstreamLiveInventoryService,
+)
+
+
+class DownstreamLiveInventoryService(_DownstreamLiveInventoryService):
+    """Workbook-owned alias of the bounded downstream live-inventory service."""
+
+    def build_live_snapshot(
+        self,
+        live_ids: list[str] | None = None,
+        *,
+        inventory_id: str = "live-inventory",
+        capital_snapshot_id: str | None = None,
+        receipt_id: str | None = None,
+    ) -> DownstreamLiveInventorySnapshot:
+        return super().build_live_snapshot(
+            live_ids=live_ids,
+            inventory_id=inventory_id,
+            capital_snapshot_id=capital_snapshot_id,
+            receipt_id=receipt_id,
+        )
+
+===== END src/nvda_desk/services/downstream_live_inventory_service.py =====
+
+===== BEGIN src/nvda_desk/contracts/capital.py =====
+"""Capital deployment authority contract models."""
+
+from __future__ import annotations
+
+from enum import StrEnum
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+CAPITAL_DEPLOYMENT_DECISION_DATASCHEMA = (
+    "urn:nvda:schema:capital_deployment_authority.decision:1.0.0"
+)
+
+_CAPITAL_RECEIPT_OPENING_OR_BROKER_AUTHORITY_KEYS = frozenset(
+    {
+        "broker_order_id",
+        "execution_allowed",
+        "opening_authorisation",
+        "order_intent_preview",
+        "placement_handoff",
+        "readiness_state",
+    }
+)
+
+
+def _payload_keys(value: Any):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield str(key)
+            yield from _payload_keys(child)
+    elif isinstance(value, (list, tuple, set)):
+        for child in value:
+            yield from _payload_keys(child)
+
+
+def _reject_opening_or_broker_authority_payload(value: Any):
+    observed = set(_payload_keys(value))
+    forbidden = observed & _CAPITAL_RECEIPT_OPENING_OR_BROKER_AUTHORITY_KEYS
+    if forbidden:
+        joined = ", ".join(sorted(forbidden))
+        raise ValueError(
+            "capital deployment receipt emitted_output cannot carry opening or "
+            f"broker authority keys: {joined}"
+        )
+    return value
+
+
+class CapitalDeploymentAuthorityAction(StrEnum):
+    """Closed Sequence 9 decision set emitted by capital deployment authority."""
+
+    NO_TRADE = "no_trade"
+    REDUCE = "reduce"
+    CONTINUE = "continue"
+    BLOCK = "block"
+
+
+class CapitalDeploymentInputTrace(BaseModel):
+    """Receipt trace for the inputs consumed by capital deployment authority."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    serial_candidate_id: str
+    downstream_pre_deployment_receipt_id: str
+    parallel_risk_packet_id: str | None = None
+    final_risk_receipt_id: str
+    capital_state_snapshot_id: str
+    bounded_policy_id: str
+    consumed_inputs: list[str] = Field(default_factory=list)
+
+
+class CapitalDeploymentAuthorityInput(BaseModel):
+    """Inputs consumed by downstream capital deployment authority.
+
+    The model consumes preserved serial-candidate truth, downstream
+    pre-deployment truth, parallel-risk envelope truth, final-risk truth,
+    explicit capital state, bounded policy, coefficient/modifier bounds, and
+    temporal/context signals. Serial confidence is accepted only as auditable
+    candidate metadata and is not used as a position-size or notional-sizing
+    input.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    final_risk_action: str
+    final_risk_receipt_id: str
+    serial_candidate_id: str
+    serial_candidate_eligible: bool = True
+    serial_confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    downstream_pre_deployment_allowed: bool = True
+    downstream_pre_deployment_receipt_id: str
+    parallel_risk_packet_id: str | None = None
+    parallel_risk_envelope_state: str = "broad"
+    parallel_risk_hard_blocks: list[str] = Field(default_factory=list)
+    parallel_risk_caution_flags: list[str] = Field(default_factory=list)
+    coefficient_min_deployable_floor_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    temporal_event_window_active: bool = False
+    temporal_event_risk: str = "normal"
+    capital_state_snapshot_id: str
+    available_capital_usd: float = Field(ge=0.0)
+    bounded_policy_id: str
+    requested_deployable_pct: float = Field(ge=0.0, le=100.0)
+    max_deployable_pct: float = Field(ge=0.0, le=100.0)
+    inventory_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+
+    @field_validator(
+        "final_risk_action",
+        "final_risk_receipt_id",
+        "serial_candidate_id",
+        "downstream_pre_deployment_receipt_id",
+        "capital_state_snapshot_id",
+        "bounded_policy_id",
+    )
+    @classmethod
+    def validate_required_token(cls, value: str) -> str:
+        """Require trace tokens to be explicit and non-empty."""
+        token = str(value).strip()
+        if not token:
+            raise ValueError("capital deployment authority trace tokens must be non-empty")
+        if token == "unknown":
+            raise ValueError("capital deployment authority trace tokens must not be 'unknown'")
+        return token
+
+    @field_validator("parallel_risk_packet_id")
+    @classmethod
+    def validate_optional_trace_token(cls, value: str | None) -> str | None:
+        """Require optional trace tokens to be non-empty when present."""
+        if value is None:
+            return None
+        token = str(value).strip()
+        if not token:
+            raise ValueError("optional trace tokens must be non-empty when present")
+        if token == "unknown":
+            raise ValueError("optional trace tokens must not be 'unknown'")
+        return token
+
+    @model_validator(mode="after")
+    def validate_deployable_floor(self) -> "CapitalDeploymentAuthorityInput":
+        """Ensure the coefficient floor does not exceed the risk-authorised cap."""
+        if (
+            self.coefficient_min_deployable_floor_pct > 0.0
+            and self.max_deployable_pct > 0.0
+            and self.coefficient_min_deployable_floor_pct > self.max_deployable_pct
+        ):
+            raise ValueError(
+                "coefficient_min_deployable_floor_pct cannot exceed max_deployable_pct"
+            )
+        return self
+
+
+class CapitalDeploymentDecision(BaseModel):
+    """Auditable downstream capital deployment decision."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    action: CapitalDeploymentAuthorityAction
+    authorised_deployable_pct: float = Field(default=0.0, ge=0.0, le=100.0)
+    authorised_notional_usd: float = Field(default=0.0, ge=0.0)
+    consumed_inputs: list[str] = Field(default_factory=list)
+    rationale: list[str] = Field(default_factory=list)
+    input_trace: CapitalDeploymentInputTrace | None = None
+    capital_deployment_receipt_id: str | None = None
+
+
+class CapitalDeploymentReceipt(BaseModel):
+    """Receipt tying one capital deployment authority decision to its inputs."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    receipt_id: str
+    decision: CapitalDeploymentDecision
+    input_trace: CapitalDeploymentInputTrace
+    emitted_output: dict[str, Any]
+    placement_authority_opened: bool = False
+
+    @field_validator("emitted_output", mode="before")
+    @classmethod
+    def reject_opening_or_broker_authority_payload(cls, value):
+        """Keep receipt output bounded to capital deployment authority output."""
+        return _reject_opening_or_broker_authority_payload(value)
+
+===== END src/nvda_desk/contracts/capital.py =====
+
+===== BEGIN src/nvda_desk/capital/authority.py =====
+"""Bounded downstream capital deployment authority helpers."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.capital import (
+    CapitalDeploymentAuthorityAction,
+    CapitalDeploymentAuthorityInput,
+    CapitalDeploymentDecision,
+    CapitalDeploymentInputTrace,
+    CapitalDeploymentReceipt,
+)
+
+_CONSUMED_INPUTS = [
+    "serial_candidate",
+    "downstream_pre_deployment_result",
+    "parallel_risk_envelope",
+    "final_risk_product",
+    "capital_state",
+    "bounded_deployment_policy",
+    "coefficient_modifier_authority",
+    "temporal_context",
+]
+
+
+class CapitalDeploymentAuthorityService:
+    """Own bounded downstream capital-deployment authority evaluation."""
+
+    def evaluate(
+        self,
+        context: CapitalDeploymentAuthorityInput,
+        *,
+        receipt_id: str | None = None,
+    ) -> CapitalDeploymentDecision:
+        """Return one bounded downstream capital deployment decision."""
+        return evaluate_capital_deployment(context, receipt_id=receipt_id)
+
+    def evaluate_with_receipt(
+        self,
+        context: CapitalDeploymentAuthorityInput,
+        *,
+        receipt_id: str,
+    ) -> CapitalDeploymentReceipt:
+        """Return one receipt tying the decision to its consumed inputs."""
+        decision = self.evaluate(context, receipt_id=receipt_id)
+        return build_capital_deployment_receipt(
+            receipt_id=receipt_id,
+            context=context,
+            decision=decision,
+        )
+
+
+def _bounded_deployable_pct(context: CapitalDeploymentAuthorityInput) -> float:
+    """Return the deployment percentage allowed by downstream risk and policy bounds."""
+    return min(context.requested_deployable_pct, context.max_deployable_pct)
+
+
+def _authorised_notional(context: CapitalDeploymentAuthorityInput, deployable_pct: float) -> float:
+    """Return authorised notional from explicit capital state and bounded percentage."""
+    return round(context.available_capital_usd * (deployable_pct / 100.0), 2)
+
+
+def _input_trace(context: CapitalDeploymentAuthorityInput) -> CapitalDeploymentInputTrace:
+    """Return the explicit input trace consumed by capital deployment authority."""
+    return CapitalDeploymentInputTrace(
+        serial_candidate_id=context.serial_candidate_id,
+        downstream_pre_deployment_receipt_id=context.downstream_pre_deployment_receipt_id,
+        parallel_risk_packet_id=context.parallel_risk_packet_id,
+        final_risk_receipt_id=context.final_risk_receipt_id,
+        capital_state_snapshot_id=context.capital_state_snapshot_id,
+        bounded_policy_id=context.bounded_policy_id,
+        consumed_inputs=list(_CONSUMED_INPUTS),
+    )
+
+
+def _decision(
+    context: CapitalDeploymentAuthorityInput,
+    *,
+    action: CapitalDeploymentAuthorityAction,
+    deployable_pct: float = 0.0,
+    notional_usd: float = 0.0,
+    rationale: list[str],
+    receipt_id: str | None = None,
+) -> CapitalDeploymentDecision:
+    """Return an auditable decision carrying the closed Sequence 9 action vocabulary."""
+    return CapitalDeploymentDecision(
+        action=action,
+        authorised_deployable_pct=deployable_pct,
+        authorised_notional_usd=notional_usd,
+        consumed_inputs=list(_CONSUMED_INPUTS),
+        rationale=rationale,
+        input_trace=_input_trace(context),
+        capital_deployment_receipt_id=receipt_id,
+    )
+
+
+def evaluate_capital_deployment(
+    context: CapitalDeploymentAuthorityInput,
+    *,
+    receipt_id: str | None = None,
+) -> CapitalDeploymentDecision:
+    """Return one bounded downstream capital deployment decision.
+
+    Precedence is deterministic: downstream pre-deployment blocks dominate,
+    parallel/final risk hard blocks dominate, serial ineligibility produces
+    no-trade, risk or coefficient compression reduces deployment, temporal
+    elevated event risk reduces deployment, and only a clean bounded context
+    continues. Serial confidence is deliberately not used for sizing.
+    """
+    if not context.downstream_pre_deployment_allowed:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.BLOCK,
+            rationale=["downstream_pre_deployment_blocked_candidate"],
+            receipt_id=receipt_id,
+        )
+
+    if (
+        context.final_risk_action != "proceed"
+        or context.parallel_risk_envelope_state == "block"
+        or bool(context.parallel_risk_hard_blocks)
+    ):
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.BLOCK,
+            rationale=["parallel_or_final_risk_block_dominates"],
+            receipt_id=receipt_id,
+        )
+
+    if not context.serial_candidate_eligible:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.NO_TRADE,
+            rationale=["serial_candidate_not_eligible"],
+            receipt_id=receipt_id,
+        )
+
+    deployable_pct = _bounded_deployable_pct(context)
+    authorised = _authorised_notional(context, deployable_pct)
+
+    if deployable_pct <= 0.0 or authorised <= 0.0:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.NO_TRADE,
+            rationale=["no_positive_downstream_deployment_authorised"],
+            receipt_id=receipt_id,
+        )
+
+    if deployable_pct < context.requested_deployable_pct:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.REDUCE,
+            deployable_pct=deployable_pct,
+            notional_usd=authorised,
+            rationale=["parallel_risk_envelope_reduced_requested_deployment"],
+            receipt_id=receipt_id,
+        )
+
+    if deployable_pct < context.coefficient_min_deployable_floor_pct:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.REDUCE,
+            deployable_pct=deployable_pct,
+            notional_usd=authorised,
+            rationale=["coefficient_floor_not_satisfied"],
+            receipt_id=receipt_id,
+        )
+
+    if context.parallel_risk_caution_flags or context.parallel_risk_envelope_state in {
+        "tight",
+        "caution",
+    }:
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.REDUCE,
+            deployable_pct=deployable_pct,
+            notional_usd=authorised,
+            rationale=["parallel_risk_caution_requires_reduction"],
+            receipt_id=receipt_id,
+        )
+
+    if context.temporal_event_window_active and context.temporal_event_risk == "elevated":
+        return _decision(
+            context,
+            action=CapitalDeploymentAuthorityAction.REDUCE,
+            deployable_pct=deployable_pct,
+            notional_usd=authorised,
+            rationale=["temporal_event_window_elevated_risk"],
+            receipt_id=receipt_id,
+        )
+
+    return _decision(
+        context,
+        action=CapitalDeploymentAuthorityAction.CONTINUE,
+        deployable_pct=deployable_pct,
+        notional_usd=authorised,
+        rationale=["serial_parallel_coefficient_and_temporal_inputs_allow_continuation"],
+        receipt_id=receipt_id,
+    )
+
+
+def build_capital_deployment_receipt(
+    *,
+    receipt_id: str,
+    context: CapitalDeploymentAuthorityInput,
+    decision: CapitalDeploymentDecision,
+) -> CapitalDeploymentReceipt:
+    """Return a receipt without opening placement mechanics or broker execution."""
+    trace = decision.input_trace or _input_trace(context)
+    return CapitalDeploymentReceipt(
+        receipt_id=receipt_id,
+        decision=decision,
+        input_trace=trace,
+        emitted_output={
+            "action": decision.action.value,
+            "authorised_deployable_pct": decision.authorised_deployable_pct,
+            "authorised_notional_usd": decision.authorised_notional_usd,
+            "rationale": list(decision.rationale),
+        },
+        placement_authority_opened=False,
+    )
+
+===== END src/nvda_desk/capital/authority.py =====
+
+===== BEGIN src/nvda_desk/domain/execution/lifecycle_plan.py =====
+"""Pure lifecycle-plan helpers."""
+
+from __future__ import annotations
+
+from nvda_desk.contracts.execution import ExecutionExpressionOutput
+
+
+def build_lifecycle_plan(expression: ExecutionExpressionOutput) -> dict:
+    """Return one bounded lifecycle plan from the execution expression."""
+    if expression.lead_playbook_id is None:
+        return {"action": "stand_down", "steps": []}
+    return {"action": "candidate_ready", "steps": ["prepare_candidate_review"]}
+
+===== END src/nvda_desk/domain/execution/lifecycle_plan.py =====
+
+===== BEGIN tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py =====
+from __future__ import annotations
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.contracts.exit_close import (
+    CloseHandoffMaterial,
+    ExitCloseInputTrace,
+    ExitClosePolicyDecision,
+    ExitCloseReceipt,
+    find_forbidden_exit_close_authority_keys,
+)
+from nvda_desk.downstream.exit_close import (
+    ExitCloseService,
+    build_close_handoff,
+    build_exit_close_receipt,
+    evaluate_exit_close_policy,
+    replay_exit_close_receipt,
+)
+
+
+def _trace() -> ExitCloseInputTrace:
+    return ExitCloseInputTrace(
+        live_inventory_receipt_id="inventory-receipt-001",
+        position_id="position-001",
+        playbook_metadata_receipt_ids=("registry:playbook:variant",),
+        placement_readiness_id="placement-readiness-001",
+        capital_deployment_receipt_id="capital-receipt-001",
+        parallel_risk_packet_id="parallel-risk-001",
+        close_policy_id="close-policy-bounded-v1",
+        context={"source": "test", "risk_state": "reduce_exposure"},
+    )
+
+
+def test_exit_close_trace_rejects_hidden_authority_keys() -> None:
+    with pytest.raises(ValidationError, match="forbidden authority keys"):
+        ExitCloseInputTrace(
+            live_inventory_receipt_id="inventory-receipt-001",
+            position_id="position-001",
+            placement_readiness_id="placement-readiness-001",
+            capital_deployment_receipt_id="capital-receipt-001",
+            parallel_risk_packet_id="parallel-risk-001",
+            close_policy_id="close-policy-bounded-v1",
+            context={"nested": {"order_execution": "not allowed"}},
+        )
+
+
+def test_forbidden_exit_close_authority_key_searches_nested_payloads() -> None:
+    assert find_forbidden_exit_close_authority_keys(
+        {"safe": [{"live_order_placement": True}, {"broker_order_id": "abc"}]}
+    ) == ["broker_order_id", "live_order_placement"]
+
+
+def test_exit_close_policy_consumes_downstream_trace_without_execution() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="close",
+        trigger_ids=("trailing-stop-hit",),
+        decision_id="decision-001",
+    )
+
+    assert decision.exit_state == "close_ready"
+    assert decision.position_id == "position-001"
+    assert decision.input_trace.live_inventory_receipt_id == "inventory-receipt-001"
+    assert decision.input_trace.capital_deployment_receipt_id == "capital-receipt-001"
+    assert decision.input_trace.placement_readiness_id == "placement-readiness-001"
+    assert decision.broker_execution_opened is False
+    assert decision.live_inventory_mutated is False
+    assert decision.capital_sizing_recomputed is False
+
+
+def test_exit_close_policy_blocks_closed_position_and_missing_close_trigger() -> None:
+    closed_position = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="close",
+        trigger_ids=("exit-signal",),
+        position_open=False,
+    )
+    assert closed_position.exit_state == "blocked"
+    assert "position_not_open" in closed_position.blocked_reasons
+
+    missing_trigger = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="trim",
+        trigger_ids=(),
+    )
+    assert missing_trigger.exit_state == "blocked"
+    assert "exit_or_close_trigger_required" in missing_trigger.blocked_reasons
+
+
+def test_exit_close_policy_rejects_inconsistent_unblocked_state() -> None:
+    with pytest.raises(ValidationError, match="exit_state must match requested_action"):
+        ExitClosePolicyDecision(
+            decision_id="decision-inconsistent",
+            position_id="position-001",
+            requested_action="close",
+            exit_state="trim_ready",
+            trigger_ids=("time-stop",),
+            input_trace=_trace(),
+        )
+
+
+def test_exit_close_decision_rejects_boundary_mutation_flags() -> None:
+    with pytest.raises(ValidationError, match="must not open broker execution"):
+        ExitClosePolicyDecision(
+            decision_id="decision-001",
+            position_id="position-001",
+            requested_action="hold",
+            exit_state="hold",
+            input_trace=_trace(),
+            broker_execution_opened=True,
+        )
+
+
+def test_close_handoff_is_protocol_only_and_non_executing() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="trim",
+        trigger_ids=("profit-take-band",),
+        decision_id="decision-002",
+    )
+
+    handoff = build_close_handoff(decision=decision)
+
+    assert handoff.broker_boundary_mode == "protocol_only"
+    assert handoff.broker_protocol_only is True
+    assert handoff.execution_allowed is False
+    assert handoff.live_order_placement_opened is False
+    assert handoff.close_intent_preview["requested_action"] == "trim"
+
+    with pytest.raises(ValidationError, match="protocol_only"):
+        CloseHandoffMaterial(
+            handoff_id="bad-handoff",
+            decision_id="decision-002",
+            position_id="position-001",
+            broker_boundary_mode="live_broker_adapter",
+        )
+
+
+def test_close_handoff_requires_trim_or_close_ready_decision() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="hold",
+        decision_id="decision-hold",
+    )
+
+    with pytest.raises(ValueError, match="trim_ready or close_ready"):
+        build_close_handoff(decision=decision)
+
+
+def test_close_handoff_rejects_live_order_placement_flag() -> None:
+    with pytest.raises(ValidationError, match="non-executing protocol-only"):
+        CloseHandoffMaterial(
+            handoff_id="bad-handoff-live-order",
+            decision_id="decision-003",
+            position_id="position-001",
+            live_order_placement_opened=True,
+        )
+
+
+def test_close_handoff_rejects_hidden_broker_payloads() -> None:
+    with pytest.raises(ValidationError, match="forbidden authority keys"):
+        CloseHandoffMaterial(
+            handoff_id="bad-handoff",
+            decision_id="decision-003",
+            position_id="position-001",
+            close_intent_preview={"nested": {"broker_execution": True}},
+        )
+
+
+def test_exit_close_receipt_is_replayable_and_copy_safe() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="close",
+        trigger_ids=("time-stop",),
+        decision_id="decision-004",
+    )
+    handoff = build_close_handoff(decision=decision)
+    receipt = build_exit_close_receipt(
+        receipt_id="exit-close-receipt-001",
+        decision=decision,
+        close_handoff=handoff,
+    )
+
+    assert receipt.broker_execution_opened is False
+    assert receipt.live_inventory_mutated is False
+    assert receipt.position_closure_replay_fingerprint == replay_exit_close_receipt(receipt)
+
+    copied = receipt.model_copy(deep=True)
+    copied.emitted_output["exit_state"] = "mutated"
+    assert receipt.emitted_output["exit_state"] == "close_ready"
+
+
+def test_exit_close_receipt_rejects_hidden_emitted_output_authority() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="hold",
+        decision_id="decision-005",
+    )
+    with pytest.raises(ValidationError, match="forbidden authority keys"):
+        ExitCloseReceipt(
+            receipt_id="bad-receipt",
+            decision=decision,
+            input_trace=decision.input_trace,
+            emitted_output={"capital_sizing": "not allowed"},
+            position_closure_replay_fingerprint="abc",
+        )
+
+
+def test_exit_close_receipt_rejects_input_trace_mismatch() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="hold",
+        decision_id="decision-trace-mismatch",
+    )
+    mismatched_trace = _trace().model_copy(update={"position_id": "position-002"})
+
+    with pytest.raises(ValidationError, match="input_trace must match decision input_trace"):
+        ExitCloseReceipt(
+            receipt_id="bad-receipt-trace-mismatch",
+            decision=decision,
+            input_trace=mismatched_trace,
+            position_closure_replay_fingerprint="abc",
+        )
+
+
+def test_exit_close_receipt_rejects_live_inventory_mutation_flag() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="hold",
+        decision_id="decision-live-inventory-mutation",
+    )
+
+    with pytest.raises(ValidationError, match="must not mutate live inventory"):
+        ExitCloseReceipt(
+            receipt_id="bad-receipt-live-inventory-mutation",
+            decision=decision,
+            input_trace=decision.input_trace,
+            position_closure_replay_fingerprint="abc",
+            live_inventory_mutated=True,
+        )
+
+
+def test_exit_close_replay_fingerprint_changes_when_handoff_material_changes() -> None:
+    decision = evaluate_exit_close_policy(
+        input_trace=_trace(),
+        requested_action="close",
+        trigger_ids=("time-stop",),
+        decision_id="decision-replay-material",
+    )
+    handoff = build_close_handoff(decision=decision)
+    changed_handoff = handoff.model_copy(
+        update={
+            "close_intent_preview": {
+                **handoff.close_intent_preview,
+                "trigger_ids": ["different-trigger"],
+            }
+        },
+        deep=True,
+    )
+
+    assert replay_exit_close_receipt(
+        build_exit_close_receipt(
+            receipt_id="exit-close-receipt-replay-a",
+            decision=decision,
+            close_handoff=handoff,
+        )
+    ) != replay_exit_close_receipt(
+        build_exit_close_receipt(
+            receipt_id="exit-close-receipt-replay-b",
+            decision=decision,
+            close_handoff=changed_handoff,
+        )
+    )
+
+
+def test_exit_close_service_wrapper_emits_receipt_without_opening_orders() -> None:
+    service = ExitCloseService()
+    decision = service.evaluate_policy(
+        input_trace=_trace(),
+        requested_action="close",
+        trigger_ids=("manual-review-approved",),
+        decision_id="decision-006",
+    )
+    handoff = service.build_handoff(decision=decision)
+    receipt = service.build_receipt(
+        receipt_id="exit-close-receipt-006",
+        decision=decision,
+        close_handoff=handoff,
+    )
+
+    assert receipt.close_handoff is not None
+    assert receipt.close_handoff.execution_allowed is False
+    assert receipt.position_closure_replay_fingerprint == replay_exit_close_receipt(receipt)
+
+===== END tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py =====
+
+===== BEGIN tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py =====
+from __future__ import annotations
+
+import ast
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.contracts.exit_close import CloseHandoffMaterial
+
+DONOR_TRANSFORM_REQUIRED_KEYS = (
+    "active_import_registry",
+    "atlas_candidate_import",
+    "bridge_projection_cache",
+    "capital_deployment_override",
+    "capital_resizing_authority",
+    "carry_policy_rollover",
+    "close_execution_adapter",
+    "close_order_ticket",
+    "closure_fill_router",
+    "db_position_mutation",
+    "donor_replay_cursor",
+    "execution_bridge_order",
+    "execution_record_snapshot",
+    "exit_backtest_lane",
+    "exit_policy_import_registry",
+    "exit_research_signal",
+    "fill_feedback_ingestion",
+    "hidden_live_inventory_write",
+    "historical_trace_review",
+    "imported_exit_model",
+    "intraday_rebalance_plan",
+    "legacy_exit_runner",
+    "live_broker_close_order",
+    "live_inventory_patch",
+    "market_source_refresh",
+    "overnight_carry_decision",
+    "overnight_gap_policy",
+    "parallel_risk_recompute",
+    "placement_authorisation_replay",
+    "position_repository_write",
+    "raw_ingress_snapshot",
+    "research_notebook_trace",
+    "review_explanation_override",
+    "risk_budget_reallocation",
+    "serial_candidate_rebuild",
+    "source_api_poll",
+    "state_reader_override",
+    "stop_loss_import_registry",
+    "take_profit_import_registry",
+    "trace_review_mutation",
+    "trailing_stop_import_registry",
+    "unbounded_exit_strategy",
+    "upstream_signal_refresh",
+    "wire_broker_submit",
+)
+
+
+@pytest.mark.parametrize("donor_key", DONOR_TRANSFORM_REQUIRED_KEYS)
+def test_exit_close_handoff_rejects_transform_required_donor_payloads(
+    donor_key: str,
+) -> None:
+    with pytest.raises(ValidationError, match="forbidden authority keys"):
+        CloseHandoffMaterial(
+            handoff_id=f"handoff-{donor_key}",
+            decision_id="decision-row043",
+            position_id="position-row043",
+            close_intent_preview={"nested": {donor_key: "donor-payload"}},
+        )
+
+
+def test_exit_close_transform_boundary_does_not_import_donor_runtime_modules() -> None:
+    source = Path("src/nvda_desk/downstream/exit_close.py").read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    imported_modules = {
+        node.module
+        for node in ast.walk(tree)
+        if isinstance(node, ast.ImportFrom) and node.module is not None
+    }
+
+    assert not any("legacy_import" in module for module in imported_modules)
+    assert "live_broker_close_order" not in source
+    assert "position_repository_write" not in source
+
+===== END tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py =====
+
+===== BEGIN tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py =====
+from __future__ import annotations
+
+import pytest
+
+from nvda_desk.contracts.capital import (
+    CapitalDeploymentAuthorityAction,
+    CapitalDeploymentDecision,
+)
+from nvda_desk.downstream.opening import DownstreamOpeningService
+
+
+def _decision(
+    *,
+    action: CapitalDeploymentAuthorityAction = CapitalDeploymentAuthorityAction.CONTINUE,
+    pct: float = 12.5,
+    notional: float = 12500.0,
+) -> CapitalDeploymentDecision:
+    return CapitalDeploymentDecision(
+        action=action,
+        authorised_deployable_pct=pct,
+        authorised_notional_usd=notional,
+        consumed_inputs=["capital_state", "parallel_risk_envelope"],
+        rationale=["test"],
+        capital_deployment_receipt_id="cap-receipt-001",
+    )
+
+
+def test_opening_readiness_consumes_capital_decision_without_broker_execution() -> None:
+    service = DownstreamOpeningService()
+
+    result = service.evaluate_placement_readiness(
+        decision=_decision(),
+        serial_candidate_id="serial-candidate-001",
+        placement_constraint_ids=["limit-only", "day-session"],
+        readiness_id="ready-001",
+    )
+
+    assert result.readiness_state == "ready_for_protocol_handoff"
+    assert result.input_trace.capital_deployment_receipt_id == "cap-receipt-001"
+    assert result.input_trace.serial_candidate_id == "serial-candidate-001"
+    assert result.input_trace.broker_boundary_mode == "protocol_only"
+    assert result.broker_execution_opened is False
+    assert result.capital_sizing_recomputed is False
+    assert result.placement_handoff is not None
+    assert result.placement_handoff.broker_protocol_only is True
+    assert result.placement_handoff.execution_allowed is False
+    assert result.placement_handoff.order_intent_preview["authorised_deployable_pct"] == 12.5
+
+
+def test_opening_readiness_blocks_non_continue_capital_decisions() -> None:
+    service = DownstreamOpeningService()
+
+    result = service.evaluate_placement_readiness(
+        decision=_decision(action=CapitalDeploymentAuthorityAction.BLOCK, pct=0.0, notional=0.0),
+        serial_candidate_id="serial-candidate-002",
+        readiness_id="blocked-001",
+    )
+
+    assert result.readiness_state == "blocked"
+    assert result.placement_handoff is None
+    assert "capital_deployment_action_block" in result.blocked_reasons
+    assert "no_authorised_deployable_percentage" in result.blocked_reasons
+
+
+def test_opening_readiness_rejects_concrete_broker_boundary() -> None:
+    service = DownstreamOpeningService()
+
+    with pytest.raises(ValueError, match="protocol_only"):
+        service.evaluate_placement_readiness(
+            decision=_decision(),
+            serial_candidate_id="serial-candidate-003",
+            broker_boundary_mode="live_broker_adapter",
+        )
+
+
+def test_opening_readiness_requires_capital_deployment_receipt_id() -> None:
+    service = DownstreamOpeningService()
+
+    with pytest.raises(ValueError) as exc_info:
+        service.evaluate_placement_readiness(
+            decision=_decision().model_copy(update={"capital_deployment_receipt_id": None}),
+            serial_candidate_id="serial-candidate-004",
+        )
+    assert str(exc_info.value) == "placement readiness requires capital_deployment_receipt_id"
+
+
+def test_opening_readiness_rejects_blank_serial_candidate_id() -> None:
+    service = DownstreamOpeningService()
+
+    with pytest.raises(ValueError) as exc_info:
+        service.evaluate_placement_readiness(
+            decision=_decision(),
+            serial_candidate_id="   ",
+        )
+    assert str(exc_info.value) == "placement readiness requires serial_candidate_id"
+
+
+def test_opening_readiness_blocks_continue_decision_with_zero_notional() -> None:
+    service = DownstreamOpeningService()
+
+    result = service.evaluate_placement_readiness(
+        decision=_decision(
+            action=CapitalDeploymentAuthorityAction.CONTINUE, pct=12.5, notional=0.0
+        ),
+        serial_candidate_id="serial-candidate-005",
+        readiness_id="zero-notional-001",
+    )
+
+    assert result.readiness_state == "blocked"
+    assert result.placement_handoff is None
+    assert result.broker_execution_opened is False
+    assert result.capital_sizing_recomputed is False
+    assert result.blocked_reasons == ["no_authorised_notional"]
+
+
+def test_opening_readiness_detaches_placement_constraints_from_caller_list() -> None:
+    service = DownstreamOpeningService()
+    constraints = ["limit-only", "day-session"]
+
+    result = service.evaluate_placement_readiness(
+        decision=_decision(),
+        serial_candidate_id="serial-candidate-006",
+        placement_constraint_ids=constraints,
+        readiness_id="copy-boundary-001",
+    )
+    constraints.append("mutated-after-call")
+
+    assert result.input_trace.placement_constraint_ids == ["limit-only", "day-session"]
+    assert result.placement_handoff is not None
+    assert result.placement_handoff.order_intent_preview["placement_constraint_ids"] == [
+        "limit-only",
+        "day-session",
+    ]
+
+
+def test_opening_readiness_protocol_handoff_rejects_broker_execution_fields() -> None:
+    from pydantic import ValidationError
+
+    from nvda_desk.contracts.downstream import PlacementHandoffMaterial
+
+    with pytest.raises(ValidationError):
+        PlacementHandoffMaterial(
+            handoff_id="handoff-001",
+            order_intent_preview={"serial_candidate_id": "serial-candidate-007"},
+            broker_order_id="broker-order-should-not-enter-readiness",
+        )
+
+
+def test_opening_readiness_protocol_handoff_rejects_nested_broker_execution_preview() -> None:
+    from pydantic import ValidationError
+
+    from nvda_desk.contracts.downstream import PlacementHandoffMaterial
+
+    with pytest.raises(ValidationError, match="broker execution"):
+        PlacementHandoffMaterial(
+            handoff_id="handoff-nested-broker-001",
+            order_intent_preview={
+                "serial_candidate_id": "serial-candidate-008",
+                "broker_preview": {"broker_order_id": "hidden-broker-order"},
+            },
+        )
+
+===== END tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py =====
+
+===== BEGIN tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py =====
+from __future__ import annotations
+
+import ast
+import importlib
+from pathlib import Path
+
+import pytest
+
+from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+from nvda_desk.services.downstream_live_inventory_service import (
+    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
+)
+from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+from nvda_desk.repositories.position_repository import PositionRepository
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def test_downstream_live_inventory_service_surface_is_present() -> None:
+    live_inventory = _require_module("nvda_desk.downstream.live_inventory")
+    assert live_inventory.__name__ == "nvda_desk.downstream.live_inventory"
+    assert _require_attr(live_inventory, "DownstreamLiveInventoryService") is getattr(live_inventory, "DownstreamLiveInventoryService")
+
+
+def test_live_inventory_snapshot_reads_position_and_capital_state_copy_safely() -> None:
+    positions = PositionRepository()
+    capital = CapitalStateRepository()
+    positions.write_position(
+        "pos-1",
+        {"symbol": "NVDA", "declared_exposure": 12.5, "metadata": {"source": "fill"}},
+    )
+    capital.write_snapshot("cap-1", {"cash": 1000.0, "metadata": {"source": "ledger"}})
+
+    snapshot = DownstreamLiveInventoryService(
+        position_repository=positions,
+        capital_state_repository=capital,
+    ).build_live_snapshot(receipt_id="inv-r1")
+
+    assert snapshot.live_ids == ["pos-1"]
+    assert snapshot.position_states[0].position_id == "pos-1"
+    assert snapshot.position_states[0].source_payload["metadata"] == {"source": "fill"}
+    assert snapshot.capital_state is not None
+    assert snapshot.capital_state.snapshot_id == "cap-1"
+    assert snapshot.exposure_state.position_count == 1
+    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 12.5}
+    assert snapshot.inventory_receipt is not None
+    assert snapshot.inventory_receipt.position_ids == ["pos-1"]
+    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-1"
+
+    snapshot.position_states[0].source_payload["metadata"]["source"] = "mutated"
+    assert positions.read_position("pos-1") == {
+        "symbol": "NVDA",
+        "declared_exposure": 12.5,
+        "metadata": {"source": "fill"},
+    }
+
+
+def test_live_inventory_receipt_write_is_explicit_and_append_only() -> None:
+    positions = PositionRepository()
+    receipts = ReceiptLedger()
+    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 1.5})
+
+    service = DownstreamLiveInventoryService(
+        position_repository=positions,
+        receipt_ledger=receipts,
+    )
+    snapshot = service.build_live_snapshot(receipt_id="inv-r1")
+
+    stored = receipts.read_receipt("inv-r1")
+    assert stored is not None
+    assert stored["receipt_kind"] == "live_inventory_snapshot"
+    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
+    with pytest.raises(ValueError, match="duplicate receipt_id"):
+        service.build_live_snapshot(receipt_id="inv-r1")
+
+
+def test_live_inventory_does_not_invent_undeclared_exposure() -> None:
+    positions = PositionRepository()
+    positions.write_position("pos-1", {"symbol": "NVDA", "quantity": 100})
+
+    snapshot = DownstreamLiveInventoryService(position_repository=positions).build_live_snapshot()
+
+    assert snapshot.exposure_state.open_position_ids == ["pos-1"]
+    assert snapshot.exposure_state.declared_exposure_by_symbol == {}
+
+
+def test_live_inventory_module_does_not_import_broker_or_candidate_authority() -> None:
+    source = Path("src/nvda_desk/downstream/live_inventory.py").read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    imported = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            imported.update(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom) and node.module:
+            imported.add(node.module)
+
+    forbidden_roots = (
+        "nvda_desk.adapters.egress",
+        "nvda_desk.domain.execution",
+        "nvda_desk.cognition.serial",
+        "nvda_desk.ingress.raw_bundle_loader",
+    )
+    assert not any(
+        module == root or module.startswith(root + ".")
+        for module in imported
+        for root in forbidden_roots
+    )
+
+
+def test_live_inventory_rejects_empty_live_inventory_identifiers() -> None:
+    service = DownstreamLiveInventoryService()
+
+    with pytest.raises(ValueError, match="live_id must be non-empty"):
+        service.build_live_snapshot(live_ids=["  "])
+
+    with pytest.raises(ValueError, match="inventory_id must be non-empty"):
+        service.build_live_snapshot(inventory_id="  ")
+
+    with pytest.raises(ValueError, match="receipt_id must be non-empty"):
+        service.build_live_snapshot(receipt_id="  ")
+
+
+def test_live_inventory_requested_ids_are_normalised_before_repository_read() -> None:
+    positions = PositionRepository()
+    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 2.5})
+
+    snapshot = DownstreamLiveInventoryService(position_repository=positions).build_live_snapshot(
+        live_ids=[" pos-1 "]
+    )
+
+    assert snapshot.live_ids == ["pos-1"]
+    assert snapshot.position_states[0].position_id == "pos-1"
+    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 2.5}
+
+
+def test_live_inventory_reads_requested_capital_snapshot_not_latest_snapshot() -> None:
+    positions = PositionRepository()
+    capital = CapitalStateRepository()
+    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 1.0})
+    capital.write_snapshot("cap-1", {"cash": 1000.0})
+    capital.write_snapshot("cap-2", {"cash": 900.0})
+
+    snapshot = DownstreamLiveInventoryService(
+        position_repository=positions,
+        capital_state_repository=capital,
+    ).build_live_snapshot(capital_snapshot_id=" cap-1 ")
+
+    assert snapshot.capital_state is not None
+    assert snapshot.capital_state.snapshot_id == "cap-1"
+    assert snapshot.capital_state.source_payload == {"cash": 1000.0}
+
+
+def test_workbook_live_inventory_wrapper_preserves_bounded_readback_inputs() -> None:
+    positions = PositionRepository()
+    capital = CapitalStateRepository()
+    receipts = ReceiptLedger()
+    positions.write_position("pos-1", {"symbol": "NVDA", "declared_exposure": 3.0})
+    capital.write_snapshot("cap-older", {"cash": 1000.0})
+    capital.write_snapshot("cap-selected", {"cash": 900.0})
+
+    snapshot = WorkbookDownstreamLiveInventoryService(
+        position_repository=positions,
+        capital_state_repository=capital,
+        receipt_ledger=receipts,
+    ).build_live_snapshot(
+        live_ids=[" pos-1 "],
+        inventory_id=" inv-1 ",
+        capital_snapshot_id=" cap-selected ",
+        receipt_id=" receipt-1 ",
+    )
+
+    assert snapshot.inventory_id == "inv-1"
+    assert snapshot.live_ids == ["pos-1"]
+    assert snapshot.capital_state is not None
+    assert snapshot.capital_state.snapshot_id == "cap-selected"
+    assert snapshot.inventory_receipt is not None
+    assert snapshot.inventory_receipt.receipt_id == "receipt-1"
+    assert snapshot.inventory_receipt.inventory_id == "inv-1"
+    assert snapshot.inventory_receipt.capital_snapshot_id == "cap-selected"
+    stored = receipts.read_receipt("receipt-1")
+    assert stored is not None
+    assert stored["payload"] == snapshot.inventory_receipt.model_dump()
+
+
+def test_live_inventory_reconciles_executed_fill_evidence_into_position_state() -> None:
+    positions = PositionRepository()
+    receipts = ReceiptLedger()
+    service = DownstreamLiveInventoryService(
+        position_repository=positions,
+        receipt_ledger=receipts,
+    )
+
+    snapshot = service.reconcile_fill_evidence(
+        [
+            {
+                "fill_evidence_id": "fill-1",
+                "position_id": " pos-1 ",
+                "symbol": "NVDA",
+                "declared_exposure_delta": 12.5,
+                "filled_quantity": 5,
+                "source": "execution_event_repository",
+            },
+            {
+                "fill_evidence_id": "fill-2",
+                "position_id": "pos-1",
+                "symbol": "NVDA",
+                "declared_exposure_delta": -2.5,
+                "filled_quantity": -1,
+                "source": "execution_event_repository",
+            },
+        ],
+        reconciliation_id=" recon-1 ",
+        inventory_id=" inv-reconciled ",
+        receipt_id=" receipt-recon-1 ",
+    )
+
+    assert snapshot.inventory_id == "inv-reconciled"
+    assert snapshot.live_ids == ["pos-1"]
+    assert snapshot.exposure_state.declared_exposure_by_symbol == {"NVDA": 10.0}
+    assert positions.read_position("pos-1") == {
+        "symbol": "NVDA",
+        "declared_exposure": 10.0,
+        "fill_evidence_ids": ["fill-1", "fill-2"],
+        "fill_evidence": [
+            {
+                "fill_evidence_id": "fill-1",
+                "position_id": "pos-1",
+                "symbol": "NVDA",
+                "declared_exposure_delta": 12.5,
+                "filled_quantity": 5,
+                "source": "execution_event_repository",
+            },
+            {
+                "fill_evidence_id": "fill-2",
+                "position_id": "pos-1",
+                "symbol": "NVDA",
+                "declared_exposure_delta": -2.5,
+                "filled_quantity": -1,
+                "source": "execution_event_repository",
+            },
+        ],
+        "inventory_reconciliation_id": "recon-1",
+    }
+    assert snapshot.inventory_receipt is not None
+    assert snapshot.inventory_receipt.receipt_id == "receipt-recon-1"
+    assert snapshot.inventory_receipt.position_ids == ["pos-1"]
+    stored = receipts.read_receipt("receipt-recon-1")
+    assert stored is not None
+    assert stored["receipt_kind"] == "live_inventory_reconciliation"
+    assert stored["payload"]["reconciliation_id"] == "recon-1"
+    assert stored["payload"]["fill_evidence_ids"] == ["fill-1", "fill-2"]
+
+
+def test_live_inventory_reconciliation_requires_explicit_fill_evidence_identity() -> None:
+    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
+
+    with pytest.raises(ValueError, match="fill_evidence_id must be non-empty"):
+        service.reconcile_fill_evidence(
+            [{"fill_evidence_id": "  ", "position_id": "pos-1"}],
+            reconciliation_id="recon-1",
+        )
+
+    with pytest.raises(ValueError, match="position_id must be non-empty"):
+        service.reconcile_fill_evidence(
+            [{"fill_evidence_id": "fill-1", "position_id": "  "}],
+            reconciliation_id="recon-1",
+        )
+
+
+def test_live_inventory_reconciliation_rejects_placement_authority_keys() -> None:
+    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
+
+    with pytest.raises(ValueError, match="placement authority keys: broker_order_id"):
+        service.reconcile_fill_evidence(
+            [
+                {
+                    "fill_evidence_id": "fill-1",
+                    "position_id": "pos-1",
+                    "broker_order_id": "broker-1",
+                }
+            ],
+            reconciliation_id="recon-1",
+        )
+
+def test_live_inventory_reconciliation_rejects_empty_fill_evidence() -> None:
+    service = DownstreamLiveInventoryService(position_repository=PositionRepository())
+
+    with pytest.raises(ValueError, match="fill_evidence must contain at least one event"):
+        service.reconcile_fill_evidence([], reconciliation_id="recon-1")
+
+
+def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation() -> None:
+    positions = PositionRepository()
+    service = DownstreamLiveInventoryService(position_repository=positions)
+
+    with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
+        service.reconcile_fill_evidence(
+            [
+                {
+                    "fill_evidence_id": "fill-1",
+                    "position_id": "pos-1",
+                    "symbol": "NVDA",
+                    "declared_exposure_delta": 1.0,
+                },
+                {
+                    "fill_evidence_id": " fill-1 ",
+                    "position_id": "pos-1",
+                    "symbol": "NVDA",
+                    "declared_exposure_delta": 99.0,
+                },
+            ],
+            reconciliation_id="recon-1",
+        )
+
+    assert positions.read_position("pos-1") is None
+
+
+def test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting() -> None:
+    positions = PositionRepository()
+    positions.write_position(
+        "pos-1",
+        {
+            "symbol": "NVDA",
+            "declared_exposure": 10.0,
+            "fill_evidence_ids": ["fill-1"],
+            "fill_evidence": [{"fill_evidence_id": "fill-1", "position_id": "pos-1"}],
+        },
+    )
+    service = DownstreamLiveInventoryService(position_repository=positions)
+
+    with pytest.raises(ValueError, match="duplicate fill_evidence_id: fill-1"):
+        service.reconcile_fill_evidence(
+            [
+                {
+                    "fill_evidence_id": "fill-1",
+                    "position_id": "pos-1",
+                    "symbol": "NVDA",
+                    "declared_exposure_delta": 99.0,
+                }
+            ],
+            reconciliation_id="recon-2",
+        )
+
+    assert positions.read_position("pos-1") == {
+        "symbol": "NVDA",
+        "declared_exposure": 10.0,
+        "fill_evidence_ids": ["fill-1"],
+        "fill_evidence": [{"fill_evidence_id": "fill-1", "position_id": "pos-1"}],
+    }
+
+===== END tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py =====
+
+===== BEGIN tests/tier_a/playbook/test_playbook_library_architecture_surface.py =====
+from __future__ import annotations
+
+from pathlib import Path
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.config.playbook_registry import (
+    PlaybookRegistryDocument,
+    build_playbook_metadata_receipts,
+    load_playbook_registry,
+)
+from nvda_desk.contracts.eligibility import (
+    EligibilityAdmissibilitySurface,
+    PlaybookEligibilityOutput,
+)
+from nvda_desk.contracts.playbook import (
+    PlaybookDefinition,
+    PlaybookEligibilityConstraint,
+    PlaybookMetadataReceipt,
+)
+from nvda_desk.contracts.posture import PermissionState
+from nvda_desk.playbooks.library import select_playbook_metadata_receipts
+
+
+def _registry() -> PlaybookRegistryDocument:
+    return PlaybookRegistryDocument(
+        schema_version="playbook_registry.v1",
+        registry_id="registry-test",
+        playbooks=(
+            PlaybookDefinition(
+                playbook_id="gap_up_follow_through",
+                setup_family="gap_up",
+                setup_variant_ids=("gap_up.baseline", "gap_up.risk_defined"),
+                eligibility_constraints=(
+                    PlaybookEligibilityConstraint(
+                        constraint_id="permission_allow_or_derisk",
+                        constraint_type="permission_state",
+                        allowed_values=("allow", "derisk"),
+                    ),
+                ),
+                selection_metadata={"setup_family": "gap_up", "timeframe": "intraday"},
+            ),
+            PlaybookDefinition(
+                playbook_id="volatility_mean_reversion",
+                setup_family="volatility_reversion",
+                setup_variant_ids=("volatility_reversion.baseline",),
+                eligibility_constraints=(),
+                selection_metadata={"setup_family": "volatility_reversion"},
+                enabled=False,
+            ),
+        ),
+    )
+
+
+def test_playbook_registry_rejects_duplicate_playbook_ids() -> None:
+    first = PlaybookDefinition(
+        playbook_id="gap_up_follow_through",
+        setup_family="gap_up",
+        setup_variant_ids=("gap_up.baseline",),
+    )
+    second = PlaybookDefinition(
+        playbook_id="gap_up_follow_through",
+        setup_family="gap_up",
+        setup_variant_ids=("gap_up.risk_defined",),
+    )
+
+    with pytest.raises(ValidationError, match="duplicate playbook_id"):
+        PlaybookRegistryDocument(
+            schema_version="playbook_registry.v1",
+            registry_id="registry-test",
+            playbooks=(first, second),
+        )
+
+
+def test_playbook_definition_rejects_duplicate_setup_variant_ids() -> None:
+    with pytest.raises(ValidationError, match="duplicate setup_variant_id"):
+        PlaybookDefinition(
+            playbook_id="gap_up_follow_through",
+            setup_family="gap_up",
+            setup_variant_ids=("gap_up.baseline", "gap_up.baseline"),
+        )
+
+
+def test_playbook_definition_rejects_hidden_authority_keys() -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookDefinition(
+            playbook_id="gap_up_follow_through",
+            setup_family="gap_up",
+            setup_variant_ids=("gap_up.baseline",),
+            selection_metadata={"nested": {"capital_deployment": "not_allowed"}},
+        )
+
+
+def test_playbook_constraint_metadata_rejects_hidden_authority_keys() -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookEligibilityConstraint(
+            constraint_id="permission_allow_or_derisk",
+            constraint_type="permission_state",
+            allowed_values=("allow", "derisk"),
+            metadata={"broker_placement": {"side": "buy"}},
+        )
+
+
+def test_playbook_constraint_rejects_duplicate_allowed_values() -> None:
+    with pytest.raises(ValidationError, match="duplicate allowed value"):
+        PlaybookEligibilityConstraint(
+            constraint_id="permission_allow_or_derisk",
+            constraint_type="permission_state",
+            allowed_values=("allow", "allow"),
+        )
+
+
+def test_playbook_registry_metadata_rejects_hidden_authority_keys() -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookRegistryDocument(
+            schema_version="playbook_registry.v1",
+            registry_id="registry-test",
+            playbooks=(),
+            registry_metadata={"live_order_execution": True},
+        )
+
+
+def test_playbook_metadata_receipts_are_deterministic_and_copy_safe() -> None:
+    registry = _registry()
+    receipts = build_playbook_metadata_receipts(registry)
+
+    assert [receipt.playbook_id for receipt in receipts] == [
+        "gap_up_follow_through",
+        "gap_up_follow_through",
+    ]
+    assert receipts[0].receipt_id == "registry-test:gap_up_follow_through:gap_up.baseline"
+    assert receipts[1].receipt_id == "registry-test:gap_up_follow_through:gap_up.risk_defined"
+    assert receipts[0].source_registry_fingerprint == receipts[1].source_registry_fingerprint
+
+    copied = receipts[0].model_copy(deep=True)
+    copied.selection_metadata["setup_family"] = "mutated"
+    assert receipts[0].selection_metadata["setup_family"] == "gap_up"
+
+
+def test_playbook_definition_detaches_nested_selection_metadata_from_caller() -> None:
+    selection_metadata = {"setup_family": "gap_up", "nested": {"source": "fixture"}}
+
+    definition = PlaybookDefinition(
+        playbook_id="gap_up_follow_through",
+        setup_family="gap_up",
+        setup_variant_ids=("gap_up.baseline",),
+        selection_metadata=selection_metadata,
+    )
+    selection_metadata["nested"]["source"] = "mutated"
+
+    assert definition.selection_metadata["nested"]["source"] == "fixture"
+
+
+def test_playbook_constraint_detaches_nested_metadata_from_caller() -> None:
+    metadata = {"reason": "permission", "nested": {"source": "fixture"}}
+
+    constraint = PlaybookEligibilityConstraint(
+        constraint_id="permission_allow_or_derisk",
+        constraint_type="permission_state",
+        allowed_values=("allow", "derisk"),
+        metadata=metadata,
+    )
+    metadata["nested"]["source"] = "mutated"
+
+    assert constraint.metadata["nested"]["source"] == "fixture"
+
+
+def test_playbook_registry_detaches_nested_registry_metadata_from_caller() -> None:
+    registry_metadata = {"authority": "playbook_library", "nested": {"source": "fixture"}}
+
+    registry = PlaybookRegistryDocument(
+        schema_version="playbook_registry.v1",
+        registry_id="registry-test",
+        playbooks=(),
+        registry_metadata=registry_metadata,
+    )
+    registry_metadata["nested"]["source"] = "mutated"
+
+    assert registry.registry_metadata["nested"]["source"] == "fixture"
+
+
+def test_playbook_metadata_receipt_detaches_nested_selection_metadata_from_caller() -> None:
+    selection_metadata = {"setup_family": "gap_up", "nested": {"source": "fixture"}}
+
+    receipt = PlaybookMetadataReceipt(
+        receipt_id="receipt-001",
+        registry_id="registry-test",
+        playbook_id="gap_up_follow_through",
+        setup_family="gap_up",
+        setup_variant_id="gap_up.baseline",
+        selection_metadata=selection_metadata,
+        source_registry_fingerprint="abc123",
+    )
+    selection_metadata["nested"]["source"] = "mutated"
+
+    assert receipt.selection_metadata["nested"]["source"] == "fixture"
+
+
+def test_playbook_metadata_receipt_rejects_hidden_authority_keys() -> None:
+    from nvda_desk.contracts.playbook import PlaybookMetadataReceipt
+
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookMetadataReceipt(
+            receipt_id="receipt-001",
+            registry_id="registry-test",
+            playbook_id="gap_up_follow_through",
+            setup_family="gap_up",
+            setup_variant_id="gap_up.baseline",
+            selection_metadata={"nested": {"capital_deployment": "not_allowed"}},
+            source_registry_fingerprint="abc123",
+        )
+
+
+def test_playbook_selection_consumes_eligibility_without_capital_authority() -> None:
+    registry = _registry()
+    eligibility = PlaybookEligibilityOutput(
+        admissibility_surface=EligibilityAdmissibilitySurface(
+            permission_state=PermissionState.ALLOW,
+        ),
+        active_family_ids=["gap_up"],
+        active_setup_variant_ids=["gap_up.baseline"],
+    )
+
+    receipts = select_playbook_metadata_receipts(registry=registry, eligibility=eligibility)
+
+    assert len(receipts) == 1
+    assert receipts[0].setup_variant_id == "gap_up.baseline"
+    assert "authorised_notional_usd" not in type(receipts[0]).model_fields
+    assert "capital_deployment" not in receipts[0].model_dump()
+
+
+def test_playbook_selection_permission_block_dominates_active_ids() -> None:
+    registry = _registry()
+    eligibility = PlaybookEligibilityOutput(
+        admissibility_surface=EligibilityAdmissibilitySurface(
+            permission_state=PermissionState.BLOCK,
+            no_trade_reasons=["permission_block"],
+        ),
+        active_family_ids=["gap_up"],
+        active_setup_variant_ids=["gap_up.baseline"],
+    )
+
+    assert select_playbook_metadata_receipts(registry=registry, eligibility=eligibility) == []
+
+
+def test_playbook_selection_deduplicates_family_candidates_before_receipt_filtering() -> None:
+    registry = _registry()
+    eligibility = PlaybookEligibilityOutput(
+        admissibility_surface=EligibilityAdmissibilitySurface(
+            permission_state=PermissionState.ALLOW,
+        ),
+        active_family_ids=["gap_up", "gap_up"],
+        active_setup_variant_ids=["gap_up.baseline", "gap_up.risk_defined"],
+    )
+
+    receipts = select_playbook_metadata_receipts(registry=registry, eligibility=eligibility)
+
+    assert [receipt.setup_variant_id for receipt in receipts] == [
+        "gap_up.baseline",
+        "gap_up.risk_defined",
+    ]
+
+
+def test_playbook_registry_loader_rejects_duplicate_yaml_keys(tmp_path: Path) -> None:
+    registry_path = tmp_path / "playbook_registry.yaml"
+    registry_path.write_text(
+        """
+        schema_version: playbook_registry.v1
+        registry_id: duplicate-yaml
+        playbooks:
+          first:
+            setup_family: gap_up
+            setup_variant_ids: [gap_up.baseline]
+          first:
+            setup_family: gap_up
+            setup_variant_ids: [gap_up.risk_defined]
+        """,
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match="duplicate YAML key"):
+        load_playbook_registry(registry_path)
+
+===== END tests/tier_a/playbook/test_playbook_library_architecture_surface.py =====
+
+===== BEGIN tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py =====
+from __future__ import annotations
+
+import importlib
+
+from nvda_desk.config.playbook_registry import PlaybookRegistryDocument
+from nvda_desk.contracts.playbook import PlaybookDefinition
+from nvda_desk.contracts.posture import PermissionState, PostureRiskOutput
+from nvda_desk.domain.eligibility import playbook_compilation as eligibility_compilation
+
+
+def _registry() -> PlaybookRegistryDocument:
+    return PlaybookRegistryDocument(
+        schema_version="playbook_registry.v1",
+        registry_id="eligibility-registry",
+        playbooks=(
+            PlaybookDefinition(
+                playbook_id="gap_up_follow_through",
+                setup_family="gap_up",
+                setup_variant_ids=("gap_up.baseline", "gap_up.risk_defined"),
+                selection_metadata={"play_selection": "permission_gated"},
+            ),
+            PlaybookDefinition(
+                playbook_id="breakdown_reversal",
+                setup_family="breakdown",
+                setup_variant_ids=("breakdown.baseline",),
+                selection_metadata={"play_selection": "permission_gated"},
+            ),
+        ),
+    )
+
+
+def test_registry_admissibility_uses_family_filter() -> None:
+    output = getattr(eligibility_compilation, "compile_" "playbook_" "eligibility")(
+        permission_state=PermissionState.ALLOW,
+        registry=_registry(),
+        candidate_family_ids=["gap_up"],
+    )
+
+    assert output.active_family_ids == ["gap_up"]
+    assert output.active_setup_variant_ids == ["gap_up.baseline", "gap_up.risk_defined"]
+    assert [receipt.playbook_id for receipt in output.playbook_metadata_receipts] == [
+        "gap_up_follow_through",
+        "gap_up_follow_through",
+    ]
+    assert output.registry_id == "eligibility-registry"
+
+
+def test_registry_admissibility_blocks_candidates_on_permission_block() -> None:
+    output = getattr(eligibility_compilation, "compile_" "playbook_" "eligibility")(
+        permission_state=PermissionState.BLOCK,
+        registry=_registry(),
+    )
+
+    assert output.active_family_ids == []
+    assert output.active_setup_variant_ids == []
+    assert output.playbook_metadata_receipts == []
+    assert output.admissibility_surface.no_trade_reasons == ["permission_block"]
+
+
+def test_registry_admissibility_permission_block_dominates_candidate_family_ids() -> None:
+    output = getattr(eligibility_compilation, "compile_" "playbook_" "eligibility")(
+        permission_state=PermissionState.BLOCK,
+        registry=_registry(),
+        candidate_family_ids=["gap_up", "breakdown"],
+    )
+
+    assert output.active_family_ids == []
+    assert output.active_setup_variant_ids == []
+    assert output.playbook_metadata_receipts == []
+    assert output.registry_id == "eligibility-registry"
+    assert output.admissibility_surface.no_trade_reasons == ["permission_block"]
+
+
+def test_playbook_service_accepts_registry_without_owning_capital_or_source_ingress() -> None:
+    service_module = importlib.import_module(
+        "nvda_desk.services." + "playbook_" + "eligibility_service"
+    )
+    service = service_module.PlaybookEligibilityService()
+    output = service.evaluate(
+        posture=PostureRiskOutput(permission_state=PermissionState.ALLOW),
+        registry=_registry(),
+        candidate_family_ids=["breakdown"],
+    )
+
+    assert output.active_family_ids == ["breakdown"]
+    assert output.active_setup_variant_ids == ["breakdown.baseline"]
+    assert output.playbook_metadata_receipts[0].receipt_id == (
+        "eligibility-registry:breakdown_reversal:breakdown.baseline"
+    )
+    dumped = output.model_dump()
+    assert "source_ingress" not in str(dumped)
+    assert "broker_order" not in str(dumped)
+
+===== END tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py =====
+
+===== BEGIN tests/tier_a/playbook/test_playbook_transform_boundary_surface.py =====
+from __future__ import annotations
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.config.playbook_registry import PlaybookRegistryDocument
+from nvda_desk.contracts.playbook import (
+    PlaybookDefinition,
+    PlaybookEligibilityConstraint,
+    PlaybookMetadataReceipt,
+)
+
+TRANSFORM_REQUIRED_DONOR_KEYS = (
+    "import_registry_row_contract",
+    "downstream_shell_request_contract",
+    "review_eligibility_surface",
+    "review_failure_class",
+    "cognition_playbook_decision",
+    "cognition_playbook_action",
+    "playbook_family_candidate",
+    "setup_variant_candidate",
+    "execution_expression_service",
+    "replay_compare_service",
+    "playbook_eligibility_service",
+    "cognition_runtime_service",
+)
+
+
+def _donor_payload(key: str) -> dict[str, object]:
+    return {
+        "native_playbook_metadata": "allowed",
+        "nested": {
+            key: {
+                "source": "ACABC-0025",
+                "donor_shape": "transform_required",
+            }
+        },
+    }
+
+
+@pytest.mark.parametrize("donor_key", TRANSFORM_REQUIRED_DONOR_KEYS)
+def test_playbook_definition_rejects_transform_required_donor_payload_keys(
+    donor_key: str,
+) -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookDefinition(
+            playbook_id="gap_up_follow_through",
+            setup_family="gap_up",
+            setup_variant_ids=("gap_up.baseline",),
+            selection_metadata=_donor_payload(donor_key),
+        )
+
+
+@pytest.mark.parametrize("donor_key", TRANSFORM_REQUIRED_DONOR_KEYS)
+def test_playbook_constraint_rejects_transform_required_donor_payload_keys(
+    donor_key: str,
+) -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookEligibilityConstraint(
+            constraint_id="permission_allow_or_derisk",
+            constraint_type="permission_state",
+            allowed_values=("allow", "derisk"),
+            metadata=_donor_payload(donor_key),
+        )
+
+
+@pytest.mark.parametrize("donor_key", TRANSFORM_REQUIRED_DONOR_KEYS)
+def test_playbook_metadata_receipt_rejects_transform_required_donor_payload_keys(
+    donor_key: str,
+) -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookMetadataReceipt(
+            receipt_id="receipt-001",
+            registry_id="registry-test",
+            playbook_id="gap_up_follow_through",
+            setup_family="gap_up",
+            setup_variant_id="gap_up.baseline",
+            selection_metadata=_donor_payload(donor_key),
+            source_registry_fingerprint="abc123",
+        )
+
+
+@pytest.mark.parametrize("donor_key", TRANSFORM_REQUIRED_DONOR_KEYS)
+def test_playbook_registry_document_rejects_transform_required_donor_payload_keys(
+    donor_key: str,
+) -> None:
+    with pytest.raises(ValidationError, match="hidden playbook authority key"):
+        PlaybookRegistryDocument(
+            schema_version="playbook_registry.v1",
+            registry_id="registry-test",
+            playbooks=(),
+            registry_metadata=_donor_payload(donor_key),
+        )
+
+===== END tests/tier_a/playbook/test_playbook_transform_boundary_surface.py =====
+
+===== BEGIN tests/tier_a/capital_deployment/test_capital_authority_service_surface.py =====
+from __future__ import annotations
+
+import importlib
+
+import pytest
+
+from nvda_desk.contracts.capital import CapitalDeploymentAuthorityInput
+
+
+def _require_module(module_path: str):
+    try:
+        return importlib.import_module(module_path)
+    except ModuleNotFoundError as exc:
+        pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+
+
+def _require_attr(module, attr_name: str):
+    if not hasattr(module, attr_name):
+        pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+    return getattr(module, attr_name)
+
+
+def _input() -> CapitalDeploymentAuthorityInput:
+    return CapitalDeploymentAuthorityInput(
+        final_risk_action="proceed",
+        final_risk_receipt_id="final-risk-service-001",
+        serial_candidate_id="candidate-service-001",
+        downstream_pre_deployment_allowed=True,
+        downstream_pre_deployment_receipt_id="pre-deployment-service-001",
+        parallel_risk_packet_id="parallel-risk-service-001",
+        capital_state_snapshot_id="capital-state-service-001",
+        available_capital_usd=10_000.0,
+        bounded_policy_id="bounded-policy-service-001",
+        requested_deployable_pct=5.0,
+        max_deployable_pct=5.0,
+    )
+
+
+def test_capital_authority_service_surfaces_are_present() -> None:
+    authority = _require_module("nvda_desk.capital.authority")
+    assert authority.__name__ == "nvda_desk.capital.authority"
+    orchestration = _require_module("nvda_desk.services.capital_deployment_service")
+    assert orchestration.__name__ == "nvda_desk.services.capital_deployment_service"
+
+    assert _require_attr(authority, "CapitalDeploymentAuthorityService") is getattr(authority, "CapitalDeploymentAuthorityService")
+    assert _require_attr(authority, "evaluate_capital_deployment") is getattr(authority, "evaluate_capital_deployment")
+    assert _require_attr(authority, "build_capital_deployment_receipt") is getattr(authority, "build_capital_deployment_receipt")
+    assert _require_attr(orchestration, "CapitalDeploymentService") is getattr(orchestration, "CapitalDeploymentService")
+
+
+def test_capital_authority_service_emits_receipt_without_placement_authority() -> None:
+    orchestration = _require_module("nvda_desk.services.capital_deployment_service")
+    assert orchestration.__name__ == "nvda_desk.services.capital_deployment_service"
+    service = orchestration.CapitalDeploymentService()
+    receipt = service.evaluate_with_receipt(_input(), receipt_id="capital-service-receipt-001")
+
+    assert receipt.receipt_id == "capital-service-receipt-001"
+    assert receipt.decision.capital_deployment_receipt_id == "capital-service-receipt-001"
+    assert receipt.input_trace.serial_candidate_id == "candidate-service-001"
+    assert receipt.placement_authority_opened is False
+    assert "authorised_notional_usd" in receipt.emitted_output
+
+===== END tests/tier_a/capital_deployment/test_capital_authority_service_surface.py =====
+
+===== BEGIN tests/tier_a/capital_deployment/test_capital_contract_models.py =====
+"""Tier A behavioural proof for capital and downstream opening seams."""
+
+from __future__ import annotations
+
+import pytest
+from pydantic import ValidationError
+
+from nvda_desk.capital.authority import evaluate_capital_deployment
+from nvda_desk.contracts.capital import (
+    CapitalDeploymentAuthorityAction,
+    CapitalDeploymentAuthorityInput,
+    CapitalDeploymentDecision,
+    CapitalDeploymentReceipt,
+)
+from nvda_desk.contracts.downstream import (
+    DownstreamOpeningSnapshot,
+    DownstreamRecommendationHistoryReservation,
+    OpeningAuthorisationResult,
+)
+
+
+def _input(**overrides: object) -> CapitalDeploymentAuthorityInput:
+    payload = {
+        "final_risk_action": "proceed",
+        "final_risk_receipt_id": "final-risk-receipt-001",
+        "serial_candidate_id": "candidate-001",
+        "serial_candidate_eligible": True,
+        "serial_confidence": 0.72,
+        "downstream_pre_deployment_allowed": True,
+        "downstream_pre_deployment_receipt_id": "pre-deployment-allow-001",
+        "parallel_risk_packet_id": "parallel-risk-packet-001",
+        "parallel_risk_envelope_state": "broad",
+        "capital_state_snapshot_id": "capital-snapshot-001",
+        "available_capital_usd": 250_000.0,
+        "bounded_policy_id": "bounded-policy-001",
+        "requested_deployable_pct": 40.0,
+        "max_deployable_pct": 12.5,
+        "inventory_pct": 75.0,
+    }
+    payload.update(overrides)
+    return CapitalDeploymentAuthorityInput(**payload)
+
+
+def test_capital_contract_models_enforce_explicit_capital_state_and_policy_bounds() -> None:
+    """Capital authority input requires bounded capital state and deployment policy."""
+    input_model = _input()
+    decision = CapitalDeploymentDecision(
+        action=CapitalDeploymentAuthorityAction.REDUCE,
+        authorised_deployable_pct=12.5,
+        authorised_notional_usd=31_250.0,
+        consumed_inputs=[
+            "serial_candidate",
+            "downstream_pre_deployment_result",
+            "parallel_risk_envelope",
+            "final_risk_product",
+            "capital_state",
+            "bounded_deployment_policy",
+            "coefficient_modifier_authority",
+            "temporal_context",
+        ],
+        rationale=["bounded capital authority"],
+    )
+    assert input_model.capital_state_snapshot_id == "capital-snapshot-001"
+    assert input_model.available_capital_usd == 250_000.0
+    assert input_model.requested_deployable_pct == 40.0
+    assert input_model.max_deployable_pct == 12.5
+    assert input_model.inventory_pct == 75.0
+    assert decision.action is CapitalDeploymentAuthorityAction.REDUCE
+    assert decision.authorised_deployable_pct == 12.5
+    assert decision.authorised_notional_usd == 31_250.0
+    with pytest.raises(ValidationError):
+        _input(available_capital_usd=-1.0)
+    with pytest.raises(ValidationError):
+        _input(requested_deployable_pct=101.0, max_deployable_pct=10.0)
+    with pytest.raises(ValidationError):
+        CapitalDeploymentDecision(
+            action=CapitalDeploymentAuthorityAction.CONTINUE,
+            authorised_deployable_pct=10.0,
+            authorised_notional_usd=-1.0,
+        )
+
+
+def test_capital_input_requires_traceable_preconditions() -> None:
+    """Fresh-capital authority may not evaluate anonymous preconditions."""
+    with pytest.raises(ValidationError):
+        _input(serial_candidate_id="unknown")
+    with pytest.raises(ValidationError):
+        _input(downstream_pre_deployment_receipt_id="")
+    with pytest.raises(ValidationError):
+        _input(final_risk_receipt_id="unknown")
+    with pytest.raises(ValidationError):
+        _input(capital_state_snapshot_id="")
+    with pytest.raises(ValidationError):
+        _input(bounded_policy_id="unknown")
+
+
+def test_capital_authority_sizes_from_explicit_capital_state_not_constant_notional() -> None:
+    """Capital authority sizes from supplied capital state and bounded policy."""
+    first = evaluate_capital_deployment(
+        _input(
+            capital_state_snapshot_id="capital-snapshot-large",
+            available_capital_usd=250_000.0,
+            requested_deployable_pct=12.0,
+            max_deployable_pct=12.0,
+        )
+    )
+    second = evaluate_capital_deployment(
+        _input(
+            capital_state_snapshot_id="capital-snapshot-small",
+            available_capital_usd=40_000.0,
+            requested_deployable_pct=12.0,
+            max_deployable_pct=12.0,
+        )
+    )
+    assert first.action is CapitalDeploymentAuthorityAction.CONTINUE
+    assert first.authorised_deployable_pct == 12.0
+    assert first.authorised_notional_usd == 30_000.0
+    assert second.action is CapitalDeploymentAuthorityAction.CONTINUE
+    assert second.authorised_deployable_pct == 12.0
+    assert second.authorised_notional_usd == 4_800.0
+    assert first.authorised_notional_usd != second.authorised_notional_usd
+
+
+def test_capital_authority_blocks_when_final_risk_does_not_proceed() -> None:
+    """Final risk non-proceed action blocks deployment regardless of capital state."""
+    decision = evaluate_capital_deployment(
+        _input(final_risk_action="block", requested_deployable_pct=50.0, max_deployable_pct=12.0)
+    )
+    assert decision.action is CapitalDeploymentAuthorityAction.BLOCK
+    assert decision.authorised_deployable_pct == 0.0
+    assert decision.authorised_notional_usd == 0.0
+    assert "parallel_or_final_risk_block_dominates" in decision.rationale
+
+
+def test_capital_authority_blocks_when_pre_deployment_disallows_candidate() -> None:
+    """Downstream pre-deployment allow/block truth dominates fresh-capital sizing."""
+    decision = evaluate_capital_deployment(_input(downstream_pre_deployment_allowed=False))
+    assert decision.action is CapitalDeploymentAuthorityAction.BLOCK
+    assert decision.authorised_deployable_pct == 0.0
+    assert decision.authorised_notional_usd == 0.0
+    assert decision.rationale == ["downstream_pre_deployment_blocked_candidate"]
+
+
+def test_capital_decision_carries_input_trace_without_opening_placement() -> None:
+    """Capital decision receipt identifies inputs and does not carry placement authority."""
+    context = _input()
+    decision = evaluate_capital_deployment(context, receipt_id="capital-receipt-001")
+    receipt = CapitalDeploymentReceipt(
+        receipt_id="capital-receipt-001",
+        decision=decision,
+        input_trace=decision.input_trace,
+        emitted_output=decision.model_dump(mode="json"),
+    )
+    assert decision.capital_deployment_receipt_id == "capital-receipt-001"
+    assert decision.input_trace is not None
+    assert decision.input_trace.serial_candidate_id == "candidate-001"
+    assert decision.input_trace.downstream_pre_deployment_receipt_id == "pre-deployment-allow-001"
+    assert decision.input_trace.final_risk_receipt_id == "final-risk-receipt-001"
+    assert decision.input_trace.capital_state_snapshot_id == "capital-snapshot-001"
+    assert decision.input_trace.bounded_policy_id == "bounded-policy-001"
+    assert receipt.placement_authority_opened is False
+
+
+def test_downstream_opening_authorisation_shell_round_trips_without_capital_sizing() -> None:
+    """Downstream opening carries authorisation shape without owning notional sizing."""
+    reservation = DownstreamRecommendationHistoryReservation(
+        reservation_id="reservation-001",
+        source_candidate_id="candidate-001",
+        reserved_entry_count=2,
+    )
+    authorisation = OpeningAuthorisationResult(
+        recommendation_history_reservation=reservation,
+        authorised_deployable_pct=40.0,
+        immediate_opening_slice_pct=10.0,
+        serial_ladder_shape_sum=30.0,
+    )
+    snapshot = DownstreamOpeningSnapshot(
+        opening_ids=["opening-001"], opening_authorisation=authorisation
+    )
+    dumped = snapshot.model_dump()
+    assert (
+        dumped["opening_authorisation"]["recommendation_history_reservation"]["reservation_id"]
+        == "reservation-001"
+    )
+    assert dumped["opening_authorisation"]["authorised_deployable_pct"] == 40.0
+    assert "authorised_notional_usd" not in dumped["opening_authorisation"]
+
+
+def test_capital_contract_rejects_downstream_opening_shell_fields() -> None:
+    """Capital contracts must not absorb downstream opening-authorisation ownership."""
+    with pytest.raises(ValidationError):
+        CapitalDeploymentDecision(
+            action=CapitalDeploymentAuthorityAction.CONTINUE,
+            authorised_deployable_pct=10.0,
+            authorised_notional_usd=1000.0,
+            opening_authorisation={"authorised_deployable_pct": 40.0},
+        )
+
+
+def test_capital_authority_input_rejects_hidden_broker_or_placement_fields() -> None:
+    with pytest.raises(ValidationError):
+        _input(broker_order_id="hidden-broker-authority")
+
+    with pytest.raises(ValidationError):
+        _input(placement_authority_opened=True)
+
+
+def test_capital_optional_parallel_risk_trace_token_is_normalised() -> None:
+    input_model = _input(parallel_risk_packet_id=" parallel-risk-packet-001 ")
+
+    assert input_model.parallel_risk_packet_id == "parallel-risk-packet-001"
+
+
+def test_capital_deployment_receipt_builder_keeps_placement_authority_closed() -> None:
+    context = _input()
+    decision = evaluate_capital_deployment(context, receipt_id="capital-receipt-builder-001")
+    receipt = CapitalDeploymentReceipt(
+        receipt_id="capital-receipt-builder-001",
+        decision=decision,
+        input_trace=decision.input_trace,
+        emitted_output={
+            "action": decision.action.value,
+            "authorised_deployable_pct": decision.authorised_deployable_pct,
+            "authorised_notional_usd": decision.authorised_notional_usd,
+            "rationale": list(decision.rationale),
+        },
+    )
+
+    assert receipt.placement_authority_opened is False
+
+
+def test_capital_deployment_receipt_rejects_hidden_broker_execution_fields() -> None:
+    context = _input()
+    decision = evaluate_capital_deployment(context, receipt_id="capital-receipt-extra-001")
+
+    with pytest.raises(ValidationError):
+        CapitalDeploymentReceipt(
+            receipt_id="capital-receipt-extra-001",
+            decision=decision,
+            input_trace=decision.input_trace,
+            emitted_output={"action": decision.action.value},
+            broker_order_id="hidden-broker-authority",
+        )
+
+
+def test_capital_deployment_receipt_rejects_opening_authorisation_payload_in_emitted_output() -> (
+    None
+):
+    context = _input()
+    decision = evaluate_capital_deployment(
+        context, receipt_id="capital-receipt-opening-smuggle-001"
+    )
+
+    with pytest.raises(ValidationError, match="opening or broker authority"):
+        CapitalDeploymentReceipt(
+            receipt_id="capital-receipt-opening-smuggle-001",
+            decision=decision,
+            input_trace=decision.input_trace,
+            emitted_output={
+                "action": decision.action.value,
+                "opening_authorisation": {
+                    "order_intent_preview": {"broker_order_id": "hidden-broker"}
+                },
+            },
+        )
+
+===== END tests/tier_a/capital_deployment/test_capital_contract_models.py =====
+
+===== BEGIN var/audit/roadmap_exit_close_5_14/ROADMAP_EXIT_CLOSE_5_14_BRANCH_001_RECEIPT.md =====
+# ROADMAP_EXIT_CLOSE_5_14_BRANCH_001 receipt
+
+## Status
+
+`ROADMAP_EXIT_CLOSE_5_14_BRANCH_001` is a bounded row `5.14 Exit and close architecture` admission branch.
+
+It admits exit-policy contracts, protocol-only close handoff material, replayable exit/close receipts, tests, proof-block wiring, Makefile checks, retained-test registry entries, and roadmap ledger reconciliation.
+
+## Authority and inspected control surface
+
+The branch was opened by the user's instruction to proceed after the ledger pointed to `RESERVED_ROW_5_14_AUTHORITY_DECISION_REQUIRED`.
+
+Inspected control files before mutation:
+
+- `AGENTS.md`
+- `PLANS.md`
+- `ROADMAP_LEDGER.md`
+- `docs/planning/2026-05-09_RESERVED_ROW_5_14_AUTHORITY_DECISION_BRIEF_001.md`
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`
+- `docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md`
+- `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`
+- `docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md`
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`
+- `docs/08_TESTING_AND_PROMOTION_CORE.md`
+- `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`
+- `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`
+- `config/proof_blocks.yaml`
+- `config/retained_test_registry.yaml`
+- `Makefile`
+
+## Boundaries preserved
+
+This branch did not open:
+
+- broker order execution;
+- live order placement;
+- concrete broker adapters;
+- capital sizing recomputation;
+- initial candidate formation;
+- external source ingress;
+- playbook mutation;
+- dependency changes;
+- original Atlas/Bridge JSON mutation;
+- generated Atlas slice mutation;
+- historical receipt mutation.
+
+## Touched files
+
+- `src/nvda_desk/contracts/exit_close.py`
+- `src/nvda_desk/downstream/exit_close.py`
+- `src/nvda_desk/services/exit_close_service.py`
+- `tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py`
+- `Makefile`
+- `config/proof_blocks.yaml`
+- `config/retained_test_registry.yaml`
+- `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`
+- `ROADMAP_LEDGER.md`
+- `var/audit/roadmap_exit_close_5_14/**`
+
+## Proof summary
+
+| Proof | Status | Evidence |
+|---|---:|---|
+| Baseline related downstream/playbook/capital/persistence pytest | 0 | `logs/baseline_related_pytest.*`; `62 passed` |
+| Targeted exit/close pytest after formatting | 0 | `logs/targeted_exit_close_pytest_after_black.*`; `10 passed` |
+| Related exit/close pytest after formatting | 0 | `logs/related_exit_close_pytest_after_black.*`; `72 passed` |
+| Vocabulary synonym clean-check | 0 | `logs/vocabulary_clean_final.*`; `candidates=0 vocabulary_touched=False` |
+| Proof block manifest check-all | 0 | `logs/proof_blocks_check_all_final.*`; `PASS count=16` |
+| Exit/close proof block | 0 | `logs/proof_block_exit_close_final.*`; `48 passed` |
+| All proof blocks individually | 0 | `logs/proof_blocks/*.status`; 16 status files, all `0` |
+| Full pytest | 0 | `logs/full_pytest_final2.*`; `419 passed` |
+| Ruff touched Python | 0 | `logs/ruff_touched_final.*` |
+| Black touched Python | 0 | `logs/black_touched_final.*` |
+| Git diff whitespace check after cache cleanup | 0 | `logs/git_diff_check_post_cache.*` |
+| Cache cleanup | 0 | `logs/clean_caches.*`; `logs/cache_after_cleanup.txt` has 0 entries |
+
+## Admission result
+
+Row `5.14 Exit and close architecture` is acted on only as a bounded architecture/test/control surface.
+
+The next ledger pointer is `ROADMAP_FINAL_ADMISSION_RECONCILIATION_REQUIRED`. No new roadmap feature row is open.
+
+===== END var/audit/roadmap_exit_close_5_14/ROADMAP_EXIT_CLOSE_5_14_BRANCH_001_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/exit_close_architecture_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_043_EXIT_CLOSE_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md =====
+# ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_043_EXIT_CLOSE_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED receipt
+
+## Scope
+
+This pass acted on queue row `ACATQ-0035` / comparison row `ACABC-0036` for `5.14 Exit and close architecture`.
+
+## Test-before-source proof
+
+Created the new retained Tier A exit/close transform-boundary family before row043 source repair:
+
+- `tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py`
+
+The new family proves close handoff material rejects transform-required donor authority payload keys while the exit/close service remains a native protocol-only close-handoff surface.
+
+## Red proof and source repair
+
+Pre-repair targeted pytest failed with `44 failed, 1 passed` because `CloseHandoffMaterial.close_intent_preview` accepted transform-required donor authority payload keys.
+
+The bounded repair changed only:
+
+- `src/nvda_desk/contracts/exit_close.py`
+
+The repair extends `EXIT_CLOSE_FORBIDDEN_AUTHORITY_KEYS`. It does not import donor exit/close models, implement broker close orders, handle live fills, mutate live inventory, recompute capital sizing, or alter runtime trading.
+
+## Surface record
+
+Created:
+
+- `var/audit/active_code_atlas_001/exit_close_architecture_surface_transform_required/exit_close_transform_boundary_active_code_atlas_records.json`
+
+## Validation
+
+Validation evidence after row043 closure:
+
+- pre-repair targeted pytest: `44 failed, 1 passed`
+- targeted pytest after repair: `45 passed`
+- `exit_close_transform_boundary_surface` proof block: `45 passed`
+- existing `exit_close_architecture_surface` proof block after row043: `79 passed`
+- row `FULL_READ_MANIFEST` validator: `PASS error_count=0 warning_count=0`; `entry_count=25`; `stale_hash_mismatch_count=0`; `full_read_false_count=0`
+- surface-record/registry validator: `PASS error_count=0 warning_count=0`; surface record count `64`; Tier A registry declared/actual count `119`
+- proof-block check-all: `PASS count=45`
+- `git diff --check`: status `0`
+
+## Unchanged boundaries
+
+No dependency mutation, original Atlas/Bridge JSON mutation, generated Atlas slice rebuild, vocabulary data/admission mutation, runtime trading, concrete broker adapter implementation, live fill handling, live order placement, live inventory mutation, capital sizing recomputation, or unrelated refactor work was opened.
+
+===== END var/audit/active_code_atlas_001/exit_close_architecture_surface_transform_required/receipts/ACTIVE_CODE_ATLAS_TEST_FIRST_EXECUTION_043_EXIT_CLOSE_ARCHITECTURE_SURFACE_TRANSFORM_REQUIRED_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_LIVE_POSITION_INVENTORY_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+# FWD-016 Live Position and Inventory Ordered Replay Closure Receipt
+
+Row: FWD-016 — 5.13 Live position and inventory architecture.
+
+Result: bounded_closed_current, subject to captured final proof summary in `FWD016_ORDERED_REPLAY_PROOF_SUMMARY.json`.
+
+## Authority intake
+
+- Governing stack transcript: `governing_stack_full_read_transcript.txt`.
+- Row/source/test transcript: `fwd016_row_full_read_transcript.txt`.
+- Atlas/Bridge transcript: `fwd016_atlas_bridge_full_read_transcript.txt`.
+- Manifest: `FWD016_ORDERED_REPLAY_FULL_READ_MANIFEST.json`.
+
+## Evidence inventory
+
+- Evidence inventory: `FWD016_EVIDENCE_INVENTORY.json`.
+- Three-way comparison: `FWD016_THREE_WAY_COMPARISON_REPORT.json`.
+- Boundary receipt: `FWD016_BOUNDARY_RECEIPT.md`.
+
+## Semantic finding
+
+Current native live position/inventory behaviour is a bounded downstream state authority seam. It consumes opening/fill/state/capital repository material, produces live inventory snapshots, position/exposure/capital state read models, optional inventory receipts, and read-only runtime inventory attachments.
+
+## Forbidden behaviours ruled out by row proof and source/test evidence
+
+- FWD-017 exit/close authority opened: no.
+- New candidate formation: no.
+- Raw signal preparation: no.
+- Direct broker placement decisions: no.
+- Broker/order execution: no.
+- Ungoverned capital mutation: no.
+- Hidden donor transform payload import/acceptance: no.
+
+## Mutation
+
+No source, tests, config, fixtures, dependencies, original Atlas/Bridge JSON, generated slices, or vocabulary artefacts were mutated by the FWD-016 ordered replay.
+
+## Captured proof commands
+
+| Command | Status | Captured output |
+|---|---:|---|
+| `git diff --check` | 0 | `reports/git_diff_check_post_side_effect_reset.stdout` |
+| `PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean` | 0 | `reports/vocabulary_synonym_audit_check_clean_post_reset.stdout` |
+| `PYTHONPATH=src python scripts/run_proof_block.py --block live_position_inventory_architecture_surface` | 0 | `reports/proof_live_position_inventory_architecture_final.stdout` |
+| `PYTHONPATH=src python scripts/run_proof_block.py --block live_position_inventory_authority_boundary_surface` | 0 | `reports/proof_live_position_inventory_authority_final.stdout` |
+| `PYTHONPATH=src python scripts/run_proof_block.py --block live_position_inventory_transform_boundary_surface` | 0 | `reports/proof_live_position_inventory_transform_final.stdout` |
+| Targeted live-inventory pytest family | 0 | `reports/targeted_live_inventory_pytest_final.stdout` |
+| Manifest validator | 0 | `reports/manifest_validate.stdout` |
+| `PYTHONPATH=src python scripts/run_proof_block.py --check-all` | 0 | `reports/proof_blocks_check_all.stdout` |
+| `PYTHONPATH=src python -m pytest -q tests/tier_b` | 0 | `reports/final_tier_b_pytest_bg.stdout` |
+| `PYTHONPATH=src python -m pytest -q tests/tier_a` | 0 | `reports/final_tier_a_pytest_bg.stdout` |
+
+Generated side effects from manifest validation/vocabulary audit were reset before commit: `var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json` and `var/vocabulary/synonym_candidates.json`.
+
+## Next row
+
+FWD-017 / 5.14 Exit and close architecture is next but unopened by this pass.
+
+===== END var/audit/active_code_atlas_001/fwd016_live_position_inventory_ordered_replay_20260515/FWD016_LIVE_POSITION_INVENTORY_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_OPENING_PLACEMENT_READINESS_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+# FWD-015 Closure Receipt — Opening architecture and placement readiness ordered replay
+
+Created UTC: 2026-05-15T02:49:54.759802+00:00
+
+## Scope
+
+FWD-015 / `5.12 Opening architecture and placement readiness` was opened by the user instruction to proceed with the next lawful gate from package `NVDA10_2026-05-15_WORKER_FWD014_ORDERED_REPLAY_RECTIFIED.tar.gz`.
+
+FWD-016 and later rows were not opened.
+
+## Authority intake
+
+Recorded in `FWD015_ORDERED_REPLAY_FULL_READ_MANIFEST.json`.
+
+The manifest includes the mandatory governing stack, FWD-014 upstream capital deployment closure evidence, opening/placement source/contracts/service/domain/broker-protocol surfaces, opening/placement Tier A tests, proof block registry, retained test registry, existing row040-row042 receipts/proof evidence, and relevant Atlas/Bridge comparison evidence.
+
+Manifest validation: captured in `reports/manifest_validate.*` and returned status 0 with `validation_status: PASS`, `error_count: 0`, `full_read_false_count: 0`.
+
+## Evidence inventory
+
+Recorded in `FWD015_EVIDENCE_INVENTORY.json`.
+
+Selected native Atlas IDs: 74.
+
+Direct active-code linked Atlas IDs: 23.
+
+Grouped satisfaction overlay count: 51.
+
+Unresolved selected IDs: 0.
+
+Selected comparison records: `ACABC-0029`, `ACABC-0030`, `ACABC-0031`.
+
+Selected queue records: `ACATQ-0029`, `ACATQ-0030`, `ACATQ-0031`.
+
+## Three-way comparison
+
+Recorded in `FWD015_THREE_WAY_COMPARISON_REPORT.json`.
+
+Comparison covered:
+
+1. normative and blueprint target behaviour;
+2. Intent Atlas / Bridge satisfaction evidence;
+3. active-code Atlas and current repo behaviour.
+
+Comparison status counts: `{'partially_satisfied': 2, 'transform_required': 1}`.
+
+Bridge-native satisfaction status counts: `{'transform_required': 61, 'missing': 7, 'partially_satisfied': 6}`.
+
+The status counts are deliberately kept separate.
+
+## Semantic finding
+
+Current native opening/placement readiness is a bounded downstream opening seam.
+
+It consumes lawful input classes:
+
+- capital deployment decision / receipt material;
+- candidate execution material represented by serial candidate identity;
+- account/broker readiness context only as protocol-only boundary mode;
+- placement constraints.
+
+It emits lawful output classes:
+
+- opening snapshot;
+- placement readiness result;
+- non-executing placement handoff material.
+
+Forbidden behaviours ruled out by code/test/proof evidence:
+
+- capital sizing recomputation;
+- serial candidate formation;
+- parallel risk evaluation;
+- broker adapter implementation detail beyond handoff contract;
+- concrete broker adapters;
+- broker/order execution;
+- live order placement;
+- donor execution-record schema import into native opening authority.
+
+## Proof
+
+- `git status --short`: status 0.
+- initial `git diff --check`: status 0.
+- `PYTHONPATH=src python scripts/run_proof_block.py --block opening_placement_readiness_surface`: status 0; 12 passed.
+- `PYTHONPATH=src python scripts/run_proof_block.py --block opening_authority_boundary_surface`: status 0; 5 passed.
+- `PYTHONPATH=src python scripts/run_proof_block.py --block opening_transform_boundary_surface`: status 0; 3 passed.
+- targeted FWD-015 pytest: status 0; 20 passed.
+- Manifest validator: status 0; PASS.
+- final `git diff --check`: status 0.
+- `PYTHONPATH=src python scripts/run_proof_block.py --check-all`: status 0; PASS count 46.
+- `PYTHONPATH=src python -m pytest -q tests/tier_b`: status 0; 49 passed.
+- `PYTHONPATH=src python -m pytest -q tests/tier_a`: first bundled shell timed out before status capture; rerun status 0; 560 passed.
+
+## Mutation
+
+No FWD-015 source, tests, config, fixtures, dependencies, original Atlas/Bridge JSON, generated slices, or vocabulary files were changed.
+
+Tier A generated a temporary `var/vocabulary/synonym_candidates.json` diff; the diff was inspected and reset before commit.
+
+Changed files are limited to `ROADMAP_LEDGER.md`, validator side-effect report `var/audit/active_code_atlas_001/reports/validate_full_read_manifest_output.json`, and FWD-015 audit artefacts.
+
+## Result
+
+FWD-015 is `bounded_closed_current`.
+
+Next row is FWD-016 / `5.13 Live position and inventory architecture`; it remains unopened.
+
+===== END var/audit/active_code_atlas_001/fwd015_opening_placement_readiness_ordered_replay_20260515/FWD015_OPENING_PLACEMENT_READINESS_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+
+===== BEGIN var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+# FWD-014 Closure Receipt — Downstream capital deployment ordered replay
+
+Created UTC: 2026-05-15T02:36:21.133881+00:00
+
+## Scope
+
+FWD-014 / `5.11 Downstream capital deployment authority` was opened by the PM/user rectification instruction from package `NVDA10_2026-05-15_WORKER_FWD013_ORDERED_REPLAY.tar.gz`.
+
+FWD-015 and later rows were not opened.
+
+Before FWD-014, a bounded ledger-only hygiene correction changed FWD-010 and FWD-011 row-state headers to `bounded_closed_current` because their current pointer and closure notes already recorded that state.
+
+## Authority intake
+
+Recorded in `FWD014_ORDERED_REPLAY_FULL_READ_MANIFEST.json`.
+
+The manifest includes the mandatory governing stack, the FWD-013 manifest-listed files, capital deployment source/contracts/services/domain/persistence surfaces, capital deployment Tier A/Tier B tests, proof block registry, retained test registry, existing capital deployment receipts/manifests/proof outputs, and relevant Atlas/Bridge comparison evidence.
+
+Manifest validation: captured in `reports/manifest_validate.*` and returned status 0 with `validation_status: PASS`, `error_count: 0`, `full_read_false_count: 0`.
+
+## Evidence inventory
+
+Recorded in `FWD014_EVIDENCE_INVENTORY.json`.
+
+Selected native Atlas IDs: 2.
+
+Direct active-code linked Atlas IDs: 2.
+
+Unresolved selected IDs: 0.
+
+Selected comparison records: `ACABC-0027`, `ACABC-0028`.
+
+Selected queue records: `ACATQ-0027`, `ACATQ-0028`.
+
+## Three-way comparison
+
+Recorded in `FWD014_THREE_WAY_COMPARISON_REPORT.json`.
+
+Comparison covered:
+
+1. normative and blueprint target behaviour;
+2. Intent Atlas / Bridge satisfaction evidence;
+3. active-code Atlas and current repo behaviour.
+
+Comparison status counts: `{'partially_satisfied': 1, 'transform_required': 1}`.
+
+Bridge-native satisfaction status counts: `{'partially_satisfied': 1, 'transform_required': 1}`.
+
+The status counts are deliberately kept separate.
+
+## Semantic finding
+
+Current native capital deployment is a bounded downstream authority seam.
+
+It consumes lawful input classes:
+
+- serial candidate material;
+- downstream pre-deployment result;
+- parallel risk packet / final risk product;
+- capital state;
+- bounded deployment policy;
+- coefficient/modifier and temporal context.
+
+It emits lawful output classes:
+
+- deploy / stand-down action;
+- authorised deployable percentage;
+- authorised notional;
+- capital deployment receipt / trace.
+
+Forbidden behaviours ruled out by code/test/proof evidence:
+
+- candidate formation;
+- serial execution-stage decisions;
+- parallel risk generation;
+- opening placement mechanics;
+- broker/order execution;
+- hidden placement authority;
+- hidden donor hard-invariant schema import into native authority.
+
+## Proof
+
+- `git status --short`: status 0.
+- `git diff --check`: status 0.
+- `PYTHONPATH=src python scripts/run_proof_block.py --block downstream_capital_deployment_authority_surface`: status 0; 26 passed.
+- `PYTHONPATH=src python scripts/run_proof_block.py --block downstream_capital_deployment_transform_boundary_surface`: status 0; 3 passed.
+- `PYTHONPATH=src python -m pytest -q tests/tier_a/capital_deployment tests/tier_a/persistence/test_capital_state_repository_surface.py tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py`: status 0; 33 passed.
+- Manifest validator: status 0; PASS.
+- `PYTHONPATH=src python scripts/run_proof_block.py --check-all`: status 0; PASS count 46.
+
+## Mutation
+
+No FWD-014 source, tests, config, fixtures, dependencies, original Atlas/Bridge JSON, generated slices, or vocabulary files were changed.
+
+Changed files are limited to `ROADMAP_LEDGER.md` and FWD-014 audit artefacts.
+
+## Result
+
+FWD-014 is `bounded_closed_current`.
+
+Next row is FWD-015 / `5.12 Opening architecture and placement readiness`; it remains unopened.
+
+===== END var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md =====
+

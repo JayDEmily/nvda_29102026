@@ -1,0 +1,1 @@
+PYTHONPATH=src /opt/pyvenv/bin/python -m pytest -q tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_control_surfaces_stay_manifest_driven
