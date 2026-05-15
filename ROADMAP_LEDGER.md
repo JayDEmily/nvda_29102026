@@ -92,7 +92,7 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 | Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
 | Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
 | Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, `FWD-010` / `5.9 Dynamic coefficient and modifier authority`, `FWD-011` / `5.10 Playbook library architecture`, `FWD-012` / `5.7 Serial desk-cognition spine`, `FWD-013` / `5.8 Parallel risk lane`, `FWD-014` / `5.11 Downstream capital deployment authority`, and `FWD-015` / `5.12 Opening architecture and placement readiness` ordered replays are recorded as `bounded_closed_current`. `FWD-016` / `5.13 Live position and inventory architecture` ordered replay is recorded as `bounded_closed_current`. `FWD-017` / `5.14 Exit and close architecture` is the next ordered row but remains unopened by the FWD-016 ordered replay authority. |
+| Current target architecture row | `FWD-008` / `5.4 Financial and event calendar architecture`, `FWD-009` / `5.5 Prepared ingress and runtime context preparation`, `FWD-010` / `5.9 Dynamic coefficient and modifier authority`, `FWD-011` / `5.10 Playbook library architecture`, `FWD-012` / `5.7 Serial desk-cognition spine`, `FWD-013` / `5.8 Parallel risk lane`, `FWD-014` / `5.11 Downstream capital deployment authority`, and `FWD-015` / `5.12 Opening architecture and placement readiness` ordered replays are recorded as `bounded_closed_current`. `FWD-016` / `5.13 Live position and inventory architecture` ordered replay is recorded as `bounded_closed_current`. `FWD-017` / `5.14 Exit and close architecture` ordered replay is recorded as `bounded_closed_current`. `FWD-018` / `5.15 Review and explanation layer` is the next ordered row but remains unopened by the FWD-017 ordered replay authority. |
 | Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
 | Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
@@ -1951,7 +1951,7 @@ Ordered replay closure note 2026-05-15:
 
 #### FWD-017 — 5.14 Exit and close architecture
 
-State: `planned_forward_reconciliation`
+State: `bounded_closed_current`
 
 Runtime position: `downstream_close`
 
@@ -2000,6 +2000,22 @@ Close evidence:
 - receipt path;
 - ledger row state update;
 - next row: `FWD-018`.
+
+Ordered replay closure note 2026-05-15:
+
+- result: `bounded_closed_current`;
+- audit directory: `var/audit/active_code_atlas_001/fwd017_exit_close_ordered_replay_20260515/`;
+- manifest: `FWD017_ORDERED_REPLAY_FULL_READ_MANIFEST.json`;
+- evidence inventory: `FWD017_EVIDENCE_INVENTORY.json`;
+- three-way comparison: `FWD017_THREE_WAY_COMPARISON_REPORT.json`;
+- proof summary: `FWD017_ORDERED_REPLAY_PROOF_SUMMARY.json`;
+- receipt: `FWD017_EXIT_CLOSE_ORDERED_REPLAY_CLOSURE_RECEIPT.md`;
+- boundary receipt: `FWD017_BOUNDARY_RECEIPT.md`;
+- selected Atlas/Bridge records covered: 90/90 through current surface group overlay plus direct row043 transform-boundary active-code record; unresolved selected IDs: 0;
+- comparison status counts remain separate from Bridge/native satisfaction counts: comparison status counts `transform_required=1`; Bridge/native satisfaction counts `missing=47`, `transform_required=43`;
+- current active-code direct link counts: direct linked Atlas IDs `1`; linked Bridge/queue records `2`; grouped overlay coverage `90`;
+- no source/test/config/runtime/vocabulary/original Atlas/Bridge/generated-slice mutation was made by this replay;
+- FWD-018 remains unopened.
 
 #### FWD-018 — 5.15 Review and explanation layer
 

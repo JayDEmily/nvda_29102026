@@ -1,0 +1,1 @@
+PYTHONPATH=src python -m pytest -q tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py
