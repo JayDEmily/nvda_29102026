@@ -52,8 +52,7 @@ class ModifierRuntimePacket(BaseModel):
         self.policy_ids = list(self.policy_ids)
         self.resolved_surfaces = list(self.resolved_surfaces)
         self.resolved_coefficients = [
-            _detached_coefficient(coefficient)
-            for coefficient in self.resolved_coefficients
+            _detached_coefficient(coefficient) for coefficient in self.resolved_coefficients
         ]
         return self
 
@@ -76,8 +75,46 @@ class ModifierReplayReceipt(BaseModel):
 
         self.active_modifier_ids = list(self.active_modifier_ids)
         self.resolved_coefficients = [
-            _detached_coefficient(coefficient)
-            for coefficient in self.resolved_coefficients
+            _detached_coefficient(coefficient) for coefficient in self.resolved_coefficients
         ]
         self.closed_authority_classes = list(self.closed_authority_classes)
         return self
+
+
+class CoefficientCalibrationOverride(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    target_id: str = Field(min_length=1)
+    proposed_value: float | bool
+    evidence_ref: str = Field(min_length=1)
+    override_family: str = "bounded_calibration_override"
+
+
+class CoefficientCalibrationSet(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    calibration_id: str = Field(min_length=1)
+    owner_stage: str = Field(min_length=1)
+    module_weight_overrides: list[CoefficientCalibrationOverride] = Field(default_factory=list)
+    sub_coefficient_overrides: list[CoefficientCalibrationOverride] = Field(default_factory=list)
+    live_update_allowed: bool = False
+
+
+class CoefficientAuditPacket(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    packet_id: str = Field(min_length=1)
+    replay_receipt: ModifierReplayReceipt
+    calibration: CoefficientCalibrationSet | None = None
+    audit_authority: str = "coefficient_modifier_audit_only"
+    live_update_allowed: bool = False
+
+
+class CoefficientReplayFixturePack(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    pack_id: str = Field(min_length=1)
+    owner_stage: str = Field(min_length=1)
+    replay_receipt: ModifierReplayReceipt
+    fixture_lineage: list[str] = Field(default_factory=list)
+    capital_deployment_allowed: bool = False

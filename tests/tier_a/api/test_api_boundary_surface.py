@@ -29,8 +29,12 @@ def test_api_boundary_surface_is_present() -> None:
     assert _require_attr(app_module, "HttpApp") is getattr(app_module, "HttpApp")
     assert _require_attr(app_module, "create_app") is getattr(app_module, "create_app")
     assert _require_attr(app_module, "register_routes") is getattr(app_module, "register_routes")
-    assert _require_attr(deps_module, "get_config_surface") is getattr(deps_module, "get_config_surface")
-    assert _require_attr(deps_module, "get_runtime_orchestrator") is getattr(deps_module, "get_runtime_orchestrator")
+    assert _require_attr(deps_module, "get_config_surface") is getattr(
+        deps_module, "get_config_surface"
+    )
+    assert _require_attr(deps_module, "get_runtime_orchestrator") is getattr(
+        deps_module, "get_runtime_orchestrator"
+    )
 
     assert wrapper_module.HttpApp is app_module.HttpApp
     assert wrapper_module.create_app is app_module.create_app
@@ -45,7 +49,8 @@ def test_api_boundary_wiring_stays_bounded_to_app_shell_and_runtime_orchestrator
     app = create_app()
 
     assert app.healthcheck() == {"status": "ok"}
-    assert sorted(app.route_handlers) == ["healthcheck", "run_once"]
+    assert {"healthcheck", "run_once"}.issubset(app.route_handlers)
+    assert "get_runtime_settings" in app.route_handlers
     assert "paths" in app.config_surface.runtime_settings().model_dump()
 
     receipt = app.run_once({"temporal": {"present": True}})

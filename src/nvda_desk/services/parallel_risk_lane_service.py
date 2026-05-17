@@ -6,8 +6,17 @@ from collections.abc import Mapping
 from datetime import datetime
 
 from nvda_desk.contracts.packets import DeskModulePacketV3
+from nvda_desk.contracts.parallel_risk import (
+    ParallelRiskFragilityDimension,
+    ParallelRiskPolicyDecision,
+)
 from nvda_desk.contracts.stage_inputs import StageInputBundle
-from nvda_desk.risk.parallel.evaluate import ParallelRiskService
+from nvda_desk.risk.parallel.evaluate import (
+    ParallelRiskService,
+    enrich_candidate_semantics,
+)
+
+_RISK_POLICY_DECISIONS: list[ParallelRiskPolicyDecision] = []
 
 SERIAL_RUNTIME_STAGE_KEYS = (
     "temporal",
@@ -123,6 +132,48 @@ class ParallelRiskLaneService:
             "bootstrap_input_packet": bootstrap_input_packet,
             "lane_packet": lane_packet,
         }
+
+    def enrich_candidate_semantics(
+        self,
+        *,
+        candidate_id: str | None = None,
+        semantic_tags: list[str] | None = None,
+        fragility_dimensions: list[ParallelRiskFragilityDimension] | None = None,
+        risk_event_ids: list[str] | None = None,
+    ):
+        """Project candidate semantics without giving the lane sizing authority."""
+
+        return enrich_candidate_semantics(
+            candidate_id=candidate_id,
+            semantic_tags=semantic_tags,
+            fragility_dimensions=fragility_dimensions or [],
+            risk_event_ids=risk_event_ids or [],
+        )
+
+    def evaluate_risk_policy(
+        self,
+        policy_id: str,
+        *,
+        candidate_id: str | None = None,
+        semantic_tags: list[str] | None = None,
+    ) -> ParallelRiskPolicyDecision:
+        """Record one risk-gateway observation decision without capital sizing authority."""
+
+        candidate = self.enrich_candidate_semantics(
+            candidate_id=candidate_id, semantic_tags=semantic_tags
+        )
+        decision = ParallelRiskPolicyDecision(
+            decision_id=f"{policy_id}::{candidate.candidate_id or 'no_candidate'}",
+            policy_id=policy_id,
+            candidate=candidate,
+        )
+        _RISK_POLICY_DECISIONS.append(decision)
+        return decision
+
+    def list_risk_decisions(self) -> list[ParallelRiskPolicyDecision]:
+        """Return risk-gateway observation decisions recorded in this process."""
+
+        return [decision.model_copy(deep=True) for decision in _RISK_POLICY_DECISIONS]
 
 
 def _select_temporal_stage_packet_payload(receipt: Mapping[str, object]) -> Mapping[str, object]:

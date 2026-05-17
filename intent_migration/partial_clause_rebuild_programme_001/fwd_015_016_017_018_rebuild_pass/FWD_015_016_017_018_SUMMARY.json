@@ -1,0 +1,11 @@
+{
+  "clauses_closed": 70,
+  "proof_block_id": "fwd015_016_017_018_rebuild_surface",
+  "selected_fwd": [
+    "FWD-015",
+    "FWD-016",
+    "FWD-017",
+    "FWD-018"
+  ],
+  "tier_a_full": "600 passed"
+}

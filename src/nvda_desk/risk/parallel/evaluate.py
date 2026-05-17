@@ -9,6 +9,7 @@ from nvda_desk.contracts.parallel_risk import (
     SERIAL_RUNTIME_TEMPORAL_BOOTSTRAP_SOURCE,
     STAGE_INPUT_BUNDLE_PARALLEL_RISK_PRIMITIVES_SOURCE,
     STAGE_INPUT_BUNDLE_TEMPORAL_BOOTSTRAP_SOURCE,
+    ParallelRiskFragilityDimension,
     ParallelRiskInputTrace,
     ParallelRiskLanePacket,
     ParallelRiskPreparationPacket,
@@ -132,20 +133,35 @@ def enrich_market_translation(*, preparation_packet: DeskModulePacketV3) -> dict
 
 
 def enrich_candidate_semantics(
-    *, candidate_id: str | None = None, semantic_tags: list[str] | None = None
-) -> dict:
-    del candidate_id, semantic_tags
-    raise NotImplementedError(
-        "Stage C candidate semantics remains reserved because the accepted baseline does not expose lawful native upstream packet inputs for it."
+    *,
+    candidate_id: str | None = None,
+    semantic_tags: list[str] | None = None,
+    fragility_dimensions: list[ParallelRiskFragilityDimension] | None = None,
+    risk_event_ids: list[str] | None = None,
+):
+    """Return bounded Stage C candidate semantics without capital or arbitration authority."""
+
+    return audit_candidate(
+        candidate_id=candidate_id,
+        semantic_tags=semantic_tags,
+        fragility_dimensions=fragility_dimensions or [],
+        risk_event_ids=risk_event_ids or [],
     )
 
 
 def preview_candidate_audit(
-    *, candidate_id: str | None = None, semantic_tags: list[str] | None = None
+    *,
+    candidate_id: str | None = None,
+    semantic_tags: list[str] | None = None,
+    fragility_dimensions: list[ParallelRiskFragilityDimension] | None = None,
 ):
     """Return the bounded candidate-audit surface without widening the live bootstrap path."""
 
-    return audit_candidate(candidate_id=candidate_id, semantic_tags=semantic_tags)
+    return audit_candidate(
+        candidate_id=candidate_id,
+        semantic_tags=semantic_tags,
+        fragility_dimensions=fragility_dimensions or [],
+    )
 
 
 def _coerce_preparation_payload(

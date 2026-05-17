@@ -1,0 +1,16 @@
+{
+  "by_forward_id": {
+    "FWD-007": 56,
+    "FWD-008": 11,
+    "FWD-010": 12,
+    "FWD-013": 8
+  },
+  "rows": 87,
+  "selected_forward_ids": [
+    "FWD-007",
+    "FWD-008",
+    "FWD-010",
+    "FWD-013"
+  ],
+  "sha256": "58c1fbd25e21bfc3cf3b35de89af993b6e0c203c7c73370f2da1fa111ea80983"
+}

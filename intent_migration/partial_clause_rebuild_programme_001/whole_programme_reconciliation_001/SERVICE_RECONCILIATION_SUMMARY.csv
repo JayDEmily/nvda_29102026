@@ -1,0 +1,13 @@
+assigned_forward_id,assigned_owner_surface,clause_rows,confirmed_not_survived_carried_forward,partial_delta_carried_forward,closed_by_receipt_and_rechecked,needs_followup,proof_blocks,canonical_groups
+FWD-001,Vocabulary governance interface,1,0,1,1,0,vocabulary_governance_conformance_candidate,CRG-017
+FWD-002,"Testing, proof, and checkpoint surfaces",68,56,12,68,0,fwd002_testing_proof_replay_sidecar_surface,CRG-002; CRG-003; CRG-009
+FWD-003,"Persistence, ledgers, and receipts",54,51,3,54,0,fwd003_import_registry_durable_persistence_surface,CRG-007; CRG-008
+FWD-005,External source interfaces and API ingress,30,3,27,30,0,fwd005_api_internal_exposure_surface,CRG-014; CRG-015
+FWD-007,Raw signal families,56,32,24,56,0,fwd007_008_010_013_rebuild_surface,CRG-001; CRG-012
+FWD-008,Financial and event calendar architecture,11,0,11,11,0,fwd007_008_010_013_rebuild_surface,CRG-006
+FWD-010,Dynamic coefficient and modifier authority,12,0,12,12,0,fwd007_008_010_013_rebuild_surface,CRG-011
+FWD-013,Parallel risk lane,8,3,5,8,0,fwd007_008_010_013_rebuild_surface,CRG-013
+FWD-015,Opening architecture and placement readiness,13,2,11,13,0,fwd015_016_017_018_rebuild_surface,CRG-005
+FWD-016,Live position and inventory architecture,2,2,0,2,0,fwd015_016_017_018_rebuild_surface,CRG-016
+FWD-017,Exit and close architecture,25,20,5,25,0,fwd015_016_017_018_rebuild_surface,CRG-004
+FWD-018,Review and explanation layer,30,21,9,30,0,fwd015_016_017_018_rebuild_surface,CRG-002; CRG-010

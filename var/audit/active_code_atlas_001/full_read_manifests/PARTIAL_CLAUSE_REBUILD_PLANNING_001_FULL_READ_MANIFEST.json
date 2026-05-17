@@ -1,0 +1,271 @@
+{
+  "manifest_id": "PARTIAL_CLAUSE_REBUILD_PLANNING_001_FULL_READ_MANIFEST",
+  "created_date": "2026-05-17",
+  "branch": "worker/partial-clause-rebuild-planning-001",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 8827,
+      "line_count": 184,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 99334,
+      "line_count": 707,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 326791,
+      "line_count": 2180,
+      "sha256": "edf57ac6605daf54096af28a7538b49cbe09cc357bafb5b5c455b3c6458d12f8",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/AGENTS.override.md",
+      "byte_count": 2674,
+      "line_count": 61,
+      "sha256": "30594d481f6c1d0d86eb8d45f2959e21ff93dd8955160a63f5933094c208aa82",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/README.md",
+      "byte_count": 615,
+      "line_count": 12,
+      "sha256": "5b563781fc8275e8e06d5ab581152c897b8cd81ae4a17f78cb48110ab2d10751",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PARTIAL_CLAUSE_REBUILD_PLANNING_001_RECEIPT.md",
+      "byte_count": 1702,
+      "line_count": 35,
+      "sha256": "8178dbbb17823a55be996a5e0e7569b5ffde302dcb03f1873328d68ee0a13739",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/SUMMARY.json",
+      "byte_count": 481,
+      "line_count": 15,
+      "sha256": "9a4153a2774c325551d16c26b9e1e01adc148188612897ed95a805f499455b19",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_1_PARTIAL_CLAUSE_ALLOCATION_120.csv",
+      "byte_count": 189029,
+      "line_count": 121,
+      "sha256": "205b9bc03f36ba8d16d303f845657012f2c6ec2fcf7e9fb842de48983a6c7839",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_1_PARTIAL_CLAUSE_ALLOCATION_120.json",
+      "byte_count": 270501,
+      "line_count": 2762,
+      "sha256": "f3d2999c7d4926cd3f6217c1bc06e1178a3f59c6817ae3c98657606d4f81e925",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_1_PARTIAL_CLAUSE_ALLOCATION_120.md",
+      "byte_count": 1131,
+      "line_count": 29,
+      "sha256": "d7233286bf6065bddc8397208a9c9b1638fc36bd41b7ab0c2fd6aca53fbff6c0",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_2_CONSOLIDATED_REBUILD_SERVICE_MAP_310.csv",
+      "byte_count": 334025,
+      "line_count": 311,
+      "sha256": "1dca0a08767057e5ac1924b5eb11e53fe67bdd35383512d8a1abe48a35d4863d",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_2_CONSOLIDATED_REBUILD_SERVICE_MAP_310.json",
+      "byte_count": 523467,
+      "line_count": 7132,
+      "sha256": "4b2999c9f6c53eb8d03446a2af890acdf89d82497ba57dd83044b59eda628069",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_2_SERVICE_REBUILD_MAP.md",
+      "byte_count": 4075,
+      "line_count": 52,
+      "sha256": "f5a5593a3e156c825dd9229abed5622675849e0f59a1982ac15818fe7059cd99",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_2_SERVICE_SUMMARY_BY_OWNER.csv",
+      "byte_count": 2899,
+      "line_count": 13,
+      "sha256": "d42ea4428e25588cf35075bf080123d82ea4e17d006dbb2b44b317068b74a2e8",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_2_CANONICAL_GROUP_SERVICE_DEDUP_MAP_17.csv",
+      "byte_count": 3723,
+      "line_count": 18,
+      "sha256": "ba93a00689714389f6d7a2a084e8f5facecb92361e0f186497bf4a194d84c5c5",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_3_GOVERNING_HIERARCHY_READ_MATRIX.csv",
+      "byte_count": 11686,
+      "line_count": 13,
+      "sha256": "8bac0d173601c8464c4ff260f27c3c9b234e0653f7527f427cb4be7490e11047",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_3_GOVERNING_HIERARCHY_READ_MATRIX.md",
+      "byte_count": 4141,
+      "line_count": 26,
+      "sha256": "119cba01ee19308024c2a3f4d876558bc39273a2056e04dd2d3d27461654a7e6",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_4_TEST_FIRST_OBLIGATION_MATRIX_310.csv",
+      "byte_count": 311525,
+      "line_count": 311,
+      "sha256": "eaccb39f287aa0e4bfdec7b340397f60899e2eb4cf213b290c582c73855167ee",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_4_PARTIAL_DELTA_TEST_FIRST_OBLIGATION_MATRIX_120.csv",
+      "byte_count": 133781,
+      "line_count": 121,
+      "sha256": "f773916d27ea95bd177a6ae8ddc27355ab91a7abb0e7d0c6fac0be52b1181a21",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/PHASE_4_TEST_FIRST_OBLIGATION_MATRIX.md",
+      "byte_count": 1797,
+      "line_count": 35,
+      "sha256": "d95a41815e441f2b65fe6304074ba025f47f1bc954b0a762f49906fb86c424fb",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/inputs/NVDA10_missing_behaviour_clause_backlog_310.csv",
+      "byte_count": 486098,
+      "line_count": 311,
+      "sha256": "ca242194ae61c0a05c7ffd037c6b8a408fecec4c5493af63cd2997e823b5f30b",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/inputs/NVDA10_canonical_review_groups_17.csv",
+      "byte_count": 19291,
+      "line_count": 18,
+      "sha256": "a1bb59f8d9d02e937525c1c20c3b815f4254c45b8617e0bd4d7f9cb84062e26e",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    },
+    {
+      "path": "intent_migration/partial_clause_rebuild_programme_001/inputs/NVDA10_unresolved_319_atlas_intent_adjudication.csv",
+      "byte_count": 317806,
+      "line_count": 320,
+      "sha256": "4c784ccd2e11fd043f2ff66bdb8f4eb53ff255a09aeba89152d158ba57de2898",
+      "read_method": "full_sequential_read_for_controls_or_generated_planning_evidence",
+      "full_read": true,
+      "chunk_ranges": [],
+      "reason": "control/input/output evidence for PARTIAL_CLAUSE_REBUILD_PLANNING_001 phases 1-4",
+      "mutation_relevance": "control or planning artefact; no runtime/source/test implementation mutation"
+    }
+  ]
+}

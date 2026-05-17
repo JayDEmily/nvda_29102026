@@ -1,8 +1,8 @@
 {
   "schema_version": "v1",
   "trigger": "vocabulary_governance",
-  "vocabulary_touched": false,
-  "fingerprint": "2d2e53dbbfd69d86b660b45565c4dcef79ab14737d269c5936275573b1d50363",
+  "vocabulary_touched": true,
+  "fingerprint": "86a3d71f59a148c056a69db6ddee8f095bef16e379ccb540b76de163ac48424b",
   "candidates": [],
   "candidate_classifications": []
 }

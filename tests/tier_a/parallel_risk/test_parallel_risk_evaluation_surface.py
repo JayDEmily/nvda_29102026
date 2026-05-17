@@ -66,7 +66,7 @@ def test_parallel_risk_evaluation_surface_emits_lawful_bootstrap_output_packet()
     ]
 
 
-def test_parallel_risk_stage_b_and_stage_c_are_reserved_without_lawful_upstream_packets() -> None:
+def test_parallel_risk_stage_b_reserved_and_stage_c_candidate_semantics_is_audit_only() -> None:
     service = ParallelRiskService()
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=_bundle(),
@@ -79,8 +79,11 @@ def test_parallel_risk_stage_b_and_stage_c_are_reserved_without_lawful_upstream_
     with pytest.raises(NotImplementedError, match="Stage B market translation remains reserved"):
         enrich_market_translation(preparation_packet=bootstrap_packet)
 
-    with pytest.raises(NotImplementedError, match="Stage C candidate semantics remains reserved"):
-        enrich_candidate_semantics(candidate_id="candidate-1", semantic_tags=["swing"])
+    audit = enrich_candidate_semantics(candidate_id="candidate-1", semantic_tags=["swing"])
+    assert audit.candidate_id == "candidate-1"
+    assert audit.audit_state == "candidate_present"
+    assert audit.decision_authority == "parallel_risk_candidate_audit_only"
+    assert audit.capital_sizing_allowed is False
 
 
 def test_parallel_risk_output_records_lawful_input_trace() -> None:

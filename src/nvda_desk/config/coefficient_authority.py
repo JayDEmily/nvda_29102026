@@ -16,6 +16,10 @@ from nvda_desk.contracts.coefficient_authority import (
     coefficient_authority_document_from_dict,
 )
 from nvda_desk.contracts.modifiers import (
+    CoefficientAuditPacket,
+    CoefficientCalibrationOverride,
+    CoefficientCalibrationSet,
+    CoefficientReplayFixturePack,
     ModifierReplayReceipt,
     ModifierRuntimePacket,
     ResolvedCoefficientValue,
@@ -52,6 +56,72 @@ class CoefficientAuthorityService:
             coefficient_id: record.baseline_value
             for coefficient_id, record in self.record_map(owner_stage=owner_stage).items()
         }
+
+    def calibrate_from_overrides(
+        self,
+        *,
+        owner_stage: str = "posture",
+        module_weight_overrides: Iterable[CoefficientCalibrationOverride] = (),
+        sub_coefficient_overrides: Iterable[CoefficientCalibrationOverride] = (),
+        calibration_id: str = "bounded_calibration",
+    ) -> CoefficientCalibrationSet:
+        """Return a bounded calibration proposal without live coefficient mutation."""
+
+        record_ids = set(self.record_map(owner_stage=owner_stage))
+        module_overrides = list(module_weight_overrides)
+        sub_overrides = list(sub_coefficient_overrides)
+        unknown_ids = sorted(
+            {override.target_id for override in [*module_overrides, *sub_overrides]} - record_ids
+        )
+        if unknown_ids:
+            raise ValueError(
+                f"unknown calibration override targets for owner_stage={owner_stage}: {unknown_ids}"
+            )
+        return CoefficientCalibrationSet(
+            calibration_id=calibration_id,
+            owner_stage=owner_stage,
+            module_weight_overrides=module_overrides,
+            sub_coefficient_overrides=sub_overrides,
+        )
+
+    def build_audit_packet(
+        self,
+        *,
+        active_modifier_ids: Iterable[str] = (),
+        owner_stage: str = "posture",
+        calibration: CoefficientCalibrationSet | None = None,
+        packet_id: str = "coefficient_audit_packet",
+    ) -> CoefficientAuditPacket:
+        """Return replay-linked coefficient audit context without live mutation authority."""
+
+        if calibration is not None and calibration.owner_stage != owner_stage:
+            raise ValueError("coefficient calibration owner_stage mismatch")
+        return CoefficientAuditPacket(
+            packet_id=packet_id,
+            replay_receipt=self.build_replay_receipt(
+                active_modifier_ids=active_modifier_ids, owner_stage=owner_stage
+            ),
+            calibration=calibration,
+        )
+
+    def build_replay_fixture_pack(
+        self,
+        *,
+        active_modifier_ids: Iterable[str] = (),
+        owner_stage: str = "posture",
+        pack_id: str = "coefficient_replay_fixture_pack",
+    ) -> CoefficientReplayFixturePack:
+        """Return a deterministic replay fixture pack for coefficient proof surfaces."""
+
+        receipt = self.build_replay_receipt(
+            active_modifier_ids=active_modifier_ids, owner_stage=owner_stage
+        )
+        return CoefficientReplayFixturePack(
+            pack_id=pack_id,
+            owner_stage=owner_stage,
+            replay_receipt=receipt,
+            fixture_lineage=[self.authority_path.stem, receipt.replay_fingerprint],
+        )
 
     def build_replay_receipt(
         self, *, active_modifier_ids: Iterable[str] = (), owner_stage: str = "posture"

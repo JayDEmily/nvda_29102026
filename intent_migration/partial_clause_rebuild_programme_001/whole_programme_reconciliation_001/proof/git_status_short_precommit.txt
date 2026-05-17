@@ -1,0 +1,6 @@
+ M ROADMAP_LEDGER.md
+ M scripts/vocabulary_candidate_review.py
+ M src/nvda_desk/schemas/vocabulary.py
+ M tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py
+ M var/vocabulary/synonym_candidates.json
+?? intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/

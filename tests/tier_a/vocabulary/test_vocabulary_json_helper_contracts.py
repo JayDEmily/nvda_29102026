@@ -38,7 +38,7 @@ def test_from_json_text_loads_mapping_and_delegates_to_document_validation() -> 
     )
 
 
-@pytest.mark.parametrize("payload", ['[]', '"not an object"', '7'])
+@pytest.mark.parametrize("payload", ["[]", '"not an object"', "7"])
 def test_from_json_text_rejects_non_object_json(payload: str) -> None:
     with pytest.raises(ValueError, match="decode to an object"):
         VocabularyDocument.from_json_text(payload)
@@ -52,15 +52,21 @@ def test_from_json_text_rejects_invalid_document_shape() -> None:
         VocabularyDocument.from_json_text(json.dumps(payload))
 
 
+def test_from_json_text_rejects_unknown_top_level_fields() -> None:
+    payload = _payload()
+    payload["shadow_field"] = "must not be silently accepted"
+
+    with pytest.raises(ValueError, match="unknown top-level vocabulary document field"):
+        VocabularyDocument.from_json_text(json.dumps(payload))
+
+
 def test_from_json_path_reads_utf8_and_delegates_to_from_json_text(tmp_path: Path) -> None:
     path = tmp_path / "vocabulary.json"
     path.write_text(json.dumps(_payload()), encoding="utf-8")
 
     document = VocabularyDocument.from_json_path(path)
 
-    assert document.entry_index["json_helper_contract"].canonical_label == (
-        "JSON Helper Contract"
-    )
+    assert document.entry_index["json_helper_contract"].canonical_label == ("JSON Helper Contract")
 
 
 def test_to_json_text_emits_round_trippable_validated_json() -> None:

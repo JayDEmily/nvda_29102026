@@ -160,9 +160,9 @@ class VocabularyCandidateAdmissionPlan:
     def to_dict(self) -> dict[str, Any]:
         payload: dict[str, Any] = {
             "classification": self.classification.to_dict(),
-            "proposed_entry": self.proposed_entry.to_dict()
-            if self.proposed_entry is not None
-            else None,
+            "proposed_entry": (
+                self.proposed_entry.to_dict() if self.proposed_entry is not None else None
+            ),
             "alias_candidates": list(self.alias_candidates),
             "quarantine_reason": self.quarantine_reason,
         }
@@ -387,7 +387,9 @@ class VocabularyDocument:
                         f"disallowed phrase collides with alias of {alias_owner[phrase_token]!r}: {phrase!r}"
                     )
 
-    def classify_candidate(self, candidate: VocabularyCandidate) -> VocabularyCandidateClassification:
+    def classify_candidate(
+        self, candidate: VocabularyCandidate
+    ) -> VocabularyCandidateClassification:
         self.validate()
         candidate_tokens = candidate.tokens()
 
@@ -491,8 +493,7 @@ class VocabularyDocument:
                 category=candidate.category,
                 stage_owner=candidate.stage_owner or "",
                 maps_to_contract=candidate.maps_to_contract or "",
-                raw_or_derived=candidate.raw_or_derived
-                or RawDerivedTag.NOT_APPLICABLE,
+                raw_or_derived=candidate.raw_or_derived or RawDerivedTag.NOT_APPLICABLE,
                 allowed_aliases=list(candidate.aliases),
             )
             proposed_entry.validate()
@@ -528,9 +529,7 @@ class VocabularyDocument:
     ) -> list[VocabularyCandidateAdmissionPlan]:
         return [self.plan_candidate_admission(candidate) for candidate in candidates]
 
-    def candidate_admission_summary(
-        self, candidates: list[VocabularyCandidate]
-    ) -> dict[str, int]:
+    def candidate_admission_summary(self, candidates: list[VocabularyCandidate]) -> dict[str, int]:
         summary = {action.value: 0 for action in VocabularyCandidateAction}
         for plan in self.plan_candidate_admissions(candidates):
             summary[plan.classification.action.value] += 1
@@ -704,6 +703,12 @@ class VocabularyDocument:
 
 
 def vocabulary_document_from_dict(payload: Mapping[str, Any]) -> VocabularyDocument:
+    allowed_fields = {"schema_version", "registry_version", "notes", "entries"}
+    unknown_fields = sorted(set(payload) - allowed_fields)
+    if unknown_fields:
+        joined = ", ".join(unknown_fields)
+        raise ValueError(f"unknown top-level vocabulary document field(s): {joined}")
+
     entry_payloads = payload.get("entries", [])
     if not isinstance(entry_payloads, list):
         raise ValueError("entries must be a list")

@@ -1,0 +1,61 @@
+{
+  "scope": "FWD-002/FWD-003/FWD-005 partial-clause rebuild pass",
+  "clause_rows": 152,
+  "counts_by_forward_id": {
+    "FWD-003": 54,
+    "FWD-002": 68,
+    "FWD-005": 30
+  },
+  "counts_by_review_group": [
+    {
+      "assigned_forward_id": "FWD-002",
+      "canonical_group_id": "CRG-002",
+      "canonical_review_group": "SLV replay, walk-forward, fragility, horizon, and experiment harness",
+      "count": 41
+    },
+    {
+      "assigned_forward_id": "FWD-002",
+      "canonical_group_id": "CRG-003",
+      "canonical_review_group": "Research notes, promotion decisions, and evaluation sidecar APIs",
+      "count": 11
+    },
+    {
+      "assigned_forward_id": "FWD-002",
+      "canonical_group_id": "CRG-009",
+      "canonical_review_group": "Legacy fixture corpus loaders and row parsers",
+      "count": 16
+    },
+    {
+      "assigned_forward_id": "FWD-003",
+      "canonical_group_id": "CRG-007",
+      "canonical_review_group": "Canonical import registry schema, service, reports, and backlog views",
+      "count": 34
+    },
+    {
+      "assigned_forward_id": "FWD-003",
+      "canonical_group_id": "CRG-008",
+      "canonical_review_group": "Durable SQL/ORM persistence, DB factory, and seed data",
+      "count": 20
+    },
+    {
+      "assigned_forward_id": "FWD-005",
+      "canonical_group_id": "CRG-014",
+      "canonical_review_group": "API exposure for live internal mechanisms",
+      "count": 26
+    },
+    {
+      "assigned_forward_id": "FWD-005",
+      "canonical_group_id": "CRG-015",
+      "canonical_review_group": "Authority/veto and block-event API surfaces",
+      "count": 4
+    }
+  ],
+  "proof_blocks": {
+    "FWD-002": "fwd002_testing_proof_replay_sidecar_surface",
+    "FWD-003": "fwd003_import_registry_durable_persistence_surface",
+    "FWD-005": "fwd005_api_internal_exposure_surface"
+  },
+  "implementation_state": "native_delta_implemented_tests_first",
+  "retained_test_registry_mutated": false,
+  "retained_test_registry_note": "New tests were registered in config/proof_blocks.yaml; retained_test_registry.yaml was not changed in this pass."
+}

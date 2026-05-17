@@ -1,0 +1,60 @@
+{
+  "closeout_rows_not_in_phase2": [],
+  "closeout_rows_with_fwd001_manual": 310,
+  "closeout_sources": [
+    [
+      "intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_CLAUSE_CLOSEOUT_152.csv",
+      152
+    ],
+    [
+      "intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_CLAUSE_CLOSEOUT_87.csv",
+      87
+    ],
+    [
+      "intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/FWD_015_016_017_018_CLAUSE_CLOSEOUT_70.csv",
+      70
+    ],
+    [
+      "intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_IMPLEMENTATION_RECEIPT.md",
+      1
+    ]
+  ],
+  "closeout_unique_clause_ids": 310,
+  "duplicate_closeout_clause_ids": [],
+  "forward_id_counts": {
+    "FWD-001": 1,
+    "FWD-002": 68,
+    "FWD-003": 54,
+    "FWD-005": 30,
+    "FWD-007": 56,
+    "FWD-008": 11,
+    "FWD-010": 12,
+    "FWD-013": 8,
+    "FWD-015": 13,
+    "FWD-016": 2,
+    "FWD-017": 25,
+    "FWD-018": 30
+  },
+  "needs_followup_count": 0,
+  "phase2_rows": 310,
+  "phase2_unique_clause_ids": 310,
+  "phase_rows_missing_closeout": [],
+  "proof_block_counts": {
+    "fwd002_testing_proof_replay_sidecar_surface": 68,
+    "fwd003_import_registry_durable_persistence_surface": 54,
+    "fwd005_api_internal_exposure_surface": 30,
+    "fwd007_008_010_013_rebuild_surface": 87,
+    "fwd015_016_017_018_rebuild_surface": 70,
+    "vocabulary_governance_conformance_candidate": 1
+  },
+  "proof_block_manifest_count": 51,
+  "reconciled_clause_rows": 310,
+  "reconciliation_states": {
+    "closed_by_receipt_and_rechecked": 310
+  },
+  "referenced_missing_file_count": 0,
+  "source_bucket_counts": {
+    "confirmed_not_survived": 190,
+    "partial_survival_owner_decision": 120
+  }
+}

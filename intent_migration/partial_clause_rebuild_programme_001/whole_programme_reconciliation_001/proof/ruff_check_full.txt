@@ -1,0 +1,224 @@
+E402 Module level import not at top of file
+  --> scripts/vocabulary_candidate_review.py:15:1
+   |
+13 |     sys.path.insert(0, str(_REPO_SRC))
+14 |
+15 | from nvda_desk.schemas.vocabulary import VocabularyDocument
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+16 |
+17 | DEFAULT_VOCABULARY_PATH = Path("data/vocabulary/canonical_vocabulary.json")
+   |
+
+E402 Module level import not at top of file
+  --> scripts/vocabulary_synonym_audit.py:10:1
+   |
+ 8 |       sys.path.insert(0, str(_REPO_SRC))
+ 9 |
+10 | / from nvda_desk.vocabulary_synonym_audit import (
+11 | |     build_report as build_report,
+12 | | )
+   | |_^
+13 |   from nvda_desk.vocabulary_synonym_audit import (
+14 |       main as main,
+   |
+
+E402 Module level import not at top of file
+  --> scripts/vocabulary_synonym_audit.py:13:1
+   |
+11 |       build_report as build_report,
+12 |   )
+13 | / from nvda_desk.vocabulary_synonym_audit import (
+14 | |     main as main,
+15 | | )
+   | |_^
+16 |   from nvda_desk.vocabulary_synonym_audit import (
+17 |       write_report as write_report,
+   |
+
+E402 Module level import not at top of file
+  --> scripts/vocabulary_synonym_audit.py:16:1
+   |
+14 |       main as main,
+15 |   )
+16 | / from nvda_desk.vocabulary_synonym_audit import (
+17 | |     write_report as write_report,
+18 | | )
+   | |_^
+19 |   from nvda_desk.vocabulary_synonym_audit import (
+20 |       write_stamp as write_stamp,
+   |
+
+E402 Module level import not at top of file
+  --> scripts/vocabulary_synonym_audit.py:19:1
+   |
+17 |       write_report as write_report,
+18 |   )
+19 | / from nvda_desk.vocabulary_synonym_audit import (
+20 | |     write_stamp as write_stamp,
+21 | | )
+   | |_^
+22 |
+23 |   __all__ = ["build_report", "main", "write_report", "write_stamp"]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/contracts/__init__.py:3:1
+   |
+ 1 |   """Contract package for bounded native runtime schemas."""
+ 2 |
+ 3 | / from . import (
+ 4 | |     capital,
+ 5 | |     coefficient_authority,
+ 6 | |     common,
+ 7 | |     downstream,
+ 8 | |     eligibility,
+ 9 | |     execution,
+10 | |     modifiers,
+11 | |     options_flow,
+12 | |     options_flow_history,
+13 | |     packets,
+14 | |     playbook,
+15 | |     parallel_risk,
+16 | |     posture,
+17 | |     reference_data,
+18 | |     regime,
+19 | |     replay,
+20 | |     review,
+21 | |     risk,
+22 | |     stage_inputs,
+23 | |     temporal,
+24 | |     trace_review,
+25 | | )
+   | |_^
+26 |
+27 |   __all__ = [
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> src/nvda_desk/runtime/orchestrator.py:3:1
+   |
+ 1 |   """Run one bounded deterministic serial-runtime pass over admitted stage inputs."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import hashlib
+ 6 | | import json
+ 7 | | from collections.abc import Mapping
+ 8 | | from datetime import UTC, datetime
+ 9 | | from typing import Any
+10 | |
+11 | | from pydantic import ValidationError
+12 | |
+13 | | from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
+14 | |
+15 | | from nvda_desk.contracts.execution import ExecutionExpressionInput, StageLocalHandoffSurface
+16 | | from nvda_desk.contracts.serial_spine import (
+17 | |     SERIAL_SPINE_STAGE_ORDER,
+18 | |     SERIAL_STAGE_DEPENDENCIES,
+19 | |     SERIAL_STAGE_LINEAGE_TAGS,
+20 | |     copy_serial_spine_contract,
+21 | |     validate_serial_stage_dependencies,
+22 | | )
+23 | | from nvda_desk.contracts.stage_inputs import StageInputBundle
+24 | | from nvda_desk.domain.execution.candidate_expression import evaluate_execution_expression
+25 | | from nvda_desk.packets.dmp_packets import build_stage_packet
+26 | | from nvda_desk.services.options_flow_context_service import OptionsFlowContextService
+27 | | from nvda_desk.services.playbook_eligibility_service import PlaybookEligibilityService
+28 | | from nvda_desk.services.posture_service import PostureService
+29 | | from nvda_desk.services.regime_context_service import RegimeContextService
+30 | | from nvda_desk.services.temporal_context_service import TemporalContextService
+   | |______________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import ast
+ 4 | | import importlib
+ 5 | | from pathlib import Path
+ 6 | |
+ 7 | | import pytest
+ 8 | |
+ 9 | | from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+10 | | from nvda_desk.services.downstream_live_inventory_service import (
+11 | |     DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
+12 | | )
+13 | | from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+14 | | from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+15 | | from nvda_desk.repositories.position_repository import PositionRepository
+   | |_________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py:3:1
+  |
+1 |   """Tier A transform-boundary tests for dynamic coefficient/modifier authority."""
+2 |
+3 | / from __future__ import annotations
+4 | |
+5 | | import ast
+6 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py:3:1
+   |
+ 1 |   """Tier A tests for modifier contract authority and copy boundaries."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | import pytest
+ 6 | | from pydantic import ValidationError
+ 7 | |
+ 8 | | from nvda_desk.contracts.modifiers import (
+ 9 | |     ModifierReplayReceipt,
+10 | |     ModifierRuntimePacket,
+11 | |     ResolvedCoefficientValue,
+12 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import importlib
+ 4 | |
+ 5 | | import pytest
+ 6 | | from datetime import UTC, datetime
+ 7 | |
+ 8 | | from pydantic import ValidationError
+ 9 | |
+10 | | from nvda_desk.contracts.options_flow import OptionsFlowContextInput
+11 | | from nvda_desk.contracts.regime import MarketRegimeContextInput
+12 | | from nvda_desk.contracts.stage_inputs import StageInputBundle
+13 | | from nvda_desk.contracts.temporal import TemporalContextInput
+   | |_____________________________________________________________^
+14 |
+15 |   _contracts = importlib.import_module("nvda_desk.contracts." + "parallel" + "_risk")
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> tests/tier_a/runtime/test_runtime_orchestrator_surface.py:242:5
+    |
+241 |   def test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs() -> None:
+242 | /     from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+243 | |     from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
+    | |______________________________________________________________________________^
+244 |
+245 |       runtime = _require_module("nvda_desk.runtime.orchestrator")
+    |
+help: Organize imports
+
+Found 12 errors.
+[*] 7 fixable with the `--fix` option.

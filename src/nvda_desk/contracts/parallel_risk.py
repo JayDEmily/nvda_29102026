@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
@@ -126,14 +126,45 @@ class ParallelRiskInputTrace(BaseModel):
         return self
 
 
+ParallelRiskConsequencePosture = Literal["observe", "caution", "block"]
+
+
+class ParallelRiskFragilityDimension(BaseModel):
+    """One descriptive candidate fragility dimension without sizing authority."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    dimension_id: str = Field(min_length=1)
+    score: float = Field(ge=0.0, le=1.0)
+    reason: str = Field(min_length=1)
+
+
 class ParallelRiskCandidateAuditSurface(BaseModel):
-    """Bounded candidate-audit surface reserved for later lawful enrichments."""
+    """Bounded candidate-audit surface with descriptive semantics only."""
 
     model_config = ConfigDict(extra="forbid")
 
     candidate_id: str | None = None
     semantic_tags: list[str] = Field(default_factory=list)
     audit_state: str = "no_candidate"
+    consequence_posture: ParallelRiskConsequencePosture = "observe"
+    fragility_dimensions: list[ParallelRiskFragilityDimension] = Field(default_factory=list)
+    descriptive_semantics: list[str] = Field(default_factory=list)
+    risk_event_ids: list[str] = Field(default_factory=list)
+    decision_authority: str = "parallel_risk_candidate_audit_only"
+    capital_sizing_allowed: bool = False
+
+
+class ParallelRiskPolicyDecision(BaseModel):
+    """Risk-gateway observation record for one candidate-policy evaluation."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    decision_id: str = Field(min_length=1)
+    policy_id: str = Field(min_length=1)
+    candidate: ParallelRiskCandidateAuditSurface
+    decision_authority: str = "risk_gateway_observation_only"
+    capital_sizing_allowed: bool = False
 
 
 class ParallelRiskPreparationPacket(BaseModel):

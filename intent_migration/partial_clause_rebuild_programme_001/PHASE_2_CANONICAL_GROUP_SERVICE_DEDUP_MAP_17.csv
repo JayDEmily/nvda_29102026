@@ -1,0 +1,18 @@
+canonical_group_id,canonical_review_group,total_clauses,partial_delta_clauses,confirmed_deleted_clauses,assigned_owner_surfaces,dedupe_rule,implementation_state
+CRG-001,Strategic ladder signal family and SLV market scoring,32,0,32,Raw signal families,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-002,"SLV replay, walk-forward, fragility, horizon, and experiment harness",54,2,52,"Review and explanation layer; Testing, proof, and checkpoint surfaces",one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-003,"Research notes, promotion decisions, and evaluation sidecar APIs",11,5,6,"Testing, proof, and checkpoint surfaces",one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-004,Overnight carry market/replay and exit-continuation machinery,25,5,20,Exit and close architecture,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-005,"Broker execution lifecycle, account state, and typed order domain",13,11,2,Opening architecture and placement readiness,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-006,Runtime financial/event calendar authority and proximity queries,11,11,0,Financial and event calendar architecture,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-007,"Canonical import registry schema, service, reports, and backlog views",34,0,34,"Persistence, ledgers, and receipts",one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-008,"Durable SQL/ORM persistence, DB factory, and seed data",20,3,17,"Persistence, ledgers, and receipts",one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-009,Legacy fixture corpus loaders and row parsers,16,7,9,"Testing, proof, and checkpoint surfaces",one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-010,"Review packet daily health, module health, rendering, and reporting",17,7,10,Review and explanation layer,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-011,"Dynamic coefficient calibration, audit packets, and active replay harness",12,12,0,Dynamic coefficient and modifier authority,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-012,Rich raw market substrate and signal service surfaces,24,24,0,Raw signal families,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-013,"Parallel risk candidate enrichment, consequence/fragility classes, and risk event APIs",8,5,3,Parallel risk lane,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-014,API exposure for live internal mechanisms,26,23,3,External source interfaces and API ingress,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-015,Authority/veto and block-event API surfaces,4,4,0,External source interfaces and API ingress,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-016,Daily PnL reporting surface,2,0,2,Live position and inventory architecture,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started
+CRG-017,Vocabulary document strict-extra-field enforcement,1,1,0,Vocabulary governance interface,one native capability family per canonical group/owner; do not rebuild per Atlas row,not_started

@@ -89,12 +89,12 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 
 | Field | Value |
 |---|---|
-| Current phase | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED`; previous pointer `ACTIVE_POST_INVENTORY_RUNTIME_READINESS_BUNDLE_BOUNDED_SEARCH_075_RECORDED` remains closed only for the post-073 runtime-readiness bundle. The project is not complete. The next authorised programme is the full 18-surface active-code reconciliation and rewrite planning track recorded in section 14. |
-| Selector | Use the forward programme in section 14. Start at `FWD-000_CONTROL_SURFACE_FREEZE_CONFIRMATION`, then proceed through `FWD-001` to `FWD-018` in the stated order. A worker pass continues through as many ordered rows as lawful evidence allows. |
-| Current target tranche | `ACTIVE_FULL_18_SURFACE_RECONCILIATION_PROGRAMME_2026_05_14_OPENED` |
-| Current target architecture row | `FWD-001` through `FWD-018` have closure-grade or accepted bounded closure-remediation evidence recorded in their row sections. `PROGRAMME_CLOSEOUT_RECONCILIATION` is recorded as `bounded_reconciled_current`; no automatic next FWD feature row remains, and no live trading/production/deployment authority is opened by closeout. |
-| Current target source/test authority | Control-surface planning only until `FWD-000` is closed. Source and test mutation opens only inside a specific surface row when the row's internal test-first gate explicitly permits it. |
-| Current proof expectation | For control-surface planning: `git status --short`, `git diff --check`, manifest validation if a manifest is created, and file/hash evidence for changed control files. For implementation rows: targeted surface tests first, then the proof block and retained-test validation named by the row. |
+| Current phase | `PARTIAL_CLAUSE_REBUILD_WHOLE_PROGRAMME_RECONCILED`; supersedes the FWD-015/016/017/018 pointer for the user-authorised whole-programme reconciliation recorded in section 21. |
+| Selector | All 12 partial-clause rebuild FWD owner-service leaves are implementation-closed and reconciled against the 310-clause backlog. |
+| Current target tranche | `PARTIAL_CLAUSE_REBUILD_WHOLE_PROGRAMME_RECONCILIATION_001` |
+| Current target architecture row | Rows `5.18`, `5.17`, `5.16`, `5.1`, `5.3`, `5.4`, `5.9`, `5.8`, `5.12`, `5.13`, `5.14`, and `5.15` have reconciled missing-delta rebuild obligations for this programme. |
+| Current target source/test authority | Reconciliation artefacts only under `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/`, plus bounded style repair for changed vocabulary helper files and regenerated vocabulary synonym candidates after the style repair changed the governed-source fingerprint. |
+| Current proof expectation | Reconciliation proof recorded: 310/310 clause rows closed by receipt/proof ownership; 0 orphan phase rows; 0 extra closeout rows; 0 duplicate closeout IDs; 0 missing referenced files; Tier A full proof 600 passed; Tier B full proof 49 passed; proof-block check-all PASS count 51; vocabulary synonym audit PASS candidates 0; candidate review PASS blocked 0; changed-Python Black/Ruff clean; `git diff --check` clean. |
 | Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
 
 FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-007 ordered replay only; that replay is now recorded as `bounded_closed_current`. A later assigned worker brief accepted and merged the FWD-007 lineage, then replayed FWD-008 and FWD-009 in order; both are recorded as `bounded_closed_current`. A later direct user instruction opened FWD-010 only; FWD-010 is recorded as `bounded_closed_current`. Later user continuation instructions opened FWD-011, FWD-012, and FWD-013 in order; each is recorded as `bounded_closed_current`. A later PM/user rectification instruction corrected FWD-010/FWD-011 row-state header hygiene and opened FWD-014 only; FWD-014 is recorded as `bounded_closed_current`. A later user continuation instruction opened FWD-015 only; FWD-015 is recorded as `bounded_closed_current`, with FWD-016 next but unopened by the FWD-015 authority. A later bounded remediation tranche before FWD-016 resolved cross-cutting vocabulary source-hash coverage, durable row/architecture term adjudication, and architecture-map freshness without opening FWD-016 or any feature row. A later bounded evidence-hardening pass before FWD-016 added candidate-level adjudication and disallowed-phrase audit evidence for that remediation without opening FWD-016 or any feature row. A later direct user instruction opened FWD-016 only; FWD-016 is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-017 only; FWD-017 is recorded as `bounded_closed_current`, with batched proof hardening added. A later direct user instruction opened FWD-018 only; FWD-018 is recorded as `bounded_closed_current`; programme closeout reconciliation is next and whole-programme completion is not claimed. A later direct user instruction opened the next gate, `PROGRAMME_CLOSEOUT_RECONCILIATION`; the closeout reconciliation is recorded as `bounded_reconciled_current` with full-read manifest, row matrix, receipt, proof summary, architecture-map refresh, proof-block check-all, vocabulary clean check, and batched Tier A/Tier B proof. No automatic FWD feature row remains and no production/live-trading authority is opened.
@@ -2122,3 +2122,448 @@ Programme closeout reconciliation recorded 2026-05-15:
 - no automatic next FWD feature row remains. Future work requires explicit PM/user authority selecting a defect, hardening, production-readiness, generated-slice, Atlas/Bridge, deployment, or other new tranche.
 
 This closeout is bounded evidence reconciliation only. It does not open live trading, broker execution, production deployment, external credentials, original Atlas/Bridge mutation, or generated-slice rebuild authority.
+
+---
+
+## 15. Partial-clause rebuild planning programme — PARTIAL_CLAUSE_REBUILD_PLANNING_001
+
+Status: `phases_1_to_4_completed_planning_only`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/partial-clause-rebuild-planning-001`
+
+User authority: current user instruction opened planning for the 120 partial-survival owner-decision rows and required phases 1-4 before pausing. The user also stated that all missing ideas are required, while donor-era code bulk must not be transplanted blindly.
+
+### 15.1 Scope and boundary
+
+In scope:
+
+- allocate the 120 partial-survival missing deltas to owner services;
+- combine those partial deltas with the 190 confirmed-not-survived rows into one service-owned rebuild map;
+- write the governing hierarchy read matrix for future service leaves;
+- write the test-first obligation matrix for future implementation;
+- create a dedicated planning folder under `intent_migration/`;
+- update this ledger.
+
+Out of scope for this pass:
+
+- runtime/source/test/config/fixture implementation;
+- original Atlas/Bridge JSON mutation;
+- generated Atlas slice rebuild;
+- dependency, VENV, broker, live trading, deployment, or production-readiness mutation.
+
+### 15.2 Phase evidence
+
+| Phase | Evidence | Result |
+|---|---|---|
+| Phase 1 — partial allocation | `intent_migration/partial_clause_rebuild_programme_001/PHASE_1_PARTIAL_CLAUSE_ALLOCATION_120.csv` | 120/120 partial missing deltas allocated to owner services with survived-clause duplication guards. |
+| Phase 2 — service rebuild map | `intent_migration/partial_clause_rebuild_programme_001/PHASE_2_CONSOLIDATED_REBUILD_SERVICE_MAP_310.csv`; `PHASE_2_SERVICE_SUMMARY_BY_OWNER.csv`; `PHASE_2_CANONICAL_GROUP_SERVICE_DEDUP_MAP_17.csv` | 310 missing-behaviour clauses mapped across 17 canonical review groups and 12 owner surfaces. |
+| Phase 3 — governing hierarchy matrix | `intent_migration/partial_clause_rebuild_programme_001/PHASE_3_GOVERNING_HIERARCHY_READ_MATRIX.csv` | Service-by-service read obligations written for future implementation leaves; no implementation-read closure claimed. |
+| Phase 4 — test-first matrix | `intent_migration/partial_clause_rebuild_programme_001/PHASE_4_TEST_FIRST_OBLIGATION_MATRIX_310.csv`; `PHASE_4_PARTIAL_DELTA_TEST_FIRST_OBLIGATION_MATRIX_120.csv` | Test-first obligations written; source mutation remains blocked until service-specific tests are defined/written. |
+| Receipt | `intent_migration/partial_clause_rebuild_programme_001/PARTIAL_CLAUSE_REBUILD_PLANNING_001_RECEIPT.md` | Planning-only receipt recorded. |
+
+### 15.3 Counts
+
+| Measure | Count |
+|---|---:|
+| Partial missing-delta rows allocated | 120 |
+| Confirmed not-survived rows carried into consolidated rebuild map | 190 |
+| Consolidated missing-behaviour clauses | 310 |
+| Canonical review groups | 17 |
+| Owner surfaces touched | 12 |
+
+### 15.4 Current rule / next gate
+
+Next gate: select the first owner-service implementation-planning leaf from `PHASE_2_SERVICE_SUMMARY_BY_OWNER.csv`, execute the current full-read gate from `PHASE_3_GOVERNING_HIERARCHY_READ_MATRIX.csv`, then write/amend tests from `PHASE_4_TEST_FIRST_OBLIGATION_MATRIX_310.csv` before any source/config/fixture mutation.
+
+Stop boundary for this pass: the current user explicitly allowed pausing after Phase 4. This stop does not mark any missing behaviour implemented.
+
+---
+
+## 16. Partial-clause rebuild interstitial temporary override plan — PARTIAL_CLAUSE_REBUILD_INTERSTITIAL_OVERRIDE_PLAN_001
+
+Status: `recorded_planning_only_no_implementation`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/partial-clause-rebuild-planning-001`
+
+User authority: current user instruction required a temporary override plan separate from frozen repo-root `PLANS.md`, with mandatory intake of AGENTS/PLANS/ledger, normative documents, vocabulary dictionary/admission materials, test-tier law, `tests/AGENTS.override.md`, and test-folder structure before implementation planning continues.
+
+### 16.1 Frozen control-surface rule
+
+Repo-root `AGENTS.md` and repo-root `PLANS.md` remain frozen standing inputs. This interstitial pass did not mutate either file.
+
+Mutable surfaces used:
+
+- `ROADMAP_LEDGER.md`
+- `intent_migration/partial_clause_rebuild_programme_001/TEMPORARY_OVERRIDE_PLANS.md`
+- interstitial read/test/vocabulary receipt files under `intent_migration/partial_clause_rebuild_programme_001/`
+
+### 16.2 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Temporary override plan | `intent_migration/partial_clause_rebuild_programme_001/TEMPORARY_OVERRIDE_PLANS.md` | Records governing rule: all missing ideas are required, donor code shape is not transplanted, vocabulary/admission gate precedes durable terms, tests precede source changes. |
+| Read manifest CSV | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_READ_MANIFEST_GOVERNANCE_TEST_VOCABULARY.csv` | 84 full-file planning-read entries with line counts and SHA-256 digests. |
+| Read manifest MD | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_READ_MANIFEST_GOVERNANCE_TEST_VOCABULARY.md` | Human-readable manifest summary. |
+| Read manifest JSON | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_READ_MANIFEST_GOVERNANCE_TEST_VOCABULARY.json` | Machine-readable manifest summary. |
+| Test tree inventory | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_TEST_TREE_STRUCTURE.txt` | 156 non-`__pycache__` test-tree files inventoried for structure; not all tests were treated as implementation evidence. |
+| Vocabulary/test synthesis | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_VOCABULARY_AND_TEST_GOVERNANCE_SYNTHESIS.md` | Records vocabulary admission interpretation and Tier A/B/C operating interpretation. |
+| Receipt | `intent_migration/partial_clause_rebuild_programme_001/INTERSTITIAL_OVERRIDE_PLAN_001_RECEIPT.md` | Planning-only receipt; no implementation opened. |
+
+### 16.3 Current rule / next gate
+
+Next gate: `INTERSTITIAL_OWNER_SERVICE_LEAF_001`.
+
+Default first owner surface: `FWD-001 — Vocabulary governance interface` because durable naming, test names, fixture names, proof labels, manifests, receipts, schemas, and contract-facing assertions must pass vocabulary/admission discipline before later owner-service implementation leaves persist new terminology.
+
+The next gate must not mutate source/test/config/fixture/vocabulary data until it records a current leaf read manifest, vocabulary/admission check, and test-first design gate.
+
+---
+
+## 17. Partial-clause rebuild owner-service leaf 001 — FWD-001 Vocabulary governance strict document contract
+
+Status: `bounded_closed_current`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/partial-clause-rebuild-implementation-001`
+
+User authority: direct user instruction to implement the temporary override plan with no interim updates. The temporary override plan selected `INTERSTITIAL_OWNER_SERVICE_LEAF_001` / `FWD-001 Vocabulary governance interface` as the default first implementation leaf.
+
+### 17.1 Clause scope
+
+| Field | Value |
+|---|---|
+| Clause | `MBC-0310` |
+| Atlas ID | `atlas_donor_vocabulary_005` |
+| Owner surface | `FWD-001 — Vocabulary governance interface` |
+| Missing delta | Strict top-level vocabulary document extra-field rejection. |
+| Duplication guard | Preserve existing `VocabularyDocument` schema and JSON helper surface; do not rebuild the vocabulary schema or transplant donor code shape. |
+| Final state | `native_delta_required` implemented for the missing delta only. |
+
+### 17.2 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Current leaf read manifest CSV | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_FULL_READ_MANIFEST.csv` | Current FWD-001 file/hash manifest created. |
+| Current leaf read manifest MD | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_FULL_READ_MANIFEST.md` | Human-readable current read manifest. |
+| Vocabulary admission check | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_VOCABULARY_ADMISSION_CHECK.md` | `enrich_existing`; no new canonical term admitted. |
+| Test-first failure receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_TEST_FIRST_FAILURE_RECEIPT.md` | The new strictness test failed before source mutation with `DID NOT RAISE`. |
+| Implementation receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/FWD_001_IMPLEMENTATION_RECEIPT.md` | Records changed files and proof outputs. |
+| Targeted proof | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/proof/targeted_json_helper_pytest_pass.txt` | `9 passed`. |
+| Vocabulary proof block | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/proof/vocabulary_governance_conformance_candidate_pass.txt` | `91 passed`. |
+| Synonym clean check | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/proof/vocabulary_synonym_audit_clean_check_pass.txt` | `PASS candidates=0 vocabulary_touched=False`. |
+| Candidate review clean check | `intent_migration/partial_clause_rebuild_programme_001/fwd_001_vocabulary_governance_strict_document_contract/proof/vocabulary_candidate_review_clean_check_pass.txt` | `PASS blocked_candidates=0`. |
+
+### 17.3 Mutation summary
+
+- `tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py` adds a Tier A JSON-helper contract test requiring unknown top-level vocabulary document fields to be rejected.
+- `src/nvda_desk/schemas/vocabulary.py` now rejects unknown top-level keys in `vocabulary_document_from_dict()`.
+- `scripts/vocabulary_candidate_review.py` adds the same repo-local `src` import bootstrap already used by the synonym-audit wrapper, so the proof-owned CLI works when subprocess tests invoke the script path directly.
+- `data/vocabulary/vocabulary_touch_stamp.json` and `var/vocabulary/synonym_candidates.json` were refreshed by the governed synonym-audit command after the governed source fingerprint changed.
+
+### 17.4 Next gate
+
+Next owner-service leaf remains `FWD-002 — Testing, proof, and checkpoint surfaces`. That leaf is not opened by this FWD-001 receipt. It must begin with its own full current read manifest, vocabulary/admission check, and test-first design gate.
+
+
+---
+
+## 18. Partial-clause rebuild owner-service leaves 002/003/005 — FWD-002 Testing proof, FWD-003 persistence, FWD-005 API ingress
+
+Status: `bounded_closed_current`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/fwd-002-003-005-implementation`
+
+User authority: direct user instruction to implement the next pass for `FWD-002`, `FWD-003`, and `FWD-005` with no interim updates.
+
+### 18.1 Clause scope
+
+| Forward leaf | Owner surface | Clause rows | Final state |
+|---|---|---:|---|
+| `FWD-002` | Testing, proof, and checkpoint surfaces | 68 | Native missing-delta rebuild implemented behind Tier A replay/fixture/sidecar contracts. |
+| `FWD-003` | Persistence, ledgers, and receipts | 54 | Native missing-delta rebuild implemented behind Tier A import-registry and durable SQLite contracts. |
+| `FWD-005` | External source interfaces and API ingress | 30 | Native missing-delta rebuild implemented behind Tier A bounded API exposure contracts. |
+| **Total** |  | **152** |  |
+
+### 18.2 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Clause closeout | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_CLAUSE_CLOSEOUT_152.csv` | 152/152 selected FWD-002/FWD-003/FWD-005 clauses mapped to native implementation/proof obligations. |
+| Test-first failure receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_TEST_FIRST_FAILURE_RECEIPT.md` | Records pre-source-mutation collection failures for missing native seams/symbols. |
+| Proof summary | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_PROOF_SUMMARY.md` | Records targeted and adjacent proof outputs. |
+| Implementation receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_IMPLEMENTATION_RECEIPT.md` | Records scope, changed surfaces, limitation, and next gate. |
+| Read/touch manifest | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/FWD_002_003_005_READ_AND_TOUCH_MANIFEST.csv` | Current pass file/hash/line-count manifest. |
+| Proof outputs | `intent_migration/partial_clause_rebuild_programme_001/fwd_002_003_005_rebuild_pass/proof/` | Captured proof-command output files for targeted/adjoining proof blocks and vocabulary checks. |
+
+### 18.3 Mutation summary
+
+- FWD-002 adds native replay/walk-forward/fragility/horizon/experiment harness contracts, sidecar services for research/promotion/evaluation records, strict legacy fixture loaders, and bounded cognition runtime fixtures.
+- FWD-003 adds canonical import-registry schemas/service/reporting/backlog seams and a durable SQLite-native persistence seam with deterministic development seed data.
+- FWD-005 expands the bounded internal API surface and dependency providers for runtime settings, coefficient/variant exposure, temporal/session/market views, session/event repositories, module specs, strategic-ladder replay/evaluation, and veto/risk-block event records.
+- `config/proof_blocks.yaml` admits three new Tier A proof blocks. `config/retained_test_registry.yaml` is intentionally unchanged in final state for this pass; broad retained-registry mutation was not carried forward because vocabulary clean checks must remain authoritative.
+
+### 18.4 Proof recorded
+
+| Proof | Result |
+|---|---|
+| `fwd002_testing_proof_replay_sidecar_surface` | `8 passed` |
+| `fwd003_import_registry_durable_persistence_surface` | `5 passed` |
+| `fwd005_api_internal_exposure_surface` | `7 passed` |
+| `persistence_ledgers_receipts_surface` | `41 passed` |
+| `roadmap_external_source_api_ingress_authority_surface` | `19 passed` |
+| `tier_a_remaining_coverage_inventory` | `56 passed` |
+| `scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=49` |
+| `scripts/vocabulary_synonym_audit.py --check-clean` | `PASS candidates=0 vocabulary_touched=False` |
+| `scripts/vocabulary_candidate_review.py --summary-only --check-clean` | `PASS blocked_candidates=0` |
+| Black/Ruff | `black --check` clean; `ruff check` clean. |
+
+### 18.5 Next gate
+
+Next owner-service leaf: `FWD-007 — Raw signal families`.
+
+FWD-007 is not opened by this receipt. It must begin with its own current read, vocabulary/admission, test-first gate, and anti-duplication check.
+
+---
+
+## 19. Partial-clause rebuild owner-service leaves 007/008/010/013 — FWD-007 raw signals, FWD-008 calendar, FWD-010 coefficients, FWD-013 parallel risk
+
+Status: `bounded_closed_current`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/fwd-007-008-010-013-implementation`
+
+User authority: direct user instruction to implement the next pass for `FWD-007`, `FWD-008`, `FWD-010`, and `FWD-013` with no interim updates.
+
+### 19.1 Clause scope
+
+| Forward leaf | Owner surface | Clause rows | Final state |
+|---|---|---:|---|
+| `FWD-007` | Raw signal families | 56 | Native trace-only market substrate and strategic-ladder observation validation implemented. |
+| `FWD-008` | Financial and event calendar architecture | 11 | Native runtime calendar proximity query/snapshot implemented without trading authority. |
+| `FWD-010` | Dynamic coefficient and modifier authority | 12 | Native coefficient calibration proposal, audit packet, and replay fixture pack implemented without live mutation authority. |
+| `FWD-013` | Parallel risk lane | 8 | Native candidate semantic enrichment, fragility dimensions, and risk-policy observation implemented without capital sizing authority. |
+| **Total** |  | **87** |  |
+
+### 19.2 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Clause closeout | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_CLAUSE_CLOSEOUT_87.csv` | 87/87 selected FWD-007/FWD-008/FWD-010/FWD-013 clauses mapped to native implementation/proof obligations. |
+| Test-first failure receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_TEST_FIRST_FAILURE_RECEIPT.md` | Records pre-source-mutation collection failures for missing native seams/symbols. |
+| Proof summary | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_PROOF_SUMMARY.md` | Records targeted, adjacent, vocabulary, proof-block, and style proof outputs. |
+| Implementation receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_IMPLEMENTATION_RECEIPT.md` | Records scope, changed surfaces, boundary notes, and next gate. |
+| Read/touch manifest | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/FWD_007_008_010_013_READ_AND_TOUCH_MANIFEST.csv` | Current pass file/hash/line-count manifest. |
+| Proof outputs | `intent_migration/partial_clause_rebuild_programme_001/fwd_007_008_010_013_rebuild_pass/proof/` | Captured proof-command outputs for targeted/adjoining proof blocks and vocabulary checks. |
+
+### 19.3 Mutation summary
+
+- FWD-007 adds native market-substrate observation/snapshot contracts, a trace-only market substrate builder, and strategic-ladder observation validation that can revise/reject ladder rungs from market evidence without adding execution authority.
+- FWD-008 extends the operational event repository with runtime calendar query/snapshot support using UTC-named query boundaries, materiality ranking, symbol filtering, proximity ordering, and lineage retrieval without candidate-formation or capital-sizing authority.
+- FWD-010 extends coefficient/modifier authority with calibration override proposals, calibration sets, audit packets, and replay fixture packs without live coefficient mutation.
+- FWD-013 extends parallel-risk candidate audit semantics with consequence posture, fragility dimensions, risk event lineage, and policy-observation records without arbitration or capital-sizing authority.
+- FWD-005 API app/dependency seams were extended only to expose these newly rebuilt bounded internal mechanisms.
+- `config/proof_blocks.yaml` admits one new Tier A proof block. `config/retained_test_registry.yaml` is intentionally unchanged in final state for this pass; vocabulary clean checks remain authoritative.
+
+### 19.4 Proof recorded
+
+| Proof | Result |
+|---|---|
+| `fwd007_008_010_013_rebuild_surface` | `6 passed` |
+| Adjacent surface tests | `90 passed` |
+| `raw_signal_contract_copy_boundary_surface` | `2 passed` |
+| `raw_signal_transform_boundary_surface` | `2 passed` |
+| `financial_event_calendar_authority_surface` | `13 passed` |
+| `financial_event_calendar_transform_boundary_surface` | `2 passed` |
+| `dynamic_coefficient_modifier_authority_surface` | `18 passed` |
+| `modifier_contract_authority_boundaries_surface` | `5 passed` |
+| `dynamic_modifier_transform_boundary_surface` | `3 passed` |
+| `parallel_risk_lane_authority_surface` | `39 passed` |
+| `parallel_risk_lane_transform_boundary_surface` | `3 passed` |
+| `fwd005_api_internal_exposure_surface` | `7 passed` |
+| `scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=50` |
+| `scripts/vocabulary_synonym_audit.py --check-clean` | `vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False` |
+| `scripts/vocabulary_candidate_review.py --candidates var/vocabulary/synonym_candidates.json --summary-only --check-clean` | `vocabulary_candidate_review=PASS blocked_candidates=0` |
+| Black/Ruff | changed-file `black --check` clean; changed-file `ruff check` clean. |
+
+### 19.5 Next gate
+
+Next owner-service leaf: `FWD-015 — Opening architecture and placement readiness`.
+
+FWD-015 is not opened by this receipt. It must begin with its own current read, vocabulary/admission, test-first gate, and anti-duplication check.
+
+---
+
+## 20. Partial-clause rebuild owner-service leaves 015/016/017/018 — opening, live inventory, exit/close, review/explanation
+
+Status: `bounded_closed_current`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/fwd-015-016-017-018-implementation`
+
+User authority: direct user instruction to implement `FWD-015`, `FWD-016`, `FWD-017`, and `FWD-018` in the next pass.
+
+### 20.1 Clause scope
+
+| Forward leaf | Owner surface | Clause rows | Final state |
+|---|---|---:|---|
+| `FWD-015` | Opening architecture and placement readiness | 13 | Native paper-broker order/account/event/fill/position lifecycle implemented without live broker/network authority. |
+| `FWD-016` | Live position and inventory architecture | 2 | Native daily PnL reporting schema/service/API implemented without trading-decision mutation. |
+| `FWD-017` | Exit and close architecture | 25 | Native overnight-carry handoff, market evaluation, replay, comparator, and API dependency surfaces implemented without broker or live-inventory mutation. |
+| `FWD-018` | Review and explanation layer | 30 | Native module-health/daily-review packet assembly, review-safe rendering, and strategic-ladder replay context/output services implemented without runtime-authority mutation. |
+| **Total** |  | **70** |  |
+
+### 20.2 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Clause closeout | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/FWD_015_016_017_018_CLAUSE_CLOSEOUT_70.csv` | 70/70 selected FWD-015/FWD-016/FWD-017/FWD-018 clauses mapped to native implementation/proof obligations. |
+| Test-first failure receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/proof/test_first_failure.txt` | Records pre-source-mutation collection failures for missing native seams/symbols. |
+| Proof summary | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/FWD_015_016_017_018_PROOF_SUMMARY.md` | Records targeted, adjacent, full Tier A, vocabulary, proof-block, and style proof outputs. |
+| Implementation receipt | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/FWD_015_016_017_018_IMPLEMENTATION_RECEIPT.md` | Records scope, changed surfaces, retained boundaries, and next gate. |
+| Read/touch manifest | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/FWD_015_016_017_018_READ_AND_TOUCH_MANIFEST.csv` | Current pass file/hash/line-count manifest. |
+| Proof outputs | `intent_migration/partial_clause_rebuild_programme_001/fwd_015_016_017_018_rebuild_pass/proof/` | Captured proof-command outputs for targeted/adjoining/full Tier A proof, vocabulary checks, proof-block check-all, and style checks. |
+
+### 20.3 Mutation summary
+
+- FWD-015 adds typed broker order side/type/status contracts, paper-order input and result contracts, order/fill/position/account collections, and a paper-only execution lifecycle service that can record order/fill evidence into the execution-record repository while keeping live execution disallowed.
+- FWD-016 adds daily PnL report contracts and a stateful reporting service/API route pair that records and lists report payloads without mutating trading decisions.
+- FWD-017 adds carry-horizon handoff packets, lifecycle-limited carry action envelopes, market-derived overnight carry evaluation, VIX/VVIX/VWAP context, replay comparator output, and bounded API/dependency routes.
+- FWD-018 adds review packet module-health count assembly, daily-review packet assembly with PnL fallback, review-safe rendering/redaction, and strategic-ladder replay context/output services.
+- `config/proof_blocks.yaml` admits one new Tier A proof block. `config/retained_test_registry.yaml` is intentionally unchanged in final state for this pass; vocabulary clean checks remain authoritative.
+
+### 20.4 Proof recorded
+
+| Proof | Result |
+|---|---|
+| Targeted FWD-015/016/017/018 tests | `14 passed` |
+| Adjacent downstream/review/API tests | `153 passed` |
+| Full Tier A suite | `600 passed` |
+| `fwd015_016_017_018_rebuild_surface` | `14 passed` |
+| `scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=51` |
+| `scripts/vocabulary_synonym_audit.py --check-clean` | `vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False` |
+| `scripts/vocabulary_candidate_review.py --candidates var/vocabulary/synonym_candidates.json --summary-only --check-clean` | `vocabulary_candidate_review=PASS blocked_candidates=0` |
+| Black/Ruff | changed-file `black --check` clean; changed-file `ruff check` clean. |
+
+### 20.5 Next gate
+
+Next gate: whole-programme partial-clause rebuild reconciliation across all 12 FWD owner-service receipts, the 310-row clause backlog, proof-block manifest, vocabulary checks, cumulative diff state, and Tier A/Tier B proof expectations.
+
+No live trading, production deployment, external broker credentials, network broker execution, or capital-sizing expansion authority is opened by this receipt.
+
+
+---
+
+## 21. Partial-clause rebuild whole-programme reconciliation 001
+
+Status: `bounded_closed_current_with_reconciliation`
+
+Date recorded: `2026-05-17`
+
+Branch: `worker/partial-clause-rebuild-reconciliation-001`
+
+User authority: direct user instruction to perform the whole-programme partial-clause rebuild reconciliation and clarify that “not yet certified” meant reconciling the 12 FWD receipts against the 310-clause backlog, proof blocks, vocabulary checks, cumulative diff state, and Tier A/Tier B proof expectations.
+
+### 21.1 Reconciliation scope
+
+| Source | Rows |
+|---|---:|
+| Phase 2 consolidated missing-behaviour clause backlog | 310 |
+| Confirmed-not-survived rows carried forward | 190 |
+| Partial-survival missing deltas carried forward | 120 |
+| FWD closeout rows including FWD-001 receipt row | 310 |
+| FWD owner-service leaves reconciled | 12 |
+
+### 21.2 Clause reconciliation result
+
+| Check | Result |
+|---|---:|
+| Unique Phase 2 clause IDs | 310 |
+| Unique closeout clause IDs | 310 |
+| Phase rows missing closeout | 0 |
+| Closeout rows outside Phase 2 | 0 |
+| Duplicate closeout clause IDs | 0 |
+| Reconciled rows | 310 |
+| Rows closed by receipt and rechecked | 310 |
+| Rows needing follow-up | 0 |
+| Referenced missing files | 0 |
+
+### 21.3 Service reconciliation summary
+
+| FWD | Owner surface | Clauses | Reconciled |
+|---|---|---:|---:|
+| `FWD-001` | Vocabulary governance interface | 1 | 1 |
+| `FWD-002` | Testing, proof, and checkpoint surfaces | 68 | 68 |
+| `FWD-003` | Persistence, ledgers, and receipts | 54 | 54 |
+| `FWD-005` | External source interfaces and API ingress | 30 | 30 |
+| `FWD-007` | Raw signal families | 56 | 56 |
+| `FWD-008` | Financial and event calendar architecture | 11 | 11 |
+| `FWD-010` | Dynamic coefficient and modifier authority | 12 | 12 |
+| `FWD-013` | Parallel risk lane | 8 | 8 |
+| `FWD-015` | Opening architecture and placement readiness | 13 | 13 |
+| `FWD-016` | Live position and inventory architecture | 2 | 2 |
+| `FWD-017` | Exit and close architecture | 25 | 25 |
+| `FWD-018` | Review and explanation layer | 30 | 30 |
+
+### 21.4 Evidence files
+
+| Evidence | Path | Result |
+|---|---|---|
+| Whole-programme report | `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/WHOLE_PROGRAMME_RECONCILIATION_REPORT.md` | Records programme-level reconciliation and proof snippets. |
+| Clause reconciliation matrix | `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/CLAUSE_RECONCILIATION_310.csv` | 310/310 clauses mapped to closeout/proof ownership. |
+| Service summary | `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/SERVICE_RECONCILIATION_SUMMARY.csv` | 12/12 FWD leaves reconciled. |
+| Machine summary | `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/RECONCILIATION_SUMMARY.json` | Validation counts and proof-block counts. |
+| Proof outputs | `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/proof/` | Captures Tier A, Tier B, proof-block, vocabulary, style, and git-diff proof. |
+
+### 21.5 Proof recorded
+
+| Proof | Result |
+|---|---|
+| Tier A full suite | `600 passed` |
+| Tier B full suite | `49 passed` |
+| `scripts/run_proof_block.py --check-all` | `proof_blocks_check_all=PASS count=51` |
+| `scripts/vocabulary_synonym_audit.py --check-clean` | `vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=True` after bounded style repair refreshed the governed-source fingerprint. |
+| `scripts/vocabulary_candidate_review.py --candidates var/vocabulary/synonym_candidates.json --summary-only --check-clean` | `vocabulary_candidate_review=PASS blocked_candidates=0` |
+| Changed Python Black/Ruff | changed-Python `black --check` clean; changed-Python `ruff check` clean. |
+| `git diff --check` | clean/no output. |
+
+### 21.6 Reconciliation conclusion
+
+All 310 identified missing-behaviour clauses are accounted for by FWD closeout receipts/proof ownership and rechecked against current repo files. At programme-reconciliation level, the identified no-good-ideas-left-behind backlog is closed.
+
+This remains a bounded local implementation/reconciliation claim. It does not certify live trading, production deployment, external broker credentials, network broker execution, or capital-sizing expansion authority.
+
+---
+
+## 22. Final single-download package — MVD-A10_1704_V1
+
+Status: `packaged_for_user_download`
+
+Date recorded: `2026-05-17`
+
+Package label: `MVD-A10_1704_V1`
+
+Scope:
+
+- package the current reconciled partial-clause rebuild repository state for one-file download;
+- preserve the whole-programme reconciliation evidence under `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/`;
+- record a packaging receipt under `intent_migration/partial_clause_rebuild_programme_001/final_package/`;
+- leave repo-root `AGENTS.md` and `PLANS.md` untouched by this final packaging pass.
+
+Validation recorded during packaging:
+
+- `git diff --check`: no output before the packaging commit;
+- post-commit `git status --short`: clean;
+- final tarball listing checked after creation.
+
+Boundary:
+
+This final package is a bounded local repository package. It does not certify live trading, production deployment, external broker credentials, or live broker execution.

@@ -8,7 +8,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from nvda_desk.schemas.vocabulary import VocabularyDocument
+_REPO_SRC = Path(__file__).resolve().parents[1] / "src"
+if str(_REPO_SRC) not in sys.path:
+    sys.path.insert(0, str(_REPO_SRC))
+
+from nvda_desk.schemas.vocabulary import VocabularyDocument  # noqa: E402
 
 DEFAULT_VOCABULARY_PATH = Path("data/vocabulary/canonical_vocabulary.json")
 
@@ -20,7 +24,9 @@ def _candidate_payloads_from_json_text(text: str) -> list[dict[str, Any]]:
     elif isinstance(payload, dict) and isinstance(payload.get("candidates"), list):
         candidates = payload["candidates"]
     else:
-        raise ValueError("candidate payload file must be a list or an object with a candidates list")
+        raise ValueError(
+            "candidate payload file must be a list or an object with a candidates list"
+        )
     if not all(isinstance(item, dict) for item in candidates):
         raise ValueError("candidate payload entries must be JSON objects")
     return list(candidates)
@@ -84,9 +90,7 @@ def _build_review_report_from_payloads(
     return enriched
 
 
-def build_review_report(
-    *, vocabulary_path: Path, candidates_path: Path
-) -> dict[str, Any]:
+def build_review_report(*, vocabulary_path: Path, candidates_path: Path) -> dict[str, Any]:
     return _build_review_report_from_payloads(
         vocabulary_path=vocabulary_path,
         candidates_path=str(candidates_path),
@@ -107,7 +111,9 @@ def _summary_report(report: dict[str, Any]) -> dict[str, Any]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--candidates", required=True, help="JSON file containing candidate payloads")
+    parser.add_argument(
+        "--candidates", required=True, help="JSON file containing candidate payloads"
+    )
     parser.add_argument(
         "--vocabulary",
         default=str(DEFAULT_VOCABULARY_PATH),
