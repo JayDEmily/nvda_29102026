@@ -3251,3 +3251,16 @@ Risk semantics: tests explicitly protect constructive/defensive/ambiguous/mixed 
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py -q; git diff --check.
 Acceptance criterion: atom/profile schemas contain no trade-action authority and can represent mixed risk semantics.
 Closeout: tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-017 — Risk-family aggregation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: aggregate supported risk atom states into deterministic family-level state-of-play summaries.
+Allowed files: src/nvda_desk/domain/parallel_risk/family_aggregation.py; tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: capital/play permission semantics; service integration; rich signals; description engine.
+Risk semantics: family state is a descriptive summary of atoms and not a trade gate.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
+Acceptance criterion: family states reflect atom severity/confidence only and carry no action authority.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
