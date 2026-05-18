@@ -2835,7 +2835,7 @@ Next recommended leaf: `PRL-MRP-003` — implement freshness register calculatio
 
 ## PRL Minute Risk Profile Master Roadmap 001
 
-Status: `in_progress`
+Status: `planning_complete`
 
 Branch: `work/prl-minute-risk-profile-master-roadmap`
 Baseline commit: `7eb107f6527ef5dc37e584a88deecd4a5390d1e5`
@@ -2880,4 +2880,100 @@ Expected artefacts:
 - `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
 - `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
 - `/mnt/data/prl-minute-risk-profile-master-roadmap-branch.tar.gz`
+
+### Governance and test inspection summary
+
+Governance surface map:
+- authored in `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md` section 2.
+
+Test surface map:
+- authored in `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md` section 3.
+
+Tests inspected:
+- all `tests/tier_a/parallel_risk/*.py`;
+- relevant upstream signal, upstream cognition, temporal, financial calendar, testing harness/workbook-boundary, vocabulary, and review-runtime tests listed in `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`.
+
+### Planned PRL minute-profile leaf ledger index
+
+| Leaf ID | Title | Status | Objective | Dependencies | Acceptance criterion | Forbidden scope |
+|---|---|---|---|---|---|---|
+| PRL-MRP-001 | Contract schema additions | completed | Add minute-profile contract classes/enums. | none | Prior branch evidence accepted. | no further work in this leaf |
+| PRL-MRP-002 | AuthorityFlags default-deny | completed | Add default-deny authority flags. | PRL-MRP-001 | Prior branch evidence accepted. | no further work in this leaf |
+| PRL-MRP-003 | Freshness register calculation | planned_not_started | Add deterministic freshness states from source/capture/persist/generated times. | PRL-MRP-001/002 | fresh/stale/unknown classified without source temporal substitution. | no missing-signal/event/service work |
+| PRL-MRP-004 | Expected signal availability test scaffold | planned_not_started | Prove expected-signal references remain metadata-only before workbook promotion. | PRL-MRP-001/002 | tests prevent runtime workbook reads and code-constant authority. | no workbook edit |
+| PRL-MRP-005 | Missing/quarantined signal register | planned_not_started | Register missing/quarantined signals and confidence impacts. | PRL-MRP-003/004 | no invented values; missing data reduces confidence or disables atoms. | no event proximity or service work |
+| PRL-MRP-006 | Workbook signal-inventory tab planning | planned_not_started | Specify future `Parallel Risk Lane Signal Inventory` workbook tab. | PRL-MRP-004 | tab columns/classifications/lineage/promotion boundary specified. | no Excel edit |
+| PRL-MRP-007 | Workbook signal-inventory tab creation | blocked_pending_source | Create workbook tab after explicit authorisation. | PRL-MRP-006 + explicit workbook-edit route | tab exists with lineage to raw/derived tabs. | no runtime workbook reads |
+| PRL-MRP-008 | Typed promotion plan from workbook inventory | planned_not_started | Plan typed config/contract promotion from workbook tab. | PRL-MRP-006/007 | no direct workbook runtime read in design. | no implementation unless opened |
+| PRL-MRP-009 | Runtime expected-signal inventory promotion | blocked_pending_source | Consume typed promoted inventory in runtime after workbook source exists. | PRL-MRP-007/008 | PRL uses typed promoted inventory only. | no workbook direct reads |
+| PRL-MRP-010 | Event proximity register | planned_not_started | Add typed event proximity/materiality register. | PRL-MRP-003 | proximity/materiality are descriptive only. | no trade permission |
+| PRL-MRP-011 | Scheduled-event caution preservation | planned_not_started | Preserve current event caution while wrapping as atom/contribution. | PRL-MRP-010 | existing scheduled-event caution unchanged. | no new calendar behaviour beyond typed inputs |
+| PRL-MRP-012 | VIX threshold preservation | planned_not_started | Preserve current VIX caution/block behaviour. | PRL-MRP-003 | VIX >=30 caution and >=50 block remain. | no threshold migration |
+| PRL-MRP-013 | VIX governed threshold reconciliation | planned_not_started | Reconcile PRL hardcoded thresholds with coefficient authority by explicit migration. | PRL-MRP-012 | no silent threshold drift. | no behaviour change without tests/evidence |
+| PRL-MRP-014 | Options DTE risk preservation | planned_not_started | Preserve current front/next DTE caution. | PRL-MRP-003 | DTE inversion behaviour unchanged. | no real options surface/gamma/skew |
+| PRL-MRP-015 | Supported risk atom skeleton | planned_not_started | Emit atoms for currently supported risks. | PRL-MRP-003/005/011/012/014 | atoms describe risk without trade actions. | no rich unavailable signal values |
+| PRL-MRP-016 | Risk atom no-play authority tests | planned_not_started | Harden tests against trade-action fields in atoms/profile. | PRL-MRP-015 | atom/profile schema remains risk-only. | no production behaviour except fixes if tests expose issue |
+| PRL-MRP-017 | Risk-family aggregation | planned_not_started | Aggregate atom states into family states. | PRL-MRP-015 | family states reflect risk severity/confidence only. | no capital/play permission semantics |
+| PRL-MRP-018 | Enriched packet assembly | planned_not_started | Assemble `ParallelRiskMinuteProfile` from supported registers/atoms/families. | PRL-MRP-017 | profile assembled with lineage; existing packet stable. | no service API change yet |
+| PRL-MRP-019 | Backward-compatible service integration | planned_not_started | Add optional service path/flag for enriched profile. | PRL-MRP-018 | existing service tests pass; optional profile path works. | no downstream consumer change |
+| PRL-MRP-020 | Unavailable signal handling | planned_not_started | Mark unavailable rich signals missing/unavailable, not valued. | PRL-MRP-005 and PRL-MRP-009 if inventory-backed | unavailable signals visible and non-hallucinated. | no fabricated Bloomberg-style data |
+| PRL-MRP-021 | Lineage completeness | planned_not_started | Ensure profile/signal/atom/family lineage is audit-ready. | PRL-MRP-018/019 | source refs and packet IDs preserved. | no hidden upstream reads |
+| PRL-MRP-022 | Authority regression hardening | planned_not_started | Consolidate no candidate/play/capital/order/review/workbook-read tests. | PRL-MRP-019/021 | hidden authority rejected or absent. | no expanded runtime authority |
+| PRL-MRP-023 | Vocabulary-governed description constraints | planned_not_started | Formalise controlled-language requirements. | PRL-MRP-022 | vocabulary refs and wording constraints recorded. | no description engine |
+| PRL-MRP-024 | Deterministic description contract and tests | planned_not_started | Add metadata-only template/vocabulary description contract/tests. | PRL-MRP-023 | deterministic refs only; no free-form advice. | no renderer/engine |
+| PRL-MRP-025 | Deterministic description engine | planned_not_started | Implement governed deterministic template renderer. | PRL-MRP-024 | deterministic risk-only output; advice terms rejected. | no generative prose/review judgement |
+| PRL-MRP-026 | Documentation/current-state map update | planned_not_started | Update docs/current-state map after implementation leaves. | relevant completed leaves | implemented/upstream/deferred/out-of-scope truth recorded. | no source/test changes unless opened |
+| PRL-MRP-027 | Deferred rich signal-family intake plan | deferred | Plan lawful upstream sources/contracts for deferred rich signal families. | PRL-MRP-020 | each rich family remains blocked/deferred until typed source exists. | no signal implementation |
+
+### Blocked/deferred signal-family summary
+
+Deferred until typed upstream sources/contracts exist:
+- VWAP;
+- spread/depth;
+- tape speed / relative volume;
+- realised volatility / ATR;
+- dense options chain;
+- IV rank / implied move;
+- skew;
+- real gamma exposure / gamma flip;
+- OI concentration / strike pin;
+- MOC / close auction imbalance;
+- headline risk;
+- crowding / real-money flow;
+- cognitive load / attention pressure.
+
+### Closeout
+
+Closeout status: `planning_complete`
+
+Files changed:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/git_diff_check.txt`
+- `var/audit/prl_master_roadmap_001/scaffold_check.txt`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+
+Roadmap artefact paths:
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+
+Validation run:
+- `git diff --check` — exit 0, output captured in `var/audit/prl_master_roadmap_001/git_diff_check.txt`.
+- `make scaffold-check` — exit 0, output captured in `var/audit/prl_master_roadmap_001/scaffold_check.txt`.
+- Full tests were not run because this is planning-only and no production/test implementation changed.
+
+Unresolved questions:
+- Which config surface owns freshness age thresholds after deterministic defaults?
+- What exact promotion artefact carries the workbook `Parallel Risk Lane Signal Inventory` into runtime config/contracts?
+- Should VIX coefficient-authority reconciliation preserve current hardcoded behaviour as compatibility mode?
+- Where should deterministic description templates live: config, vocabulary data, or a dedicated template registry?
+
+Next recommended executable leaf:
+- `PRL-MRP-003` — Freshness register calculation and tests, with no missing-signal, event-proximity, service-integration, workbook-editing, or description-engine scope.
 
