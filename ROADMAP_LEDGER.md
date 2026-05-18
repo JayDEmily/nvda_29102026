@@ -3315,3 +3315,16 @@ Risk semantics: lineage proves where the state-of-play read came from; it does n
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py -q; git diff --check.
 Acceptance criterion: source refs, packet IDs, admitted inputs, input fingerprint, and forbidden-authority list are preserved.
 Closeout: lineage implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-022 — Authority regression hardening
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: consolidate enriched-profile authority regression tests for no candidate/play/capital/order/review/workbook-read leakage.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: new behaviour beyond guard hardening; production changes unless tests expose defect; description engine; workbook read.
+Risk semantics: authority tests protect PRL as terrain/state-of-play interpreter only.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py -q; git diff --check.
+Acceptance criterion: hidden authority remains rejected/absent across enriched path and no runtime workbook read surface is opened.
+Closeout: tests added; tests passed; commit recorded in git history for this leaf.
