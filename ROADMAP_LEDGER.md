@@ -3328,3 +3328,16 @@ Risk semantics: authority tests protect PRL as terrain/state-of-play interpreter
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py -q; git diff --check.
 Acceptance criterion: hidden authority remains rejected/absent across enriched path and no runtime workbook read surface is opened.
 Closeout: tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-023 — Vocabulary-governed description constraints
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: formalise deterministic vocabulary-governed description constraints before any description contract or renderer work.
+Allowed files: docs/planning/PRL_RISK_DESCRIPTION_VOCABULARY_CONSTRAINTS.md; tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: description engine; template registry creation; runtime prose generation; trade/play/capital/order/review output.
+Risk semantics: description constraints explicitly preserve neutral risk state-of-play semantics and prohibit action advice.
+Expected tests: python -m pytest tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py -q; git diff --check.
+Acceptance criterion: constraints cite vocabulary governance, template registry target, no free-form prose, and no trade advice.
+Closeout: constraints and tests added; tests passed; commit recorded in git history for this leaf.
