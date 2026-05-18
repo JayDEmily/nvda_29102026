@@ -3238,3 +3238,16 @@ Risk semantics: atoms describe state-of-play and may carry constructive, uncerta
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
 Acceptance criterion: supported atoms are emitted without trade-action fields or fabricated rich-signal values.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-016 — Risk atom no-play authority tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: harden tests so risk atoms and minute profiles describe state-of-play without action authority.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: production behaviour change unless tests expose a defect; service integration; rich signals; description engine.
+Risk semantics: tests explicitly protect constructive/defensive/ambiguous/mixed state-of-play wording without trade advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py -q; git diff --check.
+Acceptance criterion: atom/profile schemas contain no trade-action authority and can represent mixed risk semantics.
+Closeout: tests added; tests passed; commit recorded in git history for this leaf.
