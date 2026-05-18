@@ -3074,3 +3074,16 @@ The four prior master-roadmap questions are resolved. Remaining non-blocking que
 
 Next recommended executable leaf:
 - `PRL-MRP-003` — freshness register calculation and tests, with deterministic defaults only and no config/workbook read, no missing-signal logic, no event proximity, no service integration, and no description-engine scope.
+
+
+## PRL-MRP-003 — Freshness register calculation and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add deterministic source freshness register calculation using source/generated times only.
+Allowed files: src/nvda_desk/domain/parallel_risk/freshness.py; tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: config loading; workbook read; missing-signal logic; event proximity; service integration; trade/play/capital/order output.
+Risk semantics: freshness is neutral state-of-play evidence; stale/unknown increases uncertainty and does not imply action.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: freshness entries classify fresh/ageing/stale/unknown deterministically and retain metadata-only semantics.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
