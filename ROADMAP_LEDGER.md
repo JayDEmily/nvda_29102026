@@ -3277,3 +3277,16 @@ Risk semantics: assembled profile describes terrain/state-of-play only and prese
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
 Acceptance criterion: profile assembles supported signals/atoms/families/lineage with authority flags default-deny and existing envelope stable.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-019 — Backward-compatible service integration
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add optional service path to return an enriched minute profile while preserving existing service result shape by default.
+Allowed files: src/nvda_desk/services/parallel_risk_lane_service.py; tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: mandatory downstream consumer change; evaluator rewrite; event service integration; description engine; capital/play/order/candidate output.
+Risk semantics: optional profile describes state-of-play and leaves default PRL packet behaviour unchanged.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py -q; git diff --check.
+Acceptance criterion: existing service calls still pass; optional minute profile carries lineage and default-deny authority flags.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
