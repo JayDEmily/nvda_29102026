@@ -67,3 +67,10 @@ Observed validation result: `36 passed`; `git diff --check` emitted no output.
 # commit final closeout
 # create /mnt/data/prl-minute-profile-contracts-branch.tar.gz
 ```
+
+## Archive command
+
+```sh
+git status --short
+tar --exclude='prl-minute-profile-contracts-branch.tar.gz' -czf /mnt/data/prl-minute-profile-contracts-branch.tar.gz -C /mnt/data/prl_contracts_work MVD-A10_1704_V1
+```

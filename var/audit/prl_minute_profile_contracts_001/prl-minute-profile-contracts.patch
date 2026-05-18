@@ -639,12 +639,49 @@ index 0000000..89d6915
 +    assert event.risk_interpretation == "event proximity context only"
 +    assert family.state == "observe"
 +    assert contribution.reason == "scheduled event context present"
+diff --git a/var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md b/var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md
+new file mode 100644
+index 0000000..64a00e2
+--- /dev/null
++++ b/var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md
+@@ -0,0 +1,31 @@
++# Artefact manifest — PRL minute profile contracts 001
++
++Branch: `work/prl-minute-profile-contracts`
++
++## Governance and planning artefacts
++
++- `ROADMAP_LEDGER.md`
++- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
++- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
++- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
++- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
++
++## Implementation artefacts
++
++- `src/nvda_desk/contracts/parallel_risk.py`
++- `tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py`
++
++## Validation artefacts
++
++- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
++- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
++
++## Diff / archive artefacts
++
++- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
++- `/mnt/data/prl-minute-profile-contracts-branch.tar.gz`
++
++## Scope statement
++
++This leaf implements contract-only schema models/enums and default-deny authority flags for PRL-MRP-001/002. It does not implement domain calculations, service integration, workbook editing, event proximity logic, missing-signal calculation, freshness scoring logic, risk-family aggregation, evaluator changes, or plain-English generation.
++- `var/audit/prl_minute_profile_contracts_001/git_diff_check_closeout.txt`
 diff --git a/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md b/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md
 new file mode 100644
-index 0000000..8cae0ba
+index 0000000..44484e0
 --- /dev/null
 +++ b/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md
-@@ -0,0 +1,69 @@
+@@ -0,0 +1,76 @@
 +# Command log — PRL minute profile contracts 001
 +
 +```sh
@@ -714,6 +751,13 @@ index 0000000..8cae0ba
 +# commit final closeout
 +# create /mnt/data/prl-minute-profile-contracts-branch.tar.gz
 +```
++
++## Archive command
++
++```sh
++git status --short
++tar --exclude='prl-minute-profile-contracts-branch.tar.gz' -czf /mnt/data/prl-minute-profile-contracts-branch.tar.gz -C /mnt/data/prl_contracts_work MVD-A10_1704_V1
++```
 diff --git a/var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md b/var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md
 new file mode 100644
 index 0000000..65b09a2
@@ -731,6 +775,9 @@ index 0000000..65b09a2
 +| `ROADMAP_LEDGER.md` | required governance before implementation leaf | 2683 | 359707 | `5dc532728d9e8fc45fdba443d367d9bc3addb1182efd7d57f951ec91aec0bb75` | read_in_full | governs allowed modifications |
 +| `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` | accepted implementation plan authority for PRL-MRP-001/002 | 217 | 27416 | `cbeef5ac89c5684e714a75196c6491eabf9e2dfb842b60e55aecfbd1bc1412c2` | read_in_full | governs allowed modifications |
 diff --git a/var/audit/prl_minute_profile_contracts_001/git_diff_check.txt b/var/audit/prl_minute_profile_contracts_001/git_diff_check.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/prl_minute_profile_contracts_001/git_diff_check_closeout.txt b/var/audit/prl_minute_profile_contracts_001/git_diff_check_closeout.txt
 new file mode 100644
 index 0000000..e69de29
 diff --git a/var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt b/var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
