@@ -2573,7 +2573,7 @@ This final package is a bounded local repository package. It does not certify li
 
 ## 23. Parallel Risk Lane minute-level risk profile implementation plan
 
-Status: `in_progress`
+Status: `planning_complete`
 
 Date recorded: `2026-05-18`
 
@@ -2637,3 +2637,47 @@ Objective: Convert the accepted Parallel Risk Lane design audit into an implemen
 - `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
 - `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
 - `/mnt/data/prl-minute-risk-profile-plan-branch.tar.gz`
+
+
+### 23.7 Closeout details
+
+Status updated to: `planning_complete`
+
+Files changed:
+
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+
+Commits created:
+
+- Baseline marker commit: `25ed3eb6f876439ebe021dcd796d417da691bdb5`
+- Gate 0 ledger commit: `74f16d2a4e683019338edfc5a0ddcf86b49c01a0`
+- Final planning closeout commit: recorded in final response after commit creation.
+
+Artefacts created:
+
+- Implementation plan: `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- Full-read manifest: `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- Command log: `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- Artefact manifest: `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- Patch from baseline: `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+- Download archive: `/mnt/data/prl-minute-risk-profile-plan-branch.tar.gz`
+
+Tests run: not run. This branch contains planning artefacts only and does not implement production or test code.
+
+Validation planned for closeout commit:
+
+- `git diff --check`
+
+Unresolved questions:
+
+- Whether `ParallelRiskMinuteProfile` should be embedded in `ParallelRiskLanePacket` or emitted by a sibling service method.
+- Which governed source owns freshness thresholds.
+- Whether VIX threshold reconciliation should preserve current hardcoded 30/50 behaviour first or migrate to coefficient authority in a later leaf.
+- Where the expected-signal inventory for missing/unavailable signal checks should live.
+
+Next recommended leaf: `PRL-MRP-001` — contract-only schema additions for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags, with contract tests before source behaviour changes.
