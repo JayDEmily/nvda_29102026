@@ -3100,3 +3100,16 @@ Risk semantics: missing/quarantined signals describe uncertainty and availabilit
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py -q; git diff --check.
 Acceptance criterion: present/missing/quarantined states are represented without hallucinated values or authority leakage.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-005 — Unavailable-signal handling foundation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add explicit unavailable-signal metadata helpers for known future signal families without typed runtime sources.
+Allowed files: src/nvda_desk/domain/parallel_risk/unavailable_signals.py; tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: inventory loading; workbook reads; rich Bloomberg-style signal implementation; event proximity; service integration.
+Risk semantics: unavailable signals make uncertainty explicit and do not fabricate defensive warnings or trade actions.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py -q; git diff --check.
+Acceptance criterion: unavailable signals have no value, no authority, and carry lineage/reference metadata only.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
