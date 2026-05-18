@@ -127,6 +127,206 @@ class ParallelRiskInputTrace(BaseModel):
 
 
 ParallelRiskConsequencePosture = Literal["observe", "caution", "block"]
+ParallelRiskAtomStateValue = Literal["inactive", "observe", "caution", "block"]
+ParallelRiskEnvelopeStateValue = Literal["tight", "broad", "observe", "caution", "block", "unknown"]
+ParallelRiskSignalKind = Literal["raw", "derived", "metadata", "config", "trace"]
+ParallelRiskFreshnessState = Literal["fresh", "ageing", "stale", "unknown"]
+ParallelRiskSignalPresenceState = Literal[
+    "present", "missing", "quarantined", "rejected", "not_expected"
+]
+ParallelRiskMissingImpact = Literal[
+    "none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"
+]
+
+
+class AuthorityFlags(BaseModel):
+    """Default-deny authority flags for enriched parallel-risk profile contracts."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    candidate_formation_allowed: bool = False
+    playbook_selection_allowed: bool = False
+    capital_sizing_allowed: bool = False
+    broker_execution_allowed: bool = False
+    serial_stage_mutation_allowed: bool = False
+    review_judgement_authority: bool = False
+    direct_workbook_runtime_read_allowed: bool = False
+
+    @model_validator(mode="after")
+    def _validate_default_deny_authority(self) -> "AuthorityFlags":
+        if any(
+            (
+                self.candidate_formation_allowed,
+                self.playbook_selection_allowed,
+                self.capital_sizing_allowed,
+                self.broker_execution_allowed,
+                self.serial_stage_mutation_allowed,
+                self.review_judgement_authority,
+                self.direct_workbook_runtime_read_allowed,
+            )
+        ):
+            raise ValueError("parallel_risk_authority_flags_must_remain_false")
+        return self
+
+
+class SignalSnapshotEntry(BaseModel):
+    """One signal-like value or absence recorded for a minute-level risk profile."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    raw_or_derived: ParallelRiskSignalKind
+    value: Any | None = None
+    units: str | None = None
+    source_time_utc: datetime | None = None
+    captured_at_utc: datetime | None = None
+    persisted_at_utc: datetime | None = None
+    freshness_state: ParallelRiskFreshnessState = "unknown"
+    freshness_reason: str | None = None
+    lineage_refs: list[str] = Field(default_factory=list)
+    source_ids: list[str] = Field(default_factory=list)
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    used_by_risk_atoms: list[str] = Field(default_factory=list)
+    missing_or_quarantined: ParallelRiskSignalPresenceState = "present"
+    rejection_reason: str | None = None
+    lawful_prl_use_allowed: bool = True
+    lawful_prl_use_reason: str | None = None
+
+
+class MissingSignalRegisterEntry(BaseModel):
+    """Metadata-only record for an expected signal absent from the PRL input surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    expected_reason: str = Field(min_length=1)
+    missing_reason: str = Field(min_length=1)
+    impact_on_profile: ParallelRiskMissingImpact = "none"
+    source_refs: list[str] = Field(default_factory=list)
+    expected_signal_inventory_ref: str | None = None
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+
+
+class FreshnessRegisterEntry(BaseModel):
+    """Contract record for signal/source freshness state; calculation lives elsewhere."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    source_time_utc: datetime | None = None
+    captured_at_utc: datetime | None = None
+    persisted_at_utc: datetime | None = None
+    generated_at_utc: datetime | None = None
+    max_allowed_age_seconds: int | None = Field(default=None, ge=0)
+    observed_age_seconds: int | None = Field(default=None, ge=0)
+    freshness_state: ParallelRiskFreshnessState = "unknown"
+    impact_on_profile: str | None = None
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class EventProximityRegisterEntry(BaseModel):
+    """Contract record for projected event proximity without trade authority."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    event_id: str = Field(min_length=1)
+    event_type: str = Field(min_length=1)
+    starts_at_utc: datetime | None = None
+    ends_at_utc: datetime | None = None
+    proximity_seconds: int | None = None
+    materiality: str | None = None
+    materiality_rank: int | None = None
+    runtime_tags: list[str] = Field(default_factory=list)
+    evaluation_tags: list[str] = Field(default_factory=list)
+    risk_interpretation: str = Field(min_length=1)
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class RiskAtomState(BaseModel):
+    """One contract-only environmental risk atom state, not a trade action."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    risk_atom_id: str = Field(min_length=1)
+    name: str | None = None
+    family: str = Field(min_length=1)
+    state: ParallelRiskAtomStateValue = "inactive"
+    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    trigger_condition: str = Field(min_length=1)
+    observable_cues: list[dict[str, Any]] = Field(default_factory=list)
+    calculation_basis: dict[str, Any] = Field(default_factory=dict)
+    source_refs: list[str] = Field(default_factory=list)
+    time_sensitivity: dict[str, Any] = Field(default_factory=dict)
+    trader_cognition_update: dict[str, Any] = Field(default_factory=dict)
+    why_this_is_risk_not_play: str = Field(min_length=1)
+
+
+class RiskFamilyState(BaseModel):
+    """Aggregated descriptive state for one risk family."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    family: str = Field(min_length=1)
+    state: ParallelRiskAtomStateValue = "inactive"
+    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    dominant_atoms: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ContributionBreakdownEntry(BaseModel):
+    """Traceable descriptive contribution to the minute-level risk profile."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    contribution_id: str = Field(min_length=1)
+    family: str = Field(min_length=1)
+    risk_atom_id: str | None = None
+    state: ParallelRiskAtomStateValue = "observe"
+    intensity_delta: float = Field(default=0.0, ge=0.0, le=1.0)
+    reason: str = Field(min_length=1)
+    source_signal_ids: list[str] = Field(default_factory=list)
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskMinuteProfile(_DetachedMutableModel):
+    """Contract-only minute-level environmental risk profile for the PRL."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    packet_id: str = Field(min_length=1)
+    packet_schema_version: str = "parallel_risk_minute_profile.v1"
+    lane_id: str = "parallel_risk_lane"
+    symbol: str = Field(min_length=1)
+    source_time_utc: datetime
+    generated_at_utc: datetime
+    runtime_bar_time_utc: datetime | None = None
+    session_state: str = "unknown"
+    risk_envelope_state: ParallelRiskEnvelopeStateValue = "unknown"
+    active_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
+    watched_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
+    risk_family_states: list[RiskFamilyState] = Field(default_factory=list)
+    signal_snapshot: list[SignalSnapshotEntry] = Field(default_factory=list)
+    missing_signal_register: list[MissingSignalRegisterEntry] = Field(default_factory=list)
+    freshness_register: list[FreshnessRegisterEntry] = Field(default_factory=list)
+    event_proximity_register: list[EventProximityRegisterEntry] = Field(default_factory=list)
+    contribution_breakdown: list[ContributionBreakdownEntry] = Field(default_factory=list)
+    hard_blocks: list[str] = Field(default_factory=list)
+    caution_flags: list[str] = Field(default_factory=list)
+    uncertainty_summary: dict[str, Any] = Field(default_factory=dict)
+    authority_flags: AuthorityFlags = Field(default_factory=AuthorityFlags)
+    expected_signal_inventory_ref: str | None = None
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    vocabulary_dictionary_refs: list[str] = Field(default_factory=list)
+    description_template_id: str | None = None
+    description_vocabulary_refs: list[str] = Field(default_factory=list)
+    mechanical_summary: dict[str, Any] = Field(default_factory=dict)
+    lineage: dict[str, Any] = Field(default_factory=dict)
+    open_unresolved_signals: list[dict[str, Any]] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
 
 
 class ParallelRiskFragilityDimension(BaseModel):

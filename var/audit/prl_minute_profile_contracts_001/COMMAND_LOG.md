@@ -30,3 +30,12 @@ pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py
 ```
 
 Observed pre-implementation result: collection error because `AuthorityFlags` is not yet exported from `nvda_desk.contracts.parallel_risk`; this is the expected new-contract failure before implementation.
+## Gate 3 implementation command
+```sh
+python - <<PY
+# inserted contract-only models/enums into src/nvda_desk/contracts/parallel_risk.py
+PY
+python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q
+```
+
+Observed implementation result: `14 passed` for new contract tests after contract-only model additions.
