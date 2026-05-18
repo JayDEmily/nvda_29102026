@@ -3113,3 +3113,16 @@ Risk semantics: unavailable signals make uncertainty explicit and do not fabrica
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py -q; git diff --check.
 Acceptance criterion: unavailable signals have no value, no authority, and carry lineage/reference metadata only.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-006 — Expected signal inventory workbook-tab specification
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document the future governed Excel tab for expected PRL signals without editing the workbook.
+Allowed files: docs/planning/PRL_SIGNAL_INVENTORY_WORKBOOK_TAB_SPEC.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: Excel workbook editing; runtime workbook reads; typed inventory promotion; missing-signal runtime inventory loading.
+Risk semantics: expected-signal inventory is neutral signal-availability governance, not an action or warning system.
+Expected tests/checks: make scaffold-check; python -m pytest tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py -q; git diff --check.
+Acceptance criterion: workbook path, raw-primitives sheet, future tab name, lawful data path, statuses, and non-goals are documented.
+Closeout: planning specification added; checks passed; commit recorded in git history for this leaf.
