@@ -3264,3 +3264,16 @@ Risk semantics: family state is a descriptive summary of atoms and not a trade g
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
 Acceptance criterion: family states reflect atom severity/confidence only and carry no action authority.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-018 — Enriched packet assembly
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: assemble `ParallelRiskMinuteProfile` from current registers, supported atoms, family states, signal snapshots, envelope, and lineage.
+Allowed files: src/nvda_desk/domain/parallel_risk/minute_profile_assembly.py; tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: service API changes; event service integration; plain-English rendering; rich signal fabrication; candidate/play/capital/order output.
+Risk semantics: assembled profile describes terrain/state-of-play only and preserves neutral uncertainty/opportunity/consequence framing.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
+Acceptance criterion: profile assembles supported signals/atoms/families/lineage with authority flags default-deny and existing envelope stable.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
