@@ -2977,3 +2977,100 @@ Unresolved questions:
 Next recommended executable leaf:
 - `PRL-MRP-003` — Freshness register calculation and tests, with no missing-signal, event-proximity, service-integration, workbook-editing, or description-engine scope.
 
+
+---
+
+## PRL Minute Risk Profile Architecture Decisions 001
+
+Initial status: `in_progress`
+Closeout status: `planning_complete`
+
+Branch: `work/prl-minute-risk-profile-architecture-decisions`
+Baseline commit: `3c5b1db57704c56445bc382c83faa536c1586a6b`
+
+Task title: Parallel Risk Lane minute-level risk profile architecture comprehension and decision resolution.
+
+Objective:
+- read the repo like a senior engineer inheriting the system;
+- resolve the four open master-roadmap architecture questions from repo evidence and bounded senior-engineering judgement;
+- update roadmap and ledger before implementation resumes;
+- do not execute `PRL-MRP-003`.
+
+Allowed files:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`
+- `var/audit/prl_architecture_decisions_001/*`
+
+Forbidden scope:
+- no production source changes;
+- no test implementation changes;
+- no freshness scoring implementation;
+- no missing-signal logic;
+- no event proximity implementation;
+- no service/evaluator integration;
+- no Excel workbook editing;
+- no plain-English description engine;
+- no implementation leaf completion claims.
+
+Governance/source/test files fully read:
+- see `var/audit/prl_architecture_decisions_001/FULL_READ_MANIFEST.md`.
+
+Planned gates:
+1. human-level system comprehension;
+2. runtime/dataflow map;
+3. resolve four open questions;
+4. architecture decision record;
+5. roadmap and ledger update;
+6. validation and closeout.
+
+### Resolved architecture decisions
+
+| Question | Decision | Decision artefact | Roadmap impact |
+|---|---|---|---|
+| Freshness threshold ownership after deterministic defaults | Dedicated governed PRL profile config surface, planned as `config/parallel_risk_lane_profile.v1.yaml`; `PRL-MRP-003` uses deterministic defaults only and does not read config/workbook. | `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md` ADR-001 | Updates `PRL-MRP-003`, `PRL-MRP-021`, `PRL-MRP-026` |
+| Workbook signal-inventory runtime promotion artefact | Typed promotion artefact planned as `config/parallel_risk_signal_inventory.v1.yaml`, validated by future `ParallelRiskSignalInventoryDocument` / `ParallelRiskExpectedSignalRecord` contracts. | same ADR-002 | Updates `PRL-MRP-004`, `PRL-MRP-006`, `PRL-MRP-007`, `PRL-MRP-008`, `PRL-MRP-009`, `PRL-MRP-020` |
+| VIX threshold reconciliation | Preserve current PRL hardcoded behaviour as compatibility mode first: VIX >= 30 caution and VIX >= 50 block; reconcile only in explicit later leaf. | same ADR-003 | Updates `PRL-MRP-012`, `PRL-MRP-013`, `PRL-MRP-015`, `PRL-MRP-018` |
+| Deterministic description template location | Dedicated template registry, planned as `data/parallel_risk/description_templates.v1.json`, with canonical vocabulary refs. | same ADR-004 | Updates `PRL-MRP-023`, `PRL-MRP-024`, `PRL-MRP-025` |
+
+### Decision updates to planned leaves
+
+| Leaf ID | Updated planning note |
+|---|---|
+| PRL-MRP-003 | Next executable leaf. Implement deterministic freshness defaults only. Do not read config/workbook. Leave threshold-source refs explicit/empty until PRL config leaf opens. |
+| PRL-MRP-004 | Expected-signal references remain metadata-only; future runtime inventory source is typed YAML/contract, not workbook or code constant. |
+| PRL-MRP-006 | Workbook tab planning must include lineage needed by `config/parallel_risk_signal_inventory.v1.yaml`. |
+| PRL-MRP-007 | Workbook tab creation remains blocked pending explicit workbook-edit authorisation. |
+| PRL-MRP-008 | Promotion plan must name `config/parallel_risk_signal_inventory.v1.yaml` and future signal-inventory contracts. |
+| PRL-MRP-009 | Runtime expected-signal inventory promotion remains blocked until workbook tab and typed YAML/contract exist. |
+| PRL-MRP-012 | Preserve VIX >= 30 caution and VIX >= 50 block as compatibility behaviour. |
+| PRL-MRP-013 | Reconcile VIX thresholds only by explicit compatibility/governed-policy migration with tests. |
+| PRL-MRP-023 | Formalise vocabulary constraints; no renderer. |
+| PRL-MRP-024 | Add deterministic template registry contract/tests for `data/parallel_risk/description_templates.v1.json`; no renderer. |
+| PRL-MRP-025 | Implement renderer only after template registry and vocabulary tests are in place. |
+
+### Artefacts
+
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_architecture_decisions_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_architecture_decisions_001/COMMAND_LOG.md`
+- `var/audit/prl_architecture_decisions_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_architecture_decisions_001/prl-architecture-decisions.patch`
+- `/mnt/data/prl-minute-risk-profile-architecture-decisions-branch.tar.gz`
+
+### Validation
+
+- `git diff --check` — exit 0, output captured in `var/audit/prl_architecture_decisions_001/git_diff_check.txt`.
+- `make scaffold-check` — exit 0, output captured in `var/audit/prl_architecture_decisions_001/scaffold_check.txt`.
+- Full tests were not run because this is planning/decision documentation only and no production/test implementation changed.
+
+### Remaining unresolved questions
+
+The four prior master-roadmap questions are resolved. Remaining non-blocking questions:
+- Should event proximity intensity use continuous scores, discrete states, or both?
+- Which rich signal family should be sourced first after currently supported atoms are stable?
+- Which proof block eventually owns full PRL minute-profile verification?
+
+Next recommended executable leaf:
+- `PRL-MRP-003` — freshness register calculation and tests, with deterministic defaults only and no config/workbook read, no missing-signal logic, no event proximity, no service integration, and no description-engine scope.

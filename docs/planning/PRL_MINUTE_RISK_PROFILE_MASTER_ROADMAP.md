@@ -273,19 +273,41 @@ Future tab requirements:
 - preserve lineage back to raw/derived workbook tabs;
 - support missing/unavailable checks without hallucinating runtime signals.
 
-## 10. Ledger entry index
+## 10. Architecture decisions resolved after master roadmap
 
-- Current roadmap task: `ROADMAP_LEDGER.md` section `PRL Minute Risk Profile Master Roadmap 001`.
-- Planned leaf table: same ledger section and this document section 5.
+Decision artefact:
+
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`
+
+Resolved decisions:
+
+| Question | Decision | Affected leaves |
+|---|---|---|
+| Freshness age threshold ownership after deterministic defaults | Dedicated governed PRL profile config surface, planned as `config/parallel_risk_lane_profile.v1.yaml`. `PRL-MRP-003` uses deterministic defaults only and does not read config/workbook. | `PRL-MRP-003`, `PRL-MRP-021`, `PRL-MRP-026` |
+| Workbook signal-inventory promotion artefact | Typed promotion artefact planned as `config/parallel_risk_signal_inventory.v1.yaml`, validated by future `ParallelRiskSignalInventoryDocument` / `ParallelRiskExpectedSignalRecord` contracts and carrying workbook lineage. | `PRL-MRP-004`, `PRL-MRP-006`, `PRL-MRP-007`, `PRL-MRP-008`, `PRL-MRP-009`, `PRL-MRP-020` |
+| VIX threshold reconciliation | Preserve current PRL VIX behaviour as compatibility mode first: VIX >= 30 caution and VIX >= 50 block. Reconciliation must be explicit and test-backed later. | `PRL-MRP-012`, `PRL-MRP-013`, `PRL-MRP-015`, `PRL-MRP-018` |
+| Deterministic description template location | Dedicated template registry, planned as `data/parallel_risk/description_templates.v1.json`, with canonical vocabulary refs. Do not store templates inside canonical vocabulary data and do not generate free-form prose. | `PRL-MRP-023`, `PRL-MRP-024`, `PRL-MRP-025` |
+
+Leaf updates from these decisions:
+
+- `PRL-MRP-003` remains the next executable leaf; it must implement deterministic freshness defaults only and must not introduce config loading.
+- `PRL-MRP-008` must plan `config/parallel_risk_signal_inventory.v1.yaml` as the exact typed promotion artefact.
+- `PRL-MRP-009` remains blocked until the workbook tab exists and the YAML/contract promotion is opened.
+- `PRL-MRP-012` is compatibility-preservation only; `PRL-MRP-013` is the explicit threshold reconciliation leaf.
+- `PRL-MRP-024` must open a template registry contract before `PRL-MRP-025` opens rendering.
+
+## 11. Ledger entry index
+
+- Master roadmap task: `ROADMAP_LEDGER.md` section `PRL Minute Risk Profile Master Roadmap 001`.
+- Architecture-decision task: `ROADMAP_LEDGER.md` section `PRL Minute Risk Profile Architecture Decisions 001`.
+- Planned leaf table: roadmap ledger section and this document section 5.
 - Future leaves must add their own ledger entries; this roadmap table is not completion evidence for any future leaf.
 
-## 11. Open questions
+## 12. Open questions
 
-1. Which configuration surface will own freshness age thresholds after the first deterministic defaults?
-2. Should event proximity intensity use continuous scores, discrete states, or both?
-3. When VIX thresholds reconcile with coefficient authority, should current hardcoded behaviour remain as compatibility mode?
-4. What exact promotion artefact should carry `Parallel Risk Lane Signal Inventory` into runtime config/contracts?
-5. Which rich signal family should be sourced first after the current supported atoms are stable?
-6. Should deterministic description templates live in config, vocabulary data, or a dedicated template registry?
-7. Which proof block should eventually own PRL minute-profile verification?
+The four prior master-roadmap open questions are resolved in `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`. Remaining open questions that do not block `PRL-MRP-003`:
+
+1. Should event proximity intensity use continuous scores, discrete states, or both?
+2. Which rich signal family should be sourced first after the current supported atoms are stable?
+3. Which proof block should eventually own PRL minute-profile verification?
 
