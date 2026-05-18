@@ -2567,3 +2567,73 @@ Validation recorded during packaging:
 Boundary:
 
 This final package is a bounded local repository package. It does not certify live trading, production deployment, external broker credentials, or live broker execution.
+
+
+---
+
+## 23. Parallel Risk Lane minute-level risk profile implementation plan
+
+Status: `in_progress`
+
+Date recorded: `2026-05-18`
+
+Branch: `work/prl-minute-risk-profile-plan`
+
+Task title: Parallel Risk Lane minute-level environmental risk profile implementation plan
+
+Objective: Convert the accepted Parallel Risk Lane design audit into an implementation-ready, sequenced plan for enriching the current thin PRL risk-envelope seam into a richer minute-level environmental risk profiler while preserving the lane's environmental-risk-only authority boundary.
+
+### 23.1 Governance files read
+
+| File | Read status | Evidence |
+|---|---|---|
+| `AGENTS.md` | read in full | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+| `PLANS.md` | read in full | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+| `ROADMAP_LEDGER.md` | read in full before this entry was appended | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+
+### 23.2 Intended scope
+
+- planning-only contract delta for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags;
+- planning-only calculation delta for freshness, missing/quarantined signal risk, event proximity intensity, risk atom state, family aggregation, envelope enrichment, detailed session phase placeholder, VIX-threshold reconciliation, and preservation of current event/DTE behaviours;
+- planning-only test matrix and leaf sequence;
+- do-not-build-yet register for rich desk signals without typed runtime data;
+- local branch artefacts, command log, manifest, diff, and downloadable archive.
+
+### 23.3 Explicit non-goals
+
+- no production source-code changes;
+- no contract implementation changes;
+- no test implementation changes;
+- no generated migrations;
+- no broad formatting;
+- no mutation of `AGENTS.md` or `PLANS.md`;
+- no candidate formation, playbook selection, capital sizing, broker execution, or serial-stage mutation authority;
+- no direct workbook/reference artefact reads at runtime.
+
+### 23.4 Authority constraints
+
+- Direct user instruction opens implementation planning only.
+- `AGENTS.md` and `PLANS.md` are frozen standing control surfaces and are not to be edited for this task.
+- `ROADMAP_LEDGER.md` is the mutable live execution pointer for this branch.
+- Parallel Risk Lane remains environmental-risk description only; it must not form candidates, select plays, size capital, issue orders, mutate serial internals, or smuggle hidden upstream reads.
+
+### 23.5 Planned gates
+
+| Gate | Planned result |
+|---|---|
+| Gate 0 | Extract repo, preserve/init Git state, create branch, read governance, update ledger, commit ledger entry. |
+| Gate 1 | Contract delta plan. |
+| Gate 2 | Calculation delta plan. |
+| Gate 3 | Test plan. |
+| Gate 4 | Implementation leaf sequence. |
+| Gate 5 | Do-not-build-yet register. |
+| Gate 6 | Ledger closeout, final planning commit, branch archive. |
+
+### 23.6 Expected artefacts
+
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+- `/mnt/data/prl-minute-risk-profile-plan-branch.tar.gz`
