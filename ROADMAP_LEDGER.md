@@ -3188,3 +3188,16 @@ Risk semantics: legacy caution state is compatibility terminology; it remains en
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py -q; git diff --check.
 Acceptance criterion: existing scheduled_event_window_active caution remains unchanged and action-free.
 Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-012 — VIX threshold compatibility preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current PRL VIX compatibility thresholds before governed reconciliation.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: threshold migration; coefficient-authority config loading; envelope behaviour change; trade/play/capital/order output.
+Risk semantics: VIX states are environmental volatility context and consequence/uncertainty evidence, not trading advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py -q; git diff --check.
+Acceptance criterion: VIX >=30 caution and >=50 block behaviour remains unchanged.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
