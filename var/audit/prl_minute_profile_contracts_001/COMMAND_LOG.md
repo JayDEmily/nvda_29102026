@@ -19,3 +19,14 @@ python - <<'PY'
 # inspect signal workbook names and sheets using openpyxl without editing workbook
 PY
 ```
+
+## Gate 2 test-first command
+
+```sh
+cat > tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py <<'PY'
+# new contract tests for PRL-MRP-001/002
+PY
+pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q || true
+```
+
+Observed pre-implementation result: collection error because `AuthorityFlags` is not yet exported from `nvda_desk.contracts.parallel_risk`; this is the expected new-contract failure before implementation.
