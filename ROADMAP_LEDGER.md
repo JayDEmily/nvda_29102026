@@ -3138,3 +3138,16 @@ Allowed files if unblocked later: governed Excel signal workbook plus audit/ledg
 Forbidden scope while blocked: editing the workbook; runtime workbook reads; typed promotion; implementation of inventory-backed signal logic.
 Acceptance criterion when unblocked: workbook tab exists, preserves lineage to raw/derived tabs, and no runtime workbook read is introduced.
 Next independent leaf: skip dependency-blocked workbook-promotion leaves and continue with current supported runtime/event/envelope leaves.
+
+
+## PRL-MRP-008 — Typed promotion plan from workbook inventory
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document the future typed promotion artefact from workbook inventory into runtime config/contracts.
+Allowed files: docs/planning/PRL_SIGNAL_INVENTORY_PROMOTION_PLAN.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: YAML config implementation; workbook edit; runtime inventory consumption; service integration; rich signal implementation.
+Risk semantics: promotion metadata describes signal availability and evidence quality only.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: exact promotion artefact path and future contracts are documented without runtime workbook reads.
+Closeout: promotion plan added; checks passed; commit recorded in git history for this leaf.
