@@ -3354,3 +3354,16 @@ Risk semantics: description contract carries references only and cannot generate
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
 Acceptance criterion: template/vocabulary refs validate, free-form/trade authority flags are rejected, and minute profile remains reference-only.
 Closeout: contract and tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-025 — Deterministic description engine
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: implement deterministic vocabulary-referenced template rendering for PRL state-of-play descriptions.
+Allowed files: data/parallel_risk/description_templates.v1.json; src/nvda_desk/domain/parallel_risk/deterministic_description.py; tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: generative prose; trade advice; review judgement; capital/play/order/candidate authority; canonical vocabulary data mutation.
+Risk semantics: rendered text describes environmental state-of-play only and rejects action language.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py -q; git diff --check.
+Acceptance criterion: deterministic template renders exact output, vocabulary refs are checked, action-language template output is rejected.
+Closeout: deterministic renderer and template registry added; tests passed; commit recorded in git history for this leaf.
