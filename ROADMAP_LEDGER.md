@@ -3212,3 +3212,16 @@ Blocker: this leaf requires an explicit migration policy and/or governed PRL pro
 Forbidden scope while blocked: silent threshold drift; config loading in PRL-MRP-003/012 path; changing >=30 caution and >=50 block behaviour.
 Acceptance criterion when unblocked: threshold migration is explicit, test-backed, lineage-bearing, and backward-compatibility impact is documented.
 Next independent leaf: PRL-MRP-014 options DTE risk preservation.
+
+
+## PRL-MRP-014 — Options DTE risk preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current front_dte > next_dte options repricing caution before richer options surface work.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: real options surface; gamma/skew/OI implementation; service integration; trade/play/capital/order output.
+Risk semantics: DTE inversion is options repricing state-of-play context, not an option strategy recommendation.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py -q; git diff --check.
+Acceptance criterion: current DTE inversion behaviour remains unchanged.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
