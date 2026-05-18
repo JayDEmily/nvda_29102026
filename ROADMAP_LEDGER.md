@@ -3302,3 +3302,16 @@ Implemented prerequisite: PRL-MRP-005 provides metadata-only unavailable signal 
 Forbidden scope while blocked: hardcoded rich-signal inventory; workbook runtime reads; fabricated VWAP/spread/gamma/headline values; rich signal implementation.
 Acceptance criterion when unblocked: unavailable signals are driven by typed promoted inventory and remain value-less until typed runtime sources exist.
 Next independent leaf: PRL-MRP-021 lineage completeness.
+
+
+## PRL-MRP-021 — Lineage completeness
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: ensure minute profiles carry packet lineage, admitted semantic inputs, source artefact refs, signal lineage refs, atom source refs, and forbidden-authority trace.
+Allowed files: src/nvda_desk/domain/parallel_risk/minute_profile_assembly.py; tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: hidden upstream reads; service behaviour change beyond existing optional profile path; workbook reads; event/missing/freshness new logic; trade/play/capital/order output.
+Risk semantics: lineage proves where the state-of-play read came from; it does not authorise action.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py -q; git diff --check.
+Acceptance criterion: source refs, packet IDs, admitted inputs, input fingerprint, and forbidden-authority list are preserved.
+Closeout: lineage implementation added; tests passed; commit recorded in git history for this leaf.

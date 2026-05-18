@@ -47,7 +47,8 @@ def assemble_parallel_risk_minute_profile(
         generated_at_utc=generated_at_utc,
     )
     families = aggregate_risk_family_states(atoms)
-    signal_snapshot = _signal_snapshot(packet)
+    source_artifacts = list(source_artifact_ids or [])
+    signal_snapshot = _signal_snapshot(packet, lineage_refs=source_artifacts)
     return ParallelRiskMinuteProfile(
         packet_id=packet_id,
         symbol=symbol,
@@ -76,7 +77,8 @@ def assemble_parallel_risk_minute_profile(
             "bootstrap_source": packet.bootstrap_source,
             "parent_packet_ids": list(parent_packet_ids or []),
             "dependency_packet_ids": list(dependency_packet_ids or []),
-            "source_artifact_ids": list(source_artifact_ids or []),
+            "source_artifact_ids": source_artifacts,
+            "admitted_semantic_inputs": _admitted_semantic_inputs(packet),
             "input_fingerprint": input_fingerprint,
             "forbidden_authority_keys_consumed": [],
         },
@@ -84,7 +86,9 @@ def assemble_parallel_risk_minute_profile(
     )
 
 
-def _signal_snapshot(packet: ParallelRiskPreparationPacket) -> list[SignalSnapshotEntry]:
+def _signal_snapshot(
+    packet: ParallelRiskPreparationPacket, *, lineage_refs: list[str]
+) -> list[SignalSnapshotEntry]:
     entries: list[SignalSnapshotEntry] = []
     temporal = packet.temporal_input
     if temporal.source_time_utc is not None:
@@ -97,6 +101,7 @@ def _signal_snapshot(packet: ParallelRiskPreparationPacket) -> list[SignalSnapsh
                 units="datetime_utc",
                 source_time_utc=temporal.source_time_utc,
                 freshness_state="unknown",
+                lineage_refs=list(lineage_refs),
             )
         )
     if packet.regime_input.vix_level is not None:
@@ -109,6 +114,7 @@ def _signal_snapshot(packet: ParallelRiskPreparationPacket) -> list[SignalSnapsh
                 units="index_level",
                 source_time_utc=temporal.source_time_utc,
                 freshness_state="unknown",
+                lineage_refs=list(lineage_refs),
             )
         )
     for signal_id, value in (
@@ -126,6 +132,7 @@ def _signal_snapshot(packet: ParallelRiskPreparationPacket) -> list[SignalSnapsh
                     units="price" if signal_id == "spot_price" else "days",
                     source_time_utc=temporal.source_time_utc,
                     freshness_state="unknown",
+                    lineage_refs=list(lineage_refs),
                 )
             )
     return entries
@@ -141,3 +148,11 @@ def _uncertainty_summary(
         "missing_signal_count": len(missing),
         "summary_basis": "deterministic_register_counts_only",
     }
+
+
+
+def _admitted_semantic_inputs(packet: ParallelRiskPreparationPacket) -> list[str]:
+    inputs = ["temporal_input"]
+    if packet.bootstrap_source == "stage_input_bundle.parallel_risk_primitives":
+        inputs.extend(["regime_input", "options_flow_input"])
+    return inputs
