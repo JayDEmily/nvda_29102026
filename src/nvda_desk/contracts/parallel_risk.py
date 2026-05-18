@@ -329,6 +329,33 @@ class ParallelRiskMinuteProfile(_DetachedMutableModel):
     notes: list[str] = Field(default_factory=list)
 
 
+class ParallelRiskDescriptionTemplateRef(BaseModel):
+    """Metadata-only reference to a deterministic PRL description template."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    template_id: str = Field(min_length=1)
+    template_registry_ref: str = Field(min_length=1)
+    vocabulary_dictionary_refs: list[str] = Field(default_factory=list)
+    description_vocabulary_refs: list[str] = Field(default_factory=list)
+    deterministic_template_only: bool = True
+    free_form_generation_allowed: bool = False
+    trade_advice_allowed: bool = False
+    capital_or_order_language_allowed: bool = False
+
+    @model_validator(mode="after")
+    def _validate_description_template_ref(self) -> "ParallelRiskDescriptionTemplateRef":
+        if not self.deterministic_template_only:
+            raise ValueError("parallel_risk_description_template_ref_must_remain_bounded")
+        if (
+            self.free_form_generation_allowed
+            or self.trade_advice_allowed
+            or self.capital_or_order_language_allowed
+        ):
+            raise ValueError("parallel_risk_description_template_ref_must_remain_bounded")
+        return self
+
+
 class ParallelRiskFragilityDimension(BaseModel):
     """One descriptive candidate fragility dimension without sizing authority."""
 

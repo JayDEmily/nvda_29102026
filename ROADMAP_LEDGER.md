@@ -3341,3 +3341,16 @@ Risk semantics: description constraints explicitly preserve neutral risk state-o
 Expected tests: python -m pytest tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py -q; git diff --check.
 Acceptance criterion: constraints cite vocabulary governance, template registry target, no free-form prose, and no trade advice.
 Closeout: constraints and tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-024 — Deterministic description contract and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add metadata-only deterministic description template reference contract and tests.
+Allowed files: src/nvda_desk/contracts/parallel_risk.py; tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: renderer; template registry data creation; free-form prose; trade/play/capital/order/review output.
+Risk semantics: description contract carries references only and cannot generate or authorise action language.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: template/vocabulary refs validate, free-form/trade authority flags are rejected, and minute profile remains reference-only.
+Closeout: contract and tests added; tests passed; commit recorded in git history for this leaf.
