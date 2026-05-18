@@ -3087,3 +3087,16 @@ Risk semantics: freshness is neutral state-of-play evidence; stale/unknown incre
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
 Acceptance criterion: freshness entries classify fresh/ageing/stale/unknown deterministically and retain metadata-only semantics.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-004 — Missing/quarantined signal register and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add metadata-only missing signal entries and quarantined/admitted upstream signal snapshot projection.
+Allowed files: src/nvda_desk/domain/parallel_risk/missing_signals.py; tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: workbook reads; expected-inventory loading; event proximity; service integration; trade/play/capital/order output.
+Risk semantics: missing/quarantined signals describe uncertainty and availability, not a do-not-trade warning.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py -q; git diff --check.
+Acceptance criterion: present/missing/quarantined states are represented without hallucinated values or authority leakage.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
