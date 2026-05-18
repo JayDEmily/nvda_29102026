@@ -3201,3 +3201,14 @@ Risk semantics: VIX states are environmental volatility context and consequence/
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py -q; git diff --check.
 Acceptance criterion: VIX >=30 caution and >=50 block behaviour remains unchanged.
 Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-013 — VIX governed threshold reconciliation
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: reconcile current hardcoded PRL VIX thresholds with governed coefficient/config authority.
+Blocker: this leaf requires an explicit migration policy and/or governed PRL profile config opening. Current authorised execution preserves compatibility only.
+Forbidden scope while blocked: silent threshold drift; config loading in PRL-MRP-003/012 path; changing >=30 caution and >=50 block behaviour.
+Acceptance criterion when unblocked: threshold migration is explicit, test-backed, lineage-bearing, and backward-compatibility impact is documented.
+Next independent leaf: PRL-MRP-014 options DTE risk preservation.
