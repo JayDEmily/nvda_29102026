@@ -3380,3 +3380,16 @@ Risk semantics: documentation preserves PRL as environmental state-of-play inter
 Expected checks: make scaffold-check; git diff --check.
 Acceptance criterion: docs distinguish implemented, blocked, deferred, and still-forbidden authority surfaces.
 Closeout: docs updated; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-027 — Deferred rich signal-family intake plan
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document lawful intake gates and required upstream sources/contracts for deferred rich Bloomberg-style signal families.
+Allowed files: docs/planning/PRL_DEFERRED_RICH_SIGNAL_FAMILY_INTAKE_PLAN.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: implementing rich signal families; fabricating values; workbook edits; runtime source integration.
+Risk semantics: deferred families are future state-of-play inputs, not action generators.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: every deferred rich family has required source, contract, and future atom named without implementation.
+Closeout: plan added; checks passed; commit recorded in git history for this leaf.
