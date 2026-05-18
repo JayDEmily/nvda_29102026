@@ -3290,3 +3290,15 @@ Risk semantics: optional profile describes state-of-play and leaves default PRL 
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py -q; git diff --check.
 Acceptance criterion: existing service calls still pass; optional minute profile carries lineage and default-deny authority flags.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-020 — Inventory-backed unavailable signal handling
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: mark unavailable Bloomberg-style signals from the promoted expected-signal inventory as unavailable rather than fabricated.
+Blocker: inventory-backed handling depends on `PRL-MRP-009`, which is blocked pending workbook tab creation and typed promotion.
+Implemented prerequisite: PRL-MRP-005 provides metadata-only unavailable signal helpers for manually supplied signal IDs.
+Forbidden scope while blocked: hardcoded rich-signal inventory; workbook runtime reads; fabricated VWAP/spread/gamma/headline values; rich signal implementation.
+Acceptance criterion when unblocked: unavailable signals are driven by typed promoted inventory and remain value-less until typed runtime sources exist.
+Next independent leaf: PRL-MRP-021 lineage completeness.
