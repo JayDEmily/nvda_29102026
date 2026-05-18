@@ -3162,3 +3162,16 @@ Blocker: depends on workbook tab creation (`PRL-MRP-007`) and promoted YAML/cont
 Forbidden scope while blocked: workbook reads at runtime; config creation from absent workbook tab; rich signal values; missing/unavailable logic driven by ungoverned constants.
 Acceptance criterion when unblocked: PRL consumes typed promoted inventory only, with workbook lineage and no direct workbook read.
 Next independent leaf: PRL-MRP-010 event proximity register.
+
+
+## PRL-MRP-010 — Event proximity register
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: project context-only runtime calendar matches into descriptive PRL event proximity register entries.
+Allowed files: src/nvda_desk/domain/parallel_risk/event_proximity.py; tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: service integration; scheduled-event envelope changes; trade/play/capital/order output; unscheduled headline risk.
+Risk semantics: event proximity is neutral state-of-play context that can be constructive, defensive, ambiguous, or consequential downstream; it is not advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py -q; git diff --check.
+Acceptance criterion: proximity/materiality/tags/lineage are preserved without trade authority.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
