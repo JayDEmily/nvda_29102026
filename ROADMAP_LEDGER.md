@@ -3126,3 +3126,15 @@ Risk semantics: expected-signal inventory is neutral signal-availability governa
 Expected tests/checks: make scaffold-check; python -m pytest tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py -q; git diff --check.
 Acceptance criterion: workbook path, raw-primitives sheet, future tab name, lawful data path, statuses, and non-goals are documented.
 Closeout: planning specification added; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-007 — Expected signal inventory workbook-tab creation
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: create the governed workbook tab `Parallel Risk Lane Signal Inventory`.
+Blocker: the active execution scope forbids Excel workbook editing unless the relevant leaf explicitly permits workbook editing and required authority has been recorded. This pass has not opened workbook mutation.
+Allowed files if unblocked later: governed Excel signal workbook plus audit/ledger artefacts.
+Forbidden scope while blocked: editing the workbook; runtime workbook reads; typed promotion; implementation of inventory-backed signal logic.
+Acceptance criterion when unblocked: workbook tab exists, preserves lineage to raw/derived tabs, and no runtime workbook read is introduced.
+Next independent leaf: skip dependency-blocked workbook-promotion leaves and continue with current supported runtime/event/envelope leaves.
