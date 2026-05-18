@@ -2830,3 +2830,54 @@ Unresolved items:
 - No plain-English template engine was implemented in this leaf.
 
 Next recommended leaf: `PRL-MRP-003` — implement freshness register calculation and tests using existing source/capture/persistence temporal fields, without opening missing-signal, event-proximity, service-integration, workbook-editing, or plain-English-generation scope.
+
+---
+
+## PRL Minute Risk Profile Master Roadmap 001
+
+Status: `in_progress`
+
+Branch: `work/prl-minute-risk-profile-master-roadmap`
+Baseline commit: `7eb107f6527ef5dc37e584a88deecd4a5390d1e5`
+Task title: Parallel Risk Lane minute-level environmental risk profiler master roadmap
+
+Objective:
+- Create a 20-30 leaf implementation roadmap that prevents scope drift after the completed contract-only PRL-MRP-001/002 branch.
+- Preserve Parallel Risk Lane authority boundaries while sequencing contracts, calculations, tests, workbook-governance, vocabulary-governance, integration, and deferred rich signal families.
+
+Allowed files:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- audit artefacts under `var/audit/prl_master_roadmap_001/`
+
+Forbidden scope:
+- no production source changes;
+- no contract implementation changes;
+- no test implementation changes;
+- no freshness scoring implementation;
+- no missing-signal implementation;
+- no event-proximity implementation;
+- no Excel workbook edits;
+- no plain-English generation/template engine;
+- no service/evaluator integration.
+
+Governance files fully read:
+- see `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`.
+
+Planned gates:
+1. governance and normative surface map;
+2. existing test surface map;
+3. dependency graph for next 20-30 leaves;
+4. master implementation roadmap;
+5. ledger planning entries;
+6. roadmap artefacts;
+7. validation and closeout.
+
+Expected artefacts:
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+- `/mnt/data/prl-minute-risk-profile-master-roadmap-branch.tar.gz`
+
