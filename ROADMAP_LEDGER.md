@@ -3175,3 +3175,16 @@ Risk semantics: event proximity is neutral state-of-play context that can be con
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py -q; git diff --check.
 Acceptance criterion: proximity/materiality/tags/lineage are preserved without trade authority.
 Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-011 — Scheduled-event caution preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current scheduled-event envelope behaviour before atom wrapping.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: changing event/envelope calculation; service integration; trade/play/capital/order output.
+Risk semantics: legacy caution state is compatibility terminology; it remains environmental context only.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py -q; git diff --check.
+Acceptance criterion: existing scheduled_event_window_active caution remains unchanged and action-free.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
