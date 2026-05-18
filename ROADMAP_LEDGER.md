@@ -3367,3 +3367,16 @@ Risk semantics: rendered text describes environmental state-of-play only and rej
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py -q; git diff --check.
 Acceptance criterion: deterministic template renders exact output, vocabulary refs are checked, action-language template output is rejected.
 Closeout: deterministic renderer and template registry added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-026 — Documentation/current-state map update
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: update roadmap/current-state documentation after execution batch implementation and blocked-leaf outcomes.
+Allowed files: docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md; NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: production source changes; test changes; workbook edits; rich signal implementation.
+Risk semantics: documentation preserves PRL as environmental state-of-play interpreter, not a warning-only or action system.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: docs distinguish implemented, blocked, deferred, and still-forbidden authority surfaces.
+Closeout: docs updated; checks passed; commit recorded in git history for this leaf.

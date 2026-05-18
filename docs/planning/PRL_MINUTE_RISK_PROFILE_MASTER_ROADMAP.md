@@ -311,3 +311,14 @@ The four prior master-roadmap open questions are resolved in `docs/planning/PRL_
 2. Which rich signal family should be sourced first after the current supported atoms are stable?
 3. Which proof block should eventually own PRL minute-profile verification?
 
+
+## 13. Execution batch 001 status note
+
+Execution branch `work/prl-minute-risk-profile-execution-batch-001` implemented or blocked the early PRL-MRP leaves through deterministic description rendering:
+
+- Implemented: PRL-MRP-003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025.
+- Blocked: PRL-MRP-007, 009, 013, 020.
+
+The lane now has contract-level minute profile support, deterministic freshness/missing/unavailable/event registers, supported risk atoms, family aggregation, optional backward-compatible service assembly, lineage completeness, authority regression tests, and deterministic vocabulary-governed description rendering.
+
+The lane remains environmental state-of-play only. It does not form candidates, select plays, size capital, issue orders, mutate serial stages, read the workbook at runtime, or generate free-form trading advice.
