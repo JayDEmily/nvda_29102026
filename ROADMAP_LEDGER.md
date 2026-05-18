@@ -3225,3 +3225,16 @@ Risk semantics: DTE inversion is options repricing state-of-play context, not an
 Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py -q; git diff --check.
 Acceptance criterion: current DTE inversion behaviour remains unchanged.
 Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-015 — Supported risk atom skeleton
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: build risk atoms for current supported inputs: freshness, missing/data-quality, event proximity, legacy event/VIX/DTE envelope contributions.
+Allowed files: src/nvda_desk/domain/parallel_risk/risk_atoms.py; tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: rich signal atoms without typed source; service integration; capital/play/order/candidate output.
+Risk semantics: atoms describe state-of-play and may carry constructive, uncertainty, mixed, and consequence-side semantics.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: supported atoms are emitted without trade-action fields or fabricated rich-signal values.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
