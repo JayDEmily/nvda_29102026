@@ -2681,3 +2681,82 @@ Unresolved questions:
 - Where the expected-signal inventory for missing/unavailable signal checks should live.
 
 Next recommended leaf: `PRL-MRP-001` — contract-only schema additions for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags, with contract tests before source behaviour changes.
+
+---
+
+## 24. Parallel Risk Lane minute profile contract models
+
+Status: `in_progress`
+
+Date recorded: `2026-05-18`
+
+Branch: `work/prl-minute-profile-contracts`
+
+Task title: Parallel Risk Lane minute-level risk profile contract models and authority flags
+
+Objective: Execute only `PRL-MRP-001` and `PRL-MRP-002` from the accepted implementation plan by adding contract-only schema models/enums and default-deny authority flags for the enriched minute-level PRL profile, without domain calculations, service integration, workbook editing, or plain-English generation.
+
+### 24.1 Governance files read
+
+| File | Read status | Evidence |
+|---|---|---|
+| `AGENTS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `PLANS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `ROADMAP_LEDGER.md` | read in full before this entry was appended | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+
+### 24.2 Allowed files for this leaf
+
+- `src/nvda_desk/contracts/parallel_risk.py`
+- new or existing tests under `tests/tier_a/parallel_risk/`
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` only for resolved planning-note updates
+- audit artefacts under `var/audit/prl_minute_profile_contracts_001/`
+
+### 24.3 Forbidden scope
+
+- no domain calculations;
+- no service integration;
+- no freshness scoring logic beyond contract fields;
+- no event-proximity calculation logic beyond contract fields;
+- no risk-family aggregation logic beyond contract fields;
+- no evaluator behaviour changes unless strictly required for imports/tests;
+- no Excel workbook edits;
+- no plain-English template engine;
+- no production trading, candidate formation, playbook selection, capital sizing, order instruction, review judgement, or serial-stage mutation authority.
+
+### 24.4 Planned tests
+
+- minimal `ParallelRiskMinuteProfile` instantiation and serialisation;
+- `AuthorityFlags` default all forbidden capabilities to `False`;
+- `RiskAtomState` represents observe/caution/block without trade-action fields;
+- `SignalSnapshotEntry` represents present, missing, quarantined, and stale signal states;
+- expected-signal inventory references remain metadata only and do not imply runtime workbook reads;
+- plain-English description fields remain deterministic template/vocabulary-reference metadata only and do not permit trade advice;
+- existing PRL contract/evaluation tests remain compatible.
+
+### 24.5 Resolved design decisions recorded for this leaf
+
+Expected signal inventory authority: the expected-signal inventory will live in the governed Excel signal workbook as a future tab named `Parallel Risk Lane Signal Inventory`. Runtime code must not read the workbook directly; runtime use may occur only after typed promotion into config/contracts. This leaf records the decision only and does not edit the workbook.
+
+Plain-English risk description authority: any future plain-English desk-risk description must be deterministic, template-governed, and vocabulary-governed. It must consult the repo's normative vocabulary system before implementation and must not use free-form generative commentary, trade advice, play selection, capital sizing, or review-layer judgement. This leaf records the decision only and does not implement a description engine.
+
+### 24.6 Governance sources located
+
+Vocabulary governance path: `docs/vocabulary/README.md`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `docs/vocabulary/vocabulary_registry.md`, and canonical dictionary `data/vocabulary/canonical_vocabulary.json`.
+
+Signal workbook path: `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`.
+
+Existing raw-signal / raw-primitives sheet identified: `Raw_Primitives_Catalog`.
+
+Future required workbook tab name: `Parallel Risk Lane Signal Inventory`.
+
+### 24.7 Planned gates
+
+| Gate | Planned result |
+|---|---|
+| Gate 1 | Governance and branch setup; ledger entry committed before code/test changes. |
+| Gate 2 | Contract tests written before production contract implementation. |
+| Gate 3 | Contract-only models/enums and default-deny authority flags implemented. |
+| Gate 4 | Targeted PRL contract/evaluation tests and `git diff --check` run. |
+| Gate 5 | Ledger closeout, final commit, branch archive. |

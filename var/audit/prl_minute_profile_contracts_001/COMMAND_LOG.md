@@ -1,0 +1,21 @@
+# Command log — PRL minute profile contracts 001
+
+```sh
+rm -rf /mnt/data/prl_contracts_work
+mkdir -p /mnt/data/prl_contracts_work
+tar -xzf /mnt/data/prl-minute-risk-profile-plan-branch.tar.gz -C /mnt/data/prl_contracts_work
+cd /mnt/data/prl_contracts_work/MVD-A10_1704_V1
+git status --short --branch
+git branch --show-current
+git log --oneline -5
+git checkout -B work/prl-minute-profile-contracts work/prl-minute-risk-profile-plan
+wc -l AGENTS.md PLANS.md ROADMAP_LEDGER.md docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
+python - <<'PY'
+# read required governance files fully and write FULL_READ_MANIFEST
+PY
+grep -RInE "vocabulary|dictionary|lexicon|glossary|normative wording|controlled language|plain English|review language|explanation language" docs src tests config schemas project_control evidence_index > var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt
+find docs data config -iname '*.xlsx' -o -iname '*.xlsm' -o -iname '*.xls'
+python - <<'PY'
+# inspect signal workbook names and sheets using openpyxl without editing workbook
+PY
+```

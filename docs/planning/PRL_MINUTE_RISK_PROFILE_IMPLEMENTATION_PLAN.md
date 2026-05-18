@@ -215,3 +215,38 @@ Implementation can be accepted only after a future implementation branch shows:
 5. Where should expected-signal inventory live so missing-signal checks are governed but not overfit?
 6. Should plain-English risk description be deterministic template-only, or allow later natural-language rendering from atom states?
 7. What minimum lineage is required for external consumers: signal-level, atom-level, family-level, or all three?
+
+---
+
+## 14. Resolved design decisions from PRL-MRP-001/002 opening
+
+### 14.1 Expected signal inventory authority
+
+The expected-signal inventory for future missing/unavailable signal checks belongs in the governed Excel signal workbook, not in an isolated code constant or free-floating Markdown table.
+
+Current governed workbook identified for this route:
+
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
+
+Existing raw-signal / raw-primitives sheet identified:
+
+- `Raw_Primitives_Catalog`
+
+Future required sheet name:
+
+- `Parallel Risk Lane Signal Inventory`
+
+Runtime boundary: the workbook remains governance/reference material. Runtime code must not read the workbook directly. Any runtime use must occur only after typed promotion into config/contracts.
+
+### 14.2 Plain-English risk description authority
+
+Future plain-English desk-risk description output must be deterministic and governed. It must use deterministic templates and vocabulary references; it must not use free-form generative commentary.
+
+Vocabulary governance sources identified for future design before any description engine work:
+
+- `docs/vocabulary/README.md`
+- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+- `docs/vocabulary/vocabulary_registry.md`
+- `data/vocabulary/canonical_vocabulary.json`
+
+Boundary: this implementation leaf records references only. It does not implement a plain-English description engine and does not create trade advice, play-selection, capital-sizing, order-instruction, or review-judgement authority.
