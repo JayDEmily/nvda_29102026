@@ -3151,3 +3151,14 @@ Risk semantics: promotion metadata describes signal availability and evidence qu
 Expected checks: make scaffold-check; git diff --check.
 Acceptance criterion: exact promotion artefact path and future contracts are documented without runtime workbook reads.
 Closeout: promotion plan added; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-009 — Runtime expected-signal inventory promotion
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: implement typed promoted inventory consumption after workbook tab exists.
+Blocker: depends on workbook tab creation (`PRL-MRP-007`) and promoted YAML/contract authority; workbook mutation remains unauthorised in this pass.
+Forbidden scope while blocked: workbook reads at runtime; config creation from absent workbook tab; rich signal values; missing/unavailable logic driven by ungoverned constants.
+Acceptance criterion when unblocked: PRL consumes typed promoted inventory only, with workbook lineage and no direct workbook read.
+Next independent leaf: PRL-MRP-010 event proximity register.
