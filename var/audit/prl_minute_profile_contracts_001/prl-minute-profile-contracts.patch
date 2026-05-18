@@ -1,0 +1,951 @@
+diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
+index 513a627..bb6de06 100644
+--- a/ROADMAP_LEDGER.md
++++ b/ROADMAP_LEDGER.md
+@@ -2681,3 +2681,152 @@ Unresolved questions:
+ - Where the expected-signal inventory for missing/unavailable signal checks should live.
+ 
+ Next recommended leaf: `PRL-MRP-001` — contract-only schema additions for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags, with contract tests before source behaviour changes.
++
++---
++
++## 24. Parallel Risk Lane minute profile contract models
++
++Status: `implementation_complete`
++
++Date recorded: `2026-05-18`
++
++Branch: `work/prl-minute-profile-contracts`
++
++Task title: Parallel Risk Lane minute-level risk profile contract models and authority flags
++
++Objective: Execute only `PRL-MRP-001` and `PRL-MRP-002` from the accepted implementation plan by adding contract-only schema models/enums and default-deny authority flags for the enriched minute-level PRL profile, without domain calculations, service integration, workbook editing, or plain-English generation.
++
++### 24.1 Governance files read
++
++| File | Read status | Evidence |
++|---|---|---|
++| `AGENTS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
++| `PLANS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
++| `ROADMAP_LEDGER.md` | read in full before this entry was appended | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
++| `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
++
++### 24.2 Allowed files for this leaf
++
++- `src/nvda_desk/contracts/parallel_risk.py`
++- new or existing tests under `tests/tier_a/parallel_risk/`
++- `ROADMAP_LEDGER.md`
++- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` only for resolved planning-note updates
++- audit artefacts under `var/audit/prl_minute_profile_contracts_001/`
++
++### 24.3 Forbidden scope
++
++- no domain calculations;
++- no service integration;
++- no freshness scoring logic beyond contract fields;
++- no event-proximity calculation logic beyond contract fields;
++- no risk-family aggregation logic beyond contract fields;
++- no evaluator behaviour changes unless strictly required for imports/tests;
++- no Excel workbook edits;
++- no plain-English template engine;
++- no production trading, candidate formation, playbook selection, capital sizing, order instruction, review judgement, or serial-stage mutation authority.
++
++### 24.4 Planned tests
++
++- minimal `ParallelRiskMinuteProfile` instantiation and serialisation;
++- `AuthorityFlags` default all forbidden capabilities to `False`;
++- `RiskAtomState` represents observe/caution/block without trade-action fields;
++- `SignalSnapshotEntry` represents present, missing, quarantined, and stale signal states;
++- expected-signal inventory references remain metadata only and do not imply runtime workbook reads;
++- plain-English description fields remain deterministic template/vocabulary-reference metadata only and do not permit trade advice;
++- existing PRL contract/evaluation tests remain compatible.
++
++### 24.5 Resolved design decisions recorded for this leaf
++
++Expected signal inventory authority: the expected-signal inventory will live in the governed Excel signal workbook as a future tab named `Parallel Risk Lane Signal Inventory`. Runtime code must not read the workbook directly; runtime use may occur only after typed promotion into config/contracts. This leaf records the decision only and does not edit the workbook.
++
++Plain-English risk description authority: any future plain-English desk-risk description must be deterministic, template-governed, and vocabulary-governed. It must consult the repo's normative vocabulary system before implementation and must not use free-form generative commentary, trade advice, play selection, capital sizing, or review-layer judgement. This leaf records the decision only and does not implement a description engine.
++
++### 24.6 Governance sources located
++
++Vocabulary governance path: `docs/vocabulary/README.md`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `docs/vocabulary/vocabulary_registry.md`, and canonical dictionary `data/vocabulary/canonical_vocabulary.json`.
++
++Signal workbook path: `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`.
++
++Existing raw-signal / raw-primitives sheet identified: `Raw_Primitives_Catalog`.
++
++Future required workbook tab name: `Parallel Risk Lane Signal Inventory`.
++
++### 24.7 Planned gates
++
++| Gate | Planned result |
++|---|---|
++| Gate 1 | Governance and branch setup; ledger entry committed before code/test changes. |
++| Gate 2 | Contract tests written before production contract implementation. |
++| Gate 3 | Contract-only models/enums and default-deny authority flags implemented. |
++| Gate 4 | Targeted PRL contract/evaluation tests and `git diff --check` run. |
++| Gate 5 | Ledger closeout, final commit, branch archive. |
++
++
++### 24.8 Closeout details
++
++Status updated to: `implementation_complete`
++
++Resolved expected-signal inventory decision: the expected-signal inventory belongs in the governed Excel signal workbook as future tab `Parallel Risk Lane Signal Inventory`; this leaf did not edit the workbook and runtime code still must not read it directly.
++
++Resolved vocabulary-governed description decision: future plain-English desk-risk output must use deterministic templates and governed vocabulary references; this leaf did not implement any description engine or free-form commentary surface.
++
++Workbook identified:
++
++- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
++- raw-signal / raw-primitives sheet: `Raw_Primitives_Catalog`
++- future tab: `Parallel Risk Lane Signal Inventory`
++
++Vocabulary governance identified:
++
++- `docs/vocabulary/README.md`
++- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++- `docs/vocabulary/vocabulary_registry.md`
++- `data/vocabulary/canonical_vocabulary.json`
++
++Files changed:
++
++- `ROADMAP_LEDGER.md`
++- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
++- `src/nvda_desk/contracts/parallel_risk.py`
++- `tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py`
++- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
++- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
++- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
++- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
++- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
++- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
++- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
++
++Commits created before this closeout note:
++
++- Governance/ledger setup commit: `a1d27a293c75c0f0872a99eb15beb56aaf796672`
++- Test-first contract tests commit: `656d1fd52a676f419b07cccd710b3ee30ba36311`
++- Contract implementation/proof-log commit: `e66ea532404a9e3a387756f38995cd9a391064d3`
++- Final closeout commit: recorded in final response after commit creation.
++
++Tests run:
++
++- `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py -q` → `36 passed`
++- `git diff --check` → no output / exit 0
++
++Artefacts created:
++
++- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
++- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
++- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
++- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
++- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
++- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
++- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
++- `/mnt/data/prl-minute-profile-contracts-branch.tar.gz`
++
++Unresolved items:
++
++- No runtime freshness scoring was implemented in this leaf.
++- No missing/quarantined signal calculation was implemented in this leaf.
++- No event proximity logic was implemented in this leaf.
++- No service/evaluator integration was implemented in this leaf.
++- No workbook tab was created or edited in this leaf.
++- No plain-English template engine was implemented in this leaf.
++
++Next recommended leaf: `PRL-MRP-003` — implement freshness register calculation and tests using existing source/capture/persistence temporal fields, without opening missing-signal, event-proximity, service-integration, workbook-editing, or plain-English-generation scope.
+diff --git a/docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md b/docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
+index a6900e8..abea483 100644
+--- a/docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
++++ b/docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
+@@ -215,3 +215,38 @@ Implementation can be accepted only after a future implementation branch shows:
+ 5. Where should expected-signal inventory live so missing-signal checks are governed but not overfit?
+ 6. Should plain-English risk description be deterministic template-only, or allow later natural-language rendering from atom states?
+ 7. What minimum lineage is required for external consumers: signal-level, atom-level, family-level, or all three?
++
++---
++
++## 14. Resolved design decisions from PRL-MRP-001/002 opening
++
++### 14.1 Expected signal inventory authority
++
++The expected-signal inventory for future missing/unavailable signal checks belongs in the governed Excel signal workbook, not in an isolated code constant or free-floating Markdown table.
++
++Current governed workbook identified for this route:
++
++- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
++
++Existing raw-signal / raw-primitives sheet identified:
++
++- `Raw_Primitives_Catalog`
++
++Future required sheet name:
++
++- `Parallel Risk Lane Signal Inventory`
++
++Runtime boundary: the workbook remains governance/reference material. Runtime code must not read the workbook directly. Any runtime use must occur only after typed promotion into config/contracts.
++
++### 14.2 Plain-English risk description authority
++
++Future plain-English desk-risk description output must be deterministic and governed. It must use deterministic templates and vocabulary references; it must not use free-form generative commentary.
++
++Vocabulary governance sources identified for future design before any description engine work:
++
++- `docs/vocabulary/README.md`
++- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++- `docs/vocabulary/vocabulary_registry.md`
++- `data/vocabulary/canonical_vocabulary.json`
++
++Boundary: this implementation leaf records references only. It does not implement a plain-English description engine and does not create trade advice, play-selection, capital-sizing, order-instruction, or review-judgement authority.
+diff --git a/src/nvda_desk/contracts/parallel_risk.py b/src/nvda_desk/contracts/parallel_risk.py
+index c0a6545..35651e3 100644
+--- a/src/nvda_desk/contracts/parallel_risk.py
++++ b/src/nvda_desk/contracts/parallel_risk.py
+@@ -127,6 +127,206 @@ class ParallelRiskInputTrace(BaseModel):
+ 
+ 
+ ParallelRiskConsequencePosture = Literal["observe", "caution", "block"]
++ParallelRiskAtomStateValue = Literal["inactive", "observe", "caution", "block"]
++ParallelRiskEnvelopeStateValue = Literal["tight", "broad", "observe", "caution", "block", "unknown"]
++ParallelRiskSignalKind = Literal["raw", "derived", "metadata", "config", "trace"]
++ParallelRiskFreshnessState = Literal["fresh", "ageing", "stale", "unknown"]
++ParallelRiskSignalPresenceState = Literal[
++    "present", "missing", "quarantined", "rejected", "not_expected"
++]
++ParallelRiskMissingImpact = Literal[
++    "none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"
++]
++
++
++class AuthorityFlags(BaseModel):
++    """Default-deny authority flags for enriched parallel-risk profile contracts."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    candidate_formation_allowed: bool = False
++    playbook_selection_allowed: bool = False
++    capital_sizing_allowed: bool = False
++    broker_execution_allowed: bool = False
++    serial_stage_mutation_allowed: bool = False
++    review_judgement_authority: bool = False
++    direct_workbook_runtime_read_allowed: bool = False
++
++    @model_validator(mode="after")
++    def _validate_default_deny_authority(self) -> "AuthorityFlags":
++        if any(
++            (
++                self.candidate_formation_allowed,
++                self.playbook_selection_allowed,
++                self.capital_sizing_allowed,
++                self.broker_execution_allowed,
++                self.serial_stage_mutation_allowed,
++                self.review_judgement_authority,
++                self.direct_workbook_runtime_read_allowed,
++            )
++        ):
++            raise ValueError("parallel_risk_authority_flags_must_remain_false")
++        return self
++
++
++class SignalSnapshotEntry(BaseModel):
++    """One signal-like value or absence recorded for a minute-level risk profile."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    signal_id: str = Field(min_length=1)
++    signal_family: str = Field(min_length=1)
++    raw_or_derived: ParallelRiskSignalKind
++    value: Any | None = None
++    units: str | None = None
++    source_time_utc: datetime | None = None
++    captured_at_utc: datetime | None = None
++    persisted_at_utc: datetime | None = None
++    freshness_state: ParallelRiskFreshnessState = "unknown"
++    freshness_reason: str | None = None
++    lineage_refs: list[str] = Field(default_factory=list)
++    source_ids: list[str] = Field(default_factory=list)
++    workbook_lineage_refs: list[str] = Field(default_factory=list)
++    used_by_risk_atoms: list[str] = Field(default_factory=list)
++    missing_or_quarantined: ParallelRiskSignalPresenceState = "present"
++    rejection_reason: str | None = None
++    lawful_prl_use_allowed: bool = True
++    lawful_prl_use_reason: str | None = None
++
++
++class MissingSignalRegisterEntry(BaseModel):
++    """Metadata-only record for an expected signal absent from the PRL input surface."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    signal_id: str = Field(min_length=1)
++    signal_family: str = Field(min_length=1)
++    expected_reason: str = Field(min_length=1)
++    missing_reason: str = Field(min_length=1)
++    impact_on_profile: ParallelRiskMissingImpact = "none"
++    source_refs: list[str] = Field(default_factory=list)
++    expected_signal_inventory_ref: str | None = None
++    workbook_lineage_refs: list[str] = Field(default_factory=list)
++
++
++class FreshnessRegisterEntry(BaseModel):
++    """Contract record for signal/source freshness state; calculation lives elsewhere."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    signal_id: str = Field(min_length=1)
++    source_time_utc: datetime | None = None
++    captured_at_utc: datetime | None = None
++    persisted_at_utc: datetime | None = None
++    generated_at_utc: datetime | None = None
++    max_allowed_age_seconds: int | None = Field(default=None, ge=0)
++    observed_age_seconds: int | None = Field(default=None, ge=0)
++    freshness_state: ParallelRiskFreshnessState = "unknown"
++    impact_on_profile: str | None = None
++    source_refs: list[str] = Field(default_factory=list)
++
++
++class EventProximityRegisterEntry(BaseModel):
++    """Contract record for projected event proximity without trade authority."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    event_id: str = Field(min_length=1)
++    event_type: str = Field(min_length=1)
++    starts_at_utc: datetime | None = None
++    ends_at_utc: datetime | None = None
++    proximity_seconds: int | None = None
++    materiality: str | None = None
++    materiality_rank: int | None = None
++    runtime_tags: list[str] = Field(default_factory=list)
++    evaluation_tags: list[str] = Field(default_factory=list)
++    risk_interpretation: str = Field(min_length=1)
++    source_refs: list[str] = Field(default_factory=list)
++
++
++class RiskAtomState(BaseModel):
++    """One contract-only environmental risk atom state, not a trade action."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    risk_atom_id: str = Field(min_length=1)
++    name: str | None = None
++    family: str = Field(min_length=1)
++    state: ParallelRiskAtomStateValue = "inactive"
++    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
++    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
++    trigger_condition: str = Field(min_length=1)
++    observable_cues: list[dict[str, Any]] = Field(default_factory=list)
++    calculation_basis: dict[str, Any] = Field(default_factory=dict)
++    source_refs: list[str] = Field(default_factory=list)
++    time_sensitivity: dict[str, Any] = Field(default_factory=dict)
++    trader_cognition_update: dict[str, Any] = Field(default_factory=dict)
++    why_this_is_risk_not_play: str = Field(min_length=1)
++
++
++class RiskFamilyState(BaseModel):
++    """Aggregated descriptive state for one risk family."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    family: str = Field(min_length=1)
++    state: ParallelRiskAtomStateValue = "inactive"
++    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
++    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
++    dominant_atoms: list[str] = Field(default_factory=list)
++    notes: list[str] = Field(default_factory=list)
++
++
++class ContributionBreakdownEntry(BaseModel):
++    """Traceable descriptive contribution to the minute-level risk profile."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    contribution_id: str = Field(min_length=1)
++    family: str = Field(min_length=1)
++    risk_atom_id: str | None = None
++    state: ParallelRiskAtomStateValue = "observe"
++    intensity_delta: float = Field(default=0.0, ge=0.0, le=1.0)
++    reason: str = Field(min_length=1)
++    source_signal_ids: list[str] = Field(default_factory=list)
++    source_refs: list[str] = Field(default_factory=list)
++
++
++class ParallelRiskMinuteProfile(_DetachedMutableModel):
++    """Contract-only minute-level environmental risk profile for the PRL."""
++
++    model_config = ConfigDict(extra="forbid")
++
++    packet_id: str = Field(min_length=1)
++    packet_schema_version: str = "parallel_risk_minute_profile.v1"
++    lane_id: str = "parallel_risk_lane"
++    symbol: str = Field(min_length=1)
++    source_time_utc: datetime
++    generated_at_utc: datetime
++    runtime_bar_time_utc: datetime | None = None
++    session_state: str = "unknown"
++    risk_envelope_state: ParallelRiskEnvelopeStateValue = "unknown"
++    active_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
++    watched_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
++    risk_family_states: list[RiskFamilyState] = Field(default_factory=list)
++    signal_snapshot: list[SignalSnapshotEntry] = Field(default_factory=list)
++    missing_signal_register: list[MissingSignalRegisterEntry] = Field(default_factory=list)
++    freshness_register: list[FreshnessRegisterEntry] = Field(default_factory=list)
++    event_proximity_register: list[EventProximityRegisterEntry] = Field(default_factory=list)
++    contribution_breakdown: list[ContributionBreakdownEntry] = Field(default_factory=list)
++    hard_blocks: list[str] = Field(default_factory=list)
++    caution_flags: list[str] = Field(default_factory=list)
++    uncertainty_summary: dict[str, Any] = Field(default_factory=dict)
++    authority_flags: AuthorityFlags = Field(default_factory=AuthorityFlags)
++    expected_signal_inventory_ref: str | None = None
++    workbook_lineage_refs: list[str] = Field(default_factory=list)
++    vocabulary_dictionary_refs: list[str] = Field(default_factory=list)
++    description_template_id: str | None = None
++    description_vocabulary_refs: list[str] = Field(default_factory=list)
++    mechanical_summary: dict[str, Any] = Field(default_factory=dict)
++    lineage: dict[str, Any] = Field(default_factory=dict)
++    open_unresolved_signals: list[dict[str, Any]] = Field(default_factory=list)
++    notes: list[str] = Field(default_factory=list)
+ 
+ 
+ class ParallelRiskFragilityDimension(BaseModel):
+diff --git a/tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py b/tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py
+new file mode 100644
+index 0000000..89d6915
+--- /dev/null
++++ b/tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py
+@@ -0,0 +1,224 @@
++from __future__ import annotations
++
++from datetime import datetime
++
++import pytest
++from pydantic import ValidationError
++
++from nvda_desk.contracts.parallel_risk import (
++    AuthorityFlags,
++    ContributionBreakdownEntry,
++    EventProximityRegisterEntry,
++    FreshnessRegisterEntry,
++    MissingSignalRegisterEntry,
++    ParallelRiskMinuteProfile,
++    RiskAtomState,
++    RiskFamilyState,
++    SignalSnapshotEntry,
++)
++
++FORBIDDEN_AUTHORITY_FIELD_NAMES = {
++    "trade_recommendation",
++    "order_instruction",
++    "capital_size",
++    "capital_sizing",
++    "authorised_deployable_pct",
++    "authorised_notional_usd",
++    "position_size",
++    "brokerage_order",
++    "playbook_selection",
++    "lead_playbook_id",
++    "candidate_formation",
++}
++
++
++def test_parallel_risk_minute_profile_minimal_instantiates_and_serialises() -> None:
++    profile = ParallelRiskMinuteProfile(
++        packet_id="prl-minute-1",
++        symbol="NVDA",
++        source_time_utc=datetime(2026, 5, 18, 14, 30),
++        generated_at_utc=datetime(2026, 5, 18, 14, 30, 1),
++        session_state="opening",
++        risk_envelope_state="observe",
++        expected_signal_inventory_ref="workbook:Parallel Risk Lane Signal Inventory",
++        vocabulary_dictionary_refs=["data/vocabulary/canonical_vocabulary.json"],
++        description_template_id="prl.minute_profile.summary.v1",
++        description_vocabulary_refs=["docs/vocabulary/vocabulary_registry.md#Parallel-Risk-Lane"],
++    )
++
++    payload = profile.model_dump()
++
++    assert payload["lane_id"] == "parallel_risk_lane"
++    assert payload["risk_envelope_state"] == "observe"
++    assert payload["authority_flags"]["candidate_formation_allowed"] is False
++    assert payload["expected_signal_inventory_ref"] == "workbook:Parallel Risk Lane Signal Inventory"
++    assert payload["description_template_id"] == "prl.minute_profile.summary.v1"
++
++
++@pytest.mark.parametrize(
++    "field_name",
++    [
++        "candidate_formation_allowed",
++        "playbook_selection_allowed",
++        "capital_sizing_allowed",
++        "broker_execution_allowed",
++        "serial_stage_mutation_allowed",
++        "review_judgement_authority",
++        "direct_workbook_runtime_read_allowed",
++    ],
++)
++def test_authority_flags_default_all_forbidden_capabilities_false(field_name: str) -> None:
++    flags = AuthorityFlags()
++    assert getattr(flags, field_name) is False
++
++
++def test_authority_flags_reject_forbidden_capability_override() -> None:
++    with pytest.raises(ValidationError, match="parallel_risk_authority_flags_must_remain_false"):
++        AuthorityFlags(capital_sizing_allowed=True)
++
++
++def test_risk_atom_state_supports_observe_caution_block_without_trade_action_fields() -> None:
++    atoms = [
++        RiskAtomState(
++            risk_atom_id=f"atom-{state}",
++            family="calendar_event",
++            state=state,
++            intensity=0.5,
++            confidence=0.8,
++            trigger_condition="scheduled event window active",
++            calculation_basis={"method_id": "contract-only-fixture"},
++            why_this_is_risk_not_play="Describes event sensitivity only; it does not select a trade.",
++        )
++        for state in ("observe", "caution", "block")
++    ]
++
++    assert [atom.state for atom in atoms] == ["observe", "caution", "block"]
++    for forbidden_field in FORBIDDEN_AUTHORITY_FIELD_NAMES:
++        assert forbidden_field not in RiskAtomState.model_fields
++
++
++def test_signal_snapshot_entry_represents_present_missing_quarantined_and_stale_states() -> None:
++    entries = [
++        SignalSnapshotEntry(
++            signal_id="vix_level",
++            signal_family="macro_regime",
++            raw_or_derived="raw",
++            value=28.0,
++            units="index_level",
++            source_time_utc=datetime(2026, 5, 18, 14, 30),
++            freshness_state="fresh",
++            missing_or_quarantined="present",
++        ),
++        SignalSnapshotEntry(
++            signal_id="vwap_distance",
++            signal_family="market_microstructure",
++            raw_or_derived="derived",
++            value=None,
++            units="bps",
++            source_time_utc=None,
++            freshness_state="unknown",
++            missing_or_quarantined="missing",
++        ),
++        SignalSnapshotEntry(
++            signal_id="headline_feed",
++            signal_family="information_headline",
++            raw_or_derived="raw",
++            value=None,
++            units=None,
++            source_time_utc=None,
++            freshness_state="unknown",
++            missing_or_quarantined="quarantined",
++            rejection_reason="source_not_typed_for_prl",
++        ),
++        SignalSnapshotEntry(
++            signal_id="options_chain_snapshot",
++            signal_family="options_convexity",
++            raw_or_derived="raw",
++            value=None,
++            units="chain",
++            source_time_utc=datetime(2026, 5, 18, 14, 0),
++            freshness_state="stale",
++            missing_or_quarantined="present",
++        ),
++    ]
++
++    assert [entry.missing_or_quarantined for entry in entries] == [
++        "present",
++        "missing",
++        "quarantined",
++        "present",
++    ]
++    assert entries[-1].freshness_state == "stale"
++
++
++def test_expected_signal_inventory_refs_are_metadata_only() -> None:
++    profile = ParallelRiskMinuteProfile(
++        packet_id="prl-minute-inventory-ref",
++        symbol="NVDA",
++        source_time_utc=datetime(2026, 5, 18, 14, 30),
++        generated_at_utc=datetime(2026, 5, 18, 14, 30, 1),
++        expected_signal_inventory_ref="workbook:data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx#Parallel Risk Lane Signal Inventory",
++        workbook_lineage_refs=["Raw_Primitives_Catalog!A1:H49"],
++    )
++
++    payload = profile.model_dump()
++
++    assert payload["expected_signal_inventory_ref"].endswith("#Parallel Risk Lane Signal Inventory")
++    assert payload["workbook_lineage_refs"] == ["Raw_Primitives_Catalog!A1:H49"]
++    assert profile.authority_flags.direct_workbook_runtime_read_allowed is False
++
++
++def test_description_fields_are_template_and_vocabulary_references_only() -> None:
++    profile = ParallelRiskMinuteProfile(
++        packet_id="prl-minute-template-ref",
++        symbol="NVDA",
++        source_time_utc=datetime(2026, 5, 18, 14, 30),
++        generated_at_utc=datetime(2026, 5, 18, 14, 30, 1),
++        description_template_id="prl.minute_profile.summary.v1",
++        description_vocabulary_refs=["data/vocabulary/canonical_vocabulary.json"],
++    )
++
++    assert profile.description_template_id == "prl.minute_profile.summary.v1"
++    assert profile.description_vocabulary_refs == ["data/vocabulary/canonical_vocabulary.json"]
++    for forbidden_field in FORBIDDEN_AUTHORITY_FIELD_NAMES | {"plain_english", "freeform_text"}:
++        assert forbidden_field not in ParallelRiskMinuteProfile.model_fields
++
++
++def test_register_and_contribution_contracts_remain_descriptive() -> None:
++    missing = MissingSignalRegisterEntry(
++        signal_id="vwap_distance",
++        signal_family="market_microstructure",
++        expected_reason="future inventory expects this after typed promotion",
++        missing_reason="not_projected_into_prl",
++        impact_on_profile="lowers_confidence",
++    )
++    freshness = FreshnessRegisterEntry(
++        signal_id="vix_level",
++        freshness_state="fresh",
++        source_time_utc=datetime(2026, 5, 18, 14, 30),
++        generated_at_utc=datetime(2026, 5, 18, 14, 30, 1),
++    )
++    event = EventProximityRegisterEntry(
++        event_id="nvda_earnings_placeholder",
++        event_type="earnings",
++        proximity_seconds=900,
++        risk_interpretation="event proximity context only",
++    )
++    family = RiskFamilyState(
++        family="calendar_event",
++        state="observe",
++        intensity=0.2,
++        confidence=0.7,
++    )
++    contribution = ContributionBreakdownEntry(
++        contribution_id="event-window-contribution",
++        family="calendar_event",
++        state="observe",
++        reason="scheduled event context present",
++    )
++
++    assert missing.impact_on_profile == "lowers_confidence"
++    assert freshness.freshness_state == "fresh"
++    assert event.risk_interpretation == "event proximity context only"
++    assert family.state == "observe"
++    assert contribution.reason == "scheduled event context present"
+diff --git a/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md b/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md
+new file mode 100644
+index 0000000..8cae0ba
+--- /dev/null
++++ b/var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md
+@@ -0,0 +1,69 @@
++# Command log — PRL minute profile contracts 001
++
++```sh
++rm -rf /mnt/data/prl_contracts_work
++mkdir -p /mnt/data/prl_contracts_work
++tar -xzf /mnt/data/prl-minute-risk-profile-plan-branch.tar.gz -C /mnt/data/prl_contracts_work
++cd /mnt/data/prl_contracts_work/MVD-A10_1704_V1
++git status --short --branch
++git branch --show-current
++git log --oneline -5
++git checkout -B work/prl-minute-profile-contracts work/prl-minute-risk-profile-plan
++wc -l AGENTS.md PLANS.md ROADMAP_LEDGER.md docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
++python - <<'PY'
++# read required governance files fully and write FULL_READ_MANIFEST
++PY
++grep -RInE "vocabulary|dictionary|lexicon|glossary|normative wording|controlled language|plain English|review language|explanation language" docs src tests config schemas project_control evidence_index > var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt
++find docs data config -iname '*.xlsx' -o -iname '*.xlsm' -o -iname '*.xls'
++python - <<'PY'
++# inspect signal workbook names and sheets using openpyxl without editing workbook
++PY
++```
++
++## Gate 2 test-first command
++
++```sh
++cat > tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py <<'PY'
++# new contract tests for PRL-MRP-001/002
++PY
++pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q || true
++```
++
++Observed pre-implementation result: collection error because `AuthorityFlags` is not yet exported from `nvda_desk.contracts.parallel_risk`; this is the expected new-contract failure before implementation.
++## Gate 3 implementation command
++```sh
++python - <<PY
++# inserted contract-only models/enums into src/nvda_desk/contracts/parallel_risk.py
++PY
++python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q
++```
++
++Observed implementation result: `14 passed` for new contract tests after contract-only model additions.
++
++## Gate 4 validation command
++
++```sh
++python -m pytest \
++  tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py \
++  tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py \
++  tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py \
++  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py \
++  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py \
++  tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py \
++  tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py \
++  -q | tee var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
++
++git diff --check | tee var/audit/prl_minute_profile_contracts_001/git_diff_check.txt
++```
++
++Observed validation result: `36 passed`; `git diff --check` emitted no output.
++
++## Gate 5 closeout commands
++
++```sh
++# update ROADMAP_LEDGER.md closeout details
++# write ARTIFACT_MANIFEST.md
++# write prl-minute-profile-contracts.patch
++# commit final closeout
++# create /mnt/data/prl-minute-profile-contracts-branch.tar.gz
++```
+diff --git a/var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md b/var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md
+new file mode 100644
+index 0000000..65b09a2
+--- /dev/null
++++ b/var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md
+@@ -0,0 +1,10 @@
++# FULL_READ_MANIFEST — PRL minute profile contracts 001
++
++Generated at UTC: 2026-05-18T12:58:06Z
++
++| Path | Reason | Lines | Bytes | SHA256 | Read status | Mutation relevance |
++|---|---|---:|---:|---|---|---|
++| `AGENTS.md` | required governance before implementation leaf | 184 | 8827 | `0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da` | read_in_full | governs allowed modifications |
++| `PLANS.md` | required governance before implementation leaf | 707 | 99334 | `5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672` | read_in_full | governs allowed modifications |
++| `ROADMAP_LEDGER.md` | required governance before implementation leaf | 2683 | 359707 | `5dc532728d9e8fc45fdba443d367d9bc3addb1182efd7d57f951ec91aec0bb75` | read_in_full | governs allowed modifications |
++| `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` | accepted implementation plan authority for PRL-MRP-001/002 | 217 | 27416 | `cbeef5ac89c5684e714a75196c6491eabf9e2dfb842b60e55aecfbd1bc1412c2` | read_in_full | governs allowed modifications |
+diff --git a/var/audit/prl_minute_profile_contracts_001/git_diff_check.txt b/var/audit/prl_minute_profile_contracts_001/git_diff_check.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt b/var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
+new file mode 100644
+index 0000000..e33bf20
+--- /dev/null
++++ b/var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
+@@ -0,0 +1,2 @@
++....................................                                     [100%]
++36 passed in 2.87s
+diff --git a/var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt b/var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt
+new file mode 100644
+index 0000000..7bda393
+--- /dev/null
++++ b/var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt
+@@ -0,0 +1,202 @@
++## Vocabulary governance search
++$ grep -RInE "vocabulary|dictionary|lexicon|glossary|normative wording|controlled language|plain English|review language|explanation language" docs src tests config schemas project_control evidence_index | head -n 200
++docs/00_CONTROL_SURFACE_ROUTING_INDEX.md:72:- `docs/vocabulary/README.md`
++docs/00_CONTROL_SURFACE_ROUTING_INDEX.md:73:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/00_CONTROL_SURFACE_ROUTING_INDEX.md:82:Vocabulary authority: `docs/vocabulary/vocabulary_registry.md`.
++docs/01.1_NORMATIVE_WORKING.md:23:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/01_NORMATIVE_CORE.md:117:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md:142:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/03_DOMAIN_MODEL_CORE.md:159:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/04_TECHNICAL_ARCHITECTURE_CORE.md:186:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/05_GUARDRAILS_CORE.md:81:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:43:- No runtime source, pytest implementation, config, schema, vocabulary, generated Atlas slice, original Atlas/Bridge source JSON, or planning-compiler code surface is made mutable by this overlay.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:55:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:56:- `tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:59:- `src/nvda_desk/schemas/vocabulary.py`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:60:- `data/vocabulary/canonical_vocabulary.json` if generator parity requires regeneration
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:64:The gate purpose is to admit and prove the vocabulary conformance repair leaf needed before the first Atlas feature-admission implementation leaf can open.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:72:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:73:- `tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:76:- `src/nvda_desk/schemas/vocabulary.py`
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:78:The admitted records are `NIS-0108`, `NIS-0109`, and `NIS-0110` from `var/audit/atlas_surface_slices/slices/vocabulary_governance_interface.json`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:84:`ATLAS_FEATURE_ADMISSION_002` is open only for the vocabulary-governance candidate-classification helper under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/schemas/vocabulary.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:91:`ATLAS_FEATURE_ADMISSION_003` is open only for vocabulary-governance candidate-payload classification helpers under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/schemas/vocabulary.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:95:- `ATLAS_FEATURE_ADMISSION_004`: synonym-candidate audit quarantine annotations admitted for row `5.18` vocabulary governance. The annotation is review/proof metadata only and does not admit, suppress, or mutate durable vocabulary terms.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:96:- `ATLAS_FEATURE_ADMISSION_005`: clean-audit vocabulary touch-stamp guard admitted for row `5.18` vocabulary governance. Stamp advancement is blocked while synonym candidates require escalation; runtime trading behaviour and durable vocabulary admission remain closed.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:100:`ATLAS_FEATURE_ADMISSION_006` is open only for vocabulary-governance candidate-admission plan helpers under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/schemas/vocabulary.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:102:The plan helper may construct reviewable `VocabularyCandidateAdmissionPlan` values and proposed `VocabularyEntry` payloads for non-quarantined candidates. It must not mutate `data/vocabulary/canonical_vocabulary.json`, suppress synonym candidates, edit Atlas JSON, or bypass the governed builder/generator workflow.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:106:`ATLAS_FEATURE_ADMISSION_007` is open only for pure, document-level candidate application helpers under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/schemas/vocabulary.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:108:The document-application helpers may return new validated `VocabularyDocument` instances for proof/review of non-quarantined candidates. They must reject quarantined candidates, must not write canonical vocabulary files, and must not open runtime trading behaviour, broad Atlas import, generated Atlas slice mutation, original Atlas/Bridge JSON mutation, dependency changes, or virtual environment creation.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:124:`ATLAS_FEATURE_ADMISSION_011` is open only for vocabulary-governance candidate-admission review helpers under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/schemas/vocabulary.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:126:The review helpers may return status-bearing reports for admissible, quarantined, and invalid candidate payloads. They must not mutate canonical vocabulary files, suppress synonym candidates, edit generated Atlas slice/source JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:130:`ATLAS_FEATURE_ADMISSION_012` is open only for synonym-candidate audit admission-review annotations under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/vocabulary_synonym_audit.py`, `tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:132:The audit may emit review/proof metadata for quarantined escalation candidates. It must not suppress candidates, mutate canonical vocabulary, advance touch stamps while candidates remain unresolved, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:136:`ATLAS_FEATURE_ADMISSION_013` is open only for synonym-audit CLI clean-check and guarded stamp modes under architecture row `5.18`. The admitted mutable surfaces are `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `src/nvda_desk/vocabulary_synonym_audit.py`, `scripts/vocabulary_synonym_audit.py`, `tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:142:`ATLAS_FEATURE_ADMISSION_014` is open only for the `vocabulary_synonym_audit_clean_check` proof block under architecture row `5.17`/`5.18` proof and vocabulary-governance surfaces. The admitted mutable surfaces are `config/proof_blocks.yaml`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, and retained proof documentation.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:148:`ATLAS_FEATURE_ADMISSION_015` is open only for the read-only vocabulary candidate review CLI under architecture row `5.18`. The admitted mutable surfaces are `scripts/vocabulary_candidate_review.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `config/proof_blocks.yaml`, and `config/retained_test_registry.yaml`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:150:The CLI may read canonical vocabulary and candidate-payload JSON files and emit review reports. It must not mutate canonical vocabulary, suppress synonym candidates, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:162:`ATLAS_FEATURE_ADMISSION_018` is open only for candidate-review clean-check enforcement in `scripts/vocabulary_candidate_review.py` and its retained Tier A contract tests. The mode may return non-zero when invalid or quarantined candidates remain. It must not mutate canonical vocabulary, suppress synonym candidates, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:166:`ATLAS_FEATURE_ADMISSION_019` is open only for candidate-review JSON receipt emission in `scripts/vocabulary_candidate_review.py` and its retained Tier A contract tests. The admitted mutable surfaces are `scripts/vocabulary_candidate_review.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, and retained proof/test configuration where needed.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:168:The receipt may record PASS, BLOCKED, or ERROR status for a candidate-review invocation. It must not admit durable terms, mutate canonical vocabulary files, edit Atlas JSON, suppress synonym candidates, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:172:`ATLAS_FEATURE_ADMISSION_020` is open only for candidate-review summary-only output in `scripts/vocabulary_candidate_review.py` and its retained Tier A contract tests. The mode may expose summary counts and blocked-candidate rows for PM/worker routing without emitting the full review table.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:174:The summary-only surface is evidence/routing support only. It must not hide invalid or quarantined candidates, replace full review reports where those are required, mutate canonical vocabulary files, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:178:`ATLAS_FEATURE_ADMISSION_021` is open only for candidate-review error receipts when an invalid candidate-payload shape prevents normal review construction. The admitted mutable surfaces are `scripts/vocabulary_candidate_review.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py`, and `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:180:The error receipt is diagnostic evidence only. It must not suppress the command failure, coerce invalid payloads into admissible candidates, mutate canonical vocabulary files, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:184:`ATLAS_FEATURE_ADMISSION_022` opens a bounded testing/proof support surface only for detailed JSON proof-block listing in `scripts/run_proof_block.py`. The admitted mutable surfaces are `scripts/run_proof_block.py`, `tests/tier_b/proof_model/test_proof_executor_contract.py`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, and retained proof documentation.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:192:The proof runner may resolve manifest commands beginning with `python` to the interpreter running the proof runner so offline VENV proof commands use the intended environment. It must not edit the proof manifest, create virtual environments, infer dependency authority, open runtime trading behaviour, or mutate Atlas/vocabulary source data.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:196:`ATLAS_FEATURE_ADMISSION_024` is open only for stdin-backed candidate payload input in `scripts/vocabulary_candidate_review.py` and its retained Tier A contract tests. The admitted mutable surfaces are `scripts/vocabulary_candidate_review.py`, `tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py`, and `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:198:The CLI may accept `--candidates -` for read-only pipeline use. It must preserve the same validation, clean-check, summary, and receipt semantics as file-backed candidate payloads, and must not mutate canonical vocabulary files, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:202:`ATLAS_FEATURE_ADMISSION_025` opens a bounded proof-block surface only for `vocabulary_candidate_review_clean_check`. The admitted mutable surfaces are `config/proof_blocks.yaml`, `tests/fixtures/vocabulary_candidate_review/clean_candidates.json`, `scripts/vocabulary_candidate_review.py`, and retained proof/test documentation.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:204:The proof block may run the read-only candidate-review CLI against a clean committed fixture. It must not admit the fixture as durable Atlas content, mutate canonical vocabulary files, edit Atlas JSON, open runtime trading behaviour, or create virtual environments.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:320:The branch closes only after targeted playbook proof, proof-block manifest proof, vocabulary clean-check, full pytest, formatting checks, receipt update, and roadmap-ledger reconciliation have been recorded.
++docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:342:The branch closes only after targeted exit/close proof, related downstream/capital/playbook proof, proof-block manifest proof, vocabulary clean-check, full pytest, formatting checks, receipt update, and roadmap-ledger reconciliation have been recorded.
++docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:147:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md:264:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/08_TESTING_AND_PROMOTION_CORE.md:13:- vocabulary constraints inside proof artefacts
++docs/08_TESTING_AND_PROMOTION_CORE.md:133:Proof artefacts must not become a back door for vocabulary drift.
++docs/08_TESTING_AND_PROMOTION_CORE.md:202:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/09_DMPV3_PROTOCOL_CORE.md:187:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:11:- durable terms must not be admitted into docs, schemas, manifests, receipts, or code unless they are already governed or the same bounded gate lawfully updates the vocabulary system first
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:17:- `docs/vocabulary/README.md`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:18:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:19:- `src/nvda_desk/schemas/vocabulary.py`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:20:- `scripts/build_canonical_vocabulary.py`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:21:- `data/vocabulary/canonical_vocabulary.json`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:25:The vocabulary system is an admission system, not a free-form glossary.
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:38:- `docs/vocabulary/README.md`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:39:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:40:- `docs/reference/vocabulary_dictionary_system_audit.md`
++docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md:50:All durable terms used by live control documents must be governed by `docs/vocabulary/vocabulary_registry.md` or lawfully admitted by the vocabulary process before they become canonical language.
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:99:Durable architecture terms used by this document must be governed by `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md` before freeze. A target term that is not governed, admitted, aliased, or explicitly quarantined by the vocabulary process is not accepted normative language.
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:279:| Lawful inputs | governed coefficient config; state context; admitted runtime context; vocabulary-lawful coefficient families. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:296:| Lawful inputs | vocabulary-lawful playbook definitions; eligibility context; governed signal families; calendar/event constraints. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:428:| Purpose | Durable term admission, aliases, quarantines, synonym collision handling, and canonical vocabulary regeneration. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:429:| Target owner | vocabulary governance authority. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:433:| Lawful outputs | admitted terms; alias records; quarantined terms; canonical vocabulary JSON; vocabulary proof receipts. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:436:| Vocabulary terms used | vocabulary governance; durable term; alias; quarantine; canonical vocabulary. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:437:| Proof interface | vocabulary builder parity tests; synonym audit tests; disallowed-phrase checks; canonical JSON validation. |
++docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:438:| Seam boundaries | durable language enters normative surfaces only through governed vocabulary admission. |
++docs/audit/normative_document_updates/closeout_note.md:97:- All terms MUST be defined in `docs/vocabulary/vocabulary_registry.md`.
++docs/audit/normative_document_updates/rebuild_note_2026-04-24.md:43:- All terms MUST be defined in `docs/vocabulary/vocabulary_registry.md`.
++docs/audit/normative_document_updates/statement_trace_matrix_rebuild_basis.md:89:- All terms MUST be defined in `docs/vocabulary/vocabulary_registry.md`.
++docs/checkpoints/NVDA9_TESTED_BASELINE_20260429.md:14:- Active branch before promotion: `work/bridge-gate5-vocabulary-law-20260426`
++docs/checkpoints/NVDA9_TESTED_BASELINE_20260429.md:51:- `var/vocabulary/synonym_candidates.json`
++docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md:37:- `scripts/build_canonical_vocabulary.py`;
++docs/planning/2026-04-02_GATE159_WORKBOOK_LINEAGE_AND_CONSOLIDATION_AUDIT.md:38:- `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json` for `raw_primitive` and `derived_feature`;
++docs/planning/2026-04-02_GATE160_GOVERNED_SIGNAL_COEFFICIENT_REFERENCE_WORKBOOK_LAW.md:32:- vocabulary-affecting changes.
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:97:- the numbered live control documents under `docs/` except this Phase 1 ExecPlan and `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` when a later bounded governance step lawfully reopens vocabulary supplementation
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:143:- record that the route, plan standard, local vocabulary supplement, and empty machine-readable ledgers were lawfully seeded before Phase 1 execution starts
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:233:- a new durable term is needed and vocabulary governance is not yet updated
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:242:- 2026-04-23: Local vocabulary now governs `leaf`, and the Phase 1 donor-inclusion taxonomy is now bound mechanically through `inclusion_rule_class`.
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:259:- 2026-04-23: Admit the local vocabulary supplement in `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` in the same bounded governance step as the route change.
++docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md:272:- All terms MUST be defined in `docs/vocabulary/vocabulary_registry.md`.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:6:Relationship: This brief executes only after `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` exists, is vocabulary-lawful, and is accepted by the control stack.  
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:59:6. Durable terms in `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` are vocabulary-lawful or explicitly blocked.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:63:10. The Native Blueprint Stabilisation vocabulary admission report exists.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:100:No implementation-bound Bridge record can proceed unless all durable native language is admitted, reused, enriched, aliased, quarantined, or blocked under vocabulary law.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:131:- accepted vocabulary commit
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:145:If the native repo, blueprint, vocabulary, or Atlas changes, the satisfaction ledger must be superseded or revalidated under a new Bridge run.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:161:7. `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:174:20. Native Blueprint Stabilisation vocabulary admission report
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:187:- vocabulary entries used by the target owner
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:214:No runtime source, feature test, config, schema, packet contract, database, proof block, retained-test registry, vocabulary surface, or docstring surface is authorised for feature implementation change during the first Bridge run.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:218:A vocabulary issue produces a blocked Bridge record, not a vocabulary edit.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:236:- modify vocabulary surfaces in the first Bridge run
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:304:| `transform_required` | Legacy intent is useful but must move to a different lawful native owner or be expressed under different vocabulary. |
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:307:| `blocked_vocabulary` | Durable native language is not vocabulary-lawful. |
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:312:During Gate 4 mapping and Gate 5 vocabulary adjudication, use `pending_gate6` until Gate 6 native satisfaction adjudication is executed.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:363:Every Bridge record must include a vocabulary gate.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:365:The vocabulary gate must classify all durable native language connected to the record.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:384:Allowed vocabulary gate statuses:
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:398:During Gate 4 mapping, use `pending_gate5` when vocabulary adjudication has not yet been executed.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:400:The first Bridge run records vocabulary blockers. It does not perform vocabulary admission.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:483:- `vocabulary_gate.status` must be `pending_gate5` unless Gate 5 has already executed for that record
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:547:        "accepted_vocabulary_commit",
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:567:        "accepted_vocabulary_commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:610:        "evidence_type": {"enum": ["atlas", "blueprint", "normative", "vocabulary", "test", "proof_block", "code", "config", "schema", "packet", "docstring", "ledger", "tool_output"]}
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:623:    "vocabulary_gate": {
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:653:        "vocabulary_gate",
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:675:        "vocabulary_gate": {"$ref": "#/$defs/vocabulary_gate"},
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:676:        "native_satisfaction_status": {"enum": ["pending_gate6", "already_satisfied", "partially_satisfied", "missing", "transform_required", "excluded", "blocked_blueprint", "blocked_vocabulary", "blocked_atlas_granularity", "blocked_evidence", "blocked_conflict"]},
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:683:        "implementation_leaf_type": {"enum": ["pending_gate7", "none", "later_test_first_leaf", "later_vocabulary_leaf", "later_blueprint_leaf", "blocked"]},
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:707:8. every vocabulary blocker prevents implementation-leaf status
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:722:Verify branch, commit, git status, active route, accepted `docs/11`, accepted vocabulary baseline, and completed Atlas baseline.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:766:Run vocabulary classification for all durable native language tied to each record.
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:770:- every record has a vocabulary gate result
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:771:- vocabulary blockers are recorded
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:772:- no vocabulary blocker proceeds to implementation-bound status
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:832:- vocabulary baseline commit
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:834:- vocabulary gate result
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:860:8. vocabulary gate blocks the durable native language
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:867:15. further progress requires vocabulary admission work
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:883:- every record has vocabulary gate status
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:888:- no vocabulary admission work occurred
++docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md:898:Recover legacy intent as evidence; adjudicate it against the accepted native architecture blueprint and governed vocabulary; credit already satisfied native behaviour; classify missing lawful obligations for later bounded, vocabulary-lawful, test-first implementation leaves.
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:9:It formalises the already-observed native blueprint baseline, vocabulary admission, normative reconciliation, acceptance state, provenance, and carry-forward posture so that Bridge Gate 1 can be evaluated truthfully.
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:28:- vocabulary admission changes
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:45:11. `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:46:12. `docs/vocabulary/vocabulary_registry.md`
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:52:18. `var/audit/ledgers/native_blueprint/vocabulary_admission_report.json`
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:53:19. git history for `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`, `AGENTS.md`, `PLANS.md`, `docs/vocabulary/vocabulary_registry.md`, and the native blueprint reports
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:67:- `var/audit/ledgers/native_blueprint/vocabulary_admission_report.json`
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:68:- `docs/vocabulary/vocabulary_registry.md`
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:81:- vocabulary registry contents
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:143:3. accepting `docs/11` would require vocabulary admission work
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:160:- Native blueprint vocabulary admission and normative reconciliation reports already existed and only needed to be carried into an explicit stabilisation closeout package.
++docs/planning/2026-04-25_NATIVE_BLUEPRINT_STABILISATION_EXECPLAN.md:165:- Keep vocabulary registry content unchanged; rely on the existing admission report and registry presence.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:35:2. vocabulary governance is satisfied before durable test/code/docstring language changes;
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:58:- bypass vocabulary governance to save time;
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:91:For this route, route-specific authority may include testing/proof law, DMPV3 law, vocabulary governance, Native Blueprint law, test-surface routing, retained-test registry surfaces, proof artefacts, admitted tests, runtime code as observed implementation, and docstrings as explanatory surfaces only.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:102:vocabulary
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:112:Code-first repair is prohibited when vocabulary or test authority must change first.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:270:Pass when authority order, process law, testing law, DMPV3 law, vocabulary law, and native blueprint law are understood without contradiction.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:290:- `docs/vocabulary/README.md`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:291:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:292:- `docs/vocabulary/vocabulary_registry.md`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:293:- `data/vocabulary/canonical_vocabulary.json`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:294:- `src/nvda_desk/schemas/vocabulary.py`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:295:- `scripts/build_canonical_vocabulary.py`
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:390:4. vocabulary governance is satisfied;
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:428:| `docs/vocabulary/README.md` | 23 | `e76cc9c284641d194283f0a3194d0b81d2a603fd5f5c01b042f3b0fbe0e74439` |
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:429:| `docs/vocabulary/CONSOLIDATION_WORKFLOW.md` | 51 | `1e2643dcd604c193b7e019b23e39d64a966c58d8facf93fd41229246636fd24a` |
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:430:| `docs/vocabulary/vocabulary_registry.md` | 60 | `776c1e390edfb95adefe03cf67b438b345b0bb676f0367578e3aeef7521ad14c` |
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:490:## 14. Gate 3 vocabulary pre-check continuation
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:492:Gate 3 found that the control-surface harmonisation sequence relies on durable process terms that must be vocabulary-governed before closeout claims.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:494:The bounded local vocabulary supplement in `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` now admits or enriches the required process terms for this route:
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:501:This records vocabulary admission for the control-surface repair sequence only. It does not authorise Atlas, runtime work, pytest implementation changes, or promotion readiness.
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:519:Gate 3 vocabulary pre-check:
++docs/planning/2026-04-29_TIER_A_REGISTRY_AND_PROOF_AUTHORITY_RECONCILIATION_EXECPLAN.md:522:- This vocabulary admission is bounded to the current control-surface repair sequence and does not authorise Atlas, runtime work, pytest implementation changes, or promotion readiness.
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:44:2. reconcile any future tranche brief against repo authority and vocabulary law;
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:54:Future Atlas tranche planning must classify durable terms before treating them as canonical. The current candidate classifications are recorded in `var/audit/atlas_plan2/vocabulary_candidate_classification.md`.
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:58:- `docs/vocabulary/vocabulary_registry.md`
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:59:- `data/vocabulary/canonical_vocabulary.json`
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:60:- vocabulary schemas or generator code
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:80:- vocabulary terms are admitted, aliased, or quarantined;
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:94:- future work would open runtime/test/compiler/vocabulary changes without an authorised route;
++docs/planning/2026-05-01_ATLAS_PLANNING_COMPILER_ROUTE_SETUP_PLAN.md:103:- vocabulary classification/admission handling;
++docs/planning/2026-05-09_BASE_ACCEPTANCE_EXTERNAL_HANDOFF_AND_RESERVED_ROW_DECISION_001.md:24:- final proof state recorded there: vocabulary synonym audit clean, full pytest clean, proof-block manifest clean, all proof blocks clean, all roadmap Makefile gates clean, formatting checks clean, and cache cleanup clean.
++docs/planning/2026-05-09_HELD_ROW_AUTHORITY_BRIEFING_PACK_001.md:241:What it does: emits playbook candidates, eligibility results, and playbook metadata receipts from vocabulary-lawful playbook definitions and governed context.
++docs/planning/2026-05-09_HELD_ROW_AUTHORITY_BRIEFING_PACK_001.md:264:- Playbook registry stays explicit and vocabulary-lawful.
++docs/planning/2026-05-09_RESERVED_ROW_5_10_AUTHORITY_DECISION_BRIEF_001.md:28:1. Read `AGENTS.md`, `PLANS.md`, `ROADMAP_LEDGER.md`, blueprint row `5.10`, process/tranche law, testing/promotion law, vocabulary governance, runtime ownership docs, proof blocks, retained-test registry, Makefile, and current playbook-related source/tests before mutation.
++docs/planning/2026-05-09_RESERVED_ROW_5_10_AUTHORITY_DECISION_BRIEF_001.md:62:- vocabulary synonym audit clean-check;
++docs/planning/2026-05-09_RESERVED_ROW_5_14_AUTHORITY_DECISION_BRIEF_001.md:26:1. Read `AGENTS.md`, `PLANS.md`, `ROADMAP_LEDGER.md`, blueprint row `5.14`, process/tranche law, testing/promotion law, vocabulary governance, runtime ownership docs, proof blocks, retained-test registry, Makefile, and current downstream/opening/live-inventory/playbook source/tests before mutation.
++docs/planning/2026-05-09_RESERVED_ROW_5_14_AUTHORITY_DECISION_BRIEF_001.md:65:- vocabulary synonym audit clean-check;
++docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md:23:- `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`;
++docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md:39:Allowed when the change is purely cosmetic or note clean-up and does not affect promoted authority, vocabulary, or risk-lane-relevant subsets.
++docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md:51:Require canonical vocabulary updates in the same branch.
++docs/reference/SIGNAL_WORKBOOK_AUTHORITY.md:93:- All terms MUST be defined in `docs/vocabulary/vocabulary_registry.md`.
++docs/reference/vocabulary_dictionary_system_audit.md:7:This note describes the current vocabulary dictionary system on `main`:
++docs/reference/vocabulary_dictionary_system_audit.md:9:- the canonical vocabulary artefact;
++docs/reference/vocabulary_dictionary_system_audit.md:20:## Canonical vocabulary artefact
++docs/reference/vocabulary_dictionary_system_audit.md:22:The canonical dictionary is the checked-in JSON document:
++docs/reference/vocabulary_dictionary_system_audit.md:24:- `docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json`
++docs/reference/vocabulary_dictionary_system_audit.md:26:The repo-level vocabulary README defines this folder as the place that governs canonical repo language after architecture is pinned. It states that the purpose is to keep one term meaning one thing, keep aliases explicit, stop stale labels drifting back in, and preserve distinctions between primitives, derived features, stage labels, family labels, setup variants, execution expressions, and workflow-routing concepts. It also states that this layer is **not** a blind merge target, **not** a runtime redesign surface, and **not** a free-form glossary detached from typed contracts. Evidence: `docs/vocabulary/README.md:3-16`.
++docs/reference/vocabulary_dictionary_system_audit.md:31:- `docs/vocabulary/README.md`
++docs/reference/vocabulary_dictionary_system_audit.md:33:This file identifies the authoritative artefacts for the vocabulary system: the workflow document, canonical JSON file, alignment note, schema file, and generator. Evidence: `docs/vocabulary/README.md:18-24`.
++docs/reference/vocabulary_dictionary_system_audit.md:36:- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
++docs/reference/vocabulary_dictionary_system_audit.md:41:2. reconcile them against the canonical vocabulary file;
++docs/reference/vocabulary_dictionary_system_audit.md:47:4. regenerate the canonical vocabulary file from current live architecture;
++docs/reference/vocabulary_dictionary_system_audit.md:55:- do not let a new family, setup variant, execution expression, horizon, or workflow-routing concept land without a canonical vocabulary entry.
++docs/reference/vocabulary_dictionary_system_audit.md:57:Evidence: `docs/vocabulary/CONSOLIDATION_WORKFLOW.md:3-23`.
++docs/reference/vocabulary_dictionary_system_audit.md:60:- `data/vocabulary/feeder/README.md`
++docs/reference/vocabulary_dictionary_system_audit.md:62:This file makes the feeder area non-canonical. Harvested terms and reconciliation drafts are only candidate material until they are reconciled into the canonical vocabulary file and pass enforcement tests. Evidence: `data/vocabulary/feeder/README.md:1-6`.

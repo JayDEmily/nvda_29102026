@@ -39,3 +39,31 @@ python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_co
 ```
 
 Observed implementation result: `14 passed` for new contract tests after contract-only model additions.
+
+## Gate 4 validation command
+
+```sh
+python -m pytest \
+  tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py \
+  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py \
+  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py \
+  tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py \
+  -q | tee var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
+
+git diff --check | tee var/audit/prl_minute_profile_contracts_001/git_diff_check.txt
+```
+
+Observed validation result: `36 passed`; `git diff --check` emitted no output.
+
+## Gate 5 closeout commands
+
+```sh
+# update ROADMAP_LEDGER.md closeout details
+# write ARTIFACT_MANIFEST.md
+# write prl-minute-profile-contracts.patch
+# commit final closeout
+# create /mnt/data/prl-minute-profile-contracts-branch.tar.gz
+```

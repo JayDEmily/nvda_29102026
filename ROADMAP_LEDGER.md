@@ -2686,7 +2686,7 @@ Next recommended leaf: `PRL-MRP-001` — contract-only schema additions for `Par
 
 ## 24. Parallel Risk Lane minute profile contract models
 
-Status: `in_progress`
+Status: `implementation_complete`
 
 Date recorded: `2026-05-18`
 
@@ -2760,3 +2760,73 @@ Future required workbook tab name: `Parallel Risk Lane Signal Inventory`.
 | Gate 3 | Contract-only models/enums and default-deny authority flags implemented. |
 | Gate 4 | Targeted PRL contract/evaluation tests and `git diff --check` run. |
 | Gate 5 | Ledger closeout, final commit, branch archive. |
+
+
+### 24.8 Closeout details
+
+Status updated to: `implementation_complete`
+
+Resolved expected-signal inventory decision: the expected-signal inventory belongs in the governed Excel signal workbook as future tab `Parallel Risk Lane Signal Inventory`; this leaf did not edit the workbook and runtime code still must not read it directly.
+
+Resolved vocabulary-governed description decision: future plain-English desk-risk output must use deterministic templates and governed vocabulary references; this leaf did not implement any description engine or free-form commentary surface.
+
+Workbook identified:
+
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
+- raw-signal / raw-primitives sheet: `Raw_Primitives_Catalog`
+- future tab: `Parallel Risk Lane Signal Inventory`
+
+Vocabulary governance identified:
+
+- `docs/vocabulary/README.md`
+- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+- `docs/vocabulary/vocabulary_registry.md`
+- `data/vocabulary/canonical_vocabulary.json`
+
+Files changed:
+
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `src/nvda_desk/contracts/parallel_risk.py`
+- `tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py`
+- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
+- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
+- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
+- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
+
+Commits created before this closeout note:
+
+- Governance/ledger setup commit: `a1d27a293c75c0f0872a99eb15beb56aaf796672`
+- Test-first contract tests commit: `656d1fd52a676f419b07cccd710b3ee30ba36311`
+- Contract implementation/proof-log commit: `e66ea532404a9e3a387756f38995cd9a391064d3`
+- Final closeout commit: recorded in final response after commit creation.
+
+Tests run:
+
+- `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py -q` → `36 passed`
+- `git diff --check` → no output / exit 0
+
+Artefacts created:
+
+- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
+- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
+- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
+- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
+- `/mnt/data/prl-minute-profile-contracts-branch.tar.gz`
+
+Unresolved items:
+
+- No runtime freshness scoring was implemented in this leaf.
+- No missing/quarantined signal calculation was implemented in this leaf.
+- No event proximity logic was implemented in this leaf.
+- No service/evaluator integration was implemented in this leaf.
+- No workbook tab was created or edited in this leaf.
+- No plain-English template engine was implemented in this leaf.
+
+Next recommended leaf: `PRL-MRP-003` — implement freshness register calculation and tests using existing source/capture/persistence temporal fields, without opening missing-signal, event-proximity, service-integration, workbook-editing, or plain-English-generation scope.
