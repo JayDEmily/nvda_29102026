@@ -35,3 +35,25 @@ d42428c Plan Atlas continuation for non-310 surfaces
 95cbf1a Record PRL mainline integration validation
 78cbf3c Merge PRL tranche completion
 ```
+
+## Post-implementation commit
+
+- implementation_commit: `cc3b5594f68f50eddfb04db37b358920b4c484ba`
+- git status after implementation commit and ledger hash update:
+```
+ M var/audit/fwd012_target_surface_repair_20260519/COMMAND_LOG.md
+ M var/audit/fwd012_target_surface_repair_20260519/FWD012_IMPLEMENTATION_LEDGER.csv
+```
+
+## Final proof commands
+
+- `env PYTHONPATH=src python3 -m pytest tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` → status `0`, `139 passed`.
+- `env PYTHONPATH=src python3 -m pytest tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py tests/tier_a/serial_recommendation tests/tier_b/serial_boundaries tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` → status `0`, `164 passed`.
+- `git diff --check` → status `0` after CSV line-ending repair.
+- `make scaffold-check` → status `0`, `repo scaffold present`.
+- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all` → status `0`, `proof_blocks_check_all=PASS count=51`.
+
+## Non-required formatter availability checks
+
+- `python3 -m black ...` attempted before final proof; environment had no `black` module.
+- `python3 -m ruff check ...` attempted before final proof; environment had no `ruff` module.

@@ -4161,3 +4161,24 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
 Proof artefacts: `FWD011_PROOF_OUTPUT.md` records row proof `75 passed`, targeted FWD-011 proof `145 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
 
 Remaining FWD-011 reopened rows: `0` open, `0` blocked.
+
+### 26.17 FWD-012 target-surface repair after registry-only/grouped false closure — 2026-05-19
+
+Branch: `work/fwd012-target-surface-repair`.
+Baseline branch: `work/fwd011-target-surface-repair` at `21c5176d34b7864472cd28779bf4508361733ce2`, continuing from the clean FWD-011 repair archive rather than rejected `main`.
+Artifacts: `var/audit/fwd012_target_surface_repair_20260519/`.
+Ledger: `var/audit/fwd012_target_surface_repair_20260519/FWD012_IMPLEMENTATION_LEDGER.csv`.
+
+Scope: only `FWD-012` / serial desk-cognition spine, serial-stage packet emission, and recommendation-boundary reopened rows with `auditor_status=unsupported_worker_claim` in `var/audit/non310_completion_claim_audit_20260519/FWD012_ROW_AUDIT.csv`.
+
+Baseline reconciliation: `139` FWD-012 audit rows total; `0` rows retained as audit-accepted existing satisfaction; `139` rows reopened and repaired in this pass.
+
+Implementation-status counts for the 139 reopened rows: `{'implemented_in_tests_and_code': 139}`.
+
+Decision: the prior registry-only/grouped closure is superseded for FWD-012 by row-specific target-surface behavioural proof. The new Tier A serial desk-cognition spine proof parametrises every reopened FWD-012 row and asserts live native serial contract descriptor behaviour, bounded state carriers, typed stage-input carriage, execution recommendation boundary, DMPV3 serial-stage packet lineage, native transform-boundary/no-donor-runtime behaviour, native runtime metadata in place of donor runtime-registry closure, and runtime service identity. It is not a registry-presence, row-id-presence, `non310_actual_completion_*`, or grouped-subsumption proof.
+
+Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files were not changed. Test mutation was limited to `tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py`. Audit/ledger mutation was limited to `var/audit/fwd012_target_surface_repair_20260519/` and this ledger entry.
+
+Proof artefacts: `FWD012_PROOF_OUTPUT.md` records row proof `139 passed`, targeted FWD-012 proof `164 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
+
+Remaining FWD-012 reopened rows: `0` open, `0` blocked.
