@@ -89,13 +89,13 @@ Historical `FULL_READ_MANIFEST` files are point-in-time receipts for the checkou
 
 | Field | Value |
 |---|---|
-| Current phase | `PARTIAL_CLAUSE_REBUILD_WHOLE_PROGRAMME_RECONCILED`; supersedes the FWD-015/016/017/018 pointer for the user-authorised whole-programme reconciliation recorded in section 21. |
-| Selector | All 12 partial-clause rebuild FWD owner-service leaves are implementation-closed and reconciled against the 310-clause backlog. |
-| Current target tranche | `PARTIAL_CLAUSE_REBUILD_WHOLE_PROGRAMME_RECONCILIATION_001` |
-| Current target architecture row | Rows `5.18`, `5.17`, `5.16`, `5.1`, `5.3`, `5.4`, `5.9`, `5.8`, `5.12`, `5.13`, `5.14`, and `5.15` have reconciled missing-delta rebuild obligations for this programme. |
-| Current target source/test authority | Reconciliation artefacts only under `intent_migration/partial_clause_rebuild_programme_001/whole_programme_reconciliation_001/`, plus bounded style repair for changed vocabulary helper files and regenerated vocabulary synonym candidates after the style repair changed the governed-source fingerprint. |
-| Current proof expectation | Reconciliation proof recorded: 310/310 clause rows closed by receipt/proof ownership; 0 orphan phase rows; 0 extra closeout rows; 0 duplicate closeout IDs; 0 missing referenced files; Tier A full proof 600 passed; Tier B full proof 49 passed; proof-block check-all PASS count 51; vocabulary synonym audit PASS candidates 0; candidate review PASS blocked 0; changed-Python Black/Ruff clean; `git diff --check` clean. |
-| Completion rule | Completing one row, one gate, one passing test, one receipt, one commit, one package, or one surface is not a stop condition. Continue to the next row until section 14 stop conditions are met. |
+| Current phase | `ATLAS_MIGRATION_CONTINUATION_NON_310_SURFACES_PLANNED`; supersedes the prior whole-programme reconciliation pointer only for the newly authorised programme-control continuation recorded in section 26. |
+| Selector | The six ordered-replay/non-310 surfaces are pending record-level implementation reconciliation: `FWD-004`, `FWD-006`, `FWD-009`, `FWD-011`, `FWD-012`, and `FWD-014`. `FWD-005` is excluded unless a later PM/user instruction explicitly reopens it, because section 21 records it among the 12 partial-clause owner-service leaves reconciled against the 310-clause rebuild backlog. |
+| Current target tranche | `ATLAS_MIGRATION_CONTINUATION_NON_310_SURFACE_RECONCILIATION_001` |
+| Current target architecture row | Pending rows are `5.6` DMPV3 packet carriage, `5.2` raw capture/source temporal law, `5.5` prepared ingress/runtime context preparation, `5.10` playbook library architecture, `5.7` serial desk-cognition spine, and `5.11` downstream capital deployment authority. |
+| Current target source/test authority | Planning/read-only authority recorded in section 26. Workers must use the named surface slices, active-code Atlas records, ordered-replay receipts, prior test-first execution receipts, source/test evidence, and normative controls before proposing any implementation. This pointer does not authorise code/test/config/vocabulary/Atlas/generated-slice mutation. |
+| Current proof expectation | This planning update requires ledger/audit consistency, branch-state evidence, `git diff --check`, and `make scaffold-check` only. Future implementation leaves must define their own test-first red/green proof, targeted proof, broad proof, retained-test/proof-block updates, receipt, and ledger closeout before claiming migration closure. |
+| Completion rule | The six target surfaces are not complete merely because they are historically `bounded_closed_current`. Completion requires record-level classification of every selected Atlas/Bridge record into implemented/tested, already satisfied, test-only, code-only, evidence-only, deferred, rejected/out-of-scope, or duplicate/subsumed, followed by lawful test-first implementation leaves where gaps remain. |
 
 FWD-003 through FWD-009 continuation pass recorded 2026-05-14: targeted proof blocks for rows FWD-003 through FWD-009 returned status `0`, no source/test/config/fixture mutation was made, and each row was recorded as `evidence_blocked_pending_closure_grade_full_read_and_three_way_comparison`. Later explicit user instructions reopened FWD-003 and then FWD-004 sequentially. FWD-003 linkage remediation records direct-or-grouped coverage for 97/97 selected native persistence Atlas IDs and is `bounded_closed_current`. FWD-004 closure gate records direct-or-grouped coverage for 73/73 selected native DMPV3 packet-carriage Atlas IDs, and the follow-on Tier A/B deterministic batch regression proof records 639/639 collected nodes passed across 32/32 batches with captured exit-code receipts; FWD-004 remains `bounded_closed_current`. FWD-005 was subsequently opened by explicit user/PM authority and is now `bounded_closed_current`. A later PM/user instruction superseded forward-row execution to repair FWD-001 vocabulary synonym suppression; that remediation removed source-code path-bound suppression and re-routed current candidates through governed aliases/disallowed phrases before any FWD-006 work. A later direct user instruction opened FWD-006 ordered replay only; that replay is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-007 ordered replay only; that replay is now recorded as `bounded_closed_current`. A later assigned worker brief accepted and merged the FWD-007 lineage, then replayed FWD-008 and FWD-009 in order; both are recorded as `bounded_closed_current`. A later direct user instruction opened FWD-010 only; FWD-010 is recorded as `bounded_closed_current`. Later user continuation instructions opened FWD-011, FWD-012, and FWD-013 in order; each is recorded as `bounded_closed_current`. A later PM/user rectification instruction corrected FWD-010/FWD-011 row-state header hygiene and opened FWD-014 only; FWD-014 is recorded as `bounded_closed_current`. A later user continuation instruction opened FWD-015 only; FWD-015 is recorded as `bounded_closed_current`, with FWD-016 next but unopened by the FWD-015 authority. A later bounded remediation tranche before FWD-016 resolved cross-cutting vocabulary source-hash coverage, durable row/architecture term adjudication, and architecture-map freshness without opening FWD-016 or any feature row. A later bounded evidence-hardening pass before FWD-016 added candidate-level adjudication and disallowed-phrase audit evidence for that remediation without opening FWD-016 or any feature row. A later direct user instruction opened FWD-016 only; FWD-016 is recorded as `bounded_closed_current`. A later direct user instruction opened FWD-017 only; FWD-017 is recorded as `bounded_closed_current`, with batched proof hardening added. A later direct user instruction opened FWD-018 only; FWD-018 is recorded as `bounded_closed_current`; programme closeout reconciliation is next and whole-programme completion is not claimed. A later direct user instruction opened the next gate, `PROGRAMME_CLOSEOUT_RECONCILIATION`; the closeout reconciliation is recorded as `bounded_reconciled_current` with full-read manifest, row matrix, receipt, proof summary, architecture-map refresh, proof-block check-all, vocabulary clean check, and batched Tier A/Tier B proof. No automatic FWD feature row remains and no production/live-trading authority is opened.
 
@@ -3750,3 +3750,217 @@ Post-merge validation on `main`:
 - `git diff --check` after audit-log trim — PASS, exit 0.
 
 Final decision remains: `PRL_TRANCHE_READY_FOR_MAINLINE`.
+
+---
+
+## 26. Atlas migration continuation plan — ordered-replay/non-310 surfaces
+
+Status: `pending_record_level_implementation_reconciliation`.
+
+Recorded on branch: `work/atlas-migration-continuation-ledger-plan`.
+
+Baseline main HEAD inspected before this planning update: `95cbf1aefc0d63bfaf398e30b7c09f468347f3c8`.
+
+Audit/read receipt: `var/audit/atlas_migration_continuation_planning_001/READ_VERIFY_AND_BRANCH_AUDIT.md`.
+
+### 26.1 Purpose
+
+This section pauses new Parallel Risk Lane enrichment work and opens a programme-management continuation path for the Atlas migration surfaces that were historically recorded as `bounded_closed_current` by ordered replay/coverage evidence but were not among the 12 owner-service leaves reconciled by the 310-clause partial-clause rebuild programme.
+
+The objective is not to restart the Atlas migration. The objective is to determine, record by record, which selected Atlas/Bridge ideas for the target surfaces are already implemented in tests and code, which are test-only, which are code-only, which are evidence-only, which are deferred by authority, which are rejected/out of scope, and which are duplicate/subsumed. Only after that classification may implementation leaves be opened.
+
+### 26.2 Target surfaces
+
+The target set is exactly these six surfaces unless later user/PM authority changes it:
+
+| Surface | Architecture row | Surface name | Current ledger caveat | Required next status |
+|---|---:|---|---|---|
+| `FWD-004` | `5.6` | DMPV3 packet carriage | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+| `FWD-006` | `5.2` | Raw capture and source temporal law | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+| `FWD-009` | `5.5` | Prepared ingress and runtime context preparation | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+| `FWD-011` | `5.10` | Playbook library architecture | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+| `FWD-012` | `5.7` | Serial desk-cognition spine | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+| `FWD-014` | `5.11` | Downstream capital deployment authority | Ordered replay/closure evidence exists; not part of the 310-clause owner-service rebuild. | `pending_record_level_implementation_reconciliation` |
+
+`FWD-005` was considered only because the user phrasing included "FWD004 through 6". It is not included in this target set because section 21 records `FWD-005` among the 12 partial-clause owner-service leaves reconciled against the 310-clause rebuild backlog. A future worker may read `FWD-005` only as dependency/context evidence for `FWD-004`, `FWD-006`, or `FWD-009`; it must not implement `FWD-005` under this section.
+
+### 26.3 Authority and read gate
+
+Before changing any source, test, config, vocabulary, Atlas/Bridge JSON, generated slice, or receipt surface for a target FWD, the worker must complete a read-only authority gate and record a current full-read manifest for that surface.
+
+The mandatory read set is:
+
+1. current user/PM brief;
+2. `AGENTS.md`;
+3. `PLANS.md`;
+4. this `ROADMAP_LEDGER.md`, including sections 3, 14, 15, 21, 25, and 26;
+5. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`;
+6. `docs/01_NORMATIVE_CORE.md` and relevant `.1` working overlays;
+7. `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md` and relevant `.1` working overlays;
+8. `docs/03_DOMAIN_MODEL_CORE.md` and relevant `.1` working overlays;
+9. `docs/04_TECHNICAL_ARCHITECTURE_CORE.md` and relevant `.1` working overlays;
+10. `docs/05_GUARDRAILS_CORE.md` and relevant `.1` working overlays;
+11. `docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md` and `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`;
+12. `docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md` and `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`;
+13. `docs/08_TESTING_AND_PROMOTION_CORE.md` and `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`;
+14. `docs/09_DMPV3_PROTOCOL_CORE.md` and `docs/09.1_DMPV3_PROTOCOL_WORKING.md`;
+15. `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`, `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`, and `docs/vocabulary/vocabulary_registry.md` if durable terms, fixtures, proof labels, registry terms, or normative wording are touched;
+16. `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`;
+17. `NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md` as planning evidence only, not implementation authority;
+18. `tests/AGENTS.override.md`, `config/retained_test_registry.yaml`, and `config/proof_blocks.yaml` before touching or relying materially on native tests;
+19. the target surface slice named in section 26.5;
+20. the target surface ordered-replay/closure artefacts named in section 26.5;
+21. any earlier active-code test-first execution artefacts named in section 26.5;
+22. the current native tests, source files, contracts, docstrings, fixtures, config, and receipts materially relied on by the target leaf.
+
+Search, grep, manifests, AST extraction, summaries, file names, and generated inventories may assist navigation but do not replace required full reading of in-scope authority and directly relied-on evidence.
+
+### 26.4 Branch and work-availability gate
+
+Each worker must begin from `main` unless a later PM brief names a different base. The worker must create one isolated branch per surface or per explicitly authorised leaf.
+
+Before writing any implementation leaf, the worker must inspect Git state and record:
+
+- current branch;
+- current HEAD;
+- clean/dirty status;
+- local branches and whether any are ahead of `main`;
+- relevant historical commits touching the target surface;
+- whether useful target-surface work is stranded outside current `main`.
+
+The planning pass that created this section found no preserved named local branch ahead of `main`; all preserved local non-main branches were behind or equal to `main`. Future workers must still perform the gate in their own checkout before claiming no stranded work exists.
+
+### 26.5 Evidence locations for the six target surfaces
+
+Workers must use these locations before declaring any selected Atlas record implemented, test-only, code-only, evidence-only, deferred, rejected, or duplicate/subsumed.
+
+| Surface | Atlas surface slice | Prior ordered-replay / closure evidence | Earlier active-code test-first evidence to reconcile |
+|---|---|---|---|
+| `FWD-004` | `var/audit/atlas_surface_slices/slices/dmpv3_packet_carriage.json` | `var/audit/active_code_atlas_001/fwd004_closure_gate_20260514/`; `var/audit/active_code_atlas_001/fwd004_regression_batch_proof_v2_20260514/`; `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD004_DMPV3_PACKET_CARRIAGE_CLOSURE_EVIDENCE.md` | `var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface/`; `var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_new_test_family/`; `var/audit/active_code_atlas_001/dmpv3_packet_carriage_surface_transform_required/` |
+| `FWD-006` | `var/audit/atlas_surface_slices/slices/raw_capture_and_source_temporal_law.json` | `var/audit/active_code_atlas_001/fwd006_ordered_replay_20260514/`; `var/audit/active_code_atlas_001/fwd006_fwd008_closure_20260514/`; `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD006_RAW_CAPTURE_SOURCE_TEMPORAL_EVIDENCE.md` | `var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface/`; `var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_new_test_family/`; `var/audit/active_code_atlas_001/raw_capture_source_temporal_law_surface_transform_required/` |
+| `FWD-009` | `var/audit/atlas_surface_slices/slices/prepared_ingress_and_runtime_context_preparation.json` | `var/audit/active_code_atlas_001/fwd008_fwd009_ordered_replay_20260514/`; `var/audit/active_code_atlas_001/fwd003_fwd009_continuation_20260514/FWD009_PREPARED_INGRESS_RUNTIME_CONTEXT_EVIDENCE.md` | `var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface/`; `var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_new_test_family/`; `var/audit/active_code_atlas_001/prepared_ingress_runtime_context_surface_transform_required/` |
+| `FWD-011` | `var/audit/atlas_surface_slices/slices/playbook_library_architecture.json` | `var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/` | `var/audit/active_code_atlas_001/playbook_library_architecture_surface/`; `var/audit/active_code_atlas_001/playbook_library_architecture_surface_transform_required/` |
+| `FWD-012` | `var/audit/atlas_surface_slices/slices/serial_desk_cognition_spine.json` | `var/audit/active_code_atlas_001/fwd012_serial_desk_cognition_ordered_replay_20260515/` | `var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface/`; `var/audit/active_code_atlas_001/serial_desk_cognition_spine_surface_transform_required/` |
+| `FWD-014` | `var/audit/atlas_surface_slices/slices/downstream_capital_deployment_authority.json` | `var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/` | `var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface/`; `var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/` |
+
+### 26.6 Worker gate sequence
+
+For each target surface, execute these gates in order. Do not batch surfaces.
+
+1. `G0 Authority intake`: prove the mandatory read set, target scope, authority conflicts, exact branch, and target surface.
+2. `G1 Surface evidence inventory`: identify all selected Atlas/Bridge records for the surface, the relevant surface-slice rows, prior ordered-replay artefacts, earlier test-first artefacts, native tests, native source/config/contracts, and proof receipts.
+3. `G2 Record-level implementation ledger`: create or update a per-surface implementation-status ledger with one row per selected Atlas/Bridge record.
+4. `G3 Classification proof`: classify each selected record as exactly one of `implemented_in_code_and_tests`, `already_satisfied_by_existing_code_and_tests`, `test_written_but_code_missing`, `code_exists_but_test_missing`, `evidence_only_not_implemented`, `deferred_by_authority`, `rejected_out_of_scope`, or `duplicate_or_subsumed`.
+5. `G4 Gap triage`: for every non-implemented classification, state whether the next action is test-first implementation, authority deferral, rejection/out-of-scope, duplicate/subsumption backreference, or PM decision.
+6. `G5 Implementation leaf planning`: write leaves for only one bounded behaviour at a time. Each implementation leaf must name target owner, target module/component form, lawful inputs/outputs, forbidden behaviour, test family, red-first test, source/config mutation scope, targeted proof, broad proof, receipt, and ledger update.
+7. `G6 Implementation execution`: closed in this section. Future user/PM authority must explicitly open implementation before any tests/code/config/source are changed.
+
+Gate 3 passes only when the per-surface implementation-status ledger row count equals the selected Atlas/Bridge record count for that surface, unless the worker proves a bounded subset selection was explicitly authorised by a later PM brief.
+
+### 26.7 Surface leaf queue
+
+These are planning leaves only. They are intentionally marked not done.
+
+| Leaf ID | Surface | Purpose | Status |
+|---|---|---|---|
+| `AMC-FWD004-G0` | `FWD-004` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD004-G1` | `FWD-004` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD004-G2` | `FWD-004` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD004-G3` | `FWD-004` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD006-G0` | `FWD-006` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD006-G1` | `FWD-006` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD006-G2` | `FWD-006` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD006-G3` | `FWD-006` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD009-G0` | `FWD-009` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD009-G1` | `FWD-009` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD009-G2` | `FWD-009` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD009-G3` | `FWD-009` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD011-G0` | `FWD-011` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD011-G1` | `FWD-011` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD011-G2` | `FWD-011` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD011-G3` | `FWD-011` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD012-G0` | `FWD-012` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD012-G1` | `FWD-012` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD012-G2` | `FWD-012` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD012-G3` | `FWD-012` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD014-G0` | `FWD-014` | Authority intake and branch-state proof. | `pending` |
+| `AMC-FWD014-G1` | `FWD-014` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
+| `AMC-FWD014-G2` | `FWD-014` | Record-level implementation-status ledger. | `pending` |
+| `AMC-FWD014-G3` | `FWD-014` | Gap triage and implementation-leaf plan. | `pending` |
+
+### 26.8 Implementation-status ledger schema
+
+Each per-surface implementation-status ledger row must include at least:
+
+- `atlas_or_bridge_record_id`;
+- `surface`;
+- `surface_slice_path`;
+- `atlas_idea_summary` or stable excerpt;
+- `bridge_target`;
+- `prior_satisfaction_status`;
+- `ordered_replay_evidence_refs`;
+- `earlier_test_first_evidence_refs`;
+- `native_test_refs`;
+- `native_code_refs`;
+- `implementation_status` using only section 26.6 statuses;
+- `reason`;
+- `confidence`;
+- `next_action`;
+- `blocker_or_deferral`, if any;
+- `reviewer_note`.
+
+A green test alone is insufficient. A row may be `implemented_in_code_and_tests` only when the worker cites direct native test evidence, direct native code/config/contract evidence, and a lawful ownership/seam placement under `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`.
+
+### 26.9 Proof and closeout rules
+
+This section authorises planning and reconciliation only. It does not authorise implementation execution.
+
+When a later user/PM instruction opens implementation for a target surface, the worker must:
+
+1. write or amend the failing test before source/config mutation;
+2. show the red/failing proof or explain why the existing admitted test already fails the gap;
+3. make the smallest lawful source/config/contract mutation required by that leaf;
+4. rerun the targeted proof;
+5. rerun the relevant retained proof block or registry-owned test family;
+6. run broader proof required by the target surface and current active plan;
+7. run `git diff --check`;
+8. run `make scaffold-check` when repo scaffold is materially relied on;
+9. write a receipt and update this ledger;
+10. preserve a patch/diff artefact before closeout.
+
+A worker must not mark any of the six target surfaces fully migrated merely because a prior row says `bounded_closed_current`, `covered`, or `grouped satisfaction`. That wording remains historical evidence only until record-level implementation reconciliation proves the relevant Atlas/Bridge records are implemented, already satisfied, deferred, rejected, duplicate/subsumed, or otherwise lawfully closed.
+
+### 26.10 Stop conditions
+
+Stop and report rather than implementing if any of the following occurs:
+
+- target surface authority conflicts with current user/PM instruction;
+- selected Atlas/Bridge record count cannot be established;
+- required surface slice or ordered-replay evidence is missing;
+- required full-read material cannot be read;
+- tests or code needed for a classification are outside the authorised surface;
+- a required durable term is not governed and vocabulary admission is not open;
+- implementation would require reopening `FWD-005`, PRL, the original Atlas/Bridge source JSON, generated slices, or tarball/package structure without explicit later authority.
+
+### 26.11 Known true / Ruled out / Next gate
+
+Known true:
+
+- The 18-surface programme order and gate sequence remain governed by sections 14 and 15 of this ledger.
+- Section 21 records the 12 surfaces reconciled by the 310-clause partial-clause rebuild programme.
+- The six target surfaces in section 26.2 are not listed among those 12 owner-service leaves.
+- Historical ordered-replay closure evidence exists for the six target surfaces.
+- Atlas surface slices exist for the six target surfaces.
+- This section does not authorise runtime implementation.
+
+Ruled out for this planning pass:
+
+- Reconfiguring or recreating the tarball.
+- Opening new PRL enrichment work.
+- Reopening `FWD-005` as an implementation target.
+- Claiming that prior ordered-replay closure equals record-level implementation migration.
+- Changing source code, tests, config, vocabulary, original Atlas/Bridge JSON, or generated surface slices.
+
+Next gate:
+
+- Execute `AMC-FWD004-G0` on a fresh worker branch from `main`, unless a later PM/user instruction selects a different first surface.
