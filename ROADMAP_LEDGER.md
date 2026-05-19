@@ -4097,3 +4097,25 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
 Proof artefacts: `reports/test_first_reopened_rows.*`, `reports/targeted_fwd004_packets.*`, `reports/git_diff_check.*`, `reports/scaffold_check.*`, and `reports/proof_blocks_check_all.*`.
 
 Remaining FWD-004 reopened rows: `0` open, `0` blocked.
+
+
+### 26.14 FWD-006 target-surface repair after registry-only false closure — 2026-05-19
+
+Branch: `work/fwd006-target-surface-repair`.
+Baseline branch: `work/fwd004-target-surface-repair` at `e1d847cdb183d08458cf2353758bb255ca09111b`, continuing from the clean FWD-004 repair archive rather than rejected `main`.
+Artifacts: `var/audit/fwd006_target_surface_repair_20260519/`.
+Ledger: `var/audit/fwd006_target_surface_repair_20260519/FWD006_IMPLEMENTATION_LEDGER.csv`.
+
+Scope: only `FWD-006` / raw capture and source temporal law reopened rows with `auditor_status=unsupported_worker_claim` in `var/audit/non310_completion_claim_audit_20260519/FWD006_ROW_AUDIT.csv`.
+
+Baseline reconciliation: `108` FWD-006 audit rows total; `0` rows retained as audit-accepted existing satisfaction; `108` rows reopened and repaired in this pass.
+
+Implementation-status counts for the 108 reopened rows: `{'implemented_in_tests_and_code': 108}`.
+
+Decision: the prior registry-only closure is superseded for FWD-006 by row-specific target-surface behavioural proof. The new Tier A raw-capture/source-temporal proof parametrises every reopened FWD-006 row and asserts live native source temporal standard, raw bundle provenance, replay date-level source truth, upstream trace-only non-interference, and transform-boundary/no-donor-runtime behaviours. It is not a registry-presence, row-id-presence, or `non310_actual_completion_*` proof.
+
+Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files were not changed. Test mutation was limited to `tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py`. Audit/ledger mutation was limited to `var/audit/fwd006_target_surface_repair_20260519/` and this ledger entry.
+
+Proof artefacts: `FWD006_PROOF_OUTPUT.md` records row proof `108 passed`, targeted FWD-006 proof `118 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
+
+Remaining FWD-006 reopened rows: `0` open, `0` blocked.
