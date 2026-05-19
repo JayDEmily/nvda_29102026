@@ -3410,7 +3410,7 @@ Next recommended leaf: PRL-MRP-007 only if workbook-edit authority is explicitly
 
 ## REPO FREEZE LEDGER AUDIT — 2026-05-19
 
-Status: freeze_in_progress
+Status: freeze_complete
 Branch: work/repo-freeze-ledger-audit-handoff
 Purpose: clean handoff and source-of-truth reconciliation
 
@@ -3464,4 +3464,38 @@ Rationale: it preserves the execution-batch implementation state, adds an audite
 
 ### Freeze closeout
 
-Status: freeze_in_progress until final validation/archive creation.
+Status: freeze_complete.
+
+Validation run:
+
+- `git diff --check` — pass, no output.
+- `make scaffold-check` — pass, `repo scaffold present`.
+
+Files changed by freeze pass:
+
+- `ROADMAP_LEDGER.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/COMMAND_LOG.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/FULL_READ_MANIFEST.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/BRANCH_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/ARCHIVE_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md`
+- validation and inventory logs under `var/audit/repo_freeze_ledger_audit_handoff_001/`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/repo-freeze-ledger-audit-handoff.patch`
+
+Archive name: `repo-freeze-ledger-audit-handoff.tar.gz`.
+
+Archive SHA-256: computed after final archive creation and reported in the final response. It is not self-embedded here because the archive contains this ledger and therefore cannot contain its own stable hash.
+
+Final commit: the branch HEAD after the freeze closeout commit. The exact hash is reported in the final response; a commit cannot embed its own stable hash without changing that hash.
+
+Selected next baseline: `work/repo-freeze-ledger-audit-handoff` final commit.
+
+What is verified present: PRL-MRP-001, 002, 003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025, 026, 027, and execution-batch closeout.
+
+What is blocked: PRL-MRP-007, 009, 013, 020.
+
+What is claimed but missing: `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz`.
+
+What requires redo: none identified for PRL execution leaves from current repo evidence. The final admission reconciliation for Gate 3/4/5 remains blocked until the missing source handoff archive is supplied.
+
+Exact recommended next thread action: use `repo-freeze-ledger-audit-handoff.tar.gz` as the next source of truth. Start from branch `work/repo-freeze-ledger-audit-handoff`; do not rely on prior chat claims. If proceeding with PRL implementation, open PRL-MRP-007 only with explicit workbook-edit authority, or PRL-MRP-013 only with explicit governed VIX threshold migration authority. If proceeding with final admission reconciliation, first provide `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz` or a superseding handoff archive with a reported SHA-256.

@@ -161,3 +161,20 @@ cat var/audit/repo_freeze_ledger_audit_handoff_001/ARCHIVE_RECONCILIATION.md
 # Gate 4 ledger audit summary created and ROADMAP_LEDGER.md appended with freeze_in_progress section.
 cat var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md
 ```
+
+## Gate 6/7 validation commands
+
+```bash
+git status --short > var/audit/repo_freeze_ledger_audit_handoff_001/git_status_post_first_commit.txt
+git diff --stat > var/audit/repo_freeze_ledger_audit_handoff_001/git_diff_stat_post_first_commit.txt
+git diff --check > var/audit/repo_freeze_ledger_audit_handoff_001/git_diff_check.txt
+make scaffold-check > var/audit/repo_freeze_ledger_audit_handoff_001/scaffold_check.txt 2>&1
+```
+
+## Final closeout commands before final commit
+
+```bash
+# Updated BRANCH_RECONCILIATION.md freeze branch status.
+# Created ARTIFACT_MANIFEST.md.
+# Updated ROADMAP_LEDGER.md freeze section to freeze_complete with validation, selected baseline, and next-thread instruction.
+```
