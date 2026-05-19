@@ -32,3 +32,15 @@ created COMMAND_LOG.md
 - Added tests in `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py`.
 - Targeted pytest: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py -q` -> `6 passed`.
 - `git diff --check` -> pass, no findings.
+
+## PRL-MRP-020 start
+
+- Opened inventory-backed unavailable-signal handling leaf after typed promotion commit `4c78d40`.
+
+## PRL-MRP-020
+
+- Extended PRL signal presence states with `unavailable`, `deferred`, and `excluded`.
+- Added `build_inventory_backed_unavailable_signals` and `InventoryBackedUnavailableSignals` to consume typed inventory records without workbook reads.
+- Added inventory-backed unavailable-signal tests in `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py`.
+- Targeted pytest: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py -q` -> `10 passed`.
+- `git diff --check` -> pass, no findings.

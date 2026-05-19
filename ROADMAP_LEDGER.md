@@ -3578,3 +3578,33 @@ Closeout evidence:
 - Files changed: `config/parallel_risk_signal_inventory.v1.yaml`, `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/config/parallel_risk_signal_inventory.py`, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py`, audit artefacts, `ROADMAP_LEDGER.md`.
 - Unresolved items: none for this leaf.
 - Next leaf: `PRL-MRP-020`.
+
+### PRL-MRP-020 — Inventory-backed unavailable signal handling
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: inventory-backed unavailable-signal authority limited to `PRL-MRP-020`.
+- Allowed files: PRL unavailable/missing-signal helper/contracts, typed signal-inventory tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: fabricated unavailable signal values, runtime workbook reads, action/trading advice, excluded-signal runtime demands, unrelated PRL refactors.
+- Expected tests: expected-but-missing register entries, deferred unavailable entries, excluded not demanded, no fake values, confidence/availability policy, workbook-boundary, no action language.
+- Acceptance criterion: PRL availability handling consumes the typed inventory from `PRL-MRP-009` and distinguishes present, missing, unavailable, deferred, excluded, quarantined, and rejected signal states without fabricating values or widening authority.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Typed inventory consumed from `ParallelRiskSignalInventoryDocument`, not from the Excel workbook.
+- Present signals are recorded in `presence_by_signal_id` and not replaced with fabricated snapshot values.
+- Expected-but-missing current signals produce `MissingSignalRegisterEntry` records and no fake values.
+- Deferred rich signals produce `deferred` unavailable metadata with `value=None`.
+- Upstream-but-not-projected and missing-not-yet-sourced records produce `unavailable` metadata.
+- Excluded capital/order authority signals are recorded as excluded and are not demanded at runtime.
+- Quarantined/rejected overlays remain explicit absence states.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py -q`.
+- Validation result: pass, `10 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_020_pytest.log`.
+- Files changed: `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/domain/parallel_risk/unavailable_signals.py`, `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-013`.

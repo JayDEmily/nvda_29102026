@@ -8,3 +8,5 @@
 | `prl_mrp_007_pytest.log` | PRL-MRP-007 targeted pytest output. | pass |
 | `prl_mrp_009_pytest.log` | PRL-MRP-009 targeted pytest output. | pass |
 | `prl_mrp_009_diff_check.log` | PRL-MRP-009 diff whitespace validation. | pass |
+| `prl_mrp_020_pytest.log` | PRL-MRP-020 targeted pytest output. | pass |
+| `prl_mrp_020_diff_check.log` | PRL-MRP-020 diff whitespace validation. | pass |

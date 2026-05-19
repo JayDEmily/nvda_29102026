@@ -132,7 +132,14 @@ ParallelRiskEnvelopeStateValue = Literal["tight", "broad", "observe", "caution",
 ParallelRiskSignalKind = Literal["raw", "derived", "metadata", "config", "trace"]
 ParallelRiskFreshnessState = Literal["fresh", "ageing", "stale", "unknown"]
 ParallelRiskSignalPresenceState = Literal[
-    "present", "missing", "quarantined", "rejected", "not_expected"
+    "present",
+    "missing",
+    "unavailable",
+    "deferred",
+    "excluded",
+    "quarantined",
+    "rejected",
+    "not_expected",
 ]
 ParallelRiskMissingImpact = Literal[
     "none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"

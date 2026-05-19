@@ -52,3 +52,5 @@ Read method key:
 | `config/parallel_risk_signal_inventory.v1.yaml` | 460 | `c0d520665e88425dd251d93cebb9c7b45aae023e975d16cd9d301bf6a1981463` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
 | `src/nvda_desk/config/parallel_risk_signal_inventory.py` | 43 | `019782d2d5d0d69deee71a5ff3389c0b537150296cf0bc5b3f2f1ac821a55958` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
 | `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py` | 119 | `4aa69a638fc8264c87251adb074332684c7b760fc60b0d37b210af55f43dc15f` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
+
+| `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py` | 108 | `228af73e016443281bc6086363c3a56a94ff4cb84b8bf86a0c61652da1260541` | `cat/sed` | yes | PRL-MRP-020 inventory-backed unavailable signal test |
