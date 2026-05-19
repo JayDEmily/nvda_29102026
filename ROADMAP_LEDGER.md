@@ -3499,3 +3499,54 @@ What is claimed but missing: `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-
 What requires redo: none identified for PRL execution leaves from current repo evidence. The final admission reconciliation for Gate 3/4/5 remains blocked until the missing source handoff archive is supplied.
 
 Exact recommended next thread action: use `repo-freeze-ledger-audit-handoff.tar.gz` as the next source of truth. Start from branch `work/repo-freeze-ledger-audit-handoff`; do not rely on prior chat claims. If proceeding with PRL implementation, open PRL-MRP-007 only with explicit workbook-edit authority, or PRL-MRP-013 only with explicit governed VIX threshold migration authority. If proceeding with final admission reconciliation, first provide `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz` or a superseding handoff archive with a reported SHA-256.
+
+## PRL blocked leaves completion 001 — 2026-05-19
+
+### Execution baseline
+
+| Item | Value |
+|---|---|
+| Source tarball | `repo-freeze-ledger-audit-handoff.tar.gz` |
+| Source branch verified | `work/repo-freeze-ledger-audit-handoff` |
+| Source commit verified | `a7962eee05a3403124d2f80d9c49e7fb2f224607` |
+| Worker branch | `work/prl-blocked-leaves-completion` |
+| Audit directory | `var/audit/prl_blocked_leaves_completion_001/` |
+
+### Mandatory read ledger sections recorded
+
+| Section | Line range read |
+|---|---:|
+| `REPO FREEZE LEDGER AUDIT — 2026-05-19` | `ROADMAP_LEDGER.md:3411-3501` |
+| `PRL-MRP-007` | `ROADMAP_LEDGER.md:2909`, `ROADMAP_LEDGER.md:3131-3140` |
+| `PRL-MRP-009` | `ROADMAP_LEDGER.md:2911`, `ROADMAP_LEDGER.md:3156-3164` |
+| `PRL-MRP-013` | `ROADMAP_LEDGER.md:2915`, `ROADMAP_LEDGER.md:3206-3214` |
+| `PRL-MRP-020` | `ROADMAP_LEDGER.md:2922`, `ROADMAP_LEDGER.md:3295-3304` |
+| `Parallel Risk Lane minute-level risk profile implementation plan` | `ROADMAP_LEDGER.md:2574-3052` |
+| freeze branch / execution batch closeout entries | `ROADMAP_LEDGER.md:3397-3408`, `ROADMAP_LEDGER.md:3411-3501` |
+
+### PRL-MRP-007 — Expected signal inventory workbook-tab creation
+
+Status: implementation_complete.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: workbook edit authority limited to `PRL-MRP-007`.
+- Allowed files: governed signal workbook, PRL workbook-boundary tests, PRL audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: runtime workbook reads, runtime `.xlsx` parsing, trade advice, unrelated workbook-sheet mutation except lawful inventory-tab creation/history metadata.
+- Expected tests: workbook existence/sheet/header checks, supported-signal coverage, unavailable/deferred rich-signal coverage, excluded authority coverage, runtime workbook-boundary checks.
+- Acceptance criterion: governed workbook contains `Parallel Risk Lane Signal Inventory` with expected PRL signals and neutral unavailable/deferred/excluded status semantics, while runtime PRL code remains typed-promotion-only and does not read `.xlsx`.
+
+Closeout evidence:
+
+- Workbook tab created: `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx` sheet `Parallel Risk Lane Signal Inventory`.
+- Supported runtime PRL signals represented: `source_time_utc`, `scheduled_event_window_active`, `vix_level`, `spot_price`, `front_dte`, `next_dte`.
+- Deferred/missing rich-signal families represented as unavailable/deferred or missing without fabricated values.
+- Excluded capital/order authority signals represented as excluded and not demanded at runtime.
+- Runtime workbook boundary preserved by source-token test over PRL runtime paths.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py -q`.
+- Validation result: pass, `5 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_007_pytest.log`.
+- Files changed: workbook, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-009`.
