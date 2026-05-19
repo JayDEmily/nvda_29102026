@@ -3406,3 +3406,62 @@ Final validation: relevant PRL/vocabulary/calendar/upstream/workbook tests passe
 Authority boundary: no candidate formation, playbook selection, capital sizing, order instruction, serial-stage mutation, review judgement, direct runtime workbook read, or free-form trade advice was added.
 Neutral risk semantics: implemented leaves preserve PRL as environmental state-of-play interpreter; risk is not modelled as inherently negative.
 Next recommended leaf: PRL-MRP-007 only if workbook-edit authority is explicitly opened; otherwise PRL-MRP-013 if governed VIX threshold migration authority is opened.
+
+
+## REPO FREEZE LEDGER AUDIT — 2026-05-19
+
+Status: freeze_in_progress
+Branch: work/repo-freeze-ledger-audit-handoff
+Purpose: clean handoff and source-of-truth reconciliation
+
+### Source-of-truth rule
+
+This freeze audit does not rely on prior chat claims. It relies on current Git history, current working tree, committed files, tests and validation logs present in the repo, generated audit artefacts present in the repo, downloadable archives present in `/mnt/data`, and command output produced in this pass.
+
+### Baseline and branch
+
+| Item | Value |
+|---|---|
+| Branch | `work/repo-freeze-ledger-audit-handoff` |
+| Baseline commit | `c477e6a360cbb01a0652b40117922ae591a2ff45` |
+| Source branch | `work/prl-minute-risk-profile-execution-batch-001` |
+| Audit directory | `var/audit/repo_freeze_ledger_audit_handoff_001/` |
+
+### Audit artefacts
+
+- `var/audit/repo_freeze_ledger_audit_handoff_001/COMMAND_LOG.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/FULL_READ_MANIFEST.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/BRANCH_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/ARCHIVE_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md`
+
+### Current audited status summary
+
+| Category | Status | Evidence |
+|---|---|---|
+| PRL planning branch | superseded | Branch/archive present; superseded by later accepted branches. |
+| PRL contract branch | superseded | Branch/archive present; changes included in later branches. |
+| PRL master roadmap branch | superseded | Branch/archive present; changes included in later branches. |
+| PRL architecture decisions branch | verified_present fallback | Branch/archive present; safe fallback if execution batch is not used. |
+| PRL execution batch 001 branch | verified_present | Branch/archive present; per-leaf commits and validation artefacts present. |
+| Gate 3/4/5 final admission handoff archive | claimed_but_missing | Required source archive absent from `/mnt/data`; blocked reconciliation artefacts present. |
+
+### Leaf-level audit
+
+See `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md` for the leaf-by-leaf status table. Current summary:
+
+- `verified_present`: PRL-MRP-001, 002, 003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025, 026, 027, execution-batch closeout.
+- `blocked`: PRL-MRP-007, 009, 013, 020.
+- `claimed_but_missing`: `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz`.
+- `superseded`: earlier PRL planning/roadmap branches and the original lost in-memory execution attempt.
+- `requires_redo`: none identified from current repo evidence.
+
+### Selected next baseline
+
+Candidate selected: this freeze branch after final closeout commit.
+
+Rationale: it preserves the execution-batch implementation state, adds an audited ledger and reconciliation artefacts, and will be archived with a clean working tree. The architecture-decisions branch remains the safe fallback, but using it would discard currently present and audited PRL implementation work.
+
+### Freeze closeout
+
+Status: freeze_in_progress until final validation/archive creation.
