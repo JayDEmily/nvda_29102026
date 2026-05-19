@@ -97,3 +97,11 @@ $ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook tests/tier_b/serial
 145 passed in 1.48s
 exit status: 0
 ```
+
+## Diff and manifest artefacts
+```text
+$ git diff 997e9f5972bef56796deeab87bdd174b6810a022..812220e75b4ac0cd8c0a50c63595074974a2864a > var/audit/fwd011_target_surface_repair_20260519/FWD011_IMPLEMENTATION_PATCH_997e9f5_to_812220e.diff
+$ git diff 997e9f5972bef56796deeab87bdd174b6810a022..219206548fedf1f940524a72bc61232c2fca587d > var/audit/fwd011_target_surface_repair_20260519/FWD011_FULL_REPAIR_DIFF_997e9f5_to_2192065.diff
+$ python3 <manifest writer>
+created ARTIFACT_MANIFEST.md
+```
