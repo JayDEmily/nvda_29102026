@@ -48,3 +48,7 @@ Read method key:
 | `src/nvda_desk/risk/parallel/evaluate.py` | 243 | `cfb64670bf598845a6e875a19c9cf9b27c1c9051b8179ab9c1ba9cbb4428250d` | `sed/nl/cat` | yes | mandatory governance/normative/source/test read for PRL blocked leaves |
 | `src/nvda_desk/services/parallel_risk_lane_service.py` | 229 | `6b8c05285bb2407a77c6ed423ea2c7c304788e5341813b451e3b94c14cf1a287` | `sed/nl/cat` | yes | mandatory governance/normative/source/test read for PRL blocked leaves |
 | `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py` | 130 | `e5ef45cf61d5a3b00217881684b250d9f0c64eabec88ad4f7b77a88792597767` | `sed/nl/cat` | yes | mandatory governance/normative/source/test read for PRL blocked leaves |
+
+| `config/parallel_risk_signal_inventory.v1.yaml` | 460 | `c0d520665e88425dd251d93cebb9c7b45aae023e975d16cd9d301bf6a1981463` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
+| `src/nvda_desk/config/parallel_risk_signal_inventory.py` | 43 | `019782d2d5d0d69deee71a5ff3389c0b537150296cf0bc5b3f2f1ac821a55958` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
+| `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py` | 119 | `4aa69a638fc8264c87251adb074332684c7b760fc60b0d37b210af55f43dc15f` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |

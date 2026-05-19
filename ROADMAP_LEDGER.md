@@ -3550,3 +3550,31 @@ Closeout evidence:
 - Files changed: workbook, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py`, audit artefacts, `ROADMAP_LEDGER.md`.
 - Unresolved items: none for this leaf.
 - Next leaf: `PRL-MRP-009`.
+
+### PRL-MRP-009 — Runtime expected-signal inventory promotion
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: typed promotion authority limited to `PRL-MRP-009`.
+- Allowed files: typed PRL signal-inventory config/contracts/loader, PRL typed-promotion tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: runtime Excel reads, source workbook parsing inside PRL runtime logic, hidden candidate/play/capital/order authority, unrelated PRL refactors.
+- Expected tests: config load/validation, workbook lineage, runtime consumes typed YAML without opening workbook, invalid statuses fail, missing required fields fail, authority-denial checks.
+- Acceptance criterion: runtime-safe typed expected-signal inventory exists at the governed config surface and can be validated/consumed without direct workbook reads.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Config added: `config/parallel_risk_signal_inventory.v1.yaml`.
+- Contracts added: `ParallelRiskExpectedSignalRecord`, `ParallelRiskSignalInventoryDocument`, `parallel_risk_signal_inventory_document_from_dict`.
+- Loader added: `ParallelRiskSignalInventoryService` reads typed YAML only.
+- Workbook lineage preserved in config fields: `source_workbook_path`, `source_workbook_sha256`, `source_workbook_sheet`, `source_workbook_sheet_range`, per-record `workbook_lineage_refs`.
+- Runtime workbook boundary: loader reads `config/parallel_risk_signal_inventory.v1.yaml` and source-token test rejects direct workbook-reader imports in runtime loader.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py -q`.
+- Validation result: pass, `6 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_009_pytest.log`.
+- Files changed: `config/parallel_risk_signal_inventory.v1.yaml`, `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/config/parallel_risk_signal_inventory.py`, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-020`.

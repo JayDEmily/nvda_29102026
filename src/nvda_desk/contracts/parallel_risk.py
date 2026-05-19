@@ -139,6 +139,21 @@ ParallelRiskMissingImpact = Literal[
 ]
 
 
+ParallelRiskSignalInventoryStatus = Literal[
+    "available_now",
+    "upstream_but_not_projected",
+    "missing",
+    "deferred",
+    "excluded",
+]
+ParallelRiskRuntimeUsePermission = Literal[
+    "runtime_allowed_from_typed_inputs_only",
+    "not_runtime_allowed",
+    "not_runtime_allowed_until_typed_projection",
+    "excluded_from_prl_runtime",
+]
+
+
 class AuthorityFlags(BaseModel):
     """Default-deny authority flags for enriched parallel-risk profile contracts."""
 
@@ -167,6 +182,126 @@ class AuthorityFlags(BaseModel):
         ):
             raise ValueError("parallel_risk_authority_flags_must_remain_false")
         return self
+
+
+class ParallelRiskExpectedSignalRecord(BaseModel):
+    """One workbook-governed expected signal promoted to runtime-safe config."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    inventory_status: ParallelRiskSignalInventoryStatus
+    raw_derived_config_trace_classification: str = Field(min_length=1)
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    runtime_contract_target: str = Field(min_length=1)
+    lawful_prl_use: str = Field(min_length=1)
+    runtime_use_permission: ParallelRiskRuntimeUsePermission
+    required_for_current_atom: bool = False
+    missing_handling: str = Field(min_length=1)
+    unavailable_handling: str = Field(min_length=1)
+    exclusion_reason: str | None = None
+    status_rationale: str = Field(min_length=1)
+    risk_semantics_note: str = Field(min_length=1)
+    label_ref: str | None = None
+    description_ref: str | None = None
+    promotion_record_key: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _validate_expected_signal_record(self) -> "ParallelRiskExpectedSignalRecord":
+        if not self.workbook_lineage_refs:
+            raise ValueError("parallel_risk_signal_inventory_lineage_required")
+        if self.inventory_status == "available_now":
+            if self.runtime_use_permission != "runtime_allowed_from_typed_inputs_only":
+                raise ValueError("available_parallel_risk_signal_requires_typed_runtime_permission")
+        else:
+            if self.runtime_use_permission == "runtime_allowed_from_typed_inputs_only":
+                raise ValueError("unavailable_parallel_risk_signal_must_not_be_runtime_allowed")
+        if self.inventory_status == "excluded":
+            if self.required_for_current_atom:
+                raise ValueError("excluded_parallel_risk_signal_cannot_be_required")
+            if not self.exclusion_reason:
+                raise ValueError("excluded_parallel_risk_signal_requires_reason")
+        return self
+
+
+class ParallelRiskSignalInventoryDocument(BaseModel):
+    """Runtime-safe promoted PRL expected-signal inventory document."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    inventory_id: str = Field(min_length=1)
+    schema_version: str = Field(min_length=1)
+    source_workbook_path: str = Field(min_length=1)
+    source_workbook_sha256: str = Field(min_length=64, max_length=64)
+    source_workbook_sheet: str = Field(min_length=1)
+    source_workbook_sheet_range: str = Field(min_length=1)
+    generated_from_workbook_tab: bool = True
+    direct_workbook_runtime_read_allowed: bool = False
+    authority_flags: AuthorityFlags = Field(default_factory=lambda: AuthorityFlags())
+    records: list[ParallelRiskExpectedSignalRecord] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _validate_expected_signal_inventory_document(
+        self,
+    ) -> "ParallelRiskSignalInventoryDocument":
+        if self.direct_workbook_runtime_read_allowed:
+            raise ValueError("parallel_risk_inventory_runtime_workbook_read_forbidden")
+        if not self.generated_from_workbook_tab:
+            raise ValueError("parallel_risk_inventory_requires_workbook_tab_lineage")
+        record_ids = [record.signal_id for record in self.records]
+        if len(record_ids) != len(set(record_ids)):
+            raise ValueError("parallel_risk_inventory_signal_ids_must_be_unique")
+        if not self.records:
+            raise ValueError("parallel_risk_inventory_requires_records")
+        required_supported = {
+            "source_time_utc",
+            "scheduled_event_window_active",
+            "vix_level",
+            "spot_price",
+            "front_dte",
+            "next_dte",
+        }
+        missing_supported = sorted(required_supported - set(record_ids))
+        if missing_supported:
+            raise ValueError(
+                f"parallel_risk_inventory_missing_supported_signals: {missing_supported}"
+            )
+        return self
+
+    def record_map(self) -> dict[str, ParallelRiskExpectedSignalRecord]:
+        """Return expected signal records keyed by signal id."""
+
+        return {record.signal_id: record for record in self.records}
+
+    def required_runtime_records(self) -> list[ParallelRiskExpectedSignalRecord]:
+        """Return records demanded by current atoms and lawfully available after promotion."""
+
+        return [
+            record
+            for record in self.records
+            if record.required_for_current_atom
+            and record.inventory_status == "available_now"
+            and record.runtime_use_permission == "runtime_allowed_from_typed_inputs_only"
+        ]
+
+    def unavailable_records(self) -> list[ParallelRiskExpectedSignalRecord]:
+        """Return non-excluded records that are unavailable to runtime now."""
+
+        return [
+            record
+            for record in self.records
+            if record.inventory_status in {"upstream_but_not_projected", "missing", "deferred"}
+        ]
+
+
+def parallel_risk_signal_inventory_document_from_dict(
+    payload: dict[str, Any],
+) -> ParallelRiskSignalInventoryDocument:
+    """Build and validate one promoted PRL signal-inventory document."""
+
+    return ParallelRiskSignalInventoryDocument(**payload)
 
 
 class SignalSnapshotEntry(BaseModel):
