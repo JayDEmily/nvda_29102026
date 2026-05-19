@@ -1,0 +1,1 @@
+python3 var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/atlas_migration_continuation_non310_20260519/fwd004_dmpv3_packet_carriage/FWD-004_FULL_READ_MANIFEST.json 
