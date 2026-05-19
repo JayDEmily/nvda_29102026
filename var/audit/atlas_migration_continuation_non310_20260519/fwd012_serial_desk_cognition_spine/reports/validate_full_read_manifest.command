@@ -1,0 +1,1 @@
+python3 var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/atlas_migration_continuation_non310_20260519/fwd012_serial_desk_cognition_spine/FWD-012_FULL_READ_MANIFEST.json 
