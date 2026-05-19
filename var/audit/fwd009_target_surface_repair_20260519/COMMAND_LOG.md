@@ -48,3 +48,18 @@ env PYTHONPATH=src python3 -m pytest tests/tier_a/upstream_cognition/test_fwd009
 initial result: 1 failed, 48 passed due incorrect packet.reviewtraceid assertion; fixed to packet.lineage.reviewtraceid
 rerun result: 49 passed in 0.49s
 ```
+
+## Final targeted proof
+```
+fwd009_row_proof status 0
+.................................................                        [100%]
+49 passed in 0.48s
+fwd009_upstream_cognition status 0
+......................................................................   [100%]
+70 passed in 0.63s
+git_diff_check status 0
+make_scaffold_check status 0
+repo scaffold present
+proof_blocks_check_all status 0
+proof_blocks_check_all=PASS count=51
+```
