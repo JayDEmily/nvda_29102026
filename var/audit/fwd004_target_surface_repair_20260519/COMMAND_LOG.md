@@ -73,3 +73,14 @@ $ python3 - <<'PY'
 # update ledger commit_hash, write FINAL_CLOSEOUT.md and ARTIFACT_MANIFEST.md
 PY
 ```
+
+## Closeout hygiene correction
+
+```
+$ python3 /tmp/rewrite_closeout.py
+# rewrote FINAL_CLOSEOUT.md after an unquoted shell heredoc expanded markdown backticks during the first closeout write.
+
+$ python3 - <<'PY'
+# rewrote FWD004_IMPLEMENTATION_LEDGER.csv with LF line endings to remove git diff --check trailing-whitespace reports caused by CRLF CSV output.
+PY
+```
