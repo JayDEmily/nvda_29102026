@@ -3863,10 +3863,10 @@ These are planning leaves only. They are intentionally marked not done.
 
 | Leaf ID | Surface | Purpose | Status |
 |---|---|---|---|
-| `AMC-FWD004-G0` | `FWD-004` | Authority intake and branch-state proof. | `pending` |
-| `AMC-FWD004-G1` | `FWD-004` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
-| `AMC-FWD004-G2` | `FWD-004` | Record-level implementation-status ledger. | `pending` |
-| `AMC-FWD004-G3` | `FWD-004` | Gap triage and implementation-leaf plan. | `pending` |
+| `AMC-FWD004-G0` | `FWD-004` | Authority intake and branch-state proof. | `closed_record_level_reconciled` |
+| `AMC-FWD004-G1` | `FWD-004` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `closed_record_level_reconciled` |
+| `AMC-FWD004-G2` | `FWD-004` | Record-level implementation-status ledger. | `closed_record_level_reconciled` |
+| `AMC-FWD004-G3` | `FWD-004` | Gap triage and implementation-leaf plan. | `closed_record_level_reconciled` |
 | `AMC-FWD006-G0` | `FWD-006` | Authority intake and branch-state proof. | `pending` |
 | `AMC-FWD006-G1` | `FWD-006` | Surface evidence inventory across slice, ordered replay, earlier test-first artefacts, native tests, and code. | `pending` |
 | `AMC-FWD006-G2` | `FWD-006` | Record-level implementation-status ledger. | `pending` |
@@ -3941,6 +3941,18 @@ Stop and report rather than implementing if any of the following occurs:
 - tests or code needed for a classification are outside the authorised surface;
 - a required durable term is not governed and vocabulary admission is not open;
 - implementation would require reopening `FWD-005`, PRL, the original Atlas/Bridge source JSON, generated slices, or tarball/package structure without explicit later authority.
+
+
+#### FWD-004 record-level implementation reconciliation — 2026-05-19
+
+Branch: `worker/amc-fwd004-record-reconciliation-20260519`.
+Artifacts: `var/audit/atlas_migration_continuation_non310_20260519/fwd004_dmpv3_packet_carriage/`.
+Ledger: `var/audit/atlas_migration_continuation_non310_20260519/fwd004_dmpv3_packet_carriage/FWD-004_IMPLEMENTATION_STATUS_LEDGER.json`.
+Selected Atlas/Bridge records: `73`.
+Implementation-status counts: `{'duplicate_or_subsumed': 59, 'implemented_in_tests_and_code': 14}`.
+Decision: record-level reconciliation emitted no lawful implementation gap requiring new source/test mutation; existing direct/grouped active-code evidence satisfies or subsumes all selected records under the current user/PM brief.
+Mutation boundary: no source, test, config, fixture, vocabulary, original Atlas/Bridge JSON, or generated surface-slice file was changed for this surface; only audit artefacts and `ROADMAP_LEDGER.md` were changed.
+Proof artefacts: `reports/validate_full_read_manifest.*`, `reports/targeted_pytest.*`, `reports/proof_blocks_check_all.*`, `reports/git_diff_check.*`, and `reports/pre_commit.diff`.
 
 ### 26.11 Known true / Ruled out / Next gate
 

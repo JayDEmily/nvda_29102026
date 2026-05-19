@@ -1,0 +1,9 @@
+{
+  "fwd": "FWD-004",
+  "rows": 73,
+  "counts": {
+    "duplicate_or_subsumed": 59,
+    "implemented_in_tests_and_code": 14
+  },
+  "out": "/mnt/data/nvda10_run/repo/MVD-A10_1704_V1/var/audit/atlas_migration_continuation_non310_20260519/fwd004_dmpv3_packet_carriage"
+}
