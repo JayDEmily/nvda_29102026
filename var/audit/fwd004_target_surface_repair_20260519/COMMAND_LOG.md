@@ -60,3 +60,16 @@ $ make scaffold-check
 $ env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
 # captured in reports/proof_blocks_check_all.*; status 0; proof_blocks_check_all=PASS count=51
 ```
+
+## Closeout commands
+
+```
+$ git commit -m 'Repair FWD-004 row-level DMPV3 packet carriage proof'
+# implementation commit: 73a464a09478fe6e88f41091d7deaa7beda22a4c
+
+$ git diff 8e319647c9e09e5e734fdeed409f82342edc760d..73a464a09478fe6e88f41091d7deaa7beda22a4c > var/audit/fwd004_target_surface_repair_20260519/FWD004_IMPLEMENTATION_PATCH_8e31964_to_73a464a.diff
+
+$ python3 - <<'PY'
+# update ledger commit_hash, write FINAL_CLOSEOUT.md and ARTIFACT_MANIFEST.md
+PY
+```
