@@ -1,0 +1,7 @@
+?? var/audit/fwd009_target_surface_repair_20260519/FWD009_FULL_REPAIR_DIFF_0f5b1d1_to_41cda02.diff
+?? var/audit/fwd009_target_surface_repair_20260519/FWD009_IMPLEMENTATION_PATCH_0f5b1d1_to_42fbb44.diff
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.status
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.stderr
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.stdout
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_status.stderr
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_status.stdout

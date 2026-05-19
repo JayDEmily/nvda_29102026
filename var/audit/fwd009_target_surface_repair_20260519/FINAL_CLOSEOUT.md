@@ -17,6 +17,7 @@ Source package: `fwd006-target-surface-repair.tar.gz`.
 Baseline branch: `work/fwd006-target-surface-repair` at `0f5b1d139b311e622a7eea0c4888ea599e07141f`.
 Worker branch: `work/fwd009-target-surface-repair`.
 Implementation proof commit: `42fbb447ac038f02965ef833a126de7ad59b96f8`.
+Receipt/ledger commit: `41cda029e290909110d1fd9a9b983d5691ff240a`.
 
 ## Tests and proof commands
 
@@ -45,3 +46,9 @@ Implementation proof commit: `42fbb447ac038f02965ef833a126de7ad59b96f8`.
 ## Recommendation
 
 Exact next recommended surface: FWD-011 — final-review/report/review-run persistence and packet/review continuity.
+
+## Patch and manifest artefacts
+
+- `FWD009_IMPLEMENTATION_PATCH_0f5b1d1_to_42fbb44.diff` records the test-first implementation patch.
+- `FWD009_FULL_REPAIR_DIFF_0f5b1d1_to_41cda02.diff` records the full repair diff through receipt closeout.
+- `ARTIFACT_MANIFEST.md` records audit artefact hashes.

@@ -63,3 +63,18 @@ repo scaffold present
 proof_blocks_check_all status 0
 proof_blocks_check_all=PASS count=51
 ```
+
+## Final artifact creation
+```
+git diff 0f5b1d1..HEAD > FWD009_FULL_REPAIR_DIFF_0f5b1d1_to_41cda02.diff
+git diff 0f5b1d1..42fbb44 -- test file > FWD009_IMPLEMENTATION_PATCH_0f5b1d1_to_42fbb44.diff
+git diff --check final status: 0
+git status --short final pre-manifest:
+?? var/audit/fwd009_target_surface_repair_20260519/FWD009_FULL_REPAIR_DIFF_0f5b1d1_to_41cda02.diff
+?? var/audit/fwd009_target_surface_repair_20260519/FWD009_IMPLEMENTATION_PATCH_0f5b1d1_to_42fbb44.diff
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.status
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.stderr
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_diff_check.stdout
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_status.stderr
+?? var/audit/fwd009_target_surface_repair_20260519/reports/final_git_status.stdout
+```
