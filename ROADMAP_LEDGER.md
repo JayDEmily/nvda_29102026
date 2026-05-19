@@ -3733,3 +3733,20 @@ The separate external Gate 3/4/5 handoff archive remains separate from PRL tranc
 ### Mainline integration instruction
 
 Proceed to merge `work/prl-blocked-leaves-completion` into `main` using a no-fast-forward merge and rerun the required post-merge validation on `main`.
+
+### PRL tranche mainline integration closeout — post-merge validation
+
+Mainline branch: `main`.
+
+Main merge commit: `78cbf3cb568fbcd8572f054c040819cb240601fa`.
+
+Post-merge validation on `main`:
+
+- `make scaffold-check` — PASS, `repo scaffold present`, exit 0.
+- `env PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/tier_a/parallel_risk -q` — PASS, `103 passed`.
+- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --block parallel_risk_lane_authority_surface` — PASS, `112 passed`.
+- Targeted workbook / signal inventory / unavailable signal / VIX / vocabulary constraints command — PASS, `26 passed`.
+- Initial post-merge `git diff --check` found trailing whitespace in the newly appended audit `COMMAND_LOG.md`; the log formatting was trimmed and the command was rerun.
+- `git diff --check` after audit-log trim — PASS, exit 0.
+
+Final decision remains: `PRL_TRANCHE_READY_FOR_MAINLINE`.

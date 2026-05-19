@@ -11,6 +11,13 @@
 | `var/audit/prl_tranche_final_audit_mainline_001/branch_hygiene_raw.log` | branch state evidence |
 | `var/audit/prl_tranche_final_audit_mainline_001/deep_audit_probe.log` | workbook/config/runtime-token probe evidence |
 | `var/audit/prl_tranche_final_audit_mainline_001/merge_to_main.log` | merge attempt log |
+| `var/audit/prl_tranche_final_audit_mainline_001/merge_to_main_retry.log` | merge attempt log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_git_diff_check.log` | post-merge validation log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_git_diff_check_after_log_trim.log` | post-merge validation log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_parallel_risk_pytest.log` | post-merge validation log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_proof_parallel_risk_lane_authority_surface.log` | post-merge validation log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_scaffold_check.log` | post-merge validation log |
+| `var/audit/prl_tranche_final_audit_mainline_001/postmerge_targeted_prl_inventory_vix.log` | post-merge validation log |
 | `var/audit/prl_tranche_final_audit_mainline_001/premerge_git_diff_check.log` | pre-merge validation log |
 | `var/audit/prl_tranche_final_audit_mainline_001/premerge_parallel_risk_pytest.log` | pre-merge validation log |
 | `var/audit/prl_tranche_final_audit_mainline_001/premerge_proof_parallel_risk_lane_authority_surface.log` | pre-merge validation log |
