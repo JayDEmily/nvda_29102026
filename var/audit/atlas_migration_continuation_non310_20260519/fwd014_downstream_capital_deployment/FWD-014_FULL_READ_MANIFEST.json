@@ -1,0 +1,1626 @@
+{
+  "created_utc": "2026-05-19T06:40:15.970900+00:00",
+  "target": "AMC-FWD-014-RECONCILIATION",
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "byte_count": 8827,
+      "line_count": 184,
+      "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 184
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "PLANS.md",
+      "byte_count": 99334,
+      "line_count": 707,
+      "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 707
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "ROADMAP_LEDGER.md",
+      "byte_count": 459928,
+      "line_count": 4026,
+      "sha256": "c3c29419b8532e7e0ab9dff69eff3dac8c16fc25191049faef34e9150bb87c98",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 4026
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "/mnt/data/PROJECT_EXECUTION_METHOD.md",
+      "byte_count": 13026,
+      "line_count": 473,
+      "sha256": "2f14b48155e4fe69c6e969b82c98e41976f888f512a58975680771cbbf0da160",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 473
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "/mnt/data/NVDA10_WORKER_BRANCH_EXECUTION_TEMPLATE.md",
+      "byte_count": 8666,
+      "line_count": 378,
+      "sha256": "5b5146323be9ad2473eb47b1e928db1ce4c540fc32f509513147f78a6bd4f6ea",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 378
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "/mnt/data/NVDA9_GPT55_TWO_ZIP_OFFLINE_VENV_FUTURE_SELF_RUNBOOK_V7_2026-05-02 (1).md",
+      "byte_count": 11749,
+      "line_count": 320,
+      "sha256": "24634e0285ec1b1793cca004a13e0797d9db8998b7dd6b9affb6a5f38573a9dc",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 320
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+      "byte_count": 3465,
+      "line_count": 84,
+      "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 84
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/01_NORMATIVE_CORE.md",
+      "byte_count": 4989,
+      "line_count": 117,
+      "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 117
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/01.1_NORMATIVE_WORKING.md",
+      "byte_count": 1084,
+      "line_count": 23,
+      "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 23
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+      "byte_count": 5346,
+      "line_count": 142,
+      "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 142
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+      "byte_count": 418,
+      "line_count": 13,
+      "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/03_DOMAIN_MODEL_CORE.md",
+      "byte_count": 5680,
+      "line_count": 159,
+      "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 159
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+      "byte_count": 392,
+      "line_count": 13,
+      "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+      "byte_count": 7552,
+      "line_count": 186,
+      "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 186
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "byte_count": 3529,
+      "line_count": 51,
+      "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 51
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/05_GUARDRAILS_CORE.md",
+      "byte_count": 4080,
+      "line_count": 81,
+      "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 81
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/05.1_GUARDRAILS_WORKING.md",
+      "byte_count": 918,
+      "line_count": 21,
+      "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 21
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+      "byte_count": 5587,
+      "line_count": 147,
+      "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 147
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+      "byte_count": 34740,
+      "line_count": 342,
+      "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 342
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+      "byte_count": 10717,
+      "line_count": 264,
+      "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 264
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "byte_count": 12060,
+      "line_count": 120,
+      "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 120
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+      "byte_count": 8442,
+      "line_count": 202,
+      "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 202
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+      "byte_count": 401,
+      "line_count": 13,
+      "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+      "byte_count": 5489,
+      "line_count": 187,
+      "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 187
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+      "byte_count": 2617,
+      "line_count": 39,
+      "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 39
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+      "byte_count": 1944,
+      "line_count": 50,
+      "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 50
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "byte_count": 2726,
+      "line_count": 33,
+      "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 33
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/vocabulary/vocabulary_registry.md",
+      "byte_count": 6677,
+      "line_count": 163,
+      "sha256": "6e36303918d4326a31288827adb7015439694e8f8d8ce0907b0b7c5422ce8b84",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 163
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+      "byte_count": 40449,
+      "line_count": 758,
+      "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 758
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+      "byte_count": 20080,
+      "line_count": 193,
+      "sha256": "e298bdcb64a2bb6f02798e577f5a732f108df3d76bb5d5a1819710c22ead174d",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 193
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/AGENTS.override.md",
+      "byte_count": 3764,
+      "line_count": 76,
+      "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 76
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "config/retained_test_registry.yaml",
+      "byte_count": 221383,
+      "line_count": 3561,
+      "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3561
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "config/proof_blocks.yaml",
+      "byte_count": 50949,
+      "line_count": 899,
+      "sha256": "d1931fef0904acc76ac20d991c4bfaec6432bd73e83928a94a9dc7edf8ab1d2d",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 899
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/AGENTS.override.md",
+      "byte_count": 2674,
+      "line_count": 61,
+      "sha256": "30594d481f6c1d0d86eb8d45f2959e21ff93dd8955160a63f5933094c208aa82",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 61
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/native_intent_implementation/AGENTS.override.md",
+      "byte_count": 3158,
+      "line_count": 69,
+      "sha256": "77a011ce9e736e1db77c63a63869108ec9524baa9cf1af752f1b5e94359472b0",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 69
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/native_intent_satisfaction/AGENTS.override.md",
+      "byte_count": 3134,
+      "line_count": 60,
+      "sha256": "7d31a64ff087ad238ba730d10990255286e1466b1659faf6e17ae1baa139e688",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 60
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/testing_governance_reconciliation/AGENTS.override.md",
+      "byte_count": 2425,
+      "line_count": 59,
+      "sha256": "b7b2c25b77dde5d8d5b9e34d264bb98abffd7234fd45d865c1e1f90c097e9d5c",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 59
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/atlas_tranche_roadmap/AGENTS.override.md",
+      "byte_count": 3542,
+      "line_count": 72,
+      "sha256": "b4c82dfa60dc2dad620156a9464703efd6c63ef0b4df48eaf61de7a596bdae47",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 72
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/atlas_surface_slice_pack/AGENTS.override.md",
+      "byte_count": 1577,
+      "line_count": 41,
+      "sha256": "8de9a76f70a2d5edecd9909e283293cbc9aa863cbbedfce61e2e970bef6b44f9",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 41
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tools/ai_patch_bridge/AGENTS.override.md",
+      "byte_count": 7656,
+      "line_count": 195,
+      "sha256": "eed68c8476e04007da759ddf87d5a3160d0a2b3e1f7357f101cb810dbc640627",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 195
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/active_codebase_alignment_repair/AGENTS.override.md",
+      "byte_count": 2242,
+      "line_count": 60,
+      "sha256": "64f4287d97013203b0d53b84551be0a7d102e0bcfc5a56866c1f44113422607f",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 60
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/capital_deployment_authority_proof_hardening/AGENTS.override.md",
+      "byte_count": 948,
+      "line_count": 21,
+      "sha256": "2a28af2b2eb8ddfb4421f5b2099a72ee6890434b052e44b5504c563ca12768ea",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 21
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "intent_migration/capital_deployment_authority_runtime_reconciliation/AGENTS.override.md",
+      "byte_count": 1677,
+      "line_count": 43,
+      "sha256": "fbe5afe402631ffc9c7c58bd17458c40f9a8d5c5ba9fc5ce35fe6fcc7984a3ad",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 43
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/atlas_surface_slices/slices/downstream_capital_deployment_authority.json",
+      "byte_count": 24297,
+      "line_count": 612,
+      "sha256": "4a794fd73519fa12bbe3c8d7f98ab7674327c7db4694b54fe45fe2e88bddc83a",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 612
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_THREE_WAY_COMPARISON_REPORT.json",
+      "byte_count": 14734,
+      "line_count": 347,
+      "sha256": "e4f644a2907467c7a9db4d5ff2bb0df8bda6914a0c371effdc3c2472590b6334",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 347
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface/downstream_capital_deployment_active_code_atlas_records.json",
+      "byte_count": 6810,
+      "line_count": 170,
+      "sha256": "2db9e426bb009b7784f71fb3e2f004c3b3f026be42542893fbefd0d726f46b10",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 170
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/downstream_capital_deployment_authority_surface_transform_required/downstream_capital_deployment_transform_boundary_active_code_atlas_records.json",
+      "byte_count": 6908,
+      "line_count": 165,
+      "sha256": "23484ee77482ba692aa3c4714e723a822b6cc7efe9d13203c091e8e2a996ab0f",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 165
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/.gitkeep",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+      "byte_count": 2871,
+      "line_count": 61,
+      "sha256": "0081d39a103e2b92bca821e0a291fbad9d646d101fb14756829006c82a31d5b6",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 61
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+      "byte_count": 11070,
+      "line_count": 265,
+      "sha256": "9b5f0e2ad6285ecc166698777b1f88d3ee6cb917d6be02dff246919ab02ebed2",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 265
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py",
+      "byte_count": 1604,
+      "line_count": 34,
+      "sha256": "ca7df4948f3d882f41a3886d1e41dd9670d7bcf437c014a22f32917a01d79e09",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 34
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py",
+      "byte_count": 693,
+      "line_count": 18,
+      "sha256": "1d011a65cb42228d3c916bdc122be425efa5aaa8bfcf58ad6bf0ece426ab73a8",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 18
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py",
+      "byte_count": 5648,
+      "line_count": 124,
+      "sha256": "befe79943fd9c6b83dff28cf79649772b016380935db4625dc104324ba60163d",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 124
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py",
+      "byte_count": 2823,
+      "line_count": 65,
+      "sha256": "346f853263789c4d1011cff170832fe51fe4a284db4666fb8a63758286594f94",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 65
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py",
+      "byte_count": 3111,
+      "line_count": 85,
+      "sha256": "252905dbfef7502920b58a9c74e049531e4f0894a23991b3efb2ed2f2aff28e7",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 85
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_BOUNDARY_RECEIPT.md",
+      "byte_count": 1335,
+      "line_count": 23,
+      "sha256": "68f4291fb1b90922ae8d41f788d16b642855c46a64d88c19c76a9a46278c2b76",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 23
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_DOWNSTREAM_CAPITAL_DEPLOYMENT_ORDERED_REPLAY_CLOSURE_RECEIPT.md",
+      "byte_count": 3820,
+      "line_count": 101,
+      "sha256": "84dd7f1f67e3a3baf585cdccba99c14fdb11dd2c6503af69348ee2d986530640",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 101
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_EVIDENCE_INVENTORY.json",
+      "byte_count": 2504,
+      "line_count": 65,
+      "sha256": "7c45ed513d0bfbf9b05930154925a5097de8f404c98194dad55a5a0f2af44771",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 65
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_FULL_READ_MANIFEST.json",
+      "byte_count": 106849,
+      "line_count": 1729,
+      "sha256": "5561fad01d2e846ede1fb87c040d593327167dc459603fc7c36a37505272baab",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1729
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_PRE_COMMIT.diff",
+      "byte_count": 10902,
+      "line_count": 65,
+      "sha256": "e81549d603a3fcd41ca15405a404558c7f29d6c5386693882df3fb264269cb2f",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 65
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/FWD014_ORDERED_REPLAY_PROOF_SUMMARY.json",
+      "byte_count": 6702,
+      "line_count": 80,
+      "sha256": "32ba297f9f619d2520912e1130023b0af5d82d2e46e8adb21de0c3764d0434b9",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 80
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_authority_surface.command",
+      "byte_count": 114,
+      "line_count": 1,
+      "sha256": "11ccf9500f4dd036f1213d03b00a442fa3423a50ea5ef494840ffc6527f86d34",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_authority_surface.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_authority_surface.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_authority_surface.stdout",
+      "byte_count": 1587,
+      "line_count": 23,
+      "sha256": "9c9682b619d243a436bf3ce7ef364af4e6ef4d07cae0dca00468144c3b626c8e",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 23
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_transform_boundary_surface.command",
+      "byte_count": 123,
+      "line_count": 1,
+      "sha256": "c060c441f7893ad5ef62265c831b366ba0645207b7d0db71938c924ce63cbacd",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_transform_boundary_surface.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_transform_boundary_surface.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/downstream_capital_deployment_transform_boundary_surface.stdout",
+      "byte_count": 916,
+      "line_count": 14,
+      "sha256": "4e44bb8afcb191b796ee69d5ce3a94e945679361a1fb311b9f7420554e36297a",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 14
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_after_summary.command",
+      "byte_count": 22,
+      "line_count": 1,
+      "sha256": "0e7794eb3a47dc8df967a42885aef00225f6b27f5225d9ab90132d261cd9459b",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_after_summary.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_after_summary.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_after_summary.stdout",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_final.command",
+      "byte_count": 22,
+      "line_count": 1,
+      "sha256": "0e7794eb3a47dc8df967a42885aef00225f6b27f5225d9ab90132d261cd9459b",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_final.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_final.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_final.stdout",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_initial.command",
+      "byte_count": 22,
+      "line_count": 1,
+      "sha256": "0e7794eb3a47dc8df967a42885aef00225f6b27f5225d9ab90132d261cd9459b",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_initial.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_initial.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_diff_check_initial.stdout",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short.command",
+      "byte_count": 24,
+      "line_count": 1,
+      "sha256": "5ef0ead68f7e3a7c7036c7c389a98cabf9be9c42f0db1d3171f0299fe4f2a458",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short.stdout",
+      "byte_count": 97,
+      "line_count": 1,
+      "sha256": "1c84beb8f9459ce6c4b5a2cd9759766697cba426c1f040fe91a933f9bbc3b6ee",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short_final.command",
+      "byte_count": 24,
+      "line_count": 1,
+      "sha256": "5ef0ead68f7e3a7c7036c7c389a98cabf9be9c42f0db1d3171f0299fe4f2a458",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short_final.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short_final.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/git_status_short_final.stdout",
+      "byte_count": 201,
+      "line_count": 3,
+      "sha256": "900d77b7248793bef84391a3bfd218abb3b0fc2774f8dde4301937e63eae331c",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/manifest_validate.command",
+      "byte_count": 220,
+      "line_count": 1,
+      "sha256": "0191ec18aee145330472dc56b7c74c14b218b3d6a4c44ea5f50d9d97df077237",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/manifest_validate.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/manifest_validate.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/manifest_validate.stdout",
+      "byte_count": 456,
+      "line_count": 17,
+      "sha256": "3f45202a00b7167211e82e6a8a19802bfb156662a687ad53347a21907cdaed89",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_final.command",
+      "byte_count": 70,
+      "line_count": 1,
+      "sha256": "2f68177a1cb364ae5b5a4cea555dc3704372f1056fe74d317dc2b5a29409af48",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_final.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_final.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_final.stdout",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "70ba7f39fddf1a4051d9fcafdf425166d0e4b559318caa2c41db8be0ec72df20",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_initial.command",
+      "byte_count": 70,
+      "line_count": 1,
+      "sha256": "2f68177a1cb364ae5b5a4cea555dc3704372f1056fe74d317dc2b5a29409af48",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_initial.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_initial.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/proof_blocks_check_all_initial.stdout",
+      "byte_count": 37,
+      "line_count": 1,
+      "sha256": "70ba7f39fddf1a4051d9fcafdf425166d0e4b559318caa2c41db8be0ec72df20",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/targeted_capital_pytest.command",
+      "byte_count": 228,
+      "line_count": 1,
+      "sha256": "eee5eef529d9d4907140afb69212fae438f57a6dbe2bca31bcea3e98237e00a7",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/targeted_capital_pytest.status",
+      "byte_count": 2,
+      "line_count": 1,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/targeted_capital_pytest.stderr",
+      "byte_count": 0,
+      "line_count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_001/fwd014_downstream_capital_deployment_ordered_replay_20260515/reports/targeted_capital_pytest.stdout",
+      "byte_count": 99,
+      "line_count": 2,
+      "sha256": "e89495f8d02f02a1be52ba674e01d35e6031e1072b5ca2846bfb2be3f4eacb41",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 2
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/capital/__init__.py",
+      "byte_count": 30,
+      "line_count": 1,
+      "sha256": "9565768ed2238c67f5a9658ec3ec7b8f6d8e1c99b9c54802d32f74ec4158a253",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/capital/authority.py",
+      "byte_count": 7901,
+      "line_count": 220,
+      "sha256": "dfbd32326e5b54f1ebefc75aabddaf1820e3e467b0d3161d47efa7d19571f0b8",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 220
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/contracts/capital.py",
+      "byte_count": 6544,
+      "line_count": 179,
+      "sha256": "eaca3aa747495269fec8bc7ba0770711c7cf09260d660506ae10b4df875e34fe",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 179
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/domain/capital/__init__.py",
+      "byte_count": 30,
+      "line_count": 1,
+      "sha256": "9565768ed2238c67f5a9658ec3ec7b8f6d8e1c99b9c54802d32f74ec4158a253",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/domain/capital/deployment.py",
+      "byte_count": 544,
+      "line_count": 16,
+      "sha256": "673040a72fec64908c49d864580f16905b610c447dcc963d49262bbeea330291",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 16
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/services/capital_deployment_service.py",
+      "byte_count": 1232,
+      "line_count": 40,
+      "sha256": "fe07dfec269e620be3557e205f56d41b6091602f4af3547c35c9f92c0a259159",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 40
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "src/nvda_desk/packets/dmp_packets.py",
+      "byte_count": 15208,
+      "line_count": 408,
+      "sha256": "029af4c848fd11c2a60ad08a05ac8192f00e92b08afc7bd0f93554d15dc620bf",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 408
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    },
+    {
+      "path": "var/audit/active_code_atlas_bridge_comparison_001/active_code_atlas_test_first_execution_queue.json",
+      "byte_count": 59918,
+      "line_count": 1273,
+      "sha256": "e653b9e6f6cd94dac83734f4ebaec7fd2bd7915becc33d8161d28a3b58c8d121",
+      "read_method": "current_worker_full_file_intake_for_AMC-FWD-014-RECONCILIATION",
+      "full_read": true,
+      "chunk_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 1273
+        }
+      ],
+      "notes": "Authority/material file for non-310 Atlas continuation reconciliation."
+    }
+  ]
+}
