@@ -1,0 +1,48 @@
+{
+  "created_utc": "2026-05-19T06:39:07.349068+00:00",
+  "branch": "worker/amc-fwd011-record-reconciliation-20260519",
+  "head": "4b25e4abf5ef412123a1b80d5a8ea32d2fcac10b",
+  "status_short": [
+    "?? var/audit/atlas_migration_continuation_non310_20260519/fwd011_playbook_library_architecture.generation.json",
+    "?? var/audit/atlas_migration_continuation_non310_20260519/fwd011_playbook_library_architecture/"
+  ],
+  "local_branches": [
+    "  main                                                4b25e4abf5ef412123a1b80d5a8ea32d2fcac10b Merge FWD-009 AMC record reconciliation",
+    "  work/prl-blocked-leaves-completion                  c2c2f5f07e9d8ccde52d80bc041501cad2fdd11e Audit PRL tranche completion before mainline integration",
+    "  work/prl-minute-profile-contracts                   7eb107f6527ef5dc37e584a88deecd4a5390d1e5 Record PRL contracts archive command",
+    "  work/prl-minute-risk-profile-architecture-decisions a122379199c1f613c482d76e49016509cd5475d3 Plan PRL architecture decisions",
+    "  work/prl-minute-risk-profile-execution-batch-001    c477e6a360cbb01a0652b40117922ae591a2ff45 PRL execution batch 001: closeout artefacts",
+    "  work/prl-minute-risk-profile-master-roadmap         3c5b1db57704c56445bc382c83faa536c1586a6b Plan PRL minute risk profile master roadmap",
+    "  work/prl-minute-risk-profile-plan                   e91be6c031fc040a7bef232509013f644e5009d9 Add PRL minute risk profile implementation plan",
+    "  work/repo-freeze-ledger-audit-handoff               a7962eee05a3403124d2f80d9c49e7fb2f224607 Close repo freeze ledger audit handoff",
+    "  worker/amc-fwd004-record-reconciliation-20260519    9d74c94a08aef57043bd439f2c2affc451e3157e Reconcile AMC FWD-004 record implementation ledger",
+    "  worker/amc-fwd006-record-reconciliation-20260519    fda64f8c6eda8a53b85b372f7823ed0d0327ee9b Reconcile AMC FWD-006 record implementation ledger",
+    "  worker/amc-fwd009-record-reconciliation-20260519    34c823ef3c35cab023cc948d05e8260c7cf616ea Reconcile AMC FWD-009 record implementation ledger",
+    "* worker/amc-fwd011-record-reconciliation-20260519    4b25e4abf5ef412123a1b80d5a8ea32d2fcac10b Merge FWD-009 AMC record reconciliation",
+    "  worker/fwd-003-through-fwd-009-closure-continuation c8c782511baed66b7763eb82d2404b01d6d40479 Close FWD-005 closure gate",
+    "  worker/fwd006-fwd008-closure-20260514               c13f491989ef8567760138da85a93f027f3feee7 Close FWD-006 through FWD-008 gates",
+    "  worker/fwd006-fwd008-forensic-audit-20260514        c5c7e0ca750f6e01fff218bf47d58a905d14f43a Record FWD-006 through FWD-008 forensic audit hold",
+    "  worker/fwd006-ordered-replay-20260514               fa3fe100a0bfb6b968e7e51ab5bd300d84651607 Close FWD-006 ordered replay gate",
+    "  worker/vocabulary-suppression-removal-20260514      15fe16a8b40198614a1372b52fe0beced5e264fa Remove vocabulary synonym suppression logic"
+  ],
+  "refs_heads": [
+    "4b25e4abf5ef412123a1b80d5a8ea32d2fcac10b refs/heads/main",
+    "c2c2f5f07e9d8ccde52d80bc041501cad2fdd11e refs/heads/work/prl-blocked-leaves-completion",
+    "7eb107f6527ef5dc37e584a88deecd4a5390d1e5 refs/heads/work/prl-minute-profile-contracts",
+    "a122379199c1f613c482d76e49016509cd5475d3 refs/heads/work/prl-minute-risk-profile-architecture-decisions",
+    "c477e6a360cbb01a0652b40117922ae591a2ff45 refs/heads/work/prl-minute-risk-profile-execution-batch-001",
+    "3c5b1db57704c56445bc382c83faa536c1586a6b refs/heads/work/prl-minute-risk-profile-master-roadmap",
+    "e91be6c031fc040a7bef232509013f644e5009d9 refs/heads/work/prl-minute-risk-profile-plan",
+    "a7962eee05a3403124d2f80d9c49e7fb2f224607 refs/heads/work/repo-freeze-ledger-audit-handoff",
+    "9d74c94a08aef57043bd439f2c2affc451e3157e refs/heads/worker/amc-fwd004-record-reconciliation-20260519",
+    "fda64f8c6eda8a53b85b372f7823ed0d0327ee9b refs/heads/worker/amc-fwd006-record-reconciliation-20260519",
+    "34c823ef3c35cab023cc948d05e8260c7cf616ea refs/heads/worker/amc-fwd009-record-reconciliation-20260519",
+    "4b25e4abf5ef412123a1b80d5a8ea32d2fcac10b refs/heads/worker/amc-fwd011-record-reconciliation-20260519",
+    "c8c782511baed66b7763eb82d2404b01d6d40479 refs/heads/worker/fwd-003-through-fwd-009-closure-continuation",
+    "c13f491989ef8567760138da85a93f027f3feee7 refs/heads/worker/fwd006-fwd008-closure-20260514",
+    "c5c7e0ca750f6e01fff218bf47d58a905d14f43a refs/heads/worker/fwd006-fwd008-forensic-audit-20260514",
+    "fa3fe100a0bfb6b968e7e51ab5bd300d84651607 refs/heads/worker/fwd006-ordered-replay-20260514",
+    "15fe16a8b40198614a1372b52fe0beced5e264fa refs/heads/worker/vocabulary-suppression-removal-20260514"
+  ],
+  "tags": []
+}
