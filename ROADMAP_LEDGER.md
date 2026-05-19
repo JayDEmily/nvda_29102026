@@ -4076,3 +4076,24 @@ Audit finding:
 - Direct active-code rows with unchanged baseline native test and source refs are accepted only as `already_satisfied_by_existing_tests_and_code`, not as new implementation by the claimed-completed package.
 - Grouped satisfaction, status-group subsumption, ordered-replay closure, proof-block pass, and active-code cluster references were not accepted as row-level duplicate/subsumed proof unless a row-specific canonical parent and exact semantic-equivalence rationale were present.
 - Therefore the claimed-completed package is not accepted as implementation-complete; reopened rows are recorded in the row audit CSV files under the audit artefact directory.
+
+### 26.13 FWD-004 target-surface repair after registry-only false closure — 2026-05-19
+
+Branch: `work/fwd004-target-surface-repair`.
+Baseline audit branch: `audit/non310-completion-claim-row-evidence` at `8e319647c9e09e5e734fdeed409f82342edc760d`.
+Artifacts: `var/audit/fwd004_target_surface_repair_20260519/`.
+Ledger: `var/audit/fwd004_target_surface_repair_20260519/FWD004_IMPLEMENTATION_LEDGER.csv`.
+
+Scope: only `FWD-004` / DMPV3 packet carriage reopened rows with `auditor_status=unsupported_worker_claim` in `var/audit/non310_completion_claim_audit_20260519/FWD004_ROW_AUDIT.csv`.
+
+Baseline reconciliation: `73` FWD-004 audit rows total; `14` rows retained as audit-accepted existing satisfaction; `59` rows reopened and repaired in this pass.
+
+Implementation-status counts for the 59 reopened rows: `{'implemented_in_tests_and_code': 59}`.
+
+Decision: the prior registry-only closure is superseded for FWD-004 by row-specific target-surface behavioural proof. The new Tier A packet-carriage proof file parametrises every reopened FWD-004 row and asserts live native DMPV3 packet-carriage or review-packet-service behaviour; it is not a registry-presence, row-id-presence, or `non310_actual_completion_*` proof.
+
+Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files were not changed. Test mutation was limited to `tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py`. Audit/ledger mutation was limited to `var/audit/fwd004_target_surface_repair_20260519/` and this ledger entry.
+
+Proof artefacts: `reports/test_first_reopened_rows.*`, `reports/targeted_fwd004_packets.*`, `reports/git_diff_check.*`, `reports/scaffold_check.*`, and `reports/proof_blocks_check_all.*`.
+
+Remaining FWD-004 reopened rows: `0` open, `0` blocked.
