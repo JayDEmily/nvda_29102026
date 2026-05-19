@@ -1,0 +1,572 @@
+.....................................................FF................. [ 96%]
+...                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour[FWD011-AUDIT-074-atlas_donor_playbook_eligibility_service_001-service_identity] _
+
+audit_row_id = 'FWD011-AUDIT-074'
+atlas_record_id = 'atlas_donor_playbook_eligibility_service_001'
+behaviour = 'service_identity'
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_fwd011_reopened_rows_have53')
+
+    @pytest.mark.parametrize(("audit_row_id", "atlas_record_id", "behaviour"), REOPENED_ROW_CASES)
+    def test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour(
+        audit_row_id: str, atlas_record_id: str, behaviour: str, tmp_path: Path
+    ) -> None:
+        assert audit_row_id.startswith("FWD011-AUDIT-")
+        assert atlas_record_id.startswith("atlas_donor_")
+        registry = _registry()
+    
+        if behaviour == "registry_document_contract":
+            assert registry.schema_version == "playbook_registry.v1"
+            assert registry.registry_id == "fwd011-registry"
+            assert [playbook.playbook_id for playbook in registry.enabled_playbooks()] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            exported = registry.enabled_playbooks()[0].model_dump()
+            exported["selection_metadata"]["setup_family"] = "mutated"
+            assert registry.playbooks[0].selection_metadata["setup_family"] == "gap_up"
+            return
+    
+        if behaviour == "registry_uniqueness":
+            with pytest.raises(ValidationError, match="duplicate playbook_id"):
+                PlaybookRegistryDocument(
+                    registry_id="fwd011-registry",
+                    playbooks=(
+                        PlaybookDefinition(
+                            playbook_id="gap_up_follow_through",
+                            setup_family="gap_up",
+                            setup_variant_ids=("gap_up.baseline",),
+                        ),
+                        PlaybookDefinition(
+                            playbook_id="gap_up_follow_through",
+                            setup_family="gap_up",
+                            setup_variant_ids=("gap_up.risk_defined",),
+                        ),
+                    ),
+                )
+            with pytest.raises(ValidationError, match="duplicate setup_variant_id"):
+                PlaybookDefinition(
+                    playbook_id="gap_up_follow_through",
+                    setup_family="gap_up",
+                    setup_variant_ids=("gap_up.baseline", "gap_up.baseline"),
+                )
+            return
+    
+        if behaviour == "deterministic_receipt_order":
+            receipts = build_playbook_metadata_receipts(registry)
+            assert [receipt.receipt_id for receipt in receipts] == [
+                "fwd011-registry:gap_up_follow_through:gap_up.baseline",
+                "fwd011-registry:gap_up_follow_through:gap_up.risk_defined",
+                "fwd011-registry:breakdown_reversal:breakdown.baseline",
+            ]
+            assert {receipt.source_registry_fingerprint for receipt in receipts} == {registry.fingerprint()}
+            copied = receipts[0].model_copy(deep=True)
+            copied.selection_metadata["setup_family"] = "mutated"
+            assert receipts[0].selection_metadata["setup_family"] == "gap_up"
+            return
+    
+        if behaviour == "variant_lookup_filter":
+            receipts = build_playbook_metadata_receipts(
+                registry,
+                setup_variant_ids=("gap_up.risk_defined", "breakdown.baseline"),
+            )
+            assert [receipt.setup_variant_id for receipt in receipts] == [
+                "gap_up.risk_defined",
+                "breakdown.baseline",
+            ]
+            assert [receipt.playbook_id for receipt in receipts] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            return
+    
+        if behaviour == "family_lookup_filter":
+            receipts = build_playbook_metadata_receipts(registry, setup_family_ids=("gap_up",))
+            assert [receipt.playbook_id for receipt in receipts] == [
+                "gap_up_follow_through",
+                "gap_up_follow_through",
+            ]
+            assert [receipt.setup_family for receipt in receipts] == ["gap_up", "gap_up"]
+            assert [receipt.setup_variant_id for receipt in receipts] == [
+                "gap_up.baseline",
+                "gap_up.risk_defined",
+            ]
+            return
+    
+        if behaviour == "yaml_loader_contract":
+            registry_path = tmp_path / f"{audit_row_id}.yaml"
+            _write_registry_yaml(registry_path)
+            loaded = load_playbook_registry(registry_path)
+            assert loaded.registry_id == "fwd011-yaml"
+            assert [playbook.playbook_id for playbook in loaded.enabled_playbooks()] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            duplicate_path = tmp_path / f"{audit_row_id}-duplicate.yaml"
+            duplicate_path.write_text(
+                """
+                schema_version: playbook_registry.v1
+                registry_id: duplicate-yaml
+                playbooks:
+                  first:
+                    setup_family: gap_up
+                    setup_variant_ids: [gap_up.baseline]
+                  first:
+                    setup_family: gap_up
+                    setup_variant_ids: [gap_up.risk_defined]
+                """,
+                encoding="utf-8",
+            )
+            with pytest.raises(ValueError, match="duplicate YAML key"):
+                load_playbook_registry(duplicate_path)
+            return
+    
+        if behaviour == "deterministic_fingerprint":
+            first = registry.fingerprint()
+            second = PlaybookRegistryDocument.model_validate(registry.model_dump(mode="json")).fingerprint()
+            assert first == second
+            assert len(first) == 64
+            assert all(char in "0123456789abcdef" for char in first)
+            return
+    
+        if behaviour == "bounded_contract_carrier":
+            receipt = build_playbook_metadata_receipts(registry)[0]
+            assert set(PlaybookDefinition.model_fields) == {
+                "playbook_id",
+                "setup_family",
+                "setup_variant_ids",
+                "eligibility_constraints",
+                "selection_metadata",
+                "enabled",
+            }
+            assert set(PlaybookMetadataReceipt.model_fields) == {
+                "receipt_id",
+                "registry_id",
+                "playbook_id",
+                "setup_family",
+                "setup_variant_id",
+                "eligibility_constraint_ids",
+                "selection_metadata",
+                "source_registry_fingerprint",
+            }
+            assert receipt.registry_id == "fwd011-registry"
+            assert "capital_deployment" not in receipt.model_dump()
+            return
+    
+        if behaviour == "eligibility_family_candidates":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.ALLOW,
+                registry=registry,
+                candidate_family_ids=["gap_up", "gap_up", "breakdown"],
+            )
+            assert output.active_family_ids == ["gap_up", "breakdown"]
+            assert output.active_setup_variant_ids == [
+                "gap_up.baseline",
+                "gap_up.risk_defined",
+                "breakdown.baseline",
+            ]
+            assert [receipt.playbook_id for receipt in output.playbook_metadata_receipts] == [
+                "gap_up_follow_through",
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            return
+    
+        if behaviour == "eligibility_service_flow":
+            service = PlaybookEligibilityService()
+            output = service.evaluate(
+                posture=PostureRiskOutput(permission_state=PermissionState.ALLOW),
+                registry=registry,
+                candidate_family_ids=["gap_up"],
+            )
+            assert isinstance(output, PlaybookEligibilityOutput)
+            assert output.registry_id == "fwd011-registry"
+            assert output.active_family_ids == ["gap_up"]
+            assert output.active_setup_variant_ids == ["gap_up.baseline", "gap_up.risk_defined"]
+            assert [receipt.receipt_id for receipt in output.playbook_metadata_receipts] == [
+                "fwd011-registry:gap_up_follow_through:gap_up.baseline",
+                "fwd011-registry:gap_up_follow_through:gap_up.risk_defined",
+            ]
+            return
+    
+        if behaviour == "eligibility_output_contract":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.ALLOW,
+                registry=registry,
+                candidate_family_ids=["breakdown"],
+            )
+            dumped = output.model_dump()
+            assert set(dumped) == {
+                "admissibility_surface",
+                "active_family_ids",
+                "active_setup_variant_ids",
+                "registry_id",
+                "playbook_metadata_receipts",
+            }
+            assert output.active_setup_variant_ids == ["breakdown.baseline"]
+            assert "broker_order" not in str(dumped)
+            assert "authorised_notional_usd" not in str(dumped)
+            return
+    
+        if behaviour == "admissibility_surface":
+            surface = EligibilityAdmissibilitySurface(
+                permission_state=PermissionState.BLOCK,
+                no_trade_reasons=["permission_block"],
+            )
+            assert surface.permission_state == PermissionState.BLOCK
+            assert surface.no_trade_reasons == ["permission_block"]
+            assert set(EligibilityAdmissibilitySurface.model_fields) == {
+                "permission_state",
+                "no_trade_reasons",
+            }
+            return
+    
+        if behaviour == "permission_block_reason":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.BLOCK,
+                registry=registry,
+                candidate_family_ids=["gap_up", "breakdown"],
+            )
+            assert output.active_family_ids == []
+            assert output.active_setup_variant_ids == []
+            assert output.playbook_metadata_receipts == []
+            assert output.registry_id == "fwd011-registry"
+            assert output.admissibility_surface.no_trade_reasons == ["permission_block"]
+            return
+    
+        if behaviour == "capital_authority_fence":
+            for authority_key in (
+                "capital_deployment",
+                "broker_order",
+                "live_order_execution",
+                "execution_expression_service",
+            ):
+                with pytest.raises(ValueError, match="hidden playbook authority key rejected"):
+                    reject_hidden_playbook_authority(_hidden_payload(atlas_record_id, authority_key))
+            with pytest.raises(ValidationError, match="hidden playbook authority key"):
+                PlaybookDefinition(
+                    playbook_id="gap_up_follow_through",
+                    setup_family="gap_up",
+                    setup_variant_ids=("gap_up.baseline",),
+                    selection_metadata=_hidden_payload(atlas_record_id, "capital_deployment"),
+                )
+            return
+    
+        if behaviour == "service_module_fence":
+            assert PlaybookEligibilityService().evaluate(
+                posture=PostureRiskOutput(permission_state=PermissionState.ALLOW),
+                registry=registry,
+                candidate_family_ids=["breakdown"],
+            ).active_setup_variant_ids == ["breakdown.baseline"]
+            assert "PlaybookRegistryService" not in set().union(
+                *(_defined_symbols(path) for path in SELECTED_NATIVE_FILES)
+            )
+            return
+    
+        if behaviour == "native_transform_boundary":
+            for path in SELECTED_NATIVE_FILES:
+                imports = _imports_for(path)
+                assert not {
+                    module for module in imports if module.startswith(PROHIBITED_IMPORT_PREFIXES)
+                }, path
+            defined_symbols: set[str] = set()
+            for path in SELECTED_NATIVE_FILES:
+                defined_symbols.update(_defined_symbols(path))
+            assert defined_symbols.isdisjoint(PROHIBITED_DONOR_SYMBOLS)
+            donor_key = next(iter(PLAYBOOK_FORBIDDEN_AUTHORITY_KEYS))
+            with pytest.raises(ValueError, match="hidden playbook authority key rejected"):
+                reject_hidden_playbook_authority(_hidden_payload(atlas_record_id, donor_key))
+            return
+    
+>       raise AssertionError(f"Unhandled FWD-011 row behaviour: {behaviour}")
+E       AssertionError: Unhandled FWD-011 row behaviour: service_identity
+
+tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py:495: AssertionError
+_ test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour[FWD011-AUDIT-075-atlas_donor_playbook_eligibility_service_002-service_identity] _
+
+audit_row_id = 'FWD011-AUDIT-075'
+atlas_record_id = 'atlas_donor_playbook_eligibility_service_002'
+behaviour = 'service_identity'
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-0/test_fwd011_reopened_rows_have54')
+
+    @pytest.mark.parametrize(("audit_row_id", "atlas_record_id", "behaviour"), REOPENED_ROW_CASES)
+    def test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour(
+        audit_row_id: str, atlas_record_id: str, behaviour: str, tmp_path: Path
+    ) -> None:
+        assert audit_row_id.startswith("FWD011-AUDIT-")
+        assert atlas_record_id.startswith("atlas_donor_")
+        registry = _registry()
+    
+        if behaviour == "registry_document_contract":
+            assert registry.schema_version == "playbook_registry.v1"
+            assert registry.registry_id == "fwd011-registry"
+            assert [playbook.playbook_id for playbook in registry.enabled_playbooks()] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            exported = registry.enabled_playbooks()[0].model_dump()
+            exported["selection_metadata"]["setup_family"] = "mutated"
+            assert registry.playbooks[0].selection_metadata["setup_family"] == "gap_up"
+            return
+    
+        if behaviour == "registry_uniqueness":
+            with pytest.raises(ValidationError, match="duplicate playbook_id"):
+                PlaybookRegistryDocument(
+                    registry_id="fwd011-registry",
+                    playbooks=(
+                        PlaybookDefinition(
+                            playbook_id="gap_up_follow_through",
+                            setup_family="gap_up",
+                            setup_variant_ids=("gap_up.baseline",),
+                        ),
+                        PlaybookDefinition(
+                            playbook_id="gap_up_follow_through",
+                            setup_family="gap_up",
+                            setup_variant_ids=("gap_up.risk_defined",),
+                        ),
+                    ),
+                )
+            with pytest.raises(ValidationError, match="duplicate setup_variant_id"):
+                PlaybookDefinition(
+                    playbook_id="gap_up_follow_through",
+                    setup_family="gap_up",
+                    setup_variant_ids=("gap_up.baseline", "gap_up.baseline"),
+                )
+            return
+    
+        if behaviour == "deterministic_receipt_order":
+            receipts = build_playbook_metadata_receipts(registry)
+            assert [receipt.receipt_id for receipt in receipts] == [
+                "fwd011-registry:gap_up_follow_through:gap_up.baseline",
+                "fwd011-registry:gap_up_follow_through:gap_up.risk_defined",
+                "fwd011-registry:breakdown_reversal:breakdown.baseline",
+            ]
+            assert {receipt.source_registry_fingerprint for receipt in receipts} == {registry.fingerprint()}
+            copied = receipts[0].model_copy(deep=True)
+            copied.selection_metadata["setup_family"] = "mutated"
+            assert receipts[0].selection_metadata["setup_family"] == "gap_up"
+            return
+    
+        if behaviour == "variant_lookup_filter":
+            receipts = build_playbook_metadata_receipts(
+                registry,
+                setup_variant_ids=("gap_up.risk_defined", "breakdown.baseline"),
+            )
+            assert [receipt.setup_variant_id for receipt in receipts] == [
+                "gap_up.risk_defined",
+                "breakdown.baseline",
+            ]
+            assert [receipt.playbook_id for receipt in receipts] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            return
+    
+        if behaviour == "family_lookup_filter":
+            receipts = build_playbook_metadata_receipts(registry, setup_family_ids=("gap_up",))
+            assert [receipt.playbook_id for receipt in receipts] == [
+                "gap_up_follow_through",
+                "gap_up_follow_through",
+            ]
+            assert [receipt.setup_family for receipt in receipts] == ["gap_up", "gap_up"]
+            assert [receipt.setup_variant_id for receipt in receipts] == [
+                "gap_up.baseline",
+                "gap_up.risk_defined",
+            ]
+            return
+    
+        if behaviour == "yaml_loader_contract":
+            registry_path = tmp_path / f"{audit_row_id}.yaml"
+            _write_registry_yaml(registry_path)
+            loaded = load_playbook_registry(registry_path)
+            assert loaded.registry_id == "fwd011-yaml"
+            assert [playbook.playbook_id for playbook in loaded.enabled_playbooks()] == [
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            duplicate_path = tmp_path / f"{audit_row_id}-duplicate.yaml"
+            duplicate_path.write_text(
+                """
+                schema_version: playbook_registry.v1
+                registry_id: duplicate-yaml
+                playbooks:
+                  first:
+                    setup_family: gap_up
+                    setup_variant_ids: [gap_up.baseline]
+                  first:
+                    setup_family: gap_up
+                    setup_variant_ids: [gap_up.risk_defined]
+                """,
+                encoding="utf-8",
+            )
+            with pytest.raises(ValueError, match="duplicate YAML key"):
+                load_playbook_registry(duplicate_path)
+            return
+    
+        if behaviour == "deterministic_fingerprint":
+            first = registry.fingerprint()
+            second = PlaybookRegistryDocument.model_validate(registry.model_dump(mode="json")).fingerprint()
+            assert first == second
+            assert len(first) == 64
+            assert all(char in "0123456789abcdef" for char in first)
+            return
+    
+        if behaviour == "bounded_contract_carrier":
+            receipt = build_playbook_metadata_receipts(registry)[0]
+            assert set(PlaybookDefinition.model_fields) == {
+                "playbook_id",
+                "setup_family",
+                "setup_variant_ids",
+                "eligibility_constraints",
+                "selection_metadata",
+                "enabled",
+            }
+            assert set(PlaybookMetadataReceipt.model_fields) == {
+                "receipt_id",
+                "registry_id",
+                "playbook_id",
+                "setup_family",
+                "setup_variant_id",
+                "eligibility_constraint_ids",
+                "selection_metadata",
+                "source_registry_fingerprint",
+            }
+            assert receipt.registry_id == "fwd011-registry"
+            assert "capital_deployment" not in receipt.model_dump()
+            return
+    
+        if behaviour == "eligibility_family_candidates":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.ALLOW,
+                registry=registry,
+                candidate_family_ids=["gap_up", "gap_up", "breakdown"],
+            )
+            assert output.active_family_ids == ["gap_up", "breakdown"]
+            assert output.active_setup_variant_ids == [
+                "gap_up.baseline",
+                "gap_up.risk_defined",
+                "breakdown.baseline",
+            ]
+            assert [receipt.playbook_id for receipt in output.playbook_metadata_receipts] == [
+                "gap_up_follow_through",
+                "gap_up_follow_through",
+                "breakdown_reversal",
+            ]
+            return
+    
+        if behaviour == "eligibility_service_flow":
+            service = PlaybookEligibilityService()
+            output = service.evaluate(
+                posture=PostureRiskOutput(permission_state=PermissionState.ALLOW),
+                registry=registry,
+                candidate_family_ids=["gap_up"],
+            )
+            assert isinstance(output, PlaybookEligibilityOutput)
+            assert output.registry_id == "fwd011-registry"
+            assert output.active_family_ids == ["gap_up"]
+            assert output.active_setup_variant_ids == ["gap_up.baseline", "gap_up.risk_defined"]
+            assert [receipt.receipt_id for receipt in output.playbook_metadata_receipts] == [
+                "fwd011-registry:gap_up_follow_through:gap_up.baseline",
+                "fwd011-registry:gap_up_follow_through:gap_up.risk_defined",
+            ]
+            return
+    
+        if behaviour == "eligibility_output_contract":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.ALLOW,
+                registry=registry,
+                candidate_family_ids=["breakdown"],
+            )
+            dumped = output.model_dump()
+            assert set(dumped) == {
+                "admissibility_surface",
+                "active_family_ids",
+                "active_setup_variant_ids",
+                "registry_id",
+                "playbook_metadata_receipts",
+            }
+            assert output.active_setup_variant_ids == ["breakdown.baseline"]
+            assert "broker_order" not in str(dumped)
+            assert "authorised_notional_usd" not in str(dumped)
+            return
+    
+        if behaviour == "admissibility_surface":
+            surface = EligibilityAdmissibilitySurface(
+                permission_state=PermissionState.BLOCK,
+                no_trade_reasons=["permission_block"],
+            )
+            assert surface.permission_state == PermissionState.BLOCK
+            assert surface.no_trade_reasons == ["permission_block"]
+            assert set(EligibilityAdmissibilitySurface.model_fields) == {
+                "permission_state",
+                "no_trade_reasons",
+            }
+            return
+    
+        if behaviour == "permission_block_reason":
+            output = compile_playbook_eligibility(
+                permission_state=PermissionState.BLOCK,
+                registry=registry,
+                candidate_family_ids=["gap_up", "breakdown"],
+            )
+            assert output.active_family_ids == []
+            assert output.active_setup_variant_ids == []
+            assert output.playbook_metadata_receipts == []
+            assert output.registry_id == "fwd011-registry"
+            assert output.admissibility_surface.no_trade_reasons == ["permission_block"]
+            return
+    
+        if behaviour == "capital_authority_fence":
+            for authority_key in (
+                "capital_deployment",
+                "broker_order",
+                "live_order_execution",
+                "execution_expression_service",
+            ):
+                with pytest.raises(ValueError, match="hidden playbook authority key rejected"):
+                    reject_hidden_playbook_authority(_hidden_payload(atlas_record_id, authority_key))
+            with pytest.raises(ValidationError, match="hidden playbook authority key"):
+                PlaybookDefinition(
+                    playbook_id="gap_up_follow_through",
+                    setup_family="gap_up",
+                    setup_variant_ids=("gap_up.baseline",),
+                    selection_metadata=_hidden_payload(atlas_record_id, "capital_deployment"),
+                )
+            return
+    
+        if behaviour == "service_module_fence":
+            assert PlaybookEligibilityService().evaluate(
+                posture=PostureRiskOutput(permission_state=PermissionState.ALLOW),
+                registry=registry,
+                candidate_family_ids=["breakdown"],
+            ).active_setup_variant_ids == ["breakdown.baseline"]
+            assert "PlaybookRegistryService" not in set().union(
+                *(_defined_symbols(path) for path in SELECTED_NATIVE_FILES)
+            )
+            return
+    
+        if behaviour == "native_transform_boundary":
+            for path in SELECTED_NATIVE_FILES:
+                imports = _imports_for(path)
+                assert not {
+                    module for module in imports if module.startswith(PROHIBITED_IMPORT_PREFIXES)
+                }, path
+            defined_symbols: set[str] = set()
+            for path in SELECTED_NATIVE_FILES:
+                defined_symbols.update(_defined_symbols(path))
+            assert defined_symbols.isdisjoint(PROHIBITED_DONOR_SYMBOLS)
+            donor_key = next(iter(PLAYBOOK_FORBIDDEN_AUTHORITY_KEYS))
+            with pytest.raises(ValueError, match="hidden playbook authority key rejected"):
+                reject_hidden_playbook_authority(_hidden_payload(atlas_record_id, donor_key))
+            return
+    
+>       raise AssertionError(f"Unhandled FWD-011 row behaviour: {behaviour}")
+E       AssertionError: Unhandled FWD-011 row behaviour: service_identity
+
+tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py:495: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py::test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour[FWD011-AUDIT-074-atlas_donor_playbook_eligibility_service_001-service_identity] - AssertionError: Unhandled FWD-011 row behaviour: service_identity
+FAILED tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py::test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour[FWD011-AUDIT-075-atlas_donor_playbook_eligibility_service_002-service_identity] - AssertionError: Unhandled FWD-011 row behaviour: service_identity
+2 failed, 73 passed in 2.66s
+exit_status=1
