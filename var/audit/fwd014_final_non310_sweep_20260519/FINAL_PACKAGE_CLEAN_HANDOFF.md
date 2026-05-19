@@ -30,4 +30,5 @@ FWD-014 had `2` accepted existing-satisfaction rows and `0` reopened unsupported
 This final sweep did not recode runtime behaviour. It packages the cleaned non-310 state after the row-level behavioural proof repairs and confirms that FWD-014 itself had no reopened rows. Registry-only closure is not used as final package authority.
 
 
-Final commit: .
+Evidence-introduction commit: `10c03575721dead8db00f04992cbbc690e1aa9bf`.
+Final Git HEAD is the authoritative archive commit and is recorded in the final response and package Git log.

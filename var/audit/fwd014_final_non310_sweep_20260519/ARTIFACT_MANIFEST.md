@@ -1,16 +1,16 @@
 # FWD-014 final non-310 sweep artefact manifest
 
-Note: patch artefacts capture the diff through the evidence-introduction commit; this manifest captures final artefact file hashes after commit-reference finalisation.
+Note: patch artefacts capture the final sweep current-tree diff against the FWD-012 baseline. The package Git log records final commit identity.
 
 | path | size_bytes | sha256 |
 |---|---:|---|
 | `var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md` | 4668 | `42e75c254b4f988ebbb3597f622fdbf63c35ced4852e7bf36a9275c3ef4ae936` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md` | 1944 | `e3b38bdb9f84e3ecd1139a679dfc23a66bfb6fde32ef7b9a31d527867010b943` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md` | 1482 | `9f331ed6c581a7bf8ded220babd2240329ab58d577eeb245ee620c8ad1fb712d` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md` | 2112 | `a7b46e59492a83f059c94e107776ba927a6cea4b1eae7701cf7b0854bff64382` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md` | 1650 | `6b3a64ad6271b0e96a70d146b58baee922fec246a5b1160d43f83b84eb0043f2` |
 | `var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md` | 936 | `a9bb16938f5d1017e401735017b9127788ea893d7757729cb4e32d82a5e73942` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv` | 4101 | `9e61be0c18721b18198732730dcd6413d683523a30173ac101ae9db0e1270372` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_10c0357.diff` | 104164 | `9414746d7720a561c659b660e653b62e807e493a12150984e694e3908e245c07` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_10c0357.diffstat` | 3100 | `dea7b839a78729f23e39c84d47a83afc679b4ea149a5ea2ce0a0ad748eb6b655` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv` | 4101 | `d1b1be9afb801db6736a1107d843b87dabb1aae9f40ac9e9d17377e0f04f17eb` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_current_tree.diff` | 48369 | `b03e9da39ea4daa0bf6cb23d28e3d037448311f5ecc833cdede3f9639e56eded` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_current_tree.diffstat` | 2995 | `0e296c71bd8f785a49a67e7c498af08a21066c56d451ed94cb83644d38d84096` |
 | `var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv` | 401 | `1adf6adad7333073e9c8dfd93c0f18448c99530ce837f108ef20560e52fac07c` |
 | `var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md` | 5391 | `b3d002fe7f5e7d4ff23fd6a1e0eb5dcf396ed0f8a1f63c62dd9a00f0428270cb` |
 | `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command` | 17 | `d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6` |
