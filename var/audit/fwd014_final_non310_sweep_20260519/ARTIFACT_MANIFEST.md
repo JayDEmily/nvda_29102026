@@ -1,5 +1,7 @@
 # FWD-014 final non-310 sweep artefact manifest
 
+Note: patch artefacts capture the diff through the evidence-introduction commit; this manifest captures final artefact file hashes after commit-reference finalisation.
+
 | path | size_bytes | sha256 |
 |---|---:|---|
 | `var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md` | 4668 | `42e75c254b4f988ebbb3597f622fdbf63c35ced4852e7bf36a9275c3ef4ae936` |
@@ -7,8 +9,8 @@
 | `var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md` | 1482 | `9f331ed6c581a7bf8ded220babd2240329ab58d577eeb245ee620c8ad1fb712d` |
 | `var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md` | 936 | `a9bb16938f5d1017e401735017b9127788ea893d7757729cb4e32d82a5e73942` |
 | `var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv` | 4101 | `9e61be0c18721b18198732730dcd6413d683523a30173ac101ae9db0e1270372` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_4993d0d.diff` | 51752 | `c25aef281d876283ed47a8fad7474febc9a95a097d246c4c0625584d413a4e19` |
-| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_4993d0d.diffstat` | 3123 | `20de3e6b85852e0444a0c29e9ff1594a1b0642071ffab3cace2562595b5f34d1` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_10c0357.diff` | 104164 | `9414746d7720a561c659b660e653b62e807e493a12150984e694e3908e245c07` |
+| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_10c0357.diffstat` | 3100 | `dea7b839a78729f23e39c84d47a83afc679b4ea149a5ea2ce0a0ad748eb6b655` |
 | `var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv` | 401 | `1adf6adad7333073e9c8dfd93c0f18448c99530ce837f108ef20560e52fac07c` |
 | `var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md` | 5391 | `b3d002fe7f5e7d4ff23fd6a1e0eb5dcf396ed0f8a1f63c62dd9a00f0428270cb` |
 | `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command` | 17 | `d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6` |
