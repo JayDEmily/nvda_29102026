@@ -4036,3 +4036,43 @@ Ruled out for this planning pass:
 Next gate:
 
 - Execute `AMC-FWD004-G0` on a fresh worker branch from `main`, unless a later PM/user instruction selects a different first surface.
+
+### 26.12 Non-310 completion-claim row-evidence audit — 2026-05-19
+
+Audit branch: `audit/non310-completion-claim-row-evidence`.
+Audit artefacts: `var/audit/non310_completion_claim_audit_20260519/`.
+Decision: `PARTIAL_ACCEPT_WITH_REOPENED_ROWS`.
+
+Baseline package: `prl-tranche-mainline-integrated_ATLAS_CONTINUATION_PLAN_APPLIED.tar.gz`.
+Baseline HEAD: `d42428c7cb59fa5251c68fe52a0723024090f293`.
+Worker claimed-completed package: `prl-tranche-mainline-integrated_ATLAS_CONTINUATION_NON310_COMPLETED_20260519.tar.gz`.
+Worker output HEAD audited: `9966cdabbfc25ca330c3f19547b242df8d00f0fc`.
+
+Audit counts across the six non-310 target surfaces:
+
+- total_rows: `468`
+- implemented_in_tests_and_code: `0`
+- already_satisfied_by_existing_tests_and_code: `38`
+- test_only: `0`
+- code_only: `0`
+- evidence_only_not_implemented: `0`
+- deferred_by_authority: `0`
+- rejected_out_of_scope: `0`
+- duplicate_or_subsumed: `0`
+- unsupported_worker_claim: `430`
+
+Per-surface audit result:
+
+- `FWD-004`: `14` rows accepted as existing baseline test-and-code satisfaction; `59` rows reopened as `unsupported_worker_claim`.
+- `FWD-006`: `0` rows accepted as existing baseline test-and-code satisfaction; `108` rows reopened as `unsupported_worker_claim`.
+- `FWD-009`: `2` rows accepted as existing baseline test-and-code satisfaction; `49` rows reopened as `unsupported_worker_claim`.
+- `FWD-011`: `20` rows accepted as existing baseline test-and-code satisfaction; `75` rows reopened as `unsupported_worker_claim`.
+- `FWD-012`: `0` rows accepted as existing baseline test-and-code satisfaction; `139` rows reopened as `unsupported_worker_claim`.
+- `FWD-014`: `2` rows accepted as existing baseline test-and-code satisfaction; `0` rows reopened as `unsupported_worker_claim`.
+
+Audit finding:
+
+- The baseline-versus-worker diff shows no native `src/`, `tests/`, `config/`, `fixtures`, vocabulary, original Atlas/Bridge JSON, or generated surface-slice mutation in the claimed-completed package.
+- Direct active-code rows with unchanged baseline native test and source refs are accepted only as `already_satisfied_by_existing_tests_and_code`, not as new implementation by the claimed-completed package.
+- Grouped satisfaction, status-group subsumption, ordered-replay closure, proof-block pass, and active-code cluster references were not accepted as row-level duplicate/subsumed proof unless a row-specific canonical parent and exact semantic-equivalence rationale were present.
+- Therefore the claimed-completed package is not accepted as implementation-complete; reopened rows are recorded in the row audit CSV files under the audit artefact directory.

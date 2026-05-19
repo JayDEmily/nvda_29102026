@@ -1,0 +1,30 @@
+{
+  "total_rows": 468,
+  "counts": {
+    "unsupported_worker_claim": 430,
+    "already_satisfied_by_existing_tests_and_code": 38
+  },
+  "per_surface": {
+    "FWD-004": {
+      "unsupported_worker_claim": 59,
+      "already_satisfied_by_existing_tests_and_code": 14
+    },
+    "FWD-006": {
+      "unsupported_worker_claim": 108
+    },
+    "FWD-009": {
+      "unsupported_worker_claim": 49,
+      "already_satisfied_by_existing_tests_and_code": 2
+    },
+    "FWD-011": {
+      "already_satisfied_by_existing_tests_and_code": 20,
+      "unsupported_worker_claim": 75
+    },
+    "FWD-012": {
+      "unsupported_worker_claim": 139
+    },
+    "FWD-014": {
+      "already_satisfied_by_existing_tests_and_code": 2
+    }
+  }
+}
