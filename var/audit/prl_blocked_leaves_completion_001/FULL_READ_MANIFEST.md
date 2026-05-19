@@ -54,3 +54,12 @@ Read method key:
 | `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py` | 119 | `4aa69a638fc8264c87251adb074332684c7b760fc60b0d37b210af55f43dc15f` | `cat/sed/generator output` | yes | PRL-MRP-009 typed promotion config/loader/test |
 
 | `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py` | 108 | `228af73e016443281bc6086363c3a56a94ff4cb84b8bf86a0c61652da1260541` | `cat/sed` | yes | PRL-MRP-020 inventory-backed unavailable signal test |
+
+| `config/parallel_risk_lane_profile.v1.yaml` | 21 | `c56ec19bde7069cf4c4613e14dd42e0d43cae02eec5f97b12b8114b982dde1eb` | `cat/sed` | yes | PRL-MRP-013 governed VIX threshold config/loader/test |
+| `src/nvda_desk/config/parallel_risk_lane_profile.py` | 30 | `14abb400d4bce277c5ded294da42c00b4e2a45f0a4bcab6932132095c2370347` | `cat/sed` | yes | PRL-MRP-013 governed VIX threshold config/loader/test |
+| `tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py` | 105 | `8e29f3d16fea2d68a060f084ec613e80455acca36201ad63e5ceab9c06241d59` | `cat/sed` | yes | PRL-MRP-013 governed VIX threshold config/loader/test |
+
+| `src/nvda_desk/vocabulary_builder.py` | 940 | `5bd0b7d7b84cd58bcd102936950768798868c430bf9fc02a40778f5592111e10` | `cat/script output` | yes | Vocabulary alias admission triggered by PRL config/source near-match audit |
+| `data/vocabulary/canonical_vocabulary.json` | 1165 | `235299146440aea2be3bb59c002d2c84c9fda33653e83990110895012ea4cd14` | `cat/script output` | yes | Vocabulary alias admission triggered by PRL config/source near-match audit |
+| `data/vocabulary/vocabulary_touch_stamp.json` | 3 | `6b3a06bc3872a8173357c8f8410b0bc09a48f295f35df71adf499f6fe2e7a100` | `cat/script output` | yes | Vocabulary alias admission triggered by PRL config/source near-match audit |
+| `var/vocabulary/synonym_candidates.json` | 8 | `cdf4b1ae441ebfcd1bf5dba6e10cb055a870cb29a25f529e05d3a9c70b54cf09` | `cat/script output` | yes | Vocabulary alias admission triggered by PRL config/source near-match audit |

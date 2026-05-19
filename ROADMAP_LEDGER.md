@@ -3608,3 +3608,63 @@ Closeout evidence:
 - Files changed: `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/domain/parallel_risk/unavailable_signals.py`, `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py`, audit artefacts, `ROADMAP_LEDGER.md`.
 - Unresolved items: none for this leaf.
 - Next leaf: `PRL-MRP-013`.
+
+### PRL-MRP-013 — Governed VIX threshold reconciliation
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: governed VIX threshold migration/config authority limited to `PRL-MRP-013`.
+- Allowed files: governed PRL lane profile config/contracts/loader, PRL environment-assessment VIX policy seam, tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: silent change to current `30/50` compatibility behaviour, hidden coefficient mutation, capital/candidate/play/order authority, unrelated posture-stage coefficient migration.
+- Expected tests: default `30/50` preservation, governed config load/validation, invalid threshold failure, explicit migration metadata, no hidden coefficient mutation, no authority widening.
+- Acceptance criterion: PRL VIX thresholds are reconciled through explicit typed config while default runtime behaviour remains `VIX >= 30` caution and `VIX >= 50` block.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Config added: `config/parallel_risk_lane_profile.v1.yaml`.
+- Contracts added: `ParallelRiskVixThresholdPolicy`, `ParallelRiskLaneProfileConfig`, `parallel_risk_lane_profile_config_from_dict`.
+- Loader added: `ParallelRiskLaneProfileService` reads typed YAML only.
+- Runtime seam updated: `assess_risk_envelope(..., vix_threshold_policy=None)` defaults to explicit compatibility policy preserving `VIX >= 30` caution and `VIX >= 50` block.
+- Governed config explicitly references related coefficient-authority surfaces without mutating them.
+- Invalid threshold ordering, hidden coefficient mutation, and authority widening fail validation.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py -q`.
+- Validation result: pass, `8 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_013_pytest.log`.
+- Files changed: `config/parallel_risk_lane_profile.v1.yaml`, `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/config/parallel_risk_lane_profile.py`, `src/nvda_desk/domain/parallel_risk/environment_assessment.py`, `tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: none; proceed to final validation and archive.
+
+### PRL blocked leaves completion 001 — final validation closeout
+
+Status: implementation_complete.
+
+Leaves completed in this pass:
+
+- `PRL-MRP-007` — governed workbook inventory tab created and tested.
+- `PRL-MRP-009` — typed runtime-safe signal inventory promotion added and tested.
+- `PRL-MRP-020` — inventory-backed unavailable signal handling added and tested.
+- `PRL-MRP-013` — governed VIX threshold config seam added with default `30/50` compatibility preserved and tested.
+
+Validation closeout:
+
+- Required broad pytest command was attempted but exceeded the tool timeout before completion; split equivalent validation was then run and recorded.
+- Final split pytest results recorded in `var/audit/prl_blocked_leaves_completion_001/`:
+  - `tests/tier_a/parallel_risk` — `103 passed`.
+  - `tests/tier_a/testing_harnesses` — `11 passed`.
+  - `tests/tier_a/upstream_signal` — `14 passed`.
+  - `tests/tier_a/upstream_cognition` — `21 passed`.
+  - `tests/tier_a/financial_calendar` — `10 passed`.
+  - `tests/tier_a/temporal` — `7 passed`.
+  - `tests/tier_a/vocabulary` — all files passed individually after governed vocabulary alias admissions; final vocabulary proof-block command was tool-timeout limited.
+- `make proof-block BLOCK=parallel_risk_lane_authority_surface` — `112 passed`.
+- `PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean` — `vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False`.
+- `git diff --check` — pass, no output.
+- `make scaffold-check` — pass, `repo scaffold present`.
+- Vocabulary governance changes: admitted aliases only, rebuilt canonical vocabulary, updated vocabulary touch stamp, and wrote clean synonym-candidate artefact through the repo script.
+- Runtime workbook boundary: tests preserve no direct PRL runtime read of `.xlsx`, `openpyxl`, `SpreadsheetFile`, or `import_xlsx` in runtime PRL paths.
+- Final patch: `var/audit/prl_blocked_leaves_completion_001/prl-blocked-leaves-completion.patch`.
+- Final archive SHA-256 is not embedded here; it is computed after archive creation and reported in the final response.

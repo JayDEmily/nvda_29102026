@@ -1,0 +1,26 @@
+## Proof block vocabulary governance conformance candidate
+2026-05-19T02:09:30Z
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3.13 scripts/run_proof_block.py --block vocabulary_governance_conformance_candidate
+proof_block_id=vocabulary_governance_conformance_candidate
+command=python -m pytest tests/tier_a/vocabulary/test_vocabulary_schema_contract.py tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/prl_work/MVD-A10_1704_V1
+configfile: pyproject.toml
+collected 91 items
+
+tests/tier_a/vocabulary/test_vocabulary_schema_contract.py ..            [  2%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py .. [  4%]
+....                                                                     [  8%]
+tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py ....... [ 16%]
+..                                                                       [ 18%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py . [ 19%]
+.......                                                                  [ 27%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py . [ 28%]
+....                                                                     [ 32%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py . [ 34%]
+............                                                             [ 47%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py . [ 48%]
+........                                                                 [ 57%]
+tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py . [ 58%]
+..............

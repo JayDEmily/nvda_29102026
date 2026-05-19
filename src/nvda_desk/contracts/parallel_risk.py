@@ -160,6 +160,11 @@ ParallelRiskRuntimeUsePermission = Literal[
     "excluded_from_prl_runtime",
 ]
 
+ParallelRiskVixThresholdMode = Literal[
+    "compatibility_legacy_30_50",
+    "governed_config",
+]
+
 
 class AuthorityFlags(BaseModel):
     """Default-deny authority flags for enriched parallel-risk profile contracts."""
@@ -309,6 +314,58 @@ def parallel_risk_signal_inventory_document_from_dict(
     """Build and validate one promoted PRL signal-inventory document."""
 
     return ParallelRiskSignalInventoryDocument(**payload)
+
+
+class ParallelRiskVixThresholdPolicy(BaseModel):
+    """Governed VIX threshold policy for the PRL risk-envelope seam."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    policy_id: str = Field(min_length=1)
+    mode: ParallelRiskVixThresholdMode = "compatibility_legacy_30_50"
+    caution_threshold: float = Field(default=30.0, ge=0.0)
+    block_threshold: float = Field(default=50.0, ge=0.0)
+    caution_flag: str = "vix_elevated"
+    block_flag: str = "vix_extreme"
+    contribution_source_family: str = "market_volatility_context"
+    contribution_state: str = "caution"
+    coefficient_authority_refs: list[str] = Field(default_factory=list)
+    migration_status: str = Field(min_length=1)
+    hidden_coefficient_mutation_allowed: bool = False
+    authority_flags: AuthorityFlags = Field(default_factory=lambda: AuthorityFlags())
+
+    @model_validator(mode="after")
+    def _validate_vix_threshold_policy(self) -> "ParallelRiskVixThresholdPolicy":
+        if self.caution_threshold >= self.block_threshold:
+            raise ValueError("parallel_risk_vix_caution_threshold_must_be_below_block_threshold")
+        if self.hidden_coefficient_mutation_allowed:
+            raise ValueError("parallel_risk_vix_hidden_coefficient_mutation_forbidden")
+        if self.mode == "compatibility_legacy_30_50" and (
+            self.caution_threshold != 30.0 or self.block_threshold != 50.0
+        ):
+            raise ValueError("parallel_risk_vix_compatibility_mode_requires_30_50")
+        if not self.coefficient_authority_refs:
+            raise ValueError("parallel_risk_vix_policy_requires_coefficient_refs")
+        return self
+
+
+class ParallelRiskLaneProfileConfig(BaseModel):
+    """Governed PRL profile config promoted to runtime-safe YAML."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    profile_id: str = Field(min_length=1)
+    schema_version: str = Field(min_length=1)
+    vix_threshold_policy: ParallelRiskVixThresholdPolicy
+    notes: list[str] = Field(default_factory=list)
+
+
+def parallel_risk_lane_profile_config_from_dict(
+    payload: dict[str, Any],
+) -> ParallelRiskLaneProfileConfig:
+    """Build and validate one governed PRL lane profile config."""
+
+    return ParallelRiskLaneProfileConfig(**payload)
 
 
 class SignalSnapshotEntry(BaseModel):

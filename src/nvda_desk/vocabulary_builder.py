@@ -48,7 +48,7 @@ def build_document() -> VocabularyDocument:
                 "stage",
                 "temporal_context",
                 "TemporalContextOutput",
-                allowed_aliases=["temporal event context"],
+                allowed_aliases=["temporal event context", "temporal context service"],
                 disallowed_phrases=["temporal context seq5"],
             ),
             VocabularyEntry(
@@ -57,6 +57,7 @@ def build_document() -> VocabularyDocument:
                 "stage",
                 "market_regime_context",
                 "MarketRegimeContextOutput",
+                allowed_aliases=["regime context"],
             ),
             VocabularyEntry(
                 "options_flow_context",
@@ -94,7 +95,12 @@ def build_document() -> VocabularyDocument:
                 "workflow",
                 "parallel_risk_lane",
                 "ParallelRiskLanePacket",
-                allowed_aliases=["parallel lane", "parallel risk", "risk lane"],
+                allowed_aliases=[
+                    "parallel lane",
+                    "parallel risk",
+                    "parallel risk lane profile",
+                    "risk lane",
+                ],
                 disallowed_phrases=[
                     "parallel risk lane dataschema",
                     "parallel risk lane packet",
@@ -255,7 +261,11 @@ def build_document() -> VocabularyDocument:
                 "reference_data",
                 "calendar_reference",
                 "EventCalendarProjection",
-                allowed_aliases=["event calendar architecture", "event calendar ownership"],
+                allowed_aliases=[
+                    "calendar event",
+                    "event calendar architecture",
+                    "event calendar ownership",
+                ],
                 notes=[
                     "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.4 and FWD-008 closure language."
                 ],
@@ -489,7 +499,7 @@ def build_document() -> VocabularyDocument:
                 "review_surface",
                 "review_explanation",
                 "ReviewTrace",
-                allowed_aliases=["review layer outputs"],
+                allowed_aliases=["review layer judgement", "review layer outputs"],
                 notes=[
                     "Admitted during bounded governance remediation before FWD-016 from blueprint row 5.15 terminology only."
                 ],
@@ -535,6 +545,7 @@ def build_document() -> VocabularyDocument:
                 "authority_surface",
                 "posture_risk_permission",
                 "CoefficientAuthorityDocument",
+                allowed_aliases=["coefficient authority config", "coefficient authority refs"],
                 disallowed_phrases=[
                     "coefficient authority import",
                     "coefficient authority marker",
@@ -629,6 +640,7 @@ def build_document() -> VocabularyDocument:
                 "parallel_risk_surface",
                 "parallel_risk_lane",
                 "ParallelRiskEnvironmentAssessment",
+                allowed_aliases=["environment assessment basis"],
                 disallowed_phrases=[
                     "bounded environment assessment",
                     "environment assessment import",
@@ -641,6 +653,7 @@ def build_document() -> VocabularyDocument:
                 "parallel_risk_surface",
                 "parallel_risk_lane",
                 "ParallelRiskCandidateAuditSurface",
+                allowed_aliases=["synonym candidate audit"],
                 disallowed_phrases=["def audit candidate", "return audit candidate"],
             ),
             VocabularyEntry(
@@ -658,7 +671,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_field",
                 "cross_stage_protocol",
                 "DmpV3Lineage.dependencyids",
-                allowed_aliases=["dependencyids", "packet ids"],
+                allowed_aliases=["dependency packet", "dependencyids", "packet ids"],
             ),
             VocabularyEntry(
                 "parallel_risk_observation_store",
@@ -690,6 +703,7 @@ def build_document() -> VocabularyDocument:
                 "authority_surface",
                 "temporal_context",
                 "SourceTemporalStandard",
+                allowed_aliases=["source temporal"],
                 disallowed_phrases=[
                     "source temporal standard field",
                     "source temporal standard surface",
@@ -704,6 +718,7 @@ def build_document() -> VocabularyDocument:
                 "protocol_field",
                 "temporal_context",
                 "SourceTemporalStandard.source_time_raw",
+                allowed_aliases=["source raw", "source time"],
                 disallowed_phrases=["raw source"],
                 notes=["Source temporal standard field. Upstream of the DMPV3 outer envelope."],
             ),
