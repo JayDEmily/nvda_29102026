@@ -1,0 +1,615 @@
+diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
+index 286c914..dd7802a 100644
+--- a/ROADMAP_LEDGER.md
++++ b/ROADMAP_LEDGER.md
+@@ -4182,3 +4182,35 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
+ Proof artefacts: `FWD012_PROOF_OUTPUT.md` records row proof `139 passed`, targeted FWD-012 proof `164 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
+ 
+ Remaining FWD-012 reopened rows: `0` open, `0` blocked.
++
++### 26.18 FWD-014 final non-310 surface sweep / package clean handoff — 2026-05-19
++
++Branch: `work/fwd014-final-non310-sweep`.
++Source package: `fwd012-target-surface-repair.tar.gz`.
++Baseline HEAD: `3b92755bef8a532aa5225e10beaa2b0395770dfa`.
++Audit artefacts: `var/audit/fwd014_final_non310_sweep_20260519/`.
++
++Scope: final package-level sweep for the non-310 reopened-row repair sequence. FWD-014 had no reopened unsupported rows in `var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv`; its two rows were already accepted by the audit as existing test-and-code satisfaction.
++
++Final package reconciliation:
++
++- total non-310 audit rows: `468`;
++- original reopened unsupported rows: `430`;
++- original accepted existing-satisfaction rows retained: `38`;
++- reopened rows covered by FWD-004/FWD-006/FWD-009/FWD-011/FWD-012 target-surface repair ledgers/tests: `430`;
++- final open rows: `0`;
++- final blocked rows: `0`.
++
++Final sweep proofs:
++
++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q` passed with `29 passed`.
++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` passed with `430 passed`.
++- `git diff --check` passed with status `0`.
++- `make scaffold-check` passed with `repo scaffold present`.
++- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all` passed with `proof_blocks_check_all=PASS count=51`.
++
++Mutation boundary: this final sweep did not change runtime/source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files. It added final handoff artefacts and this ledger entry only.
++
++Registry-only closure guard: final package closure is based on the accepted audit row set, target-surface repair ledgers/tests for the 430 reopened rows, and final sweep proof output. No `non310_actual_completion_*` file is used as closure authority.
++
++Next gate: PM acceptance review of the final non-310 clean handoff archive before opening any new migration class.
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/ARTIFACT_MANIFEST.md b/var/audit/fwd014_final_non310_sweep_20260519/ARTIFACT_MANIFEST.md
+new file mode 100644
+index 0000000..cca9797
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/ARTIFACT_MANIFEST.md
+@@ -0,0 +1,53 @@
++# FWD-014 final non-310 sweep artefact manifest
++
++| path | size_bytes | sha256 |
++|---|---:|---|
++| `var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md` | 4668 | `42e75c254b4f988ebbb3597f622fdbf63c35ced4852e7bf36a9275c3ef4ae936` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md` | 1926 | `5d21e01b61a739efc7e3eb6ea7623f618a6908cbdb33f11ac75ae978fdfc149c` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md` | 1464 | `b8258d99aab886baec4bff6d35de30470c914905ad7c657f872912f82cd92897` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md` | 936 | `a9bb16938f5d1017e401735017b9127788ea893d7757729cb4e32d82a5e73942` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv` | 4076 | `94707ae4500451e606efbf3ff763b0fb3d1eed6a30aa107e9fc15ac73480ae86` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diff` | 3037 | `d33f447a14f278247f1155314e33cb10e15aa848db4cc7e91c492fdb708682ed` |
++| `var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diffstat` | 91 | `5f4bd8d480136ef216759b0e1cacc9667ea3082e4a8e7b9bd4c832e38b1be454` |
++| `var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv` | 401 | `1adf6adad7333073e9c8dfd93c0f18448c99530ce837f108ef20560e52fac07c` |
++| `var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md` | 5391 | `b3d002fe7f5e7d4ff23fd6a1e0eb5dcf396ed0f8a1f63c62dd9a00f0428270cb` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command` | 17 | `d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stdout` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.command` | 125 | `7bb3fd1eb2fc2fb595574a37a1ec606f7a5ecfd18c392cebdfa27f0199825d08` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stdout` | 37 | `6e0ba8ea0271fdf48318142c7035bc358a55dcc687f805072d9482952e53fd43` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.command` | 20 | `6f9ceff930510a115e889a67bdd9d4c459b8c0bd57e6624515230c60755f6192` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stdout` | 22 | `3626204a022b679d510427a9d8decd64c7b1b645038eee3b54979c3d50e74ee0` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.command` | 158 | `de38cc4f5f3db479abcbf72da34bafc7c7715e4ba1ad00b0c6af3f359c33641e` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stdout` | 99 | `84c6297a0b858c0637ce009ff504a42ea9ac811a8c0cc79883dcc1de45e882bb` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.command` | 455 | `1106cb693f75872d9f191c12ebb6c2671fcc0d8b072b48d1841c298cba58ea96` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stdout` | 500 | `1e7900f1e4a84181859134ec7968681683baf39ac7ca30840b8c5be5dcae8c4d` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.command` | 17 | `d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stdout` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.command` | 125 | `7bb3fd1eb2fc2fb595574a37a1ec606f7a5ecfd18c392cebdfa27f0199825d08` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stdout` | 37 | `6e0ba8ea0271fdf48318142c7035bc358a55dcc687f805072d9482952e53fd43` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.command` | 20 | `6f9ceff930510a115e889a67bdd9d4c459b8c0bd57e6624515230c60755f6192` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stdout` | 22 | `3626204a022b679d510427a9d8decd64c7b1b645038eee3b54979c3d50e74ee0` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.command` | 158 | `de38cc4f5f3db479abcbf72da34bafc7c7715e4ba1ad00b0c6af3f359c33641e` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stdout` | 99 | `72702b06c8744310caba54555e97e7a4c2855d66097ca9a62f24ad25ed6da2ec` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.command` | 455 | `1106cb693f75872d9f191c12ebb6c2671fcc0d8b072b48d1841c298cba58ea96` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.status` | 2 | `9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stderr` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
++| `var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stdout` | 500 | `673c83d7dbff4c98602fd31a90eb074925a450716b1a3f04f99a5df244888c9a` |
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md b/var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md
+new file mode 100644
+index 0000000..457a0b4
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/COMMAND_LOG.md
+@@ -0,0 +1,62 @@
++# FWD-014 Final Non-310 Sweep Command Log
++
++## Baseline
++```
++$ git status --short
++?? var/audit/fwd014_final_non310_sweep_20260519/
++$ git branch --show-current
++work/fwd014-final-non310-sweep
++$ git rev-parse HEAD
++3b92755bef8a532aa5225e10beaa2b0395770dfa
++$ git log --oneline --decorate -n 30
++3b92755 (HEAD -> work/fwd014-final-non310-sweep, work/fwd012-target-surface-repair) Finalise FWD-012 target-surface repair artefacts
++05529f2 Record FWD-012 target-surface repair closeout
++cc3b559 Repair FWD-012 row-level serial cognition proof
++21c5176 (work/fwd011-target-surface-repair) Finalise FWD-011 target-surface repair artefacts
++2192065 Record FWD-011 target-surface repair closeout
++812220e Repair FWD-011 row-level playbook authority proof
++997e9f5 (work/fwd009-target-surface-repair) Finalise FWD-009 target-surface repair artefacts
++41cda02 Record FWD-009 target-surface repair closeout
++42fbb44 Repair FWD-009 row-level prepared ingress proof
++0f5b1d1 (work/fwd006-target-surface-repair) Finalise FWD-006 target-surface repair artefacts
++288a6aa Record FWD-006 target-surface repair closeout
++239e47e Repair FWD-006 row-level raw capture source temporal proof
++e1d847c (work/fwd004-target-surface-repair) Finalise FWD-004 target-surface repair receipts
++a1a8c31 Record FWD-004 target-surface repair closeout
++73a464a Repair FWD-004 row-level DMPV3 packet carriage proof
++8e31964 (audit/non310-completion-claim-row-evidence) Audit non-310 completion claim row evidence
++9966cda Clarify AMC non-310 executed reconciliation authority
++b6947a4 Record AMC non-310 final audit status
++fac86b2 Merge FWD-014 AMC record reconciliation
++92b4dee (worker/amc-fwd014-record-reconciliation-20260519) Reconcile AMC FWD-014 record implementation ledger
++2bebb44 Merge FWD-012 AMC record reconciliation
++1cae4e2 (worker/amc-fwd012-record-reconciliation-20260519) Reconcile AMC FWD-012 record implementation ledger
++b2c1a85 Merge FWD-011 AMC record reconciliation
++36c3386 (worker/amc-fwd011-record-reconciliation-20260519) Reconcile AMC FWD-011 record implementation ledger
++4b25e4a Merge FWD-009 AMC record reconciliation
++34c823e (worker/amc-fwd009-record-reconciliation-20260519) Reconcile AMC FWD-009 record implementation ledger
++798ecb1 Merge FWD-006 AMC record reconciliation
++fda64f8 (worker/amc-fwd006-record-reconciliation-20260519) Reconcile AMC FWD-006 record implementation ledger
++1d75f90 Merge FWD-004 AMC record reconciliation
++9d74c94 (worker/amc-fwd004-record-reconciliation-20260519) Reconcile AMC FWD-004 record implementation ledger
++```
++RUN targeted_fwd014: env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q
++STATUS targeted_fwd014: 0
++RUN targeted_non310_repair_tests: env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q
++STATUS targeted_non310_repair_tests: 0
++RUN git_diff_check: git diff --check
++STATUS git_diff_check: 0
++RUN scaffold_check: make scaffold-check
++STATUS scaffold_check: 0
++RUN proof_blocks_check_all: env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
++STATUS proof_blocks_check_all: 0
++RUN final_targeted_fwd014: env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q
++STATUS final_targeted_fwd014: 0
++RUN final_targeted_non310_repair_tests: env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q
++STATUS final_targeted_non310_repair_tests: 0
++RUN final_git_diff_check: git diff --check
++STATUS final_git_diff_check: 0
++RUN final_scaffold_check: make scaffold-check
++STATUS final_scaffold_check: 0
++RUN final_proof_blocks_check_all: env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
++STATUS final_proof_blocks_check_all: 0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md b/var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md
+new file mode 100644
+index 0000000..47ced22
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FINAL_CLOSEOUT.md
+@@ -0,0 +1,31 @@
++# FWD-014 / final non-310 surface sweep closeout
++
++| Metric | Count |
++|---|---:|
++| total non-310 audit rows | 468 |
++| original reopened unsupported rows | 430 |
++| reopened rows closed by target-surface repair ledgers/tests | 430 |
++| accepted existing-satisfaction rows retained | 38 |
++| final open rows | 0 |
++| final blocked rows | 0 |
++| FWD-014 reopened rows | 0 |
++| FWD-014 accepted existing-satisfaction rows | 2 |
++
++## Tests/proofs run in final sweep
++
++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q` → `29 passed`.
++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` → `430 passed`.
++- `git diff --check` → status `0`.
++- `make scaffold-check` → status `0`, `repo scaffold present`.
++- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all` → status `0`, `proof_blocks_check_all=PASS count=51`.
++
++## Files changed in this final sweep
++
++- `ROADMAP_LEDGER.md` final non-310 handoff entry.
++- `var/audit/fwd014_final_non310_sweep_20260519/` final handoff artefacts.
++
++Runtime/source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files changed in this final sweep: `0`.
++
++## Next recommended surface
++
++No further non-310 reopened-row repair surface remains in this package. Next recommended action: PM acceptance review of the final non-310 clean handoff archive before opening any new migration class.
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md b/var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md
+new file mode 100644
+index 0000000..5f6aa29
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FINAL_PACKAGE_CLEAN_HANDOFF.md
+@@ -0,0 +1,30 @@
++# Final non-310 package clean handoff
++
++Source package: `fwd012-target-surface-repair.tar.gz` (`88cff0dc44c514e768906e844a4347a43dc7da636ccd794ea4339c0d61b89f95`).
++Baseline branch: `work/fwd012-target-surface-repair` at `3b92755bef8a532aa5225e10beaa2b0395770dfa`.
++Worker branch: `work/fwd014-final-non310-sweep`.
++
++## Package-level result
++
++- Total non-310 audit rows: `468`.
++- Original reopened unsupported rows: `430`.
++- Original accepted existing-satisfaction rows: `38`.
++- Reopened rows now covered by target-surface repair ledgers/tests: `430`.
++- Final open rows: `0`.
++- Final blocked rows: `0`.
++
++## FWD-014 result
++
++FWD-014 had `2` accepted existing-satisfaction rows and `0` reopened unsupported rows in the accepted audit. No runtime, source, config, fixture, vocabulary, Atlas, Bridge, or generated surface-slice mutation was required.
++
++## Validation run in this final sweep
++
++- FWD-014 targeted proof: `29 passed`.
++- Combined reopened-row repair tests across FWD-004/FWD-006/FWD-009/FWD-011/FWD-012: `430 passed`.
++- `git diff --check`: status `0`.
++- `make scaffold-check`: status `0`, `repo scaffold present`.
++- proof block check: status `0`, `proof_blocks_check_all=PASS count=51`.
++
++## Boundary statement
++
++This final sweep did not recode runtime behaviour. It packages the cleaned non-310 state after the row-level behavioural proof repairs and confirms that FWD-014 itself had no reopened rows. Registry-only closure is not used as final package authority.
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md
+new file mode 100644
+index 0000000..6697814
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_BASELINE_ROW_SET.md
+@@ -0,0 +1,14 @@
++# FWD-014 baseline row set
++
++Source CSV: `var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv`.
++
++Total FWD-014 audit rows: `2`.
++Reopened unsupported rows: `0`.
++Accepted existing-satisfaction rows: `2`.
++
++Conclusion: FWD-014 has no reopened rows to implement or re-prove as a target-surface repair. It is included in this pass as a final package-sweep and accepted-existing-satisfaction confirmation surface.
++
++| audit_row_id | atlas_record_id | bridge_record_id | auditor_status | decision |
++|---|---|---|---|---|
++| FWD014-001 | `atlas_donor_downstream_018` | `ACABC-0027/ACATQ-0027` | `already_satisfied_by_existing_tests_and_code` | `accept_existing_implementation_evidence_reclassify_worker_implementation_claim` |
++| FWD014-002 | `atlas_donor_cognition_025` | `ACABC-0028/ACATQ-0028` | `already_satisfied_by_existing_tests_and_code` | `accept_existing_implementation_evidence_reclassify_worker_implementation_claim` |
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv
+new file mode 100644
+index 0000000..6a2a0a7
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_EXISTING_SATISFACTION_LEDGER.csv
+@@ -0,0 +1,3 @@
++surface_id,atlas_record_id,bridge_record_id,audit_row_id,atlas_idea_excerpt,bridge_target_excerpt,final_status,canonical_parent_row_id,test_evidence_path,test_evidence_line_range,code_evidence_path,code_evidence_line_range,config_or_fixture_evidence_path,config_or_fixture_line_range,semantic_equivalence_rationale,pre_existing_evidence,new_evidence,proof_command,proof_result,commit_hash,reviewer_note
++FWD-014,atlas_donor_downstream_018,ACABC-0027/ACATQ-0027,FWD014-001,Architecture-only result shell for opening authorisation.,capital deployment authority,already_satisfied_by_existing_tests_and_code,,tests/tier_a/capital_deployment/test_capital_authority_service_surface.py;tests/tier_a/capital_deployment/test_capital_contract_models.py;tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py;tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py;tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py;tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py,1-61;1-265;1-34;1-18;1-124;1-65,src/nvda_desk/capital/__init__.py;src/nvda_desk/capital/authority.py;src/nvda_desk/contracts/capital.py;src/nvda_desk/domain/capital/__init__.py;src/nvda_desk/domain/capital/deployment.py;src/nvda_desk/packets/dmp_packets.py;src/nvda_desk/services/capital_deployment_service.py,1-1;1-220;1-179;1-1;1-16;1-408;1-40,,,"Direct active-code link in the worker ledger names the selected Atlas/Bridge record, and the cited native test and source ranges exist unchanged in the baseline package. The audit therefore accepts existing test-and-code satisfaction, but not new implementation by the worker package.",yes: accepted audit row and existing target-surface tests/source line ranges,final sweep reran FWD-014 capital deployment target tests and package repair tests; no runtime mutation,env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q,29 passed; see reports/targeted_fwd014.stdout and .status,pending_final_sweep_commit,FWD-014 had zero reopened unsupported rows; no target-surface repair implementation was required.
++FWD-014,atlas_donor_cognition_025,ACABC-0028/ACATQ-0028,FWD014-002,Posture hard invariants surface.,capital deployment authority,already_satisfied_by_existing_tests_and_code,,tests/tier_a/capital_deployment/test_capital_authority_service_surface.py;tests/tier_a/capital_deployment/test_capital_contract_models.py;tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py;tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py;tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py;tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py;tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py,1-61;1-265;1-34;1-18;1-124;1-65;1-85,src/nvda_desk/capital/__init__.py;src/nvda_desk/capital/authority.py;src/nvda_desk/contracts/capital.py;src/nvda_desk/domain/capital/__init__.py;src/nvda_desk/domain/capital/deployment.py;src/nvda_desk/services/capital_deployment_service.py,1-1;1-220;1-179;1-1;1-16;1-40,,,"Direct active-code link in the worker ledger names the selected Atlas/Bridge record, and the cited native test and source ranges exist unchanged in the baseline package. The audit therefore accepts existing test-and-code satisfaction, but not new implementation by the worker package.",yes: accepted audit row and existing target-surface tests/source line ranges,final sweep reran FWD-014 capital deployment target tests and package repair tests; no runtime mutation,env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q,29 passed; see reports/targeted_fwd014.stdout and .status,pending_final_sweep_commit,FWD-014 had zero reopened unsupported rows; no target-surface repair implementation was required.
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diff b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diff
+new file mode 100644
+index 0000000..cdcc49e
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diff
+@@ -0,0 +1,40 @@
++diff --git a/ROADMAP_LEDGER.md b/ROADMAP_LEDGER.md
++index 286c914..dd7802a 100644
++--- a/ROADMAP_LEDGER.md
+++++ b/ROADMAP_LEDGER.md
++@@ -4182,3 +4182,35 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
++ Proof artefacts: `FWD012_PROOF_OUTPUT.md` records row proof `139 passed`, targeted FWD-012 proof `164 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
++ 
++ Remaining FWD-012 reopened rows: `0` open, `0` blocked.
+++
+++### 26.18 FWD-014 final non-310 surface sweep / package clean handoff — 2026-05-19
+++
+++Branch: `work/fwd014-final-non310-sweep`.
+++Source package: `fwd012-target-surface-repair.tar.gz`.
+++Baseline HEAD: `3b92755bef8a532aa5225e10beaa2b0395770dfa`.
+++Audit artefacts: `var/audit/fwd014_final_non310_sweep_20260519/`.
+++
+++Scope: final package-level sweep for the non-310 reopened-row repair sequence. FWD-014 had no reopened unsupported rows in `var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv`; its two rows were already accepted by the audit as existing test-and-code satisfaction.
+++
+++Final package reconciliation:
+++
+++- total non-310 audit rows: `468`;
+++- original reopened unsupported rows: `430`;
+++- original accepted existing-satisfaction rows retained: `38`;
+++- reopened rows covered by FWD-004/FWD-006/FWD-009/FWD-011/FWD-012 target-surface repair ledgers/tests: `430`;
+++- final open rows: `0`;
+++- final blocked rows: `0`.
+++
+++Final sweep proofs:
+++
+++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q` passed with `29 passed`.
+++- `env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` passed with `430 passed`.
+++- `git diff --check` passed with status `0`.
+++- `make scaffold-check` passed with `repo scaffold present`.
+++- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all` passed with `proof_blocks_check_all=PASS count=51`.
+++
+++Mutation boundary: this final sweep did not change runtime/source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files. It added final handoff artefacts and this ledger entry only.
+++
+++Registry-only closure guard: final package closure is based on the accepted audit row set, target-surface repair ledgers/tests for the 430 reopened rows, and final sweep proof output. No `non310_actual_completion_*` file is used as closure authority.
+++
+++Next gate: PM acceptance review of the final non-310 clean handoff archive before opening any new migration class.
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diffstat b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diffstat
+new file mode 100644
+index 0000000..6ae2488
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/FWD014_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diffstat
+@@ -0,0 +1,2 @@
++ ROADMAP_LEDGER.md | 32 ++++++++++++++++++++++++++++++++
++ 1 file changed, 32 insertions(+)
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv b/var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv
+new file mode 100644
+index 0000000..215b66f
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/NON310_FINAL_SURFACE_SWEEP.csv
+@@ -0,0 +1,7 @@
++surface,audit_total_rows,audit_reopened_unsupported_rows,audit_existing_satisfaction_rows,repair_ledger_rows,repair_implemented_in_tests_and_code,accepted_existing_satisfaction_final,final_open_rows,final_blocked_rows
++FWD-004,73,59,14,59,59,14,0,0
++FWD-006,108,108,0,108,108,0,0,0
++FWD-009,51,49,2,49,49,2,0,0
++FWD-011,95,75,20,75,75,20,0,0
++FWD-012,139,139,0,139,139,0,0,0
++FWD-014,2,0,2,0,0,2,0,0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md b/var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md
+new file mode 100644
+index 0000000..bf9d611
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/READ_RECEIPT.md
+@@ -0,0 +1,27 @@
++# FWD-014 final sweep read receipt
++
++Scope: package-level non-310 clean handoff after FWD-004/FWD-006/FWD-009/FWD-011/FWD-012 target-surface repair. FWD-014 itself had no reopened unsupported rows in the accepted audit.
++
++| path | line_count_or_row_count | sha256 | read method | read in full | relevance |
++|---|---:|---|---|---|---|
++| `AGENTS.md` | 184 lines | `0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da` | terminal/file read and row-count reconciliation | yes | governing authority / sweep evidence |
++| `PLANS.md` | 707 lines | `5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672` | terminal/file read and row-count reconciliation | yes | governing authority / sweep evidence |
++| `ROADMAP_LEDGER.md` | 4184 lines | `21b6fcbb6902d1f8cdc7249891b58eb3ea3d7e60d0024305ba8e3e9b02c65672` | terminal/file read and row-count reconciliation | yes | governing authority / sweep evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FINAL_AUDIT_DECISION.md` | 55 lines | `b4f59a3a7c95d0543bcd69a4c8f3478b444a51c81fd78706d597aa235f888e43` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/SURFACE_SUMMARY.md` | 19 lines | `eb0da338163b5033bec3eae8f4009b0eef4910784bfdcd6835bf1da1cb1ebe0a` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD004_ROW_AUDIT.csv` | 73 data rows | `058c2690f5f9aaa4ba70b9d272384be41febfe2d68871350784e2103289c88cc` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD006_ROW_AUDIT.csv` | 108 data rows | `055fd453f2c11796b454d08d331514cddc35686dc75458fb6b919c59ba89aca1` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD009_ROW_AUDIT.csv` | 51 data rows | `6b9a1f5f7c626cc4b6761d4a82cdda4fc8ab86264f5f4726e8b0dcc5785c3f31` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD011_ROW_AUDIT.csv` | 95 data rows | `c0c8675ad5d34616338b4f45e15fefec6210c1df89e94f9dcb1994baaf9af32f` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD012_ROW_AUDIT.csv` | 139 data rows | `887bf75bed7e75ce0a1b4ffa54d39368e2dd4c4767f0bb6a6f93f5e8131a0a8a` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv` | 2 data rows | `e5d9b025efe4c813efeccc4fcd74cbedb62895b45ad3be4b679cfab45c93ce35` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd004_target_surface_repair_20260519/FINAL_CLOSEOUT.md` | 65 lines | `a5af44e3f08feb684adfd63e096356d53a73eb5b94bc20001d29bd03edb866c6` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd006_target_surface_repair_20260519/FINAL_CLOSEOUT.md` | 22 lines | `e01beb83118332ee61985e3c65ddc1f6523b6cbb62b57b945891a59d6f38e70a` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd009_target_surface_repair_20260519/FINAL_CLOSEOUT.md` | 54 lines | `d0499070454e9a266431b0e7ad9dc08b15331a7d750db0fcbf0d9fbc55954547` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd011_target_surface_repair_20260519/FINAL_CLOSEOUT.md` | 56 lines | `632944f2983061938d265d0b952cb8895c484f983a911f04794994b4b39a63ef` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd012_target_surface_repair_20260519/FINAL_CLOSEOUT.md` | 56 lines | `fbb03e918cd34ae474f4ac30d1156a7e4f10b7af2d6a12e018df4c18a1b83aba` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd004_target_surface_repair_20260519/FWD004_IMPLEMENTATION_LEDGER.csv` | 59 data rows | `068490b41fa7df86974d02457245cde2386bab49945e0bec3abb7c56d5155324` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd006_target_surface_repair_20260519/FWD006_IMPLEMENTATION_LEDGER.csv` | 108 data rows | `84df989efb89918deaf73382500ac91b4ee36e9b66cee10e1238e1e9d2d90fa4` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd009_target_surface_repair_20260519/FWD009_IMPLEMENTATION_LEDGER.csv` | 49 data rows | `5f8a47acb79409ca07da86dc5539de3df18eead390688321212a9774fc225906` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd011_target_surface_repair_20260519/FWD011_IMPLEMENTATION_LEDGER.csv` | 75 data rows | `bf09022570147f460a54072901568016575009145704108eeeceb98132ffe309` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
++| `var/audit/fwd012_target_surface_repair_20260519/FWD012_IMPLEMENTATION_LEDGER.csv` | 139 data rows | `7a20e5740359c42e3c5b7f91ae947f6663bfba16a35475f1bb46d0f8064f4c54` | terminal/file read and row-count reconciliation | yes | audit/surface/repair evidence |
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command
+new file mode 100644
+index 0000000..a13f4b9
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.command
+@@ -0,0 +1 @@
++git diff --check
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_git_diff_check.stdout
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.command
+new file mode 100644
+index 0000000..948bf73
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.command
+@@ -0,0 +1 @@
++env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stdout
+new file mode 100644
+index 0000000..53085f9
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_proof_blocks_check_all.stdout
+@@ -0,0 +1 @@
++proof_blocks_check_all=PASS count=51
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.command
+new file mode 100644
+index 0000000..c2c1334
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.command
+@@ -0,0 +1 @@
++make scaffold-check
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stdout
+new file mode 100644
+index 0000000..e4037e8
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_scaffold_check.stdout
+@@ -0,0 +1 @@
++repo scaffold present
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.command
+new file mode 100644
+index 0000000..57a8414
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.command
+@@ -0,0 +1 @@
++env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stdout
+new file mode 100644
+index 0000000..0257167
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_fwd014.stdout
+@@ -0,0 +1,2 @@
++.............................                                            [100%]
++29 passed in 0.40s
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.command
+new file mode 100644
+index 0000000..a2cc0cf
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.command
+@@ -0,0 +1 @@
++env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stdout
+new file mode 100644
+index 0000000..cd61230
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/final_targeted_non310_repair_tests.stdout
+@@ -0,0 +1,7 @@
++........................................................................ [ 16%]
++........................................................................ [ 33%]
++........................................................................ [ 50%]
++........................................................................ [ 66%]
++........................................................................ [ 83%]
++......................................................................   [100%]
++430 passed in 4.34s
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.command
+new file mode 100644
+index 0000000..a13f4b9
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.command
+@@ -0,0 +1 @@
++git diff --check
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/git_diff_check.stdout
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.command
+new file mode 100644
+index 0000000..948bf73
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.command
+@@ -0,0 +1 @@
++env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stdout
+new file mode 100644
+index 0000000..53085f9
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/proof_blocks_check_all.stdout
+@@ -0,0 +1 @@
++proof_blocks_check_all=PASS count=51
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.command
+new file mode 100644
+index 0000000..c2c1334
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.command
+@@ -0,0 +1 @@
++make scaffold-check
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stdout
+new file mode 100644
+index 0000000..e4037e8
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/scaffold_check.stdout
+@@ -0,0 +1 @@
++repo scaffold present
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.command
+new file mode 100644
+index 0000000..57a8414
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.command
+@@ -0,0 +1 @@
++env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stdout
+new file mode 100644
+index 0000000..5a08351
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_fwd014.stdout
+@@ -0,0 +1,2 @@
++.............................                                            [100%]
++29 passed in 0.47s
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.command b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.command
+new file mode 100644
+index 0000000..a2cc0cf
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.command
+@@ -0,0 +1 @@
++env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.status b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.status
+new file mode 100644
+index 0000000..573541a
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.status
+@@ -0,0 +1 @@
++0
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stderr b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stderr
+new file mode 100644
+index 0000000..e69de29
+diff --git a/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stdout b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stdout
+new file mode 100644
+index 0000000..d7e44ad
+--- /dev/null
++++ b/var/audit/fwd014_final_non310_sweep_20260519/reports/targeted_non310_repair_tests.stdout
+@@ -0,0 +1,7 @@
++........................................................................ [ 16%]
++........................................................................ [ 33%]
++........................................................................ [ 50%]
++........................................................................ [ 66%]
++........................................................................ [ 83%]
++......................................................................   [100%]
++430 passed in 5.40s

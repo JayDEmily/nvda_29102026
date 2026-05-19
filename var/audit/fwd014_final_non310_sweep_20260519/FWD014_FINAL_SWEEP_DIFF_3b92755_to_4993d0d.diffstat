@@ -1,0 +1,52 @@
+ ROADMAP_LEDGER.md                                  | 32 +++++++++++
+ .../ARTIFACT_MANIFEST.md                           | 53 ++++++++++++++++++
+ .../COMMAND_LOG.md                                 | 62 ++++++++++++++++++++++
+ .../FINAL_CLOSEOUT.md                              | 31 +++++++++++
+ .../FINAL_PACKAGE_CLEAN_HANDOFF.md                 | 30 +++++++++++
+ .../FWD014_BASELINE_ROW_SET.md                     | 14 +++++
+ .../FWD014_EXISTING_SATISFACTION_LEDGER.csv        |  3 ++
+ ...14_FINAL_SWEEP_DIFF_3b92755_to_uncommitted.diff | 40 ++++++++++++++
+ ...INAL_SWEEP_DIFF_3b92755_to_uncommitted.diffstat |  2 +
+ .../NON310_FINAL_SURFACE_SWEEP.csv                 |  7 +++
+ .../READ_RECEIPT.md                                | 27 ++++++++++
+ .../reports/final_git_diff_check.command           |  1 +
+ .../reports/final_git_diff_check.status            |  1 +
+ .../reports/final_git_diff_check.stderr            |  0
+ .../reports/final_git_diff_check.stdout            |  0
+ .../reports/final_proof_blocks_check_all.command   |  1 +
+ .../reports/final_proof_blocks_check_all.status    |  1 +
+ .../reports/final_proof_blocks_check_all.stderr    |  0
+ .../reports/final_proof_blocks_check_all.stdout    |  1 +
+ .../reports/final_scaffold_check.command           |  1 +
+ .../reports/final_scaffold_check.status            |  1 +
+ .../reports/final_scaffold_check.stderr            |  0
+ .../reports/final_scaffold_check.stdout            |  1 +
+ .../reports/final_targeted_fwd014.command          |  1 +
+ .../reports/final_targeted_fwd014.status           |  1 +
+ .../reports/final_targeted_fwd014.stderr           |  0
+ .../reports/final_targeted_fwd014.stdout           |  2 +
+ .../final_targeted_non310_repair_tests.command     |  1 +
+ .../final_targeted_non310_repair_tests.status      |  1 +
+ .../final_targeted_non310_repair_tests.stderr      |  0
+ .../final_targeted_non310_repair_tests.stdout      |  7 +++
+ .../reports/git_diff_check.command                 |  1 +
+ .../reports/git_diff_check.status                  |  1 +
+ .../reports/git_diff_check.stderr                  |  0
+ .../reports/git_diff_check.stdout                  |  0
+ .../reports/proof_blocks_check_all.command         |  1 +
+ .../reports/proof_blocks_check_all.status          |  1 +
+ .../reports/proof_blocks_check_all.stderr          |  0
+ .../reports/proof_blocks_check_all.stdout          |  1 +
+ .../reports/scaffold_check.command                 |  1 +
+ .../reports/scaffold_check.status                  |  1 +
+ .../reports/scaffold_check.stderr                  |  0
+ .../reports/scaffold_check.stdout                  |  1 +
+ .../reports/targeted_fwd014.command                |  1 +
+ .../reports/targeted_fwd014.status                 |  1 +
+ .../reports/targeted_fwd014.stderr                 |  0
+ .../reports/targeted_fwd014.stdout                 |  2 +
+ .../reports/targeted_non310_repair_tests.command   |  1 +
+ .../reports/targeted_non310_repair_tests.status    |  1 +
+ .../reports/targeted_non310_repair_tests.stderr    |  0
+ .../reports/targeted_non310_repair_tests.stdout    |  7 +++
+ 51 files changed, 343 insertions(+)

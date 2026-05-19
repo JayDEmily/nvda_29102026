@@ -4182,3 +4182,35 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
 Proof artefacts: `FWD012_PROOF_OUTPUT.md` records row proof `139 passed`, targeted FWD-012 proof `164 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
 
 Remaining FWD-012 reopened rows: `0` open, `0` blocked.
+
+### 26.18 FWD-014 final non-310 surface sweep / package clean handoff — 2026-05-19
+
+Branch: `work/fwd014-final-non310-sweep`.
+Source package: `fwd012-target-surface-repair.tar.gz`.
+Baseline HEAD: `3b92755bef8a532aa5225e10beaa2b0395770dfa`.
+Audit artefacts: `var/audit/fwd014_final_non310_sweep_20260519/`.
+
+Scope: final package-level sweep for the non-310 reopened-row repair sequence. FWD-014 had no reopened unsupported rows in `var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv`; its two rows were already accepted by the audit as existing test-and-code satisfaction.
+
+Final package reconciliation:
+
+- total non-310 audit rows: `468`;
+- original reopened unsupported rows: `430`;
+- original accepted existing-satisfaction rows retained: `38`;
+- reopened rows covered by FWD-004/FWD-006/FWD-009/FWD-011/FWD-012 target-surface repair ledgers/tests: `430`;
+- final open rows: `0`;
+- final blocked rows: `0`.
+
+Final sweep proofs:
+
+- `env PYTHONPATH=src python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q` passed with `29 passed`.
+- `env PYTHONPATH=src python3 -m pytest tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py -q` passed with `430 passed`.
+- `git diff --check` passed with status `0`.
+- `make scaffold-check` passed with `repo scaffold present`.
+- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all` passed with `proof_blocks_check_all=PASS count=51`.
+
+Mutation boundary: this final sweep did not change runtime/source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files. It added final handoff artefacts and this ledger entry only.
+
+Registry-only closure guard: final package closure is based on the accepted audit row set, target-surface repair ledgers/tests for the 430 reopened rows, and final sweep proof output. No `non310_actual_completion_*` file is used as closure authority.
+
+Next gate: PM acceptance review of the final non-310 clean handoff archive before opening any new migration class.
