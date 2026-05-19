@@ -1,0 +1,8 @@
+{
+  "fwd": "FWD-012",
+  "rows": 139,
+  "counts": {
+    "duplicate_or_subsumed": 139
+  },
+  "out": "/mnt/data/nvda10_run/repo/MVD-A10_1704_V1/var/audit/atlas_migration_continuation_non310_20260519/fwd012_serial_desk_cognition_spine"
+}
