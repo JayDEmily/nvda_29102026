@@ -3859,7 +3859,7 @@ Gate 3 passes only when the per-surface implementation-status ledger row count e
 
 ### 26.7 Surface leaf queue
 
-These are planning leaves only. They are intentionally marked not done.
+These leaves were planning leaves when section 26 was created. The 2026-05-19 user/PM brief opened the non-310 continuation reconciliation, and the statuses below record the executed record-level reconciliation state.
 
 | Leaf ID | Surface | Purpose | Status |
 |---|---|---|---|
@@ -3913,7 +3913,7 @@ A green test alone is insufficient. A row may be `implemented_in_code_and_tests`
 
 ### 26.9 Proof and closeout rules
 
-This section authorises planning and reconciliation only. It does not authorise implementation execution.
+This section originally authorised planning and reconciliation only. The 2026-05-19 user/PM brief later opened implementation/reconciliation for the six non-310 continuation surfaces; the closeout entries below record the executed outcome under that later authority.
 
 When a later user/PM instruction opens implementation for a target surface, the worker must:
 
