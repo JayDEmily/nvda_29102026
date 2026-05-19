@@ -1,0 +1,8 @@
+{
+  "fwd": "FWD-014",
+  "rows": 2,
+  "counts": {
+    "implemented_in_tests_and_code": 2
+  },
+  "out": "/mnt/data/nvda10_run/repo/MVD-A10_1704_V1/var/audit/atlas_migration_continuation_non310_20260519/fwd014_downstream_capital_deployment"
+}
