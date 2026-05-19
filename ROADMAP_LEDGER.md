@@ -3668,3 +3668,68 @@ Validation closeout:
 - Runtime workbook boundary: tests preserve no direct PRL runtime read of `.xlsx`, `openpyxl`, `SpreadsheetFile`, or `import_xlsx` in runtime PRL paths.
 - Final patch: `var/audit/prl_blocked_leaves_completion_001/prl-blocked-leaves-completion.patch`.
 - Final archive SHA-256 is not embedded here; it is computed after archive creation and reported in the final response.
+
+## PRL TRANCHE FINAL AUDIT AND MAINLINE INTEGRATION — 2026-05-19
+
+Status: `PRL_TRANCHE_READY_FOR_MAINLINE`.
+
+Branch audited: `work/prl-blocked-leaves-completion`.
+
+Baseline commit: `a7962eee05a3403124d2f80d9c49e7fb2f224607`.
+
+Final PRL implementation branch commit before final-audit ledger/audit commit: `e58a6242599f5376e9d2e14f4bfd5f45361d66a7`.
+
+Audit directory: `var/audit/prl_tranche_final_audit_mainline_001/`.
+
+Decision: `PRL_TRANCHE_READY_FOR_MAINLINE`.
+
+### Leaf reconciliation outcome
+
+All 27 planned PRL-MRP leaves were reconciled in `var/audit/prl_tranche_final_audit_mainline_001/LEAF_RECONCILIATION.md`.
+
+Audit verdicts:
+
+- `verified_present`: `PRL-MRP-001`, `PRL-MRP-002`, `PRL-MRP-003`, `PRL-MRP-004`, `PRL-MRP-005`, `PRL-MRP-006`, `PRL-MRP-007`, `PRL-MRP-008`, `PRL-MRP-009`, `PRL-MRP-010`, `PRL-MRP-011`, `PRL-MRP-012`, `PRL-MRP-013`, `PRL-MRP-014`, `PRL-MRP-015`, `PRL-MRP-016`, `PRL-MRP-017`, `PRL-MRP-018`, `PRL-MRP-019`, `PRL-MRP-020`, `PRL-MRP-021`, `PRL-MRP-022`, `PRL-MRP-023`, `PRL-MRP-024`, `PRL-MRP-025`, `PRL-MRP-026`, `PRL-MRP-027`.
+- `blocked`: none for PRL-MRP leaves.
+- `requires_redo`: none for PRL-MRP leaves.
+- `not_present`: none for PRL-MRP leaves.
+
+### Four formerly blocked leaves
+
+The four formerly blocked leaves are now verified present from committed files, tests, and local audit probes:
+
+- `PRL-MRP-007`: governed workbook tab `Parallel Risk Lane Signal Inventory` exists in `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`; required status classes are present; runtime workbook-token probe found no direct PRL runtime workbook read.
+- `PRL-MRP-009`: typed promotion config exists at `config/parallel_risk_signal_inventory.v1.yaml`; typed contracts and loader exist; workbook lineage is preserved; runtime consumption is YAML/config based.
+- `PRL-MRP-020`: unavailable-signal handling consumes typed inventory and distinguishes present, missing, unavailable, deferred, excluded, quarantined, and rejected states without fabricated values.
+- `PRL-MRP-013`: governed PRL lane profile config exists at `config/parallel_risk_lane_profile.v1.yaml`; default compatibility mode preserves VIX `>=30` caution and `>=50` block; governed config validation rejects invalid threshold order, hidden coefficient mutation, and authority widening.
+
+### Validation commands and results
+
+Pre-merge validation results are recorded in `var/audit/prl_tranche_final_audit_mainline_001/VALIDATION_SUMMARY.md`:
+
+- `git diff --check` — PASS, exit 0.
+- `make scaffold-check` — PASS, `repo scaffold present`, exit 0.
+- `env PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/tier_a/parallel_risk -q` — PASS, `103 passed`.
+- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --block parallel_risk_lane_authority_surface` — PASS, `112 passed`.
+- Targeted workbook / signal inventory / unavailable signal / VIX / vocabulary constraints command — PASS, `26 passed`.
+- Workbook/config/runtime-token probe — PASS.
+
+### Files changed by final-audit branch commit
+
+- `ROADMAP_LEDGER.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/COMMAND_LOG.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/FULL_READ_MANIFEST.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/LEAF_RECONCILIATION.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/VALIDATION_SUMMARY.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/BRANCH_HYGIENE.md`.
+- Pre-merge validation/probe logs under `var/audit/prl_tranche_final_audit_mainline_001/`.
+
+### Remaining blockers
+
+No PRL-MRP blocker remains after this audit.
+
+The separate external Gate 3/4/5 handoff archive remains separate from PRL tranche acceptance and is not used as evidence for this PRL tranche decision.
+
+### Mainline integration instruction
+
+Proceed to merge `work/prl-blocked-leaves-completion` into `main` using a no-fast-forward merge and rerun the required post-merge validation on `main`.
