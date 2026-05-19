@@ -1,0 +1,17 @@
+{
+  "validation_status": "PASS",
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "manifest_count": 1,
+  "manifests": [
+    {
+      "manifest": "var/audit/atlas_migration_continuation_non310_20260519/fwd006_raw_capture_source_temporal_law/FWD-006_FULL_READ_MANIFEST.json",
+      "entry_count": 330,
+      "unique_path_count": 330,
+      "stale_hash_mismatch_count": 0,
+      "full_read_false_count": 0
+    }
+  ]
+}
