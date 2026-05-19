@@ -4140,3 +4140,24 @@ Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/g
 Proof artefacts: `FWD009_PROOF_OUTPUT.md` records row proof `49 passed`, targeted upstream-cognition proof `70 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
 
 Remaining FWD-009 reopened rows: `0` open, `0` blocked.
+
+### 26.16 FWD-011 target-surface repair after registry-only/grouped false closure — 2026-05-19
+
+Branch: `work/fwd011-target-surface-repair`.
+Baseline branch: `work/fwd009-target-surface-repair` at `997e9f5972bef56796deeab87bdd174b6810a022`, continuing from the clean FWD-009 repair archive rather than rejected `main`.
+Artifacts: `var/audit/fwd011_target_surface_repair_20260519/`.
+Ledger: `var/audit/fwd011_target_surface_repair_20260519/FWD011_IMPLEMENTATION_LEDGER.csv`.
+
+Scope: only `FWD-011` / playbook library architecture reopened rows with `auditor_status=unsupported_worker_claim` in `var/audit/non310_completion_claim_audit_20260519/FWD011_ROW_AUDIT.csv`.
+
+Baseline reconciliation: `95` FWD-011 audit rows total; `20` rows retained as audit-accepted existing satisfaction; `75` rows reopened and repaired in this pass.
+
+Implementation-status counts for the 75 reopened rows: `{'implemented_in_tests_and_code': 75}`.
+
+Decision: the prior registry-only/grouped closure is superseded for FWD-011 by row-specific target-surface behavioural proof. The new Tier A playbook-library authority proof parametrises every reopened FWD-011 row and asserts live native playbook registry document behaviour, uniqueness validation, deterministic metadata receipt ordering, family/setup-variant filtering, YAML loader/duplicate-key rejection, deterministic fingerprinting, bounded playbook and eligibility contracts, playbook-eligibility service identity/evaluation, permission-block dominance, and transform-boundary/no-donor-runtime behaviours. It is not a registry-presence, row-id-presence, `non310_actual_completion_*`, or grouped-subsumption proof.
+
+Mutation boundary: source/config/fixture/vocabulary/original Atlas/Bridge JSON/generated surface-slice files were not changed. Test mutation was limited to `tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py`. Audit/ledger mutation was limited to `var/audit/fwd011_target_surface_repair_20260519/` and this ledger entry.
+
+Proof artefacts: `FWD011_PROOF_OUTPUT.md` records row proof `75 passed`, targeted FWD-011 proof `145 passed`, `git diff --check` status `0`, `make scaffold-check` status `0`, and `proof_blocks_check_all=PASS count=51`.
+
+Remaining FWD-011 reopened rows: `0` open, `0` blocked.

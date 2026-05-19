@@ -58,3 +58,42 @@ exit status: 0
 $ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py -q
 exit status: 0
 ```
+
+## Full-read transcripts created
+```text
+$ sed/nl full-read transcript capture for governing docs and FWD-011 target files
+created var/audit/fwd011_target_surface_repair_20260519/governing_and_fwd011_read_transcript.txt
+created var/audit/fwd011_target_surface_repair_20260519/target_surface_full_read_transcript.txt
+```
+
+## Final validation proof commands
+```text
+$ git diff --check
+exit status: 0
+$ make scaffold-check
+exit status: 0
+$ env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
+exit status: 0
+$ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py -q
+exit status: 0
+$ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py -q
+exit status: 0
+```
+
+## Validation after receipts and ROADMAP update
+```text
+$ git diff --check
+exit status: 0
+$ make scaffold-check
+repo scaffold present
+exit status: 0
+$ env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --check-all
+proof_blocks_check_all=PASS count=51
+exit status: 0
+$ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py -q
+75 passed in 1.46s
+exit status: 0
+$ env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py -q
+145 passed in 1.48s
+exit status: 0
+```
