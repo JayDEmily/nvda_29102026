@@ -1,0 +1,13 @@
+{
+  "registry_id": "parallel_risk_description_templates.v1",
+  "templates": [
+    {
+      "template_id": "prl.minute_profile.summary.v1",
+      "vocabulary_refs": [
+        "data/vocabulary/canonical_vocabulary.json",
+        "docs/vocabulary/vocabulary_registry.md#parallel-risk-lane"
+      ],
+      "template": "Parallel Risk Lane state-of-play: envelope={risk_envelope_state}; active_atoms={active_atom_count}; watched_atoms={watched_atom_count}; dominant_families={dominant_families}; confidence={profile_confidence}. This is environmental risk description only."
+    }
+  ]
+}

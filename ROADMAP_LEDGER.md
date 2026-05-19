@@ -2567,3 +2567,1169 @@ Validation recorded during packaging:
 Boundary:
 
 This final package is a bounded local repository package. It does not certify live trading, production deployment, external broker credentials, or live broker execution.
+
+
+---
+
+## 23. Parallel Risk Lane minute-level risk profile implementation plan
+
+Status: `planning_complete`
+
+Date recorded: `2026-05-18`
+
+Branch: `work/prl-minute-risk-profile-plan`
+
+Task title: Parallel Risk Lane minute-level environmental risk profile implementation plan
+
+Objective: Convert the accepted Parallel Risk Lane design audit into an implementation-ready, sequenced plan for enriching the current thin PRL risk-envelope seam into a richer minute-level environmental risk profiler while preserving the lane's environmental-risk-only authority boundary.
+
+### 23.1 Governance files read
+
+| File | Read status | Evidence |
+|---|---|---|
+| `AGENTS.md` | read in full | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+| `PLANS.md` | read in full | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+| `ROADMAP_LEDGER.md` | read in full before this entry was appended | `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md` |
+
+### 23.2 Intended scope
+
+- planning-only contract delta for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags;
+- planning-only calculation delta for freshness, missing/quarantined signal risk, event proximity intensity, risk atom state, family aggregation, envelope enrichment, detailed session phase placeholder, VIX-threshold reconciliation, and preservation of current event/DTE behaviours;
+- planning-only test matrix and leaf sequence;
+- do-not-build-yet register for rich desk signals without typed runtime data;
+- local branch artefacts, command log, manifest, diff, and downloadable archive.
+
+### 23.3 Explicit non-goals
+
+- no production source-code changes;
+- no contract implementation changes;
+- no test implementation changes;
+- no generated migrations;
+- no broad formatting;
+- no mutation of `AGENTS.md` or `PLANS.md`;
+- no candidate formation, playbook selection, capital sizing, broker execution, or serial-stage mutation authority;
+- no direct workbook/reference artefact reads at runtime.
+
+### 23.4 Authority constraints
+
+- Direct user instruction opens implementation planning only.
+- `AGENTS.md` and `PLANS.md` are frozen standing control surfaces and are not to be edited for this task.
+- `ROADMAP_LEDGER.md` is the mutable live execution pointer for this branch.
+- Parallel Risk Lane remains environmental-risk description only; it must not form candidates, select plays, size capital, issue orders, mutate serial internals, or smuggle hidden upstream reads.
+
+### 23.5 Planned gates
+
+| Gate | Planned result |
+|---|---|
+| Gate 0 | Extract repo, preserve/init Git state, create branch, read governance, update ledger, commit ledger entry. |
+| Gate 1 | Contract delta plan. |
+| Gate 2 | Calculation delta plan. |
+| Gate 3 | Test plan. |
+| Gate 4 | Implementation leaf sequence. |
+| Gate 5 | Do-not-build-yet register. |
+| Gate 6 | Ledger closeout, final planning commit, branch archive. |
+
+### 23.6 Expected artefacts
+
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+- `/mnt/data/prl-minute-risk-profile-plan-branch.tar.gz`
+
+
+### 23.7 Closeout details
+
+Status updated to: `planning_complete`
+
+Files changed:
+
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+
+Commits created:
+
+- Baseline marker commit: `25ed3eb6f876439ebe021dcd796d417da691bdb5`
+- Gate 0 ledger commit: `74f16d2a4e683019338edfc5a0ddcf86b49c01a0`
+- Final planning closeout commit: recorded in final response after commit creation.
+
+Artefacts created:
+
+- Implementation plan: `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- Full-read manifest: `var/audit/prl_minute_risk_profile_plan_001/FULL_READ_MANIFEST.md`
+- Command log: `var/audit/prl_minute_risk_profile_plan_001/COMMAND_LOG.md`
+- Artefact manifest: `var/audit/prl_minute_risk_profile_plan_001/ARTIFACT_MANIFEST.md`
+- Patch from baseline: `var/audit/prl_minute_risk_profile_plan_001/prl-minute-risk-profile-plan.patch`
+- Download archive: `/mnt/data/prl-minute-risk-profile-plan-branch.tar.gz`
+
+Tests run: not run. This branch contains planning artefacts only and does not implement production or test code.
+
+Validation planned for closeout commit:
+
+- `git diff --check`
+
+Unresolved questions:
+
+- Whether `ParallelRiskMinuteProfile` should be embedded in `ParallelRiskLanePacket` or emitted by a sibling service method.
+- Which governed source owns freshness thresholds.
+- Whether VIX threshold reconciliation should preserve current hardcoded 30/50 behaviour first or migrate to coefficient authority in a later leaf.
+- Where the expected-signal inventory for missing/unavailable signal checks should live.
+
+Next recommended leaf: `PRL-MRP-001` — contract-only schema additions for `ParallelRiskMinuteProfile`, `RiskAtomState`, `SignalSnapshotEntry`, register entries, family states, contribution entries, and authority flags, with contract tests before source behaviour changes.
+
+---
+
+## 24. Parallel Risk Lane minute profile contract models
+
+Status: `implementation_complete`
+
+Date recorded: `2026-05-18`
+
+Branch: `work/prl-minute-profile-contracts`
+
+Task title: Parallel Risk Lane minute-level risk profile contract models and authority flags
+
+Objective: Execute only `PRL-MRP-001` and `PRL-MRP-002` from the accepted implementation plan by adding contract-only schema models/enums and default-deny authority flags for the enriched minute-level PRL profile, without domain calculations, service integration, workbook editing, or plain-English generation.
+
+### 24.1 Governance files read
+
+| File | Read status | Evidence |
+|---|---|---|
+| `AGENTS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `PLANS.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `ROADMAP_LEDGER.md` | read in full before this entry was appended | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+| `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` | read in full | `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md` |
+
+### 24.2 Allowed files for this leaf
+
+- `src/nvda_desk/contracts/parallel_risk.py`
+- new or existing tests under `tests/tier_a/parallel_risk/`
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md` only for resolved planning-note updates
+- audit artefacts under `var/audit/prl_minute_profile_contracts_001/`
+
+### 24.3 Forbidden scope
+
+- no domain calculations;
+- no service integration;
+- no freshness scoring logic beyond contract fields;
+- no event-proximity calculation logic beyond contract fields;
+- no risk-family aggregation logic beyond contract fields;
+- no evaluator behaviour changes unless strictly required for imports/tests;
+- no Excel workbook edits;
+- no plain-English template engine;
+- no production trading, candidate formation, playbook selection, capital sizing, order instruction, review judgement, or serial-stage mutation authority.
+
+### 24.4 Planned tests
+
+- minimal `ParallelRiskMinuteProfile` instantiation and serialisation;
+- `AuthorityFlags` default all forbidden capabilities to `False`;
+- `RiskAtomState` represents observe/caution/block without trade-action fields;
+- `SignalSnapshotEntry` represents present, missing, quarantined, and stale signal states;
+- expected-signal inventory references remain metadata only and do not imply runtime workbook reads;
+- plain-English description fields remain deterministic template/vocabulary-reference metadata only and do not permit trade advice;
+- existing PRL contract/evaluation tests remain compatible.
+
+### 24.5 Resolved design decisions recorded for this leaf
+
+Expected signal inventory authority: the expected-signal inventory will live in the governed Excel signal workbook as a future tab named `Parallel Risk Lane Signal Inventory`. Runtime code must not read the workbook directly; runtime use may occur only after typed promotion into config/contracts. This leaf records the decision only and does not edit the workbook.
+
+Plain-English risk description authority: any future plain-English desk-risk description must be deterministic, template-governed, and vocabulary-governed. It must consult the repo's normative vocabulary system before implementation and must not use free-form generative commentary, trade advice, play selection, capital sizing, or review-layer judgement. This leaf records the decision only and does not implement a description engine.
+
+### 24.6 Governance sources located
+
+Vocabulary governance path: `docs/vocabulary/README.md`, `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`, `docs/vocabulary/vocabulary_registry.md`, and canonical dictionary `data/vocabulary/canonical_vocabulary.json`.
+
+Signal workbook path: `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`.
+
+Existing raw-signal / raw-primitives sheet identified: `Raw_Primitives_Catalog`.
+
+Future required workbook tab name: `Parallel Risk Lane Signal Inventory`.
+
+### 24.7 Planned gates
+
+| Gate | Planned result |
+|---|---|
+| Gate 1 | Governance and branch setup; ledger entry committed before code/test changes. |
+| Gate 2 | Contract tests written before production contract implementation. |
+| Gate 3 | Contract-only models/enums and default-deny authority flags implemented. |
+| Gate 4 | Targeted PRL contract/evaluation tests and `git diff --check` run. |
+| Gate 5 | Ledger closeout, final commit, branch archive. |
+
+
+### 24.8 Closeout details
+
+Status updated to: `implementation_complete`
+
+Resolved expected-signal inventory decision: the expected-signal inventory belongs in the governed Excel signal workbook as future tab `Parallel Risk Lane Signal Inventory`; this leaf did not edit the workbook and runtime code still must not read it directly.
+
+Resolved vocabulary-governed description decision: future plain-English desk-risk output must use deterministic templates and governed vocabulary references; this leaf did not implement any description engine or free-form commentary surface.
+
+Workbook identified:
+
+- `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`
+- raw-signal / raw-primitives sheet: `Raw_Primitives_Catalog`
+- future tab: `Parallel Risk Lane Signal Inventory`
+
+Vocabulary governance identified:
+
+- `docs/vocabulary/README.md`
+- `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+- `docs/vocabulary/vocabulary_registry.md`
+- `data/vocabulary/canonical_vocabulary.json`
+
+Files changed:
+
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md`
+- `src/nvda_desk/contracts/parallel_risk.py`
+- `tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py`
+- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
+- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
+- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
+- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
+
+Commits created before this closeout note:
+
+- Governance/ledger setup commit: `a1d27a293c75c0f0872a99eb15beb56aaf796672`
+- Test-first contract tests commit: `656d1fd52a676f419b07cccd710b3ee30ba36311`
+- Contract implementation/proof-log commit: `e66ea532404a9e3a387756f38995cd9a391064d3`
+- Final closeout commit: recorded in final response after commit creation.
+
+Tests run:
+
+- `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py -q` → `36 passed`
+- `git diff --check` → no output / exit 0
+
+Artefacts created:
+
+- `var/audit/prl_minute_profile_contracts_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/COMMAND_LOG.md`
+- `var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt`
+- `var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt`
+- `var/audit/prl_minute_profile_contracts_001/git_diff_check.txt`
+- `var/audit/prl_minute_profile_contracts_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_minute_profile_contracts_001/prl-minute-profile-contracts.patch`
+- `/mnt/data/prl-minute-profile-contracts-branch.tar.gz`
+
+Unresolved items:
+
+- No runtime freshness scoring was implemented in this leaf.
+- No missing/quarantined signal calculation was implemented in this leaf.
+- No event proximity logic was implemented in this leaf.
+- No service/evaluator integration was implemented in this leaf.
+- No workbook tab was created or edited in this leaf.
+- No plain-English template engine was implemented in this leaf.
+
+Next recommended leaf: `PRL-MRP-003` — implement freshness register calculation and tests using existing source/capture/persistence temporal fields, without opening missing-signal, event-proximity, service-integration, workbook-editing, or plain-English-generation scope.
+
+---
+
+## PRL Minute Risk Profile Master Roadmap 001
+
+Status: `planning_complete`
+
+Branch: `work/prl-minute-risk-profile-master-roadmap`
+Baseline commit: `7eb107f6527ef5dc37e584a88deecd4a5390d1e5`
+Task title: Parallel Risk Lane minute-level environmental risk profiler master roadmap
+
+Objective:
+- Create a 20-30 leaf implementation roadmap that prevents scope drift after the completed contract-only PRL-MRP-001/002 branch.
+- Preserve Parallel Risk Lane authority boundaries while sequencing contracts, calculations, tests, workbook-governance, vocabulary-governance, integration, and deferred rich signal families.
+
+Allowed files:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- audit artefacts under `var/audit/prl_master_roadmap_001/`
+
+Forbidden scope:
+- no production source changes;
+- no contract implementation changes;
+- no test implementation changes;
+- no freshness scoring implementation;
+- no missing-signal implementation;
+- no event-proximity implementation;
+- no Excel workbook edits;
+- no plain-English generation/template engine;
+- no service/evaluator integration.
+
+Governance files fully read:
+- see `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`.
+
+Planned gates:
+1. governance and normative surface map;
+2. existing test surface map;
+3. dependency graph for next 20-30 leaves;
+4. master implementation roadmap;
+5. ledger planning entries;
+6. roadmap artefacts;
+7. validation and closeout.
+
+Expected artefacts:
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+- `/mnt/data/prl-minute-risk-profile-master-roadmap-branch.tar.gz`
+
+### Governance and test inspection summary
+
+Governance surface map:
+- authored in `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md` section 2.
+
+Test surface map:
+- authored in `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md` section 3.
+
+Tests inspected:
+- all `tests/tier_a/parallel_risk/*.py`;
+- relevant upstream signal, upstream cognition, temporal, financial calendar, testing harness/workbook-boundary, vocabulary, and review-runtime tests listed in `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`.
+
+### Planned PRL minute-profile leaf ledger index
+
+| Leaf ID | Title | Status | Objective | Dependencies | Acceptance criterion | Forbidden scope |
+|---|---|---|---|---|---|---|
+| PRL-MRP-001 | Contract schema additions | completed | Add minute-profile contract classes/enums. | none | Prior branch evidence accepted. | no further work in this leaf |
+| PRL-MRP-002 | AuthorityFlags default-deny | completed | Add default-deny authority flags. | PRL-MRP-001 | Prior branch evidence accepted. | no further work in this leaf |
+| PRL-MRP-003 | Freshness register calculation | planned_not_started | Add deterministic freshness states from source/capture/persist/generated times. | PRL-MRP-001/002 | fresh/stale/unknown classified without source temporal substitution. | no missing-signal/event/service work |
+| PRL-MRP-004 | Expected signal availability test scaffold | planned_not_started | Prove expected-signal references remain metadata-only before workbook promotion. | PRL-MRP-001/002 | tests prevent runtime workbook reads and code-constant authority. | no workbook edit |
+| PRL-MRP-005 | Missing/quarantined signal register | planned_not_started | Register missing/quarantined signals and confidence impacts. | PRL-MRP-003/004 | no invented values; missing data reduces confidence or disables atoms. | no event proximity or service work |
+| PRL-MRP-006 | Workbook signal-inventory tab planning | planned_not_started | Specify future `Parallel Risk Lane Signal Inventory` workbook tab. | PRL-MRP-004 | tab columns/classifications/lineage/promotion boundary specified. | no Excel edit |
+| PRL-MRP-007 | Workbook signal-inventory tab creation | blocked_pending_source | Create workbook tab after explicit authorisation. | PRL-MRP-006 + explicit workbook-edit route | tab exists with lineage to raw/derived tabs. | no runtime workbook reads |
+| PRL-MRP-008 | Typed promotion plan from workbook inventory | planned_not_started | Plan typed config/contract promotion from workbook tab. | PRL-MRP-006/007 | no direct workbook runtime read in design. | no implementation unless opened |
+| PRL-MRP-009 | Runtime expected-signal inventory promotion | blocked_pending_source | Consume typed promoted inventory in runtime after workbook source exists. | PRL-MRP-007/008 | PRL uses typed promoted inventory only. | no workbook direct reads |
+| PRL-MRP-010 | Event proximity register | planned_not_started | Add typed event proximity/materiality register. | PRL-MRP-003 | proximity/materiality are descriptive only. | no trade permission |
+| PRL-MRP-011 | Scheduled-event caution preservation | planned_not_started | Preserve current event caution while wrapping as atom/contribution. | PRL-MRP-010 | existing scheduled-event caution unchanged. | no new calendar behaviour beyond typed inputs |
+| PRL-MRP-012 | VIX threshold preservation | planned_not_started | Preserve current VIX caution/block behaviour. | PRL-MRP-003 | VIX >=30 caution and >=50 block remain. | no threshold migration |
+| PRL-MRP-013 | VIX governed threshold reconciliation | planned_not_started | Reconcile PRL hardcoded thresholds with coefficient authority by explicit migration. | PRL-MRP-012 | no silent threshold drift. | no behaviour change without tests/evidence |
+| PRL-MRP-014 | Options DTE risk preservation | planned_not_started | Preserve current front/next DTE caution. | PRL-MRP-003 | DTE inversion behaviour unchanged. | no real options surface/gamma/skew |
+| PRL-MRP-015 | Supported risk atom skeleton | planned_not_started | Emit atoms for currently supported risks. | PRL-MRP-003/005/011/012/014 | atoms describe risk without trade actions. | no rich unavailable signal values |
+| PRL-MRP-016 | Risk atom no-play authority tests | planned_not_started | Harden tests against trade-action fields in atoms/profile. | PRL-MRP-015 | atom/profile schema remains risk-only. | no production behaviour except fixes if tests expose issue |
+| PRL-MRP-017 | Risk-family aggregation | planned_not_started | Aggregate atom states into family states. | PRL-MRP-015 | family states reflect risk severity/confidence only. | no capital/play permission semantics |
+| PRL-MRP-018 | Enriched packet assembly | planned_not_started | Assemble `ParallelRiskMinuteProfile` from supported registers/atoms/families. | PRL-MRP-017 | profile assembled with lineage; existing packet stable. | no service API change yet |
+| PRL-MRP-019 | Backward-compatible service integration | planned_not_started | Add optional service path/flag for enriched profile. | PRL-MRP-018 | existing service tests pass; optional profile path works. | no downstream consumer change |
+| PRL-MRP-020 | Unavailable signal handling | planned_not_started | Mark unavailable rich signals missing/unavailable, not valued. | PRL-MRP-005 and PRL-MRP-009 if inventory-backed | unavailable signals visible and non-hallucinated. | no fabricated Bloomberg-style data |
+| PRL-MRP-021 | Lineage completeness | planned_not_started | Ensure profile/signal/atom/family lineage is audit-ready. | PRL-MRP-018/019 | source refs and packet IDs preserved. | no hidden upstream reads |
+| PRL-MRP-022 | Authority regression hardening | planned_not_started | Consolidate no candidate/play/capital/order/review/workbook-read tests. | PRL-MRP-019/021 | hidden authority rejected or absent. | no expanded runtime authority |
+| PRL-MRP-023 | Vocabulary-governed description constraints | planned_not_started | Formalise controlled-language requirements. | PRL-MRP-022 | vocabulary refs and wording constraints recorded. | no description engine |
+| PRL-MRP-024 | Deterministic description contract and tests | planned_not_started | Add metadata-only template/vocabulary description contract/tests. | PRL-MRP-023 | deterministic refs only; no free-form advice. | no renderer/engine |
+| PRL-MRP-025 | Deterministic description engine | planned_not_started | Implement governed deterministic template renderer. | PRL-MRP-024 | deterministic risk-only output; advice terms rejected. | no generative prose/review judgement |
+| PRL-MRP-026 | Documentation/current-state map update | planned_not_started | Update docs/current-state map after implementation leaves. | relevant completed leaves | implemented/upstream/deferred/out-of-scope truth recorded. | no source/test changes unless opened |
+| PRL-MRP-027 | Deferred rich signal-family intake plan | deferred | Plan lawful upstream sources/contracts for deferred rich signal families. | PRL-MRP-020 | each rich family remains blocked/deferred until typed source exists. | no signal implementation |
+
+### Blocked/deferred signal-family summary
+
+Deferred until typed upstream sources/contracts exist:
+- VWAP;
+- spread/depth;
+- tape speed / relative volume;
+- realised volatility / ATR;
+- dense options chain;
+- IV rank / implied move;
+- skew;
+- real gamma exposure / gamma flip;
+- OI concentration / strike pin;
+- MOC / close auction imbalance;
+- headline risk;
+- crowding / real-money flow;
+- cognitive load / attention pressure.
+
+### Closeout
+
+Closeout status: `planning_complete`
+
+Files changed:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/git_diff_check.txt`
+- `var/audit/prl_master_roadmap_001/scaffold_check.txt`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+
+Roadmap artefact paths:
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_master_roadmap_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/COMMAND_LOG.md`
+- `var/audit/prl_master_roadmap_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_master_roadmap_001/prl-master-roadmap.patch`
+
+Validation run:
+- `git diff --check` — exit 0, output captured in `var/audit/prl_master_roadmap_001/git_diff_check.txt`.
+- `make scaffold-check` — exit 0, output captured in `var/audit/prl_master_roadmap_001/scaffold_check.txt`.
+- Full tests were not run because this is planning-only and no production/test implementation changed.
+
+Unresolved questions:
+- Which config surface owns freshness age thresholds after deterministic defaults?
+- What exact promotion artefact carries the workbook `Parallel Risk Lane Signal Inventory` into runtime config/contracts?
+- Should VIX coefficient-authority reconciliation preserve current hardcoded behaviour as compatibility mode?
+- Where should deterministic description templates live: config, vocabulary data, or a dedicated template registry?
+
+Next recommended executable leaf:
+- `PRL-MRP-003` — Freshness register calculation and tests, with no missing-signal, event-proximity, service-integration, workbook-editing, or description-engine scope.
+
+
+---
+
+## PRL Minute Risk Profile Architecture Decisions 001
+
+Initial status: `in_progress`
+Closeout status: `planning_complete`
+
+Branch: `work/prl-minute-risk-profile-architecture-decisions`
+Baseline commit: `3c5b1db57704c56445bc382c83faa536c1586a6b`
+
+Task title: Parallel Risk Lane minute-level risk profile architecture comprehension and decision resolution.
+
+Objective:
+- read the repo like a senior engineer inheriting the system;
+- resolve the four open master-roadmap architecture questions from repo evidence and bounded senior-engineering judgement;
+- update roadmap and ledger before implementation resumes;
+- do not execute `PRL-MRP-003`.
+
+Allowed files:
+- `ROADMAP_LEDGER.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`
+- `var/audit/prl_architecture_decisions_001/*`
+
+Forbidden scope:
+- no production source changes;
+- no test implementation changes;
+- no freshness scoring implementation;
+- no missing-signal logic;
+- no event proximity implementation;
+- no service/evaluator integration;
+- no Excel workbook editing;
+- no plain-English description engine;
+- no implementation leaf completion claims.
+
+Governance/source/test files fully read:
+- see `var/audit/prl_architecture_decisions_001/FULL_READ_MANIFEST.md`.
+
+Planned gates:
+1. human-level system comprehension;
+2. runtime/dataflow map;
+3. resolve four open questions;
+4. architecture decision record;
+5. roadmap and ledger update;
+6. validation and closeout.
+
+### Resolved architecture decisions
+
+| Question | Decision | Decision artefact | Roadmap impact |
+|---|---|---|---|
+| Freshness threshold ownership after deterministic defaults | Dedicated governed PRL profile config surface, planned as `config/parallel_risk_lane_profile.v1.yaml`; `PRL-MRP-003` uses deterministic defaults only and does not read config/workbook. | `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md` ADR-001 | Updates `PRL-MRP-003`, `PRL-MRP-021`, `PRL-MRP-026` |
+| Workbook signal-inventory runtime promotion artefact | Typed promotion artefact planned as `config/parallel_risk_signal_inventory.v1.yaml`, validated by future `ParallelRiskSignalInventoryDocument` / `ParallelRiskExpectedSignalRecord` contracts. | same ADR-002 | Updates `PRL-MRP-004`, `PRL-MRP-006`, `PRL-MRP-007`, `PRL-MRP-008`, `PRL-MRP-009`, `PRL-MRP-020` |
+| VIX threshold reconciliation | Preserve current PRL hardcoded behaviour as compatibility mode first: VIX >= 30 caution and VIX >= 50 block; reconcile only in explicit later leaf. | same ADR-003 | Updates `PRL-MRP-012`, `PRL-MRP-013`, `PRL-MRP-015`, `PRL-MRP-018` |
+| Deterministic description template location | Dedicated template registry, planned as `data/parallel_risk/description_templates.v1.json`, with canonical vocabulary refs. | same ADR-004 | Updates `PRL-MRP-023`, `PRL-MRP-024`, `PRL-MRP-025` |
+
+### Decision updates to planned leaves
+
+| Leaf ID | Updated planning note |
+|---|---|
+| PRL-MRP-003 | Next executable leaf. Implement deterministic freshness defaults only. Do not read config/workbook. Leave threshold-source refs explicit/empty until PRL config leaf opens. |
+| PRL-MRP-004 | Expected-signal references remain metadata-only; future runtime inventory source is typed YAML/contract, not workbook or code constant. |
+| PRL-MRP-006 | Workbook tab planning must include lineage needed by `config/parallel_risk_signal_inventory.v1.yaml`. |
+| PRL-MRP-007 | Workbook tab creation remains blocked pending explicit workbook-edit authorisation. |
+| PRL-MRP-008 | Promotion plan must name `config/parallel_risk_signal_inventory.v1.yaml` and future signal-inventory contracts. |
+| PRL-MRP-009 | Runtime expected-signal inventory promotion remains blocked until workbook tab and typed YAML/contract exist. |
+| PRL-MRP-012 | Preserve VIX >= 30 caution and VIX >= 50 block as compatibility behaviour. |
+| PRL-MRP-013 | Reconcile VIX thresholds only by explicit compatibility/governed-policy migration with tests. |
+| PRL-MRP-023 | Formalise vocabulary constraints; no renderer. |
+| PRL-MRP-024 | Add deterministic template registry contract/tests for `data/parallel_risk/description_templates.v1.json`; no renderer. |
+| PRL-MRP-025 | Implement renderer only after template registry and vocabulary tests are in place. |
+
+### Artefacts
+
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_ARCHITECTURE_DECISIONS.md`
+- `docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md`
+- `var/audit/prl_architecture_decisions_001/FULL_READ_MANIFEST.md`
+- `var/audit/prl_architecture_decisions_001/COMMAND_LOG.md`
+- `var/audit/prl_architecture_decisions_001/ARTIFACT_MANIFEST.md`
+- `var/audit/prl_architecture_decisions_001/prl-architecture-decisions.patch`
+- `/mnt/data/prl-minute-risk-profile-architecture-decisions-branch.tar.gz`
+
+### Validation
+
+- `git diff --check` — exit 0, output captured in `var/audit/prl_architecture_decisions_001/git_diff_check.txt`.
+- `make scaffold-check` — exit 0, output captured in `var/audit/prl_architecture_decisions_001/scaffold_check.txt`.
+- Full tests were not run because this is planning/decision documentation only and no production/test implementation changed.
+
+### Remaining unresolved questions
+
+The four prior master-roadmap questions are resolved. Remaining non-blocking questions:
+- Should event proximity intensity use continuous scores, discrete states, or both?
+- Which rich signal family should be sourced first after currently supported atoms are stable?
+- Which proof block eventually owns full PRL minute-profile verification?
+
+Next recommended executable leaf:
+- `PRL-MRP-003` — freshness register calculation and tests, with deterministic defaults only and no config/workbook read, no missing-signal logic, no event proximity, no service integration, and no description-engine scope.
+
+
+## PRL-MRP-003 — Freshness register calculation and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add deterministic source freshness register calculation using source/generated times only.
+Allowed files: src/nvda_desk/domain/parallel_risk/freshness.py; tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: config loading; workbook read; missing-signal logic; event proximity; service integration; trade/play/capital/order output.
+Risk semantics: freshness is neutral state-of-play evidence; stale/unknown increases uncertainty and does not imply action.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: freshness entries classify fresh/ageing/stale/unknown deterministically and retain metadata-only semantics.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-004 — Missing/quarantined signal register and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add metadata-only missing signal entries and quarantined/admitted upstream signal snapshot projection.
+Allowed files: src/nvda_desk/domain/parallel_risk/missing_signals.py; tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: workbook reads; expected-inventory loading; event proximity; service integration; trade/play/capital/order output.
+Risk semantics: missing/quarantined signals describe uncertainty and availability, not a do-not-trade warning.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py -q; git diff --check.
+Acceptance criterion: present/missing/quarantined states are represented without hallucinated values or authority leakage.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-005 — Unavailable-signal handling foundation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add explicit unavailable-signal metadata helpers for known future signal families without typed runtime sources.
+Allowed files: src/nvda_desk/domain/parallel_risk/unavailable_signals.py; tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: inventory loading; workbook reads; rich Bloomberg-style signal implementation; event proximity; service integration.
+Risk semantics: unavailable signals make uncertainty explicit and do not fabricate defensive warnings or trade actions.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py -q; git diff --check.
+Acceptance criterion: unavailable signals have no value, no authority, and carry lineage/reference metadata only.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-006 — Expected signal inventory workbook-tab specification
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document the future governed Excel tab for expected PRL signals without editing the workbook.
+Allowed files: docs/planning/PRL_SIGNAL_INVENTORY_WORKBOOK_TAB_SPEC.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: Excel workbook editing; runtime workbook reads; typed inventory promotion; missing-signal runtime inventory loading.
+Risk semantics: expected-signal inventory is neutral signal-availability governance, not an action or warning system.
+Expected tests/checks: make scaffold-check; python -m pytest tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py -q; git diff --check.
+Acceptance criterion: workbook path, raw-primitives sheet, future tab name, lawful data path, statuses, and non-goals are documented.
+Closeout: planning specification added; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-007 — Expected signal inventory workbook-tab creation
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: create the governed workbook tab `Parallel Risk Lane Signal Inventory`.
+Blocker: the active execution scope forbids Excel workbook editing unless the relevant leaf explicitly permits workbook editing and required authority has been recorded. This pass has not opened workbook mutation.
+Allowed files if unblocked later: governed Excel signal workbook plus audit/ledger artefacts.
+Forbidden scope while blocked: editing the workbook; runtime workbook reads; typed promotion; implementation of inventory-backed signal logic.
+Acceptance criterion when unblocked: workbook tab exists, preserves lineage to raw/derived tabs, and no runtime workbook read is introduced.
+Next independent leaf: skip dependency-blocked workbook-promotion leaves and continue with current supported runtime/event/envelope leaves.
+
+
+## PRL-MRP-008 — Typed promotion plan from workbook inventory
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document the future typed promotion artefact from workbook inventory into runtime config/contracts.
+Allowed files: docs/planning/PRL_SIGNAL_INVENTORY_PROMOTION_PLAN.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: YAML config implementation; workbook edit; runtime inventory consumption; service integration; rich signal implementation.
+Risk semantics: promotion metadata describes signal availability and evidence quality only.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: exact promotion artefact path and future contracts are documented without runtime workbook reads.
+Closeout: promotion plan added; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-009 — Runtime expected-signal inventory promotion
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: implement typed promoted inventory consumption after workbook tab exists.
+Blocker: depends on workbook tab creation (`PRL-MRP-007`) and promoted YAML/contract authority; workbook mutation remains unauthorised in this pass.
+Forbidden scope while blocked: workbook reads at runtime; config creation from absent workbook tab; rich signal values; missing/unavailable logic driven by ungoverned constants.
+Acceptance criterion when unblocked: PRL consumes typed promoted inventory only, with workbook lineage and no direct workbook read.
+Next independent leaf: PRL-MRP-010 event proximity register.
+
+
+## PRL-MRP-010 — Event proximity register
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: project context-only runtime calendar matches into descriptive PRL event proximity register entries.
+Allowed files: src/nvda_desk/domain/parallel_risk/event_proximity.py; tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: service integration; scheduled-event envelope changes; trade/play/capital/order output; unscheduled headline risk.
+Risk semantics: event proximity is neutral state-of-play context that can be constructive, defensive, ambiguous, or consequential downstream; it is not advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py -q; git diff --check.
+Acceptance criterion: proximity/materiality/tags/lineage are preserved without trade authority.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-011 — Scheduled-event caution preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current scheduled-event envelope behaviour before atom wrapping.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: changing event/envelope calculation; service integration; trade/play/capital/order output.
+Risk semantics: legacy caution state is compatibility terminology; it remains environmental context only.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py -q; git diff --check.
+Acceptance criterion: existing scheduled_event_window_active caution remains unchanged and action-free.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-012 — VIX threshold compatibility preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current PRL VIX compatibility thresholds before governed reconciliation.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: threshold migration; coefficient-authority config loading; envelope behaviour change; trade/play/capital/order output.
+Risk semantics: VIX states are environmental volatility context and consequence/uncertainty evidence, not trading advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py -q; git diff --check.
+Acceptance criterion: VIX >=30 caution and >=50 block behaviour remains unchanged.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-013 — VIX governed threshold reconciliation
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: reconcile current hardcoded PRL VIX thresholds with governed coefficient/config authority.
+Blocker: this leaf requires an explicit migration policy and/or governed PRL profile config opening. Current authorised execution preserves compatibility only.
+Forbidden scope while blocked: silent threshold drift; config loading in PRL-MRP-003/012 path; changing >=30 caution and >=50 block behaviour.
+Acceptance criterion when unblocked: threshold migration is explicit, test-backed, lineage-bearing, and backward-compatibility impact is documented.
+Next independent leaf: PRL-MRP-014 options DTE risk preservation.
+
+
+## PRL-MRP-014 — Options DTE risk preservation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: preserve current front_dte > next_dte options repricing caution before richer options surface work.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: real options surface; gamma/skew/OI implementation; service integration; trade/play/capital/order output.
+Risk semantics: DTE inversion is options repricing state-of-play context, not an option strategy recommendation.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py -q; git diff --check.
+Acceptance criterion: current DTE inversion behaviour remains unchanged.
+Closeout: regression test added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-015 — Supported risk atom skeleton
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: build risk atoms for current supported inputs: freshness, missing/data-quality, event proximity, legacy event/VIX/DTE envelope contributions.
+Allowed files: src/nvda_desk/domain/parallel_risk/risk_atoms.py; tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: rich signal atoms without typed source; service integration; capital/play/order/candidate output.
+Risk semantics: atoms describe state-of-play and may carry constructive, uncertainty, mixed, and consequence-side semantics.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: supported atoms are emitted without trade-action fields or fabricated rich-signal values.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-016 — Risk atom no-play authority tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: harden tests so risk atoms and minute profiles describe state-of-play without action authority.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: production behaviour change unless tests expose a defect; service integration; rich signals; description engine.
+Risk semantics: tests explicitly protect constructive/defensive/ambiguous/mixed state-of-play wording without trade advice.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py -q; git diff --check.
+Acceptance criterion: atom/profile schemas contain no trade-action authority and can represent mixed risk semantics.
+Closeout: tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-017 — Risk-family aggregation
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: aggregate supported risk atom states into deterministic family-level state-of-play summaries.
+Allowed files: src/nvda_desk/domain/parallel_risk/family_aggregation.py; tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: capital/play permission semantics; service integration; rich signals; description engine.
+Risk semantics: family state is a descriptive summary of atoms and not a trade gate.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
+Acceptance criterion: family states reflect atom severity/confidence only and carry no action authority.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-018 — Enriched packet assembly
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: assemble `ParallelRiskMinuteProfile` from current registers, supported atoms, family states, signal snapshots, envelope, and lineage.
+Allowed files: src/nvda_desk/domain/parallel_risk/minute_profile_assembly.py; tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: service API changes; event service integration; plain-English rendering; rich signal fabrication; candidate/play/capital/order output.
+Risk semantics: assembled profile describes terrain/state-of-play only and preserves neutral uncertainty/opportunity/consequence framing.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py -q; git diff --check.
+Acceptance criterion: profile assembles supported signals/atoms/families/lineage with authority flags default-deny and existing envelope stable.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-019 — Backward-compatible service integration
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add optional service path to return an enriched minute profile while preserving existing service result shape by default.
+Allowed files: src/nvda_desk/services/parallel_risk_lane_service.py; tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: mandatory downstream consumer change; evaluator rewrite; event service integration; description engine; capital/play/order/candidate output.
+Risk semantics: optional profile describes state-of-play and leaves default PRL packet behaviour unchanged.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py -q; git diff --check.
+Acceptance criterion: existing service calls still pass; optional minute profile carries lineage and default-deny authority flags.
+Closeout: implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-020 — Inventory-backed unavailable signal handling
+
+Status: blocked
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: mark unavailable Bloomberg-style signals from the promoted expected-signal inventory as unavailable rather than fabricated.
+Blocker: inventory-backed handling depends on `PRL-MRP-009`, which is blocked pending workbook tab creation and typed promotion.
+Implemented prerequisite: PRL-MRP-005 provides metadata-only unavailable signal helpers for manually supplied signal IDs.
+Forbidden scope while blocked: hardcoded rich-signal inventory; workbook runtime reads; fabricated VWAP/spread/gamma/headline values; rich signal implementation.
+Acceptance criterion when unblocked: unavailable signals are driven by typed promoted inventory and remain value-less until typed runtime sources exist.
+Next independent leaf: PRL-MRP-021 lineage completeness.
+
+
+## PRL-MRP-021 — Lineage completeness
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: ensure minute profiles carry packet lineage, admitted semantic inputs, source artefact refs, signal lineage refs, atom source refs, and forbidden-authority trace.
+Allowed files: src/nvda_desk/domain/parallel_risk/minute_profile_assembly.py; tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: hidden upstream reads; service behaviour change beyond existing optional profile path; workbook reads; event/missing/freshness new logic; trade/play/capital/order output.
+Risk semantics: lineage proves where the state-of-play read came from; it does not authorise action.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py -q; git diff --check.
+Acceptance criterion: source refs, packet IDs, admitted inputs, input fingerprint, and forbidden-authority list are preserved.
+Closeout: lineage implementation added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-022 — Authority regression hardening
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: consolidate enriched-profile authority regression tests for no candidate/play/capital/order/review/workbook-read leakage.
+Allowed files: tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: new behaviour beyond guard hardening; production changes unless tests expose defect; description engine; workbook read.
+Risk semantics: authority tests protect PRL as terrain/state-of-play interpreter only.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py -q; git diff --check.
+Acceptance criterion: hidden authority remains rejected/absent across enriched path and no runtime workbook read surface is opened.
+Closeout: tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-023 — Vocabulary-governed description constraints
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: formalise deterministic vocabulary-governed description constraints before any description contract or renderer work.
+Allowed files: docs/planning/PRL_RISK_DESCRIPTION_VOCABULARY_CONSTRAINTS.md; tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: description engine; template registry creation; runtime prose generation; trade/play/capital/order/review output.
+Risk semantics: description constraints explicitly preserve neutral risk state-of-play semantics and prohibit action advice.
+Expected tests: python -m pytest tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py -q; git diff --check.
+Acceptance criterion: constraints cite vocabulary governance, template registry target, no free-form prose, and no trade advice.
+Closeout: constraints and tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-024 — Deterministic description contract and tests
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: add metadata-only deterministic description template reference contract and tests.
+Allowed files: src/nvda_desk/contracts/parallel_risk.py; tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: renderer; template registry data creation; free-form prose; trade/play/capital/order/review output.
+Risk semantics: description contract carries references only and cannot generate or authorise action language.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q; git diff --check.
+Acceptance criterion: template/vocabulary refs validate, free-form/trade authority flags are rejected, and minute profile remains reference-only.
+Closeout: contract and tests added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-025 — Deterministic description engine
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: implement deterministic vocabulary-referenced template rendering for PRL state-of-play descriptions.
+Allowed files: data/parallel_risk/description_templates.v1.json; src/nvda_desk/domain/parallel_risk/deterministic_description.py; tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: generative prose; trade advice; review judgement; capital/play/order/candidate authority; canonical vocabulary data mutation.
+Risk semantics: rendered text describes environmental state-of-play only and rejects action language.
+Expected tests: python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py -q; git diff --check.
+Acceptance criterion: deterministic template renders exact output, vocabulary refs are checked, action-language template output is rejected.
+Closeout: deterministic renderer and template registry added; tests passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-026 — Documentation/current-state map update
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: update roadmap/current-state documentation after execution batch implementation and blocked-leaf outcomes.
+Allowed files: docs/planning/PRL_MINUTE_RISK_PROFILE_MASTER_ROADMAP.md; NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: production source changes; test changes; workbook edits; rich signal implementation.
+Risk semantics: documentation preserves PRL as environmental state-of-play interpreter, not a warning-only or action system.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: docs distinguish implemented, blocked, deferred, and still-forbidden authority surfaces.
+Closeout: docs updated; checks passed; commit recorded in git history for this leaf.
+
+
+## PRL-MRP-027 — Deferred rich signal-family intake plan
+
+Status: implementation_complete
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Objective: document lawful intake gates and required upstream sources/contracts for deferred rich Bloomberg-style signal families.
+Allowed files: docs/planning/PRL_DEFERRED_RICH_SIGNAL_FAMILY_INTAKE_PLAN.md; ROADMAP_LEDGER.md; var/audit/prl_execution_batch_001/.
+Forbidden scope: implementing rich signal families; fabricating values; workbook edits; runtime source integration.
+Risk semantics: deferred families are future state-of-play inputs, not action generators.
+Expected checks: make scaffold-check; git diff --check.
+Acceptance criterion: every deferred rich family has required source, contract, and future atom named without implementation.
+Closeout: plan added; checks passed; commit recorded in git history for this leaf.
+
+## PRL execution batch 001 closeout
+
+Status: implementation_complete_with_blocked_deferred_leaves
+Branch: work/prl-minute-risk-profile-execution-batch-001
+Baseline commit: a122379199c1f613c482d76e49016509cd5475d3
+Completed leaves: PRL-MRP-003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025, 026, 027.
+Blocked leaves: PRL-MRP-007, 009, 013, 020.
+Skipped leaves: none independent; blocked leaves require workbook-edit/source/config-migration authority.
+Final validation: relevant PRL/vocabulary/calendar/upstream/workbook tests passed; git diff check passed; scaffold check passed.
+Authority boundary: no candidate formation, playbook selection, capital sizing, order instruction, serial-stage mutation, review judgement, direct runtime workbook read, or free-form trade advice was added.
+Neutral risk semantics: implemented leaves preserve PRL as environmental state-of-play interpreter; risk is not modelled as inherently negative.
+Next recommended leaf: PRL-MRP-007 only if workbook-edit authority is explicitly opened; otherwise PRL-MRP-013 if governed VIX threshold migration authority is opened.
+
+
+## REPO FREEZE LEDGER AUDIT — 2026-05-19
+
+Status: freeze_complete
+Branch: work/repo-freeze-ledger-audit-handoff
+Purpose: clean handoff and source-of-truth reconciliation
+
+### Source-of-truth rule
+
+This freeze audit does not rely on prior chat claims. It relies on current Git history, current working tree, committed files, tests and validation logs present in the repo, generated audit artefacts present in the repo, downloadable archives present in `/mnt/data`, and command output produced in this pass.
+
+### Baseline and branch
+
+| Item | Value |
+|---|---|
+| Branch | `work/repo-freeze-ledger-audit-handoff` |
+| Baseline commit | `c477e6a360cbb01a0652b40117922ae591a2ff45` |
+| Source branch | `work/prl-minute-risk-profile-execution-batch-001` |
+| Audit directory | `var/audit/repo_freeze_ledger_audit_handoff_001/` |
+
+### Audit artefacts
+
+- `var/audit/repo_freeze_ledger_audit_handoff_001/COMMAND_LOG.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/FULL_READ_MANIFEST.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/BRANCH_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/ARCHIVE_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md`
+
+### Current audited status summary
+
+| Category | Status | Evidence |
+|---|---|---|
+| PRL planning branch | superseded | Branch/archive present; superseded by later accepted branches. |
+| PRL contract branch | superseded | Branch/archive present; changes included in later branches. |
+| PRL master roadmap branch | superseded | Branch/archive present; changes included in later branches. |
+| PRL architecture decisions branch | verified_present fallback | Branch/archive present; safe fallback if execution batch is not used. |
+| PRL execution batch 001 branch | verified_present | Branch/archive present; per-leaf commits and validation artefacts present. |
+| Gate 3/4/5 final admission handoff archive | claimed_but_missing | Required source archive absent from `/mnt/data`; blocked reconciliation artefacts present. |
+
+### Leaf-level audit
+
+See `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md` for the leaf-by-leaf status table. Current summary:
+
+- `verified_present`: PRL-MRP-001, 002, 003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025, 026, 027, execution-batch closeout.
+- `blocked`: PRL-MRP-007, 009, 013, 020.
+- `claimed_but_missing`: `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz`.
+- `superseded`: earlier PRL planning/roadmap branches and the original lost in-memory execution attempt.
+- `requires_redo`: none identified from current repo evidence.
+
+### Selected next baseline
+
+Candidate selected: this freeze branch after final closeout commit.
+
+Rationale: it preserves the execution-batch implementation state, adds an audited ledger and reconciliation artefacts, and will be archived with a clean working tree. The architecture-decisions branch remains the safe fallback, but using it would discard currently present and audited PRL implementation work.
+
+### Freeze closeout
+
+Status: freeze_complete.
+
+Validation run:
+
+- `git diff --check` — pass, no output.
+- `make scaffold-check` — pass, `repo scaffold present`.
+
+Files changed by freeze pass:
+
+- `ROADMAP_LEDGER.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/COMMAND_LOG.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/FULL_READ_MANIFEST.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/BRANCH_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/ARCHIVE_RECONCILIATION.md`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/LEDGER_AUDIT_SUMMARY.md`
+- validation and inventory logs under `var/audit/repo_freeze_ledger_audit_handoff_001/`
+- `var/audit/repo_freeze_ledger_audit_handoff_001/repo-freeze-ledger-audit-handoff.patch`
+
+Archive name: `repo-freeze-ledger-audit-handoff.tar.gz`.
+
+Archive SHA-256: computed after final archive creation and reported in the final response. It is not self-embedded here because the archive contains this ledger and therefore cannot contain its own stable hash.
+
+Final commit: the branch HEAD after the freeze closeout commit. The exact hash is reported in the final response; a commit cannot embed its own stable hash without changing that hash.
+
+Selected next baseline: `work/repo-freeze-ledger-audit-handoff` final commit.
+
+What is verified present: PRL-MRP-001, 002, 003, 004, 005, 006, 008, 010, 011, 012, 014, 015, 016, 017, 018, 019, 021, 022, 023, 024, 025, 026, 027, and execution-batch closeout.
+
+What is blocked: PRL-MRP-007, 009, 013, 020.
+
+What is claimed but missing: `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz`.
+
+What requires redo: none identified for PRL execution leaves from current repo evidence. The final admission reconciliation for Gate 3/4/5 remains blocked until the missing source handoff archive is supplied.
+
+Exact recommended next thread action: use `repo-freeze-ledger-audit-handoff.tar.gz` as the next source of truth. Start from branch `work/repo-freeze-ledger-audit-handoff`; do not rely on prior chat claims. If proceeding with PRL implementation, open PRL-MRP-007 only with explicit workbook-edit authority, or PRL-MRP-013 only with explicit governed VIX threshold migration authority. If proceeding with final admission reconciliation, first provide `NVDA10_2_TEST_TRUST_GATE3_4_5_SOURCE_HANDOFF_2026-05-10.tar.gz` or a superseding handoff archive with a reported SHA-256.
+
+## PRL blocked leaves completion 001 — 2026-05-19
+
+### Execution baseline
+
+| Item | Value |
+|---|---|
+| Source tarball | `repo-freeze-ledger-audit-handoff.tar.gz` |
+| Source branch verified | `work/repo-freeze-ledger-audit-handoff` |
+| Source commit verified | `a7962eee05a3403124d2f80d9c49e7fb2f224607` |
+| Worker branch | `work/prl-blocked-leaves-completion` |
+| Audit directory | `var/audit/prl_blocked_leaves_completion_001/` |
+
+### Mandatory read ledger sections recorded
+
+| Section | Line range read |
+|---|---:|
+| `REPO FREEZE LEDGER AUDIT — 2026-05-19` | `ROADMAP_LEDGER.md:3411-3501` |
+| `PRL-MRP-007` | `ROADMAP_LEDGER.md:2909`, `ROADMAP_LEDGER.md:3131-3140` |
+| `PRL-MRP-009` | `ROADMAP_LEDGER.md:2911`, `ROADMAP_LEDGER.md:3156-3164` |
+| `PRL-MRP-013` | `ROADMAP_LEDGER.md:2915`, `ROADMAP_LEDGER.md:3206-3214` |
+| `PRL-MRP-020` | `ROADMAP_LEDGER.md:2922`, `ROADMAP_LEDGER.md:3295-3304` |
+| `Parallel Risk Lane minute-level risk profile implementation plan` | `ROADMAP_LEDGER.md:2574-3052` |
+| freeze branch / execution batch closeout entries | `ROADMAP_LEDGER.md:3397-3408`, `ROADMAP_LEDGER.md:3411-3501` |
+
+### PRL-MRP-007 — Expected signal inventory workbook-tab creation
+
+Status: implementation_complete.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: workbook edit authority limited to `PRL-MRP-007`.
+- Allowed files: governed signal workbook, PRL workbook-boundary tests, PRL audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: runtime workbook reads, runtime `.xlsx` parsing, trade advice, unrelated workbook-sheet mutation except lawful inventory-tab creation/history metadata.
+- Expected tests: workbook existence/sheet/header checks, supported-signal coverage, unavailable/deferred rich-signal coverage, excluded authority coverage, runtime workbook-boundary checks.
+- Acceptance criterion: governed workbook contains `Parallel Risk Lane Signal Inventory` with expected PRL signals and neutral unavailable/deferred/excluded status semantics, while runtime PRL code remains typed-promotion-only and does not read `.xlsx`.
+
+Closeout evidence:
+
+- Workbook tab created: `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx` sheet `Parallel Risk Lane Signal Inventory`.
+- Supported runtime PRL signals represented: `source_time_utc`, `scheduled_event_window_active`, `vix_level`, `spot_price`, `front_dte`, `next_dte`.
+- Deferred/missing rich-signal families represented as unavailable/deferred or missing without fabricated values.
+- Excluded capital/order authority signals represented as excluded and not demanded at runtime.
+- Runtime workbook boundary preserved by source-token test over PRL runtime paths.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py -q`.
+- Validation result: pass, `5 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_007_pytest.log`.
+- Files changed: workbook, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-009`.
+
+### PRL-MRP-009 — Runtime expected-signal inventory promotion
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: typed promotion authority limited to `PRL-MRP-009`.
+- Allowed files: typed PRL signal-inventory config/contracts/loader, PRL typed-promotion tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: runtime Excel reads, source workbook parsing inside PRL runtime logic, hidden candidate/play/capital/order authority, unrelated PRL refactors.
+- Expected tests: config load/validation, workbook lineage, runtime consumes typed YAML without opening workbook, invalid statuses fail, missing required fields fail, authority-denial checks.
+- Acceptance criterion: runtime-safe typed expected-signal inventory exists at the governed config surface and can be validated/consumed without direct workbook reads.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Config added: `config/parallel_risk_signal_inventory.v1.yaml`.
+- Contracts added: `ParallelRiskExpectedSignalRecord`, `ParallelRiskSignalInventoryDocument`, `parallel_risk_signal_inventory_document_from_dict`.
+- Loader added: `ParallelRiskSignalInventoryService` reads typed YAML only.
+- Workbook lineage preserved in config fields: `source_workbook_path`, `source_workbook_sha256`, `source_workbook_sheet`, `source_workbook_sheet_range`, per-record `workbook_lineage_refs`.
+- Runtime workbook boundary: loader reads `config/parallel_risk_signal_inventory.v1.yaml` and source-token test rejects direct workbook-reader imports in runtime loader.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py -q`.
+- Validation result: pass, `6 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_009_pytest.log`.
+- Files changed: `config/parallel_risk_signal_inventory.v1.yaml`, `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/config/parallel_risk_signal_inventory.py`, `tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-020`.
+
+### PRL-MRP-020 — Inventory-backed unavailable signal handling
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: inventory-backed unavailable-signal authority limited to `PRL-MRP-020`.
+- Allowed files: PRL unavailable/missing-signal helper/contracts, typed signal-inventory tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: fabricated unavailable signal values, runtime workbook reads, action/trading advice, excluded-signal runtime demands, unrelated PRL refactors.
+- Expected tests: expected-but-missing register entries, deferred unavailable entries, excluded not demanded, no fake values, confidence/availability policy, workbook-boundary, no action language.
+- Acceptance criterion: PRL availability handling consumes the typed inventory from `PRL-MRP-009` and distinguishes present, missing, unavailable, deferred, excluded, quarantined, and rejected signal states without fabricating values or widening authority.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Typed inventory consumed from `ParallelRiskSignalInventoryDocument`, not from the Excel workbook.
+- Present signals are recorded in `presence_by_signal_id` and not replaced with fabricated snapshot values.
+- Expected-but-missing current signals produce `MissingSignalRegisterEntry` records and no fake values.
+- Deferred rich signals produce `deferred` unavailable metadata with `value=None`.
+- Upstream-but-not-projected and missing-not-yet-sourced records produce `unavailable` metadata.
+- Excluded capital/order authority signals are recorded as excluded and are not demanded at runtime.
+- Quarantined/rejected overlays remain explicit absence states.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py -q`.
+- Validation result: pass, `10 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_020_pytest.log`.
+- Files changed: `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/domain/parallel_risk/unavailable_signals.py`, `tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: `PRL-MRP-013`.
+
+### PRL-MRP-013 — Governed VIX threshold reconciliation
+
+Status: in_progress.
+
+Start record:
+
+- Branch: `work/prl-blocked-leaves-completion`.
+- Authority granted by user: governed VIX threshold migration/config authority limited to `PRL-MRP-013`.
+- Allowed files: governed PRL lane profile config/contracts/loader, PRL environment-assessment VIX policy seam, tests, audit artefacts, `ROADMAP_LEDGER.md`.
+- Forbidden scope: silent change to current `30/50` compatibility behaviour, hidden coefficient mutation, capital/candidate/play/order authority, unrelated posture-stage coefficient migration.
+- Expected tests: default `30/50` preservation, governed config load/validation, invalid threshold failure, explicit migration metadata, no hidden coefficient mutation, no authority widening.
+- Acceptance criterion: PRL VIX thresholds are reconciled through explicit typed config while default runtime behaviour remains `VIX >= 30` caution and `VIX >= 50` block.
+
+Closeout evidence:
+
+- Status: implementation_complete.
+- Config added: `config/parallel_risk_lane_profile.v1.yaml`.
+- Contracts added: `ParallelRiskVixThresholdPolicy`, `ParallelRiskLaneProfileConfig`, `parallel_risk_lane_profile_config_from_dict`.
+- Loader added: `ParallelRiskLaneProfileService` reads typed YAML only.
+- Runtime seam updated: `assess_risk_envelope(..., vix_threshold_policy=None)` defaults to explicit compatibility policy preserving `VIX >= 30` caution and `VIX >= 50` block.
+- Governed config explicitly references related coefficient-authority surfaces without mutating them.
+- Invalid threshold ordering, hidden coefficient mutation, and authority widening fail validation.
+- Tests run: `python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py -q`.
+- Validation result: pass, `8 passed`.
+- Validation log: `var/audit/prl_blocked_leaves_completion_001/prl_mrp_013_pytest.log`.
+- Files changed: `config/parallel_risk_lane_profile.v1.yaml`, `src/nvda_desk/contracts/parallel_risk.py`, `src/nvda_desk/config/parallel_risk_lane_profile.py`, `src/nvda_desk/domain/parallel_risk/environment_assessment.py`, `tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py`, audit artefacts, `ROADMAP_LEDGER.md`.
+- Unresolved items: none for this leaf.
+- Next leaf: none; proceed to final validation and archive.
+
+### PRL blocked leaves completion 001 — final validation closeout
+
+Status: implementation_complete.
+
+Leaves completed in this pass:
+
+- `PRL-MRP-007` — governed workbook inventory tab created and tested.
+- `PRL-MRP-009` — typed runtime-safe signal inventory promotion added and tested.
+- `PRL-MRP-020` — inventory-backed unavailable signal handling added and tested.
+- `PRL-MRP-013` — governed VIX threshold config seam added with default `30/50` compatibility preserved and tested.
+
+Validation closeout:
+
+- Required broad pytest command was attempted but exceeded the tool timeout before completion; split equivalent validation was then run and recorded.
+- Final split pytest results recorded in `var/audit/prl_blocked_leaves_completion_001/`:
+  - `tests/tier_a/parallel_risk` — `103 passed`.
+  - `tests/tier_a/testing_harnesses` — `11 passed`.
+  - `tests/tier_a/upstream_signal` — `14 passed`.
+  - `tests/tier_a/upstream_cognition` — `21 passed`.
+  - `tests/tier_a/financial_calendar` — `10 passed`.
+  - `tests/tier_a/temporal` — `7 passed`.
+  - `tests/tier_a/vocabulary` — all files passed individually after governed vocabulary alias admissions; final vocabulary proof-block command was tool-timeout limited.
+- `make proof-block BLOCK=parallel_risk_lane_authority_surface` — `112 passed`.
+- `PYTHONPATH=src python scripts/vocabulary_synonym_audit.py --check-clean` — `vocabulary_synonym_audit=PASS candidates=0 vocabulary_touched=False`.
+- `git diff --check` — pass, no output.
+- `make scaffold-check` — pass, `repo scaffold present`.
+- Vocabulary governance changes: admitted aliases only, rebuilt canonical vocabulary, updated vocabulary touch stamp, and wrote clean synonym-candidate artefact through the repo script.
+- Runtime workbook boundary: tests preserve no direct PRL runtime read of `.xlsx`, `openpyxl`, `SpreadsheetFile`, or `import_xlsx` in runtime PRL paths.
+- Final patch: `var/audit/prl_blocked_leaves_completion_001/prl-blocked-leaves-completion.patch`.
+- Final archive SHA-256 is not embedded here; it is computed after archive creation and reported in the final response.
+
+## PRL TRANCHE FINAL AUDIT AND MAINLINE INTEGRATION — 2026-05-19
+
+Status: `PRL_TRANCHE_READY_FOR_MAINLINE`.
+
+Branch audited: `work/prl-blocked-leaves-completion`.
+
+Baseline commit: `a7962eee05a3403124d2f80d9c49e7fb2f224607`.
+
+Final PRL implementation branch commit before final-audit ledger/audit commit: `e58a6242599f5376e9d2e14f4bfd5f45361d66a7`.
+
+Audit directory: `var/audit/prl_tranche_final_audit_mainline_001/`.
+
+Decision: `PRL_TRANCHE_READY_FOR_MAINLINE`.
+
+### Leaf reconciliation outcome
+
+All 27 planned PRL-MRP leaves were reconciled in `var/audit/prl_tranche_final_audit_mainline_001/LEAF_RECONCILIATION.md`.
+
+Audit verdicts:
+
+- `verified_present`: `PRL-MRP-001`, `PRL-MRP-002`, `PRL-MRP-003`, `PRL-MRP-004`, `PRL-MRP-005`, `PRL-MRP-006`, `PRL-MRP-007`, `PRL-MRP-008`, `PRL-MRP-009`, `PRL-MRP-010`, `PRL-MRP-011`, `PRL-MRP-012`, `PRL-MRP-013`, `PRL-MRP-014`, `PRL-MRP-015`, `PRL-MRP-016`, `PRL-MRP-017`, `PRL-MRP-018`, `PRL-MRP-019`, `PRL-MRP-020`, `PRL-MRP-021`, `PRL-MRP-022`, `PRL-MRP-023`, `PRL-MRP-024`, `PRL-MRP-025`, `PRL-MRP-026`, `PRL-MRP-027`.
+- `blocked`: none for PRL-MRP leaves.
+- `requires_redo`: none for PRL-MRP leaves.
+- `not_present`: none for PRL-MRP leaves.
+
+### Four formerly blocked leaves
+
+The four formerly blocked leaves are now verified present from committed files, tests, and local audit probes:
+
+- `PRL-MRP-007`: governed workbook tab `Parallel Risk Lane Signal Inventory` exists in `data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx`; required status classes are present; runtime workbook-token probe found no direct PRL runtime workbook read.
+- `PRL-MRP-009`: typed promotion config exists at `config/parallel_risk_signal_inventory.v1.yaml`; typed contracts and loader exist; workbook lineage is preserved; runtime consumption is YAML/config based.
+- `PRL-MRP-020`: unavailable-signal handling consumes typed inventory and distinguishes present, missing, unavailable, deferred, excluded, quarantined, and rejected states without fabricated values.
+- `PRL-MRP-013`: governed PRL lane profile config exists at `config/parallel_risk_lane_profile.v1.yaml`; default compatibility mode preserves VIX `>=30` caution and `>=50` block; governed config validation rejects invalid threshold order, hidden coefficient mutation, and authority widening.
+
+### Validation commands and results
+
+Pre-merge validation results are recorded in `var/audit/prl_tranche_final_audit_mainline_001/VALIDATION_SUMMARY.md`:
+
+- `git diff --check` — PASS, exit 0.
+- `make scaffold-check` — PASS, `repo scaffold present`, exit 0.
+- `env PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/tier_a/parallel_risk -q` — PASS, `103 passed`.
+- `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 scripts/run_proof_block.py --block parallel_risk_lane_authority_surface` — PASS, `112 passed`.
+- Targeted workbook / signal inventory / unavailable signal / VIX / vocabulary constraints command — PASS, `26 passed`.
+- Workbook/config/runtime-token probe — PASS.
+
+### Files changed by final-audit branch commit
+
+- `ROADMAP_LEDGER.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/COMMAND_LOG.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/FULL_READ_MANIFEST.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/LEAF_RECONCILIATION.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/VALIDATION_SUMMARY.md`.
+- `var/audit/prl_tranche_final_audit_mainline_001/BRANCH_HYGIENE.md`.
+- Pre-merge validation/probe logs under `var/audit/prl_tranche_final_audit_mainline_001/`.
+
+### Remaining blockers
+
+No PRL-MRP blocker remains after this audit.
+
+The separate external Gate 3/4/5 handoff archive remains separate from PRL tranche acceptance and is not used as evidence for this PRL tranche decision.
+
+### Mainline integration instruction
+
+Proceed to merge `work/prl-blocked-leaves-completion` into `main` using a no-fast-forward merge and rerun the required post-merge validation on `main`.

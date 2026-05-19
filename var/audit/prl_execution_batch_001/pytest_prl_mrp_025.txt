@@ -1,0 +1,62 @@
+..F.....                                                                 [100%]
+=================================== FAILURES ===================================
+_____ test_description_renderer_rejects_action_language_in_template_output _____
+
+    def test_description_renderer_rejects_action_language_in_template_output() -> None:
+        registry = {
+            "templates": [
+                {
+                    "template_id": "bad.template",
+                    "template": "buy because envelope={risk_envelope_state}",
+                    "vocabulary_refs": ["data/vocabulary/canonical_vocabulary.json"],
+                }
+            ]
+        }
+        ref = _template_ref().model_copy(update={"template_id": "bad.template"})
+    
+        with pytest.raises(ValueError, match="parallel_risk_description_forbidden_action_language"):
+>           render_parallel_risk_description(profile=_profile(), template_ref=ref, registry=registry)
+
+tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/domain/parallel_risk/deterministic_description.py:48: in render_parallel_risk_description
+    _validate_template_refs(template=template, template_ref=template_ref)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _validate_template_refs(
+        *, template: dict[str, Any], template_ref: ParallelRiskDescriptionTemplateRef
+    ) -> None:
+        refs = set(template.get("vocabulary_refs", []))
+        expected = set(template_ref.vocabulary_dictionary_refs + template_ref.description_vocabulary_refs)
+        if expected and not expected <= refs:
+>           raise ValueError("parallel_risk_description_vocabulary_refs_mismatch")
+E           ValueError: parallel_risk_description_vocabulary_refs_mismatch
+
+src/nvda_desk/domain/parallel_risk/deterministic_description.py:67: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_description_renderer_rejects_action_language_in_template_output() -> None:
+        registry = {
+            "templates": [
+                {
+                    "template_id": "bad.template",
+                    "template": "buy because envelope={risk_envelope_state}",
+                    "vocabulary_refs": ["data/vocabulary/canonical_vocabulary.json"],
+                }
+            ]
+        }
+        ref = _template_ref().model_copy(update={"template_id": "bad.template"})
+    
+>       with pytest.raises(ValueError, match="parallel_risk_description_forbidden_action_language"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'parallel_risk_description_forbidden_action_language'
+E         Actual message: 'parallel_risk_description_vocabulary_refs_mismatch'
+
+tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py:88: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py::test_description_renderer_rejects_action_language_in_template_output - AssertionError: Regex pattern did not match.
+  Expected regex: 'parallel_risk_description_forbidden_action_language'
+  Actual message: 'parallel_risk_description_vocabulary_refs_mismatch'
+1 failed, 7 passed in 1.16s

@@ -1,0 +1,460 @@
+inventory_id: parallel_risk_signal_inventory.v1
+schema_version: parallel_risk_signal_inventory.v1
+source_workbook_path: data/reference/signal_workbooks/2026-03-25_NVDA_SIGNAL_WORKBOOK_v3_bounds_handoff_copy.xlsx
+source_workbook_sha256: e1c70b647e0f4296c1a99182bf274b3d9afc1054899e477a07978d5f6e78e114
+source_workbook_sheet: Parallel Risk Lane Signal Inventory
+source_workbook_sheet_range: A3:Q26
+generated_from_workbook_tab: true
+direct_workbook_runtime_read_allowed: false
+authority_flags: {}
+records:
+- signal_id: source_time_utc
+  signal_family: source_temporal
+  inventory_status: available_now
+  raw_derived_config_trace_classification: metadata
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A3:H9
+  - Parallel Risk Lane Signal Inventory!A4:Q4
+  runtime_contract_target: SignalSnapshotEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: Temporal source time is already carried by typed TemporalContextInput.
+  risk_semantics_note: neutral state-of-play timing metadata
+  label_ref: prl.signal.source_time_utc.label
+  description_ref: prl.signal.source_time_utc.description
+  promotion_record_key: source_time_utc
+- signal_id: scheduled_event_window_active
+  signal_family: calendar_event
+  inventory_status: available_now
+  raw_derived_config_trace_classification: metadata
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A3:H9
+  - Parallel Risk Lane Signal Inventory!A5:Q5
+  runtime_contract_target: EventProximityRegisterEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: Scheduled event windows are typed temporal inputs.
+  risk_semantics_note: event proximity may be constructive, defensive, mixed, or uncertain
+  label_ref: prl.signal.scheduled_event_window_active.label
+  description_ref: prl.signal.scheduled_event_window_active.description
+  promotion_record_key: scheduled_event_window_active
+- signal_id: vix_level
+  signal_family: market_volatility_context
+  inventory_status: available_now
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Runtime_Surface_Drivers!A4:K9
+  - Coeff_Universe_Index!A4:L9
+  - Parallel Risk Lane Signal Inventory!A6:Q6
+  runtime_contract_target: SignalSnapshotEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: VIX level is already represented on the typed regime input.
+  risk_semantics_note: volatility terrain metadata, not a direction call
+  label_ref: prl.signal.vix_level.label
+  description_ref: prl.signal.vix_level.description
+  promotion_record_key: vix_level
+- signal_id: spot_price
+  signal_family: options_flow
+  inventory_status: available_now
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A9:H18
+  - Parallel Risk Lane Signal Inventory!A7:Q7
+  runtime_contract_target: SignalSnapshotEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: Spot/underlying price is a typed options-flow primitive when present.
+  risk_semantics_note: current market-state metadata
+  label_ref: prl.signal.spot_price.label
+  description_ref: prl.signal.spot_price.description
+  promotion_record_key: spot_price
+- signal_id: front_dte
+  signal_family: options_repricing_context
+  inventory_status: available_now
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A7:H8
+  - Options_Chain_Raw_Spec!A1:H21
+  - Parallel Risk Lane Signal Inventory!A8:Q8
+  runtime_contract_target: SignalSnapshotEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: disables_atom_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: Front DTE supports the existing options repricing atom.
+  risk_semantics_note: options calendar state-of-play
+  label_ref: prl.signal.front_dte.label
+  description_ref: prl.signal.front_dte.description
+  promotion_record_key: front_dte
+- signal_id: next_dte
+  signal_family: options_repricing_context
+  inventory_status: available_now
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A7:H8
+  - Options_Chain_Raw_Spec!A1:H21
+  - Parallel Risk Lane Signal Inventory!A9:Q9
+  runtime_contract_target: SignalSnapshotEntry
+  lawful_prl_use: yes_after_typed_promotion
+  runtime_use_permission: runtime_allowed_from_typed_inputs_only
+  required_for_current_atom: true
+  missing_handling: disables_atom_if_missing
+  unavailable_handling: not_applicable
+  exclusion_reason: null
+  status_rationale: Next DTE supports the existing options repricing atom.
+  risk_semantics_note: options calendar state-of-play
+  label_ref: prl.signal.next_dte.label
+  description_ref: prl.signal.next_dte.description
+  promotion_record_key: next_dte
+- signal_id: regime_context_packet
+  signal_family: macro_regime
+  inventory_status: upstream_but_not_projected
+  raw_derived_config_trace_classification: trace
+  workbook_lineage_refs:
+  - Runtime_Surface_Drivers!A4:K12
+  - Parallel Risk Lane Signal Inventory!A10:Q10
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_projection_admitted
+  runtime_use_permission: not_runtime_allowed_until_typed_projection
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: unavailable_register_entry
+  exclusion_reason: null
+  status_rationale: Regime primitives exist but only selected fields are admitted
+    to the current PRL.
+  risk_semantics_note: macro regime context metadata
+  label_ref: prl.signal.regime_context_packet.label
+  description_ref: prl.signal.regime_context_packet.description
+  promotion_record_key: regime_context_packet
+- signal_id: options_flow_context_packet
+  signal_family: options_flow
+  inventory_status: upstream_but_not_projected
+  raw_derived_config_trace_classification: trace
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Parallel Risk Lane Signal Inventory!A11:Q11
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_projection_admitted
+  runtime_use_permission: not_runtime_allowed_until_typed_projection
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: unavailable_register_entry
+  exclusion_reason: null
+  status_rationale: Options-flow packet exists as upstream context but rich chain
+    fields are not admitted.
+  risk_semantics_note: options-flow state metadata
+  label_ref: prl.signal.options_flow_context_packet.label
+  description_ref: prl.signal.options_flow_context_packet.description
+  promotion_record_key: options_flow_context_packet
+- signal_id: distance_to_vwap
+  signal_family: market_microstructure
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A9:H24
+  - Derived_Features_Catalog!A3:H6
+  - Parallel Risk Lane Signal Inventory!A12:Q12
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: VWAP distance lacks a typed PRL runtime source.
+  risk_semantics_note: microstructure terrain can be constructive or fragile
+  label_ref: prl.signal.distance_to_vwap.label
+  description_ref: prl.signal.distance_to_vwap.description
+  promotion_record_key: distance_to_vwap
+- signal_id: bid_ask_spread
+  signal_family: liquidity_depth
+  inventory_status: deferred
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Parallel Risk Lane Signal Inventory!A13:Q13
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: NBBO/depth source is not typed for current PRL.
+  risk_semantics_note: liquidity state metadata
+  label_ref: prl.signal.bid_ask_spread.label
+  description_ref: prl.signal.bid_ask_spread.description
+  promotion_record_key: bid_ask_spread
+- signal_id: tape_speed_relative_volume
+  signal_family: activity_legibility
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Volume_Baseline_Raw_Spec!A1:H9
+  - Derived_Features_Catalog!A3:H12
+  - Parallel Risk Lane Signal Inventory!A14:Q14
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Volume curve/tape speed is not typed for current PRL.
+  risk_semantics_note: activity legibility metadata
+  label_ref: prl.signal.tape_speed_relative_volume.label
+  description_ref: prl.signal.tape_speed_relative_volume.description
+  promotion_record_key: tape_speed_relative_volume
+- signal_id: realised_volatility_atr
+  signal_family: range_state
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Raw_Primitives_Catalog!A9:H24
+  - Derived_Features_Catalog!A7:H12
+  - Parallel Risk Lane Signal Inventory!A15:Q15
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Realised volatility/ATR requires typed bar-series source.
+  risk_semantics_note: range and disorder state metadata
+  label_ref: prl.signal.realised_volatility_atr.label
+  description_ref: prl.signal.realised_volatility_atr.description
+  promotion_record_key: realised_volatility_atr
+- signal_id: dense_options_chain
+  signal_family: options_surface
+  inventory_status: deferred
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Parallel Risk Lane Signal Inventory!A16:Q16
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: disables_atom_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Dense options chain is not a current typed PRL input.
+  risk_semantics_note: options-surface availability metadata
+  label_ref: prl.signal.dense_options_chain.label
+  description_ref: prl.signal.dense_options_chain.description
+  promotion_record_key: dense_options_chain
+- signal_id: iv_rank_implied_move
+  signal_family: event_volatility
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Derived_Execution_Options!A1:M15
+  - Parallel Risk Lane Signal Inventory!A17:Q17
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: IV rank/implied move requires typed options-vol context.
+  risk_semantics_note: event-volatility state metadata
+  label_ref: prl.signal.iv_rank_implied_move.label
+  description_ref: prl.signal.iv_rank_implied_move.description
+  promotion_record_key: iv_rank_implied_move
+- signal_id: skew_state
+  signal_family: options_skew
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Derived_Execution_Options!A1:M15
+  - Parallel Risk Lane Signal Inventory!A18:Q18
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Skew requires typed strike/expiry IV surface.
+  risk_semantics_note: asymmetry state metadata
+  label_ref: prl.signal.skew_state.label
+  description_ref: prl.signal.skew_state.description
+  promotion_record_key: skew_state
+- signal_id: gamma_exposure_flip
+  signal_family: dealer_convexity
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Derived_Execution_Options!A1:M15
+  - Parallel Risk Lane Signal Inventory!A19:Q19
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: disables_atom_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Gamma exposure/gamma flip requires typed greeks/OI/spot model.
+  risk_semantics_note: dealer-convexity state metadata
+  label_ref: prl.signal.gamma_exposure_flip.label
+  description_ref: prl.signal.gamma_exposure_flip.description
+  promotion_record_key: gamma_exposure_flip
+- signal_id: oi_concentration_strike_pin
+  signal_family: strike_concentration
+  inventory_status: deferred
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Options_Chain_Raw_Spec!A1:H21
+  - Derived_Execution_Options!A1:M15
+  - Parallel Risk Lane Signal Inventory!A20:Q20
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: OI concentration/strike pin requires typed OI by strike and spot
+    distance.
+  risk_semantics_note: pinning/concentration metadata
+  label_ref: prl.signal.oi_concentration_strike_pin.label
+  description_ref: prl.signal.oi_concentration_strike_pin.description
+  promotion_record_key: oi_concentration_strike_pin
+- signal_id: moc_close_auction_imbalance
+  signal_family: auction_state
+  inventory_status: missing
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A21:Q21
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: missing_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Auction imbalance source is not present in the workbook or current
+    runtime.
+  risk_semantics_note: auction-state metadata
+  label_ref: prl.signal.moc_close_auction_imbalance.label
+  description_ref: prl.signal.moc_close_auction_imbalance.description
+  promotion_record_key: moc_close_auction_imbalance
+- signal_id: headline_risk_context
+  signal_family: headline_risk
+  inventory_status: missing
+  raw_derived_config_trace_classification: raw
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A22:Q22
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: missing_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Governed headline source is not present in current runtime.
+  risk_semantics_note: information-lag/conflict metadata
+  label_ref: prl.signal.headline_risk_context.label
+  description_ref: prl.signal.headline_risk_context.description
+  promotion_record_key: headline_risk_context
+- signal_id: crowding_real_money_flow
+  signal_family: flow_positioning
+  inventory_status: missing
+  raw_derived_config_trace_classification: derived
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A23:Q23
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: missing_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Crowding/real-money flow source is not present in current runtime.
+  risk_semantics_note: positioning-pressure metadata
+  label_ref: prl.signal.crowding_real_money_flow.label
+  description_ref: prl.signal.crowding_real_money_flow.description
+  promotion_record_key: crowding_real_money_flow
+- signal_id: cognitive_load_attention_pressure
+  signal_family: attention_load
+  inventory_status: deferred
+  raw_derived_config_trace_classification: metadata
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A24:Q24
+  runtime_contract_target: ParallelRiskExpectedSignalRecord
+  lawful_prl_use: no_until_typed_source_exists
+  runtime_use_permission: not_runtime_allowed
+  required_for_current_atom: false
+  missing_handling: lowers_confidence_if_missing
+  unavailable_handling: deferred_unavailable_no_value
+  exclusion_reason: null
+  status_rationale: Operator/context attention load lacks a typed source.
+  risk_semantics_note: cognitive-friction state metadata
+  label_ref: prl.signal.cognitive_load_attention_pressure.label
+  description_ref: prl.signal.cognitive_load_attention_pressure.description
+  promotion_record_key: cognitive_load_attention_pressure
+- signal_id: capital_sizing_signal
+  signal_family: forbidden_authority
+  inventory_status: excluded
+  raw_derived_config_trace_classification: config
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A25:Q25
+  runtime_contract_target: not_applicable
+  lawful_prl_use: 'no'
+  runtime_use_permission: excluded_from_prl_runtime
+  required_for_current_atom: false
+  missing_handling: not_applicable
+  unavailable_handling: excluded_signal_not_demanded
+  exclusion_reason: capital sizing is downstream authority
+  status_rationale: Capital sizing cannot be a PRL signal.
+  risk_semantics_note: authority boundary metadata
+  label_ref: prl.signal.capital_sizing_signal.label
+  description_ref: prl.signal.capital_sizing_signal.description
+  promotion_record_key: capital_sizing_signal
+- signal_id: order_instruction_signal
+  signal_family: forbidden_authority
+  inventory_status: excluded
+  raw_derived_config_trace_classification: config
+  workbook_lineage_refs:
+  - Parallel Risk Lane Signal Inventory!A26:Q26
+  runtime_contract_target: not_applicable
+  lawful_prl_use: 'no'
+  runtime_use_permission: excluded_from_prl_runtime
+  required_for_current_atom: false
+  missing_handling: not_applicable
+  unavailable_handling: excluded_signal_not_demanded
+  exclusion_reason: broker/order authority is downstream
+  status_rationale: Order instruction cannot be a PRL signal.
+  risk_semantics_note: authority boundary metadata
+  label_ref: prl.signal.order_instruction_signal.label
+  description_ref: prl.signal.order_instruction_signal.description
+  promotion_record_key: order_instruction_signal
+notes:
+- Promoted typed runtime artefact from governed workbook inventory tab.
+- Runtime PRL code consumes this YAML document only; it does not read the Excel workbook.
+- Risk semantics are descriptive terrain state only and do not confer trade, order,
+  candidate, or capital authority.

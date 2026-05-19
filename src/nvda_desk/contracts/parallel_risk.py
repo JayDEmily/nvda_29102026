@@ -127,6 +127,432 @@ class ParallelRiskInputTrace(BaseModel):
 
 
 ParallelRiskConsequencePosture = Literal["observe", "caution", "block"]
+ParallelRiskAtomStateValue = Literal["inactive", "observe", "caution", "block"]
+ParallelRiskEnvelopeStateValue = Literal["tight", "broad", "observe", "caution", "block", "unknown"]
+ParallelRiskSignalKind = Literal["raw", "derived", "metadata", "config", "trace"]
+ParallelRiskFreshnessState = Literal["fresh", "ageing", "stale", "unknown"]
+ParallelRiskSignalPresenceState = Literal[
+    "present",
+    "missing",
+    "unavailable",
+    "deferred",
+    "excluded",
+    "quarantined",
+    "rejected",
+    "not_expected",
+]
+ParallelRiskMissingImpact = Literal[
+    "none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"
+]
+
+
+ParallelRiskSignalInventoryStatus = Literal[
+    "available_now",
+    "upstream_but_not_projected",
+    "missing",
+    "deferred",
+    "excluded",
+]
+ParallelRiskRuntimeUsePermission = Literal[
+    "runtime_allowed_from_typed_inputs_only",
+    "not_runtime_allowed",
+    "not_runtime_allowed_until_typed_projection",
+    "excluded_from_prl_runtime",
+]
+
+ParallelRiskVixThresholdMode = Literal[
+    "compatibility_legacy_30_50",
+    "governed_config",
+]
+
+
+class AuthorityFlags(BaseModel):
+    """Default-deny authority flags for enriched parallel-risk profile contracts."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    candidate_formation_allowed: bool = False
+    playbook_selection_allowed: bool = False
+    capital_sizing_allowed: bool = False
+    broker_execution_allowed: bool = False
+    serial_stage_mutation_allowed: bool = False
+    review_judgement_authority: bool = False
+    direct_workbook_runtime_read_allowed: bool = False
+
+    @model_validator(mode="after")
+    def _validate_default_deny_authority(self) -> "AuthorityFlags":
+        if any(
+            (
+                self.candidate_formation_allowed,
+                self.playbook_selection_allowed,
+                self.capital_sizing_allowed,
+                self.broker_execution_allowed,
+                self.serial_stage_mutation_allowed,
+                self.review_judgement_authority,
+                self.direct_workbook_runtime_read_allowed,
+            )
+        ):
+            raise ValueError("parallel_risk_authority_flags_must_remain_false")
+        return self
+
+
+class ParallelRiskExpectedSignalRecord(BaseModel):
+    """One workbook-governed expected signal promoted to runtime-safe config."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    inventory_status: ParallelRiskSignalInventoryStatus
+    raw_derived_config_trace_classification: str = Field(min_length=1)
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    runtime_contract_target: str = Field(min_length=1)
+    lawful_prl_use: str = Field(min_length=1)
+    runtime_use_permission: ParallelRiskRuntimeUsePermission
+    required_for_current_atom: bool = False
+    missing_handling: str = Field(min_length=1)
+    unavailable_handling: str = Field(min_length=1)
+    exclusion_reason: str | None = None
+    status_rationale: str = Field(min_length=1)
+    risk_semantics_note: str = Field(min_length=1)
+    label_ref: str | None = None
+    description_ref: str | None = None
+    promotion_record_key: str = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _validate_expected_signal_record(self) -> "ParallelRiskExpectedSignalRecord":
+        if not self.workbook_lineage_refs:
+            raise ValueError("parallel_risk_signal_inventory_lineage_required")
+        if self.inventory_status == "available_now":
+            if self.runtime_use_permission != "runtime_allowed_from_typed_inputs_only":
+                raise ValueError("available_parallel_risk_signal_requires_typed_runtime_permission")
+        else:
+            if self.runtime_use_permission == "runtime_allowed_from_typed_inputs_only":
+                raise ValueError("unavailable_parallel_risk_signal_must_not_be_runtime_allowed")
+        if self.inventory_status == "excluded":
+            if self.required_for_current_atom:
+                raise ValueError("excluded_parallel_risk_signal_cannot_be_required")
+            if not self.exclusion_reason:
+                raise ValueError("excluded_parallel_risk_signal_requires_reason")
+        return self
+
+
+class ParallelRiskSignalInventoryDocument(BaseModel):
+    """Runtime-safe promoted PRL expected-signal inventory document."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    inventory_id: str = Field(min_length=1)
+    schema_version: str = Field(min_length=1)
+    source_workbook_path: str = Field(min_length=1)
+    source_workbook_sha256: str = Field(min_length=64, max_length=64)
+    source_workbook_sheet: str = Field(min_length=1)
+    source_workbook_sheet_range: str = Field(min_length=1)
+    generated_from_workbook_tab: bool = True
+    direct_workbook_runtime_read_allowed: bool = False
+    authority_flags: AuthorityFlags = Field(default_factory=lambda: AuthorityFlags())
+    records: list[ParallelRiskExpectedSignalRecord] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+    @model_validator(mode="after")
+    def _validate_expected_signal_inventory_document(
+        self,
+    ) -> "ParallelRiskSignalInventoryDocument":
+        if self.direct_workbook_runtime_read_allowed:
+            raise ValueError("parallel_risk_inventory_runtime_workbook_read_forbidden")
+        if not self.generated_from_workbook_tab:
+            raise ValueError("parallel_risk_inventory_requires_workbook_tab_lineage")
+        record_ids = [record.signal_id for record in self.records]
+        if len(record_ids) != len(set(record_ids)):
+            raise ValueError("parallel_risk_inventory_signal_ids_must_be_unique")
+        if not self.records:
+            raise ValueError("parallel_risk_inventory_requires_records")
+        required_supported = {
+            "source_time_utc",
+            "scheduled_event_window_active",
+            "vix_level",
+            "spot_price",
+            "front_dte",
+            "next_dte",
+        }
+        missing_supported = sorted(required_supported - set(record_ids))
+        if missing_supported:
+            raise ValueError(
+                f"parallel_risk_inventory_missing_supported_signals: {missing_supported}"
+            )
+        return self
+
+    def record_map(self) -> dict[str, ParallelRiskExpectedSignalRecord]:
+        """Return expected signal records keyed by signal id."""
+
+        return {record.signal_id: record for record in self.records}
+
+    def required_runtime_records(self) -> list[ParallelRiskExpectedSignalRecord]:
+        """Return records demanded by current atoms and lawfully available after promotion."""
+
+        return [
+            record
+            for record in self.records
+            if record.required_for_current_atom
+            and record.inventory_status == "available_now"
+            and record.runtime_use_permission == "runtime_allowed_from_typed_inputs_only"
+        ]
+
+    def unavailable_records(self) -> list[ParallelRiskExpectedSignalRecord]:
+        """Return non-excluded records that are unavailable to runtime now."""
+
+        return [
+            record
+            for record in self.records
+            if record.inventory_status in {"upstream_but_not_projected", "missing", "deferred"}
+        ]
+
+
+def parallel_risk_signal_inventory_document_from_dict(
+    payload: dict[str, Any],
+) -> ParallelRiskSignalInventoryDocument:
+    """Build and validate one promoted PRL signal-inventory document."""
+
+    return ParallelRiskSignalInventoryDocument(**payload)
+
+
+class ParallelRiskVixThresholdPolicy(BaseModel):
+    """Governed VIX threshold policy for the PRL risk-envelope seam."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    policy_id: str = Field(min_length=1)
+    mode: ParallelRiskVixThresholdMode = "compatibility_legacy_30_50"
+    caution_threshold: float = Field(default=30.0, ge=0.0)
+    block_threshold: float = Field(default=50.0, ge=0.0)
+    caution_flag: str = "vix_elevated"
+    block_flag: str = "vix_extreme"
+    contribution_source_family: str = "market_volatility_context"
+    contribution_state: str = "caution"
+    coefficient_authority_refs: list[str] = Field(default_factory=list)
+    migration_status: str = Field(min_length=1)
+    hidden_coefficient_mutation_allowed: bool = False
+    authority_flags: AuthorityFlags = Field(default_factory=lambda: AuthorityFlags())
+
+    @model_validator(mode="after")
+    def _validate_vix_threshold_policy(self) -> "ParallelRiskVixThresholdPolicy":
+        if self.caution_threshold >= self.block_threshold:
+            raise ValueError("parallel_risk_vix_caution_threshold_must_be_below_block_threshold")
+        if self.hidden_coefficient_mutation_allowed:
+            raise ValueError("parallel_risk_vix_hidden_coefficient_mutation_forbidden")
+        if self.mode == "compatibility_legacy_30_50" and (
+            self.caution_threshold != 30.0 or self.block_threshold != 50.0
+        ):
+            raise ValueError("parallel_risk_vix_compatibility_mode_requires_30_50")
+        if not self.coefficient_authority_refs:
+            raise ValueError("parallel_risk_vix_policy_requires_coefficient_refs")
+        return self
+
+
+class ParallelRiskLaneProfileConfig(BaseModel):
+    """Governed PRL profile config promoted to runtime-safe YAML."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    profile_id: str = Field(min_length=1)
+    schema_version: str = Field(min_length=1)
+    vix_threshold_policy: ParallelRiskVixThresholdPolicy
+    notes: list[str] = Field(default_factory=list)
+
+
+def parallel_risk_lane_profile_config_from_dict(
+    payload: dict[str, Any],
+) -> ParallelRiskLaneProfileConfig:
+    """Build and validate one governed PRL lane profile config."""
+
+    return ParallelRiskLaneProfileConfig(**payload)
+
+
+class SignalSnapshotEntry(BaseModel):
+    """One signal-like value or absence recorded for a minute-level risk profile."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    raw_or_derived: ParallelRiskSignalKind
+    value: Any | None = None
+    units: str | None = None
+    source_time_utc: datetime | None = None
+    captured_at_utc: datetime | None = None
+    persisted_at_utc: datetime | None = None
+    freshness_state: ParallelRiskFreshnessState = "unknown"
+    freshness_reason: str | None = None
+    lineage_refs: list[str] = Field(default_factory=list)
+    source_ids: list[str] = Field(default_factory=list)
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    used_by_risk_atoms: list[str] = Field(default_factory=list)
+    missing_or_quarantined: ParallelRiskSignalPresenceState = "present"
+    rejection_reason: str | None = None
+    lawful_prl_use_allowed: bool = True
+    lawful_prl_use_reason: str | None = None
+
+
+class MissingSignalRegisterEntry(BaseModel):
+    """Metadata-only record for an expected signal absent from the PRL input surface."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    signal_family: str = Field(min_length=1)
+    expected_reason: str = Field(min_length=1)
+    missing_reason: str = Field(min_length=1)
+    impact_on_profile: ParallelRiskMissingImpact = "none"
+    source_refs: list[str] = Field(default_factory=list)
+    expected_signal_inventory_ref: str | None = None
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+
+
+class FreshnessRegisterEntry(BaseModel):
+    """Contract record for signal/source freshness state; calculation lives elsewhere."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    signal_id: str = Field(min_length=1)
+    source_time_utc: datetime | None = None
+    captured_at_utc: datetime | None = None
+    persisted_at_utc: datetime | None = None
+    generated_at_utc: datetime | None = None
+    max_allowed_age_seconds: int | None = Field(default=None, ge=0)
+    observed_age_seconds: int | None = Field(default=None, ge=0)
+    freshness_state: ParallelRiskFreshnessState = "unknown"
+    impact_on_profile: str | None = None
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class EventProximityRegisterEntry(BaseModel):
+    """Contract record for projected event proximity without trade authority."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    event_id: str = Field(min_length=1)
+    event_type: str = Field(min_length=1)
+    starts_at_utc: datetime | None = None
+    ends_at_utc: datetime | None = None
+    proximity_seconds: int | None = None
+    materiality: str | None = None
+    materiality_rank: int | None = None
+    runtime_tags: list[str] = Field(default_factory=list)
+    evaluation_tags: list[str] = Field(default_factory=list)
+    risk_interpretation: str = Field(min_length=1)
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class RiskAtomState(BaseModel):
+    """One contract-only environmental risk atom state, not a trade action."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    risk_atom_id: str = Field(min_length=1)
+    name: str | None = None
+    family: str = Field(min_length=1)
+    state: ParallelRiskAtomStateValue = "inactive"
+    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    trigger_condition: str = Field(min_length=1)
+    observable_cues: list[dict[str, Any]] = Field(default_factory=list)
+    calculation_basis: dict[str, Any] = Field(default_factory=dict)
+    source_refs: list[str] = Field(default_factory=list)
+    time_sensitivity: dict[str, Any] = Field(default_factory=dict)
+    trader_cognition_update: dict[str, Any] = Field(default_factory=dict)
+    why_this_is_risk_not_play: str = Field(min_length=1)
+
+
+class RiskFamilyState(BaseModel):
+    """Aggregated descriptive state for one risk family."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    family: str = Field(min_length=1)
+    state: ParallelRiskAtomStateValue = "inactive"
+    intensity: float = Field(default=0.0, ge=0.0, le=1.0)
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+    dominant_atoms: list[str] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ContributionBreakdownEntry(BaseModel):
+    """Traceable descriptive contribution to the minute-level risk profile."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    contribution_id: str = Field(min_length=1)
+    family: str = Field(min_length=1)
+    risk_atom_id: str | None = None
+    state: ParallelRiskAtomStateValue = "observe"
+    intensity_delta: float = Field(default=0.0, ge=0.0, le=1.0)
+    reason: str = Field(min_length=1)
+    source_signal_ids: list[str] = Field(default_factory=list)
+    source_refs: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskMinuteProfile(_DetachedMutableModel):
+    """Contract-only minute-level environmental risk profile for the PRL."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    packet_id: str = Field(min_length=1)
+    packet_schema_version: str = "parallel_risk_minute_profile.v1"
+    lane_id: str = "parallel_risk_lane"
+    symbol: str = Field(min_length=1)
+    source_time_utc: datetime
+    generated_at_utc: datetime
+    runtime_bar_time_utc: datetime | None = None
+    session_state: str = "unknown"
+    risk_envelope_state: ParallelRiskEnvelopeStateValue = "unknown"
+    active_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
+    watched_risk_atoms: list[RiskAtomState] = Field(default_factory=list)
+    risk_family_states: list[RiskFamilyState] = Field(default_factory=list)
+    signal_snapshot: list[SignalSnapshotEntry] = Field(default_factory=list)
+    missing_signal_register: list[MissingSignalRegisterEntry] = Field(default_factory=list)
+    freshness_register: list[FreshnessRegisterEntry] = Field(default_factory=list)
+    event_proximity_register: list[EventProximityRegisterEntry] = Field(default_factory=list)
+    contribution_breakdown: list[ContributionBreakdownEntry] = Field(default_factory=list)
+    hard_blocks: list[str] = Field(default_factory=list)
+    caution_flags: list[str] = Field(default_factory=list)
+    uncertainty_summary: dict[str, Any] = Field(default_factory=dict)
+    authority_flags: AuthorityFlags = Field(default_factory=AuthorityFlags)
+    expected_signal_inventory_ref: str | None = None
+    workbook_lineage_refs: list[str] = Field(default_factory=list)
+    vocabulary_dictionary_refs: list[str] = Field(default_factory=list)
+    description_template_id: str | None = None
+    description_vocabulary_refs: list[str] = Field(default_factory=list)
+    mechanical_summary: dict[str, Any] = Field(default_factory=dict)
+    lineage: dict[str, Any] = Field(default_factory=dict)
+    open_unresolved_signals: list[dict[str, Any]] = Field(default_factory=list)
+    notes: list[str] = Field(default_factory=list)
+
+
+class ParallelRiskDescriptionTemplateRef(BaseModel):
+    """Metadata-only reference to a deterministic PRL description template."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    template_id: str = Field(min_length=1)
+    template_registry_ref: str = Field(min_length=1)
+    vocabulary_dictionary_refs: list[str] = Field(default_factory=list)
+    description_vocabulary_refs: list[str] = Field(default_factory=list)
+    deterministic_template_only: bool = True
+    free_form_generation_allowed: bool = False
+    trade_advice_allowed: bool = False
+    capital_or_order_language_allowed: bool = False
+
+    @model_validator(mode="after")
+    def _validate_description_template_ref(self) -> "ParallelRiskDescriptionTemplateRef":
+        if not self.deterministic_template_only:
+            raise ValueError("parallel_risk_description_template_ref_must_remain_bounded")
+        if (
+            self.free_form_generation_allowed
+            or self.trade_advice_allowed
+            or self.capital_or_order_language_allowed
+        ):
+            raise ValueError("parallel_risk_description_template_ref_must_remain_bounded")
+        return self
 
 
 class ParallelRiskFragilityDimension(BaseModel):

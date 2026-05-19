@@ -7,6 +7,7 @@ from nvda_desk.contracts.parallel_risk import (
     ParallelRiskEnvelopeContribution,
     ParallelRiskEnvironmentAssessment,
     ParallelRiskPreparationPacket,
+    ParallelRiskVixThresholdPolicy,
 )
 from nvda_desk.contracts.temporal import build_source_temporal_payload
 
@@ -45,9 +46,27 @@ def assess_environment(packet: ParallelRiskPreparationPacket) -> ParallelRiskEnv
     )
 
 
-def assess_risk_envelope(packet: ParallelRiskPreparationPacket) -> ParallelRiskEnvelope:
+DEFAULT_VIX_THRESHOLD_POLICY = ParallelRiskVixThresholdPolicy(
+    policy_id="prl_vix_compatibility_legacy_30_50",
+    mode="compatibility_legacy_30_50",
+    caution_threshold=30.0,
+    block_threshold=50.0,
+    coefficient_authority_refs=[
+        "config/coefficient_authority.v1.yaml#risk_vix_caution_threshold",
+        "config/coefficient_authority.v1.yaml#risk_vix_hot_threshold",
+    ],
+    migration_status="explicit_compatibility_preserved_no_silent_change",
+)
+
+
+def assess_risk_envelope(
+    packet: ParallelRiskPreparationPacket,
+    *,
+    vix_threshold_policy: ParallelRiskVixThresholdPolicy | None = None,
+) -> ParallelRiskEnvelope:
     """Return the independent risk envelope from admitted parallel-risk primitives."""
 
+    policy = vix_threshold_policy or DEFAULT_VIX_THRESHOLD_POLICY
     contributions: list[ParallelRiskEnvelopeContribution] = []
     caution_flags: list[str] = []
     hard_blocks: list[str] = []
@@ -78,17 +97,17 @@ def assess_risk_envelope(packet: ParallelRiskPreparationPacket) -> ParallelRiskE
         )
 
     vix_level = packet.regime_input.vix_level
-    if vix_level is not None and vix_level >= 30.0:
-        caution_flags.append("vix_elevated")
+    if vix_level is not None and vix_level >= policy.caution_threshold:
+        caution_flags.append(policy.caution_flag)
         contributions.append(
             ParallelRiskEnvelopeContribution(
-                source_family="market_volatility_context",
-                state="caution",
-                reason="vix_elevated",
+                source_family=policy.contribution_source_family,
+                state=policy.contribution_state,
+                reason=policy.caution_flag,
             )
         )
-    if vix_level is not None and vix_level >= 50.0:
-        hard_blocks.append("vix_extreme")
+    if vix_level is not None and vix_level >= policy.block_threshold:
+        hard_blocks.append(policy.block_flag)
 
     if hard_blocks:
         envelope_state = "block"

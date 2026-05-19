@@ -1,0 +1,7 @@
+error: Your local changes to the following files would be overwritten by checkout:
+	var/audit/prl_tranche_final_audit_mainline_001/COMMAND_LOG.md
+Please commit your changes or stash them before you switch branches.
+Aborting
+checkout_exit_code=1
+$ git merge --no-ff work/prl-blocked-leaves-completion -m "Merge PRL tranche completion"
+merge_exit_code=99

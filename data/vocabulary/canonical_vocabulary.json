@@ -18,7 +18,8 @@
       "stage_owner": "temporal_context",
       "maps_to_contract": "TemporalContextOutput",
       "allowed_aliases": [
-        "temporal event context"
+        "temporal event context",
+        "temporal context service"
       ],
       "disallowed_phrases": [
         "temporal context seq5"
@@ -31,7 +32,9 @@
       "category": "stage",
       "stage_owner": "market_regime_context",
       "maps_to_contract": "MarketRegimeContextOutput",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "regime context"
+      ],
       "disallowed_phrases": [],
       "notes": []
     },
@@ -88,6 +91,7 @@
       "allowed_aliases": [
         "parallel lane",
         "parallel risk",
+        "parallel risk lane profile",
         "risk lane"
       ],
       "disallowed_phrases": [
@@ -323,6 +327,7 @@
       "stage_owner": "calendar_reference",
       "maps_to_contract": "EventCalendarProjection",
       "allowed_aliases": [
+        "calendar event",
         "event calendar architecture",
         "event calendar ownership"
       ],
@@ -595,6 +600,7 @@
       "stage_owner": "review_explanation",
       "maps_to_contract": "ReviewTrace",
       "allowed_aliases": [
+        "review layer judgement",
         "review layer outputs"
       ],
       "disallowed_phrases": [],
@@ -648,7 +654,10 @@
       "category": "authority_surface",
       "stage_owner": "posture_risk_permission",
       "maps_to_contract": "CoefficientAuthorityDocument",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "coefficient authority config",
+        "coefficient authority refs"
+      ],
       "disallowed_phrases": [
         "coefficient authority import",
         "coefficient authority marker",
@@ -777,7 +786,9 @@
       "category": "parallel_risk_surface",
       "stage_owner": "parallel_risk_lane",
       "maps_to_contract": "ParallelRiskEnvironmentAssessment",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "environment assessment basis"
+      ],
       "disallowed_phrases": [
         "bounded environment assessment",
         "environment assessment import",
@@ -791,7 +802,9 @@
       "category": "parallel_risk_surface",
       "stage_owner": "parallel_risk_lane",
       "maps_to_contract": "ParallelRiskCandidateAuditSurface",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "synonym candidate audit"
+      ],
       "disallowed_phrases": [
         "def audit candidate",
         "return audit candidate"
@@ -821,6 +834,7 @@
       "stage_owner": "cross_stage_protocol",
       "maps_to_contract": "DmpV3Lineage.dependencyids",
       "allowed_aliases": [
+        "dependency packet",
         "dependencyids",
         "packet ids"
       ],
@@ -869,7 +883,9 @@
       "category": "authority_surface",
       "stage_owner": "temporal_context",
       "maps_to_contract": "SourceTemporalStandard",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "source temporal"
+      ],
       "disallowed_phrases": [
         "source temporal standard field",
         "source temporal standard surface"
@@ -884,7 +900,10 @@
       "category": "protocol_field",
       "stage_owner": "temporal_context",
       "maps_to_contract": "SourceTemporalStandard.source_time_raw",
-      "allowed_aliases": [],
+      "allowed_aliases": [
+        "source raw",
+        "source time"
+      ],
       "disallowed_phrases": [
         "raw source"
       ],

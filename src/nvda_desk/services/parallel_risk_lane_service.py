@@ -11,6 +11,9 @@ from nvda_desk.contracts.parallel_risk import (
     ParallelRiskPolicyDecision,
 )
 from nvda_desk.contracts.stage_inputs import StageInputBundle
+from nvda_desk.domain.parallel_risk.minute_profile_assembly import (
+    assemble_parallel_risk_minute_profile,
+)
 from nvda_desk.risk.parallel.evaluate import (
     ParallelRiskService,
     enrich_candidate_semantics,
@@ -81,7 +84,8 @@ class ParallelRiskLaneService:
         sourceartifactids: list[str] | None = None,
         inputfingerprint: str | None = None,
         dmpextensions: dict | None = None,
-    ) -> dict[str, DeskModulePacketV3]:
+        include_minute_profile: bool = False,
+    ) -> dict[str, object]:
         bootstrap_packet = self.build_bootstrap_input_packet(
             stage_input_bundle=stage_input_bundle,
             packet_id=input_packet_id,
@@ -98,10 +102,22 @@ class ParallelRiskLaneService:
             bootstrap_packet=bootstrap_packet,
             output_packet_id=output_packet_id,
         )
-        return {
+        result: dict[str, object] = {
             "bootstrap_input_packet": bootstrap_packet,
             "lane_packet": lane_packet,
         }
+        if include_minute_profile:
+            result["minute_profile"] = assemble_parallel_risk_minute_profile(
+                packet=bootstrap_packet.data,
+                packet_id=f"{output_packet_id}::minute_profile",
+                symbol="NVDA",
+                generated_at_utc=lane_packet.emitted_at,
+                parent_packet_ids=[bootstrap_packet.packet_id],
+                dependency_packet_ids=[bootstrap_packet.packet_id],
+                source_artifact_ids=list(bootstrap_packet.lineage.sourceartifactids),
+                input_fingerprint=bootstrap_packet.lineage.inputfingerprint,
+            )
+        return result
 
     def run_from_serial_runtime(self, *, receipt: Mapping[str, object]) -> dict[str, object]:
         """Run the admitted serial-runtime-to-parallel-risk boundary path."""

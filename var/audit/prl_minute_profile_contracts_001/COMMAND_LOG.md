@@ -1,0 +1,76 @@
+# Command log — PRL minute profile contracts 001
+
+```sh
+rm -rf /mnt/data/prl_contracts_work
+mkdir -p /mnt/data/prl_contracts_work
+tar -xzf /mnt/data/prl-minute-risk-profile-plan-branch.tar.gz -C /mnt/data/prl_contracts_work
+cd /mnt/data/prl_contracts_work/MVD-A10_1704_V1
+git status --short --branch
+git branch --show-current
+git log --oneline -5
+git checkout -B work/prl-minute-profile-contracts work/prl-minute-risk-profile-plan
+wc -l AGENTS.md PLANS.md ROADMAP_LEDGER.md docs/planning/PRL_MINUTE_RISK_PROFILE_IMPLEMENTATION_PLAN.md
+python - <<'PY'
+# read required governance files fully and write FULL_READ_MANIFEST
+PY
+grep -RInE "vocabulary|dictionary|lexicon|glossary|normative wording|controlled language|plain English|review language|explanation language" docs src tests config schemas project_control evidence_index > var/audit/prl_minute_profile_contracts_001/vocabulary_search.txt
+find docs data config -iname '*.xlsx' -o -iname '*.xlsm' -o -iname '*.xls'
+python - <<'PY'
+# inspect signal workbook names and sheets using openpyxl without editing workbook
+PY
+```
+
+## Gate 2 test-first command
+
+```sh
+cat > tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py <<'PY'
+# new contract tests for PRL-MRP-001/002
+PY
+pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q || true
+```
+
+Observed pre-implementation result: collection error because `AuthorityFlags` is not yet exported from `nvda_desk.contracts.parallel_risk`; this is the expected new-contract failure before implementation.
+## Gate 3 implementation command
+```sh
+python - <<PY
+# inserted contract-only models/enums into src/nvda_desk/contracts/parallel_risk.py
+PY
+python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py -q
+```
+
+Observed implementation result: `14 passed` for new contract tests after contract-only model additions.
+
+## Gate 4 validation command
+
+```sh
+python -m pytest \
+  tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py \
+  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py \
+  tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py \
+  tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py \
+  tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py \
+  -q | tee var/audit/prl_minute_profile_contracts_001/pytest_parallel_risk_contracts.txt
+
+git diff --check | tee var/audit/prl_minute_profile_contracts_001/git_diff_check.txt
+```
+
+Observed validation result: `36 passed`; `git diff --check` emitted no output.
+
+## Gate 5 closeout commands
+
+```sh
+# update ROADMAP_LEDGER.md closeout details
+# write ARTIFACT_MANIFEST.md
+# write prl-minute-profile-contracts.patch
+# commit final closeout
+# create /mnt/data/prl-minute-profile-contracts-branch.tar.gz
+```
+
+## Archive command
+
+```sh
+git status --short
+tar --exclude='prl-minute-profile-contracts-branch.tar.gz' -czf /mnt/data/prl-minute-profile-contracts-branch.tar.gz -C /mnt/data/prl_contracts_work MVD-A10_1704_V1
+```
