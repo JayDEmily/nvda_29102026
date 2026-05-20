@@ -4281,3 +4281,9 @@ Validation evidence under `var/audit/main_reconciliation_20260520/reports/`:
 A first non-isolated `targeted_non310_repair_tests` run was interrupted by the outer execution timeout after partial progress; it is superseded by the complete isolated run with status `0`.
 
 Next step: commit this reconciliation state, promote the reconciled content to `main`, and package the repo.
+
+### Commit closeout update — 2026-05-20
+
+Reconciliation content commit created: `86617a0afbb706725a0b9868fd77b9442ca82d91`.
+
+This ledger update records final closeout before branch promotion. The final promoted `main` commit is reported in the final response and package checksums because a commit cannot embed its own final hash.

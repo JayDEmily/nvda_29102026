@@ -102,3 +102,9 @@ A first non-isolated `targeted_non310_repair_tests` run was interrupted by the o
 ## Final intended state
 
 After commit and branch promotion, `main` should point to this reconciled content state. The previous old `main` remains preserved at `archive/main-before-reconciliation-20260520`.
+
+## Commit closeout update
+
+Reconciliation content commit created before this closeout update: `86617a0afbb706725a0b9868fd77b9442ca82d91`.
+
+This receipt update records that branch promotion should happen after this final closeout commit. The final promoted `main` commit is reported in the final response and package checksums.
