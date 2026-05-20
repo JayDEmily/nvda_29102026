@@ -1,0 +1,1507 @@
+[
+  {
+    "bytes": 8827,
+    "lines": 184,
+    "path": "AGENTS.md",
+    "sha256": "0223600ad6526baf962ef26de4cc3d70e9564928556f6a08f02a7538e154b4da",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 99334,
+    "lines": 707,
+    "path": "PLANS.md",
+    "sha256": "5b1e48007c4655e734e7b74a3e1d34406ec27990a8474ec1bfd7007b047e0672",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 467496,
+    "lines": 4117,
+    "path": "ROADMAP_LEDGER.md",
+    "sha256": "260c3dd2fa3b0b3c61bb08b91d90b2097114e429da022834f431b24ebf44bec4",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2674,
+    "lines": 61,
+    "path": "intent_migration/AGENTS.override.md",
+    "sha256": "30594d481f6c1d0d86eb8d45f2959e21ff93dd8955160a63f5933094c208aa82",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2242,
+    "lines": 60,
+    "path": "intent_migration/active_codebase_alignment_repair/AGENTS.override.md",
+    "sha256": "64f4287d97013203b0d53b84551be0a7d102e0bcfc5a56866c1f44113422607f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1577,
+    "lines": 41,
+    "path": "intent_migration/atlas_surface_slice_pack/AGENTS.override.md",
+    "sha256": "8de9a76f70a2d5edecd9909e283293cbc9aa863cbbedfce61e2e970bef6b44f9",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3542,
+    "lines": 72,
+    "path": "intent_migration/atlas_tranche_roadmap/AGENTS.override.md",
+    "sha256": "b4c82dfa60dc2dad620156a9464703efd6c63ef0b4df48eaf61de7a596bdae47",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 948,
+    "lines": 21,
+    "path": "intent_migration/capital_deployment_authority_proof_hardening/AGENTS.override.md",
+    "sha256": "2a28af2b2eb8ddfb4421f5b2099a72ee6890434b052e44b5504c563ca12768ea",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1677,
+    "lines": 43,
+    "path": "intent_migration/capital_deployment_authority_runtime_reconciliation/AGENTS.override.md",
+    "sha256": "fbe5afe402631ffc9c7c58bd17458c40f9a8d5c5ba9fc5ce35fe6fcc7984a3ad",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3158,
+    "lines": 69,
+    "path": "intent_migration/native_intent_implementation/AGENTS.override.md",
+    "sha256": "77a011ce9e736e1db77c63a63869108ec9524baa9cf1af752f1b5e94359472b0",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3134,
+    "lines": 60,
+    "path": "intent_migration/native_intent_satisfaction/AGENTS.override.md",
+    "sha256": "7d31a64ff087ad238ba730d10990255286e1466b1659faf6e17ae1baa139e688",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2425,
+    "lines": 59,
+    "path": "intent_migration/testing_governance_reconciliation/AGENTS.override.md",
+    "sha256": "b7b2c25b77dde5d8d5b9e34d264bb98abffd7234fd45d865c1e1f90c097e9d5c",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3764,
+    "lines": 76,
+    "path": "tests/AGENTS.override.md",
+    "sha256": "8154245cfbb2734545ba86849f925847ffd10cc08e031bd0087413353cafc5e2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 7656,
+    "lines": 195,
+    "path": "tools/ai_patch_bridge/AGENTS.override.md",
+    "sha256": "eed68c8476e04007da759ddf87d5a3160d0a2b3e1f7357f101cb810dbc640627",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3465,
+    "lines": 84,
+    "path": "docs/00_CONTROL_SURFACE_ROUTING_INDEX.md",
+    "sha256": "b75eb0dc0e5182de43dc34965978b42e66206d76a1159c445640dcddfc98f8a2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1084,
+    "lines": 23,
+    "path": "docs/01.1_NORMATIVE_WORKING.md",
+    "sha256": "3298f39f1674831693a1686aa4742a039a4779aafe5c7b0235412a660a707614",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4989,
+    "lines": 117,
+    "path": "docs/01_NORMATIVE_CORE.md",
+    "sha256": "32d26e8b67a5308291e61294cbc511d6bf51dccc5f961c11798714b249d813ee",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 418,
+    "lines": 13,
+    "path": "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+    "sha256": "2e790290a57cbb2f843f25e1ed8c233c95f44f022711e26d5847c517dddc0bc8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5346,
+    "lines": 142,
+    "path": "docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md",
+    "sha256": "d7c1d29948572eaaa7b2215568d2f539ca50bba7673203dc8c5395ce6e9139ae",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 392,
+    "lines": 13,
+    "path": "docs/03.1_DOMAIN_MODEL_WORKING.md",
+    "sha256": "c9c81dd0837da899c8733e634f1d7330a4501d231f41d179e1dd799c1535f0ed",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5680,
+    "lines": 159,
+    "path": "docs/03_DOMAIN_MODEL_CORE.md",
+    "sha256": "b0c39d85c3157b6bc432f98e638b4fd1f9b4c8012350ef93653c25c312e0bc2d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3529,
+    "lines": 51,
+    "path": "docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+    "sha256": "e997da35da5cb49ebb11b3237a43e884ff38f0446840e46bd53bd87e1ad8c551",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 7552,
+    "lines": 186,
+    "path": "docs/04_TECHNICAL_ARCHITECTURE_CORE.md",
+    "sha256": "eb36ba355604ef193be809c54b1b8375bb89f1b7f057ead6f5c8122d654a3540",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 918,
+    "lines": 21,
+    "path": "docs/05.1_GUARDRAILS_WORKING.md",
+    "sha256": "214a8fc6ca9f2472a805c0eef26d4c161228220c6655915a6e52f47006b6bd1d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4080,
+    "lines": 81,
+    "path": "docs/05_GUARDRAILS_CORE.md",
+    "sha256": "7411eb660512161340d9c12819955476f5df523297204e949915412c2b44be9c",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 34740,
+    "lines": 342,
+    "path": "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md",
+    "sha256": "1cb694a96d0ccb70895d214246771a40b1a4c003bcecbaeb04ae82466965965b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5587,
+    "lines": 147,
+    "path": "docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md",
+    "sha256": "dd2afe14ccc7e2dc1083495d619557fc405d19042cff1055014c8c2e3a293f07",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 12060,
+    "lines": 120,
+    "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+    "sha256": "7655e4febc08e44d71bc86780a84188127e05c487efbff47f2affa7fca53b3b8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 10717,
+    "lines": 264,
+    "path": "docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md",
+    "sha256": "b84fc68df93dfaba6c578c04e103365c8fe372175fb351e99f523bb7bfdf1045",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 401,
+    "lines": 13,
+    "path": "docs/08.1_TESTING_AND_PROMOTION_WORKING.md",
+    "sha256": "c9b8c96deef18fc1b2b3c069c935216f1f5ff8bb363da02570710b6b56d691c1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 8442,
+    "lines": 202,
+    "path": "docs/08_TESTING_AND_PROMOTION_CORE.md",
+    "sha256": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2617,
+    "lines": 39,
+    "path": "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+    "sha256": "d6feb5dda3a582a96eeae567447e3f7c5753f3b9cbaab170d5db541af729c42a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5489,
+    "lines": 187,
+    "path": "docs/09_DMPV3_PROTOCOL_CORE.md",
+    "sha256": "816ecb0b5e2bc76437920982e8eb37b4118f348a4aba8606806c45eb0ddf4abe",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2726,
+    "lines": 33,
+    "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+    "sha256": "375d2ddb582f28038fe864565ea21ca1a13f2913f8162bda7f94c02813a6113b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1944,
+    "lines": 50,
+    "path": "docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md",
+    "sha256": "2d365d1f7bb7a765731a5234c2e4deb8cad3a2dff2963fbbe942711329192fa8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 40449,
+    "lines": 758,
+    "path": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md",
+    "sha256": "23329f7b49e048dbd0ed2a9051b8ee519c3d82f6edde7922c5ad94adccb7a12a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 11247,
+    "lines": 273,
+    "path": "docs/planning/2026-04-23_INTENT_MIGRATION_PHASE1_LEGACY_RUNTIME_INVENTORY_EXECPLAN.md",
+    "sha256": "580f07f8fb133878b7ca611c60b1f1de60551d39bced7f09c85221df2fffb2e3",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 33842,
+    "lines": 898,
+    "path": "docs/planning/2026-04-25_ATLAS_TO_NATIVE_INTENT_SATISFACTION_EXECPLAN.md",
+    "sha256": "c7f661d3ae6270b17a1fea45aa116561fd724f4fbae317ef0e1c7d2df009b3b1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 221383,
+    "lines": 3561,
+    "path": "config/retained_test_registry.yaml",
+    "sha256": "87cc5eb5b05f2c724c1626ea3201bda5d17e6517fc63ca923b5144f85173bf25",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 50949,
+    "lines": 899,
+    "path": "config/proof_blocks.yaml",
+    "sha256": "d1931fef0904acc76ac20d991c4bfaec6432bd73e83928a94a9dc7edf8ab1d2d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 90234,
+    "lines": 74,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD004_ROW_AUDIT.csv",
+    "sha256": "058c2690f5f9aaa4ba70b9d272384be41febfe2d68871350784e2103289c88cc",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 6208,
+    "lines": 154,
+    "path": "tests/tier_a/packets/test_reference_packet_carriage.py",
+    "sha256": "61a55a2caed8bb9e0497a8a980d413cb0790a8a3d1c3fa8afc07eed93b37ca41",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 8370,
+    "lines": 252,
+    "path": "src/nvda_desk/contracts/packets.py",
+    "sha256": "61b54ba3993f547466be9aca48379bd95dcbdbb535bf1362cdfbb69be9e55b8a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 15208,
+    "lines": 408,
+    "path": "src/nvda_desk/packets/dmp_packets.py",
+    "sha256": "029af4c848fd11c2a60ad08a05ac8192f00e92b08afc7bd0f93554d15dc620bf",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2571,
+    "lines": 72,
+    "path": "tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py",
+    "sha256": "45dfe7e719fb31b6b8aae23b28cc0bd82d8cdcec3456f46acf9b48286ecd107d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2188,
+    "lines": 52,
+    "path": "tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py",
+    "sha256": "40acde2f80b7e2d69b3d5c62f65105e48fe1449eec92f2686c67f2b79a76b699",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 327,
+    "lines": 12,
+    "path": "src/nvda_desk/schemas/dmp.py",
+    "sha256": "d6b7ef711d2df900570918fd580c03322b13c6af55b571f10096155387ec6535",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 493,
+    "lines": 23,
+    "path": "src/nvda_desk/schemas/dmp_envelope.py",
+    "sha256": "1cd10073c3878b89979dfd58b7531ff295db108b9914b5fd956be29a3d184375",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 134867,
+    "lines": 109,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD006_ROW_AUDIT.csv",
+    "sha256": "055fd453f2c11796b454d08d331514cddc35686dc75458fb6b919c59ba89aca1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1957,
+    "lines": 56,
+    "path": "tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py",
+    "sha256": "312be8e435972df3792dc66ece0e17c9c8e28d62d9a4c7db3bda5cc2db484b6b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3332,
+    "lines": 96,
+    "path": "src/nvda_desk/contracts/temporal.py",
+    "sha256": "35d17eb1ef76b03f34ec6cc5d925a9e544c417436b9586aa4cec39a971f91b96",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3077,
+    "lines": 87,
+    "path": "src/nvda_desk/contracts/upstream_signal.py",
+    "sha256": "9f86b255911126479d91894f33492c09de200d2553f9e10f53bc7f126c5b2ccf",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4881,
+    "lines": 128,
+    "path": "src/nvda_desk/ingress/raw_bundle_loader.py",
+    "sha256": "382f6133db24edbe936445a106d3f539d04c2cb5564998e3b44cbc517134b7ff",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3071,
+    "lines": 93,
+    "path": "src/nvda_desk/upstream/raw_signal_ingress.py",
+    "sha256": "2053f67035bcb83a8ed955f6b7b6a62a7f781164ed39ffa546c36a20301c359f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4953,
+    "lines": 113,
+    "path": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+    "sha256": "538a691a0c42f484b3695b20699b426ff087d9dcd9c7a23e5b17a9bd9895732b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 20080,
+    "lines": 193,
+    "path": "NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md",
+    "sha256": "e298bdcb64a2bb6f02798e577f5a732f108df3d76bb5d5a1819710c22ead174d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2063,
+    "lines": 55,
+    "path": "tests/tier_a/temporal/test_source_temporal_standard_surface.py",
+    "sha256": "b24d7f351839aa5eeea4b1eaae8713566a558edeb77b39c30713a3164094991a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 65641,
+    "lines": 52,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD009_ROW_AUDIT.csv",
+    "sha256": "6b9a1f5f7c626cc4b6761d4a82cdda4fc8ab86264f5f4726e8b0dcc5785c3f31",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 7230,
+    "lines": 183,
+    "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+    "sha256": "d5d68fc7d30344134c46d2cec8a16a1b6b8232d8f04ae021638752af1b171b6a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 16974,
+    "lines": 454,
+    "path": "src/nvda_desk/preparation/runtime_preparer.py",
+    "sha256": "9ba84a2ab7aafff7211e508143c7b625e6d7f518e5710e728388b110fc7c91f2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 669,
+    "lines": 20,
+    "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py",
+    "sha256": "2554646fc4e655ba998ec0c57159de5a530eab9f9f1878d891c15c7b6f979604",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2590,
+    "lines": 82,
+    "path": "tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py",
+    "sha256": "e318099236ee2092f429de0359b676aaad762ede4f3dc22726a42cc2788a7e7b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1557,
+    "lines": 43,
+    "path": "src/nvda_desk/contracts/prepared_context.py",
+    "sha256": "f731b6d4d7671431de8f46f89923005f088f80475e38771010b3ba40ec72c710",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3934,
+    "lines": 103,
+    "path": "src/nvda_desk/preparation/context_packet.py",
+    "sha256": "5193192666ceb92835d349cdf8804bcd6c7fbbd201c22c9054df9b2595642773",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 148144,
+    "lines": 96,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD011_ROW_AUDIT.csv",
+    "sha256": "c0c8675ad5d34616338b4f45e15fefec6210c1df89e94f9dcb1994baaf9af32f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3676,
+    "lines": 92,
+    "path": "tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py",
+    "sha256": "6ca98da0247ccf4949e0a80bb21004d8dfa5de5edba1683947b6c6870f7b344f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 10450,
+    "lines": 283,
+    "path": "tests/tier_a/playbook/test_playbook_library_architecture_surface.py",
+    "sha256": "fa123cdab34977cd9709eb47a19cc61a2aac2557ac24dd3d5ba26ab8fe06c04f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3119,
+    "lines": 93,
+    "path": "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py",
+    "sha256": "54a422133b418debef8a35cfaafc3f2f38017c7787363f35361cd1395fca5f1e",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1940,
+    "lines": 46,
+    "path": "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+    "sha256": "3b918e4b79ce401d2f5fa3f6869e2a678b062fdd74868e0dae99ae19fa706181",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5931,
+    "lines": 155,
+    "path": "src/nvda_desk/config/playbook_registry.py",
+    "sha256": "7d011b112902b6f43a1359430ae56125766f316a42c96286b689c7694ab76051",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 6886,
+    "lines": 185,
+    "path": "src/nvda_desk/contracts/playbook.py",
+    "sha256": "37e9980cadc6684b63afa718a520984c224446b796eb781125bd9e26596e4939",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 758,
+    "lines": 27,
+    "path": "config/playbook_registry.example.yaml",
+    "sha256": "1ebd6629afc2796bcf1ca16c5073a81110554d8e918060022a66d65a652b441a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 820,
+    "lines": 22,
+    "path": "src/nvda_desk/cognition/serial/eligibility.py",
+    "sha256": "8f7a951a8b7a4b4af922005854ac2d702d917009bd40cc77270254879bf4646a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2652,
+    "lines": 76,
+    "path": "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+    "sha256": "23ad8e2762b1a603972fe935a968290c72dfc3a16de5500963c3643904879660",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 937,
+    "lines": 25,
+    "path": "src/nvda_desk/playbooks/library.py",
+    "sha256": "0266d46cf91fef6aebc64afc0b9077c0085e8e0288204de4e189eeffe6819d21",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 888,
+    "lines": 25,
+    "path": "src/nvda_desk/services/playbook_eligibility_service.py",
+    "sha256": "5ee242b2476fb689af4cacabe203691747694d90cdc298c734799d4eb9cf629e",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 223935,
+    "lines": 140,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD012_ROW_AUDIT.csv",
+    "sha256": "887bf75bed7e75ce0a1b4ffa54d39368e2dd4c4767f0bb6a6f93f5e8131a0a8a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 6064,
+    "lines": 127,
+    "path": "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "sha256": "ee0a115da8c80b7b0764b92a2917033f960178f8ff23bdfc77b7244fe932debc",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3674,
+    "lines": 89,
+    "path": "tests/tier_a/serial_recommendation/test_execution_contract_models.py",
+    "sha256": "e89aa2c074fb39c6c6dfc630c1320f363c2482e3836f2769b1d819da3bdbe4ab",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4563,
+    "lines": 128,
+    "path": "tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py",
+    "sha256": "4bf9fb77f55cb209662020f0d854bb2bc83d585603ddbe8cc64d397fb9201421",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1575,
+    "lines": 40,
+    "path": "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+    "sha256": "264f0a20b45613133391457f3f1d60fd8275f0ed6d2874cfc3b7ad8a785322a0",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4293,
+    "lines": 111,
+    "path": "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+    "sha256": "1e54f36e12b7b6826826af356c3214c55a85f1ee8a2357eb88a6478c86733851",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1239,
+    "lines": 36,
+    "path": "src/nvda_desk/contracts/execution.py",
+    "sha256": "f6d316847b81559c9736fb1a3711fd4956559b4acfbb165b6f8f2f76cc23a8b6",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 4333,
+    "lines": 118,
+    "path": "src/nvda_desk/contracts/serial_spine.py",
+    "sha256": "278e8fd6437ea92076ebb63891799b1015007f45650271f8646acff35794887b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 14059,
+    "lines": 342,
+    "path": "src/nvda_desk/runtime/orchestrator.py",
+    "sha256": "20b2fa3332c7cbe49ff6b23c2414ddd42d29b2cbb520fed7f1fd5395ae2da09a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1427,
+    "lines": 31,
+    "path": "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+    "sha256": "8a295d9e75ed6c2b5d2049d7d2ad156d77df623a2c7452d0afc393712ecc7404",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3817,
+    "lines": 112,
+    "path": "tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py",
+    "sha256": "9062ffb9043aa8cd596506465aa63e27d81970cafa315cae9693ab15acc695a8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 452,
+    "lines": 11,
+    "path": "src/nvda_desk/cognition/serial/options_flow.py",
+    "sha256": "6c68bce30e8f1bd33f3263992c7248934326aeec92d1423058fe6cd4ff9afd4d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 888,
+    "lines": 23,
+    "path": "src/nvda_desk/cognition/serial/posture.py",
+    "sha256": "ff6ccdf2bb85dfce00e3f5475fed41408f1e36d5202fd79e3d792c4ca320d927",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 921,
+    "lines": 21,
+    "path": "src/nvda_desk/domain/execution/candidate_expression.py",
+    "sha256": "19d5ee7a71cca8f8b22a034937dacb3a1e89df329ce90d5d0682faea029e2779",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 467,
+    "lines": 12,
+    "path": "src/nvda_desk/domain/execution/lifecycle_plan.py",
+    "sha256": "ecc4ee993e03faf56248ea6f42480dffb2a27c4743e045230a4838f2b751b23f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 960,
+    "lines": 26,
+    "path": "src/nvda_desk/services/execution_service.py",
+    "sha256": "aac92da018b7feeb0ce24965fae51174129927e845536b22a83b14bf39a5fea2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3598,
+    "lines": 3,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FWD014_ROW_AUDIT.csv",
+    "sha256": "e5d9b025efe4c813efeccc4fcd74cbedb62895b45ad3be4b679cfab45c93ce35",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2871,
+    "lines": 61,
+    "path": "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+    "sha256": "0081d39a103e2b92bca821e0a291fbad9d646d101fb14756829006c82a31d5b6",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 11070,
+    "lines": 265,
+    "path": "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+    "sha256": "9b5f0e2ad6285ecc166698777b1f88d3ee6cb917d6be02dff246919ab02ebed2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1604,
+    "lines": 34,
+    "path": "tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py",
+    "sha256": "ca7df4948f3d882f41a3886d1e41dd9670d7bcf437c014a22f32917a01d79e09",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 693,
+    "lines": 18,
+    "path": "tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py",
+    "sha256": "1d011a65cb42228d3c916bdc122be425efa5aaa8bfcf58ad6bf0ece426ab73a8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 5648,
+    "lines": 124,
+    "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py",
+    "sha256": "befe79943fd9c6b83dff28cf79649772b016380935db4625dc104324ba60163d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2823,
+    "lines": 65,
+    "path": "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py",
+    "sha256": "346f853263789c4d1011cff170832fe51fe4a284db4666fb8a63758286594f94",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 30,
+    "lines": 1,
+    "path": "src/nvda_desk/capital/__init__.py",
+    "sha256": "9565768ed2238c67f5a9658ec3ec7b8f6d8e1c99b9c54802d32f74ec4158a253",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 7901,
+    "lines": 220,
+    "path": "src/nvda_desk/capital/authority.py",
+    "sha256": "dfbd32326e5b54f1ebefc75aabddaf1820e3e467b0d3161d47efa7d19571f0b8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 6544,
+    "lines": 179,
+    "path": "src/nvda_desk/contracts/capital.py",
+    "sha256": "eaca3aa747495269fec8bc7ba0770711c7cf09260d660506ae10b4df875e34fe",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 30,
+    "lines": 1,
+    "path": "src/nvda_desk/domain/capital/__init__.py",
+    "sha256": "9565768ed2238c67f5a9658ec3ec7b8f6d8e1c99b9c54802d32f74ec4158a253",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 544,
+    "lines": 16,
+    "path": "src/nvda_desk/domain/capital/deployment.py",
+    "sha256": "673040a72fec64908c49d864580f16905b610c447dcc963d49262bbeea330291",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1232,
+    "lines": 40,
+    "path": "src/nvda_desk/services/capital_deployment_service.py",
+    "sha256": "fe07dfec269e620be3557e205f56d41b6091602f4af3547c35c9f92c0a259159",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3111,
+    "lines": 85,
+    "path": "tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py",
+    "sha256": "252905dbfef7502920b58a9c74e049531e4f0894a23991b3efb2ed2f2aff28e7",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 20545,
+    "lines": 176,
+    "path": "var/audit/non310_completion_claim_audit_20260519/BASELINE_VS_WORKER_DIFF_SUMMARY.md",
+    "sha256": "058f62f17e7fe53760b91467c34ded56fa0f5479bb76167b1dcf006bbeaa34a8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3900,
+    "lines": 55,
+    "path": "var/audit/non310_completion_claim_audit_20260519/FINAL_AUDIT_DECISION.md",
+    "sha256": "b4f59a3a7c95d0543bcd69a4c8f3478b444a51c81fd78706d597aa235f888e43",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 417663,
+    "lines": 2176,
+    "path": "var/audit/non310_completion_claim_audit_20260519/READ_RECEIPT.md",
+    "sha256": "cc2551b79f700e12173f1b607474151c830c037bf3e199fc95ff1e146eec5641",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1611,
+    "lines": 19,
+    "path": "var/audit/non310_completion_claim_audit_20260519/SURFACE_SUMMARY.md",
+    "sha256": "eb0da338163b5033bec3eae8f4009b0eef4910784bfdcd6835bf1da1cb1ebe0a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 717,
+    "lines": 30,
+    "path": "var/audit/non310_completion_claim_audit_20260519/audit_counts.json",
+    "sha256": "9fd052d9543c3e5a845630cf944453763cbfb60ca6e8a024b9f3352e4fc4d0f3",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 17,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/git_diff_check.command",
+    "sha256": "d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/git_diff_check.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/git_diff_check.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/git_diff_check.stdout",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 3282358,
+    "lines": 6204,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/pre_commit.diff",
+    "sha256": "13e02123f0876c6572d7ccdc3eb11678c7fac1749a9ebcc74c113487288abd0c",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2982,
+    "lines": 49,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/pre_commit.diffstat",
+    "sha256": "adfa6c4ab19f6fc7e13c7ccecd24571891836c483fc3ee2ea4a46c7a7c1eae22",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 125,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/proof_blocks_check_all.command",
+    "sha256": "7bb3fd1eb2fc2fb595574a37a1ec606f7a5ecfd18c392cebdfa27f0199825d08",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/proof_blocks_check_all.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/proof_blocks_check_all.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 37,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/proof_blocks_check_all.stdout",
+    "sha256": "6e0ba8ea0271fdf48318142c7035bc358a55dcc687f805072d9482952e53fd43",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 20,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/scaffold_check.command",
+    "sha256": "6f9ceff930510a115e889a67bdd9d4c459b8c0bd57e6624515230c60755f6192",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/scaffold_check.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/scaffold_check.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 22,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/scaffold_check.stdout",
+    "sha256": "3626204a022b679d510427a9d8decd64c7b1b645038eee3b54979c3d50e74ee0",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 58,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd004.command",
+    "sha256": "7535345b9d78014786df0d4c750f2020cffccd85591b48c48b857969c6d3a28b",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd004.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd004.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 799,
+    "lines": 13,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd004.stdout",
+    "sha256": "b77c448368b4690366c1a42401dbf6037ba02a1d0c459941f7f55a9033e14d50",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 114,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd006.command",
+    "sha256": "0c199ef71569d719761e3f7f79604fccede01ded31066851982e89a1db766a40",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd006.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd006.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 879,
+    "lines": 14,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd006.stdout",
+    "sha256": "fe06e0b49d706448501209ed014561e4f2019824af50a6a093cf811f70cef410",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 279,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd009.command",
+    "sha256": "27cf96d0c7c057f74e74aecc6b9e4e1b4a3e2ffad78138e7a457bfc7cf3b957c",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd009.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd009.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1067,
+    "lines": 16,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd009.stdout",
+    "sha256": "7d5fe8a220b3fe4793dbc6000212c5cbb546f0b25e0234c1f6e192bcfc1d2f85",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 135,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd011.command",
+    "sha256": "13c515bde6e6968736838cfb28aae326089007a6c0e7be4a1d9fd3ff5a2e87de",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd011.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd011.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1204,
+    "lines": 18,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd011.stdout",
+    "sha256": "ac055c2629b8f0bfe81e80736a2ebe47ea5badfc558e83c1a9d345d91d6f6e03",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 169,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd012.command",
+    "sha256": "479b7003de1879f811b8f1523b9070004ad5a33ec1500d61842e126a542e1f70",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd012.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd012.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1781,
+    "lines": 25,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd012.stdout",
+    "sha256": "89b75c7ecdd2e1f45c1233a8185f63e88431c53fd32b2e83bf5bcae3ed63c73f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 155,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd014.command",
+    "sha256": "49eef5587f299f7fff0c5fb5b6b584d44ca559a95de58f2a7441df69a419d644",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd014.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd014.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1741,
+    "lines": 24,
+    "path": "var/audit/non310_completion_claim_audit_20260519/reports/targeted_fwd014.stdout",
+    "sha256": "c0ff148f657daa92e89e5401b95d29d9f6b05095f0bb7e9f678ca8fbca700425",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1598,
+    "lines": 26,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FINAL_REOPENED_ROW_COMPLETION_SUMMARY.md",
+    "sha256": "051e3228dd159f9f9f33286bf9e8b22c3d9875cf9301d05fbeae7f4c299ccbc0",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 421,
+    "lines": 13,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_CLOSEOUT.md",
+    "sha256": "75587d8a5ce636c4f7466dc43cc5a1d158b2903bfa0985a33b27b837fe13e559",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 477,
+    "lines": 8,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_IMPLEMENTATION_RECEIPT.md",
+    "sha256": "22aa1ef7949eb73361712872e0dfe9cf3756d362c3a19937b8d89a66299f72d5",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 104818,
+    "lines": 60,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_IMPLEMENTATION_STATUS_LEDGER.csv",
+    "sha256": "968cb0480e6a2c3dcb8576a04972bbc3b5cce2ec3a74910cb48599ed0fc93a72",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 152692,
+    "lines": 1654,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_IMPLEMENTATION_STATUS_LEDGER.json",
+    "sha256": "a3d6a3a2bc36fdeb97b1dae09b814f2f33d9be09bab5198ceda027e8242732f2",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 801,
+    "lines": 27,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_PROOF_OUTPUT.md",
+    "sha256": "d4f00470321b1db5f1e1520c13628050e4d06500d09ccbde83259521f94a4f69",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 520,
+    "lines": 9,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD004_TEST_FIRST_RECEIPT.md",
+    "sha256": "b7ff481301733911e59ac926590e6a42ea61336464168ffb6948ed93e1afcc6a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 478,
+    "lines": 13,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_CLOSEOUT.md",
+    "sha256": "31bfba48a974598de21bace3a76810a70cb24a7ee3faefacfdb4e87db18d4037",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 478,
+    "lines": 8,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_IMPLEMENTATION_RECEIPT.md",
+    "sha256": "f685e6295e8f09425cbe79c37dba3f7bd1e8449fdfcc96d1b01fa6e7d18155d4",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 199940,
+    "lines": 109,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_IMPLEMENTATION_STATUS_LEDGER.csv",
+    "sha256": "59c0c4581d84fc03241a5a74d784ad2400e25947e9e5b31e3150b62d91daca62",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 288148,
+    "lines": 3026,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_IMPLEMENTATION_STATUS_LEDGER.json",
+    "sha256": "ae772593ae45da3259e68ccab4dbf9daf7a88dd888f8a9e21c983e1764d22468",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 937,
+    "lines": 28,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_PROOF_OUTPUT.md",
+    "sha256": "227f2a06f9ea35c977ca387002ba7701cf8479b52029707cde41c95e652835d9",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 577,
+    "lines": 9,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD006_TEST_FIRST_RECEIPT.md",
+    "sha256": "10ec40235ff8fe6200758278ef2cfcdaeb61357bc79d3771177416407fe1b8c1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 642,
+    "lines": 13,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_CLOSEOUT.md",
+    "sha256": "d92804be8923b8dcae50574950d851420601df77c521c1476916605f266b0730",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 477,
+    "lines": 8,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_IMPLEMENTATION_RECEIPT.md",
+    "sha256": "91d3255ebe617403413b829e7be635081e218412a405a6c53ae7cfc18a4be7df",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 99632,
+    "lines": 50,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_IMPLEMENTATION_STATUS_LEDGER.csv",
+    "sha256": "3d2ea5cc657734863218452732a65ea28ae7cbdb537595af81d44bb4e3b00d37",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 139330,
+    "lines": 1374,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_IMPLEMENTATION_STATUS_LEDGER.json",
+    "sha256": "2ae5538b46fed3e951e65d92b0012add8fc62851879bbb2ada6809fcafd09a96",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1290,
+    "lines": 30,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_PROOF_OUTPUT.md",
+    "sha256": "4fe35ded1d4b54b542f226fb4ee42c504aa380712be05b0bdcf9409977a71648",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 741,
+    "lines": 9,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD009_TEST_FIRST_RECEIPT.md",
+    "sha256": "22e0ba6b06ca1701ee4a4386e9acf64ccf12851ec730e44eb86e3cdbcf6f4ec8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 498,
+    "lines": 13,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_CLOSEOUT.md",
+    "sha256": "3e61d568372bc67dd077940d74c1935e346054b64fa6a529c1cecd05853834b1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 477,
+    "lines": 8,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_IMPLEMENTATION_RECEIPT.md",
+    "sha256": "3f9af13d70b8a7d0b001d723513e2f55f256f32a0a2ebf7d6a07265aaa8c0efb",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 192572,
+    "lines": 76,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_IMPLEMENTATION_STATUS_LEDGER.csv",
+    "sha256": "736a44d252fdd23ae1dbb8b379fff697bca3646607075fa32976e76a7bec2195",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 253666,
+    "lines": 2102,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_IMPLEMENTATION_STATUS_LEDGER.json",
+    "sha256": "85087d394040e2750c34f0c74c0837cd04ab495c2a2574ec903f3fca67389cad",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1283,
+    "lines": 32,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_PROOF_OUTPUT.md",
+    "sha256": "b3298d81f7bfb11a6a54aa374cab5d87cb6e12a21b411b77bcc64f2018eb0ad1",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 597,
+    "lines": 9,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD011_TEST_FIRST_RECEIPT.md",
+    "sha256": "96b4ab7aca163137d1bd28608e588fe78ae8163e05edf5d2bd50180ee20037ed",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 533,
+    "lines": 13,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_CLOSEOUT.md",
+    "sha256": "94fd973bcb2ff4df6d300de0852e8565d6f427d989b52a4479aee2a62de64464",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 478,
+    "lines": 8,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_IMPLEMENTATION_RECEIPT.md",
+    "sha256": "226079d9c2b41496dfd24d1e03b9605a2fa7029c934e19822f1caea8f9f4825f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 363110,
+    "lines": 140,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_IMPLEMENTATION_STATUS_LEDGER.csv",
+    "sha256": "fda29b081b7d985d6cf6062c3ea39e11056e707be4422ee947ceb3c7eb460776",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 476810,
+    "lines": 3894,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_IMPLEMENTATION_STATUS_LEDGER.json",
+    "sha256": "5914779beb0247dcb38f79eb79fc211f5c2ce8f9d1ab0def44969c572153d078",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1894,
+    "lines": 39,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_PROOF_OUTPUT.md",
+    "sha256": "de8e4f2c4f05eb98d89a31c637af93ad9dbcd178e6130d865e7070c0eaf4cf43",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 632,
+    "lines": 9,
+    "path": "var/audit/non310_reopened_row_completion_20260519/FWD012_TEST_FIRST_RECEIPT.md",
+    "sha256": "b3769910247e98a853f1d41b1a218456979fcdf713c1e543c03520e85e3a4c93",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 29693,
+    "lines": 141,
+    "path": "var/audit/non310_reopened_row_completion_20260519/READ_RECEIPT.md",
+    "sha256": "ea45ff4f3d0494fb0b62e75847985c631fe352a3972b0c22e7d9547c25c7d8a5",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 17,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_git_diff_check.command",
+    "sha256": "d9ef3d1695645413cdc098707c0b447cc19275eb61556bf9d84a09633cf075a6",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_git_diff_check.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_git_diff_check.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_git_diff_check.stdout",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 125,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_proof_blocks_check_all.command",
+    "sha256": "7bb3fd1eb2fc2fb595574a37a1ec606f7a5ecfd18c392cebdfa27f0199825d08",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_proof_blocks_check_all.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_proof_blocks_check_all.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 37,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_proof_blocks_check_all.stdout",
+    "sha256": "6e0ba8ea0271fdf48318142c7035bc358a55dcc687f805072d9482952e53fd43",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 20,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_scaffold_check.command",
+    "sha256": "6f9ceff930510a115e889a67bdd9d4c459b8c0bd57e6624515230c60755f6192",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_scaffold_check.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_scaffold_check.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 22,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/final_scaffold_check.stdout",
+    "sha256": "3626204a022b679d510427a9d8decd64c7b1b645038eee3b54979c3d50e74ee0",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 117,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd004.command",
+    "sha256": "5ec44e1815ccdc0157db945eef298ff50d4090428d6cbf1193c5fc6e17ab27e8",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd004.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd004.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 559,
+    "lines": 11,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd004.stdout",
+    "sha256": "a83217d28ad83d186bd012bac3b4ea020aa0038472eeb30f5074b934edfd0408",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 173,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd006.command",
+    "sha256": "15d0d7fb78defadc08c55260d9e08da55a5803eba01798f0014012c6f67ebe38",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd006.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd006.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 639,
+    "lines": 12,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd006.stdout",
+    "sha256": "a813e711e54900899102cd7441d67ef032207c20be06e84b0bcecd2a43a0768d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 338,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd009.command",
+    "sha256": "62c31a50780fe19e6d242bcca6b0a5aa67628ca84983d07eaa24f99389a6030f",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd009.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd009.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 827,
+    "lines": 14,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd009.stdout",
+    "sha256": "e3182f0677300e6c989a1e80330a33ad75cb786e54a8c80bc8dd75ea0daa5518",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 194,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd011.command",
+    "sha256": "57e9e6dee32414b2d21d1a301655b63e1edf587e8c0797555c2a130408020b6d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd011.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd011.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 964,
+    "lines": 16,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd011.stdout",
+    "sha256": "e2b62f8a93d6698497539845828b4bfe9a1011a0a5d98304d69aae7a4a18df5a",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 228,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd012.command",
+    "sha256": "bec42bc50fe726ac67a0ceb5f9552f8494ac4f3242aa55728e39ae63d1fa475d",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 2,
+    "lines": 1,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd012.status",
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 0,
+    "lines": 0,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd012.stderr",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 1541,
+    "lines": 23,
+    "path": "var/audit/non310_reopened_row_completion_20260519/reports/targeted_fwd012.stdout",
+    "sha256": "338759c5ad7f02c0588c01a31201b48cf1856aefa5f71b17657df133a2647368",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 13026,
+    "lines": 473,
+    "path": "/mnt/data/PROJECT_EXECUTION_METHOD.md",
+    "sha256": "2f14b48155e4fe69c6e969b82c98e41976f888f512a58975680771cbbf0da160",
+    "status": "read_full_via_file_read"
+  },
+  {
+    "bytes": 8666,
+    "lines": 378,
+    "path": "/mnt/data/NVDA10_WORKER_BRANCH_EXECUTION_TEMPLATE.md",
+    "sha256": "5b5146323be9ad2473eb47b1e928db1ce4c540fc32f509513147f78a6bd4f6ea",
+    "status": "read_full_via_file_read"
+  }
+]

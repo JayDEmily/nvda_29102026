@@ -1,0 +1,39 @@
+# FWD-012 reopened rows — proof output
+
+Command: `env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py tests/tier_a/serial_recommendation tests/tier_b/serial_boundaries`
+
+Status: `0`
+
+## stdout tail
+
+```text
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/non310_reopen/MVD-A10_1704_V1
+configfile: pyproject.toml
+collected 25 items
+
+tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py ..     [  8%]
+tests/tier_a/serial_recommendation/test_execution_contract_models.py ... [ 20%]
+.                                                                        [ 24%]
+tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py . [ 28%]
+                                                                         [ 28%]
+tests/tier_a/serial_recommendation/test_execution_service_surface.py .   [ 32%]
+tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py . [ 36%]
+......                                                                   [ 60%]
+tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py . [ 64%]
+..                                                                       [ 72%]
+tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py . [ 76%]
+.                                                                        [ 80%]
+tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py . [ 84%]
+.                                                                        [ 88%]
+tests/tier_b/serial_boundaries/test_posture_permission_envelope.py ...   [100%]
+
+============================== 25 passed in 0.32s ==============================
+```
+
+## stderr tail
+
+```text
+
+```

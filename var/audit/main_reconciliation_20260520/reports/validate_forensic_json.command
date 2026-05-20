@@ -1,0 +1,1 @@
+python3 -m json.tool var/audit/atlas_source_code_forensic_20260520/NVDA10_ATLAS_SOURCE_CODE_FORENSIC_PER_ID_V2.json >/dev/null && python3 -m json.tool var/audit/atlas_source_code_forensic_20260520/NVDA10_ATLAS_NOT_INCLUDED_IN_ACTIVE_CODEBASE_SOURCE_V2.json >/dev/null

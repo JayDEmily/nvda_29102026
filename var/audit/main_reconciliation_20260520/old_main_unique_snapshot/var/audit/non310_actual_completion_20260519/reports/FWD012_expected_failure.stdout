@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+_ ERROR collecting tests/tier_a/atlas_migration/test_non310_actual_completion_fwd012.py _
+ImportError while importing test module '/mnt/data/non310_actual/MVD-A10_1704_V1/tests/tier_a/atlas_migration/test_non310_actual_completion_fwd012.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/atlas_migration/test_non310_actual_completion_fwd012.py:5: in <module>
+    from nvda_desk.contracts.non310_actual_completion_fwd012 import ROWS, row_ids
+E   ModuleNotFoundError: No module named 'nvda_desk.contracts.non310_actual_completion_fwd012'
+=========================== short test summary info ============================
+ERROR tests/tier_a/atlas_migration/test_non310_actual_completion_fwd012.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.27s

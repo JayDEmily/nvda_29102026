@@ -4214,3 +4214,70 @@ Mutation boundary: this final sweep did not change runtime/source/config/fixture
 Registry-only closure guard: final package closure is based on the accepted audit row set, target-surface repair ledgers/tests for the 430 reopened rows, and final sweep proof output. No `non310_actual_completion_*` file is used as closure authority.
 
 Next gate: PM acceptance review of the final non-310 clean handoff archive before opening any new migration class.
+
+---
+
+## Main reconciliation and Atlas migration methodology handoff — 2026-05-20
+
+Status: `reconciliation_in_progress_pending_final_validation_and_main_promotion`
+
+Branch: `work/reconcile-main-clean-20260520`
+
+Purpose: create a single clean `main` handoff from the current target-surface repair branch while preserving old `main` as historical evidence and importing the standalone Atlas-to-active-codebase migration methodology plus V2 forensic worklist into the repo.
+
+### Authority
+
+The user explicitly authorised execution of the reconciliation gates in the current thread to avoid handing off a splintered tarball and to end with one clean `main`.
+
+### Safety refs
+
+| Ref | Commit |
+|---|---|
+| `archive/main-before-reconciliation-20260520` | `41f5a3926776904b31ee31abce5aa8ca40b186c4` |
+| `archive/work-fwd014-before-reconciliation-20260520` | `1f417b39ddd75312f92670d7f0927813a5dffe8c` |
+
+### Decision
+
+The current target-surface repair branch is the canonical content base. Old `main` is not merged wholesale because it carries the superseded `non310_actual_completion_*` source-contract path and ledger narrative. Old `main` content is preserved as audit history under `var/audit/main_reconciliation_20260520/old_main_unique_snapshot/`.
+
+### Imported artefacts
+
+| Path | Purpose |
+|---|---|
+| `docs/planning/NVDA10_ATLAS_TO_ACTIVE_CODEBASE_MIGRATION_METHODOLOGY_STANDALONE.md` | Standalone method for moving remaining Atlas ideas into the active codebase one service at a time. |
+| `var/audit/atlas_source_code_forensic_20260520/` | V2 forensic per-Atlas-ID classification artefacts. |
+| `var/audit/atlas_migration_process_recovery_20260520/` | Recovered historical Atlas migration process evidence. |
+| `var/audit/main_reconciliation_20260520/MAIN_RECONCILIATION_RECEIPT.md` | This reconciliation's receipt and decision record. |
+
+### V2 forensic state carried forward
+
+| Measure | Count |
+|---|---:|
+| Atlas ideas total | 1,716 |
+| Mapped to the active codebase's 18 services | 1,716 |
+| Included in active-codebase source behaviour | 588 |
+| Not included in active-codebase source behaviour | 1,128 |
+
+### Next step
+
+Run final validation, commit the reconciliation state, promote the reconciled content to `main`, package the repo, and report the final tarball path and hash.
+
+### Validation update — 2026-05-20
+
+Status: `reconciliation_validation_passed_pending_commit_and_main_promotion`
+
+Validation evidence under `var/audit/main_reconciliation_20260520/reports/`:
+
+| Check | Status | Result |
+|---|---:|---|
+| `git diff --check` | 0 | no whitespace/diff errors |
+| `make scaffold-check` | 0 | scaffold present |
+| forensic JSON parse | 0 | JSON parse passed |
+| forensic count check | 0 | 1,716 records; 508 existing source; 80 added source; 1,128 not migrated |
+| proof-block check-all | 0 | `proof_blocks_check_all=PASS count=51` |
+| target-surface non-310 repair tests | 0 | `430 passed in 9.23s` |
+| FWD-014 capital-deployment proof | 0 | `29 passed in 0.47s` |
+
+A first non-isolated `targeted_non310_repair_tests` run was interrupted by the outer execution timeout after partial progress; it is superseded by the complete isolated run with status `0`.
+
+Next step: commit this reconciliation state, promote the reconciled content to `main`, and package the repo.
