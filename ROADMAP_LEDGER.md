@@ -4287,3 +4287,13 @@ Next step: commit this reconciliation state, promote the reconciled content to `
 Reconciliation content commit created: `86617a0afbb706725a0b9868fd77b9442ca82d91`.
 
 This ledger update records final closeout before branch promotion. The final promoted `main` commit is reported in the final response and package checksums because a commit cannot embed its own final hash.
+
+### Final branch promotion summary — 2026-05-20
+
+Status: `main_reconciled_and_promoted`
+
+`main` is now the single active non-archive branch. All pre-existing non-main branches were renamed under `archive/legacy/`; old `main` remains preserved at `archive/main-before-reconciliation-20260520`, and the pre-reconciliation FWD-014 work branch remains preserved at `archive/work-fwd014-before-reconciliation-20260520`.
+
+Active non-archive branches after ref cleanup: `0`.
+
+Archive branch count after ref cleanup: `30`.
