@@ -1,7 +1,0 @@
-final_git_status status=0
-final_git_diff_check status=0
-final_manifest_validator status=1
-final_proof_blocks_check_all status=0
-final_tier_b status=0
-final_tier_a status=0
-final_exact_combined_tier_a_tier_b exitcode=0

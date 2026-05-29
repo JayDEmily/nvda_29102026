@@ -1,1 +1,0 @@
-python3 var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/atlas_migration_continuation_non310_20260519/fwd006_raw_capture_source_temporal_law/FWD-006_FULL_READ_MANIFEST.json 

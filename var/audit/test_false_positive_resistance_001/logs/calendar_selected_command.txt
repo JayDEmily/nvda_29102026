@@ -1,1 +1,0 @@
-PYTHONPATH=src:. python -m pytest tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py tests/tier_a/calendar_operational/test_calendar_operational_surface.py tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py -q

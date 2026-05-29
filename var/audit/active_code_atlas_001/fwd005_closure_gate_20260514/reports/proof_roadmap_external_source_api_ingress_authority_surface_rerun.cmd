@@ -1,1 +1,0 @@
-env PYTHONPATH=src python scripts/run_proof_block.py --block roadmap_external_source_api_ingress_authority_surface

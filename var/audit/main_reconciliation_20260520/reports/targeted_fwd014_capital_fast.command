@@ -1,1 +1,0 @@
-env PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 -m pytest tests/tier_a/capital_deployment tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py -q

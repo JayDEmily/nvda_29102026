@@ -1,7 +1,0 @@
-HEAD=f8b94f1e8f535f66a351e1065d4437d9eb4755f7
-branch=worker/handoff-control-repair-c466
-status_count=0
-fsck_bytes=0
-physical_archive_count=0
-skip_archive_count=11
-manifest=PASS manifests=12 stale=0 full_read_false=0

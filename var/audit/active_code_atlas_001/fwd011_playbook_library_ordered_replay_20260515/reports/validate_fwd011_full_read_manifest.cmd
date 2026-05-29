@@ -1,1 +1,0 @@
-CMD: python var/audit/active_code_atlas_001/tools/validate_full_read_manifest.py var/audit/active_code_atlas_001/fwd011_playbook_library_ordered_replay_20260515/FWD011_ORDERED_REPLAY_FULL_READ_MANIFEST.json

@@ -1,9 +1,0 @@
- M NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md
- M ROADMAP_LEDGER.md
- M data/vocabulary/canonical_vocabulary.json
- M data/vocabulary/vocabulary_touch_stamp.json
- M docs/vocabulary/vocabulary_registry.md
- M src/nvda_desk/vocabulary_builder.py
- M tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
- M var/vocabulary/synonym_candidates.json
-?? var/audit/active_code_atlas_001/vocabulary_governance_remediation_before_fwd016_20260515/

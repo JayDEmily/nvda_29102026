@@ -1,7 +1,0 @@
-surface,audit_total_rows,audit_reopened_unsupported_rows,audit_existing_satisfaction_rows,repair_ledger_rows,repair_implemented_in_tests_and_code,accepted_existing_satisfaction_final,final_open_rows,final_blocked_rows
-FWD-004,73,59,14,59,59,14,0,0
-FWD-006,108,108,0,108,108,0,0,0
-FWD-009,51,49,2,49,49,2,0,0
-FWD-011,95,75,20,75,75,20,0,0
-FWD-012,139,139,0,139,139,0,0,0
-FWD-014,2,0,2,0,0,2,0,0

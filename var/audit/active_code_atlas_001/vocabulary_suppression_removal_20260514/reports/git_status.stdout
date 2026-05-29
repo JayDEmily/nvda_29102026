@@ -1,8 +1,0 @@
- M ROADMAP_LEDGER.md
- M data/vocabulary/canonical_vocabulary.json
- M data/vocabulary/vocabulary_touch_stamp.json
- M src/nvda_desk/vocabulary_builder.py
- M src/nvda_desk/vocabulary_synonym_audit.py
- M tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py
- M var/vocabulary/synonym_candidates.json
-?? var/audit/active_code_atlas_001/vocabulary_suppression_removal_20260514/

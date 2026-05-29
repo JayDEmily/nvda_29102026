@@ -1,3 +1,0 @@
-var/audit/prl_tranche_final_audit_mainline_001/COMMAND_LOG.md:582: trailing whitespace.
-+git diff --check 
-exit_code=2

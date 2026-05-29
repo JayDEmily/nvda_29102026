@@ -1,4 +1,0 @@
-Command: rg -n "FWD001_GOVERNANCE|_is_fwd001|selected_fragments|GOVERNANCE_CANDIDATE|_is_sequence|_is_roadmap|score = 0" src/nvda_desk/vocabulary_synonym_audit.py
-202:        best_score = 0
-207:                    score = 0
-211:                    score = 0

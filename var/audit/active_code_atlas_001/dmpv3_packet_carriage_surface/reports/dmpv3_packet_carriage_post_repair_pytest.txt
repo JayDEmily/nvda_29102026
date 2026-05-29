@@ -1,3 +1,0 @@
-......                                                                   [100%]
-6 passed in 0.70s
-exit_status=0

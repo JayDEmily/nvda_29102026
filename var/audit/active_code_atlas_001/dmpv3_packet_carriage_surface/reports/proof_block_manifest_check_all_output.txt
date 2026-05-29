@@ -1,2 +1,0 @@
-proof_blocks_check_all=PASS count=21
-exit_status=0

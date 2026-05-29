@@ -1,4 +1,0 @@
-OFFLINE_VENV_CREATE=PASS
-WORK_DIR=/mnt/data/nvda10_2_work/offline_venv_5_16
-PROOF_REPORT=/mnt/data/nvda10_2_work/offline_venv_5_16/proof/proof_report.md
-POLARS_VERSION=1.39.3

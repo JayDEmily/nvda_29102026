@@ -1,1 +1,0 @@
-grep -RIn "FWD001_GOVERNANCE\|_is_fwd001\|selected_fragments\|GOVERNANCE_CANDIDATE\|path-bound\|suppress\|suppression\|ignore_candidate\|skip_candidate\|filter_candidate\|candidate_filter" src tests scripts docs config || true

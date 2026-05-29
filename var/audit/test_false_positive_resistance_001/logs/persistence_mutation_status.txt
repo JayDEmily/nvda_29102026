@@ -1,5 +1,0 @@
-position_duplicate_guard_mutation_status=1
-capital_duplicate_guard_mutation_status=1
-review_duplicate_guard_mutation_status=1
-receipt_duplicate_guard_mutation_status=1
-post_revert_selected_status=0

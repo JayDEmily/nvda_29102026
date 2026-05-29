@@ -1,1 +1,0 @@
-env PYTHONPATH=src python3 -m pytest tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py -q

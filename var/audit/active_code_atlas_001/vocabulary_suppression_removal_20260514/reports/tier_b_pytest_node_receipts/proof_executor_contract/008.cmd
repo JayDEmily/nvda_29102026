@@ -1,1 +1,0 @@
-timeout -k 5s 60s env PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=src python -m pytest -vv -s tests/tier_b/proof_model/test_proof_executor_contract.py::test_proof_executor_exposes_check_mode_in_cli_surface

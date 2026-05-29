@@ -1,3 +1,0 @@
-### row_proof_final
-COMMAND: env PYTHONPATH=src python3 -m pytest tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py -q
-exit_status=0

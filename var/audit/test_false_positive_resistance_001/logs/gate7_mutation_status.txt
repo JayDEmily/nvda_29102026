@@ -1,3 +1,0 @@
-owned_path_mutation_status=1
-shell_mutation_status=1
-post_revert_status=0

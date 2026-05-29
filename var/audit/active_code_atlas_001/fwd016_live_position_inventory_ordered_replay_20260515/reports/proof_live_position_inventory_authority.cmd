@@ -1,1 +1,0 @@
-PYTHONPATH=src python scripts/run_proof_block.py --block live_position_inventory_authority_boundary_surface

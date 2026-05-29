@@ -1,5 +1,0 @@
-checkpoint_receipt_contract_pytest_status=0
-checkpoint_receipt_contract_proof_block_status=0
-proof_blocks_check_all_status=0
-proof_model_pytest_status=0
-git_diff_check_status=0

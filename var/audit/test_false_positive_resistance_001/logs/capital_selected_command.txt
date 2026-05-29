@@ -1,1 +1,0 @@
-PYTHONPATH=src:. python -m pytest tests/tier_a/capital_deployment -q

@@ -1,3 +1,0 @@
-batch 1/32 exit=0 nodes=20 passed_summary=20
-batch 2/32 exit=0 nodes=20 passed_summary=20
-batch 3/32 exit=0 nodes=20 passed_summary=20

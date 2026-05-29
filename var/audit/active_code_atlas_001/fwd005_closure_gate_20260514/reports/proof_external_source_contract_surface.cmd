@@ -1,1 +1,0 @@
-env PYTHONPATH=src python scripts/run_proof_block.py external_source_contract_surface

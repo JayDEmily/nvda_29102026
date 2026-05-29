@@ -1,3 +1,0 @@
-### git_diff_check
-COMMAND: git diff --check
-exit_status=0

@@ -1,1 +1,0 @@
-env PYTHONPATH=src python3 -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py

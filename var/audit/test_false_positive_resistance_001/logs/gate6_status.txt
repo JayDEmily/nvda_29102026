@@ -1,3 +1,0 @@
-selected_pytest_status=0
-proof_block_check_status=0
-proof_block_run_status=0

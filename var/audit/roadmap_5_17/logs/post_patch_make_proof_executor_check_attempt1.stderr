@@ -1,4 +1,0 @@
-grep: unrecognized option '--check-all'
-Usage: grep [OPTION]... PATTERNS [FILE]...
-Try 'grep --help' for more information.
-make: *** [Makefile:68: proof-executor-check] Error 2

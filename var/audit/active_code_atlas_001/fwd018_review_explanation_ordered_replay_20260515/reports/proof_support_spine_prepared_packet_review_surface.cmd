@@ -1,1 +1,0 @@
-env PYTHONPATH=src python scripts/run_proof_block.py --block support_spine_prepared_packet_review_surface

@@ -1,3 +1,0 @@
-repeat_1_status=0
-repeat_2_status=0
-repeat_3_status=0

@@ -1,2 +1,0 @@
-find: The -delete action automatically turns on -depth, but -prune does nothing when -depth is in effect.  If you want to carry on anyway, just explicitly use the -depth option.
-make: *** [Makefile:201: clean-caches] Error 1

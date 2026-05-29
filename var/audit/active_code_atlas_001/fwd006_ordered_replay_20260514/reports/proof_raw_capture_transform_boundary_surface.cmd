@@ -1,1 +1,0 @@
-python scripts/run_proof_block.py --block raw_capture_transform_boundary_surface
