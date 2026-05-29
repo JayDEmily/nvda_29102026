@@ -12,11 +12,11 @@ Read this document after `AGENTS.md` and before the numbered control documents.
 
 `*_CORE.md` files hold the frozen baseline.
 
-`*.1_*_WORKING.md` files hold admitted mutable execution-local supplementation.
+`*.1_*_WORKING.md` files hold bounded admitted supplements to their core companion. They may preserve historical admission records for lineage, but historical records do not independently reopen execution or mutation authority.
 
 Read the core file first.
 
-Read the working companion only when it contains admitted local material for the bounded question.
+Read the working companion only when it contains admitted local material for the bounded question. For current mutation authority, use the expressly current route/gate declaration required by `docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md`; do not infer mutable scope from a retained historical admission record.
 
 ## Routing table
 

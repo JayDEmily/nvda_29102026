@@ -1,61 +1,67 @@
 # Vocabulary Registry
 
 ### Component Skeleton
-Definition: TODO define clearly.
+Definition: Architecture control surface that defines the permitted module-level component form, bounded responsibility, lawful inputs and outputs, dependencies, forbidden co-location, and honest status.
 Scope: architecture surface
 
 ### Module Allocation Appendix
-Definition: TODO define clearly.
+Definition: Migration-facing allocation surface that maps current-state or donor material to lawful target modules without overriding target structure, ownership, seam, persistence, test, or reservation law.
 Scope: architecture surface
 
 ### Native Architecture Blueprint Core
-
-Status
-Definition: TODO define clearly.
+Definition: Accepted normative architecture authority for native code structure under `docs/01_NORMATIVE_CORE.md`, governing target placement, component form, ownership, seams, persistence, proof families, reservations, allocation, and traceability.
 Scope: architecture surface
 
 ### Ownership Matrix
-Definition: TODO define clearly.
+Definition: Architecture control surface that assigns each capability one target owner, lawful inputs and outputs, forbidden placement, and honest status.
 Scope: architecture surface
 
 ### Persistence Architecture
-Definition: TODO define clearly.
+Definition: Architecture control surface governing durable-state writers, readers, persistence classes, stores, fallback rules, forbidden mixing, and migration traceability.
+Scope: architecture surface
+
+### Reservations
+Definition: Visible bounded architecture decisions whose final allocation is unresolved and must not be implemented as locked until the required evidence resolves them.
 Scope: architecture surface
 
 ### Provisional Allocations
-Definition: TODO define clearly.
+Definition: Bounded likely target allocations whose final detail is not locked and which must not expand beyond their stated options without lawful update.
 Scope: architecture surface
 
 ### Seam Contract
-Definition: TODO define clearly.
+Definition: Explicit boundary contract identifying upstream and downstream owners, carrier type, required invariants, side effects, variants, category, and traceability where migration is involved.
 Scope: architecture surface
 
 ### Seam Contracts
-Definition: TODO define clearly.
+Definition: Plural label for the governed family of explicit boundary contracts between architecture surfaces; each contract preserves ownership and carrier rules.
 Scope: architecture surface
 
 ### Sequential Native Architecture Surface
-Definition: TODO define clearly.
+Definition: One governed runtime or control architecture surface in the ordered native sequence, with bounded ownership, lawful carriers, proof obligation, and honest status.
 Scope: architecture surface
 
 ### Sequential Native Architecture Surfaces
-Definition: TODO define clearly.
+Definition: Ordered family of governed native runtime and control architecture surfaces from source ingress through review, persistence, proof, and vocabulary governance.
+Scope: architecture surface
+
+### Bridge and Shell Policy
+Definition: Architecture control surface governing explicitly labelled transitional, advisory, optional, and shell surfaces, including allowed behaviour, forbidden behaviour, resolution path, and honest status.
 Scope: architecture surface
 
 ### Shell Policy
-Definition: TODO define clearly.
+Definition: Alias label for Bridge and Shell Policy when referring specifically to bounded shell surfaces; a shell must not masquerade as completed behaviour.
 Scope: architecture surface
 
 ### Target Structure
-Definition: TODO define clearly.
+Definition: Architecture control surface governing target package and subpackage placement so capabilities land in lawful native homes rather than inherited current-state locations.
 Scope: architecture surface
 
 ### Test Architecture
-Definition: TODO define clearly.
+Definition: Architecture control surface governing proof families, target subsystem, failure signal, constraints, and honest proof status for architecture claims.
 Scope: architecture surface
 
 ### Traceability Appendix
-Definition: TODO define clearly.
+Definition: Migration-evidence surface explaining why current-state or donor material is carried forward and the lawful target architecture path it must follow; it is not implementation authority.
 Scope: architecture surface
 
 ### State-conditioned Modifier
