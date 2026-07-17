@@ -1,1 +1,7 @@
 proposition_id	source_path	line_range	surface	status	related_propositions	decision	evidence
+N01-001	docs/01_NORMATIVE_CORE.md	6-13	authority hierarchy	ambiguous	docs/01.1_NORMATIVE_WORKING.md 11-38	Clarify that core hierarchy owns system meaning while user/AGENTS/active pack own execution and mutation authority	Full semantic read of 01, AGENTS, 06, 06.1
+N01-002	docs/01_NORMATIVE_CORE.md	27-37	normative doctrine	coherent	docs/01.1_NORMATIVE_WORKING.md 42-44	Preserve doctrine -> tests -> code and prohibit downstream artefacts creating intent	Full semantic read of 01/01.1
+N01-003	docs/01.1_NORMATIVE_WORKING.md	40-54	external evidence	coherent	EXTERNAL_SOURCE_DECISIONS.md	Adopt external guidance only through project-specific normative decision	Official Microsoft, IBM, Google sources reviewed 2026-07-17
+N01-004	docs/01.1_NORMATIVE_WORKING.md	56-78	controlled amendment	coherent	01 core and all numbered overlays	Use explicit linked supersession and preserve accepted history	Official Microsoft and IBM architecture-decision guidance
+N01-005	docs/01.1_NORMATIVE_WORKING.md	80-88	alpha status	coherent	docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md 63-99	Prevent production overclaim while preserving structural requirements	User clarification plus full blueprint read
+N01-006	docs/01.1_NORMATIVE_WORKING.md	90-96	semantic reconciliation	coherent	PROJECT_EXECUTION_METHOD.md section 5	Prohibit automated semantic acceptance	Direct user instruction and project method

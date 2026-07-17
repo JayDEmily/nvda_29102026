@@ -14,3 +14,8 @@ intent_migration/AGENTS.override.md	Nearest override triggered by initial pack p
 docs/08_TESTING_AND_PROMOTION_CORE.md	Proof and promotion law	read_full	mandatory active-pack authority	Read in full in current execution
 docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	Vocabulary authority	read_full	controls durable terms introduced by programme	Read in full in current execution
 docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	Current vocabulary overlay	read_full	checks current local admissions	Read in full in current execution
+docs/01.1_NORMATIVE_WORKING.md	Working companion for top-level authority	read_full_then_mutated	first semantic unit	Original 23 lines read in full; rewritten overlay will be reread before acceptance
+docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md	Mandatory architecture companion routed by 01/01.1	read_full	material relationship to authority and status model	Read all 758 lines in current execution
+docs/vocabulary/vocabulary_registry.md	Canonical durable-term registry	read_full	checked terminology used in 01.1	Read all 169 lines in current execution
+docs/vocabulary/README.md	Vocabulary governance boundary	read_full	checked authority and purpose	Read all 23 lines in current execution
+docs/vocabulary/CONSOLIDATION_WORKFLOW.md	Vocabulary admission workflow	read_full	checked that no new domain vocabulary is silently admitted	Read all 213 lines in current execution
