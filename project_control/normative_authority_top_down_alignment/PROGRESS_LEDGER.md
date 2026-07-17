@@ -98,3 +98,40 @@ Ruled out:
 
 Next gate:
 - Semantic unit 03/03.1: domain entities, identifier ownership, raw-input extensibility, and bounded meanings.
+
+## Gate A1 — Semantic unit 03/03.1
+
+Status: validation in progress
+
+Semantic findings:
+- The domain core separated real-data admission from cognition and capital authority but did not define what lawful admission must establish about source identity, contract, temporal truth, validation, and lineage.
+- The DMPV3 envelope contains packet, trace, run, scenario, and lineage identifiers, but the corpus did not explicitly prohibit those carriage values from substituting for missing source or domain identity.
+- The input architecture required typed carriers and adapters but did not state the future-change rule for adding or replacing providers and input families.
+- The corpus did not distinguish a source-supplied identifier from a repository-owned capture identity when a source supplies no own identifier.
+- The alpha context required an explicit boundary against premature production retention, recovery, deployment, and storage claims.
+
+Change made:
+- Expanded `03.1` with raw-input admission meaning, identifier facts and ownership, typed input extensibility, source/prepared/packet separation, and alpha-status limits.
+- Corrected the ExecPlan status rule to use the exact structural and implementation-truth models in `docs/11`.
+
+Next validation:
+- Reread the changed overlay in full, verify related temporal and DMP propositions, run documentation-level checks, and commit this semantic unit if coherent.
+
+Acceptance result: PASS
+
+Known true:
+- Raw-input admission now has a bounded domain meaning separate from substantive truth, preparation, cognition and downstream authority.
+- Each identifier contract must state owner, scope, uniqueness, stability, generation and lawful absence.
+- Source-issued identity, repository capture identity, domain identity and DMP packet/context identity cannot substitute for one another.
+- A missing required identifier or lineage fact cannot be papered over with a trace ID, UUID, hash, timestamp, filename, index or local fallback.
+- New providers and input families must use explicit adapters, versioned typed carriers and controlled registration without unrelated-domain rewrites.
+- The overlay remains alpha-specific and does not invent retention, recovery, deployment, throughput or storage requirements.
+
+Ruled out:
+- Generic dictionaries as the admitted cross-boundary input contract.
+- Payload-shape guessing or coercion to the nearest known input family.
+- Event sourcing, distributed messaging or microservices as implied requirements.
+- DMP packet identity being treated as upstream source or domain identity.
+
+Next gate:
+- Semantic unit 04/04.1: technical architecture, exact carrier/identifier responsibilities, source-time mechanics, adapters, persistence abstraction and replay boundaries.

@@ -61,3 +61,59 @@ Source:
 Project-specific adaptation:
 - Playbook definitions and selection rules are governed by the playbook library/registry boundary.
 - Serial orchestration invokes that boundary and must not hard-code every playbook or a fixed playbook count.
+
+## Decision 03-001 — Preserve identifier ownership and scope
+
+Status: accepted for normative unit `03/03.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Google API Improvement Proposal AIP-122, “Resource names”: https://google.aip.dev/122
+- IBM documentation, “Preparing data for data lineage”: https://www.ibm.com/docs/en/ws-and-kc?topic=lineage-preparing-data-data
+- IBM documentation, “Data lineage”: https://www.ibm.com/docs/en/ws-and-kc?topic=governance-data-lineage
+
+Project-specific adaptation:
+- Each material identifier has an explicit originating owner, scope, uniqueness rule, stability rule, generation rule, and lawful absence rule.
+- Source-issued identifiers remain source-issued truth.
+- Repository capture identifiers name captured evidence and must not be presented as source-issued identifiers.
+- Downstream packet, trace, run, correlation, hash, timestamp, filename, or array-position values cannot substitute for a missing authoritative identity.
+
+Rejected interpretations:
+- Requiring every source to provide a globally unique identifier when the source contract does not make that guarantee.
+- Treating one UUID-shaped field as sufficient lineage regardless of its owner and meaning.
+
+## Decision 03-002 — Isolate external-source semantics at explicit adapters
+
+Status: accepted for normative unit `03/03.1`
+
+Reviewed: 2026-07-17
+
+Source:
+- Microsoft Azure Architecture Center, “Anti-Corruption Layer pattern”: https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer
+
+Project-specific adaptation:
+- Provider-specific protocols, field names, omissions, and semantics are translated at an explicit ingress adapter or source reader.
+- The internal domain consumes typed native carriers rather than provider-native dictionaries or hidden source assumptions.
+- The adapter performs translation and validation; it does not acquire candidate, risk, capital, broker, exit, close, or review authority.
+
+Rejected interpretation:
+- Creating a separate service or microservice solely because the cited pattern can be deployed that way. A component inside the modular monolith is lawful.
+
+## Decision 03-003 — Version input contracts and preserve captured evidence without adopting blanket event sourcing
+
+Status: accepted for normative unit `03/03.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Microsoft Azure Architecture Center, “Event-Driven Architecture Style”: https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven
+- Microsoft Azure Architecture Center, “Event Sourcing pattern”: https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing
+
+Project-specific adaptation:
+- Input-family contracts carry an explicit schema/contract version.
+- Captured source evidence and its identity remain traceable when later typed or derived representations evolve.
+- Consumers must not infer a different input family from payload shape merely to continue processing.
+
+Rejected interpretations:
+- Adopting event sourcing, distributed messaging, append-only production stores, or event-driven deployment as a repository-wide requirement. The source explicitly warns that event sourcing adds material complexity and should be adopted only where its benefits justify it.

@@ -84,7 +84,7 @@ Search, grep, ASTs, scripts, tables, summaries, embeddings and generated registr
 3. A common envelope must not collapse strongly typed payloads into ungoverned generic dictionaries.
 4. Authoritative identifiers may only be originated by their named owner and must not be fabricated downstream.
 5. Missing authority fails closed where continuing would manufacture lineage, policy or decision authority.
-6. Runtime behaviour cannot remain labelled `reserved`; it must be classified truthfully, such as `provisional alpha implementation`, `placeholder`, `partially implemented`, `active`, `absent` or `superseded`.
+6. Structural status and implementation-truth status must be reported separately using the exact status models in `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`. Active behaviour cannot remain implementation-labelled `reserved` or `future_only`; it must use `implemented`, `thin_seam`, or `placeholder` as the evidence warrants.
 7. In-memory state is acceptable in alpha when declared as such and isolated behind a replaceable contract. It must not be called durable or replay-complete.
 8. External best-practice disagreement must be resolved through explicit project rationale, not vendor-name voting.
 

@@ -36,3 +36,18 @@
 - External sources: current official Google, IBM, and Microsoft architecture guidance reviewed and adapted to a deterministic modular monolith.
 - Mechanical validation: `git diff --check` passed.
 - Semantic acceptance: PASS. The complete-run sequence remains binding while current alpha implementation truth, replaceability, playbook expansion, and downstream execution boundaries are now explicit.
+
+## Gate A1 semantic unit 03/03.1 validation
+
+- `docs/03_DOMAIN_MODEL_CORE.md`: read in full, 159 lines.
+- Original `docs/03.1_DOMAIN_MODEL_WORKING.md`: read in full, 13 lines.
+- Related `docs/04_TECHNICAL_ARCHITECTURE_CORE.md`: read in full, 186 lines.
+- Related `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md`: read in full, 51 lines.
+- Related `docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md`: read in full, 264 lines.
+- Related `docs/09_DMPV3_PROTOCOL_CORE.md`: read in full, 187 lines.
+- Related `docs/09.1_DMPV3_PROTOCOL_WORKING.md`: read in full, 39 lines.
+- Related architecture blueprint: previously read in full, 758 lines; ingress, raw-capture, seam, ownership, persistence and status propositions were reread for this unit.
+- Changed `docs/03.1_DOMAIN_MODEL_WORKING.md`: reread in full, 113 lines.
+- External sources: current official Google, IBM, and Microsoft identifier, lineage, schema-versioning and adapter-isolation guidance reviewed and adapted; event sourcing and distributed deployment were expressly rejected as blanket requirements.
+- Mechanical validation: TSV field counts passed; referenced normative paths exist; `git diff --check` passed.
+- Semantic acceptance: PASS. Source-issued, repository-capture, domain-owned and packet/context identifiers now have separate meanings; missing required authority fails closed; new input families must enter through versioned typed contracts and explicit adapters without unrelated-domain rewrites.
