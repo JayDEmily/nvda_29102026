@@ -223,6 +223,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 ## Progress
 - 2026-07-17: user authorised creation and uninterrupted execution of this ExecPlan.
 - 2026-07-17: branch established from baseline `e9e9eba`.
+- 2026-07-17: task pack relocated to `project_control/` and expressly routed through `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md` before normative content mutation.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -234,7 +235,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 None recorded at plan creation.
 
 ## Validation
-Pending Gate A0 validation.
+Gate A0 route and branch validation recorded in `VALIDATION_LOG.md`; corpus inventory remains in progress.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.

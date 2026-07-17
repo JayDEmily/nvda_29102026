@@ -1,0 +1,16 @@
+path	reason	read_status	mutation_relevance	evidence
+AGENTS.md	Repository worker authority	read_full	governs all work	Read in current execution before branch mutation
+PLANS.md	Standing plan control surface	read_full	confirms no repository plan content	File contains user placeholder only
+ROADMAP_LEDGER.md	Mutable state pointer	read_full	retired pointer state	File directs to ROADMAP_LEDGER_V2.md
+ROADMAP_LEDGER_V2.md	Successor state pointer	read_full	confirms no active user-completed ledger	File contains user placeholder only
+/mnt/data/PROJECT_EXECUTION_METHOD.md	Fallback long-work method	read_full	governs ExecPlan shape and semantic rule	Read in full in current execution
+docs/00_CONTROL_SURFACE_ROUTING_INDEX.md	Routes numbered control stack	read_full	governs corpus order and ownership	Read in full in current execution
+docs/01_NORMATIVE_CORE.md	Top-level authority and runtime sequence	read_full	governs programme precedence and invariants	Read in full in current execution
+docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md	Operating model authority	read_full	mandatory active-pack authority	Read in full in current execution
+docs/05_GUARDRAILS_CORE.md	Guardrail authority	read_full	mandatory active-pack authority	Read in full in current execution
+docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md	Process and document-touch law	read_full	directly governs active-pack route	Read in full in current execution
+docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md	Current active-pack declaration and historical register	read_full	directly mutated to route this programme	Read in full in current execution
+intent_migration/AGENTS.override.md	Nearest override triggered by initial pack placement	read_full	required relocation outside Atlas-specific subtree	Read in full; found incompatible Atlas-specific route
+docs/08_TESTING_AND_PROMOTION_CORE.md	Proof and promotion law	read_full	mandatory active-pack authority	Read in full in current execution
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	Vocabulary authority	read_full	controls durable terms introduced by programme	Read in full in current execution
+docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	Current vocabulary overlay	read_full	checks current local admissions	Read in full in current execution
