@@ -385,3 +385,48 @@ Rejected interpretations:
 - Treating classifier output such as `add_new`, `admissible` or `quarantine` as final semantic authority.
 - Advancing a tracked report or stamp merely to make a clean gate pass.
 - Bulk-admitting registry mismatches or suppressing scanner false positives without proposition-level review.
+
+## Decision 11-001 — Keep one modular monolith with explicit volatility boundaries
+
+Status: accepted for normative unit `11/11.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Google Cloud Architecture Framework, “Promote modular design”: https://docs.cloud.google.com/architecture/framework/performance-optimization/promote-modular-design
+- Microsoft Azure Architecture Center, “Design for change”: https://learn.microsoft.com/en-us/azure/architecture/guide/design-principles/design-for-evolution
+- IBM Business Automation Workflow, “Partitioning libraries and modules”: https://www.ibm.com/docs/en/baw/25.0.x?topic=libraries-partitioning-modules
+
+Project-specific adaptation:
+- Keep the current system as one modular monolith while partitioning source by semantic ownership and known change boundaries.
+- Require high cohesion inside each owned boundary, loose coupling between boundaries, explicit typed contracts, hidden implementation detail and a lawful composition root for each executable/runtime entry point.
+- Keep external providers, source formats, raw input families, playbooks, coefficient/modifier policies, risk policies, persistence implementations, broker/simulated-execution adapters and review projections replaceable through their owning boundaries.
+- Adding or removing a playbook must not require changes to unrelated playbooks, orchestration, API transport, persistence or downstream state ownership.
+- Package and dependency decisions must minimise ripple effects and preserve stronger ownership rather than merely create more files or interfaces.
+
+Rejected interpretations:
+- Microservices, distributed messaging, cloud deployment, service meshes, database-per-service or multiple deployables by default.
+- A generic plugin framework, service locator, untyped extension map or abstraction layer without a demonstrated volatility boundary.
+- Importing Google Cloud products, Microsoft service topology or IBM SCA/module tooling as project requirements.
+
+## Decision 11-002 — Keep agent-runtime architecture outside the deterministic NVDA runtime
+
+Status: accepted for normative unit `11/11.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- OpenAI Agents SDK, “Agents”: https://openai.github.io/openai-agents-python/agents/
+- OpenAI Agents SDK, “Handoffs”: https://openai.github.io/openai-agents-python/handoffs/
+- OpenAI Agents SDK, “Tracing”: https://openai.github.io/openai-agents-python/tracing/
+
+Project-specific adaptation:
+- The current NVDA runtime remains deterministic code and algorithms with typed inputs, owned decisions and explicit outputs.
+- Model choice, prompts/instructions, tools, handoffs, guardrails, sessions and agent tracing are separate runtime concerns that do not exist merely because GPT writes the source code.
+- No agent, model-provider, prompt, tool-calling, handoff or agent-tracing abstraction may be introduced into the current domain architecture without a later user-authorised numbered addendum.
+- Any future authorised model or agent capability must define its bounded purpose, typed contracts, provider/model configuration authority, fallback or stand-down behaviour, evaluation, tracing/privacy treatment and prohibition from silently acquiring trading, risk, capital, identity or persistence authority.
+
+Rejected interpretations:
+- Treating the use of GPT as the project’s coding worker as evidence that the product runtime is AI-driven.
+- Using agent terminology as a generic synonym for modular services or orchestration.
+- Importing the OpenAI Agents SDK or agent architecture pre-emptively for future-proofing.

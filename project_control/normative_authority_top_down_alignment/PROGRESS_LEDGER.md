@@ -405,3 +405,71 @@ Ruled out:
 
 Next gate:
 - Semantic unit 11/11.1: native architecture blueprint coherence, status truth, package/seam ownership, reserved surfaces, lineage to adopted external principles, and reconciliation with normative units 01-10.
+
+## Gate A1 — Semantic unit 11/11.1
+
+Status: PASS
+
+Selected semantic boundary:
+- Native architecture target/current separation, eighteen-surface review order, status truth, modularity and replaceability, component/ownership/composition boundaries, alpha persistence direction, historical evidence, deterministic non-AI scope and blueprint freeze criteria.
+
+Mutation authority used:
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`
+- directly required routing update in `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`
+- directly required status-coherence amendment in `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`
+- directly required semantic vocabulary admissions in `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`
+- task-local implementation-truth and evidence records under `project_control/normative_authority_top_down_alignment/`
+
+Semantic reads completed:
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`: all 758 lines read and reread in exact chunks.
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`: drafted proposition by proposition and all 166 lines reread after cross-document amendment.
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`: all 217 lines reread after status reconciliation.
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`: all 207 lines reread after admitting `modular monolith` and `composition root`.
+- Reconciled normative units 01 through 10, current project-state and architecture-map evidence, declared dependencies, project/source structure, relevant source owners for rows 5.10 to 5.14, and the completed architecture-audit evidence.
+- Current official Google, Microsoft and IBM modularity/evolution guidance and official OpenAI Agents SDK documentation were read and adapted or rejected explicitly.
+
+Semantic findings:
+- The core blueprint is the target code-structure authority, but its cited acceptance receipt is absent and cannot remain current proof.
+- The eighteen surfaces are the canonical top-down architecture-review order, not a claim that the current repository executes eighteen literal runtime stages end to end; persistence, proof and vocabulary are cross-cutting.
+- `production code` in the core means maintained native source, not production maturity. The repository remains alpha, incompletely composed, untested with paper data and without production operational claims.
+- Every surface has active native alpha code, but no surface meets the core `implemented` definition. The truthful current implementation status for all eighteen surfaces is `thin_seam`.
+- Core rows 5.10 and 5.14 incorrectly retained `reserved` status despite active alpha behaviour. Core rows 5.11 to 5.13 incorrectly retained `placeholder` status despite substantive bounded decision, readiness, inventory and reconciliation behaviour. Those five current-status cells are explicitly superseded without upgrading their structural status or accepting their algorithms as correct.
+- The architecture's known future-change boundaries are providers/source formats, raw input families, playbooks, coefficients/modifiers, risk policies, persistence implementations, broker/simulated-execution adapters and review projections.
+- The lawful target remains one modular monolith with high-cohesion owned modules, typed contracts and a composition root for each executable/runtime entry point. Microservices, generic plugin machinery, distributed infrastructure and agent-runtime abstractions are not justified by current requirements.
+- Current SQLAlchemy/PostgreSQL-capable dependencies and bounded SQLite code are technical direction only. Process-memory repositories remain non-durable and production storage/retention/recovery/deployment decisions remain outside alpha authority.
+- Historical maps, roadmaps, receipts and proof results remain evidence; they cannot set current normative status.
+
+Change made:
+- Added `11.1` as the admitted alpha blueprint addendum with target/current separation, one current status table for all eighteen surfaces, explicit supersession of rows 5.10 to 5.14, modularity and future-change law, component/composition constraints, alpha persistence truth, evidence/status separation, deterministic non-AI scope and freeze criteria.
+- Routed the core/addendum pair through the control index.
+- Reconciled retained ownership supplements so rows 5.10 to 5.14 admit only bounded `thin_seam` alpha participation.
+- Admitted precise meanings for `modular monolith` and `composition root` without editing generated vocabulary projections.
+- Created a detailed implementation-truth evidence ledger for the eighteen surfaces and recorded external-source adaptations and rejected interpretations.
+
+Acceptance result: PASS
+
+Known true:
+- All eighteen architecture surfaces have one structural status and one truthful current implementation-truth status.
+- No surface is currently admitted as `implemented`.
+- Rows 5.10 to 5.14 contain substantive but incomplete native alpha behaviour and are no longer falsely labelled `reserved` or `placeholder`.
+- A status value records implementation presence/maturity only; it does not prove correctness, composition, durability, replay, paper/live operation or promotion.
+- The target is a modular monolith with replaceability at known volatility boundaries, not infrastructure abstraction for its own sake.
+- GPT is the coding worker; the product runtime remains deterministic and non-AI.
+- The implementation-truth ledger is evidence subordinate to the normative status table.
+
+Ruled out:
+- Treating the eighteen surfaces as one literal current runtime call chain.
+- Treating path presence, code volume, a receipt, roadmap closure or green test count as proof of `implemented` status.
+- Keeping active alpha behaviour labelled `reserved` or `placeholder` merely to preserve stale documentation.
+- Importing microservices, distributed messaging, dynamic plugin loaders, cloud service topology, production operations or OpenAI agent abstractions without an actual authorised requirement.
+- Treating an in-memory repository as durable because it has a repository interface or serialisable payloads.
+- Treating the evidence ledger, historical architecture map or missing receipt as normative authority.
+
+Validation summary:
+- Normative addendum, ownership coherence amendment, vocabulary admissions, routing, implementation-truth ledger, proposition register, read manifest and external decisions were semantically reread in their affected context.
+- The status table and evidence ledger contain the exact eighteen canonical surfaces and no `implemented` status.
+- All literal target paths and admitted control paths exist; the stale receipt path does not.
+- TSV shapes and unique keys passed; tracked source, tests, configuration, scripts and governed generated vocabulary artefacts remained untouched; `git diff --check` passed.
+
+Next gate:
+- Gate A2: freeze the reconciled normative corpus as one controlled alpha baseline with exact documents, hashes, routes, supersessions, reservations, Unknowns and external-source crosswalk.

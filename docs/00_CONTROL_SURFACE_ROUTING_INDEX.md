@@ -75,9 +75,13 @@ Use:
 
 ## Architecture Blueprint Routing
 
-Primary architecture reference: `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`.
+Use:
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`
 
-`docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` owns native code-structure architecture, target package placement, component form, seams, ownership, persistence, test-family mapping, reservations, module allocation, and traceability within the authority hierarchy defined by `docs/01_NORMATIVE_CORE.md`.
+The core owns native code-structure architecture, target package placement, component form, seams, ownership, persistence, test-family mapping, reservations, module allocation, and traceability within the authority hierarchy defined by `docs/01_NORMATIVE_CORE.md`.
+
+The working companion owns admitted alpha-stage status correction, current implementation truth, modularity/replaceability clarification, external-lineage handling and blueprint-freeze criteria. It does not replace the core target laws.
 
 Vocabulary authority: `docs/vocabulary/vocabulary_registry.md`.
 

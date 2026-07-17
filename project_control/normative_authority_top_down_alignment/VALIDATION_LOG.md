@@ -143,3 +143,18 @@
 - Governed generated artefacts: `data/vocabulary/canonical_vocabulary.json`, `var/vocabulary/synonym_candidates.json` and `data/vocabulary/vocabulary_touch_stamp.json` were not modified.
 - Mechanical validation: proposition-register and full-read-manifest field counts passed; a pre-existing duplicate full-read row for `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md` was consolidated without losing evidence; referenced paths exist; tracked generated artefacts remained unchanged; `git diff --check` passed.
 - Semantic acceptance: PASS. Vocabulary meaning now precedes technical projection; automated tools are bounded to inventory, proposal, generation and proof; current registry/projection divergence remains an explicit unresolved implementation reservation rather than a false freeze claim.
+
+## Gate A1 semantic unit 11/11.1 validation
+
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`: read and reread in full, 758 lines, in exact chunks.
+- New `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`: drafted proposition by proposition and reread in full, 166 lines, after all cross-document amendments.
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`: reread in full, 217 lines, after reconciling rows 5.10 to 5.14 with the current blueprint decision.
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`: reread in full, 207 lines, after admitting `modular monolith` and `composition root` semantically.
+- Related accepted normative units 01 through 10: previously read in full; relevant authority, alpha-truth, sequence, identity, ownership, persistence, proof, packet and vocabulary propositions reread for this unit.
+- `CURRENT_PROJECT_STATE.md`, `NVDA10_CURRENT_STATE_ARCHITECTURE_MAP.md`, `pyproject.toml`, `PROJECT_STRUCTURE.md` and `src/README.md`: read in full and classified as current technical evidence or stale historical evidence as applicable.
+- Relevant source, contract, service, repository and test evidence for all eighteen surfaces was read during the completed audit; capital deployment, opening, live inventory, playbook and exit/close evidence was reread to resolve rows 5.10 to 5.14.
+- Completed audit surface matrix, 27-defect register and 110-line closeout: semantically reread as evidence, not authority.
+- External sources: current official Google modular-design guidance, Microsoft design-for-change guidance, IBM module-partitioning guidance and official OpenAI Agents SDK agents/handoffs/tracing documentation reviewed on 2026-07-17. Modularity, cohesion, loose coupling, explicit contracts and bounded ownership were adopted; vendor infrastructure, microservices-by-default and agent-runtime architecture were rejected.
+- Status reconciliation: all eighteen surfaces are `thin_seam`; none is `implemented`. Core statuses 5.10 `reserved`, 5.11 `placeholder`, 5.12 `placeholder`, 5.13 `placeholder` and 5.14 `reserved` are superseded for current alpha truth only.
+- Mechanical validation: exact eighteen-surface set and ordering passed; normative-table/ledger status parity passed; all literal target and control paths exist; stale acceptance receipt remains absent; TSV field counts and unique keys passed; no source, test, configuration, script or governed generated-vocabulary artefact changed; `git diff --check` passed.
+- Semantic acceptance: PASS. The corpus now states one truthful alpha blueprint, preserves target/current separation, admits active bounded seams without maturity overclaim, and defines replaceability at known volatility boundaries without importing premature production or agent architecture.
