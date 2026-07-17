@@ -175,3 +175,39 @@ Ruled out:
 
 Next gate:
 - Semantic unit 05/05.1: guardrail coherence, fail-closed behaviour, authority absence, alpha safety boundaries, and distinction between structural guards and trading policy.
+
+## Gate A1 — Semantic unit 05/05.1
+
+Status: validation in progress
+
+Semantic findings:
+- The core structural and authority guardrails were coherent but did not define the difference between missing mandatory authority and missing optional enrichment.
+- “Fail closed” required a project-specific meaning so it could not be misread as either silent continuation or mandatory process crash.
+- The audit defects required explicit prohibitions against identifier fabrication, false durability, packet/domain identity collapse, wall-clock replay claims and tracked-artefact mutation by tests.
+- Future-proofing needed a two-sided guardrail: prohibit concrete coupling, but also prohibit speculative abstraction where no real boundary justifies it.
+- Structural guardrails needed to remain separate from trading strategy, numeric risk policy and coefficient values.
+
+Change made:
+- Rebuilt `05.1` with guardrail scope, required/optional absence behaviour, identifier/lineage restrictions, modularity limits, persistence/replay truthfulness, proof integrity and preserved temporal anti-drift rules.
+
+Next validation:
+- Reread the changed overlay in full, verify all related normative propositions, run documentation-level checks, and commit if coherent.
+
+Acceptance result: PASS
+
+Known true:
+- Structural guardrails cannot be used to smuggle in trading strategy, thresholds or coefficient values.
+- Missing mandatory authority withholds the dependent binding output; optional absence may continue only when its contract permits and preserves the limitation.
+- Identifier fabrication, false scope, lineage loss and packet/domain identity substitution are explicitly prohibited.
+- Fixed implementation counts, provider leakage, generic boundary dictionaries and material module-global state are prohibited.
+- Process-memory durability claims, silent fallback authority and false replay claims are prohibited.
+- Tests may not mutate tracked governed evidence or weaken proof to fit current code.
+
+Ruled out:
+- Interpreting fail closed as either silent continuation or an obligatory process crash.
+- Treating every optional enrichment failure as fatal.
+- Measuring future-proofing by interface, service or plugin count.
+- Treating alpha guardrails as production controls or trading policy.
+
+Next gate:
+- Semantic unit 06/06.1: process/tranche law coherence, active-versus-historical overlays, document-touch authority, semantic gate evidence and branch/commit discipline.

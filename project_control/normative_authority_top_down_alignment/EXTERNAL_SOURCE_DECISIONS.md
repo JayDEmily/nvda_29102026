@@ -179,3 +179,58 @@ Rejected interpretations:
 - Using DMP packet `id` as a source/domain identifier.
 - Requiring event sourcing or a production event store to prove alpha-stage deterministic algorithms.
 - Claiming byte-identical replay while regenerating wall-clock emission fields.
+
+## Decision 05-001 — Withhold binding outputs when required authority is absent
+
+Status: accepted for normative unit `05/05.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- NIST glossary, “fail safe”: https://csrc.nist.gov/glossary/term/fail_safe
+- NIST glossary, “fail secure”: https://csrc.nist.gov/glossary/term/fail_secure
+- IBM documentation, “Workflow validations”: https://www.ibm.com/docs/en/product-master/12.0.0?topic=workflows-workflow-validations
+
+Project-specific adaptation:
+- A missing required identity, authority, dependency, input or validation fact prevents the binding output or state transition that depends on it.
+- The component may emit an explicit rejection, non-admission, blocked result, diagnostic or review record; fail closed does not mean an unhandled process crash.
+- Optional absence may continue only when the typed contract says so and the limitation remains explicit.
+
+Rejected interpretations:
+- Treating all missing enrichments as fatal regardless of contract meaning.
+- Treating a warning, default or generated value as authority for a mandatory fact.
+
+## Decision 05-002 — Give components only their bounded authority and necessary functions
+
+Status: accepted for normative unit `05/05.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- NIST glossary, “least privilege”: https://csrc.nist.gov/glossary/term/least_privilege
+- NIST SP 800-171 Rev. 3, least privilege and least functionality: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html
+
+Project-specific adaptation:
+- Each component receives only the domain authority, dependencies and functions required for its assigned role.
+- Structural guardrails do not become trading strategy or numeric policy.
+- Domain policy cannot waive ownership, lineage, typed-contract or proof integrity.
+
+Rejected interpretation:
+- Importing security compliance controls or certification requirements into this alpha architecture. The project adopts the bounded-authority design principle only.
+
+## Decision 05-003 — Guard against both coupling and speculative abstraction
+
+Status: accepted for normative unit `05/05.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Google Cloud Architecture Framework, “Promote modular design”: https://docs.cloud.google.com/architecture/framework/performance-optimization/promote-modular-design
+- Microsoft Learn, “Common web application architectures”: https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
+
+Project-specific adaptation:
+- Hard-coded concrete dependencies, fixed implementation counts and provider-specific domain branching are prohibited at known volatility boundaries.
+- Additional abstractions and deployables are also prohibited where no present ownership, substitution, proof or volatility boundary justifies them.
+
+Rejected interpretation:
+- Measuring future-proofing by interface count, service count, or plugin machinery rather than by whether a real bounded implementation can be replaced without unrelated change.

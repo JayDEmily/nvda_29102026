@@ -29,3 +29,4 @@ docs/04_TECHNICAL_ARCHITECTURE_CORE.md	Technical relationship between source adm
 docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	Technical architecture working companion	read_full_then_mutated	semantic unit 04/04.1	Original 51 lines read in full; changed overlay reread in full before acceptance
 docs/09_DMPV3_PROTOCOL_CORE.md	Packet identity, lineage and carriage law	read_full	cross-check packet identifiers cannot replace domain/source identity	Read all 187 lines exactly in current execution
 docs/09.1_DMPV3_PROTOCOL_WORKING.md	Packet time and prepared-context packet supplements	read_full	cross-check source-time separation and packet roles	Read all 39 lines in current execution
+docs/05.1_GUARDRAILS_WORKING.md	Guardrail working companion	read_full_then_mutated	semantic unit 05/05.1	Original 21 lines read in full; changed overlay reread in full before acceptance

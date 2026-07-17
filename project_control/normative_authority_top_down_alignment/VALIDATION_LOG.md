@@ -62,3 +62,14 @@
 - External sources: current official Google, Microsoft, CNCF CloudEvents, and Microsoft event-sourcing guidance reviewed and adapted to a Python modular monolith; cloud, event-store, framework and distributed-deployment prescriptions were not imported.
 - Mechanical validation: TSV field counts passed; normative references exist; temporal-field preservation check passed; `git diff --check` passed.
 - Semantic acceptance: PASS. The technical corpus now distinguishes target structure from current composition, isolates external/infrastructure dependencies, prevents packet builders from inventing domain identity, labels process-memory persistence honestly, and separates deterministic domain re-execution from original-envelope readback.
+
+## Gate A1 semantic unit 05/05.1 validation
+
+- `docs/05_GUARDRAILS_CORE.md`: read in full, 81 lines.
+- Original `docs/05.1_GUARDRAILS_WORKING.md`: read in full, 21 lines.
+- Related `docs/01.1`, `docs/02.1`, `docs/03.1`, `docs/04.1`, `docs/08`, `docs/09`, and `docs/11`: read in full; relevant authority, absence, identifier, modularity, persistence, replay, proof and status propositions reread for this unit.
+- Changed `docs/05.1_GUARDRAILS_WORKING.md`: reread in full, 110 lines.
+- Existing temporal anti-drift rules: preserved and extended only to prohibit packet emission time as source observation time.
+- External sources: current official NIST, IBM, Google, and Microsoft guidance reviewed and adapted; no security certification, production control, or trading policy was imported.
+- Mechanical validation: TSV field counts passed; referenced normative paths exist; `git diff --check` passed.
+- Semantic acceptance: PASS. Guardrails now distinguish required from optional absence, define fail-closed behaviour precisely, prevent authority/identity fabrication and false proof, and constrain both concrete coupling and speculative abstraction.
