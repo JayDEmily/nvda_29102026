@@ -96,3 +96,19 @@
 - External sources: current official Microsoft and Google bounded-context, domain-ownership, producer/consumer and explicit-interface guidance reviewed and adapted to the modular monolith; microservices, database-per-service, data-mesh topology and production service-level requirements were expressly rejected.
 - Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; referenced normative paths exist; `git diff --check` passed.
 - Semantic acceptance: PASS. Ownership roles, present retention truth, replay facts, consumer boundaries and substitution law are now explicit without overclaiming alpha maturity; rows 5.10 and 5.14 preserve target ownership but remain non-authoritative while blueprint status is `reserved`.
+
+## Gate A1 semantic unit 08/08.1 validation
+
+- `docs/08_TESTING_AND_PROMOTION_CORE.md`: reread in full, 202 lines.
+- Original `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`: read in full, 13 lines.
+- Related `docs/01.1`, `docs/05.1`, `docs/06.1`, `docs/07.1`, `docs/09`, `docs/09.1`, and `docs/11`: read in full previously; relevant alpha-truth, proof, isolation, status, packet and test-architecture propositions reread for this unit.
+- `scripts/run_proof_block.py`: read in full, 217 lines; it validates block identity, command, duplicate IDs and listed-path existence but does not validate admitted tier/lifecycle schemas or execute blocks during `--check-all`.
+- `tests/tier_b/proof_model/test_proof_executor_contract.py`: read in full during the audit and relevant executor assertions reread for this unit.
+- `config/proof_blocks.yaml` and `config/retained_test_registry.yaml`: read in full during the completed audit; relevant vocabulary, persistence, playbook, exit/close, tier, lifecycle, ownership/applicability and normative-basis records reread for this unit.
+- `pyproject.toml`: reread in full, 71 lines; the direct Tier A workbook-test dependency `openpyxl` remains undeclared.
+- `Makefile`: previously read in full during the audit; promotion, test and proof-executor targets reread for this unit.
+- Relevant audit defects `ARC-009`, `ARC-010`, `ARC-011`, `ARC-020`, and `ARC-021`: reread semantically.
+- Changed `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`: reread in full, 132 lines.
+- External sources: current official IBM requirements-based testing and traceability guidance, Google test isolation/size guidance, and Microsoft layered testing guidance reviewed and adapted; vendor tooling, cloud pipelines, fixed pyramid ratios and production-readiness practices were rejected.
+- Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; referenced normative paths exist; `git diff --check` passed.
+- Semantic acceptance: PASS. The corpus now limits proof claims to what was exercised, derives proof from normative propositions, separates applicability from ownership, requires isolation and declared environment closure, preserves alpha status, and reserves proof-system repairs for Gate C.

@@ -256,3 +256,42 @@ Rejected interpretations:
 - Requiring microservices, database-per-service, data mesh, cloud infrastructure, separate teams, or production service-level machinery in the alpha system.
 - Treating a Python path, repository interface, JSON-serialisable object, receipt, or test as proof of semantic ownership, durability, or replay.
 - Allowing a coordinator or consumer to invent, mutate, or reinterpret truth owned by another boundary.
+
+## Decision 08-001 — Derive proof from explicit requirements and preserve proposition-level traceability
+
+Status: accepted for normative unit `08/08.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- IBM Engineering Test Management, “Requirements-based testing”: https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/test-management/7.1.0?topic=requirements-based-testing
+- IBM Engineering Lifecycle Management, “Traceability and test execution views”: https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/test-management/beta?topic=efforts-traceability-test-execution-views
+
+Project-specific adaptation:
+- Blocking tests are derived from exact accepted normative propositions, not from current code, existing assertions, path proximity, historical green status, or manifest membership.
+- Each material proposition-to-test relationship is explicit enough to expose missing coverage, stale proof, and change impact.
+- Requirement review and semantic coherence precede test derivation; automated trace matching cannot establish meaning.
+
+Rejected interpretations:
+- Importing IBM tooling, lifecycle products, workflow roles, or reporting infrastructure.
+- Treating a document-level reference as sufficient traceability where the document contains multiple independent propositions.
+
+## Decision 08-002 — Use layered, isolated proof selected for the actual claim
+
+Status: accepted for normative unit `08/08.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Google Testing Blog, “Test Sizes”: https://testing.googleblog.com/2010/12/test-sizes.html
+- Microsoft Azure Well-Architected Framework, “Architecture strategies for testing”: https://learn.microsoft.com/en-us/azure/well-architected/operational-excellence/testing
+
+Project-specific adaptation:
+- Test level is selected by the boundary and claim: component, contract, integration, state/readback, sequential, end-to-end, or replay.
+- Tests are isolated, establish and clean up their own state, and can run from the same governed starting state without relying on prior tests.
+- A lower-level green test cannot prove a higher-level interaction, lifecycle, restart, or end-to-end claim.
+- Test types expand with project maturity and actual risk; alpha proof does not invent production load, resilience, deployment, or live-operation requirements.
+
+Rejected interpretations:
+- Adopting vendor-specific test-size labels, cloud pipelines, production-testing practices, service-level objectives, or a fixed test-pyramid ratio as project law.
+- Maximising test count or coverage percentage instead of proving the smallest sufficient set of material propositions.

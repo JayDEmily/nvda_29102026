@@ -284,3 +284,44 @@ Ruled out:
 
 Next gate:
 - Semantic unit 08/08.1: testing and promotion law, proof-family sufficiency, test isolation, promotion truth, and the relationship between normative propositions, acceptance tests and implementation claims.
+
+## Gate A1 — Semantic unit 08/08.1
+
+Status: PASS
+
+Semantic findings:
+- The core proof-tier and environment laws are directionally coherent, but the original corpus did not sufficiently constrain the scope of a green proof claim; local component proof could be mistaken for architecture, persistence, replay, composition, or maturity proof.
+- Normative documents were named as bases in retained-test records, but proposition-level requirements-to-test traceability was absent and could not be inferred from paths or keywords.
+- The current proof manifest field `owns` conflated proof applicability language with architecture ownership and did not prove that the command exercised every listed path.
+- The proof runner validates identifiers, commands, duplicate block IDs and path existence but does not validate tier or lifecycle values against an admitted schema.
+- The current proof system does not define one aggregate promotion procedure that executes every admitted blocker; selected Make targets can pass while an admitted Tier A vocabulary clean gate remains red.
+- Two read-only vocabulary proof paths modify a tracked governed candidate artefact, violating isolation and making proof depend on prior repository state.
+- The declared dev dependency set cannot collect an admitted Tier A workbook test because its direct `openpyxl` import is undeclared.
+- In alpha, `promotion` must mean acceptance into the next governed repository state, not production or live-trading readiness.
+
+Change made:
+- Replaced the empty `08.1` companion with alpha proof-claim limits, proposition-level traceability, layered proof-family adequacy, proof-applicability interpretation, test isolation, declared-environment closure, an authoritative aggregate promotion requirement, status preservation and Gate C transition law.
+- Preserved the core Tier A/B/C, packet-carriage, numeric/state, temporary-lifecycle, receipt, promotion/demotion and closeout rules unchanged.
+- Recorded current proof defects as unresolved Gate C inputs rather than repairing, waiving or normalising them during normative reconciliation.
+
+Acceptance result: PASS
+
+Known true:
+- A passing proof establishes only the exact proposition and boundary exercised under its recorded environment and state.
+- Blocking proof must trace to exact accepted normative propositions; whole-document references are insufficient where independent requirements exist.
+- Test level follows the claim, including contract, integration, state/readback, sequential, end-to-end and replay proof where those boundaries are claimed.
+- Proof-manifest `owns` metadata is proof applicability only and cannot create semantic ownership, mutation authority, exercised coverage or status authority.
+- Read-only proof must leave governed tracked truth unchanged; lawful generation and checking are separate authorities.
+- The declared environment must collect and execute every admitted blocker without undeclared operator-installed dependencies.
+- No existing targeted command is presumed to be the complete promotion gate until it executes the reconciled admitted blocker set.
+- Alpha promotion is repository-state acceptance only and cannot imply production, live trading, resilience or capital-use readiness.
+
+Ruled out:
+- Treating test count, coverage percentage, file presence, import success or manifest registration as semantic proof.
+- Reverse-creating normative intent from current code or tests.
+- Allowing a green component test to prove an untested integration, restart, replay or end-to-end claim.
+- Allowing tests to upgrade reserved, placeholder, thin-seam or future-only status automatically.
+- Importing vendor test tooling, fixed pyramid ratios, cloud pipelines, production testing or service-level requirements into the alpha architecture.
+
+Next gate:
+- Semantic unit 09/09.1: DMPV3 packet identity, envelope semantics, source/domain authority carriage, temporal meaning, lineage, invalid/degraded states and deterministic preservation.
