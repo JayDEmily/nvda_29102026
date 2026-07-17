@@ -19,3 +19,9 @@ docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md	Mandatory architecture companion r
 docs/vocabulary/vocabulary_registry.md	Canonical durable-term registry	read_full	checked terminology used in 01.1	Read all 169 lines in current execution
 docs/vocabulary/README.md	Vocabulary governance boundary	read_full	checked authority and purpose	Read all 23 lines in current execution
 docs/vocabulary/CONSOLIDATION_WORKFLOW.md	Vocabulary admission workflow	read_full	checked that no new domain vocabulary is silently admitted	Read all 213 lines in current execution
+docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md	Operating-model core	read_full	semantic unit 02/02.1	Read all 142 lines in current execution
+docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md	Operating-model working companion	read_full_then_mutated	semantic unit 02/02.1	Original 13 lines read in full; changed overlay will be reread before acceptance
+docs/03_DOMAIN_MODEL_CORE.md	Related bounded domain meanings	read_full	cross-check operating boundaries	Read all 159 lines in current execution
+docs/03.1_DOMAIN_MODEL_WORKING.md	Related domain working companion	read_full	cross-check local supplements	Read all 13 lines in current execution
+docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md	Related runtime output ownership law	read_full	cross-check distinct outputs and execution meanings	Read all 264 lines in current execution
+docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md	Related ownership supplements	read_full	cross-check playbook and execution-stage ownership	Read all 130 lines in current execution

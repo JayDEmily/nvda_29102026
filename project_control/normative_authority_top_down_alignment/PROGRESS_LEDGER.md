@@ -66,3 +66,35 @@ Ruled out:
 
 Next gate:
 - Semantic unit 02/02.1: operating model coherence, sequential boundaries, extension points, and alpha-status truthfulness.
+
+## Gate A1 — Semantic unit 02/02.1
+
+Status: validation in progress
+
+Semantic findings:
+- The core's present-tense complete-run language could be read as claiming current end-to-end implementation, which is false at alpha stage.
+- The fixed sequence and future-proof implementation requirement were not explicitly reconciled.
+- The playbook stage lacked a normative rule preventing fixed-count or concrete-playbook coupling.
+- `expression and execution` inside the serial spine was materially ambiguous against later placement, execution bridge, receipts, fills, inventory, and close behaviour.
+
+Change made:
+- Added an operating-model overlay that distinguishes target complete-run order from current implementation truth, defines lawful substitution, governs playbook expansion, and narrows serial execution meaning.
+
+Next validation:
+- Reread the changed overlay in full, verify line references and cross-document consistency, then commit if accepted.
+
+Acceptance result: PASS
+
+Known true:
+- The fourteen-step sequence is now explicitly target complete-run law, not a false current implementation claim.
+- Missing required stages must fail closed or stand down rather than be skipped or fabricated.
+- Playbook count and concrete implementations may change without unrelated-stage rewrites.
+- Serial `expression and execution` is now bounded to candidate expression and handoff material, not broker or downstream execution.
+
+Ruled out:
+- Treating independent component tests as proof of an end-to-end governed run.
+- Hard-coding a fixed playbook count in orchestration.
+- Allowing serial candidate formation to masquerade as placement, fill, inventory, or close execution.
+
+Next gate:
+- Semantic unit 03/03.1: domain entities, identifier ownership, raw-input extensibility, and bounded meanings.
