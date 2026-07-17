@@ -51,3 +51,14 @@
 - External sources: current official Google, IBM, and Microsoft identifier, lineage, schema-versioning and adapter-isolation guidance reviewed and adapted; event sourcing and distributed deployment were expressly rejected as blanket requirements.
 - Mechanical validation: TSV field counts passed; referenced normative paths exist; `git diff --check` passed.
 - Semantic acceptance: PASS. Source-issued, repository-capture, domain-owned and packet/context identifiers now have separate meanings; missing required authority fails closed; new input families must enter through versioned typed contracts and explicit adapters without unrelated-domain rewrites.
+
+## Gate A1 semantic unit 04/04.1 validation
+
+- `docs/04_TECHNICAL_ARCHITECTURE_CORE.md`: read in full, 186 lines.
+- Original `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md`: read in full, 51 lines.
+- Related `docs/03`, `docs/03.1`, `docs/07`, `docs/07.1`, `docs/09`, `docs/09.1`, and `docs/11`: read in full; relevant ingress, identifier, packet, persistence, status and replay propositions reread for this unit.
+- Changed `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md`: reread in full, 154 lines.
+- Existing source temporal field set: preserved exactly.
+- External sources: current official Google, Microsoft, CNCF CloudEvents, and Microsoft event-sourcing guidance reviewed and adapted to a Python modular monolith; cloud, event-store, framework and distributed-deployment prescriptions were not imported.
+- Mechanical validation: TSV field counts passed; normative references exist; temporal-field preservation check passed; `git diff --check` passed.
+- Semantic acceptance: PASS. The technical corpus now distinguishes target structure from current composition, isolates external/infrastructure dependencies, prevents packet builders from inventing domain identity, labels process-memory persistence honestly, and separates deterministic domain re-execution from original-envelope readback.

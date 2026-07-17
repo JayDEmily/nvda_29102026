@@ -135,3 +135,43 @@ Ruled out:
 
 Next gate:
 - Semantic unit 04/04.1: technical architecture, exact carrier/identifier responsibilities, source-time mechanics, adapters, persistence abstraction and replay boundaries.
+
+## Gate A1 — Semantic unit 04/04.1
+
+Status: validation in progress
+
+Semantic findings:
+- The core statement that the six-stage serial path “is implemented” overclaimed current alpha composition and conflicted with the newly clarified operating model.
+- The temporal standard was coherent but did not sit inside a complete technical rule for input adapters, typed carriers, identity ownership and provider substitution.
+- The corpus did not expressly prevent canonical packet builders from manufacturing missing domain identifiers.
+- A repository/store component form could be misread as proof that an in-memory implementation was durable.
+- Replay language did not distinguish deterministic domain re-execution from preservation of an original packet containing wall-clock emission metadata.
+- Exact common ingress field names cannot be selected responsibly until the carrier/schema boundary is semantically inspected; the required logical facts are clear and the naming allocation is explicitly reserved.
+
+Change made:
+- Rebuilt `04.1` as an admitted technical addendum while preserving the existing source temporal standard and prepared-context supplement.
+- Narrowed the core implementation claim, governed adapter/carrier boundaries, separated DMP and domain identity, established dependency direction, bounded alpha persistence claims, and defined two distinct replay proof questions.
+
+Next validation:
+- Reread the changed overlay in full, verify related domain, ownership, DMP and blueprint propositions, run documentation-level checks, and commit if coherent.
+
+Acceptance result: PASS
+
+Known true:
+- The six-stage technical organisation remains binding without claiming that the alpha system is currently composed end to end.
+- External provider semantics terminate at explicit adapters and typed native ingress carriers.
+- Canonical packet builders own carriage rules, not missing source/domain identity.
+- Concrete providers, repositories, stores, clocks and infrastructure clients must be selected at an explicit application assembly boundary.
+- Process-memory implementations are volatile and non-durable even when they implement a repository/store interface.
+- Deterministic domain re-execution and exact original-packet preservation are now separate proof questions.
+- The prior temporal field set and prepared-context support-spine meaning were preserved.
+
+Ruled out:
+- A database dependency or repository class name serving as proof of durability.
+- Direct provider/store construction inside unrelated domain logic.
+- A generic DMP payload replacing module-specific typed payload contracts.
+- Byte-identical replay claims based on newly generated wall-clock emission metadata.
+- Premature production storage, retention, recovery or deployment requirements.
+
+Next gate:
+- Semantic unit 05/05.1: guardrail coherence, fail-closed behaviour, authority absence, alpha safety boundaries, and distinction between structural guards and trading policy.

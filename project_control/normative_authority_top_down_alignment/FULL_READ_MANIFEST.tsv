@@ -26,6 +26,6 @@ docs/03.1_DOMAIN_MODEL_WORKING.md	Related domain working companion	read_full	cro
 docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md	Related runtime output ownership law	read_full	cross-check distinct outputs and execution meanings	Read all 264 lines in current execution
 docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md	Related ownership supplements	read_full	cross-check playbook and execution-stage ownership	Read all 130 lines in current execution
 docs/04_TECHNICAL_ARCHITECTURE_CORE.md	Technical relationship between source admission, typed carriers and DMP carriage	read_full	cross-check unit 03 identifier and input boundary	Read all 186 lines in current execution
-docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	Source temporal standard and prepared-context supplement	read_full	cross-check source versus process time and prepared handoff	Read all 51 lines exactly in current execution
+docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	Technical architecture working companion	read_full_then_mutated	semantic unit 04/04.1	Original 51 lines read in full; changed overlay reread in full before acceptance
 docs/09_DMPV3_PROTOCOL_CORE.md	Packet identity, lineage and carriage law	read_full	cross-check packet identifiers cannot replace domain/source identity	Read all 187 lines exactly in current execution
 docs/09.1_DMPV3_PROTOCOL_WORKING.md	Packet time and prepared-context packet supplements	read_full	cross-check source-time separation and packet roles	Read all 39 lines in current execution

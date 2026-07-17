@@ -117,3 +117,65 @@ Project-specific adaptation:
 
 Rejected interpretations:
 - Adopting event sourcing, distributed messaging, append-only production stores, or event-driven deployment as a repository-wide requirement. The source explicitly warns that event sourcing adds material complexity and should be adopted only where its benefits justify it.
+
+## Decision 04-001 — Invert infrastructure dependencies at explicit assembly boundaries
+
+Status: accepted for normative unit `04/04.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Google Cloud Architecture Framework, “Promote modular design”: https://docs.cloud.google.com/architecture/framework/performance-optimization/promote-modular-design
+- Microsoft Learn, “Common web application architectures”: https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
+- Microsoft Azure Architecture Center, “Anti-Corruption Layer pattern”: https://learn.microsoft.com/en-us/azure/architecture/patterns/anti-corruption-layer
+
+Project-specific adaptation:
+- Domain/application behaviour depends on explicit contracts for external sources, persistence, clocks, identifiers and configuration.
+- Concrete implementations are selected at one explicit application assembly boundary rather than instantiated inside domain decisions or held in module-global mutable state.
+- Provider semantics terminate at the adapter boundary and become typed native carriers.
+
+Rejected interpretations:
+- Requiring microservices, separate deployables, a dynamic plugin system, or a specific dependency-injection framework.
+- Splitting every small component merely to maximise interface count; modularity is applied at known volatility and authority boundaries.
+
+## Decision 04-002 — Separate state-boundary contracts from concrete alpha durability
+
+Status: accepted for normative unit `04/04.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Microsoft Learn, “Common web application architectures”: https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
+- Google Cloud Well-Architected Framework: https://docs.cloud.google.com/architecture/framework
+
+Project-specific adaptation:
+- Repository/store contracts isolate state ownership from concrete infrastructure.
+- In-memory implementations are lawful for alpha tests and incomplete flows only when labelled volatile and non-durable behind the bounded contract.
+- A database dependency or ORM is implementation availability, not proof of active persistence or an architecture lock.
+- Production persistence requirements remain undecided until actual operating evidence exists.
+
+Rejected interpretations:
+- Building production storage, availability, backup, retention or recovery machinery before requirements exist.
+- Calling an implementation durable because its class is named repository or store.
+
+## Decision 04-003 — Distinguish deterministic domain re-execution from original packet preservation
+
+Status: accepted for normative unit `04/04.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- CloudEvents specification: https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md
+- CloudEvents primer: https://github.com/cloudevents/spec/blob/main/cloudevents/primer.md
+- Microsoft Azure Architecture Center, “Event Sourcing pattern”: https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing
+
+Project-specific adaptation:
+- DMP packet context metadata and module payload meaning remain separate.
+- Deterministic re-execution compares domain result and semantic fingerprint under identical authoritative inputs and material versions.
+- Exact original-envelope proof requires preserving and reading the original envelope; a newly emitted replay result is not represented as the original packet.
+- Current emission metadata is excluded from the semantic result fingerprint, while all material source, contract, configuration, policy, dependency and algorithm versions are included.
+
+Rejected interpretations:
+- Using DMP packet `id` as a source/domain identifier.
+- Requiring event sourcing or a production event store to prove alpha-stage deterministic algorithms.
+- Claiming byte-identical replay while regenerating wall-clock emission fields.
