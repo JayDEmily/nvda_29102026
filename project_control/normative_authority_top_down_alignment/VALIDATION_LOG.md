@@ -127,3 +127,19 @@
 - External sources: current official CNCF CloudEvents specification/primer and W3C Trace Context Recommendation reviewed and adapted; distributed deployment, HTTP header format, brokers and CloudEvents processing infrastructure were rejected.
 - Mechanical validation: proposition-register and full-read-manifest field counts passed; referenced repository paths exist; `git diff --check` passed.
 - Semantic acceptance: PASS. Packet occurrence, source, producer, execution context, lineage, validation, summary, extension and replay meanings are now separated without granting DMP carriage domain authority or overclaiming alpha implementation maturity.
+
+## Gate A1 semantic unit 10/10.1 validation
+
+- `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`: read in full and reread, 50 lines.
+- Original `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`: read in full, 33 lines.
+- Vocabulary README, consolidation workflow and human registry: read in full; 23, 213 and 169 lines respectively.
+- Historical vocabulary-system audit: read in full, 352 lines, and classified as historical evidence rather than current truth.
+- Vocabulary schema, builder, synonym audit, generation/review/audit CLIs, canonical JSON, candidate report and touch stamp: read in full; 3,403 implementation/data lines in total.
+- Changed `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`: reread in full, 205 lines.
+- Human/generated inventory: 42 human-registry headings and 87 generated entries; 16 normalised human labels lack a generated-label match and 61 generated labels lack a human heading. These counts were used only to locate semantic work and did not decide meaning.
+- Read-only current synonym `build_report()`: builder parity true, 87 entries, fingerprint `2b6e69d54f0ee01e5c6a6bf803e72b17c3937e613d54f8c3eca0336d6ae5026d`, committed stamp fingerprint `4d2ba332cf6e4c009c1b14ac76b3d506b8704fe692a3457cfd098c0e653b3700`, vocabulary touched true, four heuristic candidates.
+- All four current heuristic candidates were read in source context and semantically quarantined as grammatical, truncated, helper/action or prose fragments. No term was admitted or suppressed mechanically.
+- External sources: current official IBM business-term guidance, Google AIP-190 and Microsoft terminology guidance reviewed and adapted; vendor products, enterprise governance infrastructure and language-specific naming forms were rejected.
+- Governed generated artefacts: `data/vocabulary/canonical_vocabulary.json`, `var/vocabulary/synonym_candidates.json` and `data/vocabulary/vocabulary_touch_stamp.json` were not modified.
+- Mechanical validation: proposition-register and full-read-manifest field counts passed; a pre-existing duplicate full-read row for `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md` was consolidated without losing evidence; referenced paths exist; tracked generated artefacts remained unchanged; `git diff --check` passed.
+- Semantic acceptance: PASS. Vocabulary meaning now precedes technical projection; automated tools are bounded to inventory, proposal, generation and proof; current registry/projection divergence remains an explicit unresolved implementation reservation rather than a false freeze claim.

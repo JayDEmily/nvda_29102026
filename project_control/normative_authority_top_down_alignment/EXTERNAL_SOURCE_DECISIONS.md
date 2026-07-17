@@ -339,3 +339,49 @@ Project-specific adaptation:
 Rejected interpretations:
 - Treating extension metadata as an ungoverned escape hatch for required domain or protocol fields.
 - Treating `schema_validation=true`, an empty violation list, or successful serialisation as proof that the packet or system is substantively correct.
+
+## Decision 10-001 — Govern meaning before technical projection
+
+Status: accepted for normative unit `10/10.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- IBM documentation, “Business terms”: https://www.ibm.com/docs/en/wiam?topic=artifacts-business-terms
+- IBM documentation, “Designing business terms”: https://www.ibm.com/docs/en/ws-and-kc?topic=terms-designing-business
+- Google AIP-190, “Naming conventions”: https://google.aip.dev/190
+- Microsoft Style Guide, “Use technical terms carefully”: https://learn.microsoft.com/en-us/style-guide/word-choice/use-technical-terms-carefully
+
+Project-specific adaptation:
+- Governed vocabulary begins with an exact project meaning, bounded scope, semantic owner, status, relationships, aliases and traceability to affected technical surfaces.
+- One human-readable semantic registry owns accepted meaning; schema, builder and generated JSON are subordinate technical projections and enforcement surfaces.
+- The same term is reused for the same concept, different concepts retain visibly different names, and technical terms are defined before canonical use.
+- A generated artefact or passing parity test cannot create semantic admission or prove semantic completeness.
+
+Rejected interpretations:
+- Importing IBM glossary products, enterprise governance workflows, categories, permissions, data-quality tooling or organisation-wide infrastructure.
+- Importing Google API naming forms, American spelling rules or Microsoft product-writing conventions as project requirements.
+- Treating every code identifier, prose fragment or machine-extracted phrase as a durable project term.
+
+## Decision 10-002 — Keep automated vocabulary tooling advisory and proof-bounded
+
+Status: accepted for normative unit `10/10.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- IBM documentation, “Authoring business terms”: https://www.ibm.com/docs/en/ws-and-kc?topic=terms-authoring-business
+- IBM documentation, “Designing business terms”: https://www.ibm.com/docs/en/ws-and-kc?topic=terms-designing-business
+- Google AIP-190, “Naming conventions”: https://google.aip.dev/190
+- Microsoft Style Guide, “Use technical terms carefully”: https://learn.microsoft.com/en-us/style-guide/word-choice/use-technical-terms-carefully
+
+Project-specific adaptation:
+- Search, normalisation, exact-collision checks, similarity scoring, candidate harvesting, schema validation, generation and proof may assist the reviewer but cannot decide meaning, novelty, synonymy, ownership, scope or admission.
+- Every candidate disposition requires contextual semantic reading and an explicit `enrich_existing`, `add_new`, `alias_only` or `quarantine` decision.
+- A zero-candidate report proves only the configured scanner result; it is not a semantic clean certificate.
+- Vocabulary checks must be isolated and read-only with respect to governed source and canonical artefacts unless a separately authorised generation gate is executing.
+
+Rejected interpretations:
+- Treating classifier output such as `add_new`, `admissible` or `quarantine` as final semantic authority.
+- Advancing a tracked report or stamp merely to make a clean gate pass.
+- Bulk-admitting registry mismatches or suppressing scanner false positives without proposition-level review.

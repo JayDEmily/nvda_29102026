@@ -365,3 +365,43 @@ Ruled out:
 
 Next gate:
 - Semantic unit 10/10.1: vocabulary authority, durable-term admission, synonym/candidate process, human semantic judgement, and prevention of automated vocabulary drift.
+
+## Gate A1 — Semantic unit 10/10.1
+
+Status: PASS
+
+Semantic findings:
+- The core correctly requires one durable term per governed meaning, explicit aliases and pre-admission, but its authoritative-artefact list did not order semantic authority above schema, builder and generated JSON.
+- The human registry contains 42 term headings while the generated JSON contains 87 entries; 16 normalised human labels lack a generated-label match and 61 generated labels lack a human heading. Those mechanical counts expose review work but cannot decide which concepts are missing, duplicated, historical or technically incidental.
+- The hard-coded builder is currently the practical source of the generated machine registry, reversing the required meaning-to-projection hierarchy.
+- Current candidate helpers use labels such as `classification`, `admissible` and `with_candidate_admission`, but their algorithms can establish only a proposed route or structurally reviewable result, not semantic novelty, synonymy, scope, ownership or admission.
+- The synonym audit is a heuristic harvesting tool. A zero-candidate report proves only scanner output, while its current clean-check path writes a tracked candidate artefact and violates proof isolation.
+- A read-only current scan reports four candidates and a fingerprint different from the committed empty report/stamp. Each candidate was semantically read in source context and is an incidental fragment, not a durable concept.
+- The original working overlay contains retained historical admissions; five coefficient/modifier terms are projected into generated JSON while earlier process/migration terms are not.
+- Current programme concepts require immediate bounded normative meaning, but generated-registry projection must remain later implementation/proof work rather than a manual JSON edit.
+
+Change made:
+- Replaced the narrow local supplement with semantic authority and artefact ordering, durable-term scope, a mandatory semantic admission record, bounded meanings for the four candidate actions, human-registry/generated-projection law, scanner and proof-isolation limits, explicit current alpha mismatch truth, preserved historical admissions, five current programme admissions and vocabulary-freeze criteria.
+- Recorded external-source adaptations and rejected vendor/product-specific interpretations.
+- Preserved all original admitted terms and the core one-term/one-meaning, explicit-alias, compatibility-label and pre-admission rules.
+
+Acceptance result: PASS
+
+Known true:
+- Vocabulary admission is proposition-level semantic judgement after full contextual reading; no script, classifier, similarity score, generator, test or batch LLM process can replace it.
+- The normative pair and semantically accepted human registry own meaning; schema, builder and generated JSON are subordinate projections and enforcement surfaces.
+- `enrich_existing`, `add_new`, `alias_only` and `quarantine` are final semantic actions only when explicitly accepted by the reviewer.
+- A scanner or clean-check result is bounded mechanical evidence, not semantic certification.
+- Current human/generated registry divergence and stale candidate/stamp state are explicit alpha implementation truth.
+- The four current scanner candidates are semantically quarantined without admission; no governed report, stamp or canonical JSON was edited to conceal them.
+- This unit passing does not mean that vocabulary implementation parity, complete semantic records or final vocabulary freeze have passed.
+
+Ruled out:
+- Bulk-merging human and generated registries, automatically admitting unmatched labels, or deciding synonyms from character similarity.
+- Treating every code identifier, helper name, prose fragment or test label as a durable term.
+- Treating builder parity, schema validity, a zero-candidate report, a fresh stamp or a green proof block as semantic completeness.
+- Hand-editing generated JSON, candidate reports or stamps to create compliance.
+- Importing vendor glossary products, enterprise data-governance infrastructure or language-specific naming conventions into the alpha architecture.
+
+Next gate:
+- Semantic unit 11/11.1: native architecture blueprint coherence, status truth, package/seam ownership, reserved surfaces, lineage to adopted external principles, and reconciliation with normative units 01-10.

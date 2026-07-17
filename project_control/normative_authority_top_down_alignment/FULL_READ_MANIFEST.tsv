@@ -6,21 +6,20 @@ ROADMAP_LEDGER_V2.md	Successor state pointer	read_full	confirms no active user-c
 /mnt/data/PROJECT_EXECUTION_METHOD.md	Fallback long-work method	read_full	governs ExecPlan shape and semantic rule	Read in full in current execution
 docs/00_CONTROL_SURFACE_ROUTING_INDEX.md	Routes numbered control stack	read_full	governs corpus order and ownership	Read in full in current execution
 docs/01_NORMATIVE_CORE.md	Top-level authority and runtime sequence	read_full	governs programme precedence and invariants	Read in full in current execution
-docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md	Operating model authority	read_full	mandatory active-pack authority	Read in full in current execution
+docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md	Operating model authority and semantic unit 02/02.1	read_full	mandatory active-pack authority and operating-model reconciliation	Read all 142 lines in current execution
 docs/05_GUARDRAILS_CORE.md	Guardrail authority	read_full	mandatory active-pack authority	Read in full in current execution
 docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md	Process and document-touch law	read_full	directly governs active-pack route	Read in full in current execution
 docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md	Current active-pack declaration and historical register	read_full_then_mutated	directly governs and is mutated for semantic unit 06/06.1	Original 376 lines read in full; changed 441-line overlay reread in full before acceptance
 intent_migration/AGENTS.override.md	Nearest override triggered by initial pack placement	read_full	required relocation outside Atlas-specific subtree	Read in full; found incompatible Atlas-specific route
 docs/08_TESTING_AND_PROMOTION_CORE.md	Normative semantic unit 08/08.1	read_full_reread	reconcile proof claims, isolation, traceability and promotion	Read all 202 lines in initial control pass and reread all 202 lines for unit 08
 docs/08.1_TESTING_AND_PROMOTION_WORKING.md	Normative semantic unit 08/08.1	read_full_then_mutated	add alpha testing and promotion clarifications	Read original 13 lines in full; changed 132-line document reread in full
-docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	Vocabulary authority	read_full	controls durable terms introduced by programme	Read in full in current execution
-docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	Current vocabulary overlay	read_full	checks current local admissions	Read in full in current execution
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	Normative semantic unit 10/10.1	read_full_reread	reconcile semantic vocabulary authority and admission law	Read all 50 lines in initial control pass and reread all 50 lines for unit 10
+docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	Normative semantic unit 10/10.1	read_full_then_mutated	add semantic authority, candidate, projection and freeze clarifications	Read original 33 lines in full; changed 205-line document reread in full
 docs/01.1_NORMATIVE_WORKING.md	Working companion for top-level authority	read_full_then_mutated	first semantic unit	Original 23 lines read in full; rewritten overlay will be reread before acceptance
 docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md	Mandatory architecture companion routed by 01/01.1	read_full	material relationship to authority and status model	Read all 758 lines in current execution
-docs/vocabulary/vocabulary_registry.md	Canonical durable-term registry	read_full	checked terminology used in 01.1	Read all 169 lines in current execution
-docs/vocabulary/README.md	Vocabulary governance boundary	read_full	checked authority and purpose	Read all 23 lines in current execution
-docs/vocabulary/CONSOLIDATION_WORKFLOW.md	Vocabulary admission workflow	read_full	checked that no new domain vocabulary is silently admitted	Read all 213 lines in current execution
-docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md	Operating-model core	read_full	semantic unit 02/02.1	Read all 142 lines in current execution
+docs/vocabulary/vocabulary_registry.md	Human-readable durable-term registry	read_full_reread	compare governed meanings with generated projection	Read all 169 lines and semantically inspected all 42 term headings
+docs/vocabulary/README.md	Vocabulary governance boundary	read_full_reread	reconcile declared artefact authority and purpose	Read all 23 lines and reread for semantic unit 10
+docs/vocabulary/CONSOLIDATION_WORKFLOW.md	Vocabulary admission workflow	read_full_reread	reconcile candidate tooling, audit, proof and admission limits	Read all 213 lines and reread in exact chunks for semantic unit 10
 docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md	Operating-model working companion	read_full_then_mutated	semantic unit 02/02.1	Original 13 lines read in full; changed overlay will be reread before acceptance
 docs/03_DOMAIN_MODEL_CORE.md	Related bounded domain meanings	read_full	cross-check operating boundaries	Read all 159 lines in current execution
 docs/03.1_DOMAIN_MODEL_WORKING.md	Related domain working companion	read_full	cross-check local supplements	Read all 13 lines in current execution
@@ -31,3 +30,15 @@ docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	Technical architecture working compa
 docs/09_DMPV3_PROTOCOL_CORE.md	Packet identity, lineage and carriage law	read_full_reread	unit 09 packet identity, lineage, validation, replay and implementation allocation	Read all 187 lines exactly; reread current core during semantic unit 09
 docs/09.1_DMPV3_PROTOCOL_WORKING.md	Packet time and prepared-context packet supplements	read_full_then_mutated	unit 09 admitted packet identity, lineage, validation, replay and alpha-truth expansion	Read original 39 lines in full; changed overlay reread in full at 161 lines
 docs/05.1_GUARDRAILS_WORKING.md	Guardrail working companion	read_full_then_mutated	semantic unit 05/05.1	Original 21 lines read in full; changed overlay reread in full before acceptance
+docs/reference/vocabulary_dictionary_system_audit.md	Historical vocabulary-system audit	read_full	determine current authority and stale assumptions	Read all 352 lines; describes earlier main commit and superseded paths/types
+data/vocabulary/README.md	Generated vocabulary data boundary	read_full	check generated artefact purpose	Read all 12 lines
+data/vocabulary/feeder/README.md	Vocabulary feeder boundary	read_full	check candidate-input purpose	Read all 5 lines
+src/nvda_desk/schemas/vocabulary.py	Vocabulary schema and candidate helper semantics	read_full	inspect validation, classification, review and proposed admission behaviour	Read all 723 lines in exact chunks
+src/nvda_desk/vocabulary_builder.py	Generated registry builder	read_full	establish practical source of machine vocabulary	Read all 940 lines in exact chunks
+src/nvda_desk/vocabulary_synonym_audit.py	Synonym candidate scanner	read_full	inspect heuristic limits, reports, fingerprints and stamp writes	Read all 310 lines
+scripts/build_canonical_vocabulary.py	Canonical vocabulary generation entry point	read_full	inspect generation authority	Read all 28 lines
+scripts/vocabulary_candidate_review.py	Candidate review CLI	read_full	inspect review status, clean check and output mutation boundaries	Read all 200 lines
+scripts/vocabulary_synonym_audit.py	Synonym-audit CLI entry point	read_full	inspect check and write modes	Read all 26 lines
+data/vocabulary/canonical_vocabulary.json	Committed generated vocabulary projection	read_full	compare 87 generated entries with semantic registry	Read all 1165 lines in six exact chunks
+var/vocabulary/synonym_candidates.json	Committed synonym candidate report	read_full	establish current tracked report truth	Read all 8 lines; committed report empty and stale against current read-only scan
+data/vocabulary/vocabulary_touch_stamp.json	Committed vocabulary fingerprint stamp	read_full	establish current stamp truth	Read all 3 lines; fingerprint differs from current read-only scan
