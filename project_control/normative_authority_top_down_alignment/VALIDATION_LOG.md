@@ -73,3 +73,15 @@
 - External sources: current official NIST, IBM, Google, and Microsoft guidance reviewed and adapted; no security certification, production control, or trading policy was imported.
 - Mechanical validation: TSV field counts passed; referenced normative paths exist; `git diff --check` passed.
 - Semantic acceptance: PASS. Guardrails now distinguish required from optional absence, define fail-closed behaviour precisely, prevent authority/identity fabrication and false proof, and constrain both concrete coupling and speculative abstraction.
+
+## Gate A1 semantic unit 06/06.1 validation
+
+- `AGENTS.md`: read in full, 167 lines.
+- `docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md`: read in full, 147 lines.
+- Original `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`: read in full, 376 lines.
+- Related `docs/00`, `docs/01`, `docs/01.1`, `docs/08`, active ExecPlan, `PLANS.md`, `ROADMAP_LEDGER.md`, and `ROADMAP_LEDGER_V2.md`: read in full; relevant routing, authority, continuation, proof, receipt and stop propositions reread for this unit.
+- Changed `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`: reread in full, 441 lines.
+- Historical admission body: preserved unchanged; the diff adds only current process-law sections before the historical route evidence.
+- External sources: no new external proposition was required. This unit reconciles project-specific execution authority and uses the already adopted architecture-decision lineage principles recorded for unit `01/01.1`.
+- Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; `git diff --check` passed.
+- Semantic acceptance: PASS. The current route is exact, semantic acceptance cannot be automated, scope reopening is lawful before touch, evidence is separated from authority, and historical records cannot be mistaken for current execution scope.

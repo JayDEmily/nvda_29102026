@@ -211,3 +211,39 @@ Ruled out:
 
 Next gate:
 - Semantic unit 06/06.1: process/tranche law coherence, active-versus-historical overlays, document-touch authority, semantic gate evidence and branch/commit discipline.
+
+## Gate A1 — Semantic unit 06/06.1
+
+Status: PASS
+
+Semantic findings:
+- The core required `AGENTS.md` and `06.1` to declare the active pack together, but the generic harness did not name the current programme; the current overlay needed to explain the joint route precisely.
+- The core defined one-gate-at-a-time and receipt agreement but did not state the semantic evidence required to accept a normative unit or expressly prohibit automated semantic certification.
+- “Stop and reopen the bounded pack” was semantically correct for mutation control but ambiguous about whether every in-programme route correction required a conversational stop.
+- Receipts, commits, manifests and proof output could be misread as authority or implementation proof rather than evidence.
+- The large retained admission register preserved lineage but contained present-tense wording that could be mistaken for current mutation authority despite the existing disclaimer.
+- Branch, commit and unexpected proof-side-effect discipline required an exact current programme rule.
+
+Change made:
+- Expanded `06.1` before the retained historical register with current route formation, branch limits, semantic acceptance law, one-unit continuation, lawful scope reopening, Git/evidence/receipt truth, and historical-record interpretation.
+- Preserved every historical admission record unchanged.
+
+Acceptance result: PASS
+
+Known true:
+- The current active pack is jointly formed by the generic `AGENTS.md` harness, the direct user authorisation, this exact current overlay, and the task-local ExecPlan.
+- A normative semantic unit cannot pass without full contextual reading, proposition-level judgement, full reread after change, cross-document comparison, and recorded mechanical evidence.
+- Automated tools may assist mechanics but cannot certify semantic meaning, contradiction, completeness, modularity, future-proofing, or acceptance.
+- In-programme scope reopening requires route amendment before touch but does not require a conversational pause when it stays inside the already authorised non-destructive programme.
+- Commits, receipts, manifests and proof output are evidence rather than intent or implementation authority.
+- Historical admission language remains lineage only and cannot reopen current mutation authority.
+
+Ruled out:
+- Treating a clean diff, green test, commit, receipt or checklist as semantic acceptance.
+- Batching semantic judgement across multiple unread normative units.
+- Touching an unlisted surface first and legalising it later.
+- Treating present-tense historical branch language as current authority.
+- Allowing tests or proof tools to leave tracked governed artefacts silently changed.
+
+Next gate:
+- Semantic unit 07/07.1: runtime output ownership, writers, readers, consumers, state authority, provisional-alpha status, and end-to-end lineage responsibility.
