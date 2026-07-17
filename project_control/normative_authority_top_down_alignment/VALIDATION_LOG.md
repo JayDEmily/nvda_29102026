@@ -85,3 +85,14 @@
 - External sources: no new external proposition was required. This unit reconciles project-specific execution authority and uses the already adopted architecture-decision lineage principles recorded for unit `01/01.1`.
 - Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; `git diff --check` passed.
 - Semantic acceptance: PASS. The current route is exact, semantic acceptance cannot be automated, scope reopening is lawful before touch, evidence is separated from authority, and historical records cannot be mistaken for current execution scope.
+
+## Gate A1 semantic unit 07/07.1 validation
+
+- `docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md`: read in full, 264 lines.
+- Original `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`: read in full, 130 lines.
+- Related `docs/03.1`, `docs/04.1`, `docs/09.1`, and `docs/11`: read in full; relevant identity, persistence, DMP, status, ownership, seam and replay propositions reread for this unit.
+- Relevant audit defects `ARC-002`, `ARC-008`, `ARC-016`, `ARC-017`, `ARC-018`, `ARC-023`, `ARC-026`, and `ARC-027`: reread semantically.
+- Changed `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`: reread in full, 217 lines.
+- External sources: current official Microsoft and Google bounded-context, domain-ownership, producer/consumer and explicit-interface guidance reviewed and adapted to the modular monolith; microservices, database-per-service, data-mesh topology and production service-level requirements were expressly rejected.
+- Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; referenced normative paths exist; `git diff --check` passed.
+- Semantic acceptance: PASS. Ownership roles, present retention truth, replay facts, consumer boundaries and substitution law are now explicit without overclaiming alpha maturity; rows 5.10 and 5.14 preserve target ownership but remain non-authoritative while blueprint status is `reserved`.

@@ -24,7 +24,7 @@ docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md	Operating-model work
 docs/03_DOMAIN_MODEL_CORE.md	Related bounded domain meanings	read_full	cross-check operating boundaries	Read all 159 lines in current execution
 docs/03.1_DOMAIN_MODEL_WORKING.md	Related domain working companion	read_full	cross-check local supplements	Read all 13 lines in current execution
 docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md	Related runtime output ownership law	read_full	cross-check distinct outputs and execution meanings	Read all 264 lines in current execution
-docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md	Related ownership supplements	read_full	cross-check playbook and execution-stage ownership	Read all 130 lines in current execution
+docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md	Normative semantic unit 07/07.1	read_full_then_mutated	reconcile ownership, state-retention, replay and consumer law	Read original 130 lines in full; changed 217-line document reread in full
 docs/04_TECHNICAL_ARCHITECTURE_CORE.md	Technical relationship between source admission, typed carriers and DMP carriage	read_full	cross-check unit 03 identifier and input boundary	Read all 186 lines in current execution
 docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	Technical architecture working companion	read_full_then_mutated	semantic unit 04/04.1	Original 51 lines read in full; changed overlay reread in full before acceptance
 docs/09_DMPV3_PROTOCOL_CORE.md	Packet identity, lineage and carriage law	read_full	cross-check packet identifiers cannot replace domain/source identity	Read all 187 lines exactly in current execution

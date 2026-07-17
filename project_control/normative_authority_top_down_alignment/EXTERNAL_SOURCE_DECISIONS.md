@@ -234,3 +234,25 @@ Project-specific adaptation:
 
 Rejected interpretation:
 - Measuring future-proofing by interface count, service count, or plugin machinery rather than by whether a real bounded implementation can be replaced without unrelated change.
+
+## Decision 07-001 — Separate semantic ownership, publishing responsibility, and consumption through explicit boundaries
+
+Status: accepted for normative unit `07/07.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- Microsoft Learn, “Data sovereignty per microservice”: https://learn.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/data-sovereignty-per-microservice
+- Microsoft Azure Architecture Center, “Use domain analysis to model microservices”: https://learn.microsoft.com/en-us/azure/architecture/microservices/model/domain-analysis
+- Google Cloud Architecture Center, “Architecture and functions in a data mesh”: https://docs.cloud.google.com/architecture/data-mesh
+
+Project-specific adaptation:
+- Each material output or state domain has one semantic owner, while authorised emission, persistence writing, coordination, reading, and review remain separately named responsibilities.
+- Upstream and downstream owners interact through explicit typed carriers, repositories, queries, or published contracts; consumers do not read private representations or acquire the producer's authority.
+- Ownership follows bounded domain meaning rather than current file placement, framework, team chart, storage product, or transport envelope.
+- These rules apply inside the current modular monolith and support later implementation replacement without requiring distributed deployment.
+
+Rejected interpretations:
+- Requiring microservices, database-per-service, data mesh, cloud infrastructure, separate teams, or production service-level machinery in the alpha system.
+- Treating a Python path, repository interface, JSON-serialisable object, receipt, or test as proof of semantic ownership, durability, or replay.
+- Allowing a coordinator or consumer to invent, mutate, or reinterpret truth owned by another boundary.

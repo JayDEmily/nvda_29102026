@@ -247,3 +247,40 @@ Ruled out:
 
 Next gate:
 - Semantic unit 07/07.1: runtime output ownership, writers, readers, consumers, state authority, provisional-alpha status, and end-to-end lineage responsibility.
+
+## Gate A1 — Semantic unit 07/07.1
+
+Status: PASS
+
+Semantic findings:
+- The core one-owner/one-meaning rule is coherent, but the original working overlay sometimes used a current Python path as if it were the normative owner rather than distinguishing semantic ownership, authorised emission, persistence writing, coordination and reading.
+- Several retained ownership supplements used `active` language even though the document's own operative-status section says they do not open current mutation authority.
+- The live-inventory supplement called repository state durable even though the current process-memory implementations are non-durable under the admitted technical architecture clarification.
+- JSON serialisability, append-only behaviour and a repository interface are useful local invariants but do not establish restart durability or end-to-end replay.
+- The corpus required one alpha-stage ownership/state record shape that can be applied top-down without inventing production retention, recovery, deployment or capacity requirements.
+- Playbook and exit/close ownership supplements preserve useful target boundaries, but their runtime authority and implementation maturity cannot be inferred while blueprint surfaces 5.10 and 5.14 remain implementation-labelled `reserved`.
+
+Change made:
+- Expanded `07.1` with an alpha ownership/state-authority model, a mandatory semantic ownership record, concrete retention classifications, a minimum logical replay envelope, writer/reader/substitution law and implementation-status constraints.
+- Corrected retained supplements so source paths are implementation evidence rather than authority, process-memory stores are explicitly non-durable, and historical `active` wording cannot create current maturity or mutation claims.
+- Preserved useful bounded ownership for rows 5.10 and 5.14 while explicitly withholding governed runtime authority until their blueprint status is lawfully admitted.
+
+Acceptance result: PASS
+
+Known true:
+- Every material boundary must distinguish semantic ownership from authorised emission, persistence writing, coordination, reading and review.
+- Current state retention is classified by concrete implementation behaviour; repository naming, serialisability and duplicate guards do not prove durability.
+- A minimum replay envelope must identify authoritative inputs, material versions, consumed state/decision identities, result identity and explicit absence before a replay claim is lawful.
+- Consumers read through declared contracts and do not acquire or mutate upstream authority.
+- Replaceability is required at real volatility boundaries inside the modular monolith and does not require microservices, separate databases, data mesh or plugin machinery.
+- Rows 5.10 and 5.14 retain target ownership meaning but remain unauthorised in governed runtime composition while their blueprint implementation status is `reserved`.
+
+Ruled out:
+- Treating a file path, class, packet, receipt, repository interface or test as proof of semantic ownership, persistence or replay.
+- Calling process-memory state durable.
+- Importing production retention, recovery, availability, capacity or deployment requirements into the alpha architecture.
+- Allowing coordinators, APIs, packet builders, reviewers or consumers to originate truth owned by another boundary.
+- Inferring current runtime authority from historical supplement wording or alpha code presence.
+
+Next gate:
+- Semantic unit 08/08.1: testing and promotion law, proof-family sufficiency, test isolation, promotion truth, and the relationship between normative propositions, acceptance tests and implementation claims.
