@@ -1,0 +1,6 @@
+path	reason	read_status	mutation_relevance	evidence
+AGENTS.md	Repository worker authority	read_full	governs all work	Read in current execution before branch mutation
+PLANS.md	Standing plan control surface	read_full	confirms no repository plan content	File contains user placeholder only
+ROADMAP_LEDGER.md	Mutable state pointer	read_full	retired pointer state	File directs to ROADMAP_LEDGER_V2.md
+ROADMAP_LEDGER_V2.md	Successor state pointer	read_full	confirms no active user-completed ledger	File contains user placeholder only
+/mnt/data/PROJECT_EXECUTION_METHOD.md	Fallback long-work method	read_full	governs ExecPlan shape and semantic rule	Read in full in current execution

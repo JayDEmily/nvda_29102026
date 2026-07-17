@@ -1,0 +1,247 @@
+# NVIDIA_2026 Normative Authority and Top-Down Alignment ExecPlan
+
+## Status
+active
+
+## Objective
+Establish one internally coherent, evidence-backed alpha architecture baseline; freeze that baseline through the repository's numbered core/addendum model; then align tests and implementation from raw inputs to final outputs one semantic boundary at a time.
+
+The work is not production-hardening. The repository is an alpha system with placeholders, incomplete end-to-end composition, no paper-data execution history, and no established production retention, recovery, capacity, deployment or availability requirements. Those production matters must remain `Unknown`, `reserved`, or explicitly out of scope unless the user later supplies authority.
+
+## Governing user intent
+The user is the system architect. The code is implemented by GPT workers. The required project posture is:
+
+1. external authoritative best practice informs architectural decisions;
+2. adopted project-specific meaning is recorded in normative documents;
+3. normative documents govern tests;
+4. tests govern code;
+5. modularity and future change must be designed at known volatility boundaries;
+6. semantic judgement must be performed by the LLM through full contextual reading, not delegated to automated comparison, summaries, search, scripts, embeddings, ASTs, inventories or counts.
+
+## Authority
+Apply this order for this programme:
+
+1. current user instructions and explicit approvals;
+2. `AGENTS.md`;
+3. this ExecPlan;
+4. active repository normative documents and their explicit routing rules;
+5. tests;
+6. source, configuration, schemas, fixtures and migrations;
+7. ledgers, receipts, historical plans and reports;
+8. `PROJECT_EXECUTION_METHOD.md` where higher authority is silent.
+
+External vendor and standards material is evidence, not a floating runtime authority. A best-practice proposition becomes project authority only after its source, rationale, project-specific interpretation and scope are recorded in the normative corpus.
+
+## Branch and baseline
+- Baseline branch: `work/NVIDIA_2026_gate1_normative_repair_final_20260529`
+- Baseline commit: `e9e9eba`
+- Working branch: `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717`
+- Source audit bundle: `/mnt/data/NVDA_ARCHITECTURE_MODULARITY_REVIEW_OUTPUT_20260717`
+
+No merge to another branch is authorised.
+
+## Scope
+### In scope
+- semantic reconciliation of the active normative corpus;
+- authoritative-source cross-checks where a normative proposition needs external grounding;
+- numbered addenda or controlled amendments that resolve contradiction, ambiguity, overclaim, missing ownership, missing extensibility boundaries or inaccurate status;
+- a frozen normative baseline manifest with versions, hashes, authority relationships and explicit supersession;
+- top-down semantic audit from raw inputs through final outputs;
+- alpha-stage identity, lineage, state ownership, replay requirements and replaceable contracts;
+- tests derived from frozen normative requirements;
+- code/config/schema/fixture changes required to satisfy those tests;
+- evidence, validation and semantically bounded commits.
+
+### Out of scope unless separately authorised
+- production retention periods;
+- RTO/RPO, high availability, disaster recovery or production SLOs;
+- production deployment topology, scaling or capacity targets;
+- live brokerage or production credentials;
+- real-money execution;
+- paper-trading claims unsupported by actual paper data;
+- rewriting project intent to match current tests or code;
+- automated semantic acceptance.
+
+## Non-negotiable semantic-reading rule
+Every normative document in the active corpus must be read in full, in routed order, as prose and as a connected architecture. Each semantic acceptance decision must be made by the LLM after reading the proposition in its surrounding context and comparing it with all materially related propositions.
+
+Automation may only assist deterministic mechanics such as file inventory, hashing, line numbering, formatting, cross-reference extraction, diffing and validation. Automation must not decide or certify:
+
+- semantic equivalence;
+- contradiction or absence;
+- project intent;
+- authority;
+- architectural adequacy;
+- modularity;
+- future-proofing;
+- final acceptance.
+
+Search, grep, ASTs, scripts, tables, summaries, embeddings and generated registries are navigation aids only. They cannot substitute for reading. No document or semantic unit may be marked reviewed unless it was read in full.
+
+## Architectural interpretation rules
+1. This is an alpha system. Current placeholders must be labelled honestly rather than inflated into production claims.
+2. Future-proofing means stable, explicit substitution boundaries at known volatility points. It does not mean speculative abstraction everywhere.
+3. A common envelope must not collapse strongly typed payloads into ungoverned generic dictionaries.
+4. Authoritative identifiers may only be originated by their named owner and must not be fabricated downstream.
+5. Missing authority fails closed where continuing would manufacture lineage, policy or decision authority.
+6. Runtime behaviour cannot remain labelled `reserved`; it must be classified truthfully, such as `provisional alpha implementation`, `placeholder`, `partially implemented`, `active`, `absent` or `superseded`.
+7. In-memory state is acceptable in alpha when declared as such and isolated behind a replaceable contract. It must not be called durable or replay-complete.
+8. External best-practice disagreement must be resolved through explicit project rationale, not vendor-name voting.
+
+## Numbered normative-document model
+The existing core/addendum pattern is preserved:
+
+- `N` is the stable core document;
+- `N.1`, `N.2`, and later documents are controlled expansions, corrections or supersession records;
+- addenda must identify exact propositions extended, clarified or replaced;
+- an addendum must state which earlier text remains authoritative;
+- contradictions may not be left as two apparently active claims;
+- historical text is preserved unless a direct amendment is necessary for routing or truthfulness.
+
+## Acceptance units
+
+### Gate A0 — Control and corpus establishment
+**Pass:** branch, plan, full-read manifest, active normative inventory and routing order are established without semantic claims based on automation.
+
+**Required reads:** `AGENTS.md`, `PLANS.md`, `ROADMAP_LEDGER.md`, `ROADMAP_LEDGER_V2.md`, `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`, and any route-specific override that becomes applicable.
+
+**Allowed changes:** task-local plan, manifest, progress ledger and evidence directory only.
+
+**Validation:** Git state, branch, file existence, `git diff --check`.
+
+### Gate A1 — Normative corpus semantic reconciliation
+Work one routed normative document pair or independently bounded normative surface at a time.
+
+For each unit:
+1. read the core document in full;
+2. read its working/addendum document in full where present;
+3. read all materially related normative propositions in other documents;
+4. identify the precise governed surface and intended system meaning;
+5. classify each material proposition as `coherent`, `ambiguous`, `contradictory`, `overclaimed`, `underspecified`, `reserved`, `provisional alpha`, or `superseded`;
+6. consult current authoritative sources only where external grounding is necessary;
+7. record the source, date, proposition, project-specific adaptation and rejected alternatives;
+8. draft the smallest lawful addendum or amendment;
+9. reread the changed normative unit in full;
+10. validate cross-document coherence before acceptance and commit.
+
+**Pass:** all active normative propositions are internally coherent, routed, status-truthful and explicitly connected to their addenda and adopted external rationale.
+
+**Fail:** unresolved contradiction, silent supersession, unclear owner, production overclaim, fabricated specificity, or automated semantic acceptance.
+
+### Gate A2 — Normative freeze
+Create a baseline manifest recording:
+- every active normative document and addendum;
+- hash and effective status;
+- authority and routing relationships;
+- superseded propositions;
+- reserved and provisional-alpha surfaces;
+- unresolved Unknowns;
+- adopted external-source crosswalk.
+
+**Pass:** a reader can determine exactly which normative proposition governs each architecture surface without consulting tests or code.
+
+### Gate B — Top-down input-to-output semantic alignment
+Proceed sequentially, one boundary at a time:
+
+1. raw input definitions and source identity;
+2. input envelopes, schemas and validation;
+3. canonicalisation and normalisation;
+4. identifier and lineage propagation;
+5. intermediate state ownership;
+6. persistence boundaries;
+7. deterministic transformations and algorithms;
+8. strategy/playbook selection and execution;
+9. risk and policy decisions;
+10. execution or simulated-execution boundaries;
+11. exit and close behaviour;
+12. outputs, receipts, reporting and replay.
+
+For each boundary, establish:
+- inputs and outputs;
+- owning contract;
+- identifier origin and propagation;
+- schema and policy versioning;
+- current alpha status;
+- replaceable extension mechanism;
+- fail-closed behaviour;
+- current tests;
+- current implementation;
+- exact gap between normative intent, test and code.
+
+**Pass:** the boundary is normatively clear, testable, modular at its known volatility point and truthfully represented in code and documentation.
+
+### Gate C — Tests from normative authority
+For each accepted Gate B boundary:
+1. derive acceptance tests from exact normative propositions;
+2. test positive behaviour, false-positive resistance, missing-authority failure, extension/substitution behaviour and relevant replay determinism;
+3. ensure tests do not mutate governed tracked artefacts;
+4. run targeted tests before implementation changes where a red test is lawful and informative.
+
+**Pass:** tests prove the normative contract rather than merely exercising current implementation.
+
+### Gate D — Code alignment
+For each Gate C unit:
+1. make the smallest implementation change satisfying the normative contract;
+2. preserve dependency inversion and explicit ownership;
+3. avoid speculative production machinery;
+4. maintain alpha status labels where implementation remains provisional;
+5. run targeted tests and applicable admitted proof blocks;
+6. record exact evidence and commit the semantic unit.
+
+**Pass:** target-surface behaviour satisfies the governing tests and normative proposition without weakened validation or unrelated changes.
+
+## Progress and evidence files
+Maintain within this directory:
+- `FULL_READ_MANIFEST.tsv`;
+- `PROGRESS_LEDGER.md`;
+- `NORMATIVE_PROPOSITION_REGISTER.tsv`;
+- `EXTERNAL_SOURCE_DECISIONS.md`;
+- `NORMATIVE_BASELINE_MANIFEST.tsv`;
+- `TOP_DOWN_ALIGNMENT_REGISTER.tsv`;
+- `VALIDATION_LOG.md`.
+
+These are evidence and execution aids. They do not become semantic authority merely by existing.
+
+## Commit discipline
+- Commit the plan/control establishment separately.
+- Commit each accepted normative semantic unit separately where feasible.
+- Do not combine normative, test and code changes for unrelated boundaries.
+- A normative unit may include its explicit addendum and directly required routing/index updates.
+- Preserve exact validation evidence in the progress and validation logs.
+
+## Stop conditions
+Stop only for:
+- missing authority that cannot be inferred lawfully;
+- an architectural choice requiring the user's decision after the evidence and one recommended path are prepared;
+- unavailable required source material or official documentation;
+- destructive/external action requiring approval;
+- unsafe repository/tool state;
+- exhaustion of the authorised programme with all acceptance gates passed.
+
+Ordinary contradiction, failing tests, missing dependencies, placeholders and implementation gaps are work, not stop conditions.
+
+## Progress
+- 2026-07-17: user authorised creation and uninterrupted execution of this ExecPlan.
+- 2026-07-17: branch established from baseline `e9e9eba`.
+
+## Decisions
+- The programme is alpha architecture alignment, not production hardening.
+- Semantic judgement remains human-like LLM work performed after full reading; automation is restricted to mechanics.
+- The existing numbered core/addendum model is preserved.
+- Normative coherence precedes test and code alignment.
+
+## Roadblocks
+None recorded at plan creation.
+
+## Validation
+Pending Gate A0 validation.
+
+## Artefacts
+This ExecPlan and its task-local evidence files.
+
+## Unknowns
+- The complete external-source lineage for every existing normative proposition is not yet established.
+- Production operational requirements are intentionally not established at this stage.
+
+## Closeout
+Open. Execution continues under this plan.
