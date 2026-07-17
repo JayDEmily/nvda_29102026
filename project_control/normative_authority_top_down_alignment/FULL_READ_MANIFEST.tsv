@@ -52,3 +52,20 @@ src/README.md	Source-root description	read_full	identify stale near-empty source
 /mnt/data/NVDA_ARCHITECTURE_MODULARITY_REVIEW_OUTPUT_20260717/14_DEFECT_REGISTER.tsv	Completed audit proposition-level defect evidence	read_full_prior_audit_relevant_reread	support status correction and limitation statements	All 27 defects semantically assessed in completed audit; ARC-002 ARC-005 ARC-006 ARC-007 ARC-008 ARC-009 ARC-015 ARC-016 ARC-017 ARC-023 ARC-024 ARC-025 ARC-026 ARC-027 reread for unit 11
 /mnt/data/NVDA_ARCHITECTURE_MODULARITY_REVIEW_OUTPUT_20260717/17_REVIEW_CLOSEOUT.md	Completed architecture audit closeout	read_full_reread	confirm audit scope alpha limitations and next authority gate	Read all 110 lines in completed audit and reread in full for unit 11
 project_control/normative_authority_top_down_alignment/EXEC_PLAN.md	Active updated execution brief	read_full_reread_gate_a2	governs Gate A2 freeze criteria and Gate B continuation	Read in full previously and Gate A2/Gate B sections reread immediately before freeze mutation on 2026-07-17
+tests/AGENTS.override.md	Subtree authority for all B01 test reading	read_full	governs later read-only test inspection and any Gate C mutation	Read all 67 lines before opening any test file
+src/nvda_desk/adapters/ingress/__init__.py	B01 ingress adapter package boundary	read_full	read-only current implementation evidence	Read all 1 line
+src/nvda_desk/adapters/ingress/calendar_feed.py	B01 calendar ingress adapter	read_full	read-only current implementation evidence	Read all 12 lines
+src/nvda_desk/adapters/ingress/market_snapshot_feed.py	B01 market snapshot ingress adapter	read_full	read-only current implementation evidence	Read all 21 lines
+src/nvda_desk/adapters/ingress/options_surface_feed.py	B01 options ingress adapter	read_full	read-only current implementation evidence	Read all 17 lines
+src/nvda_desk/contracts/external_source.py	B01 external source identity and carrier contract	read_full	read-only current implementation evidence	Read all 179 lines
+src/nvda_desk/contracts/temporal.py	B01 source temporal carrier contract	read_full	read-only current implementation evidence	Read all 96 lines
+src/nvda_desk/domain/temporal/event_windows.py	B01 source-time event-window logic	read_full	read-only current implementation evidence	Read all 31 lines
+src/nvda_desk/domain/temporal/session_clock.py	B01 source-time session classification	read_full	read-only current implementation evidence	Read all 50 lines
+src/nvda_desk/ingress/__init__.py	B01 raw bundle package boundary	read_full	read-only current implementation evidence	Read all 17 lines
+src/nvda_desk/ingress/raw_bundle_loader.py	B01 raw bundle carrier and decode implementation	read_full	read-only current implementation evidence	Read all 128 lines
+src/nvda_desk/services/temporal_context_service.py	B01 temporal service boundary	read_full	read-only current implementation evidence	Read all 41 lines
+src/nvda_desk/upstream/__init__.py	B01 upstream signal package boundary	read_full	read-only current implementation evidence	Read all 1 line
+src/nvda_desk/upstream/market_substrate.py	B01 market substrate input aggregation	read_full	read-only current implementation evidence	Read all 25 lines
+src/nvda_desk/upstream/raw_signal_coverage.py	B01 raw signal family scope-lock implementation	read_full	read-only current implementation evidence	Read all 41 lines
+src/nvda_desk/upstream/raw_signal_ingress.py	B01 raw signal ingestion implementation	read_full	read-only current implementation evidence	Read all 93 lines
+src/nvda_desk/upstream/strategic_ladder.py	B01 adjacent upstream service inspected for boundary classification	read_full	read-only evidence; likely downstream of raw input identity	Read all 136 lines; classification remains pending

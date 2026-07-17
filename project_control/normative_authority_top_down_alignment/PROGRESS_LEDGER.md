@@ -535,3 +535,23 @@ Validation summary:
 
 Next gate:
 - Gate B01: raw input definitions and source identity. Begin with full semantic reading of the normative propositions, actual input contracts/adapters, fixtures and current evidence for that boundary before any test or code mutation.
+
+## Gate B01 — Raw input definitions and source identity
+
+Status: IN PROGRESS
+
+Selected semantic boundary:
+- Raw input definitions and source identity only: what counts as admitted raw input, which owner originates each source/capture/domain identity, how source temporal truth is carried, how new input families are added, and what must fail closed when authoritative identity or required source facts are absent.
+
+Authority check:
+- Gate B and B01 in the active ExecPlan were reread after Gate A commit `5b1bac3`.
+- Gate A frozen normative baseline remains controlling; tests and code are evidence only.
+- Current mutation authority is limited to task-local Gate B alignment, progress, full-read and validation evidence. Normative documents, tests, source, configuration, schemas, fixtures and migrations are read-only until the B01 semantic gap is fully established and a later Gate C/D route opens them.
+
+Mandatory semantic reads before acceptance:
+- governing normative documents in full: `03/03.1`, `04/04.1`, `05/05.1`, `07/07.1`, `09/09.1`, `11/11.1`, with `01/01.1` and `02/02.1` reread where authority or target sequence is material;
+- every current raw-input, ingress-adapter, source-temporal, raw-signal-family and source-identity contract or implementation file in full;
+- every directly applicable test, fixture, schema and configuration surface in full;
+- current audit evidence for B01 as subordinate evidence.
+
+Acceptance remains pending until inputs, outputs, owners, identifiers, schema/version facts, extension boundary, fail-closed behaviour, current tests, current implementation and the exact normative/test/code gaps are understood semantically and recorded without automated judgement.
