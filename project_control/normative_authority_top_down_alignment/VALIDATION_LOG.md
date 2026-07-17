@@ -158,3 +158,37 @@
 - Status reconciliation: all eighteen surfaces are `thin_seam`; none is `implemented`. Core statuses 5.10 `reserved`, 5.11 `placeholder`, 5.12 `placeholder`, 5.13 `placeholder` and 5.14 `reserved` are superseded for current alpha truth only.
 - Mechanical validation: exact eighteen-surface set and ordering passed; normative-table/ledger status parity passed; all literal target and control paths exist; stale acceptance receipt remains absent; TSV field counts and unique keys passed; no source, test, configuration, script or governed generated-vocabulary artefact changed; `git diff --check` passed.
 - Semantic acceptance: PASS. The corpus now states one truthful alpha blueprint, preserves target/current separation, admits active bounded seams without maturity overclaim, and defines replaceability at known volatility boundaries without importing premature production or agent architecture.
+
+## Gate A2 normative baseline freeze validation
+
+Semantic acceptance:
+- PASS after the final routed corpus was reread in connected order and reconciled proposition by proposition.
+- Automation was used only after semantic acceptance for hashing, TSV shape, exact-set, reference and Git-scope checks.
+
+Frozen baseline:
+- `NORMATIVE_BASELINE_MANIFEST.tsv`: 51 records.
+- Record composition: 2 execution-context records, 26 document records, 18 architecture-surface records, 5 explicit Unknown/reservation records.
+- Manifest SHA-256 before commit: `eda8275a3d5f81ee3246da3b757d140cd3b0937c123abf931db92d573d53624e`.
+
+Mechanical results:
+- manifest schema and 51 unique record keys: PASS;
+- 28 document/control hashes matched current bytes: PASS;
+- 25 documents referenced by the routing index were represented, plus the routing index itself: PASS;
+- exact ordered architecture-surface set `5.1` through `5.18`: PASS;
+- all 18 current implementation-truth statuses `thin_seam`: PASS;
+- exact `Provisional` structural surface set `5.10`, `5.12`, `5.13`, `5.14`: PASS;
+- every surface row resolves to an exact core line range and exact `11.1` current-truth line: PASS;
+- every referenced external decision and normative proposition identifier resolved: PASS;
+- five explicit Unknown/reservation records present: PASS;
+- final connected-reread evidence recorded for 26 routed corpus documents plus the active ExecPlan reread: PASS;
+- implementation-truth ledger parity and 5.18 next-route advancement to Gate C-D: PASS;
+- `git diff --check`: PASS;
+- changed paths confined to `project_control/normative_authority_top_down_alignment/`: PASS;
+- source, tests, configuration, schemas, fixtures, migrations, scripts and governed generated artefacts changed: NO.
+
+Gate result:
+- Gate A0: PASS.
+- Gate A1: PASS.
+- Gate A2: PASS.
+- Gate A overall: PASS.
+- Next semantic boundary: Gate B01, raw input definitions and source identity.

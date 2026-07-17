@@ -224,6 +224,8 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-17: user authorised creation and uninterrupted execution of this ExecPlan.
 - 2026-07-17: branch established from baseline `e9e9eba`.
 - 2026-07-17: task pack relocated to `project_control/` and expressly routed through `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md` before normative content mutation.
+- 2026-07-17: Gate A1 completed through full semantic reconciliation of routed normative units `01/01.1` through `11/11.1`, including vocabulary authority and the eighteen-surface blueprint.
+- 2026-07-17: Gate A2 completed through one controlled normative baseline manifest containing exact document hashes, routing, supersessions, alpha reservations, explicit Unknowns, external-source decisions and direct governing-proposition lookup for all eighteen architecture surfaces.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -235,7 +237,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 None recorded at plan creation.
 
 ## Validation
-Gate A0 route and branch validation recorded in `VALIDATION_LOG.md`; corpus inventory remains in progress.
+Gates A0, A1 and A2 passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and boundary decisions are recorded in `PROGRESS_LEDGER.md` and `NORMATIVE_PROPOSITION_REGISTER.tsv`.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.

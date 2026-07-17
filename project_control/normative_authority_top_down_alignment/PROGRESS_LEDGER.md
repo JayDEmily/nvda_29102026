@@ -473,3 +473,65 @@ Validation summary:
 
 Next gate:
 - Gate A2: freeze the reconciled normative corpus as one controlled alpha baseline with exact documents, hashes, routes, supersessions, reservations, Unknowns and external-source crosswalk.
+
+## Gate A2 — Normative baseline freeze
+
+Status: PASS
+
+Selected semantic boundary:
+- Freeze the reconciled numbered corpus as one controlled alpha baseline with exact document hashes, authority/routing relationships, explicit supersessions, provisional and reserved matters, unresolved Unknowns, adopted external-source lineage and one primary governing proposition for every architecture surface.
+
+Authority check:
+- The Gate A2 acceptance criteria and Gate B sequence in `project_control/normative_authority_top_down_alignment/EXEC_PLAN.md` were reread immediately before mutation.
+- Mutation remained inside the task-local baseline manifest and required task-local progress, read-manifest, validation and living-plan evidence.
+- No source, test, schema, fixture, migration, configuration, script or governed generated artefact was changed.
+
+Semantic reading completed:
+- The final routed corpus was reread in connected order: routing index; every numbered core/working pair `01` through `11`; vocabulary README, consolidation workflow and semantic registry.
+- The proposition register, external-source decisions and implementation-truth ledger were reconciled as subordinate evidence and were not permitted to create normative authority.
+- The freeze was accepted proposition by proposition. Hashing, row counting and reference checks were used only after semantic acceptance for deterministic validation.
+
+Semantic findings:
+- The corpus has one coherent distinction between execution/mutation authority and admitted system meaning.
+- Core documents remain frozen baselines; numbered working companions are admitted supplements, corrections or explicit supersession records.
+- Historical admissions retained in `06.1` and other overlays are lineage only and cannot reopen current mutation authority or assert current maturity.
+- The architecture blueprint supplies the canonical eighteen-surface review order. Each surface has an exact core proposition, an exact current-alpha status proposition in `11.1`, a structural status and a downstream Gate B route.
+- All eighteen surfaces are currently `thin_seam`; none is `implemented`.
+- The current implementation-status cells for 5.10, 5.11, 5.12, 5.13 and 5.14 are explicitly superseded by `11.1`; their target structural law remains active.
+- External vendor and standards guidance is frozen only through the recorded project-specific decisions in `EXTERNAL_SOURCE_DECISIONS.md`; it is not a floating authority.
+- Alpha operational requirements, role-specific identity/replay envelopes, vocabulary semantic/machine parity, proof-system closure and the missing historical blueprint receipt remain explicit Unknowns or reservations rather than false completion claims.
+
+Change made:
+- Populated `NORMATIVE_BASELINE_MANIFEST.tsv` with 51 records: two execution-context records, 26 active routed/control document records, 18 architecture-surface records and five explicit Unknown/reservation records.
+- Recorded exact SHA-256 values for every document and control context included in the freeze.
+- Added direct proposition lookup, routing relationships, supersessions, structural/current status, unresolved Unknowns and adopted external-source crosswalks.
+- Updated the full-read manifest with final Gate A2 connected-reread evidence and updated this ExecPlan's living progress without changing programme scope.
+
+Acceptance result: PASS
+
+Known true:
+- A reader can identify the exact normative proposition and current-alpha status governing each of the eighteen architecture surfaces without consulting tests or code.
+- Every routed normative document and addendum is present in the baseline manifest with its current hash and effective role.
+- The five blueprint implementation-status corrections are explicit and bounded to current alpha truth.
+- Reserved production concerns and incomplete alpha boundaries remain visible.
+- The vocabulary registry/projection mismatch is frozen as an unresolved semantic obligation, not automatically reconciled.
+- Gate A is complete: A0 PASS, A1 PASS, A2 PASS.
+
+Ruled out:
+- Treating tests, code, receipts, ledgers, generated vocabulary or historical admissions as normative authority.
+- Treating external vendor guidance as an automatically changing project override.
+- Treating a `thin_seam`, placeholder, repository interface or green test as proof of end-to-end implementation, durability or operational maturity.
+- Treating manifest generation, hashing, search, counts or cross-reference checking as semantic acceptance.
+- Quietly resolving Unknowns by inventing production requirements or bulk-merging vocabulary meanings.
+
+Validation summary:
+- Manifest schema, unique record keys and TSV shape passed.
+- All 28 document/control hashes in the manifest matched current bytes.
+- All 25 documents routed by the routing index were represented, plus the routing index itself.
+- The exact ordered surface set `5.1` through `5.18` was present once each; all current statuses were `thin_seam`, with the exact four `Provisional` structural surfaces preserved.
+- Every referenced external decision and proposition identifier resolved to the admitted evidence register.
+- Five explicit Unknown/reservation records were present.
+- `git diff --check` passed and changed paths remained confined to the active task-control pack.
+
+Next gate:
+- Gate B01: raw input definitions and source identity. Begin with full semantic reading of the normative propositions, actual input contracts/adapters, fixtures and current evidence for that boundary before any test or code mutation.
