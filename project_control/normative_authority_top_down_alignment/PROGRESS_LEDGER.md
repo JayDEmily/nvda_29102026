@@ -555,3 +555,15 @@ Mandatory semantic reads before acceptance:
 - current audit evidence for B01 as subordinate evidence.
 
 Acceptance remains pending until inputs, outputs, owners, identifiers, schema/version facts, extension boundary, fail-closed behaviour, current tests, current implementation and the exact normative/test/code gaps are understood semantically and recorded without automated judgement.
+
+## Gate B amendment — semantic reconstruction and conformance mapping
+
+**Outcome:** PASS.
+
+By direct user authority, Gate B is amended before further B01 work. Gate B is now read-only semantic cartography. It must produce plain-English behaviour statements, manually trace observed code, map current test claims without treating them as authority, and record exact normative/test/code deltas. It must not repair source or tests. Correct graceful failure, honest placeholders and uncomposed alpha seams are classified without automatically becoming defects.
+
+**Known true:** Gate A remains frozen and unchanged. Source, tests, configuration, schemas, fixtures and migrations remain closed during Gate B.
+
+**Ruled out:** using test execution, search, ASTs, scripts, headings or inventories as semantic acceptance; beginning Gate C or D repair before Gate B reconstruction is complete.
+
+**Next gate:** B01 raw input definitions and source identity under the amended Gate B method.

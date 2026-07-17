@@ -69,3 +69,8 @@ src/nvda_desk/upstream/market_substrate.py	B01 market substrate input aggregatio
 src/nvda_desk/upstream/raw_signal_coverage.py	B01 raw signal family scope-lock implementation	read_full	read-only current implementation evidence	Read all 41 lines
 src/nvda_desk/upstream/raw_signal_ingress.py	B01 raw signal ingestion implementation	read_full	read-only current implementation evidence	Read all 93 lines
 src/nvda_desk/upstream/strategic_ladder.py	B01 adjacent upstream service inspected for boundary classification	read_full	read-only evidence; likely downstream of raw input identity	Read all 136 lines; classification remains pending
+project_control/normative_authority_top_down_alignment/EXEC_PLAN.md	Active programme plan reread before Gate B amendment	read_full_then_mutated	amended by direct user authority to semantic cartography	Read in full before amendment; changed plan will be reread before acceptance
+project_control/normative_authority_top_down_alignment/PROGRESS_LEDGER.md	Current task-local live state	read_full	will record Gate B amendment and boundary acceptance	Read in full before Gate B amendment
+project_control/normative_authority_top_down_alignment/TOP_DOWN_ALIGNMENT_REGISTER.tsv	Existing Gate B register	read_full	will be replaced or expanded by Gate B reconstruction evidence	Read in full before Gate B amendment
+project_control/normative_authority_top_down_alignment/IMPLEMENTATION_TRUTH_LEDGER.tsv	Current alpha status evidence	read_full	read-only input to Gate B classifications	Read in full before Gate B amendment
+project_control/normative_authority_top_down_alignment/VALIDATION_LOG.md	Current validation evidence	read_full	will receive Gate B amendment validation	Read in full before Gate B amendment

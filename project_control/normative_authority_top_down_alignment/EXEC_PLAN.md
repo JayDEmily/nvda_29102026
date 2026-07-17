@@ -140,8 +140,10 @@ Create a baseline manifest recording:
 
 **Pass:** a reader can determine exactly which normative proposition governs each architecture surface without consulting tests or code.
 
-### Gate B — Top-down input-to-output semantic alignment
-Proceed sequentially, one boundary at a time:
+### Gate B — Top-down semantic reconstruction and conformance mapping
+Gate B is semantic cartography, not repair. It reconstructs what the alpha system is intended to do and what it currently does, including incomplete paths, honest placeholders, correct graceful failures, hidden fallbacks, uncomposed components, contradictions, dead ends and Unknowns. Tests, source, configuration, schemas, fixtures and migrations remain read-only throughout Gate B.
+
+Proceed sequentially, one semantic boundary at a time:
 
 1. raw input definitions and source identity;
 2. input envelopes, schemas and validation;
@@ -156,19 +158,69 @@ Proceed sequentially, one boundary at a time:
 11. exit and close behaviour;
 12. outputs, receipts, reporting and replay.
 
-For each boundary, establish:
-- inputs and outputs;
-- owning contract;
-- identifier origin and propagation;
-- schema and policy versioning;
-- current alpha status;
-- replaceable extension mechanism;
-- fail-closed behaviour;
-- current tests;
-- current implementation;
-- exact gap between normative intent, test and code.
+For every boundary, first write a plain-English behaviour statement that a systems architect can understand without reading code. Each statement must establish:
 
-**Pass:** the boundary is normatively clear, testable, modular at its known volatility point and truthfully represented in code and documentation.
+- the human trading or operational purpose;
+- actual inputs and their meaning;
+- the interpretation, transformation or decision performed;
+- actual outputs and downstream use;
+- time, ordering and state dependence;
+- identity and lineage behaviour;
+- the observed current alpha status.
+
+The current alpha status must use one of these exact classifications:
+
+- `operates_consistently_with_intent`;
+- `partially_implements_intent`;
+- `honest_placeholder`;
+- `correctly_fails_closed`;
+- `locally_implemented_not_composed`;
+- `behaves_differently_from_intent`;
+- `unreachable`;
+- `Unknown`.
+
+For every boundary, reconstruct four distinct views:
+
+1. **Normative view:** exact frozen propositions describing what must happen.
+2. **Observed implementation view:** manual semantic trace from entry to output, including branches, fallbacks, state changes and termination.
+3. **Test view:** what current tests actually prove, assume, omit or misrepresent. Tests must be classified as `normatively_aligned`, `partially_aligned`, `implementation_locked`, `insufficient`, `misleading`, or `absent`.
+4. **Conformance view:** exact delta between normative requirement, current test claim and observed code behaviour.
+
+A failing test is evidence, not meaning. A passing test is bounded proof, not conformance certification. Syntax errors, incomplete wiring or graceful failure do not prevent semantic reconstruction. The worker must read and trace the code as connected meaning; execution, search, ASTs, scripts and test runs may assist navigation or deterministic validation but may not decide or certify behaviour.
+
+Incomplete behaviour is not automatically a defect. Gate B must distinguish at minimum:
+
+- aligned thin seam;
+- honest placeholder;
+- correct graceful failure;
+- uncomposed component;
+- missing implementation;
+- incorrect implementation;
+- architectural coupling defect;
+- hidden fallback;
+- dead or unreachable path;
+- Unknown.
+
+Gate B must produce two complementary maps:
+
+- **Longitudinal flow map:** information and decisions from source artefact through ingress, preparation, cognition, risk, execution, exit/close and review/replay.
+- **Transverse ownership map:** meaning, owner, writers, readers, state, extension seam and replacement impact for cross-cutting capabilities such as temporal context, financial calendar, dynamic coefficients, cognitive stack, Parallel Risk Lane, vocabulary, DMPV3, lineage, persistence and review.
+
+DMPV3 must be mapped only from the precise boundary where packet carriage begins. Pre-DMPV3 raw and canonical inputs must not be redescribed as DMPV3 merely for architectural neatness.
+
+Required Gate B artefacts:
+
+- `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md`;
+- `END_TO_END_FLOW_MAP.tsv`;
+- `TRANSVERSE_OWNERSHIP_MAP.tsv`;
+- `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`;
+- `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`;
+- `GATE_C_TEST_REQUIREMENTS.tsv`;
+- updated `TOP_DOWN_ALIGNMENT_REGISTER.tsv`, `FULL_READ_MANIFEST.tsv`, `PROGRESS_LEDGER.md` and `VALIDATION_LOG.md`.
+
+**Pass:** every material sequential path and transverse capability is understood and described semantically from input to output; all incomplete, contradictory, graceful-failure, fallback, dead-end and Unknown behaviour is explicitly classified; every observed behaviour is mapped to frozen normative propositions and current test evidence; and no material behaviour remains unlabelled. Code correctness is not required for Gate B to pass.
+
+**Fail:** any material path is inferred from filenames, tests or automation instead of semantic reading; a failure is repaired before the complete boundary is understood; a passing test is treated as meaning or architecture proof; an incomplete alpha seam is automatically labelled defective; or source/tests are mutated during reconstruction.
 
 ### Gate C — Tests from normative authority
 For each accepted Gate B boundary:
@@ -198,6 +250,12 @@ Maintain within this directory:
 - `EXTERNAL_SOURCE_DECISIONS.md`;
 - `NORMATIVE_BASELINE_MANIFEST.tsv`;
 - `TOP_DOWN_ALIGNMENT_REGISTER.tsv`;
+- `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md`;
+- `END_TO_END_FLOW_MAP.tsv`;
+- `TRANSVERSE_OWNERSHIP_MAP.tsv`;
+- `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`;
+- `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`;
+- `GATE_C_TEST_REQUIREMENTS.tsv`;
 - `VALIDATION_LOG.md`.
 
 These are evidence and execution aids. They do not become semantic authority merely by existing.
@@ -227,11 +285,14 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-17: Gate A1 completed through full semantic reconciliation of routed normative units `01/01.1` through `11/11.1`, including vocabulary authority and the eighteen-surface blueprint.
 - 2026-07-17: Gate A2 completed through one controlled normative baseline manifest containing exact document hashes, routing, supersessions, alpha reservations, explicit Unknowns, external-source decisions and direct governing-proposition lookup for all eighteen architecture surfaces.
 
+- 2026-07-17: Gate B amended by direct user authority from alignment/repair wording to read-only semantic reconstruction and conformance mapping, with plain-English behaviour statements, longitudinal and transverse maps, and explicit separation of normative, test, code and conformance views.
+
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
 - Semantic judgement remains human-like LLM work performed after full reading; automation is restricted to mechanics.
 - The existing numbered core/addendum model is preserved.
 - Normative coherence precedes test and code alignment.
+- Gate B is semantic cartography only. It may classify defects and Gate C requirements but may not modify tests, source, configuration, schemas, fixtures or migrations.
 
 ## Roadblocks
 None recorded at plan creation.
