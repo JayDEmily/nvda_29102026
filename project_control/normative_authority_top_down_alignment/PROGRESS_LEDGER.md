@@ -325,3 +325,43 @@ Ruled out:
 
 Next gate:
 - Semantic unit 09/09.1: DMPV3 packet identity, envelope semantics, source/domain authority carriage, temporal meaning, lineage, invalid/degraded states and deterministic preservation.
+
+## Gate A1 — Semantic unit 09/09.1
+
+Status: PASS
+
+Semantic findings:
+- The core correctly establishes one canonical packet shell but did not define whether `id` named a packet occurrence, a domain object, or an upstream artefact, nor how `source` differed from the concrete producer and external provider.
+- `traceid`, `runid`, `scenarioid`, immediate parentage and domain lineage were all present but lacked distinct ownership and lawful-generation rules; current builders silently derive or default several of them.
+- The lineage field list existed without exact field meanings or a rule for role-specific mandatory subsets, allowing empty defaults to appear complete.
+- `valid` and `degraded` could be inferred from payload construction and generic violations rather than the actual checks required for the packet role; the corpus did not explicitly reject mandatory identity, lineage or authority failures before governed emission.
+- Human summaries and extensions were bounded in the core but still required explicit prohibition from becoming hidden machine authority, canonical-field substitutes or unversioned behavioural switches.
+- The temporal supplement correctly separated packet emission time from source observation time, but replay law needed to separate exact readback of the preserved original from a newly emitted replay result.
+- Current packet contract and builder paths are useful alpha implementation evidence, but their defaults do not prove governed identity, lineage, validation or replay compliance.
+
+Change made:
+- Expanded `09.1` with packet occurrence/source/producer law, owner-supplied execution-context identities, exact lineage meanings, validation and emission constraints, non-authoritative summary/extension rules, replay occurrence law, and explicit current-alpha implementation truth.
+- Preserved the existing source temporal mapping and prepared-context/review packet meanings.
+- Recorded role-specific mandatory lineage and validation subsets as Gate B work rather than guessing them across all packet families during normative reconciliation.
+
+Acceptance result: PASS
+
+Known true:
+- `source` plus `id` identifies a distinct DMP packet occurrence; packet identity cannot replace source, domain, decision, state, policy, receipt or execution identity.
+- `source`, `producer`, external provider, `traceid`, `runid`, `scenarioid`, immediate parent packet identity and domain lineage are separate meanings with separate owners.
+- Packet builders may construct packet-carriage metadata only and must fail closed rather than invent required upstream or execution-context authority.
+- Each lineage field now has a bounded meaning; empty default lineage does not prove absence of material dependencies.
+- Validation status is limited to actual role-required checks. Mandatory structural, identity, lineage, semantic or authority failure cannot be normalised into a usable governed packet.
+- Summary and extensions remain inspection/compatibility material and cannot create hidden decision authority.
+- Reading a preserved original returns the original envelope; a newly emitted replay result is a new packet occurrence linked through replay lineage.
+- Current builder defaults are recorded as unresolved alpha implementation truth for later Gate C/D correction, not silently treated as compliant.
+
+Ruled out:
+- Treating packet `id`, trace/run/scenario IDs or hashes as generic substitutes for authoritative upstream identity.
+- Treating successful Pydantic construction, a default schema check or an empty violations list as substantive packet validity.
+- Carrying mandatory authority or unversioned behaviour only in `summary` or `dmpextensions`.
+- Reusing original packet identity for a semantically new replay result.
+- Importing distributed deployment, HTTP tracing formats, brokers or event-sourcing infrastructure into the alpha architecture.
+
+Next gate:
+- Semantic unit 10/10.1: vocabulary authority, durable-term admission, synonym/candidate process, human semantic judgement, and prevention of automated vocabulary drift.

@@ -1,6 +1,6 @@
 # External Source Decisions
 
-No external-source decision has yet been admitted.
+The following project-specific external-source decisions have been admitted through completed semantic units. External guidance remains lineage and rationale; it does not become direct runtime authority.
 
 ## Decision 01-001 — Record architecture changes as explicit linked decisions
 
@@ -295,3 +295,47 @@ Project-specific adaptation:
 Rejected interpretations:
 - Adopting vendor-specific test-size labels, cloud pipelines, production-testing practices, service-level objectives, or a fixed test-pyramid ratio as project law.
 - Maximising test count or coverage percentage instead of proving the smallest sufficient set of material propositions.
+
+## Decision 09-001 — Separate packet occurrence, source context, producer and execution identity
+
+Status: accepted for normative unit `09/09.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- CNCF CloudEvents specification: https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md
+- CNCF CloudEvents primer: https://github.com/cloudevents/spec/blob/main/cloudevents/primer.md
+- W3C Trace Context Recommendation: https://www.w3.org/TR/trace-context/
+
+Project-specific adaptation:
+- `packet.id` identifies one DMP packet occurrence within the context declared by `packet.source`; the pair is unique for each distinct occurrence.
+- `packet.source` identifies the bounded occurrence context, while `producer` identifies the concrete module instance that creates the packet structure.
+- Source/domain/decision/state/receipt identifiers remain separate and owned by their governing contracts.
+- `traceid`, `runid`, and `scenarioid` remain distinct execution-context identities supplied by their context owners, while `lineage.parentids` identifies immediate causal upstream packet occurrences.
+- A semantic transformation or newly emitted replay result is a new packet occurrence. An exact transport duplicate of the same preserved occurrence may retain the original source/id pair.
+
+Rejected interpretations:
+- Using packet `id` as a generic source, domain, decision, receipt, or state identifier.
+- Importing the W3C HTTP header format, distributed tracing infrastructure, message brokers, or distributed deployment.
+- Reusing the original packet identity for a newly emitted replay result merely because CloudEvents permits duplicate delivery of the same event identity.
+
+## Decision 09-002 — Keep validation, summaries and extensions non-authoritative and explicit
+
+Status: accepted for normative unit `09/09.1`
+
+Reviewed: 2026-07-17
+
+Sources:
+- CNCF CloudEvents specification: https://github.com/cloudevents/spec/blob/main/cloudevents/spec.md
+- CNCF CloudEvents primer: https://github.com/cloudevents/spec/blob/main/cloudevents/primer.md
+
+Project-specific adaptation:
+- Validation status is bounded to the checks actually required and performed for the admitted packet role; structural model construction alone is insufficient.
+- A degraded packet is lawful only where the role expressly permits non-binding limited carriage and every limitation is explicit.
+- Mandatory identity, lineage, semantic, or authority failure prevents governed binding emission or uses a separately admitted diagnostic/rejection contract.
+- Summary is inspection material and cannot become hidden machine authority.
+- Extensions require admitted semantics and cannot replace canonical fields, hide authority, weaken fail-closed behaviour, or create unversioned branching.
+
+Rejected interpretations:
+- Treating extension metadata as an ungoverned escape hatch for required domain or protocol fields.
+- Treating `schema_validation=true`, an empty violation list, or successful serialisation as proof that the packet or system is substantively correct.

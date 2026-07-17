@@ -112,3 +112,18 @@
 - External sources: current official IBM requirements-based testing and traceability guidance, Google test isolation/size guidance, and Microsoft layered testing guidance reviewed and adapted; vendor tooling, cloud pipelines, fixed pyramid ratios and production-readiness practices were rejected.
 - Mechanical validation: proposition-register field count passed; full-read-manifest field count passed; referenced normative paths exist; `git diff --check` passed.
 - Semantic acceptance: PASS. The corpus now limits proof claims to what was exercised, derives proof from normative propositions, separates applicability from ownership, requires isolation and declared environment closure, preserves alpha status, and reserves proof-system repairs for Gate C.
+
+## Gate A1 semantic unit 09/09.1 validation
+
+- `docs/09_DMPV3_PROTOCOL_CORE.md`: reread in full, 187 lines.
+- Original `docs/09.1_DMPV3_PROTOCOL_WORKING.md`: read in full, 39 lines.
+- Related accepted `docs/03.1`, `docs/04.1`, `docs/05.1`, `docs/07.1`, `docs/08.1`, and `docs/11`: previously read in full; relevant identifier, fail-closed, ownership, proof, replay, status and packet propositions reread for this unit.
+- `src/nvda_desk/contracts/packets.py`: read in full, 252 lines.
+- `src/nvda_desk/packets/dmp_packets.py`: read in full, 408 lines.
+- `src/nvda_desk/schemas/dmp_envelope.py`: read in full, 23 lines.
+- `src/nvda_desk/schemas/dmp.py`: read in full, 12 lines.
+- Relevant audit defects `ARC-001`, `ARC-004`, `ARC-017`, and `ARC-023`: reread semantically.
+- Changed `docs/09.1_DMPV3_PROTOCOL_WORKING.md`: reread in full, 161 lines.
+- External sources: current official CNCF CloudEvents specification/primer and W3C Trace Context Recommendation reviewed and adapted; distributed deployment, HTTP header format, brokers and CloudEvents processing infrastructure were rejected.
+- Mechanical validation: proposition-register and full-read-manifest field counts passed; referenced repository paths exist; `git diff --check` passed.
+- Semantic acceptance: PASS. Packet occurrence, source, producer, execution context, lineage, validation, summary, extension and replay meanings are now separated without granting DMP carriage domain authority or overclaiming alpha implementation maturity.
