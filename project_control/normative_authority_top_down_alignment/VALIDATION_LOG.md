@@ -192,3 +192,57 @@ Gate result:
 - Gate A2: PASS.
 - Gate A overall: PASS.
 - Next semantic boundary: Gate B01, raw input definitions and source identity.
+
+## Gate B semantic reconstruction validation
+
+Semantic acceptance:
+- PASS after manual reconstruction of 48 connected behaviour units across B01-B12 and 12 transverse capabilities.
+- The final atlas was reread as system meaning rather than accepted from generated tables or counts.
+- Source/test/configuration semantics were carried from the completed full-read audit only after current SHA-256 equality was proved; this is recorded as prior full reading with unchanged bytes, not a new reading claim.
+- The exact financial-calendar layer model and signal-informed phase algorithm were left explicit `Unknown`/missing-authority matters rather than invented.
+
+Read continuity:
+- 424 unique source, test, configuration, script, fixture and migration paths selected from the completed audit manifest.
+- 0 missing paths.
+- 0 missing prior hashes.
+- 0 SHA-256 mismatches against current repository bytes.
+- 399 previously absent paths added to the current `FULL_READ_MANIFEST.tsv`; directly reread/currently recorded paths were not duplicated.
+
+Final artefact shape and cross-reference results:
+- `END_TO_END_FLOW_MAP.tsv`: 48 rows, 13 columns, 48 unique flow IDs.
+- `TRANSVERSE_OWNERSHIP_MAP.tsv`: 12 rows, 12 columns, 12 unique capability IDs.
+- `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`: 48 rows, 11 columns, exact unit-ID parity with the flow map.
+- `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`: 16 rows, 9 columns, 16 unique item IDs.
+- `GATE_C_TEST_REQUIREMENTS.tsv`: 48 rows, 11 columns, 48 unique requirement IDs.
+- `TOP_DOWN_ALIGNMENT_REGISTER.tsv`: 12 rows, 9 columns, exact B01-B12 set.
+- `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md`: 944 lines; all 48 unit headings present; each unit contains all 14 required semantic fields.
+- Current-status classification counts: 22 `partially_implements_intent`; 10 `locally_implemented_not_composed`; 9 `honest_placeholder`; 5 `behaves_differently_from_intent`; 2 `operates_consistently_with_intent`.
+- Current-test assessment counts: 32 `partially_aligned`; 6 `normatively_aligned`; 5 `insufficient`; 3 `implementation_locked`; 2 `misleading`.
+- All explicit source-evidence paths or globs in the longitudinal flow map resolved to current repository files.
+- All 399 carried full-read rows retained matching current SHA-256 values.
+
+Scope and repository checks:
+- `git diff --name-only e9e9eba -- src tests config schemas fixtures migrations scripts pyproject.toml Makefile`: no output.
+- Gate B changed only the active task-control/evidence pack under `project_control/normative_authority_top_down_alignment/`.
+- `git diff --check`: PASS.
+
+Validation corrections retained as evidence:
+- An early mechanical summary attempted to read a non-existent CSV field name. The script stopped; no artefact finding or repository content was affected.
+- Explicit evidence-path validation caught one incorrect reconstructed path, `src/nvda_desk/analysis/replay/review_compare.py`. Semantic source evidence confirmed the implementation is `src/nvda_desk/replay/review_compare.py`; the atlas and TSVs were corrected before acceptance.
+
+Gate result:
+- Gate B: PASS.
+- Code correctness/end-to-end operation: NOT CLAIMED.
+- Gate C: not started.
+
+Gate B primary artefact SHA-256 values before commit:
+- `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md`: `780083611a5444f1da119eca7c531886ad7de6bbf42816e25d157afe53d78e63`
+- `END_TO_END_FLOW_MAP.tsv`: `5b1341ec516df2e815bf4ce6fbfa11906db23fcdc68b33f66ec065e20df077b0`
+- `TRANSVERSE_OWNERSHIP_MAP.tsv`: `cf01ba00544fae1e1a301d67bfad2f95a0e9eeab86910af27f30fbd1b97e0ddf`
+- `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`: `2319fe647d249e311d4b69ee3c145e814ae6515d3c90650c910e9d37e18a2181`
+- `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`: `e8f5f1b64f959e38427fcd6146250e027cdbb3e5dc05cde54198cf79a4e6115a`
+- `GATE_C_TEST_REQUIREMENTS.tsv`: `37ee3844d8126977aba697e1068eb318ce7e3411e7c06abfee12ebf982b7b6a2`
+- `TOP_DOWN_ALIGNMENT_REGISTER.tsv`: `72b20345897e0818b1017630d8018fe52fd6b4aa496cee56f869e1d4f1fc6945`
+
+Test execution:
+- No tests were executed for Gate B acceptance. Gate B is semantic reconstruction; existing tests were read as evidence and remained unchanged.

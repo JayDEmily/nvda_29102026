@@ -286,6 +286,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-17: Gate A2 completed through one controlled normative baseline manifest containing exact document hashes, routing, supersessions, alpha reservations, explicit Unknowns, external-source decisions and direct governing-proposition lookup for all eighteen architecture surfaces.
 
 - 2026-07-17: Gate B amended by direct user authority from alignment/repair wording to read-only semantic reconstruction and conformance mapping, with plain-English behaviour statements, longitudinal and transverse maps, and explicit separation of normative, test, code and conformance views.
+- 2026-07-17: Gate B completed as read-only semantic reconstruction: 48 behaviour units across B01-B12, 12 transverse ownership cards, 16 explicit Unknown/placeholder records and 48 proposed Gate C test requirements. Source, tests, configuration, schemas, fixtures, migrations and scripts remained unchanged.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -298,13 +299,15 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 None recorded at plan creation.
 
 ## Validation
-Gates A0, A1 and A2 passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and boundary decisions are recorded in `PROGRESS_LEDGER.md` and `NORMATIVE_PROPOSITION_REGISTER.tsv`.
+Gates A0, A1, A2 and B passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and boundary decisions are recorded in `PROGRESS_LEDGER.md`, `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md` and the Gate B TSV registers.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.
 
 ## Unknowns
 - The complete external-source lineage for every existing normative proposition is not yet established.
+- The authoritative financial-calendar business-layer model and precedence are not yet specified.
+- The signal-informed intraday phase policy requires a numbered normative addendum before its Gate C tests can be admitted.
 - Production operational requirements are intentionally not established at this stage.
 
 ## Closeout

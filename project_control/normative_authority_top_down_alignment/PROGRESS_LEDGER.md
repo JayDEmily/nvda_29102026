@@ -2,7 +2,7 @@
 
 ## Gate A0 — Control and corpus establishment
 
-Status: active
+Status: PASS
 
 Known true:
 - Baseline branch and commit were clean before branch creation.
@@ -35,7 +35,7 @@ Next gate:
 
 ## Gate A1 — Semantic unit 01/01.1
 
-Status: validation in progress
+Status: PASS
 
 Semantic findings:
 - `docs/01_NORMATIVE_CORE.md` correctly establishes doctrine -> tests -> code, but its document-precedence wording did not distinguish system meaning from execution/mutation authority.
@@ -69,7 +69,7 @@ Next gate:
 
 ## Gate A1 — Semantic unit 02/02.1
 
-Status: validation in progress
+Status: PASS
 
 Semantic findings:
 - The core's present-tense complete-run language could be read as claiming current end-to-end implementation, which is false at alpha stage.
@@ -101,7 +101,7 @@ Next gate:
 
 ## Gate A1 — Semantic unit 03/03.1
 
-Status: validation in progress
+Status: PASS
 
 Semantic findings:
 - The domain core separated real-data admission from cognition and capital authority but did not define what lawful admission must establish about source identity, contract, temporal truth, validation, and lineage.
@@ -138,7 +138,7 @@ Next gate:
 
 ## Gate A1 — Semantic unit 04/04.1
 
-Status: validation in progress
+Status: PASS
 
 Semantic findings:
 - The core statement that the six-stage serial path “is implemented” overclaimed current alpha composition and conflicted with the newly clarified operating model.
@@ -178,7 +178,7 @@ Next gate:
 
 ## Gate A1 — Semantic unit 05/05.1
 
-Status: validation in progress
+Status: PASS
 
 Semantic findings:
 - The core structural and authority guardrails were coherent but did not define the difference between missing mandatory authority and missing optional enrichment.
@@ -538,7 +538,7 @@ Next gate:
 
 ## Gate B01 — Raw input definitions and source identity
 
-Status: IN PROGRESS
+Status: PASS as part of completed Gate B semantic reconstruction
 
 Selected semantic boundary:
 - Raw input definitions and source identity only: what counts as admitted raw input, which owner originates each source/capture/domain identity, how source temporal truth is carried, how new input families are added, and what must fail closed when authoritative identity or required source facts are absent.
@@ -567,3 +567,73 @@ By direct user authority, Gate B is amended before further B01 work. Gate B is n
 **Ruled out:** using test execution, search, ASTs, scripts, headings or inventories as semantic acceptance; beginning Gate C or D repair before Gate B reconstruction is complete.
 
 **Next gate:** B01 raw input definitions and source identity under the amended Gate B method.
+
+## Gate B — Top-down semantic reconstruction and conformance mapping
+
+Status: PASS
+
+Selected semantic boundary:
+- The complete current alpha architecture from raw input definitions through outputs, receipts, review and replay, reconstructed longitudinally and transversely without repairing tests or code.
+
+Authority and drift check:
+- The amended Gate B provisions in `EXEC_PLAN.md` were reread before acceptance.
+- The frozen Gate A baseline remained the normative authority. Direct user architecture instructions were treated as higher authority and recorded explicitly where the frozen corpus lacked the required detailed proposition.
+- Tests were interpreted as bounded evidence only. Passing tests were not used to certify meaning or conformance.
+- Source, tests, configuration, schemas, fixtures, migrations and scripts remained read-only.
+
+Semantic reading basis:
+- The source, test, configuration, fixture, migration and script corpus had been read in full during the completed architecture audit.
+- Current hashes for 424 unique implementation/test/configuration paths were compared with that audit evidence; all were byte-identical.
+- The current B01 ingress, source-identity, temporal and raw-signal files were additionally reread directly in this programme.
+- The completed audit reading is therefore carried forward honestly as `read_full_prior_audit_current_bytes_verified_unchanged`; it is not represented as a fresh reread.
+- The final behaviour atlas and each register were reread as connected Gate B outputs before acceptance.
+
+Required artefacts completed:
+- `PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md`: 48 plain-English semantic units across B01-B12.
+- `END_TO_END_FLOW_MAP.tsv`: 48 longitudinal flow rows.
+- `TRANSVERSE_OWNERSHIP_MAP.tsv`: 12 cross-cutting ownership cards.
+- `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`: 48 normative/test/code comparison rows.
+- `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`: 16 explicit Unknown, reserved, placeholder or missing-authority items.
+- `GATE_C_TEST_REQUIREMENTS.tsv`: 48 proposed test requirements derived from the semantic map, not yet admitted as tests.
+- `TOP_DOWN_ALIGNMENT_REGISTER.tsv`: one summary row for each of the 12 sequential boundaries.
+- `FULL_READ_MANIFEST.tsv`, `PROGRESS_LEDGER.md`, `VALIDATION_LOG.md` and the living ExecPlan updated.
+
+Boundary outcomes:
+- **B01 — Raw inputs/source identity:** Local source and raw-signal contracts exist, but there is no single composed ingress or mandatory source-artefact/capture identity. Calendar reference import is the strongest aligned local seam.
+- **B02 — Envelopes/validation:** Prepared and stage-input envelopes are useful typed alpha boundaries, but mandatory cross-stage identity, schema and policy versions remain incomplete. DMPV3 begins after preparation/at deliberate module outputs, not at raw input.
+- **B03 — Canonicalisation:** Merge and derivation behaviour is deterministic locally, but field-level conflict/provenance and derivation-version lineage are incomplete.
+- **B04 — Identifier/lineage:** Local IDs are numerous, but origin roles are inconsistent; current paths can omit or manufacture authoritative execution/source identity.
+- **B05 — State ownership:** State owners are fragmented. Most material repositories are process memory; Parallel Risk also retains module-global mutable policy history.
+- **B06 — Persistence:** Narrow SQLite persistence is real but not composed as the material state authority. In-memory adapters are honest alpha placeholders only when labelled non-durable.
+- **B07 — Transformations/algorithms:** Several local deterministic classifiers exist, but the six-stage orchestrator is incomplete and has a hidden structural-inspection fallback. Current intraday phase is fixed-clock classification and does not implement the user-required signal-informed phase cognition.
+- **B08 — Playbook/execution:** Registry and eligibility seams are modular locally, but runtime composition supplies no candidate families, so registry-driven strategy selection is not exercised end to end.
+- **B09 — Risk/policy:** Parallel Risk has substantial local semantics; the final-risk helper does not actually join that product, and capital authority is locally bounded but not composed from authoritative owners.
+- **B10 — Simulated execution:** Opening is a correctly bounded non-executing seam; the paper broker is an honest placeholder; live inventory is a useful read model over non-durable state.
+- **B11 — Exit/close:** Active provisional policy and overnight-analysis seams exist, but authoritative input construction, policy-version lineage and durable lifecycle state are incomplete.
+- **B12 — Outputs/replay/API:** Review explanation is the strongest aligned output seam. Reporting and replay are bounded comparison/projection utilities, not end-to-end reconstruction. The API shell owns excessive mapping, local state and fallback-identity responsibility.
+
+Transverse findings:
+- Financial calendar, temporal phase, DMPV3, dynamic coefficients, serial cognition, Parallel Risk, playbooks, persistence, lineage/replay, review, API composition and vocabulary were mapped independently of the linear flow.
+- The exact financial-calendar business-layer model remains `Unknown`: code exposes arbitrary named reference layers plus projection, operational memory and bounded SQL surfaces, but the frozen normative corpus does not define one authoritative four-layer model or precedence.
+- The signal-informed intraday phase requirement is now direct user authority, but exact signals, state/history, thresholds, confidence and graceful-degradation semantics must be captured in a numbered normative addendum before Gate C can lawfully encode them.
+- Production retention, RTO/RPO, deployment topology and production scaling remain out of scope. Gate B records only the logical state and replay obligations needed for alpha architecture.
+
+Acceptance result: PASS
+
+Known true:
+- Every material sequential boundary B01-B12 has at least one explicit semantic unit; all 48 unit IDs are unique.
+- Every unit states purpose, inputs, transformation, outputs, downstream use, time/state dependence, identity/lineage, current alpha status, normative view, observed code, current tests, test assessment, conformance and Gate C requirement.
+- All current statuses use the exact Gate B classification model; all test assessments use the exact amended ExecPlan model.
+- All incomplete, contradictory, hidden-fallback, uncomposed and Unknown behaviour identified during semantic tracing is labelled rather than repaired or concealed.
+- No current code-correctness claim is made. Gate B passes because current meaning and behaviour are reconstructed, not because the system works end to end.
+
+Ruled out:
+- Treating a green test, model validation, registry entry, abstract class or process-memory read/write as architecture proof.
+- Treating every graceful stop or placeholder as a defect.
+- Forcing transverse capabilities into one artificial linear stage.
+- Describing pre-preparation raw inputs as DMPV3 packets.
+- Inventing a financial-calendar layer model or temporal phase algorithm from filenames, tests, plans or plausible trading knowledge.
+- Mutating tests or code during reconstruction.
+
+Next lawful gate:
+- Gate C may begin only proposition by proposition. Items requiring missing normative authority—especially the signal-informed phase policy and authoritative calendar-layer model—must first receive a numbered normative addendum or explicit architecture decision. Other Gate C units may derive tests from already frozen propositions without waiting for unrelated decisions.
