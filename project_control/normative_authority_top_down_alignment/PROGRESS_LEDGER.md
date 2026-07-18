@@ -637,3 +637,29 @@ Ruled out:
 
 Next lawful gate:
 - Gate C may begin only proposition by proposition. Items requiring missing normative authority—especially the signal-informed phase policy and authoritative calendar-layer model—must first receive a numbered normative addendum or explicit architecture decision. Other Gate C units may derive tests from already frozen propositions without waiting for unrelated decisions.
+
+## Gate C — Normative test authority and executable contract
+
+Status: IN PROGRESS
+
+2026-07-18 opening decision:
+- Gate C was amended by direct user authority before test mutation.
+- Production source and runtime configuration remain frozen.
+- All 48 Gate B requirements will receive explicit ready/blocked/deferred disposition.
+- Existing tests will be semantically classified before any replacement or enrichment.
+- Red normative tests are accepted evidence of Gate D implementation work; Gate C does not require the current alpha implementation to become green.
+- Missing product meaning will remain blocked and named rather than inferred.
+
+Known true:
+- Gate A normative baseline is frozen at commit `5b1bac3`.
+- Gate B semantic reconstruction is complete at commit `db0d349`.
+- The current branch was clean before Gate C opening.
+
+Ruled out:
+- changing production code or configuration during Gate C;
+- weakening tests to match current implementation;
+- treating passing current tests as normative authority;
+- inventing the financial-calendar layer model, signal-informed temporal policy, production durability requirements or other missing product meaning.
+
+Next acceptance unit:
+- C00 test-authority inventory, prerequisite disposition and existing-test semantic classification.

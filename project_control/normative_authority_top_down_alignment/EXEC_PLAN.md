@@ -222,14 +222,46 @@ Required Gate B artefacts:
 
 **Fail:** any material path is inferred from filenames, tests or automation instead of semantic reading; a failure is repaired before the complete boundary is understood; a passing test is treated as meaning or architecture proof; an incomplete alpha seam is automatically labelled defective; or source/tests are mutated during reconstruction.
 
-### Gate C — Tests from normative authority
-For each accepted Gate B boundary:
-1. derive acceptance tests from exact normative propositions;
-2. test positive behaviour, false-positive resistance, missing-authority failure, extension/substitution behaviour and relevant replay determinism;
-3. ensure tests do not mutate governed tracked artefacts;
-4. run targeted tests before implementation changes where a red test is lawful and informative.
+### Gate C — Normative test authority and executable contract
+Gate C converts Gate B's 48 semantic behaviour units into an executable contract derived from the frozen normative baseline. Production source and runtime configuration remain unchanged. A red test may be an accepted Gate C result when it truthfully exposes an implementation gap; Gate D owns implementation repair.
 
-**Pass:** tests prove the normative contract rather than merely exercising current implementation.
+For each Gate B requirement:
+1. classify it as `ready_for_test_design`, `blocked_missing_normative_authority`, or `deferred_by_explicit_authority`;
+2. identify the exact frozen normative proposition and Gate B semantic unit;
+3. semantically read every existing relevant test and classify it as `preserve_unchanged`, `enrich`, `split`, `replace_implementation_locked`, `retire_misleading`, or `retain_non_authoritative_regression`;
+4. design positive, negative, false-positive-resistance, graceful-failure, identity/lineage, substitution, state-isolation and replay cases where the proposition requires them;
+5. write executable tests for every ready requirement without changing production code;
+6. preserve blocked requirements as explicit authority prerequisites rather than inventing product meaning;
+7. run the admitted Gate C tests against the untouched implementation and record truthful red/green/error/blocked evidence;
+8. route each normative failure into one bounded Gate D implementation unit.
+
+Required Gate C artefacts:
+- `GATE_C_TEST_AUTHORITY_REGISTER.tsv`;
+- `EXISTING_TEST_DISPOSITION.tsv`;
+- twelve boundary design packs under `gate_c_test_design/`;
+- `IDENTIFIER_LINEAGE_PROOF_MATRIX.tsv`;
+- `MODULARITY_SUBSTITUTION_MATRIX.tsv`;
+- `STATE_PERSISTENCE_TEST_MATRIX.tsv`;
+- `DETERMINISM_REPLAY_TEST_MATRIX.tsv`;
+- `AUTHORITATIVE_FIXTURE_REGISTER.tsv`;
+- `TEST_ISOLATION_REGISTER.tsv`;
+- `NORMATIVE_PREREQUISITE_REGISTER.tsv`;
+- `RED_GREEN_EVIDENCE.tsv`;
+- `GATE_D_IMPLEMENTATION_BACKLOG.tsv`;
+- updated `FULL_READ_MANIFEST.tsv`, `PROGRESS_LEDGER.md`, `VALIDATION_LOG.md`, and executable tests for all ready requirements.
+
+Test design rules:
+- tests express the normative proposition, not current implementation convenience;
+- a model-validation pass, registry row, same-process memory read, manifest entry or proof-block status is never sufficient by itself;
+- fixtures must identify the semantic case, provenance, schema/policy version and whether they are authoritative, synthetic-valid or deliberately invalid;
+- governed tracked artefacts are read-only during test execution; generated output uses isolated temporary locations;
+- current in-memory adapters may be tested for interface semantics but must not be represented as durable;
+- production retention, RTO/RPO, scaling and deployment requirements remain out of scope;
+- the financial-calendar layer model, signal-informed intraday phase policy and any other missing product meaning remain blocked until admitted through numbered normative authority.
+
+**Pass:** all 48 requirements have explicit disposition; every ready requirement has accepted executable normative tests; every blocked requirement names the exact missing authority; production code/configuration remains unchanged; test isolation protects governed artefacts; the red/green baseline is recorded honestly; and every failing normative test is routed into a bounded Gate D unit. Gate C does not require all tests to pass.
+
+**Fail:** tests are derived from filenames, current implementation or automation instead of frozen meaning; blocked product meaning is invented; assertions are weakened to obtain green; governed artefacts are mutated; production code is changed; or a red normative result is concealed or treated as Gate C failure solely because implementation is incomplete.
 
 ### Gate D — Code alignment
 For each Gate C unit:
@@ -256,6 +288,18 @@ Maintain within this directory:
 - `NORMATIVE_TEST_CODE_CONFORMANCE.tsv`;
 - `UNKNOWN_AND_PLACEHOLDER_REGISTER.tsv`;
 - `GATE_C_TEST_REQUIREMENTS.tsv`;
+- `GATE_C_TEST_AUTHORITY_REGISTER.tsv`;
+- `EXISTING_TEST_DISPOSITION.tsv`;
+- `gate_c_test_design/`;
+- `IDENTIFIER_LINEAGE_PROOF_MATRIX.tsv`;
+- `MODULARITY_SUBSTITUTION_MATRIX.tsv`;
+- `STATE_PERSISTENCE_TEST_MATRIX.tsv`;
+- `DETERMINISM_REPLAY_TEST_MATRIX.tsv`;
+- `AUTHORITATIVE_FIXTURE_REGISTER.tsv`;
+- `TEST_ISOLATION_REGISTER.tsv`;
+- `NORMATIVE_PREREQUISITE_REGISTER.tsv`;
+- `RED_GREEN_EVIDENCE.tsv`;
+- `GATE_D_IMPLEMENTATION_BACKLOG.tsv`;
 - `VALIDATION_LOG.md`.
 
 These are evidence and execution aids. They do not become semantic authority merely by existing.
@@ -287,6 +331,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 
 - 2026-07-17: Gate B amended by direct user authority from alignment/repair wording to read-only semantic reconstruction and conformance mapping, with plain-English behaviour statements, longitudinal and transverse maps, and explicit separation of normative, test, code and conformance views.
 - 2026-07-17: Gate B completed as read-only semantic reconstruction: 48 behaviour units across B01-B12, 12 transverse ownership cards, 16 explicit Unknown/placeholder records and 48 proposed Gate C test requirements. Source, tests, configuration, schemas, fixtures, migrations and scripts remained unchanged.
+- 2026-07-18: Gate C amended by direct user authority into a normative test-authority programme with explicit evidence deliverables, accepted red-test semantics, production-code freeze and blocked-authority handling.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.

@@ -246,3 +246,13 @@ Gate B primary artefact SHA-256 values before commit:
 
 Test execution:
 - No tests were executed for Gate B acceptance. Gate B is semantic reconstruction; existing tests were read as evidence and remained unchanged.
+
+## Gate C opening and plan amendment
+
+- Current branch before amendment: `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717`.
+- Current HEAD before amendment: `db0d349d80039f93004477cad3eb1cd058a4ab5d`.
+- Working tree before amendment: clean.
+- `EXEC_PLAN.md`, all 48 `GATE_C_TEST_REQUIREMENTS.tsv` rows, all 48 Gate B conformance rows, and all 16 Unknown/placeholder rows were read before amendment.
+- Gate C plan amended from a four-line general test gate to the user-approved normative test-authority programme.
+- `git diff --check`: PASS before commit.
+- Production source/configuration/tests changed in plan amendment: NO.
