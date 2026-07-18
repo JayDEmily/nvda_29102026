@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="19" skipped="0" tests="30" time="0.670" timestamp="2026-07-18T10:28:27.635700+00:00" hostname="795033cd828a"><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c001_c003_market_adapter_enforces_external_source_authority_recursively" time="0.048"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">def test_c001_c003_market_adapter_enforces_external_source_authority_recursively() -&gt; None:
+        payload = {
+            "snapshot_id": "snap-1",
+            "source_time_utc": _SOURCE_TIME,
+            "market_snapshot": {"spot_price": 100.0, "nested": {"trade_allowed": True}},
+        }
+    
+&gt;       with pytest.raises(ValueError, match="forbidden_external_payload_keys"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:25: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c001_c003_options_adapter_enforces_external_source_authority_recursively" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">def test_c001_c003_options_adapter_enforces_external_source_authority_recursively() -&gt; None:
+        payload = {
+            "source_time_utc": _SOURCE_TIME,
+            "market_snapshot": {"spot_price": 100.0},
+            "options_surface": {
+                "spot_price": 100.0,
+                "front_dte": 1,
+                "next_dte": 5,
+                "nested": {"authorised_notional_usd": 1_000_000},
+            },
+        }
+    
+&gt;       with pytest.raises(ValueError, match="forbidden_external_payload_keys"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:41: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">def test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it() -&gt; None:
+&gt;       with pytest.raises(ValueError, match="unsupported|typed|section|family"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:46: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_widening_payloads" time="0.001"><failure message="AssertionError: assert False&#10; +  where False = &lt;built-in method issubset of set object at 0x7ef1fc65cf20&gt;({'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)})&#10; +    where &lt;built-in method issubset of set object at 0x7ef1fc65cf20&gt; = {'bundle_id', 'input_schema_version', 'policy_version', 'source_capture_ids'}.issubset&#10; +    and   {'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)} = StageInputBundle.model_fields">def test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_widening_payloads() -&gt; (
+        None
+    ):
+        required = {
+            "bundle_id",
+            "source_capture_ids",
+            "input_schema_version",
+            "policy_version",
+        }
+&gt;       assert required.issubset(StageInputBundle.model_fields)
+E       AssertionError: assert False
+E        +  where False = &lt;built-in method issubset of set object at 0x7ef1fc65cf20&gt;({'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)})
+E        +    where &lt;built-in method issubset of set object at 0x7ef1fc65cf20&gt; = {'bundle_id', 'input_schema_version', 'policy_version', 'source_capture_ids'}.issubset
+E        +    and   {'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)} = StageInputBundle.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:61: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance" time="0.000"><failure message="AssertionError: assert False&#10; +  where False = &lt;built-in method issubset of set object at 0x7ef1fc65dd20&gt;({'alignment_policy', 'derived_field_names', 'runtime_bar_time_utc', 'source_kind', 'source_sections', 'source_snapshot_id', ...})&#10; +    where &lt;built-in method issubset of set object at 0x7ef1fc65dd20&gt; = {'derivation_versions', 'input_fingerprint', 'input_schema_version', 'preparation_policy_version', 'source_artifact_ids'}.issubset">def test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance() -&gt; None:
+        names = {field.name for field in fields(PreparedRuntimeLineage)}
+        required = {
+            "source_artifact_ids",
+            "input_fingerprint",
+            "input_schema_version",
+            "preparation_policy_version",
+            "derivation_versions",
+        }
+&gt;       assert required.issubset(names)
+E       AssertionError: assert False
+E        +  where False = &lt;built-in method issubset of set object at 0x7ef1fc65dd20&gt;({'alignment_policy', 'derived_field_names', 'runtime_bar_time_utc', 'source_kind', 'source_sections', 'source_snapshot_id', ...})
+E        +    where &lt;built-in method issubset of set object at 0x7ef1fc65dd20&gt; = {'derivation_versions', 'input_fingerprint', 'input_schema_version', 'preparation_policy_version', 'source_artifact_ids'}.issubset
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:73: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">def test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage() -&gt; None:
+&gt;       with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|sourceartifactids|inputfingerprint"
+        ):
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:77: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_ingress_identity_and_dmp" name="test_c016_dmp_domain_content_is_reproducible_when_process_metadata_is_explicit" time="0.000" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage" time="0.001"><failure message="Failed: DID NOT RAISE &lt;class 'ValueError'&gt;">def test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage() -&gt; None:
+&gt;       with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint"
+        ):
+E       Failed: DID NOT RAISE &lt;class 'ValueError'&gt;
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:34: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global" time="0.001"><failure message="AssertionError: assert [ParallelRisk...llowed=False)] == []&#10;  &#10;  Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)&#10;  &#10;  Full diff:&#10;  - []&#10;  + [&#10;  +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),&#10;  + ]">def test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global() -&gt; None:
+        first = ParallelRiskLaneService()
+        second = ParallelRiskLaneService()
+        first.evaluate_risk_policy("policy-v1", candidate_id="candidate-1")
+    
+        assert [item.decision_id for item in first.list_risk_decisions()] == ["policy-v1::candidate-1"]
+&gt;       assert second.list_risk_decisions() == []
+E       AssertionError: assert [ParallelRisk...llowed=False)] == []
+E         
+E         Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)
+E         
+E         Full diff:
+E         - []
+E         + [
+E         +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),
+E         + ]
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:50: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them" time="0.009"><failure message="KeyError: 'temporal_policy_version'">def test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them() -&gt; None:
+        receipt = DeskRuntimeOrchestrator().run_once(_bundle())
+        temporal = receipt["stage_outputs"]["temporal"]
+        regime = receipt["stage_outputs"]["regime"]
+    
+&gt;       assert temporal["temporal_policy_version"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'temporal_policy_version'
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:58: KeyError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping" time="0.001"><failure message="Failed: DID NOT RAISE any of (&lt;class 'ValueError'&gt;, &lt;class 'TypeError'&gt;)">def test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping() -&gt; None:
+&gt;       with pytest.raises((ValueError, TypeError), match="stage|bundle|input|contract"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (&lt;class 'ValueError'&gt;, &lt;class 'TypeError'&gt;)
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:63: Failed</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c032_playbook_registry_substitution_does_not_require_consumer_changes" time="0.001" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_orchestration_playbook_and_risk" name="test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs" time="0.001"><failure message="AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}">def test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs() -&gt; None:
+        signature_fields = set(DeskRuntimeOrchestrator.run_once.__annotations__)
+&gt;       assert "candidate_family_ids" in signature_fields
+E       AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:96: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_outputs_replay_and_api" name="test_c021_c048_api_does_not_own_untyped_veto_or_risk_block_state" time="0.001"><failure message="AssertionError: assert not True&#10; +  where True = hasattr(&lt;nvda_desk.api.app.HttpApp object at 0x7ef1fc7692b0&gt;, '_veto_events')">def test_c021_c048_api_does_not_own_untyped_veto_or_risk_block_state() -&gt; None:
+        app = create_app()
+&gt;       assert not hasattr(app, "_veto_events")
+E       AssertionError: assert not True
+E        +  where True = hasattr(&lt;nvda_desk.api.app.HttpApp object at 0x7ef1fc7692b0&gt;, '_veto_events')
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:10: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_outputs_replay_and_api" name="test_c041_c048_api_exit_close_path_rejects_missing_upstream_authority_instead_of_fabricating_ids" time="0.001"><failure message="AssertionError: API fabricated exit/close input authority instead of failing closed">def test_c041_c048_api_exit_close_path_rejects_missing_upstream_authority_instead_of_fabricating_ids() -&gt; (
+        None
+    ):
+        app = create_app()
+        try:
+            app.evaluate_overnight_carry({"requested_action": "hold"})
+        except (ValueError, TypeError):
+            return
+&gt;       raise AssertionError("API fabricated exit/close input authority instead of failing closed")
+E       AssertionError: API fabricated exit/close input authority instead of failing closed
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:24: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_outputs_replay_and_api" name="test_c043_daily_pnl_reporting_is_idempotent_by_report_identity_and_preserves_evidence_ids" time="0.001" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_outputs_replay_and_api" name="test_c047_replay_evaluation_requires_dataset_and_window_identity_and_cannot_promote_runtime_authority" time="0.001"><failure message="AssertionError: assert False&#10; +  where False = &lt;built-in method issubset of set object at 0x7ef1fc691b60&gt;({'chronology_rule', 'consumer_mode', 'packet_id', 'windows'})&#10; +    where &lt;built-in method issubset of set object at 0x7ef1fc691b60&gt; = {'dataset_fingerprint', 'dataset_id'}.issubset">def test_c047_replay_evaluation_requires_dataset_and_window_identity_and_cannot_promote_runtime_authority() -&gt; (
+        None
+    ):
+        from dataclasses import fields
+    
+        from nvda_desk.analysis.replay.walk_forward import WalkForwardHarnessAuthorityPacket
+    
+        names = {field.name for field in fields(WalkForwardHarnessAuthorityPacket)}
+&gt;       assert {"dataset_id", "dataset_fingerprint"}.issubset(names)
+E       AssertionError: assert False
+E        +  where False = &lt;built-in method issubset of set object at 0x7ef1fc691b60&gt;({'chronology_rule', 'consumer_mode', 'packet_id', 'windows'})
+E        +    where &lt;built-in method issubset of set object at 0x7ef1fc691b60&gt; = {'dataset_fingerprint', 'dataset_id'}.issubset
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:60: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c007_new_signal_family_is_registry_driven_and_preserves_source_identity" time="0.001" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c007_raw_signal_contract_carries_source_observation_time" time="0.001"><failure message="AssertionError: assert ({'observed_at_utc', 'source_time_utc'} &amp; {'payload', 'scope_id', 'signal_family_id', 'source_id'})&#10; +  where {'payload', 'scope_id', 'signal_family_id', 'source_id'} = set({'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])})&#10; +    where {'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])} = RawUpstreamSignalInput.model_fields">def test_c007_raw_signal_contract_carries_source_observation_time() -&gt; None:
+&gt;       assert {"source_time_utc", "observed_at_utc"} &amp; set(RawUpstreamSignalInput.model_fields)
+E       AssertionError: assert ({'observed_at_utc', 'source_time_utc'} &amp; {'payload', 'scope_id', 'signal_family_id', 'source_id'})
+E        +  where {'payload', 'scope_id', 'signal_family_id', 'source_id'} = set({'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])})
+E        +    where {'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])} = RawUpstreamSignalInput.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:64: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c014_identifier_role_matrix_is_complete_and_has_no_unowned_mandatory_role" time="0.001" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c022_durable_sql_surface_remains_bounded_demo_storage_not_material_state_owner" time="0.000" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c029_coefficient_receipt_preserves_baseline_effective_values_and_closed_authority" time="0.008" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c030_coefficient_authority_document_is_path_substitutable_and_replay_versioned" time="0.015" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c034_execution_expression_carries_candidate_identity_without_capital_or_broker_authority" time="0.001"><failure message="AssertionError: assert 'candidate_id' in {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)}&#10; +  where {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)} = ExecutionExpressionOutput.model_fields">def test_c034_execution_expression_carries_candidate_identity_without_capital_or_broker_authority() -&gt; (
+        None
+    ):
+        output = evaluate_execution_expression(
+            execution_input=ExecutionExpressionInput(),
+            eligibility_output=PlaybookEligibilityOutput(
+                admissibility_surface=EligibilityAdmissibilitySurface(
+                    permission_state=PermissionState.ALLOW,
+                ),
+                active_family_ids=["momentum_breakout"],
+                registry_id="registry-v1",
+            ),
+        )
+    
+&gt;       assert "candidate_id" in ExecutionExpressionOutput.model_fields
+E       AssertionError: assert 'candidate_id' in {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)}
+E        +  where {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)} = ExecutionExpressionOutput.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:173: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c037_capital_receipt_is_reproducible_and_serial_confidence_does_not_size" time="0.000" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c040_inventory_fill_reconciliation_is_idempotent_and_snapshot_remains_read_only" time="0.001" /><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c042_overnight_carry_contract_carries_policy_version_and_next_session_source_identity" time="0.001"><failure message="AssertionError: assert 'policy_version' in {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...}&#10; +  where {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...} = &lt;class 'nvda_desk.downstream.overnight_carry.OvernightCarryEvaluation'&gt;.model_fields">def test_c042_overnight_carry_contract_carries_policy_version_and_next_session_source_identity() -&gt; (
+        None
+    ):
+        from nvda_desk.downstream.overnight_carry import (
+            OvernightCarryEvaluation,
+            OvernightCarryReplayResult,
+        )
+    
+&gt;       assert "policy_version" in OvernightCarryEvaluation.model_fields
+E       AssertionError: assert 'policy_version' in {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...}
+E        +  where {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...} = &lt;class 'nvda_desk.downstream.overnight_carry.OvernightCarryEvaluation'&gt;.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:258: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_remaining_normative_contracts" name="test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority" time="0.001"><failure message="AssertionError: assert ({'missing_material_flags', 'missing_material_ids'} &amp; {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...})&#10; +  where {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...} = set({'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...})&#10; +    where {'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...} = DailyReviewPacket.model_fields">def test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority() -&gt; (
+        None
+    ):
+&gt;       assert {
+            "missing_material_ids",
+            "missing_material_flags",
+        } &amp; set(DailyReviewPacket.model_fields)
+E       AssertionError: assert ({'missing_material_flags', 'missing_material_ids'} &amp; {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...})
+E        +  where {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...} = set({'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...})
+E        +    where {'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...} = DailyReviewPacket.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:268: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_state_calendar_and_repositories" name="test_c006_reference_projection_has_one_explicit_owned_composition_into_operational_query_state" time="0.001"><failure message="AssertionError: assert False&#10; +  where False = hasattr(&lt;nvda_desk.calendar.operational.events.OperationalEventRepository object at 0x7ef1fc6716d0&gt;, 'ingest_precursor_context')">def test_c006_reference_projection_has_one_explicit_owned_composition_into_operational_query_state() -&gt; (
+        None
+    ):
+        bundle = FinancialCalendarImporter().load_manifest(
+            {
+                "bundle_id": "calendar-bundle-1",
+                "version": "v1",
+                "artifacts": [
+                    {
+                        "artifact_id": "calendar-artifact-1",
+                        "source_path": "calendar.json",
+                        "version": "v1",
+                    }
+                ],
+                "layers": [{"layer_id": "reference-events", "artifact_ids": ["calendar-artifact-1"]}],
+            }
+        )
+        precursor = FinancialCalendarProjectionService().project_runtime_context(
+            bundle=bundle,
+            event_rows=[
+                {
+                    "event_id": "event-1",
+                    "source_artifact_id": "calendar-artifact-1",
+                    "event_type": "fomc_window",
+                }
+            ],
+            context_id="calendar-context-1",
+            effective_at=datetime(2026, 4, 21, 13, 30, tzinfo=timezone.utc),
+        )
+        repository = OperationalEventRepository()
+    
+&gt;       assert hasattr(repository, "ingest_precursor_context")
+E       AssertionError: assert False
+E        +  where False = hasattr(&lt;nvda_desk.calendar.operational.events.OperationalEventRepository object at 0x7ef1fc6716d0&gt;, 'ingest_precursor_context')
+
+tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py:43: AssertionError</failure></testcase><testcase classname="tests.tier_a.normative_authority.test_gate_c_state_calendar_and_repositories" name="test_c019_c023_shared_memory_repository_contract_is_copy_safe_and_instance_isolated" time="0.001" /></testsuite></testsuites>

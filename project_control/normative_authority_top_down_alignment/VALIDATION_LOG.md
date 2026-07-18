@@ -256,3 +256,54 @@ Test execution:
 - Gate C plan amended from a four-line general test gate to the user-approved normative test-authority programme.
 - `git diff --check`: PASS before commit.
 - Production source/configuration/tests changed in plan amendment: NO.
+
+## Gate C validation
+
+Semantic acceptance:
+- PASS. All 48 Gate B requirements received an explicit semantic disposition.
+- 38 requirements are ready and have accepted executable test evidence.
+- 10 requirements are blocked by named missing normative authority; none was guessed.
+- Existing tests were dispositioned proposition by proposition in `EXISTING_TEST_DISPOSITION.tsv`.
+
+Artefact shape:
+- `GATE_C_TEST_AUTHORITY_REGISTER.tsv`: 48 rows, one per requirement.
+- `EXISTING_TEST_DISPOSITION.tsv`: 48 rows.
+- `gate_c_test_design/`: 12 boundary packs, B01-B12.
+- `IDENTIFIER_LINEAGE_PROOF_MATRIX.tsv`: 13 identifier roles.
+- `MODULARITY_SUBSTITUTION_MATRIX.tsv`: 9 volatility boundaries.
+- `STATE_PERSISTENCE_TEST_MATRIX.tsv`: 8 state domains.
+- `DETERMINISM_REPLAY_TEST_MATRIX.tsv`: 6 replay/determinism surfaces.
+- `AUTHORITATIVE_FIXTURE_REGISTER.tsv`: 10 fixture/corpus cases.
+- `TEST_ISOLATION_REGISTER.tsv`: 6 isolation controls.
+- `NORMATIVE_PREREQUISITE_REGISTER.tsv`: 10 blocked authority rows.
+- `RED_GREEN_EVIDENCE.tsv`: 30 executable normative test rows.
+- `GATE_D_IMPLEMENTATION_BACKLOG.tsv`: 24 bounded expected-red work units.
+
+Test execution:
+- Normative Gate C suite: 30 collected; 11 passed; 19 failed as expected implementation gaps.
+- Existing Tier A excluding Gate C tests: 1,105 passed.
+- Existing Tier B: 49 passed.
+- Tier C: no tests collected.
+- Full collection: 1,184 tests.
+- Initial monolithic existing-suite run exceeded the execution wrapper after passing beyond 93%; it was not used as completion evidence. The suite was then split lawfully into Tier A and Tier B, both of which completed green.
+
+Isolation and environment:
+- Pre/post tracked digest for completed test runs: `b785329b61c9e638a83c1851ae103ab7d137dd098084728a7ad47eb0dc9ecd6b`; unchanged.
+- Pre/post digest including tracked and intended untracked Gate C deliverables: `88f43131a85583a0f9527f372cb12e9a4ea87e4555a7d244bafef8a91e794e31`; unchanged.
+- `openpyxl==3.1.5` declared in development dependencies.
+- `uv lock --check --python 3.13.5`: PASS after lock regeneration.
+- Vocabulary clean-check targeted test: PASS and governed candidate bytes unchanged.
+- Black check on changed Python/proof files: PASS after formatting.
+- Ruff check on changed Python/proof files: PASS.
+
+Scope:
+- Trading/domain production implementation changed: NO.
+- Runtime configuration changed: NO.
+- Proof tooling changed: YES, bounded to read-only vocabulary clean-check behaviour.
+- Development dependency metadata changed: YES, to declare the dependency already required by a Tier A workbook test.
+- Assertions weakened or blocked requirements invented: NO.
+
+Gate result:
+- Gate C: PASS.
+- Current code conformance: NOT CLAIMED.
+- Gate D: not started.

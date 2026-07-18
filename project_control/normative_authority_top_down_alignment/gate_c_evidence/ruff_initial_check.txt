@@ -1,0 +1,45 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from dataclasses import fields
+ 4 | | from datetime import datetime, timezone
+ 5 | |
+ 6 | | import pytest
+ 7 | |
+ 8 | | from nvda_desk.adapters.ingress.market_snapshot_feed import adapt_market_snapshot
+ 9 | | from nvda_desk.adapters.ingress.options_surface_feed import adapt_options_surface
+10 | | from nvda_desk.contracts.packets import build_dmp_v3_envelope_kwargs
+11 | | from nvda_desk.contracts.stage_inputs import StageInputBundle
+12 | | from nvda_desk.ingress.raw_bundle_loader import RawBundleLoader
+13 | | from nvda_desk.preparation.runtime_preparer import PreparedRuntimeLineage
+   | |_________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from datetime import datetime, timezone
+ 4 | |
+ 5 | | import pytest
+ 6 | |
+ 7 | | from nvda_desk.config.playbook_registry import PlaybookRegistryDocument
+ 8 | | from nvda_desk.contracts.options_flow import OptionsFlowContextInput
+ 9 | | from nvda_desk.contracts.playbook import PlaybookDefinition
+10 | | from nvda_desk.contracts.regime import MarketRegimeContextInput
+11 | | from nvda_desk.contracts.stage_inputs import StageInputBundle
+12 | | from nvda_desk.contracts.temporal import TemporalContextInput
+13 | | from nvda_desk.runtime.orchestrator import DeskRuntimeOrchestrator
+14 | | from nvda_desk.services.parallel_risk_lane_service import ParallelRiskLaneService
+15 | | from nvda_desk.services.playbook_eligibility_service import PlaybookEligibilityService
+16 | | from nvda_desk.contracts.posture import PermissionState, PostureRiskOutput
+   | |__________________________________________________________________________^
+   |
+help: Organize imports
+
+Found 2 errors.
+[*] 2 fixable with the `--fix` option.

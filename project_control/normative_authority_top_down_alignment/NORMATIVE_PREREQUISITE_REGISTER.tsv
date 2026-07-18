@@ -1,0 +1,11 @@
+requirement_id	boundary_id	missing_authority	required_action	gate_c_status
+C-004	B01	Exact typed options identity/version/time contract remains unresolved in the frozen corpus.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-005	B01	The exact financial-calendar layer model, names and precedence remain unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-008	B02	The exact common prepared-envelope contract remains unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-011	B03	Canonical-field conflict and source-precedence policy remains unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-013	B03	The exact stage-specific carrier split and common metadata allocation remains unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-018	B05	Calendar layer ownership and precedence depend on the unresolved layer model.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-024	B06	The smallest admitted cross-state transaction boundary remains unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-026	B07	Signal-informed intraday phase inputs, transitions, history and versioning require a numbered normative addendum.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-036	B09	The final serial/parallel risk join contract and precedence remain unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed
+C-046	B12	The minimum authoritative replay envelope remains unresolved.	numbered normative addendum or explicit architecture decision	blocked_not_executed

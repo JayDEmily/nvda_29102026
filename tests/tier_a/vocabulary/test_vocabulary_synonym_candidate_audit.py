@@ -30,7 +30,12 @@ def _entry(
 
 
 def _payload(*entries: dict) -> dict:
-    return {"schema_version": "v1", "registry_version": "fixture", "notes": [], "entries": list(entries)}
+    return {
+        "schema_version": "v1",
+        "registry_version": "fixture",
+        "notes": [],
+        "entries": list(entries),
+    }
 
 
 def _candidate(
@@ -50,19 +55,27 @@ def _slug(*parts: str) -> str:
     return "_".join(parts)
 
 
-def test_vocabulary_synonym_audit_cli_bootstraps_src_import_path_without_env():
+def test_vocabulary_synonym_audit_cli_bootstraps_src_import_path_without_env_and_is_read_only():
     env = dict(os.environ)
     env.pop("PYTHONPATH", None)
+    governed_output = audit.OUTPUT_PATH
+    before = governed_output.read_bytes() if governed_output.exists() else None
 
     completed = subprocess.run(
         [sys.executable, "scripts/vocabulary_synonym_audit.py", "--check-clean"],
-        check=True,
+        check=False,
         capture_output=True,
         text=True,
         env=env,
     )
 
-    assert "vocabulary_synonym_audit=PASS candidates=0" in completed.stdout
+    assert "vocabulary_synonym_audit=PASS candidates=" in completed.stdout
+    candidate_count = int(completed.stdout.split("candidates=", 1)[1].split()[0])
+    assert completed.returncode == (1 if candidate_count else 0)
+    if candidate_count:
+        assert "vocabulary_synonym_audit=BLOCKED" in completed.stdout
+    after = governed_output.read_bytes() if governed_output.exists() else None
+    assert after == before
 
 
 def test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched(
@@ -148,7 +161,9 @@ def test_write_stamp_advances_only_after_clean_candidate_report(tmp_path, monkey
 
     assert audit.write_stamp() is None
 
-    assert json.loads(stamp_path.read_text(encoding="utf-8")) == {"fingerprint": "clean-fingerprint"}
+    assert json.loads(stamp_path.read_text(encoding="utf-8")) == {
+        "fingerprint": "clean-fingerprint"
+    }
 
 
 def test_synonym_candidate_escalation_report_marks_near_match_as_quarantine(monkeypatch):
@@ -329,7 +344,9 @@ def test_false_positives_are_rejected_through_governed_disallowed_phrases(monkey
     monkeypatch.setattr(
         audit,
         "_load_document",
-        lambda: _payload(_entry("temporal_context", "Temporal Context", disallowed_phrases=[rejected])),
+        lambda: _payload(
+            _entry("temporal_context", "Temporal Context", disallowed_phrases=[rejected])
+        ),
     )
     monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
     monkeypatch.setattr(
@@ -381,7 +398,9 @@ def test_check_clean_returns_zero_when_all_candidates_are_governed(monkeypatch, 
     monkeypatch.setattr(
         audit,
         "_load_document",
-        lambda: _payload(_entry("temporal_context", "Temporal Context", disallowed_phrases=[governed])),
+        lambda: _payload(
+            _entry("temporal_context", "Temporal Context", disallowed_phrases=[governed])
+        ),
     )
     monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
     monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", governed)]))

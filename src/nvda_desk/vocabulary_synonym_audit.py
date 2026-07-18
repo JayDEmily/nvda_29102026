@@ -122,7 +122,6 @@ def _is_python_function_declaration_identifier_fragment(
     return candidate_parts[1:] == target_parts
 
 
-
 def _candidate_slug_from_phrase(phrase: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "_", phrase.strip().casefold()).strip("_")
     if not slug:
@@ -293,7 +292,9 @@ def main(argv: list[str] | None = None) -> int:
         print("vocabulary_touch_stamp=UPDATED")
         return 0
 
-    report = write_report()
+    # A clean-check is a read-only proof operation. It must not rewrite the
+    # governed candidate artefact merely to report unresolved semantic work.
+    report = build_report() if args.check_clean else write_report()
     candidate_count = len(report["candidates"])
     print(
         "vocabulary_synonym_audit=PASS"

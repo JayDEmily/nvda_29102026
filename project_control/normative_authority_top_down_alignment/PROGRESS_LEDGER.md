@@ -640,7 +640,7 @@ Next lawful gate:
 
 ## Gate C — Normative test authority and executable contract
 
-Status: IN PROGRESS
+Status: PASS (opening record retained below)
 
 2026-07-18 opening decision:
 - Gate C was amended by direct user authority before test mutation.
@@ -663,3 +663,49 @@ Ruled out:
 
 Next acceptance unit:
 - C00 test-authority inventory, prerequisite disposition and existing-test semantic classification.
+
+## Gate C — Normative test authority and executable contract
+
+**Outcome:** PASS.
+
+Authority and method:
+- Gate A's frozen normative baseline remained controlling.
+- Gate B's 48 semantic behaviour units were used as the human-readable meaning layer.
+- Existing tests were classified as evidence, not authority.
+- No missing product meaning was inferred from code, tests, filenames or plausible trading practice.
+
+Requirement disposition:
+- 48 total requirements.
+- 38 ready requirements admitted to executable proof.
+- 10 requirements blocked by exact missing normative authority: C-004, C-005, C-008, C-011, C-013, C-018, C-024, C-026, C-036 and C-046.
+- Blocked matters include the exact calendar-layer model, signal-informed intraday phase policy, canonical conflict policy, stage-carrier split, transaction boundary, final-risk join and minimum replay envelope.
+
+Executable contract:
+- 30 new normative-contract tests were admitted.
+- 11 passed against the current alpha implementation.
+- 19 failed as expected implementation gaps.
+- Those failures map to 24 requirement-level Gate D work units because several tests prove more than one normative requirement.
+- 14 ready requirements have a green baseline; 24 ready requirements have an expected-red baseline.
+- A red result was retained rather than weakened, skipped or reclassified.
+
+Existing proof system:
+- Existing Tier A suite excluding the new normative directory: 1,105 passed.
+- Existing Tier B suite: 49 passed.
+- Existing admitted suite total: 1,154 passed.
+- Tier C contains no tests.
+- Complete collection after development dependency closure: 1,184 tests.
+
+Proof-system repairs permitted within Gate C:
+- `openpyxl==3.1.5` was declared as a development dependency and `uv.lock` regenerated, closing the previously observed collection failure.
+- Vocabulary `--check-clean` was made read-only. Its test now proves that unresolved semantic candidates produce a blocked return without rewriting the governed candidate artefact.
+- These are bounded proof-tooling/development-environment changes. No trading/domain implementation or runtime configuration was changed.
+
+Isolation:
+- The tracked-tree digest was identical before and after the normative suite and the split existing-suite runs: `b785329b61c9e638a83c1851ae103ab7d137dd098084728a7ad47eb0dc9ecd6b`.
+- A broader digest including tracked and intended untracked Gate C deliverables was identical before and after the final normative run: `88f43131a85583a0f9527f372cb12e9a4ea87e4555a7d244bafef8a91e794e31`.
+- Governed artefacts were not mutated by test execution.
+- Raw JUnit and text outputs are retained under `gate_c_evidence/`.
+
+Next lawful gate:
+- Gate D may implement the 24 ready work units one semantic boundary at a time.
+- The ten blocked requirements remain outside Gate D until a numbered normative addendum or explicit architecture decision supplies their missing meaning.

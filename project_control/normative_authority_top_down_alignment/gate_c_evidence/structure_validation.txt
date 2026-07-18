@@ -1,0 +1,3 @@
+gate_c_semantic_evidence_shape=PASS
+requirements=48 ready=38 blocked=10 green=14 expected_red=24
+normative_tests=30 passed=11 failed=19 backlog=24

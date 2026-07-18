@@ -1,0 +1,4 @@
+Using CPython 3.13.5 interpreter at: /usr/bin/python3.13
+Resolved 37 packages in 66ms
+Removed nvda-desk v0.1.0
+Added nvda10 v0.1.0

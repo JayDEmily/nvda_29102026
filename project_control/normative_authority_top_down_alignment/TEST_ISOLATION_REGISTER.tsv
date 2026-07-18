@@ -1,0 +1,7 @@
+control_id	control	proof	status
+ISO-001	governed artefact tree hash before/after tests	tracked file hashes identical after admitted test runs	PASS tracked digest b785329b61c9e638a83c1851ae103ab7d137dd098084728a7ad47eb0dc9ecd6b and all-intended-files digest 88f43131a85583a0f9527f372cb12e9a4ea87e4555a7d244bafef8a91e794e31 remained unchanged
+ISO-002	vocabulary clean check read-only	CLI test compares candidate artefact bytes before/after	PASS targeted vocabulary CLI test and full existing Tier A suite
+ISO-003	temporary output directories	test output restricted to pytest tmp_path or /tmp evidence	PASS raw execution logs written under /tmp then copied to task evidence
+ISO-004	module-global state isolation	independent service instances do not share decisions	EXPECTED RED C-020/C-035 proves module-global state leakage
+ISO-005	test-order independence	normative suite rerun with isolated process and full existing suite	PASS isolated normative process plus split Tier A/Tier B existing-suite runs
+ISO-006	declared dependency closure	uv lock includes openpyxl and complete suite collects	PASS openpyxl declared and lock regenerated; complete collection succeeds

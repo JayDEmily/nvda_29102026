@@ -1,0 +1,9 @@
+state_domain	authoritative_writer	authorised_readers	current_implementation	durability_status	contract_tests	restart_requirement
+calendar reference/projection	import/projection service	calendar consumers	process memory / immutable models	non-durable alpha	C-006; C-018 blocked	not yet admitted
+positions	position repository / inventory reconciliation	inventory; review	process memory repository	non-durable alpha	C-019/C-023/C-040	future durable adapter only when admitted
+capital state	capital state repository	capital authority; inventory	process memory repository	non-durable alpha	C-019/C-023/C-037	future durable adapter only when admitted
+execution records	broker/execution-record service	inventory; review; PnL	process memory repository	non-durable alpha	C-039/C-040/C-043	future durable adapter only when admitted
+parallel risk decisions	parallel risk service	risk join; capital	module-global mutable list	invalid shared process state	C-020/C-035	not a durability claim; first remove global ownership
+API veto/risk blocks	currently API private arrays	API endpoints	untyped private process state	not admitted state authority	C-021/C-048	must be removed or assigned typed owner
+daily PnL reports	daily PnL report service	review	process memory	non-authoritative alpha	C-043	not yet admitted
+review packets	review packet service	review consumers	constructed read-only packet	packet only	C-044/C-045	source receipts must be retained when replay admitted
