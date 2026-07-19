@@ -235,6 +235,12 @@ For each Gate B requirement:
 7. run the admitted Gate C tests against the untouched implementation and record truthful red/green/error/blocked evidence;
 8. route each normative failure into one bounded Gate D implementation unit.
 
+### Gate C active-pack Tier A admission
+
+The five files under `tests/tier_a/normative_authority/` are explicitly admitted as Tier A blocking proof by the active ExecPlan and `GATE_C_TIER_A_ADMISSION_RECEIPT.md`. Their tier does not arise from folder placement. The exact file-to-proposition, positive-proof and false-positive-proof mapping is frozen in `GATE_C_TIER_A_PROMOTION_MANIFEST.tsv`. Four ready requirements remain proven solely through previously admitted families. Ten requirements remain blocked by missing normative authority.
+
+Expected-red assertions remain blocking proof for their linked implementation units. Gate D may not weaken, skip, edit or reclassify them.
+
 Required Gate C artefacts:
 - `GATE_C_TEST_AUTHORITY_REGISTER.tsv`;
 - `EXISTING_TEST_DISPOSITION.tsv`;

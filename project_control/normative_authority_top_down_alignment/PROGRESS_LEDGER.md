@@ -709,3 +709,22 @@ Isolation:
 Next lawful gate:
 - Gate D may implement the 24 ready work units one semantic boundary at a time.
 - The ten blocked requirements remain outside Gate D until a numbered normative addendum or explicit architecture decision supplies their missing meaning.
+
+## Gate C2 reconstruction — five-file Tier A admission
+
+Status: PASS
+
+Known true:
+- The durable checkpoint at `c80978e` contains five Gate C normative test files under `tests/tier_a/normative_authority/`.
+- Folder placement alone does not admit a test family.
+- The active ExecPlan, `GATE_C_TIER_A_ADMISSION_RECEIPT.md` and `GATE_C_TIER_A_PROMOTION_MANIFEST.tsv` now explicitly admit the exact five files as Tier A for this bounded programme.
+- The five files map 34 ready requirements; C-028, C-038, C-039 and C-045 remain covered through previously admitted families; ten requirements remain blocked.
+- Positive and false-positive obligations are both recorded.
+
+Ruled out:
+- Silent Tier A admission by directory location.
+- Treating expected-red implementation gaps as permission to weaken or skip assertions.
+- Editing the central retained-test registry or proof-block manifest when active-pack authority is sufficient.
+
+Next gate:
+- Reconstruct Gate C2 proof envelopes for all 24 candidate Gate D units and freeze their open/closed decisions before any production implementation.

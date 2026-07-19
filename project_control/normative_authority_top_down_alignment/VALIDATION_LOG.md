@@ -307,3 +307,12 @@ Gate result:
 - Gate C: PASS.
 - Current code conformance: NOT CLAIMED.
 - Gate D: not started.
+
+## Gate C2 reconstruction — Tier A admission
+
+- Confirmed repository checkpoint: `c80978e`.
+- Confirmed exact five normative test paths exist and are unchanged from the durable Gate C checkpoint.
+- Confirmed `config/retained_test_registry.yaml` permits lawful active-pack admission.
+- Confirmed `tests/AGENTS.override.md` prohibits admission by folder placement alone.
+- Created bounded active-pack receipt and five-row promotion manifest with SHA-256 values, requirement mapping, positive proof and false-positive proof.
+- Production source, runtime configuration, test assertions and fixtures were not changed.
