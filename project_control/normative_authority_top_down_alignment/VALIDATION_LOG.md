@@ -316,3 +316,12 @@ Gate result:
 - Confirmed `tests/AGENTS.override.md` prohibits admission by folder placement alone.
 - Created bounded active-pack receipt and five-row promotion manifest with SHA-256 values, requirement mapping, positive proof and false-positive proof.
 - Production source, runtime configuration, test assertions and fixtures were not changed.
+
+## Gate C2 reconstruction — proof-envelope closure
+
+- Created 24 individual proof-envelope records and a 24-row register.
+- Created dependency and blocked/returned-unit registers.
+- Reconciled five existing Tier A authority conflicts and four incomplete Gate C1 behavioural proof claims without changing tests.
+- Recorded 13 proof-authority-ready units, 11 closed units, five immediately executable units and eight dependency-held units.
+- Protected test/source/configuration/fixture surfaces remain unchanged from the durable Gate C checkpoint.
+- Final mechanical and pytest validation is retained under `gate_c2_evidence/`.

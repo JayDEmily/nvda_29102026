@@ -223,62 +223,67 @@ Required Gate B artefacts:
 **Fail:** any material path is inferred from filenames, tests or automation instead of semantic reading; a failure is repaired before the complete boundary is understood; a passing test is treated as meaning or architecture proof; an incomplete alpha seam is automatically labelled defective; or source/tests are mutated during reconstruction.
 
 ### Gate C — Normative test authority and executable contract
-Gate C converts Gate B's 48 semantic behaviour units into an executable contract derived from the frozen normative baseline. Trading/domain production source and runtime configuration remain unchanged. Test/proof tooling and development-only dependency metadata may change only where required to make the proof system isolated, collectible and truthful. A red test may be an accepted Gate C result when it truthfully exposes an implementation gap; Gate D owns implementation repair.
 
-For each Gate B requirement:
-1. classify it as `ready_for_test_design`, `blocked_missing_normative_authority`, or `deferred_by_explicit_authority`;
+Gate C is divided into two acceptance stages. Gate D may not open until both stages pass.
+
+#### Gate C1 — Normative test design and executable baseline
+
+Gate C1 converts Gate B's 48 semantic behaviour units into executable contracts derived from the frozen normative baseline. Trading/domain production source and runtime configuration remain unchanged. Test/proof tooling and development-only dependency metadata may change only where required to make the proof system isolated, collectible and truthful. A red test may be an accepted Gate C1 result when it truthfully exposes an implementation gap.
+
+For each Gate B requirement, Gate C1 must:
+1. disposition the requirement as ready, blocked by missing normative authority, or explicitly deferred;
 2. identify the exact frozen normative proposition and Gate B semantic unit;
-3. semantically read every existing relevant test and classify it as `preserve_unchanged`, `enrich`, `split`, `replace_implementation_locked`, `retire_misleading`, or `retain_non_authoritative_regression`;
-4. design positive, negative, false-positive-resistance, graceful-failure, identity/lineage, substitution, state-isolation and replay cases where the proposition requires them;
+3. semantically disposition existing relevant tests;
+4. design positive, negative, false-positive, graceful-failure, identity/lineage, substitution, state-isolation and replay cases where required;
 5. write executable tests for every ready requirement without changing production code;
-6. preserve blocked requirements as explicit authority prerequisites rather than inventing product meaning;
-7. run the admitted Gate C tests against the untouched implementation and record truthful red/green/error/blocked evidence;
-8. route each normative failure into one bounded Gate D implementation unit.
+6. preserve blockers rather than inventing product meaning;
+7. run the tests against untouched implementation and record truthful red/green evidence;
+8. route every normative implementation failure into one candidate Gate D unit.
 
-### Gate C active-pack Tier A admission
+The Gate C1 artefacts are the existing Gate C authority, design, matrix, fixture, isolation, prerequisite, red/green and backlog files recorded below.
 
-The five files under `tests/tier_a/normative_authority/` are explicitly admitted as Tier A blocking proof by the active ExecPlan and `GATE_C_TIER_A_ADMISSION_RECEIPT.md`. Their tier does not arise from folder placement. The exact file-to-proposition, positive-proof and false-positive-proof mapping is frozen in `GATE_C_TIER_A_PROMOTION_MANIFEST.tsv`. Four ready requirements remain proven solely through previously admitted families. Ten requirements remain blocked by missing normative authority.
+**Gate C1 pass:** all 48 requirements have explicit disposition; ready requirements have executable normative proof; blockers name exact missing authority; production implementation remains frozen; proof isolation is demonstrated; and every implementation failure has a bounded candidate work unit. Gate C1 does not require all tests to pass.
 
-Expected-red assertions remain blocking proof for their linked implementation units. Gate D may not weaken, skip, edit or reclassify them.
+#### Gate C2 — Proof-tier authority and proof-envelope closure
 
-Required Gate C artefacts:
-- `GATE_C_TEST_AUTHORITY_REGISTER.tsv`;
-- `EXISTING_TEST_DISPOSITION.tsv`;
-- twelve boundary design packs under `gate_c_test_design/`;
-- `IDENTIFIER_LINEAGE_PROOF_MATRIX.tsv`;
-- `MODULARITY_SUBSTITUTION_MATRIX.tsv`;
-- `STATE_PERSISTENCE_TEST_MATRIX.tsv`;
-- `DETERMINISM_REPLAY_TEST_MATRIX.tsv`;
-- `AUTHORITATIVE_FIXTURE_REGISTER.tsv`;
-- `TEST_ISOLATION_REGISTER.tsv`;
-- `NORMATIVE_PREREQUISITE_REGISTER.tsv`;
-- `RED_GREEN_EVIDENCE.tsv`;
-- `GATE_D_IMPLEMENTATION_BACKLOG.tsv`;
-- updated `FULL_READ_MANIFEST.tsv`, `PROGRESS_LEDGER.md`, `VALIDATION_LOG.md`, and executable tests for all ready requirements.
+Gate C2 freezes the proof authority that later implementation must consume. It is test-governance work, not code implementation. It must:
 
-Test design rules:
-- tests express the normative proposition, not current implementation convenience;
-- a model-validation pass, registry row, same-process memory read, manifest entry or proof-block status is never sufficient by itself;
-- fixtures must identify the semantic case, provenance, schema/policy version and whether they are authoritative, synthetic-valid or deliberately invalid;
-- governed tracked artefacts are read-only during test execution; generated output uses isolated temporary locations;
-- current in-memory adapters may be tested for interface semantics but must not be represented as durable;
-- production retention, RTO/RPO, scaling and deployment requirements remain out of scope;
-- the financial-calendar layer model, signal-informed intraday phase policy and any other missing product meaning remain blocked until admitted through numbered normative authority.
+1. explicitly classify the five Gate C normative files by tier using registry, proof-block or active-pack authority rather than folder placement;
+2. map each admitted file to exact normative propositions and both positive and false-positive obligations;
+3. construct one proof envelope for each candidate Gate D unit containing the governing proposition, Gate B meaning, positive Tier A proof, negative Tier A proof, existing Tier A dependants, Tier B shadow evidence, Tier C evidence, test limitations, fixture/isolation obligations, targeted command, aggregate route, test-fallout authority and dependencies;
+4. mark each unit `proof_authority_ready` or `closed`, with the exact conflict, missing proof or upstream dependency and required return gate;
+5. prohibit Gate D from opening a closed unit or deciding, rewriting, weakening, skipping, broadening or reclassifying test authority.
 
-**Pass:** all 48 requirements have explicit disposition; every ready requirement has accepted executable normative tests; every blocked requirement names the exact missing authority; trading/domain production code and runtime configuration remain unchanged; any proof-tooling or development-dependency change is bounded and evidenced; test isolation protects governed artefacts; the red/green baseline is recorded honestly; and every failing normative test is routed into a bounded Gate D unit. Gate C does not require all tests to pass.
+Gate C2 may pass with closed units. Passing means every unit has a truthful proof-authority decision, not that every unit is ready for implementation.
 
-**Fail:** tests are derived from filenames, current implementation or automation instead of frozen meaning; blocked product meaning is invented; assertions are weakened to obtain green; governed artefacts are mutated; production code is changed; or a red normative result is concealed or treated as Gate C failure solely because implementation is incomplete.
+Required Gate C2 artefacts:
+- `GATE_C_TIER_A_ADMISSION_RECEIPT.md`;
+- `GATE_C_TIER_A_PROMOTION_MANIFEST.tsv`;
+- `GATE_C2_PROOF_ENVELOPE_REGISTER.tsv`;
+- `GATE_C2_DEPENDENCY_MAP.tsv`;
+- individual envelope records under `gate_c2_proof_envelopes/`;
+- `GATE_C2_BLOCKED_OR_RETURNED_UNITS.tsv`;
+- `GATE_C2_CLOSEOUT.md`;
+- validation evidence under `gate_c2_evidence/`.
 
-### Gate D — Code alignment
-For each Gate C unit:
-1. make the smallest implementation change satisfying the normative contract;
-2. preserve dependency inversion and explicit ownership;
-3. avoid speculative production machinery;
-4. maintain alpha status labels where implementation remains provisional;
-5. run targeted tests and applicable admitted proof blocks;
-6. record exact evidence and commit the semantic unit.
+**Gate C2 pass:** all 24 candidate units have frozen proof envelopes and explicit open/closed decisions; the five-file tier admission is exact; positive and false-positive proof is recorded; existing Tier A conflicts are not concealed; incomplete Gate C1 proof is returned rather than guessed; production source, runtime configuration, test assertions and fixtures remain unchanged; and Gate D remains closed for every unresolved unit.
 
-**Pass:** target-surface behaviour satisfies the governing tests and normative proposition without weakened validation or unrelated changes.
+### Gate D — Normative implementation alignment
+
+Gate D consumes frozen normative propositions and Gate C2 proof envelopes. It has no authority to decide or edit proof meaning. For each unit marked `gate_d_open_decision=yes`, Gate D must:
+
+1. reread the exact normative proposition, Gate B semantic statement, Gate C1 tests and Gate C2 proof envelope;
+2. confirm all envelope prerequisites are satisfied;
+3. write a pre-code implementation decision stating current behaviour, required behaviour, semantic owner, permitted files and forbidden authority expansion;
+4. make the smallest semantically complete architectural change, not merely the smallest textual patch;
+5. reread the changed input-to-output flow semantically;
+6. run targeted positive and false-positive Tier A proof, existing Tier A dependants, Tier B shadow checks and the aggregate promotion route;
+7. preserve blocked requirements, alpha status and unrelated boundaries;
+8. record evidence and commit one semantic unit.
+
+Gate D must not alter normative documents, admitted Gate C tests, their assertions or fixtures. If an envelope proves contradictory or incomplete, return the unit to Gate C2; if normative meaning is missing, return it to numbered normative authority.
+
+**Gate D pass:** every lawful open unit is implemented and semantically verified or explicitly returned; all admitted positive and false-positive proof passes without weakening; affected Tier A proof remains reconciled; blocked units remain untouched; and post-change behaviour is recorded truthfully.
 
 ## Progress and evidence files
 Maintain within this directory:
@@ -306,6 +311,13 @@ Maintain within this directory:
 - `NORMATIVE_PREREQUISITE_REGISTER.tsv`;
 - `RED_GREEN_EVIDENCE.tsv`;
 - `GATE_D_IMPLEMENTATION_BACKLOG.tsv`;
+- `GATE_C_TIER_A_ADMISSION_RECEIPT.md`;
+- `GATE_C_TIER_A_PROMOTION_MANIFEST.tsv`;
+- `GATE_C2_PROOF_ENVELOPE_REGISTER.tsv`;
+- `GATE_C2_DEPENDENCY_MAP.tsv`;
+- `gate_c2_proof_envelopes/`;
+- `GATE_C2_BLOCKED_OR_RETURNED_UNITS.tsv`;
+- `GATE_C2_CLOSEOUT.md`;
 - `VALIDATION_LOG.md`.
 
 These are evidence and execution aids. They do not become semantic authority merely by existing.
@@ -338,7 +350,8 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-17: Gate B amended by direct user authority from alignment/repair wording to read-only semantic reconstruction and conformance mapping, with plain-English behaviour statements, longitudinal and transverse maps, and explicit separation of normative, test, code and conformance views.
 - 2026-07-17: Gate B completed as read-only semantic reconstruction: 48 behaviour units across B01-B12, 12 transverse ownership cards, 16 explicit Unknown/placeholder records and 48 proposed Gate C test requirements. Source, tests, configuration, schemas, fixtures, migrations and scripts remained unchanged.
 - 2026-07-18: Gate C amended by direct user authority into a normative test-authority programme with explicit evidence deliverables, accepted red-test semantics, production-code freeze and blocked-authority handling.
-- 2026-07-18: Gate C completed: 48 requirements dispositioned; 38 ready requirements admitted; 10 blocked by exact missing normative authority; 30 new normative tests recorded 11 green and 19 expected red; 1,154 existing tests passed; 24 bounded Gate D work units created.
+- 2026-07-18: Gate C1 completed: 48 requirements dispositioned; 38 ready requirements admitted; 10 blocked by exact missing normative authority; 30 new normative tests recorded 11 green and 19 expected red; 1,154 existing tests passed; 24 bounded candidate Gate D units created.
+- 2026-07-19: Gate C2 reconstructed from the durable Gate C checkpoint: five-file Tier A admission restored; 24 proof envelopes frozen; 13 units marked proof-authority ready and 11 units closed by test conflict, incomplete Gate C1 proof or upstream proof dependency.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -351,7 +364,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 None recorded at plan creation.
 
 ## Validation
-Gates A0, A1, A2, B and C passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and boundary decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts and the Gate C authority/evidence registers. Gate D has not started.
+Gates A0, A1, A2, B, C1 and C2 passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and proof-authority decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts and the Gate C1/C2 authority records. Gate D has not started.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.
@@ -363,4 +376,4 @@ This ExecPlan and its task-local evidence files.
 - Production operational requirements are intentionally not established at this stage.
 
 ## Closeout
-Gate C complete. Gate D is the next lawful gate and has not started.
+Gate C1 and Gate C2 complete. Gate D has not started. It may consume only units marked open in the frozen Gate C2 proof-envelope register and only after their recorded dependencies are satisfied.

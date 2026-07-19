@@ -728,3 +728,25 @@ Ruled out:
 
 Next gate:
 - Reconstruct Gate C2 proof envelopes for all 24 candidate Gate D units and freeze their open/closed decisions before any production implementation.
+
+## Gate C2 — Proof-tier authority and proof-envelope closure
+
+Status: PASS
+
+Known true:
+- The five Gate C normative files have explicit active-pack Tier A authority; folder placement is not used as admission.
+- All 24 candidate Gate D units have one frozen proof envelope.
+- Thirteen units are proof-authority ready and eleven are closed.
+- Five units are immediately executable after dependency review; eight proof-ready units remain dependency-held.
+- Existing Tier A conflicts are preserved for D-010, D-017, D-021, D-031 and D-048.
+- Gate C1 behavioural proof is insufficient for D-009, D-012, D-015 and D-033.
+- D-016 and D-041 remain closed by upstream proof dependency.
+
+Ruled out:
+- Treating one red assertion as the complete proof envelope.
+- Ignoring false-positive or anti-authority tests.
+- Allowing Gate D to decide, weaken or change test authority.
+- Implementing around a closed proof prerequisite.
+
+Next gate:
+- Pause at the user-requested Gate C2 checkpoint. Gate D has not started.

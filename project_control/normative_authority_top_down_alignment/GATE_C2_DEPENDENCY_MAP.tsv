@@ -1,0 +1,25 @@
+work_unit_id	prerequisite_units	proof_authority_status	gate_d_open_decision	implementation_executable_now	dependency_effect
+D-001	none	proof_authority_ready	yes	yes	none
+D-002	none	proof_authority_ready	yes	yes	none
+D-003	D-001;D-002	proof_authority_ready	yes	yes	implementation held until all prerequisites are proof-authority ready and completed
+D-006	none	proof_authority_ready	yes	yes	none
+D-007	none	proof_authority_ready	yes	yes	none
+D-009	none	closed_gate_c1_proof_incomplete	no	no	none
+D-010	none	closed_existing_tier_a_conflict	no	no	none
+D-012	none	closed_gate_c1_proof_incomplete	no	no	none
+D-015	D-012	closed_gate_c1_proof_incomplete	no	no	implementation held until all prerequisites are proof-authority ready and completed
+D-016	D-010;D-015	closed_upstream_proof_dependency	no	no	implementation held until all prerequisites are proof-authority ready and completed
+D-017	none	closed_existing_tier_a_conflict	no	no	none
+D-020	D-017	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-021	none	closed_existing_tier_a_conflict	no	no	none
+D-025	D-009	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-027	D-009	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-031	none	closed_existing_tier_a_conflict	no	no	none
+D-033	none	closed_gate_c1_proof_incomplete	no	no	none
+D-034	D-033	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-035	D-017;D-020	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-041	D-048	closed_upstream_proof_dependency	no	no	implementation held until all prerequisites are proof-authority ready and completed
+D-042	D-041	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-044	D-015;D-016;D-041	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-047	D-016	proof_authority_ready	yes	no_dependency_held	implementation held until all prerequisites are proof-authority ready and completed
+D-048	none	closed_existing_tier_a_conflict	no	no	none

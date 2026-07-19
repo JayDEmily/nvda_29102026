@@ -517,3 +517,20 @@ docs/08_TESTING_AND_PROMOTION_CORE.md	Gate C2 proof-tier and promotion law	read_
 docs/08.1_TESTING_AND_PROMOTION_WORKING.md	Gate C2 alpha proof adequacy and isolation law	read_full_gate_c2_reconstruction	governs test authority only	Read in full before reconstruction
 config/retained_test_registry.yaml	Gate C2 native admission authority	read_full_gate_c2_reconstruction	no mutation; active-pack route used	Read in full before reconstruction
 config/proof_blocks.yaml	Gate C2 existing proof applicability and commands	read_full_gate_c2_reconstruction	no mutation; evidence only	Read in full before reconstruction
+project_control/normative_authority_top_down_alignment/GATE_D_IMPLEMENTATION_BACKLOG.tsv	Gate C2 candidate-unit inventory and required behaviour	read_full_gate_c2_reconstruction	source for 24 proof envelopes	24 rows read semantically
+project_control/normative_authority_top_down_alignment/GATE_C_TEST_AUTHORITY_REGISTER.tsv	Gate C1 accepted proof and blockers	read_full_gate_c2_reconstruction	source for proof mapping	48 rows read semantically
+project_control/normative_authority_top_down_alignment/EXISTING_TEST_DISPOSITION.tsv	Existing-test meaning, gaps and disposition	read_full_gate_c2_reconstruction	source for Tier A dependencies and limitations	48 rows read semantically
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py	Gate C2 admitted positive and false-positive proof	read_full_gate_c2_reconstruction	test authority; no mutation	Read full
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py	Gate C2 admitted positive and false-positive proof	read_full_gate_c2_reconstruction	test authority; no mutation	Read full
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py	Gate C2 admitted positive and false-positive proof	read_full_gate_c2_reconstruction	test authority; no mutation	Read full
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py	Gate C2 admitted positive and false-positive proof	read_full_gate_c2_reconstruction	test authority; no mutation	Read full
+tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py	Gate C2 admitted positive and false-positive proof	read_full_gate_c2_reconstruction	test authority; no mutation	Read full
+tests/tier_a/api/test_fwd005_api_exposure_contract.py	D-021/D-048 conflicting Tier A authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/api/test_api_boundary_surface.py	D-031/D-048 structural fallback Tier A authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/api/test_api_dto_boundary_surface.py	D-031/D-048 DTO/structural mapping authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/runtime/test_runtime_orchestrator_surface.py	D-031 partial-mapping fallback authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/packets/test_reference_packet_carriage.py	D-010 role-specific context defaulting authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py	D-017 bootstrap authority conflict	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py	D-017 bootstrap authority conflict and negative protection	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py	D-017 bootstrap compatibility authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
+tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py	D-017 lineage and bootstrap authority	read_full_gate_c2_reconstruction	conflict evidence; no mutation	Read full
