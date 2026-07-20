@@ -56,6 +56,7 @@ Use:
 Use:
 - `docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md`
 - `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md`
+- `docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md` for admitted transaction-boundary, final-risk-join and authoritative-replay completion propositions
 
 ### Testing, proof, promotion, and environment-provenance law
 Use:

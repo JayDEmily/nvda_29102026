@@ -104,3 +104,24 @@ Transverse trace: bundle identity, prepared/source references, schema/policy ver
 Contradiction result: none found. Common facts are centralised once; stage payloads stay narrow; temporal structures remain stage-specific while shared lineage remains accessible.
 
 Dependency result: `N-09` must retain the common context and deterministic projection inputs; future stage families must follow the same allocation law.
+
+
+## N-06 — Cross-state transaction boundary
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/04`/`04.1`: preserved repository-port substitution and truthful memory-versus-durable status.
+- `docs/05`: preserved fail-closed and no-false-receipt law.
+- `docs/07`/`07.1`: preserved state owner, writer, reader and receipt ownership separation.
+- `docs/09`/`09.1`: kept domain transaction identity distinct from packet/trace/run carriage while retaining lineage.
+- `docs/11`/`11.1`: preserved modular-monolith boundaries and alpha non-durability truth.
+
+Longitudinal trace: accepted domain command -> expected-state/idempotency validation -> atomic owner-state mutations + receipt -> committed result -> next owner-specific transaction -> replay reconstruction without live side effects.
+
+Transverse trace: command identity, consistency unit, repository participants, state versions, idempotency fingerprint, receipt sequence, external-effect status, adapter durability and replay lineage remain explicit.
+
+Contradiction result: none found. The decision refuses a global transaction while requiring atomic truth inside each owner-declared consistency unit.
+
+Dependency result: `N-09` must retain transaction/idempotency/state-version evidence; Gate C proof must distinguish in-process memory semantics from restart/crash durability.

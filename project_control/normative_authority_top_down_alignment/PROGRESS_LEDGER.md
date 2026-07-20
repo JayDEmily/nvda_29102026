@@ -869,3 +869,22 @@ Ruled out:
 
 Next gate:
 - `N-06` cross-state transaction boundary.
+
+
+## Normative completion — N-06 cross-state transaction boundary
+
+Status: PASS
+
+Known true:
+- Current receipt and execution stores are independent in-memory append collections and do not prove atomic consistency with material state.
+- The accepted smallest boundary is one owner-declared command/decision plus every required mutation and its attesting receipt for one consistency unit.
+- Idempotency binds key, semantic input fingerprint, state sequence, result and receipt; external effects remain pending until acknowledged/reconciled.
+
+Ruled out:
+- A success receipt appended independently from the state it claims.
+- One global transaction spanning unrelated domains.
+- Duplicate receipt-ID rejection as complete idempotency.
+- Process insertion order or a memory adapter as restart/recovery proof.
+
+Next gate:
+- `N-07` signal-informed intraday phase policy.
