@@ -973,3 +973,8 @@ Outcome: PASS. The ten former normative blockers now have 23 admitted executable
 ## 2026-07-20 — Reopened Gate C2 proof re-freeze
 
 Outcome: PASS. All 33 candidate units were re-evaluated. Twenty-two have proof authority, of which six are immediately executable and sixteen dependency-held; eleven remain closed. Six-file Gate C proof reproduced 11 green and 42 expected red; existing Tier A 1,105 and Tier B 49 passed. Production source remains unchanged.
+
+
+## 2026-07-20 — Gate D readiness review
+
+Outcome: PASS for bounded opening after durable checkpoint. Twenty-two units have frozen proof authority; six are immediately executable, sixteen dependency-held and eleven closed. Gate D implementation did not start. The authorised thread stops at the readiness checkpoint.

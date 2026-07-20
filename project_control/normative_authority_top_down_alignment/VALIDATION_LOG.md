@@ -496,3 +496,13 @@ Gate result:
 - Promotion manifest: six test hashes match current file bytes.
 - Closed-unit register exactly matches the eleven closed proof envelopes.
 - Changed production/test paths since Gate C1 commit: NONE.
+
+
+## Gate D readiness review
+
+- Revised normative freeze: present at `05c1251`.
+- Gate C1: 48 requirements admitted; 53 normative tests reproduce 11 green and 42 expected red.
+- Gate C2: 33 envelopes; 22 proof-ready, 6 immediately executable, 16 dependency-held, 11 closed.
+- Existing Tier A: 1,105 passed. Existing Tier B: 49 passed.
+- Final readiness decision: bounded PASS; implementation not started.
+- Final archive checksum is recorded in the external readiness receipt created after the readiness commit, avoiding a self-referential in-repository checksum.

@@ -438,3 +438,4 @@ Normative completion N-01 through N-09 and the expanded normative freeze are com
 
 - 2026-07-20: reopened Gate C1 established executable authority for all ten formerly blocked requirements: 23 new Tier A contract tests recorded 23 expected reds against untouched production code; nine package-aligned Gate D candidates were created but remain held pending Gate C2.
 - 2026-07-20: reopened Gate C2 re-admitted the six-file proof surface and re-froze 33 proof envelopes: 22 proof-authority ready (6 immediately executable, 16 dependency-held) and 11 closed; Gate D remained closed pending the separate readiness decision.
+- 2026-07-20: Gate D readiness review passed for a bounded opening after durable checkpoint: 22 proof-ready units, with an immediate frontier of D-001, D-002, D-007, D-050, D-051 and D-054; 16 units remain dependency-held and 11 closed. No implementation began.
