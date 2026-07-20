@@ -480,3 +480,19 @@ Gate result:
 - New test file `ruff check`: PASS.
 - New test file `black --check`: PASS after mechanical formatting; no semantic assertion changed.
 - Six-file admitted normative suite: 53 collected, 11 green, 42 expected red. Evidence: `gate_c_reopen_evidence/gate_c1_six_file_suite.xml` and `.txt`.
+
+
+## Reopened Gate C2 — regression baseline before final freeze
+
+- Existing Tier A excluding `tests/tier_a/normative_authority`: 1,105 passed.
+- Existing Tier B: 49 passed.
+- Evidence: `gate_c2_reopen_evidence/existing_tier_a.*` and `existing_tier_b.*`.
+- Six-file admitted proof baseline remains 53 tests: 11 green, 42 expected red.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+
+- Reopened Gate C2 admitted six-file suite: 53 collected, 11 green, 42 expected red; zero collection errors.
+- Proof-block manifest structure: `proof_blocks_check_all=PASS count=51`.
+- Gate C2 internal consistency: 33 unique units/envelopes; 22 proof-ready, 6 immediately executable, 16 dependency-held, 11 closed; dependency graph acyclic.
+- Promotion manifest: six test hashes match current file bytes.
+- Closed-unit register exactly matches the eleven closed proof envelopes.
+- Changed production/test paths since Gate C1 commit: NONE.

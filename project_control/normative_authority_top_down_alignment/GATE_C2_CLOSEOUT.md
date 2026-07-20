@@ -1,34 +1,40 @@
-# Gate C2 Closeout
+# Reopened Gate C2 closeout
 
-## Outcome
+## Decision
 
-**PASS** — proof authority is frozen before implementation. Gate D has not started.
+**PASS — the complete 33-unit proof authority is re-frozen.**
 
-## Accounting
+This closeout supersedes prior Gate C2 opening decisions. It does not implement production code.
 
-- Candidate implementation units: 24
-- Individual proof-envelope documents: 24
-- Proof-authority ready: 13
-- Closed: 11
-  - existing Tier A authority conflict: 5 (`D-010`, `D-017`, `D-021`, `D-031`, `D-048`)
-  - Gate C1 behavioural proof incomplete: 4 (`D-009`, `D-012`, `D-015`, `D-033`)
-  - upstream proof dependency: 2 (`D-016`, `D-041`)
-- Immediately executable after C2 dependency review: 5 (`D-001`, `D-002`, `D-003`, `D-006`, `D-007`)
-- Proof-ready but dependency-held: 8 (`D-020`, `D-025`, `D-027`, `D-034`, `D-035`, `D-042`, `D-044`, `D-047`)
+## Proof-envelope disposition
 
-## Acceptance basis
+- Candidate implementation units evaluated: 33.
+- Proof-authority ready / Gate D-open: 22.
+- Immediately executable after a separate Gate D readiness opening: 6 (`D-001`, `D-002`, `D-007`, `D-050`, `D-051`, `D-054`).
+- Proof-authority ready but dependency-held: 16.
+- Closed by incomplete behavioural proof, existing Tier A conflict or upstream proof dependency: 11.
+- Every unit has a frozen proof envelope under `gate_c2_proof_envelopes/` and a row in `GATE_C2_PROOF_ENVELOPE_REGISTER.tsv`.
 
-Gate C2 passes because every candidate unit has an explicit proof-authority decision. It does not claim that all units are ready for code changes. Existing Tier A contradictions are preserved and named. Field-presence or annotation-only assertions are not promoted into behavioural proof. Dependency-held units remain closed to implementation until their prerequisites are lawfully resolved.
+## Re-admitted proof surface
 
-## Frozen rules for Gate D
+- Six Tier A normative files admitted by bounded active-pack receipt.
+- Aggregate baseline: 53 tests — 11 green, 42 expected red.
+- Existing Tier A excluding the normative directory: 1,105 passed.
+- Existing Tier B: 49 passed.
+- Tier C: no active pytest files.
 
-- Normative documents remain authority over tests; tests remain authority over implementation.
-- Gate D may consume only units with `gate_d_open_decision=yes`.
-- Gate D may not alter admitted tests, assertions or fixtures.
-- A test conflict returns to Gate C2; missing product meaning returns to numbered normative authority.
-- Positive proof and false-positive/anti-authority proof are co-equal.
-- No unit may be implemented around a closed prerequisite.
+## Dependency corrections
 
-## Protected surfaces
+- `D-003` is dependency-held behind `D-001` and `D-002`; proof readiness is not implementation completion.
+- `D-006` is dependency-held behind `D-050` because N-02 now fixes the exact four-layer calendar authority.
+- New downstream units fail closed behind their typed upstream owners; no dependency was treated as satisfied merely because its proof envelope is ready.
 
-No production source, runtime configuration, schema, fixture, migration or test assertion was changed during Gate C2 reconstruction.
+## Mutation boundary
+
+Changed: Gate C2 receipts, manifests, registers, dependency decisions, proof envelopes, evidence and readiness records.
+
+Unchanged: production source, runtime configuration, schemas, fixtures, migrations and admitted test assertions after Gate C1 freeze.
+
+## Gate D
+
+Gate D remains closed until the separate readiness report is committed. If opened, only the six immediately executable units may begin; every dependency-held or closed unit remains prohibited.

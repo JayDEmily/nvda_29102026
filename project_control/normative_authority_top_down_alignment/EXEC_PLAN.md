@@ -437,3 +437,4 @@ This ExecPlan and its task-local evidence files.
 Normative completion N-01 through N-09 and the expanded normative freeze are complete. Reopened Gate C1 is active; all prior Gate D-open decisions remain suspended. Gate D is closed and has not started. The authorised stopping point remains the re-frozen Gate C2 and Gate D readiness checkpoint before any implementation.
 
 - 2026-07-20: reopened Gate C1 established executable authority for all ten formerly blocked requirements: 23 new Tier A contract tests recorded 23 expected reds against untouched production code; nine package-aligned Gate D candidates were created but remain held pending Gate C2.
+- 2026-07-20: reopened Gate C2 re-admitted the six-file proof surface and re-froze 33 proof envelopes: 22 proof-authority ready (6 immediately executable, 16 dependency-held) and 11 closed; Gate D remained closed pending the separate readiness decision.

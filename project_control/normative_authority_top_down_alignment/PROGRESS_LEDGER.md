@@ -968,3 +968,8 @@ Next gate:
 ## 2026-07-20 — Reopened Gate C1 executable authority
 
 Outcome: PASS. The ten former normative blockers now have 23 admitted executable tests, all red for bounded implementation gaps against untouched production code. All 48 requirements are admitted; nine candidate units `D-049` through `D-057` remain held for Gate C2. Gate D remains closed.
+
+
+## 2026-07-20 — Reopened Gate C2 proof re-freeze
+
+Outcome: PASS. All 33 candidate units were re-evaluated. Twenty-two have proof authority, of which six are immediately executable and sixteen dependency-held; eleven remain closed. Six-file Gate C proof reproduced 11 green and 42 expected red; existing Tier A 1,105 and Tier B 49 passed. Production source remains unchanged.
