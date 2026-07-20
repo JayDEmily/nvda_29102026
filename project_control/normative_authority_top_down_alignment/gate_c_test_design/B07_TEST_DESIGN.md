@@ -44,11 +44,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** misleading
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** Current temporal tests cover fixed thresholds; no admitted test proves signal-driven phase transition.
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase
 
-**Authority status:** BLOCKED — Signal-informed intraday phase inputs, transitions, history and versioning require a numbered normative addendum.
+**Authority status:** READY / ADMITTED — N-07 resolved the former normative prerequisite.
 
 ### C-027 — Market regime classification
 

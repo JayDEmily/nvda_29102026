@@ -44,11 +44,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** insufficient
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_two_complete_clear_branches_emit_only_capital_assessment_eligibility; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_any_parallel_or_serial_hard_block_forces_stand_down_and_is_retained; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_missing_branch_cannot_be_reconstructed_or_converted_by_confidence
 
-**Authority status:** BLOCKED — The final serial/parallel risk join contract and precedence remain unresolved.
+**Authority status:** READY / ADMITTED — N-08 resolved the former normative prerequisite.
 
 ### C-037 — Capital deployment authority
 

@@ -88,11 +88,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** partially_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/analysis/test_replay_evaluation_surface.py; tests/tier_b/review_replay/test_tranche_a_review_replay.py; tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction
 
-**Authority status:** BLOCKED — The minimum authoritative replay envelope remains unresolved.
+**Authority status:** READY / ADMITTED — N-09 resolved the former normative prerequisite.
 
 ### C-047 — Walk-forward and strategic-ladder analysis
 

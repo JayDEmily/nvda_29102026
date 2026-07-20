@@ -464,3 +464,19 @@ Gate result:
 - Mechanical validation: PASS for TSV width consistency, 32 manifest file-hash checks, nine accepted decision rows, ten `normative_resolved_ready_for_gate_c1` prerequisite rows, four-addendum routing presence and `git diff --check`.
 - Controlled-return forbidden-path comparison from `2118a57c7ac18f0d2db63fa82338ea924da8a82e`: `src=0`, `config=0`, `schemas=0`, `fixtures=0`, `migrations=0`, `tests=0`.
 - Vocabulary synonym report: nine pre-existing candidates; none of the four completion addenda appears in the candidate set. The clean-check remains blocked by that pre-existing proof-system issue.
+
+
+## Reopened Gate C1 — initial normative-completion contract execution
+
+- New test file syntax/collection: PASS.
+- Targeted execution: 23 collected, 0 passed, 23 expected red against untouched production code.
+- Evidence: `gate_c_reopen_evidence/normative_completion_contracts.xml`.
+- Failure classes: missing admitted contracts/modules or missing fail-closed/subordinate-authority behaviour; no collection error.
+- Vocabulary synonym report: nine pre-existing candidates; no candidate path in the reopened test file.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Gate D: CLOSED pending Gate C2 re-freeze and readiness decision.
+
+- `uv lock --check`: PASS under required CPython 3.13.5.
+- New test file `ruff check`: PASS.
+- New test file `black --check`: PASS after mechanical formatting; no semantic assertion changed.
+- Six-file admitted normative suite: 53 collected, 11 green, 42 expected red. Evidence: `gate_c_reopen_evidence/gate_c1_six_file_suite.xml` and `.txt`.

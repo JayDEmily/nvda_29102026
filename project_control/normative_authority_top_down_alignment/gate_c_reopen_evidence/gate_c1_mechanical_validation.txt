@@ -1,0 +1,24 @@
+## py_compile
+exit=0
+## ruff
+exit=1
+## black
+exit=1
+## diff-check
+exit=0
+## TSV widths and identities
+tsv_widths=PASS
+identity_counts=PASS
+ready_admitted= 48
+blocked= 0
+## uv lock check
+exit=0
+## uv ruff
+exit=2
+## uv black
+exit=2
+## uv ruff dev
+All checks passed!
+exit=0
+## uv black dev
+exit=1

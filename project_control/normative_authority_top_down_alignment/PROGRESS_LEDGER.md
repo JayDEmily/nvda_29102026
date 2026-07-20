@@ -963,3 +963,8 @@ Ruled out:
 
 Next gate:
 - Reopened Gate C1 executable authority for the ten requirements.
+
+
+## 2026-07-20 — Reopened Gate C1 executable authority
+
+Outcome: PASS. The ten former normative blockers now have 23 admitted executable tests, all red for bounded implementation gaps against untouched production code. All 48 requirements are admitted; nine candidate units `D-049` through `D-057` remain held for Gate C2. Gate D remains closed.

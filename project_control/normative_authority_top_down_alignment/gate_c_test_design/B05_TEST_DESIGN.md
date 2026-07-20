@@ -22,11 +22,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** partially_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py; test_financial_calendar_transform_boundary_surface.py; tests/tier_a/calendar_operational/test_calendar_operational_surface.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_c018_financial_calendar_contract_has_exact_four_semantic_layers; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_equal_calendar_candidates_coalesce_with_all_lineage; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_c018_unequal_or_derived_override_without_explicit_supersession_fails_closed
 
-**Authority status:** BLOCKED — Calendar layer ownership and precedence depend on the unresolved layer model.
+**Authority status:** READY / ADMITTED — N-02 resolved the former normative prerequisite.
 
 ### C-019 — Core material runtime state repositories
 

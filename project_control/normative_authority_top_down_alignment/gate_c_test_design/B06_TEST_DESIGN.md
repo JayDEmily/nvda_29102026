@@ -66,8 +66,8 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** partially_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/persistence/test_receipt_ledger_surface.py; test_execution_records_repository_surface.py; tests/tier_b/proof_model/test_checkpoint_receipt_contract.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_with_different_input_is_conflict; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt
 
-**Authority status:** BLOCKED — The smallest admitted cross-state transaction boundary remains unresolved.
+**Authority status:** READY / ADMITTED — N-06 resolved the former normative prerequisite.

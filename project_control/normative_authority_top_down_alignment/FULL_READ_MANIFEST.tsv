@@ -602,3 +602,4 @@ tests/tier_a/analysis/test_fwd002_replay_harness_contract.py	N-09 existing repla
 tests/tier_a/analysis/test_replay_evaluation_surface.py	N-09 existing comparison and lineage claims	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
 tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py	N-09 connected Gate C replay proof	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
 tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py	N-09 packet lineage proof	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py	Reopened Gate C1 executable proof for N-01 through N-09 requirements	authored_and_read_full_gate_c1_reopen	admitted Tier A normative proof surface; production remains frozen	23 collected tests; 23 expected red in gate_c_reopen_evidence/normative_completion_contracts.xml

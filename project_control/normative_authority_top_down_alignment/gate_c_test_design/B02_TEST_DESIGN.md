@@ -22,11 +22,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** partially_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py; tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py; tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c008_prepared_envelope_requires_common_identity_version_time_and_fingerprint_lineage; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c008_prepared_envelope_rejects_untagged_generic_payload_authority
 
-**Authority status:** BLOCKED — The exact common prepared-envelope contract remains unresolved.
+**Authority status:** READY / ADMITTED — N-03 resolved the former normative prerequisite.
 
 ### C-009 — Stage input bundle
 

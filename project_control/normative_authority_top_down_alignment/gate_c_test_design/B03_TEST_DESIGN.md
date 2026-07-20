@@ -22,11 +22,11 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** partially_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py; tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c011_equal_field_candidates_coalesce_and_preserve_candidate_provenance; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c011_unequal_mandatory_candidates_without_field_policy_fail_closed
 
-**Authority status:** BLOCKED — Canonical-field conflict and source-precedence policy remains unresolved.
+**Authority status:** READY / ADMITTED — N-04 resolved the former normative prerequisite.
 
 ### C-012 — Prepared feature derivation
 
@@ -66,8 +66,8 @@ Tests in this pack express the frozen normative propositions and Gate B semantic
 
 **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
 
-**Current test assessment:** normatively_aligned
+**Current test assessment:** normative_completion_contract_admitted_expected_red
 
-**Accepted target(s):** tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py; tests/tier_a/upstream_cognition/test_regime_ingress_surface.py
+**Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_allocates_one_common_context_and_narrow_references; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_rejects_mismatched_common_context_reference
 
-**Authority status:** BLOCKED — The exact stage-specific carrier split and common metadata allocation remains unresolved.
+**Authority status:** READY / ADMITTED — N-05 resolved the former normative prerequisite.
