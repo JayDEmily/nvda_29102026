@@ -812,3 +812,22 @@ Ruled out:
 
 Next gate:
 - `N-03` prepared-data common envelope.
+
+
+## Normative completion — N-03 prepared-data common envelope
+
+Status: PASS
+
+Known true:
+- Current prepared runtime surfaces preserve copy separation, temporal alignment and optional-enrichment state but use optional snapshot identity and generic payload/derived dictionaries.
+- The accepted authority separates one mandatory common envelope from an explicitly tagged typed payload variant.
+- Per-source identity/version/time, input and prepared fingerprints, validation/completeness and retrievable artefact lineage are mandatory; bounded optional degradation is explicit.
+
+Ruled out:
+- Treating `Mapping[str, Any]` or successful model construction as the authoritative prepared contract.
+- Collapsing multi-source lineage into one anonymous provenance object or one whichever-is-present source time.
+- Treating a hash alone as retrievable replay evidence.
+- Allowing prepared metadata to become candidate, risk, capital or execution authority.
+
+Next gate:
+- `N-04` canonical merge conflict and source precedence.

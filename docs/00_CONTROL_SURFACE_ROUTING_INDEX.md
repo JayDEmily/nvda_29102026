@@ -40,6 +40,7 @@ Use:
 Use:
 - `docs/04_TECHNICAL_ARCHITECTURE_CORE.md`
 - `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md`
+- `docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md` for admitted prepared-envelope, merge-policy and stage-carrier completion propositions
 
 ### Prohibited drift, prohibited shortcuts, and anti-pattern law across the governed runtime sequence
 Use:

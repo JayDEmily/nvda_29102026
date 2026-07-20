@@ -363,3 +363,15 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check remains BLOCKED by pre-existing scanner fragments/candidates. `precursor runtime context` introduced by the first N-02 draft was replaced with existing carrier class names before acceptance; no new unresolved changed-path candidate remains. Generated machine vocabulary remains intentionally unchanged under the recorded alpha parity gap.
+
+
+## Normative completion — N-03 prepared-data common envelope
+
+- Semantic decision record: `normative_completion_decisions/N-03_PREPARED_DATA_COMMON_ENVELOPE.md`.
+- Governing addendum: `docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md` sections `04.2.N03.1`-`04.2.N03.7`.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-03 changed paths; no N-03 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
