@@ -349,3 +349,17 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by nine pre-existing candidates located outside the N-01 changed paths; candidate artefact bytes remained unchanged. This result is recorded as an unrelated existing proof-system limitation, not treated as N-01 semantic failure.
+
+
+## Normative completion — N-02 financial-calendar layer model and ownership
+
+- Semantic decision record: `normative_completion_decisions/N-02_FINANCIAL_CALENDAR_LAYER_MODEL.md`.
+- Governing addendum: `docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md` sections `03.2.N02.1`-`03.2.N02.7`.
+- Durable terms admitted: `market_session_reference`, `financial_event_reference`, `operational_calendar_state`, `derived_runtime_calendar_context`.
+- Machine vocabulary JSON changed: NO; current registry/projection mismatch remains explicit alpha truth.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check remains BLOCKED by pre-existing scanner fragments/candidates. `precursor runtime context` introduced by the first N-02 draft was replaced with existing carrier class names before acceptance; no new unresolved changed-path candidate remains. Generated machine vocabulary remains intentionally unchanged under the recorded alpha parity gap.

@@ -793,3 +793,22 @@ Ruled out:
 
 Next gate:
 - `N-02` financial-calendar layer model and ownership.
+
+
+## Normative completion — N-02 financial-calendar layer model and ownership
+
+Status: PASS
+
+Known true:
+- Current code exposes reference import, projection, operational event/session state and bounded SQL storage, but technical surfaces do not by themselves define a business-layer model.
+- The accepted model contains exactly four semantic layers with explicit owners and no global precedence shortcut.
+- Operational state can supersede a named same-family fact only through explicit authorised lineage; derived context never becomes source truth.
+
+Ruled out:
+- Arbitrary manifest layer names as the business model.
+- Storage technology or repository count defining semantic layers.
+- Recency, file order, insertion order or non-empty value silently deciding precedence.
+- Treating missing financial-event evidence as proof of no events.
+
+Next gate:
+- `N-03` prepared-data common envelope.

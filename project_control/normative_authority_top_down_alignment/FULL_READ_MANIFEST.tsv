@@ -567,3 +567,17 @@ src/nvda_desk/domain/options_flow/surface_state.py	N-01 current domain consequen
 tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py	N-01 existing typed/missing-field claims	read_full_N-01	tests read-only until Gate C1 reopening	Read in full
 tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py	N-01 existing source-boundary claim	read_full_N-01	tests read-only until Gate C1 reopening	Read in full
 tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py	N-01 existing Gate C identity authority evidence	read_full_N-01	tests read-only until Gate C1 reopening	Read in full
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	N-02 exact layer-name admission law	read_full_N-02	connected vocabulary authority; not mutated	Read in full
+docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	N-02 programme vocabulary admission and current mismatch truth	read_full_N-02	mutated only for four semantic admissions	Read in full
+docs/vocabulary/vocabulary_registry.md	N-02 human semantic term authority	read_full_N-02	mutated for exact four layer terms	Read in full
+src/nvda_desk/contracts/reference_data.py	N-02 current calendar contracts	read_full_N-02	production source prohibited	Read in full
+src/nvda_desk/calendar/reference/importer.py	N-02 arbitrary layer import consequence	read_full_N-02	production source prohibited	Read in full
+src/nvda_desk/calendar/reference/projection.py	N-02 projection and crosswalk consequence	read_full_N-02	production source prohibited	Read in full
+src/nvda_desk/calendar/operational/events.py	N-02 operational state consequence	read_full_N-02	production source prohibited	Read in full
+src/nvda_desk/persistence/durable_sql.py	N-02 storage versus layer consequence	read_full_N-02	production source prohibited	Read in full
+tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py	N-02 existing reference/projection proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py	N-02 existing reference authority proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py	N-02 existing ownership isolation proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/calendar_operational/test_calendar_operational_surface.py	N-02 existing operational separation proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py	N-02 existing context-only query proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py	N-02 existing composition claim	read_full_N-02	tests read-only until Gate C1 reopening	Read in full

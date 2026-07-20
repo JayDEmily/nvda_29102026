@@ -88,6 +88,22 @@ Scope: coefficient/modifier authority
 Definition: Governed calendar/reference-data term for event timing and projection material consumed by prepared ingress, temporal context, serial cognition, and parallel risk surfaces.
 Scope: financial and event calendar architecture
 
+### Market Session Reference
+Definition: Checked, versioned calendar layer containing authoritative trading-date, venue/session-state, holiday, half-day and admitted session-boundary facts.
+Scope: financial and event calendar architecture
+
+### Financial Event Reference
+Definition: Checked, versioned calendar layer containing authoritative scheduled issuer, macroeconomic, expiry and other admitted financial-event timing facts.
+Scope: financial and event calendar architecture
+
+### Operational Calendar State
+Definition: Append-preserved calendar layer containing authorised runtime observations, confirmations, corrections, cancellations or actual-state facts about named sessions or financial events without rewriting reference history.
+Scope: financial and event calendar architecture
+
+### Derived Runtime Calendar Context
+Definition: Deterministic context-only calendar projection for a stated effective/as-of window, built from selected market-session reference, financial-event reference and operational calendar facts under a versioned projection policy.
+Scope: financial and event calendar architecture
+
 ### Raw Signal Families
 Definition: Governed upstream signal-family surface term for trace-only raw signal support before prepared ingress and downstream cognition.
 Scope: raw signal families

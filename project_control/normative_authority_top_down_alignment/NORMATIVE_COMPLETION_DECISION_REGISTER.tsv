@@ -1,6 +1,6 @@
 package_id	primary_requirements	gate_b_units	decision_owner	planned_addendum	status	gate_d_effect	next_action
 N-01	C-004	B01.4	typed options contract	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md	accepted	C-004 may reopen only after expanded freeze; Gate D remains suspended	freeze propositions and later derive positive/negative Gate C proof
-N-02	C-005;C-018	B01.5;B05.1	financial-calendar layer model and ownership	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md	pending	all prior open decisions suspended	read connected evidence and decide layer model
+N-02	C-005;C-018	B01.5;B05.1	financial-calendar layer model and ownership	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md	accepted	C-005 and C-018 may reopen after expanded freeze; Gate D remains suspended	freeze four-layer propositions and derive calendar authority tests
 N-03	C-008	B02.1	prepared-data common envelope	docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md	pending	all prior open decisions suspended	read connected evidence and decide common envelope
 N-04	C-011	B03.1	canonical merge conflict and source precedence	docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md	pending	all prior open decisions suspended	read connected evidence and decide merge policy
 N-05	C-013	B03.3	common metadata and stage-specific carriers	docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md	pending	all prior open decisions suspended	read connected evidence and decide carrier allocation
