@@ -907,3 +907,22 @@ Ruled out:
 
 Next gate:
 - `N-08` serial/parallel final-risk join.
+
+
+## Normative completion — N-08 serial/parallel final-risk join
+
+Status: PASS
+
+Known true:
+- Current final-risk helpers inspect only the serial lead-playbook state and emit `continue`/`stand_down` plus a 1.0/0.0 scalar; no Parallel Risk Lane product is joined.
+- The accepted boundary requires complete, independently identified serial and Parallel Risk branch products.
+- Missing/conflicting branch authority and every categorical hard block force `stand_down`; cautions remain constraints and cannot grant permission.
+
+Ruled out:
+- Treating the lead playbook alone as final-risk authority.
+- Allowing serial confidence or branch completeness to override Parallel Risk.
+- Substituting one branch for the other or silently recomputing either owner inside the join.
+- Collapsing owner, severity and reasons into one confidence scalar.
+
+Next gate:
+- `N-09` authoritative replay envelope.

@@ -424,3 +424,15 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-07 changed paths; no N-07 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
+
+
+## Normative completion — N-08 serial/parallel final-risk join
+
+- Semantic decision record: `normative_completion_decisions/N-08_SERIAL_PARALLEL_FINAL_RISK_JOIN.md`.
+- Governing addendum: `docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md` sections `07.2.N08.1`-`07.2.N08.6`.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-08 changed paths; no N-08 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.

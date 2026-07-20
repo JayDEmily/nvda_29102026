@@ -147,3 +147,25 @@ Transverse trace: phase vocabulary, signal families, source time, venue status, 
 Contradiction result: none found. Factual pre-open/auction/post-close boundaries remain calendar/status-aware, while in-session behavioural transitions cannot be forced by elapsed time alone.
 
 Dependency result: Gate C must prove multi-family signal transitions, history/hysteresis and anti-clock-cutoff behaviour; numerical policy values remain later configuration work, not normative invention.
+
+
+## N-08 — Serial/parallel final-risk join
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/02`/`02.1`: preserved serial cognition and execution-expression ownership without granting the join candidate-formation authority.
+- `docs/03`/`03.1`: preserved Parallel Risk Lane as an independent environmental-risk product rather than a serial-stage derivative.
+- `docs/05`: preserved fail-closed handling, categorical hard-block dominance and no fabricated permission.
+- `docs/07`/`07.1`: preserved separate serial, Parallel Risk, final-join and downstream capital owners.
+- `docs/09`/`09.1`: retained exact branch identities, policy versions, reason provenance and output fingerprint for deterministic replay.
+- `docs/11`/`11.1`: preserved the final join as a bounded modular seam and labelled the current serial-only scalar helper non-conforming.
+
+Longitudinal trace: completed serial candidate/execution-expression risk state + independent Parallel Risk Lane packet -> deterministic conjunctive final-risk join -> immutable eligibility/stand-down receipt -> later capital assessment, which remains free to decline deployment.
+
+Transverse trace: branch identity, lineage, policy/config versions, fingerprints, hard blocks, cautions, missing/conflict state, reason provenance, output action, no-capital-authority boundary and replay remain explicit.
+
+Contradiction result: none found. A clear branch cannot override the other branch's hard block, and a caution cannot create positive authority.
+
+Dependency result: `N-09` must retain both exact branch products and the final-join policy/receipt; Gate C must prove missing-branch and hard-block stand-down plus caution non-authorisation.

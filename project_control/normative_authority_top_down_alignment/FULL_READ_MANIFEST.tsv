@@ -581,3 +581,12 @@ tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surfa
 tests/tier_a/calendar_operational/test_calendar_operational_surface.py	N-02 existing operational separation proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
 tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py	N-02 existing context-only query proof	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
 tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py	N-02 existing composition claim	read_full_N-02	tests read-only until Gate C1 reopening	Read in full
+project_control/normative_authority_top_down_alignment/PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md	N-08 B09.2 and neighbouring final-risk flow	read_connected_unit_N-08	read-only Gate B evidence	Read B09.1-B09.3 in context
+project_control/normative_authority_top_down_alignment/GATE_C_TEST_REQUIREMENTS.tsv	N-08 C-036 requirement	read_row_N-08	read-only retained Gate C evidence	Read C-036 and connected register context
+project_control/normative_authority_top_down_alignment/gate_c_test_design/B09_TEST_DESIGN.md	N-08 final-risk Gate C design	read_full_N-08	read-only retained Gate C evidence	Read in full
+src/nvda_desk/contracts/risk.py	N-08 current risk contracts	read_full_N-08	production source prohibited	Read in full
+src/nvda_desk/domain/final_risk/overlay.py	N-08 current final-risk overlay	read_full_N-08	production source prohibited	Read in full
+src/nvda_desk/domain/final_risk/terminal_join.py	N-08 current terminal join	read_full_N-08	production source prohibited	Read in full
+src/nvda_desk/services/final_risk_service.py	N-08 current final-risk service	read_full_N-08	production source prohibited	Read in full
+src/nvda_desk/risk/join/final_join.py	N-08 current join wrapper	read_full_N-08	production source prohibited	Read in full
+tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py	N-08 existing serial final-join claim	read_full_N-08	tests read-only until Gate C1 reopening	Read in full
