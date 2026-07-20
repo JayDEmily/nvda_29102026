@@ -448,3 +448,19 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-09 changed paths; no N-09 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
+
+
+## Expanded normative freeze — N-01 through N-09
+
+- Decision register: all nine packages accepted.
+- Proposition register: all admitted addendum propositions recorded with line ranges and connected authority.
+- Prerequisite register: ten missing-meaning blockers reclassified `normative_resolved_ready_for_gate_c1`.
+- Unknown register: semantic ambiguities reclassified as implementation/configuration/operations gaps without deleting remaining Unknowns.
+- Routing index: all four numbered addenda present.
+- Baseline manifest: refreshed in this freeze with current hashes and addendum rows.
+- Production source, runtime configuration, schemas, fixtures and migrations changed during N-01 through N-09: NO.
+- Tests changed during N-01 through N-09: NO.
+- Gate D: CLOSED.
+- Mechanical validation: PASS for TSV width consistency, 32 manifest file-hash checks, nine accepted decision rows, ten `normative_resolved_ready_for_gate_c1` prerequisite rows, four-addendum routing presence and `git diff --check`.
+- Controlled-return forbidden-path comparison from `2118a57c7ac18f0d2db63fa82338ea924da8a82e`: `src=0`, `config=0`, `schemas=0`, `fixtures=0`, `migrations=0`, `tests=0`.
+- Vocabulary synonym report: nine pre-existing candidates; none of the four completion addenda appears in the candidate set. The clean-check remains blocked by that pre-existing proof-system issue.

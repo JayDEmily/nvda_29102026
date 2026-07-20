@@ -945,3 +945,21 @@ Ruled out:
 
 Next gate:
 - Expanded normative freeze across N-01 through N-09 before Gate C1 reopens.
+
+
+## Expanded normative freeze — N-01 through N-09
+
+Status: PASS
+
+Known true:
+- All nine packages have accepted decision records, routed numbered addenda, registered propositions and connected coherence results.
+- The ten former Gate C blockers no longer lack normative meaning.
+- Remaining Unknowns are bounded implementation/configuration/operations/proof matters; no implementation conformance is claimed.
+
+Ruled out:
+- Reopening Gate D from historical decisions.
+- Treating package acceptance as code/test conformance.
+- Inventing N-07 numerical policy or production persistence/retention requirements during the freeze.
+
+Next gate:
+- Reopened Gate C1 executable authority for the ten requirements.

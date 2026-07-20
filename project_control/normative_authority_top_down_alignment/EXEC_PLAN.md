@@ -404,6 +404,8 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-18: Gate C1 completed: 48 requirements dispositioned; 38 ready requirements admitted; 10 blocked by exact missing normative authority; 30 new normative tests recorded 11 green and 19 expected red; 1,154 existing tests passed; 24 bounded candidate Gate D units created.
 - 2026-07-19: Gate C2 reconstructed from the durable Gate C checkpoint: five-file Tier A admission restored; 24 proof envelopes frozen; 13 units marked proof-authority ready and 11 units closed by test conflict, incomplete Gate C1 proof or upstream proof dependency.
 - 2026-07-20: direct user authority closed Gate D, suspended all earlier Gate D-open decisions, and inserted controlled normative completion for `N-01` through `N-09`, followed by expanded Gate A2 freeze and Gate C1/C2 reopening.
+- 2026-07-20: `N-01` through `N-09` were accepted as nine separately committed semantic units; the ten missing-meaning blockers were resolved without production/test mutation.
+- 2026-07-20: the expanded normative baseline was re-frozen; Gate C1 is the next active acceptance stage and Gate D remains closed.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -419,17 +421,17 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 None recorded at plan creation.
 
 ## Validation
-Gates A0, initial A1/A2, B, and initial C1/C2 passed as retained checkpoints. Controlled normative completion is active. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and proof-authority decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts, the normative-completion records and the Gate C1/C2 authority records. Gate D is closed and has not started.
+Gates A0, initial A1/A2, B, and initial C1/C2 passed as retained checkpoints. Normative completion N-01 through N-09 and the expanded Gate A2 freeze have passed. Reopened Gate C1 is active. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and proof-authority decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts, the normative-completion records and the Gate C1/C2 authority records. Gate D is closed and has not started.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.
 
 ## Unknowns
-- The complete external-source lineage for every existing normative proposition is not yet established.
-- The authoritative financial-calendar business-layer model and precedence are not yet specified; package `N-02` owns the decision.
-- The signal-informed intraday phase policy requires package `N-07` before its Gate C tests can be admitted.
-- The exact contracts owned by `N-01` through `N-09` remain unresolved until their separately committed semantic decisions are accepted.
-- Production operational requirements are intentionally not established at this stage.
+- The complete external-source lineage for every pre-existing normative proposition is not established; no N-01 through N-09 decision required external evidence.
+- Exact implementation field names, schemas, enum values and assembly surfaces under N-01 through N-09 remain Gate D work and are not normative Unknowns.
+- N-07 numeric thresholds, dwell/grace windows and confidence calibration remain versioned configuration work; they were intentionally not invented.
+- Production retention, historical executable packaging, storage, RTO/RPO, availability, deployment, capacity and live/paper operating requirements remain intentionally Unknown.
+- Vocabulary semantic/machine parity and proof-system aggregate closure remain open under their existing authorities.
 
 ## Closeout
-Initial Gate C1 and Gate C2 remain retained checkpoints. Controlled normative completion is active; all prior Gate D-open decisions are suspended. Gate D is closed and has not started. The authorised stopping point is the re-frozen Gate C2 and Gate D readiness checkpoint before any implementation.
+Normative completion N-01 through N-09 and the expanded normative freeze are complete. Reopened Gate C1 is active; all prior Gate D-open decisions remain suspended. Gate D is closed and has not started. The authorised stopping point remains the re-frozen Gate C2 and Gate D readiness checkpoint before any implementation.
