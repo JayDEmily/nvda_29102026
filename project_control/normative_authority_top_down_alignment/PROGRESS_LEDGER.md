@@ -774,3 +774,22 @@ Change made:
 
 Next gate:
 - `N-01` typed options contract.
+
+
+## Normative completion — N-01 typed options contract
+
+Status: PASS
+
+Known true:
+- Current alpha code derives `spot_price`, `front_dte` and `next_dte` into `OptionsFlowContextInput` but drops source/capture identity, schema/policy version and options temporal lineage.
+- Existing normative authority already forbids provider-shaped generic payloads and fabricated identity downstream.
+- The adopted boundary keeps typed options evidence before cognition and derived-only stage material inside cognition, with a mandatory governed lineage reference.
+
+Ruled out:
+- Carrying a raw options chain or provider response through serial cognition.
+- Treating three derived values as self-authenticating.
+- Using packet/trace/run identity as replacement source or capture identity.
+- Silent fallback from missing options truth to wall-clock, local IDs or empty mappings.
+
+Next gate:
+- `N-02` financial-calendar layer model and ownership.

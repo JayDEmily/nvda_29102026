@@ -549,3 +549,21 @@ project_control/normative_authority_top_down_alignment/GATE_C_TEST_AUTHORITY_REG
 project_control/normative_authority_top_down_alignment/GATE_C2_CLOSEOUT.md	Initial Gate C2 checkpoint	read_full_normative_completion_stage1	read-only retained evidence	Read in full
 project_control/normative_authority_top_down_alignment/GATE_C2_PROOF_ENVELOPE_REGISTER.tsv	Historical proof-open decisions to suspend	read_full_normative_completion_stage1	read-only until Gate C2 reopening	Read all rows
 project_control/normative_authority_top_down_alignment/GATE_C2_BLOCKED_OR_RETURNED_UNITS.tsv	Initial blocked/returned units	read_full_normative_completion_stage1	read-only retained evidence	Read all rows
+docs/03_DOMAIN_MODEL_CORE.md	N-01 domain boundary authority	read_full_N-01	read-only connected authority	Read in full
+docs/03.1_DOMAIN_MODEL_WORKING.md	N-01 raw-input identity and typed carrier authority	read_full_N-01	read-only connected authority	Read in full
+docs/04_TECHNICAL_ARCHITECTURE_CORE.md	N-01 structural input and cognition authority	read_full_N-01	read-only connected authority	Read in full
+docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md	N-01 adapter temporal and typed payload authority	read_full_N-01	read-only connected authority	Read in full
+docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md	N-01 ownership and consumer authority	read_full_N-01	read-only connected authority	Read in full
+docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md	N-01 owner lineage and replay authority	read_full_N-01	read-only connected authority	Read in full
+docs/09_DMPV3_PROTOCOL_CORE.md	N-01 packet carriage boundary	read_full_N-01	read-only connected authority	Read in full
+docs/09.1_DMPV3_PROTOCOL_WORKING.md	N-01 packet identity and lineage boundary	read_full_N-01	read-only connected authority	Read in full
+project_control/normative_authority_top_down_alignment/PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md	N-01 B01.4 and neighbouring flow context	read_connected_unit_N-01	read-only Gate B evidence	Read B01.3-B01.5 in context
+project_control/normative_authority_top_down_alignment/gate_c_test_design/B01_TEST_DESIGN.md	N-01 C-004 test design evidence	read_full_N-01	read-only retained Gate C evidence	Read in full
+src/nvda_desk/contracts/options_flow.py	N-01 current stage contract consequence	read_full_N-01	production source prohibited	Read in full
+src/nvda_desk/adapters/ingress/options_surface_feed.py	N-01 current adapter consequence	read_full_N-01	production source prohibited	Read in full
+src/nvda_desk/cognition/ingress/options_mapper.py	N-01 current transform consequence	read_full_N-01	production source prohibited	Read in full
+src/nvda_desk/cognition/serial/options_flow.py	N-01 current stage consequence	read_full_N-01	production source prohibited	Read in full
+src/nvda_desk/domain/options_flow/surface_state.py	N-01 current domain consequence	read_full_N-01	production source prohibited	Read in full
+tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py	N-01 existing typed/missing-field claims	read_full_N-01	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py	N-01 existing source-boundary claim	read_full_N-01	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py	N-01 existing Gate C identity authority evidence	read_full_N-01	tests read-only until Gate C1 reopening	Read in full

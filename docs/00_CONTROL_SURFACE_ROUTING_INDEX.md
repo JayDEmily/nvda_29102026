@@ -34,6 +34,7 @@ Use:
 Use:
 - `docs/03_DOMAIN_MODEL_CORE.md`
 - `docs/03.1_DOMAIN_MODEL_WORKING.md`
+- `docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md` for admitted typed-options and financial-calendar completion propositions
 
 ### Structural realisation across preparation, reference data, serial runtime, Parallel Risk Lane, capital deployment, downstream architecture, and review
 Use:

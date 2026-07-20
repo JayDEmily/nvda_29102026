@@ -337,3 +337,15 @@ Gate result:
 - Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
 - Historical Gate D-open decisions: suspended by amended plan and current route.
 - Next semantic unit: `N-01`.
+
+
+## Normative completion — N-01 typed options contract
+
+- Semantic decision record: `normative_completion_decisions/N-01_TYPED_OPTIONS_CONTRACT.md`.
+- Governing addendum: `docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md` sections `03.2.N01.1`-`03.2.N01.7`.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check: BLOCKED by nine pre-existing candidates located outside the N-01 changed paths; candidate artefact bytes remained unchanged. This result is recorded as an unrelated existing proof-system limitation, not treated as N-01 semantic failure.
