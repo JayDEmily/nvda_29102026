@@ -387,3 +387,15 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-04 changed paths; no N-04 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
+
+
+## Normative completion — N-05 common metadata and stage-specific carriers
+
+- Semantic decision record: `normative_completion_decisions/N-05_COMMON_METADATA_AND_STAGE_SPECIFIC_CARRIERS.md`.
+- Governing addendum: `docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md` sections `04.2.N05.1`-`04.2.N05.6`.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Initial vocabulary synonym clean-check found two N-05 changed-path near-match fragments (`hole stage input bundle` and `stage input bundle identity`) in addition to nine pre-existing candidates. Both changed-path fragments were removed before acceptance; the governed candidate artefact was not mutated.

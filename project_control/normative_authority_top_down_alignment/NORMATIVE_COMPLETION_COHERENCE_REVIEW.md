@@ -82,3 +82,25 @@ Transverse trace: candidate identity, units, temporal applicability, equality to
 Contradiction result: none found. The general law defers to domain-specific rules such as the four-layer calendar model and does not create a universal source ranking.
 
 Dependency result: `N-09` must retain candidate evidence and resolution policies; `N-05` must carry lineage references without causing downstream stages to re-resolve conflicts.
+
+
+## N-05 — Common metadata and stage-specific carriers
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/02`/`02.1`: preserved ordered serial stage meaning and orchestrator non-authority.
+- `docs/03`/`03.1`/`03.2`: preserved typed stage-domain boundaries and the N-01 derived-only options rule.
+- `docs/04`/`04.1`/`04.2.N03-N04`: preserved the prepared envelope and canonical-resolution receipts while defining their bounded downstream projection.
+- `docs/05`: preserved no-fabrication, no-generic-mapping and fail-closed law.
+- `docs/07`/`07.1`: preserved one owner per common context, carrier meaning and consumer role.
+- `docs/09`/`09.1`: kept common identity distinct from packet/trace/run identity and retained replay lineage.
+
+Longitudinal trace: prepared envelope -> common stage context + narrow typed carriers -> ordered stage dispatch -> stage-owned outputs -> downstream packet/replay references.
+
+Transverse trace: bundle identity, prepared/source references, schema/policy versions, fingerprint, completeness, stage contract, payload narrowing, dispatch consistency and replay reconstruction remain explicit.
+
+Contradiction result: none found. Common facts are centralised once; stage payloads stay narrow; temporal structures remain stage-specific while shared lineage remains accessible.
+
+Dependency result: `N-09` must retain the common context and deterministic projection inputs; future stage families must follow the same allocation law.

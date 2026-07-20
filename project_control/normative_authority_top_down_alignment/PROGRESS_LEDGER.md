@@ -850,3 +850,22 @@ Ruled out:
 
 Next gate:
 - `N-05` common metadata and stage-specific carriers.
+
+
+## Normative completion — N-05 common metadata and stage-specific carriers
+
+Status: PASS
+
+Known true:
+- Current stage inputs are typed and narrow, but shared prepared identity/version/fingerprint lineage disappears or remains only in the temporal carrier.
+- The accepted allocation is one immutable common stage context plus stage-owned typed carriers.
+- Common facts are bundle identity/lineage/version/completeness only; stage carriers contain stage-required primitives and explicit missing states.
+
+Ruled out:
+- Giving every stage the entire prepared mapping.
+- Duplicating common metadata under multiple stage-specific names.
+- Keeping all provenance only in the temporal carrier.
+- Treating bundle-level degradation as automatic authority for every stage to execute.
+
+Next gate:
+- `N-06` cross-state transaction boundary.
