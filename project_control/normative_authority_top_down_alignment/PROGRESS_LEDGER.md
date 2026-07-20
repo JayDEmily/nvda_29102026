@@ -750,3 +750,27 @@ Ruled out:
 
 Next gate:
 - Pause at the user-requested Gate C2 checkpoint. Gate D has not started.
+
+
+## Controlled normative completion — Stage 1 plan amendment
+
+Status: PASS
+
+Known true:
+- Direct user authority dated 2026-07-20 closes Gate D and supersedes the earlier limited-start direction.
+- The durable repository began this unit at `2118a57c7ac18f0d2db63fa82338ea924da8a82e` on `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717` with a clean tree.
+- Ten Gate C requirements remain blocked by missing normative authority and are grouped into nine bounded decision packages.
+- The initial Gate C1/C2 artefacts remain valid retained evidence, but all earlier Gate D-open decisions are suspended.
+
+Ruled out:
+- Starting implementation from any historical `gate_d_open_decision=yes` value.
+- Defining missing meaning from current source or test convenience.
+- Mutating production source, runtime configuration, schemas, fixtures or migrations during normative completion or Gate C reopening.
+
+Change made:
+- Amended `EXEC_PLAN.md` with the six-stage controlled return, nine package boundaries, owner-aligned numbered addenda, per-unit coherence/commit/checkpoint requirements, and mandatory stopping point before implementation.
+- Amended `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md` so the current active pack expressly routes the controlled return and closes production mutation.
+- Created the single normative-completion decision register and decision-record directory.
+
+Next gate:
+- `N-01` typed options contract.

@@ -268,9 +268,55 @@ Required Gate C2 artefacts:
 
 **Gate C2 pass:** all 24 candidate units have frozen proof envelopes and explicit open/closed decisions; the five-file tier admission is exact; positive and false-positive proof is recorded; existing Tier A conflicts are not concealed; incomplete Gate C1 proof is returned rather than guessed; production source, runtime configuration, test assertions and fixtures remain unchanged; and Gate D remains closed for every unresolved unit.
 
+### Controlled normative completion before Gate D
+
+Direct user authority on 2026-07-20 closes Gate D and reopens normative authority for the ten Gate C requirements that were truthfully blocked by missing meaning. The earlier Gate C1/C2 results remain retained evidence and a valid checkpoint, but every prior `gate_d_open_decision=yes` is suspended until the expanded normative baseline and proof authority are re-frozen.
+
+This controlled return consists of six ordered stages:
+
+1. **Plan amendment:** record this closure, package boundaries, mutable surfaces and stopping point before substantive mutation.
+2. **Normative completion:** resolve one semantic decision package at a time through numbered normative addenda or a lawful core revision.
+3. **Expanded normative freeze:** update proposition, baseline, routing, Unknown and coherence evidence for every accepted package.
+4. **Gate C1 reopening:** derive positive and false-positive executable proof for all ten formerly blocked requirements without changing production source or runtime configuration.
+5. **Gate C2 reopening:** re-admit the complete Gate C proof surface, re-evaluate every existing and new proof envelope, dependencies, conflicts and implementation-unit boundary, then freeze the revised proof authority.
+6. **Gate D readiness review:** report whether any implementation unit may open, create a clean durable checkpoint, and stop before implementation.
+
+The nine semantic decision packages and linked requirements are:
+
+| Package | Governed decision | Requirements |
+|---|---|---|
+| `N-01` | typed options contract | `C-004` |
+| `N-02` | financial-calendar layer model and ownership | `C-005`, `C-018` |
+| `N-03` | prepared-data common envelope | `C-008` |
+| `N-04` | canonical merge conflict and source precedence | `C-011` |
+| `N-05` | common metadata and stage-specific carriers | `C-013` |
+| `N-06` | cross-state transaction boundary | `C-024` |
+| `N-07` | signal-informed intraday phase model | `C-026` |
+| `N-08` | serial and parallel risk join | `C-036` |
+| `N-09` | authoritative replay envelope | `C-046` |
+
+For each package, the worker must read the connected normative documents, Gate B unit and neighbours, existing tests, and bounded source surfaces in full; state the unresolved proposition; adopt one project-specific decision; record alternatives ruled out, longitudinal and transverse effects, source lineage and remaining Unknowns; reread every changed normative surface in full; perform connected-document coherence validation; commit the semantic unit; verify the tree; and create a full repository-plus-`.git` checkpoint with checksum.
+
+The numbered addendum allocation is owner-aligned and may be populated incrementally one accepted package at a time:
+
+- `docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md` — `N-01`, `N-02`;
+- `docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md` — `N-03`, `N-04`, `N-05`;
+- `docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md` — `N-06`, `N-08`, `N-09`;
+- `docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md` — `N-07`.
+
+These documents extend their named core/working companions only for the exact propositions recorded in their supersession and relationship sections. They do not create a competing authority stack. If full reading proves a package must move or split, amend this plan before the affected normative mutation.
+
+Gate D remains closed throughout these stages. Production source, runtime configuration, schemas, fixtures and migrations remain prohibited. Gate C test surfaces become mutable only after the expanded normative freeze is committed and the tests subtree override has been reread.
+
+**Normative-completion pass:** all nine packages have explicit dispositions, their connected documents are coherent, the expanded baseline is frozen, and no linked requirement remains blocked merely because a decision was omitted.
+
+**Gate C reopening pass:** all 48 requirements have an authoritative executable disposition, Tier authority and aggregate promotion are explicit, every candidate implementation unit has a re-evaluated frozen proof envelope, and unresolved dependencies fail closed.
+
+**Required stopping point:** a clean, committed, downloadable Gate D readiness checkpoint. No implementation may begin in the semantic unit that decides readiness.
+
 ### Gate D — Normative implementation alignment
 
-Gate D consumes frozen normative propositions and Gate C2 proof envelopes. It has no authority to decide or edit proof meaning. For each unit marked `gate_d_open_decision=yes`, Gate D must:
+Gate D is currently closed. It may reopen only by the Gate D readiness decision produced after controlled normative completion and Gate C1/C2 re-freezing. When lawfully reopened, it consumes the then-current frozen normative propositions and Gate C2 proof envelopes. It has no authority to decide or edit proof meaning. For each unit marked `gate_d_open_decision=yes`, Gate D must:
 
 1. reread the exact normative proposition, Gate B semantic statement, Gate C1 tests and Gate C2 proof envelope;
 2. confirm all envelope prerequisites are satisfied;
@@ -318,6 +364,11 @@ Maintain within this directory:
 - `gate_c2_proof_envelopes/`;
 - `GATE_C2_BLOCKED_OR_RETURNED_UNITS.tsv`;
 - `GATE_C2_CLOSEOUT.md`;
+- `NORMATIVE_COMPLETION_DECISION_REGISTER.tsv`;
+- `normative_completion_decisions/`;
+- `NORMATIVE_COMPLETION_COHERENCE_REVIEW.md`;
+- `GATE_D_READINESS_REPORT.md`;
+- `CHECKPOINT_REGISTER.tsv`;
 - `VALIDATION_LOG.md`.
 
 These are evidence and execution aids. They do not become semantic authority merely by existing.
@@ -352,6 +403,7 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - 2026-07-18: Gate C amended by direct user authority into a normative test-authority programme with explicit evidence deliverables, accepted red-test semantics, production-code freeze and blocked-authority handling.
 - 2026-07-18: Gate C1 completed: 48 requirements dispositioned; 38 ready requirements admitted; 10 blocked by exact missing normative authority; 30 new normative tests recorded 11 green and 19 expected red; 1,154 existing tests passed; 24 bounded candidate Gate D units created.
 - 2026-07-19: Gate C2 reconstructed from the durable Gate C checkpoint: five-file Tier A admission restored; 24 proof envelopes frozen; 13 units marked proof-authority ready and 11 units closed by test conflict, incomplete Gate C1 proof or upstream proof dependency.
+- 2026-07-20: direct user authority closed Gate D, suspended all earlier Gate D-open decisions, and inserted controlled normative completion for `N-01` through `N-09`, followed by expanded Gate A2 freeze and Gate C1/C2 reopening.
 
 ## Decisions
 - The programme is alpha architecture alignment, not production hardening.
@@ -359,21 +411,25 @@ Ordinary contradiction, failing tests, missing dependencies, placeholders and im
 - The existing numbered core/addendum model is preserved.
 - Normative coherence precedes test and code alignment.
 - Gate B is semantic cartography only. It may classify defects and Gate C requirements but may not modify tests, source, configuration, schemas, fixtures or migrations.
+- The initial Gate C1/C2 records are retained checkpoints, not current Gate D opening authority.
+- All earlier `gate_d_open_decision=yes` values are suspended until the expanded baseline and proof authority are re-frozen.
+- Normative completion uses four owner-aligned numbered addenda and nine separately committed semantic decision records.
 
 ## Roadblocks
 None recorded at plan creation.
 
 ## Validation
-Gates A0, A1, A2, B, C1 and C2 passed. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and proof-authority decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts and the Gate C1/C2 authority records. Gate D has not started.
+Gates A0, initial A1/A2, B, and initial C1/C2 passed as retained checkpoints. Controlled normative completion is active. Exact evidence, commands and mechanical results are recorded in `VALIDATION_LOG.md`; semantic acceptance and proof-authority decisions are recorded in `PROGRESS_LEDGER.md`, the Gate B semantic artefacts, the normative-completion records and the Gate C1/C2 authority records. Gate D is closed and has not started.
 
 ## Artefacts
 This ExecPlan and its task-local evidence files.
 
 ## Unknowns
 - The complete external-source lineage for every existing normative proposition is not yet established.
-- The authoritative financial-calendar business-layer model and precedence are not yet specified.
-- The signal-informed intraday phase policy requires a numbered normative addendum before its Gate C tests can be admitted.
+- The authoritative financial-calendar business-layer model and precedence are not yet specified; package `N-02` owns the decision.
+- The signal-informed intraday phase policy requires package `N-07` before its Gate C tests can be admitted.
+- The exact contracts owned by `N-01` through `N-09` remain unresolved until their separately committed semantic decisions are accepted.
 - Production operational requirements are intentionally not established at this stage.
 
 ## Closeout
-Gate C1 and Gate C2 complete. Gate D has not started. It may consume only units marked open in the frozen Gate C2 proof-envelope register and only after their recorded dependencies are satisfied.
+Initial Gate C1 and Gate C2 remain retained checkpoints. Controlled normative completion is active; all prior Gate D-open decisions are suspended. Gate D is closed and has not started. The authorised stopping point is the re-frozen Gate C2 and Gate D readiness checkpoint before any implementation.

@@ -325,3 +325,15 @@ Gate result:
 - Recorded 13 proof-authority-ready units, 11 closed units, five immediately executable units and eight dependency-held units.
 - Protected test/source/configuration/fixture surfaces remain unchanged from the durable Gate C checkpoint.
 - Final mechanical and pytest validation is retained under `gate_c2_evidence/`.
+
+
+## Controlled normative completion — Stage 1 plan amendment
+
+- Starting branch: `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717`.
+- Starting HEAD: `2118a57c7ac18f0d2db63fa82338ea924da8a82e`.
+- Starting tree: `9179d0b2d4e8cf799c5f604d8b648f0639ec5a40`.
+- Starting working tree: clean.
+- `git fsck --full`: completed; only pre-existing dangling blobs were reported, with no repository corruption error.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Historical Gate D-open decisions: suspended by amended plan and current route.
+- Next semantic unit: `N-01`.
