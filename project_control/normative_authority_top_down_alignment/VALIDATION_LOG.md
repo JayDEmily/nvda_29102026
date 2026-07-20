@@ -411,3 +411,16 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-06 changed paths; no N-06 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
+
+
+## Normative completion — N-07 signal-informed intraday phase model
+
+- Semantic decision record: `normative_completion_decisions/N-07_SIGNAL_INFORMED_INTRADAY_PHASE_MODEL.md`.
+- Governing addendum: `docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md` sections `02.2.N07.1`-`02.2.N07.8`.
+- External sources used as evidence: NONE; direct user architecture authority and project authority were sufficient.
+- Non-authoritative planning evidence did not define the decision.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-07 changed paths; no N-07 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.

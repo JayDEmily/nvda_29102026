@@ -29,6 +29,7 @@ Use:
 Use:
 - `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md`
 - `docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md`
+- `docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md` for the admitted signal-informed temporal-phase model
 
 ### Domain parts and bounded meanings across preparation, serial cognition, Parallel Risk Lane, capital deployment, downstream architecture, and review
 Use:

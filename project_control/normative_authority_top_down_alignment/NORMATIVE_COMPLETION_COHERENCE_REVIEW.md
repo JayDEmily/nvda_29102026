@@ -125,3 +125,25 @@ Transverse trace: command identity, consistency unit, repository participants, s
 Contradiction result: none found. The decision refuses a global transaction while requiring atomic truth inside each owner-declared consistency unit.
 
 Dependency result: `N-09` must retain transaction/idempotency/state-version evidence; Gate C proof must distinguish in-process memory semantics from restart/crash durability.
+
+
+## N-07 — Signal-informed intraday phase model
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/02`/`02.1`: preserved temporal context as one serial input and prohibited candidate/capital/execution authority.
+- `docs/03`/`03.1`/`03.2`: preserved source/session temporal truth, typed signal families and calendar-layer ownership.
+- `docs/04`/`04.1`/`04.2`: preserved typed preparation/common-context/carrier boundaries and no raw provider mappings.
+- `docs/05`: preserved fail-closed, no wall-clock substitution and no fabricated certainty.
+- `docs/07`/`07.1`: assigned phase meaning, state history, service coordination and consumer roles without merging authority.
+- `docs/09`/`09.1`: retained evidence/state/policy lineage for deterministic replay.
+
+Longitudinal trace: typed recent signal observations + session reference + prior phase state -> versioned stateful transition policy -> confirmed/held-degraded/clock-only/unresolved phase context -> serial and Parallel Risk consumers -> replay.
+
+Transverse trace: phase vocabulary, signal families, source time, venue status, state history, policy/config, hysteresis, confidence, degradation, consumer authority and replay remain explicit.
+
+Contradiction result: none found. Factual pre-open/auction/post-close boundaries remain calendar/status-aware, while in-session behavioural transitions cannot be forced by elapsed time alone.
+
+Dependency result: Gate C must prove multi-family signal transitions, history/hysteresis and anti-clock-cutoff behaviour; numerical policy values remain later configuration work, not normative invention.

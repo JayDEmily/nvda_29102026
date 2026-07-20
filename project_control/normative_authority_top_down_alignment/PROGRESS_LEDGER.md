@@ -888,3 +888,22 @@ Ruled out:
 
 Next gate:
 - `N-07` signal-informed intraday phase policy.
+
+
+## Normative completion — N-07 signal-informed intraday phase model
+
+Status: PASS
+
+Known true:
+- Current temporal code emits coarse fixed-clock buckets at 09:30, 10:30, 15:30 and 16:00.
+- The accepted detailed model has seven ordered phases, requires typed activity, liquidity and price-discovery evidence, and uses venue/session status where authoritative.
+- Clock is a factual boundary/prior, not sufficient in-session behavioural authority; transitions are stateful, sustained, hysteretic and versioned.
+
+Ruled out:
+- A magical fixed time ending opening price discovery.
+- One signal proxy standing in for all behavioural families.
+- Stateless phase classification or silent previous-session/clock imputation.
+- Treating unresolved or degraded temporal context as positive trading permission.
+
+Next gate:
+- `N-08` serial/parallel final-risk join.
