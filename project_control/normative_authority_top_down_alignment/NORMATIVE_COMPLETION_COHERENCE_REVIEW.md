@@ -61,3 +61,24 @@ Transverse trace: source identity, capture identity, prepared identity, schema/p
 Contradiction result: none found. The package strengthens the prepared seam without assigning stage-carrier allocation, merge precedence, trading authority or production persistence.
 
 Dependency result: `N-04` must apply field-owned conflict law before a substrate is accepted; `N-05` must preserve required common-envelope lineage without widening stage payloads; `N-09` must define authoritative retention and executable-version availability.
+
+
+## N-04 — Canonical merge conflict and source precedence
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/03`/`03.1`/`03.2`: preserved source ownership, typed input families and calendar-specific supersession law.
+- `docs/04`/`04.1`/`04.2.N03`: preserved the prepared boundary and made conflict resolution an explicit versioned preparation responsibility.
+- `docs/05`: preserved fail-closed handling and prohibited silent fallback/fabrication.
+- `docs/07`/`07.1`: preserved domain-rule owner, preparation executor and downstream reader separation.
+- `docs/09`/`09.1`: retained resolution receipts as lineage rather than packet-created authority.
+
+Longitudinal trace: source-family candidate facts -> field-owned comparison/selection rule -> canonical or explicit degraded prepared fact + receipt -> typed downstream consumption -> replay.
+
+Transverse trace: candidate identity, units, temporal applicability, equality tolerance, source role, fallback, supersession, conflict outcome, receipt ownership and provider substitution remain explicit.
+
+Contradiction result: none found. The general law defers to domain-specific rules such as the four-layer calendar model and does not create a universal source ranking.
+
+Dependency result: `N-09` must retain candidate evidence and resolution policies; `N-05` must carry lineage references without causing downstream stages to re-resolve conflicts.

@@ -375,3 +375,15 @@ Gate result:
 - Tests changed: NO.
 - Current implementation conformance: NOT CLAIMED.
 - Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-03 changed paths; no N-03 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.
+
+
+## Normative completion — N-04 canonical merge conflict and source precedence
+
+- Semantic decision record: `normative_completion_decisions/N-04_CANONICAL_MERGE_CONFLICT_AND_SOURCE_PRECEDENCE.md`.
+- Governing addendum: `docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md` sections `04.2.N04.1`-`04.2.N04.6`.
+- External sources used as evidence: NONE; project authority was sufficient.
+- Connected coherence review: PASS.
+- Production source, runtime configuration, schemas, fixtures and migrations changed: NO.
+- Tests changed: NO.
+- Current implementation conformance: NOT CLAIMED.
+- Vocabulary synonym clean-check: BLOCKED by the same nine pre-existing candidates outside the N-04 changed paths; no N-04 changed path appears in the scanner candidate set and the governed candidate artefact was not mutated.

@@ -831,3 +831,22 @@ Ruled out:
 
 Next gate:
 - `N-04` canonical merge conflict and source precedence.
+
+
+## Normative completion — N-04 canonical merge conflict and source precedence
+
+Status: PASS
+
+Known true:
+- Current preparation uses deterministic but implicit market/options/provenance precedence and special-case spot selection.
+- The accepted authority has no global source order; every semantic field has a versioned field-resolution rule and deterministic receipt.
+- Equal candidates may coalesce with all lineage; unresolved unequal mandatory candidates fail closed unless a typed degraded/multi-valued state is expressly admitted.
+
+Ruled out:
+- Last-write-wins, file order, recency, non-empty value or confidence as inherent authority.
+- Dropping losing/conflicting candidates after canonical selection.
+- Downstream cognition independently re-resolving source conflicts.
+- Provider substitution by teaching unrelated modules a provider-specific order.
+
+Next gate:
+- `N-05` common metadata and stage-specific carriers.
