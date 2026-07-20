@@ -590,3 +590,15 @@ src/nvda_desk/domain/final_risk/terminal_join.py	N-08 current terminal join	read
 src/nvda_desk/services/final_risk_service.py	N-08 current final-risk service	read_full_N-08	production source prohibited	Read in full
 src/nvda_desk/risk/join/final_join.py	N-08 current join wrapper	read_full_N-08	production source prohibited	Read in full
 tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py	N-08 existing serial final-join claim	read_full_N-08	tests read-only until Gate C1 reopening	Read in full
+project_control/normative_authority_top_down_alignment/PLAIN_ENGLISH_BEHAVIOUR_ATLAS.md	N-09 B12.4 replay comparison context	read_connected_unit_N-09	read-only Gate B evidence	Read B12.4 and neighbouring B12 context
+project_control/normative_authority_top_down_alignment/GATE_C_TEST_REQUIREMENTS.tsv	N-09 C-046 requirement	read_row_N-09	read-only retained Gate C evidence	Read C-046 and connected register context
+project_control/normative_authority_top_down_alignment/gate_c_test_design/B12_TEST_DESIGN.md	N-09 replay Gate C design	read_full_N-09	read-only retained Gate C evidence	Read in full
+src/nvda_desk/contracts/replay.py	N-09 current replay lineage contract	read_full_N-09	production source prohibited	Read in full
+src/nvda_desk/analysis/replay/service.py	N-09 current replay comparison service	read_full_N-09	production source prohibited	Read in full
+src/nvda_desk/analysis/replay/sidecar.py	N-09 current replay sidecars	read_full_N-09	production source prohibited	Read in full
+src/nvda_desk/analysis/replay/walk_forward.py	N-09 connected replay analysis surface	read_full_N-09	production source prohibited	Read in full
+src/nvda_desk/replay/review_compare.py	N-09 current review comparison service	read_full_N-09	production source prohibited	Read in full
+tests/tier_a/analysis/test_fwd002_replay_harness_contract.py	N-09 existing replay harness claims	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/analysis/test_replay_evaluation_surface.py	N-09 existing comparison and lineage claims	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py	N-09 connected Gate C replay proof	read_full_N-09	tests read-only until Gate C1 reopening	Read in full
+tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py	N-09 packet lineage proof	read_full_N-09	tests read-only until Gate C1 reopening	Read in full

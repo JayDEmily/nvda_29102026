@@ -169,3 +169,24 @@ Transverse trace: branch identity, lineage, policy/config versions, fingerprints
 Contradiction result: none found. A clear branch cannot override the other branch's hard block, and a caution cannot create positive authority.
 
 Dependency result: `N-09` must retain both exact branch products and the final-join policy/receipt; Gate C must prove missing-branch and hard-block stand-down plus caution non-authorisation.
+
+
+## N-09 — Authoritative replay envelope
+
+Status: PASS
+
+Connected authority checked:
+
+- `docs/05`/`05.1`: preserved alpha truth, no wall-clock substitution, complete result-changing version evidence and no fake replay claims.
+- `docs/07`/`07.1`: completed the previously unresolved minimum replay envelope while preserving domain-owner evidence and durability distinctions.
+- admitted `N-02` through `N-08`: retained each package's material calendar, prepared, resolution, stage, transaction, phase and final-risk evidence when consumed.
+- `docs/09`/`09.1`: preserved original versus newly emitted packet-occurrence identity and explicit replay references.
+- `docs/11`/`11.1`: preserved review/comparison as non-mutating thin seams and persistence as the owner of retained truth.
+
+Longitudinal trace: retained authoritative source/state/version/output evidence -> envelope verification and executable-meaning availability -> isolated controlled-time semantic re-execution or explicit incomplete status -> authority assessment -> subordinate comparison/review.
+
+Transverse trace: replay class, target/original identity, source/data/time evidence, contracts/schemas, policy/configuration/executable versions, ordered state/transactions, output fingerprint, side-effect prohibition, mismatch truth, retention Unknowns and extension law remain explicit.
+
+Contradiction result: none found. Exact preserved occurrence replay remains distinct from newly emitted semantic re-execution, and comparison cannot acquire reconstruction authority.
+
+Dependency result: Gate C must prove authoritative reconstruction from a complete verified envelope, `non_authoritative_incomplete` for missing mandatory material, new replay-output identity/reference law and comparison-only non-promotion.

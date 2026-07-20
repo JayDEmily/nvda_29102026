@@ -926,3 +926,22 @@ Ruled out:
 
 Next gate:
 - `N-09` authoritative replay envelope.
+
+
+## Normative completion — N-09 authoritative replay envelope
+
+Status: PASS
+
+Known true:
+- Current replay code compares caller-supplied mappings, carries optional packet IDs/run identity and provides analysis/review helpers; it does not reconstruct the original governed decision.
+- The accepted envelope requires verified retrievable source/data/time, contract/schema, policy/configuration/executable, ordered state/transaction and original-output evidence.
+- Exact preserved occurrence replay, isolated semantic re-execution and comparison-only activity are separate classes; missing mandatory material produces `non_authoritative_incomplete`.
+
+Ruled out:
+- Treating an ID, hash, fixture path, local object or green comparison as complete replay evidence.
+- Re-running current code/config against current data and calling it the original decision.
+- Reusing original packet identity for newly emitted replay output or repeating live external effects.
+- Normalising mismatches away or letting comparison results promote runtime authority.
+
+Next gate:
+- Expanded normative freeze across N-01 through N-09 before Gate C1 reopens.
