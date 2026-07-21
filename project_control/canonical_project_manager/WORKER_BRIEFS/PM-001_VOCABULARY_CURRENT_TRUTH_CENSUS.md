@@ -2,9 +2,9 @@
 
 ## Dispatch state
 
-`prepared_not_dispatched`
+`authorised_as_restart_unit_1_of_10`
 
-This brief is a complete standalone instruction for one bounded evidence unit. It does not authorise the worker to select or begin a follow-on unit.
+This brief is a complete standalone instruction for one bounded evidence unit. It is governed by `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_TABLE.md`. PM-002 may begin only after every PM-001 pass condition is met and the PM-001 receipt records `unit_result: pass`.
 
 ## Role
 
@@ -22,8 +22,8 @@ It does not answer: “Which generated-only terms should be admitted?” or “W
 
 | Field | Required value |
 |---|---|
-| Working branch | `work/NVIDIA_2026_canonical_project_manager_20260720` |
-| Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
+| Working branch | `work/NVIDIA_2026_pm001_pm010_restart_20260721` |
+| Frozen governed ancestor | `533ed574ab326f75058aaeab7c1a671de5dea31f` |
 | Active plan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Programme gate | P1 vocabulary semantic authority |
 | Unit | PM-001 current-truth census only |
@@ -52,33 +52,35 @@ Read each file semantically in full. Search, scripts, counts, parsers, and prior
 3. `ROADMAP_LEDGER.md`
 4. `ROADMAP_LEDGER_V2.md`
 5. `project_control/canonical_project_manager/EXEC_PLAN.md`
-6. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`
-7. `docs/05_GUARDRAILS_CORE.md`
-8. `docs/05.1_GUARDRAILS_WORKING.md`
-9. `docs/08_TESTING_AND_PROMOTION_CORE.md`
-10. `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`
-11. `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`
-12. `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`
-13. `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` section 5.18 and all general status/modularity rules that govern it
-14. `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`
-15. `docs/vocabulary/README.md`
-16. `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
-17. `docs/vocabulary/vocabulary_registry.md`
-18. `tests/AGENTS.override.md`
-19. every `tests/tier_a/vocabulary/test_*.py` file
-20. `src/nvda_desk/schemas/vocabulary.py`
-21. `src/nvda_desk/vocabulary_builder.py`
-22. `src/nvda_desk/vocabulary_synonym_audit.py`
-23. `scripts/build_canonical_vocabulary.py`
-24. `scripts/vocabulary_synonym_audit.py`
-25. `scripts/vocabulary_candidate_review.py`
-26. `data/vocabulary/canonical_vocabulary.json`
-27. `data/vocabulary/vocabulary_touch_stamp.json`
-28. `var/vocabulary/synonym_candidates.json` if present; record absence otherwise
-29. `var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_ADJUDICATION_APPENDIX.json`
-30. `var/audit/atlas_surface_slices/slices/vocabulary_governance_interface.json`
-31. `config/retained_test_registry.yaml` only for the explicit vocabulary-family admission rows and live Tier A reconciliation inventory
-32. `config/proof_blocks.yaml` only for vocabulary proof-block definitions and commands
+6. `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_TABLE.md`
+7. `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_NOTE.md`
+8. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`
+9. `docs/05_GUARDRAILS_CORE.md`
+10. `docs/05.1_GUARDRAILS_WORKING.md`
+11. `docs/08_TESTING_AND_PROMOTION_CORE.md`
+12. `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`
+13. `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`
+14. `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`
+15. `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` section 5.18 and all general status/modularity rules that govern it
+16. `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`
+17. `docs/vocabulary/README.md`
+18. `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+19. `docs/vocabulary/vocabulary_registry.md`
+20. `tests/AGENTS.override.md`
+21. every `tests/tier_a/vocabulary/test_*.py` file
+22. `src/nvda_desk/schemas/vocabulary.py`
+23. `src/nvda_desk/vocabulary_builder.py`
+24. `src/nvda_desk/vocabulary_synonym_audit.py`
+25. `scripts/build_canonical_vocabulary.py`
+26. `scripts/vocabulary_synonym_audit.py`
+27. `scripts/vocabulary_candidate_review.py`
+28. `data/vocabulary/canonical_vocabulary.json`
+29. `data/vocabulary/vocabulary_touch_stamp.json`
+30. `var/vocabulary/synonym_candidates.json` if present; record absence otherwise
+31. `var/audit/active_code_atlas_001/vocabulary_candidate_adjudication_evidence_hardening_before_fwd016_20260515/VOCABULARY_CANDIDATE_ADJUDICATION_APPENDIX.json`
+32. `var/audit/atlas_surface_slices/slices/vocabulary_governance_interface.json`
+33. `config/retained_test_registry.yaml` only for the explicit vocabulary-family admission rows and live Tier A reconciliation inventory
+34. `config/proof_blocks.yaml` only for vocabulary proof-block definitions and commands
 
 Create `project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv` before any other output. For every required path record path, reason, `read_full`/`read_required_section` status, current SHA-256, and whether it may be changed. `read_required_section` is permitted only for the row-5.18 blueprint material and the expressly bounded vocabulary rows/blocks in `config/retained_test_registry.yaml` and `config/proof_blocks.yaml`; all other listed files must be `read_full`.
 
@@ -151,10 +153,13 @@ Create only:
 
 1. `project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv`
 2. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_REGISTER.tsv`
-3. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv`
-4. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv`
-5. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md`
-6. `project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt` only if a command requires captured output; otherwise record commands/results in the receipt.
+3. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_NORMATIVE_ADMISSION_REGISTER.tsv`
+4. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv`
+5. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv`
+6. `project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md`
+7. `project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt`
+
+The normative-admission register must separately account for every explicit admission in sections 10.7 and 10.8 of `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`, including whether it is present in the human registry, the generated projection, both, or neither. This remains inventory evidence; no admission may be altered in PM-001.
 
 The main current-truth register must have one row per distinct side/entry, not one merged row that hides two-way gaps. Include at least:
 
@@ -204,7 +209,7 @@ Run and record:
 8. `git diff --name-only` and an allowed-path assertion;
 9. final `git status --short --branch`.
 
-Pytest is not required to pass this evidence-only unit. If the locked environment is available, you may run the existing vocabulary tests read-only and report the result. If it cannot initialise, report the exact environmental blocker; do not alter dependencies and do not call the tests passed.
+Pytest is not required to pass this evidence-only unit. If the locked environment is available, you may run the existing vocabulary tests read-only and report the result. If it cannot initialise, report the exact environmental blocker; do not alter dependencies and do not call the tests passed. If tests are green, classify that result only as `current_assertions_executed_green`; it is not semantic authority and is not a PM-001 pass condition.
 
 ## Pass conditions
 
@@ -244,4 +249,4 @@ Return:
 8. `git diff --stat` and final status;
 9. unresolved questions for later semantic adjudication.
 
-Do not commit, package, update the roadmap, prepare the next worker brief, or claim P1 complete. The Project Manager owns review, acceptance, checkpointing, and follow-on selection.
+Do not commit, package, update the roadmap, rewrite any later brief, or claim P1 complete. If and only if this receipt records `unit_result: pass`, continue to the already supplied PM-002 brief. Otherwise stop the sequence and return the blocker.

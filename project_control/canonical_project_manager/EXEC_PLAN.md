@@ -2,9 +2,9 @@
 
 ## Status
 
-`active_control_only`
+`p1_restart_handoff_prepared`
 
-No normative, vocabulary, test, configuration, fixture, generated-data, or runtime implementation mutation is authorised by the present status. The implementation gate is closed until pre-implementation controls P1 through P4 below pass in order.
+Only the bounded P1 vocabulary mutations expressly opened by PM-001 through PM-010 are authorised by the present status. Test authority, tests, production/runtime implementation, P2, P3, P4 and Gate D remain closed.
 
 | Field | Current value |
 |---|---|
@@ -12,11 +12,11 @@ No normative, vocabulary, test, configuration, fixture, generated-data, or runti
 | Activated | 2026-07-20 (Australia/Melbourne) |
 | Baseline branch | `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717` |
 | Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
-| Working branch | `work/NVIDIA_2026_canonical_project_manager_20260720` |
+| Working branch | `work/NVIDIA_2026_pm001_pm010_restart_20260721` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability, or end-to-end completion claim |
-| Current unit | None open; `PM-000` accepted, `PM-001` queued but not dispatched |
-| Next prepared unit | `PM-001` — vocabulary current-truth census (evidence only) |
+| Current unit | `PM-001` restart is first; no worker output accepted |
+| Prepared sequence | `PM-001` through `PM-010`, strictly serial under `PM-001_TO_PM-010_WORKER_TABLE.md` |
 | Gate D | Closed |
 
 ## Objective
@@ -131,11 +131,18 @@ These historical objects are recoverable evidence, not automatically live author
 
 P1 is serial and must complete before P2.
 
-1. `PM-001`: freeze a current-truth census of the 46 human headings and 87 generated entries, including all two-way gaps, builder parity, audit evidence, aliases, disallowed phrases, quarantined candidates, and the ten vocabulary Atlas records. This is evidence only.
-2. Split semantic adjudication into small, non-overlapping term families. Every row receives a human decision: retain/admit, enrich, alias, quarantine, retire, or reject, with meaning and owner.
-3. Correct normative workflow ambiguity first where required.
-4. Establish proof in the direction human registry → deterministic builder/projection → generated JSON/audit evidence.
-5. Regenerate projections only after semantic admission; complete the pre/post semantic audit and touch-stamp route.
+1. `PM-001`: rebuild the complete current-truth census. Evidence only.
+2. `PM-002`: repair stale current-state statements and artefact-direction ambiguity. No term decision.
+3. `PM-003`: adjudicate architecture, migration and programme-control terms.
+4. `PM-004`: adjudicate coefficient, modifier and evaluation terms.
+5. `PM-005`: adjudicate calendar, temporal and provenance terms.
+6. `PM-006`: adjudicate DMP, protocol, identity and lineage terms.
+7. `PM-007`: adjudicate stage, ingress, runtime-context, serial-cognition and capital-decision terms.
+8. `PM-008`: adjudicate opening, placement, position, inventory, exit and close terms.
+9. `PM-009`: adjudicate parallel-risk, persistence, review, explanation and playbook terms.
+10. `PM-010`: integrate accepted decisions; establish human registry → deterministic builder/projection → generated JSON/audit evidence; refresh audit/touch evidence only after proof.
+
+The exact family allocation, allowed files, outputs, validation and stop conditions are in `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_TABLE.md` and the ten standalone briefs. Existing tests are read-only diagnostic evidence throughout this sequence and cannot decide semantic admission or make a unit pass by being green.
 
 **P1 pass:** a human can determine the admitted meaning and owner of every durable term without consulting generated code/JSON as semantic authority; registry, builder, generated document, audit evidence, and proof agree.
 
@@ -232,17 +239,18 @@ Any missing meaning returns to normative authority. Any weak or contradictory pr
 ## Worker management
 
 - Workers share the same repository and files; a brief therefore names exact paths and does not reproduce the whole programme.
-- Each worker receives a standalone Markdown brief for one bounded acceptance unit.
+- The restart worker receives a table plus ten standalone Markdown briefs, one bounded acceptance unit per brief.
 - Only one mutating worker may be active. Read-only parallel review also requires an explicit amendment because the canonical brief is deliberately serial.
-- A worker may not select a follow-on unit, broaden allowed files, update root control surfaces, or claim programme closure.
-- The Project Manager reviews the returned diff and evidence, reruns proportionate validation, accepts/rejects the unit, updates the live ledger, and only then prepares the next brief.
-- `project_control/canonical_project_manager/WORKER_BRIEFS/PM-001_VOCABULARY_CURRENT_TRUTH_CENSUS.md` is prepared but not dispatched.
+- The worker may advance only to the next already defined PM unit after the current unit receipt records `unit_result: pass`; it may not invent scope, skip a unit, update root controls, or claim programme closure.
+- The Project Manager reviews the complete returned evidence chain, reruns proportionate validation, accepts/rejects P1, and only then may open P2.
+- The PM-001–PM-010 table, companion note and ten briefs are prepared but not dispatched.
 
 ## Evidence locations
 
 - live pointer: `ROADMAP_LEDGER_V2.md`
 - full-read evidence: `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`
 - validation: `project_control/canonical_project_manager/VALIDATION_LOG.md`
+- PM-001–PM-010 handoff validation: `project_control/canonical_project_manager/PM-001_TO_PM-010_BUNDLE_VALIDATION.md`
 - worker briefs: `project_control/canonical_project_manager/WORKER_BRIEFS/`
 - worker/unit evidence: `project_control/canonical_project_manager/units/<unit-id>/`
 - prior plan/evidence: `project_control/normative_authority_top_down_alignment/`
@@ -283,6 +291,7 @@ Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof bl
 |---|---|---|---|
 | 2026-07-20 | PM-000 | `accepted_control_checkpoint` | Baseline archive/hash/branch/commit frozen; mandatory semantic reads completed and recorded in a 539-row manifest; new plan/pointer, validation record, and one bounded worker brief created; changed-path, manifest-hash, order, non-empty-file, and diff checks passed. Pytest remains explicitly environment-blocked and no behavioural pass is claimed. |
 | 2026-07-20 | PM-001 | `prepared_not_dispatched` | Standalone evidence-only worker brief prepared; no worker has been authorised or spawned. |
+| 2026-07-21 | PM-001–PM-010 restart | `handoff_prepared_not_dispatched` | Earlier informal PM-002–PM-010 authority withdrawn for this restart; exact serial table, companion note and ten bounded standalone briefs prepared. No worker output is accepted by this row. |
 
 ## Decisions
 

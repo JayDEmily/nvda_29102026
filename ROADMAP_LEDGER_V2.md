@@ -4,13 +4,13 @@
 
 | Field | Value |
 |---|---|
-| Status | `active_control_only` |
+| Status | `p1_restart_handoff_prepared` |
 | Active ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
-| Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
-| Working branch | `work/NVIDIA_2026_canonical_project_manager_20260720` |
-| Current unit | None open; `PM-000` accepted |
-| Next unit | `PM-001` — vocabulary current-truth census, queued but not dispatched |
-| Next worker state | `brief_prepared_not_dispatched` |
+| Frozen governed ancestor | `533ed574ab326f75058aaeab7c1a671de5dea31f` |
+| Working branch | `work/NVIDIA_2026_pm001_pm010_restart_20260721` |
+| Current unit | `PM-001` restart is first; no worker output accepted |
+| Authorised sequence | `PM-001` through `PM-010`, strictly serial under the worker table |
+| Next worker state | `ten_unit_handoff_prepared_not_dispatched` |
 | Behavioural mutation | `closed` |
 | Gate D | `closed` |
 
@@ -21,7 +21,7 @@ This is the mutable successor to the retired `ROADMAP_LEDGER.md`. Historical pla
 | Sequence | Gate | State | Exit condition |
 |---:|---|---|---|
 | 0 | PM-000 control activation | `accepted_control_checkpoint` | Plan, full-read manifest, live pointer, validation record, bounded worker brief, and control checks accepted; commit/archive identify the handoff checkpoint |
-| 1 | P1 vocabulary semantic authority | `not_open` | Human registry, builder/projection, generated JSON, aliases, audit evidence, and semantic proof agree |
+| 1 | P1 vocabulary semantic authority | `restart_sequence_prepared` | Human registry, builder/projection, generated JSON, aliases, audit evidence, and semantic proof agree |
 | 2 | P2 test authority | `not_open` | 166 Tier A and 13 Tier B files each have an explicit current authority/disposition; 46-file Tier A gap resolved |
 | 3 | P3 closed-unit proof repair | `not_open` | D-009, D-012, D-015, D-010, D-016, D-033, D-017, D-031, D-021, D-048, D-041 accepted in that order |
 | 4 | P4 proof-envelope freeze | `not_open` | All 33 envelopes reissued as executable-now or closed with exact return gate; total order dependency-safe |
@@ -58,9 +58,19 @@ This order is not yet executable. P1-P4 must pass first.
 
 | Brief | Scope | Mutation class | State |
 |---|---|---|---|
-| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-001_VOCABULARY_CURRENT_TRUTH_CENSUS.md` | Reproducible vocabulary census and discrepancy register only | Project-control evidence | `prepared_not_dispatched` |
+| `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_TABLE.md` | Exact serial allocation and cross-unit law | Control/evidence | `prepared_not_dispatched` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-001_VOCABULARY_CURRENT_TRUTH_CENSUS.md` | Fresh census; no semantic decision | Project-control evidence | `prepared_not_dispatched` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-002_VOCABULARY_NORMATIVE_TRUTH_REPAIR.md` | Stale truth and authority-direction repair only | Bounded vocabulary normative/workflow | `blocked_by_PM-001` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-003_ARCHITECTURE_MIGRATION_CONTROL_TERMS.md` | Architecture/migration/control family | Human semantic authority | `blocked_by_PM-002` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-004_COEFFICIENT_MODIFIER_EVALUATION_TERMS.md` | Coefficient/modifier/evaluation family | Human semantic authority | `blocked_by_PM-003` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-005_CALENDAR_TEMPORAL_PROVENANCE_TERMS.md` | Calendar/temporal/provenance family | Human semantic authority | `blocked_by_PM-004` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-006_DMP_PROTOCOL_IDENTITY_LINEAGE_TERMS.md` | DMP/protocol/identity/lineage family | Human semantic authority | `blocked_by_PM-005` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-007_STAGE_INGRESS_SERIAL_CAPITAL_TERMS.md` | Stage/ingress/serial/capital family | Human semantic authority | `blocked_by_PM-006` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-008_OPENING_POSITION_EXIT_CLOSE_TERMS.md` | Opening through close family | Human semantic authority | `blocked_by_PM-007` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-009_PARALLEL_RISK_REVIEW_PLAYBOOK_TERMS.md` | Parallel-risk/review/playbook family | Human semantic authority | `blocked_by_PM-008` |
+| `project_control/canonical_project_manager/WORKER_BRIEFS/PM-010_P1_INTEGRATION_AND_PROJECTION_FREEZE.md` | Accepted semantic integration and projection | Vocabulary projection only | `blocked_by_PM-009` |
 
-No other worker brief is authorised. Later work is selected only after the current unit is accepted.
+No unit beyond PM-010 is authorised. The same worker may advance to the next listed unit only when the preceding receipt records `unit_result: pass` and all preceding changes satisfy the preceding brief. Project-manager acceptance remains required before P2 opens.
 
 ## Ledger update rule
 
