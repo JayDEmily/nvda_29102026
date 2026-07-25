@@ -237,3 +237,16 @@ Raw commands, exit codes, reference source, mutant sources and outputs are retai
 The same Project Manager execution pass authored the proof specification and test file. The governing protocol states that the test author cannot provide final acceptance. Mechanical reference and mutation validation demonstrate proof strength but do not waive that role-separation requirement.
 
 `M13-IMPLEMENT` remains closed. The next lawful leaf is an independent read-only acceptance of the frozen M13 proof record and test file.
+
+
+### M13 proof checkpoint closeout
+
+| Check | Result |
+|---|---|
+| Proof checkpoint commit | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c` on `proof/m13-state-kernel` |
+| Commit changed-path boundary | PASS — no `src/**`; one M13 test plus proof/config/vocabulary/control evidence |
+| Worktree after proof commit | PASS — clean |
+| Local `main` | remains `b153cd1e3e0808991dcf9c188e380d935cfd9283`; proof branch not merged |
+| Gate state | `CLOSED:MLC-V_INDEPENDENT_PM_ACCEPTANCE_REQUIRED` |
+
+The Git-preserving archive for the later evidence-record commit is reported externally after its bytes exist.

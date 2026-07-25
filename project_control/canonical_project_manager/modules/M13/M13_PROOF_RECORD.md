@@ -7,6 +7,7 @@
 - Module: `M13 state_kernel`
 - Branch: `proof/m13-state-kernel`
 - Baseline after fast-forward merge: `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`
+- Frozen proof checkpoint: `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`

@@ -318,7 +318,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | P2-A01 | `accepted_historical_checkpoint` | Immutable archive and clean checkpoint accepted; evidence preserved. |
 | 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
 | 2026-07-25 | `CTRL-ARCH-001` | `accepted_and_fast_forwarded_to_main` | Local `main` now includes the accepted control integration through `b153cd1e3e0808991dcf9c188e380d935cfd9283`. |
-| 2026-07-25 | `M13-PROOF` | `closed_pending_independent_acceptance` | N-06 authority sufficient; nine expected-red tests frozen; conforming external reference 9/9; six material mutants rejected; same execution pass authored test and therefore cannot issue final acceptance under `MLC-V`. |
+| 2026-07-25 | `M13-PROOF` | `closed_pending_independent_acceptance` | Proof checkpoint `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`: N-06 authority sufficient; nine expected-red tests frozen; conforming external reference 9/9; six material mutants rejected; same execution pass authored test and therefore cannot issue final acceptance under `MLC-V`. |
 
 ## Decisions
 

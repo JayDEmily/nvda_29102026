@@ -12,6 +12,7 @@
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
 | Current branch | `proof/m13-state-kernel` |
 | Current unit | `M13-PROOF` completed through proof authorship and falsification; independent final acceptance remains pending |
+| Frozen M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c` |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
