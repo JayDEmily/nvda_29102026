@@ -1,0 +1,56 @@
+PM-020 PRE-PACKAGE VALIDATION
+
+Verified
+- physical discovery reproduces 166 Tier A / 13 Tier B / 179 total files
+- all 179 physical test SHA-256 values match PM-011
+- ledger is 179 YES / 0 NO with one existing receipt per row
+- ledger test paths and receipt paths are one-to-one
+- all 179 final file dispositions use the allowed enumeration
+- all ledger rows have equal assertion-group and relationship counts
+- all 51 current proof blocks pass structural --check-all validation without command execution
+- git diff --check passed
+- git fsck --full completed without integrity error; dangling blobs are retained repository objects
+- complete Tier B shadow route passed: 49 passed
+- complete Tier A output contains no skip, xfail or collection-error summary
+- all 42 frozen Gate C expected-red nodes correspond exactly to the sequence-160 obligation set
+- sequence-160 comparison finds no source, test, normative, configuration, fixture, script or proof-block mutation
+- active retained-test registry and proof-block configuration remain byte-identical to sequence 160
+
+Failed
+- PM-019 integration validator failed; see PM-019_VALIDATION.txt
+- 99 assertion-group relation projections are unresolved or outside the allowed enum
+- 123 assertion-group proof-strength projections are unresolved or outside the allowed enum
+- 214 admitted assertion groups lack exact group-level authority-locator projection
+- complete Tier A route is red: 61 failed, 1097 passed
+- 19 additional Tier A failures remain outside the frozen Gate C expected-red set
+
+Unknown
+- None at pre-package stage
+
+Blocked
+- active retained-test/proof-block configuration projection was not authorised because PM-019 registers do not agree
+
+Current count set
+{
+  "additional_tier_a_failures": 19,
+  "assertion_groups": 777,
+  "dispositions": {
+    "ADMIT_TIER_A_CURRENT": 31,
+    "ADMIT_TIER_B_SHADOW": 5,
+    "BLOCKED_MISSING_NORMATIVE_AUTHORITY": 35,
+    "BLOCKED_P3_REPAIR": 74,
+    "NON_AUTHORITATIVE_OBSERVATIONAL": 20,
+    "RETIREMENT_RECOMMENDED_NOT_EXECUTED": 14
+  },
+  "gate_c_expected_red": 42,
+  "ledger_no": 0,
+  "ledger_yes": 179,
+  "physical_tier_a_files": 166,
+  "physical_tier_b_files": 13,
+  "physical_total_files": 179,
+  "tier_a_pytest_failed": 61,
+  "tier_a_pytest_passed": 1097,
+  "tier_b_pytest_passed": 49
+}
+
+Pre-package result: FAIL

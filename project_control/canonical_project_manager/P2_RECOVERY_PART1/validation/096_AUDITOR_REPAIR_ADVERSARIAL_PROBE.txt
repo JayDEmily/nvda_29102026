@@ -1,0 +1,7 @@
+duplicate_requested_ids_live_ids= ['pos-1', 'pos-1']
+duplicate_requested_ids_exposure= {'NVDA': 5.0}
+nested_placement_key_persisted= {'broker_order_id': 'broker-1'}
+cross_position_duplicate_accepted= ['pos-a', 'pos-b']
+duplicate_receipt_error= duplicate receipt_id: dup-r
+position_after_receipt_failure= {'fill_evidence_ids': ['fill-atomic'], 'fill_evidence': [{'fill_evidence_id': 'fill-atomic', 'position_id': 'pos-atomic', 'declared_exposure_delta': 7.0}], 'declared_exposure': 7.0, 'inventory_reconciliation_id': 'r-atomic'}
+probe_exit_code=0

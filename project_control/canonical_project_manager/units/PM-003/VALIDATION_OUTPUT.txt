@@ -1,0 +1,7 @@
+pm003_corrected_validation=PASS
+concept_rows=32
+canonical_decisions=30
+alias_only_decisions=2
+normative_candidate_occurrences=3
+normative_candidates_routed_to_P2=0
+source_locator_validation=PASS (see PM-010/VALIDATION_OUTPUT.txt)

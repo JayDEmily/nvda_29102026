@@ -1,0 +1,3 @@
+declared_revision	original_path	evidence_copy	purpose
+snapshot_sha256:5bd0b7d7b84cd58bcd102936950768798868c430bf9fc02a40778f5592111e10	src/nvda_desk/vocabulary_builder.py	project_control/canonical_project_manager/units/PM-010/SOURCE_REVISION_EVIDENCE/pre_PM010/vocabulary_builder.py	Exact pre-PM-010 worktree content supporting earlier P1 line locators.
+snapshot_sha256:b8475da2263788891d6c1a9f341a8c4504a27c72e909e4f61e0166c87709bc44	docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	project_control/canonical_project_manager/units/PM-010/SOURCE_REVISION_EVIDENCE/pre_PM010/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	Exact pre-PM-010 worktree content supporting earlier P1 line locators.

@@ -1,0 +1,109 @@
+SEQUENCE	STATE	TIMESTAMP_UTC	TEST_PATH	NOTE
+067	IN_PROGRESS	2026-07-24T03:23:53.523663+00:00	tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py	pre-admission test and structural validator pass; semantic decision remains human
+067	COMPLETE	2026-07-24T03:23:56.185228+00:00	tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py	single row admitted after current receipt confirmation and validation
+068	IN_PROGRESS	2026-07-24T03:23:57.265166+00:00	tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py	pre-admission test and structural validator pass; semantic decision remains human
+068	COMPLETE	2026-07-24T03:23:59.864563+00:00	tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py	single row admitted after current receipt confirmation and validation
+069	IN_PROGRESS	2026-07-24T03:24:00.907380+00:00	tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py	pre-admission test and structural validator pass; semantic decision remains human
+069	COMPLETE	2026-07-24T03:24:03.967555+00:00	tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py	single row admitted after current receipt confirmation and validation
+070	IN_PROGRESS	2026-07-24T03:24:05.148119+00:00	tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py	pre-admission test and structural validator pass; semantic decision remains human
+070	COMPLETE	2026-07-24T03:24:07.857029+00:00	tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py	single row admitted after current receipt confirmation and validation
+071	IN_PROGRESS	2026-07-24T03:24:08.919990+00:00	tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+071	COMPLETE	2026-07-24T03:24:11.582457+00:00	tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py	single row admitted after current receipt confirmation and validation
+072	IN_PROGRESS	2026-07-24T03:24:12.641831+00:00	tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py	pre-admission test and structural validator pass; semantic decision remains human
+072	COMPLETE	2026-07-24T03:24:15.152110+00:00	tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py	single row admitted after current receipt confirmation and validation
+073	IN_PROGRESS	2026-07-24T03:24:31.546595+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py	pre-admission test and structural validator pass; semantic decision remains human
+073	COMPLETE	2026-07-24T03:24:34.451556+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py	single row admitted after current receipt confirmation and validation
+074	IN_PROGRESS	2026-07-24T03:24:35.606607+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py	pre-admission test and structural validator pass; semantic decision remains human
+074	COMPLETE	2026-07-24T03:24:38.670966+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py	single row admitted after current receipt confirmation and validation
+075	IN_PROGRESS	2026-07-24T03:24:39.865896+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py	pre-admission test and structural validator pass; semantic decision remains human
+075	COMPLETE	2026-07-24T03:24:42.816095+00:00	tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py	single row admitted after current receipt confirmation and validation
+076	IN_PROGRESS	2026-07-24T03:24:43.960050+00:00	tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py	pre-admission test and structural validator pass; semantic decision remains human
+076	COMPLETE	2026-07-24T03:24:46.945466+00:00	tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py	single row admitted after current receipt confirmation and validation
+077	IN_PROGRESS	2026-07-24T03:24:48.118978+00:00	tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py	pre-admission test and structural validator pass; semantic decision remains human
+077	COMPLETE	2026-07-24T03:24:50.701520+00:00	tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py	single row admitted after current receipt confirmation and validation
+078	IN_PROGRESS	2026-07-24T03:24:51.749341+00:00	tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+078	COMPLETE	2026-07-24T03:24:54.363276+00:00	tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py	single row admitted after current receipt confirmation and validation
+079	IN_PROGRESS	2026-07-24T03:25:10.430049+00:00	tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py	pre-admission test and structural validator pass; semantic decision remains human
+079	COMPLETE	2026-07-24T03:25:13.026780+00:00	tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py	single row admitted after current receipt confirmation and validation
+080	IN_PROGRESS	2026-07-24T03:25:14.143907+00:00	tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py	pre-admission test and structural validator pass; semantic decision remains human
+080	COMPLETE	2026-07-24T03:25:17.363607+00:00	tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py	single row admitted after current receipt confirmation and validation
+081	IN_PROGRESS	2026-07-24T03:25:18.577050+00:00	tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py	pre-admission test and structural validator pass; semantic decision remains human
+081	COMPLETE	2026-07-24T03:25:21.376736+00:00	tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py	single row admitted after current receipt confirmation and validation
+082	IN_PROGRESS	2026-07-24T03:25:22.420396+00:00	tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py	pre-admission test and structural validator pass; semantic decision remains human
+082	COMPLETE	2026-07-24T03:25:25.036529+00:00	tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py	single row admitted after current receipt confirmation and validation
+083	IN_PROGRESS	2026-07-24T03:25:26.081452+00:00	tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+083	COMPLETE	2026-07-24T03:25:28.844368+00:00	tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py	single row admitted after current receipt confirmation and validation
+084	IN_PROGRESS	2026-07-24T03:25:29.919558+00:00	tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py	pre-admission test and structural validator pass; semantic decision remains human
+084	COMPLETE	2026-07-24T03:25:32.499104+00:00	tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py	single row admitted after current receipt confirmation and validation
+085	IN_PROGRESS	2026-07-24T03:25:48.335415+00:00	tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py	pre-admission test and structural validator pass; semantic decision remains human
+085	COMPLETE	2026-07-24T03:25:51.373017+00:00	tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py	single row admitted after current receipt confirmation and validation
+086	IN_PROGRESS	2026-07-24T03:25:52.541573+00:00	tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py	pre-admission test and structural validator pass; semantic decision remains human
+086	COMPLETE	2026-07-24T03:25:55.442974+00:00	tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py	single row admitted after current receipt confirmation and validation
+087	IN_PROGRESS	2026-07-24T03:25:56.646295+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+087	COMPLETE	2026-07-24T03:25:59.527383+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py	single row admitted after current receipt confirmation and validation
+088	IN_PROGRESS	2026-07-24T03:26:00.730700+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+088	COMPLETE	2026-07-24T03:26:03.439463+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py	single row admitted after current receipt confirmation and validation
+089	IN_PROGRESS	2026-07-24T03:26:04.617562+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_specimen.py	pre-admission test and structural validator pass; semantic decision remains human
+089	COMPLETE	2026-07-24T03:26:07.303308+00:00	tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_specimen.py	single row admitted after current receipt confirmation and validation
+090	IN_PROGRESS	2026-07-24T03:26:08.419219+00:00	tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+090	COMPLETE	2026-07-24T03:26:11.339711+00:00	tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py	single row admitted after current receipt confirmation and validation
+091	IN_PROGRESS	2026-07-24T03:26:26.663386+00:00	tests/tier_a/testing_harnesses/test_fwd002_fixture_and_sidecar_contract.py	pre-admission test and structural validator pass; semantic decision remains human
+091	COMPLETE	2026-07-24T03:26:29.434904+00:00	tests/tier_a/testing_harnesses/test_fwd002_fixture_and_sidecar_contract.py	single row admitted after current receipt confirmation and validation
+092	IN_PROGRESS	2026-07-24T03:26:30.586092+00:00	tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+092	COMPLETE	2026-07-24T03:26:33.411439+00:00	tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py	single row admitted after current receipt confirmation and validation
+093	IN_PROGRESS	2026-07-24T03:26:34.493341+00:00	tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+093	COMPLETE	2026-07-24T03:26:37.101389+00:00	tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py	single row admitted after current receipt confirmation and validation
+094	IN_PROGRESS	2026-07-24T03:26:38.288441+00:00	tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+094	COMPLETE	2026-07-24T03:26:41.349601+00:00	tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py	single row admitted after current receipt confirmation and validation
+095	IN_PROGRESS	2026-07-24T03:26:42.487666+00:00	tests/tier_a/downstream_runtime/test_downstream_contract_models.py	pre-admission test and structural validator pass; semantic decision remains human
+095	COMPLETE	2026-07-24T03:26:45.125078+00:00	tests/tier_a/downstream_runtime/test_downstream_contract_models.py	single row admitted after current receipt confirmation and validation
+096	IN_PROGRESS	2026-07-24T03:26:46.214906+00:00	tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+096	COMPLETE	2026-07-24T03:26:48.857771+00:00	tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py	single row admitted after current receipt confirmation and validation
+097	IN_PROGRESS	2026-07-24T03:27:06.025727+00:00	tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+097	COMPLETE	2026-07-24T03:27:08.940480+00:00	tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py	single row admitted after current receipt confirmation and validation
+098	IN_PROGRESS	2026-07-24T03:27:10.129799+00:00	tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+098	COMPLETE	2026-07-24T03:27:12.842923+00:00	tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py	single row admitted after current receipt confirmation and validation
+099	IN_PROGRESS	2026-07-24T03:27:13.967268+00:00	tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+099	COMPLETE	2026-07-24T03:27:16.496753+00:00	tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py	single row admitted after current receipt confirmation and validation
+100	IN_PROGRESS	2026-07-24T03:27:17.546912+00:00	tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+100	COMPLETE	2026-07-24T03:27:20.239944+00:00	tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py	single row admitted after current receipt confirmation and validation
+101	IN_PROGRESS	2026-07-24T03:27:21.319128+00:00	tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+101	COMPLETE	2026-07-24T03:27:23.979854+00:00	tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py	single row admitted after current receipt confirmation and validation
+102	IN_PROGRESS	2026-07-24T03:27:25.055018+00:00	tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py	pre-admission test and structural validator pass; semantic decision remains human
+102	COMPLETE	2026-07-24T03:27:27.847275+00:00	tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py	single row admitted after current receipt confirmation and validation
+103	IN_PROGRESS	2026-07-24T03:27:43.448743+00:00	tests/tier_a/downstream_runtime/test_fwd016_daily_pnl_reporting_contract.py	pre-admission test and structural validator pass; semantic decision remains human
+103	COMPLETE	2026-07-24T03:27:46.458448+00:00	tests/tier_a/downstream_runtime/test_fwd016_daily_pnl_reporting_contract.py	single row admitted after current receipt confirmation and validation
+104	IN_PROGRESS	2026-07-24T03:27:47.532539+00:00	tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py	pre-admission test and structural validator pass; semantic decision remains human
+104	COMPLETE	2026-07-24T03:27:50.285732+00:00	tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py	single row admitted after current receipt confirmation and validation
+105	IN_PROGRESS	2026-07-24T03:27:51.330233+00:00	tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+105	COMPLETE	2026-07-24T03:27:53.850439+00:00	tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py	single row admitted after current receipt confirmation and validation
+106	IN_PROGRESS	2026-07-24T03:27:54.864961+00:00	tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+106	COMPLETE	2026-07-24T03:27:57.553654+00:00	tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py	single row admitted after current receipt confirmation and validation
+107	IN_PROGRESS	2026-07-24T03:27:58.599996+00:00	tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+107	COMPLETE	2026-07-24T03:28:01.229458+00:00	tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py	single row admitted after current receipt confirmation and validation
+108	IN_PROGRESS	2026-07-24T03:28:02.316174+00:00	tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+108	COMPLETE	2026-07-24T03:28:04.985750+00:00	tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py	single row admitted after current receipt confirmation and validation
+109	IN_PROGRESS	2026-07-24T03:28:20.193022+00:00	tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+109	COMPLETE	2026-07-24T03:28:22.857271+00:00	tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py	single row admitted after current receipt confirmation and validation
+110	IN_PROGRESS	2026-07-24T03:28:23.964099+00:00	tests/tier_a/options_flow_history/test_options_flow_contract_models.py	pre-admission test and structural validator pass; semantic decision remains human
+110	COMPLETE	2026-07-24T03:28:26.587341+00:00	tests/tier_a/options_flow_history/test_options_flow_contract_models.py	single row admitted after current receipt confirmation and validation
+111	IN_PROGRESS	2026-07-24T03:28:27.723025+00:00	tests/tier_a/options_flow_history/test_options_flow_history_persistence_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+111	COMPLETE	2026-07-24T03:28:30.187497+00:00	tests/tier_a/options_flow_history/test_options_flow_history_persistence_surface.py	single row admitted after current receipt confirmation and validation
+112	IN_PROGRESS	2026-07-24T03:28:31.275169+00:00	tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py	pre-admission test and structural validator pass; semantic decision remains human
+112	COMPLETE	2026-07-24T03:28:33.936644+00:00	tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py	single row admitted after current receipt confirmation and validation
+113	IN_PROGRESS	2026-07-24T03:28:34.972109+00:00	tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+113	COMPLETE	2026-07-24T03:28:37.441329+00:00	tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py	single row admitted after current receipt confirmation and validation
+114	IN_PROGRESS	2026-07-24T03:28:38.447725+00:00	tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+114	COMPLETE	2026-07-24T03:28:40.963584+00:00	tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py	single row admitted after current receipt confirmation and validation
+115	IN_PROGRESS	2026-07-24T03:28:56.375507+00:00	tests/tier_a/options_flow_history/test_options_flow_history_runtime_authority_separation.py	pre-admission test and structural validator pass; semantic decision remains human
+115	COMPLETE	2026-07-24T03:28:58.842938+00:00	tests/tier_a/options_flow_history/test_options_flow_history_runtime_authority_separation.py	single row admitted after current receipt confirmation and validation
+116	IN_PROGRESS	2026-07-24T03:29:00.364669+00:00	tests/tier_a/options_flow_history/test_options_flow_history_trade_state_separation.py	pre-admission test and structural validator pass; semantic decision remains human
+116	COMPLETE	2026-07-24T03:29:12.409946+00:00	tests/tier_a/options_flow_history/test_options_flow_history_trade_state_separation.py	single row admitted after current receipt confirmation and validation
+117	IN_PROGRESS	2026-07-24T03:29:52.009894+00:00	tests/tier_a/persistence/test_append_only_repository_surfaces.py	pre-admission test and structural validator pass; semantic decision remains human
+117	COMPLETE	2026-07-24T03:29:54.777361+00:00	tests/tier_a/persistence/test_append_only_repository_surfaces.py	single row admitted after current receipt confirmation and validation
+118	IN_PROGRESS	2026-07-24T03:29:55.833566+00:00	tests/tier_a/persistence/test_capital_state_repository_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+118	COMPLETE	2026-07-24T03:29:58.231928+00:00	tests/tier_a/persistence/test_capital_state_repository_surface.py	single row admitted after current receipt confirmation and validation
+119	IN_PROGRESS	2026-07-24T03:30:23.277734+00:00	tests/tier_a/persistence/test_execution_records_repository_surface.py	pre-admission test and structural validator pass; semantic decision remains human
+119	COMPLETE	2026-07-24T03:30:25.978262+00:00	tests/tier_a/persistence/test_execution_records_repository_surface.py	single row admitted after current receipt confirmation and validation
+120	IN_PROGRESS	2026-07-24T03:30:27.081009+00:00	tests/tier_a/persistence/test_fwd003_durable_sql_contract.py	pre-admission test and structural validator pass; semantic decision remains human
+120	COMPLETE	2026-07-24T03:30:29.552469+00:00	tests/tier_a/persistence/test_fwd003_durable_sql_contract.py	single row admitted after current receipt confirmation and validation

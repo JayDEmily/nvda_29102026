@@ -1,0 +1,7 @@
+OUT_OF_SCOPE_COMPARISON_FINAL
+baseline_ledger_rows=125
+current_ledger_rows=125
+ledger_equal=TRUE
+baseline_receipt_hashes=125
+receipt_hash_mismatches=0
+RESULT=PASS

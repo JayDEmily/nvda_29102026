@@ -1,0 +1,2 @@
+RESULT=PASS sequence=119 groups=2 relationships=2 disposition=BLOCKED_P3_REPAIR receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_persistence_test_execution_records_repository_surface_py.md
+NOTE=Structural validation does not establish semantic acceptance.

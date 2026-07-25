@@ -1,0 +1,6 @@
+Checkpoint sequence: 096
+Archive: NVDA_P2_RECOVERY_PART1_CHECKPOINT_SEQ096_20260723T101909_AEST.tar.gz
+SHA-256: c01a7e86ad4a78fb310b00b71ba6a6a14d24696c00dcfa7adc37e89dcdcdcf18
+Bytes: 36177492
+Fresh receipts validated and ledger-admitted: 067-096 (30/54)
+Method status: FAILED pending independent audit because the recorded isolation breaches cannot be waived.

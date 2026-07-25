@@ -1,0 +1,1945 @@
++ env PYTHONPATH=src pytest -q tests/tier_a
+........................................................................ [  6%]
+........................................................................ [ 12%]
+........................................................................ [ 18%]
+......................FFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFF.FFF.F.F....F..F [ 24%]
+FF...................................................................... [ 31%]
+.............F.......................................................... [ 37%]
+........................................................................ [ 43%]
+........................................................................ [ 49%]
+........................................................................ [ 55%]
+........................................................................ [ 62%]
+........................................................................ [ 68%]
+........................................................................ [ 74%]
+........................................................................ [ 80%]
+........................................................................ [ 87%]
+.....................................................F.................. [ 93%]
+.................................F.......F...............F...FF.FFFFFFFF [ 99%]
+FFFF..                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_c001_c003_market_adapter_enforces_external_source_authority_recursively _
+
+    def test_c001_c003_market_adapter_enforces_external_source_authority_recursively() -> None:
+        payload = {
+            "snapshot_id": "snap-1",
+            "source_time_utc": _SOURCE_TIME,
+            "market_snapshot": {"spot_price": 100.0, "nested": {"trade_allowed": True}},
+        }
+    
+>       with pytest.raises(ValueError, match="forbidden_external_payload_keys"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:25: Failed
+_ test_c001_c003_options_adapter_enforces_external_source_authority_recursively _
+
+    def test_c001_c003_options_adapter_enforces_external_source_authority_recursively() -> None:
+        payload = {
+            "source_time_utc": _SOURCE_TIME,
+            "market_snapshot": {"spot_price": 100.0},
+            "options_surface": {
+                "spot_price": 100.0,
+                "front_dte": 1,
+                "next_dte": 5,
+                "nested": {"authorised_notional_usd": 1_000_000},
+            },
+        }
+    
+>       with pytest.raises(ValueError, match="forbidden_external_payload_keys"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:41: Failed
+_ test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it _
+
+    def test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it() -> None:
+>       with pytest.raises(ValueError, match="unsupported|typed|section|family"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:46: Failed
+_ test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_widening_payloads _
+
+    def test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_widening_payloads() -> (
+        None
+    ):
+        required = {
+            "bundle_id",
+            "source_capture_ids",
+            "input_schema_version",
+            "policy_version",
+        }
+>       assert required.issubset(StageInputBundle.model_fields)
+E       AssertionError: assert False
+E        +  where False = <built-in method issubset of set object at 0x7fdcd5136dc0>({'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)})
+E        +    where <built-in method issubset of set object at 0x7fdcd5136dc0> = {'bundle_id', 'input_schema_version', 'policy_version', 'source_capture_ids'}.issubset
+E        +    and   {'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)} = StageInputBundle.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:61: AssertionError
+_ test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance _
+
+    def test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance() -> None:
+        names = {field.name for field in fields(PreparedRuntimeLineage)}
+        required = {
+            "source_artifact_ids",
+            "input_fingerprint",
+            "input_schema_version",
+            "preparation_policy_version",
+            "derivation_versions",
+        }
+>       assert required.issubset(names)
+E       AssertionError: assert False
+E        +  where False = <built-in method issubset of set object at 0x7fdcd5137d80>({'alignment_policy', 'derived_field_names', 'runtime_bar_time_utc', 'source_kind', 'source_sections', 'source_snapshot_id', ...})
+E        +    where <built-in method issubset of set object at 0x7fdcd5137d80> = {'derivation_versions', 'input_fingerprint', 'input_schema_version', 'preparation_policy_version', 'source_artifact_ids'}.issubset
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:73: AssertionError
+_ test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage _
+
+    def test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage() -> None:
+>       with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|sourceartifactids|inputfingerprint"
+        ):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py:77: Failed
+_ test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint _
+
+    def test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint() -> None:
+        contracts = _require_module("nvda_desk.contracts.options_flow")
+>       envelope = _require_attr(contracts, "OptionsEvidenceEnvelope")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.options_flow' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/options_flow.py'>
+attr_name = 'OptionsEvidenceEnvelope'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.options_flow.OptionsEvidenceEnvelope
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority _
+
+    def test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority() -> None:
+        mapper = _require_module("nvda_desk.cognition.ingress.options_mapper")
+        build_options_flow_input = _require_attr(mapper, "build_options_flow_input")
+>       with pytest.raises((TypeError, ValueError), match="typed|evidence|envelope|authority"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:63: Failed
+__ test_c005_c018_financial_calendar_contract_has_exact_four_semantic_layers ___
+
+    def test_c005_c018_financial_calendar_contract_has_exact_four_semantic_layers() -> None:
+        contracts = _require_module("nvda_desk.contracts.reference_data")
+>       layer = _require_attr(contracts, "FinancialCalendarLayer")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.reference_data' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/reference_data.py'>
+attr_name = 'FinancialCalendarLayer'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.FinancialCalendarLayer
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+________ test_c005_equal_calendar_candidates_coalesce_with_all_lineage _________
+
+    def test_c005_equal_calendar_candidates_coalesce_with_all_lineage() -> None:
+        contracts = _require_module("nvda_desk.contracts.reference_data")
+        projection = _require_module("nvda_desk.calendar.reference.projection")
+>       candidate = _require_attr(contracts, "CalendarFactCandidate")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.reference_data' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/reference_data.py'>
+attr_name = 'CalendarFactCandidate'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.CalendarFactCandidate
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c005_c018_unequal_or_derived_override_without_explicit_supersession_fails_closed _
+
+    def test_c005_c018_unequal_or_derived_override_without_explicit_supersession_fails_closed() -> None:
+        contracts = _require_module("nvda_desk.contracts.reference_data")
+        projection = _require_module("nvda_desk.calendar.reference.projection")
+>       candidate = _require_attr(contracts, "CalendarFactCandidate")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.reference_data' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/reference_data.py'>
+attr_name = 'CalendarFactCandidate'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.CalendarFactCandidate
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c008_prepared_envelope_requires_common_identity_version_time_and_fingerprint_lineage _
+
+module_path = 'nvda_desk.contracts.prepared_data'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.contracts.prepared_data'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.contracts.prepared_data'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c008_prepared_envelope_requires_common_identity_version_time_and_fingerprint_lineage() -> (
+        None
+    ):
+>       contracts = _require_module("nvda_desk.contracts.prepared_data")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.contracts.prepared_data'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.contracts.prepared_data (No module named 'nvda_desk.contracts.prepared_data')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+____ test_c008_prepared_envelope_rejects_untagged_generic_payload_authority ____
+
+module_path = 'nvda_desk.contracts.prepared_data'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.contracts.prepared_data'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.contracts.prepared_data'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c008_prepared_envelope_rejects_untagged_generic_payload_authority() -> None:
+>       contracts = _require_module("nvda_desk.contracts.prepared_data")
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:190: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.contracts.prepared_data'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.contracts.prepared_data (No module named 'nvda_desk.contracts.prepared_data')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_ test_c011_equal_field_candidates_coalesce_and_preserve_candidate_provenance __
+
+module_path = 'nvda_desk.preparation.field_resolution'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.preparation.field_resolution'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.preparation.field_resolution'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c011_equal_field_candidates_coalesce_and_preserve_candidate_provenance() -> None:
+>       resolution = _require_module("nvda_desk.preparation.field_resolution")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:212: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.preparation.field_resolution'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.preparation.field_resolution (No module named 'nvda_desk.preparation.field_resolution')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+___ test_c011_unequal_mandatory_candidates_without_field_policy_fail_closed ____
+
+module_path = 'nvda_desk.preparation.field_resolution'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.preparation.field_resolution'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.preparation.field_resolution'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c011_unequal_mandatory_candidates_without_field_policy_fail_closed() -> None:
+>       resolution = _require_module("nvda_desk.preparation.field_resolution")
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.preparation.field_resolution'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.preparation.field_resolution (No module named 'nvda_desk.preparation.field_resolution')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+__ test_c013_stage_bundle_allocates_one_common_context_and_narrow_references ___
+
+    def test_c013_stage_bundle_allocates_one_common_context_and_narrow_references() -> None:
+        stage_contracts = _require_module("nvda_desk.contracts.stage_inputs")
+        options_contracts = _require_module("nvda_desk.contracts.options_flow")
+        regime_contracts = _require_module("nvda_desk.contracts.regime")
+        temporal_contracts = _require_module("nvda_desk.contracts.temporal")
+>       common = _require_attr(stage_contracts, "CommonStageContext")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.stage_inputs' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/stage_inputs.py'>
+attr_name = 'CommonStageContext'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+______ test_c013_stage_bundle_rejects_mismatched_common_context_reference ______
+
+    def test_c013_stage_bundle_rejects_mismatched_common_context_reference() -> None:
+        stage_contracts = _require_module("nvda_desk.contracts.stage_inputs")
+        options_contracts = _require_module("nvda_desk.contracts.options_flow")
+        regime_contracts = _require_module("nvda_desk.contracts.regime")
+        temporal_contracts = _require_module("nvda_desk.contracts.temporal")
+>       common = _require_attr(stage_contracts, "CommonStageContext")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.stage_inputs' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/stage_inputs.py'>
+attr_name = 'CommonStageContext'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation _
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation() -> None:
+>       command_type, boundary_type, _ = _transaction_contracts()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:351: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_______ test_c024_same_idempotency_key_with_different_input_is_conflict ________
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_same_idempotency_key_with_different_input_is_conflict() -> None:
+>       command_type, boundary_type, conflict = _transaction_contracts()
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:376: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+___ test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt ____
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt() -> None:
+>       command_type, boundary_type, _ = _transaction_contracts()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:398: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_ test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families _
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.domain.temporal.intraday_phase'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families() -> None:
+>       phase, evidence, _, _ = _phase_contracts()
+                                ^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:432: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:422: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_ test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase _
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.domain.temporal.intraday_phase'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase() -> None:
+>       _, evidence, policy_type, evaluator_type = _phase_contracts()
+                                                   ^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:455: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:422: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_ test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase _
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.domain.temporal.intraday_phase'
+import_ = <function _gcd_import at 0x7fdcf089c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase() -> None:
+>       _, evidence, policy_type, evaluator_type = _phase_contracts()
+                                                   ^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:489: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:422: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module_path = 'nvda_desk.domain.temporal.intraday_phase'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_ test_c036_two_complete_clear_branches_emit_only_capital_assessment_eligibility _
+
+    def test_c036_two_complete_clear_branches_emit_only_capital_assessment_eligibility() -> None:
+>       serial_type, parallel_type, policy_type, join = _final_risk_contracts()
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:548: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:514: in _final_risk_contracts
+    _require_attr(contracts, "SerialFinalRiskBranch"),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.risk' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/risk.py'>
+attr_name = 'SerialFinalRiskBranch'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c036_any_parallel_or_serial_hard_block_forces_stand_down_and_is_retained _
+
+    def test_c036_any_parallel_or_serial_hard_block_forces_stand_down_and_is_retained() -> None:
+>       serial_type, parallel_type, policy_type, join = _final_risk_contracts()
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:561: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:514: in _final_risk_contracts
+    _require_attr(contracts, "SerialFinalRiskBranch"),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.risk' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/risk.py'>
+attr_name = 'SerialFinalRiskBranch'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c036_missing_branch_cannot_be_reconstructed_or_converted_by_confidence __
+
+    def test_c036_missing_branch_cannot_be_reconstructed_or_converted_by_confidence() -> None:
+>       serial_type, _, policy_type, join = _final_risk_contracts()
+                                            ^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:573: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:514: in _final_risk_contracts
+    _require_attr(contracts, "SerialFinalRiskBranch"),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.risk' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/risk.py'>
+attr_name = 'SerialFinalRiskBranch'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes _
+
+    def test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes() -> None:
+        contracts = _require_module("nvda_desk.contracts.replay")
+>       replay_class = _require_attr(contracts, "ReplayClass")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:588: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.replay' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/replay.py'>
+attr_name = 'ReplayClass'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete _
+
+    def test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete() -> None:
+        contracts = _require_module("nvda_desk.contracts.replay")
+        service_module = _require_module("nvda_desk.analysis.replay.service")
+>       replay_class = _require_attr(contracts, "ReplayClass")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:616: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+module = <module 'nvda_desk.contracts.replay' from '/mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/src/nvda_desk/contracts/replay.py'>
+attr_name = 'ReplayClass'
+
+    def _require_attr(module: Any, attr_name: str):
+        if not hasattr(module, attr_name):
+>           pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E           Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: Failed
+_ test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction _
+
+    def test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction() -> None:
+        service_module = _require_module("nvda_desk.analysis.replay.service")
+        comparison = service_module.ReplayEvaluationService().compare_outputs(
+            baseline={"decision_id": "decision-1", "action": "stand_down"},
+            candidate={"decision_id": "decision-1", "action": "stand_down"},
+        )
+>       assert comparison.replay_class == "comparison_only"
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'ReplayComparisonResult' object has no attribute 'replay_class'
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:646: AttributeError
+_ test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage _
+
+    def test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage() -> None:
+>       with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint"
+        ):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:34: Failed
+_ test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global _
+
+    def test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global() -> None:
+        first = ParallelRiskLaneService()
+        second = ParallelRiskLaneService()
+        first.evaluate_risk_policy("policy-v1", candidate_id="candidate-1")
+    
+        assert [item.decision_id for item in first.list_risk_decisions()] == ["policy-v1::candidate-1"]
+>       assert second.list_risk_decisions() == []
+E       AssertionError: assert [ParallelRisk...llowed=False)] == []
+E         
+E         Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)
+E         
+E         Full diff:
+E         - []
+E         + [
+E         +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),
+E         + ]
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:50: AssertionError
+_ test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them _
+
+    def test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them() -> None:
+        receipt = DeskRuntimeOrchestrator().run_once(_bundle())
+        temporal = receipt["stage_outputs"]["temporal"]
+        regime = receipt["stage_outputs"]["regime"]
+    
+>       assert temporal["temporal_policy_version"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'temporal_policy_version'
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:58: KeyError
+____ test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping ____
+
+    def test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping() -> None:
+>       with pytest.raises((ValueError, TypeError), match="stage|bundle|input|contract"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'TypeError'>)
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:63: Failed
+_ test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs _
+
+    def test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs() -> None:
+        signature_fields = set(DeskRuntimeOrchestrator.run_once.__annotations__)
+>       assert "candidate_family_ids" in signature_fields
+E       AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:96: AssertionError
+_______ test_c021_c048_api_does_not_own_untyped_veto_or_risk_block_state _______
+
+    def test_c021_c048_api_does_not_own_untyped_veto_or_risk_block_state() -> None:
+        app = create_app()
+>       assert not hasattr(app, "_veto_events")
+E       AssertionError: assert not True
+E        +  where True = hasattr(<nvda_desk.api.app.HttpApp object at 0x7fdcd5116470>, '_veto_events')
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:10: AssertionError
+_ test_c041_c048_api_exit_close_path_rejects_missing_upstream_authority_instead_of_fabricating_ids _
+
+    def test_c041_c048_api_exit_close_path_rejects_missing_upstream_authority_instead_of_fabricating_ids() -> (
+        None
+    ):
+        app = create_app()
+        try:
+            app.evaluate_overnight_carry({"requested_action": "hold"})
+        except (ValueError, TypeError):
+            return
+>       raise AssertionError("API fabricated exit/close input authority instead of failing closed")
+E       AssertionError: API fabricated exit/close input authority instead of failing closed
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:24: AssertionError
+_ test_c047_replay_evaluation_requires_dataset_and_window_identity_and_cannot_promote_runtime_authority _
+
+    def test_c047_replay_evaluation_requires_dataset_and_window_identity_and_cannot_promote_runtime_authority() -> (
+        None
+    ):
+        from dataclasses import fields
+    
+        from nvda_desk.analysis.replay.walk_forward import WalkForwardHarnessAuthorityPacket
+    
+        names = {field.name for field in fields(WalkForwardHarnessAuthorityPacket)}
+>       assert {"dataset_id", "dataset_fingerprint"}.issubset(names)
+E       AssertionError: assert False
+E        +  where False = <built-in method issubset of set object at 0x7fdcd51c6f80>({'chronology_rule', 'consumer_mode', 'packet_id', 'windows'})
+E        +    where <built-in method issubset of set object at 0x7fdcd51c6f80> = {'dataset_fingerprint', 'dataset_id'}.issubset
+
+tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py:60: AssertionError
+________ test_c007_raw_signal_contract_carries_source_observation_time _________
+
+    def test_c007_raw_signal_contract_carries_source_observation_time() -> None:
+>       assert {"source_time_utc", "observed_at_utc"} & set(RawUpstreamSignalInput.model_fields)
+E       AssertionError: assert ({'observed_at_utc', 'source_time_utc'} & {'payload', 'scope_id', 'signal_family_id', 'source_id'})
+E        +  where {'payload', 'scope_id', 'signal_family_id', 'source_id'} = set({'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])})
+E        +    where {'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])} = RawUpstreamSignalInput.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:64: AssertionError
+_ test_c034_execution_expression_carries_candidate_identity_without_capital_or_broker_authority _
+
+    def test_c034_execution_expression_carries_candidate_identity_without_capital_or_broker_authority() -> (
+        None
+    ):
+        output = evaluate_execution_expression(
+            execution_input=ExecutionExpressionInput(),
+            eligibility_output=PlaybookEligibilityOutput(
+                admissibility_surface=EligibilityAdmissibilitySurface(
+                    permission_state=PermissionState.ALLOW,
+                ),
+                active_family_ids=["momentum_breakout"],
+                registry_id="registry-v1",
+            ),
+        )
+    
+>       assert "candidate_id" in ExecutionExpressionOutput.model_fields
+E       AssertionError: assert 'candidate_id' in {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)}
+E        +  where {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)} = ExecutionExpressionOutput.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:173: AssertionError
+_ test_c042_overnight_carry_contract_carries_policy_version_and_next_session_source_identity _
+
+    def test_c042_overnight_carry_contract_carries_policy_version_and_next_session_source_identity() -> (
+        None
+    ):
+        from nvda_desk.downstream.overnight_carry import (
+            OvernightCarryEvaluation,
+            OvernightCarryReplayResult,
+        )
+    
+>       assert "policy_version" in OvernightCarryEvaluation.model_fields
+E       AssertionError: assert 'policy_version' in {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...}
+E        +  where {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...} = <class 'nvda_desk.downstream.overnight_carry.OvernightCarryEvaluation'>.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:258: AssertionError
+_ test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority _
+
+    def test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority() -> (
+        None
+    ):
+>       assert {
+            "missing_material_ids",
+            "missing_material_flags",
+        } & set(DailyReviewPacket.model_fields)
+E       AssertionError: assert ({'missing_material_flags', 'missing_material_ids'} & {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...})
+E        +  where {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...} = set({'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...})
+E        +    where {'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...} = DailyReviewPacket.model_fields
+
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py:268: AssertionError
+_ test_c006_reference_projection_has_one_explicit_owned_composition_into_operational_query_state _
+
+    def test_c006_reference_projection_has_one_explicit_owned_composition_into_operational_query_state() -> (
+        None
+    ):
+        bundle = FinancialCalendarImporter().load_manifest(
+            {
+                "bundle_id": "calendar-bundle-1",
+                "version": "v1",
+                "artifacts": [
+                    {
+                        "artifact_id": "calendar-artifact-1",
+                        "source_path": "calendar.json",
+                        "version": "v1",
+                    }
+                ],
+                "layers": [{"layer_id": "reference-events", "artifact_ids": ["calendar-artifact-1"]}],
+            }
+        )
+        precursor = FinancialCalendarProjectionService().project_runtime_context(
+            bundle=bundle,
+            event_rows=[
+                {
+                    "event_id": "event-1",
+                    "source_artifact_id": "calendar-artifact-1",
+                    "event_type": "fomc_window",
+                }
+            ],
+            context_id="calendar-context-1",
+            effective_at=datetime(2026, 4, 21, 13, 30, tzinfo=timezone.utc),
+        )
+        repository = OperationalEventRepository()
+    
+>       assert hasattr(repository, "ingest_precursor_context")
+E       AssertionError: assert False
+E        +  where False = hasattr(<nvda_desk.calendar.operational.events.OperationalEventRepository object at 0x7fdcd5138640>, 'ingest_precursor_context')
+
+tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py:43: AssertionError
+_ test_parallel_risk_gateway_service_records_policy_decisions_and_api_exposes_them _
+
+    def test_parallel_risk_gateway_service_records_policy_decisions_and_api_exposes_them() -> None:
+        service = ParallelRiskLaneService()
+        decision = service.evaluate_risk_policy(
+            policy_id="risk-policy-1",
+            candidate_id="candidate-1",
+            semantic_tags=["vix_extreme"],
+        )
+    
+        assert decision.policy_id == "risk-policy-1"
+        assert decision.candidate.consequence_posture == "block"
+>       assert service.list_risk_decisions()[0].decision_id == decision.decision_id
+E       AssertionError: assert 'policy-v1::candidate-1' == 'risk-policy-1::candidate-1'
+E         
+E         - risk-policy-1::candidate-1
+E         ? -----
+E         + policy-v1::candidate-1
+E         ?        +
+
+tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py:39: AssertionError
+____________ test_required_module_8_parallel_risk_terms_are_present ____________
+
+    def test_required_module_8_parallel_risk_terms_are_present() -> None:
+        vocab = json.loads(
+            Path("data/vocabulary/canonical_vocabulary.json").read_text(encoding="utf-8")
+        )
+        entries = {entry["canonical_slug"]: entry for entry in vocab["entries"]}
+    
+        expected = {
+            "environment_assessment": "ParallelRiskEnvironmentAssessment",
+            "candidate_audit": "ParallelRiskCandidateAuditSurface",
+            "stage_read_state": "ParallelRiskStageReadRecord",
+            "dependency_packet_ids": "DmpV3Lineage.dependencyids",
+            "parallel_risk_observation_store": "ParallelRiskObservationStore",
+            "write_only_persistence": "ParallelRiskObservationStore.append_observation",
+            "append_only_observation_record": "ParallelRiskObservationRecord",
+        }
+    
+        for slug, contract in expected.items():
+>           assert slug in entries
+E           AssertionError: assert 'candidate_audit' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+
+tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py:24: AssertionError
+_ test_vocabulary_category_contract_is_bounded_to_current_canonical_categories _
+
+    def test_vocabulary_category_contract_is_bounded_to_current_canonical_categories() -> None:
+        committed = json.loads(
+            open("data/vocabulary/canonical_vocabulary.json", encoding="utf-8").read()
+        )
+        committed_categories = {entry["category"] for entry in committed["entries"]}
+    
+>       assert _enum_values(VocabularyCategory) == committed_categories
+E       AssertionError: assert {'audit_class...surface', ...} == {'authority_c...surface', ...}
+E         
+E         Extra items in the left set:
+E         'audit_classification'
+E         'audit_surface'
+E         
+E         Full diff:
+E           {
+E         +     'audit_classification',
+E         +     'audit_surface',
+E               'authority_class',
+E               'authority_surface',
+E               'carrier',
+E               'parallel_risk_surface',
+E               'persistence_rule',
+E               'persistence_surface',
+E               'promotion_rule',
+E               'promotion_surface',
+E               'protocol',
+E               'protocol_field',
+E               'protocol_surface',
+E               'reference_data',
+E               'review_surface',
+E               'stage',
+E               'workflow',
+E           }
+
+tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py:25: AssertionError
+___________ test_durable_row_terms_are_governed_exactly_or_by_alias ____________
+
+    def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
+        native_builder = _require_module("nvda_desk.vocabulary_builder")
+        payload = native_builder.build_canonical_payload()
+    
+        governed_terms = set()
+        for entry in payload["entries"]:
+            governed_terms.add(entry["canonical_label"].casefold())
+            governed_terms.add(entry["canonical_slug"].replace("_", " ").casefold())
+            governed_terms.update(alias.casefold() for alias in entry.get("allowed_aliases", []))
+    
+        required_terms = {
+            "opening architecture",
+            "placement readiness",
+            "placement handoff",
+            "downstream opening",
+            "broker protocol",
+            "capital deployment decision",
+            "serial candidate",
+            "live position",
+            "inventory architecture",
+            "exit architecture",
+            "close architecture",
+            "review layer",
+            "explanation layer",
+            "parallel risk lane",
+            "serial desk-cognition",
+            "dynamic coefficient",
+            "modifier authority",
+            "playbook library",
+            "prepared ingress",
+            "runtime context",
+            "raw signal families",
+            "event calendar",
+            "dmpv3 packet",
+        }
+        assert required_terms <= governed_terms
+    
+        registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+        registry_required_terms = required_terms - {"dynamic coefficient", "dmpv3 packet"}
+>       assert {f"### {term}" for term in registry_required_terms} <= set(
+            f"### {line.strip().removeprefix('### ').casefold()}"
+            for line in registry_text.splitlines()
+            if line.startswith("### ")
+        )
+E       AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...r block', ...}
+E         
+E         Extra items in the left set:
+E         '### serial desk-cognition'
+
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:108: AssertionError
+_____ test_required_parallel_risk_protocol_and_calendar_terms_are_present ______
+
+    def test_required_parallel_risk_protocol_and_calendar_terms_are_present() -> None:
+        vocab_path = Path("data/vocabulary/canonical_vocabulary.json")
+        vocab = json.loads(vocab_path.read_text(encoding="utf-8"))
+        entries = {entry["canonical_slug"]: entry for entry in vocab["entries"]}
+    
+        assert "parallel_risk_lane" in entries
+        assert entries["parallel_risk_lane"]["maps_to_contract"] == "ParallelRiskLanePacket"
+    
+        assert "dmp_v3" in entries
+        assert entries["dmp_v3"]["maps_to_contract"] == "DmpV3Envelope"
+    
+        assert "financial_calendar_reference_bundle" in entries
+        assert (
+            entries["financial_calendar_reference_bundle"]["maps_to_contract"]
+            == "ImportedReferenceBundle"
+        )
+    
+        assert "financial_calendar_crosswalk" in entries
+        assert (
+            entries["financial_calendar_crosswalk"]["maps_to_contract"]
+            == "FinancialCalendarCrosswalkRecord"
+        )
+    
+        assert "financial_calendar_import_record" in entries
+        assert (
+            entries["financial_calendar_import_record"]["maps_to_contract"]
+            == "FinancialCalendarImportRecord"
+        )
+    
+        assert "coefficient_authority" in entries
+        assert entries["coefficient_authority"]["maps_to_contract"] == "CoefficientAuthorityDocument"
+    
+>       assert "mutable_runtime_surface" in entries
+E       AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+
+tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py:39: AssertionError
+_ test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-14/test_vocabulary_synonym_candid0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd513afd0>
+
+    def test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched(
+        tmp_path, monkeypatch
+    ):
+        output_path = tmp_path / "synonym_candidates.json"
+        stamp_path = tmp_path / "vocabulary_touch_stamp.json"
+        stamp_path.write_text(json.dumps({"fingerprint": "old"}), encoding="utf-8")
+        monkeypatch.setattr(audit, "OUTPUT_PATH", output_path)
+        monkeypatch.setattr(audit, "STAMP_PATH", stamp_path)
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "new")
+        phrase = " ".join(["Temporal", "Context", "draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", phrase)]),
+        )
+    
+>       report = audit.write_report()
+                 ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:449: in write_report
+    report = build_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+_____ test_write_stamp_refuses_to_advance_when_escalation_candidates_exist _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-14/test_write_stamp_refuses_to_ad0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50f8ef0>
+
+    def test_write_stamp_refuses_to_advance_when_escalation_candidates_exist(tmp_path, monkeypatch):
+        output_path = tmp_path / "synonym_candidates.json"
+        stamp_path = tmp_path / "vocabulary_touch_stamp.json"
+        monkeypatch.setattr(audit, "OUTPUT_PATH", output_path)
+        monkeypatch.setattr(audit, "STAMP_PATH", stamp_path)
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "new")
+        phrase = " ".join(["Temporal", "Context", "draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", phrase)]),
+        )
+    
+        with pytest.raises(RuntimeError, match="cannot update vocabulary touch stamp"):
+>           audit.write_stamp()
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:456: in write_stamp
+    report = build_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___ test_synonym_candidate_escalation_report_marks_near_match_as_quarantine ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd5076ad0>
+
+    def test_synonym_candidate_escalation_report_marks_near_match_as_quarantine(monkeypatch):
+        phrase = " ".join(["Temporal", "Context", "Draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       report = audit.build_report()
+                 ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______________ test_compact_tokenisation_variant_is_not_escalated ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50e1250>
+
+    def test_compact_tokenisation_variant_is_not_escalated(monkeypatch):
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", "TemporalContext")]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:225: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_likely_synonym_candidate_is_not_globally_suppressed ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50e3450>
+
+    def test_likely_synonym_candidate_is_not_globally_suppressed(monkeypatch):
+        phrase = " ".join(["Temporal", "Context", "Draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/random.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["temporal", "context", "draft"]),
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/random.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:238: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_protocol_field_identifier_fragment_is_not_escalated ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50e7c50>
+
+    def test_protocol_field_identifier_fragment_is_not_escalated(monkeypatch):
+        raw = _slug("dependency", "packet", "ids", "value")
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("dependency_packet_ids", "Dependency Packet IDs", category="protocol_field")
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("src/example.py", raw)]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+_____________ test_protocol_field_prose_variant_is_still_escalated _____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50e7d40>
+
+    def test_protocol_field_prose_variant_is_still_escalated(monkeypatch):
+        phrase = " ".join(["Dependency", "Packet", "IDs", "value"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("dependency_packet_ids", "Dependency Packet IDs", category="protocol_field")
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["dependency", "packet", "ids", "value"]),
+                nearest_slug="dependency_packet_ids",
+                nearest_label="Dependency Packet IDs",
+                score=93,
+                path="docs/example.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:280: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+____ test_python_function_declaration_identifier_fragment_is_not_escalated _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd4d7aa50>
+
+    def test_python_function_declaration_identifier_fragment_is_not_escalated(monkeypatch):
+        raw = "def " + "_".join(["temporal", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("src/example.py", raw)]))
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:301: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______ test_python_function_declaration_prose_variant_is_still_escalated _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd4d7b930>
+
+    def test_python_function_declaration_prose_variant_is_still_escalated(monkeypatch):
+        phrase = " ".join(["def", "temporal", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["def", "temporal", "context"]),
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/example.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:314: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+__________ test_legitimate_terms_are_admitted_through_allowed_aliases __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd4d1f520>
+
+    def test_legitimate_terms_are_admitted_through_allowed_aliases(monkeypatch):
+        alias = " ".join(["temporal", "event", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context", allowed_aliases=[alias])),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/one.md", alias), ("docs/two.md", alias.replace(" ", "_"))]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:339: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+____ test_false_positives_are_rejected_through_governed_disallowed_phrases _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50f5850>
+
+    def test_false_positives_are_rejected_through_governed_disallowed_phrases(monkeypatch):
+        rejected = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("temporal_context", "Temporal Context", disallowed_phrases=[rejected])
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/one.md", rejected), ("docs/two.md", rejected.replace(" ", "_"))]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:358: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_unresolved_candidates_remain_visible_until_governed ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50f4890>
+
+    def test_unresolved_candidates_remain_visible_until_governed(monkeypatch):
+        unresolved = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", unresolved)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=unresolved,
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/one.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:371: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______ test_check_clean_returns_nonzero_when_unresolved_candidates_exist _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd50738b0>
+capsys = <_pytest.capture.CaptureFixture object at 0x7fdcd5463b60>
+
+    def test_check_clean_returns_nonzero_when_unresolved_candidates_exist(monkeypatch, capsys):
+        unresolved = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", unresolved)]))
+    
+>       assert audit.main(["--check-clean"]) == 1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:392: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:487: in main
+    report = build_report() if args.check_clean else write_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+________ test_check_clean_returns_zero_when_all_candidates_are_governed ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fdcd5073c20>
+capsys = <_pytest.capture.CaptureFixture object at 0x7fdcd5159450>
+
+    def test_check_clean_returns_zero_when_all_candidates_are_governed(monkeypatch, capsys):
+        governed = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("temporal_context", "Temporal Context", disallowed_phrases=[governed])
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", governed)]))
+    
+>       assert audit.main(["--check-clean"]) == 0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:408: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:487: in main
+    report = build_report() if args.check_clean else write_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_market_adapter_enforces_external_source_authority_recursively - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_options_adapter_enforces_external_source_authority_recursively - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_widening_payloads - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x7fdcd5136dc0>({'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)})
+ +    where <built-in method issubset of set object at 0x7fdcd5136dc0> = {'bundle_id', 'input_schema_version', 'policy_version', 'source_capture_ids'}.issubset
+ +    and   {'options_flow': FieldInfo(annotation=OptionsFlowContextInput, required=True), 'regime': FieldInfo(annotation=MarketRegimeContextInput, required=True), 'temporal': FieldInfo(annotation=TemporalContextInput, required=True)} = StageInputBundle.model_fields
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x7fdcd5137d80>({'alignment_policy', 'derived_field_names', 'runtime_bar_time_utc', 'source_kind', 'source_sections', 'source_snapshot_id', ...})
+ +    where <built-in method issubset of set object at 0x7fdcd5137d80> = {'derivation_versions', 'input_fingerprint', 'input_schema_version', 'preparation_policy_version', 'source_artifact_ids'}.issubset
+FAILED tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint - Failed: Required attribute is not implemented: nvda_desk.contracts.options_flow.OptionsEvidenceEnvelope
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority - Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_c018_financial_calendar_contract_has_exact_four_semantic_layers - Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.FinancialCalendarLayer
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_equal_calendar_candidates_coalesce_with_all_lineage - Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.CalendarFactCandidate
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c005_c018_unequal_or_derived_override_without_explicit_supersession_fails_closed - Failed: Required attribute is not implemented: nvda_desk.contracts.reference_data.CalendarFactCandidate
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c008_prepared_envelope_requires_common_identity_version_time_and_fingerprint_lineage - Failed: Required module is not implemented: nvda_desk.contracts.prepared_data (No module named 'nvda_desk.contracts.prepared_data')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c008_prepared_envelope_rejects_untagged_generic_payload_authority - Failed: Required module is not implemented: nvda_desk.contracts.prepared_data (No module named 'nvda_desk.contracts.prepared_data')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c011_equal_field_candidates_coalesce_and_preserve_candidate_provenance - Failed: Required module is not implemented: nvda_desk.preparation.field_resolution (No module named 'nvda_desk.preparation.field_resolution')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c011_unequal_mandatory_candidates_without_field_policy_fail_closed - Failed: Required module is not implemented: nvda_desk.preparation.field_resolution (No module named 'nvda_desk.preparation.field_resolution')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_allocates_one_common_context_and_narrow_references - Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_rejects_mismatched_common_context_reference - Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_with_different_input_is_conflict - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_two_complete_clear_branches_emit_only_capital_assessment_eligibility - Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_any_parallel_or_serial_hard_block_forces_stand_down_and_is_retained - Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c036_missing_branch_cannot_be_reconstructed_or_converted_by_confidence - Failed: Required attribute is not implemented: nvda_desk.contracts.risk.SerialFinalRiskBranch
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes - Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete - Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction - AttributeError: 'ReplayComparisonResult' object has no attribute 'replay_class'
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage - Failed: DID NOT RAISE <class 'ValueError'>
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global - AssertionError: assert [ParallelRisk...llowed=False)] == []
+  
+  Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)
+  
+  Full diff:
+  - []
+  + [
+  +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),
+  + ]
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them - KeyError: 'temporal_policy_version'
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'TypeError'>)
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs - AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}
+FAILED tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py::test_c021_c048_api_does_not_own_untyped_veto_or_risk_block_state - AssertionError: assert not True
+ +  where True = hasattr(<nvda_desk.api.app.HttpApp object at 0x7fdcd5116470>, '_veto_events')
+FAILED tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py::test_c041_c048_api_exit_close_path_rejects_missing_upstream_authority_instead_of_fabricating_ids - AssertionError: API fabricated exit/close input authority instead of failing closed
+FAILED tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py::test_c047_replay_evaluation_requires_dataset_and_window_identity_and_cannot_promote_runtime_authority - AssertionError: assert False
+ +  where False = <built-in method issubset of set object at 0x7fdcd51c6f80>({'chronology_rule', 'consumer_mode', 'packet_id', 'windows'})
+ +    where <built-in method issubset of set object at 0x7fdcd51c6f80> = {'dataset_fingerprint', 'dataset_id'}.issubset
+FAILED tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_c007_raw_signal_contract_carries_source_observation_time - AssertionError: assert ({'observed_at_utc', 'source_time_utc'} & {'payload', 'scope_id', 'signal_family_id', 'source_id'})
+ +  where {'payload', 'scope_id', 'signal_family_id', 'source_id'} = set({'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])})
+ +    where {'payload': FieldInfo(annotation=dict[str, Any], required=False, default_factory=dict), 'scope_id': FieldInfo(annotati...tadata=[MinLen(min_length=1)]), 'source_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)])} = RawUpstreamSignalInput.model_fields
+FAILED tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_c034_execution_expression_carries_candidate_identity_without_capital_or_broker_authority - AssertionError: assert 'candidate_id' in {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)}
+ +  where {'active_playbook_ids': FieldInfo(annotation=list[str], required=False, default_factory=list), 'final_risk_join': Fiel..., required=False, default=None), 'scaling_plan': FieldInfo(annotation=list[str], required=False, default_factory=list)} = ExecutionExpressionOutput.model_fields
+FAILED tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_c042_overnight_carry_contract_carries_policy_version_and_next_session_source_identity - AssertionError: assert 'policy_version' in {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...}
+ +  where {'close_distance_to_vwap_pct': FieldInfo(annotation=Union[float, NoneType], required=False, default=None), 'evaluation...FieldInfo(annotation=bool, required=False, default=False), 'handoff_id': FieldInfo(annotation=str, required=True), ...} = <class 'nvda_desk.downstream.overnight_carry.OvernightCarryEvaluation'>.model_fields
+FAILED tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority - AssertionError: assert ({'missing_material_flags', 'missing_material_ids'} & {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...})
+ +  where {'daily_pnl', 'module_health', 'packet_id', 'rendering_authority_mutated', 'renderings', 'symbol', ...} = set({'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...})
+ +    where {'daily_pnl': FieldInfo(annotation=DailyPnlReport, required=True), 'module_health': FieldInfo(annotation=ModuleHealthP...ion=str, required=True), 'rendering_authority_mutated': FieldInfo(annotation=bool, required=False, default=False), ...} = DailyReviewPacket.model_fields
+FAILED tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py::test_c006_reference_projection_has_one_explicit_owned_composition_into_operational_query_state - AssertionError: assert False
+ +  where False = hasattr(<nvda_desk.calendar.operational.events.OperationalEventRepository object at 0x7fdcd5138640>, 'ingest_precursor_context')
+FAILED tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py::test_parallel_risk_gateway_service_records_policy_decisions_and_api_exposes_them - AssertionError: assert 'policy-v1::candidate-1' == 'risk-policy-1::candidate-1'
+  
+  - risk-policy-1::candidate-1
+  ? -----
+  + policy-v1::candidate-1
+  ?        +
+FAILED tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py::test_required_module_8_parallel_risk_terms_are_present - AssertionError: assert 'candidate_audit' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+FAILED tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py::test_vocabulary_category_contract_is_bounded_to_current_canonical_categories - AssertionError: assert {'audit_class...surface', ...} == {'authority_c...surface', ...}
+  
+  Extra items in the left set:
+  'audit_classification'
+  'audit_surface'
+  
+  Full diff:
+    {
+  +     'audit_classification',
+  +     'audit_surface',
+        'authority_class',
+        'authority_surface',
+        'carrier',
+        'parallel_risk_surface',
+        'persistence_rule',
+        'persistence_surface',
+        'promotion_rule',
+        'promotion_surface',
+        'protocol',
+        'protocol_field',
+        'protocol_surface',
+        'reference_data',
+        'review_surface',
+        'stage',
+        'workflow',
+    }
+FAILED tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_durable_row_terms_are_governed_exactly_or_by_alias - AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...r block', ...}
+  
+  Extra items in the left set:
+  '### serial desk-cognition'
+FAILED tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py::test_required_parallel_risk_protocol_and_calendar_terms_are_present - AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_write_stamp_refuses_to_advance_when_escalation_candidates_exist - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_synonym_candidate_escalation_report_marks_near_match_as_quarantine - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_compact_tokenisation_variant_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_likely_synonym_candidate_is_not_globally_suppressed - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_protocol_field_identifier_fragment_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_protocol_field_prose_variant_is_still_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_python_function_declaration_identifier_fragment_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_python_function_declaration_prose_variant_is_still_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_legitimate_terms_are_admitted_through_allowed_aliases - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_false_positives_are_rejected_through_governed_disallowed_phrases - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_unresolved_candidates_remain_visible_until_governed - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_check_clean_returns_nonzero_when_unresolved_candidates_exist - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_check_clean_returns_zero_when_all_candidates_are_governed - TypeError: tuple indices must be integers or slices, not str
+61 failed, 1097 passed in 16.93s

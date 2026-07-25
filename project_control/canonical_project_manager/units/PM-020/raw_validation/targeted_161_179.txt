@@ -1,0 +1,671 @@
++ env PYTHONPATH=src pytest -q tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py tests/tier_a/vocabulary/test_vocabulary_schema_contract.py tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py tests/tier_b
+..............F...FF.FFFFFFFFFFFF....................................... [ 85%]
+............                                                             [100%]
+=================================== FAILURES ===================================
+_____ test_required_parallel_risk_protocol_and_calendar_terms_are_present ______
+
+    def test_required_parallel_risk_protocol_and_calendar_terms_are_present() -> None:
+        vocab_path = Path("data/vocabulary/canonical_vocabulary.json")
+        vocab = json.loads(vocab_path.read_text(encoding="utf-8"))
+        entries = {entry["canonical_slug"]: entry for entry in vocab["entries"]}
+    
+        assert "parallel_risk_lane" in entries
+        assert entries["parallel_risk_lane"]["maps_to_contract"] == "ParallelRiskLanePacket"
+    
+        assert "dmp_v3" in entries
+        assert entries["dmp_v3"]["maps_to_contract"] == "DmpV3Envelope"
+    
+        assert "financial_calendar_reference_bundle" in entries
+        assert (
+            entries["financial_calendar_reference_bundle"]["maps_to_contract"]
+            == "ImportedReferenceBundle"
+        )
+    
+        assert "financial_calendar_crosswalk" in entries
+        assert (
+            entries["financial_calendar_crosswalk"]["maps_to_contract"]
+            == "FinancialCalendarCrosswalkRecord"
+        )
+    
+        assert "financial_calendar_import_record" in entries
+        assert (
+            entries["financial_calendar_import_record"]["maps_to_contract"]
+            == "FinancialCalendarImportRecord"
+        )
+    
+        assert "coefficient_authority" in entries
+        assert entries["coefficient_authority"]["maps_to_contract"] == "CoefficientAuthorityDocument"
+    
+>       assert "mutable_runtime_surface" in entries
+E       AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+
+tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py:39: AssertionError
+_ test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched _
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_vocabulary_synonym_candid0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06be3a80>
+
+    def test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched(
+        tmp_path, monkeypatch
+    ):
+        output_path = tmp_path / "synonym_candidates.json"
+        stamp_path = tmp_path / "vocabulary_touch_stamp.json"
+        stamp_path.write_text(json.dumps({"fingerprint": "old"}), encoding="utf-8")
+        monkeypatch.setattr(audit, "OUTPUT_PATH", output_path)
+        monkeypatch.setattr(audit, "STAMP_PATH", stamp_path)
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "new")
+        phrase = " ".join(["Temporal", "Context", "draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", phrase)]),
+        )
+    
+>       report = audit.write_report()
+                 ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:449: in write_report
+    report = build_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+_____ test_write_stamp_refuses_to_advance_when_escalation_candidates_exist _____
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-12/test_write_stamp_refuses_to_ad0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06654180>
+
+    def test_write_stamp_refuses_to_advance_when_escalation_candidates_exist(tmp_path, monkeypatch):
+        output_path = tmp_path / "synonym_candidates.json"
+        stamp_path = tmp_path / "vocabulary_touch_stamp.json"
+        monkeypatch.setattr(audit, "OUTPUT_PATH", output_path)
+        monkeypatch.setattr(audit, "STAMP_PATH", stamp_path)
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "new")
+        phrase = " ".join(["Temporal", "Context", "draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", phrase)]),
+        )
+    
+        with pytest.raises(RuntimeError, match="cannot update vocabulary touch stamp"):
+>           audit.write_stamp()
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:143: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:456: in write_stamp
+    report = build_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___ test_synonym_candidate_escalation_report_marks_near_match_as_quarantine ____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06488490>
+
+    def test_synonym_candidate_escalation_report_marks_near_match_as_quarantine(monkeypatch):
+        phrase = " ".join(["Temporal", "Context", "Draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       report = audit.build_report()
+                 ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:179: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______________ test_compact_tokenisation_variant_is_not_escalated ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06488d10>
+
+    def test_compact_tokenisation_variant_is_not_escalated(monkeypatch):
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/example.md", "TemporalContext")]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:225: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_likely_synonym_candidate_is_not_globally_suppressed ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0670ca50>
+
+    def test_likely_synonym_candidate_is_not_globally_suppressed(monkeypatch):
+        phrase = " ".join(["Temporal", "Context", "Draft"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/random.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["temporal", "context", "draft"]),
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/random.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:238: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_protocol_field_identifier_fragment_is_not_escalated ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0670cf50>
+
+    def test_protocol_field_identifier_fragment_is_not_escalated(monkeypatch):
+        raw = _slug("dependency", "packet", "ids", "value")
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("dependency_packet_ids", "Dependency Packet IDs", category="protocol_field")
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("src/example.py", raw)]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+_____________ test_protocol_field_prose_variant_is_still_escalated _____________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0685ac60>
+
+    def test_protocol_field_prose_variant_is_still_escalated(monkeypatch):
+        phrase = " ".join(["Dependency", "Packet", "IDs", "value"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("dependency_packet_ids", "Dependency Packet IDs", category="protocol_field")
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["dependency", "packet", "ids", "value"]),
+                nearest_slug="dependency_packet_ids",
+                nearest_label="Dependency Packet IDs",
+                score=93,
+                path="docs/example.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:280: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+____ test_python_function_declaration_identifier_fragment_is_not_escalated _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0685b110>
+
+    def test_python_function_declaration_identifier_fragment_is_not_escalated(monkeypatch):
+        raw = "def " + "_".join(["temporal", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("src/example.py", raw)]))
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:301: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______ test_python_function_declaration_prose_variant_is_still_escalated _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0661eb30>
+
+    def test_python_function_declaration_prose_variant_is_still_escalated(monkeypatch):
+        phrase = " ".join(["def", "temporal", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/example.md", phrase)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=" ".join(["def", "temporal", "context"]),
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/example.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:314: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+__________ test_legitimate_terms_are_admitted_through_allowed_aliases __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf0661fa10>
+
+    def test_legitimate_terms_are_admitted_through_allowed_aliases(monkeypatch):
+        alias = " ".join(["temporal", "event", "context"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context", allowed_aliases=[alias])),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/one.md", alias), ("docs/two.md", alias.replace(" ", "_"))]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:339: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+____ test_false_positives_are_rejected_through_governed_disallowed_phrases _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06735160>
+
+    def test_false_positives_are_rejected_through_governed_disallowed_phrases(monkeypatch):
+        rejected = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("temporal_context", "Temporal Context", disallowed_phrases=[rejected])
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(
+            audit,
+            "_iter_candidates",
+            lambda: iter([("docs/one.md", rejected), ("docs/two.md", rejected.replace(" ", "_"))]),
+        )
+    
+>       assert audit.build_report()["candidates"] == []
+               ^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:358: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+___________ test_unresolved_candidates_remain_visible_until_governed ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf06691250>
+
+    def test_unresolved_candidates_remain_visible_until_governed(monkeypatch):
+        unresolved = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", unresolved)]))
+    
+>       assert audit.build_report()["candidates"] == [
+               ^^^^^^^^^^^^^^^^^^^^
+            _candidate(
+                phrase=unresolved,
+                nearest_slug="temporal_context",
+                nearest_label="Temporal Context",
+                score=93,
+                path="docs/one.md",
+            )
+        ]
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:371: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+______ test_check_clean_returns_nonzero_when_unresolved_candidates_exist _______
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf066916d0>
+capsys = <_pytest.capture.CaptureFixture object at 0x7fcf06860980>
+
+    def test_check_clean_returns_nonzero_when_unresolved_candidates_exist(monkeypatch, capsys):
+        unresolved = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(_entry("temporal_context", "Temporal Context")),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", unresolved)]))
+    
+>       assert audit.main(["--check-clean"]) == 1
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:392: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:487: in main
+    report = build_report() if args.check_clean else write_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+________ test_check_clean_returns_zero_when_all_candidates_are_governed ________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fcf066c2a40>
+capsys = <_pytest.capture.CaptureFixture object at 0x7fcf069cde50>
+
+    def test_check_clean_returns_zero_when_all_candidates_are_governed(monkeypatch, capsys):
+        governed = " ".join(["temporal", "context", "fixture"])
+        monkeypatch.setattr(
+            audit,
+            "_load_document",
+            lambda: _payload(
+                _entry("temporal_context", "Temporal Context", disallowed_phrases=[governed])
+            ),
+        )
+        monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
+        monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", governed)]))
+    
+>       assert audit.main(["--check-clean"]) == 0
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py:408: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/vocabulary_synonym_audit.py:487: in main
+    report = build_report() if args.check_clean else write_report()
+             ^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def build_report() -> dict:
+        payload = _load_document()
+        exact_tokens, compact_exact_tokens, entries = _lexicon(payload)
+        resolved_keys = _resolved_occurrence_keys()
+        fingerprint = _fingerprint()
+        previous_stamp = {}
+        if STAMP_PATH.exists():
+            previous_stamp = json.loads(STAMP_PATH.read_text(encoding="utf-8"))
+        current_touched = previous_stamp.get("fingerprint") != fingerprint
+    
+        candidates: list[dict] = []
+        for occurrence in _iter_candidates():
+>           raw_phrase = str(occurrence["raw_phrase"])
+                             ^^^^^^^^^^^^^^^^^^^^^^^^
+E           TypeError: tuple indices must be integers or slices, not str
+
+src/nvda_desk/vocabulary_synonym_audit.py:361: TypeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py::test_required_parallel_risk_protocol_and_calendar_terms_are_present - AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_vocabulary_synonym_candidate_audit_writes_escalation_artefact_when_touched - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_write_stamp_refuses_to_advance_when_escalation_candidates_exist - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_synonym_candidate_escalation_report_marks_near_match_as_quarantine - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_compact_tokenisation_variant_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_likely_synonym_candidate_is_not_globally_suppressed - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_protocol_field_identifier_fragment_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_protocol_field_prose_variant_is_still_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_python_function_declaration_identifier_fragment_is_not_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_python_function_declaration_prose_variant_is_still_escalated - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_legitimate_terms_are_admitted_through_allowed_aliases - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_false_positives_are_rejected_through_governed_disallowed_phrases - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_unresolved_candidates_remain_visible_until_governed - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_check_clean_returns_nonzero_when_unresolved_candidates_exist - TypeError: tuple indices must be integers or slices, not str
+FAILED tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py::test_check_clean_returns_zero_when_all_candidates_are_governed - TypeError: tuple indices must be integers or slices, not str
+15 failed, 69 passed in 15.74s

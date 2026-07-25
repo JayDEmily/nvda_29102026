@@ -1,0 +1,21 @@
+{
+  "additional_tier_a_failures": 19,
+  "assertion_groups": 777,
+  "dispositions": {
+    "ADMIT_TIER_A_CURRENT": 31,
+    "ADMIT_TIER_B_SHADOW": 5,
+    "BLOCKED_MISSING_NORMATIVE_AUTHORITY": 35,
+    "BLOCKED_P3_REPAIR": 74,
+    "NON_AUTHORITATIVE_OBSERVATIONAL": 20,
+    "RETIREMENT_RECOMMENDED_NOT_EXECUTED": 14
+  },
+  "gate_c_expected_red": 42,
+  "ledger_no": 0,
+  "ledger_yes": 179,
+  "physical_tier_a_files": 166,
+  "physical_tier_b_files": 13,
+  "physical_total_files": 179,
+  "tier_a_pytest_failed": 61,
+  "tier_a_pytest_passed": 1097,
+  "tier_b_pytest_passed": 49
+}

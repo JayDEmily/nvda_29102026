@@ -1,0 +1,13 @@
+pm005_corrected_validation=PASS
+concept_rows=31
+canonical_decisions=26
+quarantined_decisions=5
+CTP-024=quarantine
+CTP-025=quarantine
+CTP-026=quarantine
+CTP-027=quarantine
+CTP-028=quarantine
+CTP-031=Financial-calendar Architecture admitted from governing normative propositions
+normative_candidate_occurrences=33
+normative_candidates_routed_to_P2=0
+source_locator_validation=PASS (see PM-010/VALIDATION_OUTPUT.txt)

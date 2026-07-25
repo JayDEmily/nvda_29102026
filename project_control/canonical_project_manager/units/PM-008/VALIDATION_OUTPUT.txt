@@ -1,0 +1,9 @@
+pm008_reopen_validation=PASS
+fixed_labels_from_brief=9
+assigned_exact_label_rows=10
+novel_normative_concept=Downstream State-reader Layer
+moved_occurrence=docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md:195
+moved_occurrence_owner=PM-008:OPC-010
+parallel_risk_ownership=ruled_out
+project_manager_acceptance=pending
+p2_status=not_begun

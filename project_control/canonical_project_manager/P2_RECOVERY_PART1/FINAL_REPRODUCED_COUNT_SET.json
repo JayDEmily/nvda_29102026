@@ -1,0 +1,20 @@
+{
+  "assertion_groups": 167,
+  "dispositions": {
+    "ADMIT_TIER_A_CURRENT": 2,
+    "ADMIT_TIER_B_SHADOW": 5,
+    "BLOCKED_MISSING_NORMATIVE_AUTHORITY": 20,
+    "BLOCKED_P3_REPAIR": 14,
+    "NON_AUTHORITATIVE_OBSERVATIONAL": 7,
+    "RETIREMENT_RECOMMENDED_NOT_EXECUTED": 6
+  },
+  "relationships": 167,
+  "row_validator_passes": 54,
+  "scope_sequences": "067-120",
+  "scoped_files": 54,
+  "semantically_read_no": 0,
+  "semantically_read_yes": 54,
+  "targeted_test_exit_code": 0,
+  "targeted_test_passes": 227,
+  "unresolved_duplicate_reasoning": 0
+}

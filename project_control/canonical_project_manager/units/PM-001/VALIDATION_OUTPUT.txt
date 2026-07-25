@@ -1,0 +1,145 @@
+# PM-001 Validation Output
+
+## 1. Initial repository state observed before PM-001 outputs
+```text
+## work/NVIDIA_2026_pm001_pm010_restart_20260721
+```
+Initial worktree status was clean.
+
+## 2. Independent register and evidence validation
+Command: `PYTHONPATH=src python /tmp/validate_pm001.py`
+```text
+PASS	exact_required_output_file_set	count=7
+PASS	manifest_required_path_count	50
+PASS	manifest_unique_paths	50
+PASS	manifest_read_status_values
+PASS	manifest_no_input_may_change
+PASS	manifest_paths_exist
+PASS	manifest_sha256_current
+PASS	bounded_read_required_section_paths	['config/proof_blocks.yaml', 'config/retained_test_registry.yaml']
+PASS	independent_human_heading_count	46
+PASS	independent_generated_entry_count	87
+PASS	independent_exact_normalised_match_count	26
+PASS	independent_human_only_count	20
+PASS	independent_generated_only_count	61
+PASS	main_register_row_count	133
+PASS	main_register_unique_record_ids	133
+PASS	main_register_side_counts	human=46 generated=87
+PASS	human_entries_accounted_once
+PASS	generated_entries_accounted_once
+PASS	main_register_allowed_dispositions
+PASS	main_register_no_semantic_decisions
+PASS	human_disposition_arithmetic
+PASS	generated_disposition_arithmetic
+PASS	all_builder_seed_locations_found	87/87
+PASS	generated_evidence_fields_present
+PASS	normative_admission_row_count	27
+PASS	normative_admission_unique_ids	27
+PASS	normative_admission_section_counts
+PASS	normative_admission_no_semantic_decisions
+PASS	normative_admission_location_values
+PASS	live_vocabulary_test_file_count	17
+PASS	test_register_row_count	17
+PASS	every_live_test_accounted_once
+PASS	test_register_unique_ids	17
+PASS	test_evidence_not_semantic_authority
+PASS	explicit_retained_family_row_count	13/17
+PASS	reconciliation_inventory_registered_count	16/17
+PASS	atlas_source_record_count	10
+PASS	atlas_register_row_count	10
+PASS	atlas_register_unique_ids	10
+PASS	atlas_source_ids_unique
+PASS	atlas_records_accounted_once
+PASS	atlas_candidate_only_no_semantic_decisions
+PASS	builder_equals_committed_json
+PASS	builder_governed_source_hash_count	10
+PASS	tracked_touch_and_report_fingerprint_equal	4d2ba332cf6e4c009c1b14ac76b3d506b8704fe692a3457cfd098c0e653b3700
+PASS	tracked_audit_clean_state	0 candidates
+PASS	current_audit_fingerprint_differs	6f9bccf5e9664ab834171368ed06b2206679263ea5208eb039a54e456f7fa338
+PASS	current_in_memory_audit_state	9 candidate occurrences
+PASS	appendix_reconstructable_record_count	88
+PASS	appendix_original_152_not_fully_reconstructed
+PASS	appendix_decision_counts
+PASS	tracked_diff_name_only_empty
+PASS	untracked_output_file_set_allowed	7 files
+PASS	allowed_path_assertion
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_REGISTER.tsv
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_REGISTER.tsv
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VOCABULARY_NORMATIVE_ADMISSION_REGISTER.tsv
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VOCABULARY_NORMATIVE_ADMISSION_REGISTER.tsv
+PASS	no_nul_bytes:project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv
+PASS	no_trailing_whitespace:project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv
+PASS	receipt_records_pass
+PASS	receipt_records_bounded_test_result
+RESULT	PASS	PM-001 pass conditions satisfied by recorded evidence and independent validation
+```
+
+## 3. Bounded existing-test execution
+Command: `PYTHONPATH=src python -m pytest tests/tier_a/vocabulary -q`
+```text
+........................................................................ [ 71%]
+.............................                                            [100%]
+101 passed in 16.24s
+PYTEST_EXIT_CODE=0
+STATUS_CHANGED_BY_PYTEST=no
+```
+Classification: `current_assertions_executed_green`; not semantic authority and not a PM-001 pass condition.
+
+## 4. Git validation commands
+### git diff --check
+```text
+exit_code=0
+```
+
+### git diff --name-only
+```text
+exit_code=0
+```
+No tracked diff is present because all seven PM-001 outputs are new untracked files.
+
+### git ls-files --others --exclude-standard
+```text
+project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv
+project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt
+project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv
+project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md
+project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_REGISTER.tsv
+project_control/canonical_project_manager/units/PM-001/VOCABULARY_NORMATIVE_ADMISSION_REGISTER.tsv
+project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv
+```
+
+### Allowed-path assertion
+untracked_file_count=7
+all_untracked_paths_allowed=true
+
+### git diff --stat
+```text
+```
+Tracked diff stat is empty; outputs are untracked. File line counts:
+```text
+    51 project_control/canonical_project_manager/units/PM-001/PM-001_FULL_READ_MANIFEST.tsv
+   128 project_control/canonical_project_manager/units/PM-001/VALIDATION_OUTPUT.txt
+    11 project_control/canonical_project_manager/units/PM-001/VOCABULARY_ATLAS_EVIDENCE_REGISTER.tsv
+   105 project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_RECEIPT.md
+   134 project_control/canonical_project_manager/units/PM-001/VOCABULARY_CURRENT_TRUTH_REGISTER.tsv
+    28 project_control/canonical_project_manager/units/PM-001/VOCABULARY_NORMATIVE_ADMISSION_REGISTER.tsv
+    18 project_control/canonical_project_manager/units/PM-001/VOCABULARY_TEST_EVIDENCE_REGISTER.tsv
+   475 total
+```
+
+### Final git status --short --branch
+```text
+## work/NVIDIA_2026_pm001_pm010_restart_20260721
+?? project_control/canonical_project_manager/units/
+```
+
+## 5. Final result
+`unit_result: pass`

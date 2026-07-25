@@ -1,0 +1,9 @@
+Checkpoint: sequence 116
+Fresh receipts complete: 50/54
+Next sequence: 117
+Branch: work/NVIDIA_2026_pm001_pm010_restart_20260721
+HEAD: 21c1e5eccfbb818bdd422afd42117f23b1f74f26
+Archive: NVDA_P2_RECOVERY_PART1_CHECKPOINT_SEQ116_20260723T204246_AEST.tar.gz
+Status: Part 1 method acceptance remains FAILED because recorded isolation/process incidents are unresolved.
+SHA-256: 60ef925c0cb020b933bc9da2bae48b48485130f02b5266e77648fd0571558b88
+Bytes: 36190714

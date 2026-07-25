@@ -1,0 +1,29 @@
+{
+  "assertion_groups": 777,
+  "authority_resolution_mode": {
+    "EXPLICIT_EXACT": 77,
+    "FILE_CONTEXT_ONLY": 242,
+    "INHERITED_PREVIOUS_EXPLICIT_SAME_AUTHORITY": 7,
+    "UNRESOLVED": 451
+  },
+  "dependency_rows": 143,
+  "dispositions": {
+    "ADMIT_TIER_A_CURRENT": 31,
+    "ADMIT_TIER_B_SHADOW": 5,
+    "BLOCKED_MISSING_NORMATIVE_AUTHORITY": 35,
+    "BLOCKED_P3_REPAIR": 74,
+    "NON_AUTHORITATIVE_OBSERVATIONAL": 20,
+    "RETIREMENT_RECOMMENDED_NOT_EXECUTED": 14
+  },
+  "ledger_rows": 179,
+  "relation_enum_status": {
+    "NON_ENUM_EXPLICIT_VALUE": 94,
+    "RESOLVED_ALLOWED_ENUM": 678,
+    "UNRESOLVED_NOT_EXPLICITLY_PARSED": 5
+  },
+  "strength_enum_status": {
+    "NON_ENUM_EXPLICIT_VALUE": 118,
+    "RESOLVED_ALLOWED_ENUM": 654,
+    "UNRESOLVED_NOT_EXPLICITLY_PARSED": 5
+  }
+}

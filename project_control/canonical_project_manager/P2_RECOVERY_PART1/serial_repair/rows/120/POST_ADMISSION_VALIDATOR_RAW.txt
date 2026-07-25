@@ -1,0 +1,4 @@
+RESULT=PASS sequence=120 groups=2 relationships=2 disposition=NON_AUTHORITATIVE_OBSERVATIONAL receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_persistence_test_fwd003_durable_sql_contract_py.md
+NOTE=Structural validation does not establish semantic acceptance.
+
+EXIT_CODE=0

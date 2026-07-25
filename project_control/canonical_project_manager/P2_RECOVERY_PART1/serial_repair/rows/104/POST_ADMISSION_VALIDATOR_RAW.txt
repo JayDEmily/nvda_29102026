@@ -1,0 +1,4 @@
+RESULT=PASS sequence=104 groups=4 relationships=4 disposition=BLOCKED_MISSING_NORMATIVE_AUTHORITY receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_downstream_runtime_test_fwd017_overnight_carry_contract_py.md
+NOTE=Structural validation does not establish semantic acceptance.
+
+EXIT_CODE=0

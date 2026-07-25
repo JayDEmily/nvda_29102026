@@ -1,0 +1,53 @@
+NVIDIA 2026 P2 clean-baseline validation
+date_melbourne=2026-07-22
+
+source_p1_snapshot_sha256=e18b0643aaec536bd9f22b3eb080efa891c3603f15c1bbd40f218b1bda82b077
+source_fourth_reopen_complete_sha256=1e6ae44439c5249cb04ed10b8abe4773b9bb97e843cc76545cd48b7dc97b6ca3
+truncated_attachment_excluded_sha256=0ae8030fdf5179602e24656083336ae36c80dbd43073d04c3d29732db1060699
+
+branch=work/NVIDIA_2026_pm001_pm010_restart_20260721
+head=21c1e5eccfbb818bdd422afd42117f23b1f74f26
+git_diff_check=PASS
+git_fsck_full_no_dangling=PASS
+
+physical_tier_a_python_tests=166
+physical_tier_b_python_tests=13
+physical_total_python_tests=179
+pm011_test_hash_rows=179
+pm011_test_hash_missing=0
+pm011_test_hash_mismatch=0
+
+semantic_ledger_rows=179
+semantic_ledger_NO=179
+semantic_ledger_YES=0
+semantic_ledger_path_set_equals_pm011=PASS
+
+unit_directories=PM-001,PM-002,PM-003,PM-004,PM-005,PM-006,PM-007,PM-008,PM-009,PM-010,PM-011
+PM-012_through_PM-020_present=NO
+python_cache_directories=0
+compiled_pyc_files=0
+
+p1_source_snapshot_final_acceptance_validator=PASS
+p1_semantic_decisions=129
+p1_canonical_records=117
+p1_alias_only_decisions=3
+p1_quarantined_decisions=9
+p1_candidate_occurrences_dispositioned=499
+p1_audit_unresolved_candidates=0
+p1_tracked_changed_paths=9
+
+clean_tree_source_locator_validation=PASS
+clean_tree_adjudication_locators=297
+clean_tree_occurrence_locators=559
+clean_tree_occurrence_level_probe=PASS
+clean_tree_vocabulary_synonym_audit=PASS
+clean_tree_vocabulary_candidates=0
+
+clean_tree_PM010_final_acceptance_validator=NOT_APPLICABLE_AFTER_AUTHORISED_CONTROL_UPDATE
+clean_tree_PM010_validator_observation=the validator rejected the authorised ROADMAP_LEDGER_V2.md mutation because its P1-only changed-path guard intentionally forbids root-control changes
+clean_tree_PM010_validator_consequence=no P1 failure inferred; the unmodified P1 source snapshot passed and all P1 semantic/projected files remain byte-identical to that snapshot
+
+pytest_runtime=UNKNOWN
+pytest_reason=local Python 3.12.13 has no pytest; offline uv could not locate CPython 3.13.5
+
+claim_boundary=these checks establish clean-baseline identity and structure, not P2 semantic correctness or acceptance

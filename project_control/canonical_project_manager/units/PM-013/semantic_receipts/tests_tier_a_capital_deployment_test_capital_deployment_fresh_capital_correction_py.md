@@ -1,0 +1,6 @@
+# Semantic receipt — `tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py`
+
+- Sequence `042`, PM-013; SHA `ca7df4948f3d882f41a3886d1e41dd9670d7bcf437c014a22f32917a01d79e09`.
+- Read full test `1-35`, `src/nvda_desk/contracts/capital.py:1-179`, `src/nvda_desk/capital/authority.py:1-220`, `src/nvda_desk/contracts/risk.py:1-10`, `src/nvda_desk/services/final_risk_service.py:1-16`, current routes and authority. Pytest: `1 passed in 0.19s`.
+- G1 `21-35`, authority `N07.2-004` (`docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:78-104`) and capital ownership `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:155-161`: proves four modules and four symbols are importable. Remove or rename one and `22-35` fail. `related_but_not_proved` / `presence_only`. The test never instantiates either service, constructs a final-risk receipt, passes final-risk output into capital authority, observes eligibility/stand-down propagation, or proves a dependency edge; both modules could be unrelated and the test would remain green.
+- Groups/relationships `1/1`; final `RETIREMENT_RECOMMENDED_NOT_EXECUTED`. Symbol-presence inventory is redundant with stronger behavioural tests and cannot prove the named fresh-capital/final-join correction. No mutation executed.

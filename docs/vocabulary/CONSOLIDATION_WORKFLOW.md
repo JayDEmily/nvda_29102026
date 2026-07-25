@@ -4,22 +4,31 @@ The vocabulary workflow is a **feeder process only**.
 
 ## Allowed flow
 
-1. harvest candidate terms from current repo surfaces and bounded planning artefacts;
-2. reconcile them against the canonical vocabulary file;
-3. classify each candidate as exactly one of:
+1. harvest candidate evidence from current repo surfaces and bounded planning artefacts;
+2. read the relevant normative and implementation context in full and compare the candidate with the human-readable registry and explicit normative admissions;
+3. record one human/LLM semantic action under `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`:
    - `enrich_existing`
    - `add_new`
    - `alias_only`
    - `quarantine`
-4. regenerate the canonical vocabulary file from current live architecture;
-5. run enforcement tests.
+4. update the accepted human-readable meaning and admission record when the action changes governed vocabulary;
+5. project the accepted decision through the builder into `data/vocabulary/canonical_vocabulary.json`;
+6. run audits, stamp guards and enforcement tests as downstream evidence.
+
+Mechanical classifiers and candidate-review helpers may propose or route these action labels, but they cannot perform step 3 or create semantic admission.
+
+### Deterministic projection record
+
+The accepted human registry is the sole semantic input to the committed machine projection. Every canonical registry record must include one explicit `Projection metadata:` record with traceability to its accepted semantic decision. `src/nvda_desk/vocabulary_builder.py` validates and transforms those records only; it must contain no independent term seed. Generated JSON is updated through `scripts/build_canonical_vocabulary.py` after a validated `/tmp` build and byte-stability check.
+
+An audit phrase that has been read in source context and rejected as a canonical label or lawful alias may be retained in the owning human record as descriptive `audit_noncanonical_phrases` history. That field never suppresses the scanner. Suppression is allowed only from the exact resolved-occurrence evidence register, and only for the same path, line, column, normalised phrase and unchanged source-context hash.
 
 ## Guardrails
 
 - never merge a stale harvested payload blindly;
 - never let one label point to two different contract surfaces;
 - never treat compatibility labels as canonical runtime truth;
-- never let a new family, setup variant, execution expression, horizon, or workflow-routing concept land without a canonical vocabulary entry.
+- never let a new family, setup variant, execution expression, horizon, or workflow-routing concept become governed language without an accepted human-readable admission and its downstream canonical projection.
 
 ## Three-ledger split
 
@@ -48,7 +57,9 @@ Gate 55 extends canonical ownership to:
 - write the audit artefact to `var/vocabulary/synonym_candidates.json`;
 - escalate any candidate entry in that artefact to an LLM pass;
 - do not admit or suppress a candidate by hand-editing the artefact;
-- update the vocabulary stamp only after the audit artefact is clean.
+- update the vocabulary stamp only after the configured audit returns no unresolved candidate occurrences and all required semantic decisions and projection updates are recorded; a zero-candidate report or advanced stamp is algorithmic/proof evidence only, not a semantic clean certificate.
+- resolve a noncanonical candidate only for its exact evidenced occurrence: path, line, column, normalised phrase and unchanged source-line context hash; the same phrase on a new path, at a new occurrence or in changed context must surface again;
+- treat only canonical labels and explicitly admitted aliases as phrase-global exact tokens; disallowed phrases and historical noncanonical inventories must not suppress candidates globally.
 
 
 ## Schema-helper admission boundary
@@ -72,23 +83,25 @@ The admitted helpers are allowed to load, validate, and serialise `VocabularyDoc
 
 ## Admitted Atlas feature leaf — candidate classification contracts
 
-`ATLAS_FEATURE_ADMISSION_002` admits a bounded candidate-classification helper for row `5.18` vocabulary governance. The helper classifies a proposed vocabulary candidate as exactly one of the governed admission outcomes: `enrich_existing`, `add_new`, `alias_only`, or `quarantine`.
+`ATLAS_FEATURE_ADMISSION_002` admits a bounded candidate-classification helper for row `5.18` vocabulary governance. The helper emits exactly one mechanical proposed-action label: `enrich_existing`, `add_new`, `alias_only`, or `quarantine`.
 
-The classifier is a decision helper only. It must not mutate `data/vocabulary/canonical_vocabulary.json`, suppress synonym candidates, or admit durable terms by itself. Durable vocabulary changes still require the governed workflow, canonical builder parity proof, and retained vocabulary tests.
+The classifier is a routing helper only. It must not mutate `data/vocabulary/canonical_vocabulary.json`, suppress synonym candidates, make the human/LLM semantic decision, or admit durable terms. Durable vocabulary changes require an accepted semantic decision first, followed by controlled human-registry update, builder projection, parity proof and retained-test execution.
 
-The classification boundary is:
+The mechanical proposal boundary is:
 
-- existing canonical slug or label match -> `enrich_existing`;
-- explicit allowed-alias match -> `alias_only`;
-- no governed collision -> `add_new`;
-- disallowed phrase match or multi-entry collision -> `quarantine`.
+- existing canonical slug or label match -> propose `enrich_existing`;
+- explicit allowed-alias match -> propose `alias_only`;
+- no governed collision -> propose `add_new`;
+- disallowed phrase match or multi-entry collision -> propose `quarantine`.
+
+These token/collision outcomes do not prove meaning, synonymy, novelty, ownership, scope or final disposition.
 
 
 ## Admitted Atlas feature leaf — candidate payload classification contracts
 
 `ATLAS_FEATURE_ADMISSION_003` admits bounded candidate-payload classification helpers for row `5.18` vocabulary governance. These helpers convert bridge-style candidate payload dictionaries into `VocabularyCandidate` instances and classify ordered candidate batches without mutating the canonical vocabulary file.
 
-The helpers are allowed to support proof and review of candidate admission decisions. They do not admit terms by themselves, and they remain subordinate to the governed workflow, canonical builder parity proof, and retained vocabulary tests.
+The helpers are allowed to support proof and review of proposed candidate actions. They do not make semantic admission decisions or admit terms, and their outputs remain subordinate to accepted human-readable meaning before builder projection, parity proof and retained-test execution.
 
 ## Admitted Atlas feature leaf — synonym candidate quarantine annotations
 

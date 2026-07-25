@@ -15,9 +15,22 @@ This folder governs canonical repo language after the architecture is pinned.
 - not a runtime redesign surface;
 - not a free-form glossary detached from typed contracts.
 
-## Authoritative artefacts
+## Authority and projection surfaces
 
-- workflow: `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
-- canonical vocabulary file: `data/vocabulary/canonical_vocabulary.json`
-- schema: `src/nvda_desk/schemas/vocabulary.py`
-- generator: `scripts/build_canonical_vocabulary.py`
+1. vocabulary law: `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md` and `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`;
+2. human-readable governed meaning: `docs/vocabulary/vocabulary_registry.md` together with explicit admissions in the normative overlay;
+3. feeder and reconciliation workflow: `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`;
+4. machine schema and projection implementation: `src/nvda_desk/schemas/vocabulary.py`, `src/nvda_desk/vocabulary_builder.py`, and `scripts/build_canonical_vocabulary.py`;
+5. committed generated enforcement projection: `data/vocabulary/canonical_vocabulary.json`;
+6. candidate reports, touch stamps and tests: bounded evidence only.
+
+Generated artefacts, scanners, stamps, helpers and green tests cannot create semantic admission or redefine a durable term. Accepted human-readable meaning must precede and govern its machine projection.
+## Accepted registry record
+
+Each `###` record in `vocabulary_registry.md` carries the complete human meaning first: definition, scope, semantic owner, relationships, aliases, disallowed or misleading use, and lifecycle. Its single `Projection metadata:` JSON line is an explicit admission/projection record, not a second semantic source. It records the accepted canonical label/slug, structural projection fields, decision references, machine-safe aliases/disallowed tokens, contextual omissions, and historical noncanonical phrase inventory. That phrase inventory is descriptive only and never suppresses an audit globally; exact resolved occurrences are evidenced in the PM-010 candidate-disposition register by path, line, column and context hash.
+
+The builder must fail on a missing, duplicated, unknown or contradictory projection field. It may transform these records into `VocabularyEntry` objects; it must not seed terms, infer missing meaning, or restore a label from tests or previous generated JSON.
+
+## Occurrence-scoped candidate resolution
+
+Canonical labels and lawful aliases are recognised globally. A noncanonical phrase disposition suppresses only the exact evidenced occurrence with the same path, line, column, normalised phrase and source-context SHA-256. A new path, new occurrence or changed context must be reported again. Disallowed phrases and historical phrase inventories remain semantic evidence, not canonical exact tokens.

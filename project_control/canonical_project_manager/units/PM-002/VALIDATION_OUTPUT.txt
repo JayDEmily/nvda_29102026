@@ -1,0 +1,116 @@
+# PM-002 Validation Output
+
+## 1. Initial PM-002 repository state
+```text
+## work/NVIDIA_2026_pm001_pm010_restart_20260721
+?? project_control/canonical_project_manager/units/
+```
+At PM-002 start, PM-001 outputs were untracked and no governed file had a tracked modification.
+
+## 2. Independent validation
+Command: `PYTHONPATH=src python /tmp/validate_pm002.py`
+```text
+PASS	exact_PM002_output_file_set	['PM-002_FULL_READ_MANIFEST.tsv', 'PM-002_RECEIPT.md', 'VALIDATION_OUTPUT.txt', 'VOCABULARY_NORMATIVE_TRUTH_REPAIR_REGISTER.tsv']
+PASS	PM001_prerequisite_pass
+PASS	manifest_row_count	30
+PASS	manifest_unique_paths	30
+PASS	manifest_all_read_full
+PASS	manifest_paths_exist
+PASS	manifest_after_hashes_current
+PASS	manifest_allowed_governed_paths
+PASS	manifest_changed_paths_exact
+PASS	all_forbidden_inputs_hash_unchanged
+PASS	all_three_allowed_docs_changed
+PASS	repair_register_row_count	9
+PASS	repair_register_unique_ids
+PASS	repair_classes_bounded
+PASS	repair_rows_cover_all_changed_docs
+PASS	repair_rows_record_no_term_decision
+PASS	corrected_counts_reproduce	46/87/26/20/61
+PASS	corrected_normative_count_present:contains 46 human headings
+PASS	corrected_normative_count_present:contains 87 generated entries
+PASS	corrected_normative_count_present:26 normalised labels match exactly
+PASS	corrected_normative_count_present:20 normalised human-registry labels
+PASS	corrected_normative_count_present:61 generated labels
+PASS	stale_count_claims_removed
+PASS	sections_10_7_10_8_byte_identical_to_HEAD
+PASS	explicit_admission_count_unchanged	27
+PASS	preserved_hash:docs/vocabulary/vocabulary_registry.md
+PASS	preserved_hash:data/vocabulary/canonical_vocabulary.json
+PASS	README_hierarchy_clarified
+PASS	workflow_human_first_direction
+PASS	classifier_authority_clarified
+PASS	audit_stamp_authority_clarified
+PASS	tracked_report_stamp_same_old_fingerprint	4d2ba332cf6e4c009c1b14ac76b3d506b8704fe692a3457cfd098c0e653b3700
+PASS	tracked_audit_zero_candidate_state
+PASS	current_audit_differs_and_touched	19d0676931935ed204b2ddf59d22d49d08b0d48f9e238d10d1d7c1e118307640
+PASS	current_audit_exact_occurrence_inventory	{'or coefficient authority': 1, 'ecursor runtime context': 1, 'market context': 1, 'compile playbook eligibility': 1, 'source temporal standard requires': 1}
+PASS	current_audit_classification_count	5
+PASS	current_audit_all_escalation
+PASS	current_audit_mechanical_quarantine_routes
+PASS	tracked_changed_paths_allowed	['docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md', 'docs/vocabulary/CONSOLIDATION_WORKFLOW.md', 'docs/vocabulary/README.md']
+PASS	status_paths_bounded	[' M docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md', ' M docs/vocabulary/CONSOLIDATION_WORKFLOW.md', ' M docs/vocabulary/README.md', '?? project_control/canonical_project_manager/units/']
+PASS	no_forbidden_surface_changed
+PASS	git_diff_check
+PASS	no_nul:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/PM-002_FULL_READ_MANIFEST.tsv
+PASS	no_trailing_whitespace:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/PM-002_FULL_READ_MANIFEST.tsv
+PASS	no_nul:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/PM-002_RECEIPT.md
+PASS	no_trailing_whitespace:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/PM-002_RECEIPT.md
+PASS	no_nul:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/VALIDATION_OUTPUT.txt
+PASS	no_trailing_whitespace:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/VALIDATION_OUTPUT.txt
+PASS	no_nul:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/VOCABULARY_NORMATIVE_TRUTH_REPAIR_REGISTER.tsv
+PASS	no_trailing_whitespace:/mnt/data/NVIDIA_2026_PM001_PM010_RESTART_21c1e5e_extracted/NVIDIA_2026/project_control/canonical_project_manager/units/PM-002/VOCABULARY_NORMATIVE_TRUTH_REPAIR_REGISTER.tsv
+PASS	no_nul:docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+PASS	no_trailing_whitespace:docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+PASS	no_nul:docs/vocabulary/CONSOLIDATION_WORKFLOW.md
+PASS	no_trailing_whitespace:docs/vocabulary/CONSOLIDATION_WORKFLOW.md
+PASS	no_nul:docs/vocabulary/README.md
+PASS	no_trailing_whitespace:docs/vocabulary/README.md
+PASS	receipt_records_pass
+PASS	receipt_records_current_audit
+RESULT	PASS	PM-002 truth and authority-direction repairs validated without term decisions
+```
+
+## 3. Current read-only synonym audit
+Command: `PYTHONPATH=src python -c "from nvda_desk.vocabulary_synonym_audit import build_report; ..."`
+```text
+fingerprint=19d0676931935ed204b2ddf59d22d49d08b0d48f9e238d10d1d7c1e118307640
+vocabulary_touched=true
+candidate_occurrences=5
+candidate_classifications=5
+phrases={'or coefficient authority': 1, 'ecursor runtime context': 1, 'market context': 1, 'compile playbook eligibility': 1, 'source temporal standard requires': 1}
+```
+No report or stamp write function was called.
+
+## 4. Git validation
+### git diff --check
+```text
+exit_code=0
+```
+
+### git diff --name-only
+```text
+docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+docs/vocabulary/CONSOLIDATION_WORKFLOW.md
+docs/vocabulary/README.md
+```
+
+### git diff --stat
+```text
+ .../10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md | 20 +++++--------
+ docs/vocabulary/CONSOLIDATION_WORKFLOW.md          | 35 ++++++++++++----------
+ docs/vocabulary/README.md                          | 14 +++++----
+ 3 files changed, 37 insertions(+), 32 deletions(-)
+```
+
+### final git status --short --branch
+```text
+## work/NVIDIA_2026_pm001_pm010_restart_20260721
+ M docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+ M docs/vocabulary/CONSOLIDATION_WORKFLOW.md
+ M docs/vocabulary/README.md
+?? project_control/canonical_project_manager/units/
+```
+
+## 5. Final result
+`unit_result: pass`

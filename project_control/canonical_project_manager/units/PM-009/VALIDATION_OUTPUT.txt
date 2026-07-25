@@ -1,0 +1,9 @@
+pm009_reopen_validation=PASS
+fixed_labels_from_brief=10
+assigned_exact_label_rows=10
+PRP-004=quarantine_no_specific_higher_normative_proposition
+PM-009-NORM-005=removed_from_PM-009
+stage_read_registry_occurrences_removed=3
+pm009_normative_occurrences=8
+project_manager_acceptance=pending
+p2_status=not_begun

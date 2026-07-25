@@ -1,0 +1,2 @@
+RESULT=PASS sequence=095 groups=5 relationships=5 disposition=BLOCKED_P3_REPAIR receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_downstream_runtime_test_downstream_contract_models_py.md
+NOTE=Structural validation does not establish semantic acceptance.

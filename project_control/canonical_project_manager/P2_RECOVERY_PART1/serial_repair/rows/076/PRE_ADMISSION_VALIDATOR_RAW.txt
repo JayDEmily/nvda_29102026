@@ -1,0 +1,4 @@
+RESULT=PASS sequence=076 groups=3 relationships=3 disposition=BLOCKED_P3_REPAIR receipt=project_control/canonical_project_manager/units/PM-014/semantic_receipts/tests_tier_a_parallel_risk_test_parallel_risk_missing_signal_register_py.md
+NOTE=Structural validation does not establish semantic acceptance.
+
+EXIT_CODE=0

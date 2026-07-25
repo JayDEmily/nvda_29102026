@@ -1,0 +1,4 @@
+CURRENT_RECEIPT_TEMPLATE_SCAN
+scope=067-120
+receipts=54
+hits=0

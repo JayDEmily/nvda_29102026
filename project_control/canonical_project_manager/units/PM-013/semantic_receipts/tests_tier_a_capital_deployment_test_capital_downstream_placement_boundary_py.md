@@ -1,0 +1,6 @@
+# Semantic receipt — `tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py`
+
+- Sequence `043`, PM-013; SHA `1d011a65cb42228d3c916bdc122be425efa5aaa8bfcf58ad6bf0ece426ab73a8`.
+- Read full test `1-18`, `src/nvda_desk/capital/authority.py:1-220`, `src/nvda_desk/services/final_risk_service.py:1-16`, `src/nvda_desk/downstream/opening.py:1-119`, current routes and authority. Pytest: `1 passed in 0.18s`.
+- G1 `15-18`, authority `N07.2-004` (`docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:78-104`), capital ownership `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:155-161`, and opening ownership `186-191`: proves only that three named modules import at three package paths. Rename/remove one and the corresponding assertion fails. `related_but_not_proved` / `presence_only`. Capital authority could be implemented inside the serial spine, opening could recompute capital, or final-risk could be bypassed while all three imports still pass; no dependency direction, lifecycle ordering, input/output handoff or forbidden ownership is observed.
+- Groups/relationships `1/1`; final `RETIREMENT_RECOMMENDED_NOT_EXECUTED`. The historical route describes an aligned opening family, but this physical file contributes only redundant module-presence inventory and does not prove its named downstream-placement boundary. No mutation executed.

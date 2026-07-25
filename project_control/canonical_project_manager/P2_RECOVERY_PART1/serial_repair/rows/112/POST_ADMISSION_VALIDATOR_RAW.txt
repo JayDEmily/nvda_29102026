@@ -1,0 +1,4 @@
+RESULT=PASS sequence=112 groups=1 relationships=1 disposition=RETIREMENT_RECOMMENDED_NOT_EXECUTED receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_options_flow_history_test_options_flow_history_replay_live_state_separation_py.md
+NOTE=Structural validation does not establish semantic acceptance.
+
+EXIT_CODE=0

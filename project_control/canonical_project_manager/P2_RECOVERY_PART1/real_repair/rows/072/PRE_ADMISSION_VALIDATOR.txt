@@ -1,0 +1,2 @@
+RESULT=PASS sequence=072 groups=2 relationships=2 disposition=BLOCKED_MISSING_NORMATIVE_AUTHORITY receipt=project_control/canonical_project_manager/units/PM-014/semantic_receipts/tests_tier_a_parallel_risk_test_parallel_risk_lineage_completeness_py.md
+NOTE=Structural validation does not establish semantic acceptance.

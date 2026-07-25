@@ -1,0 +1,5 @@
+duplicate_requested_ids ['pos-1', 'pos-1'] {'NVDA': 5.0}
+cross_position_duplicate_fill ACCEPTED
+nested_placement_authority ACCEPTED {'fill_evidence_ids': ['fill-2'], 'fill_evidence': [{'fill_evidence_id': 'fill-2', 'position_id': 'pos-3', 'metadata': {'broker_order_id': 'broker-1'}}], 'inventory_reconciliation_id': 'r3'}
+receipt_failure ValueError duplicate receipt_id: dup-r
+position_after_receipt_failure {'fill_evidence_ids': ['fill-3'], 'fill_evidence': [{'fill_evidence_id': 'fill-3', 'position_id': 'pos-4', 'declared_exposure_delta': 7.0}], 'declared_exposure': 7.0, 'inventory_reconciliation_id': 'r4'}

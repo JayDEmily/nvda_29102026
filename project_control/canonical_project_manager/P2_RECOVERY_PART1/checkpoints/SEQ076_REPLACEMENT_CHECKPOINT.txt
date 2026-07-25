@@ -1,0 +1,6 @@
+Checkpoint scope: sequences 067-076 after receipt-contract rollback and independent revalidation
+Archive: NVDA_P2_RECOVERY_PART1_CHECKPOINT_SEQ076_20260723T200007_AEST.tar.gz
+SHA-256: bf371244160a05e0eadaff33e2aa3bd7bb4041e74ed8a20b496e988cedd0d563
+Size bytes: 36173770
+Created: 20260723T200007_AEST
+Status: authoritative replacement for the earlier pre-rollback sequence-076 checkpoint

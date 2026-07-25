@@ -1,0 +1,4 @@
+RESULT=PASS sequence=110 groups=2 relationships=2 disposition=NON_AUTHORITATIVE_OBSERVATIONAL receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_options_flow_history_test_options_flow_contract_models_py.md
+NOTE=Structural validation does not establish semantic acceptance.
+
+EXIT_CODE=0
