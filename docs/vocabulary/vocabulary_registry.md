@@ -1,8 +1,78 @@
 # Vocabulary Registry
 
 Projection schema version: `v1`
-Projection registry version: `2026-07-21-p1-corrected-v4`
-Projection document notes: ["P1 integrated semantic authority projected only from the accepted PM-003 through PM-009 decisions.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
+Projection registry version: `2026-07-25-module-architecture-v1`
+Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds only durable ownership, dependency-plane and local-proof control terms.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
+
+### Ownership Module
+Definition: Accepted target code capability identified by one `M00`–`M15` architecture ID and bounded by explicit responsibility, public contracts, state ownership, dependencies and prohibited authority.
+Scope: target modular-monolith ownership boundary
+Owner: Native Architecture Blueprint authority
+Relationships: Allocates one or more Architecture Surfaces to a code capability; may contain several implementation obligations; is not equivalent to a surface, file, class, service process or `D-xxx` record.
+Aliases: target ownership module; Mxx module
+Disallowed or misleading use: architecture surface as exact synonym; implementation work unit; microservice; proof that code already owns the responsibility
+Lifecycle: accepted_target_architecture
+Projection metadata: {"projection_status":"canonical","canonical_label":"Ownership Module","canonical_slug":"ownership_module","category":"authority_surface","stage_owner":"native_architecture_blueprint","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10","raw_or_derived":"not_applicable","allowed_aliases":["target ownership module","Mxx module"],"disallowed_phrases":["architecture surface as exact synonym","implementation work unit","microservice","proof that code already owns the responsibility"],"semantic_decision_refs":["USER-20260725:MODULE-ARCHITECTURE-ACCEPTANCE"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Module-local Proof Gate
+Definition: Governed acceptance sequence that establishes sufficient normative meaning and truthful proof for one bounded behaviour inside one active Ownership Module before implementation is opened.
+Scope: one-module semantic and proof acceptance boundary
+Owner: proof and promotion governance
+Relationships: Applies the normative-authority-to-test-to-code direction locally; replaces repository-wide proof completion as a prerequisite for unrelated alpha implementation; remains subject to final global reconciliation.
+Aliases: local module proof gate; module-local Gate C
+Disallowed or misleading use: skip tests; code-first implementation; whole-repository acceptance; automatic authority from passing tests
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Module-local Proof Gate","canonical_slug":"module_local_proof_gate","category":"promotion_surface","stage_owner":"proof_promotion","maps_to_contract":"project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md","raw_or_derived":"not_applicable","allowed_aliases":["local module proof gate","module-local Gate C"],"disallowed_phrases":["skip tests","code-first implementation","whole-repository acceptance","automatic authority from passing tests"],"semantic_decision_refs":["USER-20260725:MODULE-LOCAL-PROOF"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Runtime/Contract Dependency
+Definition: Directed production relationship in which one Ownership Module calls another module or consumes its accepted public contract during runtime.
+Scope: production runtime and cross-module contract graph
+Owner: Native Architecture Blueprint authority
+Relationships: Contributes to the acyclic runtime graph; distinct from State/Transaction Participation, Governance/Promotion Prerequisite and development-only build/test dependencies.
+Aliases: runtime dependency; contract dependency
+Disallowed or misleading use: proof prerequisite; vocabulary approval; shared transaction participation; test fixture dependency
+Lifecycle: accepted_dependency_plane
+Projection metadata: {"projection_status":"canonical","canonical_label":"Runtime/Contract Dependency","canonical_slug":"runtime_contract_dependency","category":"authority_class","stage_owner":"native_architecture_blueprint","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10.1","raw_or_derived":"not_applicable","allowed_aliases":["runtime dependency","contract dependency"],"disallowed_phrases":["proof prerequisite","vocabulary approval","shared transaction participation","test fixture dependency"],"semantic_decision_refs":["USER-20260725:DEPENDENCY-PLANES"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### State/Transaction Participation
+Definition: Relationship in which a domain-owning module uses the shared `M13` transaction mechanism for atomic state and receipt effects while retaining semantic ownership of its records.
+Scope: transaction participation without domain-ownership transfer
+Owner: Native Architecture Blueprint authority
+Relationships: Connects state-owning modules to State Kernel mechanics; distinct from a runtime business dependency and does not make `M13` owner of positions, capital, calendar facts, risk observations or other domain records.
+Aliases: transaction participation; state-kernel participation
+Disallowed or misleading use: shared semantic ownership; state kernel owns all records; ordinary runtime dependency; persistence proves durability
+Lifecycle: accepted_dependency_plane
+Projection metadata: {"projection_status":"canonical","canonical_label":"State/Transaction Participation","canonical_slug":"state_transaction_participation","category":"authority_class","stage_owner":"native_architecture_blueprint","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10.1","raw_or_derived":"not_applicable","allowed_aliases":["transaction participation","state-kernel participation"],"disallowed_phrases":["shared semantic ownership","state kernel owns all records","ordinary runtime dependency","persistence proves durability"],"semantic_decision_refs":["USER-20260725:DEPENDENCY-PLANES"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Governance/Promotion Prerequisite
+Definition: Non-runtime relationship requiring accepted proof, vocabulary or other governance evidence before a module or behaviour may be promoted.
+Scope: architecture governance and acceptance plane
+Owner: proof and vocabulary governance
+Relationships: Commonly links runtime modules to `M14` and `M15`; must not be drawn as a universal production import or used to create false runtime cycles.
+Aliases: governance prerequisite; promotion prerequisite
+Disallowed or misleading use: hard runtime dependency; production import; business decision call; module implementation dependency
+Lifecycle: accepted_dependency_plane
+Projection metadata: {"projection_status":"canonical","canonical_label":"Governance/Promotion Prerequisite","canonical_slug":"governance_promotion_prerequisite","category":"promotion_rule","stage_owner":"proof_promotion","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10.1","raw_or_derived":"not_applicable","allowed_aliases":["governance prerequisite","promotion prerequisite"],"disallowed_phrases":["hard runtime dependency","production import","business decision call","module implementation dependency"],"semantic_decision_refs":["USER-20260725:DEPENDENCY-PLANES"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Legacy Shadow Unadmitted
+Definition: Neutral status for a runnable existing test that has not been admitted as authority for the active Module-local Proof Gate and therefore cannot dictate the active implementation.
+Scope: unrelated or not-yet-reviewed legacy test evidence
+Owner: proof and promotion governance
+Relationships: Remains visible during full-suite shadow execution; may later be admitted, repaired, classified as observational or retired through semantic review; neither passing nor failing establishes current authority.
+Aliases: unadmitted legacy shadow
+Disallowed or misleading use: ignored test; approved Tier B test; failed authoritative proof; permission to delete
+Lifecycle: active_test_status
+Projection metadata: {"projection_status":"canonical","canonical_label":"Legacy Shadow Unadmitted","canonical_slug":"legacy_shadow_unadmitted","category":"audit_classification","stage_owner":"proof_promotion","maps_to_contract":"project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md","raw_or_derived":"not_applicable","allowed_aliases":["unadmitted legacy shadow"],"disallowed_phrases":["ignored test","approved Tier B test","failed authoritative proof","permission to delete"],"semantic_decision_refs":["USER-20260725:MODULE-LOCAL-PROOF"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Coefficient and Modifier Authority
+Definition: Bounded ownership surface for versioned coefficient and modifier bundles, precedence, stage ownership, hard bounds and application receipts.
+Scope: target module `M07` only
+Owner: coefficient and modifier authority
+Relationships: Supplies governed coefficient/modifier decisions to eligible consumers; distinct from calendar, playbook, capital, execution, lifecycle and replay policy ownership.
+Aliases: dynamic coefficient and modifier authority; M07 coefficient_modifier_authority
+Disallowed or misleading use: policy authority; global policy engine; capital policy owner; playbook catalogue
+Lifecycle: accepted_target_module_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Coefficient and Modifier Authority","canonical_slug":"coefficient_and_modifier_authority","category":"authority_surface","stage_owner":"coefficient_modifier_authority","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10","raw_or_derived":"not_applicable","allowed_aliases":["dynamic coefficient and modifier authority","M07 coefficient_modifier_authority"],"disallowed_phrases":["policy authority","global policy engine","capital policy owner","playbook catalogue"],"semantic_decision_refs":["USER-20260725:M07-NARROWING"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
 
 ### Component Skeleton
 Definition: Architecture control surface that defines the permitted module-level component form, bounded responsibility, lawful inputs and outputs, dependencies, forbidden co-location, and honest status.

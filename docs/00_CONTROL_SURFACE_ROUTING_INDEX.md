@@ -90,3 +90,21 @@ The working companion owns admitted alpha-stage status correction, current imple
 Vocabulary authority: `docs/vocabulary/vocabulary_registry.md`.
 
 Routing decisions about native code-structure architecture must use `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` inside that bounded architecture scope. They must not reinterpret `docs/01_NORMATIVE_CORE.md` authority precedence.
+
+## Active programme and accepted architecture routing
+
+For current programme status and mutation authority, use:
+
+- `project_control/canonical_project_manager/EXEC_PLAN.md`;
+- `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`;
+- `ROADMAP_LEDGER_V2.md`.
+
+For the formally accepted `M00`–`M15` ownership allocation, dependency planes, implementation-obligation trace and structural validation, use:
+
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md` as the routed normative working authority;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` as the accepted decision and evidence explanation;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` and `Atlas_Architecture_Machine_Readable.json` as traceability/control projections;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Dependency_Graph.mmd` as the separated dependency-plane view;
+- `project_control/canonical_project_manager/architecture/Validation_Receipt.md` as validation evidence.
+
+The workbook, JSON, graph and receipt do not override the working architecture document or admit Atlas behavioural content. They project and trace the accepted ownership decision.

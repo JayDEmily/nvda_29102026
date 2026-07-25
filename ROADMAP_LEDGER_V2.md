@@ -4,62 +4,103 @@
 
 | Field | Value |
 |---|---|
-| Status | `gate_c_completion_protocol_frozen_p2_reconciliation_active` |
+| Status | `module_architecture_control_integration_validated_awaiting_commit_archive_and_merge` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
-| Canonical Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
-| Superseded P2 method | `00_TASK/NVDA_P2_CLEAN_WORKER_SEMANTIC_REVIEW_EXEC_PLAN_20260722.md` — retained as evidence only |
-| Checkpoint branch | `main` |
-| Preserved accepted prerequisite | P1 `PM-001` through `PM-010` |
-| Standing mechanical census | PM-011, 179 physical tests |
-| Current leaf | `P2-A02` — define uncontaminated review-source contents |
-| P2 | incomplete |
-| P3 | closed |
-| P4 | closed |
-| Gate D | closed |
-| Latest control freeze | `2026-07-25 13:04:09 AEST` |
+| Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
+| Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
+| Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
+| Control-integration baseline | `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5` |
+| Current branch | `control/accept-module-architecture` |
+| Current unit | `CTRL-ARCH-001-E` — create the bounded commit and external Git-preserving archive |
+| Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
+| Architecture surfaces | 18 accepted surfaces |
+| Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
+| Production/source/test mutation | closed on the control-integration branch |
+| First implementation module | `M13 state_kernel`, after control integration is accepted and merged |
+| Gate D | module-gated; no global opening |
 
-Read the programme ExecPlan first, then the Gate C protocol. The protocol is the sole operational checklist for the remaining P2–P4 work. This roadmap records position only; checkpoints, ledgers, receipts, reports, manifests and archives are supporting evidence.
+Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
 
-## Current accepted truth
+## Accepted strategy
 
-- P1 `PM-001`–`PM-010` is preserved as the accepted prerequisite.
+- The existing repository and Git history remain authoritative; no new repository will be created.
+- The four maps are locked as: behavioural spine, 18 architecture surfaces, 16 ownership modules and implementation obligations.
+- `M00`–`M15` are accepted target ownership modules; no top-level split or merge is currently required.
+- `M07 policy_authority` is superseded by `M07 coefficient_modifier_authority`.
+- Runtime/contract, state/transaction, governance/promotion and build/test dependencies are separate planes.
+- The target runtime graph is acyclic. `M00` is the composition shell; `M14` and `M15` are governance-plane prerequisites rather than production dependencies.
+- Physical package migration is progressive, one active module at a time.
+- Global P2–P4 completion is no longer required before implementation.
+- Each active module completes a local authority-and-proof gate before source mutation.
+- Unrelated unreviewed tests remain `LEGACY_SHADOW_UNADMITTED` and continue to run as shadow evidence where available.
+- Existing `D-xxx` identifiers and evidence remain intact, but numbering does not establish implementation order.
+- Positive implementation coverage remains to be defined locally for the known gaps in `M07`, `M09`, `M10` and `M11`.
+
+## Preserved historical truth
+
+- P1 `PM-001`–`PM-010` remains accepted prerequisite evidence.
 - PM-011 remains the standing 179-test physical census.
-- The bulk P2 candidate, recovery receipts and PM-019/PM-020 projections are not accepted as P2 completion.
-- Historical `SEMANTICALLY_READ=YES` rows record worker activity, not Project Manager semantic acceptance.
-- The seven proposed positive candidates `071`, `078`, `087`, `090`, `091`, `092` and `094` do not currently enter admitted test authority.
-- Accepted negative adjudications exist for `071` and `087`; both are blocked for P3 repair rather than admitted.
-- `078`, `090`, `091`, `092` and `094` remain not admitted because positive admission was not established and their returned evidence was rejected.
-- `P2-A01` is accepted: immutable archive `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz`, SHA-256 `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b`, preserves clean `main` commit `a56592f2609d109abaa2c4724a429324979e1ba5`.
-- P2 must be rebuilt through the asymmetric leaf process in the canonical Gate C protocol.
-- P3, P4 and Gate D remain closed.
+- `P2-A01` remains an accepted immutable historical review archive/checkpoint.
+- Earlier bulk P2 projections and worker positive-admission proposals remain unaccepted unless reopened under a module-local proof gate.
+- Earlier negative adjudications, expected-red tests, Gate B findings, proof envelopes and all 33 `D-xxx` records remain evidence.
+- The supplied architecture package contains 287 cohorts and 1,716 records and resolves the previous absence blocker mechanically; behavioural admission remains row-specific.
 
-## Serial Gate C state
+## Current control-integration gate
 
-| Order | Phase | State | Exit condition |
-|---:|---|---|---|
-| 0 | Protocol freeze | `accepted` | canonical document wired to programme plan and roadmap |
-| 1 | P2-A clean review source | `current` | immutable uncontaminated archive accepted |
-| 2 | P2-B mechanical routing | `closed` | 179 tests routed once without semantic inference |
-| 3 | P2-C observation cards | `closed` | factual observation accepted for every test |
-| 4 | P2-D conservative screening | `closed` | deep review limited to plausible current authority routes |
-| 5 | P2-E relationship adjudication | `closed` | every proposed positive relationship independently accepted or rejected |
-| 6 | P2-F file dispositions | `closed` | 179 Project Manager dispositions |
-| 7 | P2-G projection/validation | `closed` | accepted P2 candidate reproduced and Project Manager accepts P2 |
-| 8 | P3 eleven closed units | `closed` | all eleven proof chains accepted |
-| 9 | P4 proof-envelope/order freeze | `closed` | 33 envelopes and fixed order accepted |
-| 10 | Gate D opening decision | `closed` | explicit Project Manager/user decision after P4 |
+| Leaf | State | Exit condition |
+|---|---|---|
+| `CTRL-ARCH-001-A` | `accepted` | user accepted the extended architecture review |
+| `CTRL-ARCH-001-B` | `accepted` | `AGENTS.md`, `PLANS.md`, ExecPlan, Gate C protocol and roadmap agree |
+| `CTRL-ARCH-001-C` | `accepted` | architecture report, workbook, machine projection, graph and working blueprint agree |
+| `CTRL-ARCH-001-D` | `accepted` | control-only validation passed; no source/test/runtime mutation |
+| `CTRL-ARCH-001-E` | `current` | bounded commit, clean checkpoint and Git-preserving archive exist; final evidence is external to avoid self-referential mutation |
+| `M13-PROOF` | `closed` | opens only after `CTRL-ARCH-001` is accepted and merged |
+| `M13-IMPLEMENT` | `closed` | opens only after the local M13 proof gate issues `IMPLEMENTATION_OPEN` |
+
+## Initial serial module order
+
+1. `M13 state_kernel`
+2. `M01 source_admission`
+3. `M02 calendar`
+4. `M03 preparation`
+5. `M04 packet_protocol`
+6. `M07 coefficient_modifier_authority`
+7. `M08 playbook_catalogue`
+8. `M05 serial_cognition`
+9. `M06 parallel_risk`
+10. `M09 capital_authority`
+11. `M10 execution_gateway`
+12. `M11 portfolio_lifecycle`
+13. `M12 evidence_replay`
+14. `M00 application_shell`
+
+`M05` and `M06` may be reversed when both are dependency-ready, but only one mutating module remains open.
+
+`M14 proof_promotion` and `M15 vocabulary_governance` apply continuously and are not runtime implementation stages.
 
 ## Mutation boundary
 
-Until P2 acceptance:
+During `CTRL-ARCH-001`, allowed changes are limited to:
 
-- tests, source, normative documents, configuration and production behaviour are read-only;
-- workers may write only their bounded leaf outputs;
-- only the Project Manager may update the canonical checklist, roadmap and semantic dispositions;
-- mechanical projection cannot invent semantic content.
+- `AGENTS.md` and `PLANS.md`, explicitly opened by the user;
+- `ROADMAP_LEDGER.md` only to replace its stale successor placeholder with the live pointer;
+- `ROADMAP_LEDGER_V2.md`;
+- `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`;
+- `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`;
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`;
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`;
+- `docs/vocabulary/vocabulary_registry.md` and the deterministic `data/vocabulary/canonical_vocabulary.json` projection for accepted durable control terms;
+- `project_control/canonical_project_manager/**`.
 
-P3 may mutate tests and explicitly authorised test support only after P2 acceptance. Production implementation remains closed through P4.
+Forbidden during this unit:
+
+- `src/**`;
+- tests or test support;
+- production configuration, schemas, fixtures or migrations;
+- package migration;
+- implementation of `M13` or any other module;
+- merge, push or publication.
 
 ## Next gate
 
-Execute `P2-A02` through `P2-A05` in `GATE_C_COMPLETION_PROTOCOL.md`. `P2-A02` remains unchecked and current. Do not dispatch semantic observation or authority workers before the uncontaminated review source is accepted.
+Create the bounded control-integration commit and validated Git-preserving archive. After user/Project Manager acceptance and merge to `main`, open `M13-PROOF`.

@@ -119,3 +119,47 @@ Structural validation does not establish semantic acceptance of P2, P3, P4 or Ga
 | `python scripts/run_proof_block.py --check-all` | PASS — 51 proof blocks structurally validated |
 
 This is a control/checkpoint validation. It does not accept P2, open P3/P4, or authorise Gate D.
+
+## 2026-07-25 — `CTRL-ARCH-001` module-architecture control integration
+
+### Outcome
+
+- User-accepted `M00`–`M15` Ownership Module architecture integrated into the live control stack.
+- `M07` narrowed to `coefficient_modifier_authority`.
+- Runtime/contract, state/transaction, governance/promotion and build/test dependency planes separated.
+- Thirty-three historical `D-xxx` records retained as traceability obligations; numeric order no longer schedules implementation.
+- Module-local Gate C replaces repository-wide P2–P4 completion as the prerequisite for unrelated alpha implementation.
+- Progressive physical package migration recorded.
+- Missing positive module obligations made explicit for `M07`, `M09`, `M10` and `M11`.
+- Seven durable control terms admitted in the human vocabulary registry and projected through the unchanged deterministic builder.
+- No production source, tests, runtime configuration or package layout changed.
+- First later implementation module remains `M13 state_kernel`, closed until `M13-PROOF` passes after merge.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Custom `CTRL-ARCH-001` validator | PASS — 32 checks, zero failures |
+| Ownership modules | PASS — 16 unique IDs, exactly `M00`–`M15` |
+| Architecture surfaces | PASS — 18 |
+| Atlas trace | PASS — 287 cohorts and 1,716 records retained |
+| Historical implementation obligations | PASS — 33 unique `D-xxx` records; all have accepted module routes |
+| Missing positive obligations | PASS — four (`M07`, `M09`, `M10`, `M11`) |
+| Runtime/contract graph | PASS — acyclic, 13/13 domain nodes visited |
+| Dependency semantics | PASS — accepted edges use provider/prerequisite → consumer/dependent; historical D-unit convention labelled historical |
+| `M08 → M07` runtime dependency | PASS — absent |
+| Accepted serial programme | PASS — 14 module entries; `M05`/`M06` reversible only when dependency-ready; no concurrent mutation |
+| Workbook structural review | PASS — final control ranges reread through `artifact_tool`; zero formula-error matches |
+| Workbook ZIP integrity | PASS — `unzip -t`, no errors |
+| Machine-readable JSON | PASS — parsed by `json.tool` |
+| Vocabulary builder stability | PASS — before/after SHA-256 `cc96fc074a407f8dfeb74cbb018595eecd37e5735e67964dc00a9a927ea23b71` |
+| Vocabulary builder parity | PASS — generated payload exactly equals committed JSON; 124 records including seven new control records |
+| Original brief preservation | PASS — semantic body equal after trailing-whitespace normalisation; leading supersession banner added |
+| Changed-path boundary | PASS — only expressly opened controls, routed working authority, vocabulary projection and canonical architecture evidence |
+| Forbidden source/test/config mutation | PASS — no changed path under `src/`, `tests/` or `config/` |
+| `make scaffold-check` | PASS — `repo scaffold present` |
+| `git diff --check` | PASS |
+
+Behavioural tests were not used to claim runtime correctness because `CTRL-ARCH-001` changes no runtime behaviour. This entry does not claim module implementation, whole-test-suite authority, production readiness, merge or publication.
+
+The bounded Git commit and Git-preserving archive are closeout evidence reported externally after the committed bytes exist; they are not self-recorded here because doing so would change those bytes recursively.

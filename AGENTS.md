@@ -108,17 +108,17 @@ Do not rely on stale manifests as current proof. Validate the explicit current-t
 
 ## Authority hierarchy
 Authority order:
-1. direct user instruction;
-2. `AGENTS.md`;
-3. `PLANS.md`;
-4. `ROADMAP_LEDGER.md`;
-5. governing normative documents;
-6. route override files;
-7. tests;
-8. implementation code;
-9. comments and docstrings.
+1. direct user instruction and explicit user acceptance;
+2. the accepted task/project brief and any explicit user-approved strategy amendment;
+3. applicable `AGENTS.override.md` and repo-root `AGENTS.md`;
+4. the active task-specific ExecPlan and its live roadmap pointer;
+5. routed normative documents, accepted architecture allocations, governed vocabulary and approved specifications;
+6. admitted tests and proof authority;
+7. source, configuration, schemas, fixtures and data;
+8. ledgers, receipts, reports, manifests, generated projections and historical evidence;
+9. `00_TASK/PROJECT_EXECUTION_METHOD.md` only where higher authority is silent.
 
-Lower authority may not override higher authority. If authorities conflict, attempt lawful bounded resolution first. If unresolved, record the conflict precisely and continue other lawful work where possible.
+A scope-specific override refines root instructions inside its subtree but cannot override direct user authority or the accepted project brief. Root `PLANS.md` defines the standing plan convention and live pointer; it does not outrank applicable repository instructions or silently rewrite an accepted brief. Lower authority may not override higher authority. If authorities conflict, attempt lawful bounded resolution first. If unresolved, record the conflict precisely and continue other lawful work where possible.
 
 ## Governance order
 Runtime behaviour must follow this order:
@@ -130,16 +130,28 @@ Runtime behaviour must follow this order:
 Tests govern runtime behaviour, but passing tests alone are not proof of correctness. Do not implement behaviour before governing intent and governing tests exist or are lawfully updated. False-positive resistance and evidence quality matter.
 
 ## Atlas governance
-Atlas material is candidate intent only. Atlas content is non-authoritative until lawfully admitted.
+Atlas behavioural material is candidate intent only until lawfully admitted. A user-accepted Atlas architecture allocation may govern target ownership and traceability when the active ExecPlan and routed architecture documents explicitly adopt it; that architectural acceptance does not automatically admit every Atlas cohort or source record as runtime behaviour.
 
 Required migration order:
 1. normative intent;
-2. tests;
-3. implementation;
-4. evidence;
-5. ledger update.
+2. governed vocabulary and target ownership;
+3. admitted tests;
+4. implementation;
+5. evidence;
+6. ledger update.
 
 Do not directly mutate runtime behaviour from Atlas material outside lawful migration flow.
+
+
+## Module-gated execution
+When the active ExecPlan uses the accepted ownership-module architecture:
+- one ownership module or one bounded behaviour inside that module is the active mutating unit;
+- the next unit must be dependency-ready under the accepted runtime/contract graph; numbering alone does not establish execution order;
+- proof is established locally for the active module before its implementation opens;
+- unrelated unreviewed legacy tests may run as shadow evidence but do not dictate the active module until lawfully admitted;
+- physical `M00`–`M15` package migration occurs progressively, never as an unbounded repository-wide move.
+
+This section does not open implementation by itself. The active ExecPlan and live roadmap pointer control the current module and mutation boundary.
 
 ## Boundary discipline
 Work one bounded leaf at a time. Do not silently broaden scope, batch unrelated authority classes, skip evidence recording, skip verification, or pivot authority surfaces without recording it.

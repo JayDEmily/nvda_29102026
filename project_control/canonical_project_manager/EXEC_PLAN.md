@@ -2,360 +2,357 @@
 
 ## Status
 
-`gate_c_completion_protocol_frozen_p2_reconciliation_active`
+`module_architecture_control_integration_validated_awaiting_commit_archive_and_merge`
 
-P1 `PM-001` through `PM-010` is preserved as the accepted prerequisite and PM-011 remains the standing 179-test census. P2 is incomplete and is now governed by the frozen Gate C completion protocol. P3, P4 and Gate D remain closed.
+The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
 | Field | Current value |
 |---|---|
 | Plan owner | Project Manager thread |
-| Activated | 2026-07-20 (Australia/Melbourne) |
-| Gate C protocol frozen | 2026-07-25 13:04:09 AEST |
-| Baseline branch | `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717` |
-| Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
-| Checkpoint branch | `main` |
+| Original programme activated | 2026-07-20 (Australia/Melbourne) |
+| Strategy amendment accepted | 2026-07-25 (Australia/Melbourne) |
+| Control-integration baseline | `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5` |
+| Current branch | `control/accept-module-architecture` |
 | Architecture | Governed modular monolith |
-| Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability, or end-to-end completion claim |
-| Preserved prerequisite | P1 `PM-001` through `PM-010` |
-| Standing census | PM-011, 179 physical tests |
-| Active Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
-| Current unit | `P2-A02` uncontaminated review-source contents |
-| Accepted P2-A01 archive | `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz` |
-| Accepted P2-A01 SHA-256 | `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b` |
-| Accepted P2-A01 source state | `main` at `a56592f2609d109abaa2c4724a429324979e1ba5`, clean worktree |
-| P2 | incomplete |
-| P3 / P4 | closed |
-| Gate D | closed |
+| Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
+| Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
+| Accepted ownership modules | 16, `M00`–`M15` |
+| Historical implementation obligations | 33 `D-xxx` records retained for traceability |
+| Active unit | `CTRL-ARCH-001` — control integration validated; bounded commit and Git-preserving archive pending |
+| Production/source/test mutation | closed for `CTRL-ARCH-001` |
+| First implementation module after acceptance | `M13 state_kernel` |
+| Gate D | opens one module at a time only after that module's local proof gate passes |
 
 ## Objective
 
-Manage delivery as a serial sequence of bounded semantic acceptance units. Establish trustworthy vocabulary, test, proof, Atlas, and dependency authority before implementation; then complete the thirty-three governed work units in the canonical fixed order with one accepted checkpoint per unit.
+Deliver the alpha as a sequence of small, semantically complete, dependency-ready ownership modules. For each active module, establish exact normative authority and trustworthy local proof before changing its implementation. Preserve useful code and evidence, replace defective architecture seams, and avoid both a big-bang rewrite and a global test-certification programme that blocks unrelated implementation.
 
-The outcome is not merely green tests. It is a traceable implementation in which normative meaning, semantic vocabulary, admitted proof, current owners, Atlas dispositions, code, receipts, and replay evidence agree without fabricated authority.
+The required direction remains:
+
+```text
+normative meaning
+→ governed vocabulary and accepted target ownership
+→ module-local admitted proof
+→ implementation
+→ evidence and checkpoint
+```
+
+A passing test does not establish authority. An admitted test constrains implementation only after its relationship to governing meaning has been accepted.
 
 ## Authority
 
-Authority is applied in this order for this programme:
+Apply authority in this order:
 
-1. direct user instruction in the current project-manager thread;
-2. `CANONICAL_PROJECT_MANAGER_EXECUTION_BRIEF(1).md`, SHA-256 `43be514d3633651df5d404ee68e9741a879d4a4a6cf0da6dcbe2f40589f68bc8`;
-3. `PROJECT_EXECUTION_METHOD.md`, SHA-256 `873b13d1e1821b5d4000d827192bb71f009746bf9daf4dd179195b5836a5384a`;
-4. repository `AGENTS.md` and every applicable `AGENTS.override.md`;
-5. root `PLANS.md`, with live state routed by `ROADMAP_LEDGER_V2.md`;
-6. this task-specific ExecPlan;
-7. routed numbered normative documents and accepted vocabulary law;
-8. admitted test and proof authority;
-9. implementation, configuration, fixtures, comments, and docstrings.
+1. direct user instruction and explicit acceptance in the Project Manager thread;
+2. the accepted canonical Project Manager brief and the user-approved 25 July 2026 strategy amendment recorded in this plan;
+3. applicable `AGENTS.override.md` and repository-root `AGENTS.md`;
+4. this ExecPlan, its live pointer `ROADMAP_LEDGER_V2.md`, and the active module-local proof protocol;
+5. routed normative documents, accepted architecture allocations, governed vocabulary and approved specifications;
+6. module-local admitted tests and proof authority;
+7. source, configuration, schemas, fixtures and data;
+8. ledgers, receipts, reports, manifests, generated projections and historical evidence;
+9. `00_TASK/PROJECT_EXECUTION_METHOD.md` where higher authority is silent.
 
-The supplied `NVDA_ARCHITECTURE_MODULARITY_AND_FUTURE_PROOFING_REVIEW_WORKER_BRIEF_20260717.md` (SHA-256 `eb4266b601dd4516da0d4073475aa2ef65149971c0c570d96bff55f9c66d259f`) is audit scope/evidence only. It is not a completed review, normative authority, or implementation instruction.
+The original uploaded brief is preserved by source SHA-256 `43be514d3633651df5d404ee68e9741a879d4a4a6cf0da6dcbe2f40589f68bc8`. The repository copy at `project_control/canonical_project_manager/CANONICAL_PROJECT_MANAGER_EXECUTION_BRIEF.md` adds a leading control-status banner and normalises Markdown trailing whitespace only; its semantic body remains unchanged. Its execution-sequencing clauses are expressly superseded by the user's accepted amendment.
 
-## Frozen baseline and archive evidence
+## Strategy amendment
 
-| Evidence | SHA-256 | Decision |
+### Preserved
+
+- P1 `PM-001`–`PM-010` remains accepted prerequisite evidence.
+- PM-011 remains the standing census of 179 physical tests.
+- `P2-A01` remains an accepted immutable historical review archive and checkpoint.
+- All earlier Gate A, Gate B, Gate C, Gate D, Atlas, vocabulary, proof-envelope, test, receipt and adjudication artefacts remain inspectable evidence.
+- The 18 architecture surfaces, modular-monolith law, alpha status, owner separation, no-fabrication law, DMPV3 identity distinctions, serial/Parallel Risk separation and normative → test → code authority direction remain binding.
+- All 33 `D-xxx` identifiers and their requirement/source/test links remain unchanged as traceability obligations.
+
+### Superseded for execution control
+
+- Global adjudication of all 179 physical tests before any production implementation.
+- Mandatory completion of the former P2 → P3 → P4 sequence as a programme-wide Gate D prerequisite.
+- The requirement that every `D-xxx` record become one standalone implementation branch.
+- The fixed total order `D-001` through `D-057`.
+- The prior Atlas blocker that stated the 287-cohort register was absent. The accepted architecture package now contains 287 cohorts and 1,716 records with mechanical trace validation.
+- Historical `implementation_executable_now`, `closed`, or immediately-executable labels as current scheduling authority.
+
+### Reason
+
+Two weeks of full-time work demonstrated that global per-test semantic certification is economically incompatible with reliable model behaviour. The accepted replacement preserves semantic authority by reducing the active reasoning surface to one ownership module or one bounded behaviour inside that module.
+
+## Four-map model
+
+| Map | Canonical meaning |
+|---|---|
+| Behavioural spine | End-to-end product function from external information through preparation, cognition, risk, capital, execution, lifecycle and review |
+| Architecture surfaces | The 18 governed responsibility and review boundaries |
+| Ownership modules | The 16 bounded code capabilities `M00`–`M15` |
+| Implementation obligations | Existing `D-xxx` requirement/proof/source links and any bounded positive obligation added when an active module exposes a real coverage gap |
+
+A surface is not necessarily a package. A module may serve several surfaces. A `D-xxx` record is a traceability obligation, not automatically a branch, package or full feature.
+
+## Accepted ownership modules
+
+| ID | Accepted name | Primary ownership | Current-code strategy |
+|---|---|---|---|
+| `M00` | `application_shell` | transport translation, dependency composition and run lifecycle; no business truth | rebuild composition shell |
+| `M01` | `source_admission` | source identity, raw capture, source time and raw-signal registration | replace boundary; retain selected validation kernels |
+| `M02` | `calendar` | four calendar layers, fact coalescence, supersession and runtime projection | retain reference algorithms; rebuild state/composition |
+| `M03` | `preparation` | typed prepared envelope, field resolution and enrichment gaps | rebuild core; retain deterministic transformations |
+| `M04` | `packet_protocol` | DMPV3 envelope validation and deliberate packet carriage only | retain envelope shape; replace fabricated defaults |
+| `M05` | `serial_cognition` | ordered candidate-forming stages and stage-local carriers | retain stage order/selected classifiers; rebuild orchestration |
+| `M06` | `parallel_risk` | independent environmental risk lane and final-risk contribution | retain bounded evaluators; rebuild composition/state |
+| `M07` | `coefficient_modifier_authority` | versioned coefficients, modifiers, precedence and application receipts | refactor and narrow; not generic policy ownership |
+| `M08` | `playbook_catalogue` | playbook definitions, catalogue and eligibility semantics | refactor behind catalogue contract |
+| `M09` | `capital_authority` | final-risk join, pre-deployment gate, bounded sizing and capital decision | retain calculations; rebuild join/state boundary |
+| `M10` | `execution_gateway` | opening readiness, placement intent, broker protocol and execution events | replace boundary and alpha adapters |
+| `M11` | `portfolio_lifecycle` | fills, positions, inventory, carry, exit and close lifecycle | retain policy kernels; rebuild canonical state ownership |
+| `M12` | `evidence_replay` | review projections, explanation, comparison and authoritative replay | retain read-only projections; rebuild replay core |
+| `M13` | `state_kernel` | unit-of-work, idempotency, atomic state/receipt commit and storage ports | rebuild core |
+| `M14` | `proof_promotion` | proof manifests, tier classification, checkpoints and promotion | governance plane; retain/refactor |
+| `M15` | `vocabulary_governance` | durable term admission, canonical registry and projections | governance plane; retain/refactor |
+
+No top-level split or merge is accepted. `M07 policy_authority` is superseded by `M07 coefficient_modifier_authority` because system-wide policy remains owned by the relevant domain modules.
+
+## Dependency planes
+
+Dependencies must be recorded separately.
+
+| Plane | Meaning | Graph use |
 |---|---|---|
-| `NVIDIA_2026.tar.gz` | `eb32e15c2c763d005c5c425bb154e70983bed76a48f28aedd18f970df513ae97` | Older baseline; not the live implementation checkpoint |
-| `NVDA_GATE_D_READINESS_f7bd3f46862f.tar(1).gz` | `5a75fb237232d9b6a8bc804a81c6bc62c9ad7a719fee57346d632b39a060857c` | Governed starting checkpoint |
-| Live baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` | Exact current starting tree; initially clean; 1,047 tracked files |
+| Runtime/contract | production call or consumed public contract | defines dependency readiness and runtime acyclicity |
+| State/transaction participation | domain-owned state participates in `M13` transaction mechanism | does not transfer semantic ownership to `M13` |
+| Governance/promotion | `M14`/`M15` proof and vocabulary prerequisites | acceptance control only, not a production import requirement |
+| Build/test | fixtures, proof runners, schema generators and developer tooling | development only |
 
-The governed archive preserves Git history. Commit `f26b09fd1bd7c8a48d0cd203ef574b02d674f2ef` contains the four immutable Atlas source objects and the eighteen-surface materialisation manifest. Their hashes match the retained vocabulary slice:
+Accepted runtime/contract graph:
 
-- native satisfaction ledger: `a1863186138db7f4ca900b4e241d900675ca1545998e0fcfc84127dd13fb223a`, 1,716 records;
-- legacy intent Atlas: `059b728476971042910e5f2b5b4e32a8cd564f50b27eb325c118e83f4a8ccb38`, 1,716 records;
-- file coverage view: `822dcae2587690909cdb41ddb9eb81b2ff55a5dc02d419557c8a8e8d7aae6212`, 128 files;
-- owner map view: `105ffc4060dda873f8c13bf3835ef140a2518957d01839f476f63a0ec740335d`, 82 owner rows;
-- historical slice manifest: eighteen surfaces, 1,716 records, no duplicate Atlas record IDs.
+| Module | Dependencies |
+|---|---|
+| `M01` | none |
+| `M02` | `M01` |
+| `M03` | `M01`, `M02` |
+| `M04` | none |
+| `M05` | `M03`, `M04`, `M07`, `M08` |
+| `M06` | `M03`, `M04` |
+| `M07` | none |
+| `M08` | none |
+| `M09` | `M05`, `M06`, `M07` |
+| `M10` | `M09` |
+| `M11` | `M10` |
+| `M12` | `M04` plus read-only evidence-export contracts |
+| `M13` | none |
 
-These historical objects are recoverable evidence, not automatically live authority. The current tree retains only the ten-record `Vocabulary governance interface` slice. No artefact containing the brief's asserted 287 cohort rows was found in either supplied checkpoint or reachable named paths. Atlas-dependent implementation remains blocked until the missing cohort register is supplied or lawfully reconstructed and accepted.
-
-## Treatment of the prior execution plan
-
-### Decisions and evidence retained
-
-- The numbered normative baseline and N-01 through N-09 semantic completion decisions remain accepted meaning.
-- The modular-monolith boundary, alpha status, owner separation, fail-closed law, no-fabrication law, and DMPV3 identity distinctions remain valid.
-- The Gate B plain-English behaviour atlas, implementation-truth ledger, dependency map, Gate C test register, thirty-three work-unit definitions, proof-envelope files, and Gate D readiness report remain current evidence at baseline commit `f7bd3f46862f`.
-- The prior plan's explicit expected-red posture remains evidence of the untouched alpha implementation; red tests are not authorised to be weakened.
-- The eleven closed proof units and their exact reasons remain blockers until returned through their named proof gates.
-
-### Decisions superseded for execution control
-
-- `project_control/normative_authority_top_down_alignment/EXEC_PLAN.md` is retained as prior-programme evidence but no longer schedules new work.
-- Its Gate A/B/C progression and its selection of six immediately executable Gate D units do not authorise implementation under this programme.
-- All proof-envelope statuses must be reissued after vocabulary, test-authority, and closed-unit proof repair. Historic `proof_authority_ready` or `gate_d_open_immediately_executable` labels are not sufficient.
-- The historical vocabulary inventory of 42 human headings is stale: the live registry has 46 headings. The live generated document still has 87 entries, yielding 26 normalised matches, 20 human-only labels, and 61 generated-only labels under punctuation-insensitive case-folded normalisation.
-- The canonical brief's fixed serial work order supersedes every earlier optimisation or readiness order.
+`M00` composes modules and is omitted from the domain dependency graph. `M14` and `M15` are governance prerequisites, not runtime dependencies. `M08 → M07` is not an accepted runtime dependency.
 
 ## Scope
 
-### In scope
+### Current control-integration unit
 
-- programme control, live state, worker briefs, read manifests, decisions, roadblocks, validation records, receipts, checkpoints, and archives;
-- vocabulary semantic-authority repair;
-- physical-to-admitted test-authority reconciliation;
-- Gate C proof repair for the eleven closed units;
-- reissue of all thirty-three proof envelopes and the fixed dependency-safe total order;
-- one-at-a-time implementation and validation of the thirty-three canonical units;
-- Atlas mapping and disposition within each unit after live evidence is accepted;
-- final whole-system, replay, modularity, substitution, state, proof, and archive validation.
+In scope:
 
-### Out of scope unless this plan is explicitly amended
+- reconcile `AGENTS.md`, `PLANS.md`, `ROADMAP_LEDGER.md`, `ROADMAP_LEDGER_V2.md`, `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`, `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`, this ExecPlan and `GATE_C_COMPLETION_PROTOCOL.md`;
+- accept the Atlas module allocation through the existing architecture report, workbook, machine projection, graph and working blueprint;
+- admit only the required durable control terms in the working overlay and human registry, then regenerate `data/vocabulary/canonical_vocabulary.json` through the unchanged deterministic builder; candidate reports, stamps and broader M15 parity work remain closed;
+- separate dependency planes;
+- record progressive package migration;
+- retain and regroup `D-xxx` obligations;
+- record uncovered positive implementation obligations for `M07`, `M09`, `M10` and `M11`;
+- validate consistency, hashes, workbook structure, graphs and Git state;
+- create one control-only commit and Git-preserving archive.
 
-- microservices, plugin systems, generic agent runtimes, network-service decomposition, or speculative infrastructure;
-- live broker execution, live credentials, live trading, production deployment, or production durability claims;
-- automatic semantic vocabulary admission or automated Atlas-to-requirement promotion;
-- bulk test admission based on directory placement;
-- parallel implementation or multiple workers mutating overlapping surfaces;
-- changes to an admitted test merely to make current code green;
-- rewriting Git history, merging, rebasing, pushing, publishing, or opening a pull request.
+Out of scope for this unit:
+
+- source, test, production configuration, fixture or runtime mutation;
+- package migration;
+- module proof admission;
+- implementation of `M13` or any later module;
+- merge to `main`, push or publish.
+
+### Programme scope after control acceptance
+
+- one module-local proof gate and one implementation checkpoint at a time;
+- progressive `Mxx_<name>` package migration;
+- per-module retain/refactor/replace/rebuild decisions;
+- final global reconciliation and whole-system proof after the module sequence.
 
 ## Invariants
 
-1. One semantic acceptance unit is open at a time.
-2. Normative intent precedes vocabulary admission, tests, implementation, and evidence.
-3. Atlas is candidate behavioural evidence only.
-4. Generated vocabulary artefacts never decide semantic meaning.
-5. Physical test location never decides proof tier or authority.
-6. Required identity, lineage, time, state, and policy authority is supplied by its owner; downstream code does not invent it.
-7. Parallel Risk remains independent of serial candidate formation until the single governed final-risk join.
-8. Capital deployment remains downstream of the categorical risk join and upstream of non-executing opening readiness.
-9. In-memory state is labelled volatile; no durability or replay claim exceeds evidence.
-10. Existing user or unrelated worktree changes are preserved.
-11. A checkpoint, tarball, green command, or worker return is evidence, not task completion.
-12. A worker receives only the bounded slice needed for its unit and writes no programme-wide conclusion.
+1. One mutating module or bounded behaviour is open at a time.
+2. The next module must be dependency-ready; numbering alone never opens it.
+3. Normative meaning and target ownership precede test admission and implementation.
+4. Missing or contradictory meaning returns to normative authority for the active module only.
+5. Passing legacy tests do not acquire authority automatically.
+6. Unreviewed unrelated tests remain visible as `LEGACY_SHADOW_UNADMITTED`.
+7. Expected red is lawful when a newly admitted test truthfully exposes absent implementation.
+8. Existing code is evidence: neither sacred nor disposable.
+9. Package migration is progressive; no repository-wide move is authorised.
+10. Required identity, lineage, time, state and policy authority is supplied by its owner.
+11. Parallel Risk remains independent until the governed terminal join in `M09`.
+12. No production, live, paper, durability or replay-completeness claim exceeds evidence.
 
-## Programme gates and acceptance units
+## Programme gates
 
-### PM-000 — Programme-control activation
+### `CTRL-ARCH-001` — Architecture control integration
 
-**Pass:** freeze baseline; complete mandatory semantic reads; create this plan, the standing plan/pointer, a current full-read manifest, a validation log, and one bounded first-worker brief; record all known blockers without opening implementation.
+**Pass:** all governing controls and accepted architecture artefacts agree; dependency planes are separated; `M07` is corrected; `D-xxx` obligations are retained without a fixed total order; module-local proof law is active; no source/test/runtime change occurred; validation, commit and archive evidence exist.
 
-**Fail:** any unrecorded authority conflict, fabricated evidence, or normative/test/runtime mutation.
+**Fail:** any remaining conflict or ambiguity, hidden behavioural mutation, broken workbook/graph, missing source hash or unrecorded authority change.
 
-**Allowed changes:** root `PLANS.md`, root `ROADMAP_LEDGER_V2.md`, and `project_control/canonical_project_manager/**` only.
+### Module-local proof gate — `<Mxx>-PROOF`
 
-**Forbidden changes:** numbered normative documents, vocabulary surfaces, tests, configuration, fixtures, generated artefacts, Atlas source/slices, and `src/**`.
+Before implementation of one module or bounded behaviour:
 
-### P1 — Vocabulary semantic authority
+1. confirm exact normative meaning, owner, inputs, outputs, state, side effects and prohibited authority;
+2. map only the relevant Atlas cohorts/records and existing `D-xxx` obligations;
+3. inspect only tests claiming authority over that module;
+4. admit, repair, replace, demote or retire those tests;
+5. resolve missing normative meaning before code;
+6. write expected-red proof where required;
+7. independently validate that the proof expresses the accepted requirement;
+8. issue `implementation_open` or `closed:<return-gate>` for the module.
 
-P1 is serial and must complete before P2.
+### Module implementation gate — `<Mxx>-IMPLEMENT`
 
-1. `PM-001`: rebuild the complete current-truth census. Evidence only.
-2. `PM-002`: repair stale current-state statements and artefact-direction ambiguity. No term decision.
-3. `PM-003`: adjudicate architecture, migration and programme-control terms.
-4. `PM-004`: adjudicate coefficient, modifier and evaluation terms.
-5. `PM-005`: adjudicate calendar, temporal and provenance terms.
-6. `PM-006`: adjudicate DMP, protocol, identity and lineage terms.
-7. `PM-007`: adjudicate stage, ingress, runtime-context, serial-cognition and capital-decision terms.
-8. `PM-008`: adjudicate opening, placement, position, inventory, exit and close terms.
-9. `PM-009`: adjudicate parallel-risk, persistence, review, explanation and playbook terms.
-10. `PM-010`: integrate accepted decisions; establish human registry → deterministic builder/projection → generated JSON/audit evidence; refresh audit/touch evidence only after proof.
+Implement the smallest semantically complete module slice using the accepted code strategy. Run targeted admitted proof first, then affected proof and the complete legacy suite as shadow evidence. A shadow failure triggers local review; it does not automatically rewrite the new code.
 
-The exact family allocation, allowed files, outputs, validation and stop conditions are in `project_control/canonical_project_manager/PM-001_TO_PM-010_WORKER_TABLE.md` and the ten standalone briefs. Existing tests are read-only diagnostic evidence throughout this sequence and cannot decide semantic admission or make a unit pass by being green.
+### Module checkpoint — `<Mxx>-CHECKPOINT`
 
-**P1 pass:** a human can determine the admitted meaning and owner of every durable term without consulting generated code/JSON as semantic authority; registry, builder, generated document, audit evidence, and proof agree.
+Record diff, tests, architecture dependency check, vocabulary audit, receipt, commit and clean checkpoint before selecting the next dependency-ready module.
 
-### P2 — Test authority reconciliation
+### Final consolidation
 
-**Current execution protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`.
+After the module sequence:
 
-This is the sole operational checklist for the remaining Gate C work. The roadmap, ledgers, receipts, reports, manifests and archives support or record execution; they do not create parallel plans or checklists.
+- reconcile all remaining 179-test dispositions and historical missing-authority candidates;
+- confirm all 33 `D-xxx` obligations are satisfied, superseded or explicitly rejected;
+- run full admitted Tier A, Tier B shadow, replay, modularity, state, proof, vocabulary and archive checks;
+- make any whole-system or operational readiness decision separately.
 
-The prior one-file P2 plan at `00_TASK/NVDA_P2_CLEAN_WORKER_SEMANTIC_REVIEW_EXEC_PLAN_20260722.md` is retained as historical method/evidence but is superseded for execution. P2 now uses asymmetric escalation and separate routing, observation, screening, authority-relationship, Project Manager disposition and mechanical-projection leaves. No worker may combine those reasoning classes or self-accept a file.
+## Serial module order
 
-Reconcile all 166 physical Tier A and 13 Tier B Python files. The live retained inventory names 120 Tier A files, leaving 46 physical Tier A files without a row in that inventory; Tier B is 13/13.
+Work remains strictly one module at a time. The accepted initial dependency-valid order is:
 
-For each file record its current authority route, proposition, invariant, exercised public seam, positive/prohibited case, proof tier, proof-strength classification, code path, and disposition. Resolve contradictions upward. Publish and accept the reconciled test register, proof register, dependency map, and aggregate route.
+1. `M13 state_kernel`
+2. `M01 source_admission`
+3. `M02 calendar`
+4. `M03 preparation`
+5. `M04 packet_protocol`
+6. `M07 coefficient_modifier_authority`
+7. `M08 playbook_catalogue`
+8. `M05 serial_cognition`
+9. `M06 parallel_risk`
+10. `M09 capital_authority`
+11. `M10 execution_gateway`
+12. `M11 portfolio_lifecycle`
+13. `M12 evidence_replay`
+14. `M00 application_shell`
 
-**P2 pass:** every current test file has explicit lawful authority or an explicit non-authoritative/retired disposition; no file is admitted merely by location.
+`M05` and `M06` may be reversed if both prerequisites are accepted, but they remain serial work and must both close before `M09`.
 
-### P3 — Return eleven closed units to proof authority
+`M14` and `M15` apply continuously as governance planes and are not runtime implementation stages.
 
-Exact order:
+## `D-xxx` treatment
 
-1. D-009
-2. D-012
-3. D-015
-4. D-010
-5. D-016
-6. D-033
-7. D-017
-8. D-031
-9. D-021
-10. D-048
-11. D-041
+- Preserve every existing `D-xxx` ID and its requirement, source, test and evidence links.
+- Regroup the records beneath the accepted module owner.
+- Do not infer that one `D-xxx` equals one branch or complete module.
+- Split or combine implementation work only inside an accepted module brief while preserving the original IDs in traceability.
+- Add a bounded positive obligation when an active module lacks one; current known gaps are `M07`, `M09`, `M10` and `M11`.
+- Do not preserve the number 33 as a design objective. Preserve the evidence and obligations.
 
-P3 changes proof authority only. Production implementation remains read-only.
+## Progressive package migration
 
-### P4 — Freeze implementation order
+The target package convention is `src/nvda_desk/mxx_<accepted_name>/`.
 
-Reissue all thirty-three envelopes using only:
+For each active module:
 
-- `implementation_executable_now`; or
-- `closed`, with an exact return gate.
+1. create the target package only when the module opens;
+2. move, retain, refactor or replace only the active ownership boundary;
+3. expose one explicit public API;
+4. use temporary compatibility imports/adapters only with a removal condition;
+5. prohibit new code in the superseded ownership location;
+6. remove compatibility paths after consumers migrate;
+7. validate runtime dependency direction after each checkpoint.
 
-Confirm each unit occurs once in the total order and all hard prerequisites are satisfied. If any unit remains closed, implementation stays closed and the current serial blocker is resolved first.
-
-### D — Fixed serial implementation order
-
-No later unit opens before the preceding unit is accepted and checkpointed:
-
-1. D-001
-2. D-002
-3. D-003
-4. D-049
-5. D-050
-6. D-006
-7. D-007
-8. D-051
-9. D-052
-10. D-012
-11. D-015
-12. D-053
-13. D-009
-14. D-054
-15. D-010
-16. D-025
-17. D-055
-18. D-027
-19. D-033
-20. D-034
-21. D-016
-22. D-031
-23. D-017
-24. D-020
-25. D-035
-26. D-056
-27. D-021
-28. D-048
-29. D-041
-30. D-042
-31. D-044
-32. D-047
-33. D-057
-
-## Mandatory unit cycle
-
-Every unit brief and acceptance receipt must contain:
-
-1. exact proposition, public seam, owner, input → decision/transformation → output statement, and prohibited authority;
-2. exact accepted Atlas cohort/record rows or an explicit Atlas blocker;
-3. pre-change vocabulary inventory and semantic dispositions;
-4. targeted positive, prohibited, false-positive, missing-input, identity/lineage, state, ordering, substitution, and replay proof as applicable;
-5. retain/refactor/behavioural-reference/replace-boundary/replace-core/remove-or-quarantine decisions per bounded symbol;
-6. exact allowed and forbidden files;
-7. smallest semantically complete change;
-8. targeted, affected, admitted Tier A, Tier B shadow, proof-block, static, manifest, registry, Git, and archive validation in increasing scope;
-9. post-change semantic vocabulary audit derived from the actual diff;
-10. one receipt, one bounded commit where feasible, and a confirmed clean checkpoint before the next unit.
-
-Any missing meaning returns to normative authority. Any weak or contradictory proof returns to test authority. Any proposed test fallout stops the unit unless the higher gate explicitly authorises reconciliation.
-
-## Worker management
-
-- Workers share the same repository and files; a brief therefore names exact paths and does not reproduce the whole programme.
-- The restart worker receives a table plus ten standalone Markdown briefs, one bounded acceptance unit per brief.
-- Only one mutating worker may be active. Read-only parallel review also requires an explicit amendment because the canonical brief is deliberately serial.
-- The worker may advance only to the next already defined PM unit after the current unit receipt records `unit_result: pass`; it may not invent scope, skip a unit, update root controls, or claim programme closure.
-- The Project Manager reviews the complete returned evidence chain, reruns proportionate validation, accepts/rejects P1, and only then may open P2.
-- The PM-001–PM-010 table, companion note and ten briefs are prepared but not dispatched.
+Local variables and private helpers are module-local vocabulary. New exported contracts, durable domain concepts or module IDs require global vocabulary and authority review.
 
 ## Evidence locations
 
 - live pointer: `ROADMAP_LEDGER_V2.md`
+- module-local proof protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
+- architecture decision: `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md`
+- architecture workbook: `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx`
+- machine projection and graph: `project_control/canonical_project_manager/architecture/`
 - full-read evidence: `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`
 - validation: `project_control/canonical_project_manager/VALIDATION_LOG.md`
-- PM-001–PM-010 handoff validation: `project_control/canonical_project_manager/PM-001_TO_PM-010_BUNDLE_VALIDATION.md`
-- worker briefs: `project_control/canonical_project_manager/WORKER_BRIEFS/`
-- worker/unit evidence: `project_control/canonical_project_manager/units/<unit-id>/`
-- prior plan/evidence: `project_control/normative_authority_top_down_alignment/`
-- retained Atlas vocabulary slice: `var/audit/atlas_surface_slices/slices/vocabulary_governance_interface.json`
+- module evidence: `project_control/canonical_project_manager/units/<module-or-unit-id>/`
+- historical Gate C/Gate D evidence: `project_control/normative_authority_top_down_alignment/`
 
 ## Validation routes
 
-### Control-only unit
+### Control-integration validation
 
 ```sh
 git status --short --branch
 git diff --check
-git diff --name-only <baseline>...HEAD
-test -s PLANS.md
-test -s ROADMAP_LEDGER_V2.md
-test -s project_control/canonical_project_manager/EXEC_PLAN.md
-test -s project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv
-test -s project_control/canonical_project_manager/VALIDATION_LOG.md
-test -s project_control/canonical_project_manager/WORKER_BRIEFS/PM-001_VOCABULARY_CURRENT_TRUTH_CENSUS.md
+# confirm changed paths are control/architecture only
+# verify all required files are non-empty and hashes recorded
+# validate workbook key ranges and formula-error scan
+# validate accepted runtime graph is acyclic
+# validate M00/M14/M15 are excluded from runtime-domain dependency cycles
+# validate all 16 modules, 18 surfaces and 33 historical D records remain represented
 ```
 
-### Test execution environment
+Behavioural tests are not required for `CTRL-ARCH-001` because source, tests and runtime behaviour are unchanged. No behavioural pass claim may be made from this control-only unit.
 
-The repository requires CPython 3.13.5. Use the locked environment when available:
+### Module validation
 
-```sh
-UV_CACHE_DIR=/tmp/uv-cache \
-UV_PROJECT_ENVIRONMENT=/tmp/nvda-2026-venv \
-UV_PYTHON_INSTALL_DIR=/tmp/uv-python \
-uv run --python 3.13.5 --frozen pytest ...
-```
-
-Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof blocks, and whole-system checks. A command that cannot initialise due to environment or package-mirror failure is `blocked`, not `passed` or a product failure.
+Targeted admitted proof precedes affected admitted proof, complete admitted Tier A, Tier B shadow and the full legacy shadow suite. A command that does not execute is `blocked`, not `passed`.
 
 ## Progress
 
 | Date | Unit | State | Evidence |
 |---|---|---|---|
-| 2026-07-20 | PM-000 | `accepted_control_checkpoint` | Baseline archive/hash/branch/commit frozen; mandatory semantic reads completed and recorded in a 539-row manifest; new plan/pointer, validation record, and one bounded worker brief created; changed-path, manifest-hash, order, non-empty-file, and diff checks passed. Pytest remains explicitly environment-blocked and no behavioural pass is claimed. |
-| 2026-07-20 | PM-001 | `prepared_not_dispatched` | Standalone evidence-only worker brief prepared; no worker has been authorised or spawned. |
-| 2026-07-21 | PM-001–PM-010 restart | `handoff_prepared_not_dispatched` | Earlier informal PM-002–PM-010 authority withdrawn for this restart; exact serial table, companion note and ten bounded standalone briefs prepared. No worker output is accepted by this row. |
-| 2026-07-25 | Gate C completion protocol | `frozen_p2_reconciliation_active` | P1 and PM-011 preserved; failed one-file P2 method superseded for execution; asymmetric relationship-level leaf strategy frozen; P3, P4 and Gate D remain closed. |
-| 2026-07-25 | Gate C main checkpoint | `sole_checklist_committed_to_main` | Gate C protocol proposition made explicit; programme and live pointer route to one checklist; repository checkpoint promoted to `main`; P2 remains incomplete and P3, P4 and Gate D remain closed. |
-| 2026-07-25 | P2-A01 | `accepted` | Accepted immutable review archive `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz`, SHA-256 `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b`, from clean `main` commit `a56592f2609d109abaa2c4724a429324979e1ba5`; current unit advanced to `P2-A02`. |
+| 2026-07-20 | PM-000 | `accepted_control_checkpoint` | Original programme activated at baseline `f7bd3f46862f`. |
+| 2026-07-25 | Gate C protocol | `historical_global_protocol_frozen` | Global P2 route frozen; later measured as impractical. |
+| 2026-07-25 | P2-A01 | `accepted_historical_checkpoint` | Immutable archive and clean checkpoint accepted; evidence preserved. |
+| 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
+| 2026-07-25 | `CTRL-ARCH-001` | `validated_pending_commit` | Governing controls and accepted architecture artefacts reconciled on `control/accept-module-architecture`; commit/archive pending. |
 
 ## Decisions
 
-| ID | Decision | Basis |
-|---|---|---|
-| DEC-001 | Use the Gate D archive at commit `f7bd3f46862f` as the starting checkpoint. | Newer governed readiness archive; clean exact Git baseline. |
-| DEC-002 | Keep this acceptance unit control-only. | Canonical brief forbids behavioural mutation before the new plan and pre-implementation gates. |
-| DEC-003 | Treat prior architecture review material as evidence, not authority. | Supplied file is a worker brief against an older archive, not a completed accepted review. |
-| DEC-004 | Record 46/87/20/61 as observed current vocabulary inventory, not a semantic decision. | Direct live-file recount; semantic admission cannot be automated. |
-| DEC-005 | Do not admit the 46 physical-only Tier A files by location. | `tests/AGENTS.override.md`, docs/08, and the canonical brief require explicit authority. |
-| DEC-006 | Do not open any of the six previously immediate Gate D units. | P1-P4 and the new fixed serial order supersede prior readiness scheduling. |
-| DEC-007 | Preserve historical Atlas objects as recoverable evidence but block cohort-dependent implementation. | Four objects and the 18-surface manifest are verifiable in Git history; the 287-row cohort register is absent. |
-| DEC-008 | Freeze `GATE_C_COMPLETION_PROTOCOL.md` as the canonical subordinate operating method for P2–P4. | Measured worker failure showed that one-file self-adjudication combined incompatible reasoning and evidence roles; positive admission now requires asymmetric escalation and Project Manager acceptance. |
+| ID | Decision |
+|---|---|
+| `DEC-MOD-001` | Accept `M00`–`M15` as target ownership architecture. |
+| `DEC-MOD-002` | Rename `M07` to `coefficient_modifier_authority`. |
+| `DEC-MOD-003` | Separate runtime/contract, state/transaction, governance/promotion and build/test dependencies. |
+| `DEC-MOD-004` | Preserve 33 `D-xxx` records as traceability obligations, not a fixed branch sequence. |
+| `DEC-MOD-005` | Add positive module obligations where current coverage is absent or incomplete for `M07`, `M09`, `M10` and `M11`. |
+| `DEC-MOD-006` | Replace global Gate C prerequisite with module-local proof gates and final consolidation. |
+| `DEC-MOD-007` | Migrate physical `Mxx` packages progressively. |
+| `DEC-MOD-008` | Use the existing repository and Git history; do not create a new repository. |
+| `DEC-MOD-009` | Open `M13` first after control integration is accepted. |
 
-## Roadblocks
+## Roadblocks and Unknowns
 
-| ID | Classification | Effect | Return gate |
-|---|---|---|---|
-| RB-001 | Current-truth defect | Normative vocabulary inventory says 42 headings; live registry has 46. | PM-001 census, then bounded semantic-authority repair under P1. |
-| RB-002 | Proof-authority gap | 166 physical Tier A files versus 120 retained-inventory rows; 46 require file-by-file disposition. | P2. |
-| RB-003 | Atlas evidence gap | The asserted 287 cohort rows are absent; full source/slice files are historical Git objects, not live tree files. | Supply or lawfully reconstruct, verify, and accept a cohort register before Atlas-dependent implementation. |
-| RB-004 | Proof-envelope gate | Eleven units are closed; twenty-two ready envelopes have not been reissued under the canonical two-status rule. | P3 then P4. |
-| RB-005 | Validation environment | Direct Python lacks `pytest`; locked CPython 3.13.5 environment creation reached the package mirror but failed on `pyyaml==6.0.3` with HTTP 502. | Retry locked dependency resolution before any behavioural proof claim; meanwhile run non-pytest structural validations. |
+- Exact implementation details remain module-local decisions and are not frozen by this control integration.
+- Production retention, backup, recovery, capacity, deployment topology, credentials and live/paper operating requirements remain intentionally unknown and out of scope.
+- Historical candidate dispositions for missing normative authority remain evidence and must be reconciled when their owning module opens or during final consolidation.
+- The current source package graph contains small historical cycles; their removal belongs to the affected module migrations and is not a control-only change.
 
-## Unknowns
+## Stop and return conditions
 
-- Provenance and construction authority for the asserted 287 Atlas cohort rows is unknown.
-- The full semantic disposition of the 20 human-only and 61 generated-only vocabulary labels is unresolved.
-- Authority/disposition of each of the 46 physical Tier A files missing from the retained inventory is unresolved.
-- Production storage, retention, RTO/RPO, deployment topology, capacity, and live/paper operating requirements remain intentionally unknown and out of scope.
+Return upward when:
 
-## Stop conditions
+- required normative meaning for the active module is absent or contradictory;
+- local proof cannot establish the governed seam;
+- a proposed change crosses into another unopened ownership module;
+- a durable exported term lacks a semantic disposition;
+- validation reveals an unclassified dependency cycle or authority conflict;
+- a destructive, external, merge, push or publication action requires approval.
 
-Stop the current unit and return upward when:
-
-- required normative meaning is absent or contradictory;
-- test authority is weak, conflicting, or cannot prove the governed public seam;
-- required Atlas evidence is absent;
-- a proposed change exceeds allowed files or would affect another semantic unit;
-- a durable term lacks semantic disposition;
-- a prerequisite or proof envelope is not accepted;
-- the worktree contains an overlapping unrelated change;
-- validation failure cannot be classified locally without broader authority;
-- new user authority or an explicit plan amendment is required.
+Unrelated legacy-test ambiguity is not a programme-wide blocker. It remains shadow evidence until its owner module or final consolidation addresses it.
 
 ## Closeout
 
-This ExecPlan closes only when P1-P4 and all thirty-three implementation units are accepted in order; every Atlas cohort and all 1,716 source records are traceable; vocabulary and test authority are reconciled; full admitted proof and replay checks pass in the locked environment; modularity and no-fabrication invariants are reread against the final code; receipts, manifests, commits, and final archive checksums are recorded; and the repository is at an explicit clean final checkpoint.
-
-Until then, a completed control unit, worker return, proof pass, commit, or tarball is only a continuation checkpoint.
+This ExecPlan closes when every accepted ownership module is implemented or explicitly rejected at its lawful boundary; all retained `D-xxx` obligations and accepted Atlas behaviour are traceable; module-local and final proof pass without suppression; architecture, vocabulary, replay, state and evidence agree; and the repository reaches an explicit final checkpoint.

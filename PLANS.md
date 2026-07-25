@@ -27,16 +27,17 @@ If the live pointer and a task-local plan disagree, stop behavioural mutation, r
 
 For the canonical programme, apply:
 
-1. direct user instruction;
-2. accepted project brief and execution method named by the active plan;
-3. repository instructions;
-4. this standing plan and the live roadmap pointer;
-5. the active task-specific ExecPlan;
-6. routed normative intent and semantic vocabulary authority;
-7. admitted test/proof authority;
-8. source, configuration, fixtures, generated data, comments, and docstrings.
+1. direct user instruction and explicit user acceptance;
+2. the accepted project brief and any explicit user-approved strategy amendment;
+3. applicable `AGENTS.override.md` and repo-root `AGENTS.md`;
+4. the active task-specific ExecPlan and its live roadmap pointer;
+5. routed normative intent, accepted architecture allocations, semantic vocabulary authority and approved specifications;
+6. admitted test/proof authority;
+7. source, configuration, schemas, fixtures, generated data, comments and docstrings;
+8. ledgers, receipts, reports, manifests, generated projections and historical evidence;
+9. `00_TASK/PROJECT_EXECUTION_METHOD.md` only where higher authority is silent.
 
-Lower surfaces cannot create or override higher authority. Generated artefacts, test location, historical receipts, green tests, Atlas rows, and current code are evidence only for the claims they actually prove.
+This standing plan defines plan-selection and live-pointer conventions; it does not silently alter an accepted brief or applicable repository instruction. Lower surfaces cannot create or override higher authority. Generated artefacts, test location, historical receipts, green tests, Atlas rows and current code are evidence only for the claims they actually prove. An accepted Atlas ownership map governs architecture only to the extent expressly adopted by the active ExecPlan and routed architecture documents; it does not automatically admit Atlas behavioural content.
 
 ## Plan selection
 
@@ -45,12 +46,11 @@ Continue an existing active task-specific ExecPlan when its objective, baseline,
 Create and activate a new task-specific ExecPlan when:
 
 - the user opens a materially new programme or authority class;
-- the current plan is closed or explicitly superseded;
-- the baseline or fixed execution order changes materially;
+- the current plan is closed or explicitly superseded as a whole;
 - a prior plan cannot lawfully contain the new outcome; or
 - a concrete control defect requires a successor plan.
 
-Do not silently replace an active plan. The successor must state which prior decisions/evidence remain valid, what is superseded, and why.
+Amend the existing active ExecPlan instead when the user explicitly changes strategy inside the same programme and requires existing control surfaces to remain the single source of authority. The amendment must state which prior decisions and evidence remain valid, which clauses are superseded, and why. Do not silently replace or silently reinterpret an active plan.
 
 ## Required task-specific ExecPlan content
 
@@ -78,7 +78,7 @@ An ExecPlan may organise work. It may not invent normative meaning, test authori
 
 One unit is one governed behaviour and its proof boundary. A unit is not defined merely by a file, folder, class, issue, worker, or Atlas cohort.
 
-Only one mutating unit may be open. A later unit waits for acceptance and a clean checkpoint even if it appears graph-independent. Parallel work requires an explicit amendment to the active ExecPlan.
+Only one mutating unit may be open. The next unit must be dependency-ready under the active ExecPlan and waits for acceptance and a clean checkpoint. Unit numbering is a traceability identifier, not automatic execution order. Parallel mutating work requires an explicit amendment to the active ExecPlan.
 
 For every unit:
 
@@ -117,8 +117,9 @@ A worker must not receive the entire programme as its task, select follow-on wor
 - Semantic admission cannot be automated from string similarity, a scanner, a builder seed, or Atlas evidence.
 - Test tier and authority require an explicit current route; folder placement is insufficient.
 - A green test proves only its exercised assertion and can still be weak or false-positive.
-- Atlas is candidate intent. It enters tests or code only after normative and vocabulary admission and exact current mapping.
-- Every accepted Atlas behaviour preserves source-record and cohort traceability; missing evidence blocks the dependent unit.
+- Atlas behavioural content is candidate intent. It enters tests or code only after normative and vocabulary admission and exact current mapping.
+- A formally accepted Atlas ownership/module allocation may govern target placement without admitting every contributing cohort as behaviour.
+- Every accepted Atlas behaviour preserves source-record and cohort traceability; missing evidence blocks only the dependent module or behaviour, not unrelated dependency-ready modules.
 
 ## Evidence and validation
 
