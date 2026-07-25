@@ -6,6 +6,8 @@
 
 - Module: `M13 state_kernel`
 - Current worker branch: `proof/m13-state-kernel-repair-v2`
+- Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
+- V2 proof-repair commit: `7b3b04c4647ee13674e46c55227b5352cb8c8361`
 - Reviewed worker repair branch: `proof/m13-state-kernel-repair`
 - Accepted control baseline: local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`
 - Worker source checkpoint: `proof/m13-state-kernel` at `4a259217f0ea5c841e514848523b7bd0c496e41f`
@@ -335,6 +337,10 @@ This maps directly to N-06 atomic participation and failure truth at `docs/07.2_
 | Original six retained mutants | Each rejected by the complete repaired family | `raw_validation/v2_mutant_*_repaired_family.txt` |
 | Current repository | EXPECTED RED — 12 failed solely because `nvda_desk.m13_state_kernel` is absent | `raw_validation/v2_current_repository_expected_red.txt` |
 | Direct PM V2 probe | FALSE POSITIVE REPRODUCED — zero rollback, pending retained and identical retry poisoned | `raw_validation/v2_prepare_failure_direct_probe.txt` |
+
+### Committed-state validation
+
+Commit `7b3b04c4647ee13674e46c55227b5352cb8c8361` was revalidated from a clean worktree. The complete conforming and falsification matrix, absent-production expected-red result, proof-block structure, proof-executor contract, persistence shadow, checkpoint shadow, immutable-path hashes and changed-path boundary all produced the expected results. Evidence: `raw_validation/v2_postcommit_validation.txt`.
 
 ### Worker disposition
 

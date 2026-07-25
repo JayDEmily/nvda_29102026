@@ -389,3 +389,13 @@ The next lawful unit is proof repair only. M13 production implementation, M01 an
 - YAML/registry path validation, syntax and scaffold: PASS.
 - Production source, normative authority and proof configuration: unchanged.
 - Gate result: `READY_FOR_INDEPENDENT_PM_REVIEW`; no proof acceptance or implementation opening claimed.
+
+### Committed-state receipt
+
+- Proof-repair commit: `7b3b04c4647ee13674e46c55227b5352cb8c8361`.
+- Worktree before post-commit evidence: clean.
+- Post-commit matrix: PASS — conforming 12/12; prepare mutant old 11/11 and repaired 1 failure/11 passes; all prior mutants rejected; production expected-red 12; proof blocks 52; proof executor 21; persistence shadow 36; checkpoint shadow 2.
+- Immutable authority/configuration hashes: unchanged.
+- Forbidden changed paths under `src/**`, `docs/**` and `config/**`: zero.
+- Evidence: `project_control/canonical_project_manager/modules/M13/raw_validation/v2_postcommit_validation.txt`.
+- Final acceptance remains pending independent Project Manager review. `M13-IMPLEMENT` remains closed.

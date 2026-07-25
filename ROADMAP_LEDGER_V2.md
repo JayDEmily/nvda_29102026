@@ -14,6 +14,7 @@
 | Current unit | independent Project Manager review of the proposed `M13-PROOF-REPAIR-V2` twelve-test family |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
+| M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
