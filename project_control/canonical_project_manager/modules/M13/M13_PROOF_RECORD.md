@@ -2,10 +2,11 @@
 
 ## Status
 
-`M13_PROOF_REPAIR_V2_PROPOSED_PENDING_INDEPENDENT_REVIEW`
+`M13_PROOF_REPAIR_V2_REJECTED_PRIOR_PREPARED_PARTICIPANT_GAP`
 
 - Module: `M13 state_kernel`
 - Current worker branch: `proof/m13-state-kernel-repair-v2`
+- Independent PM V3 review branch: `review/m13-proof-v3`; reviewed source commit `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`; source archive SHA-256 `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`
 - Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
 - V2 proof-repair commit: `7b3b04c4647ee13674e46c55227b5352cb8c8361`
 - Reviewed worker repair branch: `proof/m13-state-kernel-repair`
@@ -347,3 +348,80 @@ Commit `7b3b04c4647ee13674e46c55227b5352cb8c8361` was revalidated from a clean w
 `READY_FOR_INDEPENDENT_PM_REVIEW`
 
 The twelve-test family is a proposed repair only. Final Project Manager acceptance remains pending and `M13-IMPLEMENT` remains closed.
+
+## MLC-V — Independent Project Manager V3 decision
+
+### Disposition
+
+`CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`
+
+### Independent falsification
+
+The V2 test exercises one participant that establishes pending state and raises during `prepare()`. It correctly requires rollback of that failing participant. It does not execute the adjacent ordering case required by proof-specification item 13:
+
+```text
+participant A prepares successfully and retains pending state
+→ participant B establishes pending state and raises during prepare
+→ coordinator rolls back B only
+→ A remains pending
+→ identical retry reaches A and fails on stale pending state
+```
+
+A retained mutant preserves conforming behaviour for commit failures and for a single participant that fails during `prepare()`, but on a prepare-phase exception it rolls back only the participant currently raising. The complete twelve-test family passes that mutant:
+
+```text
+12 passed
+```
+
+The two-participant direct probe observes:
+
+```text
+attempt_1=failed:second: participant prepare failed
+first_pending_after_attempt_1={'command_id': 'command-1', 'state': {'count': 1}, 'sequence': 1}
+first_rollback_calls_after_attempt_1=0
+second_pending_after_attempt_1=None
+second_rollback_calls_after_attempt_1=1
+attempt_2=failed:first: stale pending transaction survived failed prepare
+first_prepare_calls=2
+first_commit_calls=0
+first_rollback_calls=1
+second_prepare_calls=1
+second_commit_calls=0
+second_rollback_calls=1
+state_version=0
+state={'count': 0}
+receipts=()
+M13_PRIOR_PREPARED_PARTICIPANT_FALSE_POSITIVE_REPRODUCED
+```
+
+The first participant's single rollback occurs only during the poisoned retry, not during the original later-participant failure. No internal state or receipt is committed, so the existing internal assertions remain green.
+
+Evidence:
+
+- `raw_validation/mutant_rollback_only_failing_prepare_participant_source.py`
+- `raw_validation/prior_prepared_participant_direct_probe.py`
+- `raw_validation/pm_v3_independent_precommit_validation.txt`
+- `raw_validation/pm_v3_independent_precommit_validation.exit_code`
+
+### Authority and proof assessment
+
+- N-06 requires all declared state changes and transaction participation to be atomically resolved and failed mandatory participation to leave no truth presented as committed or pending transaction contamination.
+- MLC-P item 13 explicitly requires every prepared participant to be rolled back when any repository participant fails.
+- The twelve existing tests are lawful and necessary for their exercised behaviours, including rollback of the participant that itself raises during `prepare()`.
+- They are not collectively sufficient because they never combine an earlier successfully prepared participant with a later prepare-phase failure.
+- The defect is material: stale transaction-local state in the earlier participant poisons the identical retry and prevents the required sequence/version-1 commit.
+- The missing proof can be expressed entirely through the accepted public `RepositoryPort.prepare/commit/rollback` seam; no implementation leakage or normative change is required.
+
+### Return gate
+
+`M13-IMPLEMENT` remains closed. The next lawful unit is bounded `M13-PROOF-REPAIR-V3` only:
+
+1. preserve all twelve existing test functions and semantics;
+2. use at least two declared participants;
+3. make the first participant prepare successfully and retain observable pending state;
+4. make a later participant establish pending state and raise during `prepare()`;
+5. require rollback/cleanup of the failing participant and every previously prepared participant;
+6. require no pending or participant-visible committed truth, no internal state/version/sequence/idempotency binding and no success receipt; and
+7. require the identical retry to commit as sequence/version `1` with exactly one success receipt, rejecting the retained rollback-only-current-participant mutant for this intended reason.
+
+No production source, normative meaning, test semantics, proof configuration or later module is opened by this decision.

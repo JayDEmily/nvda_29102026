@@ -399,3 +399,48 @@ The next lawful unit is proof repair only. M13 production implementation, M01 an
 - Forbidden changed paths under `src/**`, `docs/**` and `config/**`: zero.
 - Evidence: `project_control/canonical_project_manager/modules/M13/raw_validation/v2_postcommit_validation.txt`.
 - Final acceptance remains pending independent Project Manager review. `M13-IMPLEMENT` remains closed.
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V2` Project Manager V3 review
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726.tar(1).gz`.
+- Archive SHA-256: `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v2` / `e59b8bdfb5d1e34944aa1b661643c8e6570b940c` / clean.
+- Review branch: `review/m13-proof-v3`.
+- Twelve-test SHA-256: `f457aaba1f90a5f40c7e43cc34dbb26dada5fcb43292661f61a7b18e345fdc5f`.
+- Preservation: all eleven source-checkpoint test functions unchanged; exactly one V2 test appended.
+
+### Disposition
+
+`CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`
+
+### Independent reproduction
+
+| Check | Result |
+|---|---|
+| Conforming reference | PASS — 12 passed |
+| Worker register-after-successful-prepare mutant | REJECTED — 1 failed, 11 passed |
+| Independent rollback-only-current-prepare-participant mutant | **FALSE POSITIVE — 12 passed** |
+| First direct-probe attempt | Later participant established pending state and failed during `prepare()` |
+| Earlier participant rollback during first failure | **Absent**; it retained pending state |
+| Identical retry | Failed on the earlier participant's stale pending state |
+| Internal state/version/receipt | Unchanged at state `{'count': 0}`, version `0`, no receipts |
+| Commit-before-receipt and no-participant-rollback mutants | Rejected — each 3 failed, 9 passed |
+| Current repository M13 proof | EXPECTED RED — 12 failures solely because `nvda_desk.m13_state_kernel` is absent |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 tests |
+| Persistence shadow excluding M13 | PASS — 36 tests, 12 deselected |
+| Checkpoint shadow | PASS — 2 tests |
+| Scaffold | PASS |
+| Production, normative and proof-configuration mutation | None |
+
+The V2 test proves cleanup of the participant that itself raises during `prepare()`. It does not prove cleanup of an earlier successfully prepared participant when a later participant raises. This is a direct gap against N-06 and M13 proof-specification item 13, which requires every prepared participant to be rolled back.
+
+### Gate result
+
+`CLOSED:M13_PROOF_REPAIR_V3_REQUIRED_FOR_ALL_PRIOR_PREPARED_PARTICIPANT_ROLLBACK`
+
+The next lawful unit is test-only proof repair. Preserve the twelve tests and add one two-participant prepare-failure case requiring rollback of both the later failing participant and every earlier prepared participant, followed by an uncontaminated identical retry committing as sequence/version `1`. M13 production implementation and all later modules remain closed.
+
+Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.

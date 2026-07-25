@@ -2,7 +2,7 @@
 
 ## Status
 
-`m13_proof_repair_v2_ready_for_independent_pm_review`
+`m13_proof_repair_v2_closed_prior_prepared_participant_gap`
 
 The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
@@ -12,14 +12,14 @@ The user accepted the extended architecture review on 25 July 2026 and explicitl
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendment accepted | 2026-07-25 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `proof/m13-state-kernel-repair-v2` |
+| Current branch | `review/m13-proof-v3` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
 | Accepted ownership modules | 16, `M00`–`M15` |
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
-| Active unit | `M13-PROOF-REPAIR-V2` — worker repair complete; independent Project Manager review pending |
-| Mutation state | one M13 candidate test appended plus worker proof/evidence records; production, normative and later-module surfaces remain closed |
+| Active unit | `M13-PROOF-REPAIR-V3` — required after independent rejection of the twelve-test V2 family |
+| Mutation state | PM V3 decision and falsification evidence only; production, normative, test, configuration and later-module surfaces remain closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | opens one module at a time only after that module's local proof gate passes |
 
@@ -322,6 +322,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | `M13-PROOF-REPAIR` | `repaired_pending_independent_acceptance` | Original nine behaviours preserved; two participant/receipt-failure tests added; conforming reference 11/11; PM mutant now rejected 2 failures/9 passes while still passing original nine; no-participant-rollback mutant rejected; no `src/**` changes; proof-repair commit `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee`. |
 | 2026-07-26 | `M13-PROOF-V2-RECOVERY` | `independent_pm_closed_prepare_failure_gap_reconstructed` | From sole source `490e63ed3c96da90a81239326e2d33dd77bdbf36`, independently reproduced a coordinator that registers rollback responsibility only after successful `prepare()`: all eleven tests pass, while a direct probe leaves stale pending participant state, records zero rollback calls and poisons the identical retry. This reconstructs the lost PM V2 decision without claiming the lost commit or archive hash. |
 | 2026-07-26 | `M13-PROOF-REPAIR-V2` | `worker_repair_ready_for_independent_review` | Commit `7b3b04c4647ee13674e46c55227b5352cb8c8361` preserves all eleven prior test functions, appends one prepare-failure rollback/clean-retry test, passes the conforming reference 12/12, reproduces the register-after-prepare mutant at old 11/11 and rejects it under the repaired family 1 failure/11 passes; no `src/**`, normative or proof-configuration change. |
+| 2026-07-26 | `M13-PROOF-V3-REVIEW` | `independent_pm_closed_prior_prepared_participant_gap` | From clean source `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`, a coordinator that rolls back only the participant currently raising during `prepare()` passes all 12 tests. With two participants, the first retains pending state when the second fails; the identical retry is poisoned. Return only to bounded `M13-PROOF-REPAIR-V3`. |
 
 ## Decisions
 
@@ -341,6 +342,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-M13-003` | Repair M13 proof with executable repository participation and rollback on attesting-receipt or participant failure; keep implementation closed pending independent `MLC-V`. |
 | `DEC-M13-004` | `CLOSED:the repaired suite does not prove rollback and clean retry when a RepositoryPort fails during prepare; a coordinator that registers participants for rollback only after prepare returns passes all eleven tests while leaving stale participant transaction state after the failure`. Return only to bounded `M13-PROOF-REPAIR-V2`; implementation remains closed. |
 | `DEC-M13-005` | Worker proposed a minimum prepare-failure proof repair. Preserve the PM V2 `CLOSED` decision until an independent Project Manager accepts or rejects the repaired twelve-test family; `M13-IMPLEMENT` remains closed. |
+| `DEC-M13-006` | `CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`. Return only to `M13-PROOF-REPAIR-V3`; implementation remains closed. |
 
 ## Roadblocks and Unknowns
 

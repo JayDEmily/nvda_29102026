@@ -339,10 +339,12 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The independent Project Manager rejected the original nine-test M13 family because it did not execute receipt-writer/repository-participant failure and allowed a commit-before-receipt false positive. `M13-PROOF-REPAIR` then preserved those nine behaviours and added two commit-failure rollback tests. The lost PM V2 decision has now been independently reconstructed from sole source commit `490e63e...`: a participant may establish pending transaction state and raise during `prepare()`, receive no rollback, poison an identical retry, and still let all eleven tests pass.
+**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The original nine-test family and the repaired eleven-test family were independently rejected for distinct atomicity false positives. `M13-PROOF-REPAIR-V2` then preserved the eleven functions and appended one single-participant `prepare()`-failure cleanup/retry test.
 
-**Worker repair completed:** `M13-PROOF-REPAIR-V2` preserved all existing eleven test functions and appended one executable `prepare()`-failure case. The repaired family requires cleanup of the failing participant, no pending or committed truth after failure, and an identical retry committing as sequence/version `1`. The conforming reference passes 12/12; the retained register-after-successful-prepare mutant passes the old 11/11 but fails the repaired family on the explicit requirement that the participant which raised during `prepare()` has already received rollback. The retained direct probe separately proves that its stale pending state poisons the identical retry.
+**Independent PM V3 decision:** `CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`.
 
-**Current:** independent Project Manager review of the proposed twelve-test family only.
+The single-participant V2 test is lawful and necessary for the behaviour it exercises, but N-06 and MLC-P item 13 require every prepared participant to be rolled back. The family does not execute the ordering case where participant A prepares successfully and participant B establishes pending state then raises. The retained independent mutant passes 12/12; the direct probe shows participant A's stale pending state causes the identical retry to fail.
 
-**Return boundary:** only the independent Project Manager may issue `IMPLEMENTATION_OPEN` or `CLOSED:<exact proof defect>`. `M13-IMPLEMENT` remains closed.
+**Current:** bounded `M13-PROOF-REPAIR-V3` only. Preserve the twelve tests and add one two-participant `prepare()`-failure case requiring rollback of the failing participant and every earlier prepared participant, no pending or committed truth, and a clean sequence/version-1 retry.
+
+**Return boundary:** `M13-IMPLEMENT` remains closed. Only a later independent Project Manager review may issue `IMPLEMENTATION_OPEN`.
