@@ -4,7 +4,7 @@ Date: 2026-07-25
 Unit: `CTRL-ARCH-001`
 Branch: `control/accept-module-architecture`
 Baseline: `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5`
-Status: **PASS — control and structural validation complete; Git commit and archive are external closeout evidence because they cannot be self-recorded without changing the committed bytes**
+Status: **PASS — control integration accepted on branch; merge remains pending**
 
 ## Source controls
 
@@ -75,6 +75,35 @@ No changed path exists under:
 No package migration or module implementation occurred. `git diff --check` passed.
 
 Behavioural tests were not used to claim runtime correctness because this unit changes no production behaviour. The deterministic vocabulary projection and architecture/control validators are the applicable proof surfaces.
+
+## External Git checkpoint evidence
+
+| Check | Result |
+|---|---|
+| Integration commit | PASS — `9ec838a45bd4cf98313e83f73f47d376b1e42806` on `control/accept-module-architecture` |
+| Integration archive | PASS — `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` |
+| Archive SHA-256 | `faa6d2e196923bcd1641b1616c2fb8bfb3cf0900e4972642b79e2943333d5d5b` |
+| Archive size | `25193160` bytes |
+| Archive integrity | PASS — `gzip -t` |
+| Fresh extraction branch | PASS — `control/accept-module-architecture` |
+| Fresh extraction commit | PASS — `9ec838a45bd4cf98313e83f73f47d376b1e42806` |
+| Fresh extraction worktree | PASS — clean |
+
+## Vocabulary Tier A differential
+
+The branch and baseline were both run with:
+
+```text
+PYTHONPATH=src python -m pytest -q tests/tier_a/vocabulary
+```
+
+| Worktree | Result |
+|---|---|
+| Control branch | 18 failed, 83 passed |
+| Detached baseline `0c207f9b7186` | 18 failed, 83 passed |
+| Failed node comparison | identical 18 node IDs |
+
+This is a **no-new-failure differential**, not a green-suite claim. The eighteen vocabulary failures pre-exist this control branch and remain open.
 
 ## Claim boundary
 

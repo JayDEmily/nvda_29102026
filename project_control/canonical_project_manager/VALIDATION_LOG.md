@@ -163,3 +163,21 @@ This is a control/checkpoint validation. It does not accept P2, open P3/P4, or a
 Behavioural tests were not used to claim runtime correctness because `CTRL-ARCH-001` changes no runtime behaviour. This entry does not claim module implementation, whole-test-suite authority, production readiness, merge or publication.
 
 The bounded Git commit and Git-preserving archive are closeout evidence reported externally after the committed bytes exist; they are not self-recorded here because doing so would change those bytes recursively.
+
+
+### External checkpoint closeout — module architecture control integration
+
+| Check | Result |
+|---|---|
+| Integration commit | PASS — `9ec838a45bd4cf98313e83f73f47d376b1e42806` on `control/accept-module-architecture` |
+| Git-preserving archive | PASS — `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` |
+| Archive SHA-256 | `faa6d2e196923bcd1641b1616c2fb8bfb3cf0900e4972642b79e2943333d5d5b` |
+| Archive bytes | `25193160` |
+| Archive integrity | PASS — `gzip -t` |
+| Fresh extraction | PASS — branch `control/accept-module-architecture`, commit `9ec838a45bd4cf98313e83f73f47d376b1e42806`, clean worktree |
+| Vocabulary Tier A current | NOT GREEN — 18 failed, 83 passed |
+| Vocabulary Tier A baseline `0c207f9b7186` | NOT GREEN — 18 failed, 83 passed |
+| Vocabulary failed-node differential | PASS — identical 18 failed node IDs; no branch-induced failing node |
+| Merge/push | NOT PERFORMED |
+
+The archive proves the committed integration state. The evidence-record commit that contains this entry is reported separately and does not change the validated integration archive.

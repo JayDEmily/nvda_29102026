@@ -2,7 +2,7 @@
 
 ## Status
 
-`module_architecture_control_integration_validated_awaiting_commit_archive_and_merge`
+`module_architecture_control_integration_accepted_on_branch_awaiting_merge`
 
 The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
@@ -18,7 +18,7 @@ The user accepted the extended architecture review on 25 July 2026 and explicitl
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
 | Accepted ownership modules | 16, `M00`–`M15` |
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
-| Active unit | `CTRL-ARCH-001` — control integration validated; bounded commit and Git-preserving archive pending |
+| Active unit | `CTRL-ARCH-001` — accepted on the control branch; merge to `main` required before `M13-PROOF` |
 | Production/source/test mutation | closed for `CTRL-ARCH-001` |
 | First implementation module after acceptance | `M13 state_kernel` |
 | Gate D | opens one module at a time only after that module's local proof gate passes |
@@ -317,7 +317,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | Gate C protocol | `historical_global_protocol_frozen` | Global P2 route frozen; later measured as impractical. |
 | 2026-07-25 | P2-A01 | `accepted_historical_checkpoint` | Immutable archive and clean checkpoint accepted; evidence preserved. |
 | 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
-| 2026-07-25 | `CTRL-ARCH-001` | `validated_pending_commit` | Governing controls and accepted architecture artefacts reconciled on `control/accept-module-architecture`; commit/archive pending. |
+| 2026-07-25 | `CTRL-ARCH-001` | `accepted_on_branch` | Integration commit `9ec838a45bd4cf98313e83f73f47d376b1e42806` and validated Git-preserving archive `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` exist; merge remains pending. |
 
 ## Decisions
 

@@ -4,14 +4,14 @@
 
 | Field | Value |
 |---|---|
-| Status | `module_architecture_control_integration_validated_awaiting_commit_archive_and_merge` |
+| Status | `module_architecture_control_integration_accepted_on_branch_awaiting_merge` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5` |
 | Current branch | `control/accept-module-architecture` |
-| Current unit | `CTRL-ARCH-001-E` — create the bounded commit and external Git-preserving archive |
+| Current unit | `CTRL-ARCH-001` accepted on branch; merge to `main` remains pending |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
@@ -53,7 +53,7 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `CTRL-ARCH-001-B` | `accepted` | `AGENTS.md`, `PLANS.md`, ExecPlan, Gate C protocol and roadmap agree |
 | `CTRL-ARCH-001-C` | `accepted` | architecture report, workbook, machine projection, graph and working blueprint agree |
 | `CTRL-ARCH-001-D` | `accepted` | control-only validation passed; no source/test/runtime mutation |
-| `CTRL-ARCH-001-E` | `current` | bounded commit, clean checkpoint and Git-preserving archive exist; final evidence is external to avoid self-referential mutation |
+| `CTRL-ARCH-001-E` | `accepted` | integration commit `9ec838a45bd4cf98313e83f73f47d376b1e42806` and archive `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` (`faa6d2e196923bcd1641b1616c2fb8bfb3cf0900e4972642b79e2943333d5d5b`) verified clean after extraction |
 | `M13-PROOF` | `closed` | opens only after `CTRL-ARCH-001` is accepted and merged |
 | `M13-IMPLEMENT` | `closed` | opens only after the local M13 proof gate issues `IMPLEMENTATION_OPEN` |
 
@@ -103,4 +103,4 @@ Forbidden during this unit:
 
 ## Next gate
 
-Create the bounded control-integration commit and validated Git-preserving archive. After user/Project Manager acceptance and merge to `main`, open `M13-PROOF`.
+Merge the accepted control branch to `main` only with explicit user authority. After merge, open `M13-PROOF`; implementation remains closed until that local proof gate issues `IMPLEMENTATION_OPEN`.
