@@ -477,3 +477,103 @@ def test_m13_repository_participant_failure_rolls_back_participant_and_internal_
             "sequence": 1,
         }
     ]
+
+
+def _prepare_failure_participant(repository_port: Any) -> Any:
+    class Participant(repository_port):
+        def __init__(self) -> None:
+            self.visible: list[Any] = []
+            self.pending: Any = None
+            self.fail_on_prepare = True
+            self.prepare_calls = 0
+            self.commit_calls = 0
+            self.rollback_calls = 0
+
+        def prepare(
+            self,
+            *,
+            command: Any,
+            working_state: Any,
+            receipt: Any,
+        ) -> None:
+            self.prepare_calls += 1
+            if self.pending is not None:
+                raise RuntimeError("stale pending transaction survived failed prepare")
+            self.pending = {
+                "command_id": command.command_id,
+                "state": deepcopy(working_state),
+                "state_version": receipt.resulting_state_version,
+                "sequence": receipt.sequence,
+            }
+            if self.fail_on_prepare:
+                raise RuntimeError("participant prepare failed")
+
+        def commit(self) -> None:
+            self.commit_calls += 1
+            self.visible.append(deepcopy(self.pending))
+            self.pending = None
+
+        def rollback(self) -> None:
+            self.rollback_calls += 1
+            self.pending = None
+
+        def snapshot_state(self) -> Any:
+            return deepcopy(self.visible)
+
+        def list_receipts(self) -> tuple[Any, ...]:
+            return ()
+
+    return Participant()
+
+
+def test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry() -> None:
+    _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+    participant = _prepare_failure_participant(repository_port)
+    boundary = in_memory_uow(
+        initial_state={"count": 0},
+        repository_ports=(participant,),
+    )
+    command = _command(command_type, key_type)
+    calls = {"count": 0}
+
+    def mutate(state: dict[str, Any]) -> dict[str, str]:
+        calls["count"] += 1
+        state["count"] += 1
+        return {"receipt_id": "receipt-1", "result_id": "result-1"}
+
+    with pytest.raises(RuntimeError, match="participant prepare failed"):
+        boundary.execute(command=command, mutation=mutate)
+
+    assert calls["count"] == 1
+    assert participant.prepare_calls == 1
+    assert participant.commit_calls == 0
+    assert participant.rollback_calls >= 1
+    assert participant.pending is None
+    assert participant.visible == []
+    assert boundary.state_version == 0
+    assert boundary.snapshot_state() == {"count": 0}
+    assert boundary.list_receipts() == ()
+
+    participant.fail_on_prepare = False
+    receipt = boundary.execute(command=command, mutation=mutate)
+
+    assert calls["count"] == 2
+    assert participant.prepare_calls == 2
+    assert participant.commit_calls == 1
+    assert participant.rollback_calls >= 1
+    assert participant.pending is None
+    assert receipt.sequence == 1
+    assert receipt.prior_state_version == 0
+    assert receipt.resulting_state_version == 1
+    assert receipt.duplicate_replay is False
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert participant.visible == [
+        {
+            "command_id": "command-1",
+            "state": {"count": 1},
+            "state_version": 1,
+            "sequence": 1,
+        }
+    ]

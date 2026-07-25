@@ -370,3 +370,22 @@ Evidence is retained under `modules/M13/raw_validation/` as the mutant source, e
 `CLOSED:M13_PROOF_REPAIR_V2_REQUIRED_FOR_PREPARE_FAILURE_ROLLBACK_AND_CLEAN_RETRY`
 
 The next lawful unit is proof repair only. M13 production implementation, M01 and all later modules remain closed.
+
+## 2026-07-26 — `M13-PROOF-REPAIR-V2` worker prepare-failure repair
+
+- Source checkpoint: reconstructed PM V2 branch `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`, archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`.
+- Worker branch: `proof/m13-state-kernel-repair-v2`.
+- Original eleven test functions: PASS — all function-source SHA-256 values unchanged.
+- Added proof: one prepare-failure participant fixture and one clean-retry test at `tests/tier_a/persistence/test_m13_state_kernel_contract.py:482-579`.
+- Conforming reference: PASS — 12 passed.
+- PM V2 prepare mutant: old family FALSE POSITIVE — 11 passed; repaired family REJECTED — 1 failed, 11 passed for stale pending retry contamination.
+- Commit-before-receipt and no-participant-rollback mutants: REJECTED — each 3 failed, 9 passed.
+- Original six retained mutants: REJECTED by the repaired family.
+- Current repository: EXPECTED RED — 12 failed solely because the production M13 package is absent.
+- Proof-block structure: PASS — 52 blocks.
+- Proof-executor contract: PASS — 21 passed.
+- Persistence shadow excluding M13: PASS — 36 passed, 12 deselected.
+- Tier B checkpoint shadow: PASS — 2 passed.
+- YAML/registry path validation, syntax and scaffold: PASS.
+- Production source, normative authority and proof configuration: unchanged.
+- Gate result: `READY_FOR_INDEPENDENT_PM_REVIEW`; no proof acceptance or implementation opening claimed.

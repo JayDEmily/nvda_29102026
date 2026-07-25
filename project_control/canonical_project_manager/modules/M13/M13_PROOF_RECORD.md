@@ -2,10 +2,10 @@
 
 ## Status
 
-`MLC-V_CLOSED_PREPARE_FAILURE_PROOF_GAP_RECONSTRUCTED`
+`M13_PROOF_REPAIR_V2_PROPOSED_PENDING_INDEPENDENT_REVIEW`
 
 - Module: `M13 state_kernel`
-- Current recovery branch: `recovery/m13-pm-v2-closed`
+- Current worker branch: `proof/m13-state-kernel-repair-v2`
 - Reviewed worker repair branch: `proof/m13-state-kernel-repair`
 - Accepted control baseline: local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`
 - Worker source checkpoint: `proof/m13-state-kernel` at `4a259217f0ea5c841e514848523b7bd0c496e41f`
@@ -14,7 +14,7 @@
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
-- Production source: closed; reconstruction changes only PM records and retained falsification evidence
+- Production source: closed; V2 worker repair changes one candidate test plus worker proof/validation evidence only
 
 ## Provenance boundary
 
@@ -116,7 +116,7 @@ M13 must not:
 
 ### Current candidate route
 
-- `tests/tier_a/persistence/test_m13_state_kernel_contract.py` — module-local candidate Tier A family, now eleven tests.
+- `tests/tier_a/persistence/test_m13_state_kernel_contract.py` — module-local candidate Tier A family, now twelve tests pending independent review.
 
 ### Historical tests
 
@@ -300,3 +300,44 @@ Evidence:
 6. reject the retained register-after-successful-prepare mutant for this intended reason.
 
 No production source, normative meaning, later module or implementation authority is opened by this reconstructed decision.
+
+## MLC-P/T — Worker V2 prepare-failure proof repair proposal
+
+### Preserved Project Manager decision
+
+The reconstructed PM V2 `CLOSED` disposition above remains authoritative. This worker section does not reverse it, accept the proof or open implementation.
+
+### Added proof behaviour
+
+One fixture and one test were appended at `tests/tier_a/persistence/test_m13_state_kernel_contract.py:482-579`:
+
+- `_prepare_failure_participant` establishes observable `pending` transaction-local state inside `prepare()` and raises before `prepare()` returns;
+- `test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry` requires the failing participant to receive rollback/cleanup, leaves no visible or pending participant state, leaves M13 state/version/receipt truth unchanged, and reuses the identical command and mutation successfully as sequence/version `1` with exactly one receipt.
+
+This maps directly to N-06 atomic participation and failure truth at `docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:27-68`.
+
+### Preservation
+
+- All eleven pre-existing test functions retain identical function-source SHA-256 values.
+- Preservation evidence: `raw_validation/v2_original_eleven_preservation_base.txt` and `raw_validation/v2_original_eleven_preservation_after.txt`.
+- New test-file SHA-256: `f457aaba1f90a5f40c7e43cc34dbb26dada5fcb43292661f61a7b18e345fdc5f`.
+- No production source, normative document, proof block or retained-test registry entry was changed.
+
+### Worker falsification
+
+| Check | Result | Evidence |
+|---|---|---|
+| Conforming reference, complete repaired family | PASS — 12 passed | `raw_validation/v2_reference_conforming.txt` |
+| Register-after-prepare mutant, old family | FALSE POSITIVE REPRODUCED — 11 passed | `raw_validation/v2_prepare_mutant_old_eleven.txt` |
+| Same mutant, repaired family | REJECTED — 1 failed, 11 passed; identical retry raises `stale pending transaction survived failed prepare` | `raw_validation/v2_prepare_mutant_repaired_family.txt` |
+| Commit-before-receipt mutant | REJECTED — 3 failed, 9 passed | `raw_validation/v2_mutant_commit_before_receipt_repaired_family.txt` |
+| No-participant-rollback mutant | REJECTED — 3 failed, 9 passed | `raw_validation/v2_mutant_no_participant_rollback_repaired_family.txt` |
+| Original six retained mutants | Each rejected by the complete repaired family | `raw_validation/v2_mutant_*_repaired_family.txt` |
+| Current repository | EXPECTED RED — 12 failed solely because `nvda_desk.m13_state_kernel` is absent | `raw_validation/v2_current_repository_expected_red.txt` |
+| Direct PM V2 probe | FALSE POSITIVE REPRODUCED — zero rollback, pending retained and identical retry poisoned | `raw_validation/v2_prepare_failure_direct_probe.txt` |
+
+### Worker disposition
+
+`READY_FOR_INDEPENDENT_PM_REVIEW`
+
+The twelve-test family is a proposed repair only. Final Project Manager acceptance remains pending and `M13-IMPLEMENT` remains closed.

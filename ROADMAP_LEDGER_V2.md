@@ -4,20 +4,20 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_v2_reconstructed_closed_prepare_failure_gap` |
+| Status | `m13_proof_repair_v2_ready_for_independent_pm_review` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `recovery/m13-pm-v2-closed` |
-| Current unit | `M13-PROOF-REPAIR-V2` — prove rollback and uncontaminated retry when the failing participant raises during `prepare()` |
+| Current branch | `proof/m13-state-kernel-repair-v2` |
+| Current unit | independent Project Manager review of the proposed `M13-PROOF-REPAIR-V2` twelve-test family |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | closed; PM V2 reconstruction changes only PM control records and retained falsification evidence; `src/**`, normative documents, tests and proof configuration remain unchanged |
+| Production/source mutation | closed; worker V2 repair appends one M13 candidate test and proof evidence only; `src/**`, normative documents and proof configuration remain unchanged |
 | First implementation module | `M13 state_kernel`, only after independent proof acceptance issues `IMPLEMENTATION_OPEN` |
 | Gate D | module-gated; no global opening |
 
@@ -61,7 +61,7 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-PROOF-PM1` | `closed_atomicity_false_positive` | user-supplied independent PM decision reproduced: commit-before-receipt mutant passes original 9/9 and leaves committed state without receipt |
 | `M13-PROOF-REPAIR-P/T` | `completed_pending_independent_acceptance` | two participant/receipt-failure tests added; conforming reference 11/11; PM mutant and no-participant-rollback mutant rejected |
 | `M13-PROOF-V2-RECOVERY` | `closed_prepare_failure_false_positive` | reconstructed independent decision: all eleven tests pass a coordinator that omits rollback of the participant that raises during `prepare()`, leaving stale pending state and poisoning identical retry |
-| `M13-PROOF-REPAIR-V2` | `current` | append the minimum `prepare()`-failure rollback and clean-retry proof; preserve existing eleven tests; no production source |
+| `M13-PROOF-REPAIR-V2` | `worker_repair_ready_for_independent_review` | original eleven functions preserved; one prepare-failure cleanup/retry test appended; conforming 12/12; PM V2 mutant old 11/11 and repaired 1 failed/11 passed |
 | `M13-IMPLEMENT` | `closed` | opens only after the repaired family later passes an independent `MLC-V` decision issuing `IMPLEMENTATION_OPEN` |
 
 ## Initial serial module order
@@ -106,4 +106,4 @@ Forbidden and not performed:
 
 ## Next gate
 
-Complete bounded `M13-PROOF-REPAIR-V2` only. Add one executable case in which a repository participant establishes observable transaction-local pending state and then raises during `prepare()`. The proof must require rollback/cleanup of that failing participant, no internal state/version/idempotency/receipt commit, no pending participant state, and an identical retry that succeeds as sequence `1`. Retain a mutant that registers rollback responsibility only after successful preparation and prove it passes the current eleven-test family but fails the repaired family for this exact reason. Preserve all existing eleven tests and make no production or normative change. `M13-IMPLEMENT` remains closed pending a later independent review.
+The worker V2 proof repair is ready for independent Project Manager review. Review the preserved eleven behaviours plus the appended prepare-failure cleanup/retry test, the conforming-reference 12/12 result, the old-family 11/11 false-positive reproduction and the repaired-family rejection. Do not open `M13-IMPLEMENT` unless independent review issues `IMPLEMENTATION_OPEN`; otherwise return `CLOSED:<exact proof defect>`.

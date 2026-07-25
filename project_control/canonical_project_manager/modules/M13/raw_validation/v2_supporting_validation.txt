@@ -1,0 +1,29 @@
+===== YAML and M13 registry/proof configuration =====
+proof_block_count=52
+m13_block_id=m13_state_kernel_module_local_proof
+m13_block_command=env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py
+m13_block_lifecycle=candidate_pending_independent_mlc_v
+retained_registry_status=active retained-test authority
+m13_family_path_present=true
+yaml_registry_validation=PASS
+
+===== proof block structure =====
+proof_blocks_check_all=PASS count=52
+
+===== proof executor contract =====
+.....................                                                    [100%]
+21 passed in 11.02s
+
+===== persistence shadow excluding M13 candidate =====
+....................................                                     [100%]
+36 passed, 12 deselected in 0.25s
+
+===== checkpoint shadow =====
+..                                                                       [100%]
+2 passed in 0.16s
+
+===== syntax =====
+py_compile=PASS
+
+===== scaffold =====
+repo scaffold present

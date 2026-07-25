@@ -341,6 +341,8 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 **Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The independent Project Manager rejected the original nine-test M13 family because it did not execute receipt-writer/repository-participant failure and allowed a commit-before-receipt false positive. `M13-PROOF-REPAIR` then preserved those nine behaviours and added two commit-failure rollback tests. The lost PM V2 decision has now been independently reconstructed from sole source commit `490e63e...`: a participant may establish pending transaction state and raise during `prepare()`, receive no rollback, poison an identical retry, and still let all eleven tests pass.
 
-**Current:** `M13-PROOF-REPAIR-V2` only. Add one executable `prepare()`-failure proof requiring rollback of the failing participant, removal of pending state, no internal commit or success receipt, and an uncontaminated identical retry committing as sequence `1`. Preserve the existing eleven tests and add no production source.
+**Worker repair completed:** `M13-PROOF-REPAIR-V2` preserved all existing eleven test functions and appended one executable `prepare()`-failure case. The repaired family requires cleanup of the failing participant, no pending or committed truth after failure, and an identical retry committing as sequence/version `1`. The conforming reference passes 12/12; the retained register-after-successful-prepare mutant passes the old 11/11 but fails the repaired family because stale pending state poisons the retry.
 
-**Return boundary:** the worker may return only `READY_FOR_INDEPENDENT_PM_REVIEW` or a precise blocker. `M13-IMPLEMENT` remains closed; only a later independent `MLC-V` may issue `IMPLEMENTATION_OPEN`.
+**Current:** independent Project Manager review of the proposed twelve-test family only.
+
+**Return boundary:** only the independent Project Manager may issue `IMPLEMENTATION_OPEN` or `CLOSED:<exact proof defect>`. `M13-IMPLEMENT` remains closed.
