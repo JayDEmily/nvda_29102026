@@ -8,6 +8,7 @@
 - Worker repair branch: `proof/m13-state-kernel-repair`
 - Accepted control baseline: local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`
 - Worker source checkpoint: `proof/m13-state-kernel` at `4a259217f0ea5c841e514848523b7bd0c496e41f`
+- Proof-repair commit: `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee`
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`

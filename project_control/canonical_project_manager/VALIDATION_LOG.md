@@ -304,3 +304,19 @@ Raw outputs, source variants and exit-code sidecars are retained under `project_
 `CLOSED:REPAIRED_PROOF_REQUIRES_INDEPENDENT_MLC-V_ACCEPTANCE`
 
 The worker has closed the exact PM return gate mechanically but cannot provide independent final acceptance. `M13-IMPLEMENT` remains closed.
+
+
+### M13 proof-repair checkpoint closeout
+
+| Check | Result |
+|---|---|
+| Proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` on `proof/m13-state-kernel-repair` |
+| Commit changed-path boundary | PASS — 40 paths, no `src/**`, one test file |
+| Committed-state targeted proof | EXPECTED RED — 11 failed for absent `nvda_desk.m13_state_kernel` |
+| Committed-state proof-block structure | PASS — 52 blocks |
+| Committed-state proof-executor contract | PASS — 21 passed |
+| Committed-state persistence shadow | PASS — 16 passed |
+| Committed-state checkpoint shadow | PASS — 2 passed |
+| Gate state | `CLOSED:REPAIRED_PROOF_REQUIRES_INDEPENDENT_MLC-V_ACCEPTANCE` |
+
+Post-commit output is retained at `modules/M13/raw_validation/postcommit_validation_repair.txt`. The evidence-record commit containing this closeout does not change the repaired test semantics.

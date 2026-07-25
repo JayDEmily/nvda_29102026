@@ -319,7 +319,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
 | 2026-07-25 | `CTRL-ARCH-001` | `accepted_and_fast_forwarded_to_main` | Local `main` now includes the accepted control integration through `b153cd1e3e0808991dcf9c188e380d935cfd9283`. |
 | 2026-07-25 | `M13-PROOF` | `independent_pm_closed_atomicity_gap` | User-supplied independent PM disposition reported commit-before-receipt mutant passing 9/9 while leaving state visible without an attesting receipt; implementation remained closed and gate returned to `MLC-P → MLC-T`. |
-| 2026-07-25 | `M13-PROOF-REPAIR` | `repaired_pending_independent_acceptance` | Original nine behaviours preserved; two participant/receipt-failure tests added; conforming reference 11/11; PM mutant now rejected 2 failures/9 passes while still passing original nine; no-participant-rollback mutant rejected; no `src/**` changes. |
+| 2026-07-25 | `M13-PROOF-REPAIR` | `repaired_pending_independent_acceptance` | Original nine behaviours preserved; two participant/receipt-failure tests added; conforming reference 11/11; PM mutant now rejected 2 failures/9 passes while still passing original nine; no-participant-rollback mutant rejected; no `src/**` changes; proof-repair commit `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee`. |
 
 ## Decisions
 
