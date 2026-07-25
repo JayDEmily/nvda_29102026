@@ -8,7 +8,7 @@
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Canonical Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Superseded P2 method | `00_TASK/NVDA_P2_CLEAN_WORKER_SEMANTIC_REVIEW_EXEC_PLAN_20260722.md` — retained as evidence only |
-| Working branch | `work/NVIDIA_2026_gate_c_completion_protocol_20260725T121723_AEST` |
+| Checkpoint branch | `main` |
 | Preserved accepted prerequisite | P1 `PM-001` through `PM-010` |
 | Standing mechanical census | PM-011, 179 physical tests |
 | Current leaf | `P2-A01` — immutable uncontaminated review source |
@@ -16,9 +16,9 @@
 | P3 | closed |
 | P4 | closed |
 | Gate D | closed |
-| Latest control freeze | `2026-07-25 12:17:23 AEST` |
+| Latest control freeze | `2026-07-25 13:04:09 AEST` |
 
-Read the programme ExecPlan first, then the Gate C protocol. The protocol is the only checklist for the remaining P2–P4 work. This roadmap records position only.
+Read the programme ExecPlan first, then the Gate C protocol. The protocol is the sole operational checklist for the remaining P2–P4 work. This roadmap records position only; checkpoints, ledgers, receipts, reports, manifests and archives are supporting evidence.
 
 ## Current accepted truth
 

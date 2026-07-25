@@ -3,12 +3,14 @@
 ## Frozen status
 
 **Status:** `FROZEN_CANONICAL_GATE_C_PROTOCOL`
-**Frozen at:** `2026-07-25 12:17:23 AEST`
+**Frozen at:** `2026-07-25 13:04:09 AEST`
 **Owner:** User and Project Manager thread
 **Parent programme plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live position pointer:** `ROADMAP_LEDGER_V2.md`
 **Scope:** remaining P2 test-authority reconciliation, P3 proof repair and P4 proof-envelope/order freeze
 **Gate D:** closed
+
+> **Sole operational checklist:** This file is the only checklist to follow for the remaining Gate C work. The parent ExecPlan governs the programme and `ROADMAP_LEDGER_V2.md` records the current position. Checkpoints, ledgers, receipts, reports, manifests and archives are supporting evidence only; they are not separate plans or additional checklists.
 
 This document is the canonical operating protocol for completing Gate C. It is subordinate to the parent programme ExecPlan and does not replace the programme mandate, normative authority or live roadmap pointer.
 

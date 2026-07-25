@@ -91,3 +91,31 @@ The control files were reread in full after creation. PM-000 is accepted as a co
 | Forbidden mutation scan | PASS — no `src/`, `tests/`, `config/`, `schemas/`, `fixtures/`, `data/` or numbered normative-document change |
 
 Structural validation does not establish semantic acceptance of P2, P3, P4 or Gate D.
+
+## 2026-07-25 13:04:09 AEST — Sole Gate C checklist and main checkpoint
+
+### Outcome
+
+- `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` now states explicitly that it is the sole operational checklist for the remaining Gate C work.
+- `project_control/canonical_project_manager/EXEC_PLAN.md` remains the parent programme controller.
+- `ROADMAP_LEDGER_V2.md` remains the current-position pointer.
+- Checkpoints, ledgers, receipts, reports, manifests and archives are supporting evidence only and do not create parallel plans or checklists.
+- The checkpoint branch is `main`.
+- P2 remains incomplete; P3, P4 and Gate D remain closed.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Canonical checklist IDs | PASS — 56 unique IDs |
+| Frozen checked state | PASS — only `GC-000` through `GC-009` checked |
+| P3 unit order | PASS — eleven units in canonical dependency-safe order |
+| P2 standing ledger | PASS — 179 rows and 179 unique test paths |
+| Sole-checklist routing | PASS — protocol, parent ExecPlan and live roadmap agree |
+| Main ancestry before promotion | PASS — prior `main` is an ancestor of the checkpoint commit chain |
+| Forbidden mutation scan | PASS — no `src/`, `tests/`, `config/`, `schemas/`, `fixtures/`, `data/` or numbered normative-document change |
+| `git diff --check` | PASS |
+| `make scaffold-check` | PASS — `repo scaffold present` |
+| `python scripts/run_proof_block.py --check-all` | PASS — 51 proof blocks structurally validated |
+
+This is a control/checkpoint validation. It does not accept P2, open P3/P4, or authorise Gate D.

@@ -10,10 +10,10 @@ P1 `PM-001` through `PM-010` is preserved as the accepted prerequisite and PM-01
 |---|---|
 | Plan owner | Project Manager thread |
 | Activated | 2026-07-20 (Australia/Melbourne) |
-| Gate C protocol frozen | 2026-07-25 12:17:23 AEST |
+| Gate C protocol frozen | 2026-07-25 13:04:09 AEST |
 | Baseline branch | `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717` |
 | Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
-| Working branch | `work/NVIDIA_2026_gate_c_completion_protocol_20260725T121723_AEST` |
+| Checkpoint branch | `main` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability, or end-to-end completion claim |
 | Preserved prerequisite | P1 `PM-001` through `PM-010` |
@@ -154,6 +154,8 @@ The exact family allocation, allowed files, outputs, validation and stop conditi
 ### P2 — Test authority reconciliation
 
 **Current execution protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`.
+
+This is the sole operational checklist for the remaining Gate C work. The roadmap, ledgers, receipts, reports, manifests and archives support or record execution; they do not create parallel plans or checklists.
 
 The prior one-file P2 plan at `00_TASK/NVDA_P2_CLEAN_WORKER_SEMANTIC_REVIEW_EXEC_PLAN_20260722.md` is retained as historical method/evidence but is superseded for execution. P2 now uses asymmetric escalation and separate routing, observation, screening, authority-relationship, Project Manager disposition and mechanical-projection leaves. No worker may combine those reasoning classes or self-accept a file.
 
@@ -302,6 +304,7 @@ Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof bl
 | 2026-07-20 | PM-001 | `prepared_not_dispatched` | Standalone evidence-only worker brief prepared; no worker has been authorised or spawned. |
 | 2026-07-21 | PM-001–PM-010 restart | `handoff_prepared_not_dispatched` | Earlier informal PM-002–PM-010 authority withdrawn for this restart; exact serial table, companion note and ten bounded standalone briefs prepared. No worker output is accepted by this row. |
 | 2026-07-25 | Gate C completion protocol | `frozen_p2_reconciliation_active` | P1 and PM-011 preserved; failed one-file P2 method superseded for execution; asymmetric relationship-level leaf strategy frozen; P3, P4 and Gate D remain closed. |
+| 2026-07-25 | Gate C main checkpoint | `sole_checklist_committed_to_main` | Gate C protocol proposition made explicit; programme and live pointer route to one checklist; repository checkpoint promoted to `main`; P2 remains incomplete and P3, P4 and Gate D remain closed. |
 
 ## Decisions
 
