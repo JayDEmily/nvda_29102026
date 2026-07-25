@@ -1,0 +1,59 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___ test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit ____
+
+    def test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit() -> None:
+        _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+        boundary = in_memory_uow(initial_state={"count": 0})
+        first = _command(command_type, key_type)
+        second_key = _key(key_type, consistency_unit_id="position-2")
+        second = _command(
+            command_type,
+            key_type,
+            key=second_key,
+            command_id="command-2",
+            expected_state_version=1,
+        )
+        third_key = _key(
+            key_type,
+            command_type="capital_state_transition",
+            consistency_unit_id="position-1",
+        )
+        third = _command(
+            command_type,
+            key_type,
+            key=third_key,
+            command_id="command-3",
+            expected_state_version=2,
+        )
+
+        boundary.execute(command=first, mutation=_mutation())
+>       boundary.execute(
+            command=second,
+            mutation=_mutation(increment=10, receipt_id="receipt-2", result_id="result-2"),
+        )
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:220:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7fd3d5555fd0>
+
+    def execute(
+        self,
+        *,
+        command: TransactionCommand,
+        mutation: Callable[[Any], Mapping[str, str]],
+    ) -> AtomicReceipt:
+        scope = self._scope(command.idempotency_key)
+        identity = self._command_identity(command)
+        existing = self._bindings.get(scope)
+        if existing is not None:
+            existing_identity, existing_receipt = existing
+            if existing_identity != identity:
+>               raise IdempotencyConflictError("conflicting idempotency-key reuse")
+E               nvda_desk.m13_state_kernel.IdempotencyConflictError: conflicting idempotency-key reuse
+
+/tmp/m13_mutant_scope_value_only/nvda_desk/m13_state_kernel/__init__.py:124: IdempotencyConflictError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit - nvda_desk.m13_state_kernel.IdempotencyConflictError: conflicting idempotency-key reuse
+1 failed, 8 deselected in 0.06s

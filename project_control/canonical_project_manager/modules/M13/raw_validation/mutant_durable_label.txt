@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable _
+
+    def test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable() -> None:
+        (
+            atomic_receipt,
+            _,
+            _,
+            in_memory_uow,
+            repository_port,
+            _,
+            _,
+            unit_of_work,
+        ) = _contracts()
+        boundary = in_memory_uow(initial_state={"count": 0})
+
+        assert isinstance(boundary, unit_of_work)
+        assert isinstance(atomic_receipt, type)
+        assert isinstance(repository_port, type)
+>       assert boundary.durability == "non_durable_in_memory"
+E       AssertionError: assert 'durable' == 'non_durable_in_memory'
+E
+E         - non_durable_in_memory
+E         + durable
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:95: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable - AssertionError: assert 'durable' == 'non_durable_in_memory'
+
+  - non_durable_in_memory
+  + durable
+1 failed, 8 deselected in 0.05s

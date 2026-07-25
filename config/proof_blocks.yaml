@@ -897,3 +897,17 @@ proof_blocks:
       - tests/tier_a/review_runtime/test_fwd018_review_packet_and_slv_replay_contract.py
       - config/proof_blocks.yaml
       - config/retained_test_registry.yaml
+
+  - proof_block_id: m13_state_kernel_module_local_proof
+    tier: Tier A
+    lifecycle: candidate_pending_independent_mlc_v
+    command: >-
+      env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py
+    owns:
+      - tests/tier_a/persistence/test_m13_state_kernel_contract.py
+      - project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md
+      - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

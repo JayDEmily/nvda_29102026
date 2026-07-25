@@ -4,19 +4,19 @@
 
 | Field | Value |
 |---|---|
-| Status | `module_architecture_control_integration_accepted_on_branch_awaiting_merge` |
+| Status | `m13_proof_frozen_awaiting_independent_acceptance` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
-| Control-integration baseline | `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5` |
-| Current branch | `control/accept-module-architecture` |
-| Current unit | `CTRL-ARCH-001` accepted on branch; merge to `main` remains pending |
+| Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
+| Current branch | `proof/m13-state-kernel` |
+| Current unit | `M13-PROOF` completed through proof authorship and falsification; independent final acceptance remains pending |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source/test mutation | closed on the control-integration branch |
-| First implementation module | `M13 state_kernel`, after control integration is accepted and merged |
+| Production/source mutation | closed; one M13 Tier A test, proof controls and M13 vocabulary records changed |
+| First implementation module | `M13 state_kernel`, only after independent proof acceptance issues `IMPLEMENTATION_OPEN` |
 | Gate D | module-gated; no global opening |
 
 Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
@@ -54,8 +54,10 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `CTRL-ARCH-001-C` | `accepted` | architecture report, workbook, machine projection, graph and working blueprint agree |
 | `CTRL-ARCH-001-D` | `accepted` | control-only validation passed; no source/test/runtime mutation |
 | `CTRL-ARCH-001-E` | `accepted` | integration commit `9ec838a45bd4cf98313e83f73f47d376b1e42806` and archive `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` (`faa6d2e196923bcd1641b1616c2fb8bfb3cf0900e4972642b79e2943333d5d5b`) verified clean after extraction |
-| `M13-PROOF` | `closed` | opens only after `CTRL-ARCH-001` is accepted and merged |
-| `M13-IMPLEMENT` | `closed` | opens only after the local M13 proof gate issues `IMPLEMENTATION_OPEN` |
+| `CTRL-ARCH-001-MERGE` | `accepted` | fast-forward merge to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
+| `M13-PROOF-A/T` | `accepted` | authority, routing, observation, disposition, proof specification and expected-red test frozen |
+| `M13-PROOF-V` | `closed_pending_independent_acceptance` | conforming reference passes and six mutants are rejected, but the test author cannot self-accept |
+| `M13-IMPLEMENT` | `closed` | opens only after an independent read-only acceptance issues `IMPLEMENTATION_OPEN` |
 
 ## Initial serial module order
 
@@ -80,27 +82,23 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 
 ## Mutation boundary
 
-During `CTRL-ARCH-001`, allowed changes are limited to:
+During `M13-PROOF`, allowed changes were limited to:
 
-- `AGENTS.md` and `PLANS.md`, explicitly opened by the user;
-- `ROADMAP_LEDGER.md` only to replace its stale successor placeholder with the live pointer;
-- `ROADMAP_LEDGER_V2.md`;
-- `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`;
-- `docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md`;
-- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`;
-- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`;
-- `docs/vocabulary/vocabulary_registry.md` and the deterministic `data/vocabulary/canonical_vocabulary.json` projection for accepted durable control terms;
-- `project_control/canonical_project_manager/**`.
+- the M13 module-local proof record and raw validation evidence;
+- one M13 Tier A contract test;
+- retained-test and proof-block admission records;
+- exact M13 durable vocabulary admissions and deterministic projection;
+- the live ExecPlan, protocol, roadmap, validation log and read manifest.
 
-Forbidden during this unit:
+Forbidden and not performed:
 
 - `src/**`;
-- tests or test support;
-- production configuration, schemas, fixtures or migrations;
-- package migration;
-- implementation of `M13` or any other module;
-- merge, push or publication.
+- production implementation or package creation;
+- unrelated test repair;
+- weakening N-06 transaction law;
+- claiming durability, restart recovery or external-effect completion;
+- push or publication.
 
 ## Next gate
 
-Merge the accepted control branch to `main` only with explicit user authority. After merge, open `M13-PROOF`; implementation remains closed until that local proof gate issues `IMPLEMENTATION_OPEN`.
+Perform an independent read-only Project Manager acceptance of the frozen `M13_PROOF_RECORD.md` and `test_m13_state_kernel_contract.py`. The allowed outcome is `IMPLEMENTATION_OPEN` or `CLOSED:<exact defect>`. `M13-IMPLEMENT` remains closed until that independent decision exists.

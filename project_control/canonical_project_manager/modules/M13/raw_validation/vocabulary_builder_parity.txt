@@ -1,0 +1,60 @@
+..F.                                                                     [100%]
+=================================== FAILURES ===================================
+___________ test_durable_row_terms_are_governed_exactly_or_by_alias ____________
+
+    def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
+        native_builder = _require_module("nvda_desk.vocabulary_builder")
+        payload = native_builder.build_canonical_payload()
+
+        governed_terms = set()
+        for entry in payload["entries"]:
+            governed_terms.add(entry["canonical_label"].casefold())
+            governed_terms.add(entry["canonical_slug"].replace("_", " ").casefold())
+            governed_terms.update(alias.casefold() for alias in entry.get("allowed_aliases", []))
+
+        required_terms = {
+            "opening architecture",
+            "placement readiness",
+            "placement handoff",
+            "downstream opening",
+            "broker protocol",
+            "capital deployment decision",
+            "serial candidate",
+            "live position",
+            "inventory architecture",
+            "exit architecture",
+            "close architecture",
+            "review layer",
+            "explanation layer",
+            "parallel risk lane",
+            "serial desk-cognition",
+            "dynamic coefficient",
+            "modifier authority",
+            "playbook library",
+            "prepared ingress",
+            "runtime context",
+            "raw signal families",
+            "event calendar",
+            "dmpv3 packet",
+        }
+        assert required_terms <= governed_terms
+
+        registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+        registry_required_terms = required_terms - {"dynamic coefficient", "dmpv3 packet"}
+>       assert {f"### {term}" for term in registry_required_terms} <= set(
+            f"### {line.strip().removeprefix('### ').casefold()}"
+            for line in registry_text.splitlines()
+            if line.startswith("### ")
+        )
+E       AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...ke gate', ...}
+E
+E         Extra items in the left set:
+E         '### serial desk-cognition'
+
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:108: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_durable_row_terms_are_governed_exactly_or_by_alias - AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...ke gate', ...}
+
+  Extra items in the left set:
+  '### serial desk-cognition'
+1 failed, 3 passed in 0.11s

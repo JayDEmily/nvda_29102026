@@ -339,6 +339,8 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Current:** `CTRL-ARCH-001` control integration. No source or test implementation is authorised on this branch.
+**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. `M13-PROOF` completed authority, routing, observation, disposition, proof specification, expected-red test implementation and mechanical falsification.
 
-**After acceptance and merge:** open `M13-PROOF`, define the minimal alpha transaction/state-kernel proposition and locally establish its proof before creating or changing production code.
+**Current:** `M13-PROOF-V` independent read-only acceptance. The authoring pass cannot self-accept under this protocol.
+
+**Allowed outcome:** `IMPLEMENTATION_OPEN` or `CLOSED:<exact return gate>`. `M13-IMPLEMENT` remains closed until that decision is recorded.

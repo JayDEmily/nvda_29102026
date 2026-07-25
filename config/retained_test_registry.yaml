@@ -2419,6 +2419,26 @@ retained_seed_tier_a:
   forbidden_carry_forward: Broader serial-spine tests, capital authority tests, and broker/opening tests must not replace the explicit playbook-registry eligibility blocker.
   notes: New family admitted during ROADMAP_PLAYBOOK_LIBRARY_5_10_BRANCH_001.
 
+- test_family_id: m13_state_kernel_module_local_contract
+  native_status: candidate_tier_a_pending_mlc_v
+  bounded_family: persistence
+  native_test_path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
+  migration_status: module_local_proof_authored_pending_independent_acceptance
+  normative_basis:
+  - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  architecture_basis:
+  - project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md
+  - project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: target M13 package is absent; legacy receipt, execution-record, capital-state and position repositories were reread and do not provide the admitted transaction boundary
+  native_reauthor_required: false
+  admission_reason: M13-PROOF requires one candidate Tier A family for scoped idempotency, expected-version checks, atomic state/result/receipt binding, deterministic sequence, rollback and explicit non-durable memory status.
+  forbidden_carry_forward: A receipt append, duplicate receipt-ID check, process insertion order, one global transaction, domain-state ownership, production durability, restart recovery or external-effect completion must not substitute for the N-06 transaction law.
+  notes: Authored and registered as a Tier A candidate during M13-PROOF on 2026-07-25; no blocking authority exists until independent MLC-V acceptance. Expected red until implementation later supplies the accepted target package.
 tier_b_dispositions:
 - test_family_id: proof_executor_contract
   native_status: retained_tier_b
@@ -3312,10 +3332,10 @@ tier_a_registry_reconciliation_inventory:
   generated_by_tranche: TEST_FALSE_POSITIVE_RESISTANCE_AUDIT_001_RETAINED_REGISTRY_GAP_RECONCILIATION
   status: reconciled_against_live_registry_and_proof_blocks
   purpose: Explicitly records current Tier A pytest registry truth after false-positive-resistance proof-block coverage and retained-registry gap reconciliation of all live Tier A files.
-  tier_a_test_count: 120
+  tier_a_test_count: 121
   counts:
     registered_retained_seed_tier_a: 120
-    tier_a_file_registered_outside_retained_seed_tier_a: 0
+    tier_a_file_registered_outside_retained_seed_tier_a: 1
     pending_explicit_registry_record: 0
   rule: Inventory rows must match explicit family-admission records in this file, proof-block coverage, or active false-positive-resistance reconciliation receipts; pending status is lawful only while no family record exists or an active pack records a carry-forward blocker.
   entries:
@@ -3559,3 +3579,5 @@ tier_a_registry_reconciliation_inventory:
     registry_status: registered_retained_seed_tier_a
   - path: tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py
     registry_status: registered_retained_seed_tier_a
+  - path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
+    registry_status: candidate_tier_a_pending_mlc_v

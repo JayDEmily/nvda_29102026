@@ -1,0 +1,160 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation _
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fa09a5244a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation() -> None:
+>       command_type, boundary_type, _ = _transaction_contracts()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:351:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+_______ test_c024_same_idempotency_key_with_different_input_is_conflict ________
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fa09a5244a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_same_idempotency_key_with_different_input_is_conflict() -> None:
+>       command_type, boundary_type, conflict = _transaction_contracts()
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:376:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+___ test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt ____
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+>           return importlib.import_module(module_path)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.persistence.transactions'
+import_ = <function _gcd_import at 0x7fa09a5244a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt() -> None:
+>       command_type, boundary_type, _ = _transaction_contracts()
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:398:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:342: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+module_path = 'nvda_desk.persistence.transactions'
+
+    def _require_module(module_path: str):
+        try:
+            return importlib.import_module(module_path)
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E           Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_with_different_input_is_conflict - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+3 failed in 0.12s

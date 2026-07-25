@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____ test_m13_mutation_failure_rolls_back_state_version_and_success_receipt ____
+
+    def test_m13_mutation_failure_rolls_back_state_version_and_success_receipt() -> None:
+        _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+        boundary = in_memory_uow(initial_state={"count": 0})
+        command = _command(command_type, key_type)
+
+        def fail_after_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["count"] = 99
+            raise RuntimeError("mutation failed")
+
+        with pytest.raises(RuntimeError, match="mutation failed"):
+            boundary.execute(command=command, mutation=fail_after_mutation)
+
+>       assert boundary.state_version == 0
+E       assert 1 == 0
+E        +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7ddb841fd0>.state_version
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:276: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_mutation_failure_rolls_back_state_version_and_success_receipt - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7ddb841fd0>.state_version
+1 failed, 8 deselected in 0.06s

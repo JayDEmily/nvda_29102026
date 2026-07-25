@@ -1,0 +1,35 @@
+===== registry and vocabulary =====
+proof_block_count 52
+m13_family_status candidate_tier_a_pending_mlc_v
+tier_a_inventory_count 121
+blocking_retained_count 120
+candidate_outside_retained_count 1
+vocabulary_entry_count 130
+m13_terms State Kernel,Unit of Work,Idempotency Key,Atomic Receipt,Repository Port,Transaction Command
+m13_registry_and_vocabulary_check=PASS
+
+===== proof block structure =====
+proof_blocks_check_all=PASS count=52
+
+===== proof executor =====
+.....................                                                    [100%]
+21 passed in 10.65s
+
+===== vocabulary schema =====
+..                                                                       [100%]
+2 passed in 0.03s
+
+===== vocabulary builder stability =====
+5279f27963f2745915e11381fbc6b81c128a228563400ad9a6623ab9b5f4fe95  data/vocabulary/canonical_vocabulary.json
+second build byte-identical: PASS
+
+===== persistence shadow =====
+................                                                         [100%]
+16 passed in 0.04s
+
+===== checkpoint shadow =====
+..                                                                       [100%]
+2 passed in 0.16s
+
+===== new test syntax =====
+compileall=PASS

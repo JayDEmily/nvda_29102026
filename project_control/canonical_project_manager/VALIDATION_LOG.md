@@ -181,3 +181,59 @@ The bounded Git commit and Git-preserving archive are closeout evidence reported
 | Merge/push | NOT PERFORMED |
 
 The archive proves the committed integration state. The evidence-record commit that contains this entry is reported separately and does not change the validated integration archive.
+
+## 2026-07-25 19:00:46 AEST — `M13-PROOF` authority, Tier A candidate and falsification
+
+### Outcome
+
+- The accepted control-integration branch was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`.
+- Branch `proof/m13-state-kernel` was created from that accepted baseline.
+- N-06 authority and the accepted `M13 state_kernel` ownership boundary were found sufficient for the minimal non-durable alpha transaction kernel.
+- The historical three `C-024` tests were preserved unchanged and demoted to observational evidence for current M13 opening because they target the superseded package path and omit material transaction clauses.
+- One current M13 Tier A candidate family was authored and registered through the retained-test registry and a dedicated proof block; blocking authority remains pending independent `MLC-V` acceptance.
+- Six durable M13 contract terms were added to the human vocabulary registry and deterministic JSON projection.
+- No production source or target `m13_state_kernel` package was created.
+
+### Proof specification covered
+
+- explicit non-durable memory status;
+- command, policy, idempotency, result, state-version, sequence and receipt binding;
+- idempotency scope by command type and consistency unit;
+- exact duplicate replay without repeated mutation;
+- conflicting reuse rejection;
+- expected-version rejection before mutation;
+- rollback after mutation failure;
+- rollback after invalid receipt material;
+- detached state and receipt readbacks;
+- no global transaction, domain ownership, restart-recovery or external-effect claim.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Current repository M13 proof | EXPECTED RED — 9 failed solely because `nvda_desk.m13_state_kernel` is absent |
+| Isolated conforming reference | PASS — 9 passed |
+| Defective reference variants | PASS — all six rejected: durable-label lie, duplicate re-execution, raw-key-only scope, ignored state version, commit on exception, invalid receipt acceptance |
+| Historical C-024 nodes | EXPECTED RED — 3 failed because superseded `nvda_desk.persistence.transactions` is absent |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 passed |
+| Retained-test registry | PASS — 121 Tier A files; 120 retained blockers plus one M13 candidate pending independent `MLC-V` acceptance |
+| Vocabulary builder | PASS — deterministic 130-entry projection; SHA-256 `5279f27963f2745915e11381fbc6b81c128a228563400ad9a6623ab9b5f4fe95` |
+| Vocabulary schema | PASS — 2 passed |
+| Vocabulary builder parity | INHERITED RED — 1 failed, 3 passed; the same `Serial Desk-Cognition` heading failure exists at baseline `b153cd1` |
+| Existing persistence shadow | PASS — 16 passed |
+| Tier B checkpoint shadow | PASS — 2 passed |
+| New test syntax | PASS — `compileall` |
+| Ruff | UNAVAILABLE — the environment has no installed `ruff` module; no pass claim made |
+| `make scaffold-check` | PASS — `repo scaffold present` |
+| Production source mutation | NONE |
+
+Raw commands, exit codes, reference source, mutant sources and outputs are retained at `project_control/canonical_project_manager/modules/M13/raw_validation/`.
+
+### Gate result
+
+`CLOSED:MLC-V_INDEPENDENT_PM_ACCEPTANCE_REQUIRED`
+
+The same Project Manager execution pass authored the proof specification and test file. The governing protocol states that the test author cannot provide final acceptance. Mechanical reference and mutation validation demonstrate proof strength but do not waive that role-separation requirement.
+
+`M13-IMPLEMENT` remains closed. The next lawful leaf is an independent read-only acceptance of the frozen M13 proof record and test file.

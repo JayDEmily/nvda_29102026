@@ -1,9 +1,10 @@
 {
   "schema_version": "v1",
-  "registry_version": "2026-07-25-module-architecture-v1",
+  "registry_version": "2026-07-25-m13-proof-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
-    "The 2026-07-25 user-accepted module-architecture amendment adds only durable ownership, dependency-plane and local-proof control terms.",
+    "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
+    "M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.",
     "Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.",
     "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."
   ],
@@ -3021,6 +3022,163 @@
         "Human aliases: capital deployment; downstream capital deployment authority",
         "Human disallowed or misleading use: candidate formation; serial execution stage; parallel risk generation; opening placement mechanics",
         "Machine projection omissions: Capital Deployment Decision [canonical-token:capital_deployment_decision]"
+      ]
+    },
+    {
+      "canonical_slug": "state_kernel",
+      "canonical_label": "State Kernel",
+      "category": "persistence_surface",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10",
+      "allowed_aliases": [
+        "M13 state kernel",
+        "transaction state kernel"
+      ],
+      "disallowed_phrases": [
+        "global transaction manager",
+        "owner of all state",
+        "production database"
+      ],
+      "notes": [
+        "Definition: Shared `M13` mechanism for owner-declared transaction boundaries, scoped idempotency, atomic state-plus-receipt commit and storage ports.",
+        "Scope: alpha transaction mechanism and journal only",
+        "Semantic owner: M13 state-kernel authority",
+        "Relationships: Used through State/Transaction Participation by domain-owning modules; supplies Unit of Work and Repository Port contracts; does not own positions, capital, calendar facts, risk observations or other domain meaning.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: M13 state kernel; transaction state kernel",
+        "Human disallowed or misleading use: global transaction manager; owner of all state; persistence proves durability; production database"
+      ]
+    },
+    {
+      "canonical_slug": "unit_of_work",
+      "canonical_label": "Unit of Work",
+      "category": "persistence_surface",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:17-76",
+      "allowed_aliases": [
+        "transaction unit of work"
+      ],
+      "disallowed_phrases": [
+        "repository-wide transaction",
+        "workflow transaction across all domains",
+        "receipt append helper",
+        "durability guarantee"
+      ],
+      "notes": [
+        "Definition: One transaction execution boundary that validates a typed command, operates on an isolated working state and either atomically publishes the resulting state and receipt or publishes neither.",
+        "Scope: one owner-declared consistency unit per execution",
+        "Semantic owner: State Kernel",
+        "Relationships: Consumes Transaction Command; emits Atomic Receipt; applies through a Repository Port or bounded in-memory adapter; remains separate from a cross-domain workflow.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: transaction unit of work",
+        "Human disallowed or misleading use: repository-wide transaction; workflow transaction across all domains; receipt append helper; durability guarantee"
+      ]
+    },
+    {
+      "canonical_slug": "idempotency_key",
+      "canonical_label": "Idempotency Key",
+      "category": "protocol_field",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:52-58",
+      "allowed_aliases": [
+        "scoped idempotency key"
+      ],
+      "disallowed_phrases": [
+        "receipt ID as complete idempotency",
+        "globally unique transaction key",
+        "duplicate suppression without input fingerprint",
+        "retry counter"
+      ],
+      "notes": [
+        "Definition: Caller-supplied stable key scoped by command type and consistency-unit identity and atomically bound to command identity, semantic input fingerprint, committed result, state version/sequence and receipt.",
+        "Scope: one named command type and one consistency unit",
+        "Semantic owner: command owner for issuance; State Kernel for binding and conflict enforcement",
+        "Relationships: Carried by Transaction Command and retained by Atomic Receipt; exact same-key/same-input replay returns original committed truth, while conflicting reuse fails.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: scoped idempotency key",
+        "Human disallowed or misleading use: receipt ID as complete idempotency; globally unique transaction key; duplicate suppression without input fingerprint; retry counter"
+      ]
+    },
+    {
+      "canonical_slug": "atomic_receipt",
+      "canonical_label": "Atomic Receipt",
+      "category": "persistence_surface",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-46",
+      "allowed_aliases": [
+        "atomic commit receipt",
+        "transaction receipt"
+      ],
+      "disallowed_phrases": [
+        "separately appended success claim",
+        "failure attempt record",
+        "evidence of external completion",
+        "receipt ID only"
+      ],
+      "notes": [
+        "Definition: Immutable success attestation published in the same admitted commit as the state transition it describes and carrying command, idempotency, result and state-version lineage.",
+        "Scope: one committed owner-declared transaction result",
+        "Semantic owner: State Kernel for atomic publication; domain owner for result meaning",
+        "Relationships: Emitted by Unit of Work; references Transaction Command and resulting state sequence; absent on failed or rolled-back transactions.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: atomic commit receipt; transaction receipt",
+        "Human disallowed or misleading use: separately appended success claim; failure attempt record; evidence of external completion; receipt ID only"
+      ]
+    },
+    {
+      "canonical_slug": "repository_port",
+      "canonical_label": "Repository Port",
+      "category": "persistence_surface",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:64-68",
+      "allowed_aliases": [
+        "state repository port",
+        "transaction repository port"
+      ],
+      "disallowed_phrases": [
+        "database implementation",
+        "shared domain owner",
+        "generic CRUD repository",
+        "durability claim"
+      ],
+      "notes": [
+        "Definition: Module-owned storage interface exposing the transaction participation, expected-version and atomic commit semantics required by its owning domain contract.",
+        "Scope: replaceable persistence interface used by State Kernel transactions",
+        "Semantic owner: owning domain module for record meaning; State Kernel for transaction protocol requirements",
+        "Relationships: A memory or future durable adapter implements the same port; use does not transfer semantic ownership to M13.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: state repository port; transaction repository port",
+        "Human disallowed or misleading use: database implementation; shared domain owner; generic CRUD repository; durability claim"
+      ]
+    },
+    {
+      "canonical_slug": "transaction_command",
+      "canonical_label": "Transaction Command",
+      "category": "carrier",
+      "stage_owner": "state_kernel",
+      "maps_to_contract": "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-40",
+      "allowed_aliases": [
+        "transaction command contract"
+      ],
+      "disallowed_phrases": [
+        "business decision result",
+        "untyped mutation dictionary",
+        "global workflow command"
+      ],
+      "notes": [
+        "Definition: Typed request carrying command identity, scoped Idempotency Key, semantic input fingerprint, expected prior state version and governing policy or configuration version.",
+        "Scope: input to one Unit of Work execution",
+        "Semantic owner: issuing domain module for business meaning; State Kernel for transaction-contract validation",
+        "Relationships: Supplies deterministic identity and preconditions to Unit of Work; retained by Atomic Receipt and replay evidence; does not itself mutate state.",
+        "Lifecycle: accepted_m13_contract_authority",
+        "Semantic decisions: M13-PROOF:MLC-A",
+        "Human aliases: transaction command contract",
+        "Human disallowed or misleading use: business decision result; untyped mutation dictionary; global workflow command; receipt"
       ]
     }
   ]

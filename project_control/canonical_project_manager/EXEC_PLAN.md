@@ -2,7 +2,7 @@
 
 ## Status
 
-`module_architecture_control_integration_accepted_on_branch_awaiting_merge`
+`m13_proof_frozen_awaiting_independent_acceptance`
 
 The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
@@ -11,16 +11,16 @@ The user accepted the extended architecture review on 25 July 2026 and explicitl
 | Plan owner | Project Manager thread |
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendment accepted | 2026-07-25 (Australia/Melbourne) |
-| Control-integration baseline | `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5` |
-| Current branch | `control/accept-module-architecture` |
+| Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
+| Current branch | `proof/m13-state-kernel` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
 | Accepted ownership modules | 16, `M00`–`M15` |
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
-| Active unit | `CTRL-ARCH-001` — accepted on the control branch; merge to `main` required before `M13-PROOF` |
-| Production/source/test mutation | closed for `CTRL-ARCH-001` |
-| First implementation module after acceptance | `M13 state_kernel` |
+| Active unit | `M13-PROOF-V` — proof authored and mechanically falsified; independent final acceptance required |
+| Mutation state | production source closed; M13 proof test, admission controls, vocabulary and project-control evidence changed |
+| First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | opens one module at a time only after that module's local proof gate passes |
 
 ## Objective
@@ -317,7 +317,8 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | Gate C protocol | `historical_global_protocol_frozen` | Global P2 route frozen; later measured as impractical. |
 | 2026-07-25 | P2-A01 | `accepted_historical_checkpoint` | Immutable archive and clean checkpoint accepted; evidence preserved. |
 | 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
-| 2026-07-25 | `CTRL-ARCH-001` | `accepted_on_branch` | Integration commit `9ec838a45bd4cf98313e83f73f47d376b1e42806` and validated Git-preserving archive `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` exist; merge remains pending. |
+| 2026-07-25 | `CTRL-ARCH-001` | `accepted_and_fast_forwarded_to_main` | Local `main` now includes the accepted control integration through `b153cd1e3e0808991dcf9c188e380d935cfd9283`. |
+| 2026-07-25 | `M13-PROOF` | `closed_pending_independent_acceptance` | N-06 authority sufficient; nine expected-red tests frozen; conforming external reference 9/9; six material mutants rejected; same execution pass authored test and therefore cannot issue final acceptance under `MLC-V`. |
 
 ## Decisions
 
@@ -332,6 +333,8 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-MOD-007` | Migrate physical `Mxx` packages progressively. |
 | `DEC-MOD-008` | Use the existing repository and Git history; do not create a new repository. |
 | `DEC-MOD-009` | Open `M13` first after control integration is accepted. |
+| `DEC-M13-001` | Accept N-06 and the M13 ownership boundary as sufficient to specify the minimal non-durable alpha transaction kernel. |
+| `DEC-M13-002` | Freeze the nine-test M13 proof family and keep implementation closed pending independent `MLC-V` acceptance. |
 
 ## Roadblocks and Unknowns
 

@@ -1,8 +1,8 @@
 # Vocabulary Registry
 
 Projection schema version: `v1`
-Projection registry version: `2026-07-25-module-architecture-v1`
-Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds only durable ownership, dependency-plane and local-proof control terms.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
+Projection registry version: `2026-07-25-m13-proof-v1`
+Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.","M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
 
 ### Ownership Module
 Definition: Accepted target code capability identified by one `M00`–`M15` architecture ID and bounded by explicit responsibility, public contracts, state ownership, dependencies and prohibited authority.
@@ -1243,3 +1243,63 @@ Aliases: capital deployment; downstream capital deployment authority
 Disallowed or misleading use: candidate formation; serial execution stage; parallel risk generation; opening placement mechanics
 Lifecycle: locked_placeholder_authority
 Projection metadata: {"projection_status":"canonical","canonical_label":"Capital Deployment Authority","canonical_slug":"capital_deployment_authority","category":"authority_surface","stage_owner":"downstream_capital_deployment","maps_to_contract":"docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:305-320","raw_or_derived":"not_applicable","allowed_aliases":["capital deployment","downstream capital deployment authority"],"disallowed_phrases":["candidate formation","serial execution stage","parallel risk generation","opening placement mechanics"],"semantic_decision_refs":["PM-007:SSC-014"],"machine_projection_omissions":["Capital Deployment Decision [canonical-token:capital_deployment_decision]"],"audit_noncanonical_phrases":[]}
+
+### State Kernel
+Definition: Shared `M13` mechanism for owner-declared transaction boundaries, scoped idempotency, atomic state-plus-receipt commit and storage ports.
+Scope: alpha transaction mechanism and journal only
+Owner: M13 state-kernel authority
+Relationships: Used through State/Transaction Participation by domain-owning modules; supplies Unit of Work and Repository Port contracts; does not own positions, capital, calendar facts, risk observations or other domain meaning.
+Aliases: M13 state kernel; transaction state kernel
+Disallowed or misleading use: global transaction manager; owner of all state; persistence proves durability; production database
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"State Kernel","canonical_slug":"state_kernel","category":"persistence_surface","stage_owner":"state_kernel","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10","raw_or_derived":"not_applicable","allowed_aliases":["M13 state kernel","transaction state kernel"],"disallowed_phrases":["global transaction manager","owner of all state","production database"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Unit of Work
+Definition: One transaction execution boundary that validates a typed command, operates on an isolated working state and either atomically publishes the resulting state and receipt or publishes neither.
+Scope: one owner-declared consistency unit per execution
+Owner: State Kernel
+Relationships: Consumes Transaction Command; emits Atomic Receipt; applies through a Repository Port or bounded in-memory adapter; remains separate from a cross-domain workflow.
+Aliases: transaction unit of work
+Disallowed or misleading use: repository-wide transaction; workflow transaction across all domains; receipt append helper; durability guarantee
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Unit of Work","canonical_slug":"unit_of_work","category":"persistence_surface","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:17-76","raw_or_derived":"not_applicable","allowed_aliases":["transaction unit of work"],"disallowed_phrases":["repository-wide transaction","workflow transaction across all domains","receipt append helper","durability guarantee"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Idempotency Key
+Definition: Caller-supplied stable key scoped by command type and consistency-unit identity and atomically bound to command identity, semantic input fingerprint, committed result, state version/sequence and receipt.
+Scope: one named command type and one consistency unit
+Owner: command owner for issuance; State Kernel for binding and conflict enforcement
+Relationships: Carried by Transaction Command and retained by Atomic Receipt; exact same-key/same-input replay returns original committed truth, while conflicting reuse fails.
+Aliases: scoped idempotency key
+Disallowed or misleading use: receipt ID as complete idempotency; globally unique transaction key; duplicate suppression without input fingerprint; retry counter
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Idempotency Key","canonical_slug":"idempotency_key","category":"protocol_field","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:52-58","raw_or_derived":"not_applicable","allowed_aliases":["scoped idempotency key"],"disallowed_phrases":["receipt ID as complete idempotency","globally unique transaction key","duplicate suppression without input fingerprint","retry counter"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Atomic Receipt
+Definition: Immutable success attestation published in the same admitted commit as the state transition it describes and carrying command, idempotency, result and state-version lineage.
+Scope: one committed owner-declared transaction result
+Owner: State Kernel for atomic publication; domain owner for result meaning
+Relationships: Emitted by Unit of Work; references Transaction Command and resulting state sequence; absent on failed or rolled-back transactions.
+Aliases: atomic commit receipt; transaction receipt
+Disallowed or misleading use: separately appended success claim; failure attempt record; evidence of external completion; receipt ID only
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Atomic Receipt","canonical_slug":"atomic_receipt","category":"persistence_surface","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-46","raw_or_derived":"not_applicable","allowed_aliases":["atomic commit receipt","transaction receipt"],"disallowed_phrases":["separately appended success claim","failure attempt record","evidence of external completion","receipt ID only"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Repository Port
+Definition: Module-owned storage interface exposing the transaction participation, expected-version and atomic commit semantics required by its owning domain contract.
+Scope: replaceable persistence interface used by State Kernel transactions
+Owner: owning domain module for record meaning; State Kernel for transaction protocol requirements
+Relationships: A memory or future durable adapter implements the same port; use does not transfer semantic ownership to M13.
+Aliases: state repository port; transaction repository port
+Disallowed or misleading use: database implementation; shared domain owner; generic CRUD repository; durability claim
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Repository Port","canonical_slug":"repository_port","category":"persistence_surface","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:64-68","raw_or_derived":"not_applicable","allowed_aliases":["state repository port","transaction repository port"],"disallowed_phrases":["database implementation","shared domain owner","generic CRUD repository","durability claim"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Transaction Command
+Definition: Typed request carrying command identity, scoped Idempotency Key, semantic input fingerprint, expected prior state version and governing policy or configuration version.
+Scope: input to one Unit of Work execution
+Owner: issuing domain module for business meaning; State Kernel for transaction-contract validation
+Relationships: Supplies deterministic identity and preconditions to Unit of Work; retained by Atomic Receipt and replay evidence; does not itself mutate state.
+Aliases: transaction command contract
+Disallowed or misleading use: business decision result; untyped mutation dictionary; global workflow command; receipt
+Lifecycle: accepted_m13_contract_authority
+Projection metadata: {"projection_status":"canonical","canonical_label":"Transaction Command","canonical_slug":"transaction_command","category":"carrier","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-40","raw_or_derived":"not_applicable","allowed_aliases":["transaction command contract"],"disallowed_phrases":["business decision result","untyped mutation dictionary","global workflow command"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
