@@ -320,3 +320,53 @@ The worker has closed the exact PM return gate mechanically but cannot provide i
 | Gate state | `CLOSED:REPAIRED_PROOF_REQUIRES_INDEPENDENT_MLC-V_ACCEPTANCE` |
 
 Post-commit output is retained at `modules/M13/raw_validation/postcommit_validation_repair.txt`. The evidence-record commit containing this closeout does not change the repaired test semantics.
+
+## 2026-07-26 — Lost `M13-PROOF-V2` Project Manager checkpoint reconstruction
+
+### Reconstruction boundary
+
+- Sole repository input: `NVDA_M13_PROOF_REPAIRED_490e63e_20260725.tar.gz`.
+- Verified source SHA-256: `6f6cd368e8be9f2b69fa7448967714e4517fa7dea3ad787072d96aa8df3b455a`.
+- Verified source branch/commit/worktree: `proof/m13-state-kernel-repair` / `490e63ed3c96da90a81239326e2d33dd77bdbf36` / clean.
+- Recovery branch: `recovery/m13-pm-v2-closed`.
+- Lost checkpoint identifiers are historical references only: `review/m13-proof-v2`, `7e95102ae21d246936bcad97bf2112db9c40a96f`, archive SHA-256 `9d780f4455d32e0ecd49190155d9643fdb9d0615d2cc559c882194f1d15f1801`. No exact-recreation claim is made.
+
+### Reconstructed disposition
+
+`CLOSED:the repaired suite does not prove rollback and clean retry when a RepositoryPort fails during prepare; a coordinator that registers participants for rollback only after prepare returns passes all eleven tests while leaving stale participant transaction state after the failure`
+
+### Independent reproduction
+
+| Check | Result |
+|---|---|
+| Frozen eleven-test SHA-256 | `f66b8cbe60a70c9dca02b2a65c6f6770273a1be213d5c203cb9fa29dd545d9ee` before and after PM work |
+| Register-after-successful-prepare mutant | FALSE POSITIVE — 11 passed |
+| First direct-probe attempt | failed after participant established pending state: `participant prepare failed` |
+| Failing participant rollback | zero calls |
+| Pending state after failure | present |
+| Identical retry | failed: `stale pending transaction survived failed prepare` |
+| Internal state/version/receipt | unchanged at state `{'count': 0}`, version `0`, no receipts |
+| Production, normative and test mutation | none |
+
+Evidence is retained under `modules/M13/raw_validation/` as the mutant source, executable probe, command output and exit-code sidecars.
+
+### Supporting validation
+
+| Check | Result |
+|---|---|
+| Isolated conforming reference | PASS — 11 passed |
+| Existing commit-before-receipt mutant | REJECTED — 2 failed, 9 passed |
+| Existing no-participant-rollback mutant | REJECTED — 2 failed, 9 passed |
+| Current repository proof | EXPECTED RED — 11 failed solely because `nvda_desk.m13_state_kernel` is absent |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 passed |
+| Persistence shadow | PASS — 16 passed |
+| Checkpoint shadow | PASS — 2 passed |
+| Retained mutant/probe syntax | PASS |
+| Scaffold | PASS — `repo scaffold present` |
+
+### Gate result
+
+`CLOSED:M13_PROOF_REPAIR_V2_REQUIRED_FOR_PREPARE_FAILURE_ROLLBACK_AND_CLEAN_RETRY`
+
+The next lawful unit is proof repair only. M13 production implementation, M01 and all later modules remain closed.

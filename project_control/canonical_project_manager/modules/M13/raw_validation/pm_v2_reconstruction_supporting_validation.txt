@@ -1,0 +1,22 @@
+===== proof block structure =====
+proof_blocks_check_all=PASS count=52
+
+===== proof executor contract =====
+.....................                                                    [100%]
+21 passed in 10.11s
+
+===== persistence shadow =====
+................                                                         [100%]
+16 passed in 0.04s
+
+===== checkpoint shadow =====
+..                                                                       [100%]
+2 passed in 0.13s
+
+===== syntax =====
+py_compile=PASS
+
+===== scaffold =====
+repo scaffold present
+
+EXIT_CODE=0

@@ -1,0 +1,17 @@
+COMMAND=PYTHONPATH=/mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/project_control/canonical_project_manager/modules/M13/raw_validation python /mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/project_control/canonical_project_manager/modules/M13/raw_validation/prepare_failure_direct_probe.py
+MUTANT_SHA256=a1a18c2368bfad676c3038990ed4a1c69a468c27f772719104645861399e58de
+PROBE_SHA256=1c79a34ba37dc4ea2e4e94192849381c56c13f0480d73f015546b18d48c3d303
+
+attempt_1=failed:participant prepare failed
+attempt_2=failed:stale pending transaction survived failed prepare
+prepare_calls=2
+commit_calls=0
+rollback_calls=0
+pending=True
+participant_visible=[]
+state_version=0
+state={'count': 0}
+receipts=()
+M13_PREPARE_FAILURE_FALSE_POSITIVE_REPRODUCED
+
+EXIT_CODE=0

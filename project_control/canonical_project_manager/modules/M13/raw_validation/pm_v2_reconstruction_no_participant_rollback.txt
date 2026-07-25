@@ -1,0 +1,57 @@
+SOURCE=project_control/canonical_project_manager/modules/M13/raw_validation/mutant_no_participant_rollback_source.py
+SOURCE_SHA256=a58c4a506eb003a9901dde3b557c0037b38e9023e49235f8a23d290d666f53d7
+TEST_SHA256=f66b8cbe60a70c9dca02b2a65c6f6770273a1be213d5c203cb9fa29dd545d9ee
+COMMAND=PYTHONPATH=/tmp/tmp.VPfEbonmlx:/mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/src python -m pytest -q -c /tmp/tmp.VPfEbonmlx/pytest.ini /mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py
+
+.........FF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+>   ???
+E   AssertionError: assert [{'command_id..._version': 1}] == []
+E
+E     Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+E
+E     Full diff:
+E     - []
+E     + [
+E     +     {
+E     +         'command_id': 'command-1',
+E     +         'sequence': 1,
+E     +         'state': {
+E     +             'count': 1,
+E     +         },
+E     +         'state_version': 1,
+E     +     },
+E     + ]
+
+/mnt/data/m13_repair_extract/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py:412: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+>   ???
+E   assert 0 >= 1
+E    +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7f04c6e9e900>.rollback_calls
+
+/mnt/data/m13_repair_extract/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py:458: AssertionError
+=========================== short test summary info ============================
+FAILED tmp/tmp.VPfEbonmlx::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - AssertionError: assert [{'command_id..._version': 1}] == []
+
+  Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+
+  Full diff:
+  - []
+  + [
+  +     {
+  +         'command_id': 'command-1',
+  +         'sequence': 1,
+  +         'state': {
+  +             'count': 1,
+  +         },
+  +         'state_version': 1,
+  +     },
+  + ]
+FAILED tmp/tmp.VPfEbonmlx::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7f04c6e9e900>.rollback_calls
+2 failed, 9 passed in 0.06s
+
+EXIT_CODE=1

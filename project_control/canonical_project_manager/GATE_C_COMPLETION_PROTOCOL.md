@@ -339,8 +339,8 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The independent Project Manager rejected the original nine-test M13 family because it did not execute receipt-writer/repository-participant failure and allowed a commit-before-receipt false positive. `M13-PROOF-REPAIR` then completed the bounded `MLC-P → MLC-T` return gate: the original nine behaviours were preserved and two public participant/receipt-failure behaviours were added and falsified.
+**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The independent Project Manager rejected the original nine-test M13 family because it did not execute receipt-writer/repository-participant failure and allowed a commit-before-receipt false positive. `M13-PROOF-REPAIR` then preserved those nine behaviours and added two commit-failure rollback tests. The lost PM V2 decision has now been independently reconstructed from sole source commit `490e63e...`: a participant may establish pending transaction state and raise during `prepare()`, receive no rollback, poison an identical retry, and still let all eleven tests pass.
 
-**Current:** `M13-PROOF-V2` independent read-only acceptance of the repaired eleven-test family. The repair author cannot self-accept under this protocol.
+**Current:** `M13-PROOF-REPAIR-V2` only. Add one executable `prepare()`-failure proof requiring rollback of the failing participant, removal of pending state, no internal commit or success receipt, and an uncontaminated identical retry committing as sequence `1`. Preserve the existing eleven tests and add no production source.
 
-**Allowed outcome:** `IMPLEMENTATION_OPEN` or `CLOSED:<exact return gate>`. `M13-IMPLEMENT` remains closed until that independent decision is recorded.
+**Return boundary:** the worker may return only `READY_FOR_INDEPENDENT_PM_REVIEW` or a precise blocker. `M13-IMPLEMENT` remains closed; only a later independent `MLC-V` may issue `IMPLEMENTATION_OPEN`.

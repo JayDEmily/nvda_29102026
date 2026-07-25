@@ -2,17 +2,19 @@
 
 ## Status
 
-`MLC-T_REPAIRED_IMPLEMENTATION_CLOSED_PENDING_INDEPENDENT_MLC-V`
+`MLC-V_CLOSED_PREPARE_FAILURE_PROOF_GAP_RECONSTRUCTED`
 
 - Module: `M13 state_kernel`
-- Worker repair branch: `proof/m13-state-kernel-repair`
+- Current recovery branch: `recovery/m13-pm-v2-closed`
+- Reviewed worker repair branch: `proof/m13-state-kernel-repair`
 - Accepted control baseline: local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`
 - Worker source checkpoint: `proof/m13-state-kernel` at `4a259217f0ea5c841e514848523b7bd0c496e41f`
 - Proof-repair commit: `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee`
+- Reviewed evidence commit: `490e63ed3c96da90a81239326e2d33dd77bdbf36`
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
-- Production source: closed during this proof repair
+- Production source: closed; reconstruction changes only PM records and retained falsification evidence
 
 ## Provenance boundary
 
@@ -204,7 +206,7 @@ Candidate test SHA-256 after repair:
 
 The external reference and eight mutation variants are falsification evidence only. They are not production implementation, fixtures or authority sources.
 
-### Gate result
+### Worker gate result before independent review
 
 `CLOSED:REPAIRED_PROOF_REQUIRES_INDEPENDENT_MLC-V_ACCEPTANCE`
 
@@ -218,9 +220,83 @@ Known true from worker evidence:
 - current production remains expected-red for the truthful absent-package reason;
 - no production source changed.
 
-Not yet accepted:
+Not accepted at the worker checkpoint:
 
 - independent Project Manager determination that the repaired eleven-test family exactly and sufficiently proves the admitted public seam;
 - `IMPLEMENTATION_OPEN`.
 
-`M13-IMPLEMENT` remains closed. The next lawful leaf is an independent read-only `MLC-V` review of this repaired proof record, test file and raw falsification evidence.
+At commit `490e63e...`, `M13-IMPLEMENT` remained closed and independent `MLC-V` was next. The reconstructed independent decision below supersedes that pending-review pointer.
+
+## MLC-V — Independent Project Manager V2 decision reconstruction
+
+### Reconstruction provenance
+
+The previously created PM V2 checkpoint (`review/m13-proof-v2`, reported commit `7e95102ae21d246936bcad97bf2112db9c40a96f`, reported archive SHA-256 `9d780f4455d32e0ecd49190155d9643fdb9d0615d2cc559c882194f1d15f1801`) could not be located. This decision was reconstructed independently from the sole repository input `proof/m13-state-kernel-repair` at `490e63ed3c96da90a81239326e2d33dd77bdbf36`, archive SHA-256 `6f6cd368e8be9f2b69fa7448967714e4517fa7dea3ad787072d96aa8df3b455a`.
+
+This record does not claim to reproduce the lost commit identity or archive bytes. It reproduces the bounded decision and its executable evidence.
+
+### Disposition
+
+`CLOSED:the repaired suite does not prove rollback and clean retry when a RepositoryPort fails during prepare; a coordinator that registers participants for rollback only after prepare returns passes all eleven tests while leaving stale participant transaction state after the failure`
+
+### Independent falsification
+
+The retained mutant differs from the conforming proof reference only in participant-registration order:
+
+```text
+participant.prepare(...)
+prepared.append(participant)
+```
+
+A participant that creates pending transaction state and then raises from `prepare()` is therefore absent from the rollback set. The complete frozen eleven-test family passes this implementation:
+
+```text
+11 passed
+```
+
+The direct probe then executes the identical command twice and observes:
+
+```text
+attempt_1=failed:participant prepare failed
+attempt_2=failed:stale pending transaction survived failed prepare
+prepare_calls=2
+commit_calls=0
+rollback_calls=0
+pending=True
+participant_visible=[]
+state_version=0
+state={'count': 0}
+receipts=()
+M13_PREPARE_FAILURE_FALSE_POSITIVE_REPRODUCED
+```
+
+Evidence:
+
+- `raw_validation/mutant_register_after_prepare_source.py`
+- `raw_validation/prepare_failure_mutant_eleven_tests.txt`
+- `raw_validation/prepare_failure_mutant_eleven_tests.exit_code`
+- `raw_validation/prepare_failure_direct_probe.py`
+- `raw_validation/prepare_failure_direct_probe_output.txt`
+- `raw_validation/prepare_failure_direct_probe.exit_code`
+
+### Authority and proof assessment
+
+- N-06 authority remains sufficient and unchanged: all declared changes must be atomically visible, failed mandatory participation must not leave committed truth, and repository interfaces must expose transaction participation and rollback/failure truth.
+- The eleven existing tests are lawful and necessary for the behaviours they exercise.
+- They are not collectively sufficient for MLC-P items 13 and 14 because both participant tests fail during `commit()`, after successful `prepare()` has completed. Neither test makes the failing participant establish pending state and raise during `prepare()`.
+- The mutant leaves internal state/version/receipt truth uncommitted, so the existing internal rollback assertions remain green. The prohibited participant-local pending state is unobserved by the eleven-test family.
+- The stale pending state contaminates the identical retry, which proves the missing behaviour is material rather than an internal implementation preference.
+- No implementation leakage is required to close the gap: the public `RepositoryPort.prepare/commit/rollback` seam can express the required proof.
+
+### Return gate
+
+`M13-IMPLEMENT` remains closed. The next lawful unit is bounded `M13-PROOF-REPAIR-V2` only:
+
+1. preserve the existing eleven test functions and semantics;
+2. add one executable participant that establishes observable pending state and raises during `prepare()`;
+3. require rollback/cleanup of that failing participant;
+4. require no internal or participant-visible committed truth and no success receipt;
+5. require an uncontaminated identical retry committing as sequence/version `1` with exactly one success receipt; and
+6. reject the retained register-after-successful-prepare mutant for this intended reason.
+
+No production source, normative meaning, later module or implementation authority is opened by this reconstructed decision.

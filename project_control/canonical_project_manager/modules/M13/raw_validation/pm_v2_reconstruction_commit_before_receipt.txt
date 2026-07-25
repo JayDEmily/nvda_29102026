@@ -1,0 +1,29 @@
+SOURCE=project_control/canonical_project_manager/modules/M13/raw_validation/mutant_commit_before_receipt_source.py
+SOURCE_SHA256=e430faa0f4bbc8536700a31d04612631509ee43bd5cfb5e09565a71e9aca8f0e
+TEST_SHA256=f66b8cbe60a70c9dca02b2a65c6f6770273a1be213d5c203cb9fa29dd545d9ee
+COMMAND=PYTHONPATH=/tmp/tmp.YnTlilHoCI:/mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/src python -m pytest -q -c /tmp/tmp.YnTlilHoCI/pytest.ini /mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py
+
+.........FF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7522dbf020>.state_version
+
+/mnt/data/m13_repair_extract/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py:409: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7522b74050>.state_version
+
+/mnt/data/m13_repair_extract/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py:460: AssertionError
+=========================== short test summary info ============================
+FAILED tmp/tmp.YnTlilHoCI::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7522dbf020>.state_version
+FAILED tmp/tmp.YnTlilHoCI::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f7522b74050>.state_version
+2 failed, 9 passed in 0.07s
+
+EXIT_CODE=1
