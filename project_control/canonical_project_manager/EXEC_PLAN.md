@@ -2,22 +2,27 @@
 
 ## Status
 
-`p1_restart_handoff_prepared`
+`gate_c_completion_protocol_frozen_p2_reconciliation_active`
 
-Only the bounded P1 vocabulary mutations expressly opened by PM-001 through PM-010 are authorised by the present status. Test authority, tests, production/runtime implementation, P2, P3, P4 and Gate D remain closed.
+P1 `PM-001` through `PM-010` is preserved as the accepted prerequisite and PM-011 remains the standing 179-test census. P2 is incomplete and is now governed by the frozen Gate C completion protocol. P3, P4 and Gate D remain closed.
 
 | Field | Current value |
 |---|---|
 | Plan owner | Project Manager thread |
 | Activated | 2026-07-20 (Australia/Melbourne) |
+| Gate C protocol frozen | 2026-07-25 12:17:23 AEST |
 | Baseline branch | `work/NVIDIA_2026_normative_authority_top_down_alignment_20260717` |
 | Baseline commit | `f7bd3f46862fe9b33340f3f13951518795724fe7` |
-| Working branch | `work/NVIDIA_2026_pm001_pm010_restart_20260721` |
+| Working branch | `work/NVIDIA_2026_gate_c_completion_protocol_20260725T121723_AEST` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability, or end-to-end completion claim |
-| Current unit | `PM-001` restart is first; no worker output accepted |
-| Prepared sequence | `PM-001` through `PM-010`, strictly serial under `PM-001_TO_PM-010_WORKER_TABLE.md` |
-| Gate D | Closed |
+| Preserved prerequisite | P1 `PM-001` through `PM-010` |
+| Standing census | PM-011, 179 physical tests |
+| Active Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
+| Current unit | `P2-A01` immutable uncontaminated review source |
+| P2 | incomplete |
+| P3 / P4 | closed |
+| Gate D | closed |
 
 ## Objective
 
@@ -147,6 +152,10 @@ The exact family allocation, allowed files, outputs, validation and stop conditi
 **P1 pass:** a human can determine the admitted meaning and owner of every durable term without consulting generated code/JSON as semantic authority; registry, builder, generated document, audit evidence, and proof agree.
 
 ### P2 — Test authority reconciliation
+
+**Current execution protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`.
+
+The prior one-file P2 plan at `00_TASK/NVDA_P2_CLEAN_WORKER_SEMANTIC_REVIEW_EXEC_PLAN_20260722.md` is retained as historical method/evidence but is superseded for execution. P2 now uses asymmetric escalation and separate routing, observation, screening, authority-relationship, Project Manager disposition and mechanical-projection leaves. No worker may combine those reasoning classes or self-accept a file.
 
 Reconcile all 166 physical Tier A and 13 Tier B Python files. The live retained inventory names 120 Tier A files, leaving 46 physical Tier A files without a row in that inventory; Tier B is 13/13.
 
@@ -292,6 +301,7 @@ Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof bl
 | 2026-07-20 | PM-000 | `accepted_control_checkpoint` | Baseline archive/hash/branch/commit frozen; mandatory semantic reads completed and recorded in a 539-row manifest; new plan/pointer, validation record, and one bounded worker brief created; changed-path, manifest-hash, order, non-empty-file, and diff checks passed. Pytest remains explicitly environment-blocked and no behavioural pass is claimed. |
 | 2026-07-20 | PM-001 | `prepared_not_dispatched` | Standalone evidence-only worker brief prepared; no worker has been authorised or spawned. |
 | 2026-07-21 | PM-001–PM-010 restart | `handoff_prepared_not_dispatched` | Earlier informal PM-002–PM-010 authority withdrawn for this restart; exact serial table, companion note and ten bounded standalone briefs prepared. No worker output is accepted by this row. |
+| 2026-07-25 | Gate C completion protocol | `frozen_p2_reconciliation_active` | P1 and PM-011 preserved; failed one-file P2 method superseded for execution; asymmetric relationship-level leaf strategy frozen; P3, P4 and Gate D remain closed. |
 
 ## Decisions
 
@@ -304,6 +314,7 @@ Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof bl
 | DEC-005 | Do not admit the 46 physical-only Tier A files by location. | `tests/AGENTS.override.md`, docs/08, and the canonical brief require explicit authority. |
 | DEC-006 | Do not open any of the six previously immediate Gate D units. | P1-P4 and the new fixed serial order supersede prior readiness scheduling. |
 | DEC-007 | Preserve historical Atlas objects as recoverable evidence but block cohort-dependent implementation. | Four objects and the 18-surface manifest are verifiable in Git history; the 287-row cohort register is absent. |
+| DEC-008 | Freeze `GATE_C_COMPLETION_PROTOCOL.md` as the canonical subordinate operating method for P2–P4. | Measured worker failure showed that one-file self-adjudication combined incompatible reasoning and evidence roles; positive admission now requires asymmetric escalation and Project Manager acceptance. |
 
 ## Roadblocks
 

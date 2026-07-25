@@ -59,3 +59,35 @@ Result: no pytest command is reported passed or failed at product level. Behavio
 | `git diff --check` | Passed with no output |
 
 The control files were reread in full after creation. PM-000 is accepted as a control checkpoint once the bounded commit is created and the resulting clean checkpoint/archive hash is reported. This acceptance does not open PM-001, P1 semantic mutation, test mutation, or Gate D implementation.
+
+## 2026-07-25 — Canonical Gate C completion protocol freeze
+
+### Outcome
+
+- Parent programme plan remains `project_control/canonical_project_manager/EXEC_PLAN.md`.
+- New frozen subordinate protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`.
+- Live position pointer updated: `ROADMAP_LEDGER_V2.md`.
+- Prior one-file P2 plan explicitly marked superseded for execution and retained as historical evidence.
+- `CURRENT_PROJECT_STATE.md` marked as a historical assembly snapshot.
+- Historical Gate A–D progress ledger preserved with an append-only continuation entry.
+- P2 remains incomplete; P3, P4 and Gate D remain closed.
+- No normative document, test, production source, configuration, fixture or generated trading artefact was authorised for mutation by this control leaf.
+
+### Control validation
+
+| Check | Result |
+|---|---|
+| Canonical checklist IDs | PASS — 56 unique checklist IDs |
+| Frozen checked state | PASS — only `GC-000` through `GC-009` checked |
+| P3 unit order | PASS — `D-009, D-012, D-015, D-010, D-016, D-033, D-017, D-031, D-021, D-048, D-041` |
+| Referenced repository paths | PASS — all required internal control/evidence paths present |
+| P2 standing ledger | PASS — 179 rows and 179 unique test paths |
+| Old P2 plan status | PASS — explicitly superseded for execution and no worker dispatch |
+| Programme/roadmap linkage | PASS — parent ExecPlan and live roadmap both reference the frozen Gate C protocol |
+| Gate state | PASS — P2 incomplete; P3, P4 and Gate D closed |
+| `git diff --check` | PASS |
+| `make scaffold-check` | PASS — `repo scaffold present` |
+| `python scripts/run_proof_block.py --check-all` | PASS — 51 proof blocks structurally validated |
+| Forbidden mutation scan | PASS — no `src/`, `tests/`, `config/`, `schemas/`, `fixtures/`, `data/` or numbered normative-document change |
+
+Structural validation does not establish semantic acceptance of P2, P3, P4 or Gate D.

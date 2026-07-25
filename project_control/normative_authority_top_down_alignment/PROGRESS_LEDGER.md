@@ -978,3 +978,7 @@ Outcome: PASS. All 33 candidate units were re-evaluated. Twenty-two have proof a
 ## 2026-07-20 — Gate D readiness review
 
 Outcome: PASS for bounded opening after durable checkpoint. Twenty-two units have frozen proof authority; six are immediately executable, sixteen dependency-held and eleven closed. Gate D implementation did not start. The authorised thread stops at the readiness checkpoint.
+
+## 2026-07-25 — Canonical Gate C completion protocol freeze
+
+Outcome: CONTROL PASS. The parent canonical programme remains `project_control/canonical_project_manager/EXEC_PLAN.md`. The remaining P2–P4 execution method is frozen in `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`. The prior one-file P2 method is retained as evidence but no longer schedules work. P2 remains incomplete; P3, P4 and Gate D remain closed. Current leaf: `P2-A01` immutable uncontaminated review source.

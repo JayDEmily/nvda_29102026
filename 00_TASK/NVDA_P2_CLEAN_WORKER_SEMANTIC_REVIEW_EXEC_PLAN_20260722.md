@@ -1,9 +1,13 @@
 # NVIDIA 2026 — P2 Clean-Worker Semantic Review ExecPlan
 
+> **Execution status — superseded 2026-07-25 12:17:23 AEST**
+>
+> This one-file semantic-receipt method is retained as historical P2 evidence but no longer governs execution. Its measured failure was requiring one worker to combine factual observation, semantic authority selection, adversarial self-review, evidence packaging and ledger closure. Remaining Gate C work is governed by `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`, subordinate to the canonical programme ExecPlan. Existing inventories, hashes, receipts and candidate registers may be used as navigation evidence only; prior dispositions are not current authority unless accepted under the new protocol.
+
 Version: 3.0  
 Date: 22 July 2026  
-Status: `authorised_not_started`  
-Execution mode: `uninterrupted_serial_p2_review`  
+Status: `superseded_for_execution_retained_as_evidence`
+Execution mode: `historical_only_no_worker_dispatch`
 P3: `closed`  
 P2 acceptance: `Project Manager only`
 

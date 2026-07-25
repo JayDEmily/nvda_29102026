@@ -1,3 +1,7 @@
+> **Historical snapshot notice — 2026-07-25**
+>
+> This file records the 2026-05 assembly state and is not the current programme pointer. Current authority and progress are in `project_control/canonical_project_manager/EXEC_PLAN.md`, `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` and `ROADMAP_LEDGER_V2.md`.
+
 # NVDA10 Current Project State
 
 This repository is the clean assembled NVDA10 repo created from the audited project-universe assets on 2026-05-08.
