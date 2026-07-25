@@ -11,7 +11,7 @@
 | Checkpoint branch | `main` |
 | Preserved accepted prerequisite | P1 `PM-001` through `PM-010` |
 | Standing mechanical census | PM-011, 179 physical tests |
-| Current leaf | `P2-A01` — immutable uncontaminated review source |
+| Current leaf | `P2-A02` — define uncontaminated review-source contents |
 | P2 | incomplete |
 | P3 | closed |
 | P4 | closed |
@@ -29,6 +29,7 @@ Read the programme ExecPlan first, then the Gate C protocol. The protocol is the
 - The seven proposed positive candidates `071`, `078`, `087`, `090`, `091`, `092` and `094` do not currently enter admitted test authority.
 - Accepted negative adjudications exist for `071` and `087`; both are blocked for P3 repair rather than admitted.
 - `078`, `090`, `091`, `092` and `094` remain not admitted because positive admission was not established and their returned evidence was rejected.
+- `P2-A01` is accepted: immutable archive `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz`, SHA-256 `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b`, preserves clean `main` commit `a56592f2609d109abaa2c4724a429324979e1ba5`.
 - P2 must be rebuilt through the asymmetric leaf process in the canonical Gate C protocol.
 - P3, P4 and Gate D remain closed.
 
@@ -61,4 +62,4 @@ P3 may mutate tests and explicitly authorised test support only after P2 accepta
 
 ## Next gate
 
-Execute `P2-A01` through `P2-A05` in `GATE_C_COMPLETION_PROTOCOL.md`. Do not dispatch semantic observation or authority workers before the uncontaminated review source is accepted.
+Execute `P2-A02` through `P2-A05` in `GATE_C_COMPLETION_PROTOCOL.md`. `P2-A02` remains unchecked and current. Do not dispatch semantic observation or authority workers before the uncontaminated review source is accepted.

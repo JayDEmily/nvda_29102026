@@ -237,7 +237,7 @@ No semantic text may be invented during this leaf.
 
 ### Phase P2-A — Clean review source
 
-- [ ] `P2-A01` Create one immutable review archive from the current accepted checkpoint.
+- [x] `P2-A01` Create one immutable review archive from the current accepted checkpoint.
 - [ ] `P2-A02` Include tests, directly exercised source, normative documents, accepted P1 registers, PM-011, retained registry, proof blocks, Gate C requirements/authority and proof-envelope records.
 - [ ] `P2-A03` Exclude prior P2 semantic receipts, candidate dispositions, sequence conclusions, rejected PM-019 projections and rejected PM-020 completion claims from fresh worker inputs.
 - [ ] `P2-A04` Record archive SHA-256, Git branch/HEAD, safe extraction and read-only worker rule.
@@ -441,6 +441,6 @@ Any amendment must:
 
 ## 13. Current next leaf
 
-**Next leaf:** `P2-A01` — create the immutable uncontaminated Gate C review archive.
+**Next leaf:** `P2-A02` — define the uncontaminated review-source contents from the accepted immutable archive.
 
 No semantic worker should be dispatched until `P2-A01` through `P2-A05` pass.

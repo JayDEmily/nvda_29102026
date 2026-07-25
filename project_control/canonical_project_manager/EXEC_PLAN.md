@@ -19,7 +19,10 @@ P1 `PM-001` through `PM-010` is preserved as the accepted prerequisite and PM-01
 | Preserved prerequisite | P1 `PM-001` through `PM-010` |
 | Standing census | PM-011, 179 physical tests |
 | Active Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
-| Current unit | `P2-A01` immutable uncontaminated review source |
+| Current unit | `P2-A02` uncontaminated review-source contents |
+| Accepted P2-A01 archive | `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz` |
+| Accepted P2-A01 SHA-256 | `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b` |
+| Accepted P2-A01 source state | `main` at `a56592f2609d109abaa2c4724a429324979e1ba5`, clean worktree |
 | P2 | incomplete |
 | P3 / P4 | closed |
 | Gate D | closed |
@@ -305,6 +308,7 @@ Targeted proof precedes affected proof, admitted Tier A, Tier B shadow, proof bl
 | 2026-07-21 | PM-001–PM-010 restart | `handoff_prepared_not_dispatched` | Earlier informal PM-002–PM-010 authority withdrawn for this restart; exact serial table, companion note and ten bounded standalone briefs prepared. No worker output is accepted by this row. |
 | 2026-07-25 | Gate C completion protocol | `frozen_p2_reconciliation_active` | P1 and PM-011 preserved; failed one-file P2 method superseded for execution; asymmetric relationship-level leaf strategy frozen; P3, P4 and Gate D remain closed. |
 | 2026-07-25 | Gate C main checkpoint | `sole_checklist_committed_to_main` | Gate C protocol proposition made explicit; programme and live pointer route to one checklist; repository checkpoint promoted to `main`; P2 remains incomplete and P3, P4 and Gate D remain closed. |
+| 2026-07-25 | P2-A01 | `accepted` | Accepted immutable review archive `NVDA_GATE_C_P2_A01_IMMUTABLE_REVIEW_ARCHIVE_a56592f2609d_20260725.tar.gz`, SHA-256 `e06881ee0f8b2f0e3cf58c53562730bf90f4adbde3f9b53077545c380d9ed43b`, from clean `main` commit `a56592f2609d109abaa2c4724a429324979e1ba5`; current unit advanced to `P2-A02`. |
 
 ## Decisions
 
