@@ -331,7 +331,7 @@ This maps directly to N-06 atomic participation and failure truth at `docs/07.2_
 |---|---|---|
 | Conforming reference, complete repaired family | PASS — 12 passed | `raw_validation/v2_reference_conforming.txt` |
 | Register-after-prepare mutant, old family | FALSE POSITIVE REPRODUCED — 11 passed | `raw_validation/v2_prepare_mutant_old_eleven.txt` |
-| Same mutant, repaired family | REJECTED — 1 failed, 11 passed; identical retry raises `stale pending transaction survived failed prepare` | `raw_validation/v2_prepare_mutant_repaired_family.txt` |
+| Same mutant, repaired family | REJECTED — 1 failed, 11 passed; explicit post-failure assertion observes `rollback_calls == 0` | `raw_validation/v2_prepare_mutant_repaired_family.txt` |
 | Commit-before-receipt mutant | REJECTED — 3 failed, 9 passed | `raw_validation/v2_mutant_commit_before_receipt_repaired_family.txt` |
 | No-participant-rollback mutant | REJECTED — 3 failed, 9 passed | `raw_validation/v2_mutant_no_participant_rollback_repaired_family.txt` |
 | Original six retained mutants | Each rejected by the complete repaired family | `raw_validation/v2_mutant_*_repaired_family.txt` |

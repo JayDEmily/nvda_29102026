@@ -378,7 +378,7 @@ The next lawful unit is proof repair only. M13 production implementation, M01 an
 - Original eleven test functions: PASS — all function-source SHA-256 values unchanged.
 - Added proof: one prepare-failure participant fixture and one clean-retry test at `tests/tier_a/persistence/test_m13_state_kernel_contract.py:482-579`.
 - Conforming reference: PASS — 12 passed.
-- PM V2 prepare mutant: old family FALSE POSITIVE — 11 passed; repaired family REJECTED — 1 failed, 11 passed for stale pending retry contamination.
+- PM V2 prepare mutant: old family FALSE POSITIVE — 11 passed; repaired family REJECTED — 1 failed, 11 passed because the failing participant recorded zero rollback calls. The retained direct probe separately reproduces stale pending state and the poisoned identical retry.
 - Commit-before-receipt and no-participant-rollback mutants: REJECTED — each 3 failed, 9 passed.
 - Original six retained mutants: REJECTED by the repaired family.
 - Current repository: EXPECTED RED — 12 failed solely because the production M13 package is absent.
