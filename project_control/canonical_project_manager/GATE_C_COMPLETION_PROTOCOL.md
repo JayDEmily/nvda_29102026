@@ -339,8 +339,8 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. `M13-PROOF` completed authority, routing, observation, disposition, proof specification, expected-red test implementation and mechanical falsification.
+**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The independent Project Manager rejected the original nine-test M13 family because it did not execute receipt-writer/repository-participant failure and allowed a commit-before-receipt false positive. `M13-PROOF-REPAIR` then completed the bounded `MLC-P → MLC-T` return gate: the original nine behaviours were preserved and two public participant/receipt-failure behaviours were added and falsified.
 
-**Current:** `M13-PROOF-V` independent read-only acceptance. The authoring pass cannot self-accept under this protocol.
+**Current:** `M13-PROOF-V2` independent read-only acceptance of the repaired eleven-test family. The repair author cannot self-accept under this protocol.
 
-**Allowed outcome:** `IMPLEMENTATION_OPEN` or `CLOSED:<exact return gate>`. `M13-IMPLEMENT` remains closed until that decision is recorded.
+**Allowed outcome:** `IMPLEMENTATION_OPEN` or `CLOSED:<exact return gate>`. `M13-IMPLEMENT` remains closed until that independent decision is recorded.

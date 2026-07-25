@@ -1,7 +1,9 @@
-mutant	selector	exit_code	result	sha256
-durable_label	exports_the_accepted_public_contract	1	REJECTED	c4ad14909dc97d9c9547c35aaa5bf65dab2ddc03aa3171cc3834f85dac0288cf
-duplicate_reexec	exact_duplicate_returns_original_identity	1	REJECTED	d0e7e10fabcf0de381bb719cb407e3d911b26ef29568c1405847d14068ae8156
-scope_value_only	idempotency_key_is_scoped	1	REJECTED	46ae6ae3208275ad8e474cb1177cbd23a2f2d0f902f59c29fe8089cd3aab6096
-ignore_version	stale_expected_version	1	REJECTED	9dccdde5d30fa67cc393873fe38e6a31e6a12840bbffe160da81a631058b04d2
-commit_on_exception	mutation_failure_rolls_back	1	REJECTED	2c9dc42fa11076101ca8a90edf9ee9e165795d1997705b2721dc2e5d60063ae4
-accept_invalid_receipt	invalid_receipt_result_rolls_back	1	REJECTED	318857e2883d323db2874b372a1dc10e6c8d9325c056a9e529351783f010b98b
+mutant	repaired_family_disposition	original_nine_result	proof_obligation_rejected	evidence
+non_durable_label	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	in-memory adapter must be explicitly non-durable	mutant_durable_label_original_nine.txt
+duplicate_reexecutes_mutation	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	exact duplicate must not re-execute mutation	mutant_duplicate_reexec_original_nine.txt
+raw_key_only_scope	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	idempotency scope includes command type and consistency unit	mutant_scope_value_only_original_nine.txt
+ignore_expected_version	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	stale expected version fails before mutation	mutant_ignore_version_original_nine.txt
+commit_on_mutation_exception	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	mutation failure rolls back state/version/receipt	mutant_commit_on_exception_original_nine.txt
+accept_invalid_receipt	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	invalid receipt material cannot commit working state	mutant_accept_invalid_receipt_original_nine.txt
+commit_before_attesting_receipt	REJECTED BY REPAIR: 2 failed, 9 passed	FALSE POSITIVE REPRODUCED: 9 passed, 2 deselected	receipt-write failure rolls back all internal and participant-visible truth	mutant_commit_before_receipt.txt;mutant_commit_before_receipt_original_nine.txt
+omit_repository_participant_rollback	REJECTED BY REPAIR: 2 failed, 9 passed	not applicable to original nine	repository participant failure invokes rollback and leaves no visible participant or internal commit	mutant_no_participant_rollback.txt

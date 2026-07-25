@@ -2420,10 +2420,10 @@ retained_seed_tier_a:
   notes: New family admitted during ROADMAP_PLAYBOOK_LIBRARY_5_10_BRANCH_001.
 
 - test_family_id: m13_state_kernel_module_local_contract
-  native_status: candidate_tier_a_pending_mlc_v
+  native_status: candidate_tier_a_repaired_pending_independent_mlc_v
   bounded_family: persistence
   native_test_path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
-  migration_status: module_local_proof_authored_pending_independent_acceptance
+  migration_status: module_local_proof_repaired_pending_independent_acceptance
   normative_basis:
   - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
   - docs/08_TESTING_AND_PROMOTION_CORE.md
@@ -2436,9 +2436,9 @@ retained_seed_tier_a:
   docstring_reread_completed: true
   docstring_alignment_status: target M13 package is absent; legacy receipt, execution-record, capital-state and position repositories were reread and do not provide the admitted transaction boundary
   native_reauthor_required: false
-  admission_reason: M13-PROOF requires one candidate Tier A family for scoped idempotency, expected-version checks, atomic state/result/receipt binding, deterministic sequence, rollback and explicit non-durable memory status.
+  admission_reason: M13-PROOF requires one candidate Tier A family for scoped idempotency, expected-version checks, atomic state/result/receipt binding, deterministic sequence, executable repository participation, receipt-write/participant rollback and explicit non-durable memory status.
   forbidden_carry_forward: A receipt append, duplicate receipt-ID check, process insertion order, one global transaction, domain-state ownership, production durability, restart recovery or external-effect completion must not substitute for the N-06 transaction law.
-  notes: Authored and registered as a Tier A candidate during M13-PROOF on 2026-07-25; no blocking authority exists until independent MLC-V acceptance. Expected red until implementation later supplies the accepted target package.
+  notes: Original nine behaviours preserved. Two receipt-writer/repository-participant failure tests added after independent PM rejection of a commit-before-receipt false positive. Candidate remains expected red and non-blocking until independent repaired MLC-V acceptance.
 tier_b_dispositions:
 - test_family_id: proof_executor_contract
   native_status: retained_tier_b
@@ -3580,4 +3580,4 @@ tier_a_registry_reconciliation_inventory:
   - path: tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py
     registry_status: registered_retained_seed_tier_a
   - path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
-    registry_status: candidate_tier_a_pending_mlc_v
+    registry_status: candidate_tier_a_repaired_pending_independent_mlc_v

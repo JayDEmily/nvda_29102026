@@ -250,3 +250,57 @@ The same Project Manager execution pass authored the proof specification and tes
 | Gate state | `CLOSED:MLC-V_INDEPENDENT_PM_ACCEPTANCE_REQUIRED` |
 
 The Git-preserving archive for the later evidence-record commit is reported externally after its bytes exist.
+
+## 2026-07-25 — `M13-PROOF-REPAIR` receipt/repository atomicity return gate
+
+### Input and provenance
+
+- Worker source archive: `NVDA_M13_PROOF_CLOSED_4a25921_20260725.tar(2).gz`.
+- Verified source archive SHA-256: `29820c89f27078b186484b0ae512aa35e781d5658adb9f0505a0afc576c3206f`.
+- Source branch/commit: `proof/m13-state-kernel` / `4a259217f0ea5c841e514848523b7bd0c496e41f`.
+- Repair branch: `proof/m13-state-kernel-repair`.
+- The actual independent PM archive was unavailable in the worker filesystem. The user supplied the exact PM disposition, reported decision commit `50d82f2bed689fc72afcbf8250f9625f9908f1f3`, reported checkpoint SHA-256 `5c52aabc7d22a75e51e87a60d86ecd4d7c28c1bdba96e7ec79ec2a314a59214f`, direct probe and return instruction. This provenance limitation is recorded in `modules/M13/raw_validation/independent_pm_rejection_user_supplied.txt`.
+
+### Independent PM defect
+
+`CLOSED:the frozen suite does not prove rollback when the attesting receipt write fails; a commit-before-receipt implementation passes all nine tests while leaving committed state with no receipt`
+
+The return gate authorised only `MLC-P → MLC-T` proof repair. M13 production implementation remained closed.
+
+### Repair
+
+- Preserved all original nine test functions and assertions byte-for-byte at function-source level.
+- Added two module-local proof behaviours:
+  - receipt-writer failure after visible participant mutation rolls back all participant-visible and internal truth and permits a clean sequence-1 retry;
+  - repository-participant failure invokes participant rollback, leaves no participant-visible or internal truth committed, and permits a clean sequence-1 retry.
+- Required an executable `RepositoryPort` transaction-participation seam (`prepare`, `commit`, `rollback`) rather than type existence alone.
+- Added no production source and created no `m13_state_kernel` implementation package.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Original test preservation | PASS — baseline 9 tests; current 11; all baseline test-function source unchanged; exactly 2 appended tests |
+| Current repository proof | EXPECTED RED — 11 failed solely because `nvda_desk.m13_state_kernel` is absent |
+| Isolated conforming reference | PASS — 11 passed |
+| PM commit-before-receipt mutant against original nine | FALSE POSITIVE REPRODUCED — 9 passed, 2 repaired tests deselected |
+| PM commit-before-receipt mutant against repaired family | REJECTED — 2 failed, 9 passed |
+| No-participant-rollback mutant | REJECTED — 2 failed, 9 passed |
+| Original six mutants | PASS AS FALSIFICATION — each was rerun with the two repair tests deselected and rejected by its intended unchanged original test |
+| YAML parse | PASS — retained registry and proof blocks |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 passed |
+| Existing persistence shadow | PASS — 16 passed |
+| Tier B checkpoint shadow | PASS — 2 passed |
+| Repaired test/reference/mutant syntax | PASS — `compileall` |
+| `make scaffold-check` | PASS — `repo scaffold present` |
+| Ruff | UNAVAILABLE — environment has no installed `ruff` module; no pass claim |
+| Production source mutation | NONE |
+
+Raw outputs, source variants and exit-code sidecars are retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.
+
+### Gate result
+
+`CLOSED:REPAIRED_PROOF_REQUIRES_INDEPENDENT_MLC-V_ACCEPTANCE`
+
+The worker has closed the exact PM return gate mechanically but cannot provide independent final acceptance. `M13-IMPLEMENT` remains closed.

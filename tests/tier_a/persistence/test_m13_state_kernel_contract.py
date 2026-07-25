@@ -315,3 +315,165 @@ def test_m13_state_and_receipt_readbacks_are_detached_copies() -> None:
     assert boundary.snapshot_state() == {"count": 1, "nested": {"value": 1}}
     assert receipt_copy == receipt
     assert boundary.list_receipts() == (receipt,)
+
+
+def _repository_participant(
+    repository_port: Any,
+    *,
+    capture: str,
+    fail_on_commit: bool = False,
+    failure_message: str = "repository participant commit failed",
+) -> Any:
+    class Participant(repository_port):
+        def __init__(self) -> None:
+            self.capture = capture
+            self.fail_on_commit = fail_on_commit
+            self.failure_message = failure_message
+            self.visible: list[Any] = []
+            self.prepare_calls = 0
+            self.commit_calls = 0
+            self.rollback_calls = 0
+            self._before: list[Any] | None = None
+            self._pending: Any = None
+
+        def prepare(
+            self,
+            *,
+            command: Any,
+            working_state: Any,
+            receipt: Any,
+        ) -> None:
+            self.prepare_calls += 1
+            self._before = deepcopy(self.visible)
+            if self.capture == "state":
+                self._pending = {
+                    "command_id": command.command_id,
+                    "state": deepcopy(working_state),
+                    "state_version": receipt.resulting_state_version,
+                    "sequence": receipt.sequence,
+                }
+            elif self.capture == "receipt":
+                self._pending = deepcopy(receipt)
+            else:
+                raise ValueError(f"unsupported participant capture: {self.capture}")
+
+        def commit(self) -> None:
+            self.commit_calls += 1
+            self.visible.append(deepcopy(self._pending))
+            if self.fail_on_commit:
+                raise RuntimeError(self.failure_message)
+
+        def rollback(self) -> None:
+            self.rollback_calls += 1
+            if self._before is not None:
+                self.visible = deepcopy(self._before)
+            self._pending = None
+
+        # Preserve compatibility with the earlier read-only RepositoryPort shape so
+        # the repaired tests still falsify the original six mutants on their own
+        # behavioural defects rather than failing during test-fixture construction.
+        def snapshot_state(self) -> Any:
+            return deepcopy(self.visible)
+
+        def list_receipts(self) -> tuple[Any, ...]:
+            return tuple(deepcopy(self.visible))
+
+    return Participant()
+
+
+def test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry() -> None:
+    _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+    state_participant = _repository_participant(repository_port, capture="state")
+    receipt_writer = _repository_participant(
+        repository_port,
+        capture="receipt",
+        fail_on_commit=True,
+        failure_message="receipt write failed",
+    )
+    boundary = in_memory_uow(
+        initial_state={"count": 0},
+        repository_ports=(state_participant, receipt_writer),
+    )
+    command = _command(command_type, key_type)
+    calls = {"count": 0}
+
+    def mutate(state: dict[str, Any]) -> dict[str, str]:
+        calls["count"] += 1
+        state["count"] += 1
+        return {"receipt_id": "receipt-1", "result_id": "result-1"}
+
+    with pytest.raises(RuntimeError, match="receipt write failed"):
+        boundary.execute(command=command, mutation=mutate)
+
+    assert calls["count"] == 1
+    assert boundary.state_version == 0
+    assert boundary.snapshot_state() == {"count": 0}
+    assert boundary.list_receipts() == ()
+    assert state_participant.visible == []
+    assert receipt_writer.visible == []
+    assert state_participant.rollback_calls >= 1
+    assert receipt_writer.rollback_calls >= 1
+
+    receipt_writer.fail_on_commit = False
+    receipt = boundary.execute(command=command, mutation=mutate)
+
+    assert calls["count"] == 2
+    assert receipt.sequence == 1
+    assert receipt.prior_state_version == 0
+    assert receipt.resulting_state_version == 1
+    assert receipt.duplicate_replay is False
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert state_participant.visible == [
+        {
+            "command_id": "command-1",
+            "state": {"count": 1},
+            "state_version": 1,
+            "sequence": 1,
+        }
+    ]
+    assert receipt_writer.visible == [receipt]
+
+
+def test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth() -> None:
+    _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+    failing_participant = _repository_participant(
+        repository_port,
+        capture="state",
+        fail_on_commit=True,
+        failure_message="repository participant failed",
+    )
+    boundary = in_memory_uow(
+        initial_state={"count": 0},
+        repository_ports=(failing_participant,),
+    )
+    command = _command(command_type, key_type)
+
+    with pytest.raises(RuntimeError, match="repository participant failed"):
+        boundary.execute(command=command, mutation=_mutation())
+
+    assert failing_participant.prepare_calls == 1
+    assert failing_participant.commit_calls == 1
+    assert failing_participant.rollback_calls >= 1
+    assert failing_participant.visible == []
+    assert boundary.state_version == 0
+    assert boundary.snapshot_state() == {"count": 0}
+    assert boundary.list_receipts() == ()
+
+    failing_participant.fail_on_commit = False
+    receipt = boundary.execute(command=command, mutation=_mutation())
+
+    assert receipt.sequence == 1
+    assert receipt.duplicate_replay is False
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert failing_participant.visible == [
+        {
+            "command_id": "command-1",
+            "state": {"count": 1},
+            "state_version": 1,
+            "sequence": 1,
+        }
+    ]

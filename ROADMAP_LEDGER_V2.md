@@ -4,19 +4,19 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_frozen_awaiting_independent_acceptance` |
+| Status | `m13_proof_repaired_awaiting_independent_acceptance` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `proof/m13-state-kernel` |
-| Current unit | `M13-PROOF` completed through proof authorship and falsification; independent final acceptance remains pending |
-| Frozen M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c` |
+| Current branch | `proof/m13-state-kernel-repair` |
+| Current unit | `M13-PROOF-V2` — independent PM atomicity defect repaired; independent final acceptance remains pending |
+| Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | closed; one M13 Tier A test, proof controls and M13 vocabulary records changed |
+| Production/source mutation | closed; original nine M13 tests preserved, two proof-repair tests and falsification/control evidence added; no `src/**` change |
 | First implementation module | `M13 state_kernel`, only after independent proof acceptance issues `IMPLEMENTATION_OPEN` |
 | Gate D | module-gated; no global opening |
 
@@ -56,9 +56,11 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `CTRL-ARCH-001-D` | `accepted` | control-only validation passed; no source/test/runtime mutation |
 | `CTRL-ARCH-001-E` | `accepted` | integration commit `9ec838a45bd4cf98313e83f73f47d376b1e42806` and archive `NVDA_MODULE_ARCHITECTURE_CONTROL_INTEGRATION_9ec838a_20260725.tar.gz` (`faa6d2e196923bcd1641b1616c2fb8bfb3cf0900e4972642b79e2943333d5d5b`) verified clean after extraction |
 | `CTRL-ARCH-001-MERGE` | `accepted` | fast-forward merge to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| `M13-PROOF-A/T` | `accepted` | authority, routing, observation, disposition, proof specification and expected-red test frozen |
-| `M13-PROOF-V` | `closed_pending_independent_acceptance` | conforming reference passes and six mutants are rejected, but the test author cannot self-accept |
-| `M13-IMPLEMENT` | `closed` | opens only after an independent read-only acceptance issues `IMPLEMENTATION_OPEN` |
+| `M13-PROOF-A/T` | `historical_partial_proof_preserved` | original nine lawful behaviours remain unchanged but were independently found insufficient for receipt-write/repository-participant atomicity |
+| `M13-PROOF-PM1` | `closed_atomicity_false_positive` | user-supplied independent PM decision reproduced: commit-before-receipt mutant passes original 9/9 and leaves committed state without receipt |
+| `M13-PROOF-REPAIR-P/T` | `completed_pending_independent_acceptance` | two participant/receipt-failure tests added; conforming reference 11/11; PM mutant and no-participant-rollback mutant rejected |
+| `M13-PROOF-V2` | `current` | independent read-only acceptance of repaired eleven-test family |
+| `M13-IMPLEMENT` | `closed` | opens only after independent `M13-PROOF-V2` issues `IMPLEMENTATION_OPEN` |
 
 ## Initial serial module order
 
@@ -102,4 +104,4 @@ Forbidden and not performed:
 
 ## Next gate
 
-Perform an independent read-only Project Manager acceptance of the frozen `M13_PROOF_RECORD.md` and `test_m13_state_kernel_contract.py`. The allowed outcome is `IMPLEMENTATION_OPEN` or `CLOSED:<exact defect>`. `M13-IMPLEMENT` remains closed until that independent decision exists.
+Perform an independent read-only Project Manager acceptance of the repaired `M13_PROOF_RECORD.md`, the eleven-test `test_m13_state_kernel_contract.py`, and its raw falsification evidence. The review must confirm that receipt-write and repository-participant failure roll back all internal and participant-visible truth and reject the retained commit-before-receipt false positive. The allowed outcome is `IMPLEMENTATION_OPEN` or `CLOSED:<exact defect>`. `M13-IMPLEMENT` remains closed until that independent decision exists.

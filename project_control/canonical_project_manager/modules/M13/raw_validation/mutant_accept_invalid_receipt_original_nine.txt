@@ -1,0 +1,25 @@
+.......F.                                                                [100%]
+=================================== FAILURES ===================================
+_________ test_m13_invalid_receipt_result_rolls_back_the_working_state _________
+
+    def test_m13_invalid_receipt_result_rolls_back_the_working_state() -> None:
+        _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+
+        for invalid_field in ("receipt_id", "result_id"):
+            boundary = in_memory_uow(initial_state={"count": 0})
+            command = _command(command_type, key_type)
+
+            def invalid_receipt(state: dict[str, Any]) -> dict[str, str]:
+                state["count"] = 99
+                result = {"receipt_id": "receipt-1", "result_id": "result-1"}
+                result[invalid_field] = ""
+                return result
+
+>           with pytest.raises((TypeError, ValueError), match="receipt"):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+
+test_m13_state_kernel_contract.py:294: Failed
+=========================== short test summary info ============================
+FAILED test_m13_state_kernel_contract.py::test_m13_invalid_receipt_result_rolls_back_the_working_state - Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+1 failed, 8 passed, 2 deselected in 0.08s

@@ -2,7 +2,7 @@
 
 ## Status
 
-`m13_proof_frozen_awaiting_independent_acceptance`
+`m13_proof_repaired_awaiting_independent_acceptance`
 
 The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
@@ -12,14 +12,14 @@ The user accepted the extended architecture review on 25 July 2026 and explicitl
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendment accepted | 2026-07-25 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `proof/m13-state-kernel` |
+| Current branch | `proof/m13-state-kernel-repair` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
 | Accepted ownership modules | 16, `M00`–`M15` |
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
-| Active unit | `M13-PROOF-V` — proof authored and mechanically falsified; independent final acceptance required |
-| Mutation state | production source closed; M13 proof test, admission controls, vocabulary and project-control evidence changed |
+| Active unit | `M13-PROOF-V2` — Project Manager atomicity defect repaired; independent final acceptance required |
+| Mutation state | production source closed; two M13 proof tests, falsification evidence, admission controls and project-control evidence changed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | opens one module at a time only after that module's local proof gate passes |
 
@@ -318,7 +318,8 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-25 | P2-A01 | `accepted_historical_checkpoint` | Immutable archive and clean checkpoint accepted; evidence preserved. |
 | 2026-07-25 | Extended architecture review | `user_accepted` | User accepted `M00`–`M15`, dependency-plane separation, progressive migration, local Gate C and module delivery. |
 | 2026-07-25 | `CTRL-ARCH-001` | `accepted_and_fast_forwarded_to_main` | Local `main` now includes the accepted control integration through `b153cd1e3e0808991dcf9c188e380d935cfd9283`. |
-| 2026-07-25 | `M13-PROOF` | `closed_pending_independent_acceptance` | Proof checkpoint `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`: N-06 authority sufficient; nine expected-red tests frozen; conforming external reference 9/9; six material mutants rejected; same execution pass authored test and therefore cannot issue final acceptance under `MLC-V`. |
+| 2026-07-25 | `M13-PROOF` | `independent_pm_closed_atomicity_gap` | User-supplied independent PM disposition reported commit-before-receipt mutant passing 9/9 while leaving state visible without an attesting receipt; implementation remained closed and gate returned to `MLC-P → MLC-T`. |
+| 2026-07-25 | `M13-PROOF-REPAIR` | `repaired_pending_independent_acceptance` | Original nine behaviours preserved; two participant/receipt-failure tests added; conforming reference 11/11; PM mutant now rejected 2 failures/9 passes while still passing original nine; no-participant-rollback mutant rejected; no `src/**` changes. |
 
 ## Decisions
 
@@ -334,10 +335,12 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-MOD-008` | Use the existing repository and Git history; do not create a new repository. |
 | `DEC-MOD-009` | Open `M13` first after control integration is accepted. |
 | `DEC-M13-001` | Accept N-06 and the M13 ownership boundary as sufficient to specify the minimal non-durable alpha transaction kernel. |
-| `DEC-M13-002` | Freeze the nine-test M13 proof family and keep implementation closed pending independent `MLC-V` acceptance. |
+| `DEC-M13-002` | Preserve the original nine lawful M13 behaviours, but do not treat them as collectively sufficient after the independent Project Manager atomicity rejection. |
+| `DEC-M13-003` | Repair M13 proof with executable repository participation and rollback on attesting-receipt or participant failure; keep implementation closed pending independent `MLC-V`. |
 
 ## Roadblocks and Unknowns
 
+- Provenance limitation: this worker repair descends from original checkpoint `4a259217...`; the actual reported Project Manager checkpoint `50d82f2...` was not present in the worker filesystem. The user-supplied PM disposition and reported hashes are preserved as return-gate evidence in the M13 proof record.
 - Exact implementation details remain module-local decisions and are not frozen by this control integration.
 - Production retention, backup, recovery, capacity, deployment topology, credentials and live/paper operating requirements remain intentionally unknown and out of scope.
 - Historical candidate dispositions for missing normative authority remain evidence and must be reconciled when their owning module opens or during final consolidation.

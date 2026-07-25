@@ -1,0 +1,97 @@
+.........FF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+    def test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        state_participant = _repository_participant(repository_port, capture="state")
+        receipt_writer = _repository_participant(
+            repository_port,
+            capture="receipt",
+            fail_on_commit=True,
+            failure_message="receipt write failed",
+        )
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(state_participant, receipt_writer),
+        )
+        command = _command(command_type, key_type)
+        calls = {"count": 0}
+
+        def mutate(state: dict[str, Any]) -> dict[str, str]:
+            calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-1", "result_id": "result-1"}
+
+        with pytest.raises(RuntimeError, match="receipt write failed"):
+            boundary.execute(command=command, mutation=mutate)
+
+        assert calls["count"] == 1
+        assert boundary.state_version == 0
+        assert boundary.snapshot_state() == {"count": 0}
+        assert boundary.list_receipts() == ()
+>       assert state_participant.visible == []
+E       AssertionError: assert [{'command_id..._version': 1}] == []
+E
+E         Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+E
+E         Full diff:
+E         - []
+E         + [
+E         +     {
+E         +         'command_id': 'command-1',
+E         +         'sequence': 1,
+E         +         'state': {
+E         +             'count': 1,
+E         +         },
+E         +         'state_version': 1,
+E         +     },
+E         + ]
+
+test_m13_state_kernel_contract.py:412: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+    def test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        failing_participant = _repository_participant(
+            repository_port,
+            capture="state",
+            fail_on_commit=True,
+            failure_message="repository participant failed",
+        )
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(failing_participant,),
+        )
+        command = _command(command_type, key_type)
+
+        with pytest.raises(RuntimeError, match="repository participant failed"):
+            boundary.execute(command=command, mutation=_mutation())
+
+        assert failing_participant.prepare_calls == 1
+        assert failing_participant.commit_calls == 1
+>       assert failing_participant.rollback_calls >= 1
+E       assert 0 >= 1
+E        +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7f7d82886900>.rollback_calls
+
+test_m13_state_kernel_contract.py:458: AssertionError
+=========================== short test summary info ============================
+FAILED test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - AssertionError: assert [{'command_id..._version': 1}] == []
+
+  Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+
+  Full diff:
+  - []
+  + [
+  +     {
+  +         'command_id': 'command-1',
+  +         'sequence': 1,
+  +         'state': {
+  +             'count': 1,
+  +         },
+  +         'state_version': 1,
+  +     },
+  + ]
+FAILED test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7f7d82886900>.rollback_calls
+2 failed, 9 passed in 0.09s

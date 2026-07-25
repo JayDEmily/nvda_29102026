@@ -3,7 +3,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from copy import deepcopy
 from dataclasses import dataclass, replace
-from typing import Any, Callable, Mapping
+from typing import Any, Callable, Iterable, Mapping
 
 
 class IdempotencyConflictError(ValueError):
@@ -58,15 +58,28 @@ class AtomicReceipt:
 
 class RepositoryPort(ABC):
     @abstractmethod
-    def snapshot_state(self) -> Any:
+    def prepare(
+        self,
+        *,
+        command: TransactionCommand,
+        working_state: Any,
+        receipt: AtomicReceipt,
+    ) -> None:
+        """Stage one transaction participant without publishing committed truth."""
         raise NotImplementedError
 
     @abstractmethod
-    def list_receipts(self) -> tuple[AtomicReceipt, ...]:
+    def commit(self) -> None:
+        """Publish the prepared participant state for the current transaction."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def rollback(self) -> None:
+        """Restore the participant to its pre-transaction visible state."""
         raise NotImplementedError
 
 
-class UnitOfWork(RepositoryPort, ABC):
+class UnitOfWork(ABC):
     @abstractmethod
     def execute(
         self,
@@ -80,11 +93,19 @@ class UnitOfWork(RepositoryPort, ABC):
 class InMemoryUnitOfWork(UnitOfWork):
     durability = "non_durable_in_memory"
 
-    def __init__(self, *, initial_state: Any) -> None:
+    def __init__(
+        self,
+        *,
+        initial_state: Any,
+        repository_ports: Iterable[RepositoryPort] = (),
+    ) -> None:
         self._state = deepcopy(initial_state)
         self._state_version = 0
         self._receipts: list[AtomicReceipt] = []
         self._bindings: dict[tuple[str, ...], tuple[tuple[Any, ...], AtomicReceipt]] = {}
+        self._repository_ports = tuple(repository_ports)
+        if not all(isinstance(port, RepositoryPort) for port in self._repository_ports):
+            raise TypeError("repository_ports must implement RepositoryPort")
 
     @property
     def state_version(self) -> int:
@@ -94,7 +115,7 @@ class InMemoryUnitOfWork(UnitOfWork):
         return deepcopy(self._state)
 
     def list_receipts(self) -> tuple[AtomicReceipt, ...]:
-        return tuple(self._receipts)
+        return deepcopy(tuple(self._receipts))
 
     @staticmethod
     def _scope(key: IdempotencyKey) -> tuple[str, ...]:
@@ -154,8 +175,36 @@ class InMemoryUnitOfWork(UnitOfWork):
             resulting_state_version=resulting_version,
             sequence=len(self._receipts) + 1,
         )
-        self._state = working_state
-        self._state_version = resulting_version
-        self._receipts.append(receipt)
-        self._bindings[scope] = (identity, receipt)
+
+        internal_before = (
+            deepcopy(self._state),
+            self._state_version,
+            deepcopy(self._receipts),
+            deepcopy(self._bindings),
+        )
+        prepared: list[RepositoryPort] = []
+        try:
+            for port in self._repository_ports:
+                prepared.append(port)
+                port.prepare(
+                    command=command,
+                    working_state=deepcopy(working_state),
+                    receipt=deepcopy(receipt),
+                )
+            for port in self._repository_ports:
+                port.commit()
+
+            self._state = working_state
+            self._state_version = resulting_version
+            self._receipts.append(receipt)
+            self._bindings[scope] = (identity, receipt)
+        except BaseException:
+            for port in reversed(prepared):
+                try:
+                    port.rollback()
+                except BaseException:
+                    pass
+            self._state, self._state_version, self._receipts, self._bindings = internal_before
+            raise
+
         return receipt

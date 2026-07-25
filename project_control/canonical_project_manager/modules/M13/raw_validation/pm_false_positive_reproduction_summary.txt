@@ -1,0 +1,21 @@
+M13 Project Manager false-positive reproduction closure
+
+Original nine tests against commit-before-receipt mutant:
+  9 passed, 2 repaired tests deselected
+  evidence: mutant_commit_before_receipt_original_nine.txt
+
+Expanded eleven-test candidate proof against the same mutant:
+  9 passed, 2 failed
+  failures:
+    - receipt-write failure did not restore internal state/version
+    - repository-participant failure did not restore internal state/version
+  evidence: mutant_commit_before_receipt.txt
+
+Independent participant-rollback mutant against expanded proof:
+  9 passed, 2 failed
+  failures establish that participant-visible changes and rollback participation are observed
+  evidence: mutant_no_participant_rollback.txt
+
+Conclusion:
+  The two repaired tests close the specific false-positive route reported by the Project Manager.
+  This is worker falsification evidence only; independent MLC-V acceptance remains required.
