@@ -1,0 +1,23 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0 -- /workspace/scratch/91301e94ac57/m13v5clean.iYtoyF/NVDA_M13_PM_V5_CLOSED_479000b_20260726/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspace/scratch/91301e94ac57/m13v5clean.iYtoyF/NVDA_M13_PM_V5_CLOSED_479000b_20260726
+configfile: pyproject.toml
+collecting ... collected 46 items / 32 deselected / 14 selected
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable PASSED [  7%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_success_atomically_binds_command_result_state_version_sequence_and_receipt PASSED [ 14%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_exact_duplicate_returns_original_identity_without_repeating_mutation PASSED [ 21%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_same_scoped_key_with_different_input_or_command_identity_is_conflict PASSED [ 28%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit PASSED [ 35%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_stale_expected_version_fails_before_mutation_and_emits_no_receipt PASSED [ 42%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_mutation_failure_rolls_back_state_version_and_success_receipt PASSED [ 50%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_invalid_receipt_result_rolls_back_the_working_state PASSED [ 57%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_state_and_receipt_readbacks_are_detached_copies PASSED [ 64%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry PASSED [ 71%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth PASSED [ 78%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry PASSED [ 85%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry PASSED [ 92%]
+tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once PASSED [100%]
+
+====================== 14 passed, 32 deselected in 0.02s =======================

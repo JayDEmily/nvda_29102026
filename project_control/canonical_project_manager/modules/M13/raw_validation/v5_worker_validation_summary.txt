@@ -1,0 +1,76 @@
+M13-PROOF-REPAIR-V5 WORKER VALIDATION
+======================================
+worker_result=PROPOSED_REPAIR_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW
+authoritative_pm_v5_disposition=PRESERVED_CLOSED
+source_archive_sha256=a56a1097bad88c21f4d2d91196961c947b849d76f66d50fa273cb4a507446572
+source_branch=review/m13-proof-v5
+source_commit=479000b512ef74b8134bc11cefc7a3ef13fac0e1
+source_worktree=clean
+source_git_history=PASS (190 reachable commits; fsck clean)
+frozen_fourteen_test_sha256=c1bc90aedf2905989c22f851f2560969868e87e50bca3f352f6bc91b91200cca
+worker_branch=proof/m13-state-kernel-repair-v5
+fourteen_function_preservation=PASS (14/14 AST hashes and names unchanged)
+current_test_function_inventory=15 (14 frozen plus 1 parameterised matrix)
+semantic_test_item_inventory=46 (14 frozen plus 32 matrix cases)
+failure_boundary_inventory=8
+identity_dimension_inventory=4 per boundary
+conforming_reference=PASS (46 passed; exit 0)
+pm_v5_mutation_reservation_old_family=FALSE_POSITIVE_REPRODUCED (14 passed, 32 deselected; exit 0)
+pm_v5_mutation_reservation_repaired_family=REJECTED (3 failed, 43 passed; exit 1)
+pm_v5_mutation_reservation_intended_case=REJECTED (hidden binding false conflict; exit 1)
+pm_v5_command_identity_old_family=FALSE_POSITIVE_REPRODUCED (14 passed, 32 deselected; exit 0)
+pm_v5_command_identity_repaired_family=REJECTED (6 failed, 40 passed; exit 1)
+pm_v5_command_identity_intended_case=REJECTED (hidden command-ID binding false conflict; exit 1)
+additional_configured_mutants=PASS (32/32 rejected for intended hidden-binding false conflict)
+earlier_retained_mutants=PASS (11/11 full-family and intended-target rejection)
+current_repository=EXPECTED_RED (46 failed; missing nvda_desk.m13_state_kernel; exit 1)
+proof_blocks=PASS (52; exit 0)
+proof_executor=PASS (21 passed; exit 0)
+persistence_shadow=PASS (36 passed, 46 deselected; exit 0)
+checkpoint_shadow=PASS (2 passed; exit 0)
+scaffold=PASS (exit 0)
+yaml=PASS (proof block and retained registry parse; exit 0)
+python_syntax=PASS (changed V5 Python files; exit 0)
+changed_path_boundary=PASS (only M13 test, proof record and worker raw validation)
+src_mutation=NONE
+normative_document_mutation=NONE
+proof_block_configuration_mutation=NONE
+retained_test_configuration_mutation=NONE
+git_diff_check=PASS (exit 0; no output)
+git_fsck=PASS (exit 0; no output)
+implementation_open=NO
+final_pm_acceptance=NOT_PERFORMED
+later_module_work=NONE
+
+RAW COMMAND/EXIT EVIDENCE
+-------------------------
+source checkpoint:
+  v5_worker_runs/source_checkpoint_verification.txt
+  v5_worker_runs/source_checkpoint_verification.exit_code=0
+preservation:
+  python project_control/canonical_project_manager/modules/M13/raw_validation/v5_verify_fourteen_preservation.py
+  v5_worker_runs/fourteen_preservation.exit_code=0
+expected red:
+  env PYTHONPATH=src .venv/bin/python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py -vv
+  v5_worker_runs/current_repository_expected_red.exit_code=1
+conforming:
+  .venv/bin/python project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py project_control/canonical_project_manager/modules/M13/raw_validation/v4_reference_conforming_source.py
+  v5_worker_runs/conforming_repaired_family.exit_code=0
+PM V5 and mutation commands:
+  exact source, case, environment and exit code are retained beside every raw output
+  under v5_worker_runs/, v5_worker_runs/additional_mutants/ and
+  v5_worker_runs/earlier_mutants/
+proof blocks:
+  .venv/bin/python scripts/run_proof_block.py --check-all
+  v5_worker_runs/proof_blocks.exit_code=0
+proof executor:
+  .venv/bin/python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py -q
+  v5_worker_runs/proof_executor.exit_code=0
+persistence shadow:
+  PYTHONPATH=.venv/lib/python3.13/site-packages /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest tests/tier_a/persistence -q -k 'not m13'
+  v5_worker_runs/persistence_shadow.exit_code=0
+checkpoint shadow:
+  PYTHONPATH=.venv/lib/python3.13/site-packages /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest tests/tier_b/proof_model/test_checkpoint_receipt_contract.py -q
+  v5_worker_runs/checkpoint_shadow.exit_code=0
+remaining validation:
+  exact commands and exit-code sidecars are retained in v5_worker_runs/

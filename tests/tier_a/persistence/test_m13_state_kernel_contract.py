@@ -713,3 +713,409 @@ def test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_co
     assert boundary.snapshot_state() == {"count": 1}
     assert boundary.list_receipts() == (receipt,)
     assert len(participant.visible) == 1
+
+
+def _matrix_participant(
+    repository_port: Any,
+    *,
+    name: str,
+    role: str,
+    fail_phase: str | None = None,
+) -> Any:
+    class Participant(repository_port):
+        def __init__(self) -> None:
+            self.name = name
+            self.role = role
+            self.fail_phase = fail_phase
+            self.pending: dict[str, Any] | None = None
+            self.visible: list[dict[str, Any]] = []
+            self.prepare_calls = 0
+            self.commit_calls = 0
+            self.rollback_calls = 0
+            self._visible_before: list[dict[str, Any]] = []
+
+        def prepare(self, *, command: Any, working_state: Any, receipt: Any) -> None:
+            self.prepare_calls += 1
+            self._visible_before = deepcopy(self.visible)
+            self.pending = {
+                "role": self.role,
+                "command_id": command.command_id,
+                "input_fingerprint": command.input_fingerprint,
+                "policy_version": command.policy_version,
+                "state": deepcopy(working_state),
+                "state_version": receipt.resulting_state_version,
+                "sequence": receipt.sequence,
+                "receipt_id": receipt.receipt_id,
+            }
+            if self.fail_phase == "prepare":
+                raise RuntimeError(f"{self.name} prepare failed")
+
+        def commit(self) -> None:
+            self.commit_calls += 1
+            assert self.pending is not None
+            self.visible.append(deepcopy(self.pending))
+            if self.fail_phase == "commit":
+                raise RuntimeError(f"{self.name} commit failed")
+            self.pending = None
+
+        def rollback(self) -> None:
+            self.rollback_calls += 1
+            self.visible = deepcopy(self._visible_before)
+            self.pending = None
+
+    return Participant()
+
+
+_M13_FAILURE_BINDING_MATRIX = (
+    pytest.param(
+        "stale_expected_state_version",
+        "same_command_id_different_fingerprint",
+        id="stale-expected-state-version--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "stale_expected_state_version",
+        "different_command_id_same_fingerprint",
+        id="stale-expected-state-version--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "stale_expected_state_version",
+        "same_command_id_fingerprint_different_policy_version",
+        id="stale-expected-state-version--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "stale_expected_state_version",
+        "complete_command_identity",
+        id="stale-expected-state-version--complete-command-identity-corrected-version",
+    ),
+    pytest.param(
+        "owner_mutation_exception",
+        "same_command_id_different_fingerprint",
+        id="owner-mutation-exception--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "owner_mutation_exception",
+        "different_command_id_same_fingerprint",
+        id="owner-mutation-exception--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "owner_mutation_exception",
+        "same_command_id_fingerprint_different_policy_version",
+        id="owner-mutation-exception--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "owner_mutation_exception",
+        "complete_command_identity",
+        id="owner-mutation-exception--complete-command-identity",
+    ),
+    pytest.param(
+        "invalid_mutation_result_mapping",
+        "same_command_id_different_fingerprint",
+        id="invalid-mutation-result-mapping--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "invalid_mutation_result_mapping",
+        "different_command_id_same_fingerprint",
+        id="invalid-mutation-result-mapping--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "invalid_mutation_result_mapping",
+        "same_command_id_fingerprint_different_policy_version",
+        id="invalid-mutation-result-mapping--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "invalid_mutation_result_mapping",
+        "complete_command_identity",
+        id="invalid-mutation-result-mapping--complete-command-identity",
+    ),
+    pytest.param(
+        "invalid_or_empty_receipt_id",
+        "same_command_id_different_fingerprint",
+        id="invalid-or-empty-receipt-id--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "invalid_or_empty_receipt_id",
+        "different_command_id_same_fingerprint",
+        id="invalid-or-empty-receipt-id--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "invalid_or_empty_receipt_id",
+        "same_command_id_fingerprint_different_policy_version",
+        id="invalid-or-empty-receipt-id--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "invalid_or_empty_receipt_id",
+        "complete_command_identity",
+        id="invalid-or-empty-receipt-id--complete-command-identity",
+    ),
+    pytest.param(
+        "invalid_or_empty_result_id",
+        "same_command_id_different_fingerprint",
+        id="invalid-or-empty-result-id--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "invalid_or_empty_result_id",
+        "different_command_id_same_fingerprint",
+        id="invalid-or-empty-result-id--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "invalid_or_empty_result_id",
+        "same_command_id_fingerprint_different_policy_version",
+        id="invalid-or-empty-result-id--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "invalid_or_empty_result_id",
+        "complete_command_identity",
+        id="invalid-or-empty-result-id--complete-command-identity",
+    ),
+    pytest.param(
+        "repository_participant_prepare_failure",
+        "same_command_id_different_fingerprint",
+        id="repository-participant-prepare-failure--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "repository_participant_prepare_failure",
+        "different_command_id_same_fingerprint",
+        id="repository-participant-prepare-failure--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "repository_participant_prepare_failure",
+        "same_command_id_fingerprint_different_policy_version",
+        id="repository-participant-prepare-failure--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "repository_participant_prepare_failure",
+        "complete_command_identity",
+        id="repository-participant-prepare-failure--complete-command-identity",
+    ),
+    pytest.param(
+        "repository_participant_commit_failure",
+        "same_command_id_different_fingerprint",
+        id="repository-participant-commit-failure--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "repository_participant_commit_failure",
+        "different_command_id_same_fingerprint",
+        id="repository-participant-commit-failure--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "repository_participant_commit_failure",
+        "same_command_id_fingerprint_different_policy_version",
+        id="repository-participant-commit-failure--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "repository_participant_commit_failure",
+        "complete_command_identity",
+        id="repository-participant-commit-failure--complete-command-identity",
+    ),
+    pytest.param(
+        "attesting_receipt_writer_failure",
+        "same_command_id_different_fingerprint",
+        id="attesting-receipt-writer-failure--same-command-id-different-fingerprint",
+    ),
+    pytest.param(
+        "attesting_receipt_writer_failure",
+        "different_command_id_same_fingerprint",
+        id="attesting-receipt-writer-failure--different-command-id-same-fingerprint",
+    ),
+    pytest.param(
+        "attesting_receipt_writer_failure",
+        "same_command_id_fingerprint_different_policy_version",
+        id="attesting-receipt-writer-failure--same-command-id-fingerprint-different-policy-version",
+    ),
+    pytest.param(
+        "attesting_receipt_writer_failure",
+        "complete_command_identity",
+        id="attesting-receipt-writer-failure--complete-command-identity",
+    ),
+)
+
+
+@pytest.mark.parametrize("failure_boundary,identity_dimension", _M13_FAILURE_BINDING_MATRIX)
+def test_m13_unsuccessful_execute_attempt_leaves_no_binding_matrix(
+    failure_boundary: str,
+    identity_dimension: str,
+) -> None:
+    (
+        _,
+        _,
+        key_type,
+        in_memory_uow,
+        repository_port,
+        state_version_conflict,
+        command_type,
+        _,
+    ) = _contracts()
+    participant_a = _matrix_participant(
+        repository_port,
+        name="participant-a",
+        role="state-participant",
+    )
+    participant_b = _matrix_participant(
+        repository_port,
+        name="participant-b",
+        role="state-participant",
+        fail_phase=(
+            "prepare"
+            if failure_boundary == "repository_participant_prepare_failure"
+            else "commit"
+            if failure_boundary == "repository_participant_commit_failure"
+            else None
+        ),
+    )
+    receipt_writer = _matrix_participant(
+        repository_port,
+        name="attesting-receipt-writer",
+        role="attesting-receipt-writer",
+        fail_phase="commit" if failure_boundary == "attesting_receipt_writer_failure" else None,
+    )
+    participants = (participant_a, participant_b, receipt_writer)
+    boundary = in_memory_uow(
+        initial_state={"count": 0},
+        repository_ports=participants,
+    )
+    shared_key = _key(key_type)
+    failed_command = _command(
+        command_type,
+        key_type,
+        key=shared_key,
+        command_id="command-failed",
+        fingerprint=_FINGERPRINT_A,
+        expected_state_version=1 if failure_boundary == "stale_expected_state_version" else 0,
+        policy_version="transaction-v1",
+    )
+    corrected_identity = {
+        "command_id": failed_command.command_id,
+        "fingerprint": failed_command.input_fingerprint,
+        "policy_version": failed_command.policy_version,
+    }
+    if identity_dimension == "same_command_id_different_fingerprint":
+        corrected_identity["fingerprint"] = _FINGERPRINT_B
+    elif identity_dimension == "different_command_id_same_fingerprint":
+        corrected_identity["command_id"] = "command-corrected"
+    elif identity_dimension == "same_command_id_fingerprint_different_policy_version":
+        corrected_identity["policy_version"] = "transaction-v2"
+    else:
+        assert identity_dimension == "complete_command_identity"
+    corrected_command = _command(
+        command_type,
+        key_type,
+        key=shared_key,
+        command_id=corrected_identity["command_id"],
+        fingerprint=corrected_identity["fingerprint"],
+        expected_state_version=0,
+        policy_version=corrected_identity["policy_version"],
+    )
+    calls = {"count": 0}
+
+    def attempted_mutation(state: dict[str, Any]) -> Any:
+        calls["count"] += 1
+        state["count"] += 1
+        if failure_boundary == "owner_mutation_exception":
+            raise RuntimeError("matrix owner mutation failed")
+        if failure_boundary == "invalid_mutation_result_mapping":
+            return ["not", "a", "mapping"]
+        if failure_boundary == "invalid_or_empty_receipt_id":
+            return {"receipt_id": "", "result_id": "failed-result"}
+        if failure_boundary == "invalid_or_empty_result_id":
+            return {"receipt_id": "failed-receipt", "result_id": ""}
+        return {"receipt_id": "failed-receipt", "result_id": "failed-result"}
+
+    if failure_boundary == "stale_expected_state_version":
+        failure_type: Any = state_version_conflict
+        failure_message = "stale expected state version"
+    elif failure_boundary == "owner_mutation_exception":
+        failure_type = RuntimeError
+        failure_message = "matrix owner mutation failed"
+    elif failure_boundary == "invalid_mutation_result_mapping":
+        failure_type = TypeError
+        failure_message = "mapping"
+    elif failure_boundary == "invalid_or_empty_receipt_id":
+        failure_type = ValueError
+        failure_message = "receipt_id"
+    elif failure_boundary == "invalid_or_empty_result_id":
+        failure_type = ValueError
+        failure_message = "result_id"
+    elif failure_boundary == "repository_participant_prepare_failure":
+        failure_type = RuntimeError
+        failure_message = "participant-b prepare failed"
+    elif failure_boundary == "repository_participant_commit_failure":
+        failure_type = RuntimeError
+        failure_message = "participant-b commit failed"
+    else:
+        assert failure_boundary == "attesting_receipt_writer_failure"
+        failure_type = RuntimeError
+        failure_message = "attesting-receipt-writer commit failed"
+
+    with pytest.raises(failure_type, match=failure_message):
+        boundary.execute(command=failed_command, mutation=attempted_mutation)
+
+    expected_failed_calls = 0 if failure_boundary == "stale_expected_state_version" else 1
+    assert calls["count"] == expected_failed_calls
+    assert boundary.state_version == 0
+    assert boundary.snapshot_state() == {"count": 0}
+    assert boundary.list_receipts() == ()
+    for participant in participants:
+        assert participant.pending is None
+        assert participant.visible == []
+
+    for participant in participants:
+        participant.fail_phase = None
+
+    def corrected_mutation(state: dict[str, Any]) -> dict[str, str]:
+        calls["count"] += 1
+        state["count"] += 1
+        return {"receipt_id": "corrected-receipt", "result_id": "corrected-result"}
+
+    receipt = boundary.execute(command=corrected_command, mutation=corrected_mutation)
+
+    assert calls["count"] == expected_failed_calls + 1
+    assert receipt.command_id == corrected_command.command_id
+    assert receipt.input_fingerprint == corrected_command.input_fingerprint
+    assert receipt.policy_version == corrected_command.policy_version
+    assert receipt.sequence == 1
+    assert receipt.prior_state_version == 0
+    assert receipt.resulting_state_version == 1
+    assert receipt.duplicate_replay is False
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    expected_participant_truth = {
+        "command_id": corrected_command.command_id,
+        "input_fingerprint": corrected_command.input_fingerprint,
+        "policy_version": corrected_command.policy_version,
+        "state": {"count": 1},
+        "state_version": 1,
+        "sequence": 1,
+        "receipt_id": "corrected-receipt",
+    }
+    for participant in participants:
+        assert participant.pending is None
+        assert participant.visible == [
+            {
+                "role": participant.role,
+                **expected_participant_truth,
+            }
+        ]
+
+    participant_counts = tuple(
+        (participant.prepare_calls, participant.commit_calls, participant.rollback_calls)
+        for participant in participants
+    )
+    replay = boundary.execute(command=corrected_command, mutation=corrected_mutation)
+
+    assert calls["count"] == expected_failed_calls + 1
+    assert replay.receipt_id == receipt.receipt_id == "corrected-receipt"
+    assert replay.result_id == receipt.result_id == "corrected-result"
+    assert replay.sequence == receipt.sequence == 1
+    assert replay.resulting_state_version == receipt.resulting_state_version == 1
+    assert replay.duplicate_replay is True
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert participant_counts == tuple(
+        (participant.prepare_calls, participant.commit_calls, participant.rollback_calls)
+        for participant in participants
+    )
+    for participant in participants:
+        assert participant.pending is None
+        assert len(participant.visible) == 1

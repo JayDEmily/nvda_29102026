@@ -1,0 +1,1 @@
+PYTHONPATH=.venv/lib/python3.13/site-packages /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest tests/tier_b/proof_model/test_checkpoint_receipt_contract.py -q

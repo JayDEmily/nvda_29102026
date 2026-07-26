@@ -643,3 +643,115 @@ Evidence:
 6. reject both retained PM V5 mutants for their intended false-conflict reasons: mutation-failure reservation and failed-binding-by-command-identity.
 
 No production source, normative meaning, existing test semantics, proof configuration or later module is opened by this decision.
+
+## M13-PROOF-REPAIR-V5 worker proposal
+
+**Worker result:** `PROPOSED_REPAIR_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW`
+
+The authoritative Project Manager V5 `CLOSED` disposition above is preserved without
+replacement or reinterpretation. This worker section is a bounded repair proposal only.
+`M13-IMPLEMENT`, `IMPLEMENTATION_OPEN`, final Project Manager acceptance, M01 and every
+later module remain closed.
+
+### Source and preservation boundary
+
+- Sole source checkpoint: `NVDA_M13_PM_V5_CLOSED_479000b_20260726.tar.gz`.
+- Verified source archive SHA-256:
+  `a56a1097bad88c21f4d2d91196961c947b849d76f66d50fa273cb4a507446572`.
+- Verified source branch/commit:
+  `review/m13-proof-v5` /
+  `479000b512ef74b8134bc11cefc7a3ef13fac0e1`.
+- Verified source worktree: clean; complete `.git` history present; `git fsck --full
+  --no-dangling` clean; 190 reachable commits.
+- Frozen fourteen-test SHA-256:
+  `c1bc90aedf2905989c22f851f2560969868e87e50bca3f352f6bc91b91200cca`.
+- Worker branch: `proof/m13-state-kernel-repair-v5`.
+- All fourteen frozen test-function ASTs and names remain unchanged. One parameterised
+  test function was appended, producing 32 individually named semantic matrix cases and
+  46 collected semantic test items in total.
+- Preservation evidence:
+  `raw_validation/v5_worker_runs/fourteen_preservation.txt`.
+
+### Failure/binding matrix and N-06 mapping
+
+The complete auditable mapping is retained in
+`raw_validation/v5_failure_binding_matrix.tsv`. The matrix crosses eight independently
+admitted unsuccessful boundaries with four binding-comparison dimensions:
+
+| ID | Intended public-seam failure boundary | Participant-observable reach |
+|---|---|---|
+| `FB-01` | stale expected-state-version rejection | mutation and participants not reached |
+| `FB-02` | owner mutation exception | working-state mutation reached; participants not reached |
+| `FB-03` | mutation result is not a mapping | mutation reached; receipt construction and participants not reached |
+| `FB-04` | invalid or empty `receipt_id` | mutation reached; participants not reached |
+| `FB-05` | invalid or empty `result_id` | mutation reached; participants not reached |
+| `FB-06` | repository-participant `prepare()` failure | earlier participant prepared; failing participant pending; writer not prepared |
+| `FB-07` | repository-participant `commit()` failure | all prepared; earlier commit and failing commit reached; writer not committed |
+| `FB-08` | attesting-receipt writer failure | all prepared; state participants and failing writer commit reached |
+
+For every boundary the matrix independently uses:
+
+1. same command ID with a different semantic input fingerprint;
+2. different command ID with the same semantic input fingerprint;
+3. same command ID and fingerprint with a different policy version; and
+4. complete command identity unchanged, with the stale case correcting only expected
+   state version from the rejected value to actual version `0`.
+
+Every case preserves the same scoped `IdempotencyKey`, command type and consistency-unit
+ID. The failed attempt is asserted to leave state version `0`, state `{"count": 0}`, no
+receipt/sequence, no participant-visible truth and no participant pending state. Earlier
+prepared, failing, not-yet-committed and attesting-writer participants are all observed.
+
+The corrected command then uses actual version `0` through the same `UnitOfWork.execute`
+seam. A fresh sequence `1` / resulting-version `1` commit, one receipt, one successful
+mutation and participant truth containing only the corrected transaction prove that no
+failed-attempt binding remains. Exact replay returns the original receipt without any
+additional mutation, prepare, commit, version, sequence, receipt or participant truth.
+
+This maps directly to N-06: a scoped idempotency key is bound only atomically with a
+committed semantic input, committed result, resulting state version, sequence and
+attesting receipt. Each matrix failure lacks that tuple, so both transaction truth and
+the binding must remain absent.
+
+### Falsification
+
+- Conforming reference:
+  `raw_validation/v5_worker_runs/conforming_repaired_family.txt` records 46/46 passing,
+  including every parameter ID in verbose pytest output.
+- PM V5 mutation-exception reservation:
+  `raw_validation/v5_worker_runs/pm_v5_mutation_failure_old_fourteen.txt` records the
+  frozen family false positive at 14/14; the complete repaired family records 3 intended
+  failures; the single intended case records rejection when a same-command-ID corrected
+  fingerprint is falsely conflicted.
+- PM V5 command-ID-only failed binding:
+  `raw_validation/v5_worker_runs/pm_v5_command_identity_old_fourteen.txt` records the
+  frozen family false positive at 14/14; the complete repaired family records 6 intended
+  failures; the single intended prepare/fingerprint case records the false conflict.
+- Additional configurable mutation source:
+  `raw_validation/v5_configurable_failed_binding_mutant_source.py`.
+- Additional mutation matrix:
+  `raw_validation/v5_worker_runs/additional_mutants/summary.tsv` records 32/32 intended
+  rejections, crossing all eight reservation boundaries with comparison by command ID,
+  semantic input fingerprint, policy version and complete command identity. Every
+  variant has its own raw command, output and exit-code sidecar.
+- Earlier retained mutants:
+  `raw_validation/v5_worker_runs/earlier_mutants/summary.tsv` records 11/11 rejection.
+  Each mutant has both a full-family output and a single preserved-test output proving
+  the intended defect rather than an interface or fixture mismatch.
+
+### Repository-state and authority boundary
+
+- Current production remains expected-red because
+  `nvda_desk.m13_state_kernel` is absent; the repaired family collects correctly and
+  fails 46 items for that missing production seam.
+- No `src/**` file is added or changed.
+- No numbered normative document is changed.
+- `config/proof_blocks.yaml` and `config/retained_test_registry.yaml` are unchanged.
+- No frozen test function is renamed, removed, weakened or semantically reordered.
+- The only proof change is the appended V5 matrix plus worker-owned M13 proof and raw
+  validation evidence.
+
+The final Git commit, tracked evidence hashes, validation outputs and Git-preserving
+checkpoint are closeout evidence reported externally after the committed bytes exist;
+they cannot be self-recorded in those bytes without recursively changing the commit or
+archive identifier.
