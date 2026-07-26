@@ -1,0 +1,1 @@
+/workspace/scratch/91301e94ac57/m13_impl_clean.jxCJJ0/NVDA_M13_PM_V6_IMPLEMENTATION_OPEN_e8384ad_20260726/.venv/bin/python project_control/canonical_project_manager/modules/M13/raw_validation/implementation_worker/validate_architecture_boundary.py

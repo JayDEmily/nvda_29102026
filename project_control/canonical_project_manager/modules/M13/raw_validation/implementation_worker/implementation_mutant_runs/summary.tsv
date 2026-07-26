@@ -1,0 +1,9 @@
+mutant_id	full_exit_code	target_exit_code	intended_rejection	intended_defect
+publish_binding_before_participant_prepare	1	1	PASS	failed participant attempt leaves a committed scoped-key binding
+publish_internal_state_before_final_participant_commit	1	1	PASS	participant commit failure leaves internal state/version visible
+omit_rollback_of_prepare_raiser	1	1	PASS	participant establishing pending truth then raising is not rolled back
+omit_rollback_of_earlier_participant	1	1	PASS	earlier prepared or committed participant retains transaction truth
+mutate_stored_receipt_on_duplicate_replay	1	1	PASS	duplicate response changes the originally stored committed receipt
+leak_mutable_snapshot_state	1	1	PASS	caller mutation of snapshot changes committed state
+ignore_policy_version_in_committed_identity	1	1	PASS	policy-version-only key reuse is treated as an exact duplicate
+increment_sequence_on_failed_attempt	1	1	PASS	failed participant attempt consumes committed sequence
