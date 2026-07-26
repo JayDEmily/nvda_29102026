@@ -1,5 +1,3 @@
-project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/__pycache__/pm_v6_mutant_global_active_guard.cpython-313.pyc: OK
-project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/__pycache__/pm_v6_two_instance_guard_probe.cpython-313.pyc: OK
 project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/checkpoint_shadow.exit_code: OK
 project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/checkpoint_shadow.txt: OK
 project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/collection.exit_code: OK
