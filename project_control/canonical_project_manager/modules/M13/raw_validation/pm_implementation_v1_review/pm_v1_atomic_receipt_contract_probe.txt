@@ -1,0 +1,11 @@
+receipt=AtomicReceipt(receipt_id='receipt-1', result_id='result-1', command_id='command-1', command_type='command-b', consistency_unit_id='unit-b', idempotency_key=IdempotencyKey(value='key-1', command_type='command-a', consistency_unit_id='unit-a'), input_fingerprint='fingerprint-1', policy_version='policy-v1', prior_state_version=0, resulting_state_version=1.0, sequence=1, duplicate_replay=False)
+scope_matches=False
+resulting_version_type=float
+Traceback (most recent call last):
+  File "/mnt/data/nvda_m13_impl_audit/NVDA_M13_PM_V6_IMPLEMENTATION_OPEN_e8384ad_20260726/project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/pm_v1_atomic_receipt_contract_probe.py", line 36, in <module>
+    main()
+    ~~~~^^
+  File "/mnt/data/nvda_m13_impl_audit/NVDA_M13_PM_V6_IMPLEMENTATION_OPEN_e8384ad_20260726/project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/pm_v1_atomic_receipt_contract_probe.py", line 30, in main
+    assert receipt.command_type == key.command_type, "receipt command type is not bound to its idempotency scope"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: receipt command type is not bound to its idempotency scope

@@ -339,12 +339,12 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed and independently accepted:** `M13-PROOF-REPAIR-V5` preserves the fourteen existing functions and appends one auditable 32-case public-seam matrix. The accepted family spans stale expected-version rejection, owner mutation exception, invalid mutation result, invalid receipt identity, invalid result identity, participant `prepare()` failure, participant `commit()` failure and attesting-receipt writer failure. Command ID, semantic fingerprint, policy version and complete identity/corrected version are exercised independently.
+**Completed but not implementation-accepted:** the M13 V1 implementation proposal at `ddbd7257ab7305b2a3648f9f1d810b07670808aa` adds only the accepted four-file non-durable state-kernel package and passes the frozen 46-case family, persistence proof, proof-executor and checkpoint shadows.
 
-**Independent PM V6 disposition:** `IMPLEMENTATION_OPEN`.
+**Independent PM implementation disposition:** `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH`.
 
-The conforming reference passes 46/46. Both PM V5 false-positive implementations pass the frozen fourteen-test family but are rejected by the repaired family. The 32 configurable failed-binding variants and 11 earlier retained mutants are rejected for their intended behaviours. Current production remains expected-red solely because `nvda_desk.m13_state_kernel` is absent.
+A nested `execute()` can begin from inside owner mutation before the outer transaction commits. The inner and outer attempts both publish sequence/version `1`; the inner state mutation is overwritten while its receipt and idempotency binding remain. This contradicts N-06 deterministic sequence and later-transaction ordering. The exported `AtomicReceipt` also accepts duplicated scope fields that disagree with its embedded `IdempotencyKey` and accepts a float resulting-state version.
 
-**Current:** bounded `M13-IMPLEMENT` under `MLC-I` only. Implement the smallest semantically complete non-durable alpha state kernel, run the frozen targeted proof, affected proof, architecture/dependency checks and complete legacy shadow evidence, perform post-change vocabulary review, create one bounded commit and return a clean Git-preserving checkpoint.
+**Current:** test-only `M13-PROOF-REPAIR-V6`. Preserve all 46 existing cases and add minimum public-seam proof for re-entry rejection, active-attempt cleanup, no nested state/receipt/binding truth, receipt-scope self-consistency and exact integer state-version fields.
 
-**Return boundary:** the implementation worker may not self-accept M13, merge to `main`, begin M01 or issue module completion. Final M13 implementation acceptance remains an independent Project Manager decision.
+**Return boundary:** the proof-repair worker may not modify M13 production source, normative authority, configuration or later modules, may not self-accept the repaired proof and may not reopen implementation. `M13-IMPLEMENT`, merge, M01 and all later modules remain closed until independent PM proof acceptance.

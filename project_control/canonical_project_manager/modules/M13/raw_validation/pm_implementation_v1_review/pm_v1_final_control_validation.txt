@@ -1,0 +1,10 @@
+source_checkpoint=PASS
+pm_role_separation=PASS
+pm_prohibited_mutation_scan=PASS
+frozen_proof_hash=PASS
+frozen_proof_46=PASS
+reentrant_probe=DEFECT_REPRODUCED
+atomic_receipt_probe=DEFECT_REPRODUCED
+control_consistency=PASS
+manifest_shape=PASS
+disposition=CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH

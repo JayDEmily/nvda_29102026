@@ -588,3 +588,41 @@ The long falsification runners were re-executed in bounded batches from a dispos
 | Git diff check | PASS |
 
 Exact PM rerun records are retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/`.
+
+## 2026-07-26 — Independent M13 implementation V1 review
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_IMPLEMENTATION_PROPOSED_ddbd725_20260726.tar(1).gz`.
+- Archive SHA-256: `f522111ce84bab3b785bb161a71c0bf00e569263d4ba050744d30b19ac933c5e`.
+- Worker branch/commit/worktree: `implementation/m13-state-kernel` / `ddbd7257ab7305b2a3648f9f1d810b07670808aa` / clean.
+- Frozen M13 proof SHA-256: `7f4fd1e3d9c7f7dc75675146f9e2a38d4fb259a1938986c7cdfc2b006ddfab0a`.
+- Production changes: exactly four files under `src/nvda_desk/m13_state_kernel/`; no test, normative or proof-configuration mutation.
+
+### Positive validation
+
+| Check | Result |
+|---|---|
+| Frozen M13 proof | PASS — 46 passed |
+| Complete persistence Tier A | PASS — 82 passed |
+| Proof blocks | PASS — 52 |
+| Proof executor | PASS — 21 passed |
+| Checkpoint shadow | PASS — 2 passed |
+| Architecture/integrity/public-contract worker validators | PASS |
+| Implementation-derived mutant runner | PASS — eight full and targeted intended rejections independently observed |
+| Complete repository shadow | 61 failed, 1247 passed; agrees with worker current-state count |
+
+### Independent blocking probes
+
+| Probe | Result | Observed defect |
+|---|---|---|
+| Re-entrant `execute()` during owner mutation | FAIL as required for detection | two receipts survive with sequence/version `1`; inner state is overwritten while its receipt/binding remains |
+| Direct `AtomicReceipt` construction | FAIL as required for detection | mismatched receipt/key scope and float resulting version are accepted |
+
+### Disposition
+
+`CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH`
+
+The next unit is test-only proof repair. M13 source repair, merge, completion, M01 and later modules remain closed.
+
+Exact PM evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/`.

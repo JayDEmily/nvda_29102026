@@ -4,14 +4,14 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_accepted_implementation_open` |
+| Status | `m13_implementation_review_closed_proof_and_contract_gap` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-proof-v6` |
-| Current unit | `M13-IMPLEMENT` open; implement the accepted non-durable alpha `state_kernel` against the frozen 46-case proof family |
+| Current branch | `review/m13-implementation-v1` |
+| Current unit | `M13-PROOF-REPAIR-V6`; test-only repair for re-entrant execution and AtomicReceipt self-consistency |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
@@ -21,8 +21,8 @@
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | open only for the bounded `src/nvda_desk/m13_state_kernel/**` implementation on the next worker branch; tests, normative authority, proof configuration and later modules remain closed |
-| First implementation module | `M13 state_kernel`; independent proof accepted and bounded implementation now open |
+| Production/source mutation | closed during `M13-PROOF-REPAIR-V6`; only the bounded M13 test/proof record and worker-owned proof evidence may change |
+| First implementation module | `M13 state_kernel`; V1 proposal rejected pending proof repair and later implementation repair |
 | Gate D | module-gated; no global opening |
 
 Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
@@ -69,7 +69,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-PROOF-REPAIR-V3` | `independent_pm_closed_failed_idempotency_binding_gap` | thirteen-test family rejects the prior rollback mutant but allows a failed transaction to reserve the scoped idempotency key and block a different uncommitted input |
 | `M13-PROOF-REPAIR-V4` | `independent_pm_closed_mutation_failure_binding_gap` | fourteen-test family rejects participant-failure reservation but permits mutation-failure-only reservation of the same uncommitted key |
 | `M13-PROOF-REPAIR-V5` | `independent_pm_accepted` | fourteen frozen functions preserved; 32-case failure/binding matrix accepted; conforming 46/46; PM V5, configurable and earlier mutants rejected |
-| `M13-IMPLEMENT` | `IMPLEMENTATION_OPEN` | bounded non-durable alpha state-kernel implementation only; must return for independent PM implementation review |
+| `M13-IMPLEMENT` | `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH` | proposal passes 46/46 but permits nested transaction corruption and incoherent public receipt values |
+| `M13-PROOF-REPAIR-V6` | `current_test_only_return_gate` | add proof for re-entry rejection, active-attempt cleanup, receipt scope consistency and exact integer versions |
 
 ## Initial serial module order
 
@@ -113,6 +114,6 @@ Forbidden and not performed:
 
 ## Next gate
 
-`M13-PROOF-REPAIR-V5` is independently accepted. The frozen authoritative proof now contains 46 semantic items: fourteen preserved tests plus a 32-case matrix spanning eight admitted unsuccessful boundaries and four independently varied identity dimensions. The conforming reference passes 46/46; both PM V5 false positives, all 32 configurable failed-binding mutants and all 11 earlier retained mutants are rejected for their intended reasons.
+The M13 V1 implementation proposal passes the frozen 46-case family and the worker's bounded validation, but independent PM probes identify two uncovered target defects. Re-entrant execution during owner mutation produces two receipts with sequence/version `1`, overwrites the inner state mutation and retains its receipt/binding. `AtomicReceipt` also accepts scope fields inconsistent with its embedded idempotency key and accepts a float resulting-state version.
 
-The next lawful unit is `M13-IMPLEMENT` only. Implement the accepted public seam in `src/nvda_desk/m13_state_kernel/**` as a deliberately non-durable in-memory alpha kernel. Do not alter the frozen proof, normative authority, proof configuration, unrelated persistence code or later modules. The implementation must make the 46-case family green, preserve all shadow evidence, complete mutation and architecture validation, record exact evidence, commit and produce one Git-preserving checkpoint for independent PM review. M01 remains closed.
+The next lawful unit is test-only `M13-PROOF-REPAIR-V6`. Preserve all 46 cases and add minimum public-seam proof for re-entry rejection and cleanup plus receipt-scope and exact-integer version validation. Production source must not change until the repaired proof receives independent PM acceptance. M13 merge/completion, M01 and all later modules remain closed.

@@ -791,3 +791,22 @@ Raw independent reruns and review records are retained under `raw_validation/pm_
 Only `M13-IMPLEMENT` is opened. The implementation worker may create or modify the bounded package `src/nvda_desk/m13_state_kernel/**` and worker-owned M13 implementation evidence expressly authorised by the implementation brief. The frozen 46-case test semantics, N-06 authority, proof/retained configuration, unrelated persistence code, M01 and every later module remain closed.
 
 The implementation worker cannot provide final module acceptance. The resulting checkpoint must return to an independent Project Manager for implementation review before any merge or M01 work.
+
+## Independent implementation V1 review — proof insufficiency discovered
+
+**Date:** 2026-07-26
+**Worker proposal:** `ddbd7257ab7305b2a3648f9f1d810b07670808aa`
+**Disposition:** `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH`
+
+The implementation proposal passes all 46 accepted cases, but implementation review exposed behaviours not covered by that family:
+
+1. A nested call to the same `UnitOfWork.execute()` from inside owner mutation is permitted before the active transaction commits. The inner and outer calls both publish sequence/version `1`; the inner state mutation is overwritten while its receipt and idempotency binding remain. This violates N-06 deterministic sequencing and the rule that a later transaction begins only from an admitted prior committed result.
+2. The exported `AtomicReceipt` accepts command-type and consistency-unit fields that contradict its embedded `IdempotencyKey`, and accepts a float resulting-state version. This violates the accepted public receipt-truth binding.
+
+The 46-case family therefore remains lawful for the behaviours it proves but is not sufficient for final M13 implementation acceptance. The next lawful unit is test-only `M13-PROOF-REPAIR-V6`, preserving all current cases and adding public-seam proof for re-entry rejection/cleanup plus receipt self-consistency and exact integer version fields. Production source repair remains closed until independent acceptance of that proof repair.
+
+Full decision and executable probes:
+
+- `M13_IMPLEMENTATION_PM_REVIEW_V1.md`;
+- `raw_validation/pm_implementation_v1_review/pm_v1_reentrant_execute_probe.py`;
+- `raw_validation/pm_implementation_v1_review/pm_v1_atomic_receipt_contract_probe.py`.
