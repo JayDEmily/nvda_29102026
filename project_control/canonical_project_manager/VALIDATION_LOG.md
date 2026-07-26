@@ -569,3 +569,22 @@ Evidence is retained under `project_control/canonical_project_manager/modules/M1
 ### Gate result
 
 The proof is sufficient to constrain implementation of the non-durable alpha transaction kernel. `M13-IMPLEMENT` is open under the frozen 46-case family. This does not accept implementation, durability, restart recovery, external effects, M01 or later-module work.
+
+### PM V6 post-acceptance independent closeout validation
+
+The long falsification runners were re-executed in bounded batches from a disposable extraction so the worker's retained evidence was not overwritten.
+
+| Check | Result |
+|---|---|
+| Configurable failed-binding variants | PASS — 32/32 independently rejected for the intended hidden-binding false conflict |
+| Earlier retained mutants | PASS — 11/11 independently rejected in full-family and targeted runs for the intended defect |
+| Proof executor | PASS — 21 passed |
+| Persistence shadow excluding M13 | PASS — 36 passed, 46 deselected |
+| Checkpoint shadow | PASS — 2 passed |
+| Proof-block structure | PASS — 52 blocks |
+| YAML parse | PASS |
+| Python syntax | PASS |
+| Repository scaffold | PASS |
+| Git diff check | PASS |
+
+Exact PM rerun records are retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/`.
