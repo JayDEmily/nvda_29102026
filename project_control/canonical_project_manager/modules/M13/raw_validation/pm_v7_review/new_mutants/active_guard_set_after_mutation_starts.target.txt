@@ -1,0 +1,658 @@
+FFFFFFFF............................                                     [100%]
+=================================== FAILURES ===================================
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-same-scoped-idempotency-key--outer-outer-commits-caught--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'same_scoped_idempotency_key'
+outer_outcome = 'outer_commits_caught'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+>           assert outer_receipt.sequence == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1348: AssertionError
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-same-scoped-idempotency-key--outer-outer-fails-unhandled--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'same_scoped_idempotency_key'
+outer_outcome = 'outer_fails_unhandled'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+            assert outer_receipt.sequence == 1
+            assert outer_receipt.prior_state_version == 0
+            assert outer_receipt.resulting_state_version == 1
+            assert boundary.state_version == 1
+            assert boundary.snapshot_state() == {"outer": 1, "nested": 0}
+            assert boundary.list_receipts() == (outer_receipt,)
+            assert participant.visible == [
+                {
+                    "command_id": "command-outer",
+                    "state": {"outer": 1, "nested": 0},
+                    "receipt_id": "receipt-outer",
+                    "sequence": 1,
+                    "state_version": 1,
+                }
+            ]
+        else:
+            expected_message = "outer rollback trigger" if phase == "participant_rollback" else None
+            if expected_message is None:
+>               with pytest.raises(RuntimeError):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE <class 'RuntimeError'>
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1366: Failed
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-key-same-command-type-and-unit--outer-outer-commits-caught--nested-runtime-rejection] _
+
+phase = 'owner_mutation'
+scope_relationship = 'different_key_same_command_type_and_unit'
+outer_outcome = 'outer_commits_caught'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+>           assert outer_receipt.sequence == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1348: AssertionError
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-key-same-command-type-and-unit--outer-outer-fails-unhandled--nested-runtime-rejection] _
+
+phase = 'owner_mutation'
+scope_relationship = 'different_key_same_command_type_and_unit'
+outer_outcome = 'outer_fails_unhandled'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+            assert outer_receipt.sequence == 1
+            assert outer_receipt.prior_state_version == 0
+            assert outer_receipt.resulting_state_version == 1
+            assert boundary.state_version == 1
+            assert boundary.snapshot_state() == {"outer": 1, "nested": 0}
+            assert boundary.list_receipts() == (outer_receipt,)
+            assert participant.visible == [
+                {
+                    "command_id": "command-outer",
+                    "state": {"outer": 1, "nested": 0},
+                    "receipt_id": "receipt-outer",
+                    "sequence": 1,
+                    "state_version": 1,
+                }
+            ]
+        else:
+            expected_message = "outer rollback trigger" if phase == "participant_rollback" else None
+            if expected_message is None:
+>               with pytest.raises(RuntimeError):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE <class 'RuntimeError'>
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1366: Failed
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-consistency-unit--outer-outer-commits-caught--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'different_consistency_unit'
+outer_outcome = 'outer_commits_caught'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+>           assert outer_receipt.sequence == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1348: AssertionError
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-consistency-unit--outer-outer-fails-unhandled--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'different_consistency_unit'
+outer_outcome = 'outer_fails_unhandled'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+            assert outer_receipt.sequence == 1
+            assert outer_receipt.prior_state_version == 0
+            assert outer_receipt.resulting_state_version == 1
+            assert boundary.state_version == 1
+            assert boundary.snapshot_state() == {"outer": 1, "nested": 0}
+            assert boundary.list_receipts() == (outer_receipt,)
+            assert participant.visible == [
+                {
+                    "command_id": "command-outer",
+                    "state": {"outer": 1, "nested": 0},
+                    "receipt_id": "receipt-outer",
+                    "sequence": 1,
+                    "state_version": 1,
+                }
+            ]
+        else:
+            expected_message = "outer rollback trigger" if phase == "participant_rollback" else None
+            if expected_message is None:
+>               with pytest.raises(RuntimeError):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE <class 'RuntimeError'>
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1366: Failed
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-command-type--outer-outer-commits-caught--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'different_command_type'
+outer_outcome = 'outer_commits_caught'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+>           assert outer_receipt.sequence == 1
+E           AssertionError: assert 2 == 1
+E            +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1348: AssertionError
+_ test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-command-type--outer-outer-fails-unhandled--nested-runtime-rejection] _
+
+phase = 'owner_mutation', scope_relationship = 'different_command_type'
+outer_outcome = 'outer_fails_unhandled'
+
+    @pytest.mark.parametrize(
+        "phase,scope_relationship,outer_outcome",
+        _M13_V6_REENTRANT_MATRIX,
+    )
+    def test_m13_v6_single_active_attempt_excludes_nested_execute_matrix(
+        phase: str,
+        scope_relationship: str,
+        outer_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            _,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_phase = "participant_commit" if phase == "attesting_receipt_writer" else phase
+        participant = _v6_reentrant_participant(
+            repository_port,
+            callback_phase=participant_phase,
+            outer_outcome=outer_outcome,
+        )
+        boundary = in_memory_uow(
+            initial_state={"outer": 0, "nested": 0},
+            repository_ports=(participant,),
+        )
+        participant.boundary = boundary
+        outer_key = _key(key_type, value="idem-outer")
+        outer_command = _command(
+            command_type,
+            key_type,
+            key=outer_key,
+            command_id="command-outer",
+        )
+        nested_command = _v6_nested_command(
+            command_type,
+            key_type,
+            outer_key=outer_key,
+            scope_relationship=scope_relationship,
+            expected_state_version=0,
+        )
+        participant.nested_command = nested_command
+        owner_attempted = {"value": False}
+    
+        def outer_mutation(state: dict[str, Any]) -> dict[str, str]:
+            state["outer"] += 1
+            if phase == "owner_mutation":
+                owner_attempted["value"] = True
+                participant._attempt_nested()
+            return {"receipt_id": "receipt-outer", "result_id": "result-outer"}
+    
+        outer_commits = outer_outcome == "outer_commits_caught"
+        if outer_commits:
+            outer_receipt = boundary.execute(
+                command=outer_command,
+                mutation=outer_mutation,
+            )
+            assert outer_receipt.receipt_id == "receipt-outer"
+            assert outer_receipt.sequence == 1
+            assert outer_receipt.prior_state_version == 0
+            assert outer_receipt.resulting_state_version == 1
+            assert boundary.state_version == 1
+            assert boundary.snapshot_state() == {"outer": 1, "nested": 0}
+            assert boundary.list_receipts() == (outer_receipt,)
+            assert participant.visible == [
+                {
+                    "command_id": "command-outer",
+                    "state": {"outer": 1, "nested": 0},
+                    "receipt_id": "receipt-outer",
+                    "sequence": 1,
+                    "state_version": 1,
+                }
+            ]
+        else:
+            expected_message = "outer rollback trigger" if phase == "participant_rollback" else None
+            if expected_message is None:
+>               with pytest.raises(RuntimeError):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE <class 'RuntimeError'>
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1366: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-same-scoped-idempotency-key--outer-outer-commits-caught--nested-runtime-rejection] - AssertionError: assert 2 == 1
+ +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-same-scoped-idempotency-key--outer-outer-fails-unhandled--nested-runtime-rejection] - Failed: DID NOT RAISE <class 'RuntimeError'>
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-key-same-command-type-and-unit--outer-outer-commits-caught--nested-runtime-rejection] - AssertionError: assert 2 == 1
+ +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-key-same-command-type-and-unit--outer-outer-fails-unhandled--nested-runtime-rejection] - Failed: DID NOT RAISE <class 'RuntimeError'>
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-consistency-unit--outer-outer-commits-caught--nested-runtime-rejection] - AssertionError: assert 2 == 1
+ +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-consistency-unit--outer-outer-fails-unhandled--nested-runtime-rejection] - Failed: DID NOT RAISE <class 'RuntimeError'>
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-command-type--outer-outer-commits-caught--nested-runtime-rejection] - AssertionError: assert 2 == 1
+ +  where 2 = AtomicReceipt(receipt_id='receipt-outer', result_id='result-outer', command_id='command-outer', command_type='position... policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=2, duplicate_replay=False).sequence
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_single_active_attempt_excludes_nested_execute_matrix[phase-owner-mutation--scope-different-command-type--outer-outer-fails-unhandled--nested-runtime-rejection] - Failed: DID NOT RAISE <class 'RuntimeError'>
+8 failed, 28 passed, 95 deselected in 0.25s

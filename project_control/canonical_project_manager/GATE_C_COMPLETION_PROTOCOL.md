@@ -339,12 +339,12 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed but not implementation-accepted:** the M13 V1 implementation proposal at `ddbd7257ab7305b2a3648f9f1d810b07670808aa` adds only the accepted four-file non-durable state-kernel package and passes the frozen 46-case family, persistence proof, proof-executor and checkpoint shadows.
+**Completed but not independently accepted:** `M13-PROOF-REPAIR-V6` preserves the original 46 cases, adds 85 cases and passes the proof-only conforming reference 131/131. It closes the known same-instance re-entrancy and `AtomicReceipt` gaps and rejects its 16 declared V6 mutants.
 
-**Independent PM implementation disposition:** `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH`.
+**Independent PM disposition:** `CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`.
 
-A nested `execute()` can begin from inside owner mutation before the outer transaction commits. The inner and outer attempts both publish sequence/version `1`; the inner state mutation is overwritten while its receipt and idempotency binding remain. This contradicts N-06 deterministic sequence and later-transaction ordering. The exported `AtomicReceipt` also accepts duplicated scope fields that disagree with its embedded `IdempotencyKey` and accepts a float resulting-state version.
+A proof-only implementation using one module-global active-attempt flag passes all 131 V6 cases. It nevertheless blocks a second distinct `UnitOfWork` with a different command type and consistency unit merely because another instance is active. The conforming per-instance reference allows both independent transactions to commit their own version/sequence `1` truth. This contradicts the V6 per-instance boundary and N-06 independent owner-transaction law.
 
-**Current:** test-only `M13-PROOF-REPAIR-V6`. Preserve all 46 existing cases and add minimum public-seam proof for re-entry rejection, active-attempt cleanup, no nested state/receipt/binding truth, receipt-scope self-consistency and exact integer state-version fields.
+**Current:** test-only `M13-PROOF-REPAIR-V7`. Preserve all 131 cases and add the minimum positive two-instance independence proof plus process/module/class-global guard falsification.
 
-**Return boundary:** the proof-repair worker may not modify M13 production source, normative authority, configuration or later modules, may not self-accept the repaired proof and may not reopen implementation. `M13-IMPLEMENT`, merge, M01 and all later modules remain closed until independent PM proof acceptance.
+**Return boundary:** the worker may not modify M13 production source, normative authority, configuration or later modules, may not self-accept the repaired proof and may not reopen implementation. `M13-IMPLEMENT-REPAIR-V1`, merge, M01 and all later modules remain closed until independent V7 proof acceptance.

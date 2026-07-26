@@ -1,0 +1,3 @@
+Raw pytest outputs are retained byte-for-byte and may contain framework-emitted trailing spaces. They are excluded from whitespace checking rather than edited.
+COMMAND=git diff --cached --check -- . ':(exclude)project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/**'
+RESULT=PASS

@@ -1,0 +1,28 @@
+.F..........................                                             [100%]
+=================================== FAILURES ===================================
+_ test_m13_v6_atomic_receipt_rejects_contradictory_or_invalid_truth_matrix[scope-consistency-unit-mismatches-embedded-key] _
+
+overrides = {'consistency_unit_id': 'different-consistency-unit'}
+error_type = <class 'ValueError'>
+
+    @pytest.mark.parametrize(
+        "overrides,error_type",
+        _M13_V6_INVALID_RECEIPT_MATRIX,
+    )
+    def test_m13_v6_atomic_receipt_rejects_contradictory_or_invalid_truth_matrix(
+        overrides: dict[str, Any],
+        error_type: Any,
+    ) -> None:
+        atomic_receipt, _, key_type, _, _, _, _, _ = _contracts()
+        key = _key(key_type, value="idem-v6-receipt")
+        arguments = _v6_receipt_kwargs(key)
+        arguments.update(overrides)
+    
+>       with pytest.raises(error_type):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1840: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_atomic_receipt_rejects_contradictory_or_invalid_truth_matrix[scope-consistency-unit-mismatches-embedded-key] - Failed: DID NOT RAISE <class 'ValueError'>
+1 failed, 27 passed, 103 deselected in 0.09s

@@ -1,0 +1,2 @@
+config/proof_blocks.yaml PASS
+config/retained_test_registry.yaml PASS

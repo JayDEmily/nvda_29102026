@@ -1,0 +1,1 @@
+PYTHONPATH=src python project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_mutant_global_active_guard.py --quiet --test-file tests/tier_a/persistence/test_m13_state_kernel_contract.py

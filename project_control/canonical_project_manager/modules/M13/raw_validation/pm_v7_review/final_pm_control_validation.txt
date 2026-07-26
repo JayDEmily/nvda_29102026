@@ -1,0 +1,11 @@
+branch review/m13-proof-v7
+worker_head d01f75813260cae46597ed9d258ee68efb4b6508
+pm_changed_paths 8
+production_test_normative_config_changes=NONE
+v6_collection=131
+v6_global_guard_mutant=FALSE_POSITIVE_131_PASS
+two_instance_reference=PASS
+two_instance_global_guard=REJECTED
+declared_v6_mutants=16_INDEPENDENTLY_REJECTED
+gate_result=CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION
+final_pm_control_validation=PASS

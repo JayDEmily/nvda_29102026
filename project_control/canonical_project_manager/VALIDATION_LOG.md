@@ -626,3 +626,31 @@ Exact PM rerun records are retained under `project_control/canonical_project_man
 The next unit is test-only proof repair. M13 source repair, merge, completion, M01 and later modules remain closed.
 
 Exact PM evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/`.
+
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V6` Project Manager review
+
+### Source verification
+
+- Archive SHA-256: `37f54c1d4581b2a30bc7770b4a55cc9acde81832bb98ba2935ad6e8bade5f93a`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v6` / `d01f75813260cae46597ed9d258ee68efb4b6508` / clean.
+- Changed-path boundary: one M13 test plus M13 proof/evidence only; no production, normative or configuration mutation.
+
+### Positive validation
+
+- Frozen function AST: 15/15 unchanged; nine V6 functions added.
+- Collection: 131.
+- Conforming reference: 131 passed.
+- Rejected implementation: 43 failed, 88 passed; original 46 green.
+- Declared V6 mutants: 16/16 independently rejected in full and designated runs.
+- Proof blocks 52; proof executor 21; non-M13 persistence 36; checkpoint 2; YAML and diff checks passed.
+
+### Independent blocker
+
+A module-global active-attempt guard passes all 131 cases. A direct two-instance public-seam probe passes on the conforming reference but fails on the global-guard mutant, which blocks a second unrelated `UnitOfWork` while the first is active.
+
+### Gate result
+
+`CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`
+
+Return only to test-only V7 proof repair. Production repair, merge, M01 and later modules remain closed.

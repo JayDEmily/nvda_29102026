@@ -1,0 +1,1939 @@
+..FFFFFFFFF                                                              [100%]
+=================================== FAILURES ===================================
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-stale-version-rejection--fresh-admitted] _
+
+terminal_outcome = 'stale_version'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b990934d0>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-mutation-exception--fresh-admitted] _
+
+terminal_outcome = 'mutation_exception'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b990a3e10>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-non-mapping-mutation-result--fresh-admitted] _
+
+terminal_outcome = 'non_mapping_mutation_result'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b98e2c770>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-invalid-receipt-id--fresh-admitted] _
+
+terminal_outcome = 'invalid_receipt_id'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b990f6570>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-invalid-result-id--fresh-admitted] _
+
+terminal_outcome = 'invalid_result_id'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b9911ef10>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-participant-prepare-failure--fresh-admitted] _
+
+terminal_outcome = 'participant_prepare_failure'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b9911f570>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-participant-commit-failure--fresh-admitted] _
+
+terminal_outcome = 'participant_commit_failure'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b98e0a250>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-receipt-writer-failure--fresh-admitted] _
+
+terminal_outcome = 'receipt_writer_failure'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b98e0a750>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+_ test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-nested-execution-rejection--fresh-admitted] _
+
+terminal_outcome = 'nested_execution_rejection'
+
+    @pytest.mark.parametrize("terminal_outcome", _M13_V6_ACTIVE_LIFECYCLE_MATRIX)
+    def test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome(
+        terminal_outcome: str,
+    ) -> None:
+        (
+            _,
+            _,
+            key_type,
+            in_memory_uow,
+            repository_port,
+            state_version_conflict,
+            command_type,
+            _,
+        ) = _contracts()
+        participant_a = _matrix_participant(
+            repository_port,
+            name="participant-a",
+            role="state-participant",
+        )
+        participant_b = _matrix_participant(
+            repository_port,
+            name="participant-b",
+            role="state-participant",
+            fail_phase=(
+                "prepare"
+                if terminal_outcome == "participant_prepare_failure"
+                else "commit" if terminal_outcome == "participant_commit_failure" else None
+            ),
+        )
+        receipt_writer = _matrix_participant(
+            repository_port,
+            name="attesting-receipt-writer",
+            role="attesting-receipt-writer",
+            fail_phase="commit" if terminal_outcome == "receipt_writer_failure" else None,
+        )
+        participants = (participant_a, participant_b, receipt_writer)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=participants,
+        )
+        attempted_key = _key(key_type, value="idem-attempt")
+        attempted_command = _command(
+            command_type,
+            key_type,
+            key=attempted_key,
+            command_id="command-attempt",
+            expected_state_version=1 if terminal_outcome == "stale_version" else 0,
+        )
+        mutation_calls = {"count": 0}
+    
+        def attempted_mutation(state: dict[str, Any]) -> Any:
+            mutation_calls["count"] += 1
+            state["count"] += 1
+            if terminal_outcome == "mutation_exception":
+                raise RuntimeError("lifecycle mutation failed")
+            if terminal_outcome == "non_mapping_mutation_result":
+                return ("not", "a", "mapping")
+            if terminal_outcome == "invalid_receipt_id":
+                return {"receipt_id": "", "result_id": "result-attempt"}
+            if terminal_outcome == "invalid_result_id":
+                return {"receipt_id": "receipt-attempt", "result_id": ""}
+            if terminal_outcome == "nested_execution_rejection":
+                nested_command = _command(
+                    command_type,
+                    key_type,
+                    key=_key(key_type, value="idem-nested-lifecycle"),
+                    command_id="command-nested-lifecycle",
+                    fingerprint=_FINGERPRINT_B,
+                    expected_state_version=0,
+                )
+                boundary.execute(
+                    command=nested_command,
+                    mutation=_mutation(
+                        receipt_id="receipt-nested-lifecycle",
+                        result_id="result-nested-lifecycle",
+                    ),
+                )
+            return {"receipt_id": "receipt-attempt", "result_id": "result-attempt"}
+    
+        committed_before_fresh = terminal_outcome in (
+            "successful_commit",
+            "exact_duplicate_replay",
+        )
+        if terminal_outcome == "successful_commit":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert first.sequence == 1
+        elif terminal_outcome == "exact_duplicate_replay":
+            first = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            replay = boundary.execute(
+                command=attempted_command,
+                mutation=attempted_mutation,
+            )
+            assert replay.receipt_id == first.receipt_id
+            assert replay.duplicate_replay is True
+            assert mutation_calls["count"] == 1
+        elif terminal_outcome == "stale_version":
+            with pytest.raises(state_version_conflict, match="stale expected state version"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "mutation_exception":
+            with pytest.raises(RuntimeError, match="lifecycle mutation failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "non_mapping_mutation_result":
+            with pytest.raises(TypeError, match="mapping"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_receipt_id":
+            with pytest.raises(ValueError, match="receipt_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "invalid_result_id":
+            with pytest.raises(ValueError, match="result_id"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_prepare_failure":
+            with pytest.raises(RuntimeError, match="participant-b prepare failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "participant_commit_failure":
+            with pytest.raises(RuntimeError, match="participant-b commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        elif terminal_outcome == "receipt_writer_failure":
+            with pytest.raises(RuntimeError, match="attesting-receipt-writer commit failed"):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+        else:
+            assert terminal_outcome == "nested_execution_rejection"
+            with pytest.raises(RuntimeError):
+                boundary.execute(
+                    command=attempted_command,
+                    mutation=attempted_mutation,
+                )
+    
+        expected_commits = 1 if committed_before_fresh else 0
+        assert boundary.state_version == expected_commits
+        assert len(boundary.list_receipts()) == expected_commits
+        assert boundary.snapshot_state() == {"count": expected_commits}
+        for participant in participants:
+            assert participant.pending is None
+            assert len(participant.visible) == expected_commits
+    
+        participant_b.fail_phase = None
+        receipt_writer.fail_phase = None
+        fresh_key = _key(key_type, value="idem-fresh") if committed_before_fresh else attempted_key
+        fresh_command = _command(
+            command_type,
+            key_type,
+            key=fresh_key,
+            command_id="command-fresh",
+            fingerprint=_FINGERPRINT_B,
+            expected_state_version=expected_commits,
+            policy_version="transaction-v2",
+        )
+        fresh_calls = {"count": 0}
+    
+        def fresh_mutation(state: dict[str, Any]) -> dict[str, str]:
+            fresh_calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-fresh", "result_id": "result-fresh"}
+    
+>       fresh = boundary.execute(command=fresh_command, mutation=fresh_mutation)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:1647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f0b98f1eb70>
+
+    def execute(self, *, command: TransactionCommand, mutation: Any) -> AtomicReceipt:
+        allow_all_nested = MODE in {
+            "nested_receipt_commits_later_loses_state",
+            "nested_and_outer_reuse_sequence",
+            "nested_and_outer_reuse_resulting_version",
+        }
+        if self._active_attempt:
+            if MODE == "nested_state_commits_without_receipt":
+                return self._defer_nested_state_without_receipt(
+                    command=command,
+                    mutation=mutation,
+                )
+            if allow_all_nested or self._allowed_by_scoped_guard(command):
+                return self._execute_active(command=command, mutation=mutation)
+>           raise RuntimeError("UnitOfWork.execute attempt is already active")
+E           RuntimeError: UnitOfWork.execute attempt is already active
+
+project_control/canonical_project_manager/modules/M13/raw_validation/v6_worker/v6_configurable_mutant_source.py:205: RuntimeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-stale-version-rejection--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-mutation-exception--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-non-mapping-mutation-result--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-invalid-receipt-id--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-invalid-result-id--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-participant-prepare-failure--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-participant-commit-failure--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-receipt-writer-failure--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_v6_active_attempt_state_clears_after_every_terminal_outcome[terminal-nested-execution-rejection--fresh-admitted] - RuntimeError: UnitOfWork.execute attempt is already active
+9 failed, 2 passed, 120 deselected in 0.27s

@@ -2,10 +2,11 @@
 
 ## Status
 
-`M13_PROOF_REPAIR_V4_REJECTED_MUTATION_FAILURE_BINDING_GAP`
+`M13_PROOF_REPAIR_V6_REJECTED_INSTANCE_SCOPE_GAP`
 
 - Module: `M13 state_kernel`
-- Reviewed worker branch: `proof/m13-state-kernel-repair-v4` at `31e8ac38488466d1d457f98ffe014576423a5ebf`
+- Current reviewed worker branch: `proof/m13-state-kernel-repair-v6` at `d01f75813260cae46597ed9d258ee68efb4b6508`; source archive SHA-256 `37f54c1d4581b2a30bc7770b4a55cc9acde81832bb98ba2935ad6e8bade5f93a`
+- Historical V4 reviewed worker branch: `proof/m13-state-kernel-repair-v4` at `31e8ac38488466d1d457f98ffe014576423a5ebf`
 - Independent PM V4 review branch: `review/m13-proof-v4`; reviewed source commit `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`; source archive SHA-256 `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`
 - Independent PM V3 review branch: `review/m13-proof-v3`; reviewed source commit `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`; source archive SHA-256 `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`
 - Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
@@ -18,7 +19,7 @@
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
-- Production source: closed; V3 worker repair changes one candidate test plus worker proof/validation evidence only
+- Production source: closed; V7 may change only the bounded M13 proof and worker-owned proof/validation evidence. The rejected four-file M13 implementation remains frozen.
 
 ## Provenance boundary
 
@@ -974,3 +975,31 @@ closed by the Project Manager disposition.
 The final commit, tracked evidence hashes and Git-preserving archive identifiers are
 closeout facts reported after the committed bytes exist; embedding them here would
 recursively alter those identifiers.
+
+
+## Independent Project Manager V6 review
+
+**Disposition:** `CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`
+
+The V6 worker proposal is accepted as lawful partial proof but rejected as sufficient proof.
+
+Independently reproduced positives:
+
+- 15/15 frozen pre-V6 test-function ASTs unchanged;
+- 131 cases collected;
+- conforming reference 131/131 passed;
+- rejected implementation 43 failed / 88 passed with the original 46 green;
+- 16/16 declared V6 mutants rejected by their full and designated cases;
+- proof blocks 52, proof executor 21, non-M13 persistence 36 and checkpoint shadow 2 passed.
+
+Blocking falsification:
+
+- A proof-only module-global active-guard mutant passes all 131 cases.
+- A direct public-seam probe using two distinct `UnitOfWork` instances, different command types and different consistency units passes on the conforming per-instance reference.
+- The same probe fails on the global-guard mutant with `RuntimeError: UnitOfWork.execute attempt is already active` solely because the other instance is active.
+
+The V6 proof therefore establishes same-instance exclusion but does not establish that active-attempt state is instance-owned. This is a material false positive because M13 must not create hidden process-wide coupling across independent owner transactions.
+
+Exact return: preserve all 131 cases and add test-only V7 proof that distinct instances remain independently executable while one is active, together with process/module/class-global guard mutants. Production source remains frozen until independent V7 acceptance.
+
+See `M13_PROOF_PM_REVIEW_V6.md` and `raw_validation/pm_v7_review/`.
