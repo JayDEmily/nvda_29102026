@@ -1,0 +1,13 @@
+===== proof blocks =====
+proof_blocks_check_all=PASS count=52
+===== proof executor contract =====
+.....................                                                    [100%]
+21 passed in 11.07s
+===== checkpoint shadow =====
+..                                                                       [100%]
+2 passed in 0.18s
+===== YAML parse =====
+config/proof_blocks.yaml PASS
+config/retained_test_registry.yaml PASS
+===== syntax =====
+===== diff check =====

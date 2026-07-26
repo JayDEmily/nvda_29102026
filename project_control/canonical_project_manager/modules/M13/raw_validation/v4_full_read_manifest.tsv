@@ -1,0 +1,19 @@
+path	read_scope	purpose
+00_TASK/PROJECT_EXECUTION_METHOD.md	full	execution method
+AGENTS.md	full	repository authority
+tests/AGENTS.override.md	full	test subtree authority
+project_control/canonical_project_manager/EXEC_PLAN.md	full	active plan and V4 gate
+docs/00_CONTROL_SURFACE_ROUTING_INDEX.md	full	routing authority
+docs/01_NORMATIVE_CORE.md	full	top-level normative authority
+docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md	full	M13 transaction and idempotency law
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	full	term governance
+docs/vocabulary/vocabulary_registry.md	full	vocabulary registry
+docs/08_TESTING_AND_PROMOTION_CORE.md	full	testing law
+docs/08.1_TESTING_AND_PROMOTION_WORKING.md	full	testing working authority
+config/retained_test_registry.yaml	full	retained-test configuration
+config/proof_blocks.yaml	full	proof-block configuration
+tests/tier_a/persistence/test_m13_state_kernel_contract.py	full	M13 proof family
+project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md	full	worker-owned proof record
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_mutant_failed_attempt_reserves_idempotency_source.py	full	retained false-positive mutant
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_run_variant.py	full	isolated proof executor
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py	full	PM public-seam reproduction

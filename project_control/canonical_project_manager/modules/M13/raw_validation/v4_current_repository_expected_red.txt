@@ -1,0 +1,643 @@
+FFFFFFFFFFFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_ test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable() -> None:
+        (
+            atomic_receipt,
+            _,
+            _,
+            in_memory_uow,
+            repository_port,
+            _,
+            _,
+            unit_of_work,
+>       ) = _contracts()
+            ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_success_atomically_binds_command_result_state_version_sequence_and_receipt _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_success_atomically_binds_command_result_state_version_sequence_and_receipt() -> None:
+>       atomic_receipt, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                                            ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_exact_duplicate_returns_original_identity_without_repeating_mutation _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_exact_duplicate_returns_original_identity_without_repeating_mutation() -> None:
+>       _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                               ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_same_scoped_key_with_different_input_or_command_identity_is_conflict _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_same_scoped_key_with_different_input_or_command_identity_is_conflict() -> None:
+>       _, conflict, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                                      ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:153: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+___ test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit ____
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit() -> None:
+>       _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                               ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:195: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+__ test_m13_stale_expected_version_fails_before_mutation_and_emits_no_receipt __
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_stale_expected_version_fails_before_mutation_and_emits_no_receipt() -> None:
+>       _, _, key_type, in_memory_uow, _, state_conflict, command_type, _ = _contracts()
+                                                                            ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:235: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+____ test_m13_mutation_failure_rolls_back_state_version_and_success_receipt ____
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_mutation_failure_rolls_back_state_version_and_success_receipt() -> None:
+>       _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                               ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:265: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_________ test_m13_invalid_receipt_result_rolls_back_the_working_state _________
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_invalid_receipt_result_rolls_back_the_working_state() -> None:
+>       _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                               ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+___________ test_m13_state_and_receipt_readbacks_are_detached_copies ___________
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_state_and_receipt_readbacks_are_detached_copies() -> None:
+>       _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+                                                               ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:303: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry() -> None:
+>       _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+                                                                             ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:385: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth() -> None:
+>       _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+                                                                             ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:440: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry() -> None:
+>       _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+                                                                             ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:530: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry() -> None:
+>       _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+                                                                             ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:583: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+_ test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once _
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+>           from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+E           ModuleNotFoundError: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:14: ModuleNotFoundError
+
+During handling of the above exception, another exception occurred:
+
+    def test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once() -> None:
+>       _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+                                                                             ^^^^^^^^^^^^
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:647: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _contracts() -> tuple[Any, ...]:
+        try:
+            from nvda_desk.m13_state_kernel import (
+                AtomicReceipt,
+                IdempotencyConflictError,
+                IdempotencyKey,
+                InMemoryUnitOfWork,
+                RepositoryPort,
+                StateVersionConflictError,
+                TransactionCommand,
+                UnitOfWork,
+            )
+        except ModuleNotFoundError as exc:
+>           pytest.fail(f"M13 target package is not implemented: {exc}")
+E           Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:25: Failed
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_exports_the_accepted_public_contract_and_labels_memory_as_non_durable - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_success_atomically_binds_command_result_state_version_sequence_and_receipt - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_exact_duplicate_returns_original_identity_without_repeating_mutation - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_same_scoped_key_with_different_input_or_command_identity_is_conflict - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_stale_expected_version_fails_before_mutation_and_emits_no_receipt - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_mutation_failure_rolls_back_state_version_and_success_receipt - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_invalid_receipt_result_rolls_back_the_working_state - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_state_and_receipt_readbacks_are_detached_copies - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once - Failed: M13 target package is not implemented: No module named 'nvda_desk.m13_state_kernel'
+14 failed in 0.23s

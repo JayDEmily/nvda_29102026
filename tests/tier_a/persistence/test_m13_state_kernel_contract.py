@@ -641,3 +641,75 @@ def test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_all
     ]
     assert participant_a.visible == expected_visible
     assert participant_b.visible == expected_visible
+
+
+def test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once() -> None:
+    _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+    participant = _prepare_failure_participant(repository_port)
+    boundary = in_memory_uow(
+        initial_state={"count": 0},
+        repository_ports=(participant,),
+    )
+    shared_key = _key(key_type)
+    failed_command = _command(command_type, key_type, key=shared_key)
+    fresh_command = _command(
+        command_type,
+        key_type,
+        key=shared_key,
+        command_id="command-2",
+        fingerprint=_FINGERPRINT_B,
+        expected_state_version=0,
+    )
+    calls = {"count": 0}
+
+    def mutate(state: dict[str, Any]) -> dict[str, str]:
+        calls["count"] += 1
+        state["count"] += 1
+        return {"receipt_id": "receipt-2", "result_id": "result-2"}
+
+    with pytest.raises(RuntimeError, match="participant prepare failed"):
+        boundary.execute(command=failed_command, mutation=mutate)
+
+    assert calls["count"] == 1
+    assert participant.rollback_calls >= 1
+    assert participant.pending is None
+    assert participant.visible == []
+    assert boundary.state_version == 0
+    assert boundary.snapshot_state() == {"count": 0}
+    assert boundary.list_receipts() == ()
+
+    participant.fail_on_prepare = False
+    receipt = boundary.execute(command=fresh_command, mutation=mutate)
+
+    assert calls["count"] == 2
+    assert receipt.command_id == "command-2"
+    assert receipt.input_fingerprint == _FINGERPRINT_B
+    assert receipt.sequence == 1
+    assert receipt.prior_state_version == 0
+    assert receipt.resulting_state_version == 1
+    assert receipt.duplicate_replay is False
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert participant.pending is None
+    assert participant.visible == [
+        {
+            "command_id": "command-2",
+            "state": {"count": 1},
+            "state_version": 1,
+            "sequence": 1,
+        }
+    ]
+
+    replay = boundary.execute(command=fresh_command, mutation=mutate)
+
+    assert calls["count"] == 2
+    assert replay.receipt_id == receipt.receipt_id
+    assert replay.result_id == receipt.result_id
+    assert replay.sequence == receipt.sequence == 1
+    assert replay.resulting_state_version == receipt.resulting_state_version == 1
+    assert replay.duplicate_replay is True
+    assert boundary.state_version == 1
+    assert boundary.snapshot_state() == {"count": 1}
+    assert boundary.list_receipts() == (receipt,)
+    assert len(participant.visible) == 1

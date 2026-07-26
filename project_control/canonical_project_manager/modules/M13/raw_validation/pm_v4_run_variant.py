@@ -12,6 +12,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Run the M13 proof against an isolated evidence implementation.")
     parser.add_argument("source", type=Path)
     parser.add_argument("--original-twelve", action="store_true")
+    parser.add_argument("--original-thirteen", action="store_true")
     parser.add_argument(
         "--test-file",
         default="tests/tier_a/persistence/test_m13_state_kernel_contract.py",
@@ -27,7 +28,9 @@ def main() -> int:
     spec.loader.exec_module(module)
 
     pytest_args = ["-q", args.test_file]
-    if args.original_twelve:
+    if args.original_thirteen:
+        pytest_args.extend(["-k", "not test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once"])
+    elif args.original_twelve:
         pytest_args.extend(
             [
                 "-k",

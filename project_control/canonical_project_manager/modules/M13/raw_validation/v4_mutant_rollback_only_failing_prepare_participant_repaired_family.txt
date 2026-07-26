@@ -1,0 +1,38 @@
+............F.                                                           [100%]
+=================================== FAILURES ===================================
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+    def test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        participant_a = _prepare_failure_participant(repository_port)
+        participant_a.fail_on_prepare = False
+        participant_b = _prepare_failure_participant(repository_port)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(participant_a, participant_b),
+        )
+        command = _command(command_type, key_type)
+        calls = {"count": 0}
+    
+        def mutate(state: dict[str, Any]) -> dict[str, str]:
+            calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-1", "result_id": "result-1"}
+    
+        with pytest.raises(RuntimeError, match="participant prepare failed"):
+            boundary.execute(command=command, mutation=mutate)
+    
+        assert calls["count"] == 1
+        assert participant_a.prepare_calls == 1
+        assert participant_b.prepare_calls == 1
+        assert participant_a.commit_calls == 0
+        assert participant_b.commit_calls == 0
+>       assert participant_a.rollback_calls >= 1
+E       assert 0 >= 1
+E        +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7f868c152ba0>.rollback_calls
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:607: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7f868c152ba0>.rollback_calls
+1 failed, 13 passed in 0.07s

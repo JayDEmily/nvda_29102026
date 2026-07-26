@@ -2,10 +2,10 @@
 
 ## Status
 
-`M13_PROOF_REPAIR_V3_REJECTED_FAILED_IDEMPOTENCY_BINDING_GAP`
+`M13_PROOF_REPAIR_V4_PROPOSED_AWAITING_INDEPENDENT_REVIEW`
 
 - Module: `M13 state_kernel`
-- Current worker branch: `proof/m13-state-kernel-repair-v3` at `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`
+- Current worker branch: `proof/m13-state-kernel-repair-v4` (repair commit recorded at closeout)
 - Independent PM V4 review branch: `review/m13-proof-v4`; reviewed source commit `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`; source archive SHA-256 `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`
 - Independent PM V3 review branch: `review/m13-proof-v3`; reviewed source commit `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`; source archive SHA-256 `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`
 - Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
@@ -523,3 +523,24 @@ Evidence:
 6. reject the retained failed-attempt idempotency-reservation mutant for this intended reason.
 
 No production source, normative meaning, existing test semantics, proof configuration or later module is opened by this decision.
+
+
+## M13-PROOF-REPAIR-V4 worker proposal
+
+**Disposition:** `PROPOSED_REPAIR_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW`
+
+The independent Project Manager V4 `CLOSED` decision remains preserved. Production implementation and `IMPLEMENTATION_OPEN` remain closed.
+
+The worker preserved all thirteen existing test functions and added one public-`UnitOfWork.execute` proof that a failed repository-participant transaction creates no idempotency binding. The proof reuses the same scoped key with a different command identity and semantic fingerprint at expected version 0, requires a fresh sequence/version-1 commit with exactly one success receipt, and requires exact replay to return that receipt without repeating mutation.
+
+Evidence:
+
+- `raw_validation/v4_original_thirteen_preservation.txt`: thirteen pre-existing test ASTs unchanged; one test added.
+- `raw_validation/v4_target_mutant_original_thirteen.txt`: failed-attempt reservation mutant passes 13/13 with the new test deselected.
+- `raw_validation/v4_target_mutant_repaired_family.txt`: the same mutant fails the new test at the intended false idempotency-conflict boundary.
+- `raw_validation/v4_reference_conforming.txt`: conforming reference passes 14/14.
+- `raw_validation/v4_retained_mutants_summary.tsv`: every previously retained mutant remains rejected.
+- `raw_validation/v4_current_repository_expected_red.txt`: absent production implementation remains expected-red, 14 failed.
+- `raw_validation/v4_supporting_validation.txt`: proof-block, proof-executor, checkpoint, YAML, syntax and diff validation passed.
+
+No `src/**`, normative document, proof-block configuration, retained-test configuration, acceptance status or implementation gate was changed.
