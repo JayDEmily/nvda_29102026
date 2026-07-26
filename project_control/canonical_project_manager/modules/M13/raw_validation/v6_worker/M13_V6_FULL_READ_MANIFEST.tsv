@@ -1,0 +1,55 @@
+surface	read_scope	evidence
+00_TASK/PROJECT_EXECUTION_METHOD.md	FULL	568 lines read before proof design
+AGENTS.md	FULL	196 lines read before proof design
+PLANS.md	FULL	152 lines read before proof design
+tests/AGENTS.override.md	FULL	76 lines read before proof design
+project_control/canonical_project_manager/EXEC_PLAN.md	FULL	387 lines read before proof design
+project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md	FULL	350 lines read before proof design
+ROADMAP_LEDGER_V2.md	FULL	119 lines read before proof design
+project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md	FULL	812 lines read before proof design
+tests/tier_a/persistence/test_m13_state_kernel_contract.py	FULL	1121 source-checkpoint lines read before proof design
+docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md	FULL	217 lines read before proof design
+project_control/normative_authority_top_down_alignment/normative_completion_decisions/N-06_CROSS_STATE_TRANSACTION_BOUNDARY.md	FULL	57 lines read before proof design
+project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md	FULL	391 lines read; M13 shared-foundation ownership confirmed
+project_control/canonical_project_manager/modules/M13/M13_IMPLEMENTATION_PM_REVIEW_V1.md	FULL	127 lines read; authoritative CLOSED disposition preserved
+project_control/canonical_project_manager/modules/M13/M13_IMPLEMENTATION_WORKER_RECORD.md	FULL	261 lines read as rejected-worker history, not authority
+src/nvda_desk/m13_state_kernel/__init__.py	FULL	22 lines read; rejected implementation frozen
+src/nvda_desk/m13_state_kernel/contracts.py	FULL	101 lines read; rejected implementation frozen
+src/nvda_desk/m13_state_kernel/in_memory.py	FULL	204 lines read; rejected implementation frozen
+src/nvda_desk/m13_state_kernel/ports.py	FULL	48 lines read; rejected implementation frozen
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/pm_v1_reentrant_execute_probe.py	FULL	PM retained probe read and reproduced
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/pm_v1_atomic_receipt_contract_probe.py	FULL	PM retained probe read and reproduced
+project_control/canonical_project_manager/modules/M13/raw_validation/reference_implementation_snapshot.py	FULL	210 lines read as falsification evidence only
+project_control/canonical_project_manager/modules/M13/raw_validation/v4_reference_conforming_source.py	FULL	210 lines read as falsification evidence only
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_accept_invalid_receipt_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_commit_before_receipt_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_commit_on_exception_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_duplicate_reexec_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_durable_label_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_ignore_version_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_no_participant_rollback_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_register_after_prepare_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_rollback_only_failing_prepare_participant_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_scope_value_only_source.py	FULL	retained mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_mutant_failed_attempt_reserves_idempotency_source.py	FULL	retained failed-binding mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_mutant_failed_binding_command_id_only_source.py	FULL	retained V5 mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_mutant_mutation_failure_reserves_idempotency_source.py	FULL	retained V5 mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/v5_configurable_failed_binding_mutant_source.py	FULL	317-line retained V5 configurable mutant read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py	FULL	45-line variant loader read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_additional_mutants.py	FULL	112-line retained V5 matrix runner read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_earlier_mutants.py	FULL	138-line retained mutant runner read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/implementation_worker/run_implementation_mutants.py	FULL	282-line implementation-mutant runner read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/implementation_worker/run_retained_falsification.py	FULL	234-line retained-falsification runner read in full
+project_control/canonical_project_manager/modules/M13/raw_validation/implementation_worker/run_validation.py	FULL	205-line implementation/shadow runner read in full
+tests/tier_b/proof_model/test_proof_executor_contract.py	FULL	457 lines read as proof-executor control
+tests/tier_b/proof_model/test_checkpoint_receipt_contract.py	FULL	65 lines read as checkpoint-shadow control
+config/proof_blocks.yaml	M13 GOVERNING BLOCK	M13 Tier A candidate block inspected; configuration is frozen
+config/retained_test_registry.yaml	M13 GOVERNING ENTRIES	M13 retained family/path entries inspected; configuration is frozen
+docs/vocabulary/vocabulary_registry.md	M13 GOVERNING TERMS	State Kernel, Unit of Work, Idempotency Key, Atomic Receipt, Repository Port and Transaction Command read
+docs/00_CONTROL_SURFACE_ROUTING_INDEX.md	FULL	110 lines read
+docs/01_NORMATIVE_CORE.md	FULL	117 lines read
+docs/01.1_NORMATIVE_WORKING.md	FULL	120 lines read
+docs/08_TESTING_AND_PROMOTION_CORE.md	FULL	202 lines read
+docs/08.1_TESTING_AND_PROMOTION_WORKING.md	FULL	132 lines read
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	FULL	50 lines read
+docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md	FULL	266 lines read

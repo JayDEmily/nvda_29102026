@@ -1,0 +1,6 @@
+acceptance_leaf	n06_fact	campaign	semantic_cases
+single_active_attempt	N-06 deterministic sequencing and prior committed result	campaign_1	36
+active_attempt_cleanup	N-06 unsuccessful attempt publishes no transaction truth	campaign_2	11
+receipt_scope_and_types	N-06 receipt binds scope result version sequence	campaign_3	36
+combined_state_receipt_sequence	N-06 atomic transaction tuple cannot be orphaned	campaign_4	2
+regression_and_falsification	N-06 bounded public seam retained across earlier proof	campaign_5	retained_and_shadow

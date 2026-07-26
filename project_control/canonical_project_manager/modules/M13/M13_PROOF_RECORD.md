@@ -810,3 +810,167 @@ Full decision and executable probes:
 - `M13_IMPLEMENTATION_PM_REVIEW_V1.md`;
 - `raw_validation/pm_implementation_v1_review/pm_v1_reentrant_execute_probe.py`;
 - `raw_validation/pm_implementation_v1_review/pm_v1_atomic_receipt_contract_probe.py`.
+
+## M13-PROOF-REPAIR-V6 worker proposal
+
+**Worker result:**
+`PROPOSED_M13_PROOF_REPAIR_V6_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW`
+
+The authoritative disposition
+`CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH`
+remains unchanged. This section is a worker-owned proof proposal only. It does not
+accept M13, reopen implementation repair, merge any branch, open M01, authorise a later
+module, or make a production-readiness claim.
+
+### Source, authority and frozen proof
+
+- Sole source archive:
+  `NVDA_M13_PM_IMPLEMENTATION_V1_CLOSED_92c30ef_20260726.tar.gz`.
+- Verified archive SHA-256:
+  `68f2624ac7df594eb15b3f346d21be23af3247ecfe343bce83080d8bb44893cd`.
+- Verified source branch/commit:
+  `review/m13-implementation-v1` /
+  `92c30ef0f1894e8265242b8a0f229daea7ebb603`.
+- Source worktree was clean, complete `.git` history was present, and the rejected
+  implementation matched its implementation-worker commit byte-for-byte.
+- Frozen M13 proof-file SHA-256:
+  `7f4fd1e3d9c7f7dc75675146f9e2a38d4fb259a1938986c7cdfc2b006ddfab0a`.
+- Frozen inventory: 15 test functions, 32 pre-V6 parameter IDs and 46 semantic cases.
+  All 15 function AST hashes, names and all 32 parameter IDs remain unchanged and
+  unique. No existing assertion, fixture semantic or parameter case was changed,
+  weakened, renamed, reordered or deleted.
+- Nine V6 test functions append 85 semantic cases, producing 131 collected cases.
+- Full-read evidence is retained in
+  `raw_validation/v6_worker/M13_V6_FULL_READ_MANIFEST.tsv`; function/case preservation
+  is retained by `raw_validation/v6_worker/verify_frozen_proof.py` and its validation
+  output.
+
+N-06 admits only owner-declared, deterministic, non-durable transaction truth. The
+worker proof therefore establishes exclusion and cleanup only within one
+`UnitOfWork` instance. It makes no thread-safety, process-durability, distributed
+transaction, crash-recovery or external-side-effect claim.
+
+### PM defect reproduction
+
+The retained re-entrancy probe reproduces state `{"outer": 1, "inner": 0}`, one state
+version, two receipts, duplicate sequence `1` and duplicate version transition `0 -> 1`.
+The retained receipt probe constructs command-type and consistency-unit fields that
+contradict the embedded key and a float resulting version. Both probes exit `1` at
+their intended assertions. The unchanged 46-case family remains green on that rejected
+implementation, proving the pre-V6 false-positive baseline.
+
+### Campaign 1 — single active attempt
+
+The 36-case matrix crosses four nested scope relationships with every callback surface
+actually exposed by the public seam:
+
+| Callback surface | Outer outcomes | Scope relationships |
+|---|---|---|
+| owner mutation | caught rejection commits; unhandled rejection fails | same scoped key; different key in same command/unit; different unit; different command type |
+| participant `prepare()` | caught rejection commits; unhandled rejection fails | same four |
+| participant `commit()` | caught rejection commits; unhandled rejection fails | same four |
+| participant `rollback()` | original outer failure remains primary | same four |
+| attesting-receipt writer | caught rejection commits; unhandled rejection fails | same four |
+
+The writer is an ordinary `RepositoryPort` participant under the accepted seam. No
+separate caller-supplied receipt/result construction callback exists, so none was
+invented. Each case requires an exact `RuntimeError` rejection before nested mutation
+or participant work, no nested state/version/sequence/receipt/binding/pending truth,
+coherent sole outer publication when caught, complete outer rollback when unhandled,
+and later ordinary admission after the terminal outcome.
+
+### Campaign 2 — active-attempt lifecycle cleanup
+
+Eleven stable cases cover successful commit, duplicate replay, stale-version rejection,
+mutation exception, non-mapping result, invalid receipt ID, invalid result ID,
+participant prepare failure, participant commit failure, receipt-writer failure and
+nested-execution rejection. Each case independently observes:
+
+1. idempotency binding — failed attempts permit corrected reuse of the same scoped key,
+   while successful bindings remain committed;
+2. participant pending truth — every participant and writer has no pending residue;
+3. active-execution guard — a corrected fresh transaction is admitted after every
+   terminal outcome.
+
+The corrected transaction publishes the exact next version and sequence, one receipt
+and one participant truth. Exact replay then changes only the response replay indicator
+and invokes no mutation or participant callback.
+
+### Campaign 3 — coherent `AtomicReceipt`
+
+The explicit receipt family contains:
+
+- 28 invalid receipt cases: two scope contradictions; exact-int rejection for bool,
+  float, string and coercible numeric values across both versions and sequence;
+  negative/zero/skip/equal version domains; non-positive sequence; and every required
+  receipt identity/truth string;
+- three invalid embedded-key identity cases;
+- three valid exact-int boundary cases, intentionally not inventing equality between
+  sequence and state version;
+- one complete replay-field preservation case; and
+- one three-commit next-version/next-sequence publication case.
+
+Constructor proof establishes only self-contained facts: matching embedded scope,
+exact types, domains and an exact `prior + 1` version step. Exact next committed
+sequence/version truth is established through public `execute()`, where the prior
+committed state is observable.
+
+### Campaign 4 — combined falsification
+
+Two direct combined-truth cases reject orphan state/receipt publication and duplicate
+nested/outer sequence or resulting-version claims. The configurable V6 source then
+activates 16 separately named false behaviours:
+
+1. different-key nested admission;
+2. different-unit nested admission;
+3. nested receipt retained after state is lost;
+4. nested state retained without a receipt;
+5. duplicate nested/outer sequence;
+6. duplicate nested/outer resulting version;
+7. guard installed after mutation begins;
+8. guard cleared before participant commit;
+9. guard retained after failure;
+10. scope validation checks only command type;
+11. scope validation checks only consistency-unit ID;
+12. float version/sequence acceptance;
+13. boolean version/sequence acceptance;
+14. resulting version equal to prior;
+15. zero/negative sequence; and
+16. replay response identity fabrication.
+
+All 16 fail the complete 131-case family and their designated intended semantic case
+without collection, interface or fixture errors. Source/configuration, command,
+exit-code, unedited output and adjudication are retained under
+`raw_validation/v6_worker/mutant_runs/`.
+
+### Campaign 5 — regression and shadows
+
+- External proof-only conforming reference: 131/131 passed.
+- Rejected implementation: original 46/46 passed; repaired family rejected 43
+  intentional V6 cases — 36 re-entrancy matrix leaves, one nested-cleanup leaf, four
+  receipt coherence/type leaves and two combined-truth leaves.
+- Retained falsification: 11/11 earlier mutants, 2/2 PM V5 mutants, 32/32 V5
+  failed-binding variants and 8/8 implementation-derived mutants were rejected by
+  their original intended cases.
+- New V6 falsification: 16/16 full-family and targeted intended rejections.
+- Proof-block structure: 52/52 valid; proof executor: 21/21 passed; checkpoint shadow:
+  2/2 passed.
+- Persistence Tier A: 36/36 non-M13 tests passed; the full surface reports only the 43
+  intentional rejected-implementation V6 failures, with 124 passes.
+- Vocabulary exact builder parity: 1/1 passed. The complete vocabulary shadow retains
+  its single source-checkpoint failure (`### serial desk-cognition`) unchanged.
+- Complete repository shadow: source baseline 61 failures; V6 worker tree 104
+  failures. The exact set difference is the 43 intentional M13 V6 expected-red nodes;
+  no baseline failure resolved or changed and no unexplained regression appeared.
+- Architecture/import validation passed. YAML parsing, Python compilation, Ruff,
+  Black, changed-path validation and `git diff --check` passed.
+
+No `src/**`, normative document, proof-block configuration, retained-test
+configuration, Project Manager decision or later-module path is changed. The rejected
+implementation remains frozen. The candidate proof is recorded only in this
+worker-owned record and `raw_validation/v6_worker/` because registration remains
+closed by the Project Manager disposition.
+
+The final commit, tracked evidence hashes and Git-preserving archive identifiers are
+closeout facts reported after the committed bytes exist; embedding them here would
+recursively alter those identifiers.
