@@ -1,0 +1,23 @@
+M13 INDEPENDENT PROJECT MANAGER V5 VALIDATION
+=============================================
+source_archive_sha256=83e1f2bfee1b0665b190383567436c6797e20907481b05091152426a72907d31
+source_branch=proof/m13-state-kernel-repair-v4
+source_commit=31e8ac38488466d1d457f98ffe014576423a5ebf
+frozen_fourteen_test_sha256=c1bc90aedf2905989c22f851f2560969868e87e50bca3f352f6bc91b91200cca
+worker_conforming_reference=PASS (14 passed)
+worker_target_mutant_original_thirteen=FALSE_POSITIVE_REPRODUCED (13 passed, 1 deselected)
+worker_target_mutant_repaired_family=REJECTED (1 failed, 13 passed)
+previously_retained_mutants=REJECTED
+current_repository=EXPECTED_RED (14 failures because package absent)
+proof_blocks=PASS (52)
+proof_executor_contract=PASS (21)
+checkpoint_shadow=PASS (2)
+yaml_parse=PASS
+syntax=PASS
+diff_check_before_pm_mutation=PASS
+independent_mutation_failure_binding_mutant=FALSE_POSITIVE (14 passed)
+independent_command_identity_binding_mutant=FALSE_POSITIVE (14 passed)
+mutant_probe=state/version/receipts clean; different uncommitted input falsely rejected
+command_identity_probe=failed participant attempt leaves hidden command-identity reservation; corrected same-command-id input falsely rejected
+reference_probe=different uncommitted input commits as sequence/version 1
+disposition=CLOSED

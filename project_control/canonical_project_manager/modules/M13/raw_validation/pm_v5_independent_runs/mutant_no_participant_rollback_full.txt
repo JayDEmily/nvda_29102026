@@ -1,0 +1,77 @@
+.........FFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+>   ???
+E   AssertionError: assert [{'command_id..._version': 1}] == []
+E     
+E     Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+E     
+E     Full diff:
+E     - []
+E     + [
+E     +     {
+E     +         'command_id': 'command-1',
+E     +         'sequence': 1,
+E     +         'state': {
+E     +             'count': 1,
+E     +         },
+E     +         'state_version': 1,
+E     +     },
+E     + ]
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:412: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+>   ???
+E   assert 0 >= 1
+E    +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7fd5f4bcacf0>.rollback_calls
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:458: AssertionError
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+>   ???
+E   assert 0 >= 1
+E    +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb380>.rollback_calls
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:550: AssertionError
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+>   ???
+E   assert 0 >= 1
+E    +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb4d0>.rollback_calls
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:607: AssertionError
+_ test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once _
+
+>   ???
+E   assert 0 >= 1
+E    +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb770>.rollback_calls
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:674: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - AssertionError: assert [{'command_id..._version': 1}] == []
+  
+  Left contains one more item: {'command_id': 'command-1', 'sequence': 1, 'state': {'count': 1}, 'state_version': 1}
+  
+  Full diff:
+  - []
+  + [
+  +     {
+  +         'command_id': 'command-1',
+  +         'sequence': 1,
+  +         'state': {
+  +             'count': 1,
+  +         },
+  +         'state_version': 1,
+  +     },
+  + ]
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._repository_participant.<locals>.Participant object at 0x7fd5f4bcacf0>.rollback_calls
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb380>.rollback_calls
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb4d0>.rollback_calls
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once - assert 0 >= 1
+ +  where 0 = <test_m13_state_kernel_contract._prepare_failure_participant.<locals>.Participant object at 0x7fd5f4bcb770>.rollback_calls
+5 failed, 9 passed in 0.06s

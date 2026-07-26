@@ -490,3 +490,49 @@ The V3 repair closes the prior rollback-order defect. It does not prove the N-06
 The next lawful unit is test-only proof repair. Preserve the thirteen tests and add one failure/rollback case proving a different input with the same scoped key remains fresh and can commit as sequence/version `1`. M13 production implementation and all later modules remain closed.
 
 Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V4` Project Manager V5 review
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_PROOF_REPAIR_V4_READY_31e8ac3_20260726.tar(1).gz`.
+- Archive SHA-256: `83e1f2bfee1b0665b190383567436c6797e20907481b05091152426a72907d31`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v4` / `31e8ac38488466d1d457f98ffe014576423a5ebf` / clean.
+- Review branch: `review/m13-proof-v5`.
+- Fourteen-test SHA-256: `c1bc90aedf2905989c22f851f2560969868e87e50bca3f352f6bc91b91200cca`.
+- Preservation: all thirteen source-checkpoint functions unchanged; exactly one V4 test appended.
+
+### Disposition
+
+`CLOSED:the fourteen-test suite proves no failed idempotency binding only for repository-participant failure; an implementation that reserves the scoped key only when the mutation raises passes all fourteen tests, leaves state/version/receipts uncommitted, but falsely rejects a different uncommitted input using that key`
+
+### Independent reproduction
+
+| Check | Result |
+|---|---|
+| Conforming reference | PASS — 14 passed |
+| Worker PM V4 target mutant, original thirteen | FALSE POSITIVE REPRODUCED — 13 passed, 1 deselected |
+| Worker PM V4 target mutant, repaired fourteen | REJECTED — 1 failed, 13 passed |
+| Ten previously retained mutants | Rejected by the fourteen-test family |
+| Independent mutation-failure reservation mutant | **FALSE POSITIVE — 14 passed** |
+| Independent failed-binding-by-command-identity mutant | **FALSE POSITIVE — 14 passed** |
+| Mutation-failure state/version/receipt truth | Clean at state `{'count': 0}`, version `0`, no receipts |
+| Different input using same uncommitted scoped key | **Falsely rejected** as `IdempotencyConflictError` by mutant |
+| Conforming-reference outcome | Fresh commit as sequence/version `1` |
+| Corrected same-command-ID reuse after failed participant attempt | Mutant falsely conflicts; conforming reference commits sequence `1` |
+| Current repository M13 proof | EXPECTED RED — 14 failures solely because `nvda_desk.m13_state_kernel` is absent |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 tests |
+| Checkpoint shadow | PASS — 2 tests |
+| YAML, syntax and diff checks | PASS |
+| Production, normative, test and proof-configuration mutation during PM review | None |
+
+The V4 repair closes the participant-prepare failed-binding defect. It does not establish the same no-binding invariant for mutation failure or the other admitted failure classes. It also changes command ID and input fingerprint together, so a hidden reservation tied to one identity dimension remains invisible. A passing test proves only its exercised path and identity variation; the generic test name does not extend its semantics.
+
+### Gate result
+
+`CLOSED:M13_PROOF_REPAIR_V5_REQUIRED_FOR_NO_BINDING_ACROSS_PRE_COMMIT_FAILURES`
+
+The next lawful unit is test-only proof repair. Preserve the fourteen tests and add a systematic public-seam no-binding matrix across stale expected version, mutation exception, invalid receipt/result, participant prepare/commit and receipt-writer failure. Vary command ID, fingerprint and policy version independently. M13 production implementation and all later modules remain closed.
+
+Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.

@@ -2,10 +2,10 @@
 
 ## Status
 
-`M13_PROOF_REPAIR_V4_PROPOSED_AWAITING_INDEPENDENT_REVIEW`
+`M13_PROOF_REPAIR_V4_REJECTED_MUTATION_FAILURE_BINDING_GAP`
 
 - Module: `M13 state_kernel`
-- Current worker branch: `proof/m13-state-kernel-repair-v4` (repair commit recorded at closeout)
+- Reviewed worker branch: `proof/m13-state-kernel-repair-v4` at `31e8ac38488466d1d457f98ffe014576423a5ebf`
 - Independent PM V4 review branch: `review/m13-proof-v4`; reviewed source commit `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`; source archive SHA-256 `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`
 - Independent PM V3 review branch: `review/m13-proof-v3`; reviewed source commit `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`; source archive SHA-256 `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`
 - Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
@@ -544,3 +544,102 @@ Evidence:
 - `raw_validation/v4_supporting_validation.txt`: proof-block, proof-executor, checkpoint, YAML, syntax and diff validation passed.
 
 No `src/**`, normative document, proof-block configuration, retained-test configuration, acceptance status or implementation gate was changed.
+
+## MLC-V — Independent Project Manager V5 decision
+
+### Source verification
+
+- Supplied archive SHA-256: `83e1f2bfee1b0665b190383567436c6797e20907481b05091152426a72907d31`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v4` / `31e8ac38488466d1d457f98ffe014576423a5ebf` / clean.
+- Source parent: PM V4 closure `41007ee74562b09619be9b71ef0a0c40fde16dd3`.
+- All thirteen source-checkpoint test functions are unchanged and exactly one V4 function is appended.
+- Frozen fourteen-test SHA-256: `c1bc90aedf2905989c22f851f2560969868e87e50bca3f352f6bc91b91200cca`.
+
+### Disposition
+
+`CLOSED:the fourteen-test suite proves no failed idempotency binding only for repository-participant failure; an implementation that reserves the scoped key only when the mutation raises passes all fourteen tests, leaves state/version/receipts uncommitted, but falsely rejects a different uncommitted input using that key`
+
+### Independent falsification
+
+The retained PM V4 mutant is correctly rejected by the new V4 test. The conforming reference passes 14/14 and all previously retained mutants remain rejected.
+
+An independent adjacent mutant preserves the conforming participant, receipt and successful-commit paths but writes a failed-attempt reservation only when the owner mutation raises. The complete fourteen-test family passes this implementation:
+
+```text
+14 passed
+```
+
+The public-seam probe observes:
+
+```text
+attempt_1=failed:RuntimeError:mutation failed
+after_failure_state_version=0
+after_failure_state={'count': 0}
+after_failure_receipts=()
+different_input_retry=failed:IdempotencyConflictError:mutation failure reserved idempotency key
+final_state_version=0
+final_state={'count': 0}
+final_receipts=()
+```
+
+The same probe against the conforming reference commits the different input as fresh truth:
+
+```text
+different_input_retry=committed:sequence=1:command_id=command-2
+final_state_version=1
+final_state={'count': 1}
+```
+
+A second adjacent mutant demonstrates that the V4 test also changes command ID and fingerprint together, so it cannot prove that each identity component is unbound independently. The mutant retains a failed participant-path binding keyed to the command identity only and passes all fourteen tests:
+
+```text
+14 passed
+```
+
+When the failed command is corrected by changing only its semantic fingerprint while preserving command ID, policy version, scoped key and expected version `0`, the mutant falsely rejects it while the conforming reference commits sequence `1`:
+
+```text
+attempt_1=failed:RuntimeError:prepare failed
+corrected_same_command_id=failed:IdempotencyConflictError:failed attempt reserved command identity
+state_version=0
+receipts=()
+```
+
+Evidence:
+
+- `raw_validation/pm_v5_mutant_mutation_failure_reserves_idempotency_source.py`
+- `raw_validation/pm_v5_mutation_failure_binding_probe.py`
+- `raw_validation/pm_v5_mutation_failure_mutant_full.txt`
+- `raw_validation/pm_v5_mutation_failure_mutant_probe.txt`
+- `raw_validation/pm_v5_mutation_failure_reference_probe.txt`
+- `raw_validation/pm_v5_mutant_failed_binding_command_id_only_source.py`
+- `raw_validation/pm_v5_command_identity_binding_probe.py`
+- `raw_validation/pm_v5_command_identity_mutant_full.txt`
+- `raw_validation/pm_v5_command_identity_mutant_probe.txt`
+- `raw_validation/pm_v5_command_identity_reference_probe.txt`
+- `raw_validation/pm_v5_independent_validation_summary.txt`
+- `raw_validation/pm_v5_postedit_validation_summary.txt`
+- `raw_validation/pm_v5_postedit_runs/`
+- `raw_validation/pm_v5_full_read_manifest.tsv`
+
+### Authority and proof assessment
+
+- N-06 binds the scoped idempotency key atomically to semantic input, committed result, resulting state version/sequence and receipt. A mutation exception produces none of those committed facts and therefore cannot lawfully reserve the key.
+- MLC-A expressly states that validation, expected-version, mutation, repository-participation and receipt-write failures leave no idempotency binding.
+- The worker's V4 test is lawful and necessary. It closes the PM V4 participant-prepare false positive.
+- The fourteen-test family is not collectively sufficient because the new fresh-reuse assertion is attached only to participant failure. The existing mutation-failure test observes state/version/receipt rollback but never reuses the uncommitted scoped key with a different input.
+- The defects are observable entirely through `UnitOfWork.execute`; no private implementation state, normative change or production code is required.
+- The V4 fresh-reuse test changes command ID and fingerprint simultaneously. It therefore does not establish that a failed attempt leaves each admitted identity dimension independently unbound.
+
+### Return gate
+
+`M13-IMPLEMENT` remains closed. The next lawful unit is bounded `M13-PROOF-REPAIR-V5` only:
+
+1. preserve all fourteen existing test functions and semantics;
+2. add a bounded public-seam failure/binding matrix covering stale expected-version rejection, mutation exception, invalid `receipt_id`, invalid `result_id`, participant `prepare()` failure, participant `commit()` failure and attesting-receipt writer failure;
+3. after each failed attempt, require a corrected fresh command using the same scoped key and expected version `0` to commit as sequence/version `1` with exactly one receipt;
+4. vary command ID, semantic fingerprint and policy version independently, so no hidden failed binding can survive behind a combined identity change;
+5. retain exact replay of each first successful corrected command without repeated mutation; and
+6. reject both retained PM V5 mutants for their intended false-conflict reasons: mutation-failure reservation and failed-binding-by-command-identity.
+
+No production source, normative meaning, existing test semantics, proof configuration or later module is opened by this decision.

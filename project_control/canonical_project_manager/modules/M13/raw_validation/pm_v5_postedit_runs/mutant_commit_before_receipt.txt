@@ -1,0 +1,49 @@
+.........FFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fd015eb70>.state_version
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:409: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3d68320>.state_version
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:460: AssertionError
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3da09f0>.state_version
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:553: AssertionError
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3da18d0>.state_version
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:613: AssertionError
+_ test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once _
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3d64600>.state_version
+
+/mnt/data/m13_v4_work/NVDA_M13_PM_V4_CLOSED_41007ee_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:677: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fd015eb70>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3d68320>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3da09f0>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3da18d0>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_failed_transaction_does_not_bind_idempotency_key_and_fresh_reuse_commits_once - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7f4fc3d64600>.state_version
+5 failed, 9 passed in 0.06s
