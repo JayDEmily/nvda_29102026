@@ -2052,3 +2052,645 @@ def test_m13_v6_nested_and_outer_cannot_reuse_sequence_or_resulting_version() ->
     assert [receipt.resulting_state_version for receipt in receipts] == [1]
     assert len(nested_errors) == 1
     assert type(nested_errors[0]) is RuntimeError
+
+
+_M13_V7_TWO_INSTANCE_MATRIX = (
+    pytest.param(
+        "owner_mutation",
+        "different_command_type_and_consistency_unit",
+        "b_succeeds_a_succeeds",
+        id=("phase-owner-mutation--scope-different-command-and-unit--" "b-succeeds--a-succeeds"),
+    ),
+    pytest.param(
+        "owner_mutation",
+        "same_command_type_different_consistency_unit",
+        "b_succeeds_a_fails",
+        id="phase-owner-mutation--scope-same-command-different-unit--b-succeeds--a-fails",
+    ),
+    pytest.param(
+        "owner_mutation",
+        "different_command_type_same_textual_consistency_unit",
+        "b_fails_a_succeeds",
+        id="phase-owner-mutation--scope-different-command-same-unit--b-fails--a-succeeds",
+    ),
+    pytest.param(
+        "owner_mutation",
+        "same_command_type_and_unit_different_keys",
+        "b_fails_a_fails",
+        id=(
+            "phase-owner-mutation--scope-same-command-and-unit-different-keys--" "b-fails--a-fails"
+        ),
+    ),
+    pytest.param(
+        "participant_prepare",
+        "different_command_type_and_consistency_unit",
+        "b_succeeds_a_fails",
+        id=("phase-participant-prepare--scope-different-command-and-unit--" "b-succeeds--a-fails"),
+    ),
+    pytest.param(
+        "participant_prepare",
+        "same_command_type_different_consistency_unit",
+        "b_fails_a_succeeds",
+        id=("phase-participant-prepare--scope-same-command-different-unit--" "b-fails--a-succeeds"),
+    ),
+    pytest.param(
+        "participant_prepare",
+        "different_command_type_same_textual_consistency_unit",
+        "b_fails_a_fails",
+        id=("phase-participant-prepare--scope-different-command-same-unit--" "b-fails--a-fails"),
+    ),
+    pytest.param(
+        "participant_prepare",
+        "same_command_type_and_unit_different_keys",
+        "b_succeeds_a_succeeds",
+        id=(
+            "phase-participant-prepare--scope-same-command-and-unit-different-keys--"
+            "b-succeeds--a-succeeds"
+        ),
+    ),
+    pytest.param(
+        "participant_commit",
+        "different_command_type_and_consistency_unit",
+        "b_fails_a_succeeds",
+        id=("phase-participant-commit--scope-different-command-and-unit--" "b-fails--a-succeeds"),
+    ),
+    pytest.param(
+        "participant_commit",
+        "same_command_type_different_consistency_unit",
+        "b_fails_a_fails",
+        id=("phase-participant-commit--scope-same-command-different-unit--" "b-fails--a-fails"),
+    ),
+    pytest.param(
+        "participant_commit",
+        "different_command_type_same_textual_consistency_unit",
+        "b_succeeds_a_succeeds",
+        id=(
+            "phase-participant-commit--scope-different-command-same-unit--" "b-succeeds--a-succeeds"
+        ),
+    ),
+    pytest.param(
+        "participant_commit",
+        "same_command_type_and_unit_different_keys",
+        "b_succeeds_a_fails",
+        id=(
+            "phase-participant-commit--scope-same-command-and-unit-different-keys--"
+            "b-succeeds--a-fails"
+        ),
+    ),
+    pytest.param(
+        "attesting_receipt_writer",
+        "different_command_type_and_consistency_unit",
+        "b_fails_a_fails",
+        id=(
+            "phase-attesting-receipt-writer--scope-different-command-and-unit--" "b-fails--a-fails"
+        ),
+    ),
+    pytest.param(
+        "attesting_receipt_writer",
+        "same_command_type_different_consistency_unit",
+        "b_succeeds_a_succeeds",
+        id=(
+            "phase-attesting-receipt-writer--scope-same-command-different-unit--"
+            "b-succeeds--a-succeeds"
+        ),
+    ),
+    pytest.param(
+        "attesting_receipt_writer",
+        "different_command_type_same_textual_consistency_unit",
+        "b_succeeds_a_fails",
+        id=(
+            "phase-attesting-receipt-writer--scope-different-command-same-unit--"
+            "b-succeeds--a-fails"
+        ),
+    ),
+    pytest.param(
+        "attesting_receipt_writer",
+        "same_command_type_and_unit_different_keys",
+        "b_fails_a_succeeds",
+        id=(
+            "phase-attesting-receipt-writer--scope-same-command-and-unit-different-keys--"
+            "b-fails--a-succeeds"
+        ),
+    ),
+    pytest.param(
+        "participant_rollback",
+        "different_command_type_and_consistency_unit",
+        "b_succeeds_a_fails",
+        id=("phase-participant-rollback--scope-different-command-and-unit--" "b-succeeds--a-fails"),
+    ),
+    pytest.param(
+        "participant_rollback",
+        "same_command_type_different_consistency_unit",
+        "b_fails_a_fails",
+        id=("phase-participant-rollback--scope-same-command-different-unit--" "b-fails--a-fails"),
+    ),
+    pytest.param(
+        "participant_rollback",
+        "different_command_type_same_textual_consistency_unit",
+        "b_succeeds_a_fails",
+        id=(
+            "phase-participant-rollback--scope-different-command-same-unit--" "b-succeeds--a-fails"
+        ),
+    ),
+    pytest.param(
+        "participant_rollback",
+        "same_command_type_and_unit_different_keys",
+        "b_fails_a_fails",
+        id=(
+            "phase-participant-rollback--scope-same-command-and-unit-different-keys--"
+            "b-fails--a-fails"
+        ),
+    ),
+)
+
+
+def _v7_two_instance_commands(
+    command_type: Any,
+    key_type: Any,
+    *,
+    scope_relationship: str,
+) -> tuple[Any, Any]:
+    command_name_a = "owner-a-command"
+    unit_a = "owner-a-unit"
+    command_name_b = "owner-b-command"
+    unit_b = "owner-b-unit"
+    if scope_relationship == "same_command_type_different_consistency_unit":
+        command_name_b = command_name_a
+    elif scope_relationship == "different_command_type_same_textual_consistency_unit":
+        unit_b = unit_a
+    elif scope_relationship == "same_command_type_and_unit_different_keys":
+        command_name_b = command_name_a
+        unit_b = unit_a
+    else:
+        assert scope_relationship == "different_command_type_and_consistency_unit"
+
+    key_a = _key(
+        key_type,
+        value="idem-owner-a",
+        command_type=command_name_a,
+        consistency_unit_id=unit_a,
+    )
+    key_b = _key(
+        key_type,
+        value="idem-owner-b",
+        command_type=command_name_b,
+        consistency_unit_id=unit_b,
+    )
+    return (
+        _command(
+            command_type,
+            key_type,
+            key=key_a,
+            command_id="command-owner-a",
+            fingerprint=_FINGERPRINT_A,
+        ),
+        _command(
+            command_type,
+            key_type,
+            key=key_b,
+            command_id="command-owner-b",
+            fingerprint=_FINGERPRINT_B,
+            policy_version="owner-b-policy",
+        ),
+    )
+
+
+def _v7_callback_participant(
+    repository_port: Any,
+    *,
+    phase: str,
+    role: str,
+    b_outcome: str,
+    a_outcome: str,
+) -> Any:
+    class Participant(repository_port):
+        def __init__(self) -> None:
+            self.phase = phase
+            self.role = role
+            self.b_outcome = b_outcome
+            self.a_outcome = a_outcome
+            self.boundary_b: Any = None
+            self.command_b: Any = None
+            self.pending: dict[str, Any] | None = None
+            self.visible: list[dict[str, Any]] = []
+            self._visible_before: list[dict[str, Any]] = []
+            self.b_mutation_calls = 0
+            self.b_receipts: list[Any] = []
+            self.b_errors: list[BaseException] = []
+            self.callback_calls = 0
+
+        def _invoke_b(self) -> None:
+            self.callback_calls += 1
+
+            def mutate_b(state: dict[str, Any]) -> dict[str, str]:
+                self.b_mutation_calls += 1
+                state["count"] += 1
+                if self.b_outcome == "fails":
+                    raise RuntimeError("V7 instance B admitted failure")
+                return {"receipt_id": "receipt-owner-b", "result_id": "result-owner-b"}
+
+            try:
+                receipt = self.boundary_b.execute(
+                    command=self.command_b,
+                    mutation=mutate_b,
+                )
+            except BaseException as exc:
+                self.b_errors.append(exc)
+            else:
+                self.b_receipts.append(receipt)
+
+        def _fail_a_if_required(self) -> None:
+            if self.a_outcome == "fails":
+                raise RuntimeError("V7 instance A subsequent failure")
+
+        def prepare(self, *, command: Any, working_state: Any, receipt: Any) -> None:
+            self._visible_before = deepcopy(self.visible)
+            self.pending = {
+                "role": self.role,
+                "command_id": command.command_id,
+                "state": deepcopy(working_state),
+                "receipt_id": receipt.receipt_id,
+            }
+            if self.phase == "participant_prepare":
+                self._invoke_b()
+                self._fail_a_if_required()
+            if self.phase == "participant_rollback":
+                raise RuntimeError("V7 instance A rollback trigger")
+
+        def commit(self) -> None:
+            assert self.pending is not None
+            self.visible.append(deepcopy(self.pending))
+            if self.phase in ("participant_commit", "attesting_receipt_writer"):
+                self._invoke_b()
+                self._fail_a_if_required()
+            self.pending = None
+
+        def rollback(self) -> None:
+            self.visible = deepcopy(self._visible_before)
+            self.pending = None
+            if self.phase == "participant_rollback":
+                self._invoke_b()
+
+    return Participant()
+
+
+def _v7_assert_single_success(
+    boundary: Any,
+    *,
+    owner: str,
+    command: Any,
+    receipt_id: str,
+) -> Any:
+    receipts = boundary.list_receipts()
+    assert boundary.snapshot_state() == {"owner": owner, "count": 1}
+    assert boundary.state_version == 1
+    assert boundary.committed_sequence == 1
+    assert len(receipts) == 1
+    receipt = receipts[0]
+    assert receipt.receipt_id == receipt_id
+    assert receipt.command_id == command.command_id
+    assert receipt.idempotency_key == command.idempotency_key
+    assert receipt.command_type == command.idempotency_key.command_type
+    assert receipt.consistency_unit_id == command.idempotency_key.consistency_unit_id
+    assert receipt.prior_state_version == 0
+    assert receipt.resulting_state_version == 1
+    assert receipt.sequence == 1
+    return receipt
+
+
+def _v7_assert_failed_without_truth(boundary: Any, *, owner: str) -> None:
+    assert boundary.snapshot_state() == {"owner": owner, "count": 0}
+    assert boundary.state_version == 0
+    assert boundary.committed_sequence == 0
+    assert boundary.list_receipts() == ()
+
+
+@pytest.mark.parametrize(
+    "phase,scope_relationship,outcomes",
+    _M13_V7_TWO_INSTANCE_MATRIX,
+)
+def test_m13_v7_active_attempt_exclusion_is_owned_by_one_unit_of_work_instance(
+    phase: str,
+    scope_relationship: str,
+    outcomes: str,
+) -> None:
+    (
+        _,
+        _,
+        key_type,
+        in_memory_uow,
+        repository_port,
+        _,
+        command_type,
+        _,
+    ) = _contracts()
+    b_outcome, a_outcome = (
+        ("succeeds" if "b_succeeds" in outcomes else "fails"),
+        ("succeeds" if "a_succeeds" in outcomes else "fails"),
+    )
+    command_a, command_b = _v7_two_instance_commands(
+        command_type,
+        key_type,
+        scope_relationship=scope_relationship,
+    )
+    participant_b = _matrix_participant(
+        repository_port,
+        name="instance-b-participant",
+        role="instance-b-state",
+    )
+    boundary_b = in_memory_uow(
+        initial_state={"owner": "B", "count": 0},
+        repository_ports=(participant_b,),
+    )
+    participant_a = _v7_callback_participant(
+        repository_port,
+        phase=phase,
+        role=(
+            "attesting-receipt-writer"
+            if phase == "attesting_receipt_writer"
+            else "instance-a-state"
+        ),
+        b_outcome=b_outcome,
+        a_outcome=a_outcome,
+    )
+    boundary_a = in_memory_uow(
+        initial_state={"owner": "A", "count": 0},
+        repository_ports=(participant_a,),
+    )
+    participant_a.boundary_b = boundary_b
+    participant_a.command_b = command_b
+    a_mutation_calls = {"count": 0}
+
+    def mutate_a(state: dict[str, Any]) -> dict[str, str]:
+        a_mutation_calls["count"] += 1
+        state["count"] += 1
+        if phase == "owner_mutation":
+            participant_a._invoke_b()
+            participant_a._fail_a_if_required()
+        return {"receipt_id": "receipt-owner-a", "result_id": "result-owner-a"}
+
+    if a_outcome == "succeeds":
+        receipt_a = boundary_a.execute(command=command_a, mutation=mutate_a)
+        assert receipt_a.receipt_id == "receipt-owner-a"
+    else:
+        expected = (
+            "V7 instance A rollback trigger"
+            if phase == "participant_rollback"
+            else "V7 instance A subsequent failure"
+        )
+        with pytest.raises(RuntimeError, match=expected):
+            boundary_a.execute(command=command_a, mutation=mutate_a)
+
+    assert participant_a.callback_calls == 1
+    assert participant_a.b_mutation_calls == 1
+    assert participant_a.pending is None
+    assert participant_b.pending is None
+    assert a_mutation_calls["count"] == 1
+
+    if b_outcome == "succeeds":
+        assert participant_a.b_errors == []
+        assert len(participant_a.b_receipts) == 1
+        receipt_b = _v7_assert_single_success(
+            boundary_b,
+            owner="B",
+            command=command_b,
+            receipt_id="receipt-owner-b",
+        )
+        assert participant_b.visible[0]["command_id"] == command_b.command_id
+    else:
+        assert participant_a.b_receipts == []
+        assert len(participant_a.b_errors) == 1
+        assert str(participant_a.b_errors[0]) == "V7 instance B admitted failure"
+        _v7_assert_failed_without_truth(boundary_b, owner="B")
+        assert participant_b.visible == []
+
+    if a_outcome == "succeeds":
+        receipt_a = _v7_assert_single_success(
+            boundary_a,
+            owner="A",
+            command=command_a,
+            receipt_id="receipt-owner-a",
+        )
+        assert participant_a.visible[0]["command_id"] == command_a.command_id
+    else:
+        _v7_assert_failed_without_truth(boundary_a, owner="A")
+        assert participant_a.visible == []
+
+    successful: list[tuple[Any, Any, Any, dict[str, int]]] = []
+    if a_outcome == "succeeds":
+        successful.append((boundary_a, command_a, receipt_a, a_mutation_calls))
+    else:
+        corrected_a = _command(
+            command_type,
+            key_type,
+            key=command_a.idempotency_key,
+            command_id="command-owner-a-corrected",
+            fingerprint=_FINGERPRINT_B,
+        )
+        participant_a.phase = "disabled"
+        participant_a.a_outcome = "succeeds"
+        corrected_a_calls = {"count": 0}
+
+        def corrected_mutation_a(state: dict[str, Any]) -> dict[str, str]:
+            corrected_a_calls["count"] += 1
+            state["count"] += 1
+            return {
+                "receipt_id": "receipt-owner-a-corrected",
+                "result_id": "result-owner-a-corrected",
+            }
+
+        corrected_a_receipt = boundary_a.execute(
+            command=corrected_a,
+            mutation=corrected_mutation_a,
+        )
+        _v7_assert_single_success(
+            boundary_a,
+            owner="A",
+            command=corrected_a,
+            receipt_id="receipt-owner-a-corrected",
+        )
+        successful.append((boundary_a, corrected_a, corrected_a_receipt, corrected_a_calls))
+
+    if b_outcome == "succeeds":
+        successful.append(
+            (
+                boundary_b,
+                command_b,
+                receipt_b,
+                {"count": participant_a.b_mutation_calls},
+            )
+        )
+    else:
+        corrected_b = _command(
+            command_type,
+            key_type,
+            key=command_b.idempotency_key,
+            command_id="command-owner-b-corrected",
+            fingerprint=_FINGERPRINT_A,
+            policy_version="owner-b-policy-corrected",
+        )
+        corrected_b_calls = {"count": 0}
+
+        def corrected_mutation_b(state: dict[str, Any]) -> dict[str, str]:
+            corrected_b_calls["count"] += 1
+            state["count"] += 1
+            return {
+                "receipt_id": "receipt-owner-b-corrected",
+                "result_id": "result-owner-b-corrected",
+            }
+
+        corrected_b_receipt = boundary_b.execute(
+            command=corrected_b,
+            mutation=corrected_mutation_b,
+        )
+        _v7_assert_single_success(
+            boundary_b,
+            owner="B",
+            command=corrected_b,
+            receipt_id="receipt-owner-b-corrected",
+        )
+        successful.append((boundary_b, corrected_b, corrected_b_receipt, corrected_b_calls))
+
+    for boundary, command, committed, calls in successful:
+        calls_before = calls["count"]
+        replay_attempts = {"count": 0}
+
+        def replay_must_not_run(state: dict[str, Any]) -> dict[str, str]:
+            replay_attempts["count"] += 1
+            state["count"] += 100
+            return {
+                "receipt_id": "must-not-run",
+                "result_id": "must-not-run",
+            }
+
+        replay = boundary.execute(
+            command=command,
+            mutation=replay_must_not_run,
+        )
+        assert replay_attempts["count"] == 0
+        assert calls["count"] == calls_before
+        assert replay.receipt_id == committed.receipt_id
+        assert replay.result_id == committed.result_id
+        assert replay.sequence == committed.sequence == 1
+        assert replay.resulting_state_version == committed.resulting_state_version == 1
+        assert replay.duplicate_replay is True
+        assert len(boundary.list_receipts()) == 1
+
+
+def test_m13_v7_same_instance_rejection_and_distinct_instance_admission_hold_together() -> None:
+    (
+        _,
+        _,
+        key_type,
+        in_memory_uow,
+        repository_port,
+        _,
+        command_type,
+        _,
+    ) = _contracts()
+    boundary_b = in_memory_uow(initial_state={"owner": "B", "count": 0})
+    command_b = _command(
+        command_type,
+        key_type,
+        key=_key(
+            key_type,
+            value="idem-v7-integration-b",
+            command_type="owner-b-command",
+            consistency_unit_id="owner-b-unit",
+        ),
+        command_id="command-v7-integration-b",
+        fingerprint=_FINGERPRINT_B,
+    )
+
+    class IntegrationParticipant(repository_port):
+        def __init__(self) -> None:
+            self.boundary_a: Any = None
+            self.armed = True
+            self.pending: Any = None
+            self.same_instance_errors: list[BaseException] = []
+            self.same_instance_returns = 0
+            self.same_instance_mutation_calls = 0
+            self.b_mutation_calls = 0
+
+        def prepare(self, *, command: Any, working_state: Any, receipt: Any) -> None:
+            self.pending = deepcopy(working_state)
+
+        def commit(self) -> None:
+            if not self.armed:
+                self.pending = None
+                return
+            self.armed = False
+            nested_a = _command(
+                command_type,
+                key_type,
+                key=_key(key_type, value="idem-v7-integration-nested-a"),
+                command_id="command-v7-integration-nested-a",
+                fingerprint=_FINGERPRINT_B,
+            )
+
+            def mutate_nested_a(state: dict[str, Any]) -> dict[str, str]:
+                self.same_instance_mutation_calls += 1
+                state["count"] += 100
+                return {
+                    "receipt_id": "receipt-v7-integration-nested-a",
+                    "result_id": "result-v7-integration-nested-a",
+                }
+
+            try:
+                self.boundary_a.execute(
+                    command=nested_a,
+                    mutation=mutate_nested_a,
+                )
+            except BaseException as exc:
+                self.same_instance_errors.append(exc)
+            else:
+                self.same_instance_returns += 1
+
+            def mutate_b(state: dict[str, Any]) -> dict[str, str]:
+                self.b_mutation_calls += 1
+                state["count"] += 1
+                return {
+                    "receipt_id": "receipt-v7-integration-b",
+                    "result_id": "result-v7-integration-b",
+                }
+
+            boundary_b.execute(command=command_b, mutation=mutate_b)
+            self.pending = None
+
+        def rollback(self) -> None:
+            self.pending = None
+
+    participant = IntegrationParticipant()
+    boundary_a = in_memory_uow(
+        initial_state={"owner": "A", "count": 0},
+        repository_ports=(participant,),
+    )
+    participant.boundary_a = boundary_a
+    command_a = _command(
+        command_type,
+        key_type,
+        key=_key(key_type, value="idem-v7-integration-a"),
+        command_id="command-v7-integration-a",
+    )
+    receipt_a = boundary_a.execute(
+        command=command_a,
+        mutation=lambda state: (
+            state.__setitem__("count", state["count"] + 1)
+            or {
+                "receipt_id": "receipt-v7-integration-a",
+                "result_id": "result-v7-integration-a",
+            }
+        ),
+    )
+
+    assert participant.same_instance_returns == 0
+    assert participant.same_instance_mutation_calls == 0
+    assert len(participant.same_instance_errors) == 1
+    assert type(participant.same_instance_errors[0]) is RuntimeError
+    assert participant.b_mutation_calls == 1
+    assert participant.pending is None
+    assert boundary_a.snapshot_state() == {"owner": "A", "count": 1}
+    assert boundary_b.snapshot_state() == {"owner": "B", "count": 1}
+    assert boundary_a.list_receipts() == (receipt_a,)
+    assert [receipt.sequence for receipt in boundary_a.list_receipts()] == [1]
+    assert [receipt.sequence for receipt in boundary_b.list_receipts()] == [1]

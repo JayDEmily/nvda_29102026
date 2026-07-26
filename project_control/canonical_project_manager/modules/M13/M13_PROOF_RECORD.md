@@ -1003,3 +1003,130 @@ The V6 proof therefore establishes same-instance exclusion but does not establis
 Exact return: preserve all 131 cases and add test-only V7 proof that distinct instances remain independently executable while one is active, together with process/module/class-global guard mutants. Production source remains frozen until independent V7 acceptance.
 
 See `M13_PROOF_PM_REVIEW_V6.md` and `raw_validation/pm_v7_review/`.
+
+
+## M13-PROOF-REPAIR-V7 worker proposal
+
+**Worker result:**
+`PROPOSED_M13_PROOF_REPAIR_V7_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW`
+
+The authoritative disposition
+`CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`
+remains unchanged. This section records a proof-only worker proposal. It does not
+accept M13, open implementation repair, merge a branch, begin M01, authorise a later
+module or make a production-readiness claim.
+
+### Source and frozen V6 preservation
+
+- Sole source archive:
+  `NVDA_M13_PM_PROOF_V6_CLOSED_cf44a74_20260726.tar.gz`.
+- Verified archive SHA-256:
+  `45dcf20a8a09bbc4edf026269c04b3fa948f9dfc709be1211cee611a2da4a109`.
+- Verified source branch/commit:
+  `review/m13-proof-v7` /
+  `cf44a74385536672237de4747d084faaa7971b47`.
+- Source worktree was clean; 198 reachable commits and complete Git object integrity
+  were verified. Three harmless dangling blobs were present and no object was missing
+  or corrupt.
+- Frozen V6 proof-file SHA-256:
+  `dc52e96ea1071f112e8c2fca1d23e79551b9159908904f5be3b096c756385633`.
+- All 24 frozen test-function ASTs and all 131 collected node IDs are unchanged,
+  present exactly once and remain separately selectable from V7.
+- Two test functions append 21 V7 cases, producing 152 collected cases.
+
+The full read and hash-verified PM evidence inventory is retained at
+`raw_validation/v7_worker/M13_V7_FULL_READ_MANIFEST.tsv`. No existing function,
+assertion, fixture semantic, parameter case or stable V6 ID was weakened, renamed,
+reordered or deleted.
+
+### Positive two-instance independence proof
+
+`raw_validation/v7_worker/V7_TWO_INSTANCE_MATRIX.tsv` records the 20-case matrix and
+one simultaneous integration leaf. It crosses:
+
+- different command type and different consistency unit;
+- same command type but different consistency unit;
+- different command type with the same textual consistency-unit value; and
+- the same command type and textual consistency-unit value on distinct instances
+  with different idempotency keys.
+
+Matching strings in the fourth relationship are not treated as one semantic owner.
+Instance identity remains the exclusion owner.
+
+The matrix invokes B while A is active in every public callback phase exposed by the
+accepted seam: owner mutation, participant `prepare()`, participant `commit()`, an
+attesting-receipt-writer equivalent participant, and publicly observable rollback.
+No receipt-construction callback exists, so none is invented. Across those phases it
+covers B-success/A-success, B-success/A-failure, B-failure/A-success and
+B-failure/A-failure.
+
+For every eventual success, public observations prove one own mutation, only own
+committed state, exact state version `1`, committed sequence `1`, one matching
+receipt, the command's own scoped binding and exact replay without repeated mutation
+or participant work. Every failure is observed before correction with state version
+and sequence `0`, detached initial state, no success receipt, no participant pending
+or visible truth and no idempotency binding. Corrected same-key execution and exact
+replay then prove that neither instance poisons the other.
+
+The integration leaf performs both operations from one participant-commit callback:
+nested execute on active instance A must raise before nested mutation, while execute
+on distinct instance B must commit. This retains V6 same-instance exclusion while
+proving distinct-instance admission.
+
+The complete semantic mapping to N-06 is retained at
+`raw_validation/v7_worker/V7_PROOF_TO_N06.tsv`. The proof remains in-process and
+non-durable; it makes no thread-safety, restart, crash, multi-process, distributed
+transaction or external-effect claim.
+
+### Falsification
+
+The retained PM module-global source passes the frozen 131-case V6 family and fails
+the V7 family and direct public-seam probe solely because B is blocked while A is
+active.
+
+The configurable V7 evidence source provides eight separately selectable variants:
+
+1. module-global active flag;
+2. class-global/static active flag;
+3. process registry containing one universal marker;
+4. process registry keyed only by command type;
+5. process registry keyed only by consistency-unit ID;
+6. process registry keyed only by command type plus consistency-unit ID;
+7. guard shared by every instance of one concrete class; and
+8. module-global coupling whose guard clears before participant commit, admitting
+   unlawful same-instance re-entry.
+
+The first seven preserve per-instance same-attempt rejection and pass all frozen 131
+cases; each is rejected by its intended V7 scope relationship because B's mutation
+never begins. The eighth is already rejected by V6's commit-phase same-instance leaf
+and is independently rejected by the new simultaneous integration leaf. Commands,
+exit codes, unedited outputs, source and adjudication are retained under
+`raw_validation/v7_worker/guard_mutant_runs/`.
+
+All 16 V6 declared mutants, eleven earlier retained mutants, both PM V5 mutants, all
+32 V5 configurable failed-binding variants and all eight implementation-derived
+mutants are rerun into V7-owned evidence and remain rejected by their intended
+semantic cases.
+
+### Validation and mutation boundary
+
+- Conforming reference: complete repaired family `152/152`.
+- Rejected implementation: frozen V6 family `43 failed / 88 passed`; complete family
+  `44 failed / 108 passed`. The sole added rejected-implementation failure is the V7
+  simultaneous same-instance/different-instance integration leaf; the 20 positive
+  distinct-instance cases pass on the rejected implementation.
+- PM module-global guard: frozen V6 `131/131` false positive; V7 addition rejected.
+- The complete repository shadow retains every source-checkpoint failure and adds
+  only the one intentional V7 expected-red node against the frozen rejected
+  implementation.
+- Proof blocks, proof executor, non-M13 persistence, checkpoint shadow, architecture,
+  vocabulary exact parity, YAML parsing, Python compilation, Ruff, Black,
+  changed-path validation and non-evidence `git diff --check` pass.
+
+Changed paths are limited to the M13 proof test, this worker-owned proof record and
+`raw_validation/v7_worker/`. No `src/**`, normative document, proof/retained-test
+configuration, PM disposition, later module or unrelated test is changed.
+
+The final commit, tracked-evidence hashes and archive hash are closeout facts reported
+after their bytes exist. Embedding a checkpoint's own identity in those bytes would
+recursively change that identity.

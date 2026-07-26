@@ -1,0 +1,9 @@
+classification	count
+baseline_failures	104
+current_failures	105
+new_expected_red_v7_m13	1
+resolved_baseline_failures	0
+new_unexplained_regressions	0
+result	PASS
+new_expected_red_nodes
+::test_m13_v7_same_instance_rejection_and_distinct_instance_admission_hold_together

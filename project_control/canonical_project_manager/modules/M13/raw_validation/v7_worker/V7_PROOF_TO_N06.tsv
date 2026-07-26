@@ -1,0 +1,10 @@
+proof_leaf	N-06_mapping	public_observation
+instance_owned_exclusion	N-06.5 independent owner-specific transaction composition	distinct UnitOfWork B executes while A is active
+scope_relationships	N-06 scoped identity does not create process-global ownership	four command/consistency-unit relationships remain independent across instances
+callback_reachability	N-06 declared participant and owner-callback transaction boundary	B is invoked from owner mutation, prepare, commit, writer-equivalent commit and rollback
+success_truth	N-06 atomic committed state/version/sequence/receipt/binding tuple	each successful instance has only its own mutation, version 1, sequence 1 and one matching receipt
+failure_truth	N-06 unsuccessful attempt publishes no transaction truth	each failed instance has state/version/sequence 0, no receipt, pending participant or binding
+replay_truth	N-06 exact duplicate returns original committed result without repeat	each eventual success replays its sole receipt without mutation or participant work
+cross_instance_cleanup	N-06 independent transactions must not poison another owner	failure or success on either instance leaves the other normally admissible
+same_instance_exclusion	N-06 deterministic sequencing within one active boundary	same active A rejects nested A while distinct B succeeds in the same callback
+non_durable_boundary	N-06 memory proof is explicitly in-process and non-durable	no thread, restart, crash, multi-process, distributed or external-effect claim is made
