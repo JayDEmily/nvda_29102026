@@ -1,0 +1,9 @@
+attempt_1=failed:prepare failed
+after_failure_rollback_calls=1
+after_failure_pending=None
+after_failure_state_version=0
+after_failure_receipts=()
+different_input_retry=committed:sequence=1:command_id=command-2
+final_state_version=1
+final_state={'count': 1}
+final_receipts=(AtomicReceipt(receipt_id='receipt-1', result_id='result-1', command_id='command-2', command_type='position_reconciliation', consistency_unit_id='position-1', idempotency_key=IdempotencyKey(value='idem-1', command_type='position_reconciliation', consistency_unit_id='position-1'), input_fingerprint='bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', policy_version='transaction-v1', prior_state_version=0, resulting_state_version=1, sequence=1, duplicate_replay=False),)

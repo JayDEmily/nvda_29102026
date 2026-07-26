@@ -1,0 +1,41 @@
+......F..FFFF                                                            [100%]
+=================================== FAILURES ===================================
+____ test_m13_mutation_failure_rolls_back_state_version_and_success_receipt ____
+
+>   ???
+E   assert 1 == 0
+E    +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7fe19768b8a0>.state_version
+
+/mnt/data/m13_v3_work/NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:276: AssertionError
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+>   ???
+E   TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+/mnt/data/m13_v3_work/NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:393: TypeError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+>   ???
+E   TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+/mnt/data/m13_v3_work/NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:447: TypeError
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+>   ???
+E   TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+/mnt/data/m13_v3_work/NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:532: TypeError
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+>   ???
+E   TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+/mnt/data/m13_v3_work/NVDA_M13_PROOF_REPAIR_V2_READY_e59b8bd_20260726/tests/tier_a/persistence/test_m13_state_kernel_contract.py:587: TypeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_mutation_failure_rolls_back_state_version_and_success_receipt - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7fe19768b8a0>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+5 failed, 8 passed in 0.06s

@@ -339,12 +339,12 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed:** `CTRL-ARCH-001` was fast-forwarded to local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283`. The original nine-test family and the repaired eleven-test family were independently rejected for distinct atomicity false positives. `M13-PROOF-REPAIR-V2` then preserved the eleven functions and appended one single-participant `prepare()`-failure cleanup/retry test.
+**Completed:** `M13-PROOF-REPAIR-V3` preserved the twelve existing functions and appended one two-participant case requiring rollback of both the later participant that raises during `prepare()` and the earlier successfully prepared participant. The conforming reference passes 13/13 and the retained PM V3 rollback-only-current-participant mutant is rejected.
 
-**Independent PM V3 decision:** `CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`.
+**Independent PM V4 decision:** `CLOSED:the thirteen-test suite does not prove that a failed transaction leaves no idempotency binding; an implementation that reserves the scoped key and failed input after rollback passes all thirteen tests, permits exact retry, but falsely rejects a different uncommitted input using that key`.
 
-The single-participant V2 test is lawful and necessary for the behaviour it exercises, but N-06 and MLC-P item 13 require every prepared participant to be rolled back. The family does not execute the ordering case where participant A prepares successfully and participant B establishes pending state then raises. The retained independent mutant passes 12/12; the direct probe shows participant A's stale pending state causes the identical retry to fail.
+N-06 requires the idempotency key to be atomically bound to a committed input/result/version/receipt. MLC-P items 12–14 require failure to leave no idempotency binding, no sequence consumption and an uncontaminated retry. The current family proves exact retry executes again, but it does not distinguish a clean unbound key from a hidden failed-attempt reservation that allows only the original input.
 
-**Current:** bounded `M13-PROOF-REPAIR-V3` only. Preserve the twelve tests and add one two-participant `prepare()`-failure case requiring rollback of the failing participant and every earlier prepared participant, no pending or committed truth, and a clean sequence/version-1 retry.
+**Current:** bounded `M13-PROOF-REPAIR-V4` only. Preserve all thirteen tests and add one public-seam failure case proving that, after rollback with no committed truth, a different command/input using the same scoped idempotency key is treated as a fresh transaction and may commit as sequence/version `1`. The repaired family must reject the retained failed-attempt reservation mutant for this intended reason.
 
 **Return boundary:** `M13-IMPLEMENT` remains closed. Only a later independent Project Manager review may issue `IMPLEMENTATION_OPEN`.

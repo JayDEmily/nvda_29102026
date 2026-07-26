@@ -444,3 +444,49 @@ The V2 test proves cleanup of the participant that itself raises during `prepare
 The next lawful unit is test-only proof repair. Preserve the twelve tests and add one two-participant prepare-failure case requiring rollback of both the later failing participant and every earlier prepared participant, followed by an uncontaminated identical retry committing as sequence/version `1`. M13 production implementation and all later modules remain closed.
 
 Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V3` Project Manager V4 review
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_PROOF_REPAIR_V3_READY_6ef6e44_20260726.tar(1).gz`.
+- Archive SHA-256: `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v3` / `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1` / clean.
+- Review branch: `review/m13-proof-v4`.
+- Thirteen-test SHA-256: `9bca3237bd24e905ce8772d9360f56bb824fa36eb46c4c9e2d82d581e0744374`.
+- Preservation: all twelve PM V3 source test functions unchanged; exactly one V3 test appended.
+
+### Disposition
+
+`CLOSED:the thirteen-test suite does not prove that a failed transaction leaves no idempotency binding; an implementation that reserves the scoped key and failed input after rollback passes all thirteen tests, permits exact retry, but falsely rejects a different uncommitted input using that key`
+
+### Independent reproduction
+
+| Check | Result |
+|---|---|
+| Conforming reference | PASS — 13 passed |
+| Worker PM V3 target mutant, original twelve | FALSE POSITIVE REPRODUCED — 12 passed |
+| Worker PM V3 target mutant, repaired thirteen | REJECTED — 1 failed, 12 passed |
+| Independent failed-attempt idempotency-reservation mutant | **FALSE POSITIVE — 13 passed** |
+| First probe attempt | Failed during participant `prepare()`; participant rollback ran and no pending state remained |
+| Internal state/version/receipt after failure | Unchanged at state `{'count': 0}`, version `0`, no receipts |
+| Different input using same uncommitted scoped key | **Falsely rejected** as `IdempotencyConflictError` by mutant |
+| Conforming-reference outcome for same probe | Fresh commit as sequence/version `1` |
+| Ten previously retained mutants | Rejected by the thirteen-test family |
+| Current repository M13 proof | EXPECTED RED — 13 failures solely because `nvda_desk.m13_state_kernel` is absent |
+| Proof-block structure | PASS — 52 blocks |
+| Proof-executor contract | PASS — 21 tests |
+| Persistence shadow excluding M13 | PASS — 36 tests, 13 deselected |
+| Checkpoint shadow | PASS — 2 tests |
+| YAML, syntax and scaffold | PASS |
+| Production, normative, test and proof-configuration mutation during PM review | None |
+
+The V3 repair closes the prior rollback-order defect. It does not prove the N-06 rule that idempotency binding occurs only with committed result/state/receipt truth. Exact retry can remain executable even while a hidden failed-attempt reservation blocks another uncommitted input.
+
+### Gate result
+
+`CLOSED:M13_PROOF_REPAIR_V4_REQUIRED_FOR_NO_FAILED_IDEMPOTENCY_BINDING`
+
+The next lawful unit is test-only proof repair. Preserve the thirteen tests and add one failure/rollback case proving a different input with the same scoped key remains fresh and can commit as sequence/version `1`. M13 production implementation and all later modules remain closed.
+
+Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.

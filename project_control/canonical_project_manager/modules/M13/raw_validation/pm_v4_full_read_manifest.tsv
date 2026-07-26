@@ -1,0 +1,30 @@
+path	reason	read_status	mutation_relevance
+00_TASK/PROJECT_EXECUTION_METHOD.md	fallback execution method	full	governing method
+AGENTS.md	worker operating harness	full	governing instructions
+PLANS.md	plan selection and PM/worker roles	full	governing instructions
+ROADMAP_LEDGER.md	retirement pointer	full	live-route selection
+ROADMAP_LEDGER_V2.md	live programme pointer	full	PM decision update
+project_control/canonical_project_manager/EXEC_PLAN.md	active programme plan	full	PM decision update
+project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md	module-local proof protocol	full	PM decision update
+project_control/canonical_project_manager/VALIDATION_LOG.md	canonical validation history	full	append PM V4 evidence
+project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md	M13 authority/proof record	full	append independent MLC-V decision
+tests/AGENTS.override.md	test-subtree law	full	review authority
+docs/00_CONTROL_SURFACE_ROUTING_INDEX.md	normative routing	full	authority selection
+docs/01_NORMATIVE_CORE.md	top-level doctrine	full	authority hierarchy
+docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md	N-06 transaction authority	full	decision authority
+docs/08_TESTING_AND_PROMOTION_CORE.md	proof and promotion law	full	proof adequacy
+docs/08.1_TESTING_AND_PROMOTION_WORKING.md	alpha false-positive and traceability law	full	proof adequacy
+docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md	durable-term law	full	terminology check
+docs/vocabulary/vocabulary_registry.md	M13 durable terms	relevant M13 entries	terminology check
+config/proof_blocks.yaml	M13 proof-block route	relevant M13 block	configuration unchanged
+config/retained_test_registry.yaml	M13 retained-test route	relevant M13 entry	configuration unchanged
+tests/tier_a/persistence/test_m13_state_kernel_contract.py	frozen thirteen-test proof family	full	must remain unchanged
+project_control/canonical_project_manager/modules/M13/raw_validation/reference_implementation_snapshot.py	conforming proof reference	full	positive validation
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_rollback_only_failing_prepare_participant_source.py	worker V3 target mutant	full	worker repair validation
+project_control/canonical_project_manager/modules/M13/raw_validation/v2_run_variant.py	existing substitution runner	full	worker evidence interpretation
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_worker_validation_summary.txt	worker claim summary	full	claim audit
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_original_twelve_preservation.txt	worker preservation evidence	full	claim audit
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_retained_mutants_summary.tsv	worker mutation matrix	full	claim audit
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_target_mutant_original_twelve.txt	worker old-family evidence	full	claim audit
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_target_mutant_repaired_family.txt	worker repaired-family evidence	full	claim audit
+project_control/canonical_project_manager/modules/M13/raw_validation/v3_reference_conforming.txt	worker positive evidence	full	claim audit

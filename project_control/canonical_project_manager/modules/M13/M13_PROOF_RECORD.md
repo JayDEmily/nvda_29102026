@@ -2,10 +2,11 @@
 
 ## Status
 
-`M13_PROOF_REPAIR_V2_REJECTED_PRIOR_PREPARED_PARTICIPANT_GAP`
+`M13_PROOF_REPAIR_V3_REJECTED_FAILED_IDEMPOTENCY_BINDING_GAP`
 
 - Module: `M13 state_kernel`
-- Current worker branch: `proof/m13-state-kernel-repair-v2`
+- Current worker branch: `proof/m13-state-kernel-repair-v3` at `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`
+- Independent PM V4 review branch: `review/m13-proof-v4`; reviewed source commit `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1`; source archive SHA-256 `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`
 - Independent PM V3 review branch: `review/m13-proof-v3`; reviewed source commit `e59b8bdfb5d1e34944aa1b661643c8e6570b940c`; source archive SHA-256 `e644bd06430449efa8f8277f4ecf222f43dbc93bd8766cbd61f86a6b5d961b9a`
 - Current V2 source checkpoint: `recovery/m13-pm-v2-closed` at `4d50939f308598efcb668487e2105f038a1fefd7`; source archive SHA-256 `772e328d37df00e123a7cfd2569e285b47b188a9d3bf70a06e5a1b6689352a6b`
 - V2 proof-repair commit: `7b3b04c4647ee13674e46c55227b5352cb8c8361`
@@ -17,7 +18,7 @@
 - Historical requirement: `C-024`
 - Historical obligation: `D-054`
 - Governing protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
-- Production source: closed; V2 worker repair changes one candidate test plus worker proof/validation evidence only
+- Production source: closed; V3 worker repair changes one candidate test plus worker proof/validation evidence only
 
 ## Provenance boundary
 
@@ -447,3 +448,78 @@ The new proof uses two declared `RepositoryPort` participants. Participant A pre
 Evidence is recorded under `raw_validation/v3_*`, including the full-read manifest, original-twelve preservation report, target-mutant outputs, conforming-reference output, retained-mutant matrix and worker validation summary.
 
 This is a proposed proof repair only. `M13-IMPLEMENT` remains closed. No acceptance, `IMPLEMENTATION_OPEN`, or later-module claim is made.
+
+## MLC-V — Independent Project Manager V4 decision
+
+### Source verification
+
+- Supplied archive SHA-256: `4d41c7460690de774a61757d98d2907ac1df26a8fe0cbc3255b79ff89011a113`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v3` / `6ef6e448e28cd96138c0aaeb3d8f8334cad55eb1` / clean.
+- The twelve PM V3 source test functions are unchanged and exactly one V3 function is appended.
+- Frozen thirteen-test SHA-256: `9bca3237bd24e905ce8772d9360f56bb824fa36eb46c4c9e2d82d581e0744374`.
+
+### Disposition
+
+`CLOSED:the thirteen-test suite does not prove that a failed transaction leaves no idempotency binding; an implementation that reserves the scoped key and failed input after rollback passes all thirteen tests, permits exact retry, but falsely rejects a different uncommitted input using that key`
+
+### Independent falsification
+
+The retained false-positive implementation restores state, version, receipt and participant truth after failure, but writes a separate failed-attempt reservation keyed by the same `(command_type, consistency_unit_id, key value)` scope. It permits the exact failed input to execute again, so every existing clean-retry assertion remains green. It rejects a different input using that uncommitted key as an idempotency conflict.
+
+The complete thirteen-test family passes this implementation:
+
+```text
+13 passed
+```
+
+The public-seam probe observes:
+
+```text
+attempt_1=failed:prepare failed
+after_failure_rollback_calls=1
+after_failure_pending=None
+after_failure_state_version=0
+after_failure_receipts=()
+different_input_retry=failed:IdempotencyConflictError:failed attempt reserved idempotency key
+final_state_version=0
+final_state={'count': 0}
+final_receipts=()
+```
+
+The same probe against the conforming reference commits the different input as fresh truth:
+
+```text
+different_input_retry=committed:sequence=1:command_id=command-2
+final_state_version=1
+final_state={'count': 1}
+```
+
+Evidence:
+
+- `raw_validation/pm_v4_mutant_failed_attempt_reserves_idempotency_source.py`
+- `raw_validation/pm_v4_failed_attempt_binding_probe.py`
+- `raw_validation/pm_v4_failed_binding_mutant_full.txt`
+- `raw_validation/pm_v4_failed_binding_mutant_probe.txt`
+- `raw_validation/pm_v4_failed_binding_reference_probe.txt`
+- `raw_validation/pm_v4_independent_precommit_validation.txt`
+
+### Authority and proof assessment
+
+- N-06 requires the scoped idempotency key to be atomically bound to semantic input, committed result, resulting state version/sequence and receipt. No successful commit means no committed binding.
+- MLC-P items 12 and 13 explicitly require failed participant/receipt paths to leave idempotency binding uncommitted; item 14 requires uncontaminated retry and no hidden sequence consumption.
+- The worker's V3 test is lawful and necessary. It closes the prior defect by proving rollback of the later failing participant and the earlier prepared participant.
+- The thirteen tests prove exact retry executes again as sequence `1`, but they do not prove the key is unbound for another uncommitted input. A conflict-only failed reservation is therefore invisible to the family.
+- The defect is observable entirely through the accepted `UnitOfWork.execute` public seam and does not require implementation inspection, normative change or production code.
+
+### Return gate
+
+`M13-IMPLEMENT` remains closed. The next lawful unit is bounded `M13-PROOF-REPAIR-V4` only:
+
+1. preserve all thirteen existing test functions and semantics;
+2. create one transaction failure that rolls back with no committed state, version, sequence, receipt or participant truth;
+3. submit a second `TransactionCommand` using the same scoped `IdempotencyKey` with a different semantic input and command identity while the expected version remains `0`;
+4. require that second command to execute as a fresh transaction and commit as sequence/version `1` with exactly one success receipt;
+5. require exact replay of the second committed command to return its original receipt without repeating mutation; and
+6. reject the retained failed-attempt idempotency-reservation mutant for this intended reason.
+
+No production source, normative meaning, existing test semantics, proof configuration or later module is opened by this decision.
