@@ -1,0 +1,11 @@
+mutant	exit_code	result
+mutant_accept_invalid_receipt	1	REJECTED
+mutant_commit_before_receipt	1	REJECTED
+mutant_commit_on_exception	1	REJECTED
+mutant_duplicate_reexec	1	REJECTED
+mutant_durable_label	1	REJECTED
+mutant_ignore_version	1	REJECTED
+mutant_no_participant_rollback	1	REJECTED
+mutant_register_after_prepare	1	REJECTED
+mutant_rollback_only_failing_prepare_participant	1	REJECTED
+mutant_scope_value_only	1	REJECTED

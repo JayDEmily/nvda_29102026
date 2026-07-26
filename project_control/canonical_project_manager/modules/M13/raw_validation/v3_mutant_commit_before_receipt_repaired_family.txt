@@ -1,0 +1,141 @@
+.........FFFF                                                            [100%]
+=================================== FAILURES ===================================
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+    def test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        state_participant = _repository_participant(repository_port, capture="state")
+        receipt_writer = _repository_participant(
+            repository_port,
+            capture="receipt",
+            fail_on_commit=True,
+            failure_message="receipt write failed",
+        )
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(state_participant, receipt_writer),
+        )
+        command = _command(command_type, key_type)
+        calls = {"count": 0}
+    
+        def mutate(state: dict[str, Any]) -> dict[str, str]:
+            calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-1", "result_id": "result-1"}
+    
+        with pytest.raises(RuntimeError, match="receipt write failed"):
+            boundary.execute(command=command, mutation=mutate)
+    
+        assert calls["count"] == 1
+>       assert boundary.state_version == 0
+E       assert 1 == 0
+E        +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b86b3e0>.state_version
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:409: AssertionError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+    def test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        failing_participant = _repository_participant(
+            repository_port,
+            capture="state",
+            fail_on_commit=True,
+            failure_message="repository participant failed",
+        )
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(failing_participant,),
+        )
+        command = _command(command_type, key_type)
+    
+        with pytest.raises(RuntimeError, match="repository participant failed"):
+            boundary.execute(command=command, mutation=_mutation())
+    
+        assert failing_participant.prepare_calls == 1
+        assert failing_participant.commit_calls == 1
+        assert failing_participant.rollback_calls >= 1
+        assert failing_participant.visible == []
+>       assert boundary.state_version == 0
+E       assert 1 == 0
+E        +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b5c0230>.state_version
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:460: AssertionError
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+    def test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        participant = _prepare_failure_participant(repository_port)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(participant,),
+        )
+        command = _command(command_type, key_type)
+        calls = {"count": 0}
+    
+        def mutate(state: dict[str, Any]) -> dict[str, str]:
+            calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-1", "result_id": "result-1"}
+    
+        with pytest.raises(RuntimeError, match="participant prepare failed"):
+            boundary.execute(command=command, mutation=mutate)
+    
+        assert calls["count"] == 1
+        assert participant.prepare_calls == 1
+        assert participant.commit_calls == 0
+        assert participant.rollback_calls >= 1
+        assert participant.pending is None
+        assert participant.visible == []
+>       assert boundary.state_version == 0
+E       assert 1 == 0
+E        +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b716270>.state_version
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:553: AssertionError
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+    def test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        participant_a = _prepare_failure_participant(repository_port)
+        participant_a.fail_on_prepare = False
+        participant_b = _prepare_failure_participant(repository_port)
+        boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(participant_a, participant_b),
+        )
+        command = _command(command_type, key_type)
+        calls = {"count": 0}
+    
+        def mutate(state: dict[str, Any]) -> dict[str, str]:
+            calls["count"] += 1
+            state["count"] += 1
+            return {"receipt_id": "receipt-1", "result_id": "result-1"}
+    
+        with pytest.raises(RuntimeError, match="participant prepare failed"):
+            boundary.execute(command=command, mutation=mutate)
+    
+        assert calls["count"] == 1
+        assert participant_a.prepare_calls == 1
+        assert participant_b.prepare_calls == 1
+        assert participant_a.commit_calls == 0
+        assert participant_b.commit_calls == 0
+        assert participant_a.rollback_calls >= 1
+        assert participant_b.rollback_calls >= 1
+        assert participant_a.pending is None
+        assert participant_b.pending is None
+        assert participant_a.visible == []
+        assert participant_b.visible == []
+>       assert boundary.state_version == 0
+E       assert 1 == 0
+E        +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b528590>.state_version
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:613: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b86b3e0>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b5c0230>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b716270>.state_version
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - assert 1 == 0
+ +  where 1 = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7ffa2b528590>.state_version
+4 failed, 9 passed in 0.08s

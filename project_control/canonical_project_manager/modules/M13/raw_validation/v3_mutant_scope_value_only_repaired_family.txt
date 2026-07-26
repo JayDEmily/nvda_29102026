@@ -1,0 +1,124 @@
+....F....FFFF                                                            [100%]
+=================================== FAILURES ===================================
+___ test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit ____
+
+    def test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit() -> None:
+        _, _, key_type, in_memory_uow, _, _, command_type, _ = _contracts()
+        boundary = in_memory_uow(initial_state={"count": 0})
+        first = _command(command_type, key_type)
+        second_key = _key(key_type, consistency_unit_id="position-2")
+        second = _command(
+            command_type,
+            key_type,
+            key=second_key,
+            command_id="command-2",
+            expected_state_version=1,
+        )
+        third_key = _key(
+            key_type,
+            command_type="capital_state_transition",
+            consistency_unit_id="position-1",
+        )
+        third = _command(
+            command_type,
+            key_type,
+            key=third_key,
+            command_id="command-3",
+            expected_state_version=2,
+        )
+    
+        boundary.execute(command=first, mutation=_mutation())
+>       boundary.execute(
+            command=second,
+            mutation=_mutation(increment=10, receipt_id="receipt-2", result_id="result-2"),
+        )
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:220: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <nvda_desk.m13_state_kernel.InMemoryUnitOfWork object at 0x7fb30cc843e0>
+
+    def execute(
+        self,
+        *,
+        command: TransactionCommand,
+        mutation: Callable[[Any], Mapping[str, str]],
+    ) -> AtomicReceipt:
+        scope = self._scope(command.idempotency_key)
+        identity = self._command_identity(command)
+        existing = self._bindings.get(scope)
+        if existing is not None:
+            existing_identity, existing_receipt = existing
+            if existing_identity != identity:
+>               raise IdempotencyConflictError("conflicting idempotency-key reuse")
+E               nvda_desk.m13_state_kernel.IdempotencyConflictError: conflicting idempotency-key reuse
+
+project_control/canonical_project_manager/modules/M13/raw_validation/mutant_scope_value_only_source.py:124: IdempotencyConflictError
+_ test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry _
+
+    def test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        state_participant = _repository_participant(repository_port, capture="state")
+        receipt_writer = _repository_participant(
+            repository_port,
+            capture="receipt",
+            fail_on_commit=True,
+            failure_message="receipt write failed",
+        )
+>       boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(state_participant, receipt_writer),
+        )
+E       TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:393: TypeError
+_ test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth _
+
+    def test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        failing_participant = _repository_participant(
+            repository_port,
+            capture="state",
+            fail_on_commit=True,
+            failure_message="repository participant failed",
+        )
+>       boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(failing_participant,),
+        )
+E       TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:447: TypeError
+_ test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry _
+
+    def test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        participant = _prepare_failure_participant(repository_port)
+>       boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(participant,),
+        )
+E       TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:532: TypeError
+_ test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry _
+
+    def test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry() -> None:
+        _, _, key_type, in_memory_uow, repository_port, _, command_type, _ = _contracts()
+        participant_a = _prepare_failure_participant(repository_port)
+        participant_a.fail_on_prepare = False
+        participant_b = _prepare_failure_participant(repository_port)
+>       boundary = in_memory_uow(
+            initial_state={"count": 0},
+            repository_ports=(participant_a, participant_b),
+        )
+E       TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+
+tests/tier_a/persistence/test_m13_state_kernel_contract.py:587: TypeError
+=========================== short test summary info ============================
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_idempotency_key_is_scoped_by_command_type_and_consistency_unit - nvda_desk.m13_state_kernel.IdempotencyConflictError: conflicting idempotency-key reuse
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_receipt_write_failure_rolls_back_every_visible_change_and_allows_clean_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_repository_participant_failure_rolls_back_participant_and_internal_truth - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_prepare_failure_rolls_back_failing_participant_and_allows_uncontaminated_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+FAILED tests/tier_a/persistence/test_m13_state_kernel_contract.py::test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry - TypeError: InMemoryUnitOfWork.__init__() got an unexpected keyword argument 'repository_ports'
+5 failed, 8 passed in 0.08s

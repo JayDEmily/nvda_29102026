@@ -425,3 +425,25 @@ Evidence:
 7. require the identical retry to commit as sequence/version `1` with exactly one success receipt, rejecting the retained rollback-only-current-participant mutant for this intended reason.
 
 No production source, normative meaning, test semantics, proof configuration or later module is opened by this decision.
+
+## M13-PROOF-REPAIR-V3 worker proposal — awaiting independent Project Manager review
+
+### Proposed bounded repair
+
+The worker preserved all twelve existing M13 test functions byte-for-byte at function-source level and appended one test:
+
+- `test_m13_later_prepare_failure_rolls_back_every_prepared_participant_and_allows_clean_retry`
+
+The new proof uses two declared `RepositoryPort` participants. Participant A prepares successfully and holds observable pending state. Participant B also establishes pending state, then raises during `prepare()`. The test requires mandatory rollback or equivalent cleanup for both B and every earlier prepared participant, no participant pending or visible committed state, unchanged internal state/version/receipt truth, and an uncontaminated identical retry that commits once as sequence/version `1` with exactly one matching success receipt.
+
+### Worker validation result
+
+- Target retained mutant with original twelve tests: `12 passed`.
+- Target retained mutant with repaired thirteen-test family: rejected because participant A has `rollback_calls == 0` after participant B fails during prepare.
+- Conforming reference with repaired family: `13 passed`.
+- Every previously retained mutant: rejected by the repaired family.
+- Production source, normative documents and proof/retained-test configuration: unchanged.
+
+Evidence is recorded under `raw_validation/v3_*`, including the full-read manifest, original-twelve preservation report, target-mutant outputs, conforming-reference output, retained-mutant matrix and worker validation summary.
+
+This is a proposed proof repair only. `M13-IMPLEMENT` remains closed. No acceptance, `IMPLEMENTATION_OPEN`, or later-module claim is made.
