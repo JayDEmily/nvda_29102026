@@ -4,14 +4,14 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_v6_review_closed_instance_scope_gap` |
+| Status | `m13_proof_v7_accepted_implementation_repair_open` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-proof-v7` |
-| Current unit | `M13-PROOF-REPAIR-V7`; test-only repair for UnitOfWork-instance-scoped active-attempt exclusion |
+| Current branch | `review/m13-proof-v8` |
+| Current unit | `M13-IMPLEMENT-REPAIR-V1`; bounded repair of the frozen four-file M13 implementation |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
@@ -21,8 +21,8 @@
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | closed during `M13-PROOF-REPAIR-V7`; only the bounded M13 test/proof record and worker-owned proof evidence may change |
-| First implementation module | `M13 state_kernel`; V1 proposal rejected pending proof repair and later implementation repair |
+| Production/source mutation | open only for `src/nvda_desk/m13_state_kernel/**` during `M13-IMPLEMENT-REPAIR-V1`; tests, normative authority, configuration and unrelated source remain frozen |
+| First implementation module | `M13 state_kernel`; proof V7 accepted and implementation repair V1 now open |
 | Gate D | module-gated; no global opening |
 
 Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
@@ -71,7 +71,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-PROOF-REPAIR-V5` | `independent_pm_accepted` | fourteen frozen functions preserved; 32-case failure/binding matrix accepted; conforming 46/46; PM V5, configurable and earlier mutants rejected |
 | `M13-IMPLEMENT` | `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH` | proposal passes 46/46 but permits nested transaction corruption and incoherent public receipt values |
 | `M13-PROOF-REPAIR-V6` | `independent_pm_closed_instance_scope_gap` | 131 cases close same-instance re-entry and receipt defects, but a process-global active guard passes 131/131 and blocks a distinct UnitOfWork instance |
-| `M13-PROOF-REPAIR-V7` | `current_test_only_return_gate` | prove positive independence of distinct UnitOfWork instances and reject process/module/class-global guard variants |
+| `M13-PROOF-REPAIR-V7` | `independent_pm_accepted` | 131 cases preserved; 21 two-instance cases added; conforming 152/152; process/module/class/scope-global guard mutants rejected |
+| `M13-IMPLEMENT-REPAIR-V1` | `current_bounded_implementation_gate` | repair instance-local active guard and coherent AtomicReceipt under frozen 152-case proof |
 
 ## Initial serial module order
 
@@ -119,4 +120,4 @@ The V6 proof proposal is a valid partial repair but is not accepted. Its 131 cas
 
 A module-global active-guard mutant passes 131/131. A direct public-seam probe with two distinct `UnitOfWork` instances shows the mutant falsely blocks the second unrelated instance while the first is active; the conforming per-instance reference permits both to commit independent version/sequence `1` truth.
 
-The next lawful unit is test-only `M13-PROOF-REPAIR-V7`. Preserve all 131 cases and add positive two-instance independence proof plus global/class active-guard falsification. Production source, M13 implementation repair, merge, M01 and later modules remain closed.
+The next lawful unit is bounded `M13-IMPLEMENT-REPAIR-V1`. Repair only the frozen M13 package under the accepted 152-case family. Tests, normative authority, configuration, merge, M01 and later modules remain closed pending independent implementation review.

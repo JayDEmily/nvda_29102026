@@ -1,0 +1,32 @@
+m13_source_files
+  src/nvda_desk/m13_state_kernel/__init__.py
+  src/nvda_desk/m13_state_kernel/contracts.py
+  src/nvda_desk/m13_state_kernel/in_memory.py
+  src/nvda_desk/m13_state_kernel/ports.py
+m13_import_inventory
+  __init__.py: .contracts
+  __init__.py: .in_memory
+  __init__.py: .ports
+  contracts.py: __future__
+  contracts.py: dataclasses
+  in_memory.py: __future__
+  in_memory.py: collections.abc
+  in_memory.py: copy
+  in_memory.py: dataclasses
+  in_memory.py: typing
+  in_memory.py: .contracts
+  in_memory.py: .ports
+  ports.py: __future__
+  ports.py: abc
+  ports.py: collections.abc
+  ports.py: typing
+  ports.py: .contracts
+changed_src_paths
+  src/nvda_desk/m13_state_kernel/__init__.py
+  src/nvda_desk/m13_state_kernel/contracts.py
+  src/nvda_desk/m13_state_kernel/in_memory.py
+  src/nvda_desk/m13_state_kernel/ports.py
+top_level_package_cycles_without_m13=2
+m13_outgoing_top_level_dependencies=0
+m13_cycle_membership=0
+architecture_boundary=PASS

@@ -339,12 +339,14 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed but not independently accepted:** `M13-PROOF-REPAIR-V6` preserves the original 46 cases, adds 85 cases and passes the proof-only conforming reference 131/131. It closes the known same-instance re-entrancy and `AtomicReceipt` gaps and rejects its 16 declared V6 mutants.
+**Independent PM disposition:** `IMPLEMENTATION_REPAIR_OPEN`.
 
-**Independent PM disposition:** `CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`.
+`M13-PROOF-REPAIR-V7` is accepted. It preserves all 131 V6 cases, adds 21 auditable two-instance cases and passes the proof-only conforming reference 152/152. The frozen rejected implementation remains expected-red at 44 failures / 108 passes. Process-, module-, class- and scope-global active-guard mutants are rejected while distinct `UnitOfWork` instances remain independently executable.
 
-A proof-only implementation using one module-global active-attempt flag passes all 131 V6 cases. It nevertheless blocks a second distinct `UnitOfWork` with a different command type and consistency unit merely because another instance is active. The conforming per-instance reference allows both independent transactions to commit their own version/sequence `1` truth. This contradicts the V6 per-instance boundary and N-06 independent owner-transaction law.
+**Current:** bounded `M13-IMPLEMENT-REPAIR-V1` under the frozen 152-case family.
 
-**Current:** test-only `M13-PROOF-REPAIR-V7`. Preserve all 131 cases and add the minimum positive two-instance independence proof plus process/module/class-global guard falsification.
+**Allowed production mutation:** only `src/nvda_desk/m13_state_kernel/**`, plus worker-owned M13 implementation records and raw evidence.
 
-**Return boundary:** the worker may not modify M13 production source, normative authority, configuration or later modules, may not self-accept the repaired proof and may not reopen implementation. `M13-IMPLEMENT-REPAIR-V1`, merge, M01 and all later modules remain closed until independent V7 proof acceptance.
+**Required repair:** instance-owned active-attempt exclusion installed before callbacks and retained through participant completion; reliable cleanup after every terminal path; coherent `AtomicReceipt` scope; exact integer version/sequence truth; preservation of all prior N-06 behaviour.
+
+**Return boundary:** the worker may not modify tests, normative authority, proof/retained configuration, unrelated source or later modules; may not self-accept M13; may not merge or begin M01. M13 completion remains pending independent implementation review.

@@ -1130,3 +1130,14 @@ configuration, PM disposition, later module or unrelated test is changed.
 The final commit, tracked-evidence hashes and archive hash are closeout facts reported
 after their bytes exist. Embedding a checkpoint's own identity in those bytes would
 recursively change that identity.
+
+
+## Independent Project Manager V7 acceptance
+
+**Disposition:** `IMPLEMENTATION_REPAIR_OPEN`
+
+The V7 proposal is independently accepted. All 24 V6 test functions and 131 cases are preserved; two functions add 21 cases for a total of 152. The proof-only conforming reference passes 152/152. The frozen rejected implementation remains expected-red at 44 failures / 108 passes. Eight over-broad guard variants are rejected by their designated semantic cases, including module-global, class-global, universal-marker, command-scope, consistency-unit-scope, combined-scope and early-clear implementations.
+
+The proof establishes that active-attempt exclusion belongs to one `UnitOfWork` instance while distinct instances retain independent state, version, sequence, receipt, participant and idempotency truth. It does not claim thread safety, durability, recovery, distributed transactions or external-effect completion.
+
+Open only `M13-IMPLEMENT-REPAIR-V1` under the frozen 152-case family. See `M13_PROOF_PM_REVIEW_V7.md`. M13 acceptance, merge, M01 and later modules remain closed.

@@ -1,0 +1,9 @@
+class_global_static_active_flag	exit=1	intended_rejection=PASS
+early_clear_before_participant_commit_with_global_coupling	exit=1	intended_rejection=PASS
+guard_keyed_only_by_command_type	exit=1	intended_rejection=PASS
+guard_keyed_only_by_command_type_and_consistency_unit_id	exit=1	intended_rejection=PASS
+guard_keyed_only_by_consistency_unit_id	exit=1	intended_rejection=PASS
+guard_shared_by_concrete_class	exit=1	intended_rejection=PASS
+module_global_active_flag	exit=1	intended_rejection=PASS
+universal_active_marker_registry	exit=1	intended_rejection=PASS
+v7_guard_mutants_targeted=8/8 PASS

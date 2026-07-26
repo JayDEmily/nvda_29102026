@@ -1,0 +1,17 @@
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/architecture_boundary.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/black.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/checkpoint_shadow.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/conforming_complete_family.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/frozen_v6_preservation.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/persistence_without_m13.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_run_v7_guard_batch.py: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/proof_blocks.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/proof_executor.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/rejected_complete_family.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/ruff.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/source_verification.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/v7_guard_mutants_targeted.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/vocabulary_exact_parity.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/worker_evidence_hash_check.txt: OK
+project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/yaml_validation.txt: OK

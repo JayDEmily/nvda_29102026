@@ -654,3 +654,43 @@ A module-global active-attempt guard passes all 131 cases. A direct two-instance
 `CLOSED:M13_PROOF_REPAIR_V7_REQUIRED_FOR_INSTANCE_SCOPED_ACTIVE_ATTEMPT_EXCLUSION`
 
 Return only to test-only V7 proof repair. Production repair, merge, M01 and later modules remain closed.
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V7` Project Manager acceptance
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_PROOF_REPAIR_V7_aded5ed_20260726.tar(3).gz`.
+- Archive SHA-256: `1eb29baac7b0e3253c499957d50b85fce1e1440ec43da26b1dc2a6a335bd4d72`.
+- Worker branch/commit/worktree: `proof/m13-state-kernel-repair-v7` / `aded5edc1ad567a1f7d3a4231b918b3af1abd7bd` / clean.
+- Accepted parent: `cf44a74385536672237de4747d084faaa7971b47`.
+- Changed semantic paths: M13 proof test and M13 proof record only; no `src/**`, normative or configuration mutation.
+
+### Disposition
+
+`IMPLEMENTATION_REPAIR_OPEN`
+
+### Independent validation
+
+| Check | Result |
+|---|---|
+| Frozen V6 proof | PASS — 24/24 functions and 131/131 cases unchanged |
+| V7 additions | PASS — two functions, 21 cases; total 152 |
+| Conforming reference | PASS — 152 passed |
+| Frozen rejected implementation | EXPECTED RED — 44 failed, 108 passed |
+| PM global-guard distinction | PASS — frozen V6 false positive reproduced; V7 rejects it |
+| V7 guard mutants | PASS — 8/8 designated targeted rejections independently rerun |
+| Worker evidence integrity | PASS — 484 hashes verified |
+| Proof blocks | PASS — 52 |
+| Proof executor | PASS — 21 |
+| Non-M13 persistence Tier A | PASS — 36 |
+| Checkpoint shadow | PASS — 2 |
+| Architecture boundary | PASS — M13 has no outgoing top-level dependency or cycle membership |
+| Vocabulary exact parity | PASS — 1 |
+| YAML | PASS |
+| Ruff/Black independent rerun | unavailable in PM environment; worker outputs are integrity-hashed and no source/test formatting change was introduced during PM review |
+
+### Gate result
+
+The V7 proof closes the measured instance-scope false positive without weakening same-instance exclusion. Open only `M13-IMPLEMENT-REPAIR-V1` under the frozen 152-case family. M13 final acceptance, merge, M01 and later modules remain closed.
+
+Independent evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/`.
