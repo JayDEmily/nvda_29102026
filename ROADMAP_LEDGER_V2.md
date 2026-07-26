@@ -4,14 +4,14 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_repair_v4_closed_mutation_failure_idempotency_binding_gap` |
+| Status | `m13_proof_accepted_implementation_open` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-proof-v5` |
-| Current unit | `M13-PROOF-REPAIR-V5` required; comprehensive no-binding-on-failure proof matrix, fourteen-test V4 family independently closed |
+| Current branch | `review/m13-proof-v6` |
+| Current unit | `M13-IMPLEMENT` open; implement the accepted non-durable alpha `state_kernel` against the frozen 46-case proof family |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
@@ -21,8 +21,8 @@
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | closed; independent PM V5 records one proof defect and falsification evidence only; `src/**`, normative documents, proof configuration and the fourteen-test file remain unchanged |
-| First implementation module | `M13 state_kernel`, only after independent proof acceptance issues `IMPLEMENTATION_OPEN` |
+| Production/source mutation | open only for the bounded `src/nvda_desk/m13_state_kernel/**` implementation on the next worker branch; tests, normative authority, proof configuration and later modules remain closed |
+| First implementation module | `M13 state_kernel`; independent proof accepted and bounded implementation now open |
 | Gate D | module-gated; no global opening |
 
 Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
@@ -68,8 +68,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-PROOF-REPAIR-V2` | `independent_pm_closed_prior_prepared_participant_gap` | a rollback-only-current-participant coordinator passes 12/12 while an earlier successfully prepared participant retains pending state when a later participant fails during `prepare()` |
 | `M13-PROOF-REPAIR-V3` | `independent_pm_closed_failed_idempotency_binding_gap` | thirteen-test family rejects the prior rollback mutant but allows a failed transaction to reserve the scoped idempotency key and block a different uncommitted input |
 | `M13-PROOF-REPAIR-V4` | `independent_pm_closed_mutation_failure_binding_gap` | fourteen-test family rejects participant-failure reservation but permits mutation-failure-only reservation of the same uncommitted key |
-| `M13-PROOF-REPAIR-V5` | `required_not_started` | preserve fourteen tests; prove no binding across every admitted failure boundary and vary command ID, fingerprint and policy version independently |
-| `M13-IMPLEMENT` | `closed` | opens only after the repaired family later passes an independent `MLC-V` decision issuing `IMPLEMENTATION_OPEN` |
+| `M13-PROOF-REPAIR-V5` | `independent_pm_accepted` | fourteen frozen functions preserved; 32-case failure/binding matrix accepted; conforming 46/46; PM V5, configurable and earlier mutants rejected |
+| `M13-IMPLEMENT` | `IMPLEMENTATION_OPEN` | bounded non-durable alpha state-kernel implementation only; must return for independent PM implementation review |
 
 ## Initial serial module order
 
@@ -113,6 +113,6 @@ Forbidden and not performed:
 
 ## Next gate
 
-The worker's V4 repair is genuine and rejects the retained participant-prepare failed-binding mutant. The fourteen-test family remains insufficient because fresh reuse of the uncommitted key is exercised only after that one failure path. A mutation-failure-only reservation mutant passes 14/14, leaves state/version/receipt truth clean and falsely rejects a different input using the never-committed scoped key.
+`M13-PROOF-REPAIR-V5` is independently accepted. The frozen authoritative proof now contains 46 semantic items: fourteen preserved tests plus a 32-case matrix spanning eight admitted unsuccessful boundaries and four independently varied identity dimensions. The conforming reference passes 46/46; both PM V5 false positives, all 32 configurable failed-binding mutants and all 11 earlier retained mutants are rejected for their intended reasons.
 
-The next lawful unit is `M13-PROOF-REPAIR-V5` only. Preserve the fourteen tests and add one systematic public-seam proof matrix for stale expected-version rejection, mutation exception, invalid `receipt_id`, invalid `result_id`, participant `prepare()` failure, participant `commit()` failure and attesting-receipt writer failure. After each failed attempt, the same scoped key must remain fresh at version `0`; command ID, fingerprint and policy version must be varied independently, and the corrected transaction must commit as sequence/version `1` with exact replay remaining idempotent. Both PM V5 mutants must be rejected. `M13-IMPLEMENT` remains closed.
+The next lawful unit is `M13-IMPLEMENT` only. Implement the accepted public seam in `src/nvda_desk/m13_state_kernel/**` as a deliberately non-durable in-memory alpha kernel. Do not alter the frozen proof, normative authority, proof configuration, unrelated persistence code or later modules. The implementation must make the 46-case family green, preserve all shadow evidence, complete mutation and architecture validation, record exact evidence, commit and produce one Git-preserving checkpoint for independent PM review. M01 remains closed.

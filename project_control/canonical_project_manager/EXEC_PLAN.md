@@ -2,7 +2,7 @@
 
 ## Status
 
-`m13_proof_repair_v4_closed_mutation_failure_idempotency_binding_gap`
+`m13_proof_accepted_implementation_open`
 
 The user accepted the extended architecture review on 25 July 2026 and explicitly replaced the global Gate C certification route and fixed `D-xxx` total order with serial, dependency-ready ownership-module delivery. This is an amendment inside the existing programme, not a new programme and not a new repository.
 
@@ -12,14 +12,14 @@ The user accepted the extended architecture review on 25 July 2026 and explicitl
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendment accepted | 2026-07-25 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-proof-v5` |
+| Current branch | `review/m13-proof-v6` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
 | Accepted ownership modules | 16, `M00`–`M15` |
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
-| Active unit | `M13-PROOF-REPAIR-V5` — required after independent rejection of the fourteen-test V4 family |
-| Mutation state | PM V5 decision and falsification evidence only; production, normative, test, configuration and later-module surfaces remain closed |
+| Active unit | `M13-IMPLEMENT` — implementation open after independent acceptance of the 46-case V5 proof family |
+| Mutation state | PM V6 acceptance records only on this review branch; the next worker may modify only the bounded `M13 state_kernel` implementation and worker-owned M13 evidence |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | opens one module at a time only after that module's local proof gate passes |
 
@@ -327,6 +327,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-26 | `M13-PROOF-V4-REVIEW` | `independent_pm_closed_failed_idempotency_binding_gap` | A failed-attempt idempotency-reservation mutant passes all 13 tests. The exact retry remains executable, but a different uncommitted input using the same scoped key is falsely rejected, contradicting N-06 atomic binding and MLC-P no-binding-on-failure requirements. Return only to `M13-PROOF-REPAIR-V4`. |
 | 2026-07-26 | `M13-PROOF-REPAIR-V4` | `worker_repair_ready_for_independent_review` | Commit `31e8ac38488466d1d457f98ffe014576423a5ebf` preserves the thirteen functions and appends one participant-failure no-binding/fresh-reuse test; conforming reference 14/14 and the PM V4 target mutant is rejected. |
 | 2026-07-26 | `M13-PROOF-V5-REVIEW` | `independent_pm_closed_mutation_failure_binding_gap` | A mutation-failure-only idempotency-reservation mutant passes all 14 tests. State, version and receipts remain clean, but a different uncommitted input using the same scoped key is falsely rejected. A second adjacent mutant also passes 14/14 because the V4 test changes command identity and fingerprint together; it retains a failed binding that rejects corrected input under the same command identity. Return only to bounded `M13-PROOF-REPAIR-V5`; implementation remains closed. |
+| 2026-07-26 | `M13-PROOF-V6-REVIEW` | `IMPLEMENTATION_OPEN` | Independent Project Manager acceptance: all fourteen frozen functions preserved, one 32-case failure/binding matrix admitted, conforming reference 46/46, both PM V5 false positives rejected by the repaired family, 32 configurable failed-binding mutants and 11 earlier retained mutants rejected for their intended reasons, and current repository remains expected-red solely because `nvda_desk.m13_state_kernel` is absent. |
 
 ## Decisions
 
@@ -349,12 +350,13 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-M13-006` | `CLOSED:the twelve-test suite does not prove rollback and clean retry for an earlier successfully prepared participant when a later RepositoryPort fails during prepare; a coordinator that rolls back only the participant that raises passes all twelve tests while leaving stale pending state in the earlier participant and poisoning the identical retry`. Return only to `M13-PROOF-REPAIR-V3`; implementation remains closed. |
 | `DEC-M13-007` | `CLOSED:the thirteen-test suite does not prove that a failed transaction leaves no idempotency binding; an implementation that reserves the scoped key and failed input after rollback passes all thirteen tests, permits exact retry, but falsely rejects a different uncommitted input using that key`. Return only to `M13-PROOF-REPAIR-V4`; implementation remains closed. |
 | `DEC-M13-008` | `CLOSED:the fourteen-test suite proves no failed idempotency binding only for repository-participant failure; an implementation that reserves the scoped key only when the mutation raises passes all fourteen tests, leaves state/version/receipts uncommitted, but falsely rejects a different uncommitted input using that key`. Return only to `M13-PROOF-REPAIR-V5`; implementation remains closed. |
+| `DEC-M13-009` | `IMPLEMENTATION_OPEN`: accept the 46-case M13 proof family as sufficient for the bounded non-durable alpha `state_kernel`; open only `M13-IMPLEMENT` under the frozen proof, with M01 and all later modules closed. |
 
 ## Next gate
 
 The worker's V4 repair is genuine and closes the retained participant-prepare failed-binding defect. The fourteen-test family remains insufficient because the no-binding assertion is exercised only after repository-participant failure. N-06 requires idempotency binding only with committed result/state/receipt truth for every failure path. A unit of work can reserve the key only when the mutation raises, leave state/version/receipts clean, and falsely reject a different uncommitted input; all fourteen tests remain green.
 
-The next lawful unit is `M13-PROOF-REPAIR-V5` only. Preserve the fourteen tests and prove the universal no-binding-on-failure rule through the accepted public seam across every already-admitted failure boundary: stale expected-version rejection, mutation exception, invalid `receipt_id`, invalid `result_id`, participant `prepare()` failure, participant `commit()` failure and attesting-receipt writer failure. For each boundary, a corrected fresh command using the same scoped key at expected version `0` must commit as sequence/version `1` with exactly one receipt. Vary command identity, semantic fingerprint and policy version independently rather than changing them together, then require exact replay of the successful corrected command without repeated mutation. Retain and reject both PM V5 false-positive mutants: mutation-failure reservation and failed-binding-by-command-identity. `M13-IMPLEMENT` remains closed.
+The next lawful unit is `M13-IMPLEMENT` only. Implement the smallest semantically complete non-durable alpha transaction kernel behind `nvda_desk.m13_state_kernel`, satisfy the frozen 46-case Tier A family without changing its semantics, preserve N-06 ownership and atomicity boundaries, reject all retained and configurable mutants, run affected and shadow validation, complete post-change vocabulary and architecture review, commit the bounded implementation, and return one clean Git-preserving checkpoint for independent Project Manager implementation review. M01 and all later modules remain closed.
 
 ## Roadblocks and Unknowns
 

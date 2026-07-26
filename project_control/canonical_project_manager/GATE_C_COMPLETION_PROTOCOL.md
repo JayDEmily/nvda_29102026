@@ -339,12 +339,12 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Completed:** `M13-PROOF-REPAIR-V4` preserved the thirteen existing functions and appended one public-seam case proving that a repository-participant failure does not reserve the scoped idempotency key. The conforming reference passes 14/14 and the retained PM V4 participant-failure reservation mutant is rejected.
+**Completed and independently accepted:** `M13-PROOF-REPAIR-V5` preserves the fourteen existing functions and appends one auditable 32-case public-seam matrix. The accepted family spans stale expected-version rejection, owner mutation exception, invalid mutation result, invalid receipt identity, invalid result identity, participant `prepare()` failure, participant `commit()` failure and attesting-receipt writer failure. Command ID, semantic fingerprint, policy version and complete identity/corrected version are exercised independently.
 
-**Independent PM V5 decision:** `CLOSED:the fourteen-test suite proves no failed idempotency binding only for repository-participant failure; an implementation that reserves the scoped key only when the mutation raises passes all fourteen tests, leaves state/version/receipts uncommitted, but falsely rejects a different uncommitted input using that key`.
+**Independent PM V6 disposition:** `IMPLEMENTATION_OPEN`.
 
-N-06 binds idempotency only with committed input/result/version/receipt truth. MLC-A expressly requires no binding when mutation, expected-version, validation, participant or receipt work fails. The current family tests fresh reuse only after one participant-prepare failure and therefore does not prove the universal failure rule.
+The conforming reference passes 46/46. Both PM V5 false-positive implementations pass the frozen fourteen-test family but are rejected by the repaired family. The 32 configurable failed-binding variants and 11 earlier retained mutants are rejected for their intended behaviours. Current production remains expected-red solely because `nvda_desk.m13_state_kernel` is absent.
 
-**Current:** bounded `M13-PROOF-REPAIR-V5` only. Preserve all fourteen tests. Add a public-seam failure/binding matrix covering stale expected version, mutation exception, invalid `receipt_id`, invalid `result_id`, participant `prepare()`, participant `commit()` and attesting-receipt writer failure. After each failure, reuse the same scoped key at expected version `0` and require a fresh sequence/version-1 commit with exactly one receipt. Exercise command ID, input fingerprint and policy version as independent identity dimensions rather than changing them together. Both retained PM V5 mutants must fail for their intended false-conflict behaviour.
+**Current:** bounded `M13-IMPLEMENT` under `MLC-I` only. Implement the smallest semantically complete non-durable alpha state kernel, run the frozen targeted proof, affected proof, architecture/dependency checks and complete legacy shadow evidence, perform post-change vocabulary review, create one bounded commit and return a clean Git-preserving checkpoint.
 
-**Return boundary:** `M13-IMPLEMENT` remains closed. Only a later independent Project Manager review may issue `IMPLEMENTATION_OPEN`.
+**Return boundary:** the implementation worker may not self-accept M13, merge to `main`, begin M01 or issue module completion. Final M13 implementation acceptance remains an independent Project Manager decision.

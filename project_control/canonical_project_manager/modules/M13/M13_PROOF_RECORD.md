@@ -755,3 +755,39 @@ The final Git commit, tracked evidence hashes, validation outputs and Git-preser
 checkpoint are closeout evidence reported externally after the committed bytes exist;
 they cannot be self-recorded in those bytes without recursively changing the commit or
 archive identifier.
+
+
+## MLC-V — Independent Project Manager V6 acceptance
+
+**Date:** 2026-07-26
+**Review branch:** `review/m13-proof-v6`
+**Source worker commit:** `fd52804ff6b3f2cda3bf2f499007146b30c7808b`
+**Disposition:** `IMPLEMENTATION_OPEN`
+
+### Independent authority decision
+
+The repaired proof is accepted as sufficient for the bounded N-06 non-durable alpha `M13 state_kernel` contract. It proves the public seam rather than a registry or fixture-only artefact and does not introduce trading-domain authority, durability, restart recovery, external-effect completion or global transaction ownership.
+
+The accepted proof comprises fourteen preserved test functions plus one parameterised 32-case matrix. The matrix crosses eight admitted unsuccessful transaction boundaries with four independently varied identity dimensions while preserving the same scoped idempotency key, command type and consistency-unit ID. Each case proves clean post-failure state, participant rollback, absence of pending transaction truth, absence of success receipt and absence of failed-attempt idempotency binding; the corrected command then commits as sequence/version `1` and exact replay does not repeat mutation.
+
+### Independent evidence
+
+| Check | Result |
+|---|---|
+| Frozen fourteen functions | PASS — 14/14 AST hashes and names unchanged |
+| Current semantic test inventory | PASS — 46 items |
+| Current repository | EXPECTED RED — 46 failures solely because `nvda_desk.m13_state_kernel` is absent |
+| Conforming reference | PASS — 46/46 |
+| PM V5 mutation-failure reservation | Old family false positive 14/14; repaired family rejects 3 cases |
+| PM V5 command-ID-only failed binding | Old family false positive 14/14; repaired family rejects 6 cases |
+| Configurable failed-binding variants | PASS — 32/32 rejected for intended false-conflict behaviour |
+| Earlier retained mutants | PASS — 11/11 rejected in full and targeted runs |
+| Production, normative and proof-configuration mutation during proof repair | None |
+
+Raw independent reruns and review records are retained under `raw_validation/pm_v6_review/`. The complete worker evidence set and its hashes remain preserved under `raw_validation/v5_worker_runs/` and `v5_evidence_hashes.sha256`.
+
+### Implementation authority opened
+
+Only `M13-IMPLEMENT` is opened. The implementation worker may create or modify the bounded package `src/nvda_desk/m13_state_kernel/**` and worker-owned M13 implementation evidence expressly authorised by the implementation brief. The frozen 46-case test semantics, N-06 authority, proof/retained configuration, unrelated persistence code, M01 and every later module remain closed.
+
+The implementation worker cannot provide final module acceptance. The resulting checkpoint must return to an independent Project Manager for implementation review before any merge or M01 work.

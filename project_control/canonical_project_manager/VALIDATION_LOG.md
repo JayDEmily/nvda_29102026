@@ -536,3 +536,36 @@ The V4 repair closes the participant-prepare failed-binding defect. It does not 
 The next lawful unit is test-only proof repair. Preserve the fourteen tests and add a systematic public-seam no-binding matrix across stale expected version, mutation exception, invalid receipt/result, participant prepare/commit and receipt-writer failure. Vary command ID, fingerprint and policy version independently. M13 production implementation and all later modules remain closed.
 
 Evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/`.
+
+
+## 2026-07-26 — Independent `M13-PROOF-REPAIR-V5` Project Manager V6 acceptance
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_PROOF_REPAIR_V5_fd52804_20260726.tar(1).gz`.
+- Archive SHA-256: `ea7083aff6b36cab7988ba01ecade229007a856d90af00ad038fa1df94309293`.
+- Source branch/commit/worktree: `proof/m13-state-kernel-repair-v5` / `fd52804ff6b3f2cda3bf2f499007146b30c7808b` / clean.
+- Review branch: `review/m13-proof-v6`.
+- Current proof-file SHA-256: `7f4fd1e3d9c7f7dc75675146f9e2a38d4fb259a1938986c7cdfc2b006ddfab0a`.
+
+### Disposition
+
+`IMPLEMENTATION_OPEN`
+
+### Independent validation
+
+| Check | Result |
+|---|---|
+| Fourteen-function preservation | PASS — no removed or changed AST |
+| Current repository proof | EXPECTED RED — 46 failures solely from absent target package |
+| Conforming reference | PASS — 46 passed |
+| PM V5 mutation-failure mutant | Old family 14 passed; repaired family 3 failed/43 passed for hidden failed binding |
+| PM V5 command-identity mutant | Old family 14 passed; repaired family 6 failed/40 passed for command-ID-only failed binding |
+| Configurable failed-binding matrix | PASS — worker evidence 32/32; source, case IDs and intended assertions independently reviewed |
+| Earlier retained mutants | PASS — worker evidence 11/11; full and target outputs, scripts and summaries independently reviewed |
+| Changed-path boundary | PASS — proof repair changed only M13 test, proof record and raw evidence |
+| Production/normative/config mutation during proof repair | None |
+
+### Gate result
+
+The proof is sufficient to constrain implementation of the non-durable alpha transaction kernel. `M13-IMPLEMENT` is open under the frozen 46-case family. This does not accept implementation, durability, restart recovery, external effects, M01 or later-module work.

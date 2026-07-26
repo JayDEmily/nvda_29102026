@@ -1,0 +1,7 @@
+source_archive=NVDA_M13_PROOF_REPAIR_V5_fd52804_20260726.tar(1).gz
+source_archive_sha256=ea7083aff6b36cab7988ba01ecade229007a856d90af00ad038fa1df94309293
+source_branch=proof/m13-state-kernel-repair-v5
+source_commit=fd52804ff6b3f2cda3bf2f499007146b30c7808b
+source_worktree_before_review=clean
+review_branch=review/m13-proof-v6
+proof_file_sha256=7f4fd1e3d9c7f7dc75675146f9e2a38d4fb259a1938986c7cdfc2b006ddfab0a
