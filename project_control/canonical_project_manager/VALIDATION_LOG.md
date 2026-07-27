@@ -694,3 +694,39 @@ Return only to test-only V7 proof repair. Production repair, merge, M01 and late
 The V7 proof closes the measured instance-scope false positive without weakening same-instance exclusion. Open only `M13-IMPLEMENT-REPAIR-V1` under the frozen 152-case family. M13 final acceptance, merge, M01 and later modules remain closed.
 
 Independent evidence is retained under `project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/`.
+
+## 2026-07-27 — M13 Implementation Repair V1 independent acceptance closeout
+
+### Source checkpoint
+
+- authenticated GitHub branch `work/m13-state-kernel-implementation-repair-v1`: `616fade4123def7870b7950bb3e644ffcc0ccc5a`;
+- direct parent: `df17277247e4d68c260318e6306d4788de410a4c`;
+- ahead count: exactly one;
+- production blobs: `contracts.py` `6b0629ea9de66d5bf5bd12c6e6aa830ec86dc4f6`, `in_memory.py` `5778b73df5e111aba882657dfaa67ce7de508d35`;
+- frozen proof Git-object SHA-256: `a3ad3e8b51e2dd73119ecbec2e546f8d4e594346efaa8bf588c90b67798b8843`;
+- clean checkout and `git fsck --full`: PASS.
+
+### Independent and closeout validation
+
+| Check | Result |
+|---|---|
+| M13 frozen proof | PASS — 152 |
+| Persistence Tier A | PASS — 188 |
+| Proof blocks | PASS — 52 |
+| Proof executor | PASS — 21 |
+| Checkpoint shadow | PASS — 2 |
+| Architecture boundary | PASS |
+| Vocabulary exact parity | PASS — 1 |
+| YAML parse | PASS — 10 files |
+| Python compilation | PASS |
+| Ruff | PASS |
+| Black | PASS — 15 files unchanged |
+| `git diff --check` | PASS |
+| Forbidden-tree comparison to `616fade` | PASS — no changes under `src/**`, `tests/**`, `config/**` or `docs/**` |
+| Exact PM receipt | PASS — `6062a4b6a1bc026dff0fc33ab62472675cc7c50418465fb0b135664d41f9b62c` |
+
+The immutable independent audit receipt records the original PM-runtime caveat that Ruff and Black were unavailable there. The canonical repository environment rerun passed both checks.
+
+### Gate result
+
+`M13-IMPLEMENT-REPAIR-V1` is independently accepted at exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a`. The next lawful unit is only `M01-PROOF-MLC-A-V1`. M01 production, tests, proof routing and implementation remain closed.

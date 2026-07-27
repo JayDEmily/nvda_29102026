@@ -4,14 +4,16 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_proof_v7_accepted_implementation_repair_open` |
+| Status | `m13_implementation_repair_v1_accepted_m01_authority_review_open` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-proof-v8` |
-| Current unit | `M13-IMPLEMENT-REPAIR-V1`; bounded repair of the frozen four-file M13 implementation |
+| Current branch | `review/m13-implementation-v2` |
+| Current unit | `M01-PROOF-MLC-A-V1`; authority sufficiency only for bounded M01 `source_admission` |
+| Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
+| PM closeout branch | `review/m13-implementation-v2` |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
@@ -21,8 +23,10 @@
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | open only for `src/nvda_desk/m13_state_kernel/**` during `M13-IMPLEMENT-REPAIR-V1`; tests, normative authority, configuration and unrelated source remain frozen |
-| First implementation module | `M13 state_kernel`; proof V7 accepted and implementation repair V1 now open |
+| Production/source mutation | closed; M13 implementation repair V1 accepted and M01 production mutation closed |
+| Test mutation | closed for M01 |
+| M01 current leaf | authority sufficiency only |
+| First implementation module | `M13 state_kernel`; implementation repair V1 independently accepted |
 | Gate D | module-gated; no global opening |
 
 Read the programme ExecPlan first, then the module-local Gate C protocol. This roadmap records current position only. Historical Gate C ledgers, receipts, test dispositions, proof envelopes and Gate D readiness artefacts remain evidence and do not schedule current work.
@@ -72,7 +76,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-IMPLEMENT` | `CLOSED:M13_PROOF_REPAIR_V6_REQUIRED_FOR_REENTRANT_EXECUTION_AND_RECEIPT_CONTRACT_TRUTH` | proposal passes 46/46 but permits nested transaction corruption and incoherent public receipt values |
 | `M13-PROOF-REPAIR-V6` | `independent_pm_closed_instance_scope_gap` | 131 cases close same-instance re-entry and receipt defects, but a process-global active guard passes 131/131 and blocks a distinct UnitOfWork instance |
 | `M13-PROOF-REPAIR-V7` | `independent_pm_accepted` | 131 cases preserved; 21 two-instance cases added; conforming 152/152; process/module/class/scope-global guard mutants rejected |
-| `M13-IMPLEMENT-REPAIR-V1` | `current_bounded_implementation_gate` | repair instance-local active guard and coherent AtomicReceipt under frozen 152-case proof |
+| `M13-IMPLEMENT-REPAIR-V1` | `independent_pm_accepted` | accepted at exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
+| `M01-PROOF-MLC-A-V1` | `current_authority_sufficiency_leaf` | propose only whether current normative authority is sufficient; production and test mutation remain closed |
 
 ## Initial serial module order
 
@@ -97,27 +102,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 
 ## Mutation boundary
 
-During `M13-PROOF`, allowed changes were limited to:
-
-- the M13 module-local proof record and raw validation evidence;
-- one M13 Tier A contract test;
-- retained-test and proof-block admission records;
-- exact M13 durable vocabulary admissions and deterministic projection;
-- the live ExecPlan, protocol, roadmap, validation log and read manifest.
-
-Forbidden and not performed:
-
-- `src/**`;
-- production implementation or package creation;
-- unrelated test repair;
-- weakening N-06 transaction law;
-- claiming durability, restart recovery or external-effect completion;
-- push or publication.
+For `M01-PROOF-MLC-A-V1`, changes are limited to the M01 authority worker record and worker-owned authority evidence. M01 source, tests, configuration, vocabulary and normative authority remain closed. Test routing, proof design, implementation, merge and later-module work are forbidden.
 
 ## Next gate
 
-The V6 proof proposal is a valid partial repair but is not accepted. Its 131 cases prove same-instance re-entry rejection, cleanup and receipt coherence. They do not prove the guard is instance-owned.
-
-A module-global active-guard mutant passes 131/131. A direct public-seam probe with two distinct `UnitOfWork` instances shows the mutant falsely blocks the second unrelated instance while the first is active; the conforming per-instance reference permits both to commit independent version/sequence `1` truth.
-
-The next lawful unit is bounded `M13-IMPLEMENT-REPAIR-V1`. Repair only the frozen M13 package under the accepted 152-case family. Tests, normative authority, configuration, merge, M01 and later modules remain closed pending independent implementation review.
+The next lawful unit is `M01-PROOF-MLC-A-V1`, limited to authority sufficiency for bounded M01 `source_admission`. It may not mutate source, tests, configuration, vocabulary or normative authority; route tests; create a proof specification; begin implementation; merge; or open later modules. Any proposed disposition remains pending independent Project Manager review.

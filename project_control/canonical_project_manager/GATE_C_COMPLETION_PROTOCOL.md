@@ -339,14 +339,16 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Independent PM disposition:** `IMPLEMENTATION_REPAIR_OPEN`.
+**Independent PM disposition:** `ACCEPTED:M13_IMPLEMENT_REPAIR_V1`.
 
 `M13-PROOF-REPAIR-V7` is accepted. It preserves all 131 V6 cases, adds 21 auditable two-instance cases and passes the proof-only conforming reference 152/152. The frozen rejected implementation remains expected-red at 44 failures / 108 passes. Process-, module-, class- and scope-global active-guard mutants are rejected while distinct `UnitOfWork` instances remain independently executable.
 
-**Current:** bounded `M13-IMPLEMENT-REPAIR-V1` under the frozen 152-case family.
+The accepted implementation repair is exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a` on `work/m13-state-kernel-implementation-repair-v1`, with direct parent `df17277247e4d68c260318e6306d4788de410a4c`. Canonical PM closeout is on `review/m13-implementation-v2`.
 
-**Allowed production mutation:** only `src/nvda_desk/m13_state_kernel/**`, plus worker-owned M13 implementation records and raw evidence.
+**Current:** `M01-PROOF-MLC-A-V1`, authority sufficiency only for bounded M01 `source_admission`.
 
-**Required repair:** instance-owned active-attempt exclusion installed before callbacks and retained through participant completion; reliable cleanup after every terminal path; coherent `AtomicReceipt` scope; exact integer version/sequence truth; preservation of all prior N-06 behaviour.
+**M01 production mutation:** closed.
 
-**Return boundary:** the worker may not modify tests, normative authority, proof/retained configuration, unrelated source or later modules; may not self-accept M13; may not merge or begin M01. M13 completion remains pending independent implementation review.
+**M01 test mutation:** closed.
+
+**M01 current leaf:** authority sufficiency only. The worker may read current normative and accepted architecture authority, produce a locator-backed proposal and retain bounded evidence. It may not mutate normative authority, source, tests, configuration or vocabulary; perform test routing or proof design; begin implementation; self-accept the M01 disposition; merge; or open a later module.
