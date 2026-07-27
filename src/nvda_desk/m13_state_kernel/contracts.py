@@ -81,21 +81,19 @@ class AtomicReceipt:
         _require_non_empty_string(self.consistency_unit_id, "consistency_unit_id")
         if not isinstance(self.idempotency_key, IdempotencyKey):
             raise TypeError("idempotency_key must be an IdempotencyKey")
+        if self.command_type != self.idempotency_key.command_type:
+            raise ValueError("command_type must match the idempotency key scope")
+        if self.consistency_unit_id != self.idempotency_key.consistency_unit_id:
+            raise ValueError("consistency_unit_id must match the idempotency key scope")
         _require_non_empty_string(self.input_fingerprint, "input_fingerprint")
         _require_non_empty_string(self.policy_version, "policy_version")
-        if (
-            not isinstance(self.prior_state_version, int)
-            or isinstance(self.prior_state_version, bool)
-            or self.prior_state_version < 0
-        ):
+        if type(self.prior_state_version) is not int or self.prior_state_version < 0:
             raise ValueError("prior_state_version must be a non-negative integer")
+        if type(self.resulting_state_version) is not int or self.resulting_state_version < 1:
+            raise ValueError("resulting_state_version must be a positive integer")
         if self.resulting_state_version != self.prior_state_version + 1:
             raise ValueError("resulting_state_version must advance exactly once")
-        if (
-            not isinstance(self.sequence, int)
-            or isinstance(self.sequence, bool)
-            or self.sequence < 1
-        ):
+        if type(self.sequence) is not int or self.sequence < 1:
             raise ValueError("sequence must be a positive integer")
-        if not isinstance(self.duplicate_replay, bool):
+        if type(self.duplicate_replay) is not bool:
             raise TypeError("duplicate_replay must be a bool")

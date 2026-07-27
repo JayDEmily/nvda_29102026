@@ -1,0 +1,1 @@
+C:\Users\james\AppData\Local\Temp\nvda_m13_repair_v1_venv\Scripts\python.exe -m pytest tests/tier_b/proof_model/test_checkpoint_receipt_contract.py -q

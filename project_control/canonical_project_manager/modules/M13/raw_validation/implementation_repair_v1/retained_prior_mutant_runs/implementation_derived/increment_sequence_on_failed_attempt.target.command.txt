@@ -1,0 +1,1 @@
+C:\Users\james\AppData\Local\Temp\nvda_m13_repair_v1_venv\Scripts\python.exe -m pytest -c nul C:\Users\james\OneDrive\Documents\Nvda11_27072026\nvda11-recovery\tests\tier_a\persistence\test_m13_state_kernel_contract.py::test_m13_unsuccessful_execute_attempt_leaves_no_binding_matrix[repository-participant-prepare-failure--complete-command-identity] -q

@@ -47,6 +47,7 @@ class InMemoryUnitOfWork(UnitOfWork):
         self._receipts: list[AtomicReceipt] = []
         self._bindings: dict[_Scope, _CommittedBinding] = {}
         self._repository_ports = ports
+        self._active_attempt = False
 
     @property
     def state_version(self) -> int:
@@ -80,7 +81,21 @@ class InMemoryUnitOfWork(UnitOfWork):
             raise TypeError("command must be a TransactionCommand")
         if not callable(mutation):
             raise TypeError("mutation must be callable")
+        if self._active_attempt:
+            raise RuntimeError("UnitOfWork.execute attempt is already active")
 
+        self._active_attempt = True
+        try:
+            return self._execute_active(command=command, mutation=mutation)
+        finally:
+            self._active_attempt = False
+
+    def _execute_active(
+        self,
+        *,
+        command: TransactionCommand,
+        mutation: Callable[[Any], Mapping[str, str]],
+    ) -> AtomicReceipt:
         scope = self._scope(command.idempotency_key)
         command_identity = self._command_identity(command)
         committed = self._bindings.get(scope)

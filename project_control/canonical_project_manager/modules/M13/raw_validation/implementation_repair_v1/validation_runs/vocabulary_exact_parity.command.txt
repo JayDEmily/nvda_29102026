@@ -1,0 +1,1 @@
+C:\Users\james\AppData\Local\Temp\nvda_m13_repair_v1_venv\Scripts\python.exe -m pytest tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_canonical_vocabulary_matches_builder_output_via_both_import_paths -q

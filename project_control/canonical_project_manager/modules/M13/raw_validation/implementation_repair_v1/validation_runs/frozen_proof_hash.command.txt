@@ -1,0 +1,1 @@
+sha256 tests/tier_a/persistence/test_m13_state_kernel_contract.py
