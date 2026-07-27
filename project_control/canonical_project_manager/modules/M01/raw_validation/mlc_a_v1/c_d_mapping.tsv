@@ -1,0 +1,10 @@
+requirement_id	work_unit_id	gate_b_unit	surface_scope	bounded_m01_classification	normative_basis_or_requirement	manual_treatment
+C-001	D-001	B01.1	5.1	DIRECT_M01	source-family declaration, offline admission, recursive forbidden-authority rejection	current numbered authority supports bounded contract; historical proof status not reopened
+C-002	D-002	B01.2	5.2;5.3	DIRECT_M01	source/capture identity, explicit typed section/family handling and no cognition bypass	current numbered authority supports bounded contract; fallback details await MLC-R/P
+C-003	D-003	B01.3	5.1;5.5	M01_WITH_M03_BOUNDARY	adapter preserves identity/temporal lineage into preparation	M01 side retained; M03 preparation behaviour excluded
+C-007	D-007	B01.7	5.3	DIRECT_M01	new family through registry/adapter without unrelated changes; preserve source time/identity	current numbered authority supports controlled family boundary
+C-015	D-015	B04.2	5.2;5.5;5.15;5.16	M01_LINEAGE_CONTRIBUTION	source artefact identity/fingerprint contributes to later prepared/replay evidence	only M01 source/capture lineage obligation used; M03/M12/M13 claims excluded
+C-021	D-021	B05.4	5.1;5.8;5.16	OUTSIDE_BOUNDED_M01	API-local veto/risk-block state ownership defect	M00/M06/M11/M13 concern; no M01 source-admission obligation inferred
+C-025	D-025	B07.1	5.2;5.4;5.7	M01_SOURCE_TIME_CONTRIBUTION	preserve source-time/timezone truth	only source temporal preservation used; M02 calendar and M05 classifier policy excluded
+C-048	D-048	B12.6	5.1;5.15	OUTSIDE_BOUNDED_M01	API/egress composition must not invent domain authority	M00/M12 composition concern; supports exclusion only
+N-01	none	B01.4	5.1;5.2;5.3	ACCEPTED_NORMATIVE_COMPLETION	typed options contract in docs/03.2 accepted	current support for one source family; does not open tests or implementation

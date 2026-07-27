@@ -1,0 +1,12 @@
+atlas_item_id	item_type	manual_classification	reason	used_in_authority_conclusion
+SC-OPTIONS-SURFACE-BOUNDARY-025	cohort	ARCHITECTURE_ALLOCATION_ONLY	current numbered docs independently govern source/capture/time and upstream boundary; Atlas wording is trace only	yes_boundary_challenge_only
+SC-RAW-OPTION-SNAPSHOT-027	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	donor-specific quote/Greek/unit field detail is not promoted by current M01 authority	no
+SC-OPTIONS-FLOW-HISTORY-OBSERVATION-LINEAGE-068	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	durable history embedding versus immutable reference remains explicitly unsettled	no
+SC-PRECURSOR-SOURCE-SCOPE-102	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	coverage-map detail and promotion status require later semantic admission; only the general typed registration law is current	no
+SC-DATASET-PROVENANCE-147	cohort	ARCHITECTURE_ALLOCATION_ONLY	current docs independently govern source time, capture time and provenance; Atlas record does not add authority	yes_boundary_challenge_only
+SC-DATASET-RAW-BUNDLE-148	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	detailed bars/options/events list model is split across M01/M03 and not admitted as one contract	no
+SC-API-DEPENDENCY-WIRING-207	cohort	CONTRADICTORY_OR_REJECTED	workbook rejects donor framework plumbing as product ownership	yes_exclusion_only
+SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234	cohort	OUTSIDE_BOUNDED_M01_QUESTION	broker execution and OpenAI stubs are M00/M10/M14 concerns; no live broker or AI authority is in M01	no
+SC-UPSTREAM-SIGNAL-INGRESS-252	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	session/regime promotion details cross M03/M14 and cannot define M01 registration semantics	no
+SC-REAL-DATA-INGRESS-SANITY-285	cohort	CANDIDATE_INTENT_NOT_YET_AUTHORITY	row deliberately splits M01 capture, M02 calendar and M03 preparation; donor service cannot be promoted as one owner	yes_boundary_challenge_only
+ALL_562_M01_RECORD_ROWS	record_set	ARCHITECTURE_ALLOCATION_ONLY	exact record rows are retained for record-to-cohort-to-module lineage; no individual record proposition was used as normative support	no_semantic_record_used

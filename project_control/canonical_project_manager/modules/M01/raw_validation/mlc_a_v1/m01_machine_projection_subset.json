@@ -1,0 +1,3881 @@
+{
+  "generated_from": "Atlas_Architecture_Machine_Readable.json",
+  "generated_source_sha256": "61faabc112868da36dc7245441307332896bea93fc23ea7bc20cfd9f68960ee8",
+  "authority_statement": "Formally accepted target ownership and implementation-control projection. Normative documents govern behaviour; Atlas rows remain candidate behavioural evidence until module-local admission.",
+  "module": {
+    "module_id": "M01",
+    "module": "source_admission",
+    "kind": "runtime",
+    "surfaces": "5.1;5.2;5.3",
+    "owns": "source identity, offline admission, raw capture, source time, raw-signal family registry",
+    "state_owner": "raw artefacts and capture receipts",
+    "public_interfaces": "SourceArtifactEnvelope; CaptureReceipt; RawSignalBatch; SourceAdapter",
+    "extension_points": "source-family adapter and raw-signal registry entries",
+    "existing_locations": "src/nvda_desk/adapters/ingress; ingress; upstream; contracts/external_source.py",
+    "target_change": "replace boundary; retain selected validation kernels",
+    "legacy_combined_dependencies": "M14;M15",
+    "runtime_contract_dependencies": [],
+    "state_transaction_participation": "M13 when state+receipt mutate",
+    "governance_promotion_prerequisites": [
+      "M14",
+      "M15"
+    ],
+    "build_test_dependencies": [
+      "source-family fixtures",
+      "admission proof"
+    ],
+    "acceptance_status": "accepted_target_ownership",
+    "legacy_combined_dependencies_status": "superseded_planning_evidence"
+  },
+  "surfaces": [
+    {
+      "surface_id": "5.1",
+      "surface_name": "External source interfaces and API ingress",
+      "structural_status": "Locked",
+      "implementation_truth": "thin_seam",
+      "cohort_count": 20,
+      "target_modules": "M00;M01",
+      "governing_docs": "docs/03_DOMAIN_MODEL_CORE.md; docs/03.1_DOMAIN_MODEL_WORKING.md; docs/04_TECHNICAL_ARCHITECTURE_CORE.md; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "gate_b_boundary": "B01-B02",
+      "current_requirements": "C-001;C-003;C-021;C-048",
+      "gate_d_units": "D-001;D-003;D-021;D-048",
+      "observed_current_evidence": "Typed adapter and API ingress surfaces exist",
+      "known_limitation": "API composition mixes unrelated mapping/state responsibilities; provider substitution not proved",
+      "target_area": "src/nvda_desk/adapters/ingress; src/nvda_desk/api"
+    },
+    {
+      "surface_id": "5.2",
+      "surface_name": "Raw capture and source temporal law",
+      "structural_status": "Locked",
+      "implementation_truth": "thin_seam",
+      "cohort_count": 29,
+      "target_modules": "M01",
+      "governing_docs": "docs/03_DOMAIN_MODEL_CORE.md; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "gate_b_boundary": "B01-B04",
+      "current_requirements": "C-002;C-015;C-025",
+      "gate_d_units": "D-002;D-015;D-025",
+      "observed_current_evidence": "Raw bundle loader and temporal contracts/domain code exist",
+      "known_limitation": "No authoritative durable raw capture or complete replay evidence",
+      "target_area": "src/nvda_desk/ingress; src/nvda_desk/domain/temporal; src/nvda_desk/contracts/temporal.py"
+    },
+    {
+      "surface_id": "5.3",
+      "surface_name": "Raw signal families",
+      "structural_status": "Locked",
+      "implementation_truth": "thin_seam",
+      "cohort_count": 37,
+      "target_modules": "M01",
+      "governing_docs": "docs/03_DOMAIN_MODEL_CORE.md; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md",
+      "gate_b_boundary": "B01-B03",
+      "current_requirements": "C-002;C-007",
+      "gate_d_units": "D-002;D-007",
+      "observed_current_evidence": "Typed raw/minimally-derived signal contracts and services exist",
+      "known_limitation": "Extension and complete upstream composition not proved",
+      "target_area": "src/nvda_desk/upstream"
+    }
+  ],
+  "cohort_ids": [
+    "SC-OPTIONS-SURFACE-BOUNDARY-025",
+    "SC-OPTION-TYPE-VOCABULARY-026",
+    "SC-RAW-OPTION-SNAPSHOT-027",
+    "SC-OPTIONS-SURFACE-PROJECTION-028",
+    "SC-VOLATILITY-UNIT-BOUNDARY-029",
+    "SC-VOLATILITY-TYPED-ALIASES-032",
+    "SC-SESSION-CALENDAR-BOUNDARY-040",
+    "SC-VENUE-TIMEZONE-VOCABULARY-041",
+    "SC-SESSION-CLOCK-COMPATIBILITY-045",
+    "SC-OPTIONS-FLOW-HISTORY-BOUNDARY-066",
+    "SC-OPTIONS-FLOW-HISTORY-VOCABULARY-067",
+    "SC-OPTIONS-FLOW-HISTORY-OBSERVATION-LINEAGE-068",
+    "SC-OPTIONS-FLOW-HISTORY-PERSISTENCE-RECEIPT-069",
+    "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+    "SC-TEMPORAL-EVENT-WINDOW-CONTRACT-071",
+    "SC-TEMPORAL-STATE-PROJECTION-073",
+    "SC-OVERNIGHT-MARKET-EVALUATION-079",
+    "SC-CONFIG-SCHEMA-BOUNDARY-089",
+    "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+    "SC-PRECURSOR-MARKET-SCHEMA-101",
+    "SC-PRECURSOR-SOURCE-SCOPE-102",
+    "SC-PRECURSOR-FIELD-VOCABULARY-103",
+    "SC-PRECURSOR-STITCHING-106",
+    "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+    "SC-SLV-BASELINE-VALIDATION-110",
+    "SC-SLV-MARKET-EVIDENCE-111",
+    "SC-SLV-MARKET-VALIDATION-113",
+    "SC-DATASET-SCHEMA-SEAM-146",
+    "SC-DATASET-PROVENANCE-147",
+    "SC-DATASET-RAW-BUNDLE-148",
+    "SC-DATASET-PREPARED-OPTIONS-149",
+    "SC-DATASET-PREPARED-SNAPSHOT-152",
+    "SC-EVENT-TAXONOMY-VOCAB-155",
+    "SC-EVENT-OPERATIONAL-CRUD-158",
+    "SC-EVENT-SOURCE-VOCAB-159",
+    "SC-EVENT-PROVENANCE-NORMALISATION-160",
+    "SC-FINANCIAL-CALENDAR-IMPORT-177",
+    "SC-SERIAL-COGNITION-CONTRACTS-187",
+    "SC-SESSION-CLOCK-PROJECTION-195",
+    "SC-RUNTIME-ENVIRONMENT-CONFIG-197",
+    "SC-PACKAGE-ENTRY-PLUMBING-203",
+    "SC-API-DEPENDENCY-WIRING-207",
+    "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+    "SC-ADMITTED-LEGACY-FIXTURES-209",
+    "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+    "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+    "SC-EVENT-INGESTION-PRECEDENCE-217",
+    "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+    "SC-CONTEXT-SCANNER-SCHEMAS-223",
+    "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+    "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+    "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+    "SC-OPTIONS-FLOW-HISTORY-243",
+    "SC-MARKET-REGIME-CLASSIFICATION-249",
+    "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+    "SC-UPSTREAM-SIGNAL-INGRESS-252",
+    "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+    "SC-MARKET-SUBSTRATE-WRAPPER-254",
+    "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+    "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+    "SC-CONTEXT-SCANNER-WRAPPER-264",
+    "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+    "SC-API-CONFIG-MARKET-EVENT-275",
+    "SC-API-RESEARCH-EVALUATION-276",
+    "SC-API-RISK-EXECUTION-REVIEW-277",
+    "SC-API-EVALUATION-VERDICT-MAPPING-278",
+    "SC-REAL-DATA-INGRESS-SANITY-285",
+    "SC-OPTION-DERIVED-FEATURES-286",
+    "SC-INTRADAY-DERIVED-FEATURES-287"
+  ],
+  "record_trace": [
+    {
+      "atlas_record_id": "atlas_donor_options_001",
+      "primary_cohort_id": "SC-OPTIONS-SURFACE-BOUNDARY-025",
+      "source_record_sha256": "5328e5d1006b9db124b8bf92eab448f3eeb1f557a46bb842b7680a28363f8a19"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_002",
+      "primary_cohort_id": "SC-OPTION-TYPE-VOCABULARY-026",
+      "source_record_sha256": "dbdfcc8025f271f3acbff7fcd5f2c1d3a14837b4cd88be8b3b521acf69f2a35c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_003",
+      "primary_cohort_id": "SC-RAW-OPTION-SNAPSHOT-027",
+      "source_record_sha256": "7b4f71e7384f66939fb1c59da6b0d318c528de836aa7d69b1d6daeaad0720bfe"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_004",
+      "primary_cohort_id": "SC-OPTIONS-SURFACE-PROJECTION-028",
+      "source_record_sha256": "4d1bb2d4ba0deade168a97e80cd8229e83a55b14cfa5e3c4590c0938f446bd54"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_005",
+      "primary_cohort_id": "SC-OPTIONS-SURFACE-PROJECTION-028",
+      "source_record_sha256": "fbd43588596367284a2db6e3a8c61dc3d7c0e599447b201706d34869a7c3e762"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_units_001",
+      "primary_cohort_id": "SC-VOLATILITY-UNIT-BOUNDARY-029",
+      "source_record_sha256": "33d666f16270ff833a87116459b8eaf0455547edf7928491424a6e1ec6b11d13"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_units_003",
+      "primary_cohort_id": "SC-VOLATILITY-UNIT-BOUNDARY-029",
+      "source_record_sha256": "680c4fc66819b94430a016837655122ce437881ce97e0e49eb8de097eacd1e79"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_units_005",
+      "primary_cohort_id": "SC-VOLATILITY-TYPED-ALIASES-032",
+      "source_record_sha256": "1c1755b3a3e2556bf700bfb2da64d2fb0a46d6d9fc6a63408e13a4a9edd1da9b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_units_006",
+      "primary_cohort_id": "SC-VOLATILITY-TYPED-ALIASES-032",
+      "source_record_sha256": "3c9d3d6e6a7c6f74c1e5dff0acfec62ff3d4f1e64f08a223c9b3754a130043d0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_session_clock_001",
+      "primary_cohort_id": "SC-SESSION-CALENDAR-BOUNDARY-040",
+      "source_record_sha256": "6cafc2237e30bb00741f931d55f613dcc375141841e0553f34c3a9636c62e641"
+    },
+    {
+      "atlas_record_id": "atlas_donor_session_clock_002",
+      "primary_cohort_id": "SC-VENUE-TIMEZONE-VOCABULARY-041",
+      "source_record_sha256": "f3b2e927c1b8354e7739d6638caa6317637b6152f83ed98bf744187041863d9c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_session_clock_003",
+      "primary_cohort_id": "SC-VENUE-TIMEZONE-VOCABULARY-041",
+      "source_record_sha256": "8e8cd9f748482f427d8a6d3777ca224bc818845a407da62b47e44750de1c0924"
+    },
+    {
+      "atlas_record_id": "atlas_donor_session_clock_009",
+      "primary_cohort_id": "SC-SESSION-CLOCK-COMPATIBILITY-045",
+      "source_record_sha256": "deec1f7345fafd0526122f163757236cada7cbd8c9d2ef3fad0dd0652da693b0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_session_clock_010",
+      "primary_cohort_id": "SC-SESSION-CLOCK-COMPATIBILITY-045",
+      "source_record_sha256": "7c39689f72a39cf719f2ee54f9aad45322e142c569b8affad286d4ead2a1c24c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_001",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-BOUNDARY-066",
+      "source_record_sha256": "e3e569328093c689cefa9b05fb1d57527fcef87cf6b8b04b9c38db2a41272c47"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_002",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-VOCABULARY-067",
+      "source_record_sha256": "acc0346f2cdb258fe61bd685264dd64c631db21d718a4e5b0b5b77ce71da970f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_003",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-VOCABULARY-067",
+      "source_record_sha256": "e9f5f03ed529326c5bbdc7b96deab80836d717be57246e3c1e99cb11b723df20"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_004",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-VOCABULARY-067",
+      "source_record_sha256": "a64a5031e1c393ec220401786d8fb548387613f7bef90370a26bde97cc617c6a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_005",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-OBSERVATION-LINEAGE-068",
+      "source_record_sha256": "45e98f739d88394f9c41e5aab86eea51b276082c665d5199cf0add0be8026483"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_006",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-OBSERVATION-LINEAGE-068",
+      "source_record_sha256": "046e45a5d3f9efb31777e3c2bdd2480b4a97e71507e8e01b1b680f6c0aecf610"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_007",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-PERSISTENCE-RECEIPT-069",
+      "source_record_sha256": "85b03335e3b469730820ce639a6ac42d2a129240e138c54e904bf375ba42424e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_history_008",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-PERSISTENCE-RECEIPT-069",
+      "source_record_sha256": "fb015e8874a64758038af3f81106b3c111432ee0287b43b34919ddbbdb642855"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_001",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-CONTRACT-071",
+      "source_record_sha256": "61a211ba79d9f38c5de42e12a688da7b4a11a57a4884c494a824ea21ae41c2b7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_002",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "source_record_sha256": "7698bf6aa836c292a38325baccecb63e36b3acb07263eb40f589c1e9956a4ae1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_003",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "source_record_sha256": "6440afca9949897dcafabd369704b9b17010f624d4d40f154586484fc64d1421"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_004",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "source_record_sha256": "35af2e0aeef0a08d33cccbc23f581c33dcec2355a14a093f8eba54aab8b57633"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_005",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "source_record_sha256": "e77decf198c996d723d6fb86405d6fffb19a4759bdc05635557a114b83104ebc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_006",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "source_record_sha256": "7ef055e3657308a3b6a3fd82a7c0e1b37df93679cf0d9036eed6e2014eab3df9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_007",
+      "primary_cohort_id": "SC-TEMPORAL-EVENT-WINDOW-CONTRACT-071",
+      "source_record_sha256": "b46ddda15693862ecfb928fbac5ac36b78bbe64fa565e1591b26edd7277cb085"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_009",
+      "primary_cohort_id": "SC-TEMPORAL-STATE-PROJECTION-073",
+      "source_record_sha256": "7485b389d48b828ea5597cde6582c7089d21722adb305e2a0f299a2c218dcbdc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_temporal_surface_010",
+      "primary_cohort_id": "SC-TEMPORAL-STATE-PROJECTION-073",
+      "source_record_sha256": "83c8a3b5e77f0cbc3a50e8acc45e8f9aaf5998dea9417330f047f182cb45af2d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_overnight_006",
+      "primary_cohort_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "source_record_sha256": "68e78d17bcb3f1f71e848afaeec85f5b6c04fb9845d48c86451470a6f1795ed4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_overnight_007",
+      "primary_cohort_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "source_record_sha256": "0c95c16ba12b003710dd011a5deeb668b62149c375ec7faed6a2d927072257fd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_overnight_008",
+      "primary_cohort_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "source_record_sha256": "4287af04402d774a6f354f2a1a6264d3cd282385682571213000226d4068c602"
+    },
+    {
+      "atlas_record_id": "atlas_donor_overnight_009",
+      "primary_cohort_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "source_record_sha256": "1ce359587f5a5495b466652a9d3a8d170402f2d36c10a453fcad2e5fbc6a44bd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_overnight_010",
+      "primary_cohort_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "source_record_sha256": "65ff4362700dd584b012cfa3516c54d8f6119a36eb0b62972bfe92f87a8b1221"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_001",
+      "primary_cohort_id": "SC-CONFIG-SCHEMA-BOUNDARY-089",
+      "source_record_sha256": "dc76b9aa5ebd48b868d29004b219f71b85d5372bfd80d7defb73f46d5432f06c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_008",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "62b45bd1a2ba36b90f08482c5ea24beb496732e153c35a5d8c39fc04cedcb389"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_009",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "258470bd0c8efeea87c354f82b2c1c4766b97aab31d3781f6f0766b1040c1348"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_010",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "274cb689c5ea0510e7335aae24d9d9e62112194b5edf168916af9bb17b7a7ea3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_011",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "e8ee950527da4b29b532fd29097e61aefd2cae931ecb94b6dcfb8f2b7488c0b6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_012",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "8a6e33f05d1573475ce5689e82bfa1771cd8f4ddad7ee556fc6f9323a23ab954"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_013",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "51cc64891b3e9603d9baa717e0d3f1e1e25038f0b82c60f77ca67db9a3c0966c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_014",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "2518e88efc5d6d5538b6338bf349640e107247550d61951abe111f6a6cffb04c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_015",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "b5365082d8aad7674962cc47e16b09c44650cbaf755611c41f8d6c06edd23bcf"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_016",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "f17dc16196c16492cf053adae404109310a349274016e636c775952e9004b5bf"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_017",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "6a668c62f44e2d8427e5f6fd9e37b4b6b4bfc757bd9063527656b8b4b9a20809"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_018",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "118871684bd3404953c8ab358f0d54220775f453eb11635c4aa20d2bfcab72b2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_019",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "9f128b485baaea2580d857dae4492815b38672bd558352e6c68dff86761213b3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_020",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "d24e7990d1083001251f54bd7a10cdb66f4415815e7690955823b9de485ab1ab"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_021",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "d3c288c5c47d109f95d7bb44eddf0cce8a658e6a613e16e4492fcae0710ba1d8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_022",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "3426fb53bcf1923b4071f2dd5ec74e60ecfb6751dc4d785abee149a5fa3eb21d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_023",
+      "primary_cohort_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "source_record_sha256": "81295822c1db3c31a1cf345b989568d2a58954926502fc1b37da568ffdb8b9b8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_001",
+      "primary_cohort_id": "SC-PRECURSOR-MARKET-SCHEMA-101",
+      "source_record_sha256": "a86f024ac92d37394f0bc7676c98688836787554aadb0454721ae00d60702af8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_002",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "f289685de24d639b771a3d06ceb88b0ac3968c9ba9608b13177c59cae71b55a4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_003",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "35a6499ad559649c3ffa9dc77039af0e3b5f84f326e9affdb2826e4c2afc8b05"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_004",
+      "primary_cohort_id": "SC-PRECURSOR-FIELD-VOCABULARY-103",
+      "source_record_sha256": "3e81f3fab309d77302b61cc9f485f0fdd5923c58f552cde9db52d3b44e9ad835"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_005",
+      "primary_cohort_id": "SC-PRECURSOR-FIELD-VOCABULARY-103",
+      "source_record_sha256": "cc7509f3309176cb0de9dff7d6a97b6af51a5066e489370352168248a765ed52"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_006",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "f55374cd473440002904a376f7e7673291a92a95274fa70508f3761942b279af"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_007",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "77e5687f7577099661ce92fd1da843a1e27c6daf014bef549f371de05c56e9a1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_008",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "caea5180588e9b9ba02b96725d47889998229f742cdf8206351cac04f402d1be"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_009",
+      "primary_cohort_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "source_record_sha256": "af1a7430b149b0620506837660de892c6fe860a6a5f257caf52245ef2a6b642d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_013",
+      "primary_cohort_id": "SC-PRECURSOR-STITCHING-106",
+      "source_record_sha256": "d1fd6d6c9c872f46ba5f8e145d3618e0a5dd736620dca0c1f83661507868c563"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_015",
+      "primary_cohort_id": "SC-PRECURSOR-STITCHING-106",
+      "source_record_sha256": "9d35cca6951d1d4b27db9a71e06b0ab67b485e79fb85b5a64cddd5038cdbdc39"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_016",
+      "primary_cohort_id": "SC-PRECURSOR-STITCHING-106",
+      "source_record_sha256": "f78aea59b67ab7d08271d8989bf4ec755c3e1ca31a253c544469f135be18d2df"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_017",
+      "primary_cohort_id": "SC-PRECURSOR-STITCHING-106",
+      "source_record_sha256": "509a579036ea709c1894a6515f548a43e5917c4de7c300d62e760680263bee6f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_018",
+      "primary_cohort_id": "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+      "source_record_sha256": "5fd259934b9fa757be687b6aad5ff576f1ad4752993642a5e9242af7ed21d9b9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_019",
+      "primary_cohort_id": "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+      "source_record_sha256": "d6bf7696ec98f2bbb0d2f2de5f78a7ca4ade1b6cc2b42d41c038155bf8ec20c2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_020",
+      "primary_cohort_id": "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+      "source_record_sha256": "0b90611f7df73b8fdde1470f7b4f95e2ab3053c7a9783977be0d8f81e7a40d85"
+    },
+    {
+      "atlas_record_id": "atlas_donor_market_021",
+      "primary_cohort_id": "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+      "source_record_sha256": "b585e7a22eb424772ec56d9224735fd0a7e104deca03508a8c363b31f4f391f3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_005",
+      "primary_cohort_id": "SC-SLV-BASELINE-VALIDATION-110",
+      "source_record_sha256": "ce2d72d5d99fd9198fee4b8a69c3f92771023444ca5e4fe6e4a43806c900e1ba"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_006",
+      "primary_cohort_id": "SC-SLV-BASELINE-VALIDATION-110",
+      "source_record_sha256": "6c8b62ec4366af6eed48f1d99dae6baab7bd06abf19456d29bf80bbcc73967d7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_007",
+      "primary_cohort_id": "SC-SLV-BASELINE-VALIDATION-110",
+      "source_record_sha256": "21c3bc1e63a7e233f5c86fd8bb2c99f3353354afe2c724f87a8824e283f77059"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_008",
+      "primary_cohort_id": "SC-SLV-BASELINE-VALIDATION-110",
+      "source_record_sha256": "cb42095955e73e233f8cdd521c8d2e2d96f3498969b8e80a49e552ef1df6c41f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_009",
+      "primary_cohort_id": "SC-SLV-MARKET-EVIDENCE-111",
+      "source_record_sha256": "cd36cd159ccea0ae4c2b518ef3fc851e944e07abd208c25be4769ad23a169aa7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_010",
+      "primary_cohort_id": "SC-SLV-MARKET-EVIDENCE-111",
+      "source_record_sha256": "e7fbef39e122f2253b2b54734248202f172ce4d76c1d29f6274e62179e898f73"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_011",
+      "primary_cohort_id": "SC-SLV-MARKET-EVIDENCE-111",
+      "source_record_sha256": "bf02d536b04514516b54872b0f43a951f1be95b99ce480187e9e17bf90ad874e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_012",
+      "primary_cohort_id": "SC-SLV-MARKET-EVIDENCE-111",
+      "source_record_sha256": "d8757782dedb3f45f04de95125b6bc4ef90b4839c9a3e0911b048ab1118b55d7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_014",
+      "primary_cohort_id": "SC-SLV-MARKET-VALIDATION-113",
+      "source_record_sha256": "904c83f58eaf400ed453e468f70954ca47db5fb66a7dfd762e1f5da98204be32"
+    },
+    {
+      "atlas_record_id": "atlas_donor_slv_015",
+      "primary_cohort_id": "SC-SLV-MARKET-VALIDATION-113",
+      "source_record_sha256": "f3be1aaaa0f161f96d3f1e76cd7eaf2bd308a79c499eb42b24bbf9edaba4ac7b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_001",
+      "primary_cohort_id": "SC-DATASET-SCHEMA-SEAM-146",
+      "source_record_sha256": "fc63c85d3eb6bef6514a80aae06387381338526790e050c47142e4fd32c7f789"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_002",
+      "primary_cohort_id": "SC-DATASET-PROVENANCE-147",
+      "source_record_sha256": "e905b1a25f5e7294611065e65eedd3e835aa27c76e3561cc099e0bcd6fa95e29"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_003",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "0128337b7372d6c878a732a675e36a526cb1951797a4748059590c44521e74c7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_004",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "f889a047dcbfd9b7e439034798ba9dd2fe112c4b09a0fbff442ac6a94e26d4ee"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_005",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "67ce330743cab7338d93bedaefae710f108807bffe382f96638bdf5cf36faf04"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_006",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "03d3b758d6e7e3ed61f09092419d97a36e2593fb7534b9c1000934825f99a414"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_007",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "1cd65fd9f90c1c235686999448595432af20633957596492a42d0447b225a5b8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_008",
+      "primary_cohort_id": "SC-DATASET-RAW-BUNDLE-148",
+      "source_record_sha256": "fe5b7640c97c8f838c6608cacb064a918e76a83da17e1df6d57ee7b9e27f52aa"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_009",
+      "primary_cohort_id": "SC-DATASET-PREPARED-OPTIONS-149",
+      "source_record_sha256": "fbce76f74b033388285edb33eab6c5ec2638fe673922fc6c29d780b8c80b7511"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_010",
+      "primary_cohort_id": "SC-DATASET-PREPARED-OPTIONS-149",
+      "source_record_sha256": "ed2c52035c4358ba05712d27713b14af14e8e9f1f59fc564a2e662aabe379464"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_011",
+      "primary_cohort_id": "SC-DATASET-PREPARED-OPTIONS-149",
+      "source_record_sha256": "835b81dd2db1e7041d298b00dc7e2a214f33f21b998dd55c4427f8e8089120fd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_012",
+      "primary_cohort_id": "SC-DATASET-PREPARED-OPTIONS-149",
+      "source_record_sha256": "7fcbf160bd3f2ad1dd2ceaa7f21ea92aee3218c44be5be917ea7454e690ca9af"
+    },
+    {
+      "atlas_record_id": "atlas_donor_dataset_017",
+      "primary_cohort_id": "SC-DATASET-PREPARED-SNAPSHOT-152",
+      "source_record_sha256": "41bdf879347e25bc656f8adf8a5c1fae624973fe4238436b6bb50d54b3bfd87b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_001",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "667e11bb8822cf55f022d75fc931538f896da82dd428253b87b660a3b5bf950f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_002",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "5f71d5e66b1c135388a6fefcfac91f40c87f09ee3ae6751a02b910c08be4597f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_003",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "d153818665155074bdb97bfa45dd3f9e3e8762f6f71e0d71ba02e9bd823f6e8d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_004",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "10acfc045d247ec352eb158d8467a29a21a725887e9aff201cbd32e0ead3baba"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_005",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "78302a6d552d1e25bd0b3b7bb6ff063ecbbe1a7ab48c7b2c124ef64d23f34f77"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_006",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "36e46c90a991b50945f7c293901c38be73741648be4ef21a8cd97d7d18c46b9d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_007",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "0f5ee40b01b53f440a706ecfc5180885c7d7862fb6e340a154349d2e4d236c23"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_008",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "da71d4a60ddac683f6ab74118954dc1e05a90bbaf0824b34169f98686492980f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_009",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "72f5b80502be647d5a966da7c8455b259e4d9e0b334fff8df41539cd095ba059"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_010",
+      "primary_cohort_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "source_record_sha256": "ae5f9a8497d6c55471873db4164303835d19bf55ee670e94a566c5ac2a52805b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_015",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "1bd2e2515cd188efb1fa9542c742e644cd5b60159b6041116613052084b84227"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_016",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "a2e241c054269a37dd62303432611fe4bdff733e8adcea8fb07e6edf097068b1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_017",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "f6e24f02065f21193af04134f2cbba535fd7b6a8a7f8529ecc3f76ad8b873af9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_018",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "34621125b47a922b6905e014e36d2abf2a5e1f58fefa4bec8da4d347ef83fd7e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_019",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "5917a608235708f08a24b8915500d8ce9ac963f81ed15e09516d8bf95cd2027d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_020",
+      "primary_cohort_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "source_record_sha256": "1b0fed1334f32717edcbabd4c6d73efa27a8ac9de98c7bdfaaa08ff146805391"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_022",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "f260b8289c45243630bd77fdaf61c97c3d97dc975f006f6c9bff578389702a81"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_023",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "7621168acc646439d89a0bdbf606809b7ef2c2fd910d3fdae6fe078975f103cc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_024",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "484b79953b292c72a5b9a7441d861ac8a4d1ee89319c8546d3da7b0039e9344f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_025",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "169c7cd9a4a6b79d750db632231f940158a2856106d4a037db33a5603e3d6429"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_026",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "8c18e58eadb085274b737a2fb96a9f06167394beb9f1034bd28281280b0fd0cb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_027",
+      "primary_cohort_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "source_record_sha256": "a9dad86c615c1f322863f28c3436fc1079856202c6cd85fde25e561d520465f4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_028",
+      "primary_cohort_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "source_record_sha256": "a751546c288d6b1066729f774a81848154c3401e8fe31d829aea220e5eefb16b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_029",
+      "primary_cohort_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "source_record_sha256": "549ae3e8b5ae20bee1f3bae4db600126af6e175fa80448f439e74cf19ed8d7d2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_030",
+      "primary_cohort_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "source_record_sha256": "2562b4cfb88d61c106004ecec741721273dae7f4a8e05502421d41977a22493e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_031",
+      "primary_cohort_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "source_record_sha256": "6f16c989798facf46575c9c24c4b1b1f17faadc3935d0cbbb4d26de128116325"
+    },
+    {
+      "atlas_record_id": "atlas_donor_events_032",
+      "primary_cohort_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "source_record_sha256": "48395e2c7164e8c1a72042b22179f778f50ce3a24e2ef73c08966ec2b5b818f9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_013",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "source_record_sha256": "78b16e4d21d79684438911b0dccb23fd52c7ca5fd1de235b5926c565314b8e1f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_014",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "source_record_sha256": "1bc691396b6f920f9988638f3742200bf78f4052f29472755b76333b5e6088cc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_015",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "source_record_sha256": "a65d8442fd536a1c6753d422acbd3063f1fc5859909fbde8b7e670e6045b1894"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_016",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "source_record_sha256": "5db755f3a799ca145af459a402afc63594455d919e84ec32347c2dd667f05def"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_017",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "source_record_sha256": "0de8708be5d70570d651af1d4bc7d7f2d52e69bffb922dbb1ed2d5a4b0627095"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_001",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "c2dbb08b3ece82a818b7ad07fbb271214ab5e9fabc97578413c693b336fe6f78"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_002",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "616ad2805e569abe47109c39ffe8882a21aa1e40117fe5d551a3f2b7d87609b1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_003",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "68fdf1f3967999716ca1127edcb5aee1a30d0d3722b6da446c3c1f94a557ebe8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_004",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "3cc676d196b9e73b0fce1780571b152acc07ea2228e93da0e1be11a6776c9af0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_005",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "a7fc55f7b91012730d7eaca2a1277def0fd761bb3bd069342f058e6c6dc0bc56"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_006",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "4d8b0648eac371b36ac2db02f63264bead57bf7059878f8cc57ab1d87df6385b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_007",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "8b31cdee601374f4fa4b408da2cdcb61d694b1b2175c255115cb231d0d3224e2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_008",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "077b92cdf2d3b7455c3c2281f630bf52cb72b7c4f2e3559660ea4a6db7c480b3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_009",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "a7b0aaa97a08430050a221e1e37e13c0868f3135fc131229419b3c8f6a72e208"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_010",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "8e71840f9a25fcd70bbc74beebe24cabef868cca63d2d5cc75469c7384b2e159"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_011",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "b418e018d0c97c8289c3f848c566952b3de98746019b640c8b0dd092245e1c9e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_012",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "1f2b8fe5b6effa403adf6b69ef06b0d08f31a31b007f647da89b897c200fa59e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_013",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "4c07d06516315716aaf8af7025c1da3aa60a36d73f0da0d03692ff035a319556"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_014",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "2aedf40b18a04cdbab6975bc896f77f0967e87a36e7e35a9b777fda93050824a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_015",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "e8b2425e8714ced2b95a286b850be4c918589ae7fcbbcda9bbf2aa8b0bfa2615"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_016",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "8bb34a220b3d16a551af388755ce8b76dccfff7c494326c3a29fcda6448d5307"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_017",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "aafdf245d46993d7eff1324d83c5f2c55d66882fc4315b9716ecce3ad452162e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_018",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "a0555cc7c95d37dd4bf27d1025958065f103847ca3e4decd288412df70073025"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_019",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "bb9a9dc2238bccdbea26877d552c1bb075b1c1a041338c78e3a334d2cac30804"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_020",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "0342443879df11aed5f1bf4f952895b4a02fd139c3523a7d0026dc01cd422fc0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_021",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "7adfa460064967e74f776827ba4efc2c426c5a389bbaff4da4b0ddac5b2516ab"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cognition_022",
+      "primary_cohort_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "source_record_sha256": "57dcb29bf4b3acbf5badf497744bb514ecbc8376dcb8f287af26f4ec97f322ef"
+    },
+    {
+      "atlas_record_id": "atlas_donor_domain_session_clock_001",
+      "primary_cohort_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "source_record_sha256": "837643bae73683e22269709887a81095b36dd25adf81b84543970a9ebc92a373"
+    },
+    {
+      "atlas_record_id": "atlas_donor_domain_session_clock_002",
+      "primary_cohort_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "source_record_sha256": "4d69559d3cd5fa288e73a6dc5bcf1cd09a3129a555dfcea4707a1ec9180ec42f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_domain_session_clock_003",
+      "primary_cohort_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "source_record_sha256": "cd0cc1ece62f0f7d43437e61198050da4775144a18e5b7619784263a69cc4705"
+    },
+    {
+      "atlas_record_id": "atlas_donor_domain_session_clock_004",
+      "primary_cohort_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "source_record_sha256": "988d50ee79d0019476f3c03ce43ba9cdd00dcfb7afbbe04b685eb26615bf50fc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_domain_session_clock_005",
+      "primary_cohort_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "source_record_sha256": "284f708d0588e8a3562b5dae3b6f2631243f5e665d7e2837bd03f20f93538b5a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_runtime_001",
+      "primary_cohort_id": "SC-RUNTIME-ENVIRONMENT-CONFIG-197",
+      "source_record_sha256": "1d6aa196e540cec48771c75120914a000bf0b3bc6a30675c038526ddcbb49194"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_runtime_002",
+      "primary_cohort_id": "SC-RUNTIME-ENVIRONMENT-CONFIG-197",
+      "source_record_sha256": "2e617e78ef71ce9085688e1c9e961f867e54979b5d993f3a93a0a7c14f4b09d9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_config_runtime_003",
+      "primary_cohort_id": "SC-RUNTIME-ENVIRONMENT-CONFIG-197",
+      "source_record_sha256": "4543336800aebae524947b2a05c16fbce5442971f9290108243d0091b0bfc69a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_package_root_001",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "a27c243d3dab433c7c7dcad9fc3cce305830ea0254cfa68f0b70516af49f822a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_package_root_002",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "5013859e877622da654615b352b14d2ad92140e9cb2f15f651aabdb60739bb65"
+    },
+    {
+      "atlas_record_id": "atlas_donor_schemas_imported_modules_pkg_001",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "8dbcead5b0b09de3cf1b8329545bd5aad6c72111ff1505cf1327220f773c5c9e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_services_imported_modules_pkg_001",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "04d3c950e3e0c2593f2affb97f750f81d961cf24604a6df3cccd82523427e178"
+    },
+    {
+      "atlas_record_id": "atlas_donor_testing_package_001",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "ea163e2c2be398ff62c7ed8e20220186407c44781821d64638956d09150cb537"
+    },
+    {
+      "atlas_record_id": "atlas_donor_main_001",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "adac2246ab3e69a9efaebba0ab31daa7b7e27a56dcbc2efbbf0030470ba61d8d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_main_002",
+      "primary_cohort_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "source_record_sha256": "5744f2fc0867985ee5bc4148d6584418be222d3715bf5da88f84c672e17e15dc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_001",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "df976acbd14a9fc7d35cd615bdf7a094638ac311ec11845adaca0c59d33bf91f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_002",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "dc41e3d6c7e61187605a6c874c5a4b5df7fc9ef3212f77294453f44aecc4565c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_003",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "6cefb6d3b826b6de1f06a6a6fe4fe3b40ca145506bf56c3473f3d2be5bba018b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_004",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "1b6fb6d9d8d14c9105988afff5ac1db5a244858d25dae51f6d7aea3b1046052a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_005",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "b0542a441161af2f03ab797a1fe2f7904ea5975df58f964cc9f19c2845ec4fcd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_006",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "7e8edd99dc02ef140743dcb0d07a72e290a9cd18883644fc341b023c82119ec1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_007",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "6a6ddac1f3d7d79b399dfa7d176075219fc955ac4a42d07af98cecef71ed2386"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_008",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "b23a99401127d19d82abf8844f3dd5e86d3c891eb593a4b80abc041ef7f862ea"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_009",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "02263ba4de0d3fe92c79ec066706c6e13fe271ffbc3cad70e4288deee58427c8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_010",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "1f7661e29398b1dd33f9d8d2d2479b1767425e52f94e2b186410113b224ad518"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_011",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "576f7dcf1063bc886658cc0f2cf99aa0550fad41006d0ca7dd93f1c543bd43d0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_012",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "68004747cdbee63f8f9c74df9e6bc8929562f2ff4244d9e73dd5441d857afd70"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_013",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "e62ba781cb6eabad041ce19ecda9a5960b82269af1e4785f36d61be17567e3b6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_014",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "9a6899fe672c2215a584062d6bca966b9398b90c1c6a5305771abc6a8fbece8c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_015",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "2f574a2d044c80f0acf4435b3c390a99b3ba6b5a068af2686feaa69bf8112e31"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_016",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "922634254efdb2ab025db8b7f209aa273f56678c974be97b1968189e67d44f35"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_017",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "d5329719248b4144b63c54383643693fa95994af20cf37fd3907e5e24505cea0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_018",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "9562af2bb5f3b9d9750a6c61c3e717907d5c177ba4f19a1a30c1b23e5869c97a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_019",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "449fb745abfd1c08118f8d0fd125fd5f030e655fa38b6c7910d11ab06bc2d43c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_020",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "dbed9af4f25a651b68dbf0bf1f22707c402364f1e11eb410f95484a2156c3539"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_021",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "3ccaf4e633e9c2d5456baee4f34d00a69969e95bb282bed1908380fcca612e82"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_deps_022",
+      "primary_cohort_id": "SC-API-DEPENDENCY-WIRING-207",
+      "source_record_sha256": "12845d9c6662553ab83a1543beb1e7cae57c0f8d1d5bf57e615a5f4d9f52f484"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_001",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "8da34bb4d40158f90fd792a404a18a57547f4e9da800bf5cc7c9ce5a5d391f2b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_002",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "8d0ca2e07979e1b4f126dee667bfbcccdfed33c0d49b7846a68e6bfa01a1d1a6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_003",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "b0911e57ff743e5d6e66d8269bfd15b6ef5b40384d69e4e6b010e5d037f68d58"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_004",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "8db47279857dd7d36d67712a0958badf7169476b7cf0bedbdd6ff8f5cfe30b53"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_005",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "e1ef1ffcc48240190f5ec4d79978449c1770d9f5c7433e7e270868aa1d383dfa"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_006",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "b6ba62f74db3977ab4d16f5e937695cf828a52a53f38c542b715b11cc31f06e5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_007",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "7cedde06bec962fffdf2a761fdf91ced4a61c41bcae9ec53536cd9dd568fe68e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_008",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "d318645eea36b7c58014b0ebe54498e62c06e13bad802ee1787669baf60b1bc0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_009",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "f61d2385c1bbf2618fcafe0e852793606bcfa87f7736588b07d887b53bb4b9c2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_cli_010",
+      "primary_cohort_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "source_record_sha256": "52a8a5c03d1dcc1ea97c23b430cce7d702dc76dcd7db1c741a9ad075d8114643"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_001",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "5a7efd041ebd5a5d1e3b5c78a4a3e7d0a6f7de815d4551ce75d2088b86d68bda"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_002",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "1f4c125e2e8d2ddd1b4337074feb7449092c73bee878e9b598c70c626a6881e0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_003",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "b43c4cf2b471e380f416ea599c1f65938b36a4d516aa5391806fbeb5a4e8a907"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_004",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "a27ecbc61cbd81fecc73e661e61bac920c88b1dd4ac3e5cbb2b16cd282ffd54b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_005",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "a6685c64d7329fd3f4415d07436091f391dae7111b908295284ffd44c30ddaa3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_006",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "fcb795b6be8e6139832881f0fa9c65a71fcb653516acd1a44471b109fa5b9060"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_007",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "70e14dc31d432236546743635f47111f260100b09d2d893bc844df7ed81f487e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_008",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "062eb6827fb87049424ad5b5c6fa0614b211afec29f877fa368e867e69a2d7f6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_009",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "91b74e96776e3083197997695d6260c125ca9e02641a26eee8dcaaf8671708b2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_010",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "20b01c53cc0eb2e4c9926c7b613bcbdddf7c76e683e6a77094be7e64916b051a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_fixtures_011",
+      "primary_cohort_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "source_record_sha256": "8b80773f49f90ec71c01caf8f79f849b47842229720b6c576c2cd3c48f3e9883"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_001",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "9184ffc8a147f10c5a60c0017fb2216c1095037253d6f2c1e57c65700c417581"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_002",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "90678703e9a99ad0990d91014a4f0c8270e3b7afb16e5648f750087c8a0fbc3a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_003",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "19bcd2b9f6ce7374b1b3c956abb16369e9a38a6a8573887057b143d0e86e46c3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_004",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "c6b4e943b07509e1ce563b7bfe2afd21fc6af10e7178499b304a0c9376bded13"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_005",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "518ce65e270625be0de1bcdffed014219469d21992faf4cdd3442ff1520aa98b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_006",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "b17dd407027d0ae40a09a899763f0d4a91edc23b1e0afd1cd76763c61235825e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_007",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "5639d9f62289f88bf00a731b13afce46fb509958630004f540fb11ffe8a7ed65"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_008",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "c9664ced9c029c38e31268ba6b3ee56a8682ef592d2ab88904184aba07052278"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_009",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "23042293ea4d1d9cbe5cca81836f72646238947851a1ade97464afcd1a102516"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_010",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "c664289452665de5046dfb54532c13d0c1dacdf40030823a01813f62576ee17c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_011",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "c743955861793a0df85df6627644ebb58a0f6ad469b768f65131fdc7b0650e96"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_012",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "78cfc867276966548b8fc312cb7a864022e0e87e1519d58327570e799ba42b51"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_013",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "b7ed1b99a675351976144ca0aeb35d7478e54a4150507d93e69edd6bdc4e6ef8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_014",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "e457ad45e6acf6ed00f635eb85e8d3d444683a46337caf48a2a530feb2cdad22"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_015",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "6f7147a05cd33958499ade270edc6c9e679320bcc3411f278b667ea6aed55fd4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_016",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "aef7f707ef47c9801622c8cd2dfd01c7af2f92f81517d8695fa3e418bcaf3205"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_017",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "3035102d05cb6cdca7eb2b3cbf6ea5b1c242c887dfabf69756082b5db7c57187"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_018",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "518698c0a72edfa91ac737edd295d16c6e7c9a646c5b675d4572d4999546fc52"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_019",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "f3654a5f6f2e5a1ca343fd69164de26874aea06a23011da6da68a33af8aee2ae"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_020",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "e21fe042e229f725d90ef92dc743ff3694bf1bff19fa9161ba8a52d368324101"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_021",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "0e1d21f4f14d5fdd68619dba7892efb6fa44d7e8c4bbf79512ebc2e09e04daa9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_022",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "9fcc866a9c686d99eb1657960c22e5069a770c2dbc2043518dd924a408600815"
+    },
+    {
+      "atlas_record_id": "atlas_donor_db_models_023",
+      "primary_cohort_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "source_record_sha256": "b0acbfffded46e439f84edcabb3e57d7f41d75593dcbef8fcc3a899d91df05df"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_001",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "681cd2f790de1f818ace12e9214b8cf8d4255214ffce4ba4e62fbfc2ceecc0cb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_002",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "3d9af5781e980e60969a4ee3dd69d0fc7dd9521ab63f001d76f512cd244ab07d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_003",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "2b67981ded9ee86661ba386ff9b9e492aa49fa9827a72e8f3098ff8fed1033e5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_004",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "1ff8e4e5507e87e489ea96dd9b26bece69695e9b0fdfc3bf1f105420ea9b852e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_005",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "85f11994be722930cf0b6d0a052a4e038764db749c07d6a332af810f2d206180"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_006",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "a8473d496b22238db63c6f197f3f246e0c15a82305be9dfd7b3f926833ecab0d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_007",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "50741b636dc1890c79292c2939832b99debc5bb11e69726fbace798d22a61bb6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_008",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "029fbbebc9571306b67f7dc8c6657ace74a07ea6efd6b14c2ca4ea6fa568ad56"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_009",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "c9740cf601d4a9d2824ee8496dcac9fd2944f87a5c7b542806144ea298b503b3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_store_service_010",
+      "primary_cohort_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "source_record_sha256": "42dc6efaa90642ecc9a762c9e90f9fb016ec6bccbec929cc573fac3ea2a21f02"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_ingestion_service_001",
+      "primary_cohort_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "source_record_sha256": "013b1a1e94608c4bfb9cadfba69343ed333a87595f19a0bd4261f5951d7559a4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_ingestion_service_002",
+      "primary_cohort_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "source_record_sha256": "6ad633c9095d3eeb35821496972a2cd808421879d01ede5510a643d0b5564ce3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_ingestion_service_003",
+      "primary_cohort_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "source_record_sha256": "cfa3d41c50c66d0a250b5df31c8069d961002acef4c5411c17121999cd4788fc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_ingestion_service_004",
+      "primary_cohort_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "source_record_sha256": "dfd918c38dc4766182ad26d5b4ad4f868d034a4863c8ec21cd551cf50c822b75"
+    },
+    {
+      "atlas_record_id": "atlas_donor_event_ingestion_service_005",
+      "primary_cohort_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "source_record_sha256": "83c68b8d0cb40a63452eb965d458046852218b62a2170df278ff92c818db19f1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_001",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "3c6e004a10d4405d576d43fdad9c77f121087c504336282610324486d28c343d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_002",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "1f3a34a64904fc1081703aa7c75b37e4d7602d55eb75f704fd329ee83af39ca2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_003",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "5f4feedca43ec27b2849b77c4b3bcf6392c48ad34513800a8d0796f63f98073f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_004",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "185261a3fe217888599660a4a5ee4bc6c92533e7303afa4b63268e2c64be8453"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_005",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "231ffb60b135b6640d10a06b97ddb1f410b35a54fd75a666a5c3313e93743e11"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_006",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "31ca17f64f29bb4568cd85693377d9cc943c47ecbf6d737eea04b73a4d1fc81f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_007",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "a8d7bd37412e54b4b28c4164334eb025a6ef57305af3060b928054b61f753789"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_008",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "87576e8cc0608e0d698681baee937b8cfe29b23331008c8c12d433fe5718783c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_009",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "df5377c6cba5a9647cdcc4b6ea4f668bbaaa8ec62ac706e9e7a4666b661db82e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_010",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "bccfd93ed5d83f4801b18ca6aa3788432c4f8f77b424d7e0c70b6bc90d56f260"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_market_substrate_011",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "source_record_sha256": "d1899ae9dd79cd922be638f0e272ff4f2161f9afe224e9ea7f8b972df921330d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_001",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "f7230efa82bc0e8efc8dc847a7ddb0db2d04ef40afe766c970e2b7e756ff0bfc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_002",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "68a2701acc59f4eae4e5716f2fa0963728b611fdac9195d0df6ea5d929b80acd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_003",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "6665cf5ba603a75b197a38859a779983451957b34059b0f6ee9d74e4a68f2c83"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_004",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "1ee25ccb7acc68ea1ea385ec8e121446df07482dd7c9980cf3777a647b25046b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_005",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "0693e9dadc5d7e9ce897763c4cfc9122044b704627dc5e01343ca2497b218790"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_006",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "760efc31dd04870ae0bf9cda77e47a11df4c9ca35e28b79a1505bfc15cfc521f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_007",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "9ccecfd541013200fe1d1b7316ef6daac627d331ea318cde659ca572d0b6f4a8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_008",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "8debd445125a0a05a3d89e77a2d3ab9ef14a2f0e3f2ddc4174f4ce2feec61e8d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_009",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "27afdb02452376fc5882df412c21cb1b4cd50520c606ff0c2f9eeff6bb35fdfc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_010",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "8aa59a17178704c961ad9958219b9717ef01825de420864f8cb692f5c2744c9e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_011",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "45cb00bdef6b0bd9a5e7ff80e99d6e2001c3140f7b687128bb91c14ee7872f4a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_context_scanners_012",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "source_record_sha256": "b540a7284c13da4107f2ac73cbcdd88804514869439f61a3a286a6a6f3c23e23"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_001",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "085d9e734d756f13c7ac62e718c09e73232b90e4e7e5e0b24dad2cf8c1fbd919"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_002",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "0c37de360aed5ca079e310c8ee009e8ce788a1e3abee5a112f331fe3de75a74a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_003",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "8feba2655d42cbef4cea70a98a208b046f9f1c223f8a57e558e0b448ececc8c5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_004",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "570a49f9acb4e2c5da2b2a13caaa2a4774579d67e6ba32ab785b8e275444a1b8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_005",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "910d2ef3315a86e0a7682dfd92054533c8ade45236cadd9d98b80fe3a72f2497"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_006",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "8aa6844df97e9b964451381a4904d77316e103ea452a10f42df9a63e6e076341"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_007",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "9ac7de600ab171d7a6e58aafc181d66b40b94865e6247573759152d4f43b2fbe"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_008",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "0c89c83c829ffb41b0f0985f3c545fd07506503d8159378968a15209ecb9ae89"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_009",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "3205c5b493beaf17abd30b3abcc1f442dd2d7e8d1d33e3d7042e9032c5cf5745"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_010",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "18c0528ddb04a8a260050a2da5af97dee083ec514b01a6891bb7579c1c662e18"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_011",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "395096e3922e9762671cdba5250c85f4f4c555e292b5565b30bbd7b7226c06b5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_012",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "5ec7d7fffa4fd93111be854f5ce02c41ce72afc4b59113ddcbc0a1b27e08806a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_013",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "c349ec2893d36eaa62c7bd7914160a1d22630e300c42da5fea52fb711b1ba7b5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_014",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "2361092d5bea45a3e080e0aa21402ac2487823ff1792b9255df9f91b6accf5d1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_015",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "fd7d58687d14e34932c256901c7e19ffde8bba00726f05533e025482ab1dcd64"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_016",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "470458ae86398c76d28e6615780f64071364c4793a59fa45c639f6de8c4cad43"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_017",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "adbf39925af1ab2362452f34fe7b04d672b46b51c98aa47d2ebae4458d6115f6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_018",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "40017bbc607b445167f2484d5c910d4a46173ce4600c47c7354a5162996e4313"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_019",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "e1d83349c7ee8d1f25b11e7debcb0280db4fb0f2b43dc66100d16f4e950b45ab"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_020",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "5f552ce37b6d8d28b56d1e0378f9a9660d593b8c8d4b62d5ecad894a859309b7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_imported_tranche_a_021",
+      "primary_cohort_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "source_record_sha256": "a7629a2e7bdaed831d1dc3fa0f5dadd8cbae0395b7d395423fe42f2605baad7d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_001",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "f8dd6f7281d316dcf9d354d993602668e8be2458885d83094d49d587738f1d44"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_002",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "5a3950e77206b8c32a97ad27ee5fc3e2d993582ace3550bca36779267b25cbe4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_003",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "a0e1dc17e644bb3cc3081bc879bc280f36f403487d6f99efeabd475d103b4519"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_004",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "1dbaee277d49f2a85cf638761c3885972a465f3f9f8a63db952d736a87d8b8d7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_005",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "8f005f338079aa83a276ead64b17bcc1967bae22150539b02c27dbc30be24ca0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_006",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "a44ac6afa982e9edd0cbfb321779cb285f6294d791211f1236064c49f4ccf0a1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_007",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "2a8601d19bc6d4b4ebcffcd165a48acd76c7fc354ae4469b444f6ad1f19e1a2b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_008",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "409da8c8d651b40620dfa70b52c18639987fcbc7fdb09939732179208fac5afc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_009",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "dd5693ed46665765d684a694f99f559bd6a145853c63725201d89ed3534a17c0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_010",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "5c55803c57ca1fb9883fdb5fe325eef6cbfea2e38f3d0cad24892b08feac3054"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_011",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "8fafd51820d6be2840cfcf3d19dc5a5d2e545bcfe5527926170b6a520e814efb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_012",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "f381fc83faeac33c2dc3b95a5db40bf1c43bb54c2d225c2a6089cba48162d7f9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_013",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "59bdeda78d555c39c04a55e9a8639c3f2b7b66d9945b5ed0aff92109ff44d2ad"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_014",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "7254a94e8dd88d49273440f9d9c0fc121d956da2c4a99dd5082bea4b6c3b320c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_015",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "22f98bc33b4669a1d88856906e9058f11788068b0f4aa2f0a3474b50756b7a37"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_016",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "223f5e4357edb24c5f5645921f64273241c5c013da1a4149bca7f084def458a9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_external_boundaries_017",
+      "primary_cohort_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "source_record_sha256": "64a146c351aa0dfe3a7a716316443836b895030fcb3da27c8bffb3006df4fe46"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_001",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "68fa92217b9c66cd6eaf1486b89c872875b137b39ef18af9fc54f1981f9331af"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_002",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "ecd451e70dfcc96498b2160613ac7f32560af2b496bd2d4bef9fb58da72780e9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_003",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "355e0ecbd0127b3f034b574ec4a1af47f04726e9d7914493335fa503109dcf7e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_004",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "462181e4ae69155959fa8155f780edc6e35da51377988773f04f1a2dd3b8b895"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_005",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "032dae94fdd9ff115cbeef96ac90a305eae59f0c477b7149903efce5ab2b5709"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_006",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "90688fdbb464f14fab799bdcc699448a0bb0af8b0e20be9ba83318294c03120f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_007",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "bf96f4084aa7cd46fca1d012a8aecaa1813bb1e35b96fd9b0c55fcc904079163"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_008",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "20e608349fb083073ded06eb2753c1865b3d6f28b703b0ff586af0071144c4ea"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_financial_calendar_import_009",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "source_record_sha256": "5174432dd4faae5bd6a63bb430bd9fb0212438ff1697c5c36838e9746f1683b3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_001",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "c7aefe750eb9664cecd17f6e4895ec23e24580007b7ae6880f6fce36c0094e4b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_002",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "46e1304454500a8c46964336c577573b0c5be4a0b8e6e66e7b4e2dad7dc3180d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_003",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "6ab5c5c688f86e15036b270e7a37f11eb9800ca8b022f7107665915436abc7e3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_004",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "f61f97def09360896746557f47ae0d5717143d11e880fa1c33b901dada45be02"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_005",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "27660c56872a61d5a654f3c7fa4e9fe7e63a849060e1e957847a556af2275cc7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_006",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "c6c44de1ca4cf9ad9028b7c8ecc10946acf6a3053ab91eea68c82b30f3739195"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_007",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "02782b5da377e32a23d0fd90b46f2f1ab92781afb91e007b26cca29872fa5e8a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_008",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "4d64eba7b93df1f0769073ac1c8680bad388e30d13fb688751a3e4da6bed7d8f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_009",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "2a1046e0b3cb26057dee6de106ce38ac35092b832d09cbb1c2d08bc7e640290f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_options_flow_history_010",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "source_record_sha256": "2d6d1c53f1e869b161795c76972dd43b2654137d22a84bd886e32b152144b0f3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_001",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "78a19c210cdcd0392b86911dae51edb2206584232256eb7e79effb369d28c189"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_002",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "fb863aba5ca9fb461e98ed03718ac01928343110213a99a432613101f1c02082"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_003",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "62166df2584c57eb2f38ed4f101cfa6f4d0086bc83973140a43218e862010859"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_004",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "7effd00361ddcfa46a7a2dbeee63c5750a893ebc5c6c698f449460ffff05389f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_005",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "072e4eb16a79e2a81bec956e56f926b5d3a699007521c741036b3e8647415f5a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_006",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "105a91a5d2628bf85ca393d170fff2e7d58c586ea1b1e1f9a39c6c54ec7b90de"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_007",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "8ac8a934eaf03faa5f43aae02d201e552f2c9ff8f27413ae6ff8a780f75ec8f2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_008",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "8f3233c1139fb03dd7f1e1cb8dba724953e29d4f758cd763aeadd231ffee71c0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_009",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "1ae5faf90b742f5f80949850ab6b6b69641fb1081b309a44a16f4069178daffd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_010",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "0d8644adb3c9afec0b0578227608c86f9d275fd718bb56cfb2d41e2c80ea608e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_011",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "063dbc8721dbc3ae4df32ab26d9ed6ff48115c5d93c74304b3c4938c50f51f05"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_regime_context_012",
+      "primary_cohort_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "source_record_sha256": "f85845d1ce417bff8268fe55fbf668c0f2db5640b44120ab448b0a7c1b7635ad"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_001",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "6cc85eaa2d9e49d21e75c378f33ec68168eb8c600df2b77c1da75bded9bcaf3c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_002",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "c798ad7a1317c0df897426de3e3aac295911ba4d5f37440a328f9bad2000cf33"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_003",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "87744add670148eb1dda363180d6b7e0f167d7bb50fc61b2a4ee0566cc36f7cc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_004",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "ca72461a5b4bdc9f58324fc5f5486acc5a836cf4239e58bc1237da10b5132050"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_005",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "52e1a27e45db00dc9f9a876c2e629b650d882fc157c6bcc9a36d182bfc05f1b0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_006",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "437650567330a91eec7eaa15bd1dfef75ed5159b1ea219090188305c9ea72553"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_007",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "502249cdc29da983dfd0f29d754465d039aed168b5ec18f6eb93b9c194b8b7f0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_008",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "8522a2efe8446438b962a890f122780b34907159a070e9a03568918316b62f8e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_009",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "531e5520e98b53c225ebafb49c8ef290b0bfdb7a2f920bfd81e80a7e75399380"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_slv_market_010",
+      "primary_cohort_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "source_record_sha256": "451d10cb49e1cdddcc8e5b607485a14b4332cf7080b7931517a311f4f90ea40c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_upstream_signal_ingress_001",
+      "primary_cohort_id": "SC-UPSTREAM-SIGNAL-INGRESS-252",
+      "source_record_sha256": "0b88efbb49d32c9fde2e3e2284ad9361269f18c17ac09ff416a9bb569c6984ea"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_upstream_signal_ingress_002",
+      "primary_cohort_id": "SC-UPSTREAM-SIGNAL-INGRESS-252",
+      "source_record_sha256": "d43817a392e958bdabec1f090e3383d8345d07d745251512da7c0e95b56ce4a7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_upstream_signal_ingress_003",
+      "primary_cohort_id": "SC-UPSTREAM-SIGNAL-INGRESS-252",
+      "source_record_sha256": "ced17b515246238bce03e0ebb6f2f8ef81b8479dc67b7710e8f587dd6af9cbf6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_upstream_signal_ingress_004",
+      "primary_cohort_id": "SC-UPSTREAM-SIGNAL-INGRESS-252",
+      "source_record_sha256": "28999bf6361e65927821f911d1b3f527d5cd18965d207c8f52793dd0535a781b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_001",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "4e84c8548b93b2d65d2c32ec33b98a402cad64dbb9f40e6c02b62b885198c838"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_002",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "33a802b3820a18d8bb933ae8373a660481e811e42e1f2e4c6775a52844df504d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_003",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "ad8de989e5c9ac8021258cf85ce2be90fd80ba0a0d2f88bc7d4c4fedff14797d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_004",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "c38f46dafec5e5f94cb5cde66b48eb5c2f8b43937b1193f2ab4574cf6d17aa3e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_005",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "968695d5d9fbb34dc4630d934b25e632ea9eb562afa8a511d9bc5cc1bfe9eb63"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_006",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "9b70bb78617ccbc46f93b7a9c72d707f936e6c00ee4c1ea9bcbcf36b5c5326ef"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_007",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "ea5fa4b63814617511189ac1bc7e11b1f94243a68c6b552c540348c517d4b001"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_008",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "52fb277d72399f899b12c34f4246bc03f76babd4a72864291cfa111579d9d198"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_009",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "cb5c9f32a7641124f6db78330a479416085200c2215d0274746cda1400e3dd1d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_010",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "ed308d58a5666c913d9676fb63376af448ad381bb9ff0eb41967d65613f13038"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_011",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "87d842f24b27f4667bff500980c51c1867a3d473e48f9ec4127da56d5f8c2f92"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_012",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "93d1313f63526ab49e5aa6e10ee781b5f13ff0cc634ad45a8073da0532dce90e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_013",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "1b9b1cf0565829e1f639d7f0ff06d1d7d0e7c0908fce0ebde4189d85f01cd5a9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_014",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "7872dfb20f76124b96ef1ccbe153b5e8d4438cc2ad65faf851673d1894708d9b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_015",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "005df19d033990bdf14e9ccd4a23fdfe957ab2033ba73b97d5438e365607c76e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_016",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "7e209965834c407e5642a29de2c31a00edcc940a51a132005b860aaac12c9f13"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_017",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "b73df8ad23436fe331d88b4e02b9072dfc0dddf26d91343d803cd5728a85e711"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_018",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "9732cb9969d52c465d94669d971ebf0f096f45d47b380fac9c69d205e2840c53"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_market_state_019",
+      "primary_cohort_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "source_record_sha256": "e2f39756667a7849bedac61c83781c256a692812f013e30d3104e0edfd615597"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_001",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "22a2a0553e8780efb2d1b873fff51c4573c30779b1afb61d55d6d376b13d5c80"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_002",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "20337761e683af671422c4c636c5533ef870ea0a7f2618e778662ec397406d2d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_003",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "9e4e7b2e160a1341cf1d94c679aa04c9f454f370ac4f63cbe5256a810ad14a2b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_004",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "c102da6e717b6af7490a6d3c40033e925ffba4b01bbcf4cc54a7d5305175c6f3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_005",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "a7171b132216cb399910476ea9e49150b38fc314126f074f86922f0dc6a76b39"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_006",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "2f6227966ac4cc80c93b252f77bd0f049454d4a81b4fb764d108740c5fda7c19"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_007",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "bee49d1317dfcf98ab2cb9a4f5b1f5953d4e66d9a505caacca6653c66637e7e2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_008",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "bc122c5289f73ab099862527d84b7dd27f40ba8c9ad54a17dc5b192c8ac394dc"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_009",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "91f5a61733f88aceaf4ff0a437074c8d9e3fa7e1bc9c95e76def6a0b85331b45"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_010",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "d8346c4609bac717d23608848675fbcb34565040675a9ae59ed1716597b4f11b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_011",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "480ad96aab7ccfb0475c0bea8f676799c8ee9ec3ec29588a423f67231637ca43"
+    },
+    {
+      "atlas_record_id": "atlas_donor_service_imported_market_substrate_012",
+      "primary_cohort_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "source_record_sha256": "38f70380b743caa7933fb2bce186905c94ebc348025a6a94957525d02946a3b2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_001",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "66a4f673b7626c932bbe27596271b35a88fa58d0cab4287c3917f8202ae4a662"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_002",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "0087924178a5a2725e2632d6eac12d4dabdb9a08d4c7482f42b4e565584ee800"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_003",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "903aaf53db0e47c765057de110befb05a333aee31fcd4bdfb5d1373f4a961fdf"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_004",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "3c02502e2246b4baac10719533ce3b8d24a87e1fc942681083643e024a9355dd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_005",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "732695bbb430b9ca3fe7afd4ead4b820905d503933513b767ba82d750c5a1eef"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_006",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "9b40480127e31c7ab8be4ae18404cd947bad3ec595a513f56a3175ee57e17cd8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_007",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "0e90e022c65a5beadc8f49e9ebb27d9ffdfcf0a6c06407ba570500853b41943c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_008",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "b71b4c7a13215477512d1a69bf30e324ad6b13ce473b2870fe77228fa14951e2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_009",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "0382b0f0726b5dd3f0f6f62d3d68eadb8bc876cde9176a9c888fdddd504b86bb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_010",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "349c7e97d37dc45c3526c9ee9f0e04073d945c1cf362fb1c381fe736ae51fce6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_011",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "3145f3cb7317d8f875e45424da3d6142e0a4cd962565016ab398dd2a6a751a78"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_012",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "2f55b6281ff5e855393f5d6a60fce512910bc69c65f1e69d4a4edf7b895fa183"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_013",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "e287b3f7001fc15a4fa5750fbd05b0b7f62a3a1e5c8426906d812af1b2b07fa0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_014",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "1903d84e3d628f2000c1c33b9f428a3520d5e9d2ef413899cb3c76f9bd1fb87b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_015",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "c2f06452ce3fd7040ac8dda25eb80b0dbea7c774954839091642a1d8865af430"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_016",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "eddbd8ddcd854b662a746552961439e68d977fe894d1a00a0f640ae8efbeb9d9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_017",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "cd5529345ddba353130d97fea516aec39051f70e9e924b1c246342fbf71ade20"
+    },
+    {
+      "atlas_record_id": "atlas_donor_options_flow_context_018",
+      "primary_cohort_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "source_record_sha256": "bbce97e38f8e86a6b7664086852654f0ed6fa6276df14da22c1b21146a0e0f4d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_001",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "b0a1fe6bd1668c8b38a32521b55d6bedcc125d92157e6df3ce9ec3a533232874"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_002",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "524b702136a5046768d72ec5e9e850ef55c47cf1bf283c0e994d5bf16019ff68"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_003",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "40a604710295f6eb7859f3532bb5535453326878e228184bec50e56bad8d1753"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_004",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "911a90cce282433ad3faf4bc5b04b917f93fb630d86bbb42b28dcd2f47874856"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_005",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "0e2b9dac0131172142d89d74dcbfdad568f610d118eef006826ddb8605792f84"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_006",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "f71340bc1a5d8226944bcd5ee8f0f554201bbe18f4a293c7a797a549cfbac3e0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_007",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "26fcfecf5f75aff70d53e137066e8ab1cadf54295ae43c56ba71845bfd131166"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_008",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "9190a40f8178f79eaab68e68f2a22516e26ae6e26d84f63a59a5bc4d986c19a5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_009",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "db99802a75c2da3b3a42d108be08b73e84b0a6bf908798eb5a64d0f529e66872"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_010",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "b9c96fd588114272243ca0a9815a9a4b3efd9bc139b45a81e0421de1ab9755e4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_011",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "d2297e7a3d55b0415cca0701ae5c5c7d7923eada13dfa734ec125abe07a389ba"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_012",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "1546809f62691290f0733ccfd4ab5622a2d640ea3a00118f2a27070df0564bdf"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_013",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "c960bc5e064db8fc606a9e42682aa92103149bf53086dea1e4b2c5db9e2e7225"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_014",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "fc74ab5b79d38d20010cd44d0e4eccfa286c34f2e43b10fe2e4143a210c1c7e4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_015",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "699985bfa189c9c55908b768c84d6d96fa650084650685681ba291601e3efd52"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_016",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "cccdd6075e77250eff8ae6fc09d37564041a3016e8375a03056e1ebb31d4e86b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_017",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "3bf4ad9e8686886a60f9e567a5e13cc150ff0360af430c6fd44f65a9932aa51c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_018",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "1f2d8db7732172ab512c5d050ca0987fc9f95b517a7e3a4742dd4c456642f536"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_019",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "6b1279f2c5628201fb94a9930ce931f311d5825c30e9c85ba60fdcca723832da"
+    },
+    {
+      "atlas_record_id": "atlas_donor_financial_calendar_projection_020",
+      "primary_cohort_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "source_record_sha256": "0c0b9166443fb803db816e58a76de36e3c034ff39a14b76a21dc0209b86cc663"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_001",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "6a7ae4ac38828b749bbaf5a9657b8acadce20ee6798c02250ef8a47b532f3f7e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_002",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "8de03d28d811a146efcdab66bbebd60c623598a6c56031068166daf3fd4f471a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_003",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "912ec7703ab08750b7ea253cea5c7080966c3453eb62b7aeb02778c1505b6bac"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_004",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "e57f6d3122ca3b1ff5ee138d2b9964caf4ba95aafc4a05684d7a637018d9311d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_005",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "4220d4f4b789f321c4cd2e2ed3f3afc8a5211e26940c32684c97d4567d9434d7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_006",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "b6e870f6b6c42707477f294b114e3b51a3753d805f8b594bcd04bfb3cd39c7b1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_007",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "3eb92eac5aa74a2dd3d148c7674b95cf3344368214e3c60f73c2795cda4cffac"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_008",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "3b452b4e9b473d53bc674128d0ba607893c85f8dab0fe93f37e7eafbd19c83b8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_009",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "1f30cc16f32970da8d59170026f84c6bedcc6299d9146253ebf7645822246a3c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_010",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "3968b0f1e7bd500eb93fdacddb4953d2e16a8823dedd94362e52c5f102a090a6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_011",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "312c94c565f71230ce8f0e277125c4a4d11ecafcb9f703a509398a4301cd9769"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_012",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "98e828fab4f62774d5a10563cffe73cd681daaff03ae08d8228b67d1b80809cd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_013",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "97027ba2d1a85e481e06b7449050c5b933191365843757154531697e1d775535"
+    },
+    {
+      "atlas_record_id": "atlas_donor_context_scanners_014",
+      "primary_cohort_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "source_record_sha256": "c272272c8c9390bfe2667c56615828780d47f7fcd4ab5dc0e2092b090f1593d8"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_001",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "6212a7ffb07de4248231481b6aaf2b065ebde0f960c396303244f35e89435447"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_002",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "42e133412399847ddafcdafcf4f9b37fb890dc1037b1be18d7740b4556f99099"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_003",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "85d2615e668c9cfd446dd97342add3addc1474e55201eb7ac26057e5c770fecb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_004",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "4a997a574cb47412c1e6f6980191c959ab4daf71cc5a98a1a28b87a9f210388b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_005",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "34b6a5dab761d785bada7f5b8a4dc19a024b6785cbdf9cf5a0e5cc24b5d3050d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_006",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "e41f21ca71d97f46f1db932138cddcc1bc792251d2a3a78324ec8dd91e0aa25a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_007",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "53c39b48119402e9dabc72a64d172725fade7ed33b0af88f10494f80f8e62a0b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_008",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "7130e33a907414109a855a480ad9b9de59a14ba424672ea5688e1dd5529cb577"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_009",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "b2c932b6e73d9c73bc18054032201ebb234b219edd2955aaf9c4a01e9ac773aa"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_010",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "7ee5e5594981f838bcd8427d6a3ec317c5da398b4fc5b35f514d68a0eab435d1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_011",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "2094914ae920b64d1cfbe6db1f6d83ab07361a633b1744b01c8619fd244ae314"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_012",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "64729b590cb3249438cb29d391755dac714a734ae7cd9d58072ad5f2da55b497"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_013",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "362ad1ec63339bb7061a966745d644689fe5e152b631c6bd467b6367f81f7470"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_014",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "7423bbfb762255367653074b6bd1a4c9a75fb74b3d83ae9c03e9b24517ee6452"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_015",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "a79bbd5be96900b385053b9e9c3e19ae83054c38181cb2558d7f08d65517f6d4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_016",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "1b88bba366016b6072ad2015d700cb3b1aa330b8850853546f1c94ea4677b531"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_017",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "2e3b3535cafe1833a2f0df054d747e685948e8303df991e11af6de32d8d35347"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_018",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "4dd1af13ebcd82a95992bac172eafaf4bfb960f20e47c19fbc342e30de532df7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_019",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "9d8d47aa1005db040e45533730c71d9048adc9a7c7bd67a9db564e0d19fa6412"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_020",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "c951a6524e9566403fff350cc78acbe95858a9325970709b15c32d872fe764be"
+    },
+    {
+      "atlas_record_id": "atlas_donor_tranche_a_service_021",
+      "primary_cohort_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "source_record_sha256": "ddfce27e4f62b58fbf165d64a03c746ed224b1bc9b1255dbb66d96f6d9b56d6f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_001",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "fb0c3d6ab230f4cfdfeb2d2fdbfd48ad637ac4fd4e9b9b2d6e718428755ed9fb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_002",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "66708886d06eb6d60a46020929bdde61000b135b84689b19ad76a60098daf065"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_003",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "1e268b820e830d310489e0f2b5a97a5887dfe2bd5c4468985eaa92548a297b06"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_004",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "bbe7e7a1a2c8e18e2f391b303ad0847935a9c2a2a94955902c07e1491f4df6ac"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_005",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "415faf21a6f3e90b251cda4d7c985ad6d27ca881a332c2ca478c520dd98d66ea"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_006",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "d0abf13d2d953d2202eb3506bbd5f09f36f0ba5381174d97d6fa834aad6f7096"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_007",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "4631903f62a4c90aa88aeb145373bd582bf4c20d775fdc9d8c1aa317ce520523"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_008",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "9bbdb3907e8b766957e8f9c38ae934706fa3bee2a26c43a7810a920f7718690f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_009",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "096e61a202b5eb29dcdbb06035aafe996ee61366e53debee56617ad3cdc0cde3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_010",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "3b664ee667acd790adb77f43679b869ceb766fc5752c7eb98ce479afb42fcb75"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_011",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "91c9945cda9b2b46e938336c262943d809a688ce51b8593fed2d500ed64c8b24"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_012",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "0db5f28387455367d5ed03dd8450813b00a311417175365d956c897fe75791a4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_013",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "9a2cdd823872dc802ffed75b82a972df16e6f3e41392dee07c719472e101cb37"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_014",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "6ac3bab566e7da7566cf2c94d4386e40fdd3cd63d730322b8fc864ee0f87dddd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_015",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "23e64de18cf7ca64678d04123739eb78d43919853e6e601d7aa458b0798b2801"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_016",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "8ccd2750ab3a5c0b542676bbc2eb07a6ed0db66e5abec4d3ac6ef97a89d74336"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_017",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "ebbfbd151a6c7236784c9faba308711e996a27f822e5d78d24b16f6c26339071"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_018",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "1326faf289428845f6fa7c9b466ad2c563e551b5e71060569a1765f84a40a541"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_019",
+      "primary_cohort_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "source_record_sha256": "6ea04dfa6466658cfa917d838b9c621d7403e3048eaae045806e7c3c09736e27"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_020",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "bcee80aae193184083a02281e97bc0caede18d66f5ded6e28073487e8c35d127"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_021",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "1e0655ced98de5cef38fe9d92a462ecc689a9b3481c3465d2135f8f043f44209"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_022",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "4b7a925f9398fe78cb923371e8c8cb7fb34d72eab1db184a9a816c67e46f714d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_023",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "ac436e86ca9c42db3c66270c402245565c9519397ddc0fd541acd21ab11d9031"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_024",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "6afea9142d827e7c0bba5fb82ce7d14a1142fd1bfa85bab145890824d0af715b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_025",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "e345b201cdacabca2b03fec11073f0c2df0a2eb9c503ac302ff2a1b815b5bf0a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_026",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "5c73652d6c6fd51bc2b6dc740ab81bf9fe6dec2bbc0bb052844b0c1ec7975d31"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_027",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "8fd9363e33ee7917f7a8d9f7a190045b25e188316fce7ad60edbd02462cecca1"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_028",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "8fd345c0de37bdcf5c89ce7a442d852f49d6f649ed09c788e7d1e9190f6845cf"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_029",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "a6e31255c286aaa7edc90534cb970c580f739fc176f32fc8b851e24b2d7bf7e5"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_030",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "0cd1dc7c9bcd3adc59fe3ab77d9f08c56ffbfd7d51c7849cc4078384629bc313"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_031",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "194c6dec1fb4f5a30ae1e776cfbd635b5c7646cc454f11950dce3ff8499b62bd"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_032",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "43d125ebfb52140a67a89e1936bffa5ee3b7a827ac6d8aea232a45349dd8786c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_033",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "d8a6a316b1abc4b09108b41afa3e8e6f11fc68958e2dbc0dc49dc99f45a63531"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_034",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "861a25ee00dcc3fbcde7f93583175dc9ddbab77922697781289a1d0e4087531a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_035",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "50a74d76ec1face56f21eaaba3f5a5e38fdcd0244bf62e2f7f17eaca644818a6"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_036",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "2a19a32adc9b81945256b95fe9a62834e1f80aa4c966c98c5fc23d795ede58f3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_037",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "954174ae389b4d450522ccfeb0913a166cdfe57a36b67edc775af6746b124c4b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_038",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "901a6a9b2017b38257ed254e96ea097782234bdc43f2f6e998d0b5ab93c14383"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_039",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "4be1e14a34836d91abd86e490f42035c7a896ecbd8a1455d7ca0880b83874b89"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_040",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "a5b20d3002538987212c49d88da8d9128e94877dc1a648cde328694363776cef"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_041",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "1585ed3067b5855577fdf5f2f231eecfefb20ef4ef49b16010804878d8e536f0"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_042",
+      "primary_cohort_id": "SC-API-RESEARCH-EVALUATION-276",
+      "source_record_sha256": "caec057b7d22eb24bebccedb72d546cee2dd7cb1f500c751575c3c91cdac54ad"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_043",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "0d571ee08846464419cf61048083337633f29073851a30298cc224da887e298c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_044",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "c7db9e751ae60d928878a18cc101e691807cc29eb4398211b1b2e26e0b2814e9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_045",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "6e467f2741ab0d6a735f936c52fb81d7f2271f4ff84744409b8aaf9282bdda55"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_046",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "f016597a6086b17e8d2ca12259e43182c8e99a7c0473f99a0c782ffb3f7364a9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_047",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "e5715861b68e3c658e6615b579b47604fd619e343ada35f3ef30f557b9cea126"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_048",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "db330fe81c7d2558f68b4295939f9a4525ba1c51478885e6cbdd1a1a542c5169"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_049",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "abf307338d2cc745d760c1130e189f292c5e59dea554efb6952dec482a7f2869"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_050",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "71036c24382b7b8654611538fcda1c98b67550fa4b63c69b2628808c78419421"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_051",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "c6093af9030343832f48bbf516e7aac8eedd4310266ea5a467872ffec55c0ac9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_052",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "ce0b2a373b928e8cbf4dcbd45429771aece530bdaf07574cdfe2ae2f11c456ca"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_053",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "c54b5c5334fe341c72b00b7f7e65f7f867bd441c84e39af2b026e50fce2c0738"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_054",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "040b6eff9964e73d0036f308d03281b1ed93219554a008adeda49567562fff80"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_055",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "de02a8e01162cfbbbd1dd83e234351f72c3c079cb6dfc83732ff7ca3f35c0489"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_056",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "a01091bc0b5b937cf33e7a3d4cb49bb5dd123a55a3779b80fd9affd70866a140"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_057",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "350628ac090902b3def7a7a8ddadbc58dc322a0da9c3324e34cb1c969249b594"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_058",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "1b23e9131d8f078329b240456ab815fc74b7f3826e2f5ad4b817c3300f1936a2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_059",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "3d4e8a9449c495b7dabc1b777dfe803693101e34c192f2932e285b47c4f8197f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_060",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "c59e89c8e24992863bd011e7e8e1fb00cf52cdfd8421f8ae66e111ea9c9de5a2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_061",
+      "primary_cohort_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "source_record_sha256": "a70b4fae9dd175b98fc5fba156eb6ef0308fc5cf734c48fde1adde577edaaeed"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_062",
+      "primary_cohort_id": "SC-API-EVALUATION-VERDICT-MAPPING-278",
+      "source_record_sha256": "c1c4a9b6604ced43710c64121bd5c7c2de38ee4fe8a597ef01036c7605175eac"
+    },
+    {
+      "atlas_record_id": "atlas_donor_api_app_063",
+      "primary_cohort_id": "SC-API-EVALUATION-VERDICT-MAPPING-278",
+      "source_record_sha256": "6ccb7f506c7ff4b53a74b00f29c4296dd3c5e97465f10122d783807edb805f0a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_001",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "199e672657175cbd5feffec6df569c7f46d9e58031400f6be2487a8a423dea5c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_002",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "3d34a5b17419679d0abc3d7b2c25ad86679619a0c557e261c81a2f47198a1422"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_003",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "f288fd38182768efb02a2487d20283db36360d90af8a89503b9b67179e3b029b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_004",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "5b18fb66abde3f18b1de04dc2ded0cf8c7a0f2a5daa20272ae1a6e9988b3c86e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_005",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "413d3ec37bd3905405e80088399770b9c3cd13b124548562561c3ee82f87ba44"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_006",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "9736f011348e349bebfda2bd71e1c9037cd904682664a5619299a894cc9ef131"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_007",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "552cab0a263655dc3593f45b7e97e34d74559974d2b24e7aa378b5dfcc71ab7c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_008",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "5104bc625b1737b0c972823ca8cbd36e85ccfd1c8679f36ca014f7ef13aa6607"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_009",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "09ef8e5ebebf3fc3813ac052828cb955a3e96d04152c545a076baf4eadbf633a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_010",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "a56b8d2294048006f9a0d58b2c217cfcde4d69e90b24dfd5405eea69eabd16ee"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_011",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "f58e745b1da31b88442c37cb80e706cea2efedad895d117a8cf21655aa36130b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_012",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "cab1eab444571b2b550937fe61a680517839d2ad3c78cc160a2463993182b246"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_013",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "ea40309730aa277508f7dd61065ec74b238ce912922489fafc2cecc2210bbe55"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_014",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "0212619e6b7e82ac11363d95b1624f7bed9491ae6574373126e46c5e300c362f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_015",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "e8effd6586a95ada2f00f5c5d73e369cc97c39460ae5b5fd6a5a9d36185296f3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_016",
+      "primary_cohort_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "source_record_sha256": "2c853d5d740542012faa68e8c7e1897a3fe473e951e611f7e97b684733d2fd76"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_017",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "8cf4013d91a56d6996518595960a1b4eff1f18e793a612daed5ac6001c362aa9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_018",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "a03683ceb0e83b70ffecd946ec33f18d42db7564e9bd93d5fefdce38307671e3"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_019",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "e549318c91762c48d6cd8a1687b00e39f48029143ecb13ec78ec56194ccb58a2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_020",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "424b08a590f1c4edf3135d812a6f28ba5574d4a60bd1e9c04c95bd21365572e9"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_021",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "4bfc06b5875b104cf9e37fde1a9c757fff9d0a4f983f3800374bcb4b29103b4b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_022",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "2c2c8bf1131c22c527ab60cc1d456c24a35403cfc17b44a138836a55c57b0f7d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_023",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "85f8f7a5543ba15299b94f2f93867817f79fd87b34947e328060a8fc48f5d30b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_024",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "8e9784c2979c07f2543fdfee1631dc90150cfa4a04cb20f074657fddad833110"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_025",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "e7a7444bcb3ac50f33ac44f9e92ad8dd4216425c18ea138a7f23ad29e129637f"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_026",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "f3ecb8c783213d9b0a727e720882a47383f461dde0c95160cab14b5951542763"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_027",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "b9acfca9be1e5f8dfa4106de4856ab8616c482762443019611902278bfa3225b"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_028",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "231d681dc4847e89c4b7df682badbd0534a778b7f83b2f2c09c494f2ed80524a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_029",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "1e7dc44eb51f8564496d90eca68e33e76876b259ee4a67d9730601878c75cf02"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_030",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "ce2f7bbb120560b4dc494a9f3e7a1e94fe09682bed5645e2eb7030f0c7a569fb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_031",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "17aade44e5faee9b80231a99c22c0696a9f600c40422533b9f9e3bd73b52d40c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_032",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "1ecf63904e1bb232ec2b3575507944bf5bdc8644ac96b396607a8980e65987e4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_033",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "022950845c4029322d990d72e79ce792fff89ff931837bd96907a8248b759dc2"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_034",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "b6231fbfb67d03bbe855735ec38c98d9332ab7cd2fb146e32d2192c7650b9cf7"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_035",
+      "primary_cohort_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "source_record_sha256": "9a3c2a6a1e7680fdd533cd20d56a3340191debd362e0b5df2b36eb515451b8cb"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_036",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "29116b48f658538cde1d1179c75bd996feff1940ce5c66aa303befb5838906ae"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_037",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "489c235e8c7f66b3c74fea9f2bd4a7398c686e29c7bbe5f9079627988218118d"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_038",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "075454968753778763db810ac058d5198fc457ddf955e7cc2011f199dd824e55"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_039",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "85f5fe6b621d6243f6630d99f0534ee15a7dcab94b0fe25d96467e2ca566496a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_040",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "ad7909a36039abf245d35c712fc25056193413f1f40b499b0f1405f7329e41a4"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_041",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "3819eafe9227be09da2e3aea9b37c6315f7ffb99bb50e611c05a7c634484639c"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_042",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "62a72e016ec3cc3cedfda8bb00581aacfb17b71bdd83e0d75b45b89acb3eb72e"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_043",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "6ffaec1e8dcb3b64ba3458479484cf1fe7a720a180f8abd73f7ab6db651ec838"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_044",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "0227004912084b900d93426429c87882994ff1c8df623905b8b22e8a4d7fa51a"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_045",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "e203da74322b508b6b75355ffb86f50a4a9d8aca4bd5c5b8bec321b288803965"
+    },
+    {
+      "atlas_record_id": "atlas_donor_real_data_loader_service_046",
+      "primary_cohort_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "source_record_sha256": "43e2e6e1624c90797695e90b45ddd253e025457d40f21f1c1363aca892dc7289"
+    }
+  ],
+  "reference_rebase_summary": {
+    "mapped_rows": 174,
+    "noncurrent_rows": 24,
+    "exact_rows_retained_in": "m01_reference_rebase_subset.tsv"
+  },
+  "work_units": [
+    {
+      "work_unit_id": "D-001",
+      "sequence": "1",
+      "requirement_id": "C-001",
+      "boundary_id": "B01",
+      "gate_b_unit": "B01.1",
+      "normative_proposition": "5.1; docs/03.1_DOMAIN_MODEL_WORKING.md:13-45; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:13-42",
+      "required_behaviour": "Prove every admitted external family either enters through this contract or through an explicitly different source-owned contract; reject fabricated source identity and forbidden authority recursively.",
+      "current_observed_behaviour": "Validates the interface as offline-only, rejects credential declarations, recursively rejects forbidden authority keys, and deep-copies accepted payload material.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_market_adapter_enforces_external_source_authority_recursively; tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_options_adapter_enforces_external_source_authority_recursively",
+      "failure_summary": "Failed: DID NOT RAISE <class 'ValueError'> | Failed: DID NOT RAISE <class 'ValueError'>",
+      "likely_ownership_boundary": "src/nvda_desk/contracts/external_source.py:10-179",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "gate_d_open_immediately_executable",
+      "prerequisite_units": "none",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "yes",
+      "dependency_effect": "none",
+      "accepted_module_routes": [
+        "M01"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_immediately_executable",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-002",
+      "sequence": "2",
+      "requirement_id": "C-002",
+      "boundary_id": "B01",
+      "gate_b_unit": "B01.2",
+      "normative_proposition": "5.2-5.3; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:44-77",
+      "required_behaviour": "Require and preserve source/capture identity, test explicit section precedence, test that fallback inference cannot silently misclassify unrelated keys, and prove no cognition bypass.",
+      "current_observed_behaviour": "Selects explicit market/options sections when present; otherwise treats the full payload or selected price/DTE subset as the section; constructs RawBundleProvenance and requires timestamp or date truth.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c002_raw_bundle_rejects_untyped_fallback_shape_instead_of_reclassifying_it",
+      "failure_summary": "Failed: DID NOT RAISE <class 'ValueError'>",
+      "likely_ownership_boundary": "src/nvda_desk/ingress/raw_bundle_loader.py:11-128",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "gate_d_open_immediately_executable",
+      "prerequisite_units": "none",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "yes",
+      "dependency_effect": "none",
+      "accepted_module_routes": [
+        "M01"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_immediately_executable",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-003",
+      "sequence": "3",
+      "requirement_id": "C-003",
+      "boundary_id": "B01",
+      "gate_b_unit": "B01.3",
+      "normative_proposition": "5.1, 5.5",
+      "required_behaviour": "Prove the adapter composes the authoritative external-source contract and preserves identity/temporal lineage.",
+      "current_observed_behaviour": "Copies snapshot_id into the mapping, decodes it as an API raw bundle, prepares a dataset, returns primary_snapshot.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_market_adapter_enforces_external_source_authority_recursively; tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c001_c003_options_adapter_enforces_external_source_authority_recursively",
+      "failure_summary": "Failed: DID NOT RAISE <class 'ValueError'> | Failed: DID NOT RAISE <class 'ValueError'>",
+      "likely_ownership_boundary": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py:1-23",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "gate_d_open_dependency_held",
+      "prerequisite_units": "D-001;D-002",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "no_dependency_held",
+      "dependency_effect": "implementation held until every prerequisite unit is completed under its own proof envelope",
+      "accepted_module_routes": [
+        "M01",
+        "M03"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_dependency_held",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M00",
+        "M01",
+        "M03"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-007",
+      "sequence": "5",
+      "requirement_id": "C-007",
+      "boundary_id": "B01",
+      "gate_b_unit": "B01.7",
+      "normative_proposition": "5.3",
+      "required_behaviour": "Prove a new signal family can be added through a registry/adapter without changing unrelated preparation or cognition, and preserve timestamp/source identity.",
+      "current_observed_behaviour": "Validates typed observation/snapshot structure, deep-copies list fields and rejects declared trade-decision side effects.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_c007_raw_signal_contract_carries_source_observation_time",
+      "failure_summary": "AssertionError: assert ({'observed_at_utc', 'source_time_utc'} & {'payload', 'scope_id', 'signal_family_id', 'source_id'})",
+      "likely_ownership_boundary": "src/nvda_desk/contracts/market_substrate.py:8-39; src/nvda_desk/upstream/market_substrate.py; src/nvda_desk/upstream/raw_signal_ingress.py; src/nvda_desk/upstream/raw_signal_coverage.py",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "gate_d_open_immediately_executable",
+      "prerequisite_units": "none",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "yes",
+      "dependency_effect": "none",
+      "accepted_module_routes": [
+        "M01"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_immediately_executable",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-015",
+      "sequence": "9",
+      "requirement_id": "C-015",
+      "boundary_id": "B04",
+      "gate_b_unit": "B04.2",
+      "normative_proposition": "5.2, 5.5, 5.15-5.16",
+      "required_behaviour": "Require source artefact IDs/fingerprint and preparation policy/schema versions; prove detached copy and replay equivalence.",
+      "current_observed_behaviour": "Stores source_kind, transport, optional source_snapshot_id, source_sections, alignment_policy, runtime_bar_time and derived field names.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance",
+      "failure_summary": "AssertionError: assert False",
+      "likely_ownership_boundary": "src/nvda_desk/preparation/runtime_preparer.py:14-24,291-321",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "closed_gate_c1_proof_incomplete",
+      "prerequisite_units": "D-012",
+      "proof_authority_status": "closed_gate_c1_proof_incomplete",
+      "implementation_executable_now": "no",
+      "dependency_effect": "proof authority closed; implementation prohibited",
+      "accepted_module_routes": [
+        "M01",
+        "M03",
+        "M12"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "closed_gate_c1_proof_incomplete",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01",
+        "M03",
+        "M12",
+        "M13"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-025",
+      "sequence": "14",
+      "requirement_id": "C-025",
+      "boundary_id": "B07",
+      "gate_b_unit": "B07.1",
+      "normative_proposition": "5.2, 5.4, 5.7",
+      "required_behaviour": "Preserve current source-time/timezone tests and add policy/version tests for the accepted temporal classifier.",
+      "current_observed_behaviour": "Converts UTC observation to supplied timezone; applies fixed clock thresholds; tags active windows; selects earliest future window if next event absent.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them",
+      "failure_summary": "KeyError: 'temporal_policy_version'",
+      "likely_ownership_boundary": "src/nvda_desk/services/temporal_context_service.py:14-41; src/nvda_desk/domain/temporal/session_clock.py:7-50; src/nvda_desk/domain/temporal/event_windows.py:11-30",
+      "prohibited_unrelated_changes": "Do not weaken tests, broaden authority, invent blocked product meaning, or modify unrelated boundaries.",
+      "required_validation": "Targeted normative tests first; affected existing tests; governed-tree hash; then full admitted suite.",
+      "status": "gate_d_open_dependency_held",
+      "prerequisite_units": "D-009",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "no_dependency_held",
+      "dependency_effect": "implementation held until every prerequisite unit is completed under its own proof envelope",
+      "accepted_module_routes": [
+        "M01",
+        "M02",
+        "M05"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_dependency_held",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01",
+        "M02",
+        "M05"
+      ],
+      "programme_treatment": "retain traceability; regroup under module-local programme",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    },
+    {
+      "work_unit_id": "D-049",
+      "sequence": "25",
+      "requirement_id": "C-004",
+      "boundary_id": "B01",
+      "gate_b_unit": "B01.4",
+      "normative_proposition": "docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:17-91",
+      "required_behaviour": "Implement typed options evidence and cognition-input authority with mandatory identity, versions, observation time and semantic fingerprint; reject generic mapping authority.",
+      "current_observed_behaviour": "Options mapping currently consumes selected primitives from a generic mapping and exposes no typed evidence envelope.",
+      "failing_test_nodes": "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority",
+      "failure_summary": "Missing OptionsEvidenceEnvelope; current mapper accepts an untyped generic mapping.",
+      "likely_ownership_boundary": "src/nvda_desk/contracts/options_flow.py; src/nvda_desk/cognition/ingress/options_mapper.py",
+      "prohibited_unrelated_changes": "Do not weaken admitted tests, widen domain authority, invent unstated policy, or modify unrelated boundaries.",
+      "required_validation": "Targeted reopened Gate C1 nodes; affected existing Tier A; Tier B shadow proof; aggregate admitted proof route; governed-tree hash.",
+      "status": "gate_d_open_dependency_held",
+      "prerequisite_units": "D-003",
+      "proof_authority_status": "proof_authority_ready",
+      "implementation_executable_now": "no_dependency_held",
+      "dependency_effect": "implementation held until every prerequisite unit is completed under its own proof envelope",
+      "accepted_module_routes": [
+        "M01",
+        "M03"
+      ],
+      "traceability_status": "retained_implementation_obligation",
+      "execution_order_rule": "selected within active dependency-ready ownership module; numeric sequence is not authority",
+      "historical_status": "gate_d_open_dependency_held",
+      "current_scheduling_status": "not_independently_scheduled",
+      "primary_modules": [
+        "M01",
+        "M03"
+      ],
+      "programme_treatment": "split source-admission and preparation obligations beneath M01/M03",
+      "mandatory_positive_obligation": "",
+      "historical_traceability_status": "preserved"
+    }
+  ],
+  "conformance": [
+    {
+      "unit_id": "B01.1",
+      "boundary_id": "B01",
+      "behaviour": "External source interface declaration",
+      "normative_requirement": "Declare which external source family and offline ingress mode a payload belongs to before native preparation, while preventing network, credential, trade, sizing or persistence authority from entering through the payload.",
+      "normative_refs": "5.1; docs/03.1_DOMAIN_MODEL_WORKING.md:13-45; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:13-42",
+      "test_evidence": "tests/tier_a/adapters_ingress/test_external_source_contract_surface.py; tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py; tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py",
+      "test_assessment": "partially_aligned",
+      "observed_code": "Validates the interface as offline-only, rejects credential declarations, recursively rejects forbidden authority keys, and deep-copies accepted payload material.",
+      "code_evidence": "src/nvda_desk/contracts/external_source.py:10-179",
+      "conformance_disposition": "Local validation and copy boundaries reflect the frozen intent, but market/options/calendar adapters do not consistently enter through this carrier, so it is not the authoritative composed ingress.",
+      "gate_c_action": "Prove every admitted external family either enters through this contract or through an explicitly different source-owned contract; reject fabricated source identity and forbidden authority recursively."
+    },
+    {
+      "unit_id": "B01.2",
+      "boundary_id": "B01",
+      "behaviour": "Raw market and options bundle decode",
+      "normative_requirement": "Collect one already-obtained market snapshot and options surface into an upstream typed bundle while preserving source temporal truth before preparation.",
+      "normative_refs": "5.2-5.3; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:44-77",
+      "test_evidence": "tests/tier_a/ingress/test_raw_bundle_loader_surface.py; tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py; tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py",
+      "test_assessment": "partially_aligned",
+      "observed_code": "Selects explicit market/options sections when present; otherwise treats the full payload or selected price/DTE subset as the section; constructs RawBundleProvenance and requires timestamp or date truth.",
+      "code_evidence": "src/nvda_desk/ingress/raw_bundle_loader.py:11-128",
+      "conformance_disposition": "Source temporal truth fails closed, but raw-capture identity and durable capture do not exist. Fallback section inference can blur source semantics.",
+      "gate_c_action": "Require and preserve source/capture identity, test explicit section precedence, test that fallback inference cannot silently misclassify unrelated keys, and prove no cognition bypass."
+    },
+    {
+      "unit_id": "B01.3",
+      "boundary_id": "B01",
+      "behaviour": "Market snapshot adapter",
+      "normative_requirement": "Provide a convenience adapter from a raw mapping to the first prepared runtime snapshot.",
+      "normative_refs": "5.1, 5.5",
+      "test_evidence": "tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py; tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py",
+      "test_assessment": "insufficient",
+      "observed_code": "Copies snapshot_id into the mapping, decodes it as an API raw bundle, prepares a dataset, returns primary_snapshot.",
+      "code_evidence": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py:1-23",
+      "conformance_disposition": "The adapter reaches preparation but does not validate through the declared external source interface and cannot establish provider substitution or source-issued identity.",
+      "gate_c_action": "Prove the adapter composes the authoritative external-source contract and preserves identity/temporal lineage."
+    },
+    {
+      "unit_id": "B01.7",
+      "boundary_id": "B01",
+      "behaviour": "Raw signal family and market substrate carriers",
+      "normative_requirement": "Represent raw or minimally derived market observations by signal family before preparation, without trade-decision side effects.",
+      "normative_refs": "5.3",
+      "test_evidence": "tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py; tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py; tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py",
+      "test_assessment": "partially_aligned",
+      "observed_code": "Validates typed observation/snapshot structure, deep-copies list fields and rejects declared trade-decision side effects.",
+      "code_evidence": "src/nvda_desk/contracts/market_substrate.py:8-39; src/nvda_desk/upstream/market_substrate.py; src/nvda_desk/upstream/raw_signal_ingress.py; src/nvda_desk/upstream/raw_signal_coverage.py",
+      "conformance_disposition": "The carriers constrain local authority but are not the types consumed by raw_bundle_loader/runtime_preparer, so the intended family extension seam is not end-to-end.",
+      "gate_c_action": "Prove a new signal family can be added through a registry/adapter without changing unrelated preparation or cognition, and preserve timestamp/source identity."
+    },
+    {
+      "unit_id": "B04.2",
+      "boundary_id": "B04",
+      "behaviour": "Prepared lineage record",
+      "normative_requirement": "Explain how one prepared snapshot was formed from raw sections and which derived fields were added.",
+      "normative_refs": "5.2, 5.5, 5.15-5.16",
+      "test_evidence": "tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py; tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py",
+      "test_assessment": "partially_aligned",
+      "observed_code": "Stores source_kind, transport, optional source_snapshot_id, source_sections, alignment_policy, runtime_bar_time and derived field names.",
+      "code_evidence": "src/nvda_desk/preparation/runtime_preparer.py:14-24,291-321",
+      "conformance_disposition": "It truthfully describes preparation mechanics but cannot prove which original artefact bytes and policy versions produced the result.",
+      "gate_c_action": "Require source artefact IDs/fingerprint and preparation policy/schema versions; prove detached copy and replay equivalence."
+    },
+    {
+      "unit_id": "B07.1",
+      "boundary_id": "B07",
+      "behaviour": "Temporal context evaluation",
+      "normative_requirement": "Convert source observation time and scheduled event windows into a coarse session state, active event tags and next-event time.",
+      "normative_refs": "5.2, 5.4, 5.7",
+      "test_evidence": "tests/tier_a/temporal/test_source_temporal_standard_surface.py; tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py",
+      "test_assessment": "partially_aligned",
+      "observed_code": "Converts UTC observation to supplied timezone; applies fixed clock thresholds; tags active windows; selects earliest future window if next event absent.",
+      "code_evidence": "src/nvda_desk/services/temporal_context_service.py:14-41; src/nvda_desk/domain/temporal/session_clock.py:7-50; src/nvda_desk/domain/temporal/event_windows.py:11-30",
+      "conformance_disposition": "Source-time and scheduled-window handling are explicit; phase logic is coarse and clock-only.",
+      "gate_c_action": "Preserve current source-time/timezone tests and add policy/version tests for the accepted temporal classifier."
+    }
+  ],
+  "normative_packages": [
+    {
+      "package_id": "N-01",
+      "primary_requirements": "C-004",
+      "gate_b_units": "B01.4",
+      "decision_owner": "typed options contract",
+      "planned_addendum": "docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md",
+      "status": "accepted",
+      "gate_d_effect": "C-004 normative authority frozen; Gate C1 may reopen; Gate D remains suspended",
+      "next_action": "derive executable Gate C1 authority for C-004 from N-01"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "source_id": "SURFACE-5.1",
+      "target_id": "M01",
+      "relation": "allocated_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SURFACE-5.2",
+      "target_id": "M01",
+      "relation": "allocated_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SURFACE-5.3",
+      "target_id": "M01",
+      "relation": "allocated_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "M01",
+      "target_id": "K01",
+      "relation": "owns",
+      "dependency_class": "shared_foundation",
+      "gate": ""
+    },
+    {
+      "source_id": "M01",
+      "target_id": "K02",
+      "relation": "owns",
+      "dependency_class": "shared_foundation",
+      "gate": ""
+    },
+    {
+      "source_id": "M01",
+      "target_id": "K03",
+      "relation": "owns",
+      "dependency_class": "shared_foundation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-SURFACE-BOUNDARY-025",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTION-TYPE-VOCABULARY-026",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-RAW-OPTION-SNAPSHOT-027",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-SURFACE-PROJECTION-028",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-VOLATILITY-UNIT-BOUNDARY-029",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-VOLATILITY-TYPED-ALIASES-032",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SESSION-CALENDAR-BOUNDARY-040",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-VENUE-TIMEZONE-VOCABULARY-041",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SESSION-CLOCK-COMPATIBILITY-045",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-HISTORY-BOUNDARY-066",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-HISTORY-VOCABULARY-067",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-HISTORY-OBSERVATION-LINEAGE-068",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-HISTORY-PERSISTENCE-RECEIPT-069",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-TEMPORAL-EVENT-WINDOW-VOCABULARY-070",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-TEMPORAL-EVENT-WINDOW-CONTRACT-071",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-TEMPORAL-STATE-PROJECTION-073",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OVERNIGHT-MARKET-EVALUATION-079",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-CONFIG-SCHEMA-BOUNDARY-089",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-CONFIG-AUTHORITY-WRAPPERS-093",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PRECURSOR-MARKET-SCHEMA-101",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PRECURSOR-SOURCE-SCOPE-102",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PRECURSOR-FIELD-VOCABULARY-103",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PRECURSOR-STITCHING-106",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PRECURSOR-RUNTIME-CARRIAGE-107",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SLV-BASELINE-VALIDATION-110",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SLV-MARKET-EVIDENCE-111",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SLV-MARKET-VALIDATION-113",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-DATASET-SCHEMA-SEAM-146",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-DATASET-PROVENANCE-147",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-DATASET-RAW-BUNDLE-148",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-DATASET-PREPARED-OPTIONS-149",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-DATASET-PREPARED-SNAPSHOT-152",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-TAXONOMY-VOCAB-155",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-OPERATIONAL-CRUD-158",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-SOURCE-VOCAB-159",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-PROVENANCE-NORMALISATION-160",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-FINANCIAL-CALENDAR-IMPORT-177",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SERIAL-COGNITION-CONTRACTS-187",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-SESSION-CLOCK-PROJECTION-195",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-RUNTIME-ENVIRONMENT-CONFIG-197",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PACKAGE-ENTRY-PLUMBING-203",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-API-DEPENDENCY-WIRING-207",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-CLI-DEVELOPMENT-OPERATIONS-208",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-ADMITTED-LEGACY-FIXTURES-209",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-PERSISTENCE-EVIDENCE-MODELS-210",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-STORE-QUERY-SNAPSHOT-216",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EVENT-INGESTION-PRECEDENCE-217",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-MARKET-SUBSTRATE-SCHEMAS-221",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-CONTEXT-SCANNER-SCHEMAS-223",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-TRANCHE-A-DETECTOR-SELECTOR-SCHEMAS-226",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-EXTERNAL-BROKER-OPENAI-BOUNDARIES-234",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-FINANCIAL-CALENDAR-IMPORT-SERVICE-238",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-HISTORY-243",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-MARKET-REGIME-CLASSIFICATION-249",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTION-SURFACE-LADDER-VALIDATION-250",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-UPSTREAM-SIGNAL-INGRESS-252",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-MARKET-STATE-PRECURSOR-STITCHING-253",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-MARKET-SUBSTRATE-WRAPPER-254",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTIONS-FLOW-CONTEXT-SERVICE-258",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-FINANCIAL-CALENDAR-PROJECTION-261",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-CONTEXT-SCANNER-WRAPPER-264",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-TRANCHE-A-WRAPPER-SERVICES-268",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-API-CONFIG-MARKET-EVENT-275",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-API-RESEARCH-EVALUATION-276",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-API-RISK-EXECUTION-REVIEW-277",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-API-EVALUATION-VERDICT-MAPPING-278",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-REAL-DATA-INGRESS-SANITY-285",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-OPTION-DERIVED-FEATURES-286",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "SC-INTRADAY-DERIVED-FEATURES-287",
+      "target_id": "M01",
+      "relation": "distributed_to",
+      "dependency_class": "allocation",
+      "gate": ""
+    },
+    {
+      "source_id": "M01",
+      "target_id": "future_provider_adapter",
+      "relation": "may_extend_to",
+      "dependency_class": "optional_deferred",
+      "gate": "new authority required"
+    },
+    {
+      "source_id": "M02",
+      "target_id": "M01",
+      "relation": "requires",
+      "dependency_class": "runtime_contract",
+      "gate": "module-local gate"
+    },
+    {
+      "source_id": "M03",
+      "target_id": "M01",
+      "relation": "requires",
+      "dependency_class": "runtime_contract",
+      "gate": "module-local gate"
+    },
+    {
+      "source_id": "M00",
+      "target_id": "M01",
+      "relation": "composes",
+      "dependency_class": "composition",
+      "gate": "final composition"
+    },
+    {
+      "source_id": "M01",
+      "target_id": "M13",
+      "relation": "participates_in",
+      "dependency_class": "state_transaction",
+      "gate": "when state+receipt mutate"
+    },
+    {
+      "source_id": "M01",
+      "target_id": "M14",
+      "relation": "requires_for_promotion",
+      "dependency_class": "governance_promotion",
+      "gate": "module acceptance"
+    },
+    {
+      "source_id": "M01",
+      "target_id": "M15",
+      "relation": "requires_for_promotion",
+      "dependency_class": "governance_promotion",
+      "gate": "module acceptance"
+    }
+  ],
+  "evidence_limit": "Machine projection is traceability evidence only and does not admit Atlas semantics."
+}
