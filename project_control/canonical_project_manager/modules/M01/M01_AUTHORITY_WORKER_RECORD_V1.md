@@ -168,6 +168,7 @@ The architecture report's changed `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDG
 Direct and boundary-adjacent traceability is retained in `c_d_mapping.tsv`.
 
 - Direct bounded M01 obligations: `C-001/D-001`, `C-002/D-002`, `C-003/D-003`, `C-007/D-007`.
+- Typed-options M01/M03 boundary obligation: `C-004/D-049`. M01 owns the typed options source evidence, source/capture identity, source temporal truth, schema/version and validation state; M03 owns preparation and derivation into cognition-stage inputs. The historical proof or implementation status is not reopened in MLC-A.
 - M01 lineage/temporal contributions with downstream ownership explicitly excluded: `C-015/D-015`, `C-025/D-025`.
 - Surface 5.1 rows owned by M00 or other modules and therefore outside bounded M01: `C-021/D-021`, `C-048/D-048`.
 - Accepted normative-completion support: `N-01` for the typed options source contract and the distinctions preserved by `docs/03.2`. It is supporting current authority, not a new mutation gate.

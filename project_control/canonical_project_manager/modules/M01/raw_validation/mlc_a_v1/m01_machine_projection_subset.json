@@ -1,6 +1,6 @@
 {
   "generated_from": "Atlas_Architecture_Machine_Readable.json",
-  "generated_source_sha256": "61faabc112868da36dc7245441307332896bea93fc23ea7bc20cfd9f68960ee8",
+  "generated_source_sha256": "6d685f20dbc4c7ff217d588f896057c83182c602e9f8969092e40173b1bc8cf5",
   "authority_statement": "Formally accepted target ownership and implementation-control projection. Normative documents govern behaviour; Atlas rows remain candidate behavioural evidence until module-local admission.",
   "module": {
     "module_id": "M01",
@@ -3248,6 +3248,19 @@
       "code_evidence": "src/nvda_desk/adapters/ingress/market_snapshot_feed.py:1-23",
       "conformance_disposition": "The adapter reaches preparation but does not validate through the declared external source interface and cannot establish provider substitution or source-issued identity.",
       "gate_c_action": "Prove the adapter composes the authoritative external-source contract and preserves identity/temporal lineage."
+    },
+    {
+      "unit_id": "B01.4",
+      "boundary_id": "B01",
+      "behaviour": "Options surface adapter",
+      "normative_requirement": "Provide a convenience adapter from raw options material to a typed options-flow stage input.",
+      "normative_refs": "5.1, 5.3, 5.5; docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:17-91",
+      "test_evidence": "tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py; tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint; tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority",
+      "test_assessment": "normative_completion_contract_admitted_expected_red",
+      "observed_code": "Decodes raw bundle, prepares the primary snapshot, then maps spot/front DTE/next DTE into OptionsFlowContextInput.",
+      "code_evidence": "src/nvda_desk/adapters/ingress/options_surface_feed.py:1-20; src/nvda_desk/cognition/ingress/options_mapper.py:10-27",
+      "conformance_disposition": "Missing OptionsEvidenceEnvelope; current mapper accepts an untyped generic mapping.",
+      "gate_c_action": "N-01 authority resolved; admitted reopened Gate C1 proof remains red against untouched implementation."
     },
     {
       "unit_id": "B01.7",
