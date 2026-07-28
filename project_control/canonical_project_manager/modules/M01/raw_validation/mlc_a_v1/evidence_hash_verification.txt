@@ -1,5 +1,5 @@
 hash_manifest=project_control/canonical_project_manager/modules/M01/raw_validation/mlc_a_v1/evidence_hashes.sha256
-hash_manifest_sha256=7adb0084efb68c96151520944193ee58c4c9f6d549b8917a1a85ea68cf17bbab
+hash_manifest_sha256=aa0efbadfecf09702a6cb8a7f39490478799ddcd18c1e569aec3dc88a1cadf17
 listed_files=15
 passed=15
 failed=0

@@ -82,7 +82,9 @@ No content is admitted by payload-shape guessing, nearest-schema coercion, provi
 
 ### Output
 
-The admitted output is a typed, versioned source/capture carrier containing:
+The admitted output is a typed, versioned source/capture carrier eligible for its lawful downstream owner: M02 for admitted calendar/reference source material and M03 for other admitted source/raw-signal material. M01 preserves the source contract and evidence but performs neither M02 calendar semantics nor M03 preparation.
+
+The carrier contains:
 
 - input-family and source-contract identity;
 - provider and acquisition channel;
@@ -92,10 +94,10 @@ The admitted output is a typed, versioned source/capture carrier containing:
 - validation outcome and explicit limitations;
 - source temporal facts at original precision;
 - repository capture time;
-- typed payload variant eligible for M03 preparation;
+- typed payload variant routed only to its lawful downstream owner;
 - no candidate, risk, capital, placement, execution, inventory, close or review authority.
 
-An unsupported or invalid family remains outside governed preparation and returns a typed rejection/non-admission or withheld result.
+An unsupported or invalid family remains outside all governed downstream processing and returns a typed rejection/non-admission or withheld result.
 
 ## Identity, lineage, time, state and side effects
 
@@ -217,8 +219,8 @@ Atlas candidate rows contain mixed, stale, split and rejected intent, but they d
 ### Boundary collisions
 
 - M00 transports and composes; it cannot own source truth.
-- M02 interprets calendar semantics; M01 may admit source material without deciding calendar truth.
-- M03 prepares/enriches admitted material; M01 does not resolve prepared fields.
+- M02 interprets calendar semantics; M01 routes admitted calendar/reference source material to M02 without deciding calendar truth.
+- M03 prepares/enriches other admitted source/raw-signal material; M01 routes that material to M03 without resolving prepared fields.
 - M04 carries deliberate packets; packet identity/time do not replace source/capture identity/time.
 - M13 supplies transaction mechanics; M01 retains semantic ownership of raw artefacts/capture receipts.
 
