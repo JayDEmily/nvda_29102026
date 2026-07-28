@@ -2,14 +2,14 @@
 
 ## Amended status
 
-**Status:** `AMENDED_MODULE_LOCAL_PROOF_PROTOCOL`
+**Status:** `AMENDED_PARALLEL_MODULE_LOCAL_PROOF_PROTOCOL`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
 **Parent programme plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live position pointer:** `ROADMAP_LEDGER_V2.md`
 **Scope:** module-local normative sufficiency, test authority, proof specification, test implementation, independent validation and final consolidation
-**Production implementation:** closed during control integration; thereafter opened one accepted module at a time
+**Production implementation:** closed during Cycle 1; later opened only for individually accepted dependency-safe module slices under PM-controlled lanes
 
 This file remains the sole Gate C operating protocol. It no longer requires programme-wide adjudication of all 179 physical tests before any implementation. It establishes proof locally for the active ownership module while preserving the earlier global P2 work as historical evidence.
 
@@ -23,8 +23,8 @@ The original protocol correctly separated observation, semantic judgement, test 
 
 The user therefore accepted a module-gated strategy:
 
-- one ownership module or bounded behaviour is active at a time;
-- only tests relevant to that active boundary require immediate authority resolution;
+- each worker handles one ownership module or bounded behaviour; dependency-independent units may occupy separate PM-controlled lanes;
+- only tests relevant to each active boundary require immediate authority resolution;
 - genuinely absent behaviour receives expected-red proof before implementation;
 - unrelated tests remain visible as shadow evidence;
 - global reconciliation moves to the final consolidation gate.
@@ -88,8 +88,9 @@ They remain historical evidence and may be used during module-local review or fi
 8. A local test may govern only its accepted proposition and exercised seam.
 9. Unrelated legacy tests run as shadow evidence and do not dictate the active module.
 10. Missing meaning returns to normative authority for the active behaviour only.
-11. One mutating module or bounded behaviour is open at a time.
-12. Every acceptance checkbox is Project Manager controlled.
+11. One mutating leaf may be open in each active PM-controlled lane; active lanes must have disjoint ownership and write sets, and no lane may select follow-on work.
+12. Canonical acceptance and integration remain sequential and Project Manager controlled.
+13. Every acceptance checkbox is Project Manager controlled.
 
 ## 6. Current test statuses
 
@@ -108,7 +109,7 @@ The Project Manager may assign these statuses within an active module:
 
 ## 7. Module-local proof gate
 
-Each active module or bounded behaviour completes the following leaves in order.
+Each active module or bounded behaviour completes the following leaves in order. Different dependency-independent modules may occupy different PM-controlled lanes, but each lane contains one leaf only and returns before a later leaf is assigned.
 
 ### `MLC-A` — Authority sufficiency
 
@@ -314,15 +315,18 @@ Not required by default:
 
 A module-local worker brief must state:
 
-1. module/behaviour ID and exact leaf type;
-2. one question;
-3. immutable source commit/archive;
-4. required reads;
-5. exact allowed and forbidden outputs;
-6. validation;
-7. return condition;
-8. no follow-on selection;
-9. Project Manager acceptance remains pending.
+1. exact lane worker label `Lane <number><letter>W`, module/behaviour ID and leaf type;
+2. matching tester label `Lane <number><letter>T`;
+3. one question;
+4. immutable source commit/archive supplied in the PM launch block;
+5. exact branch name, read set, write set, dependency gate and shared locks;
+6. required reads;
+7. exact allowed and forbidden outputs;
+8. validation and one returned candidate archive;
+9. return condition and no follow-on selection;
+10. Project Manager acceptance remains pending.
+
+The matching tester brief must require independent reconstruction, ancestry and scope checks, semantic falsification appropriate to the leaf, one of `PASS`, `FAIL_REPAIRABLE` or `HARD_BLOCK`, and one tester-approved archive on PASS. Tester PASS means suitable for PM integration review only.
 
 A worker brief fails if it combines factual observation, semantic judgement, proof specification, test writing, independent validation and implementation into one uncontrolled task.
 
@@ -337,18 +341,21 @@ This amended protocol may change only when:
 
 Any amendment must preserve accepted evidence, state the measured defect, identify changed clauses, and update the parent ExecPlan and live roadmap in the same control change.
 
-## 14. Current next gate
 
-**Independent PM disposition:** `ACCEPTED:M01_PROOF_MLC_A_V1`.
+## 14. Current parallel cycle
 
-The bounded M01 authority proposal at worker checkpoint `eef4a2ff16d4aaf782ebe047c342999810fa102f` is accepted. Current numbered authority is sufficient for the general source-admission contract: source/provider identity, separate repository capture identity, typed family contracts, source time and precision, lineage/fingerprint, validation, fail-closed absence, controlled family registration and strict downstream decision ceilings.
+**Control disposition:** `PARALLEL_CYCLE_01_ALLOCATED_AWAITING_WORKER_LAUNCH`.
 
-This acceptance does not admit every source family. Later leaves must expose each applicable family's mandatory/optional/not-applicable facts and identifier owner, scope, uniqueness, stability, generation and lawful-absence rules before proof or implementation admission.
+The accepted M01 authority decision remains unchanged. Cycle 1 opens four dependency-independent proof leaves from one canonical control checkpoint:
 
-**Current:** `M01-PROOF-MLC-R-V1`, relevant-test routing only for bounded M01 `source_admission`.
+| Lane pair | Unit | Mutation boundary |
+|---|---|---|
+| `Lane 1AW` / `Lane 1AT` | `M01-PROOF-MLC-R-V1` | one M01 routing record and lane-owned evidence only |
+| `Lane 2AW` / `Lane 2AT` | `M04-PROOF-MLC-A-V1` | one M04 authority record and lane-owned evidence only |
+| `Lane 3AW` / `Lane 3AT` | `M07-PROOF-MLC-A-V1` | one M07 authority record and lane-owned evidence only |
+| `Lane 4AW` / `Lane 4AT` | `M08-PROOF-MLC-A-V1` | one M08 authority record and lane-owned evidence only |
+| Lanes 5 and 6 | held | no dependency-safe additional semantic unit |
 
-**M01 production mutation:** closed.
+Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and testers. Each tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
 
-**M01 test mutation:** closed.
-
-**M01 current leaf:** the worker may identify physical tests that claim bounded M01 authority through governed joins from PM-011, retained registries, proof blocks, Gate C requirements, historical `D-xxx` records and source ownership. It may mark demonstrably unrelated tests `LEGACY_SHADOW_UNADMITTED`. It may not select authority by filename/location, force all tests into scope, perform factual observation or semantic disposition, mutate tests/source/configuration/vocabulary/normative authority, design proof, implement M01, merge or open a later module.
+No lane may begin `MLC-O`, `MLC-R` for another module, proof design, test mutation, implementation or a `B` assignment until the PM issues a new brief from an appropriate canonical checkpoint.

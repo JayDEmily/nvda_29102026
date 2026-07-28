@@ -1,0 +1,51 @@
+PARALLEL CYCLE 01 STRUCTURAL VALIDATION
+PASS	control branch	control/parallel-workflow-enablement-v1
+PASS	source ancestry	merge-base=ae7c8b05bf3742a5c0be530a26617d999313d232
+PASS	worker brief count	4
+PASS	tester brief count	4
+PASS	1A identity	{"tester_branch": "test/lane-1a-m01-mlc-r-v1", "tester_paths": ["project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_TESTER_REVIEW_V1.md", "project_control/canonical_project_manager/modules/M01/raw_validation/tester_mlc_r_v1/**"], "tester_thread": "Lane 1AT", "unit_tester": "M01-PROOF-MLC-R-V1", "unit_worker": "M01-PROOF-MLC-R-V1", "worker_branch": "work/lane-1a-m01-mlc-r-v1", "worker_paths": ["project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_WORKER_RECORD_V1.md", "project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/**"], "worker_thread": "Lane 1AW"}
+PASS	1A worker write set	['project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/**']
+PASS	1A tester write set	['project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M01/raw_validation/tester_mlc_r_v1/**']
+PASS	1A bounded stop rule	Complete this one leaf and return
+PASS	1A worker archive rule	one candidate archive
+PASS	1A tester archive rule	one tester-result archive
+PASS	2A identity	{"tester_branch": "test/lane-2a-m04-mlc-a-v1", "tester_paths": ["project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_TESTER_REVIEW_V1.md", "project_control/canonical_project_manager/modules/M04/raw_validation/tester_mlc_a_v1/**"], "tester_thread": "Lane 2AT", "unit_tester": "M04-PROOF-MLC-A-V1", "unit_worker": "M04-PROOF-MLC-A-V1", "worker_branch": "work/lane-2a-m04-mlc-a-v1", "worker_paths": ["project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md", "project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/**"], "worker_thread": "Lane 2AW"}
+PASS	2A worker write set	['project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/**']
+PASS	2A tester write set	['project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M04/raw_validation/tester_mlc_a_v1/**']
+PASS	2A bounded stop rule	Complete this one leaf and return
+PASS	2A worker archive rule	one candidate archive
+PASS	2A tester archive rule	one tester-result archive
+PASS	3A identity	{"tester_branch": "test/lane-3a-m07-mlc-a-v1", "tester_paths": ["project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_TESTER_REVIEW_V1.md", "project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/**"], "tester_thread": "Lane 3AT", "unit_tester": "M07-PROOF-MLC-A-V1", "unit_worker": "M07-PROOF-MLC-A-V1", "worker_branch": "work/lane-3a-m07-mlc-a-v1", "worker_paths": ["project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md", "project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/**"], "worker_thread": "Lane 3AW"}
+PASS	3A worker write set	['project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/**']
+PASS	3A tester write set	['project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/**']
+PASS	3A bounded stop rule	Complete this one leaf and return
+PASS	3A worker archive rule	one candidate archive
+PASS	3A tester archive rule	one tester-result archive
+PASS	4A identity	{"tester_branch": "test/lane-4a-m08-mlc-a-v1", "tester_paths": ["project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_TESTER_REVIEW_V1.md", "project_control/canonical_project_manager/modules/M08/raw_validation/tester_mlc_a_v1/**"], "tester_thread": "Lane 4AT", "unit_tester": "M08-PROOF-MLC-A-V1", "unit_worker": "M08-PROOF-MLC-A-V1", "worker_branch": "work/lane-4a-m08-mlc-a-v1", "worker_paths": ["project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md", "project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/**"], "worker_thread": "Lane 4AW"}
+PASS	4A worker write set	['project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/**']
+PASS	4A tester write set	['project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M08/raw_validation/tester_mlc_a_v1/**']
+PASS	4A bounded stop rule	Complete this one leaf and return
+PASS	4A worker archive rule	one candidate archive
+PASS	4A tester archive rule	one tester-result archive
+PASS	brief manifest row count	8
+PASS	manifest hash Lane 1AT	ab961ff737f0a40afab5133eacb31aaad0e27789374c1bc4d7d88d5d719b8453
+PASS	manifest hash Lane 1AW	4e9b03f1506e49e8aee64fe24f9c2a020ee65ad304297b46a0aecd272cf0fb61
+PASS	manifest hash Lane 2AT	a8ba7714380ee2986935396a13ad4b4c8501a83912ae70e7948935b04c4c4882
+PASS	manifest hash Lane 2AW	aa0041b27118214ae072a2e6c28fdb64bb18de9283f462cf2d1353d6afe4bfb4
+PASS	manifest hash Lane 3AT	cf291b93ddede60616fc048f2215b6b2290492e75e6c2b58f08214826e237e7c
+PASS	manifest hash Lane 3AW	9a04f6f77a2db454a7c411e4c52a55906a18b480daa7dcc583c9a0c387d1d075
+PASS	manifest hash Lane 4AT	c4edb6c2735636d96ceb3aa318865750548366a1c25c6acc0a3e6da56c3a1ade
+PASS	manifest hash Lane 4AW	1657d539f2431b465a1f06ba7a68cf94829cd84a50aa85991bcfddef9186534a
+PASS	brief exact-path references	checked=280; missing=[]
+PASS	control status agreement	Cycle 01 allocated awaiting launch
+PASS	lanes 5 and 6 held	held markers present
+PASS	serial canonical integration	present in four controls
+PASS	placeholder control	[]
+PASS	external launch placeholders	3
+PASS	control-only changed paths	count=31; forbidden=[]
+PASS	no behavioural mutation	[]
+PASS	Cycle 1 contract ownership	K01/K02/K03→M01; K07→M04; K12→M07; K13→M08
+PASS	M07 positive obligation	OBL-M07-POSITIVE
+PASS	11.10 heading order	['11.10.1', '11.10.2', '11.10.3', '11.10.4', '11.10.5']
+SUMMARY	checks=48	passed=48	failed=0
+NOTE	Mechanical validation passed; semantic authority and future lane outputs remain subject to human/PM adjudication.

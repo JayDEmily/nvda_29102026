@@ -770,3 +770,69 @@ The acceptance is deliberately narrower than “all providers admitted”. Each 
 Open only `M01-PROOF-MLC-R-V1`, relevant-test routing. M01 source and test mutation remain closed. Factual test observation, semantic disposition, proof design, implementation, merge and later-module work remain closed.
 
 Exact evidence is retained under `project_control/canonical_project_manager/modules/M01/raw_validation/pm_authority_v1_review/`.
+
+## 2026-07-28 — Parallel Workflow Enablement V1 and Cycle 01 allocation
+
+### Disposition
+
+`ACCEPTED:PARALLEL_WORKFLOW_ENABLEMENT_V1`
+
+This accepts the project-control amendment, six-lane capacity model and four-assignment Cycle 1 brief pack. It does not accept any lane output, open source or physical-test mutation, admit additional test authority, or create a programme-wide Gate D state.
+
+### Source and branch
+
+- Sole repository source archive: `NVDA_M01_AUTHORITY_V1_PM_ACCEPTED_ae7c8b0_20260728_FULL_HISTORY.tar.gz`.
+- Source archive SHA-256: `0b311e108bb0cdc39cd4776021bdbdfa36f3a498d01fa0b4ae1630daa8d9085a`.
+- Source branch/commit: `review/m01-authority-v1` / `ae7c8b05bf3742a5c0be530a26617d999313d232`.
+- Control branch: `control/parallel-workflow-enablement-v1`.
+- Source archive gzip, fresh extraction, branch, commit, clean worktree and Git integrity: PASS before mutation.
+
+### PM semantic review
+
+The controls were reconciled so parallel execution changes scheduling width only. Each active lane owns one dependency-ready semantic leaf, a fresh disposable worker branch, a matching independent tester branch, exact read/write sets and locks, and one return archive. Canonical authority, acceptance, integration and checkpoint publication remain sequential under one Project Manager.
+
+The accepted architecture supports four current dependency-independent roots after M13: M01, M04, M07 and M08. No fifth or sixth semantic root is currently lawful, so Lanes 5 and 6 are explicitly held. The full PM decision, known truths and ruled-out alternatives are recorded in `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_PM_REVIEW_V1.md`.
+
+### Cycle 01 allocation
+
+| Assignment | Worker | Tester | Unit | Branch pair |
+|---|---|---|---|---|
+| `1A` | `Lane 1AW` | `Lane 1AT` | `M01-PROOF-MLC-R-V1` | `work/lane-1a-m01-mlc-r-v1` / `test/lane-1a-m01-mlc-r-v1` |
+| `2A` | `Lane 2AW` | `Lane 2AT` | `M04-PROOF-MLC-A-V1` | `work/lane-2a-m04-mlc-a-v1` / `test/lane-2a-m04-mlc-a-v1` |
+| `3A` | `Lane 3AW` | `Lane 3AT` | `M07-PROOF-MLC-A-V1` | `work/lane-3a-m07-mlc-a-v1` / `test/lane-3a-m07-mlc-a-v1` |
+| `4A` | `Lane 4AW` | `Lane 4AT` | `M08-PROOF-MLC-A-V1` | `work/lane-4a-m08-mlc-a-v1` / `test/lane-4a-m08-mlc-a-v1` |
+| Lanes 5 and 6 | held | held | none | none |
+
+### Structural and scope validation
+
+| Check | Result |
+|---|---|
+| Worker briefs | PASS — 4 exact |
+| Independent tester briefs | PASS — 4 exact |
+| Exact thread/branch/unit pairing | PASS — 4/4 |
+| Worker and tester write sets | PASS — exact and pairwise disjoint across lanes |
+| Brief path references | PASS — 280 exact references checked; no missing read-only path |
+| Brief hash manifest | PASS — 8/8 |
+| Common status across ExecPlan, roadmap, Gate C protocol and registry | PASS |
+| Lanes 5 and 6 held | PASS |
+| Sequential canonical integration rule | PASS |
+| External launch placeholders | PASS — exactly three deliberate archive/commit fields |
+| Cycle 1 contract owners | PASS — K01/K02/K03→M01, K07→M04, K12→M07, K13→M08 |
+| Mandatory M07 positive obligation | PASS — `OBL-M07-POSITIVE` retained |
+| Architecture heading order | PASS — 11.10.1 through 11.10.5 |
+| Behavioural paths changed | NONE — no `src/**`, `tests/**`, `config/**` or migrations |
+| Structural validator | PASS — 48 checks, 0 failures |
+
+The structural validator is mechanical only and does not substitute for the PM semantic decision. Exact output is retained in `project_control/canonical_project_manager/parallel_workflow_validation/STRUCTURAL_VALIDATION.txt`.
+
+### Test boundary
+
+No behavioural test suite was run because this checkpoint changes project-control and planning surfaces only. It makes no behavioural pass claim. Source, physical tests, runtime configuration, fixtures and implementation remain unchanged.
+
+### Checkpoint boundary
+
+Final commit, archive SHA-256 and fresh-extraction Git verification are supplied externally in the PM launch block after checkpoint publication; the archive cannot embed its own final hash without circularity.
+
+### Next gate
+
+Issue the common checkpoint and the matching worker brief to `Lane 1AW`, `Lane 2AW`, `Lane 3AW` and `Lane 4AW`. Create each `T` thread only when its matching worker archive returns. No Lane 5, Lane 6 or `B` assignment is open.

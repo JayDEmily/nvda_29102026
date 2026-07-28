@@ -97,6 +97,8 @@ For current programme status and mutation authority, use:
 
 - `project_control/canonical_project_manager/EXEC_PLAN.md`;
 - `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`;
+- `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md` when the active plan opens parallel lanes;
+- `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md` for PM-owned lane state;
 - `ROADMAP_LEDGER_V2.md`.
 
 For the formally accepted `M00`–`M15` ownership allocation, dependency planes, implementation-obligation trace and structural validation, use:

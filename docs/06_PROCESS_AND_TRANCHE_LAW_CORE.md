@@ -50,13 +50,15 @@ No file becomes part of the active bounded pack by implication.
 
 No file becomes mutable merely because it is nearby, relevant, or historically related.
 
-## One-gate-at-a-time law
+## One-control-front and bounded-assignment law
 
-Only one gate is active at a time.
+Only one canonical Project Manager control and integration front is active at a time.
 
-Only one bounded objective is active inside that gate at a time.
+The default execution route opens one bounded objective. An expressly routed parallel workflow may open up to six independent lane assignments under that same control front, provided each lane has only one bounded semantic objective, one named canonical base, an explicit dependency gate, a disjoint write set and declared shared locks.
 
-A gate is closed only when the touched live control surfaces and required receipts agree on the same state.
+Parallel lanes do not create parallel canonical states. Worker and tester activity may overlap; Project Manager acceptance, integration, control-state mutation and checkpoint publication remain sequential.
+
+A control cycle is closed only when every integrated assignment, touched live control surface and required receipt agrees on the same state. Held, blocked or unfinished assignments must be recorded explicitly rather than implied closed.
 
 ## Document-touch law
 

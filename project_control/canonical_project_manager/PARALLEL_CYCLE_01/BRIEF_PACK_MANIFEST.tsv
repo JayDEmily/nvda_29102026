@@ -1,0 +1,9 @@
+assignment	role	thread_name	unit	branch	brief_path	sha256
+1A	tester	Lane 1AT	M01-PROOF-MLC-R-V1	test/lane-1a-m01-mlc-r-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_1A_M01_MLC_R/LANE_1AT_TESTER_BRIEF.md	ab961ff737f0a40afab5133eacb31aaad0e27789374c1bc4d7d88d5d719b8453
+1A	worker	Lane 1AW	M01-PROOF-MLC-R-V1	work/lane-1a-m01-mlc-r-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_1A_M01_MLC_R/LANE_1AW_WORKER_BRIEF.md	4e9b03f1506e49e8aee64fe24f9c2a020ee65ad304297b46a0aecd272cf0fb61
+2A	tester	Lane 2AT	M04-PROOF-MLC-A-V1	test/lane-2a-m04-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_2A_M04_MLC_A/LANE_2AT_TESTER_BRIEF.md	a8ba7714380ee2986935396a13ad4b4c8501a83912ae70e7948935b04c4c4882
+2A	worker	Lane 2AW	M04-PROOF-MLC-A-V1	work/lane-2a-m04-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_2A_M04_MLC_A/LANE_2AW_WORKER_BRIEF.md	aa0041b27118214ae072a2e6c28fdb64bb18de9283f462cf2d1353d6afe4bfb4
+3A	tester	Lane 3AT	M07-PROOF-MLC-A-V1	test/lane-3a-m07-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_3A_M07_MLC_A/LANE_3AT_TESTER_BRIEF.md	cf291b93ddede60616fc048f2215b6b2290492e75e6c2b58f08214826e237e7c
+3A	worker	Lane 3AW	M07-PROOF-MLC-A-V1	work/lane-3a-m07-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_3A_M07_MLC_A/LANE_3AW_WORKER_BRIEF.md	9a04f6f77a2db454a7c411e4c52a55906a18b480daa7dcc583c9a0c387d1d075
+4A	tester	Lane 4AT	M08-PROOF-MLC-A-V1	test/lane-4a-m08-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_4A_M08_MLC_A/LANE_4AT_TESTER_BRIEF.md	c4edb6c2735636d96ceb3aa318865750548366a1c25c6acc0a3e6da56c3a1ade
+4A	worker	Lane 4AW	M08-PROOF-MLC-A-V1	work/lane-4a-m08-mlc-a-v1	project_control/canonical_project_manager/PARALLEL_CYCLE_01/LANE_4A_M08_MLC_A/LANE_4AW_WORKER_BRIEF.md	1657d539f2431b465a1f06ba7a68cf94829cd84a50aa85991bcfddef9186534a

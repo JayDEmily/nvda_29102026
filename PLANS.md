@@ -61,7 +61,7 @@ Every active task-specific ExecPlan must record:
 - authority and immutable baseline;
 - in-scope and out-of-scope surfaces;
 - invariants and prohibited shortcuts;
-- serial acceptance units and prerequisites;
+- semantic acceptance units, lane allocation where applicable, and prerequisites;
 - pass/fail conditions;
 - exact required reads;
 - exact allowed and forbidden files;
@@ -78,7 +78,9 @@ An ExecPlan may organise work. It may not invent normative meaning, test authori
 
 One unit is one governed behaviour and its proof boundary. A unit is not defined merely by a file, folder, class, issue, worker, or Atlas cohort.
 
-Only one mutating unit may be open. The next unit must be dependency-ready under the active ExecPlan and waits for acceptance and a clean checkpoint. Unit numbering is a traceability identifier, not automatic execution order. Parallel mutating work requires an explicit amendment to the active ExecPlan.
+The default route permits only one mutating unit. The accepted parallel-workflow amendment may instead open one bounded mutating unit in each PM-controlled lane when the active ExecPlan records dependency readiness, disjoint semantic ownership, exact read/write sets, shared locks and a common canonical base. Unit numbering is a traceability identifier, not automatic execution order.
+
+Parallel worker and tester activity does not parallelise canonical authority. The Project Manager accepts and integrates one approved assignment at a time, reruns affected and aggregate proof, then publishes the next canonical checkpoint. A lane may never choose or continue into its own next unit.
 
 For every unit:
 
@@ -109,7 +111,7 @@ A worker brief must be a standalone Markdown file and must contain only the boun
 - stop/return conditions;
 - a reminder that shared files are live and unrelated changes must be preserved.
 
-A worker must not receive the entire programme as its task, select follow-on work, broaden its unit, alter root control surfaces, or claim programme completion. The Project Manager reviews the returned files/diff and evidence before acceptance.
+A worker must not receive the entire programme as its task, select follow-on work, broaden its unit, alter root control surfaces, or claim programme completion. A PM-issued lane uses the exact thread label `Lane <number><letter>W`; its independent tester uses `Lane <number><letter>T`. Each assignment uses a fresh short-lived branch from the named canonical base. The Project Manager reviews the returned files/diff and tester evidence before acceptance and serial integration.
 
 ## Vocabulary, tests, and Atlas
 

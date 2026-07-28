@@ -6,14 +6,30 @@ You are a repo worker executing the project harness, not a conversational assist
 ## Goal
 Advance the live project state by selecting the next lawful leaf, reading required authority/files, executing bounded work, proving it, recording evidence, and continuing until a real stop condition is reached.
 
+## PM-issued parallel-lane override
+
+When a Project Manager brief identifies a parallel assignment such as `Lane 1AW` or `Lane 1AT`, that brief is the sole active unit for that thread and overrides autonomous leaf selection and continuation for the duration of the assignment.
+
+Under a lane assignment:
+
+- the number and letter identify the assignment; `W` identifies its worker thread and `T` its independent tester thread;
+- complete only the exact semantic leaf or bounded implementation slice stated in the brief;
+- use only the named canonical checkpoint and create only the named short-lived assignment branch;
+- obey the declared read set, write set, dependency gate and shared locks;
+- do not inspect another lane for coordination, consume another lane's unintegrated work, update global Project Manager controls, or choose follow-on work;
+- return the required candidate or tester-approved artefact and stop at the brief's explicit return condition;
+- a tester verdict is independent evidence, not canonical acceptance; the Project Manager alone accepts and integrates work.
+
+The ordinary autonomous harness below continues to govern work that has not been issued as a PM-controlled lane assignment.
+
 ## Control-surface freeze
-`AGENTS.md` and `PLANS.md` are frozen standing control surfaces once accepted. Routine execution must not mutate either file for progress tracking, gate bookkeeping, status refreshes, historical cleanup, or ordinary continuation hardening. Use `ROADMAP_LEDGER.md` for mutable live execution state.
+`AGENTS.md` and `PLANS.md` are frozen standing control surfaces once accepted. Routine execution must not mutate either file for progress tracking, gate bookkeeping, status refreshes, historical cleanup, or ordinary continuation hardening. Use `ROADMAP_LEDGER_V2.md` for mutable live execution state.
 
 A future mutation to `AGENTS.md` or `PLANS.md` is lawful only when:
 - the user explicitly opens that exact control surface; or
-- a concrete governance defect cannot be truthfully resolved in `ROADMAP_LEDGER.md`, a receipt, or a report alone.
+- a concrete governance defect cannot be truthfully resolved in `ROADMAP_LEDGER_V2.md`, a receipt, or a report alone.
 
-Any such mutation is one bounded governance-control leaf and must preserve `ROADMAP_LEDGER.md` as the mutable live pointer.
+Any such mutation is one bounded governance-control leaf and must preserve `ROADMAP_LEDGER_V2.md` as the mutable live pointer.
 
 ## Success criteria
 A worker pass is successful only when it:
@@ -23,7 +39,7 @@ A worker pass is successful only when it:
 - performs bounded continuation search;
 - continues to the next lawful leaf when lawful work remains.
 
-A checkpoint, commit, proof pass, package, receipt, ledger update, or clean handoff state is a continuation point, not a stop point.
+A checkpoint, commit, proof pass, package, receipt, ledger update, or clean handoff state is a continuation point, not a stop point, except where a PM-issued lane brief expressly requires return after one bounded assignment.
 
 ## Harness loop
 Repeat:
@@ -35,9 +51,9 @@ Repeat:
 6. run relevant proof;
 7. record receipts, manifests, diffs, and ledger state where required;
 8. perform bounded continuation search;
-9. continue.
+9. continue, unless a PM-issued lane brief requires return after the assigned unit.
 
-A response boundary is not an execution boundary. The user does not need routine progress updates.
+A response boundary is not an execution boundary. The user does not need routine progress updates. A lane-assignment return boundary is an execution boundary because the worker or tester must not select another unit.
 
 ## Stop rules
 Stop only when one of these exact conditions is true:
@@ -51,7 +67,7 @@ Do not stop for checkpoint creation, package creation, proof pass, commit, recei
 
 ## Continuation search
 Failure to immediately identify the next executable leaf is not a stop condition. Before concluding that no lawful executable work remains, inspect at minimum:
-- current `ROADMAP_LEDGER.md` state;
+- current `ROADMAP_LEDGER_V2.md` state;
 - active receipts and manifests;
 - unresolved blockers;
 - unresolved validation gaps;
@@ -89,7 +105,7 @@ Evidence must be reproducible, attributable, bounded, and inspectable.
 Before substantive mutation, fully read:
 - `AGENTS.md`;
 - `PLANS.md`;
-- `ROADMAP_LEDGER.md`;
+- `ROADMAP_LEDGER.md` retirement pointer and `ROADMAP_LEDGER_V2.md` live state;
 - applicable route overrides;
 - governing normative documents;
 - governing execution plans or ledgers;
@@ -145,8 +161,8 @@ Do not directly mutate runtime behaviour from Atlas material outside lawful migr
 
 ## Module-gated execution
 When the active ExecPlan uses the accepted ownership-module architecture:
-- one ownership module or one bounded behaviour inside that module is the active mutating unit;
-- the next unit must be dependency-ready under the accepted runtime/contract graph; numbering alone does not establish execution order;
+- the default route has one active mutating unit; an expressly routed parallel cycle may instead have one bounded unit per active PM-controlled lane;
+- every active unit must be dependency-ready under the accepted runtime/contract graph; numbering or lane capacity alone does not establish execution order;
 - proof is established locally for the active module before its implementation opens;
 - unrelated unreviewed legacy tests may run as shadow evidence but do not dictate the active module until lawfully admitted;
 - physical `M00`–`M15` package migration occurs progressively, never as an unbounded repository-wide move.
