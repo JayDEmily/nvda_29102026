@@ -730,3 +730,43 @@ The immutable independent audit receipt records the original PM-runtime caveat t
 ### Gate result
 
 `M13-IMPLEMENT-REPAIR-V1` is independently accepted at exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a`. The next lawful unit is only `M01-PROOF-MLC-A-V1`. M01 production, tests, proof routing and implementation remain closed.
+
+## 2026-07-28 — Independent `M01-PROOF-MLC-A-V1` Project Manager acceptance
+
+### Source verification
+
+- Supplied archive: `NVDA_M13_CLOSEOUT_M01_AUTHORITY_V1_REPAIRED2_eef4a2f_FULL_HISTORY.tar(1).gz`.
+- Archive SHA-256: `7df07bc21629e37a32746d35843173cf3600c35a48e1b6a0d5f03e02af2978c9`.
+- Archive integrity: PASS — `gzip -t`.
+- Worker branch/commit/worktree: `work/m01-source-admission-mlc-a-v1-repair-2` / `eef4a2ff16d4aaf782ebe047c342999810fa102f` / clean.
+- Canonical source checkpoint: `2cf3c4dbbeb0ce53d63d49143b524b620ab15838`; exact merge base; worker history four commits ahead.
+- Worker evidence hashes: PASS — 15/15.
+- Git structural checks: `git diff --check` PASS; `git fsck --full` PASS.
+
+### Independent semantic adjudication
+
+`ACCEPTED:M01_PROOF_MLC_A_V1`
+
+Current numbered authority is sufficient for the bounded general M01 source-admission contract. It explicitly governs source/provider identity, a distinct repository capture identity, typed family contracts, source-time precision, lineage/fingerprint, validation, fail-closed withholding, controlled family registration and exclusion of downstream semantic authority.
+
+The acceptance is deliberately narrower than “all providers admitted”. Each later family-specific proof or implementation must show its applicable typed contract, mandatory/optional/not-applicable facts, and identifier owner, scope, uniqueness, stability, generation and lawful-absence rules. N-01 supplies current options-source semantic authority but does not reopen tests or implementation.
+
+### Independent traceability validation
+
+| Check | Result |
+|---|---|
+| Worker authority-locator obligations | PASS — 18/18 locator-backed; four carry explicit PM qualifications preventing architecture or family-level overreach |
+| Active numbered contradiction | None found for the bounded proposition |
+| M01 workbook cohort subset | PASS — 69 exact rows |
+| M01 workbook record subset | PASS — 562 exact rows |
+| M01 workbook reference subset | PASS — 174 exact rows |
+| Machine subset source hash | PASS |
+| Machine module/surfaces/cohorts/records/work units/conformance/N-01/edges | PASS — exact independent reconciliation |
+| Atlas semantic admission by automation | NONE |
+| Source/test/config/vocabulary/normative mutation in worker return | NONE |
+
+### Gate result
+
+Open only `M01-PROOF-MLC-R-V1`, relevant-test routing. M01 source and test mutation remain closed. Factual test observation, semantic disposition, proof design, implementation, merge and later-module work remain closed.
+
+Exact evidence is retained under `project_control/canonical_project_manager/modules/M01/raw_validation/pm_authority_v1_review/`.

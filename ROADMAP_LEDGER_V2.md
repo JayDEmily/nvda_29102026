@@ -4,16 +4,16 @@
 
 | Field | Value |
 |---|---|
-| Status | `m13_implementation_repair_v1_accepted_m01_authority_review_open` |
+| Status | `m01_authority_v1_accepted_relevant_test_routing_open` |
 | Programme ExecPlan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Module-local Gate C protocol | `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` |
 | Accepted architecture report | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` |
 | Accepted architecture workbook | `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` |
 | Control-integration baseline | fast-forwarded to `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/m13-implementation-v2` |
-| Current unit | `M01-PROOF-MLC-A-V1`; authority sufficiency only for bounded M01 `source_admission` |
+| Current branch | `review/m01-authority-v1` |
+| Current unit | `M01-PROOF-MLC-R-V1`; relevant-test routing only for bounded M01 `source_admission` |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
-| PM closeout branch | `review/m13-implementation-v2` |
+| M01 authority PM closeout branch | `review/m01-authority-v1` |
 | Original M13 proof checkpoint | `5f672ddf5a712a3446bada00ebcbbf1d7c0f321c`; independently rejected for receipt-write atomicity gap |
 | M13 proof-repair commit | `2dd25e3bdf5759fcaa2320cfd5bba988f9908eee` |
 | M13 proof-repair V2 commit | `7b3b04c4647ee13674e46c55227b5352cb8c8361` |
@@ -23,9 +23,9 @@
 | Accepted ownership model | `M00`–`M15`; `M07 coefficient_modifier_authority` |
 | Architecture surfaces | 18 accepted surfaces |
 | Historical `D-xxx` records | 33 retained as traceability obligations, not a fixed total order |
-| Production/source mutation | closed; M13 implementation repair V1 accepted and M01 production mutation closed |
-| Test mutation | closed for M01 |
-| M01 current leaf | authority sufficiency only |
+| Production/source mutation | closed for M01; authority V1 accepted and no implementation opened |
+| Test mutation | closed for M01; MLC-R is routing evidence only |
+| M01 current leaf | relevant-test routing only |
 | First implementation module | `M13 state_kernel`; implementation repair V1 independently accepted |
 | Gate D | module-gated; no global opening |
 
@@ -77,7 +77,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 | `M13-PROOF-REPAIR-V6` | `independent_pm_closed_instance_scope_gap` | 131 cases close same-instance re-entry and receipt defects, but a process-global active guard passes 131/131 and blocks a distinct UnitOfWork instance |
 | `M13-PROOF-REPAIR-V7` | `independent_pm_accepted` | 131 cases preserved; 21 two-instance cases added; conforming 152/152; process/module/class/scope-global guard mutants rejected |
 | `M13-IMPLEMENT-REPAIR-V1` | `independent_pm_accepted` | accepted at exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
-| `M01-PROOF-MLC-A-V1` | `current_authority_sufficiency_leaf` | propose only whether current normative authority is sufficient; production and test mutation remain closed |
+| `M01-PROOF-MLC-A-V1` | `independent_pm_accepted` | accepted at worker checkpoint `eef4a2ff16d4aaf782ebe047c342999810fa102f`; general source-admission law sufficient, family-specific contracts remain later proof obligations |
+| `M01-PROOF-MLC-R-V1` | `current_relevant_test_routing_leaf` | identify physical tests claiming bounded M01 authority through governed joins; no observation, disposition or mutation |
 
 ## Initial serial module order
 
@@ -102,8 +103,8 @@ Read the programme ExecPlan first, then the module-local Gate C protocol. This r
 
 ## Mutation boundary
 
-For `M01-PROOF-MLC-A-V1`, changes are limited to the M01 authority worker record and worker-owned authority evidence. M01 source, tests, configuration, vocabulary and normative authority remain closed. Test routing, proof design, implementation, merge and later-module work are forbidden.
+For `M01-PROOF-MLC-R-V1`, changes are limited to one M01 relevant-test-routing record and worker-owned routing evidence. M01 source, tests, configuration, vocabulary and normative authority remain closed. Factual test observation, semantic disposition, proof design, implementation, merge and later-module work are forbidden.
 
 ## Next gate
 
-The next lawful unit is `M01-PROOF-MLC-A-V1`, limited to authority sufficiency for bounded M01 `source_admission`. It may not mutate source, tests, configuration, vocabulary or normative authority; route tests; create a proof specification; begin implementation; merge; or open later modules. Any proposed disposition remains pending independent Project Manager review.
+The next lawful unit is `M01-PROOF-MLC-R-V1`, limited to identifying which physical tests claim authority over bounded M01 `source_admission` through governed joins. M01 authority V1 is independently accepted at worker checkpoint `eef4a2ff16d4aaf782ebe047c342999810fa102f`. M01 source, test, configuration, vocabulary and normative mutation remain closed. The routing leaf may not perform test observation, semantic disposition, proof design, implementation, merge or later-module work.

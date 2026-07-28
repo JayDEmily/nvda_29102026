@@ -339,16 +339,16 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current next gate
 
-**Independent PM disposition:** `ACCEPTED:M13_IMPLEMENT_REPAIR_V1`.
+**Independent PM disposition:** `ACCEPTED:M01_PROOF_MLC_A_V1`.
 
-`M13-PROOF-REPAIR-V7` is accepted. It preserves all 131 V6 cases, adds 21 auditable two-instance cases and passes the proof-only conforming reference 152/152. The frozen rejected implementation remains expected-red at 44 failures / 108 passes. Process-, module-, class- and scope-global active-guard mutants are rejected while distinct `UnitOfWork` instances remain independently executable.
+The bounded M01 authority proposal at worker checkpoint `eef4a2ff16d4aaf782ebe047c342999810fa102f` is accepted. Current numbered authority is sufficient for the general source-admission contract: source/provider identity, separate repository capture identity, typed family contracts, source time and precision, lineage/fingerprint, validation, fail-closed absence, controlled family registration and strict downstream decision ceilings.
 
-The accepted implementation repair is exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a` on `work/m13-state-kernel-implementation-repair-v1`, with direct parent `df17277247e4d68c260318e6306d4788de410a4c`. Canonical PM closeout is on `review/m13-implementation-v2`.
+This acceptance does not admit every source family. Later leaves must expose each applicable family's mandatory/optional/not-applicable facts and identifier owner, scope, uniqueness, stability, generation and lawful-absence rules before proof or implementation admission.
 
-**Current:** `M01-PROOF-MLC-A-V1`, authority sufficiency only for bounded M01 `source_admission`.
+**Current:** `M01-PROOF-MLC-R-V1`, relevant-test routing only for bounded M01 `source_admission`.
 
 **M01 production mutation:** closed.
 
 **M01 test mutation:** closed.
 
-**M01 current leaf:** authority sufficiency only. The worker may read current normative and accepted architecture authority, produce a locator-backed proposal and retain bounded evidence. It may not mutate normative authority, source, tests, configuration or vocabulary; perform test routing or proof design; begin implementation; self-accept the M01 disposition; merge; or open a later module.
+**M01 current leaf:** the worker may identify physical tests that claim bounded M01 authority through governed joins from PM-011, retained registries, proof blocks, Gate C requirements, historical `D-xxx` records and source ownership. It may mark demonstrably unrelated tests `LEGACY_SHADOW_UNADMITTED`. It may not select authority by filename/location, force all tests into scope, perform factual observation or semantic disposition, mutate tests/source/configuration/vocabulary/normative authority, design proof, implement M01, merge or open a later module.

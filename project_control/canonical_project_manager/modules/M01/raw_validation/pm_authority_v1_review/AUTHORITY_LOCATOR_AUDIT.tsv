@@ -1,0 +1,19 @@
+obligation_id	locator	worker_authority_class	pm_result	pm_finding
+M01-A01	docs/03.1_DOMAIN_MODEL_WORKING.md:11-20	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: current law defines admission, validation and the downstream decision ceiling.
+M01-A02	docs/03.1_DOMAIN_MODEL_WORKING.md:21-40	CURRENT_NORMATIVE_SUPPORT	PASS_WITH_QUALIFICATION	PASS: required fact classes are explicit; family-specific mandatory/optional and identifier rules remain a later contract/proof obligation.
+M01-A03	docs/03.1_DOMAIN_MODEL_WORKING.md:41-56	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: source-issued and repository capture identities are explicitly distinct; substitutes are prohibited.
+M01-A04	docs/03.1_DOMAIN_MODEL_WORKING.md:57-76	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: typed adapter, contract, registration and unsupported-family withholding are explicit.
+M01-A05	docs/03.1_DOMAIN_MODEL_WORKING.md:77-88	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: source truth, prepared truth and packet carriage are explicitly separate.
+M01-A06	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:18-41	CURRENT_NORMATIVE_SUPPORT	PASS_WITH_QUALIFICATION	PASS: N-01 supplies accepted typed-options source meaning; physical proof/implementation remains unopened.
+M01-A07	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:44-73	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: source temporal precision and capture/persistence separation are explicit.
+M01-A08	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:21-43	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: adapter responsibilities and prohibited downstream decisions are explicit.
+M01-A09	docs/05.1_GUARDRAILS_WORKING.md:21-32	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: mandatory absence fails closed; optional absence requires express contract permission.
+M01-A10	docs/05.1_GUARDRAILS_WORKING.md:33-45	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: identity and lineage fabrication/substitution are prohibited.
+M01-A11	docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:152-168	ARCHITECTURE_ALLOCATION_ONLY	PASS_WITH_QUALIFICATION	PASS WITH CLASSIFICATION: architecture allocates raw-capture output; behavioural details remain governed by numbered docs/03,04,05.
+M01-A12	docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:169-185	ARCHITECTURE_ALLOCATION_ONLY	PASS_WITH_QUALIFICATION	PASS WITH CLASSIFICATION: architecture allocates raw-signal families; behavioural admission remains family-specific.
+M01-A13	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:156	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: M00 composition ceiling is explicit.
+M01-A14	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:157	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: M01 ownership and prohibited authority are explicit.
+M01-A15	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:158	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: calendar interpretation belongs to M02.
+M01-A16	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:159	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: preparation and enrichment belong to M03.
+M01-A17	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:160	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: packet carriage/identity/time belong to M04 and cannot replace source truth.
+M01-A18	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:169,202-204	CURRENT_NORMATIVE_SUPPORT	PASS	PASS: M13 supplies mechanism only and does not own M01 record meaning.
