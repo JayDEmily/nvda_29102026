@@ -1,0 +1,101 @@
+$ env PYTHONPATH=src pytest -q tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py
+..F.F                                                                    [100%]
+=================================== FAILURES ===================================
+___________ test_durable_row_terms_are_governed_exactly_or_by_alias ____________
+
+    def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
+        native_builder = _require_module("nvda_desk.vocabulary_builder")
+        payload = native_builder.build_canonical_payload()
+    
+        governed_terms = set()
+        for entry in payload["entries"]:
+            governed_terms.add(entry["canonical_label"].casefold())
+            governed_terms.add(entry["canonical_slug"].replace("_", " ").casefold())
+            governed_terms.update(alias.casefold() for alias in entry.get("allowed_aliases", []))
+    
+        required_terms = {
+            "opening architecture",
+            "placement readiness",
+            "placement handoff",
+            "downstream opening",
+            "broker protocol",
+            "capital deployment decision",
+            "serial candidate",
+            "live position",
+            "inventory architecture",
+            "exit architecture",
+            "close architecture",
+            "review layer",
+            "explanation layer",
+            "parallel risk lane",
+            "serial desk-cognition",
+            "dynamic coefficient",
+            "modifier authority",
+            "playbook library",
+            "prepared ingress",
+            "runtime context",
+            "raw signal families",
+            "event calendar",
+            "dmpv3 packet",
+        }
+        assert required_terms <= governed_terms
+    
+        registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+        registry_required_terms = required_terms - {"dynamic coefficient", "dmpv3 packet"}
+>       assert {f"### {term}" for term in registry_required_terms} <= set(
+            f"### {line.strip().removeprefix('### ').casefold()}"
+            for line in registry_text.splitlines()
+            if line.startswith("### ")
+        )
+E       AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...ke gate', ...}
+E         
+E         Extra items in the left set:
+E         '### serial desk-cognition'
+
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:108: AssertionError
+_____ test_required_parallel_risk_protocol_and_calendar_terms_are_present ______
+
+    def test_required_parallel_risk_protocol_and_calendar_terms_are_present() -> None:
+        vocab_path = Path("data/vocabulary/canonical_vocabulary.json")
+        vocab = json.loads(vocab_path.read_text(encoding="utf-8"))
+        entries = {entry["canonical_slug"]: entry for entry in vocab["entries"]}
+    
+        assert "parallel_risk_lane" in entries
+        assert entries["parallel_risk_lane"]["maps_to_contract"] == "ParallelRiskLanePacket"
+    
+        assert "dmp_v3" in entries
+        assert entries["dmp_v3"]["maps_to_contract"] == "DmpV3Envelope"
+    
+        assert "financial_calendar_reference_bundle" in entries
+        assert (
+            entries["financial_calendar_reference_bundle"]["maps_to_contract"]
+            == "ImportedReferenceBundle"
+        )
+    
+        assert "financial_calendar_crosswalk" in entries
+        assert (
+            entries["financial_calendar_crosswalk"]["maps_to_contract"]
+            == "FinancialCalendarCrosswalkRecord"
+        )
+    
+        assert "financial_calendar_import_record" in entries
+        assert (
+            entries["financial_calendar_import_record"]["maps_to_contract"]
+            == "FinancialCalendarImportRecord"
+        )
+    
+        assert "coefficient_authority" in entries
+        assert entries["coefficient_authority"]["maps_to_contract"] == "CoefficientAuthorityDocument"
+    
+>       assert "mutable_runtime_surface" in entries
+E       AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+
+tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py:39: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_durable_row_terms_are_governed_exactly_or_by_alias - AssertionError: assert {'### broker ...tecture', ...} <= {'### active ...ke gate', ...}
+  
+  Extra items in the left set:
+  '### serial desk-cognition'
+FAILED tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py::test_required_parallel_risk_protocol_and_calendar_terms_are_present - AssertionError: assert 'mutable_runtime_surface' in {'active_bounded_pack': {'allowed_aliases': ['active pack'], 'canonical_label': 'Active Bounded Pack', 'canonical_slug... Observation Record', 'canonical_slug': 'append_only_observation_record', 'category': 'persistence_surface', ...}, ...}
+2 failed, 3 passed in 0.17s
+EXIT_STATUS=1

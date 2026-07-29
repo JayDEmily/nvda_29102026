@@ -1,0 +1,110 @@
+$ python project_control/canonical_project_manager/parallel_workflow_validation/validate_parallel_cycle_01.py
+PARALLEL CYCLE 01 REPAIR STRUCTURAL VALIDATION
+FAIL	repair branch	test/parallel-workflow-enablement-v1-repair-2
+PASS	accepted base ancestry	ae7c8b05bf3742a5c0be530a26617d999313d232
+PASS	superseded control ancestry	9e404df7c13f7cca170e05e4c9f76b8ec4548ffa
+PASS	worker brief count	4
+PASS	tester brief count	4
+PASS	1A identity	{'worker_thread': 'Lane 1AW', 'tester_thread': 'Lane 1AT', 'worker_unit': 'M01-PROOF-MLC-R-V1', 'tester_unit': 'M01-PROOF-MLC-R-V1', 'worker_branch': 'work/lane-1a-m01-mlc-r-v1', 'tester_branch': 'test/lane-1a-m01-mlc-r-v1', 'worker_revision': 'R1', 'tester_revision': 'R1'}
+PASS	unique thread Lane 1AW	Lane 1AW
+PASS	unique thread Lane 1AT	Lane 1AT
+PASS	unique branch work/lane-1a-m01-mlc-r-v1	work/lane-1a-m01-mlc-r-v1
+PASS	unique branch test/lane-1a-m01-mlc-r-v1	test/lane-1a-m01-mlc-r-v1
+PASS	1A worker write set	['project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/**']
+PASS	1A tester write set	['project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M01/raw_validation/tester_mlc_r_v1/**']
+PASS	1A worker local manifest	project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/FULL_READ_MANIFEST.tsv
+PASS	1A tester local manifest	project_control/canonical_project_manager/modules/M01/raw_validation/tester_mlc_r_v1/FULL_READ_MANIFEST.tsv
+PASS	1A no global registry read	assignment-local context
+PASS	1A worker stop rule	bounded worker
+PASS	1A tester no repair	independent tester
+PASS	1A worker archive name	NVDA_LANE_1A_M01_MLC_R_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+PASS	1A tester PASS archive name	NVDA_LANE_1A_M01_MLC_R_TESTER_APPROVED_R1.tar.gz
+PASS	1A portability members	[]
+PASS	1A bundle verification	required
+PASS	2A identity	{'worker_thread': 'Lane 2AW', 'tester_thread': 'Lane 2AT', 'worker_unit': 'M04-PROOF-MLC-A-V1', 'tester_unit': 'M04-PROOF-MLC-A-V1', 'worker_branch': 'work/lane-2a-m04-mlc-a-v1', 'tester_branch': 'test/lane-2a-m04-mlc-a-v1', 'worker_revision': 'R1', 'tester_revision': 'R1'}
+PASS	unique thread Lane 2AW	Lane 2AW
+PASS	unique thread Lane 2AT	Lane 2AT
+PASS	unique branch work/lane-2a-m04-mlc-a-v1	work/lane-2a-m04-mlc-a-v1
+PASS	unique branch test/lane-2a-m04-mlc-a-v1	test/lane-2a-m04-mlc-a-v1
+PASS	2A worker write set	['project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/**']
+PASS	2A tester write set	['project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M04/raw_validation/tester_mlc_a_v1/**']
+PASS	2A worker local manifest	project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	2A tester local manifest	project_control/canonical_project_manager/modules/M04/raw_validation/tester_mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	2A no global registry read	assignment-local context
+PASS	2A worker stop rule	bounded worker
+PASS	2A tester no repair	independent tester
+PASS	2A worker archive name	NVDA_LANE_2A_M04_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+PASS	2A tester PASS archive name	NVDA_LANE_2A_M04_MLC_A_TESTER_APPROVED_R1.tar.gz
+PASS	2A portability members	[]
+PASS	2A bundle verification	required
+PASS	3A identity	{'worker_thread': 'Lane 3AW', 'tester_thread': 'Lane 3AT', 'worker_unit': 'M07-PROOF-MLC-A-V1', 'tester_unit': 'M07-PROOF-MLC-A-V1', 'worker_branch': 'work/lane-3a-m07-mlc-a-v1', 'tester_branch': 'test/lane-3a-m07-mlc-a-v1', 'worker_revision': 'R1', 'tester_revision': 'R1'}
+PASS	unique thread Lane 3AW	Lane 3AW
+PASS	unique thread Lane 3AT	Lane 3AT
+PASS	unique branch work/lane-3a-m07-mlc-a-v1	work/lane-3a-m07-mlc-a-v1
+PASS	unique branch test/lane-3a-m07-mlc-a-v1	test/lane-3a-m07-mlc-a-v1
+PASS	3A worker write set	['project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/**']
+PASS	3A tester write set	['project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/**']
+PASS	3A worker local manifest	project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	3A tester local manifest	project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	3A no global registry read	assignment-local context
+PASS	3A worker stop rule	bounded worker
+PASS	3A tester no repair	independent tester
+PASS	3A worker archive name	NVDA_LANE_3A_M07_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+PASS	3A tester PASS archive name	NVDA_LANE_3A_M07_MLC_A_TESTER_APPROVED_R1.tar.gz
+PASS	3A portability members	[]
+PASS	3A bundle verification	required
+PASS	4A identity	{'worker_thread': 'Lane 4AW', 'tester_thread': 'Lane 4AT', 'worker_unit': 'M08-PROOF-MLC-A-V1', 'tester_unit': 'M08-PROOF-MLC-A-V1', 'worker_branch': 'work/lane-4a-m08-mlc-a-v1', 'tester_branch': 'test/lane-4a-m08-mlc-a-v1', 'worker_revision': 'R1', 'tester_revision': 'R1'}
+PASS	unique thread Lane 4AW	Lane 4AW
+PASS	unique thread Lane 4AT	Lane 4AT
+PASS	unique branch work/lane-4a-m08-mlc-a-v1	work/lane-4a-m08-mlc-a-v1
+PASS	unique branch test/lane-4a-m08-mlc-a-v1	test/lane-4a-m08-mlc-a-v1
+PASS	4A worker write set	['project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md', 'project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/**']
+PASS	4A tester write set	['project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_TESTER_REVIEW_V1.md', 'project_control/canonical_project_manager/modules/M08/raw_validation/tester_mlc_a_v1/**']
+PASS	4A worker local manifest	project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	4A tester local manifest	project_control/canonical_project_manager/modules/M08/raw_validation/tester_mlc_a_v1/FULL_READ_MANIFEST.tsv
+PASS	4A no global registry read	assignment-local context
+PASS	4A worker stop rule	bounded worker
+PASS	4A tester no repair	independent tester
+PASS	4A worker archive name	NVDA_LANE_4A_M08_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+PASS	4A tester PASS archive name	NVDA_LANE_4A_M08_MLC_A_TESTER_APPROVED_R1.tar.gz
+PASS	4A portability members	[]
+PASS	4A bundle verification	required
+PASS	Lane 1 test override route	['tests/AGENTS.override.md', 'docs/01_NORMATIVE_CORE.md', 'docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md', 'docs/vocabulary/vocabulary_registry.md', 'docs/08_TESTING_AND_PROMOTION_CORE.md', 'docs/08.1_TESTING_AND_PROMOTION_WORKING.md', 'config/retained_test_registry.yaml', 'config/proof_blocks.yaml']
+PASS	brief manifest row count	8
+PASS	brief hash Lane 1AT	1cf6a44d1c296ba747d46cee0555f85bcf54efe36f804ef68a064712747737d9
+PASS	brief hash Lane 1AW	f69022627fd154fd8574b82a286fe9fa94ffb93baafb5da704a215b19321ec07
+PASS	brief hash Lane 2AT	992ef0b54dbd971ae4efcf57ce7db972c0ffbc972fc8e820ffd8c3662e7aed8f
+PASS	brief hash Lane 2AW	1077ca57e3ee257ae642e3e082015e3cb2413a7db2e3938bec01956dc223b867
+PASS	brief hash Lane 3AT	bbeecf6fc0d881f3dbba23934b861f5d0a2a7afeb0f49b1f1433bdeb3ca2cc6e
+PASS	brief hash Lane 3AW	975f0b1e51a95fc39e5f35bdeeb3134ce2de3f5434faabda884e61133cb439cc
+PASS	brief hash Lane 4AT	99e14d1f2fdbb11d27d5bb8fe3c4fc157dc5dd123428d49b7a5cd61241068b4f
+PASS	brief hash Lane 4AW	c78796bca7b58a74074f17cda07b8fa422aa751b198a3293839bd3af8f4f7d18
+PASS	brief exact existing references	[]
+PASS	independent control tester brief	project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md
+PASS	control tester token Parallel Control T1	Parallel Control T1
+PASS	control tester token test/parallel-workflow-enablement-v1-repair-1	test/parallel-workflow-enablement-v1-repair-1
+PASS	control tester token NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_1_20260729_FULL_HISTORY.tar.gz	NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_1_20260729_FULL_HISTORY.tar.gz
+PASS	control tester token SUITABLE_FOR_PM_PARALLEL_CONTROL_ACCEPTANCE_REVIEW	SUITABLE_FOR_PM_PARALLEL_CONTROL_ACCEPTANCE_REVIEW
+PASS	control tester token Do not repair the package	Do not repair the package
+PASS	control tester test-override route	['tests/AGENTS.override.md', 'docs/08_TESTING_AND_PROMOTION_CORE.md', 'docs/08.1_TESTING_AND_PROMOTION_WORKING.md', 'config/retained_test_registry.yaml', 'config/proof_blocks.yaml']
+FAIL	control repair status agreement	awaiting independent control test
+PASS	worker launch blocked	six live controls
+PASS	held lanes	Lanes 5 and 6
+PASS	registry lineage fields	['Worker commit', 'Tester evidence commit', 'Approved portability artefact', 'Artefact SHA-256', 'PM disposition', 'Queue position', 'Integration commit', 'Aggregate validation', 'Repair revision']
+PASS	registry exact artefact table	four assignments
+PASS	human vocabulary admissions	['independent_control_test', 'lane_assignment', 'material_read_set', 'parallel_execution_lane', 'pm_controlled_parallel_workflow', 'tester_approved_portability_artefact', 'worker_candidate_archive']
+PASS	generated vocabulary admissions	[]
+PASS	vocabulary overlay admission	10.13
+PASS	control current-target read manifest	project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_FULL_READ_MANIFEST.tsv
+FAIL	repair evidence file hashes	['sha256:project_control/canonical_project_manager/EXEC_PLAN.md', 'sha256:project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md', 'sha256:project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md', 'sha256:project_control/canonical_project_manager/PARALLEL_CYCLE_01/README.md']
+FAIL	control read-manifest current hashes	['sha256:project_control/canonical_project_manager/EXEC_PLAN.md', 'sha256:project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md', 'sha256:project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md', 'sha256:project_control/canonical_project_manager/PARALLEL_CYCLE_01/README.md', 'missing:/mnt/data/NVDA_PARALLEL_WORKFLOW_PROJECT_SPECIFIC_ROLLOUT_PLAN_20260728.md']
+PASS	original PM acceptance superseded	historical only
+FAIL	control repair changed-path boundary	count=58 forbidden=['project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md']
+PASS	no behavioural mutation	[]
+PASS	generated vocabulary only under data	canonical projection
+PASS	Cycle 1 contract ownership	K01–K03/K07/K12/K13
+PASS	M07 positive obligation	OBL-M07-POSITIVE
+PASS	11.10 heading order	['11.10.1', '11.10.2', '11.10.3', '11.10.4', '11.10.5']
+SUMMARY	checks=105	passed=100	failed=5
+NOTE	Mechanical validation failed; no independent or PM acceptance is inferred.
+EXIT_STATUS=1

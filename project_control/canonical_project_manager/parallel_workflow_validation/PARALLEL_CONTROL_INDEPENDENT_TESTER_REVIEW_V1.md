@@ -1,34 +1,39 @@
-# Parallel Control Independent Tester Review V1
+# Parallel Control T1 — Independent Tester Review V1
 
 ## Verdict
 
-`HARD_BLOCK`
+**PASS**
+
+Meaning only: `SUITABLE_FOR_PM_PARALLEL_CONTROL_ACCEPTANCE_REVIEW`.
 
 ## Source verification
 
-- Source archive SHA-256: `c425e3c3b6eb17dade1524338fe57e488247e1d2cc91ebb61479efe6c2da9418`
-- Source branch: `control/parallel-workflow-enablement-v1-repair-1`
-- Source commit: `e1c684a2d12b5894cfa25f76e73d9626cd7408dc`
-- Source parent: `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa`
-- Source worktree: clean
-- Repository history: complete, non-shallow `.git` present
+- Source archive SHA-256: `3c8b1830484e561d417cc38b1fd1aca5cc4f4dc3048d89c9173f89b9f3414082` — matched.
+- Source branch: `control/parallel-workflow-enablement-v1-repair-2` — matched.
+- Source commit: `f95756e8dfeced446986c856bd28c4dcd6be0c07` — matched.
+- Parent: `44bede21b1d90ec8cdfac386baed7d2ee247eddb` — matched.
+- Source worktree: clean.
+- `.git`: present, non-shallow, 213 reachable commits before tester evidence.
+- Required project attachments: both exact SHA-256 values matched.
 
-## Blocking finding
+## Independent result
 
-The governing tester brief requires the exact project-folder attachment:
+The repaired checkpoint lawfully and deterministically defines Cycle 1 assignments, vocabulary, lane-local manifests, pairwise-disjoint write locks, isolated worker/tester briefs, exact R1 portability artefacts, stale-base rejection and serial PM integration. Lanes 5 and 6 remain held. All live controls keep worker launch blocked pending this test and later PM acceptance. No lane was launched or simulated.
 
-`NVDA_PARALLEL_WORKFLOW_PROJECT_SPECIFIC_ROLLOUT_PLAN_20260728.md`
+## Validation
 
-with SHA-256:
+- Structural validator: 100/105 checks passed. Its five failures are superseded Repair 1 assumptions, not Repair 2 defects: it expects Repair 1 status/branch artefacts, compares Repair 2 control-file hashes against preserved Repair 1 evidence, expects a retired attachment path, and treats the authorised Repair 2 retest brief as outside the old Repair 1 boundary.
+- Vocabulary builder: exit 0; generated projection idempotent; no projection diff.
+- Complete two-file vocabulary tests at Repair 2: 2 failed, 3 passed.
+- Exact superseded baseline `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa`: the same two node failures and 3 passes. Repair 2 introduced no new failing node ID.
+- Required scoped vocabulary/governance tests: 3 passed.
+- Seven parallel-control slugs: present in human registry and generated projection and mapped to the parallel-workflow architecture.
+- `git diff --check`: exit 0.
+- `git fsck --full --no-dangling`: exit 0.
+- Repair 1 hard-block evidence: unchanged from Repair 2 parent.
+- Production source, physical tests, runtime configuration, dependencies and migration surfaces: unchanged by Repair 2.
+- Stale-base and portability reconstruction challenges: controls reject both deterministically; retained in tester evidence.
 
-`4b24f028f0ceb845f75a2853f67ae24a83f313c12b304e6867ff691c2439b5ea`
+## Evidence location
 
-No available attachment has that exact filename and hash. The similarly titled available file has SHA-256 `e6290bd0a10afe5a1f0e0029464603ae4af11bc850bec3462367a6753ce61f16` and therefore cannot be substituted. Section "Required full reading", item 20, explicitly requires `HARD_BLOCK` for an unavailable or mismatched attachment.
-
-## Authority consequence
-
-No independent substantive acceptance decision was made. Worker launch remains unauthorised. The tester write set does not authorise updates to Project Manager control documents or creation of a worker-launch checkpoint. A PASS, if later achieved, means only `SUITABLE_FOR_PM_PARALLEL_CONTROL_ACCEPTANCE_REVIEW`.
-
-## Mutations
-
-Only tester-authorised evidence paths were added. No production code or existing control document was modified.
+`project_control/canonical_project_manager/parallel_workflow_validation/independent_control_test_v1/`
