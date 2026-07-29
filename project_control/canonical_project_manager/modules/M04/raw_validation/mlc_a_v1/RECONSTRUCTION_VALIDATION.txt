@@ -1,0 +1,69 @@
+Lane 2AW fresh-extraction reconstruction evidence
+==================================================
+
+Candidate archive
+-----------------
+Filename: NVDA_LANE_2A_M04_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+Candidate SHA-256: 7a3db446536578647da1391a033ed01fca140d2a56680f1ef7f6d8d0c8d65e85
+Candidate commit: 7cfc38994b0747dae26c09d38ce82ed7012fff08
+
+The candidate was created outside the repository from the complete Nvda11
+directory, including .git, then extracted beneath a new mktemp directory.
+
+Fresh extraction checks
+-----------------------
+
+Command: git branch --show-current
+Output: work/lane-2a-m04-mlc-a-v1
+Exit status: 0
+
+Command: git rev-parse HEAD
+Output: 7cfc38994b0747dae26c09d38ce82ed7012fff08
+Exit status: 0
+
+Command: git status --short --branch
+Output: ## work/lane-2a-m04-mlc-a-v1
+Exit status: 0
+
+Command: git rev-parse --is-shallow-repository
+Output: false
+Exit status: 0
+
+Command: test ! -f .git/shallow
+Output: <none>
+Exit status: 0
+
+Command:
+git merge-base --is-ancestor ee67c752d14073a959fda478f31f4466b6952cae HEAD
+
+Output: <none>
+Exit status: 0
+
+Command:
+git diff --name-only ee67c752d14073a959fda478f31f4466b6952cae..HEAD
+
+Output:
+project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh
+
+Exit status: 0
+
+Command: git fsck --full --no-dangling
+Output: <none>
+Exit status: 0
+
+Reconstruction result
+---------------------
+PASS. Branch, candidate commit, clean worktree, complete .git history,
+ancestry to the PM source commit, authorised changed paths and object
+integrity were reconstructed successfully.
+
+This file and FILE_SHA256.tsv form the second, evidence-only commit. The
+final returned archive is rebuilt from that clean commit and independently
+rechecked after fresh extraction.
