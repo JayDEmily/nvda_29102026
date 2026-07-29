@@ -1,0 +1,12 @@
+path	status	note
+00_TASK/PROJECT_EXECUTION_METHOD.md	READ_FULL	Read before verdict.
+AGENTS.md	READ_FULL	Read before verdict.
+PLANS.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/EXEC_PLAN.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/PARALLEL_CYCLE_01/README.md	READ_FULL	Read before verdict.
+project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md	READ_FULL	Read before verdict.
+/mnt/data/MASTER_PARALLEL_WORKFLOW_ARCHITECTURE.md	HASH_VERIFIED	SHA-256 matched 58b812adc77c16a7c4368bc7403857152f67b0e4bde5dba84be79f297b1c700f.
+/mnt/data/NVDA_PARALLEL_WORKFLOW_PROJECT_SPECIFIC_ROLLOUT_PLAN_20260728.md	UNAVAILABLE	Exact required filename and SHA-256 4b24f028f0ceb845f75a2853f67ae24a83f313c12b304e6867ff691c2439b5ea unavailable; tester brief requires HARD_BLOCK without substitution.
