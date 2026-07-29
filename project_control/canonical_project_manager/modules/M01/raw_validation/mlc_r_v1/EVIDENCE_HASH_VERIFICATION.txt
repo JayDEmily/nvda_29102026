@@ -1,0 +1,6 @@
+hash_manifest=project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/EVIDENCE_HASHES.sha256
+listed_files=10
+passed=10
+failed=0
+sha256sum_check_exit=0
+result=PASS
