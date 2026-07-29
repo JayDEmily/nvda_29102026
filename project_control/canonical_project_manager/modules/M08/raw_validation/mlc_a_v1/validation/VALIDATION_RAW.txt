@@ -78,3 +78,29 @@ OUTPUT
 EXIT 0
 
 No behavioural tests were routed or observed. This MLC-A assignment changed no source, physical test, fixture, configuration, proof registry, retained-test registry, normative document, vocabulary authority or global project-control surface.
+
+PROVISIONAL FULL-HISTORY RECONSTRUCTION
+
+archive_sha256=b5912db5f38a4fe64b9c038c223639d8f0fcfce2fb8fb2ca41d470eb9d12c948
+branch=work/lane-4a-m08-mlc-a-v1
+commit=4bfcde8fdd09e09ecd82a51faad55286c1c68711
+status_porcelain=
+shallow=false
+source_ancestor_exit=0
+fsck_full_no_dangling_exit=0
+changed_path_count=7
+RESULT PASS
+
+FINAL PLANNED WRITE SET
+
+project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FILE_SHA256.tsv
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/RECONSTRUCTION.txt
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/WORKER_CLAIM.md
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/SOURCE_VERIFICATION.txt
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/VALIDATION_RAW.txt
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/WORKBOOK_M08_K13_VALIDATION.txt
+WRITE_SET_VALID
+EXIT 0
