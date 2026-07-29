@@ -1,0 +1,3 @@
+command	git fsck --full --no-dangling
+exit_status	0
+result	PASS

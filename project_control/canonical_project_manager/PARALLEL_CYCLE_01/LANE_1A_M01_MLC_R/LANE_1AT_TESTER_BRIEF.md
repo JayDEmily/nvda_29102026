@@ -9,6 +9,7 @@
 - Owner module: M01 `source_admission`
 - Contract boundary: K01 `SourceArtifactEnvelope`; K02 `CaptureReceipt`; K03 `RawSignalBatch`
 - Expected worker branch: `work/lane-1a-m01-mlc-r-v1`
+- Revision: `R1`
 - Tester branch: `test/lane-1a-m01-mlc-r-v1`
 
 ## Inputs
@@ -20,13 +21,21 @@ Use only:
 
 Verify both archive hashes, complete `.git` history, worker ancestry to the PM source commit, expected worker branch/commit and clean worker worktree. Reconstruct the exact candidate, then create the named tester branch from the exact worker candidate commit before adding tester-owned evidence.
 
+## Assignment-local full-read manifest
+
+Before substantive review, independently create and maintain:
+
+`project_control/canonical_project_manager/modules/M01/raw_validation/tester_mlc_r_v1/FULL_READ_MANIFEST.tsv`
+
+Record every required file, reason, read status, mutation relevance and pre-review SHA-256 where available. Do not copy the worker manifest as proof of tester reading and do not modify the global historical `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`.
+
 ## Role and one question
 
 Act only as the independent tester for `M01-PROOF-MLC-R-V1`.
 
 > Does the worker route the complete bounded M01 physical-test candidate population through current governed joins without performing observation, semantic disposition or location-based admission?
 
-Do not repair worker output, broaden authority or review another lane.
+Do not repair worker output, broaden authority or review another assignment. No global workflow-registry reading is required.
 
 ## Required full reading
 
@@ -40,7 +49,6 @@ Do not repair worker output, broaden authority or review another lane.
 8. `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
 9. `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md`
 10. `ROADMAP_LEDGER_V2.md`
-11. `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
 12. `project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_WORKER_RECORD_V1.md`
 13. `project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_PM_REVIEW_V1.md`
 14. the complete M01 authority evidence trees named by the PM review
@@ -53,6 +61,23 @@ Do not repair worker output, broaden authority or review another lane.
 21. `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md`, plus exact M01 rows in `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` and `project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json`
 22. every registry, proof-block or source-ownership row used to include or exclude a physical test
 23. the complete Lane 1AW worker record and raw routing evidence
+
+
+### Mandatory test-subtree route
+
+Because this assignment reads paths under `tests/`, read `tests/AGENTS.override.md` and obey its sequence before inspecting any physical test. The required route includes:
+
+1. `AGENTS.md`;
+2. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`;
+3. `docs/01_NORMATIVE_CORE.md` and the relevant working companion;
+4. `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md`, `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` and `docs/vocabulary/vocabulary_registry.md`;
+5. `docs/08_TESTING_AND_PROMOTION_CORE.md` and `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`;
+6. `config/retained_test_registry.yaml`;
+7. `config/proof_blocks.yaml`;
+8. `tests/AGENTS.override.md`;
+9. only then the specific tests, fixtures, code and retained evidence in scope.
+
+The override and listed registries are read-only.
 
 Read the worker's complete changed files and evidence in full. Do not accept a worker conclusion from summaries, hashes, counts or green commands alone.
 
@@ -92,19 +117,29 @@ Return exactly one:
 
 For `FAIL_REPAIRABLE`, list bounded defects within the existing authority/write set. For `HARD_BLOCK`, identify the missing authority, invalid baseline, architecture conflict or required scope change.
 
-## Tester record and archive
+## Tester record and exact portability artefact
 
-Create a tester review record and raw evidence only in the tester-owned paths. For every verdict, commit the tester evidence after the unchanged worker commit(s), create exactly one Git-preserving full-history tester-result archive outside the repository and verify by fresh extraction:
+Create the tester review record and raw evidence only in the tester-owned paths. Commit the tester evidence after the unchanged worker commit or ordered worker commit series. Never modify, squash or rewrite worker commits.
 
-- PM source ancestry;
-- exact worker commit(s);
-- tester evidence commit;
-- declared changed paths;
-- clean worktree;
-- evidence hashes;
-- `git diff --check` and `git fsck --full --no-dangling`.
+Return exactly one tar archive outside the repository, named by verdict:
 
-Return exactly one tester-result archive, its SHA-256, the verdict and a concise defect/evidence table. Never modify or rewrite the worker commit(s).
+- PASS: `NVDA_LANE_1A_M01_MLC_R_TESTER_APPROVED_R1.tar.gz`
+- FAIL_REPAIRABLE: `NVDA_LANE_1A_M01_MLC_R_TESTER_FAIL_REPAIRABLE_R1.tar.gz`
+- HARD_BLOCK: `NVDA_LANE_1A_M01_MLC_R_TESTER_HARD_BLOCK_R1.tar.gz`
+
+The archive must contain exactly one portability package with:
+
+- `MANIFEST.json` recording assignment `1A`, revision `R1`, PM source archive/SHA/branch/commit, worker branch/commit(s), tester branch/evidence commit, verdict, exact worker/tester write sets and package member hashes;
+- `changes.bundle`, created from the tester branch and verified with `git bundle verify`, containing the worker and tester evidence commits with reconstructable PM-source ancestry;
+- `CHANGED_PATHS.tsv`;
+- `FILE_SHA256.tsv`;
+- `WORKER_CLAIM.md` copied byte-for-byte from worker evidence;
+- `TESTER_VERDICT.md`;
+- `validation/` with raw independent command output and at least one tester-owned challenge;
+- `RECONSTRUCTION.txt` proving fresh reconstruction, exact commits, expected branch and clean worktree;
+- `SHA256SUMS` for every other package member.
+
+Verify package SHA-256, `git bundle verify`, fresh reconstruction, exact changed paths, evidence hashes, `git diff --check` and `git fsck --full --no-dangling`. Return the one archive, its SHA-256, the verdict and a concise defect/evidence table.
 
 End a PASS with:
 

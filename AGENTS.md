@@ -116,11 +116,13 @@ Do not replace required full reading with search, grep, AST parsing, embeddings,
 If full reading is infeasible, do not fabricate comprehension. Bound the unread material truthfully, avoid unlawful mutation based on unread material, and continue other lawful work where possible.
 
 ## FULL_READ_MANIFEST rule
-Before substantive mutation, create or update the current `FULL_READ_MANIFEST` required by the active control surface.
+Before substantive mutation, create or update the explicit current-target `FULL_READ_MANIFEST` named by the active control surface or assignment brief.
 
-For each required file, record path, reason for inclusion, read status, and mutation relevance.
+For each required file, record path, reason for inclusion, read status, mutation relevance and the pre-mutation file hash where available.
 
-Do not rely on stale manifests as current proof. Validate the explicit current-target manifest before closure claims. Manifest completion alone does not authorise stopping.
+A PM-issued lane worker or tester must use the assignment-local manifest inside its authorised evidence directory. It must not update the global historical `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv` unless the Project Manager opens that exact path as an exclusive control unit. A Project Manager control amendment must use a control-unit-specific manifest named by the active plan.
+
+Do not rely on stale, cumulative or historical manifests as current proof. Validate the explicit current-target manifest before closure claims. Manifest completion alone does not authorise stopping.
 
 ## Authority hierarchy
 Authority order:

@@ -1,8 +1,8 @@
 # Vocabulary Registry
 
 Projection schema version: `v1`
-Projection registry version: `2026-07-25-m13-proof-v1`
-Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.","M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
+Projection registry version: `2026-07-29-parallel-workflow-v1`
+Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.","M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.","The 2026-07-29 repair admits PM-controlled parallel-workflow terms without parallelising canonical acceptance.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
 
 ### Ownership Module
 Definition: Accepted target code capability identified by one `M00`–`M15` architecture ID and bounded by explicit responsibility, public contracts, state ownership, dependencies and prohibited authority.
@@ -1303,3 +1303,73 @@ Aliases: transaction command contract
 Disallowed or misleading use: business decision result; untyped mutation dictionary; global workflow command; receipt
 Lifecycle: accepted_m13_contract_authority
 Projection metadata: {"projection_status":"canonical","canonical_label":"Transaction Command","canonical_slug":"transaction_command","category":"carrier","stage_owner":"state_kernel","maps_to_contract":"docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-40","raw_or_derived":"not_applicable","allowed_aliases":["transaction command contract"],"disallowed_phrases":["business decision result","untyped mutation dictionary","global workflow command"],"semantic_decision_refs":["M13-PROOF:MLC-A"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### PM-controlled Parallel Workflow
+Definition: One Project Manager-controlled execution mode in which multiple independent bounded assignments may be worked or tested concurrently while canonical acceptance, integration and checkpoint publication remain serial.
+Scope: programme execution and integration control
+Owner: Master Project Manager
+Relationships: Contains Parallel Execution Lanes and Lane Assignments; preserves one canonical repository and one serial PM integration front.
+Aliases: parallel workflow
+Disallowed or misleading use: parallel canonical state; autonomous worker programme; concurrent PM acceptance
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"PM-controlled Parallel Workflow","canonical_slug":"pm_controlled_parallel_workflow","category":"workflow","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["parallel workflow"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Parallel Execution Lane
+Definition: Numbered execution-capacity slot that may hold at most one current Lane Assignment and does not own a module, canonical branch or follow-on queue.
+Scope: parallel scheduling capacity
+Owner: Master Project Manager
+Relationships: Hosts one worker/tester assignment pair when allocated; may be held without a branch or filler task.
+Aliases: PM-controlled lane; execution lane; permanent lane
+Disallowed or misleading use: module owner; long-lived branch; autonomous queue
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Parallel Execution Lane","canonical_slug":"parallel_execution_lane","category":"workflow","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["PM-controlled lane","execution lane","permanent lane"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Lane Assignment
+Definition: One revisioned, dependency-ready semantic leaf or bounded implementation slice allocated to one worker/tester pair from one named canonical checkpoint with exact reads, writes, locks and return states.
+Scope: one bounded parallel execution unit
+Owner: Master Project Manager
+Relationships: Uses one Parallel Execution Lane, one Worker Candidate Archive and one tester verdict; lifecycle and exceptional states are governed by the parallel workflow architecture.
+Aliases: parallel assignment
+Disallowed or misleading use: whole programme; automatic next task; module ownership
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Lane Assignment","canonical_slug":"lane_assignment","category":"workflow","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["parallel assignment"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Material Read Set
+Definition: Subset of authority and evidence whose canonical change may invalidate a prior worker or tester conclusion and require stale-base revalidation.
+Scope: assignment stale-base control
+Owner: Master Project Manager
+Relationships: Recorded per Lane Assignment; distinct from the complete required full-read list and from the exact write set.
+Aliases: stale-base read set
+Disallowed or misleading use: all files read; write set; general dependency list
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Material Read Set","canonical_slug":"material_read_set","category":"authority_surface","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["stale-base read set"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Worker Candidate Archive
+Definition: Exact-named Git-preserving full-history return from a lane worker containing unaccepted candidate changes and worker-owned evidence.
+Scope: worker-to-tester transfer
+Owner: Lane worker under PM assignment
+Relationships: Preserves PM-source ancestry and feeds the matching independent tester; never establishes canonical acceptance.
+Aliases: worker candidate; candidate repository archive
+Disallowed or misleading use: accepted checkpoint; tester result; canonical integration
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Worker Candidate Archive","canonical_slug":"worker_candidate_archive","category":"carrier","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["worker candidate","candidate repository archive"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Tester-approved Portability Artefact
+Definition: Exact-named reconstructable package containing verified Git changes, worker claim, tester verdict, manifests, hashes and validation evidence suitable for PM integration review but not canonical acceptance.
+Scope: tester-to-PM transfer
+Owner: Independent lane tester under PM assignment
+Relationships: Contains a verified Git bundle and reconstruction proof; PASS remains provisional until PM acceptance and serial integration.
+Aliases: tester-approved artefact; approved portability artefact
+Disallowed or misleading use: canonical checkpoint; PM acceptance; worker repair package
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Tester-approved Portability Artefact","canonical_slug":"tester_approved_portability_artefact","category":"carrier","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["tester-approved artefact","approved portability artefact"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Independent Control Test
+Definition: Review by a separate control-tester thread of a newly authored or materially repaired workflow-control checkpoint before PM acceptance or lane launch.
+Scope: parallel-control checkpoint review
+Owner: Independent control tester
+Relationships: Tests control law, briefs, vocabulary, manifests, artefacts and launch boundaries; may add evidence only and cannot repair or accept the checkpoint.
+Aliases: control tester review; independent control review
+Disallowed or misleading use: self-acceptance; lane test; PM acceptance
+Lifecycle: active_programme_control
+Projection metadata: {"projection_status":"canonical","canonical_label":"Independent Control Test","canonical_slug":"independent_control_test","category":"promotion_surface","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["control tester review","independent control review"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}

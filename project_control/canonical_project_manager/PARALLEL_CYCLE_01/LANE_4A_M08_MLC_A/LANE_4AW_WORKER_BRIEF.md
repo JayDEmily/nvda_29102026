@@ -9,6 +9,7 @@
 - Owner module: M08 `playbook_catalogue`
 - Contract boundary: K13 `PlaybookCatalogue`
 - Worker branch: `work/lane-4a-m08-mlc-a-v1`
+- Revision: `R1`
 - Tester branch: `test/lane-4a-m08-mlc-a-v1`
 
 ## Source checkpoint
@@ -16,6 +17,14 @@
 Use the single full-history canonical archive supplied in the PM launch message as the sole repository input. Before acting, verify the exact archive filename and SHA-256, expected branch and commit, clean worktree and complete `.git` history stated in that message.
 
 Do not proceed if any launch identifier is absent or mismatched. Create the named worker branch from the exact PM-designated source commit.
+
+## Assignment-local full-read manifest
+
+Before substantive work, create and maintain:
+
+`project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv`
+
+Record every required file, reason, read status, mutation relevance and pre-mutation SHA-256 where available. This lane-local manifest is inside the authorised write set. Do not modify the global historical `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`.
 
 ## Role and one question
 
@@ -37,7 +46,6 @@ Complete this one leaf and return. Do not choose or begin another leaf.
 8. `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
 9. `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md`
 10. `ROADMAP_LEDGER_V2.md`
-11. `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
 12. `docs/01_NORMATIVE_CORE.md` and `docs/01.1_NORMATIVE_WORKING.md`
 13. `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md` and `docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md`
 14. `docs/03_DOMAIN_MODEL_CORE.md` and `docs/03.1_DOMAIN_MODEL_WORKING.md`
@@ -82,7 +90,7 @@ Do not modify:
 - another module's control/evidence directory;
 - any worker or tester brief.
 
-Do not consume another lane's unintegrated work or coordinate semantic decisions with another lane.
+Do not consume unintegrated work outside this assignment or coordinate its semantic decision with another assignment. No global workflow-registry reading is required.
 
 ## Required work and output
 
@@ -114,10 +122,16 @@ Also run and retain:
 
 No behavioural test pass is required because Cycle 1 does not mutate source or physical tests. A worker may run read-only scoped commands only when they materially support the leaf and must record exact output and exit status.
 
-## Git and return
+## Git and exact return artefact
 
-Commit only the bounded worker record and lane-owned evidence. Create exactly one Git-preserving full-history archive outside the repository. Verify by fresh extraction: branch, commit, clean worktree, ancestry to the PM source commit, changed paths and evidence hashes.
+Commit only the bounded worker record and lane-owned evidence. The lane-owned evidence must include `FULL_READ_MANIFEST.tsv`, `WORKER_CLAIM.md`, changed-path evidence, file hashes, raw validation with exit statuses and fresh-extraction reconstruction evidence.
 
-Return one archive only, its SHA-256 and a concise result table. End with:
+Create exactly one Git-preserving full-history archive outside the repository with this exact filename:
+
+`NVDA_LANE_4A_M08_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz`
+
+Verify by fresh extraction: branch, commit, clean worktree, complete `.git`, ancestry to the PM source commit, changed paths and evidence hashes.
+
+Return that archive only, its SHA-256 and a concise result table. End with:
 
 `READY_FOR_LANE_4AT`

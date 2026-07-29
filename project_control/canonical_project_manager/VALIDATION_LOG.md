@@ -771,11 +771,13 @@ Open only `M01-PROOF-MLC-R-V1`, relevant-test routing. M01 source and test mutat
 
 Exact evidence is retained under `project_control/canonical_project_manager/modules/M01/raw_validation/pm_authority_v1_review/`.
 
-## 2026-07-28 — Parallel Workflow Enablement V1 and Cycle 01 allocation
+## 2026-07-28 — Parallel Workflow Enablement V1 and Cycle 01 allocation — historical superseded record
 
-### Disposition
+> This record was withdrawn before lane launch by the 2026-07-29 PM self-audit and remains only as historical lineage.
 
-`ACCEPTED:PARALLEL_WORKFLOW_ENABLEMENT_V1`
+### Historical disposition at the time
+
+`SUPERSEDED_HISTORICAL:ACCEPTED:PARALLEL_WORKFLOW_ENABLEMENT_V1`
 
 This accepts the project-control amendment, six-lane capacity model and four-assignment Cycle 1 brief pack. It does not accept any lane output, open source or physical-test mutation, admit additional test authority, or create a programme-wide Gate D state.
 
@@ -833,6 +835,58 @@ No behavioural test suite was run because this checkpoint changes project-contro
 
 Final commit, archive SHA-256 and fresh-extraction Git verification are supplied externally in the PM launch block after checkpoint publication; the archive cannot embed its own final hash without circularity.
 
-### Next gate
+### Historical next gate — withdrawn before launch
 
-Issue the common checkpoint and the matching worker brief to `Lane 1AW`, `Lane 2AW`, `Lane 3AW` and `Lane 4AW`. Create each `T` thread only when its matching worker archive returns. No Lane 5, Lane 6 or `B` assignment is open.
+The original record proposed issuing the common checkpoint to `Lane 1AW`–`Lane 4AW`. That instruction was withdrawn before any lane launch and is not current authority. The current gate is the independent `Parallel Control T1` review recorded below.
+
+## 2026-07-29 — Parallel Workflow Enablement V1 Repair 1
+
+### Disposition
+
+`REPAIRED_CANDIDATE_AWAITING_INDEPENDENT_CONTROL_TEST`
+
+The prior `ACCEPTED:PARALLEL_WORKFLOW_ENABLEMENT_V1` entry above is superseded and rejected before lane launch. No Cycle 1 worker or tester was launched from commit `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa`.
+
+### Repair source and branch
+
+- Repair source: `control/parallel-workflow-enablement-v1` at `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa`.
+- Accepted pre-parallel ancestor: `review/m01-authority-v1` at `ae7c8b05bf3742a5c0be530a26617d999313d232`.
+- Repair branch: `control/parallel-workflow-enablement-v1-repair-1`.
+- Independent tester reserved: `Parallel Control T1` on `test/parallel-workflow-enablement-v1-repair-1`.
+
+### Defects repaired
+
+| Defect | Repair evidence |
+|---|---|
+| Unadmitted durable workflow terms | Seven M15 terms admitted in numbered vocabulary authority and human registry; generated projection regenerated through the builder |
+| Global full-read manifest conflicted with lane write sets | `AGENTS.md` now requires explicit control-unit or assignment-local manifests; all eight lane briefs name an authorised local manifest |
+| Lane 1A omitted test subtree law | Lane 1AW and Lane 1AT now route `tests/AGENTS.override.md`, numbered test/vocabulary law and proof/retained-test registries before test inspection |
+| Return naming and portability contract were ambiguous | Revision `R1`, four exact Worker Candidate Archive names, twelve exact tester verdict package names and nine mandatory portability members are fixed |
+| No independent control review | Separate `Parallel Control T1` brief and write set created; all lane launches blocked pending its PASS and later PM acceptance |
+| Registry lineage was incomplete | Source/revision, worker/tester commits, verdict, artefact/SHA, PM disposition, queue, integration and aggregate-validation fields added |
+| Global cumulative manifest treated as current lane proof | It is now explicitly historical; one control-repair manifest and eight independent lane manifests are routed |
+| Informational isolation overclaimed | Lane briefs no longer require the global registry; controls state operational independence rather than repository secrecy |
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Repaired structural validator | PASS — 105 checks, 0 failures |
+| Brief inventory and SHA-256 | PASS — 8/8 |
+| Lane write-set collisions | None |
+| Independent control tester brief | PASS — exact thread, branch, write set, verdict and archive names present |
+| Vocabulary builder regeneration | PASS — exit 0 and idempotent SHA-256 |
+| Seven new vocabulary admissions | PASS — human registry and generated projection agree |
+| Scoped vocabulary builder/governance tests | PASS — 3/3 |
+| Complete two-file vocabulary test command | 2 failures, 3 passes |
+| Exact superseded-source comparison | PASS — the same two failing node IDs occur at `9e404df7…`; repair adds zero new failures |
+| Behavioural paths changed | None under `src/**`, `tests/**`, `config/**` or migrations |
+| `git diff --check` | PASS |
+
+The two red vocabulary node IDs are pre-existing: the historical exact-heading expectation for `Serial Desk-cognition` and the historical missing `mutable_runtime_surface` baseline entry. They remain visible M15 reconciliation obligations and are not represented as repaired or suppressed.
+
+Raw evidence is under `project_control/canonical_project_manager/parallel_workflow_validation/repair_1/`.
+
+### Current boundary
+
+This PM-authored repair is not independently accepted. Publish one Git-preserving repair checkpoint and issue only `Parallel Control T1`. Do not launch `Lane 1AW`–`Lane 4AW` until the tester result is returned and the Project Manager explicitly accepts the tested checkpoint. Lanes 5 and 6 remain held.

@@ -1,0 +1,11 @@
+check	exit_status	result
+git_diff_check	0	PASS
+git_fsck_full_no_dangling	0	PASS
+vocabulary_regeneration	0	PASS
+vocabulary_scoped_tests	0	PASS
+vocabulary_full_tests	1	QUALIFIED_PREEXISTING_2_FAILURES_NO_REGRESSION
+parallel_vocabulary_projection_validation	0	PASS
+repair_evidence_file_hashes	0	PASS
+control_read_manifest_current_hashes	0	PASS
+structural_validator	0	PASS_105_OF_105
+independent_control_test	NOT_RUN	REQUIRED_BEFORE_LANE_LAUNCH

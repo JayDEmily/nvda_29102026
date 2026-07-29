@@ -2,7 +2,7 @@
 
 ## Status
 
-`parallel_cycle_01_allocated_awaiting_worker_launch`
+`parallel_control_repair_1_awaiting_independent_control_test`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -12,7 +12,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendments accepted | 2026-07-25 and 2026-07-28 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `control/parallel-workflow-enablement-v1` |
+| Current branch | `control/parallel-workflow-enablement-v1-repair-1` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Cycle 1: `1A M01-MLC-R`, `2A M04-MLC-A`, `3A M07-MLC-A`, `4A M08-MLC-A`; Lanes 5 and 6 held |
-| Mutation state | Cycle 1 is proof/control evidence only; each lane may change only its declared module record/evidence paths; source, tests, configuration, normative/vocabulary and global PM controls remain locked |
+| Active units | Control repair only: `Parallel Control T1` pending; Cycle 1 assignments 1A–4A reserved but not launch-authorised; Lanes 5 and 6 held |
+| Mutation state | Control repair changes programme controls, M15 vocabulary authority and deterministic vocabulary projection only; lane work remains closed pending independent control test and PM acceptance |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -188,13 +188,14 @@ In scope:
 - define dependency, read/write, contract-owner, test-file, stale-base and global locks;
 - allocate and brief Cycle 1 Lanes 1A–4A;
 - hold Lanes 5 and 6 explicitly;
-- create four standalone worker briefs and four independent tester briefs;
-- validate that no source, physical test, runtime configuration, normative-domain meaning, proof registry or vocabulary registry changed;
-- create one control-only commit and Git-preserving archive.
+- repair four standalone worker briefs and four independent tester briefs;
+- create one separate `Parallel Control T1` independent tester brief;
+- admit the new durable parallel-control vocabulary through M15, regenerate its projection and validate that no source, physical test, runtime configuration or proof registry changed;
+- create one repaired control commit and Git-preserving archive for independent control testing.
 
 Out of scope:
 
-- executing any lane assignment;
+- accepting the repaired control checkpoint or executing any lane assignment;
 - source, test, production configuration, fixture or runtime mutation;
 - semantic acceptance of M04, M07 or M08 authority;
 - M01 test observation or disposition;
@@ -238,9 +239,9 @@ Out of scope:
 
 ### `PARALLEL-CYCLE-01` — Four-lane proof pilot
 
-**Pass:** all four lane pairs use the same canonical checkpoint; each assignment is one leaf; write sets and locks are disjoint; worker and tester briefs are standalone; Lanes 5 and 6 are held; no source/test/runtime mutation occurs; PM integration order and aggregate validation are explicit.
+**Pass:** the repaired control checkpoint passes Independent Control Test and later PM acceptance; all four lane pairs use the same accepted canonical checkpoint; each assignment is one leaf; write sets and locks are disjoint; worker and tester briefs are standalone; exact revisioned artefact contracts are reconstructable; Lanes 5 and 6 are held; no source/test/runtime mutation occurs; PM integration order and aggregate validation are explicit.
 
-**Fail:** ambiguous ownership, shared writable files, autonomous continuation, missing tester independence, unrecorded stale-base handling, or any behavioural mutation in the control checkpoint.
+**Fail:** self-acceptance of the control package, ambiguous ownership, shared writable files, autonomous continuation, missing tester independence, missing reconstruction evidence, unrecorded stale-base handling, premature lane launch or any behavioural mutation in the control checkpoint.
 
 ### Module-local proof gate — `<Mxx>-PROOF`
 
@@ -321,7 +322,10 @@ Local variables and private helpers are module-local vocabulary. New exported co
 - module-local proof protocol: `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
 - parallel operating law: `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md`
 - lane registry: `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
-- PM parallel-control decision: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_PM_REVIEW_V1.md`
+- superseded PM decision: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_PM_REVIEW_V1.md`
+- self-audit rejection: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_SELF_AUDIT_REJECTION_V1.md`
+- repair record: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_PM_RECORD_V1.md`
+- independent control tester brief: `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md`
 - parallel-control mechanical evidence: `project_control/canonical_project_manager/parallel_workflow_validation/`
 - Cycle 1 briefs: `project_control/canonical_project_manager/PARALLEL_CYCLE_01/`
 - architecture decision: `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md`
@@ -377,7 +381,8 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-26 | `M13-PROOF-V8-REVIEW` | `IMPLEMENTATION_REPAIR_OPEN` | Independent acceptance of V7: all 131 frozen cases preserved; 21 two-instance cases added; conforming reference 152/152; rejected implementation 44 failed/108 passed; eight over-broad guard mutants rejected by designated cases. Open only bounded `M13-IMPLEMENT-REPAIR-V1`. |
 | 2026-07-27 | `M13-IMPLEMENT-REPAIR-V1` | `independent_pm_accepted` | Exact worker commit `616fade4123def7870b7950bb3e644ffcc0ccc5a` accepted after independent source reconstruction, blob verification, complete proof and bounded shadow validation. Open only `M01-PROOF-MLC-A-V1`; M01 production and test mutation remain closed. |
 
-| 2026-07-28 | `PARALLEL-WORKFLOW-ENABLEMENT-V1` | `cycle_01_allocated_awaiting_worker_launch` | User authorised six permanent PM lanes; Cycle 1 assigns four dependency-independent proof leaves with exact worker/tester labels and holds Lanes 5–6. |
+| 2026-07-28 | `PARALLEL-WORKFLOW-ENABLEMENT-V1` | `rejected_before_launch` | Initial control checkpoint was structurally valid but rejected by PM self-audit before any lane launch. |
+| 2026-07-29 | `PARALLEL-WORKFLOW-ENABLEMENT-V1-REPAIR-1` | `awaiting_independent_control_test` | Governance vocabulary, local manifests, Lane 1 test route, artefact contracts, registry lineage and independent control testing were repaired. |
 
 ## Decisions
 
@@ -409,20 +414,15 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-PAR-001` | Establish six permanent PM-controlled capacity lanes; lanes are not module ownership or long-lived branches. |
 | `DEC-PAR-002` | Use exact thread names `Lane <n><letter>W` and `Lane <n><letter>T`; each assignment uses fresh worker/tester threads. |
 | `DEC-PAR-003` | Permit only dependency-ready, disjoint assignments; keep Lanes 5 and 6 held when no lawful unit exists. |
-| `DEC-PAR-004` | Workers and testers return one Git-preserving archive each; tester PASS is suitable for PM integration review only. |
+| `DEC-PAR-004` | Workers return one exact-named Git-preserving Worker Candidate Archive; testers return one exact-named reconstructable verdict package. Tester PASS is suitable for PM integration review only. |
 | `DEC-PAR-005` | Canonical integration is sequential; Cycle 1 order is M01, M04, M07, M08; stale or conflicting outputs require revalidation. |
 
 
 ## Next gate
 
-After publication of this control checkpoint, launch exactly these four worker threads from the same source archive:
+Publish the repaired control checkpoint and create only the independent thread `Parallel Control T1` using `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md`.
 
-- `Lane 1AW` — `M01-PROOF-MLC-R-V1`;
-- `Lane 2AW` — `M04-PROOF-MLC-A-V1`;
-- `Lane 3AW` — `M07-PROOF-MLC-A-V1`;
-- `Lane 4AW` — `M08-PROOF-MLC-A-V1`.
-
-Create their matching tester threads `Lane 1AT`, `2AT`, `3AT` and `4AT` only for the corresponding worker return. Lanes 5 and 6 remain held. No worker or tester may change source, physical tests, global controls or another lane's evidence, and no `B` assignment opens from an unintegrated result.
+Do not launch `Lane 1AW`–`Lane 4AW` from the repair branch. A lane launch becomes lawful only after the independent control tester returns PASS and the Project Manager separately accepts the tested checkpoint. Lanes 5 and 6 remain held and no `B` assignment opens.
 
 ## Roadblocks and Unknowns
 
@@ -432,6 +432,7 @@ Create their matching tester threads `Lane 1AT`, `2AT`, `3AT` and `4AT` only for
 - Production retention, backup, recovery, capacity, deployment topology, credentials and live/paper operating requirements remain intentionally unknown and out of scope.
 - Historical candidate dispositions for missing normative authority remain evidence and must be reconciled when their owning module opens or during final consolidation.
 - The current source package graph contains small historical cycles; their removal belongs to the affected module migrations and is not a control-only change.
+- Vocabulary baseline proof has two pre-existing red node IDs at both `9e404df7…` and the repair state: the historical `Serial Desk-cognition` heading expectation and missing `mutable_runtime_surface` baseline entry. The repair adds no new vocabulary-test failure; these remain an explicit later M15 reconciliation obligation.
 
 ## Stop and return conditions
 

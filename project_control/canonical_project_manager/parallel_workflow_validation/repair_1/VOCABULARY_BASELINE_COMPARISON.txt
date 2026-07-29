@@ -1,0 +1,9 @@
+baseline_commit	9e404df7c13f7cca170e05e4c9f76b8ec4548ffa
+baseline_exit_status	1
+repair_exit_status	1
+baseline_failures	['tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_durable_row_terms_are_governed_exactly_or_by_alias', 'tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py::test_required_parallel_risk_protocol_and_calendar_terms_are_present']
+repair_failures	['tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_durable_row_terms_are_governed_exactly_or_by_alias', 'tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py::test_required_parallel_risk_protocol_and_calendar_terms_are_present']
+failure_set_equal	PASS
+new_failure_count	0
+fixed_failure_count	0
+conclusion	The two red tests pre-exist the control repair; the repair adds no vocabulary-test regression. Scoped builder parity and all seven new admissions are validated separately.

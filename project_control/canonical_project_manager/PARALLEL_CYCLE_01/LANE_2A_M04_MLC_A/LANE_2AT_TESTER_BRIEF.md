@@ -9,6 +9,7 @@
 - Owner module: M04 `packet_protocol`
 - Contract boundary: K07 `DmpV3Packet`
 - Expected worker branch: `work/lane-2a-m04-mlc-a-v1`
+- Revision: `R1`
 - Tester branch: `test/lane-2a-m04-mlc-a-v1`
 
 ## Inputs
@@ -20,13 +21,21 @@ Use only:
 
 Verify both archive hashes, complete `.git` history, worker ancestry to the PM source commit, expected worker branch/commit and clean worker worktree. Reconstruct the exact candidate, then create the named tester branch from the exact worker candidate commit before adding tester-owned evidence.
 
+## Assignment-local full-read manifest
+
+Before substantive review, independently create and maintain:
+
+`project_control/canonical_project_manager/modules/M04/raw_validation/tester_mlc_a_v1/FULL_READ_MANIFEST.tsv`
+
+Record every required file, reason, read status, mutation relevance and pre-review SHA-256 where available. Do not copy the worker manifest as proof of tester reading and do not modify the global historical `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`.
+
 ## Role and one question
 
 Act only as the independent tester for `M04-PROOF-MLC-A-V1`.
 
 > Does the proposed M04 authority disposition follow current numbered meaning, preserve the packet-owner boundary and expose every material ambiguity instead of borrowing authority from tests or code?
 
-Do not repair worker output, broaden authority or review another lane.
+Do not repair worker output, broaden authority or review another assignment. No global workflow-registry reading is required.
 
 ## Required full reading
 
@@ -40,7 +49,6 @@ Do not repair worker output, broaden authority or review another lane.
 8. `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
 9. `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md`
 10. `ROADMAP_LEDGER_V2.md`
-11. `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
 12. `docs/01_NORMATIVE_CORE.md` and `docs/01.1_NORMATIVE_WORKING.md`
 13. packet-relevant sections of `docs/03_DOMAIN_MODEL_CORE.md` and `docs/03.1_DOMAIN_MODEL_WORKING.md`, with full files read
 14. `docs/04_TECHNICAL_ARCHITECTURE_CORE.md` and `docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md`
@@ -94,19 +102,29 @@ Return exactly one:
 
 For `FAIL_REPAIRABLE`, list bounded defects within the existing authority/write set. For `HARD_BLOCK`, identify the missing authority, invalid baseline, architecture conflict or required scope change.
 
-## Tester record and archive
+## Tester record and exact portability artefact
 
-Create a tester review record and raw evidence only in the tester-owned paths. For every verdict, commit the tester evidence after the unchanged worker commit(s), create exactly one Git-preserving full-history tester-result archive outside the repository and verify by fresh extraction:
+Create the tester review record and raw evidence only in the tester-owned paths. Commit the tester evidence after the unchanged worker commit or ordered worker commit series. Never modify, squash or rewrite worker commits.
 
-- PM source ancestry;
-- exact worker commit(s);
-- tester evidence commit;
-- declared changed paths;
-- clean worktree;
-- evidence hashes;
-- `git diff --check` and `git fsck --full --no-dangling`.
+Return exactly one tar archive outside the repository, named by verdict:
 
-Return exactly one tester-result archive, its SHA-256, the verdict and a concise defect/evidence table. Never modify or rewrite the worker commit(s).
+- PASS: `NVDA_LANE_2A_M04_MLC_A_TESTER_APPROVED_R1.tar.gz`
+- FAIL_REPAIRABLE: `NVDA_LANE_2A_M04_MLC_A_TESTER_FAIL_REPAIRABLE_R1.tar.gz`
+- HARD_BLOCK: `NVDA_LANE_2A_M04_MLC_A_TESTER_HARD_BLOCK_R1.tar.gz`
+
+The archive must contain exactly one portability package with:
+
+- `MANIFEST.json` recording assignment `2A`, revision `R1`, PM source archive/SHA/branch/commit, worker branch/commit(s), tester branch/evidence commit, verdict, exact worker/tester write sets and package member hashes;
+- `changes.bundle`, created from the tester branch and verified with `git bundle verify`, containing the worker and tester evidence commits with reconstructable PM-source ancestry;
+- `CHANGED_PATHS.tsv`;
+- `FILE_SHA256.tsv`;
+- `WORKER_CLAIM.md` copied byte-for-byte from worker evidence;
+- `TESTER_VERDICT.md`;
+- `validation/` with raw independent command output and at least one tester-owned challenge;
+- `RECONSTRUCTION.txt` proving fresh reconstruction, exact commits, expected branch and clean worktree;
+- `SHA256SUMS` for every other package member.
+
+Verify package SHA-256, `git bundle verify`, fresh reconstruction, exact changed paths, evidence hashes, `git diff --check` and `git fsck --full --no-dangling`. Return the one archive, its SHA-256, the verdict and a concise defect/evidence table.
 
 End a PASS with:
 

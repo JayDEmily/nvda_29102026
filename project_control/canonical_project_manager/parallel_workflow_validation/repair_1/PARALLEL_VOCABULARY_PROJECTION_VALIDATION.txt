@@ -1,0 +1,8 @@
+PASS independent_control_test Independent Control Test
+PASS lane_assignment Lane Assignment
+PASS material_read_set Material Read Set
+PASS parallel_execution_lane Parallel Execution Lane
+PASS pm_controlled_parallel_workflow PM-controlled Parallel Workflow
+PASS tester_approved_portability_artefact Tester-approved Portability Artefact
+PASS worker_candidate_archive Worker Candidate Archive
+SUMMARY 7 admissions present; committed projection equals builder output

@@ -1,0 +1,5 @@
+command	PYTHONPATH=src python scripts/build_canonical_vocabulary.py
+exit_status	0
+sha256_before	6ca013fb51127c10fcfdd3ee8bc0254139460a7c003356b9f340e202b1d85f35
+sha256_after	6ca013fb51127c10fcfdd3ee8bc0254139460a7c003356b9f340e202b1d85f35
+idempotent	PASS

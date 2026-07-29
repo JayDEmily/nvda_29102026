@@ -1,3 +1,5 @@
+> **SUPERSEDED AND REJECTED BEFORE LAUNCH:** This historical PM disposition was withdrawn by `PARALLEL_CONTROL_SELF_AUDIT_REJECTION_V1.md`. It is not current launch authority.
+
 # Parallel Workflow Enablement V1 — Project Manager Review
 
 ## Disposition

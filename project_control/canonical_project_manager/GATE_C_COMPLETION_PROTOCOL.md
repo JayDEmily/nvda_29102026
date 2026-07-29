@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `AMENDED_PARALLEL_MODULE_LOCAL_PROOF_PROTOCOL`
+**Status:** `REPAIRED_PARALLEL_PROTOCOL_AWAITING_INDEPENDENT_CONTROL_TEST`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -344,9 +344,9 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current parallel cycle
 
-**Control disposition:** `PARALLEL_CYCLE_01_ALLOCATED_AWAITING_WORKER_LAUNCH`.
+**Control disposition:** `PARALLEL_CONTROL_REPAIR_1_AWAITING_INDEPENDENT_CONTROL_TEST`.
 
-The accepted M01 authority decision remains unchanged. Cycle 1 opens four dependency-independent proof leaves from one canonical control checkpoint:
+The accepted M01 authority decision remains unchanged. Four dependency-independent Cycle 1 proof leaves are reserved, but none is open for execution until `Parallel Control T1` passes and the Project Manager accepts the tested checkpoint:
 
 | Lane pair | Unit | Mutation boundary |
 |---|---|---|
@@ -356,6 +356,8 @@ The accepted M01 authority decision remains unchanged. Cycle 1 opens four depend
 | `Lane 4AW` / `Lane 4AT` | `M08-PROOF-MLC-A-V1` | one M08 authority record and lane-owned evidence only |
 | Lanes 5 and 6 | held | no dependency-safe additional semantic unit |
 
-Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and testers. Each tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
+Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and lane testers. The control repair alone lawfully admits M15 workflow vocabulary and updates programme controls. Each lane tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
+
+**Immediate gate:** publish the repair checkpoint and run `Parallel Control T1` only. Tester PASS remains subject to PM control acceptance before any lane launch.
 
 No lane may begin `MLC-O`, `MLC-R` for another module, proof design, test mutation, implementation or a `B` assignment until the PM issues a new brief from an appropriate canonical checkpoint.

@@ -111,7 +111,7 @@ A worker brief must be a standalone Markdown file and must contain only the boun
 - stop/return conditions;
 - a reminder that shared files are live and unrelated changes must be preserved.
 
-A worker must not receive the entire programme as its task, select follow-on work, broaden its unit, alter root control surfaces, or claim programme completion. A PM-issued lane uses the exact thread label `Lane <number><letter>W`; its independent tester uses `Lane <number><letter>T`. Each assignment uses a fresh short-lived branch from the named canonical base. The Project Manager reviews the returned files/diff and tester evidence before acceptance and serial integration.
+A worker must not receive the entire programme as its task, select follow-on work, broaden its unit, alter root control surfaces, or claim programme completion. A PM-issued lane uses the exact thread label `Lane <number><letter>W`; its independent tester uses `Lane <number><letter>T`. Each assignment uses a fresh short-lived branch from the named canonical base. The Project Manager reviews the returned files/diff and tester evidence before acceptance and serial integration. The brief must name the assignment revision, exact Worker Candidate Archive and exact tester verdict artefacts; a PASS tester return must include a reconstructable Git bundle, manifests, hashes, claims, verdict and raw validation rather than an informal archive.
 
 ## Vocabulary, tests, and Atlas
 
