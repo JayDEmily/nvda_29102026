@@ -1,0 +1,10 @@
+path	classification	authority
+project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md	assignment-owned worker record	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv	lane-owned evidence	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FILE_SHA256.tsv	lane-owned evidence	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv	lane-local full-read manifest	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/RECONSTRUCTION.txt	lane-owned fresh-extraction evidence	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/WORKER_CLAIM.md	lane-owned worker claim	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/SOURCE_VERIFICATION.txt	lane-owned raw validation	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/VALIDATION_RAW.txt	lane-owned raw validation	Lane 4AW exact write set
+project_control/canonical_project_manager/modules/M08/raw_validation/mlc_a_v1/validation/WORKBOOK_M08_K13_VALIDATION.txt	lane-owned raw validation	Lane 4AW exact write set
