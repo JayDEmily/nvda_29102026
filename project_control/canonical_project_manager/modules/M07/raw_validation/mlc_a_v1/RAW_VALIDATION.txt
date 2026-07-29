@@ -99,3 +99,21 @@ PASS staged_paths=5 forbidden_paths=0
 <git diff --check produced no output>
 <git diff --cached --check produced no output>
 <git fsck --full --no-dangling produced no output>
+
+[V11] Semantic-content commit and fresh-extraction reconstruction
+commands:
+git commit -m "docs(m07): record MLC-A authority blocker"
+tar -czf /tmp/lane3aw-content-candidate.tar.gz -C /workspace/scratch/b34203c7ddab/lane3aw.aDAkhY Nvda11
+fresh extract and verify branch, commit, clean status, non-shallow history, ancestry, changed paths, file hashes and fsck
+exit_statuses: 0,0,0
+output:
+content_commit=db451a81ed8ab44bc987efc8049d2f9d043897e7
+intermediate_archive_sha256=254c59c84c525668ea67bb1c5dffd52522064e342c2a175d3fbab581276c7a88
+PASS reconstructed_files=5 hash_mismatches=0
+Details are retained in RECONSTRUCTION.txt.
+
+[V12] Evidence hash index
+command: validate all seven FILE_SHA256.tsv rows; raw SHA-256 for six files and canonical self-hash with the self field normalised to 64 zeroes
+exit_status: 0
+output:
+PASS evidence_files=7 hash_mismatches=0

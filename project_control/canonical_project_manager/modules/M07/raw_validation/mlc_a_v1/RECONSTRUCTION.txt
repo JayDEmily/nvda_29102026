@@ -1,0 +1,79 @@
+Lane 3AW fresh-extraction reconstruction evidence
+Unit: M07-PROOF-MLC-A-V1
+
+Purpose
+-------
+This receipt proves that the committed semantic-content checkpoint can be
+packaged with full Git history and reconstructed in a fresh directory. The
+intermediate archive named below is validation material only and is not the
+return artefact. A final evidence-only commit adds this receipt, the evidence
+hash index, and the corresponding closeout text to RAW_VALIDATION.txt.
+
+Content checkpoint
+------------------
+commit: db451a81ed8ab44bc987efc8049d2f9d043897e7
+parent/source checkpoint: ee67c752d14073a959fda478f31f4466b6952cae
+branch: work/lane-3a-m07-mlc-a-v1
+intermediate archive: /tmp/lane3aw-content-candidate.tar.gz
+intermediate archive sha256: 254c59c84c525668ea67bb1c5dffd52522064e342c2a175d3fbab581276c7a88
+intermediate archive size_bytes: 31350203
+fresh extraction root: /tmp/lane3aw-recon.D5FTT3
+
+Fresh-extraction commands and results
+-------------------------------------
+command: tar -xzf /tmp/lane3aw-content-candidate.tar.gz -C /tmp/lane3aw-recon.D5FTT3
+exit_status: 0
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 branch --show-current
+exit_status: 0
+output:
+work/lane-3a-m07-mlc-a-v1
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 rev-parse HEAD
+exit_status: 0
+output:
+db451a81ed8ab44bc987efc8049d2f9d043897e7
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 status --short --branch
+exit_status: 0
+output:
+## work/lane-3a-m07-mlc-a-v1
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 rev-parse --is-shallow-repository
+exit_status: 0
+output:
+false
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 rev-list --count HEAD
+exit_status: 0
+output:
+215
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 merge-base --is-ancestor ee67c752d14073a959fda478f31f4466b6952cae HEAD
+exit_status: 0
+
+command: git -C /tmp/lane3aw-recon.D5FTT3/Nvda11 fsck --full --no-dangling
+exit_status: 0
+output:
+<no output>
+
+command: compare SHA-256 for each path changed between the source checkpoint and content checkpoint in the source and fresh-extracted repositories
+exit_status: 0
+output:
+PASS reconstructed_files=5 hash_mismatches=0
+
+Reconstructed changed paths
+---------------------------
+project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md
+project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
+project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/RAW_VALIDATION.txt
+project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/WORKER_CLAIM.md
+
+Final-archive rule
+------------------
+The required final archive is created only after the evidence-only closeout
+commit. It is then independently fresh-extracted and checked for the final
+branch, commit, clean worktree, non-shallow full Git history, ancestry to the
+PM source checkpoint, exact changed paths, evidence hashes, and fsck. That
+outer final verification does not mutate the committed candidate.
