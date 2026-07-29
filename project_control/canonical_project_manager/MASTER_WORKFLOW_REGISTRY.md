@@ -2,11 +2,11 @@
 
 ## Status
 
-`PARALLEL_CONTROL_REPAIR_2_AWAITING_INDEPENDENT_CONTROL_RETEST`
+`PARALLEL_CONTROL_R2_ACCEPTED_WORKER_LAUNCH_OPEN`
 
 This registry is PM-owned. Lane workers and lane testers must not edit or read it as a required assignment input. The independent control tester may read it but may add evidence only in its separately authorised control-test paths.
 
-No Cycle 1 worker launch is authorised from the current repair branch. After independent control PASS and PM acceptance, the PM launch message will supply the exact accepted source archive, SHA-256, branch and commit.
+Cycle 1 worker launch is authorised only from the PM-published immutable full-history checkpoint created from this accepted review branch. The PM launch message supplies its exact archive filename, SHA-256, branch and commit.
 
 ## Current control lineage
 
@@ -24,8 +24,8 @@ No Cycle 1 worker launch is authorised from the current repair branch. After ind
 | Current-target read manifest | `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_2_FULL_READ_MANIFEST.tsv` |
 | Repair archive filename | `NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_2_20260729_FULL_HISTORY.tar.gz` |
 | Repair archive SHA-256 | supplied in PM control-test launch message after archive verification |
-| Repair commit | supplied in PM control-test launch message after commit |
-| Worker-launch source | not established until independent control PASS and PM acceptance |
+| Repair commit | `f95756e8dfeced446986c856bd28c4dcd6be0c07` |
+| Worker-launch source | PM acceptance branch `review/parallel-control-r2-accepted`; exact commit and archive SHA-256 supplied in launch message |
 | Integration order | `1A → 2A → 3A → 4A` |
 | Lane-local continuation | prohibited for Cycle 1 |
 
@@ -33,10 +33,10 @@ No Cycle 1 worker launch is authorised from the current repair branch. After ind
 
 | Lane | Assignment | Revision | Worker thread | Tester thread | Semantic unit | Owner / contract | Runtime prerequisites | Worker branch | Tester branch | Worker commit | Tester evidence commit | Tester verdict | Approved portability artefact | Artefact SHA-256 | PM disposition | Queue position | Integration commit | Aggregate validation | State / blocker |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | `1A` | `R1` | `Lane 1AW` | `Lane 1AT` | `M01-PROOF-MLC-R-V1` | M01 / K01–K03 | M13 accepted; M01 MLC-A accepted | `work/lane-1a-m01-mlc-r-v1` | `test/lane-1a-m01-mlc-r-v1` | — | — | — | — | — | pending | not queued | — | not run | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 2 | `2A` | `R1` | `Lane 2AW` | `Lane 2AT` | `M04-PROOF-MLC-A-V1` | M04 / K07 | none | `work/lane-2a-m04-mlc-a-v1` | `test/lane-2a-m04-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 3 | `3A` | `R1` | `Lane 3AW` | `Lane 3AT` | `M07-PROOF-MLC-A-V1` | M07 / K12 and `OBL-M07-POSITIVE` | none | `work/lane-3a-m07-mlc-a-v1` | `test/lane-3a-m07-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 4 | `4A` | `R1` | `Lane 4AW` | `Lane 4AT` | `M08-PROOF-MLC-A-V1` | M08 / K13 | none | `work/lane-4a-m08-mlc-a-v1` | `test/lane-4a-m08-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `ALLOCATED_CONTROL_TEST_PENDING` |
+| 1 | `1A` | `R1` | `Lane 1AW` | `Lane 1AT` | `M01-PROOF-MLC-R-V1` | M01 / K01–K03 | M13 accepted; M01 MLC-A accepted | `work/lane-1a-m01-mlc-r-v1` | `test/lane-1a-m01-mlc-r-v1` | — | — | — | — | — | pending | not queued | — | not run | `WORKER_LAUNCH_AUTHORISED` |
+| 2 | `2A` | `R1` | `Lane 2AW` | `Lane 2AT` | `M04-PROOF-MLC-A-V1` | M04 / K07 | none | `work/lane-2a-m04-mlc-a-v1` | `test/lane-2a-m04-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `WORKER_LAUNCH_AUTHORISED` |
+| 3 | `3A` | `R1` | `Lane 3AW` | `Lane 3AT` | `M07-PROOF-MLC-A-V1` | M07 / K12 and `OBL-M07-POSITIVE` | none | `work/lane-3a-m07-mlc-a-v1` | `test/lane-3a-m07-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `WORKER_LAUNCH_AUTHORISED` |
+| 4 | `4A` | `R1` | `Lane 4AW` | `Lane 4AT` | `M08-PROOF-MLC-A-V1` | M08 / K13 | none | `work/lane-4a-m08-mlc-a-v1` | `test/lane-4a-m08-mlc-a-v1` | — | — | — | — | — | pending | not queued | — | not run | `WORKER_LAUNCH_AUTHORISED` |
 | 5 | — | — | — | — | held | — | no lawful additional root | — | — | — | — | — | — | — | — | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 | 6 | — | — | — | — | held | — | no lawful additional root | — | — | — | — | — | — | — | — | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 
@@ -73,4 +73,4 @@ All paths outside each exact brief write set are locked. Workers and testers do 
 
 - The original control checkpoint at `9e404df7…` was rejected by PM self-audit before any lane launch.
 - No Cycle 1 assignment has been launched, returned, tested, accepted or integrated.
-- Repair 1 was hard-blocked correctly; Repair 2 awaits the `Parallel Control T1` retest; no lane source archive is yet accepted.
+- Repair 1 was hard-blocked correctly. Repair 2 passed `Parallel Control T1` at tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63` and was accepted by the Project Manager. No worker result has yet returned.

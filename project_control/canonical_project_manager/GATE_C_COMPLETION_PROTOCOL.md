@@ -344,9 +344,9 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current parallel cycle
 
-**Control disposition:** `PARALLEL_CONTROL_REPAIR_2_AWAITING_INDEPENDENT_CONTROL_RETEST`.
+**Control disposition:** `ACCEPTED:PARALLEL_CONTROL_R2_WORKER_LAUNCH_OPEN`.
 
-The accepted M01 authority decision remains unchanged. Four dependency-independent Cycle 1 proof leaves are reserved, but none is open for execution until `Parallel Control T1` passes and the Project Manager accepts the tested checkpoint:
+The accepted M01 authority decision remains unchanged. `Parallel Control T1` returned PASS at tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`, and the Project Manager independently accepted the tested control package. Four dependency-independent Cycle 1 proof leaves are open for worker launch from one PM-published immutable checkpoint:
 
 | Lane pair | Unit | Mutation boundary |
 |---|---|---|
@@ -358,6 +358,6 @@ The accepted M01 authority decision remains unchanged. Four dependency-independe
 
 Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and lane testers. The control repair alone lawfully admits M15 workflow vocabulary and updates programme controls. Each lane tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
 
-**Immediate gate:** publish the Repair 2 checkpoint and rerun `Parallel Control T1` only using the Repair 2 retest brief. Tester PASS remains subject to PM control acceptance before any lane launch.
+**Immediate gate:** publish the accepted full-history worker-launch checkpoint and issue the four exact worker briefs. Create a lane tester only after its matching worker returns.
 
 No lane may begin `MLC-O`, `MLC-R` for another module, proof design, test mutation, implementation or a `B` assignment until the PM issues a new brief from an appropriate canonical checkpoint.

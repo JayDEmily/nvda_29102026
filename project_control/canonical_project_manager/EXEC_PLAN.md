@@ -2,7 +2,7 @@
 
 ## Status
 
-`parallel_control_repair_2_awaiting_independent_control_retest`
+`parallel_control_r2_accepted_worker_launch_open`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -12,7 +12,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendments accepted | 2026-07-25 and 2026-07-28 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `control/parallel-workflow-enablement-v1-repair-2` |
+| Current branch | `review/parallel-control-r2-accepted` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Control repair only: `Parallel Control T1` retest pending; Cycle 1 assignments 1A–4A reserved but not launch-authorised; Lanes 5 and 6 held |
-| Mutation state | Control repair changes programme controls, M15 vocabulary authority and deterministic vocabulary projection only; lane work remains closed pending independent control test and PM acceptance |
+| Active units | Cycle 1 assignments 1A–4A worker launch authorised from the PM-published immutable checkpoint; Lanes 5 and 6 held |
+| Mutation state | Parallel control R2 accepted; Cycle 1 workers may change only their exact lane-local control/evidence write sets; production source, physical tests, configuration, normative documents and global controls remain closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -416,13 +416,14 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-PAR-003` | Permit only dependency-ready, disjoint assignments; keep Lanes 5 and 6 held when no lawful unit exists. |
 | `DEC-PAR-004` | Workers return one exact-named Git-preserving Worker Candidate Archive; testers return one exact-named reconstructable verdict package. Tester PASS is suitable for PM integration review only. |
 | `DEC-PAR-005` | Canonical integration is sequential; Cycle 1 order is M01, M04, M07, M08; stale or conflicting outputs require revalidation. |
+| `DEC-PAR-006` | `ACCEPTED:PARALLEL_CONTROL_R2`: accept independent tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`; open only Cycle 1 worker launch for assignments 1A–4A from one PM-published immutable checkpoint; Lanes 5 and 6 remain held. |
 
 
 ## Next gate
 
-Publish the Repair 2 control checkpoint and rerun only the independent thread `Parallel Control T1` using `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md`.
+Publish one immutable full-history worker-launch checkpoint from `review/parallel-control-r2-accepted` and launch exactly `Lane 1AW`, `Lane 2AW`, `Lane 3AW` and `Lane 4AW` from that same checkpoint using their matching worker briefs.
 
-Do not launch `Lane 1AW`–`Lane 4AW` from the repair branch. A lane launch becomes lawful only after the independent control tester returns PASS and the Project Manager separately accepts the tested checkpoint. Lanes 5 and 6 remain held and no `B` assignment opens.
+Create each matching tester only after its worker returns. Lanes 5 and 6 remain held and no `B` assignment opens.
 
 ## Roadblocks and Unknowns
 
