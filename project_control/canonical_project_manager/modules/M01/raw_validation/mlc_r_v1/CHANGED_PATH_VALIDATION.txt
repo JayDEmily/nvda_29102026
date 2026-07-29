@@ -1,0 +1,11 @@
+comparison_base=ee67c752d14073a959fda478f31f4466b6952cae
+allowed_exact_file=project_control/canonical_project_manager/modules/M01/M01_RELEVANT_TEST_ROUTING_WORKER_RECORD_V1.md
+allowed_subtree=project_control/canonical_project_manager/modules/M01/raw_validation/mlc_r_v1/
+all_changed_paths_within_exact_write_set=true
+forbidden_src_changes=0
+forbidden_tests_changes=0
+forbidden_config_changes=0
+forbidden_docs_changes=0
+forbidden_vocabulary_changes=0
+forbidden_global_project_control_changes=0
+result=PASS
