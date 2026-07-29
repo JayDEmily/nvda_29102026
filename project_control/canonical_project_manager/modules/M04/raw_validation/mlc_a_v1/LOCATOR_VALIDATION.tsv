@@ -1,0 +1,45 @@
+claim_id	locator	validated_current_text	result
+P01	docs/01_NORMATIVE_CORE.md:81-85	Cross-cutting layers do not replace runtime steps; every packetised runtime output uses the canonical DMPV3 outer envelope.	PASS
+P01	docs/04_TECHNICAL_ARCHITECTURE_CORE.md:24-50	DMPV3 is the common envelope for live packet carriage and does not erase payload or owner distinctions.	PASS
+P01-P02	docs/09_DMPV3_PROTOCOL_CORE.md:19-58	One canonical live outer envelope and its complete required field set are stated.	PASS
+P03	docs/03.1_DOMAIN_MODEL_WORKING.md:77-87	Source evidence, prepared truth and packet carriage are distinct; DMP carries bounded outputs.	PASS
+P03	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:74-84	DMPV3 begins at deliberate carriage boundaries and does not replace typed carriers or payload contracts.	PASS
+P03	project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md:125-145	Accepted architecture retains M04 only for deliberate packet carriage and envelope validation.	PASS
+P04	docs/09_DMPV3_PROTOCOL_CORE.md:78-93	Readers use packetrole, producer grammar role, behaviour class and dataschema rather than payload shape.	PASS
+P04	docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md:17-41	Carriage does not acquire a producing or state-owning module's semantic authority.	PASS
+P05	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:74-84	Builder authority is packet occurrence identity/emission metadata; caller supplies upstream identities.	PASS
+P05-P06	docs/09.1_DMPV3_PROTOCOL_WORKING.md:11-23	Source plus id identifies only the packet occurrence; upstream authority must remain separately preserved.	PASS
+P07	docs/09.1_DMPV3_PROTOCOL_WORKING.md:25-39	Trace, run and scenario identities are distinct, owner-supplied and must not be silently derived/defaulted.	PASS
+P08	docs/09.1_DMPV3_PROTOCOL_WORKING.md:41-61	All current lineage fields have distinct semantics; the role-specific obligation matrix is deferred.	PASS
+P09	docs/09.1_DMPV3_PROTOCOL_WORKING.md:63-79	Packet time is emission time, not source observation time; source precision cannot be invented.	PASS
+P09	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:44-72	Source time, capture time and persistence time are distinct and preserve lawful precision.	PASS
+P10	docs/03.1_DOMAIN_MODEL_WORKING.md:41-55	Each identifier has one owner/meaning; missing owner facts fail closed and cannot be replaced by convenience IDs.	PASS
+P10	docs/05.1_GUARDRAILS_WORKING.md:33-44	Identifier fabrication, meaning reassignment and dropped material lineage are prohibited.	PASS
+P11-P12	docs/09.1_DMPV3_PROTOCOL_WORKING.md:81-91	Validation is exact-role-specific; mandatory failures reject/stand down/use a separate diagnostic contract; defaults do not prove validity.	PASS
+P13	docs/09.1_DMPV3_PROTOCOL_WORKING.md:93-119	Summary and extension fields cannot create, hide or weaken mandatory authority.	PASS
+P14	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:113-127	Preserved-envelope evidence and domain re-execution are separate; current emission metadata is excluded from semantic fingerprints.	PASS
+P14	docs/09.1_DMPV3_PROTOCOL_WORKING.md:121-129	A preserved occurrence remains unchanged; replay output is a new packet occurrence linked to original evidence.	PASS
+P14	project_control/normative_authority_top_down_alignment/normative_completion_decisions/N-09_AUTHORITATIVE_REPLAY.md:21-44	N-09 admits semantic replay, isolated execution and preserved complete-envelope evidence.	PASS
+P15	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:17-49	Owner/emitter/state/persistence roles remain distinct and physical carriage does not confer semantic authority.	PASS
+OWNER	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:154-173	M04 owns envelope validation/carriage and must not own raw ingress, domain decisions or identity/time fabrication.	PASS
+DEPENDENCY	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:184-202	M04 has no runtime/contract dependency.	PASS
+SURFACE	docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:220-235	Surface 5.6 is locked/thin-seam deliberate packet carriage, not raw ingress, internal-stage business logic or persistence truth.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Surface Map!A7:O7	Accepted surface 5.6 row matches deliberate carriage, locked/thin_seam and M04 ownership.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Target Modules!A6:Q6	Accepted M04 row matches owner, prohibited authority, dependency and rebuild disposition.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Contracts!A8:E8	Accepted K07 row defines DmpV3Packet as common outer envelope with supplied role-specific IDs.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Work Units!A8:V8	Accepted D010 row maps M04/K07 authority proof with no runtime prerequisite.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Milestones!A8	Accepted M04 milestone row maps the packet_protocol authority/proof leaf.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx:Dependency Nodes!A24:D24;A42:D42	Accepted dependency nodes identify M04 and K07.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json:.surfaces[]|select(.surface_id=="5.6")	Accepted machine-readable surface row matches workbook/report.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json:.modules[]|select(.module_id=="M04")	Accepted machine-readable M04 row matches workbook/report.	PASS
+ATLAS	project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json:.contracts[]|select(.contract_id=="K07")	Accepted machine-readable K07 row matches workbook/report.	PASS
+N03	project_control/normative_authority_top_down_alignment/normative_completion_decisions/N-03_PREPARED_DATA_COMMON_ENVELOPE.md:21-43	N-03 supplies prepared identity, lineage, temporal, fingerprint, validation and source-artefact facts but not per-packet-role allocation.	PASS
+N05	project_control/normative_authority_top_down_alignment/normative_completion_decisions/N-05_COMMON_METADATA_AND_STAGE_SPECIFIC_CARRIERS.md:21-43	N-05 separates common context from stage-specific carriers but does not define the K07 role matrix.	PASS
+C010	project_control/normative_authority_top_down_alignment/gate_c_test_design/B02_TEST_DESIGN.md:53-73	C-010 design asks for role-specific IDs, source lineage, deterministic reproduction and pre-DMP separation.	PASS
+C016	project_control/normative_authority_top_down_alignment/gate_c_test_design/B04_TEST_DESIGN.md:53-73	C-016 design asks for supplied context, dependency/source lineage and output independent of emission time.	PASS
+D010	project_control/normative_authority_top_down_alignment/gate_c2_proof_envelopes/D-010.md:63-71	D-010 closes authority because the reference packet permits trace/run defaulting while proposed Gate C rejects omitted context.	PASS
+D016	project_control/normative_authority_top_down_alignment/gate_c2_proof_envelopes/D-016.md:63-71	D-016 remains dependent on D-010 role-specific authority and D-015 prepared-lineage proof.	PASS
+GAP01	docs/09.1_DMPV3_PROTOCOL_WORKING.md:61	Every packet role's mandatory/optional/conditional/not-applicable lineage subset remains for Gate B.	PASS
+GAP01	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:66-80	Exact per-boundary replay field names and mandatory subset remain for the Gate B semantic walk.	PASS
+GAP02	docs/09.1_DMPV3_PROTOCOL_WORKING.md:83-91	The producer must know checks required for the exact packet role, but no complete current per-role profile is enumerated.	PASS
+GAP01-GAP02	docs/09.1_DMPV3_PROTOCOL_WORKING.md:155-161	The overlay expressly forbids inferring role-specific lineage/validation checks from defaults.	PASS

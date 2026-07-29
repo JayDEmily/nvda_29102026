@@ -1,0 +1,48 @@
+Lane 2AW bounded validation
+source_commit=ee67c752d14073a959fda478f31f4466b6952cae
+expected_branch=work/lane-2a-m04-mlc-a-v1
+
+[status]
+command: git status --short --branch
+## work/lane-2a-m04-mlc-a-v1
+?? project_control/canonical_project_manager/modules/M04/
+exit_status: 0
+
+[branch]
+command: check_branch
+exit_status: 0
+
+[source_ancestry]
+command: check_source_ancestry
+exit_status: 0
+
+[complete_history]
+command: check_not_shallow
+exit_status: 0
+
+[diff_check]
+command: git diff --check
+exit_status: 0
+
+[allowed_changed_paths]
+command: check_allowed_paths
+exit_status: 0
+
+[full_read_manifest]
+command: check_manifest
+exit_status: 0
+
+[required_authority_text]
+command: check_required_authority_text
+exit_status: 0
+
+[git_fsck]
+command: git fsck --full --no-dangling
+exit_status: 0
+
+[worker_evidence_hashes]
+status: deferred until FILE_SHA256.tsv exists
+
+validation_failures=0
+
+validator_exit_status=0

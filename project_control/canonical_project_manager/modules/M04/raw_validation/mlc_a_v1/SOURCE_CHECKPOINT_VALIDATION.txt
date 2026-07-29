@@ -1,0 +1,65 @@
+Lane 2AW source-checkpoint validation
+=====================================
+
+Repository input
+----------------
+Archive:
+/workspace/scratch/49847bb25c77/upload/NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar(7).gz
+
+Command:
+sha256sum '/workspace/scratch/49847bb25c77/upload/NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar(7).gz'
+
+Output:
+983d0ffdb977a75a4cd3063bd9d645d24ae7817ff47620e543f9e1f8bfb5a381  /workspace/scratch/49847bb25c77/upload/NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar(7).gz
+
+Exit status: 0
+
+Archive safety and history
+--------------------------
+The archive member inventory was read before extraction. It contained 6,064
+members beneath the single Nvda11 root, including 461 .git entries. The
+inventory contained no absolute paths, parent traversal, device entries or
+links escaping the archive root.
+
+Source Git identity before branch creation
+------------------------------------------
+
+Command: git branch --show-current
+Output: review/parallel-control-r2-accepted
+Exit status: 0
+
+Command: git rev-parse HEAD
+Output: ee67c752d14073a959fda478f31f4466b6952cae
+Exit status: 0
+
+Command: git rev-parse HEAD^
+Output: e672b27ca01efbd1f47de27d41fa54733bc73c63
+Exit status: 0
+
+Command: git status --short --branch
+Output: ## review/parallel-control-r2-accepted
+Exit status: 0
+
+Command: test ! -f .git/shallow
+Output: <none>
+Exit status: 0
+
+Command: git rev-parse --is-shallow-repository
+Output: false
+Exit status: 0
+
+Command: git fsck --full --strict
+Output: only unreachable dangling blobs; no missing or corrupt object
+Exit status: 0
+
+Worker branch creation
+----------------------
+Command:
+git switch -c work/lane-2a-m04-mlc-a-v1 ee67c752d14073a959fda478f31f4466b6952cae
+
+Output:
+Switched to a new branch 'work/lane-2a-m04-mlc-a-v1'
+
+Exit status: 0
+
+No other branch was created.
