@@ -2,7 +2,7 @@
 
 ## Status
 
-`PARALLEL_CONTROL_REPAIR_1_AWAITING_INDEPENDENT_CONTROL_TEST`
+`PARALLEL_CONTROL_REPAIR_2_AWAITING_INDEPENDENT_CONTROL_RETEST`
 
 This registry is PM-owned. Lane workers and lane testers must not edit or read it as a required assignment input. The independent control tester may read it but may add evidence only in its separately authorised control-test paths.
 
@@ -16,13 +16,13 @@ No Cycle 1 worker launch is authorised from the current repair branch. After ind
 | Accepted pre-parallel checkpoint commit | `ae7c8b05bf3742a5c0be530a26617d999313d232` |
 | Superseded control branch | `control/parallel-workflow-enablement-v1` |
 | Superseded control commit | `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa` |
-| Repair branch | `control/parallel-workflow-enablement-v1-repair-1` |
-| Repair source commit | `9e404df7c13f7cca170e05e4c9f76b8ec4548ffa` |
-| Repair revision | `CONTROL-R1` |
+| Repair branch | `control/parallel-workflow-enablement-v1-repair-2` |
+| Repair source commit | `44bede21b1d90ec8cdfac386baed7d2ee247eddb` |
+| Repair revision | `CONTROL-R2` |
 | Current control tester | `Parallel Control T1` |
-| Control tester branch | `test/parallel-workflow-enablement-v1-repair-1` |
-| Current-target read manifest | `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_FULL_READ_MANIFEST.tsv` |
-| Repair archive filename | `NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_1_20260729_FULL_HISTORY.tar.gz` |
+| Control tester branch | `test/parallel-workflow-enablement-v1-repair-2` |
+| Current-target read manifest | `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_2_FULL_READ_MANIFEST.tsv` |
+| Repair archive filename | `NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_2_20260729_FULL_HISTORY.tar.gz` |
 | Repair archive SHA-256 | supplied in PM control-test launch message after archive verification |
 | Repair commit | supplied in PM control-test launch message after commit |
 | Worker-launch source | not established until independent control PASS and PM acceptance |
@@ -73,4 +73,4 @@ All paths outside each exact brief write set are locked. Workers and testers do 
 
 - The original control checkpoint at `9e404df7…` was rejected by PM self-audit before any lane launch.
 - No Cycle 1 assignment has been launched, returned, tested, accepted or integrated.
-- The current repair awaits `Parallel Control T1`; no lane source archive is yet accepted.
+- Repair 1 was hard-blocked correctly; Repair 2 awaits the `Parallel Control T1` retest; no lane source archive is yet accepted.

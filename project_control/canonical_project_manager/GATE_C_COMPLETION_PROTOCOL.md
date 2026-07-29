@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `REPAIRED_PARALLEL_PROTOCOL_AWAITING_INDEPENDENT_CONTROL_TEST`
+**Status:** `REPAIRED_PARALLEL_PROTOCOL_R2_AWAITING_INDEPENDENT_CONTROL_RETEST`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -344,7 +344,7 @@ Any amendment must preserve accepted evidence, state the measured defect, identi
 
 ## 14. Current parallel cycle
 
-**Control disposition:** `PARALLEL_CONTROL_REPAIR_1_AWAITING_INDEPENDENT_CONTROL_TEST`.
+**Control disposition:** `PARALLEL_CONTROL_REPAIR_2_AWAITING_INDEPENDENT_CONTROL_RETEST`.
 
 The accepted M01 authority decision remains unchanged. Four dependency-independent Cycle 1 proof leaves are reserved, but none is open for execution until `Parallel Control T1` passes and the Project Manager accepts the tested checkpoint:
 
@@ -358,6 +358,6 @@ The accepted M01 authority decision remains unchanged. Four dependency-independe
 
 Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and lane testers. The control repair alone lawfully admits M15 workflow vocabulary and updates programme controls. Each lane tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
 
-**Immediate gate:** publish the repair checkpoint and run `Parallel Control T1` only. Tester PASS remains subject to PM control acceptance before any lane launch.
+**Immediate gate:** publish the Repair 2 checkpoint and rerun `Parallel Control T1` only using the Repair 2 retest brief. Tester PASS remains subject to PM control acceptance before any lane launch.
 
 No lane may begin `MLC-O`, `MLC-R` for another module, proof design, test mutation, implementation or a `B` assignment until the PM issues a new brief from an appropriate canonical checkpoint.

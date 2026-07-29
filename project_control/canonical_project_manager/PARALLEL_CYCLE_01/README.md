@@ -4,7 +4,7 @@
 
 `WORKER_LAUNCH_BLOCKED_PENDING_PARALLEL_CONTROL_T1_AND_PM_ACCEPTANCE`
 
-The four assignments and names are reserved, but no lane thread may be launched from the control-repair branch. The independent control tester must first return PASS and the Project Manager must accept the tested checkpoint. The repair archive issued to that tester is named `NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_1_20260729_FULL_HISTORY.tar.gz`.
+The four assignments and names are reserved, but no lane thread may be launched from the control-repair branch. The independent control tester must first return PASS and the Project Manager must accept the tested checkpoint. Repair 1 was hard-blocked on an unavailable attachment identity. The Repair 2 archive for retest is `NVDA_PARALLEL_WORKFLOW_CYCLE_01_CONTROL_REPAIR_2_20260729_FULL_HISTORY.tar.gz`.
 
 ## Exact thread names and revision
 
@@ -21,7 +21,7 @@ Lanes 5 and 6 are held. The exact eight-brief inventory and SHA-256 values are r
 
 Create one independent thread named `Parallel Control T1` only. Use:
 
-`project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md`
+`project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md`
 
 Do not create `Lane 1AW`–`Lane 4AW` until that control result has been returned to and accepted by the Project Manager.
 

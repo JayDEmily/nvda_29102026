@@ -2,7 +2,7 @@
 
 ## Status
 
-`parallel_control_repair_1_awaiting_independent_control_test`
+`parallel_control_repair_2_awaiting_independent_control_retest`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -12,7 +12,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendments accepted | 2026-07-25 and 2026-07-28 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `control/parallel-workflow-enablement-v1-repair-1` |
+| Current branch | `control/parallel-workflow-enablement-v1-repair-2` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
@@ -20,7 +20,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Control repair only: `Parallel Control T1` pending; Cycle 1 assignments 1A–4A reserved but not launch-authorised; Lanes 5 and 6 held |
+| Active units | Control repair only: `Parallel Control T1` retest pending; Cycle 1 assignments 1A–4A reserved but not launch-authorised; Lanes 5 and 6 held |
 | Mutation state | Control repair changes programme controls, M15 vocabulary authority and deterministic vocabulary projection only; lane work remains closed pending independent control test and PM acceptance |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
@@ -325,7 +325,7 @@ Local variables and private helpers are module-local vocabulary. New exported co
 - superseded PM decision: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_PM_REVIEW_V1.md`
 - self-audit rejection: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_SELF_AUDIT_REJECTION_V1.md`
 - repair record: `project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_PM_RECORD_V1.md`
-- independent control tester brief: `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md`
+- independent control retest brief: `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md`
 - parallel-control mechanical evidence: `project_control/canonical_project_manager/parallel_workflow_validation/`
 - Cycle 1 briefs: `project_control/canonical_project_manager/PARALLEL_CYCLE_01/`
 - architecture decision: `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md`
@@ -420,7 +420,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 
 ## Next gate
 
-Publish the repaired control checkpoint and create only the independent thread `Parallel Control T1` using `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md`.
+Publish the Repair 2 control checkpoint and rerun only the independent thread `Parallel Control T1` using `project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md`.
 
 Do not launch `Lane 1AW`–`Lane 4AW` from the repair branch. A lane launch becomes lawful only after the independent control tester returns PASS and the Project Manager separately accepts the tested checkpoint. Lanes 5 and 6 remain held and no `B` assignment opens.
 
