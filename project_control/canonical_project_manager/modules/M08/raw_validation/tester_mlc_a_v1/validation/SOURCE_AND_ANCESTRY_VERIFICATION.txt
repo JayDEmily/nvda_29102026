@@ -1,0 +1,43 @@
+Lane 4AT source and worker-candidate verification
+
+PM source uploaded path
+/mnt/data/NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar(11).gz
+Canonical PM source name
+NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar.gz
+SHA-256
+983d0ffdb977a75a4cd3063bd9d645d24ae7817ff47620e543f9e1f8bfb5a381
+Expected SHA-256
+983d0ffdb977a75a4cd3063bd9d645d24ae7817ff47620e543f9e1f8bfb5a381
+Result
+PASS
+
+Worker uploaded path
+/mnt/data/NVDA_LANE_4A_M08_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar(1).gz
+Canonical worker name
+NVDA_LANE_4A_M08_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
+SHA-256
+876150ffdaba6e5cd437805eb85299dbc7867f21359bdfcb95af44cd0d616de8
+Result
+PASS_READABLE_AND_SAFE
+
+PM source Git facts
+branch=review/parallel-control-r2-accepted
+commit=ee67c752d14073a959fda478f31f4466b6952cae
+parent=e672b27ca01efbd1f47de27d41fa54733bc73c63
+status_porcelain=
+shallow=false
+commit_count=214
+git_fsck_full_no_dangling_exit=0
+
+Worker candidate Git facts before tester evidence
+branch=work/lane-4a-m08-mlc-a-v1
+commit=120b08ff4a27199364c1543bae8e7253708744d7
+ordered_worker_commits=4bfcde8fdd09e09ecd82a51faad55286c1c68711,120b08ff4a27199364c1543bae8e7253708744d7
+status_porcelain=
+shallow=false
+pm_source_ancestor_exit=0
+git_fsck_full_no_dangling_exit=0
+
+Archive member safety
+No absolute path or parent-traversal member was present in either archive.
+Each archive contained one repository root, Nvda11/, with complete .git history.

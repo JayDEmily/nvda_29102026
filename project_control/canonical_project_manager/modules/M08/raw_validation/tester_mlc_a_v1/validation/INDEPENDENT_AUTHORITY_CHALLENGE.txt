@@ -1,0 +1,25 @@
+Lane 4AT independent M08 authority challenge
+
+Question
+Can current numbered authority select one authoritative M08 proof without inventing catalogue identity, eligibility or lead-selection policy?
+
+Challenge A — equal-priority lead selection
+Construct two valid, enabled playbook definitions A and B that both satisfy the same governed eligibility context and have equal declared priority. Consider two implementations:
+1. preserve catalogue insertion order and choose the first eligible definition;
+2. sort eligible definitions by owner-issued definition identifier and choose the first.
+Both can be deterministic, preserve owner-issued identity, produce replayable output, remain replaceable behind K13 and avoid capital/broker/lifecycle authority. Current numbered propositions do not prescribe catalogue ordering, priority precedence, a tie-break, or whether M08 or the later expression stage owns lead selection. The implementations therefore produce different lead candidates while each obeying the presently stated generic laws.
+
+Result
+The proof cannot lawfully assert one lead-selection result. A current numbered M08 proposition is required.
+
+Challenge B — posture block versus valid empty set
+Current runtime order places posture before eligibility and generic law requires fail-closed/stand-down behaviour for missing or blocked required authority. It does not define posture permission as a mandatory K13 input, nor distinguish a posture-blocked decision from a valid empty eligible set, disabled definitions, invalid catalogue or missing context. Tests cannot invent the decision-state taxonomy or emitted receipt.
+
+Result
+The worker's blocked disposition is supported.
+
+Challenge C — lifecycle boundary
+Current numbered authority assigns candidate lifecycle intent to the later serial expression stage and assigns fills, positions, inventory and exit/close to M11. M08 may provide catalogue/eligibility metadata but no current proposition defines which playbook-specific lifecycle facts may cross K13. Importing current code or historical C-034 assertions would reverse-promote implementation/test behaviour.
+
+Result
+The worker correctly excludes M09 capital, M10 broker/execution and M11 lifecycle authority and correctly identifies the missing carriage contract.

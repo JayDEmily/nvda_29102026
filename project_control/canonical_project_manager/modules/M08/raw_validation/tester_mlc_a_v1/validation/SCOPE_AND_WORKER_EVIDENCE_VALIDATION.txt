@@ -1,0 +1,23 @@
+Lane 4AT scope and worker-evidence validation
+
+Worker changed-path result
+PASS — exactly nine changed paths, all inside the Lane 4AW write set.
+
+Worker commits
+4bfcde8fdd09e09ecd82a51faad55286c1c68711 docs(m08): record missing catalogue authority
+120b08ff4a27199364c1543bae8e7253708744d7 docs(m08): preserve worker validation evidence
+No worker commit was modified, squashed or rewritten.
+
+Worker evidence
+PASS complete worker authority record read in full.
+PASS all worker raw-validation files read in full.
+PASS WORKER_CLAIM.md agrees with the authority record.
+PASS worker file hashes independently recomputed for every listed entry.
+PASS actual final worker candidate independently reconstructed clean at commit 120b08ff4a27199364c1543bae8e7253708744d7.
+NOTE worker RECONSTRUCTION.txt records its provisional evidence commit 4bfcde8f... and states final validation was external; Lane 4AT independently verified the final candidate, so no candidate-state defect remains.
+
+Locked surfaces
+PASS no production source, physical test, fixture, configuration, numbered normative document, vocabulary authority, architecture artefact, global control or another lane path changed from PM source to worker commit.
+
+Status truth
+PASS surface 5.10 remains structurally Provisional and thin_seam; no implementation/test/registry evidence was reverse-promoted.
