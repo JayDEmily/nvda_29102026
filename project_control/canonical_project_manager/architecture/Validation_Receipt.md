@@ -4,7 +4,9 @@ Date: 2026-07-25
 Unit: `CTRL-ARCH-001`
 Branch: `control/accept-module-architecture`
 Baseline: `main` at `0c207f9b71868f82d2abdca6c9091556b5a214c5`
-Status: **PASS — control integration accepted on branch; merge remains pending**
+Original status: **PASS — control integration accepted on branch on 2026-07-25**
+
+Current status: **see 2026-07-30 current-path revalidation below**
 
 ## Source controls
 
@@ -117,3 +119,160 @@ This receipt does not claim:
 - that the branch has been merged or pushed.
 
 The 287 cohort rows and 1,716 record rows are retained as traceability evidence. Their behavioural propositions remain subject to normative and proof admission when the owning module opens.
+
+## Current-path revalidation — 2026-07-30
+
+Unit: `ATLAS-CURRENT-PATH-REBASE-AND-GATE-C-CONTINUATION-V1`
+
+Source: `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913`
+
+Repair branch: `control/atlas-current-path-rebase-gate-c-continuation-v1`
+
+Disposition: **PASS — current/governing paths repaired and Gate C control continuation reconciled**
+
+### Recovery decision
+
+| Search surface | Result |
+|---|---|
+| All 248 repository commits and named objects | neither stale filename present |
+| Unreachable Git objects | neither stale filename present |
+| Supplied full-history and planning archives | neither stale filename present |
+| Connected GitHub repository, all eight branches | both paths returned not found on every branch |
+
+The two filenames were therefore stale Atlas labels, not recoverable governing documents. The operating-behaviour label was rebased to the current operating-model core. The obsolete composite process/test/review label was removed because every affected row already routes to the current review/replay authority and the rows requiring testing authority already route to the testing core.
+
+### Projection repair
+
+| Check | Before | After | Result |
+|---|---:|---:|---|
+| Old operating-document occurrences, workbook | 105 | 0 | PASS |
+| Old composite-document occurrences, workbook | 70 | 0 | PASS |
+| Old operating-document occurrences, JSON | 105 | 0 | PASS |
+| Old composite-document occurrences, JSON | 70 | 0 | PASS |
+| Affected cohort rows | 159 | 159 repaired | PASS |
+| Affected surface rows | 3 | 3 repaired | PASS |
+| Cohorts | 287 | 287 | PASS |
+| Records | 1,716 | 1,716 | PASS |
+| Surfaces | 18 | 18 | PASS |
+
+No cohort membership, record lineage, ownership module, disposition or architecture treatment changed.
+
+### Embedded current/governing-path validator
+
+Run from the repository root with the primary Python runtime. The validator is retained here rather than in another project-control file.
+
+```python
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from openpyxl import load_workbook
+
+
+ROOT = Path.cwd()
+ARCH = ROOT / "project_control/canonical_project_manager/architecture"
+XLSX = ARCH / "Atlas_Architecture_Traceability.xlsx"
+JSON_PATH = ARCH / "Atlas_Architecture_Machine_Readable.json"
+STALE = {
+    "docs/02_BRIEFING_AND_BEHAVIOURAL_ARCHITECTURE_CORE.md",
+    "docs/06_PROCESS_TEST_REVIEW_AND_LEARNING_CORE.md",
+}
+
+
+def docs(value: object) -> tuple[str, ...]:
+    if value is None:
+        return ()
+    return tuple(part.strip() for part in str(value).split(";") if part.strip())
+
+
+projection = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+workbook = load_workbook(XLSX, read_only=True, data_only=False)
+surface_sheet = workbook["Surface Map"]
+cohort_sheet = workbook["Cohort Trace"]
+surface_headers = {cell.value: cell.column for cell in next(surface_sheet.iter_rows())}
+cohort_headers = {cell.value: cell.column for cell in next(cohort_sheet.iter_rows())}
+
+workbook_surfaces = {
+    str(row[surface_headers["Surface Id"] - 1].value): docs(
+        row[surface_headers["Governing Docs"] - 1].value
+    )
+    for row in surface_sheet.iter_rows(min_row=2)
+    if row[surface_headers["Surface Id"] - 1].value is not None
+}
+workbook_cohorts = {
+    str(row[cohort_headers["Cohort Id"] - 1].value): docs(
+        row[cohort_headers["Current Governing Docs"] - 1].value
+    )
+    for row in cohort_sheet.iter_rows(min_row=2)
+    if row[cohort_headers["Cohort Id"] - 1].value is not None
+}
+json_surfaces = {
+    str(item["surface_id"]): docs(item["governing_docs"])
+    for item in projection["surfaces"]
+}
+json_cohorts = {
+    str(item["cohort_id"]): docs(item["current_governing_docs"])
+    for item in projection["cohorts"]
+}
+
+assert workbook_surfaces == json_surfaces
+assert workbook_cohorts == json_cohorts
+assert len(workbook_surfaces) == 18
+assert len(workbook_cohorts) == 287
+assert len(projection["records"]) == 1716
+
+all_doc_refs = [
+    item
+    for mapping in (
+        workbook_surfaces,
+        workbook_cohorts,
+        json_surfaces,
+        json_cohorts,
+    )
+    for values in mapping.values()
+    for item in values
+]
+assert not {item for item in all_doc_refs if not (ROOT / item).is_file()}
+assert not (STALE & set(all_doc_refs))
+
+stale_workbook_cells = []
+for sheet in workbook.worksheets:
+    for row in sheet.iter_rows():
+        for cell in row:
+            if isinstance(cell.value, str) and any(
+                stale in cell.value for stale in STALE
+            ):
+                stale_workbook_cells.append(f"{sheet.title}!{cell.coordinate}")
+assert not stale_workbook_cells
+json_text = JSON_PATH.read_text(encoding="utf-8")
+assert not any(stale in json_text for stale in STALE)
+
+print("PASS current/governing path resolution")
+print(f"PASS workbook/JSON surface parity: {len(workbook_surfaces)}")
+print(f"PASS workbook/JSON cohort parity: {len(workbook_cohorts)}")
+print(f"PASS record count preserved: {len(projection['records'])}")
+print(f"PASS unique existing governing documents: {len(set(all_doc_refs))}")
+print(f"PASS governing-document references checked: {len(all_doc_refs)}")
+print("PASS stale path occurrences: 0")
+```
+
+Recorded output:
+
+```text
+PASS current/governing path resolution
+PASS workbook/JSON surface parity: 18
+PASS workbook/JSON cohort parity: 287
+PASS record count preserved: 1716
+PASS unique existing governing documents: 20
+PASS governing-document references checked: 3340
+PASS stale path occurrences: 0
+```
+
+Workbook ZIP integrity passed. All 19 worksheets were rendered after mutation; the original table styling, headers, widths and visible content structure remain intact. `git diff --check` passed.
+
+The integrated-hash check also exposed two pre-existing stale entries in `SOURCE_SHA256SUMS.txt` for the unchanged vocabulary registry and generated vocabulary JSON. Those two checksum lines were corrected to the current repository bytes; neither vocabulary artefact was mutated.
+
+### Current claim boundary
+
+This repair changes locators only. It does not admit an Atlas behavioural proposition, change numbered normative meaning, open a physical test, authorise production implementation, or claim Gate C completion. The next lawful leaf is the bounded M04 K07 numbered normative proposition identified in the reconciled ExecPlan and Gate C protocol.

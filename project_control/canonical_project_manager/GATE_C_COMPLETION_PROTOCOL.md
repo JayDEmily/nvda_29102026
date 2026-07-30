@@ -2,14 +2,14 @@
 
 ## Amended status
 
-**Status:** `PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`
+**Status:** `ATLAS_CURRENT_PATH_REBASE_AND_GATE_C_CONTINUATION_ACTIVE`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
 **Parent programme plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live position pointer:** `ROADMAP_LEDGER_V2.md`
 **Scope:** module-local normative sufficiency, test authority, proof specification, test implementation, independent validation and final consolidation
-**Production implementation:** closed during Cycle 1; later opened only for individually accepted dependency-safe module slices under PM-controlled lanes
+**Production implementation:** closed; opened only for an individually accepted dependency-safe module slice after its normative, proof and independent-validation leaves pass
 
 This file remains the sole Gate C operating protocol. It no longer requires programme-wide adjudication of all 179 physical tests before any implementation. It establishes proof locally for the active ownership module while preserving the earlier global P2 work as historical evidence.
 
@@ -360,4 +360,27 @@ Aggregate validation confirms accepted launch ancestry, serial PM integration or
 
 No behavioural test suite was run or claimed because Cycle 01 changed only control and evidence surfaces. No production source, physical test, fixture, runtime configuration, numbered normative meaning or implementation was changed by the lane batch.
 
-**Immediate gate:** publish one lean full-history canonical Cycle 01 closeout checkpoint. Any later work requires a new PM allocation from that checkpoint. The next lawful M01 leaf is `M01-PROOF-MLC-O-V1`; M04, M07 and M08 remain at bounded missing-numbered-authority return gates. No implementation or physical-test mutation opens automatically.
+The former immediate publication gate was satisfied by the supplied canonical Cycle 01 checkpoint at `73f1e7ab3ce212c9951f03c407e94741e6c68913`.
+
+## 15. Current-path repair and Gate C continuation — 30 July 2026
+
+The accepted Atlas projections contain obsolete filenames in fields labelled current or governing. Neither filename exists in repository history, unreachable Git objects, supplied archives or any of the eight GitHub branches. They are stale labels and do not establish missing normative documents.
+
+The current control unit must:
+
+1. semantically rebase the operating-behaviour label to the current operating-model core;
+2. remove the obsolete composite process/test/review label where current review/replay and testing routes already express the row's authority;
+3. retain all cohort, record, surface, module and disposition counts;
+4. keep the workbook and machine-readable projection aligned;
+5. validate that every current/governing path exists;
+6. record the validator and result in the existing architecture validation receipt;
+7. reconcile the current-pack declaration, parent ExecPlan and live roadmap;
+8. mutate no numbered normative meaning, physical test, runtime configuration or production source.
+
+On PASS, the next and only opened semantic leaf is a bounded M04 K07 numbered normative proposition covering packet-role identity, lineage, validation and lawful outcomes. M04 MLC-A must then be rechecked. M07 K12, M08 K13 and M01 MLC-O remain queued in the parent ExecPlan and are not opened by completing M04 authority.
+
+Every module continues through the existing order:
+
+`normative authority → routing → observation → disposition → proof specification → expected-red test → independent validation → implementation`
+
+No Gate C completion, general test-authoring readiness or codebase rewrite is claimed by the trace repair or by one numbered proposition.

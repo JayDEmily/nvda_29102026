@@ -4,9 +4,9 @@
 
 | Field | Value |
 |---|---|
-| Status | `parallel_cycle_01_aggregate_validated_closed` |
+| Status | `atlas_current_path_rebase_and_gate_c_continuation_active` |
 | Current programme | existing canonical M00–M15 module-local delivery programme |
-| Current branch | `integration/parallel-cycle-01` |
+| Current branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` from `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913` |
 | Accepted launch checkpoint | `review/parallel-control-r2-accepted` / `ee67c752d14073a959fda478f31f4466b6952cae` |
 | Integrated Cycle 01 state | through PM Lane 4 acceptance `d6cfff9ab00cb5772baad26b14a8d388b08a241a` |
 | Aggregate closeout | `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_PM_AGGREGATE_CLOSEOUT.md` |
@@ -14,9 +14,11 @@
 | Parallel operating law | `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md` |
 | Workflow registry | `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md` |
 | Cycle 1 brief pack | `project_control/canonical_project_manager/PARALLEL_CYCLE_01/` |
+| Current control unit | repair stale current-governing-document routes in the accepted Atlas workbook/JSON and reconcile live controls |
+| Validation record | existing `project_control/canonical_project_manager/architecture/Validation_Receipt.md` |
 | Production/source mutation | closed |
 | Physical-test mutation | closed |
-| Implementation | no new implementation opened by Cycle 01 closeout |
+| Implementation | closed; no implementation opens from the trace repair or the next normative leaf |
 
 Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry before issuing any new assignment.
 
@@ -42,4 +44,6 @@ Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry
 
 ## Immediate next gate
 
-Publish and verify one lean full-history Cycle 01 closeout tarball. After publication, issue no worker or tester task automatically. The next separate PM allocation may open only `M01-PROOF-MLC-O-V1` or a bounded numbered-authority return package for M04, M07 or M08.
+Complete and validate `ATLAS-CURRENT-PATH-REBASE-AND-GATE-C-CONTINUATION-V1`. The repair must remove both obsolete labels, preserve Atlas counts and dispositions, keep workbook/JSON parity, resolve every current/governing path, reconcile the live guidance, and mutate no source, tests or runtime configuration.
+
+On repair PASS, open only the bounded M04 K07 numbered normative-authority leaf. Recheck M04 MLC-A after that proposition. M07 K12, M08 K13 and M01 MLC-O remain queued in the ExecPlan; tests and implementation remain closed until their own preceding Gate C leaves pass.

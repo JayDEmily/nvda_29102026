@@ -2,7 +2,7 @@
 
 ## Status
 
-`parallel_cycle_01_aggregate_validated_closed`
+`atlas_current_path_rebase_and_gate_c_continuation_active`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -12,7 +12,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendments accepted | 2026-07-25 and 2026-07-28 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `integration/parallel-cycle-01` |
+| Current branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` from `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Parallel Cycle 01 assignments 1A–4A integrated and aggregate-validated; M01 MLC-O is the next allocatable proof leaf; M04, M07 and M08 are returned to bounded numbered normative-authority completion; Lanes 5 and 6 held pending new allocation |
-| Mutation state | Parallel Cycle 01 worker/tester activity is closed; this PM closeout updates only canonical control/evidence records. Production source, physical tests, fixtures, runtime configuration and implementation remain closed until a new bounded brief opens them |
+| Active units | Current-path trace repair first; after its receipt passes, M04 K07 numbered normative-authority completion is the sole next Gate C leaf |
+| Mutation state | Trace repair is limited to existing control and architecture artefacts plus the required full-read manifest. Numbered normative meaning, physical tests and production source remain closed during repair; the subsequent M04 leaf opens only its routed normative working authority and existing module evidence |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -40,6 +40,32 @@ normative meaning
 ```
 
 A passing test does not establish authority. An admitted test constrains implementation only after its relationship to governing meaning has been accepted.
+
+## Current control unit — 30 July 2026
+
+`ATLAS-CURRENT-PATH-REBASE-AND-GATE-C-CONTINUATION-V1` repairs a material current-locator defect before any Atlas row is used to drive normative work. Repository history, unreachable objects, supplied archives and all eight GitHub branches contain neither stale filename. The repair therefore treats them as obsolete labels, not missing governing documents.
+
+Acceptance requires:
+
+1. rebase `docs/02_BRIEFING_AND_BEHAVIOURAL_ARCHITECTURE_CORE.md` to `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md`;
+2. remove `docs/06_PROCESS_TEST_REVIEW_AND_LEARNING_CORE.md` from affected rows because those rows already route to the current review/replay authority and, where applicable, testing authority;
+3. preserve all cohort, record, surface, module and disposition counts;
+4. keep the workbook and machine-readable projection semantically aligned;
+5. require every value labelled current or governing to resolve to an existing repository file;
+6. record the validator, commands and results in `project_control/canonical_project_manager/architecture/Validation_Receipt.md`;
+7. leave `src/**`, tests and runtime configuration unchanged.
+
+The current-target read set is recorded in `project_control/canonical_project_manager/architecture/ATLAS_ROUTE_REPAIR_FULL_READ_MANIFEST.tsv`. No additional project plan, guidance document or standalone validator file is authorised.
+
+After this repair passes, continue Gate C serially:
+
+1. M04 K07 numbered normative proposition, then M04 MLC-A recheck;
+2. M07 K12 numbered normative proposition including `OBL-M07-POSITIVE`, then M07 MLC-A recheck;
+3. M08 K13 numbered normative proposition, then M08 MLC-A recheck;
+4. M01 MLC-O factual observation;
+5. advance each module independently through MLC-D, MLC-P, MLC-T, MLC-V and MLC-I only when its preceding leaf passes.
+
+This order opens the earliest missing numbered-authority root first. It is a control sequence, not authority to batch the three propositions or to open tests or code early.
 
 ## Authority
 

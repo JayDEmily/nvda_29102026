@@ -388,4 +388,22 @@ The user formally accepted the architecture review on 25 July 2026 with these am
 
 This report's formal acceptance establishes target ownership and execution control. It does not declare any module implemented or open production source mutation on the control-integration branch.
 
-The next checkpoint is consistency validation of all governing controls and Atlas artefacts, followed by an immutable branch archive. Only after that integration is accepted on `main` may the separate `M13` module-local proof gate begin.
+The original next checkpoint was completed by the later control integration and module-local work retained in Git history. The current 30 July 2026 checkpoint is the bounded current-path rebase recorded below.
+
+## 10. Current-governing-path rebase — 30 July 2026
+
+The accepted workbook and machine-readable projection retained two filenames from an earlier Atlas snapshot:
+
+- `docs/02_BRIEFING_AND_BEHAVIOURAL_ARCHITECTURE_CORE.md`;
+- `docs/06_PROCESS_TEST_REVIEW_AND_LEARNING_CORE.md`.
+
+Neither filename is recoverable from repository commits, unreachable objects, supplied full-history archives or any current GitHub branch. This is a locator defect, not evidence that two governing documents were deleted.
+
+The semantic disposition is:
+
+1. all affected operating-behaviour routes move to the current `docs/02_BRIEFING_AND_EXECUTION_OPERATING_MODEL_CORE.md`;
+2. the obsolete composite process/test/review route is removed, because every affected row already names `docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md` and the rows requiring testing/promotion authority already name `docs/08_TESTING_AND_PROMOTION_CORE.md`;
+3. no affected row is redirected to `docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md`, whose scope is process and active-pack law rather than product review/replay behaviour;
+4. cohort membership, record lineage, ownership modules, dispositions and architecture acceptance remain unchanged.
+
+The existing `Validation_Receipt.md` contains the current-path validator and results. This report does not admit Atlas behaviours, change normative meaning, open tests or authorise implementation.
