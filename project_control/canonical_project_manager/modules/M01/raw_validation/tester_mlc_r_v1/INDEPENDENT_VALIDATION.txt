@@ -1,0 +1,7 @@
+census_rows=179
+unique_census_paths=179
+expected_routes=20
+worker_routes=20
+route_sets_equal=true
+omissions=0
+extras=0

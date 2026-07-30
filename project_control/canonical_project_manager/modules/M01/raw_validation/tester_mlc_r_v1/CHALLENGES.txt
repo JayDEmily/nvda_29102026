@@ -1,0 +1,9 @@
+FALSE_POSITIVE_CHALLENGE
+path=tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py
+result=EXCLUDED
+reason=D-049 mentions it outside Positive Tier A proof / Existing Tier A dependants and no bounded current governed join admits it.
+
+FALSE_NEGATIVE_CHALLENGE
+path=tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py
+result=INCLUDED
+reason=Current authority-register targets plus retained D-001/D-002/D-003 positive proof join it to bounded M01 despite its generic normative_authority location.
