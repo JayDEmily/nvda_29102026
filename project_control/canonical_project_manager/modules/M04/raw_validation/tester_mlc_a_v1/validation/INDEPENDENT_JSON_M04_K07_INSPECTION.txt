@@ -1,0 +1,66 @@
+JSON SHA-256:
+6d685f20dbc4c7ff217d588f896057c83182c602e9f8969092e40173b1bc8cf5  project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json
+
+selector=.surfaces[] | select(.surface_id=="5.6")
+{
+  "surface_id": "5.6",
+  "surface_name": "DMPV3 packet carriage",
+  "structural_status": "Locked",
+  "implementation_truth": "thin_seam",
+  "cohort_count": 31,
+  "target_modules": "M04",
+  "governing_docs": "docs/09_DMPV3_PROTOCOL_CORE.md; docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+  "gate_b_boundary": "B02-B04;B12",
+  "current_requirements": "C-010;C-016",
+  "gate_d_units": "D-010;D-016",
+  "observed_current_evidence": "Typed packet contracts/builders exist",
+  "known_limitation": "Identity lineage validation and replay obligations incomplete",
+  "target_area": "src/nvda_desk/packets"
+}
+exit_status=0
+
+selector=.modules[] | select(.module_id=="M04")
+{
+  "module_id": "M04",
+  "module": "packet_protocol",
+  "kind": "shared runtime primitive",
+  "surfaces": "5.6",
+  "owns": "DMPV3 envelope validation and packet carriage only",
+  "state_owner": "none",
+  "public_interfaces": "DmpV3Packet; PacketValidator; PacketCodec",
+  "extension_points": "new strongly typed payload contract; never alternate outer envelope",
+  "existing_locations": "src/nvda_desk/contracts/packets.py; packets; schemas/dmp*.py",
+  "target_change": "retain envelope shape; replace fabricated identity/time defaults",
+  "legacy_combined_dependencies": "M14;M15",
+  "runtime_contract_dependencies": [],
+  "state_transaction_participation": null,
+  "governance_promotion_prerequisites": [
+    "M14",
+    "M15"
+  ],
+  "build_test_dependencies": [
+    "packet schemas",
+    "codecs",
+    "protocol proof"
+  ],
+  "acceptance_status": "accepted_target_ownership",
+  "legacy_combined_dependencies_status": "superseded_planning_evidence"
+}
+exit_status=0
+
+selector=.modules[] | select(.module_id=="M04") | .owns
+"DMPV3 envelope validation and packet carriage only"
+exit_status=0
+
+selector=.contracts[] | select(.contract_id=="K07")
+{
+  "contract_id": "K07",
+  "contract": "DmpV3Packet",
+  "owner_module": "M04",
+  "governed_meaning": "common outer envelope; role-specific IDs supplied, not fabricated",
+  "requirements": "C-010;C-016"
+}
+exit_status=0
+
+malformed_selector_absence_in_record:
+PASS: malformed selector absent

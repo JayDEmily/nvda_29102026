@@ -1,0 +1,4 @@
+defect	result	independent_evidence
+T2A-01	PASS	Worker record cites docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:50; independent exact-locator output shows line 50 contains the 5.6 current-truth row.
+T2A-02	PASS	Worker record uses .modules[] | select(.module_id=="M04") | .owns; independent jq -e execution returns "DMPV3 envelope validation and packet carriage only" with exit status 0.
+T2A-03	PASS	Independent literal-locator execution reports 63 record occurrences, 63 validation rows, no missing/substitute coverage and zero locator failures; workbook ranges were separately inspected with artifact_tool.
