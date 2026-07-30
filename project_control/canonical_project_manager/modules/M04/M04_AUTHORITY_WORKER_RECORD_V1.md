@@ -120,3 +120,64 @@ The routed DMPV3 authority must add one role-by-role matrix covering every gover
 6. the typed payload and source-artifact/replay evidence required for deterministic domain reproduction.
 
 Until that numbered authority exists, `M04-PROOF-MLC-A-V1` is blocked at `MLC-A`.
+
+## Project Manager normative return and MLC-A recheck — 2026-07-30
+
+Source control checkpoint: `27fa427` on `control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Normative return unit: `M04-K07-NORMATIVE-AUTHORITY-V1`.
+
+The missing authority is now supplied by `docs/09.1_DMPV3_PROTOCOL_WORKING.md`, section `9.10 K07 packet-role identity, lineage, validation and outcome authority`.
+
+### Recheck disposition
+
+`AUTHORITY_SUFFICIENT:M04_K07_CURRENT_PACKET_ROLE_MATRIX`
+
+The new proposition:
+
+1. admits ten exact current `packetrole` values and makes every unlisted code/test/Atlas role non-authoritative pending a bounded amendment;
+2. requires owner-supplied `traceid`, `runid` and `scenarioid` for every governed emission, including `reference_packet`;
+3. classifies all nine lineage fields as required, conditional, optional or not applicable for reference, prepared, serial-stage, parallel-risk, review, replay and diagnostic/rejection roles;
+4. defines ten common validation checks and exact role-specific checks;
+5. defines reject, stand-down, non-admission, diagnostic/rejection and `non_authoritative_incomplete` outcomes;
+6. prohibits `degraded` from excusing missing identity, required lineage, source-artifact retrievability, fingerprints or authority-boundary checks;
+7. preserves M04 as packet carriage and validation only.
+
+### Historical conflict reconciliation
+
+- D-010's reference-packet exception is resolved normatively: a reference artefact without governed execution context remains a typed reference artefact; a governed `reference_packet` requires explicit owner-supplied trace, run and scenario identity. Defaulting those values is non-conforming.
+- D-016's role-authority dependency is satisfied for the current K07 roles. Its historical tests are not admitted by this result and its remaining proof dependencies are assessed in later MLC leaves.
+- Existing code defaults and green tests remain implementation/test evidence. They did not select the rule.
+
+### MLC-A required record
+
+| Required concern | Current result |
+|---|---|
+| Exact proposition and locator | `docs/09.1_DMPV3_PROTOCOL_WORKING.md`, section 9.10 |
+| Owner and surface | M04 `packet_protocol`; surface 5.6; K07 `DmpV3Packet` |
+| Input → action → output | owner-supplied typed payload/context/lineage → exact role validation and canonical carriage → one governed DMPV3 occurrence or an exact fail-closed outcome |
+| Identity, lineage and time | complete role matrix; packet time remains emission time; source temporal truth remains separate |
+| State and side effects | M04 owns no domain state; bounded packet creation/emission only |
+| Prohibited authority | no source/domain/decision/state/persistence ownership; no identity/time fabrication; no binding use of diagnostic carriage |
+| Atlas and D obligations | accepted M04/K07 cohort allocation retained; D-010 conflict resolved; D-016 authority prerequisite supplied |
+| Missing or contradictory meaning | none found inside the bounded current K07 role set |
+
+### Claim boundary and next leaf
+
+This PM recheck closes only M04 MLC-A for the current packet-role set. It does not admit a physical test, specify proof, mutate test code, change production implementation or open Gate D.
+
+The next lawful leaf is `M04-PROOF-MLC-R-V1`: route the physical tests that claim authority over the exact section 9.10 roles and mark unrelated tests `LEGACY_SHADOW_UNADMITTED`.
+
+### Vocabulary scope-reopen closure
+
+The section 9.10 packet roles are durable protocol concepts under `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`. The existing registry governed none of the ten exact role values, including the two already named by the earlier DMP working overlay. The same bounded M04 leaf therefore reopened vocabulary scope before final MLC-A closure.
+
+Ten `add_new` decisions are recorded in section 10.14 and in the existing human registry:
+
+`reference_packet`, `prepared_context_packet`, `stage_packet`, `parallel_risk_packet`, `review_explanation_packet`, `replay_request_packet`, `replay_result_packet`, `replay_comparison_packet`, `diagnostic_packet`, and `rejection_packet`.
+
+The unchanged deterministic builder projected registry version `2026-07-30-m04-k07-packet-roles-v1` with 147 entries. Each role slug occurs exactly once. A validated `/tmp` build, the committed JSON, and a second independent build were byte-identical. Direct native/wrapper builder parity passed, and the existing DMPV3 vocabulary test function passed.
+
+The required synonym-candidate audit was then run against the current governed sources. It initially surfaced 134 unresolved occurrences: 50 already present at checkpoint `27fa427`, plus 89 newly visible because the admitted packet-role lexicon gave the scanner new comparison targets. Full occurrence contexts were reviewed and recorded in the existing PM-010 semantic-disposition register: 42 governed contextual/numbered references remain lawful only in their exact propositions, and 92 implementation, test, configuration or non-governing-document observations remain occurrence-scoped quarantined evidence. No phrase was admitted as a global alias. The regenerated existing candidate report contains zero unresolved candidates, the existing touch stamp was advanced through the guarded route, and a final read-only clean check returned `candidates=0`, `vocabulary_touched=False`, `resolved_occurrences=633`.
+
+The primary runtime does not provide `pytest`, so the requested pytest command was `BLOCKED_ENVIRONMENT` rather than passed. The pre-existing required-baseline assertion for absent `mutable_runtime_surface` remains red in both source commit `27fa427` and the current projection; the M04 vocabulary change introduced no new occurrence of that known failure.

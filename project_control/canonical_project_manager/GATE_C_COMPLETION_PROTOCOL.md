@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `ATLAS_CURRENT_PATH_REBASE_AND_GATE_C_CONTINUATION_ACTIVE`
+**Status:** `M04_K07_AUTHORITY_COMPLETE_MLC_R_NEXT`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -384,3 +384,7 @@ Every module continues through the existing order:
 `normative authority → routing → observation → disposition → proof specification → expected-red test → independent validation → implementation`
 
 No Gate C completion, general test-authoring readiness or codebase rewrite is claimed by the trace repair or by one numbered proposition.
+
+The trace repair passed at commit `27fa427`. `docs/09.1_DMPV3_PROTOCOL_WORKING.md` section 9.10 now supplies the complete current K07 packet-role matrix, and the module-local MLC-A recheck is `AUTHORITY_SUFFICIENT:M04_K07_CURRENT_PACKET_ROLE_MATRIX`.
+
+**Immediate gate:** `M04-PROOF-MLC-R-V1`. Route exact physical tests claiming authority over the admitted K07 roles. Do not observe or disposition the tests in the routing leaf, and do not mutate numbered authority, tests, configuration or production source.

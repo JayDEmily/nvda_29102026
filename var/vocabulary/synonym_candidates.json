@@ -1,9 +1,9 @@
 {
   "schema_version": "v2_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "vocabulary_touched": false,
-  "fingerprint": "29de4fb5c7a1be0d95e62778f1f071a4ccf12a4cb369c2ad398d403d81962ad5",
-  "resolved_occurrence_count": 499,
+  "vocabulary_touched": true,
+  "fingerprint": "5a7869b8851f7d6f64f52082c6c51adfdae79a170d721515c5215fad61bbd49a",
+  "resolved_occurrence_count": 633,
   "candidates": [],
   "candidate_classifications": []
 }

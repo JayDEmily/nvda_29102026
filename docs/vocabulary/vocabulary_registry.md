@@ -1,8 +1,8 @@
 # Vocabulary Registry
 
 Projection schema version: `v1`
-Projection registry version: `2026-07-29-parallel-workflow-v1`
-Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.","M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.","The 2026-07-29 repair admits PM-controlled parallel-workflow terms without parallelising canonical acceptance.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
+Projection registry version: `2026-07-30-m04-k07-packet-roles-v1`
+Projection document notes: ["P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.","The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.","M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.","The 2026-07-29 repair admits PM-controlled parallel-workflow terms without parallelising canonical acceptance.","The 2026-07-30 M04 K07 amendment admits ten exact DMPV3 packet-role concepts without admitting tests or implementation conformance.","Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.","Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."]
 
 ### Ownership Module
 Definition: Accepted target code capability identified by one `M00`–`M15` architecture ID and bounded by explicit responsibility, public contracts, state ownership, dependencies and prohibited authority.
@@ -1373,3 +1373,103 @@ Aliases: control tester review; independent control review
 Disallowed or misleading use: self-acceptance; lane test; PM acceptance
 Lifecycle: active_programme_control
 Projection metadata: {"projection_status":"canonical","canonical_label":"Independent Control Test","canonical_slug":"independent_control_test","category":"promotion_surface","stage_owner":"canonical_project_manager","maps_to_contract":"project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md","raw_or_derived":"not_applicable","allowed_aliases":["control tester review","independent control review"],"disallowed_phrases":[],"semantic_decision_refs":["USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW","PM-20260729:PARALLEL-CONTROL-REPAIR-1"],"machine_projection_omissions":["Contextual disallowed-use prose and lane lifecycle tokens remain governed in the human record."],"audit_noncanonical_phrases":[]}
+
+### Reference Packet
+Definition: DMPV3 carriage of one identified and versioned reference product under an explicit reference acquisition, import, publication or replay execution context.
+Scope: reference-product packet carriage only
+Owner: reference-data owner for payload meaning; M04 packet protocol for carriage validation
+Relationships: Carries a reference product and its retrievable source artefacts; distinct from the underlying reference artefact, source truth and any runtime decision.
+Aliases: DMPV3 reference packet role
+Disallowed or misleading use: reference artefact as packet occurrence; reference packet without owner-supplied execution context
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Reference Packet","canonical_slug":"reference_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"not_applicable","allowed_aliases":["DMPV3 reference packet role"],"disallowed_phrases":["reference artefact as packet occurrence","reference packet without owner-supplied execution context"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Prepared Context Packet
+Definition: DMPV3 carriage of one identified prepared-runtime substrate with source/capture lineage, preparation meaning and prepared fingerprint preserved.
+Scope: prepared-runtime-context handoff
+Owner: preparation owner for payload meaning; M04 packet protocol for carriage validation
+Relationships: Carries prepared authority into lawful consumers; distinct from raw ingress, serial-stage output and packet occurrence identity.
+Aliases: prepared runtime context packet
+Disallowed or misleading use: raw input packet; generic prepared dictionary; preparation as trading decision
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Prepared Context Packet","canonical_slug":"prepared_context_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["prepared runtime context packet"],"disallowed_phrases":["raw input packet","generic prepared dictionary","preparation as trading decision"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Stage Packet
+Definition: DMPV3 carriage of one named serial desk-cognition stage output with ordered parentage, material dependencies and stage-domain identity preserved.
+Scope: serial stage output carriage
+Owner: named serial stage for payload meaning; M04 packet protocol for carriage validation
+Relationships: Follows prepared or prior-stage packets; distinct from Parallel Risk Packet and capital deployment authority.
+Aliases: serial stage packet
+Disallowed or misleading use: parallel-risk output; capital decision packet; unowned omnibus stage
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Stage Packet","canonical_slug":"stage_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["serial stage packet"],"disallowed_phrases":["parallel-risk output as stage packet","capital decision packet as stage packet","unowned omnibus stage packet"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Parallel Risk Packet
+Definition: DMPV3 carriage of one independent parallel-risk assessment with lawful input lineage and bounded risk-output identity.
+Scope: independent parallel-risk output carriage
+Owner: parallel-risk authority for payload meaning; M04 packet protocol for carriage validation
+Relationships: Consumes lawful prepared/stage inputs while remaining separate from serial candidate formation and capital deployment.
+Aliases: independent risk packet
+Disallowed or misleading use: serial candidate packet; capital sizing instruction; merged serial-risk output
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Parallel Risk Packet","canonical_slug":"parallel_risk_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["independent risk packet"],"disallowed_phrases":["serial candidate packet","capital sizing instruction packet","merged serial-risk output packet"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Review Explanation Packet
+Definition: DMPV3 review-only carriage of a deterministic human-facing explanation derived from identified packets, decisions, receipts or evidence.
+Scope: post-runtime review and explanation carriage
+Owner: review/explanation owner for payload meaning; M04 packet protocol for carriage validation
+Relationships: Requires a governed review trace and cited evidence; distinct from runtime decision, replay result and free-form advice.
+Aliases: review-only explanation packet
+Disallowed or misleading use: runtime decision packet; trade advice packet; uncited explanation
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Review Explanation Packet","canonical_slug":"review_explanation_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["review-only explanation packet"],"disallowed_phrases":["runtime decision packet as explanation","trade advice packet","uncited explanation packet"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Replay Request Packet
+Definition: DMPV3 non-side-effecting request to replay one identified authoritative target using a declared evidence and material-version set.
+Scope: replay request carriage
+Owner: replay authority for request meaning; M04 packet protocol for carriage validation
+Relationships: Names a replay target and replay trace; precedes Replay Result Packet; does not itself reconstruct or execute live effects.
+Aliases: governed replay request packet
+Disallowed or misleading use: live execution request; proof that replay succeeded; anonymous replay target
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Replay Request Packet","canonical_slug":"replay_request_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"not_applicable","allowed_aliases":["governed replay request packet"],"disallowed_phrases":["live execution request packet","replay success claim in request","anonymous replay target packet"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Replay Result Packet
+Definition: Newly emitted DMPV3 carriage of an isolated replay result that identifies the original target, consumed authoritative evidence and authoritative-or-incomplete outcome.
+Scope: replay result carriage
+Owner: replay authority for result meaning; M04 packet protocol for carriage validation
+Relationships: Responds to Replay Request Packet; references rather than impersonates the original occurrence; may feed Replay Comparison Packet.
+Aliases: governed replay output packet
+Disallowed or misleading use: original preserved packet; live side-effect result; current-code comparison as authoritative replay
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Replay Result Packet","canonical_slug":"replay_result_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["governed replay output packet"],"disallowed_phrases":["new replay result as original packet","live side-effect replay result","current-code comparison as authoritative replay"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Replay Comparison Packet
+Definition: DMPV3 carriage of a deterministic comparison between identified original and replay-result evidence, including visible matches, mismatches and limitations.
+Scope: replay comparison carriage
+Owner: replay/review authority for comparison meaning; M04 packet protocol for carriage validation
+Relationships: Consumes original and Replay Result Packet evidence; distinct from reconstruction authority and Review Explanation Packet.
+Aliases: replay evidence comparison packet
+Disallowed or misleading use: comparison proves reconstruction; hidden mismatch packet; arbitrary mapping comparison
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Replay Comparison Packet","canonical_slug":"replay_comparison_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["replay evidence comparison packet"],"disallowed_phrases":["comparison proves reconstruction","hidden mismatch comparison packet","arbitrary mapping comparison packet"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Diagnostic Packet
+Definition: Separately admitted, non-binding DMPV3 carriage of identified validation, processing or authority-boundary failure facts.
+Scope: non-binding diagnostic carriage
+Owner: failing boundary for diagnostic meaning; M04 packet protocol for carriage validation
+Relationships: May describe a rejected target but never substitutes for that target's binding role or payload.
+Aliases: DMPV3 diagnostic role
+Disallowed or misleading use: degraded binding output; unidentified failure packet; diagnostic as domain decision
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Diagnostic Packet","canonical_slug":"diagnostic_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["DMPV3 diagnostic role"],"disallowed_phrases":["degraded binding output as diagnostic","unidentified failure packet","diagnostic packet as domain decision"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+
+### Rejection Packet
+Definition: Separately admitted, non-binding DMPV3 carriage recording rejection of an identified proposed packet, request or input and the exact failed authority facts.
+Scope: non-binding rejection carriage
+Owner: rejecting boundary for rejection meaning; M04 packet protocol for carriage validation
+Relationships: A specialised diagnostic role with an identified rejected target; does not become the rejected domain output.
+Aliases: DMPV3 rejection role
+Disallowed or misleading use: successful binding output; anonymous rejection; rejected payload made authoritative
+Lifecycle: accepted_k07_packet_role
+Projection metadata: {"projection_status":"canonical","canonical_label":"Rejection Packet","canonical_slug":"rejection_packet","category":"protocol_field","stage_owner":"packet_protocol","maps_to_contract":"docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10","raw_or_derived":"derived","allowed_aliases":["DMPV3 rejection role"],"disallowed_phrases":["successful binding output as rejection","anonymous rejection packet","rejected payload made authoritative"],"semantic_decision_refs":["M04-K07-NORMATIVE-AUTHORITY-V1"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
