@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `M04_K07_MLC_T_ACTIVE_AFTER_PROOF_SPECIFICATION`
+**Status:** `M04_K07_MLC_V_INDEPENDENT_VALIDATION_REQUIRED`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -399,4 +399,6 @@ M04 MLC-D then admitted one bounded combined expected-red contract for missing c
 
 M04 MLC-P now specifies PF-01–PF-08: complete ten-role positive profiles, execution-context non-fabrication, cell-level R/C/O/N enforcement, fact-derived common and role checks, lawful outcome separation, replay identity/evidence/isolation, occurrence/time/architecture boundaries, contradiction closure and ten exact falsification mutants. No test or source changed in that leaf.
 
-**Immediate gate:** `M04-PROOF-MLC-T-V1`. Implement the accepted proof specification in the exact authorised test/support/governance surfaces. Production source, runtime configuration, numbered authority and unrelated tests remain closed.
+M04 MLC-T now provides one routed candidate family. It collects 252 tests; its 239 reference/matrix/outcome/mutant checks pass, all ten named mutants are killed, and 11 production cases remain expected-red for incomplete validation profiles or missing-scenario acceptance. The retained combined expected-red function is unchanged and red for the same K07 reason.
+
+**Immediate gate:** `M04-PROOF-MLC-V-V1`. A tester independent of the MLC-T author must reproduce proof sensitivity, exact production-red truth, registry/proof-block integrity and mutation boundaries. Production source, runtime configuration, numbered authority and unrelated tests remain closed.

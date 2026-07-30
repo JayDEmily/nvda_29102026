@@ -2,7 +2,7 @@
 
 ## Status
 
-`m04_k07_mlc_t_active_after_proof_specification`
+`m04_k07_mlc_v_independent_validation_required`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Atlas current-path repair, M04 K07 MLC-A/MLC-R/MLC-O/MLC-D/MLC-P and `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed; M04 MLC-T test implementation is active |
-| Mutation state | M15, observation, disposition and proof-specification mutation are closed. M04 MLC-T may change only the named test/support, required test-governance/evidence and current control records; runtime configuration, normative meaning, unrelated tests and production source remain closed |
+| Active units | Atlas current-path repair, M04 K07 MLC-A/MLC-R/MLC-O/MLC-D/MLC-P/MLC-T and `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed; independent M04 MLC-V is required |
+| Mutation state | M15 and M04 MLC-O through MLC-T mutation are closed. MLC-V is read-only except for independent validation evidence and current control records; runtime configuration, normative meaning, unrelated tests and production source remain closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -67,7 +67,7 @@ After this repair passes, continue Gate C serially:
 
 This order opens the earliest missing numbered-authority root first. It is a control sequence, not authority to batch the three propositions or to open tests or code early.
 
-Current result: the trace repair passed at commit `27fa427`; M04 K07 section 9.10 now defines the admitted roles, owner-supplied execution context, complete lineage matrix, validation profiles and lawful outcomes; M04 MLC-A recheck is `AUTHORITY_SUFFICIENT`. MLC-R routed 25 physical K07 claim files and left the other 154 census files `LEGACY_SHADOW_UNADMITTED`; MLC-O and MLC-D then completed observation and disposition. MLC-P now specifies the complete PF-01–PF-08 proof family and ten exact falsification mutants. The next leaf is M04 MLC-T test implementation only.
+Current result: the trace repair passed at commit `27fa427`; M04 K07 section 9.10 now defines the admitted roles, owner-supplied execution context, complete lineage matrix, validation profiles and lawful outcomes; M04 MLC-A recheck is `AUTHORITY_SUFFICIENT`. MLC-R routed 25 physical K07 claim files and left the other 154 census files `LEGACY_SHADOW_UNADMITTED`; MLC-O and MLC-D then completed observation and disposition. MLC-P specified PF-01–PF-08 and ten exact falsification mutants. MLC-T has now authored the candidate family: 252 tests collect, the 239 proof-instrument cases pass, and 11 production cases remain expected-red. The next leaf is test-author-independent M04 MLC-V only.
 
 ### Strategy correction — namespaced vocabulary governance
 
@@ -475,7 +475,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 
 The former Cycle 01 publication gate was satisfied by checkpoint `73f1e7ab3ce212c9951f03c407e94741e6c68913`. The subsequent Atlas current-path repair passed at `27fa427`, and M04 K07 numbered authority is now sufficient.
 
-`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed and is closed. M04 MLC-O then read all 25 routed files at checkpoint `6d3ec80`; the scoped run returned 347 passed / 10 failed across 357 tests, with each file retaining a distinct factual observation. MLC-D admitted only one bounded combined expected-red contract, retained seven partial files without admission, classified eleven consumer/structure-only observations, five mixed contradictory files and one unlisted-role candidate. MLC-P specified the complete PF-01–PF-08 K07 family and ten falsification mutants. The sole current leaf is `M04-PROOF-MLC-T-V1`: implement that proof without production mutation. Runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
+`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed and is closed. M04 MLC-O then read all 25 routed files at checkpoint `6d3ec80`; the scoped run returned 347 passed / 10 failed across 357 tests, with each file retaining a distinct factual observation. MLC-D admitted only one bounded combined expected-red contract, retained seven partial files without admission, classified eleven consumer/structure-only observations, five mixed contradictory files and one unlisted-role candidate. MLC-P specified the complete PF-01–PF-08 K07 family and ten falsification mutants. MLC-T authored and routed the candidate family without production mutation: 252 collected, 239 proof-instrument checks passed and 11 production cases remained expected-red. The sole current leaf is `M04-PROOF-MLC-V-V1`: independent tester validation. Runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
 
 ## Roadblocks and Unknowns
 

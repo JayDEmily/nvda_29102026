@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Status | `m04_k07_mlc_t_active_after_proof_specification` |
+| Status | `m04_k07_mlc_v_independent_validation_required` |
 | Current programme | existing canonical M00–M15 module-local delivery programme |
 | Current branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` from `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913` |
 | Accepted launch checkpoint | `review/parallel-control-r2-accepted` / `ee67c752d14073a959fda478f31f4466b6952cae` |
@@ -21,10 +21,11 @@
 | Completed observation leaf | `M04-PROOF-MLC-O-V1` — 25 files read; 357 tests observed as 347 passed / 10 failed |
 | Completed disposition leaf | `M04-PROOF-MLC-D-V1` — one bounded expected-red admission; all other files partial, contradictory, consumer-only or unlisted-role evidence |
 | Completed proof-specification leaf | `M04-PROOF-MLC-P-V1` — PF-01–PF-08, exact role/matrix/outcome coverage and ten required falsification mutants specified |
-| Current control leaf | `M04-PROOF-MLC-T-V1` — implement the accepted K07 proof specification without production mutation |
+| Completed test-implementation leaf | `M04-PROOF-MLC-T-V1` — 252 tests collected; 239 proof-instrument checks pass; production remains expected-red at 11 exact K07 cases |
+| Current control leaf | `M04-PROOF-MLC-V-V1` — independent tester validation of proof sensitivity, expected-red truth and route integrity |
 | Validation records | existing architecture `Validation_Receipt.md` for the Atlas repair and existing PM `VALIDATION_LOG.md` for M15 |
 | Production/source mutation | closed |
-| Physical-test mutation | closed |
+| Physical-test mutation | closed after MLC-T; candidate family pending independent acceptance |
 | Implementation | closed; no implementation opens from the trace repair or the next normative leaf |
 
 Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry before issuing any new assignment.
@@ -43,7 +44,7 @@ Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry
 ## Dependency and return gates
 
 1. M01 routing is accepted, but `M01-PROOF-MLC-O-V1` remains queued behind the sole current M04 leaf.
-2. M04 K07 numbered authority, MLC-A, MLC-R, MLC-O, MLC-D, MLC-P and the bounded M15 namespace/scoped-audit prerequisite are complete. M04 MLC-T test implementation is active.
+2. M04 K07 numbered authority, MLC-A, MLC-R, MLC-O, MLC-D, MLC-P, MLC-T and the bounded M15 namespace/scoped-audit prerequisite are complete. M04 now requires test-author-independent MLC-V.
 3. M07 requires one bounded numbered normative proposition defining K12 identity/version, precedence/conflict, hard-bound and deterministic application/receipt semantics before MLC-A can close.
 4. M08 requires one bounded numbered normative proposition defining K13 identities, mandatory inputs, deterministic ordering/tie-break/lead selection, stand-down states and lawful lifecycle carriage before MLC-A can close.
 5. M02 remains downstream of canonical M01 contracts; the remaining dependency waves are unchanged.
@@ -51,6 +52,6 @@ Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry
 
 ## Immediate next gate
 
-Execute `M04-PROOF-MLC-T-V1`: implement the PF-01–PF-08 proof family and ten named falsification mutants exactly as specified in the existing M04 record. Mutation is limited to the named M04 test/support and required test-governance/evidence surfaces. Do not mutate production source, runtime configuration, numbered authority or unrelated tests.
+Execute `M04-PROOF-MLC-V-V1` through a tester independent of the MLC-T author. Reproduce collection, the 239-pass proof-instrument subset, all ten mutant kills, the 11 exact production expected-red cases, retained partial-proof red state, registry/proof-block routing and mutation boundaries. Decide `IMPLEMENTATION_OPEN` only if those checks pass; otherwise return the exact defect to MLC-P or MLC-T.
 
 M07 K12, M08 K13 and M01 MLC-O remain queued; behavioural test mutation and production implementation remain closed until their own preceding Gate C leaves pass.

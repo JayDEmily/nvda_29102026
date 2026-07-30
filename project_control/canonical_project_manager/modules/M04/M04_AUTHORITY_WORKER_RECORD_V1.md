@@ -551,3 +551,42 @@ Passing MLC-T does not open implementation. A separate test-author-independent M
 MLC-P is complete. It changed only the existing M04 proof/control record, current control pointers and its unit-local full-read manifest. No physical test, fixture, runtime configuration, normative proposition, vocabulary or production source changed.
 
 The next lawful leaf is `M04-PROOF-MLC-T-V1`: implement this specification exactly. Production mutation remains closed.
+
+## Project Manager MLC-T test implementation — 2026-07-30
+
+Source checkpoint: `cc69d479e3a8d2da4b974a79cea665f8f3739ca7` on `control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Unit: `M04-PROOF-MLC-T-V1`.
+
+Result: `TEST_IMPLEMENTATION_COMPLETE:PENDING_INDEPENDENT_MLC_V`.
+
+The authorised candidate family is:
+
+- `tests/tier_a/packets/test_m04_k07_packet_role_contract.py`;
+- `tests/support/m04_k07_contract_harness.py`;
+- retained-test family and proof block `m04_k07_packet_role_contract`, both marked `candidate_pending_independent_mlc_v`.
+
+No production source, runtime configuration, numbered authority, vocabulary, fixture, specimen or unrelated test changed.
+
+### Proof result
+
+| Check | Result |
+|---|---|
+| Collection | PASS — 252 tests |
+| Conforming reference, complete matrix, outcomes and mutant sensitivity | PASS — 239 |
+| Admitted roles | PASS — 10/10 |
+| Lineage cells | PASS — all 90 explicit section 9.10.3 cells exercised |
+| Named mutants | PASS — 10/10 killed by their intended invariant |
+| Production subject | EXPECTED RED — 241 passed / 11 failed across the full family |
+| Production validation-profile failures | 10/10 roles expose only legacy `schema_validation`, not the complete common and role-specific results |
+| Production context failure | missing `scenarioid` is accepted instead of rejected; missing `traceid` and `runid` already reject |
+| Retained partial proof | unchanged SHA-256 `0e705c9a2dd5afea58e6c4414a78b98731685bfa8d8a8774c18683205391ac29`; still red because the builder does not reject the combined missing-context/lineage case |
+| Proof-block manifest | PASS — candidate block and all 53 blocks validate |
+| Proof-executor contract shadow | PASS — 21 / 21 |
+| Ruff | PASS — pinned `0.15.11` |
+
+The production failures arise after successful import, construction and collection. No mutant is killed by an unrelated import, constructor or fixture failure.
+
+### MLC-T boundary and next leaf
+
+MLC-T is complete but does not admit its own proof. The next lawful leaf is `M04-PROOF-MLC-V-V1`. It must be executed by a tester independent of this test author and may decide `IMPLEMENTATION_OPEN` only after reproducing the results above and challenging false-positive resistance. Until that decision, M04 production implementation remains closed.

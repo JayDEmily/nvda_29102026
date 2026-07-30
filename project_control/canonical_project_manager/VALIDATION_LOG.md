@@ -1045,3 +1045,27 @@ Ten exact mutants are required for context invention, lineage loss, N-field acce
 ### Next gate
 
 Execute `M04-PROOF-MLC-T-V1` in only the named M04 test/support, required test-governance/evidence and current control surfaces. Production source, runtime configuration, numbered authority and unrelated tests remain closed.
+
+## 2026-07-30 — M04 K07 MLC-T candidate proof implementation
+
+### Disposition
+
+`TEST_IMPLEMENTATION_COMPLETE:PENDING_INDEPENDENT_MLC_V`
+
+| Check | Result |
+|---|---|
+| Candidate test collection | PASS — 252 |
+| Proof-instrument subset | PASS — 239 / 239 with `pytest==9.0.3` |
+| Named falsification mutants | PASS — 10 / 10 killed |
+| Full candidate family | EXPECTED RED — 241 passed / 11 failed |
+| Exact production gaps | Ten incomplete validation profiles; one missing-scenario acceptance |
+| Retained partial expected-red | Unchanged and still red for missing combined context/lineage rejection |
+| Candidate route | PASS — retained registry plus proof block marked pending independent MLC-V |
+| Proof-block integrity | PASS — 53 / 53 blocks validate |
+| Proof-executor contract shadow | PASS — 21 / 21 |
+| Python lint | PASS — `ruff==0.15.11` |
+| Production/runtime/normative mutation | None |
+
+### Next gate
+
+Execute `M04-PROOF-MLC-V-V1` through an independent tester. MLC-T does not self-admit and implementation remains closed.

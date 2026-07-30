@@ -898,6 +898,20 @@ proof_blocks:
       - config/proof_blocks.yaml
       - config/retained_test_registry.yaml
 
+  - proof_block_id: m04_k07_packet_role_contract
+    tier: Tier A
+    lifecycle: candidate_pending_independent_mlc_v
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py
+    owns:
+      - tests/tier_a/packets/test_m04_k07_packet_role_contract.py
+      - tests/support/m04_k07_contract_harness.py
+      - project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md
+      - docs/09_DMPV3_PROTOCOL_CORE.md
+      - docs/09.1_DMPV3_PROTOCOL_WORKING.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
+
   - proof_block_id: m13_state_kernel_module_local_proof
     tier: Tier A
     lifecycle: candidate_pending_independent_mlc_v
