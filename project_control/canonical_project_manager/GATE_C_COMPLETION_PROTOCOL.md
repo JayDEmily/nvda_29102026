@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `REPAIRED_PARALLEL_PROTOCOL_R2_AWAITING_INDEPENDENT_CONTROL_RETEST`
+**Status:** `PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -342,22 +342,22 @@ This amended protocol may change only when:
 Any amendment must preserve accepted evidence, state the measured defect, identify changed clauses, and update the parent ExecPlan and live roadmap in the same control change.
 
 
-## 14. Current parallel cycle
+## 14. Parallel Cycle 01 closeout
 
-**Control disposition:** `ACCEPTED:PARALLEL_CONTROL_R2_WORKER_LAUNCH_OPEN`.
+**Control disposition:** `PASS:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`.
 
-The accepted M01 authority decision remains unchanged. `Parallel Control T1` returned PASS at tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`, and the Project Manager independently accepted the tested control package. Four dependency-independent Cycle 1 proof leaves are open for worker launch from one PM-published immutable checkpoint:
+The Repair 2 control package passed independent `Parallel Control T1`, the Project Manager accepted and published one immutable worker-launch checkpoint, and the four Cycle 01 assignments were independently worked, tested and serially integrated in the declared order M01, M04, M07, M08.
 
-| Lane pair | Unit | Mutation boundary |
+| Lane pair | Unit | PM closeout result |
 |---|---|---|
-| `Lane 1AW` / `Lane 1AT` | `M01-PROOF-MLC-R-V1` | one M01 routing record and lane-owned evidence only |
-| `Lane 2AW` / `Lane 2AT` | `M04-PROOF-MLC-A-V1` | one M04 authority record and lane-owned evidence only |
-| `Lane 3AW` / `Lane 3AT` | `M07-PROOF-MLC-A-V1` | one M07 authority record and lane-owned evidence only |
-| `Lane 4AW` / `Lane 4AT` | `M08-PROOF-MLC-A-V1` | one M08 authority record and lane-owned evidence only |
-| Lanes 5 and 6 | held | no dependency-safe additional semantic unit |
+| `Lane 1AW` / `Lane 1AT` | `M01-PROOF-MLC-R-V1` | accepted: 179 unique physical tests reconciled into 20 current M01 claim routes and 159 bounded M01 shadow routes |
+| `Lane 2AW` / `Lane 2AT` | `M04-PROOF-MLC-A-V1` | accepted truthful blocker: `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for the complete K07 packet-role matrix |
+| `Lane 3AW` / `Lane 3AT` | `M07-PROOF-MLC-A-V1` | accepted truthful blocker: `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K12 identity/version, precedence/conflict, bounds and deterministic application/receipt semantics; `OBL-M07-POSITIVE` remains open |
+| `Lane 4AW` / `Lane 4AT` | `M08-PROOF-MLC-A-V1` | accepted truthful blocker: `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K13 catalogue/eligibility decision semantics |
+| Lanes 5 and 6 | held | no new assignment allocated |
 
-Cycle 1 production source, physical tests, configuration, normative documents, vocabulary registries, proof registries and global PM controls remain closed to all lane workers and lane testers. The control repair alone lawfully admits M15 workflow vocabulary and updates programme controls. Each lane tester reviews only its matching worker. The PM integrates any accepted results one at a time in the order M01, M04, M07, M08 and runs aggregate validation before publishing the next canonical checkpoint.
+Aggregate validation confirms accepted launch ancestry, serial PM integration order, pairwise-disjoint lane write sets, exact brief hashes, retained tester provenance, M01 route reconciliation, M04 exact locator coverage, Atlas contract ownership, no behavioural-surface mutation, clean Git diff and full Git integrity. Exact evidence is retained under `project_control/canonical_project_manager/parallel_cycle_01_closeout/`.
 
-**Immediate gate:** publish the accepted full-history worker-launch checkpoint and issue the four exact worker briefs. Create a lane tester only after its matching worker returns.
+No behavioural test suite was run or claimed because Cycle 01 changed only control and evidence surfaces. No production source, physical test, fixture, runtime configuration, numbered normative meaning or implementation was changed by the lane batch.
 
-No lane may begin `MLC-O`, `MLC-R` for another module, proof design, test mutation, implementation or a `B` assignment until the PM issues a new brief from an appropriate canonical checkpoint.
+**Immediate gate:** publish one lean full-history canonical Cycle 01 closeout checkpoint. Any later work requires a new PM allocation from that checkpoint. The next lawful M01 leaf is `M01-PROOF-MLC-O-V1`; M04, M07 and M08 remain at bounded missing-numbered-authority return gates. No implementation or physical-test mutation opens automatically.

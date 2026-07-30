@@ -890,3 +890,48 @@ Raw evidence is under `project_control/canonical_project_manager/parallel_workfl
 ### Current boundary
 
 This PM-authored repair is not independently accepted. Publish one Git-preserving repair checkpoint and issue only `Parallel Control T1`. Do not launch `Lane 1AW`–`Lane 4AW` until the tester result is returned and the Project Manager explicitly accepts the tested checkpoint. Lanes 5 and 6 remain held.
+
+## 2026-07-30 — Parallel Cycle 01 aggregate validation and PM closeout
+
+### Integrated source state
+
+- Worker-launch checkpoint: `review/parallel-control-r2-accepted` / `ee67c752d14073a959fda478f31f4466b6952cae`.
+- Canonical integration branch: `integration/parallel-cycle-01`.
+- Serial PM acceptance points: Lane 1A `4ff92943bc881d2a1996ea5cd54da4e7ba0bcebe`; Lane 2A `a538880f14f5e47a063412714a980400b4a18c19`; Lane 3A `391781b0f576619063b0c3dbc559a62b71fa9baa`; Lane 4A `d6cfff9ab00cb5772baad26b14a8d388b08a241a`.
+- Tester portability package SHA-256 values: 1A `479adac5022921a3f6a3c0ad970c648bacc34798af0c6ad643fd4e2701ef4bb8`; 2A `3851f48653891c54d99bdb061e45d713bcd1973cb83d5471c1243a4c54cc1636`; 3A `6e0a0c3a0c822be28b688a8250b7245b2efa07c8719a448df29d24680caa4afc`; 4A `5232de8c99684d19281f1f0066c47c7e7437853838d54980add0f6f4fda17b5e`.
+
+### Aggregate result
+
+`PASS:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`
+
+| Check | Result |
+|---|---|
+| Aggregate mechanical validator | PASS — 28 checks, 0 failures |
+| Accepted launch ancestry | PASS |
+| PM integration order | PASS — `1A → 2A → 3A → 4A` |
+| Lane write-set confinement | PASS — 18 M01, 25 M04, 20 M07 and 19 M08 paths |
+| Cross-lane write collisions | None |
+| Behavioural-surface mutation | None under production source, tests, fixtures, configuration or migrations |
+| Brief-pack hashes | PASS — 8/8 |
+| Original tester provenance refs | PASS — 4/4 |
+| M01 routing reconciliation | PASS — 179 unique paths, 20 current routes, 159 bounded shadows, 20 exact route chains |
+| M04 exact locator rerun | PASS — 63 literal occurrences, 63 validation rows, zero missing/substituted coverage, zero failures |
+| Atlas contract ownership | PASS — K01–K03→M01, K07→M04, K12→M07, K13→M08 |
+| `git diff --check` | PASS |
+| `git fsck --full --no-dangling` | PASS |
+
+The first draft of the aggregate validator contained an incorrect literal for the Lane 4 tester evidence commit. The repository ref and portability manifest both establish `f13ed3bf551f6c9ca25b522e9a17b23c5ed0528c`; the validator literal was corrected and the entire validator rerun before acceptance. This repair is recorded in `parallel_cycle_01_closeout/CYCLE_01_AGGREGATE_VALIDATOR_REPAIR_NOTE.md`.
+
+No behavioural test suite was run or claimed because the integrated batch changed only control and evidence surfaces. No runtime correctness, implementation completion, production readiness, test admission beyond M01 routing, or missing normative authority is inferred from the aggregate PASS.
+
+### Semantic closeout
+
+- M01 MLC-R accepted: complete 179-file route inventory, with 20 `M01_CURRENT_CLAIM_ROUTE` and 159 `LEGACY_SHADOW_UNADMITTED` for the bounded M01 proposition.
+- M04 MLC-A accepted as truthful `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for the complete K07 per-role matrix.
+- M07 MLC-A accepted as truthful `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K12 bundle/application semantics; `OBL-M07-POSITIVE` remains open.
+- M08 MLC-A accepted as truthful `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K13 catalogue/eligibility decision semantics.
+- Lanes 5 and 6 remain held.
+
+### Next gate
+
+Publish one lean Git-preserving full-history checkpoint from the PM closeout commit. A later PM brief may open `M01-PROOF-MLC-O-V1`; M04, M07 and M08 return to bounded numbered-authority completion. No implementation, physical-test mutation or configuration mutation opens automatically.

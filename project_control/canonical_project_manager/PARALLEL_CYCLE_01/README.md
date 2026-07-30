@@ -1,32 +1,30 @@
-# Parallel Cycle 01 — Controlled Launch Index
+# Parallel Cycle 01 — Closed Integration Index
 
-## Current launch status
+## Current status
 
-`WORKER_LAUNCH_OPEN_FROM_PM_PUBLISHED_ACCEPTED_CHECKPOINT`
+`AGGREGATE_VALIDATED_CLOSED`
 
-The four assignments are authorised for worker launch only from the single immutable full-history checkpoint published by the Project Manager after independent Repair 2 control PASS and PM acceptance. Repair 1 remains historical hard-block evidence; the Repair 2 tester result is preserved at commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`.
+The four Cycle 01 assignments were launched from the same accepted full-history checkpoint, independently tested, returned as portability artefacts, PM-reviewed and integrated sequentially in the declared order `1A → 2A → 3A → 4A`. Aggregate validation passed. No lane may continue from its worker or tester branch.
 
-## Exact thread names and revision
+## Final assignment states
 
-| Lane | Worker thread | Tester thread | Unit | Revision |
+| Lane | Worker / tester | Unit | Tester verdict | PM closeout state |
 |---|---|---|---|---|
-| 1A | `Lane 1AW` | `Lane 1AT` | M01 relevant-test routing | `R1` |
-| 2A | `Lane 2AW` | `Lane 2AT` | M04 authority sufficiency | `R1` |
-| 3A | `Lane 3AW` | `Lane 3AT` | M07 authority sufficiency | `R1` |
-| 4A | `Lane 4AW` | `Lane 4AT` | M08 authority sufficiency | `R1` |
+| 1A | `Lane 1AW` / `Lane 1AT` | M01 relevant-test routing | `PASS` | `CLOSED:M01_MLC_R_ACCEPTED` |
+| 2A | `Lane 2AW` / `Lane 2AT` | M04 authority sufficiency | `PASS` | `CLOSED:BLOCKED_MISSING_NORMATIVE_AUTHORITY_K07_ROLE_MATRIX` |
+| 3A | `Lane 3AW` / `Lane 3AT` | M07 authority sufficiency | `PASS` | `CLOSED:BLOCKED_MISSING_NORMATIVE_AUTHORITY_K12_APPLICATION_CONTRACT` |
+| 4A | `Lane 4AW` / `Lane 4AT` | M08 authority sufficiency | `PASS` | `CLOSED:BLOCKED_MISSING_NORMATIVE_AUTHORITY_K13_DECISION_CONTRACT` |
 
-Lanes 5 and 6 are held. The exact eight-brief inventory and SHA-256 values are recorded in `project_control/canonical_project_manager/PARALLEL_CYCLE_01/BRIEF_PACK_MANIFEST.tsv`.
+Lanes 5 and 6 remain held. Exact brief hashes remain in `BRIEF_PACK_MANIFEST.tsv`; complete lineage, package hashes, PM integration commits and aggregate results are in `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`.
 
-## Accepted pre-launch control test
+## Aggregate evidence
 
-`Parallel Control T1` returned PASS and the Project Manager accepted Repair 2. The tester brief and evidence remain historical control records. Worker threads must use the PM-published accepted checkpoint, not either repair archive directly.
+- `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_PM_AGGREGATE_CLOSEOUT.md`
+- `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_AGGREGATE_MECHANICAL_VALIDATION.txt`
+- `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_M04_EXACT_LOCATOR_REVALIDATION.txt`
 
-## Lane launch sequence after PM acceptance
+The aggregate gate confirms 28/28 mechanical checks, 63/63 M04 exact locators, disjoint lane write sets, unchanged behavioural surfaces and complete Git integrity. This is control/evidence acceptance only; it makes no runtime-correctness claim.
 
-1. Use the same PM-published, independently tested full-history checkpoint for every worker.
-2. Create the four worker threads using the exact names above and attach the checkpoint plus the matching `W` brief.
-3. Do not create a lane tester task until its matching Worker Candidate Archive is returned.
-4. Give the tester the same PM source checkpoint, the Worker Candidate Archive and the matching `T` brief.
-5. Return the exact-named tester portability artefact to the Master Project Manager. Do not integrate it manually.
+## Next boundary
 
-The PM launch message must state the exact source archive filename, SHA-256, branch and commit. Those values are supplied at issue time because the final archive cannot embed its own SHA-256.
+The PM publishes one lean full-history Cycle 01 closeout checkpoint. Any later work must start from that checkpoint under a new brief. The next lawful M01 leaf is `M01-PROOF-MLC-O-V1`. M04, M07 and M08 require bounded numbered normative-authority completion before their MLC-A leaves can close. No implementation, physical-test mutation or configuration mutation opens automatically.

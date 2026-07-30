@@ -1,0 +1,30 @@
+CYCLE_01_AGGREGATE_MECHANICAL_VALIDATION
+PASS	branch	integration/parallel-cycle-01
+PASS	repository_non_shallow	false
+PASS	accepted_launch_is_ancestor	ee67c752d14073a959fda478f31f4466b6952cae
+PASS	lane4_pm_acceptance_is_ancestor	d6cfff9ab00cb5772baad26b14a8d388b08a241a
+PASS	pm_integration_order_1A_2A_3A_4A	ee67c752d140 -> 4ff92943bc88 -> a538880f14f5 -> 391781b0f576 -> d6cfff9ab00c
+PASS	1A_write_set_confined	18 paths under project_control/canonical_project_manager/modules/M01/
+PASS	1A_tester_provenance_ref	refs/remotes/lane1/test=d935f6d669e8ee7e21818d3df4ff1d6df54ca8b6
+PASS	2A_write_set_confined	25 paths under project_control/canonical_project_manager/modules/M04/
+PASS	2A_tester_provenance_ref	refs/remotes/lane2/test=23289785e154110686a146671ef3d483f8f05f0b
+PASS	3A_write_set_confined	20 paths under project_control/canonical_project_manager/modules/M07/
+PASS	3A_tester_provenance_ref	refs/remotes/lane3/test=a78ce0642b257b0bf3779e46cd962f95dec3781a
+PASS	4A_write_set_confined	19 paths under project_control/canonical_project_manager/modules/M08/
+PASS	4A_tester_provenance_ref	refs/remotes/lane4/test=f13ed3bf551f6c9ca25b522e9a17b23c5ed0528c
+PASS	cross_lane_write_sets_disjoint	none
+PASS	cycle_lane_delta_control_evidence_only	87 paths; out_of_scope=[]
+PASS	no_behavioral_surface_mutation	none
+PASS	brief_pack_sha256	rows=8 bad=[]
+PASS	m01_routing_reconciliation	inventory=179 unique=179 route=20 shadow=159 chains=20
+PASS	m01_tester_pass	missing=[]
+PASS	m04_authority_block_and_pass	missing=[]
+PASS	m07_authority_block_and_positive_obligation	missing=[]
+PASS	m07_tester_pass	missing=[]
+PASS	m08_authority_block	missing=[]
+PASS	m08_tester_pass	missing=[]
+PASS	independent_worker_tester_read_manifests	8 expected; bad=[]
+PASS	atlas_contract_ownership	{'K01': 'M01', 'K02': 'M01', 'K03': 'M01', 'K07': 'M04', 'K12': 'M07', 'K13': 'M08'}
+PASS	git_diff_check	clean
+PASS	git_fsck	clean
+SUMMARY	checks=28	pass=28	fail=0

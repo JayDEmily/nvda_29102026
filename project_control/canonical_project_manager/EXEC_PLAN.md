@@ -2,7 +2,7 @@
 
 ## Status
 
-`parallel_control_r2_accepted_worker_launch_open`
+`parallel_cycle_01_aggregate_validated_closed`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -12,7 +12,7 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Original programme activated | 2026-07-20 (Australia/Melbourne) |
 | Strategy amendments accepted | 2026-07-25 and 2026-07-28 (Australia/Melbourne) |
 | Accepted control-integration checkpoint | local `main` at `b153cd1e3e0808991dcf9c188e380d935cfd9283` |
-| Current branch | `review/parallel-control-r2-accepted` |
+| Current branch | `integration/parallel-cycle-01` |
 | Architecture | Governed modular monolith |
 | Maturity | Alpha / `thin_seam`; no production, live-trading, paper-trading, durability or end-to-end completion claim |
 | Accepted architecture surfaces | 18, sections 5.1–5.18 of the native blueprint |
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Cycle 1 assignments 1A–4A worker launch authorised from the PM-published immutable checkpoint; Lanes 5 and 6 held |
-| Mutation state | Parallel control R2 accepted; Cycle 1 workers may change only their exact lane-local control/evidence write sets; production source, physical tests, configuration, normative documents and global controls remain closed |
+| Active units | Parallel Cycle 01 assignments 1A–4A integrated and aggregate-validated; M01 MLC-O is the next allocatable proof leaf; M04, M07 and M08 are returned to bounded numbered normative-authority completion; Lanes 5 and 6 held pending new allocation |
+| Mutation state | Parallel Cycle 01 worker/tester activity is closed; this PM closeout updates only canonical control/evidence records. Production source, physical tests, fixtures, runtime configuration and implementation remain closed until a new bounded brief opens them |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -383,6 +383,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 
 | 2026-07-28 | `PARALLEL-WORKFLOW-ENABLEMENT-V1` | `rejected_before_launch` | Initial control checkpoint was structurally valid but rejected by PM self-audit before any lane launch. |
 | 2026-07-29 | `PARALLEL-WORKFLOW-ENABLEMENT-V1-REPAIR-1` | `awaiting_independent_control_test` | Governance vocabulary, local manifests, Lane 1 test route, artefact contracts, registry lineage and independent control testing were repaired. |
+| 2026-07-30 | `PARALLEL-CYCLE-01` | `aggregate_validated_closed` | Tester-approved results for 1A–4A were imported serially, independently PM-reviewed, mechanically reconciled as a combined state and closed without production, physical-test, configuration or numbered-authority mutation. |
 
 ## Decisions
 
@@ -417,13 +418,14 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-PAR-004` | Workers return one exact-named Git-preserving Worker Candidate Archive; testers return one exact-named reconstructable verdict package. Tester PASS is suitable for PM integration review only. |
 | `DEC-PAR-005` | Canonical integration is sequential; Cycle 1 order is M01, M04, M07, M08; stale or conflicting outputs require revalidation. |
 | `DEC-PAR-006` | `ACCEPTED:PARALLEL_CONTROL_R2`: accept independent tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`; open only Cycle 1 worker launch for assignments 1A–4A from one PM-published immutable checkpoint; Lanes 5 and 6 remain held. |
+| `DEC-PAR-007` | `ACCEPTED:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`: accept the serially integrated 1A–4A evidence batch through PM commit `d6cfff9ab00cb5772baad26b14a8d388b08a241a`; preserve M01 routing as accepted, return M04/M07/M08 to bounded missing-authority gates, open no implementation, and publish one new full-history PM checkpoint. |
 
 
 ## Next gate
 
-Publish one immutable full-history worker-launch checkpoint from `review/parallel-control-r2-accepted` and launch exactly `Lane 1AW`, `Lane 2AW`, `Lane 3AW` and `Lane 4AW` from that same checkpoint using their matching worker briefs.
+Publish one lean full-history canonical checkpoint from `integration/parallel-cycle-01` containing the committed repository and complete Git history, excluding only transient ignored caches and external intermediate archives.
 
-Create each matching tester only after its worker returns. Lanes 5 and 6 remain held and no `B` assignment opens.
+From that checkpoint, the next lawful new allocation is bounded `M01-PROOF-MLC-O-V1`. M04, M07 and M08 remain at missing-numbered-authority return gates. No implementation or physical-test mutation opens automatically, and Lanes 5 and 6 remain held pending explicit PM allocation.
 
 ## Roadblocks and Unknowns
 

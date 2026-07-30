@@ -2,14 +2,14 @@
 
 ## Status and authority
 
-**Status:** `REPAIRED_CANDIDATE_AWAITING_INDEPENDENT_CONTROL_TEST`
+**Status:** `ACTIVE:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED`
 **Authorised:** 28 July 2026 by direct user instruction
 **Repair authorised:** 29 July 2026 by direct user instruction
 **Owner:** Master Project Manager
 **Parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live state:** `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
 
-This document governs parallel execution inside the existing repository and programme. It does not create a second programme, weaken module-local proof or allow parallel canonical states. The repaired control package is not worker-launch authority until the independent control test has passed and the Project Manager has accepted that tested checkpoint.
+This document governs parallel execution inside the existing repository and programme. It does not create a second programme, weaken module-local proof or allow parallel canonical states. Repair 2 passed independent control testing and PM acceptance; Cycle 01 then completed its worker/tester and serial-integration lifecycle under this law.
 
 ## Operating model
 
@@ -154,11 +154,11 @@ A newly authored or materially repaired parallel-control checkpoint must be revi
 
 | Lane | Unit | Worker | Tester | Revision | State |
 |---|---|---|---|---|---|
-| 1A | `M01-PROOF-MLC-R-V1` | `Lane 1AW` | `Lane 1AT` | `R1` | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 2A | `M04-PROOF-MLC-A-V1` | `Lane 2AW` | `Lane 2AT` | `R1` | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 3A | `M07-PROOF-MLC-A-V1` | `Lane 3AW` | `Lane 3AT` | `R1` | `ALLOCATED_CONTROL_TEST_PENDING` |
-| 4A | `M08-PROOF-MLC-A-V1` | `Lane 4AW` | `Lane 4AT` | `R1` | `ALLOCATED_CONTROL_TEST_PENDING` |
+| 1A | `M01-PROOF-MLC-R-V1` | `Lane 1AW` | `Lane 1AT` | `R1` | `AGGREGATE_VALIDATED_CLOSED` |
+| 2A | `M04-PROOF-MLC-A-V1` | `Lane 2AW` | `Lane 2AT` | `R1` | `AGGREGATE_VALIDATED_CLOSED_AUTHORITY_RETURN` |
+| 3A | `M07-PROOF-MLC-A-V1` | `Lane 3AW` | `Lane 3AT` | `R1` | `AGGREGATE_VALIDATED_CLOSED_AUTHORITY_RETURN` |
+| 4A | `M08-PROOF-MLC-A-V1` | `Lane 4AW` | `Lane 4AT` | `R1` | `AGGREGATE_VALIDATED_CLOSED_AUTHORITY_RETURN` |
 | 5 | held | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 | 6 | held | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 
-Cycle 1 changes no production source, physical tests or runtime configuration. This control repair lawfully changes vocabulary authority and its deterministic projection to admit the durable operating terms. Lane integration order remains M01, M04, M07, M08 after independent control acceptance.
+Cycle 1 changed no production source, physical tests or runtime configuration. The four accepted results were integrated in order M01, M04, M07, M08 and passed aggregate validation. M01 may advance only through a new PM brief to MLC-O; M04, M07 and M08 remain at bounded numbered-authority return gates. Any future parallel cycle requires a new PM allocation and immutable source checkpoint.
