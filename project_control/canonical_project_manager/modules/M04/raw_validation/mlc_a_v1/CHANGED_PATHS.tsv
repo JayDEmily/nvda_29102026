@@ -1,11 +1,15 @@
 path	authorised_by	result
-project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md	LANE_2AW_WORKER_BRIEF.md:77	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv	LANE_2AW_WORKER_BRIEF.md:78	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FILE_SHA256.tsv	LANE_2AW_WORKER_BRIEF.md:78	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv	LANE_2AW_WORKER_BRIEF.md:25,78	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv	LANE_2AW_WORKER_BRIEF.md:78,109	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/RECONSTRUCTION_VALIDATION.txt	LANE_2AW_WORKER_BRIEF.md:78,127,133	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt	LANE_2AW_WORKER_BRIEF.md:78,117	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md	LANE_2AW_WORKER_BRIEF.md:78,103-105,127	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt	LANE_2AW_WORKER_BRIEF.md:78,115-123	PASS
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh	LANE_2AW_WORKER_BRIEF.md:78,115-123	PASS
+project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md	Lane 2AW M04 Authority Repair R2 Brief:T2A-01,T2A-02	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv	Lane 2AW M04 Authority Repair R2 Brief:Evidence refresh	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FILE_SHA256.tsv	Lane 2AW M04 Authority Repair R2 Brief:Evidence refresh	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv	Lane 2AW M04 Authority Repair R2 Brief:Evidence refresh	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv	Lane 2AW M04 Authority Repair R2 Brief:T2A-03	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/RECONSTRUCTION_VALIDATION.txt	Lane 2AW M04 Authority Repair R2 Brief:Evidence refresh	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt	Lane 2AW M04 Authority Repair R2 Brief:Archive and Git-state verification	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md	Lane 2AW M04 Authority Repair R2 Brief:Evidence refresh	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/LOCATOR_COMMAND_OUTPUT.txt	Lane 2AW M04 Authority Repair R2 Brief:T2A-03 raw outputs	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt	Lane 2AW M04 Authority Repair R2 Brief:Validation	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/WORKBOOK_LOCATOR_OUTPUT.jsonl	Lane 2AW M04 Authority Repair R2 Brief:T2A-03 workbook cells	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/inspect_workbook.mjs	Lane 2AW M04 Authority Repair R2 Brief:T2A-03 workbook inspection	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_locators.py	Lane 2AW M04 Authority Repair R2 Brief:T2A-03 coverage validation	PASS
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh	Lane 2AW M04 Authority Repair R2 Brief:Update validation script	PASS

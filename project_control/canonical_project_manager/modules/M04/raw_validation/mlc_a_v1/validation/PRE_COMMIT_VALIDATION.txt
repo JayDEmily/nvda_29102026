@@ -5,7 +5,19 @@ expected_branch=work/lane-2a-m04-mlc-a-v1
 [status]
 command: git status --short --branch
 ## work/lane-2a-m04-mlc-a-v1
-?? project_control/canonical_project_manager/modules/M04/
+ M project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FILE_SHA256.tsv
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt
+ M project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh
+?? project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/LOCATOR_COMMAND_OUTPUT.txt
+?? project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/WORKBOOK_LOCATOR_OUTPUT.jsonl
+?? project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/inspect_workbook.mjs
+?? project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_locators.py
 exit_status: 0
 
 [branch]
@@ -36,12 +48,25 @@ exit_status: 0
 command: check_required_authority_text
 exit_status: 0
 
+[exact_locator_coverage]
+command: check_exact_locator_coverage
+exit_status: 0
+
+[repaired_json_selector]
+command: check_repaired_json_selector
+exit_status: 0
+
+[workbook_locators]
+command: check_workbook_locators
+exit_status: 0
+
 [git_fsck]
 command: git fsck --full --no-dangling
 exit_status: 0
 
 [worker_evidence_hashes]
-status: deferred until FILE_SHA256.tsv exists
+command: check_evidence_hashes
+exit_status: 0
 
 validation_failures=0
 

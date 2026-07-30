@@ -2,11 +2,15 @@
 set -u
 
 SOURCE_COMMIT="ee67c752d14073a959fda478f31f4466b6952cae"
+R1_WORKER_COMMIT="bf9f732869efb1c0f9befe4de8c0b179d12784fb"
 EXPECTED_BRANCH="work/lane-2a-m04-mlc-a-v1"
 RECORD="project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md"
 EVIDENCE_ROOT="project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1"
 MANIFEST="${EVIDENCE_ROOT}/FULL_READ_MANIFEST.tsv"
 HASH_MANIFEST="${EVIDENCE_ROOT}/FILE_SHA256.tsv"
+LOCATOR_VALIDATOR="${EVIDENCE_ROOT}/validation/validate_locators.py"
+WORKBOOK_VALIDATOR="${EVIDENCE_ROOT}/validation/inspect_workbook.mjs"
+WORKBOOK_OUTPUT="${EVIDENCE_ROOT}/validation/WORKBOOK_LOCATOR_OUTPUT.jsonl"
 failures=0
 
 run_check() {
@@ -29,7 +33,8 @@ check_branch() {
 }
 
 check_source_ancestry() {
-  git merge-base --is-ancestor "${SOURCE_COMMIT}" HEAD
+  git merge-base --is-ancestor "${SOURCE_COMMIT}" HEAD &&
+    git merge-base --is-ancestor "${R1_WORKER_COMMIT}" HEAD
 }
 
 check_not_shallow() {
@@ -67,13 +72,23 @@ check_manifest() {
       continue
     fi
     case "${read_status}" in
-      READ_FULL|READ_SCOPED_C010_C016_ROWS|READ_SCOPED_ACCEPTED_M04_K07_ROWS) ;;
+      READ_FULL|READ_SCOPED_EXACT_LOCATORS|READ_SCOPED_ACCEPTED_M04_K07_ROWS) ;;
       *)
         printf 'invalid_read_status=%s:%s\n' "${path}" "${read_status}"
         rc=1
         ;;
     esac
-    actual="$(sha256sum "${path}" | awk '{print $1}')"
+    if [ "${mutation_relevance}" = "MUTATE_R2" ]; then
+      actual="$(git show "${R1_WORKER_COMMIT}:${path}" | sha256sum | awk '{print $1}')"
+    elif [ "${mutation_relevance}" = "CREATE_R2" ]; then
+      if git cat-file -e "${R1_WORKER_COMMIT}:${path}" 2>/dev/null; then
+        actual="PRESENT"
+      else
+        actual="ABSENT"
+      fi
+    else
+      actual="$(sha256sum "${path}" | awk '{print $1}')"
+    fi
     if [ "${actual}" != "${expected}" ]; then
       printf 'manifest_hash_mismatch=%s expected=%s actual=%s\n' "${path}" "${expected}" "${actual}"
       rc=1
@@ -92,6 +107,7 @@ check_evidence_hashes() {
   while IFS=$'\t' read -r expected path; do
     [ "${expected}" = "sha256" ] && continue
     [ "${expected}" = "SELF_EXCLUDED" ] && continue
+    [ "${expected}" = "PHASE2_REFRESH_REQUIRED" ] && continue
     if [ ! -f "${path}" ]; then
       printf 'missing_evidence_path=%s\n' "${path}"
       rc=1
@@ -111,7 +127,35 @@ check_required_authority_text() {
     grep -Fq 'The producer must know which checks are required for the exact packet role and record their actual outcomes.' docs/09.1_DMPV3_PROTOCOL_WORKING.md &&
     grep -Fq 'Do not infer role-specific mandatory lineage or validation checks from default field values; Gate B must decide them semantically for each packet boundary.' docs/09.1_DMPV3_PROTOCOL_WORKING.md &&
     grep -Fq 'admits trace/run defaulting for a reference packet, while the Gate C test rejects missing caller-owned context' project_control/normative_authority_top_down_alignment/gate_c2_proof_envelopes/D-010.md &&
-    grep -Fq 'PROPOSED_M04_AUTHORITY_V1_AWAITING_LANE_2AT' "${RECORD}"
+    grep -Fq 'PROPOSED_M04_AUTHORITY_V1_AWAITING_LANE_2AT' "${RECORD}" &&
+    grep -Fq 'docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:50' "${RECORD}" &&
+    ! grep -Fq 'docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:44' "${RECORD}" &&
+    grep -Fq '.modules[] | select(.module_id=="M04") | .owns' "${RECORD}" &&
+    ! grep -Fq '.modules[M04].owns' "${RECORD}"
+}
+
+check_exact_locator_coverage() {
+  python3 "${LOCATOR_VALIDATOR}" >/dev/null
+}
+
+check_repaired_json_selector() {
+  jq -e '.modules[] | select(.module_id=="M04") | .owns' \
+    project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json |
+    grep -Fxq '"DMPV3 envelope validation and packet carriage only"'
+}
+
+check_workbook_locators() {
+  local output
+  test -n "${CODEX_PRIMARY_RUNTIME_NODE:-}" || return 1
+  output="$(mktemp)"
+  "${CODEX_PRIMARY_RUNTIME_NODE}" "${WORKBOOK_VALIDATOR}" >"${output}"
+  local rc=$?
+  if [ "${rc}" -eq 0 ]; then
+    diff -u "${WORKBOOK_OUTPUT}" "${output}"
+    rc=$?
+  fi
+  rm -f "${output}"
+  return "${rc}"
 }
 
 printf 'Lane 2AW bounded validation\n'
@@ -126,6 +170,9 @@ run_check "diff_check" git diff --check
 run_check "allowed_changed_paths" check_allowed_paths
 run_check "full_read_manifest" check_manifest
 run_check "required_authority_text" check_required_authority_text
+run_check "exact_locator_coverage" check_exact_locator_coverage
+run_check "repaired_json_selector" check_repaired_json_selector
+run_check "workbook_locators" check_workbook_locators
 run_check "git_fsck" git fsck --full --no-dangling
 
 if [ -f "${HASH_MANIFEST}" ]; then
