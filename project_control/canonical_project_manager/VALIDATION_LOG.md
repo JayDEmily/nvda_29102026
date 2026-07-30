@@ -966,3 +966,27 @@ The earlier 134 repository-wide K07 occurrence dispositions remain historical ev
 ### Next gate
 
 Resume the preserved M04 route at `M04-PROOF-MLC-O-V1`. Observe the 25 physically routed K07 claim files against section 9.10 and record factual behaviour, contradictions and absences only. Physical-test mutation, fixtures, runtime configuration and production source remain closed.
+
+## 2026-07-30 — M04 K07 MLC-O factual observation
+
+### Disposition
+
+`OBSERVATION_COMPLETE:M04_K07_25_PHYSICAL_TEST_FILES`
+
+Source checkpoint `6d3ec80` was clean before observation. All 25 MLC-R-routed files were read in full and their hashes matched the prior routing record. The files were not changed.
+
+| Check | Result |
+|---|---|
+| Routed files observed | 25/25, each with a distinct observation |
+| Scoped execution | 357 collected; 347 passed / 10 failed using `pytest==9.0.3` |
+| Failure concentration | 6 failures in `test_gate_c_ingress_identity_and_dmp.py`; 4 in `test_gate_c_remaining_normative_contracts.py` |
+| Direct K07 expected-red failure | Missing owner context/required lineage does not yet raise |
+| Green authority conflicts | Reference default context accepted as degraded; generated stage context accepted; first stage packet accepted with empty required parentage |
+| Exact role occurrence gap | No physical test occurrence for replay request/result/comparison, diagnostic or rejection roles |
+| Test/source/config mutation | None |
+
+The observation matrix is appended to the existing M04 worker record. Test greenness was not treated as authority, and failures for unrelated Gate C propositions were not misclassified as M04 defects.
+
+### Next gate
+
+Execute `M04-PROOF-MLC-D-V1`: disposition every observation against exact section 9.10 locators, retaining consumer-only and contradictory evidence without allowing it to override normative authority. Physical-test mutation and production implementation remain closed.

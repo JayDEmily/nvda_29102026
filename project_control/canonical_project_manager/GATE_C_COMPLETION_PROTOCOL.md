@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `M04_K07_MLC_O_ACTIVE_AFTER_M15_NAMESPACE_REPAIR`
+**Status:** `M04_K07_MLC_D_ACTIVE_AFTER_OBSERVATION`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -393,4 +393,6 @@ The user's 30 July vocabulary clarification opens one governance-prerequisite re
 
 `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed: the generated vocabulary uses namespaced machine identities, K07 owns ten `m04.*` identities, collision validation is namespace-local plus imported `global`, and the M04 audit is bounded to 24 registered paths / 95 files with zero unresolved candidates. Human labels and ordinary code symbols remain unprefixed.
 
-**Immediate gate:** `M04-PROOF-MLC-O-V1`. Observe the 25 physically routed K07 claim files and record facts, contradictions and absences against section 9.10. Do not mutate M04 behavioural tests, fixtures, runtime configuration or production source during MLC-O.
+M04 MLC-O then read all 25 routed files from checkpoint `6d3ec80` and recorded a distinct observation for each. The scoped command collected 357 tests: 347 passed and 10 failed. Greenness was not treated as admission; five admitted roles have no exact test occurrence, one direct expected-red K07 assertion fails, and several green behaviours conflict with section 9.10.
+
+**Immediate gate:** `M04-PROOF-MLC-D-V1`. Disposition every observation against exact section 9.10 locators and identify the bounded proof gaps for MLC-P. Do not mutate M04 behavioural tests, fixtures, runtime configuration or production source during MLC-D.

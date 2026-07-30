@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Status | `m04_k07_mlc_o_active_after_m15_namespace_repair` |
+| Status | `m04_k07_mlc_d_active_after_observation` |
 | Current programme | existing canonical M00–M15 module-local delivery programme |
 | Current branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` from `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913` |
 | Accepted launch checkpoint | `review/parallel-control-r2-accepted` / `ee67c752d14073a959fda478f31f4466b6952cae` |
@@ -18,7 +18,8 @@
 | Completed Gate C leaf | M04 K07 section 9.10 added; M04 MLC-A recheck `AUTHORITY_SUFFICIENT` |
 | Completed Gate C routing leaf | `M04-PROOF-MLC-R-V1` — 25 physical K07 claim files routed; 154 other census files remain `LEGACY_SHADOW_UNADMITTED` |
 | Completed governance prerequisite | `M15-VOCABULARY-NAMESPACE-REPAIR-V1` — namespaced machine identities and 95-file M04 scoped candidate audit passed |
-| Current control leaf | `M04-PROOF-MLC-O-V1` — factual observation of the 25 physically routed K07 claim files |
+| Completed observation leaf | `M04-PROOF-MLC-O-V1` — 25 files read; 357 tests observed as 347 passed / 10 failed |
+| Current control leaf | `M04-PROOF-MLC-D-V1` — disposition each factual observation against section 9.10 |
 | Validation records | existing architecture `Validation_Receipt.md` for the Atlas repair and existing PM `VALIDATION_LOG.md` for M15 |
 | Production/source mutation | closed |
 | Physical-test mutation | closed |
@@ -40,7 +41,7 @@ Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry
 ## Dependency and return gates
 
 1. M01 routing is accepted, but `M01-PROOF-MLC-O-V1` remains queued behind the sole current M04 leaf.
-2. M04 K07 numbered authority, MLC-A, MLC-R and the bounded M15 namespace/scoped-audit prerequisite are complete. M04 MLC-O factual observation is active.
+2. M04 K07 numbered authority, MLC-A, MLC-R, MLC-O and the bounded M15 namespace/scoped-audit prerequisite are complete. M04 MLC-D disposition is active.
 3. M07 requires one bounded numbered normative proposition defining K12 identity/version, precedence/conflict, hard-bound and deterministic application/receipt semantics before MLC-A can close.
 4. M08 requires one bounded numbered normative proposition defining K13 identities, mandatory inputs, deterministic ordering/tie-break/lead selection, stand-down states and lawful lifecycle carriage before MLC-A can close.
 5. M02 remains downstream of canonical M01 contracts; the remaining dependency waves are unchanged.
@@ -48,6 +49,6 @@ Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry
 
 ## Immediate next gate
 
-Execute `M04-PROOF-MLC-O-V1`: observe the 25 physically routed K07 claim files against the accepted section 9.10 role, identity, lineage, validation and lawful-outcome authority. Record only factual current behaviour, contradictions and absences. Do not mutate physical tests, fixtures, runtime configuration or production source.
+Execute `M04-PROOF-MLC-D-V1`: join each of the 25 file observations to exact section 9.10 locators; classify exact proof candidates, contradictions, consumer-only observations and proof gaps. Do not admit by greenness and do not mutate physical tests, fixtures, runtime configuration or production source.
 
 M07 K12, M08 K13 and M01 MLC-O remain queued; behavioural test mutation and production implementation remain closed until their own preceding Gate C leaves pass.
