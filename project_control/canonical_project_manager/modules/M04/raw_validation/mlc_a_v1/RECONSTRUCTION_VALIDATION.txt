@@ -1,24 +1,29 @@
-Lane 2AW fresh-extraction reconstruction evidence
-==================================================
+Lane 2AW R2 fresh-extraction reconstruction evidence
+=====================================================
 
-Candidate archive
------------------
-Filename: NVDA_LANE_2A_M04_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar.gz
-Candidate SHA-256: 7a3db446536578647da1391a033ed01fca140d2a56680f1ef7f6d8d0c8d65e85
-Candidate commit: 7cfc38994b0747dae26c09d38ce82ed7012fff08
+Substantive repair candidate
+----------------------------
+Temporary archive: /tmp/lane2aw-r2-phase1-g9tRSD.tar.gz
+Temporary archive SHA-256:
+0efb8f363fc75ce674bc29efff9892e29455d8f812fdafc80da07ef0a019fe5f
+Substantive repair commit:
+a92c1d246313b539e743afb384c4a7bb9cb42c57
+R1 worker parent:
+bf9f732869efb1c0f9befe4de8c0b179d12784fb
+PM source ancestor:
+ee67c752d14073a959fda478f31f4466b6952cae
 
-The candidate was created outside the repository from the complete Nvda11
-directory, including .git, then extracted beneath a new mktemp directory.
+The archive was created outside the repository from the complete Nvda11
+directory, including .git, and extracted beneath a new mktemp directory.
 
 Fresh extraction checks
 -----------------------
-
 Command: git branch --show-current
 Output: work/lane-2a-m04-mlc-a-v1
 Exit status: 0
 
 Command: git rev-parse HEAD
-Output: 7cfc38994b0747dae26c09d38ce82ed7012fff08
+Output: a92c1d246313b539e743afb384c4a7bb9cb42c57
 Exit status: 0
 
 Command: git status --short --branch
@@ -34,36 +39,75 @@ Output: <none>
 Exit status: 0
 
 Command:
+git merge-base --is-ancestor bf9f732869efb1c0f9befe4de8c0b179d12784fb HEAD
+
+Output: <none>
+Exit status: 0
+
+Command:
 git merge-base --is-ancestor ee67c752d14073a959fda478f31f4466b6952cae HEAD
 
 Output: <none>
 Exit status: 0
 
 Command:
-git diff --name-only ee67c752d14073a959fda478f31f4466b6952cae..HEAD
+git diff --check bf9f732869efb1c0f9befe4de8c0b179d12784fb..HEAD
 
-Output:
-project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt
-project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh
-
+Output: <none>
 Exit status: 0
 
 Command: git fsck --full --no-dangling
 Output: <none>
 Exit status: 0
 
-Reconstruction result
----------------------
-PASS. Branch, candidate commit, clean worktree, complete .git history,
-ancestry to the PM source commit, authorised changed paths and object
-integrity were reconstructed successfully.
+Validator command:
+bash project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh
 
-This file and FILE_SHA256.tsv form the second, evidence-only commit. The
-final returned archive is rebuilt from that clean commit and independently
-rechecked after fresh extraction.
+Validator output summary:
+- branch: PASS
+- R1 and PM-source ancestry: PASS
+- complete history: PASS
+- exact write set: PASS
+- full-read manifest: PASS
+- repaired literal authority text: PASS
+- exact locator coverage: PASS (63 occurrences / 63 rows)
+- repaired jq selector: PASS
+- workbook locators: PASS
+- git fsck: PASS
+- worker evidence hashes: PASS
+- validation_failures=0
+
+The first validator invocation exposed only a package-environment resolution
+issue: the artifact-tool workbook dependency link existed in the original
+workspace but not beside a new extraction. No locator, JSON, Git, write-set or
+hash check failed. Re-running with the declared runtime node_modules link at
+the extraction parent passed with exit status 0. The evidence-only follow-up
+updates validate_worker.sh to create and remove that temporary parent-level
+link itself, so the returned archive does not rely on an undeclared workspace
+symlink.
+
+Changed paths at substantive repair commit
+------------------------------------------
+project_control/canonical_project_manager/modules/M04/M04_AUTHORITY_WORKER_RECORD_V1.md
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FILE_SHA256.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/LOCATOR_VALIDATION.tsv
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/SOURCE_CHECKPOINT_VALIDATION.txt
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/WORKER_CLAIM.md
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/LOCATOR_COMMAND_OUTPUT.txt
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/PRE_COMMIT_VALIDATION.txt
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/WORKBOOK_LOCATOR_OUTPUT.jsonl
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/inspect_workbook.mjs
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_locators.py
+project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_worker.sh
+
+Final packaging rule
+--------------------
+This reconstruction record, the portable-validator adjustment and the final
+FILE_SHA256.tsv are committed in the single permitted evidence-only child of
+the substantive repair commit. The returned full-history archive is then
+built from that clean final commit and freshly extracted again. Its exact
+final commit and archive SHA-256 are reported with the returned artefact;
+embedding an archive's own final hash or its containing commit hash inside
+itself would be circular.

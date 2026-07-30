@@ -145,16 +145,26 @@ check_repaired_json_selector() {
 }
 
 check_workbook_locators() {
-  local output
+  local output dependency_link link_created rc
   test -n "${CODEX_PRIMARY_RUNTIME_NODE:-}" || return 1
+  test -n "${CODEX_PRIMARY_RUNTIME_NODE_MODULES:-}" || return 1
+  dependency_link="$(dirname "$(pwd)")/node_modules"
+  link_created=0
+  if [ ! -e "${dependency_link}" ]; then
+    ln -s "${CODEX_PRIMARY_RUNTIME_NODE_MODULES}" "${dependency_link}" || return 1
+    link_created=1
+  fi
   output="$(mktemp)"
   "${CODEX_PRIMARY_RUNTIME_NODE}" "${WORKBOOK_VALIDATOR}" >"${output}"
-  local rc=$?
+  rc=$?
   if [ "${rc}" -eq 0 ]; then
     diff -u "${WORKBOOK_OUTPUT}" "${output}"
     rc=$?
   fi
   rm -f "${output}"
+  if [ "${link_created}" -eq 1 ]; then
+    unlink "${dependency_link}"
+  fi
   return "${rc}"
 }
 
