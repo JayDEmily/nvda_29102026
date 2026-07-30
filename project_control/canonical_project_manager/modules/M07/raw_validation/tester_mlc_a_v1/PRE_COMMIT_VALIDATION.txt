@@ -1,0 +1,27 @@
+Lane 3AT pre-commit validation
+unit=M07-PROOF-MLC-A-V1
+
+[P01] branch and inherited worker head
+branch=test/lane-3a-m07-mlc-a-v1
+head_before_tester_commit=a83919a208b9a91fc768116b5f1ee12100568654
+
+[P02] worker committed diff check
+PASS git_diff_check_source_to_worker=true
+
+[P03] tester untracked path scope
+project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_TESTER_REVIEW_V1.md
+project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/
+PASS tester_status_paths_within_write_set=true status_entries=2
+
+[P04] full-read manifest completion and immutable hash verification
+PASS manifest_rows=62 pending=0 hash_mismatches=0
+
+[P05] worker path and claim checks already independently captured
+PASS exact_worker_paths=True changed_count=7
+PASS worker_claim_byte_identical=true
+
+[P06] semantic challenge coverage
+PASS semantic_dimensions=9 exact_required_coverage=true
+
+[P07] repository object integrity
+PASS git_fsck_full_no_dangling=true

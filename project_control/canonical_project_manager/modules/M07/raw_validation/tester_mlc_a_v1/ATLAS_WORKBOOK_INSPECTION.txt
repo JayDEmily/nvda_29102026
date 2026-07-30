@@ -1,0 +1,23 @@
+Lane 3AT Atlas workbook inspection via artifact_tool
+unit=M07-PROOF-MLC-A-V1
+
+## Surface Map header
+{"kind":"table","sheet":"Surface Map","address":"A1:O1","rows":1,"cols":15,"values":[["Surface Id","Surface Name","Structural Status","Implementation Truth","Cohort Count","Target Modules","Governing Docs","Gate B Boundary","Current Requirements","Gate D Units","Observed Current Evidence","Known Limitation","Target Area","Accepted Control Decision","Required Positive Module Obligation"]]}
+
+## Surface Map M07/5.9 row
+{"kind":"table","sheet":"Surface Map","address":"A10:O10","rows":1,"cols":15,"values":[["5.9","Dynamic coefficient and modifier authority","Locked","thin_seam",51,"M07","docs/04_TECHNICAL_ARCHITECTURE_CORE.md; docs/07_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_CORE.md","B03-B09","C-012","D-012","Bounded local coefficient/modifier authority exists","Material version carriage and consumer integration incomplete","src/nvda_desk/cognition/modifiers; src/nvda_desk/config","M07 renamed coefficient_modifier_authority","bundle/version/precedence/application-receipt authority"]]}
+
+## Target Modules header
+{"kind":"table","sheet":"Target Modules","address":"A1:Q1","rows":1,"cols":17,"values":[["Module Id","Module","Kind","Surfaces","Owns","State Owner","Public Interfaces","Legacy Combined Dependencies (superseded)","Extension Points","Existing Locations","Target Change","Accepted Module Name","Runtime/Contract Dependencies","State/Transaction Participation","Governance/Promotion Prerequisites","Build/Test Dependencies","Acceptance Status"]]}
+
+## Target Modules M07 row
+{"kind":"table","sheet":"Target Modules","address":"A9:Q9","rows":1,"cols":17,"values":[["M07","coefficient_modifier_authority","cross-cutting runtime","5.9","versioned coefficients, modifiers, precedence and application receipts","versioned policy bundles","PolicyBundle; ModifierDecision; ModifierApplicationReceipt","M14;M15","versioned stage-owned modifier policy","src/nvda_desk/cognition/modifiers; config; config surface","refactor version carriage and consumer integration","coefficient_modifier_authority",null,null,"M14;M15","bundle/version/precedence/application-receipt proof","accepted_target_ownership"]]}
+
+## Contracts header
+{"kind":"table","sheet":"Contracts","address":"A1:E1","rows":1,"cols":5,"values":[["Contract Id","Contract","Owner Module","Governed Meaning","Requirements"]]}
+
+## Contracts K12 row
+{"kind":"table","sheet":"Contracts","address":"A13:E13","rows":1,"cols":5,"values":[["K12","PolicyBundle","M07","versioned coefficient/modifier authority","C-012"]]}
+
+## Formula error scan
+{"kind":"notice","message":"Cell search matched 0 entries."}

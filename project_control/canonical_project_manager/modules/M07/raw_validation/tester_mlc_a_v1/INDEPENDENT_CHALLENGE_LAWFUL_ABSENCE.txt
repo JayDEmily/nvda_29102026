@@ -1,0 +1,44 @@
+Lane 3AT independent challenge: lawful absence / zero-applicability
+Unit: M07-PROOF-MLC-A-V1
+
+Challenge
+---------
+Consider a valid, promoted K12 bundle and authoritative state/context in which no
+modifier is applicable. Independently determine which outcome numbered authority
+requires:
+
+1. emit the promoted baseline unchanged with a ModifierDecision and an attesting
+   ModifierApplicationReceipt that records zero applied modifiers;
+2. emit a distinct lawful-not-applicable or withheld outcome;
+3. reject the application because a bundle member or applicable modifier is
+   mandatory; or
+4. treat absence of the entire bundle differently from an empty bundle or from a
+   non-empty bundle whose state predicates all evaluate false.
+
+Authority examined
+------------------
+- docs/03.1_DOMAIN_MODEL_WORKING.md:35-37 requires applicable typed contracts to
+  declare mandatory/optional/not-applicable facts and every carried identifier's
+  lawful-absence rule. It does not define the M07 outcome.
+- docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:179-184 requires M07
+  deterministic semantic receipts and minimum carriage including active modifier
+  identities and resolved coefficient snapshots. It does not state whether an
+  empty active set is lawful or what output/receipt follows.
+- docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:159-175 requires replay evidence to
+  preserve explicit missing, unavailable, blocked, conflict or non-applicable
+  states. It records such states after an owner has governed them; it does not
+  choose M07's missing/non-applicable semantics.
+- docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:155-159 constrains when a
+  modifier may act but does not define the no-applicable-modifier result.
+- docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:271-286 names lawful inputs,
+  bounded outputs and proof classes but not the zero-applicability algorithm.
+
+Result
+------
+No current numbered proposition distinguishes missing bundle, empty bundle, and
+zero-applicability or defines the corresponding decision/receipt. The general
+lawful-absence and replay rules require that the M07 owner define this meaning;
+they do not supply it.
+
+PASS independent_challenge_supports_worker_block=true
+PASS challenge_not_copied_from_worker_validation=true

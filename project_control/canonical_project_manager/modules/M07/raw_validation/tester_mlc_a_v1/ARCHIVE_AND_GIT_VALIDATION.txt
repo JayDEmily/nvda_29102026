@@ -1,0 +1,30 @@
+Lane 3AT archive and Git validation
+unit=M07-PROOF-MLC-A-V1
+
+[A01] input archive SHA-256
+983d0ffdb977a75a4cd3063bd9d645d24ae7817ff47620e543f9e1f8bfb5a381  /mnt/data/NVDA_PARALLEL_WORKFLOW_WORKER_LAUNCH_CHECKPOINT_R1_FULL_HISTORY.tar(10).gz
+e528ffec207b73f4d6dca48cda1435d283159d053ab3c9126db05beff88edafd  /mnt/data/NVDA_LANE_3A_M07_MLC_A_WORKER_CANDIDATE_R1_FULL_HISTORY.tar(1).gz
+
+[A02] canonical source state from fresh source extraction
+review/parallel-control-r2-accepted
+ee67c752d14073a959fda478f31f4466b6952cae
+e672b27ca01efbd1f47de27d41fa54733bc73c63
+## review/parallel-control-r2-accepted
+false
+
+[A03] worker candidate state from fresh archive extraction
+work/lane-3a-m07-mlc-a-v1
+a83919a208b9a91fc768116b5f1ee12100568654
+db451a81ed8ab44bc987efc8049d2f9d043897e7
+## work/lane-3a-m07-mlc-a-v1
+false
+
+[A04] ancestry
+PASS source_is_ancestor=true
+merge_base=ee67c752d14073a959fda478f31f4466b6952cae
+
+[A05] tester branch start state
+test/lane-3a-m07-mlc-a-v1
+a83919a208b9a91fc768116b5f1ee12100568654
+## test/lane-3a-m07-mlc-a-v1
+?? project_control/canonical_project_manager/modules/M07/raw_validation/tester_mlc_a_v1/

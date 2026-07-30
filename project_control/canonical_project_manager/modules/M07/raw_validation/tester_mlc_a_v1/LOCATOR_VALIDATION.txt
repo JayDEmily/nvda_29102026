@@ -1,0 +1,236 @@
+Lane 3AT independent locator validation
+unit=M07-PROOF-MLC-A-V1
+
+[L01] docs/01_NORMATIVE_CORE.md:81-85
+81: ## Cross-cutting governed layers
+82:
+83: State-conditioned modifiers and coefficient authority act across the governed runtime sequence. They do not replace governed runtime steps.
+84:
+85: DMPV3 governs live inter-module packet carriage. If a runtime output is packetised, it uses the canonical DMPV3 outer envelope.
+
+[L02] docs/04_TECHNICAL_ARCHITECTURE_CORE.md:52-56
+52: ## Cross-cutting technical layers
+53:
+54: State-conditioned modifiers and coefficient authority act across the governed runtime sequence.
+55:
+56: Those layers do not replace bounded runtime-path responsibilities.
+
+[L03] docs/05.1_GUARDRAILS_WORKING.md:11-19
+11: ## 5.1 Guardrail scope versus trading policy
+12:
+13: The guardrails in `docs/05` protect architecture meaning, ownership, lineage, validation, proof integrity, and honest status.
+14:
+15: They do not define a market view, strategy, playbook, position size, risk threshold, coefficient value, capital-deployment percentage, exit trigger, or broker instruction.
+16:
+17: A numeric or behavioural trading constraint must be owned by its admitted domain policy or configuration authority. It must not be smuggled into a structural guardrail merely because the constraint sounds conservative.
+18:
+19: Likewise, a domain policy must not be used to waive structural ownership, lineage, contract, or proof requirements.
+
+[L04] docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:179-184
+179: ## Local supplement: bounded 5.9 coefficient/modifier ownership
+180:
+181: - Semantic owner: coefficient and modifier authority owns governed coefficient loading, modifier output meaning, and deterministic semantic receipt construction for row `5.9`. Current alpha implementation evidence is allocated to `src/nvda_desk/config/coefficient_authority.py`.
+182: - Primary readers: state-conditioned modifiers, serial stage surfaces, Parallel Risk Lane, review/replay, and proof tooling may consume resolved coefficient packets and replay receipts.
+183: - Forbidden mixing: coefficient/modifier replay must not open capital deployment decisions, source-data ingestion, hidden strategy mutation, or unbounded live self-tuning.
+184: - Traceability rule: replay receipts must carry authority identity and version, schema version, owner stage, active modifier identities and versions, resolved coefficient snapshots, closed authority classes, and deterministic semantic fingerprint.
+
+[L05] docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:159-175
+159: ### 07.2.N09.2 Minimum authoritative envelope
+160:
+161: For a material decision or transition, the authoritative replay envelope must preserve or provide verified retrievable references to:
+162:
+163: - replay-envelope identity, replay-run identity, declared replay class and target decision/transition identity;
+164: - every authoritative source/capture artefact identity, content fingerprint and source/effective/observed/captured time fact actually consumed;
+165: - dataset, symbol/session and bounded window identity where the decision depended on a data set or interval;
+166: - input contract, schema, normalisation, preparation and projection versions;
+167: - every material configuration, policy, coefficient, modifier, playbook, algorithm and executable module/version that could change the result;
+168: - ordered upstream prepared envelopes, common contexts, stage carriers, packets, decisions, state snapshots, transaction/idempotency records and receipts actually consumed;
+169: - every explicit missing, unavailable, degraded, blocked, conflict or non-applicable state presented to the original owner;
+170: - the original bounded output/transition identity, reasons/constraints, semantic result fingerprint and attesting receipt; and
+171: - deterministic ordering/version information sufficient to distinguish committed sequence, duplicate delivery and gaps.
+172:
+173: For the propositions admitted in this controlled completion, the envelope must retain the N-02 calendar facts and supersession lineage, N-03 prepared envelope, N-04 field-resolution receipts, N-05 common context and stage carriers, N-06 transaction/idempotency/state-version evidence, N-07 phase evidence/history/policy and N-08 exact serial and Parallel Risk branch products plus final-join receipt wherever those facts were material to the target result.
+174:
+175: A hash, packet ID, repository row, local object or fixture path is not sufficient by itself. The referenced content must be retrievable, type-valid and fingerprint-verified under the owning contract.
+
+[L06] docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:155-161
+155: - `state_conditioned_modifier` [`enrich_existing`] = a governed modifier policy that can alter only admitted coefficient surfaces under explicit state conditions
+156: - `bounded_dynamic_coefficient` [`enrich_existing`] = a coefficient whose effective value may vary only inside declared hard bounds and governed promotion authority
+157: - `review_horizon` [`enrich_existing`] = the coefficient review window or trigger used for promotion evidence, not live self-tuning
+158: - `champion_challenger_evaluation` [`enrich_existing`] = the non-deploying comparison pattern where challenger coefficient settings require promotion before live authority
+159: - `live_paper_historical_evaluation_separation` [`enrich_existing`] = the rule that live-paper evidence and historical evidence remain distinct and cannot directly mutate live coefficient authority
+160:
+161: P1 integration projects these retained migration/process and coefficient/modifier meanings from the human registry through the deterministic builder. Their presence in generated JSON remains downstream projection evidence and does not reactivate an historical bounded pack or prove target-surface implementation.
+
+[L07] docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:232-236
+232: `Module-local Proof Gate` is the active acceptance process for one ownership module and one bounded behaviour. An unrelated unreviewed test may be labelled `Legacy Shadow Unadmitted`: runnable and visible, but neither admitted nor authoritative for the active module.
+233:
+234: `Coefficient and Modifier Authority` is the durable name for module `M07`. The former target-module label `policy_authority` is prohibited because it overstates the module's scope and could absorb policies owned by calendar, capital, execution, lifecycle or replay modules.
+235:
+236: These terms are admitted through this human-readable overlay and the human vocabulary registry by the accepted 2026-07-25 strategy amendment. `CTRL-ARCH-001` regenerates `data/vocabulary/canonical_vocabulary.json` only through the deterministic builder; it does not hand-edit the generated projection, builder, candidate report or stamp. The projection proves registry parity for these admitted records but does not prove runtime implementation or broader machine-registry completeness beyond the governed registry.
+
+[L08] docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:271-286
+271: ### 5.9 Dynamic coefficient and modifier authority
+272:
+273: | Required field | Normative value |
+274: |---|---|
+275: | Purpose | Bounded coefficient, threshold, modifier, and state-conditioned adjustment authority. |
+276: | Target owner | coefficient and modifier authorities. |
+277: | Structural status | `Locked`. |
+278: | Implementation-truth status | `thin_seam`. |
+279: | Lawful inputs | governed coefficient config; state context; admitted runtime context; vocabulary-lawful coefficient families. |
+280: | Lawful outputs | bounded coefficients; modifier packets; applied-threshold decisions. |
+281: | Prohibited decisions | unbounded runtime mutation; hidden strategy changes; capital deployment decisions; source-data ingestion. |
+282: | Downstream consumers | serial spine stages; parallel risk lane; playbook eligibility; review/proof. |
+283: | Vocabulary terms used | dynamic coefficient; modifier authority; coefficient authority; bounded coefficient. |
+284: | Proof interface | config schema tests; bounds tests; state-conditioned modifier tests; replay determinism tests. |
+285: | Seam boundaries | modifier surfaces influence authorised runtime surfaces only through governed coefficient/config carriers. |
+286: | Evidence basis | The `thin_seam` status remains until native code and proof evidence justify a lawful `implemented` status in the acceptance ledger. |
+
+[L09] docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:150-169
+150: ## 11.10 Accepted ownership-module architecture
+151:
+152: The user accepted the Atlas ownership allocation on 2026-07-25 after an extended architecture, dependency and source-boundary review. The eighteen architecture surfaces remain the normative responsibility map. The following sixteen ownership modules are the accepted target code-capability map inside the governed modular monolith.
+153:
+154: | ID | Accepted target module | Owns | Must not own | Current alpha disposition |
+155: |---|---|---|---|---|
+156: | `M00` | `application_shell` | transport translation, dependency composition and run lifecycle | source truth, domain state, policy defaults or business decisions | rebuild |
+157: | `M01` | `source_admission` | source identity, admission, raw capture, source time and raw-signal registration | preparation, cognition or capital decisions | replace boundary; retain selected validation kernels |
+158: | `M02` | `calendar` | four calendar layers, fact candidates, coalescence, supersession and projection | candidate formation or capital authority | retain reference algorithms; rebuild state/composition |
+159: | `M03` | `preparation` | typed prepared truth, field-candidate resolution and enrichment gaps | raw-source ownership or serial-stage decisions | rebuild core; retain deterministic transforms |
+160: | `M04` | `packet_protocol` | DMPV3 outer-envelope validation and deliberate packet carriage | raw-ingress carriage, domain decisions, identity or time fabrication | retain envelope shape; replace builders/defaults |
+161: | `M05` | `serial_cognition` | six ordered candidate-forming stages and stage-local carriers | Parallel Risk, capital state or broker execution | retain order/local kernels; rebuild orchestration |
+162: | `M06` | `parallel_risk` | independent environmental risk assessment and terminal-join contribution | candidate formation or capital authority | retain evaluators; rebuild composition/state |
+163: | `M07` | `coefficient_modifier_authority` | versioned coefficient/modifier bundles, precedence and application receipts | calendar, capital, lifecycle, execution or replay policy generally | refactor and narrow |
+164: | `M08` | `playbook_catalogue` | versioned playbook definitions, catalogue and eligibility semantics | runtime capital or execution decisions | refactor behind catalogue contract |
+165: | `M09` | `capital_authority` | final-risk join, capital state, bounded sizing and fresh-capital decision | order placement or position lifecycle | retain calculations; rebuild join/state boundary |
+166: | `M10` | `execution_gateway` | opening readiness, placement intent, execution port and execution events | canonical portfolio state | replace boundary/core adapters |
+167: | `M11` | `portfolio_lifecycle` | fills, positions, inventory, exit/close and carry lifecycle | broker transport or capital admission | retain policy kernels; rebuild state ownership |
+168: | `M12` | `evidence_replay` | review projections, explanation, comparison and authoritative replay | live runtime decision authority | retain read projections; rebuild replay core |
+169: | `M13` | `state_kernel` | transaction mechanism, idempotency, atomic receipts and storage ports | semantic ownership of domain records | rebuild core |
+
+[L10] docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:222-231
+222: ### 11.10.3 Implementation obligations and sequence
+223:
+224: The 33 existing `D-xxx` records remain immutable traceability references. They are not packages, are not automatically branches and do not impose a numeric total order. They are regrouped beneath the active ownership module and may be retained, expanded, split, merged, replaced with lineage preserved, or retired with reason.
+225:
+226: Positive module obligations not adequately represented by the historical set are mandatory for:
+227:
+228: - `M07` coefficient/modifier bundle, precedence, version and application-receipt authority;
+229: - `M09` capital state, bounded sizing, fresh-capital decision and deployment receipt;
+230: - `M10` alpha execution port, paper adapter, placement intent, order/fill events and execution receipt, with no live-execution authority;
+231: - `M11` fill reconciliation, canonical position/inventory state and atomic lifecycle receipts.
+
+[L11] project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md:112-112
+112: | 5.9 Dynamic coefficient and modifier authority | 51 | M07 | thin_seam | Material version carriage and consumer integration incomplete |
+
+[L12] project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md:136-136
+136: | M07 | coefficient_modifier_authority | 5.9 | versioned coefficients, modifiers, precedence and application receipts | refactor version carriage and consumer integration |
+
+[L13] project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md:284-284
+284: - `M07`: coefficient/modifier bundles, precedence, version identity, stage ownership and application receipts;
+
+[L14] project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md:380-384
+380: 2. `M07` is narrowed and named `coefficient_modifier_authority`;
+381: 3. dependency planes are separated;
+382: 4. physical packages migrate progressively;
+383: 5. 33 `D-xxx` records remain traceability obligations rather than a fixed execution order;
+384: 6. missing positive obligations for `M07`, `M09`, `M10` and `M11` are mandatory;
+
+[L15] project_control/normative_authority_top_down_alignment/gate_c_test_design/B03_TEST_DESIGN.md:31-51
+31: ### C-012 — Prepared feature derivation
+32:
+33: **Normative basis:** 5.5, 5.9
+34:
+35: **Behaviour to prove:** Prove derivation version, input provenance and deterministic replay for each material derived field.
+36:
+37: **Positive case:** Nominal typed path produces the stated output and preserves owner-issued identity.
+38:
+39: **Negative case:** Missing mandatory authority, invalid type, duplicate/conflict or forbidden authority fails with the specified bounded error/withholding behaviour.
+40:
+41: **False-positive resistance:** A green test must not pass solely because a model validates, a registry row exists, or a process-memory object can be read in the same process.
+42:
+43: **Extension/substitution:** Where this is a volatility boundary, add/replace one source, strategy, policy, state adapter or output consumer without editing unrelated domain modules.
+44:
+45: **Replay/lineage:** Where material, assert source/config/policy IDs and deterministic domain output; do not include current wall-clock metadata in domain-result equivalence.
+46:
+47: **Current test assessment:** partially_aligned
+48:
+49: **Accepted target(s):** tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance
+50:
+51: **Authority status:** READY / ADMITTED
+
+[L16] project_control/normative_authority_top_down_alignment/gate_c2_proof_envelopes/D-012.md:1-71
+1: # Gate C2 Proof Envelope — D-012
+2:
+3: ## Authority
+4:
+5: - Requirement: `C-012`
+6: - Boundary / Gate B unit: `B03` / `B03.2`
+7: - Normative proposition: 5.5, 5.9
+8: - Gate C2 status: `closed_gate_c1_proof_incomplete`
+9: - Gate D open decision: `no`
+10: - Immediately executable after C2: `no`
+11: - Prerequisites: `none`
+12:
+13: ## Gate B semantic meaning
+14:
+15: **Required behaviour:** Prove derivation version, input provenance and deterministic replay for each material derived field.
+16:
+17: **Observed alpha behaviour:** Derives window_count/has_windows, minutes_to_next_event, DTE spread and NVDA return; records missing_optional_enrichments or failed_enrichments.
+18:
+19: ## Positive Tier A proof
+20:
+21: tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance
+22:
+23: ## Negative and false-positive protection
+24:
+25: Derivation metadata must not be satisfied by field-name presence or unstated defaults.
+26:
+27: ## Existing Tier A dependants
+28:
+29: tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance; tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py; tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
+30:
+31: ## Tier B shadow evidence
+32:
+33: none identified; no Tier B authority inferred
+34:
+35: ## Tier C evidence
+36:
+37: None. The current Tier C directory contains no active pytest files.
+38:
+39: ## Test limitations
+40:
+41: Prove derivation version, input provenance and deterministic replay for each material derived field.
+42:
+43: ## Fixture and isolation obligations
+44:
+45: Use only authoritative, synthetic-valid or deliberately-invalid fixtures already identified in Gate C1. Test runs must not mutate tracked normative, source, configuration, fixture, candidate, ledger or evidence artefacts. Generated output must use temporary paths.
+46:
+47: ## Test fallout authority
+48:
+49: `none; stop and return to Gate C2 before changing any admitted assertion or fixture`
+50:
+51: ## Targeted command
+52:
+53: ```bash
+54: env PYTHONPATH=src python -m pytest tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py::test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance
+55: ```
+56:
+57: ## Bounded Gate C aggregate command
+58:
+59: ```bash
+60: env PYTHONPATH=src python -m pytest tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py
+61: ```
+62:
+63: ## 2026-07-20 re-evaluation
+64:
+65: This envelope was reread and re-evaluated against `N-01` through `N-09`, the expanded normative freeze, and the six-file admitted Gate C proof surface. Result: `closed_gate_c1_proof_incomplete`; Gate D decision `no`; immediate execution `no`; prerequisites `none`. No admitted assertion or fixture was changed during this re-evaluation.
+66:
+67: ## Decision
+68:
+69: The Gate C assertion proves only dataclass field-name presence; it does not prove material derivation-version assignment, provenance capture or deterministic replay of derived values.
+70:
+71: Return gate: **Gate C1 behavioural proof enrichment**.
+
+PASS locator_ranges=16 failures=0
