@@ -2,7 +2,7 @@
 
 ## Status
 
-`m04_k07_mlc_d_active_after_observation`
+`m04_k07_mlc_p_active_after_disposition`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Atlas current-path repair, M04 K07 MLC-A/MLC-R/MLC-O and `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed; M04 MLC-D disposition is active |
-| Mutation state | M15 mutation and M04 observation are closed. M04 MLC-D may change only existing control/evidence records; behavioural tests, fixtures, runtime configuration and production source remain closed |
+| Active units | Atlas current-path repair, M04 K07 MLC-A/MLC-R/MLC-O/MLC-D and `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed; M04 MLC-P proof specification is active |
+| Mutation state | M15, observation and disposition mutation are closed. M04 MLC-P may change only existing proof/control records; behavioural tests, fixtures, runtime configuration and production source remain closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -474,7 +474,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 
 The former Cycle 01 publication gate was satisfied by checkpoint `73f1e7ab3ce212c9951f03c407e94741e6c68913`. The subsequent Atlas current-path repair passed at `27fa427`, and M04 K07 numbered authority is now sufficient.
 
-`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed and is closed. M04 MLC-O then read all 25 routed files at checkpoint `6d3ec80`; the scoped run returned 347 passed / 10 failed across 357 tests, with each file retaining a distinct factual observation. The sole current leaf is `M04-PROOF-MLC-D-V1`: determine which observations prove exact section 9.10 propositions, which conflict, which are consumer-only, and which proof gaps must feed MLC-P. Behavioural test mutation, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
+`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed and is closed. M04 MLC-O then read all 25 routed files at checkpoint `6d3ec80`; the scoped run returned 347 passed / 10 failed across 357 tests, with each file retaining a distinct factual observation. MLC-D admitted only one bounded combined expected-red contract, retained seven partial files without admission, classified eleven consumer/structure-only observations, five mixed contradictory files and one unlisted-role candidate. The sole current leaf is `M04-PROOF-MLC-P-V1`: specify the exact K07 proof family before test implementation. Behavioural test mutation, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
 
 ## Roadblocks and Unknowns
 

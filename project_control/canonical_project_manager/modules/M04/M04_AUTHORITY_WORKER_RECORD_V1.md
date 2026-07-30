@@ -284,3 +284,68 @@ All 25 routed files were read in full without mutation. Their source hashes are 
 MLC-O is complete. No physical test, fixture, runtime configuration, normative proposition or production source changed. No observation in this section is an admission decision.
 
 The next lawful leaf is `M04-PROOF-MLC-D-V1`: disposition every observation against exact section 9.10 locators, retain only exact proposition proof candidates, classify contradictions and consumer-only observations without allowing green legacy behaviour to override authority, and identify the proof gaps that must feed MLC-P.
+
+## Project Manager MLC-D disposition — 2026-07-30
+
+Source checkpoint: `48c6572` on `control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Unit: `M04-PROOF-MLC-D-V1`.
+
+Result: `DISPOSITION_COMPLETE:M04_K07_ONE_PARTIAL_EXPECTED_RED_ADMISSION`.
+
+The disposition unit uses the exact observations above. A file-level green result is never the reason for admission.
+
+| Physical test file | Disposition | Exact assertion / proposition join | What is proved or retained | What is not proved |
+|---|---|---|---|---|
+| `test_calendar_reference_projection_crosswalk.py` | `NON_ADMIT_CONSUMER_OR_SYMBOL_ONLY` | `:26` / section 9.10.2 | Reference builder symbol is expected at the calendar boundary. | Any packet occurrence or K07 invariant. |
+| `test_capital_authority_service_surface.py` | `NON_ADMIT_CONSUMER_ONLY` | `:30` / section 9.10.3 | Capital trace consumes a risk packet identifier. | M04 emission, validation or lineage. |
+| `test_capital_contract_models.py` | `NON_ADMIT_CONSUMER_ONLY` | `:208-211` / section 9.10.3 | Risk packet identifier is normalised in capital input. | Packet identity or carriage law. |
+| `test_sequence9_capital_deployment_decision_surface.py` | `NON_ADMIT_CONSUMER_ONLY` | `:21` / section 9.10.3 | Capital decision accepts a risk packet trace token. | Any M04 producer obligation. |
+| `test_sequence9_capital_deployment_dmp_packet.py` | `NON_ADMIT_UNLISTED_ROLE_CANDIDATE` | `:38-63` / sections 9.10.2 and 9.10.3 | Current builder can carry a capital decision with explicit context and selected lineage. | `capital_deployment_decision` is not an admitted K07 role; no authority or proof transfers. |
+| `test_exit_close_architecture_surface.py` | `NON_ADMIT_CONSUMER_ONLY` | `:29` / section 9.10.3 | Exit/close trace consumes a risk packet ID. | K07 packet or replay-role behaviour. |
+| `test_fwd017_overnight_carry_contract.py` | `NON_ADMIT_CONSUMER_ONLY` | `:19` / section 9.10.3 | Carry trace consumes a risk packet ID. | K07 replay packet behaviour. |
+| `test_gate_c_ingress_identity_and_dmp.py` | `ADMIT_PARTIAL_EXPECTED_RED` | `:76-113` / sections 9.10.1, 9.10.3 and 9.10.5(1)-(2) | A governed builder call missing caller-owned context and required source lineage must reject; explicit source artefacts remain stable. Current implementation is correctly red. | Per-field isolation, role-specific profiles, named check recording, diagnostic separation and mutation resistance. Proof strength: one combined negative contract. |
+| `test_gate_c_remaining_normative_contracts.py` | `NON_ADMIT_CONSUMER_ONLY` | `:192` / section 9.10.3 | Capital trace consumes a risk packet ID. | Any K07 emission behaviour; its four failures are unrelated. |
+| `test_dmpv3_extension_canonical_leaf_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:14-69` / sections 9.10.3 and 9.10.4(8) | Canonical extensions cannot be replaced by custom extension values. | Complete stage identity, source lineage, fingerprint, named checks and outcomes. |
+| `test_dmpv3_transform_boundary_surface.py` | `NON_ADMIT_STRUCTURE_ONLY` | `:11-21` / section 9.11 | Compatibility objects are aliases of canonical packet contracts/builders. | Behavioural K07 conformity. |
+| `test_fwd004_reopened_row_packet_carriage_proof.py` | `MIXED_NON_ADMIT_CONTRADICTS_AUTHORITY` | `:181-194` / sections 9.10.1 and 9.10.5(5) | Preserves broad builder observations and selected explicit lineage as historical evidence. | It positively accepts missing-context `reference_packet` emission as degraded, so the mixed file cannot govern the accepted law. |
+| `test_reference_packet_carriage.py` | `MIXED_NON_ADMIT_CONTRADICTS_AUTHORITY` | `:24-50` / sections 9.10.1 and 9.10.5(1),(5) | Preserves explicit generic/prepared/review packet observations. | Its named reference test accepts fabricated trace/run and degraded emission instead of rejection. |
+| `test_parallel_risk_evaluation_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:41-57` / sections 9.10.3 and 9.10.4 | Immediate bootstrap/risk parentage and domain outcomes are observed. | Source closure, exact input fingerprint, named validation and negative outcomes. |
+| `test_parallel_risk_lane_service_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:50-79` / section 9.10.3 | Serial-stage-to-bootstrap-to-risk lineage chain is observed. | Context ownership, source/fingerprint closure and validation profiles. |
+| `test_parallel_risk_packet_builder_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:19-68` / sections 9.10.2-9.10.4 | Role, selected producer/lineage fields and `valid` status are observed. | Complete R/C/N matrix, named check facts and falsification. |
+| `test_sequence7_parallel_risk_envelope_specimen.py` | `NON_ADMIT_FIXTURE_ONLY` | `:21` / section 9.10.2 | A checked specimen names `parallel_risk_packet`. | Runtime emission or validation. |
+| `test_fwd012_reopened_row_serial_cognition_spine_proof.py` | `MIXED_NON_ADMIT_CONTRADICTS_AUTHORITY` | `:469-471` / sections 9.10.1 and 9.10.5(9) | Preserves serial stage/order and selected lineage observations. | It requires implementation-generated trace/run and default `live` scenario, which the accepted authority rejects as owner identity. |
+| `test_runtime_orchestrator_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:66-67` / section 9.10.3 | Stage packet ordering is observed. | Context, required lineage, validation and outcomes. |
+| `test_serial_stage_packet_emission_surface.py` | `MIXED_NON_ADMIT_CONTRADICTS_AUTHORITY` | `:47-103` / sections 9.10.3-9.10.5 | Preserves stage producer/order and dependency observations. | It requires empty first-stage `parentids`, contradicting required prepared/prior-stage parentage; context ownership and named checks are absent. |
+| `test_serial_runtime_parallel_risk_boundary_specimen_surface.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:30-42`, `:83-88` / section 9.10.3 | Stage/bootstrap/risk boundary lineage is observed in memory and artefacts. | Context, full lineage profile, validation and failure outcomes. |
+| `test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py` | `RETAIN_PARTIAL_NOT_ADMITTED` | `:196-220` / sections 9.10.1-9.10.4 | Explicit trace/run/scenario/review trace and input fingerprint are asserted for a prepared packet. | Source artefact retrievability, complete named checks, degradation bounds and negative cases. |
+| `test_prepared_context_packet_surface.py` | `MIXED_NON_ADMIT_CONTRADICTS_AUTHORITY` | `:57-113` / sections 9.10.1 and 9.10.5(5)-(6) | Preserves explicit valid-case identity, selected lineage and one named optional limitation. | The degraded case omits caller-owned scenario yet still emits; it does not prove every required check passed before degradation. |
+| `test_dmp_v3_vocabulary_terms.py` | `NON_ADMIT_VOCABULARY_ONLY` | `:14-31` / generic DMPV3 vocabulary | Generic contract field terms remain projected. | Any role-specific K07 proposition. |
+| `test_capital_deployment_transform_boundary_surface.py` | `NON_ADMIT_CONSUMER_ONLY` | `:42` / section 9.10.3 | Capital boundary consumes a risk packet ID without posture authority leakage. | M04 packet emission or validation. |
+
+### Accepted and non-accepted proof state
+
+- One existing test function is admitted as partial expected-red proof: `test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage`.
+- Its scope is only the combined absence case and explicit source-lineage stability stated above. Passing it later will not, by itself, open implementation acceptance.
+- Eleven observations are consumer/symbol/structure/fixture/vocabulary-only and carry no M04 proof authority.
+- Seven files retain useful partial observations but are not admitted because they omit material K07 checks or falsification.
+- Five mixed files contain assertions that conflict with accepted authority; their green results remain historical implementation evidence and cannot govern implementation.
+- One green file exercises an unlisted packet role and remains candidate evidence pending a separate normative amendment or role retirement decision.
+
+### Proof gaps carried to MLC-P
+
+MLC-P must specify:
+
+1. separate missing/invalid execution-context cases and no fabrication/defaulting;
+2. the complete R/C/O/N lineage matrix for all ten roles, including required source artefact retrieval and fingerprints;
+3. every common and role-specific named validation result arising from its actual owner fact;
+4. lawful rejection, bounded degradation, stand-down and separate diagnostic/rejection emission;
+5. replay request/result/comparison identity, isolation, evidence closure and authoritative-or-incomplete outcomes;
+6. contradiction tests that reject the five observed legacy behaviours;
+7. false-positive mutants for hard-coded validation, rejection for the wrong reason, dropped lineage, invented context and binding diagnostic substitution.
+
+### MLC-D boundary and next leaf
+
+MLC-D is complete. No physical test, fixture, runtime configuration, normative proposition or production source changed.
+
+The next lawful leaf is `M04-PROOF-MLC-P-V1`: author the exact K07 proof specification from the accepted section 9.10 authority, the one bounded existing expected-red admission and the proof gaps above. Test implementation remains closed until that specification is independently accepted.

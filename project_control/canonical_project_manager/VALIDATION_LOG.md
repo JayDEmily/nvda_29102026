@@ -990,3 +990,25 @@ The observation matrix is appended to the existing M04 worker record. Test green
 ### Next gate
 
 Execute `M04-PROOF-MLC-D-V1`: disposition every observation against exact section 9.10 locators, retaining consumer-only and contradictory evidence without allowing it to override normative authority. Physical-test mutation and production implementation remain closed.
+
+## 2026-07-30 — M04 K07 MLC-D disposition
+
+### Disposition
+
+`DISPOSITION_COMPLETE:M04_K07_ONE_PARTIAL_EXPECTED_RED_ADMISSION`
+
+Each MLC-O observation was joined to section 9.10. Greenness was not an admission input.
+
+| Class | Count | Result |
+|---|---:|---|
+| Partial expected-red admission | 1 | Combined missing caller context/required source-lineage rejection contract; current implementation remains red |
+| Partial evidence, not admitted | 7 | Useful selected identity/lineage/extension observations; materially incomplete |
+| Consumer/symbol/structure/fixture/vocabulary only | 11 | No M04 proof authority |
+| Mixed contradiction | 5 | Preserved as historical evidence; cannot govern section 9.10 |
+| Unlisted role candidate | 1 | `capital_deployment_decision` requires separate authority amendment or retirement decision |
+
+The admitted function does not prove per-field isolation, all ten role profiles, named validation execution, diagnostic separation or false-positive resistance. Those limitations are explicit proof-specification inputs.
+
+### Next gate
+
+Execute `M04-PROOF-MLC-P-V1`: specify the exact ten-role K07 proof family, complete lineage matrix, named checks, lawful outcomes, contradiction coverage and false-positive mutants. Physical-test mutation and production implementation remain closed.
