@@ -16,8 +16,11 @@ def _entry(
     category: str = "stage",
     allowed_aliases: list[str] | None = None,
     disallowed_phrases: list[str] | None = None,
+    namespace: str = "global",
 ) -> dict:
     return {
+        "namespace": namespace,
+        "canonical_id": f"{namespace}.{slug}",
         "canonical_slug": slug,
         "canonical_label": label,
         "category": category,
@@ -31,9 +34,21 @@ def _entry(
 
 def _payload(*entries: dict) -> dict:
     return {
-        "schema_version": "v1",
+        "schema_version": "v2_namespaced",
         "registry_version": "fixture",
         "notes": [],
+        "namespaces": {
+            "global": {
+                "namespace": "global",
+                "imports": [],
+                "scan_paths": ["src", "tests", "docs", "config"],
+            },
+            "m04": {
+                "namespace": "m04",
+                "imports": ["global"],
+                "scan_paths": ["m04_scope"],
+            },
+        },
         "entries": list(entries),
     }
 
@@ -62,7 +77,13 @@ def test_vocabulary_synonym_audit_cli_bootstraps_src_import_path_without_env_and
     before = governed_output.read_bytes() if governed_output.exists() else None
 
     completed = subprocess.run(
-        [sys.executable, "scripts/vocabulary_synonym_audit.py", "--check-clean"],
+        [
+            sys.executable,
+            "scripts/vocabulary_synonym_audit.py",
+            "--namespace",
+            "global",
+            "--check-clean",
+        ],
         check=False,
         capture_output=True,
         text=True,
@@ -162,7 +183,8 @@ def test_write_stamp_advances_only_after_clean_candidate_report(tmp_path, monkey
     assert audit.write_stamp() is None
 
     assert json.loads(stamp_path.read_text(encoding="utf-8")) == {
-        "fingerprint": "clean-fingerprint"
+        "schema_version": "v2_namespaced",
+        "namespaces": {"global": "clean-fingerprint"},
     }
 
 
@@ -339,7 +361,7 @@ def test_legitimate_terms_are_admitted_through_allowed_aliases(monkeypatch):
     assert audit.build_report()["candidates"] == []
 
 
-def test_false_positives_are_rejected_through_governed_disallowed_phrases(monkeypatch):
+def test_disallowed_phrases_do_not_globally_suppress_new_occurrences(monkeypatch):
     rejected = " ".join(["temporal", "context", "fixture"])
     monkeypatch.setattr(
         audit,
@@ -355,7 +377,10 @@ def test_false_positives_are_rejected_through_governed_disallowed_phrases(monkey
         lambda: iter([("docs/one.md", rejected), ("docs/two.md", rejected.replace(" ", "_"))]),
     )
 
-    assert audit.build_report()["candidates"] == []
+    assert [item["path"] for item in audit.build_report()["candidates"]] == [
+        "docs/one.md",
+        "docs/two.md",
+    ]
 
 
 def test_unresolved_candidates_remain_visible_until_governed(monkeypatch):
@@ -389,23 +414,23 @@ def test_check_clean_returns_nonzero_when_unresolved_candidates_exist(monkeypatc
     monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
     monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", unresolved)]))
 
-    assert audit.main(["--check-clean"]) == 1
+    assert audit.main(["--namespace", "global", "--check-clean"]) == 1
     assert "vocabulary_synonym_audit=BLOCKED unresolved_candidates=1" in capsys.readouterr().out
 
 
-def test_check_clean_returns_zero_when_all_candidates_are_governed(monkeypatch, capsys):
+def test_check_clean_returns_zero_when_occurrence_is_an_allowed_alias(monkeypatch, capsys):
     governed = " ".join(["temporal", "context", "fixture"])
     monkeypatch.setattr(
         audit,
         "_load_document",
         lambda: _payload(
-            _entry("temporal_context", "Temporal Context", disallowed_phrases=[governed])
+            _entry("temporal_context", "Temporal Context", allowed_aliases=[governed])
         ),
     )
     monkeypatch.setattr(audit, "_fingerprint", lambda: "fixture")
     monkeypatch.setattr(audit, "_iter_candidates", lambda: iter([("docs/one.md", governed)]))
 
-    assert audit.main(["--check-clean"]) == 0
+    assert audit.main(["--namespace", "global", "--check-clean"]) == 0
     assert "vocabulary_synonym_audit=PASS candidates=0" in capsys.readouterr().out
 
 
@@ -420,3 +445,44 @@ def test_source_code_contains_no_path_bound_synonym_suppression_tables():
     ]
     for token in forbidden:
         assert token not in source
+
+
+def test_module_namespace_audit_does_not_scan_unrelated_repository_paths(
+    tmp_path, monkeypatch
+):
+    m04_scope = tmp_path / "m04_scope"
+    unrelated_scope = tmp_path / "unrelated_scope"
+    m04_scope.mkdir()
+    unrelated_scope.mkdir()
+    (m04_scope / "owned.py").write_text(
+        'label = "Reference Packet Draft"\n', encoding="utf-8"
+    )
+    (unrelated_scope / "unrelated.py").write_text(
+        'label = "Reference Packet Draft"\n', encoding="utf-8"
+    )
+    payload = _payload(
+        _entry(
+            "reference_packet",
+            "Reference Packet",
+            category="protocol_field",
+            namespace="m04",
+        )
+    )
+
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(audit, "_load_document", lambda: payload)
+    monkeypatch.setattr(audit, "_fingerprint", lambda namespace, scan_paths: "fixture")
+    monkeypatch.setattr(
+        audit,
+        "RESOLVED_OCCURRENCES_PATH",
+        tmp_path / "missing_resolved_occurrences.tsv",
+    )
+    monkeypatch.setattr(audit, "STAMP_PATH", tmp_path / "missing_stamp.json")
+
+    report = audit.build_report(namespace="m04")
+
+    assert report["namespace"] == "m04"
+    assert report["scan_paths"] == ["m04_scope"]
+    assert report["scanned_file_count"] == 1
+    assert [item["path"] for item in report["candidates"]] == ["m04_scope/owned.py"]
+    assert report["candidates"][0]["nearest_identity"] == "m04.reference_packet"

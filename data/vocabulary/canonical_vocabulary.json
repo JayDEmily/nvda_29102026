@@ -1,17 +1,61 @@
 {
-  "schema_version": "v1",
-  "registry_version": "2026-07-30-m04-k07-packet-roles-v1",
+  "schema_version": "v2_namespaced",
+  "registry_version": "2026-07-30-m15-namespaced-audit-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
     "M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.",
     "The 2026-07-29 repair admits PM-controlled parallel-workflow terms without parallelising canonical acceptance.",
     "The 2026-07-30 M04 K07 amendment admits ten exact DMPV3 packet-role concepts without admitting tests or implementation conformance.",
+    "The 2026-07-30 M15 repair gives module-owned vocabulary a namespaced machine identity and bounded audit scope without prefixing human labels or ordinary code symbols.",
     "Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.",
     "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."
   ],
+  "namespaces": {
+    "global": {
+      "namespace": "global",
+      "imports": [],
+      "scan_paths": [
+        "src",
+        "tests",
+        "docs",
+        "config"
+      ]
+    },
+    "m04": {
+      "namespace": "m04",
+      "imports": [
+        "global"
+      ],
+      "scan_paths": [
+        "docs/09_DMPV3_PROTOCOL_CORE.md",
+        "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+        "src/nvda_desk/contracts/packets.py",
+        "src/nvda_desk/packets",
+        "src/nvda_desk/schemas/dmp.py",
+        "src/nvda_desk/schemas/dmp_envelope.py",
+        "src/nvda_desk/preparation/context_packet.py",
+        "src/nvda_desk/risk/parallel",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/services/parallel_risk_lane_service.py",
+        "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+        "tests/tier_a/calendar_reference",
+        "tests/tier_a/capital_deployment",
+        "tests/tier_a/downstream_runtime",
+        "tests/tier_a/normative_authority",
+        "tests/tier_a/packets",
+        "tests/tier_a/parallel_risk",
+        "tests/tier_a/runtime",
+        "tests/tier_a/testing_harnesses",
+        "tests/tier_a/upstream_cognition",
+        "tests/tier_b/capital_deployment"
+      ]
+    }
+  },
   "entries": [
     {
+      "namespace": "global",
+      "canonical_id": "global.ownership_module",
       "canonical_slug": "ownership_module",
       "canonical_label": "Ownership Module",
       "category": "authority_surface",
@@ -39,6 +83,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.module_local_proof_gate",
       "canonical_slug": "module_local_proof_gate",
       "canonical_label": "Module-local Proof Gate",
       "category": "promotion_surface",
@@ -66,6 +112,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.runtime_contract_dependency",
       "canonical_slug": "runtime_contract_dependency",
       "canonical_label": "Runtime/Contract Dependency",
       "category": "authority_class",
@@ -93,6 +141,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.state_transaction_participation",
       "canonical_slug": "state_transaction_participation",
       "canonical_label": "State/Transaction Participation",
       "category": "authority_class",
@@ -120,6 +170,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.governance_promotion_prerequisite",
       "canonical_slug": "governance_promotion_prerequisite",
       "canonical_label": "Governance/Promotion Prerequisite",
       "category": "promotion_rule",
@@ -147,6 +199,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.legacy_shadow_unadmitted",
       "canonical_slug": "legacy_shadow_unadmitted",
       "canonical_label": "Legacy Shadow Unadmitted",
       "category": "audit_classification",
@@ -173,6 +227,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.coefficient_and_modifier_authority",
       "canonical_slug": "coefficient_and_modifier_authority",
       "canonical_label": "Coefficient and Modifier Authority",
       "category": "authority_surface",
@@ -200,6 +256,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.component_skeleton",
       "canonical_slug": "component_skeleton",
       "canonical_label": "Component Skeleton",
       "category": "authority_surface",
@@ -222,6 +280,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.module_allocation_appendix",
       "canonical_slug": "module_allocation_appendix",
       "canonical_label": "Module Allocation Appendix",
       "category": "authority_surface",
@@ -244,6 +304,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.native_architecture_blueprint_core",
       "canonical_slug": "native_architecture_blueprint_core",
       "canonical_label": "Native Architecture Blueprint Core",
       "category": "authority_surface",
@@ -266,6 +328,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.ownership_matrix",
       "canonical_slug": "ownership_matrix",
       "canonical_label": "Ownership Matrix",
       "category": "authority_surface",
@@ -288,6 +352,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.persistence_architecture",
       "canonical_slug": "persistence_architecture",
       "canonical_label": "Persistence Architecture",
       "category": "authority_surface",
@@ -309,6 +375,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.reservations",
       "canonical_slug": "reservations",
       "canonical_label": "Reservations",
       "category": "authority_class",
@@ -331,6 +399,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.provisional_allocations",
       "canonical_slug": "provisional_allocations",
       "canonical_label": "Provisional Allocations",
       "category": "authority_class",
@@ -352,6 +422,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.seam_contract",
       "canonical_slug": "seam_contract",
       "canonical_label": "Seam Contract",
       "category": "protocol_surface",
@@ -374,6 +446,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.seam_contracts",
       "canonical_slug": "seam_contracts",
       "canonical_label": "Seam Contracts",
       "category": "protocol",
@@ -395,6 +469,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.sequential_native_architecture_surface",
       "canonical_slug": "sequential_native_architecture_surface",
       "canonical_label": "Sequential Native Architecture Surface",
       "category": "authority_surface",
@@ -416,6 +492,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.sequential_native_architecture_surfaces",
       "canonical_slug": "sequential_native_architecture_surfaces",
       "canonical_label": "Sequential Native Architecture Surfaces",
       "category": "workflow",
@@ -438,6 +516,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.bridge_and_shell_policy",
       "canonical_slug": "bridge_and_shell_policy",
       "canonical_label": "Bridge and Shell Policy",
       "category": "authority_surface",
@@ -461,6 +541,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.target_structure",
       "canonical_slug": "target_structure",
       "canonical_label": "Target Structure",
       "category": "authority_surface",
@@ -482,6 +564,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.test_architecture",
       "canonical_slug": "test_architecture",
       "canonical_label": "Test Architecture",
       "category": "authority_surface",
@@ -503,6 +587,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.traceability_appendix",
       "canonical_slug": "traceability_appendix",
       "canonical_label": "Traceability Appendix",
       "category": "review_surface",
@@ -524,6 +610,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.donor_evidence",
       "canonical_slug": "donor_evidence",
       "canonical_label": "Donor Evidence",
       "category": "carrier",
@@ -545,6 +633,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.behaviour_block",
       "canonical_slug": "behaviour_block",
       "canonical_label": "Behaviour Block",
       "category": "carrier",
@@ -566,6 +656,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.intent_unit",
       "canonical_slug": "intent_unit",
       "canonical_label": "Intent Unit",
       "category": "carrier",
@@ -589,6 +681,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.target_owner",
       "canonical_slug": "target_owner",
       "canonical_label": "Target Owner",
       "category": "authority_class",
@@ -611,6 +705,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.leaf",
       "canonical_slug": "leaf",
       "canonical_label": "Leaf",
       "category": "carrier",
@@ -632,6 +728,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.authority_intake_gate",
       "canonical_slug": "authority_intake_gate",
       "canonical_label": "Authority Intake Gate",
       "category": "workflow",
@@ -653,6 +751,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.execution_read_sequence",
       "canonical_slug": "execution_read_sequence",
       "canonical_label": "Execution Read Sequence",
       "category": "workflow",
@@ -674,6 +774,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.active_bounded_pack",
       "canonical_slug": "active_bounded_pack",
       "canonical_label": "Active Bounded Pack",
       "category": "carrier",
@@ -698,6 +800,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.active_bounded_pack_surface",
       "canonical_slug": "active_bounded_pack_surface",
       "canonical_label": "Active Bounded Pack Surface",
       "category": "authority_surface",
@@ -719,6 +823,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.semantic_acceptance",
       "canonical_slug": "semantic_acceptance",
       "canonical_label": "Semantic Acceptance",
       "category": "authority_class",
@@ -740,6 +846,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.implementation_truth",
       "canonical_slug": "implementation_truth",
       "canonical_label": "Implementation Truth",
       "category": "authority_class",
@@ -761,6 +869,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.normative_baseline",
       "canonical_slug": "normative_baseline",
       "canonical_label": "Normative Baseline",
       "category": "authority_class",
@@ -782,6 +892,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.alpha_implementation",
       "canonical_slug": "alpha_implementation",
       "canonical_label": "Alpha Implementation",
       "category": "authority_class",
@@ -803,6 +915,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.modular_monolith",
       "canonical_slug": "modular_monolith",
       "canonical_label": "Modular Monolith",
       "category": "authority_surface",
@@ -826,6 +940,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.composition_root",
       "canonical_slug": "composition_root",
       "canonical_label": "Composition Root",
       "category": "authority_surface",
@@ -848,6 +964,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.coefficient_authority",
       "canonical_slug": "coefficient_authority",
       "canonical_label": "Coefficient Authority",
       "category": "authority_surface",
@@ -877,6 +995,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.modifier_authority",
       "canonical_slug": "modifier_authority",
       "canonical_label": "Modifier Authority",
       "category": "authority_surface",
@@ -900,6 +1020,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.effective_coefficient_lineage",
       "canonical_slug": "effective_coefficient_lineage",
       "canonical_label": "Effective Coefficient Lineage",
       "category": "review_surface",
@@ -925,6 +1047,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.state_conditioned_modifier",
       "canonical_slug": "state_conditioned_modifier",
       "canonical_label": "State-conditioned Modifier",
       "category": "authority_surface",
@@ -950,6 +1074,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.bounded_dynamic_coefficient",
       "canonical_slug": "bounded_dynamic_coefficient",
       "canonical_label": "Bounded Dynamic Coefficient",
       "category": "authority_class",
@@ -976,6 +1102,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.review_horizon",
       "canonical_slug": "review_horizon",
       "canonical_label": "Review Horizon",
       "category": "promotion_surface",
@@ -999,6 +1127,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.champion_challenger_evaluation",
       "canonical_slug": "champion_challenger_evaluation",
       "canonical_label": "Champion/Challenger Evaluation",
       "category": "promotion_surface",
@@ -1023,6 +1153,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.live_paper_historical_evaluation_separation",
       "canonical_slug": "live_paper_historical_evaluation_separation",
       "canonical_label": "Live-paper / Historical Evaluation Separation",
       "category": "promotion_rule",
@@ -1046,6 +1178,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.event_calendar",
       "canonical_slug": "event_calendar",
       "canonical_label": "Event Calendar",
       "category": "reference_data",
@@ -1071,6 +1205,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.market_session_reference",
       "canonical_slug": "market_session_reference",
       "canonical_label": "Market Session Reference",
       "category": "reference_data",
@@ -1093,6 +1229,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.financial_event_reference",
       "canonical_slug": "financial_event_reference",
       "canonical_label": "Financial Event Reference",
       "category": "reference_data",
@@ -1116,6 +1254,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.operational_calendar_state",
       "canonical_slug": "operational_calendar_state",
       "canonical_label": "Operational Calendar State",
       "category": "authority_surface",
@@ -1139,6 +1279,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.derived_runtime_calendar_context",
       "canonical_slug": "derived_runtime_calendar_context",
       "canonical_label": "Derived Runtime Calendar Context",
       "category": "carrier",
@@ -1163,6 +1305,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.financial_calendar_reference_bundle",
       "canonical_slug": "financial_calendar_reference_bundle",
       "canonical_label": "Financial Calendar Reference Bundle",
       "category": "reference_data",
@@ -1186,6 +1330,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.financial_calendar_crosswalk",
       "canonical_slug": "financial_calendar_crosswalk",
       "canonical_label": "Financial Calendar Crosswalk",
       "category": "reference_data",
@@ -1209,6 +1355,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.financial_calendar_import_record",
       "canonical_slug": "financial_calendar_import_record",
       "canonical_label": "Financial Calendar Import Record",
       "category": "reference_data",
@@ -1232,6 +1380,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_temporal_standard",
       "canonical_slug": "source_temporal_standard",
       "canonical_label": "Source Temporal Standard",
       "category": "authority_surface",
@@ -1255,6 +1405,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_time_raw",
       "canonical_slug": "source_time_raw",
       "canonical_label": "source_time_raw",
       "category": "protocol_field",
@@ -1280,6 +1432,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_time_kind",
       "canonical_slug": "source_time_kind",
       "canonical_label": "source_time_kind",
       "category": "protocol_field",
@@ -1304,6 +1458,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_timezone_raw",
       "canonical_slug": "source_timezone_raw",
       "canonical_label": "source_timezone_raw",
       "category": "protocol_field",
@@ -1328,6 +1484,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_time_utc",
       "canonical_slug": "source_time_utc",
       "canonical_label": "source_time_utc",
       "category": "protocol_field",
@@ -1351,6 +1509,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_date",
       "canonical_slug": "source_date",
       "canonical_label": "source_date",
       "category": "protocol_field",
@@ -1372,6 +1532,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.captured_at_utc",
       "canonical_slug": "captured_at_utc",
       "canonical_label": "captured_at_utc",
       "category": "protocol_field",
@@ -1395,6 +1557,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.persisted_at_utc",
       "canonical_slug": "persisted_at_utc",
       "canonical_label": "persisted_at_utc",
       "category": "protocol_field",
@@ -1415,6 +1579,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_provider",
       "canonical_slug": "source_provider",
       "canonical_label": "source_provider",
       "category": "protocol_field",
@@ -1438,6 +1604,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.source_channel",
       "canonical_slug": "source_channel",
       "canonical_label": "source_channel",
       "category": "protocol_field",
@@ -1461,6 +1629,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.time_granularity",
       "canonical_slug": "time_granularity",
       "canonical_label": "time_granularity",
       "category": "protocol_field",
@@ -1483,6 +1653,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.next_event_time_utc",
       "canonical_slug": "next_event_time_utc",
       "canonical_label": "next_event_time_utc",
       "category": "protocol_field",
@@ -1506,6 +1678,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.window_start_utc",
       "canonical_slug": "window_start_utc",
       "canonical_label": "window_start_utc",
       "category": "protocol_field",
@@ -1528,6 +1702,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.window_end_utc",
       "canonical_slug": "window_end_utc",
       "canonical_label": "window_end_utc",
       "category": "protocol_field",
@@ -1550,6 +1726,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.runtime_bar_time_utc",
       "canonical_slug": "runtime_bar_time_utc",
       "canonical_label": "runtime_bar_time_utc",
       "category": "protocol_field",
@@ -1573,6 +1751,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.workbook_temporal_provenance",
       "canonical_slug": "workbook_temporal_provenance",
       "canonical_label": "Workbook Temporal Provenance",
       "category": "authority_surface",
@@ -1596,6 +1776,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.field_level_provenance",
       "canonical_slug": "field_level_provenance",
       "canonical_label": "Field-level Provenance",
       "category": "authority_surface",
@@ -1618,6 +1800,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.dmp_v3",
       "canonical_slug": "dmp_v3",
       "canonical_label": "DMP V3",
       "category": "protocol",
@@ -1644,6 +1828,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.dmp_v3_envelope",
       "canonical_slug": "dmp_v3_envelope",
       "canonical_label": "DmpV3Envelope",
       "category": "protocol_surface",
@@ -1669,6 +1855,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.dmp_v3_packet",
       "canonical_slug": "dmp_v3_packet",
       "canonical_label": "DmpV3Packet",
       "category": "protocol_surface",
@@ -1693,6 +1881,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.desk_module_packet_v3",
       "canonical_slug": "desk_module_packet_v3",
       "canonical_label": "DeskModulePacketV3",
       "category": "protocol_surface",
@@ -1718,6 +1908,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.packetrole",
       "canonical_slug": "packetrole",
       "canonical_label": "packetrole",
       "category": "protocol_field",
@@ -1744,6 +1936,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.producer",
       "canonical_slug": "producer",
       "canonical_label": "producer",
       "category": "protocol_field",
@@ -1769,6 +1963,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.lineage",
       "canonical_slug": "lineage",
       "canonical_label": "lineage",
       "category": "protocol_field",
@@ -1795,6 +1991,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.validation",
       "canonical_slug": "validation",
       "canonical_label": "validation",
       "category": "protocol_field",
@@ -1821,6 +2019,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.summary",
       "canonical_slug": "summary",
       "canonical_label": "summary",
       "category": "protocol_field",
@@ -1847,6 +2047,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.dmpextensions",
       "canonical_slug": "dmpextensions",
       "canonical_label": "dmpextensions",
       "category": "protocol_field",
@@ -1873,6 +2075,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.module_id",
       "canonical_slug": "module_id",
       "canonical_label": "module_id",
       "category": "protocol_field",
@@ -1899,6 +2103,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.module_version",
       "canonical_slug": "module_version",
       "canonical_label": "module_version",
       "category": "protocol_field",
@@ -1925,6 +2131,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.module_instance_id",
       "canonical_slug": "module_instance_id",
       "canonical_label": "module_instance_id",
       "category": "protocol_field",
@@ -1950,6 +2158,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.grammar_role",
       "canonical_slug": "grammar_role",
       "canonical_label": "grammar_role",
       "category": "protocol_field",
@@ -1975,6 +2185,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.behaviour_class",
       "canonical_slug": "behaviour_class",
       "canonical_label": "behaviour_class",
       "category": "protocol_field",
@@ -2000,6 +2212,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.traceid",
       "canonical_slug": "traceid",
       "canonical_label": "traceid",
       "category": "protocol_field",
@@ -2025,6 +2239,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.runid",
       "canonical_slug": "runid",
       "canonical_label": "runid",
       "category": "protocol_field",
@@ -2049,6 +2265,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.scenarioid",
       "canonical_slug": "scenarioid",
       "canonical_label": "scenarioid",
       "category": "protocol_field",
@@ -2074,6 +2292,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.dependency_packet_ids",
       "canonical_slug": "dependency_packet_ids",
       "canonical_label": "Dependency Packet IDs",
       "category": "protocol_field",
@@ -2101,6 +2321,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.packet_occurrence",
       "canonical_slug": "packet_occurrence",
       "canonical_label": "Packet Occurrence",
       "category": "protocol_surface",
@@ -2129,6 +2351,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.provenance",
       "canonical_slug": "provenance",
       "canonical_label": "Provenance",
       "category": "authority_class",
@@ -2155,6 +2379,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.raw_signal_families",
       "canonical_slug": "raw_signal_families",
       "canonical_label": "Raw Signal Families",
       "category": "authority_surface",
@@ -2181,6 +2407,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.prepared_ingress",
       "canonical_slug": "prepared_ingress",
       "canonical_label": "Prepared Ingress",
       "category": "authority_surface",
@@ -2208,6 +2436,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.runtime_context",
       "canonical_slug": "runtime_context",
       "canonical_label": "Runtime Context",
       "category": "carrier",
@@ -2234,6 +2464,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.temporal_context",
       "canonical_slug": "temporal_context",
       "canonical_label": "Temporal Context",
       "category": "stage",
@@ -2260,6 +2492,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.market_regime_context",
       "canonical_slug": "market_regime_context",
       "canonical_label": "Market Regime Context",
       "category": "stage",
@@ -2286,6 +2520,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.options_and_flow_context",
       "canonical_slug": "options_and_flow_context",
       "canonical_label": "Options and Flow Context",
       "category": "stage",
@@ -2312,6 +2548,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.posture_and_risk_permission",
       "canonical_slug": "posture_and_risk_permission",
       "canonical_label": "Posture and Risk Permission",
       "category": "stage",
@@ -2338,6 +2576,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.playbook_eligibility",
       "canonical_slug": "playbook_eligibility",
       "canonical_label": "Playbook Eligibility",
       "category": "stage",
@@ -2363,6 +2603,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.expression_and_execution",
       "canonical_slug": "expression_and_execution",
       "canonical_label": "Expression and Execution",
       "category": "stage",
@@ -2392,6 +2634,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.serial_desk_cognition_spine",
       "canonical_slug": "serial_desk_cognition_spine",
       "canonical_label": "Serial Desk-cognition Spine",
       "category": "workflow",
@@ -2418,6 +2662,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.serial_candidate",
       "canonical_slug": "serial_candidate",
       "canonical_label": "Serial Candidate",
       "category": "carrier",
@@ -2444,6 +2690,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.capital_deployment_decision",
       "canonical_slug": "capital_deployment_decision",
       "canonical_label": "Capital Deployment Decision",
       "category": "authority_surface",
@@ -2471,6 +2719,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.stage_input_bundle",
       "canonical_slug": "stage_input_bundle",
       "canonical_label": "Stage Input Bundle",
       "category": "carrier",
@@ -2498,6 +2748,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.opening_architecture",
       "canonical_slug": "opening_architecture",
       "canonical_label": "Opening Architecture",
       "category": "authority_surface",
@@ -2523,6 +2775,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.downstream_opening",
       "canonical_slug": "downstream_opening",
       "canonical_label": "Downstream Opening",
       "category": "authority_surface",
@@ -2549,6 +2803,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.placement_readiness",
       "canonical_slug": "placement_readiness",
       "canonical_label": "Placement Readiness",
       "category": "authority_surface",
@@ -2575,6 +2831,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.placement_handoff",
       "canonical_slug": "placement_handoff",
       "canonical_label": "Placement Handoff",
       "category": "carrier",
@@ -2600,6 +2858,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.broker_protocol",
       "canonical_slug": "broker_protocol",
       "canonical_label": "Broker Protocol",
       "category": "protocol",
@@ -2627,6 +2887,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.live_position",
       "canonical_slug": "live_position",
       "canonical_label": "Live Position",
       "category": "authority_surface",
@@ -2654,6 +2916,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.inventory_architecture",
       "canonical_slug": "inventory_architecture",
       "canonical_label": "Inventory Architecture",
       "category": "authority_surface",
@@ -2679,6 +2943,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.downstream_state_reader_layer",
       "canonical_slug": "downstream_state_reader_layer",
       "canonical_label": "Downstream State-reader Layer",
       "category": "authority_surface",
@@ -2707,6 +2973,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.exit_architecture",
       "canonical_slug": "exit_architecture",
       "canonical_label": "Exit Architecture",
       "category": "authority_surface",
@@ -2734,6 +3002,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.close_architecture",
       "canonical_slug": "close_architecture",
       "canonical_label": "Close Architecture",
       "category": "authority_surface",
@@ -2760,6 +3030,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.parallel_risk_lane",
       "canonical_slug": "parallel_risk_lane",
       "canonical_label": "Parallel Risk Lane",
       "category": "workflow",
@@ -2787,6 +3059,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.environment_assessment",
       "canonical_slug": "environment_assessment",
       "canonical_label": "Environment Assessment",
       "category": "parallel_risk_surface",
@@ -2812,6 +3086,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.parallel_risk_observation_store",
       "canonical_slug": "parallel_risk_observation_store",
       "canonical_label": "Parallel-risk Observation Store",
       "category": "persistence_surface",
@@ -2838,6 +3114,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.write_only_persistence",
       "canonical_slug": "write_only_persistence",
       "canonical_label": "Write-only Persistence",
       "category": "persistence_rule",
@@ -2864,6 +3142,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.append_only_observation_record",
       "canonical_slug": "append_only_observation_record",
       "canonical_label": "Append-only Observation Record",
       "category": "persistence_surface",
@@ -2891,6 +3171,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.review_layer",
       "canonical_slug": "review_layer",
       "canonical_label": "Review Layer",
       "category": "review_surface",
@@ -2918,6 +3200,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.explanation_layer",
       "canonical_slug": "explanation_layer",
       "canonical_label": "Explanation Layer",
       "category": "review_surface",
@@ -2945,6 +3229,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.playbook_library",
       "canonical_slug": "playbook_library",
       "canonical_label": "Playbook Library",
       "category": "authority_surface",
@@ -2972,6 +3258,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.financial_calendar_architecture",
       "canonical_slug": "financial_calendar_architecture",
       "canonical_label": "Financial-calendar Architecture",
       "category": "authority_surface",
@@ -2999,6 +3287,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.capital_deployment_authority",
       "canonical_slug": "capital_deployment_authority",
       "canonical_label": "Capital Deployment Authority",
       "category": "authority_surface",
@@ -3027,6 +3317,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.state_kernel",
       "canonical_slug": "state_kernel",
       "canonical_label": "State Kernel",
       "category": "persistence_surface",
@@ -3053,6 +3345,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.unit_of_work",
       "canonical_slug": "unit_of_work",
       "canonical_label": "Unit of Work",
       "category": "persistence_surface",
@@ -3079,6 +3373,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.idempotency_key",
       "canonical_slug": "idempotency_key",
       "canonical_label": "Idempotency Key",
       "category": "protocol_field",
@@ -3105,6 +3401,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.atomic_receipt",
       "canonical_slug": "atomic_receipt",
       "canonical_label": "Atomic Receipt",
       "category": "persistence_surface",
@@ -3132,6 +3430,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.repository_port",
       "canonical_slug": "repository_port",
       "canonical_label": "Repository Port",
       "category": "persistence_surface",
@@ -3159,6 +3459,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.transaction_command",
       "canonical_slug": "transaction_command",
       "canonical_label": "Transaction Command",
       "category": "carrier",
@@ -3184,6 +3486,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.pm_controlled_parallel_workflow",
       "canonical_slug": "pm_controlled_parallel_workflow",
       "canonical_label": "PM-controlled Parallel Workflow",
       "category": "workflow",
@@ -3206,6 +3510,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.parallel_execution_lane",
       "canonical_slug": "parallel_execution_lane",
       "canonical_label": "Parallel Execution Lane",
       "category": "workflow",
@@ -3230,6 +3536,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.lane_assignment",
       "canonical_slug": "lane_assignment",
       "canonical_label": "Lane Assignment",
       "category": "workflow",
@@ -3252,6 +3560,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.material_read_set",
       "canonical_slug": "material_read_set",
       "canonical_label": "Material Read Set",
       "category": "authority_surface",
@@ -3274,6 +3584,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.worker_candidate_archive",
       "canonical_slug": "worker_candidate_archive",
       "canonical_label": "Worker Candidate Archive",
       "category": "carrier",
@@ -3297,6 +3609,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.tester_approved_portability_artefact",
       "canonical_slug": "tester_approved_portability_artefact",
       "canonical_label": "Tester-approved Portability Artefact",
       "category": "carrier",
@@ -3320,6 +3634,8 @@
       ]
     },
     {
+      "namespace": "global",
+      "canonical_id": "global.independent_control_test",
       "canonical_slug": "independent_control_test",
       "canonical_label": "Independent Control Test",
       "category": "promotion_surface",
@@ -3343,6 +3659,8 @@
       ]
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.reference_packet",
       "canonical_slug": "reference_packet",
       "canonical_label": "Reference Packet",
       "category": "protocol_field",
@@ -3367,6 +3685,8 @@
       ]
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.prepared_context_packet",
       "canonical_slug": "prepared_context_packet",
       "canonical_label": "Prepared Context Packet",
       "category": "protocol_field",
@@ -3393,6 +3713,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.stage_packet",
       "canonical_slug": "stage_packet",
       "canonical_label": "Stage Packet",
       "category": "protocol_field",
@@ -3419,6 +3741,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.parallel_risk_packet",
       "canonical_slug": "parallel_risk_packet",
       "canonical_label": "Parallel Risk Packet",
       "category": "protocol_field",
@@ -3445,6 +3769,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.review_explanation_packet",
       "canonical_slug": "review_explanation_packet",
       "canonical_label": "Review Explanation Packet",
       "category": "protocol_field",
@@ -3471,6 +3797,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.replay_request_packet",
       "canonical_slug": "replay_request_packet",
       "canonical_label": "Replay Request Packet",
       "category": "protocol_field",
@@ -3496,6 +3824,8 @@
       ]
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.replay_result_packet",
       "canonical_slug": "replay_result_packet",
       "canonical_label": "Replay Result Packet",
       "category": "protocol_field",
@@ -3522,6 +3852,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.replay_comparison_packet",
       "canonical_slug": "replay_comparison_packet",
       "canonical_label": "Replay Comparison Packet",
       "category": "protocol_field",
@@ -3548,6 +3880,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.diagnostic_packet",
       "canonical_slug": "diagnostic_packet",
       "canonical_label": "Diagnostic Packet",
       "category": "protocol_field",
@@ -3574,6 +3908,8 @@
       "raw_or_derived": "derived"
     },
     {
+      "namespace": "m04",
+      "canonical_id": "m04.rejection_packet",
       "canonical_slug": "rejection_packet",
       "canonical_label": "Rejection Packet",
       "category": "protocol_field",

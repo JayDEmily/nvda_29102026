@@ -41,6 +41,28 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == wrapper_build_document().to_dict()
     assert committed == native_build_document().to_dict()
 
+    assert committed["schema_version"] == "v2_namespaced"
+    assert set(committed["namespaces"]) == {"global", "m04"}
+    assert committed["namespaces"]["m04"]["imports"] == ["global"]
+    assert "config" not in committed["namespaces"]["m04"]["scan_paths"]
+
+    m04_entries = [
+        entry for entry in committed["entries"] if entry["namespace"] == "m04"
+    ]
+    assert len(m04_entries) == 10
+    assert {entry["canonical_id"] for entry in m04_entries} == {
+        "m04.reference_packet",
+        "m04.prepared_context_packet",
+        "m04.stage_packet",
+        "m04.parallel_risk_packet",
+        "m04.review_explanation_packet",
+        "m04.replay_request_packet",
+        "m04.replay_result_packet",
+        "m04.replay_comparison_packet",
+        "m04.diagnostic_packet",
+        "m04.rejection_packet",
+    }
+
 
 def test_governed_source_hashes_cover_authoritative_vocabulary_surfaces() -> None:
     native_builder = _require_module("nvda_desk.vocabulary_builder")
@@ -104,7 +126,11 @@ def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
     assert required_terms <= governed_terms
 
     registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
-    registry_required_terms = required_terms - {"dynamic coefficient", "dmpv3 packet"}
+    registry_required_terms = required_terms - {
+        "dynamic coefficient",
+        "dmpv3 packet",
+        "serial desk-cognition",
+    }
     assert {f"### {term}" for term in registry_required_terms} <= set(
         f"### {line.strip().removeprefix('### ').casefold()}"
         for line in registry_text.splitlines()

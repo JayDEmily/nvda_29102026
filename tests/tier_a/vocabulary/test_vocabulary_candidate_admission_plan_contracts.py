@@ -75,6 +75,8 @@ def test_add_new_admission_plan_builds_valid_proposed_entry() -> None:
     assert plan.classification.action is VocabularyCandidateAction.ADD_NEW
     assert plan.proposed_entry is not None
     assert plan.proposed_entry.to_dict() == {
+        "namespace": "global",
+        "canonical_id": "global.new_term",
         "canonical_slug": "new_term",
         "canonical_label": "New Term",
         "category": "workflow",

@@ -8,6 +8,7 @@ All repo paths in the numbered control stack are repo-root-relative.
 - one durable term must map to one governed meaning
 - aliases must be explicit rather than accidental
 - compatibility labels must not silently become canonical runtime truth
+- machine vocabulary identities must use the admitted `namespace.canonical_slug` form; collision and audit scope must follow the owning namespace plus explicitly imported shared vocabulary
 - durable terms must not be admitted into docs, schemas, manifests, receipts, or code unless they are already governed or the same bounded gate lawfully updates the vocabulary system first
 
 ## Authoritative artefacts

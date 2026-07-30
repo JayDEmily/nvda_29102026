@@ -1,9 +1,37 @@
 {
-  "schema_version": "v2_occurrence_scoped",
+  "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "vocabulary_touched": true,
-  "fingerprint": "5a7869b8851f7d6f64f52082c6c51adfdae79a170d721515c5215fad61bbd49a",
-  "resolved_occurrence_count": 633,
+  "namespace": "m04",
+  "imported_namespaces": [
+    "global"
+  ],
+  "scan_paths": [
+    "docs/09_DMPV3_PROTOCOL_CORE.md",
+    "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+    "src/nvda_desk/contracts/packets.py",
+    "src/nvda_desk/packets",
+    "src/nvda_desk/schemas/dmp.py",
+    "src/nvda_desk/schemas/dmp_envelope.py",
+    "src/nvda_desk/preparation/context_packet.py",
+    "src/nvda_desk/risk/parallel",
+    "src/nvda_desk/runtime/orchestrator.py",
+    "src/nvda_desk/services/parallel_risk_lane_service.py",
+    "src/nvda_desk/testing/harnesses/serial_runtime_parallel_risk_boundary_specimen.py",
+    "tests/tier_a/calendar_reference",
+    "tests/tier_a/capital_deployment",
+    "tests/tier_a/downstream_runtime",
+    "tests/tier_a/normative_authority",
+    "tests/tier_a/packets",
+    "tests/tier_a/parallel_risk",
+    "tests/tier_a/runtime",
+    "tests/tier_a/testing_harnesses",
+    "tests/tier_a/upstream_cognition",
+    "tests/tier_b/capital_deployment"
+  ],
+  "scanned_file_count": 95,
+  "vocabulary_touched": false,
+  "fingerprint": "68aa89c8a19951dbb78e62cb5228e193ba99d693a6f2e1ba056e9e10b5613325",
+  "resolved_occurrence_count": 202,
   "candidates": [],
   "candidate_classifications": []
 }

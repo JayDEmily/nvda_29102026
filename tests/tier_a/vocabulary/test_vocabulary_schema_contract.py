@@ -116,3 +116,87 @@ def test_vocabulary_schema_contract_rejects_duplicate_slug_alias_and_disallowed_
     )
     with pytest.raises(ValueError):
         vocabulary_document("v1", "test", entries=[self_alias_entry]).to_dict()
+
+
+def test_vocabulary_schema_uses_namespaced_machine_identity_and_bounded_collisions() -> None:
+    schema_module = _require_module("nvda_desk.schemas.vocabulary")
+    vocabulary_entry = _require_attr(schema_module, "VocabularyEntry")
+    vocabulary_namespace = _require_attr(schema_module, "VocabularyNamespace")
+    vocabulary_document = _require_attr(schema_module, "VocabularyDocument")
+
+    namespaces = {
+        "global": vocabulary_namespace(
+            namespace="global",
+            scan_paths=["src", "tests", "docs", "config"],
+            imports=[],
+        ),
+        "m04": vocabulary_namespace(
+            namespace="m04",
+            scan_paths=["src/nvda_desk/packets", "tests/tier_a/packets"],
+            imports=["global"],
+        ),
+        "m07": vocabulary_namespace(
+            namespace="m07",
+            scan_paths=["src/nvda_desk/m07_coefficient_modifier_authority"],
+            imports=["global"],
+        ),
+    }
+    document = vocabulary_document(
+        schema_version="v2_namespaced",
+        registry_version="test",
+        namespaces=namespaces,
+        entries=[
+            vocabulary_entry(
+                "shared_local_slug",
+                "Shared Local Label",
+                "stage",
+                "owner-m04",
+                "ContractM04",
+                namespace="m04",
+            ),
+            vocabulary_entry(
+                "shared_local_slug",
+                "Shared Local Label",
+                "stage",
+                "owner-m07",
+                "ContractM07",
+                namespace="m07",
+            ),
+        ],
+    )
+
+    payload = document.to_dict()
+    assert [entry["canonical_id"] for entry in payload["entries"]] == [
+        "m04.shared_local_slug",
+        "m07.shared_local_slug",
+    ]
+    assert set(document.entry_index) == {
+        "m04.shared_local_slug",
+        "m07.shared_local_slug",
+    }
+
+    global_collision = vocabulary_document(
+        schema_version="v2_namespaced",
+        registry_version="test",
+        namespaces=namespaces,
+        entries=[
+            vocabulary_entry(
+                "shared_local_slug",
+                "Shared Local Label",
+                "stage",
+                "global-owner",
+                "GlobalContract",
+                namespace="global",
+            ),
+            vocabulary_entry(
+                "shared_local_slug",
+                "Shared Local Label",
+                "stage",
+                "owner-m04",
+                "ContractM04",
+                namespace="m04",
+            ),
+        ],
+    )
+    with pytest.raises(ValueError, match="collision"):
+        global_collision.to_dict()

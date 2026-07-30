@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `M04_K07_MLC_R_COMPLETE_MLC_O_NEXT`
+**Status:** `M04_K07_MLC_O_ACTIVE_AFTER_M15_NAMESPACE_REPAIR`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -389,4 +389,8 @@ The trace repair passed at commit `27fa427`. `docs/09.1_DMPV3_PROTOCOL_WORKING.m
 
 M04 MLC-R then routed 25 physical test files through PM-011, retained/proof routes, C-010/D-010, C-016/D-016 and exact K07 contract symbols. The other 154 files in the accepted 179-test census remain `LEGACY_SHADOW_UNADMITTED` for this module leaf. Routing is not admission.
 
-**Immediate gate:** `M04-PROOF-MLC-O-V1`. Factually observe the 25 routed files in full. Do not admit, disposition, rewrite or assign proof strength to tests in the observation leaf, and do not mutate numbered authority, tests, configuration or production source.
+The user's 30 July vocabulary clarification opens one governance-prerequisite repair before M04 continues. Machine vocabulary identity must be namespaced and module admission audits must be restricted to their owner/export/direct-consumer scope. The prior 134 global occurrence dispositions remain historical evidence; they are not the scalable vocabulary architecture.
+
+`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed: the generated vocabulary uses namespaced machine identities, K07 owns ten `m04.*` identities, collision validation is namespace-local plus imported `global`, and the M04 audit is bounded to 24 registered paths / 95 files with zero unresolved candidates. Human labels and ordinary code symbols remain unprefixed.
+
+**Immediate gate:** `M04-PROOF-MLC-O-V1`. Observe the 25 physically routed K07 claim files and record facts, contradictions and absences against section 9.10. Do not mutate M04 behavioural tests, fixtures, runtime configuration or production source during MLC-O.

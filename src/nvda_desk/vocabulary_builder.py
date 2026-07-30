@@ -14,7 +14,11 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from nvda_desk.schemas.vocabulary import VocabularyDocument, VocabularyEntry
+from nvda_desk.schemas.vocabulary import (
+    VocabularyDocument,
+    VocabularyEntry,
+    VocabularyNamespace,
+)
 
 REGISTRY_PATH = Path("docs/vocabulary/vocabulary_registry.md")
 OUTPUT_PATH = Path("data/vocabulary/canonical_vocabulary.json")
@@ -35,6 +39,7 @@ _HEADER_FIELDS = {
     "schema_version": "Projection schema version:",
     "registry_version": "Projection registry version:",
     "notes": "Projection document notes:",
+    "namespaces": "Projection namespace scopes:",
 }
 _REQUIRED_HUMAN_FIELDS = (
     "Definition",
@@ -93,6 +98,7 @@ class RegistryAdmissionRecord:
             notes.append("Machine projection omissions: " + "; ".join(omissions))
 
         return VocabularyEntry(
+            namespace=metadata.get("namespace", "global"),
             canonical_slug=metadata["canonical_slug"],
             canonical_label=metadata["canonical_label"],
             category=metadata["category"],
@@ -112,7 +118,9 @@ def _strip_markdown_code(value: str) -> str:
     return stripped
 
 
-def _parse_document_header(text: str) -> tuple[str, str, list[str]]:
+def _parse_document_header(
+    text: str,
+) -> tuple[str, str, list[str], dict[str, VocabularyNamespace]]:
     values: dict[str, Any] = {}
     for name, prefix in _HEADER_FIELDS.items():
         matches = [line for line in text.splitlines() if line.startswith(prefix)]
@@ -126,12 +134,35 @@ def _parse_document_header(text: str) -> tuple[str, str, list[str]]:
             ):
                 raise ValueError("Projection document notes must be a non-empty-string list")
             values[name] = parsed
+        elif name == "namespaces":
+            parsed = json.loads(raw_value)
+            if not isinstance(parsed, dict) or not parsed:
+                raise ValueError("Projection namespace scopes must be a non-empty object")
+            namespaces: dict[str, VocabularyNamespace] = {}
+            for namespace, raw_scope in parsed.items():
+                if not isinstance(namespace, str) or not isinstance(raw_scope, dict):
+                    raise ValueError(
+                        "Projection namespace scopes must contain keyed objects"
+                    )
+                scope = VocabularyNamespace(
+                    namespace=namespace,
+                    scan_paths=list(raw_scope.get("scan_paths", [])),
+                    imports=list(raw_scope.get("imports", [])),
+                )
+                scope.validate()
+                namespaces[namespace] = scope
+            values[name] = namespaces
         else:
             value = _strip_markdown_code(raw_value)
             if not value:
                 raise ValueError(f"{prefix} must declare a non-empty value")
             values[name] = value
-    return values["schema_version"], values["registry_version"], values["notes"]
+    return (
+        values["schema_version"],
+        values["registry_version"],
+        values["notes"],
+        values["namespaces"],
+    )
 
 
 def _parse_human_fields(block: str, heading: str) -> dict[str, str]:
@@ -182,7 +213,8 @@ def _parse_projection(block: str, heading: str) -> dict[str, Any]:
         "audit_noncanonical_phrases",
     }
     missing = sorted(required - metadata.keys())
-    unknown = sorted(metadata.keys() - required)
+    optional = {"namespace"}
+    unknown = sorted(metadata.keys() - required - optional)
     if missing or unknown:
         raise ValueError(
             f"projection metadata keys for {heading!r} are invalid; missing={missing}, unknown={unknown}"
@@ -204,6 +236,9 @@ def _parse_projection(block: str, heading: str) -> dict[str, Any]:
     ):
         if not isinstance(metadata[field_name], str) or not metadata[field_name].strip():
             raise ValueError(f"projection {field_name} must be non-empty for {heading!r}")
+    namespace = metadata.get("namespace", "global")
+    if not isinstance(namespace, str) or not namespace.strip():
+        raise ValueError(f"projection namespace must be non-empty for {heading!r}")
     for field_name in (
         "allowed_aliases",
         "disallowed_phrases",
@@ -223,11 +258,17 @@ def _parse_projection(block: str, heading: str) -> dict[str, Any]:
 
 def read_registry_admission_records(
     path: Path = REGISTRY_PATH,
-) -> tuple[str, str, list[str], list[RegistryAdmissionRecord]]:
+) -> tuple[
+    str,
+    str,
+    list[str],
+    dict[str, VocabularyNamespace],
+    list[RegistryAdmissionRecord],
+]:
     """Read and validate the complete accepted human registry."""
 
     text = path.read_text(encoding="utf-8")
-    schema_version, registry_version, notes = _parse_document_header(text)
+    schema_version, registry_version, notes, namespaces = _parse_document_header(text)
     matches = list(_RECORD_HEADING.finditer(text))
     if not matches:
         raise ValueError("vocabulary registry contains no accepted records")
@@ -248,21 +289,28 @@ def read_registry_admission_records(
             )
         )
 
-    heading_tokens = [record.heading.casefold() for record in records]
-    if len(heading_tokens) != len(set(heading_tokens)):
-        raise ValueError("registry headings must be unique after case folding")
-    slug_tokens = [record.projection["canonical_slug"].casefold() for record in records]
-    if len(slug_tokens) != len(set(slug_tokens)):
-        raise ValueError("projection canonical slugs must be unique after case folding")
-    return schema_version, registry_version, notes, records
+    canonical_ids = [
+        (
+            record.projection.get("namespace", "global")
+            + "."
+            + record.projection["canonical_slug"]
+        ).casefold()
+        for record in records
+    ]
+    if len(canonical_ids) != len(set(canonical_ids)):
+        raise ValueError("projection canonical ids must be unique after case folding")
+    return schema_version, registry_version, notes, namespaces, records
 
 
 def build_document() -> VocabularyDocument:
-    schema_version, registry_version, notes, records = read_registry_admission_records()
+    schema_version, registry_version, notes, namespaces, records = (
+        read_registry_admission_records()
+    )
     document = VocabularyDocument(
         schema_version=schema_version,
         registry_version=registry_version,
         notes=notes,
+        namespaces=namespaces,
         entries=[record.to_entry() for record in records],
     )
     document.validate()

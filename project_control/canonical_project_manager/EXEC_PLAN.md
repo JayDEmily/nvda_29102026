@@ -2,7 +2,7 @@
 
 ## Status
 
-`m04_k07_mlc_r_complete_mlc_o_next`
+`m04_k07_mlc_o_active_after_m15_namespace_repair`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Atlas current-path repair and M04 K07 MLC-A/MLC-R passed; `M04-PROOF-MLC-O-V1` is the sole next Gate C leaf |
-| Mutation state | MLC-O may read the 25 routed physical files and update only the existing M04 record, its existing raw-validation directory and live control pointers. Test admission, proof strength, numbered meaning, physical tests, fixtures, runtime configuration and production source are closed |
+| Active units | Atlas current-path repair, M04 K07 MLC-A/MLC-R and `M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed; M04 MLC-O factual observation is active |
+| Mutation state | M15 mutation is closed. M04 MLC-O is read-only observation; behavioural tests, fixtures, runtime configuration and production source remain closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -68,6 +68,25 @@ After this repair passes, continue Gate C serially:
 This order opens the earliest missing numbered-authority root first. It is a control sequence, not authority to batch the three propositions or to open tests or code early.
 
 Current result: the trace repair passed at commit `27fa427`; M04 K07 section 9.10 now defines the admitted roles, owner-supplied execution context, complete lineage matrix, validation profiles and lawful outcomes; M04 MLC-A recheck is `AUTHORITY_SUFFICIENT`. MLC-R then routed 25 physical K07 claim files and left the other 154 census files `LEGACY_SHADOW_UNADMITTED`. The next leaf is M04 MLC-O factual observation only.
+
+### Strategy correction — namespaced vocabulary governance
+
+The user's 30 July clarification confirms that module-local vocabulary must use a prefixed machine namespace and a bounded scan scope so one term admission does not trigger repository-wide review. The K07 admission exposed the current defect: unqualified slugs and a global audit produced 134 occurrence dispositions across unrelated modules.
+
+`M15-VOCABULARY-NAMESPACE-REPAIR-V1` supersedes the immediate M04 observation only until this bounded governance prerequisite passes. It must:
+
+1. preserve one human registry and one generated projection;
+2. add explicit `namespace.canonical_slug` machine identity without prefixing human labels or ordinary code symbols;
+3. validate collisions inside the owning namespace plus `global`, not across unrelated module namespaces;
+4. register exact owner, exported-contract and direct-consumer scan paths;
+5. make the audit require and report one admitted namespace;
+6. keep the 134 prior rows as historical occurrence evidence only, not the continuing architectural solution;
+7. prove M04 admission can be checked without scanning unrelated repository surfaces;
+8. resume Gate C at M04 MLC-O only after the repair proof passes.
+
+The current-target read evidence is `project_control/canonical_project_manager/units/PM-010/M15_NAMESPACE_REPAIR_FULL_READ_MANIFEST.tsv`. No additional guidance document or project-wide tracker is authorised.
+
+Result: `PASS:M15_VOCABULARY_NAMESPACE_REPAIR_V1`. The canonical projection now uses schema `v2_namespaced`; the ten K07 packet roles have `m04.*` machine identities while their human labels and ordinary code symbols remain unchanged. M04 imports the shared `global` namespace and registers 24 owner/export/direct-consumer paths covering 95 files. The scoped audit reports zero unresolved candidates and does not scan the central registry, the vocabulary engine's own tests or unrelated modules as M04 consumers. The 134 earlier repository-wide dispositions remain historical evidence only. The admitted three-file Tier A repair proof passes 25/25; the complete vocabulary directory improves from the exact source checkpoint's 83 passed / 18 failed to 100 passed / 3 failed, with all three remaining failures present at the source checkpoint and outside this bounded repair.
 
 ## Authority
 
@@ -412,6 +431,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | 2026-07-28 | `PARALLEL-WORKFLOW-ENABLEMENT-V1` | `rejected_before_launch` | Initial control checkpoint was structurally valid but rejected by PM self-audit before any lane launch. |
 | 2026-07-29 | `PARALLEL-WORKFLOW-ENABLEMENT-V1-REPAIR-1` | `awaiting_independent_control_test` | Governance vocabulary, local manifests, Lane 1 test route, artefact contracts, registry lineage and independent control testing were repaired. |
 | 2026-07-30 | `PARALLEL-CYCLE-01` | `aggregate_validated_closed` | Tester-approved results for 1A–4A were imported serially, independently PM-reviewed, mechanically reconciled as a combined state and closed without production, physical-test, configuration or numbered-authority mutation. |
+| 2026-07-30 | `M15-VOCABULARY-NAMESPACE-REPAIR-V1` | `passed_closed` | Namespaced machine identity, namespace-local plus imported-global collisions and the 95-file M04 audit boundary passed; M04 MLC-O resumed. |
 
 ## Decisions
 
@@ -447,13 +467,14 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 | `DEC-PAR-005` | Canonical integration is sequential; Cycle 1 order is M01, M04, M07, M08; stale or conflicting outputs require revalidation. |
 | `DEC-PAR-006` | `ACCEPTED:PARALLEL_CONTROL_R2`: accept independent tester commit `e672b27ca01efbd1f47de27d41fa54733bc73c63`; open only Cycle 1 worker launch for assignments 1A–4A from one PM-published immutable checkpoint; Lanes 5 and 6 remain held. |
 | `DEC-PAR-007` | `ACCEPTED:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`: accept the serially integrated 1A–4A evidence batch through PM commit `d6cfff9ab00cb5772baad26b14a8d388b08a241a`; preserve M01 routing as accepted, return M04/M07/M08 to bounded missing-authority gates, open no implementation, and publish one new full-history PM checkpoint. |
+| `DEC-M15-001` | `ACCEPTED:M15_VOCABULARY_NAMESPACE_REPAIR_V1`: machine vocabulary identity is `namespace.canonical_slug`; human labels and ordinary code symbols remain unprefixed; collisions and synonym audits are bounded to the selected namespace, imported `global` vocabulary and registered owner/export/direct-consumer paths. Repository-wide reconciliation is reserved for shared/global admission or final Gate C consolidation. |
 
 
 ## Next gate
 
 The former Cycle 01 publication gate was satisfied by checkpoint `73f1e7ab3ce212c9951f03c407e94741e6c68913`. The subsequent Atlas current-path repair passed at `27fa427`, and M04 K07 numbered authority is now sufficient.
 
-The sole current next leaf is `M04-PROOF-MLC-O-V1`: factually observe the 25 routed physical files against their exact inputs, actions, assertions, public seams and omissions. Admission, proof strength, numbered authority, physical tests, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
+`M15-VOCABULARY-NAMESPACE-REPAIR-V1` passed and is closed. The sole current leaf is the preserved `M04-PROOF-MLC-O-V1` factual observation across the 25 physically routed K07 claim files. This leaf may record current behaviour, contradictions and absences only; behavioural test mutation, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
 
 ## Roadblocks and Unknowns
 
@@ -463,7 +484,7 @@ The sole current next leaf is `M04-PROOF-MLC-O-V1`: factually observe the 25 rou
 - Production retention, backup, recovery, capacity, deployment topology, credentials and live/paper operating requirements remain intentionally unknown and out of scope.
 - Historical candidate dispositions for missing normative authority remain evidence and must be reconciled when their owning module opens or during final consolidation.
 - The current source package graph contains small historical cycles; their removal belongs to the affected module migrations and is not a control-only change.
-- Vocabulary baseline proof has two pre-existing red node IDs at both `9e404df7…` and the repair state: the historical `Serial Desk-cognition` heading expectation and missing `mutable_runtime_surface` baseline entry. The repair adds no new vocabulary-test failure; these remain an explicit later M15 reconciliation obligation.
+- Complete vocabulary-directory shadow proof retains three source-checkpoint failures: missing `candidate_audit`, the unused `audit_surface` enum/category mismatch, and missing `mutable_runtime_surface`. They belong to later owning-module or final shared-vocabulary reconciliation. The M15 repair adds no failure and removes the historical audit-fixture and `Serial Desk-cognition` heading false failures from the current proof surface.
 
 ## Stop and return conditions
 

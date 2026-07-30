@@ -30,7 +30,7 @@ proof_blocks:
     tier: Tier A
     lifecycle: admitted_for_atlas_feature_admission_014
     command: >-
-      python scripts/vocabulary_synonym_audit.py --check-clean
+      python scripts/vocabulary_synonym_audit.py --namespace global --check-clean
     owns:
       - scripts/vocabulary_synonym_audit.py
       - src/nvda_desk/vocabulary_synonym_audit.py

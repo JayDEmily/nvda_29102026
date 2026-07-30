@@ -4,7 +4,7 @@ The vocabulary workflow is a **feeder process only**.
 
 ## Allowed flow
 
-1. harvest candidate evidence from current repo surfaces and bounded planning artefacts;
+1. select the admitted vocabulary namespace and harvest candidate evidence only from its registered owning surfaces, exported contracts and direct consumers; use the repository-wide `global` scope only for genuinely shared concepts or final consolidation;
 2. read the relevant normative and implementation context in full and compare the candidate with the human-readable registry and explicit normative admissions;
 3. record one human/LLM semantic action under `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`:
    - `enrich_existing`
@@ -19,7 +19,7 @@ Mechanical classifiers and candidate-review helpers may propose or route these a
 
 ### Deterministic projection record
 
-The accepted human registry is the sole semantic input to the committed machine projection. Every canonical registry record must include one explicit `Projection metadata:` record with traceability to its accepted semantic decision. `src/nvda_desk/vocabulary_builder.py` validates and transforms those records only; it must contain no independent term seed. Generated JSON is updated through `scripts/build_canonical_vocabulary.py` after a validated `/tmp` build and byte-stability check.
+The accepted human registry is the sole semantic input to the committed machine projection. Every canonical registry record must include one explicit `Projection metadata:` record with traceability to its accepted semantic decision and vocabulary namespace. The registry header declares the admissible namespace scopes and imports. `src/nvda_desk/vocabulary_builder.py` validates and transforms those records only; it must contain no independent term seed, namespace inference or path inference. Generated JSON is updated through `scripts/build_canonical_vocabulary.py` after a validated `/tmp` build and byte-stability check.
 
 An audit phrase that has been read in source context and rejected as a canonical label or lawful alias may be retained in the owning human record as descriptive `audit_noncanonical_phrases` history. That field never suppresses the scanner. Suppression is allowed only from the exact resolved-occurrence evidence register, and only for the same path, line, column, normalised phrase and unchanged source-context hash.
 
@@ -54,12 +54,14 @@ Gate 55 extends canonical ownership to:
 ## Candidate Audit
 
 - run `candidate_audit` every time the governed vocabulary surfaces change;
+- pass the exact admitted namespace; the audit may inspect only its registered paths and imported lexicon;
 - write the audit artefact to `var/vocabulary/synonym_candidates.json`;
 - escalate any candidate entry in that artefact to an LLM pass;
 - do not admit or suppress a candidate by hand-editing the artefact;
 - update the vocabulary stamp only after the configured audit returns no unresolved candidate occurrences and all required semantic decisions and projection updates are recorded; a zero-candidate report or advanced stamp is algorithmic/proof evidence only, not a semantic clean certificate.
 - resolve a noncanonical candidate only for its exact evidenced occurrence: path, line, column, normalised phrase and unchanged source-line context hash; the same phrase on a new path, at a new occurrence or in changed context must surface again;
 - treat only canonical labels and explicitly admitted aliases as phrase-global exact tokens; disallowed phrases and historical noncanonical inventories must not suppress candidates globally.
+- reserve a repository-wide cross-namespace scan for a `global` admission or final Gate C consolidation; a module admission must not create disposition work outside its declared scope.
 
 
 ## Schema-helper admission boundary

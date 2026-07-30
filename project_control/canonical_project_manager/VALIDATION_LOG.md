@@ -935,3 +935,34 @@ No behavioural test suite was run or claimed because the integrated batch change
 ### Next gate
 
 Publish one lean Git-preserving full-history checkpoint from the PM closeout commit. A later PM brief may open `M01-PROOF-MLC-O-V1`; M04, M07 and M08 return to bounded numbered-authority completion. No implementation, physical-test mutation or configuration mutation opens automatically.
+
+## 2026-07-30 — M15 vocabulary namespace and scoped-audit repair
+
+### Disposition
+
+`PASS:M15_VOCABULARY_NAMESPACE_REPAIR_V1`
+
+The user's namespace clarification was applied to machine vocabulary identity and audit ownership. Human labels and ordinary code symbols remain unprefixed. The central human registry and its generated JSON projection remain single authoritative surfaces.
+
+| Check | Result |
+|---|---|
+| Normative authority | PASS — core and working vocabulary law require `namespace.canonical_slug`, namespace-local plus imported-`global` collision control and registered scan paths |
+| Canonical projection | PASS — schema `v2_namespaced`, 147 entries, namespaces `global` and `m04` |
+| K07 identity allocation | PASS — exactly ten entries own `m04.*` canonical identities |
+| Cross-module reuse | PASS — the same local slug/label may exist in unrelated module namespaces; a conflicting imported `global` identity remains rejected |
+| M04 scan boundary | PASS — 24 registered owner/export/direct-consumer paths resolve to 95 files; the central registry, vocabulary-engine tests and unrelated modules are not treated as M04 consumers |
+| M04 synonym audit | PASS — zero unresolved candidates, 202 exact prior occurrence dispositions visible inside the boundary |
+| Stamp rerun | PASS — `vocabulary_touched=False` after the final M04 stamp |
+| Builder determinism | PASS — two independent outputs have SHA-256 `0104aac9e9eec60a799bd43e2f2a71d6d668b1414004f966a1fd506122f88a2e` |
+| Admitted M15 Tier A proof | PASS — 25 passed using repository-pinned `pytest==9.0.3` |
+| Complete vocabulary-directory shadow | 100 passed, 3 failed |
+| Exact source-checkpoint shadow | 83 passed, 18 failed at `c288816`; all three current failing nodes were already present there |
+| Syntax and whitespace | PASS — `compileall` and `git diff --check` |
+
+The three retained shadow failures are missing `candidate_audit`, the unused `audit_surface` enum/category mismatch and missing `mutable_runtime_surface`. They are not hidden or treated as M15 failures. Their admission or retirement belongs to the owning module or final shared-vocabulary reconciliation.
+
+The earlier 134 repository-wide K07 occurrence dispositions remain historical evidence. They are not the ongoing audit architecture and were not expanded to clear this repair.
+
+### Next gate
+
+Resume the preserved M04 route at `M04-PROOF-MLC-O-V1`. Observe the 25 physically routed K07 claim files against section 9.10 and record factual behaviour, contradictions and absences only. Physical-test mutation, fixtures, runtime configuration and production source remain closed.
