@@ -2,7 +2,7 @@
 
 ## Status
 
-`m04_k07_authority_complete_mlc_r_next`
+`m04_k07_mlc_r_complete_mlc_o_next`
 
 The user accepted the extended architecture review on 25 July 2026 and replaced the global Gate C certification route and fixed `D-xxx` total order with dependency-ready ownership-module delivery. On 28 July 2026 the user explicitly authorised a six-lane PM-controlled parallel workflow with independent worker/tester pairs and serial canonical integration. This remains one programme and one repository.
 
@@ -20,8 +20,8 @@ The user accepted the extended architecture review on 25 July 2026 and replaced 
 | Historical implementation obligations | 33 `D-xxx` records retained for traceability |
 | Accepted M13 worker commit | `616fade4123def7870b7950bb3e644ffcc0ccc5a` |
 | M01 authority PM closeout branch | `review/m01-authority-v1` |
-| Active units | Atlas current-path repair passed; M04 K07 section 9.10 is `AUTHORITY_SUFFICIENT`; `M04-PROOF-MLC-R-V1` is the sole next Gate C leaf |
-| Mutation state | MLC-R may update only existing M04 routing evidence and live control pointers. Numbered normative meaning, physical tests, fixtures, runtime configuration and production source are closed |
+| Active units | Atlas current-path repair and M04 K07 MLC-A/MLC-R passed; `M04-PROOF-MLC-O-V1` is the sole next Gate C leaf |
+| Mutation state | MLC-O may read the 25 routed physical files and update only the existing M04 record, its existing raw-validation directory and live control pointers. Test admission, proof strength, numbered meaning, physical tests, fixtures, runtime configuration and production source are closed |
 | First implementation module after proof acceptance | `M13 state_kernel` |
 | Gate D | module-local only; dependency-safe slices may be worked in parallel after their own proof opens, but PM acceptance and integration remain serial |
 
@@ -67,7 +67,7 @@ After this repair passes, continue Gate C serially:
 
 This order opens the earliest missing numbered-authority root first. It is a control sequence, not authority to batch the three propositions or to open tests or code early.
 
-Current result: the trace repair passed at commit `27fa427`; M04 K07 section 9.10 now defines the admitted roles, owner-supplied execution context, complete lineage matrix, validation profiles and lawful outcomes; M04 MLC-A recheck is `AUTHORITY_SUFFICIENT`. The next leaf is M04 MLC-R test-claim routing only.
+Current result: the trace repair passed at commit `27fa427`; M04 K07 section 9.10 now defines the admitted roles, owner-supplied execution context, complete lineage matrix, validation profiles and lawful outcomes; M04 MLC-A recheck is `AUTHORITY_SUFFICIENT`. MLC-R then routed 25 physical K07 claim files and left the other 154 census files `LEGACY_SHADOW_UNADMITTED`. The next leaf is M04 MLC-O factual observation only.
 
 ## Authority
 
@@ -453,7 +453,7 @@ Targeted admitted proof precedes affected admitted proof, complete admitted Tier
 
 The former Cycle 01 publication gate was satisfied by checkpoint `73f1e7ab3ce212c9951f03c407e94741e6c68913`. The subsequent Atlas current-path repair passed at `27fa427`, and M04 K07 numbered authority is now sufficient.
 
-The sole current next leaf is `M04-PROOF-MLC-R-V1`: route exact physical tests claiming authority over the admitted section 9.10 K07 packet roles. Numbered authority, physical tests, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
+The sole current next leaf is `M04-PROOF-MLC-O-V1`: factually observe the 25 routed physical files against their exact inputs, actions, assertions, public seams and omissions. Admission, proof strength, numbered authority, physical tests, runtime configuration and production implementation remain closed. M07 K12, M08 K13 and M01 MLC-O remain queued; Lanes 5 and 6 remain held pending explicit PM allocation.
 
 ## Roadblocks and Unknowns
 

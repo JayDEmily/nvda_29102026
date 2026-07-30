@@ -181,3 +181,53 @@ The unchanged deterministic builder projected registry version `2026-07-30-m04-k
 The required synonym-candidate audit was then run against the current governed sources. It initially surfaced 134 unresolved occurrences: 50 already present at checkpoint `27fa427`, plus 89 newly visible because the admitted packet-role lexicon gave the scanner new comparison targets. Full occurrence contexts were reviewed and recorded in the existing PM-010 semantic-disposition register: 42 governed contextual/numbered references remain lawful only in their exact propositions, and 92 implementation, test, configuration or non-governing-document observations remain occurrence-scoped quarantined evidence. No phrase was admitted as a global alias. The regenerated existing candidate report contains zero unresolved candidates, the existing touch stamp was advanced through the guarded route, and a final read-only clean check returned `candidates=0`, `vocabulary_touched=False`, `resolved_occurrences=633`.
 
 The primary runtime does not provide `pytest`, so the requested pytest command was `BLOCKED_ENVIRONMENT` rather than passed. The pre-existing required-baseline assertion for absent `mutable_runtime_surface` remains red in both source commit `27fa427` and the current projection; the M04 vocabulary change introduced no new occurrence of that known failure.
+
+## Project Manager MLC-R routing — 2026-07-30
+
+Source checkpoint: `12f8105` on `control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Unit: `M04-PROOF-MLC-R-V1`.
+
+Result: `ROUTING_COMPLETE:M04_K07_25_PHYSICAL_TEST_FILES`.
+
+This leaf mechanically joined the PM-011 physical/current-route census, retained-test and proof-block routes, C-010/D-010 and C-016/D-016 records, and exact occurrences of the ten admitted section 9.10 role values or the canonical DMPV3 contract name in physical Python tests. It did not read assertions semantically, run tests, select authority by filename, admit a test, or mutate a test.
+
+Every file below claims or consumes at least one exact K07 role/contract token and is therefore routed into MLC-O for factual observation. Route inclusion is deliberately broader than eventual admission: domain-owned tests may use a packet token without proving M04 carriage law.
+
+| Physical test file | Mechanical K07 claim token(s) | Existing route evidence | SHA-256 |
+|---|---|---|---|
+| `tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py` | `reference_packet` | PM-011 current route | `022203decd6eb9be1bafd3bc3a00d9ee3bba9a69e9262e11f3efea86526494f7` |
+| `tests/tier_a/capital_deployment/test_capital_authority_service_surface.py` | `parallel_risk_packet` | PM-011 current route | `0081d39a103e2b92bca821e0a291fbad9d646d101fb14756829006c82a31d5b6` |
+| `tests/tier_a/capital_deployment/test_capital_contract_models.py` | `parallel_risk_packet` | PM-011 current route | `9b5f0e2ad6285ecc166698777b1f88d3ee6cb917d6be02dff246919ab02ebed2` |
+| `tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py` | `parallel_risk_packet` | PM-011 current route | `befe79943fd9c6b83dff28cf79649772b016380935db4625dc104324ba60163d` |
+| `tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py` | `parallel_risk_packet`; `DMPV3` | PM-011 current route | `346f853263789c4d1011cff170832fe51fe4a284db4666fb8a63758286594f94` |
+| `tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py` | `parallel_risk_packet` | PM-011 current route | `5409d16b8c13017c2a333e006d0493a2d1f4e3998f12fe514b0b7a65c5f04d1f` |
+| `tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py` | `parallel_risk_packet` | PM-011 current route | `6eceb47ddfa298b45bb4121a3a2a65c77118a7b2aedf769fd3c09c65d40f65ba` |
+| `tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py` | `stage_packet` | D-010; D-016; PM-011 current route | `0e705c9a2dd5afea58e6c4414a78b98731685bfa8d8a8774c18683205391ac29` |
+| `tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py` | `parallel_risk_packet` | PM-011 current route | `d1544b9fa8fd2c8339ed4cbc83694fb2cbfbbf93823d85c7d12fecd61029a98b` |
+| `tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py` | `stage_packet` | D-010; PM-011 current route | `45dfe7e719fb31b6b8aae23b28cc0bd82d8cdcec3456f46acf9b48286ecd107d` |
+| `tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py` | `DmpV3Packet` | D-010; PM-011 current route | `40acde2f80b7e2d69b3d5c62f65105e48fe1449eec92f2686c67f2b79a76b699` |
+| `tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py` | `reference_packet`; `stage_packet`; `parallel_risk_packet` | D-010 | `d228f89d61b4844823c44f599f7274662355193b87e75a5d9dde867ae406f4b7` |
+| `tests/tier_a/packets/test_reference_packet_carriage.py` | `reference_packet`; `prepared_context_packet`; `stage_packet`; `review_explanation_packet`; `DmpV3Packet` | D-010; PM-011 current route | `61a55a2caed8bb9e0497a8a980d413cb0790a8a3d1c3fa8afc07eed93b37ca41` |
+| `tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py` | `parallel_risk_packet` | PM-011 current route | `ec02a46e2c049f3b84c4b7dbb2cf1866bca026089aa5c650940cf8428fb1953e` |
+| `tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py` | `stage_packet` | PM-011 current route | `17c4061336d249f87b27a1fd21d33f656210c7d6a38482e9adf795773b68fedd` |
+| `tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py` | `stage_packet`; `parallel_risk_packet` | PM-011 current route | `8edcda5980a1d6a7466f612e7fd2fff25e3b118bf54620b9f127c528f7dd283c` |
+| `tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_specimen.py` | `parallel_risk_packet` | PM-011 current route | `f037de5d9a1116e1e5cbe3ba0a8850c1be9281b003e0cb8a2d37e3884898fbe7` |
+| `tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py` | `stage_packet` | D-016 | `4f7f9cf6627f8c00257cfbd65b45274b658aea50af2b9f9c3cc7e554242a4cfb` |
+| `tests/tier_a/runtime/test_runtime_orchestrator_surface.py` | `stage_packet` | PM-011 current route | `64a770bb18e66fd93bc98fcd1cd26451eb7f8240f7bef1347d9d38a3e5ab6863` |
+| `tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py` | `stage_packet` | D-016; PM-011 current route | `ee0a115da8c80b7b0764b92a2917033f960178f8ff23bdfc77b7244fe932debc` |
+| `tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py` | `stage_packet` | PM-011 current route | `f67b69999aace0eb663cb0c1793a5e64ec024f9a4aaa60972d110d8260a7ca60` |
+| `tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py` | `prepared_context_packet` | exact K07 symbol; no pre-existing PM-011 current route | `a3300de568165f2609a7b7de5d6ae811bd932a0d24ccf381e08bc12deff0ebb9` |
+| `tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py` | `prepared_context_packet` | PM-011 current route | `bb0d40859b133970d47d730d0061534fc6b7343cb955cf52b5649b9b216e39c8` |
+| `tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py` | `DmpV3Packet` | PM-011 current route | `48e171e51b6b03bd8fd2239817d12f3ae1d2d7f147a082b8393eef7b50999c89` |
+| `tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py` | `parallel_risk_packet` | PM-011 current route | `252905dbfef7502920b58a9c74e049531e4f0894a23991b3efb2ed2f2aff28e7` |
+
+No physical Python test contains the exact current values `replay_request_packet`, `replay_result_packet`, `replay_comparison_packet`, `diagnostic_packet` or `rejection_packet`. That is a routing fact only; it does not establish a proof gap until MLC-O and MLC-D determine what the routed tests actually cover.
+
+The other 154 files in the accepted 179-test census remain `LEGACY_SHADOW_UNADMITTED` for this M04 leaf. This is a neutral routing status, not retirement or rejection.
+
+### MLC-R claim boundary and next leaf
+
+MLC-R is complete. No test was run, observed, admitted, rewritten or assigned a proof strength. No numbered authority, vocabulary, runtime configuration or production source changed.
+
+The next lawful leaf is `M04-PROOF-MLC-O-V1`: read each of the 25 routed files in full and record starting input/state, action, exact assertion/absence/exception, public seam, unobserved surfaces and any scoped result actually run. Files may be grouped only when homogeneous, and each physical file must retain a distinct observation.

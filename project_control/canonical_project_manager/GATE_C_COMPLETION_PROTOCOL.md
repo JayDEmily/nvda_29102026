@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `M04_K07_AUTHORITY_COMPLETE_MLC_R_NEXT`
+**Status:** `M04_K07_MLC_R_COMPLETE_MLC_O_NEXT`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -387,4 +387,6 @@ No Gate C completion, general test-authoring readiness or codebase rewrite is cl
 
 The trace repair passed at commit `27fa427`. `docs/09.1_DMPV3_PROTOCOL_WORKING.md` section 9.10 now supplies the complete current K07 packet-role matrix, and the module-local MLC-A recheck is `AUTHORITY_SUFFICIENT:M04_K07_CURRENT_PACKET_ROLE_MATRIX`.
 
-**Immediate gate:** `M04-PROOF-MLC-R-V1`. Route exact physical tests claiming authority over the admitted K07 roles. Do not observe or disposition the tests in the routing leaf, and do not mutate numbered authority, tests, configuration or production source.
+M04 MLC-R then routed 25 physical test files through PM-011, retained/proof routes, C-010/D-010, C-016/D-016 and exact K07 contract symbols. The other 154 files in the accepted 179-test census remain `LEGACY_SHADOW_UNADMITTED` for this module leaf. Routing is not admission.
+
+**Immediate gate:** `M04-PROOF-MLC-O-V1`. Factually observe the 25 routed files in full. Do not admit, disposition, rewrite or assign proof strength to tests in the observation leaf, and do not mutate numbered authority, tests, configuration or production source.
