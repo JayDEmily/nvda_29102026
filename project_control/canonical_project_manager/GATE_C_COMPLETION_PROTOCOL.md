@@ -2,7 +2,7 @@
 
 ## Amended status
 
-**Status:** `M04_K07_MLC_P_ACTIVE_AFTER_DISPOSITION`
+**Status:** `M04_K07_MLC_T_ACTIVE_AFTER_PROOF_SPECIFICATION`
 **Original global protocol frozen:** `2026-07-25 13:04:09 AEST`
 **Strategy amendment accepted:** `2026-07-25`
 **Owner:** User and Project Manager thread
@@ -397,4 +397,6 @@ M04 MLC-O then read all 25 routed files from checkpoint `6d3ec80` and recorded a
 
 M04 MLC-D then admitted one bounded combined expected-red contract for missing caller-owned context/required lineage. Seven partial files remain non-admitted, eleven are consumer/structure-only, five contain mixed contradictions, and one exercises an unlisted role. Greenness granted no authority.
 
-**Immediate gate:** `M04-PROOF-MLC-P-V1`. Specify the complete K07 proof family from section 9.10 and the accepted disposition gaps. Do not mutate M04 behavioural tests, fixtures, runtime configuration or production source during MLC-P.
+M04 MLC-P now specifies PF-01–PF-08: complete ten-role positive profiles, execution-context non-fabrication, cell-level R/C/O/N enforcement, fact-derived common and role checks, lawful outcome separation, replay identity/evidence/isolation, occurrence/time/architecture boundaries, contradiction closure and ten exact falsification mutants. No test or source changed in that leaf.
+
+**Immediate gate:** `M04-PROOF-MLC-T-V1`. Implement the accepted proof specification in the exact authorised test/support/governance surfaces. Production source, runtime configuration, numbered authority and unrelated tests remain closed.

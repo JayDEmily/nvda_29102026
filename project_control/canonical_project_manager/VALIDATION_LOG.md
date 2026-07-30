@@ -1012,3 +1012,36 @@ The admitted function does not prove per-field isolation, all ten role profiles,
 ### Next gate
 
 Execute `M04-PROOF-MLC-P-V1`: specify the exact ten-role K07 proof family, complete lineage matrix, named checks, lawful outcomes, contradiction coverage and false-positive mutants. Physical-test mutation and production implementation remain closed.
+
+## 2026-07-30 — M04 K07 MLC-P proof specification
+
+### Disposition
+
+`PROOF_SPECIFIED:M04_K07_COMPLETE_ROLE_FAMILY`
+
+The accepted section 9.10 authority and MLC-D gaps were converted into one bounded K07 proof specification without changing tests, fixtures, runtime configuration, vocabulary, numbered authority or production source.
+
+| Proof family | Required coverage |
+|---|---|
+| PF-01 | All ten admitted roles with complete positive context, lineage, validation and boundary profiles |
+| PF-02 | Per-role, per-field missing/invalid trace/run/scenario rejection and no fabrication/defaulting |
+| PF-03 | Cell-level R/C/O/N lineage enforcement, source-artifact retrievability and fingerprint separation |
+| PF-04 | Fact-derived common and role-specific checks; hard-coded validation rejected |
+| PF-05 | Reject, stand-down, lawful optional absence, bounded degradation, separate diagnostic/rejection and incomplete-replay outcomes |
+| PF-06 | Replay request/result/comparison identity, evidence closure, isolation, comparison and incomplete authority |
+| PF-07 | Occurrence/time/extension/unlisted-role/architecture boundaries |
+| PF-08 | Existing partial expected-red preservation and rejection of all five observed contradiction classes |
+
+Ten exact mutants are required for context invention, lineage loss, N-field acceptance, hard-coded checks, wrong-reason rejection, degraded bypass, diagnostic substitution, artefact/fingerprint substitution, replay overclaim and replay identity reuse.
+
+| Check | Result |
+|---|---|
+| Current-target full-read manifest | PASS — 10 required files recorded with pre-mutation SHA-256 |
+| Exact section 9.10 role coverage | PASS — 10/10 roles named |
+| MLC-D proof-gap coverage | PASS — 7/7 categories represented |
+| Test/source/config mutation | None |
+| `git diff --check` | PASS |
+
+### Next gate
+
+Execute `M04-PROOF-MLC-T-V1` in only the named M04 test/support, required test-governance/evidence and current control surfaces. Production source, runtime configuration, numbered authority and unrelated tests remain closed.

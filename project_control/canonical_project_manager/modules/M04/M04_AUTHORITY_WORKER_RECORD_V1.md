@@ -349,3 +349,205 @@ MLC-P must specify:
 MLC-D is complete. No physical test, fixture, runtime configuration, normative proposition or production source changed.
 
 The next lawful leaf is `M04-PROOF-MLC-P-V1`: author the exact K07 proof specification from the accepted section 9.10 authority, the one bounded existing expected-red admission and the proof gaps above. Test implementation remains closed until that specification is independently accepted.
+
+## Project Manager MLC-P proof specification — 2026-07-30
+
+Source checkpoint: `1844266` on `control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Unit: `M04-PROOF-MLC-P-V1`.
+
+Result: `PROOF_SPECIFIED:M04_K07_COMPLETE_ROLE_FAMILY`.
+
+This specification is subordinate to `docs/09.1_DMPV3_PROTOCOL_WORKING.md` section 9.10. It defines the proof that must exist; it does not add protocol meaning, admit test code, select implementation structure or open production mutation.
+
+### Proof subject and authorised test surfaces
+
+MLC-T may add exactly:
+
+- `tests/tier_a/packets/test_m04_k07_packet_role_contract.py`;
+- `tests/support/m04_k07_contract_harness.py`;
+- the existing retained-test and proof-block entries required to route that one family;
+- the M04-local validation evidence and current control/record updates required by the harness.
+
+The contract family must exercise the repo-owned public packet builder surface named by the section 9 core and section 9.11. Test support may provide:
+
+1. a subject adapter translating explicit governed facts into that public surface;
+2. one conforming reference subject used only to prove the test family can accept the specified law;
+3. the exact falsification mutants below.
+
+The reference subject and mutants are proof instruments, not production implementations, fixtures represented as live evidence or alternative authority. No production source, runtime configuration, domain fixture, specimen or unrelated test may change in MLC-T.
+
+### Deterministic proof input
+
+Every case uses fixed test-owned values and a fixed UTC emission time. The input record must distinguish:
+
+- packet-occurrence metadata;
+- owner-supplied producer identity;
+- owner-supplied `traceid`, `runid` and `scenarioid`;
+- the typed payload and dataschema;
+- each lineage field independently;
+- explicit relationship facts that activate conditional lineage, including replay, review, decision and material-dependency context;
+- a retrievability port for authoritative source artefacts;
+- an admitted semantic-fingerprint verifier for the exact material input;
+- typed-contract and authority-boundary validators;
+- an optional-quality limitation, when bounded degradation is tested.
+
+The harness must not infer an owner fact from a packet ID, wall-clock time, payload shape, default scenario, validation label or the mere presence of a hash.
+
+### PF-01 — admitted roles and complete positive profiles
+
+For each of the ten section 9.10.2 roles, one complete minimal governed input must emit one packet occurrence and prove:
+
+1. the exact role, source, occurrence ID, producer identity, dataschema and typed payload are preserved;
+2. supplied trace/run/scenario values are preserved byte-for-byte and differ from the occurrence ID;
+3. every role-required and activated conditional lineage fact is present with its correct meaning;
+4. every not-applicable lineage field is absent or empty;
+5. source artefact identifiers remain separately retrievable and are not replaced by the fingerprint;
+6. the input fingerprint verifies the exact admitted material input;
+7. validation is `valid`, contains every common check and the exact role-specific check set from section 9.10.4, contains no additional success-by-default check, and every recorded result arose from an exercised owner fact;
+8. summary and extensions do not contradict the packet or replace canonical fields;
+9. M04 produces no domain-state, persistence, decision, capital, execution, inventory, close or review side effect.
+
+The diagnostic/rejection profile is run once for each exact role value; the shared matrix row does not permit one value to stand in for the other.
+
+### PF-02 — execution-context ownership and non-fabrication
+
+For every admitted role:
+
+- omitting each of `traceid`, `runid` and `scenarioid` in isolation rejects emission;
+- supplying empty or syntactically invalid values for each field in isolation rejects emission;
+- the rejection identifies the exact missing/invalid owner fact;
+- no packet occurrence is returned;
+- no value derived from packet ID, source, current time, payload, module ID or the literal `live` appears as a substitute.
+
+This family must expressly reject the observed legacy reference-packet degradation path, implementation-generated serial trace/run values and default `live` scenario.
+
+### PF-03 — complete R/C/O/N lineage enforcement
+
+The test data must encode the section 9.10.3 matrix explicitly rather than derive it from production code.
+
+For every role/field cell:
+
+- each `R` field is removed in isolation and must reject with that exact lineage fact named;
+- each `N` field is populated in isolation and must reject as a role-profile violation;
+- each `C` relationship is tested both inactive and active: inactive absence is lawful and is not degradation, while active absence rejects with the exact relationship/fact named;
+- each lawful `O` absence is accepted without degradation;
+- a supplied `C` or `O` value is still rejected when its owner or meaning validator fails.
+
+Additional mandatory cases:
+
+- a `stage_packet` without prepared/prior-stage parentage rejects;
+- a downstream stage/risk packet cannot drop retrievable source artefacts merely because parent packet IDs exist;
+- `sourceartifactids` cannot be replaced by `inputfingerprint`, or vice versa;
+- a singular `derivedfrom` containing concatenated plural identities rejects;
+- diagnostic/rejection emission without at least one truthful target reference rejects out-of-band.
+
+### PF-04 — common and role-specific validation truth
+
+Each common and role-specific check is failed in isolation at its actual fact/owner seam. The proposed binding packet must reject, name the failed check and return no usable packet.
+
+The family must prove:
+
+- exact check-name equality for each role;
+- `validation_completeness` fails if a required check was not executed or recorded;
+- `valid` cannot be obtained from model construction, `schema_validation=true`, an empty violation list or a hard-coded list of passed checks;
+- an incorrect role/payload/schema/producer combination fails `role_schema_consistency`;
+- an authority overclaim in payload or summary fails `authority_boundary`;
+- an extension collision fails `extension_bounds`;
+- a contradictory summary fails `summary_consistency`;
+- an artifact resolver is called for every required artefact and false/unavailable resolution rejects;
+- fingerprint verification compares against exact admitted material and rejects both mismatch and unexplained arbitrary hash.
+
+### PF-05 — lawful outcome separation
+
+The family must distinguish these outcomes:
+
+| Condition | Required proof outcome |
+|---|---|
+| missing/invalid required or activated conditional owner fact | binding emission rejected; exact fact reported |
+| owner fact unavailable upstream | emitter stand-down; no fabricated substitute or binding packet |
+| absent optional or inactive conditional field | lawful valid emission; not degraded |
+| expressly permitted optional-quality limitation after all required checks pass | `degraded` with exact limitation, failed optional-quality check and explicit consumer restriction |
+| missing required identity, lineage, artifact, fingerprint, typed payload or authority check | rejection; never `degraded` |
+| independently valid diagnostic/rejection contract | separate new occurrence, non-binding status and truthful target reference |
+| missing authoritative replay material | conforming `non_authoritative_incomplete` replay-result or diagnostic outcome; no reconstruction-authority claim |
+
+A diagnostic/rejection packet must have its own owner-supplied execution context and occurrence identity. It must not reuse the rejected binding packet role, pretend to be the rejected domain output or satisfy the original call by substitution.
+
+### PF-06 — replay identity, evidence, isolation and comparison
+
+The replay proof must cover:
+
+1. reading a preserved original returns the original occurrence unchanged and creates no new packet;
+2. replay request/result/comparison emissions use new occurrence IDs and emission times while carrying exact `replayref` and owner-supplied `replaytraceid`;
+3. request evidence/version closure and requested fingerprint are verified before emission;
+4. replay-result evidence actually consumed, material versions, controlled time and isolated state are verified;
+5. no live state or external side effect occurs during replay;
+6. semantic-result comparison excludes regenerated packet identity/time but includes exact material-version and evidence fingerprints;
+7. mismatches remain visible;
+8. missing authoritative material yields `non_authoritative_incomplete`, never false equivalence or reconstructed authority;
+9. decision-target replay activates and validates `decisiontraceid`.
+
+### PF-07 — occurrence, time, extension and architecture boundaries
+
+The family must prove:
+
+- distinct new emissions cannot reuse the same `source + id`;
+- an exact preserved transport duplicate may retain that pair only when every preserved field is unchanged;
+- packet `time` is explicit emission time and cannot substitute for source observation time;
+- date-only source truth is not promoted to timestamp precision by packet carriage;
+- canonical extension leaves survive custom extension merging and cannot be overridden;
+- an unlisted role, including current `capital_deployment_decision`, is rejected as non-admitted;
+- compatibility wrappers remain non-owning aliases;
+- the M04 subject does not import or acquire domain-state or persistence ownership.
+
+### PF-08 — retained partial proof and contradiction closure
+
+The existing admitted function `test_c010_c016_dmp_builder_rejects_missing_caller_owned_execution_context_and_lineage` remains one partial expected-red case. The new family must not weaken, delete, rename, skip or xfail it.
+
+The new family must independently reject all five observed contradiction classes:
+
+1. missing-context reference packet emitted as degraded;
+2. trace/run generated by serial runtime;
+3. scenario defaulted to `live`;
+4. first stage packet emitted with empty required parentage;
+5. prepared-context degradation emitted while caller-owned scenario or another required fact is absent.
+
+### Required falsification mutants
+
+The conforming reference subject must pass the complete family. Each mutant must fail for its designated invariant:
+
+| Mutant | Deliberate defect | Required detection |
+|---|---|---|
+| `MUT-CONTEXT-DEFAULT` | invent trace/run/scenario from packet ID or `live` | PF-02 |
+| `MUT-DROP-LINEAGE` | silently drops one required source artefact, parent or fingerprint | PF-03 |
+| `MUT-N-FIELD` | accepts a populated not-applicable field | PF-03 |
+| `MUT-HARDCODE-CHECKS` | emits the required check names as passed without calling owner validators | PF-04 |
+| `MUT-WRONG-REASON` | rejects every input generically before the targeted fact is evaluated | PF-02/PF-04 exact-fact assertions |
+| `MUT-DEGRADED-BYPASS` | converts a required-fact failure into degraded carriage | PF-05 |
+| `MUT-DIAGNOSTIC-SUBSTITUTE` | returns a diagnostic occurrence as the requested binding role/output | PF-05 |
+| `MUT-ARTIFACT-HASH-SUBSTITUTE` | treats fingerprint presence as source-artifact retrievability | PF-03/PF-04 |
+| `MUT-REPLAY-OVERCLAIM` | reports authoritative replay when required evidence is unavailable | PF-06 |
+| `MUT-REPLAY-IDENTITY-REUSE` | reuses original occurrence identity/time for a newly emitted replay result | PF-06/PF-07 |
+
+No mutant may be rejected only because of an unrelated import, constructor or fixture failure.
+
+### MLC-T acceptance boundary
+
+MLC-T passes only when:
+
+1. the exact authorised test/support/registry/proof-block changes are present;
+2. the conforming reference subject passes every proof family;
+3. every named mutant is rejected by its designated case for the intended reason;
+4. the production subject is expected-red only where current implementation is non-conforming;
+5. existing admitted partial proof remains unchanged and red for the same K07 reason;
+6. test collection, manifest, registry, proof-block, lint and diff validation succeed;
+7. no production source, runtime configuration, normative meaning or unrelated test changed.
+
+Passing MLC-T does not open implementation. A separate test-author-independent MLC-V must decide `IMPLEMENTATION_OPEN` or return an exact defect to MLC-P/MLC-T.
+
+### MLC-P boundary and next leaf
+
+MLC-P is complete. It changed only the existing M04 proof/control record, current control pointers and its unit-local full-read manifest. No physical test, fixture, runtime configuration, normative proposition, vocabulary or production source changed.
+
+The next lawful leaf is `M04-PROOF-MLC-T-V1`: implement this specification exactly. Production mutation remains closed.
