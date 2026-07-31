@@ -173,7 +173,29 @@ def reference_evaluate(
         raise ValueError("threshold_order_invalid")
 
     payload = governed.payload
-    observations: list[ReferenceObservation] = []
+    observations: list[ReferenceObservation] = [
+        ReferenceObservation(
+            family="concentration",
+            state="unknown",
+            reason="concentration_context_unavailable",
+            source_fields=("concentration_context",),
+            limitation="concentration_context_unavailable",
+        ),
+        ReferenceObservation(
+            family="inventory_stress",
+            state="unknown",
+            reason="inventory_stress_context_unavailable",
+            source_fields=("inventory_stress_context",),
+            limitation="inventory_stress_context_unavailable",
+        ),
+        ReferenceObservation(
+            family="liquidity",
+            state="unknown",
+            reason="liquidity_context_unavailable",
+            source_fields=("liquidity_context",),
+            limitation="liquidity_context_unavailable",
+        ),
+    ]
     tags = {tag for window in payload.windows for tag in window.tags}
     observations.append(
         ReferenceObservation(

@@ -33,7 +33,13 @@ def test_reference_vix_block_dominates() -> None:
 def test_reference_unknown_is_not_safe() -> None:
     result = reference_evaluate(make_prepared(vix_level=None, front_dte=None, next_dte=None))
     assert result.state == "unknown"
-    assert result.unknown_families == ("options_term_structure", "volatility")
+    assert result.unknown_families == (
+        "concentration",
+        "inventory_stress",
+        "liquidity",
+        "options_term_structure",
+        "volatility",
+    )
 
 
 def test_reference_is_deterministic_and_stateless() -> None:
@@ -151,7 +157,13 @@ def test_production_unknown_remains_explicit() -> None:
     )
     result = m.ParallelRiskEvaluator().evaluate(risk_input)
     assert result.state == "unknown"
-    assert result.unknown_families == ("options_term_structure", "volatility")
+    assert result.unknown_families == (
+        "concentration",
+        "inventory_stress",
+        "liquidity",
+        "options_term_structure",
+        "volatility",
+    )
 
 
 def test_production_revalidates_copied_prepared_authority() -> None:
@@ -177,3 +189,140 @@ def test_production_is_deterministic_and_foreign_authority_closed() -> None:
     assert first == second
     assert first.foreign_authority_claimed is False
     assert "capital" in first.closed_authority_classes
+
+
+def test_gate_d_rejects_generic_mapping_input() -> None:
+    m = _production()
+    with pytest.raises(TypeError, match="typed_prepared_envelope_required"):
+        m.ParallelRiskInput.from_prepared(
+            make_prepared().model_dump(mode="python"),
+            evaluator_policy_version="parallel-risk.compat.v1",
+            aggregation_version="parallel-risk.aggregate.v1",
+            threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),
+            vix_caution_threshold=30.0,
+            vix_block_threshold=50.0,
+        )
+
+
+def test_gate_d_threshold_authority_is_exact_and_m07_owned() -> None:
+    m = _production()
+    with pytest.raises(ValueError, match="exact_two_threshold_authority_refs_required"):
+        m.ParallelRiskInput.from_prepared(
+            make_prepared(),
+            evaluator_policy_version="parallel-risk.compat.v1",
+            aggregation_version="parallel-risk.aggregate.v1",
+            threshold_authority_refs=("m07:caution:v1",),
+            vix_caution_threshold=30.0,
+            vix_block_threshold=50.0,
+        )
+    with pytest.raises(ValueError, match="threshold_authority_must_be_m07_owned"):
+        m.ParallelRiskInput.from_prepared(
+            make_prepared(),
+            evaluator_policy_version="parallel-risk.compat.v1",
+            aggregation_version="parallel-risk.aggregate.v1",
+            threshold_authority_refs=("m06:caution:v1", "m06:block:v1"),
+            vix_caution_threshold=30.0,
+            vix_block_threshold=50.0,
+        )
+
+
+def test_gate_d_evaluator_revalidates_copied_input() -> None:
+    m = _production()
+    forged = _build_production_input().model_copy(
+        update={"input_fingerprint": "0" * 64}
+    )
+    with pytest.raises(ValueError, match="parallel_risk_input_fingerprint_mismatch"):
+        m.ParallelRiskEvaluator().evaluate(forged)
+
+
+def test_gate_d_assessment_rejects_observation_reordering() -> None:
+    m = _production()
+    result = m.ParallelRiskEvaluator().evaluate(_build_production_input())
+    forged = result.model_dump(mode="python")
+    forged["observations"] = tuple(reversed(forged["observations"]))
+    with pytest.raises(
+        ValueError, match="parallel_risk_observation_family_order_or_completeness_invalid"
+    ):
+        m.ParallelRiskAssessment.model_validate(forged)
+
+
+def test_gate_d_assessment_rejects_extra_limitation() -> None:
+    m = _production()
+    result = m.ParallelRiskEvaluator().evaluate(_build_production_input())
+    forged = result.model_dump(mode="python")
+    forged["limitations"] = result.limitations + ("fabricated_limitation",)
+    with pytest.raises(ValueError, match="parallel_risk_limitation_lineage_mismatch"):
+        m.ParallelRiskAssessment.model_validate(forged)
+
+
+def test_gate_d_models_are_deeply_immutable() -> None:
+    m = _production()
+    risk_input = _build_production_input()
+    result = m.ParallelRiskEvaluator().evaluate(risk_input)
+    with pytest.raises(Exception):
+        risk_input.vix_level = 99.0
+    with pytest.raises(Exception):
+        result.observations[0].reason = "changed"
+
+
+def test_gate_d_assessment_has_no_downstream_authority_fields() -> None:
+    m = _production()
+    result = m.ParallelRiskEvaluator().evaluate(_build_production_input())
+    dumped = result.model_dump(mode="python")
+    for forbidden in (
+        "serial_candidate",
+        "final_risk_decision",
+        "capital_decision",
+        "order",
+        "position",
+        "lifecycle_transition",
+    ):
+        assert forbidden not in dumped
+
+
+def test_gate_d_legacy_service_state_is_instance_local() -> None:
+    from nvda_desk.services.parallel_risk_lane_service import ParallelRiskLaneService
+
+    first = ParallelRiskLaneService()
+    second = ParallelRiskLaneService()
+    first.evaluate_risk_policy("policy.v1", candidate_id="candidate.1")
+    assert len(first.list_risk_decisions()) == 1
+    assert second.list_risk_decisions() == []
+
+
+def test_gate_d_threshold_reference_order_is_semantically_irrelevant() -> None:
+    m = _production()
+    prepared = make_prepared(vix_level=34.0)
+    first = m.ParallelRiskInput.from_prepared(
+        prepared,
+        evaluator_policy_version="parallel-risk.compat.v1",
+        aggregation_version="parallel-risk.aggregate.v1",
+        threshold_authority_refs=("m07:block:v1", "m07:caution:v1"),
+        vix_caution_threshold=30.0,
+        vix_block_threshold=50.0,
+    )
+    second = m.ParallelRiskInput.from_prepared(
+        prepared,
+        evaluator_policy_version="parallel-risk.compat.v1",
+        aggregation_version="parallel-risk.aggregate.v1",
+        threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),
+        vix_caution_threshold=30.0,
+        vix_block_threshold=50.0,
+    )
+    assert first == second
+
+
+def test_gate_d_rejects_invalid_numeric_risk_facts() -> None:
+    m = _production()
+    prepared = make_prepared(vix_level=34.0)
+    payload = m.ParallelRiskInput.from_prepared(
+        prepared,
+        evaluator_policy_version="parallel-risk.compat.v1",
+        aggregation_version="parallel-risk.aggregate.v1",
+        threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),
+        vix_caution_threshold=30.0,
+        vix_block_threshold=50.0,
+    ).model_dump(mode="python")
+    payload["vix_level"] = float("inf")
+    with pytest.raises(ValueError, match="vix_level_must_be_nonnegative_finite"):
+        m.ParallelRiskInput.model_validate(payload)

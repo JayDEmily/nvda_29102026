@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `IN_PROGRESS:M06_K10_GATE_D_OPEN`
+**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M06_K10_GATE_D_ACCEPTED`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -207,6 +207,11 @@ command route or comparability is stale or Unknown.
   production cases are green, bounded carrier facts and exact input/output
   lineage are enforced, terminal binding payloads fail closed, and the exact
   Tier A comparison contains zero new failing nodes.
+- M06 K10 satisfies C-NORM, C-PROOF and bounded Gate D: 30 focused
+  cases pass, all seven admitted production-facing failures are green, exact
+  M03/M04/M07 lineage and six risk families are preserved, unknown/degraded
+  evidence remains explicit, module-global policy-decision state is removed,
+  and the exact Tier A comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -248,14 +253,21 @@ six-stage coordination and serial-candidate lineage; it is immutable,
 deterministic and side-effect-free, and it does not acquire parallel-risk,
 capital, broker, portfolio or lifecycle-mutation authority.
 
+M06 satisfies `C-NORM`, `C-PROOF` and bounded K10 Gate D. The accepted package
+owns one immutable prepared-risk input, typed six-family observations and a
+deterministic independent assessment; it is side-effect-free, preserves exact
+upstream and threshold lineage, keeps unknown/degraded evidence explicit and
+does not acquire K11 final-risk, capital, broker, portfolio or lifecycle
+authority.
+
 ### Queued
 
-- M06 K10 C-NORM is active; K11 final-risk joining remains M09 authority.
-- M09 capital remains closed until both M05 and M06 are accepted.
+- User-requested pause and clean full-history checkpoint after M06 K10.
+- M09 K11/fresh-capital authority is next but has not started.
 
 ## 8. Immediate work
 
-Complete M06 K10 as one uninterrupted `C-NORM → C-PROOF → Gate D` unit, then publish one clean full-history archive and pause. M09 capital and downstream broker/lifecycle mutation authority remain closed until M06 is accepted.
+Publish one clean full-history archive at the accepted M06 K10 checkpoint and pause. On resumption, open M09 K11/fresh-capital authority; M10 broker execution and M11 lifecycle mutation remain closed.
 
 ## 9. Programme sequence
 

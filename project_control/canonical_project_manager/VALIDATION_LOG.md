@@ -1680,3 +1680,39 @@ comparison evidence are under
 
 Pause and publish the user-requested clean full-history M05 checkpoint. M06 has
 not started. On resumption, open M06 parallel-risk `C-NORM`.
+## 2026-07-31 — M06 K10 Gate D acceptance and user checkpoint
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M06_K10_PARALLEL_RISK_AUTHORITY`
+
+The canonical M06 package now provides frozen prepared-risk input, typed
+six-family observations, one deterministic block-dominant assessment and a
+side-effect-free evaluator. It preserves M03 prepared lineage, optional M04
+packet lineage and exact M07 threshold authority; unknown/degraded facts remain
+explicit. The retained lane-service compatibility surface now keeps policy
+decisions instance-local rather than module-global.
+
+| Check | Result |
+|---|---|
+| Focused K10 proof | PASS — 30 / 30 |
+| Former expected-red public seam | PASS — 7 / 7 |
+| Added Gate D integrity cases | PASS — 10 |
+| Proof block / all manifests | PASS — 30 / 30; 60 / 60 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier B admitted set | PASS — 49 / 49 in two partitions |
+| Vocabulary parity / M06 audit | PASS — 4 / 4; zero unresolved candidates across 58 scoped files and 145 governed occurrences |
+| Affected comparison | 99 passed / 34 failed → 117 / 26; eight resolved; zero new failing nodes |
+| Tier A comparison | 1,489 passed / 265 failed → 1,508 / 256; nine resolved; zero new failing nodes |
+| Static compilation | PASS |
+| Ruff / Black | UNAVAILABLE — locked modules not installed; no substitute used |
+
+The complete Tier A set was executed as the non-vocabulary partition plus all
+17 vocabulary files individually after the combined vocabulary route did not
+terminate. Exact commands and comparison evidence are under
+`project_control/canonical_project_manager/modules/M06/validation/m06_k10_v1/`.
+
+### Next action
+
+Pause and publish the user-requested clean full-history M06 checkpoint. M09 has
+not started.

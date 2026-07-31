@@ -7,9 +7,9 @@
 - Contract boundary: `K10 ParallelRiskAssessment`
 - Requirements: `C-017; C-020; C-035`
 - Source checkpoint: `615bef4adbb177f2ffd610e36eb539abd514c5c7`
-- Active gate: `C-PROOF`
-- Checkpoint state: `IN_PROGRESS`
-- Gate D: `CLOSED`
+- Active gate: `COMPLETE`
+- Checkpoint state: `USER_CHECKPOINT_REQUESTED`
+- Gate D: `ACCEPTED`
 
 ## Question
 
@@ -38,4 +38,14 @@ The accepted architecture assigns K10 to M06 and keeps the K11 terminal join in 
 
 ## Gate boundary
 
-C-PROOF is accepted: 13 reference/mutant cases pass, vocabulary parity is repaired, and seven production-facing assertions remain exact red solely because the canonical M06 package is absent. Gate D is open only for that bounded implementation.
+C-PROOF was accepted at `af51af9203eb3d586aa398ab2f3eac11dc9af54c`: 13 reference/mutant cases passed, vocabulary parity was repaired, and seven production-facing assertions were exact red solely because the canonical M06 package was absent.
+
+## Gate D acceptance
+
+`PASS:GATE_D_ACCEPTED:M06_K10_PARALLEL_RISK_AUTHORITY`
+
+The canonical `nvda_desk.m06_parallel_risk` package now implements the exact K10 input, typed observation, aggregate assessment and side-effect-free evaluator seam. It revalidates copied authority, requires exact M07-owned threshold references, preserves explicit unknown/degraded evidence, orders aggregation deterministically, closes downstream authority, and removes module-global policy-decision state from the retained lane-service compatibility surface.
+
+Thirty focused cases pass: 13 reference/mutant cases, seven formerly expected-red production assertions and ten Gate D integrity cases. The affected baseline/current comparison resolves the seven M06 seam failures plus the C-020/C-035 instance-isolation defect, with zero new failing nodes. M09 retains K11 final-risk and capital authority.
+
+The user requested a clean full-history checkpoint after M06. M09 has not started.

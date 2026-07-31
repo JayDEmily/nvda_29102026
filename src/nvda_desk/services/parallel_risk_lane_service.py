@@ -19,7 +19,6 @@ from nvda_desk.risk.parallel.evaluate import (
     enrich_candidate_semantics,
 )
 
-_RISK_POLICY_DECISIONS: list[ParallelRiskPolicyDecision] = []
 
 SERIAL_RUNTIME_STAGE_KEYS = (
     "temporal",
@@ -37,6 +36,7 @@ class ParallelRiskLaneService:
 
     def __init__(self):
         self._service = ParallelRiskService()
+        self._risk_policy_decisions: list[ParallelRiskPolicyDecision] = []
 
     def build_bootstrap_input_packet(
         self,
@@ -183,13 +183,13 @@ class ParallelRiskLaneService:
             policy_id=policy_id,
             candidate=candidate,
         )
-        _RISK_POLICY_DECISIONS.append(decision)
+        self._risk_policy_decisions.append(decision)
         return decision
 
     def list_risk_decisions(self) -> list[ParallelRiskPolicyDecision]:
         """Return risk-gateway observation decisions recorded in this process."""
 
-        return [decision.model_copy(deep=True) for decision in _RISK_POLICY_DECISIONS]
+        return [decision.model_copy(deep=True) for decision in self._risk_policy_decisions]
 
 
 def _select_temporal_stage_packet_payload(receipt: Mapping[str, object]) -> Mapping[str, object]:

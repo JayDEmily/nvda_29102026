@@ -8,9 +8,9 @@
 | Branch | `work/gate-c-evidence-economy-m03-continuation-v1` |
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M05 K08/K09 serial-cognition authority |
-| Current active slice | M06 K10 C-NORM active |
-| Production implementation | M05 accepted; M06 production remains closed during C-NORM |
+| Latest accepted implementation slice | M06 K10 independent parallel-risk authority |
+| Current active slice | paused for user-requested full-history checkpoint |
+| Production implementation | M06 K10 accepted; M09 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -49,6 +49,7 @@ validation.
 | M02 financial calendar | passed — `docs/07.1...` section 7.9 | passed — 33 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
 | M03 prepared data / field resolution | passed — `docs/07.1...` section 7.10 | passed — 25 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
 | M05 serial cognition | passed — `docs/07.1...` section 7.11 | passed — 32 focused cases; seven mutants killed | `GATE_D_ACCEPTED` |
+| M06 parallel risk | passed — `docs/07.1...` section 7.12 | passed — 30 focused cases; seven mutants killed | `GATE_D_ACCEPTED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -112,10 +113,21 @@ recorded as a suite-order warning. The M05 namespace is clean across 35 scoped
 files and 81 governed occurrences. Ruff and Black were unavailable because the
 locked modules are not installed; no substitute was used.
 
+M06 K10 Gate D acceptance records 30/30 focused cases, proof-manifest integrity
+at 60/60 and the proof executor at 21/21. Tier A moved from 1,489 passed / 265
+failed to 1,508 passed / 256 failed: the seven formerly expected-red K10 nodes
+and two module-global compatibility-state nodes resolved, ten direct integrity
+cases were added and zero new failing nodes appeared. Tier B passed 49/49 in
+two explicit partitions. The all-vocabulary route did not terminate after
+partial progress, so all 17 vocabulary files were run separately in baseline
+and current trees. The M06 namespace is clean across 58 scoped files and 145
+governed occurrences. Ruff and Black were unavailable because the locked
+modules are not installed; no substitute was used.
+
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
 required before implementation.
 
 ## Immediate next action
 
-Complete M06 K10 through bounded Gate D, publish one clean full-history checkpoint, and pause. M09 capital and downstream execution/lifecycle authority remain closed until M06 acceptance.
+Publish the clean user-requested full-history checkpoint at accepted M06 K10 and pause. On resumption, open M09 K11/fresh-capital authority; M10 execution and M11 lifecycle mutation remain closed.
