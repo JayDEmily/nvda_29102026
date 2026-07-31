@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-07-31-m02-k04-normative-authority-v1",
+  "registry_version": "2026-07-31-m03-k05-k06-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -12,7 +12,8 @@
     "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon.",
     "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace.",
     "The 2026-07-31 M08 K13 amendment admits the exact PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public-contract concepts under a bounded M08 namespace.",
-    "The 2026-07-31 M02 K04 amendment admits the exact CalendarFactCandidate, FinancialCalendarSnapshot and CalendarProjection public-contract concepts under a bounded M02 namespace."
+    "The 2026-07-31 M02 K04 amendment admits the exact CalendarFactCandidate, FinancialCalendarSnapshot and CalendarProjection public-contract concepts under a bounded M02 namespace.",
+    "The 2026-07-31 M03 K05/K06 amendment admits the exact PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder public-contract concepts under a bounded M03 namespace."
   ],
   "namespaces": {
     "global": {
@@ -45,6 +46,26 @@
         "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
         "tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py",
         "tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py"
+      ]
+    },
+    "m03": {
+      "namespace": "m03",
+      "imports": [
+        "global"
+      ],
+      "scan_paths": [
+        "docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/contracts/prepared_data.py",
+        "src/nvda_desk/contracts/prepared_context.py",
+        "src/nvda_desk/preparation",
+        "src/nvda_desk/m03_preparation",
+        "tests/support/m03_k05_k06_contract_harness.py",
+        "tests/tier_a/m03_k05_k06",
+        "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
+        "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py"
       ]
     },
     "m04": {
@@ -1448,6 +1469,96 @@
         "Human disallowed or misleading use: Projection used as source truth; projection selected by caller order; projection used as trade instruction; unknown events represented as no events; projection claiming state mutation or replay authority."
       ],
       "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m03",
+      "canonical_id": "m03.prepared_data_envelope",
+      "canonical_slug": "prepared_data_envelope",
+      "canonical_label": "Prepared Data Envelope",
+      "category": "protocol_surface",
+      "stage_owner": "preparation",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.4",
+      "allowed_aliases": [
+        "PreparedDataEnvelope",
+        "prepared runtime authority envelope"
+      ],
+      "disallowed_phrases": [
+        "untagged mapping used as prepared authority",
+        "packet ID used as prepared identity",
+        "missing capture identity replaced by a hash or timestamp",
+        "prepared payload containing candidate, risk, capital or execution decisions"
+      ],
+      "notes": [
+        "Definition: Immutable, versioned M03 K05 authority envelope preserving prepared identity, source/capture lineage, original temporal precision, policy/schema/derivation versions, deterministic fingerprints, validation/completeness state, resolution/derivation evidence and exactly one tagged typed payload variant.",
+        "Scope: K05 prepared runtime authority envelope",
+        "Semantic owner: M03 preparation authority",
+        "Relationships: Emitted by Prepared Data Builder from admitted M01/M02 inputs; references Field Resolution Receipts and derivation receipts; consumed read-only by later modules through narrowed carriers or bounded serialisation views.",
+        "Lifecycle: active_k05_contract",
+        "Semantic decisions: M03-K05-K06-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: PreparedDataEnvelope; prepared runtime authority envelope.",
+        "Human disallowed or misleading use: Untagged mapping used as prepared authority; packet ID used as prepared identity; missing capture identity replaced by a hash or timestamp; prepared payload containing candidate, risk, capital or execution decisions."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m03",
+      "canonical_id": "m03.field_resolution_receipt",
+      "canonical_slug": "field_resolution_receipt",
+      "canonical_label": "Field Resolution Receipt",
+      "category": "protocol_surface",
+      "stage_owner": "preparation",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.3",
+      "allowed_aliases": [
+        "FieldResolutionReceipt",
+        "canonical field-resolution receipt"
+      ],
+      "disallowed_phrases": [
+        "final value without candidate lineage",
+        "field receipt selected by caller order",
+        "latest non-null source treated as field authority",
+        "unresolved mandatory conflict represented as a valid value"
+      ],
+      "notes": [
+        "Definition: Immutable M03 K06 record preserving all admitted candidates and the deterministic selected, coalesced, unavailable, degraded or withheld result for one semantic field under one explicit versioned resolution policy.",
+        "Scope: K06 canonical field-resolution evidence",
+        "Semantic owner: M03 preparation authority",
+        "Relationships: Produced during Prepared Data Builder resolution; referenced by Prepared Data Envelope and later read-only consumers; preserves source/capture lineage without acquiring source or downstream decision ownership.",
+        "Lifecycle: active_k06_contract",
+        "Semantic decisions: M03-K05-K06-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: FieldResolutionReceipt; canonical field-resolution receipt.",
+        "Human disallowed or misleading use: Final value without candidate lineage; receipt selected by caller order; latest non-null source treated as authority; unresolved mandatory conflict represented as a valid value."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m03",
+      "canonical_id": "m03.prepared_data_builder",
+      "canonical_slug": "prepared_data_builder",
+      "canonical_label": "Prepared Data Builder",
+      "category": "authority_surface",
+      "stage_owner": "preparation",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.1",
+      "allowed_aliases": [
+        "PreparedDataBuilder",
+        "prepared authority builder"
+      ],
+      "disallowed_phrases": [
+        "prepared data builder used as provider client",
+        "prepared data builder used as calendar writer",
+        "prepared data builder used as generic mapping merger",
+        "prepared data builder used as cognition or risk engine",
+        "prepared data builder claiming packet capital execution lifecycle transaction or replay authority"
+      ],
+      "notes": [
+        "Definition: Deterministic, side-effect-free M03 service that validates admitted M01/M02 inputs, executes explicit field-resolution and derivation law, and emits one Prepared Data Envelope or explicit non-emission failure.",
+        "Scope: M03 K05/K06 owner service",
+        "Semantic owner: M03 preparation authority",
+        "Relationships: Consumes immutable source/capture and calendar contracts; produces Field Resolution Receipts, derivation evidence and one Prepared Data Envelope; has no provider-fetch, state-mutation or downstream decision authority.",
+        "Lifecycle: active_k05_k06_service",
+        "Semantic decisions: M03-K05-K06-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: PreparedDataBuilder; prepared authority builder.",
+        "Human disallowed or misleading use: Provider client; calendar writer; generic mapping merger; cognition or risk engine; packet, capital, execution, lifecycle, transaction or replay owner."
+      ]
     },
     {
       "namespace": "global",

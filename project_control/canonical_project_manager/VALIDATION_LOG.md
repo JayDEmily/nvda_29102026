@@ -1539,3 +1539,32 @@ the exact bounded M03 public proposition is accepted.
 ### M02 evidence-format correction
 
 Staged-range validation found pytest-generated trailing spaces/tabs in raw M02 validation transcripts. Only trailing spaces/tabs were removed; test names, failure text, counts and outcomes were unchanged.
+
+## 2026-07-31 — M03 K05/K06 C-NORM acceptance
+
+### Disposition
+
+`PASS:C-NORM:M03_K05_K06_PREPARED_DATA_AUTHORITY`
+
+The M03 public proposition is now closed by numbered authority. Runtime ownership
+section 7.10 defines the exact K05/K06 owner, admitted M01/M02 input boundary,
+field-candidate and explicit policy law, typed prepared envelope, derivation
+receipts, fingerprints, lawful degradation and foreign-authority closure.
+Blueprint section 11.10.3.4 requires one canonical public package and narrows
+legacy preparation mappings to compatibility/serialisation roles.
+
+| Check | Result |
+|---|---|
+| Atlas M03/K05/K06 scoped rows | PASS |
+| Human registry/generated projection | PASS — 159 entries; `m03` present |
+| M03 vocabulary audit/stamp | PASS — zero unresolved candidates; stamp advanced after clean audit |
+| `git diff --check` | PASS |
+| Production/test/runtime configuration mutation | none |
+
+Concise evidence and the full-read manifest are under
+`project_control/canonical_project_manager/modules/M03/validation/m03_k05_k06_v1/`.
+
+### Next action
+
+Open M03 K05/K06 `C-PROOF`. Gate D remains closed until the smallest truthful
+public-seam proof passes.

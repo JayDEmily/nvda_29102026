@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M02 K04 financial-calendar authority |
-| Current active slice | M03 preparation delivery; C-NORM currently open |
-| Production implementation | closed for M03 pending C-NORM and C-PROOF |
+| Current active slice | M03 K05/K06 preparation delivery; C-NORM accepted and C-PROOF open |
+| Production implementation | closed for M03 pending C-PROOF |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -95,7 +95,7 @@ required before implementation.
 
 ## Immediate next action
 
-Open M03 preparation `C-NORM`. Inventory its accepted Atlas and numbered
-obligations, define the bounded typed prepared-envelope and field-resolution
-public seam, and keep M03 proof and production mutation closed until that
-proposition is accepted.
+Open the minimum M03 K05/K06 `C-PROOF`. Prove the typed envelope, explicit
+field-resolution receipt, derivation-lineage and fail-closed boundaries, then
+continue directly to bounded Gate D if the exact production-facing cases remain
+red only because the canonical M03 package is absent.

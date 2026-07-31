@@ -232,13 +232,13 @@ operational surfaces are bounded adapters rather than competing owners.
 
 ## 8. Immediate work
 
-Open bounded M03 `C-NORM`:
+M03 `C-NORM` is accepted as `M03-K05-K06-NORMATIVE-AUTHORITY-V1`. Open bounded M03 `C-PROOF`:
 
-1. inventory the accepted Atlas and numbered-authority obligations owned by M03;
-2. distinguish typed prepared truth and field-resolution evidence from M01 source truth, M02 calendar truth and M05/M06 decision authority;
-3. define one canonical M03 public seam, exact identity/version/time/fingerprint and derivation-lineage law, and lawful missing/conflict behaviour;
-4. admit only the vocabulary required by that bounded seam;
-5. leave M03 tests and production code closed until the normative proposition is accepted.
+1. admit the smallest K05/K06 public-seam proof for typed envelope identity/version/time/fingerprint law;
+2. prove equal-candidate coalescence, mandatory unresolved-conflict failure and explicit owner/fallback selection;
+3. prove material derivation version/input provenance and deterministic semantic fingerprints;
+4. kill false-positive implementations based on untagged mappings, caller order, silent overwrite, fabricated capture identity or foreign decision authority;
+5. keep M03 production code closed until the proof is accepted, then continue directly to the smallest owner-local Gate D implementation.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 
