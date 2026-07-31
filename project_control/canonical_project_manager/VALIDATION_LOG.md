@@ -1624,3 +1624,21 @@ failing nodes exist. Evidence is under
 
 Open M05 K08/K09 serial-cognition `C-NORM`. Proof and production mutation remain
 closed until its exact public proposition is accepted.
+
+## 2026-07-31 — M05 K08/K09 fast-track C-PROOF acceptance
+
+### Outcome
+
+`PASS:C-PROOF:GATE_D_OPEN:M05_K08_K09_SERIAL_COGNITION_AUTHORITY`
+
+### Known true
+
+- Thirteen reference and false-positive cases pass.
+- Seven named mutants are killed: caller order, skipped stage, partial success, fabricated identity, dropped M07 lineage, empty M08 authority and foreign-authority leakage.
+- Seven production-facing cases remain exact red only because the canonical M05 package is absent.
+- Vocabulary parity passes 4/4 with namespace `m05`; the M05 synonym audit is clean across 32 files.
+- No production source changed during C-PROOF.
+
+### Next gate
+
+Execute the bounded M05 Gate D implementation named by the exact-red proof.

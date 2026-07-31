@@ -1041,3 +1041,24 @@ proof_blocks:
       - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m05_k08_k09_serial_cognition_contract
+    tier: Tier A
+    lifecycle: admitted_current_mvp_c_proof_expected_red
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+    owns:
+      - tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+      - tests/support/m05_k08_k09_contract_harness.py
+      - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - project_control/canonical_project_manager/modules/M05/M05_AUTHORITY_WORKER_RECORD_V1.md
+      - project_control/canonical_project_manager/modules/M05/validation/m05_k08_k09_v1/C_PROOF_VALIDATION_SUMMARY.md
+      - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - data/vocabulary/vocabulary_touch_stamp.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

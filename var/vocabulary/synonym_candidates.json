@@ -29,9 +29,9 @@
     "tests/tier_a/serial_recommendation",
     "tests/tier_b/serial_boundaries"
   ],
-  "scanned_file_count": 30,
-  "vocabulary_touched": false,
-  "fingerprint": "76e0152f70cc42e1998078f844fa346c3d005a257fd70c3d0f81f6e9451d4e26",
+  "scanned_file_count": 32,
+  "vocabulary_touched": true,
+  "fingerprint": "0e49512df0d77778ab8d80bf5e8b4578201f3393fde482c0fb6c91011f401d65",
   "resolved_occurrence_count": 75,
   "candidates": [],
   "candidate_classifications": []

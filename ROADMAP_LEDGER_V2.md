@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M03 K05/K06 prepared-data authority |
-| Current active slice | M05 K08/K09 serial-cognition proof admission |
-| Production implementation | M05 closed until K08/K09 C-PROOF passes |
+| Current active slice | M05 K08/K09 bounded Gate D implementation |
+| Production implementation | M05 open only for the exact seven expected-red K08/K09 cases |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -107,8 +107,4 @@ required before implementation.
 
 ## Immediate next action
 
-Open M05 K08/K09 serial-cognition `C-NORM`. Close one common stage-context
-contract, narrow stage-specific carriers, six-stage ordering and final serial
-candidate lineage without importing M06 parallel-risk, M09 capital or execution
-authority. M05 proof and production mutation remain closed until that exact
-proposition is accepted.
+Implement the bounded M05 K08/K09 Gate D slice required by the admitted proof. Resolve the exact seven expected-red public-seam cases without importing M06 parallel-risk, M09 capital or downstream execution/lifecycle authority.

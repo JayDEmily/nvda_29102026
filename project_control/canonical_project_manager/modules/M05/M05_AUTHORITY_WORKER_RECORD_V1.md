@@ -7,9 +7,9 @@
 - Contract boundaries: `K08 StageContext`; `K09 SerialCandidate`
 - Requirements: `N-05; C-013; C-025; C-027; C-031; C-033; C-034`
 - Source checkpoint: `5fe5f4459d8d20f8e9ddcc69f9bcab9220596af5`
-- Active gate: `C-PROOF`
-- Checkpoint state: `C_NORM_ACCEPTED`
-- Gate D: `CLOSED`
+- Active gate: `Gate D`
+- Checkpoint state: `C_PROOF_ACCEPTED`
+- Gate D: `OPEN`
 
 ## Question
 
@@ -66,6 +66,22 @@ Concise evidence and the current-target read manifest are under `validation/m05_
 
 C-PROOF is open for the smallest truthful K08/K09 family. It must prove exact stage ordering and dependency closure, immutable common context, narrow tagged carriers, complete output/candidate lineage, lawful stand-down, rejection of partial or fabricated runs, deterministic fingerprints and foreign-authority closure. Gate D remains closed until that proof is accepted and its production-facing assertions are exact red against the absent canonical M05 package.
 
+## 2026-07-31 fast-track C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M05_K08_K09_SERIAL_COGNITION_AUTHORITY`
+
+The minimum truthful K08/K09 proof is admitted:
+
+- 13 reference and false-positive cases pass;
+- seven explicit mutants are killed: caller order, skipped stage, partial success, fabricated identity, dropped M07 lineage, empty M08 authority and foreign-authority leakage;
+- vocabulary builder parity passes with the exact `m05` namespace and five canonical identities;
+- the M05 namespace audit remains clean with zero unresolved candidates;
+- seven production-facing assertions remain exact red only because the canonical M05 package does not yet exist.
+
+No production source changed during C-PROOF. Gate D is open only for the bounded K08/K09 implementation required to resolve those seven exact-red cases without weakening the reference or mutant proof.
+
 ## Next action
 
-Admit the bounded M05 K08/K09 proof family and update only the required proof registry/manifest surfaces. Do not mutate M05 production code until the proof is accepted.
+Implement the canonical M05 K08/K09 contracts and deterministic serial runner. Keep M06 parallel-risk and M09/downstream authority closed.

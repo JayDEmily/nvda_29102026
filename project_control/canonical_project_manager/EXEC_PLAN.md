@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_C_PROOF`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_GATE_D`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -239,20 +239,20 @@ prepared-data owners.
 
 ### Queued
 
-- M05 serial cognition: K08/K09 C-NORM accepted; admit the minimum exact proof before production code.
+- M05 serial cognition: K08/K09 C-NORM and C-PROOF accepted; bounded Gate D is open for the exact seven expected-red cases.
 - M06 parallel risk follows independently after the active M05 normative slice unless shared-file overlap requires serial integration.
 
 ## 8. Immediate work
 
-Open M05 K08/K09 `C-PROOF` as one bounded serial-cognition proof family:
+Implement M05 K08/K09 Gate D as one bounded serial-cognition slice:
 
-1. prove one immutable StageContext and six exact tagged StageInput/StageOutput pairs;
-2. prove the governed stage order and reject skipped, duplicated, reordered or partial runs;
-3. prove formed, stand-down, withheld and rejected results without fabricated identity, time or owner authority;
-4. prove complete M03/M04/M07/M08 lineage and deterministic SerialCandidate meaning;
-5. keep production code and M06/M09/downstream authority closed until the exact production-facing assertions are admitted and red.
+1. create the frozen `StageContext`, `StageInput`, `StageOutput` and `SerialCandidate` public contracts;
+2. create the deterministic `SerialRunner` with the exact six-stage order and dependency graph;
+3. revalidate copied/forged public models at the runner boundary;
+4. preserve lawful stand-down/withheld/rejected outcomes and complete M03/M04/M07/M08 lineage;
+5. keep M06 parallel-risk, M09 capital and downstream broker/lifecycle mutation authority closed.
 
-Do not recreate the retired MLC sequence or create another roadmap.
+Resolve the seven exact-red production-facing assertions without weakening the admitted reference or mutant proof.
 
 ## 9. Programme sequence
 

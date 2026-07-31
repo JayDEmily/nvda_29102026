@@ -3715,3 +3715,26 @@ fast_track_module_local_admissions:
   forbidden_carry_forward: Untagged mappings, caller or container order, silent overwrite, missing candidate lineage, fabricated capture identity, absent derivation inputs or versions, forged fingerprints, hidden live state and preparation claims of candidate, risk, capital, execution, lifecycle, transaction or replay authority must not satisfy M03.
   notes: >-
     Twenty-five focused cases pass: twelve reference/false-positive cases and thirteen production-facing cases covering the canonical contracts, complete receipt evidence, deterministic order independence, explicit policy and temporal law, tagged payload closure, copied-authority revalidation, runtime-lineage carriage, bounded legacy adaptation, numeric exact-equivalence and authoritative-owner conflict closure.
+
+- test_family_id: m05_k08_k09_serial_cognition_contract
+  native_status: admitted_tier_a_expected_red
+  bounded_family: serial_cognition_stage_context_and_candidate
+  native_test_path: tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+  migration_status: module_local_c_proof_accepted_gate_d_open
+  normative_basis:
+  - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M05/M05_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m05_k08_k09_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: The canonical nvda_desk.m05_serial_cognition package is absent at C-PROOF; existing StageInputBundle, serial_spine_contract, cognition ingress, stage-service and DeskRuntimeOrchestrator surfaces are observed compatibility candidates and do not define or override K08/K09.
+  native_reauthor_required: true
+  admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for immutable common-context lineage, exact six-stage ordering and dependencies, narrow tagged carriers, explicit formed/stand-down/withheld/rejected results, complete M03/M04/M07/M08 lineage, deterministic candidate meaning and closed foreign authority.
+  forbidden_carry_forward: Caller order, skipped or duplicate stages, partial mappings presented as success, generated identity or wall-clock authority, dropped modifier lineage, empty eligibility authority, generic carrier payloads, hidden inventory reads and serial claims of parallel-risk, capital, broker, position, lifecycle, transaction or replay authority must not satisfy M05.
+  notes: Thirteen reference and false-positive cases pass, including seven named mutants. Seven production-facing assertions are exact red only because the canonical M05 package does not yet exist; Gate D remains bounded to resolving those assertions without weakening the reference proof.

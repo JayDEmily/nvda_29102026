@@ -42,15 +42,17 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == native_build_document().to_dict()
 
     assert committed["schema_version"] == "v2_namespaced"
-    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m07", "m08"}
+    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m07", "m08"}
     assert committed["namespaces"]["m02"]["imports"] == ["global"]
     assert committed["namespaces"]["m03"]["imports"] == ["global"]
     assert committed["namespaces"]["m04"]["imports"] == ["global"]
+    assert committed["namespaces"]["m05"]["imports"] == ["global", "m03", "m04", "m07", "m08"]
     assert committed["namespaces"]["m07"]["imports"] == ["global"]
     assert committed["namespaces"]["m08"]["imports"] == ["global"]
     assert "config" not in committed["namespaces"]["m02"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m03"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m04"]["scan_paths"]
+    assert "config" not in committed["namespaces"]["m05"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m07"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m08"]["scan_paths"]
 
@@ -89,6 +91,18 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m04.replay_comparison_packet",
         "m04.diagnostic_packet",
         "m04.rejection_packet",
+    }
+
+    m05_entries = [
+        entry for entry in committed["entries"] if entry["namespace"] == "m05"
+    ]
+    assert len(m05_entries) == 5
+    assert {entry["canonical_id"] for entry in m05_entries} == {
+        "m05.stage_context",
+        "m05.stage_input",
+        "m05.stage_output",
+        "m05.serial_candidate",
+        "m05.serial_runner",
     }
 
     m07_entries = [
