@@ -8,9 +8,9 @@
 | Branch | `work/gate-c-evidence-economy-m03-continuation-v1` |
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M03 K05/K06 prepared-data authority |
-| Current active slice | M05 K08/K09 bounded Gate D implementation |
-| Production implementation | M05 open only for the exact seven expected-red K08/K09 cases |
+| Latest accepted implementation slice | M05 K08/K09 serial-cognition authority |
+| Current active slice | paused after accepted M05 K08/K09 Gate D |
+| Production implementation | M05 bounded K08/K09 implementation accepted; M06 not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -48,6 +48,7 @@ validation.
 | M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 23 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M02 financial calendar | passed — `docs/07.1...` section 7.9 | passed — 33 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
 | M03 prepared data / field resolution | passed — `docs/07.1...` section 7.10 | passed — 25 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
+| M05 serial cognition | passed — `docs/07.1...` section 7.11 | passed — 32 focused cases; seven mutants killed | `GATE_D_ACCEPTED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -101,10 +102,22 @@ in non-vocabulary and vocabulary partitions for the exact node comparison.
 Ruff and Black were unavailable because the locked modules are not installed;
 no substitute was used.
 
+M05 K08/K09 Gate D acceptance records 32/32 focused cases, proof-manifest
+integrity at 59/59 and the proof executor at 21/21. Tier A moved from 1,457
+passed / 265 failed to 1,476 passed / 258 failed: the seven formerly
+expected-red K08/K09 nodes resolved, 12 direct integrity cases were added and
+zero new failing nodes appeared. Tier B passed 49/49 in two explicit
+partitions; the combined route did not terminate after partial progress and is
+recorded as a suite-order warning. The M05 namespace is clean across 35 scoped
+files and 81 governed occurrences. Ruff and Black were unavailable because the
+locked modules are not installed; no substitute was used.
+
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
 required before implementation.
 
 ## Immediate next action
 
-Implement the bounded M05 K08/K09 Gate D slice required by the admitted proof. Resolve the exact seven expected-red public-seam cases without importing M06 parallel-risk, M09 capital or downstream execution/lifecycle authority.
+Pause at the user-requested accepted M05 checkpoint and publish the clean
+full-history archive. On resumption, open M06 parallel-risk `C-NORM`; M09
+capital and downstream execution/lifecycle authority remain closed.

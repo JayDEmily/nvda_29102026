@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_GATE_D`
+**Status:** `PAUSED:AFTER_M05_K08_K09_GATE_D_USER_CHECKPOINT`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -202,6 +202,11 @@ command route or comparability is stale or Unknown.
   production cases and overlapping C-008/C-011/C-012 assertions are green,
   copied authority is revalidated, and the exact Tier A comparison contains
   zero new failing nodes.
+- M05 K08/K09 satisfies C-NORM, C-PROOF and bounded Gate D: 32 focused
+  cases pass, all seven named mutants remain killed, the seven expected-red
+  production cases are green, bounded carrier facts and exact input/output
+  lineage are enforced, terminal binding payloads fail closed, and the exact
+  Tier A comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -237,28 +242,30 @@ meaning; it is immutable, deterministic and side-effect-free, and its legacy
 snapshot/context mappings are bounded compatibility views rather than competing
 prepared-data owners.
 
+M05 satisfies `C-NORM`, `C-PROOF` and bounded K08/K09 Gate D. The accepted
+package owns common stage context, narrow owner-issued carrier facts, exact
+six-stage coordination and serial-candidate lineage; it is immutable,
+deterministic and side-effect-free, and it does not acquire parallel-risk,
+capital, broker, portfolio or lifecycle-mutation authority.
+
 ### Queued
 
-- M05 serial cognition: K08/K09 C-NORM and C-PROOF accepted; bounded Gate D is open for the exact seven expected-red cases.
-- M06 parallel risk follows independently after the active M05 normative slice unless shared-file overlap requires serial integration.
+- M06 parallel risk is the next lawful module unit after the user-requested M05 checkpoint.
+- M09 capital remains closed until both M05 and M06 are accepted.
 
 ## 8. Immediate work
 
-Implement M05 K08/K09 Gate D as one bounded serial-cognition slice:
+Pause at the accepted M05 K08/K09 Gate D checkpoint and publish one clean
+full-history archive. Do not begin M06 in this checkpoint.
 
-1. create the frozen `StageContext`, `StageInput`, `StageOutput` and `SerialCandidate` public contracts;
-2. create the deterministic `SerialRunner` with the exact six-stage order and dependency graph;
-3. revalidate copied/forged public models at the runner boundary;
-4. preserve lawful stand-down/withheld/rejected outcomes and complete M03/M04/M07/M08 lineage;
-5. keep M06 parallel-risk, M09 capital and downstream broker/lifecycle mutation authority closed.
-
-Resolve the seven exact-red production-facing assertions without weakening the admitted reference or mutant proof.
+On resumption, open M06 parallel-risk `C-NORM` as one bounded semantic unit.
+M09 capital and downstream broker/lifecycle mutation authority remain closed.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M05 then M06, with either able to proceed independently after its own accepted boundary;
+1. M06 parallel risk;
 2. M09, M10, M11 and M12;
 3. M00 final composition;
 4. final alpha consolidation.

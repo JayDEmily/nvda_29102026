@@ -714,8 +714,98 @@ def production_context_payload(context: ContextCase | None = None) -> dict[str, 
     return asdict(item)
 
 
+def _production_carrier_fact_payload(
+    *,
+    fact_id: str,
+    owner_id: str,
+    contract_version: str,
+    value: Any,
+) -> dict[str, Any]:
+    payload = {
+        "fact_id": fact_id,
+        "owner_id": owner_id,
+        "contract_version": contract_version,
+        "value": value,
+    }
+    payload["semantic_fingerprint"] = fingerprint(payload)
+    return payload
+
+
 def production_stage_input_payload(stage_input: StageInputCase) -> dict[str, Any]:
-    return asdict(stage_input)
+    facts: dict[str, tuple[dict[str, Any], ...]] = {
+        "temporal": (
+            _production_carrier_fact_payload(
+                fact_id="effective_at_utc",
+                owner_id="m03",
+                contract_version="m03.prepared.1.0.0",
+                value=_EFFECTIVE_AT,
+            ),
+        ),
+        "regime": (
+            _production_carrier_fact_payload(
+                fact_id="vix_level",
+                owner_id="m03",
+                contract_version="m03.prepared.1.0.0",
+                value=18.5,
+            ),
+        ),
+        "options_flow": (
+            _production_carrier_fact_payload(
+                fact_id="spot_price",
+                owner_id="m03",
+                contract_version="m03.prepared.1.0.0",
+                value=101.0,
+            ),
+        ),
+        "posture": (
+            _production_carrier_fact_payload(
+                fact_id="modifier_decision_status",
+                owner_id="m07",
+                contract_version="m07.modifier-decision.1.0.0",
+                value="applied",
+            ),
+        ),
+        "eligibility": (
+            _production_carrier_fact_payload(
+                fact_id="eligibility_status",
+                owner_id="m08",
+                contract_version="m08.eligibility-decision.1.0.0",
+                value="eligible",
+            ),
+            _production_carrier_fact_payload(
+                fact_id="eligibility_lead_id",
+                owner_id="m08",
+                contract_version="m08.eligibility-decision.1.0.0",
+                value="playbook.breakout",
+            ),
+            _production_carrier_fact_payload(
+                fact_id="ordered_eligible_candidate_ids",
+                owner_id="m08",
+                contract_version="m08.eligibility-decision.1.0.0",
+                value=("playbook.breakout",),
+            ),
+        ),
+        "execution": (
+            _production_carrier_fact_payload(
+                fact_id="eligibility_lead_id",
+                owner_id="m08",
+                contract_version="m08.eligibility-decision.1.0.0",
+                value="playbook.breakout",
+            ),
+            _production_carrier_fact_payload(
+                fact_id="expression_policy_ref",
+                owner_id="m08",
+                contract_version="m08.eligibility-decision.1.0.0",
+                value="expression-policy.1.0.0",
+            ),
+        ),
+    }
+    payload = asdict(stage_input)
+    payload["carrier_facts"] = facts[stage_input.stage]
+    material = dict(payload)
+    material.pop("carrier_fingerprint")
+    payload["carrier_fingerprint"] = fingerprint(material)
+    return payload
 
 
 def production_output_payload(
@@ -725,14 +815,44 @@ def production_output_payload(
     status: str = "complete",
     reasons: tuple[str, ...] = (),
 ) -> dict[str, Any]:
-    case_input = StageInputCase(**stage_input.model_dump(mode="python"))
+    stage_input_payload = stage_input.model_dump(mode="python")
+    case_input = StageInputCase(
+        **{
+            field_name: stage_input_payload[field_name]
+            for field_name in StageInputCase.__dataclass_fields__
+        }
+    )
     case_dependencies = tuple(
-        StageOutputCase(**item.model_dump(mode="python")) for item in dependencies
+        StageOutputCase(
+            **{
+                field_name: item.model_dump(mode="python")[field_name]
+                for field_name in StageOutputCase.__dataclass_fields__
+            }
+        )
+        for item in dependencies
     )
     case = FixedHandler(case_input.stage, status=status, reasons=reasons)(
         case_input, case_dependencies
     )
-    return asdict(case)
+    payload = asdict(case)
+    if case_input.stage == "eligibility" and status == "complete":
+        payload["result_refs"] = (
+            ("eligibility_status", "eligible"),
+            ("eligibility_lead_id", "playbook.breakout"),
+            ("eligible_candidate.000", "playbook.breakout"),
+        )
+    if case_input.stage == "execution" and status != "complete":
+        payload["result_refs"] = ()
+    payload["schema_version"] = "1.0.0"
+    payload["input_carrier_id"] = stage_input.carrier_id
+    payload["input_carrier_fingerprint"] = stage_input.carrier_fingerprint
+    material = dict(payload)
+    material.pop("output_id")
+    material.pop("semantic_fingerprint")
+    output_fingerprint = fingerprint(material)
+    payload["semantic_fingerprint"] = output_fingerprint
+    payload["output_id"] = f"stage.{case_input.stage}.{output_fingerprint[:16]}"
+    return payload
 
 
 def production_handlers(

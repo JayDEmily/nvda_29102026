@@ -7,9 +7,9 @@
 - Contract boundaries: `K08 StageContext`; `K09 SerialCandidate`
 - Requirements: `N-05; C-013; C-025; C-027; C-031; C-033; C-034`
 - Source checkpoint: `5fe5f4459d8d20f8e9ddcc69f9bcab9220596af5`
-- Active gate: `Gate D`
-- Checkpoint state: `C_PROOF_ACCEPTED`
-- Gate D: `OPEN`
+- Active gate: `COMPLETE`
+- Checkpoint state: `GATE_D_ACCEPTED_USER_PAUSE`
+- Gate D: `CLOSED — ACCEPTED`
 
 ## Question
 
@@ -82,6 +82,39 @@ The minimum truthful K08/K09 proof is admitted:
 
 No production source changed during C-PROOF. Gate D is open only for the bounded K08/K09 implementation required to resolve those seven exact-red cases without weakening the reference or mutant proof.
 
+## 2026-07-31 fast-track Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M05_K08_K09_SERIAL_COGNITION_AUTHORITY`
+
+The canonical `nvda_desk.m05_serial_cognition` package now exposes frozen
+`StageContext`, `StageInput`, `StageOutput` and `SerialCandidate` contracts and
+one deterministic `SerialRunner`. The accepted implementation:
+
+- executes exactly temporal, regime, options_flow, posture, eligibility and execution;
+- gives handlers bounded owner-issued carrier facts rather than hidden state or an unbounded prepared mapping;
+- binds each output to its exact context, input carrier, ordered dependencies and consumed authority;
+- preserves M07 modifier and M08 ordered eligibility/lead lineage without reinterpreting either owner;
+- distinguishes formed, stand_down, withheld and rejected results;
+- rejects terminal outputs containing candidate-binding eligibility, expression or lifecycle payloads; and
+- acquires no M06 parallel-risk, capital, broker/order, position/inventory, lifecycle-mutation, transaction or replay authority.
+
+### Evidence
+
+- focused K08/K09 proof: 32/32 passed, including seven named mutants, seven formerly expected-red production cases and 12 added Gate D integrity cases;
+- proof block and manifests: 32/32 and 59/59 passed;
+- proof-executor contract: 21/21 passed;
+- Tier B: 49/49 passed in two partitions; the combined route did not terminate after partial progress and is recorded as a suite-order warning;
+- vocabulary parity: 4/4 passed; M05 audit clean across 35 scoped files with 81 governed occurrence dispositions;
+- affected comparison: 36 passed/146 failed at C-PROOF versus 55/139 now, seven resolved and zero new failing nodes;
+- Tier A comparison: 1,457 passed/265 failed at C-PROOF versus 1,476/258 now, seven resolved and zero new failing nodes;
+- static compilation and `git diff --check`: passed;
+- Ruff and Black: unavailable because the locked modules are not installed; no substitute was used.
+
+Exact commands and comparison evidence are recorded in
+`validation/m05_k08_k09_v1/GATE_D_VALIDATION_SUMMARY.md`.
+
 ## Next action
 
-Implement the canonical M05 K08/K09 contracts and deterministic serial runner. Keep M06 parallel-risk and M09/downstream authority closed.
+Pause at the user-requested M05 checkpoint. On resumption, open M06 parallel-risk `C-NORM`. M09 capital and downstream authority remain closed.

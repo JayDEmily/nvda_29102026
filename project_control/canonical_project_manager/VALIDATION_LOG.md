@@ -1642,3 +1642,41 @@ closed until its exact public proposition is accepted.
 ### Next gate
 
 Execute the bounded M05 Gate D implementation named by the exact-red proof.
+
+## 2026-07-31 — M05 K08/K09 Gate D acceptance and user checkpoint
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M05_K08_K09_SERIAL_COGNITION_AUTHORITY`
+
+The canonical M05 package now provides frozen common-context, narrow stage-input,
+stage-output and serial-candidate contracts plus one deterministic exact-order
+runner. Stage handlers receive bounded owner-issued facts; output lineage binds
+the exact input carrier and dependencies; M07 modifier and M08 ordered
+eligibility/lead authority are preserved without reinterpretation; and terminal
+results cannot hide candidate-binding eligibility, expression or lifecycle
+payloads.
+
+| Check | Result |
+|---|---|
+| Focused K08/K09 proof | PASS — 32 / 32 |
+| Former expected-red public seam | PASS — 7 / 7 |
+| Added Gate D integrity cases | PASS — 12 |
+| Proof block / all manifests | PASS — 32 / 32; 59 / 59 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier B admitted set | PASS — 49 / 49 in two partitions; combined route did not terminate after partial progress |
+| Vocabulary parity / M05 audit | PASS — 4 / 4; zero unresolved candidates across 35 scoped files and 81 governed occurrences |
+| Affected comparison | 36 passed / 146 failed → 55 / 139; seven resolved; zero new failing nodes |
+| Tier A comparison | 1,457 passed / 265 failed → 1,476 / 258; seven resolved; zero new failing nodes |
+| Static compilation | PASS |
+| Ruff / Black | UNAVAILABLE — locked modules not installed; no substitute used |
+
+The remaining 258 Tier A failures are unchanged outside M05. The full Tier A
+set was executed in non-vocabulary and vocabulary partitions. Exact commands and
+comparison evidence are under
+`project_control/canonical_project_manager/modules/M05/validation/m05_k08_k09_v1/`.
+
+### Next action
+
+Pause and publish the user-requested clean full-history M05 checkpoint. M06 has
+not started. On resumption, open M06 parallel-risk `C-NORM`.

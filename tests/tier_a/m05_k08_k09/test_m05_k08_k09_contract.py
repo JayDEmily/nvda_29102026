@@ -226,6 +226,7 @@ def test_production_exports_exact_frozen_public_contracts() -> None:
         "carrier_id",
         "carrier_contract_version",
         "carrier_schema_version",
+        "carrier_facts",
         "carrier_fingerprint",
         "authority_refs",
         "missing_state",
@@ -379,3 +380,334 @@ def test_production_candidate_fingerprint_binds_complete_lineage_and_closed_auth
     forged = candidate.model_copy(update={"m07_authority_refs": ()})
     with pytest.raises(ValueError, match="candidate_fingerprint_mismatch"):
         api["SerialCandidate"].model_validate(forged.model_dump(mode="python"))
+
+
+def _refingerprint_stage_input(
+    api: dict[str, Any],
+    stage_input: Any,
+    **updates: Any,
+):
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    payload = stage_input.model_dump(mode="python")
+    payload.update(updates)
+    payload["carrier_facts"] = tuple(
+        item.model_dump(mode="python") if hasattr(item, "model_dump") else item
+        for item in payload["carrier_facts"]
+    )
+    material = dict(payload)
+    material.pop("carrier_fingerprint")
+    payload["carrier_fingerprint"] = fingerprint(material)
+    return api["StageInput"].model_validate(payload)
+
+
+def _refingerprint_output(api: dict[str, Any], output: Any, **updates: Any):
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    payload = output.model_dump(mode="python")
+    payload.update(updates)
+    material = dict(payload)
+    material.pop("output_id")
+    material.pop("semantic_fingerprint")
+    output_fingerprint = fingerprint(material)
+    payload["semantic_fingerprint"] = output_fingerprint
+    payload["output_id"] = f"stage.{payload['stage']}.{output_fingerprint[:16]}"
+    return api["StageOutput"].model_validate(payload)
+
+
+def _refingerprint_candidate(api: dict[str, Any], candidate: Any, **updates: Any):
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    payload = candidate.model_dump(mode="python")
+    payload.update(updates)
+    payload["stage_outputs"] = tuple(
+        item.model_dump(mode="python") if hasattr(item, "model_dump") else item
+        for item in payload["stage_outputs"]
+    )
+    material = dict(payload)
+    material.pop("candidate_id")
+    material.pop("semantic_fingerprint")
+    candidate_fingerprint = fingerprint(material)
+    payload["semantic_fingerprint"] = candidate_fingerprint
+    payload["candidate_id"] = (
+        f"serial.{candidate_fingerprint[:16]}" if payload["status"] == "formed" else None
+    )
+    return api["SerialCandidate"].model_validate(payload)
+
+
+def test_production_candidate_rejects_refingerprinted_nested_context_forgery() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    candidate = runner.run(context=context, stage_inputs=inputs)
+    forged_temporal = _refingerprint_output(
+        api,
+        candidate.stage_outputs[0],
+        context_id="context.forged",
+    )
+    outputs = (forged_temporal, *candidate.stage_outputs[1:])
+
+    with pytest.raises(ValueError, match="candidate_stage_context_lineage_mismatch"):
+        _refingerprint_candidate(api, candidate, stage_outputs=outputs)
+
+
+def test_production_candidate_rejects_refingerprinted_dependency_graph_forgery() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    candidate = runner.run(context=context, stage_inputs=inputs)
+    forged_temporal = _refingerprint_output(
+        api,
+        candidate.stage_outputs[0],
+        dependency_output_ids=("stage.regime.forged0000000",),
+        dependency_fingerprints=("9" * 64,),
+    )
+    outputs = (forged_temporal, *candidate.stage_outputs[1:])
+
+    with pytest.raises(ValueError, match="candidate_stage_dependency_lineage_mismatch"):
+        _refingerprint_candidate(api, candidate, stage_outputs=outputs)
+
+
+def test_production_candidate_rejects_refingerprinted_aggregated_authority_forgery() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    candidate = runner.run(context=context, stage_inputs=inputs)
+
+    with pytest.raises(ValueError, match="candidate_authority_lineage_mismatch"):
+        _refingerprint_candidate(
+            api,
+            candidate,
+            m07_authority_refs=(("m07", "forged.m07", "1.0.0", "9" * 64),),
+        )
+
+
+def test_production_terminal_candidate_rejects_refingerprinted_formed_payload() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api, terminal_stage="posture"),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    candidate = runner.run(context=context, stage_inputs=inputs)
+
+    with pytest.raises(ValueError, match="terminal_candidate_contains_formed_payload"):
+        _refingerprint_candidate(
+            api,
+            candidate,
+            expression_id="expression.forged",
+            expression_version="1.0.0",
+            expression_fingerprint="9" * 64,
+        )
+
+
+def test_production_runner_rejects_stage_input_foreign_owner_authority() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    forged = _refingerprint_stage_input(
+        api,
+        inputs[0],
+        authority_refs=(("m07", "forged.m07", "1.0.0", "9" * 64),),
+    )
+
+    with pytest.raises(ValueError, match="stage_input_foreign_authority_ref"):
+        runner.run(context=context, stage_inputs=(forged, *inputs[1:]))
+
+
+def test_production_context_rejects_refingerprinted_noncanonical_source_order() -> None:
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    api = production_api()
+    payload = production_context_payload(valid_context())
+    payload["source_capture_refs"] = tuple(reversed(payload["source_capture_refs"]))
+    material = dict(payload)
+    material.pop("semantic_fingerprint")
+    payload["semantic_fingerprint"] = fingerprint(material)
+
+    with pytest.raises(ValueError, match="source_capture_refs_not_canonical"):
+        api["StageContext"].model_validate(payload)
+
+
+def test_production_stage_input_carries_bounded_facts_and_binds_them_to_fingerprint() -> None:
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    temporal = next(item for item in inputs if item.stage == "temporal")
+    fact = temporal.carrier_facts[0]
+    fact_payload = fact.model_dump(mode="python")
+    fact_payload["value"] = datetime(2026, 7, 31, 9, 0, tzinfo=fact.value.tzinfo)
+    fact_material = dict(fact_payload)
+    fact_material.pop("semantic_fingerprint")
+    fact_payload["semantic_fingerprint"] = fingerprint(fact_material)
+    changed = _refingerprint_stage_input(
+        api,
+        temporal,
+        carrier_facts=(fact_payload,),
+    )
+
+    handlers = production_handlers(api)
+    normal = handlers["temporal"]
+
+    def fact_aware_handler(stage_input, dependencies):
+        output = normal(stage_input, dependencies)
+        value = next(item.value for item in stage_input.carrier_facts if item.fact_id == "effective_at_utc")
+        return _refingerprint_output(
+            api,
+            output,
+            result_refs=(("temporal_effective_at", value.isoformat()),),
+        )
+
+    handlers["temporal"] = fact_aware_handler
+    runner = api["SerialRunner"](
+        handlers=handlers,
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    first = runner.run(context=context, stage_inputs=inputs)
+    changed_inputs = tuple(changed if item.stage == "temporal" else item for item in inputs)
+    second = runner.run(context=context, stage_inputs=changed_inputs)
+
+    assert first.semantic_fingerprint != second.semantic_fingerprint
+    assert first.stage_outputs[0].input_carrier_fingerprint == temporal.carrier_fingerprint
+    assert second.stage_outputs[0].input_carrier_fingerprint == changed.carrier_fingerprint
+
+
+def test_production_stage_input_rejects_unadmitted_or_unbound_carrier_fact() -> None:
+    from tests.support.m05_k08_k09_contract_harness import fingerprint
+
+    api = production_api()
+    _, _, inputs = _production_context_and_inputs(api)
+    regime = next(item for item in inputs if item.stage == "regime")
+    fact_payload = regime.carrier_facts[0].model_dump(mode="python")
+    fact_payload["fact_id"] = "whole_prepared_payload"
+    fact_material = dict(fact_payload)
+    fact_material.pop("semantic_fingerprint")
+    fact_payload["semantic_fingerprint"] = fingerprint(fact_material)
+
+    with pytest.raises(ValueError, match="carrier_fact_not_admitted_for_stage"):
+        _refingerprint_stage_input(api, regime, carrier_facts=(fact_payload,))
+
+    forged = regime.model_copy(update={"carrier_facts": ()})
+    with pytest.raises(ValueError, match="carrier_facts_or_missing_state_required"):
+        api["StageInput"].model_validate(forged.model_dump(mode="python"))
+
+
+def test_production_runner_rejects_refingerprinted_output_input_carrier_forgery() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    handlers = production_handlers(api)
+    normal = handlers["regime"]
+
+    def forged_handler(stage_input, dependencies):
+        output = normal(stage_input, dependencies)
+        return _refingerprint_output(
+            api,
+            output,
+            input_carrier_id="carrier.regime.forged",
+            input_carrier_fingerprint="9" * 64,
+        )
+
+    handlers["regime"] = forged_handler
+    runner = api["SerialRunner"](
+        handlers=handlers,
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    with pytest.raises(ValueError, match="stage_output_input_carrier_lineage_mismatch"):
+        runner.run(context=context, stage_inputs=inputs)
+
+
+def test_production_candidate_binds_ordered_eligibility_and_lead() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+    candidate = runner.run(context=context, stage_inputs=inputs)
+
+    assert candidate.ordered_eligible_candidate_ids == ("playbook.breakout",)
+    assert candidate.eligibility_lead_id == "playbook.breakout"
+    with pytest.raises(ValueError, match="candidate_eligibility_lineage_mismatch"):
+        _refingerprint_candidate(
+            api,
+            candidate,
+            ordered_eligible_candidate_ids=("playbook.forged",),
+            eligibility_lead_id="playbook.forged",
+        )
+
+
+def test_production_runner_rejects_terminal_stage_binding_payload() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    handlers = production_handlers(
+        api,
+        terminal_stage="execution",
+        terminal_status="withheld",
+    )
+    normal = handlers["execution"]
+
+    def forged_handler(stage_input, dependencies):
+        output = normal(stage_input, dependencies)
+        return _refingerprint_output(
+            api,
+            output,
+            result_refs=(("expression_id", "expression.forged"),),
+        )
+
+    handlers["execution"] = forged_handler
+    runner = api["SerialRunner"](
+        handlers=handlers,
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="terminal_stage_output_contains_binding_payload",
+    ):
+        runner.run(context=context, stage_inputs=inputs)
+
+
+def test_production_execution_withheld_preserves_prior_eligibility_without_candidate() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    runner = api["SerialRunner"](
+        handlers=production_handlers(
+            api,
+            terminal_stage="execution",
+            terminal_status="withheld",
+        ),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    )
+
+    result = runner.run(context=context, stage_inputs=inputs)
+
+    assert result.status == "withheld"
+    assert result.failed_stage == "execution"
+    assert result.candidate_id is None
+    assert result.ordered_eligible_candidate_ids == ("playbook.breakout",)
+    assert result.eligibility_lead_id == "playbook.breakout"
+    assert result.expression_id is None
+    assert result.lifecycle_intent == ()
