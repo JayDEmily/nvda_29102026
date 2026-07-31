@@ -238,3 +238,58 @@ Closed:
 
 Exact evidence is retained under
 `raw_validation/fast_track_k13_c_proof_v1/`.
+
+
+## 2026-07-31 fast-track Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The canonical `nvda_desk.m08_playbook_catalogue` package now owns only the
+bounded section 7.8 public seam:
+
+- immutable `PlaybookDefinition` and `PlaybookCatalogue` authority;
+- deterministic, side-effect-free `EligibilityDecision` resolution;
+- exact rejected, posture-blocked, no-family, no-eligible and eligible states;
+- authority-owned priority and identity/version tie-break;
+- bounded lifecycle-intent carriage and closed foreign authority classes.
+
+Resolution revalidates copied catalogue, posture and context material before
+use, requires complete owner-issued required facts before a lawful stand-down,
+ignores caller and catalogue member order, binds every present material
+constraint fact into decision lineage, permits an explicit empty setup-variant
+identity only when both identity and version are empty, and produces a semantic
+fingerprint independent of the random decision occurrence identifier. Nested
+catalogue and decision metadata are frozen.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Focused K13 proof | PASS — 23 / 23 |
+| Reference/false-positive subset | PASS — 11 / 11; five named mutants killed |
+| Former production expected-red cases | PASS — 7 / 7 |
+| Direct integrity regressions | PASS — 5 / 5 |
+| Affected exact baseline comparison | current 173 passed / 5 failed versus baseline 161 / 12; zero new failing nodes, seven resolved, five common pre-existing failures |
+| Proof-block manifest | PASS — 56 / 56 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier A exact C-PROOF comparison | current 1,377 passed / 267 failed versus baseline 1,365 / 274; zero new failing nodes, seven resolved |
+| Tier B | PASS — 49 / 49 |
+| M08 vocabulary | PASS — zero unresolved candidates across 25 scoped files; stamp current |
+| Architecture, compile and diff checks | PASS |
+| Ruff | UNAVAILABLE — no installed locked Ruff module; no substitute used |
+
+The seven resolved Tier A nodes are exactly the seven K13 production-facing
+assertions admitted as expected red at C-PROOF. The five additional focused
+cases prove copied-authority revalidation and nested immutability,
+required-fact precedence before posture stand-down, member-order independence,
+optional material-fact lineage and lawful empty setup-variant identity. No
+legacy test, fixture, assertion, skip or xfail was weakened.
+
+The five common failures in the affected subset are unchanged baseline failures
+in `test_gate_c_orchestration_playbook_and_risk.py`; they are not introduced or
+masked by M08. Exact outputs and hashes are retained under
+`raw_validation/gate_d_k13_v1/`. M08 K13 is accepted only as an alpha-local,
+deterministic catalogue/eligibility seam. The next active unit is M02 K04
+`C-NORM`.

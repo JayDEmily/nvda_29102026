@@ -1,0 +1,4 @@
+branch=control/atlas-current-path-rebase-gate-c-continuation-v1
+gate_d_baseline_commit=c89074ff65b7fce11148913a82d061a03d78293a
+baseline_label=M08_K13_C_PROOF_ACCEPTED_GATE_D_OPEN
+worktree_state_before_gate_d=clean

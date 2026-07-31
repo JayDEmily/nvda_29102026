@@ -1,0 +1,8 @@
+target_package=src/nvda_desk/m08_playbook_catalogue
+package_files=__init__.py,contracts.py,resolver.py
+public_exports=EligibilityDecision,EligibilityResolver,PlaybookCatalogue,PlaybookDefinition
+prohibited_imports=0
+prohibited_hidden_state_or_io_calls=0
+runtime_dependencies=stdlib,pydantic
+external_mutation_paths=0
+architecture_boundary=PASS

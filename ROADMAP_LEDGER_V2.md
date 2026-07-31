@@ -8,9 +8,9 @@
 | Branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` |
 | Resumed source checkpoint | `c9122e9d732f01de5f08af4b366df255270b7d0f` |
 | Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
-| Latest accepted implementation slice | M07 K12 coefficient/modifier authority |
-| Current active slice | M08 K13 Gate D implementation |
-| Production implementation | open only for the bounded M08 K13 public seam |
+| Latest accepted implementation slice | M08 K13 playbook catalogue authority |
+| Current active slice | M02 K04 C-NORM |
+| Production implementation | closed for M02 until C-NORM and C-PROOF pass |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -30,7 +30,7 @@ Historical MLC records remain evidence. They are not mandatory future leaves.
 | M04 packet protocol / K07 | passed — `docs/09.1...` section 9.10 | passed — 271 admitted cases plus retained partial case | `GATE_D_ACCEPTED` |
 | M01 source admission | passed | passed — 18 focused public-seam cases | `GATE_D_ACCEPTED` |
 | M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
-| M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 11 reference/mutant cases; seven exact production assertions expected red | `GATE_D_ACTIVE` |
+| M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 23 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -57,14 +57,13 @@ Tier B remains 49/49. The M07 namespace is clean across 16 scoped files. Pinned
 Ruff was unavailable because the locked `openpyxl==3.1.5` wheel returned HTTP
 404 from the configured mirror; no unpinned substitute was used.
 
-M08 K13 C-NORM acceptance defines immutable catalogue/definition identity and
-version law, mandatory posture/context facts, exact rejection and lawful
-stand-down states, authority-owned ordering/tie-break, eligibility-lead meaning,
-decision fingerprinting and bounded lifecycle carriage. C-PROOF adds 11 passing
-reference/false-positive cases, kills five named mutants and leaves seven exact
-production assertions red only because the canonical package is absent.
-Vocabulary parity is 4/4, proof-block integrity is 56/56, the proof executor is
-21/21 and the M08 namespace is clean across 22 scoped files.
+M08 K13 Gate D acceptance records 23/23 focused cases, proof-manifest
+integrity at 56/56 and the proof executor at 21/21. Tier A moved from 1,365
+passed / 274 failed to 1,377 passed / 267 failed: the seven formerly
+expected-red K13 nodes resolved, five direct integrity regressions were added
+and zero new failing nodes appeared. Tier B remains 49/49. The M08 namespace
+is clean across 25 scoped files. Ruff was unavailable because no locked module
+is installed; no substitute was used.
 
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
@@ -72,13 +71,6 @@ required before implementation.
 
 ## Immediate next action
 
-Implement M08 K13 Gate D:
-
-1. create the canonical immutable public contracts and deterministic resolver;
-2. make the seven production-facing K13 assertions green without changing their meaning;
-3. retain caller/container-order independence and exact identity/version tie-break;
-4. preserve valid stand-down versus rejected authority and deterministic lineage;
-5. run affected compatibility and full shadow comparisons against the C-PROOF baseline.
-
-Later modules follow dependency readiness, not paperwork age or numeric `D-xxx`
-order.
+Open M02 K04 `C-NORM` for `FinancialCalendarSnapshot`, four-layer calendar
+facts, coalescence, supersession and runtime projection. No M02 proof or
+production mutation is authorised until the numbered proposition is complete.

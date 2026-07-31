@@ -1,0 +1,413 @@
+........................................................................ [ 41%]
+.......................................................................F [ 83%]
+FFF.F.............FFFFFFF....                                            [100%]
+=================================== FAILURES ===================================
+_ test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage _
+
+    def test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage() -> None:
+        with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint"
+        ):
+>           ParallelRiskLaneService().run_bootstrap(
+                stage_input_bundle=_bundle(),
+                input_packet_id="risk-input-1",
+                output_packet_id="risk-output-1",
+            )
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:37:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src/nvda_desk/services/parallel_risk_lane_service.py:89: in run_bootstrap
+    bootstrap_packet = self.build_bootstrap_input_packet(
+src/nvda_desk/services/parallel_risk_lane_service.py:55: in build_bootstrap_input_packet
+    return self._service.build_bootstrap_input_packet(
+src/nvda_desk/risk/parallel/evaluate.py:45: in build_bootstrap_input_packet
+    return build_parallel_risk_bootstrap_input_packet(
+src/nvda_desk/contracts/parallel_risk.py:799: in build_parallel_risk_bootstrap_input_packet
+    return build_dmp_v3_packet(
+src/nvda_desk/packets/dmp_packets.py:502: in build_dmp_v3_packet
+    return DmpPacketBuilder.build_dmp_v3_packet(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/packets/dmp_packets.py:60: in build_dmp_v3_packet
+    **build_dmp_v3_envelope_kwargs(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def build_dmp_v3_envelope_kwargs(
+        *,
+        packet_id: str,
+        dataschema: str,
+        data: Any,
+        packetrole: str,
+        module_id: str,
+        module_version: str | None = None,
+        module_instance_id: str | None = None,
+        grammar_role: str,
+        behaviour_class: str,
+        stage_name: str | None = None,
+        emitted_at: datetime | None = None,
+        source: str | None = None,
+        packet_type: str | None = None,
+        datacontenttype: str = "application/json",
+        traceid: str | None = None,
+        runid: str | None = None,
+        scenarioid: str | None = None,
+        parentids: list[str] | None = None,
+        dependencyids: list[str] | None = None,
+        derivedfrom: str | None = None,
+        replayref: str | None = None,
+        sourceartifactids: list[str] | None = None,
+        inputfingerprint: str | None = None,
+        source_artifact_validator: Callable[[str], bool] | None = None,
+        input_fingerprint_validator: Callable[[str], bool] | None = None,
+        conditional_lineage_fields: set[str] | None = None,
+        owner_check_validator: Callable[[str, dict[str, Any]], bool] | None = None,
+        optional_limitation_validator: Callable[[str], bool] | None = None,
+        degraded_consumer_restriction: str | None = None,
+        reviewtraceid: str | None = None,
+        replaytraceid: str | None = None,
+        decisiontraceid: str | None = None,
+        validation_violations: list[str] | None = None,
+        summary_headline: str | None = None,
+        summary_keyflags: list[str] | None = None,
+        summary_humanstate: str | None = None,
+        dmpextensions: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        """Return canonical DMPV3 envelope kwargs for one repo-owned payload."""
+
+        _require_owned_identifier(packet_id, "packet_id")
+        if packetrole not in K07_ADMITTED_PACKET_ROLES:
+>           raise ValueError(f"packetrole is not admitted by K07: {packetrole}")
+E           ValueError: packetrole is not admitted by K07: parallel_risk_bootstrap_input
+
+src/nvda_desk/contracts/packets.py:447: ValueError
+
+During handling of the above exception, another exception occurred:
+
+    def test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage() -> None:
+>       with pytest.raises(
+            ValueError, match="traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint"
+        ):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint'
+E         Actual message: 'packetrole is not admitted by K07: parallel_risk_bootstrap_input'
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:34: AssertionError
+_ test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global _
+
+    def test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global() -> None:
+        first = ParallelRiskLaneService()
+        second = ParallelRiskLaneService()
+        first.evaluate_risk_policy("policy-v1", candidate_id="candidate-1")
+
+        assert [item.decision_id for item in first.list_risk_decisions()] == ["policy-v1::candidate-1"]
+>       assert second.list_risk_decisions() == []
+E       AssertionError: assert [ParallelRisk...llowed=False)] == []
+E
+E         Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)
+E
+E         Full diff:
+E         - []
+E         + [
+E         +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),
+E         + ]
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:50: AssertionError
+_ test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them _
+
+    def test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them() -> None:
+>       receipt = DeskRuntimeOrchestrator().run_once(_bundle())
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:54:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+src/nvda_desk/runtime/orchestrator.py:107: in run_once
+    receipt = self._run_serial_bundle(bundle)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/runtime/orchestrator.py:151: in _run_serial_bundle
+    stage_packets = self._build_stage_packets(
+src/nvda_desk/runtime/orchestrator.py:211: in _build_stage_packets
+    packet = build_stage_packet(
+src/nvda_desk/packets/dmp_packets.py:514: in build_stage_packet
+    return DmpPacketBuilder.build_stage_packet(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+src/nvda_desk/packets/dmp_packets.py:208: in build_stage_packet
+    return cls.build_dmp_v3_packet(
+src/nvda_desk/packets/dmp_packets.py:60: in build_dmp_v3_packet
+    **build_dmp_v3_envelope_kwargs(
+src/nvda_desk/contracts/packets.py:450: in build_dmp_v3_envelope_kwargs
+    resolved_scenarioid = _require_owned_identifier(scenarioid, "scenarioid")
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+value = 'live', field_name = 'scenarioid'
+
+    def _require_owned_identifier(value: str | None, field_name: str) -> str:
+        if (
+            value is None
+            or not value
+            or value.strip() != value
+            or any(character.isspace() for character in value)
+            or value == "live"
+        ):
+>           raise ValueError(f"{field_name} must be a caller-owned governed identity")
+E           ValueError: scenarioid must be a caller-owned governed identity
+
+src/nvda_desk/contracts/packets.py:245: ValueError
+____ test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping ____
+
+    def test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping() -> None:
+>       with pytest.raises((ValueError, TypeError), match="stage|bundle|input|contract"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'TypeError'>)
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:63: Failed
+_ test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs _
+
+    def test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs() -> None:
+        signature_fields = set(DeskRuntimeOrchestrator.run_once.__annotations__)
+>       assert "candidate_family_ids" in signature_fields
+E       AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}
+
+tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py:96: AssertionError
+_____________ test_production_exports_exact_frozen_contract_models _____________
+
+    def test_production_exports_exact_frozen_contract_models() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:232:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____________ test_production_rejects_missing_catalogue_authority ______________
+
+    def test_production_rejects_missing_catalogue_authority() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:240:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+___________ test_production_preserves_three_lawful_stand_down_states ___________
+
+    def test_production_preserves_three_lawful_stand_down_states() -> None:
+        disabled = (valid_definition(enabled=False),)
+>       _, disabled_catalogue, disabled_resolver = _production_subjects(definitions=disabled)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:254:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+________ test_production_uses_authority_priority_and_identity_tie_break ________
+
+    def test_production_uses_authority_priority_and_identity_tie_break() -> None:
+        zulu = valid_definition(
+            playbook_id="playbook.zulu",
+            candidate_family_id="family.zulu",
+            setup_variant_id="variant.zulu",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        )
+        alpha = valid_definition(
+            playbook_id="playbook.alpha",
+            candidate_family_id="family.alpha",
+            setup_variant_id="variant.alpha",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        )
+>       _, catalogue, resolver = _production_subjects(definitions=(zulu, alpha))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:296:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_decision_fingerprint_is_deterministic_and_occurrence_independent _
+
+    def test_production_decision_fingerprint_is_deterministic_and_occurrence_independent() -> None:
+>       _, catalogue, resolver = _production_subjects()
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:312:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint __
+
+    def test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint() -> None:
+>       api, catalogue, resolver = _production_subjects()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:329:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____ test_production_carries_lifecycle_metadata_without_foreign_authority _____
+
+    def test_production_carries_lifecycle_metadata_without_foreign_authority() -> None:
+>       _, catalogue, resolver = _production_subjects()
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:355:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7fedd9b5c4a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c017_parallel_risk_bootstrap_rejects_missing_upstream_identity_and_lineage - AssertionError: Regex pattern did not match.
+  Expected regex: 'traceid|runid|scenarioid|derivedfrom|sourceartifactids|inputfingerprint'
+  Actual message: 'packetrole is not admitted by K07: parallel_risk_bootstrap_input'
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_global - AssertionError: assert [ParallelRisk...llowed=False)] == []
+
+  Left contains one more item: ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidat...only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False)
+
+  Full diff:
+  - []
+  + [
+  +     ParallelRiskPolicyDecision(decision_id='policy-v1::candidate-1', policy_id='policy-v1', candidate=ParallelRiskCandidateAuditSurface(candidate_id='candidate-1', semantic_tags=[], audit_state='candidate_present', consequence_posture='observe', fragility_dimensions=[], descriptive_semantics=[], risk_event_ids=[], decision_authority='parallel_risk_candidate_audit_only', capital_sizing_allowed=False), decision_authority='risk_gateway_observation_only', capital_sizing_allowed=False),
+  + ]
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them - ValueError: scenarioid must be a caller-owned governed identity
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c031_governed_run_once_rejects_structurally_invalid_stage_mapping - Failed: DID NOT RAISE any of (<class 'ValueError'>, <class 'TypeError'>)
+FAILED tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py::test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inputs - AssertionError: assert 'candidate_family_ids' in {'live_inventory_request', 'live_inventory_service', 'live_inventory_snapshot', 'return', 'stage_inputs'}
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_exports_exact_frozen_contract_models - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_catalogue_authority - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_preserves_three_lawful_stand_down_states - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_uses_authority_priority_and_identity_tie_break - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_decision_fingerprint_is_deterministic_and_occurrence_independent - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_carries_lifecycle_metadata_without_foreign_authority - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+12 failed, 161 passed in 0.67s

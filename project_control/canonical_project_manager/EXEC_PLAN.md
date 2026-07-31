@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M08_GATE_D`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M02_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -167,10 +167,10 @@ After Gate C passes, Gate D:
 - M08 K13 C-NORM is accepted in runtime-ownership section 7.8, vocabulary
   section 10.17 and architecture section 11.10.3.2; the exact public contracts
   are `PlaybookDefinition`, `PlaybookCatalogue` and `EligibilityDecision`.
-- M08 K13 C-PROOF is accepted: 11 reference and false-positive cases pass,
-  all five named mutants are killed, seven exact production-facing cases remain
-  expected red only because the canonical M08 package is absent, vocabulary
-  parity is 4/4, proof-block integrity is 56/56 and the M08 namespace is clean.
+- M08 K13 satisfies C-NORM, C-PROOF and bounded Gate D: 23 focused cases
+  pass, all five named mutants remain killed, the seven expected-red production
+  cases are green, copied authority and nested metadata are revalidated or
+  frozen, and the exact Tier A shadow comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -189,31 +189,31 @@ is immutable, deterministic and side-effect-free; it does not create generic
 policy, capital, playbook, execution, lifecycle, replay, transaction or
 external-state-mutation authority.
 
-M08 satisfies `C-NORM` and `C-PROOF`; bounded K13 Gate D is open. The admitted
-proof fixes immutable catalogue/definition identity, mandatory posture/context,
-exact rejection and stand-down states, authority-owned ordering/tie-break,
-deterministic decision lineage and lifecycle/foreign-authority closure. It does
-not admit candidate expression, capital, execution, lifecycle mutation, replay,
-transaction or runtime self-tuning authority.
+M08 satisfies `C-NORM`, `C-PROOF` and bounded K13 Gate D. The accepted package
+is immutable, deterministic and side-effect-free; it preserves catalogue,
+posture, context and material-fact lineage, and it does not acquire candidate
+expression, capital, execution, lifecycle mutation, replay, transaction or
+runtime self-tuning authority.
 
 ### Queued
 
-- M08: implement the smallest canonical K13 public seam and make the seven
-  expected-red production cases green without widening authority.
+- M02 K04: close the numbered `FinancialCalendarSnapshot` proposition before
+  opening its minimum public-seam proof.
 
 ## 8. Immediate work
 
-Implement the bounded M08 K13 Gate D slice:
+Open M02 K04 `C-NORM`:
 
-1. create one explicit `nvda_desk.m08_playbook_catalogue` public package;
-2. implement immutable `PlaybookDefinition`, `PlaybookCatalogue` and
-   `EligibilityDecision` contracts plus deterministic owner-local resolution;
-3. preserve the exact rejection, stand-down, priority/tie-break, fingerprint,
-   lifecycle-carriage and closed-authority semantics admitted by C-PROOF;
-4. run focused, affected compatibility, architecture, vocabulary and shadow
-   checks; compare failures against the C-PROOF baseline;
-5. do not refactor unrelated legacy playbook, M05 serial, capital, execution or
-   lifecycle surfaces unless a direct compatibility adapter is required.
+1. read the current M02 calendar/reference authority, Atlas K04 lineage and
+   existing calendar state/projection surfaces in full;
+2. define the exact four semantic layers, candidate identity, coalescence,
+   supersession, projection, time and lawful-absence semantics;
+3. preserve M01 source ownership and M13 transaction mechanics without
+   transferring calendar meaning;
+4. record contradictions and missing meaning before any M02 proof or production
+   mutation;
+5. keep M02 Gate D closed until the bounded proposition and minimum truthful
+   proof are accepted.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 
@@ -221,12 +221,11 @@ Do not recreate the retired MLC sequence or create another roadmap.
 
 Recommended sequence from the current state:
 
-1. M08 smallest lawful Gate D slice;
-2. M02 then M03;
-3. M05 and M06 when dependencies are ready;
-4. M09, M10, M11 and M12;
-5. M00 final composition;
-6. final alpha consolidation.
+1. M02 then M03;
+2. M05 and M06 when dependencies are ready;
+3. M09, M10, M11 and M12;
+4. M00 final composition;
+5. final alpha consolidation.
 
 M07 and M08 may be completed before M01 if that shortens the critical path to
 M05. M05 and M06 may proceed independently after prerequisites. Canonical

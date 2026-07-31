@@ -1,0 +1,4 @@
+$ python -m ruff --version
+/opt/pyvenv/bin/python: No module named ruff
+result=UNAVAILABLE
+substitute_used=no

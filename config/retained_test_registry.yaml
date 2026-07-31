@@ -3651,7 +3651,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a_current
   bounded_family: playbook_catalogue_eligibility
   native_test_path: tests/tier_a/m08_k13/test_m08_k13_contract.py
-  migration_status: module_local_c_proof_accepted_gate_d_open
+  migration_status: module_local_c_proof_and_gate_d_accepted
   normative_basis:
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
   - docs/08_TESTING_AND_PROMOTION_CORE.md
@@ -3663,8 +3663,8 @@ fast_track_module_local_admissions:
   - tests/support/m08_k13_contract_harness.py
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: Existing playbook registry, compilation, serial eligibility and service surfaces were reread; they remain transitional and do not implement the section 7.8 PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public seam.
+  docstring_alignment_status: The canonical m08_playbook_catalogue package now implements the section 7.8 PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public seam; existing playbook registry, compilation, serial eligibility and service surfaces remain transitional and do not define or override K13.
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for catalogue and definition identity/version law, mandatory posture and eligibility context, exact rejection and stand-down states, authority-owned ordering and identity tie-break, deterministic decision lineage, lifecycle-intent carriage and closed foreign authority.
   forbidden_carry_forward: Caller or container order, missing-catalogue defaults, posture inference, absent-fact-as-false semantics, mutable promoted snapshots, fabricated catalogue fingerprints, eligibility-lead claims of final candidate or capital authority, hidden live state and runtime self-tuning must not satisfy K13.
-  notes: Eleven reference and false-positive checks pass. Seven exact production-facing cases remain expected red because the canonical M08 public package is absent; those failures open bounded M08 Gate D and must not be skipped or weakened.
+  notes: Twenty-three focused cases pass: eleven reference/false-positive cases, the seven formerly expected-red public-seam cases, and five direct integrity regressions covering copied authority revalidation, nested immutability, fact-completeness precedence, member-order independence, optional-fact lineage and lawful empty variant identity.

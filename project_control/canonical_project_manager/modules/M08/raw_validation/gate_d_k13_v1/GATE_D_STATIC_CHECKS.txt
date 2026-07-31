@@ -1,0 +1,4 @@
+$ git diff --check
+$ python -m compileall -q src/nvda_desk/m08_playbook_catalogue tests/tier_a/m08_k13
+compileall_exit=0
+line_length_gt_100=0

@@ -8,6 +8,7 @@ import pytest
 
 from tests.support.m08_k13_contract_harness import (
     CLOSED_AUTHORITIES,
+    ConstraintCase,
     MUTANTS,
     ReferenceSubject,
     production_api,
@@ -366,3 +367,140 @@ def test_production_carries_lifecycle_metadata_without_foreign_authority() -> No
     }
     assert tuple(decision.closed_authority_classes) == CLOSED_AUTHORITIES
     assert decision.foreign_authority_claimed is False
+
+
+
+def test_production_revalidates_copied_catalogue_and_freezes_nested_metadata() -> None:
+    api, catalogue, resolver = _production_subjects()
+    forged = catalogue.model_copy(update={"catalogue_fingerprint": "wrong"})
+    decision = resolver.resolve(
+        forged,
+        production_posture_payload(),
+        production_context_payload(),
+        decision_id="decision-forged-catalogue",
+    )
+    untyped = resolver.resolve(
+        production_catalogue_payload(),
+        production_posture_payload(),
+        production_context_payload(),
+        decision_id="decision-untyped-catalogue",
+    )
+    definition = api["PlaybookDefinition"].model_validate(
+        production_definition_payload()
+    )
+
+    assert decision.status == "rejected"
+    assert decision.reason == "invalid_catalogue_authority"
+    assert untyped.status == "rejected"
+    assert untyped.reason == "invalid_catalogue_authority"
+    with pytest.raises(TypeError, match="frozen_mapping"):
+        definition.lifecycle_intent["horizon_class"] = "swing"
+
+
+def test_production_requires_complete_fact_authority_before_posture_stand_down() -> None:
+    _, catalogue, resolver = _production_subjects()
+    decision = resolver.resolve(
+        catalogue,
+        production_posture_payload(status="blocked"),
+        production_context_payload(facts={"breakout_ready": True}),
+        decision_id="decision-blocked-missing-fact",
+    )
+
+    assert decision.status == "rejected"
+    assert decision.reason == "missing_required_fact"
+
+
+def test_production_catalogue_and_decision_are_member_order_independent() -> None:
+    definitions = valid_catalogue().definitions
+    _, forward_catalogue, forward_resolver = _production_subjects(
+        definitions=definitions
+    )
+    _, reverse_catalogue, reverse_resolver = _production_subjects(
+        definitions=tuple(reversed(definitions))
+    )
+
+    forward = forward_resolver.resolve(
+        forward_catalogue,
+        production_posture_payload(),
+        production_context_payload(),
+        decision_id="decision-forward",
+    )
+    reverse = reverse_resolver.resolve(
+        reverse_catalogue,
+        production_posture_payload(),
+        production_context_payload(),
+        decision_id="decision-reverse",
+    )
+
+    assert forward_catalogue.catalogue_fingerprint == reverse_catalogue.catalogue_fingerprint
+    assert forward.semantic_fingerprint == reverse.semantic_fingerprint
+    assert _families(forward) == _families(reverse)
+
+
+def test_production_fingerprint_binds_present_optional_fact_lineage() -> None:
+    optional_definition = replace(
+        valid_definition(),
+        constraints=(ConstraintCase("optional_filter", "eq", True, required=False),),
+    )
+    _, catalogue, resolver = _production_subjects(definitions=(optional_definition,))
+    first_context = production_context_payload(facts={"optional_filter": True})
+    second_context = production_context_payload(facts={"optional_filter": True})
+    second_context["facts"]["optional_filter"]["semantic_fingerprint"] = (
+        "optional-filter-fingerprint-v2"
+    )
+
+    first = resolver.resolve(
+        catalogue,
+        production_posture_payload(),
+        first_context,
+        decision_id="decision-optional-a",
+    )
+    second = resolver.resolve(
+        catalogue,
+        production_posture_payload(),
+        second_context,
+        decision_id="decision-optional-b",
+    )
+
+    assert first.status == second.status == "eligible"
+    assert first.semantic_fingerprint != second.semantic_fingerprint
+    assert tuple(item.fact_ref for item in first.material_fact_lineage) == (
+        "optional_filter",
+    )
+
+
+def test_production_allows_explicit_no_variant_identity_without_collision() -> None:
+    first = replace(
+        valid_definition(
+            playbook_id="playbook.alpha",
+            candidate_family_id="family.alpha",
+            setup_variant_id="variant.alpha",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        ),
+        setup_variant_id="",
+        setup_variant_version="",
+    )
+    second = replace(
+        valid_definition(
+            playbook_id="playbook.zulu",
+            candidate_family_id="family.zulu",
+            setup_variant_id="variant.zulu",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        ),
+        setup_variant_id="",
+        setup_variant_version="",
+    )
+    _, catalogue, resolver = _production_subjects(definitions=(second, first))
+
+    decision = resolver.resolve(
+        catalogue,
+        production_posture_payload(),
+        production_context_payload(),
+        decision_id="decision-no-variant",
+    )
+
+    assert decision.status == "eligible"
+    assert tuple(item.setup_variant_id for item in decision.eligible_candidates) == ("", "")
+    assert _families(decision) == ("family.alpha", "family.zulu")

@@ -1395,3 +1395,38 @@ Implement the smallest M08 K13 public seam. Gate D remains bounded to catalogue,
 definition and eligibility-decision authority and cannot acquire candidate
 expression, capital, execution, lifecycle mutation, replay, transaction or
 runtime self-tuning authority.
+
+
+## 2026-07-31 — M08 K13 Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The canonical `nvda_desk.m08_playbook_catalogue` package implements immutable
+catalogue/definition authority and deterministic eligibility resolution without
+acquiring M05 candidate-expression, capital, execution, lifecycle mutation,
+replay, transaction or runtime self-tuning authority.
+
+| Check | Result |
+|---|---|
+| Focused K13 proof | PASS — 23 / 23 |
+| Named mutants | PASS — 5 / 5 killed |
+| Former expected-red production seam | PASS — 7 / 7 |
+| Proof-block manifest | PASS — 56 / 56 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Affected comparison | baseline 161 passed / 12 failed; current 173 / 5; zero new nodes, seven resolved, five common baseline failures |
+| Tier A comparison | baseline 1,365 passed / 274 failed; current 1,377 / 267; zero new nodes, seven resolved |
+| Tier B | PASS — 49 / 49 |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| M08 vocabulary audit | PASS — 0 unresolved candidates / 25 scoped files |
+| Architecture/static checks | PASS |
+| Ruff | UNAVAILABLE — no installed locked module; no substitute used |
+
+The seven resolved nodes are exactly the C-PROOF production-facing assertions.
+Five new integrity regressions pass. Exact evidence is under
+`project_control/canonical_project_manager/modules/M08/raw_validation/gate_d_k13_v1/`.
+
+### Next action
+
+Open M02 K04 `C-NORM`. M02 proof and production mutation remain closed.

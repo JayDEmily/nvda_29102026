@@ -967,10 +967,13 @@ proof_blocks:
 
   - proof_block_id: m08_k13_playbook_catalogue_contract
     tier: Tier A
-    lifecycle: candidate_current_mvp_c_proof_gate_d_expected_red
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m08_k13/test_m08_k13_contract.py
     owns:
+      - src/nvda_desk/m08_playbook_catalogue/__init__.py
+      - src/nvda_desk/m08_playbook_catalogue/contracts.py
+      - src/nvda_desk/m08_playbook_catalogue/resolver.py
       - tests/tier_a/m08_k13/test_m08_k13_contract.py
       - tests/support/m08_k13_contract_harness.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py

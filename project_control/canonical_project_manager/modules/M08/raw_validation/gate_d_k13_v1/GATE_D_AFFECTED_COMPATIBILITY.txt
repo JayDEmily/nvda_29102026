@@ -1,0 +1,7 @@
+affected_baseline=161 passed / 12 failed
+affected_current=173 passed / 5 failed
+new_failed_nodes=0
+resolved_failed_nodes=7
+common_pre_existing_failed_nodes=5
+classification=PASS_M08_DELTA_WITH_PRE_EXISTING_SHADOW_FAILURES
+exact_outputs=GATE_D_AFFECTED_BASELINE_c89074f.txt,GATE_D_AFFECTED_CURRENT.txt,GATE_D_AFFECTED_DELTA.txt

@@ -1,0 +1,20 @@
+baseline_commit=c89074ff65b7fce11148913a82d061a03d78293a
+baseline_summary=1365 passed / 274 failed
+current_summary=1377 passed / 267 failed
+baseline_failed_nodes=274
+current_failed_nodes=267
+new_failed_nodes=0
+resolved_failed_nodes=7
+common_failed_nodes=267
+
+[resolved]
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_carries_lifecycle_metadata_without_foreign_authority
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_decision_fingerprint_is_deterministic_and_occurrence_independent
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_exports_exact_frozen_contract_models
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_preserves_three_lawful_stand_down_states
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_catalogue_authority
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint
+tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_uses_authority_priority_and_identity_tie_break
+
+[new]
+NONE
