@@ -1354,3 +1354,44 @@ during C-NORM. Exact evidence is under
 
 Open M08 K13 `C-PROOF`. Gate D remains closed until the smallest truthful
 public-seam proof passes.
+
+
+## 2026-07-31 — M08 K13 C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The bounded K13 proof establishes immutable catalogue/definition identity,
+mandatory posture/context authority, exact rejected and lawful stand-down
+states, authority-owned priority and identity/version tie-break, deterministic
+decision lineage, eligibility-lead meaning, lifecycle-intent carriage and
+closed foreign authority. Five deliberately faulty subjects are detected:
+caller-order selection, missing-catalogue defaulting, ignored posture block,
+catalogue-order tie resolution and an eligibility result claiming capital
+authority.
+
+| Check | Result |
+|---|---|
+| Reference and false-positive proof | PASS — 11 / 11 |
+| Named mutants | PASS — 5 / 5 killed |
+| Production-facing public seam | EXPECTED RED — 11 passed / 7 failed because the canonical M08 package is absent |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| Proof-block manifest | PASS — 56 / 56 |
+| Proof-executor contract | PASS — 21 / 21 |
+| M08 vocabulary audit | PASS — 0 unresolved candidates / 22 scoped files |
+| Production/runtime configuration mutation | none |
+| Ruff | UNAVAILABLE — no installed locked Ruff module; no unpinned substitute used |
+
+The seven production failures occur after successful collection and are confined
+to the absent target package. No skip, xfail, assertion weakening or production
+stub was used. Two proof-scope vocabulary candidates were dispositioned at exact
+occurrence scope only. Exact outputs are under
+`project_control/canonical_project_manager/modules/M08/raw_validation/fast_track_k13_c_proof_v1/`.
+
+### Next action
+
+Implement the smallest M08 K13 public seam. Gate D remains bounded to catalogue,
+definition and eligibility-decision authority and cannot acquire candidate
+expression, capital, execution, lifecycle mutation, replay, transaction or
+runtime self-tuning authority.

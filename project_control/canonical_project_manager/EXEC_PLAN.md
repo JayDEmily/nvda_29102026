@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M08_C_PROOF`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M08_GATE_D`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -167,6 +167,10 @@ After Gate C passes, Gate D:
 - M08 K13 C-NORM is accepted in runtime-ownership section 7.8, vocabulary
   section 10.17 and architecture section 11.10.3.2; the exact public contracts
   are `PlaybookDefinition`, `PlaybookCatalogue` and `EligibilityDecision`.
+- M08 K13 C-PROOF is accepted: 11 reference and false-positive cases pass,
+  all five named mutants are killed, seven exact production-facing cases remain
+  expected red only because the canonical M08 package is absent, vocabulary
+  parity is 4/4, proof-block integrity is 56/56 and the M08 namespace is clean.
 
 ### Converted decision
 
@@ -185,26 +189,39 @@ is immutable, deterministic and side-effect-free; it does not create generic
 policy, capital, playbook, execution, lifecycle, replay, transaction or
 external-state-mutation authority.
 
+M08 satisfies `C-NORM` and `C-PROOF`; bounded K13 Gate D is open. The admitted
+proof fixes immutable catalogue/definition identity, mandatory posture/context,
+exact rejection and stand-down states, authority-owned ordering/tie-break,
+deterministic decision lineage and lifecycle/foreign-authority closure. It does
+not admit candidate expression, capital, execution, lifecycle mutation, replay,
+transaction or runtime self-tuning authority.
+
 ### Queued
 
-- M08: author the minimum truthful K13 public-seam proof; Gate D remains closed.
+- M08: implement the smallest canonical K13 public seam and make the seven
+  expected-red production cases green without widening authority.
 
 ## 8. Immediate work
 
-Open M08 K13 `C-PROOF`. Prove the section 7.8 distinction between rejected
-missing authority and valid stand-down, authority-owned ordering/tie-break,
-deterministic decision lineage, eligibility-lead meaning and lifecycle/foreign-
-authority closure. The production-facing assertions must remain expected red
-until the canonical M08 package exists.
+Implement the bounded M08 K13 Gate D slice:
 
-Use the existing M08 module record, validation log and proof/vocabulary
-registries. Do not recreate the retired MLC sequence or create another roadmap.
+1. create one explicit `nvda_desk.m08_playbook_catalogue` public package;
+2. implement immutable `PlaybookDefinition`, `PlaybookCatalogue` and
+   `EligibilityDecision` contracts plus deterministic owner-local resolution;
+3. preserve the exact rejection, stand-down, priority/tie-break, fingerprint,
+   lifecycle-carriage and closed-authority semantics admitted by C-PROOF;
+4. run focused, affected compatibility, architecture, vocabulary and shadow
+   checks; compare failures against the C-PROOF baseline;
+5. do not refactor unrelated legacy playbook, M05 serial, capital, execution or
+   lifecycle surfaces unless a direct compatibility adapter is required.
+
+Do not recreate the retired MLC sequence or create another roadmap.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M08 normative/proof work, followed by its smallest lawful Gate D slice;
+1. M08 smallest lawful Gate D slice;
 2. M02 then M03;
 3. M05 and M06 when dependencies are ready;
 4. M09, M10, M11 and M12;

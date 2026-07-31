@@ -1,0 +1,7 @@
+python_compile=PASS
+line_length_over_100=2
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:37:104
+tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:152:105
+yaml_parse=PASS path=config/proof_blocks.yaml
+yaml_parse=PASS path=config/retained_test_registry.yaml
+changed_text_trailing_whitespace=0

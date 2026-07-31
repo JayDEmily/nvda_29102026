@@ -3645,4 +3645,26 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for bundle/version identity, lawful absence, authority-owned precedence/conflict, post-algebra hard bounds, deterministic decision lineage, no-op receipt meaning and closed foreign authority.
   forbidden_carry_forward: Caller order, missing-bundle defaults, premature clamping, arbitrary conflict tie-breaks, replay-labelled substitution, hidden live state and receipt claims of downstream mutation, capital, strategy, execution, lifecycle or transaction authority must not satisfy K12.
-  notes: Twenty focused cases pass: eleven reference/false-positive cases, the seven formerly expected-red public-seam cases, and two direct model-copy authority-bypass regressions. The bounded package remains side-effect-free and acquires no capital, playbook, execution, lifecycle, replay, transaction or downstream-mutation authority.
+  notes: "Twenty focused cases pass: eleven reference/false-positive cases, the seven formerly expected-red public-seam cases, and two direct model-copy authority-bypass regressions. The bounded package remains side-effect-free and acquires no capital, playbook, execution, lifecycle, replay, transaction or downstream-mutation authority."
+
+- test_family_id: m08_k13_playbook_catalogue_contract
+  native_status: admitted_tier_a_current
+  bounded_family: playbook_catalogue_eligibility
+  native_test_path: tests/tier_a/m08_k13/test_m08_k13_contract.py
+  migration_status: module_local_c_proof_accepted_gate_d_open
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M08/M08_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m08_k13_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: Existing playbook registry, compilation, serial eligibility and service surfaces were reread; they remain transitional and do not implement the section 7.8 PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public seam.
+  native_reauthor_required: false
+  admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for catalogue and definition identity/version law, mandatory posture and eligibility context, exact rejection and stand-down states, authority-owned ordering and identity tie-break, deterministic decision lineage, lifecycle-intent carriage and closed foreign authority.
+  forbidden_carry_forward: Caller or container order, missing-catalogue defaults, posture inference, absent-fact-as-false semantics, mutable promoted snapshots, fabricated catalogue fingerprints, eligibility-lead claims of final candidate or capital authority, hidden live state and runtime self-tuning must not satisfy K13.
+  notes: Eleven reference and false-positive checks pass. Seven exact production-facing cases remain expected red because the canonical M08 public package is absent; those failures open bounded M08 Gate D and must not be skipped or weakened.

@@ -9,8 +9,8 @@
 | Resumed source checkpoint | `c9122e9d732f01de5f08af4b366df255270b7d0f` |
 | Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
 | Latest accepted implementation slice | M07 K12 coefficient/modifier authority |
-| Current active slice | M08 K13 C-PROOF |
-| Production implementation | closed for M08 until C-PROOF passes |
+| Current active slice | M08 K13 Gate D implementation |
+| Production implementation | open only for the bounded M08 K13 public seam |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -30,7 +30,7 @@ Historical MLC records remain evidence. They are not mandatory future leaves.
 | M04 packet protocol / K07 | passed — `docs/09.1...` section 9.10 | passed — 271 admitted cases plus retained partial case | `GATE_D_ACCEPTED` |
 | M01 source admission | passed | passed — 18 focused public-seam cases | `GATE_D_ACCEPTED` |
 | M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
-| M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | open — minimum truthful K13 public-seam proof | `C_PROOF_ACTIVE` |
+| M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 11 reference/mutant cases; seven exact production assertions expected red | `GATE_D_ACTIVE` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -60,11 +60,11 @@ Ruff was unavailable because the locked `openpyxl==3.1.5` wheel returned HTTP
 M08 K13 C-NORM acceptance defines immutable catalogue/definition identity and
 version law, mandatory posture/context facts, exact rejection and lawful
 stand-down states, authority-owned ordering/tie-break, eligibility-lead meaning,
-decision fingerprinting and bounded lifecycle carriage. The M08 vocabulary
-namespace contains the exact `PlaybookDefinition`, `PlaybookCatalogue` and
-`EligibilityDecision` contracts and is clean across 20 scoped files. Existing
-vocabulary parity is intentionally expected red because it still hard-codes the
-pre-M08 namespace set; no test was changed during normative closure.
+decision fingerprinting and bounded lifecycle carriage. C-PROOF adds 11 passing
+reference/false-positive cases, kills five named mutants and leaves seven exact
+production assertions red only because the canonical package is absent.
+Vocabulary parity is 4/4, proof-block integrity is 56/56, the proof executor is
+21/21 and the M08 namespace is clean across 22 scoped files.
 
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
@@ -72,13 +72,13 @@ required before implementation.
 
 ## Immediate next action
 
-Open M08 K13 `C-PROOF`:
+Implement M08 K13 Gate D:
 
-1. encode the accepted K13 outcomes in a reference subject without production code;
-2. prove invalid authority, posture-block and valid-empty stand-down are distinct;
-3. prove catalogue priority and the explicit identity/version tie-break defeat caller order;
-4. prove deterministic lineage, eligibility-lead meaning and lifecycle/foreign-authority closure;
-5. leave the canonical M08 package assertions expected red until Gate D implementation.
+1. create the canonical immutable public contracts and deterministic resolver;
+2. make the seven production-facing K13 assertions green without changing their meaning;
+3. retain caller/container-order independence and exact identity/version tie-break;
+4. preserve valid stand-down versus rejected authority and deterministic lineage;
+5. run affected compatibility and full shadow comparisons against the C-PROOF baseline.
 
 Later modules follow dependency readiness, not paperwork age or numeric `D-xxx`
 order.

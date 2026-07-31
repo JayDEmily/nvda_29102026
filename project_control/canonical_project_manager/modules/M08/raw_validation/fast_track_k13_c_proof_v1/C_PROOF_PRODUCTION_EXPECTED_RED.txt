@@ -1,0 +1,230 @@
+...........FFFFFFF                                                       [100%]
+=================================== FAILURES ===================================
+_____________ test_production_exports_exact_frozen_contract_models _____________
+
+    def test_production_exports_exact_frozen_contract_models() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:232:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____________ test_production_rejects_missing_catalogue_authority ______________
+
+    def test_production_rejects_missing_catalogue_authority() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:240:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+___________ test_production_preserves_three_lawful_stand_down_states ___________
+
+    def test_production_preserves_three_lawful_stand_down_states() -> None:
+        disabled = (valid_definition(enabled=False),)
+>       _, disabled_catalogue, disabled_resolver = _production_subjects(definitions=disabled)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:254:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+________ test_production_uses_authority_priority_and_identity_tie_break ________
+
+    def test_production_uses_authority_priority_and_identity_tie_break() -> None:
+        zulu = valid_definition(
+            playbook_id="playbook.zulu",
+            candidate_family_id="family.zulu",
+            setup_variant_id="variant.zulu",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        )
+        alpha = valid_definition(
+            playbook_id="playbook.alpha",
+            candidate_family_id="family.alpha",
+            setup_variant_id="variant.alpha",
+            selection_priority=10,
+            fact_ref="momentum_ready",
+        )
+>       _, catalogue, resolver = _production_subjects(definitions=(zulu, alpha))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:296:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_decision_fingerprint_is_deterministic_and_occurrence_independent _
+
+    def test_production_decision_fingerprint_is_deterministic_and_occurrence_independent() -> None:
+>       _, catalogue, resolver = _production_subjects()
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:312:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint __
+
+    def test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint() -> None:
+>       api, catalogue, resolver = _production_subjects()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:329:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____ test_production_carries_lifecycle_metadata_without_foreign_authority _____
+
+    def test_production_carries_lifecycle_metadata_without_foreign_authority() -> None:
+>       _, catalogue, resolver = _production_subjects()
+                                 ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m08_k13/test_m08_k13_contract.py:355:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tier_a/m08_k13/test_m08_k13_contract.py:218: in _production_subjects
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m08_k13_contract_harness.py:661: in production_api
+    module = importlib.import_module("nvda_desk.m08_playbook_catalogue")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+name = 'nvda_desk.m08_playbook_catalogue'
+import_ = <function _gcd_import at 0x7f318ea184a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_exports_exact_frozen_contract_models - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_catalogue_authority - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_preserves_three_lawful_stand_down_states - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_uses_authority_priority_and_identity_tie_break - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_decision_fingerprint_is_deterministic_and_occurrence_independent - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_rejects_missing_required_fact_and_bad_catalogue_fingerprint - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+FAILED tests/tier_a/m08_k13/test_m08_k13_contract.py::test_production_carries_lifecycle_metadata_without_foreign_authority - ModuleNotFoundError: No module named 'nvda_desk.m08_playbook_catalogue'
+7 failed, 11 passed in 0.15s

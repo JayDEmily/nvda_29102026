@@ -179,3 +179,62 @@ The historical blocker above is resolved by numbered authority rather than by co
 - existing vocabulary parity proof: 3 passed / 1 expected red because the previous assertion hard-codes only `global`, `m04` and `m07`.
 
 Exact outputs and the full-read manifest are under `raw_validation/fast_track_k13_v1/`. The next gate is `C-PROOF`; M08 Gate D remains closed.
+
+
+## 2026-07-31 fast-track C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The accepted section 7.8 proposition is now protected by one bounded Tier A
+public-seam family:
+
+- `tests/support/m08_k13_contract_harness.py` supplies a deterministic reference
+  resolver and five explicit false-positive mutants;
+- `tests/tier_a/m08_k13/test_m08_k13_contract.py` proves missing authority versus
+  lawful stand-down, posture block, no-family/no-eligible distinctions,
+  authority priority, identity/version tie-break, required-fact rejection,
+  deterministic lineage, lifecycle carriage and foreign-authority closure;
+- seven production-facing cases define the target public seam and remain exact
+  expected red because `nvda_desk.m08_playbook_catalogue` does not yet exist.
+
+### Proof result
+
+| Check | Result |
+|---|---|
+| Reference and mutant proof | PASS — 11 / 11 |
+| Named false-positive mutants | PASS — 5 / 5 killed |
+| Production-facing seam | EXPECTED RED — 11 passed / 7 failed; all seven fail at the absent canonical package |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| Proof-block manifest | PASS — 56 / 56 |
+| Proof-executor contract | PASS — 21 / 21 |
+| M08 scoped vocabulary audit | PASS — zero unresolved candidates across 22 files |
+| Production/config mutation | none |
+
+The proof uses no skip, xfail, weakened assertion, fake production fixture or
+implementation substitution. The namespace-parity assertion was updated only
+to the already-admitted `global`, `m04`, `m07`, `m08` projection and the exact
+three M08 identities. Two proof-scope vocabulary candidates were resolved by
+exact occurrence disposition; no new alias or global suppression was added.
+
+### Gate D boundary
+
+Opened:
+
+- one explicit package API for `PlaybookDefinition`, `PlaybookCatalogue` and
+  `EligibilityDecision`;
+- owner-local deterministic catalogue validation and eligibility resolution;
+- direct transitional adapters only where required to preserve compatibility.
+
+Closed:
+
+- M05 candidate-expression/final-candidate authority;
+- caller/container ordering, hidden live state, wall-clock inference and runtime
+  self-tuning;
+- capital, broker/order, inventory/position, exit/close, coefficient, source,
+  replay or transaction authority;
+- unrelated module, configuration or test changes.
+
+Exact evidence is retained under
+`raw_validation/fast_track_k13_c_proof_v1/`.

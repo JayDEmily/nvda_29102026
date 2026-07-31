@@ -94,6 +94,7 @@
         "src/nvda_desk/services/eligibility_service.py",
         "src/nvda_desk/runtime/orchestrator.py",
         "src/nvda_desk/m08_playbook_catalogue",
+        "tests/support/m08_k13_contract_harness.py",
         "tests/tier_a/m08_k13",
         "tests/tier_a/playbook",
         "tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py",
