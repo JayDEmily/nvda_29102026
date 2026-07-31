@@ -250,3 +250,11 @@ assertion, skip or xfail was weakened.
 Exact outputs and hashes are retained under
 `raw_validation/gate_d_k12_v1/`. M07 K12 is accepted only as an alpha-local,
 deterministic authority seam. The next active unit is M08 K13 `C-NORM`.
+
+### Evidence-pack repair
+
+The first acceptance commit preserved raw pytest transcripts with terminal-generated
+trailing spaces. A post-commit base-to-head `git diff --check` correctly rejected
+that evidence formatting. The transcripts were normalised by removing trailing
+spaces/tabs only; source, tests, assertions and recorded outcomes were unchanged.
+The repaired base-to-worktree range passes `git diff --check`.

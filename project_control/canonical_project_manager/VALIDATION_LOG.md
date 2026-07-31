@@ -1311,3 +1311,11 @@ mutation authority. Exact evidence is retained under
 
 Open M08 K13 `C-NORM`. No M08 production change is authorised until its
 catalogue/eligibility proposition and minimum truthful proof pass.
+
+### M07 evidence-pack correction
+
+Post-commit range validation found trailing spaces in the two captured full Tier A
+pytest transcripts. This was an evidence-format defect, not a source or test
+failure. Only trailing spaces/tabs were removed; the test text and outcomes remain
+unchanged. The repaired range from M07 C-PROOF base `92fe7e1` passes
+`git diff --check`.
