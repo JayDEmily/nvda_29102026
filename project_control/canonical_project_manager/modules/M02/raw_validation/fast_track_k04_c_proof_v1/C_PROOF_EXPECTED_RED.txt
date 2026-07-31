@@ -1,0 +1,237 @@
+.............FFFFFFF                                                     [100%]
+=================================== FAILURES ===================================
+_____________ test_production_exports_exact_frozen_contract_models _____________
+
+    def test_production_exports_exact_frozen_contract_models() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:204: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_________ test_production_equal_values_coalesce_with_complete_lineage __________
+
+    def test_production_equal_values_coalesce_with_complete_lineage() -> None:
+        first = valid_candidate(candidate_id="session.a", source_artifact_id="source.a")
+        second = valid_candidate(
+            candidate_id="session.b",
+            layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+            source_artifact_id="source.b",
+        )
+>       api, snapshot, policy, resolver = _production_subject(
+            valid_snapshot(session_candidates=(first,), operational_candidates=(second,))
+        )
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:237: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m02_k04/test_m02_k04_contract.py:220: in _production_subject
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_______ test_production_rejects_derived_override_and_unresolved_conflict _______
+
+    def test_production_rejects_derived_override_and_unresolved_conflict() -> None:
+        source = valid_candidate(candidate_id="session.source", value="13:30")
+        derived = valid_candidate(
+            candidate_id="session.derived",
+            layer=LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT,
+            value="14:30",
+            supersedes_candidate_id="session.source",
+            supersession_reason="runtime_guess",
+        )
+>       _, snapshot, policy, resolver = _production_subject(
+            valid_snapshot(session_candidates=(source,), derived_candidates=(derived,))
+        )
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:258: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m02_k04/test_m02_k04_contract.py:220: in _production_subject
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+____ test_production_accepts_only_explicit_lawful_operational_supersession _____
+
+    def test_production_accepts_only_explicit_lawful_operational_supersession() -> None:
+        source = valid_candidate(candidate_id="session.source", value="13:30")
+        correction = valid_candidate(
+            candidate_id="session.correction",
+            layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+            value="14:30",
+            supersedes_candidate_id="session.source",
+            supersession_reason="venue_correction",
+        )
+>       _, snapshot, policy, resolver = _production_subject(
+            valid_snapshot(session_candidates=(source,), operational_candidates=(correction,))
+        )
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:276: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m02_k04/test_m02_k04_contract.py:220: in _production_subject
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____ test_production_preserves_missing_unknown_and_complete_empty_states ______
+
+    def test_production_preserves_missing_unknown_and_complete_empty_states() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+______ test_production_projection_is_deterministic_and_side_effect_closed ______
+
+    def test_production_projection_is_deterministic_and_side_effect_closed() -> None:
+>       _, snapshot, policy, resolver = _production_subject()
+                                        ^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:310: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m02_k04/test_m02_k04_contract.py:220: in _production_subject
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_____________ test_production_rejects_snapshot_fingerprint_forgery _____________
+
+    def test_production_rejects_snapshot_fingerprint_forgery() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m02_k04/test_m02_k04_contract.py:319: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/support/m02_k04_contract_harness.py:554: in production_api
+    module = importlib.import_module("nvda_desk.m02_financial_calendar")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m02_financial_calendar'
+import_ = <function _gcd_import at 0x7f10ac8884a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_exports_exact_frozen_contract_models - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_equal_values_coalesce_with_complete_lineage - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_rejects_derived_override_and_unresolved_conflict - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_accepts_only_explicit_lawful_operational_supersession - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_preserves_missing_unknown_and_complete_empty_states - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_projection_is_deterministic_and_side_effect_closed - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+FAILED tests/tier_a/m02_k04/test_m02_k04_contract.py::test_production_rejects_snapshot_fingerprint_forgery - ModuleNotFoundError: No module named 'nvda_desk.m02_financial_calendar'
+7 failed, 13 passed in 0.15s

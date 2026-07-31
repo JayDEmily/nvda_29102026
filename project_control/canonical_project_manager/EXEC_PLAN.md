@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M02_C_NORM`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M02_GATE_D`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -201,17 +201,17 @@ runtime self-tuning authority.
 
 ### Queued
 
-- M02 K04: establish the minimum truthful public-seam proof before bounded Gate D.
+- M02 K04: implement the accepted canonical public seam and resolve the seven exact production reds.
 
 ## 8. Immediate work
 
-Open M02 K04 `C-PROOF`:
+Implement bounded M02 K04 Gate D:
 
-1. update the stale namespace-parity assertion only to the already-admitted M02 namespace and exact identities;
-2. add one bounded reference resolver and explicit false-positive mutants for caller-order selection, derived-source override, unknown-events-as-empty and missing-session defaulting;
-3. prove exact four-layer identity, equal-value coalescence with full lineage, lawful supersession/conflict and projected/degraded/withheld status;
-4. leave production-facing assertions exact red until the canonical M02 package exists;
-5. keep M02 Gate D closed until the proof is accepted.
+1. add the canonical `nvda_desk.m02_financial_calendar` public package only;
+2. implement immutable K04 contracts, exact four-layer identity, deterministic snapshot validation and side-effect-free projection;
+3. preserve equal-value lineage, explicit operational supersession and fail-closed conflict/absence states;
+4. resolve the seven exact production-facing proof cases without weakening the 13 reference/mutant cases;
+5. compare affected and full shadow failures against the exact C-PROOF baseline before acceptance.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 

@@ -1463,3 +1463,35 @@ No test was weakened or edited during C-NORM. Exact evidence is under
 
 Open M02 K04 `C-PROOF`. Gate D remains closed until the smallest truthful
 public-seam proof passes.
+
+
+## 2026-07-31 — M02 K04 C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+The bounded proof establishes exact four-layer identity, equal-value coalescence
+with complete lineage, explicit operational supersession, fail-closed unequal
+or derived override, mandatory session authority, unknown-event versus complete
+empty-event state, deterministic projection identity and closed foreign
+authority.
+
+| Check | Result |
+|---|---|
+| Reference and false-positive proof | PASS — 13 / 13 |
+| Named mutants | PASS — 6 / 6 killed |
+| Production-facing proof | EXPECTED RED — 7 / 7 fail only because `nvda_desk.m02_financial_calendar` is absent |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| M02 vocabulary audit | PASS — 0 unresolved candidates |
+| Proof-block registration | PASS — named block |
+| All proof-block manifests | PASS — 57 / 57 |
+| `git diff --check` | PASS |
+
+No production file changed during C-PROOF. Exact evidence is under
+`project_control/canonical_project_manager/modules/M02/raw_validation/fast_track_k04_c_proof_v1/`.
+
+### Next action
+
+Implement the bounded canonical M02 public package and compare compatibility
+against this exact C-PROOF baseline before Gate D acceptance.

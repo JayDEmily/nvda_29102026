@@ -9,7 +9,7 @@
 - Source checkpoint: `95e0a866dc7e34c383fd802b2b77a72b661ff18d`
 - Active gate: `C-PROOF`
 - Checkpoint state: `C_NORM_ACCEPTED`
-- Gate D: `CLOSED`
+- Gate D: `OPEN`
 
 ## Question
 
@@ -71,3 +71,21 @@ Exact outputs and the current full-read manifest are under `raw_validation/fast_
 ## Gate boundary
 
 C-PROOF is open for the smallest truthful K04 public-seam family. It must prove exact four-layer identity; equal-value coalescence with complete lineage; fail-closed unequal/derived override without lawful supersession; mandatory session authority versus lawful degraded/empty event states; deterministic projection identity; and foreign-authority closure. Gate D remains closed.
+
+
+## 2026-07-31 fast-track C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+The minimum truthful K04 proof is now admitted:
+
+- 13 reference and false-positive cases pass;
+- six explicit mutants are killed: caller-order selection, derived-source override, missing-session defaulting, unknown-events-as-empty, lineage dropping and foreign-authority leakage;
+- vocabulary namespace parity passes 4/4 with the already-admitted `m02` namespace and exact three M02 identities;
+- the M02 scoped vocabulary audit remains clean with zero unresolved candidates;
+- the registered proof block and all proof-block manifests validate;
+- seven production-facing assertions remain exact red solely because `nvda_desk.m02_financial_calendar` does not yet exist.
+
+No production file was changed during C-PROOF. Gate D is open only for the bounded canonical M02 public package and must resolve those seven exact red cases without weakening the reference or mutant proof.

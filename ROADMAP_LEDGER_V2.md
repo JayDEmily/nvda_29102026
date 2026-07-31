@@ -9,8 +9,8 @@
 | Resumed source checkpoint | `c9122e9d732f01de5f08af4b366df255270b7d0f` |
 | Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
 | Latest accepted implementation slice | M08 K13 playbook catalogue authority |
-| Current active slice | M02 K04 C-PROOF |
-| Production implementation | closed for M02 until C-PROOF passes |
+| Current active slice | M02 K04 Gate D |
+| Production implementation | open only for bounded M02 K04 public seam |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -31,7 +31,7 @@ Historical MLC records remain evidence. They are not mandatory future leaves.
 | M01 source admission | passed | passed — 18 focused public-seam cases | `GATE_D_ACCEPTED` |
 | M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 23 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
-| M02 financial calendar | passed — `docs/07.1...` section 7.9 | active | `C_PROOF` |
+| M02 financial calendar | passed — `docs/07.1...` section 7.9 | passed — 13 reference/mutant cases; seven exact production reds | `GATE_D_ACTIVE` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -72,6 +72,7 @@ required before implementation.
 
 ## Immediate next action
 
-Open M02 K04 `C-PROOF` for the exact `CalendarFactCandidate`,
-`FinancialCalendarSnapshot` and `CalendarProjection` public seam. Production
-mutation remains closed until the minimum truthful proof is accepted.
+Implement the bounded `nvda_desk.m02_financial_calendar` public seam for
+`CalendarFactCandidate`, `FinancialCalendarSnapshot` and `CalendarProjection`.
+Gate D must resolve the seven exact production reds while preserving all 13
+reference/mutant cases and introducing no new shadow failure nodes.

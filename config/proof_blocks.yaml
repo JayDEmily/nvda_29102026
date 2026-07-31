@@ -986,3 +986,23 @@ proof_blocks:
       - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m02_k04_financial_calendar_contract
+    tier: Tier A
+    lifecycle: admitted_current_mvp_c_proof_expected_red
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py
+    owns:
+      - tests/tier_a/m02_k04/test_m02_k04_contract.py
+      - tests/support/m02_k04_contract_harness.py
+      - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - project_control/canonical_project_manager/modules/M02/M02_AUTHORITY_WORKER_RECORD_V1.md
+      - docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - data/vocabulary/vocabulary_touch_stamp.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
