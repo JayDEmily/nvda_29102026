@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-07-31-m08-k13-normative-authority-v1",
+  "registry_version": "2026-07-31-m02-k04-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -11,7 +11,8 @@
     "Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.",
     "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon.",
     "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace.",
-    "The 2026-07-31 M08 K13 amendment admits the exact PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public-contract concepts under a bounded M08 namespace."
+    "The 2026-07-31 M08 K13 amendment admits the exact PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public-contract concepts under a bounded M08 namespace.",
+    "The 2026-07-31 M02 K04 amendment admits the exact CalendarFactCandidate, FinancialCalendarSnapshot and CalendarProjection public-contract concepts under a bounded M02 namespace."
   ],
   "namespaces": {
     "global": {
@@ -22,6 +23,28 @@
         "tests",
         "docs",
         "config"
+      ]
+    },
+    "m02": {
+      "namespace": "m02",
+      "imports": [
+        "global"
+      ],
+      "scan_paths": [
+        "docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/contracts/reference_data.py",
+        "src/nvda_desk/calendar",
+        "src/nvda_desk/reference",
+        "src/nvda_desk/adapters/ingress/calendar_feed.py",
+        "tests/tier_a/calendar_operational",
+        "tests/tier_a/calendar_reference",
+        "tests/tier_a/financial_calendar",
+        "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
+        "tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py",
+        "tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py"
       ]
     },
     "m04": {
@@ -1332,6 +1355,97 @@
         "Semantic decisions: M08-K13-NORMATIVE-AUTHORITY-V1",
         "Human aliases: EligibilityDecision; playbook eligibility decision.",
         "Human disallowed or misleading use: Capital decision; execution decision; final trade candidate; lifecycle mutation receipt; caller-order result; successful decision with missing authority."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m02",
+      "canonical_id": "m02.calendar_fact_candidate",
+      "canonical_slug": "calendar_fact_candidate",
+      "canonical_label": "Calendar Fact Candidate",
+      "category": "protocol_surface",
+      "stage_owner": "calendar",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.2",
+      "allowed_aliases": [
+        "CalendarFactCandidate",
+        "owner-issued calendar candidate"
+      ],
+      "disallowed_phrases": [
+        "caller-created winning calendar fact",
+        "arbitrary calendar layer fact",
+        "derived calendar context used as source truth",
+        "calendar candidate selected by insertion order",
+        "calendar candidate used as trade authority"
+      ],
+      "notes": [
+        "Definition: Immutable owner-issued candidate calendar fact from exactly one governed financial-calendar layer, preserving semantic-key, typed value or explicit absence, effective-time, source/version, validation and explicit supersession facts where claimed.",
+        "Scope: K04 M02 calendar fact candidate",
+        "Semantic owner: M02 calendar authority",
+        "Relationships: Member input to a Financial Calendar Snapshot and Calendar Projection; may coalesce with equal candidates or participate in explicit supersession/conflict evaluation; never acquires downstream decision authority.",
+        "Lifecycle: active_k04_contract",
+        "Semantic decisions: M02-K04-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: CalendarFactCandidate; owner-issued calendar candidate.",
+        "Human disallowed or misleading use: Caller-created winning fact; arbitrary layer fact; derived context used as source truth; candidate selected by insertion order; candidate used as trade authority."
+      ]
+    },
+    {
+      "namespace": "m02",
+      "canonical_id": "m02.financial_calendar_snapshot",
+      "canonical_slug": "financial_calendar_snapshot",
+      "canonical_label": "Financial Calendar Snapshot",
+      "category": "protocol_surface",
+      "stage_owner": "calendar",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.3",
+      "allowed_aliases": [
+        "FinancialCalendarSnapshot",
+        "four-layer calendar snapshot"
+      ],
+      "disallowed_phrases": [
+        "arbitrary calendar layer bundle",
+        "provider response used as calendar snapshot authority",
+        "calendar snapshot used as risk or capital decision",
+        "derived calendar context used as a fifth source layer",
+        "empty calendar snapshot implying complete no-event truth"
+      ],
+      "notes": [
+        "Definition: Immutable, versioned M02 K04 authority snapshot binding the exact four semantic calendar layers, selected reference versions, operational facts, completeness/conflict state, applied supersession decisions and deterministic semantic identity for one stated scope and effective/as-of window.",
+        "Scope: K04 four-layer financial-calendar authority snapshot",
+        "Semantic owner: M02 calendar authority",
+        "Relationships: Contains Calendar Fact Candidates and supplies the exact authority input for Calendar Projection; distinct from a provider manifest, storage table, packet envelope, arbitrary layer bundle or runtime decision.",
+        "Lifecycle: active_k04_contract",
+        "Semantic decisions: M02-K04-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: FinancialCalendarSnapshot; four-layer calendar snapshot.",
+        "Human disallowed or misleading use: Arbitrary calendar layer bundle; provider response used as snapshot authority; snapshot used as risk or capital decision; derived context used as a fifth source layer; empty snapshot implying complete no-event truth."
+      ]
+    },
+    {
+      "namespace": "m02",
+      "canonical_id": "m02.calendar_projection",
+      "canonical_slug": "calendar_projection",
+      "canonical_label": "Calendar Projection",
+      "category": "review_surface",
+      "stage_owner": "calendar",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.5",
+      "allowed_aliases": [
+        "CalendarProjection",
+        "governed runtime calendar projection"
+      ],
+      "disallowed_phrases": [
+        "calendar projection used as source truth",
+        "calendar projection selected by caller order",
+        "calendar projection used as trade instruction",
+        "unknown calendar events represented as no events",
+        "calendar projection claiming state mutation or replay authority"
+      ],
+      "notes": [
+        "Definition: Deterministic, side-effect-free M02 result that coalesces, selects, degrades or withholds calendar facts for a stated effective/as-of window under explicit field-resolution and temporal law while preserving complete candidate/source lineage.",
+        "Scope: K04 runtime calendar projection",
+        "Semantic owner: M02 calendar authority",
+        "Relationships: Derived only from one identified Financial Calendar Snapshot and versioned projection policy; may be consumed as context by later owners but cannot rewrite source layers or grant candidate, risk, capital, execution or lifecycle authority.",
+        "Lifecycle: active_k04_contract",
+        "Semantic decisions: M02-K04-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: CalendarProjection; governed runtime calendar projection.",
+        "Human disallowed or misleading use: Projection used as source truth; projection selected by caller order; projection used as trade instruction; unknown events represented as no events; projection claiming state mutation or replay authority."
       ],
       "raw_or_derived": "derived"
     },
