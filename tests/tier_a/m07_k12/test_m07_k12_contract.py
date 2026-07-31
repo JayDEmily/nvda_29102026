@@ -419,6 +419,49 @@ def test_production_receipt_preserves_decision_lineage_without_foreign_authority
     assert receipt.emitted_at_utc == datetime(2026, 7, 31, 3, 1, tzinfo=UTC)
 
 
+
+def test_production_revalidates_copied_authority_and_does_not_invent_owner_identity() -> None:
+    api, bundle, input_state = _production_payloads()
+    invalid_coefficient = bundle.coefficients[0].model_copy(
+        update={"hard_lower_bound": Decimal("0.70")}
+    )
+    invalid_bundle = bundle.model_copy(update={"coefficients": (invalid_coefficient,)})
+
+    invalid_authority = api["resolve_k12"](
+        bundle=invalid_bundle,
+        owner_stage="posture",
+        input_state=input_state,
+    )
+    missing_owner = api["resolve_k12"](
+        bundle=bundle,
+        owner_stage="",
+        input_state=input_state,
+    )
+
+    assert invalid_authority.status == "rejected"
+    assert invalid_authority.rejection_reasons == ("bundle_authority_invalid",)
+    assert missing_owner.status == "rejected"
+    assert missing_owner.owner_stage is None
+    assert missing_owner.rejection_reasons == ("owner_stage_missing",)
+
+
+def test_production_receipt_revalidates_copied_decision_authority_boundary() -> None:
+    api, bundle, input_state = _production_payloads()
+    decision = api["resolve_k12"](
+        bundle=bundle,
+        owner_stage="posture",
+        input_state=input_state,
+    )
+    invalid_decision = decision.model_copy(update={"closed_authority_classes": ()})
+
+    with pytest.raises(ValueError, match="receipt_source_contract_invalid"):
+        api["build_k12_receipt"](
+            decision=invalid_decision,
+            receipt_id="receipt-invalid",
+            application_id="application-invalid",
+            emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
+        )
+
 def test_production_public_seam_rejects_non_utc_input_state_time() -> None:
     api, bundle, input_state = _production_payloads()
     non_utc = datetime(2026, 7, 31, 13, 0, tzinfo=UTC).astimezone(

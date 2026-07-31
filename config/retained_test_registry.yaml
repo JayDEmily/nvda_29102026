@@ -2423,7 +2423,7 @@ retained_seed_tier_a:
   native_status: admitted_tier_a_current
   bounded_family: packets
   native_test_path: tests/tier_a/packets/test_m04_k07_packet_role_contract.py
-  migration_status: module_local_c_proof_accepted_gate_d_open
+  migration_status: module_local_c_proof_and_gate_d_accepted
   normative_basis:
   - docs/08_TESTING_AND_PROMOTION_CORE.md
   - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
@@ -3629,7 +3629,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a_current
   bounded_family: coefficient_modifier_authority
   native_test_path: tests/tier_a/m07_k12/test_m07_k12_contract.py
-  migration_status: module_local_c_proof_accepted_gate_d_open
+  migration_status: module_local_c_proof_and_gate_d_accepted
   normative_basis:
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
   - docs/08_TESTING_AND_PROMOTION_CORE.md
@@ -3641,8 +3641,8 @@ fast_track_module_local_admissions:
   - tests/support/m07_k12_contract_harness.py
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: Existing coefficient-authority, modifier-packet, replay-labelled receipt and posture-consumer surfaces were reread; they remain transitional and do not implement the section 7.7 PolicyBundle, ModifierDecision and ModifierApplicationReceipt public seam.
+  docstring_alignment_status: The canonical m07_coefficient_modifier_authority package now implements the section 7.7 PolicyBundle, ModifierDecision and ModifierApplicationReceipt public seam; existing coefficient-authority, modifier-packet, replay-labelled receipt and posture-consumer surfaces remain transitional and do not define or override K12.
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for bundle/version identity, lawful absence, authority-owned precedence/conflict, post-algebra hard bounds, deterministic decision lineage, no-op receipt meaning and closed foreign authority.
   forbidden_carry_forward: Caller order, missing-bundle defaults, premature clamping, arbitrary conflict tie-breaks, replay-labelled substitution, hidden live state and receipt claims of downstream mutation, capital, strategy, execution, lifecycle or transaction authority must not satisfy K12.
-  notes: Eleven reference and false-positive checks pass. Seven exact production-facing cases remain expected red because the canonical M07 public package is absent; those failures open bounded M07 Gate D and must not be skipped or weakened.
+  notes: Twenty focused cases pass: eleven reference/false-positive cases, the seven formerly expected-red public-seam cases, and two direct model-copy authority-bypass regressions. The bounded package remains side-effect-free and acquires no capital, playbook, execution, lifecycle, replay, transaction or downstream-mutation authority.

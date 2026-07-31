@@ -202,3 +202,51 @@ Closed:
 
 Exact evidence is retained under
 `raw_validation/fast_track_k12_c_proof_v1/`.
+
+## 2026-07-31 fast-track Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The canonical `nvda_desk.m07_coefficient_modifier_authority` package now owns
+only the bounded section 7.7 public seam:
+
+- immutable `PolicyBundle` coefficient/modifier authority;
+- deterministic, side-effect-free `ModifierDecision` resolution;
+- non-rejected `ModifierApplicationReceipt` construction with closed foreign
+  authority classes.
+
+Resolution revalidates copied bundle material before use, distinguishes missing
+bundle authority from valid no-op states, consumes only identified input facts,
+orders modifiers by authority precedence, rejects missing facts and unresolved
+conflicts, makes a hard kill dominate weaker effects, clamps after algebra and
+produces a deterministic semantic fingerprint. Receipt construction revalidates
+copied decision material and cannot claim external mutation, capital, playbook,
+execution, lifecycle, replay or transaction authority.
+
+### Validation
+
+| Check | Result |
+|---|---|
+| Focused K12 proof | PASS — 20 / 20 |
+| Reference/false-positive subset | PASS — 11 / 11; five named mutants killed |
+| Former production expected-red cases | PASS — 7 / 7 |
+| Model-copy authority-bypass regressions | PASS — 2 / 2 |
+| Directly affected legacy compatibility | PASS — 30 / 30 |
+| Proof-block manifest | PASS — 55 / 55 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier A exact checkpoint comparison | current 1,354 passed / 267 failed versus baseline 1,345 / 274; zero new failing nodes, seven resolved |
+| Tier B | PASS — 49 / 49 |
+| M07 vocabulary | PASS — zero unresolved candidates across 16 scoped files; canonical package path registered and stamp current |
+| Architecture, compile and diff checks | PASS |
+| Pinned Ruff | UNAVAILABLE — locked `openpyxl==3.1.5` wheel returned HTTP 404 from the configured mirror; no unpinned substitute used |
+
+The seven resolved Tier A nodes are exactly the seven K12 production-facing
+assertions admitted as expected red at C-PROOF. Two additional production
+regressions pass and were not present in the baseline. No legacy test, fixture,
+assertion, skip or xfail was weakened.
+
+Exact outputs and hashes are retained under
+`raw_validation/gate_d_k12_v1/`. M07 K12 is accepted only as an alpha-local,
+deterministic authority seam. The next active unit is M08 K13 `C-NORM`.

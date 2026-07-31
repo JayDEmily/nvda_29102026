@@ -1,0 +1,36 @@
+status	path
+ M	ROADMAP_LEDGER_V2.md
+ M	config/proof_blocks.yaml
+ M	config/retained_test_registry.yaml
+ M	data/vocabulary/canonical_vocabulary.json
+ M	data/vocabulary/vocabulary_touch_stamp.json
+ M	docs/vocabulary/vocabulary_registry.md
+ M	project_control/canonical_project_manager/EXEC_PLAN.md
+ M	project_control/canonical_project_manager/VALIDATION_LOG.md
+ M	project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/FULL_READ_MANIFEST.tsv
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_AFFECTED_COMPATIBILITY.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_ARCHITECTURE_CHECKS.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_CHANGED_PATHS.tsv
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_FOCUSED_PROOF.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_GIT_BASE.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_PROOF_BLOCK_CHECK_ALL.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_PROOF_EXECUTOR_CONTRACT.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_RUFF_UNAVAILABLE.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_SHA256SUMS.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_STATIC_CHECKS.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_A_BASELINE.exit_code
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_A_BASELINE_92fe7e1.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_A_CURRENT.exit_code
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_A_CURRENT.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_A_DELTA.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_B.exit_code
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_TIER_B.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_VALIDATION_SUMMARY.md
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_VOCABULARY_AUDIT_M07_POST_STAMP.txt
+??	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/GATE_D_VOCABULARY_PARITY.txt
+??	src/nvda_desk/m07_coefficient_modifier_authority/__init__.py
+??	src/nvda_desk/m07_coefficient_modifier_authority/contracts.py
+??	src/nvda_desk/m07_coefficient_modifier_authority/resolver.py
+ M	tests/tier_a/m07_k12/test_m07_k12_contract.py
+ M	var/vocabulary/synonym_candidates.json

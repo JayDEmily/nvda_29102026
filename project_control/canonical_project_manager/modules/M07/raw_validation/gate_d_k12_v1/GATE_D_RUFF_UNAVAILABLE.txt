@@ -1,0 +1,17 @@
+$ python -m ruff --version
+/opt/pyvenv/bin/python: No module named ruff
+result=UNAVAILABLE
+
+$ uv run --frozen --extra dev ruff check src/nvda_desk/m07_coefficient_modifier_authority tests/tier_a/m07_k12/test_m07_k12_contract.py
+Using CPython 3.13.5 interpreter at: /usr/bin/python3.13
+Creating virtual environment at: .venv
+   Building nvda10 @ file:///mnt/data/nvda_gate_c_resume/Nvda11
+  × Failed to download `openpyxl==3.1.5`
+  ├─▶ Failed to fetch:
+  │   `https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl`
+  ╰─▶ HTTP status client error (404 Not Found) for url
+      (https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/c0/da/977ded879c29cbd04de313843e76868e6e13408a94ed6b987245dc7c8506/openpyxl-3.1.5-py2.py3-none-any.whl)
+  help: `openpyxl` (v3.1.5) was included because `nvda10[dev]` (v0.1.0)
+        depends on `openpyxl`
+result=UNAVAILABLE_LOCKED_DEPENDENCY_404
+disposition=no unpinned or substitute linter used

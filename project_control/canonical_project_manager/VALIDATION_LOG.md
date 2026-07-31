@@ -1276,3 +1276,38 @@ stub was used. Exact outputs are under
 Implement the smallest M07 K12 public seam. Gate D remains bounded to M07
 coefficient/modifier authority and cannot acquire generic policy, capital,
 strategy, replay, transaction or downstream-mutation authority.
+
+## 2026-07-31 — M07 K12 Gate D implementation acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The bounded M07 package now exports the exact `PolicyBundle`,
+`ModifierDecision` and `ModifierApplicationReceipt` contracts, together with a
+pure deterministic resolver and receipt builder. Invalid copied bundle or
+decision material is revalidated at the public seam; empty owner identity is
+rejected rather than fabricated.
+
+| Check | Result |
+|---|---|
+| Focused K12 proof | PASS — 20 / 20 |
+| Reference and false-positive proof | PASS — 11 / 11; five mutants killed |
+| Direct M07 legacy compatibility | PASS — 30 / 30 |
+| Proof-block manifest | PASS — 55 / 55 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier A exact baseline delta | 1,354 passed / 267 failed versus 1,345 / 274 at `92fe7e179dfcc0642cb35325cfaab1133ad978bc`; zero new failing nodes, seven resolved |
+| Tier B | PASS — 49 / 49 |
+| M07 vocabulary | PASS — zero candidates / 16 scoped files; production package added to namespace scope and stamp current |
+| Static and architecture checks | PASS |
+| Pinned Ruff | UNAVAILABLE — configured mirror returned HTTP 404 for locked `openpyxl==3.1.5`; no substitute used |
+
+The implementation remains side-effect-free and carries no generic policy,
+capital, playbook, execution, lifecycle, replay, transaction or downstream
+mutation authority. Exact evidence is retained under
+`project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1/`.
+
+### Next action
+
+Open M08 K13 `C-NORM`. No M08 production change is authorised until its
+catalogue/eligibility proposition and minimum truthful proof pass.

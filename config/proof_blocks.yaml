@@ -944,10 +944,13 @@ proof_blocks:
 
   - proof_block_id: m07_k12_coefficient_modifier_contract
     tier: Tier A
-    lifecycle: candidate_current_mvp_c_proof_gate_d_expected_red
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m07_k12/test_m07_k12_contract.py
     owns:
+      - src/nvda_desk/m07_coefficient_modifier_authority/__init__.py
+      - src/nvda_desk/m07_coefficient_modifier_authority/contracts.py
+      - src/nvda_desk/m07_coefficient_modifier_authority/resolver.py
       - tests/tier_a/m07_k12/test_m07_k12_contract.py
       - tests/support/m07_k12_contract_harness.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
@@ -955,5 +958,8 @@ proof_blocks:
       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml

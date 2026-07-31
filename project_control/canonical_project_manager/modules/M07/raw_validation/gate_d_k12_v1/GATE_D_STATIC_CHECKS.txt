@@ -1,0 +1,8 @@
+$ git diff --check
+git_diff_check_exit=0
+
+$ python -m compileall -q src/nvda_desk/m07_coefficient_modifier_authority tests/tier_a/m07_k12/test_m07_k12_contract.py
+compileall_exit=0
+
+$ line length > 100
+line_length_gt_100=0

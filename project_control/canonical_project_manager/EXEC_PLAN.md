@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M07_GATE_D`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M08_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -160,10 +160,10 @@ After Gate C passes, Gate D:
 - M07 K12 C-NORM is accepted in runtime-ownership section 7.7, vocabulary
   section 10.16 and architecture section 11.10.3.1; the exact public contracts
   are `PolicyBundle`, `ModifierDecision` and `ModifierApplicationReceipt`.
-- M07 K12 C-PROOF is accepted: 11 reference and false-positive checks pass,
-  all five named mutants are killed, the M07 vocabulary boundary is clean and
-  seven exact production-facing cases remain red because the canonical public
-  package is absent.
+- M07 K12 satisfies C-NORM, C-PROOF and bounded Gate D: 20 focused cases pass,
+  all five named mutants remain killed, the seven expected-red production cases
+  are green, copied invalid authority is revalidated, and the exact Tier A
+  shadow comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -177,37 +177,37 @@ accepted seam is offline, contract-driven, fail-closed and explicitly volatile;
 it does not establish live provider connectivity, durable replay, M02 calendar
 semantics, M03 preparation or downstream decision authority.
 
+M07 satisfies `C-NORM`, `C-PROOF` and bounded K12 Gate D. The accepted package
+is immutable, deterministic and side-effect-free; it does not create generic
+policy, capital, playbook, execution, lifecycle, replay, transaction or
+external-state-mutation authority.
+
 ### Queued
 
-- M07: implement the bounded K12 public seam; no generic policy, capital,
-  strategy, replay, transaction or downstream-mutation authority is open.
 - M08: add the K13 catalogue/eligibility identity, ordering, tie-break,
   stand-down and lifecycle-carriage proposition; then minimum proof.
 
 ## 8. Immediate work
 
-Implement the smallest M07 K12 public seam required by the accepted proof:
-`PolicyBundle`, `ModifierDecision`, `ModifierApplicationReceipt`, deterministic
-bundle resolution and receipt construction. Preserve lawful absence,
-authority-owned precedence/conflict, post-algebra hard bounds, deterministic
-lineage and the side-effect boundary.
+Open M08 K13 `C-NORM`. Reconcile the accepted Atlas K13 lineage with current
+playbook contracts and define the smallest numbered proposition for catalogue
+identity/version, deterministic eligibility ordering and tie-breaks, stand-down
+semantics and lifecycle carriage. Do not change M08 production code before that
+normative proposition and minimum truthful proof pass.
 
-Use the existing M07 module records, validation log and proof registry. Do not
-create a generic policy engine, a new roadmap, a receipt hierarchy or another
-worker/tester archive pair.
+Use the existing M08 module record, validation log and proof/vocabulary
+registries. Do not recreate the retired MLC sequence or create another roadmap.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M04 K07 Gate D;
-2. M01 proof and Gate D;
-3. M07 and M08 normative/proof slices;
-4. M02 then M03;
-5. M05 and M06 when dependencies are ready;
-6. M09, M10, M11 and M12;
-7. M00 final composition;
-8. final alpha consolidation.
+1. M08 normative/proof work, followed by its smallest lawful Gate D slice;
+2. M02 then M03;
+3. M05 and M06 when dependencies are ready;
+4. M09, M10, M11 and M12;
+5. M00 final composition;
+6. final alpha consolidation.
 
 M07 and M08 may be completed before M01 if that shortens the critical path to
 M05. M05 and M06 may proceed independently after prerequisites. Canonical

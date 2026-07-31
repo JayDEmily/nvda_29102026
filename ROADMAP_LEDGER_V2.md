@@ -8,9 +8,9 @@
 | Branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` |
 | Resumed source checkpoint | `c9122e9d732f01de5f08af4b366df255270b7d0f` |
 | Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
-| Latest accepted implementation slice | M01 source-admission contract |
-| Current active slice | M07 K12 bounded Gate D implementation |
-| Production implementation | open only for the bounded M07 K12 public seam |
+| Latest accepted implementation slice | M07 K12 coefficient/modifier authority |
+| Current active slice | M08 K13 C-NORM |
+| Production implementation | closed for M08 until C-NORM and C-PROOF pass |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -29,7 +29,7 @@ Historical MLC records remain evidence. They are not mandatory future leaves.
 | M13 state kernel | passed | independently passed | accepted implementation retained |
 | M04 packet protocol / K07 | passed — `docs/09.1...` section 9.10 | passed — 271 admitted cases plus retained partial case | `GATE_D_ACCEPTED` |
 | M01 source admission | passed | passed — 18 focused public-seam cases | `GATE_D_ACCEPTED` |
-| M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 11 reference/mutant checks; seven exact production-red cases | `GATE_D_ACTIVE` |
+| M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M08 playbook catalogue | missing K13 catalogue/eligibility decision meaning | closed pending norm | `C_NORM_REQUIRED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
@@ -47,22 +47,30 @@ vocabulary shadow remains blocked by the same 50 pre-existing shared candidates,
 and pinned Ruff was unavailable because the locked `pytokens==0.4.1` wheel
 returned HTTP 404 from the configured mirror.
 
+
+M07 Gate D acceptance records 20/20 focused proof cases, 30/30 directly affected
+legacy compatibility cases, proof-manifest integrity at 55/55 and the proof
+executor at 21/21. Tier A moved from 1,345 passed / 274 failed to 1,354 passed /
+267 failed: the seven formerly expected-red K12 nodes resolved, two new
+model-copy authority-bypass regressions pass and zero new failing nodes exist.
+Tier B remains 49/49. The M07 namespace is clean across 16 scoped files. Pinned
+Ruff was unavailable because the locked `openpyxl==3.1.5` wheel returned HTTP
+404 from the configured mirror; no unpinned substitute was used.
+
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
 required before implementation.
 
 ## Immediate next action
 
-Implement the bounded M07 K12 public seam:
+Open M08 K13 `C-NORM`:
 
-1. add the explicit `m07_coefficient_modifier_authority` package API;
-2. implement immutable bundle/member validation and exact version identity;
-3. resolve applicability, precedence, conflict and post-algebra bounds without
-   consulting caller order, wall-clock state or hidden runtime data;
-4. emit deterministic decisions and non-rejected application receipts without
-   claiming capital, strategy, replay, transaction or downstream mutation;
-5. run focused proof, affected compatibility, architecture and vocabulary
-   checks, then checkpoint the completed M07 slice.
+1. inspect the accepted K13 Atlas lineage and current M08 contracts/consumers;
+2. define exact catalogue and playbook identity/version authority;
+3. define deterministic eligibility ordering, tie-break and stand-down law;
+4. define lifecycle-carriage and closed foreign-authority boundaries;
+5. run the scoped vocabulary/static checks, then open minimum C-PROOF only if
+   the numbered proposition is coherent.
 
-After M07, complete M08 normative/proof work. Later modules follow
-dependency readiness, not paperwork age or numeric `D-xxx` order.
+Later modules follow dependency readiness, not paperwork age or numeric `D-xxx`
+order.

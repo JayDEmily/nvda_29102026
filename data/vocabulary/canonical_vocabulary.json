@@ -69,6 +69,7 @@
         "src/nvda_desk/cognition/modifiers",
         "src/nvda_desk/domain/posture/modifier_application.py",
         "src/nvda_desk/services/coefficient_authority_service.py",
+        "src/nvda_desk/m07_coefficient_modifier_authority",
         "tests/tier_a/m07_k12"
       ]
     }
