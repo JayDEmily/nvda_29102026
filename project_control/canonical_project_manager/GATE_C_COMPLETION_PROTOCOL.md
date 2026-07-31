@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `MVP_FAST_TRACK_ACTIVE_M04_GATE_C_COMPLETE`
+**Status:** `MVP_FAST_TRACK_ACTIVE_M03_DELIVERY_EVIDENCE_ECONOMY`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -50,6 +50,17 @@ This is disproportionate for a `thin_seam` alpha. The numbered doctrine
 requires the smallest proof combination that establishes the accepted claim
 and warns against excessive modularity. The eight leaves were a project-control
 choice, not a top-level normative requirement.
+
+A second measured correction was directed on 2026-07-31 after the accepted M07,
+M08 and M02 slices retained 44,256, 44,897 and 42,555 lines of validation
+material respectively. In each case the decisive result already fit in a short
+summary containing the command outcome, counts and failing-node delta. The
+largest duplicated artefacts were baseline/current full-suite transcripts or
+JUnit XML. Those files did not add a new semantic or behavioural claim.
+
+The current route therefore separates validation execution from evidence
+retention: required checks still run, while duplicate successful raw output is
+not committed by default.
 
 ## 3. Non-negotiable constraints
 
@@ -154,10 +165,28 @@ After `C_PROOF_PASS_GATE_D_OPEN`:
 2. run the targeted admitted proof;
 3. run affected admitted proof;
 4. run architecture/dependency and vocabulary checks where affected;
-5. run the complete legacy suite as shadow evidence when available;
-6. classify new shadow failures without automatically obeying unadmitted tests;
-7. update the existing module record and validation log;
-8. create one checkpoint for the completed module slice.
+5. run the current admitted aggregate route and relevant legacy shadow suite
+   once when available;
+6. compare current failing-node identity with the latest accepted comparable
+   checkpoint; do not rerun an unchanged baseline solely to create another raw
+   transcript;
+7. classify new shadow failures without automatically obeying unadmitted tests;
+8. update the existing module record, validation log and live roadmap with one
+   concise reproducible validation summary; and
+9. create one checkpoint for the completed module slice.
+
+The concise summary must retain the proposition and public seam, exact command
+or stable command locator, declared environment/interpreter, exit status,
+collected/pass/fail/skip counts, failing-node set and delta, material warnings or
+unavailable checks, and pre/post Git state.
+
+Full successful stdout/stderr, duplicate baseline/current transcripts, JUnit XML,
+whole-tree hash listings and repeated copies of unchanged command output are not
+tracked by default. Keep raw output outside the tracked tree and discard it after
+the summary is checked, unless it contains a novel regression, non-deterministic
+result, material environment failure, or evidence expressly required for a
+high-consequence independent review. A baseline must be rerun when its admitted
+set, environment, command route or comparability is stale, changed or Unknown.
 
 There is no checkpoint between every internal coding action. A checkpoint is
 required at a completed semantic slice, before a conflicting module or shared
@@ -187,6 +216,7 @@ Required current records:
 - the accepted architecture report and Atlas trace;
 - one existing module record updated per active behaviour;
 - one current-target full-read manifest per semantic unit;
+- one concise validation summary with reproducible commands and material deltas;
 - the existing validation log;
 - Git checkpoint evidence.
 
@@ -197,33 +227,42 @@ Not required by default:
 - one commit per review activity;
 - one worker archive plus one tester archive per ordinary module;
 - independent control testing for a non-risk control wording update;
-- programme-wide vocabulary or legacy-test reconciliation on each term.
+- programme-wide vocabulary or legacy-test reconciliation on each term;
+- committed full successful test transcripts or JUnit XML;
+- duplicate baseline and current suite output when node-level comparison is
+  reproducible from the accepted checkpoint;
+- exhaustive hash lists for unchanged files already protected by Git.
+
+Evidence must remain sufficient to reproduce and falsify the claim. Economy is
+not permission to omit a failing node, unavailable check, changed environment or
+material diagnostic.
 
 ## 9. Current conversion
 
-| Module | Converted Gate C state | Next action |
+| Module | Current state | Next action |
 |---|---|---|
 | M13 state kernel | accepted implementation checkpoint retained | no repeat Gate C |
-| M04 packet protocol / K07 | `C-NORM PASS`; `C-PROOF PASS` from the existing 239-case reference/matrix/mutant evidence and 11 exact production-red cases | Gate D implementation open |
-| M01 source admission | `C-NORM PASS`; prior 179-file routing retained as navigation only | write minimum `C-PROOF`, then Gate D |
-| M07 coefficient/modifier authority | `C-NORM BLOCKED` on K12 identity/version, precedence, bounds and application receipt | amend K12, then minimum proof |
-| M08 playbook catalogue | `C-NORM BLOCKED` on K13 catalogue and eligibility decision semantics | amend K13, then minimum proof |
+| M04 packet protocol / K07 | `GATE_D_ACCEPTED` | no repeat |
+| M01 source admission | `GATE_D_ACCEPTED` | no repeat |
+| M07 coefficient/modifier authority | `GATE_D_ACCEPTED` | no repeat |
+| M08 playbook catalogue | `GATE_D_ACCEPTED` | no repeat |
+| M02 financial calendar | `GATE_D_ACCEPTED` | no repeat |
+| M03 preparation | `C-NORM` active | close the prepared-envelope and field-resolution proposition, then continue directly through minimum proof and bounded Gate D |
 
-The former requirement for a separate M04 MLC-V worker is superseded. M04 has
-already exceeded the ordinary deterministic-contract proof threshold: its
-reference/matrix/outcome checks pass, all ten declared false-positive mutants
-are detected, and production remains red at the eleven claimed gaps.
+Accepted historical proof and implementation evidence remains valid. The
+evidence-economy amendment does not reopen or downgrade accepted modules and
+does not require deletion or rewriting of their retained raw records.
 
 ## 10. Delivery order
 
 The immediate delivery sequence is:
 
-1. implement the already-open M04 K07 Gate D slice;
-2. complete M01 minimum proof and implementation;
-3. complete M07 and M08 normative/proof slices;
-4. continue through the dependency graph:
-   `M01 → M02 → M03`, then `M05/M06`, `M09`, `M10`, `M11`, `M12`, and
-   final `M00` composition;
+1. complete M03 preparation through `C-NORM → C-PROOF → Gate D` as one
+   uninterrupted semantic delivery unit;
+2. continue through the dependency graph with M05 and M06 when ready;
+3. complete M09, M10, M11 and M12 with risk-triggered independent validation
+   where required;
+4. complete final M00 composition;
 5. operate M14 proof promotion and M15 vocabulary governance continuously.
 
 Dependency readiness may change this order. Numeric module or `D-xxx` order is

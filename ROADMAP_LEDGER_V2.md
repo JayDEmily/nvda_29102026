@@ -5,11 +5,11 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` |
-| Resumed source checkpoint | `c9122e9d732f01de5f08af4b366df255270b7d0f` |
-| Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
+| Branch | `work/gate-c-evidence-economy-m03-continuation-v1` |
+| Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
+| Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M02 K04 financial-calendar authority |
-| Current active slice | M03 preparation C-NORM |
+| Current active slice | M03 preparation delivery; C-NORM currently open |
 | Production implementation | closed for M03 pending C-NORM and C-PROOF |
 | Live/paper/production claim | closed |
 
@@ -21,6 +21,21 @@ The protocol now follows the normative requirement to use the smallest proof
 combination that establishes the accepted claim.
 
 Historical MLC records remain evidence. They are not mandatory future leaves.
+
+## Evidence-retention correction
+
+Required validation still executes. From this branch onward, ordinary module
+acceptance retains one concise reproducible summary rather than committed full
+successful stdout/stderr, duplicate baseline/current transcripts or JUnit XML.
+The summary records commands, environment, exit status, counts, failing-node
+identity and delta, material warnings and Git state. Raw output is retained only
+for novel regressions, non-determinism, material environment failures or
+risk-triggered independent review.
+
+The latest accepted comparable checkpoint supplies the baseline node set unless
+its admitted tests, environment, command route or comparability changed. This
+removes duplicated evidence generation without weakening proof or shadow
+validation.
 
 ## Gate C conversion
 

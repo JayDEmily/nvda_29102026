@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M03_C_NORM`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M03_DELIVERY_EVIDENCE_ECONOMY`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -11,7 +11,10 @@
 The user has directed that the alpha move from control-heavy certification into
 normative, proof and implementation delivery. This plan preserves the accepted
 M00–M15 architecture and the hierarchy `normative documents → tests → code`,
-while removing checkpoints that do not create a new semantic state.
+while removing checkpoints and retained evidence bulk that do not create or
+protect a new semantic state. Required validation still runs; successful raw
+transcripts are not committed by default when a concise reproducible result and
+node-level failure delta establish the same claim.
 
 ## 1. Objective
 
@@ -109,7 +112,7 @@ items, 380 strengthening items, 152 new normative candidates, 94
 contradictions and 494 rejected donor-plumbing items. Implementation must
 preserve those distinctions.
 
-## 6. Proof and implementation economy
+## 6. Proof, implementation and evidence economy
 
 Gate C proof should normally contain:
 
@@ -136,10 +139,25 @@ After Gate C passes, Gate D:
 1. changes the smallest owner-local production surface;
 2. runs targeted and affected admitted tests;
 3. runs architecture and vocabulary checks where affected;
-4. runs the full legacy suite as shadow evidence when available;
-5. records new failures without treating unadmitted tests as automatic
-   authority;
-6. checkpoints the completed slice.
+4. runs the current admitted aggregate route and relevant shadow suite once,
+   when available;
+5. compares failing node identity with the latest accepted comparable checkpoint;
+   it does not rerun the unchanged baseline merely to regenerate a duplicate
+   transcript;
+6. records the exact command or command locator, declared environment, exit
+   status, result counts, failing-node set and delta, material warnings, and
+   pre/post Git state in one concise validation summary;
+7. keeps full raw stdout, stderr or JUnit output outside the tracked tree unless
+   it contains a novel regression, non-deterministic result, material environment
+   failure, or evidence expressly required for high-consequence independent
+   review;
+8. updates the existing module record, validation log and live roadmap; and
+9. creates one checkpoint for the completed semantic slice.
+
+This is an evidence-retention correction, not a validation reduction. No
+blocking proof may be skipped, narrowed, suppressed or represented as run when
+it did not execute. A baseline must be rerun when its environment, admitted set,
+command route or comparability is stale or Unknown.
 
 ## 7. Current state
 
