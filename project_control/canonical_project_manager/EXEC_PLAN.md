@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M03_DELIVERY_EVIDENCE_ECONOMY`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -197,6 +197,11 @@ command route or comparability is stale or Unknown.
   pass, all six named mutants remain killed, the seven expected-red production
   cases and four bounded compatibility obligations are green, and the exact
   Tier A shadow comparison contains zero new failing nodes.
+- M03 K05/K06 satisfies C-NORM, C-PROOF and bounded Gate D: 25 focused
+  cases pass, all six named mutants remain killed, the seven expected-red
+  production cases and overlapping C-008/C-011/C-012 assertions are green,
+  copied authority is revalidated, and the exact Tier A comparison contains
+  zero new failing nodes.
 
 ### Converted decision
 
@@ -226,19 +231,26 @@ owns exact four-layer calendar fact, snapshot and projection meaning; it is
 immutable, deterministic and side-effect-free, and its legacy reference and
 operational surfaces are bounded adapters rather than competing owners.
 
+M03 satisfies `C-NORM`, `C-PROOF` and bounded K05/K06 Gate D. The accepted
+package owns typed prepared-envelope, field-resolution and derivation-lineage
+meaning; it is immutable, deterministic and side-effect-free, and its legacy
+snapshot/context mappings are bounded compatibility views rather than competing
+prepared-data owners.
+
 ### Queued
 
-- M03 preparation: close the exact typed prepared-envelope, field-resolution and lineage proposition before opening proof or production code.
+- M05 serial cognition: close K08 common stage context and K09 ordered serial-candidate authority before opening proof or production code.
+- M06 parallel risk follows independently after the active M05 normative slice unless shared-file overlap requires serial integration.
 
 ## 8. Immediate work
 
-M03 `C-NORM` and `C-PROOF` are accepted. Execute bounded M03 Gate D:
+Open M05 K08/K09 `C-NORM` as one bounded serial-cognition proposition:
 
-1. implement the frozen `PreparedDataEnvelope`, source/capture reference, typed payload and derivation-receipt contracts;
-2. implement explicit field candidate, policy, resolution receipt and fail-closed resolver law;
-3. implement one deterministic side-effect-free `PreparedDataBuilder`;
-4. extend existing runtime lineage and preparation compatibility surfaces only enough to carry the canonical M03 authority without fabricating missing identity;
-5. resolve the seven exact-red public-seam cases, then run focused and affected validation with concise evidence retention.
+1. define one common stage-context identity/version/time/fingerprint contract plus narrow stage-specific carriers;
+2. preserve the six ordered candidate-forming stages and explicit stage ownership;
+3. define one final serial candidate with complete stage, policy, modifier, playbook and prepared-input lineage;
+4. keep M06 parallel-risk, M09 capital, execution, position and lifecycle authority closed;
+5. admit only the minimum normative vocabulary and public package boundary needed to open truthful C-PROOF.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 
@@ -246,11 +258,10 @@ Do not recreate the retired MLC sequence or create another roadmap.
 
 Recommended sequence from the current state:
 
-1. M02 then M03;
-2. M05 and M06 when dependencies are ready;
-3. M09, M10, M11 and M12;
-4. M00 final composition;
-5. final alpha consolidation.
+1. M05 then M06, with either able to proceed independently after its own accepted boundary;
+2. M09, M10, M11 and M12;
+3. M00 final composition;
+4. final alpha consolidation.
 
 M07 and M08 may be completed before M01 if that shortens the critical path to
 M05. M05 and M06 may proceed independently after prerequisites. Canonical

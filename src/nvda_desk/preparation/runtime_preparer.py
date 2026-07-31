@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime
 from typing import Any
 
+from nvda_desk.contracts.prepared_data import PreparedDataEnvelope
 from nvda_desk.ingress.raw_bundle_loader import RealDataBundle, load_api_payload
 
 
@@ -22,6 +23,13 @@ class PreparedRuntimeLineage:
     alignment_policy: str = "unaligned"
     runtime_bar_time_utc: datetime | None = None
     derived_field_names: tuple[str, ...] = ()
+    source_artifact_ids: tuple[str, ...] = ()
+    capture_ids: tuple[str, ...] = ()
+    input_fingerprint: str | None = None
+    input_schema_version: str | None = None
+    input_schema_versions: tuple[tuple[str, str], ...] = ()
+    preparation_policy_version: str | None = None
+    derivation_versions: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(slots=True)
@@ -39,6 +47,7 @@ class PreparedRuntimeSnapshot(Mapping[str, Any]):
     derived_fields: dict[str, Any] = field(default_factory=dict)
     missing_optional_enrichments: list[str] = field(default_factory=list)
     failed_enrichments: list[str] = field(default_factory=list)
+    prepared_envelope: PreparedDataEnvelope | None = None
 
     def __getitem__(self, key: str) -> Any:
         return self.payload[key]
@@ -112,6 +121,62 @@ class RuntimePreparationService:
         """Return a prepared runtime dataset for one or more admitted raw bundles."""
 
         return prepare_runtime_dataset(raw_bundle, runtime_bar_time_utc=runtime_bar_time_utc)
+
+    def prepare_envelope(
+        self, envelope: PreparedDataEnvelope
+    ) -> PreparedRuntimeSnapshot:
+        """Return the bounded legacy mapping view of one canonical K05 envelope."""
+
+        return prepare_runtime_snapshot_from_envelope(envelope)
+
+
+def prepare_runtime_snapshot_from_envelope(
+    envelope: PreparedDataEnvelope,
+) -> PreparedRuntimeSnapshot:
+    """Adapt a canonical K05 envelope into the existing copy-safe snapshot view."""
+
+    authority = PreparedDataEnvelope.model_validate(
+        envelope.model_dump(mode="python")
+    )
+    payload = authority.payload.model_dump(
+        mode="python", exclude={"kind"}, exclude_none=True
+    )
+    derived_fields = {
+        receipt.semantic_field: deepcopy(receipt.value)
+        for receipt in authority.derivation_receipts
+    }
+    schema_versions = authority.input_schema_versions
+    single_schema_version = (
+        schema_versions[0][1] if len(schema_versions) == 1 else None
+    )
+    return PreparedRuntimeSnapshot(
+        snapshot_id=authority.prepared_id,
+        payload=deepcopy(payload),
+        lineage=PreparedRuntimeLineage(
+            source_kind="prepared_data_envelope",
+            transport="typed_contract",
+            source_snapshot_id=authority.prepared_id,
+            source_sections=("prepared_data_envelope",),
+            alignment_policy="envelope_effective_at_utc",
+            runtime_bar_time_utc=authority.payload.runtime_bar_time_utc,
+            derived_field_names=tuple(sorted(derived_fields)),
+            source_artifact_ids=tuple(
+                sorted({item.source_artifact_id for item in authority.source_capture_refs})
+            ),
+            capture_ids=tuple(
+                sorted({item.capture_id for item in authority.source_capture_refs})
+            ),
+            input_fingerprint=authority.input_fingerprint,
+            input_schema_version=single_schema_version,
+            input_schema_versions=schema_versions,
+            preparation_policy_version=authority.preparation_policy_version,
+            derivation_versions=authority.derivation_versions,
+        ),
+        derived_fields=derived_fields,
+        missing_optional_enrichments=list(authority.missing_optional_enrichments),
+        failed_enrichments=list(authority.failed_mandatory_transformations),
+        prepared_envelope=authority.model_copy(deep=True),
+    )
 
 
 def align_snapshot_to_bar(

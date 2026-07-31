@@ -1015,13 +1015,21 @@ proof_blocks:
 
   - proof_block_id: m03_k05_k06_prepared_data_contract
     tier: Tier A
-    lifecycle: admitted_current_mvp_c_proof_expected_red
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
     owns:
+      - src/nvda_desk/contracts/prepared_data.py
+      - src/nvda_desk/contracts/prepared_context.py
+      - src/nvda_desk/m03_preparation/__init__.py
+      - src/nvda_desk/m03_preparation/builder.py
+      - src/nvda_desk/preparation/field_resolution.py
       - src/nvda_desk/preparation/runtime_preparer.py
+      - src/nvda_desk/preparation/context_packet.py
       - tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
       - tests/support/m03_k05_k06_contract_harness.py
+      - tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py
+      - tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M03/M03_AUTHORITY_WORKER_RECORD_V1.md
       - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md

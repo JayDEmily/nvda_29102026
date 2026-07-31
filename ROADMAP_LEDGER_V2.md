@@ -8,9 +8,9 @@
 | Branch | `work/gate-c-evidence-economy-m03-continuation-v1` |
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M02 K04 financial-calendar authority |
-| Current active slice | M03 K05/K06 preparation delivery; C-NORM and C-PROOF accepted, bounded Gate D open |
-| Production implementation | open only for the exact K05/K06 contract, resolver, builder and lineage delta |
+| Latest accepted implementation slice | M03 K05/K06 prepared-data authority |
+| Current active slice | M05 K08/K09 serial-cognition normative closure |
+| Production implementation | M05 closed until K08/K09 C-NORM and C-PROOF pass |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -47,6 +47,7 @@ validation.
 | M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 23 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M02 financial calendar | passed — `docs/07.1...` section 7.9 | passed — 33 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
+| M03 prepared data / field resolution | passed — `docs/07.1...` section 7.10 | passed — 25 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -89,14 +90,25 @@ were added and zero new failing nodes appeared. Tier B remains 49/49. The M02
 namespace is clean across 23 scoped files. Ruff and Black were unavailable
 because the locked modules are not installed; no substitute was used.
 
+M03 K05/K06 Gate D acceptance records 25/25 focused cases, proof-manifest
+integrity at 58/58 and the proof executor at 21/21. Tier A moved from 1,426
+passed / 270 failed to 1,444 passed / 258 failed: 12 M03 public-seam and
+normative-integrity nodes resolved, six direct integrity cases were added and
+zero new failing nodes appeared. Tier B remains 49/49. The M03 namespace is
+clean across 16 scoped files and 72 governed occurrences. The unsplit Tier A
+route did not terminate after reaching 97%; the complete admitted set was run
+in non-vocabulary and vocabulary partitions for the exact node comparison.
+Ruff and Black were unavailable because the locked modules are not installed;
+no substitute was used.
+
 The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
 required before implementation.
 
 ## Immediate next action
 
-Execute bounded M03 Gate D. Implement the canonical typed envelope, explicit
-field-resolution receipt/resolver, deterministic builder and material runtime
-lineage carriage required by the seven exact-red cases; preserve existing
-preparation behaviour through bounded compatibility views rather than a second
-preparation authority.
+Open M05 K08/K09 serial-cognition `C-NORM`. Close one common stage-context
+contract, narrow stage-specific carriers, six-stage ordering and final serial
+candidate lineage without importing M06 parallel-risk, M09 capital or execution
+authority. M05 proof and production mutation remain closed until that exact
+proposition is accepted.

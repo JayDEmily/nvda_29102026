@@ -205,16 +205,25 @@ def test_production_exports_exact_frozen_public_contracts() -> None:
     envelope_fields = set(api["PreparedDataEnvelope"].model_fields)
     assert {
         "prepared_id",
+        "schema_version",
         "source_capture_refs",
         "input_schema_versions",
         "preparation_policy_version",
+        "alignment_policy_version",
+        "fingerprint_policy_version",
+        "canonicalisation_version",
         "derivation_versions",
         "effective_at_utc",
         "input_fingerprint",
         "prepared_fingerprint",
         "validation_state",
         "completeness_state",
+        "limitations",
+        "failed_mandatory_transformations",
+        "missing_optional_enrichments",
+        "parent_prepared_ids",
         "payload_kind",
+        "payload_schema_version",
         "payload",
         "field_resolution_receipts",
         "derivation_receipts",
@@ -286,6 +295,66 @@ def test_production_explicit_owner_selection_and_conflict_are_fail_closed() -> N
         )
 
 
+def test_production_exact_float_comparison_coalesces_integer_and_float_forms() -> None:
+    api = production_api()
+    market = api["FieldCandidate"].model_validate(
+        production_candidate_payload(valid_candidate(candidate_id="market.spot", value=1))
+    )
+    options = api["FieldCandidate"].model_validate(
+        production_candidate_payload(
+            valid_candidate(
+                candidate_id="options.spot",
+                source_owner="options",
+                value=1.0,
+                source_artifact_id="source.options.1",
+                capture_id="capture.options.1",
+            )
+        )
+    )
+    policy = api["FieldResolutionPolicy"].model_validate(
+        production_policy_payload(valid_policy())
+    )
+
+    receipt = api["resolve_canonical_field"](
+        candidates=(options, market), policy=policy
+    )
+
+    assert receipt.equality_result == "equal"
+    assert receipt.resolution_reason == "semantically_equal_coalesced"
+
+
+def test_production_conflicting_authoritative_owner_cannot_fall_through_to_fallback() -> None:
+    api = production_api()
+    candidates = tuple(
+        api["FieldCandidate"].model_validate(production_candidate_payload(item))
+        for item in (
+            valid_candidate(candidate_id="market.spot", value=99.0),
+            valid_candidate(
+                candidate_id="options.spot.1",
+                source_owner="options",
+                value=100.0,
+                source_artifact_id="source.options.1",
+                capture_id="capture.options.1",
+            ),
+            valid_candidate(
+                candidate_id="options.spot.2",
+                source_owner="options",
+                value=101.0,
+                source_artifact_id="source.options.2",
+                capture_id="capture.options.2",
+            ),
+        )
+    )
+    policy = api["FieldResolutionPolicy"].model_validate(
+        production_policy_payload(
+            valid_policy(authoritative_owner="options", fallback_owners=("market",))
+        )
+    )
+
+    with pytest.raises(api["MandatoryFieldConflictError"]):
+        api["resolve_canonical_field"](candidates=candidates, policy=policy)
+
+
 def test_production_optional_missing_field_returns_explicit_unavailable_receipt() -> None:
     api = production_api()
     policy = api["FieldResolutionPolicy"].model_validate(
@@ -324,10 +393,15 @@ def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -
     envelope = builder.build(
         source_capture_refs=(capture,),
         input_schema_versions={"market.snapshot": "1.0.0"},
+        schema_version="1.0.0",
         preparation_policy_version="prepare.1.0.0",
+        alignment_policy_version="alignment.1.0.0",
+        fingerprint_policy_version="sha256.1.0.0",
+        canonicalisation_version="json.1.0.0",
         derivation_versions={"nvda_return_pct": "1.0.0"},
         effective_at_utc=reference.effective_at_utc,
         payload=payload,
+        payload_schema_version="1.0.0",
         field_resolution_receipts=(receipt,),
         derivation_receipts=(derivation,),
     )
@@ -381,10 +455,15 @@ def test_production_builder_is_order_independent_and_preserves_derivation_inputs
     builder = api["PreparedDataBuilder"]()
     common = {
         "input_schema_versions": {"market.snapshot": "1.0.0"},
+        "schema_version": "1.0.0",
         "preparation_policy_version": "prepare.1.0.0",
+        "alignment_policy_version": "alignment.1.0.0",
+        "fingerprint_policy_version": "sha256.1.0.0",
+        "canonicalisation_version": "json.1.0.0",
         "derivation_versions": {"nvda_return_pct": "1.0.0"},
         "effective_at_utc": valid_capture_reference().effective_at_utc,
         "payload": payload,
+        "payload_schema_version": "1.0.0",
         "derivation_receipts": (derivation,),
     }
     first = builder.build(
@@ -421,3 +500,114 @@ def test_production_runtime_lineage_names_material_m03_authority() -> None:
         "preparation_policy_version",
         "derivation_versions",
     }.issubset(names)
+
+
+def _production_envelope():
+    api = production_api()
+    reference = valid_capture_reference()
+    capture = api["SourceCaptureReference"].model_validate(
+        production_capture_payload(reference)
+    )
+    candidate = api["FieldCandidate"].model_validate(
+        production_candidate_payload(valid_candidate())
+    )
+    policy = api["FieldResolutionPolicy"].model_validate(
+        production_policy_payload(valid_policy())
+    )
+    receipt = api["resolve_canonical_field"](
+        candidates=(candidate,), policy=policy
+    )
+    derivation = api["DerivationReceipt"].model_validate(
+        production_derivation_payload(valid_derivation())
+    )
+    envelope = api["PreparedDataBuilder"]().build(
+        source_capture_refs=(capture,),
+        input_schema_versions={"market.snapshot": "1.0.0"},
+        schema_version="1.0.0",
+        preparation_policy_version="prepare.1.0.0",
+        alignment_policy_version="alignment.1.0.0",
+        fingerprint_policy_version="sha256.1.0.0",
+        canonicalisation_version="json.1.0.0",
+        derivation_versions={"nvda_return_pct": "1.0.0"},
+        effective_at_utc=reference.effective_at_utc,
+        payload=api["PreparedRuntimePayloadV1"](
+            kind="prepared_runtime_v1",
+            runtime_bar_time_utc=reference.effective_at_utc,
+            spot_price=101.0,
+            nvda_return_pct=0.01,
+        ),
+        payload_schema_version="1.0.0",
+        field_resolution_receipts=(receipt,),
+        derivation_receipts=(derivation,),
+    )
+    return api, reference, candidate, policy, receipt, envelope
+
+
+def test_production_receipt_preserves_complete_candidate_and_comparison_evidence() -> None:
+    api, market, options, policy = _production_candidates_and_policy(equal=True)
+    receipt = api["resolve_canonical_field"](
+        candidates=(options, market), policy=policy
+    )
+
+    assert receipt.receipt_id == f"resolution:{receipt.receipt_fingerprint[:24]}"
+    assert receipt.candidate_records == (market, options)
+    assert receipt.candidate_ids == ("market.spot", "options.spot")
+    assert receipt.equality_result == "equal"
+    assert receipt.temporal_alignment_result == "exact"
+    assert receipt.normalisation_evidence == (
+        ("market.spot", ()),
+        ("options.spot", ()),
+    )
+    assert receipt.selected_source_artifact_id == "source.market.1"
+    assert receipt.selected_capture_id == "capture.market.1"
+
+
+def test_production_public_boundaries_revalidate_copied_authority() -> None:
+    api, _, candidate, policy, _, envelope = _production_envelope()
+    forged_candidate = candidate.model_copy(update={"value": "not-a-float"})
+    with pytest.raises(ValueError, match="typed_value"):
+        api["resolve_canonical_field"](
+            candidates=(forged_candidate,), policy=policy
+        )
+
+    from nvda_desk.preparation.runtime_preparer import (
+        prepare_runtime_snapshot_from_envelope,
+    )
+
+    forged_envelope = envelope.model_copy(
+        update={"prepared_fingerprint": "f" * 64}
+    )
+    with pytest.raises(ValueError, match="fingerprint"):
+        prepare_runtime_snapshot_from_envelope(forged_envelope)
+
+
+def test_production_typed_payload_has_no_generic_extension_authority() -> None:
+    api = production_api()
+    with pytest.raises(ValueError, match="extra|forbidden|extensions"):
+        api["PreparedRuntimePayloadV1"].model_validate(
+            {"kind": "prepared_runtime_v1", "extensions": {"capital": 1}}
+        )
+
+
+def test_production_envelope_adapts_into_legacy_views_without_fabricated_lineage() -> None:
+    _, _, _, _, _, envelope = _production_envelope()
+
+    from nvda_desk.preparation.context_packet import build_prepared_context_payload
+    from nvda_desk.preparation.runtime_preparer import (
+        prepare_runtime_snapshot_from_envelope,
+    )
+
+    snapshot = prepare_runtime_snapshot_from_envelope(envelope)
+    context = build_prepared_context_payload(snapshot)
+
+    assert snapshot.prepared_envelope == envelope
+    assert snapshot.lineage.source_artifact_ids == ("source.market.1",)
+    assert snapshot.lineage.capture_ids == ("capture.market.1",)
+    assert snapshot.lineage.input_fingerprint == envelope.input_fingerprint
+    assert snapshot.lineage.input_schema_versions == (("market.snapshot", "1.0.0"),)
+    assert snapshot.payload["spot_price"] == 101.0
+    assert context.prepared_id == envelope.prepared_id
+    assert context.prepared_fingerprint == envelope.prepared_fingerprint
+    assert context.payload_kind == "prepared_runtime_v1"
+    assert context.source_artifact_ids == ["source.market.1"]
+    assert context.capture_ids == ["capture.market.1"]

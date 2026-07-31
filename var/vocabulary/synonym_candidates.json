@@ -19,104 +19,10 @@
     "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
     "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py"
   ],
-  "scanned_file_count": 12,
+  "scanned_file_count": 16,
   "vocabulary_touched": true,
-  "fingerprint": "ff7c477e1e3b8b602db6f638259ffbcd8b167c1ce0bad255a0bad9b99775e224",
-  "resolved_occurrence_count": 47,
-  "candidates": [
-    {
-      "phrase": "prepared data",
-      "nearest_slug": "prepared_data_envelope",
-      "nearest_label": "Prepared Data Envelope",
-      "score": 93,
-      "path": "tests/support/m03_k05_k06_contract_harness.py",
-      "resolution_required": "llm_escalation",
-      "occurrence_id": "VOC-OCC-b1442716868aaae0",
-      "raw_phrase": "prepared_data",
-      "nearest_identity": "m03.prepared_data_envelope",
-      "line": 477,
-      "column": 62,
-      "source_context": "    contracts = importlib.import_module(\"nvda_desk.contracts.prepared_data\")",
-      "context_sha256": "fdeaef34cddb3abc7b7ee603a76dda9a05f1542992b3b14899632d8adf0b0fce",
-      "occurrence_kind": "identifier"
-    },
-    {
-      "phrase": "field resolution",
-      "nearest_slug": "field_resolution_receipt",
-      "nearest_label": "Field Resolution Receipt",
-      "score": 93,
-      "path": "tests/support/m03_k05_k06_contract_harness.py",
-      "resolution_required": "llm_escalation",
-      "occurrence_id": "VOC-OCC-d1531bd1b1eeaf78",
-      "raw_phrase": "field_resolution",
-      "nearest_identity": "m03.field_resolution_receipt",
-      "line": 478,
-      "column": 65,
-      "source_context": "    resolution = importlib.import_module(\"nvda_desk.preparation.field_resolution\")",
-      "context_sha256": "c32a924df18bcfd9c7838aefe7bb7252f5e2f0c568ec677af72fa80da0d0ff4b",
-      "occurrence_kind": "identifier"
-    }
-  ],
-  "candidate_classifications": [
-    {
-      "phrase": "prepared data",
-      "path": "tests/support/m03_k05_k06_contract_harness.py",
-      "nearest_slug": "prepared_data_envelope",
-      "classification": {
-        "action": "quarantine",
-        "candidate_slug": "prepared_data",
-        "matched_slug": "prepared_data_envelope",
-        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "admission_review": {
-        "status": "quarantined",
-        "candidate_slug": "prepared_data",
-        "plan": {
-          "classification": {
-            "action": "quarantine",
-            "candidate_slug": "prepared_data",
-            "matched_slug": "prepared_data_envelope",
-            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-          },
-          "proposed_entry": null,
-          "alias_candidates": [],
-          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-        },
-        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "occurrence_id": "VOC-OCC-b1442716868aaae0",
-      "line": 477,
-      "context_sha256": "fdeaef34cddb3abc7b7ee603a76dda9a05f1542992b3b14899632d8adf0b0fce"
-    },
-    {
-      "phrase": "field resolution",
-      "path": "tests/support/m03_k05_k06_contract_harness.py",
-      "nearest_slug": "field_resolution_receipt",
-      "classification": {
-        "action": "quarantine",
-        "candidate_slug": "field_resolution",
-        "matched_slug": "field_resolution_receipt",
-        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "admission_review": {
-        "status": "quarantined",
-        "candidate_slug": "field_resolution",
-        "plan": {
-          "classification": {
-            "action": "quarantine",
-            "candidate_slug": "field_resolution",
-            "matched_slug": "field_resolution_receipt",
-            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-          },
-          "proposed_entry": null,
-          "alias_candidates": [],
-          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-        },
-        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "occurrence_id": "VOC-OCC-d1531bd1b1eeaf78",
-      "line": 478,
-      "context_sha256": "c32a924df18bcfd9c7838aefe7bb7252f5e2f0c568ec677af72fa80da0d0ff4b"
-    }
-  ]
+  "fingerprint": "1766a401a730dabdd4ed33ee7bce6b9e42b15fd7b495b936a6cd7a0e9788cb50",
+  "resolved_occurrence_count": 72,
+  "candidates": [],
+  "candidate_classifications": []
 }

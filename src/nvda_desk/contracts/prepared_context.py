@@ -27,6 +27,16 @@ class PreparedContextPayload(BaseModel):
     alignment_policy: str = Field(min_length=1)
     runtime_bar_time_utc: datetime | None = None
     derived_field_names: list[str] = Field(default_factory=list)
+    source_artifact_ids: list[str] = Field(default_factory=list)
+    capture_ids: list[str] = Field(default_factory=list)
+    input_fingerprint: str | None = None
+    input_schema_version: str | None = None
+    input_schema_versions: dict[str, str] = Field(default_factory=dict)
+    preparation_policy_version: str | None = None
+    derivation_versions: dict[str, str] = Field(default_factory=dict)
+    prepared_id: str | None = None
+    prepared_fingerprint: str | None = None
+    payload_kind: str | None = None
     source_time_utc: datetime | None = None
     source_date: date | None = None
 

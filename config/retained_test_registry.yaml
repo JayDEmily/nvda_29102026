@@ -3696,7 +3696,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a_current
   bounded_family: prepared_data_and_field_resolution
   native_test_path: tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
-  migration_status: module_local_c_proof_expected_red
+  migration_status: module_local_c_proof_and_gate_d_accepted
   normative_basis:
   - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
@@ -3709,8 +3709,9 @@ fast_track_module_local_admissions:
   - tests/support/m03_k05_k06_contract_harness.py
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: Existing PreparedRuntimeSnapshot, PreparedRuntimeLineage, PreparedContextPayload and raw-bundle preparation surfaces were reread against section 7.10; they remain transitional mapping and serialisation surfaces and do not yet implement the canonical K05/K06 M03 public seam.
+  docstring_alignment_status: The canonical nvda_desk.m03_preparation package now exposes PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder; existing snapshot, context and raw-bundle surfaces remain bounded compatibility adapters and do not compete for K05/K06 ownership.
   native_reauthor_required: false
-  admission_reason: The 31 July 2026 MVP C-PROOF gate admits this bounded family for tagged typed-envelope identity, complete source/capture lineage, explicit field-owned coalescence and precedence, fail-closed mandatory conflict, material derivation provenance, deterministic fingerprints and closed foreign authority.
+  admission_reason: The 31 July 2026 MVP Gate D acceptance admits this bounded family for tagged typed-envelope identity, complete source/capture and candidate lineage, explicit versioned comparison and precedence, fail-closed mandatory conflict, material derivation provenance, deterministic fingerprints, copied-authority revalidation and closed foreign authority.
   forbidden_carry_forward: Untagged mappings, caller or container order, silent overwrite, missing candidate lineage, fabricated capture identity, absent derivation inputs or versions, forged fingerprints, hidden live state and preparation claims of candidate, risk, capital, execution, lifecycle, transaction or replay authority must not satisfy M03.
-  notes: Twelve reference and false-positive checks are green while seven production-facing checks remain exact red until the canonical prepared-data contracts, field-resolution seam, builder and runtime-lineage carriage exist. Gate D is open only for that bounded implementation.
+  notes: >-
+    Twenty-five focused cases pass: twelve reference/false-positive cases and thirteen production-facing cases covering the canonical contracts, complete receipt evidence, deterministic order independence, explicit policy and temporal law, tagged payload closure, copied-authority revalidation, runtime-lineage carriage, bounded legacy adaptation, numeric exact-equivalence and authoritative-owner conflict closure.

@@ -7,9 +7,9 @@
 - Contract boundaries: `K05 PreparedDataEnvelope`; `K06 FieldResolutionReceipt`
 - Requirements: `N-03; N-04; C-008; C-011; C-012; M03 share of C-015`
 - Source checkpoint: `d8e1516ee8f091431c7dfcbfde1bd109dab0d12a`
-- Active gate: `Gate D`
-- Checkpoint state: `C_PROOF_ACCEPTED`
-- Gate D: `OPEN`
+- Active gate: `Gate D accepted`
+- Checkpoint state: `GATE_D_ACCEPTED`
+- Gate D: `CLOSED — ACCEPTED`
 
 ## Question
 
@@ -81,3 +81,51 @@ The minimum truthful K05/K06 proof is admitted:
 - seven production-facing assertions remain exact red only because the canonical M03 contract/resolution/builder modules and lineage fields do not yet exist.
 
 No production source changed during C-PROOF. Gate D is open only for the bounded K05/K06 implementation required to resolve those seven exact red cases without weakening the reference or mutant proof.
+
+
+## 2026-07-31 bounded Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M03_K05_K06_PREPARED_DATA_AUTHORITY`
+
+The canonical `nvda_desk.m03_preparation` package now implements the frozen
+K05/K06 public seam. It owns immutable source/capture references, typed prepared
+payloads, explicit field candidates and policies, complete resolution receipts,
+deterministic derivation receipts and one side-effect-free builder. Public
+boundaries revalidate copied Pydantic objects so `model_copy(update=...)` cannot
+bypass the accepted validators. Exact float comparison treats equivalent
+integer/float representations consistently, and conflicting candidates from the
+authoritative owner cannot silently fall through to a fallback owner.
+
+`PreparedRuntimeSnapshot`, `PreparedRuntimeLineage` and `PreparedContextPayload`
+carry bounded M03 compatibility views only when a lawful envelope exists. The
+legacy raw-mapping path remains non-authoritative and receives no fabricated
+source, capture, fingerprint or prepared identity.
+
+### Evidence
+
+- focused K05/K06 proof: PASS — 25 / 25;
+- former exact-red public seam: PASS — 7 / 7;
+- proof-block manifest: PASS — named block and 58 / 58 total;
+- proof-executor contract: PASS — 21 / 21;
+- affected comparison: baseline 79 passed / 33 failed; current 97 / 21; zero new failing nodes, 12 resolved and six added passing cases;
+- Tier A: baseline 1,426 passed / 270 failed; current 1,444 / 258; zero new failing nodes, 12 resolved and six added passing cases;
+- Tier B: PASS — 49 / 49;
+- vocabulary parity: PASS — 4 / 4;
+- M03 vocabulary audit: PASS — zero unresolved candidates across 16 scoped files and 72 governed occurrences;
+- compilation and `git diff --check`: PASS;
+- Ruff and Black: UNAVAILABLE — locked modules are not installed; no substitute used.
+
+The unsplit Tier A command reached 97% but did not terminate in two bounded
+attempts. Complete baseline/current counts were obtained by running the same
+admitted set in non-vocabulary and vocabulary partitions. No failure was
+suppressed or reclassified. Concise evidence is in
+`validation/m03_k05_k06_v1/GATE_D_VALIDATION_SUMMARY.md`; successful raw output
+remains outside Git.
+
+## Next action
+
+Open M05 K08/K09 serial-cognition `C-NORM`. M05 proof and production code remain
+closed until common-stage-context and ordered serial-candidate authority are
+closed by numbered law.

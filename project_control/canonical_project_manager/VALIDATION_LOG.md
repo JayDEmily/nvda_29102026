@@ -1587,3 +1587,40 @@ public-seam proof passes.
 ### Next gate
 
 Execute the bounded M03 Gate D implementation named by the exact-red proof.
+
+
+## 2026-07-31 — M03 K05/K06 Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M03_K05_K06_PREPARED_DATA_AUTHORITY`
+
+The canonical M03 package implements immutable K05 prepared-envelope authority,
+explicit K06 candidate resolution and deterministic derivation evidence. Legacy
+runtime snapshot/context surfaces are bounded views and do not fabricate absent
+identity or acquire downstream authority.
+
+| Check | Result |
+|---|---|
+| Focused K05/K06 proof | PASS — 25 / 25 |
+| Former expected-red public seam | PASS — 7 / 7 |
+| Proof-block manifest | PASS — named block; 58 / 58 total |
+| Proof-executor contract | PASS — 21 / 21 |
+| Affected comparison | baseline 79 passed / 33 failed; current 97 / 21; zero new nodes, 12 resolved, six added passing cases |
+| Tier A comparison | baseline 1,426 passed / 270 failed; current 1,444 / 258; zero new nodes, 12 resolved, six added passing cases |
+| Tier B | PASS — 49 / 49 |
+| Vocabulary parity | PASS — 4 / 4 |
+| M03 vocabulary audit | PASS — 0 unresolved candidates / 16 files / 72 governed occurrences |
+| Compilation and `git diff --check` | PASS |
+| Ruff / Black | UNAVAILABLE — locked modules not installed; no substitute used |
+
+The unsplit Tier A route reached 97% but did not terminate in two bounded
+attempts. The complete admitted set was executed in non-vocabulary and
+vocabulary partitions for exact baseline/current node comparison; zero new
+failing nodes exist. Evidence is under
+`project_control/canonical_project_manager/modules/M03/validation/m03_k05_k06_v1/`.
+
+### Next action
+
+Open M05 K08/K09 serial-cognition `C-NORM`. Proof and production mutation remain
+closed until its exact public proposition is accepted.

@@ -498,18 +498,57 @@ def production_api() -> dict[str, Any]:
 
 
 def production_candidate_payload(candidate: FieldCandidateCase) -> dict[str, Any]:
-    return asdict(candidate)
+    payload = asdict(candidate)
+    payload.update(
+        candidate_state="value",
+        value_type="float",
+        unit=None,
+        effective_to_utc=None,
+        normalisation_operations=(),
+        limitations=(),
+    )
+    return payload
 
 
 def production_policy_payload(policy: FieldPolicyCase) -> dict[str, Any]:
-    return asdict(policy)
+    payload = asdict(policy)
+    payload.update(
+        output_contract_version="1.0.0",
+        admitted_source_roles=("market", "options"),
+        value_type="float",
+        unit=None,
+        temporal_comparison_rule="exact_effective_interval",
+        equality_tolerance=None,
+        allow_degraded_candidates=False,
+        unresolved_consequence="withhold",
+        optional_absence_consequence="unavailable",
+    )
+    return payload
 
 
 def production_capture_payload(reference: CaptureReferenceCase) -> dict[str, Any]:
-    return asdict(reference)
+    payload = asdict(reference)
+    payload.update(
+        source_time_utc=reference.effective_at_utc,
+        source_date=None,
+        temporal_precision="instant",
+        validation_state="valid",
+        limitations=(),
+        semantic_fields=("spot_price", "prior_close"),
+        provider_id=None,
+        acquisition_method=None,
+    )
+    return payload
 
 
 def production_derivation_payload(receipt: DerivationCase) -> dict[str, Any]:
     payload = asdict(receipt)
     payload.pop("receipt_fingerprint")
+    payload.update(
+        input_semantic_fields=("spot_price", "prior_close"),
+        operation="percentage_return",
+        unit_alignment_policy="price_same_currency",
+        temporal_alignment_policy="same_effective_bar",
+        result_state="derived",
+    )
     return payload

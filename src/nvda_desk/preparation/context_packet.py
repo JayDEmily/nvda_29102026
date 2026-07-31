@@ -34,6 +34,28 @@ def build_prepared_context_payload(
         alignment_policy=snapshot.lineage.alignment_policy,
         runtime_bar_time_utc=snapshot.lineage.runtime_bar_time_utc,
         derived_field_names=list(snapshot.lineage.derived_field_names),
+        source_artifact_ids=list(snapshot.lineage.source_artifact_ids),
+        capture_ids=list(snapshot.lineage.capture_ids),
+        input_fingerprint=snapshot.lineage.input_fingerprint,
+        input_schema_version=snapshot.lineage.input_schema_version,
+        input_schema_versions=dict(snapshot.lineage.input_schema_versions),
+        preparation_policy_version=snapshot.lineage.preparation_policy_version,
+        derivation_versions=dict(snapshot.lineage.derivation_versions),
+        prepared_id=(
+            snapshot.prepared_envelope.prepared_id
+            if snapshot.prepared_envelope is not None
+            else None
+        ),
+        prepared_fingerprint=(
+            snapshot.prepared_envelope.prepared_fingerprint
+            if snapshot.prepared_envelope is not None
+            else None
+        ),
+        payload_kind=(
+            snapshot.prepared_envelope.payload_kind
+            if snapshot.prepared_envelope is not None
+            else None
+        ),
         source_time_utc=snapshot.payload.get("source_time_utc"),
         source_date=snapshot.payload.get("source_date"),
     )
@@ -64,7 +86,9 @@ def build_prepared_context_packet(
 
     payload = build_prepared_context_payload(snapshot)
     violations = list(payload.failed_enrichments)
-    source_artifact_ids = [payload.source_snapshot_id] if payload.source_snapshot_id else []
+    source_artifact_ids = list(payload.source_artifact_ids)
+    if not source_artifact_ids and payload.source_snapshot_id:
+        source_artifact_ids = [payload.source_snapshot_id]
     return DmpPacketBuilder.build_prepared_context_packet(
         packet_id=packet_id,
         data=payload,
@@ -75,7 +99,9 @@ def build_prepared_context_packet(
         parentids=parentids,
         dependencyids=dependencyids,
         sourceartifactids=source_artifact_ids,
-        inputfingerprint=fingerprint_prepared_context_payload(payload),
+        inputfingerprint=(
+            payload.input_fingerprint or fingerprint_prepared_context_payload(payload)
+        ),
         reviewtraceid=reviewtraceid,
         validation_violations=violations,
         summary_keyflags=["prepared_context"],
