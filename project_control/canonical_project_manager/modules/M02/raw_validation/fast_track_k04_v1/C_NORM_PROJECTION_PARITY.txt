@@ -1,0 +1,5 @@
+PASS registry_version=2026-07-31-m02-k04-normative-authority-v1
+PASS namespace_set=global,m02,m04,m07,m08
+PASS m02_entries=m02.calendar_fact_candidate,m02.calendar_projection,m02.financial_calendar_snapshot
+PASS entry_count=156
+PASS projection_sha256=62f6042f94c7f9ef91309ba38e87187a42c7512a69b22d67d3f866092c2874fa

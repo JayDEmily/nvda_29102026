@@ -1,0 +1,12 @@
+PASS ownership section
+PASS exact four layers
+PASS candidate identity and temporal law
+PASS coalescence and supersession law
+PASS lawful absence and conflict
+PASS side effect closure
+PASS vocabulary admission
+PASS architecture interface boundary
+PASS registry namespace
+PASS no_production_test_runtime_config_change
+PASS generated_m02_identity_set
+PASS git_diff_check

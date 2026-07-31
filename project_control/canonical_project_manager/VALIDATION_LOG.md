@@ -1430,3 +1430,36 @@ Five new integrity regressions pass. Exact evidence is under
 ### Next action
 
 Open M02 K04 `C-NORM`. M02 proof and production mutation remain closed.
+
+
+## 2026-07-31 — M02 K04 C-NORM acceptance
+
+### Disposition
+
+`PASS:C-NORM:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+The K04 calendar proposition is now closed by numbered authority. Runtime
+ownership section 7.9 defines the exact public contracts, four-layer identity,
+owner-issued candidate facts, equal-value coalescence, explicit supersession,
+unresolved-conflict preservation, lawful absence and deterministic projection.
+Vocabulary section 10.18 and the human registry admit those exact contracts
+under namespace `m02`; architecture section 11.10.3.3 fixes one canonical public
+package boundary.
+
+| Check | Result |
+|---|---|
+| Generated projection parity | PASS — 156 entries; `global`, `m02`, `m04`, `m07`, `m08` |
+| M02 vocabulary audit | PASS — 0 unresolved candidates / 23 scoped files |
+| M02 vocabulary stamp | PASS — matches clean audit fingerprint |
+| Static normative assertions | PASS |
+| `git diff --check` | PASS |
+| M02 production/test/runtime configuration mutation | none |
+| Existing vocabulary proof | 3 passed / 1 expected red: stale assertion omits `m02` |
+
+No test was weakened or edited during C-NORM. Exact evidence is under
+`project_control/canonical_project_manager/modules/M02/raw_validation/fast_track_k04_v1/`.
+
+### Next action
+
+Open M02 K04 `C-PROOF`. Gate D remains closed until the smallest truthful
+public-seam proof passes.

@@ -171,6 +171,10 @@ After Gate C passes, Gate D:
   pass, all five named mutants remain killed, the seven expected-red production
   cases are green, copied authority and nested metadata are revalidated or
   frozen, and the exact Tier A shadow comparison contains zero new failing nodes.
+- M02 K04 C-NORM is accepted in runtime-ownership section 7.9, vocabulary
+  section 10.18 and architecture section 11.10.3.3; the exact public contracts
+  are `CalendarFactCandidate`, `FinancialCalendarSnapshot` and
+  `CalendarProjection`.
 
 ### Converted decision
 
@@ -197,23 +201,17 @@ runtime self-tuning authority.
 
 ### Queued
 
-- M02 K04: close the numbered `FinancialCalendarSnapshot` proposition before
-  opening its minimum public-seam proof.
+- M02 K04: establish the minimum truthful public-seam proof before bounded Gate D.
 
 ## 8. Immediate work
 
-Open M02 K04 `C-NORM`:
+Open M02 K04 `C-PROOF`:
 
-1. read the current M02 calendar/reference authority, Atlas K04 lineage and
-   existing calendar state/projection surfaces in full;
-2. define the exact four semantic layers, candidate identity, coalescence,
-   supersession, projection, time and lawful-absence semantics;
-3. preserve M01 source ownership and M13 transaction mechanics without
-   transferring calendar meaning;
-4. record contradictions and missing meaning before any M02 proof or production
-   mutation;
-5. keep M02 Gate D closed until the bounded proposition and minimum truthful
-   proof are accepted.
+1. update the stale namespace-parity assertion only to the already-admitted M02 namespace and exact identities;
+2. add one bounded reference resolver and explicit false-positive mutants for caller-order selection, derived-source override, unknown-events-as-empty and missing-session defaulting;
+3. prove exact four-layer identity, equal-value coalescence with full lineage, lawful supersession/conflict and projected/degraded/withheld status;
+4. leave production-facing assertions exact red until the canonical M02 package exists;
+5. keep M02 Gate D closed until the proof is accepted.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 

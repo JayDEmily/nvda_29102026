@@ -7,8 +7,8 @@
 - Contract boundary: `K04 FinancialCalendarSnapshot`
 - Requirements: `N-02; C-005; C-018`
 - Source checkpoint: `95e0a866dc7e34c383fd802b2b77a72b661ff18d`
-- Active gate: `C-NORM`
-- Checkpoint state: `DRAFT_IN_PROGRESS_NOT_ACCEPTED`
+- Active gate: `C-PROOF`
+- Checkpoint state: `C_NORM_ACCEPTED`
 - Gate D: `CLOSED`
 
 ## Question
@@ -21,11 +21,11 @@ Is numbered authority sufficient to govern the exact four-layer financial-calend
 
 Section 03.2.N02 already defines the exact four semantic layers, owners, identity/version requirements, precedence, supersession, failure/degradation and provider/persistence separation. Atlas K04 accepts `FinancialCalendarSnapshot`, `CalendarFactCandidate` and `CalendarProjection` as M02 public interfaces. The remaining gap was an exact numbered runtime/public-contract boundary tying those names to owner/emitter/state/consumer law and governed vocabulary.
 
-## Draft C-NORM proposition
+## Accepted C-NORM proposition
 
 `M02-K04-NORMATIVE-AUTHORITY-V1`
 
-The current draft proposition is:
+The accepted proposition is:
 
 1. M02 owns `CalendarFactCandidate`, `FinancialCalendarSnapshot` and `CalendarProjection` meaning.
 2. A candidate belongs to exactly one governed layer and carries explicit semantic-key, value/absence, temporal, source/version, validation and supersession facts.
@@ -44,10 +44,30 @@ The current draft proposition is:
 - `src/nvda_desk/calendar/operational/events.py` provides bounded volatile query state but no explicit owned composition from reference projection.
 - Existing C-005/C-018 proof is therefore expected red until C-PROOF/Gate D.
 
-## Pause boundary
+## 2026-07-31 fast-track C-NORM acceptance
 
-At this checkpoint, the authority/vocabulary amendment and pre-change read manifest are drafted but C-NORM has not been accepted, validated or recorded in the active ExecPlan, roadmap or validation log. No M02 production source, runtime configuration, fixtures or physical proof has changed.
+### Disposition
+
+`PASS:C-NORM:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+Numbered authority now governs the exact K04 public boundary rather than relying on arbitrary layer labels, provider manifests, retained code or historical tests:
+
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md` section 7.9 defines the three canonical contracts, exact four-layer identity, owner-issued candidate facts, equal-value coalescence, explicit supersession, unresolved-conflict preservation, lawful absence and deterministic projection law.
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` section 10.18 admits those exact concepts under namespace `m02` without transferring M01 source authority, M13 transaction mechanics or downstream decision authority.
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md` section 11.10.3.3 fixes one explicit K04 public package API and narrows current bundle, packet, snapshot, trace and compatibility surfaces to adapters only.
+- `docs/vocabulary/vocabulary_registry.md` and the generated projection admit `m02.calendar_fact_candidate`, `m02.financial_calendar_snapshot` and `m02.calendar_projection`.
+
+### Evidence
+
+- human registry parse and generated projection parity: PASS — 156 entries; namespaces `global`, `m02`, `m04`, `m07`, `m08`;
+- M02 scoped vocabulary audit: PASS — zero unresolved candidates across 23 files;
+- M02 vocabulary stamp: PASS — stamp matches the clean report;
+- static normative assertions and `git diff --check`: PASS;
+- M02 production, test, runtime configuration and fixture mutation: none;
+- existing vocabulary parity proof: EXPECTED RED — 3 passed / 1 failed because its prior assertion hard-codes namespaces without `m02`.
+
+Exact outputs and the current full-read manifest are under `raw_validation/fast_track_k04_v1/`. No test was changed during C-NORM.
 
 ## Gate boundary
 
-C-NORM changes numbered authority, vocabulary and programme records only. It does not alter M02 production source, runtime configuration, fixtures or physical proof. Gate D remains closed until the minimum truthful C-PROOF is accepted.
+C-PROOF is open for the smallest truthful K04 public-seam family. It must prove exact four-layer identity; equal-value coalescence with complete lineage; fail-closed unequal/derived override without lawful supersession; mandatory session authority versus lawful degraded/empty event states; deterministic projection identity; and foreign-authority closure. Gate D remains closed.
