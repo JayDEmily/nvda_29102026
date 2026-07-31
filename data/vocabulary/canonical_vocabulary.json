@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-07-31-m03-k05-k06-normative-authority-v1",
+  "registry_version": "2026-07-31-m05-k08-k09-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -13,7 +13,8 @@
     "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace.",
     "The 2026-07-31 M08 K13 amendment admits the exact PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public-contract concepts under a bounded M08 namespace.",
     "The 2026-07-31 M02 K04 amendment admits the exact CalendarFactCandidate, FinancialCalendarSnapshot and CalendarProjection public-contract concepts under a bounded M02 namespace.",
-    "The 2026-07-31 M03 K05/K06 amendment admits the exact PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder public-contract concepts under a bounded M03 namespace."
+    "The 2026-07-31 M03 K05/K06 amendment admits the exact PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder public-contract concepts under a bounded M03 namespace.",
+    "The 2026-07-31 M05 K08/K09 amendment admits StageContext, StageInput, StageOutput, SerialCandidate and SerialRunner under a bounded M05 namespace."
   ],
   "namespaces": {
     "global": {
@@ -143,6 +144,36 @@
         "tests/tier_a/playbook",
         "tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py",
         "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
+      ]
+    },
+    "m05": {
+      "namespace": "m05",
+      "imports": [
+        "global",
+        "m03",
+        "m04",
+        "m07",
+        "m08"
+      ],
+      "scan_paths": [
+        "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+        "docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md",
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/contracts/stage_inputs.py",
+        "src/nvda_desk/contracts/serial_spine.py",
+        "src/nvda_desk/cognition/ingress",
+        "src/nvda_desk/cognition/serial",
+        "src/nvda_desk/domain/execution",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/m05_serial_cognition",
+        "tests/support/m05_k08_k09_contract_harness.py",
+        "tests/tier_a/m05_k08_k09",
+        "tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py",
+        "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+        "tests/tier_a/serial_recommendation",
+        "tests/tier_b/serial_boundaries"
       ]
     }
   },
@@ -1561,6 +1592,130 @@
       ]
     },
     {
+      "namespace": "m05",
+      "canonical_id": "m05.stage_context",
+      "canonical_slug": "stage_context",
+      "canonical_label": "Stage Context",
+      "category": "protocol_surface",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.2",
+      "allowed_aliases": [
+        "StageContext",
+        "common stage context",
+        "common serial-stage context"
+      ],
+      "disallowed_phrases": [
+        "mutable stage scratchpad",
+        "generic prepared mapping used as stage context",
+        "fabricated run or packet identity in stage context",
+        "hidden live-inventory state in stage context",
+        "capital or broker context in serial stage context"
+      ],
+      "notes": [
+        "Definition: Immutable M05 K08 common-context record binding prepared-data identity, material source/capture/time/version/fingerprint lineage, serial-order and runner versions, mapping-policy versions, explicit limitations and closed authority classes for one six-stage serial run.",
+        "Scope: K08 common serial-stage context",
+        "Semantic owner: M05 serial-cognition authority",
+        "Relationships: References one Prepared Data Envelope and any materially consumed M07/M08 authority; shared by Stage Inputs and Stage Outputs without being mutated by a stage.",
+        "Lifecycle: active_k08_contract",
+        "Semantic decisions: M05-K08-K09-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: StageContext; common stage context; common serial-stage context.",
+        "Human disallowed or misleading use: Mutable stage scratchpad; generic prepared mapping; fabricated run or packet identity; hidden live-inventory state; capital or broker context."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.stage_input",
+      "canonical_slug": "stage_input",
+      "canonical_label": "Stage Input",
+      "category": "protocol_surface",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.3",
+      "allowed_aliases": [
+        "StageInput",
+        "serial-stage input carrier"
+      ],
+      "disallowed_phrases": [
+        "generic dictionary used as stage input",
+        "omnibus cognition schema",
+        "duplicated common lineage in stage input",
+        "later-stage input supplied early",
+        "foreign authority smuggled through stage input"
+      ],
+      "notes": [
+        "Definition: Immutable, stage-tagged M05 carrier containing one Stage Context reference and exactly one narrow typed payload for one governed serial stage.",
+        "Scope: K08 stage-local input carrier",
+        "Semantic owner: M05 serial-cognition authority for carrier shape; named stage owner for consumed fact meaning",
+        "Relationships: Derived from admitted prepared and owner-issued facts; consumed by exactly one stage; distinct from the whole prepared payload and every other stage carrier.",
+        "Lifecycle: active_k08_contract",
+        "Semantic decisions: M05-K08-K09-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: StageInput; serial-stage input carrier.",
+        "Human disallowed or misleading use: Generic dictionary carrier; omnibus cognition schema; duplicated common lineage; later-stage input supplied early; foreign authority smuggling."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.stage_output",
+      "canonical_slug": "stage_output",
+      "canonical_label": "Stage Output",
+      "category": "protocol_surface",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.3",
+      "allowed_aliases": [
+        "StageOutput",
+        "serial-stage decision output"
+      ],
+      "disallowed_phrases": [
+        "one stage output used as another stage result",
+        "packet occurrence used as stage domain output",
+        "stage output used as capital decision",
+        "hidden default or caller-order stage result",
+        "stage output without reasons"
+      ],
+      "notes": [
+        "Definition: Immutable, stage-tagged M05 result preserving stage owner, exact status and reasons, Stage Context reference, ordered dependency lineage, materially consumed owner-issued authority and a deterministic semantic fingerprint.",
+        "Scope: K08 stage-local decision output",
+        "Semantic owner: named serial stage for decision meaning; M05 for common carrier and ordering law",
+        "Relationships: May feed only declared later stages and optional M04 Stage Packet carriage; contributes to Serial Candidate lineage without becoming a parallel-risk or capital result.",
+        "Lifecycle: active_k08_contract",
+        "Semantic decisions: M05-K08-K09-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: StageOutput; serial-stage decision output.",
+        "Human disallowed or misleading use: Another stage's result; packet occurrence as domain output; capital decision; hidden default or caller-order result; unreasoned status."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.serial_runner",
+      "canonical_slug": "serial_runner",
+      "canonical_label": "Serial Runner",
+      "category": "authority_surface",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.1",
+      "allowed_aliases": [
+        "SerialRunner",
+        "governed serial coordinator"
+      ],
+      "disallowed_phrases": [
+        "serial runner used as hidden business-rule owner",
+        "partial mapping reporter presented as completed run",
+        "serial runner used as packet identity generator",
+        "serial runner live-inventory side channel",
+        "serial runner used as capital broker or lifecycle engine"
+      ],
+      "notes": [
+        "Definition: Deterministic, side-effect-free M05 coordinator that validates and executes the exact six-stage graph and emits lawful Stage Outputs plus a formed, stand-down, withheld or rejected serial result.",
+        "Scope: M05 K08/K09 owner service",
+        "Semantic owner: M05 serial-cognition authority",
+        "Relationships: Consumes accepted M03/M04/M07/M08 contracts through explicit dependencies; coordinates stage owners without acquiring their semantic authority or downstream state authority.",
+        "Lifecycle: active_k08_k09_service",
+        "Semantic decisions: M05-K08-K09-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: SerialRunner; governed serial coordinator.",
+        "Human disallowed or misleading use: Hidden business-rule owner; partial mapping reporter presented as completed run; packet identity generator; live-inventory side channel; capital, broker or lifecycle engine."
+      ]
+    },
+    {
       "namespace": "global",
       "canonical_id": "global.review_horizon",
       "canonical_slug": "review_horizon",
@@ -2909,7 +3064,7 @@
         "global mutable context",
         "decision owner",
         "generic metadata bag",
-        "stage output"
+        "stage output used as runtime context"
       ],
       "notes": [
         "Definition: Governed umbrella term for immutable prepared facts, references and bounded runtime substrate available to lawful consumers. Scope: runtime information carriage, not a decision or stage.",
@@ -2919,7 +3074,7 @@
         "Lifecycle: active_normative_carrier_term",
         "Semantic decisions: PM-007:SSC-003",
         "Human aliases: prepared runtime context",
-        "Human disallowed or misleading use: global mutable context; decision owner; generic metadata bag; stage output"
+        "Human disallowed or misleading use: global mutable context; decision owner; generic metadata bag; stage output used as runtime context"
       ]
     },
     {
@@ -3122,32 +3277,37 @@
       ]
     },
     {
-      "namespace": "global",
-      "canonical_id": "global.serial_candidate",
+      "namespace": "m05",
+      "canonical_id": "m05.serial_candidate",
       "canonical_slug": "serial_candidate",
       "canonical_label": "Serial Candidate",
       "category": "carrier",
-      "stage_owner": "serial_desk_cognition",
-      "maps_to_contract": "serial_candidate_id",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.5",
       "allowed_aliases": [
+        "SerialCandidate",
+        "six-stage serial candidate",
         "formed candidate",
         "candidate material"
       ],
       "disallowed_phrases": [
-        "authorised position",
-        "order"
+        "eligibility lead used as final serial candidate",
+        "partial-stage candidate",
+        "serial candidate used as capital decision or allocation",
+        "serial candidate used as broker order or fill",
+        "serial candidate used as portfolio lifecycle mutation"
       ],
       "notes": [
-        "Definition: Governed carrier for candidate material formed after all six serial stages and before downstream pre-deployment and capital authority. Scope: candidate state and trace only.",
-        "Scope: after serial stage 6 and before ordered runtime step 9; Is the output of the spine, not the spine itself and not the Capital Deployment Decision.",
-        "Semantic owner: serial desk-cognition authority for formation; downstream consumers are read-only",
-        "Relationships: Result of Serial Desk-cognition; input to pre-deployment and capital authority; may be blocked or declined downstream without changing its historical identity.",
-        "Lifecycle: active_normative_carrier_term",
-        "Semantic decisions: PM-007:SSC-011",
-        "Human aliases: formed candidate; candidate material",
-        "Human disallowed or misleading use: capital decision; authorised position; order; live position",
-        "Machine projection omissions: capital decision [alias-token:capital_deployment_decision]; live position [canonical-token:live_position]"
-      ]
+        "Definition: Immutable M05 K09 formed-candidate result binding the exact six ordered Stage Outputs, prepared/context lineage, M07/M08 authority lineage, playbook/variant/expression identity and bounded lifecycle-intent handoff without downstream capital or broker authority.",
+        "Scope: after serial stage 6 and before downstream pre-deployment/capital authority; output of the spine, not the spine itself",
+        "Semantic owner: M05 serial-cognition authority; downstream consumers are read-only",
+        "Relationships: Result of Serial Desk-cognition; may be consumed by downstream M09 with independent M06/M07 products; distinct from an eligibility lead, Parallel Risk result, capital decision, placement intent, order, fill or live position.",
+        "Lifecycle: active_k09_contract",
+        "Semantic decisions: PM-007:SSC-011, M05-K08-K09-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: SerialCandidate; six-stage serial candidate; formed candidate; candidate material.",
+        "Human disallowed or misleading use: eligibility lead as final candidate; partial-stage candidate; capital decision or allocation; broker order or fill; portfolio lifecycle mutation."
+      ],
+      "raw_or_derived": "derived"
     },
     {
       "namespace": "global",

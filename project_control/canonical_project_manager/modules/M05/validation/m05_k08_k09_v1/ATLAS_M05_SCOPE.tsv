@@ -1,0 +1,11 @@
+source	locator	accepted_truth
+Atlas workbook	Target Modules!M05	M05 serial_cognition owns six ordered candidate-forming stages and stage-local carriers; public interfaces StageContext, StageInput/Output, SerialCandidate and SerialRunner; runtime dependencies M03, M04, M07 and M08
+Atlas workbook	Contracts!K08	StageContext = common metadata plus narrow stage-specific carriers under N-05/C-013
+Atlas workbook	Contracts!K09	SerialCandidate = six-stage ordered candidate with lineage under C-025/C-027/C-031/C-033/C-034
+Atlas workbook	Surface Map!5.7	Serial spine is locked/thin_seam; six-stage orchestration exists but cannot bridge missing lanes
+Atlas workbook	Cohort Trace!SC-SERIAL-COGNITION-CONTRACTS-187	Preserve six-stage order, typed reasons and stage vocabularies; no source-fact fabrication or capital authority
+Atlas workbook	Cohort Trace!SC-POSTURE-PERMISSION-CONTRACTS-188	Posture owns permission and hard invariants; BLOCK dominates; inventory absence/context explicit; modifier lineage remains detached; no deployment sizing
+Atlas workbook	Cohort Trace!SC-PLAYBOOK-ELIGIBILITY-CONTRACTS-189	Eligibility preserves family/variant/expression identity, watch-only distinction and explicit reasons; no broker or capital authority
+Atlas workbook	Cohort Trace!SC-EXECUTION-LIFECYCLE-CONTRACTS-190	Serial expression is candidate handoff material only; position context explicit; no capital sizing or downstream lifecycle execution
+Atlas workbook	Cohort Trace!SC-HANDOFF-CAPITAL-AUTHORITY-CONTRACTS-191	Explicit exclusion: downstream risk/capital/execution handoff belongs to M06/M09/M10/M13, not M05
+Atlas workbook	Normative Packages!N-05	Common metadata and stage-specific carriers accepted in docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md

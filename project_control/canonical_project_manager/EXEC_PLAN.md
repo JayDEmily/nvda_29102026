@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_C_NORM`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M05_K08_K09_C_PROOF`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -239,18 +239,18 @@ prepared-data owners.
 
 ### Queued
 
-- M05 serial cognition: close K08 common stage context and K09 ordered serial-candidate authority before opening proof or production code.
+- M05 serial cognition: K08/K09 C-NORM accepted; admit the minimum exact proof before production code.
 - M06 parallel risk follows independently after the active M05 normative slice unless shared-file overlap requires serial integration.
 
 ## 8. Immediate work
 
-Open M05 K08/K09 `C-NORM` as one bounded serial-cognition proposition:
+Open M05 K08/K09 `C-PROOF` as one bounded serial-cognition proof family:
 
-1. define one common stage-context identity/version/time/fingerprint contract plus narrow stage-specific carriers;
-2. preserve the six ordered candidate-forming stages and explicit stage ownership;
-3. define one final serial candidate with complete stage, policy, modifier, playbook and prepared-input lineage;
-4. keep M06 parallel-risk, M09 capital, execution, position and lifecycle authority closed;
-5. admit only the minimum normative vocabulary and public package boundary needed to open truthful C-PROOF.
+1. prove one immutable StageContext and six exact tagged StageInput/StageOutput pairs;
+2. prove the governed stage order and reject skipped, duplicated, reordered or partial runs;
+3. prove formed, stand-down, withheld and rejected results without fabricated identity, time or owner authority;
+4. prove complete M03/M04/M07/M08 lineage and deterministic SerialCandidate meaning;
+5. keep production code and M06/M09/downstream authority closed until the exact production-facing assertions are admitted and red.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 

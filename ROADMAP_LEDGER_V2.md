@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M03 K05/K06 prepared-data authority |
-| Current active slice | M05 K08/K09 serial-cognition normative closure |
-| Production implementation | M05 closed until K08/K09 C-NORM and C-PROOF pass |
+| Current active slice | M05 K08/K09 serial-cognition proof admission |
+| Production implementation | M05 closed until K08/K09 C-PROOF passes |
 | Live/paper/production claim | closed |
 
 ## Why the route changed

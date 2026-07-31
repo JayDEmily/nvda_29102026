@@ -1,28 +1,38 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "m03",
+  "namespace": "m05",
   "imported_namespaces": [
-    "global"
+    "global",
+    "m03",
+    "m04",
+    "m07",
+    "m08"
   ],
   "scan_paths": [
+    "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
     "docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md",
     "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
     "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
     "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
-    "src/nvda_desk/contracts/prepared_data.py",
-    "src/nvda_desk/contracts/prepared_context.py",
-    "src/nvda_desk/preparation",
-    "src/nvda_desk/m03_preparation",
-    "tests/support/m03_k05_k06_contract_harness.py",
-    "tests/tier_a/m03_k05_k06",
-    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
-    "tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py"
+    "src/nvda_desk/contracts/stage_inputs.py",
+    "src/nvda_desk/contracts/serial_spine.py",
+    "src/nvda_desk/cognition/ingress",
+    "src/nvda_desk/cognition/serial",
+    "src/nvda_desk/domain/execution",
+    "src/nvda_desk/runtime/orchestrator.py",
+    "src/nvda_desk/m05_serial_cognition",
+    "tests/support/m05_k08_k09_contract_harness.py",
+    "tests/tier_a/m05_k08_k09",
+    "tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py",
+    "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "tests/tier_a/serial_recommendation",
+    "tests/tier_b/serial_boundaries"
   ],
-  "scanned_file_count": 16,
-  "vocabulary_touched": true,
-  "fingerprint": "1766a401a730dabdd4ed33ee7bce6b9e42b15fd7b495b936a6cd7a0e9788cb50",
-  "resolved_occurrence_count": 72,
+  "scanned_file_count": 30,
+  "vocabulary_touched": false,
+  "fingerprint": "76e0152f70cc42e1998078f844fa346c3d005a257fd70c3d0f81f6e9451d4e26",
+  "resolved_occurrence_count": 75,
   "candidates": [],
   "candidate_classifications": []
 }
