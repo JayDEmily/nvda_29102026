@@ -129,3 +129,9 @@ remains outside Git.
 Open M05 K08/K09 serial-cognition `C-NORM`. M05 proof and production code remain
 closed until common-stage-context and ordered serial-candidate authority are
 closed by numbered law.
+
+## 2026-07-31 adversarial Gate D repair acceptance
+
+`PASS:GATE_D_REPAIR_ACCEPTED:M03_K05_K06_RECONCILIATION`
+
+The accepted K05/K06 seam now rejects degraded-source promotion, missing multi-source resolution evidence, field-receipt/payload disagreement and derivation-receipt/payload disagreement. Four new adversarial cases pass; the complete M03/M05/M06 repair comparison resolves exactly 12 proof-baseline failures with zero new failing nodes. Evidence: `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/GATE_D_REPAIR_VALIDATION_SUMMARY.md`.

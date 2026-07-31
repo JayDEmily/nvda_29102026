@@ -49,3 +49,9 @@ The canonical `nvda_desk.m06_parallel_risk` package now implements the exact K10
 Thirty focused cases pass: 13 reference/mutant cases, seven formerly expected-red production assertions and ten Gate D integrity cases. The affected baseline/current comparison resolves the seven M06 seam failures plus the C-020/C-035 instance-isolation defect, with zero new failing nodes. M09 retains K11 final-risk and capital authority.
 
 The user requested a clean full-history checkpoint after M06. M09 has not started.
+
+## 2026-07-31 adversarial Gate D repair acceptance
+
+`PASS:GATE_D_REPAIR_ACCEPTED:M06_K10_THRESHOLD_AND_VERSION_DOMAINS`
+
+The accepted K10 seam now rejects negative VIX thresholds and closes evaluator/aggregation labels to the two implemented v1 authorities. Unsupported future labels fail during input construction rather than executing fixed v1 behaviour under an arbitrary name. Evidence: `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/GATE_D_REPAIR_VALIDATION_SUMMARY.md`.

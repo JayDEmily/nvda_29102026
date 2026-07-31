@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M06_K10_GATE_D_ACCEPTED`
+**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M03_M05_M06_ADVERSARIAL_REPAIR_ACCEPTED`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -197,17 +197,17 @@ command route or comparability is stale or Unknown.
   pass, all six named mutants remain killed, the seven expected-red production
   cases and four bounded compatibility obligations are green, and the exact
   Tier A shadow comparison contains zero new failing nodes.
-- M03 K05/K06 satisfies C-NORM, C-PROOF and bounded Gate D: 25 focused
+- M03 K05/K06 satisfies C-NORM, C-PROOF and repaired bounded Gate D: 29 focused
   cases pass, all six named mutants remain killed, the seven expected-red
   production cases and overlapping C-008/C-011/C-012 assertions are green,
   copied authority is revalidated, and the exact Tier A comparison contains
   zero new failing nodes.
-- M05 K08/K09 satisfies C-NORM, C-PROOF and bounded Gate D: 32 focused
+- M05 K08/K09 satisfies C-NORM, C-PROOF and repaired bounded Gate D: 37 focused
   cases pass, all seven named mutants remain killed, the seven expected-red
   production cases are green, bounded carrier facts and exact input/output
   lineage are enforced, terminal binding payloads fail closed, and the exact
   Tier A comparison contains zero new failing nodes.
-- M06 K10 satisfies C-NORM, C-PROOF and bounded Gate D: 30 focused
+- M06 K10 satisfies C-NORM, C-PROOF and repaired bounded Gate D: 33 focused
   cases pass, all seven admitted production-facing failures are green, exact
   M03/M04/M07 lineage and six risk families are preserved, unknown/degraded
   evidence remains explicit, module-global policy-decision state is removed,
@@ -262,21 +262,20 @@ authority.
 
 ### Queued
 
-- Bounded M03/M05/M06 adversarial repair and repaired clean full-history checkpoint.
-- M09 K11/fresh-capital authority remains next but must not start before repair acceptance.
+- Publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair.
+- M09 K11/fresh-capital authority is next; it has not started.
 
 ## 8. Immediate work
 
-Complete one bounded adversarial repair tranche across the already implemented M03, M05 and M06 public seams. The repair must reconcile source/receipt/payload authority, exact M05 state and terminal-result identity/evidence, and M06 threshold/version domains; admit the new adversarial and metamorphic proof; rerun affected, Tier B and comparable Tier A validation; then publish a clean full-history checkpoint. M09 remains closed until this repair is accepted.
+Pause and publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair. The repair resolves 12 exact proof-baseline failures with zero new Tier A failure nodes. M09 K11/fresh-capital authority remains next and has not started.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M06 parallel risk;
-2. M09, M10, M11 and M12;
-3. M00 final composition;
-4. final alpha consolidation.
+1. M09, M10, M11 and M12;
+2. M00 final composition;
+3. final alpha consolidation.
 
 M07 and M08 may be completed before M01 if that shortens the critical path to
 M05. M05 and M06 may proceed independently after prerequisites. Canonical

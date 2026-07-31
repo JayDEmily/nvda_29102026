@@ -118,3 +118,9 @@ Exact commands and comparison evidence are recorded in
 ## Next action
 
 Pause at the user-requested M05 checkpoint. On resumption, open M06 parallel-risk `C-NORM`. M09 capital and downstream authority remain closed.
+
+## 2026-07-31 adversarial Gate D repair acceptance
+
+`PASS:GATE_D_REPAIR_ACCEPTED:M05_K08_K09_STATE_AND_RESULT_IDENTITY`
+
+The accepted K08/K09 seam now closes prepared state domains, enforces valid/degraded gap consistency, requires a real failed-stage output for every non-formed terminal result and gives every terminal result a deterministic `serial_result_id` distinct from formed `candidate_id`. The supported identity proposition from the selected M05 handoff was admitted; its cumulative-dependency, six-context, generated-output and generic-carrier alternatives were dismissed. Evidence: `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/GATE_D_REPAIR_VALIDATION_SUMMARY.md`.

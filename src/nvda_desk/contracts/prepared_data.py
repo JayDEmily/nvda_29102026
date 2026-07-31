@@ -42,6 +42,16 @@ def _sorted_pairs(value: Any) -> tuple[tuple[str, str], ...]:
     return tuple(sorted((str(key), str(version)) for key, version in pairs))
 
 
+def _prepared_values_equal(left: PreparedScalar, right: PreparedScalar) -> bool:
+    """Compare governed scalar facts without conflating booleans and numbers."""
+
+    if isinstance(left, bool) or isinstance(right, bool):
+        return type(left) is type(right) and left == right
+    if isinstance(left, (int, float)) and isinstance(right, (int, float)):
+        return float(left) == float(right)
+    return left == right
+
+
 class SourceCaptureReference(BaseModel):
     """Admitted source artefact and repository capture identity carried into M03."""
 
@@ -254,6 +264,58 @@ class PreparedDataEnvelope(BaseModel):
         receipt_ids = tuple(item.receipt_id for item in self.field_resolution_receipts)
         if len(receipt_ids) != len(set(receipt_ids)):
             raise ValueError("duplicate_field_resolution_receipt")
+
+        degraded_sources = tuple(
+            item for item in self.source_capture_refs if item.validation_state == "degraded"
+        )
+        if degraded_sources and self.validation_state != "degraded":
+            raise ValueError("degraded_source_cannot_form_valid_envelope")
+        degraded_limitations = {
+            limitation for item in degraded_sources for limitation in item.limitations
+        }
+        if not degraded_limitations <= set(self.limitations):
+            raise ValueError("degraded_source_limitations_not_preserved")
+
+        receipts_by_field: dict[str, list[FieldResolutionReceipt]] = {}
+        for receipt in self.field_resolution_receipts:
+            receipts_by_field.setdefault(receipt.semantic_field, []).append(receipt)
+        if any(len(items) != 1 for items in receipts_by_field.values()):
+            raise ValueError("duplicate_field_resolution_semantic_field")
+
+        payload_fields = set(PreparedRuntimePayloadV1.model_fields) - {"kind"}
+        source_refs_by_field: dict[str, set[tuple[str, str]]] = {}
+        for source in self.source_capture_refs:
+            for semantic_field in source.semantic_fields:
+                if semantic_field in payload_fields:
+                    source_refs_by_field.setdefault(semantic_field, set()).add(
+                        (source.source_artifact_id, source.capture_id)
+                    )
+        for semantic_field, contributing_refs in source_refs_by_field.items():
+            if len(contributing_refs) <= 1:
+                continue
+            receipts = receipts_by_field.get(semantic_field, [])
+            if len(receipts) != 1 or set(receipts[0].source_refs) != contributing_refs:
+                raise ValueError("competing_payload_sources_require_resolution")
+
+        for receipt in self.field_resolution_receipts:
+            if receipt.semantic_field not in payload_fields:
+                raise ValueError("resolution_receipt_semantic_field_not_in_payload")
+            payload_value = getattr(self.payload, receipt.semantic_field)
+            if receipt.resolution_status in {"selected", "degraded"}:
+                if not _prepared_values_equal(receipt.selected_value, payload_value):
+                    raise ValueError("resolution_receipt_payload_value_mismatch")
+            elif payload_value is not None:
+                raise ValueError("unresolved_receipt_cannot_coexist_with_payload_value")
+
+        for receipt in self.derivation_receipts:
+            if receipt.semantic_field not in payload_fields:
+                raise ValueError("derivation_receipt_semantic_field_not_in_payload")
+            payload_value = getattr(self.payload, receipt.semantic_field)
+            if receipt.result_state == "derived":
+                if not _prepared_values_equal(receipt.value, payload_value):
+                    raise ValueError("derivation_receipt_payload_value_mismatch")
+            elif payload_value is not None:
+                raise ValueError("non_derived_receipt_cannot_coexist_with_payload_value")
 
         expected_input = prepared_input_fingerprint(
             self.source_capture_refs,

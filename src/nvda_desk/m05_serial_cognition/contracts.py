@@ -20,6 +20,8 @@ StageName = Literal[
 ]
 StageStatus = Literal["complete", "stand_down", "withheld", "rejected"]
 SerialStatus = Literal["formed", "stand_down", "withheld", "rejected"]
+PreparedValidationState = Literal["valid", "degraded"]
+PreparedCompletenessState = Literal["complete", "degraded"]
 AuthorityRef = tuple[str, str, str, str]
 Pair = tuple[str, str]
 CarrierValue = str | int | float | bool | datetime | tuple[str, ...] | None
@@ -195,8 +197,8 @@ class StageContext(BaseModel):
     canonicalisation_version: str
     derivation_versions: tuple[Pair, ...]
     effective_at_utc: datetime
-    prepared_validation_state: str
-    prepared_completeness_state: str
+    prepared_validation_state: PreparedValidationState
+    prepared_completeness_state: PreparedCompletenessState
     serial_order_version: str
     runner_version: str
     mapping_policy_versions: tuple[Pair, ...]
@@ -259,6 +261,17 @@ class StageContext(BaseModel):
             raise ValueError("mapping_policy_versions_must_cover_exact_stage_order")
         if any(not item for item in self.limitations + self.unavailable_owner_facts):
             raise ValueError("context_explicit_state_must_be_nonempty")
+        if self.prepared_validation_state == "valid" and (
+            self.prepared_completeness_state != "complete"
+            or self.limitations
+            or self.unavailable_owner_facts
+        ):
+            raise ValueError("valid_context_must_be_complete_without_gaps")
+        if self.prepared_validation_state == "degraded" and (
+            self.prepared_completeness_state != "degraded"
+            or not (self.limitations or self.unavailable_owner_facts)
+        ):
+            raise ValueError("degraded_context_requires_explicit_gap")
         material = self.model_dump(mode="python")
         material.pop("semantic_fingerprint")
         expected = semantic_fingerprint(material)
@@ -411,6 +424,7 @@ class SerialCandidate(BaseModel):
     status: SerialStatus
     reasons: tuple[str, ...] = ()
     failed_stage: StageName | None = None
+    serial_result_id: str
     candidate_id: str | None = None
     candidate_contract_version: str
     candidate_schema_version: str
@@ -444,11 +458,14 @@ class SerialCandidate(BaseModel):
     @model_validator(mode="after")
     def _validate_law(self) -> "SerialCandidate":
         material = self.model_dump(mode="python")
+        material.pop("serial_result_id")
         material.pop("candidate_id")
         material.pop("semantic_fingerprint")
         expected = semantic_fingerprint(material)
         if self.semantic_fingerprint != expected:
             raise ValueError("candidate_fingerprint_mismatch")
+        if self.serial_result_id != f"serial-result.{expected[:16]}":
+            raise ValueError("serial_result_identity_invalid")
         if (
             self.closed_authority_classes != CLOSED_AUTHORITY_CLASSES
             or self.foreign_authority_claimed
@@ -468,6 +485,8 @@ class SerialCandidate(BaseModel):
         _validate_authority_refs(self.m08_authority_refs)
         _unique_pairs(self.lifecycle_intent, "candidate_lifecycle_intent_invalid")
         observed = tuple(item.stage for item in self.stage_outputs)
+        if not self.stage_outputs:
+            raise ValueError("candidate_terminal_output_required")
         if observed != SERIAL_STAGE_ORDER[: len(observed)]:
             raise ValueError("candidate_stage_order_invalid")
         by_stage = {item.stage: item for item in self.stage_outputs}

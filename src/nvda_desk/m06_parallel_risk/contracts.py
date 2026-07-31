@@ -47,6 +47,8 @@ EXPECTED_FAMILIES: Final[tuple[str, ...]] = (
     "scheduled_event",
     "volatility",
 )
+SUPPORTED_EVALUATOR_POLICY_VERSION: Final[str] = "parallel-risk.compat.v1"
+SUPPORTED_AGGREGATION_VERSION: Final[str] = "parallel-risk.aggregate.v1"
 
 
 def _canonical(value: Any) -> Any:
@@ -102,8 +104,8 @@ class ParallelRiskInput(BaseModel):
     evaluator_version: Literal["m06.parallel-risk-evaluator.v1"] = (
         "m06.parallel-risk-evaluator.v1"
     )
-    evaluator_policy_version: str = Field(min_length=1)
-    aggregation_version: str = Field(min_length=1)
+    evaluator_policy_version: Literal["parallel-risk.compat.v1"]
+    aggregation_version: Literal["parallel-risk.aggregate.v1"]
     prepared_id: str = Field(min_length=1)
     prepared_fingerprint: str = Field(pattern=r"^[0-9a-f]{64}$")
     prepared_schema_version: str = Field(min_length=1)
@@ -209,6 +211,8 @@ class ParallelRiskInput(BaseModel):
             raise ValueError("degraded_prepared_projection_requires_explicit_gap")
         if not all(isfinite(value) for value in (self.vix_caution_threshold, self.vix_block_threshold)):
             raise ValueError("vix_threshold_must_be_finite")
+        if self.vix_caution_threshold < 0 or self.vix_block_threshold < 0:
+            raise ValueError("vix_threshold_must_be_nonnegative")
         if self.vix_level is not None and (not isfinite(self.vix_level) or self.vix_level < 0):
             raise ValueError("vix_level_must_be_nonnegative_finite")
         if any(value is not None and value < 0 for value in (self.front_dte, self.next_dte)):
@@ -239,10 +243,10 @@ class ParallelRiskInput(BaseModel):
         if not isinstance(prepared, PreparedDataEnvelope):
             raise TypeError("typed_prepared_envelope_required")
         governed = PreparedDataEnvelope.model_validate(prepared.model_dump(mode="python"))
-        if not evaluator_policy_version:
-            raise ValueError("evaluator_policy_version_required")
-        if not aggregation_version:
-            raise ValueError("aggregation_version_required")
+        if evaluator_policy_version != SUPPORTED_EVALUATOR_POLICY_VERSION:
+            raise ValueError("unsupported_evaluator_policy_version")
+        if aggregation_version != SUPPORTED_AGGREGATION_VERSION:
+            raise ValueError("unsupported_aggregation_version")
         if not threshold_authority_refs:
             raise ValueError("threshold_authority_refs_required")
         lineage = None
@@ -341,8 +345,8 @@ class ParallelRiskAssessment(BaseModel):
     prepared_id: str = Field(min_length=1)
     prepared_fingerprint: str = Field(pattern=r"^[0-9a-f]{64}$")
     evaluator_version: str = Field(min_length=1)
-    evaluator_policy_version: str = Field(min_length=1)
-    aggregation_version: str = Field(min_length=1)
+    evaluator_policy_version: Literal["parallel-risk.compat.v1"]
+    aggregation_version: Literal["parallel-risk.aggregate.v1"]
     state: RiskState
     observations: tuple[ParallelRiskObservation, ...] = Field(min_length=1)
     caution_flags: tuple[str, ...]
@@ -433,6 +437,8 @@ def parallel_risk_assessment_fingerprint(value: ParallelRiskAssessment) -> str:
 __all__ = [
     "CLOSED_AUTHORITY_CLASSES",
     "EXPECTED_FAMILIES",
+    "SUPPORTED_AGGREGATION_VERSION",
+    "SUPPORTED_EVALUATOR_POLICY_VERSION",
     "ParallelRiskAssessment",
     "ParallelRiskInput",
     "ParallelRiskObservation",

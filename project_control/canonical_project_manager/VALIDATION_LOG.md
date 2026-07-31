@@ -1716,3 +1716,25 @@ terminate. Exact commands and comparison evidence are under
 
 Pause and publish the user-requested clean full-history M06 checkpoint. M09 has
 not started.
+
+## 2026-07-31 — M03/M05/M06 adversarial repair and selected-handoff review
+
+### Disposition
+
+`PASS:GATE_D_REPAIR_ACCEPTED:M03_M05_M06_ADVERSARIAL_AUTHORITY`
+
+The novel audit's eight authority-supported defects were repaired. From the user-supplied M05 handoff, deterministic terminal `serial_result_id` was admitted and its incompatible stage-graph/carrier alternatives were dismissed.
+
+| Check | Result |
+|---|---|
+| Expected-red proof | 87 passed / 12 admitted failures at `6d03237` |
+| Focused repaired proof | 99 / 99 passed |
+| Positive/metamorphic checks | 8 / 8 passed |
+| Proof manifests / executor | 60 / 60; 21 / 21 |
+| Tier B | 49 / 49 |
+| Tier A comparison | 1,508 passed / 268 failed → 1,520 / 256; 12 resolved; zero new failing nodes |
+| Vocabulary files | 100 passed / 3 unchanged failures |
+| Static compilation / diff check | passed |
+| Ruff / Black | unavailable; locked modules not installed |
+
+Evidence: `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/GATE_D_REPAIR_VALIDATION_SUMMARY.md`.

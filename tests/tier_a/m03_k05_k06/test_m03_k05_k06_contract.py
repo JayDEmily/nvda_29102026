@@ -374,7 +374,7 @@ def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -
         production_capture_payload(reference)
     )
     payload = api["PreparedRuntimePayloadV1"](
-        kind="prepared_runtime_v1", spot_price=101.0
+        kind="prepared_runtime_v1", spot_price=101.0, nvda_return_pct=0.01
     )
     receipt = api["resolve_canonical_field"](
         candidates=(
@@ -435,16 +435,18 @@ def test_production_builder_is_order_independent_and_preserves_derivation_inputs
         candidates=(options, market), policy=policy
     )
     capture_type = api["SourceCaptureReference"]
+    market_ref = production_capture_payload(valid_capture_reference())
+    market_ref["semantic_fields"] = ("spot_price",)
+    options_ref = production_capture_payload(
+        valid_capture_reference(
+            capture_id="capture.options.1",
+            source_artifact_id="source.options.1",
+        )
+    )
+    options_ref["semantic_fields"] = ("spot_price",)
     refs = (
-        capture_type.model_validate(production_capture_payload(valid_capture_reference())),
-        capture_type.model_validate(
-            production_capture_payload(
-                valid_capture_reference(
-                    capture_id="capture.options.1",
-                    source_artifact_id="source.options.1",
-                )
-            )
-        ),
+        capture_type.model_validate(market_ref),
+        capture_type.model_validate(options_ref),
     )
     derivation = api["DerivationReceipt"].model_validate(
         production_derivation_payload(valid_derivation())

@@ -296,7 +296,9 @@ def test_production_runner_forms_exact_six_stage_candidate_independent_of_input_
     assert first == second
     assert first.status == "formed"
     assert tuple(item.stage for item in first.stage_outputs) == SERIAL_STAGE_ORDER
+    assert first.serial_result_id == f"serial-result.{first.semantic_fingerprint[:16]}"
     assert first.candidate_id == f"serial.{first.semantic_fingerprint[:16]}"
+    assert first.serial_result_id != first.candidate_id
     assert first.prepared_id == context.prepared_id
     assert first.context_fingerprint == context.semantic_fingerprint
     assert first.m07_authority_refs and first.m08_authority_refs
@@ -426,10 +428,12 @@ def _refingerprint_candidate(api: dict[str, Any], candidate: Any, **updates: Any
         for item in payload["stage_outputs"]
     )
     material = dict(payload)
+    material.pop("serial_result_id")
     material.pop("candidate_id")
     material.pop("semantic_fingerprint")
     candidate_fingerprint = fingerprint(material)
     payload["semantic_fingerprint"] = candidate_fingerprint
+    payload["serial_result_id"] = f"serial-result.{candidate_fingerprint[:16]}"
     payload["candidate_id"] = (
         f"serial.{candidate_fingerprint[:16]}" if payload["status"] == "formed" else None
     )

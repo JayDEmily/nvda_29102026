@@ -32,3 +32,7 @@ The following are not integrated:
 - Worker A control receipts and raw validation logs.
 
 They conflict with the accepted common-context/selective-dependency architecture, replace the bounded carrier model, or require a separate normative decision.
+
+## Final repair disposition
+
+All admitted findings are implemented and tested. The focused repair set passes 99/99, the positive/metamorphic checks pass 8/8, proof manifests pass 60/60, Tier B passes 49/49, and the complete comparable Tier A set resolves exactly 12 failures with zero new failing nodes. The repair is accepted; M09 remains unopened pending the requested full-history checkpoint.

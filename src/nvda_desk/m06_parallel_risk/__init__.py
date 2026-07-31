@@ -7,6 +7,8 @@ from nvda_desk.m06_parallel_risk.contracts import (
     ParallelRiskInput,
     ParallelRiskObservation,
     ParallelRiskPacketLineage,
+    SUPPORTED_AGGREGATION_VERSION,
+    SUPPORTED_EVALUATOR_POLICY_VERSION,
 )
 from nvda_desk.m06_parallel_risk.evaluator import ParallelRiskEvaluator
 
@@ -18,4 +20,6 @@ __all__ = [
     "ParallelRiskInput",
     "ParallelRiskObservation",
     "ParallelRiskPacketLineage",
+    "SUPPORTED_AGGREGATION_VERSION",
+    "SUPPORTED_EVALUATOR_POLICY_VERSION",
 ]

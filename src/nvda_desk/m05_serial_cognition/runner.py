@@ -288,6 +288,7 @@ class SerialRunner:
             "status": status,
             "reasons": reasons,
             "failed_stage": failed_stage,
+            "serial_result_id": "",
             "candidate_id": None,
             "candidate_contract_version": "1.0.0",
             "candidate_schema_version": "1.0.0",
@@ -337,10 +338,12 @@ class SerialRunner:
             "semantic_fingerprint": "",
         }
         material = dict(payload)
+        material.pop("serial_result_id")
         material.pop("candidate_id")
         material.pop("semantic_fingerprint")
         fingerprint = semantic_fingerprint(material)
         payload["semantic_fingerprint"] = fingerprint
+        payload["serial_result_id"] = f"serial-result.{fingerprint[:16]}"
         payload["candidate_id"] = f"serial.{fingerprint[:16]}" if formed else None
         return SerialCandidate.model_validate(payload)
 

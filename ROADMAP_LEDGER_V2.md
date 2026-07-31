@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/gate-c-evidence-economy-m03-continuation-v1` |
-| Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
+| Branch | `work/chat-audit-repair-m03-m05-m06-v1` |
+| Current branch source checkpoint | `55e3b0b154bcd1829de133222f1c5ce0a13a1361` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M06 K10 independent parallel-risk authority |
-| Current active slice | bounded M03/M05/M06 adversarial repair after novel audit and selected-handoff review |
-| Production implementation | M03/M05/M06 implementations retained but their Gate D acceptance is reopened pending adversarial repair; M09 has not started |
+| Latest accepted implementation slice | repaired M03 K05/K06, M05 K08/K09 and M06 K10 authority |
+| Current active slice | paused for clean full-history checkpoint after adversarial repair acceptance |
+| Production implementation | M03/M05/M06 repaired Gate D accepted; M09 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -47,9 +47,9 @@ validation.
 | M07 coefficient/modifier authority | passed — `docs/07.1...` section 7.7 | passed — 20 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M08 playbook catalogue | passed — `docs/07.1...` section 7.8 | passed — 23 focused cases; five mutants killed | `GATE_D_ACCEPTED` |
 | M02 financial calendar | passed — `docs/07.1...` section 7.9 | passed — 33 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
-| M03 prepared data / field resolution | passed — `docs/07.1...` section 7.10 | passed — 25 focused cases; six mutants killed | `GATE_D_ACCEPTED` |
-| M05 serial cognition | passed — `docs/07.1...` section 7.11 | passed — 32 focused cases; seven mutants killed | `GATE_D_ACCEPTED` |
-| M06 parallel risk | passed — `docs/07.1...` section 7.12 | passed — 30 focused cases; seven mutants killed | `GATE_D_ACCEPTED` |
+| M03 prepared data / field resolution | passed — `docs/07.1...` section 7.10 | passed — 29 focused cases; six mutants killed; adversarial reconciliation accepted | `GATE_D_REPAIR_ACCEPTED` |
+| M05 serial cognition | passed — `docs/07.1...` section 7.11 | passed — 37 focused cases; seven mutants killed; state/result identity repair accepted | `GATE_D_REPAIR_ACCEPTED` |
+| M06 parallel risk | passed — `docs/07.1...` section 7.12 | passed — 33 focused cases; seven mutants killed; threshold/version repair accepted | `GATE_D_REPAIR_ACCEPTED` |
 
 M04 Gate D acceptance records zero new Tier A shadow failure nodes relative to
 `c9122e9`, one resolved node, all 49 Tier B tests passing, and a clean M04
@@ -128,6 +128,10 @@ The PM-011 census, Cycle 01 worker/tester outputs and historical MLC records
 remain navigation and challenge evidence. No file-by-file re-adjudication is
 required before implementation.
 
+## M03/M05/M06 adversarial repair acceptance
+
+The repair admitted 12 exact red cases at proof baseline `6d03237` and now passes 99/99 focused cases. The original positive/metamorphic checks pass 8/8, proof manifests pass 60/60, the proof-executor contract passes 21/21 and Tier B passes 49/49. Complete comparable Tier A moved from 1,508 passed / 268 failed to 1,520 / 256: all 12 admitted nodes resolved and zero new failing nodes appeared. All 17 vocabulary files were run individually; 100 cases pass and the same three baseline failures remain. Evidence is under `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/`.
+
 ## Immediate next action
 
-Complete the bounded M03/M05/M06 repair admitted by the 2026-07-31 novel audit and selected M05 handoff review. Admit the adversarial and metamorphic proof, demonstrate zero new failure nodes, publish a repaired full-history checkpoint, and keep M09 closed until that checkpoint.
+Publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair. The next semantic unit is M09 K11/fresh-capital authority; it has not started.

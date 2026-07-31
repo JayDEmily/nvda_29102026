@@ -196,7 +196,7 @@ def valid_context(**overrides: Any) -> ContextCase:
             (stage, f"mapping.{stage}.1.0.0") for stage in SERIAL_STAGE_ORDER
         ),
         "limitations": (),
-        "unavailable_owner_facts": ("position_inventory",),
+        "unavailable_owner_facts": (),
         "closed_authority_classes": CLOSED_AUTHORITIES,
         "foreign_authority_claimed": False,
         "semantic_fingerprint": "",
