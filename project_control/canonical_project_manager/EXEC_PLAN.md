@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M08_C_NORM`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M08_C_PROOF`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -164,6 +164,9 @@ After Gate C passes, Gate D:
   all five named mutants remain killed, the seven expected-red production cases
   are green, copied invalid authority is revalidated, and the exact Tier A
   shadow comparison contains zero new failing nodes.
+- M08 K13 C-NORM is accepted in runtime-ownership section 7.8, vocabulary
+  section 10.17 and architecture section 11.10.3.2; the exact public contracts
+  are `PlaybookDefinition`, `PlaybookCatalogue` and `EligibilityDecision`.
 
 ### Converted decision
 
@@ -184,16 +187,15 @@ external-state-mutation authority.
 
 ### Queued
 
-- M08: add the K13 catalogue/eligibility identity, ordering, tie-break,
-  stand-down and lifecycle-carriage proposition; then minimum proof.
+- M08: author the minimum truthful K13 public-seam proof; Gate D remains closed.
 
 ## 8. Immediate work
 
-Open M08 K13 `C-NORM`. Reconcile the accepted Atlas K13 lineage with current
-playbook contracts and define the smallest numbered proposition for catalogue
-identity/version, deterministic eligibility ordering and tie-breaks, stand-down
-semantics and lifecycle carriage. Do not change M08 production code before that
-normative proposition and minimum truthful proof pass.
+Open M08 K13 `C-PROOF`. Prove the section 7.8 distinction between rejected
+missing authority and valid stand-down, authority-owned ordering/tie-break,
+deterministic decision lineage, eligibility-lead meaning and lifecycle/foreign-
+authority closure. The production-facing assertions must remain expected red
+until the canonical M08 package exists.
 
 Use the existing M08 module record, validation log and proof/vocabulary
 registries. Do not recreate the retired MLC sequence or create another roadmap.

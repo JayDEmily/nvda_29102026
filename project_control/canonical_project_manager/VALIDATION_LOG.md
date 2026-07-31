@@ -1319,3 +1319,38 @@ pytest transcripts. This was an evidence-format defect, not a source or test
 failure. Only trailing spaces/tabs were removed; the test text and outcomes remain
 unchanged. The repaired range from M07 C-PROOF base `92fe7e1` passes
 `git diff --check`.
+
+
+## 2026-07-31 — M08 K13 C-NORM acceptance
+
+### Disposition
+
+`PASS:C-NORM:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The former M08 authority blocker is closed by numbered normative law. Runtime
+ownership section 7.8 now defines the exact K13 public contracts, immutable
+catalogue/definition identity and replacement law, mandatory owner-issued
+posture/context facts, exact rejection and lawful stand-down states,
+authority-owned ordering/tie-break, eligibility-lead meaning, deterministic
+decision lineage and bounded lifecycle carriage. Vocabulary section 10.17 and
+the human registry admit the exact contracts under namespace `m08`; architecture
+section 11.10.3.2 fixes them as the target public API.
+
+| Check | Result |
+|---|---|
+| Generated projection parity | PASS — 153 entries; `global`, `m04`, `m07`, `m08` |
+| M08 vocabulary audit | PASS — 0 unresolved candidates / 20 scoped files |
+| M08 vocabulary stamp | PASS — matches clean audit fingerprint |
+| Static normative assertions | PASS |
+| `git diff --check` | PASS |
+| M08 production/runtime configuration mutation | none |
+| Existing vocabulary proof | 3 passed / 1 expected red: stale assertion hard-codes namespaces `{global, m04, m07}` |
+
+The expected red is the first C-PROOF obligation. No test was weakened or edited
+during C-NORM. Exact evidence is under
+`project_control/canonical_project_manager/modules/M08/raw_validation/fast_track_k13_v1/`.
+
+### Next action
+
+Open M08 K13 `C-PROOF`. Gate D remains closed until the smallest truthful
+public-seam proof passes.

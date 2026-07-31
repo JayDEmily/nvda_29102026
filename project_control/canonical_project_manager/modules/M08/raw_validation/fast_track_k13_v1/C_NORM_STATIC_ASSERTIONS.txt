@@ -1,0 +1,13 @@
+PASS ownership section
+PASS canonical interfaces
+PASS immutable catalogue/version law
+PASS mandatory posture/context inputs
+PASS lawful stand-down states
+PASS authority ordering and tie-break
+PASS eligibility lead boundary
+PASS lifecycle side-effect closure
+PASS vocabulary admission
+PASS architecture interface boundary
+PASS registry namespace
+PASS no_production_or_runtime_config_change
+PASS git_diff_check

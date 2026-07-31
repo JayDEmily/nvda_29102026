@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-07-31-m07-k12-normative-authority-v1",
+  "registry_version": "2026-07-31-m08-k13-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -10,7 +10,8 @@
     "The 2026-07-30 M15 repair gives module-owned vocabulary a namespaced machine identity and bounded audit scope without prefixing human labels or ordinary code symbols.",
     "Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.",
     "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon.",
-    "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace."
+    "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace.",
+    "The 2026-07-31 M08 K13 amendment admits the exact PlaybookDefinition, PlaybookCatalogue and EligibilityDecision public-contract concepts under a bounded M08 namespace."
   ],
   "namespaces": {
     "global": {
@@ -71,6 +72,32 @@
         "src/nvda_desk/services/coefficient_authority_service.py",
         "src/nvda_desk/m07_coefficient_modifier_authority",
         "tests/tier_a/m07_k12"
+      ]
+    },
+    "m08": {
+      "namespace": "m08",
+      "imports": [
+        "global"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "config/playbook_registry.example.yaml",
+        "src/nvda_desk/contracts/playbook.py",
+        "src/nvda_desk/contracts/eligibility.py",
+        "src/nvda_desk/config/playbook_registry.py",
+        "src/nvda_desk/playbooks",
+        "src/nvda_desk/domain/eligibility/playbook_compilation.py",
+        "src/nvda_desk/cognition/serial/eligibility.py",
+        "src/nvda_desk/services/playbook_eligibility_service.py",
+        "src/nvda_desk/services/eligibility_service.py",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "src/nvda_desk/m08_playbook_catalogue",
+        "tests/tier_a/m08_k13",
+        "tests/tier_a/playbook",
+        "tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
       ]
     }
   },
@@ -264,7 +291,7 @@
         "policy authority",
         "global policy engine",
         "capital policy owner",
-        "playbook catalogue"
+        "M07 used as the playbook-catalogue owner"
       ],
       "notes": [
         "Definition: Bounded ownership surface for versioned coefficient and modifier bundles, precedence, stage ownership, hard bounds and application receipts.",
@@ -274,7 +301,7 @@
         "Lifecycle: accepted_target_module_authority",
         "Semantic decisions: USER-20260725:M07-NARROWING",
         "Human aliases: dynamic coefficient and modifier authority; M07 coefficient_modifier_authority",
-        "Human disallowed or misleading use: policy authority; global policy engine; capital policy owner; playbook catalogue"
+        "Human disallowed or misleading use: policy authority; global policy engine; capital policy owner; M07 used as the playbook-catalogue owner"
       ]
     },
     {
@@ -1212,6 +1239,98 @@
         "Semantic decisions: M07-K12-NORMATIVE-AUTHORITY-V1",
         "Human aliases: ModifierApplicationReceipt; modifier resolution receipt.",
         "Human disallowed or misleading use: Replay receipt; transaction receipt; proof of external mutation; capital application receipt; successful receipt for a rejected decision."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m08",
+      "canonical_id": "m08.playbook_definition",
+      "canonical_slug": "playbook_definition",
+      "canonical_label": "Playbook Definition",
+      "category": "protocol_surface",
+      "stage_owner": "playbook_catalogue",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.2",
+      "allowed_aliases": [
+        "PlaybookDefinition",
+        "governed playbook definition"
+      ],
+      "disallowed_phrases": [
+        "caller-defined playbook",
+        "mutable live playbook",
+        "capital-sizing playbook",
+        "playbook used as broker instruction",
+        "playbook used as exit/close action"
+      ],
+      "notes": [
+        "Definition: Immutable, versioned M08 definition of one catalogue-owned candidate family, including typed eligibility constraints, authority-owned selection priority and bounded lifecycle-intent or handoff metadata.",
+        "Scope: K13 playbook definition authority inside one exact Playbook Catalogue version",
+        "Semantic owner: M08 playbook catalogue authority",
+        "Relationships: Member of a Playbook Catalogue; may emit identified setup variants and eligible-candidate metadata through an Eligibility Decision; does not own serial candidate expression, capital, execution or portfolio lifecycle action.",
+        "Lifecycle: active_k13_contract",
+        "Semantic decisions: M08-K13-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: PlaybookDefinition; governed playbook definition.",
+        "Human disallowed or misleading use: Caller-defined playbook; mutable live playbook; capital-sizing playbook; broker instruction; exit/close action."
+      ]
+    },
+    {
+      "namespace": "m08",
+      "canonical_id": "m08.playbook_catalogue",
+      "canonical_slug": "playbook_catalogue",
+      "canonical_label": "Playbook Catalogue",
+      "category": "protocol_surface",
+      "stage_owner": "playbook_catalogue",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.2",
+      "allowed_aliases": [
+        "PlaybookCatalogue",
+        "versioned playbook catalogue"
+      ],
+      "disallowed_phrases": [
+        "checked-in example registry used as live authority",
+        "caller-supplied mapping used as catalogue authority",
+        "mutable runtime catalogue",
+        "playbook catalogue used as strategy engine",
+        "playbook catalogue used as capital selector"
+      ],
+      "notes": [
+        "Definition: Immutable, versioned M08 authority snapshot containing admitted Playbook Definitions, catalogue-owned candidate-family identities, deterministic eligibility law, promotion/workbook lineage and a semantic fingerprint.",
+        "Scope: K13 playbook catalogue and version-selection authority",
+        "Semantic owner: M08 playbook catalogue authority",
+        "Relationships: Exact authority consumed to produce an Eligibility Decision; replaces the transitional registry/library document as the canonical K13 snapshot and is distinct from the M05 Playbook Eligibility stage.",
+        "Lifecycle: active_k13_contract",
+        "Semantic decisions: M08-K13-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: PlaybookCatalogue; versioned playbook catalogue.",
+        "Human disallowed or misleading use: Checked-in example registry as live authority; caller-supplied mapping as authority; mutable runtime catalogue; strategy engine; capital selector."
+      ]
+    },
+    {
+      "namespace": "m08",
+      "canonical_id": "m08.eligibility_decision",
+      "canonical_slug": "eligibility_decision",
+      "canonical_label": "Eligibility Decision",
+      "category": "review_surface",
+      "stage_owner": "playbook_catalogue",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.6",
+      "allowed_aliases": [
+        "EligibilityDecision",
+        "playbook eligibility decision"
+      ],
+      "disallowed_phrases": [
+        "eligibility decision used as capital authority",
+        "eligibility decision used as execution authority",
+        "eligibility decision used as final trade candidate",
+        "eligibility decision claiming lifecycle mutation",
+        "eligibility decision resolved by caller order",
+        "successful eligibility decision with missing authority"
+      ],
+      "notes": [
+        "Definition: Deterministic, side-effect-free M08 result binding one exact Playbook Catalogue snapshot to identified posture and eligibility-context facts, with exact rejection, stand-down or eligible status and authority-ordered candidate metadata.",
+        "Scope: K13 catalogue eligibility output and selection-metadata evidence",
+        "Semantic owner: M08 playbook catalogue authority",
+        "Relationships: Preserves catalogue/input lineage, definition dispositions, ordered eligible candidates and an eligibility lead for M05; does not authorise final candidate expression, capital, broker/order, position/inventory or exit/close action.",
+        "Lifecycle: active_k13_contract",
+        "Semantic decisions: M08-K13-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: EligibilityDecision; playbook eligibility decision.",
+        "Human disallowed or misleading use: Capital decision; execution decision; final trade candidate; lifecycle mutation receipt; caller-order result; successful decision with missing authority."
       ],
       "raw_or_derived": "derived"
     },
@@ -2702,18 +2821,19 @@
       ],
       "disallowed_phrases": [
         "playbook implementation",
+        "independent eligibility-law owner",
         "strategy selection with hidden capital authority"
       ],
       "notes": [
-        "Definition: Fifth serial stage that determines which governed playbook families or setup variants are eligible under the formed context and posture. Scope: eligibility decision only.",
-        "Scope: serial stage 5 of 6; ordered runtime step 7; Stage 5 narrows lawful candidate expressions before stage 6; it is not the library itself.",
-        "Semantic owner: Playbook Eligibility stage authority",
-        "Relationships: Consumes posture/context and library metadata; emits PlaybookEligibilityOutput; Playbook Library owns definitions, while this stage owns eligibility.",
+        "Definition: Fifth serial stage that supplies identified posture/context facts to M08 and consumes an M08 Eligibility Decision to narrow lawful candidate expressions before stage 6.",
+        "Scope: serial stage 5 of 6; ordered runtime step 7; owns stage invocation and propagation, not catalogue/definition eligibility law or final candidate expression.",
+        "Semantic owner: Playbook Eligibility stage orchestration authority",
+        "Relationships: M08 Playbook Catalogue owns definitions, constraints, deterministic ordering and Eligibility Decision meaning; this stage preserves that result inside the serial spine for Expression and Execution.",
         "Lifecycle: active_normative_serial_stage",
-        "Semantic decisions: PM-007:SSC-008",
+        "Semantic decisions: PM-007:SSC-008, M08-K13-NORMATIVE-AUTHORITY-V1",
         "Human aliases: eligibility stage",
-        "Human disallowed or misleading use: playbook library; playbook implementation; strategy selection with hidden capital authority",
-        "Machine projection omissions: playbook library [canonical-token:playbook_library]"
+        "Human disallowed or misleading use: playbook catalogue; playbook implementation; independent eligibility-law owner; strategy selection with hidden capital authority",
+        "Machine projection omissions: playbook catalogue [canonical-token:playbook_catalogue]"
       ]
     },
     {
@@ -3348,8 +3468,8 @@
       "canonical_slug": "playbook_library",
       "canonical_label": "Playbook Library",
       "category": "authority_surface",
-      "stage_owner": "playbook_library",
-      "maps_to_contract": "PlaybookRegistry",
+      "stage_owner": "playbook_catalogue",
+      "maps_to_contract": "PlaybookCatalogue",
       "allowed_aliases": [
         "playbook registry",
         "governed playbook library"
@@ -3357,17 +3477,18 @@
       "disallowed_phrases": [
         "strategy engine",
         "capital/playbook selector",
-        "execution playbook authority"
+        "execution playbook authority",
+        "final candidate-expression owner"
       ],
       "notes": [
-        "Definition: Governed registry/library architecture for playbook definitions, setup families/variants, eligibility constraints, selection metadata and proofable metadata receipts. Scope: playbook-owned content and registry meaning.",
-        "Scope: playbook authority; May constrain which playbook families/variants can be evaluated by the serial eligibility stage. It cannot directly alter serial outputs or capital decisions.",
-        "Semantic owner: playbook library authority",
-        "Relationships: Consumed by Playbook Eligibility through explicit contracts; outputs definitions/candidates/metadata receipts but does not itself decide runtime eligibility, capital, broker, exit or close.",
-        "Lifecycle: provisional_thin_seam",
-        "Semantic decisions: PM-009:PRP-010",
+        "Definition: Governed M08 architecture surface for immutable Playbook Definitions, the versioned Playbook Catalogue, catalogue-owned candidate-family identity, eligibility constraints, deterministic selection metadata and Eligibility Decisions.",
+        "Scope: M08 playbook authority; owns K13 catalogue/definition/eligibility meaning but not serial orchestration, final candidate expression, capital, broker, order, position/inventory or exit/close authority.",
+        "Semantic owner: M08 playbook catalogue authority",
+        "Relationships: Exposed through PlaybookDefinition, PlaybookCatalogue and EligibilityDecision; consumed by the Playbook Eligibility stage through explicit contracts; distinct from the M05 stage and downstream capital/execution/lifecycle owners.",
+        "Lifecycle: active_k13_authority_thin_seam",
+        "Semantic decisions: PM-009:PRP-010, M08-K13-NORMATIVE-AUTHORITY-V1",
         "Human aliases: playbook registry; governed playbook library",
-        "Human disallowed or misleading use: Playbook Eligibility; strategy engine; capital/playbook selector; execution playbook authority",
+        "Human disallowed or misleading use: Playbook Eligibility; strategy engine; capital/playbook selector; execution playbook authority; final candidate-expression owner",
         "Machine projection omissions: Playbook Eligibility [canonical-token:playbook_eligibility]"
       ]
     },

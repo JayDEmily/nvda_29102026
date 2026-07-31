@@ -142,3 +142,40 @@ The nine items under “Missing decision authority” prevent truthful test-auth
 Return to the existing routed numbered normative surface for one bounded M08 proposition package answering the exact worker-result question. Do not route tests, write proof, mutate catalogue/configuration or implement M08 before that authority is admitted and independently accepted.
 
 `PROPOSED_M08_AUTHORITY_V1_AWAITING_LANE_4AT`
+
+
+## 2026-07-31 fast-track C-NORM closure
+
+### Disposition
+
+`PASS:C-NORM:M08_K13_PLAYBOOK_CATALOGUE_AUTHORITY`
+
+The historical blocker above is resolved by numbered authority rather than by code, example configuration or retained tests:
+
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md` section 7.8 defines `PlaybookDefinition`, `PlaybookCatalogue` and `EligibilityDecision`; immutable catalogue/definition/family identity and versions; mandatory posture/context facts; exact rejection and stand-down states; deterministic filtering, ordering, tie-break and eligibility-lead law; decision fingerprinting; lifecycle carriage; and state/replay/side-effect closure.
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md` section 10.17 admits those exact contract concepts under machine namespace `m08` while preserving M05 serial-stage and final candidate-expression ownership.
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md` section 11.10.3.2 fixes the exact K13 public-interface boundary and prohibits transitional registry/library/output surfaces from remaining competing canonical identities.
+- `docs/vocabulary/vocabulary_registry.md` and the generated projection admit `m08.playbook_definition`, `m08.playbook_catalogue` and `m08.eligibility_decision`.
+
+### Closure against the original blocker
+
+| Former missing dimension | Closed authority |
+|---|---|
+| Catalogue, definition and family identity/version | sections 7.8.1–7.8.2 |
+| Mandatory posture/context and required facts | section 7.8.3 |
+| Invalid authority versus posture/empty stand-down | section 7.8.4 |
+| Filtering, priority, tie-break and eligibility lead | section 7.8.5 |
+| Decision identity, reasons, lineage and fingerprint | section 7.8.6 |
+| Catalogue replacement/state/replay law | sections 7.8.2 and 7.8.7 |
+| Bounded lifecycle carriage without foreign authority | sections 7.8.1, 7.8.6 and 7.8.7 |
+
+### Evidence
+
+- generated vocabulary projection parity: PASS — 153 entries and namespaces `global`, `m04`, `m07`, `m08`;
+- M08 scoped vocabulary audit: PASS — zero unresolved candidates across 20 files;
+- one shifted contextual repository-path occurrence was individually re-adjudicated; no global suppression was added;
+- static normative assertions and `git diff --check`: PASS;
+- M08 production/runtime configuration changes: none;
+- existing vocabulary parity proof: 3 passed / 1 expected red because the previous assertion hard-codes only `global`, `m04` and `m07`.
+
+Exact outputs and the full-read manifest are under `raw_validation/fast_track_k13_v1/`. The next gate is `C-PROOF`; M08 Gate D remains closed.

@@ -1,0 +1,55 @@
+F...                                                                     [100%]
+=================================== FAILURES ===================================
+____ test_canonical_vocabulary_matches_builder_output_via_both_import_paths ____
+
+    def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> None:
+        wrapper_builder = _require_module("scripts.build_canonical_vocabulary")
+        assert wrapper_builder.__name__ == "scripts.build_canonical_vocabulary"
+        native_builder = _require_module("nvda_desk.vocabulary_builder")
+        assert native_builder.__name__ == "nvda_desk.vocabulary_builder"
+
+        wrapper_build_document = _require_attr(wrapper_builder, "build_document")
+        assert wrapper_build_document is getattr(wrapper_builder, "build_document")
+        native_build_document = _require_attr(native_builder, "build_document")
+        assert native_build_document is getattr(native_builder, "build_document")
+
+        vocab_path = Path("data/vocabulary/canonical_vocabulary.json")
+        if not vocab_path.exists():
+            pytest.fail(
+                "Required vocabulary artefact is not implemented: data/vocabulary/canonical_vocabulary.json"
+            )
+
+        committed = json.loads(vocab_path.read_text(encoding="utf-8"))
+        assert committed == wrapper_build_document().to_dict()
+        assert committed == native_build_document().to_dict()
+
+        assert committed["schema_version"] == "v2_namespaced"
+>       assert set(committed["namespaces"]) == {"global", "m04", "m07"}
+E       AssertionError: assert {'global', 'm... 'm07', 'm08'} == {'global', 'm04', 'm07'}
+E
+E         Extra items in the left set:
+E         'm08'
+E
+E         Full diff:
+E           {
+E               'global',
+E               'm04',
+E               'm07',
+E         +     'm08',
+E           }
+
+../../nvda_gate_c_resume/Nvda11/tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:45: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py::test_canonical_vocabulary_matches_builder_output_via_both_import_paths - AssertionError: assert {'global', 'm... 'm07', 'm08'} == {'global', 'm04', 'm07'}
+
+  Extra items in the left set:
+  'm08'
+
+  Full diff:
+    {
+        'global',
+        'm04',
+        'm07',
+  +     'm08',
+    }
+1 failed, 3 passed in 0.12s
