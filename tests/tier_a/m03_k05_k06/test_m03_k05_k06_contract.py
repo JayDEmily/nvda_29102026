@@ -611,3 +611,117 @@ def test_production_envelope_adapts_into_legacy_views_without_fabricated_lineage
     assert context.payload_kind == "prepared_runtime_v1"
     assert context.source_artifact_ids == ["source.market.1"]
     assert context.capture_ids == ["capture.market.1"]
+
+
+def _repair_source_reference(
+    *,
+    capture_id: str = "capture.market.1",
+    source_artifact_id: str = "source.market.1",
+    validation_state: str = "valid",
+    semantic_fields: tuple[str, ...] = ("spot_price", "prior_close"),
+):
+    api = production_api()
+    payload = production_capture_payload(
+        valid_capture_reference(
+            capture_id=capture_id,
+            source_artifact_id=source_artifact_id,
+        )
+    )
+    payload["validation_state"] = validation_state
+    payload["limitations"] = ("source_partial",) if validation_state == "degraded" else ()
+    payload["semantic_fields"] = semantic_fields
+    return api["SourceCaptureReference"].model_validate(payload)
+
+
+def _repair_build_envelope(
+    *,
+    refs,
+    payload,
+    receipts=(),
+    derivations=(),
+    derivation_versions=None,
+    validation_state: str = "valid",
+    completeness_state: str = "complete",
+    limitations=(),
+):
+    api = production_api()
+    return api["PreparedDataBuilder"]().build(
+        source_capture_refs=refs,
+        input_schema_versions={
+            f"source_{index}": "1.0.0" for index, _ in enumerate(refs)
+        },
+        schema_version="1.0.0",
+        preparation_policy_version="prep.v1",
+        alignment_policy_version="align.v1",
+        fingerprint_policy_version="fp.v1",
+        canonicalisation_version="canon.v1",
+        derivation_versions=derivation_versions or {},
+        effective_at_utc=valid_capture_reference().effective_at_utc,
+        payload=payload,
+        payload_schema_version="1.0.0",
+        field_resolution_receipts=receipts,
+        derivation_receipts=derivations,
+        validation_state=validation_state,
+        completeness_state=completeness_state,
+        limitations=limitations,
+    )
+
+
+def test_repair_rejects_valid_complete_envelope_from_degraded_source() -> None:
+    api = production_api()
+    with pytest.raises(ValueError, match="degraded_source_cannot_form_valid_envelope"):
+        _repair_build_envelope(
+            refs=(_repair_source_reference(validation_state="degraded"),),
+            payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
+        )
+
+
+def test_repair_requires_resolution_receipt_for_competing_payload_sources() -> None:
+    api = production_api()
+    refs = (
+        _repair_source_reference(semantic_fields=("spot_price",)),
+        _repair_source_reference(
+            capture_id="capture.options.1",
+            source_artifact_id="source.options.1",
+            semantic_fields=("spot_price",),
+        ),
+    )
+    with pytest.raises(ValueError, match="competing_payload_sources_require_resolution"):
+        _repair_build_envelope(
+            refs=refs,
+            payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
+        )
+
+
+def test_repair_rejects_resolution_receipt_payload_disagreement() -> None:
+    api = production_api()
+    candidate = api["FieldCandidate"].model_validate(
+        production_candidate_payload(valid_candidate(value=101.0))
+    )
+    policy = api["FieldResolutionPolicy"].model_validate(
+        production_policy_payload(valid_policy(authoritative_owner="market"))
+    )
+    receipt = api["resolve_canonical_field"](
+        candidates=(candidate,),
+        policy=policy,
+    )
+    with pytest.raises(ValueError, match="resolution_receipt_payload_value_mismatch"):
+        _repair_build_envelope(
+            refs=(_repair_source_reference(),),
+            payload=api["PreparedRuntimePayloadV1"](spot_price=999.0),
+            receipts=(receipt,),
+        )
+
+
+def test_repair_rejects_derivation_receipt_payload_disagreement() -> None:
+    api = production_api()
+    derivation = api["DerivationReceipt"].model_validate(
+        production_derivation_payload(valid_derivation())
+    )
+    with pytest.raises(ValueError, match="derivation_receipt_payload_value_mismatch"):
+        _repair_build_envelope(
+            refs=(_repair_source_reference(),),
+            payload=api["PreparedRuntimePayloadV1"](nvda_return_pct=0.99),
+            derivations=(derivation,),
+            derivation_versions={"nvda_return_pct": "1.0.0"},
+        )

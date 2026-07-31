@@ -13,6 +13,7 @@ from tests.support.m05_k08_k09_contract_harness import (
     MUTANTS,
     SERIAL_STAGE_ORDER,
     ReferenceRunner,
+    fingerprint,
     production_api,
     production_context_payload,
     production_handlers,
@@ -711,3 +712,119 @@ def test_production_execution_withheld_preserves_prior_eligibility_without_candi
     assert result.eligibility_lead_id == "playbook.breakout"
     assert result.expression_id is None
     assert result.lifecycle_intent == ()
+
+
+def test_repair_stage_context_rejects_unknown_prepared_state() -> None:
+    api = production_api()
+    payload = production_context_payload(valid_context())
+    payload["prepared_validation_state"] = "banana"
+    material = dict(payload)
+    material.pop("semantic_fingerprint")
+    payload["semantic_fingerprint"] = fingerprint(material)
+    with pytest.raises(ValueError):
+        api["StageContext"].model_validate(payload)
+
+
+def test_repair_stage_context_requires_exact_valid_complete_state() -> None:
+    api = production_api()
+    payload = production_context_payload(valid_context())
+    payload["limitations"] = ("contradictory_gap",)
+    material = dict(payload)
+    material.pop("semantic_fingerprint")
+    payload["semantic_fingerprint"] = fingerprint(material)
+    with pytest.raises(ValueError, match="valid_context_must_be_complete_without_gaps"):
+        api["StageContext"].model_validate(payload)
+
+
+def test_repair_terminal_result_requires_failed_stage_output() -> None:
+    api = production_api()
+    assert "serial_result_id" in api["SerialCandidate"].model_fields
+    payload = {
+        "status": "withheld",
+        "reasons": ("temporal_unavailable",),
+        "failed_stage": "temporal",
+        "serial_result_id": "",
+        "candidate_id": None,
+        "candidate_contract_version": "1.0.0",
+        "candidate_schema_version": "1.0.0",
+        "context_id": "context.1",
+        "context_fingerprint": "a" * 64,
+        "prepared_id": "prepared.1",
+        "prepared_fingerprint": "b" * 64,
+        "stage_order_version": "order.v1",
+        "stage_outputs": (),
+        "posture_status": None,
+        "posture_reasons": (),
+        "m07_authority_refs": (),
+        "m08_authority_refs": (),
+        "ordered_eligible_candidate_ids": (),
+        "eligibility_lead_id": None,
+        "selected_playbook_family_id": None,
+        "selected_playbook_family_version": None,
+        "selected_playbook_id": None,
+        "selected_playbook_version": None,
+        "selected_setup_variant_id": None,
+        "selected_setup_variant_version": None,
+        "expression_id": None,
+        "expression_version": None,
+        "expression_fingerprint": None,
+        "lifecycle_intent": (),
+        "limitations": (),
+        "closed_authority_classes": CLOSED_AUTHORITIES,
+        "foreign_authority_claimed": False,
+        "semantic_fingerprint": "",
+    }
+    material = dict(payload)
+    material.pop("serial_result_id")
+    material.pop("candidate_id")
+    material.pop("semantic_fingerprint")
+    candidate_fingerprint = fingerprint(material)
+    payload["semantic_fingerprint"] = candidate_fingerprint
+    payload["serial_result_id"] = f"serial-result.{candidate_fingerprint[:16]}"
+    with pytest.raises(ValueError, match="candidate_terminal_output_required"):
+        api["SerialCandidate"].model_validate(payload)
+
+
+def test_repair_all_terminal_results_have_stable_distinct_result_identity() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    cases = (
+        production_handlers(api),
+        production_handlers(api, terminal_stage="posture"),
+        production_handlers(
+            api,
+            terminal_stage="options_flow",
+            terminal_status="withheld",
+        ),
+        production_handlers(api, terminal_stage="regime", terminal_status="rejected"),
+    )
+    results = tuple(
+        api["SerialRunner"](
+            handlers=handlers,
+            runner_version=context_case.runner_version,
+            stage_order_version=context_case.serial_order_version,
+        ).run(context=context, stage_inputs=inputs)
+        for handlers in cases
+    )
+    for result in results:
+        assert result.serial_result_id == (
+            f"serial-result.{result.semantic_fingerprint[:16]}"
+        )
+        assert result.serial_result_id not in {
+            result.context_id,
+            result.prepared_id,
+            result.candidate_id,
+        }
+
+
+def test_repair_serial_result_identity_rejects_forged_copy() -> None:
+    api = production_api()
+    context_case, context, inputs = _production_context_and_inputs(api)
+    result = api["SerialRunner"](
+        handlers=production_handlers(api),
+        runner_version=context_case.runner_version,
+        stage_order_version=context_case.serial_order_version,
+    ).run(context=context, stage_inputs=inputs)
+    forged = result.model_copy(update={"serial_result_id": result.context_id})
+    with pytest.raises(ValueError, match="serial_result_identity_invalid"):
+        api["SerialCandidate"].model_validate(forged.model_dump(mode="python"))

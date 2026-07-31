@@ -326,3 +326,48 @@ def test_gate_d_rejects_invalid_numeric_risk_facts() -> None:
     payload["vix_level"] = float("inf")
     with pytest.raises(ValueError, match="vix_level_must_be_nonnegative_finite"):
         m.ParallelRiskInput.model_validate(payload)
+
+
+def test_repair_rejects_negative_vix_thresholds() -> None:
+    m = _production()
+    with pytest.raises(ValueError, match="vix_threshold_must_be_nonnegative"):
+        m.ParallelRiskInput.from_prepared(
+            make_prepared(vix_level=0.0),
+            evaluator_policy_version="parallel-risk.compat.v1",
+            aggregation_version="parallel-risk.aggregate.v1",
+            threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),
+            vix_caution_threshold=-10.0,
+            vix_block_threshold=-1.0,
+        )
+
+
+@pytest.mark.parametrize(
+    ("evaluator_policy_version", "aggregation_version", "error"),
+    [
+        (
+            "m06.future.policy.v999",
+            "parallel-risk.aggregate.v1",
+            "unsupported_evaluator_policy_version",
+        ),
+        (
+            "parallel-risk.compat.v1",
+            "m06.future.aggregate.v999",
+            "unsupported_aggregation_version",
+        ),
+    ],
+)
+def test_repair_rejects_unsupported_policy_versions(
+    evaluator_policy_version: str,
+    aggregation_version: str,
+    error: str,
+) -> None:
+    m = _production()
+    with pytest.raises(ValueError, match=error):
+        m.ParallelRiskInput.from_prepared(
+            make_prepared(vix_level=34.0),
+            evaluator_policy_version=evaluator_policy_version,
+            aggregation_version=aggregation_version,
+            threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),
+            vix_caution_threshold=30.0,
+            vix_block_threshold=50.0,
+        )
