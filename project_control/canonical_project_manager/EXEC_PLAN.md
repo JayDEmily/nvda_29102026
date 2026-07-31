@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M07_C_PROOF`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M07_GATE_D`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -160,6 +160,10 @@ After Gate C passes, Gate D:
 - M07 K12 C-NORM is accepted in runtime-ownership section 7.7, vocabulary
   section 10.16 and architecture section 11.10.3.1; the exact public contracts
   are `PolicyBundle`, `ModifierDecision` and `ModifierApplicationReceipt`.
+- M07 K12 C-PROOF is accepted: 11 reference and false-positive checks pass,
+  all five named mutants are killed, the M07 vocabulary boundary is clean and
+  seven exact production-facing cases remain red because the canonical public
+  package is absent.
 
 ### Converted decision
 
@@ -175,20 +179,22 @@ semantics, M03 preparation or downstream decision authority.
 
 ### Queued
 
-- M07: write and pass the minimum K12 public-seam proof; Gate D remains closed.
+- M07: implement the bounded K12 public seam; no generic policy, capital,
+  strategy, replay, transaction or downstream-mutation authority is open.
 - M08: add the K13 catalogue/eligibility identity, ordering, tie-break,
   stand-down and lifecycle-carriage proposition; then minimum proof.
 
 ## 8. Immediate work
 
-Complete the minimum M07 K12 public-seam proof against the accepted section 7.7
-authority. Prove bundle/version identity, lawful absence, authority-owned
-precedence/conflict, hard-bound application, deterministic receipt lineage and
-the side-effect boundary. Open bounded M07 Gate D only after that proof passes.
+Implement the smallest M07 K12 public seam required by the accepted proof:
+`PolicyBundle`, `ModifierDecision`, `ModifierApplicationReceipt`, deterministic
+bundle resolution and receipt construction. Preserve lawful absence,
+authority-owned precedence/conflict, post-algebra hard bounds, deterministic
+lineage and the side-effect boundary.
 
-Use the existing M07 module records, validation log, proof registry and one
-semantic checkpoint. Do not create another project roadmap, receipt hierarchy
-or worker/tester archive pair.
+Use the existing M07 module records, validation log and proof registry. Do not
+create a generic policy engine, a new roadmap, a receipt hierarchy or another
+worker/tester archive pair.
 
 ## 9. Programme sequence
 

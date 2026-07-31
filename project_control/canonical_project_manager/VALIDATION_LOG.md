@@ -1240,3 +1240,39 @@ during C-NORM. Exact evidence is under
 
 Open M07 K12 `C-PROOF`. Gate D remains closed until the smallest truthful
 public-seam proof passes.
+
+## 2026-07-31 — M07 K12 C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The bounded K12 proof establishes bundle/version identity, lawful absence,
+authority-owned precedence/conflict, post-algebra hard bounds, deterministic
+decision lineage and receipt side-effect closure. Five deliberately faulty
+subjects are detected: caller-order resolution, missing-bundle defaulting,
+premature clamping, arbitrary conflict tie-break and receipt claims of foreign
+mutation authority.
+
+| Check | Result |
+|---|---|
+| Reference and false-positive proof | PASS — 11 / 11 |
+| Named mutants | PASS — 5 / 5 killed |
+| Production-facing public seam | EXPECTED RED — 11 passed / 7 failed because the canonical M07 package is absent |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| Proof-block manifest | PASS — 55 / 55 |
+| Proof-executor contract | PASS — 21 / 21 |
+| M07 vocabulary audit | PASS — 0 unresolved candidates / 13 scoped files |
+| Production/runtime configuration mutation | none |
+| Ruff | UNAVAILABLE — no installed locked Ruff module; no unpinned substitute used |
+
+The seven production failures occur after successful collection and are confined
+to the absent target package. No skip, xfail, assertion weakening or production
+stub was used. Exact outputs are under
+`project_control/canonical_project_manager/modules/M07/raw_validation/fast_track_k12_c_proof_v1/`.
+
+### Next action
+
+Implement the smallest M07 K12 public seam. Gate D remains bounded to M07
+coefficient/modifier authority and cannot acquire generic policy, capital,
+strategy, replay, transaction or downstream-mutation authority.

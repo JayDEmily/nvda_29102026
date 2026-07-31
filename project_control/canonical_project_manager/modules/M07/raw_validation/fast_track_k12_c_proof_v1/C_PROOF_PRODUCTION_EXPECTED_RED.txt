@@ -1,0 +1,218 @@
+...........FFFFFFF                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_production_public_api_exposes_exact_k12_contracts ____________
+
+    def test_production_public_api_exposes_exact_k12_contracts() -> None:
+>       api = production_api()
+              ^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+___ test_production_public_seam_distinguishes_missing_bundle_and_valid_no_op ___
+
+    def test_production_public_seam_distinguishes_missing_bundle_and_valid_no_op() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:285: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_public_seam_applies_authority_order_and_post_algebra_bounds __
+
+    def test_production_public_seam_applies_authority_order_and_post_algebra_bounds() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:312: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+________ test_production_public_seam_hard_kill_dominates_weaker_effects ________
+
+    def test_production_public_seam_hard_kill_dominates_weaker_effects() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:333: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_public_seam_rejects_missing_fact_and_equal_precedence_conflict _
+
+    def test_production_public_seam_rejects_missing_fact_and_equal_precedence_conflict() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:363: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_ test_production_receipt_preserves_decision_lineage_without_foreign_authority _
+
+    def test_production_receipt_preserves_decision_lineage_without_foreign_authority() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:395: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+_________ test_production_public_seam_rejects_non_utc_input_state_time _________
+
+    def test_production_public_seam_rejects_non_utc_input_state_time() -> None:
+>       api, bundle, input_state = _production_payloads()
+                                   ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_a/m07_k12/test_m07_k12_contract.py:423: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/tier_a/m07_k12/test_m07_k12_contract.py:202: in _production_payloads
+    api = production_api()
+          ^^^^^^^^^^^^^^^^
+tests/support/m07_k12_contract_harness.py:523: in production_api
+    module = importlib.import_module("nvda_desk.m07_coefficient_modifier_authority")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+name = 'nvda_desk.m07_coefficient_modifier_authority'
+import_ = <function _gcd_import at 0x7f4e291c84a0>
+
+>   ???
+E   ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+
+<frozen importlib._bootstrap>:1324: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_api_exposes_exact_k12_contracts - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_seam_distinguishes_missing_bundle_and_valid_no_op - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_seam_applies_authority_order_and_post_algebra_bounds - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_seam_hard_kill_dominates_weaker_effects - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_seam_rejects_missing_fact_and_equal_precedence_conflict - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_receipt_preserves_decision_lineage_without_foreign_authority - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+FAILED tests/tier_a/m07_k12/test_m07_k12_contract.py::test_production_public_seam_rejects_non_utc_input_state_time - ModuleNotFoundError: No module named 'nvda_desk.m07_coefficient_modifier_authority'
+7 failed, 11 passed in 0.16s

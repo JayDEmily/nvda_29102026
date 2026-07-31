@@ -42,9 +42,11 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == native_build_document().to_dict()
 
     assert committed["schema_version"] == "v2_namespaced"
-    assert set(committed["namespaces"]) == {"global", "m04"}
+    assert set(committed["namespaces"]) == {"global", "m04", "m07"}
     assert committed["namespaces"]["m04"]["imports"] == ["global"]
+    assert committed["namespaces"]["m07"]["imports"] == ["global"]
     assert "config" not in committed["namespaces"]["m04"]["scan_paths"]
+    assert "config" not in committed["namespaces"]["m07"]["scan_paths"]
 
     m04_entries = [
         entry for entry in committed["entries"] if entry["namespace"] == "m04"
@@ -61,6 +63,16 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m04.replay_comparison_packet",
         "m04.diagnostic_packet",
         "m04.rejection_packet",
+    }
+
+    m07_entries = [
+        entry for entry in committed["entries"] if entry["namespace"] == "m07"
+    ]
+    assert len(m07_entries) == 3
+    assert {entry["canonical_id"] for entry in m07_entries} == {
+        "m07.policy_bundle",
+        "m07.modifier_decision",
+        "m07.modifier_application_receipt",
     }
 
 

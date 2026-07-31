@@ -941,3 +941,19 @@ proof_blocks:
       - project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_WORKER_RECORD_V1.md
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m07_k12_coefficient_modifier_contract
+    tier: Tier A
+    lifecycle: candidate_current_mvp_c_proof_gate_d_expected_red
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m07_k12/test_m07_k12_contract.py
+    owns:
+      - tests/tier_a/m07_k12/test_m07_k12_contract.py
+      - tests/support/m07_k12_contract_harness.py
+      - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

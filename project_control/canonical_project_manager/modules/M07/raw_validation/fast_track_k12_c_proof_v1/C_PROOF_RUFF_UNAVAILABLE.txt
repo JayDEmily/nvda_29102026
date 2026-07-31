@@ -1,0 +1,4 @@
+command=python -m ruff --version
+result=UNAVAILABLE
+stderr=/opt/pyvenv/bin/python: No module named ruff
+disposition=no unpinned or substitute linter used

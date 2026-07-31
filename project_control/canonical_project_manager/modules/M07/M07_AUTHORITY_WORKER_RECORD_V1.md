@@ -145,3 +145,60 @@ The historical blocker above is resolved by numbered authority, not by implement
 - existing vocabulary tests: 24 passed / 1 expected red because the previous parity proof hard-codes only `global` and `m04`.
 
 Exact outputs and the full-read manifest are under `raw_validation/fast_track_k12_v1/`. The next gate is `C-PROOF`; M07 Gate D remains closed.
+
+## 2026-07-31 fast-track C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The accepted section 7.7 proposition is now protected by one bounded Tier A
+public-seam family:
+
+- `tests/support/m07_k12_contract_harness.py` supplies a conforming deterministic
+  reference subject and five explicit false-positive mutants;
+- `tests/tier_a/m07_k12/test_m07_k12_contract.py` proves lawful missing/empty/
+  no-applicable states, authority-owned order, unresolved conflict rejection,
+  post-algebra clamping, hard-kill dominance, deterministic decision lineage and
+  receipt side-effect closure;
+- seven production-facing cases define the target public seam and remain exact
+  expected red because `nvda_desk.m07_coefficient_modifier_authority` does not
+  yet exist.
+
+### Proof result
+
+| Check | Result |
+|---|---|
+| Reference and mutant proof | PASS — 11 / 11 |
+| Named false-positive mutants | PASS — 5 / 5 killed |
+| Production-facing seam | EXPECTED RED — 11 passed / 7 failed; all seven fail at the absent canonical package |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| Proof-block manifest | PASS — 55 / 55 |
+| Proof-executor contract | PASS — 21 / 21 |
+| M07 scoped vocabulary audit | PASS — zero unresolved candidates across 13 files |
+| Production/config mutation | none |
+
+The proof uses no skip, xfail, weakened assertion, fake production fixture or
+implementation substitution. The stale namespace-parity assertion was updated
+only to the already-admitted `global`, `m04`, `m07` projection and the exact
+three M07 identities.
+
+### Gate D boundary
+
+Opened:
+
+- one explicit package API for `PolicyBundle`, `ModifierDecision` and
+  `ModifierApplicationReceipt`;
+- owner-local deterministic resolution and receipt construction;
+- direct transitional adapters only where needed to preserve compatibility.
+
+Closed:
+
+- generic policy ownership;
+- caller-order semantics, hidden live state and wall-clock inference;
+- capital, playbook, execution, lifecycle, replay, transaction or downstream
+  mutation authority;
+- unrelated module, configuration or test changes.
+
+Exact evidence is retained under
+`raw_validation/fast_track_k12_c_proof_v1/`.
