@@ -3601,3 +3601,27 @@ tier_a_registry_reconciliation_inventory:
     registry_status: registered_retained_seed_tier_a
   - path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
     registry_status: candidate_tier_a_repaired_pending_independent_mlc_v
+
+# Fast-track module-local admissions appended to preserve occurrence-scoped audit locations.
+fast_track_module_local_admissions:
+- test_family_id: m01_source_admission_contract
+  native_status: admitted_tier_a_current
+  bounded_family: ingress
+  native_test_path: tests/tier_a/ingress/test_m01_source_admission_contract.py
+  migration_status: module_local_c_proof_and_gate_d_accepted
+  normative_basis:
+  - docs/03.1_DOMAIN_MODEL_WORKING.md
+  - docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md
+  - docs/05.1_GUARDRAILS_WORKING.md
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  architecture_basis:
+  - project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_PM_REVIEW_V1.md
+  - project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m01_source_admission_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: M01 source-admission contracts and service were reread against the public-seam proof; the seam remains offline, contract-driven, fail-closed and explicitly volatile.
+  native_reauthor_required: false
+  admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for exact family/version resolution, provider/channel substitution control, source/capture identity separation, source temporal truth, typed payload admission and prohibited-authority rejection.
+  forbidden_carry_forward: Shape guessing, provider defaults, capture-as-source identity, hash-as-capture identity, capture-clock substitution, fabricated temporal precision, live connectivity and downstream decision authority must not satisfy M01 admission.
+  notes: This family proves the bounded M01 public seam only. It does not claim production durability, all provider families, M02 calendar semantics, M03 preparation, M04 carriage or live source connectivity.

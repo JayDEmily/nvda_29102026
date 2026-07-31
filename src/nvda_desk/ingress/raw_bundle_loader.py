@@ -63,9 +63,35 @@ def _mapping_value(payload: Mapping[str, Any], key: str) -> dict[str, Any]:
     return {}
 
 
+_SOURCE_METADATA_KEYS = frozenset(
+    {
+        "snapshot_id",
+        "source_time_raw",
+        "source_time_kind",
+        "source_timezone_raw",
+        "source_time_utc",
+        "source_date",
+        "captured_at_utc",
+        "persisted_at_utc",
+        "source_provider",
+        "source_channel",
+        "time_granularity",
+    }
+)
+
+
 def _build_market_snapshot(payload: Mapping[str, Any]) -> dict[str, Any]:
     explicit = _mapping_value(payload, "market_snapshot")
-    return explicit or dict(payload)
+    if explicit:
+        return explicit
+    content = {
+        key: value
+        for key, value in payload.items()
+        if key not in _SOURCE_METADATA_KEYS and key != "options_surface"
+    }
+    if not content or all(isinstance(value, Mapping) for value in content.values()):
+        raise ValueError("unsupported typed source section or family")
+    return dict(payload)
 
 
 def _build_options_surface(

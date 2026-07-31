@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from datetime import datetime
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -19,6 +20,7 @@ class RawUpstreamSignalInput(BaseModel):
     source_id: str = Field(min_length=1)
     signal_family_id: str = Field(min_length=1)
     scope_id: str = Field(min_length=1)
+    source_time_utc: datetime | None = None
     payload: dict[str, Any] = Field(default_factory=dict)
 
     @field_validator("payload", mode="before")

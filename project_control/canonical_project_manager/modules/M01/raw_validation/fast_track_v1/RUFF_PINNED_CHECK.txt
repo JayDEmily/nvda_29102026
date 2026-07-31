@@ -1,0 +1,11 @@
+Using CPython 3.13.5 interpreter at: /usr/bin/python3.13
+Creating virtual environment at: .venv
+   Building nvda10 @ file:///mnt/data/nvda_fasttrack_work/Nvda11
+  × Failed to download `pytokens==0.4.1`
+  ├─▶ Failed to fetch:
+  │   `https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/e0/d2/afe5c7f8607018beb99971489dbb846508f1b8f351fcefc225fcf4b2adc0/pytokens-0.4.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl`
+  ╰─▶ HTTP status client error (404 Not Found) for url
+      (https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/e0/d2/afe5c7f8607018beb99971489dbb846508f1b8f351fcefc225fcf4b2adc0/pytokens-0.4.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl)
+  help: `pytokens` (v0.4.1) was included because `nvda10[dev]` (v0.1.0)
+        depends on `black` (v26.3.1) which depends on `pytokens`
+RUFF_EXIT_STATUS=1

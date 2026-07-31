@@ -2,7 +2,7 @@
 
 ## Status
 
-`PROPOSED_M01_MLC_A_V1_AWAITING_INDEPENDENT_PROJECT_MANAGER_REVIEW`
+`ACCEPTED:MVP_FAST_TRACK_M01_C_PROOF_AND_GATE_D`
 
 ## Source checkpoint
 
@@ -253,3 +253,61 @@ No MLC-R, MLC-O, MLC-D, MLC-P, MLC-T, MLC-V or implementation work was performed
 ## Mutation statement
 
 No source, test, configuration, vocabulary, normative document or canonical programme-control file was modified in Phase B. The only changed paths are this worker record and worker-owned evidence under `project_control/canonical_project_manager/modules/M01/raw_validation/mlc_a_v1/`.
+
+
+## 2026-07-31 fast-track closure
+
+The historical MLC-A proposal above remains the accepted authority record. Under
+the current MVP ExecPlan, the former later MLC leaf sequence was superseded by
+`C-NORM → C-PROOF → module-local Gate D`.
+
+### Accepted bounded implementation
+
+M01 now provides one offline, contract-driven source-admission seam that:
+
+- resolves only explicitly registered family, contract and schema versions;
+- enforces declared provider and acquisition-channel substitution law;
+- preserves owner-issued source identity separately from repository capture
+  identity and payload fingerprint;
+- preserves source temporal truth at declared precision and requires UTC for
+  source instants;
+- requires a typed payload whose serialised material equals the captured input;
+- records explicit limitations and an honestly `volatile_alpha` capture receipt;
+- rejects unsupported families, shape guessing, fabricated identity/time,
+  recursive credential or decision authority, and other downstream ownership.
+
+The compatibility changes are limited to recursive external-source validation,
+rejection of untyped raw-bundle fallback shapes and carriage of optional source
+observation time on the raw upstream signal contract.
+
+### Acceptance evidence
+
+| Check | Result |
+|---|---|
+| Focused M01 public-seam proof | PASS — 18 / 18 |
+| Reference and false-positive mutant subset | PASS — 9 / 9 |
+| Proof-block manifest | PASS — 54 / 54 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Direct repaired compatibility cases | PASS — 4 / 4 |
+| Routed M01 shadow | 169 passed / 34 failed versus 165 / 38 at the M01 baseline |
+| Full Tier A shadow | 1,334 passed / 267 failed versus 1,312 / 271 at the M01 baseline; zero new failing nodes, four resolved |
+| Tier B | PASS — 49 / 49 |
+| Tier C | no tests collected |
+| Architecture, compile and diff checks | PASS |
+| Global vocabulary shadow | unchanged at 50 pre-existing candidates; no M01 semantic candidate added |
+| Pinned Ruff | UNAVAILABLE — configured mirror returned HTTP 404 for locked `pytokens==0.4.1`; no unpinned substitute used |
+
+Exact commands, outputs, comparisons and hashes are retained under
+`raw_validation/fast_track_v1/`.
+
+### Scope ceiling
+
+This acceptance does not establish live provider connectivity, credentials,
+production durability, restart recovery, authoritative replay, every future
+provider family, M02 calendar interpretation, M03 preparation, M04 packet
+carriage or any cognition, risk, capital, execution or lifecycle authority.
+
+### Next active slice
+
+`M07:K12 C-NORM` — coefficient/modifier identity and version, precedence and
+conflict law, bounds, application ordering and application-receipt meaning.

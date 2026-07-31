@@ -925,3 +925,19 @@ proof_blocks:
       - docs/vocabulary/vocabulary_registry.md
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m01_source_admission_contract
+    tier: Tier A
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/ingress/test_m01_source_admission_contract.py
+    owns:
+      - src/nvda_desk/m01_source_admission/__init__.py
+      - src/nvda_desk/m01_source_admission/contracts.py
+      - src/nvda_desk/m01_source_admission/service.py
+      - tests/support/m01_source_admission_contract_harness.py
+      - tests/tier_a/ingress/test_m01_source_admission_contract.py
+      - project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_PM_REVIEW_V1.md
+      - project_control/canonical_project_manager/modules/M01/M01_AUTHORITY_WORKER_RECORD_V1.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

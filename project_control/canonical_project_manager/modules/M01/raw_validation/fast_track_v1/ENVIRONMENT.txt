@@ -1,0 +1,8 @@
+generated_at_utc=2026-07-31T02:56:24Z
+repository=/mnt/data/nvda_fasttrack_work/Nvda11
+branch=control/atlas-current-path-rebase-gate-c-continuation-v1
+head_before_m01_commit=f5b5c5cc060eebc91ed26e218f570d59b8649250
+m01_baseline=f5b5c5cc060eebc91ed26e218f570d59b8649250
+python=Python 3.13.5
+pytest=pytest 9.0.2
+platform=Linux 6ab7790fa836 6.12.13 #1 SMP Thu Jul 23 17:57:28 UTC 2026 x86_64 GNU/Linux

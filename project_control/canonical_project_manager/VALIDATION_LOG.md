@@ -1158,3 +1158,52 @@ occurrence dispositions are retained under
 Open M01 source-admission `C-PROOF`. If the minimum truthful public-seam family
 passes, proceed immediately to the smallest M01 Gate D implementation; do not
 reintroduce the retired MLC leaf sequence.
+
+
+## 2026-07-31 — M01 source-admission C-PROOF and Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M01_SOURCE_ADMISSION_CONTRACT`
+
+The accepted M01 authority was converted directly through the MVP fast-track
+into one focused public-seam proof and the smallest owner-local implementation.
+The seam remains offline, contract-driven, fail-closed and explicitly volatile.
+
+The implementation resolves exact registered family/contract/schema identity,
+controls provider/channel substitution, separates source-issued identity from
+repository capture identity and fingerprint, preserves source temporal truth,
+requires typed payload equality with captured material, records explicit
+limitations and rejects unsupported or authority-bearing material. It does not
+open live connectivity, durable replay, downstream preparation or decision
+ownership.
+
+| Check | Result |
+|---|---|
+| Focused M01 proof | PASS — 18 / 18 |
+| Reference and false-positive mutant subset | PASS — 9 / 9 |
+| Proof-block manifest | PASS — 54 / 54 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Direct repaired compatibility cases | PASS — 4 / 4 |
+| Routed M01 shadow | current 169 passed / 34 failed versus baseline 165 / 38 |
+| Tier A checkpoint comparison | current 1,334 passed / 267 failed versus baseline 1,312 / 271; zero new failing nodes, four resolved |
+| Tier B | PASS — 49 / 49 |
+| Tier C | no tests collected |
+| Architecture, compile and diff checks | PASS |
+| Global vocabulary shadow | 50 pre-existing candidates at both baseline and current state; zero M01 semantic additions |
+| Pinned Ruff | UNAVAILABLE — locked `pytokens==0.4.1` wheel returned HTTP 404 from the configured mirror; no unpinned substitute used |
+
+The four resolved Tier A nodes are the two recursive external-source adapter
+authority checks, untyped raw-bundle fallback rejection and raw-signal source
+observation time. No new failing Tier A node exists relative to the exact M01
+baseline `f5b5c5cc060eebc91ed26e218f570d59b8649250`.
+
+Exact commands, outputs, failure-node delta and evidence hashes are retained
+under
+`project_control/canonical_project_manager/modules/M01/raw_validation/fast_track_v1/`.
+
+### Next action
+
+Open M07 K12 `C-NORM`. Define the missing coefficient/modifier identity/version,
+precedence/conflict, bounds, application-order and receipt semantics before
+writing minimum proof or changing M07 production code.

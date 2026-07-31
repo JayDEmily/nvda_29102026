@@ -1,0 +1,4 @@
+.........                                                                [100%]
+9 passed, 9 deselected in 0.04s
+EXIT_STATUS=0
+[3JTERM environment variable not set.

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M01_C_PROOF`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M07_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -154,6 +154,9 @@ After Gate C passes, Gate D:
 - M04 K07 Gate D is accepted: 271 admitted proof cases pass, the retained
   admitted partial case passes, and the source-checkpoint shadow comparison
   contains zero new failing Tier A nodes.
+- M01 source admission satisfies C-NORM, C-PROOF and bounded Gate D: 18 focused
+  public-seam cases pass, the proof manifest and executor contract pass, and the
+  full Tier A shadow comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -162,9 +165,13 @@ MLC-V gate remains superseded because it would add another control cycle
 without a new semantic claim. No broader M04, live or production-readiness
 claim follows from this acceptance.
 
+M01 satisfies `C-NORM`, `C-PROOF` and bounded source-admission Gate D. The
+accepted seam is offline, contract-driven, fail-closed and explicitly volatile;
+it does not establish live provider connectivity, durable replay, M02 calendar
+semantics, M03 preparation or downstream decision authority.
+
 ### Queued
 
-- M01: write the minimum source-admission proof, then implement.
 - M07: add the K12 identity/version, precedence/conflict, bounds and application
   receipt proposition; then minimum proof.
 - M08: add the K13 catalogue/eligibility identity, ordering, tie-break,
@@ -172,13 +179,12 @@ claim follows from this acceptance.
 
 ## 8. Immediate work
 
-Complete M01 source-admission minimum proof against its public seam, including
-one conforming admission, the material fail-closed/prohibited case and one
-plausible false-positive challenge. If the proof passes, implement the smallest
-owner-local M01 Gate D change and run affected admitted proof plus full legacy
-shadow evidence.
+Complete M07 K12 normative closure for coefficient/modifier authority. Define
+only the missing identity/version, precedence and conflict law, bounds,
+application ordering and receipt meaning required by the accepted architecture.
+Then write the minimum public-seam proof before opening bounded M07 Gate D.
 
-Use the existing M01 module record, validation log, proof registry and one
+Use the existing M07 module records, validation log, proof registry and one
 semantic checkpoint. Do not create another project roadmap, receipt hierarchy
 or worker/tester archive pair.
 

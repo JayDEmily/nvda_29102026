@@ -1,0 +1,10 @@
+$ python3.13 scripts/vocabulary_synonym_audit.py --namespace global
+vocabulary_synonym_audit=PASS candidates=50 namespace=global scanned_files=481 vocabulary_touched=True resolved_occurrences=646
+AUDIT_EXIT_STATUS=0
+current_candidate_count=50
+baseline_candidate_count=50
+m01_semantic_candidates_added=0
+$ python3.13 scripts/vocabulary_synonym_audit.py --namespace global --check-clean
+vocabulary_synonym_audit=PASS candidates=50 namespace=global scanned_files=481 vocabulary_touched=True resolved_occurrences=646
+vocabulary_synonym_audit=BLOCKED unresolved_candidates=50
+CHECK_CLEAN_EXIT_STATUS=1

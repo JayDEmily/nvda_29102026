@@ -1,0 +1,4 @@
+$ PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3.13 -m pytest -q <four resolved M01 compatibility tests>
+....                                                                     [100%]
+4 passed in 0.24s
+EXIT_STATUS=0

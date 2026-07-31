@@ -1,0 +1,6 @@
+target_package=src/nvda_desk/m01_source_admission
+component_forms=contracts,service,public_api
+runtime_dependency_target=M01:none
+prohibited_imports=0
+........                                                                 [100%]
+8 passed in 0.04s
