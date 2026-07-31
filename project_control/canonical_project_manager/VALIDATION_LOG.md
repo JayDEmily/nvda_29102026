@@ -1568,3 +1568,22 @@ Concise evidence and the full-read manifest are under
 
 Open M03 K05/K06 `C-PROOF`. Gate D remains closed until the smallest truthful
 public-seam proof passes.
+
+## 2026-07-31 — M03 K05/K06 fast-track C-PROOF acceptance
+
+### Outcome
+
+`PASS:C-PROOF:GATE_D_OPEN:M03_K05_K06_PREPARED_DATA_AUTHORITY`
+
+### Known true
+
+- Twelve reference and false-positive cases pass.
+- Six named mutants are killed: caller order, lineage dropping, capture fabrication, untagged payload acceptance, derivation evidence dropping and foreign-authority leakage.
+- Seven production-facing cases remain exact red only at absent M03 modules or missing runtime-lineage fields.
+- Vocabulary parity passes 4/4 with namespace `m03`; the M03 synonym audit is clean across 12 files.
+- The registered proof block and all proof-block manifests validate.
+- No production source changed during C-PROOF.
+
+### Next gate
+
+Execute the bounded M03 Gate D implementation named by the exact-red proof.

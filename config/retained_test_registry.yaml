@@ -3691,3 +3691,26 @@ fast_track_module_local_admissions:
   admission_reason: The 31 July 2026 MVP C-PROOF gate admits this bounded family for exact four-layer identity, equal-value coalescence with complete lineage, explicit operational supersession, fail-closed conflict, lawful absence states, deterministic projection identity and closed foreign authority.
   forbidden_carry_forward: Caller order, capture recency, derived-source override, missing-session defaults, unknown-events-as-empty, lineage dropping, arbitrary layer labels and downstream trading authority must not satisfy K04.
   notes: Thirty-three focused cases pass: thirteen reference/false-positive cases, the seven formerly expected-red public-seam cases, and thirteen direct integrity regressions covering copied authority revalidation, layer binding, order-independent identity, source-lineage coalescence, bundle and projection-policy authority, complete supersession-decision evidence, observation/capture carriage, withheld-evidence preservation and canonicalisation-version fingerprinting.
+
+- test_family_id: m03_k05_k06_prepared_data_contract
+  native_status: admitted_tier_a_current
+  bounded_family: prepared_data_and_field_resolution
+  native_test_path: tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
+  migration_status: module_local_c_proof_expected_red
+  normative_basis:
+  - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M03/M03_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m03_k05_k06_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: Existing PreparedRuntimeSnapshot, PreparedRuntimeLineage, PreparedContextPayload and raw-bundle preparation surfaces were reread against section 7.10; they remain transitional mapping and serialisation surfaces and do not yet implement the canonical K05/K06 M03 public seam.
+  native_reauthor_required: false
+  admission_reason: The 31 July 2026 MVP C-PROOF gate admits this bounded family for tagged typed-envelope identity, complete source/capture lineage, explicit field-owned coalescence and precedence, fail-closed mandatory conflict, material derivation provenance, deterministic fingerprints and closed foreign authority.
+  forbidden_carry_forward: Untagged mappings, caller or container order, silent overwrite, missing candidate lineage, fabricated capture identity, absent derivation inputs or versions, forged fingerprints, hidden live state and preparation claims of candidate, risk, capital, execution, lifecycle, transaction or replay authority must not satisfy M03.
+  notes: Twelve reference and false-positive checks are green while seven production-facing checks remain exact red until the canonical prepared-data contracts, field-resolution seam, builder and runtime-lineage carriage exist. Gate D is open only for that bounded implementation.

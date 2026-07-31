@@ -232,13 +232,13 @@ operational surfaces are bounded adapters rather than competing owners.
 
 ## 8. Immediate work
 
-M03 `C-NORM` is accepted as `M03-K05-K06-NORMATIVE-AUTHORITY-V1`. Open bounded M03 `C-PROOF`:
+M03 `C-NORM` and `C-PROOF` are accepted. Execute bounded M03 Gate D:
 
-1. admit the smallest K05/K06 public-seam proof for typed envelope identity/version/time/fingerprint law;
-2. prove equal-candidate coalescence, mandatory unresolved-conflict failure and explicit owner/fallback selection;
-3. prove material derivation version/input provenance and deterministic semantic fingerprints;
-4. kill false-positive implementations based on untagged mappings, caller order, silent overwrite, fabricated capture identity or foreign decision authority;
-5. keep M03 production code closed until the proof is accepted, then continue directly to the smallest owner-local Gate D implementation.
+1. implement the frozen `PreparedDataEnvelope`, source/capture reference, typed payload and derivation-receipt contracts;
+2. implement explicit field candidate, policy, resolution receipt and fail-closed resolver law;
+3. implement one deterministic side-effect-free `PreparedDataBuilder`;
+4. extend existing runtime lineage and preparation compatibility surfaces only enough to carry the canonical M03 authority without fabricating missing identity;
+5. resolve the seven exact-red public-seam cases, then run focused and affected validation with concise evidence retention.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 

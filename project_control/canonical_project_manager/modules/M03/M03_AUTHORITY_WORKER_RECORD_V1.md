@@ -7,9 +7,9 @@
 - Contract boundaries: `K05 PreparedDataEnvelope`; `K06 FieldResolutionReceipt`
 - Requirements: `N-03; N-04; C-008; C-011; C-012; M03 share of C-015`
 - Source checkpoint: `d8e1516ee8f091431c7dfcbfde1bd109dab0d12a`
-- Active gate: `C-PROOF`
-- Checkpoint state: `C_NORM_ACCEPTED`
-- Gate D: `CLOSED`
+- Active gate: `Gate D`
+- Checkpoint state: `C_PROOF_ACCEPTED`
+- Gate D: `OPEN`
 
 ## Question
 
@@ -64,3 +64,20 @@ Concise evidence and the current-target read manifest are under `validation/m03_
 ## Gate boundary
 
 C-PROOF is open for the smallest truthful K05/K06 family. It must prove mandatory envelope identity/version/time/fingerprint lineage, tagged typed payload rejection, equal-candidate coalescence, mandatory unresolved-conflict failure, explicit owner/fallback selection, derivation input/version carriage, deterministic fingerprints and foreign-authority closure. Gate D remains closed until that proof is accepted.
+
+## 2026-07-31 fast-track C-PROOF acceptance
+
+### Disposition
+
+`PASS:C-PROOF:GATE_D_OPEN:M03_K05_K06_PREPARED_DATA_AUTHORITY`
+
+The minimum truthful K05/K06 proof is admitted:
+
+- 12 reference and false-positive cases pass;
+- six explicit mutants are killed: caller order, lineage dropping, capture-ID fabrication, untagged payload acceptance, derivation-evidence dropping and foreign-authority leakage;
+- vocabulary builder parity passes with the exact `m03` namespace and three canonical identities;
+- the M03 namespace audit remains clean with zero unresolved candidates;
+- the proof-block manifest and all manifests validate;
+- seven production-facing assertions remain exact red only because the canonical M03 contract/resolution/builder modules and lineage fields do not yet exist.
+
+No production source changed during C-PROOF. Gate D is open only for the bounded K05/K06 implementation required to resolve those seven exact red cases without weakening the reference or mutant proof.
