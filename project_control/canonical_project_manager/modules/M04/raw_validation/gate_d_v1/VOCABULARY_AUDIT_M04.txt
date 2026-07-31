@@ -1,0 +1,3 @@
+$ PYTHONPATH=src:. python scripts/vocabulary_synonym_audit.py --namespace m04 --check-clean
+vocabulary_synonym_audit=PASS candidates=11 namespace=m04 scanned_files=96 vocabulary_touched=True resolved_occurrences=202
+vocabulary_synonym_audit=BLOCKED unresolved_candidates=11

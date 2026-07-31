@@ -1,0 +1,10 @@
+COMMAND: UV_CACHE_DIR=/tmp/nvda-uv-cache UV_PROJECT_ENVIRONMENT=/tmp/nvda-uv-env uv run --frozen ruff check changed paths
+   Building nvda10 @ file:///mnt/data/nvda_fasttrack_work/Nvda11
+  × Failed to download `orjson==3.11.7`
+  ├─▶ Failed to fetch:
+  │   `https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/c9/ec/c68e3b9021a31d9ec15a94931db1410136af862955854ed5dd7e7e4f5bff/orjson-3.11.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl`
+  ╰─▶ HTTP status client error (404 Not Found) for url
+      (https://packages.applied-caas-gateway1.internal.api.openai.org/artifactory/api/pypi/pypi-public/packages/packages/c9/ec/c68e3b9021a31d9ec15a94931db1410136af862955854ed5dd7e7e4f5bff/orjson-3.11.7-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl)
+  help: `orjson` (v3.11.7) was included because `nvda10` (v0.1.0) depends
+        on `orjson`
+RUFF_EXIT_STATUS=1

@@ -624,3 +624,66 @@ Closed:
 - new packet/domain authority;
 - unrelated tests, configuration and modules;
 - live execution, production durability and operational-readiness claims.
+
+## Gate D implementation acceptance — 2026-07-31
+
+Source checkpoint: `c9122e9d732f01de5f08af4b366df255270b7d0f` on
+`control/atlas-current-path-rebase-gate-c-continuation-v1`.
+
+Result: `GATE_D_ACCEPTED:M04:K07_PACKET_ROLE_CONTRACT`.
+
+The bounded K07 production surface now enforces section 9.10 without adding
+payload, decision, state or persistence authority to M04:
+
+- caller-owned `traceid`, `runid`, `scenarioid`, producer version/instance and
+  emission time are required rather than fabricated or defaulted;
+- all ten admitted packet roles use the exact nine-field R/C/O/N lineage
+  matrix, with conditional fields activated explicitly by the owner;
+- source-artefact retrievability and input-fingerprint agreement are separate
+  owner validations;
+- canonical-envelope checks are computed from the emitted envelope and every
+  domain/role check requires an owner callback over the actual packet facts;
+- diagnostic/rejection packets require a truthful target identity and cannot
+  use an input fingerprint as that identity;
+- degraded carriage is admitted only for an owner-approved optional limitation
+  with an explicit non-binding consumer restriction;
+- unlisted roles and failed owner checks reject before emission.
+
+The paused implementation was not accepted unchanged. Before acceptance, the
+following false-green or wrong-reason defects were corrected: hard-coded
+`passed=True` validation results, fingerprint-only diagnostic targeting,
+validation-order masking of the intended missing-context failure, callback
+annotations inconsistent with runtime arity, and constant representations of
+M04-owned envelope/completeness checks.
+
+### Acceptance evidence
+
+| Check | Result |
+|---|---|
+| Admitted K07 proof block | PASS — 271 / 271 |
+| K07 proof plus retained admitted partial case | PASS — 272 / 272 |
+| Proof-block manifest | PASS — all 53 blocks validate |
+| Affected packet shadow | 78 passed / 64 failed; all 64 failing nodes existed at the source checkpoint and are classified individually |
+| Full Tier A shadow | 1,312 passed / 271 failed |
+| Source-checkpoint Tier A shadow | 1,307 passed / 272 failed |
+| Tier A delta | zero new failing nodes; one failing node resolved; four new proof cases pass; 74 existing failures now reject at a more exact governed boundary |
+| Tier B shadow | PASS — 49 / 49 across 13 physical files |
+| Tier C shadow | no tests collected |
+| Architecture checks | PASS — scaffold and proof-executor contracts present |
+| M04 vocabulary audit | PASS — zero unresolved candidates across 96 scoped files; 213 exact occurrence dispositions |
+| Global vocabulary shadow | BLOCKED — 50 pre-existing/shared unresolved candidates; none introduced by the accepted M04 surface |
+| Compile and whitespace | PASS — `compileall`, line-length scan and `git diff --check` |
+| Repository integrity | PASS — `git fsck --full` |
+| Pinned Ruff | UNAVAILABLE — frozen environment could not fetch locked `orjson==3.11.7` because the configured package mirror returned HTTP 404; no unpinned substitute was used |
+
+Evidence is retained under
+`project_control/canonical_project_manager/modules/M04/raw_validation/gate_d_v1/`.
+The full legacy suite remains shadow evidence and does not override section
+9.10 or the admitted K07 proof. No live, paper, production-durable or
+operational-readiness claim is opened.
+
+### Next semantic gate
+
+M04 K07 is checkpoint-ready. Continue directly to M01 source-admission minimum
+public-seam proof, then implement the smallest owner-local M01 Gate D change if
+that proof passes.

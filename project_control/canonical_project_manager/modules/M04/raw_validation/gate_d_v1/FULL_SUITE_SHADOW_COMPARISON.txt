@@ -1,0 +1,10 @@
+baseline_c9122_tier_a_passed=1307
+baseline_c9122_tier_a_failed=272
+baseline_c9122_tier_a_total=1579
+current_tier_a_passed=1312
+current_tier_a_failed=271
+current_tier_a_total=1583
+new_failure_nodes=0
+resolved_failure_nodes=1
+existing_failure_nodes_with_reordered_reason=74
+added_tests=4

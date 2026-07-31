@@ -111,7 +111,10 @@ def test_pf04_all_common_and_exact_role_checks_arise_from_owner_facts(role: str)
     packet = ReferenceSubject().emit(case)
     names = tuple(result.name for result in packet.validation_results)
     assert names == (*COMMON_CHECKS, *ROLE_CHECKS[role])
-    assert all(result.evidence == f"owner_fact:{result.name}" for result in packet.validation_results)
+    assert all(
+        result.evidence == f"owner_fact:{result.name}"
+        for result in packet.validation_results
+    )
     assert "typed_payload" in case.ports.calls
     assert "authority_boundary" in case.ports.calls
 
@@ -281,9 +284,24 @@ def test_pf08_each_named_false_positive_mutant_is_killed(mutant: str) -> None:
 def test_production_subject_records_complete_k07_validation_profile_expected_red(
     role: str,
 ) -> None:
-    packet = ProductionSubject().emit(positive_case(role, activate_conditionals=True))
+    case = positive_case(role, activate_conditionals=True)
+    packet = ProductionSubject().emit(case)
     result_names = tuple(check.name for check in packet.validation.checks)
     assert result_names == (*COMMON_CHECKS, *ROLE_CHECKS[role])
+    assert "typed_payload" in case.ports.calls
+    assert "authority_boundary" in case.ports.calls
+    assert {
+        call.removeprefix("owner_check:")
+        for call in case.ports.calls
+        if call.startswith("owner_check:")
+    } == set(ROLE_CHECKS[role]) | {
+        "producer_identity",
+        "role_schema_consistency",
+        "execution_context_ownership",
+        "lineage_profile",
+        "extension_bounds",
+        "summary_consistency",
+    }
 
 
 @pytest.mark.parametrize("field_name", ("traceid", "runid", "scenarioid"))
@@ -342,7 +360,9 @@ def test_production_subject_requires_diagnostic_target_identity() -> None:
         for field_name in LINEAGE_FIELDS
     }
     with pytest.raises(ValueError, match="truthful_target_reference"):
-        ProductionSubject().emit(replace(case, lineage=empty_lineage))
+        ProductionSubject().emit(
+            replace(case, lineage=empty_lineage, activated_lineage=frozenset())
+        )
 
 
 def test_production_subject_rejects_unlisted_role() -> None:
@@ -363,3 +383,52 @@ def test_production_subject_rejects_input_fingerprint_mismatch() -> None:
     case = positive_case("stage_packet")
     with pytest.raises(ValueError, match="inputfingerprint"):
         ProductionSubject().emit(replace(case, material=b"substituted-material"))
+
+
+def test_production_subject_enforces_inactive_conditional_lineage() -> None:
+    case = with_lineage(
+        positive_case("stage_packet"),
+        "dependencyids",
+        ["dependency::not-declared-applicable"],
+    )
+    with pytest.raises(ValueError, match="dependencyids"):
+        ProductionSubject().emit(case)
+
+
+def test_production_subject_records_bounded_optional_degradation() -> None:
+    case = replace(
+        positive_case("prepared_context_packet"),
+        optional_limitation="optional_enrichment_unavailable",
+    )
+    packet = ProductionSubject().emit(case)
+    assert packet.validation.status == "degraded"
+    assert packet.validation.violations == ["optional_enrichment_unavailable"]
+    assert "optional_enrichment_unavailable" in packet.summary.keyflags
+    assert "consumer_restriction:non_binding_inspection_only" in packet.summary.keyflags
+    assert "optional_limitation:optional_enrichment_unavailable" in case.ports.calls
+
+
+def test_production_subject_rejects_fingerprint_only_diagnostic_target() -> None:
+    case = positive_case("diagnostic_packet")
+    lineage = {
+        field_name: (
+            [] if field_name in {"parentids", "dependencyids", "sourceartifactids"} else None
+        )
+        for field_name in LINEAGE_FIELDS
+    }
+    lineage["inputfingerprint"] = sha256(case.material).hexdigest()
+    with pytest.raises(ValueError, match="truthful_target_reference"):
+        ProductionSubject().emit(
+            replace(
+                case,
+                lineage=lineage,
+                activated_lineage=frozenset({"inputfingerprint"}),
+            )
+        )
+
+
+def test_production_subject_rejects_failed_owner_check() -> None:
+    case = positive_case("stage_packet")
+    case.ports.failed_owner_check = "stage_identity_and_order"
+    with pytest.raises(ValueError, match="validation.stage_identity_and_order failed"):
+        ProductionSubject().emit(case)

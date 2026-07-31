@@ -159,6 +159,7 @@ class OwnerPorts:
 
     artefacts: set[str]
     calls: list[str] = field(default_factory=list)
+    failed_owner_check: str | None = None
 
     def artefact_retrievable(self, artefact_id: str) -> bool:
         self.calls.append(f"artefact:{artefact_id}")
@@ -178,6 +179,65 @@ class OwnerPorts:
             key in payload
             for key in ("capital_authority", "live_order", "domain_state_mutation")
         )
+
+    def owner_check_valid(
+        self,
+        check_name: str,
+        context: dict[str, Any],
+        case: K07Case,
+    ) -> bool:
+        payload = context["data"]
+        if check_name == "typed_payload":
+            return self.typed_payload_valid(payload)
+        if check_name == "authority_boundary":
+            return self.authority_boundary_valid(payload)
+
+        self.calls.append(f"owner_check:{check_name}")
+        if check_name == self.failed_owner_check:
+            return False
+        if context["packetrole"] != case.role or context["dataschema"] != case.dataschema:
+            return False
+        if check_name == "producer_identity":
+            return context["producer"].model_dump() == {
+                "module_id": case.module_id,
+                "module_version": case.module_version,
+                "module_instance_id": case.module_instance_id,
+                "grammar_role": case.grammar_role,
+                "behaviour_class": case.behaviour_class,
+                "stage_name": case.stage_name,
+            }
+        if check_name == "role_schema_consistency":
+            return payload == case.payload and payload.get("role") == case.role
+        if check_name == "execution_context_ownership":
+            return context["execution_context"] == {
+                "traceid": case.traceid,
+                "runid": case.runid,
+                "scenarioid": case.scenarioid,
+            }
+        if check_name == "lineage_profile":
+            return context["lineage"].model_dump() == case.lineage
+        if check_name == "extension_bounds":
+            nvda_extensions = context["dmpextensions"].get("nvda", {})
+            return (
+                nvda_extensions.get("semantic_dependencies")
+                == case.lineage["dependencyids"]
+                and bool(nvda_extensions.get("schema_identifiers"))
+            )
+        if check_name == "summary_consistency":
+            summary = context["summary"]
+            if case.optional_limitation:
+                return (
+                    case.optional_limitation in summary.keyflags
+                    and "consumer_restriction:non_binding_inspection_only"
+                    in summary.keyflags
+                    and summary.humanstate == "degraded"
+                )
+            return summary.humanstate != "degraded"
+        return check_name in ROLE_CHECKS[case.role]
+
+    def optional_limitation_valid(self, limitation: str) -> bool:
+        self.calls.append(f"optional_limitation:{limitation}")
+        return limitation == "optional_enrichment_unavailable"
 
 
 @dataclass(frozen=True)
@@ -393,7 +453,20 @@ class ProductionSubject:
             behaviour_class=case.behaviour_class,
             stage_name=case.stage_name,
             source_artifact_validator=case.ports.artefact_retrievable,
-            input_material=case.material,
+            input_fingerprint_validator=lambda fingerprint: case.ports.fingerprint_valid(
+                case.material, fingerprint
+            ),
+            conditional_lineage_fields=set(case.activated_lineage),
+            owner_check_validator=lambda check_name, context: case.ports.owner_check_valid(
+                check_name, context, case
+            ),
+            validation_violations=(
+                [case.optional_limitation] if case.optional_limitation else None
+            ),
+            optional_limitation_validator=case.ports.optional_limitation_valid,
+            degraded_consumer_restriction=(
+                "non_binding_inspection_only" if case.optional_limitation else None
+            ),
             **case.lineage,
         )
 
@@ -414,7 +487,9 @@ def positive_case(role: str, *, activate_conditionals: bool = False) -> K07Case:
             else:
                 lineage[name] = f"{name}::{role}"
         else:
-            lineage[name] = [] if name in {"parentids", "dependencyids", "sourceartifactids"} else None
+            lineage[name] = (
+                [] if name in {"parentids", "dependencyids", "sourceartifactids"} else None
+            )
     if role in {"diagnostic_packet", "rejection_packet"} and not activate_conditionals:
         activated = frozenset({"dependencyids"})
         lineage["dependencyids"] = [f"rejected-input::{role}"]
@@ -470,7 +545,10 @@ def assert_complete_packet(case: K07Case, packet: K07Packet) -> None:
     assert packet.validation_status == ("degraded" if case.optional_limitation else "valid")
     names = tuple(result.name for result in packet.validation_results)
     assert names == (*COMMON_CHECKS, *ROLE_CHECKS[case.role])
-    assert all(result.passed and result.evidence.startswith("owner_fact:") for result in packet.validation_results)
+    assert all(
+        result.passed and result.evidence.startswith("owner_fact:")
+        for result in packet.validation_results
+    )
     assert packet.side_effects == ()
     assert packet.extensions["nvda"]["contract"] == "m04.k07.v1"
 

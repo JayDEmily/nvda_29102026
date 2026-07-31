@@ -1110,3 +1110,51 @@ M04 conversion:
 
 Implement the bounded M04 K07 Gate D slice. Independent review is not mandatory
 for this deterministic packet-validation surface under the new risk triggers.
+
+## 2026-07-31 — M04 K07 Gate D implementation acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M04_K07_PACKET_ROLE_CONTRACT`
+
+Source checkpoint `c9122e9d732f01de5f08af4b366df255270b7d0f` was resumed under the MVP
+fast-track. The production change remained bounded to M04 packet carriage and
+its direct K07 proof/support surfaces.
+
+The accepted implementation requires owner-held execution context, producer
+identity/version, explicit packet emission time, exact role-lineage
+applicability and owner-executed validation. It separately validates source
+artefact retrievability and fingerprints, rejects fingerprint-only diagnostic
+targets, permits only bounded owner-approved optional degradation, and rejects
+unlisted roles or failed owner checks. It does not create domain, decision,
+state or persistence authority.
+
+The paused implementation contained false-green validation and wrong-reason
+rejection paths. Acceptance followed correction of hard-coded successful check
+results, fingerprint-as-target substitution, validation precedence, callback
+arity annotations and constant M04-owned envelope/completeness checks.
+
+| Check | Result |
+|---|---|
+| K07 admitted proof | PASS — 271 / 271 |
+| K07 plus retained admitted partial proof | PASS — 272 / 272 |
+| Proof-block manifest | PASS — 53 / 53 |
+| Affected packet shadow | 78 passed / 64 failed; every failing node pre-existed and is individually classified |
+| Tier A checkpoint comparison | current 1,312 passed / 271 failed versus source 1,307 passed / 272 failed; zero new failing nodes, one resolved |
+| Tier B | PASS — 49 / 49 partitioned across 13 files |
+| Tier C | no tests collected |
+| Architecture | PASS |
+| M04 vocabulary | PASS — zero unresolved candidates across 96 files |
+| Global vocabulary shadow | 50 unresolved shared candidates, retained as non-M04 shadow debt |
+| Compile/diff/repository integrity | PASS |
+| Pinned Ruff | UNAVAILABLE — locked `orjson==3.11.7` wheel returned HTTP 404 from the configured mirror; no unpinned substitute used |
+
+Exact commands, outputs, baseline comparison, failure-node classification and
+occurrence dispositions are retained under
+`project_control/canonical_project_manager/modules/M04/raw_validation/gate_d_v1/`.
+
+### Next action
+
+Open M01 source-admission `C-PROOF`. If the minimum truthful public-seam family
+passes, proceed immediately to the smallest M01 Gate D implementation; do not
+reintroduce the retired MLC leaf sequence.

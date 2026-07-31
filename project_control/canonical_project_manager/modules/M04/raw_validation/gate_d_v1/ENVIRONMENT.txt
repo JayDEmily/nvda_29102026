@@ -1,0 +1,8 @@
+$ python3.13 --version
+Python 3.13.5
+$ python3.13 -m pytest --version
+pytest 9.0.2
+$ git --version
+git version 2.47.3
+$ uname -a
+Linux 6ab7790fa836 6.12.13 #1 SMP Thu Jul 23 17:57:28 UTC 2026 x86_64 GNU/Linux

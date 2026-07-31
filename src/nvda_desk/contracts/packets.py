@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime
-from hashlib import sha256
 from typing import Any, Callable, Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -38,51 +37,17 @@ K07_LINEAGE_FIELDS = (
     "decisiontraceid",
 )
 
-K07_REQUIRED_LINEAGE = {
-    "reference_packet": frozenset({"derivedfrom", "sourceartifactids", "inputfingerprint"}),
-    "prepared_context_packet": frozenset(
-        {"derivedfrom", "sourceartifactids", "inputfingerprint"}
-    ),
-    "stage_packet": frozenset(
-        {"parentids", "derivedfrom", "sourceartifactids", "inputfingerprint"}
-    ),
-    "parallel_risk_packet": frozenset(
-        {"parentids", "derivedfrom", "sourceartifactids", "inputfingerprint"}
-    ),
-    "review_explanation_packet": frozenset(
-        {"parentids", "derivedfrom", "inputfingerprint", "reviewtraceid"}
-    ),
-    "replay_request_packet": frozenset(
-        {"replayref", "sourceartifactids", "inputfingerprint", "replaytraceid"}
-    ),
-    "replay_result_packet": frozenset(
-        {
-            "parentids",
-            "derivedfrom",
-            "replayref",
-            "sourceartifactids",
-            "inputfingerprint",
-            "replaytraceid",
-        }
-    ),
-    "replay_comparison_packet": frozenset(
-        {
-            "parentids",
-            "derivedfrom",
-            "replayref",
-            "sourceartifactids",
-            "inputfingerprint",
-            "replaytraceid",
-        }
-    ),
-    "diagnostic_packet": frozenset(),
-    "rejection_packet": frozenset(),
-}
-
-K07_NOT_APPLICABLE_LINEAGE = {
-    "reference_packet": frozenset({"decisiontraceid"}),
-    "prepared_context_packet": frozenset({"decisiontraceid"}),
-    "replay_request_packet": frozenset({"derivedfrom"}),
+K07_LINEAGE_MATRIX = {
+    "reference_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
+    "prepared_context_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
+    "stage_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
+    "parallel_risk_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
+    "review_explanation_packet": ("R", "C", "R", "C", "C", "R", "R", "C", "C"),
+    "replay_request_packet": ("C", "C", "N", "R", "R", "R", "C", "R", "C"),
+    "replay_result_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
+    "replay_comparison_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
+    "diagnostic_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
+    "rejection_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
 }
 
 K07_COMMON_CHECKS = (
@@ -180,10 +145,16 @@ K07_ROLE_CHECKS = {
     ),
 }
 
-_FORBIDDEN_AUTHORITY_KEYS = frozenset(
-    {"capital_authority", "live_order", "domain_state_mutation"}
+K07_DIAGNOSTIC_TARGET_FIELDS = (
+    "parentids",
+    "dependencyids",
+    "derivedfrom",
+    "replayref",
+    "sourceartifactids",
+    "reviewtraceid",
+    "replaytraceid",
+    "decisiontraceid",
 )
-
 
 class DmpV3Producer(BaseModel):
     """Bounded producer identity carried by one DMPV3 packet."""
@@ -275,41 +246,50 @@ def _require_owned_identifier(value: str | None, field_name: str) -> str:
     return value
 
 
-def _find_forbidden_authority_key(value: Any) -> str | None:
-    if isinstance(value, dict):
-        for key, item in value.items():
-            if key in _FORBIDDEN_AUTHORITY_KEYS:
-                return key
-            nested = _find_forbidden_authority_key(item)
-            if nested is not None:
-                return nested
-    elif isinstance(value, (list, tuple)):
-        for item in value:
-            nested = _find_forbidden_authority_key(item)
-            if nested is not None:
-                return nested
-    return None
-
-
-def _validate_k07_lineage(packetrole: str, lineage: DmpV3Lineage) -> None:
+def _validate_k07_lineage(
+    packetrole: str,
+    lineage: DmpV3Lineage,
+    conditional_lineage_fields: set[str],
+) -> None:
     values = lineage.model_dump()
-    for field_name in K07_REQUIRED_LINEAGE[packetrole]:
-        if not _has_value(values[field_name]):
+    matrix = dict(zip(K07_LINEAGE_FIELDS, K07_LINEAGE_MATRIX[packetrole], strict=True))
+    unknown_conditions = conditional_lineage_fields.difference(K07_LINEAGE_FIELDS)
+    if unknown_conditions:
+        raise ValueError(
+            "conditional_lineage_fields contains unknown fields: "
+            + ", ".join(sorted(unknown_conditions))
+        )
+    invalid_conditions = {
+        field_name
+        for field_name in conditional_lineage_fields
+        if matrix[field_name] != "C"
+    }
+    if invalid_conditions:
+        raise ValueError(
+            "conditional_lineage_fields may activate only C fields: "
+            + ", ".join(sorted(invalid_conditions))
+        )
+
+    for field_name, state in matrix.items():
+        present = _has_value(values[field_name])
+        if state == "R" and not present:
             raise ValueError(f"lineage.{field_name} is required for {packetrole}")
-    for field_name in K07_NOT_APPLICABLE_LINEAGE.get(packetrole, frozenset()):
-        if _has_value(values[field_name]):
+        if state == "C" and ((field_name in conditional_lineage_fields) != present):
+            requirement = (
+                "required" if field_name in conditional_lineage_fields else "not applicable"
+            )
+            raise ValueError(f"lineage.{field_name} is {requirement} for {packetrole}")
+        if state == "N" and present:
             raise ValueError(f"lineage.{field_name} is not applicable to {packetrole}")
     if packetrole in {"diagnostic_packet", "rejection_packet"} and not any(
-        _has_value(values[field_name]) for field_name in K07_LINEAGE_FIELDS
+        _has_value(values[field_name]) for field_name in K07_DIAGNOSTIC_TARGET_FIELDS
     ):
         raise ValueError(
             f"lineage.truthful_target_reference is required for {packetrole}"
         )
 
 
-def _validate_role_schema_and_authority(
-    *, packetrole: str, dataschema: str, data: Any
-) -> None:
+def _validate_role_schema(*, packetrole: str, dataschema: str, data: Any) -> None:
     if not dataschema.strip():
         raise ValueError("dataschema must identify the typed payload contract")
     if data is None:
@@ -318,18 +298,42 @@ def _validate_role_schema_and_authority(
         declared_role = data.get("role")
         if declared_role is not None and declared_role != packetrole:
             raise ValueError("packetrole and typed payload role must agree")
-    forbidden_key = _find_forbidden_authority_key(data)
-    if forbidden_key is not None:
-        raise ValueError(f"authority_boundary forbids payload key {forbidden_key}")
 
 
 def _k07_validation(
-    *, packetrole: str, optional_limitations: list[str]
+    *,
+    packetrole: str,
+    canonical_envelope_valid: bool,
+    owner_check_validator: Callable[[str, dict[str, Any]], bool] | None,
+    owner_check_context: dict[str, Any],
+    optional_limitations: list[str],
 ) -> DmpV3Validation:
-    checks = [
-        DmpV3ValidationCheck(name=name, passed=True)
-        for name in (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS[packetrole])
-    ]
+    expected_names = (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS[packetrole])
+    completed: dict[str, DmpV3ValidationCheck] = {}
+    for name in expected_names:
+        if name == "validation_completeness":
+            continue
+        if name == "canonical_envelope":
+            passed = canonical_envelope_valid
+        else:
+            if owner_check_validator is None:
+                raise ValueError(
+                    f"validation.{name} requires an owner-supplied check validator"
+                )
+            passed = bool(owner_check_validator(name, owner_check_context))
+        if not passed:
+            raise ValueError(f"validation.{name} failed")
+        completed[name] = DmpV3ValidationCheck(name=name, passed=True)
+
+    executed_names = set(expected_names).difference({"validation_completeness"})
+    completeness_passed = set(completed) == executed_names
+    if not completeness_passed:
+        raise ValueError("validation.validation_completeness failed")
+    completed["validation_completeness"] = DmpV3ValidationCheck(
+        name="validation_completeness",
+        passed=True,
+    )
+    checks = [completed[name] for name in expected_names]
     checks.extend(
         DmpV3ValidationCheck(name=f"optional_quality:{limitation}", passed=False)
         for limitation in optional_limitations
@@ -382,6 +386,20 @@ class DeskModulePacketV3(DmpV3Packet[Any]):
     """Typed repo helper for bounded live module payload carriage."""
 
 
+def _canonical_envelope_is_valid(envelope_without_validation: dict[str, Any]) -> bool:
+    expected_fields = set(DmpV3Envelope.model_fields).difference({"validation"})
+    emitted_at = envelope_without_validation.get("time")
+    return (
+        set(envelope_without_validation) == expected_fields
+        and envelope_without_validation.get("specversion") == "1.0"
+        and envelope_without_validation.get("dmpversion") == "3.0.0"
+        and _has_value(envelope_without_validation.get("id"))
+        and isinstance(emitted_at, datetime)
+        and emitted_at.tzinfo is not None
+        and emitted_at.utcoffset() is not None
+    )
+
+
 def build_dmp_v3_envelope_kwargs(
     *,
     packet_id: str,
@@ -389,7 +407,7 @@ def build_dmp_v3_envelope_kwargs(
     data: Any,
     packetrole: str,
     module_id: str,
-    module_version: str = "native",
+    module_version: str | None = None,
     module_instance_id: str | None = None,
     grammar_role: str,
     behaviour_class: str,
@@ -408,7 +426,11 @@ def build_dmp_v3_envelope_kwargs(
     sourceartifactids: list[str] | None = None,
     inputfingerprint: str | None = None,
     source_artifact_validator: Callable[[str], bool] | None = None,
-    input_material: bytes | None = None,
+    input_fingerprint_validator: Callable[[str], bool] | None = None,
+    conditional_lineage_fields: set[str] | None = None,
+    owner_check_validator: Callable[[str, dict[str, Any]], bool] | None = None,
+    optional_limitation_validator: Callable[[str], bool] | None = None,
+    degraded_consumer_restriction: str | None = None,
     reviewtraceid: str | None = None,
     replaytraceid: str | None = None,
     decisiontraceid: str | None = None,
@@ -421,8 +443,13 @@ def build_dmp_v3_envelope_kwargs(
     """Return canonical DMPV3 envelope kwargs for one repo-owned payload."""
 
     _require_owned_identifier(packet_id, "packet_id")
+    if packetrole not in K07_ADMITTED_PACKET_ROLES:
+        raise ValueError(f"packetrole is not admitted by K07: {packetrole}")
+    resolved_traceid = _require_owned_identifier(traceid, "traceid")
+    resolved_runid = _require_owned_identifier(runid, "runid")
+    resolved_scenarioid = _require_owned_identifier(scenarioid, "scenarioid")
     _require_owned_identifier(module_id, "module_id")
-    _require_owned_identifier(module_version, "module_version")
+    resolved_module_version = _require_owned_identifier(module_version, "module_version")
     resolved_module_instance_id = _require_owned_identifier(
         module_instance_id, "module_instance_id"
     )
@@ -430,12 +457,7 @@ def build_dmp_v3_envelope_kwargs(
     _require_owned_identifier(behaviour_class, "behaviour_class")
     if emitted_at is None:
         raise ValueError("emitted_at must be supplied by the emitting boundary")
-    resolved_traceid = _require_owned_identifier(traceid, "traceid")
-    resolved_runid = _require_owned_identifier(runid, "runid")
-    resolved_scenarioid = _require_owned_identifier(scenarioid, "scenarioid")
-    if packetrole not in K07_ADMITTED_PACKET_ROLES:
-        raise ValueError(f"packetrole is not admitted by K07: {packetrole}")
-    _validate_role_schema_and_authority(
+    _validate_role_schema(
         packetrole=packetrole,
         dataschema=dataschema,
         data=data,
@@ -456,7 +478,22 @@ def build_dmp_v3_envelope_kwargs(
         replaytraceid=replaytraceid,
         decisiontraceid=decisiontraceid,
     )
-    _validate_k07_lineage(packetrole, lineage)
+    active_conditionals = set(conditional_lineage_fields or set())
+    _validate_k07_lineage(packetrole, lineage, active_conditionals)
+    if packetrole in {"diagnostic_packet", "rejection_packet"}:
+        target_values: list[str] = []
+        for field_name in K07_DIAGNOSTIC_TARGET_FIELDS:
+            value = getattr(lineage, field_name)
+            if isinstance(value, list):
+                target_values.extend(value)
+            elif isinstance(value, str):
+                target_values.append(value)
+        if packet_id in target_values:
+            raise ValueError(
+                "diagnostic/rejection occurrence identity must differ from its target"
+            )
+    if packetrole.startswith("replay_") and lineage.replayref == packet_id:
+        raise ValueError("replay occurrence identity must differ from replayref")
     if lineage.sourceartifactids:
         if source_artifact_validator is None:
             raise ValueError(
@@ -473,17 +510,28 @@ def build_dmp_v3_envelope_kwargs(
                 + ", ".join(unresolved_artifacts)
             )
     if lineage.inputfingerprint is not None:
-        if input_material is None:
+        if input_fingerprint_validator is None:
             raise ValueError(
-                "inputfingerprint requires owner-supplied input material"
+                "inputfingerprint requires an owner-supplied fingerprint validator"
             )
-        if sha256(input_material).hexdigest() != lineage.inputfingerprint:
-            raise ValueError("inputfingerprint does not match owner-supplied material")
+        if not input_fingerprint_validator(lineage.inputfingerprint):
+            raise ValueError("inputfingerprint failed owner validation")
 
-    validation = _k07_validation(
-        packetrole=packetrole,
-        optional_limitations=limitations,
-    )
+    if emitted_at.tzinfo is None or emitted_at.utcoffset() is None:
+        raise ValueError("emitted_at must be timezone-aware")
+
+    if limitations:
+        if optional_limitation_validator is None:
+            raise ValueError(
+                "degraded carriage requires an owner-supplied optional limitation validator"
+            )
+        if not degraded_consumer_restriction or not degraded_consumer_restriction.strip():
+            raise ValueError(
+                "degraded carriage requires an explicit consumer restriction"
+            )
+        for limitation in limitations:
+            if not optional_limitation_validator(limitation):
+                raise ValueError(f"optional limitation is not admitted: {limitation}")
 
     payload_type = data.__class__
     canonical_schema_identifiers = {
@@ -503,19 +551,32 @@ def build_dmp_v3_envelope_kwargs(
         canonical_nvda_extensions["schema_identifiers"] = canonical_schema_identifiers
         canonical_nvda_extensions["semantic_dependencies"] = list(lineage.dependencyids)
 
+    validation_status = "degraded" if limitations else "valid"
     keyflags = list(summary_keyflags or [])
-    if validation.status == "degraded":
+    if validation_status == "degraded":
         for violation in limitations:
             if violation not in keyflags:
                 keyflags.append(violation)
+        restriction_flag = f"consumer_restriction:{degraded_consumer_restriction}"
+        if restriction_flag not in keyflags:
+            keyflags.append(restriction_flag)
 
+    producer = DmpV3Producer(
+        module_id=module_id,
+        module_version=resolved_module_version,
+        module_instance_id=resolved_module_instance_id,
+        grammar_role=grammar_role,
+        behaviour_class=behaviour_class,
+        stage_name=stage_name,
+    )
     summary = DmpV3Summary(
         headline=summary_headline or f"{module_id} emitted {packetrole}",
         keyflags=keyflags,
-        humanstate=summary_humanstate or validation.status,
+        humanstate=summary_humanstate or validation_status,
     )
-
-    return {
+    envelope_without_validation = {
+        "specversion": "1.0",
+        "dmpversion": "3.0.0",
         "id": packet_id,
         "source": resolved_source,
         "type": resolved_type,
@@ -526,17 +587,43 @@ def build_dmp_v3_envelope_kwargs(
         "runid": resolved_runid,
         "scenarioid": resolved_scenarioid,
         "packetrole": packetrole,
-        "producer": DmpV3Producer(
-            module_id=module_id,
-            module_version=module_version,
-            module_instance_id=resolved_module_instance_id,
-            grammar_role=grammar_role,
-            behaviour_class=behaviour_class,
-            stage_name=stage_name,
-        ),
+        "producer": producer,
         "lineage": lineage,
-        "validation": validation,
         "summary": summary,
         "data": data,
         "dmpextensions": extensions_payload,
+    }
+    owner_check_context = {
+        "packet_id": packet_id,
+        "emitted_at": emitted_at,
+        "source": resolved_source,
+        "packet_type": resolved_type,
+        "datacontenttype": datacontenttype,
+        "packetrole": packetrole,
+        "dataschema": dataschema,
+        "data": data,
+        "producer": producer,
+        "execution_context": {
+            "traceid": resolved_traceid,
+            "runid": resolved_runid,
+            "scenarioid": resolved_scenarioid,
+        },
+        "lineage": lineage,
+        "dmpextensions": extensions_payload,
+        "summary": summary,
+        "optional_limitations": tuple(limitations),
+        "degraded_consumer_restriction": degraded_consumer_restriction,
+    }
+    validation = _k07_validation(
+        packetrole=packetrole,
+        canonical_envelope_valid=_canonical_envelope_is_valid(
+            envelope_without_validation
+        ),
+        owner_check_validator=owner_check_validator,
+        owner_check_context=owner_check_context,
+        optional_limitations=limitations,
+    )
+    return {
+        **envelope_without_validation,
+        "validation": validation,
     }

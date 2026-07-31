@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M04_GATE_D_OPEN`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M01_C_PROOF`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -151,15 +151,16 @@ After Gate C passes, Gate D:
 - M15 namespaced vocabulary/scoped audit repair passed at `6d3ec80`.
 - M04 K07 normative authority is complete in
   `docs/09.1_DMPV3_PROTOCOL_WORKING.md` section 9.10.
-- Existing M04 proof supplies 239 passing reference/matrix/outcome/mutant
-  checks, kills all ten named mutants and leaves eleven exact production cases
-  expected red.
+- M04 K07 Gate D is accepted: 271 admitted proof cases pass, the retained
+  admitted partial case passes, and the source-checkpoint shadow comparison
+  contains zero new failing Tier A nodes.
 
 ### Converted decision
 
-M04 satisfies `C-NORM` and `C-PROOF`. The former separate MLC-V gate is
-superseded because it would add another control cycle without a new semantic
-claim. M04 Gate D is open for K07 only.
+M04 satisfies `C-NORM`, `C-PROOF` and bounded K07 Gate D. The former separate
+MLC-V gate remains superseded because it would add another control cycle
+without a new semantic claim. No broader M04, live or production-readiness
+claim follows from this acceptance.
 
 ### Queued
 
@@ -171,18 +172,15 @@ claim. M04 Gate D is open for K07 only.
 
 ## 8. Immediate work
 
-Implement M04 K07:
+Complete M01 source-admission minimum proof against its public seam, including
+one conforming admission, the material fail-closed/prohibited case and one
+plausible false-positive challenge. If the proof passes, implement the smallest
+owner-local M01 Gate D change and run affected admitted proof plus full legacy
+shadow evidence.
 
-- caller-owned `traceid`, `runid`, `scenarioid`;
-- role-specific required/conditional/optional/forbidden lineage;
-- named common and role-specific validation checks;
-- fail-closed invalid binding packets;
-- separate diagnostic and rejection roles;
-- no new domain authority in M04.
-
-Use the existing M04 module record, existing validation log, existing proof
-registry and one semantic checkpoint. Do not create another project roadmap,
-receipt hierarchy or worker/tester archive pair.
+Use the existing M01 module record, validation log, proof registry and one
+semantic checkpoint. Do not create another project roadmap, receipt hierarchy
+or worker/tester archive pair.
 
 ## 9. Programme sequence
 

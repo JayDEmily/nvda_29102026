@@ -1,0 +1,15 @@
+proof_block_id=m04_k07_packet_role_contract
+command=env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.2, pluggy-1.6.0
+rootdir: /mnt/data/nvda_fasttrack_work/Nvda11
+configfile: pyproject.toml
+collected 271 items
+
+tests/tier_a/packets/test_m04_k07_packet_role_contract.py .............. [  5%]
+........................................................................ [ 31%]
+........................................................................ [ 58%]
+........................................................................ [ 84%]
+.........................................                                [100%]
+
+============================= 271 passed in 0.32s ==============================
