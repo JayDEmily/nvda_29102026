@@ -2,6 +2,7 @@
   "schema_version": "v2_namespaced",
   "namespaces": {
     "global": "5a7869b8851f7d6f64f52082c6c51adfdae79a170d721515c5215fad61bbd49a",
-    "m04": "701f687279ebd45d786d76e17c36534ed939fb411acffacaa6e33010190af2a2"
+    "m04": "701f687279ebd45d786d76e17c36534ed939fb411acffacaa6e33010190af2a2",
+    "m07": "7cfe6fb213cbcda7d1ef439554cacaebc01e901daacd9463def4bc165fcfbc84"
   }
 }

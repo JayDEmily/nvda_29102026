@@ -1207,3 +1207,36 @@ under
 Open M07 K12 `C-NORM`. Define the missing coefficient/modifier identity/version,
 precedence/conflict, bounds, application-order and receipt semantics before
 writing minimum proof or changing M07 production code.
+
+## 2026-07-31 — M07 K12 C-NORM acceptance
+
+### Disposition
+
+`PASS:C-NORM:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The former M07 authority blocker is closed by numbered normative law. Runtime
+ownership section 7.7 now defines canonical bundle/member identity and versions,
+lawful absence, input-fact ownership, deterministic precedence/conflict, hard
+bounds and clamping, decision/receipt facts, semantic fingerprinting and the
+side-effect/replay boundary. Vocabulary section 10.16 and the human registry
+admit the exact K12 public interfaces under namespace `m07`; architecture
+section 11.10.3.1 fixes them as the target public API.
+
+| Check | Result |
+|---|---|
+| Generated projection parity | PASS — 150 entries; `global`, `m04`, `m07` |
+| M07 vocabulary audit | PASS — 0 unresolved candidates / 12 scoped files |
+| M07 vocabulary stamp | PASS — matches clean audit fingerprint |
+| Static normative assertions | PASS |
+| `git diff --check` | PASS |
+| Production/runtime configuration mutation | none |
+| Existing vocabulary proof | 24 passed / 1 expected red: stale assertion hard-codes namespaces `{global, m04}` |
+
+The expected red is the first C-PROOF obligation. No test was weakened or edited
+during C-NORM. Exact evidence is under
+`project_control/canonical_project_manager/modules/M07/raw_validation/fast_track_k12_v1/`.
+
+### Next action
+
+Open M07 K12 `C-PROOF`. Gate D remains closed until the smallest truthful
+public-seam proof passes.

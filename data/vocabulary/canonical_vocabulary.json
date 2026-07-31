@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-07-30-m15-namespaced-audit-v1",
+  "registry_version": "2026-07-31-m07-k12-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -9,7 +9,8 @@
     "The 2026-07-30 M04 K07 amendment admits ten exact DMPV3 packet-role concepts without admitting tests or implementation conformance.",
     "The 2026-07-30 M15 repair gives module-owned vocabulary a namespaced machine identity and bounded audit scope without prefixing human labels or ordinary code symbols.",
     "Canonical entries are deterministic transformations of these human records; builder, JSON, audit, stamp and tests remain downstream evidence.",
-    "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon."
+    "Contextual disallowed-use prose remains authoritative even when an exact token is omitted from the machine collision lexicon.",
+    "The 2026-07-31 M07 K12 amendment admits the exact PolicyBundle, ModifierDecision and ModifierApplicationReceipt public-contract concepts under a bounded M07 namespace."
   ],
   "namespaces": {
     "global": {
@@ -49,6 +50,26 @@
         "tests/tier_a/testing_harnesses",
         "tests/tier_a/upstream_cognition",
         "tests/tier_b/capital_deployment"
+      ]
+    },
+    "m07": {
+      "namespace": "m07",
+      "imports": [
+        "global"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "config/coefficient_authority.v1.yaml",
+        "config/coefficients_registry.example.yaml",
+        "src/nvda_desk/config/coefficient_authority.py",
+        "src/nvda_desk/contracts/coefficient_authority.py",
+        "src/nvda_desk/contracts/modifiers.py",
+        "src/nvda_desk/cognition/modifiers",
+        "src/nvda_desk/domain/posture/modifier_application.py",
+        "src/nvda_desk/services/coefficient_authority_service.py",
+        "tests/tier_a/m07_k12"
       ]
     }
   },
@@ -1100,6 +1121,98 @@
         "Human aliases: Bounded coefficient; dynamic coefficient.",
         "Human disallowed or misleading use: Unbounded dynamic coefficient; adaptive self-tuning coefficient; modifier policy."
       ]
+    },
+    {
+      "namespace": "m07",
+      "canonical_id": "m07.policy_bundle",
+      "canonical_slug": "policy_bundle",
+      "canonical_label": "Policy Bundle",
+      "category": "protocol_surface",
+      "stage_owner": "coefficient_modifier_authority",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7",
+      "allowed_aliases": [
+        "PolicyBundle",
+        "coefficient/modifier policy bundle"
+      ],
+      "disallowed_phrases": [
+        "global policy bundle",
+        "arbitrary policy mapping",
+        "capital policy bundle",
+        "playbook bundle",
+        "caller-constructed runtime authority"
+      ],
+      "notes": [
+        "Definition: Immutable, versioned M07 coefficient/modifier authority bundle containing governed coefficient members, modifier members, precedence/conflict law, hard bounds, resolution-law version and promotion/workbook lineage.",
+        "Scope: K12 M07 coefficient/modifier authority bundle",
+        "Semantic owner: Coefficient and Modifier Authority",
+        "Relationships: Supplies the exact authority material consumed to produce a Modifier Decision; contains only M07 coefficient/modifier policy and is distinct from global, calendar, playbook, capital, execution, lifecycle, replay and transaction policy.",
+        "Lifecycle: active_k12_contract",
+        "Semantic decisions: M07-K12-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: PolicyBundle; coefficient/modifier policy bundle.",
+        "Human disallowed or misleading use: Global policy bundle; arbitrary policy mapping; capital policy bundle; playbook bundle; caller-constructed runtime authority."
+      ]
+    },
+    {
+      "namespace": "m07",
+      "canonical_id": "m07.modifier_decision",
+      "canonical_slug": "modifier_decision",
+      "canonical_label": "Modifier Decision",
+      "category": "protocol_surface",
+      "stage_owner": "coefficient_modifier_authority",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7.5",
+      "allowed_aliases": [
+        "ModifierDecision",
+        "coefficient/modifier resolution decision"
+      ],
+      "disallowed_phrases": [
+        "modifier decision used as capital authority",
+        "modifier decision used as strategy-selection authority",
+        "modifier decision used as execution authority",
+        "modifier decision claiming hidden state mutation",
+        "modifier decision resolved by caller order"
+      ],
+      "notes": [
+        "Definition: Deterministic, side-effect-free M07 result resolving one identified valid Policy Bundle against identified owner-stage input facts under the bundle's precedence, conflict and hard-bound law.",
+        "Scope: K12 coefficient/modifier resolution output",
+        "Semantic owner: Coefficient and Modifier Authority",
+        "Relationships: Preserves ordered modifier disposition and baseline-to-effective coefficient lineage; may be consumed by lawful owner-stage consumers and may produce a Modifier Application Receipt when not rejected.",
+        "Lifecycle: active_k12_contract",
+        "Semantic decisions: M07-K12-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: ModifierDecision; coefficient/modifier resolution decision.",
+        "Human disallowed or misleading use: Capital decision; strategy-selection decision; execution decision; hidden state mutation; caller-order result."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m07",
+      "canonical_id": "m07.modifier_application_receipt",
+      "canonical_slug": "modifier_application_receipt",
+      "canonical_label": "Modifier Application Receipt",
+      "category": "review_surface",
+      "stage_owner": "coefficient_modifier_authority",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7.6",
+      "allowed_aliases": [
+        "ModifierApplicationReceipt",
+        "modifier resolution receipt"
+      ],
+      "disallowed_phrases": [
+        "modifier application receipt used as replay authority",
+        "modifier application receipt used as transaction authority",
+        "modifier application receipt claiming external mutation",
+        "modifier application receipt used as capital authority",
+        "successful modifier application receipt for a rejected decision"
+      ],
+      "notes": [
+        "Definition: Immutable M07 evidence that one non-rejected Modifier Decision was resolved for one identified owner-stage application context, including bundle/version, ordered modifier and bounded coefficient lineage.",
+        "Scope: K12 coefficient/modifier resolution and application evidence",
+        "Semantic owner: Coefficient and Modifier Authority",
+        "Relationships: References a Modifier Decision and preserves no-op or applied resolution facts; distinct from an M12 replay result, M13 Atomic Receipt, capital receipt, execution receipt and proof of downstream state mutation.",
+        "Lifecycle: active_k12_contract",
+        "Semantic decisions: M07-K12-NORMATIVE-AUTHORITY-V1",
+        "Human aliases: ModifierApplicationReceipt; modifier resolution receipt.",
+        "Human disallowed or misleading use: Replay receipt; transaction receipt; proof of external mutation; capital application receipt; successful receipt for a rejected decision."
+      ],
+      "raw_or_derived": "derived"
     },
     {
       "namespace": "global",

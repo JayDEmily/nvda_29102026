@@ -108,3 +108,40 @@ Historical 5.9 records were read only after current authority. They show a bound
 ## Handoff
 
 Lane 3AT should test this blocker against the cited numbered propositions, the K12 identity inconsistency, each independent challenge, and the explicit generic-policy exclusion. No source, physical test, fixture, configuration, normative document, accepted architecture artefact, or global project-control state was modified by this worker.
+
+## 2026-07-31 fast-track C-NORM closure
+
+### Disposition
+
+`PASS:C-NORM:M07_K12_COEFFICIENT_MODIFIER_AUTHORITY`
+
+The historical blocker above is resolved by numbered authority, not by implementation or test inference:
+
+- `docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:102-197` defines `PolicyBundle`, `ModifierDecision` and `ModifierApplicationReceipt`; bundle/member identity and versions; lawful absence; applicability facts; deterministic precedence/conflict; hard-bound algebra/clamping; minimum decision/receipt facts; semantic fingerprinting; and the side-effect/replay boundary.
+- `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:322-334` admits those exact contract concepts under machine namespace `m07` while retaining unprefixed human/Python symbols and the existing global coefficient/modifier terms.
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:233-237` fixes the exact K12 public-interface boundary and prohibits transitional surfaces from remaining competing canonical identities.
+- `docs/vocabulary/vocabulary_registry.md:428-456` and the generated projection admit `m07.policy_bundle`, `m07.modifier_decision` and `m07.modifier_application_receipt`.
+
+### Closure against the original blocker
+
+| Former missing dimension | Closed authority |
+|---|---|
+| Canonical bundle identity and schema/version lineage | section 7.7.2 |
+| Member coefficient/modifier owner-stage scope | section 7.7.2 |
+| Precedence/conflict order | section 7.7.4 |
+| Hard-bound ownership/enforcement | sections 7.7.2 and 7.7.4 |
+| Deterministic application semantics | sections 7.7.3–7.7.5 |
+| Receipt state/time/side-effect fields | section 7.7.6 |
+| Missing bundle versus empty/no-applicable bundle | section 7.7.3 |
+| Replay determinism without M07 replay ownership | sections 7.7.5–7.7.6 |
+
+### Evidence
+
+- generated vocabulary projection parity: PASS;
+- M07 scoped vocabulary audit: PASS, zero unresolved candidates across 12 files;
+- one shifted contextual repository-path occurrence was individually re-adjudicated; no global suppression was added;
+- static normative assertions and `git diff --check`: PASS;
+- production/runtime configuration changes: none;
+- existing vocabulary tests: 24 passed / 1 expected red because the previous parity proof hard-codes only `global` and `m04`.
+
+Exact outputs and the full-read manifest are under `raw_validation/fast_track_k12_v1/`. The next gate is `C-PROOF`; M07 Gate D remains closed.

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M07_C_NORM`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M07_C_PROOF`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -157,6 +157,9 @@ After Gate C passes, Gate D:
 - M01 source admission satisfies C-NORM, C-PROOF and bounded Gate D: 18 focused
   public-seam cases pass, the proof manifest and executor contract pass, and the
   full Tier A shadow comparison contains zero new failing nodes.
+- M07 K12 C-NORM is accepted in runtime-ownership section 7.7, vocabulary
+  section 10.16 and architecture section 11.10.3.1; the exact public contracts
+  are `PolicyBundle`, `ModifierDecision` and `ModifierApplicationReceipt`.
 
 ### Converted decision
 
@@ -172,17 +175,16 @@ semantics, M03 preparation or downstream decision authority.
 
 ### Queued
 
-- M07: add the K12 identity/version, precedence/conflict, bounds and application
-  receipt proposition; then minimum proof.
+- M07: write and pass the minimum K12 public-seam proof; Gate D remains closed.
 - M08: add the K13 catalogue/eligibility identity, ordering, tie-break,
   stand-down and lifecycle-carriage proposition; then minimum proof.
 
 ## 8. Immediate work
 
-Complete M07 K12 normative closure for coefficient/modifier authority. Define
-only the missing identity/version, precedence and conflict law, bounds,
-application ordering and receipt meaning required by the accepted architecture.
-Then write the minimum public-seam proof before opening bounded M07 Gate D.
+Complete the minimum M07 K12 public-seam proof against the accepted section 7.7
+authority. Prove bundle/version identity, lawful absence, authority-owned
+precedence/conflict, hard-bound application, deterministic receipt lineage and
+the side-effect boundary. Open bounded M07 Gate D only after that proof passes.
 
 Use the existing M07 module records, validation log, proof registry and one
 semantic checkpoint. Do not create another project roadmap, receipt hierarchy

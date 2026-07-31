@@ -1,0 +1,10 @@
+PASS ownership section
+PASS canonical interfaces
+PASS lawful absence
+PASS precedence
+PASS bounds
+PASS side effect boundary
+PASS vocabulary admission
+PASS architecture interface boundary
+PASS git_diff_check
+PASS no_production_or_runtime_config_change
