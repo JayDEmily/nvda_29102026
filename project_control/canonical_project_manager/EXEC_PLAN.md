@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:MVP_FAST_TRACK_M02_GATE_D`
+**Status:** `ACTIVE:MVP_FAST_TRACK_M03_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -175,6 +175,10 @@ After Gate C passes, Gate D:
   section 10.18 and architecture section 11.10.3.3; the exact public contracts
   are `CalendarFactCandidate`, `FinancialCalendarSnapshot` and
   `CalendarProjection`.
+- M02 K04 satisfies C-NORM, C-PROOF and bounded Gate D: 33 focused cases
+  pass, all six named mutants remain killed, the seven expected-red production
+  cases and four bounded compatibility obligations are green, and the exact
+  Tier A shadow comparison contains zero new failing nodes.
 
 ### Converted decision
 
@@ -199,19 +203,24 @@ posture, context and material-fact lineage, and it does not acquire candidate
 expression, capital, execution, lifecycle mutation, replay, transaction or
 runtime self-tuning authority.
 
+M02 satisfies `C-NORM`, `C-PROOF` and bounded K04 Gate D. The accepted package
+owns exact four-layer calendar fact, snapshot and projection meaning; it is
+immutable, deterministic and side-effect-free, and its legacy reference and
+operational surfaces are bounded adapters rather than competing owners.
+
 ### Queued
 
-- M02 K04: implement the accepted canonical public seam and resolve the seven exact production reds.
+- M03 preparation: close the exact typed prepared-envelope, field-resolution and lineage proposition before opening proof or production code.
 
 ## 8. Immediate work
 
-Implement bounded M02 K04 Gate D:
+Open bounded M03 `C-NORM`:
 
-1. add the canonical `nvda_desk.m02_financial_calendar` public package only;
-2. implement immutable K04 contracts, exact four-layer identity, deterministic snapshot validation and side-effect-free projection;
-3. preserve equal-value lineage, explicit operational supersession and fail-closed conflict/absence states;
-4. resolve the seven exact production-facing proof cases without weakening the 13 reference/mutant cases;
-5. compare affected and full shadow failures against the exact C-PROOF baseline before acceptance.
+1. inventory the accepted Atlas and numbered-authority obligations owned by M03;
+2. distinguish typed prepared truth and field-resolution evidence from M01 source truth, M02 calendar truth and M05/M06 decision authority;
+3. define one canonical M03 public seam, exact identity/version/time/fingerprint and derivation-lineage law, and lawful missing/conflict behaviour;
+4. admit only the vocabulary required by that bounded seam;
+5. leave M03 tests and production code closed until the normative proposition is accepted.
 
 Do not recreate the retired MLC sequence or create another roadmap.
 

@@ -7,9 +7,9 @@
 - Contract boundary: `K04 FinancialCalendarSnapshot`
 - Requirements: `N-02; C-005; C-018`
 - Source checkpoint: `95e0a866dc7e34c383fd802b2b77a72b661ff18d`
-- Active gate: `C-PROOF`
-- Checkpoint state: `C_NORM_ACCEPTED`
-- Gate D: `OPEN`
+- Active gate: `GATE_D_ACCEPTED`
+- Checkpoint state: `K04_GATE_D_ACCEPTED`
+- Gate D: `ACCEPTED`
 
 ## Question
 
@@ -89,3 +89,52 @@ The minimum truthful K04 proof is now admitted:
 - seven production-facing assertions remain exact red solely because `nvda_desk.m02_financial_calendar` does not yet exist.
 
 No production file was changed during C-PROOF. Gate D is open only for the bounded canonical M02 public package and must resolve those seven exact red cases without weakening the reference or mutant proof.
+
+
+## 2026-07-31 bounded Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+The canonical `nvda_desk.m02_financial_calendar` package now implements the
+section 7.9 K04 seam. It owns immutable calendar candidates, exact four-layer
+snapshots and deterministic side-effect-free projections. Existing
+reference-data, reference-projection and operational-event surfaces are bounded
+compatibility adapters and do not become competing K04 owners.
+
+The accepted implementation additionally preserves supplied observation and
+capture facts, requires complete applied-supersession decision evidence, carries
+supersession evidence through withheld projections and includes the declared
+canonicalisation version in projection identity. It grants no candidate, risk,
+capital, execution, position, lifecycle, replay or transaction authority.
+
+### Evidence
+
+- focused K04 proof: PASS — 33 / 33;
+- named false-positive mutants: PASS — 6 / 6 killed;
+- formerly expected-red public seam: PASS — 7 / 7;
+- bounded compatibility obligations: PASS — four resolved nodes;
+- affected surface: 61 passed / 20 unchanged unrelated failures;
+- proof-block manifest: PASS — named block and 57 / 57 total blocks;
+- proof-executor contract: PASS — 21 / 21;
+- Tier A shadow: baseline 1,390 passed / 274 failed; current 1,414 / 263; zero new failure nodes, 11 resolved nodes and 13 added passing integrity nodes;
+- Tier B: PASS — 49 / 49;
+- vocabulary parity: PASS — 4 / 4;
+- M02 vocabulary audit/stamp: PASS — zero unresolved candidates across 23 scoped files;
+- static compilation and `git diff --check`: PASS;
+- Ruff and Black: UNAVAILABLE — locked modules not installed; no substitute used.
+
+Exact evidence is retained under `raw_validation/gate_d_k04_v1/`. The 263
+remaining Tier A failures and 20 affected-surface failures remain visible shadow
+evidence; none was suppressed, reclassified as passing or repaired outside M02.
+
+## Next action
+
+Open M03 preparation `C-NORM`. M03 proof and production code remain closed until
+its exact prepared-envelope, field-resolution and derivation-lineage authority
+is accepted.
+
+### Evidence-format correction
+
+Staged-range validation found pytest-generated trailing spaces/tabs in raw validation transcripts. Only trailing spaces/tabs were removed; test names, failure text, counts and outcomes were unchanged.

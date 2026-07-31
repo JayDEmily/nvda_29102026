@@ -1495,3 +1495,47 @@ No production file changed during C-PROOF. Exact evidence is under
 
 Implement the bounded canonical M02 public package and compare compatibility
 against this exact C-PROOF baseline before Gate D acceptance.
+
+
+## 2026-07-31 — M02 K04 Gate D acceptance
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M02_K04_FINANCIAL_CALENDAR_AUTHORITY`
+
+The canonical `nvda_desk.m02_financial_calendar` package implements immutable
+calendar candidates, exact four-layer snapshots and deterministic side-effect-free
+projections under section 7.9. Transitional reference-data, reference-projection
+and operational-event surfaces are bounded adapters only.
+
+| Check | Result |
+|---|---|
+| Focused K04 proof | PASS — 33 / 33 |
+| Named mutants | PASS — 6 / 6 killed |
+| Former expected-red production seam | PASS — 7 / 7 |
+| Bounded compatibility obligations | PASS — four resolved nodes |
+| Affected comparison | 61 passed / 20 unchanged unrelated failures |
+| Proof-block manifest | PASS — named block; 57 / 57 total |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier A comparison | baseline 1,390 passed / 274 failed; current 1,414 / 263; zero new nodes, 11 resolved, 13 added passing nodes |
+| Tier B | PASS — 49 / 49 |
+| Vocabulary namespace parity | PASS — 4 / 4 |
+| M02 vocabulary audit/stamp | PASS — 0 unresolved candidates / 23 scoped files |
+| Compilation and `git diff --check` | PASS |
+| Ruff / Black | UNAVAILABLE — locked modules not installed; no substitute used |
+
+The implementation preserves source observation/capture facts where supplied,
+requires snapshot decisions for every applied operational supersession, carries
+that evidence through degraded/withheld outcomes and fingerprints the declared
+canonicalisation version. It acquires no downstream decision or mutation
+authority. Exact evidence is under
+`project_control/canonical_project_manager/modules/M02/raw_validation/gate_d_k04_v1/`.
+
+### Next action
+
+Open M03 preparation `C-NORM`. Proof and production mutation remain closed until
+the exact bounded M03 public proposition is accepted.
+
+### M02 evidence-format correction
+
+Staged-range validation found pytest-generated trailing spaces/tabs in raw M02 validation transcripts. Only trailing spaces/tabs were removed; test names, failure text, counts and outcomes were unchanged.

@@ -73,3 +73,58 @@ class PrecursorRuntimePacket:
     events: list[LiveEventSnapshot] = field(default_factory=list)
     bundle: ImportedReferenceBundle | None = None
     projection_trace: CalendarAuthorityProjectionTrace | None = None
+
+# Transitional K04 compatibility adapters. Canonical ownership lives in
+# nvda_desk.m02_financial_calendar; these shapes preserve admitted callers only.
+from nvda_desk.m02_financial_calendar import FinancialCalendarLayer
+
+
+@dataclass(frozen=True, slots=True)
+class FinancialCalendarAuthorityBundle:
+    """Exact four-layer compatibility bundle narrowed toward K04."""
+
+    market_session_reference: tuple[object, ...] = ()
+    financial_event_reference: tuple[object, ...] = ()
+    operational_calendar_state: tuple[object, ...] = ()
+    derived_runtime_calendar_context: tuple[object, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class CalendarFactCandidate:
+    """Legacy constructor adapter for one owner-issued K04 candidate fact."""
+
+    candidate_id: str
+    layer: FinancialCalendarLayer
+    fact_family: str
+    semantic_field: str
+    value: object
+    effective_at_utc: datetime
+    source_artifact_id: str
+    source_version: str = "compatibility-v1"
+    value_type: str = "compatibility_scalar"
+    unit: str | None = None
+    owner_id: str = "compatibility_calendar_owner"
+
+
+@dataclass(frozen=True, slots=True)
+class CalendarFieldResolutionPolicy:
+    """Legacy field-policy adapter with no caller-selected winner authority."""
+
+    policy_id: str
+    semantic_field: str
+    mandatory: bool
+    authoritative_layer: FinancialCalendarLayer
+
+
+@dataclass(frozen=True, slots=True)
+class CalendarFieldResolutionReceipt:
+    """Compatibility receipt preserving selected value and all lineage."""
+
+    selected_value: object
+    candidate_ids: tuple[str, ...]
+    source_refs: tuple[tuple[str, str], ...]
+    layers: tuple[FinancialCalendarLayer, ...]
+
+
+class CalendarFieldConflictError(ValueError):
+    """Raised when compatibility candidates cannot be lawfully coalesced."""

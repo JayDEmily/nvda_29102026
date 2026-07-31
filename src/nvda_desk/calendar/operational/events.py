@@ -84,6 +84,34 @@ class OperationalEventRepository:
 
         return list(self._events)
 
+    def ingest_precursor_context(self, precursor) -> None:
+        """Compose checked reference projection into bounded operational query state."""
+
+        trace = getattr(precursor, "projection_trace", None)
+        if trace is None:
+            raise ValueError("calendar_projection_trace_required")
+        if getattr(trace, "candidate_formation_allowed", True):
+            raise ValueError("calendar_projection_candidate_authority_forbidden")
+        if getattr(trace, "capital_sizing_allowed", True):
+            raise ValueError("calendar_projection_capital_authority_forbidden")
+        existing = {event.event_id for event in self._events}
+        for snapshot in precursor.events:
+            if snapshot.event_id in existing:
+                raise ValueError(f"duplicate operational calendar event_id: {snapshot.event_id}")
+            reference = snapshot.reference
+            if reference is None:
+                raise ValueError("calendar_event_reference_required")
+            self._events.append(
+                MarketEventDTO(
+                    event_id=snapshot.event_id,
+                    event_type=snapshot.event_type,
+                    starts_at=reference.observed_at,
+                    tags=list(snapshot.runtime_tags),
+                    lineage_ids=[reference.source_artifact_id],
+                )
+            )
+            existing.add(snapshot.event_id)
+
     def query_runtime_calendar(
         self, query: RuntimeCalendarQuery
     ) -> list[RuntimeCalendarEventMatch]:

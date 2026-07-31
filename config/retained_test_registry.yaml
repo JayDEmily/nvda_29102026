@@ -3673,7 +3673,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a_current
   bounded_family: financial_calendar_authority
   native_test_path: tests/tier_a/m02_k04/test_m02_k04_contract.py
-  migration_status: module_local_c_proof_expected_red
+  migration_status: module_local_c_proof_and_gate_d_accepted
   normative_basis:
   - docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
@@ -3686,8 +3686,8 @@ fast_track_module_local_admissions:
   - tests/support/m02_k04_contract_harness.py
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: Existing reference-data, calendar-reference and operational-calendar surfaces were reread against accepted K04 authority; they remain transitional and do not implement the canonical M02 public seam.
+  docstring_alignment_status: The canonical nvda_desk.m02_financial_calendar package now implements the section 7.9 CalendarFactCandidate, FinancialCalendarSnapshot and CalendarProjection seam; existing reference-data, calendar-reference and operational-calendar surfaces are bounded compatibility adapters and do not compete for K04 ownership.
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF gate admits this bounded family for exact four-layer identity, equal-value coalescence with complete lineage, explicit operational supersession, fail-closed conflict, lawful absence states, deterministic projection identity and closed foreign authority.
   forbidden_carry_forward: Caller order, capture recency, derived-source override, missing-session defaults, unknown-events-as-empty, lineage dropping, arbitrary layer labels and downstream trading authority must not satisfy K04.
-  notes: Thirteen reference and false-positive checks are expected green while seven production-facing checks remain exact red until the canonical nvda_desk.m02_financial_calendar package exists. Gate D remains closed.
+  notes: Thirty-three focused cases pass: thirteen reference/false-positive cases, the seven formerly expected-red public-seam cases, and thirteen direct integrity regressions covering copied authority revalidation, layer binding, order-independent identity, source-lineage coalescence, bundle and projection-policy authority, complete supersession-decision evidence, observation/capture carriage, withheld-evidence preservation and canonicalisation-version fingerprinting.

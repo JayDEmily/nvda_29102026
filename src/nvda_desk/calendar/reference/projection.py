@@ -251,3 +251,54 @@ def financial_calendar_crosswalk() -> list[FinancialCalendarCrosswalkRecord]:
         )
         for record in _DEFAULT_CROSSWALK
     ]
+
+
+def resolve_calendar_field(*, candidates, policy):
+    """Compatibility-only K04 coalescence over the canonical four-layer law."""
+
+    from nvda_desk.contracts.reference_data import (
+        CalendarFieldConflictError,
+        CalendarFieldResolutionReceipt,
+        FinancialCalendarLayer,
+    )
+
+    governed = tuple(
+        sorted(
+            (
+                candidate
+                for candidate in candidates
+                if candidate.semantic_field == policy.semantic_field
+            ),
+            key=lambda item: item.candidate_id,
+        )
+    )
+    if not governed:
+        if policy.mandatory:
+            raise CalendarFieldConflictError("mandatory_calendar_field_missing")
+        return None
+    if any(
+        item.layer == FinancialCalendarLayer.DERIVED_RUNTIME_CALENDAR_CONTEXT
+        for item in governed
+    ) and len({item.value for item in governed}) > 1:
+        raise CalendarFieldConflictError("derived_calendar_override_forbidden")
+    comparison_keys = {
+        (
+            item.fact_family,
+            item.semantic_field,
+            item.value_type,
+            item.unit,
+            item.value,
+            item.effective_at_utc,
+        )
+        for item in governed
+    }
+    if len(comparison_keys) != 1:
+        raise CalendarFieldConflictError("unresolved_calendar_field_conflict")
+    return CalendarFieldResolutionReceipt(
+        selected_value=governed[0].value,
+        candidate_ids=tuple(item.candidate_id for item in governed),
+        source_refs=tuple(
+            sorted({(item.source_artifact_id, item.source_version) for item in governed})
+        ),
+        layers=tuple(sorted({item.layer for item in governed}, key=str)),
+    )

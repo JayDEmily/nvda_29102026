@@ -46,8 +46,12 @@ class CandidateCase:
     contract_version: str
     owner_id: str
     validation_state: str = "valid"
+    observed_at_utc: datetime | None = None
+    capture_id: str | None = None
+    captured_at_utc: datetime | None = None
     supersedes_candidate_id: str | None = None
     supersession_reason: str | None = None
+    supersession_status: str | None = None
 
 
 @dataclass(frozen=True)
@@ -66,6 +70,10 @@ class SnapshotCase:
     session_completeness: str
     event_completeness: str
     operational_completeness: str
+    selected_reference_bundles: tuple[tuple[str, str], ...]
+    unresolved_conflicts: tuple[str, ...]
+    applied_supersessions: tuple[tuple[str, str, str, str], ...]
+    projection_policy_version: str | None
     canonicalisation_version: str = "m02-k04-v1"
     semantic_fingerprint: str = ""
 
@@ -129,8 +137,20 @@ def _candidate_material(candidate: CandidateCase) -> dict[str, Any]:
         "contract_version": candidate.contract_version,
         "owner_id": candidate.owner_id,
         "validation_state": candidate.validation_state,
+        "observed_at_utc": (
+            candidate.observed_at_utc.isoformat()
+            if candidate.observed_at_utc is not None
+            else None
+        ),
+        "capture_id": candidate.capture_id,
+        "captured_at_utc": (
+            candidate.captured_at_utc.isoformat()
+            if candidate.captured_at_utc is not None
+            else None
+        ),
         "supersedes_candidate_id": candidate.supersedes_candidate_id,
         "supersession_reason": candidate.supersession_reason,
+        "supersession_status": candidate.supersession_status,
     }
 
 
@@ -164,6 +184,21 @@ def snapshot_fingerprint(snapshot: SnapshotCase) -> str:
         "session_completeness": snapshot.session_completeness,
         "event_completeness": snapshot.event_completeness,
         "operational_completeness": snapshot.operational_completeness,
+        "selected_reference_bundles": [
+            {"bundle_id": bundle_id, "bundle_version": bundle_version}
+            for bundle_id, bundle_version in snapshot.selected_reference_bundles
+        ],
+        "unresolved_conflicts": snapshot.unresolved_conflicts,
+        "applied_supersessions": [
+            {
+                "superseding_candidate_id": winner_id,
+                "superseded_candidate_id": target_id,
+                "reason": reason,
+                "status": status,
+            }
+            for winner_id, target_id, reason, status in snapshot.applied_supersessions
+        ],
+        "projection_policy_version": snapshot.projection_policy_version,
         "canonicalisation_version": snapshot.canonicalisation_version,
     }
     return sha256(
@@ -179,8 +214,12 @@ def valid_candidate(
     value: Any = "2026-07-31T13:30:00+00:00",
     source_artifact_id: str = "calendar.reference.a",
     source_version: str = "2026.07.31.1",
+    observed_at_utc: datetime | None = None,
+    capture_id: str | None = None,
+    captured_at_utc: datetime | None = None,
     supersedes_candidate_id: str | None = None,
     supersession_reason: str | None = None,
+    supersession_status: str | None = None,
 ) -> CandidateCase:
     return CandidateCase(
         candidate_id=candidate_id,
@@ -196,8 +235,16 @@ def valid_candidate(
         source_version=source_version,
         contract_version="1.0.0",
         owner_id=f"owner.{layer.value}",
+        observed_at_utc=observed_at_utc,
+        capture_id=capture_id,
+        captured_at_utc=captured_at_utc,
         supersedes_candidate_id=supersedes_candidate_id,
         supersession_reason=supersession_reason,
+        supersession_status=(
+            supersession_status
+            if supersession_status is not None
+            else ("applied" if supersedes_candidate_id is not None else None)
+        ),
     )
 
 
@@ -224,6 +271,25 @@ def valid_snapshot(
     event_completeness: str = "complete",
     operational_completeness: str = "complete",
 ) -> SnapshotCase:
+    all_candidates = (
+        (() if session_candidates is None else session_candidates)
+        + (() if event_candidates is None else event_candidates)
+        + operational_candidates
+        + derived_candidates
+    )
+    applied_supersessions = tuple(
+        sorted(
+            (
+                item.candidate_id,
+                item.supersedes_candidate_id or "",
+                item.supersession_reason or "",
+                item.supersession_status or "",
+            )
+            for item in all_candidates
+            if item.supersedes_candidate_id is not None
+            and item.layer == LayerCase.OPERATIONAL_CALENDAR_STATE
+        )
+    )
     snapshot = SnapshotCase(
         snapshot_id="m02.nvda.calendar.2026-07-31",
         snapshot_version="2026.07.31.1",
@@ -243,6 +309,10 @@ def valid_snapshot(
         session_completeness=session_completeness,
         event_completeness=event_completeness,
         operational_completeness=operational_completeness,
+        selected_reference_bundles=(("calendar.bundle.nvda", "2026.07.31.1"),),
+        unresolved_conflicts=(),
+        applied_supersessions=applied_supersessions,
+        projection_policy_version=("k04.v1" if derived_candidates else None),
     )
     return replace(snapshot, semantic_fingerprint=snapshot_fingerprint(snapshot))
 
@@ -600,6 +670,21 @@ def production_snapshot_payload(snapshot: SnapshotCase | None = None) -> dict[st
         "session_completeness": subject.session_completeness,
         "event_completeness": subject.event_completeness,
         "operational_completeness": subject.operational_completeness,
+        "selected_reference_bundles": [
+            {"bundle_id": bundle_id, "bundle_version": bundle_version}
+            for bundle_id, bundle_version in subject.selected_reference_bundles
+        ],
+        "unresolved_conflicts": list(subject.unresolved_conflicts),
+        "applied_supersessions": [
+            {
+                "superseding_candidate_id": winner,
+                "superseded_candidate_id": target,
+                "reason": reason,
+                "status": status,
+            }
+            for winner, target, reason, status in subject.applied_supersessions
+        ],
+        "projection_policy_version": subject.projection_policy_version,
         "canonicalisation_version": subject.canonicalisation_version,
         "semantic_fingerprint": subject.semantic_fingerprint,
     }

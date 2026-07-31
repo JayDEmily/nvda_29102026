@@ -989,12 +989,18 @@ proof_blocks:
 
   - proof_block_id: m02_k04_financial_calendar_contract
     tier: Tier A
-    lifecycle: admitted_current_mvp_c_proof_expected_red
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py
     owns:
       - tests/tier_a/m02_k04/test_m02_k04_contract.py
       - tests/support/m02_k04_contract_harness.py
+      - src/nvda_desk/m02_financial_calendar/__init__.py
+      - src/nvda_desk/m02_financial_calendar/contracts.py
+      - src/nvda_desk/m02_financial_calendar/resolver.py
+      - src/nvda_desk/contracts/reference_data.py
+      - src/nvda_desk/calendar/reference/projection.py
+      - src/nvda_desk/calendar/operational/events.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M02/M02_AUTHORITY_WORKER_RECORD_V1.md
       - docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md

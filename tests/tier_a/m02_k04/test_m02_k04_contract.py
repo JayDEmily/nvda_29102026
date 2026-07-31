@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from datetime import UTC, datetime
 
 import pytest
 
@@ -321,3 +322,196 @@ def test_production_rejects_snapshot_fingerprint_forgery() -> None:
     payload["semantic_fingerprint"] = "forged"
     with pytest.raises(Exception):
         api["FinancialCalendarSnapshot"].model_validate(payload)
+
+
+def test_production_revalidates_copied_snapshot_authority() -> None:
+    api, snapshot, policy, resolver = _production_subject()
+    forged = snapshot.model_copy(update={"semantic_fingerprint": "forged"})
+    with pytest.raises(ValueError, match="invalid_calendar_authority"):
+        resolver.project(forged, policy, projection_id="projection.forged.snapshot")
+    assert api["FinancialCalendarSnapshot"].model_config.get("frozen") is True
+
+
+def test_production_rejects_candidate_in_wrong_layer_collection() -> None:
+    api = production_api()
+    payload = production_snapshot_payload()
+    payload["operational_calendar_state"] = payload["market_session_reference"]
+    payload["market_session_reference"] = []
+    with pytest.raises(Exception):
+        api["FinancialCalendarSnapshot"].model_validate(payload)
+
+
+def test_production_snapshot_identity_is_member_order_independent() -> None:
+    first = valid_candidate(candidate_id="session.a", source_artifact_id="source.a")
+    second = valid_candidate(candidate_id="session.b", source_artifact_id="source.b")
+    left = valid_snapshot(session_candidates=(first, second))
+    right = valid_snapshot(session_candidates=(second, first))
+    assert left.semantic_fingerprint == right.semantic_fingerprint
+    api = production_api()
+    left_model = api["FinancialCalendarSnapshot"].model_validate(
+        production_snapshot_payload(left)
+    )
+    right_model = api["FinancialCalendarSnapshot"].model_validate(
+        production_snapshot_payload(right)
+    )
+    assert left_model.semantic_fingerprint == right_model.semantic_fingerprint
+
+
+def test_production_coalesces_distinct_candidates_sharing_one_source() -> None:
+    first = valid_candidate(candidate_id="session.a", source_artifact_id="source.shared")
+    second = valid_candidate(
+        candidate_id="session.b",
+        layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+        source_artifact_id="source.shared",
+    )
+    _, snapshot, policy, resolver = _production_subject(
+        valid_snapshot(session_candidates=(first,), operational_candidates=(second,))
+    )
+    result = resolver.project(snapshot, policy, projection_id="projection.shared.source")
+    assert result.selected_fields[0].candidate_ids == ("session.a", "session.b")
+    assert result.selected_fields[0].source_refs == (("source.shared", "2026.07.31.1"),)
+
+
+def test_production_rejects_forged_projection_fingerprint() -> None:
+    api, snapshot, policy, resolver = _production_subject()
+    result = resolver.project(snapshot, policy, projection_id="projection.valid")
+    payload = result.model_dump()
+    payload["semantic_fingerprint"] = "forged"
+    with pytest.raises(Exception):
+        api["CalendarProjection"].model_validate(payload)
+
+
+def test_production_requires_selected_reference_bundle_identity() -> None:
+    api = production_api()
+    payload = production_snapshot_payload()
+    payload["selected_reference_bundles"] = []
+    payload["semantic_fingerprint"] = "forged-for-missing-bundle"
+    with pytest.raises(Exception):
+        api["FinancialCalendarSnapshot"].model_validate(payload)
+
+
+def test_production_requires_projection_policy_for_derived_layer() -> None:
+    api = production_api()
+    derived = valid_candidate(
+        candidate_id="derived.context",
+        layer=LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT,
+        semantic_key="session_open_utc",
+    )
+    case = valid_snapshot(derived_candidates=(derived,))
+    payload = production_snapshot_payload(case)
+    payload["projection_policy_version"] = None
+    with pytest.raises(Exception):
+        api["FinancialCalendarSnapshot"].model_validate(payload)
+
+
+def test_production_projection_preserves_applied_supersession_decision() -> None:
+    source = valid_candidate(candidate_id="session.source", value="13:30")
+    correction = valid_candidate(
+        candidate_id="session.correction",
+        layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+        value="14:30",
+        supersedes_candidate_id="session.source",
+        supersession_reason="venue_correction",
+        supersession_status="applied",
+    )
+    _, snapshot, policy, resolver = _production_subject(
+        valid_snapshot(session_candidates=(source,), operational_candidates=(correction,))
+    )
+    result = resolver.project(snapshot, policy, projection_id="projection.supersession")
+    assert len(result.applied_supersessions) == 1
+    decision = result.applied_supersessions[0]
+    assert decision.superseding_candidate_id == "session.correction"
+    assert decision.superseded_candidate_id == "session.source"
+    assert decision.reason == "venue_correction"
+    assert decision.status == "applied"
+
+
+def test_production_withheld_projection_preserves_prior_supersession_evidence() -> None:
+    source = valid_candidate(candidate_id="session.source", value="13:30")
+    correction = valid_candidate(
+        candidate_id="session.correction",
+        layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+        value="14:30",
+        supersedes_candidate_id="session.source",
+        supersession_reason="venue_correction",
+        supersession_status="applied",
+    )
+    case = valid_snapshot(
+        session_candidates=(source,), operational_candidates=(correction,)
+    )
+    case = replace(case, unresolved_conflicts=("session_open_utc",))
+    case = replace(case, semantic_fingerprint=snapshot_fingerprint(case))
+    _, snapshot, policy, resolver = _production_subject(case)
+
+    result = resolver.project(
+        snapshot, policy, projection_id="projection.supersession.withheld"
+    )
+
+    assert result.status == "withheld"
+    assert result.unresolved_conflicts == ("session_open_utc",)
+    assert len(result.applied_supersessions) == 1
+    assert result.applied_supersessions[0].superseding_candidate_id == "session.correction"
+
+
+def test_production_preserves_supplied_observation_and_capture_facts() -> None:
+    case = valid_candidate(
+        observed_at_utc=datetime(2026, 7, 31, 13, 29, tzinfo=UTC),
+        capture_id="capture.calendar.session.a",
+        captured_at_utc=datetime(2026, 7, 31, 13, 30, tzinfo=UTC),
+    )
+    api = production_api()
+    candidate = api["CalendarFactCandidate"].model_validate(
+        production_candidate_payload(case)
+    )
+
+    assert candidate.observed_at_utc == case.observed_at_utc
+    assert candidate.capture_id == case.capture_id
+    assert candidate.captured_at_utc == case.captured_at_utc
+
+
+def test_production_rejects_incomplete_capture_identity_pair() -> None:
+    api = production_api()
+    payload = production_candidate_payload(valid_candidate())
+    payload["capture_id"] = "capture.calendar.session.a"
+    payload["captured_at_utc"] = None
+
+    with pytest.raises(Exception, match="capture_identity_time_mismatch"):
+        api["CalendarFactCandidate"].model_validate(payload)
+
+
+def test_production_rejects_unrecorded_or_non_applied_supersession() -> None:
+    api = production_api()
+    source = valid_candidate(candidate_id="session.source", value="13:30")
+    correction = valid_candidate(
+        candidate_id="session.correction",
+        layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+        value="14:30",
+        supersedes_candidate_id="session.source",
+        supersession_reason="venue_correction",
+    )
+    snapshot_payload = production_snapshot_payload(
+        valid_snapshot(
+            session_candidates=(source,), operational_candidates=(correction,)
+        )
+    )
+    snapshot_payload["applied_supersessions"] = []
+    with pytest.raises(Exception, match="applied_supersession_set_mismatch"):
+        api["FinancialCalendarSnapshot"].model_validate(snapshot_payload)
+
+    candidate_payload = production_candidate_payload(correction)
+    candidate_payload["supersession_status"] = "proposed"
+    with pytest.raises(Exception):
+        api["CalendarFactCandidate"].model_validate(candidate_payload)
+
+
+def test_production_projection_declares_and_fingerprints_canonicalisation_version() -> None:
+    api, snapshot, policy, resolver = _production_subject()
+    result = resolver.project(
+        snapshot, policy, projection_id="projection.canonicalisation"
+    )
+
+    assert result.canonicalisation_version == snapshot.canonicalisation_version
+    forged = result.model_dump()
+    forged["canonicalisation_version"] = "m02-k04-forged"
+    with pytest.raises(Exception, match="projection_fingerprint_mismatch"):
+        api["CalendarProjection"].model_validate(forged)
