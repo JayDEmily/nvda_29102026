@@ -3,12 +3,186 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import UTC, datetime
-from typing import Any, Generic, TypeVar
+from datetime import datetime
+from hashlib import sha256
+from typing import Any, Callable, Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field
 
 T = TypeVar("T")
+
+K07_ADMITTED_PACKET_ROLES = frozenset(
+    {
+        "reference_packet",
+        "prepared_context_packet",
+        "stage_packet",
+        "parallel_risk_packet",
+        "review_explanation_packet",
+        "replay_request_packet",
+        "replay_result_packet",
+        "replay_comparison_packet",
+        "diagnostic_packet",
+        "rejection_packet",
+    }
+)
+
+K07_LINEAGE_FIELDS = (
+    "parentids",
+    "dependencyids",
+    "derivedfrom",
+    "replayref",
+    "sourceartifactids",
+    "inputfingerprint",
+    "reviewtraceid",
+    "replaytraceid",
+    "decisiontraceid",
+)
+
+K07_REQUIRED_LINEAGE = {
+    "reference_packet": frozenset({"derivedfrom", "sourceartifactids", "inputfingerprint"}),
+    "prepared_context_packet": frozenset(
+        {"derivedfrom", "sourceartifactids", "inputfingerprint"}
+    ),
+    "stage_packet": frozenset(
+        {"parentids", "derivedfrom", "sourceartifactids", "inputfingerprint"}
+    ),
+    "parallel_risk_packet": frozenset(
+        {"parentids", "derivedfrom", "sourceartifactids", "inputfingerprint"}
+    ),
+    "review_explanation_packet": frozenset(
+        {"parentids", "derivedfrom", "inputfingerprint", "reviewtraceid"}
+    ),
+    "replay_request_packet": frozenset(
+        {"replayref", "sourceartifactids", "inputfingerprint", "replaytraceid"}
+    ),
+    "replay_result_packet": frozenset(
+        {
+            "parentids",
+            "derivedfrom",
+            "replayref",
+            "sourceartifactids",
+            "inputfingerprint",
+            "replaytraceid",
+        }
+    ),
+    "replay_comparison_packet": frozenset(
+        {
+            "parentids",
+            "derivedfrom",
+            "replayref",
+            "sourceartifactids",
+            "inputfingerprint",
+            "replaytraceid",
+        }
+    ),
+    "diagnostic_packet": frozenset(),
+    "rejection_packet": frozenset(),
+}
+
+K07_NOT_APPLICABLE_LINEAGE = {
+    "reference_packet": frozenset({"decisiontraceid"}),
+    "prepared_context_packet": frozenset({"decisiontraceid"}),
+    "replay_request_packet": frozenset({"derivedfrom"}),
+}
+
+K07_COMMON_CHECKS = (
+    "canonical_envelope",
+    "producer_identity",
+    "role_schema_consistency",
+    "execution_context_ownership",
+    "typed_payload",
+    "lineage_profile",
+    "authority_boundary",
+    "extension_bounds",
+    "summary_consistency",
+    "validation_completeness",
+)
+
+K07_ROLE_CHECKS = {
+    "reference_packet": (
+        "reference_identity_and_version",
+        "source_artifact_retrievability",
+        "source_temporal_precision",
+        "reference_material_fingerprint",
+        "no_runtime_decision_authority",
+    ),
+    "prepared_context_packet": (
+        "prepared_identity_and_contract_version",
+        "source_and_capture_lineage",
+        "source_temporal_preservation",
+        "prepared_fingerprint",
+        "completeness_and_limitation_state",
+        "no_domain_decision_authority",
+    ),
+    "stage_packet": (
+        "stage_identity_and_order",
+        "prepared_or_prior_stage_parentage",
+        "material_dependency_closure",
+        "stage_input_fingerprint",
+        "domain_output_identity",
+        "serial_parallel_capital_boundary",
+    ),
+    "parallel_risk_packet": (
+        "parallel_lane_identity",
+        "lawful_input_boundary",
+        "material_dependency_closure",
+        "risk_input_fingerprint",
+        "risk_output_identity",
+        "serial_candidate_and_capital_separation",
+    ),
+    "review_explanation_packet": (
+        "review_trace_identity",
+        "reviewed_evidence_closure",
+        "review_input_fingerprint",
+        "deterministic_explanation",
+        "contradiction_visibility",
+        "no_runtime_decision_authority",
+    ),
+    "replay_request_packet": (
+        "replay_trace_identity",
+        "replay_target_retrievability",
+        "requested_evidence_and_version_completeness",
+        "requested_input_fingerprint",
+        "no_live_side_effect_request",
+    ),
+    "replay_result_packet": (
+        "replay_trace_identity",
+        "original_occurrence_separation",
+        "consumed_evidence_and_version_verification",
+        "isolated_state_and_controlled_time",
+        "semantic_result_fingerprint",
+        "no_live_side_effects",
+        "authoritative_or_incomplete_status",
+    ),
+    "replay_comparison_packet": (
+        "replay_trace_identity",
+        "original_and_result_identity",
+        "comparison_evidence_closure",
+        "comparison_fingerprint",
+        "mismatch_visibility",
+        "no_reconstruction_overclaim",
+    ),
+    "diagnostic_packet": (
+        "diagnostic_contract_and_version",
+        "target_or_rejected_input_identity",
+        "failure_fact_completeness",
+        "non_binding_status",
+        "no_binding_role_substitution",
+        "no_authority_promotion",
+    ),
+    "rejection_packet": (
+        "diagnostic_contract_and_version",
+        "target_or_rejected_input_identity",
+        "failure_fact_completeness",
+        "non_binding_status",
+        "no_binding_role_substitution",
+        "no_authority_promotion",
+    ),
+}
+
+_FORBIDDEN_AUTHORITY_KEYS = frozenset(
+    {"capital_authority", "live_order", "domain_state_mutation"}
+)
 
 
 class DmpV3Producer(BaseModel):
@@ -83,6 +257,90 @@ def _deep_merge_dicts(base: dict[str, Any], updates: dict[str, Any]) -> dict[str
     return merged
 
 
+def _has_value(value: Any) -> bool:
+    if isinstance(value, (list, tuple, dict, str)):
+        return bool(value)
+    return value is not None
+
+
+def _require_owned_identifier(value: str | None, field_name: str) -> str:
+    if (
+        value is None
+        or not value
+        or value.strip() != value
+        or any(character.isspace() for character in value)
+        or value == "live"
+    ):
+        raise ValueError(f"{field_name} must be a caller-owned governed identity")
+    return value
+
+
+def _find_forbidden_authority_key(value: Any) -> str | None:
+    if isinstance(value, dict):
+        for key, item in value.items():
+            if key in _FORBIDDEN_AUTHORITY_KEYS:
+                return key
+            nested = _find_forbidden_authority_key(item)
+            if nested is not None:
+                return nested
+    elif isinstance(value, (list, tuple)):
+        for item in value:
+            nested = _find_forbidden_authority_key(item)
+            if nested is not None:
+                return nested
+    return None
+
+
+def _validate_k07_lineage(packetrole: str, lineage: DmpV3Lineage) -> None:
+    values = lineage.model_dump()
+    for field_name in K07_REQUIRED_LINEAGE[packetrole]:
+        if not _has_value(values[field_name]):
+            raise ValueError(f"lineage.{field_name} is required for {packetrole}")
+    for field_name in K07_NOT_APPLICABLE_LINEAGE.get(packetrole, frozenset()):
+        if _has_value(values[field_name]):
+            raise ValueError(f"lineage.{field_name} is not applicable to {packetrole}")
+    if packetrole in {"diagnostic_packet", "rejection_packet"} and not any(
+        _has_value(values[field_name]) for field_name in K07_LINEAGE_FIELDS
+    ):
+        raise ValueError(
+            f"lineage.truthful_target_reference is required for {packetrole}"
+        )
+
+
+def _validate_role_schema_and_authority(
+    *, packetrole: str, dataschema: str, data: Any
+) -> None:
+    if not dataschema.strip():
+        raise ValueError("dataschema must identify the typed payload contract")
+    if data is None:
+        raise ValueError("typed_payload must be present")
+    if isinstance(data, dict):
+        declared_role = data.get("role")
+        if declared_role is not None and declared_role != packetrole:
+            raise ValueError("packetrole and typed payload role must agree")
+    forbidden_key = _find_forbidden_authority_key(data)
+    if forbidden_key is not None:
+        raise ValueError(f"authority_boundary forbids payload key {forbidden_key}")
+
+
+def _k07_validation(
+    *, packetrole: str, optional_limitations: list[str]
+) -> DmpV3Validation:
+    checks = [
+        DmpV3ValidationCheck(name=name, passed=True)
+        for name in (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS[packetrole])
+    ]
+    checks.extend(
+        DmpV3ValidationCheck(name=f"optional_quality:{limitation}", passed=False)
+        for limitation in optional_limitations
+    )
+    return DmpV3Validation(
+        status="degraded" if optional_limitations else "valid",
+        checks=checks,
+        violations=list(optional_limitations),
+    )
+
+
 class DmpV3Envelope(BaseModel, Generic[T]):
     """Canonical DMPV3 outer envelope for live inter-module packet carriage."""
 
@@ -149,6 +407,8 @@ def build_dmp_v3_envelope_kwargs(
     replayref: str | None = None,
     sourceartifactids: list[str] | None = None,
     inputfingerprint: str | None = None,
+    source_artifact_validator: Callable[[str], bool] | None = None,
+    input_material: bytes | None = None,
     reviewtraceid: str | None = None,
     replaytraceid: str | None = None,
     decisiontraceid: str | None = None,
@@ -160,21 +420,28 @@ def build_dmp_v3_envelope_kwargs(
 ) -> dict[str, Any]:
     """Return canonical DMPV3 envelope kwargs for one repo-owned payload."""
 
+    _require_owned_identifier(packet_id, "packet_id")
+    _require_owned_identifier(module_id, "module_id")
+    _require_owned_identifier(module_version, "module_version")
+    resolved_module_instance_id = _require_owned_identifier(
+        module_instance_id, "module_instance_id"
+    )
+    _require_owned_identifier(grammar_role, "grammar_role")
+    _require_owned_identifier(behaviour_class, "behaviour_class")
     if emitted_at is None:
-        emitted_at = datetime.now(UTC)
+        raise ValueError("emitted_at must be supplied by the emitting boundary")
+    resolved_traceid = _require_owned_identifier(traceid, "traceid")
+    resolved_runid = _require_owned_identifier(runid, "runid")
+    resolved_scenarioid = _require_owned_identifier(scenarioid, "scenarioid")
+    if packetrole not in K07_ADMITTED_PACKET_ROLES:
+        raise ValueError(f"packetrole is not admitted by K07: {packetrole}")
+    _validate_role_schema_and_authority(
+        packetrole=packetrole,
+        dataschema=dataschema,
+        data=data,
+    )
 
-    violations = list(validation_violations or [])
-    resolved_traceid = traceid
-    if resolved_traceid is None:
-        resolved_traceid = f"trace::{packet_id}"
-        violations.append("traceid_defaulted_from_packet_id")
-
-    resolved_runid = runid
-    if resolved_runid is None:
-        resolved_runid = f"run::{packet_id}"
-        violations.append("runid_defaulted_from_packet_id")
-
-    resolved_scenarioid = scenarioid or "live"
+    limitations = list(validation_violations or [])
     resolved_source = source or f"urn:nvda:producer:{module_id}"
     resolved_type = packet_type or f"urn:nvda:packet:{packetrole}"
 
@@ -189,11 +456,34 @@ def build_dmp_v3_envelope_kwargs(
         replaytraceid=replaytraceid,
         decisiontraceid=decisiontraceid,
     )
+    _validate_k07_lineage(packetrole, lineage)
+    if lineage.sourceartifactids:
+        if source_artifact_validator is None:
+            raise ValueError(
+                "sourceartifactids require an owner-supplied retrievability validator"
+            )
+        unresolved_artifacts = [
+            artefact_id
+            for artefact_id in lineage.sourceartifactids
+            if not source_artifact_validator(artefact_id)
+        ]
+        if unresolved_artifacts:
+            raise ValueError(
+                "sourceartifactids are not retrievable: "
+                + ", ".join(unresolved_artifacts)
+            )
+    if lineage.inputfingerprint is not None:
+        if input_material is None:
+            raise ValueError(
+                "inputfingerprint requires owner-supplied input material"
+            )
+        if sha256(input_material).hexdigest() != lineage.inputfingerprint:
+            raise ValueError("inputfingerprint does not match owner-supplied material")
 
-    validation = DmpV3Validation(violations=violations)
-    if violations:
-        validation.status = "degraded"
-        validation.checks = [DmpV3ValidationCheck(name="carriage_context", passed=False)]
+    validation = _k07_validation(
+        packetrole=packetrole,
+        optional_limitations=limitations,
+    )
 
     payload_type = data.__class__
     canonical_schema_identifiers = {
@@ -215,7 +505,7 @@ def build_dmp_v3_envelope_kwargs(
 
     keyflags = list(summary_keyflags or [])
     if validation.status == "degraded":
-        for violation in violations:
+        for violation in limitations:
             if violation not in keyflags:
                 keyflags.append(violation)
 
@@ -239,7 +529,7 @@ def build_dmp_v3_envelope_kwargs(
         "producer": DmpV3Producer(
             module_id=module_id,
             module_version=module_version,
-            module_instance_id=module_instance_id or f"{module_id}::default",
+            module_instance_id=resolved_module_instance_id,
             grammar_role=grammar_role,
             behaviour_class=behaviour_class,
             stage_name=stage_name,

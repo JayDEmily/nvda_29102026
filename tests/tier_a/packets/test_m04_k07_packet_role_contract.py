@@ -292,3 +292,74 @@ def test_production_subject_rejects_missing_context_without_defaulting_expected_
 ) -> None:
     with pytest.raises(ValueError, match=field_name):
         ProductionSubject().emit(replace(positive_case("stage_packet"), **{field_name: ""}))
+
+
+@pytest.mark.parametrize(
+    ("role", "field_name"),
+    (
+        ("reference_packet", "derivedfrom"),
+        ("prepared_context_packet", "sourceartifactids"),
+        ("stage_packet", "parentids"),
+        ("parallel_risk_packet", "inputfingerprint"),
+        ("review_explanation_packet", "reviewtraceid"),
+        ("replay_request_packet", "replayref"),
+        ("replay_result_packet", "replaytraceid"),
+        ("replay_comparison_packet", "sourceartifactids"),
+    ),
+)
+def test_production_subject_rejects_missing_required_role_lineage(
+    role: str,
+    field_name: str,
+) -> None:
+    empty = [] if field_name in {"parentids", "dependencyids", "sourceartifactids"} else None
+    with pytest.raises(ValueError, match=field_name):
+        ProductionSubject().emit(with_lineage(positive_case(role), field_name, empty))
+
+
+@pytest.mark.parametrize(
+    ("role", "field_name", "value"),
+    (
+        ("reference_packet", "decisiontraceid", "decision::forbidden"),
+        ("prepared_context_packet", "decisiontraceid", "decision::forbidden"),
+        ("replay_request_packet", "derivedfrom", "derived::forbidden"),
+    ),
+)
+def test_production_subject_rejects_not_applicable_lineage(
+    role: str,
+    field_name: str,
+    value: str,
+) -> None:
+    with pytest.raises(ValueError, match=field_name):
+        ProductionSubject().emit(with_lineage(positive_case(role), field_name, value))
+
+
+def test_production_subject_requires_diagnostic_target_identity() -> None:
+    case = positive_case("diagnostic_packet")
+    empty_lineage = {
+        field_name: (
+            [] if field_name in {"parentids", "dependencyids", "sourceartifactids"} else None
+        )
+        for field_name in LINEAGE_FIELDS
+    }
+    with pytest.raises(ValueError, match="truthful_target_reference"):
+        ProductionSubject().emit(replace(case, lineage=empty_lineage))
+
+
+def test_production_subject_rejects_unlisted_role() -> None:
+    with pytest.raises(ValueError, match="packetrole"):
+        ProductionSubject().emit(
+            replace(positive_case("stage_packet"), role="capital_deployment_decision")
+        )
+
+
+def test_production_subject_rejects_unretrievable_source_artifact() -> None:
+    case = positive_case("reference_packet")
+    case.ports.artefacts.clear()
+    with pytest.raises(ValueError, match="sourceartifactids"):
+        ProductionSubject().emit(case)
+
+
+def test_production_subject_rejects_input_fingerprint_mismatch() -> None:
+    case = positive_case("stage_packet")
+    with pytest.raises(ValueError, match="inputfingerprint"):
+        ProductionSubject().emit(replace(case, material=b"substituted-material"))

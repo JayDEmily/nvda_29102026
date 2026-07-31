@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any
+from typing import Any, Callable
 
 from nvda_desk.contracts.capital import CAPITAL_DEPLOYMENT_DECISION_DATASCHEMA
 from nvda_desk.contracts.packets import DeskModulePacketV3, build_dmp_v3_envelope_kwargs
@@ -39,6 +39,8 @@ class DmpPacketBuilder:
         replayref: str | None = None,
         sourceartifactids: list[str] | None = None,
         inputfingerprint: str | None = None,
+        source_artifact_validator: Callable[[str], bool] | None = None,
+        input_material: bytes | None = None,
         reviewtraceid: str | None = None,
         replaytraceid: str | None = None,
         decisiontraceid: str | None = None,
@@ -75,6 +77,8 @@ class DmpPacketBuilder:
                 replayref=replayref,
                 sourceartifactids=sourceartifactids,
                 inputfingerprint=inputfingerprint,
+                source_artifact_validator=source_artifact_validator,
+                input_material=input_material,
                 reviewtraceid=reviewtraceid,
                 replaytraceid=replaytraceid,
                 decisiontraceid=decisiontraceid,

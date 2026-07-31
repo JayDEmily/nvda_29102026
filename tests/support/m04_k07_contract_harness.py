@@ -392,6 +392,8 @@ class ProductionSubject:
             grammar_role=case.grammar_role,
             behaviour_class=case.behaviour_class,
             stage_name=case.stage_name,
+            source_artifact_validator=case.ports.artefact_retrievable,
+            input_material=case.material,
             **case.lineage,
         )
 
