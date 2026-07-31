@@ -42,7 +42,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == native_build_document().to_dict()
 
     assert committed["schema_version"] == "v2_namespaced"
-    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m07", "m08"}
+    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m06", "m07", "m08"}
     assert committed["namespaces"]["m02"]["imports"] == ["global"]
     assert committed["namespaces"]["m03"]["imports"] == ["global"]
     assert committed["namespaces"]["m04"]["imports"] == ["global"]

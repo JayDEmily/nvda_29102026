@@ -3738,3 +3738,25 @@ fast_track_module_local_admissions:
   admission_reason: The 31 July 2026 MVP Gate D decision admits this bounded family for immutable common-context lineage, exact six-stage ordering and dependencies, owner-issued bounded carrier facts, exact input/output/dependency lineage, explicit formed/stand-down/withheld/rejected results, complete M03/M04/M07/M08 lineage, deterministic candidate meaning and closed foreign authority.
   forbidden_carry_forward: Caller order, skipped or duplicate stages, partial mappings presented as success, generated identity or wall-clock authority, dropped modifier lineage, empty eligibility authority, generic carrier payloads, hidden inventory reads, terminal binding payloads and serial claims of parallel-risk, capital, broker, position, lifecycle, transaction or replay authority must not satisfy M05.
   notes: Thirty-two focused cases pass: thirteen reference and false-positive cases including seven named mutants, the seven formerly expected-red production assertions, and twelve Gate D integrity cases covering copied-model revalidation, carrier-fact admission and fingerprint binding, exact input-carrier lineage, ordered eligibility/lead preservation, terminal payload closure and candidate recomputation resistance.
+
+- test_family_id: m06_k10_parallel_risk_contract
+  native_status: admitted_tier_a
+  bounded_family: independent_parallel_risk_assessment
+  native_test_path: tests/tier_a/m06_k10/test_m06_k10_contract.py
+  migration_status: module_local_c_proof_gate_d_open
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M06/M06_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m06_k10_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: The canonical nvda_desk.m06_parallel_risk package is intentionally absent at C-PROOF; existing bootstrap packet, evaluator, lane-service and process-memory store surfaces remain compatibility candidates and do not define K10.
+  native_reauthor_required: true
+  admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for exact prepared/input lineage, explicit policy and thresholds, typed observations, block-dominant deterministic aggregation, unknown preservation, side-effect freedom and closed foreign authority.
+  forbidden_carry_forward: Generic mappings, unadmitted bootstrap packets, copied-model validator bypass, silent thresholds, caller-order aggregation, unknown-as-safe, module-global decision state and M06 claims of serial-candidate, K11 final-risk, capital, execution, lifecycle, transaction or replay authority must not satisfy K10.
+  notes: Thirteen reference and mutant cases pass; seven production-facing assertions remain exact red only because the canonical M06 package does not yet exist.

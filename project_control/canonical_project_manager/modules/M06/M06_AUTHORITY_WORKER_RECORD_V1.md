@@ -7,7 +7,7 @@
 - Contract boundary: `K10 ParallelRiskAssessment`
 - Requirements: `C-017; C-020; C-035`
 - Source checkpoint: `615bef4adbb177f2ffd610e36eb539abd514c5c7`
-- Active gate: `C-NORM`
+- Active gate: `C-PROOF`
 - Checkpoint state: `IN_PROGRESS`
 - Gate D: `CLOSED`
 
@@ -38,4 +38,4 @@ The accepted architecture assigns K10 to M06 and keeps the K11 terminal join in 
 
 ## Gate boundary
 
-C-PROOF may open only after the C-NORM authority, vocabulary and read record are accepted. Gate D remains closed until the minimum proof family passes its reference and mutant cases and its production-facing assertions fail solely because the canonical M06 package is absent.
+C-PROOF is accepted: 13 reference/mutant cases pass, vocabulary parity is repaired, and seven production-facing assertions remain exact red solely because the canonical M06 package is absent. Gate D is open only for that bounded implementation.

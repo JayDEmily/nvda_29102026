@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `IN_PROGRESS:M06_K10_C_NORM`
+**Status:** `IN_PROGRESS:M06_K10_GATE_D_OPEN`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`

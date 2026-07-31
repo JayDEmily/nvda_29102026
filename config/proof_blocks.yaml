@@ -1066,3 +1066,23 @@ proof_blocks:
       - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m06_k10_parallel_risk_contract
+    tier: Tier A
+    lifecycle: admitted_current_mvp_c_proof
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_k10_contract.py
+    owns:
+      - tests/tier_a/m06_k10/test_m06_k10_contract.py
+      - tests/support/m06_k10_contract_harness.py
+      - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - project_control/canonical_project_manager/modules/M06/M06_AUTHORITY_WORKER_RECORD_V1.md
+      - project_control/canonical_project_manager/modules/M06/validation/m06_k10_v1/C_PROOF_VALIDATION_SUMMARY.md
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - data/vocabulary/vocabulary_touch_stamp.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
