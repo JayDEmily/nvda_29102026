@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `PAUSED:AFTER_M05_K08_K09_GATE_D_USER_CHECKPOINT`
+**Status:** `IN_PROGRESS:M06_K10_C_NORM`
 **Amendment date:** `2026-07-31`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -250,16 +250,12 @@ capital, broker, portfolio or lifecycle-mutation authority.
 
 ### Queued
 
-- M06 parallel risk is the next lawful module unit after the user-requested M05 checkpoint.
+- M06 K10 C-NORM is active; K11 final-risk joining remains M09 authority.
 - M09 capital remains closed until both M05 and M06 are accepted.
 
 ## 8. Immediate work
 
-Pause at the accepted M05 K08/K09 Gate D checkpoint and publish one clean
-full-history archive. Do not begin M06 in this checkpoint.
-
-On resumption, open M06 parallel-risk `C-NORM` as one bounded semantic unit.
-M09 capital and downstream broker/lifecycle mutation authority remain closed.
+Complete M06 K10 as one uninterrupted `C-NORM → C-PROOF → Gate D` unit, then publish one clean full-history archive and pause. M09 capital and downstream broker/lifecycle mutation authority remain closed until M06 is accepted.
 
 ## 9. Programme sequence
 

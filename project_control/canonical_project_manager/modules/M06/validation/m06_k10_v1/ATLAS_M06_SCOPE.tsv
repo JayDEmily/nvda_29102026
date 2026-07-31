@@ -1,0 +1,8 @@
+source	locator	accepted_truth
+Atlas workbook	Target Modules!M06	M06 parallel_risk owns independent environmental-risk assessment and terminal-join contribution; it excludes candidate formation and capital authority; public interfaces ParallelRiskInput, ParallelRiskAssessment and RiskJoinInput; runtime dependencies M03 and M04
+Atlas workbook	Contracts!K10	ParallelRiskAssessment is a separate lane with bounded read authority under C-017/C-020/C-035
+Atlas workbook	Component Decisions!parallel risk evaluators	Retain/refactor bounded evaluation; replace incomplete or global composition and state
+Atlas workbook	Cohort Trace!SC-PARALLEL-RISK-LANE-SERVICE-266	Evaluate event, volatility, liquidity, concentration and inventory stress independently; preserve own lineage; BLOCK dominates; reasons and confidence explicit; no playbook selection or capital authority
+Atlas workbook	Cohort Trace!SC-TERMINAL-RISK-GATEWAY-259	K11 terminal join is split across M05/M06/M13 and is not M06-owned final-risk authority
+Atlas workbook	Cohort Trace!SC-RUNTIME-ORCHESTRATION-279	Parallel lane remains distinct; terminal joining and downstream action require separate owner-boundary proof
+Atlas workbook	Package Target!M06	src/nvda_desk/m06_parallel_risk is the canonical package target

@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M05 K08/K09 serial-cognition authority |
-| Current active slice | paused after accepted M05 K08/K09 Gate D |
-| Production implementation | M05 bounded K08/K09 implementation accepted; M06 not started |
+| Current active slice | M06 K10 C-NORM active |
+| Production implementation | M05 accepted; M06 production remains closed during C-NORM |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -118,6 +118,4 @@ required before implementation.
 
 ## Immediate next action
 
-Pause at the user-requested accepted M05 checkpoint and publish the clean
-full-history archive. On resumption, open M06 parallel-risk `C-NORM`; M09
-capital and downstream execution/lifecycle authority remain closed.
+Complete M06 K10 through bounded Gate D, publish one clean full-history checkpoint, and pause. M09 capital and downstream execution/lifecycle authority remain closed until M06 acceptance.
