@@ -2,9 +2,15 @@
 
 ## Status
 
-`PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`
+`HISTORICAL:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED_CLOSED`
 
 This registry is PM-owned. Parallel Cycle 01 worker and tester assignments are closed. No lane may continue, select follow-on work or mutate from its former worker/tester branch. Any later assignment requires a new PM brief from the published canonical closeout checkpoint.
+
+The 31 July 2026 MVP amendment makes parallel lanes and independent
+worker/tester pairs optional execution tools rather than mandatory Gate C
+leaves. Current delivery state is governed by `EXEC_PLAN.md`,
+`GATE_C_COMPLETION_PROTOCOL.md` and `ROADMAP_LEDGER_V2.md`. The tables below
+remain exact Cycle 01 history.
 
 ## Current control lineage
 
@@ -67,7 +73,10 @@ Mechanical evidence is retained under `project_control/canonical_project_manager
 
 ## Next allocation boundary
 
-- M01 may next receive a separately briefed `M01-PROOF-MLC-O-V1` assignment.
-- M04, M07 and M08 require bounded numbered normative-authority completion before their MLC-A gates can close.
-- No implementation, physical-test mutation, configuration mutation or lane continuation is opened by this registry state.
-- Lanes 5 and 6 remain held until explicitly allocated by the PM.
+- No new parallel cycle is required for the current M04 K07 Gate D slice.
+- M04 is implementation-open under the current MVP protocol, not under this
+  historical registry.
+- M01 minimum proof and the M07/M08 normative closures may use optional parallel
+  assignments only when their write sets are disjoint and the PM explicitly
+  allocates them.
+- Lanes 5 and 6 remain unallocated; there is no obligation to fill them.

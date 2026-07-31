@@ -1,57 +1,53 @@
-# ROADMAP_LEDGER_V2 — Live Canonical Programme Pointer
+# NVIDIA 2026 — Live Roadmap
 
-## Current state
+## Current position
 
-| Field | Value |
+| Field | Current truth |
 |---|---|
-| Status | `m04_k07_mlc_v_independent_validation_required` |
-| Current programme | existing canonical M00–M15 module-local delivery programme |
-| Current branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` from `integration/parallel-cycle-01` at `73f1e7ab3ce212c9951f03c407e94741e6c68913` |
-| Accepted launch checkpoint | `review/parallel-control-r2-accepted` / `ee67c752d14073a959fda478f31f4466b6952cae` |
-| Integrated Cycle 01 state | through PM Lane 4 acceptance `d6cfff9ab00cb5772baad26b14a8d388b08a241a` |
-| Aggregate closeout | `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_PM_AGGREGATE_CLOSEOUT.md` |
-| Aggregate mechanical evidence | `project_control/canonical_project_manager/parallel_cycle_01_closeout/CYCLE_01_AGGREGATE_MECHANICAL_VALIDATION.txt` — 28 PASS, 0 FAIL |
-| Parallel operating law | `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md` |
-| Workflow registry | `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md` |
-| Cycle 1 brief pack | `project_control/canonical_project_manager/PARALLEL_CYCLE_01/` |
-| Completed control unit | Atlas current-governing-document repair passed at `27fa427` |
-| Completed Gate C leaf | M04 K07 section 9.10 added; M04 MLC-A recheck `AUTHORITY_SUFFICIENT` |
-| Completed Gate C routing leaf | `M04-PROOF-MLC-R-V1` — 25 physical K07 claim files routed; 154 other census files remain `LEGACY_SHADOW_UNADMITTED` |
-| Completed governance prerequisite | `M15-VOCABULARY-NAMESPACE-REPAIR-V1` — namespaced machine identities and 95-file M04 scoped candidate audit passed |
-| Completed observation leaf | `M04-PROOF-MLC-O-V1` — 25 files read; 357 tests observed as 347 passed / 10 failed |
-| Completed disposition leaf | `M04-PROOF-MLC-D-V1` — one bounded expected-red admission; all other files partial, contradictory, consumer-only or unlisted-role evidence |
-| Completed proof-specification leaf | `M04-PROOF-MLC-P-V1` — PF-01–PF-08, exact role/matrix/outcome coverage and ten required falsification mutants specified |
-| Completed test-implementation leaf | `M04-PROOF-MLC-T-V1` — 252 tests collected; 239 proof-instrument checks pass; production remains expected-red at 11 exact K07 cases |
-| Current control leaf | `M04-PROOF-MLC-V-V1` — independent tester validation of proof sensitivity, expected-red truth and route integrity |
-| Validation records | existing architecture `Validation_Receipt.md` for the Atlas repair and existing PM `VALIDATION_LOG.md` for M15 |
-| Production/source mutation | closed |
-| Physical-test mutation | closed after MLC-T; candidate family pending independent acceptance |
-| Implementation | closed; no implementation opens from the trace repair or the next normative leaf |
+| Programme | M00–M15 modular-monolith alpha delivery |
+| Branch | `control/atlas-current-path-rebase-gate-c-continuation-v1` |
+| Source checkpoint | `2aab666a3c9441728c6701acbd4baa7f71056d97` |
+| Gate C protocol | two-step MVP route: `C-NORM → C-PROOF` |
+| Current completed module | M13 state kernel accepted |
+| Current implementation-open slice | M04 K07 packet protocol |
+| Production implementation | open only for bounded M04 K07 Gate D |
+| Live/paper/production claim | closed |
 
-Read the ExecPlan, Gate C protocol, parallel operating law and workflow registry before issuing any new assignment.
+## Why the route changed
 
-## Parallel Cycle 01 closeout
+The former M04 sequence used seven commits and 34 changed files after the Atlas
+path repair, adding 3,442 lines while changing no M04 production behaviour.
+The protocol now follows the normative requirement to use the smallest proof
+combination that establishes the accepted claim.
 
-| Assignment | Unit | PM state | Bounded outcome |
+Historical MLC records remain evidence. They are not mandatory future leaves.
+
+## Gate C conversion
+
+| Module | Normative closure | Minimum proof | State |
 |---|---|---|---|
-| `1A` | `M01-PROOF-MLC-R-V1` | `AGGREGATE_VALIDATED_CLOSED` | 179 unique physical tests reconciled; 20 current M01 claim routes and 159 bounded M01 shadows |
-| `2A` | `M04-PROOF-MLC-A-V1` | `AGGREGATE_VALIDATED_CLOSED` | `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for the complete K07 packet-role matrix |
-| `3A` | `M07-PROOF-MLC-A-V1` | `AGGREGATE_VALIDATED_CLOSED` | `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K12 bundle/application authority; `OBL-M07-POSITIVE` remains open |
-| `4A` | `M08-PROOF-MLC-A-V1` | `AGGREGATE_VALIDATED_CLOSED` | `BLOCKED_MISSING_NORMATIVE_AUTHORITY` for K13 catalogue/eligibility decision authority |
-| 5 | held | `HELD_BLOCKED_DEPENDENCY` | no new assignment allocated |
-| 6 | held | `HELD_BLOCKED_DEPENDENCY` | no new assignment allocated |
+| M13 state kernel | passed | independently passed | accepted implementation retained |
+| M04 packet protocol / K07 | passed — `docs/09.1...` section 9.10 | passed — 239 proof-instrument cases, ten mutant kills, eleven exact production-red cases | `GATE_D_OPEN` |
+| M01 source admission | passed | pending focused public-seam family | `C_PROOF_NEXT_AFTER_M04` |
+| M07 coefficient/modifier authority | missing K12 identity/version, precedence, bounds and receipt meaning | closed pending norm | `C_NORM_REQUIRED` |
+| M08 playbook catalogue | missing K13 catalogue/eligibility decision meaning | closed pending norm | `C_NORM_REQUIRED` |
 
-## Dependency and return gates
+The PM-011 179-test census, Cycle 01 worker/tester outputs and M04 MLC-A through
+MLC-T records remain navigation and challenge evidence. No file-by-file
+re-adjudication is required before implementation.
 
-1. M01 routing is accepted, but `M01-PROOF-MLC-O-V1` remains queued behind the sole current M04 leaf.
-2. M04 K07 numbered authority, MLC-A, MLC-R, MLC-O, MLC-D, MLC-P, MLC-T and the bounded M15 namespace/scoped-audit prerequisite are complete. M04 now requires test-author-independent MLC-V.
-3. M07 requires one bounded numbered normative proposition defining K12 identity/version, precedence/conflict, hard-bound and deterministic application/receipt semantics before MLC-A can close.
-4. M08 requires one bounded numbered normative proposition defining K13 identities, mandatory inputs, deterministic ordering/tie-break/lead selection, stand-down states and lawful lifecycle carriage before MLC-A can close.
-5. M02 remains downstream of canonical M01 contracts; the remaining dependency waves are unchanged.
-6. Lanes 5 and 6 remain held until the PM allocates dependency-ready and non-overlapping semantic units.
+## Immediate next action
 
-## Immediate next gate
+Implement the smallest M04 K07 Gate D change:
 
-Execute `M04-PROOF-MLC-V-V1` through a tester independent of the MLC-T author. Reproduce collection, the 239-pass proof-instrument subset, all ten mutant kills, the 11 exact production expected-red cases, retained partial-proof red state, registry/proof-block routing and mutation boundaries. Decide `IMPLEMENTATION_OPEN` only if those checks pass; otherwise return the exact defect to MLC-P or MLC-T.
+1. require caller-owned `traceid`, `runid` and `scenarioid`;
+2. enforce the admitted role-specific lineage matrix;
+3. record the named common and role-specific validation results;
+4. reject invalid binding packets and preserve diagnostic/rejection separation;
+5. run the admitted K07 proof, affected packet/runtime tests and full suite as
+   shadow evidence;
+6. checkpoint the completed M04 slice.
 
-M07 K12, M08 K13 and M01 MLC-O remain queued; behavioural test mutation and production implementation remain closed until their own preceding Gate C leaves pass.
+After M04, complete M01 minimum proof/implementation, then M07 and M08
+normative/proof work. Later modules follow dependency readiness, not paperwork
+age or numeric `D-xxx` order.

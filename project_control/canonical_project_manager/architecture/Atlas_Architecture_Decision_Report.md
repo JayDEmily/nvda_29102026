@@ -290,19 +290,26 @@ These are mandatory module obligations. No new `D` identifier is silently invent
 
 ### Module-local proof gate
 
-Before source mutation for one bounded module behaviour:
+The 31 July 2026 MVP amendment preserves the semantic boundary while removing
+mandatory intermediate leaves. Before source mutation for one bounded module
+behaviour:
 
-1. freeze the owner, behaviour, prohibited authority and dependencies;
-2. establish sufficient normative and vocabulary meaning;
-3. identify only tests plausibly governing that behaviour;
-4. independently adjudicate exact test-to-proposition relationships;
-5. specify and implement truthful proof, expected red where behaviour is absent;
-6. issue an explicit implementation-opening decision;
-7. implement within the active module only;
-8. run targeted authoritative proof and the complete legacy suite as shadow evidence;
-9. checkpoint before another module opens.
+1. close the owner, behaviour, prohibited authority, dependencies and relevant
+   Atlas disposition in the routed normative/module record;
+2. admit the smallest truthful public-seam proof, expected red where behaviour
+   is absent;
+3. open the bounded Gate D implementation;
+4. run targeted/affected proof and the complete legacy suite as shadow evidence;
+5. checkpoint the completed semantic slice.
 
-Unrelated unreviewed tests retain `LEGACY_SHADOW_UNADMITTED`: visible and runnable, but not authority for the active module. The eleven historically closed proof units attach to their owning modules and must be resolved before those behaviours open.
+Independent validation is risk-triggered for transaction, capital,
+broker/execution, position mutation, durable migration and equivalent
+high-consequence boundaries. It is not a separate mandatory checkpoint for
+every deterministic alpha contract.
+
+Unrelated unreviewed tests retain `LEGACY_SHADOW_UNADMITTED`: visible and
+runnable, but not authority for the active module. Historical MLC and proof-unit
+records remain challenge evidence and do not create mandatory future leaves.
 
 ### Progressive physical migration
 

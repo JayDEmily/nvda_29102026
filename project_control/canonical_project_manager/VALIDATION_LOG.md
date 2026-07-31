@@ -1069,3 +1069,44 @@ Execute `M04-PROOF-MLC-T-V1` in only the named M04 test/support, required test-g
 ### Next gate
 
 Execute `M04-PROOF-MLC-V-V1` through an independent tester. MLC-T does not self-admit and implementation remains closed.
+
+## 2026-07-31 — MVP Gate C fast-track amendment
+
+### Disposition
+
+`PASS:MVP_GATE_C_TWO_STEP_ROUTE_M04_GATE_D_OPEN`
+
+Direct user strategy authority replaced the eight-leaf MLC process with
+`C-NORM → C-PROOF`, followed by module-local Gate D. The amendment preserves
+normative authority, public-seam proof, Atlas/`D-xxx` lineage and
+risk-triggered independent review while removing administrative checkpoints
+that add no semantic state.
+
+Measured basis:
+
+| Check | Result |
+|---|---|
+| M04 control span from `27fa427` to `2aab666` | 7 commits, 34 files, 3,442 additions / 262 deletions |
+| M04 production behaviour changed in that span | none |
+| MLC-T alone | 946 insertions across 11 files |
+| Current normative doctrine | requires the smallest proof combination and warns against excessive modularity |
+| Atlas workbook | 287 cohorts / 1,716 records; allocation remains many-to-many candidate evidence |
+| Live guidance reconciliation | ExecPlan, Gate C protocol, roadmap, process overlay, architecture report and optional parallel controls now agree |
+| Vocabulary projection | deterministic SHA-256 `813d63f5557622920180bed7f772ab2f05e0586c7c8520f6cc018918c607da4d` on two builds |
+| Focused vocabulary proof | 8 passed / 1 retained baseline failure |
+| Retained failure | missing `mutable_runtime_surface`; present before this amendment and already recorded under M15 shadow evidence |
+| `git diff --check` | PASS after EOF correction |
+
+M04 conversion:
+
+- `C-NORM PASS:M04:K07_PACKET_ROLE_CONTRACT`;
+- `C-PROOF PASS:GATE_D_OPEN:M04:K07_PACKET_ROLE_CONTRACT`;
+- existing 239 proof-instrument checks and ten mutant kills retained;
+- eleven exact production-red cases retained;
+- no test weakening, skipping or production mutation occurred in this control
+  amendment.
+
+### Next action
+
+Implement the bounded M04 K07 Gate D slice. Independent review is not mandatory
+for this deterministic packet-validation surface under the new risk triggers.

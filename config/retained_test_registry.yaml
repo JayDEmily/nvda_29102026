@@ -2420,10 +2420,10 @@ retained_seed_tier_a:
   notes: New family admitted during ROADMAP_PLAYBOOK_LIBRARY_5_10_BRANCH_001.
 
 - test_family_id: m04_k07_packet_role_contract
-  native_status: candidate_tier_a_pending_independent_mlc_v
+  native_status: admitted_tier_a_current
   bounded_family: packets
   native_test_path: tests/tier_a/packets/test_m04_k07_packet_role_contract.py
-  migration_status: module_local_expected_red_authored_pending_independent_acceptance
+  migration_status: module_local_c_proof_accepted_gate_d_open
   normative_basis:
   - docs/08_TESTING_AND_PROMOTION_CORE.md
   - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
@@ -2436,14 +2436,14 @@ retained_seed_tier_a:
   docstring_reread_completed: true
   docstring_alignment_status: current packet builders were reread and remain non-conforming to section 9.10; 239 test-instrument checks pass while production retains 11 expected-red K07 failures
   native_reauthor_required: false
-  admission_reason: M04-PROOF-MLC-P-V1 requires one candidate family covering all ten admitted roles, every lineage-matrix cell, common and role checks, lawful outcomes, replay separation and ten named false-positive mutants.
+  admission_reason: The 31 July 2026 MVP C-PROOF decision admits this public-seam family for all ten roles, every lineage-matrix cell, common and role checks, lawful outcomes, replay separation and ten named false-positive mutants.
   forbidden_carry_forward: Builder defaults, hard-coded validation labels, fingerprint-for-artefact substitution, diagnostic binding substitution, replay overclaim and green legacy contradictions must not satisfy K07.
-  notes: Candidate remains expected red and non-blocking until test-author-independent MLC-V acceptance. Production implementation remains closed.
+  notes: Admitted under the risk-triggered MVP protocol. Eleven exact production-red cases open the bounded M04 K07 Gate D implementation; the proof may not be weakened to make production green.
 - test_family_id: m13_state_kernel_module_local_contract
-  native_status: candidate_tier_a_repaired_pending_independent_mlc_v
+  native_status: admitted_tier_a_current
   bounded_family: persistence
   native_test_path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
-  migration_status: module_local_proof_repaired_pending_independent_acceptance
+  migration_status: module_local_proof_and_implementation_accepted
   normative_basis:
   - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
   - docs/08_TESTING_AND_PROMOTION_CORE.md
@@ -2454,11 +2454,11 @@ retained_seed_tier_a:
   - project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: target M13 package is absent; legacy receipt, execution-record, capital-state and position repositories were reread and do not provide the admitted transaction boundary
+  docstring_alignment_status: the target M13 package is present and its bounded non-durable alpha transaction contract was independently accepted; domain repositories retain their own semantic ownership
   native_reauthor_required: false
   admission_reason: M13-PROOF requires one candidate Tier A family for scoped idempotency, expected-version checks, atomic state/result/receipt binding, deterministic sequence, executable repository participation, receipt-write/participant rollback and explicit non-durable memory status.
   forbidden_carry_forward: A receipt append, duplicate receipt-ID check, process insertion order, one global transaction, domain-state ownership, production durability, restart recovery or external-effect completion must not substitute for the N-06 transaction law.
-  notes: Original nine behaviours preserved. Two receipt-writer/repository-participant failure tests added after independent PM rejection of a commit-before-receipt false positive. Candidate remains expected red and non-blocking until independent repaired MLC-V acceptance.
+  notes: Original behaviours and later false-positive repairs are retained. The final bounded M13 implementation was independently accepted; production durability and recovery remain outside the alpha claim.
 tier_b_dispositions:
 - test_family_id: proof_executor_contract
   native_status: retained_tier_b

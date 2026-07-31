@@ -16,14 +16,14 @@ Lifecycle: accepted_target_architecture
 Projection metadata: {"projection_status":"canonical","canonical_label":"Ownership Module","canonical_slug":"ownership_module","category":"authority_surface","stage_owner":"native_architecture_blueprint","maps_to_contract":"docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10","raw_or_derived":"not_applicable","allowed_aliases":["target ownership module","Mxx module"],"disallowed_phrases":["architecture surface as exact synonym","implementation work unit","microservice","proof that code already owns the responsibility"],"semantic_decision_refs":["USER-20260725:MODULE-ARCHITECTURE-ACCEPTANCE"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
 
 ### Module-local Proof Gate
-Definition: Governed acceptance sequence that establishes sufficient normative meaning and truthful proof for one bounded behaviour inside one active Ownership Module before implementation is opened.
+Definition: Two-step governed acceptance boundary that closes normative meaning and admits the smallest truthful public-seam proof for one bounded behaviour before module-local implementation opens.
 Scope: one-module semantic and proof acceptance boundary
 Owner: proof and promotion governance
-Relationships: Applies the normative-authority-to-test-to-code direction locally; replaces repository-wide proof completion as a prerequisite for unrelated alpha implementation; remains subject to final global reconciliation.
+Relationships: Applies `C-NORM` then `C-PROOF`; preserves the normative-authority-to-test-to-code direction while avoiding mandatory routing, observation, disposition, specification and review checkpoints that add no semantic state; remains subject to final alpha consolidation.
 Aliases: local module proof gate; module-local Gate C
 Disallowed or misleading use: skip tests; code-first implementation; whole-repository acceptance; automatic authority from passing tests
 Lifecycle: active_programme_control
-Projection metadata: {"projection_status":"canonical","canonical_label":"Module-local Proof Gate","canonical_slug":"module_local_proof_gate","category":"promotion_surface","stage_owner":"proof_promotion","maps_to_contract":"project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md","raw_or_derived":"not_applicable","allowed_aliases":["local module proof gate","module-local Gate C"],"disallowed_phrases":["skip tests","code-first implementation","whole-repository acceptance","automatic authority from passing tests"],"semantic_decision_refs":["USER-20260725:MODULE-LOCAL-PROOF"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
+Projection metadata: {"projection_status":"canonical","canonical_label":"Module-local Proof Gate","canonical_slug":"module_local_proof_gate","category":"promotion_surface","stage_owner":"proof_promotion","maps_to_contract":"project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md","raw_or_derived":"not_applicable","allowed_aliases":["local module proof gate","module-local Gate C"],"disallowed_phrases":["skip tests","code-first implementation","whole-repository acceptance","automatic authority from passing tests"],"semantic_decision_refs":["USER-20260725:MODULE-LOCAL-PROOF","USER-20260731:MVP-FAST-TRACK"],"machine_projection_omissions":[],"audit_noncanonical_phrases":[]}
 
 ### Runtime/Contract Dependency
 Definition: Directed production relationship in which one Ownership Module calls another module or consumes its accepted public contract during runtime.

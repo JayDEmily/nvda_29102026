@@ -900,7 +900,7 @@ proof_blocks:
 
   - proof_block_id: m04_k07_packet_role_contract
     tier: Tier A
-    lifecycle: candidate_pending_independent_mlc_v
+    lifecycle: admitted_current_mvp_c_proof
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py
     owns:
@@ -914,7 +914,7 @@ proof_blocks:
 
   - proof_block_id: m13_state_kernel_module_local_proof
     tier: Tier A
-    lifecycle: candidate_pending_independent_mlc_v
+    lifecycle: admitted_current_accepted_implementation
     command: >-
       env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py
     owns:

@@ -101,12 +101,12 @@
         "automatic authority from passing tests"
       ],
       "notes": [
-        "Definition: Governed acceptance sequence that establishes sufficient normative meaning and truthful proof for one bounded behaviour inside one active Ownership Module before implementation is opened.",
+        "Definition: Two-step governed acceptance boundary that closes normative meaning and admits the smallest truthful public-seam proof for one bounded behaviour before module-local implementation opens.",
         "Scope: one-module semantic and proof acceptance boundary",
         "Semantic owner: proof and promotion governance",
-        "Relationships: Applies the normative-authority-to-test-to-code direction locally; replaces repository-wide proof completion as a prerequisite for unrelated alpha implementation; remains subject to final global reconciliation.",
+        "Relationships: Applies `C-NORM` then `C-PROOF`; preserves the normative-authority-to-test-to-code direction while avoiding mandatory routing, observation, disposition, specification and review checkpoints that add no semantic state; remains subject to final alpha consolidation.",
         "Lifecycle: active_programme_control",
-        "Semantic decisions: USER-20260725:MODULE-LOCAL-PROOF",
+        "Semantic decisions: USER-20260725:MODULE-LOCAL-PROOF, USER-20260731:MVP-FAST-TRACK",
         "Human aliases: local module proof gate; module-local Gate C",
         "Human disallowed or misleading use: skip tests; code-first implementation; whole-repository acceptance; automatic authority from passing tests"
       ]

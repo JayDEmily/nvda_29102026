@@ -2,18 +2,28 @@
 
 ## Status and authority
 
-**Status:** `ACTIVE:PARALLEL_CYCLE_01_AGGREGATE_VALIDATED`
+**Status:** `OPTIONAL_EXECUTION_PATTERN:CYCLE_01_HISTORICAL`
 **Authorised:** 28 July 2026 by direct user instruction
 **Repair authorised:** 29 July 2026 by direct user instruction
 **Owner:** Master Project Manager
 **Parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live state:** `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md`
 
-This document governs parallel execution inside the existing repository and programme. It does not create a second programme, weaken module-local proof or allow parallel canonical states. Repair 2 passed independent control testing and PM acceptance; Cycle 01 then completed its worker/tester and serial-integration lifecycle under this law.
+This document records the validated Cycle 01 parallel pattern and governs it
+only when the Project Manager explicitly opens another parallel cycle. The 31
+July 2026 MVP amendment removed mandatory worker/tester lane pairs and
+one-leaf-per-commit execution from ordinary module delivery. It does not create
+a second programme or allow parallel canonical states.
 
 ## Operating model
 
-One Master Project Manager controls one canonical repository. Six Parallel Execution Lanes provide capacity. Each Lane Assignment has one disposable worker thread and one independent tester thread. Worker and tester activity may overlap; Project Manager acceptance, integration and checkpoint publication remain sequential.
+One Master Project Manager controls one canonical repository. Up to six
+Parallel Execution Lanes may provide capacity when explicitly allocated. A
+high-consequence assignment uses one disposable worker thread and one
+independent tester thread; an ordinary deterministic alpha assignment may use a
+single bounded worker and Project Manager validation under the current Gate C
+protocol. Project Manager acceptance and conflicting-path integration remain
+sequential.
 
 A lane is not permanent ownership of a module, a long-lived branch, permission to select follow-on work or a substitute for dependency readiness. Lane 5 and Lane 6 may remain held without branches or filler assignments.
 
@@ -37,7 +47,8 @@ Every worker and tester must verify the source archive, complete `.git` history,
 
 ## Assignment law
 
-One assignment is one MLC leaf or one bounded implementation slice. The standalone brief must define:
+When a parallel cycle is used, one assignment is one bounded normative/proof
+or implementation slice. The standalone brief must define:
 
 - one question and pass/fail boundary;
 - assignment revision, owner module and contract;
@@ -161,4 +172,9 @@ A newly authored or materially repaired parallel-control checkpoint must be revi
 | 5 | held | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 | 6 | held | — | — | — | `HELD_BLOCKED_DEPENDENCY` |
 
-Cycle 1 changed no production source, physical tests or runtime configuration. The four accepted results were integrated in order M01, M04, M07, M08 and passed aggregate validation. M01 may advance only through a new PM brief to MLC-O; M04, M07 and M08 remain at bounded numbered-authority return gates. Any future parallel cycle requires a new PM allocation and immutable source checkpoint.
+Cycle 1 changed no production source, physical tests or runtime configuration.
+The four accepted results were integrated in order M01, M04, M07, M08 and
+passed aggregate validation. Their former MLC return states are historical.
+Current module states are defined only by the MVP Gate C protocol and live
+roadmap. Any future parallel cycle requires a new PM allocation and immutable
+source checkpoint.

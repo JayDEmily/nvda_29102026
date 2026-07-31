@@ -590,3 +590,37 @@ The production failures arise after successful import, construction and collecti
 ### MLC-T boundary and next leaf
 
 MLC-T is complete but does not admit its own proof. The next lawful leaf is `M04-PROOF-MLC-V-V1`. It must be executed by a tester independent of this test author and may decide `IMPLEMENTATION_OPEN` only after reproducing the results above and challenging false-positive resistance. Until that decision, M04 production implementation remains closed.
+
+## MVP Gate C conversion — 2026-07-31
+
+Direct user strategy authority replaced the eight-leaf MLC route with the
+two-step MVP Gate C protocol. The MLC-A through MLC-T material above remains
+historical proof evidence; it is not discarded or relabelled.
+
+Converted result:
+
+- `C-NORM PASS:M04:K07_PACKET_ROLE_CONTRACT` — section 9.10 defines the
+  admitted roles, caller-owned execution context, role-specific lineage,
+  validation and lawful outcomes.
+- `C-PROOF PASS:GATE_D_OPEN:M04:K07_PACKET_ROLE_CONTRACT` — the existing
+  candidate family supplies 239 passing reference/matrix/outcome/mutant checks,
+  detects all ten declared false-positive mutants and leaves production red at
+  the eleven exact claimed gaps.
+
+The former separate MLC-V checkpoint is superseded for this deterministic
+contract surface. Independent validation remains risk-triggered under the
+current protocol and is not mandatory for M04. This decision does not weaken,
+delete, skip or xfail the existing K07 proof.
+
+Opened mutation:
+
+- `src/nvda_desk/contracts/packets.py`;
+- `src/nvda_desk/packets/dmp_packets.py`;
+- direct M04 consumers only when required to supply owner-held context/lineage;
+- existing M04 module and validation records.
+
+Closed:
+
+- new packet/domain authority;
+- unrelated tests, configuration and modules;
+- live execution, production durability and operational-readiness claims.

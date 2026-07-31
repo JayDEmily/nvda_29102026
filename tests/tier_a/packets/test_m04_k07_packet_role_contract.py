@@ -1,4 +1,4 @@
-"""Expected-red M04 K07 packet-role contract pending independent MLC-V."""
+"""Admitted M04 K07 packet-role contract; production is expected red before Gate D."""
 
 from __future__ import annotations
 
