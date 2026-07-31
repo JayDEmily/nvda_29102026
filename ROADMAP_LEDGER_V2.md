@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `c33fe72bd51280a2ea2ac15cdea5e7b2ba8e66cf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M06 K10 independent parallel-risk authority |
-| Current active slice | paused for user-requested full-history checkpoint |
-| Production implementation | M06 K10 accepted; M09 has not started |
+| Current active slice | bounded M03/M05/M06 adversarial repair after novel audit and selected-handoff review |
+| Production implementation | M03/M05/M06 implementations retained but their Gate D acceptance is reopened pending adversarial repair; M09 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -130,4 +130,4 @@ required before implementation.
 
 ## Immediate next action
 
-Publish the clean user-requested full-history checkpoint at accepted M06 K10 and pause. On resumption, open M09 K11/fresh-capital authority; M10 execution and M11 lifecycle mutation remain closed.
+Complete the bounded M03/M05/M06 repair admitted by the 2026-07-31 novel audit and selected M05 handoff review. Admit the adversarial and metamorphic proof, demonstrate zero new failure nodes, publish a repaired full-history checkpoint, and keep M09 closed until that checkpoint.

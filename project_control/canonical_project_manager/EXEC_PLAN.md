@@ -262,12 +262,12 @@ authority.
 
 ### Queued
 
-- User-requested pause and clean full-history checkpoint after M06 K10.
-- M09 K11/fresh-capital authority is next but has not started.
+- Bounded M03/M05/M06 adversarial repair and repaired clean full-history checkpoint.
+- M09 K11/fresh-capital authority remains next but must not start before repair acceptance.
 
 ## 8. Immediate work
 
-Publish one clean full-history archive at the accepted M06 K10 checkpoint and pause. On resumption, open M09 K11/fresh-capital authority; M10 broker execution and M11 lifecycle mutation remain closed.
+Complete one bounded adversarial repair tranche across the already implemented M03, M05 and M06 public seams. The repair must reconcile source/receipt/payload authority, exact M05 state and terminal-result identity/evidence, and M06 threshold/version domains; admit the new adversarial and metamorphic proof; rerun affected, Tier B and comparable Tier A validation; then publish a clean full-history checkpoint. M09 remains closed until this repair is accepted.
 
 ## 9. Programme sequence
 
