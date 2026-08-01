@@ -472,6 +472,11 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
             "| Active control pack | `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1` |",
             "The current active bounded pack is `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1`",
         ),
+        "POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1": (
+            "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
+            "| Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |",
+            "The current active bounded pack is `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1`",
+        ),
         "CANONICAL:ALPHA_CONSOLIDATED": (
             "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
             "| Active control pack | none — canonical ExecPlan only |",

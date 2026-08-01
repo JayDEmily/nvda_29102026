@@ -130,10 +130,10 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
 
 
-def test_live_control_surfaces_identify_consolidated_alpha_state() -> None:
+def test_live_control_surfaces_identify_comprehensive_debt_pack() -> None:
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "CANONICAL:ALPHA_CONSOLIDATED"
+    assert validate_active_control(REPO_ROOT) == "POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1"
 
 
 def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(
@@ -159,6 +159,31 @@ def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(
     )
 
     assert validate_active_control(tmp_path) == "POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1"
+
+
+def test_active_control_validation_accepts_comprehensive_debt_pack(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        "| Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |\n",
+        encoding="utf-8",
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(
+        "The current active bounded pack is " "`POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1`\n",
+        encoding="utf-8",
+    )
+
+    assert validate_active_control(tmp_path) == "POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1"
 
 
 def test_active_control_validation_uses_pack_identity_not_gate_wording(

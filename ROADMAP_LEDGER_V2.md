@@ -5,13 +5,13 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/post-alpha-m00-transport-adapters-v1` |
-| Current branch source checkpoint | `ef4aa1ae556df07871eca4ef93777edc189af8ed` |
+| Branch | `work/post-alpha-comprehensive-debt-retirement-v1` |
+| Current branch source checkpoint | `d4bffb8f95141e95353182c3e4c6e6ddc8e15472` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | `ALPHA-DEBT-001` canonical M00 CLI/ASGI transport adapters |
-| Current active slice | none — `ALPHA-DEBT-001` resolved and subordinate pack closed |
-| Active control pack | none — canonical ExecPlan only |
-| Production implementation | accepted alpha retained; canonical CLI/ASGI now translate into M00 through explicit coordinator injection; remaining material debt unchanged; no live/durable/production claim |
+| Current active slice | Unit 0 — comprehensive material-debt retirement control registration |
+| Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |
+| Production implementation | accepted alpha retained; comprehensive debt-retirement pack active; no new live/durable/production claim until unit proof closes |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
