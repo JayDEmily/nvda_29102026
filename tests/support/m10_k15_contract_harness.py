@@ -172,6 +172,7 @@ def production_capital_receipt():
     from nvda_desk.m09_capital_authority import CapitalDeploymentPolicy, CapitalState, FinalRiskJoinPolicy
     from tests.support.m09_k11_k14_contract_harness import (
         production_api as m09_api,
+        production_canonical_packet_pair,
         production_modifier_receipt,
         production_parallel_assessment,
         production_serial_candidate,
@@ -186,6 +187,7 @@ def production_capital_receipt():
         effective_at_utc=datetime(2026,8,1,0,0,tzinfo=UTC), available_capital=Decimal("100000"), reserved_capital=Decimal("0"),
         max_fresh_deployable_pct=Decimal("12"), source_authority_ref="capital.snapshot.authority.v1")
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    serial_packet, parallel_packet, _ = production_canonical_packet_pair(serial=serial, parallel=parallel)
+    final = service.join_final_risk(serial_packet, parallel_packet, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     return service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026,8,1,1,0,tzinfo=UTC))

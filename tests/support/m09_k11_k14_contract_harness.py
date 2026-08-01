@@ -460,6 +460,83 @@ def production_parallel_assessment(*, vix_level: float = 20.0):
     return m06.ParallelRiskAssessment.model_validate(payload)
 
 
+
+def production_canonical_packet_pair(*, serial=None, parallel=None):
+    """Build one lawful common-parent M05/M06 packet pair for production seams."""
+
+    from datetime import UTC, datetime
+
+    from nvda_desk.contracts.packets import (
+        DmpV3ExecutionContext,
+        PreparedContextIdentity,
+    )
+    from nvda_desk.m05_serial_cognition import SerialCandidatePacketAdapter
+    from nvda_desk.m06_parallel_risk import ParallelRiskPacketAdapter
+    from nvda_desk.packets.dmp_packets import build_prepared_context_packet
+
+    if parallel is None:
+        parallel = production_parallel_assessment(vix_level=20.0)
+    if serial is None:
+        serial = production_serial_candidate(
+            prepared_id=parallel.prepared_id,
+            prepared_fingerprint=parallel.prepared_fingerprint,
+        )
+    context = DmpV3ExecutionContext(
+        traceid="trace.m09.canonical.001",
+        runid="run.m09.canonical.001",
+        scenarioid="scenario.m09.canonical.001",
+    )
+    prepared = PreparedContextIdentity(
+        prepared_id=serial.prepared_id,
+        prepared_fingerprint=serial.prepared_fingerprint,
+        schema_version="1.0.0",
+        preparation_policy_version="m03.preparation.v1",
+    )
+    source_ids = ("source.prepared.context.001",)
+    expected_checks = {
+        "producer_identity", "role_schema_consistency", "execution_context_ownership",
+        "typed_payload", "lineage_profile", "authority_boundary", "extension_bounds",
+        "summary_consistency", "prepared_identity_and_contract_version",
+        "source_and_capture_lineage", "source_temporal_preservation",
+        "prepared_fingerprint", "completeness_and_limitation_state",
+        "no_domain_decision_authority",
+    }
+    parent = build_prepared_context_packet(
+        packet_id="packet.prepared.context.001",
+        data=prepared,
+        emitted_at=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+        traceid=context.traceid,
+        runid=context.runid,
+        scenarioid=context.scenarioid,
+        module_version="1.0.0",
+        module_instance_id="m03.prepared.instance.001",
+        derivedfrom=prepared.prepared_id,
+        sourceartifactids=list(source_ids),
+        inputfingerprint=prepared.prepared_fingerprint,
+        source_artifact_validator=lambda value: value in source_ids,
+        input_fingerprint_validator=lambda value: value == prepared.prepared_fingerprint,
+        owner_check_validator=lambda name, _: name in expected_checks,
+    )
+    serial_packet = SerialCandidatePacketAdapter().emit(
+        serial,
+        prepared_context_packet=parent,
+        execution_context=context,
+        packet_id="packet.m05.serial.001",
+        emitted_at=datetime(2026, 8, 1, 0, 1, tzinfo=UTC),
+        module_version="1.0.0",
+        module_instance_id="m05.serial.instance.001",
+    )
+    parallel_packet = ParallelRiskPacketAdapter().emit(
+        parallel,
+        prepared_context_packet=parent,
+        execution_context=context,
+        packet_id="packet.m06.parallel.001",
+        emitted_at=datetime(2026, 8, 1, 0, 1, tzinfo=UTC),
+        module_version="1.0.0",
+        module_instance_id="m06.parallel.instance.001",
+    )
+    return serial_packet, parallel_packet, parent
+
 def production_modifier_receipt(*, kill_switch: bool = False):
     from nvda_desk.m07_coefficient_modifier_authority import ModifierApplicationReceipt
     from nvda_desk.m07_coefficient_modifier_authority.contracts import CLOSED_AUTHORITY_CLASSES

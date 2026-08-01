@@ -170,6 +170,17 @@ class FinalRiskDecision(BaseModel):
     join_policy_fingerprint: str
     cautions_prohibit: bool
 
+    carriage_validated: bool = False
+    trace_id: str | None = None
+    run_id: str | None = None
+    scenario_id: str | None = None
+    prepared_context_packet_id: str | None = None
+    prepared_context_carriage_fingerprint: str | None = None
+    serial_packet_id: str | None = None
+    serial_packet_carriage_fingerprint: str | None = None
+    parallel_packet_id: str | None = None
+    parallel_packet_carriage_fingerprint: str | None = None
+
     serial_result_id: str | None
     serial_candidate_id: str | None
     serial_candidate_fingerprint: str | None
@@ -228,6 +239,28 @@ class FinalRiskDecision(BaseModel):
         )
         if self.join_policy_fingerprint != expected_policy_fingerprint:
             raise ValueError("join_policy_fingerprint_mismatch")
+        carriage_fields = (
+            self.trace_id,
+            self.run_id,
+            self.scenario_id,
+            self.prepared_context_packet_id,
+            self.prepared_context_carriage_fingerprint,
+            self.serial_packet_id,
+            self.serial_packet_carriage_fingerprint,
+            self.parallel_packet_id,
+            self.parallel_packet_carriage_fingerprint,
+        )
+        if self.carriage_validated:
+            if any(value is None or value == "" for value in carriage_fields):
+                raise ValueError("validated_carriage_requires_complete_lineage")
+            for value in (
+                self.prepared_context_carriage_fingerprint,
+                self.serial_packet_carriage_fingerprint,
+                self.parallel_packet_carriage_fingerprint,
+            ):
+                _require_hash(value, "packet_carriage_fingerprint_invalid")
+        elif any(value is not None for value in carriage_fields):
+            raise ValueError("unvalidated_carriage_cannot_claim_packet_lineage")
         if self.parallel_state not in {None, "observe", "caution", "block", "unknown"}:
             raise ValueError("parallel_state_invalid")
         if self.parallel_state == "observe" and (self.cautions or self.hard_blocks or self.unknowns):
@@ -325,6 +358,16 @@ class CapitalDeploymentDecision(BaseModel):
 
     final_decision_id: str
     final_decision_fingerprint: str
+    carriage_validated: bool
+    trace_id: str | None
+    run_id: str | None
+    scenario_id: str | None
+    prepared_context_packet_id: str | None
+    prepared_context_carriage_fingerprint: str | None
+    serial_packet_id: str | None
+    serial_packet_carriage_fingerprint: str | None
+    parallel_packet_id: str | None
+    parallel_packet_carriage_fingerprint: str | None
     serial_result_id: str | None
     serial_candidate_id: str | None
     serial_candidate_fingerprint: str | None
@@ -363,6 +406,23 @@ class CapitalDeploymentDecision(BaseModel):
         _require_hash(self.capital_policy_fingerprint, "capital_policy_fingerprint_invalid")
         _require_hash(self.capital_state_fingerprint, "capital_state_fingerprint_invalid")
         _require_hash(self.modifier_decision_fingerprint, "modifier_decision_fingerprint_invalid")
+        if not self.carriage_validated:
+            raise ValueError("canonical_packet_carriage_required")
+        carriage_fields = (
+            self.trace_id, self.run_id, self.scenario_id,
+            self.prepared_context_packet_id, self.serial_packet_id, self.parallel_packet_id,
+            self.prepared_context_carriage_fingerprint,
+            self.serial_packet_carriage_fingerprint,
+            self.parallel_packet_carriage_fingerprint,
+        )
+        if any(value is None or value == "" for value in carriage_fields):
+            raise ValueError("capital_decision_requires_complete_packet_lineage")
+        for value in (
+            self.prepared_context_carriage_fingerprint,
+            self.serial_packet_carriage_fingerprint,
+            self.parallel_packet_carriage_fingerprint,
+        ):
+            _require_hash(value, "capital_decision_packet_fingerprint_invalid")
         if self.serial_candidate_fingerprint is not None:
             _require_hash(self.serial_candidate_fingerprint, "serial_candidate_fingerprint_invalid")
         if self.parallel_assessment_fingerprint is not None:
@@ -434,6 +494,16 @@ class CapitalDeploymentReceipt(BaseModel):
     decision_fingerprint: str
     final_decision_id: str
     final_decision_fingerprint: str
+    carriage_validated: bool
+    trace_id: str | None
+    run_id: str | None
+    scenario_id: str | None
+    prepared_context_packet_id: str | None
+    prepared_context_carriage_fingerprint: str | None
+    serial_packet_id: str | None
+    serial_packet_carriage_fingerprint: str | None
+    parallel_packet_id: str | None
+    parallel_packet_carriage_fingerprint: str | None
     capital_state_id: str
     capital_state_fingerprint: str
     capital_state_available_capital: Decimal = Field(ge=Decimal("0"))
@@ -480,6 +550,23 @@ class CapitalDeploymentReceipt(BaseModel):
             (self.modifier_decision_fingerprint, "capital_receipt_modifier_fingerprint_invalid"),
         ):
             _require_hash(value, reason)
+        if not self.carriage_validated:
+            raise ValueError("capital_receipt_requires_validated_carriage")
+        carriage_fields = (
+            self.trace_id, self.run_id, self.scenario_id,
+            self.prepared_context_packet_id, self.serial_packet_id, self.parallel_packet_id,
+            self.prepared_context_carriage_fingerprint,
+            self.serial_packet_carriage_fingerprint,
+            self.parallel_packet_carriage_fingerprint,
+        )
+        if any(value is None or value == "" for value in carriage_fields):
+            raise ValueError("capital_receipt_requires_complete_packet_lineage")
+        for value in (
+            self.prepared_context_carriage_fingerprint,
+            self.serial_packet_carriage_fingerprint,
+            self.parallel_packet_carriage_fingerprint,
+        ):
+            _require_hash(value, "capital_receipt_packet_fingerprint_invalid")
         if self.serial_candidate_fingerprint is not None:
             _require_hash(self.serial_candidate_fingerprint, "capital_receipt_serial_fingerprint_invalid")
         if self.parallel_assessment_fingerprint is not None:

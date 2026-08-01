@@ -20,6 +20,7 @@ from tests.support.m09_k11_k14_contract_harness import (
     SerialBranch,
     evaluate_reference,
     production_api,
+    production_canonical_packet_pair,
     production_modifier_receipt,
     production_parallel_assessment,
     production_serial_candidate,
@@ -233,6 +234,14 @@ def _production_inputs():
     return api, serial, parallel, modifier, join_policy, capital_policy, capital
 
 
+def _production_join(service, serial, parallel, policy):
+    serial_packet, parallel_packet, _ = production_canonical_packet_pair(
+        serial=serial,
+        parallel=parallel,
+    )
+    return service.join_final_risk(serial_packet, parallel_packet, policy)
+
+
 def test_production_exports_frozen_contracts_and_owner_service() -> None:
     api = production_api()
     for name in ("FinalRiskDecision", "CapitalState", "CapitalDeploymentDecision", "CapitalDeploymentReceipt"):
@@ -243,7 +252,7 @@ def test_production_exports_frozen_contracts_and_owner_service() -> None:
 
 def test_production_k11_joins_exact_owner_products() -> None:
     api, serial, parallel, _, join_policy, _, _ = _production_inputs()
-    result = api["CapitalAuthorityService"]().join_final_risk(serial, parallel, join_policy)
+    result = _production_join(api["CapitalAuthorityService"](), serial, parallel, join_policy)
     assert isinstance(result, api["FinalRiskDecision"])
     assert result.action == "eligible_for_capital_assessment"
     assert result.serial_candidate_id == serial.candidate_id
@@ -259,17 +268,17 @@ def test_production_k11_fail_closed_on_block_and_lineage_conflict() -> None:
         prepared_id=blocked.prepared_id,
         prepared_fingerprint=blocked.prepared_fingerprint,
     )
-    result = api["CapitalAuthorityService"]().join_final_risk(blocked_serial, blocked, join_policy)
+    result = _production_join(api["CapitalAuthorityService"](), blocked_serial, blocked, join_policy)
     assert result.action == "stand_down"
     forged = parallel.model_copy(update={"prepared_id": "prepared.other"})
     with pytest.raises(ValueError, match="parallel_risk_assessment_contract_invalid"):
-        api["CapitalAuthorityService"]().join_final_risk(serial, forged, join_policy)
+        _production_join(api["CapitalAuthorityService"](), serial, forged, join_policy)
 
 
 def test_production_k14_is_bounded_and_does_not_use_m07_coefficient_as_percentage() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     assert isinstance(decision, api["CapitalDeploymentDecision"])
     assert decision.action == "continue"
@@ -295,7 +304,7 @@ def test_production_k14_is_bounded_and_does_not_use_m07_coefficient_as_percentag
 def test_production_rounding_never_increases_percentage_or_notional_authority() -> None:
     api, serial, parallel, modifier, join_policy, _, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
 
     bounded_state = api["CapitalState"].create(
         state_id="capital.state.rounding-bound",
@@ -357,7 +366,7 @@ def test_production_rounding_never_increases_percentage_or_notional_authority() 
 def test_production_numeric_equivalence_has_one_semantic_identity() -> None:
     api, serial, parallel, modifier, join_policy, _, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     policies = [
         api["CapitalDeploymentPolicy"](
             policy_version=CAPITAL_POLICY_VERSION,
@@ -388,7 +397,7 @@ def test_production_numeric_equivalence_has_one_semantic_identity() -> None:
 def test_production_decision_model_rejects_recomputed_policy_cap_violation() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     from nvda_desk.m09_capital_authority.contracts import semantic_fingerprint
 
@@ -418,7 +427,7 @@ def test_production_decision_model_rejects_recomputed_policy_cap_violation() -> 
 def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None:
     api, serial, parallel, _, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     killed = service.evaluate_capital(final, capital, production_modifier_receipt(kill_switch=True), capital_policy)
     assert killed.action == "block"
     assert killed.authorised_pct == 0
@@ -427,7 +436,7 @@ def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None
         prepared_id=blocked_parallel.prepared_id,
         prepared_fingerprint=blocked_parallel.prepared_fingerprint,
     )
-    blocked_final = service.join_final_risk(blocked_serial, blocked_parallel, join_policy)
+    blocked_final = _production_join(service, blocked_serial, blocked_parallel, join_policy)
     blocked = service.evaluate_capital(blocked_final, capital, production_modifier_receipt(), capital_policy)
     assert blocked.action == "block"
     assert blocked.authorised_notional == 0
@@ -436,7 +445,7 @@ def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None
 def test_production_receipt_is_deterministic_and_complete() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     first = service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC))
     second = service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026, 8, 2, 1, tzinfo=UTC))
@@ -451,8 +460,8 @@ def test_production_rejects_unsupported_policy_versions_and_forged_copies() -> N
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
     with pytest.raises(ValueError, match="unsupported_final_risk_join_policy"):
-        service.join_final_risk(serial, parallel, join_policy.model_copy(update={"policy_version": "m09.future.v999"}))
-    final = service.join_final_risk(serial, parallel, join_policy)
+        _production_join(service, serial, parallel, join_policy.model_copy(update={"policy_version": "m09.future.v999"}))
+    final = _production_join(service, serial, parallel, join_policy)
     with pytest.raises(ValueError, match="unsupported_capital_policy"):
         service.evaluate_capital(final, capital, modifier, capital_policy.model_copy(update={"policy_version": "m09.future.v999"}))
     forged = capital.model_copy(update={"available_capital": Decimal("999999")})
@@ -513,8 +522,8 @@ def test_production_policy_values_are_bound_into_semantic_identity() -> None:
         policy_version=JOIN_POLICY_VERSION,
         cautions_prohibit=True,
     )
-    eligible = service.join_final_risk(caution_serial, caution_parallel, permissive)
-    blocked = service.join_final_risk(caution_serial, caution_parallel, prohibiting)
+    eligible = _production_join(service, caution_serial, caution_parallel, permissive)
+    blocked = _production_join(service, caution_serial, caution_parallel, prohibiting)
     assert eligible.action == "eligible_for_capital_assessment"
     assert blocked.action == "stand_down"
     assert eligible.join_policy_fingerprint != blocked.join_policy_fingerprint
@@ -537,7 +546,7 @@ def test_production_policy_values_are_bound_into_semantic_identity() -> None:
 
 def test_production_final_decision_rejects_contradictory_parallel_state() -> None:
     api, serial, parallel, _, join_policy, _, _ = _production_inputs()
-    final = api["CapitalAuthorityService"]().join_final_risk(serial, parallel, join_policy)
+    final = _production_join(api["CapitalAuthorityService"](), serial, parallel, join_policy)
     forged = final.model_dump(mode="python")
     forged["parallel_state"] = "block"
     with pytest.raises(ValueError, match="parallel_block_state_requires_hard_block"):
@@ -547,7 +556,7 @@ def test_production_final_decision_rejects_contradictory_parallel_state() -> Non
 def test_production_receipt_recomputes_decision_against_exact_inputs() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     forged_payload = decision.model_dump(mode="python")
     forged_payload.update(
@@ -573,7 +582,7 @@ def test_production_receipt_recomputes_decision_against_exact_inputs() -> None:
 def test_production_receipt_preserves_exact_branch_and_policy_lineage() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     receipt = service.build_receipt(
         decision,
@@ -595,7 +604,7 @@ def test_production_receipt_preserves_exact_branch_and_policy_lineage() -> None:
 def test_production_revalidates_forged_final_and_decision_copies() -> None:
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
-    final = service.join_final_risk(serial, parallel, join_policy)
+    final = _production_join(service, serial, parallel, join_policy)
     forged_final = final.model_copy(update={"action": "stand_down"})
     with pytest.raises(ValueError, match="final_risk_decision_contract_invalid"):
         service.evaluate_capital(forged_final, capital, modifier, capital_policy)

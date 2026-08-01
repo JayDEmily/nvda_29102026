@@ -8,6 +8,12 @@ from typing import Any
 
 from pydantic import ValidationError
 
+from nvda_desk.contracts.packets import (
+    DeskModulePacketV3,
+    K07_COMMON_CHECKS,
+    K07_ROLE_CHECKS,
+    dmp_v3_carriage_fingerprint,
+)
 from nvda_desk.m05_serial_cognition import SerialCandidate
 from nvda_desk.m06_parallel_risk import ParallelRiskAssessment
 from nvda_desk.m07_coefficient_modifier_authority import ModifierApplicationReceipt
@@ -55,9 +61,158 @@ class CapitalAuthorityService:
 
     def join_final_risk(
         self,
+        serial_packet: DeskModulePacketV3,
+        parallel_packet: DeskModulePacketV3,
+        policy: FinalRiskJoinPolicy,
+    ) -> FinalRiskDecision:
+        """Validate the canonical DMPV3 seam before applying pure K11 law."""
+
+        serial_envelope, serial = self._validated_packet(
+            serial_packet,
+            expected_role="stage_packet",
+            expected_module="m05_serial_cognition",
+            expected_grammar="serial_cognition",
+            expected_stage="serial_candidate",
+            payload_type=SerialCandidate,
+            label="serial",
+        )
+        parallel_envelope, parallel = self._validated_packet(
+            parallel_packet,
+            expected_role="parallel_risk_packet",
+            expected_module="m06_parallel_risk",
+            expected_grammar="parallel_risk_lane",
+            expected_stage=None,
+            payload_type=ParallelRiskAssessment,
+            label="parallel",
+        )
+        if (serial_envelope.traceid, serial_envelope.runid, serial_envelope.scenarioid) != (
+            parallel_envelope.traceid,
+            parallel_envelope.runid,
+            parallel_envelope.scenarioid,
+        ):
+            raise ValueError("packet_execution_context_mismatch")
+        serial_prepared = self._prepared_attestation(serial_envelope, "serial")
+        parallel_prepared = self._prepared_attestation(parallel_envelope, "parallel")
+        if serial_prepared != parallel_prepared:
+            raise ValueError("prepared_context_packet_mismatch")
+        if serial_envelope.lineage.parentids != [serial_prepared[0]]:
+            raise ValueError("serial_prepared_parent_lineage_invalid")
+        if parallel_envelope.lineage.parentids != [parallel_prepared[0]]:
+            raise ValueError("parallel_prepared_parent_lineage_invalid")
+        if (serial.prepared_id, serial.prepared_fingerprint) != serial_prepared[2:]:
+            raise ValueError("serial_prepared_attestation_mismatch")
+        if (parallel.prepared_id, parallel.prepared_fingerprint) != parallel_prepared[2:]:
+            raise ValueError("parallel_prepared_attestation_mismatch")
+        if serial_envelope.lineage.inputfingerprint != serial.context_fingerprint:
+            raise ValueError("serial_packet_input_fingerprint_mismatch")
+        if parallel_envelope.lineage.inputfingerprint != parallel.input_fingerprint:
+            raise ValueError("parallel_packet_input_fingerprint_mismatch")
+        if serial_envelope.lineage.derivedfrom != serial.serial_result_id:
+            raise ValueError("serial_packet_domain_identity_mismatch")
+        if parallel_envelope.lineage.derivedfrom != parallel.assessment_id:
+            raise ValueError("parallel_packet_domain_identity_mismatch")
+        carriage = {
+            "carriage_validated": True,
+            "trace_id": serial_envelope.traceid,
+            "run_id": serial_envelope.runid,
+            "scenario_id": serial_envelope.scenarioid,
+            "prepared_context_packet_id": serial_prepared[0],
+            "prepared_context_carriage_fingerprint": serial_prepared[1],
+            "serial_packet_id": serial_envelope.id,
+            "serial_packet_carriage_fingerprint": dmp_v3_carriage_fingerprint(serial_envelope),
+            "parallel_packet_id": parallel_envelope.id,
+            "parallel_packet_carriage_fingerprint": dmp_v3_carriage_fingerprint(parallel_envelope),
+        }
+        return self._join_domain_products(serial, parallel, policy, carriage=carriage)
+
+    def join_final_risk_domain_for_compatibility(
+        self,
         serial_candidate: SerialCandidate | None,
         parallel_assessment: ParallelRiskAssessment | None,
         policy: FinalRiskJoinPolicy,
+    ) -> FinalRiskDecision:
+        """Non-canonical domain-only adapter; its result cannot authorise capital."""
+
+        return self._join_domain_products(
+            serial_candidate,
+            parallel_assessment,
+            policy,
+            carriage={
+                "carriage_validated": False,
+                "trace_id": None,
+                "run_id": None,
+                "scenario_id": None,
+                "prepared_context_packet_id": None,
+                "prepared_context_carriage_fingerprint": None,
+                "serial_packet_id": None,
+                "serial_packet_carriage_fingerprint": None,
+                "parallel_packet_id": None,
+                "parallel_packet_carriage_fingerprint": None,
+            },
+        )
+
+    @staticmethod
+    def _validated_packet(
+        value: Any,
+        *,
+        expected_role: str,
+        expected_module: str,
+        expected_grammar: str,
+        expected_stage: str | None,
+        payload_type,
+        label: str,
+    ):
+        if not isinstance(value, DeskModulePacketV3):
+            raise TypeError("canonical_dmpv3_packet_required")
+        try:
+            packet = DeskModulePacketV3.model_validate(value.model_dump(mode="python"))
+        except (ValidationError, ValueError, TypeError) as exc:
+            raise ValueError(f"{label}_packet_contract_invalid") from exc
+        if packet.packetrole != expected_role:
+            raise ValueError(f"{label}_packet_role_invalid")
+        if (
+            packet.producer.module_id != expected_module
+            or packet.producer.grammar_role != expected_grammar
+            or packet.producer.stage_name != expected_stage
+        ):
+            raise ValueError(f"{label}_packet_producer_invalid")
+        if packet.validation.status != "valid" or packet.validation.violations:
+            raise ValueError(f"{label}_packet_validation_invalid")
+        expected_checks = (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS[expected_role])
+        observed = tuple(check.name for check in packet.validation.checks if check.passed)
+        if observed != expected_checks or any(not check.passed for check in packet.validation.checks):
+            raise ValueError(f"{label}_packet_validation_incomplete")
+        try:
+            payload = payload_type.model_validate(packet.data)
+        except (ValidationError, ValueError, TypeError) as exc:
+            raise ValueError(f"{label}_packet_payload_invalid") from exc
+        return packet, payload
+
+    @staticmethod
+    def _prepared_attestation(packet: DeskModulePacketV3, label: str) -> tuple[str, str, str, str]:
+        try:
+            prepared = packet.dmpextensions["nvda"]["prepared_context"]
+            values = (
+                prepared["packet_id"],
+                prepared["carriage_fingerprint"],
+                prepared["prepared_id"],
+                prepared["prepared_fingerprint"],
+            )
+        except (KeyError, TypeError) as exc:
+            raise ValueError(f"{label}_prepared_context_attestation_missing") from exc
+        if any(not isinstance(value, str) or not value for value in values):
+            raise ValueError(f"{label}_prepared_context_attestation_invalid")
+        if len(values[1]) != 64 or len(values[3]) != 64:
+            raise ValueError(f"{label}_prepared_context_attestation_invalid")
+        return values
+
+    def _join_domain_products(
+        self,
+        serial_candidate: SerialCandidate | None,
+        parallel_assessment: ParallelRiskAssessment | None,
+        policy: FinalRiskJoinPolicy,
+        *,
+        carriage: dict[str, Any],
     ) -> FinalRiskDecision:
         try:
             policy = FinalRiskJoinPolicy.model_validate(policy.model_dump(mode="python"))
@@ -115,9 +270,7 @@ class CapitalAuthorityService:
                 conflicts.append("prepared_lineage_conflict")
 
         eligible = not (missing or reasons or conflicts or hard_blocks or unknowns)
-        action = (
-            "eligible_for_capital_assessment" if eligible else "stand_down"
-        )
+        action = "eligible_for_capital_assessment" if eligible else "stand_down"
         if action == "stand_down" and not (missing or reasons or conflicts or hard_blocks or unknowns):
             reasons.append("final_risk_not_eligible")
 
@@ -136,6 +289,7 @@ class CapitalAuthorityService:
             "policy_version": policy.policy_version,
             "join_policy_fingerprint": policy.policy_fingerprint,
             "cautions_prohibit": policy.cautions_prohibit,
+            **carriage,
             "serial_result_id": serial.serial_result_id if serial else None,
             "serial_candidate_id": serial.candidate_id if serial else None,
             "serial_candidate_fingerprint": serial.semantic_fingerprint if serial else None,
@@ -166,12 +320,8 @@ class CapitalAuthorityService:
             "capital_authority_granted": False,
             "execution_authority_granted": False,
             "closed_authority_classes": (
-                "broker_order",
-                "execution",
-                "position_inventory",
-                "lifecycle",
-                "durable_transaction",
-                "replay",
+                "broker_order", "execution", "position_inventory", "lifecycle",
+                "durable_transaction", "replay",
             ),
         }
         return _build_final_decision(payload)
@@ -200,6 +350,9 @@ class CapitalAuthorityService:
             )
         except Exception as exc:
             raise ValueError("unsupported_capital_policy") from exc
+
+        if not final.carriage_validated:
+            raise ValueError("canonical_packet_carriage_required")
 
         reasons: list[str] = []
         action = "block"
@@ -256,6 +409,16 @@ class CapitalAuthorityService:
             "policy_rounding_quantum": policy.rounding_quantum,
             "final_decision_id": final.final_decision_id,
             "final_decision_fingerprint": final.semantic_fingerprint,
+            "carriage_validated": final.carriage_validated,
+            "trace_id": final.trace_id,
+            "run_id": final.run_id,
+            "scenario_id": final.scenario_id,
+            "prepared_context_packet_id": final.prepared_context_packet_id,
+            "prepared_context_carriage_fingerprint": final.prepared_context_carriage_fingerprint,
+            "serial_packet_id": final.serial_packet_id,
+            "serial_packet_carriage_fingerprint": final.serial_packet_carriage_fingerprint,
+            "parallel_packet_id": final.parallel_packet_id,
+            "parallel_packet_carriage_fingerprint": final.parallel_packet_carriage_fingerprint,
             "serial_result_id": final.serial_result_id,
             "serial_candidate_id": final.serial_candidate_id,
             "serial_candidate_fingerprint": final.serial_candidate_fingerprint,
@@ -342,6 +505,16 @@ class CapitalAuthorityService:
             "decision_fingerprint": decision.semantic_fingerprint,
             "final_decision_id": final.final_decision_id,
             "final_decision_fingerprint": final.semantic_fingerprint,
+            "carriage_validated": final.carriage_validated,
+            "trace_id": final.trace_id,
+            "run_id": final.run_id,
+            "scenario_id": final.scenario_id,
+            "prepared_context_packet_id": final.prepared_context_packet_id,
+            "prepared_context_carriage_fingerprint": final.prepared_context_carriage_fingerprint,
+            "serial_packet_id": final.serial_packet_id,
+            "serial_packet_carriage_fingerprint": final.serial_packet_carriage_fingerprint,
+            "parallel_packet_id": final.parallel_packet_id,
+            "parallel_packet_carriage_fingerprint": final.parallel_packet_carriage_fingerprint,
             "capital_state_id": state.state_id,
             "capital_state_fingerprint": state.semantic_fingerprint,
             "capital_state_available_capital": state.available_capital,
