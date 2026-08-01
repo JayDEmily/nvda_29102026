@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-08-01-m11-k16-k17-normative-authority-v1",
+  "registry_version": "2026-08-01-m12-k19-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -18,7 +18,8 @@
     "The 2026-07-31 M06 K10 amendment admits ParallelRiskInput, ParallelRiskObservation, ParallelRiskAssessment and ParallelRiskEvaluator under a bounded M06 namespace.",
     "The 2026-08-01 M09 K11/K14 amendment admits FinalRiskDecision, CapitalState, CapitalDeploymentDecision and CapitalDeploymentReceipt under a bounded M09 namespace.",
     "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace.",
-    "The 2026-08-01 M11 K16/K17 amendment admits PositionState, PortfolioSnapshot, LifecycleDecision and CloseReceipt under a bounded M11 namespace."
+    "The 2026-08-01 M11 K16/K17 amendment admits PositionState, PortfolioSnapshot, LifecycleDecision and CloseReceipt under a bounded M11 namespace.",
+    "The 2026-08-01 M12 K19 amendment admits ReplayMaterial, ReplayEnvelope, ReplayAssessment and ReviewProjection under a bounded M12 namespace."
   ],
   "namespaces": {
     "global": {
@@ -272,6 +273,28 @@
         "src/nvda_desk/downstream/exit_close.py",
         "tests/support/m11_k16_k17_contract_harness.py",
         "tests/tier_a/m11_k16_k17"
+      ]
+    },
+    "m12": {
+      "namespace": "m12",
+      "imports": [
+        "global",
+        "m04"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/contracts/replay.py",
+        "src/nvda_desk/contracts/review.py",
+        "src/nvda_desk/m12_evidence_replay",
+        "src/nvda_desk/analysis/replay",
+        "tests/support/m12_k19_contract_harness.py",
+        "tests/tier_a/m12_k19",
+        "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+        "tests/tier_a/analysis/test_fwd002_replay_harness_contract.py",
+        "tests/tier_b/review_replay"
       ]
     }
   },
@@ -5106,6 +5129,126 @@
         "Semantic decisions: M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",
         "Human aliases: CloseReceipt; lifecycle mutation receipt.",
         "Human disallowed or misleading use: Broker close receipt; live fill confirmation; durable commit proof; capital receipt; hold receipt."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m12",
+      "canonical_id": "m12.replay_material",
+      "canonical_slug": "replay_material",
+      "canonical_label": "Replay Material",
+      "category": "protocol_surface",
+      "stage_owner": "evidence_replay",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16",
+      "allowed_aliases": [
+        "ReplayMaterial"
+      ],
+      "disallowed_phrases": [
+        "bare hash as replay material",
+        "untyped replay mapping",
+        "current live read as historical material",
+        "fabricated replay owner",
+        "mutable replay input"
+      ],
+      "notes": [
+        "Definition: Immutable M12 K19 retained evidence item embedding one exact repository-owned typed content snapshot with owner, contract path/version, occurrence identity, verified content fingerprint and deterministic replay order.",
+        "Scope: M12 authoritative replay input material",
+        "Semantic owner: M12 evidence replay",
+        "Relationships: Forms ordered Replay Envelope evidence; may carry exact M04 packet occurrences or other owner exports without reinterpreting their meaning; distinct from a detached hash, path or row identifier.",
+        "Lifecycle: active_k19_contract",
+        "Semantic decisions: M12-K19-AUTHORITATIVE-REPLAY-V1",
+        "Human aliases: ReplayMaterial; replay material.",
+        "Human disallowed or misleading use: Bare hash as evidence; untyped mapping; current live read; fabricated owner identity; mutable replay input."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m12",
+      "canonical_id": "m12.replay_envelope",
+      "canonical_slug": "replay_envelope",
+      "canonical_label": "Replay Envelope",
+      "category": "authority_surface",
+      "stage_owner": "evidence_replay",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16",
+      "allowed_aliases": [
+        "ReplayEnvelope"
+      ],
+      "disallowed_phrases": [
+        "current-state reconstruction as replay envelope",
+        "unordered replay evidence bag",
+        "comparison-only authority",
+        "silently repaired replay lineage",
+        "live side-effect permission"
+      ],
+      "notes": [
+        "Definition: Immutable M12 K19 authoritative-input envelope binding one declared replay class and target to exact ordered Replay Material evidence, original output facts, executable versions, reasons and explicit incompleteness or contradiction facts.",
+        "Scope: M12 authoritative replay input envelope",
+        "Semantic owner: M12 evidence replay",
+        "Relationships: Consumed by EvidenceReplayService to produce one Replay Assessment; imports exact M04 and owner evidence without gaining their domain authority; distinct from replay transport identity or a comparison request alone.",
+        "Lifecycle: active_k19_contract",
+        "Semantic decisions: M12-K19-AUTHORITATIVE-REPLAY-V1",
+        "Human aliases: ReplayEnvelope; replay envelope.",
+        "Human disallowed or misleading use: Current-state reconstruction; unordered evidence bag; comparison-only authority; missing lineage repaired silently; live side-effect permission."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m12",
+      "canonical_id": "m12.replay_assessment",
+      "canonical_slug": "replay_assessment",
+      "canonical_label": "Replay Assessment",
+      "category": "authority_surface",
+      "stage_owner": "evidence_replay",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16",
+      "allowed_aliases": [
+        "ReplayAssessment"
+      ],
+      "disallowed_phrases": [
+        "rescored replay mismatch",
+        "repaired incomplete replay",
+        "replay assessment as candidate promotion",
+        "replay assessment as execution permission",
+        "replay assessment as proof acceptance"
+      ],
+      "notes": [
+        "Definition: Immutable M12 K19 classification of one exact Replay Envelope as authoritative match, semantic mismatch, non-authoritative incomplete or comparison-only, preserving exact evidence, matches and mismatches without runtime promotion.",
+        "Scope: M12 replay completeness and semantic-match result",
+        "Semantic owner: M12 evidence replay",
+        "Relationships: Produced only by EvidenceReplayService and projected through Review Projection; does not repair owner outputs, mutate runtime state or confer capital, execution, portfolio or proof authority.",
+        "Lifecycle: active_k19_contract",
+        "Semantic decisions: M12-K19-AUTHORITATIVE-REPLAY-V1",
+        "Human aliases: ReplayAssessment; replay assessment.",
+        "Human disallowed or misleading use: Rescored mismatch; repaired incomplete replay; candidate promotion; execution permission; proof acceptance."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m12",
+      "canonical_id": "m12.review_projection",
+      "canonical_slug": "review_projection",
+      "canonical_label": "Review Projection",
+      "category": "review_surface",
+      "stage_owner": "evidence_replay",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16",
+      "allowed_aliases": [
+        "ReviewProjection"
+      ],
+      "disallowed_phrases": [
+        "mutable review projection",
+        "unbound replay explanation",
+        "comparison promoted to authority",
+        "hidden live read",
+        "runtime repair instruction"
+      ],
+      "notes": [
+        "Definition: Immutable detached M12 read-only explanation bound to one exact Replay Envelope and Replay Assessment, exposing verified material, incompleteness, contradictions, matches and mismatches while denying live side effects and runtime authority promotion.",
+        "Scope: M12 review-only replay explanation",
+        "Semantic owner: M12 evidence replay",
+        "Relationships: Projects one exact Replay Assessment for review consumers; distinct from the assessment itself, mutable review state, runtime decision repair and authoritative replay execution.",
+        "Lifecycle: active_k19_contract",
+        "Semantic decisions: M12-K19-AUTHORITATIVE-REPLAY-V1",
+        "Human aliases: ReviewProjection; review projection.",
+        "Human disallowed or misleading use: Mutable dashboard state; unbound explanation; comparison promoted to authority; hidden live read; runtime repair instruction."
       ],
       "raw_or_derived": "derived"
     }

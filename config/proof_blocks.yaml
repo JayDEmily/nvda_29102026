@@ -1169,3 +1169,29 @@ proof_blocks:
       - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m12_k19_authoritative_replay_contract
+    tier: Tier A
+    lifecycle: admitted_current_mvp_gate_d_accepted
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m12_k19/test_m12_k19_contract.py
+    owns:
+      - tests/tier_a/m12_k19/test_m12_k19_contract.py
+      - tests/support/m12_k19_contract_harness.py
+      - src/nvda_desk/m12_evidence_replay/__init__.py
+      - src/nvda_desk/m12_evidence_replay/contracts.py
+      - src/nvda_desk/m12_evidence_replay/service.py
+      - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - project_control/canonical_project_manager/modules/M12/M12_AUTHORITY_WORKER_RECORD_V1.md
+      - project_control/canonical_project_manager/modules/M12/validation/m12_k19_v1/C_PROOF_VALIDATION_SUMMARY.md
+      - project_control/canonical_project_manager/modules/M12/validation/m12_k19_v1/M12_C_PROOF_SEPARATE_WORKTREE_REVIEW.md
+      - project_control/canonical_project_manager/modules/M12/validation/m12_k19_v1/GATE_D_VALIDATION_SUMMARY.md
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - data/vocabulary/vocabulary_touch_stamp.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

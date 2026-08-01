@@ -1,26 +1,78 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "m11",
+  "namespace": "m12",
   "imported_namespaces": [
     "global",
-    "m10"
+    "m04"
   ],
   "scan_paths": [
     "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+    "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
     "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
     "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
-    "src/nvda_desk/m11_portfolio_lifecycle",
-    "src/nvda_desk/downstream/live_inventory.py",
-    "src/nvda_desk/contracts/exit_close.py",
-    "src/nvda_desk/downstream/exit_close.py",
-    "tests/support/m11_k16_k17_contract_harness.py",
-    "tests/tier_a/m11_k16_k17"
+    "src/nvda_desk/contracts/replay.py",
+    "src/nvda_desk/contracts/review.py",
+    "src/nvda_desk/m12_evidence_replay",
+    "src/nvda_desk/analysis/replay",
+    "tests/support/m12_k19_contract_harness.py",
+    "tests/tier_a/m12_k19",
+    "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+    "tests/tier_a/analysis/test_fwd002_replay_harness_contract.py",
+    "tests/tier_b/review_replay"
   ],
-  "scanned_file_count": 11,
-  "vocabulary_touched": false,
-  "fingerprint": "7d4550c778723caafae88a61ff24fa1030fc338554e00f675e232a523cc4aec8",
-  "resolved_occurrence_count": 121,
-  "candidates": [],
-  "candidate_classifications": []
+  "scanned_file_count": 18,
+  "vocabulary_touched": true,
+  "fingerprint": "905f0f1824112865ea2c8de9cc6363a2115086566c3b0dc83f85032abc4d4ae6",
+  "resolved_occurrence_count": 73,
+  "candidates": [
+    {
+      "phrase": "packet ids",
+      "nearest_slug": "dependency_packet_ids",
+      "nearest_label": "Dependency Packet IDs",
+      "score": 93,
+      "path": "tests/tier_a/m12_k19/test_m12_k19_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-3d70de05e7da1bb8",
+      "raw_phrase": "packet_ids",
+      "nearest_identity": "global.dependency_packet_ids",
+      "line": 49,
+      "column": 32,
+      "source_context": "    return ReplayPacketLineage(packet_ids=[f\"packet:{seed}\"], replay_run_id=\"source-run:1\")",
+      "context_sha256": "ebb6759d162cbd0e702cfe27ed0932aee0dce504118739042a2e7e72c37e21aa",
+      "occurrence_kind": "identifier"
+    }
+  ],
+  "candidate_classifications": [
+    {
+      "phrase": "packet ids",
+      "path": "tests/tier_a/m12_k19/test_m12_k19_contract.py",
+      "nearest_slug": "dependency_packet_ids",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "packet_ids",
+        "matched_slug": "dependency_packet_ids",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "packet_ids",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "packet_ids",
+            "matched_slug": "dependency_packet_ids",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-3d70de05e7da1bb8",
+      "line": 49,
+      "context_sha256": "ebb6759d162cbd0e702cfe27ed0932aee0dce504118739042a2e7e72c37e21aa"
+    }
+  ]
 }

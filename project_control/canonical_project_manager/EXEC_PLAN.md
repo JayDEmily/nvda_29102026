@@ -299,25 +299,28 @@ hold/trim/close decisions and receipts. It uses M13 non-durable atomic/idempoten
 mutation and does not acquire broker execution, capital, live-account, short,
 durable-storage or authoritative replay authority.
 
+M12 satisfies `C-NORM`, independently challenged `C-PROOF` and bounded K19 Gate
+D. The accepted package owns embedded repository-owned typed replay material,
+strict replay envelopes, fail-closed replay assessment and detached review
+projection. It does not acquire live/private owner reads, runtime repair, external
+side effects, capital/order/portfolio mutation, durable retention or production
+replay authority.
+
 ### Queued
 
-- Publish the clean full-history checkpoint for accepted M11 K16/K17 Gate D.
-- M12 review/replay authority is next; it has not started.
+- Publish the clean full-history checkpoint for accepted M12 K19 Gate D.
+- M00 final composition is next; it has not started.
 
 ## 8. Immediate work
 
-Pause and publish the clean full-history checkpoint for accepted M11 K16/K17
-Gate D. M11 resolves twenty exact hardened-proof-baseline failures with zero new
-Tier A failure nodes. M12 review/replay authority remains next and has not
-started.
+Pause and publish the clean full-history checkpoint for accepted M12 K19 Gate D. M12 resolves nineteen exact hardened-proof-baseline failures with zero new Tier A failure nodes. M00 final composition remains next and has not started.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M12;
-2. M00 final composition;
-3. final alpha consolidation.
+1. M00 final composition;
+2. final alpha consolidation.
 
 M07 and M08 may be completed before M01 if that shortens the critical path to
 M05. M05 and M06 may proceed independently after prerequisites. Canonical

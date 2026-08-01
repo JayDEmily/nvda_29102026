@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/m11-portfolio-lifecycle-v1` |
-| Current branch source checkpoint | `ccf946bf54905ab06dd66d5d3d5cd170f117bafa` |
+| Branch | `work/m12-review-replay-v1` |
+| Current branch source checkpoint | `27093bd12f7faab3c4955f7fb885bf07d9162721` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M11 K16/K17 portfolio state and lifecycle evidence |
-| Current active slice | paused for clean full-history checkpoint after M11 Gate D acceptance |
-| Production implementation | M11 Gate D accepted; M12 has not started |
+| Latest accepted implementation slice | M12 K19 authoritative replay and review projection |
+| Current active slice | paused for clean full-history checkpoint after M12 Gate D acceptance |
+| Production implementation | M12 Gate D accepted; M00 final composition has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -180,14 +180,32 @@ monotonic fill time and cross-field M13/snapshot/result reconciliation.
 Complete Tier A moved from 1,586 passed / 273 failed at hardened proof baseline
 `4b121c9` to 1,606 / 253: all twenty admitted M11 production failures resolved
 and zero new failing nodes appeared. The M11 namespace audit is clean across 11
-files with 121 resolved governed occurrences. Evidence is under
+files with 121 governed occurrences. Evidence is under
 `project_control/canonical_project_manager/modules/M11/validation/m11_k16_k17_v1/`.
 
 The accepted package is process-memory and paper-evidence bounded. It does not
-prove live account truth, broker close execution, short-position support,
-durable portfolio storage, authoritative replay or production trading readiness.
+prove live account truth, broker close execution, short-position support, durable
+portfolio storage, authoritative replay or production trading readiness.
+
+## M12 K19 Gate D acceptance
+
+M12 acceptance records 22/22 focused cases, 64/64 affected replay/review cases,
+proof-manifest integrity at 64/64 and the proof executor at 21/21. Tier B passes
+49/49. Independent proof review and final hardening require embedded
+repository-owned typed content, exact original-result evidence and cross-field
+assessment/projection consistency.
+
+Complete Tier A moved from 1,609 passed / 272 failed at hardened proof baseline
+`d889cb7` to 1,628 / 253: all nineteen admitted M12 production failures resolved
+and zero new failing nodes appeared. The M12 namespace audit is clean across 18
+files with 73 governed occurrences. Evidence is under
+`project_control/canonical_project_manager/modules/M12/validation/m12_k19_v1/`.
+
+The accepted package is retained-evidence and read-projection bounded. It does not
+prove live data access, durable evidence retention, side-effectful replay, automatic
+proof promotion or production replay readiness.
 
 ## Immediate next action
 
-Publish the clean full-history checkpoint for accepted M11 K16/K17 Gate D. The
-next semantic unit is M12 review/replay authority; it has not started.
+Publish the clean full-history checkpoint for accepted M12 K19 Gate D. The next
+semantic unit is M00 final composition; it has not started.

@@ -3827,3 +3827,26 @@ fast_track_module_local_admissions:
   admission_reason: The 1 August 2026 C-PROOF decision admits exact M10 fill lineage, deterministic Decimal position arithmetic, monotonic transition time, immutable snapshots, closed lifecycle actions, stale-state rejection, exact M13 version binding and internally reconciled trim/close receipts.
   forbidden_carry_forward: Generic mappings, caller-authored position identities, broker account truth, out-of-order fills, copied-model validator bypass, stale decisions, mismatched transaction versions, fabricated receipt lineage, capital recomputation, live broker execution and durable-state claims must not satisfy M11.
   notes: Twenty-three focused cases pass: three reference-law cases, sixteen original and independent-review production cases, and four cross-field hardening cases admitted before final Gate D acceptance.
+
+- test_family_id: m12_k19_authoritative_replay_contract
+  native_status: admitted_tier_a
+  bounded_family: retained_evidence_replay_and_review_projection
+  native_test_path: tests/tier_a/m12_k19/test_m12_k19_contract.py
+  migration_status: module_local_gate_d_accepted
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M12/M12_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m12_k19_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: The canonical nvda_desk.m12_evidence_replay package owns exact retained typed evidence, closed replay-class assessment and detached review projection. Legacy replay, walk-forward and review surfaces remain compatibility/reference consumers only.
+  native_reauthor_required: false
+  admission_reason: The 1 August 2026 C-PROOF decision admits embedded repository-owned typed evidence, exact occurrence/output binding, closed replay classes, fail-closed completeness, exact semantic comparison, isolation and detached non-promoting review projection.
+  forbidden_carry_forward: Detached hashes, untyped mappings, current live reads, fabricated owner meaning, silent evidence repair, side effects, runtime promotion, comparison-only authority and forged copied contracts must not satisfy K19.
+  notes: Twenty-two focused cases pass: three reference-law cases and nineteen production-facing cases including independent proof hardening, typed-content retention, content revalidation, authoritative-result evidence and projection-status consistency.
