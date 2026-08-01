@@ -1,9 +1,30 @@
-schema_version: v1
+schema_version: v2
 notes:
   - Sequence 11 reconciles retained-test authority through config/retained_test_registry.yaml and receipts.
   - Vocabulary governance conformance was admitted by explicit user authorisation for VOCAB_REPAIR_ADMISSION_GATE.
   - Candidate-review receipt, summary-only, error-receipt, and stdin-input contracts were admitted during ATLAS_FEATURE_ADMISSION_019-024.
   - Detailed proof-block listing was admitted during ATLAS_FEATURE_ADMISSION_022.
+promotion_sets:
+  pre_m00_current:
+    claim: exact current blocking module-local proof before M00 C-NORM
+    authority_proposition_ids:
+      - TP-PROMOTION-001
+      - TP-CONTROL-001
+    proof_block_ids:
+      - m13_state_kernel_module_local_proof
+      - m04_k07_packet_role_contract
+      - m01_source_admission_contract
+      - m07_k12_coefficient_modifier_contract
+      - m08_k13_playbook_catalogue_contract
+      - m02_k04_financial_calendar_contract
+      - m03_k05_k06_prepared_data_contract
+      - m05_k08_k09_serial_cognition_contract
+      - m06_k10_parallel_risk_contract
+      - m09_k11_k14_capital_authority_contract
+      - m10_k15_execution_gateway_contract
+      - m11_k16_k17_portfolio_lifecycle_contract
+      - m12_k19_authoritative_replay_contract
+
 proof_blocks:
   - proof_block_id: vocabulary_governance_conformance_candidate
     tier: Tier A
@@ -901,6 +922,10 @@ proof_blocks:
   - proof_block_id: m04_k07_packet_role_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m04_k07_packet_role_contract
+    normative_proposition_ids:
+      - M04-K07-NORMATIVE-AUTHORITY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py
     owns:
@@ -917,6 +942,10 @@ proof_blocks:
   - proof_block_id: m13_state_kernel_module_local_proof
     tier: Tier A
     lifecycle: admitted_current_accepted_implementation
+    test_family_ids:
+      - m13_state_kernel_module_local_contract
+    normative_proposition_ids:
+      - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md#N-06
     command: >-
       env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py
     owns:
@@ -931,6 +960,10 @@ proof_blocks:
   - proof_block_id: m01_source_admission_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m01_source_admission_contract
+    normative_proposition_ids:
+      - M01-PROOF-MLC-A-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/ingress/test_m01_source_admission_contract.py
     owns:
@@ -947,6 +980,10 @@ proof_blocks:
   - proof_block_id: m07_k12_coefficient_modifier_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m07_k12_coefficient_modifier_contract
+    normative_proposition_ids:
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md#7.7
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m07_k12/test_m07_k12_contract.py
     owns:
@@ -970,6 +1007,10 @@ proof_blocks:
   - proof_block_id: m08_k13_playbook_catalogue_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m08_k13_playbook_catalogue_contract
+    normative_proposition_ids:
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md#7.8
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m08_k13/test_m08_k13_contract.py
     owns:
@@ -992,6 +1033,10 @@ proof_blocks:
   - proof_block_id: m02_k04_financial_calendar_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m02_k04_financial_calendar_contract
+    normative_proposition_ids:
+      - M02-K04-NORMATIVE-AUTHORITY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py
     owns:
@@ -1018,6 +1063,10 @@ proof_blocks:
   - proof_block_id: m03_k05_k06_prepared_data_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m03_k05_k06_prepared_data_contract
+    normative_proposition_ids:
+      - M03-K05-K06-NORMATIVE-AUTHORITY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
     owns:
@@ -1047,6 +1096,11 @@ proof_blocks:
   - proof_block_id: m05_k08_k09_serial_cognition_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m05_k08_k09_serial_cognition_contract
+    normative_proposition_ids:
+      - M05-K08-K09-NORMATIVE-AUTHORITY-V1
+      - docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md#signal-informed-phase-authority
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09
     owns:
@@ -1077,6 +1131,10 @@ proof_blocks:
   - proof_block_id: m06_k10_parallel_risk_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
+    test_family_ids:
+      - m06_k10_parallel_risk_contract
+    normative_proposition_ids:
+      - M06-K10-NORMATIVE-AUTHORITY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_k10_contract.py
     owns:
@@ -1103,6 +1161,10 @@ proof_blocks:
   - proof_block_id: m09_k11_k14_capital_authority_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof
+    test_family_ids:
+      - m09_k11_k14_capital_authority_contract
+    normative_proposition_ids:
+      - M09-K11-K14-NORMATIVE-AUTHORITY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py
     owns:
@@ -1136,6 +1198,10 @@ proof_blocks:
   - proof_block_id: m10_k15_execution_gateway_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_gate_d_accepted
+    test_family_ids:
+      - m10_k15_execution_gateway_contract
+    normative_proposition_ids:
+      - M10-K15-EXECUTION-GATEWAY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m10_k15/test_m10_k15_contract.py
     owns:
@@ -1162,6 +1228,10 @@ proof_blocks:
   - proof_block_id: m11_k16_k17_portfolio_lifecycle_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_gate_d_accepted
+    test_family_ids:
+      - m11_k16_k17_portfolio_lifecycle_contract
+    normative_proposition_ids:
+      - M11-K16-K17-PORTFOLIO-LIFECYCLE-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py
     owns:
@@ -1187,6 +1257,10 @@ proof_blocks:
   - proof_block_id: m12_k19_authoritative_replay_contract
     tier: Tier A
     lifecycle: admitted_current_mvp_gate_d_accepted
+    test_family_ids:
+      - m12_k19_authoritative_replay_contract
+    normative_proposition_ids:
+      - M12-K19-AUTHORITATIVE-REPLAY-V1
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m12_k19/test_m12_k19_contract.py
     owns:

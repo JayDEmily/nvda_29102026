@@ -1,10 +1,10 @@
-schema_version: v3
-authority_id: retained_test_registry_v3
+schema_version: v4
+authority_id: retained_test_registry_v4
 status: active retained-test authority
-purpose: This file is the native retained-test authority for Tier A admission during the clean execution rebuild.
+purpose: This file is the canonical machine-readable admission and lifecycle authority for governed Tier A, Tier B, and Tier C pytest files.
 rules:
-  single_authority_rule: config/retained_test_registry.yaml is the retained-test authority for native retained-test admission, together with live proof-block and active-pack receipt authority where those surfaces lawfully modify test status.
-  no_silent_admission_rule: A native pytest file must not enter tests/tier_a, tests/tier_b, or tests/tier_c as governed proof unless this file, a proof block, or a lawful active-pack receipt admits that family and status explicitly.
+  single_authority_rule: The canonical_admission_model in this file is the sole machine-readable test admission authority. Proof manifests select admitted family identifiers; receipts record outcomes and cannot modify admission.
+  no_silent_admission_rule: Every physical pytest file under tests/tier_a, tests/tier_b, or tests/tier_c must have exactly one canonical path admission and lifecycle. No proof block, folder placement, historical row, or receipt can silently admit it.
   hierarchy_rule: Test authority is subordinate to repo-root AGENTS.md, the numbered normative/control stack, vocabulary governance, and docs/08 testing and promotion law.
   vocabulary_rule: Durable terms used in test names, fixture names, proof labels, manifests, registry entries, or contract-facing assertions must be governed by docs/vocabulary/vocabulary_registry.md or lawfully admitted in the same bounded gate.
   code_then_docstring_rule: For every retained or materially relied-upon test family, reread runtime code, reread docstrings, compare docstrings to runtime code, and compare native test assertions to the governing invariant and runtime code before trusting the family.
@@ -3740,7 +3740,8 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP Gate D decision admits this bounded family for immutable common-context lineage, exact six-stage ordering and dependencies, owner-issued bounded carrier facts, exact input/output/dependency lineage, explicit formed/stand-down/withheld/rejected results, complete M03/M04/M07/M08 lineage, deterministic candidate meaning and closed foreign authority.
   forbidden_carry_forward: Caller order, skipped or duplicate stages, partial mappings presented as success, generated identity or wall-clock authority, dropped modifier lineage, empty eligibility authority, generic carrier payloads, hidden inventory reads, terminal binding payloads and serial claims of parallel-risk, capital, broker, position, lifecycle, transaction or replay authority must not satisfy M05.
-  notes: >- The pre-M00 repair additionally admits a thin SerialCandidatePacketAdapter for mandatory canonical egress into M09; the serial algorithm remains packet-agnostic.
+  notes: >-
+    The pre-M00 repair additionally admits a thin SerialCandidatePacketAdapter for mandatory canonical egress into M09; the serial algorithm remains packet-agnostic.
     The accepted 32-case M05 baseline remains retained. The signal-informed temporal repair adds focused public-seam proof for signal dependence, clock-only degradation, hysteresis/dwell, regression resistance, correction lineage, stale evidence, deterministic replay, copy-safe state and typed M05 carrier integration.
 
 - test_family_id: m06_k10_parallel_risk_contract
@@ -3763,7 +3764,8 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for exact prepared/input lineage, explicit policy and thresholds, typed observations, block-dominant deterministic aggregation, unknown preservation, side-effect freedom and closed foreign authority.
   forbidden_carry_forward: Generic mappings, unadmitted bootstrap packets, copied-model validator bypass, silent thresholds, caller-order aggregation, unknown-as-safe, module-global decision state and M06 claims of serial-candidate, K11 final-risk, capital, execution, lifecycle, transaction or replay authority must not satisfy K10.
-  notes: >- The pre-M00 repair additionally admits a thin ParallelRiskPacketAdapter for mandatory canonical egress into M09; the risk evaluator remains packet-agnostic.
+  notes: >-
+    The pre-M00 repair additionally admits a thin ParallelRiskPacketAdapter for mandatory canonical egress into M09; the risk evaluator remains packet-agnostic.
     Thirty focused cases pass: thirteen reference and mutant cases, the seven formerly expected-red production assertions, and ten Gate D integrity cases covering typed-input enforcement, copied-model revalidation, exact M07 threshold authority, deterministic canonicalisation, observation/limitation closure, deep immutability, numeric validity, downstream-authority exclusion and instance-local legacy compatibility state.
 
 - test_family_id: m09_k11_k14_capital_authority_contract
@@ -3857,3 +3859,1589 @@ fast_track_module_local_admissions:
   forbidden_carry_forward: Detached hashes, untyped mappings, current live reads, fabricated owner meaning, silent evidence repair, side effects, runtime promotion, comparison-only authority and forged copied contracts must not satisfy K19.
   notes: >-
     Twenty-two focused cases pass: three reference-law cases and nineteen production-facing cases including independent proof hardening, typed-content retention, content revalidation, authoritative-result evidence and projection-status consistency.
+
+# Canonical v4 admission model. Historical sections above are retained as provenance only.
+canonical_admission_model:
+  authority_proposition_ids:
+  - TP-ADMISSION-001
+  - TP-SELECTION-001
+  - TP-TRACE-001
+  allowed_tiers:
+  - Tier A
+  - Tier B
+  - Tier C
+  allowed_lifecycles:
+  - current_blocking
+  - current_nonblocking
+  - next_gate_expected_red
+  - superseded_compatibility
+  - historical
+  test_families:
+  - test_family_id: api_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: api_dto_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: append_only_repository_surfaces
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: bounded_trace_reporting
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: bounded_trace_review_regime
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: bounded_trace_scenario_pack
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: broker_boundary_protocol_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: calendar_operational_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: calendar_reference_projection_crosswalk
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: canonical_runtime_specimen_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: capital_authority_service_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: capital_contract_models
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: capital_deployment_fresh_capital_correction
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: capital_deployment_transform_boundary_surface
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: capital_downstream_placement_boundary
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: capital_state_repository_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: cognition_ingress_mapping_surfaces
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: cognition_ingress_translation_coordinator
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: config_authority_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: dmp_v3_vocabulary_terms
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: dmpv3_extension_canonical_leaf_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: dmpv3_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: downstream_contract_models
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: downstream_live_inventory_service_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: downstream_opening_service_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: downstream_review_stage_service_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: downstream_state_reader_service_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: dynamic_coefficient_modifier_authority_hardening
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: dynamic_modifier_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: entry_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: execution_contract_models
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: execution_final_join_boundary
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: execution_records_repository_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: execution_service_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: exit_close_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: external_source_contract_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: external_source_interface_boundary
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: external_source_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: financial_calendar_vocabulary_terms
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: financial_event_calendar_authority_hardening
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: financial_event_calendar_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: imported_module_containment_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: ingress_raw_bundle_loader_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: live_inventory_authority_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: live_inventory_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: m01_source_admission_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M01-PROOF-MLC-A-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m02_k04_financial_calendar_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M02-K04-NORMATIVE-AUTHORITY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m03_k05_k06_prepared_data_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M03-K05-K06-NORMATIVE-AUTHORITY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m04_k07_packet_role_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M04-K07-NORMATIVE-AUTHORITY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m05_k08_k09_serial_cognition_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M05-K08-K09-NORMATIVE-AUTHORITY-V1
+    - docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md#signal-informed-phase-authority
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m06_k10_parallel_risk_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M06-K10-NORMATIVE-AUTHORITY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m07_k12_coefficient_modifier_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md#7.7
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m08_k13_playbook_catalogue_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md#7.8
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m09_k11_k14_capital_authority_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M09-K11-K14-NORMATIVE-AUTHORITY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m10_k15_execution_gateway_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M10-K15-EXECUTION-GATEWAY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m11_k16_k17_portfolio_lifecycle_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M11-K16-K17-PORTFOLIO-LIFECYCLE-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m12_k19_authoritative_replay_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - M12-K19-AUTHORITATIVE-REPLAY-V1
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m13_state_kernel_module_local_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+    - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md#N-06
+    provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: migration_lifecycle_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: modifier_contract_authority_boundaries_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: module_8_parallel_risk_workbook_specimen_emission_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: module_8_parallel_risk_workbook_specimen_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: module_registry_repository_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: observability_reservation_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: opening_authority_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: opening_placement_readiness_hardening
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: opening_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: options_flow_contract_models
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: options_flow_history_lane_vocabulary
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: options_flow_history_persistence_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: options_flow_history_replay_live_state_separation
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: options_flow_history_replay_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: options_flow_history_repository_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: options_flow_history_runtime_authority_separation
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: options_flow_history_trade_state_separation
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: options_flow_output_contract_isolation
+    tier: Tier B
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: parallel_risk_contract_models
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: parallel_risk_dmp_fixture_root
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: parallel_risk_evaluation_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: parallel_risk_lane_service_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: parallel_risk_lane_vocabulary_terms
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: parallel_risk_observation_store_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: parallel_risk_packet_builder_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: parallel_risk_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_analysis_test_fwd002_replay_harness_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_api_test_fwd005_api_exposure_contract_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_config_test_fwd010_coefficient_calibration_contract_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_downstream_runtime_test_exit_close_architecture_surface_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_downstream_runtime_test_fwd015_broker_execution_lifecycle_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_downstream_runtime_test_fwd016_daily_pnl_reporting_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_downstream_runtime_test_fwd017_overnight_carry_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_financial_calendar_test_fwd008_runtime_calendar_query_contract_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_ingress_identity_and_dmp_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_normative_completion_contracts_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_orchestration_playbook_and_risk_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_outputs_replay_and_api_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_remaining_normative_contracts_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_normative_authority_test_gate_c_state_calendar_and_repositories_py
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: path__tests_tier_a_packets_test_fwd004_reopened_row_packet_carriage_proof_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_parallel_risk_test_fwd013_parallel_risk_candidate_enrichment_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_atom_authority_semantics_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_description_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_description_templates_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_enriched_authority_regression_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_event_proximity_register_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_family_aggregation_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_freshness_register_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_inventory_backed_unavailable_signals_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_lineage_completeness_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_assembly_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_contracts_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_service_integration_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_missing_signal_register_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_options_dte_preservation_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_scheduled_event_preservation_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_signal_inventory_promotion_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_signal_inventory_workbook_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_supported_risk_atoms_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_unavailable_signals_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_vix_threshold_governance_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_vix_threshold_preservation_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_persistence_test_fwd003_durable_sql_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: path__tests_tier_a_persistence_test_fwd003_import_registry_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_playbook_test_fwd011_reopened_row_playbook_library_authority_proof_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_review_runtime_test_fwd018_review_packet_and_slv_replay_contract_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_runtime_test_fwd012_reopened_row_serial_cognition_spine_proof_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_temporal_test_fwd006_reopened_row_raw_capture_source_temporal_proof_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_testing_harnesses_test_fwd002_fixture_and_sidecar_contract_py
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: path__tests_tier_a_upstream_cognition_test_fwd009_reopened_row_prepared_ingress_runtime_context_proof_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_upstream_cognition_test_prepared_context_packet_surface_py
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: path__tests_tier_a_upstream_signal_test_fwd007_raw_signal_family_rebuild_contract_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: path__tests_tier_a_vocabulary_test_parallel_risk_description_vocabulary_constraints_py
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: path__tests_tier_b_proof_model_test_checkpoint_receipt_contract_py
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: persistence_session_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: playbook_eligibility_decontamination
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: playbook_eligibility_registry_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: playbook_library_architecture_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: playbook_library_transform_boundary_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: position_repository_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: posture_permission_envelope
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: prepared_ingress_checkpoint_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: prepared_runtime_snapshot_contract_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: prepared_runtime_substrate_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: prepared_runtime_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: proof_authority_contract
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids:
+    - TP-ADMISSION-001
+    - TP-SELECTION-001
+    - TP-TRACE-001
+    provenance: m00_testing_guardrail_repair_unit_1
+  - test_family_id: proof_executor_contract
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: raw_capture_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: raw_signal_contract_copy_boundary_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: raw_signal_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: receipt_ledger_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: reference_data_contract
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: reference_packet_carriage
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: regime_contract_models
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: regime_ingress_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: replay_evaluation_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: research_logs_owner_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: review_contract_authority_boundaries_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: review_contract_models
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: review_effective_policy_lineage
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: review_explanation_service_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: review_replay_dmp_v3_lineage
+    tier: Tier B
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: review_repository_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: review_stage_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_family_id: review_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: runtime_orchestrator_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: sequence7_parallel_risk_envelope_input_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: sequence7_parallel_risk_envelope_output_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: sequence7_parallel_risk_envelope_specimen
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: sequence8_coefficient_modifier_authority_specimen
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: sequence9_capital_deployment_decision_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: sequence9_capital_deployment_dmp_packet
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: serial_runtime_parallel_risk_boundary_specimen_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: serial_spine_contract_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: serial_stage_packet_emission_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: serial_transform_boundary_surface
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: source_temporal_standard_surface
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: state_conditioned_modifier_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_family_id: tranche_a_review_replay
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_B_SHADOW
+  - test_family_id: upstream_non_interference_and_sanity_traces
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: upstream_signal_coverage_map_and_scope_lock
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: vocabulary_candidate_admission_plan_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_candidate_admission_review_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_candidate_classification_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_candidate_payload_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_candidate_review_cli_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_candidate_schema_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_canonical_builder_parity
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: vocabulary_document_json_helpers
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_json_helper_contracts
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_required_baseline_terms
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: vocabulary_schema_contract
+    tier: Tier A
+    lifecycle: current_nonblocking
+    normative_proposition_ids: []
+    provenance: ADMIT_TIER_A_CURRENT
+  - test_family_id: vocabulary_synonym_candidate_audit
+    tier: Tier A
+    lifecycle: superseded_compatibility
+    normative_proposition_ids: []
+    provenance: BLOCKED_P3_REPAIR
+  - test_family_id: vocabulary_workflow_surface
+    tier: Tier A
+    lifecycle: historical
+    normative_proposition_ids: []
+    provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  path_admissions:
+  - test_path: tests/tier_a/adapters_egress/test_broker_boundary_surface.py
+    test_family_id: broker_boundary_protocol_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/adapters_ingress/test_external_source_contract_surface.py
+    test_family_id: external_source_contract_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py
+    test_family_id: external_source_interface_boundary
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py
+    test_family_id: external_source_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/analysis/test_fwd002_replay_harness_contract.py
+    test_family_id: path__tests_tier_a_analysis_test_fwd002_replay_harness_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/analysis/test_replay_evaluation_surface.py
+    test_family_id: replay_evaluation_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/api/test_api_boundary_surface.py
+    test_family_id: api_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/api/test_api_dto_boundary_surface.py
+    test_family_id: api_dto_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/api/test_fwd005_api_exposure_contract.py
+    test_family_id: path__tests_tier_a_api_test_fwd005_api_exposure_contract_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/calendar_operational/test_calendar_operational_surface.py
+    test_family_id: calendar_operational_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py
+    test_family_id: calendar_reference_projection_crosswalk
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/capital_deployment/test_capital_authority_service_surface.py
+    test_family_id: capital_authority_service_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/capital_deployment/test_capital_contract_models.py
+    test_family_id: capital_contract_models
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py
+    test_family_id: capital_deployment_fresh_capital_correction
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py
+    test_family_id: capital_downstream_placement_boundary
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py
+    test_family_id: sequence9_capital_deployment_decision_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py
+    test_family_id: sequence9_capital_deployment_dmp_packet
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/config/test_coefficient_modifier_replay_surface.py
+    test_family_id: dynamic_coefficient_modifier_authority_hardening
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/config/test_config_authority_surface.py
+    test_family_id: config_authority_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/config/test_fwd010_coefficient_calibration_contract.py
+    test_family_id: path__tests_tier_a_config_test_fwd010_coefficient_calibration_contract_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py
+    test_family_id: sequence8_coefficient_modifier_authority_specimen
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/downstream_runtime/test_downstream_contract_models.py
+    test_family_id: downstream_contract_models
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py
+    test_family_id: downstream_live_inventory_service_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py
+    test_family_id: downstream_opening_service_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py
+    test_family_id: downstream_review_stage_service_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py
+    test_family_id: downstream_state_reader_service_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py
+    test_family_id: path__tests_tier_a_downstream_runtime_test_exit_close_architecture_surface_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py
+    test_family_id: exit_close_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py
+    test_family_id: path__tests_tier_a_downstream_runtime_test_fwd015_broker_execution_lifecycle_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/downstream_runtime/test_fwd016_daily_pnl_reporting_contract.py
+    test_family_id: path__tests_tier_a_downstream_runtime_test_fwd016_daily_pnl_reporting_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py
+    test_family_id: path__tests_tier_a_downstream_runtime_test_fwd017_overnight_carry_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py
+    test_family_id: live_inventory_authority_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py
+    test_family_id: live_inventory_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py
+    test_family_id: opening_authority_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py
+    test_family_id: opening_placement_readiness_hardening
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py
+    test_family_id: opening_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/entry/test_entry_boundary_surface.py
+    test_family_id: entry_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py
+    test_family_id: financial_event_calendar_authority_hardening
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py
+    test_family_id: financial_event_calendar_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py
+    test_family_id: path__tests_tier_a_financial_calendar_test_fwd008_runtime_calendar_query_contract_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/ingress/test_m01_source_admission_contract.py
+    test_family_id: m01_source_admission_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/ingress/test_raw_bundle_loader_surface.py
+    test_family_id: ingress_raw_bundle_loader_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/legacy_imported/test_imported_module_containment_surface.py
+    test_family_id: imported_module_containment_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/m02_k04/test_m02_k04_contract.py
+    test_family_id: m02_k04_financial_calendar_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py
+    test_family_id: m03_k05_k06_prepared_data_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+    test_family_id: m05_k08_k09_serial_cognition_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m05_k08_k09/test_signal_informed_intraday_phase.py
+    test_family_id: m05_k08_k09_serial_cognition_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m06_k10/test_m06_k10_contract.py
+    test_family_id: m06_k10_parallel_risk_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m07_k12/test_m07_k12_contract.py
+    test_family_id: m07_k12_coefficient_modifier_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m08_k13/test_m08_k13_contract.py
+    test_family_id: m08_k13_playbook_catalogue_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py
+    test_family_id: m09_k11_k14_capital_authority_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py
+    test_family_id: m09_k11_k14_capital_authority_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m10_k15/test_m10_k15_contract.py
+    test_family_id: m10_k15_execution_gateway_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py
+    test_family_id: m11_k16_k17_portfolio_lifecycle_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m12_k19/test_m12_k19_contract.py
+    test_family_id: m12_k19_authoritative_replay_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/migrations/test_migration_lifecycle_surface.py
+    test_family_id: migration_lifecycle_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py
+    test_family_id: dynamic_modifier_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py
+    test_family_id: modifier_contract_authority_boundaries_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py
+    test_family_id: state_conditioned_modifier_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/normative_authority/test_gate_c_ingress_identity_and_dmp.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_ingress_identity_and_dmp_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_normative_completion_contracts_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_orchestration_playbook_and_risk_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_outputs_replay_and_api_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_remaining_normative_contracts_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/normative_authority/test_gate_c_state_calendar_and_repositories.py
+    test_family_id: path__tests_tier_a_normative_authority_test_gate_c_state_calendar_and_repositories_py
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/observability/test_observability_reservation_surface.py
+    test_family_id: observability_reservation_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_contract_models.py
+    test_family_id: options_flow_contract_models
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_persistence_surface.py
+    test_family_id: options_flow_history_persistence_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py
+    test_family_id: options_flow_history_replay_live_state_separation
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py
+    test_family_id: options_flow_history_replay_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py
+    test_family_id: options_flow_history_repository_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_runtime_authority_separation.py
+    test_family_id: options_flow_history_runtime_authority_separation
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/options_flow_history/test_options_flow_history_trade_state_separation.py
+    test_family_id: options_flow_history_trade_state_separation
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py
+    test_family_id: dmpv3_extension_canonical_leaf_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py
+    test_family_id: dmpv3_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py
+    test_family_id: path__tests_tier_a_packets_test_fwd004_reopened_row_packet_carriage_proof_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/packets/test_m04_k07_packet_role_contract.py
+    test_family_id: m04_k07_packet_role_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/packets/test_reference_packet_carriage.py
+    test_family_id: reference_packet_carriage
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_fwd013_parallel_risk_candidate_enrichment_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_atom_authority_semantics_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py
+    test_family_id: parallel_risk_contract_models
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_description_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_description_templates_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_dmp_fixture_root.py
+    test_family_id: parallel_risk_dmp_fixture_root
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_enriched_authority_regression_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py
+    test_family_id: parallel_risk_evaluation_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_event_proximity_register_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_family_aggregation_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_freshness_register_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_inventory_backed_unavailable_signals_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py
+    test_family_id: parallel_risk_lane_service_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_lineage_completeness_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_assembly_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_contracts_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_minute_profile_service_integration_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_missing_signal_register_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_options_dte_preservation_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py
+    test_family_id: parallel_risk_packet_builder_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_scheduled_event_preservation_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_signal_inventory_promotion_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_signal_inventory_workbook_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_supported_risk_atoms_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py
+    test_family_id: parallel_risk_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_unavailable_signals_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_vix_threshold_governance_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py
+    test_family_id: path__tests_tier_a_parallel_risk_test_parallel_risk_vix_threshold_preservation_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py
+    test_family_id: sequence7_parallel_risk_envelope_input_surface
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py
+    test_family_id: sequence7_parallel_risk_envelope_output_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_specimen.py
+    test_family_id: sequence7_parallel_risk_envelope_specimen
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/persistence/test_append_only_repository_surfaces.py
+    test_family_id: append_only_repository_surfaces
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_capital_state_repository_surface.py
+    test_family_id: capital_state_repository_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/persistence/test_execution_records_repository_surface.py
+    test_family_id: execution_records_repository_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_fwd003_durable_sql_contract.py
+    test_family_id: path__tests_tier_a_persistence_test_fwd003_durable_sql_contract_py
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/persistence/test_fwd003_import_registry_contract.py
+    test_family_id: path__tests_tier_a_persistence_test_fwd003_import_registry_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
+    test_family_id: m13_state_kernel_module_local_contract
+    source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/persistence/test_module_registry_repository_surface.py
+    test_family_id: module_registry_repository_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py
+    test_family_id: parallel_risk_observation_store_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_persistence_session_boundary_surface.py
+    test_family_id: persistence_session_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_position_repository_surface.py
+    test_family_id: position_repository_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/persistence/test_receipt_ledger_surface.py
+    test_family_id: receipt_ledger_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/persistence/test_research_logs_owner_surface.py
+    test_family_id: research_logs_owner_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py
+    test_family_id: path__tests_tier_a_playbook_test_fwd011_reopened_row_playbook_library_authority_proof_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py
+    test_family_id: playbook_eligibility_registry_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/playbook/test_playbook_library_architecture_surface.py
+    test_family_id: playbook_library_architecture_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/playbook/test_playbook_transform_boundary_surface.py
+    test_family_id: playbook_library_transform_boundary_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/reference_data/test_reference_data_contract.py
+    test_family_id: reference_data_contract
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/review_runtime/test_fwd018_review_packet_and_slv_replay_contract.py
+    test_family_id: path__tests_tier_a_review_runtime_test_fwd018_review_packet_and_slv_replay_contract_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py
+    test_family_id: review_contract_authority_boundaries_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/review_runtime/test_review_contract_models.py
+    test_family_id: review_contract_models
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/review_runtime/test_review_explanation_service_surface.py
+    test_family_id: review_explanation_service_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/review_runtime/test_review_repository_surface.py
+    test_family_id: review_repository_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/review_runtime/test_review_stage_surface.py
+    test_family_id: review_stage_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/review_runtime/test_review_transform_boundary_surface.py
+    test_family_id: review_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py
+    test_family_id: path__tests_tier_a_runtime_test_fwd012_reopened_row_serial_cognition_spine_proof_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/runtime/test_runtime_orchestrator_surface.py
+    test_family_id: runtime_orchestrator_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py
+    test_family_id: serial_stage_packet_emission_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py
+    test_family_id: prepared_ingress_checkpoint_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/serial_recommendation/test_execution_contract_models.py
+    test_family_id: execution_contract_models
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py
+    test_family_id: execution_final_join_boundary
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/serial_recommendation/test_execution_service_surface.py
+    test_family_id: execution_service_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py
+    test_family_id: serial_spine_contract_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py
+    test_family_id: serial_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/temporal/test_fwd006_reopened_row_raw_capture_source_temporal_proof.py
+    test_family_id: path__tests_tier_a_temporal_test_fwd006_reopened_row_raw_capture_source_temporal_proof_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py
+    test_family_id: raw_capture_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/temporal/test_source_temporal_standard_surface.py
+    test_family_id: source_temporal_standard_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py
+    test_family_id: canonical_runtime_specimen_surface
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_a/testing_harnesses/test_fwd002_fixture_and_sidecar_contract.py
+    test_family_id: path__tests_tier_a_testing_harnesses_test_fwd002_fixture_and_sidecar_contract_py
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py
+    test_family_id: module_8_parallel_risk_workbook_specimen_emission_surface
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py
+    test_family_id: module_8_parallel_risk_workbook_specimen_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py
+    test_family_id: serial_runtime_parallel_risk_boundary_specimen_surface
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py
+    test_family_id: cognition_ingress_mapping_surfaces
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/upstream_cognition/test_cognition_ingress_translation_coordinator.py
+    test_family_id: cognition_ingress_translation_coordinator
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py
+    test_family_id: path__tests_tier_a_upstream_cognition_test_fwd009_reopened_row_prepared_ingress_runtime_context_proof_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
+    test_family_id: path__tests_tier_a_upstream_cognition_test_prepared_context_packet_surface_py
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py
+    test_family_id: prepared_runtime_snapshot_contract_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py
+    test_family_id: prepared_runtime_substrate_surface
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py
+    test_family_id: prepared_runtime_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/upstream_cognition/test_regime_contract_models.py
+    test_family_id: regime_contract_models
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/upstream_cognition/test_regime_ingress_surface.py
+    test_family_id: regime_ingress_surface
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py
+    test_family_id: path__tests_tier_a_upstream_signal_test_fwd007_raw_signal_family_rebuild_contract_py
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py
+    test_family_id: raw_signal_contract_copy_boundary_surface
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py
+    test_family_id: raw_signal_transform_boundary_surface
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py
+    test_family_id: upstream_non_interference_and_sanity_traces
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py
+    test_family_id: upstream_signal_coverage_map_and_scope_lock
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py
+    test_family_id: dmp_v3_vocabulary_terms
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py
+    test_family_id: financial_calendar_vocabulary_terms
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_parallel_risk_description_vocabulary_constraints.py
+    test_family_id: path__tests_tier_a_vocabulary_test_parallel_risk_description_vocabulary_constraints_py
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py
+    test_family_id: parallel_risk_lane_vocabulary_terms
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py
+    test_family_id: vocabulary_candidate_admission_plan_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py
+    test_family_id: vocabulary_candidate_admission_review_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py
+    test_family_id: vocabulary_candidate_classification_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py
+    test_family_id: vocabulary_candidate_payload_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py
+    test_family_id: vocabulary_candidate_review_cli_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py
+    test_family_id: vocabulary_candidate_schema_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+    test_family_id: vocabulary_canonical_builder_parity
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py
+    test_family_id: vocabulary_document_json_helpers
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py
+    test_family_id: vocabulary_json_helper_contracts
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py
+    test_family_id: vocabulary_required_baseline_terms
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_schema_contract.py
+    test_family_id: vocabulary_schema_contract
+    source_disposition: ADMIT_TIER_A_CURRENT
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py
+    test_family_id: vocabulary_synonym_candidate_audit
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py
+    test_family_id: vocabulary_workflow_surface
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py
+    test_family_id: capital_deployment_transform_boundary_surface
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_b/options_flow_support/test_options_flow_history_lane_vocabulary.py
+    test_family_id: options_flow_history_lane_vocabulary
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_b/proof_model/test_checkpoint_receipt_contract.py
+    test_family_id: path__tests_tier_b_proof_model_test_checkpoint_receipt_contract_py
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_b/proof_model/test_proof_authority_contract.py
+    test_family_id: proof_authority_contract
+    source_disposition: m00_testing_guardrail_repair_unit_1
+  - test_path: tests/tier_b/proof_model/test_proof_executor_contract.py
+    test_family_id: proof_executor_contract
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py
+    test_family_id: bounded_trace_reporting
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_b/review_lineage/test_bounded_trace_review_regime.py
+    test_family_id: bounded_trace_review_regime
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_b/review_lineage/test_review_effective_policy_lineage.py
+    test_family_id: review_effective_policy_lineage
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py
+    test_family_id: review_replay_dmp_v3_lineage
+    source_disposition: RETIREMENT_RECOMMENDED_NOT_EXECUTED
+  - test_path: tests/tier_b/review_replay/test_tranche_a_review_replay.py
+    test_family_id: tranche_a_review_replay
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py
+    test_family_id: options_flow_output_contract_isolation
+    source_disposition: BLOCKED_P3_REPAIR
+  - test_path: tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py
+    test_family_id: playbook_eligibility_decontamination
+    source_disposition: ADMIT_TIER_B_SHADOW
+  - test_path: tests/tier_b/serial_boundaries/test_posture_permission_envelope.py
+    test_family_id: posture_permission_envelope
+    source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_b/upstream_support/test_bounded_trace_scenario_pack.py
+    test_family_id: bounded_trace_scenario_pack
+    source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL

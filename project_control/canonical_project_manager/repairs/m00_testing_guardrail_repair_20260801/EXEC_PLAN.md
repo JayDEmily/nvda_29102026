@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:CONTROL_REGISTRATION`
+**Status:** `ACTIVE:CURRENT_CONTROL_RECONCILIATION`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -145,7 +145,8 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 - 2026-08-01: user accepted the pre-execution audit and authorised worker execution.
 - 2026-08-01: baseline `2584705` confirmed clean; branch `work/m00-testing-guardrail-repair-v1` created.
-- 2026-08-01: Unit 0 opened.
+- 2026-08-01: Unit 0 committed at `58ee99d33207f63dc59e0a67aa8f2e12733d7136`.
+- 2026-08-01: Unit 1 established registry schema v4, proof manifest schema v2, exact path admission for all 195 physical governed test files, one 13-family/15-test pre-M00 promotion set, exact current-block proposition locators, and executable malformed/duplicate/reference/membership rejection proof.
 
 ## 9. Decisions
 
@@ -160,7 +161,7 @@ None at plan creation.
 ## 11. Unknowns
 
 - Whether the authorised package index can currently resolve every locked wheel remains Unknown until Unit 4 executes the canonical route.
-- The final exact current blocking membership remains Unknown until Units 1–2 semantically classify and reconcile all differences.
+- The exact pre-M00 current blocking membership is now Known: 13 accepted module-local families resolving to 15 tests. Unit 2 still must reconcile active control declarations and the explicit current/legacy API lifecycle boundary.
 
 ## 12. Closeout
 
