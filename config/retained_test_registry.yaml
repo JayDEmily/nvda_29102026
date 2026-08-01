@@ -3765,7 +3765,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a
   bounded_family: final_risk_join_and_fresh_capital_authority
   native_test_path: tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py
-  migration_status: module_local_c_proof_gate_d_pending_independent_review
+  migration_status: module_local_c_proof_independently_challenged_gate_d_open
   normative_basis:
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
   - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md

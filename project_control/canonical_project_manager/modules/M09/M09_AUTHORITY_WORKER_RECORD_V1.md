@@ -49,3 +49,7 @@ Fourteen reference/mutant cases pass and seven production-facing assertions are 
 ## Separate-worktree proof challenge finding
 
 The first detached review at C-PROOF commit `730c66c` found four omitted numeric-domain cases: zero available capital, negative reserved capital, percentages above 100 and a caution multiplier above 1. The numbered law already requires non-negative state and bounded sizing; section 7.13.3 is clarified before proof hardening. Gate D remains closed.
+
+## Independent proof review gate
+
+`PASS:SEPARATE_WORKTREE_REVIEW:GATE_D_OPEN` at hardened proof commit `8542846bbb3be926fc4b70ec386fbaf5390266a4`. The four novel numeric-domain cases now pass, the 16 admitted reference/mutant cases remain green, and seven production-facing assertions remain exact red solely because the canonical package is absent. Gate D is open only for the bounded M09 K11/K14 implementation.
