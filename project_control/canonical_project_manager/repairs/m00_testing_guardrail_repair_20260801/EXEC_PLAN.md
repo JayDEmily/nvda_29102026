@@ -152,6 +152,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 4 replaced editable pip installation with frozen non-editable uv synchronisation, normalised lock origins away from the private worker mirror, added an out-of-tree installed-package smoke target, and made both workflows delegate to repository-owned promotion commands. Local package retrieval remained externally blocked and is recorded under the Unit 4 evidence surface.
 - 2026-08-01: Unit 5 established a clean diagnostic baseline at commit `1d657e7`: all 13 admitted current proof blocks passed with 738 tests and zero skips, and the complete Tier B shadow passed 78 tests. Four aggregate-runner isolation defects were repaired. The authoritative lock-created run remains blocked by package-source unavailability, so M00 C-NORM has not opened.
 - 2026-08-01: historical evidence identified the two previously accepted Python 3.13.5 runtime/dev wheelhouse ZIPs by exact hash and size. A test-first `make install-offline` route now verifies those archives and performs frozen, offline, no-index, no-cache, non-editable `uv sync`. The archive bytes are not present in this worker, so Unit 5 remains blocked on those exact inputs.
+- 2026-08-01: offline bootstrap implementation committed at `6f8c0ce0851d7a2a3b59974460e8fad74be45256`; clean committed-tree validation passed 33 targeted proof-model tests, authority reconciliation at 195 families / 197 tests / 66 blocks, and promotion membership at 13 blocks / 13 families / 15 tests.
 
 ## 9. Decisions
 

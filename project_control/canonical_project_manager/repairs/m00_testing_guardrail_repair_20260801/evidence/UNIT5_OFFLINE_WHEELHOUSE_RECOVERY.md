@@ -2,6 +2,7 @@
 
 Date: 2026-08-01
 Branch: `work/m00-testing-guardrail-repair-v1`
+Implementation commit: `6f8c0ce0851d7a2a3b59974460e8fad74be45256`
 
 ## Outcome
 

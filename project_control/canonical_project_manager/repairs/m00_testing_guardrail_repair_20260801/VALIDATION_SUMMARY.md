@@ -202,6 +202,8 @@ Blocked. Obtain package-source access sufficient for `make install`, then execut
 
 **Outcome:** PASS_CONTROL; **BLOCKED_INPUT** pending the two accepted archive bytes.
 
+Implementation commit: `6f8c0ce0851d7a2a3b59974460e8fad74be45256`. The committed-tree targeted validation ran with a clean Git state.
+
 Historical Git evidence recovered the exact external wheelhouse identities used by a prior successful Python 3.13.5 bootstrap:
 
 - runtime: `498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1`, 64,236,501 bytes;
