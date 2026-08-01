@@ -162,6 +162,7 @@ def _run_block(
     timeout_seconds: int,
 ) -> dict[str, Any]:
     resolved, environment = resolve_command(command)
+    environment["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] = "1"
     started = time.monotonic()
     stdout = ""
     stderr = ""
@@ -216,6 +217,7 @@ def _environment_identity(repo_root: Path) -> dict[str, Any]:
         "python_version": platform.python_version(),
         "implementation": platform.python_implementation(),
         "platform": platform.platform(),
+        "pytest_disable_plugin_autoload": "1",
         "environment_files": {
             path.as_posix(): _sha256_path(repo_root / path)
             for path in ENVIRONMENT_PATHS
