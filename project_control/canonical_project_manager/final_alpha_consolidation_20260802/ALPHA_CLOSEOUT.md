@@ -12,7 +12,7 @@ This closeout does not claim live brokerage, durable operation, production readi
 
 | Module | Accepted alpha surface | Current ceiling | Primary evidence |
 |---|---|---|---|
-| M00 | Transport-neutral `ApplicationCommand`, `ApplicationQuery`, immutable run receipt and stateless final paper-run coordination | Run begins from supplied M03 output; current CLI/ASGI remain noncanonical compatibility routes | `repairs/m00_testing_guardrail_repair_20260801/evidence/UNIT7_M00_GATE_D_IMPLEMENTATION.md` |
+| M00 | Transport-neutral `ApplicationCommand`, `ApplicationQuery`, immutable run receipt, stateless final paper-run coordination and thin CLI/ASGI translation | Run begins from supplied M03 output; legacy `HttpApp`/`DeskRuntimeOrchestrator` remain compatibility-only | `repairs/post_alpha_m00_transport_adapters_20260802/VALIDATION_SUMMARY.md` |
 | M01 | Typed source identity, raw capture and source-family admission | Offline/caller-supplied; no live provider, credentials, durability or restart recovery | `modules/M01/raw_validation/fast_track_v1/VALIDATION_SUMMARY.md` |
 | M02 | Deterministic four-layer financial-calendar reference and projection | Caller-supplied calendar facts; no live calendar provider | `modules/M02/raw_validation/gate_d_k04_v1/GATE_D_VALIDATION_SUMMARY.md` |
 | M03 | Typed prepared-data envelope and field-resolution evidence | Preparation boundary only; no hidden source/calendar authority | `modules/M03/validation/m03_k05_k06_v1/GATE_D_VALIDATION_SUMMARY.md` |
@@ -39,7 +39,7 @@ The vocabulary definition of `RunCoordinator` was corrected during consolidation
 
 ## Material unresolved debt
 
-`MATERIAL_DEBT.tsv` is the authoritative concise inventory. The highest-priority next engineering gate is the thin CLI/ASGI migration to M00. Vocabulary reconciliation is a separate governance workstream and must be adjudicated one exact occurrence at a time; the current counts are not implementation-failure counts and must not be auto-resolved semantically.
+`MATERIAL_DEBT.tsv` is the authoritative concise inventory. `ALPHA-DEBT-001` is resolved by the bounded post-alpha M00 transport-adapter pack. Vocabulary reconciliation remains a separate governance workstream and must be adjudicated one exact occurrence at a time; the current counts are not implementation-failure counts and must not be auto-resolved semantically.
 
 ## Completion boundary
 

@@ -130,10 +130,10 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
 
 
-def test_live_control_surfaces_identify_post_alpha_transport_adapter_pack() -> None:
+def test_live_control_surfaces_identify_consolidated_alpha_state() -> None:
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1"
+    assert validate_active_control(REPO_ROOT) == "CANONICAL:ALPHA_CONSOLIDATED"
 
 
 def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(
@@ -205,7 +205,7 @@ def test_active_control_validation_accepts_consolidated_alpha_state(
     process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
     process.parent.mkdir(parents=True)
     process.write_text(
-        "The bounded pack `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` is closed.\n",
+        "No subordinate bounded pack is active.\n",
         encoding="utf-8",
     )
 

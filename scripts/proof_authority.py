@@ -475,7 +475,7 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
         "CANONICAL:ALPHA_CONSOLIDATED": (
             "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
             "| Active control pack | none — canonical ExecPlan only |",
-            "The bounded pack `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` is closed.",
+            "No subordinate bounded pack is active.",
         ),
     }
     matches = [

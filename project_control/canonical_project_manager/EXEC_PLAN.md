@@ -350,10 +350,12 @@ are accepted. The concise closeout is at
 `project_control/canonical_project_manager/final_alpha_consolidation_20260802/ALPHA_CLOSEOUT.md`;
 material unresolved debt is separately enumerated in `MATERIAL_DEBT.tsv`.
 
-The accepted alpha remains bounded. Current CLI/ASGI compatibility routes are not
-the canonical M00 transport boundary, Tier C is empty/deferred, and current M15
-vocabulary cleanliness is not established beyond namespace `m07`. These facts do
-not reopen accepted M00–M13 semantics by default.
+The accepted alpha remains bounded. The separately authorised `ALPHA-DEBT-001`
+subordinate pack replaced canonical CLI/ASGI selection of the compatibility route
+with thin translation into M00 through explicit coordinator injection. Tier C is
+still empty/deferred, and current M15 vocabulary cleanliness is not established
+beyond namespace `m07`. These facts do not reopen accepted M00–M13 semantics by
+default.
 
 No live brokerage, durable operations, production-readiness or profitability
 work is authorised by this completion state.
