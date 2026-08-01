@@ -5,13 +5,13 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/m00-testing-guardrail-repair-v1` |
-| Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
+| Branch | `work/post-alpha-m00-transport-adapters-v1` |
+| Current branch source checkpoint | `ef4aa1ae556df07871eca4ef93777edc189af8ed` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M00 bounded final composition and testing-guardrail closeout |
-| Current active slice | none — alpha consolidation complete |
-| Active control pack | none — canonical ExecPlan only |
-| Production implementation | M00–M13 bounded alpha slices consolidated; installed aggregate and Tier B shadow retained; explicit material debt recorded; no live/durable/production claim |
+| Current active slice | `ALPHA-DEBT-001` — canonical M00 CLI/ASGI transport adapters |
+| Active control pack | `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1` |
+| Production implementation | accepted alpha retained; bounded post-alpha transport-adapter debt remediation active; no live/durable/production claim |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
