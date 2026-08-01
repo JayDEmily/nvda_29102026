@@ -130,7 +130,6 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
 
 
-
 def test_live_control_surfaces_identify_post_alpha_transport_adapter_pack() -> None:
     from scripts.proof_authority import validate_active_control
 
@@ -155,15 +154,12 @@ def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(
     process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
     process.parent.mkdir(parents=True)
     process.write_text(
-        "The current active bounded pack is "
-        "`POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1`\n",
+        "The current active bounded pack is " "`POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1`\n",
         encoding="utf-8",
     )
 
-    assert (
-        validate_active_control(tmp_path)
-        == "POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1"
-    )
+    assert validate_active_control(tmp_path) == "POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1"
+
 
 def test_active_control_validation_uses_pack_identity_not_gate_wording(
     tmp_path: Path,

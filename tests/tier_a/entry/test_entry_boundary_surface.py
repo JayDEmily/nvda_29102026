@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any
 
 import pytest
-
 from tests.support.m00_application_shell_contract_harness import (
     production_api,
     production_query,
@@ -65,8 +64,7 @@ async def _asgi_request(
         item.get("body", b"") for item in sent if item["type"] == "http.response.body"
     )
     headers = {
-        key.decode("latin-1"): value.decode("latin-1")
-        for key, value in start.get("headers", [])
+        key.decode("latin-1"): value.decode("latin-1") for key, value in start.get("headers", [])
     }
     return start["status"], headers, json.loads(response_body or b"{}")
 
@@ -260,9 +258,7 @@ def test_asgi_fails_closed_at_transport_boundary(
     _, coordinator, _ = _runtime_payload(suffix=f"entry-asgi-error-{expected_status}")
     app = create_app(coordinator=coordinator)
 
-    status, _, body = asyncio.run(
-        _asgi_request(app, method=method, path=path, raw_body=raw_body)
-    )
+    status, _, body = asyncio.run(_asgi_request(app, method=method, path=path, raw_body=raw_body))
 
     assert status == expected_status
     assert body == {"error": expected_error}

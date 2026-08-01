@@ -13,18 +13,14 @@ from nvda_desk.m00_application_shell import (
 )
 
 
-def run_command(
-    payload: Mapping[str, Any], *, coordinator: RunCoordinator
-) -> dict[str, Any]:
+def run_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> dict[str, Any]:
     """Validate one exact application command and return its M00 receipt."""
 
     command = ApplicationCommand.model_validate(payload)
     return coordinator.run(command).model_dump(mode="json")
 
 
-def query_command(
-    payload: Mapping[str, Any], *, coordinator: RunCoordinator
-) -> dict[str, Any]:
+def query_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> dict[str, Any]:
     """Validate one exact read-only application query and return its M12 projection."""
 
     query = ApplicationQuery.model_validate(payload)
@@ -65,9 +61,7 @@ def build_cli(*, coordinator: RunCoordinator) -> argparse.ArgumentParser:
     return parser
 
 
-def run_cli(
-    argv: Sequence[str] | None = None, *, coordinator: RunCoordinator
-) -> dict[str, Any]:
+def run_cli(argv: Sequence[str] | None = None, *, coordinator: RunCoordinator) -> dict[str, Any]:
     """Parse arguments and execute one explicitly injected M00 operation."""
 
     parser = build_cli(coordinator=coordinator)
