@@ -331,9 +331,10 @@ def production_api() -> dict[str, Any]:
     return {name: getattr(module, name) for name in required}
 
 
-def production_serial_candidate():
+def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
     from tests.support.m05_k08_k09_contract_harness import (
         SERIAL_STAGE_ORDER,
+        fingerprint as m05_fingerprint,
         production_api as m05_api,
         production_context_payload,
         production_handlers,
@@ -343,23 +344,50 @@ def production_serial_candidate():
     )
 
     api = m05_api()
-    case = valid_context()
-    context = api["StageContext"].model_validate(production_context_payload(case))
-    inputs = tuple(
-        api["StageInput"].model_validate(production_stage_input_payload(item))
-        for item in valid_inputs(case, order=tuple(reversed(SERIAL_STAGE_ORDER)))
+    case = valid_context(
+        prepared_id=prepared_id,
+        prepared_fingerprint=prepared_fingerprint,
     )
+    context = api["StageContext"].model_validate(production_context_payload(case))
+    stage_inputs = []
+    for item in valid_inputs(case, order=tuple(reversed(SERIAL_STAGE_ORDER))):
+        if item.stage in {"temporal", "regime", "options_flow"}:
+            authority_refs = ((
+                "m03",
+                prepared_id,
+                case.prepared_schema_version,
+                prepared_fingerprint,
+            ),)
+            item = replace(
+                item,
+                authority_refs=authority_refs,
+                carrier_fingerprint=m05_fingerprint(
+                    {
+                        "stage": item.stage,
+                        "context": case.semantic_fingerprint,
+                        "authority_refs": authority_refs,
+                    }
+                ),
+            )
+        stage_inputs.append(
+            api["StageInput"].model_validate(production_stage_input_payload(item))
+        )
     runner = api["SerialRunner"](
         handlers=production_handlers(api),
         runner_version=case.runner_version,
         stage_order_version=case.serial_order_version,
     )
-    return runner.run(context=context, stage_inputs=inputs)
+    return runner.run(context=context, stage_inputs=tuple(stage_inputs))
 
 
 def production_parallel_assessment(*, vix_level: float = 20.0):
     from tests.support.m06_k10_contract_harness import make_prepared
     import nvda_desk.m06_parallel_risk as m06
+    from nvda_desk.m06_parallel_risk.contracts import (
+        EXPECTED_FAMILIES,
+        parallel_risk_assessment_fingerprint,
+        parallel_risk_observation_fingerprint,
+    )
 
     risk_input = m06.ParallelRiskInput.from_prepared(
         make_prepared(vix_level=vix_level),
@@ -369,7 +397,61 @@ def production_parallel_assessment(*, vix_level: float = 20.0):
         vix_caution_threshold=30.0,
         vix_block_threshold=50.0,
     )
-    return m06.ParallelRiskEvaluator().evaluate(risk_input)
+    base = m06.ParallelRiskEvaluator().evaluate(risk_input)
+    source_references = base.observations[0].source_references
+    observations = []
+    admitted_observe_reasons = {
+        "concentration": "concentration_within_admitted_limit",
+        "inventory_stress": "inventory_stress_within_admitted_limit",
+        "liquidity": "liquidity_within_admitted_limit",
+    }
+    for item in base.observations:
+        if item.family not in admitted_observe_reasons:
+            observations.append(item)
+            continue
+        payload = {
+            "observation_id": "pending",
+            "family": item.family,
+            "state": "observe",
+            "reason": admitted_observe_reasons[item.family],
+            "source_fields": item.source_fields,
+            "source_references": source_references,
+            "limitation": None,
+            "semantic_fingerprint": "0" * 64,
+        }
+        provisional = m06.ParallelRiskObservation.model_construct(**payload)
+        observation_fp = parallel_risk_observation_fingerprint(provisional)
+        payload["semantic_fingerprint"] = observation_fp
+        payload["observation_id"] = f"parallel-risk-observation:{observation_fp[:24]}"
+        observations.append(m06.ParallelRiskObservation.model_validate(payload))
+    observations = tuple(sorted(observations, key=lambda item: EXPECTED_FAMILIES.index(item.family)))
+    cautions = tuple(item.reason for item in observations if item.state == "caution")
+    blocks = tuple(item.reason for item in observations if item.state == "block")
+    unknowns = tuple(item.family for item in observations if item.state == "unknown")
+    limitations = tuple(
+        sorted(
+            set(base.prepared_limitations)
+            | set(base.missing_optional_enrichments)
+            | {item.limitation for item in observations if item.limitation}
+        )
+    )
+    state = "block" if blocks else "caution" if cautions else "unknown" if unknowns else "observe"
+    payload = {
+        **base.model_dump(mode="python"),
+        "assessment_id": "pending",
+        "state": state,
+        "observations": observations,
+        "caution_flags": cautions,
+        "hard_blocks": blocks,
+        "unknown_families": unknowns,
+        "limitations": limitations,
+        "semantic_fingerprint": "0" * 64,
+    }
+    provisional = m06.ParallelRiskAssessment.model_construct(**payload)
+    assessment_fp = parallel_risk_assessment_fingerprint(provisional)
+    payload["semantic_fingerprint"] = assessment_fp
+    payload["assessment_id"] = f"parallel-risk-assessment:{assessment_fp[:24]}"
+    return m06.ParallelRiskAssessment.model_validate(payload)
 
 
 def production_modifier_receipt(*, kill_switch: bool = False):

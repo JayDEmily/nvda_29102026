@@ -158,8 +158,11 @@ def test_each_false_positive_mutant_is_killed(mutant_name: str) -> None:
 
 def _production_inputs():
     api = production_api()
-    serial = production_serial_candidate()
     parallel = production_parallel_assessment(vix_level=20.0)
+    serial = production_serial_candidate(
+        prepared_id=parallel.prepared_id,
+        prepared_fingerprint=parallel.prepared_fingerprint,
+    )
     modifier = production_modifier_receipt()
     join_policy = api["FinalRiskJoinPolicy"](policy_version=JOIN_POLICY_VERSION, cautions_prohibit=False)
     capital_policy = api["CapitalDeploymentPolicy"](
@@ -203,8 +206,12 @@ def test_production_k11_joins_exact_owner_products() -> None:
 
 def test_production_k11_fail_closed_on_block_and_lineage_conflict() -> None:
     api, serial, parallel, _, join_policy, _, _ = _production_inputs()
-    blocked = parallel.model_copy(update={"state": "block", "hard_blocks": ("hard",)})
-    result = api["CapitalAuthorityService"]().join_final_risk(serial, blocked, join_policy)
+    blocked = production_parallel_assessment(vix_level=55.0)
+    blocked_serial = production_serial_candidate(
+        prepared_id=blocked.prepared_id,
+        prepared_fingerprint=blocked.prepared_fingerprint,
+    )
+    result = api["CapitalAuthorityService"]().join_final_risk(blocked_serial, blocked, join_policy)
     assert result.action == "stand_down"
     forged = parallel.model_copy(update={"prepared_id": "prepared.other"})
     with pytest.raises(ValueError, match="parallel_risk_assessment_contract_invalid"):
@@ -244,7 +251,12 @@ def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None
     killed = service.evaluate_capital(final, capital, production_modifier_receipt(kill_switch=True), capital_policy)
     assert killed.action == "block"
     assert killed.authorised_pct == 0
-    blocked_final = service.join_final_risk(serial, production_parallel_assessment(vix_level=55.0), join_policy)
+    blocked_parallel = production_parallel_assessment(vix_level=55.0)
+    blocked_serial = production_serial_candidate(
+        prepared_id=blocked_parallel.prepared_id,
+        prepared_fingerprint=blocked_parallel.prepared_fingerprint,
+    )
+    blocked_final = service.join_final_risk(blocked_serial, blocked_parallel, join_policy)
     blocked = service.evaluate_capital(blocked_final, capital, production_modifier_receipt(), capital_policy)
     assert blocked.action == "block"
     assert blocked.authorised_notional == 0
@@ -287,4 +299,144 @@ def test_production_rejects_unsupported_policy_versions_and_forged_copies() -> N
             policy_version=CAPITAL_POLICY_VERSION, target_pct=Decimal("10"),
             hard_max_pct=Decimal("15"), caution_multiplier=Decimal("1.01"),
             rounding_quantum=Decimal("0.01"),
+        )
+
+
+def _refingerprint_final(api, payload: dict):
+    from nvda_desk.m09_capital_authority.contracts import semantic_fingerprint
+
+    material = dict(payload)
+    material.pop("final_decision_id", None)
+    material.pop("semantic_fingerprint", None)
+    fp = semantic_fingerprint(material)
+    return api["FinalRiskDecision"].model_validate(
+        {**material, "final_decision_id": f"final-risk.{fp[:20]}", "semantic_fingerprint": fp}
+    )
+
+
+def _refingerprint_capital_decision(api, payload: dict):
+    from nvda_desk.m09_capital_authority.contracts import semantic_fingerprint
+
+    material = dict(payload)
+    material.pop("decision_id", None)
+    material.pop("semantic_fingerprint", None)
+    fp = semantic_fingerprint(material)
+    return api["CapitalDeploymentDecision"].model_validate(
+        {**material, "decision_id": f"capital-decision.{fp[:20]}", "semantic_fingerprint": fp}
+    )
+
+
+def test_production_policy_values_are_bound_into_semantic_identity() -> None:
+    api, _, _, modifier, _, capital_policy, capital = _production_inputs()
+    caution_parallel = production_parallel_assessment(vix_level=35.0)
+    caution_serial = production_serial_candidate(
+        prepared_id=caution_parallel.prepared_id,
+        prepared_fingerprint=caution_parallel.prepared_fingerprint,
+    )
+    service = api["CapitalAuthorityService"]()
+    permissive = api["FinalRiskJoinPolicy"](
+        policy_version=JOIN_POLICY_VERSION,
+        cautions_prohibit=False,
+    )
+    prohibiting = api["FinalRiskJoinPolicy"](
+        policy_version=JOIN_POLICY_VERSION,
+        cautions_prohibit=True,
+    )
+    eligible = service.join_final_risk(caution_serial, caution_parallel, permissive)
+    blocked = service.join_final_risk(caution_serial, caution_parallel, prohibiting)
+    assert eligible.action == "eligible_for_capital_assessment"
+    assert blocked.action == "stand_down"
+    assert eligible.join_policy_fingerprint != blocked.join_policy_fingerprint
+    assert eligible.final_decision_id != blocked.final_decision_id
+
+    reduced = service.evaluate_capital(eligible, capital, modifier, capital_policy)
+    altered_policy = api["CapitalDeploymentPolicy"](
+        policy_version=CAPITAL_POLICY_VERSION,
+        target_pct=Decimal("10"),
+        hard_max_pct=Decimal("15"),
+        caution_multiplier=Decimal("0.25"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    more_reduced = service.evaluate_capital(eligible, capital, modifier, altered_policy)
+    assert reduced.authorised_pct == Decimal("5.00")
+    assert more_reduced.authorised_pct == Decimal("2.50")
+    assert reduced.capital_policy_fingerprint != more_reduced.capital_policy_fingerprint
+    assert reduced.decision_id != more_reduced.decision_id
+
+
+def test_production_final_decision_rejects_contradictory_parallel_state() -> None:
+    api, serial, parallel, _, join_policy, _, _ = _production_inputs()
+    final = api["CapitalAuthorityService"]().join_final_risk(serial, parallel, join_policy)
+    forged = final.model_dump(mode="python")
+    forged["parallel_state"] = "block"
+    with pytest.raises(ValueError, match="parallel_block_state_requires_hard_block"):
+        _refingerprint_final(api, forged)
+
+
+def test_production_receipt_recomputes_decision_against_exact_inputs() -> None:
+    api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+    decision = service.evaluate_capital(final, capital, modifier, capital_policy)
+    forged_payload = decision.model_dump(mode="python")
+    forged_payload.update(
+        {
+            "action": "reduce",
+            "authorised_pct": Decimal("9.00"),
+            "authorised_notional": Decimal("9000.00"),
+            "reasons": ("forged_but_fingerprinted",),
+        }
+    )
+    forged = _refingerprint_capital_decision(api, forged_payload)
+    with pytest.raises(ValueError, match="capital_receipt_decision_input_mismatch"):
+        service.build_receipt(
+            forged,
+            final,
+            capital,
+            modifier,
+            capital_policy,
+            emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC),
+        )
+
+
+def test_production_receipt_preserves_exact_branch_and_policy_lineage() -> None:
+    api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+    decision = service.evaluate_capital(final, capital, modifier, capital_policy)
+    receipt = service.build_receipt(
+        decision,
+        final,
+        capital,
+        modifier,
+        capital_policy,
+        emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC),
+    )
+    assert receipt.serial_result_id == serial.serial_result_id
+    assert receipt.serial_candidate_id == serial.candidate_id
+    assert receipt.serial_candidate_fingerprint == serial.semantic_fingerprint
+    assert receipt.parallel_assessment_id == parallel.assessment_id
+    assert receipt.parallel_assessment_fingerprint == parallel.semantic_fingerprint
+    assert receipt.capital_policy_fingerprint == capital_policy.policy_fingerprint
+    assert receipt.execution_authority_granted is False
+
+
+def test_production_revalidates_forged_final_and_decision_copies() -> None:
+    api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+    forged_final = final.model_copy(update={"action": "stand_down"})
+    with pytest.raises(ValueError, match="final_risk_decision_contract_invalid"):
+        service.evaluate_capital(forged_final, capital, modifier, capital_policy)
+
+    decision = service.evaluate_capital(final, capital, modifier, capital_policy)
+    forged_decision = decision.model_copy(update={"authorised_notional": Decimal("1")})
+    with pytest.raises(ValueError, match="capital_deployment_decision_contract_invalid"):
+        service.build_receipt(
+            forged_decision,
+            final,
+            capital,
+            modifier,
+            capital_policy,
+            emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC),
         )

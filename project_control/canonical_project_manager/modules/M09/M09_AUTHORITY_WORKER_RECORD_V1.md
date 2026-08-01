@@ -53,3 +53,7 @@ The first detached review at C-PROOF commit `730c66c` found four omitted numeric
 ## Independent proof review gate
 
 `PASS:SEPARATE_WORKTREE_REVIEW:GATE_D_OPEN` at hardened proof commit `8542846bbb3be926fc4b70ec386fbaf5390266a4`. The four novel numeric-domain cases now pass, the 16 admitted reference/mutant cases remain green, and seven production-facing assertions remain exact red solely because the canonical package is absent. Gate D is open only for the bounded M09 K11/K14 implementation.
+
+## Gate D proof hardening
+
+The first implementation probe exposed an invalid positive-path fixture rather than a production-law failure: its M05 and M06 prepared lineage differed and its M06 assessment truthfully remained `unknown` for three unavailable families. Before implementation acceptance, the proof was corrected to use exact matching typed owner products and expanded by five adversarial public-boundary cases covering policy-value identity, contradictory aggregate summaries, receipt recomputation, complete branch lineage and forged-copy revalidation. With production source removed, 16 reference/mutant cases pass and 12 canonical production cases remain exact red; the retained C-036 compatibility route contributes three additional exact-red nodes.
