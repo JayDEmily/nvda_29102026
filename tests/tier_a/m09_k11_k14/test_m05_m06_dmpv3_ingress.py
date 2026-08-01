@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
+from decimal import Decimal
 
 import pytest
 
@@ -15,6 +16,7 @@ from nvda_desk.m06_parallel_risk import ParallelRiskPacketAdapter
 from tests.support.m09_k11_k14_contract_harness import (
     production_api,
     production_canonical_packet_pair,
+    production_modifier_receipt,
     production_parallel_assessment,
     production_serial_candidate,
 )
@@ -173,4 +175,96 @@ def test_m05_and_m06_adapters_reject_wrong_payload_state_or_parent_context() -> 
             emitted_at=datetime(2026, 8, 1, 1, 0, tzinfo=UTC),
             module_version="1.0.0",
             module_instance_id="m06.instance.001",
+        )
+
+
+def test_legacy_orchestrator_and_bootstrap_evaluator_are_explicitly_noncanonical() -> None:
+    from nvda_desk.risk.parallel import evaluate as legacy_parallel
+    from nvda_desk.runtime.orchestrator import DeskRuntimeOrchestrator
+
+    assert DeskRuntimeOrchestrator.canonical_runtime_route is False
+    assert DeskRuntimeOrchestrator.compatibility_scope == "legacy_pre_m00_serial_runtime_specimen"
+    assert legacy_parallel.CANONICAL_M06_ROUTE is False
+    assert legacy_parallel.COMPATIBILITY_SCOPE == "legacy_parallel_risk_bootstrap_specimen"
+
+    service_source = __import__(
+        "inspect"
+    ).getsource(production_api()["CapitalAuthorityService"])
+    assert "parallel_risk_bootstrap_input" not in service_source
+    assert "DeskRuntimeOrchestrator" not in service_source
+
+
+def test_packet_lineage_is_bound_into_capital_decision_and_receipt() -> None:
+    api = production_api()
+    serial_packet, parallel_packet, _ = production_canonical_packet_pair()
+    service = api["CapitalAuthorityService"]()
+    join_policy = api["FinalRiskJoinPolicy"](
+        policy_version="m09.final-risk-join.v1",
+        cautions_prohibit=False,
+    )
+    final = service.join_final_risk(serial_packet, parallel_packet, join_policy)
+    capital = api["CapitalState"].create(
+        state_id="capital.state.packet-lineage",
+        account_id="account.packet-lineage",
+        state_version=1,
+        effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+        available_capital=Decimal("100000"),
+        reserved_capital=Decimal("0"),
+        max_fresh_deployable_pct=Decimal("12"),
+        source_authority_ref="capital.snapshot.authority.v1",
+    )
+    capital_policy = api["CapitalDeploymentPolicy"](
+        policy_version="m09.capital-policy.v1",
+        target_pct=Decimal("10"),
+        hard_max_pct=Decimal("15"),
+        caution_multiplier=Decimal("0.5"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    modifier = production_modifier_receipt()
+    decision = service.evaluate_capital(final, capital, modifier, capital_policy)
+    receipt = service.build_receipt(
+        decision, final, capital, modifier, capital_policy,
+        emitted_at_utc=datetime(2026, 8, 1, 2, 0, tzinfo=UTC),
+    )
+    for field_name in (
+        "trace_id", "run_id", "scenario_id", "prepared_context_packet_id",
+        "prepared_context_carriage_fingerprint", "serial_packet_id",
+        "serial_packet_carriage_fingerprint", "parallel_packet_id",
+        "parallel_packet_carriage_fingerprint",
+    ):
+        assert getattr(decision, field_name) == getattr(final, field_name)
+        assert getattr(receipt, field_name) == getattr(final, field_name)
+    assert decision.carriage_validated is receipt.carriage_validated is True
+
+
+def test_domain_compatibility_join_cannot_authorise_capital() -> None:
+    api = production_api()
+    serial, parallel = _domain_pair()
+    service = api["CapitalAuthorityService"]()
+    join_policy = api["FinalRiskJoinPolicy"](
+        policy_version="m09.final-risk-join.v1",
+        cautions_prohibit=False,
+    )
+    final = service.join_final_risk_domain_for_compatibility(serial, parallel, join_policy)
+    assert final.carriage_validated is False
+    capital = api["CapitalState"].create(
+        state_id="capital.state.compatibility",
+        account_id="account.compatibility",
+        state_version=1,
+        effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+        available_capital=Decimal("100000"),
+        reserved_capital=Decimal("0"),
+        max_fresh_deployable_pct=Decimal("12"),
+        source_authority_ref="capital.snapshot.authority.v1",
+    )
+    capital_policy = api["CapitalDeploymentPolicy"](
+        policy_version="m09.capital-policy.v1",
+        target_pct=Decimal("10"),
+        hard_max_pct=Decimal("15"),
+        caution_multiplier=Decimal("0.5"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    with pytest.raises(ValueError, match="canonical_packet_carriage_required"):
+        service.evaluate_capital(
+            final, capital, production_modifier_receipt(), capital_policy
         )

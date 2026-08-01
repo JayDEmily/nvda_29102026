@@ -2438,7 +2438,7 @@ retained_seed_tier_a:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this public-seam family for all ten roles, every lineage-matrix cell, common and role checks, lawful outcomes, replay separation and ten named false-positive mutants.
   forbidden_carry_forward: Builder defaults, hard-coded validation labels, fingerprint-for-artefact substitution, diagnostic binding substitution, replay overclaim and green legacy contradictions must not satisfy K07.
-  notes: Admitted under the risk-triggered MVP protocol. Eleven exact production-red cases open the bounded M04 K07 Gate D implementation; the proof may not be weakened to make production green.
+  notes: Admitted under the risk-triggered MVP protocol. Eleven exact production-red cases open the bounded M04 K07 Gate D implementation; the proof may not be weakened to make production green. The pre-M00 repair additionally admits caller-owned DmpV3ExecutionContext and deterministic carriage fingerprinting while preserving K07 role and lineage law.
 - test_family_id: m13_state_kernel_module_local_contract
   native_status: admitted_tier_a_current
   bounded_family: persistence
@@ -3740,7 +3740,7 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP Gate D decision admits this bounded family for immutable common-context lineage, exact six-stage ordering and dependencies, owner-issued bounded carrier facts, exact input/output/dependency lineage, explicit formed/stand-down/withheld/rejected results, complete M03/M04/M07/M08 lineage, deterministic candidate meaning and closed foreign authority.
   forbidden_carry_forward: Caller order, skipped or duplicate stages, partial mappings presented as success, generated identity or wall-clock authority, dropped modifier lineage, empty eligibility authority, generic carrier payloads, hidden inventory reads, terminal binding payloads and serial claims of parallel-risk, capital, broker, position, lifecycle, transaction or replay authority must not satisfy M05.
-  notes: >-
+  notes: >- The pre-M00 repair additionally admits a thin SerialCandidatePacketAdapter for mandatory canonical egress into M09; the serial algorithm remains packet-agnostic.
     The accepted 32-case M05 baseline remains retained. The signal-informed temporal repair adds focused public-seam proof for signal dependence, clock-only degradation, hysteresis/dwell, regression resistance, correction lineage, stale evidence, deterministic replay, copy-safe state and typed M05 carrier integration.
 
 - test_family_id: m06_k10_parallel_risk_contract
@@ -3763,7 +3763,7 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for exact prepared/input lineage, explicit policy and thresholds, typed observations, block-dominant deterministic aggregation, unknown preservation, side-effect freedom and closed foreign authority.
   forbidden_carry_forward: Generic mappings, unadmitted bootstrap packets, copied-model validator bypass, silent thresholds, caller-order aggregation, unknown-as-safe, module-global decision state and M06 claims of serial-candidate, K11 final-risk, capital, execution, lifecycle, transaction or replay authority must not satisfy K10.
-  notes: >-
+  notes: >- The pre-M00 repair additionally admits a thin ParallelRiskPacketAdapter for mandatory canonical egress into M09; the risk evaluator remains packet-agnostic.
     Thirty focused cases pass: thirteen reference and mutant cases, the seven formerly expected-red production assertions, and ten Gate D integrity cases covering typed-input enforcement, copied-model revalidation, exact M07 threshold authority, deterministic canonicalisation, observation/limitation closure, deep immutability, numeric validity, downstream-authority exclusion and instance-local legacy compatibility state.
 
 - test_family_id: m09_k11_k14_capital_authority_contract

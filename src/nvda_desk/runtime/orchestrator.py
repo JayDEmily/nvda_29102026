@@ -31,7 +31,10 @@ from nvda_desk.services.temporal_context_service import TemporalContextService
 
 
 class DeskRuntimeOrchestrator:
-    """Own one deterministic stateless runtime pass and explicit serial stage order."""
+    """Legacy pre-M00 serial specimen; not the canonical M05/M06-to-M09 route."""
+
+    canonical_runtime_route: bool = False
+    compatibility_scope: str = "legacy_pre_m00_serial_runtime_specimen"
 
     stage_order: tuple[str, ...] = SERIAL_SPINE_STAGE_ORDER
 
