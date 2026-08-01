@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-08-01-m09-k11-k14-normative-authority-v1",
+  "registry_version": "2026-08-01-m11-k16-k17-normative-authority-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -17,7 +17,8 @@
     "The 2026-07-31 M05 K08/K09 amendment admits StageContext, StageInput, StageOutput, SerialCandidate and SerialRunner under a bounded M05 namespace.",
     "The 2026-07-31 M06 K10 amendment admits ParallelRiskInput, ParallelRiskObservation, ParallelRiskAssessment and ParallelRiskEvaluator under a bounded M06 namespace.",
     "The 2026-08-01 M09 K11/K14 amendment admits FinalRiskDecision, CapitalState, CapitalDeploymentDecision and CapitalDeploymentReceipt under a bounded M09 namespace.",
-    "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace."
+    "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace.",
+    "The 2026-08-01 M11 K16/K17 amendment admits PositionState, PortfolioSnapshot, LifecycleDecision and CloseReceipt under a bounded M11 namespace."
   ],
   "namespaces": {
     "global": {
@@ -253,6 +254,24 @@
         "tests/tier_a/m10_k15",
         "tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py",
         "tests/tier_a/adapters_egress/test_broker_boundary_surface.py"
+      ]
+    },
+    "m11": {
+      "namespace": "m11",
+      "imports": [
+        "global",
+        "m10"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/m11_portfolio_lifecycle",
+        "src/nvda_desk/downstream/live_inventory.py",
+        "src/nvda_desk/contracts/exit_close.py",
+        "src/nvda_desk/downstream/exit_close.py",
+        "tests/support/m11_k16_k17_contract_harness.py",
+        "tests/tier_a/m11_k16_k17"
       ]
     }
   },
@@ -4963,6 +4982,130 @@
         "Semantic decisions: M10-K15-EXECUTION-GATEWAY-V1",
         "Human aliases: ExecutionReceipt; execution receipt.",
         "Human disallowed or misleading use: Live broker receipt; position receipt; durable commit proof; capital decision."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m11",
+      "canonical_id": "m11.position_state",
+      "canonical_slug": "position_state",
+      "canonical_label": "Canonical Portfolio Position",
+      "category": "authority_surface",
+      "stage_owner": "portfolio_lifecycle",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15",
+      "allowed_aliases": [
+        "PositionState",
+        "canonical position"
+      ],
+      "disallowed_phrases": [
+        "broker position as canonical state",
+        "caller-authored position mapping",
+        "live account truth",
+        "durable position proof",
+        "position state as capital decision"
+      ],
+      "notes": [
+        "Definition: Immutable canonical M11 long-NVDA position truth derived only from exact accepted M10 fill evidence, preserving quantity, cost basis, average cost, fill lineage, transaction state version and non-durable alpha status.",
+        "Scope: M11 K16 canonical position state",
+        "Semantic owner: M11 portfolio lifecycle",
+        "Relationships: Contained by Portfolio Snapshot; updated only by exact fill reconciliation or accepted trim/close lifecycle mutation; distinct from M10 fill evidence and broker account truth.",
+        "Lifecycle: active_k16_contract",
+        "Semantic decisions: M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",
+        "Human aliases: PositionState; canonical position.",
+        "Human disallowed or misleading use: Broker position; caller-authored mapping; live account balance; durable position proof; capital decision."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m11",
+      "canonical_id": "m11.portfolio_snapshot",
+      "canonical_slug": "portfolio_snapshot",
+      "canonical_label": "Portfolio Snapshot",
+      "category": "authority_surface",
+      "stage_owner": "portfolio_lifecycle",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15",
+      "allowed_aliases": [
+        "PortfolioSnapshot",
+        "canonical inventory snapshot"
+      ],
+      "disallowed_phrases": [
+        "generic live inventory mapping",
+        "broker account statement",
+        "hidden mutable inventory cache",
+        "durable portfolio proof",
+        "portfolio snapshot as capital state"
+      ],
+      "notes": [
+        "Definition: Immutable M11 K16 inventory snapshot containing the complete ordered canonical position set, state version, UTC effective time, deterministic identity and explicit non-durable status.",
+        "Scope: M11 K16 portfolio inventory state",
+        "Semantic owner: M11 portfolio lifecycle",
+        "Relationships: Contains Position State values and is consumed by Lifecycle Decision; reflects M13 transaction version without transferring M13 ownership.",
+        "Lifecycle: active_k16_contract",
+        "Semantic decisions: M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",
+        "Human aliases: PortfolioSnapshot; canonical inventory snapshot.",
+        "Human disallowed or misleading use: Generic live inventory mapping; broker account statement; hidden mutable cache; durable portfolio proof; capital state."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m11",
+      "canonical_id": "m11.lifecycle_decision",
+      "canonical_slug": "lifecycle_decision",
+      "canonical_label": "Lifecycle Decision",
+      "category": "authority_surface",
+      "stage_owner": "portfolio_lifecycle",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15",
+      "allowed_aliases": [
+        "LifecycleDecision",
+        "position lifecycle decision"
+      ],
+      "disallowed_phrases": [
+        "lifecycle decision as broker close order",
+        "lifecycle capital recomputation",
+        "stale snapshot lifecycle decision",
+        "generic strategy action",
+        "replay-side lifecycle command"
+      ],
+      "notes": [
+        "Definition: Immutable M11 K17 hold, trim or close decision bound to one exact current Portfolio Snapshot and Position State with explicit quantity, reasons, time and closed policy version.",
+        "Scope: M11 K17 existing-position lifecycle decision",
+        "Semantic owner: M11 portfolio lifecycle",
+        "Relationships: Consumes exact Portfolio Snapshot and Position State; trim/close may produce Close Receipt; hold is non-mutating evidence.",
+        "Lifecycle: active_k17_contract",
+        "Semantic decisions: M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",
+        "Human aliases: LifecycleDecision; position lifecycle decision.",
+        "Human disallowed or misleading use: Broker close order; capital recomputation; stale snapshot decision; generic strategy action; replay-side command."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m11",
+      "canonical_id": "m11.close_receipt",
+      "canonical_slug": "close_receipt",
+      "canonical_label": "Close Receipt",
+      "category": "protocol_surface",
+      "stage_owner": "portfolio_lifecycle",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15",
+      "allowed_aliases": [
+        "CloseReceipt",
+        "lifecycle mutation receipt"
+      ],
+      "disallowed_phrases": [
+        "close receipt as broker receipt",
+        "close receipt as live fill confirmation",
+        "close receipt proves durable commit",
+        "close receipt as capital receipt",
+        "hold receipt"
+      ],
+      "notes": [
+        "Definition: Immutable M11 K17 atomic trim/close evidence binding the exact Lifecycle Decision, prior and resulting position state, resulting Portfolio Snapshot and M13 transaction receipt.",
+        "Scope: M11 K17 trim/close mutation evidence",
+        "Semantic owner: M11 portfolio lifecycle",
+        "Relationships: Attests one atomic lifecycle mutation; preserves M13 receipt facts while M11 retains domain meaning; does not prove broker submission or durability.",
+        "Lifecycle: active_k17_contract",
+        "Semantic decisions: M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",
+        "Human aliases: CloseReceipt; lifecycle mutation receipt.",
+        "Human disallowed or misleading use: Broker close receipt; live fill confirmation; durable commit proof; capital receipt; hold receipt."
       ],
       "raw_or_derived": "derived"
     }
