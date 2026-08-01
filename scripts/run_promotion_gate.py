@@ -9,6 +9,7 @@ import os
 import platform
 import re
 import shlex
+import signal
 import subprocess
 import sys
 import tempfile
@@ -154,6 +155,31 @@ def classify_pytest_result(
     return "PASS", counts
 
 
+def _terminate_process_group(process_group_id: int) -> bool:
+    """Terminate residual proof descendants and report whether any existed."""
+
+    try:
+        os.killpg(process_group_id, 0)
+    except ProcessLookupError:
+        return False
+    try:
+        os.killpg(process_group_id, signal.SIGTERM)
+    except ProcessLookupError:
+        return False
+    deadline = time.monotonic() + 1.0
+    while time.monotonic() < deadline:
+        try:
+            os.killpg(process_group_id, 0)
+        except ProcessLookupError:
+            return True
+        time.sleep(0.01)
+    try:
+        os.killpg(process_group_id, signal.SIGKILL)
+    except ProcessLookupError:
+        pass
+    return True
+
+
 def _run_block(
     block_id: str,
     command: str,
@@ -168,25 +194,31 @@ def _run_block(
     stderr = ""
     exit_code: int | None = None
     timed_out = False
+    residual_process_group_terminated = False
     with (
         tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stdout_file,
         tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stderr_file,
     ):
+        process = subprocess.Popen(
+            resolved,
+            cwd=repo_root,
+            env=environment,
+            text=True,
+            stdout=stdout_file,
+            stderr=stderr_file,
+            start_new_session=True,
+        )
         try:
-            completed = subprocess.run(
-                resolved,
-                cwd=repo_root,
-                env=environment,
-                check=False,
-                text=True,
-                stdout=stdout_file,
-                stderr=stderr_file,
-                timeout=timeout_seconds,
-                start_new_session=True,
-            )
-            exit_code = completed.returncode
+            exit_code = process.wait(timeout=timeout_seconds)
         except subprocess.TimeoutExpired:
             timed_out = True
+        residual_process_group_terminated = _terminate_process_group(process.pid)
+        if process.poll() is None:
+            try:
+                exit_code = process.wait(timeout=2)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                exit_code = process.wait(timeout=2)
         stdout_file.flush()
         stderr_file.flush()
         stdout_file.seek(0)
@@ -197,11 +229,14 @@ def _run_block(
     status, counts = classify_pytest_result(
         exit_code=exit_code, stdout=stdout, stderr=stderr, timed_out=timed_out
     )
+    if residual_process_group_terminated and status == "PASS":
+        status = "FAIL_RESIDUAL_PROCESS"
     return {
         "proof_block_id": block_id,
         "status": status,
         "exit_code": exit_code,
         "timed_out": timed_out,
+        "residual_process_group_terminated": residual_process_group_terminated,
         "duration_seconds": duration,
         "command": command,
         "resolved_command": resolved,

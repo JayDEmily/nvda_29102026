@@ -7,6 +7,7 @@ import sys
 
 import pytest
 
+import scripts.run_promotion_gate as promotion_gate
 from scripts.run_promotion_gate import (
     PromotionError,
     _run_block,
@@ -82,19 +83,40 @@ def test_dirty_git_state_is_not_promotion_evidence() -> None:
         require_clean_git({"status": " M governed.py"}, stage="pre-run")
 
 
+class _FakeProcess:
+    def __init__(self, *, exit_code: int = 0, times_out: bool = False) -> None:
+        self.pid = 2_147_000_000
+        self._exit_code = exit_code
+        self._times_out = times_out
+        self.returncode: int | None = None
+
+    def wait(self, timeout: int | None = None) -> int:
+        if self._times_out and self.returncode is None:
+            raise subprocess.TimeoutExpired(cmd="fake", timeout=timeout)
+        self.returncode = self._exit_code
+        return self._exit_code
+
+    def poll(self) -> int | None:
+        return self.returncode
+
+    def kill(self) -> None:
+        self.returncode = -9
+
+
 def test_block_capture_uses_files_not_subprocess_pipes(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    def completed(*args, **kwargs):  # type: ignore[no-untyped-def]
+    def popen(*args, **kwargs):  # type: ignore[no-untyped-def]
         assert "capture_output" not in kwargs
         assert kwargs["stdout"] is not subprocess.PIPE
         assert kwargs["stderr"] is not subprocess.PIPE
         assert kwargs["start_new_session"] is True
         assert kwargs["env"]["PYTEST_DISABLE_PLUGIN_AUTOLOAD"] == "1"
         kwargs["stdout"].write("1 passed in 0.01s\n")
-        return subprocess.CompletedProcess(args[0], 0)
+        return _FakeProcess()
 
-    monkeypatch.setattr(subprocess, "run", completed)
+    monkeypatch.setattr(subprocess, "Popen", popen)
+    monkeypatch.setattr(promotion_gate, "_terminate_process_group", lambda _pid: False)
     result = _run_block(
         "file_capture_block",
         "python -c 'print(1)'",
@@ -104,13 +126,12 @@ def test_block_capture_uses_files_not_subprocess_pipes(
 
     assert result["status"] == "PASS"
     assert result["pytest_counts"]["passed"] == 1
+    assert result["residual_process_group_terminated"] is False
 
 
 def test_block_timeout_is_recorded_as_failure(monkeypatch: pytest.MonkeyPatch) -> None:
-    def timeout(*args, **kwargs):  # type: ignore[no-untyped-def]
-        raise subprocess.TimeoutExpired(cmd=args[0], timeout=1, output="partial")
-
-    monkeypatch.setattr(subprocess, "run", timeout)
+    monkeypatch.setattr(subprocess, "Popen", lambda *args, **kwargs: _FakeProcess(times_out=True))
+    monkeypatch.setattr(promotion_gate, "_terminate_process_group", lambda _pid: True)
     result = _run_block(
         "timed_out_block",
         "python -c 'print(1)'",
@@ -120,7 +141,25 @@ def test_block_timeout_is_recorded_as_failure(monkeypatch: pytest.MonkeyPatch) -
 
     assert result["status"] == "TIMEOUT"
     assert result["timed_out"] is True
-    assert result["exit_code"] is None
+    assert result["residual_process_group_terminated"] is True
+
+
+def test_residual_process_group_fails_closed(monkeypatch: pytest.MonkeyPatch) -> None:
+    def popen(*args, **kwargs):  # type: ignore[no-untyped-def]
+        kwargs["stdout"].write("1 passed in 0.01s\n")
+        return _FakeProcess()
+
+    monkeypatch.setattr(subprocess, "Popen", popen)
+    monkeypatch.setattr(promotion_gate, "_terminate_process_group", lambda _pid: True)
+    result = _run_block(
+        "residual_process_block",
+        "python -c 'print(1)'",
+        repo_root=REPO_ROOT,
+        timeout_seconds=1,
+    )
+
+    assert result["status"] == "FAIL_RESIDUAL_PROCESS"
+    assert result["residual_process_group_terminated"] is True
 
 
 def test_makefile_exposes_distinct_membership_check_and_executing_gate() -> None:
