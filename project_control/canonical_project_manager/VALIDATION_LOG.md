@@ -1738,3 +1738,47 @@ The novel audit's eight authority-supported defects were repaired. From the user
 | Ruff / Black | unavailable; locked modules not installed |
 
 Evidence: `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/GATE_D_REPAIR_VALIDATION_SUMMARY.md`.
+
+## 2026-08-01 — M09 K11/K14 Gate D acceptance and user checkpoint
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M09_K11_K14_CAPITAL_AUTHORITY`
+
+The canonical M09 package now consumes exact typed M05, M06 and M07 authority,
+closes the categorical K11 final-risk join, evaluates one immutable capital
+snapshot under a closed M09 policy and emits deterministic K14 decision/receipt
+evidence without opening placement, broker, position, lifecycle, transaction or
+replay authority.
+
+The mandatory detached proof review closed zero-capital and numeric-domain gaps
+before Gate D. A subsequent generated boundary probe found that half-up rounding
+could exceed an explicit percentage cap; normative law, proof and implementation
+were corrected before acceptance. Percentage and notional now round down without
+increasing authority, and numeric-equivalent decimal values share semantic
+identity.
+
+| Check | Result |
+|---|---|
+| Focused K11/K14 proof | PASS — 32 / 32 |
+| C-036 compatibility | PASS — 3 / 3 |
+| Proof block / all manifests | PASS — 32 / 32; 61 / 61 |
+| Proof-executor contract | PASS — 21 / 21 |
+| Tier B | PASS — 49 / 49 |
+| Vocabulary audit | PASS — zero unresolved candidates across 27 files and 297 governed occurrences |
+| Affected comparison | 49 passed / 32 failed → 67 / 14; 18 resolved; zero new failing nodes |
+| Complete Tier A comparison | 1,537 passed / 271 failed → 1,555 / 253; 18 resolved; zero new failing nodes |
+| Generated boundary probe | PASS — 400 sizing cases plus two forged-state cases |
+| Static compilation / diff check | PASS |
+| Ruff / Black | unavailable; locked modules not installed |
+
+The remaining 253 Tier A failures reproduce at hardened proof baseline
+`66f6bc4`. Three vocabulary failures are unchanged. The current M06 evaluator
+still returns explicit `unknown` for three unavailable owner facts; therefore
+M09 acceptance proves lawful owner-product consumption, not complete M00
+end-to-end eligibility.
+
+### Next action
+
+Pause and publish the user-requested clean full-history M09 checkpoint. M10 has
+not started.

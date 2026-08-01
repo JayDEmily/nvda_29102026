@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/chat-audit-repair-m03-m05-m06-v1` |
-| Current branch source checkpoint | `55e3b0b154bcd1829de133222f1c5ce0a13a1361` |
+| Branch | `work/m09-k11-k14-capital-authority-v1` |
+| Current branch source checkpoint | `330becaa99e862f40ae4066d35e21ae9788ddcae` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | repaired M03 K05/K06, M05 K08/K09 and M06 K10 authority |
-| Current active slice | paused for clean full-history checkpoint after adversarial repair acceptance |
-| Production implementation | M03/M05/M06 repaired Gate D accepted; M09 has not started |
+| Latest accepted implementation slice | M09 K11 final-risk join and K14 bounded fresh-capital authority |
+| Current active slice | paused for clean full-history checkpoint after M09 Gate D acceptance |
+| Production implementation | M09 Gate D accepted; M10 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -132,6 +132,26 @@ required before implementation.
 
 The repair admitted 12 exact red cases at proof baseline `6d03237` and now passes 99/99 focused cases. The original positive/metamorphic checks pass 8/8, proof manifests pass 60/60, the proof-executor contract passes 21/21 and Tier B passes 49/49. Complete comparable Tier A moved from 1,508 passed / 268 failed to 1,520 / 256: all 12 admitted nodes resolved and zero new failing nodes appeared. All 17 vocabulary files were run individually; 100 cases pass and the same three baseline failures remain. Evidence is under `project_control/canonical_project_manager/repairs/chat_audit_repair_20260731/`.
 
+## M09 K11/K14 Gate D acceptance
+
+M09 acceptance records 32/32 focused cases, three bounded C-036 compatibility
+cases, proof-manifest integrity at 61/61 and the proof executor at 21/21. Tier B
+passes 49/49. A mandatory detached proof review closed capital/policy numeric
+domains before Gate D; a later boundary probe found and closed upward percentage
+rounding and decimal replay-identity defects before acceptance.
+
+Complete Tier A moved from 1,537 passed / 271 failed at hardened proof baseline
+`66f6bc4` to 1,555 / 253: 18 exact M09/C-036 nodes resolved and zero new failing
+nodes appeared. The vocabulary partition remains 100 passed / three unchanged
+failures; the M09 namespace audit is clean across 27 files and 297 governed
+occurrences. Evidence is under
+`project_control/canonical_project_manager/modules/M09/validation/m09_k11_k14_v1/`.
+
+The current M06 evaluator still reports explicit unknowns when three owner facts
+are unavailable, so this acceptance does not claim complete M00 end-to-end
+eligibility.
+
 ## Immediate next action
 
-Publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair. The next semantic unit is M09 K11/fresh-capital authority; it has not started.
+Publish the clean full-history checkpoint for accepted M09 K11/K14 Gate D. The
+next semantic unit is M10 execution-gateway authority; it has not started.

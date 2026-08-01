@@ -2,8 +2,8 @@
 
 ## Status
 
-**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M03_M05_M06_ADVERSARIAL_REPAIR_ACCEPTED`
-**Amendment date:** `2026-07-31`
+**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M09_GATE_D_ACCEPTED`
+**Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
 **Gate C protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
@@ -212,6 +212,12 @@ command route or comparability is stale or Unknown.
   M03/M04/M07 lineage and six risk families are preserved, unknown/degraded
   evidence remains explicit, module-global policy-decision state is removed,
   and the exact Tier A comparison contains zero new failing nodes.
+- M09 K11/K14 satisfies C-NORM, independently challenged C-PROOF and bounded
+  Gate D: 32 focused cases and three bounded C-036 compatibility cases pass;
+  exact M05/M06/M07 and capital-state lineage is preserved; percentage and
+  notional rounding cannot increase authority; numeric-equivalent decimal
+  inputs share one semantic identity; and complete Tier A resolves 18 exact
+  proof-baseline failures with zero new failing nodes.
 
 ### Converted decision
 
@@ -260,20 +266,30 @@ upstream and threshold lineage, keeps unknown/degraded evidence explicit and
 does not acquire K11 final-risk, capital, broker, portfolio or lifecycle
 authority.
 
+M09 satisfies `C-NORM`, independently challenged `C-PROOF` and bounded K11/K14
+Gate D. The accepted package owns one categorical final-risk join and one
+bounded fresh-capital decision/receipt seam. It is deterministic,
+side-effect-free and fail-closed; it rounds down rather than increasing
+authority and does not acquire order placement, broker execution, position,
+lifecycle, durable transaction or replay authority.
+
 ### Queued
 
-- Publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair.
-- M09 K11/fresh-capital authority is next; it has not started.
+- Publish the clean full-history checkpoint for accepted M09 K11/K14 Gate D.
+- M10 execution-gateway authority is next; it has not started.
 
 ## 8. Immediate work
 
-Pause and publish the clean full-history checkpoint for the accepted M03/M05/M06 adversarial repair. The repair resolves 12 exact proof-baseline failures with zero new Tier A failure nodes. M09 K11/fresh-capital authority remains next and has not started.
+Pause and publish the clean full-history checkpoint for accepted M09 K11/K14
+Gate D. M09 resolves 18 exact hardened-proof-baseline failures with zero new
+Tier A failure nodes. M10 execution-gateway authority remains next and has not
+started.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M09, M10, M11 and M12;
+1. M10, M11 and M12;
 2. M00 final composition;
 3. final alpha consolidation.
 

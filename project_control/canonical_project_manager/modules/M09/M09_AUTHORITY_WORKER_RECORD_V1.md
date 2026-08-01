@@ -7,8 +7,9 @@
 - Contract boundary: `K11 FinalRiskDecision; K14 CapitalDeploymentReceipt`
 - Requirements: `N-08; C-034; C-036; OBL-M09-POSITIVE`
 - Source checkpoint: `330becaa99e862f40ae4066d35e21ae9788ddcae`
-- Active gate: `C-NORM`
-- Gate D: `CLOSED`
+- Active gate: `COMPLETE`
+- Checkpoint state: `USER_CHECKPOINT_REQUESTED`
+- Gate D: `ACCEPTED`
 - Branch: `work/m09-k11-k14-capital-authority-v1`
 
 ## Question
@@ -57,3 +58,35 @@ The first detached review at C-PROOF commit `730c66c` found four omitted numeric
 ## Gate D proof hardening
 
 The first implementation probe exposed an invalid positive-path fixture rather than a production-law failure: its M05 and M06 prepared lineage differed and its M06 assessment truthfully remained `unknown` for three unavailable families. Before implementation acceptance, the proof was corrected to use exact matching typed owner products and expanded by five adversarial public-boundary cases covering policy-value identity, contradictory aggregate summaries, receipt recomputation, complete branch lineage and forged-copy revalidation. With production source removed, 16 reference/mutant cases pass and 12 canonical production cases remain exact red; the retained C-036 compatibility route contributes three additional exact-red nodes.
+
+## Gate D rounding review
+
+An independent post-implementation boundary probe found that half-up percentage
+rounding could increase `9.999%` to `10.00%` and exceed an explicit hard/state
+cap. Normative law was amended before acceptance, the proof baseline was reset at
+`66f6bc4`, and three additional production cases were admitted for downward
+quantum rounding, sub-quantum no-trade behaviour, tiny-notional no-trade,
+numeric-equivalent replay identity and recomputed cap contradictions.
+
+## Gate D acceptance
+
+`PASS:GATE_D_ACCEPTED:M09_K11_K14_CAPITAL_AUTHORITY`
+
+The canonical package now closes exact K11 owner-product joining and K14 bounded
+fresh-capital evaluation. It revalidates copied authority, binds policy and
+capital-state facts into deterministic evidence, rounds percentage/notional
+down without increasing authority, rejects recomputed contradictions and opens
+no M10/M11 or durable-state authority.
+
+Thirty-two focused cases pass: ten reference-law cases, seven named mutants and
+15 production-facing cases. The three retained C-036 compatibility cases also
+pass. Complete Tier A moves from 1,537 passed / 271 failed at the hardened proof
+baseline to 1,555 / 253, resolving 18 exact nodes with zero new failing nodes.
+Proof manifests pass 61/61, the proof-executor contract passes 21/21, Tier B
+passes 49/49 and the M09 vocabulary audit is clean across 27 files and 297
+governed occurrences.
+
+The current M06 evaluator still returns explicit `unknown` for three unavailable
+risk families. M09 acceptance therefore proves lawful consumption of a complete
+typed M06 owner product; it does not claim complete M00 end-to-end eligibility.
+M10 has not started.

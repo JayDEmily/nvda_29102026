@@ -3765,7 +3765,7 @@ fast_track_module_local_admissions:
   native_status: admitted_tier_a
   bounded_family: final_risk_join_and_fresh_capital_authority
   native_test_path: tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py
-  migration_status: module_local_c_proof_independently_challenged_gate_d_open
+  migration_status: module_local_gate_d_accepted
   normative_basis:
   - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
   - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
@@ -3782,4 +3782,4 @@ fast_track_module_local_admissions:
   native_reauthor_required: false
   admission_reason: The 1 August 2026 MVP C-PROOF decision admits this bounded family for exact M05/M06 join lineage, categorical block dominance, explicit capital state, bounded policy sizing, exact M07 receipt lineage, deterministic receipt identity and closed M10/M11/durable authority.
   forbidden_carry_forward: Missing branches, confidence override, lineage repair, posture coefficients treated as capital percentages, ignored hard maxima, arbitrary future policy labels, wall-clock semantic identity, anonymous scalar summaries and M09 claims of order, position or durable transaction authority must not satisfy K11/K14.
-  notes: C-PROOF contains nine reference-law cases, seven named false-positive mutants and seven intentionally exact-red production assertions, including detached-review hardening for zero available capital and closed capital/policy numeric domains. Gate D remains closed pending separate-worktree adversarial review.
+  notes: Gate D acceptance contains ten reference-law cases, seven named false-positive mutants and fifteen production assertions. Detached review closed numeric-domain gaps; a later boundary probe closed upward-rounding and numeric-identity defects. The bounded C-036 compatibility route passes three cases and remains non-canonical. Complete Tier A resolves eighteen proof-baseline nodes with zero new failing nodes.

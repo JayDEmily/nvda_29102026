@@ -900,7 +900,7 @@ proof_blocks:
 
   - proof_block_id: m04_k07_packet_role_contract
     tier: Tier A
-    lifecycle: admitted_current_mvp_c_proof
+    lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py
     owns:
@@ -1101,9 +1101,16 @@ proof_blocks:
       - tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py
       - tests/support/m09_k11_k14_contract_harness.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
+      - src/nvda_desk/m09_capital_authority/__init__.py
+      - src/nvda_desk/m09_capital_authority/contracts.py
+      - src/nvda_desk/m09_capital_authority/service.py
+      - src/nvda_desk/contracts/risk.py
+      - src/nvda_desk/domain/final_risk/terminal_join.py
       - project_control/canonical_project_manager/modules/M09/M09_AUTHORITY_WORKER_RECORD_V1.md
       - project_control/canonical_project_manager/modules/M09/validation/m09_k11_k14_v1/C_PROOF_VALIDATION_SUMMARY.md
       - project_control/canonical_project_manager/modules/M09/validation/m09_k11_k14_v1/M09_C_PROOF_SEPARATE_WORKTREE_REVIEW.md
+      - project_control/canonical_project_manager/modules/M09/validation/m09_k11_k14_v1/GATE_D_PROOF_HARDENING.md
+      - project_control/canonical_project_manager/modules/M09/validation/m09_k11_k14_v1/GATE_D_VALIDATION_SUMMARY.md
       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md

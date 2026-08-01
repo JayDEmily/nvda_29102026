@@ -27,10 +27,10 @@
     "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
     "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py"
   ],
-  "scanned_file_count": 22,
+  "scanned_file_count": 27,
   "vocabulary_touched": true,
-  "fingerprint": "4b4813b8442a37a75e4c01106b5c4745ff2ea386ac73c176bae7b552f10ed5f3",
-  "resolved_occurrence_count": 129,
+  "fingerprint": "c7e3bf1ebdd33091025b0dfae9af15a0b015e2be5d6a2a137cb92366bb345ec3",
+  "resolved_occurrence_count": 297,
   "candidates": [],
   "candidate_classifications": []
 }
