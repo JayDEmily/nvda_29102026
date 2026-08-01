@@ -1046,9 +1046,10 @@ proof_blocks:
     tier: Tier A
     lifecycle: admitted_current_mvp_c_proof_and_gate_d
     command: >-
-      env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09
     owns:
       - tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py
+      - tests/tier_a/m05_k08_k09/test_signal_informed_intraday_phase.py
       - tests/support/m05_k08_k09_contract_harness.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M05/M05_AUTHORITY_WORKER_RECORD_V1.md
@@ -1057,6 +1058,9 @@ proof_blocks:
       - src/nvda_desk/m05_serial_cognition/__init__.py
       - src/nvda_desk/m05_serial_cognition/contracts.py
       - src/nvda_desk/m05_serial_cognition/runner.py
+      - src/nvda_desk/m05_serial_cognition/temporal_adapter.py
+      - src/nvda_desk/domain/temporal/intraday_phase.py
+      - docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md
       - docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md
       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
