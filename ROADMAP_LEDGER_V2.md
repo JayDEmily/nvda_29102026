@@ -9,7 +9,7 @@
 | Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Current active slice | M00 C-NORM and expected-red C-PROOF admission; M00 production code not started |
+| Current active slice | Pre-M00 testing guardrail repair — active; M00 not started |
 | Production implementation | M01–M13 slices and signal-phase/DMPV3 repair accepted; authoritative pre-M00 promotion baseline passed; M00 production code not started |
 | Live/paper/production claim | closed |
 
