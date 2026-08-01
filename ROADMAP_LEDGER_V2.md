@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/signal-phase-dmpv3-repair-v1` |
-| Current branch source checkpoint | `9364b4698f417ab9aaebe9e24d8a4a4e3cb98971` |
+| Branch | `work/m00-testing-guardrail-repair-v1` |
+| Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Current active slice | M00 final composition — not started |
-| Production implementation | M01–M13 slices and bounded pre-M00 repair accepted; M00 ready but not started |
+| Current active slice | Pre-M00 testing guardrail repair — active; M00 not started |
+| Production implementation | M01–M13 slices and signal-phase/DMPV3 repair accepted; testing guardrail prerequisite active; M00 not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -219,7 +219,6 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Start only M00 final composition from the accepted module boundaries. Preserve the
-canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09
-ingress. Do not reopen accepted module semantics or promote the quarantined legacy
-orchestrator. M00 has not started in this checkpoint.
+Execute the subordinate pre-M00 testing guardrail repair at
+`project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
+Reconcile admission authority, establish the aggregate promotion gate, route CI and the locked environment through it, and admit M00 C-NORM/expected-red C-PROOF. Do not reopen accepted module semantics or begin M00 production code before those prerequisites pass. M00 has not started.

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `READY:M00_FINAL_COMPOSITION`
+**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`
 **Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -306,6 +306,13 @@ projection. It does not acquire live/private owner reads, runtime repair, extern
 side effects, capital/order/portfolio mutation, durable retention or production
 replay authority.
 
+### Authorised pre-M00 testing guardrail repair
+
+The user accepted the 1 August 2026 pre-execution audit and authorised the bounded subordinate repair plan at
+`project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
+
+This plan does not replace the canonical ExecPlan. It repairs the test-admission, aggregate-promotion, CI and environment controls required to establish a trustworthy M00 gate. M00 remains not started until the subordinate plan admits M00 C-NORM and expected-red C-PROOF. Accepted M01–M13 implementation and the signal-phase/DMPV3 repair remain intact.
+
 ### Accepted repair before M00
 
 The bounded forward-repair plan at
@@ -322,15 +329,15 @@ M01/calendar input or reopen unrelated downstream policy semantics.
 
 ## 8. Immediate work
 
-The signal-phase/DMPV3 repair is accepted. The next lawful unit is M00 final
-composition:
+The signal-phase/DMPV3 repair is accepted. The current lawful unit is the bounded pre-M00 testing guardrail repair:
 
-1. compose the accepted M01–M13 module boundaries without reopening their owned meaning;
-2. use the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress;
-3. retain explicit alpha, paper-only and process-memory limitations; and
-4. prove end-to-end composition without converting the legacy runtime specimen into authority.
+1. reconcile test admission, lifecycle and exact proposition traceability;
+2. establish one authoritative aggregate promotion route with sufficient receipts;
+3. route CI and the declared locked environment through that authority;
+4. establish a green current pre-M00 promotion baseline; and
+5. admit M00 C-NORM and expected-red C-PROOF before M00 production composition.
 
-M00 has not started in the repair checkpoint.
+After that prerequisite passes, compose the accepted M01–M13 module boundaries using the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress. M00 remains not started.
 
 ## 9. Programme sequence
 
