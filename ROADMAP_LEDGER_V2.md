@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/m12-review-replay-v1` |
-| Current branch source checkpoint | `27093bd12f7faab3c4955f7fb885bf07d9162721` |
+| Branch | `work/signal-phase-dmpv3-repair-v1` |
+| Current branch source checkpoint | `9364b4698f417ab9aaebe9e24d8a4a4e3cb98971` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M12 K19 authoritative replay and review projection |
-| Current active slice | paused for clean full-history checkpoint after M12 Gate D acceptance |
-| Production implementation | M12 Gate D accepted; M00 final composition has not started |
+| Current active slice | signal-informed intraday phase and mandatory M05/M06 DMPV3-to-M09 repair |
+| Production implementation | M12 Gate D accepted; bounded pre-M00 repair active; M00 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -207,5 +207,9 @@ proof promotion or production replay readiness.
 
 ## Immediate next action
 
-Publish the clean full-history checkpoint for accepted M12 K19 Gate D. The next
-semantic unit is M00 final composition; it has not started.
+Execute the accepted repair plan at
+`project_control/canonical_project_manager/repairs/signal_phase_dmpv3_repair_20260801/EXEC_PLAN.md`.
+Acceptance Unit A closes signal-informed phase authority, proof and M05 integration.
+Acceptance Unit B then makes validated DMPV3 carriage mandatory at the canonical
+M05/M06-to-M09 seam and reconciles only affected M09–M12 lineage. M00 remains
+blocked until both units pass.
