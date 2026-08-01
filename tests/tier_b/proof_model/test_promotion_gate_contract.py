@@ -82,6 +82,28 @@ def test_dirty_git_state_is_not_promotion_evidence() -> None:
         require_clean_git({"status": " M governed.py"}, stage="pre-run")
 
 
+def test_block_capture_uses_files_not_subprocess_pipes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    def completed(*args, **kwargs):  # type: ignore[no-untyped-def]
+        assert "capture_output" not in kwargs
+        assert kwargs["stdout"] is not subprocess.PIPE
+        assert kwargs["stderr"] is not subprocess.PIPE
+        kwargs["stdout"].write("1 passed in 0.01s\n")
+        return subprocess.CompletedProcess(args[0], 0)
+
+    monkeypatch.setattr(subprocess, "run", completed)
+    result = _run_block(
+        "file_capture_block",
+        "python -c 'print(1)'",
+        repo_root=REPO_ROOT,
+        timeout_seconds=1,
+    )
+
+    assert result["status"] == "PASS"
+    assert result["pytest_counts"]["passed"] == 1
+
+
 def test_block_timeout_is_recorded_as_failure(monkeypatch: pytest.MonkeyPatch) -> None:
     def timeout(*args, **kwargs):  # type: ignore[no-untyped-def]
         raise subprocess.TimeoutExpired(cmd=args[0], timeout=1, output="partial")

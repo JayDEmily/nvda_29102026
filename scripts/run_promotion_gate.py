@@ -11,6 +11,7 @@ import re
 import shlex
 import subprocess
 import sys
+import tempfile
 import time
 from dataclasses import asdict
 from datetime import UTC, datetime
@@ -166,27 +167,30 @@ def _run_block(
     stderr = ""
     exit_code: int | None = None
     timed_out = False
-    try:
-        completed = subprocess.run(
-            resolved,
-            cwd=repo_root,
-            env=environment,
-            check=False,
-            text=True,
-            capture_output=True,
-            timeout=timeout_seconds,
-        )
-        stdout = completed.stdout
-        stderr = completed.stderr
-        exit_code = completed.returncode
-    except subprocess.TimeoutExpired as exc:
-        timed_out = True
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
-        if isinstance(stdout, bytes):
-            stdout = stdout.decode("utf-8", errors="replace")
-        if isinstance(stderr, bytes):
-            stderr = stderr.decode("utf-8", errors="replace")
+    with (
+        tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stdout_file,
+        tempfile.TemporaryFile(mode="w+", encoding="utf-8") as stderr_file,
+    ):
+        try:
+            completed = subprocess.run(
+                resolved,
+                cwd=repo_root,
+                env=environment,
+                check=False,
+                text=True,
+                stdout=stdout_file,
+                stderr=stderr_file,
+                timeout=timeout_seconds,
+            )
+            exit_code = completed.returncode
+        except subprocess.TimeoutExpired:
+            timed_out = True
+        stdout_file.flush()
+        stderr_file.flush()
+        stdout_file.seek(0)
+        stderr_file.seek(0)
+        stdout = stdout_file.read()
+        stderr = stderr_file.read()
     duration = round(time.monotonic() - started, 6)
     status, counts = classify_pytest_result(
         exit_code=exit_code, stdout=stdout, stderr=stderr, timed_out=timed_out
