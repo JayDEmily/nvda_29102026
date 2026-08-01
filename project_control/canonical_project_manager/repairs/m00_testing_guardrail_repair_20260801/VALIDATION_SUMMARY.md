@@ -298,3 +298,27 @@ Exact evidence: `evidence/UNIT7_M00_GATE_D_IMPLEMENTATION.md`.
 ## Open next gate
 
 Unit 8: commit Unit 7, recreate the non-editable installed environment from the accepted wheelhouses, run installed-package smoke, execute and verify the aggregate promotion receipt, rerun Tier B from that environment, reconcile the canonical plan/roadmap and create the final clean checkpoint.
+
+
+## Unit 8 — Clean installed aggregate and closeout
+
+**Outcome:** PASS
+
+Initial clean installed validation commit: `cfd4f0eda798278c5c35aed62df36153cd1441a5`.
+
+Known true:
+
+- Runtime V6 and dev/build V4 wheelhouse hashes matched the accepted identities.
+- The offline bootstrap created a fresh CPython 3.13.5 environment, installed 38 compatible distributions and built the project non-editably.
+- The environment receipt records the clean branch/commit and `dirty: false`; lock-export SHA-256 is `cb20225ed8c83217cd2b0f8136dcf70ff4f3406083f3d691449a5621d2f7dd8e`.
+- Installed-package smoke imports `nvda_desk` from `.venv/site-packages`.
+- Installed-M00 smoke imports the exact four-name public package from `.venv/site-packages`.
+- Aggregate promotion passes 14/14 blocks, 754 tests and zero skips. Receipt verification passes; evidence hash is `24fdc517b63b9cf1d5267687cce16dc8581fc0b790d44838edbae5c59529b887`.
+- Tier B passed 83 tests at the initial clean installed commit. The closeout control transition adds one stable-state regression test; the expanded 84-test shadow passes before final closeout commit validation.
+- Black passes 473 scoped files; Ruff reports zero findings.
+
+Exact evidence: `evidence/UNIT8_FINAL_VALIDATION_CLOSEOUT.md`.
+
+## Next canonical gate
+
+Final alpha consolidation under `project_control/canonical_project_manager/EXEC_PLAN.md`. No subordinate bounded pack remains active.

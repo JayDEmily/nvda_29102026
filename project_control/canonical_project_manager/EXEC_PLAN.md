@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`
+**Status:** `READY:FINAL_ALPHA_CONSOLIDATION`
 **Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -230,6 +230,16 @@ command route or comparability is stale or Unknown.
   time, immutable snapshots, bounded hold/trim/close decisions and exact M13
   version/result reconciliation are preserved; complete Tier A resolves twenty
   proof-baseline failures with zero new failing nodes.
+- M12 K19 satisfies C-NORM, independently challenged C-PROOF and bounded
+  Gate D: 22 focused cases pass; embedded typed evidence, exact original-result
+  identity, isolated replay assessment and detached review projection remain
+  fail-closed and cannot acquire live or runtime authority.
+- M00 final composition satisfies C-NORM, expected-red C-PROOF and bounded Gate D:
+  16 focused cases pass; one constructor-injected stateless composition root uses
+  exact M03→M04→M05/M06→M09→M10→M11 public seams, one separate M12 query path,
+  fresh paper execution/lifecycle scope per run and no legacy orchestrator, wall
+  clock, service locator or runtime-authority promotion. The authoritative
+  installed aggregate passes 14/14 blocks and 754 Tier A tests; Tier B passes 84.
 
 ### Converted decision
 
@@ -306,12 +316,18 @@ projection. It does not acquire live/private owner reads, runtime repair, extern
 side effects, capital/order/portfolio mutation, durable retention or production
 replay authority.
 
-### Authorised pre-M00 testing guardrail repair
+### Completed M00 testing guardrail repair
 
-The user accepted the 1 August 2026 pre-execution audit and authorised the bounded subordinate repair plan at
-`project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
+The user-authorised bounded subordinate plan at
+`project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`
+is complete. It repaired test admission, aggregate promotion, CI/environment
+authority and M00 final composition without replacing this canonical plan.
 
-This plan does not replace the canonical ExecPlan. It repairs the test-admission, aggregate-promotion, CI and environment controls required to establish a trustworthy M00 gate. M00 remains not started until the subordinate plan admits M00 C-NORM and expected-red C-PROOF. Accepted M01–M13 implementation and the signal-phase/DMPV3 repair remain intact.
+The accepted installed environment uses CPython 3.13.5 and the retained offline
+wheelhouses. The final-composition promotion set resolves 14 current-blocking
+families through 16 paths; its clean installed run passes 754 Tier A tests with
+zero skips, and the complete Tier B shadow passes 84 tests. M00 remains alpha,
+paper-only, non-durable and non-live.
 
 ### Accepted repair before M00
 
@@ -329,23 +345,26 @@ M01/calendar input or reopen unrelated downstream policy semantics.
 
 ## 8. Immediate work
 
-The signal-phase/DMPV3 repair is accepted. The current lawful unit is the bounded pre-M00 testing guardrail repair:
+M00 final composition and the subordinate testing-guardrail repair are accepted.
+The next lawful unit is final alpha consolidation:
 
-1. reconcile test admission, lifecycle and exact proposition traceability;
-2. establish one authoritative aggregate promotion route with sufficient receipts;
-3. route CI and the declared locked environment through that authority;
-4. establish a green current pre-M00 promotion baseline; and
-5. admit M00 C-NORM and expected-red C-PROOF before M00 production composition.
+1. reconcile the accepted M00–M15 module and governance states into one concise
+   alpha closeout record;
+2. inventory only material unresolved debt, contradictions and explicit alpha
+   limitations without reopening accepted module semantics by default;
+3. verify the retained current promotion and installed-package routes remain
+   reproducible; and
+4. issue one final clean full-history alpha checkpoint.
 
-After that prerequisite passes, compose the accepted M01–M13 module boundaries using the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress. M00 remains not started.
+No live brokerage, durable operations, production-readiness or profitability
+work is authorised by this transition.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M00 final composition;
-2. final alpha consolidation;
-3. bounded unresolved-debt reconciliation where separately authorised.
+1. final alpha consolidation;
+2. bounded unresolved-debt reconciliation where separately authorised.
 
 Canonical integration remains serial where shared files overlap. M14 and M15
 continue as proof/promotion and vocabulary governance planes.

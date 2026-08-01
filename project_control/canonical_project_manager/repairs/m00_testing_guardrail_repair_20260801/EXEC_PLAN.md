@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:UNIT8_FINAL_VALIDATION`
+**Status:** `COMPLETE:UNIT8_PASS`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -157,6 +157,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: repository-wide Black/Ruff baseline and env-prefixed proof-interpreter isolation were repaired at `f66578aa90eb98c6cf0ca2fddd789ac8a014a2df`. Clean authoritative validation passed 13/13 blocks, 738 Tier A tests with zero skips, 82 Tier B tests, installed-package smoke, Black, Ruff and authority reconciliation. Unit 5 is closed and Unit 6 is open.
 - 2026-08-01: Unit 6 admitted `M00-FINAL-COMPOSITION-V1` with propositions `M00-COMP-001` through `M00-COMP-009`, four governed M00 public-contract terms, and one expected-red family. Seven reference/negative/mutant tests pass; the single production-seam node fails only because `nvda_desk.m00_application_shell` is intentionally absent. Proof authority passes at 196 families / 198 tests / 67 blocks. Unit 7 is open; no M00 production code was changed in Unit 6.
 - 2026-08-01: Unit 7 implemented the bounded `nvda_desk.m00_application_shell` seam, repaired an import-order cycle at the contract-package boundary, promoted the M00 family to current blocking authority and passed all 14 admitted Tier A blocks (754 tests), the 83-test Tier B shadow, vocabulary parity, Black, Ruff and proof-authority reconciliation. Unit 8 clean installed-package and aggregate validation is open.
+- 2026-08-01: Unit 8 recreated the non-editable CPython 3.13.5 environment from the accepted V6/V4 wheelhouses at clean implementation commit `cfd4f0eda798278c5c35aed62df36153cd1441a5`; installed-package and installed-M00 smoke passed; the aggregate gate passed 14/14 blocks and 754 tests with zero skips; receipt verification passed; Tier B passed 83 at that commit. The closeout control transition added one active-state regression test and the expanded 84-test Tier B shadow passed before the final closeout commit. Black and Ruff passed. The subordinate repair is closed and the canonical plan is ready for final alpha consolidation.
 
 ## 9. Decisions
 
@@ -167,14 +168,13 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 ## 10. Roadblocks
 
-- None for Unit 8. Unit 7 source/module proof is green and the accepted offline wheelhouses are available.
+- None. Units 0–8 passed.
 
 ## 11. Unknowns
 
-- Whether the clean non-editable installed package and aggregate promotion receipt pass at the Unit 7 commit remains open until Unit 8 executes.
 - No claim is made that the full unsplit historical test tree is green; current promotion authority is the reconciled 14-family set plus the Tier B shadow.
 - Live brokerage, live-data access, durable production operations and profitability remain out of scope.
 
 ## 12. Closeout
 
-Open. No completion claim applies until Unit 8 passes.
+PASS. Units 0–8 are complete. The canonical ExecPlan is the sole current execution authority and is ready for final alpha consolidation.

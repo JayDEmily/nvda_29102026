@@ -8,10 +8,10 @@
 | Branch | `work/m00-testing-guardrail-repair-v1` |
 | Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Current active slice | M00 testing guardrail repair — Unit 7 passed; Unit 8 final validation active |
-| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |
-| Production implementation | M01–M13 and signal-phase/DMPV3 slices accepted; bounded M00 composition seam passes source/module proof; clean installed aggregate pending |
+| Latest accepted implementation slice | M00 bounded final composition and testing-guardrail closeout |
+| Current active slice | Final alpha consolidation — ready |
+| Active control pack | none — canonical ExecPlan only |
+| Production implementation | M00–M13 bounded alpha slices accepted; installed aggregate and Tier B shadow pass; no live/durable/production claim |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -220,6 +220,4 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Continue the subordinate M00 guardrail plan at
-`project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
-Unit 7 has implemented the bounded `ApplicationCommand`, `ApplicationQuery`, `ApplicationRunReceipt` and `RunCoordinator` seam against `M00-FINAL-COMPOSITION-V1`. All 14 admitted Tier A blocks pass independently with 754 tests, Tier B passes 83 tests, and style/authority checks are green. Open Unit 8: commit the bounded implementation, recreate the non-editable installed environment from the accepted wheelhouses, run installed-package smoke and the aggregate promotion receipt, then close the subordinate plan with a clean checkpoint. The active control pack remains `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`.
+The subordinate M00 testing-guardrail plan is closed. The clean CPython 3.13.5 installed environment imports M00 from `site-packages`; the aggregate promotion route passes 14/14 blocks and 754 Tier A tests with zero skips, and Tier B passes 84 tests. The next lawful unit is final alpha consolidation under the canonical ExecPlan: reconcile the accepted M00–M15 state, record material unresolved debt and explicit alpha limitations, verify the retained promotion route, and issue one final full-history alpha checkpoint. No subordinate bounded pack is currently active.

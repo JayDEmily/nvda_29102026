@@ -451,7 +451,7 @@ def validate_authority_documents(
 
 
 def validate_active_control(repo_root: Path = Path(".")) -> str:
-    """Require the canonical plan, live roadmap and process overlay to agree."""
+    """Require exactly one reconciled current control state across live surfaces."""
 
     resolved_root = repo_root.resolve()
     canonical = (
@@ -461,23 +461,28 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
     process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
         encoding="utf-8"
     )
-    expected_plan = "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`"
-    expected_roadmap = "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |"
-    expected_process = "The current active bounded pack is " "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`"
-    missing = [
-        label
-        for label, text, expected in (
-            ("canonical ExecPlan", canonical, expected_plan),
-            ("live roadmap", roadmap, expected_roadmap),
-            ("process overlay", process, expected_process),
-        )
-        if expected not in text
+    states = {
+        "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1": (
+            "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`",
+            "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |",
+            "The current active bounded pack is `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`",
+        ),
+        "CANONICAL:FINAL_ALPHA_CONSOLIDATION": (
+            "**Status:** `READY:FINAL_ALPHA_CONSOLIDATION`",
+            "| Active control pack | none — canonical ExecPlan only |",
+            "The bounded pack `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` is closed.",
+        ),
+    }
+    matches = [
+        state_id
+        for state_id, (plan_token, roadmap_token, process_token) in states.items()
+        if plan_token in canonical and roadmap_token in roadmap and process_token in process
     ]
-    if missing:
+    if len(matches) != 1:
         raise AuthorityError(
-            "active control state is not singular and reconciled: " + ", ".join(missing)
+            "active control state is not singular and reconciled: " f"matched={matches or 'none'}"
         )
-    return "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+    return matches[0]
 
 
 def load_and_validate_authority(

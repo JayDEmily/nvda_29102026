@@ -129,10 +129,10 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
 
 
-def test_active_control_surfaces_identify_one_pre_m00_pack() -> None:
+def test_live_control_surfaces_identify_canonical_consolidation_state() -> None:
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+    assert validate_active_control(REPO_ROOT) == "CANONICAL:FINAL_ALPHA_CONSOLIDATION"
 
 
 def test_active_control_validation_uses_pack_identity_not_gate_wording(
@@ -159,6 +159,31 @@ def test_active_control_validation_uses_pack_identity_not_gate_wording(
     )
 
     assert validate_active_control(tmp_path) == "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+
+
+def test_active_control_validation_accepts_closed_pack_canonical_state(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        "**Status:** `READY:FINAL_ALPHA_CONSOLIDATION`\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        "| Active control pack | none — canonical ExecPlan only |\n",
+        encoding="utf-8",
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(
+        "The bounded pack `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` is closed.\n",
+        encoding="utf-8",
+    )
+
+    assert validate_active_control(tmp_path) == "CANONICAL:FINAL_ALPHA_CONSOLIDATION"
 
 
 def test_api_state_ownership_conflict_cannot_activate_legacy_and_current_families() -> None:
