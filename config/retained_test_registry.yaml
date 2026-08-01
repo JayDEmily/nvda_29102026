@@ -307,10 +307,10 @@ retained_seed_tier_a:
   - entry/cli.py
   code_reread_completed: true
   docstring_reread_completed: true
-  docstring_alignment_status: benchmark-owned entry bootstrap surfaces reread against code; CLI remains bounded to inspect-config and run-once only
+  docstring_alignment_status: canonical entry adapters reread against code; CLI and ASGI translate exact M00 command/query contracts while the broad legacy API remains compatibility-only
   native_reauthor_required: false
-  admission_reason: The benchmark-owned entry home now exists physically and needs its own bounded blocker for ASGI and CLI bootstrap surfaces.
-  forbidden_carry_forward: Replay, evaluation, and deployment-system assertions must not be fabricated into the entry blocker while those homes remain unconverged.
+  admission_reason: Canonical CLI and ASGI surfaces require one blocking proof that they translate exact M00 contracts without selecting legacy composition or acquiring domain authority.
+  forbidden_carry_forward: Entry proof must not construct domain services, select legacy composition, fabricate policy/identity/time, perform live side effects, or claim deployment/production authority.
   notes: New family admitted to mirror the benchmark-owned entry home after physical convergence.
 - test_family_id: ingress_raw_bundle_loader_surface
   native_status: retained_seed_tier_a
@@ -4031,15 +4031,15 @@ canonical_admission_model:
     provenance: BLOCKED_P3_REPAIR
   - test_family_id: entry_boundary_surface
     tier: Tier A
-    lifecycle: next_gate_expected_red
+    lifecycle: current_blocking
     normative_proposition_ids:
       - M00-COMP-001
       - M00-COMP-003
       - M00-COMP-007
       - M00-COMP-008
-    provenance: POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1-C-PROOF
+    provenance: POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1-GATE-D-IMPLEMENTED
     lifecycle_reason: >-
-      Authorised post-alpha debt proof for thin CLI/ASGI translation into the accepted M00 public seam; expected red until Units 2-3 implement the adapters.
+      The canonical CLI/ASGI entry surfaces now translate exact M00 command/query contracts through an explicitly injected RunCoordinator and are current-blocking.
   - test_family_id: execution_contract_models
     tier: Tier A
     lifecycle: superseded_compatibility

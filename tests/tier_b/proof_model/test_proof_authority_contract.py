@@ -53,8 +53,9 @@ def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
         "m11_k16_k17_portfolio_lifecycle_contract",
         "m12_k19_authoritative_replay_contract",
         "m00_final_composition_contract",
+        "post_alpha_m00_transport_adapter_contract",
     )
-    assert len(promotion.test_paths) == 16
+    assert len(promotion.test_paths) == 17
     assert all(
         model.path_admissions[path].lifecycle == "current_blocking" for path in promotion.test_paths
     )

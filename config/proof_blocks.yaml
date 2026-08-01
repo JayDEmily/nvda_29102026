@@ -25,6 +25,7 @@ promotion_sets:
       - m11_k16_k17_portfolio_lifecycle_contract
       - m12_k19_authoritative_replay_contract
       - m00_final_composition_contract
+      - post_alpha_m00_transport_adapter_contract
 
 proof_blocks:
   - proof_block_id: vocabulary_governance_conformance_candidate
@@ -1358,7 +1359,7 @@ proof_blocks:
 
   - proof_block_id: post_alpha_m00_transport_adapter_contract
     tier: Tier A
-    lifecycle: next_gate_expected_red
+    lifecycle: admitted_current_post_alpha_gate_d_accepted
     test_family_ids:
       - entry_boundary_surface
     normative_proposition_ids:

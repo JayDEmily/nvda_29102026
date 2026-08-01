@@ -285,7 +285,13 @@ def test_production_m00_quarantines_legacy_routes_and_wall_clock() -> None:
         "datetime.utcnow",
     ):
         assert prohibited not in source
-    for path in Path("src/nvda_desk").rglob("*.py"):
-        if package in path.parents:
-            continue
-        assert "m00_application_shell" not in path.read_text(encoding="utf-8")
+    external_importers = {
+        path.as_posix()
+        for path in Path("src/nvda_desk").rglob("*.py")
+        if package not in path.parents
+        and "m00_application_shell" in path.read_text(encoding="utf-8")
+    }
+    assert external_importers == {
+        "src/nvda_desk/entry/asgi.py",
+        "src/nvda_desk/entry/cli.py",
+    }
