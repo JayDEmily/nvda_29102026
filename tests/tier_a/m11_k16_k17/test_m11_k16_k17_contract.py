@@ -142,3 +142,33 @@ def test_production_rejects_non_utc_and_future_policy():
     api, service, receipt = _service_and_fill(); snap=service.reconcile_fill(receipt).snapshot; p=snap.positions[0]
     with pytest.raises(ValueError): service.decide_lifecycle(snapshot=snap, position_id=p.position_id, action="hold", quantity=None, reasons=("x",), decided_at_utc=datetime(2026,8,1,2,20))
     with pytest.raises(ValidationError): api["LifecycleDecision"].model_validate({"policy_version":"m11.future.v2"})
+
+# Detached proof-review additions: admitted before Gate D.
+def test_independent_review_snapshot_views_are_detached_and_deterministic():
+    _, service, receipt = _service_and_fill(); first=service.reconcile_fill(receipt)
+    assert service.snapshot() == first.snapshot
+    assert service.snapshot() is not first.snapshot
+    assert service.snapshot().semantic_fingerprint == first.snapshot.semantic_fingerprint
+
+
+def test_independent_review_rejects_empty_reasons_and_time_before_fill():
+    _, service, receipt = _service_and_fill(); snap=service.reconcile_fill(receipt).snapshot; p=snap.positions[0]
+    with pytest.raises(ValueError): service.decide_lifecycle(snapshot=snap, position_id=p.position_id, action="hold", quantity=None, reasons=(), decided_at_utc=datetime(2026,8,1,2,20,tzinfo=UTC))
+    with pytest.raises(ValueError): service.decide_lifecycle(snapshot=snap, position_id=p.position_id, action="hold", quantity=None, reasons=("x",), decided_at_utc=receipt.executed_at_utc-timedelta(seconds=1))
+
+
+def test_independent_review_failed_stale_mutation_publishes_no_state_or_receipt():
+    _, service, receipt = _service_and_fill(); before=service.reconcile_fill(receipt).snapshot; p=before.positions[0]
+    decision=service.decide_lifecycle(snapshot=before, position_id=p.position_id, action="close", quantity=p.quantity, reasons=("x",), decided_at_utc=datetime(2026,8,1,2,20,tzinfo=UTC))
+    service.reconcile_fill(production_execution_receipt(limit_price=Decimal("111"), when=datetime(2026,8,1,2,30,tzinfo=UTC)))
+    current=service.snapshot()
+    with pytest.raises(ValueError): service.apply_lifecycle(decision)
+    assert service.snapshot() == current
+
+
+def test_independent_review_rejects_forged_snapshot_and_position_copies():
+    api, service, receipt = _service_and_fill(); snap=service.reconcile_fill(receipt).snapshot; p=snap.positions[0]
+    forged_position=p.model_copy(update={"quantity":p.quantity+Decimal("1")})
+    with pytest.raises(ValueError): api["PositionState"].model_validate(forged_position.model_dump(mode="python"))
+    forged_snapshot=snap.model_copy(update={"positions":(forged_position,)})
+    with pytest.raises(ValueError): api["PortfolioSnapshot"].model_validate(forged_snapshot.model_dump(mode="python"))
