@@ -462,9 +462,7 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
         encoding="utf-8"
     )
     expected_plan = "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`"
-    expected_roadmap = (
-        "| Current active slice | Pre-M00 testing guardrail repair — active; " "M00 not started |"
-    )
+    expected_roadmap = "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |"
     expected_process = "The current active bounded pack is " "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`"
     missing = [
         label

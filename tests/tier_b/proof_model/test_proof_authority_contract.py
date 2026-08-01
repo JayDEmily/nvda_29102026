@@ -32,7 +32,7 @@ def test_live_authority_covers_every_physical_test_once() -> None:
     assert len(model.path_admissions) == len(physical)
 
 
-def test_live_pre_m00_promotion_resolves_exact_current_module_families() -> None:
+def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
     registry, manifest = _load_live_documents()
 
     model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
@@ -52,8 +52,9 @@ def test_live_pre_m00_promotion_resolves_exact_current_module_families() -> None
         "m10_k15_execution_gateway_contract",
         "m11_k16_k17_portfolio_lifecycle_contract",
         "m12_k19_authoritative_replay_contract",
+        "m00_final_composition_contract",
     )
-    assert len(promotion.test_paths) == 15
+    assert len(promotion.test_paths) == 16
     assert all(
         model.path_admissions[path].lifecycle == "current_blocking" for path in promotion.test_paths
     )
@@ -132,6 +133,32 @@ def test_active_control_surfaces_identify_one_pre_m00_pack() -> None:
     from scripts.proof_authority import validate_active_control
 
     assert validate_active_control(REPO_ROOT) == "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+
+
+def test_active_control_validation_uses_pack_identity_not_gate_wording(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        "| Current active slice | any lawful gate progression wording |\n"
+        "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |\n",
+        encoding="utf-8",
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(
+        "The current active bounded pack is " "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`\n",
+        encoding="utf-8",
+    )
+
+    assert validate_active_control(tmp_path) == "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
 
 
 def test_api_state_ownership_conflict_cannot_activate_legacy_and_current_families() -> None:

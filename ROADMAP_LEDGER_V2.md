@@ -9,8 +9,9 @@
 | Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Current active slice | Pre-M00 testing guardrail repair — active; M00 not started |
-| Production implementation | M01–M13 slices and signal-phase/DMPV3 repair accepted; authoritative pre-M00 promotion baseline passed; M00 production code not started |
+| Current active slice | M00 testing guardrail repair — Unit 7 passed; Unit 8 final validation active |
+| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |
+| Production implementation | M01–M13 and signal-phase/DMPV3 slices accepted; bounded M00 composition seam passes source/module proof; clean installed aggregate pending |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -221,4 +222,4 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 Continue the subordinate M00 guardrail plan at
 `project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
-Unit 6 now admits `M00-FINAL-COMPOSITION-V1`, propositions `M00-COMP-001` through `M00-COMP-009`, and the expected-red `m00_final_composition_contract` family. Seven reference/negative/mutant tests pass; the one production-seam node fails only because the canonical package is intentionally absent. Open Unit 7: implement the bounded `ApplicationCommand`, `ApplicationQuery`, `ApplicationRunReceipt` and `RunCoordinator` seam through exact public M01–M13 owners, then turn the admitted red node green. The active control pack remains `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`.
+Unit 7 has implemented the bounded `ApplicationCommand`, `ApplicationQuery`, `ApplicationRunReceipt` and `RunCoordinator` seam against `M00-FINAL-COMPOSITION-V1`. All 14 admitted Tier A blocks pass independently with 754 tests, Tier B passes 83 tests, and style/authority checks are green. Open Unit 8: commit the bounded implementation, recreate the non-editable installed environment from the accepted wheelhouses, run installed-package smoke and the aggregate promotion receipt, then close the subordinate plan with a clean checkpoint. The active control pack remains `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`.

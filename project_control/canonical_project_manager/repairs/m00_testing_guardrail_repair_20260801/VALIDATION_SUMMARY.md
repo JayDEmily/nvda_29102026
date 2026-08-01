@@ -276,3 +276,25 @@ Exact evidence: `evidence/UNIT6_M00_C_NORM_EXPECTED_RED.md`.
 ## Open next gate
 
 Unit 7: implement the bounded M00 Gate D public seam against the admitted expected-red proof without reopening accepted M01–M13 semantics or selecting the quarantined legacy orchestrator.
+
+
+## Unit 7 — M00 bounded Gate D implementation
+
+**Outcome:** PASS_SOURCE_AND_MODULE_PROOF
+
+Known true:
+
+- The canonical `nvda_desk.m00_application_shell` package exports exactly `ApplicationCommand`, `ApplicationQuery`, `ApplicationRunReceipt` and `RunCoordinator`.
+- The M00 coordinator is constructor-injected, stateless between runs and follows the admitted M03→M04→M05/M06→M09→M10→M11 paper path; the separate query path delegates only to M12.
+- A contract-package eager-import cycle that prevented order-independent packet-builder import was repaired through lazy named-submodule loading.
+- The M00 family is current blocking and the stable promotion set now resolves 14 blocks / 14 families / 16 paths.
+- All 14 admitted Tier A blocks pass independently: 754 tests, including 16 M00 tests.
+- Complete Tier B passes 83 tests.
+- Vocabulary parity passes 4 tests; proof authority passes at 196 families / 198 tests / 67 blocks.
+- Black passes 473 scoped files; Ruff reports zero findings; compileall and `git diff --check` pass.
+
+Exact evidence: `evidence/UNIT7_M00_GATE_D_IMPLEMENTATION.md`.
+
+## Open next gate
+
+Unit 8: commit Unit 7, recreate the non-editable installed environment from the accepted wheelhouses, run installed-package smoke, execute and verify the aggregate promotion receipt, rerun Tier B from that environment, reconcile the canonical plan/roadmap and create the final clean checkpoint.

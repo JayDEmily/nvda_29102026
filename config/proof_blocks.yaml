@@ -6,7 +6,7 @@ notes:
   - Detailed proof-block listing was admitted during ATLAS_FEATURE_ADMISSION_022.
 promotion_sets:
   pre_m00_current:
-    claim: exact current blocking module-local proof before M00 C-NORM
+    claim: exact current blocking alpha proof through M00 final composition
     authority_proposition_ids:
       - TP-PROMOTION-001
       - TP-CONTROL-001
@@ -24,6 +24,7 @@ promotion_sets:
       - m10_k15_execution_gateway_contract
       - m11_k16_k17_portfolio_lifecycle_contract
       - m12_k19_authoritative_replay_contract
+      - m00_final_composition_contract
 
 proof_blocks:
   - proof_block_id: vocabulary_governance_conformance_candidate
@@ -1326,7 +1327,7 @@ proof_blocks:
 
   - proof_block_id: m00_final_composition_contract
     tier: Tier A
-    lifecycle: expected_red_c_proof
+    lifecycle: admitted_current_mvp_gate_d_accepted
     test_family_ids:
       - m00_final_composition_contract
     normative_proposition_ids:
@@ -1344,6 +1345,10 @@ proof_blocks:
     owns:
       - tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
       - tests/support/m00_application_shell_contract_harness.py
+      - src/nvda_desk/m00_application_shell/__init__.py
+      - src/nvda_desk/m00_application_shell/contracts.py
+      - src/nvda_desk/m00_application_shell/coordinator.py
+      - src/nvda_desk/contracts/__init__.py
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
       - docs/vocabulary/vocabulary_registry.md

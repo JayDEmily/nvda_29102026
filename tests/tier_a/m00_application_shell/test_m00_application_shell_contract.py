@@ -7,6 +7,9 @@ not yet exist.
 
 from __future__ import annotations
 
+import os
+import subprocess
+import sys
 from dataclasses import replace
 from datetime import timedelta
 from pathlib import Path
@@ -19,6 +22,8 @@ from tests.support.m00_application_shell_contract_harness import (
     evaluate_query_reference,
     evaluate_reference,
     production_api,
+    production_query,
+    production_runtime_fixture,
 )
 
 PROPOSITION_IDS = tuple(f"M00-COMP-{index:03d}" for index in range(1, 10))
@@ -124,3 +129,159 @@ def test_production_m00_public_seam_exists_and_is_closed() -> None:
         assert api[name].model_config.get("frozen") is True
         assert api[name].model_config.get("extra") == "forbid"
     assert api["RunCoordinator"]
+
+
+def test_public_packet_builder_import_is_order_independent() -> None:
+    env = dict(os.environ)
+    env["PYTHONPATH"] = "src"
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            "from nvda_desk.packets.dmp_packets import build_prepared_context_packet; "
+            "assert callable(build_prepared_context_packet)",
+        ],
+        cwd=Path.cwd(),
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=30,
+        check=False,
+    )
+    assert completed.returncode == 0, completed.stderr
+
+
+def test_production_run_composes_exact_owner_path_and_fresh_paper_scope() -> None:
+    api = production_api()
+    first = production_runtime_fixture(api, suffix="101")
+    second = production_runtime_fixture(api, suffix="102")
+
+    first_receipt = first["coordinator"].run(first["command"])
+    second_receipt = first["coordinator"].run(second["command"])
+
+    assert first_receipt.outcome == "paper_filled"
+    assert first_receipt.owner_steps == (
+        "prepared_context_packet",
+        "serial",
+        "parallel",
+        "serial_packet",
+        "parallel_packet",
+        "final_risk",
+        "capital",
+        "scope",
+        "paper_execution",
+        "portfolio_reconciliation",
+    )
+    assert first_receipt.run_scope_id == "paper-scope:run.m00.101"
+    assert second_receipt.run_scope_id == "paper-scope:run.m00.102"
+    assert first_receipt.run_scope_id != second_receipt.run_scope_id
+    assert (
+        first["scope_factory"].scopes[0].execution_port
+        is not first["scope_factory"].scopes[1].execution_port
+    )
+    assert (
+        first["scope_factory"].scopes[0].portfolio_service
+        is not first["scope_factory"].scopes[1].portfolio_service
+    )
+    assert first_receipt.replay_class is None
+    assert first_receipt.live_execution_proven is False
+    assert first_receipt.durable_state_proven is False
+
+
+def test_production_block_is_terminal_before_scope_and_placement() -> None:
+    api = production_api()
+    fixture = production_runtime_fixture(api, suffix="201", kill_switch=True)
+
+    receipt = fixture["coordinator"].run(fixture["command"])
+
+    assert receipt.outcome == "block"
+    assert receipt.run_scope_id is None
+    assert receipt.placement_intent is None
+    assert receipt.execution_receipt is None
+    assert receipt.fill_reconciliation_receipt is None
+    assert fixture["scope_factory"].calls == []
+    assert "paper_execution" not in receipt.owner_steps
+
+
+def test_production_serial_terminal_still_evaluates_parallel_then_stops() -> None:
+    api = production_api()
+    fixture = production_runtime_fixture(api, suffix="301", terminal_stage="eligibility")
+
+    receipt = fixture["coordinator"].run(fixture["command"])
+
+    assert receipt.outcome == "serial_stand_down"
+    assert receipt.owner_steps == (
+        "prepared_context_packet",
+        "serial",
+        "parallel",
+    )
+    assert fixture["parallel_evaluator"].calls == [fixture["command"].parallel_input.input_id]
+    assert receipt.serial_packet is None
+    assert receipt.parallel_packet is None
+    assert receipt.final_risk_decision is None
+    assert fixture["scope_factory"].calls == []
+
+
+def test_production_command_rejects_cross_run_and_time_mismatch() -> None:
+    api = production_api()
+    fixture = production_runtime_fixture(api, suffix="401")
+    payload = fixture["command"].model_dump(mode="python")
+    payload["serial_context"] = fixture["command"].serial_context.model_copy(
+        update={"prepared_id": "prepared.cross-run"}
+    )
+    with pytest.raises(ValueError, match="context_fingerprint_mismatch"):
+        api["ApplicationCommand"].model_validate(payload)
+
+    payload = fixture["command"].model_dump(mode="python")
+    payload["intent_at_utc"] = payload["capital_receipt_emitted_at_utc"] - timedelta(seconds=1)
+    with pytest.raises(ValueError, match="application_execution_time_order_invalid"):
+        api["ApplicationCommand"].model_validate(payload)
+
+
+def test_production_query_delegates_only_to_m12() -> None:
+    api = production_api()
+    fixture = production_runtime_fixture(api, suffix="501")
+    query = production_query(api, suffix="501")
+
+    projection = fixture["coordinator"].query(query)
+
+    assert projection.replay_class == "comparison_only"
+    assert projection.runtime_authority_promoted is False
+    assert fixture["scope_factory"].calls == []
+    assert fixture["parallel_evaluator"].calls == []
+
+
+def test_production_query_requires_explicit_no_side_effect_authority() -> None:
+    api = production_api()
+    query = production_query(api, suffix="502")
+    payload = query.model_dump(mode="python")
+    payload.pop("live_side_effects")
+    with pytest.raises(ValueError, match="live_side_effects"):
+        api["ApplicationQuery"].model_validate(payload)
+
+    payload = query.model_dump(mode="python")
+    payload["live_side_effects"] = ("network_read",)
+    with pytest.raises(ValueError, match="application_query_live_side_effects_forbidden"):
+        api["ApplicationQuery"].model_validate(payload)
+
+    payload = query.model_dump(mode="python")
+    payload.pop("runtime_authority_promoted")
+    with pytest.raises(ValueError, match="runtime_authority_promoted"):
+        api["ApplicationQuery"].model_validate(payload)
+
+
+def test_production_m00_quarantines_legacy_routes_and_wall_clock() -> None:
+    package = Path("src/nvda_desk/m00_application_shell")
+    source = "\n".join(path.read_text(encoding="utf-8") for path in sorted(package.glob("*.py")))
+    for prohibited in (
+        "runtime.orchestrator",
+        "api.app",
+        "api.deps",
+        "datetime.now",
+        "datetime.utcnow",
+    ):
+        assert prohibited not in source
+    for path in Path("src/nvda_desk").rglob("*.py"):
+        if package in path.parents:
+            continue
+        assert "m00_application_shell" not in path.read_text(encoding="utf-8")

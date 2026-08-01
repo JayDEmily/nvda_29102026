@@ -4885,7 +4885,7 @@ canonical_admission_model:
     provenance: NON_AUTHORITATIVE_OBSERVATIONAL
   - test_family_id: m00_final_composition_contract
     tier: Tier A
-    lifecycle: next_gate_expected_red
+    lifecycle: current_blocking
     normative_proposition_ids:
       - M00-COMP-001
       - M00-COMP-002
@@ -4896,8 +4896,8 @@ canonical_admission_model:
       - M00-COMP-007
       - M00-COMP-008
       - M00-COMP-009
-    provenance: M00-FINAL-COMPOSITION-V1-C-PROOF
-    lifecycle_reason: Production M00 public package is intentionally absent until this expected-red C-PROOF is accepted.
+    provenance: M00-FINAL-COMPOSITION-V1-GATE-D-IMPLEMENTED
+    lifecycle_reason: The bounded M00 public package and its packetised paper-run composition proof are implemented and current-blocking.
   path_admissions:
   - test_path: tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
     test_family_id: m00_final_composition_contract

@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:UNIT7_M00_GATE_D_IMPLEMENTATION`
+**Status:** `ACTIVE:UNIT8_FINAL_VALIDATION`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -15,7 +15,7 @@
 
 This is a bounded subordinate repair plan. It does not replace, supersede or reinterpret the canonical alpha-delivery ExecPlan. The canonical plan remains the single live programme authority and opens this repair as a prerequisite to M00 final composition.
 
-Accepted M01–M13 implementation history and the signal-phase/DMPV3 repair remain intact. M00 remains not started until this plan establishes a trustworthy current promotion gate and admits M00 normative/proof authority.
+Accepted M01–M13 implementation history and the signal-phase/DMPV3 repair remain intact. M00 remained unstarted until this plan established a trustworthy current promotion gate and admitted M00 normative/proof authority; Unit 7 has now implemented the bounded M00 seam against that authority.
 
 ## 2. Objective
 
@@ -156,21 +156,23 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: the accepted wheelhouses were recovered and verified. Runtime V6 was reconstructed for the current lock, and the offline installation repair was committed at `1a7d888b4f6310bf7637bbb83795be2161441da9`.
 - 2026-08-01: repository-wide Black/Ruff baseline and env-prefixed proof-interpreter isolation were repaired at `f66578aa90eb98c6cf0ca2fddd789ac8a014a2df`. Clean authoritative validation passed 13/13 blocks, 738 Tier A tests with zero skips, 82 Tier B tests, installed-package smoke, Black, Ruff and authority reconciliation. Unit 5 is closed and Unit 6 is open.
 - 2026-08-01: Unit 6 admitted `M00-FINAL-COMPOSITION-V1` with propositions `M00-COMP-001` through `M00-COMP-009`, four governed M00 public-contract terms, and one expected-red family. Seven reference/negative/mutant tests pass; the single production-seam node fails only because `nvda_desk.m00_application_shell` is intentionally absent. Proof authority passes at 196 families / 198 tests / 67 blocks. Unit 7 is open; no M00 production code was changed in Unit 6.
+- 2026-08-01: Unit 7 implemented the bounded `nvda_desk.m00_application_shell` seam, repaired an import-order cycle at the contract-package boundary, promoted the M00 family to current blocking authority and passed all 14 admitted Tier A blocks (754 tests), the 83-test Tier B shadow, vocabulary parity, Black, Ruff and proof-authority reconciliation. Unit 8 clean installed-package and aggregate validation is open.
 
 ## 9. Decisions
 
 - The repair is subordinate to the canonical ExecPlan because it is a prerequisite control unit inside the same alpha-delivery programme, not a competing programme.
-- M00 remained not started until Units 1–6 passed; Unit 7 is now authorised only against `M00-FINAL-COMPOSITION-V1`.
+- M00 remained unstarted until Units 1–6 passed; Unit 7 implementation is bounded by `M00-FINAL-COMPOSITION-V1`.
+- The stable promotion-set machine key `pre_m00_current` is retained through repair closeout for historical receipt continuity; its claim and resolved membership, not the legacy key text, are authoritative.
 - Accepted M01–M13 local proof is retained; the repair targets admission, integration and promotion control before composition.
 
 ## 10. Roadblocks
 
-- None for Unit 7. Unit 6 C-NORM and expected-red C-PROOF are accepted, the offline environment is available, and the authoritative pre-M00 baseline is green.
+- None for Unit 8. Unit 7 source/module proof is green and the accepted offline wheelhouses are available.
 
 ## 11. Unknowns
 
-- Unit 7 must map the admitted M00 contracts onto exact existing M01–M13 public owner signatures without introducing hidden defaults, duplicate domain semantics or a competing legacy composition route.
-- No claim is made that the full unsplit historical test tree is green; current promotion authority is the reconciled 13-family set plus the Tier B shadow.
+- Whether the clean non-editable installed package and aggregate promotion receipt pass at the Unit 7 commit remains open until Unit 8 executes.
+- No claim is made that the full unsplit historical test tree is green; current promotion authority is the reconciled 14-family set plus the Tier B shadow.
 - Live brokerage, live-data access, durable production operations and profitability remain out of scope.
 
 ## 12. Closeout
