@@ -38,3 +38,32 @@ The complete legacy proof-executor contract was also exercised through 19 of 21 
 ## Open next gate
 
 Unit 2: reconcile the single active control state and make the current/legacy API test lifecycles explicit and non-conflicting.
+
+## Unit 2 — Current control and API authority reconciliation
+
+**Outcome:** PASS
+
+Known true:
+
+- Canonical ExecPlan, live roadmap and process overlay identify one active control pack: `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`.
+- The stale M12 active-pack declaration is now retained only as historical programme evidence; it no longer claims current control.
+- `tests/tier_a/api/test_fwd005_api_exposure_contract.py` is explicitly `superseded_compatibility` because it requires API-owned mutable CRUD and authority-event state.
+- `tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py` is explicitly `next_gate_expected_red` and excluded from the current green claim until its gate opens.
+- The registry contains an exclusive `api_state_ownership` claim group. Validation fails if both contradictory families are activated.
+
+Validation evidence:
+
+```text
+python -m pytest tests/tier_b/proof_model/test_proof_authority_contract.py -q
+11 passed
+
+python scripts/proof_authority.py --check
+proof_authority=PASS families=193 tests=195 blocks=64
+
+git diff --check
+PASS (no output)
+```
+
+## Open next gate
+
+Unit 3: implement the aggregate promotion executor and sufficient tamper-evident receipts.

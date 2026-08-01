@@ -135,3 +135,42 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
 
     with pytest.raises(AuthorityError, match="normative_proposition_ids"):
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
+
+
+def test_active_control_surfaces_identify_one_pre_m00_pack() -> None:
+    from scripts.proof_authority import validate_active_control
+
+    assert validate_active_control(REPO_ROOT) == "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+
+
+def test_api_state_ownership_conflict_cannot_activate_legacy_and_current_families() -> None:
+    registry, manifest = _load_live_documents()
+    broken = deepcopy(registry)
+    legacy = next(
+        item
+        for item in broken["canonical_admission_model"]["test_families"]
+        if item["test_family_id"]
+        == "path__tests_tier_a_api_test_fwd005_api_exposure_contract_py"
+    )
+    legacy["lifecycle"] = "current_nonblocking"
+
+    with pytest.raises(AuthorityError, match="api_state_ownership"):
+        validate_authority_documents(broken, manifest, repo_root=REPO_ROOT)
+
+
+def test_api_state_ownership_lifecycles_are_explicit_and_not_in_current_promotion() -> None:
+    registry, manifest = _load_live_documents()
+    model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
+
+    legacy = model.path_admissions[
+        "tests/tier_a/api/test_fwd005_api_exposure_contract.py"
+    ]
+    current = model.path_admissions[
+        "tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py"
+    ]
+    promoted = set(model.promotion_sets["pre_m00_current"].test_paths)
+
+    assert legacy.lifecycle == "superseded_compatibility"
+    assert current.lifecycle == "next_gate_expected_red"
+    assert legacy.test_path not in promoted
+    assert current.test_path not in promoted

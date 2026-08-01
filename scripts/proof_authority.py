@@ -20,6 +20,7 @@ import yaml
 REGISTRY_PATH = Path("config/retained_test_registry.yaml")
 MANIFEST_PATH = Path("config/proof_blocks.yaml")
 ALLOWED_TIERS = frozenset({"Tier A", "Tier B", "Tier C"})
+ACTIVE_CLAIM_LIFECYCLES = frozenset({"current_blocking", "current_nonblocking", "next_gate_expected_red"})
 ALLOWED_LIFECYCLES = frozenset(
     {
         "current_blocking",
@@ -258,6 +259,36 @@ def _validate_registry(
         )
         family_paths[family_id].append(test_path)
 
+    for index, raw in enumerate(
+        _require_list(model.get("exclusive_claim_groups", []), "exclusive_claim_groups")
+    ):
+        group = _require_mapping(raw, f"exclusive_claim_groups[{index}]")
+        group_id = _require_nonempty_string(
+            group.get("conflict_group_id"),
+            f"exclusive_claim_groups[{index}].conflict_group_id",
+        )
+        family_ids = _string_tuple(
+            group.get("family_ids"),
+            f"exclusive_claim_groups[{index}].family_ids",
+            nonempty=True,
+        )
+        unknown = sorted(family_id for family_id in family_ids if family_id not in families)
+        if unknown:
+            raise AuthorityError(
+                f"exclusive claim group {group_id} references unknown test_family_id values: "
+                + ", ".join(unknown)
+            )
+        active = [
+            family_id
+            for family_id in family_ids
+            if families[family_id].lifecycle in ACTIVE_CLAIM_LIFECYCLES
+        ]
+        if len(active) > 1:
+            raise AuthorityError(
+                f"exclusive claim group {group_id} has conflicting active families: "
+                + ", ".join(active)
+            )
+
     unused_families = sorted(
         family_id for family_id, paths in family_paths.items() if not paths
     )
@@ -449,6 +480,42 @@ def validate_authority_documents(
     )
 
 
+def validate_active_control(repo_root: Path = Path(".")) -> str:
+    """Require the canonical plan, live roadmap and process overlay to agree."""
+
+    resolved_root = repo_root.resolve()
+    canonical = (
+        resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    ).read_text(encoding="utf-8")
+    roadmap = (resolved_root / "ROADMAP_LEDGER_V2.md").read_text(encoding="utf-8")
+    process = (
+        resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    ).read_text(encoding="utf-8")
+    expected_plan = "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`"
+    expected_roadmap = (
+        "| Current active slice | Pre-M00 testing guardrail repair — active; "
+        "M00 not started |"
+    )
+    expected_process = (
+        "The current active bounded pack is "
+        "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`"
+    )
+    missing = [
+        label
+        for label, text, expected in (
+            ("canonical ExecPlan", canonical, expected_plan),
+            ("live roadmap", roadmap, expected_roadmap),
+            ("process overlay", process, expected_process),
+        )
+        if expected not in text
+    ]
+    if missing:
+        raise AuthorityError(
+            "active control state is not singular and reconciled: " + ", ".join(missing)
+        )
+    return "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1"
+
+
 def load_and_validate_authority(
     *,
     repo_root: Path = Path("."),
@@ -467,7 +534,9 @@ def load_and_validate_authority(
         )
     except (OSError, yaml.YAMLError) as exc:
         raise AuthorityError(f"authority document load failed: {exc}") from exc
-    return validate_authority_documents(registry, manifest, repo_root=resolved_root)
+    model = validate_authority_documents(registry, manifest, repo_root=resolved_root)
+    validate_active_control(resolved_root)
+    return model
 
 
 def _summary(model: AuthorityModel) -> dict[str, Any]:
