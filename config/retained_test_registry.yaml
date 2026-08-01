@@ -4031,9 +4031,15 @@ canonical_admission_model:
     provenance: BLOCKED_P3_REPAIR
   - test_family_id: entry_boundary_surface
     tier: Tier A
-    lifecycle: superseded_compatibility
-    normative_proposition_ids: []
-    provenance: BLOCKED_P3_REPAIR
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids:
+      - M00-COMP-001
+      - M00-COMP-003
+      - M00-COMP-007
+      - M00-COMP-008
+    provenance: POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1-C-PROOF
+    lifecycle_reason: >-
+      Authorised post-alpha debt proof for thin CLI/ASGI translation into the accepted M00 public seam; expected red until Units 2-3 implement the adapters.
   - test_family_id: execution_contract_models
     tier: Tier A
     lifecycle: superseded_compatibility

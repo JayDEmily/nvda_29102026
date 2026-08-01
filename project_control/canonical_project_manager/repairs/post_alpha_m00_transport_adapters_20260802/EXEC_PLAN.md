@@ -1,6 +1,6 @@
 # Post-alpha M00 Transport Adapter Remediation ExecPlan
 
-**Status:** `ACTIVE:UNIT1_EXPECTED_RED_TRANSPORT_PROOF`
+**Status:** `ACTIVE:UNIT2_CANONICAL_CLI_ADAPTER`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -141,4 +141,5 @@ requested or required by the active route.
   `ALPHA-DEBT-001`.
 - 2026-08-02: branch `work/post-alpha-m00-transport-adapters-v1` created from
   accepted alpha commit `ef4aa1ae556df07871eca4ef93777edc189af8ed`.
-- 2026-08-02: Unit 0 control registration passed; active pack identity reconciles across roadmap, process overlay and proof authority. Unit 1 expected-red transport proof is open.
+- 2026-08-02: Unit 0 control registration passed; active pack identity reconciles across roadmap, process overlay and proof authority.
+- 2026-08-02: Unit 1 admitted the transport family as expected-red. All 15 transport cases fail for the intended legacy-selection/missing-M00-adapter reasons; production source remains unchanged. Unit 2 CLI implementation is open.
