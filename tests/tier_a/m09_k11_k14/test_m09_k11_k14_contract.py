@@ -83,6 +83,43 @@ def test_reference_m07_kill_switch_blocks_but_posture_scale_does_not_size() -> N
     assert clear.authorised_pct == Decimal("10.00")
 
 
+def test_reference_zero_available_capital_is_no_trade_with_zero_authority() -> None:
+    result = evaluate_reference(
+        SerialBranch(), ParallelBranch(), ModifierReceipt(),
+        CapitalStateCase(available_capital=Decimal("0")),
+    )
+    assert result.capital_action == "no_trade"
+    assert result.authorised_pct == 0
+    assert result.authorised_notional == 0
+
+
+def test_reference_invalid_capital_state_and_policy_domains_fail_closed() -> None:
+    invalid_states = (
+        CapitalStateCase(reserved_capital=Decimal("-1")),
+        CapitalStateCase(max_fresh_deployable_pct=Decimal("101")),
+    )
+    for capital in invalid_states:
+        result = evaluate_reference(SerialBranch(), ParallelBranch(), ModifierReceipt(), capital)
+        assert result.capital_action == "block"
+        assert "invalid_capital_state" in result.reasons
+
+    invalid_policies = (
+        CapitalPolicy(target_pct=Decimal("101"), hard_max_pct=Decimal("100")),
+        CapitalPolicy(caution_multiplier=Decimal("1.01")),
+        CapitalPolicy(caution_multiplier=Decimal("-0.01")),
+    )
+    for policy in invalid_policies:
+        result = evaluate_reference(
+            SerialBranch(),
+            replace(ParallelBranch(), state="caution", cautions=("caution",)),
+            ModifierReceipt(),
+            CapitalStateCase(),
+            capital_policy=policy,
+        )
+        assert result.capital_action == "block"
+        assert "invalid_or_unsupported_capital_policy" in result.reasons
+
+
 def test_reference_semantic_identity_ignores_emission_time() -> None:
     args = (SerialBranch(), ParallelBranch(), ModifierReceipt(), CapitalStateCase())
     first = evaluate_reference(*args, emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC))
@@ -184,6 +221,20 @@ def test_production_k14_is_bounded_and_does_not_use_m07_coefficient_as_percentag
     assert decision.authorised_pct == Decimal("10.00")
     assert decision.authorised_notional == Decimal("10000.00")
     assert decision.placement_authority_granted is False
+    zero_capital = api["CapitalState"].create(
+        state_id="capital.state.zero",
+        account_id="account.001",
+        state_version=2,
+        effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+        available_capital=Decimal("0"),
+        reserved_capital=Decimal("0"),
+        max_fresh_deployable_pct=Decimal("12"),
+        source_authority_ref="capital.snapshot.authority.v1",
+    )
+    zero = service.evaluate_capital(final, zero_capital, modifier, capital_policy)
+    assert zero.action == "no_trade"
+    assert zero.authorised_pct == 0
+    assert zero.authorised_notional == 0
 
 
 def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None:
@@ -224,3 +275,16 @@ def test_production_rejects_unsupported_policy_versions_and_forged_copies() -> N
     forged = capital.model_copy(update={"available_capital": Decimal("999999")})
     with pytest.raises(ValueError, match="capital_state_contract_invalid"):
         service.evaluate_capital(final, forged, modifier, capital_policy)
+    with pytest.raises(ValueError):
+        api["CapitalState"].create(
+            state_id="capital.invalid", account_id="account.001", state_version=1,
+            effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+            available_capital=Decimal("100"), reserved_capital=Decimal("-1"),
+            max_fresh_deployable_pct=Decimal("10"), source_authority_ref="authority.v1",
+        )
+    with pytest.raises(ValueError):
+        api["CapitalDeploymentPolicy"](
+            policy_version=CAPITAL_POLICY_VERSION, target_pct=Decimal("10"),
+            hard_max_pct=Decimal("15"), caution_multiplier=Decimal("1.01"),
+            rounding_quantum=Decimal("0.01"),
+        )

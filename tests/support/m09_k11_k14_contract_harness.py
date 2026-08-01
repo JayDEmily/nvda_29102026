@@ -5,7 +5,7 @@ from __future__ import annotations
 import importlib
 import json
 from dataclasses import dataclass, replace
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from decimal import Decimal, ROUND_HALF_UP
 from hashlib import sha256
 from typing import Any, Callable, Final
@@ -172,14 +172,31 @@ def evaluate_reference(
     pct = Decimal("0")
     notional = Decimal("0")
     if eligible:
-        if capital_policy.version != CAPITAL_POLICY_VERSION:
-            reasons.append("unsupported_capital_policy")
+        policy_domain_valid = (
+            capital_policy.version == CAPITAL_POLICY_VERSION
+            and Decimal("0") <= capital_policy.target_pct <= Decimal("100")
+            and Decimal("0") <= capital_policy.hard_max_pct <= Decimal("100")
+            and Decimal("0") <= capital_policy.caution_multiplier <= Decimal("1")
+            and capital_policy.rounding_quantum > 0
+        )
+        capital_domain_valid = (
+            capital is not None
+            and capital.available_capital >= 0
+            and capital.reserved_capital >= 0
+            and Decimal("0") <= capital.max_fresh_deployable_pct <= Decimal("100")
+            and capital.effective_at_utc.tzinfo is not None
+            and capital.effective_at_utc.utcoffset() == timedelta(0)
+        )
+        if not policy_domain_valid:
+            reasons.append("invalid_or_unsupported_capital_policy")
         elif modifier is None or capital is None:
             reasons.append("capital_authority_missing")
+        elif not capital_domain_valid:
+            reasons.append("invalid_capital_state")
         elif modifier.decision_status == "rejected" or modifier.kill_switches or modifier.vetoes:
             reasons.append("modifier_block")
-        elif capital.available_capital < 0 or capital.max_fresh_deployable_pct < 0:
-            reasons.append("invalid_capital_state")
+        elif capital.available_capital == 0:
+            action = "no_trade"
         else:
             pct = min(
                 capital_policy.target_pct,
@@ -190,8 +207,10 @@ def evaluate_reference(
                 pct *= capital_policy.caution_multiplier
             pct = max(Decimal("0"), pct).quantize(capital_policy.rounding_quantum, rounding=ROUND_HALF_UP)
             notional = (capital.available_capital * pct / Decimal("100")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
-            if pct == 0:
+            if pct == 0 or notional == 0:
                 action = "no_trade"
+                pct = Decimal("0")
+                notional = Decimal("0")
             elif pct < capital_policy.target_pct:
                 action = "reduce"
             else:
