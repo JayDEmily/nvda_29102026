@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:CI_AND_ENVIRONMENT_AUTHORITY`
+**Status:** `ACTIVE:CURRENT_BASELINE_VALIDATION`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -149,6 +149,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 1 established registry schema v4, proof manifest schema v2, exact path admission for all 195 physical governed test files, one 13-family/15-test pre-M00 promotion set, exact current-block proposition locators, and executable malformed/duplicate/reference/membership rejection proof.
 - 2026-08-01: Unit 2 reconciled the canonical plan, roadmap and process overlay to one pre-M00 control pack and encoded the legacy mutable-API/current transport-only API conflict as mutually exclusive lifecycle authority.
 - 2026-08-01: Unit 3 implemented the manifest-resolved aggregate promotion command, fail-closed result and Git-state checks, content-addressed receipts, receipt verification and separate check-versus-execute Make routes.
+- 2026-08-01: Unit 4 replaced editable pip installation with frozen non-editable uv synchronisation, normalised lock origins away from the private worker mirror, added an out-of-tree installed-package smoke target, and made both workflows delegate to repository-owned promotion commands. Local package retrieval remained externally blocked and is recorded under the Unit 4 evidence surface.
 
 ## 9. Decisions
 
@@ -158,11 +159,11 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 ## 10. Roadblocks
 
-None at plan creation.
+- Unit 4 runtime environment validation is externally blocked: the configured internal package mirror returned HTTP 404 for a locked wheel and public PyPI name resolution is unavailable in this worker. Repository control/static proof passed; installed-package smoke and an authoritative lock-created aggregate run remain open until package retrieval is available.
 
 ## 11. Unknowns
 
-- Whether the authorised package index can currently resolve every locked wheel remains Unknown until Unit 4 executes the canonical route.
+- The authorised package sources are not resolvable from this worker: the configured mirror returned HTTP 404 and public PyPI DNS resolution failed. Whether the same frozen route passes in GitHub Actions remains Unknown until that workflow executes.
 - The exact pre-M00 current blocking membership is now Known: 13 accepted module-local families resolving to 15 tests. Unit 2 still must reconcile active control declarations and the explicit current/legacy API lifecycle boundary.
 
 ## 12. Closeout

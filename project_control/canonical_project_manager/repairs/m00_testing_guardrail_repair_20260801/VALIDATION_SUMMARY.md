@@ -105,3 +105,53 @@ The available diagnostic interpreter does not contain Black, so formatting-tool 
 ## Open next gate
 
 Unit 4: make the canonical installation consume `uv.lock`, add an installed-package smoke route, and remove duplicated stale CI schema/count logic.
+
+
+## Unit 4 — CI and environment authority
+
+**Outcome:** PASS for repository control; local locked installation and installed-package smoke are **BLOCKED_EXTERNAL**.
+
+Known true:
+
+- `make install` now consumes `.python-version`, `pyproject.toml` and `uv.lock` through `uv sync --frozen --extra dev --no-editable`.
+- `uv.lock` no longer embeds the private worker package mirror; dependency versions and hashes were retained while registry/file origins were normalised to canonical PyPI hosts.
+- `make installed-package-smoke` imports with isolated mode from a temporary directory and proves the imported package resides under the environment's `purelib`, preventing source-tree masking.
+- PR CI installs pinned `uv`, uses the locked route, runs the installed-package smoke, repository-owned preflight controls and the aggregate promotion gate. It no longer runs the uncontrolled unsplit suite.
+- Remote-patch CI no longer embeds the retired proof schema or hard-coded Tier A count. It runs `make promotion-check`, commits, runs `make promotion-gate` on the clean committed tree and only then pushes.
+- The environment-control family is admitted once in the canonical registry and linked to `TP-ENV-001` and `TP-PROMOTION-001`.
+
+Validation evidence:
+
+```text
+python -m pytest tests/tier_b/proof_model/test_environment_control_contract.py -q
+5 passed
+
+python -m pytest tests/tier_b/proof_model/test_proof_authority_contract.py tests/tier_b/proof_model/test_promotion_gate_contract.py tests/tier_b/proof_model/test_environment_control_contract.py -q
+27 passed
+
+python scripts/proof_authority.py --check
+proof_authority=PASS families=195 tests=197 blocks=66
+
+YAML parse: both workflows, proof manifest and retained-test registry parsed successfully.
+python -m compileall -q scripts tests/tier_b/proof_model/test_environment_control_contract.py
+PASS
+
+git diff --check
+PASS (no output)
+```
+
+Unavailable in the worker environment:
+
+```text
+make install
+BLOCKED_EXTERNAL_INDEX: configured internal mirror returned HTTP 404 for polars==1.39.3.
+
+UV_INDEX_URL=https://pypi.org/simple uv sync --frozen --extra dev --no-editable --python 3.13.5
+BLOCKED_EXTERNAL_DNS: files.pythonhosted.org name resolution failed.
+```
+
+No installed-package smoke PASS, Black PASS or Ruff PASS is claimed. Exact sanitised evidence is retained in `evidence/UNIT4_LOCKED_INSTALL_ENVIRONMENT_FAILURE.md`.
+
+## Open next gate
+
+Unit 5: execute the aggregate baseline diagnostically on the available interpreter, while preserving the authoritative locked-environment run as an explicit external roadblock. Do not admit M00 C-NORM until the Unit 5 state is classified.

@@ -2,8 +2,9 @@ SHELL := /usr/bin/env bash
 
 VENV ?= .venv
 BOOTSTRAP_PYTHON ?= python3.13
+UV ?= uv
+PYTHON_VERSION := $(strip $(shell cat .python-version))
 PYTHON ?= $(VENV)/bin/python
-PIP ?= $(PYTHON) -m pip
 PYTEST ?= $(PYTHON) -m pytest
 PYTHON_PATHS ?= src scripts tests alembic
 BLACK ?= $(PYTHON) -m black
@@ -19,6 +20,7 @@ help:
 		"venv             create/update .venv using Python 3.13.5" \
 		"install          install repo into .venv" \
 		"compile          compile src and tests without writing bytecode" \
+		"installed-package-smoke import the non-editable installed wheel outside the repo" \
 		"pr-preflight     install and run PR preflight gates" \
 		"test             run pytest suite via .venv" \
 		"test-targeted    run TESTS=\"...\" via .venv" \
@@ -95,17 +97,23 @@ assert-python:
 venv: $(INSTALL_STAMP)
 
 $(INSTALL_STAMP): $(INSTALL_INPUTS) | assert-python
-	$(BOOTSTRAP_PYTHON) -m venv $(VENV)
+	$(UV) sync --frozen --extra dev --no-editable --python $(PYTHON_VERSION)
 	$(PYTHON) --version
-	$(PIP) install --upgrade pip
-	$(PIP) install -e ".[dev]"
 	@touch $@
 
 .PHONY: install
 install: $(INSTALL_STAMP)
 
+
+.PHONY: installed-package-smoke
+installed-package-smoke: $(INSTALL_STAMP)
+	@tmp_dir="$$(mktemp -d)"; \
+	trap 'rm -rf "$$tmp_dir"' EXIT; \
+	cd "$$tmp_dir"; \
+	"$(abspath $(PYTHON))" -I -c 'from pathlib import Path; import sysconfig; import nvda_desk; module=Path(nvda_desk.__file__).resolve(); purelib=Path(sysconfig.get_paths()["purelib"]).resolve(); assert module.is_relative_to(purelib), (module, purelib); print(f"installed-package-smoke=PASS {module}")'
+
 .PHONY: pr-preflight
-pr-preflight: install scaffold-check format-check lint bridge-blueprint-check proof-executor-check
+pr-preflight: install scaffold-check installed-package-smoke format-check lint bridge-blueprint-check proof-executor-check promotion-check
 
 .PHONY: compile
 compile: $(INSTALL_STAMP)

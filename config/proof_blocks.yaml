@@ -103,6 +103,27 @@ proof_blocks:
       - config/retained_test_registry.yaml
       - Makefile
 
+  - proof_block_id: environment_control_contract
+    tier: Tier B
+    lifecycle: admitted_for_m00_testing_guardrail_repair_unit_4
+    test_family_ids:
+      - environment_control_contract
+    normative_proposition_ids:
+      - TP-ENV-001
+      - TP-PROMOTION-001
+    command: >-
+      python -m pytest tests/tier_b/proof_model/test_environment_control_contract.py
+    owns:
+      - Makefile
+      - .python-version
+      - pyproject.toml
+      - uv.lock
+      - .github/workflows/pr-preflight.yml
+      - .github/workflows/apply-remote-bridge-patch.yml
+      - tests/tier_b/proof_model/test_environment_control_contract.py
+      - config/proof_blocks.yaml
+      - config/retained_test_registry.yaml
+
   - proof_block_id: checkpoint_receipt_contract
     tier: Tier B
     lifecycle: admitted_for_active_code_atlas_testing_proof_checkpoint_surface

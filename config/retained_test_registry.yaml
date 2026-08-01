@@ -4636,6 +4636,13 @@ canonical_admission_model:
     - TP-RECEIPT-001
     - TP-CONTROL-001
     provenance: m00_testing_guardrail_repair_unit_3
+  - test_family_id: environment_control_contract
+    tier: Tier B
+    lifecycle: current_nonblocking
+    normative_proposition_ids:
+    - TP-ENV-001
+    - TP-PROMOTION-001
+    provenance: m00_testing_guardrail_repair_unit_4
   - test_family_id: proof_executor_contract
     tier: Tier B
     lifecycle: current_nonblocking
@@ -5435,6 +5442,9 @@ canonical_admission_model:
   - test_path: tests/tier_b/proof_model/test_promotion_gate_contract.py
     test_family_id: promotion_gate_contract
     source_disposition: m00_testing_guardrail_repair_unit_3
+  - test_path: tests/tier_b/proof_model/test_environment_control_contract.py
+    test_family_id: environment_control_contract
+    source_disposition: m00_testing_guardrail_repair_unit_4
   - test_path: tests/tier_b/proof_model/test_proof_executor_contract.py
     test_family_id: proof_executor_contract
     source_disposition: ADMIT_TIER_B_SHADOW
