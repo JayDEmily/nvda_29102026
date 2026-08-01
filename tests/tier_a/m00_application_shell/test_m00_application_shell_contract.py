@@ -47,6 +47,10 @@ def test_normative_propositions_and_vocabulary_are_explicit() -> None:
     ):
         assert f"### {term}" in registry
         assert term in vocabulary
+    assert "coordinates the admitted M03→M05/M06→M09→M10→M11 public seams" in vocabulary
+    assert "delegates M12 queries separately" in vocabulary
+    assert "leaves M13 participation inside admitted owner services" in vocabulary
+    assert "invokes admitted M01–M13 public seams" not in vocabulary
 
 
 def test_reference_run_uses_canonical_order_and_fresh_scope() -> None:

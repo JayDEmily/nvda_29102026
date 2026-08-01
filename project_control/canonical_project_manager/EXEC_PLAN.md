@@ -2,8 +2,8 @@
 
 ## Status
 
-**Status:** `READY:FINAL_ALPHA_CONSOLIDATION`
-**Amendment date:** `2026-08-01`
+**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`
+**Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
 **Gate C protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
@@ -343,28 +343,26 @@ Accepted M01–M13 history remains intact. The repair introduced zero new Tier A
 failure nodes and did not reset, rebase, weaken M04 identity law, packetise raw
 M01/calendar input or reopen unrelated downstream policy semantics.
 
-## 8. Immediate work
+## 8. Completed final alpha consolidation
 
-M00 final composition and the subordinate testing-guardrail repair are accepted.
-The next lawful unit is final alpha consolidation:
+M00 final composition, the testing-guardrail repair and final alpha consolidation
+are accepted. The concise closeout is at
+`project_control/canonical_project_manager/final_alpha_consolidation_20260802/ALPHA_CLOSEOUT.md`;
+material unresolved debt is separately enumerated in `MATERIAL_DEBT.tsv`.
 
-1. reconcile the accepted M00–M15 module and governance states into one concise
-   alpha closeout record;
-2. inventory only material unresolved debt, contradictions and explicit alpha
-   limitations without reopening accepted module semantics by default;
-3. verify the retained current promotion and installed-package routes remain
-   reproducible; and
-4. issue one final clean full-history alpha checkpoint.
+The accepted alpha remains bounded. Current CLI/ASGI compatibility routes are not
+the canonical M00 transport boundary, Tier C is empty/deferred, and current M15
+vocabulary cleanliness is not established beyond namespace `m07`. These facts do
+not reopen accepted M00–M13 semantics by default.
 
 No live brokerage, durable operations, production-readiness or profitability
-work is authorised by this transition.
+work is authorised by this completion state.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. final alpha consolidation;
-2. bounded unresolved-debt reconciliation where separately authorised.
+1. bounded unresolved-debt reconciliation only where separately authorised.
 
 Canonical integration remains serial where shared files overlap. M14 and M15
 continue as proof/promotion and vocabulary governance planes.

@@ -1842,3 +1842,30 @@ The remaining 250 Tier A failures reproduce from the accepted baseline and remai
 ### Next action
 
 M00 final composition is ready but has not started. Compose only the accepted module boundaries and preserve the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress.
+
+## 2026-08-02 — Final alpha consolidation
+
+### Disposition
+
+`PASS:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`
+
+Accepted M00–M15 states are reconciled in one concise closeout without reopening
+settled M00–M13 semantics. One real vocabulary contradiction was corrected: the
+M00 `RunCoordinator` definition now matches the admitted M03-start paper path,
+separate M12 query delegation and internal M13 participation rather than implying
+one run directly invokes every M01–M13 seam.
+
+Material debt is explicit and separately actionable: current CLI/ASGI adapters
+remain on the noncanonical legacy orchestrator path; Tier C is empty/deferred;
+current vocabulary audits are clean only for m07; live/durable operation remains
+outside alpha authority; and the previous checkpoint packaging method omitted six
+tracked worktree files despite an intact Git object database.
+
+Final installed-package, promotion, Tier B, style and independently extracted
+checkpoint results are recorded in
+`project_control/canonical_project_manager/final_alpha_consolidation_20260802/VALIDATION_SUMMARY.md`.
+
+### Next action
+
+No work is active. Open only one separately authorised bounded debt item. Do not
+infer live brokerage, durable operation, production readiness or profitability.

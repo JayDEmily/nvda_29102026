@@ -9,9 +9,9 @@
 | Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | M00 bounded final composition and testing-guardrail closeout |
-| Current active slice | Final alpha consolidation — ready |
+| Current active slice | none — alpha consolidation complete |
 | Active control pack | none — canonical ExecPlan only |
-| Production implementation | M00–M13 bounded alpha slices accepted; installed aggregate and Tier B shadow pass; no live/durable/production claim |
+| Production implementation | M00–M13 bounded alpha slices consolidated; installed aggregate and Tier B shadow retained; explicit material debt recorded; no live/durable/production claim |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -220,4 +220,4 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The subordinate M00 testing-guardrail plan is closed. The clean CPython 3.13.5 installed environment imports M00 from `site-packages`; the aggregate promotion route passes 14/14 blocks and 754 Tier A tests with zero skips, and Tier B passes 84 tests. The next lawful unit is final alpha consolidation under the canonical ExecPlan: reconcile the accepted M00–M15 state, record material unresolved debt and explicit alpha limitations, verify the retained promotion route, and issue one final full-history alpha checkpoint. No subordinate bounded pack is currently active.
+Final alpha consolidation is complete under the canonical ExecPlan. The accepted module state and explicit debt are recorded under `project_control/canonical_project_manager/final_alpha_consolidation_20260802/`. No subordinate bounded pack is active. The next lawful work is one separately authorised bounded debt item; accepted module semantics are not reopened by default. Live brokerage, durable operation, production readiness and profitability remain closed.
