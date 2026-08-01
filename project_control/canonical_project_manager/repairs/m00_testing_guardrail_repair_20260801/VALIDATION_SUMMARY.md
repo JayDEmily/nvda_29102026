@@ -155,3 +155,45 @@ No installed-package smoke PASS, Black PASS or Ruff PASS is claimed. Exact sanit
 ## Open next gate
 
 Unit 5: execute the aggregate baseline diagnostically on the available interpreter, while preserving the authoritative locked-environment run as an explicit external roadblock. Do not admit M00 C-NORM until the Unit 5 state is classified.
+
+
+## Unit 5 — Current pre-M00 promotion baseline
+
+**Outcome:** PASS_DIAGNOSTIC; **BLOCKED_AUTHORITATIVE** by unavailable package sources.
+
+Known true:
+
+- On clean commit `1d657e7c7e5c9f007f22f1c37e5b5c77725630be`, the exact `pre_m00_current` set executed all 13 admitted proof blocks.
+- The diagnostic receipt reports 13 passed blocks, 738 passed tests, zero skipped tests, zero failed blocks, unchanged branch/commit and clean pre/post Git state.
+- Receipt evidence hash: `54d658bc011a0bf4cb3c488e03c7539c2d358ea383dbc8671584ca76b3c12f2a`.
+- Receipt verification passed.
+- The complete Tier B shadow passed 78 tests.
+- Unit 5 exposed and repaired four aggregate-runner defects: pipe capture, shared process sessions, ambient pytest-plugin admission and unmanaged residual process groups.
+- Final targeted control proof passed 29 tests.
+
+Validation evidence:
+
+```text
+promotion_gate=PASS set=pre_m00_current blocks=13/13 tests=738
+promotion_receipt=PASS var/proof_receipts/pre_m00_current-diagnostic.json
+pre/post Git status: clean
+pre/post commit: 1d657e7c7e5c9f007f22f1c37e5b5c77725630be
+skipped tests: 0
+
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /opt/pyvenv/bin/python -m pytest -q tests/tier_b
+78 passed in 43.85s
+
+python -m pytest tests/tier_b/proof_model/test_promotion_gate_contract.py tests/tier_b/proof_model/test_proof_authority_contract.py tests/tier_b/proof_model/test_environment_control_contract.py -q
+29 passed
+```
+
+Limitation:
+
+- The diagnostic receipt identifies `/opt/pyvenv/bin/python`. That interpreter does not match the locked dependency set and therefore cannot establish authoritative environment reproducibility.
+- `make install` remains externally blocked as recorded in Unit 4. No substitution is accepted.
+
+Exact evidence is retained in `evidence/UNIT5_DIAGNOSTIC_BASELINE.md`.
+
+## Open next gate
+
+Blocked. Obtain package-source access sufficient for `make install`, then execute `make installed-package-smoke`, `make promotion-gate` and Tier B from `.venv`. Only after those pass may Unit 6 admit M00 C-NORM and expected-red proof.

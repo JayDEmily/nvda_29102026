@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:CURRENT_BASELINE_VALIDATION`
+**Status:** `BLOCKED:UNIT5_LOCKED_ENVIRONMENT`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -150,6 +150,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 2 reconciled the canonical plan, roadmap and process overlay to one pre-M00 control pack and encoded the legacy mutable-API/current transport-only API conflict as mutually exclusive lifecycle authority.
 - 2026-08-01: Unit 3 implemented the manifest-resolved aggregate promotion command, fail-closed result and Git-state checks, content-addressed receipts, receipt verification and separate check-versus-execute Make routes.
 - 2026-08-01: Unit 4 replaced editable pip installation with frozen non-editable uv synchronisation, normalised lock origins away from the private worker mirror, added an out-of-tree installed-package smoke target, and made both workflows delegate to repository-owned promotion commands. Local package retrieval remained externally blocked and is recorded under the Unit 4 evidence surface.
+- 2026-08-01: Unit 5 established a clean diagnostic baseline at commit `1d657e7`: all 13 admitted current proof blocks passed with 738 tests and zero skips, and the complete Tier B shadow passed 78 tests. Four aggregate-runner isolation defects were repaired. The authoritative lock-created run remains blocked by package-source unavailability, so M00 C-NORM has not opened.
 
 ## 9. Decisions
 
@@ -159,11 +160,12 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 ## 10. Roadblocks
 
-- Unit 4 runtime environment validation is externally blocked: the configured internal package mirror returned HTTP 404 for a locked wheel and public PyPI name resolution is unavailable in this worker. Repository control/static proof passed; installed-package smoke and an authoritative lock-created aggregate run remain open until package retrieval is available.
+- Units 4–5 authoritative environment validation is externally blocked: the configured internal package mirror returned HTTP 404 for a locked wheel and public PyPI name resolution is unavailable in this worker. Repository control/static proof and the diagnostic aggregate/Tier B baseline passed; installed-package smoke and an authoritative lock-created aggregate run remain open until package retrieval is available. This is a permitted stop condition under the repository execution method.
 
 ## 11. Unknowns
 
 - The authorised package sources are not resolvable from this worker: the configured mirror returned HTTP 404 and public PyPI DNS resolution failed. Whether the same frozen route passes in GitHub Actions remains Unknown until that workflow executes.
+- Whether the aggregate gate passes from the exact `uv.lock` environment is Unknown. Diagnostic evidence from `/opt/pyvenv/bin/python` cannot substitute for that claim.
 - The exact pre-M00 current blocking membership is now Known: 13 accepted module-local families resolving to 15 tests. Unit 2 still must reconcile active control declarations and the explicit current/legacy API lifecycle boundary.
 
 ## 12. Closeout
