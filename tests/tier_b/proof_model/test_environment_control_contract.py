@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import importlib.util
-from pathlib import Path
 import sys
 import zipfile
+from pathlib import Path
 
 import pytest
-
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
@@ -78,22 +77,26 @@ def test_make_offline_install_delegates_to_repository_bootstrap() -> None:
     assert "DEV_WHEELHOUSE_ZIP" in makefile
 
 
-def test_offline_bootstrap_is_hash_pinned_frozen_and_non_editable() -> None:
+def test_offline_bootstrap_is_hash_pinned_lock_exported_and_non_editable() -> None:
     bootstrap = _read("scripts/bootstrap_offline_environment.py")
 
-    assert (
-        "498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1"
-        in bootstrap
-    )
-    assert (
-        "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249"
-        in bootstrap
-    )
-    assert '"sync"' in bootstrap
+    assert "6e4459f4e5508303bdb2e03bcca7701ee72e640f36a716c20b3cd6b0c09b0b42" in bootstrap
+    assert "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249" in bootstrap
+    assert '"export"' in bootstrap
     assert '"--frozen"' in bootstrap
-    assert '"--offline"' in bootstrap
     assert '"--no-editable"' in bootstrap
+    assert '"--no-emit-project"' in bootstrap
+    assert '"venv"' in bootstrap
+    assert '"pip"' in bootstrap
+    assert '"install"' in bootstrap
+    assert '"--offline"' in bootstrap
+    assert '"--no-index"' in bootstrap
+    assert '"--no-cache"' in bootstrap
     assert '"--find-links"' in bootstrap
+    assert '"--no-build-isolation"' in bootstrap
+    assert '"--no-deps"' in bootstrap
+    assert "hatchling==1.29.0" in bootstrap
+    assert "editables==0.6" in bootstrap
     assert "pip install --upgrade pip" not in bootstrap
     assert '"-e"' not in bootstrap
 

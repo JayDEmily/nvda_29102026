@@ -6,24 +6,20 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-from pathlib import Path
 import shutil
 import subprocess
 import sys
 import tempfile
 import time
 import zipfile
-
+from pathlib import Path
 
 EXPECTED_PYTHON = (3, 13, 5)
-ACCEPTED_RUNTIME_SHA256 = (
-    "498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1"
-)
-ACCEPTED_DEV_SHA256 = (
-    "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249"
-)
-ACCEPTED_RUNTIME_SIZE = 64_236_501
+ACCEPTED_RUNTIME_SHA256 = "6e4459f4e5508303bdb2e03bcca7701ee72e640f36a716c20b3cd6b0c09b0b42"
+ACCEPTED_DEV_SHA256 = "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249"
+ACCEPTED_RUNTIME_SIZE = 64_398_120
 ACCEPTED_DEV_SIZE = 15_199_214
+BUILD_REQUIREMENTS = ("hatchling==1.29.0", "editables==0.6")
 
 
 class BootstrapError(RuntimeError):
@@ -47,14 +43,12 @@ def verify_archive(
     actual_size = path.stat().st_size
     if expected_size is not None and actual_size != expected_size:
         raise BootstrapError(
-            "archive size mismatch for "
-            f"{path}: expected {expected_size}, got {actual_size}"
+            "archive size mismatch for " f"{path}: expected {expected_size}, got {actual_size}"
         )
     actual_sha256 = sha256_file(path)
     if actual_sha256 != expected_sha256:
         raise BootstrapError(
-            "SHA-256 mismatch for "
-            f"{path}: expected {expected_sha256}, got {actual_sha256}"
+            "SHA-256 mismatch for " f"{path}: expected {expected_sha256}, got {actual_sha256}"
         )
     return {
         "path": str(path),
@@ -78,14 +72,11 @@ def safe_extract_zip(archive: Path, destination: Path) -> None:
 
 def find_wheelhouse(extracted_root: Path) -> Path:
     candidates = sorted(
-        path.resolve()
-        for path in extracted_root.rglob("wheelhouse")
-        if path.is_dir()
+        path.resolve() for path in extracted_root.rglob("wheelhouse") if path.is_dir()
     )
     if len(candidates) != 1:
         raise BootstrapError(
-            "expected exactly one wheelhouse under "
-            f"{extracted_root}, found {candidates}"
+            "expected exactly one wheelhouse under " f"{extracted_root}, found {candidates}"
         )
     if not any(candidates[0].glob("*.whl")):
         raise BootstrapError(f"wheelhouse contains no wheels: {candidates[0]}")
@@ -124,13 +115,14 @@ def write_receipt(
     repo_root: Path,
     runtime_evidence: dict[str, object],
     dev_evidence: dict[str, object],
-    command: list[str] | None,
+    commands: list[list[str]] | None,
+    lock_export_sha256: str | None,
     status: str,
 ) -> Path:
     receipt_path = repo_root / "var/proof_receipts/offline_environment.json"
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
-        "schema_version": 1,
+        "schema_version": 2,
         "status": status,
         "created_at_epoch": time.time(),
         "python": sys.version.split()[0],
@@ -138,13 +130,12 @@ def write_receipt(
         "git": git_identity(repo_root),
         "uv_lock_sha256": sha256_file(repo_root / "uv.lock"),
         "pyproject_sha256": sha256_file(repo_root / "pyproject.toml"),
+        "lock_export_sha256": lock_export_sha256,
         "runtime_archive": runtime_evidence,
         "dev_archive": dev_evidence,
-        "command": command,
+        "commands": commands,
     }
-    receipt_path.write_text(
-        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
+    receipt_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return receipt_path
 
 
@@ -163,8 +154,7 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     if sys.version_info[:3] != EXPECTED_PYTHON:
         raise BootstrapError(
-            "expected Python "
-            f"{EXPECTED_PYTHON}, got {sys.version_info[:3]}: {sys.executable}"
+            "expected Python " f"{EXPECTED_PYTHON}, got {sys.version_info[:3]}: {sys.executable}"
         )
 
     repo_root = args.repo_root.expanduser().resolve()
@@ -184,7 +174,8 @@ def main(argv: list[str] | None = None) -> int:
             repo_root=repo_root,
             runtime_evidence=runtime_evidence,
             dev_evidence=dev_evidence,
-            command=None,
+            commands=None,
+            lock_export_sha256=None,
             status="ARCHIVES_VERIFIED",
         )
         print(f"offline_archives=PASS receipt={receipt_path}")
@@ -198,15 +189,13 @@ def main(argv: list[str] | None = None) -> int:
     if venv_path.exists():
         if not args.replace_venv:
             raise BootstrapError(
-                f"{venv_path} already exists; pass --replace-venv "
-                "for a fresh environment"
+                f"{venv_path} already exists; pass --replace-venv " "for a fresh environment"
             )
         if venv_path.resolve() != (repo_root / ".venv").resolve():
-            raise BootstrapError(
-                f"refusing to remove unexpected venv path: {venv_path}"
-            )
+            raise BootstrapError(f"refusing to remove unexpected venv path: {venv_path}")
         shutil.rmtree(venv_path)
 
+    commands: list[list[str]] = []
     extraction_parent = repo_root / "var/offline_wheelhouse"
     extraction_parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(
@@ -215,43 +204,107 @@ def main(argv: list[str] | None = None) -> int:
         temporary_root = Path(temporary_directory)
         runtime_root = temporary_root / "runtime"
         dev_root = temporary_root / "dev"
+        requirements_path = temporary_root / "requirements.current-lock.txt"
         safe_extract_zip(Path(runtime_evidence["path"]), runtime_root)
         safe_extract_zip(Path(dev_evidence["path"]), dev_root)
         runtime_wheelhouse = find_wheelhouse(runtime_root)
         dev_wheelhouse = find_wheelhouse(dev_root)
 
-        command = [
+        export_command = [
             uv_path,
-            "sync",
+            "export",
             "--frozen",
-            "--offline",
-            "--no-index",
-            "--no-cache",
             "--extra",
             "dev",
             "--no-editable",
-            "--no-managed-python",
+            "--no-hashes",
+            "--no-emit-project",
+            "--output-file",
+            str(requirements_path),
+        ]
+        commands.append(export_command)
+        run_checked(export_command, cwd=repo_root)
+        lock_export_sha256 = sha256_file(requirements_path)
+
+        venv_command = [
+            uv_path,
+            "venv",
             "--python",
-            "3.13.5",
+            sys.executable,
+            "--no-managed-python",
+            str(venv_path),
+        ]
+        commands.append(venv_command)
+        run_checked(venv_command, cwd=repo_root)
+
+        venv_python = venv_path / "bin/python"
+        find_links = [
             "--find-links",
             str(runtime_wheelhouse),
             "--find-links",
             str(dev_wheelhouse),
         ]
-        run_checked(command, cwd=repo_root)
+        offline_flags = ["--offline", "--no-index", "--no-cache"]
+
+        dependency_command = [
+            uv_path,
+            "pip",
+            "install",
+            "--python",
+            str(venv_python),
+            *offline_flags,
+            *find_links,
+            "--requirements",
+            str(requirements_path),
+        ]
+        commands.append(dependency_command)
+        run_checked(dependency_command, cwd=repo_root)
+
+        build_command = [
+            uv_path,
+            "pip",
+            "install",
+            "--python",
+            str(venv_python),
+            *offline_flags,
+            *find_links,
+            *BUILD_REQUIREMENTS,
+        ]
+        commands.append(build_command)
+        run_checked(build_command, cwd=repo_root)
+
+        project_command = [
+            uv_path,
+            "pip",
+            "install",
+            "--python",
+            str(venv_python),
+            *offline_flags,
+            *find_links,
+            "--no-build-isolation",
+            "--no-deps",
+            str(repo_root),
+        ]
+        commands.append(project_command)
+        run_checked(project_command, cwd=repo_root)
 
     venv_python = venv_path / "bin/python"
     if not venv_python.is_file():
-        raise BootstrapError(f"environment Python missing after sync: {venv_python}")
-    run_checked([uv_path, "pip", "check", "--python", str(venv_python)], cwd=repo_root)
-    run_checked([str(venv_python), "--version"], cwd=repo_root)
+        raise BootstrapError(f"environment Python missing after install: {venv_python}")
+    check_command = [uv_path, "pip", "check", "--python", str(venv_python)]
+    commands.append(check_command)
+    run_checked(check_command, cwd=repo_root)
+    version_command = [str(venv_python), "--version"]
+    commands.append(version_command)
+    run_checked(version_command, cwd=repo_root)
     (venv_path / ".install.stamp").touch()
 
     receipt_path = write_receipt(
         repo_root=repo_root,
         runtime_evidence=runtime_evidence,
         dev_evidence=dev_evidence,
-        command=command,
+        commands=commands,
+        lock_export_sha256=lock_export_sha256,
         status="PASS",
     )
     print(f"offline_environment=PASS receipt={receipt_path}")
