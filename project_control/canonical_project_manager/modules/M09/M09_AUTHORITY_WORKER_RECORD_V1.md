@@ -41,3 +41,7 @@ Only M09-relevant candidate behaviour consistent with numbered doctrine may be a
 ## Gate boundary
 
 C-NORM is accepted. Production and tests remain unchanged. C-PROOF must admit exact reference/mutant/public-seam proof and pass a separate-worktree adversarial review before Gate D can open.
+
+## C-PROOF boundary
+
+Fourteen reference/mutant cases pass and seven production-facing assertions are exact red solely because the canonical M09 package is absent. Vocabulary parity admits namespace `m09`. No production source changed. Gate D remains closed pending the mandatory separate-worktree adversarial proof review.

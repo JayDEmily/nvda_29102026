@@ -3760,3 +3760,26 @@ fast_track_module_local_admissions:
   admission_reason: The 31 July 2026 MVP C-PROOF decision admits this bounded family for exact prepared/input lineage, explicit policy and thresholds, typed observations, block-dominant deterministic aggregation, unknown preservation, side-effect freedom and closed foreign authority.
   forbidden_carry_forward: Generic mappings, unadmitted bootstrap packets, copied-model validator bypass, silent thresholds, caller-order aggregation, unknown-as-safe, module-global decision state and M06 claims of serial-candidate, K11 final-risk, capital, execution, lifecycle, transaction or replay authority must not satisfy K10.
   notes: Thirty focused cases pass: thirteen reference and mutant cases, the seven formerly expected-red production assertions, and ten Gate D integrity cases covering typed-input enforcement, copied-model revalidation, exact M07 threshold authority, deterministic canonicalisation, observation/limitation closure, deep immutability, numeric validity, downstream-authority exclusion and instance-local legacy compatibility state.
+
+- test_family_id: m09_k11_k14_capital_authority_contract
+  native_status: admitted_tier_a
+  bounded_family: final_risk_join_and_fresh_capital_authority
+  native_test_path: tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py
+  migration_status: module_local_c_proof_gate_d_pending_independent_review
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M09/M09_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m09_k11_k14_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: Legacy final-risk and capital helpers expose scalar/string compatibility surfaces only; they do not implement the accepted typed M09 K11/K14 public boundary.
+  native_reauthor_required: false
+  admission_reason: The 1 August 2026 MVP C-PROOF decision admits this bounded family for exact M05/M06 join lineage, categorical block dominance, explicit capital state, bounded policy sizing, exact M07 receipt lineage, deterministic receipt identity and closed M10/M11/durable authority.
+  forbidden_carry_forward: Missing branches, confidence override, lineage repair, posture coefficients treated as capital percentages, ignored hard maxima, arbitrary future policy labels, wall-clock semantic identity, anonymous scalar summaries and M09 claims of order, position or durable transaction authority must not satisfy K11/K14.
+  notes: C-PROOF contains seven reference-law cases, seven named false-positive mutants and seven intentionally exact-red production assertions. Gate D remains closed pending separate-worktree adversarial review.
