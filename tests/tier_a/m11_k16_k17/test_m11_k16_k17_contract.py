@@ -6,6 +6,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
+from nvda_desk.m10_execution_gateway.contracts import semantic_fingerprint
 from tests.support.m11_k16_k17_contract_harness import (
     lifecycle_quantity,
     production_api,
@@ -172,3 +173,126 @@ def test_independent_review_rejects_forged_snapshot_and_position_copies():
     with pytest.raises(ValueError): api["PositionState"].model_validate(forged_position.model_dump(mode="python"))
     forged_snapshot=snap.model_copy(update={"positions":(forged_position,)})
     with pytest.raises(ValueError): api["PortfolioSnapshot"].model_validate(forged_snapshot.model_dump(mode="python"))
+
+
+def _rebuild_position(api, position, **updates):
+    payload = position.model_dump(mode="python", exclude={"semantic_fingerprint"})
+    payload.update(updates)
+    return api["PositionState"].model_validate(
+        {**payload, "semantic_fingerprint": semantic_fingerprint(payload)}
+    )
+
+
+def _rebuild_snapshot(api, snapshot, **updates):
+    payload = snapshot.model_dump(
+        mode="python", exclude={"snapshot_id", "semantic_fingerprint"}
+    )
+    payload.update(updates)
+    fingerprint = semantic_fingerprint(payload)
+    return api["PortfolioSnapshot"].model_validate(
+        {
+            **payload,
+            "snapshot_id": f"portfolio-snapshot:{fingerprint[:24]}",
+            "semantic_fingerprint": fingerprint,
+        }
+    )
+
+
+def test_hardening_rejects_fill_before_current_position_update_without_mutation():
+    _, service, receipt = _service_and_fill()
+    current = service.reconcile_fill(receipt).snapshot
+    earlier = production_execution_receipt(
+        limit_price=Decimal("101"),
+        when=receipt.executed_at_utc - timedelta(seconds=1),
+    )
+    with pytest.raises(ValueError, match="fill_precedes_current_position_update"):
+        service.reconcile_fill(earlier)
+    assert service.snapshot() == current
+
+
+def test_hardening_snapshot_cannot_predate_its_position_update():
+    api, service, receipt = _service_and_fill()
+    snapshot = service.reconcile_fill(receipt).snapshot
+    with pytest.raises(ValueError, match="portfolio_snapshot_precedes_position_update"):
+        _rebuild_snapshot(
+            api,
+            snapshot,
+            as_of_utc=snapshot.positions[0].updated_at_utc - timedelta(seconds=1),
+        )
+
+
+def test_hardening_fill_receipt_binds_snapshot_to_atomic_resulting_version():
+    api, service, receipt = _service_and_fill()
+    result = service.reconcile_fill(receipt)
+    position = _rebuild_position(
+        api,
+        result.snapshot.positions[0],
+        state_version=result.snapshot.state_version + 1,
+    )
+    contradictory_snapshot = _rebuild_snapshot(
+        api,
+        result.snapshot,
+        positions=(position,),
+        state_version=result.snapshot.state_version + 1,
+    )
+    payload = result.model_dump(
+        mode="python",
+        exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"},
+    )
+    payload.update(
+        snapshot=contradictory_snapshot,
+        snapshot_id=contradictory_snapshot.snapshot_id,
+        snapshot_fingerprint=contradictory_snapshot.semantic_fingerprint,
+    )
+    fingerprint = semantic_fingerprint(payload)
+    with pytest.raises(ValueError, match="fill_snapshot_state_version_mismatch"):
+        api["FillReconciliationReceipt"].model_validate(
+            {
+                **payload,
+                "receipt_id": f"fill-reconciliation:{fingerprint[:24]}",
+                "semantic_fingerprint": fingerprint,
+            }
+        )
+
+
+def test_hardening_trim_receipt_rejects_recomputed_but_wrong_result():
+    api, service, receipt = _service_and_fill()
+    before = service.reconcile_fill(receipt).snapshot
+    prior = before.positions[0]
+    decision = service.decide_lifecycle(
+        snapshot=before,
+        position_id=prior.position_id,
+        action="trim",
+        quantity=prior.quantity / 2,
+        reasons=("de_risk",),
+        decided_at_utc=datetime(2026, 8, 1, 2, 20, tzinfo=UTC),
+    )
+    result = service.apply_lifecycle(decision)
+    assert result.resulting_position is not None
+    wrong_quantity = result.resulting_position.quantity + Decimal("0.001")
+    wrong_position = _rebuild_position(
+        api,
+        result.resulting_position,
+        quantity=wrong_quantity,
+        cost_basis=result.resulting_position.average_cost * wrong_quantity,
+    )
+    wrong_snapshot = _rebuild_snapshot(
+        api,
+        result.snapshot,
+        positions=(wrong_position,),
+        position_ids=(wrong_position.position_id,),
+    )
+    payload = result.model_dump(
+        mode="python",
+        exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"},
+    )
+    payload.update(resulting_position=wrong_position, snapshot=wrong_snapshot)
+    fingerprint = semantic_fingerprint(payload)
+    with pytest.raises(ValueError, match="trim_resulting_quantity_mismatch"):
+        api["CloseReceipt"].model_validate(
+            {
+                **payload,
+                "receipt_id": f"close-receipt:{fingerprint[:24]}",
+                "semantic_fingerprint": fingerprint,
+            }
+        )
