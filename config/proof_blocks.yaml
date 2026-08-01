@@ -1323,3 +1323,30 @@ proof_blocks:
       - data/vocabulary/vocabulary_touch_stamp.json
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: m00_final_composition_contract
+    tier: Tier A
+    lifecycle: expected_red_c_proof
+    test_family_ids:
+      - m00_final_composition_contract
+    normative_proposition_ids:
+      - M00-COMP-001
+      - M00-COMP-002
+      - M00-COMP-003
+      - M00-COMP-004
+      - M00-COMP-005
+      - M00-COMP-006
+      - M00-COMP-007
+      - M00-COMP-008
+      - M00-COMP-009
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
+    owns:
+      - tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
+      - tests/support/m00_application_shell_contract_harness.py
+      - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+      - docs/vocabulary/vocabulary_registry.md
+      - data/vocabulary/canonical_vocabulary.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml

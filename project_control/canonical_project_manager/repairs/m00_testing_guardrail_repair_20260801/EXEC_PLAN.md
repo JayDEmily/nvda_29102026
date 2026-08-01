@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:UNIT6_M00_C_NORM_AND_EXPECTED_RED_PROOF`
+**Status:** `ACTIVE:UNIT7_M00_GATE_D_IMPLEMENTATION`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -155,20 +155,21 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: offline bootstrap implementation committed at `6f8c0ce0851d7a2a3b59974460e8fad74be45256`; clean committed-tree validation passed 33 targeted proof-model tests, authority reconciliation at 195 families / 197 tests / 66 blocks, and promotion membership at 13 blocks / 13 families / 15 tests.
 - 2026-08-01: the accepted wheelhouses were recovered and verified. Runtime V6 was reconstructed for the current lock, and the offline installation repair was committed at `1a7d888b4f6310bf7637bbb83795be2161441da9`.
 - 2026-08-01: repository-wide Black/Ruff baseline and env-prefixed proof-interpreter isolation were repaired at `f66578aa90eb98c6cf0ca2fddd789ac8a014a2df`. Clean authoritative validation passed 13/13 blocks, 738 Tier A tests with zero skips, 82 Tier B tests, installed-package smoke, Black, Ruff and authority reconciliation. Unit 5 is closed and Unit 6 is open.
+- 2026-08-01: Unit 6 admitted `M00-FINAL-COMPOSITION-V1` with propositions `M00-COMP-001` through `M00-COMP-009`, four governed M00 public-contract terms, and one expected-red family. Seven reference/negative/mutant tests pass; the single production-seam node fails only because `nvda_desk.m00_application_shell` is intentionally absent. Proof authority passes at 196 families / 198 tests / 67 blocks. Unit 7 is open; no M00 production code was changed in Unit 6.
 
 ## 9. Decisions
 
 - The repair is subordinate to the canonical ExecPlan because it is a prerequisite control unit inside the same alpha-delivery programme, not a competing programme.
-- M00 remains not started until Units 1–6 pass.
+- M00 remained not started until Units 1–6 passed; Unit 7 is now authorised only against `M00-FINAL-COMPOSITION-V1`.
 - Accepted M01–M13 local proof is retained; the repair targets admission, integration and promotion control before composition.
 
 ## 10. Roadblocks
 
-- None for Unit 5. The accepted wheelhouse inputs are present, the current lock installs offline, and the authoritative promotion baseline is green.
+- None for Unit 7. Unit 6 C-NORM and expected-red C-PROOF are accepted, the offline environment is available, and the authoritative pre-M00 baseline is green.
 
 ## 11. Unknowns
 
-- M00's exact public composition seam, normative proposition set and smallest expected-red proof family remain to be established in Unit 6 from the governing architecture and existing runtime surfaces.
+- Unit 7 must map the admitted M00 contracts onto exact existing M01–M13 public owner signatures without introducing hidden defaults, duplicate domain semantics or a competing legacy composition route.
 - No claim is made that the full unsplit historical test tree is green; current promotion authority is the reconciled 13-family set plus the Tier B shadow.
 - Live brokerage, live-data access, durable production operations and profitability remain out of scope.
 

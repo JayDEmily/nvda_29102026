@@ -4883,7 +4883,25 @@ canonical_admission_model:
     lifecycle: historical
     normative_proposition_ids: []
     provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: m00_final_composition_contract
+    tier: Tier A
+    lifecycle: next_gate_expected_red
+    normative_proposition_ids:
+      - M00-COMP-001
+      - M00-COMP-002
+      - M00-COMP-003
+      - M00-COMP-004
+      - M00-COMP-005
+      - M00-COMP-006
+      - M00-COMP-007
+      - M00-COMP-008
+      - M00-COMP-009
+    provenance: M00-FINAL-COMPOSITION-V1-C-PROOF
+    lifecycle_reason: Production M00 public package is intentionally absent until this expected-red C-PROOF is accepted.
   path_admissions:
+  - test_path: tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
+    test_family_id: m00_final_composition_contract
+    source_disposition: M00-FINAL-COMPOSITION-V1-C-PROOF
   - test_path: tests/tier_a/adapters_egress/test_broker_boundary_surface.py
     test_family_id: broker_boundary_protocol_surface
     source_disposition: BLOCKED_P3_REPAIR

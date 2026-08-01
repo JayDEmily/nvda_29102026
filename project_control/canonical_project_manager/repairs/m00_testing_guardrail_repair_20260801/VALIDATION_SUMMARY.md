@@ -256,3 +256,23 @@ Exact evidence: `evidence/UNIT5_AUTHORITATIVE_OFFLINE_BASELINE.md`.
 ## Open next gate
 
 Unit 6: admit M00 C-NORM and the smallest expected-red C-PROOF family. M00 production code remains unstarted.
+
+## Unit 6 — M00 C-NORM and expected-red C-PROOF
+
+**Outcome:** PASS
+
+Known true:
+
+- `M00-FINAL-COMPOSITION-V1` admits nine exact final-composition propositions, `M00-COMP-001` through `M00-COMP-009`.
+- Namespace `m00` admits exactly four public-contract terms: `ApplicationCommand`, `ApplicationQuery`, `ApplicationRunReceipt` and `RunCoordinator`.
+- The admitted expected-red family contains eight tests: seven reference/ordering/fail-closed/query/mutant checks pass; one production import fails because `nvda_desk.m00_application_shell` is intentionally absent.
+- Proof authority reconciles 196 families, 198 tests and 67 blocks.
+- Canonical vocabulary builder parity passes 4 tests; proof-authority contract passes 11 tests.
+- Changed Python surfaces pass Black and Ruff; `git diff --check` passes.
+- No M00 production package or other `src/` file was changed in Unit 6.
+
+Exact evidence: `evidence/UNIT6_M00_C_NORM_EXPECTED_RED.md`.
+
+## Open next gate
+
+Unit 7: implement the bounded M00 Gate D public seam against the admitted expected-red proof without reopening accepted M01–M13 semantics or selecting the quarantined legacy orchestrator.

@@ -44,6 +44,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed["schema_version"] == "v2_namespaced"
     assert set(committed["namespaces"]) == {
         "global",
+        "m00",
         "m02",
         "m03",
         "m04",
@@ -56,6 +57,20 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m11",
         "m12",
     }
+    assert committed["namespaces"]["m00"]["imports"] == [
+        "global",
+        "m02",
+        "m03",
+        "m04",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m10",
+        "m11",
+        "m12",
+    ]
     assert committed["namespaces"]["m02"]["imports"] == ["global"]
     assert committed["namespaces"]["m03"]["imports"] == ["global"]
     assert committed["namespaces"]["m04"]["imports"] == ["global"]
@@ -66,6 +81,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed["namespaces"]["m10"]["imports"] == ["global", "m09"]
     assert committed["namespaces"]["m11"]["imports"] == ["global", "m10"]
     assert committed["namespaces"]["m12"]["imports"] == ["global", "m04"]
+    assert "config" not in committed["namespaces"]["m00"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m02"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m03"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m04"]["scan_paths"]
@@ -76,6 +92,15 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert "config" not in committed["namespaces"]["m10"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m11"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m12"]["scan_paths"]
+
+    m00_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m00"]
+    assert len(m00_entries) == 4
+    assert {entry["canonical_id"] for entry in m00_entries} == {
+        "m00.application_command",
+        "m00.application_query",
+        "m00.application_run_receipt",
+        "m00.run_coordinator",
+    }
 
     m02_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m02"]
     assert len(m02_entries) == 3

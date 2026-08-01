@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-08-01-signal-phase-dmpv3-repair-v1",
+  "registry_version": "2026-08-01-m00-final-composition-c-norm-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -20,7 +20,8 @@
     "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace.",
     "The 2026-08-01 M11 K16/K17 amendment admits PositionState, PortfolioSnapshot, LifecycleDecision and CloseReceipt under a bounded M11 namespace.",
     "The 2026-08-01 M12 K19 amendment admits ReplayMaterial, ReplayEnvelope, ReplayAssessment and ReviewProjection under a bounded M12 namespace.",
-    "The 2026-08-01 signal-phase repair admits signal-informed temporal contracts and the narrow M05 temporal adapter without granting M05 ownership of phase semantics or state."
+    "The 2026-08-01 signal-phase repair admits signal-informed temporal contracts and the narrow M05 temporal adapter without granting M05 ownership of phase semantics or state.",
+    "The 2026-08-01 M00 C-NORM amendment admits ApplicationCommand, ApplicationQuery, ApplicationRunReceipt and RunCoordinator under a bounded M00 namespace without granting domain or mutable-state authority."
   ],
   "namespaces": {
     "global": {
@@ -298,6 +299,37 @@
         "tests/tier_a/analysis/test_replay_evaluation_surface.py",
         "tests/tier_a/analysis/test_fwd002_replay_harness_contract.py",
         "tests/tier_b/review_replay"
+      ]
+    },
+    "m00": {
+      "namespace": "m00",
+      "imports": [
+        "global",
+        "m02",
+        "m03",
+        "m04",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m10",
+        "m11",
+        "m12"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
+        "docs/09.1_DMPV3_PROTOCOL_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/m00_application_shell",
+        "src/nvda_desk/api",
+        "src/nvda_desk/entry",
+        "src/nvda_desk/runtime/orchestrator.py",
+        "tests/support/m00_application_shell_contract_harness.py",
+        "tests/tier_a/m00_application_shell",
+        "tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py"
       ]
     }
   },
@@ -5485,6 +5517,124 @@
         "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
         "Human aliases: TemporalStageAdapter; signal-phase M05 adapter; temporal adapter.",
         "Human disallowed or misleading use: M05 ownership of phase semantics; repository access inside Serial Runner; degraded phase converted to positive permission."
+      ]
+    },
+    {
+      "namespace": "m00",
+      "canonical_id": "m00.application_command",
+      "canonical_slug": "application_command",
+      "canonical_label": "Application Command",
+      "category": "carrier",
+      "stage_owner": "application_shell",
+      "maps_to_contract": "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-001",
+      "allowed_aliases": [
+        "ApplicationCommand"
+      ],
+      "disallowed_phrases": [
+        "generic service-locator request",
+        "untyped application command dictionary",
+        "application command with hidden defaults",
+        "application command used as live broker command",
+        "application command used as domain decision"
+      ],
+      "notes": [
+        "Definition: Immutable transport-neutral M00 request for one bounded application action, with the current alpha run form carrying the exact owner products, policy/configuration objects, execution-context identities, packet identities and timestamps required for one prepared paper run.",
+        "Scope: M00 application command boundary",
+        "Semantic owner: M00 application shell for transport-neutral carriage only; referenced modules retain all domain meaning",
+        "Relationships: Translated from HTTP or CLI input and consumed by Run Coordinator; the prepared paper-run form starts from one exact M03 authority and cannot manufacture M01–M13 products.",
+        "Lifecycle: active_m00_c_norm_contract",
+        "Semantic decisions: M00-FINAL-COMPOSITION-V1",
+        "Human aliases: ApplicationCommand.",
+        "Human disallowed or misleading use: Generic service-locator request; untyped command dictionary; hidden default carrier; live broker command; domain decision."
+      ]
+    },
+    {
+      "namespace": "m00",
+      "canonical_id": "m00.application_query",
+      "canonical_slug": "application_query",
+      "canonical_label": "Application Query",
+      "category": "carrier",
+      "stage_owner": "application_shell",
+      "maps_to_contract": "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-007",
+      "allowed_aliases": [
+        "ApplicationQuery"
+      ],
+      "disallowed_phrases": [
+        "application query used as runtime command",
+        "current-state lookup presented as replay",
+        "mutable dashboard query",
+        "application query performing live external read",
+        "application query claiming replay authority"
+      ],
+      "notes": [
+        "Definition: Immutable transport-neutral M00 read request that delegates one exact evidence/replay review operation to M12 without invoking runtime side effects or gaining replay authority.",
+        "Scope: M00 application query boundary",
+        "Semantic owner: M00 application shell for transport translation; M12 retains replay and review meaning",
+        "Relationships: Consumed by Run Coordinator as a separate read-only operation; references one M12 Replay Envelope and optional reproduced facts and returns an M12 Review Projection unchanged.",
+        "Lifecycle: active_m00_c_norm_contract",
+        "Semantic decisions: M00-FINAL-COMPOSITION-V1",
+        "Human aliases: ApplicationQuery.",
+        "Human disallowed or misleading use: Runtime command; current-state lookup presented as replay; mutable dashboard query; live external read; replay authority."
+      ]
+    },
+    {
+      "namespace": "m00",
+      "canonical_id": "m00.application_run_receipt",
+      "canonical_slug": "application_run_receipt",
+      "canonical_label": "Application Run Receipt",
+      "category": "review_surface",
+      "stage_owner": "application_shell",
+      "maps_to_contract": "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-007",
+      "allowed_aliases": [
+        "ApplicationRunReceipt"
+      ],
+      "disallowed_phrases": [
+        "application run receipt used as new domain authority",
+        "synthetic final decision receipt",
+        "application run receipt used as replay receipt",
+        "application run receipt used as durable transaction proof",
+        "application run receipt used as live execution proof"
+      ],
+      "notes": [
+        "Definition: Immutable M00 aggregation of exact owner outputs, identities and occurrence references for one application run, recording whether the run terminated before placement or completed offline paper execution and fill reconciliation.",
+        "Scope: M00 run-lifecycle evidence",
+        "Semantic owner: M00 application shell for aggregation only; each referenced M05–M13 product retains its own meaning",
+        "Relationships: Produced by Run Coordinator from exact owner outputs; distinct from Capital Deployment Receipt, Execution Receipt, Fill Reconciliation Receipt, Atomic Receipt, Replay Assessment and proof/promotion evidence.",
+        "Lifecycle: active_m00_c_norm_contract",
+        "Semantic decisions: M00-FINAL-COMPOSITION-V1",
+        "Human aliases: ApplicationRunReceipt.",
+        "Human disallowed or misleading use: New domain authority; synthetic final decision; replay receipt; durable transaction proof; live execution proof."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m00",
+      "canonical_id": "m00.run_coordinator",
+      "canonical_slug": "run_coordinator",
+      "canonical_label": "Run Coordinator",
+      "category": "authority_surface",
+      "stage_owner": "application_shell",
+      "maps_to_contract": "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-001",
+      "allowed_aliases": [
+        "RunCoordinator",
+        "application run coordinator"
+      ],
+      "disallowed_phrases": [
+        "run coordinator used as domain orchestrator",
+        "run coordinator used as global service locator",
+        "mutable singleton run coordinator",
+        "run coordinator used as policy engine",
+        "RunCoordinator as legacy DeskRuntimeOrchestrator alias"
+      ],
+      "notes": [
+        "Definition: Stateless M00 coordination service that invokes admitted public module seams in governed order, using explicit dependencies and a fresh run scope, while owning no source, policy, candidate, risk, capital, execution, portfolio, transaction or replay meaning.",
+        "Scope: M00 final composition and run lifecycle",
+        "Semantic owner: M00 application shell",
+        "Relationships: Delegates M01 source admission, M02 calendar projection and M03 preparation; coordinates the packetised M03 to M11 paper path; delegates M12 review queries separately; uses M13 only through admitted owner services.",
+        "Lifecycle: active_m00_c_norm_service",
+        "Semantic decisions: M00-FINAL-COMPOSITION-V1",
+        "Human aliases: RunCoordinator; application run coordinator.",
+        "Human disallowed or misleading use: Domain orchestrator; global service locator; mutable singleton; policy engine; legacy DeskRuntimeOrchestrator alias."
       ]
     }
   ]
