@@ -1,0 +1,214 @@
+........................................................................ [ 37%]
+........................................................................ [ 75%]
+........................FF.......FFFFFFFF...FFF                          [100%]
+=================================== FAILURES ===================================
+_ test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:43: in test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint
+    envelope = _require_attr(contracts, "OptionsEvidenceEnvelope")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: in _require_attr
+    pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E   Failed: Required attribute is not implemented: nvda_desk.contracts.options_flow.OptionsEvidenceEnvelope
+_ test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:63: in test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority
+    with pytest.raises((TypeError, ValueError), match="typed|evidence|envelope|authority"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+__ test_c013_stage_bundle_allocates_one_common_context_and_narrow_references ___
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:332: in test_c013_stage_bundle_allocates_one_common_context_and_narrow_references
+    common = _require_attr(stage_contracts, "CommonStageContext")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: in _require_attr
+    pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E   Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+______ test_c013_stage_bundle_rejects_mismatched_common_context_reference ______
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:358: in test_c013_stage_bundle_rejects_mismatched_common_context_reference
+    common = _require_attr(stage_contracts, "CommonStageContext")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: in _require_attr
+    pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E   Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+_ test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:401: in test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation
+    command_type, boundary_type, _ = _transaction_contracts()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:392: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+_______ test_c024_same_idempotency_key_with_different_input_is_conflict ________
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:426: in test_c024_same_idempotency_key_with_different_input_is_conflict
+    command_type, boundary_type, conflict = _transaction_contracts()
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:392: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+___ test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt ____
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.persistence.transactions'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:448: in test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt
+    command_type, boundary_type, _ = _transaction_contracts()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:392: in _transaction_contracts
+    module = _require_module("nvda_desk.persistence.transactions")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+_ test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:482: in test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families
+    phase, evidence, _, _ = _phase_contracts()
+                            ^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:472: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+_ test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:505: in test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase
+    _, evidence, policy_type, evaluator_type = _phase_contracts()
+                                               ^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:472: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+_ test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:17: in _require_module
+    return importlib.import_module(module_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+<frozen importlib._bootstrap>:1387: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:1360: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:1324: in _find_and_load_unlocked
+    ???
+E   ModuleNotFoundError: No module named 'nvda_desk.domain.temporal.intraday_phase'
+
+During handling of the above exception, another exception occurred:
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:539: in test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase
+    _, evidence, policy_type, evaluator_type = _phase_contracts()
+                                               ^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:472: in _phase_contracts
+    module = _require_module("nvda_desk.domain.temporal.intraday_phase")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:19: in _require_module
+    pytest.fail(f"Required module is not implemented: {module_path} ({exc})")
+E   Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+_ test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:638: in test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes
+    replay_class = _require_attr(contracts, "ReplayClass")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: in _require_attr
+    pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E   Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+_ test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:666: in test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete
+    replay_class = _require_attr(contracts, "ReplayClass")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:24: in _require_attr
+    pytest.fail(f"Required attribute is not implemented: {module.__name__}.{attr_name}")
+E   Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+_ test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction _
+tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py:696: in test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction
+    assert comparison.replay_class == "comparison_only"
+           ^^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'ReplayComparisonResult' object has no attribute 'replay_class'
+=========================== short test summary info ============================
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_evidence_contract_preserves_identity_version_time_and_fingerprint - Failed: Required attribute is not implemented: nvda_desk.contracts.options_flow.OptionsEvidenceEnvelope
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c004_options_mapper_rejects_generic_mapping_without_typed_options_authority - Failed: DID NOT RAISE any of (<class 'TypeError'>, <class 'ValueError'>)
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_allocates_one_common_context_and_narrow_references - Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c013_stage_bundle_rejects_mismatched_common_context_reference - Failed: Required attribute is not implemented: nvda_desk.contracts.stage_inputs.CommonStageContext
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_same_idempotency_key_with_different_input_is_conflict - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt - Failed: Required module is not implemented: nvda_desk.persistence.transactions (No module named 'nvda_desk.persistence.transactions')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase - Failed: Required module is not implemented: nvda_desk.domain.temporal.intraday_phase (No module named 'nvda_desk.domain.temporal.intraday_phase')
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes - Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete - Failed: Required attribute is not implemented: nvda_desk.contracts.replay.ReplayClass
+FAILED tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction - AttributeError: 'ReplayComparisonResult' object has no attribute 'replay_class'
+13 failed, 178 passed in 1.60s

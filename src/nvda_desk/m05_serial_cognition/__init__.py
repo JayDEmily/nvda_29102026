@@ -2,6 +2,7 @@
 
 from .contracts import SerialCandidate, StageContext, StageInput, StageOutput
 from .runner import SerialRunner
+from .temporal_adapter import TemporalStageAdapter
 
 __all__ = [
     "SerialCandidate",
@@ -9,4 +10,5 @@ __all__ = [
     "StageContext",
     "StageInput",
     "StageOutput",
+    "TemporalStageAdapter",
 ]

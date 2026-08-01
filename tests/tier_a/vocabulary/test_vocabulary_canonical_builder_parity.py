@@ -104,13 +104,21 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     m05_entries = [
         entry for entry in committed["entries"] if entry["namespace"] == "m05"
     ]
-    assert len(m05_entries) == 5
+    assert len(m05_entries) == 13
     assert {entry["canonical_id"] for entry in m05_entries} == {
         "m05.stage_context",
         "m05.stage_input",
         "m05.stage_output",
         "m05.serial_candidate",
         "m05.serial_runner",
+        "m05.intraday_phase",
+        "m05.intraday_phase_evidence",
+        "m05.intraday_phase_policy",
+        "m05.intraday_phase_state",
+        "m05.intraday_phase_result",
+        "m05.intraday_phase_evaluator",
+        "m05.intraday_phase_repository",
+        "m05.temporal_stage_adapter",
     }
 
     m07_entries = [

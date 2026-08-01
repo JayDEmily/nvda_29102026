@@ -70,7 +70,7 @@ CLOSED_AUTHORITY_CLASSES: Final[tuple[str, ...]] = (
     "replay",
 )
 ALLOWED_STAGE_AUTHORITY_OWNERS: Final[dict[str, frozenset[str]]] = {
-    "temporal": frozenset({"m03"}),
+    "temporal": frozenset({"m03", "temporal_domain"}),
     "regime": frozenset({"m03"}),
     "options_flow": frozenset({"m03"}),
     "posture": frozenset({"m07"}),
@@ -79,7 +79,18 @@ ALLOWED_STAGE_AUTHORITY_OWNERS: Final[dict[str, frozenset[str]]] = {
 }
 ALLOWED_STAGE_FACT_IDS: Final[dict[str, frozenset[str]]] = {
     "temporal": frozenset(
-        {"effective_at_utc", "session_state", "next_event_time_utc"}
+        {
+            "effective_at_utc",
+            "session_state",
+            "next_event_time_utc",
+            "intraday_phase",
+            "intraday_phase_authority_state",
+            "intraday_phase_result_id",
+            "intraday_phase_fingerprint",
+            "intraday_phase_policy_version",
+            "intraday_phase_state_version",
+            "intraday_phase_positive_permission",
+        }
     ),
     "regime": frozenset({"nvda_return_pct", "nq_return_pct", "vix_level"}),
     "options_flow": frozenset({"spot_price", "front_dte", "next_dte"}),

@@ -1,78 +1,40 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "m12",
+  "namespace": "m05",
   "imported_namespaces": [
     "global",
-    "m04"
+    "m03",
+    "m04",
+    "m07",
+    "m08"
   ],
   "scan_paths": [
+    "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+    "docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md",
     "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
-    "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
     "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
     "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
-    "src/nvda_desk/contracts/replay.py",
-    "src/nvda_desk/contracts/review.py",
-    "src/nvda_desk/m12_evidence_replay",
-    "src/nvda_desk/analysis/replay",
-    "tests/support/m12_k19_contract_harness.py",
-    "tests/tier_a/m12_k19",
-    "tests/tier_a/analysis/test_replay_evaluation_surface.py",
-    "tests/tier_a/analysis/test_fwd002_replay_harness_contract.py",
-    "tests/tier_b/review_replay"
+    "src/nvda_desk/contracts/stage_inputs.py",
+    "src/nvda_desk/contracts/serial_spine.py",
+    "src/nvda_desk/cognition/ingress",
+    "src/nvda_desk/cognition/serial",
+    "src/nvda_desk/domain/execution",
+    "src/nvda_desk/runtime/orchestrator.py",
+    "src/nvda_desk/m05_serial_cognition",
+    "tests/support/m05_k08_k09_contract_harness.py",
+    "tests/tier_a/m05_k08_k09",
+    "tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py",
+    "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "tests/tier_a/serial_recommendation",
+    "tests/tier_b/serial_boundaries",
+    "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md",
+    "src/nvda_desk/domain/temporal"
   ],
-  "scanned_file_count": 18,
+  "scanned_file_count": 42,
   "vocabulary_touched": true,
-  "fingerprint": "905f0f1824112865ea2c8de9cc6363a2115086566c3b0dc83f85032abc4d4ae6",
-  "resolved_occurrence_count": 73,
-  "candidates": [
-    {
-      "phrase": "packet ids",
-      "nearest_slug": "dependency_packet_ids",
-      "nearest_label": "Dependency Packet IDs",
-      "score": 93,
-      "path": "tests/tier_a/m12_k19/test_m12_k19_contract.py",
-      "resolution_required": "llm_escalation",
-      "occurrence_id": "VOC-OCC-3d70de05e7da1bb8",
-      "raw_phrase": "packet_ids",
-      "nearest_identity": "global.dependency_packet_ids",
-      "line": 49,
-      "column": 32,
-      "source_context": "    return ReplayPacketLineage(packet_ids=[f\"packet:{seed}\"], replay_run_id=\"source-run:1\")",
-      "context_sha256": "ebb6759d162cbd0e702cfe27ed0932aee0dce504118739042a2e7e72c37e21aa",
-      "occurrence_kind": "identifier"
-    }
-  ],
-  "candidate_classifications": [
-    {
-      "phrase": "packet ids",
-      "path": "tests/tier_a/m12_k19/test_m12_k19_contract.py",
-      "nearest_slug": "dependency_packet_ids",
-      "classification": {
-        "action": "quarantine",
-        "candidate_slug": "packet_ids",
-        "matched_slug": "dependency_packet_ids",
-        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "admission_review": {
-        "status": "quarantined",
-        "candidate_slug": "packet_ids",
-        "plan": {
-          "classification": {
-            "action": "quarantine",
-            "candidate_slug": "packet_ids",
-            "matched_slug": "dependency_packet_ids",
-            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-          },
-          "proposed_entry": null,
-          "alias_candidates": [],
-          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-        },
-        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
-      },
-      "occurrence_id": "VOC-OCC-3d70de05e7da1bb8",
-      "line": 49,
-      "context_sha256": "ebb6759d162cbd0e702cfe27ed0932aee0dce504118739042a2e7e72c37e21aa"
-    }
-  ]
+  "fingerprint": "406b5297a1d6957044e1d1b9981f39bcbc100be59478dfa49fff0cd2bdf83adc",
+  "resolved_occurrence_count": 148,
+  "candidates": [],
+  "candidate_classifications": []
 }

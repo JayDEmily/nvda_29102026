@@ -1,6 +1,6 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-08-01-m12-k19-normative-authority-v1",
+  "registry_version": "2026-08-01-signal-phase-dmpv3-repair-v1",
   "notes": [
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
@@ -19,7 +19,8 @@
     "The 2026-08-01 M09 K11/K14 amendment admits FinalRiskDecision, CapitalState, CapitalDeploymentDecision and CapitalDeploymentReceipt under a bounded M09 namespace.",
     "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace.",
     "The 2026-08-01 M11 K16/K17 amendment admits PositionState, PortfolioSnapshot, LifecycleDecision and CloseReceipt under a bounded M11 namespace.",
-    "The 2026-08-01 M12 K19 amendment admits ReplayMaterial, ReplayEnvelope, ReplayAssessment and ReviewProjection under a bounded M12 namespace."
+    "The 2026-08-01 M12 K19 amendment admits ReplayMaterial, ReplayEnvelope, ReplayAssessment and ReviewProjection under a bounded M12 namespace.",
+    "The 2026-08-01 signal-phase repair admits signal-informed temporal contracts and the narrow M05 temporal adapter without granting M05 ownership of phase semantics or state."
   ],
   "namespaces": {
     "global": {
@@ -178,7 +179,9 @@
         "tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py",
         "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
         "tests/tier_a/serial_recommendation",
-        "tests/tier_b/serial_boundaries"
+        "tests/tier_b/serial_boundaries",
+        "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md",
+        "src/nvda_desk/domain/temporal"
       ]
     },
     "m06": {
@@ -5251,6 +5254,238 @@
         "Human disallowed or misleading use: Mutable dashboard state; unbound explanation; comparison promoted to authority; hidden live read; runtime repair instruction."
       ],
       "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase",
+      "canonical_slug": "intraday_phase",
+      "canonical_label": "Intraday Phase",
+      "category": "authority_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.1",
+      "allowed_aliases": [
+        "IntradayPhase",
+        "signal-informed phase",
+        "detailed intraday phase"
+      ],
+      "disallowed_phrases": [
+        "fixed clock bucket presented as signal informed phase",
+        "intraday phase used as candidate capital broker or portfolio authority",
+        "mutable session singleton used as phase authority"
+      ],
+      "notes": [
+        "Definition: Ordered temporal-domain judgement about where the admitted venue/session is within the current trading session, combining authoritative session position with sustained behavioural evidence rather than fixed wall-clock thresholds.",
+        "Scope: signal-informed temporal cognition before M05 serial-stage consumption",
+        "Semantic owner: temporal domain phase authority",
+        "Relationships: Produced by Intraday Phase Evaluator from Intraday Phase Evidence and prior Intraday Phase State; consumed as context by M05 and independent risk consumers without creating trading permission.",
+        "Lifecycle: active_signal_phase_contract",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhase; signal-informed phase; detailed intraday phase.",
+        "Human disallowed or misleading use: Fixed clock bucket presented as signal-informed phase; candidate, capital, broker or portfolio authority; mutable session singleton."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_evidence",
+      "canonical_slug": "intraday_phase_evidence",
+      "canonical_label": "Intraday Phase Evidence",
+      "category": "carrier",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.2",
+      "allowed_aliases": [
+        "IntradayPhaseEvidence",
+        "phase evidence"
+      ],
+      "disallowed_phrases": [
+        "provider payload entering phase policy directly",
+        "missing phase signal silently imputed",
+        "current wall clock used as phase evidence"
+      ],
+      "notes": [
+        "Definition: Immutable typed evidence set carrying source/session time, three core behavioural signal families, authoritative market-structure status, source lineage, freshness and evidence fingerprint for one phase evaluation.",
+        "Scope: temporal-domain evaluation input",
+        "Semantic owner: temporal domain carrier shape; M03 and source adapters retain upstream signal meaning",
+        "Relationships: Consumed by Intraday Phase Evaluator and retained by identity/fingerprint for replay; distinct from provider payloads and generic mappings.",
+        "Lifecycle: active_signal_phase_contract",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhaseEvidence; phase evidence.",
+        "Human disallowed or misleading use: Provider payload entering policy directly; missing signal family silently imputed; current wall clock used as evidence."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_policy",
+      "canonical_slug": "intraday_phase_policy",
+      "canonical_label": "Intraday Phase Policy",
+      "category": "authority_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.4",
+      "allowed_aliases": [
+        "IntradayPhasePolicy",
+        "phase transition policy"
+      ],
+      "disallowed_phrases": [
+        "hidden phase threshold",
+        "self tuning intraday phase policy",
+        "wall clock cutoff replacing behavioural phase evidence"
+      ],
+      "notes": [
+        "Definition: Immutable versioned temporal policy governing freshness, minimum dwell, hysteresis, monotonic progression, correction and degradation for signal-informed phase evaluation.",
+        "Scope: temporal-domain transition policy",
+        "Semantic owner: temporal domain phase authority",
+        "Relationships: Consumed by Intraday Phase Evaluator; exact version is retained in result and state lineage.",
+        "Lifecycle: active_signal_phase_contract",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhasePolicy; phase transition policy.",
+        "Human disallowed or misleading use: Hidden runtime threshold; self-tuning policy; wall-clock cut-off replacing behavioural evidence."
+      ]
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_state",
+      "canonical_slug": "intraday_phase_state",
+      "canonical_label": "Intraday Phase State",
+      "category": "persistence_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.4",
+      "allowed_aliases": [
+        "IntradayPhaseState",
+        "accepted phase state",
+        "phase state"
+      ],
+      "disallowed_phrases": [
+        "global mutable intraday phase",
+        "process memory claimed as durable phase state",
+        "intraday phase state version overwrite"
+      ],
+      "notes": [
+        "Definition: Immutable accepted session-scoped phase snapshot carrying monotonic state version, evidence and policy lineage, pending transition observations and supersession identity.",
+        "Scope: temporal-domain session state and bounded history",
+        "Semantic owner: temporal phase-state repository",
+        "Relationships: Prior input to Intraday Phase Evaluator and deterministic next-state projection from Intraday Phase Result.",
+        "Lifecycle: active_signal_phase_contract",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhaseState; accepted phase state; phase state.",
+        "Human disallowed or misleading use: Global mutable phase; restart-durable claim for process memory; state version overwrite."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_result",
+      "canonical_slug": "intraday_phase_result",
+      "canonical_label": "Intraday Phase Result",
+      "category": "authority_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.7",
+      "allowed_aliases": [
+        "IntradayPhaseResult",
+        "phase evaluation result",
+        "phase result"
+      ],
+      "disallowed_phrases": [
+        "degraded phase result treated as positive permission",
+        "packet occurrence used as phase meaning",
+        "phase result without evidence lineage"
+      ],
+      "notes": [
+        "Definition: Immutable deterministic temporal result carrying detailed phase or unresolved outcome, clock prior, authority/degradation state, evidence and policy lineage, transition reason, limitations and accepted next-state identity.",
+        "Scope: temporal-domain output consumed by bounded downstream adapters",
+        "Semantic owner: temporal domain phase authority",
+        "Relationships: Produced by Intraday Phase Evaluator; projected into M05 only through Temporal Stage Adapter.",
+        "Lifecycle: active_signal_phase_contract",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhaseResult; phase evaluation result; phase result.",
+        "Human disallowed or misleading use: Degraded result treated as positive permission; packet occurrence used as phase meaning; result without evidence lineage."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_evaluator",
+      "canonical_slug": "intraday_phase_evaluator",
+      "canonical_label": "Intraday Phase Evaluator",
+      "category": "authority_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.9",
+      "allowed_aliases": [
+        "IntradayPhaseEvaluator",
+        "phase evaluator"
+      ],
+      "disallowed_phrases": [
+        "phase evaluator with hidden mutable state",
+        "phase evaluator used as live data fetcher",
+        "phase evaluator used as M05 candidate or permission owner"
+      ],
+      "notes": [
+        "Definition: Pure deterministic temporal service that validates one evidence set and optional prior accepted state under one versioned policy and emits one Intraday Phase Result.",
+        "Scope: signal-informed temporal evaluation",
+        "Semantic owner: temporal domain phase authority",
+        "Relationships: Consumes Intraday Phase Evidence, Intraday Phase Policy and optional Intraday Phase State; owns no repository or downstream trading decision.",
+        "Lifecycle: active_signal_phase_service",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhaseEvaluator; phase evaluator.",
+        "Human disallowed or misleading use: Hidden mutable state; live-data fetcher; M05 candidate or permission owner."
+      ]
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.intraday_phase_repository",
+      "canonical_slug": "intraday_phase_repository",
+      "canonical_label": "Intraday Phase Repository",
+      "category": "persistence_surface",
+      "stage_owner": "temporal_cognition",
+      "maps_to_contract": "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md:02.2.N07.9",
+      "allowed_aliases": [
+        "IntradayPhaseRepository",
+        "phase-state repository"
+      ],
+      "disallowed_phrases": [
+        "in memory phase repository claimed as restart durable",
+        "mutable internal phase state exposed",
+        "phase state shared across sessions"
+      ],
+      "notes": [
+        "Definition: Session-scoped port retaining accepted phase state and bounded history with detached reads; the alpha in-memory implementation is explicitly non-durable.",
+        "Scope: temporal-domain state retention",
+        "Semantic owner: temporal phase-state repository",
+        "Relationships: Read and written by Temporal Stage Adapter around the pure evaluator; does not own phase policy or M05 serial state.",
+        "Lifecycle: active_signal_phase_port",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: IntradayPhaseRepository; phase-state repository.",
+        "Human disallowed or misleading use: Durable restart claim for in-memory storage; mutable internal object exposure; cross-session state sharing."
+      ]
+    },
+    {
+      "namespace": "m05",
+      "canonical_id": "m05.temporal_stage_adapter",
+      "canonical_slug": "temporal_stage_adapter",
+      "canonical_label": "Temporal Stage Adapter",
+      "category": "protocol_surface",
+      "stage_owner": "serial_cognition",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.6",
+      "allowed_aliases": [
+        "TemporalStageAdapter",
+        "signal-phase M05 adapter",
+        "temporal adapter"
+      ],
+      "disallowed_phrases": [
+        "M05 owns phase semantics",
+        "serial runner accesses phase repository",
+        "degraded phase converted to positive permission"
+      ],
+      "notes": [
+        "Definition: Narrow M05 boundary adapter that invokes the temporal-domain evaluator with repository-owned prior state and translates one typed phase result into admitted primitive Stage Input facts plus exact authority lineage.",
+        "Scope: M05 temporal-stage integration only",
+        "Semantic owner: M05 integration boundary; temporal domain retains phase meaning and state",
+        "Relationships: Consumes Intraday Phase Evidence, Intraday Phase Evaluator, Intraday Phase Repository and Stage Context; emits one temporal Stage Input without changing Serial Runner purity.",
+        "Lifecycle: active_m05_temporal_adapter",
+        "Semantic decisions: N-07-SIGNAL-INFORMED-PHASE-REPAIR-V1",
+        "Human aliases: TemporalStageAdapter; signal-phase M05 adapter; temporal adapter.",
+        "Human disallowed or misleading use: M05 ownership of phase semantics; repository access inside Serial Runner; degraded phase converted to positive permission."
+      ]
     }
   ]
 }
