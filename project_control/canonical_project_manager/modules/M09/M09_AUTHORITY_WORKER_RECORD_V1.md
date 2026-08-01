@@ -45,3 +45,7 @@ C-NORM is accepted. Production and tests remain unchanged. C-PROOF must admit ex
 ## C-PROOF boundary
 
 Fourteen reference/mutant cases pass and seven production-facing assertions are exact red solely because the canonical M09 package is absent. Vocabulary parity admits namespace `m09`. No production source changed. Gate D remains closed pending the mandatory separate-worktree adversarial proof review.
+
+## Separate-worktree proof challenge finding
+
+The first detached review at C-PROOF commit `730c66c` found four omitted numeric-domain cases: zero available capital, negative reserved capital, percentages above 100 and a caution multiplier above 1. The numbered law already requires non-negative state and bounded sizing; section 7.13.3 is clarified before proof hardening. Gate D remains closed.
