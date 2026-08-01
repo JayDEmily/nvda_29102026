@@ -162,7 +162,7 @@ Complete Tier A moved from 1,568 passed / 264 failed at hardened proof baseline
 `236a8ae` to 1,583 / 253: all eleven admitted production failures resolved and
 zero new failing nodes appeared. The vocabulary partition remains 100 passed /
 three unchanged failures; the M10 namespace audit is clean across 16 files and
-95 governed occurrences. Evidence is under
+111 governed occurrences. Evidence is under
 `project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/`.
 
 The accepted adapter is explicitly offline, paper-only and non-durable. It does

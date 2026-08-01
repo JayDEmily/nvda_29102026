@@ -1803,7 +1803,7 @@ returns the stored receipt without duplicate events.
 | Bounded compatibility | PASS — 5 / 5 |
 | Proof manifests / executor | PASS — 62 / 62; 21 / 21 |
 | Tier B | PASS — 49 / 49 |
-| Vocabulary audit | PASS — zero unresolved candidates across 16 files and 95 governed occurrences |
+| Vocabulary audit | PASS — zero unresolved candidates across 16 files and 111 governed occurrences |
 | Complete Tier A comparison | 1,568 passed / 264 failed → 1,583 / 253; eleven resolved; zero new failing nodes |
 | Static compilation / diff check | PASS |
 | Ruff / Black | unavailable; locked modules not installed |

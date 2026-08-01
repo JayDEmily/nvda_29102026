@@ -20,7 +20,7 @@ M10 does not establish live broker connectivity, network submission, market-pric
 | proof-executor contract | 21 passed |
 | `PYTHONPATH=src pytest -q tests/tier_b` | 49 passed |
 | vocabulary canonical-builder parity | 4 passed |
-| M10 vocabulary audit | zero unresolved; 16 files; 95 governed occurrences |
+| M10 vocabulary audit | zero unresolved; 16 files; 111 governed occurrences |
 | complete Tier A baseline | 1,568 passed / 264 failed |
 | complete Tier A current | 1,583 passed / 253 failed |
 | failure-node delta | 11 resolved; zero new |

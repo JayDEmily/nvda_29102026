@@ -57,7 +57,7 @@ Validation:
 - proof-executor contract: 21/21 passed;
 - Tier B: 49/49 passed;
 - vocabulary parity: 4/4 passed;
-- M10 vocabulary audit: zero unresolved candidates across 16 files and 95 governed occurrences;
+- M10 vocabulary audit: zero unresolved candidates across 16 files and 111 governed occurrences;
 - complete Tier A: 1,568 passed / 264 failed at baseline to 1,583 / 253 current; eleven failures resolved and zero new failure nodes;
 - static compilation and diff checks: passed;
 - Ruff and Black: unavailable because the locked modules are not installed; no substitute used.
