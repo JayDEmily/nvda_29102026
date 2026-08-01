@@ -1,0 +1,8 @@
+source	locator	accepted_truth
+Atlas machine projection	Target Modules!M09	M09 capital_authority owns final-risk join, capital state, bounded sizing and fresh-capital decision; excludes order placement and position lifecycle
+Atlas machine projection	Contracts!K11	FinalRiskDecision is the explicit serial/parallel join before capital authority under N-08/C-036
+Atlas machine projection	Contracts!K14	CapitalDeploymentReceipt is the bounded fresh-capital decision and complete input trace under C-034/C-036
+Atlas machine projection	Mandatory obligation!OBL-M09-POSITIVE	M09 must deliver capital state, bounded sizing, fresh-capital decision and deployment receipt in addition to K11
+Atlas machine projection	Dependencies!M09	M09 consumes accepted M05, M06 and M07 contracts; M10 depends on M09
+Atlas machine projection	State transaction!M09-M13	M13 participation is required only when capital state and receipt mutate; the current deterministic alpha evaluation claims no durable mutation
+Atlas cohort review	43 surface 5.11 cohorts	Admit owner lineage, categorical blocks, explicit capital snapshot, bounded policy and explainable receipt; reject or split generic risk blobs, confidence sizing, module allocation, additive carry, broker/API bypass and caller-invented thresholds
