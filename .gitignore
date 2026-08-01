@@ -10,3 +10,6 @@ tmp/
 
 # Codex local runtime state
 .codex
+
+# Local aggregate proof receipts (content-addressed evidence, not repository truth)
+var/proof_receipts/

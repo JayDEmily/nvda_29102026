@@ -84,6 +84,25 @@ proof_blocks:
       - project_control/remote_bridge/REMOTE_BRIDGE_BLUEPRINT.md
 
 
+  - proof_block_id: promotion_gate_contract
+    tier: Tier B
+    lifecycle: admitted_for_m00_testing_guardrail_repair_unit_3
+    test_family_ids:
+      - promotion_gate_contract
+    normative_proposition_ids:
+      - TP-PROMOTION-001
+      - TP-RECEIPT-001
+      - TP-CONTROL-001
+    command: >-
+      python -m pytest tests/tier_b/proof_model/test_promotion_gate_contract.py
+    owns:
+      - scripts/run_promotion_gate.py
+      - scripts/proof_authority.py
+      - tests/tier_b/proof_model/test_promotion_gate_contract.py
+      - config/proof_blocks.yaml
+      - config/retained_test_registry.yaml
+      - Makefile
+
   - proof_block_id: checkpoint_receipt_contract
     tier: Tier B
     lifecycle: admitted_for_active_code_atlas_testing_proof_checkpoint_surface

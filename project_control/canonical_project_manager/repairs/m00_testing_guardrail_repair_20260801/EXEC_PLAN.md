@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `ACTIVE:AGGREGATE_PROMOTION_GATE`
+**Status:** `ACTIVE:CI_AND_ENVIRONMENT_AUTHORITY`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -148,6 +148,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 0 committed at `58ee99d33207f63dc59e0a67aa8f2e12733d7136`.
 - 2026-08-01: Unit 1 established registry schema v4, proof manifest schema v2, exact path admission for all 195 physical governed test files, one 13-family/15-test pre-M00 promotion set, exact current-block proposition locators, and executable malformed/duplicate/reference/membership rejection proof.
 - 2026-08-01: Unit 2 reconciled the canonical plan, roadmap and process overlay to one pre-M00 control pack and encoded the legacy mutable-API/current transport-only API conflict as mutually exclusive lifecycle authority.
+- 2026-08-01: Unit 3 implemented the manifest-resolved aggregate promotion command, fail-closed result and Git-state checks, content-addressed receipts, receipt verification and separate check-versus-execute Make routes.
 
 ## 9. Decisions
 

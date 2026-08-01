@@ -67,3 +67,41 @@ PASS (no output)
 ## Open next gate
 
 Unit 3: implement the aggregate promotion executor and sufficient tamper-evident receipts.
+
+## Unit 3 — Aggregate promotion gate and receipts
+
+**Outcome:** PASS for the gate implementation and control proof. The first clean full execution remains Unit 5.
+
+Known true:
+
+- `scripts/run_promotion_gate.py` resolves a named promotion set through the reconciled registry/manifest model and executes commands without shell evaluation.
+- It refuses dirty pre-run Git state, stops on the first non-PASS block, rejects non-zero exit, zero-pass output, skips and timeouts, and checks post-run Git identity/state.
+- Successful or executed-failure receipts include branch/commit, pre/post state, interpreter/platform, `pyproject.toml`/`uv.lock`/`.python-version` hashes, authority-file hashes, exact block/family/test membership, commands, per-block outcomes/counts/durations/output hashes, totals and a deterministic evidence hash.
+- Receipt verification detects content tampering.
+- `make promotion-check` is non-executing membership validation; `make promotion-gate` is the distinct executing route and writes ignored local evidence under `var/proof_receipts/`.
+- The live check resolves 13 blocks, 13 families and 15 tests.
+
+Validation evidence:
+
+```text
+python -m pytest tests/tier_b/proof_model/test_proof_authority_contract.py tests/tier_b/proof_model/test_promotion_gate_contract.py -q
+22 passed
+
+python scripts/proof_authority.py --check
+proof_authority=PASS families=194 tests=196 blocks=65
+
+python scripts/run_promotion_gate.py --set pre_m00_current --check-only
+13 proof blocks; 13 test families; 15 test paths
+
+python -m compileall -q scripts/proof_authority.py scripts/run_promotion_gate.py tests/tier_b/proof_model/test_proof_authority_contract.py tests/tier_b/proof_model/test_promotion_gate_contract.py
+PASS
+
+git diff --check
+PASS (no output)
+```
+
+The available diagnostic interpreter does not contain Black, so formatting-tool execution is deferred to the declared-environment repair in Unit 4; no formatting PASS is claimed here.
+
+## Open next gate
+
+Unit 4: make the canonical installation consume `uv.lock`, add an installed-package smoke route, and remove duplicated stale CI schema/count logic.

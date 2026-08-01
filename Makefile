@@ -10,6 +10,8 @@ BLACK ?= $(PYTHON) -m black
 RUFF ?= $(PYTHON) -m ruff
 INSTALL_STAMP := $(VENV)/.install.stamp
 INSTALL_INPUTS := pyproject.toml uv.lock .python-version
+PROMOTION_SET ?= pre_m00_current
+PROMOTION_RECEIPT ?= var/proof_receipts/$(PROMOTION_SET).json
 
 .PHONY: help
 help:
@@ -36,6 +38,8 @@ help:
 			"coefficient-modifier-check verify 5.9 coefficient/modifier surfaces" \
 			"opening-placement-check verify 5.12 opening/placement readiness surfaces" \
 		"proof-block      run scripts/run_proof_block.py with BLOCK=<name>" \
+		"promotion-check  validate exact aggregate promotion membership" \
+		"promotion-gate   execute PROMOTION_SET and write PROMOTION_RECEIPT" \
 		"bridge-on        start AI patch bridge watcher" \
 		"bridge-off       stop AI patch bridge watcher" \
 		"bridge-status    show AI patch bridge watcher status" \
@@ -344,3 +348,11 @@ on off status dashboard:
 clean-caches:
 	find . \( -path './.git' -o -path './$(VENV)' -o -path './_archive' \) -prune -o -type d \( -name '__pycache__' -o -name '.pytest_cache' -o -name '.mypy_cache' -o -name '.ruff_cache' \) -prune -exec rm -rf {} +
 	find . \( -path './.git' -o -path './$(VENV)' -o -path './_archive' \) -prune -o -type f \( -name '*.pyc' -o -name '*.pyo' \) -exec rm -f {} +
+
+.PHONY: promotion-check
+promotion-check:
+	$(BOOTSTRAP_PYTHON) scripts/run_promotion_gate.py --set $(PROMOTION_SET) --check-only
+
+.PHONY: promotion-gate
+promotion-gate: $(INSTALL_STAMP)
+	$(PYTHON) scripts/run_promotion_gate.py --set $(PROMOTION_SET) --receipt $(PROMOTION_RECEIPT)
