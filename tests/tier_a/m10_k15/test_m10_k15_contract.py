@@ -74,6 +74,46 @@ def test_named_mutants_are_detectable(name: str) -> None:
         assert output == expected
 
 
+
+def test_reference_generated_rounding_never_exceeds_authority() -> None:
+    for cents in range(101, 501, 17):
+        for quantum in (Decimal("0.001"), Decimal("0.01"), Decimal("1")):
+            case = replace(PlacementCase(), limit_price=Decimal(cents) / Decimal("100"), quantity_quantum=quantum)
+            result = evaluate_reference(case)
+            assert result.quantity % quantum == 0
+            assert result.planned_notional <= case.capital.authorised_notional
+            assert result.quantity * case.limit_price <= case.capital.authorised_notional
+
+
+def test_production_rejects_nonfinite_numeric_inputs() -> None:
+    api = production_api(); receipt = production_capital_receipt(); gateway = api["ExecutionGateway"]()
+    for value in (Decimal("NaN"), Decimal("Infinity"), Decimal("-Infinity")):
+        with pytest.raises(ValueError):
+            gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=value, intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+        with pytest.raises(ValueError):
+            api["PlacementPolicy"](quantity_quantum=value)
+
+
+def test_production_execution_time_is_utc_and_not_before_intent() -> None:
+    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
+    with pytest.raises(ValueError):
+        gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,0,tzinfo=UTC))
+    with pytest.raises(ValueError):
+        gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2))
+    assert port.list_events() == ()
+    assert port.list_receipts() == ()
+
+
+def test_production_event_and_receipt_views_are_detached() -> None:
+    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    events = port.list_events(); receipts = port.list_receipts()
+    assert events == port.list_events()
+    assert receipts == (receipt,)
+    assert events is not port.list_events()
+    assert receipts is not port.list_receipts()
+
+
 def _valid_production():
     api = production_api()
     receipt = production_capital_receipt()
@@ -117,8 +157,9 @@ def test_production_rejects_wrong_shape_time_and_subquantum() -> None:
     for kwargs in (
         {"symbol":"AAPL"}, {"side":"sell"}, {"order_type":"market"}, {"time_in_force":"gtc"},
     ):
-        policy = api["PlacementPolicy"].model_validate({"quantity_quantum":"0.001", **kwargs})
-        with pytest.raises(ValueError): gateway.create_intent(receipt, policy, limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+        with pytest.raises(ValueError):
+            policy = api["PlacementPolicy"].model_validate({"quantity_quantum":"0.001", **kwargs})
+            gateway.create_intent(receipt, policy, limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
     with pytest.raises(ValueError): gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("1")), limit_price=Decimal("20000"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
     with pytest.raises(ValueError): gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,0,59,tzinfo=UTC))
 

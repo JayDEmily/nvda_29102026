@@ -1130,6 +1130,7 @@ proof_blocks:
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M10/M10_AUTHORITY_WORKER_RECORD_V1.md
       - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/C_PROOF_VALIDATION_SUMMARY.md
+      - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/M10_C_PROOF_SEPARATE_WORKTREE_REVIEW.md
       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
