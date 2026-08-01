@@ -181,6 +181,7 @@ def _run_block(
                 stdout=stdout_file,
                 stderr=stderr_file,
                 timeout=timeout_seconds,
+                start_new_session=True,
             )
             exit_code = completed.returncode
         except subprocess.TimeoutExpired:

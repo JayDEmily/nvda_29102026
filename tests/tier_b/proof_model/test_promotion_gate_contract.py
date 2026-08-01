@@ -89,6 +89,7 @@ def test_block_capture_uses_files_not_subprocess_pipes(
         assert "capture_output" not in kwargs
         assert kwargs["stdout"] is not subprocess.PIPE
         assert kwargs["stderr"] is not subprocess.PIPE
+        assert kwargs["start_new_session"] is True
         kwargs["stdout"].write("1 passed in 0.01s\n")
         return subprocess.CompletedProcess(args[0], 0)
 
