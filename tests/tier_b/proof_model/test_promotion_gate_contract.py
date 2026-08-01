@@ -22,12 +22,20 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 
 
 def test_live_alpha_gate_resolves_exact_membership_without_execution() -> None:
-    summary = build_check_summary("pre_m00_current", repo_root=REPO_ROOT)
+    summary = build_check_summary("alpha_current", repo_root=REPO_ROOT)
 
     assert len(summary["proof_block_ids"]) == 15
     assert len(summary["test_family_ids"]) == 15
     assert len(summary["test_paths"]) == 17
     assert summary["test_paths"][0].startswith("tests/tier_a/")
+
+
+def test_promotion_cli_default_is_current_semantic_key() -> None:
+    source = (REPO_ROOT / "scripts/run_promotion_gate.py").read_text(encoding="utf-8")
+    makefile = (REPO_ROOT / "Makefile").read_text(encoding="utf-8")
+
+    assert 'default="alpha_current"' in source
+    assert "PROMOTION_SET ?= alpha_current" in makefile
 
 
 def test_env_prefixed_python_command_uses_current_interpreter_without_shell() -> None:

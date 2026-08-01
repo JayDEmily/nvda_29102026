@@ -413,17 +413,32 @@ def _validate_manifest(
             test_paths=tuple(selected_paths),
         )
 
-    if "pre_m00_current" in promotion_sets:
-        selected = set(promotion_sets["pre_m00_current"].test_family_ids)
-        blocking = {
-            family_id
-            for family_id, family in families.items()
-            if family.lifecycle == "current_blocking"
-        }
-        if selected != blocking:
+    current_key = "alpha_current"
+    if current_key not in promotion_sets:
+        raise AuthorityError(f"required current promotion set is missing: {current_key}")
+    selected = set(promotion_sets[current_key].test_family_ids)
+    blocking = {
+        family_id
+        for family_id, family in families.items()
+        if family.lifecycle == "current_blocking"
+    }
+    if selected != blocking:
+        raise AuthorityError(
+            f"{current_key} does not resolve the exact current_blocking family set: "
+            f"missing={sorted(blocking - selected)}, extra={sorted(selected - blocking)}"
+        )
+
+    legacy_key = "pre_m00_current"
+    if legacy_key in promotion_sets:
+        current = promotion_sets[current_key]
+        legacy = promotion_sets[legacy_key]
+        if (
+            legacy.proof_block_ids != current.proof_block_ids
+            or legacy.test_family_ids != current.test_family_ids
+            or legacy.test_paths != current.test_paths
+        ):
             raise AuthorityError(
-                "pre_m00_current does not resolve the exact current_blocking family set: "
-                f"missing={sorted(blocking - selected)}, extra={sorted(selected - blocking)}"
+                f"{legacy_key} compatibility alias must be membership-identical to {current_key}"
             )
 
     return proof_blocks, promotion_sets

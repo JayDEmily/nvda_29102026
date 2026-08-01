@@ -357,7 +357,7 @@ def _write_receipt(path: Path, payload: Mapping[str, Any]) -> None:
 
 def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--set", default="pre_m00_current", dest="promotion_set")
+    parser.add_argument("--set", default="alpha_current", dest="promotion_set")
     parser.add_argument("--check-only", action="store_true")
     parser.add_argument("--verify-receipt", type=Path)
     parser.add_argument("--receipt", type=Path)

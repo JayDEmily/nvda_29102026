@@ -36,7 +36,7 @@ def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
     registry, manifest = _load_live_documents()
 
     model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
-    promotion = model.promotion_sets["pre_m00_current"]
+    promotion = model.promotion_sets["alpha_current"]
 
     assert promotion.proof_block_ids == (
         "m13_state_kernel_module_local_proof",
@@ -58,6 +58,21 @@ def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
     assert len(promotion.test_paths) == 17
     assert all(
         model.path_admissions[path].lifecycle == "current_blocking" for path in promotion.test_paths
+    )
+
+
+def test_legacy_promotion_key_is_a_membership_identical_compatibility_alias() -> None:
+    registry, manifest = _load_live_documents()
+
+    model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
+
+    assert (
+        model.promotion_sets["pre_m00_current"].proof_block_ids
+        == model.promotion_sets["alpha_current"].proof_block_ids
+    )
+    assert (
+        model.promotion_sets["pre_m00_current"].test_paths
+        == model.promotion_sets["alpha_current"].test_paths
     )
 
 
@@ -259,7 +274,7 @@ def test_api_state_ownership_lifecycles_are_explicit_and_not_in_current_promotio
     current = model.path_admissions[
         "tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py"
     ]
-    promoted = set(model.promotion_sets["pre_m00_current"].test_paths)
+    promoted = set(model.promotion_sets["alpha_current"].test_paths)
 
     assert legacy.lifecycle == "superseded_compatibility"
     assert current.lifecycle == "next_gate_expected_red"

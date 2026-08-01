@@ -5,8 +5,8 @@ notes:
   - Candidate-review receipt, summary-only, error-receipt, and stdin-input contracts were admitted during ATLAS_FEATURE_ADMISSION_019-024.
   - Detailed proof-block listing was admitted during ATLAS_FEATURE_ADMISSION_022.
 promotion_sets:
-  pre_m00_current:
-    claim: exact current blocking alpha proof through M00 final composition
+  alpha_current: &alpha_current_promotion_set
+    claim: exact current blocking alpha proof through accepted post-alpha extensions
     authority_proposition_ids:
       - TP-PROMOTION-001
       - TP-CONTROL-001
@@ -26,6 +26,10 @@ promotion_sets:
       - m12_k19_authoritative_replay_contract
       - m00_final_composition_contract
       - post_alpha_m00_transport_adapter_contract
+
+  pre_m00_current:
+    <<: *alpha_current_promotion_set
+    claim: deprecated compatibility alias for historical pre-M00 receipt verification
 
 proof_blocks:
   - proof_block_id: vocabulary_governance_conformance_candidate
