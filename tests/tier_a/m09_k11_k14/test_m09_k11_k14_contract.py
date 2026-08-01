@@ -93,6 +93,54 @@ def test_reference_zero_available_capital_is_no_trade_with_zero_authority() -> N
     assert result.authorised_notional == 0
 
 
+def test_reference_rounding_never_increases_percentage_or_notional_authority() -> None:
+    bounded = evaluate_reference(
+        SerialBranch(),
+        ParallelBranch(),
+        ModifierReceipt(),
+        CapitalStateCase(max_fresh_deployable_pct=Decimal("9.999")),
+        capital_policy=CapitalPolicy(
+            target_pct=Decimal("10"),
+            hard_max_pct=Decimal("9.999"),
+            caution_multiplier=Decimal("1"),
+            rounding_quantum=Decimal("0.01"),
+        ),
+    )
+    assert bounded.capital_action == "reduce"
+    assert bounded.authorised_pct == Decimal("9.99")
+    assert bounded.authorised_pct <= Decimal("9.999")
+
+    sub_quantum = evaluate_reference(
+        SerialBranch(),
+        ParallelBranch(),
+        ModifierReceipt(),
+        CapitalStateCase(),
+        capital_policy=CapitalPolicy(
+            target_pct=Decimal("0.006"),
+            hard_max_pct=Decimal("100"),
+            caution_multiplier=Decimal("1"),
+            rounding_quantum=Decimal("0.01"),
+        ),
+    )
+    assert sub_quantum.capital_action == "no_trade"
+    assert sub_quantum.authorised_pct == 0
+
+    tiny_capital = evaluate_reference(
+        SerialBranch(),
+        ParallelBranch(),
+        ModifierReceipt(),
+        CapitalStateCase(available_capital=Decimal("0.006"), max_fresh_deployable_pct=Decimal("100")),
+        capital_policy=CapitalPolicy(
+            target_pct=Decimal("100"),
+            hard_max_pct=Decimal("100"),
+            caution_multiplier=Decimal("1"),
+            rounding_quantum=Decimal("0.01"),
+        ),
+    )
+    assert tiny_capital.capital_action == "no_trade"
+    assert tiny_capital.authorised_notional == 0
+
+
 def test_reference_invalid_capital_state_and_policy_domains_fail_closed() -> None:
     invalid_states = (
         CapitalStateCase(reserved_capital=Decimal("-1")),
@@ -242,6 +290,129 @@ def test_production_k14_is_bounded_and_does_not_use_m07_coefficient_as_percentag
     assert zero.action == "no_trade"
     assert zero.authorised_pct == 0
     assert zero.authorised_notional == 0
+
+
+def test_production_rounding_never_increases_percentage_or_notional_authority() -> None:
+    api, serial, parallel, modifier, join_policy, _, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+
+    bounded_state = api["CapitalState"].create(
+        state_id="capital.state.rounding-bound",
+        account_id=capital.account_id,
+        state_version=capital.state_version,
+        effective_at_utc=capital.effective_at_utc,
+        available_capital=capital.available_capital,
+        reserved_capital=capital.reserved_capital,
+        max_fresh_deployable_pct=Decimal("9.999"),
+        source_authority_ref=capital.source_authority_ref,
+    )
+    bounded_policy = api["CapitalDeploymentPolicy"](
+        policy_version=CAPITAL_POLICY_VERSION,
+        target_pct=Decimal("10"),
+        hard_max_pct=Decimal("9.999"),
+        caution_multiplier=Decimal("1"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    bounded = service.evaluate_capital(final, bounded_state, modifier, bounded_policy)
+    assert bounded.action == "reduce"
+    assert bounded.authorised_pct == Decimal("9.99")
+    assert bounded.authorised_pct <= bounded_state.max_fresh_deployable_pct
+    assert bounded.authorised_pct <= bounded_policy.hard_max_pct
+
+    sub_quantum_policy = api["CapitalDeploymentPolicy"](
+        policy_version=CAPITAL_POLICY_VERSION,
+        target_pct=Decimal("0.006"),
+        hard_max_pct=Decimal("100"),
+        caution_multiplier=Decimal("1"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    sub_quantum = service.evaluate_capital(final, capital, modifier, sub_quantum_policy)
+    assert sub_quantum.action == "no_trade"
+    assert sub_quantum.authorised_pct == 0
+
+    tiny_state = api["CapitalState"].create(
+        state_id="capital.state.tiny",
+        account_id=capital.account_id,
+        state_version=capital.state_version,
+        effective_at_utc=capital.effective_at_utc,
+        available_capital=Decimal("0.006"),
+        reserved_capital=Decimal("0"),
+        max_fresh_deployable_pct=Decimal("100"),
+        source_authority_ref=capital.source_authority_ref,
+    )
+    full_policy = api["CapitalDeploymentPolicy"](
+        policy_version=CAPITAL_POLICY_VERSION,
+        target_pct=Decimal("100"),
+        hard_max_pct=Decimal("100"),
+        caution_multiplier=Decimal("1"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    tiny = service.evaluate_capital(final, tiny_state, modifier, full_policy)
+    assert tiny.action == "no_trade"
+    assert tiny.authorised_pct == 0
+    assert tiny.authorised_notional == 0
+
+
+def test_production_numeric_equivalence_has_one_semantic_identity() -> None:
+    api, serial, parallel, modifier, join_policy, _, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+    policies = [
+        api["CapitalDeploymentPolicy"](
+            policy_version=CAPITAL_POLICY_VERSION,
+            target_pct=Decimal(value),
+            hard_max_pct=Decimal("15"),
+            caution_multiplier=Decimal("0.5"),
+            rounding_quantum=Decimal("0.01"),
+        )
+        for value in ("10", "10.0", "10.00")
+    ]
+    decisions = [service.evaluate_capital(final, capital, modifier, policy) for policy in policies]
+    assert len({policy.policy_fingerprint for policy in policies}) == 1
+    assert len({decision.decision_id for decision in decisions}) == 1
+
+    equivalent_state = api["CapitalState"].create(
+        state_id=capital.state_id,
+        account_id=capital.account_id,
+        state_version=capital.state_version,
+        effective_at_utc=capital.effective_at_utc,
+        available_capital=Decimal("100000.0"),
+        reserved_capital=Decimal("10000.00"),
+        max_fresh_deployable_pct=Decimal("12.0"),
+        source_authority_ref=capital.source_authority_ref,
+    )
+    assert equivalent_state.semantic_fingerprint == capital.semantic_fingerprint
+
+
+def test_production_decision_model_rejects_recomputed_policy_cap_violation() -> None:
+    api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
+    service = api["CapitalAuthorityService"]()
+    final = service.join_final_risk(serial, parallel, join_policy)
+    decision = service.evaluate_capital(final, capital, modifier, capital_policy)
+    from nvda_desk.m09_capital_authority.contracts import semantic_fingerprint
+
+    forged_payload = decision.model_dump(mode="python")
+    forged_payload.update(
+        {
+            "action": "reduce",
+            "authorised_pct": Decimal("9"),
+            "authorised_notional": Decimal("9000"),
+            "policy_hard_max_pct": Decimal("5"),
+            "reasons": ("forged_policy_cap",),
+        }
+    )
+    forged_payload["capital_policy_fingerprint"] = semantic_fingerprint(
+        {
+            "policy_version": forged_payload["policy_version"],
+            "target_pct": forged_payload["policy_target_pct"],
+            "hard_max_pct": forged_payload["policy_hard_max_pct"],
+            "caution_multiplier": forged_payload["policy_caution_multiplier"],
+            "rounding_quantum": forged_payload["policy_rounding_quantum"],
+        }
+    )
+    with pytest.raises(ValueError, match="capital_percentage_exceeds_bound"):
+        _refingerprint_capital_decision(api, forged_payload)
 
 
 def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None:

@@ -6,7 +6,7 @@ import importlib
 import json
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime, timedelta
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import Decimal, ROUND_FLOOR
 from hashlib import sha256
 from typing import Any, Callable, Final
 
@@ -27,7 +27,9 @@ def fingerprint(value: Any) -> str:
         if isinstance(item, datetime):
             return item.astimezone(UTC).isoformat().replace("+00:00", "Z")
         if isinstance(item, Decimal):
-            return format(item, "f")
+            if item == 0:
+                return "0"
+            return format(item.normalize(), "f")
         if hasattr(item, "model_dump"):
             return normalise(item.model_dump(mode="python"))
         if hasattr(item, "__dict__") and not isinstance(item, type):
@@ -177,7 +179,7 @@ def evaluate_reference(
             and Decimal("0") <= capital_policy.target_pct <= Decimal("100")
             and Decimal("0") <= capital_policy.hard_max_pct <= Decimal("100")
             and Decimal("0") <= capital_policy.caution_multiplier <= Decimal("1")
-            and capital_policy.rounding_quantum > 0
+            and Decimal("0") < capital_policy.rounding_quantum <= Decimal("100")
         )
         capital_domain_valid = (
             capital is not None
@@ -205,8 +207,12 @@ def evaluate_reference(
             )
             if parallel and parallel.cautions:
                 pct *= capital_policy.caution_multiplier
-            pct = max(Decimal("0"), pct).quantize(capital_policy.rounding_quantum, rounding=ROUND_HALF_UP)
-            notional = (capital.available_capital * pct / Decimal("100")).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            pct = (
+                max(Decimal("0"), pct) / capital_policy.rounding_quantum
+            ).to_integral_value(rounding=ROUND_FLOOR) * capital_policy.rounding_quantum
+            notional = (
+                capital.available_capital * pct / Decimal("100")
+            ).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
             if pct == 0 or notional == 0:
                 action = "no_trade"
                 pct = Decimal("0")
