@@ -198,7 +198,7 @@ assessment/projection consistency.
 Complete Tier A moved from 1,609 passed / 272 failed at hardened proof baseline
 `d889cb7` to 1,628 / 253: all nineteen admitted M12 production failures resolved
 and zero new failing nodes appeared. The M12 namespace audit is clean across 18
-files with 73 governed occurrences. Evidence is under
+files with 74 governed occurrences. Evidence is under
 `project_control/canonical_project_manager/modules/M12/validation/m12_k19_v1/`.
 
 The accepted package is retained-evidence and read-projection bounded. It does not
