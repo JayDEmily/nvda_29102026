@@ -1,6 +1,6 @@
 # Post-alpha M00 Transport Adapter Remediation ExecPlan
 
-**Status:** `CLOSING:UNIT5_EXACT_HEAD_VALIDATION`
+**Status:** `COMPLETE:UNIT5_PASS`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -146,4 +146,5 @@ requested or required by the active route.
 - 2026-08-02: Unit 2 implemented the explicit M00 CLI command/query adapter; four focused cases pass.
 - 2026-08-02: Unit 3 implemented the minimal ASGI adapter; all 15 transport cases pass.
 - 2026-08-02: Unit 4 narrowed M00 import quarantine to the two authorised entry adapters, promoted the entry family to current-blocking, and reconciled 15 proof blocks / 17 paths. Fifty-eight focused tests pass.
-- 2026-08-02: Unit 5 preliminary clean-commit validation passed at `6b5d8dd`: non-editable install, installed entry smoke, 15/15 blocks with 769 Tier A tests, 85 Tier B tests, Black, Ruff, compile and receipt verification. Control surfaces are transitioning to closed state; exact-head rerun remains required.
+- 2026-08-02: Unit 5 preliminary clean-commit validation passed at `6b5d8dd`: non-editable install, installed entry smoke, 15/15 blocks with 769 Tier A tests, 85 Tier B tests, Black, Ruff, compile and receipt verification.
+- 2026-08-02: closed-state semantic commit `3f939c9` reproduced the complete chain. The pack is complete; the final evidence-bearing commit must be rerun unchanged before checkpoint closeout.

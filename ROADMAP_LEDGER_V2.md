@@ -9,7 +9,7 @@
 | Current branch source checkpoint | `ef4aa1ae556df07871eca4ef93777edc189af8ed` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | `ALPHA-DEBT-001` canonical M00 CLI/ASGI transport adapters |
-| Current active slice | none — post-alpha transport-adapter remediation validated pending exact-head closeout evidence |
+| Current active slice | none — `ALPHA-DEBT-001` resolved and subordinate pack closed |
 | Active control pack | none — canonical ExecPlan only |
 | Production implementation | accepted alpha retained; canonical CLI/ASGI now translate into M00 through explicit coordinator injection; remaining material debt unchanged; no live/durable/production claim |
 | Live/paper/production claim | closed |
