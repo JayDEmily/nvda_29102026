@@ -1,36 +1,722 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "m09",
+  "namespace": "m10",
   "imported_namespaces": [
     "global",
-    "m05",
-    "m06",
-    "m07"
+    "m09"
   ],
   "scan_paths": [
     "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
-    "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
     "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
     "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
-    "src/nvda_desk/contracts/risk.py",
-    "src/nvda_desk/domain/final_risk",
-    "src/nvda_desk/risk/join",
-    "src/nvda_desk/services/final_risk_service.py",
-    "src/nvda_desk/contracts/capital.py",
-    "src/nvda_desk/capital",
-    "src/nvda_desk/services/capital_deployment_service.py",
-    "src/nvda_desk/m09_capital_authority",
-    "tests/support/m09_k11_k14_contract_harness.py",
-    "tests/tier_a/m09_k11_k14",
-    "tests/tier_a/capital_deployment",
-    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
-    "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py"
+    "src/nvda_desk/contracts/downstream.py",
+    "src/nvda_desk/downstream/opening.py",
+    "src/nvda_desk/contracts/broker_execution.py",
+    "src/nvda_desk/downstream/broker_execution.py",
+    "src/nvda_desk/adapters/egress/broker_protocol.py",
+    "src/nvda_desk/m10_execution_gateway",
+    "tests/support/m10_k15_contract_harness.py",
+    "tests/tier_a/m10_k15",
+    "tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py",
+    "tests/tier_a/adapters_egress/test_broker_boundary_surface.py"
   ],
-  "scanned_file_count": 27,
+  "scanned_file_count": 10,
   "vocabulary_touched": true,
-  "fingerprint": "c7e3bf1ebdd33091025b0dfae9af15a0b015e2be5d6a2a137cb92366bb345ec3",
-  "resolved_occurrence_count": 297,
-  "candidates": [],
-  "candidate_classifications": []
+  "fingerprint": "abf93666d9cbddd642644366038de6b39f09bfd756e6f89cbe4f9c3c09748e92",
+  "resolved_occurrence_count": 78,
+  "candidates": [
+    {
+      "phrase": "final risk",
+      "nearest_slug": "final_risk_decision",
+      "nearest_label": "Final Risk Decision",
+      "score": 93,
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7d4af4b71fd4d83a",
+      "raw_phrase": "final-risk",
+      "nearest_identity": "m09.final_risk_decision",
+      "line": 854,
+      "column": 43,
+      "source_context": "preserve the exact M09 receipt, decision, final-risk, capital-state, policy,",
+      "context_sha256": "b4f0b97283e2909e75c830ea8cce7141bf6796b5e25bf68c78628e4762ff7f21",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-6098a060e68e2bce",
+      "raw_phrase": "capital-receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 901,
+      "column": 23,
+      "source_context": "record cohorts: exact capital-receipt lineage, no sizing recomputation,",
+      "context_sha256": "cb2844245c890101079cde94b0cc3b3660fb2365b8ac7a96687137f943005afd",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "final risk",
+      "nearest_slug": "final_risk_decision",
+      "nearest_label": "Final Risk Decision",
+      "score": 93,
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-b8685d578e0a2f84",
+      "raw_phrase": "final-risk",
+      "nearest_identity": "m09.final_risk_decision",
+      "line": 918,
+      "column": 121,
+      "source_context": "- Lawful inputs: serial candidate material, downstream pre-deployment allow/block truth, parallel-risk packet identity, final-risk receipt identity, capital-state snapshot identity, bounded deployment policy identity, coefficient/modifier bounds. Temporal Context is also required.",
+      "context_sha256": "dede225f0c572b72b5fdd602babc14e0497330fc6488e641ff9fe258d5563d3b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "final risk",
+      "nearest_slug": "final_risk_decision",
+      "nearest_label": "Final Risk Decision",
+      "score": 93,
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-4d013db014b2073f",
+      "raw_phrase": "final-risk",
+      "nearest_identity": "m09.final_risk_decision",
+      "line": 920,
+      "column": 138,
+      "source_context": "- Traceability rule: every deploy/stand-down decision must carry an input trace that names the serial candidate, pre-deployment receipt, final-risk receipt, capital-state snapshot, bounded policy, and any parallel-risk packet consumed.",
+      "context_sha256": "e97aca98ee64565f7803e05e73a111812009567ccfc37a15c4e61936332e594e",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "parallel risk lane service",
+      "nearest_slug": "parallel_risk_lane",
+      "nearest_label": "Parallel Risk Lane",
+      "score": 93,
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-ba44565e1821553a",
+      "raw_phrase": "parallel_risk_lane_service",
+      "nearest_identity": "global.parallel_risk_lane",
+      "line": 924,
+      "column": 227,
+      "source_context": "- Semantic owner: parallel risk authority owns bounded row `5.8` envelope evaluation and output meaning. Current alpha implementation evidence is allocated to `src/nvda_desk/risk/parallel/evaluate.py`; `src/nvda_desk/services/parallel_risk_lane_service.py` coordinates calls and does not acquire separate policy or persistence authority.",
+      "context_sha256": "41536fdb40e7448286d723a41c40c672f86d3a30f2deebda2da8aae9a74b390c",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "nearest_slug": "parallel_risk_observation_store",
+      "nearest_label": "Parallel-risk Observation Store",
+      "score": 93,
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-250c2648bf50452d",
+      "raw_phrase": "Parallel Risk Observation",
+      "nearest_identity": "global.parallel_risk_observation_store",
+      "line": 402,
+      "column": 4,
+      "source_context": "- `Parallel Risk Observation` / `ParallelRiskObservation` / `parallel_risk_observation` [`add_new`] = one immutable typed M06 family observation with explicit observe, caution, block or unknown state, reason, source facts/references, limitations and semantic fingerprint;",
+      "context_sha256": "7cfcdf2480cd3d6238ad0d37aa47f469a92159751a4e56bb02f47fc065b51da0",
+      "occurrence_kind": "inline_code"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "nearest_slug": "parallel_risk_observation_store",
+      "nearest_label": "Parallel-risk Observation Store",
+      "score": 93,
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-b1c016c178b00b33",
+      "raw_phrase": "parallel_risk_observation",
+      "nearest_identity": "global.parallel_risk_observation_store",
+      "line": 402,
+      "column": 62,
+      "source_context": "- `Parallel Risk Observation` / `ParallelRiskObservation` / `parallel_risk_observation` [`add_new`] = one immutable typed M06 family observation with explicit observe, caution, block or unknown state, reason, source facts/references, limitations and semantic fingerprint;",
+      "context_sha256": "7cfcdf2480cd3d6238ad0d37aa47f469a92159751a4e56bb02f47fc065b51da0",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "nearest_slug": "parallel_risk_observation_store",
+      "nearest_label": "Parallel-risk Observation Store",
+      "score": 93,
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7d3368b37fc151de",
+      "raw_phrase": "parallel_risk_observation",
+      "nearest_identity": "global.parallel_risk_observation_store",
+      "line": 408,
+      "column": 56,
+      "source_context": "Machine identities are `m06.parallel_risk_input`, `m06.parallel_risk_observation`, `m06.parallel_risk_assessment` and `m06.parallel_risk_evaluator`. Human contract symbols remain unprefixed. The M06 namespace scans the canonical M06 package, bounded legacy parallel-risk contracts/evaluators/service/configuration, direct proof surfaces and governing normative documents. It imports `global`, `m03` and `m04` vocabulary and creates no collision or disposition obligation outside that registered scope.",
+      "context_sha256": "7c3897bf3dea98909389399f86ff8d1234b06bb2eaaad5555ff2fd8c27486471",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "broker execution receipt",
+      "nearest_slug": "execution_receipt",
+      "nearest_label": "Execution Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-add3ee036428931a",
+      "raw_phrase": "broker_execution_receipt",
+      "nearest_identity": "m10.execution_receipt",
+      "line": 65,
+      "column": 10,
+      "source_context": "        \"broker_execution_receipt\",",
+      "context_sha256": "a78c1725f9a21e4380996437e12a100d7db4dd9910b40a94ca1545932f4723f4",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-6e5eae71850264b4",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 221,
+      "column": 5,
+      "source_context": "    capital_deployment_receipt_id: str",
+      "context_sha256": "f90dd0ce6e528a33d8c5c7fc95b577b15e494b3e9fd02a5439ef67744c1ed11b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/downstream/opening.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-e1e8e5fd8ea05fca",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 57,
+      "column": 27,
+      "source_context": "    receipt_id = decision.capital_deployment_receipt_id",
+      "context_sha256": "709a76f321664eab3782668bce8a85e2c3dce8fc8029e12b5c20dc0428716a4b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/downstream/opening.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-95dea36de47a9e54",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 59,
+      "column": 56,
+      "source_context": "        raise ValueError(\"placement readiness requires capital_deployment_receipt_id\")",
+      "context_sha256": "86a7943b182ab2446d9583b9ca17215e21b8a01431ccb98381b06cc9bf23a571",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/downstream/opening.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-ecd2d3407fdc8628",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 63,
+      "column": 9,
+      "source_context": "        capital_deployment_receipt_id=receipt_id,",
+      "context_sha256": "a8d95b9d2e572c7d5d07a1a0dc6777f3fab6294089d79dd7160e007a56c9ee43",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/downstream/opening.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-0b44a8facf145ecb",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 108,
+      "column": 14,
+      "source_context": "            \"capital_deployment_receipt_id\": decision.capital_deployment_receipt_id,",
+      "context_sha256": "91dbc69109b1a7678a778673c8e471346f166e587e2b399d67ae5308b868fa7c",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/downstream/opening.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7f0d80fe38ae2046",
+      "raw_phrase": "capital_deployment_receipt_id",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 108,
+      "column": 55,
+      "source_context": "            \"capital_deployment_receipt_id\": decision.capital_deployment_receipt_id,",
+      "context_sha256": "91dbc69109b1a7678a778673c8e471346f166e587e2b399d67ae5308b868fa7c",
+      "occurrence_kind": "identifier"
+    }
+  ],
+  "candidate_classifications": [
+    {
+      "phrase": "final risk",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "nearest_slug": "final_risk_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "final_risk",
+        "matched_slug": "final_risk_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "final_risk",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "final_risk",
+            "matched_slug": "final_risk_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7d4af4b71fd4d83a",
+      "line": 854,
+      "context_sha256": "b4f0b97283e2909e75c830ea8cce7141bf6796b5e25bf68c78628e4762ff7f21"
+    },
+    {
+      "phrase": "capital receipt",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-6098a060e68e2bce",
+      "line": 901,
+      "context_sha256": "cb2844245c890101079cde94b0cc3b3660fb2365b8ac7a96687137f943005afd"
+    },
+    {
+      "phrase": "final risk",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "nearest_slug": "final_risk_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "final_risk",
+        "matched_slug": "final_risk_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "final_risk",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "final_risk",
+            "matched_slug": "final_risk_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-b8685d578e0a2f84",
+      "line": 918,
+      "context_sha256": "dede225f0c572b72b5fdd602babc14e0497330fc6488e641ff9fe258d5563d3b"
+    },
+    {
+      "phrase": "final risk",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "nearest_slug": "final_risk_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "final_risk",
+        "matched_slug": "final_risk_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "final_risk",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "final_risk",
+            "matched_slug": "final_risk_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-4d013db014b2073f",
+      "line": 920,
+      "context_sha256": "e97aca98ee64565f7803e05e73a111812009567ccfc37a15c4e61936332e594e"
+    },
+    {
+      "phrase": "parallel risk lane service",
+      "path": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+      "nearest_slug": "parallel_risk_lane",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "parallel_risk_lane_service",
+        "matched_slug": "parallel_risk_lane",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "parallel_risk_lane_service",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "parallel_risk_lane_service",
+            "matched_slug": "parallel_risk_lane",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-ba44565e1821553a",
+      "line": 924,
+      "context_sha256": "41536fdb40e7448286d723a41c40c672f86d3a30f2deebda2da8aae9a74b390c"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "nearest_slug": "parallel_risk_observation_store",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "parallel_risk_observation",
+        "matched_slug": "parallel_risk_observation_store",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "parallel_risk_observation",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "parallel_risk_observation",
+            "matched_slug": "parallel_risk_observation_store",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-b1c016c178b00b33",
+      "line": 402,
+      "context_sha256": "7cfcdf2480cd3d6238ad0d37aa47f469a92159751a4e56bb02f47fc065b51da0"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "nearest_slug": "parallel_risk_observation_store",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "parallel_risk_observation",
+        "matched_slug": "parallel_risk_observation_store",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "parallel_risk_observation",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "parallel_risk_observation",
+            "matched_slug": "parallel_risk_observation_store",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-250c2648bf50452d",
+      "line": 402,
+      "context_sha256": "7cfcdf2480cd3d6238ad0d37aa47f469a92159751a4e56bb02f47fc065b51da0"
+    },
+    {
+      "phrase": "parallel risk observation",
+      "path": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+      "nearest_slug": "parallel_risk_observation_store",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "parallel_risk_observation",
+        "matched_slug": "parallel_risk_observation_store",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "parallel_risk_observation",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "parallel_risk_observation",
+            "matched_slug": "parallel_risk_observation_store",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7d3368b37fc151de",
+      "line": 408,
+      "context_sha256": "7c3897bf3dea98909389399f86ff8d1234b06bb2eaaad5555ff2fd8c27486471"
+    },
+    {
+      "phrase": "broker execution receipt",
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "nearest_slug": "execution_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "broker_execution_receipt",
+        "matched_slug": "execution_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "broker_execution_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "broker_execution_receipt",
+            "matched_slug": "execution_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-add3ee036428931a",
+      "line": 65,
+      "context_sha256": "a78c1725f9a21e4380996437e12a100d7db4dd9910b40a94ca1545932f4723f4"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/contracts/downstream.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-6e5eae71850264b4",
+      "line": 221,
+      "context_sha256": "f90dd0ce6e528a33d8c5c7fc95b577b15e494b3e9fd02a5439ef67744c1ed11b"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/downstream/opening.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-e1e8e5fd8ea05fca",
+      "line": 57,
+      "context_sha256": "709a76f321664eab3782668bce8a85e2c3dce8fc8029e12b5c20dc0428716a4b"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/downstream/opening.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-95dea36de47a9e54",
+      "line": 59,
+      "context_sha256": "86a7943b182ab2446d9583b9ca17215e21b8a01431ccb98381b06cc9bf23a571"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/downstream/opening.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-ecd2d3407fdc8628",
+      "line": 63,
+      "context_sha256": "a8d95b9d2e572c7d5d07a1a0dc6777f3fab6294089d79dd7160e007a56c9ee43"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/downstream/opening.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-0b44a8facf145ecb",
+      "line": 108,
+      "context_sha256": "91dbc69109b1a7678a778673c8e471346f166e587e2b399d67ae5308b868fa7c"
+    },
+    {
+      "phrase": "capital deployment receipt id",
+      "path": "src/nvda_desk/downstream/opening.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_deployment_receipt_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_deployment_receipt_id",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7f0d80fe38ae2046",
+      "line": 108,
+      "context_sha256": "91dbc69109b1a7678a778673c8e471346f166e587e2b399d67ae5308b868fa7c"
+    }
+  ]
 }

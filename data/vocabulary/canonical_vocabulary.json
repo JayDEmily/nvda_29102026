@@ -16,7 +16,8 @@
     "The 2026-07-31 M03 K05/K06 amendment admits the exact PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder public-contract concepts under a bounded M03 namespace.",
     "The 2026-07-31 M05 K08/K09 amendment admits StageContext, StageInput, StageOutput, SerialCandidate and SerialRunner under a bounded M05 namespace.",
     "The 2026-07-31 M06 K10 amendment admits ParallelRiskInput, ParallelRiskObservation, ParallelRiskAssessment and ParallelRiskEvaluator under a bounded M06 namespace.",
-    "The 2026-08-01 M09 K11/K14 amendment admits FinalRiskDecision, CapitalState, CapitalDeploymentDecision and CapitalDeploymentReceipt under a bounded M09 namespace."
+    "The 2026-08-01 M09 K11/K14 amendment admits FinalRiskDecision, CapitalState, CapitalDeploymentDecision and CapitalDeploymentReceipt under a bounded M09 namespace.",
+    "The 2026-08-01 M10 K15 amendment admits PlacementIntent, ExecutionPort, ExecutionEvent and ExecutionReceipt under a bounded M10 namespace."
   ],
   "namespaces": {
     "global": {
@@ -230,6 +231,28 @@
         "tests/tier_a/capital_deployment",
         "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
         "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py"
+      ]
+    },
+    "m10": {
+      "namespace": "m10",
+      "imports": [
+        "global",
+        "m09"
+      ],
+      "scan_paths": [
+        "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+        "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+        "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+        "src/nvda_desk/contracts/downstream.py",
+        "src/nvda_desk/downstream/opening.py",
+        "src/nvda_desk/contracts/broker_execution.py",
+        "src/nvda_desk/downstream/broker_execution.py",
+        "src/nvda_desk/adapters/egress/broker_protocol.py",
+        "src/nvda_desk/m10_execution_gateway",
+        "tests/support/m10_k15_contract_harness.py",
+        "tests/tier_a/m10_k15",
+        "tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py",
+        "tests/tier_a/adapters_egress/test_broker_boundary_surface.py"
       ]
     }
   },
@@ -4824,6 +4847,122 @@
         "Semantic decisions: M09-K11-K14-NORMATIVE-AUTHORITY-V1",
         "Human aliases: CapitalDeploymentReceipt; fresh-capital decision receipt.",
         "Human disallowed or misleading use: Broker receipt; order authorisation; fund reservation proof; position receipt; durable transaction receipt."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m10",
+      "canonical_id": "m10.placement_intent",
+      "canonical_slug": "placement_intent",
+      "canonical_label": "Placement Intent",
+      "category": "authority_surface",
+      "stage_owner": "execution_gateway",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14",
+      "allowed_aliases": [
+        "PlacementIntent"
+      ],
+      "disallowed_phrases": [
+        "caller-sized order",
+        "market order as placement intent",
+        "live broker authorisation",
+        "reconstructed capital decision",
+        "placement intent as position instruction"
+      ],
+      "notes": [
+        "Definition: Immutable M10 K15 paper-only limit-order intent formed from one exact positive M09 Capital Deployment Receipt and explicit downward-rounded placement facts.",
+        "Scope: M10 opening and placement input",
+        "Semantic owner: M10 execution gateway",
+        "Relationships: Consumes an exact M09 capital receipt; may be submitted through Execution Port; does not itself prove broker acceptance, fill, position or live execution.",
+        "Lifecycle: active_k15_contract",
+        "Semantic decisions: M10-K15-EXECUTION-GATEWAY-V1",
+        "Human aliases: PlacementIntent; placement intent.",
+        "Human disallowed or misleading use: Caller-sized order; market order; live broker authorisation; reconstructed capital decision; position instruction."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m10",
+      "canonical_id": "m10.execution_port",
+      "canonical_slug": "execution_port",
+      "canonical_label": "Execution Port",
+      "category": "protocol_surface",
+      "stage_owner": "execution_gateway",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14",
+      "allowed_aliases": [
+        "ExecutionPort"
+      ],
+      "disallowed_phrases": [
+        "live broker client",
+        "credential store as execution port",
+        "portfolio repository",
+        "generic downstream shell"
+      ],
+      "notes": [
+        "Definition: Provider-substitutable M10 protocol for submitting one exact Placement Intent and reading its execution events and receipt, with the admitted alpha adapter restricted to offline paper execution.",
+        "Scope: M10 execution adapter boundary",
+        "Semantic owner: M10 execution gateway",
+        "Relationships: Consumes Placement Intent and emits Execution Event and Execution Receipt; does not own provider credentials, portfolio state or live-network readiness.",
+        "Lifecycle: active_k15_contract",
+        "Semantic decisions: M10-K15-EXECUTION-GATEWAY-V1",
+        "Human aliases: ExecutionPort; execution port.",
+        "Human disallowed or misleading use: Live broker client; credential store; portfolio repository; generic downstream shell."
+      ]
+    },
+    {
+      "namespace": "m10",
+      "canonical_id": "m10.execution_event",
+      "canonical_slug": "execution_event",
+      "canonical_label": "Execution Event",
+      "category": "protocol_surface",
+      "stage_owner": "execution_gateway",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14",
+      "allowed_aliases": [
+        "ExecutionEvent"
+      ],
+      "disallowed_phrases": [
+        "execution event as position record",
+        "portfolio mutation",
+        "real fill claim",
+        "mutable execution event"
+      ],
+      "notes": [
+        "Definition: Immutable M10 order-acknowledgement or paper-fill occurrence preserving exact placement and port lineage without becoming canonical position or lifecycle state.",
+        "Scope: M10 order and fill occurrence evidence",
+        "Semantic owner: M10 execution gateway",
+        "Relationships: Ordered within one execution receipt; consumed later by M11 for reconciliation; distinct from inventory, average cost and lifecycle state.",
+        "Lifecycle: active_k15_contract",
+        "Semantic decisions: M10-K15-EXECUTION-GATEWAY-V1",
+        "Human aliases: ExecutionEvent; execution event.",
+        "Human disallowed or misleading use: Position record; portfolio mutation; real fill claim; mutable event."
+      ],
+      "raw_or_derived": "derived"
+    },
+    {
+      "namespace": "m10",
+      "canonical_id": "m10.execution_receipt",
+      "canonical_slug": "execution_receipt",
+      "canonical_label": "Execution Receipt",
+      "category": "protocol_surface",
+      "stage_owner": "execution_gateway",
+      "maps_to_contract": "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14",
+      "allowed_aliases": [
+        "ExecutionReceipt"
+      ],
+      "disallowed_phrases": [
+        "live broker receipt",
+        "execution receipt as position receipt",
+        "durable commit proof",
+        "execution receipt as capital decision"
+      ],
+      "notes": [
+        "Definition: Immutable terminal M10 evidence binding one Placement Intent, execution port, ordered paper events and atomic transaction identity while explicitly denying live, portfolio, lifecycle and durable authority.",
+        "Scope: M10 terminal paper-execution evidence",
+        "Semantic owner: M10 execution gateway",
+        "Relationships: Attests an offline paper acknowledgement and fill; may be consumed by M11; is not a broker statement, position receipt or durable transaction proof.",
+        "Lifecycle: active_k15_contract",
+        "Semantic decisions: M10-K15-EXECUTION-GATEWAY-V1",
+        "Human aliases: ExecutionReceipt; execution receipt.",
+        "Human disallowed or misleading use: Live broker receipt; position receipt; durable commit proof; capital decision."
       ],
       "raw_or_derived": "derived"
     }
