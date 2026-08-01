@@ -9,8 +9,8 @@
 | Current branch source checkpoint | `258470526c36da61b3ff4162f1d5ad9e512a8b54` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Current active slice | Pre-M00 testing guardrail repair — active; M00 not started |
-| Production implementation | M01–M13 slices and signal-phase/DMPV3 repair accepted; testing guardrail prerequisite active; M00 not started |
+| Current active slice | M00 C-NORM and expected-red C-PROOF admission; M00 production code not started |
+| Production implementation | M01–M13 slices and signal-phase/DMPV3 repair accepted; authoritative pre-M00 promotion baseline passed; M00 production code not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -219,6 +219,6 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Continue the subordinate pre-M00 testing guardrail repair at
+Continue the subordinate M00 guardrail plan at
 `project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
-Admission, aggregate promotion and CI controls are implemented. Attach the two accepted Python 3.13.5 runtime/dev wheelhouse ZIPs identified in `evidence/UNIT5_OFFLINE_WHEELHOUSE_RECOVERY.md`, run the frozen offline installation, installed-package smoke, aggregate promotion gate and Tier B shadow, then admit M00 C-NORM/expected-red C-PROOF. Do not begin M00 production code before those prerequisites pass. M00 has not started.
+The authoritative offline environment, installed-package smoke, 13-block promotion gate, Tier B shadow and Black/Ruff baseline now pass at commit `f66578a`. Open Unit 6: read the M00 composition authority in full, admit explicit C-NORM propositions and the smallest expected-red C-PROOF family, and only then begin bounded M00 implementation. M00 production code has not started.

@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `BLOCKED:UNIT5_ACCEPTED_WHEELHOUSE_ARCHIVES_REQUIRED`
+**Status:** `ACTIVE:UNIT6_M00_C_NORM_AND_EXPECTED_RED_PROOF`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -153,6 +153,8 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 5 established a clean diagnostic baseline at commit `1d657e7`: all 13 admitted current proof blocks passed with 738 tests and zero skips, and the complete Tier B shadow passed 78 tests. Four aggregate-runner isolation defects were repaired. The authoritative lock-created run remains blocked by package-source unavailability, so M00 C-NORM has not opened.
 - 2026-08-01: historical evidence identified the two previously accepted Python 3.13.5 runtime/dev wheelhouse ZIPs by exact hash and size. A test-first `make install-offline` route now verifies those archives and performs frozen, offline, no-index, no-cache, non-editable `uv sync`. The archive bytes are not present in this worker, so Unit 5 remains blocked on those exact inputs.
 - 2026-08-01: offline bootstrap implementation committed at `6f8c0ce0851d7a2a3b59974460e8fad74be45256`; clean committed-tree validation passed 33 targeted proof-model tests, authority reconciliation at 195 families / 197 tests / 66 blocks, and promotion membership at 13 blocks / 13 families / 15 tests.
+- 2026-08-01: the accepted wheelhouses were recovered and verified. Runtime V6 was reconstructed for the current lock, and the offline installation repair was committed at `1a7d888b4f6310bf7637bbb83795be2161441da9`.
+- 2026-08-01: repository-wide Black/Ruff baseline and env-prefixed proof-interpreter isolation were repaired at `f66578aa90eb98c6cf0ca2fddd789ac8a014a2df`. Clean authoritative validation passed 13/13 blocks, 738 Tier A tests with zero skips, 82 Tier B tests, installed-package smoke, Black, Ruff and authority reconciliation. Unit 5 is closed and Unit 6 is open.
 
 ## 9. Decisions
 
@@ -162,14 +164,13 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 ## 10. Roadblocks
 
-- Units 4–5 authoritative environment validation is blocked on the two previously accepted Python 3.13.5 wheelhouse ZIPs. Their exact hashes and sizes are recovered, and a fail-closed offline bootstrap route is implemented, but the archive bytes are not present in this worker. The configured mirror and public package hosts remain unavailable. Installed-package smoke and an authoritative lock-created aggregate run remain open until the accepted archives are attached. This is a permitted stop condition under the repository execution method.
+- None for Unit 5. The accepted wheelhouse inputs are present, the current lock installs offline, and the authoritative promotion baseline is green.
 
 ## 11. Unknowns
 
-- The authorised network package sources are not resolvable from this worker. The accepted offline archive identities are Known, but the archive bytes are unavailable in the current filesystem and File Library retrieval failed.
-- Whether the accepted May wheelhouses contain the complete current transitive `uv.lock` closure is Unknown until `make install-offline` executes.
-- Whether the aggregate gate passes from the exact `uv.lock` environment is Unknown. Diagnostic evidence from `/opt/pyvenv/bin/python` cannot substitute for that claim.
-- The exact pre-M00 current blocking membership is now Known: 13 accepted module-local families resolving to 15 tests. Unit 2 still must reconcile active control declarations and the explicit current/legacy API lifecycle boundary.
+- M00's exact public composition seam, normative proposition set and smallest expected-red proof family remain to be established in Unit 6 from the governing architecture and existing runtime surfaces.
+- No claim is made that the full unsplit historical test tree is green; current promotion authority is the reconciled 13-family set plus the Tier B shadow.
+- Live brokerage, live-data access, durable production operations and profitability remain out of scope.
 
 ## 12. Closeout
 

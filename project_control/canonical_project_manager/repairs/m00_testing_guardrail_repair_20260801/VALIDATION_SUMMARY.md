@@ -231,3 +231,28 @@ located the stall during subprocess-based proof-executor testing and showed an
 ambient `artifact_tool` startup warmup failure before child pytest collection.
 No assertion failure was observed. This is diagnostic-environment evidence, not
 a Tier B PASS; the complete shadow remains required from the clean `.venv`.
+
+
+## Unit 5 — Authoritative offline promotion baseline
+
+**Outcome:** PASS
+
+Clean commit: `f66578aa90eb98c6cf0ca2fddd789ac8a014a2df`.
+
+Known true:
+
+- Runtime/support V6 archive SHA-256 `6e4459f4e5508303bdb2e03bcca7701ee72e640f36a716c20b3cd6b0c09b0b42`, 64,398,120 bytes.
+- Dev/build V4 archive SHA-256 `d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249`, 15,199,214 bytes.
+- Frozen current-lock export installed 38 compatible distributions into a fresh CPython 3.13.5 `.venv`.
+- `nvda_desk` imported from `.venv/site-packages`; `uv pip check` passed.
+- Aggregate promotion passed 13/13 blocks, 738 tests and zero skips. Evidence hash: `3f029c959915ce29f7ec2626308f34ea3367da4bf742b9197c6950874699d3f6`.
+- Complete Tier B shadow passed 82 tests.
+- Black passes all 468 scoped files; Ruff reports zero findings.
+- Proof authority passes at 195 families / 197 tests / 66 blocks.
+- The standalone proof executor now binds env-prefixed Python commands to the current interpreter; all 13 standalone blocks passed under `.venv` pytest 9.0.3.
+
+Exact evidence: `evidence/UNIT5_AUTHORITATIVE_OFFLINE_BASELINE.md`.
+
+## Open next gate
+
+Unit 6: admit M00 C-NORM and the smallest expected-red C-PROOF family. M00 production code remains unstarted.
