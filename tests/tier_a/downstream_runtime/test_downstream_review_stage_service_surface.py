@@ -21,4 +21,6 @@ def _require_attr(module, attr_name: str):
 def test_downstream_review_stage_service_surface_is_present() -> None:
     review_stage = _require_module("nvda_desk.downstream.review_stage")
     assert review_stage.__name__ == "nvda_desk.downstream.review_stage"
-    assert _require_attr(review_stage, "ReviewStageService") is getattr(review_stage, "ReviewStageService")
+    assert _require_attr(review_stage, "ReviewStageService") is getattr(
+        review_stage, "ReviewStageService"
+    )

@@ -122,9 +122,7 @@ class RuntimePreparationService:
 
         return prepare_runtime_dataset(raw_bundle, runtime_bar_time_utc=runtime_bar_time_utc)
 
-    def prepare_envelope(
-        self, envelope: PreparedDataEnvelope
-    ) -> PreparedRuntimeSnapshot:
+    def prepare_envelope(self, envelope: PreparedDataEnvelope) -> PreparedRuntimeSnapshot:
         """Return the bounded legacy mapping view of one canonical K05 envelope."""
 
         return prepare_runtime_snapshot_from_envelope(envelope)
@@ -135,20 +133,13 @@ def prepare_runtime_snapshot_from_envelope(
 ) -> PreparedRuntimeSnapshot:
     """Adapt a canonical K05 envelope into the existing copy-safe snapshot view."""
 
-    authority = PreparedDataEnvelope.model_validate(
-        envelope.model_dump(mode="python")
-    )
-    payload = authority.payload.model_dump(
-        mode="python", exclude={"kind"}, exclude_none=True
-    )
+    authority = PreparedDataEnvelope.model_validate(envelope.model_dump(mode="python"))
+    payload = authority.payload.model_dump(mode="python", exclude={"kind"}, exclude_none=True)
     derived_fields = {
-        receipt.semantic_field: deepcopy(receipt.value)
-        for receipt in authority.derivation_receipts
+        receipt.semantic_field: deepcopy(receipt.value) for receipt in authority.derivation_receipts
     }
     schema_versions = authority.input_schema_versions
-    single_schema_version = (
-        schema_versions[0][1] if len(schema_versions) == 1 else None
-    )
+    single_schema_version = schema_versions[0][1] if len(schema_versions) == 1 else None
     return PreparedRuntimeSnapshot(
         snapshot_id=authority.prepared_id,
         payload=deepcopy(payload),
@@ -163,9 +154,7 @@ def prepare_runtime_snapshot_from_envelope(
             source_artifact_ids=tuple(
                 sorted({item.source_artifact_id for item in authority.source_capture_refs})
             ),
-            capture_ids=tuple(
-                sorted({item.capture_id for item in authority.source_capture_refs})
-            ),
+            capture_ids=tuple(sorted({item.capture_id for item in authority.source_capture_refs})),
             input_fingerprint=authority.input_fingerprint,
             input_schema_version=single_schema_version,
             input_schema_versions=schema_versions,

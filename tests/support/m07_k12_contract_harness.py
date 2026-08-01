@@ -188,9 +188,7 @@ class ReferenceSubject:
             if modifier.target not in coefficients or modifier.target == "":
                 return ReferenceDecision("rejected", "invalid_modifier_target", None, (), (), ())
             if modifier.fact_ref not in facts.facts:
-                return ReferenceDecision(
-                    "rejected", "missing_applicability_fact", None, (), (), ()
-                )
+                return ReferenceDecision("rejected", "missing_applicability_fact", None, (), (), ())
             if facts.facts[modifier.fact_ref]:
                 applicable.append(modifier)
             else:
@@ -213,10 +211,7 @@ class ReferenceSubject:
             for modifier in applicable
             if not modifier.kill_switch and modifier.target in kill_targets
         ]
-        skipped.extend(
-            (modifier.modifier_id, "dominated_by_kill_switch")
-            for modifier in dominated
-        )
+        skipped.extend((modifier.modifier_id, "dominated_by_kill_switch") for modifier in dominated)
         applicable = [
             modifier
             for modifier in applicable
@@ -225,7 +220,9 @@ class ReferenceSubject:
         ordered = sorted(
             applicable,
             key=lambda modifier: (
-                modifier.precedence, modifier.modifier_id, modifier.modifier_version
+                modifier.precedence,
+                modifier.modifier_id,
+                modifier.modifier_version,
             ),
         )
         for index, modifier in enumerate(ordered):
@@ -398,8 +395,7 @@ class ClampBeforeAlgebraMutant(ReferenceSubject):
             item = coefficients[modifier.target]
             values[modifier.target] = min(max(current, item.lower), item.upper)
         results = tuple(
-            self._result(item, values[item.coefficient_id])
-            for item in bundle.coefficients
+            self._result(item, values[item.coefficient_id]) for item in bundle.coefficients
         )
         return replace(decision, coefficient_results=results)
 
@@ -450,9 +446,7 @@ def valid_facts(**updates: Any) -> InputFactsCase:
     return replace(base, **updates)
 
 
-def valid_bundle(
-    *, modifiers: tuple[ModifierCase, ...] | None = None
-) -> BundleCase:
+def valid_bundle(*, modifiers: tuple[ModifierCase, ...] | None = None) -> BundleCase:
     coefficient = CoefficientCase(
         coefficient_id="posture.exposure_scale",
         coefficient_version="1.0.0",

@@ -22,8 +22,7 @@ class ParallelRiskEvaluator:
             raise TypeError("typed_parallel_risk_input_required")
         governed = ParallelRiskInput.model_validate(risk_input.model_dump(mode="python"))
         source_references = tuple(
-            f"{item.capture_id}:{item.input_fingerprint}"
-            for item in governed.source_capture_refs
+            f"{item.capture_id}:{item.input_fingerprint}" for item in governed.source_capture_refs
         )
         observations = tuple(
             sorted(
@@ -63,7 +62,9 @@ class ParallelRiskEvaluator:
                 | {item.limitation for item in observations if item.limitation}
             )
         )
-        state = "block" if blocks else "caution" if cautions else "unknown" if unknown else "observe"
+        state = (
+            "block" if blocks else "caution" if cautions else "unknown" if unknown else "observe"
+        )
         payload: dict[str, Any] = {
             "assessment_id": "pending",
             "input_id": governed.input_id,
@@ -125,9 +126,9 @@ class ParallelRiskEvaluator:
         return self._build_observation(
             family="scheduled_event",
             state="caution" if active else "observe",
-            reason="scheduled_event_window_active"
-            if active
-            else "no_active_scheduled_event_window",
+            reason=(
+                "scheduled_event_window_active" if active else "no_active_scheduled_event_window"
+            ),
             source_fields=("windows",),
             source_references=source_references,
             limitation=None,
@@ -149,9 +150,11 @@ class ParallelRiskEvaluator:
         return self._build_observation(
             family="options_term_structure",
             state="caution" if inverted else "observe",
-            reason="front_term_structure_backwardation"
-            if inverted
-            else "front_term_structure_not_inverted",
+            reason=(
+                "front_term_structure_backwardation"
+                if inverted
+                else "front_term_structure_not_inverted"
+            ),
             source_fields=("front_dte", "next_dte"),
             source_references=source_references,
             limitation=None,
@@ -172,9 +175,9 @@ class ParallelRiskEvaluator:
         state = (
             "block"
             if risk_input.vix_level >= risk_input.vix_block_threshold
-            else "caution"
-            if risk_input.vix_level >= risk_input.vix_caution_threshold
-            else "observe"
+            else (
+                "caution" if risk_input.vix_level >= risk_input.vix_caution_threshold else "observe"
+            )
         )
         return self._build_observation(
             family="volatility",
@@ -182,12 +185,16 @@ class ParallelRiskEvaluator:
             reason=(
                 "vix_block_threshold_reached"
                 if state == "block"
-                else "vix_caution_threshold_reached"
-                if state == "caution"
-                else "vix_below_caution_threshold"
+                else (
+                    "vix_caution_threshold_reached"
+                    if state == "caution"
+                    else "vix_below_caution_threshold"
+                )
             ),
             source_fields=("vix_level",),
-            source_references=tuple(sorted(set(source_references) | set(risk_input.threshold_authority_refs))),
+            source_references=tuple(
+                sorted(set(source_references) | set(risk_input.threshold_authority_refs))
+            ),
             limitation=None,
         )
 

@@ -24,7 +24,15 @@ def test_options_flow_contract_models_are_present() -> None:
     history_contracts = _require_module("nvda_desk.contracts.options_flow_history")
     assert history_contracts.__name__ == "nvda_desk.contracts.options_flow_history"
 
-    assert _require_attr(contracts, "OptionsFlowContextInput") is getattr(contracts, "OptionsFlowContextInput")
-    assert _require_attr(contracts, "OptionsFlowContextOutput") is getattr(contracts, "OptionsFlowContextOutput")
-    assert _require_attr(history_contracts, "OptionsFlowHistoryObservationRecord") is getattr(history_contracts, "OptionsFlowHistoryObservationRecord")
-    assert _require_attr(history_contracts, "OptionsFlowHistoryWriteResult") is getattr(history_contracts, "OptionsFlowHistoryWriteResult")
+    assert _require_attr(contracts, "OptionsFlowContextInput") is getattr(
+        contracts, "OptionsFlowContextInput"
+    )
+    assert _require_attr(contracts, "OptionsFlowContextOutput") is getattr(
+        contracts, "OptionsFlowContextOutput"
+    )
+    assert _require_attr(history_contracts, "OptionsFlowHistoryObservationRecord") is getattr(
+        history_contracts, "OptionsFlowHistoryObservationRecord"
+    )
+    assert _require_attr(history_contracts, "OptionsFlowHistoryWriteResult") is getattr(
+        history_contracts, "OptionsFlowHistoryWriteResult"
+    )

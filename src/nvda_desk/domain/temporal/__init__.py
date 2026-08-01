@@ -3,8 +3,8 @@
 from .intraday_phase import (
     InMemoryIntradayPhaseRepository,
     IntradayPhase,
-    IntradayPhaseEvidence,
     IntradayPhaseEvaluator,
+    IntradayPhaseEvidence,
     IntradayPhasePolicy,
     IntradayPhaseRepository,
     IntradayPhaseResult,

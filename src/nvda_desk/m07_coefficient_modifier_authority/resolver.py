@@ -96,9 +96,7 @@ def _rejected(
         owner_stage=owner_stage,
         input_context_id=input_state.context_id if input_state is not None else None,
         input_context_version=input_state.context_version if input_state is not None else None,
-        input_effective_at_utc=(
-            input_state.effective_at_utc if input_state is not None else None
-        ),
+        input_effective_at_utc=(input_state.effective_at_utc if input_state is not None else None),
         input_fingerprint=input_state.fingerprint if input_state is not None else None,
         status="rejected",
         rejection_reasons=reasons,
@@ -338,22 +336,13 @@ def resolve_k12(
     kill_dominated = tuple(
         modifier
         for modifier in active
-        if not modifier.kill_switch
-        and not kill_targets.isdisjoint(modifier.target_coefficient_ids)
+        if not modifier.kill_switch and not kill_targets.isdisjoint(modifier.target_coefficient_ids)
     )
     after_kill = tuple(modifier for modifier in active if modifier not in kill_dominated)
 
-    vetoed_ids = {
-        vetoed_id
-        for modifier in after_kill
-        for vetoed_id in modifier.veto_modifier_ids
-    }
-    vetoed = tuple(
-        modifier for modifier in after_kill if modifier.modifier_id in vetoed_ids
-    )
-    effective_modifiers = tuple(
-        modifier for modifier in after_kill if modifier not in vetoed
-    )
+    vetoed_ids = {vetoed_id for modifier in after_kill for vetoed_id in modifier.veto_modifier_ids}
+    vetoed = tuple(modifier for modifier in after_kill if modifier.modifier_id in vetoed_ids)
+    effective_modifiers = tuple(modifier for modifier in after_kill if modifier not in vetoed)
 
     conflict = _unresolved_pair(effective_modifiers)
     if conflict is not None:
@@ -381,10 +370,7 @@ def resolve_k12(
                     _disposition(modifier, "dominated_by_kill_switch")
                     for modifier in kill_dominated
                 ),
-                *(
-                    _disposition(modifier, "vetoed_by_authority_modifier")
-                    for modifier in vetoed
-                ),
+                *(_disposition(modifier, "vetoed_by_authority_modifier") for modifier in vetoed),
             ),
             key=lambda item: (item.precedence_rank, item.modifier_id, item.modifier_version),
         )
@@ -398,9 +384,7 @@ def resolve_k12(
         for modifier in effective_modifiers
         if modifier.kill_switch
     )
-    veto_dispositions = tuple(
-        f"modifier_vetoed:{modifier.modifier_id}" for modifier in vetoed
-    )
+    veto_dispositions = tuple(f"modifier_vetoed:{modifier.modifier_id}" for modifier in vetoed)
     return _accepted(
         bundle=authority,
         input_state=facts,
@@ -424,9 +408,7 @@ def build_k12_receipt(
     """Build occurrence evidence for one non-rejected decision without claiming mutation."""
 
     material = (
-        decision.model_dump(mode="python")
-        if isinstance(decision, ModifierDecision)
-        else decision
+        decision.model_dump(mode="python") if isinstance(decision, ModifierDecision) else decision
     )
     try:
         governed_decision = ModifierDecision.model_validate(material)

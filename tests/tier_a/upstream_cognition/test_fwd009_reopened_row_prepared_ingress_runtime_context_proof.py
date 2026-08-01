@@ -23,7 +23,6 @@ from nvda_desk.preparation.runtime_preparer import (
     prepare_runtime_snapshot,
 )
 
-
 ROOT = Path(__file__).resolve().parents[3]
 SELECTED_NATIVE_FILES = (
     ROOT / "src/nvda_desk/preparation/runtime_preparer.py",
@@ -62,15 +61,51 @@ REOPENED_ROW_CASES = (
     ("FWD009-AUDIT-010", "atlas_donor_dataset_020", "prepared_fixture_payload_copy_safe"),
     ("FWD009-AUDIT-011", "atlas_donor_dataset_022", "native_lean_transform_boundary"),
     ("FWD009-AUDIT-012", "atlas_donor_service_chain_to_cognition_002", "service_identity"),
-    ("FWD009-AUDIT-013", "atlas_donor_service_chain_to_cognition_005", "service_snapshot_conversion"),
-    ("FWD009-AUDIT-014", "atlas_donor_service_chain_to_cognition_007", "service_dataset_conversion"),
-    ("FWD009-AUDIT-015", "atlas_donor_service_market_regime_context_001", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-016", "atlas_donor_service_market_regime_context_005", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-017", "atlas_donor_service_market_regime_context_006", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-018", "atlas_donor_service_market_regime_context_007", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-019", "atlas_donor_service_market_regime_context_008", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-020", "atlas_donor_service_market_regime_context_009", "market_regime_input_carriage"),
-    ("FWD009-AUDIT-021", "atlas_donor_service_market_regime_context_010", "market_regime_input_carriage"),
+    (
+        "FWD009-AUDIT-013",
+        "atlas_donor_service_chain_to_cognition_005",
+        "service_snapshot_conversion",
+    ),
+    (
+        "FWD009-AUDIT-014",
+        "atlas_donor_service_chain_to_cognition_007",
+        "service_dataset_conversion",
+    ),
+    (
+        "FWD009-AUDIT-015",
+        "atlas_donor_service_market_regime_context_001",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-016",
+        "atlas_donor_service_market_regime_context_005",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-017",
+        "atlas_donor_service_market_regime_context_006",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-018",
+        "atlas_donor_service_market_regime_context_007",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-019",
+        "atlas_donor_service_market_regime_context_008",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-020",
+        "atlas_donor_service_market_regime_context_009",
+        "market_regime_input_carriage",
+    ),
+    (
+        "FWD009-AUDIT-021",
+        "atlas_donor_service_market_regime_context_010",
+        "market_regime_input_carriage",
+    ),
     ("FWD009-AUDIT-022", "atlas_donor_options_flow_context_001", "native_lean_transform_boundary"),
     ("FWD009-AUDIT-023", "atlas_donor_options_flow_context_002", "service_identity"),
     ("FWD009-AUDIT-024", "atlas_donor_options_flow_context_003", "options_flow_input_carriage"),
@@ -138,7 +173,9 @@ def _bundle_payload(audit_row_id: str, atlas_record_id: str) -> dict[str, object
 
 
 def _prepared_snapshot(audit_row_id: str, atlas_record_id: str) -> PreparedRuntimeSnapshot:
-    return prepare_runtime_dataset(load_api_payload(_bundle_payload(audit_row_id, atlas_record_id))).primary_snapshot
+    return prepare_runtime_dataset(
+        load_api_payload(_bundle_payload(audit_row_id, atlas_record_id))
+    ).primary_snapshot
 
 
 def _snapshot_payload_for_row(audit_row_id: str, atlas_record_id: str) -> dict[str, object]:
@@ -184,7 +221,9 @@ def _imports_for(path: Path) -> set[str]:
 
 def _defined_symbols(path: Path) -> set[str]:
     tree = ast.parse(path.read_text(encoding="utf-8"))
-    return {node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))}
+    return {
+        node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))
+    }
 
 
 @pytest.mark.parametrize(("audit_row_id", "atlas_record_id", "behaviour"), REOPENED_ROW_CASES)
@@ -231,7 +270,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         assert snapshot.payload["source_provider"] == "fwd009_source"
         assert snapshot.payload["source_channel"] == "prepared_ingress"
         assert snapshot.payload["source_time_utc"] == _base_time()
-        assert snapshot.payload["runtime_bar_time_utc"] == _base_time().replace(second=0, microsecond=0)
+        assert snapshot.payload["runtime_bar_time_utc"] == _base_time().replace(
+            second=0, microsecond=0
+        )
         return
 
     if behaviour == "repeated_snapshot_copy_safe":
@@ -275,7 +316,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         return
 
     if behaviour == "prepared_runtime_dataset_contract":
-        dataset = prepare_runtime_dataset(load_api_payload(_bundle_payload(audit_row_id, atlas_record_id)))
+        dataset = prepare_runtime_dataset(
+            load_api_payload(_bundle_payload(audit_row_id, atlas_record_id))
+        )
         assert dataclasses.is_dataclass(dataset)
         assert isinstance(dataset.primary_snapshot, PreparedRuntimeSnapshot)
         assert dataset.dataset_lineage == [dataset.primary_snapshot.lineage]
@@ -291,7 +334,12 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         source_payload["row_specific_context"]["term_structure_spread"] = "mutated"  # type: ignore[index]
         mapping["payload"]["row_specific_context"]["term_structure_spread"] = "mutated-again"
         assert snapshot.payload["row_specific_context"]["term_structure_spread"] == "front_premium"
-        assert build_context_payload_mapping(snapshot)["payload"]["row_specific_context"]["term_structure_spread"] == "front_premium"
+        assert (
+            build_context_payload_mapping(snapshot)["payload"]["row_specific_context"][
+                "term_structure_spread"
+            ]
+            == "front_premium"
+        )
         return
 
     if behaviour == "native_lean_transform_boundary":
@@ -331,7 +379,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
 
     if behaviour == "service_snapshot_conversion":
         service = RuntimePreparationService()
-        snapshot = service.prepare(raw_bundle=load_api_payload(_bundle_payload(audit_row_id, atlas_record_id)))
+        snapshot = service.prepare(
+            raw_bundle=load_api_payload(_bundle_payload(audit_row_id, atlas_record_id))
+        )
         assert snapshot.snapshot_id == audit_row_id
         assert snapshot.payload["front_to_next_dte_spread"] == 4
         assert snapshot.payload["window_count"] == 1
@@ -380,7 +430,10 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         assert snapshot.payload["window_count"] == 1
         assert snapshot.payload["has_windows"] is True
         assert snapshot.payload["nvda_return_pct"] == pytest.approx((100.0 - 95.0) / 95.0)
-        assert snapshot.as_mapping()["row_specific_context"]["temporal_state"] == "event_proximity_present"
+        assert (
+            snapshot.as_mapping()["row_specific_context"]["temporal_state"]
+            == "event_proximity_present"
+        )
         return
 
     if behaviour == "temporal_event_context_preparation":
@@ -390,7 +443,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         assert snapshot.payload["windows"][0]["event_id"] == audit_row_id
         assert snapshot.payload["windows"][0]["tags"] == [atlas_record_id]
         assert snapshot.payload["minutes_to_next_event"] == 60
-        assert snapshot.payload["runtime_bar_time_utc"] == _base_time().replace(second=0, microsecond=0)
+        assert snapshot.payload["runtime_bar_time_utc"] == _base_time().replace(
+            second=0, microsecond=0
+        )
         assert packet_payload.source_time_utc == _base_time()
         assert packet_payload.runtime_bar_time_utc == _base_time().replace(second=0, microsecond=0)
         return

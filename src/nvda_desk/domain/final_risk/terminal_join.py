@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Any
-
 from nvda_desk.contracts.execution import ExecutionExpressionOutput
 from nvda_desk.contracts.risk import (
     FinalRiskBranchJoinReceipt,
@@ -19,13 +17,9 @@ def _apply_legacy_expression_join(
 ) -> FinalRiskJoinReceipt:
     reasons = list(overlay_result.get("reasons", []))
     if overlay_result.get("action") == "stand_down":
-        return FinalRiskJoinReceipt(
-            action="stand_down", confidence_scalar=0.0, reasons=reasons
-        )
+        return FinalRiskJoinReceipt(action="stand_down", confidence_scalar=0.0, reasons=reasons)
     confidence = 1.0 if expression.lead_playbook_id else 0.0
-    return FinalRiskJoinReceipt(
-        action="proceed", confidence_scalar=confidence, reasons=reasons
-    )
+    return FinalRiskJoinReceipt(action="proceed", confidence_scalar=confidence, reasons=reasons)
 
 
 def _apply_branch_compatibility_join(
@@ -108,8 +102,7 @@ def apply_terminal_join(
     """
 
     branch_mode = any(
-        value is not None
-        for value in (serial_branch, parallel_branch, policy, receipt_id)
+        value is not None for value in (serial_branch, parallel_branch, policy, receipt_id)
     )
     if branch_mode:
         if policy is None or receipt_id is None:

@@ -35,7 +35,9 @@ def test_raw_capture_transform_boundary_does_not_recreate_donor_database_runtime
     for path in RAW_CAPTURE_SOURCE_PATHS:
         text = _source_text(path)
         for token in DONOR_RUNTIME_TOKENS:
-            assert token not in text, f"{path} leaks transform-required donor/runtime token {token!r}"
+            assert (
+                token not in text
+            ), f"{path} leaks transform-required donor/runtime token {token!r}"
 
 
 def test_raw_capture_transform_boundary_has_no_cognition_downstream_or_risk_owner_imports() -> None:

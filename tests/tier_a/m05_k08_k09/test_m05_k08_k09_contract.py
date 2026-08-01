@@ -7,7 +7,6 @@ from datetime import datetime
 from typing import Any
 
 import pytest
-
 from tests.support.m05_k08_k09_contract_harness import (
     CLOSED_AUTHORITIES,
     MUTANTS,
@@ -177,9 +176,11 @@ def test_each_false_positive_mutant_is_killed(mutant_name: str) -> None:
     runner = MUTANTS[mutant_name]()
     inputs = valid_inputs(
         context,
-        order=tuple(reversed(SERIAL_STAGE_ORDER))
-        if mutant_name == "caller_order"
-        else SERIAL_STAGE_ORDER,
+        order=(
+            tuple(reversed(SERIAL_STAGE_ORDER))
+            if mutant_name == "caller_order"
+            else SERIAL_STAGE_ORDER
+        ),
     )
     submitted = tuple(item.stage for item in inputs)
     if mutant_name == "partial_success":
@@ -574,7 +575,9 @@ def test_production_stage_input_carries_bounded_facts_and_binds_them_to_fingerpr
 
     def fact_aware_handler(stage_input, dependencies):
         output = normal(stage_input, dependencies)
-        value = next(item.value for item in stage_input.carrier_facts if item.fact_id == "effective_at_utc")
+        value = next(
+            item.value for item in stage_input.carrier_facts if item.fact_id == "effective_at_utc"
+        )
         return _refingerprint_output(
             api,
             output,
@@ -811,9 +814,7 @@ def test_repair_all_terminal_results_have_stable_distinct_result_identity() -> N
         for handlers in cases
     )
     for result in results:
-        assert result.serial_result_id == (
-            f"serial-result.{result.semantic_fingerprint[:16]}"
-        )
+        assert result.serial_result_id == (f"serial-result.{result.semantic_fingerprint[:16]}")
         assert result.serial_result_id not in {
             result.context_id,
             result.prepared_id,

@@ -11,7 +11,6 @@ from nvda_desk.contracts.modifiers import (
     ResolvedCoefficientValue,
 )
 
-
 FORBIDDEN_AUTHORITY_FIELDS = {
     "trade_allowed": True,
     "broker_order_id": "order-1",

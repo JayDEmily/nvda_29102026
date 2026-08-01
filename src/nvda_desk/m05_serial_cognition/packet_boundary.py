@@ -89,11 +89,19 @@ class SerialCandidatePacketAdapter:
             }
         }
         expected_checks = {
-            "producer_identity", "role_schema_consistency", "execution_context_ownership",
-            "typed_payload", "lineage_profile", "authority_boundary", "extension_bounds",
-            "summary_consistency", "stage_identity_and_order",
-            "prepared_or_prior_stage_parentage", "material_dependency_closure",
-            "stage_input_fingerprint", "domain_output_identity",
+            "producer_identity",
+            "role_schema_consistency",
+            "execution_context_ownership",
+            "typed_payload",
+            "lineage_profile",
+            "authority_boundary",
+            "extension_bounds",
+            "summary_consistency",
+            "stage_identity_and_order",
+            "prepared_or_prior_stage_parentage",
+            "material_dependency_closure",
+            "stage_input_fingerprint",
+            "domain_output_identity",
             "serial_parallel_capital_boundary",
         }
         return build_stage_packet(

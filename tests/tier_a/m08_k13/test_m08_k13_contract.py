@@ -5,11 +5,10 @@ from __future__ import annotations
 from dataclasses import replace
 
 import pytest
-
 from tests.support.m08_k13_contract_harness import (
     CLOSED_AUTHORITIES,
-    ConstraintCase,
     MUTANTS,
+    ConstraintCase,
     ReferenceSubject,
     production_api,
     production_catalogue_payload,
@@ -64,9 +63,7 @@ def test_reference_distinguishes_posture_block_from_no_eligible_candidates() -> 
 
 def test_reference_uses_authority_priority_not_catalogue_or_caller_order() -> None:
     catalogue = valid_catalogue()
-    reversed_catalogue = valid_catalogue(
-        definitions=tuple(reversed(catalogue.definitions))
-    )
+    reversed_catalogue = valid_catalogue(definitions=tuple(reversed(catalogue.definitions)))
     decision = ReferenceSubject().resolve(
         reversed_catalogue,
         valid_posture(),
@@ -121,14 +118,10 @@ def test_reference_rejects_missing_required_fact_and_catalogue_fingerprint_misma
         invalid_fact_context,
         facts={
             **invalid_fact_context.facts,
-            "reversion_ready": replace(
-                invalid_fact_context.facts["reversion_ready"], owner_id=""
-            ),
+            "reversion_ready": replace(invalid_fact_context.facts["reversion_ready"], owner_id=""),
         },
     )
-    invalid_fact = subject.resolve(
-        valid_catalogue(), valid_posture(), invalid_fact_context
-    )
+    invalid_fact = subject.resolve(valid_catalogue(), valid_posture(), invalid_fact_context)
 
     assert missing_fact.status == "rejected"
     assert missing_fact.reason == "missing_required_fact"
@@ -269,9 +262,7 @@ def test_production_preserves_three_lawful_stand_down_states() -> None:
     no_eligible = resolver.resolve(
         catalogue,
         production_posture_payload(),
-        production_context_payload(
-            facts={"breakout_ready": False, "reversion_ready": False}
-        ),
+        production_context_payload(facts={"breakout_ready": False, "reversion_ready": False}),
         decision_id="decision-none",
     )
     assert no_family.status == "stand_down_no_candidate_families"
@@ -369,7 +360,6 @@ def test_production_carries_lifecycle_metadata_without_foreign_authority() -> No
     assert decision.foreign_authority_claimed is False
 
 
-
 def test_production_revalidates_copied_catalogue_and_freezes_nested_metadata() -> None:
     api, catalogue, resolver = _production_subjects()
     forged = catalogue.model_copy(update={"catalogue_fingerprint": "wrong"})
@@ -385,9 +375,7 @@ def test_production_revalidates_copied_catalogue_and_freezes_nested_metadata() -
         production_context_payload(),
         decision_id="decision-untyped-catalogue",
     )
-    definition = api["PlaybookDefinition"].model_validate(
-        production_definition_payload()
-    )
+    definition = api["PlaybookDefinition"].model_validate(production_definition_payload())
 
     assert decision.status == "rejected"
     assert decision.reason == "invalid_catalogue_authority"
@@ -412,9 +400,7 @@ def test_production_requires_complete_fact_authority_before_posture_stand_down()
 
 def test_production_catalogue_and_decision_are_member_order_independent() -> None:
     definitions = valid_catalogue().definitions
-    _, forward_catalogue, forward_resolver = _production_subjects(
-        definitions=definitions
-    )
+    _, forward_catalogue, forward_resolver = _production_subjects(definitions=definitions)
     _, reverse_catalogue, reverse_resolver = _production_subjects(
         definitions=tuple(reversed(definitions))
     )
@@ -445,9 +431,9 @@ def test_production_fingerprint_binds_present_optional_fact_lineage() -> None:
     _, catalogue, resolver = _production_subjects(definitions=(optional_definition,))
     first_context = production_context_payload(facts={"optional_filter": True})
     second_context = production_context_payload(facts={"optional_filter": True})
-    second_context["facts"]["optional_filter"]["semantic_fingerprint"] = (
-        "optional-filter-fingerprint-v2"
-    )
+    second_context["facts"]["optional_filter"][
+        "semantic_fingerprint"
+    ] = "optional-filter-fingerprint-v2"
 
     first = resolver.resolve(
         catalogue,
@@ -464,9 +450,7 @@ def test_production_fingerprint_binds_present_optional_fact_lineage() -> None:
 
     assert first.status == second.status == "eligible"
     assert first.semantic_fingerprint != second.semantic_fingerprint
-    assert tuple(item.fact_ref for item in first.material_fact_lineage) == (
-        "optional_filter",
-    )
+    assert tuple(item.fact_ref for item in first.material_fact_lineage) == ("optional_filter",)
 
 
 def test_production_allows_explicit_no_variant_identity_without_collision() -> None:

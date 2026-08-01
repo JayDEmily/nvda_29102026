@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-from copy import deepcopy
-from pathlib import Path
 import subprocess
 import sys
+from copy import deepcopy
+from pathlib import Path
 
 import pytest
-
 import scripts.run_promotion_gate as promotion_gate
 from scripts.run_promotion_gate import (
     PromotionError,
@@ -18,7 +17,6 @@ from scripts.run_promotion_gate import (
     sign_receipt,
     verify_receipt,
 )
-
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 

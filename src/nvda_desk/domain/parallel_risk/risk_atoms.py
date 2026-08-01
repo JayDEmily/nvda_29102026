@@ -39,7 +39,11 @@ def build_supported_risk_atoms(
 def _freshness_atom(entry: FreshnessRegisterEntry) -> RiskAtomState:
     state: ParallelRiskAtomStateValue = "observe" if entry.freshness_state != "stale" else "caution"
     risk_side = "constructive" if entry.freshness_state == "fresh" else "uncertainty"
-    confidence = 0.9 if entry.freshness_state == "fresh" else 0.45 if entry.freshness_state == "unknown" else 0.6
+    confidence = (
+        0.9
+        if entry.freshness_state == "fresh"
+        else 0.45 if entry.freshness_state == "unknown" else 0.6
+    )
     return RiskAtomState(
         risk_atom_id=f"freshness:{entry.signal_id}",
         name="source_freshness_state",
@@ -52,7 +56,9 @@ def _freshness_atom(entry: FreshnessRegisterEntry) -> RiskAtomState:
         calculation_basis={"method_id": "freshness_register_v1", "risk_side": risk_side},
         source_refs=list(entry.source_refs),
         time_sensitivity={"session_phase_sensitive": False},
-        trader_cognition_update={"uncertainty_side": [entry.impact_on_profile or "freshness_state"]},
+        trader_cognition_update={
+            "uncertainty_side": [entry.impact_on_profile or "freshness_state"]
+        },
         why_this_is_risk_not_play="Freshness describes reliability of the state read, not a trade action.",
     )
 
@@ -89,7 +95,10 @@ def _event_atom(entry: EventProximityRegisterEntry) -> RiskAtomState:
         calculation_basis={"method_id": "event_proximity_register_v1", "risk_side": "mixed"},
         source_refs=list(entry.source_refs),
         time_sensitivity={"event_window_sensitive": True},
-        trader_cognition_update={"consequence_side": [entry.event_type], "uncertainty_side": entry.runtime_tags},
+        trader_cognition_update={
+            "consequence_side": [entry.event_type],
+            "uncertainty_side": entry.runtime_tags,
+        },
         why_this_is_risk_not_play="Event proximity describes timing and consequence context, not a trading instruction.",
     )
 
@@ -107,7 +116,10 @@ def _envelope_atoms(envelope: ParallelRiskEnvelope) -> list[RiskAtomState]:
                 confidence=0.75,
                 trigger_condition=contribution.reason,
                 observable_cues=[contribution.model_dump(mode="json")],
-                calculation_basis={"method_id": "legacy_envelope_contribution_v1", "risk_side": "mixed"},
+                calculation_basis={
+                    "method_id": "legacy_envelope_contribution_v1",
+                    "risk_side": "mixed",
+                },
                 source_refs=[],
                 time_sensitivity={"session_phase_sensitive": False},
                 trader_cognition_update={"state_of_play": [contribution.reason]},

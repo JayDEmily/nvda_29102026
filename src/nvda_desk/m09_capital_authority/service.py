@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 from datetime import datetime
-from decimal import Decimal, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal
 from typing import Any
 
 from pydantic import ValidationError
 
 from nvda_desk.contracts.packets import (
-    DeskModulePacketV3,
     K07_COMMON_CHECKS,
     K07_ROLE_CHECKS,
+    DeskModulePacketV3,
     dmp_v3_carriage_fingerprint,
 )
 from nvda_desk.m05_serial_cognition import SerialCandidate
@@ -180,7 +180,9 @@ class CapitalAuthorityService:
             raise ValueError(f"{label}_packet_validation_invalid")
         expected_checks = (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS[expected_role])
         observed = tuple(check.name for check in packet.validation.checks if check.passed)
-        if observed != expected_checks or any(not check.passed for check in packet.validation.checks):
+        if observed != expected_checks or any(
+            not check.passed for check in packet.validation.checks
+        ):
             raise ValueError(f"{label}_packet_validation_incomplete")
         try:
             payload = payload_type.model_validate(packet.data)
@@ -271,7 +273,9 @@ class CapitalAuthorityService:
 
         eligible = not (missing or reasons or conflicts or hard_blocks or unknowns)
         action = "eligible_for_capital_assessment" if eligible else "stand_down"
-        if action == "stand_down" and not (missing or reasons or conflicts or hard_blocks or unknowns):
+        if action == "stand_down" and not (
+            missing or reasons or conflicts or hard_blocks or unknowns
+        ):
             reasons.append("final_risk_not_eligible")
 
         if serial is not None:
@@ -320,8 +324,12 @@ class CapitalAuthorityService:
             "capital_authority_granted": False,
             "execution_authority_granted": False,
             "closed_authority_classes": (
-                "broker_order", "execution", "position_inventory", "lifecycle",
-                "durable_transaction", "replay",
+                "broker_order",
+                "execution",
+                "position_inventory",
+                "lifecycle",
+                "durable_transaction",
+                "replay",
             ),
         }
         return _build_final_decision(payload)
@@ -345,9 +353,7 @@ class CapitalAuthorityService:
             "modifier_application_receipt_contract_invalid",
         )
         try:
-            policy = CapitalDeploymentPolicy.model_validate(
-                policy.model_dump(mode="python")
-            )
+            policy = CapitalDeploymentPolicy.model_validate(policy.model_dump(mode="python"))
         except Exception as exc:
             raise ValueError("unsupported_capital_policy") from exc
 
@@ -373,12 +379,12 @@ class CapitalAuthorityService:
             )
             if final.cautions:
                 pct *= policy.caution_multiplier
-            pct = (
-                pct / policy.rounding_quantum
-            ).to_integral_value(rounding=ROUND_FLOOR) * policy.rounding_quantum
-            notional = (
-                state.available_capital * pct / Decimal("100")
-            ).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
+            pct = (pct / policy.rounding_quantum).to_integral_value(
+                rounding=ROUND_FLOOR
+            ) * policy.rounding_quantum
+            notional = (state.available_capital * pct / Decimal("100")).quantize(
+                Decimal("0.01"), rounding=ROUND_FLOOR
+            )
             if pct == 0 or notional == 0:
                 action = "no_trade"
                 pct = Decimal("0")
@@ -481,9 +487,7 @@ class CapitalAuthorityService:
             "modifier_application_receipt_contract_invalid",
         )
         try:
-            policy = CapitalDeploymentPolicy.model_validate(
-                policy.model_dump(mode="python")
-            )
+            policy = CapitalDeploymentPolicy.model_validate(policy.model_dump(mode="python"))
         except Exception as exc:
             raise ValueError("unsupported_capital_policy") from exc
         expected_decision = self.evaluate_capital(final, state, modifier, policy)

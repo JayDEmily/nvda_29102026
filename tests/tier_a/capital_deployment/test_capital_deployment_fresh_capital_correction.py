@@ -28,7 +28,13 @@ def test_capital_authority_depends_on_final_join_surfaces() -> None:
     final_risk = _require_module("nvda_desk.services.final_risk_service")
     assert final_risk.__name__ == "nvda_desk.services.final_risk_service"
 
-    assert _require_attr(capital_contracts, "CapitalDeploymentDecision") is getattr(capital_contracts, "CapitalDeploymentDecision")
-    assert _require_attr(risk_contracts, "FinalRiskJoinReceipt") is getattr(risk_contracts, "FinalRiskJoinReceipt")
-    assert _require_attr(authority, "CapitalDeploymentAuthorityService") is getattr(authority, "CapitalDeploymentAuthorityService")
+    assert _require_attr(capital_contracts, "CapitalDeploymentDecision") is getattr(
+        capital_contracts, "CapitalDeploymentDecision"
+    )
+    assert _require_attr(risk_contracts, "FinalRiskJoinReceipt") is getattr(
+        risk_contracts, "FinalRiskJoinReceipt"
+    )
+    assert _require_attr(authority, "CapitalDeploymentAuthorityService") is getattr(
+        authority, "CapitalDeploymentAuthorityService"
+    )
     assert _require_attr(final_risk, "FinalRiskService") is getattr(final_risk, "FinalRiskService")

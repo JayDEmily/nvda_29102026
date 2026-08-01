@@ -79,9 +79,9 @@ def make_prepared(
         window_count=len(windows),
         has_windows=bool(windows),
         minutes_to_next_event=2880,
-        front_to_next_dte_spread=(next_dte - front_dte)
-        if front_dte is not None and next_dte is not None
-        else None,
+        front_to_next_dte_spread=(
+            (next_dte - front_dte) if front_dte is not None and next_dte is not None else None
+        ),
     )
     source = SourceCaptureReference(
         capture_id="capture.market.20260731T100000Z",
@@ -201,9 +201,11 @@ def reference_evaluate(
         ReferenceObservation(
             family="scheduled_event",
             state="caution" if "scheduled_event_window_active" in tags else "observe",
-            reason="scheduled_event_window_active"
-            if "scheduled_event_window_active" in tags
-            else "no_active_scheduled_event_window",
+            reason=(
+                "scheduled_event_window_active"
+                if "scheduled_event_window_active" in tags
+                else "no_active_scheduled_event_window"
+            ),
             source_fields=("windows",),
         )
     )
@@ -223,9 +225,11 @@ def reference_evaluate(
             ReferenceObservation(
                 family="options_term_structure",
                 state="caution" if inverted else "observe",
-                reason="front_term_structure_backwardation"
-                if inverted
-                else "front_term_structure_not_inverted",
+                reason=(
+                    "front_term_structure_backwardation"
+                    if inverted
+                    else "front_term_structure_not_inverted"
+                ),
                 source_fields=("front_dte", "next_dte"),
             )
         )
@@ -240,8 +244,10 @@ def reference_evaluate(
             )
         )
     else:
-        state = "block" if payload.vix_level >= block_threshold else (
-            "caution" if payload.vix_level >= caution_threshold else "observe"
+        state = (
+            "block"
+            if payload.vix_level >= block_threshold
+            else ("caution" if payload.vix_level >= caution_threshold else "observe")
         )
         observations.append(
             ReferenceObservation(
@@ -250,9 +256,11 @@ def reference_evaluate(
                 reason=(
                     "vix_block_threshold_reached"
                     if state == "block"
-                    else "vix_caution_threshold_reached"
-                    if state == "caution"
-                    else "vix_below_caution_threshold"
+                    else (
+                        "vix_caution_threshold_reached"
+                        if state == "caution"
+                        else "vix_below_caution_threshold"
+                    )
                 ),
                 source_fields=("vix_level",),
             )
@@ -261,8 +269,14 @@ def reference_evaluate(
     hard_blocks = tuple(o.reason for o in observations if o.state == "block")
     caution_flags = tuple(o.reason for o in observations if o.state == "caution")
     unknown = tuple(o.family for o in observations if o.state == "unknown")
-    limitations = tuple(sorted(set(governed.limitations) | {o.limitation for o in observations if o.limitation}))
-    state = "block" if hard_blocks else "caution" if caution_flags else "unknown" if unknown else "observe"
+    limitations = tuple(
+        sorted(set(governed.limitations) | {o.limitation for o in observations if o.limitation})
+    )
+    state = (
+        "block"
+        if hard_blocks
+        else "caution" if caution_flags else "unknown" if unknown else "observe"
+    )
     return ReferenceAssessment(
         state=state,
         observations=tuple(observations),

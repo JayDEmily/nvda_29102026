@@ -30,16 +30,30 @@ def test_config_home_surfaces_are_present() -> None:
     playbook_registry = _require_module("nvda_desk.config.playbook_registry")
     assert playbook_registry.__name__ == "nvda_desk.config.playbook_registry"
 
-    assert _require_attr(runtime_settings, "RuntimeSettingsDocument") is getattr(runtime_settings, "RuntimeSettingsDocument")
-    assert _require_attr(runtime_settings, "RuntimePathSettings") is getattr(runtime_settings, "RuntimePathSettings")
-    assert _require_attr(runtime_settings, "load_runtime_settings") is getattr(runtime_settings, "load_runtime_settings")
+    assert _require_attr(runtime_settings, "RuntimeSettingsDocument") is getattr(
+        runtime_settings, "RuntimeSettingsDocument"
+    )
+    assert _require_attr(runtime_settings, "RuntimePathSettings") is getattr(
+        runtime_settings, "RuntimePathSettings"
+    )
+    assert _require_attr(runtime_settings, "load_runtime_settings") is getattr(
+        runtime_settings, "load_runtime_settings"
+    )
     assert _require_attr(bundle_loader, "ConfigBundle") is getattr(bundle_loader, "ConfigBundle")
-    assert _require_attr(bundle_loader, "load_config_bundle") is getattr(bundle_loader, "load_config_bundle")
-    assert _require_attr(config_surface, "ConfigSurface") is getattr(config_surface, "ConfigSurface")
+    assert _require_attr(bundle_loader, "load_config_bundle") is getattr(
+        bundle_loader, "load_config_bundle"
+    )
+    assert _require_attr(config_surface, "ConfigSurface") is getattr(
+        config_surface, "ConfigSurface"
+    )
     coef_auth_service = _require_attr(coef_auth_module, "CoefficientAuthorityService")
     assert coef_auth_service is getattr(coef_auth_module, "CoefficientAuthorityService")
-    assert _require_attr(playbook_registry, "PlaybookRegistryDocument") is getattr(playbook_registry, "PlaybookRegistryDocument")
-    assert _require_attr(playbook_registry, "load_playbook_registry") is getattr(playbook_registry, "load_playbook_registry")
+    assert _require_attr(playbook_registry, "PlaybookRegistryDocument") is getattr(
+        playbook_registry, "PlaybookRegistryDocument"
+    )
+    assert _require_attr(playbook_registry, "load_playbook_registry") is getattr(
+        playbook_registry, "load_playbook_registry"
+    )
 
 
 def test_config_surface_loads_bundle_and_authority_without_runtime_workbook_reads() -> None:

@@ -101,9 +101,7 @@ class ParallelRiskInput(BaseModel):
     input_id: str = Field(min_length=1)
     contract_version: Literal["1.0.0"] = "1.0.0"
     schema_version: Literal["1.0.0"] = "1.0.0"
-    evaluator_version: Literal["m06.parallel-risk-evaluator.v1"] = (
-        "m06.parallel-risk-evaluator.v1"
-    )
+    evaluator_version: Literal["m06.parallel-risk-evaluator.v1"] = "m06.parallel-risk-evaluator.v1"
     evaluator_policy_version: Literal["parallel-risk.compat.v1"]
     aggregation_version: Literal["parallel-risk.aggregate.v1"]
     prepared_id: str = Field(min_length=1)
@@ -138,9 +136,7 @@ class ParallelRiskInput(BaseModel):
             sorted(
                 (
                     SourceCaptureReference.model_validate(
-                        item.model_dump(mode="python")
-                        if isinstance(item, BaseModel)
-                        else item
+                        item.model_dump(mode="python") if isinstance(item, BaseModel) else item
                     )
                     for item in value
                 ),
@@ -155,9 +151,7 @@ class ParallelRiskInput(BaseModel):
             sorted(
                 (
                     PreparedEventWindow.model_validate(
-                        item.model_dump(mode="python")
-                        if isinstance(item, BaseModel)
-                        else item
+                        item.model_dump(mode="python") if isinstance(item, BaseModel) else item
                     )
                     for item in value
                 ),
@@ -209,7 +203,9 @@ class ParallelRiskInput(BaseModel):
             or not (self.prepared_limitations or self.missing_optional_enrichments)
         ):
             raise ValueError("degraded_prepared_projection_requires_explicit_gap")
-        if not all(isfinite(value) for value in (self.vix_caution_threshold, self.vix_block_threshold)):
+        if not all(
+            isfinite(value) for value in (self.vix_caution_threshold, self.vix_block_threshold)
+        ):
             raise ValueError("vix_threshold_must_be_finite")
         if self.vix_caution_threshold < 0 or self.vix_block_threshold < 0:
             raise ValueError("vix_threshold_must_be_nonnegative")
@@ -378,9 +374,13 @@ class ParallelRiskAssessment(BaseModel):
         families = tuple(item.family for item in self.observations)
         if families != EXPECTED_FAMILIES:
             raise ValueError("parallel_risk_observation_family_order_or_completeness_invalid")
-        expected_cautions = tuple(item.reason for item in self.observations if item.state == "caution")
+        expected_cautions = tuple(
+            item.reason for item in self.observations if item.state == "caution"
+        )
         expected_blocks = tuple(item.reason for item in self.observations if item.state == "block")
-        expected_unknown = tuple(item.family for item in self.observations if item.state == "unknown")
+        expected_unknown = tuple(
+            item.family for item in self.observations if item.state == "unknown"
+        )
         expected_limitations = tuple(
             sorted(
                 {item.limitation for item in self.observations if item.limitation}
@@ -399,11 +399,7 @@ class ParallelRiskAssessment(BaseModel):
         expected_state: RiskState = (
             "block"
             if expected_blocks
-            else "caution"
-            if expected_cautions
-            else "unknown"
-            if expected_unknown
-            else "observe"
+            else "caution" if expected_cautions else "unknown" if expected_unknown else "observe"
         )
         if self.state != expected_state:
             raise ValueError("parallel_risk_aggregate_state_mismatch")
@@ -421,16 +417,12 @@ def parallel_risk_input_fingerprint(value: ParallelRiskInput) -> str:
 
 
 def parallel_risk_observation_fingerprint(value: ParallelRiskObservation) -> str:
-    data = value.model_dump(
-        mode="python", exclude={"observation_id", "semantic_fingerprint"}
-    )
+    data = value.model_dump(mode="python", exclude={"observation_id", "semantic_fingerprint"})
     return semantic_fingerprint(data)
 
 
 def parallel_risk_assessment_fingerprint(value: ParallelRiskAssessment) -> str:
-    data = value.model_dump(
-        mode="python", exclude={"assessment_id", "semantic_fingerprint"}
-    )
+    data = value.model_dump(mode="python", exclude={"assessment_id", "semantic_fingerprint"})
     return semantic_fingerprint(data)
 
 

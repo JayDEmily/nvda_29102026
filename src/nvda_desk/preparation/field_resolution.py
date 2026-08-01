@@ -276,9 +276,7 @@ class MissingMandatoryFieldError(ValueError):
 
 def _receipt_material(receipt: FieldResolutionReceipt | dict[str, Any]) -> dict[str, Any]:
     if isinstance(receipt, FieldResolutionReceipt):
-        payload = receipt.model_dump(
-            mode="python", exclude={"receipt_id", "receipt_fingerprint"}
-        )
+        payload = receipt.model_dump(mode="python", exclude={"receipt_id", "receipt_fingerprint"})
     else:
         payload = dict(receipt)
         payload.pop("receipt_id", None)
@@ -305,24 +303,18 @@ def _build_receipt(
         "selected_value": None if selected is None else selected.value,
         "selected_candidate_id": None if selected is None else selected.candidate_id,
         "selected_source_owner": None if selected is None else selected.source_owner,
-        "selected_source_artifact_id": (
-            None if selected is None else selected.source_artifact_id
-        ),
+        "selected_source_artifact_id": (None if selected is None else selected.source_artifact_id),
         "selected_capture_id": None if selected is None else selected.capture_id,
         "candidate_records": candidates,
         "candidate_ids": tuple(item.candidate_id for item in candidates),
-        "source_refs": tuple(
-            (item.source_artifact_id, item.capture_id) for item in candidates
-        ),
+        "source_refs": tuple((item.source_artifact_id, item.capture_id) for item in candidates),
         "comparison_rule": policy.comparison_rule,
         "normalisation_evidence": tuple(
             (item.candidate_id, item.normalisation_operations) for item in candidates
         ),
         "equality_result": equality_result,
         "unit": policy.unit,
-        "temporal_alignment_result": (
-            "exact" if candidates else "not_applicable"
-        ),
+        "temporal_alignment_result": ("exact" if candidates else "not_applicable"),
         "resolution_reason": reason,
         "rejected_candidate_ids": tuple(item[0] for item in rejection_reasons),
         "rejection_reasons": rejection_reasons,
@@ -357,15 +349,10 @@ def resolve_canonical_field(
 ) -> FieldResolutionReceipt:
     """Resolve one semantic field without caller-order or downstream authority."""
 
-    governed_policy = FieldResolutionPolicy.model_validate(
-        policy.model_dump(mode="python")
-    )
+    governed_policy = FieldResolutionPolicy.model_validate(policy.model_dump(mode="python"))
     ordered = tuple(
         sorted(
-            (
-                FieldCandidate.model_validate(item.model_dump(mode="python"))
-                for item in candidates
-            ),
+            (FieldCandidate.model_validate(item.model_dump(mode="python")) for item in candidates),
             key=lambda item: item.candidate_id,
         )
     )
@@ -387,9 +374,7 @@ def resolve_canonical_field(
             reason=f"optional_field_{policy.optional_absence_consequence}",
         )
 
-    unavailable = tuple(
-        item for item in ordered if item.candidate_state == "unavailable"
-    )
+    unavailable = tuple(item for item in ordered if item.candidate_state == "unavailable")
     eligible = tuple(item for item in ordered if item.candidate_state == "value")
     unavailable_reasons = tuple(
         (item.candidate_id, "candidate_unavailable") for item in unavailable
@@ -407,9 +392,7 @@ def resolve_canonical_field(
             rejection_reasons=unavailable_reasons,
         )
 
-    temporal_keys = {
-        (item.effective_at_utc, item.effective_to_utc) for item in eligible
-    }
+    temporal_keys = {(item.effective_at_utc, item.effective_to_utc) for item in eligible}
     if len(temporal_keys) != 1:
         raise ValueError("field_candidate_temporal_applicability_mismatch")
 
@@ -461,9 +444,7 @@ def resolve_canonical_field(
             return _build_receipt(
                 candidates=ordered,
                 policy=policy,
-                status=(
-                    "degraded" if selected.validation_state == "degraded" else "selected"
-                ),
+                status=("degraded" if selected.validation_state == "degraded" else "selected"),
                 selected=selected,
                 equality_result="unequal",
                 reason=reason,

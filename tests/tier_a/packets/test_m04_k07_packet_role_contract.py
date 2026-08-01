@@ -112,8 +112,7 @@ def test_pf04_all_common_and_exact_role_checks_arise_from_owner_facts(role: str)
     names = tuple(result.name for result in packet.validation_results)
     assert names == (*COMMON_CHECKS, *ROLE_CHECKS[role])
     assert all(
-        result.evidence == f"owner_fact:{result.name}"
-        for result in packet.validation_results
+        result.evidence == f"owner_fact:{result.name}" for result in packet.validation_results
     )
     assert "typed_payload" in case.ports.calls
     assert "authority_boundary" in case.ports.calls

@@ -72,8 +72,23 @@ def _block_summary(block: dict[str, Any]) -> dict[str, Any]:
 
 def _resolve_command(command: str) -> list[str]:
     parts = shlex.split(command)
-    if parts and parts[0] == "python":
-        return [sys.executable, *parts[1:]]
+    if not parts:
+        return parts
+    executable_index = 0
+    if parts[0] == "env":
+        executable_index = 1
+        while (
+            executable_index < len(parts)
+            and "=" in parts[executable_index]
+            and not parts[executable_index].startswith("=")
+        ):
+            executable_index += 1
+    if executable_index < len(parts) and parts[executable_index] in {
+        "python",
+        "python3",
+        "python3.13",
+    }:
+        parts[executable_index] = sys.executable
     return parts
 
 

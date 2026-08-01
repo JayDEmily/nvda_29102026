@@ -55,11 +55,7 @@ def _iter_scan_files(scan_paths: list[str]) -> Iterator[Path]:
         base = Path(raw_path)
         candidates = [base] if base.is_file() else sorted(base.rglob("*")) if base.exists() else []
         for path in candidates:
-            if (
-                path in emitted
-                or not path.is_file()
-                or path.suffix not in ALLOWED_EXTENSIONS
-            ):
+            if path in emitted or not path.is_file() or path.suffix not in ALLOWED_EXTENSIONS:
                 continue
             emitted.add(path)
             yield path
@@ -127,16 +123,12 @@ def _lexicon(
             continue
         label = entry["canonical_label"]
         slug = entry["canonical_slug"]
-        canonical_id = entry.get(
-            "canonical_id", f"{entry.get('namespace', 'global')}.{slug}"
-        )
+        canonical_id = entry.get("canonical_id", f"{entry.get('namespace', 'global')}.{slug}")
         canonical_norm = _normalise(label)
         for token in [label, slug, *entry.get("allowed_aliases", [])]:
             exact_tokens.add(_normalise(token))
             compact_exact_tokens.add(_compact_normalise(token))
-        entries.append(
-            (canonical_id, slug, label, canonical_norm, entry.get("category", ""))
-        )
+        entries.append((canonical_id, slug, label, canonical_norm, entry.get("category", "")))
     return exact_tokens, compact_exact_tokens, entries
 
 
@@ -495,14 +487,14 @@ def build_report(namespace: str = "global") -> dict:
         if not legacy_fixture:
             candidate.update(
                 {
-                "occurrence_id": occurrence["occurrence_id"],
-                "raw_phrase": raw_phrase,
-                "nearest_identity": best[0],
-                "line": occurrence["line"],
-                "column": occurrence["column"],
-                "source_context": occurrence["source_context"],
-                "context_sha256": occurrence["context_sha256"],
-                "occurrence_kind": occurrence["occurrence_kind"],
+                    "occurrence_id": occurrence["occurrence_id"],
+                    "raw_phrase": raw_phrase,
+                    "nearest_identity": best[0],
+                    "line": occurrence["line"],
+                    "column": occurrence["column"],
+                    "source_context": occurrence["source_context"],
+                    "context_sha256": occurrence["context_sha256"],
+                    "occurrence_kind": occurrence["occurrence_kind"],
                 }
             )
             classification.update(

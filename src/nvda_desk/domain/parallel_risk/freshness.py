@@ -29,7 +29,12 @@ def build_freshness_register_entry(
     observed_age_seconds: int | None = None
     if source_time_utc is not None and generated_at_utc is not None:
         observed_age_seconds = max(
-            0, int((_utc_compatible(generated_at_utc) - _utc_compatible(source_time_utc)).total_seconds())
+            0,
+            int(
+                (
+                    _utc_compatible(generated_at_utc) - _utc_compatible(source_time_utc)
+                ).total_seconds()
+            ),
         )
 
     state = _classify_freshness(

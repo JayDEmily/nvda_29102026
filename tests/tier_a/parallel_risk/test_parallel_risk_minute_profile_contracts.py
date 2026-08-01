@@ -51,7 +51,9 @@ def test_parallel_risk_minute_profile_minimal_instantiates_and_serialises() -> N
     assert payload["lane_id"] == "parallel_risk_lane"
     assert payload["risk_envelope_state"] == "observe"
     assert payload["authority_flags"]["candidate_formation_allowed"] is False
-    assert payload["expected_signal_inventory_ref"] == "workbook:Parallel Risk Lane Signal Inventory"
+    assert (
+        payload["expected_signal_inventory_ref"] == "workbook:Parallel Risk Lane Signal Inventory"
+    )
     assert payload["description_template_id"] == "prl.minute_profile.summary.v1"
 
 

@@ -25,10 +25,18 @@ def test_canonical_runtime_specimen_surface_is_present() -> None:
     harness_module = _require_module("nvda_desk.testing.harnesses.canonical_runtime")
     assert harness_module.__name__ == "nvda_desk.testing.harnesses.canonical_runtime"
 
-    assert _require_attr(package_module, "CanonicalRuntimeHarness") is getattr(package_module, "CanonicalRuntimeHarness")
-    assert _require_attr(package_module, "CanonicalRuntimeSpecimen") is getattr(package_module, "CanonicalRuntimeSpecimen")
-    assert _require_attr(package_module, "build_canonical_runtime_specimen") is getattr(package_module, "build_canonical_runtime_specimen")
-    assert _require_attr(harness_module, "CanonicalRuntimeHarnessPaths") is getattr(harness_module, "CanonicalRuntimeHarnessPaths")
+    assert _require_attr(package_module, "CanonicalRuntimeHarness") is getattr(
+        package_module, "CanonicalRuntimeHarness"
+    )
+    assert _require_attr(package_module, "CanonicalRuntimeSpecimen") is getattr(
+        package_module, "CanonicalRuntimeSpecimen"
+    )
+    assert _require_attr(package_module, "build_canonical_runtime_specimen") is getattr(
+        package_module, "build_canonical_runtime_specimen"
+    )
+    assert _require_attr(harness_module, "CanonicalRuntimeHarnessPaths") is getattr(
+        harness_module, "CanonicalRuntimeHarnessPaths"
+    )
 
 
 def test_canonical_runtime_specimen_surface_stays_test_only_and_fixture_backed() -> None:

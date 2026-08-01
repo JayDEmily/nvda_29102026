@@ -11,7 +11,6 @@ from typing import Any
 from pydantic import ValidationError
 
 from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
-
 from nvda_desk.contracts.execution import ExecutionExpressionInput, StageLocalHandoffSurface
 from nvda_desk.contracts.serial_spine import (
     SERIAL_SPINE_STAGE_ORDER,
@@ -251,7 +250,9 @@ def _attach_runtime_live_inventory(
     live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any] | None,
 ) -> dict[str, Any]:
     if live_inventory_service is not None and live_inventory_snapshot is not None:
-        raise ValueError("live_inventory_service and live_inventory_snapshot cannot both be supplied")
+        raise ValueError(
+            "live_inventory_service and live_inventory_snapshot cannot both be supplied"
+        )
     if live_inventory_service is None and live_inventory_snapshot is None:
         if live_inventory_request is not None:
             raise ValueError("live_inventory_request requires live_inventory_service")
@@ -267,9 +268,7 @@ def _attach_runtime_live_inventory(
             raise ValueError(f"live_inventory_request contains unsupported keys: {joined}")
         snapshot = live_inventory_service.build_live_snapshot(**request)
     receipt["runtime_live_inventory"] = snapshot.model_dump(mode="json")
-    receipt["runtime_live_inventory_policy_effect"] = (
-        "read_only_no_serial_decision_change"
-    )
+    receipt["runtime_live_inventory_policy_effect"] = "read_only_no_serial_decision_change"
     return receipt
 
 

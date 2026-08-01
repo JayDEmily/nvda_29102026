@@ -14,8 +14,8 @@ from nvda_desk.contracts.temporal import TemporalContextInput
 from nvda_desk.domain.parallel_risk import (
     family_aggregation,
     freshness,
-    missing_signals,
     minute_profile_assembly,
+    missing_signals,
     risk_atoms,
     unavailable_signals,
 )
@@ -25,7 +25,9 @@ from nvda_desk.services.parallel_risk_lane_service import ParallelRiskLaneServic
 def test_enriched_optional_profile_keeps_every_forbidden_authority_default_false() -> None:
     result = ParallelRiskLaneService().run_bootstrap(
         stage_input_bundle=StageInputBundle(
-            temporal=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+            temporal=TemporalContextInput(
+                source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+            ),
             regime=MarketRegimeContextInput(vix_level=31.0),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=5, next_dte=1),
         ),

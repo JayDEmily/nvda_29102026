@@ -63,9 +63,7 @@ class PreparedDataBuilder:
         refs = tuple(
             sorted(
                 (
-                    SourceCaptureReference.model_validate(
-                        item.model_dump(mode="python")
-                    )
+                    SourceCaptureReference.model_validate(item.model_dump(mode="python"))
                     for item in source_capture_refs
                 ),
                 key=lambda item: (item.capture_id, item.source_artifact_id),
@@ -79,9 +77,7 @@ class PreparedDataBuilder:
         resolutions = tuple(
             sorted(
                 (
-                    FieldResolutionReceipt.model_validate(
-                        item.model_dump(mode="python")
-                    )
+                    FieldResolutionReceipt.model_validate(item.model_dump(mode="python"))
                     for item in field_resolution_receipts
                 ),
                 key=lambda item: (item.semantic_field, item.receipt_id),

@@ -25,9 +25,13 @@ def test_entry_boundary_surfaces_are_present() -> None:
     assert cli_module.__name__ == "nvda_desk.entry.cli"
 
     assert _require_attr(asgi_module, "create_app") is getattr(asgi_module, "create_app")
-    assert _require_attr(asgi_module, "configure_middlewares") is getattr(asgi_module, "configure_middlewares")
+    assert _require_attr(asgi_module, "configure_middlewares") is getattr(
+        asgi_module, "configure_middlewares"
+    )
     assert _require_attr(cli_module, "build_cli") is getattr(cli_module, "build_cli")
-    assert _require_attr(cli_module, "inspect_config_command") is getattr(cli_module, "inspect_config_command")
+    assert _require_attr(cli_module, "inspect_config_command") is getattr(
+        cli_module, "inspect_config_command"
+    )
     assert _require_attr(cli_module, "run_cli") is getattr(cli_module, "run_cli")
     assert _require_attr(cli_module, "run_once_command") is getattr(cli_module, "run_once_command")
 

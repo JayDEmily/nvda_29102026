@@ -54,11 +54,7 @@ class ReceiptLedger:
 
         normalised_kind = _normalise_token(receipt_kind, "receipt_kind")
         return deepcopy(
-            [
-                receipt
-                for receipt in self._receipts
-                if receipt["receipt_kind"] == normalised_kind
-            ]
+            [receipt for receipt in self._receipts if receipt["receipt_kind"] == normalised_kind]
         )
 
 

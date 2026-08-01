@@ -12,9 +12,7 @@ from nvda_desk.contracts.parallel_risk import (
     parallel_risk_signal_inventory_document_from_dict,
 )
 
-DEFAULT_PARALLEL_RISK_SIGNAL_INVENTORY_PATH = Path(
-    "config/parallel_risk_signal_inventory.v1.yaml"
-)
+DEFAULT_PARALLEL_RISK_SIGNAL_INVENTORY_PATH = Path("config/parallel_risk_signal_inventory.v1.yaml")
 
 
 class ParallelRiskSignalInventoryService:

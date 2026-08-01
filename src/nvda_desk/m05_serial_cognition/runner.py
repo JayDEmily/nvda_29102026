@@ -52,9 +52,7 @@ class SerialRunner:
             raise ValueError("runner_version_required")
         if not stage_order_version:
             raise ValueError("stage_order_version_required")
-        if set(handlers) != set(SERIAL_STAGE_ORDER) or len(handlers) != len(
-            SERIAL_STAGE_ORDER
-        ):
+        if set(handlers) != set(SERIAL_STAGE_ORDER) or len(handlers) != len(SERIAL_STAGE_ORDER):
             raise ValueError("exact_six_stage_handlers_required")
         if any(not callable(handlers[stage]) for stage in SERIAL_STAGE_ORDER):
             raise TypeError("stage_handler_must_be_callable")
@@ -79,9 +77,7 @@ class SerialRunner:
 
         outputs: dict[str, StageOutput] = {}
         for stage in SERIAL_STAGE_ORDER:
-            dependencies = tuple(
-                outputs[name] for name in SERIAL_STAGE_DEPENDENCIES[stage]
-            )
+            dependencies = tuple(outputs[name] for name in SERIAL_STAGE_DEPENDENCIES[stage])
             raw_output = self._handlers[stage](inputs[stage], dependencies)
             output = _revalidate(StageOutput, raw_output)
             self._validate_output(
@@ -304,33 +300,23 @@ class SerialRunner:
             "m08_authority_refs": m08_refs,
             "ordered_eligible_candidate_ids": ordered_eligible_candidate_ids,
             "eligibility_lead_id": eligibility_lead_id,
-            "selected_playbook_family_id": execution_refs.get("playbook_family_id")
-            if formed
-            else None,
-            "selected_playbook_family_version": execution_refs.get(
-                "playbook_family_version"
-            )
-            if formed
-            else None,
+            "selected_playbook_family_id": (
+                execution_refs.get("playbook_family_id") if formed else None
+            ),
+            "selected_playbook_family_version": (
+                execution_refs.get("playbook_family_version") if formed else None
+            ),
             "selected_playbook_id": execution_refs.get("playbook_id") if formed else None,
-            "selected_playbook_version": execution_refs.get("playbook_version")
-            if formed
-            else None,
-            "selected_setup_variant_id": execution_refs.get("setup_variant_id")
-            if formed
-            else None,
-            "selected_setup_variant_version": execution_refs.get(
-                "setup_variant_version"
-            )
-            if formed
-            else None,
+            "selected_playbook_version": execution_refs.get("playbook_version") if formed else None,
+            "selected_setup_variant_id": execution_refs.get("setup_variant_id") if formed else None,
+            "selected_setup_variant_version": (
+                execution_refs.get("setup_variant_version") if formed else None
+            ),
             "expression_id": execution_refs.get("expression_id") if formed else None,
-            "expression_version": execution_refs.get("expression_version")
-            if formed
-            else None,
-            "expression_fingerprint": execution_refs.get("expression_fingerprint")
-            if formed
-            else None,
+            "expression_version": execution_refs.get("expression_version") if formed else None,
+            "expression_fingerprint": (
+                execution_refs.get("expression_fingerprint") if formed else None
+            ),
             "lifecycle_intent": lifecycle_intent if formed else (),
             "limitations": context.limitations,
             "closed_authority_classes": CLOSED_AUTHORITY_CLASSES,

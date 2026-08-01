@@ -78,11 +78,14 @@ def test_receipt_ledger_normalises_ids_and_rejects_duplicate_after_normalisation
     with pytest.raises(ValueError, match="duplicate receipt_id: receipt-1"):
         ledger.append_receipt("receipt-1", "proof", {"ok": False})
 
+
 def test_receipt_ledger_lists_receipts_by_kind_copy_safely() -> None:
     ledger = ReceiptLedger()
     ledger.append_receipt("receipt-1", "live_inventory_reconciliation", {"position_ids": ["pos-1"]})
     ledger.append_receipt("receipt-2", "proof", {"passed": True})
-    ledger.append_receipt("receipt-3", " live_inventory_reconciliation ", {"position_ids": ["pos-2"]})
+    ledger.append_receipt(
+        "receipt-3", " live_inventory_reconciliation ", {"position_ids": ["pos-2"]}
+    )
 
     inventory_receipts = ledger.list_receipts_by_kind(" live_inventory_reconciliation ")
     inventory_receipts[0]["payload"]["position_ids"].append("mutated")

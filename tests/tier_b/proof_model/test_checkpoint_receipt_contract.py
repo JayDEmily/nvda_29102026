@@ -40,9 +40,7 @@ def test_prepared_ingress_checkpoint_receipt_is_detached_and_valid_without_failu
     assert payload["status"] == "valid"
     assert payload["alignment_policy"] == "explicit_runtime_bar_time_utc"
     assert payload["source_sections"] == ["quote", "calendar"]
-    assert payload["missing_optional_enrichments"] == [
-        "minutes_to_next_event:next_event_time_utc"
-    ]
+    assert payload["missing_optional_enrichments"] == ["minutes_to_next_event:next_event_time_utc"]
     assert payload["failed_enrichments"] == []
     assert payload["prepared_context"]["payload"]["spot"] == 101.25
     assert payload["prepared_context"]["source_kind"] == "raw_bundle"
@@ -60,6 +58,4 @@ def test_prepared_ingress_checkpoint_receipt_degrades_when_enrichment_fails() ->
     assert checkpoint.status == "degraded"
     assert payload["status"] == "degraded"
     assert payload["failed_enrichments"] == ["window_count:windows_not_list"]
-    assert payload["prepared_context"]["failed_enrichments"] == [
-        "window_count:windows_not_list"
-    ]
+    assert payload["prepared_context"]["failed_enrichments"] == ["window_count:windows_not_list"]

@@ -276,10 +276,13 @@ def resolve_calendar_field(*, candidates, policy):
         if policy.mandatory:
             raise CalendarFieldConflictError("mandatory_calendar_field_missing")
         return None
-    if any(
-        item.layer == FinancialCalendarLayer.DERIVED_RUNTIME_CALENDAR_CONTEXT
-        for item in governed
-    ) and len({item.value for item in governed}) > 1:
+    if (
+        any(
+            item.layer == FinancialCalendarLayer.DERIVED_RUNTIME_CALENDAR_CONTEXT
+            for item in governed
+        )
+        and len({item.value for item in governed}) > 1
+    ):
         raise CalendarFieldConflictError("derived_calendar_override_forbidden")
     comparison_keys = {
         (

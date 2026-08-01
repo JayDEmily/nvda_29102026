@@ -13,7 +13,10 @@ from nvda_desk.contracts.parallel_risk import (
     ParallelRiskPreparationPacket,
     SignalSnapshotEntry,
 )
-from nvda_desk.domain.parallel_risk.environment_assessment import assess_environment, assess_risk_envelope
+from nvda_desk.domain.parallel_risk.environment_assessment import (
+    assess_environment,
+    assess_risk_envelope,
+)
 from nvda_desk.domain.parallel_risk.family_aggregation import aggregate_risk_family_states
 from nvda_desk.domain.parallel_risk.risk_atoms import build_supported_risk_atoms
 
@@ -148,7 +151,6 @@ def _uncertainty_summary(
         "missing_signal_count": len(missing),
         "summary_basis": "deterministic_register_counts_only",
     }
-
 
 
 def _admitted_semantic_inputs(packet: ParallelRiskPreparationPacket) -> list[str]:

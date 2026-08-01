@@ -130,10 +130,7 @@ class CalendarFactCandidate(BaseModel):
             (self.owner_id, "owner_id_required"),
         ):
             _non_empty(value, reason=reason)
-        if (
-            self.effective_to_utc is not None
-            and self.effective_to_utc <= self.effective_from_utc
-        ):
+        if self.effective_to_utc is not None and self.effective_to_utc <= self.effective_from_utc:
             raise ValueError("calendar_effective_interval_invalid")
         if (self.capture_id is None) != (self.captured_at_utc is None):
             raise ValueError("capture_identity_time_mismatch")
@@ -208,15 +205,11 @@ def candidate_material(candidate: CalendarFactCandidate) -> dict[str, Any]:
         "owner_id": candidate.owner_id,
         "validation_state": candidate.validation_state,
         "observed_at_utc": (
-            candidate.observed_at_utc.isoformat()
-            if candidate.observed_at_utc is not None
-            else None
+            candidate.observed_at_utc.isoformat() if candidate.observed_at_utc is not None else None
         ),
         "capture_id": candidate.capture_id,
         "captured_at_utc": (
-            candidate.captured_at_utc.isoformat()
-            if candidate.captured_at_utc is not None
-            else None
+            candidate.captured_at_utc.isoformat() if candidate.captured_at_utc is not None else None
         ),
         "supersedes_candidate_id": candidate.supersedes_candidate_id,
         "supersession_reason": candidate.supersession_reason,
@@ -298,9 +291,7 @@ def snapshot_fingerprint(
             item.model_dump(mode="json") for item in selected_reference_bundles
         ],
         "unresolved_conflicts": unresolved_conflicts,
-        "applied_supersessions": [
-            item.model_dump(mode="json") for item in applied_supersessions
-        ],
+        "applied_supersessions": [item.model_dump(mode="json") for item in applied_supersessions],
         "projection_policy_version": projection_policy_version,
         "canonicalisation_version": canonicalisation_version,
     }
@@ -362,9 +353,7 @@ class FinancialCalendarSnapshot(BaseModel):
         identities = [candidate.candidate_id for candidate in all_candidates]
         if len(identities) != len(set(identities)):
             raise ValueError("duplicate_calendar_candidate_id")
-        has_reference_facts = (
-            self.market_session_reference or self.financial_event_reference
-        )
+        has_reference_facts = self.market_session_reference or self.financial_event_reference
         if has_reference_facts and not self.selected_reference_bundles:
             raise ValueError("selected_reference_bundle_required")
         bundle_ids = [
@@ -474,9 +463,7 @@ def projection_fingerprint(
         "unresolved_conflicts": unresolved_conflicts,
         "missing_mandatory_authority": missing_mandatory_authority,
         "degraded_facts": degraded_facts,
-        "applied_supersessions": [
-            item.model_dump(mode="json") for item in applied_supersessions
-        ],
+        "applied_supersessions": [item.model_dump(mode="json") for item in applied_supersessions],
         "closed_authority_classes": closed_authority_classes,
     }
     return sha256(_canonical_json(material).encode("utf-8")).hexdigest()

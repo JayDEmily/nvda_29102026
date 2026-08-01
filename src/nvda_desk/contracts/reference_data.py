@@ -4,6 +4,8 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from enum import StrEnum
 
+from nvda_desk.m02_financial_calendar.contracts import FinancialCalendarLayer
+
 
 class ReferenceArtifactKind(StrEnum):
     CALENDAR_BUNDLE = "calendar_bundle"
@@ -74,11 +76,9 @@ class PrecursorRuntimePacket:
     bundle: ImportedReferenceBundle | None = None
     projection_trace: CalendarAuthorityProjectionTrace | None = None
 
+
 # Transitional K04 compatibility adapters. Canonical ownership lives in
 # nvda_desk.m02_financial_calendar; these shapes preserve admitted callers only.
-from nvda_desk.m02_financial_calendar import FinancialCalendarLayer
-
-
 @dataclass(frozen=True, slots=True)
 class FinancialCalendarAuthorityBundle:
     """Exact four-layer compatibility bundle narrowed toward K04."""

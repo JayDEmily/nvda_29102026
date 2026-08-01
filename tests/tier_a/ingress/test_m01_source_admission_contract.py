@@ -7,7 +7,6 @@ from datetime import UTC, date, datetime, timedelta, timezone
 
 import pytest
 from pydantic import BaseModel, ConfigDict, Field
-
 from tests.support.m01_source_admission_contract_harness import (
     MUTANTS,
     AcceptedAdmission,
@@ -355,9 +354,7 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
         source_object_id="provider-observation-17",
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
-        captured_material=(
-            b'{"symbol":"NVDA","metadata":{"credential":"must-not-cross"}}'
-        ),
+        captured_material=(b'{"symbol":"NVDA","metadata":{"credential":"must-not-cross"}}'),
         typed_payload=NestedAuthorityPayload(
             symbol="NVDA",
             metadata={"credential": "must-not-cross"},

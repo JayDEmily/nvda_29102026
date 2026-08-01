@@ -25,10 +25,16 @@ def test_migration_lifecycle_surface_is_present() -> None:
     layout_module = _require_module("nvda_desk.persistence.migrations.layout")
     assert layout_module.__name__ == "nvda_desk.persistence.migrations.layout"
 
-    assert _require_attr(package_module, "MigrationLifecycleLayout") is getattr(package_module, "MigrationLifecycleLayout")
-    assert _require_attr(package_module, "describe_migration_lifecycle") is getattr(package_module, "describe_migration_lifecycle")
+    assert _require_attr(package_module, "MigrationLifecycleLayout") is getattr(
+        package_module, "MigrationLifecycleLayout"
+    )
+    assert _require_attr(package_module, "describe_migration_lifecycle") is getattr(
+        package_module, "describe_migration_lifecycle"
+    )
     assert _require_attr(layout_module, "PACKAGE_HOME") is getattr(layout_module, "PACKAGE_HOME")
-    assert _require_attr(layout_module, "describe_migration_lifecycle") is getattr(layout_module, "describe_migration_lifecycle")
+    assert _require_attr(layout_module, "describe_migration_lifecycle") is getattr(
+        layout_module, "describe_migration_lifecycle"
+    )
 
 
 def test_migration_lifecycle_boundary_is_explicit_and_bounded() -> None:

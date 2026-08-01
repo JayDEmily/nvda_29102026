@@ -50,12 +50,16 @@ def _imported_modules(path: Path) -> set[str]:
 def test_external_source_transform_boundary_does_not_import_live_client_libraries() -> None:
     imported_roots: set[str] = set()
     for path in ROW_5_1_FILES:
-        imported_roots.update(module.split(".", maxsplit=1)[0] for module in _imported_modules(path))
+        imported_roots.update(
+            module.split(".", maxsplit=1)[0] for module in _imported_modules(path)
+        )
 
     assert imported_roots.isdisjoint(FORBIDDEN_CLIENT_IMPORT_ROOTS) is True
 
 
-def test_external_source_transform_boundary_does_not_import_decision_or_persistence_owners() -> None:
+def test_external_source_transform_boundary_does_not_import_decision_or_persistence_owners() -> (
+    None
+):
     imported_modules: set[str] = set()
     for path in ROW_5_1_FILES:
         imported_modules.update(_imported_modules(path))

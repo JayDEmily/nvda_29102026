@@ -216,18 +216,20 @@ def valid_definition(
     )
 
 
-def valid_catalogue(
-    *, definitions: tuple[DefinitionCase, ...] | None = None
-) -> CatalogueCase:
-    members = definitions if definitions is not None else (
-        valid_definition(),
-        valid_definition(
-            playbook_id="playbook.reversion",
-            candidate_family_id="family.reversion",
-            setup_variant_id="variant.reversion.standard",
-            selection_priority=10,
-            fact_ref="reversion_ready",
-        ),
+def valid_catalogue(*, definitions: tuple[DefinitionCase, ...] | None = None) -> CatalogueCase:
+    members = (
+        definitions
+        if definitions is not None
+        else (
+            valid_definition(),
+            valid_definition(
+                playbook_id="playbook.reversion",
+                candidate_family_id="family.reversion",
+                setup_variant_id="variant.reversion.standard",
+                selection_priority=10,
+                fact_ref="reversion_ready",
+            ),
+        )
     )
     material = {
         "catalogue_id": "m08.nvda.playbooks",
@@ -268,15 +270,17 @@ def valid_context(*, facts: dict[str, Any] | None = None) -> EligibilityContextC
         }
     )
     governed_facts = {
-        fact_ref: value
-        if isinstance(value, FactCase)
-        else FactCase(
-            fact_ref=fact_ref,
-            owner_id=f"owner.{fact_ref}",
-            contract_version="1.0.0",
-            effective_at_utc=effective_at,
-            semantic_fingerprint=f"{fact_ref}-fingerprint-v1",
-            value=value,
+        fact_ref: (
+            value
+            if isinstance(value, FactCase)
+            else FactCase(
+                fact_ref=fact_ref,
+                owner_id=f"owner.{fact_ref}",
+                contract_version="1.0.0",
+                effective_at_utc=effective_at,
+                semantic_fingerprint=f"{fact_ref}-fingerprint-v1",
+                value=value,
+            )
         )
         for fact_ref, value in raw_facts.items()
     }
@@ -341,9 +345,7 @@ class ReferenceSubject:
             for definition in catalogue.definitions
             if not definition.enabled
         )
-        enabled = tuple(
-            definition for definition in catalogue.definitions if definition.enabled
-        )
+        enabled = tuple(definition for definition in catalogue.definitions if definition.enabled)
         if not enabled:
             return self._accepted(
                 catalogue,
@@ -707,9 +709,7 @@ def production_posture_payload(*, status: str = "permitted") -> dict[str, Any]:
     }
 
 
-def production_context_payload(
-    *, facts: dict[str, Any] | None = None
-) -> dict[str, Any]:
+def production_context_payload(*, facts: dict[str, Any] | None = None) -> dict[str, Any]:
     context = valid_context(facts=facts)
     return {
         "context_id": context.context_id,

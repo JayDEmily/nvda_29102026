@@ -32,9 +32,7 @@ def test_dmpv3_custom_extension_leaf_survives_canonical_merge() -> None:
         },
     )
 
-    assert packet.dmpextensions["nvda"]["execution_context"] == {
-        "stack_id": "stack-extension-leaf"
-    }
+    assert packet.dmpextensions["nvda"]["execution_context"] == {"stack_id": "stack-extension-leaf"}
     assert packet.dmpextensions["custom"] == {"reader_hint": "preserve-me"}
 
 

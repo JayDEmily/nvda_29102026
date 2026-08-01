@@ -3,11 +3,10 @@
 from __future__ import annotations
 
 from dataclasses import replace
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime
 from decimal import Decimal
 
 import pytest
-
 from tests.support.m09_k11_k14_contract_harness import (
     CAPITAL_POLICY_VERSION,
     JOIN_POLICY_VERSION,
@@ -68,17 +67,25 @@ def test_reference_caution_reduces_only_by_explicit_policy() -> None:
 def test_reference_hard_max_and_capital_state_max_both_bind() -> None:
     policy = CapitalPolicy(target_pct=Decimal("20"), hard_max_pct=Decimal("12"))
     capital = CapitalStateCase(max_fresh_deployable_pct=Decimal("8"))
-    result = evaluate_reference(SerialBranch(), ParallelBranch(), ModifierReceipt(), capital, capital_policy=policy)
+    result = evaluate_reference(
+        SerialBranch(), ParallelBranch(), ModifierReceipt(), capital, capital_policy=policy
+    )
     assert result.authorised_pct == Decimal("8.00")
     assert result.capital_action == "reduce"
 
 
 def test_reference_m07_kill_switch_blocks_but_posture_scale_does_not_size() -> None:
     blocked = evaluate_reference(
-        SerialBranch(), ParallelBranch(), replace(ModifierReceipt(), kill_switches=("hard_kill",)), CapitalStateCase()
+        SerialBranch(),
+        ParallelBranch(),
+        replace(ModifierReceipt(), kill_switches=("hard_kill",)),
+        CapitalStateCase(),
     )
     clear = evaluate_reference(
-        SerialBranch(), ParallelBranch(), replace(ModifierReceipt(), posture_scale=Decimal("0.01")), CapitalStateCase()
+        SerialBranch(),
+        ParallelBranch(),
+        replace(ModifierReceipt(), posture_scale=Decimal("0.01")),
+        CapitalStateCase(),
     )
     assert blocked.capital_action == "block"
     assert clear.authorised_pct == Decimal("10.00")
@@ -86,7 +93,9 @@ def test_reference_m07_kill_switch_blocks_but_posture_scale_does_not_size() -> N
 
 def test_reference_zero_available_capital_is_no_trade_with_zero_authority() -> None:
     result = evaluate_reference(
-        SerialBranch(), ParallelBranch(), ModifierReceipt(),
+        SerialBranch(),
+        ParallelBranch(),
+        ModifierReceipt(),
         CapitalStateCase(available_capital=Decimal("0")),
     )
     assert result.capital_action == "no_trade"
@@ -130,7 +139,9 @@ def test_reference_rounding_never_increases_percentage_or_notional_authority() -
         SerialBranch(),
         ParallelBranch(),
         ModifierReceipt(),
-        CapitalStateCase(available_capital=Decimal("0.006"), max_fresh_deployable_pct=Decimal("100")),
+        CapitalStateCase(
+            available_capital=Decimal("0.006"), max_fresh_deployable_pct=Decimal("100")
+        ),
         capital_policy=CapitalPolicy(
             target_pct=Decimal("100"),
             hard_max_pct=Decimal("100"),
@@ -191,14 +202,18 @@ def test_each_false_positive_mutant_is_killed(mutant_name: str) -> None:
     elif mutant_name == "lineage_mismatch_pass":
         parallel = replace(parallel, prepared_fingerprint="f" * 64)
     elif mutant_name == "ignores_hard_maximum":
-        capital_policy = replace(capital_policy, target_pct=Decimal("20"), hard_max_pct=Decimal("5"))
+        capital_policy = replace(
+            capital_policy, target_pct=Decimal("20"), hard_max_pct=Decimal("5")
+        )
     elif mutant_name == "accepts_future_policy":
         join_policy = replace(join_policy, version="m09.future.join.v999")
         capital_policy = replace(capital_policy, version="m09.future.capital.v999")
 
     result = MUTANTS[mutant_name](serial, parallel, modifier, capital, join_policy, capital_policy)
     with pytest.raises(ValueError, match="m09_reference_law_mismatch"):
-        validate_result_law(result, serial, parallel, modifier, capital, join_policy, capital_policy)
+        validate_result_law(
+            result, serial, parallel, modifier, capital, join_policy, capital_policy
+        )
 
 
 # Production-facing assertions below are intentionally exact red at C-PROOF until
@@ -213,7 +228,9 @@ def _production_inputs():
         prepared_fingerprint=parallel.prepared_fingerprint,
     )
     modifier = production_modifier_receipt()
-    join_policy = api["FinalRiskJoinPolicy"](policy_version=JOIN_POLICY_VERSION, cautions_prohibit=False)
+    join_policy = api["FinalRiskJoinPolicy"](
+        policy_version=JOIN_POLICY_VERSION, cautions_prohibit=False
+    )
     capital_policy = api["CapitalDeploymentPolicy"](
         policy_version=CAPITAL_POLICY_VERSION,
         target_pct=Decimal("10"),
@@ -244,7 +261,12 @@ def _production_join(service, serial, parallel, policy):
 
 def test_production_exports_frozen_contracts_and_owner_service() -> None:
     api = production_api()
-    for name in ("FinalRiskDecision", "CapitalState", "CapitalDeploymentDecision", "CapitalDeploymentReceipt"):
+    for name in (
+        "FinalRiskDecision",
+        "CapitalState",
+        "CapitalDeploymentDecision",
+        "CapitalDeploymentReceipt",
+    ):
         assert api[name].model_config.get("frozen") is True
         assert api[name].model_config.get("extra") == "forbid"
     assert api["CapitalAuthorityService"]
@@ -268,7 +290,9 @@ def test_production_k11_fail_closed_on_block_and_lineage_conflict() -> None:
         prepared_id=blocked.prepared_id,
         prepared_fingerprint=blocked.prepared_fingerprint,
     )
-    result = _production_join(api["CapitalAuthorityService"](), blocked_serial, blocked, join_policy)
+    result = _production_join(
+        api["CapitalAuthorityService"](), blocked_serial, blocked, join_policy
+    )
     assert result.action == "stand_down"
     forged = parallel.model_copy(update={"prepared_id": "prepared.other"})
     with pytest.raises(ValueError, match="parallel_risk_assessment_contract_invalid"):
@@ -428,7 +452,9 @@ def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None
     api, serial, parallel, _, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
     final = _production_join(service, serial, parallel, join_policy)
-    killed = service.evaluate_capital(final, capital, production_modifier_receipt(kill_switch=True), capital_policy)
+    killed = service.evaluate_capital(
+        final, capital, production_modifier_receipt(kill_switch=True), capital_policy
+    )
     assert killed.action == "block"
     assert killed.authorised_pct == 0
     blocked_parallel = production_parallel_assessment(vix_level=55.0)
@@ -437,7 +463,9 @@ def test_production_k14_kill_switch_and_ineligible_join_zero_authority() -> None
         prepared_fingerprint=blocked_parallel.prepared_fingerprint,
     )
     blocked_final = _production_join(service, blocked_serial, blocked_parallel, join_policy)
-    blocked = service.evaluate_capital(blocked_final, capital, production_modifier_receipt(), capital_policy)
+    blocked = service.evaluate_capital(
+        blocked_final, capital, production_modifier_receipt(), capital_policy
+    )
     assert blocked.action == "block"
     assert blocked.authorised_notional == 0
 
@@ -447,8 +475,22 @@ def test_production_receipt_is_deterministic_and_complete() -> None:
     service = api["CapitalAuthorityService"]()
     final = _production_join(service, serial, parallel, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
-    first = service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC))
-    second = service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026, 8, 2, 1, tzinfo=UTC))
+    first = service.build_receipt(
+        decision,
+        final,
+        capital,
+        modifier,
+        capital_policy,
+        emitted_at_utc=datetime(2026, 8, 1, 1, tzinfo=UTC),
+    )
+    second = service.build_receipt(
+        decision,
+        final,
+        capital,
+        modifier,
+        capital_policy,
+        emitted_at_utc=datetime(2026, 8, 2, 1, tzinfo=UTC),
+    )
     assert isinstance(first, api["CapitalDeploymentReceipt"])
     assert first.receipt_id == second.receipt_id
     assert first.decision_fingerprint == decision.semantic_fingerprint
@@ -460,24 +502,40 @@ def test_production_rejects_unsupported_policy_versions_and_forged_copies() -> N
     api, serial, parallel, modifier, join_policy, capital_policy, capital = _production_inputs()
     service = api["CapitalAuthorityService"]()
     with pytest.raises(ValueError, match="unsupported_final_risk_join_policy"):
-        _production_join(service, serial, parallel, join_policy.model_copy(update={"policy_version": "m09.future.v999"}))
+        _production_join(
+            service,
+            serial,
+            parallel,
+            join_policy.model_copy(update={"policy_version": "m09.future.v999"}),
+        )
     final = _production_join(service, serial, parallel, join_policy)
     with pytest.raises(ValueError, match="unsupported_capital_policy"):
-        service.evaluate_capital(final, capital, modifier, capital_policy.model_copy(update={"policy_version": "m09.future.v999"}))
+        service.evaluate_capital(
+            final,
+            capital,
+            modifier,
+            capital_policy.model_copy(update={"policy_version": "m09.future.v999"}),
+        )
     forged = capital.model_copy(update={"available_capital": Decimal("999999")})
     with pytest.raises(ValueError, match="capital_state_contract_invalid"):
         service.evaluate_capital(final, forged, modifier, capital_policy)
     with pytest.raises(ValueError):
         api["CapitalState"].create(
-            state_id="capital.invalid", account_id="account.001", state_version=1,
+            state_id="capital.invalid",
+            account_id="account.001",
+            state_version=1,
             effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
-            available_capital=Decimal("100"), reserved_capital=Decimal("-1"),
-            max_fresh_deployable_pct=Decimal("10"), source_authority_ref="authority.v1",
+            available_capital=Decimal("100"),
+            reserved_capital=Decimal("-1"),
+            max_fresh_deployable_pct=Decimal("10"),
+            source_authority_ref="authority.v1",
         )
     with pytest.raises(ValueError):
         api["CapitalDeploymentPolicy"](
-            policy_version=CAPITAL_POLICY_VERSION, target_pct=Decimal("10"),
-            hard_max_pct=Decimal("15"), caution_multiplier=Decimal("1.01"),
+            policy_version=CAPITAL_POLICY_VERSION,
+            target_pct=Decimal("10"),
+            hard_max_pct=Decimal("15"),
+            caution_multiplier=Decimal("1.01"),
             rounding_quantum=Decimal("0.01"),
         )
 

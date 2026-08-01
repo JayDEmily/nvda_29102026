@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from copy import deepcopy
 from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
-import hashlib
-import json
 from typing import Any, Callable, Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -160,6 +160,7 @@ K07_DIAGNOSTIC_TARGET_FIELDS = (
     "decisiontraceid",
 )
 
+
 class DmpV3Producer(BaseModel):
     """Bounded producer identity carried by one DMPV3 packet."""
 
@@ -250,7 +251,6 @@ def _require_owned_identifier(value: str | None, field_name: str) -> str:
     return value
 
 
-
 class DmpV3ExecutionContext(BaseModel):
     """Caller-owned governed execution identity shared across one packet join."""
 
@@ -316,6 +316,7 @@ def dmp_v3_carriage_fingerprint(packet: "DeskModulePacketV3") -> str:
     ).encode("utf-8")
     return hashlib.sha256(encoded).hexdigest()
 
+
 def _validate_k07_lineage(
     packetrole: str,
     lineage: DmpV3Lineage,
@@ -330,9 +331,7 @@ def _validate_k07_lineage(
             + ", ".join(sorted(unknown_conditions))
         )
     invalid_conditions = {
-        field_name
-        for field_name in conditional_lineage_fields
-        if matrix[field_name] != "C"
+        field_name for field_name in conditional_lineage_fields if matrix[field_name] != "C"
     }
     if invalid_conditions:
         raise ValueError(
@@ -354,9 +353,7 @@ def _validate_k07_lineage(
     if packetrole in {"diagnostic_packet", "rejection_packet"} and not any(
         _has_value(values[field_name]) for field_name in K07_DIAGNOSTIC_TARGET_FIELDS
     ):
-        raise ValueError(
-            f"lineage.truthful_target_reference is required for {packetrole}"
-        )
+        raise ValueError(f"lineage.truthful_target_reference is required for {packetrole}")
 
 
 def _validate_role_schema(*, packetrole: str, dataschema: str, data: Any) -> None:
@@ -387,9 +384,7 @@ def _k07_validation(
             passed = canonical_envelope_valid
         else:
             if owner_check_validator is None:
-                raise ValueError(
-                    f"validation.{name} requires an owner-supplied check validator"
-                )
+                raise ValueError(f"validation.{name} requires an owner-supplied check validator")
             passed = bool(owner_check_validator(name, owner_check_context))
         if not passed:
             raise ValueError(f"validation.{name} failed")
@@ -559,16 +554,12 @@ def build_dmp_v3_envelope_kwargs(
             elif isinstance(value, str):
                 target_values.append(value)
         if packet_id in target_values:
-            raise ValueError(
-                "diagnostic/rejection occurrence identity must differ from its target"
-            )
+            raise ValueError("diagnostic/rejection occurrence identity must differ from its target")
     if packetrole.startswith("replay_") and lineage.replayref == packet_id:
         raise ValueError("replay occurrence identity must differ from replayref")
     if lineage.sourceartifactids:
         if source_artifact_validator is None:
-            raise ValueError(
-                "sourceartifactids require an owner-supplied retrievability validator"
-            )
+            raise ValueError("sourceartifactids require an owner-supplied retrievability validator")
         unresolved_artifacts = [
             artefact_id
             for artefact_id in lineage.sourceartifactids
@@ -576,14 +567,11 @@ def build_dmp_v3_envelope_kwargs(
         ]
         if unresolved_artifacts:
             raise ValueError(
-                "sourceartifactids are not retrievable: "
-                + ", ".join(unresolved_artifacts)
+                "sourceartifactids are not retrievable: " + ", ".join(unresolved_artifacts)
             )
     if lineage.inputfingerprint is not None:
         if input_fingerprint_validator is None:
-            raise ValueError(
-                "inputfingerprint requires an owner-supplied fingerprint validator"
-            )
+            raise ValueError("inputfingerprint requires an owner-supplied fingerprint validator")
         if not input_fingerprint_validator(lineage.inputfingerprint):
             raise ValueError("inputfingerprint failed owner validation")
 
@@ -596,9 +584,7 @@ def build_dmp_v3_envelope_kwargs(
                 "degraded carriage requires an owner-supplied optional limitation validator"
             )
         if not degraded_consumer_restriction or not degraded_consumer_restriction.strip():
-            raise ValueError(
-                "degraded carriage requires an explicit consumer restriction"
-            )
+            raise ValueError("degraded carriage requires an explicit consumer restriction")
         for limitation in limitations:
             if not optional_limitation_validator(limitation):
                 raise ValueError(f"optional limitation is not admitted: {limitation}")
@@ -686,9 +672,7 @@ def build_dmp_v3_envelope_kwargs(
     }
     validation = _k07_validation(
         packetrole=packetrole,
-        canonical_envelope_valid=_canonical_envelope_is_valid(
-            envelope_without_validation
-        ),
+        canonical_envelope_valid=_canonical_envelope_is_valid(envelope_without_validation),
         owner_check_validator=owner_check_validator,
         owner_check_context=owner_check_context,
         optional_limitations=limitations,

@@ -21,6 +21,8 @@ def _require_attr(module, attr_name: str):
 def test_review_stage_surface_is_present() -> None:
     review_stage = _require_module("nvda_desk.downstream.review_stage")
     assert review_stage.__name__ == "nvda_desk.downstream.review_stage"
-    assert _require_attr(review_stage, "ReviewStageService") is getattr(review_stage, "ReviewStageService")
+    assert _require_attr(review_stage, "ReviewStageService") is getattr(
+        review_stage, "ReviewStageService"
+    )
     for attr_name in ("build_review_packet", "attach_lineage", "attach_imported_citations"):
         assert _require_attr(review_stage, attr_name) is getattr(review_stage, attr_name)

@@ -141,9 +141,7 @@ def _parse_document_header(
             namespaces: dict[str, VocabularyNamespace] = {}
             for namespace, raw_scope in parsed.items():
                 if not isinstance(namespace, str) or not isinstance(raw_scope, dict):
-                    raise ValueError(
-                        "Projection namespace scopes must contain keyed objects"
-                    )
+                    raise ValueError("Projection namespace scopes must contain keyed objects")
                 scope = VocabularyNamespace(
                     namespace=namespace,
                     scan_paths=list(raw_scope.get("scan_paths", [])),
@@ -291,9 +289,7 @@ def read_registry_admission_records(
 
     canonical_ids = [
         (
-            record.projection.get("namespace", "global")
-            + "."
-            + record.projection["canonical_slug"]
+            record.projection.get("namespace", "global") + "." + record.projection["canonical_slug"]
         ).casefold()
         for record in records
     ]
@@ -303,9 +299,7 @@ def read_registry_admission_records(
 
 
 def build_document() -> VocabularyDocument:
-    schema_version, registry_version, notes, namespaces, records = (
-        read_registry_admission_records()
-    )
+    schema_version, registry_version, notes, namespaces, records = read_registry_admission_records()
     document = VocabularyDocument(
         schema_version=schema_version,
         registry_version=registry_version,

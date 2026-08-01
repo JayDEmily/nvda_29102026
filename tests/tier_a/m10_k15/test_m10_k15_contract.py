@@ -1,4 +1,5 @@
 """M10 K15 proof for offline placement and execution evidence."""
+
 from __future__ import annotations
 
 from dataclasses import replace
@@ -6,10 +7,12 @@ from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 
 import pytest
-
 from tests.support.m10_k15_contract_harness import (
-    MUTANTS, PLACEMENT_POLICY_VERSION, PlacementCase, evaluate_reference,
-    production_api, production_capital_receipt,
+    MUTANTS,
+    PlacementCase,
+    evaluate_reference,
+    production_api,
+    production_capital_receipt,
 )
 
 
@@ -24,11 +27,22 @@ def test_reference_forms_downward_bounded_limit_placement() -> None:
 
 def test_reference_rejects_nonpositive_or_ineligible_capital() -> None:
     for capital in (
-        replace(PlacementCase().capital, action="block", authorised_pct=Decimal("0"), authorised_notional=Decimal("0")),
-        replace(PlacementCase().capital, action="no_trade", authorised_pct=Decimal("0"), authorised_notional=Decimal("0")),
+        replace(
+            PlacementCase().capital,
+            action="block",
+            authorised_pct=Decimal("0"),
+            authorised_notional=Decimal("0"),
+        ),
+        replace(
+            PlacementCase().capital,
+            action="no_trade",
+            authorised_pct=Decimal("0"),
+            authorised_notional=Decimal("0"),
+        ),
         replace(PlacementCase().capital, serial_candidate_id=None),
     ):
-        with pytest.raises(ValueError): evaluate_reference(replace(PlacementCase(), capital=capital))
+        with pytest.raises(ValueError):
+            evaluate_reference(replace(PlacementCase(), capital=capital))
 
 
 def test_reference_rejects_foreign_policy_shape_and_time() -> None:
@@ -37,21 +51,26 @@ def test_reference_rejects_foreign_policy_shape_and_time() -> None:
         replace(PlacementCase(), symbol="AAPL"),
         replace(PlacementCase(), side="sell"),
         replace(PlacementCase(), order_type="market"),
-        replace(PlacementCase(), intent_at_utc=datetime(2026,8,1,0,59,tzinfo=UTC)),
+        replace(PlacementCase(), intent_at_utc=datetime(2026, 8, 1, 0, 59, tzinfo=UTC)),
     )
     for case in cases:
-        with pytest.raises(ValueError): evaluate_reference(case)
+        with pytest.raises(ValueError):
+            evaluate_reference(case)
 
 
 def test_reference_rejects_sub_quantum_result() -> None:
     with pytest.raises(ValueError, match="sub_quantum"):
-        evaluate_reference(replace(PlacementCase(), limit_price=Decimal("20000"), quantity_quantum=Decimal("1")))
+        evaluate_reference(
+            replace(PlacementCase(), limit_price=Decimal("20000"), quantity_quantum=Decimal("1"))
+        )
 
 
 def test_reference_identity_is_deterministic_and_binds_time() -> None:
     first = evaluate_reference(PlacementCase())
     second = evaluate_reference(PlacementCase())
-    changed = evaluate_reference(replace(PlacementCase(), intent_at_utc=PlacementCase().intent_at_utc + timedelta(seconds=1)))
+    changed = evaluate_reference(
+        replace(PlacementCase(), intent_at_utc=PlacementCase().intent_at_utc + timedelta(seconds=1))
+    )
     assert first == second
     assert first.intent_id != changed.intent_id
 
@@ -74,11 +93,14 @@ def test_named_mutants_are_detectable(name: str) -> None:
         assert output == expected
 
 
-
 def test_reference_generated_rounding_never_exceeds_authority() -> None:
     for cents in range(101, 501, 17):
         for quantum in (Decimal("0.001"), Decimal("0.01"), Decimal("1")):
-            case = replace(PlacementCase(), limit_price=Decimal(cents) / Decimal("100"), quantity_quantum=quantum)
+            case = replace(
+                PlacementCase(),
+                limit_price=Decimal(cents) / Decimal("100"),
+                quantity_quantum=quantum,
+            )
             result = evaluate_reference(case)
             assert result.quantity % quantum == 0
             assert result.planned_notional <= case.capital.authorised_notional
@@ -86,28 +108,38 @@ def test_reference_generated_rounding_never_exceeds_authority() -> None:
 
 
 def test_production_rejects_nonfinite_numeric_inputs() -> None:
-    api = production_api(); receipt = production_capital_receipt(); gateway = api["ExecutionGateway"]()
+    api = production_api()
+    receipt = production_capital_receipt()
+    gateway = api["ExecutionGateway"]()
     for value in (Decimal("NaN"), Decimal("Infinity"), Decimal("-Infinity")):
         with pytest.raises(ValueError):
-            gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=value, intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+            gateway.create_intent(
+                receipt,
+                api["PlacementPolicy"](quantity_quantum=Decimal("0.001")),
+                limit_price=value,
+                intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+            )
         with pytest.raises(ValueError):
             api["PlacementPolicy"](quantity_quantum=value)
 
 
 def test_production_execution_time_is_utc_and_not_before_intent() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
     with pytest.raises(ValueError):
-        gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,0,tzinfo=UTC))
+        gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 0, tzinfo=UTC))
     with pytest.raises(ValueError):
-        gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2))
+        gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2))
     assert port.list_events() == ()
     assert port.list_receipts() == ()
 
 
 def test_production_event_and_receipt_views_are_detached() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
-    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
-    events = port.list_events(); receipts = port.list_receipts()
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
+    events = port.list_events()
+    receipts = port.list_receipts()
     assert events == port.list_events()
     assert receipts == (receipt,)
     assert events is not port.list_events()
@@ -119,7 +151,12 @@ def _valid_production():
     receipt = production_capital_receipt()
     policy = api["PlacementPolicy"](quantity_quantum=Decimal("0.001"))
     gateway = api["ExecutionGateway"]()
-    intent = gateway.create_intent(receipt, policy, limit_price=Decimal("123.45"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+    intent = gateway.create_intent(
+        receipt,
+        policy,
+        limit_price=Decimal("123.45"),
+        intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+    )
     return api, receipt, policy, gateway, intent
 
 
@@ -147,30 +184,59 @@ def test_production_rejects_ineligible_receipt_and_unsupported_policy() -> None:
     receipt = production_capital_receipt()
     gateway = api["ExecutionGateway"]()
     with pytest.raises(ValueError):
-        gateway.create_intent(receipt.model_copy(update={"action":"block"}), api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+        gateway.create_intent(
+            receipt.model_copy(update={"action": "block"}),
+            api["PlacementPolicy"](quantity_quantum=Decimal("0.001")),
+            limit_price=Decimal("100"),
+            intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+        )
     with pytest.raises(ValueError):
-        api["PlacementPolicy"].model_validate({"policy_version":"m10.future.v999","quantity_quantum":"0.001"})
+        api["PlacementPolicy"].model_validate(
+            {"policy_version": "m10.future.v999", "quantity_quantum": "0.001"}
+        )
 
 
 def test_production_rejects_wrong_shape_time_and_subquantum() -> None:
-    api = production_api(); receipt = production_capital_receipt(); gateway = api["ExecutionGateway"]()
+    api = production_api()
+    receipt = production_capital_receipt()
+    gateway = api["ExecutionGateway"]()
     for kwargs in (
-        {"symbol":"AAPL"}, {"side":"sell"}, {"order_type":"market"}, {"time_in_force":"gtc"},
+        {"symbol": "AAPL"},
+        {"side": "sell"},
+        {"order_type": "market"},
+        {"time_in_force": "gtc"},
     ):
         with pytest.raises(ValueError):
-            policy = api["PlacementPolicy"].model_validate({"quantity_quantum":"0.001", **kwargs})
-            gateway.create_intent(receipt, policy, limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
-    with pytest.raises(ValueError): gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("1")), limit_price=Decimal("20000"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
-    with pytest.raises(ValueError): gateway.create_intent(receipt, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,0,59,tzinfo=UTC))
+            policy = api["PlacementPolicy"].model_validate({"quantity_quantum": "0.001", **kwargs})
+            gateway.create_intent(
+                receipt,
+                policy,
+                limit_price=Decimal("100"),
+                intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+            )
+    with pytest.raises(ValueError):
+        gateway.create_intent(
+            receipt,
+            api["PlacementPolicy"](quantity_quantum=Decimal("1")),
+            limit_price=Decimal("20000"),
+            intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+        )
+    with pytest.raises(ValueError):
+        gateway.create_intent(
+            receipt,
+            api["PlacementPolicy"](quantity_quantum=Decimal("0.001")),
+            limit_price=Decimal("100"),
+            intent_at_utc=datetime(2026, 8, 1, 0, 59, tzinfo=UTC),
+        )
 
 
 def test_production_paper_execution_emits_exact_ordered_events_and_receipt() -> None:
     api, _, _, gateway, intent = _valid_production()
     port = api["PaperExecutionPort"]()
-    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
     events = port.list_events()
     assert [e.event_type for e in events] == ["order_accepted", "fill_recorded"]
-    assert [e.sequence for e in events] == [1,2]
+    assert [e.sequence for e in events] == [1, 2]
     assert receipt.order_event_id == events[0].event_id
     assert receipt.fill_event_id == events[1].event_id
     assert receipt.executed_quantity == intent.quantity
@@ -181,23 +247,27 @@ def test_production_paper_execution_emits_exact_ordered_events_and_receipt() -> 
 
 
 def test_production_exact_replay_is_idempotent_without_duplicate_events() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
-    first = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
-    second = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,3,tzinfo=UTC))
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    first = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
+    second = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 3, tzinfo=UTC))
     assert first.receipt_id == second.receipt_id
     assert len(port.list_events()) == 2
     assert len(port.list_receipts()) == 1
 
 
 def test_production_forged_copies_and_conflicting_scope_fail_closed() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
-    gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
     forged = intent.model_copy(update={"planned_notional": intent.planned_notional + Decimal("1")})
-    with pytest.raises(ValueError): gateway.execute(forged, port, executed_at_utc=datetime(2026,8,1,1,3,tzinfo=UTC))
+    with pytest.raises(ValueError):
+        gateway.execute(forged, port, executed_at_utc=datetime(2026, 8, 1, 1, 3, tzinfo=UTC))
 
 
 def test_production_port_has_no_position_or_portfolio_authority() -> None:
-    api, _, _, _, _ = _valid_production(); port = api["PaperExecutionPort"]()
+    api, _, _, _, _ = _valid_production()
+    port = api["PaperExecutionPort"]()
     assert not hasattr(port, "positions")
     assert not hasattr(port, "portfolio")
     assert not hasattr(port, "average_cost")
@@ -206,21 +276,27 @@ def test_production_port_has_no_position_or_portfolio_authority() -> None:
 
 
 def test_gate_d_receipt_embeds_exact_intent_and_m13_scope() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
-    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
     assert receipt.intent == intent
     assert receipt.transaction_command_id == f"m10.execute:{intent.intent_id}"
     assert receipt.transaction_command_type == "m10.paper_execute"
     assert receipt.transaction_consistency_unit_id == port.port_id
     assert receipt.transaction_input_fingerprint == intent.semantic_fingerprint
     assert receipt.transaction_policy_version == port.port_version
-    assert receipt.transaction_resulting_state_version == receipt.transaction_prior_state_version + 1
+    assert (
+        receipt.transaction_resulting_state_version == receipt.transaction_prior_state_version + 1
+    )
 
 
 def test_gate_d_revalidates_forged_event_and_receipt_copies() -> None:
-    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
-    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
-    forged_event = receipt.fill_event.model_copy(update={"quantity": receipt.fill_event.quantity + Decimal("1")})
+    api, _, _, gateway, intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC))
+    forged_event = receipt.fill_event.model_copy(
+        update={"quantity": receipt.fill_event.quantity + Decimal("1")}
+    )
     with pytest.raises(ValueError):
         api["ExecutionEvent"].model_validate(forged_event.model_dump(mode="python"))
     forged_receipt = receipt.model_copy(update={"fill_event": forged_event})
@@ -229,11 +305,23 @@ def test_gate_d_revalidates_forged_event_and_receipt_copies() -> None:
 
 
 def test_gate_d_multiple_intents_append_deterministically_and_replay_old_scope() -> None:
-    api, receipt, policy, gateway, first_intent = _valid_production(); port = api["PaperExecutionPort"]()
-    first = gateway.execute(first_intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
-    second_intent = gateway.create_intent(receipt, policy, limit_price=Decimal("124.00"), intent_at_utc=datetime(2026,8,1,1,3,tzinfo=UTC))
-    second = gateway.execute(second_intent, port, executed_at_utc=datetime(2026,8,1,1,4,tzinfo=UTC))
-    replay = gateway.execute(first_intent, port, executed_at_utc=datetime(2026,8,1,1,5,tzinfo=UTC))
+    api, receipt, policy, gateway, first_intent = _valid_production()
+    port = api["PaperExecutionPort"]()
+    first = gateway.execute(
+        first_intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 2, tzinfo=UTC)
+    )
+    second_intent = gateway.create_intent(
+        receipt,
+        policy,
+        limit_price=Decimal("124.00"),
+        intent_at_utc=datetime(2026, 8, 1, 1, 3, tzinfo=UTC),
+    )
+    second = gateway.execute(
+        second_intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 4, tzinfo=UTC)
+    )
+    replay = gateway.execute(
+        first_intent, port, executed_at_utc=datetime(2026, 8, 1, 1, 5, tzinfo=UTC)
+    )
     assert replay.receipt_id == first.receipt_id
     assert second.transaction_sequence == 2
     assert len(port.list_events()) == 4
@@ -241,7 +329,16 @@ def test_gate_d_multiple_intents_append_deterministically_and_replay_old_scope()
 
 
 def test_gate_d_rejects_forged_m09_receipt_even_when_action_looks_positive() -> None:
-    api = production_api(); receipt = production_capital_receipt(); gateway = api["ExecutionGateway"]()
-    forged = receipt.model_copy(update={"authorised_notional": receipt.authorised_notional + Decimal("100")})
+    api = production_api()
+    receipt = production_capital_receipt()
+    gateway = api["ExecutionGateway"]()
+    forged = receipt.model_copy(
+        update={"authorised_notional": receipt.authorised_notional + Decimal("100")}
+    )
     with pytest.raises(ValueError, match="capital_deployment_receipt_contract_invalid"):
-        gateway.create_intent(forged, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))
+        gateway.create_intent(
+            forged,
+            api["PlacementPolicy"](quantity_quantum=Decimal("0.001")),
+            limit_price=Decimal("100"),
+            intent_at_utc=datetime(2026, 8, 1, 1, 1, tzinfo=UTC),
+        )

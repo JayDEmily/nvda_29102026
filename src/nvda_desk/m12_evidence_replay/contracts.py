@@ -1,4 +1,5 @@
 """Immutable M12 K19 review and replay contracts."""
+
 from __future__ import annotations
 
 from datetime import UTC, datetime
@@ -85,7 +86,9 @@ class ReplayMaterial(BaseModel):
     @field_validator("material_time_utc")
     @classmethod
     def _time(cls, value: datetime | None) -> datetime | None:
-        if value is not None and (value.tzinfo is None or value.utcoffset() != UTC.utcoffset(value)):
+        if value is not None and (
+            value.tzinfo is None or value.utcoffset() != UTC.utcoffset(value)
+        ):
             raise ValueError("material_time_must_be_utc")
         return value
 
@@ -119,7 +122,9 @@ class ReplayMaterial(BaseModel):
         canonical_content = validated_content.model_dump(mode="python")
         if semantic_fingerprint(canonical_content) != self.content_fingerprint:
             raise ValueError("replay_material_content_fingerprint_mismatch")
-        expected = semantic_fingerprint(_material(self, exclude={"material_id", "semantic_fingerprint"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"material_id", "semantic_fingerprint"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("replay_material_fingerprint_mismatch")
         if self.material_id != f"replay-material:{expected[:24]}":
@@ -154,10 +159,17 @@ class ReplayEnvelope(BaseModel):
 
     @model_validator(mode="after")
     def _law(self) -> "ReplayEnvelope":
-        for field_name in ("replay_run_id", "target_id", "original_output_id", "original_output_occurrence_id"):
+        for field_name in (
+            "replay_run_id",
+            "target_id",
+            "original_output_id",
+            "original_output_occurrence_id",
+        ):
             _nonempty(getattr(self, field_name), f"{field_name}_must_be_nonempty")
         _hash(self.original_output_fingerprint, "original_output_fingerprint_invalid")
-        reasons = _unique_nonblank(self.original_reasons, "original_reasons_must_be_unique_nonblank")
+        reasons = _unique_nonblank(
+            self.original_reasons, "original_reasons_must_be_unique_nonblank"
+        )
         materials = tuple(
             ReplayMaterial.model_validate(item.model_dump(mode="python")) for item in self.materials
         )
@@ -179,7 +191,9 @@ class ReplayEnvelope(BaseModel):
         )
         if self.replay_class == "governed_semantic_reexecution" and not executable:
             raise ValueError("executable_versions_required_for_governed_reexecution")
-        missing = _unique_nonblank(self.missing_material, "missing_material_must_be_unique_nonblank")
+        missing = _unique_nonblank(
+            self.missing_material, "missing_material_must_be_unique_nonblank"
+        )
         unverifiable = _unique_nonblank(
             self.unverifiable_material, "unverifiable_material_must_be_unique_nonblank"
         )
@@ -243,10 +257,12 @@ class ReplayAssessment(BaseModel):
     @model_validator(mode="after")
     def _law(self) -> "ReplayAssessment":
         _hash(self.envelope_fingerprint, "assessment_envelope_fingerprint_invalid")
-        verified = _unique_nonblank(
+        _unique_nonblank(
             self.verified_material_ids, "verified_material_ids_must_be_unique_nonblank"
         )
-        missing = _unique_nonblank(self.missing_material, "missing_material_must_be_unique_nonblank")
+        missing = _unique_nonblank(
+            self.missing_material, "missing_material_must_be_unique_nonblank"
+        )
         unverifiable = _unique_nonblank(
             self.unverifiable_material, "unverifiable_material_must_be_unique_nonblank"
         )
@@ -261,7 +277,10 @@ class ReplayAssessment(BaseModel):
         if self.authority_status == "comparison_only":
             if self.replay_class != "comparison_only":
                 raise ValueError("comparison_status_requires_comparison_class")
-            if self.reproduced_output_id is not None or self.reproduced_output_fingerprint is not None:
+            if (
+                self.reproduced_output_id is not None
+                or self.reproduced_output_fingerprint is not None
+            ):
                 raise ValueError("comparison_only_cannot_carry_reexecution_result")
         elif self.authority_status == "non_authoritative_incomplete":
             if not incomplete:
@@ -278,7 +297,9 @@ class ReplayAssessment(BaseModel):
                 raise ValueError("authoritative_match_status_inconsistent")
             if self.reproduced_output_id is None or self.reproduced_output_fingerprint is None:
                 raise ValueError("authoritative_match_requires_reproduced_output")
-        expected = semantic_fingerprint(_material(self, exclude={"assessment_id", "semantic_fingerprint"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"assessment_id", "semantic_fingerprint"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("replay_assessment_fingerprint_mismatch")
         if self.assessment_id != f"replay-assessment:{expected[:24]}":
@@ -319,15 +340,25 @@ class ReviewProjection(BaseModel):
         for field_name, values, reason in (
             ("verified", self.verified_material_ids, "projection_verified_material_invalid"),
             ("missing", self.missing_material, "projection_missing_material_invalid"),
-            ("unverifiable", self.unverifiable_material, "projection_unverifiable_material_invalid"),
+            (
+                "unverifiable",
+                self.unverifiable_material,
+                "projection_unverifiable_material_invalid",
+            ),
             ("contradictions", self.contradictions, "projection_contradictions_invalid"),
             ("exact", self.exact_matches, "projection_exact_matches_invalid"),
             ("mismatches", self.mismatches, "projection_mismatches_invalid"),
         ):
             validated[field_name] = _unique_nonblank(values, reason)
-        incomplete = bool(validated["missing"] or validated["unverifiable"] or validated["contradictions"])
+        incomplete = bool(
+            validated["missing"] or validated["unverifiable"] or validated["contradictions"]
+        )
         if self.authority_status == "comparison_only":
-            if self.replay_class != "comparison_only" or validated["exact"] or validated["mismatches"]:
+            if (
+                self.replay_class != "comparison_only"
+                or validated["exact"]
+                or validated["mismatches"]
+            ):
                 raise ValueError("projection_status_comparison_only_inconsistent")
         elif self.authority_status == "non_authoritative_incomplete":
             if not incomplete or validated["mismatches"]:
@@ -338,7 +369,9 @@ class ReviewProjection(BaseModel):
         elif self.authority_status == "authoritative_match":
             if incomplete or validated["mismatches"] or not validated["exact"]:
                 raise ValueError("projection_status_authoritative_inconsistent")
-        expected = semantic_fingerprint(_material(self, exclude={"projection_id", "semantic_fingerprint"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"projection_id", "semantic_fingerprint"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("review_projection_fingerprint_mismatch")
         if self.projection_id != f"review-projection:{expected[:24]}":

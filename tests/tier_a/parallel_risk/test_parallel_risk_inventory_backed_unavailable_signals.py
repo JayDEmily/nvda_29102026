@@ -64,7 +64,9 @@ def test_inventory_backed_excluded_signals_are_not_demanded_at_runtime() -> None
     assert result.presence_by_signal_id["capital_sizing_signal"] == "excluded"
     assert result.presence_by_signal_id["order_instruction_signal"] == "excluded"
     assert "capital_sizing_signal" not in {entry.signal_id for entry in result.signal_snapshot}
-    assert "order_instruction_signal" not in {entry.signal_id for entry in result.missing_signal_register}
+    assert "order_instruction_signal" not in {
+        entry.signal_id for entry in result.missing_signal_register
+    }
 
 
 def test_inventory_backed_unavailable_not_yet_sourced_and_quarantine_states() -> None:

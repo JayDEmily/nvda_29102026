@@ -14,7 +14,6 @@ import subprocess
 import sys
 import tempfile
 import time
-from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Iterable, Mapping
@@ -23,7 +22,6 @@ if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scripts.proof_authority import AuthorityError, load_and_validate_authority
-
 
 DEFAULT_RECEIPT_DIR = Path("var/proof_receipts")
 DEFAULT_TIMEOUT_SECONDS = 300
@@ -54,9 +52,9 @@ def _sha256_path(path: Path) -> str:
 def _canonical_payload(payload: Mapping[str, Any]) -> bytes:
     unsigned = dict(payload)
     unsigned.pop("evidence_hash", None)
-    return json.dumps(
-        unsigned, sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    ).encode("utf-8")
+    return json.dumps(unsigned, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode(
+        "utf-8"
+    )
 
 
 def sign_receipt(payload: Mapping[str, Any]) -> dict[str, Any]:
@@ -75,9 +73,7 @@ def verify_receipt(payload: Mapping[str, Any]) -> None:
         raise PromotionError("receipt has no evidence_hash")
     expected = _sha256_bytes(_canonical_payload(payload))
     if actual != expected:
-        raise PromotionError(
-            f"receipt evidence_hash mismatch: expected {expected}, got {actual}"
-        )
+        raise PromotionError(f"receipt evidence_hash mismatch: expected {expected}, got {actual}")
 
 
 def _git(repo_root: Path, *args: str) -> str:
@@ -89,9 +85,7 @@ def _git(repo_root: Path, *args: str) -> str:
         capture_output=True,
     )
     if completed.returncode != 0:
-        raise PromotionError(
-            f"git {' '.join(args)} failed: {completed.stderr.strip()}"
-        )
+        raise PromotionError(f"git {' '.join(args)} failed: {completed.stderr.strip()}")
     return completed.stdout.strip()
 
 
@@ -99,9 +93,7 @@ def git_identity(repo_root: Path) -> dict[str, str]:
     return {
         "commit": _git(repo_root, "rev-parse", "HEAD"),
         "branch": _git(repo_root, "branch", "--show-current"),
-        "status": _git(
-            repo_root, "status", "--porcelain=v1", "--untracked-files=all"
-        ),
+        "status": _git(repo_root, "status", "--porcelain=v1", "--untracked-files=all"),
     }
 
 
@@ -254,21 +246,16 @@ def _environment_identity(repo_root: Path) -> dict[str, Any]:
         "platform": platform.platform(),
         "pytest_disable_plugin_autoload": "1",
         "environment_files": {
-            path.as_posix(): _sha256_path(repo_root / path)
-            for path in ENVIRONMENT_PATHS
+            path.as_posix(): _sha256_path(repo_root / path) for path in ENVIRONMENT_PATHS
         },
     }
 
 
 def _authority_identity(repo_root: Path) -> dict[str, str]:
-    return {
-        path.as_posix(): _sha256_path(repo_root / path) for path in AUTHORITY_PATHS
-    }
+    return {path.as_posix(): _sha256_path(repo_root / path) for path in AUTHORITY_PATHS}
 
 
-def build_check_summary(
-    promotion_set_id: str, *, repo_root: Path = Path(".")
-) -> dict[str, Any]:
+def build_check_summary(promotion_set_id: str, *, repo_root: Path = Path(".")) -> dict[str, Any]:
     model = load_and_validate_authority(repo_root=repo_root)
     promotion = model.promotion_sets.get(promotion_set_id)
     if promotion is None:
@@ -387,16 +374,12 @@ def main(argv: Iterable[str] | None = None) -> int:
             summary = build_check_summary(args.promotion_set)
             print(json.dumps(summary, indent=2, sort_keys=True))
             return 0
-        receipt = execute_promotion_set(
-            args.promotion_set, timeout_seconds=args.timeout
-        )
+        receipt = execute_promotion_set(args.promotion_set, timeout_seconds=args.timeout)
     except (AuthorityError, PromotionError, OSError, json.JSONDecodeError) as exc:
         print(f"promotion_gate=FAIL {exc}", file=sys.stderr)
         return 2
 
-    receipt_path = args.receipt or (
-        DEFAULT_RECEIPT_DIR / f"{args.promotion_set}.json"
-    )
+    receipt_path = args.receipt or (DEFAULT_RECEIPT_DIR / f"{args.promotion_set}.json")
     _write_receipt(receipt_path, receipt)
     print(
         f"promotion_gate={receipt['status']} set={args.promotion_set} "

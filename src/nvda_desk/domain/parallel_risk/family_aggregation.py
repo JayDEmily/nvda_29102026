@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from collections import defaultdict
 
-from nvda_desk.contracts.parallel_risk import ParallelRiskAtomStateValue, RiskAtomState, RiskFamilyState
+from nvda_desk.contracts.parallel_risk import (
+    ParallelRiskAtomStateValue,
+    RiskAtomState,
+    RiskFamilyState,
+)
 
 _STATE_RANK: dict[ParallelRiskAtomStateValue, int] = {
     "inactive": 0,
@@ -38,7 +42,9 @@ def aggregate_risk_family_states(atoms: list[RiskAtomState]) -> list[RiskFamilyS
         )
         if not dominant_atoms:
             dominant_atoms = sorted(
-                atom.risk_atom_id for atom in family_atoms if _STATE_RANK[atom.state] == highest_rank
+                atom.risk_atom_id
+                for atom in family_atoms
+                if _STATE_RANK[atom.state] == highest_rank
             )
         families.append(
             RiskFamilyState(

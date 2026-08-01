@@ -83,10 +83,19 @@ class ParallelRiskPacketAdapter:
             }
         }
         expected_checks = {
-            "producer_identity", "role_schema_consistency", "execution_context_ownership",
-            "typed_payload", "lineage_profile", "authority_boundary", "extension_bounds",
-            "summary_consistency", "parallel_lane_identity", "lawful_input_boundary",
-            "material_dependency_closure", "risk_input_fingerprint", "risk_output_identity",
+            "producer_identity",
+            "role_schema_consistency",
+            "execution_context_ownership",
+            "typed_payload",
+            "lineage_profile",
+            "authority_boundary",
+            "extension_bounds",
+            "summary_consistency",
+            "parallel_lane_identity",
+            "lawful_input_boundary",
+            "material_dependency_closure",
+            "risk_input_fingerprint",
+            "risk_output_identity",
             "serial_candidate_and_capital_separation",
         }
         return build_parallel_risk_packet(

@@ -168,9 +168,7 @@ class DerivationReceipt(BaseModel):
     temporal_alignment_policy: str = Field(min_length=1)
     result_state: Literal["derived", "missing", "failed"]
     value: PreparedScalar
-    receipt_fingerprint: str | None = Field(
-        default=None, pattern=r"^[0-9a-f]{64}$"
-    )
+    receipt_fingerprint: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
 
     @model_validator(mode="after")
     def _validate_derivation(self) -> "DerivationReceipt":
@@ -181,8 +179,7 @@ class DerivationReceipt(BaseModel):
         if len(self.input_fingerprints) != len(self.input_candidate_ids):
             raise ValueError("derivation_input_fingerprint_lineage_mismatch")
         if any(
-            len(item) != 64
-            or any(character not in "0123456789abcdef" for character in item)
+            len(item) != 64 or any(character not in "0123456789abcdef" for character in item)
             for item in self.input_fingerprints
         ):
             raise ValueError("derivation_input_fingerprint_invalid")
@@ -369,9 +366,7 @@ class PreparedDataEnvelope(BaseModel):
 def _sorted_source_refs(
     refs: tuple[SourceCaptureReference, ...],
 ) -> tuple[SourceCaptureReference, ...]:
-    return tuple(
-        sorted(refs, key=lambda item: (item.capture_id, item.source_artifact_id))
-    )
+    return tuple(sorted(refs, key=lambda item: (item.capture_id, item.source_artifact_id)))
 
 
 def prepared_input_fingerprint(
@@ -388,8 +383,7 @@ def prepared_input_fingerprint(
             "fingerprint_policy_version": fingerprint_policy_version,
             "canonicalisation_version": canonicalisation_version,
             "source_capture_refs": [
-                item.model_dump(mode="python")
-                for item in _sorted_source_refs(source_capture_refs)
+                item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
             ],
             "input_schema_versions": _sorted_pairs(input_schema_versions),
         }
@@ -428,8 +422,7 @@ def prepared_envelope_fingerprint(
         {
             "schema_version": schema_version,
             "source_capture_refs": [
-                item.model_dump(mode="python")
-                for item in _sorted_source_refs(source_capture_refs)
+                item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
             ],
             "input_schema_versions": _sorted_pairs(input_schema_versions),
             "preparation_policy_version": preparation_policy_version,

@@ -7,12 +7,12 @@ from pathlib import Path
 import pytest
 
 from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
-from nvda_desk.services.downstream_live_inventory_service import (
-    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
-)
 from nvda_desk.persistence.receipt_ledger import ReceiptLedger
 from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
 from nvda_desk.repositories.position_repository import PositionRepository
+from nvda_desk.services.downstream_live_inventory_service import (
+    DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
+)
 
 
 def _require_module(module_path: str):
@@ -31,7 +31,9 @@ def _require_attr(module, attr_name: str):
 def test_downstream_live_inventory_service_surface_is_present() -> None:
     live_inventory = _require_module("nvda_desk.downstream.live_inventory")
     assert live_inventory.__name__ == "nvda_desk.downstream.live_inventory"
-    assert _require_attr(live_inventory, "DownstreamLiveInventoryService") is getattr(live_inventory, "DownstreamLiveInventoryService")
+    assert _require_attr(live_inventory, "DownstreamLiveInventoryService") is getattr(
+        live_inventory, "DownstreamLiveInventoryService"
+    )
 
 
 def test_live_inventory_snapshot_reads_position_and_capital_state_copy_safely() -> None:
@@ -294,6 +296,7 @@ def test_live_inventory_reconciliation_rejects_placement_authority_keys() -> Non
             reconciliation_id="recon-1",
         )
 
+
 def test_live_inventory_reconciliation_rejects_empty_fill_evidence() -> None:
     service = DownstreamLiveInventoryService(position_repository=PositionRepository())
 
@@ -301,7 +304,9 @@ def test_live_inventory_reconciliation_rejects_empty_fill_evidence() -> None:
         service.reconcile_fill_evidence([], reconciliation_id="recon-1")
 
 
-def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation() -> None:
+def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_before_mutation() -> (
+    None
+):
     positions = PositionRepository()
     service = DownstreamLiveInventoryService(position_repository=positions)
 
@@ -327,7 +332,9 @@ def test_live_inventory_reconciliation_rejects_duplicate_fill_evidence_identity_
     assert positions.read_position("pos-1") is None
 
 
-def test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting() -> None:
+def test_live_inventory_reconciliation_rejects_replayed_fill_evidence_identity_without_double_counting() -> (
+    None
+):
     positions = PositionRepository()
     positions.write_position(
         "pos-1",

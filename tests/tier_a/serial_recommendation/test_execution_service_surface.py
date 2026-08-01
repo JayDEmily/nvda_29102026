@@ -27,5 +27,9 @@ def test_execution_service_and_domain_surfaces_are_present() -> None:
     assert lifecycle_plan.__name__ == "nvda_desk.domain.execution.lifecycle_plan"
 
     assert _require_attr(service, "ExecutionService") is getattr(service, "ExecutionService")
-    assert _require_attr(candidate_expression, "evaluate_execution_expression") is getattr(candidate_expression, "evaluate_execution_expression")
-    assert _require_attr(lifecycle_plan, "build_lifecycle_plan") is getattr(lifecycle_plan, "build_lifecycle_plan")
+    assert _require_attr(candidate_expression, "evaluate_execution_expression") is getattr(
+        candidate_expression, "evaluate_execution_expression"
+    )
+    assert _require_attr(lifecycle_plan, "build_lifecycle_plan") is getattr(
+        lifecycle_plan, "build_lifecycle_plan"
+    )

@@ -6,7 +6,7 @@ import importlib
 import json
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime, timedelta
-from decimal import Decimal, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal
 from hashlib import sha256
 from typing import Any, Callable, Final
 
@@ -154,7 +154,10 @@ def evaluate_reference(
         if parallel.unknowns:
             reasons.append("parallel_unknown_authority")
             eligible = False
-        if serial.prepared_id != parallel.prepared_id or serial.prepared_fingerprint != parallel.prepared_fingerprint:
+        if (
+            serial.prepared_id != parallel.prepared_id
+            or serial.prepared_fingerprint != parallel.prepared_fingerprint
+        ):
             reasons.append("prepared_lineage_conflict")
             eligible = False
         if parallel.cautions and join_policy.cautions_prohibit:
@@ -207,12 +210,12 @@ def evaluate_reference(
             )
             if parallel and parallel.cautions:
                 pct *= capital_policy.caution_multiplier
-            pct = (
-                max(Decimal("0"), pct) / capital_policy.rounding_quantum
-            ).to_integral_value(rounding=ROUND_FLOOR) * capital_policy.rounding_quantum
-            notional = (
-                capital.available_capital * pct / Decimal("100")
-            ).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
+            pct = (max(Decimal("0"), pct) / capital_policy.rounding_quantum).to_integral_value(
+                rounding=ROUND_FLOOR
+            ) * capital_policy.rounding_quantum
+            notional = (capital.available_capital * pct / Decimal("100")).quantize(
+                Decimal("0.01"), rounding=ROUND_FLOOR
+            )
             if pct == 0 or notional == 0:
                 action = "no_trade"
                 pct = Decimal("0")
@@ -262,51 +265,148 @@ def validate_result_law(
 
 
 class MissingBranchPass:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
-        return evaluate_reference(serial or SerialBranch(), parallel or ParallelBranch(), modifier, capital, join_policy, capital_policy)
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
+        return evaluate_reference(
+            serial or SerialBranch(),
+            parallel or ParallelBranch(),
+            modifier,
+            capital,
+            join_policy,
+            capital_policy,
+        )
 
 
 class ConfidenceOverridesBlock:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
         if serial and serial.confidence >= Decimal("0.8") and parallel:
             parallel = replace(parallel, state="observe", hard_blocks=(), unknowns=())
         return evaluate_reference(serial, parallel, modifier, capital, join_policy, capital_policy)
 
 
 class LineageMismatchPass:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
         if serial and parallel:
-            parallel = replace(parallel, prepared_id=serial.prepared_id, prepared_fingerprint=serial.prepared_fingerprint)
+            parallel = replace(
+                parallel,
+                prepared_id=serial.prepared_id,
+                prepared_fingerprint=serial.prepared_fingerprint,
+            )
         return evaluate_reference(serial, parallel, modifier, capital, join_policy, capital_policy)
 
 
 class PostureScaleSizesCapital:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
-        result = evaluate_reference(serial, parallel, modifier, capital, join_policy, capital_policy)
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
+        result = evaluate_reference(
+            serial, parallel, modifier, capital, join_policy, capital_policy
+        )
         if result.final_action == "eligible_for_capital_assessment" and modifier and capital:
             pct = (capital_policy.target_pct * modifier.posture_scale).quantize(Decimal("0.01"))
-            return replace(result, authorised_pct=pct, authorised_notional=(capital.available_capital*pct/Decimal("100")).quantize(Decimal("0.01")))
+            return replace(
+                result,
+                authorised_pct=pct,
+                authorised_notional=(capital.available_capital * pct / Decimal("100")).quantize(
+                    Decimal("0.01")
+                ),
+            )
         return result
 
 
 class IgnoresHardMaximum:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
-        result = evaluate_reference(serial, parallel, modifier, capital, join_policy, capital_policy)
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
+        result = evaluate_reference(
+            serial, parallel, modifier, capital, join_policy, capital_policy
+        )
         if result.final_action == "eligible_for_capital_assessment" and capital:
             pct = min(capital_policy.target_pct, capital.max_fresh_deployable_pct)
-            return replace(result, authorised_pct=pct, authorised_notional=(capital.available_capital*pct/Decimal("100")).quantize(Decimal("0.01")))
+            return replace(
+                result,
+                authorised_pct=pct,
+                authorised_notional=(capital.available_capital * pct / Decimal("100")).quantize(
+                    Decimal("0.01")
+                ),
+            )
         return result
 
 
 class AcceptsFuturePolicy:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
-        return evaluate_reference(serial, parallel, modifier, capital, replace(join_policy, version=JOIN_POLICY_VERSION), replace(capital_policy, version=CAPITAL_POLICY_VERSION))
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
+        return evaluate_reference(
+            serial,
+            parallel,
+            modifier,
+            capital,
+            replace(join_policy, version=JOIN_POLICY_VERSION),
+            replace(capital_policy, version=CAPITAL_POLICY_VERSION),
+        )
 
 
 class EmissionTimeChangesIdentity:
-    def __call__(self, serial, parallel, modifier, capital, join_policy=JoinPolicy(), capital_policy=CapitalPolicy()):
-        result = evaluate_reference(serial, parallel, modifier, capital, join_policy, capital_policy)
-        return replace(result, receipt_id=_id("capital-receipt", {"base": result.receipt_id, "time": datetime.now(tz=UTC)}))
+    def __call__(
+        self,
+        serial,
+        parallel,
+        modifier,
+        capital,
+        join_policy=JoinPolicy(),
+        capital_policy=CapitalPolicy(),
+    ):
+        result = evaluate_reference(
+            serial, parallel, modifier, capital, join_policy, capital_policy
+        )
+        return replace(
+            result,
+            receipt_id=_id(
+                "capital-receipt", {"base": result.receipt_id, "time": datetime.now(tz=UTC)}
+            ),
+        )
 
 
 MUTANTS: Final[dict[str, Callable[..., ReferenceResult]]] = {
@@ -340,13 +440,17 @@ def production_api() -> dict[str, Any]:
 def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
     from tests.support.m05_k08_k09_contract_harness import (
         SERIAL_STAGE_ORDER,
-        fingerprint as m05_fingerprint,
-        production_api as m05_api,
         production_context_payload,
         production_handlers,
         production_stage_input_payload,
         valid_context,
         valid_inputs,
+    )
+    from tests.support.m05_k08_k09_contract_harness import (
+        fingerprint as m05_fingerprint,
+    )
+    from tests.support.m05_k08_k09_contract_harness import (
+        production_api as m05_api,
     )
 
     api = m05_api()
@@ -358,12 +462,14 @@ def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
     stage_inputs = []
     for item in valid_inputs(case, order=tuple(reversed(SERIAL_STAGE_ORDER))):
         if item.stage in {"temporal", "regime", "options_flow"}:
-            authority_refs = ((
-                "m03",
-                prepared_id,
-                case.prepared_schema_version,
-                prepared_fingerprint,
-            ),)
+            authority_refs = (
+                (
+                    "m03",
+                    prepared_id,
+                    case.prepared_schema_version,
+                    prepared_fingerprint,
+                ),
+            )
             item = replace(
                 item,
                 authority_refs=authority_refs,
@@ -375,9 +481,7 @@ def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
                     }
                 ),
             )
-        stage_inputs.append(
-            api["StageInput"].model_validate(production_stage_input_payload(item))
-        )
+        stage_inputs.append(api["StageInput"].model_validate(production_stage_input_payload(item)))
     runner = api["SerialRunner"](
         handlers=production_handlers(api),
         runner_version=case.runner_version,
@@ -388,6 +492,7 @@ def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
 
 def production_parallel_assessment(*, vix_level: float = 20.0):
     from tests.support.m06_k10_contract_harness import make_prepared
+
     import nvda_desk.m06_parallel_risk as m06
     from nvda_desk.m06_parallel_risk.contracts import (
         EXPECTED_FAMILIES,
@@ -430,7 +535,9 @@ def production_parallel_assessment(*, vix_level: float = 20.0):
         payload["semantic_fingerprint"] = observation_fp
         payload["observation_id"] = f"parallel-risk-observation:{observation_fp[:24]}"
         observations.append(m06.ParallelRiskObservation.model_validate(payload))
-    observations = tuple(sorted(observations, key=lambda item: EXPECTED_FAMILIES.index(item.family)))
+    observations = tuple(
+        sorted(observations, key=lambda item: EXPECTED_FAMILIES.index(item.family))
+    )
     cautions = tuple(item.reason for item in observations if item.state == "caution")
     blocks = tuple(item.reason for item in observations if item.state == "block")
     unknowns = tuple(item.family for item in observations if item.state == "unknown")
@@ -458,7 +565,6 @@ def production_parallel_assessment(*, vix_level: float = 20.0):
     payload["semantic_fingerprint"] = assessment_fp
     payload["assessment_id"] = f"parallel-risk-assessment:{assessment_fp[:24]}"
     return m06.ParallelRiskAssessment.model_validate(payload)
-
 
 
 def production_canonical_packet_pair(*, serial=None, parallel=None):
@@ -494,11 +600,19 @@ def production_canonical_packet_pair(*, serial=None, parallel=None):
     )
     source_ids = ("source.prepared.context.001",)
     expected_checks = {
-        "producer_identity", "role_schema_consistency", "execution_context_ownership",
-        "typed_payload", "lineage_profile", "authority_boundary", "extension_bounds",
-        "summary_consistency", "prepared_identity_and_contract_version",
-        "source_and_capture_lineage", "source_temporal_preservation",
-        "prepared_fingerprint", "completeness_and_limitation_state",
+        "producer_identity",
+        "role_schema_consistency",
+        "execution_context_ownership",
+        "typed_payload",
+        "lineage_profile",
+        "authority_boundary",
+        "extension_bounds",
+        "summary_consistency",
+        "prepared_identity_and_contract_version",
+        "source_and_capture_lineage",
+        "source_temporal_preservation",
+        "prepared_fingerprint",
+        "completeness_and_limitation_state",
         "no_domain_decision_authority",
     }
     parent = build_prepared_context_packet(
@@ -536,6 +650,7 @@ def production_canonical_packet_pair(*, serial=None, parallel=None):
         module_instance_id="m06.parallel.instance.001",
     )
     return serial_packet, parallel_packet, parent
+
 
 def production_modifier_receipt(*, kill_switch: bool = False):
     from nvda_desk.m07_coefficient_modifier_authority import ModifierApplicationReceipt

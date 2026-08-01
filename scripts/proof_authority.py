@@ -16,11 +16,12 @@ from typing import Any, Iterable, Mapping
 
 import yaml
 
-
 REGISTRY_PATH = Path("config/retained_test_registry.yaml")
 MANIFEST_PATH = Path("config/proof_blocks.yaml")
 ALLOWED_TIERS = frozenset({"Tier A", "Tier B", "Tier C"})
-ACTIVE_CLAIM_LIFECYCLES = frozenset({"current_blocking", "current_nonblocking", "next_gate_expected_red"})
+ACTIVE_CLAIM_LIFECYCLES = frozenset(
+    {"current_blocking", "current_nonblocking", "next_gate_expected_red"}
+)
 ALLOWED_LIFECYCLES = frozenset(
     {
         "current_blocking",
@@ -80,15 +81,9 @@ class AuthorityModel:
     def to_dict(self) -> dict[str, Any]:
         return {
             "families": {key: asdict(value) for key, value in self.families.items()},
-            "path_admissions": {
-                key: asdict(value) for key, value in self.path_admissions.items()
-            },
-            "proof_blocks": {
-                key: asdict(value) for key, value in self.proof_blocks.items()
-            },
-            "promotion_sets": {
-                key: asdict(value) for key, value in self.promotion_sets.items()
-            },
+            "path_admissions": {key: asdict(value) for key, value in self.path_admissions.items()},
+            "proof_blocks": {key: asdict(value) for key, value in self.proof_blocks.items()},
+            "promotion_sets": {key: asdict(value) for key, value in self.promotion_sets.items()},
         }
 
 
@@ -157,8 +152,7 @@ def _resolve_command_test_paths(command: str, repo_root: Path) -> tuple[str, ...
             continue
         if candidate.is_dir():
             resolved.update(
-                path.relative_to(repo_root).as_posix()
-                for path in candidate.rglob("test_*.py")
+                path.relative_to(repo_root).as_posix() for path in candidate.rglob("test_*.py")
             )
             continue
         raise AuthorityError(f"proof command references missing test path: {token}")
@@ -170,9 +164,7 @@ def _validate_registry(
 ) -> tuple[dict[str, TestFamily], dict[str, PathAdmission], dict[str, tuple[str, ...]]]:
     if registry.get("schema_version") != "v4":
         raise AuthorityError("retained-test registry schema_version must be v4")
-    model = _require_mapping(
-        registry.get("canonical_admission_model"), "canonical_admission_model"
-    )
+    model = _require_mapping(registry.get("canonical_admission_model"), "canonical_admission_model")
 
     declared_tiers = frozenset(
         _string_tuple(model.get("allowed_tiers"), "allowed_tiers", nonempty=True)
@@ -180,19 +172,13 @@ def _validate_registry(
     if declared_tiers != ALLOWED_TIERS:
         raise AuthorityError("allowed_tiers does not match the governed tier domain")
     declared_lifecycles = frozenset(
-        _string_tuple(
-            model.get("allowed_lifecycles"), "allowed_lifecycles", nonempty=True
-        )
+        _string_tuple(model.get("allowed_lifecycles"), "allowed_lifecycles", nonempty=True)
     )
     if declared_lifecycles != ALLOWED_LIFECYCLES:
-        raise AuthorityError(
-            "allowed_lifecycles does not match the governed lifecycle domain"
-        )
+        raise AuthorityError("allowed_lifecycles does not match the governed lifecycle domain")
 
     families: dict[str, TestFamily] = {}
-    for index, raw in enumerate(
-        _require_list(model.get("test_families"), "test_families")
-    ):
+    for index, raw in enumerate(_require_list(model.get("test_families"), "test_families")):
         item = _require_mapping(raw, f"test_families[{index}]")
         family_id = _require_nonempty_string(
             item.get("test_family_id"), f"test_families[{index}].test_family_id"
@@ -202,13 +188,9 @@ def _validate_registry(
         tier = _require_nonempty_string(item.get("tier"), f"family {family_id} tier")
         if tier not in ALLOWED_TIERS:
             raise AuthorityError(f"invalid tier for family {family_id}: {tier}")
-        lifecycle = _require_nonempty_string(
-            item.get("lifecycle"), f"family {family_id} lifecycle"
-        )
+        lifecycle = _require_nonempty_string(item.get("lifecycle"), f"family {family_id} lifecycle")
         if lifecycle not in ALLOWED_LIFECYCLES:
-            raise AuthorityError(
-                f"invalid lifecycle for family {family_id}: {lifecycle}"
-            )
+            raise AuthorityError(f"invalid lifecycle for family {family_id}: {lifecycle}")
         proposition_ids = _string_tuple(
             item.get("normative_proposition_ids", []),
             f"family {family_id} normative_proposition_ids",
@@ -226,9 +208,7 @@ def _validate_registry(
 
     path_admissions: dict[str, PathAdmission] = {}
     family_paths: dict[str, list[str]] = {family_id: [] for family_id in families}
-    for index, raw in enumerate(
-        _require_list(model.get("path_admissions"), "path_admissions")
-    ):
+    for index, raw in enumerate(_require_list(model.get("path_admissions"), "path_admissions")):
         item = _require_mapping(raw, f"path_admissions[{index}]")
         test_path = _require_nonempty_string(
             item.get("test_path"), f"path_admissions[{index}].test_path"
@@ -289,13 +269,9 @@ def _validate_registry(
                 + ", ".join(active)
             )
 
-    unused_families = sorted(
-        family_id for family_id, paths in family_paths.items() if not paths
-    )
+    unused_families = sorted(family_id for family_id, paths in family_paths.items() if not paths)
     if unused_families:
-        raise AuthorityError(
-            "test families without path admissions: " + ", ".join(unused_families)
-        )
+        raise AuthorityError("test families without path admissions: " + ", ".join(unused_families))
 
     physical = _physical_test_paths(repo_root)
     admitted = set(path_admissions)
@@ -309,9 +285,11 @@ def _validate_registry(
             parts.append("stale admitted tests: " + ", ".join(stale))
         raise AuthorityError("; ".join(parts))
 
-    return families, path_admissions, {
-        family_id: tuple(sorted(paths)) for family_id, paths in family_paths.items()
-    }
+    return (
+        families,
+        path_admissions,
+        {family_id: tuple(sorted(paths)) for family_id, paths in family_paths.items()},
+    )
 
 
 def _validate_manifest(
@@ -351,9 +329,7 @@ def _validate_manifest(
         tier = _require_nonempty_string(item.get("tier"), f"block {block_id} tier")
         if tier not in ALLOWED_TIERS:
             raise AuthorityError(f"invalid tier for proof block {block_id}: {tier}")
-        command = _require_nonempty_string(
-            item.get("command"), f"block {block_id} command"
-        )
+        command = _require_nonempty_string(item.get("command"), f"block {block_id} command")
         test_family_ids = _string_tuple(
             item.get("test_family_ids", []), f"block {block_id} test_family_ids"
         )
@@ -363,9 +339,7 @@ def _validate_manifest(
         )
         if block_id in promotion_block_ids:
             if not test_family_ids:
-                raise AuthorityError(
-                    f"promotion proof block {block_id} requires test_family_ids"
-                )
+                raise AuthorityError(f"promotion proof block {block_id} requires test_family_ids")
             if not proposition_ids:
                 raise AuthorityError(
                     f"promotion proof block {block_id} requires normative_proposition_ids"
@@ -418,9 +392,7 @@ def _validate_manifest(
             selected_families.extend(block.test_family_ids)
             selected_paths.extend(block.test_paths)
         if len(selected_families) != len(set(selected_families)):
-            raise AuthorityError(
-                f"promotion set {set_id} selects a test family more than once"
-            )
+            raise AuthorityError(f"promotion set {set_id} selects a test family more than once")
         if len(selected_paths) != len(set(selected_paths)):
             raise AuthorityError(f"promotion set {set_id} selects a test path more than once")
         selected_family_set = set(selected_families)
@@ -466,9 +438,7 @@ def validate_authority_documents(
     """Validate already-loaded authority documents against the repository tree."""
 
     resolved_root = repo_root.resolve()
-    families, path_admissions, family_paths = _validate_registry(
-        registry, resolved_root
-    )
+    families, path_admissions, family_paths = _validate_registry(registry, resolved_root)
     proof_blocks, promotion_sets = _validate_manifest(
         manifest, families, family_paths, resolved_root
     )
@@ -488,18 +458,14 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
         resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
     ).read_text(encoding="utf-8")
     roadmap = (resolved_root / "ROADMAP_LEDGER_V2.md").read_text(encoding="utf-8")
-    process = (
-        resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
-    ).read_text(encoding="utf-8")
+    process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
+        encoding="utf-8"
+    )
     expected_plan = "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`"
     expected_roadmap = (
-        "| Current active slice | Pre-M00 testing guardrail repair — active; "
-        "M00 not started |"
+        "| Current active slice | Pre-M00 testing guardrail repair — active; " "M00 not started |"
     )
-    expected_process = (
-        "The current active bounded pack is "
-        "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`"
-    )
+    expected_process = "The current active bounded pack is " "`PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`"
     missing = [
         label
         for label, text, expected in (
@@ -526,12 +492,8 @@ def load_and_validate_authority(
 
     resolved_root = repo_root.resolve()
     try:
-        registry = yaml.safe_load(
-            (resolved_root / registry_path).read_text(encoding="utf-8")
-        )
-        manifest = yaml.safe_load(
-            (resolved_root / manifest_path).read_text(encoding="utf-8")
-        )
+        registry = yaml.safe_load((resolved_root / registry_path).read_text(encoding="utf-8"))
+        manifest = yaml.safe_load((resolved_root / manifest_path).read_text(encoding="utf-8"))
     except (OSError, yaml.YAMLError) as exc:
         raise AuthorityError(f"authority document load failed: {exc}") from exc
     model = validate_authority_documents(registry, manifest, repo_root=resolved_root)
@@ -564,9 +526,7 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="validate authority")
     parser.add_argument("--json", action="store_true", help="emit JSON summary")
-    parser.add_argument(
-        "--describe-set", metavar="PROMOTION_SET", help="describe a resolved set"
-    )
+    parser.add_argument("--describe-set", metavar="PROMOTION_SET", help="describe a resolved set")
     args = parser.parse_args(list(argv) if argv is not None else None)
     if not args.check and not args.describe_set:
         parser.error("one of --check or --describe-set is required")

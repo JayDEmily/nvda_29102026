@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 from collections.abc import Mapping
-from copy import deepcopy
 from datetime import UTC, datetime
 from hashlib import sha256
 from typing import Any
@@ -83,10 +82,14 @@ def _validate_source_identifier(
     source_object_id = request.source_object_id
     if requirement is SourceFactRequirement.REQUIRED and not source_object_id:
         return "missing_required_source_identifier"
-    if requirement in {
-        SourceFactRequirement.UNAVAILABLE_BY_SOURCE_DESIGN,
-        SourceFactRequirement.NOT_APPLICABLE,
-    } and source_object_id is not None:
+    if (
+        requirement
+        in {
+            SourceFactRequirement.UNAVAILABLE_BY_SOURCE_DESIGN,
+            SourceFactRequirement.NOT_APPLICABLE,
+        }
+        and source_object_id is not None
+    ):
         return "source_identifier_not_applicable"
     return None
 

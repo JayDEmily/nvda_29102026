@@ -193,9 +193,9 @@ def _snapshot_from_inventory_record(
     )
 
 
-def _impact_from_policy(policy: str) -> Literal[
-    "none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"
-]:
+def _impact_from_policy(
+    policy: str,
+) -> Literal["none", "lowers_confidence", "disables_atom", "forces_caution", "forces_block"]:
     if "forces_block" in policy:
         return "forces_block"
     if "forces_caution" in policy:

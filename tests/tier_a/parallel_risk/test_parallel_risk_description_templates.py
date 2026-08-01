@@ -50,7 +50,9 @@ def _template_ref() -> ParallelRiskDescriptionTemplateRef:
 
 
 def test_description_template_registry_loads_and_renders_deterministically() -> None:
-    registry = load_description_template_registry("data/parallel_risk/description_templates.v1.json")
+    registry = load_description_template_registry(
+        "data/parallel_risk/description_templates.v1.json"
+    )
 
     output = render_parallel_risk_description(
         profile=_profile(), template_ref=_template_ref(), registry=registry
@@ -66,7 +68,9 @@ def test_description_template_registry_loads_and_renders_deterministically() -> 
 
 
 def test_description_renderer_rejects_unknown_template_id() -> None:
-    registry = load_description_template_registry("data/parallel_risk/description_templates.v1.json")
+    registry = load_description_template_registry(
+        "data/parallel_risk/description_templates.v1.json"
+    )
     ref = _template_ref().model_copy(update={"template_id": "missing.template"})
 
     with pytest.raises(ValueError, match="parallel_risk_description_template_not_found"):

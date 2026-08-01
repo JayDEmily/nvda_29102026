@@ -25,9 +25,7 @@ from nvda_desk.contracts.playbook import (
 )
 from nvda_desk.contracts.posture import PermissionState, PostureRiskOutput
 from nvda_desk.domain.eligibility.playbook_compilation import compile_playbook_eligibility
-from nvda_desk.playbooks.library import select_playbook_metadata_receipts
 from nvda_desk.services.playbook_eligibility_service import PlaybookEligibilityService
-
 
 ROOT = Path(__file__).resolve().parents[3]
 SELECTED_NATIVE_FILES = (
@@ -62,81 +60,173 @@ PROHIBITED_DONOR_SYMBOLS = {
 }
 
 REOPENED_ROW_CASES = (
-    ('FWD011-AUDIT-015', 'atlas_donor_playbook_registry_012', 'registry_document_contract'),
-    ('FWD011-AUDIT-016', 'atlas_donor_playbook_registry_013', 'registry_uniqueness'),
-    ('FWD011-AUDIT-017', 'atlas_donor_playbook_registry_014', 'deterministic_receipt_order'),
-    ('FWD011-AUDIT-019', 'atlas_donor_playbook_registry_016', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-020', 'atlas_donor_playbook_registry_017', 'family_lookup_filter'),
-    ('FWD011-AUDIT-022', 'atlas_donor_playbook_registry_019', 'yaml_loader_contract'),
-    ('FWD011-AUDIT-023', 'atlas_donor_playbook_registry_020', 'yaml_loader_contract'),
-    ('FWD011-AUDIT-024', 'atlas_donor_playbook_registry_021', 'deterministic_fingerprint'),
-    ('FWD011-AUDIT-029', 'atlas_donor_cognition_012', 'bounded_contract_carrier'),
-    ('FWD011-AUDIT-030', 'atlas_donor_cognition_029', 'eligibility_family_candidates'),
-    ('FWD011-AUDIT-031', 'atlas_donor_cognition_030', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-032', 'atlas_donor_cognition_031', 'bounded_contract_carrier'),
-    ('FWD011-AUDIT-033', 'atlas_donor_cognition_032', 'deterministic_receipt_order'),
-    ('FWD011-AUDIT-034', 'atlas_donor_cognition_033', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-035', 'atlas_donor_cognition_034', 'eligibility_output_contract'),
-    ('FWD011-AUDIT-036', 'atlas_donor_cognition_035', 'admissibility_surface'),
-    ('FWD011-AUDIT-037', 'atlas_donor_cognition_044', 'capital_authority_fence'),
-    ('FWD011-AUDIT-038', 'atlas_donor_cognition_053', 'permission_block_reason'),
-    ('FWD011-AUDIT-039', 'atlas_donor_imported_ladder_readiness_001', 'native_transform_boundary'),
-    ('FWD011-AUDIT-040', 'atlas_donor_imported_ladder_readiness_002', 'native_transform_boundary'),
-    ('FWD011-AUDIT-041', 'atlas_donor_imported_ladder_readiness_004', 'native_transform_boundary'),
-    ('FWD011-AUDIT-042', 'atlas_donor_imported_ladder_readiness_005', 'native_transform_boundary'),
-    ('FWD011-AUDIT-043', 'atlas_donor_imported_posture_enrichers_001', 'native_transform_boundary'),
-    ('FWD011-AUDIT-044', 'atlas_donor_imported_tranche_a_021', 'native_transform_boundary'),
-    ('FWD011-AUDIT-045', 'atlas_donor_service_playbook_registry_001', 'service_module_fence'),
-    ('FWD011-AUDIT-046', 'atlas_donor_service_playbook_registry_002', 'service_module_fence'),
-    ('FWD011-AUDIT-047', 'atlas_donor_service_playbook_registry_003', 'registry_document_contract'),
-    ('FWD011-AUDIT-048', 'atlas_donor_service_playbook_registry_004', 'deterministic_receipt_order'),
-    ('FWD011-AUDIT-049', 'atlas_donor_service_playbook_registry_005', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-050', 'atlas_donor_service_playbook_registry_006', 'family_lookup_filter'),
-    ('FWD011-AUDIT-051', 'atlas_donor_service_playbook_registry_007', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-052', 'atlas_donor_service_playbook_registry_008', 'registry_uniqueness'),
-    ('FWD011-AUDIT-053', 'atlas_donor_service_playbook_registry_009', 'family_lookup_filter'),
-    ('FWD011-AUDIT-054', 'atlas_donor_service_playbook_registry_010', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-055', 'atlas_donor_service_playbook_registry_011', 'capital_authority_fence'),
-    ('FWD011-AUDIT-056', 'atlas_donor_service_playbook_registry_012', 'family_lookup_filter'),
-    ('FWD011-AUDIT-057', 'atlas_donor_service_playbook_registry_013', 'family_lookup_filter'),
-    ('FWD011-AUDIT-058', 'atlas_donor_service_playbook_registry_014', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-059', 'atlas_donor_service_playbook_registry_015', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-060', 'atlas_donor_service_playbook_registry_016', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-061', 'atlas_donor_service_playbook_registry_017', 'capital_authority_fence'),
-    ('FWD011-AUDIT-062', 'atlas_donor_service_playbook_registry_018', 'capital_authority_fence'),
-    ('FWD011-AUDIT-063', 'atlas_donor_service_playbook_registry_019', 'family_lookup_filter'),
-    ('FWD011-AUDIT-064', 'atlas_donor_service_playbook_registry_020', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-065', 'atlas_donor_service_imported_ladder_readiness_001', 'native_transform_boundary'),
-    ('FWD011-AUDIT-066', 'atlas_donor_service_imported_ladder_readiness_002', 'native_transform_boundary'),
-    ('FWD011-AUDIT-067', 'atlas_donor_service_imported_ladder_readiness_003', 'native_transform_boundary'),
-    ('FWD011-AUDIT-068', 'atlas_donor_service_imported_ladder_readiness_004', 'native_transform_boundary'),
-    ('FWD011-AUDIT-069', 'atlas_donor_service_imported_ladder_readiness_005', 'native_transform_boundary'),
-    ('FWD011-AUDIT-070', 'atlas_donor_service_imported_ladder_readiness_006', 'native_transform_boundary'),
-    ('FWD011-AUDIT-071', 'atlas_donor_service_imported_ladder_readiness_007', 'native_transform_boundary'),
-    ('FWD011-AUDIT-072', 'atlas_donor_service_imported_execution_planning_007', 'native_transform_boundary'),
-    ('FWD011-AUDIT-073', 'atlas_donor_import_registry_service_023', 'native_transform_boundary'),
-    ('FWD011-AUDIT-074', 'atlas_donor_playbook_eligibility_service_001', 'service_identity'),
-    ('FWD011-AUDIT-075', 'atlas_donor_playbook_eligibility_service_002', 'service_identity'),
-    ('FWD011-AUDIT-076', 'atlas_donor_playbook_eligibility_service_003', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-077', 'atlas_donor_playbook_eligibility_service_004', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-078', 'atlas_donor_playbook_eligibility_service_005', 'variant_lookup_filter'),
-    ('FWD011-AUDIT-079', 'atlas_donor_playbook_eligibility_service_006', 'deterministic_receipt_order'),
-    ('FWD011-AUDIT-080', 'atlas_donor_playbook_eligibility_service_007', 'eligibility_family_candidates'),
-    ('FWD011-AUDIT-081', 'atlas_donor_playbook_eligibility_service_008', 'deterministic_receipt_order'),
-    ('FWD011-AUDIT-082', 'atlas_donor_playbook_eligibility_service_009', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-083', 'atlas_donor_playbook_eligibility_service_010', 'permission_block_reason'),
-    ('FWD011-AUDIT-084', 'atlas_donor_playbook_eligibility_service_011', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-085', 'atlas_donor_playbook_eligibility_service_013', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-086', 'atlas_donor_playbook_eligibility_service_014', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-087', 'atlas_donor_playbook_eligibility_service_015', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-088', 'atlas_donor_playbook_eligibility_service_016', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-089', 'atlas_donor_playbook_eligibility_service_017', 'eligibility_service_flow'),
-    ('FWD011-AUDIT-090', 'atlas_donor_review_explanation_service_019', 'native_transform_boundary'),
-    ('FWD011-AUDIT-091', 'atlas_donor_execution_expression_service_003', 'native_transform_boundary'),
-    ('FWD011-AUDIT-092', 'atlas_donor_execution_expression_service_004', 'native_transform_boundary'),
-    ('FWD011-AUDIT-093', 'atlas_donor_cognition_runtime_service_009', 'native_transform_boundary'),
-    ('FWD011-AUDIT-094', 'atlas_donor_replay_compare_service_015', 'native_transform_boundary'),
-    ('FWD011-AUDIT-095', 'atlas_donor_replay_compare_service_016', 'native_transform_boundary'),
+    ("FWD011-AUDIT-015", "atlas_donor_playbook_registry_012", "registry_document_contract"),
+    ("FWD011-AUDIT-016", "atlas_donor_playbook_registry_013", "registry_uniqueness"),
+    ("FWD011-AUDIT-017", "atlas_donor_playbook_registry_014", "deterministic_receipt_order"),
+    ("FWD011-AUDIT-019", "atlas_donor_playbook_registry_016", "variant_lookup_filter"),
+    ("FWD011-AUDIT-020", "atlas_donor_playbook_registry_017", "family_lookup_filter"),
+    ("FWD011-AUDIT-022", "atlas_donor_playbook_registry_019", "yaml_loader_contract"),
+    ("FWD011-AUDIT-023", "atlas_donor_playbook_registry_020", "yaml_loader_contract"),
+    ("FWD011-AUDIT-024", "atlas_donor_playbook_registry_021", "deterministic_fingerprint"),
+    ("FWD011-AUDIT-029", "atlas_donor_cognition_012", "bounded_contract_carrier"),
+    ("FWD011-AUDIT-030", "atlas_donor_cognition_029", "eligibility_family_candidates"),
+    ("FWD011-AUDIT-031", "atlas_donor_cognition_030", "variant_lookup_filter"),
+    ("FWD011-AUDIT-032", "atlas_donor_cognition_031", "bounded_contract_carrier"),
+    ("FWD011-AUDIT-033", "atlas_donor_cognition_032", "deterministic_receipt_order"),
+    ("FWD011-AUDIT-034", "atlas_donor_cognition_033", "eligibility_service_flow"),
+    ("FWD011-AUDIT-035", "atlas_donor_cognition_034", "eligibility_output_contract"),
+    ("FWD011-AUDIT-036", "atlas_donor_cognition_035", "admissibility_surface"),
+    ("FWD011-AUDIT-037", "atlas_donor_cognition_044", "capital_authority_fence"),
+    ("FWD011-AUDIT-038", "atlas_donor_cognition_053", "permission_block_reason"),
+    ("FWD011-AUDIT-039", "atlas_donor_imported_ladder_readiness_001", "native_transform_boundary"),
+    ("FWD011-AUDIT-040", "atlas_donor_imported_ladder_readiness_002", "native_transform_boundary"),
+    ("FWD011-AUDIT-041", "atlas_donor_imported_ladder_readiness_004", "native_transform_boundary"),
+    ("FWD011-AUDIT-042", "atlas_donor_imported_ladder_readiness_005", "native_transform_boundary"),
+    ("FWD011-AUDIT-043", "atlas_donor_imported_posture_enrichers_001", "native_transform_boundary"),
+    ("FWD011-AUDIT-044", "atlas_donor_imported_tranche_a_021", "native_transform_boundary"),
+    ("FWD011-AUDIT-045", "atlas_donor_service_playbook_registry_001", "service_module_fence"),
+    ("FWD011-AUDIT-046", "atlas_donor_service_playbook_registry_002", "service_module_fence"),
+    ("FWD011-AUDIT-047", "atlas_donor_service_playbook_registry_003", "registry_document_contract"),
+    (
+        "FWD011-AUDIT-048",
+        "atlas_donor_service_playbook_registry_004",
+        "deterministic_receipt_order",
+    ),
+    ("FWD011-AUDIT-049", "atlas_donor_service_playbook_registry_005", "variant_lookup_filter"),
+    ("FWD011-AUDIT-050", "atlas_donor_service_playbook_registry_006", "family_lookup_filter"),
+    ("FWD011-AUDIT-051", "atlas_donor_service_playbook_registry_007", "variant_lookup_filter"),
+    ("FWD011-AUDIT-052", "atlas_donor_service_playbook_registry_008", "registry_uniqueness"),
+    ("FWD011-AUDIT-053", "atlas_donor_service_playbook_registry_009", "family_lookup_filter"),
+    ("FWD011-AUDIT-054", "atlas_donor_service_playbook_registry_010", "variant_lookup_filter"),
+    ("FWD011-AUDIT-055", "atlas_donor_service_playbook_registry_011", "capital_authority_fence"),
+    ("FWD011-AUDIT-056", "atlas_donor_service_playbook_registry_012", "family_lookup_filter"),
+    ("FWD011-AUDIT-057", "atlas_donor_service_playbook_registry_013", "family_lookup_filter"),
+    ("FWD011-AUDIT-058", "atlas_donor_service_playbook_registry_014", "variant_lookup_filter"),
+    ("FWD011-AUDIT-059", "atlas_donor_service_playbook_registry_015", "variant_lookup_filter"),
+    ("FWD011-AUDIT-060", "atlas_donor_service_playbook_registry_016", "variant_lookup_filter"),
+    ("FWD011-AUDIT-061", "atlas_donor_service_playbook_registry_017", "capital_authority_fence"),
+    ("FWD011-AUDIT-062", "atlas_donor_service_playbook_registry_018", "capital_authority_fence"),
+    ("FWD011-AUDIT-063", "atlas_donor_service_playbook_registry_019", "family_lookup_filter"),
+    ("FWD011-AUDIT-064", "atlas_donor_service_playbook_registry_020", "variant_lookup_filter"),
+    (
+        "FWD011-AUDIT-065",
+        "atlas_donor_service_imported_ladder_readiness_001",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-066",
+        "atlas_donor_service_imported_ladder_readiness_002",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-067",
+        "atlas_donor_service_imported_ladder_readiness_003",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-068",
+        "atlas_donor_service_imported_ladder_readiness_004",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-069",
+        "atlas_donor_service_imported_ladder_readiness_005",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-070",
+        "atlas_donor_service_imported_ladder_readiness_006",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-071",
+        "atlas_donor_service_imported_ladder_readiness_007",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-072",
+        "atlas_donor_service_imported_execution_planning_007",
+        "native_transform_boundary",
+    ),
+    ("FWD011-AUDIT-073", "atlas_donor_import_registry_service_023", "native_transform_boundary"),
+    ("FWD011-AUDIT-074", "atlas_donor_playbook_eligibility_service_001", "service_identity"),
+    ("FWD011-AUDIT-075", "atlas_donor_playbook_eligibility_service_002", "service_identity"),
+    (
+        "FWD011-AUDIT-076",
+        "atlas_donor_playbook_eligibility_service_003",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-077",
+        "atlas_donor_playbook_eligibility_service_004",
+        "eligibility_service_flow",
+    ),
+    ("FWD011-AUDIT-078", "atlas_donor_playbook_eligibility_service_005", "variant_lookup_filter"),
+    (
+        "FWD011-AUDIT-079",
+        "atlas_donor_playbook_eligibility_service_006",
+        "deterministic_receipt_order",
+    ),
+    (
+        "FWD011-AUDIT-080",
+        "atlas_donor_playbook_eligibility_service_007",
+        "eligibility_family_candidates",
+    ),
+    (
+        "FWD011-AUDIT-081",
+        "atlas_donor_playbook_eligibility_service_008",
+        "deterministic_receipt_order",
+    ),
+    (
+        "FWD011-AUDIT-082",
+        "atlas_donor_playbook_eligibility_service_009",
+        "eligibility_service_flow",
+    ),
+    ("FWD011-AUDIT-083", "atlas_donor_playbook_eligibility_service_010", "permission_block_reason"),
+    (
+        "FWD011-AUDIT-084",
+        "atlas_donor_playbook_eligibility_service_011",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-085",
+        "atlas_donor_playbook_eligibility_service_013",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-086",
+        "atlas_donor_playbook_eligibility_service_014",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-087",
+        "atlas_donor_playbook_eligibility_service_015",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-088",
+        "atlas_donor_playbook_eligibility_service_016",
+        "eligibility_service_flow",
+    ),
+    (
+        "FWD011-AUDIT-089",
+        "atlas_donor_playbook_eligibility_service_017",
+        "eligibility_service_flow",
+    ),
+    ("FWD011-AUDIT-090", "atlas_donor_review_explanation_service_019", "native_transform_boundary"),
+    (
+        "FWD011-AUDIT-091",
+        "atlas_donor_execution_expression_service_003",
+        "native_transform_boundary",
+    ),
+    (
+        "FWD011-AUDIT-092",
+        "atlas_donor_execution_expression_service_004",
+        "native_transform_boundary",
+    ),
+    ("FWD011-AUDIT-093", "atlas_donor_cognition_runtime_service_009", "native_transform_boundary"),
+    ("FWD011-AUDIT-094", "atlas_donor_replay_compare_service_015", "native_transform_boundary"),
+    ("FWD011-AUDIT-095", "atlas_donor_replay_compare_service_016", "native_transform_boundary"),
 )
 
 
@@ -189,7 +279,9 @@ def _imports_for(path: Path) -> set[str]:
 
 def _defined_symbols(path: Path) -> set[str]:
     tree = ast.parse(path.read_text(encoding="utf-8"))
-    return {node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))}
+    return {
+        node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))
+    }
 
 
 def _hidden_payload(atlas_record_id: str, authority_key: str) -> dict[str, Any]:
@@ -273,7 +365,9 @@ def test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour(
             "fwd011-registry:gap_up_follow_through:gap_up.risk_defined",
             "fwd011-registry:breakdown_reversal:breakdown.baseline",
         ]
-        assert {receipt.source_registry_fingerprint for receipt in receipts} == {registry.fingerprint()}
+        assert {receipt.source_registry_fingerprint for receipt in receipts} == {
+            registry.fingerprint()
+        }
         copied = receipts[0].model_copy(deep=True)
         copied.selection_metadata["setup_family"] = "mutated"
         assert receipts[0].selection_metadata["setup_family"] == "gap_up"
@@ -337,7 +431,9 @@ def test_fwd011_reopened_rows_have_real_playbook_library_authority_behaviour(
 
     if behaviour == "deterministic_fingerprint":
         first = registry.fingerprint()
-        second = PlaybookRegistryDocument.model_validate(registry.model_dump(mode="json")).fingerprint()
+        second = PlaybookRegistryDocument.model_validate(
+            registry.model_dump(mode="json")
+        ).fingerprint()
         assert first == second
         assert len(first) == 64
         assert all(char in "0123456789abcdef" for char in first)

@@ -7,7 +7,6 @@ from typing import Any
 from pydantic import ValidationError
 
 from .contracts import (
-    CLOSED_AUTHORITY_CLASSES,
     AppliedSupersession,
     CalendarFactCandidate,
     CalendarFieldResolutionPolicy,
@@ -58,11 +57,7 @@ def _lawful_supersession(
     ):
         return False
     target = next(
-        (
-            item
-            for item in candidates
-            if item.candidate_id == candidate.supersedes_candidate_id
-        ),
+        (item for item in candidates if item.candidate_id == candidate.supersedes_candidate_id),
         None,
     )
     if target is None:
@@ -107,9 +102,7 @@ def _projection(
     applied_supersessions: tuple[AppliedSupersession, ...] | None = None,
 ) -> CalendarProjection:
     preserved_supersessions = (
-        snapshot.applied_supersessions
-        if applied_supersessions is None
-        else applied_supersessions
+        snapshot.applied_supersessions if applied_supersessions is None else applied_supersessions
     )
     return CalendarProjection(
         projection_id=projection_id,
@@ -167,10 +160,7 @@ class CalendarResolver:
         except (ValidationError, TypeError, ValueError) as exc:
             raise ValueError("invalid_calendar_authority") from exc
 
-        if (
-            authority.session_completeness != "complete"
-            or not authority.market_session_reference
-        ):
+        if authority.session_completeness != "complete" or not authority.market_session_reference:
             return _projection(
                 projection_id=projection_id,
                 policy=governed_policy,
@@ -226,9 +216,7 @@ class CalendarResolver:
                 snapshot=authority,
                 status="withheld" if governed_policy.mandatory else "degraded",
                 unresolved_conflicts=(governed_policy.semantic_key,),
-                degraded_facts=()
-                if governed_policy.mandatory
-                else (governed_policy.semantic_key,),
+                degraded_facts=() if governed_policy.mandatory else (governed_policy.semantic_key,),
             )
 
         selected_field = SelectedCalendarField(
@@ -236,12 +224,7 @@ class CalendarResolver:
             value=selected[0].value,
             candidate_ids=tuple(item.candidate_id for item in selected),
             source_refs=tuple(
-                sorted(
-                    {
-                        (item.source_artifact_id, item.source_version)
-                        for item in selected
-                    }
-                )
+                sorted({(item.source_artifact_id, item.source_version) for item in selected})
             ),
             layers=tuple(sorted((item.layer for item in selected), key=str)),
         )

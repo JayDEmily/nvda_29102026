@@ -109,6 +109,7 @@ def test_live_inventory_snapshot_builder_accepts_inventory_readback_inputs_only(
         parameter_names
     )
 
+
 def test_live_inventory_reconciliation_accepts_fill_evidence_inputs_only() -> None:
     signature = inspect.signature(DownstreamLiveInventoryService.reconcile_fill_evidence)
     parameter_names = set(signature.parameters)

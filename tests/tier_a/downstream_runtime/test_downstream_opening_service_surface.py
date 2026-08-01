@@ -21,4 +21,6 @@ def _require_attr(module, attr_name: str):
 def test_downstream_opening_service_surface_is_present() -> None:
     opening = _require_module("nvda_desk.downstream.opening")
     assert opening.__name__ == "nvda_desk.downstream.opening"
-    assert _require_attr(opening, "DownstreamOpeningService") is getattr(opening, "DownstreamOpeningService")
+    assert _require_attr(opening, "DownstreamOpeningService") is getattr(
+        opening, "DownstreamOpeningService"
+    )

@@ -43,8 +43,12 @@ def test_run_bootstrap_can_include_optional_minute_profile_without_changing_lane
     assert isinstance(profile, ParallelRiskMinuteProfile)
     assert profile.packet_id == "dmp::parallel_risk::output::service-profile::minute_profile"
     assert profile.risk_envelope_state == "caution"
-    assert profile.lineage["parent_packet_ids"] == ["dmp::parallel_risk::bootstrap_input::service-profile"]
-    assert profile.lineage["dependency_packet_ids"] == ["dmp::parallel_risk::bootstrap_input::service-profile"]
+    assert profile.lineage["parent_packet_ids"] == [
+        "dmp::parallel_risk::bootstrap_input::service-profile"
+    ]
+    assert profile.lineage["dependency_packet_ids"] == [
+        "dmp::parallel_risk::bootstrap_input::service-profile"
+    ]
     assert profile.lineage["source_artifact_ids"] == ["source-artifact-1"]
     assert profile.lineage["input_fingerprint"] == "sha256:fixture"
     assert profile.authority_flags.capital_sizing_allowed is False

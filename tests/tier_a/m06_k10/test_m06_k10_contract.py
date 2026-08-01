@@ -5,7 +5,6 @@ from __future__ import annotations
 import importlib
 
 import pytest
-
 from tests.support.m06_k10_contract_harness import (
     CLOSED,
     make_prepared,
@@ -228,9 +227,7 @@ def test_gate_d_threshold_authority_is_exact_and_m07_owned() -> None:
 
 def test_gate_d_evaluator_revalidates_copied_input() -> None:
     m = _production()
-    forged = _build_production_input().model_copy(
-        update={"input_fingerprint": "0" * 64}
-    )
+    forged = _build_production_input().model_copy(update={"input_fingerprint": "0" * 64})
     with pytest.raises(ValueError, match="parallel_risk_input_fingerprint_mismatch"):
         m.ParallelRiskEvaluator().evaluate(forged)
 

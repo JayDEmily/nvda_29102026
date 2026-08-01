@@ -22,7 +22,9 @@ def _require_attr(module, attr_name: str):
 def test_options_flow_history_replay_surfaces_are_present() -> None:
     repository = _require_module("nvda_desk.repositories.options_flow_history_repository")
     assert repository.__name__ == "nvda_desk.repositories.options_flow_history_repository"
-    assert _require_attr(repository, "OptionsFlowHistoryRepository") is getattr(repository, "OptionsFlowHistoryRepository")
+    assert _require_attr(repository, "OptionsFlowHistoryRepository") is getattr(
+        repository, "OptionsFlowHistoryRepository"
+    )
 
     replay_dir = Path("fixtures/replay")
     if not replay_dir.exists():

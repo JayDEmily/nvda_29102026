@@ -176,8 +176,7 @@ class OwnerPorts:
     def authority_boundary_valid(self, payload: dict[str, Any]) -> bool:
         self.calls.append("authority_boundary")
         return not any(
-            key in payload
-            for key in ("capital_authority", "live_order", "domain_state_mutation")
+            key in payload for key in ("capital_authority", "live_order", "domain_state_mutation")
         )
 
     def owner_check_valid(
@@ -218,18 +217,15 @@ class OwnerPorts:
             return context["lineage"].model_dump() == case.lineage
         if check_name == "extension_bounds":
             nvda_extensions = context["dmpextensions"].get("nvda", {})
-            return (
-                nvda_extensions.get("semantic_dependencies")
-                == case.lineage["dependencyids"]
-                and bool(nvda_extensions.get("schema_identifiers"))
-            )
+            return nvda_extensions.get("semantic_dependencies") == case.lineage[
+                "dependencyids"
+            ] and bool(nvda_extensions.get("schema_identifiers"))
         if check_name == "summary_consistency":
             summary = context["summary"]
             if case.optional_limitation:
                 return (
                     case.optional_limitation in summary.keyflags
-                    and "consumer_restriction:non_binding_inspection_only"
-                    in summary.keyflags
+                    and "consumer_restriction:non_binding_inspection_only" in summary.keyflags
                     and summary.humanstate == "degraded"
                 )
             return summary.humanstate != "degraded"

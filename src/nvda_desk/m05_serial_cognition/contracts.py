@@ -259,10 +259,9 @@ class StageContext(BaseModel):
         for source_id, capture_id in self.source_capture_refs:
             if not source_id or not capture_id:
                 raise ValueError("source_capture_ref_incomplete")
-        if (
-            self.source_capture_refs != tuple(sorted(self.source_capture_refs))
-            or len(self.source_capture_refs) != len(set(self.source_capture_refs))
-        ):
+        if self.source_capture_refs != tuple(sorted(self.source_capture_refs)) or len(
+            self.source_capture_refs
+        ) != len(set(self.source_capture_refs)):
             raise ValueError("source_capture_refs_not_canonical")
         _unique_pairs(self.derivation_versions, "derivation_versions_invalid")
         if self.derivation_versions != tuple(sorted(self.derivation_versions)):
@@ -509,14 +508,11 @@ class SerialCandidate(BaseModel):
                 raise ValueError("candidate_stage_context_lineage_mismatch")
             if not output.input_carrier_id or not output.input_carrier_fingerprint:
                 raise ValueError("candidate_stage_input_lineage_incomplete")
-            dependencies = tuple(
-                by_stage[name] for name in SERIAL_STAGE_DEPENDENCIES[output.stage]
-            )
-            if (
-                output.dependency_output_ids
-                != tuple(item.output_id for item in dependencies)
-                or output.dependency_fingerprints
-                != tuple(item.semantic_fingerprint for item in dependencies)
+            dependencies = tuple(by_stage[name] for name in SERIAL_STAGE_DEPENDENCIES[output.stage])
+            if output.dependency_output_ids != tuple(
+                item.output_id for item in dependencies
+            ) or output.dependency_fingerprints != tuple(
+                item.semantic_fingerprint for item in dependencies
             ):
                 raise ValueError("candidate_stage_dependency_lineage_mismatch")
         if self.stage_outputs:

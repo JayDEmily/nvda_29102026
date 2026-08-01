@@ -19,7 +19,6 @@ from nvda_desk.risk.parallel.evaluate import (
     enrich_candidate_semantics,
 )
 
-
 SERIAL_RUNTIME_STAGE_KEYS = (
     "temporal",
     "regime",

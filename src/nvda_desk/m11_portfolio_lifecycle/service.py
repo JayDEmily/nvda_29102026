@@ -1,4 +1,5 @@
 """Canonical M11 portfolio lifecycle service."""
+
 from __future__ import annotations
 
 from copy import deepcopy
@@ -10,7 +11,13 @@ from nvda_desk.m10_execution_gateway.contracts import ExecutionReceipt, semantic
 from nvda_desk.m13_state_kernel.contracts import IdempotencyKey, TransactionCommand
 from nvda_desk.m13_state_kernel.in_memory import InMemoryUnitOfWork
 
-from .contracts import CloseReceipt, FillReconciliationReceipt, LifecycleDecision, PositionState, PortfolioSnapshot
+from .contracts import (
+    CloseReceipt,
+    FillReconciliationReceipt,
+    LifecycleDecision,
+    PortfolioSnapshot,
+    PositionState,
+)
 
 
 class PortfolioLifecycleService:
@@ -49,7 +56,9 @@ class PortfolioLifecycleService:
             raise ValueError("fill_precedes_current_position_update")
         next_version = self._uow.state_version + 1
         position = self._position_after_fill(current, receipt, next_version)
-        preview = self._preview_snapshot(position=position, version=next_version, as_of=receipt.executed_at_utc)
+        preview = self._preview_snapshot(
+            position=position, version=next_version, as_of=receipt.executed_at_utc
+        )
         material = {
             "execution_receipt_id": receipt.receipt_id,
             "execution_receipt_fingerprint": receipt.semantic_fingerprint,
@@ -62,7 +71,9 @@ class PortfolioLifecycleService:
         atomic_receipt_id = f"m13:m11-fill:{result_fp[:24]}"
         command = TransactionCommand(
             command_id=f"m11.reconcile:{receipt.receipt_id}",
-            idempotency_key=IdempotencyKey(receipt.receipt_id, "m11.reconcile_fill", "portfolio:NVDA"),
+            idempotency_key=IdempotencyKey(
+                receipt.receipt_id, "m11.reconcile_fill", "portfolio:NVDA"
+            ),
             input_fingerprint=receipt.semantic_fingerprint,
             expected_state_version=self._uow.state_version,
             policy_version="m11.fill-reconciliation.v1",
@@ -90,7 +101,9 @@ class PortfolioLifecycleService:
             "durability": "non_durable_in_memory",
         }
         fp = semantic_fingerprint(payload)
-        result = FillReconciliationReceipt.model_validate({**payload, "receipt_id": f"fill-reconciliation:{fp[:24]}", "semantic_fingerprint": fp})
+        result = FillReconciliationReceipt.model_validate(
+            {**payload, "receipt_id": f"fill-reconciliation:{fp[:24]}", "semantic_fingerprint": fp}
+        )
         self._fill_receipts[receipt.receipt_id] = result
         return deepcopy(result)
 
@@ -108,7 +121,9 @@ class PortfolioLifecycleService:
             snapshot = PortfolioSnapshot.model_validate(snapshot.model_dump(mode="python"))
         except Exception as exc:
             raise ValueError("portfolio_snapshot_contract_invalid") from exc
-        if decided_at_utc.tzinfo is None or decided_at_utc.utcoffset() != UTC.utcoffset(decided_at_utc):
+        if decided_at_utc.tzinfo is None or decided_at_utc.utcoffset() != UTC.utcoffset(
+            decided_at_utc
+        ):
             raise ValueError("lifecycle_decision_time_must_be_utc")
         if decided_at_utc < snapshot.as_of_utc:
             raise ValueError("lifecycle_decision_precedes_snapshot")
@@ -133,7 +148,9 @@ class PortfolioLifecycleService:
             "capital_recomputation_allowed": False,
         }
         fp = semantic_fingerprint(payload)
-        return LifecycleDecision.model_validate({**payload, "decision_id": f"lifecycle-decision:{fp[:24]}", "semantic_fingerprint": fp})
+        return LifecycleDecision.model_validate(
+            {**payload, "decision_id": f"lifecycle-decision:{fp[:24]}", "semantic_fingerprint": fp}
+        )
 
     def apply_lifecycle(self, decision: LifecycleDecision) -> CloseReceipt:
         try:
@@ -150,9 +167,11 @@ class PortfolioLifecycleService:
                 {**previous.model_dump(mode="python"), "duplicate_replay": True}
             )
         current_snapshot = self.snapshot()
-        if (current_snapshot.snapshot_id, current_snapshot.semantic_fingerprint, current_snapshot.state_version) != (
-            decision.snapshot_id, decision.snapshot_fingerprint, decision.snapshot_state_version
-        ):
+        if (
+            current_snapshot.snapshot_id,
+            current_snapshot.semantic_fingerprint,
+            current_snapshot.state_version,
+        ) != (decision.snapshot_id, decision.snapshot_fingerprint, decision.snapshot_state_version):
             raise ValueError("stale_lifecycle_snapshot")
         current = self._current_position()
         if current is None or current.semantic_fingerprint != decision.position_fingerprint:
@@ -172,21 +191,36 @@ class PortfolioLifecycleService:
                 updated_at=decision.decided_at_utc,
                 state_version=next_version,
             )
-        preview = self._preview_snapshot(position=resulting, version=next_version, as_of=decision.decided_at_utc)
-        material = {"decision_fingerprint": decision.semantic_fingerprint, "snapshot_fingerprint": preview.semantic_fingerprint, "state_version": next_version}
+        preview = self._preview_snapshot(
+            position=resulting, version=next_version, as_of=decision.decided_at_utc
+        )
+        material = {
+            "decision_fingerprint": decision.semantic_fingerprint,
+            "snapshot_fingerprint": preview.semantic_fingerprint,
+            "state_version": next_version,
+        }
         result_fp = semantic_fingerprint(material)
         atomic_receipt_id = f"m13:m11-close:{result_fp[:24]}"
         command = TransactionCommand(
             command_id=f"m11.lifecycle:{decision.decision_id}",
-            idempotency_key=IdempotencyKey(decision.decision_id, "m11.apply_lifecycle", "portfolio:NVDA"),
+            idempotency_key=IdempotencyKey(
+                decision.decision_id, "m11.apply_lifecycle", "portfolio:NVDA"
+            ),
             input_fingerprint=decision.semantic_fingerprint,
             expected_state_version=self._uow.state_version,
             policy_version=decision.policy_version,
         )
 
         def mutation(state: dict[str, Any]):
-            state["positions"] = {} if resulting is None else {resulting.position_id: resulting.model_dump(mode="python")}
-            return {"receipt_id": atomic_receipt_id, "result_id": f"lifecycle-result:{result_fp[:24]}"}
+            state["positions"] = (
+                {}
+                if resulting is None
+                else {resulting.position_id: resulting.model_dump(mode="python")}
+            )
+            return {
+                "receipt_id": atomic_receipt_id,
+                "result_id": f"lifecycle-result:{result_fp[:24]}",
+            }
 
         atomic = self._uow.execute(command=command, mutation=mutation)
         self._last_transition_at = decision.decided_at_utc
@@ -206,7 +240,9 @@ class PortfolioLifecycleService:
             "durability": "non_durable_in_memory",
         }
         fp = semantic_fingerprint(payload)
-        result = CloseReceipt.model_validate({**payload, "receipt_id": f"close-receipt:{fp[:24]}", "semantic_fingerprint": fp})
+        result = CloseReceipt.model_validate(
+            {**payload, "receipt_id": f"close-receipt:{fp[:24]}", "semantic_fingerprint": fp}
+        )
         self._close_receipts[decision.decision_id] = result
         return deepcopy(result)
 
@@ -215,7 +251,9 @@ class PortfolioLifecycleService:
         raw = state.get("positions", {}).get("position:NVDA:long")
         return None if raw is None else PositionState.model_validate(raw)
 
-    def _position_after_fill(self, current: PositionState | None, receipt: ExecutionReceipt, version: int) -> PositionState:
+    def _position_after_fill(
+        self, current: PositionState | None, receipt: ExecutionReceipt, version: int
+    ) -> PositionState:
         if current is None:
             return self._build_position(
                 quantity=receipt.executed_quantity,
@@ -234,14 +272,25 @@ class PortfolioLifecycleService:
             cost_basis=current.cost_basis + receipt.executed_notional,
             fill_ids=current.fill_ids + (receipt.fill_id,),
             execution_receipt_ids=current.execution_receipt_ids + (receipt.receipt_id,),
-            execution_receipt_fingerprints=current.execution_receipt_fingerprints + (receipt.semantic_fingerprint,),
+            execution_receipt_fingerprints=current.execution_receipt_fingerprints
+            + (receipt.semantic_fingerprint,),
             opened_at=current.opened_at_utc,
             updated_at=receipt.executed_at_utc,
             state_version=version,
         )
 
     @staticmethod
-    def _build_position(*, quantity: Decimal, cost_basis: Decimal, fill_ids: tuple[str, ...], execution_receipt_ids: tuple[str, ...], execution_receipt_fingerprints: tuple[str, ...], opened_at: datetime, updated_at: datetime, state_version: int) -> PositionState:
+    def _build_position(
+        *,
+        quantity: Decimal,
+        cost_basis: Decimal,
+        fill_ids: tuple[str, ...],
+        execution_receipt_ids: tuple[str, ...],
+        execution_receipt_fingerprints: tuple[str, ...],
+        opened_at: datetime,
+        updated_at: datetime,
+        state_version: int,
+    ) -> PositionState:
         payload = {
             "quantity": quantity,
             "average_cost": cost_basis / quantity,
@@ -253,15 +302,41 @@ class PortfolioLifecycleService:
             "updated_at_utc": updated_at,
             "state_version": state_version,
         }
-        fp = semantic_fingerprint({"position_id": "position:NVDA:long", "contract_version": "1.0.0", "symbol": "NVDA", "side": "long", **payload, "paper_only": True, "live_account_truth": False, "durable_commit_proven": False})
+        fp = semantic_fingerprint(
+            {
+                "position_id": "position:NVDA:long",
+                "contract_version": "1.0.0",
+                "symbol": "NVDA",
+                "side": "long",
+                **payload,
+                "paper_only": True,
+                "live_account_truth": False,
+                "durable_commit_proven": False,
+            }
+        )
         return PositionState.model_validate({**payload, "semantic_fingerprint": fp})
 
-    def _preview_snapshot(self, *, position: PositionState | None, version: int, as_of: datetime) -> PortfolioSnapshot:
+    def _preview_snapshot(
+        self, *, position: PositionState | None, version: int, as_of: datetime
+    ) -> PortfolioSnapshot:
         positions = () if position is None else (position,)
-        payload = {"contract_version": "1.0.0", "portfolio_id": "portfolio:NVDA", "positions": positions, "position_ids": tuple(p.position_id for p in positions), "state_version": version, "as_of_utc": as_of, "durability": "non_durable_in_memory", "live_account_truth": False}
+        payload = {
+            "contract_version": "1.0.0",
+            "portfolio_id": "portfolio:NVDA",
+            "positions": positions,
+            "position_ids": tuple(p.position_id for p in positions),
+            "state_version": version,
+            "as_of_utc": as_of,
+            "durability": "non_durable_in_memory",
+            "live_account_truth": False,
+        }
         fp = semantic_fingerprint(payload)
-        return PortfolioSnapshot.model_validate({**payload, "snapshot_id": f"portfolio-snapshot:{fp[:24]}", "semantic_fingerprint": fp})
+        return PortfolioSnapshot.model_validate(
+            {**payload, "snapshot_id": f"portfolio-snapshot:{fp[:24]}", "semantic_fingerprint": fp}
+        )
 
     def _build_snapshot(self, *, as_of: datetime) -> PortfolioSnapshot:
         position = self._current_position()
-        return self._preview_snapshot(position=position, version=self._uow.state_version, as_of=as_of)
+        return self._preview_snapshot(
+            position=position, version=self._uow.state_version, as_of=as_of
+        )

@@ -11,7 +11,9 @@ from nvda_desk.domain.parallel_risk.environment_assessment import assess_risk_en
 
 def test_front_dte_greater_than_next_dte_preserves_options_repricing_caution() -> None:
     packet = ParallelRiskPreparationPacket(
-        temporal_input=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+        temporal_input=TemporalContextInput(
+            source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+        ),
         regime_input=MarketRegimeContextInput(),
         options_flow_input=OptionsFlowContextInput(front_dte=5, next_dte=1),
     )
@@ -25,7 +27,9 @@ def test_front_dte_greater_than_next_dte_preserves_options_repricing_caution() -
 
 def test_front_dte_not_greater_than_next_dte_does_not_create_legacy_caution() -> None:
     packet = ParallelRiskPreparationPacket(
-        temporal_input=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+        temporal_input=TemporalContextInput(
+            source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+        ),
         regime_input=MarketRegimeContextInput(),
         options_flow_input=OptionsFlowContextInput(front_dte=1, next_dte=5),
     )

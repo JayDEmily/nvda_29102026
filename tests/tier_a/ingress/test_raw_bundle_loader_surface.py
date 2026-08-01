@@ -23,11 +23,21 @@ def test_raw_bundle_loader_surface_is_present() -> None:
     ingress_module = _require_module("nvda_desk.ingress.raw_bundle_loader")
     assert ingress_module.__name__ == "nvda_desk.ingress.raw_bundle_loader"
 
-    assert _require_attr(ingress_module, "RawBundleLoader") is getattr(ingress_module, "RawBundleLoader")
-    assert _require_attr(ingress_module, "RawBundleProvenance") is getattr(ingress_module, "RawBundleProvenance")
-    assert _require_attr(ingress_module, "RealDataBundle") is getattr(ingress_module, "RealDataBundle")
-    assert _require_attr(ingress_module, "load_api_payload") is getattr(ingress_module, "load_api_payload")
-    assert _require_attr(ingress_module, "load_json_bundle") is getattr(ingress_module, "load_json_bundle")
+    assert _require_attr(ingress_module, "RawBundleLoader") is getattr(
+        ingress_module, "RawBundleLoader"
+    )
+    assert _require_attr(ingress_module, "RawBundleProvenance") is getattr(
+        ingress_module, "RawBundleProvenance"
+    )
+    assert _require_attr(ingress_module, "RealDataBundle") is getattr(
+        ingress_module, "RealDataBundle"
+    )
+    assert _require_attr(ingress_module, "load_api_payload") is getattr(
+        ingress_module, "load_api_payload"
+    )
+    assert _require_attr(ingress_module, "load_json_bundle") is getattr(
+        ingress_module, "load_json_bundle"
+    )
 
 
 def test_raw_bundle_loader_preserves_ingress_preparation_and_reference_boundaries() -> None:

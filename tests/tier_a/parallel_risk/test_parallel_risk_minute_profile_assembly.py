@@ -3,11 +3,16 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
-from nvda_desk.contracts.parallel_risk import FreshnessRegisterEntry, ParallelRiskMinuteProfile
+from nvda_desk.contracts.parallel_risk import (
+    FreshnessRegisterEntry,
+    ParallelRiskMinuteProfile,
+    ParallelRiskPreparationPacket,
+)
 from nvda_desk.contracts.regime import MarketRegimeContextInput
 from nvda_desk.contracts.temporal import TemporalContextInput, TemporalEventWindow
-from nvda_desk.contracts.parallel_risk import ParallelRiskPreparationPacket
-from nvda_desk.domain.parallel_risk.minute_profile_assembly import assemble_parallel_risk_minute_profile
+from nvda_desk.domain.parallel_risk.minute_profile_assembly import (
+    assemble_parallel_risk_minute_profile,
+)
 
 
 def test_minute_profile_assembly_preserves_current_envelope_and_authority_flags() -> None:
@@ -69,7 +74,9 @@ def test_minute_profile_assembly_preserves_current_envelope_and_authority_flags(
 
 def test_minute_profile_assembly_contains_no_trade_action_fields() -> None:
     packet = ParallelRiskPreparationPacket(
-        temporal_input=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+        temporal_input=TemporalContextInput(
+            source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+        ),
     )
     profile = assemble_parallel_risk_minute_profile(
         packet=packet,

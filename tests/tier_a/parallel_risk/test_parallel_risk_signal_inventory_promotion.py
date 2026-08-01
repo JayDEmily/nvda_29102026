@@ -57,10 +57,14 @@ def test_parallel_risk_signal_inventory_config_preserves_workbook_lineage() -> N
     assert len(document.source_workbook_sha256) == 64
     for record in document.records:
         assert record.workbook_lineage_refs
-        assert any("Parallel Risk Lane Signal Inventory!" in ref for ref in record.workbook_lineage_refs)
+        assert any(
+            "Parallel Risk Lane Signal Inventory!" in ref for ref in record.workbook_lineage_refs
+        )
 
 
-def test_parallel_risk_signal_inventory_runtime_loader_does_not_read_workbook(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_parallel_risk_signal_inventory_runtime_loader_does_not_read_workbook(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     original_read_text = Path.read_text
     read_paths: list[Path] = []
 

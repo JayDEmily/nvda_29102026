@@ -11,7 +11,9 @@ from nvda_desk.domain.parallel_risk.environment_assessment import assess_risk_en
 
 def _packet(vix_level: float) -> ParallelRiskPreparationPacket:
     return ParallelRiskPreparationPacket(
-        temporal_input=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+        temporal_input=TemporalContextInput(
+            source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+        ),
         regime_input=MarketRegimeContextInput(vix_level=vix_level),
         options_flow_input=OptionsFlowContextInput(),
     )

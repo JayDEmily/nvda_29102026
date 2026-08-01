@@ -22,7 +22,10 @@ def test_serial_execution_boundary_is_separate_from_capital_authority() -> None:
     contracts = _require_module("nvda_desk.contracts.execution")
     assert contracts.__name__ == "nvda_desk.contracts.execution"
     assert _require_module("nvda_desk.capital.authority").__name__ == "nvda_desk.capital.authority"
-    assert _require_module("nvda_desk.risk.join.final_join").__name__ == "nvda_desk.risk.join.final_join"
+    assert (
+        _require_module("nvda_desk.risk.join.final_join").__name__
+        == "nvda_desk.risk.join.final_join"
+    )
 
     output_model = _require_attr(contracts, "ExecutionExpressionOutput")
     assert output_model is getattr(contracts, "ExecutionExpressionOutput")

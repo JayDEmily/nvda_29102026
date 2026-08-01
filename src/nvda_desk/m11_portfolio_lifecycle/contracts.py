@@ -1,4 +1,5 @@
 """Immutable M11 K16/K17 portfolio lifecycle contracts."""
+
 from __future__ import annotations
 
 from datetime import UTC, datetime
@@ -101,16 +102,22 @@ class PortfolioSnapshot(BaseModel):
 
     @model_validator(mode="after")
     def _law(self) -> "PortfolioSnapshot":
-        positions = tuple(PositionState.model_validate(p.model_dump(mode="python")) for p in self.positions)
+        positions = tuple(
+            PositionState.model_validate(p.model_dump(mode="python")) for p in self.positions
+        )
         if tuple(p.position_id for p in positions) != self.position_ids:
             raise ValueError("portfolio_position_ids_mismatch")
-        if tuple(sorted(self.position_ids)) != self.position_ids or len(set(self.position_ids)) != len(self.position_ids):
+        if tuple(sorted(self.position_ids)) != self.position_ids or len(
+            set(self.position_ids)
+        ) != len(self.position_ids):
             raise ValueError("portfolio_position_order_or_uniqueness_invalid")
         if any(p.state_version != self.state_version for p in positions):
             raise ValueError("position_state_version_must_match_portfolio")
         if any(p.updated_at_utc > self.as_of_utc for p in positions):
             raise ValueError("portfolio_snapshot_precedes_position_update")
-        expected = semantic_fingerprint(_material(self, exclude={"snapshot_id", "semantic_fingerprint"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"snapshot_id", "semantic_fingerprint"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("portfolio_snapshot_fingerprint_mismatch")
         if self.snapshot_id != f"portfolio-snapshot:{expected[:24]}":
@@ -151,11 +158,15 @@ class LifecycleDecision(BaseModel):
             raise ValueError("lifecycle_reasons_must_be_nonempty")
         if self.action == "hold" and self.quantity is not None:
             raise ValueError("hold_carries_no_quantity")
-        if self.action == "trim" and (self.quantity is None or self.quantity <= 0 or self.quantity >= self.position_quantity):
+        if self.action == "trim" and (
+            self.quantity is None or self.quantity <= 0 or self.quantity >= self.position_quantity
+        ):
             raise ValueError("trim_quantity_invalid")
         if self.action == "close" and self.quantity != self.position_quantity:
             raise ValueError("close_quantity_must_equal_position")
-        expected = semantic_fingerprint(_material(self, exclude={"decision_id", "semantic_fingerprint"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"decision_id", "semantic_fingerprint"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("lifecycle_decision_fingerprint_mismatch")
         if self.decision_id != f"lifecycle-decision:{expected[:24]}":
@@ -187,7 +198,10 @@ class FillReconciliationReceipt(BaseModel):
         _hash(self.execution_receipt_fingerprint, "execution_receipt_fingerprint_invalid")
         _hash(self.snapshot_fingerprint, "snapshot_fingerprint_invalid")
         snap = PortfolioSnapshot.model_validate(self.snapshot.model_dump(mode="python"))
-        if (self.snapshot_id, self.snapshot_fingerprint) != (snap.snapshot_id, snap.semantic_fingerprint):
+        if (self.snapshot_id, self.snapshot_fingerprint) != (
+            snap.snapshot_id,
+            snap.semantic_fingerprint,
+        ):
             raise ValueError("fill_receipt_snapshot_binding_mismatch")
         if self.atomic_resulting_state_version != self.atomic_prior_state_version + 1:
             raise ValueError("fill_atomic_version_mismatch")
@@ -201,11 +215,12 @@ class FillReconciliationReceipt(BaseModel):
         if not (
             position.fill_ids[-1] == self.fill_id
             and position.execution_receipt_ids[-1] == self.execution_receipt_id
-            and position.execution_receipt_fingerprints[-1]
-            == self.execution_receipt_fingerprint
+            and position.execution_receipt_fingerprints[-1] == self.execution_receipt_fingerprint
         ):
             raise ValueError("fill_receipt_lineage_binding_mismatch")
-        expected = semantic_fingerprint(_material(self, exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("fill_reconciliation_receipt_fingerprint_mismatch")
         if self.receipt_id != f"fill-reconciliation:{expected[:24]}":
@@ -236,7 +251,10 @@ class CloseReceipt(BaseModel):
     def _law(self) -> "CloseReceipt":
         decision = LifecycleDecision.model_validate(self.decision.model_dump(mode="python"))
         prior = PositionState.model_validate(self.prior_position.model_dump(mode="python"))
-        if (self.decision_id, self.decision_fingerprint) != (decision.decision_id, decision.semantic_fingerprint):
+        if (self.decision_id, self.decision_fingerprint) != (
+            decision.decision_id,
+            decision.semantic_fingerprint,
+        ):
             raise ValueError("close_receipt_decision_binding_mismatch")
         if prior.semantic_fingerprint != decision.position_fingerprint:
             raise ValueError("close_receipt_prior_position_mismatch")
@@ -269,9 +287,7 @@ class CloseReceipt(BaseModel):
         else:
             assert decision.action == "trim"
             assert decision.quantity is not None
-            result = PositionState.model_validate(
-                self.resulting_position.model_dump(mode="python")
-            )
+            result = PositionState.model_validate(self.resulting_position.model_dump(mode="python"))
             if result.position_id != prior.position_id:
                 raise ValueError("trim_position_identity_changed")
             if result.quantity != prior.quantity - decision.quantity:
@@ -296,11 +312,11 @@ class CloseReceipt(BaseModel):
                 raise ValueError("trim_update_time_mismatch")
             if result.state_version != self.atomic_resulting_state_version:
                 raise ValueError("trim_resulting_version_mismatch")
-            if snapshot.positions != (result,) or snapshot.position_ids != (
-                result.position_id,
-            ):
+            if snapshot.positions != (result,) or snapshot.position_ids != (result.position_id,):
                 raise ValueError("trim_snapshot_position_mismatch")
-        expected = semantic_fingerprint(_material(self, exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"}))
+        expected = semantic_fingerprint(
+            _material(self, exclude={"receipt_id", "semantic_fingerprint", "duplicate_replay"})
+        )
         if self.semantic_fingerprint != expected:
             raise ValueError("close_receipt_fingerprint_mismatch")
         if self.receipt_id != f"close-receipt:{expected[:24]}":

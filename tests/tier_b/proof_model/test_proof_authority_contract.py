@@ -5,9 +5,7 @@ from pathlib import Path
 
 import pytest
 import yaml
-
 from scripts.proof_authority import AuthorityError, validate_authority_documents
-
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 
@@ -16,9 +14,7 @@ def _load_live_documents() -> tuple[dict, dict]:
     registry = yaml.safe_load(
         (REPO_ROOT / "config/retained_test_registry.yaml").read_text(encoding="utf-8")
     )
-    manifest = yaml.safe_load(
-        (REPO_ROOT / "config/proof_blocks.yaml").read_text(encoding="utf-8")
-    )
+    manifest = yaml.safe_load((REPO_ROOT / "config/proof_blocks.yaml").read_text(encoding="utf-8"))
     return registry, manifest
 
 
@@ -59,8 +55,7 @@ def test_live_pre_m00_promotion_resolves_exact_current_module_families() -> None
     )
     assert len(promotion.test_paths) == 15
     assert all(
-        model.path_admissions[path].lifecycle == "current_blocking"
-        for path in promotion.test_paths
+        model.path_admissions[path].lifecycle == "current_blocking" for path in promotion.test_paths
     )
 
 
@@ -82,9 +77,7 @@ def test_duplicate_path_admission_is_rejected() -> None:
         ("lifecycle", "quietly_green", "invalid lifecycle"),
     ],
 )
-def test_invalid_family_domains_are_rejected(
-    field: str, value: str, message: str
-) -> None:
+def test_invalid_family_domains_are_rejected(field: str, value: str, message: str) -> None:
     registry, manifest = _load_live_documents()
     broken = deepcopy(registry)
     broken["canonical_admission_model"]["test_families"][0][field] = value
@@ -115,9 +108,7 @@ def test_current_block_command_cannot_disagree_with_registry_membership() -> Non
         for item in broken["proof_blocks"]
         if item["proof_block_id"] == "m01_source_admission_contract"
     )
-    block["command"] = (
-        "python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py"
-    )
+    block["command"] = "python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py"
 
     with pytest.raises(AuthorityError, match="command test membership"):
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
@@ -149,8 +140,7 @@ def test_api_state_ownership_conflict_cannot_activate_legacy_and_current_familie
     legacy = next(
         item
         for item in broken["canonical_admission_model"]["test_families"]
-        if item["test_family_id"]
-        == "path__tests_tier_a_api_test_fwd005_api_exposure_contract_py"
+        if item["test_family_id"] == "path__tests_tier_a_api_test_fwd005_api_exposure_contract_py"
     )
     legacy["lifecycle"] = "current_nonblocking"
 
@@ -162,9 +152,7 @@ def test_api_state_ownership_lifecycles_are_explicit_and_not_in_current_promotio
     registry, manifest = _load_live_documents()
     model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
 
-    legacy = model.path_admissions[
-        "tests/tier_a/api/test_fwd005_api_exposure_contract.py"
-    ]
+    legacy = model.path_admissions["tests/tier_a/api/test_fwd005_api_exposure_contract.py"]
     current = model.path_admissions[
         "tests/tier_a/normative_authority/test_gate_c_outputs_replay_and_api.py"
     ]

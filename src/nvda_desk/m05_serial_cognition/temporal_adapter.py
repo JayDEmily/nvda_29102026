@@ -5,8 +5,8 @@ from __future__ import annotations
 from typing import Any
 
 from nvda_desk.domain.temporal.intraday_phase import (
-    IntradayPhaseEvidence,
     IntradayPhaseEvaluator,
+    IntradayPhaseEvidence,
     IntradayPhaseRepository,
     IntradayPhaseResult,
 )

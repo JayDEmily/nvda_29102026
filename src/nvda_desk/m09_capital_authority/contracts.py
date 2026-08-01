@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
-from decimal import Decimal, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal
 from hashlib import sha256
 from typing import Any, Final, Literal
 
@@ -263,9 +263,13 @@ class FinalRiskDecision(BaseModel):
             raise ValueError("unvalidated_carriage_cannot_claim_packet_lineage")
         if self.parallel_state not in {None, "observe", "caution", "block", "unknown"}:
             raise ValueError("parallel_state_invalid")
-        if self.parallel_state == "observe" and (self.cautions or self.hard_blocks or self.unknowns):
+        if self.parallel_state == "observe" and (
+            self.cautions or self.hard_blocks or self.unknowns
+        ):
             raise ValueError("parallel_observe_state_evidence_mismatch")
-        if self.parallel_state == "caution" and (not self.cautions or self.hard_blocks or self.unknowns):
+        if self.parallel_state == "caution" and (
+            not self.cautions or self.hard_blocks or self.unknowns
+        ):
             raise ValueError("parallel_caution_state_evidence_mismatch")
         if self.parallel_state == "block" and not self.hard_blocks:
             raise ValueError("parallel_block_state_requires_hard_block")
@@ -308,7 +312,12 @@ class FinalRiskDecision(BaseModel):
             )
             if any(value is None or value == "" for value in required):
                 raise ValueError("eligible_final_risk_requires_complete_lineage")
-            if self.hard_blocks or self.unknowns or self.conflicts or self.missing_authority_reasons:
+            if (
+                self.hard_blocks
+                or self.unknowns
+                or self.conflicts
+                or self.missing_authority_reasons
+            ):
                 raise ValueError("eligible_final_risk_cannot_carry_prohibiting_evidence")
             if self.parallel_state not in {"observe", "caution"}:
                 raise ValueError("eligible_final_risk_requires_nonprohibiting_parallel_state")
@@ -377,9 +386,7 @@ class CapitalDeploymentDecision(BaseModel):
     capital_state_version: int = Field(ge=0)
     capital_state_fingerprint: str
     capital_state_available_capital: Decimal = Field(ge=Decimal("0"))
-    capital_state_max_fresh_deployable_pct: Decimal = Field(
-        ge=Decimal("0"), le=Decimal("100")
-    )
+    capital_state_max_fresh_deployable_pct: Decimal = Field(ge=Decimal("0"), le=Decimal("100"))
     modifier_receipt_id: str
     modifier_decision_fingerprint: str
     modifier_bundle_id: str
@@ -409,8 +416,12 @@ class CapitalDeploymentDecision(BaseModel):
         if not self.carriage_validated:
             raise ValueError("canonical_packet_carriage_required")
         carriage_fields = (
-            self.trace_id, self.run_id, self.scenario_id,
-            self.prepared_context_packet_id, self.serial_packet_id, self.parallel_packet_id,
+            self.trace_id,
+            self.run_id,
+            self.scenario_id,
+            self.prepared_context_packet_id,
+            self.serial_packet_id,
+            self.parallel_packet_id,
             self.prepared_context_carriage_fingerprint,
             self.serial_packet_carriage_fingerprint,
             self.parallel_packet_carriage_fingerprint,
@@ -426,7 +437,9 @@ class CapitalDeploymentDecision(BaseModel):
         if self.serial_candidate_fingerprint is not None:
             _require_hash(self.serial_candidate_fingerprint, "serial_candidate_fingerprint_invalid")
         if self.parallel_assessment_fingerprint is not None:
-            _require_hash(self.parallel_assessment_fingerprint, "parallel_assessment_fingerprint_invalid")
+            _require_hash(
+                self.parallel_assessment_fingerprint, "parallel_assessment_fingerprint_invalid"
+            )
         expected_policy_fingerprint = semantic_fingerprint(
             {
                 "policy_version": self.policy_version,
@@ -464,9 +477,7 @@ class CapitalDeploymentDecision(BaseModel):
         if self.action == "block" and not self.reasons:
             raise ValueError("blocked_capital_decision_requires_reason")
         expected_notional = (
-            self.capital_state_available_capital
-            * self.authorised_pct
-            / Decimal("100")
+            self.capital_state_available_capital * self.authorised_pct / Decimal("100")
         ).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
         if self.authorised_notional != expected_notional:
             raise ValueError("capital_notional_does_not_match_bounded_percentage")
@@ -507,9 +518,7 @@ class CapitalDeploymentReceipt(BaseModel):
     capital_state_id: str
     capital_state_fingerprint: str
     capital_state_available_capital: Decimal = Field(ge=Decimal("0"))
-    capital_state_max_fresh_deployable_pct: Decimal = Field(
-        ge=Decimal("0"), le=Decimal("100")
-    )
+    capital_state_max_fresh_deployable_pct: Decimal = Field(ge=Decimal("0"), le=Decimal("100"))
     modifier_receipt_id: str
     modifier_decision_fingerprint: str
     policy_version: Literal["m09.capital-policy.v1"]
@@ -553,8 +562,12 @@ class CapitalDeploymentReceipt(BaseModel):
         if not self.carriage_validated:
             raise ValueError("capital_receipt_requires_validated_carriage")
         carriage_fields = (
-            self.trace_id, self.run_id, self.scenario_id,
-            self.prepared_context_packet_id, self.serial_packet_id, self.parallel_packet_id,
+            self.trace_id,
+            self.run_id,
+            self.scenario_id,
+            self.prepared_context_packet_id,
+            self.serial_packet_id,
+            self.parallel_packet_id,
             self.prepared_context_carriage_fingerprint,
             self.serial_packet_carriage_fingerprint,
             self.parallel_packet_carriage_fingerprint,
@@ -568,9 +581,13 @@ class CapitalDeploymentReceipt(BaseModel):
         ):
             _require_hash(value, "capital_receipt_packet_fingerprint_invalid")
         if self.serial_candidate_fingerprint is not None:
-            _require_hash(self.serial_candidate_fingerprint, "capital_receipt_serial_fingerprint_invalid")
+            _require_hash(
+                self.serial_candidate_fingerprint, "capital_receipt_serial_fingerprint_invalid"
+            )
         if self.parallel_assessment_fingerprint is not None:
-            _require_hash(self.parallel_assessment_fingerprint, "capital_receipt_parallel_fingerprint_invalid")
+            _require_hash(
+                self.parallel_assessment_fingerprint, "capital_receipt_parallel_fingerprint_invalid"
+            )
         if self.authorised_pct > self.capital_state_max_fresh_deployable_pct:
             raise ValueError("capital_receipt_percentage_exceeds_state_bound")
         _normalise_texts(self.reasons, "capital_receipt_reasons_must_be_canonical")
@@ -584,9 +601,7 @@ class CapitalDeploymentReceipt(BaseModel):
         ):
             raise ValueError("capital_receipt_positive_action_requires_positive_sizing")
         expected_notional = (
-            self.capital_state_available_capital
-            * self.authorised_pct
-            / Decimal("100")
+            self.capital_state_available_capital * self.authorised_pct / Decimal("100")
         ).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
         if self.authorised_notional != expected_notional:
             raise ValueError("capital_receipt_notional_mismatch")

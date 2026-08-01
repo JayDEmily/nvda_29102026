@@ -51,7 +51,9 @@ def test_external_source_contract_keeps_credentials_out_of_interface_specs() -> 
         )
 
 
-def test_external_source_contract_rejects_nested_payload_authority_on_carrier_construction() -> None:
+def test_external_source_contract_rejects_nested_payload_authority_on_carrier_construction() -> (
+    None
+):
     with pytest.raises(ValidationError, match="forbidden_external_payload_keys:api_key,order_qty"):
         ExternalPayloadCarrier(
             interface=_operator_bundle_spec(),

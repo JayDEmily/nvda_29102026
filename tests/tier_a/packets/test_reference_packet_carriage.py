@@ -148,7 +148,4 @@ def test_dmpv3_extensions_cannot_replace_canonical_schema_identifiers() -> None:
     assert schema_identifiers["payload_model_name"] == "dict"
     assert schema_identifiers["payload_module_path"] == "builtins"
     assert schema_identifiers["output_model_name"] == "dict"
-    assert (
-        packet.dmpextensions["nvda"]["execution_context"]["stack_id"]
-        == "stack-extension-guard"
-    )
+    assert packet.dmpextensions["nvda"]["execution_context"]["stack_id"] == "stack-extension-guard"

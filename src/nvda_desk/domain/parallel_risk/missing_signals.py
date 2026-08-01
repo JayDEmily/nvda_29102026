@@ -39,7 +39,9 @@ def build_missing_signal_register_entry(
 
 
 def signal_snapshot_from_upstream_ingress_result(
-    result: UpstreamIngressResult, *, raw_or_derived: Literal["raw", "derived", "metadata", "config", "trace"]
+    result: UpstreamIngressResult,
+    *,
+    raw_or_derived: Literal["raw", "derived", "metadata", "config", "trace"],
 ) -> SignalSnapshotEntry:
     """Project one upstream ingress result into a PRL signal snapshot entry.
 

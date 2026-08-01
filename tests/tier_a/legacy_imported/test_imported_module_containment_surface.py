@@ -47,8 +47,7 @@ def _legacy_imports(path: Path) -> set[str]:
         module
         for module in _imported_modules(path)
         if any(
-            module == prefix or module.startswith(f"{prefix}.")
-            for prefix in LEGACY_IMPORT_PREFIXES
+            module == prefix or module.startswith(f"{prefix}.") for prefix in LEGACY_IMPORT_PREFIXES
         )
     }
 
@@ -119,6 +118,7 @@ def test_imported_module_archive_tree_is_explicitly_quarantined() -> None:
     assert 'packages = ["src/nvda_desk", "scripts"]' in pyproject_text
     assert "/tests" in pyproject_text
     assert "legacy_import" not in pyproject_text
+
 
 def test_native_runtime_and_proof_do_not_dynamic_import_legacy_subsystem() -> None:
     offending_dynamic_imports: dict[str, list[str]] = {}

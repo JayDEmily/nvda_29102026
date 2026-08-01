@@ -2,17 +2,13 @@
 
 from __future__ import annotations
 
-from dataclasses import replace
-
 import pytest
-
 from tests.support.m03_k05_k06_contract_harness import (
     CLOSED_AUTHORITIES,
     MUTANTS,
     ReferenceBuilder,
     ReferenceMandatoryFieldConflictError,
     ReferenceResolver,
-    fingerprint,
     production_api,
     production_candidate_payload,
     production_capture_payload,
@@ -258,29 +254,24 @@ def _production_candidates_and_policy(*, equal: bool = False):
 
 def test_production_equal_candidates_coalesce_with_complete_provenance() -> None:
     api, market, options, _ = _production_candidates_and_policy(equal=True)
-    policy = api["FieldResolutionPolicy"].model_validate(
-        production_policy_payload(valid_policy())
-    )
-    receipt = api["resolve_canonical_field"](
-        candidates=(options, market), policy=policy
-    )
+    policy = api["FieldResolutionPolicy"].model_validate(production_policy_payload(valid_policy()))
+    receipt = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
 
     assert receipt.selected_value == 101.0
     assert receipt.candidate_ids == ("market.spot", "options.spot")
     assert receipt.resolution_reason == "semantically_equal_coalesced"
-    assert receipt.receipt_fingerprint == api["resolve_canonical_field"](
-        candidates=(market, options), policy=policy
-    ).receipt_fingerprint
+    assert (
+        receipt.receipt_fingerprint
+        == api["resolve_canonical_field"](
+            candidates=(market, options), policy=policy
+        ).receipt_fingerprint
+    )
 
 
 def test_production_explicit_owner_selection_and_conflict_are_fail_closed() -> None:
     api, market, options, policy = _production_candidates_and_policy()
-    selected = api["resolve_canonical_field"](
-        candidates=(market, options), policy=policy
-    )
-    reversed_selected = api["resolve_canonical_field"](
-        candidates=(options, market), policy=policy
-    )
+    selected = api["resolve_canonical_field"](candidates=(market, options), policy=policy)
+    reversed_selected = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
 
     assert selected == reversed_selected
     assert selected.selected_candidate_id == "options.spot"
@@ -290,9 +281,7 @@ def test_production_explicit_owner_selection_and_conflict_are_fail_closed() -> N
         production_policy_payload(valid_policy())
     )
     with pytest.raises(api["MandatoryFieldConflictError"]):
-        api["resolve_canonical_field"](
-            candidates=(market, options), policy=no_owner
-        )
+        api["resolve_canonical_field"](candidates=(market, options), policy=no_owner)
 
 
 def test_production_exact_float_comparison_coalesces_integer_and_float_forms() -> None:
@@ -311,13 +300,9 @@ def test_production_exact_float_comparison_coalesces_integer_and_float_forms() -
             )
         )
     )
-    policy = api["FieldResolutionPolicy"].model_validate(
-        production_policy_payload(valid_policy())
-    )
+    policy = api["FieldResolutionPolicy"].model_validate(production_policy_payload(valid_policy()))
 
-    receipt = api["resolve_canonical_field"](
-        candidates=(options, market), policy=policy
-    )
+    receipt = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
 
     assert receipt.equality_result == "equal"
     assert receipt.resolution_reason == "semantically_equal_coalesced"
@@ -370,17 +355,13 @@ def test_production_optional_missing_field_returns_explicit_unavailable_receipt(
 def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -> None:
     api = production_api()
     reference = valid_capture_reference()
-    capture = api["SourceCaptureReference"].model_validate(
-        production_capture_payload(reference)
-    )
+    capture = api["SourceCaptureReference"].model_validate(production_capture_payload(reference))
     payload = api["PreparedRuntimePayloadV1"](
         kind="prepared_runtime_v1", spot_price=101.0, nvda_return_pct=0.01
     )
     receipt = api["resolve_canonical_field"](
         candidates=(
-            api["FieldCandidate"].model_validate(
-                production_candidate_payload(valid_candidate())
-            ),
+            api["FieldCandidate"].model_validate(production_candidate_payload(valid_candidate())),
         ),
         policy=api["FieldResolutionPolicy"].model_validate(
             production_policy_payload(valid_policy())
@@ -428,12 +409,8 @@ def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -
 
 def test_production_builder_is_order_independent_and_preserves_derivation_inputs() -> None:
     api, market, options, policy = _production_candidates_and_policy(equal=True)
-    first_receipt = api["resolve_canonical_field"](
-        candidates=(market, options), policy=policy
-    )
-    second_receipt = api["resolve_canonical_field"](
-        candidates=(options, market), policy=policy
-    )
+    first_receipt = api["resolve_canonical_field"](candidates=(market, options), policy=policy)
+    second_receipt = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
     capture_type = api["SourceCaptureReference"]
     market_ref = production_capture_payload(valid_capture_reference())
     market_ref["semantic_fields"] = ("spot_price",)
@@ -507,18 +484,12 @@ def test_production_runtime_lineage_names_material_m03_authority() -> None:
 def _production_envelope():
     api = production_api()
     reference = valid_capture_reference()
-    capture = api["SourceCaptureReference"].model_validate(
-        production_capture_payload(reference)
-    )
+    capture = api["SourceCaptureReference"].model_validate(production_capture_payload(reference))
     candidate = api["FieldCandidate"].model_validate(
         production_candidate_payload(valid_candidate())
     )
-    policy = api["FieldResolutionPolicy"].model_validate(
-        production_policy_payload(valid_policy())
-    )
-    receipt = api["resolve_canonical_field"](
-        candidates=(candidate,), policy=policy
-    )
+    policy = api["FieldResolutionPolicy"].model_validate(production_policy_payload(valid_policy()))
+    receipt = api["resolve_canonical_field"](candidates=(candidate,), policy=policy)
     derivation = api["DerivationReceipt"].model_validate(
         production_derivation_payload(valid_derivation())
     )
@@ -547,9 +518,7 @@ def _production_envelope():
 
 def test_production_receipt_preserves_complete_candidate_and_comparison_evidence() -> None:
     api, market, options, policy = _production_candidates_and_policy(equal=True)
-    receipt = api["resolve_canonical_field"](
-        candidates=(options, market), policy=policy
-    )
+    receipt = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
 
     assert receipt.receipt_id == f"resolution:{receipt.receipt_fingerprint[:24]}"
     assert receipt.candidate_records == (market, options)
@@ -568,17 +537,13 @@ def test_production_public_boundaries_revalidate_copied_authority() -> None:
     api, _, candidate, policy, _, envelope = _production_envelope()
     forged_candidate = candidate.model_copy(update={"value": "not-a-float"})
     with pytest.raises(ValueError, match="typed_value"):
-        api["resolve_canonical_field"](
-            candidates=(forged_candidate,), policy=policy
-        )
+        api["resolve_canonical_field"](candidates=(forged_candidate,), policy=policy)
 
     from nvda_desk.preparation.runtime_preparer import (
         prepare_runtime_snapshot_from_envelope,
     )
 
-    forged_envelope = envelope.model_copy(
-        update={"prepared_fingerprint": "f" * 64}
-    )
+    forged_envelope = envelope.model_copy(update={"prepared_fingerprint": "f" * 64})
     with pytest.raises(ValueError, match="fingerprint"):
         prepare_runtime_snapshot_from_envelope(forged_envelope)
 
@@ -649,9 +614,7 @@ def _repair_build_envelope(
     api = production_api()
     return api["PreparedDataBuilder"]().build(
         source_capture_refs=refs,
-        input_schema_versions={
-            f"source_{index}": "1.0.0" for index, _ in enumerate(refs)
-        },
+        input_schema_versions={f"source_{index}": "1.0.0" for index, _ in enumerate(refs)},
         schema_version="1.0.0",
         preparation_policy_version="prep.v1",
         alignment_policy_version="align.v1",

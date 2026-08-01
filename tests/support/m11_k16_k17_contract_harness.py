@@ -1,13 +1,20 @@
 from __future__ import annotations
 
+import importlib
 from datetime import UTC, datetime
 from decimal import Decimal
-import importlib
 
-from tests.support.m10_k15_contract_harness import production_api as m10_api, production_capital_receipt
+from tests.support.m10_k15_contract_harness import (
+    production_api as m10_api,
+)
+from tests.support.m10_k15_contract_harness import (
+    production_capital_receipt,
+)
 
 
-def weighted_position(existing_qty: Decimal, existing_cost: Decimal, fill_qty: Decimal, fill_price: Decimal):
+def weighted_position(
+    existing_qty: Decimal, existing_cost: Decimal, fill_qty: Decimal, fill_price: Decimal
+):
     if fill_qty <= 0 or fill_price <= 0 or existing_qty < 0 or existing_cost < 0:
         raise ValueError("invalid_position_arithmetic")
     qty = existing_qty + fill_qty
@@ -33,12 +40,24 @@ def lifecycle_quantity(action: str, current: Decimal, requested: Decimal | None)
 
 def production_api():
     module = importlib.import_module("nvda_desk.m11_portfolio_lifecycle")
-    names = ("PositionState", "PortfolioSnapshot", "LifecycleDecision", "CloseReceipt", "FillReconciliationReceipt", "PortfolioLifecycleService")
+    names = (
+        "PositionState",
+        "PortfolioSnapshot",
+        "LifecycleDecision",
+        "CloseReceipt",
+        "FillReconciliationReceipt",
+        "PortfolioLifecycleService",
+    )
     return {name: getattr(module, name) for name in names}
 
 
-def production_execution_receipt(*, limit_price: Decimal = Decimal("100"), when: datetime = datetime(2026, 8, 1, 2, 0, tzinfo=UTC)):
-    api = m10_api(); capital = production_capital_receipt()
+def production_execution_receipt(
+    *,
+    limit_price: Decimal = Decimal("100"),
+    when: datetime = datetime(2026, 8, 1, 2, 0, tzinfo=UTC),
+):
+    api = m10_api()
+    capital = production_capital_receipt()
     policy = api["PlacementPolicy"](quantity_quantum=Decimal("0.001"))
     gateway = api["ExecutionGateway"]()
     intent = gateway.create_intent(capital, policy, limit_price=limit_price, intent_at_utc=when)

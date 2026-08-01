@@ -21,7 +21,9 @@ def _require_attr(module, attr_name: str):
 def test_downstream_state_reader_service_surface_is_present() -> None:
     state_reader = _require_module("nvda_desk.downstream.state_reader")
     assert state_reader.__name__ == "nvda_desk.downstream.state_reader"
-    assert _require_attr(state_reader, "DownstreamStateService") is getattr(state_reader, "DownstreamStateService")
+    assert _require_attr(state_reader, "DownstreamStateService") is getattr(
+        state_reader, "DownstreamStateService"
+    )
 
 
 def test_downstream_state_reader_detaches_position_id_inputs() -> None:

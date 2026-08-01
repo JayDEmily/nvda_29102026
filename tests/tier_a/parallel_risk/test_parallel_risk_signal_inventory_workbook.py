@@ -64,7 +64,9 @@ def _inventory_rows() -> dict[str, dict[str, str]]:
     for row in sheet.iter_rows(min_row=4, values_only=True):
         if not row or row[0] is None:
             continue
-        record = {str(header): "" if value is None else str(value) for header, value in zip(headers, row)}
+        record = {
+            str(header): "" if value is None else str(value) for header, value in zip(headers, row)
+        }
         rows[record["signal_id"]] = record
     return rows
 
@@ -116,15 +118,21 @@ def test_parallel_risk_signal_inventory_excluded_authority_is_not_runtime_demand
         assert record["exclusion_reason"]
 
 
-def test_parallel_risk_signal_inventory_and_runtime_boundary_have_no_advice_or_workbook_reads() -> None:
+def test_parallel_risk_signal_inventory_and_runtime_boundary_have_no_advice_or_workbook_reads() -> (
+    None
+):
     rows = _inventory_rows()
-    workbook_text = "\n".join(
-        "\n".join(record.values()).lower() for record in rows.values()
-    )
+    workbook_text = "\n".join("\n".join(record.values()).lower() for record in rows.values())
     for forbidden in FORBIDDEN_ADVICE_TERMS:
         assert forbidden not in workbook_text
 
     runtime_text = "\n".join(path.read_text(encoding="utf-8") for path in RUNTIME_PRL_PATHS)
-    forbidden_runtime_tokens = (".xlsx", "openpyxl", "load_workbook", "SpreadsheetFile", "import_xlsx")
+    forbidden_runtime_tokens = (
+        ".xlsx",
+        "openpyxl",
+        "load_workbook",
+        "SpreadsheetFile",
+        "import_xlsx",
+    )
     for token in forbidden_runtime_tokens:
         assert token not in runtime_text

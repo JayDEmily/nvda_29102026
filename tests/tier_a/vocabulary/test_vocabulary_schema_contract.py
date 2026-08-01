@@ -27,7 +27,9 @@ def test_vocabulary_schema_contract_surfaces_are_present() -> None:
     assert vocabulary_entry is getattr(schema_module, "VocabularyEntry")
     vocabulary_document = _require_attr(schema_module, "VocabularyDocument")
     assert vocabulary_document is getattr(schema_module, "VocabularyDocument")
-    assert _require_attr(schema_module, "vocabulary_document_from_dict") is getattr(schema_module, "vocabulary_document_from_dict")
+    assert _require_attr(schema_module, "vocabulary_document_from_dict") is getattr(
+        schema_module, "vocabulary_document_from_dict"
+    )
 
     assert is_dataclass(vocabulary_entry)
     assert is_dataclass(vocabulary_document)

@@ -1,9 +1,10 @@
 """Immutable M10 K15 placement and execution-evidence contracts."""
+
 from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
-from decimal import Decimal, ROUND_FLOOR
+from decimal import ROUND_FLOOR, Decimal
 from hashlib import sha256
 from typing import Any, Final, Literal
 
@@ -32,7 +33,9 @@ def _canonical(value: Any) -> Any:
 
 
 def semantic_fingerprint(value: Any) -> str:
-    return sha256(json.dumps(_canonical(value), sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return sha256(
+        json.dumps(_canonical(value), sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
 
 
 def _require_utc(value: datetime, reason: str) -> datetime:
@@ -130,25 +133,33 @@ class PlacementIntent(BaseModel):
     @model_validator(mode="after")
     def _validate_law(self) -> "PlacementIntent":
         for name in (
-            "capital_receipt_fingerprint", "capital_decision_fingerprint",
-            "final_decision_fingerprint", "capital_state_fingerprint",
-            "modifier_decision_fingerprint", "m09_policy_fingerprint",
-            "serial_candidate_fingerprint", "placement_policy_fingerprint",
+            "capital_receipt_fingerprint",
+            "capital_decision_fingerprint",
+            "final_decision_fingerprint",
+            "capital_state_fingerprint",
+            "modifier_decision_fingerprint",
+            "m09_policy_fingerprint",
+            "serial_candidate_fingerprint",
+            "placement_policy_fingerprint",
         ):
             _require_hash(getattr(self, name), f"{name}_invalid")
         if self.parallel_assessment_fingerprint is not None:
-            _require_hash(self.parallel_assessment_fingerprint, "parallel_assessment_fingerprint_invalid")
+            _require_hash(
+                self.parallel_assessment_fingerprint, "parallel_assessment_fingerprint_invalid"
+            )
         if (self.parallel_assessment_id is None) != (self.parallel_assessment_fingerprint is None):
             raise ValueError("parallel_assessment_lineage_incomplete")
-        expected_policy = semantic_fingerprint({
-            "policy_version": self.placement_policy_version,
-            "symbol": self.symbol,
-            "side": self.side,
-            "order_type": self.order_type,
-            "time_in_force": self.time_in_force,
-            "adapter_mode": "paper",
-            "quantity_quantum": self.quantity_quantum,
-        })
+        expected_policy = semantic_fingerprint(
+            {
+                "policy_version": self.placement_policy_version,
+                "symbol": self.symbol,
+                "side": self.side,
+                "order_type": self.order_type,
+                "time_in_force": self.time_in_force,
+                "adapter_mode": "paper",
+                "quantity_quantum": self.quantity_quantum,
+            }
+        )
         if self.placement_policy_fingerprint != expected_policy:
             raise ValueError("placement_policy_fingerprint_mismatch")
         if self.intent_at_utc < self.capital_receipt_emitted_at_utc:
@@ -157,7 +168,9 @@ class PlacementIntent(BaseModel):
             raise ValueError("quantity_not_quantum_multiple")
         if self.quantity * self.limit_price > self.authorised_notional:
             raise ValueError("placement_exceeds_m09_authority")
-        expected_notional = (self.quantity * self.limit_price).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
+        expected_notional = (self.quantity * self.limit_price).quantize(
+            Decimal("0.01"), rounding=ROUND_FLOOR
+        )
         if self.planned_notional != expected_notional:
             raise ValueError("planned_notional_mismatch")
         material = _material(self, exclude={"intent_id", "semantic_fingerprint"})
@@ -206,9 +219,16 @@ class ExecutionEvent(BaseModel):
         _require_hash(self.intent_fingerprint, "intent_fingerprint_invalid")
         _require_hash(self.port_fingerprint, "port_fingerprint_invalid")
         intent = PlacementIntent.model_validate(self.intent.model_dump(mode="python"))
-        if self.intent_id != intent.intent_id or self.intent_fingerprint != intent.semantic_fingerprint:
+        if (
+            self.intent_id != intent.intent_id
+            or self.intent_fingerprint != intent.semantic_fingerprint
+        ):
             raise ValueError("execution_event_intent_binding_mismatch")
-        if (self.quantity, self.price, self.notional) != (intent.quantity, intent.limit_price, intent.planned_notional):
+        if (self.quantity, self.price, self.notional) != (
+            intent.quantity,
+            intent.limit_price,
+            intent.planned_notional,
+        ):
             raise ValueError("execution_event_exceeds_or_differs_from_intent")
         if self.occurred_at_utc < intent.intent_at_utc:
             raise ValueError("execution_event_precedes_intent")
@@ -216,7 +236,9 @@ class ExecutionEvent(BaseModel):
             raise ValueError("order_event_shape_invalid")
         if self.sequence == 2 and (self.event_type != "fill_recorded" or not self.fill_id):
             raise ValueError("fill_event_shape_invalid")
-        expected_notional = (self.quantity * self.price).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
+        expected_notional = (self.quantity * self.price).quantize(
+            Decimal("0.01"), rounding=ROUND_FLOOR
+        )
         if self.notional != expected_notional:
             raise ValueError("execution_event_notional_mismatch")
         material = _material(self, exclude={"event_id", "semantic_fingerprint"})
@@ -283,11 +305,17 @@ class ExecutionReceipt(BaseModel):
         _require_hash(self.port_fingerprint, "port_fingerprint_invalid")
         _require_hash(self.transaction_input_fingerprint, "transaction_input_fingerprint_invalid")
         intent = PlacementIntent.model_validate(self.intent.model_dump(mode="python"))
-        if self.intent_id != intent.intent_id or self.intent_fingerprint != intent.semantic_fingerprint:
+        if (
+            self.intent_id != intent.intent_id
+            or self.intent_fingerprint != intent.semantic_fingerprint
+        ):
             raise ValueError("execution_receipt_intent_binding_mismatch")
         if self.transaction_input_fingerprint != intent.semantic_fingerprint:
             raise ValueError("transaction_input_fingerprint_mismatch")
-        if self.transaction_consistency_unit_id != self.port_id or self.transaction_policy_version != self.port_version:
+        if (
+            self.transaction_consistency_unit_id != self.port_id
+            or self.transaction_policy_version != self.port_version
+        ):
             raise ValueError("transaction_port_scope_mismatch")
         if self.transaction_command_id != f"m10.execute:{intent.intent_id}":
             raise ValueError("transaction_command_id_mismatch")
@@ -296,25 +324,51 @@ class ExecutionReceipt(BaseModel):
         if (order.sequence, fill.sequence) != (1, 2):
             raise ValueError("execution_event_order_invalid")
         for event in (order, fill):
-            if event.intent_id != self.intent_id or event.intent_fingerprint != self.intent_fingerprint:
+            if (
+                event.intent_id != self.intent_id
+                or event.intent_fingerprint != self.intent_fingerprint
+            ):
                 raise ValueError("execution_receipt_intent_lineage_mismatch")
             if event.port_id != self.port_id or event.port_fingerprint != self.port_fingerprint:
                 raise ValueError("execution_receipt_port_lineage_mismatch")
-        if self.order_event_id != order.event_id or self.order_event_fingerprint != order.semantic_fingerprint:
+        if (
+            self.order_event_id != order.event_id
+            or self.order_event_fingerprint != order.semantic_fingerprint
+        ):
             raise ValueError("order_event_binding_mismatch")
-        if self.fill_event_id != fill.event_id or self.fill_event_fingerprint != fill.semantic_fingerprint:
+        if (
+            self.fill_event_id != fill.event_id
+            or self.fill_event_fingerprint != fill.semantic_fingerprint
+        ):
             raise ValueError("fill_event_binding_mismatch")
-        if self.order_id != order.order_id or self.order_id != fill.order_id or self.fill_id != fill.fill_id:
+        if (
+            self.order_id != order.order_id
+            or self.order_id != fill.order_id
+            or self.fill_id != fill.fill_id
+        ):
             raise ValueError("order_fill_identity_mismatch")
-        if (self.executed_quantity, self.executed_price, self.executed_notional) != (fill.quantity, fill.price, fill.notional):
+        if (self.executed_quantity, self.executed_price, self.executed_notional) != (
+            fill.quantity,
+            fill.price,
+            fill.notional,
+        ):
             raise ValueError("execution_fill_values_mismatch")
-        if (self.executed_quantity, self.executed_price, self.executed_notional) != (intent.quantity, intent.limit_price, intent.planned_notional):
+        if (self.executed_quantity, self.executed_price, self.executed_notional) != (
+            intent.quantity,
+            intent.limit_price,
+            intent.planned_notional,
+        ):
             raise ValueError("execution_receipt_exceeds_or_differs_from_intent")
-        if self.executed_at_utc != fill.occurred_at_utc or order.occurred_at_utc != fill.occurred_at_utc:
+        if (
+            self.executed_at_utc != fill.occurred_at_utc
+            or order.occurred_at_utc != fill.occurred_at_utc
+        ):
             raise ValueError("execution_event_time_mismatch")
         if self.transaction_resulting_state_version != self.transaction_prior_state_version + 1:
             raise ValueError("transaction_version_progression_invalid")
-        material = _material(self, exclude={"receipt_id", "transaction_receipt_id", "semantic_fingerprint"})
+        material = _material(
+            self, exclude={"receipt_id", "transaction_receipt_id", "semantic_fingerprint"}
+        )
         expected_fp = semantic_fingerprint(material)
         if self.semantic_fingerprint != expected_fp:
             raise ValueError("execution_receipt_fingerprint_mismatch")

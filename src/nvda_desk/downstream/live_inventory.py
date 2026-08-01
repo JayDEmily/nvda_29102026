@@ -83,9 +83,7 @@ class DownstreamLiveInventoryService:
         if self._position_repository is None:
             raise ValueError("position_repository is required for fill reconciliation")
 
-        normalised_reconciliation_id = _normalise_token(
-            reconciliation_id, "reconciliation_id"
-        )
+        normalised_reconciliation_id = _normalise_token(reconciliation_id, "reconciliation_id")
         normalised_events = [_normalise_fill_evidence_event(event) for event in fill_evidence]
         if not normalised_events:
             raise ValueError("fill_evidence must contain at least one event")
@@ -137,9 +135,9 @@ class DownstreamLiveInventoryService:
                 receipt_id=_normalise_token(normalised_receipt_id, "receipt_id"),
                 inventory_id=_normalise_token(inventory_id, "inventory_id"),
                 position_ids=reconciled_position_ids,
-                capital_snapshot_id=snapshot.capital_state.snapshot_id
-                if snapshot.capital_state
-                else None,
+                capital_snapshot_id=(
+                    snapshot.capital_state.snapshot_id if snapshot.capital_state else None
+                ),
             )
             if self._receipt_ledger is not None:
                 receipt_payload = receipt.model_dump()

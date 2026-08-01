@@ -138,15 +138,11 @@ def _candidate_material(candidate: CandidateCase) -> dict[str, Any]:
         "owner_id": candidate.owner_id,
         "validation_state": candidate.validation_state,
         "observed_at_utc": (
-            candidate.observed_at_utc.isoformat()
-            if candidate.observed_at_utc is not None
-            else None
+            candidate.observed_at_utc.isoformat() if candidate.observed_at_utc is not None else None
         ),
         "capture_id": candidate.capture_id,
         "captured_at_utc": (
-            candidate.captured_at_utc.isoformat()
-            if candidate.captured_at_utc is not None
-            else None
+            candidate.captured_at_utc.isoformat() if candidate.captured_at_utc is not None else None
         ),
         "supersedes_candidate_id": candidate.supersedes_candidate_id,
         "supersession_reason": candidate.supersession_reason,
@@ -298,12 +294,12 @@ def valid_snapshot(
         effective_from_utc=datetime(2026, 7, 31, 0, 0, tzinfo=UTC),
         effective_to_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
         as_of_utc=datetime(2026, 7, 31, 4, 0, tzinfo=UTC),
-        market_session_reference=(valid_candidate(),)
-        if session_candidates is None
-        else session_candidates,
-        financial_event_reference=(event_candidate(),)
-        if event_candidates is None
-        else event_candidates,
+        market_session_reference=(
+            (valid_candidate(),) if session_candidates is None else session_candidates
+        ),
+        financial_event_reference=(
+            (event_candidate(),) if event_candidates is None else event_candidates
+        ),
         operational_calendar_state=operational_candidates,
         derived_runtime_calendar_context=derived_candidates,
         session_completeness=session_completeness,
@@ -419,10 +415,7 @@ class ReferenceSubject:
         )
         status = "projected"
         degraded: tuple[str, ...] = ()
-        if (
-            snapshot.operational_completeness != "complete"
-            and policy.allow_reference_only_degraded
-        ):
+        if snapshot.operational_completeness != "complete" and policy.allow_reference_only_degraded:
             status = "degraded"
             degraded = ("operational_calendar_state_unavailable",)
         return self._result(
@@ -452,9 +445,7 @@ class ReferenceSubject:
         if len(values) == 1:
             return candidates, False
         source_candidates = tuple(
-            item
-            for item in candidates
-            if item.layer != LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT
+            item for item in candidates if item.layer != LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT
         )
         lawful = tuple(
             item
@@ -555,9 +546,7 @@ class CallerOrderMutant(ReferenceSubject):
 class DerivedOverrideMutant(ReferenceSubject):
     def _resolve_candidates(self, candidates):
         derived = tuple(
-            item
-            for item in candidates
-            if item.layer == LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT
+            item for item in candidates if item.layer == LayerCase.DERIVED_RUNTIME_CALENDAR_CONTEXT
         )
         return (derived[-1],), False
 
@@ -652,20 +641,16 @@ def production_snapshot_payload(snapshot: SnapshotCase | None = None) -> dict[st
         "effective_to_utc": subject.effective_to_utc,
         "as_of_utc": subject.as_of_utc,
         "market_session_reference": [
-            production_candidate_payload(item)
-            for item in subject.market_session_reference
+            production_candidate_payload(item) for item in subject.market_session_reference
         ],
         "financial_event_reference": [
-            production_candidate_payload(item)
-            for item in subject.financial_event_reference
+            production_candidate_payload(item) for item in subject.financial_event_reference
         ],
         "operational_calendar_state": [
-            production_candidate_payload(item)
-            for item in subject.operational_calendar_state
+            production_candidate_payload(item) for item in subject.operational_calendar_state
         ],
         "derived_runtime_calendar_context": [
-            production_candidate_payload(item)
-            for item in subject.derived_runtime_calendar_context
+            production_candidate_payload(item) for item in subject.derived_runtime_calendar_context
         ],
         "session_completeness": subject.session_completeness,
         "event_completeness": subject.event_completeness,

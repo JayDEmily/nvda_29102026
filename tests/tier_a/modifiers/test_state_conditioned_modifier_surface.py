@@ -50,10 +50,18 @@ def test_modifier_home_surfaces_are_present() -> None:
     modifier_module = _require_module("nvda_desk.cognition.modifiers.state_conditioned")
     assert modifier_module.__name__ == "nvda_desk.cognition.modifiers.state_conditioned"
 
-    assert _require_attr(modifier_module, "StateConditionedModifierService") is getattr(modifier_module, "StateConditionedModifierService")
-    assert _require_attr(modifier_module, "build_modifier_packet") is getattr(modifier_module, "build_modifier_packet")
-    assert _require_attr(modifier_module, "apply_posture_modifiers") is getattr(modifier_module, "apply_posture_modifiers")
-    assert _require_attr(modifier_module, "apply_execution_modifiers") is getattr(modifier_module, "apply_execution_modifiers")
+    assert _require_attr(modifier_module, "StateConditionedModifierService") is getattr(
+        modifier_module, "StateConditionedModifierService"
+    )
+    assert _require_attr(modifier_module, "build_modifier_packet") is getattr(
+        modifier_module, "build_modifier_packet"
+    )
+    assert _require_attr(modifier_module, "apply_posture_modifiers") is getattr(
+        modifier_module, "apply_posture_modifiers"
+    )
+    assert _require_attr(modifier_module, "apply_execution_modifiers") is getattr(
+        modifier_module, "apply_execution_modifiers"
+    )
 
 
 def test_modifier_home_builds_packet_and_applies_posture_lineage() -> None:

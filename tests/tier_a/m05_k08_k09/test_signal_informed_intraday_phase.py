@@ -4,19 +4,20 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
-from nvda_desk.domain.temporal.intraday_phase import (
-    InMemoryIntradayPhaseRepository,
-    IntradayPhase,
-    IntradayPhaseEvidence,
-    IntradayPhaseEvaluator,
-    IntradayPhasePolicy,
-    IntradayPhaseState,
-)
-from nvda_desk.m05_serial_cognition import StageContext, TemporalStageAdapter
 from tests.support.m05_k08_k09_contract_harness import (
     production_context_payload,
     valid_context,
 )
+
+from nvda_desk.domain.temporal.intraday_phase import (
+    InMemoryIntradayPhaseRepository,
+    IntradayPhase,
+    IntradayPhaseEvaluator,
+    IntradayPhaseEvidence,
+    IntradayPhasePolicy,
+    IntradayPhaseState,
+)
+from nvda_desk.m05_serial_cognition import StageContext, TemporalStageAdapter
 
 NOW = datetime(2026, 7, 31, 14, 0, tzinfo=UTC)
 HASH_A = "a" * 64
@@ -108,9 +109,7 @@ def test_clock_only_is_unresolved_and_never_positive_permission() -> None:
 
 
 def test_minimum_dwell_and_hysteresis_prevent_single_observation_transition() -> None:
-    evaluator = IntradayPhaseEvaluator(
-        policy=policy(minimum_dwell_observations=2)
-    )
+    evaluator = IntradayPhaseEvaluator(policy=policy(minimum_dwell_observations=2))
     first = evaluator.evaluate(
         evidence=evidence("settled-a"),
         prior_state=state(IntradayPhase.OPENING_PRICE_DISCOVERY),

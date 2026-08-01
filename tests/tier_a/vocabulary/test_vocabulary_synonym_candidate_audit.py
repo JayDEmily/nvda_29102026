@@ -447,16 +447,12 @@ def test_source_code_contains_no_path_bound_synonym_suppression_tables():
         assert token not in source
 
 
-def test_module_namespace_audit_does_not_scan_unrelated_repository_paths(
-    tmp_path, monkeypatch
-):
+def test_module_namespace_audit_does_not_scan_unrelated_repository_paths(tmp_path, monkeypatch):
     m04_scope = tmp_path / "m04_scope"
     unrelated_scope = tmp_path / "unrelated_scope"
     m04_scope.mkdir()
     unrelated_scope.mkdir()
-    (m04_scope / "owned.py").write_text(
-        'label = "Reference Packet Draft"\n', encoding="utf-8"
-    )
+    (m04_scope / "owned.py").write_text('label = "Reference Packet Draft"\n', encoding="utf-8")
     (unrelated_scope / "unrelated.py").write_text(
         'label = "Reference Packet Draft"\n', encoding="utf-8"
     )

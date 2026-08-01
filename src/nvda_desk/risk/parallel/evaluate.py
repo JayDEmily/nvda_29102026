@@ -2,13 +2,6 @@
 
 from __future__ import annotations
 
-# This module retains the old bootstrap-packet evaluator only as compatibility
-# evidence. Canonical M06 authority is nvda_desk.m06_parallel_risk and its
-# DMPV3 egress adapter; this module must not feed canonical M09 ingress.
-CANONICAL_M06_ROUTE = False
-COMPATIBILITY_SCOPE = "legacy_parallel_risk_bootstrap_specimen"
-
-
 from nvda_desk.contracts.packets import DeskModulePacketV3
 from nvda_desk.contracts.parallel_risk import (
     PARALLEL_RISK_BOOTSTRAP_INPUT_DATASCHEMA,
@@ -30,6 +23,12 @@ from nvda_desk.domain.parallel_risk.environment_assessment import (
     assess_environment,
     assess_risk_envelope,
 )
+
+# This module retains the old bootstrap-packet evaluator only as compatibility
+# evidence. Canonical M06 authority is nvda_desk.m06_parallel_risk and its
+# DMPV3 egress adapter; this module must not feed canonical M09 ingress.
+CANONICAL_M06_ROUTE = False
+COMPATIBILITY_SCOPE = "legacy_parallel_risk_bootstrap_specimen"
 
 
 class ParallelRiskService:

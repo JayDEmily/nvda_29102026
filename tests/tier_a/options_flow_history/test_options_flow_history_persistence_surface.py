@@ -22,7 +22,9 @@ def _require_attr(module, attr_name: str):
 def test_options_flow_history_persistence_surfaces_are_present() -> None:
     repository = _require_module("nvda_desk.repositories.options_flow_history_repository")
     assert repository.__name__ == "nvda_desk.repositories.options_flow_history_repository"
-    assert _require_attr(repository, "OptionsFlowHistoryRepository") is getattr(repository, "OptionsFlowHistoryRepository")
+    assert _require_attr(repository, "OptionsFlowHistoryRepository") is getattr(
+        repository, "OptionsFlowHistoryRepository"
+    )
 
     versions_dir = Path("alembic/versions")
     if not versions_dir.exists():

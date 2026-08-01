@@ -21,4 +21,6 @@ def _require_attr(module, attr_name: str):
 def test_checkpoint_helper_surface_is_present_for_prepared_ingress_boundaries() -> None:
     checkpoints = _require_module("nvda_desk.downstream.checkpoints")
     assert checkpoints.__name__ == "nvda_desk.downstream.checkpoints"
-    assert _require_attr(checkpoints, "CheckpointObservation") is getattr(checkpoints, "CheckpointObservation")
+    assert _require_attr(checkpoints, "CheckpointObservation") is getattr(
+        checkpoints, "CheckpointObservation"
+    )

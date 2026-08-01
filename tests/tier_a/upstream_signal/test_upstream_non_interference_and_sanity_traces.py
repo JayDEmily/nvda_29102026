@@ -106,7 +106,9 @@ def test_non_interference_boundary_strips_forbidden_runtime_keys_from_trace_payl
     assert result.trade_decision_side_effects == []
 
 
-def test_non_interference_boundary_strips_nested_forbidden_runtime_keys_from_trace_payload() -> None:
+def test_non_interference_boundary_strips_nested_forbidden_runtime_keys_from_trace_payload() -> (
+    None
+):
     raw_signal = RawUpstreamSignalInput(
         source_id="signal-feed-4",
         signal_family_id="market_depth_imbalance",

@@ -4,7 +4,9 @@ from nvda_desk.contracts.parallel_risk import RiskAtomState
 from nvda_desk.domain.parallel_risk.family_aggregation import aggregate_risk_family_states
 
 
-def _atom(atom_id: str, family: str, state: str, intensity: float, confidence: float) -> RiskAtomState:
+def _atom(
+    atom_id: str, family: str, state: str, intensity: float, confidence: float
+) -> RiskAtomState:
     return RiskAtomState(
         risk_atom_id=atom_id,
         family=family,

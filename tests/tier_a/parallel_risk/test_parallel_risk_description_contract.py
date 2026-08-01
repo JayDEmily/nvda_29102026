@@ -24,7 +24,9 @@ def test_description_template_ref_is_deterministic_metadata_only() -> None:
 
 
 def test_description_template_ref_rejects_free_form_or_trade_advice_authority() -> None:
-    with pytest.raises(ValidationError, match="parallel_risk_description_template_ref_must_remain_bounded"):
+    with pytest.raises(
+        ValidationError, match="parallel_risk_description_template_ref_must_remain_bounded"
+    ):
         ParallelRiskDescriptionTemplateRef(
             template_id="prl.minute_profile.summary.v1",
             template_registry_ref="data/parallel_risk/description_templates.v1.json",

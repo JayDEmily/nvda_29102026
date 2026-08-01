@@ -29,9 +29,15 @@ def test_cognition_ingress_mapping_surfaces_are_present() -> None:
     options_mapper = _require_module("nvda_desk.cognition.ingress.options_mapper")
     assert options_mapper.__name__ == "nvda_desk.cognition.ingress.options_mapper"
 
-    assert _require_attr(temporal_mapper, "build_temporal_input") is getattr(temporal_mapper, "build_temporal_input")
-    assert _require_attr(regime_mapper, "build_regime_input") is getattr(regime_mapper, "build_regime_input")
-    assert _require_attr(options_mapper, "build_options_flow_input") is getattr(options_mapper, "build_options_flow_input")
+    assert _require_attr(temporal_mapper, "build_temporal_input") is getattr(
+        temporal_mapper, "build_temporal_input"
+    )
+    assert _require_attr(regime_mapper, "build_regime_input") is getattr(
+        regime_mapper, "build_regime_input"
+    )
+    assert _require_attr(options_mapper, "build_options_flow_input") is getattr(
+        options_mapper, "build_options_flow_input"
+    )
 
 
 def test_cognition_ingress_mappers_consume_prepared_runtime_snapshot() -> None:

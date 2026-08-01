@@ -36,7 +36,9 @@ def _module(path: Path) -> ast.Module:
     return ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
 
 
-def test_financial_calendar_native_files_do_not_import_donor_event_services_or_runtime_owners() -> None:
+def test_financial_calendar_native_files_do_not_import_donor_event_services_or_runtime_owners() -> (
+    None
+):
     violations: list[str] = []
     for path in FINANCIAL_CALENDAR_NATIVE_FILES:
         for node in ast.walk(_module(path)):

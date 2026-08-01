@@ -30,9 +30,7 @@ class VocabularyNamespace:
     imports: list[str] = field(default_factory=list)
 
     def validate(self) -> None:
-        if not isinstance(self.namespace, str) or not _NAMESPACE_PATTERN.fullmatch(
-            self.namespace
-        ):
+        if not isinstance(self.namespace, str) or not _NAMESPACE_PATTERN.fullmatch(self.namespace):
             raise ValueError("namespace must be 'global' or a lowercase Mxx id such as 'm04'")
         if not isinstance(self.scan_paths, list) or not self.scan_paths:
             raise ValueError(f"scan_paths must be a non-empty list for {self.namespace}")
@@ -386,11 +384,7 @@ class VocabularyDocument:
     def entry_index(self) -> dict[str, VocabularyEntry]:
         self.validate()
         return {
-            (
-                entry.canonical_slug
-                if entry.namespace == "global"
-                else entry.canonical_id
-            ): entry
+            (entry.canonical_slug if entry.namespace == "global" else entry.canonical_id): entry
             for entry in self.entries
         }
 
@@ -410,16 +404,12 @@ class VocabularyDocument:
             scope.validate()
             unknown_imports = sorted(set(scope.imports) - set(self.namespaces))
             if unknown_imports:
-                raise ValueError(
-                    f"namespace {key} imports unknown namespaces: {unknown_imports}"
-                )
+                raise ValueError(f"namespace {key} imports unknown namespaces: {unknown_imports}")
         canonical_ids: set[str] = set()
         for entry in self.entries:
             entry.validate()
             if entry.namespace not in self.namespaces:
-                raise ValueError(
-                    f"entry {entry.canonical_id} uses an unregistered namespace"
-                )
+                raise ValueError(f"entry {entry.canonical_id} uses an unregistered namespace")
             canonical_id = _normalise_token(entry.canonical_id)
             if canonical_id in canonical_ids:
                 raise ValueError(
@@ -478,9 +468,7 @@ class VocabularyDocument:
                         )
                     owner = alias_owner.setdefault(alias_token, owner_id)
                     if owner != owner_id:
-                        raise ValueError(
-                            f"alias collision for {alias!r}: {owner} vs {owner_id}"
-                        )
+                        raise ValueError(f"alias collision for {alias!r}: {owner} vs {owner_id}")
                     if alias_token in disallowed_owner:
                         raise ValueError(
                             f"alias collides with disallowed phrase of "
@@ -501,8 +489,7 @@ class VocabularyDocument:
                     owner = disallowed_owner.setdefault(phrase_token, owner_id)
                     if owner != owner_id:
                         raise ValueError(
-                            f"disallowed phrase collision for {phrase!r}: "
-                            f"{owner} vs {owner_id}"
+                            f"disallowed phrase collision for {phrase!r}: " f"{owner} vs {owner_id}"
                         )
                     if phrase_token in alias_owner:
                         raise ValueError(
@@ -516,16 +503,12 @@ class VocabularyDocument:
         self.validate()
         candidate_tokens = candidate.tokens()
         if candidate.namespace not in self.namespaces:
-            raise ValueError(
-                f"candidate uses an unregistered namespace: {candidate.namespace}"
-            )
+            raise ValueError(f"candidate uses an unregistered namespace: {candidate.namespace}")
 
         token_owners: dict[str, tuple[str, str]] = {}
         disallowed_owners: dict[str, str] = {}
         visible_entries = [
-            entry
-            for entry in self.entries
-            if entry.namespace in {"global", candidate.namespace}
+            entry for entry in self.entries if entry.namespace in {"global", candidate.namespace}
         ]
         for entry in visible_entries:
             slug_token = _normalise_token(entry.canonical_slug)
@@ -649,9 +632,7 @@ class VocabularyDocument:
             and entry.namespace in {"global", candidate.namespace}
         ]
         if len(matched_entries) != 1:
-            raise ValueError(
-                "candidate classification did not resolve one visible governed entry"
-            )
+            raise ValueError("candidate classification did not resolve one visible governed entry")
         matched_entry = matched_entries[0]
         existing_tokens = {
             _normalise_token(matched_entry.canonical_slug),
@@ -700,10 +681,10 @@ class VocabularyDocument:
 
         new_entries: list[VocabularyEntry] = []
         for entry in self.entries:
-            if (
-                entry.canonical_slug != matched_slug
-                or entry.namespace not in {"global", candidate.namespace}
-            ):
+            if entry.canonical_slug != matched_slug or entry.namespace not in {
+                "global",
+                candidate.namespace,
+            }:
                 new_entries.append(entry)
                 continue
             alias_tokens = {_normalise_token(alias) for alias in entry.allowed_aliases}
@@ -833,8 +814,7 @@ class VocabularyDocument:
             "registry_version": self.registry_version,
             "notes": list(self.notes),
             "namespaces": {
-                namespace: scope.to_dict()
-                for namespace, scope in self.namespaces.items()
+                namespace: scope.to_dict() for namespace, scope in self.namespaces.items()
             },
             "entries": [entry.to_dict() for entry in self.entries],
         }
@@ -878,9 +858,7 @@ def vocabulary_document_from_dict(payload: Mapping[str, Any]) -> VocabularyDocum
         canonical_id = entry_payload.pop("canonical_id", None)
         entry = VocabularyEntry(**entry_payload)
         if canonical_id is not None and canonical_id != entry.canonical_id:
-            raise ValueError(
-                f"canonical_id does not match namespace and slug: {canonical_id!r}"
-            )
+            raise ValueError(f"canonical_id does not match namespace and slug: {canonical_id!r}")
         entries.append(entry)
 
     raw_namespaces = payload.get("namespaces")

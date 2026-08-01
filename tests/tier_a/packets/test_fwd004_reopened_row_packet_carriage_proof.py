@@ -10,7 +10,6 @@ from nvda_desk.persistence.execution_records import ExecutionRecordsRepository
 from nvda_desk.repositories.position_repository import PositionRepository
 from nvda_desk.review.packet_service import ReviewPacketService
 
-
 REOPENED_ROW_CASES = (
     ("FWD004-AUDIT-001", "atlas_donor_dmp_envelope_001", "dependency_light_seam"),
     ("FWD004-AUDIT-002", "atlas_donor_dmp_envelope_002", "contract_primitives"),
@@ -52,7 +51,11 @@ REOPENED_ROW_CASES = (
     ("FWD004-AUDIT-047", "atlas_donor_config_models_027", "reference_payload_carriage"),
     ("FWD004-AUDIT-048", "atlas_donor_config_models_029", "reference_payload_carriage"),
     ("FWD004-AUDIT-049", "atlas_donor_config_models_031", "reference_payload_carriage"),
-    ("FWD004-AUDIT-050", "atlas_donor_service_financial_calendar_reference_001", "reference_payload_carriage"),
+    (
+        "FWD004-AUDIT-050",
+        "atlas_donor_service_financial_calendar_reference_001",
+        "reference_payload_carriage",
+    ),
     ("FWD004-AUDIT-052", "atlas_donor_service_carry_handoff_004", "stage_payload_carriage"),
     ("FWD004-AUDIT-053", "atlas_donor_service_carry_handoff_005", "stage_payload_carriage"),
     ("FWD004-AUDIT-054", "atlas_donor_service_carry_market_004", "stage_payload_carriage"),

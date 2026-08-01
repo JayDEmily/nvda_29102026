@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import replace
 from datetime import UTC, datetime, timedelta, timezone
 from decimal import Decimal
 
 import pytest
-
 from tests.support.m07_k12_contract_harness import (
     CLOSED_AUTHORITIES,
     MUTANTS,
@@ -34,12 +32,15 @@ def test_reference_distinguishes_missing_bundle_from_valid_no_modifier_bundle() 
     assert rejected.status == "rejected"
     assert rejected.reason == "bundle_authority_missing"
     assert rejected.semantic_fingerprint is None
-    assert ReferenceSubject.build_receipt(
-        rejected,
-        receipt_id="receipt-rejected",
-        application_id="application-rejected",
-        emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
-    ) is None
+    assert (
+        ReferenceSubject.build_receipt(
+            rejected,
+            receipt_id="receipt-rejected",
+            application_id="application-rejected",
+            emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
+        )
+        is None
+    )
 
     assert no_op.status == "no_modifier_members"
     assert _result(no_op).effective == Decimal("0.60")
@@ -297,12 +298,15 @@ def test_production_public_seam_distinguishes_missing_bundle_and_valid_no_op() -
     assert isinstance(missing, api["ModifierDecision"])
     assert missing.status == "rejected"
     assert missing.rejection_reasons == ("bundle_authority_missing",)
-    assert api["build_k12_receipt"](
-        decision=missing,
-        receipt_id="receipt-rejected",
-        application_id="application-rejected",
-        emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
-    ) is None
+    assert (
+        api["build_k12_receipt"](
+            decision=missing,
+            receipt_id="receipt-rejected",
+            application_id="application-rejected",
+            emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
+        )
+        is None
+    )
 
     assert no_op.status == "no_modifier_members"
     assert no_op.coefficient_results[0].effective_value == Decimal("0.60")
@@ -419,7 +423,6 @@ def test_production_receipt_preserves_decision_lineage_without_foreign_authority
     assert receipt.emitted_at_utc == datetime(2026, 7, 31, 3, 1, tzinfo=UTC)
 
 
-
 def test_production_revalidates_copied_authority_and_does_not_invent_owner_identity() -> None:
     api, bundle, input_state = _production_payloads()
     invalid_coefficient = bundle.coefficients[0].model_copy(
@@ -462,11 +465,10 @@ def test_production_receipt_revalidates_copied_decision_authority_boundary() -> 
             emitted_at_utc=datetime(2026, 7, 31, 3, 1, tzinfo=UTC),
         )
 
+
 def test_production_public_seam_rejects_non_utc_input_state_time() -> None:
     api, bundle, input_state = _production_payloads()
-    non_utc = datetime(2026, 7, 31, 13, 0, tzinfo=UTC).astimezone(
-        timezone(timedelta(hours=10))
-    )
+    non_utc = datetime(2026, 7, 31, 13, 0, tzinfo=UTC).astimezone(timezone(timedelta(hours=10)))
     decision = api["resolve_k12"](
         bundle=bundle,
         owner_stage="posture",

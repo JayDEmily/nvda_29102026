@@ -42,10 +42,18 @@ def test_capital_authority_service_surfaces_are_present() -> None:
     orchestration = _require_module("nvda_desk.services.capital_deployment_service")
     assert orchestration.__name__ == "nvda_desk.services.capital_deployment_service"
 
-    assert _require_attr(authority, "CapitalDeploymentAuthorityService") is getattr(authority, "CapitalDeploymentAuthorityService")
-    assert _require_attr(authority, "evaluate_capital_deployment") is getattr(authority, "evaluate_capital_deployment")
-    assert _require_attr(authority, "build_capital_deployment_receipt") is getattr(authority, "build_capital_deployment_receipt")
-    assert _require_attr(orchestration, "CapitalDeploymentService") is getattr(orchestration, "CapitalDeploymentService")
+    assert _require_attr(authority, "CapitalDeploymentAuthorityService") is getattr(
+        authority, "CapitalDeploymentAuthorityService"
+    )
+    assert _require_attr(authority, "evaluate_capital_deployment") is getattr(
+        authority, "evaluate_capital_deployment"
+    )
+    assert _require_attr(authority, "build_capital_deployment_receipt") is getattr(
+        authority, "build_capital_deployment_receipt"
+    )
+    assert _require_attr(orchestration, "CapitalDeploymentService") is getattr(
+        orchestration, "CapitalDeploymentService"
+    )
 
 
 def test_capital_authority_service_emits_receipt_without_placement_authority() -> None:

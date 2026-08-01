@@ -66,9 +66,7 @@ def test_review_candidate_admission_marks_missing_add_fields_invalid() -> None:
 
 
 def test_review_candidate_payload_admission_marks_malformed_payload_invalid() -> None:
-    review = _document().review_candidate_payload_admission(
-        {"candidate_slug": "partial_payload"}
-    )
+    review = _document().review_candidate_payload_admission({"candidate_slug": "partial_payload"})
 
     assert review.status is VocabularyCandidateReviewStatus.INVALID
     assert review.candidate_slug == "partial_payload"

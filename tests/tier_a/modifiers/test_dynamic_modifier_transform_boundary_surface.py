@@ -5,7 +5,6 @@ from __future__ import annotations
 import ast
 from pathlib import Path
 
-
 ACTIVE_DYNAMIC_MODIFIER_FILES = [
     Path("src/nvda_desk/cognition/modifiers/__init__.py"),
     Path("src/nvda_desk/cognition/modifiers/state_conditioned.py"),
@@ -72,7 +71,9 @@ def test_active_dynamic_modifier_files_do_not_import_donor_modifier_stack() -> N
                 for prefix in FORBIDDEN_DONOR_IMPORT_PREFIXES
             )
         }
-        assert forbidden == set(), f"{path} imports donor modifier stack modules: {sorted(forbidden)}"
+        assert (
+            forbidden == set()
+        ), f"{path} imports donor modifier stack modules: {sorted(forbidden)}"
 
 
 def test_active_dynamic_modifier_files_do_not_redeclare_donor_state_policy_surface() -> None:
@@ -81,7 +82,9 @@ def test_active_dynamic_modifier_files_do_not_redeclare_donor_state_policy_surfa
     for path in ACTIVE_DYNAMIC_MODIFIER_FILES:
         declared = _top_level_defs_for(path)
         forbidden = declared & FORBIDDEN_DONOR_STATE_POLICY_NAMES
-        assert forbidden == set(), f"{path} redeclares donor state-policy names: {sorted(forbidden)}"
+        assert (
+            forbidden == set()
+        ), f"{path} redeclares donor state-policy names: {sorted(forbidden)}"
 
 
 def test_compatibility_wrappers_remain_thin_native_forwarders() -> None:
@@ -90,13 +93,17 @@ def test_compatibility_wrappers_remain_thin_native_forwarders() -> None:
     service_module = ast.parse(
         Path("src/nvda_desk/services/coefficient_authority_service.py").read_text(encoding="utf-8")
     )
-    service_defs = _top_level_defs_for(Path("src/nvda_desk/services/coefficient_authority_service.py"))
+    service_defs = _top_level_defs_for(
+        Path("src/nvda_desk/services/coefficient_authority_service.py")
+    )
     assert service_defs == set()
     service_imports = _imports_for(Path("src/nvda_desk/services/coefficient_authority_service.py"))
     assert service_imports == {"__future__", "nvda_desk.config.coefficient_authority"}
     assert len(service_module.body) <= 4
 
-    modifier_defs = _top_level_defs_for(Path("src/nvda_desk/domain/posture/modifier_application.py"))
+    modifier_defs = _top_level_defs_for(
+        Path("src/nvda_desk/domain/posture/modifier_application.py")
+    )
     assert modifier_defs == {"apply_modifiers"}
     modifier_imports = _imports_for(Path("src/nvda_desk/domain/posture/modifier_application.py"))
     assert modifier_imports == {"__future__", "nvda_desk.cognition.modifiers.state_conditioned"}

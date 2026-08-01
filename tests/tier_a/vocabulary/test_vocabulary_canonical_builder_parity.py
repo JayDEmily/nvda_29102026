@@ -42,7 +42,20 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == native_build_document().to_dict()
 
     assert committed["schema_version"] == "v2_namespaced"
-    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10", "m11", "m12"}
+    assert set(committed["namespaces"]) == {
+        "global",
+        "m02",
+        "m03",
+        "m04",
+        "m05",
+        "m06",
+        "m07",
+        "m08",
+        "m09",
+        "m10",
+        "m11",
+        "m12",
+    }
     assert committed["namespaces"]["m02"]["imports"] == ["global"]
     assert committed["namespaces"]["m03"]["imports"] == ["global"]
     assert committed["namespaces"]["m04"]["imports"] == ["global"]
@@ -64,9 +77,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert "config" not in committed["namespaces"]["m11"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m12"]["scan_paths"]
 
-    m02_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m02"
-    ]
+    m02_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m02"]
     assert len(m02_entries) == 3
     assert {entry["canonical_id"] for entry in m02_entries} == {
         "m02.calendar_fact_candidate",
@@ -74,9 +85,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m02.calendar_projection",
     }
 
-    m03_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m03"
-    ]
+    m03_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m03"]
     assert len(m03_entries) == 3
     assert {entry["canonical_id"] for entry in m03_entries} == {
         "m03.prepared_data_envelope",
@@ -84,9 +93,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m03.prepared_data_builder",
     }
 
-    m04_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m04"
-    ]
+    m04_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m04"]
     assert len(m04_entries) == 10
     assert {entry["canonical_id"] for entry in m04_entries} == {
         "m04.reference_packet",
@@ -101,9 +108,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m04.rejection_packet",
     }
 
-    m05_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m05"
-    ]
+    m05_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m05"]
     assert len(m05_entries) == 13
     assert {entry["canonical_id"] for entry in m05_entries} == {
         "m05.stage_context",
@@ -121,9 +126,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m05.temporal_stage_adapter",
     }
 
-    m07_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m07"
-    ]
+    m07_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m07"]
     assert len(m07_entries) == 3
     assert {entry["canonical_id"] for entry in m07_entries} == {
         "m07.policy_bundle",
@@ -131,9 +134,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m07.modifier_application_receipt",
     }
 
-    m08_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m08"
-    ]
+    m08_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m08"]
     assert len(m08_entries) == 3
     assert {entry["canonical_id"] for entry in m08_entries} == {
         "m08.playbook_definition",
@@ -141,9 +142,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m08.eligibility_decision",
     }
 
-    m09_entries = [
-        entry for entry in committed["entries"] if entry["namespace"] == "m09"
-    ]
+    m09_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m09"]
     assert len(m09_entries) == 4
     assert {entry["canonical_id"] for entry in m09_entries} == {
         "m09.final_risk_decision",
@@ -241,7 +240,9 @@ def test_durable_row_terms_are_governed_exactly_or_by_alias() -> None:
     }
     assert required_terms <= governed_terms
 
-    registry_text = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+    registry_text = (
+        Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8").casefold()
+    )
     registry_required_terms = required_terms - {
         "dynamic coefficient",
         "dmpv3 packet",

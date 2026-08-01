@@ -6,13 +6,6 @@ from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 
 import pytest
-
-from nvda_desk.contracts.packets import (
-    DmpV3ExecutionContext,
-    dmp_v3_carriage_fingerprint,
-)
-from nvda_desk.m05_serial_cognition import SerialCandidatePacketAdapter
-from nvda_desk.m06_parallel_risk import ParallelRiskPacketAdapter
 from tests.support.m09_k11_k14_contract_harness import (
     production_api,
     production_canonical_packet_pair,
@@ -20,6 +13,13 @@ from tests.support.m09_k11_k14_contract_harness import (
     production_parallel_assessment,
     production_serial_candidate,
 )
+
+from nvda_desk.contracts.packets import (
+    DmpV3ExecutionContext,
+    dmp_v3_carriage_fingerprint,
+)
+from nvda_desk.m05_serial_cognition import SerialCandidatePacketAdapter
+from nvda_desk.m06_parallel_risk import ParallelRiskPacketAdapter
 
 
 def _domain_pair():
@@ -69,7 +69,9 @@ def test_canonical_m09_ingress_requires_packets_and_preserves_exact_lineage() ->
     assert result.serial_packet_id == serial_packet.id
     assert result.parallel_packet_id == parallel_packet.id
     assert result.serial_packet_carriage_fingerprint == dmp_v3_carriage_fingerprint(serial_packet)
-    assert result.parallel_packet_carriage_fingerprint == dmp_v3_carriage_fingerprint(parallel_packet)
+    assert result.parallel_packet_carriage_fingerprint == dmp_v3_carriage_fingerprint(
+        parallel_packet
+    )
 
 
 def test_canonical_m09_ingress_rejects_unpacketised_domain_products() -> None:
@@ -133,7 +135,9 @@ def test_carriage_fingerprint_ignores_occurrence_identity_but_binds_semantics() 
     changed_context = serial_packet.model_copy(update={"runid": "run.changed.001"})
 
     assert dmp_v3_carriage_fingerprint(serial_packet) == dmp_v3_carriage_fingerprint(shifted)
-    assert dmp_v3_carriage_fingerprint(serial_packet) != dmp_v3_carriage_fingerprint(changed_context)
+    assert dmp_v3_carriage_fingerprint(serial_packet) != dmp_v3_carriage_fingerprint(
+        changed_context
+    )
 
 
 def test_m05_and_m06_adapters_reject_wrong_payload_state_or_parent_context() -> None:
@@ -187,9 +191,7 @@ def test_legacy_orchestrator_and_bootstrap_evaluator_are_explicitly_noncanonical
     assert legacy_parallel.CANONICAL_M06_ROUTE is False
     assert legacy_parallel.COMPATIBILITY_SCOPE == "legacy_parallel_risk_bootstrap_specimen"
 
-    service_source = __import__(
-        "inspect"
-    ).getsource(production_api()["CapitalAuthorityService"])
+    service_source = __import__("inspect").getsource(production_api()["CapitalAuthorityService"])
     assert "parallel_risk_bootstrap_input" not in service_source
     assert "DeskRuntimeOrchestrator" not in service_source
 
@@ -223,13 +225,22 @@ def test_packet_lineage_is_bound_into_capital_decision_and_receipt() -> None:
     modifier = production_modifier_receipt()
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
     receipt = service.build_receipt(
-        decision, final, capital, modifier, capital_policy,
+        decision,
+        final,
+        capital,
+        modifier,
+        capital_policy,
         emitted_at_utc=datetime(2026, 8, 1, 2, 0, tzinfo=UTC),
     )
     for field_name in (
-        "trace_id", "run_id", "scenario_id", "prepared_context_packet_id",
-        "prepared_context_carriage_fingerprint", "serial_packet_id",
-        "serial_packet_carriage_fingerprint", "parallel_packet_id",
+        "trace_id",
+        "run_id",
+        "scenario_id",
+        "prepared_context_packet_id",
+        "prepared_context_carriage_fingerprint",
+        "serial_packet_id",
+        "serial_packet_carriage_fingerprint",
+        "parallel_packet_id",
         "parallel_packet_carriage_fingerprint",
     ):
         assert getattr(decision, field_name) == getattr(final, field_name)
@@ -265,6 +276,4 @@ def test_domain_compatibility_join_cannot_authorise_capital() -> None:
         rounding_quantum=Decimal("0.01"),
     )
     with pytest.raises(ValueError, match="canonical_packet_carriage_required"):
-        service.evaluate_capital(
-            final, capital, production_modifier_receipt(), capital_policy
-        )
+        service.evaluate_capital(final, capital, production_modifier_receipt(), capital_policy)

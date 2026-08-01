@@ -230,9 +230,7 @@ class ReferenceResolver:
             "selected_candidate_id": None if selected is None else selected.candidate_id,
             "selected_source_owner": None if selected is None else selected.source_owner,
             "candidate_ids": [item.candidate_id for item in candidates],
-            "source_refs": [
-                [item.source_artifact_id, item.capture_id] for item in candidates
-            ],
+            "source_refs": [[item.source_artifact_id, item.capture_id] for item in candidates],
             "resolution_reason": reason,
             "rejected_candidate_ids": [
                 item.candidate_id

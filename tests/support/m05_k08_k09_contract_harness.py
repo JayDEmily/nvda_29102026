@@ -287,9 +287,13 @@ class FixedHandler:
     ) -> StageOutputCase:
         result_refs: tuple[Pair, ...]
         if self.stage == "posture":
-            result_refs = (("posture_status", "permitted" if self.status == "complete" else "blocked"),)
+            result_refs = (
+                ("posture_status", "permitted" if self.status == "complete" else "blocked"),
+            )
         elif self.stage == "eligibility":
-            result_refs = (("eligibility_status", "eligible" if self.status == "complete" else "stand_down"),)
+            result_refs = (
+                ("eligibility_status", "eligible" if self.status == "complete" else "stand_down"),
+            )
         elif self.stage == "execution":
             result_refs = (
                 ("playbook_family_id", "family.breakout"),
@@ -344,7 +348,9 @@ def valid_handlers(
     terminal_stage: str | None = None,
     terminal_status: str = "stand_down",
 ) -> dict[str, Callable[[StageInputCase, tuple[StageOutputCase, ...]], StageOutputCase]]:
-    handlers: dict[str, Callable[[StageInputCase, tuple[StageOutputCase, ...]], StageOutputCase]] = {}
+    handlers: dict[
+        str, Callable[[StageInputCase, tuple[StageOutputCase, ...]], StageOutputCase]
+    ] = {}
     for stage in SERIAL_STAGE_ORDER:
         status = terminal_status if stage == terminal_stage else "complete"
         reasons = (f"{stage}_{status}",) if status != "complete" else ()
@@ -407,7 +413,10 @@ class ReferenceRunner:
     def _validate_context(context: ContextCase) -> None:
         if context.effective_at_utc.tzinfo is None or context.effective_at_utc.utcoffset() is None:
             raise ValueError("context_effective_at_must_be_timezone_aware")
-        if context.closed_authority_classes != CLOSED_AUTHORITIES or context.foreign_authority_claimed:
+        if (
+            context.closed_authority_classes != CLOSED_AUTHORITIES
+            or context.foreign_authority_claimed
+        ):
             raise ValueError("context_foreign_authority_claimed")
         if context.semantic_fingerprint != fingerprint(_context_material(context)):
             raise ValueError("context_fingerprint_mismatch")
@@ -475,11 +484,17 @@ class ReferenceRunner:
             or output.context_fingerprint != context.semantic_fingerprint
         ):
             raise ValueError("stage_output_context_mismatch")
-        if output.dependency_output_ids != expected_ids or output.dependency_fingerprints != expected_fps:
+        if (
+            output.dependency_output_ids != expected_ids
+            or output.dependency_fingerprints != expected_fps
+        ):
             raise ValueError("stage_output_dependency_lineage_mismatch")
         if output.consumed_authority_refs != stage_input.authority_refs:
             raise ValueError("stage_output_authority_lineage_mismatch")
-        if output.closed_authority_classes != CLOSED_AUTHORITIES or output.foreign_authority_claimed:
+        if (
+            output.closed_authority_classes != CLOSED_AUTHORITIES
+            or output.foreign_authority_claimed
+        ):
             raise ValueError("stage_output_foreign_authority_claimed")
         expected_fp = fingerprint(_output_material(output))
         if output.semantic_fingerprint != expected_fp:
@@ -555,12 +570,18 @@ class ReferenceRunner:
             posture_reasons=posture.reasons if posture else (),
             m07_authority_refs=m07_refs,
             m08_authority_refs=m08_refs,
-            selected_playbook_family_id=execution_refs.get("playbook_family_id") if formed else None,
-            selected_playbook_family_version=execution_refs.get("playbook_family_version") if formed else None,
+            selected_playbook_family_id=(
+                execution_refs.get("playbook_family_id") if formed else None
+            ),
+            selected_playbook_family_version=(
+                execution_refs.get("playbook_family_version") if formed else None
+            ),
             selected_playbook_id=execution_refs.get("playbook_id") if formed else None,
             selected_playbook_version=execution_refs.get("playbook_version") if formed else None,
             selected_setup_variant_id=execution_refs.get("setup_variant_id") if formed else None,
-            selected_setup_variant_version=execution_refs.get("setup_variant_version") if formed else None,
+            selected_setup_variant_version=(
+                execution_refs.get("setup_variant_version") if formed else None
+            ),
             expression_id=execution_refs.get("expression_id") if formed else None,
             expression_version=execution_refs.get("expression_version") if formed else None,
             expression_fingerprint=execution_refs.get("expression_fingerprint") if formed else None,
@@ -587,9 +608,15 @@ def validate_result_law(
 ) -> None:
     if set(submitted_stages) != set(SERIAL_STAGE_ORDER) or len(submitted_stages) != 6:
         raise ValueError("submitted_stage_set_incomplete")
-    if result.context_id != context.context_id or result.context_fingerprint != context.semantic_fingerprint:
+    if (
+        result.context_id != context.context_id
+        or result.context_fingerprint != context.semantic_fingerprint
+    ):
         raise ValueError("result_context_mismatch")
-    if result.prepared_id != context.prepared_id or result.prepared_fingerprint != context.prepared_fingerprint:
+    if (
+        result.prepared_id != context.prepared_id
+        or result.prepared_fingerprint != context.prepared_fingerprint
+    ):
         raise ValueError("result_prepared_lineage_mismatch")
     if result.closed_authority_classes != CLOSED_AUTHORITIES or result.foreign_authority_claimed:
         raise ValueError("result_foreign_authority_claimed")
@@ -646,7 +673,9 @@ class SkippedStageRunner(ReferenceRunner):
         result = super().run(context, stage_inputs, handlers)
         return replace(
             result,
-            stage_outputs=tuple(item for item in result.stage_outputs if item.stage != "options_flow"),
+            stage_outputs=tuple(
+                item for item in result.stage_outputs if item.stage != "options_flow"
+            ),
         )
 
 

@@ -1,4 +1,5 @@
 """Canonical M12 K19 evidence replay classifier and review projector."""
+
 from __future__ import annotations
 
 from datetime import datetime
@@ -25,13 +26,21 @@ class EvidenceReplayService:
         material_time_utc: datetime | None = None,
     ) -> ReplayMaterial:
         owner_token = str(owner_module).strip()
-        if len(owner_token) != 3 or owner_token[0] != "M" or not owner_token[1:].isdigit() or not 0 <= int(owner_token[1:]) <= 15:
+        if (
+            len(owner_token) != 3
+            or owner_token[0] != "M"
+            or not owner_token[1:].isdigit()
+            or not 0 <= int(owner_token[1:]) <= 15
+        ):
             raise ValueError("owner_module_invalid")
         if not isinstance(content, BaseModel):
             raise TypeError("replay_material_content_must_be_pydantic")
         if material_time_utc is not None:
             from datetime import UTC
-            if material_time_utc.tzinfo is None or material_time_utc.utcoffset() != UTC.utcoffset(material_time_utc):
+
+            if material_time_utc.tzinfo is None or material_time_utc.utcoffset() != UTC.utcoffset(
+                material_time_utc
+            ):
                 raise ValueError("material_time_must_be_utc")
         contract_type = content.__class__
         contract_path = f"{contract_type.__module__}:{contract_type.__qualname__}"

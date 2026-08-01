@@ -62,7 +62,10 @@ def test_native_review_transform_boundary_excludes_legacy_donor_imports() -> Non
     offenders: list[str] = []
     for path in ACTIVE_REVIEW_FILES:
         for imported in _imports(path):
-            if any(imported == prefix or imported.startswith(f"{prefix}.") for prefix in DONOR_IMPORT_PREFIXES):
+            if any(
+                imported == prefix or imported.startswith(f"{prefix}.")
+                for prefix in DONOR_IMPORT_PREFIXES
+            ):
                 offenders.append(f"{path}:{imported}")
 
     assert offenders == []

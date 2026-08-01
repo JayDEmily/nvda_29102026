@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
 from hashlib import sha256
 from typing import Any
 
@@ -189,6 +188,7 @@ def _required_fact_refs(
         )
     )
 
+
 def _material_fact_refs(
     definitions: tuple[PlaybookDefinition, ...],
     context: EligibilityContext,
@@ -306,9 +306,7 @@ class EligibilityResolver:
         if missing is not None:
             return _rejected(decision_id=decision_id, reason="missing_required_fact")
         material_refs = _material_fact_refs(definitions, governed_context)
-        material_facts = tuple(
-            governed_context.facts[fact_ref] for fact_ref in material_refs
-        )
+        material_facts = tuple(governed_context.facts[fact_ref] for fact_ref in material_refs)
 
         skipped = tuple(
             _disposition(definition, "disabled")
@@ -356,23 +354,24 @@ class EligibilityResolver:
                         )
                     continue
                 if fact.value != constraint.expected:
-                    ineligible.append(
-                        _disposition(definition, "constraint_not_satisfied")
-                    )
+                    ineligible.append(_disposition(definition, "constraint_not_satisfied"))
                     break
             else:
                 candidates.append(_candidate(definition))
 
         ordered_candidates = tuple(sorted(candidates, key=_candidate_key))
         ordered_ineligible = tuple(
-            sorted(ineligible, key=lambda item: (
-                item.candidate_family_id,
-                item.candidate_family_version,
-                item.playbook_id,
-                item.playbook_version,
-                item.setup_variant_id,
-                item.setup_variant_version,
-            ))
+            sorted(
+                ineligible,
+                key=lambda item: (
+                    item.candidate_family_id,
+                    item.candidate_family_version,
+                    item.playbook_id,
+                    item.playbook_version,
+                    item.setup_variant_id,
+                    item.setup_variant_version,
+                ),
+            )
         )
         if not ordered_candidates:
             return _accepted(

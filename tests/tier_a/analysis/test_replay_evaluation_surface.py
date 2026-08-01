@@ -46,10 +46,18 @@ def test_replay_evaluation_surface_is_present() -> None:
     service_module = _require_module("nvda_desk.analysis.replay.service")
     assert service_module.__name__ == "nvda_desk.analysis.replay.service"
 
-    assert _require_attr(package_module, "ReplayEvaluationService") is getattr(package_module, "ReplayEvaluationService")
-    assert _require_attr(package_module, "ReplayComparisonResult") is getattr(package_module, "ReplayComparisonResult")
-    assert _require_attr(package_module, "describe_replay_fixture_source") is getattr(package_module, "describe_replay_fixture_source")
-    assert _require_attr(service_module, "ReplayFixtureSource") is getattr(service_module, "ReplayFixtureSource")
+    assert _require_attr(package_module, "ReplayEvaluationService") is getattr(
+        package_module, "ReplayEvaluationService"
+    )
+    assert _require_attr(package_module, "ReplayComparisonResult") is getattr(
+        package_module, "ReplayComparisonResult"
+    )
+    assert _require_attr(package_module, "describe_replay_fixture_source") is getattr(
+        package_module, "describe_replay_fixture_source"
+    )
+    assert _require_attr(service_module, "ReplayFixtureSource") is getattr(
+        service_module, "ReplayFixtureSource"
+    )
 
 
 def test_replay_evaluation_surface_stays_analysis_only_and_outside_scenarios() -> None:

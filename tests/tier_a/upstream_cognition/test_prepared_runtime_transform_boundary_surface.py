@@ -47,16 +47,16 @@ def _imports_for(path: Path) -> set[str]:
 
 def _defined_symbols(path: Path) -> set[str]:
     tree = ast.parse(path.read_text(encoding="utf-8"))
-    return {node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))}
+    return {
+        node.name for node in ast.walk(tree) if isinstance(node, (ast.ClassDef, ast.FunctionDef))
+    }
 
 
 def test_prepared_runtime_native_files_do_not_import_donor_dataset_or_service_surfaces() -> None:
     for path in SELECTED_NATIVE_FILES:
         imports = _imports_for(path)
         assert not {
-            module
-            for module in imports
-            if module.startswith(PROHIBITED_IMPORT_PREFIXES)
+            module for module in imports if module.startswith(PROHIBITED_IMPORT_PREFIXES)
         }, path
 
 

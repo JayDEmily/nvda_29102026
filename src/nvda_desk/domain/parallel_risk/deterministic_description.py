@@ -62,7 +62,9 @@ def _validate_template_refs(
     *, template: dict[str, Any], template_ref: ParallelRiskDescriptionTemplateRef
 ) -> None:
     refs = set(template.get("vocabulary_refs", []))
-    expected = set(template_ref.vocabulary_dictionary_refs + template_ref.description_vocabulary_refs)
+    expected = set(
+        template_ref.vocabulary_dictionary_refs + template_ref.description_vocabulary_refs
+    )
     if expected and not expected <= refs:
         raise ValueError("parallel_risk_description_vocabulary_refs_mismatch")
 

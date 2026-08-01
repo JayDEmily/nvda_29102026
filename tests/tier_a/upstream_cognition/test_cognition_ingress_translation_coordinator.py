@@ -27,7 +27,9 @@ def test_cognition_ingress_translation_coordinator_surface_is_present() -> None:
     translator = _require_module("nvda_desk.cognition.ingress.translator")
     assert translator.__name__ == "nvda_desk.cognition.ingress.translator"
 
-    assert _require_attr(translator, "CognitionIngressTranslator") is getattr(translator, "CognitionIngressTranslator")
+    assert _require_attr(translator, "CognitionIngressTranslator") is getattr(
+        translator, "CognitionIngressTranslator"
+    )
     assert _require_attr(translator, "convert_snapshot") is getattr(translator, "convert_snapshot")
 
 

@@ -27,7 +27,9 @@ def _require_attr(module, attr_name: str):
 def test_runtime_orchestrator_surface_is_present() -> None:
     runtime = _require_module("nvda_desk.runtime.orchestrator")
     assert runtime.__name__ == "nvda_desk.runtime.orchestrator"
-    assert _require_attr(runtime, "DeskRuntimeOrchestrator") is getattr(runtime, "DeskRuntimeOrchestrator")
+    assert _require_attr(runtime, "DeskRuntimeOrchestrator") is getattr(
+        runtime, "DeskRuntimeOrchestrator"
+    )
 
 
 def test_runtime_orchestrator_executes_the_admitted_six_stage_serial_path_from_stage_input_bundle() -> (
@@ -128,7 +130,9 @@ def test_runtime_orchestrator_does_not_treat_utc_wall_clock_as_us_market_opening
     assert receipt["stage_outputs"]["temporal"]["session_state"] == "pre_open"
 
 
-def test_runtime_orchestrator_can_attach_live_inventory_snapshot_without_changing_serial_decision() -> None:
+def test_runtime_orchestrator_can_attach_live_inventory_snapshot_without_changing_serial_decision() -> (
+    None
+):
     from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
     from nvda_desk.repositories.position_repository import PositionRepository
 
@@ -187,14 +191,19 @@ def test_runtime_live_inventory_attachment_rejects_unsupported_request_keys() ->
             live_inventory_request={"broker_order_id": "broker-1"},
         )
 
-def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read() -> None:
+
+def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_service_read() -> (
+    None
+):
     from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
     from nvda_desk.repositories.position_repository import PositionRepository
 
     runtime = _require_module("nvda_desk.runtime.orchestrator")
     orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
     positions = PositionRepository()
-    snapshot = DownstreamLiveInventoryService(position_repository=positions).reconcile_fill_evidence(
+    snapshot = DownstreamLiveInventoryService(
+        position_repository=positions
+    ).reconcile_fill_evidence(
         [
             {
                 "fill_evidence_id": "fill-1",
@@ -239,8 +248,8 @@ def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_s
 
 
 def test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs() -> None:
-    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
     from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
+    from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
 
     runtime = _require_module("nvda_desk.runtime.orchestrator")
     orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()

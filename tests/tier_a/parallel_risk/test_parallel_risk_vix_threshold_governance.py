@@ -23,7 +23,9 @@ CONFIG = Path("config/parallel_risk_lane_profile.v1.yaml")
 
 def _packet(vix_level: float) -> ParallelRiskPreparationPacket:
     return ParallelRiskPreparationPacket(
-        temporal_input=TemporalContextInput(source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)),
+        temporal_input=TemporalContextInput(
+            source_time_utc=datetime(2026, 5, 18, 14, 30, tzinfo=UTC)
+        ),
         regime_input=MarketRegimeContextInput(vix_level=vix_level),
         options_flow_input=OptionsFlowContextInput(),
     )

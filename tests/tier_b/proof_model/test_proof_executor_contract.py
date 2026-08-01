@@ -234,6 +234,12 @@ def test_proof_block_runner_resolves_python_to_current_interpreter() -> None:
         "pytest",
     ]
     assert runner._resolve_command("echo hello") == ["echo", "hello"]
+    assert runner._resolve_command("env PYTHONPATH=src:. python -m pytest tests")[:4] == [
+        "env",
+        "PYTHONPATH=src:.",
+        sys.executable,
+        "-m",
+    ]
 
 
 def test_candidate_review_clean_check_proof_block_is_manifest_owned() -> None:
@@ -345,7 +351,7 @@ def test_proof_executor_rejects_missing_owned_paths_before_running(tmp_path: Pat
                 "proof_block_id": "missing_owned_path_block",
                 "tier": "Tier B",
                 "lifecycle": "test_only",
-                "command": "python -c 'from pathlib import Path; Path(\"should_not_run.txt\").write_text(\"ran\")'",
+                "command": 'python -c \'from pathlib import Path; Path("should_not_run.txt").write_text("ran")\'',
                 "owns": ["does_not_exist.txt"],
             }
         ],

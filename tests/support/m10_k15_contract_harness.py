@@ -1,11 +1,12 @@
 """Independent reference and production fixture harness for M10 K15."""
+
 from __future__ import annotations
 
 import importlib
 import json
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime
-from decimal import Decimal, ROUND_CEILING, ROUND_FLOOR
+from decimal import ROUND_CEILING, ROUND_FLOOR, Decimal
 from hashlib import sha256
 from typing import Any, Callable
 
@@ -32,7 +33,9 @@ def canonical(value: Any) -> Any:
 
 
 def fingerprint(value: Any) -> str:
-    return sha256(json.dumps(canonical(value), sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return sha256(
+        json.dumps(canonical(value), sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
 
 
 @dataclass(frozen=True)
@@ -96,26 +99,44 @@ def evaluate_reference(case: PlacementCase) -> ReferenceResult:
         raise ValueError("serial_candidate_authority_missing")
     if case.policy_version != PLACEMENT_POLICY_VERSION:
         raise ValueError("unsupported_placement_policy")
-    if (case.symbol, case.side, case.order_type, case.time_in_force) != ("NVDA", "buy", "limit", "day"):
+    if (case.symbol, case.side, case.order_type, case.time_in_force) != (
+        "NVDA",
+        "buy",
+        "limit",
+        "day",
+    ):
         raise ValueError("unsupported_placement_shape")
     if case.limit_price <= 0 or case.quantity_quantum <= 0:
         raise ValueError("invalid_numeric_domain")
-    if case.intent_at_utc.tzinfo is None or case.intent_at_utc.utcoffset() != UTC.utcoffset(case.intent_at_utc):
+    if case.intent_at_utc.tzinfo is None or case.intent_at_utc.utcoffset() != UTC.utcoffset(
+        case.intent_at_utc
+    ):
         raise ValueError("intent_time_must_be_utc")
     if case.intent_at_utc < c.emitted_at_utc:
         raise ValueError("intent_precedes_capital_receipt")
     raw = c.authorised_notional / case.limit_price
-    quantity = (raw / case.quantity_quantum).to_integral_value(rounding=ROUND_FLOOR) * case.quantity_quantum
+    quantity = (raw / case.quantity_quantum).to_integral_value(
+        rounding=ROUND_FLOOR
+    ) * case.quantity_quantum
     notional = (quantity * case.limit_price).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
     while quantity > 0 and notional > c.authorised_notional:
         quantity -= case.quantity_quantum
         notional = (quantity * case.limit_price).quantize(Decimal("0.01"), rounding=ROUND_FLOOR)
     if quantity <= 0 or notional <= 0:
         raise ValueError("sub_quantum_placement")
-    material = {"capital": c, "policy": case.policy_version, "symbol": case.symbol, "side": case.side,
-                "order_type": case.order_type, "time_in_force": case.time_in_force,
-                "limit_price": case.limit_price, "quantity_quantum": case.quantity_quantum,
-                "quantity": quantity, "planned_notional": notional, "intent_at_utc": case.intent_at_utc}
+    material = {
+        "capital": c,
+        "policy": case.policy_version,
+        "symbol": case.symbol,
+        "side": case.side,
+        "order_type": case.order_type,
+        "time_in_force": case.time_in_force,
+        "limit_price": case.limit_price,
+        "quantity_quantum": case.quantity_quantum,
+        "quantity": quantity,
+        "planned_notional": notional,
+        "intent_at_utc": case.intent_at_utc,
+    }
     intent_fp = fingerprint(material)
     intent_id = f"placement-intent:{intent_fp[:24]}"
     order_event_id = f"execution-event:{fingerprint({'intent': intent_id, 'sequence': 1, 'type': 'order_accepted'})[:24]}"
@@ -127,26 +148,35 @@ def evaluate_reference(case: PlacementCase) -> ReferenceResult:
 def _mutant_accepts_block(case: PlacementCase):
     return evaluate_reference(replace(case, capital=replace(case.capital, action="continue")))
 
+
 def _mutant_rounds_up(case: PlacementCase):
     raw = case.capital.authorised_notional / case.limit_price
-    q = (raw / case.quantity_quantum).to_integral_value(rounding=ROUND_CEILING) * case.quantity_quantum
+    q = (raw / case.quantity_quantum).to_integral_value(
+        rounding=ROUND_CEILING
+    ) * case.quantity_quantum
     return q
+
 
 def _mutant_accepts_future_policy(case: PlacementCase):
     return evaluate_reference(replace(case, policy_version=PLACEMENT_POLICY_VERSION))
 
+
 def _mutant_market_order(case: PlacementCase):
     return evaluate_reference(replace(case, order_type="limit"))
+
 
 def _mutant_live_port(case: PlacementCase):
     return {"adapter_mode": "live", "result": evaluate_reference(case)}
 
+
 def _mutant_duplicate_replay(case: PlacementCase):
     result = evaluate_reference(case)
-    return (result.event_types + result.event_types)
+    return result.event_types + result.event_types
+
 
 def _mutant_position_mutation(case: PlacementCase):
     return {"result": evaluate_reference(case), "positions": {"NVDA": "81"}}
+
 
 MUTANTS: dict[str, Callable[[PlacementCase], Any]] = {
     "accepts_blocked_capital": _mutant_accepts_block,
@@ -161,7 +191,15 @@ MUTANTS: dict[str, Callable[[PlacementCase], Any]] = {
 
 def production_api() -> dict[str, Any]:
     module = importlib.import_module("nvda_desk.m10_execution_gateway")
-    required = ("PlacementIntent", "PlacementPolicy", "ExecutionPort", "ExecutionEvent", "ExecutionReceipt", "ExecutionGateway", "PaperExecutionPort")
+    required = (
+        "PlacementIntent",
+        "PlacementPolicy",
+        "ExecutionPort",
+        "ExecutionEvent",
+        "ExecutionReceipt",
+        "ExecutionGateway",
+        "PaperExecutionPort",
+    )
     missing = [name for name in required if not hasattr(module, name)]
     if missing:
         raise AssertionError(f"canonical M10 package missing exports: {missing}")
@@ -169,25 +207,56 @@ def production_api() -> dict[str, Any]:
 
 
 def production_capital_receipt():
-    from nvda_desk.m09_capital_authority import CapitalDeploymentPolicy, CapitalState, FinalRiskJoinPolicy
     from tests.support.m09_k11_k14_contract_harness import (
         production_api as m09_api,
+    )
+    from tests.support.m09_k11_k14_contract_harness import (
         production_canonical_packet_pair,
         production_modifier_receipt,
         production_parallel_assessment,
         production_serial_candidate,
     )
+
+    from nvda_desk.m09_capital_authority import (
+        CapitalDeploymentPolicy,
+        CapitalState,
+        FinalRiskJoinPolicy,
+    )
+
     api = m09_api()
     parallel = production_parallel_assessment()
-    serial = production_serial_candidate(prepared_id=parallel.prepared_id, prepared_fingerprint=parallel.prepared_fingerprint)
+    serial = production_serial_candidate(
+        prepared_id=parallel.prepared_id, prepared_fingerprint=parallel.prepared_fingerprint
+    )
     modifier = production_modifier_receipt()
     join_policy = FinalRiskJoinPolicy()
-    capital_policy = CapitalDeploymentPolicy(target_pct=Decimal("10"), hard_max_pct=Decimal("15"), caution_multiplier=Decimal("0.5"), rounding_quantum=Decimal("0.01"))
-    capital = CapitalState.create(state_id="capital.state.m10", account_id="paper.account.001", state_version=1,
-        effective_at_utc=datetime(2026,8,1,0,0,tzinfo=UTC), available_capital=Decimal("100000"), reserved_capital=Decimal("0"),
-        max_fresh_deployable_pct=Decimal("12"), source_authority_ref="capital.snapshot.authority.v1")
+    capital_policy = CapitalDeploymentPolicy(
+        target_pct=Decimal("10"),
+        hard_max_pct=Decimal("15"),
+        caution_multiplier=Decimal("0.5"),
+        rounding_quantum=Decimal("0.01"),
+    )
+    capital = CapitalState.create(
+        state_id="capital.state.m10",
+        account_id="paper.account.001",
+        state_version=1,
+        effective_at_utc=datetime(2026, 8, 1, 0, 0, tzinfo=UTC),
+        available_capital=Decimal("100000"),
+        reserved_capital=Decimal("0"),
+        max_fresh_deployable_pct=Decimal("12"),
+        source_authority_ref="capital.snapshot.authority.v1",
+    )
     service = api["CapitalAuthorityService"]()
-    serial_packet, parallel_packet, _ = production_canonical_packet_pair(serial=serial, parallel=parallel)
+    serial_packet, parallel_packet, _ = production_canonical_packet_pair(
+        serial=serial, parallel=parallel
+    )
     final = service.join_final_risk(serial_packet, parallel_packet, join_policy)
     decision = service.evaluate_capital(final, capital, modifier, capital_policy)
-    return service.build_receipt(decision, final, capital, modifier, capital_policy, emitted_at_utc=datetime(2026,8,1,1,0,tzinfo=UTC))
+    return service.build_receipt(
+        decision,
+        final,
+        capital,
+        modifier,
+        capital_policy,
+        emitted_at_utc=datetime(2026, 8, 1, 1, 0, tzinfo=UTC),
+    )

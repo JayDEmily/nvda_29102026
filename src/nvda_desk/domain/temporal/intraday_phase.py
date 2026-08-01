@@ -63,9 +63,7 @@ def _canonical(value: Any) -> Any:
 
 
 def semantic_fingerprint(value: Any) -> str:
-    payload = json.dumps(
-        _canonical(value), sort_keys=True, separators=(",", ":")
-    ).encode("utf-8")
+    payload = json.dumps(_canonical(value), sort_keys=True, separators=(",", ":")).encode("utf-8")
     return sha256(payload).hexdigest()
 
 
@@ -290,7 +288,10 @@ class IntradayPhaseResult(BaseModel):
             raise ValueError("unresolved_phase_cannot_bind_accepted_state")
         if self.phase is not IntradayPhase.UNRESOLVED and self.accepted_state_id is None:
             raise ValueError("resolved_phase_requires_accepted_state")
-        if self.authority_state in {"clock_only_degraded", "held_degraded"} and self.positive_permission:
+        if (
+            self.authority_state in {"clock_only_degraded", "held_degraded"}
+            and self.positive_permission
+        ):
             raise ValueError("degraded_phase_cannot_grant_positive_permission")
         material = self.model_dump(mode="python")
         material.pop("result_id")
@@ -356,7 +357,7 @@ class InMemoryIntradayPhaseRepository:
         self._states[state.session_reference_id] = detached
         items = self._history.setdefault(state.session_reference_id, [])
         items.append(detached)
-        del items[:-self._max_history]
+        del items[: -self._max_history]
 
     def history(self, session_reference_id: str) -> tuple[IntradayPhaseState, ...]:
         return tuple(self._copy(item) for item in self._history.get(session_reference_id, ()))
@@ -464,7 +465,9 @@ class IntradayPhaseEvaluator:
             return self._build_result(
                 phase=prior.phase,
                 authority_state=(
-                    "market_structure_authoritative" if structure_authoritative else "signal_informed"
+                    "market_structure_authoritative"
+                    if structure_authoritative
+                    else "signal_informed"
                 ),
                 evidence=evidence,
                 clock_prior=clock_prior,
@@ -511,7 +514,9 @@ class IntradayPhaseEvaluator:
             return self._build_result(
                 phase=target,
                 authority_state=(
-                    "market_structure_authoritative" if structure_authoritative else "signal_informed"
+                    "market_structure_authoritative"
+                    if structure_authoritative
+                    else "signal_informed"
                 ),
                 evidence=evidence,
                 clock_prior=clock_prior,

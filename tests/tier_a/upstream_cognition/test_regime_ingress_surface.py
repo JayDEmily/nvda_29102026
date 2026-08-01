@@ -25,4 +25,6 @@ def test_regime_ingress_mapper_and_service_surfaces_are_present() -> None:
     assert service.__name__ == "nvda_desk.services.regime_context_service"
 
     assert _require_attr(mapper, "build_regime_input") is getattr(mapper, "build_regime_input")
-    assert _require_attr(service, "RegimeContextService") is getattr(service, "RegimeContextService")
+    assert _require_attr(service, "RegimeContextService") is getattr(
+        service, "RegimeContextService"
+    )

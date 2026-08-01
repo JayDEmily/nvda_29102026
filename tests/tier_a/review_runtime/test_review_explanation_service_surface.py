@@ -29,7 +29,9 @@ def _require_attr(module, attr_name: str):
 def test_review_explanation_service_surface_is_present() -> None:
     service = _require_module("nvda_desk.services.review_explanation_service")
     assert service.__name__ == "nvda_desk.services.review_explanation_service"
-    assert _require_attr(service, "ReviewExplanationService") is getattr(service, "ReviewExplanationService")
+    assert _require_attr(service, "ReviewExplanationService") is getattr(
+        service, "ReviewExplanationService"
+    )
 
 
 def test_review_explanation_marks_missing_material_without_inventing_lineage() -> None:

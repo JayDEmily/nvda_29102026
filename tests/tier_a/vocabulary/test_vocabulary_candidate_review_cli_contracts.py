@@ -265,7 +265,10 @@ def test_candidate_review_cli_summary_only_suppresses_full_reviews(tmp_path: Pat
                     tmp_path,
                     [
                         {"candidate_slug": "known_alias", "candidate_label": "Known Alias"},
-                        {"candidate_slug": "forbidden_phrase", "candidate_label": "Forbidden Phrase"},
+                        {
+                            "candidate_slug": "forbidden_phrase",
+                            "candidate_label": "Forbidden Phrase",
+                        },
                     ],
                 )
             ),
@@ -329,7 +332,10 @@ def test_candidate_review_cli_writes_blocked_receipt(tmp_path: Path) -> None:
                 _candidates_path(
                     tmp_path,
                     [
-                        {"candidate_slug": "forbidden_phrase", "candidate_label": "Forbidden Phrase"},
+                        {
+                            "candidate_slug": "forbidden_phrase",
+                            "candidate_label": "Forbidden Phrase",
+                        },
                     ],
                 )
             ),
@@ -386,9 +392,7 @@ def test_candidate_review_cli_accepts_candidates_from_stdin(tmp_path: Path) -> N
             "-",
             "--summary-only",
         ],
-        input=json.dumps(
-            [{"candidate_slug": "known_alias", "candidate_label": "Known Alias"}]
-        ),
+        input=json.dumps([{"candidate_slug": "known_alias", "candidate_label": "Known Alias"}]),
         check=True,
         text=True,
         capture_output=True,
@@ -416,9 +420,7 @@ def test_candidate_review_cli_stdin_receipt_records_stdin_candidate_source(
             str(receipt),
             "--check-clean",
         ],
-        input=json.dumps(
-            [{"candidate_slug": "known_alias", "candidate_label": "Known Alias"}]
-        ),
+        input=json.dumps([{"candidate_slug": "known_alias", "candidate_label": "Known Alias"}]),
         check=True,
         text=True,
         capture_output=True,
