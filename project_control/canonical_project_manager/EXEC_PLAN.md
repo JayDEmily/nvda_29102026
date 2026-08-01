@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:SIGNAL_PHASE_DMPV3_REPAIR`
+**Status:** `READY:M00_FINAL_COMPOSITION`
 **Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -306,42 +306,42 @@ projection. It does not acquire live/private owner reads, runtime repair, extern
 side effects, capital/order/portfolio mutation, durable retention or production
 replay authority.
 
-### Active repair before M00
+### Accepted repair before M00
 
-The user accepted the bounded forward-repair plan at
-`project_control/canonical_project_manager/repairs/signal_phase_dmpv3_repair_20260801/EXEC_PLAN.md`.
-The repair closes two missed semantic units before M00 final composition:
+The bounded forward-repair plan at
+`project_control/canonical_project_manager/repairs/signal_phase_dmpv3_repair_20260801/EXEC_PLAN.md`
+is accepted. Signal-informed intraday phase authority is implemented and integrated
+through a narrow M05 adapter. Canonical M05/M06 outputs now cross into M09 only
+through validated DMPV3 carriage, and packet lineage is retained through the
+capital decision and receipt. The legacy orchestrator/bootstrap route is explicitly
+noncanonical.
 
-1. implement signal-informed intraday phase authority and integrate its typed result into M05; and
-2. require validated DMPV3 carriage for canonical M05/M06 outputs crossing into M09.
-
-Accepted M01–M13 history remains intact. The repair branch must not reset, rebase,
-weaken M04 identity law, packetise raw M01/calendar input, or reopen unrelated
-downstream policy semantics.
+Accepted M01–M13 history remains intact. The repair introduced zero new Tier A
+failure nodes and did not reset, rebase, weaken M04 identity law, packetise raw
+M01/calendar input or reopen unrelated downstream policy semantics.
 
 ## 8. Immediate work
 
-Execute the accepted signal-phase/DMPV3 repair plan one semantic unit at a time:
+The signal-phase/DMPV3 repair is accepted. The next lawful unit is M00 final
+composition:
 
-1. signal-informed phase authority, proof, implementation and M05 integration;
-2. mandatory M05/M06 DMPV3 egress, canonical M09 validation and bounded M09–M12 compatibility;
-3. clean full-history repair checkpoint; then
-4. resume M00 final composition.
+1. compose the accepted M01–M13 module boundaries without reopening their owned meaning;
+2. use the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress;
+3. retain explicit alpha, paper-only and process-memory limitations; and
+4. prove end-to-end composition without converting the legacy runtime specimen into authority.
 
-The baseline M12 acceptance remains an ancestor and is not rolled back.
+M00 has not started in the repair checkpoint.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. signal-informed phase and M05 temporal integration repair;
-2. mandatory M05/M06 DMPV3-to-M09 boundary repair;
-3. M00 final composition;
-4. final alpha consolidation.
+1. M00 final composition;
+2. final alpha consolidation;
+3. bounded unresolved-debt reconciliation where separately authorised.
 
-M07 and M08 may be completed before M01 if that shortens the critical path to
-M05. M05 and M06 may proceed independently after prerequisites. Canonical
-integration remains serial where shared files overlap.
+Canonical integration remains serial where shared files overlap. M14 and M15
+continue as proof/promotion and vocabulary governance planes.
 
 ## 10. Evidence and controls
 

@@ -1,0 +1,9 @@
+baseline: 1628 passed / 253 failed / 0 errors / 1881 total
+current: 1648 passed / 250 failed / 0 errors / 1898 total
+added tests: 17
+resolved failures: 3
+  - tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase
+  - tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families
+  - tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase
+new failures: 0
+unchanged pre-existing failures: 250

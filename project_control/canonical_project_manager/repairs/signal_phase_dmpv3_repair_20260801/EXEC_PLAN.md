@@ -1,7 +1,8 @@
 # NVDA Signal-Informed Intraday Phase and DMPV3 Repair Plan
 
-**Status:** Planning only — no repository changes performed  
+**Status:** `PASS:REPAIR_ACCEPTED`
 **Created:** 2026-08-01  
+**Acceptance date:** 2026-08-01
 **Project baseline branch:** `work/m12-review-replay-v1`  
 **Project baseline commit:** `9364b4698f417ab9aaebe9e24d8a4a4e3cb98971`  
 **Project archive SHA-256:** `ba6d0bf4bfbfefb34105d078c904287a1980271f89e1deada5ff39a7abfb8f02`  
@@ -727,3 +728,35 @@ The repair is complete only when:
 - M00 can resume without unresolved seam ambiguity.
 
 Until all conditions are evidenced, status remains **IN PROGRESS** or **UNKNOWN**, not complete.
+
+
+---
+
+# Completion Record
+
+## 23. Accepted outcome
+
+**Disposition:** `PASS:REPAIR_ACCEPTED:SIGNAL_PHASE_DMPV3_REPAIR`
+
+The plan was executed forward from accepted baseline `9364b4698f417ab9aaebe9e24d8a4a4e3cb98971` on branch `work/signal-phase-dmpv3-repair-v1`. Accepted downstream history was not reset, rebased, squashed or rewritten.
+
+Acceptance Unit A implemented deterministic signal-informed intraday phase authority, injected bounded process-memory state and a narrow M05 temporal adapter. Acceptance Unit B added M04-owned execution/carriage identity, canonical M05 and M06 DMPV3 egress adapters, packet-only M09 ingress, exact packet lineage through capital decision/receipt, and explicit quarantine of the old orchestrator/bootstrap route.
+
+## 24. Final validation
+
+- Focused M04–M12 repair route: **463 passed / 0 failed**.
+- Complete Tier B: **49 passed / 0 failed**, executed in bounded partitions because the proof-executor subprocess family exceeds the single tool-call window when combined.
+- Proof-block manifest: **64 / 64 valid**.
+- Complete Tier A baseline: **1,628 passed / 253 failed / 1,881 total**.
+- Complete Tier A repaired: **1,648 passed / 250 failed / 1,898 total**.
+- Added tests: **17**.
+- Resolved failures: the exact three C-026 signal-informed phase nodes.
+- New failing nodes: **0**.
+- Remaining failures: **250 unchanged baseline nodes**, including the same three pre-existing vocabulary-term/schema failures.
+- Touched namespace audits: M04, M05, M06 and M09 each have **0 unresolved candidates** and current touch stamps.
+- Static compilation and Git diff check: **PASS**.
+- Ruff and Black: **UNAVAILABLE** in the execution environment; no unpinned substitute was used.
+
+## 25. Bounded claims and open work
+
+This acceptance does not establish live trading, durable temporal-state storage, live provider access, broker connectivity, production durability or profitability. The temporal repository is explicitly process-memory bounded. The 250 unchanged Tier A failures remain visible project debt. M00 final composition is now the next lawful unit and has not started in this repair.

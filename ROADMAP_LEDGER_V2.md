@@ -8,9 +8,9 @@
 | Branch | `work/signal-phase-dmpv3-repair-v1` |
 | Current branch source checkpoint | `9364b4698f417ab9aaebe9e24d8a4a4e3cb98971` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M12 K19 authoritative replay and review projection |
-| Current active slice | signal-informed intraday phase and mandatory M05/M06 DMPV3-to-M09 repair |
-| Production implementation | M12 Gate D accepted; bounded pre-M00 repair active; M00 has not started |
+| Latest accepted implementation slice | Signal-informed phase and mandatory M05/M06 DMPV3-to-M09 repair |
+| Current active slice | M00 final composition — not started |
+| Production implementation | M01–M13 slices and bounded pre-M00 repair accepted; M00 ready but not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -205,11 +205,21 @@ The accepted package is retained-evidence and read-projection bounded. It does n
 prove live data access, durable evidence retention, side-effectful replay, automatic
 proof promotion or production replay readiness.
 
+## Signal-phase and DMPV3 repair acceptance
+
+The forward repair from M12 baseline `9364b46` is accepted. It adds a deterministic
+signal-informed phase domain and narrow M05 adapter, caller-owned M05/M06 DMPV3
+egress, packet-only canonical M09 ingress, exact capital packet lineage and an
+explicitly noncanonical legacy runtime route.
+
+Final proof records 463/463 focused M04–M12 cases, 49/49 Tier B cases and 64/64
+proof manifests. Complete Tier A moves from 1,628 passed / 253 failed to 1,648 /
+250: 17 tests were added, the exact three C-026 failures resolved and no new
+failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
+
 ## Immediate next action
 
-Execute the accepted repair plan at
-`project_control/canonical_project_manager/repairs/signal_phase_dmpv3_repair_20260801/EXEC_PLAN.md`.
-Acceptance Unit A closes signal-informed phase authority, proof and M05 integration.
-Acceptance Unit B then makes validated DMPV3 carriage mandatory at the canonical
-M05/M06-to-M09 seam and reconciles only affected M09–M12 lineage. M00 remains
-blocked until both units pass.
+Start only M00 final composition from the accepted module boundaries. Preserve the
+canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09
+ingress. Do not reopen accepted module semantics or promote the quarantined legacy
+orchestrator. M00 has not started in this checkpoint.

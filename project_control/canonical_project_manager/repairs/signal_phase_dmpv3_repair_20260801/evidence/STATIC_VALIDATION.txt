@@ -1,0 +1,7 @@
+=== compileall ===
+compileall=PASS
+=== git diff check after closeout ===
+git_diff_check=PASS
+=== optional tooling ===
+ruff=UNAVAILABLE
+black=UNAVAILABLE

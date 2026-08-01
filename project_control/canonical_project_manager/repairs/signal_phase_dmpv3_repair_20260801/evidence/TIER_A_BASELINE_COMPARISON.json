@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "passed": 1628,
+    "failed": 253,
+    "errors": 0,
+    "total": 1881
+  },
+  "current": {
+    "passed": 1648,
+    "failed": 250,
+    "errors": 0,
+    "total": 1898
+  },
+  "added_tests": 17,
+  "resolved_failures": [
+    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_clock_only_input_is_explicitly_degraded_and_does_not_invent_detailed_phase",
+    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_phase_contract_has_seven_ordered_states_and_required_signal_families",
+    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py::test_c026_same_clock_with_different_sustained_signals_cannot_be_forced_to_same_phase"
+  ],
+  "new_failures": [],
+  "unchanged_failure_count": 250
+}

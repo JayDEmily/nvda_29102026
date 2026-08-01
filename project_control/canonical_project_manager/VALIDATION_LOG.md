@@ -1817,3 +1817,28 @@ trading authority.
 
 Pause and publish the requested clean full-history M10 checkpoint. M11 has not
 started.
+
+
+## 2026-08-01 — Signal-informed phase and mandatory DMPV3 seam repair
+
+### Disposition
+
+`PASS:REPAIR_ACCEPTED:SIGNAL_PHASE_DMPV3_REPAIR`
+
+The forward repair preserves accepted M01–M13 ancestry and closes two missed cross-module behaviours before M00. A deterministic signal-informed phase domain now supplies a typed M05 temporal result through injected process-memory state. Canonical M05 and M06 outputs now require caller-owned DMPV3 carriage into packet-only M09 ingress, with exact prepared-context, execution and packet lineage retained through capital decision and receipt. The former runtime orchestrator/bootstrap path is explicitly noncanonical.
+
+| Check | Result |
+|---|---|
+| Focused M04–M12 route | PASS — 463 / 463 |
+| Tier B | PASS — 49 / 49 in bounded partitions |
+| Proof manifests | PASS — 64 / 64 |
+| Tier A comparison | 1,628 passed / 253 failed → 1,648 / 250; 17 added tests, three resolved C-026 nodes, zero new failures |
+| Vocabulary | PASS — M04/M05/M06/M09 each zero unresolved candidates with current stamps |
+| Static compilation / diff check | PASS |
+| Ruff / Black | unavailable; no substitute used |
+
+The remaining 250 Tier A failures reproduce from the accepted baseline and remain visible debt. This repair does not prove durable temporal state, live provider access, broker connectivity, production durability or profitability.
+
+### Next action
+
+M00 final composition is ready but has not started. Compose only the accepted module boundaries and preserve the canonical M03 prepared-context parent, M05/M06 DMPV3 egress and packet-only M09 ingress.
