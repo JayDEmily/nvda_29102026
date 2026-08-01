@@ -219,6 +219,6 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Execute the subordinate pre-M00 testing guardrail repair at
+Continue the subordinate pre-M00 testing guardrail repair at
 `project_control/canonical_project_manager/repairs/m00_testing_guardrail_repair_20260801/EXEC_PLAN.md`.
-Reconcile admission authority, establish the aggregate promotion gate, route CI and the locked environment through it, and admit M00 C-NORM/expected-red C-PROOF. Do not reopen accepted module semantics or begin M00 production code before those prerequisites pass. M00 has not started.
+Admission, aggregate promotion and CI controls are implemented. Attach the two accepted Python 3.13.5 runtime/dev wheelhouse ZIPs identified in `evidence/UNIT5_OFFLINE_WHEELHOUSE_RECOVERY.md`, run the frozen offline installation, installed-package smoke, aggregate promotion gate and Tier B shadow, then admit M00 C-NORM/expected-red C-PROOF. Do not begin M00 production code before those prerequisites pass. M00 has not started.

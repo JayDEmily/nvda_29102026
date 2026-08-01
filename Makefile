@@ -13,12 +13,15 @@ INSTALL_STAMP := $(VENV)/.install.stamp
 INSTALL_INPUTS := pyproject.toml uv.lock .python-version
 PROMOTION_SET ?= pre_m00_current
 PROMOTION_RECEIPT ?= var/proof_receipts/$(PROMOTION_SET).json
+RUNTIME_WHEELHOUSE_ZIP ?=
+DEV_WHEELHOUSE_ZIP ?=
 
 .PHONY: help
 help:
 	@printf '%s\n' \
 		"venv             create/update .venv using Python 3.13.5" \
 		"install          install repo into .venv" \
+		"install-offline  install from the accepted offline wheelhouse ZIPs" \
 		"compile          compile src and tests without writing bytecode" \
 		"installed-package-smoke import the non-editable installed wheel outside the repo" \
 		"pr-preflight     install and run PR preflight gates" \
@@ -103,6 +106,17 @@ $(INSTALL_STAMP): $(INSTALL_INPUTS) | assert-python
 
 .PHONY: install
 install: $(INSTALL_STAMP)
+
+.PHONY: install-offline
+install-offline:
+	@test -n "$(RUNTIME_WHEELHOUSE_ZIP)" || (echo "RUNTIME_WHEELHOUSE_ZIP is required" >&2; exit 2)
+	@test -n "$(DEV_WHEELHOUSE_ZIP)" || (echo "DEV_WHEELHOUSE_ZIP is required" >&2; exit 2)
+	$(BOOTSTRAP_PYTHON) scripts/bootstrap_offline_environment.py \
+		--repo-root . \
+		--uv "$(UV)" \
+		--runtime-zip "$(RUNTIME_WHEELHOUSE_ZIP)" \
+		--dev-zip "$(DEV_WHEELHOUSE_ZIP)" \
+		--replace-venv
 
 
 .PHONY: installed-package-smoke

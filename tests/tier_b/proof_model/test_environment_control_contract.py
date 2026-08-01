@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
+import sys
+import zipfile
+
+import pytest
 
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
@@ -62,3 +67,63 @@ def test_remote_patch_ci_delegates_authority_and_gates_before_push() -> None:
     assert "proof.get('blocks'" not in workflow
     assert "tier_a_test_count" not in workflow
     assert "registered_retained_seed_tier_a" not in workflow
+
+
+def test_make_offline_install_delegates_to_repository_bootstrap() -> None:
+    makefile = _read("Makefile")
+
+    assert ".PHONY: install-offline" in makefile
+    assert "scripts/bootstrap_offline_environment.py" in makefile
+    assert "RUNTIME_WHEELHOUSE_ZIP" in makefile
+    assert "DEV_WHEELHOUSE_ZIP" in makefile
+
+
+def test_offline_bootstrap_is_hash_pinned_frozen_and_non_editable() -> None:
+    bootstrap = _read("scripts/bootstrap_offline_environment.py")
+
+    assert (
+        "498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1"
+        in bootstrap
+    )
+    assert (
+        "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249"
+        in bootstrap
+    )
+    assert '"sync"' in bootstrap
+    assert '"--frozen"' in bootstrap
+    assert '"--offline"' in bootstrap
+    assert '"--no-editable"' in bootstrap
+    assert '"--find-links"' in bootstrap
+    assert "pip install --upgrade pip" not in bootstrap
+    assert '"-e"' not in bootstrap
+
+
+def _load_offline_bootstrap():
+    path = REPO_ROOT / "scripts/bootstrap_offline_environment.py"
+    spec = importlib.util.spec_from_file_location("bootstrap_offline_environment", path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_offline_bootstrap_rejects_hash_mismatch(tmp_path: Path) -> None:
+    bootstrap = _load_offline_bootstrap()
+    archive = tmp_path / "runtime.zip"
+    archive.write_bytes(b"not-the-accepted-archive")
+
+    with pytest.raises(bootstrap.BootstrapError, match="SHA-256 mismatch"):
+        bootstrap.verify_archive(archive, "0" * 64, expected_size=None)
+
+
+def test_offline_bootstrap_rejects_zip_path_escape(tmp_path: Path) -> None:
+    bootstrap = _load_offline_bootstrap()
+    archive = tmp_path / "unsafe.zip"
+    destination = tmp_path / "extract"
+    with zipfile.ZipFile(archive, "w") as handle:
+        handle.writestr("../escape.txt", "blocked")
+
+    with pytest.raises(bootstrap.BootstrapError, match="unsafe ZIP member"):
+        bootstrap.safe_extract_zip(archive, destination)
+    assert not (tmp_path / "escape.txt").exists()

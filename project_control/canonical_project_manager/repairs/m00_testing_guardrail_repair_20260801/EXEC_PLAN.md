@@ -1,6 +1,6 @@
 # NVDA M00 Testing Guardrail Repair ExecPlan
 
-**Status:** `BLOCKED:UNIT5_LOCKED_ENVIRONMENT`
+**Status:** `BLOCKED:UNIT5_ACCEPTED_WHEELHOUSE_ARCHIVES_REQUIRED`
 **Created:** 2026-08-01
 **Owner:** User-authorised worker under the canonical Project Manager plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -151,6 +151,7 @@ Successful raw output is not committed by default. Novel failures, non-determini
 - 2026-08-01: Unit 3 implemented the manifest-resolved aggregate promotion command, fail-closed result and Git-state checks, content-addressed receipts, receipt verification and separate check-versus-execute Make routes.
 - 2026-08-01: Unit 4 replaced editable pip installation with frozen non-editable uv synchronisation, normalised lock origins away from the private worker mirror, added an out-of-tree installed-package smoke target, and made both workflows delegate to repository-owned promotion commands. Local package retrieval remained externally blocked and is recorded under the Unit 4 evidence surface.
 - 2026-08-01: Unit 5 established a clean diagnostic baseline at commit `1d657e7`: all 13 admitted current proof blocks passed with 738 tests and zero skips, and the complete Tier B shadow passed 78 tests. Four aggregate-runner isolation defects were repaired. The authoritative lock-created run remains blocked by package-source unavailability, so M00 C-NORM has not opened.
+- 2026-08-01: historical evidence identified the two previously accepted Python 3.13.5 runtime/dev wheelhouse ZIPs by exact hash and size. A test-first `make install-offline` route now verifies those archives and performs frozen, offline, no-index, no-cache, non-editable `uv sync`. The archive bytes are not present in this worker, so Unit 5 remains blocked on those exact inputs.
 
 ## 9. Decisions
 
@@ -160,11 +161,12 @@ Successful raw output is not committed by default. Novel failures, non-determini
 
 ## 10. Roadblocks
 
-- Units 4–5 authoritative environment validation is externally blocked: the configured internal package mirror returned HTTP 404 for a locked wheel and public PyPI name resolution is unavailable in this worker. Repository control/static proof and the diagnostic aggregate/Tier B baseline passed; installed-package smoke and an authoritative lock-created aggregate run remain open until package retrieval is available. This is a permitted stop condition under the repository execution method.
+- Units 4–5 authoritative environment validation is blocked on the two previously accepted Python 3.13.5 wheelhouse ZIPs. Their exact hashes and sizes are recovered, and a fail-closed offline bootstrap route is implemented, but the archive bytes are not present in this worker. The configured mirror and public package hosts remain unavailable. Installed-package smoke and an authoritative lock-created aggregate run remain open until the accepted archives are attached. This is a permitted stop condition under the repository execution method.
 
 ## 11. Unknowns
 
-- The authorised package sources are not resolvable from this worker: the configured mirror returned HTTP 404 and public PyPI DNS resolution failed. Whether the same frozen route passes in GitHub Actions remains Unknown until that workflow executes.
+- The authorised network package sources are not resolvable from this worker. The accepted offline archive identities are Known, but the archive bytes are unavailable in the current filesystem and File Library retrieval failed.
+- Whether the accepted May wheelhouses contain the complete current transitive `uv.lock` closure is Unknown until `make install-offline` executes.
 - Whether the aggregate gate passes from the exact `uv.lock` environment is Unknown. Diagnostic evidence from `/opt/pyvenv/bin/python` cannot substitute for that claim.
 - The exact pre-M00 current blocking membership is now Known: 13 accepted module-local families resolving to 15 tests. Unit 2 still must reconcile active control declarations and the explicit current/legacy API lifecycle boundary.
 

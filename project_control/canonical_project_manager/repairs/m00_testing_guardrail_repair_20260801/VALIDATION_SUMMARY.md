@@ -197,3 +197,35 @@ Exact evidence is retained in `evidence/UNIT5_DIAGNOSTIC_BASELINE.md`.
 ## Open next gate
 
 Blocked. Obtain package-source access sufficient for `make install`, then execute `make installed-package-smoke`, `make promotion-gate` and Tier B from `.venv`. Only after those pass may Unit 6 admit M00 C-NORM and expected-red proof.
+
+## Unit 5 offline wheelhouse recovery route
+
+**Outcome:** PASS_CONTROL; **BLOCKED_INPUT** pending the two accepted archive bytes.
+
+Historical Git evidence recovered the exact external wheelhouse identities used by a prior successful Python 3.13.5 bootstrap:
+
+- runtime: `498ecf4d0a8f895642a017ba8b2bd208271a0d824b7bd007b25980f9a00125d1`, 64,236,501 bytes;
+- dev/build: `d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249`, 15,199,214 bytes.
+
+A test-first `make install-offline` route now verifies those identities, safely extracts the archives and executes frozen, offline, no-index, no-cache, non-editable `uv sync` against both wheelhouses. It retains the ordinary installed-package smoke and promotion gates.
+
+```text
+test-first: 5 passed, 2 intended failures
+post-implementation environment contract: 9 passed
+targeted proof-model aggregate: 33 passed
+proof_authority=PASS families=195 tests=197 blocks=66
+promotion-check=PASS blocks=13 families=13 tests=15
+bootstrap missing-input check: exit 2
+compileall: PASS
+git diff --check: PASS
+```
+
+The wheelhouse ZIP bytes are not present in the current checkout or `/mnt/data`; Git history retains evidence but not payloads, and File Library retrieval returned a service error. Therefore no offline installation, installed-package smoke, Black/Ruff, authoritative aggregate or Tier B `.venv` PASS is claimed yet. Exact evidence and continuation commands are in `evidence/UNIT5_OFFLINE_WHEELHOUSE_RECOVERY.md`.
+
+
+A complete Tier B run on the ambient diagnostic interpreter was also attempted.
+It emitted 57 progress markers but did not terminate. An isolated verbose probe
+located the stall during subprocess-based proof-executor testing and showed an
+ambient `artifact_tool` startup warmup failure before child pytest collection.
+No assertion failure was observed. This is diagnostic-environment evidence, not
+a Tier B PASS; the complete shadow remains required from the clean `.venv`.
