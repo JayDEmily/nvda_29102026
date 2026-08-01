@@ -203,3 +203,45 @@ def test_production_port_has_no_position_or_portfolio_authority() -> None:
     assert not hasattr(port, "average_cost")
     assert port.durability == "non_durable_in_memory"
     assert port.adapter_mode == "paper"
+
+
+def test_gate_d_receipt_embeds_exact_intent_and_m13_scope() -> None:
+    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    assert receipt.intent == intent
+    assert receipt.transaction_command_id == f"m10.execute:{intent.intent_id}"
+    assert receipt.transaction_command_type == "m10.paper_execute"
+    assert receipt.transaction_consistency_unit_id == port.port_id
+    assert receipt.transaction_input_fingerprint == intent.semantic_fingerprint
+    assert receipt.transaction_policy_version == port.port_version
+    assert receipt.transaction_resulting_state_version == receipt.transaction_prior_state_version + 1
+
+
+def test_gate_d_revalidates_forged_event_and_receipt_copies() -> None:
+    api, _, _, gateway, intent = _valid_production(); port = api["PaperExecutionPort"]()
+    receipt = gateway.execute(intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    forged_event = receipt.fill_event.model_copy(update={"quantity": receipt.fill_event.quantity + Decimal("1")})
+    with pytest.raises(ValueError):
+        api["ExecutionEvent"].model_validate(forged_event.model_dump(mode="python"))
+    forged_receipt = receipt.model_copy(update={"fill_event": forged_event})
+    with pytest.raises(ValueError):
+        api["ExecutionReceipt"].model_validate(forged_receipt.model_dump(mode="python"))
+
+
+def test_gate_d_multiple_intents_append_deterministically_and_replay_old_scope() -> None:
+    api, receipt, policy, gateway, first_intent = _valid_production(); port = api["PaperExecutionPort"]()
+    first = gateway.execute(first_intent, port, executed_at_utc=datetime(2026,8,1,1,2,tzinfo=UTC))
+    second_intent = gateway.create_intent(receipt, policy, limit_price=Decimal("124.00"), intent_at_utc=datetime(2026,8,1,1,3,tzinfo=UTC))
+    second = gateway.execute(second_intent, port, executed_at_utc=datetime(2026,8,1,1,4,tzinfo=UTC))
+    replay = gateway.execute(first_intent, port, executed_at_utc=datetime(2026,8,1,1,5,tzinfo=UTC))
+    assert replay.receipt_id == first.receipt_id
+    assert second.transaction_sequence == 2
+    assert len(port.list_events()) == 4
+    assert len(port.list_receipts()) == 2
+
+
+def test_gate_d_rejects_forged_m09_receipt_even_when_action_looks_positive() -> None:
+    api = production_api(); receipt = production_capital_receipt(); gateway = api["ExecutionGateway"]()
+    forged = receipt.model_copy(update={"authorised_notional": receipt.authorised_notional + Decimal("100")})
+    with pytest.raises(ValueError, match="capital_deployment_receipt_contract_invalid"):
+        gateway.create_intent(forged, api["PlacementPolicy"](quantity_quantum=Decimal("0.001")), limit_price=Decimal("100"), intent_at_utc=datetime(2026,8,1,1,1,tzinfo=UTC))

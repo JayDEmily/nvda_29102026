@@ -1782,3 +1782,38 @@ end-to-end eligibility.
 
 Pause and publish the user-requested clean full-history M09 checkpoint. M10 has
 not started.
+
+
+## 2026-08-01 — M10 K15 Gate D acceptance and user checkpoint
+
+### Disposition
+
+`PASS:GATE_D_ACCEPTED:M10_K15_EXECUTION_GATEWAY`
+
+The canonical M10 package now consumes one exact positive M09 capital receipt,
+forms a downward-rounded paper-only NVDA limit intent, submits it through a
+provider-substitutable offline port and atomically records one acknowledgement
+and one full-fill event through M13 non-durable state. The immutable terminal
+receipt binds the exact intent, events, port and transaction facts. Exact replay
+returns the stored receipt without duplicate events.
+
+| Check | Result |
+|---|---|
+| Focused M10 proof | PASS — 28 / 28 |
+| Bounded compatibility | PASS — 5 / 5 |
+| Proof manifests / executor | PASS — 62 / 62; 21 / 21 |
+| Tier B | PASS — 49 / 49 |
+| Vocabulary audit | PASS — zero unresolved candidates across 16 files and 95 governed occurrences |
+| Complete Tier A comparison | 1,568 passed / 264 failed → 1,583 / 253; eleven resolved; zero new failing nodes |
+| Static compilation / diff check | PASS |
+| Ruff / Black | unavailable; locked modules not installed |
+
+The remaining 253 Tier A failures reproduce at hardened proof baseline
+`236a8ae`. Three vocabulary failures are unchanged. This acceptance is paper-only,
+o-network and non-durable and does not establish M11 lifecycle or production
+trading authority.
+
+### Next action
+
+Pause and publish the requested clean full-history M10 checkpoint. M11 has not
+started.

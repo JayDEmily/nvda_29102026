@@ -21,10 +21,748 @@
     "tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py",
     "tests/tier_a/adapters_egress/test_broker_boundary_surface.py"
   ],
-  "scanned_file_count": 12,
+  "scanned_file_count": 16,
   "vocabulary_touched": true,
-  "fingerprint": "b2ad869120b3d44adb76607e5a62301e13355c5a9015184948dc9a30eb0b526d",
+  "fingerprint": "c07bcfc43a0a23c2debbf84377ee2032f25afbf4427272aa1f87a3d1043200f1",
   "resolved_occurrence_count": 95,
-  "candidates": [],
-  "candidate_classifications": []
+  "candidates": [
+    {
+      "phrase": "capital state id",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-27784dd301e44dd0",
+      "raw_phrase": "capital_state_id",
+      "nearest_identity": "m09.capital_state",
+      "line": 89,
+      "column": 5,
+      "source_context": "    capital_state_id: str = Field(min_length=1)",
+      "context_sha256": "fa8fcba6df0a3fd0a4391765672613a6ea7197c5cdb32973f9fe994a99cf2151",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-82e4939736ff9ace",
+      "raw_phrase": "capital_state_fingerprint",
+      "nearest_identity": "m09.capital_state",
+      "line": 90,
+      "column": 5,
+      "source_context": "    capital_state_fingerprint: str",
+      "context_sha256": "f3406ae71990dff5f5cc3278d2b76fa6749940e57190ab9ad448d7ccd1d1166e",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-a7fe3228c4a8cc86",
+      "raw_phrase": "capital_state_fingerprint",
+      "nearest_identity": "m09.capital_state",
+      "line": 134,
+      "column": 44,
+      "source_context": "            \"final_decision_fingerprint\", \"capital_state_fingerprint\",",
+      "context_sha256": "bafe5a89b120263615cbfd4374329e3a5d9f867b4015a086d51e7d44fa08f612",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command id",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-89e1549c578c6f04",
+      "raw_phrase": "transaction_command_id",
+      "nearest_identity": "global.transaction_command",
+      "line": 258,
+      "column": 5,
+      "source_context": "    transaction_command_id: str = Field(min_length=1)",
+      "context_sha256": "8cc4381e2bac6ac860a6925179164b777ab2bcc5975adc3d14c62cff1b90b736",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command type",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-bab0d0b28e455059",
+      "raw_phrase": "transaction_command_type",
+      "nearest_identity": "global.transaction_command",
+      "line": 259,
+      "column": 5,
+      "source_context": "    transaction_command_type: Literal[\"m10.paper_execute\"] = \"m10.paper_execute\"",
+      "context_sha256": "6c3e0aee31bb6bbe87ff19f3f05adf4c23a36331d15021045019a7374d817df1",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command id",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-3bf6561097020421",
+      "raw_phrase": "transaction_command_id",
+      "nearest_identity": "global.transaction_command",
+      "line": 292,
+      "column": 17,
+      "source_context": "        if self.transaction_command_id != f\"m10.execute:{intent.intent_id}\":",
+      "context_sha256": "98f64642d42973af08e29c410c0968201bd8ddbcf993105eb0318088d7f9b828",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command id",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/port.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-5d193fe7522829e4",
+      "raw_phrase": "transaction_command_id",
+      "nearest_identity": "global.transaction_command",
+      "line": 104,
+      "column": 46,
+      "source_context": "            executed_at_utc=executed_at_utc, transaction_command_id=command_id,",
+      "context_sha256": "aa66886889fa1608a75653be1345ee891bb52ba4de6dda44bcb30553748e0190",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command type",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/port.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-4fa5986d3a01a04e",
+      "raw_phrase": "transaction_command_type",
+      "nearest_identity": "global.transaction_command",
+      "line": 105,
+      "column": 13,
+      "source_context": "            transaction_command_type=\"m10.paper_execute\", transaction_consistency_unit_id=self.port_id,",
+      "context_sha256": "f652a6ca4e616066ab445f14128d694d89e08f719aad92d011ee669c00c4031b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-ee42ede994be7a01",
+      "raw_phrase": "capital_receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 18,
+      "column": 9,
+      "source_context": "        capital_receipt: CapitalDeploymentReceipt,",
+      "context_sha256": "7df4c5a62fb2995f3c82b549b8a5a114f8120b622ed952bbb9446efada9ad957",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-ee60bc162a500a20",
+      "raw_phrase": "capital_receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 25,
+      "column": 63,
+      "source_context": "            receipt = CapitalDeploymentReceipt.model_validate(capital_receipt.model_dump(mode=\"python\"))",
+      "context_sha256": "8e910bc819b12c7e1db64ed95dc6965b89a950ae392fda0496449f63d52b0d5d",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state id",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-37cd1c82359bfff0",
+      "raw_phrase": "capital_state_id",
+      "nearest_identity": "m09.capital_state",
+      "line": 63,
+      "column": 14,
+      "source_context": "            \"capital_state_id\": receipt.capital_state_id,",
+      "context_sha256": "af2fae3d04c6a6d4b5c61f73108e83fdd25a8061fe2fe56ecd2e0d6b9b55dc2f",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state id",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-8d35af2c6cf53bdd",
+      "raw_phrase": "capital_state_id",
+      "nearest_identity": "m09.capital_state",
+      "line": 63,
+      "column": 41,
+      "source_context": "            \"capital_state_id\": receipt.capital_state_id,",
+      "context_sha256": "af2fae3d04c6a6d4b5c61f73108e83fdd25a8061fe2fe56ecd2e0d6b9b55dc2f",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-00589782d451dae2",
+      "raw_phrase": "capital_state_fingerprint",
+      "nearest_identity": "m09.capital_state",
+      "line": 64,
+      "column": 14,
+      "source_context": "            \"capital_state_fingerprint\": receipt.capital_state_fingerprint,",
+      "context_sha256": "16b3b88f723897549cd3aca80883670d15b7093db35e90fc4e1e20503f605e93",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-09c87fa9f4bdf154",
+      "raw_phrase": "capital_state_fingerprint",
+      "nearest_identity": "m09.capital_state",
+      "line": 64,
+      "column": 50,
+      "source_context": "            \"capital_state_fingerprint\": receipt.capital_state_fingerprint,",
+      "context_sha256": "16b3b88f723897549cd3aca80883670d15b7093db35e90fc4e1e20503f605e93",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command id",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-f060aecdfe3ef54c",
+      "raw_phrase": "transaction_command_id",
+      "nearest_identity": "global.transaction_command",
+      "line": 212,
+      "column": 20,
+      "source_context": "    assert receipt.transaction_command_id == f\"m10.execute:{intent.intent_id}\"",
+      "context_sha256": "3fae0e1cca43ee11b0be4abc98bfa44ac3704c5f70b25c2939dd22d90e3679cb",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "transaction command type",
+      "nearest_slug": "transaction_command",
+      "nearest_label": "Transaction Command",
+      "score": 93,
+      "path": "tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-6e4d93cd197e54fc",
+      "raw_phrase": "transaction_command_type",
+      "nearest_identity": "global.transaction_command",
+      "line": 213,
+      "column": 20,
+      "source_context": "    assert receipt.transaction_command_type == \"m10.paper_execute\"",
+      "context_sha256": "e7733de086bf833935bb8e06beebd5b34f353364e85720c31781e8a02c485892",
+      "occurrence_kind": "identifier"
+    }
+  ],
+  "candidate_classifications": [
+    {
+      "phrase": "capital state id",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_id",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_id",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-27784dd301e44dd0",
+      "line": 89,
+      "context_sha256": "fa8fcba6df0a3fd0a4391765672613a6ea7197c5cdb32973f9fe994a99cf2151"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_fingerprint",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_fingerprint",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-82e4939736ff9ace",
+      "line": 90,
+      "context_sha256": "f3406ae71990dff5f5cc3278d2b76fa6749940e57190ab9ad448d7ccd1d1166e"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_fingerprint",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_fingerprint",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-a7fe3228c4a8cc86",
+      "line": 134,
+      "context_sha256": "bafe5a89b120263615cbfd4374329e3a5d9f867b4015a086d51e7d44fa08f612"
+    },
+    {
+      "phrase": "transaction command id",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_id",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_id",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-89e1549c578c6f04",
+      "line": 258,
+      "context_sha256": "8cc4381e2bac6ac860a6925179164b777ab2bcc5975adc3d14c62cff1b90b736"
+    },
+    {
+      "phrase": "transaction command type",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_type",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_type",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_type",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-bab0d0b28e455059",
+      "line": 259,
+      "context_sha256": "6c3e0aee31bb6bbe87ff19f3f05adf4c23a36331d15021045019a7374d817df1"
+    },
+    {
+      "phrase": "transaction command id",
+      "path": "src/nvda_desk/m10_execution_gateway/contracts.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_id",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_id",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-3bf6561097020421",
+      "line": 292,
+      "context_sha256": "98f64642d42973af08e29c410c0968201bd8ddbcf993105eb0318088d7f9b828"
+    },
+    {
+      "phrase": "transaction command id",
+      "path": "src/nvda_desk/m10_execution_gateway/port.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_id",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_id",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-5d193fe7522829e4",
+      "line": 104,
+      "context_sha256": "aa66886889fa1608a75653be1345ee891bb52ba4de6dda44bcb30553748e0190"
+    },
+    {
+      "phrase": "transaction command type",
+      "path": "src/nvda_desk/m10_execution_gateway/port.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_type",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_type",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_type",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-4fa5986d3a01a04e",
+      "line": 105,
+      "context_sha256": "f652a6ca4e616066ab445f14128d694d89e08f719aad92d011ee669c00c4031b"
+    },
+    {
+      "phrase": "capital receipt",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-ee42ede994be7a01",
+      "line": 18,
+      "context_sha256": "7df4c5a62fb2995f3c82b549b8a5a114f8120b622ed952bbb9446efada9ad957"
+    },
+    {
+      "phrase": "capital receipt",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-ee60bc162a500a20",
+      "line": 25,
+      "context_sha256": "8e910bc819b12c7e1db64ed95dc6965b89a950ae392fda0496449f63d52b0d5d"
+    },
+    {
+      "phrase": "capital state id",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_id",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_id",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-37cd1c82359bfff0",
+      "line": 63,
+      "context_sha256": "af2fae3d04c6a6d4b5c61f73108e83fdd25a8061fe2fe56ecd2e0d6b9b55dc2f"
+    },
+    {
+      "phrase": "capital state id",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_id",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_id",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-8d35af2c6cf53bdd",
+      "line": 63,
+      "context_sha256": "af2fae3d04c6a6d4b5c61f73108e83fdd25a8061fe2fe56ecd2e0d6b9b55dc2f"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_fingerprint",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_fingerprint",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-00589782d451dae2",
+      "line": 64,
+      "context_sha256": "16b3b88f723897549cd3aca80883670d15b7093db35e90fc4e1e20503f605e93"
+    },
+    {
+      "phrase": "capital state fingerprint",
+      "path": "src/nvda_desk/m10_execution_gateway/service.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_fingerprint",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_fingerprint",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-09c87fa9f4bdf154",
+      "line": 64,
+      "context_sha256": "16b3b88f723897549cd3aca80883670d15b7093db35e90fc4e1e20503f605e93"
+    },
+    {
+      "phrase": "transaction command id",
+      "path": "tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_id",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_id",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-f060aecdfe3ef54c",
+      "line": 212,
+      "context_sha256": "3fae0e1cca43ee11b0be4abc98bfa44ac3704c5f70b25c2939dd22d90e3679cb"
+    },
+    {
+      "phrase": "transaction command type",
+      "path": "tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "nearest_slug": "transaction_command",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "transaction_command_type",
+        "matched_slug": "transaction_command",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "transaction_command_type",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "transaction_command_type",
+            "matched_slug": "transaction_command",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-6e4d93cd197e54fc",
+      "line": 213,
+      "context_sha256": "e7733de086bf833935bb8e06beebd5b34f353364e85720c31781e8a02c485892"
+    }
+  ]
 }

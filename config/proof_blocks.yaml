@@ -1121,16 +1121,22 @@ proof_blocks:
 
   - proof_block_id: m10_k15_execution_gateway_contract
     tier: Tier A
-    lifecycle: admitted_current_mvp_c_proof
+    lifecycle: admitted_current_mvp_gate_d_accepted
     command: >-
       env PYTHONPATH=src:. python -m pytest tests/tier_a/m10_k15/test_m10_k15_contract.py
     owns:
       - tests/tier_a/m10_k15/test_m10_k15_contract.py
       - tests/support/m10_k15_contract_harness.py
+      - src/nvda_desk/m10_execution_gateway/__init__.py
+      - src/nvda_desk/m10_execution_gateway/contracts.py
+      - src/nvda_desk/m10_execution_gateway/port.py
+      - src/nvda_desk/m10_execution_gateway/service.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M10/M10_AUTHORITY_WORKER_RECORD_V1.md
       - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/C_PROOF_VALIDATION_SUMMARY.md
       - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/M10_C_PROOF_SEPARATE_WORKTREE_REVIEW.md
+      - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/GATE_D_PROOF_HARDENING.md
+      - project_control/canonical_project_manager/modules/M10/validation/m10_k15_v1/GATE_D_VALIDATION_SUMMARY.md
       - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
       - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md

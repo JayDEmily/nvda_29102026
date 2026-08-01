@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M09_GATE_D_ACCEPTED`
+**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M10_GATE_D_ACCEPTED`
 **Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -218,6 +218,12 @@ command route or comparability is stale or Unknown.
   notional rounding cannot increase authority; numeric-equivalent decimal
   inputs share one semantic identity; and complete Tier A resolves 18 exact
   proof-baseline failures with zero new failing nodes.
+- M10 K15 satisfies C-NORM, independently challenged C-PROOF and bounded
+  Gate D: 28 focused cases and five bounded compatibility cases pass; exact M09
+  capital lineage, downward-only sizing, offline acknowledgement/fill evidence,
+  idempotent M13 mutation and exact receipt/event/transaction binding are
+  preserved; complete Tier A resolves eleven proof-baseline failures with zero
+  new failing nodes.
 
 ### Converted decision
 
@@ -273,23 +279,30 @@ side-effect-free and fail-closed; it rounds down rather than increasing
 authority and does not acquire order placement, broker execution, position,
 lifecycle, durable transaction or replay authority.
 
+M10 satisfies `C-NORM`, independently challenged `C-PROOF` and bounded K15 Gate
+D. The accepted package owns one M09-bound paper placement intent, a
+provider-substitutable offline execution port, immutable acknowledgement/fill
+events and an exact execution receipt. It uses M13 non-durable atomic/idempotent
+mutation and does not acquire live broker, network, position, inventory, M11
+lifecycle or durable-commit authority.
+
 ### Queued
 
-- Publish the clean full-history checkpoint for accepted M09 K11/K14 Gate D.
-- M10 execution-gateway authority is next; it has not started.
+- Publish the clean full-history checkpoint for accepted M10 K15 Gate D.
+- M11 position-lifecycle authority is next; it has not started.
 
 ## 8. Immediate work
 
-Pause and publish the clean full-history checkpoint for accepted M09 K11/K14
-Gate D. M09 resolves 18 exact hardened-proof-baseline failures with zero new
-Tier A failure nodes. M10 execution-gateway authority remains next and has not
+Pause and publish the clean full-history checkpoint for accepted M10 K15 Gate
+D. M10 resolves eleven exact hardened-proof-baseline failures with zero new
+Tier A failure nodes. M11 position-lifecycle authority remains next and has not
 started.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M10, M11 and M12;
+1. M11 and M12;
 2. M00 final composition;
 3. final alpha consolidation.
 
