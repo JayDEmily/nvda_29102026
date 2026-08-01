@@ -3783,3 +3783,25 @@ fast_track_module_local_admissions:
   admission_reason: The 1 August 2026 MVP C-PROOF decision admits this bounded family for exact M05/M06 join lineage, categorical block dominance, explicit capital state, bounded policy sizing, exact M07 receipt lineage, deterministic receipt identity and closed M10/M11/durable authority.
   forbidden_carry_forward: Missing branches, confidence override, lineage repair, posture coefficients treated as capital percentages, ignored hard maxima, arbitrary future policy labels, wall-clock semantic identity, anonymous scalar summaries and M09 claims of order, position or durable transaction authority must not satisfy K11/K14.
   notes: Gate D acceptance contains ten reference-law cases, seven named false-positive mutants and fifteen production assertions. Detached review closed numeric-domain gaps; a later boundary probe closed upward-rounding and numeric-identity defects. The bounded C-036 compatibility route passes three cases and remains non-canonical. Complete Tier A resolves eighteen proof-baseline nodes with zero new failing nodes.
+
+- test_family_id: m10_k15_execution_gateway_contract
+  native_status: admitted_tier_a
+  bounded_family: paper_placement_and_execution_evidence
+  native_test_path: tests/tier_a/m10_k15/test_m10_k15_contract.py
+  migration_status: module_local_c_proof_expected_red
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M10/M10_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m10_k15_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: Legacy opening and paper-broker paths do not implement the exact typed M09-to-M10 K15 boundary and retain forbidden position mutation.
+  native_reauthor_required: false
+  admission_reason: The 1 August 2026 C-PROOF decision admits exact capital-receipt lineage, downward-only quantity, paper-only order/fill evidence, idempotent M13 mutation and closed portfolio/lifecycle/live authority.
+  forbidden_carry_forward: Caller sizing, market-price invention, live execution, future policy labels, duplicate replay events, forged copied contracts and M10 position mutation must not satisfy K15.
+  notes: Twelve reference/mutant assertions pass and eight production-facing assertions remain exact red solely because the canonical M10 package is absent.

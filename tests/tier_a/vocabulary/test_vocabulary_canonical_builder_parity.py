@@ -42,7 +42,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed == native_build_document().to_dict()
 
     assert committed["schema_version"] == "v2_namespaced"
-    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09"}
+    assert set(committed["namespaces"]) == {"global", "m02", "m03", "m04", "m05", "m06", "m07", "m08", "m09", "m10"}
     assert committed["namespaces"]["m02"]["imports"] == ["global"]
     assert committed["namespaces"]["m03"]["imports"] == ["global"]
     assert committed["namespaces"]["m04"]["imports"] == ["global"]
@@ -50,6 +50,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert committed["namespaces"]["m07"]["imports"] == ["global"]
     assert committed["namespaces"]["m08"]["imports"] == ["global"]
     assert committed["namespaces"]["m09"]["imports"] == ["global", "m05", "m06", "m07"]
+    assert committed["namespaces"]["m10"]["imports"] == ["global", "m09"]
     assert "config" not in committed["namespaces"]["m02"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m03"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m04"]["scan_paths"]
@@ -57,6 +58,7 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
     assert "config" not in committed["namespaces"]["m07"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m08"]["scan_paths"]
     assert "config" not in committed["namespaces"]["m09"]["scan_paths"]
+    assert "config" not in committed["namespaces"]["m10"]["scan_paths"]
 
     m02_entries = [
         entry for entry in committed["entries"] if entry["namespace"] == "m02"
@@ -136,6 +138,15 @@ def test_canonical_vocabulary_matches_builder_output_via_both_import_paths() -> 
         "m09.capital_state",
         "m09.capital_deployment_decision",
         "m09.capital_deployment_receipt",
+    }
+
+    m10_entries = [entry for entry in committed["entries"] if entry["namespace"] == "m10"]
+    assert len(m10_entries) == 4
+    assert {entry["canonical_id"] for entry in m10_entries} == {
+        "m10.placement_intent",
+        "m10.execution_port",
+        "m10.execution_event",
+        "m10.execution_receipt",
     }
 
 
