@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 from copy import deepcopy
-from datetime import datetime
+from datetime import date, datetime
+from decimal import Decimal
+from enum import Enum
+import hashlib
+import json
 from typing import Any, Callable, Generic, TypeVar
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 T = TypeVar("T")
 
@@ -245,6 +249,72 @@ def _require_owned_identifier(value: str | None, field_name: str) -> str:
         raise ValueError(f"{field_name} must be a caller-owned governed identity")
     return value
 
+
+
+class DmpV3ExecutionContext(BaseModel):
+    """Caller-owned governed execution identity shared across one packet join."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    traceid: str
+    runid: str
+    scenarioid: str
+
+    @field_validator("traceid", "runid", "scenarioid")
+    @classmethod
+    def _owned_identity(cls, value: str, info) -> str:
+        governed = _require_owned_identifier(value, info.field_name)
+        if governed.lower() in {"generated", "default", "unknown", "placeholder"}:
+            raise ValueError(f"{info.field_name} must be a caller-owned governed identity")
+        return governed
+
+
+class PreparedContextIdentity(BaseModel):
+    """Typed M03 boundary identity carried by one prepared-context packet."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    prepared_id: str = Field(min_length=1)
+    prepared_fingerprint: str = Field(pattern=r"^[0-9a-f]{64}$")
+    schema_version: str = Field(min_length=1)
+    preparation_policy_version: str = Field(min_length=1)
+
+
+def _carriage_json_value(value: Any) -> Any:
+    if isinstance(value, BaseModel):
+        return _carriage_json_value(value.model_dump(mode="python"))
+    if isinstance(value, dict):
+        return {str(key): _carriage_json_value(value[key]) for key in sorted(value, key=str)}
+    if isinstance(value, (list, tuple)):
+        return [_carriage_json_value(item) for item in value]
+    if isinstance(value, (datetime, date)):
+        return value.isoformat()
+    if isinstance(value, Decimal):
+        return format(value.normalize(), "f")
+    if isinstance(value, Enum):
+        return _carriage_json_value(value.value)
+    if isinstance(value, bytes):
+        return value.hex()
+    return value
+
+
+def dmp_v3_carriage_fingerprint(packet: "DeskModulePacketV3") -> str:
+    """Fingerprint semantic carriage while excluding occurrence ID/time and human summary."""
+
+    if not isinstance(packet, DeskModulePacketV3):
+        raise TypeError("dmpv3_packet_required")
+    governed = DeskModulePacketV3.model_validate(packet.model_dump(mode="python"))
+    material = governed.model_dump(
+        mode="python",
+        exclude={"id", "time", "summary"},
+    )
+    encoded = json.dumps(
+        _carriage_json_value(material),
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+    ).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 def _validate_k07_lineage(
     packetrole: str,

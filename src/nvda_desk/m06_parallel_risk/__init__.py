@@ -11,6 +11,7 @@ from nvda_desk.m06_parallel_risk.contracts import (
     SUPPORTED_EVALUATOR_POLICY_VERSION,
 )
 from nvda_desk.m06_parallel_risk.evaluator import ParallelRiskEvaluator
+from nvda_desk.m06_parallel_risk.packet_boundary import ParallelRiskPacketAdapter
 
 __all__ = [
     "CLOSED_AUTHORITY_CLASSES",
@@ -19,6 +20,7 @@ __all__ = [
     "ParallelRiskEvaluator",
     "ParallelRiskInput",
     "ParallelRiskObservation",
+    "ParallelRiskPacketAdapter",
     "ParallelRiskPacketLineage",
     "SUPPORTED_AGGREGATION_VERSION",
     "SUPPORTED_EVALUATOR_POLICY_VERSION",
