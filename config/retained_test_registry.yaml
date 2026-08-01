@@ -3805,3 +3805,25 @@ fast_track_module_local_admissions:
   admission_reason: The 1 August 2026 C-PROOF decision admits exact capital-receipt lineage, downward-only quantity, paper-only order/fill evidence, idempotent M13 mutation and closed portfolio/lifecycle/live authority.
   forbidden_carry_forward: Caller sizing, market-price invention, live execution, future policy labels, duplicate replay events, forged copied contracts and M10 position mutation must not satisfy K15.
   notes: Gate D acceptance contains thirteen reference/mutant/generated proof cases, eleven formerly expected-red production cases and four additional public-boundary hardening cases. The focused family passes 28/28; complete Tier A resolves eleven proof-baseline failures with zero new failure nodes.
+
+- test_family_id: m11_k16_k17_portfolio_lifecycle_contract
+  native_status: admitted_tier_a
+  bounded_family: fill_reconciliation_position_inventory_and_lifecycle
+  native_test_path: tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py
+  migration_status: module_local_gate_d_accepted
+  normative_basis:
+  - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+  - docs/08_TESTING_AND_PROMOTION_CORE.md
+  - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+  - docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md
+  architecture_basis:
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  - project_control/canonical_project_manager/modules/M11/M11_AUTHORITY_WORKER_RECORD_V1.md
+  - tests/support/m11_k16_k17_contract_harness.py
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: The canonical nvda_desk.m11_portfolio_lifecycle package owns exact M10 paper-fill reconciliation, one canonical long-NVDA position, complete portfolio snapshots and bounded hold/trim/close lifecycle evidence through M13 process-memory transactions. Legacy inventory, repository, exit/close and carry paths remain compatibility/reference surfaces only.
+  native_reauthor_required: false
+  admission_reason: The 1 August 2026 C-PROOF decision admits exact M10 fill lineage, deterministic Decimal position arithmetic, monotonic transition time, immutable snapshots, closed lifecycle actions, stale-state rejection, exact M13 version binding and internally reconciled trim/close receipts.
+  forbidden_carry_forward: Generic mappings, caller-authored position identities, broker account truth, out-of-order fills, copied-model validator bypass, stale decisions, mismatched transaction versions, fabricated receipt lineage, capital recomputation, live broker execution and durable-state claims must not satisfy M11.
+  notes: Twenty-three focused cases pass: three reference-law cases, sixteen original and independent-review production cases, and four cross-field hardening cases admitted before final Gate D acceptance.

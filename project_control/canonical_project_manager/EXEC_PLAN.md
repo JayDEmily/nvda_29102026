@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M10_GATE_D_ACCEPTED`
+**Status:** `PAUSED:USER_CHECKPOINT_AFTER_M11_GATE_D_ACCEPTED`
 **Amendment date:** `2026-08-01`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -224,6 +224,12 @@ command route or comparability is stale or Unknown.
   idempotent M13 mutation and exact receipt/event/transaction binding are
   preserved; complete Tier A resolves eleven proof-baseline failures with zero
   new failing nodes.
+- M11 K16/K17 satisfies C-NORM, independently challenged C-PROOF and bounded
+  Gate D: 23 focused cases and 301 affected compatibility cases pass; exact M10
+  fill lineage, deterministic Decimal position arithmetic, monotonic transition
+  time, immutable snapshots, bounded hold/trim/close decisions and exact M13
+  version/result reconciliation are preserved; complete Tier A resolves twenty
+  proof-baseline failures with zero new failing nodes.
 
 ### Converted decision
 
@@ -286,23 +292,30 @@ events and an exact execution receipt. It uses M13 non-durable atomic/idempotent
 mutation and does not acquire live broker, network, position, inventory, M11
 lifecycle or durable-commit authority.
 
+M11 satisfies `C-NORM`, independently challenged `C-PROOF` and bounded K16/K17
+Gate D. The accepted package owns exact M10 paper-fill reconciliation, one
+canonical long-NVDA position, complete immutable portfolio snapshots and bounded
+hold/trim/close decisions and receipts. It uses M13 non-durable atomic/idempotent
+mutation and does not acquire broker execution, capital, live-account, short,
+durable-storage or authoritative replay authority.
+
 ### Queued
 
-- Publish the clean full-history checkpoint for accepted M10 K15 Gate D.
-- M11 position-lifecycle authority is next; it has not started.
+- Publish the clean full-history checkpoint for accepted M11 K16/K17 Gate D.
+- M12 review/replay authority is next; it has not started.
 
 ## 8. Immediate work
 
-Pause and publish the clean full-history checkpoint for accepted M10 K15 Gate
-D. M10 resolves eleven exact hardened-proof-baseline failures with zero new
-Tier A failure nodes. M11 position-lifecycle authority remains next and has not
+Pause and publish the clean full-history checkpoint for accepted M11 K16/K17
+Gate D. M11 resolves twenty exact hardened-proof-baseline failures with zero new
+Tier A failure nodes. M12 review/replay authority remains next and has not
 started.
 
 ## 9. Programme sequence
 
 Recommended sequence from the current state:
 
-1. M11 and M12;
+1. M12;
 2. M00 final composition;
 3. final alpha consolidation.
 

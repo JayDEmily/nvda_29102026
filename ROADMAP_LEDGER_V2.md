@@ -5,12 +5,12 @@
 | Field | Current truth |
 |---|---|
 | Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/m10-execution-gateway-v1` |
-| Current branch source checkpoint | `11632246808a30a01463f91b1c057c78101d8431` |
+| Branch | `work/m11-portfolio-lifecycle-v1` |
+| Current branch source checkpoint | `ccf946bf54905ab06dd66d5d3d5cd170f117bafa` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | M10 K15 paper execution gateway and exact execution evidence |
-| Current active slice | paused for clean full-history checkpoint after M10 Gate D acceptance |
-| Production implementation | M10 Gate D accepted; M11 has not started |
+| Latest accepted implementation slice | M11 K16/K17 portfolio state and lifecycle evidence |
+| Current active slice | paused for clean full-history checkpoint after M11 Gate D acceptance |
+| Production implementation | M11 Gate D accepted; M12 has not started |
 | Live/paper/production claim | closed |
 
 ## Why the route changed
@@ -169,7 +169,25 @@ The accepted adapter is explicitly offline, paper-only and non-durable. It does
 not prove live broker connectivity, network submission, portfolio mutation, M11
 lifecycle authority or production trading readiness.
 
+## M11 K16/K17 Gate D acceptance
+
+M11 acceptance records 23/23 focused cases, 301/301 affected M10/M11/M13 and
+legacy inventory/lifecycle cases, proof-manifest integrity at 63/63 and the proof
+executor at 21/21. Tier B passes 49/49. Independent proof review and final
+hardening cover detached snapshots, stale mutation, forged copied models,
+monotonic fill time and cross-field M13/snapshot/result reconciliation.
+
+Complete Tier A moved from 1,586 passed / 273 failed at hardened proof baseline
+`4b121c9` to 1,606 / 253: all twenty admitted M11 production failures resolved
+and zero new failing nodes appeared. The M11 namespace audit is clean across 11
+files with 121 resolved governed occurrences. Evidence is under
+`project_control/canonical_project_manager/modules/M11/validation/m11_k16_k17_v1/`.
+
+The accepted package is process-memory and paper-evidence bounded. It does not
+prove live account truth, broker close execution, short-position support,
+durable portfolio storage, authoritative replay or production trading readiness.
+
 ## Immediate next action
 
-Publish the clean full-history checkpoint for accepted M10 K15 Gate D. The next
-semantic unit is M11 position-lifecycle authority; it has not started.
+Publish the clean full-history checkpoint for accepted M11 K16/K17 Gate D. The
+next semantic unit is M12 review/replay authority; it has not started.
