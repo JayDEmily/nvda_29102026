@@ -9,7 +9,7 @@ Implemented boundary: immutable embedded repository-owned typed replay material,
 - M12 focused proof: `22/22 passed`.
 - Affected replay/review compatibility set: `64/64 passed` (the prior 63-case set plus the final authoritative-result hardening case).
 - Vocabulary builder parity: `4/4 passed`.
-- M12 vocabulary audit: `0 unresolved candidates`; `18` scanned files; `73` governed occurrences; touch stamp current.
+- M12 vocabulary audit: `0 unresolved candidates`; `18` scanned files; `74` governed occurrences; touch stamp current.
 - Proof-block manifests: `64/64 passed`.
 - Proof-executor contract: `21/21 passed`.
 - Tier B: `49/49 passed`.
