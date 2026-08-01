@@ -140,6 +140,18 @@ def _recomputed_material(api, material, **updates):
     return api["ReplayMaterial"].model_validate(payload)
 
 
+
+def _recomputed_assessment(api, assessment, **updates):
+    payload = assessment.model_dump(mode="python")
+    payload.update(updates)
+    payload.pop("assessment_id", None)
+    payload.pop("semantic_fingerprint", None)
+    fingerprint = semantic_fingerprint(payload)
+    payload["assessment_id"] = f"replay-assessment:{fingerprint[:24]}"
+    payload["semantic_fingerprint"] = fingerprint
+    return api["ReplayAssessment"].model_validate(payload)
+
+
 def _recomputed_projection(api, projection, **updates):
     payload = projection.model_dump(mode="python")
     payload.update(updates)
@@ -299,6 +311,20 @@ def test_production_revalidates_forged_nested_material_and_envelope_copies():
     forged_envelope = envelope.model_copy(update={"materials": (forged_material,) + envelope.materials[1:]})
     with pytest.raises(ValueError):
         service.assess(forged_envelope)
+
+
+
+def test_production_authoritative_assessment_requires_reproduced_output_evidence():
+    api = production_api()
+    envelope = _envelope(api)
+    assessment = _exact_assessment(api, envelope)
+    with pytest.raises(ValueError, match="authoritative_match"):
+        _recomputed_assessment(
+            api,
+            assessment,
+            reproduced_output_id=None,
+            reproduced_output_fingerprint=None,
+        )
 
 
 def test_production_review_projection_is_detached_and_exactly_bound():
