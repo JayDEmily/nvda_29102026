@@ -58,7 +58,7 @@ Preserve the completed two-branch comparative audit inside the selected continua
 - all extracted files listed in the supplied `SHA256SUMS.txt` verify;
 - the audit report, `salvage_inventory.csv`, `progress_quality_matrix.csv` and `validation_summary.json` are present;
 - supporting evidence and donor patch exports are retained without execution;
-- `git diff --check` passes;
+- `git diff --check` passes for integration-authored files; byte-preserved imported evidence is validated by its supplied SHA-256 manifest rather than whitespace-normalised;
 - the final commit and clean Git state are recorded;
 - a verified full-history checkpoint archive is produced.
 
@@ -84,7 +84,7 @@ Only this directory may be added or changed for repository content:
 - `sha256sum -c audit_material/SHA256SUMS.txt`
 - archive SHA-256 and `gzip -t`
 - required-file inventory
-- `git diff --check`
+- `git diff --check` on integration-authored files
 - `git status --short --branch`
 - archive content listing and SHA-256 after checkpoint creation
 

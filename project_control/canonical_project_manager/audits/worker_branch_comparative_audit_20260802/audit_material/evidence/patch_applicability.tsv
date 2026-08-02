@@ -1,0 +1,10 @@
+donor_commit	apply_check	first_diagnostic
+1d24756	CONFLICT	error: patch failed: config/proof_blocks.yaml:1277 
+280bf24	CONFLICT	error: patch failed: config/retained_test_registry.yaml:3856 
+3e0638c	CONFLICT	error: project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FULL_READ_MANIFEST.tsv: No such file or directory 
+4f25a1f	APPLY_CLEAN	none
+6582d37	APPLY_CLEAN	none
+820fb3	APPLY_CLEAN	none
+843259c	CONFLICT	error: patch failed: config/proof_blocks.yaml:1211 
+eb724a2	CONFLICT	error: patch failed: config/proof_blocks.yaml:1246 
+fe10556	CONFLICT	error: patch failed: data/vocabulary/vocabulary_touch_stamp.json:1 

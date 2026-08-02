@@ -1,0 +1,35 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_iter_candidates_ignores_machine_projection_header_lines _________
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-11/test_iter_candidates_ignores_m0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fa298dcd220>
+
+    def test_iter_candidates_ignores_machine_projection_header_lines(tmp_path, monkeypatch):
+        registry = tmp_path / "vocabulary_registry.md"
+        registry.write_text(
+            "# Vocabulary Registry\n"
+            "Projection schema version: `v2_namespaced`\n"
+            "Projection registry version: `fixture`\n"
+            "Projection document notes: [\"parallel_risk_lane_service\"]\n"
+            "Projection namespace scopes: {\"global\": {\"scan_paths\": [\"calendar_operational\"]}}\n"
+            "### Human Record\n"
+            "Definition: parallel_risk_lane_service remains human evidence here.\n",
+            encoding="utf-8",
+        )
+        monkeypatch.chdir(tmp_path)
+    
+        occurrences = list(audit._iter_candidates(["vocabulary_registry.md"]))
+        lines = {int(item["line"]) for item in occurrences}
+    
+>       assert lines.isdisjoint({2, 3, 4, 5})
+E       assert False
+E        +  where False = <built-in method isdisjoint of set object at 0x7fa298e1fae0>({2, 3, 4, 5})
+E        +    where <built-in method isdisjoint of set object at 0x7fa298e1fae0> = {1, 2, 3, 5, 6, 7}.isdisjoint
+
+/mnt/data/worker_audit/comparison_tests/test_vocab_b.py:536: AssertionError
+=========================== short test summary info ============================
+FAILED ::test_iter_candidates_ignores_machine_projection_header_lines - assert False
+ +  where False = <built-in method isdisjoint of set object at 0x7fa298e1fae0>({2, 3, 4, 5})
+ +    where <built-in method isdisjoint of set object at 0x7fa298e1fae0> = {1, 2, 3, 5, 6, 7}.isdisjoint
+1 failed in 0.04s

@@ -1,0 +1,266 @@
+From 6582d37da4043291a36f8cd80c13baa859db87f3 Mon Sep 17 00:00:00 2001
+From: NVDA Master Project Manager <nvda-pm@local.invalid>
+Date: Sat, 1 Aug 2026 11:45:58 +0000
+Subject: [PATCH] fix: require governed prepared-context packet identity
+
+---
+ .../PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md | 60 +++++++++++++++++++
+ .../upstream_cognition.txt                    |  2 +
+ ...repared_context_owner_identity_focused.txt |  3 +
+ src/nvda_desk/preparation/context_packet.py   | 49 ++++++++++++++-
+ ..._prepared_ingress_runtime_context_proof.py |  6 ++
+ .../test_prepared_context_packet_surface.py   | 29 +++++++++
+ 6 files changed, 146 insertions(+), 3 deletions(-)
+ create mode 100644 project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
+ create mode 100644 project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/physical_tier_a_partitions/upstream_cognition.txt
+ create mode 100644 project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_focused.txt
+
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
+new file mode 100644
+index 0000000..9464285
+--- /dev/null
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
+@@ -0,0 +1,60 @@
++# Prepared-context owner-identity repair
++
++## Outcome
++
++PASS for this bounded repair unit.
++
++## Defect
++
++The public `build_prepared_context_packet` wrapper did not expose the caller-owned producer identity and `derivedfrom` lineage required by the accepted M04 DMPV3 boundary. Its physical Tier A callers therefore failed before packet construction with:
++
++- `module_version must be a caller-owned governed identity`; or
++- `scenarioid must be a caller-owned governed identity`.
++
++The wrapper also supplied source artefacts, input fingerprints and degraded limitations without the matching owner validators and degraded-consumer restriction required by the strict packet builder.
++
++## Repair
++
++`src/nvda_desk/preparation/context_packet.py` now:
++
++- accepts caller-owned `module_version`, `module_instance_id` and `derivedfrom` values;
++- forwards those values unchanged to the canonical M04 builder;
++- binds source-artifact and input-fingerprint checks to the prepared payload;
++- declares only the admitted prepared-context owner-check names;
++- validates degraded limitations against actual failed enrichments; and
++- marks degraded prepared context as unable to create positive permission.
++
++No identity is generated or defaulted by the wrapper. Missing producer identity remains a hard failure.
++
++## Proof
++
++Focused M03/M04/M09 boundary proof:
++
++```text
++99 passed in 1.24s
++```
++
++Complete physical `upstream_cognition` partition:
++
++```text
++71 passed in 0.73s
++```
++
++The complete physical Tier A partition census is now:
++
++```text
++1,842 passed
++46 failed
++0 errors
++42 partitions
++```
++
++All 46 remaining failures belong to the separately adjudicated FWD004 row-level packet-carriage gap. No prepared-context failure remains.
++
++## Ruled out
++
++- synthesising module, run, trace or scenario identities;
++- weakening M04 owner checks;
++- accepting a degraded prepared packet without an explicit consumer restriction;
++- changing prepared payload semantics;
++- treating the unresolved FWD004 failures as part of this repair.
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/physical_tier_a_partitions/upstream_cognition.txt b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/physical_tier_a_partitions/upstream_cognition.txt
+new file mode 100644
+index 0000000..5d93186
+--- /dev/null
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/physical_tier_a_partitions/upstream_cognition.txt
+@@ -0,0 +1,2 @@
++.......................................................................  [100%]
++71 passed in 0.73s
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_focused.txt b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_focused.txt
+new file mode 100644
+index 0000000..dd8b3b1
+--- /dev/null
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_focused.txt
+@@ -0,0 +1,3 @@
++........................................................................ [ 72%]
++...........................                                              [100%]
++99 passed in 1.24s
+diff --git a/src/nvda_desk/preparation/context_packet.py b/src/nvda_desk/preparation/context_packet.py
+index cd3a8e7..7fe16e5 100644
+--- a/src/nvda_desk/preparation/context_packet.py
++++ b/src/nvda_desk/preparation/context_packet.py
+@@ -74,6 +74,9 @@ def build_prepared_context_packet(
+     *,
+     packet_id: str,
+     snapshot: PreparedRuntimeSnapshot,
++    module_version: str | None = None,
++    module_instance_id: str | None = None,
++    derivedfrom: str | None = None,
+     emitted_at: datetime | None = None,
+     traceid: str | None = None,
+     runid: str | None = None,
+@@ -89,6 +92,33 @@ def build_prepared_context_packet(
+     source_artifact_ids = list(payload.source_artifact_ids)
+     if not source_artifact_ids and payload.source_snapshot_id:
+         source_artifact_ids = [payload.source_snapshot_id]
++    resolved_input_fingerprint = (
++        payload.input_fingerprint or fingerprint_prepared_context_payload(payload)
++    )
++    expected_checks = {
++        "producer_identity",
++        "role_schema_consistency",
++        "execution_context_ownership",
++        "typed_payload",
++        "lineage_profile",
++        "authority_boundary",
++        "extension_bounds",
++        "summary_consistency",
++        "prepared_identity_and_contract_version",
++        "source_and_capture_lineage",
++        "source_temporal_preservation",
++        "prepared_fingerprint",
++        "completeness_and_limitation_state",
++        "no_domain_decision_authority",
++    }
++    conditional_lineage_fields: set[str] = set()
++    if parentids:
++        conditional_lineage_fields.add("parentids")
++    if dependencyids:
++        conditional_lineage_fields.add("dependencyids")
++    if reviewtraceid:
++        conditional_lineage_fields.add("reviewtraceid")
++
+     return DmpPacketBuilder.build_prepared_context_packet(
+         packet_id=packet_id,
+         data=payload,
+@@ -96,14 +126,27 @@ def build_prepared_context_packet(
+         traceid=traceid,
+         runid=runid,
+         scenarioid=scenarioid,
++        module_version=module_version,
++        module_instance_id=module_instance_id,
+         parentids=parentids,
+         dependencyids=dependencyids,
++        derivedfrom=derivedfrom,
+         sourceartifactids=source_artifact_ids,
+-        inputfingerprint=(
+-            payload.input_fingerprint or fingerprint_prepared_context_payload(payload)
+-        ),
++        inputfingerprint=resolved_input_fingerprint,
+         reviewtraceid=reviewtraceid,
++        source_artifact_validator=lambda value: value in source_artifact_ids,
++        input_fingerprint_validator=lambda value: value == resolved_input_fingerprint,
++        owner_check_validator=lambda name, _: name in expected_checks,
++        conditional_lineage_fields=conditional_lineage_fields,
+         validation_violations=violations,
++        optional_limitation_validator=(
++            (lambda limitation: limitation in violations) if violations else None
++        ),
++        degraded_consumer_restriction=(
++            "degraded_prepared_context_cannot_create_positive_permission"
++            if violations
++            else None
++        ),
+         summary_keyflags=["prepared_context"],
+         dmpextensions={
+             "nvda": {
+diff --git a/tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py b/tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py
+index 2f0a8f6..537b99b 100644
+--- a/tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py
++++ b/tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py
+@@ -200,6 +200,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
+         packet = build_prepared_context_packet(
+             packet_id=audit_row_id,
+             snapshot=snapshot,
++            module_version="1.0.0",
++            module_instance_id=f"prepared-ingress::{audit_row_id}",
++            derivedfrom=f"prepared::{snapshot.snapshot_id}",
+             emitted_at=datetime(2026, 5, 19, 10, 0, tzinfo=UTC),
+             traceid=f"trace::{audit_row_id}",
+             runid=f"run::{audit_row_id}",
+@@ -214,6 +217,9 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
+         assert packet.producer.grammar_role == "prepared_runtime_context"
+         assert packet.producer.behaviour_class == "preparation_output"
+         assert packet.producer.stage_name == "runtime_context_preparation"
++        assert packet.producer.module_version == "1.0.0"
++        assert packet.producer.module_instance_id == f"prepared-ingress::{audit_row_id}"
++        assert packet.lineage.derivedfrom == f"prepared::{snapshot.snapshot_id}"
+         assert packet.traceid == f"trace::{audit_row_id}"
+         assert packet.runid == f"run::{audit_row_id}"
+         assert packet.scenarioid == f"scenario::{atlas_record_id}"
+diff --git a/tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py b/tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
+index 15329af..482c76b 100644
+--- a/tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
++++ b/tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py
+@@ -59,6 +59,9 @@ def test_prepared_context_packet_uses_canonical_dmp_shell_and_lineage() -> None:
+     packet = build_prepared_context_packet(
+         packet_id="prepared-context-1",
+         snapshot=snapshot,
++        module_version="1.0.0",
++        module_instance_id="prepared-ingress.instance.001",
++        derivedfrom="prepared:snap-context-1",
+         emitted_at=datetime(2026, 4, 21, 10, 0, tzinfo=UTC),
+         traceid="trace-1",
+         runid="run-1",
+@@ -74,6 +77,9 @@ def test_prepared_context_packet_uses_canonical_dmp_shell_and_lineage() -> None:
+     assert packet.producer.grammar_role == "prepared_runtime_context"
+     assert packet.producer.behaviour_class == "preparation_output"
+     assert packet.producer.stage_name == "runtime_context_preparation"
++    assert packet.producer.module_version == "1.0.0"
++    assert packet.producer.module_instance_id == "prepared-ingress.instance.001"
++    assert packet.lineage.derivedfrom == "prepared:snap-context-1"
+     assert packet.lineage.sourceartifactids == ["snap-context-1"]
+     assert packet.lineage.parentids == ["raw-bundle-1"]
+     assert packet.lineage.inputfingerprint
+@@ -102,8 +108,13 @@ def test_prepared_context_packet_carries_failed_enrichment_as_degraded_validatio
+     packet = build_prepared_context_packet(
+         packet_id="prepared-context-degraded",
+         snapshot=snapshot,
++        module_version="1.0.0",
++        module_instance_id="prepared-ingress.instance.degraded",
++        derivedfrom="prepared:snap-context-1:degraded",
++        emitted_at=datetime(2026, 4, 21, 10, 1, tzinfo=UTC),
+         traceid="trace-degraded",
+         runid="run-degraded",
++        scenarioid="scenario-degraded",
+     )
+ 
+     assert packet.validation.status == "degraded"
+@@ -111,3 +122,21 @@ def test_prepared_context_packet_carries_failed_enrichment_as_degraded_validatio
+     assert packet.summary.humanstate == "degraded"
+     assert "calendar_reference_projection_missing" in packet.summary.keyflags
+     assert packet.data.failed_enrichments == ["calendar_reference_projection_missing"]
++
++
++def test_prepared_context_packet_rejects_missing_caller_owned_producer_identity() -> None:
++    snapshot = _prepared_snapshot()
++    try:
++        build_prepared_context_packet(
++            packet_id="prepared-context-missing-owner",
++            snapshot=snapshot,
++            derivedfrom="prepared:snap-context-1",
++            emitted_at=datetime(2026, 4, 21, 10, 2, tzinfo=UTC),
++            traceid="trace-missing-owner",
++            runid="run-missing-owner",
++            scenarioid="scenario-missing-owner",
++        )
++    except ValueError as exc:
++        assert "module_version must be a caller-owned governed identity" in str(exc)
++    else:
++        raise AssertionError("missing producer identity was accepted")
+-- 
+2.47.3
+

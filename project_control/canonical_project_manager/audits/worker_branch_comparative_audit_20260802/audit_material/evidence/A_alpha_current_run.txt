@@ -1,0 +1,1 @@
+promotion_gate=PASS set=alpha_current blocks=19/19 tests=802 receipt=/mnt/data/worker_audit/data/A_alpha_current_audit_receipt.json hash=f83e987604f747758a501468e1037586fc1336e4827dc146d98bde358359f640

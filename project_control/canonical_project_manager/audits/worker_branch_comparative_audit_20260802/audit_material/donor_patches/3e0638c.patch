@@ -1,0 +1,128 @@
+From 3e0638c8a87ff90ac5957c7bcf81363f1e2670d0 Mon Sep 17 00:00:00 2001
+From: NVDA Master Project Manager <nvda-pm@local.invalid>
+Date: Sat, 1 Aug 2026 11:46:23 +0000
+Subject: [PATCH] fix: enforce prepared-context owner identity
+
+---
+ .../FULL_READ_MANIFEST.tsv                    | 11 ++++
+ .../PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md | 59 +++++++------------
+ ...prepared_context_owner_identity_repair.txt |  3 +
+ 3 files changed, 34 insertions(+), 39 deletions(-)
+ create mode 100644 project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_repair.txt
+
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FULL_READ_MANIFEST.tsv b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FULL_READ_MANIFEST.tsv
+index 8d4000f..65a62f3 100644
+--- a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FULL_READ_MANIFEST.tsv
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FULL_READ_MANIFEST.tsv
+@@ -86,3 +86,14 @@ project_control/canonical_project_manager/audits/pre_m00_novel_assurance_2026080
+ tests/tier_a/packets/test_fwd004_reopened_row_packet_carriage_proof.py	FWD004 attempted re-author adjudication	FULL	audit adjudication only; no admitted behaviour mutation	d228f89d61b4844823c44f599f7274662355193b87e75a5d9dde867ae406f4b7
+ project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/FWD004_ADJUDICATION.md	FWD004 adjudication result	FULL	audit adjudication only; no admitted behaviour mutation	NEW
+ project_control/canonical_project_manager/units/PM-012/semantic_receipts/tests_tier_a_packets_test_fwd004_reopened_row_packet_carriage_proof_py.md	governing semantic receipt for FWD004	FULL	audit adjudication only; no admitted behaviour mutation	255baf0b0a70316e1a96daf60badfbcf8191cc17d9da660b59ff96a5324126f4
++tests/tier_a/normative_authority/test_gate_c_orchestration_playbook_and_risk.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	81ea3953226ca4b69dc947a6f5c0e6088734d6ceae89fb0ccc4d358b6bc2af8b
++tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	d1544b9fa8fd2c8339ed4cbc83694fb2cbfbbf93823d85c7d12fecd61029a98b
++tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	7dbb2eee72a9e461a89217a99539c78dc413d7465328bba3a0046563d81325dd
++tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	ffd8934f8f549f54e71048ea26a03ea6210491dcb1f3bd3402846560a507c07b
++tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	699e93566753bafbbfdc4ccdc56553a035047532d9377f7c1afe7580fb499e89
++tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py	pre-M00 physical proof reconciliation to accepted owner surfaces	FULL	re-author stale physical proof without changing production semantics or row identities	4f7f9cf6627f8c00257cfbd65b45274b658aea50af2b9f9c3cc7e554242a4cfb
++project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PHYSICAL_PROOF_RECONCILIATION.md	physical reconciliation evidence and adjudication	FULL	audit-only evidence; no runtime authority	NEW
++src/nvda_desk/preparation/context_packet.py	prepared-context caller-owned identity repair	FULL	expose governed producer identity and bind existing packet validators	81bec4df073dbe39e2152e80aac79ed5e2770dc4cd2732dc58c96dd639a1a2f1
++tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py	prepared-context caller-owned identity repair	FULL	re-author physical boundary proof and add missing-owner negative proof	bb0d40859b133970d47d730d0061534fc6b7343cb955cf52b5649b9b216e39c8
++tests/tier_a/upstream_cognition/test_fwd009_reopened_row_prepared_ingress_runtime_context_proof.py	prepared-context caller-owned identity repair	FULL	preserve row identity while supplying governed producer and lineage identity	a3300de568165f2609a7b7de5d6ae811bd932a0d24ccf381e08bc12deff0ebb9
++project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md	prepared-context caller-owned identity repair	FULL	audit evidence only; no runtime authority	NEW
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
+index 9464285..39acd64 100644
+--- a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/PREPARED_CONTEXT_OWNER_IDENTITY_REPAIR.md
+@@ -1,60 +1,41 @@
+-# Prepared-context owner-identity repair
++# Prepared-context packet owner-identity repair
+ 
+ ## Outcome
+ 
+-PASS for this bounded repair unit.
++PASS.
+ 
+ ## Defect
+ 
+-The public `build_prepared_context_packet` wrapper did not expose the caller-owned producer identity and `derivedfrom` lineage required by the accepted M04 DMPV3 boundary. Its physical Tier A callers therefore failed before packet construction with:
+-
+-- `module_version must be a caller-owned governed identity`; or
+-- `scenarioid must be a caller-owned governed identity`.
+-
+-The wrapper also supplied source artefacts, input fingerprints and degraded limitations without the matching owner validators and degraded-consumer restriction required by the strict packet builder.
++The public `nvda_desk.preparation.context_packet.build_prepared_context_packet` helper did not expose or forward the caller-owned producer identity required by current M04/K07 law. Calls through the lower-level M04 builder correctly rejected the resulting packet for absent `module_version`, `module_instance_id`, or execution context. The same helper also failed to activate conditional K07 lineage fields when the caller explicitly supplied parent, dependency, or review lineage.
+ 
+ ## Repair
+ 
+-`src/nvda_desk/preparation/context_packet.py` now:
+-
+-- accepts caller-owned `module_version`, `module_instance_id` and `derivedfrom` values;
+-- forwards those values unchanged to the canonical M04 builder;
+-- binds source-artifact and input-fingerprint checks to the prepared payload;
+-- declares only the admitted prepared-context owner-check names;
+-- validates degraded limitations against actual failed enrichments; and
+-- marks degraded prepared context as unable to create positive permission.
+-
+-No identity is generated or defaulted by the wrapper. Missing producer identity remains a hard failure.
+-
+-## Proof
+-
+-Focused M03/M04/M09 boundary proof:
+-
+-```text
+-99 passed in 1.24s
+-```
++- Added caller-supplied `module_version`, `module_instance_id`, and `derivedfrom` parameters.
++- Forwarded those identities without synthesising defaults.
++- Bound source-artifact and input-fingerprint validators to the actual prepared snapshot lineage.
++- Bound the exact prepared-context K07 owner-check set.
++- Activated conditional parent, dependency, and review lineage only when explicitly supplied.
++- Preserved degraded validation and added a fail-closed consumer restriction when preparation enrichments fail.
++- Added proof that missing producer identity remains rejected.
+ 
+-Complete physical `upstream_cognition` partition:
++## Validation
+ 
+ ```text
+-71 passed in 0.73s
++71 passed in 0.70s
+ ```
+ 
+-The complete physical Tier A partition census is now:
++Complete physical upstream-cognition directory.
+ 
+ ```text
+-1,842 passed
+-46 failed
+-0 errors
+-42 partitions
++106 passed in 0.73s
+ ```
+ 
+-All 46 remaining failures belong to the separately adjudicated FWD004 row-level packet-carriage gap. No prepared-context failure remains.
++Upstream cognition plus current M03 K05/K06 and reference-packet carriage proof.
+ 
+ ## Ruled out
+ 
+-- synthesising module, run, trace or scenario identities;
+-- weakening M04 owner checks;
+-- accepting a degraded prepared packet without an explicit consumer restriction;
+-- changing prepared payload semantics;
+-- treating the unresolved FWD004 failures as part of this repair.
++- generated module versions or module-instance identities;
++- generated scenario identity;
++- weakening M04/K07 owner checks;
++- treating degraded prepared context as positive permission;
++- changing M03 preparation semantics.
+diff --git a/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_repair.txt b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_repair.txt
+new file mode 100644
+index 0000000..fe4a036
+--- /dev/null
++++ b/project_control/canonical_project_manager/audits/pre_m00_novel_assurance_20260801/raw/prepared_context_owner_identity_repair.txt
+@@ -0,0 +1,3 @@
++........................................................................ [ 67%]
++..................................                                       [100%]
++106 passed in 0.72s
+-- 
+2.47.3
+

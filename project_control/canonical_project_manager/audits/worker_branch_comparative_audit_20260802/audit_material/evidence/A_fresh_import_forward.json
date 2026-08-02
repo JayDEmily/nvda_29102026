@@ -1,0 +1,1557 @@
+{
+  "fail_count": 0,
+  "module_count": 258,
+  "order": "forward",
+  "pass_count": 258,
+  "python": "3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0]",
+  "results": [
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000108,
+      "module": "nvda_desk",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 9.1e-05,
+      "module": "nvda_desk.adapters",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.3e-05,
+      "module": "nvda_desk.adapters.egress",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8.5e-05,
+      "module": "nvda_desk.adapters.egress.api_dto_adapter",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000103,
+      "module": "nvda_desk.adapters.egress.broker_protocol",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5.2e-05,
+      "module": "nvda_desk.adapters.ingress",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.028114,
+      "module": "nvda_desk.adapters.ingress.calendar_feed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.017236,
+      "module": "nvda_desk.adapters.ingress.market_snapshot_feed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001697,
+      "module": "nvda_desk.adapters.ingress.options_surface_feed",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000113,
+      "module": "nvda_desk.analysis",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001758,
+      "module": "nvda_desk.analysis.replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.analysis.replay.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000144,
+      "module": "nvda_desk.analysis.replay.sidecar",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.007022,
+      "module": "nvda_desk.analysis.replay.walk_forward",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.113413,
+      "module": "nvda_desk.api",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5e-06,
+      "module": "nvda_desk.api.app",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.api.deps",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000154,
+      "module": "nvda_desk.api.http.app",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.calendar",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.calendar.operational",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.calendar.operational.events",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.calendar.reference",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.calendar.reference.importer",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.calendar.reference.projection",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5.7e-05,
+      "module": "nvda_desk.capital",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.00014,
+      "module": "nvda_desk.capital.authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.cognition",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.cognition.ingress",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.cognition.ingress.options_mapper",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.9e-05,
+      "module": "nvda_desk.cognition.ingress.regime_mapper",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000461,
+      "module": "nvda_desk.cognition.ingress.temporal_mapper",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000102,
+      "module": "nvda_desk.cognition.ingress.translator",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.cognition.modifiers",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.cognition.modifiers.state_conditioned",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.cognition.serial",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.cognition.serial.eligibility",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.5e-05,
+      "module": "nvda_desk.cognition.serial.options_flow",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.cognition.serial.posture",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.config",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.config.bundle_loader",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.config.coefficient_authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.config.config_surface",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8.6e-05,
+      "module": "nvda_desk.config.parallel_risk_lane_profile",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7e-05,
+      "module": "nvda_desk.config.parallel_risk_signal_inventory",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.config.playbook_registry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.config.runtime_settings",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.broker_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.capital",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.coefficient_authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001489,
+      "module": "nvda_desk.contracts.common",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.contracts.daily_pnl",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.003661,
+      "module": "nvda_desk.contracts.dataset_packets",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 4e-06,
+      "module": "nvda_desk.contracts.downstream",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.eligibility",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.execution",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.exit_close",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.external_source",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001904,
+      "module": "nvda_desk.contracts.market_substrate",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 4e-06,
+      "module": "nvda_desk.contracts.modifiers",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.options_flow",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001507,
+      "module": "nvda_desk.contracts.options_flow_history",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.contracts.packets",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.parallel_risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.playbook",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.posture",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.prepared_context",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.contracts.prepared_data",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.reference_data",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.regime",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.009296,
+      "module": "nvda_desk.contracts.review",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.002409,
+      "module": "nvda_desk.contracts.review_replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.003208,
+      "module": "nvda_desk.contracts.risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.contracts.serial_spine",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.stage_inputs",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.strategic_ladder",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.contracts.temporal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.047285,
+      "module": "nvda_desk.contracts.trace_review",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5e-06,
+      "module": "nvda_desk.contracts.upstream_signal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000326,
+      "module": "nvda_desk.domain.capital",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000271,
+      "module": "nvda_desk.domain.capital.deployment",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000165,
+      "module": "nvda_desk.domain.downstream",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.00055,
+      "module": "nvda_desk.domain.downstream.live_inventory",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.00039,
+      "module": "nvda_desk.domain.downstream.opening",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.domain.eligibility.playbook_compilation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.execution",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.execution.candidate_expression",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.2e-05,
+      "module": "nvda_desk.domain.execution.lifecycle_plan",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000268,
+      "module": "nvda_desk.domain.final_risk.overlay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000117,
+      "module": "nvda_desk.domain.final_risk.terminal_join",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.options_flow.surface_state",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.parallel_risk.candidate_audit",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000106,
+      "module": "nvda_desk.domain.parallel_risk.deterministic_description",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.parallel_risk.environment_assessment",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.5e-05,
+      "module": "nvda_desk.domain.parallel_risk.event_proximity",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.parallel_risk.family_aggregation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.4e-05,
+      "module": "nvda_desk.domain.parallel_risk.freshness",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.parallel_risk.minute_profile_assembly",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.2e-05,
+      "module": "nvda_desk.domain.parallel_risk.missing_signals",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.parallel_risk.risk_atoms",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000608,
+      "module": "nvda_desk.domain.parallel_risk.unavailable_signals",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000204,
+      "module": "nvda_desk.domain.posture.modifier_application",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.posture.permission",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.domain.regime.classification",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.temporal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.temporal.event_windows",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.temporal.intraday_phase",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.domain.temporal.session_clock",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.downstream",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.downstream.broker_execution",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001025,
+      "module": "nvda_desk.downstream.checkpoints",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.downstream.daily_pnl",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.downstream.exit_close",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.downstream.live_inventory",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.downstream.opening",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.downstream.overnight_carry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000113,
+      "module": "nvda_desk.downstream.review_stage",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.8e-05,
+      "module": "nvda_desk.downstream.state_reader",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.081788,
+      "module": "nvda_desk.entry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 4e-06,
+      "module": "nvda_desk.entry.asgi",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.entry.cli",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.ingress",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.ingress.raw_bundle_loader",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m00_application_shell",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m00_application_shell.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m00_application_shell.coordinator",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m01_source_admission",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.m01_source_admission.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m01_source_admission.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m02_financial_calendar",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.m02_financial_calendar.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m02_financial_calendar.resolver",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m03_preparation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m03_preparation.builder",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m05_serial_cognition",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.m05_serial_cognition.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m05_serial_cognition.packet_boundary",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m05_serial_cognition.runner",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m05_serial_cognition.temporal_adapter",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk.evaluator",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk.owner_facts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk.packet_boundary",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m06_parallel_risk.ports",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m07_coefficient_modifier_authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m07_coefficient_modifier_authority.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.m07_coefficient_modifier_authority.resolver",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.007486,
+      "module": "nvda_desk.m08_playbook_catalogue",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.m08_playbook_catalogue.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m08_playbook_catalogue.resolver",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m09_capital_authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m09_capital_authority.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m09_capital_authority.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m10_execution_gateway",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m10_execution_gateway.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m10_execution_gateway.port",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m10_execution_gateway.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m11_portfolio_lifecycle",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m11_portfolio_lifecycle.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m11_portfolio_lifecycle.risk_facts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m11_portfolio_lifecycle.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m12_evidence_replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.m12_evidence_replay.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m12_evidence_replay.service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel.codec",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel.in_memory",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel.ports",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.m13_state_kernel.sqlite",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.004931,
+      "module": "nvda_desk.operational_boundaries",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.operational_boundaries.adapters",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.operational_boundaries.contracts",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.packets",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.packets.dmp_packets",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.persistence",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.persistence.durable_sql",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.persistence.execution_records",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.persistence.import_registry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001003,
+      "module": "nvda_desk.persistence.migrations",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.persistence.migrations.layout",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001679,
+      "module": "nvda_desk.persistence.models",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000152,
+      "module": "nvda_desk.persistence.parallel_risk_observations",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.persistence.receipt_ledger",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8.4e-05,
+      "module": "nvda_desk.persistence.research_logs",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8e-05,
+      "module": "nvda_desk.persistence.session_factory",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000158,
+      "module": "nvda_desk.playbooks",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.playbooks.library",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.preparation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.preparation.context_packet",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.preparation.field_resolution",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.preparation.runtime_preparer",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.00018,
+      "module": "nvda_desk.reference",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000189,
+      "module": "nvda_desk.reference.calendar_import",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000152,
+      "module": "nvda_desk.reference.calendar_projection",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.2e-05,
+      "module": "nvda_desk.replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000201,
+      "module": "nvda_desk.replay.review_compare",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.repositories",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.repositories.capital_state_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.4e-05,
+      "module": "nvda_desk.repositories.execution_event_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5.9e-05,
+      "module": "nvda_desk.repositories.market_observation_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.repositories.module_registry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5.5e-05,
+      "module": "nvda_desk.repositories.options_flow_history_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.repositories.position_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000337,
+      "module": "nvda_desk.repositories.reference_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.4e-05,
+      "module": "nvda_desk.repositories.research_logs",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.2e-05,
+      "module": "nvda_desk.repositories.review_repository",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.review",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.review.imported_module_citations",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.review.packet_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.review.strategic_ladder_replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.risk",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.1e-05,
+      "module": "nvda_desk.risk.join",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8.6e-05,
+      "module": "nvda_desk.risk.join.final_join",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.risk.parallel",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.risk.parallel.evaluate",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.runtime",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.runtime.orchestrator",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.schemas",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8e-05,
+      "module": "nvda_desk.schemas.dmp",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 4.7e-05,
+      "module": "nvda_desk.schemas.dmp_envelope",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.schemas.import_registry",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.004805,
+      "module": "nvda_desk.schemas.vocabulary",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000127,
+      "module": "nvda_desk.services.capital_deployment_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 6.6e-05,
+      "module": "nvda_desk.services.coefficient_authority_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.3e-05,
+      "module": "nvda_desk.services.downstream_live_inventory_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000284,
+      "module": "nvda_desk.services.downstream_opening_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000206,
+      "module": "nvda_desk.services.downstream_review_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000251,
+      "module": "nvda_desk.services.downstream_state_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000219,
+      "module": "nvda_desk.services.eligibility_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 8e-05,
+      "module": "nvda_desk.services.execution_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000135,
+      "module": "nvda_desk.services.exit_close_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.1e-05,
+      "module": "nvda_desk.services.final_risk_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.services.options_flow_context_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.services.parallel_risk_lane_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.services.playbook_eligibility_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.services.posture_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.services.regime_context_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.5e-05,
+      "module": "nvda_desk.services.review_explanation_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.services.temporal_context_service",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 5.1e-05,
+      "module": "nvda_desk.testing",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.9e-05,
+      "module": "nvda_desk.testing.bounded_trace_review",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000585,
+      "module": "nvda_desk.testing.cognition_fixtures",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.001076,
+      "module": "nvda_desk.testing.fixture_corpus",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.003401,
+      "module": "nvda_desk.testing.harnesses",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 3e-06,
+      "module": "nvda_desk.testing.harnesses.canonical_runtime",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.testing.harnesses.module_8_parallel_risk_workbook_specimen",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 1e-06,
+      "module": "nvda_desk.testing.harnesses.serial_runtime_parallel_risk_boundary_specimen",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.upstream",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 9.9e-05,
+      "module": "nvda_desk.upstream.market_substrate",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.8e-05,
+      "module": "nvda_desk.upstream.raw_signal_coverage",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 7.1e-05,
+      "module": "nvda_desk.upstream.raw_signal_ingress",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 2e-06,
+      "module": "nvda_desk.upstream.strategic_ladder",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000578,
+      "module": "nvda_desk.vocabulary_builder",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "elapsed_seconds": 0.000421,
+      "module": "nvda_desk.vocabulary_synonym_audit",
+      "status": "PASS"
+    }
+  ]
+}

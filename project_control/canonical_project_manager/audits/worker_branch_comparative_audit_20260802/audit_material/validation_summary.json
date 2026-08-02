@@ -1,0 +1,127 @@
+{
+  "metrics": {
+    "common_ancestor": "258470526c36da61b3ff4162f1d5ad9e512a8b54",
+    "advanced_branch": {
+      "branch": "work/post-alpha-comprehensive-debt-retirement-v1",
+      "head": "617127f6cb354591a875985788552360e72fd392",
+      "unique_commits": 40,
+      "changed_entries": 241,
+      "added": 17320,
+      "deleted": 2229,
+      "src_files_changed": 74,
+      "src_added": 4179,
+      "src_deleted": 748,
+      "test_files_changed": 108,
+      "project_control_files_changed": 37
+    },
+    "assurance_branch": {
+      "branch": "work/pre-m00-novel-assurance-redo-v3",
+      "head": "fffb4e31c03a3bc031f28eba89f9a59562484a8f",
+      "unique_commits": 26,
+      "changed_entries": 338,
+      "added": 82727,
+      "deleted": 1535,
+      "src_files_changed": 17,
+      "src_added": 289,
+      "src_deleted": 134,
+      "test_files_changed": 32,
+      "project_control_files_changed": 279
+    }
+  },
+  "advanced_branch": {
+    "curated_alpha_current": {
+      "status": "PASS",
+      "blocks_passed": 19,
+      "blocks_total": 19,
+      "tests_passed": 802,
+      "receipt": "see receipt"
+    },
+    "physical_tier_a": {
+      "partitions": 44,
+      "passed": 1713,
+      "failed": 247,
+      "errors": 0,
+      "failing_partitions": [
+        "capital_deployment",
+        "normative_authority",
+        "packets",
+        "parallel_risk",
+        "persistence",
+        "runtime",
+        "testing_harnesses",
+        "upstream_cognition"
+      ]
+    },
+    "physical_tier_b": {
+      "passed": 90,
+      "failed": 0
+    },
+    "proof_authority_internal_check": {
+      "family_count": 201,
+      "family_lifecycle_counts": {
+        "current_blocking": 19,
+        "current_nonblocking": 41,
+        "historical": 73,
+        "next_gate_expected_red": 6,
+        "superseded_compatibility": 62
+      },
+      "promotion_sets": {
+        "alpha_current": {
+          "proof_block_count": 19,
+          "test_family_count": 19,
+          "test_path_count": 21
+        },
+        "pre_m00_current": {
+          "proof_block_count": 19,
+          "test_family_count": 19,
+          "test_path_count": 21
+        }
+      },
+      "proof_block_count": 73,
+      "status": "PASS",
+      "test_path_count": 203
+    },
+    "independent_proof_join": {
+      "physical_test_files": 202,
+      "collected_nodes": 2050,
+      "unadmitted_count": 32,
+      "stale_registry_paths": 0,
+      "stale_proof_paths": 0
+    },
+    "exact_graph": {
+      "module_count": 261,
+      "edge_count": 417,
+      "syntax_errors": [],
+      "implementation_module_cycles": [],
+      "unresolved_internal_imports": []
+    },
+    "fresh_imports": {
+      "forward": "258/258",
+      "reverse": "258/258"
+    },
+    "replay_models": 13,
+    "boundary_mutations_rejected": 17,
+    "targeted_donor_checks": {
+      "immutability_test_against_advanced_branch": "19 failed",
+      "projection_header_test_against_advanced_branch": "1 failed",
+      "prepared_context_full_donor_unit_portcheck": "71 passed"
+    }
+  },
+  "assurance_branch": {
+    "independent_combined_rerun": {
+      "tier_a": "1910 passed",
+      "tier_b": "51 passed"
+    },
+    "committed_isolated_partition_evidence": {
+      "tier_a": "42 partitions; 1910 passed; 0 failed",
+      "tier_b": "7 partitions; 51 passed; 0 failed"
+    },
+    "committed_novel_matrix": {
+      "fresh_imports": "247/247 forward and reverse",
+      "graph": "250 modules; 394 edges; 0 implementation cycles",
+      "proof_join": "190 physical files; 1961 nodes; 0 unadmitted",
+      "boundary_mutations": "17/17 rejected",
+      "replay_models": "13; 0 failures"
+    }
+  }
+}
