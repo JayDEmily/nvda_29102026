@@ -230,6 +230,8 @@ declared environment; records, proof control and Git describe the same state.
 - 2026-08-03: the user-authorised test-preservation rule is now repository-wide in `AGENTS.md`, committed before retrospective mutation. Units 1–4 were then audited across all 20 changed test/support files and 47 changed top-level surfaces. No physical test file was deleted or renamed, no skip/xfail mechanism was added, and both renamed nodes are mapped one-to-one.
 - 2026-08-03: four under-preserved replacement propositions were restored: two FWD-004 identity/summary branches, the FWD-009 packet/trace/lineage branch and FWD-005 API method/state absence. The changed-file cone passes 439/439; physical Tier A, Tier B and Tier C pass 1,990/1,990, 91/91 and 5/5; proof authority remains 201 families / 203 paths / 73 blocks; all 73 definitions validate; and all 13 vocabulary namespaces are clean after six exact occurrence renewals. The 47-row authority register is retained in evidence.
 
+- 2026-08-03: Unit 5 was revalidated after the Units 1–4 proposition audit on clean commit `e66c530`. The exact 46 authority-mapped nodes pass 46/46 and signed `alpha_current` passes 19/19 blocks / 811/811 tests. The same executable tree already passes physical Tier A 1,990/1,990, Tier B 91/91 and Tier C 5/5. Unit 5 remains accepted under the repository-wide preservation rule; Unit 6 remains the only active gate.
+
 ## Decisions
 
 - One subordinate plan governs the complete bounded readiness programme; units

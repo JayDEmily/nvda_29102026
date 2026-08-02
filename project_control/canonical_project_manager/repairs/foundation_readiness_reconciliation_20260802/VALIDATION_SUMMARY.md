@@ -338,3 +338,17 @@ Four under-preserved replacements were corrected: two FWD-004 packet identity/su
 | Vocabulary | PASS — 13/13 namespaces, 0 candidates |
 
 Verdict: **PASS**. Units 1–4 contain no unrecorded test retirement; the four incomplete proposition replacements have been restored without reopening obsolete compatibility authority.
+
+## Unit 5 post-retrospective revalidation — 2026-08-03
+
+Unit 5 was re-run after the repository-wide Units 1–4 test-preservation audit, against clean executable commit `e66c530691d10602d6a375b8a26dae9e8fe7a410`.
+
+| Surface | Result |
+|---|---:|
+| Exact authority-mapped Unit 5 nodes | 46 passed |
+| Signed `alpha_current` | 19/19 blocks; 811 tests passed |
+| Physical Tier A | 1,990 passed |
+| Physical Tier B | 91 passed |
+| Physical Tier C | 5 passed |
+
+Verdict: **PASS**. The retrospective audit introduced no Unit 5 regression and no test-preservation exception remains open.

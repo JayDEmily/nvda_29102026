@@ -1,0 +1,577 @@
+{
+  "authority_sha256": {
+    "ROADMAP_LEDGER_V2.md": "21058061982daffbc65ce34e26af4e315d5a730d53d9ab89d2e032c06df44635",
+    "config/proof_blocks.yaml": "b1e325f11bf4233e2804d53b2dd2253690e811e3b02bf9c7c9884a996a0768ff",
+    "config/retained_test_registry.yaml": "ac14d35d17e43851caa681138eb5f915e109c09d9dc4864fd59e34479397ae45",
+    "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md": "7229121e5479c855c7a8a1139405ff17943a0d981c68ee1a3d42fd48c46d1b1a",
+    "docs/08.1_TESTING_AND_PROMOTION_WORKING.md": "97880df60287f9b02be38b8328899253ce1f9d942a488993661e9dadfb24f117",
+    "docs/08_TESTING_AND_PROMOTION_CORE.md": "c3409910fd27d5452304469584179fb0c421ba82ee7903b95f9e0415b395e944",
+    "project_control/canonical_project_manager/EXEC_PLAN.md": "7528433f3c591d752f5c94569582e9fab84594c8b47fbe1cc63aa96feab15808"
+  },
+  "block_results": [
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py",
+      "duration_seconds": 0.364643,
+      "exit_code": 0,
+      "proof_block_id": "m13_state_kernel_module_local_proof",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 152,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/persistence/test_m13_state_kernel_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "046f621e749a52d22bd3bbf18a306cc3d171f19c1d7a1d86432466c9bf843959",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/persistence/test_m13_sqlite_restart_contract.py",
+      "duration_seconds": 0.665885,
+      "exit_code": 0,
+      "proof_block_id": "m13_sqlite_restart_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 10,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/persistence/test_m13_sqlite_restart_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "109a3fcdcc46c5cf5e1c920d56dd9bb574d4d64c6b2b666b44792a3157b9cc2d",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py",
+      "duration_seconds": 0.466687,
+      "exit_code": 0,
+      "proof_block_id": "m04_k07_packet_role_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 271,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/packets/test_m04_k07_packet_role_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "7ef3bc572d1fba67d97639cb2df8ea506866488cf7afdb076eacd96823da5697",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/ingress/test_m01_source_admission_contract.py",
+      "duration_seconds": 0.314937,
+      "exit_code": 0,
+      "proof_block_id": "m01_source_admission_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 20,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/ingress/test_m01_source_admission_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "138d05f1777f5714487a5ff586b030e2b33e9553f446624872e5f484d279f0d1",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m07_k12/test_m07_k12_contract.py",
+      "duration_seconds": 0.314937,
+      "exit_code": 0,
+      "proof_block_id": "m07_k12_coefficient_modifier_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 20,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m07_k12/test_m07_k12_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e685c45fc17067439d7d23b72fcfe2fcfa9bd480dd6569a07ce0ab2c72545c5d",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m08_k13/test_m08_k13_contract.py",
+      "duration_seconds": 0.315904,
+      "exit_code": 0,
+      "proof_block_id": "m08_k13_playbook_catalogue_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 23,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m08_k13/test_m08_k13_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "178efb7863f2fec0ba248ce9af22156881dcc1d56006e5c2408e1e1f170082c5",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py",
+      "duration_seconds": 0.315035,
+      "exit_code": 0,
+      "proof_block_id": "m02_k04_financial_calendar_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 33,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m02_k04/test_m02_k04_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1117236a81d06f8726f74f4920253c76dfc5cbb6a7f59c47ff81b79200a0f49a",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py",
+      "duration_seconds": 0.365057,
+      "exit_code": 0,
+      "proof_block_id": "m03_k05_k06_prepared_data_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 33,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "d31a951947c8cf09252a0066570823f556663b40eb3ac75acdf4623bc24f0e23",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09",
+      "duration_seconds": 0.415336,
+      "exit_code": 0,
+      "proof_block_id": "m05_k08_k09_serial_cognition_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 44,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m05_k08_k09"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "63ca7e8f3325331557fdca070d6f2fe46af491624f8630ffd9c4ea152db8a0bc",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_k10_contract.py",
+      "duration_seconds": 0.464961,
+      "exit_code": 0,
+      "proof_block_id": "m06_k10_parallel_risk_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 33,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m06_k10/test_m06_k10_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ccd42562c51126e78af39b701ac0c211238b97bf67bede42a1cea6828024a6d1",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py",
+      "duration_seconds": 0.515591,
+      "exit_code": 0,
+      "proof_block_id": "m06_owner_fact_completeness_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 6,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ff53dbcef7bade7fcc98090bed190065b39f89c920c7de84fae7cca858277885",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py",
+      "duration_seconds": 0.815525,
+      "exit_code": 0,
+      "proof_block_id": "m09_k11_k14_capital_authority_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 42,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py",
+        "tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "58d11098075c41f277541b9a3549196443d430964991a8b8ce269a5f35d9733e",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "duration_seconds": 0.667001,
+      "exit_code": 0,
+      "proof_block_id": "m10_k15_execution_gateway_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 28,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m10_k15/test_m10_k15_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a5995032a8aadf6a4eb9817464b12bd795b5d7f8b3f23c9dfae1469ed36b1581",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/operations/test_live_operational_boundaries.py",
+      "duration_seconds": 0.515765,
+      "exit_code": 0,
+      "proof_block_id": "live_operational_boundaries_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 10,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/operations/test_live_operational_boundaries.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "bb3df858b5c0ce87ff85707bab674c758db520b71454267af08e56325bf2c804",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py",
+      "duration_seconds": 0.866715,
+      "exit_code": 0,
+      "proof_block_id": "m11_k16_k17_portfolio_lifecycle_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 23,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "a7375bc95af28b9d69bb64fb39f6fb05dc5795951ca800a575059f9080068ced",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m12_k19/test_m12_k19_contract.py",
+      "duration_seconds": 0.465451,
+      "exit_code": 0,
+      "proof_block_id": "m12_k19_authoritative_replay_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 24,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m12_k19/test_m12_k19_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "45385cdb0598aaad2dd2b57695c79870aaa40ace2205c2593899ced880ba1366",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py",
+      "duration_seconds": 0.716259,
+      "exit_code": 0,
+      "proof_block_id": "m00_final_composition_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 16,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ba489518e8dd450cc12847b3991cfa642019d0555034cdc21d4969e6e6a09d06",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/entry/test_entry_boundary_surface.py",
+      "duration_seconds": 0.717359,
+      "exit_code": 0,
+      "proof_block_id": "post_alpha_m00_transport_adapter_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 15,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/entry/test_entry_boundary_surface.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6e5aa4a3a31f050547e5faab51c709dbc94f6422e2cba1ba132e32b3088b661b",
+      "timed_out": false
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py",
+      "duration_seconds": 0.515775,
+      "exit_code": 0,
+      "proof_block_id": "m00_upstream_workflow_contract",
+      "pytest_counts": {
+        "error": 0,
+        "errors": 0,
+        "failed": 0,
+        "passed": 8,
+        "skipped": 0
+      },
+      "residual_process_group_terminated": false,
+      "resolved_command": [
+        "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py"
+      ],
+      "status": "PASS",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "ffb9d0ff9e589a092223bcb4144ace6012c2354c16616084d772eb733659ee78",
+      "timed_out": false
+    }
+  ],
+  "duration_seconds": 9.818589,
+  "environment": {
+    "environment_files": {
+      ".python-version": "e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810",
+      "pyproject.toml": "39c507cb72062db4d90bde99d127c254f9926640ed3713944d8bc681cf2766df",
+      "uv.lock": "ec501a74c614777a8cc4da3495cc89b92bb311bfcae03ebd3e4416c6bbd31845"
+    },
+    "implementation": "CPython",
+    "platform": "Linux-6.12.13-x86_64-with-glibc2.41",
+    "pytest_disable_plugin_autoload": "1",
+    "python_executable": "/mnt/data/unit6_resume/Nvda11/.venv/bin/python",
+    "python_version": "3.13.5"
+  },
+  "evidence_hash": "4bb76fbeefb17b91b37eaabe1f930e197a92923468932352713b2221d49e2629",
+  "failure_reasons": [],
+  "finished_at_utc": "2026-08-02T20:04:54.734932+00:00",
+  "git": {
+    "post": {
+      "branch": "work/foundation-readiness-reconciliation-v1",
+      "commit": "e66c530691d10602d6a375b8a26dae9e8fe7a410",
+      "status": ""
+    },
+    "pre": {
+      "branch": "work/foundation-readiness-reconciliation-v1",
+      "commit": "e66c530691d10602d6a375b8a26dae9e8fe7a410",
+      "status": ""
+    }
+  },
+  "membership": {
+    "proof_block_ids": [
+      "m13_state_kernel_module_local_proof",
+      "m13_sqlite_restart_contract",
+      "m04_k07_packet_role_contract",
+      "m01_source_admission_contract",
+      "m07_k12_coefficient_modifier_contract",
+      "m08_k13_playbook_catalogue_contract",
+      "m02_k04_financial_calendar_contract",
+      "m03_k05_k06_prepared_data_contract",
+      "m05_k08_k09_serial_cognition_contract",
+      "m06_k10_parallel_risk_contract",
+      "m06_owner_fact_completeness_contract",
+      "m09_k11_k14_capital_authority_contract",
+      "m10_k15_execution_gateway_contract",
+      "live_operational_boundaries_contract",
+      "m11_k16_k17_portfolio_lifecycle_contract",
+      "m12_k19_authoritative_replay_contract",
+      "m00_final_composition_contract",
+      "post_alpha_m00_transport_adapter_contract",
+      "m00_upstream_workflow_contract"
+    ],
+    "test_family_ids": [
+      "m13_state_kernel_module_local_contract",
+      "m13_sqlite_restart_contract",
+      "m04_k07_packet_role_contract",
+      "m01_source_admission_contract",
+      "m07_k12_coefficient_modifier_contract",
+      "m08_k13_playbook_catalogue_contract",
+      "m02_k04_financial_calendar_contract",
+      "m03_k05_k06_prepared_data_contract",
+      "m05_k08_k09_serial_cognition_contract",
+      "m06_k10_parallel_risk_contract",
+      "m06_owner_fact_completeness_contract",
+      "m09_k11_k14_capital_authority_contract",
+      "m10_k15_execution_gateway_contract",
+      "live_operational_boundaries_contract",
+      "m11_k16_k17_portfolio_lifecycle_contract",
+      "m12_k19_authoritative_replay_contract",
+      "m00_final_composition_contract",
+      "entry_boundary_surface",
+      "m00_upstream_workflow_contract"
+    ],
+    "test_paths": [
+      "tests/tier_a/persistence/test_m13_state_kernel_contract.py",
+      "tests/tier_a/persistence/test_m13_sqlite_restart_contract.py",
+      "tests/tier_a/packets/test_m04_k07_packet_role_contract.py",
+      "tests/tier_a/ingress/test_m01_source_admission_contract.py",
+      "tests/tier_a/m07_k12/test_m07_k12_contract.py",
+      "tests/tier_a/m08_k13/test_m08_k13_contract.py",
+      "tests/tier_a/m02_k04/test_m02_k04_contract.py",
+      "tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py",
+      "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "tests/tier_a/m05_k08_k09/test_signal_informed_intraday_phase.py",
+      "tests/tier_a/m06_k10/test_m06_k10_contract.py",
+      "tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py",
+      "tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py",
+      "tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py",
+      "tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "tests/tier_a/operations/test_live_operational_boundaries.py",
+      "tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py",
+      "tests/tier_a/m12_k19/test_m12_k19_contract.py",
+      "tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py",
+      "tests/tier_a/entry/test_entry_boundary_surface.py",
+      "tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py"
+    ]
+  },
+  "promotion_set_id": "alpha_current",
+  "schema_version": "promotion_receipt_v1",
+  "started_at_utc": "2026-08-02T20:04:44.916307+00:00",
+  "status": "PASS",
+  "summary": {
+    "executed_block_count": 19,
+    "expected_block_count": 19,
+    "failed_block_count": 0,
+    "passed_block_count": 19,
+    "passed_test_count": 811,
+    "skipped_test_count": 0
+  }
+}
