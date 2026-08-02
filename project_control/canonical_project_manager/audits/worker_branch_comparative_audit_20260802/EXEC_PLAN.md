@@ -2,7 +2,7 @@
 
 ## Status
 
-Active — evidence integration only.
+Closed — evidence integration passed; no implementation changes.
 
 ## Objective
 
@@ -101,6 +101,8 @@ Only this directory may be added or changed for repository content:
 
 - 2026-08-02: branch created from the selected continuation commit.
 - 2026-08-02: uploaded audit package verified against its internal SHA-256 manifest before repository mutation.
+- 2026-08-02: original archive and all extracted evidence preserved; fresh archive extraction matched the repository copy exactly.
+- 2026-08-02: scope, provenance, authored-file whitespace and package-integrity validation passed.
 
 ## Decisions
 
@@ -113,7 +115,7 @@ None at plan creation.
 
 ## Validation
 
-Pending execution.
+Passed. Exact results are retained in `INTEGRATION_VALIDATION.txt`, `FINAL_PACKAGE_MANIFEST_VALIDATION.txt` and `INTEGRATION_RECEIPT.md`.
 
 ## Unknowns
 
@@ -121,4 +123,4 @@ Pending execution.
 
 ## Closeout
 
-Pending.
+Unit closed. Comparative audit evidence is retained on the dedicated branch. No donor patch, runtime source, test, normative document, canonical ExecPlan or roadmap state was changed. The branch is ready for a later canonical-continuation worker to consume as evidence.
