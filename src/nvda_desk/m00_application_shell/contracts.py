@@ -23,10 +23,9 @@ from nvda_desk.m02_financial_calendar import (
     FinancialCalendarSnapshot,
 )
 from nvda_desk.m03_preparation import (
-    DerivationReceipt,
-    FieldResolutionReceipt,
+    FieldResolutionPolicy,
     PreparedDataEnvelope,
-    PreparedRuntimePayloadV1,
+    PreparedDerivationRule,
 )
 from nvda_desk.m05_serial_cognition import SerialCandidate, StageContext, StageInput
 from nvda_desk.m06_parallel_risk import ParallelRiskAssessment, ParallelRiskInput
@@ -119,42 +118,33 @@ class CalendarProjectionRequest(BaseModel):
 
 
 class PreparationSpec(BaseModel):
-    """Exact caller-owned M03 builder facts excluding owner-produced lineage."""
+    """Caller-owned M03 policies and version facts; never prepared values."""
 
     model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
 
-    input_schema_versions: tuple[tuple[str, str], ...] = Field(min_length=1)
+    field_resolution_policies: tuple[FieldResolutionPolicy, ...] = Field(min_length=1)
+    derivation_rules: tuple[PreparedDerivationRule, ...] = ()
     schema_version: str = Field(min_length=1)
     preparation_policy_version: str = Field(min_length=1)
     alignment_policy_version: str = Field(min_length=1)
     fingerprint_policy_version: str = Field(min_length=1)
     canonicalisation_version: str = Field(min_length=1)
-    derivation_versions: tuple[tuple[str, str], ...] = ()
     effective_at_utc: datetime
-    payload: PreparedRuntimePayloadV1
     payload_schema_version: Literal["1.0.0"]
-    field_resolution_receipts: tuple[FieldResolutionReceipt, ...] = ()
-    derivation_receipts: tuple[DerivationReceipt, ...] = ()
-    validation_state: Literal["valid", "degraded"] = "valid"
-    completeness_state: Literal["complete", "degraded"] = "complete"
-    limitations: tuple[str, ...] = ()
-    failed_mandatory_transformations: tuple[str, ...] = ()
     missing_optional_enrichments: tuple[str, ...] = ()
     parent_prepared_ids: tuple[str, ...] = ()
 
-    @field_validator("input_schema_versions", "derivation_versions", mode="before")
-    @classmethod
-    def _version_pairs(cls, value: Any) -> tuple[tuple[str, str], ...]:
-        pairs = (
-            tuple(value.items())
-            if isinstance(value, dict)
-            else tuple(tuple(item) for item in value)
-        )
-        if any(len(item) != 2 or not item[0] or not item[1] for item in pairs):
-            raise ValueError("upstream_version_mapping_entries_must_be_named")
-        if len({str(item[0]) for item in pairs}) != len(pairs):
-            raise ValueError("duplicate_upstream_version_mapping_key")
-        return tuple(sorted((str(key), str(version)) for key, version in pairs))
+    @model_validator(mode="after")
+    def _policy_identity_is_unique(self) -> "PreparationSpec":
+        semantic_fields = tuple(item.semantic_field for item in self.field_resolution_policies)
+        if len(semantic_fields) != len(set(semantic_fields)):
+            raise ValueError("duplicate_upstream_field_resolution_policy")
+        derived_fields = tuple(item.semantic_field for item in self.derivation_rules)
+        if len(derived_fields) != len(set(derived_fields)):
+            raise ValueError("duplicate_upstream_derivation_rule")
+        if set(semantic_fields) & set(derived_fields):
+            raise ValueError("upstream_field_cannot_be_direct_and_derived")
+        return self
 
     @field_validator("effective_at_utc")
     @classmethod

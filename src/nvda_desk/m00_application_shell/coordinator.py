@@ -15,11 +15,7 @@ from nvda_desk.contracts.packets import (
 )
 from nvda_desk.m01_source_admission import SourceAdmissionService
 from nvda_desk.m02_financial_calendar import CalendarResolver
-from nvda_desk.m03_preparation import (
-    CalendarProjectionReference,
-    PreparedDataBuilder,
-    SourceCaptureReference,
-)
+from nvda_desk.m03_preparation import PreparedDataBuilder
 from nvda_desk.m05_serial_cognition import (
     SerialCandidatePacketAdapter,
     SerialRunner,
@@ -210,87 +206,19 @@ class RunCoordinator:
             )
 
         accepted = tuple(item for item in source_results if item.status == "accepted")
-        admitted_ids = {item.source_artifact.source_artifact_id for item in accepted}
-        source_refs = tuple(
-            SourceCaptureReference(
-                capture_id=item.source_artifact.capture_receipt.capture_id,
-                source_artifact_id=item.source_artifact.source_artifact_id,
-                family_id=item.source_artifact.family_id,
-                contract_id=item.source_artifact.contract_id,
-                schema_version=item.source_artifact.schema_version,
-                source_owner=(
-                    item.source_artifact.source_identifier.owner or item.source_artifact.provider_id
-                ),
-                effective_at_utc=(
-                    item.source_artifact.observed_at_utc
-                    or item.source_artifact.capture_receipt.captured_at_utc
-                ),
-                source_time_utc=item.source_artifact.observed_at_utc,
-                source_date=item.source_artifact.source_date,
-                temporal_precision=item.source_artifact.source_time_precision.value,
-                input_fingerprint=item.source_artifact.content_sha256,
-                validation_state=(
-                    "valid" if item.source_artifact.validation_status == "admitted" else "degraded"
-                ),
-                limitations=item.source_artifact.limitations,
-                semantic_fields=tuple(sorted(item.source_artifact.typed_payload.model_dump())),
-                provider_id=item.source_artifact.provider_id,
-                acquisition_method=item.source_artifact.acquisition_channel,
-            )
-            for item in accepted
-        )
-        projection_refs = []
-        for projection in calendar_projections:
-            source_refs_for_projection = tuple(
-                sorted(
-                    {
-                        source_ref
-                        for selected in projection.selected_fields
-                        for source_ref in selected.source_refs
-                    }
-                )
-            )
-            foreign = tuple(
-                source_id
-                for source_id, _ in source_refs_for_projection
-                if source_id not in admitted_ids
-            )
-            if foreign:
-                raise ValueError(
-                    "calendar_projection_source_lineage_not_admitted:" + ",".join(foreign)
-                )
-            projection_refs.append(
-                CalendarProjectionReference(
-                    projection_id=projection.projection_id,
-                    snapshot_id=projection.snapshot_id,
-                    snapshot_version=projection.snapshot_version,
-                    projection_policy_version=projection.projection_policy_version,
-                    status=projection.status,
-                    semantic_fingerprint=projection.semantic_fingerprint,
-                    source_refs=source_refs_for_projection,
-                )
-            )
-
         spec = governed.preparation
         prepared = prepared_builder.build(
-            source_capture_refs=source_refs,
-            calendar_projection_refs=tuple(projection_refs),
-            input_schema_versions=dict(spec.input_schema_versions),
+            source_artifacts=tuple(item.source_artifact for item in accepted),
+            calendar_projections=calendar_projections,
+            field_resolution_policies=spec.field_resolution_policies,
+            derivation_rules=spec.derivation_rules,
             schema_version=spec.schema_version,
             preparation_policy_version=spec.preparation_policy_version,
             alignment_policy_version=spec.alignment_policy_version,
             fingerprint_policy_version=spec.fingerprint_policy_version,
             canonicalisation_version=spec.canonicalisation_version,
-            derivation_versions=dict(spec.derivation_versions),
             effective_at_utc=spec.effective_at_utc,
-            payload=spec.payload,
             payload_schema_version=spec.payload_schema_version,
-            field_resolution_receipts=spec.field_resolution_receipts,
-            derivation_receipts=spec.derivation_receipts,
-            validation_state=spec.validation_state,
-            completeness_state=spec.completeness_state,
-            limitations=spec.limitations,
-            failed_mandatory_transformations=spec.failed_mandatory_transformations,
             missing_optional_enrichments=spec.missing_optional_enrichments,
             parent_prepared_ids=spec.parent_prepared_ids,
         )

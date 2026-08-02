@@ -4,6 +4,7 @@ from nvda_desk.contracts.prepared_data import (
     CalendarProjectionReference,
     DerivationReceipt,
     PreparedDataEnvelope,
+    PreparedDerivationRule,
     PreparedRuntimePayloadV1,
     SourceCaptureReference,
 )
@@ -27,6 +28,7 @@ __all__ = [
     "MissingMandatoryFieldError",
     "PreparedDataBuilder",
     "PreparedDataEnvelope",
+    "PreparedDerivationRule",
     "PreparedRuntimePayloadV1",
     "SourceCaptureReference",
     "resolve_canonical_field",

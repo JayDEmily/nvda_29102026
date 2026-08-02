@@ -5,14 +5,14 @@
 | Field | Current truth |
 |---|---|
 | Programme | accepted M00–M15 modular-monolith alpha; continuation-ready baseline published |
-| Branch | `work/foundation-readiness-reconciliation-v1` |
+| Branch | `work/m01-m03-semantic-continuity-repair-v1` |
 | Continuation source checkpoint | `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | M01–M03 semantic continuity repair — C-NORM active |
+| Current active slice | M01–M03 semantic continuity repair — implementation green; aggregate acceptance active |
 | Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |
-| Current repository claim | continuation readiness suspended: direct adversarial evidence proves M01/M02 evidence is not semantically bound to the M03 prepared payload; the prior structural counts remain historical evidence only until this bounded repair is accepted |
+| Current repository claim | M01/M02→M03 semantic continuity is green in the bounded affected cone, but continuation readiness remains suspended until aggregate acceptance and checkpoint publication; the separately verified M03→M05 semantic-continuity defect remains open and out of this slice |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction

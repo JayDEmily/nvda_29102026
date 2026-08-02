@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 import pytest
+from pydantic import BaseModel, ConfigDict
 from tests.support.m03_k05_k06_contract_harness import (
     CLOSED_AUTHORITIES,
     MUTANTS,
@@ -13,8 +14,6 @@ from tests.support.m03_k05_k06_contract_harness import (
     ReferenceResolver,
     production_api,
     production_candidate_payload,
-    production_capture_payload,
-    production_derivation_payload,
     production_policy_payload,
     valid_candidate,
     valid_capture_reference,
@@ -354,40 +353,237 @@ def test_production_optional_missing_field_returns_explicit_unavailable_receipt(
     assert receipt.candidate_ids == ()
 
 
+class _StrictMarketSourcePayload(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    spot_price: float
+    prior_close: float
+    runtime_bar_time_utc: datetime
+
+
+class _StrictOptionsSourcePayload(BaseModel):
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    spot_price: float
+
+
+def _strict_source_artifact(
+    *,
+    owner: str = "market",
+    spot_price: float = 101.0,
+    prior_close: float = 100.0,
+    runtime_bar_time_utc: datetime = datetime(2026, 8, 3, 0, 0, tzinfo=UTC),
+    limitations: tuple[str, ...] = (),
+):
+    from nvda_desk import m01_source_admission as m01
+
+    if owner == "market":
+        payload = _StrictMarketSourcePayload(
+            spot_price=spot_price,
+            prior_close=prior_close,
+            runtime_bar_time_utc=runtime_bar_time_utc,
+        )
+        bindings = (
+            m01.SourceSemanticBinding(
+                semantic_field="spot_price",
+                payload_field="spot_price",
+                value_type="float",
+                unit="USD",
+                requirement=m01.SourceFactRequirement.REQUIRED,
+            ),
+            m01.SourceSemanticBinding(
+                semantic_field="prior_close",
+                payload_field="prior_close",
+                value_type="float",
+                unit="USD",
+                requirement=m01.SourceFactRequirement.REQUIRED,
+            ),
+            m01.SourceSemanticBinding(
+                semantic_field="runtime_bar_time_utc",
+                payload_field="runtime_bar_time_utc",
+                value_type="datetime",
+                unit=None,
+                requirement=m01.SourceFactRequirement.REQUIRED,
+            ),
+        )
+    elif owner == "options":
+        payload = _StrictOptionsSourcePayload(spot_price=spot_price)
+        bindings = (
+            m01.SourceSemanticBinding(
+                semantic_field="spot_price",
+                payload_field="spot_price",
+                value_type="float",
+                unit="USD",
+                requirement=m01.SourceFactRequirement.REQUIRED,
+            ),
+        )
+    else:
+        raise ValueError("unsupported_test_source_owner")
+
+    family_id = f"strict_{owner}_source"
+    source_artifact_id = f"source.{owner}.1"
+    service = m01.SourceAdmissionService(
+        registry=m01.SourceFamilyRegistry.build(
+            [
+                m01.SourceFamilyContract(
+                    family_id=family_id,
+                    contract_id=f"{family_id}.v1",
+                    schema_version="1.0.0",
+                    payload_model=type(payload),
+                    providers=(
+                        m01.SourceProviderContract(
+                            provider_id=owner,
+                            acquisition_channels=("recorded_api_response",),
+                        ),
+                    ),
+                    source_identifier=m01.SourceIdentifierContract(
+                        requirement=m01.SourceFactRequirement.REQUIRED,
+                        owner=owner,
+                        namespace=f"{owner}/strict-source",
+                        uniqueness_scope=f"{owner}/strict-source",
+                        stability_rule="stable_for_source_object_lifetime",
+                        generation_rule="issued_by_upstream_provider",
+                    ),
+                    source_time_kind=m01.SourceTimeKind.INSTANT,
+                    downstream_owner=m01.SourceDownstreamOwner.M03,
+                    output_contract=m01.SourceOutputContract.RAW_SIGNAL_BATCH,
+                    signal_family_id=family_id,
+                    permitted_limitations=limitations,
+                    semantic_bindings=bindings,
+                )
+            ]
+        ),
+        capture_id_factory=lambda _: f"capture.{owner}.1",
+        source_artifact_id_factory=lambda *_: source_artifact_id,
+    )
+    result = service.admit(
+        m01.SourceAdmissionRequest(
+            family_id=family_id,
+            contract_id=f"{family_id}.v1",
+            schema_version="1.0.0",
+            provider_id=owner,
+            acquisition_channel="recorded_api_response",
+            source_object_id=f"provider.{owner}.1",
+            observed_at_utc=runtime_bar_time_utc,
+            captured_at_utc=runtime_bar_time_utc,
+            captured_material=payload.model_dump_json().encode(),
+            typed_payload=payload,
+            declared_limitations=limitations,
+        )
+    )
+    assert result.status == "accepted"
+    return result.source_artifact
+
+
+def _strict_policy(
+    semantic_field: str,
+    *,
+    admitted_source_roles: tuple[str, ...],
+    value_type: str,
+    unit: str | None,
+    authoritative_owner: str | None,
+    allow_degraded_candidates: bool = False,
+):
+    api = production_api()
+    return api["FieldResolutionPolicy"](
+        policy_id=f"m03.policy.{semantic_field}",
+        policy_version="1.0.0",
+        output_contract_version="1.0.0",
+        semantic_field=semantic_field,
+        mandatory=True,
+        admitted_source_roles=admitted_source_roles,
+        value_type=value_type,
+        unit=unit,
+        temporal_comparison_rule="exact_effective_interval",
+        comparison_rule="exact",
+        authoritative_owner=authoritative_owner,
+        allow_degraded_candidates=allow_degraded_candidates,
+        unresolved_consequence="withhold",
+        optional_absence_consequence="unavailable",
+    )
+
+
+def _strict_build_kwargs(
+    *,
+    artifacts=None,
+    unresolved_spot: bool = False,
+    include_derivation: bool = True,
+) -> dict[str, object]:
+    api = production_api()
+    governed_artifacts = tuple(artifacts or (_strict_source_artifact(),))
+    owners = tuple(sorted({item.source_identifier.owner for item in governed_artifacts}))
+    allow_degraded = any(item.validation_status == "degraded" for item in governed_artifacts)
+    policies = [
+        _strict_policy(
+            "spot_price",
+            admitted_source_roles=owners,
+            value_type="float",
+            unit="USD",
+            authoritative_owner=None if unresolved_spot else "market",
+            allow_degraded_candidates=allow_degraded,
+        )
+    ]
+    if any(
+        binding.semantic_field == "prior_close"
+        for artifact in governed_artifacts
+        for binding in artifact.semantic_bindings
+    ):
+        policies.extend(
+            [
+                _strict_policy(
+                    "prior_close",
+                    admitted_source_roles=("market",),
+                    value_type="float",
+                    unit="USD",
+                    authoritative_owner="market",
+                    allow_degraded_candidates=allow_degraded,
+                ),
+                _strict_policy(
+                    "runtime_bar_time_utc",
+                    admitted_source_roles=("market",),
+                    value_type="datetime",
+                    unit=None,
+                    authoritative_owner="market",
+                    allow_degraded_candidates=allow_degraded,
+                ),
+            ]
+        )
+    derivation_rules = ()
+    if include_derivation:
+        derivation_rules = (
+            api["PreparedDerivationRule"](
+                semantic_field="nvda_return_pct",
+                derivation_version="1.0.0",
+                input_semantic_fields=("spot_price", "prior_close"),
+                operation="percentage_return",
+                unit_alignment_policy="same_currency",
+                temporal_alignment_policy="same_effective_interval",
+                mandatory=True,
+            ),
+        )
+    return {
+        "source_artifacts": governed_artifacts,
+        "calendar_projections": (),
+        "field_resolution_policies": tuple(policies),
+        "derivation_rules": derivation_rules,
+        "schema_version": "1.0.0",
+        "preparation_policy_version": "prepare.1.0.0",
+        "alignment_policy_version": "alignment.1.0.0",
+        "fingerprint_policy_version": "sha256.1.0.0",
+        "canonicalisation_version": "json.1.0.0",
+        "effective_at_utc": datetime(2026, 8, 3, 0, 0, tzinfo=UTC),
+        "payload_schema_version": "1.0.0",
+    }
+
+
+def _strict_envelope(**overrides):
+    kwargs = _strict_build_kwargs(**overrides)
+    return production_api()["PreparedDataBuilder"]().build(**kwargs)
+
+
 def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -> None:
     api = production_api()
-    reference = valid_capture_reference()
-    capture = api["SourceCaptureReference"].model_validate(production_capture_payload(reference))
-    payload = api["PreparedRuntimePayloadV1"](
-        kind="prepared_runtime_v1", spot_price=101.0, nvda_return_pct=0.01
-    )
-    receipt = api["resolve_canonical_field"](
-        candidates=(
-            api["FieldCandidate"].model_validate(production_candidate_payload(valid_candidate())),
-        ),
-        policy=api["FieldResolutionPolicy"].model_validate(
-            production_policy_payload(valid_policy())
-        ),
-    )
-    derivation = api["DerivationReceipt"].model_validate(
-        production_derivation_payload(valid_derivation())
-    )
-    builder = api["PreparedDataBuilder"]()
-    envelope = builder.build(
-        source_capture_refs=(capture,),
-        input_schema_versions={"market.snapshot": "1.0.0"},
-        schema_version="1.0.0",
-        preparation_policy_version="prepare.1.0.0",
-        alignment_policy_version="alignment.1.0.0",
-        fingerprint_policy_version="sha256.1.0.0",
-        canonicalisation_version="json.1.0.0",
-        derivation_versions={"nvda_return_pct": "1.0.0"},
-        effective_at_utc=reference.effective_at_utc,
-        payload=payload,
-        payload_schema_version="1.0.0",
-        field_resolution_receipts=(receipt,),
-        derivation_receipts=(derivation,),
-    )
+    envelope = _strict_envelope()
 
     assert envelope.payload_kind == "prepared_runtime_v1"
     assert envelope.payload.kind == "prepared_runtime_v1"
@@ -410,58 +606,15 @@ def test_production_envelope_rejects_untagged_mapping_and_forged_fingerprint() -
 
 
 def test_production_builder_is_order_independent_and_preserves_derivation_inputs() -> None:
-    api, market, options, policy = _production_candidates_and_policy(equal=True)
-    first_receipt = api["resolve_canonical_field"](candidates=(market, options), policy=policy)
-    second_receipt = api["resolve_canonical_field"](candidates=(options, market), policy=policy)
-    capture_type = api["SourceCaptureReference"]
-    market_ref = production_capture_payload(valid_capture_reference())
-    market_ref["semantic_fields"] = ("spot_price",)
-    options_ref = production_capture_payload(
-        valid_capture_reference(
-            capture_id="capture.options.1",
-            source_artifact_id="source.options.1",
-        )
-    )
-    options_ref["semantic_fields"] = ("spot_price",)
-    refs = (
-        capture_type.model_validate(market_ref),
-        capture_type.model_validate(options_ref),
-    )
-    derivation = api["DerivationReceipt"].model_validate(
-        production_derivation_payload(valid_derivation())
-    )
-    payload = api["PreparedRuntimePayloadV1"](
-        kind="prepared_runtime_v1", spot_price=101.0, nvda_return_pct=0.01
-    )
-    builder = api["PreparedDataBuilder"]()
-    common = {
-        "input_schema_versions": {"market.snapshot": "1.0.0"},
-        "schema_version": "1.0.0",
-        "preparation_policy_version": "prepare.1.0.0",
-        "alignment_policy_version": "alignment.1.0.0",
-        "fingerprint_policy_version": "sha256.1.0.0",
-        "canonicalisation_version": "json.1.0.0",
-        "derivation_versions": {"nvda_return_pct": "1.0.0"},
-        "effective_at_utc": valid_capture_reference().effective_at_utc,
-        "payload": payload,
-        "payload_schema_version": "1.0.0",
-        "derivation_receipts": (derivation,),
-    }
-    first = builder.build(
-        source_capture_refs=refs,
-        field_resolution_receipts=(first_receipt,),
-        **common,
-    )
-    second = builder.build(
-        source_capture_refs=tuple(reversed(refs)),
-        field_resolution_receipts=(second_receipt,),
-        **common,
-    )
+    market = _strict_source_artifact(owner="market", spot_price=101.0)
+    options = _strict_source_artifact(owner="options", spot_price=101.0)
+    first = _strict_envelope(artifacts=(market, options))
+    second = _strict_envelope(artifacts=(options, market))
 
     assert first == second
     assert first.derivation_receipts[0].input_candidate_ids == (
-        "market.spot",
-        "market.prior_close",
+        "m01:source.market.1:spot_price",
+        "m01:source.market.1:prior_close",
     )
     assert first.input_fingerprint == second.input_fingerprint
     assert first.prepared_fingerprint == second.prepared_fingerprint
@@ -485,37 +638,21 @@ def test_production_runtime_lineage_names_material_m03_authority() -> None:
 
 def _production_envelope():
     api = production_api()
-    reference = valid_capture_reference()
-    capture = api["SourceCaptureReference"].model_validate(production_capture_payload(reference))
-    candidate = api["FieldCandidate"].model_validate(
-        production_candidate_payload(valid_candidate())
+    envelope = _strict_envelope()
+    receipt = next(
+        item for item in envelope.field_resolution_receipts if item.semantic_field == "spot_price"
     )
-    policy = api["FieldResolutionPolicy"].model_validate(production_policy_payload(valid_policy()))
-    receipt = api["resolve_canonical_field"](candidates=(candidate,), policy=policy)
-    derivation = api["DerivationReceipt"].model_validate(
-        production_derivation_payload(valid_derivation())
+    candidate = next(
+        item
+        for item in receipt.candidate_records
+        if item.candidate_id == receipt.selected_candidate_id
     )
-    envelope = api["PreparedDataBuilder"]().build(
-        source_capture_refs=(capture,),
-        input_schema_versions={"market.snapshot": "1.0.0"},
-        schema_version="1.0.0",
-        preparation_policy_version="prepare.1.0.0",
-        alignment_policy_version="alignment.1.0.0",
-        fingerprint_policy_version="sha256.1.0.0",
-        canonicalisation_version="json.1.0.0",
-        derivation_versions={"nvda_return_pct": "1.0.0"},
-        effective_at_utc=reference.effective_at_utc,
-        payload=api["PreparedRuntimePayloadV1"](
-            kind="prepared_runtime_v1",
-            runtime_bar_time_utc=reference.effective_at_utc,
-            spot_price=101.0,
-            nvda_return_pct=0.01,
-        ),
-        payload_schema_version="1.0.0",
-        field_resolution_receipts=(receipt,),
-        derivation_receipts=(derivation,),
+    policy = next(
+        item
+        for item in _strict_build_kwargs()["field_resolution_policies"]
+        if item.semantic_field == "spot_price"
     )
-    return api, reference, candidate, policy, receipt, envelope
+    return api, valid_capture_reference(), candidate, policy, receipt, envelope
 
 
 def test_production_receipt_preserves_complete_candidate_and_comparison_evidence() -> None:
@@ -573,7 +710,7 @@ def test_production_envelope_adapts_into_legacy_views_without_fabricated_lineage
     assert snapshot.lineage.source_artifact_ids == ("source.market.1",)
     assert snapshot.lineage.capture_ids == ("capture.market.1",)
     assert snapshot.lineage.input_fingerprint == envelope.input_fingerprint
-    assert snapshot.lineage.input_schema_versions == (("market.snapshot", "1.0.0"),)
+    assert snapshot.lineage.input_schema_versions == (("m01:source.market.1", "1.0.0"),)
     assert snapshot.payload["spot_price"] == 101.0
     assert context.prepared_id == envelope.prepared_id
     assert context.prepared_fingerprint == envelope.prepared_fingerprint
@@ -582,116 +719,55 @@ def test_production_envelope_adapts_into_legacy_views_without_fabricated_lineage
     assert context.capture_ids == ["capture.market.1"]
 
 
-def _repair_source_reference(
-    *,
-    capture_id: str = "capture.market.1",
-    source_artifact_id: str = "source.market.1",
-    validation_state: str = "valid",
-    semantic_fields: tuple[str, ...] = ("spot_price", "prior_close"),
-):
-    api = production_api()
-    payload = production_capture_payload(
-        valid_capture_reference(
-            capture_id=capture_id,
-            source_artifact_id=source_artifact_id,
-        )
-    )
-    payload["validation_state"] = validation_state
-    payload["limitations"] = ("source_partial",) if validation_state == "degraded" else ()
-    payload["semantic_fields"] = semantic_fields
-    return api["SourceCaptureReference"].model_validate(payload)
-
-
-def _repair_build_envelope(
-    *,
-    refs,
-    payload,
-    receipts=(),
-    derivations=(),
-    derivation_versions=None,
-    validation_state: str = "valid",
-    completeness_state: str = "complete",
-    limitations=(),
-):
-    api = production_api()
-    return api["PreparedDataBuilder"]().build(
-        source_capture_refs=refs,
-        input_schema_versions={f"source_{index}": "1.0.0" for index, _ in enumerate(refs)},
-        schema_version="1.0.0",
-        preparation_policy_version="prep.v1",
-        alignment_policy_version="align.v1",
-        fingerprint_policy_version="fp.v1",
-        canonicalisation_version="canon.v1",
-        derivation_versions=derivation_versions or {},
-        effective_at_utc=valid_capture_reference().effective_at_utc,
-        payload=payload,
-        payload_schema_version="1.0.0",
-        field_resolution_receipts=receipts,
-        derivation_receipts=derivations,
-        validation_state=validation_state,
-        completeness_state=completeness_state,
-        limitations=limitations,
-    )
-
-
 def test_repair_rejects_valid_complete_envelope_from_degraded_source() -> None:
-    api = production_api()
-    with pytest.raises(ValueError, match="degraded_source_cannot_form_valid_envelope"):
-        _repair_build_envelope(
-            refs=(_repair_source_reference(validation_state="degraded"),),
-            payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
+    limitation = "source_partial"
+    envelope = _strict_envelope(
+        artifacts=(
+            _strict_source_artifact(
+                owner="market",
+                limitations=(limitation,),
+            ),
         )
+    )
+
+    assert envelope.validation_state == "degraded"
+    assert envelope.completeness_state == "degraded"
+    assert limitation in envelope.limitations
 
 
 def test_repair_requires_resolution_receipt_for_competing_payload_sources() -> None:
     api = production_api()
-    refs = (
-        _repair_source_reference(semantic_fields=("spot_price",)),
-        _repair_source_reference(
-            capture_id="capture.options.1",
-            source_artifact_id="source.options.1",
-            semantic_fields=("spot_price",),
-        ),
+    artifacts = (
+        _strict_source_artifact(owner="market", spot_price=100.0),
+        _strict_source_artifact(owner="options", spot_price=101.0),
     )
-    with pytest.raises(ValueError, match="competing_payload_sources_require_resolution"):
-        _repair_build_envelope(
-            refs=refs,
-            payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
-        )
+
+    with pytest.raises(api["MandatoryFieldConflictError"]):
+        _strict_envelope(artifacts=artifacts, unresolved_spot=True)
 
 
 def test_repair_rejects_resolution_receipt_payload_disagreement() -> None:
-    api = production_api()
-    candidate = api["FieldCandidate"].model_validate(
-        production_candidate_payload(valid_candidate(value=101.0))
+    artifact = _strict_source_artifact(owner="market", spot_price=101.0)
+    forged = artifact.model_copy(
+        update={"typed_payload": artifact.typed_payload.model_copy(update={"spot_price": 999.0})}
     )
-    policy = api["FieldResolutionPolicy"].model_validate(
-        production_policy_payload(valid_policy(authoritative_owner="market"))
-    )
-    receipt = api["resolve_canonical_field"](
-        candidates=(candidate,),
-        policy=policy,
-    )
-    with pytest.raises(ValueError, match="resolution_receipt_payload_value_mismatch"):
-        _repair_build_envelope(
-            refs=(_repair_source_reference(),),
-            payload=api["PreparedRuntimePayloadV1"](spot_price=999.0),
-            receipts=(receipt,),
-        )
+
+    with pytest.raises(ValueError, match="source_artifact_evidence_mismatch"):
+        _strict_envelope(artifacts=(forged,))
 
 
 def test_repair_rejects_derivation_receipt_payload_disagreement() -> None:
-    api = production_api()
-    derivation = api["DerivationReceipt"].model_validate(
-        production_derivation_payload(valid_derivation())
-    )
-    with pytest.raises(ValueError, match="derivation_receipt_payload_value_mismatch"):
-        _repair_build_envelope(
-            refs=(_repair_source_reference(),),
-            payload=api["PreparedRuntimePayloadV1"](nvda_return_pct=0.99),
-            derivations=(derivation,),
-            derivation_versions={"nvda_return_pct": "1.0.0"},
-        )
+    from inspect import signature
+
+    parameters = signature(production_api()["PreparedDataBuilder"].build).parameters
+    envelope = _strict_envelope()
+    derivation = envelope.derivation_receipts[0]
+
+    assert "derivation_receipts" not in parameters
+    assert "payload" not in parameters
+    assert derivation.semantic_field == "nvda_return_pct"
+    assert derivation.value == pytest.approx(0.01)
+    assert envelope.payload.nvda_return_pct == derivation.value
 
 
 def _unit2_packet(snapshot, *, packet_id: str = "prepared-context-unit2"):
@@ -754,14 +830,14 @@ def test_unit2_prepared_packet_degradation_is_envelope_admitted_and_restricted()
         prepare_runtime_snapshot_from_envelope,
     )
 
-    api = production_api()
     limitation = "calendar_reference_projection_missing"
-    envelope = _repair_build_envelope(
-        refs=(_repair_source_reference(),),
-        payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
-        validation_state="degraded",
-        completeness_state="degraded",
-        limitations=(limitation,),
+    envelope = _strict_envelope(
+        artifacts=(
+            _strict_source_artifact(
+                owner="market",
+                limitations=(limitation,),
+            ),
+        )
     )
 
     packet = _unit2_packet(prepare_runtime_snapshot_from_envelope(envelope))
@@ -802,3 +878,221 @@ def test_unit2_prepared_packet_revalidates_copied_envelope() -> None:
 
     with pytest.raises(ValueError, match="prepared_envelope_contract_invalid"):
         _unit2_packet(snapshot)
+
+
+class _SemanticMarketPayloadForM03(__import__("pydantic").BaseModel):
+    model_config = __import__("pydantic").ConfigDict(extra="forbid", frozen=True)
+
+    spot_price: float
+
+
+def _semantic_m01_artifact_for_m03(*, spot_price: float = 190.0):
+    from nvda_desk import m01_source_admission as m01
+
+    binding = m01.SourceSemanticBinding(
+        semantic_field="spot_price",
+        payload_field="spot_price",
+        value_type="float",
+        unit="USD",
+        requirement=m01.SourceFactRequirement.REQUIRED,
+    )
+    service = m01.SourceAdmissionService(
+        registry=m01.SourceFamilyRegistry.build(
+            [
+                m01.SourceFamilyContract(
+                    family_id="semantic_market",
+                    contract_id="semantic_market.v1",
+                    schema_version="1.0.0",
+                    payload_model=_SemanticMarketPayloadForM03,
+                    providers=(
+                        m01.SourceProviderContract(
+                            provider_id="recorded-provider",
+                            acquisition_channels=("recorded_api_response",),
+                        ),
+                    ),
+                    source_identifier=m01.SourceIdentifierContract(
+                        requirement=m01.SourceFactRequirement.REQUIRED,
+                        owner="recorded-provider",
+                        namespace="recorded-provider/semantic-market",
+                        uniqueness_scope="recorded-provider/semantic-market",
+                        stability_rule="stable_for_source_object_lifetime",
+                        generation_rule="issued_by_upstream_provider",
+                    ),
+                    source_time_kind=m01.SourceTimeKind.INSTANT,
+                    downstream_owner=m01.SourceDownstreamOwner.M03,
+                    output_contract=m01.SourceOutputContract.RAW_SIGNAL_BATCH,
+                    signal_family_id="semantic_market",
+                    semantic_bindings=(binding,),
+                )
+            ]
+        ),
+        capture_id_factory=lambda _: "capture.semantic.market.1",
+        source_artifact_id_factory=lambda *_: "source.semantic.market.1",
+    )
+    payload = _SemanticMarketPayloadForM03(spot_price=spot_price)
+    result = service.admit(
+        m01.SourceAdmissionRequest(
+            family_id="semantic_market",
+            contract_id="semantic_market.v1",
+            schema_version="1.0.0",
+            provider_id="recorded-provider",
+            acquisition_channel="recorded_api_response",
+            source_object_id="provider.semantic.market.1",
+            observed_at_utc=datetime(2026, 8, 3, 0, 0, tzinfo=UTC),
+            captured_at_utc=datetime(2026, 8, 3, 0, 0, 1, tzinfo=UTC),
+            captured_material=payload.model_dump_json().encode(),
+            typed_payload=payload,
+        )
+    )
+    assert result.status == "accepted"
+    return result.source_artifact
+
+
+def _semantic_spot_policy_for_m03():
+    api = production_api()
+    return api["FieldResolutionPolicy"](
+        policy_id="m03.policy.spot_price",
+        policy_version="1.0.0",
+        output_contract_version="1.0.0",
+        semantic_field="spot_price",
+        mandatory=True,
+        admitted_source_roles=("recorded-provider",),
+        value_type="float",
+        unit="USD",
+        temporal_comparison_rule="exact_effective_interval",
+        comparison_rule="exact",
+        authoritative_owner="recorded-provider",
+        allow_degraded_candidates=False,
+        unresolved_consequence="withhold",
+        optional_absence_consequence="unavailable",
+    )
+
+
+def _semantic_strict_build_kwargs() -> dict[str, object]:
+    return {
+        "source_artifacts": (_semantic_m01_artifact_for_m03(),),
+        "calendar_projections": (),
+        "field_resolution_policies": (_semantic_spot_policy_for_m03(),),
+        "derivation_rules": (),
+        "schema_version": "1.0.0",
+        "preparation_policy_version": "prepare.semantic.1",
+        "alignment_policy_version": "align.semantic.1",
+        "fingerprint_policy_version": "fingerprint.semantic.1",
+        "canonicalisation_version": "canonical.semantic.1",
+        "effective_at_utc": datetime(2026, 8, 3, 0, 1, tzinfo=UTC),
+        "payload_schema_version": "1.0.0",
+    }
+
+
+def test_semantic_continuity_m03_builder_has_no_caller_authored_payload() -> None:
+    from inspect import signature
+
+    parameters = signature(production_api()["PreparedDataBuilder"].build).parameters
+
+    assert "payload" not in parameters
+    assert "source_artifacts" in parameters
+    assert "field_resolution_policies" in parameters
+
+
+def test_semantic_continuity_m03_constructs_exact_value_from_m01_owner_evidence() -> None:
+    envelope = production_api()["PreparedDataBuilder"]().build(**_semantic_strict_build_kwargs())
+
+    assert envelope.payload.spot_price == 190.0
+    assert envelope.field_resolution_receipts[0].selected_value == 190.0
+    assert envelope.field_resolution_receipts[0].selected_source_artifact_id == (
+        "source.semantic.market.1"
+    )
+
+
+def _semantic_m02_projection_for_m03():
+    from dataclasses import replace
+
+    from tests.support.m02_k04_contract_harness import (
+        field_policy,
+        production_policy_payload,
+        production_snapshot_payload,
+        valid_snapshot,
+    )
+    from tests.support.m02_k04_contract_harness import (
+        valid_candidate as valid_calendar_candidate,
+    )
+
+    from nvda_desk import m02_financial_calendar as m02
+
+    next_event = replace(
+        valid_calendar_candidate(
+            candidate_id="calendar.next_event.1",
+            semantic_key="next_event_time_utc",
+            value="2026-08-03T02:00:00+00:00",
+            source_artifact_id="source.market.1",
+        ),
+        fact_family="financial_event",
+    )
+    snapshot = m02.FinancialCalendarSnapshot.model_validate(
+        production_snapshot_payload(valid_snapshot(session_candidates=(next_event,)))
+    )
+    policy = m02.CalendarFieldResolutionPolicy.model_validate(
+        production_policy_payload(field_policy(semantic_key="next_event_time_utc"))
+    )
+    return m02.CalendarResolver().project(
+        snapshot,
+        policy,
+        projection_id="projection.semantic.next-event.1",
+    )
+
+
+def _semantic_m01_m02_build_kwargs() -> dict[str, object]:
+    kwargs = _strict_build_kwargs()
+    kwargs["calendar_projections"] = (_semantic_m02_projection_for_m03(),)
+    kwargs["field_resolution_policies"] = (
+        *kwargs["field_resolution_policies"],
+        _strict_policy(
+            "next_event_time_utc",
+            admitted_source_roles=("M02",),
+            value_type="datetime",
+            unit=None,
+            authoritative_owner="M02",
+        ),
+    )
+    return kwargs
+
+
+def test_semantic_continuity_m03_constructs_exact_value_from_m02_owner_projection() -> None:
+    envelope = production_api()["PreparedDataBuilder"]().build(**_semantic_m01_m02_build_kwargs())
+
+    assert envelope.payload.next_event_time_utc == datetime(2026, 8, 3, 2, 0, tzinfo=UTC)
+    receipt = next(
+        item
+        for item in envelope.field_resolution_receipts
+        if item.semantic_field == "next_event_time_utc"
+    )
+    assert receipt.selected_source_owner == "M02"
+    assert receipt.selected_source_artifact_id == "projection.semantic.next-event.1"
+    assert envelope.calendar_projection_refs[0].semantic_fingerprint == (
+        _semantic_m02_projection_for_m03().semantic_fingerprint
+    )
+
+
+def test_semantic_continuity_m03_rejects_copied_m02_value_not_in_projection_fingerprint() -> None:
+    projection = _semantic_m02_projection_for_m03()
+    forged_field = projection.selected_fields[0].model_copy(
+        update={"value": "2026-08-04T02:00:00+00:00"}
+    )
+    forged = projection.model_copy(update={"selected_fields": (forged_field,)})
+    kwargs = _semantic_m01_m02_build_kwargs()
+    kwargs["calendar_projections"] = (forged,)
+
+    with pytest.raises(ValueError, match="calendar_projection_contract_invalid"):
+        production_api()["PreparedDataBuilder"]().build(**kwargs)
+
+
+def test_semantic_continuity_m03_rejects_copied_source_value_not_in_capture() -> None:
+    artifact = _semantic_m01_artifact_for_m03()
+    forged = artifact.model_copy(
+        update={"typed_payload": _SemanticMarketPayloadForM03(spot_price=999.0)}
+    )
+    kwargs = _semantic_strict_build_kwargs()
+    kwargs["source_artifacts"] = (forged,)
+
+    with pytest.raises(ValueError, match="source_artifact_evidence_mismatch"):
+        production_api()["PreparedDataBuilder"]().build(**kwargs)

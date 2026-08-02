@@ -478,6 +478,7 @@ def production_api() -> dict[str, Any]:
     names = (
         "SourceCaptureReference",
         "PreparedRuntimePayloadV1",
+        "PreparedDerivationRule",
         "DerivationReceipt",
         "PreparedDataEnvelope",
     )

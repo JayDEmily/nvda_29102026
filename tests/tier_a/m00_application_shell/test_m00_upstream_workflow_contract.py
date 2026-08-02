@@ -59,6 +59,15 @@ def _upstream_fixture() -> dict[str, Any]:
         downstream_owner=m01.SourceDownstreamOwner.M03,
         output_contract=m01.SourceOutputContract.RAW_SIGNAL_BATCH,
         signal_family_id="market_snapshot",
+        semantic_bindings=(
+            m01.SourceSemanticBinding(
+                semantic_field="spot_price",
+                payload_field="value",
+                value_type="float",
+                unit="USD",
+                requirement=m01.SourceFactRequirement.REQUIRED,
+            ),
+        ),
     )
     source_service = m01.SourceAdmissionService(
         registry=m01.SourceFamilyRegistry.build([contract]),
@@ -87,19 +96,30 @@ def _upstream_fixture() -> dict[str, Any]:
         projection_id="projection:m00-upstream:001",
     )
     preparation = PreparationSpec(
-        input_schema_versions={"market_snapshot": "1.0.0", "financial_calendar": "1.0.0"},
+        field_resolution_policies=(
+            m03.FieldResolutionPolicy(
+                policy_id="m03.policy.spot_price",
+                policy_version="1.0.0",
+                output_contract_version="1.0.0",
+                semantic_field="spot_price",
+                mandatory=True,
+                admitted_source_roles=("recorded-provider",),
+                value_type="float",
+                unit="USD",
+                temporal_comparison_rule="exact_effective_interval",
+                comparison_rule="exact",
+                authoritative_owner="recorded-provider",
+                allow_degraded_candidates=False,
+                unresolved_consequence="withhold",
+                optional_absence_consequence="unavailable",
+            ),
+        ),
         schema_version="1.0.0",
         preparation_policy_version="m03.preparation.v1",
         alignment_policy_version="m03.alignment.v1",
         fingerprint_policy_version="m03.fingerprint.v1",
         canonicalisation_version="m03.canonical.v1",
-        derivation_versions={},
         effective_at_utc=datetime(2026, 7, 31, 1, 20, tzinfo=UTC),
-        payload=m03.PreparedRuntimePayloadV1(
-            source_time_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
-            runtime_bar_time_utc=datetime(2026, 7, 31, 1, 20, tzinfo=UTC),
-            spot_price=121.5,
-        ),
         payload_schema_version="1.0.0",
     )
     command = UpstreamPreparationCommand(
@@ -170,6 +190,14 @@ def test_upstream_command_preserves_exact_owner_outputs_and_m02_lineage() -> Non
     assert receipt.prepared_data.calendar_projection_refs[0].semantic_fingerprint == (
         receipt.calendar_projections[0].semantic_fingerprint
     )
+    assert receipt.prepared_data.payload.spot_price == 121.5
+    spot_receipt = next(
+        item
+        for item in receipt.prepared_data.field_resolution_receipts
+        if item.semantic_field == "spot_price"
+    )
+    assert spot_receipt.selected_value == 121.5
+    assert spot_receipt.selected_source_artifact_id == "calendar.reference.a"
 
 
 def test_source_non_admission_is_terminal_before_calendar_and_preparation() -> None:
@@ -233,9 +261,7 @@ def test_unit3_m00_transport_translation_delegates_typed_payload_to_m01() -> Non
     fixture = _upstream_fixture()
     coordinator = _coordinator(fixture)
 
-    command = coordinator.translate_upstream_command(
-        fixture["command"].model_dump(mode="json")
-    )
+    command = coordinator.translate_upstream_command(fixture["command"].model_dump(mode="json"))
 
     assert isinstance(command.source_requests[0].typed_payload, MarketSnapshotPayload)
     assert command == fixture["command"]
@@ -248,3 +274,14 @@ def test_asgi_exposes_canonical_upstream_route() -> None:
     assert "/commands/prepare" in source or any(
         isinstance(item, tuple) and "/commands/prepare" in item for item in source
     )
+
+
+def test_semantic_continuity_m00_preparation_spec_cannot_carry_prepared_values() -> None:
+    from nvda_desk.m00_application_shell import PreparationSpec
+
+    fields = set(PreparationSpec.model_fields)
+
+    assert "payload" not in fields
+    assert "input_schema_versions" not in fields
+    assert "field_resolution_policies" in fields
+    assert "derivation_rules" in fields

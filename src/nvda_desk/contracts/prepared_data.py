@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, field_validator, model_validator
 
 from nvda_desk.preparation.field_resolution import (
     FieldResolutionReceipt,
@@ -214,6 +214,28 @@ class DerivationReceipt(BaseModel):
             object.__setattr__(self, "receipt_fingerprint", expected)
         elif self.receipt_fingerprint != expected:
             raise ValueError("derivation_receipt_fingerprint_mismatch")
+        return self
+
+
+class PreparedDerivationRule(BaseModel):
+    """Versioned deterministic M03 derivation law for one prepared field."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    semantic_field: str = Field(min_length=1)
+    derivation_version: str = Field(min_length=1)
+    input_semantic_fields: tuple[str, ...] = Field(min_length=1)
+    operation: Literal["percentage_return", "difference", "minutes_between"]
+    unit_alignment_policy: str = Field(min_length=1)
+    temporal_alignment_policy: str = Field(min_length=1)
+    mandatory: StrictBool = True
+
+    @model_validator(mode="after")
+    def _rule_law(self) -> "PreparedDerivationRule":
+        if len(self.input_semantic_fields) != len(set(self.input_semantic_fields)):
+            raise ValueError("duplicate_derivation_rule_input")
+        if self.semantic_field in self.input_semantic_fields:
+            raise ValueError("derivation_rule_cannot_self_reference")
         return self
 
 
@@ -507,6 +529,7 @@ __all__ = [
     "DerivationReceipt",
     "PreparedDataEnvelope",
     "PreparedEventWindow",
+    "PreparedDerivationRule",
     "PreparedRuntimePayloadV1",
     "SourceCaptureReference",
     "prepared_envelope_fingerprint",

@@ -1,6 +1,6 @@
 # M01–M03 Semantic Continuity Repair ExecPlan
 
-**Status:** `ACTIVE:UNIT4_M03_EXPECTED_RED`
+**Status:** `ACTIVE:UNIT5_ACCEPTANCE`
 **Created:** 2026-08-03
 **Owner:** User-authorised worker
 **Canonical parent:** `project_control/canonical_project_manager/CONTINUATION.md` section 11
@@ -104,3 +104,5 @@ receipt accepted without exact owner-evidence reconciliation.
 - 2026-08-03: Unit 0 registered the bounded pack and suspended readiness in the live roadmap.
 - 2026-08-03: Unit 1 C-NORM aligned exact M01 bindings, M02 selected type/unit, M03 owner-evidence construction and M00 delegation.
 - 2026-08-03: Unit 2/3 owner proof began expected-red at three exact missing surfaces and is now green: 56 focused M01/M02 tests pass; existing propositions were preserved through fixture-only binding additions.
+- 2026-08-03: Unit 4 began with four exact expected-red failures at the caller-authored payload/owner-evidence seam. M03 now constructs direct and derived values from exact M01/M02 products; M00 carries only policies/rules. Five new adversarial continuity nodes and every original M03/M00/Tier C proposition pass in a 147-test affected cone.
+- 2026-08-03: Proposition-preservation audit records 27 new/changed nodes or helpers, with zero deleted test nodes and zero skip/xfail mechanisms. Unit 5 aggregate acceptance is active.

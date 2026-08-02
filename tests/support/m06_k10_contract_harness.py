@@ -8,8 +8,15 @@ from datetime import UTC, datetime, timedelta
 from hashlib import sha256
 from typing import Any, Mapping
 
-from nvda_desk.contracts.prepared_data import PreparedEventWindow, PreparedRuntimePayloadV1
-from nvda_desk.m03_preparation import PreparedDataBuilder, SourceCaptureReference
+from nvda_desk.contracts.prepared_data import (
+    CLOSED_PREPARATION_AUTHORITIES,
+    PreparedDataEnvelope,
+    PreparedEventWindow,
+    PreparedRuntimePayloadV1,
+    SourceCaptureReference,
+    prepared_envelope_fingerprint,
+    prepared_input_fingerprint,
+)
 
 CLOSED = (
     "prepared_truth",
@@ -98,22 +105,67 @@ def make_prepared(
         limitations=("source_partial",) if degraded else (),
         semantic_fields=("vix_level", "front_dte", "next_dte", "windows"),
     )
-    return PreparedDataBuilder().build(
-        source_capture_refs=(source,),
-        input_schema_versions={"market_runtime": "1.0.0"},
+    source_refs = (source,)
+    schema_versions = (("market_runtime", "1.0.0"),)
+    validation_state = "degraded" if degraded else "valid"
+    completeness_state = "degraded" if degraded else "complete"
+    limitations = ("source_partial",) if degraded else ()
+    missing_optional = ("liquidity_context",) if degraded else ()
+    input_fingerprint = prepared_input_fingerprint(
+        source_refs,
+        schema_versions,
+        fingerprint_policy_version="fingerprint.v1",
+        canonicalisation_version="canonical.v1",
+    )
+    prepared_fingerprint = prepared_envelope_fingerprint(
         schema_version="1.0.0",
+        source_capture_refs=source_refs,
+        input_schema_versions=schema_versions,
         preparation_policy_version="prep.v1",
         alignment_policy_version="align.v1",
         fingerprint_policy_version="fingerprint.v1",
         canonicalisation_version="canonical.v1",
-        derivation_versions={},
+        derivation_versions=(),
         effective_at_utc=now,
-        payload=payload,
+        input_fingerprint=input_fingerprint,
+        validation_state=validation_state,
+        completeness_state=completeness_state,
+        limitations=limitations,
+        failed_mandatory_transformations=(),
+        missing_optional_enrichments=missing_optional,
+        parent_prepared_ids=(),
+        payload_kind=payload.kind,
         payload_schema_version="1.0.0",
-        validation_state="degraded" if degraded else "valid",
-        completeness_state="degraded" if degraded else "complete",
-        limitations=("source_partial",) if degraded else (),
-        missing_optional_enrichments=("liquidity_context",) if degraded else (),
+        payload=payload,
+        field_resolution_receipts=(),
+        derivation_receipts=(),
+    )
+    return PreparedDataEnvelope(
+        prepared_id=f"prepared:{prepared_fingerprint[:24]}",
+        schema_version="1.0.0",
+        source_capture_refs=source_refs,
+        input_schema_versions=schema_versions,
+        preparation_policy_version="prep.v1",
+        alignment_policy_version="align.v1",
+        fingerprint_policy_version="fingerprint.v1",
+        canonicalisation_version="canonical.v1",
+        derivation_versions=(),
+        effective_at_utc=now,
+        input_fingerprint=input_fingerprint,
+        prepared_fingerprint=prepared_fingerprint,
+        validation_state=validation_state,
+        completeness_state=completeness_state,
+        limitations=limitations,
+        failed_mandatory_transformations=(),
+        missing_optional_enrichments=missing_optional,
+        parent_prepared_ids=(),
+        payload_kind=payload.kind,
+        payload_schema_version="1.0.0",
+        payload=payload,
+        field_resolution_receipts=(),
+        derivation_receipts=(),
+        closed_authority_classes=CLOSED_PREPARATION_AUTHORITIES,
+        foreign_authority_claimed=False,
     )
 
 
