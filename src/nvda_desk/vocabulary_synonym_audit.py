@@ -35,6 +35,13 @@ IDENTIFIER_PATTERN = re.compile(r"\b[A-Za-z][A-Za-z0-9]*(?:[_-][A-Za-z0-9]+)+\b"
 MARKDOWN_HEADING_PATTERN = re.compile(r"^#{1,6}\s+(.+?)\s*$")
 INLINE_CODE_PATTERN = re.compile(r"`([^`\n]{2,80})`")
 QUOTED_LABEL_PATTERN = re.compile(r"[\"']([^\"'\n]{2,80})[\"']")
+PROJECTION_HEADER_PREFIXES = (
+    "Projection metadata:",
+    "Projection schema version:",
+    "Projection registry version:",
+    "Projection document notes:",
+    "Projection namespace scopes:",
+)
 
 
 def _normalise(value: str) -> str:
@@ -180,7 +187,7 @@ def _iter_candidates(scan_paths: list[str]) -> Iterator[dict[str, str | int]]:
             line_number = text.count("\n", 0, match.start()) + 1
             line_index = line_number - 1
             source_context = lines[line_index] if line_index < len(lines) else ""
-            if source_context.startswith(("Projection metadata:", "Projection document notes:")):
+            if source_context.startswith(PROJECTION_HEADER_PREFIXES):
                 continue
             line_start = text.rfind("\n", 0, match.start()) + 1
             column_start = match.start() - line_start
@@ -202,7 +209,7 @@ def _iter_candidates(scan_paths: list[str]) -> Iterator[dict[str, str | int]]:
                 )
 
         for line_number, line in enumerate(lines, start=1):
-            if line.startswith(("Projection metadata:", "Projection document notes:")):
+            if line.startswith(PROJECTION_HEADER_PREFIXES):
                 continue
             if path.suffix == ".md":
                 heading = MARKDOWN_HEADING_PATTERN.match(line)

@@ -482,3 +482,35 @@ def test_module_namespace_audit_does_not_scan_unrelated_repository_paths(tmp_pat
     assert report["scanned_file_count"] == 1
     assert [item["path"] for item in report["candidates"]] == ["m04_scope/owned.py"]
     assert report["candidates"][0]["nearest_identity"] == "m04.reference_packet"
+
+
+def test_unit4c_iter_candidates_ignores_machine_projection_header_lines(
+    tmp_path: Path, monkeypatch
+) -> None:
+    registry = tmp_path / "vocabulary_registry.md"
+    registry.write_text(
+        "\n".join(
+            [
+                "Projection metadata: parallel_risk_lane_service",
+                "Projection schema version: parallel_risk_lane_service",
+                "Projection registry version: parallel_risk_lane_service",
+                "Projection document notes: parallel_risk_lane_service",
+                "Projection namespace scopes: parallel_risk_lane_service",
+                "### Human Record",
+                "Definition: parallel_risk_lane_service remains human evidence here.",
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    monkeypatch.chdir(tmp_path)
+
+    occurrences = list(audit._iter_candidates(["vocabulary_registry.md"]))
+    observed_lines = {
+        int(item["line"])
+        for item in occurrences
+        if item["raw_phrase"] == "parallel_risk_lane_service"
+    }
+
+    assert observed_lines.isdisjoint({1, 2, 3, 4, 5})
+    assert 7 in observed_lines

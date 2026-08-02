@@ -167,6 +167,13 @@ declared environment; records, proof control and Git describe the same state.
   container appropriate to its accepted content. The 19 digest-and-mutation
   cases pass; the 685-node affected cone has 662 passes and the same 23
   pre-existing Unit 3 failure nodes, with zero added failures. Unit 4C is next.
+- 2026-08-02: Unit 4C expected-red proved schema-version, registry-version
+  and namespace-scope projection headers leaked into candidate evidence. All five
+  scanner-owned header forms are now excluded while identical human prose remains
+  observed. The focused and full scanner proofs pass 1/1 and 19/19. Thirty-five
+  exact implementation/test occurrences were semantically re-adjudicated without
+  admitting a label or alias; all 13 namespaces are clean and stamps current.
+  Unit 4D is next.
 
 ## Decisions
 

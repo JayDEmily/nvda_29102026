@@ -1,18 +1,360 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "global",
-  "imported_namespaces": [],
-  "scan_paths": [
-    "src",
-    "tests",
-    "docs",
-    "config"
+  "namespace": "m09",
+  "imported_namespaces": [
+    "global",
+    "m05",
+    "m06",
+    "m07"
   ],
-  "scanned_file_count": 562,
-  "vocabulary_touched": false,
-  "fingerprint": "1b065b3c809f2e7c53cfcfae007c1c0b6fb6d98a95422994e865b74d2eae7944",
-  "resolved_occurrence_count": 1950,
-  "candidates": [],
-  "candidate_classifications": []
+  "scan_paths": [
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+    "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
+    "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+    "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+    "src/nvda_desk/contracts/risk.py",
+    "src/nvda_desk/domain/final_risk",
+    "src/nvda_desk/risk/join",
+    "src/nvda_desk/services/final_risk_service.py",
+    "src/nvda_desk/contracts/capital.py",
+    "src/nvda_desk/capital",
+    "src/nvda_desk/services/capital_deployment_service.py",
+    "src/nvda_desk/m09_capital_authority",
+    "tests/support/m09_k11_k14_contract_harness.py",
+    "tests/tier_a/m09_k11_k14",
+    "tests/tier_a/capital_deployment",
+    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
+    "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py"
+  ],
+  "scanned_file_count": 28,
+  "vocabulary_touched": true,
+  "fingerprint": "d799d396c29b2749d532dc179bf3ba7554b1a67bc6504ff368f9a4ce3646b85e",
+  "resolved_occurrence_count": 508,
+  "candidates": [
+    {
+      "phrase": "build capital deployment receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9cfab703962b6de0",
+      "raw_phrase": "build_capital_deployment_receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 10,
+      "column": 5,
+      "source_context": "    build_capital_deployment_receipt,",
+      "context_sha256": "b791d6b0522b4a8f2631434365654d3086e0dea0f733dabaa2955386cd4b8f00",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "write capital state",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-b5078c66ddd2003a",
+      "raw_phrase": "write_capital_state",
+      "nearest_identity": "m09.capital_state",
+      "line": 116,
+      "column": 14,
+      "source_context": "            \"write_capital_state\",",
+      "context_sha256": "3de353315d45aaa0b788aa13f1aa8a395cc61204f86e54b4145ff47e0fc488f6",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "serial candidate id",
+      "nearest_slug": "serial_candidate",
+      "nearest_label": "Serial Candidate",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-df43e8aaef77ca93",
+      "raw_phrase": "serial_candidate_id",
+      "nearest_identity": "m05.serial_candidate",
+      "line": 188,
+      "column": 10,
+      "source_context": "        \"serial_candidate_id\": \"candidate-1\",",
+      "context_sha256": "6ebbc0c2786c5ec37049105f500f307cf203254d161a51116bcbe5ec6cd39aa2",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "serial candidate eligible",
+      "nearest_slug": "serial_candidate",
+      "nearest_label": "Serial Candidate",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-33369d80507598e2",
+      "raw_phrase": "serial_candidate_eligible",
+      "nearest_identity": "m05.serial_candidate",
+      "line": 189,
+      "column": 10,
+      "source_context": "        \"serial_candidate_eligible\": True,",
+      "context_sha256": "609e3a32da5e9d817b9b88b52f5bd8400b92585fa210eb58f31dfe3a90d2f66b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "capital state 1",
+      "nearest_slug": "capital_state",
+      "nearest_label": "Capital State",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-3d1cba90244f6f73",
+      "raw_phrase": "capital-state-1",
+      "nearest_identity": "m09.capital_state",
+      "line": 200,
+      "column": 39,
+      "source_context": "        \"capital_state_snapshot_id\": \"capital-state-1\",",
+      "context_sha256": "671343fe3baaec76d4ddce7a864bd4470d0202f542e2c7e2c046fdac4d9facba",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "build capital deployment receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-5c6dcf71c7f6200a",
+      "raw_phrase": "build_capital_deployment_receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 219,
+      "column": 19,
+      "source_context": "    low_receipt = build_capital_deployment_receipt(",
+      "context_sha256": "07ec218bc7f7025425a03550300312574511f934d827130ccd19ea5a238d2379",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "build capital deployment receipt",
+      "nearest_slug": "capital_deployment_receipt",
+      "nearest_label": "Capital Deployment Receipt",
+      "score": 93,
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-09e43cf61ba1876f",
+      "raw_phrase": "build_capital_deployment_receipt",
+      "nearest_identity": "m09.capital_deployment_receipt",
+      "line": 222,
+      "column": 22,
+      "source_context": "    replay_receipt = build_capital_deployment_receipt(",
+      "context_sha256": "dd590435ba089e88092a884b343df2c5cc4479fe23ee9ff1fafe043c03e0282c",
+      "occurrence_kind": "identifier"
+    }
+  ],
+  "candidate_classifications": [
+    {
+      "phrase": "build capital deployment receipt",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "build_capital_deployment_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9cfab703962b6de0",
+      "line": 10,
+      "context_sha256": "b791d6b0522b4a8f2631434365654d3086e0dea0f733dabaa2955386cd4b8f00"
+    },
+    {
+      "phrase": "write capital state",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "write_capital_state",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "write_capital_state",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "write_capital_state",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-b5078c66ddd2003a",
+      "line": 116,
+      "context_sha256": "3de353315d45aaa0b788aa13f1aa8a395cc61204f86e54b4145ff47e0fc488f6"
+    },
+    {
+      "phrase": "serial candidate id",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "serial_candidate",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "serial_candidate_id",
+        "matched_slug": "serial_candidate",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "serial_candidate_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "serial_candidate_id",
+            "matched_slug": "serial_candidate",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-df43e8aaef77ca93",
+      "line": 188,
+      "context_sha256": "6ebbc0c2786c5ec37049105f500f307cf203254d161a51116bcbe5ec6cd39aa2"
+    },
+    {
+      "phrase": "serial candidate eligible",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "serial_candidate",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "serial_candidate_eligible",
+        "matched_slug": "serial_candidate",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "serial_candidate_eligible",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "serial_candidate_eligible",
+            "matched_slug": "serial_candidate",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-33369d80507598e2",
+      "line": 189,
+      "context_sha256": "609e3a32da5e9d817b9b88b52f5bd8400b92585fa210eb58f31dfe3a90d2f66b"
+    },
+    {
+      "phrase": "capital state 1",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "capital_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "capital_state_1",
+        "matched_slug": "capital_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "capital_state_1",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "capital_state_1",
+            "matched_slug": "capital_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-3d1cba90244f6f73",
+      "line": 200,
+      "context_sha256": "671343fe3baaec76d4ddce7a864bd4470d0202f542e2c7e2c046fdac4d9facba"
+    },
+    {
+      "phrase": "build capital deployment receipt",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "build_capital_deployment_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-5c6dcf71c7f6200a",
+      "line": 219,
+      "context_sha256": "07ec218bc7f7025425a03550300312574511f934d827130ccd19ea5a238d2379"
+    },
+    {
+      "phrase": "build capital deployment receipt",
+      "path": "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py",
+      "nearest_slug": "capital_deployment_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "matched_slug": "capital_deployment_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "build_capital_deployment_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "build_capital_deployment_receipt",
+            "matched_slug": "capital_deployment_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-09e43cf61ba1876f",
+      "line": 222,
+      "context_sha256": "dd590435ba089e88092a884b343df2c5cc4479fe23ee9ff1fafe043c03e0282c"
+    }
+  ]
 }
