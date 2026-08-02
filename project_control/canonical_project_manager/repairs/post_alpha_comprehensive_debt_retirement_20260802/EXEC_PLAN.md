@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT5_LIVE_PROVIDER_AND_BROKER_BOUNDARY`
+**Status:** `ACTIVE:UNIT6_TIER_C_OPERATIONAL_ASSURANCE`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -190,3 +190,4 @@ acceptance, broad suppression or edited proof evidence.
 - 2026-08-02: Unit 1 passed: `alpha_current` is the canonical promotion key; `pre_m00_current` is a membership-identical compatibility alias; 39 focused control tests pass and all retained legacy receipts verify.
 - 2026-08-02: Unit 2 passed: the expected-red M00 upstream proof is implemented; M01 issues distinct source-artifact identity, M02 projection lineage enters M03, and canonical CLI/ASGI preparation routes are current-blocking.
 - 2026-08-02: Unit 4 passed: bounded SQLite M13 state/receipt and typed evidence ports survive restart, preserve exact idempotency/conflict/rollback truth, and restore M11 fill/lifecycle history plus M12 replay material; 237 affected tests pass and proof authority resolves 18 blocking blocks.
+- 2026-08-02: Unit 5 passed: explicit live-placement, provider and broker boundaries are offline/fail-closed by default, require injected transports and credentials, retain M00 paper-only semantics, and pass 138 affected tests with 19 current promotion blocks.

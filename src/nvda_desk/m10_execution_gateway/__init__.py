@@ -1,10 +1,13 @@
 """Canonical M10 K15 paper execution-gateway API."""
 
 from .contracts import (
+    LIVE_PLACEMENT_POLICY_VERSION,
     PAPER_PORT_VERSION,
     PLACEMENT_POLICY_VERSION,
     ExecutionEvent,
     ExecutionReceipt,
+    LivePlacementIntent,
+    LivePlacementPolicy,
     PlacementIntent,
     PlacementPolicy,
 )
@@ -16,6 +19,9 @@ __all__ = [
     "ExecutionGateway",
     "ExecutionPort",
     "ExecutionReceipt",
+    "LIVE_PLACEMENT_POLICY_VERSION",
+    "LivePlacementIntent",
+    "LivePlacementPolicy",
     "PAPER_PORT_VERSION",
     "PLACEMENT_POLICY_VERSION",
     "PaperExecutionPort",

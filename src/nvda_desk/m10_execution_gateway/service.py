@@ -7,7 +7,13 @@ from decimal import ROUND_FLOOR, Decimal
 
 from nvda_desk.m09_capital_authority import CapitalDeploymentReceipt
 
-from .contracts import PlacementIntent, PlacementPolicy, semantic_fingerprint
+from .contracts import (
+    LivePlacementIntent,
+    LivePlacementPolicy,
+    PlacementIntent,
+    PlacementPolicy,
+    semantic_fingerprint,
+)
 from .port import ExecutionPort
 
 
@@ -109,6 +115,76 @@ class ExecutionGateway:
         fp = semantic_fingerprint(payload)
         return PlacementIntent.model_validate(
             {**payload, "intent_id": f"placement-intent:{fp[:24]}", "semantic_fingerprint": fp}
+        )
+
+    def create_live_intent(
+        self,
+        placement_plan: PlacementIntent,
+        policy: LivePlacementPolicy,
+        *,
+        authorised_at_utc: datetime,
+    ) -> LivePlacementIntent:
+        try:
+            plan = PlacementIntent.model_validate(placement_plan.model_dump(mode="python"))
+        except Exception as exc:
+            raise ValueError("placement_intent_contract_invalid") from exc
+        try:
+            policy = LivePlacementPolicy.model_validate(policy.model_dump(mode="python"))
+        except Exception as exc:
+            raise ValueError("live_placement_policy_contract_invalid") from exc
+        if authorised_at_utc.tzinfo is None or authorised_at_utc.utcoffset() != UTC.utcoffset(
+            authorised_at_utc
+        ):
+            raise ValueError("live_authorisation_time_must_be_utc")
+        if authorised_at_utc < plan.intent_at_utc:
+            raise ValueError("live_authorisation_precedes_placement_plan")
+        if (
+            policy.symbol,
+            policy.side,
+            policy.order_type,
+            policy.time_in_force,
+            policy.quantity_quantum,
+        ) != (
+            plan.symbol,
+            plan.side,
+            plan.order_type,
+            plan.time_in_force,
+            plan.quantity_quantum,
+        ):
+            raise ValueError("live_policy_changes_placement_plan")
+        payload = {
+            "contract_version": "1.0.0",
+            "placement_plan": plan,
+            "placement_plan_id": plan.intent_id,
+            "placement_plan_fingerprint": plan.semantic_fingerprint,
+            "live_policy_version": policy.policy_version,
+            "live_policy_fingerprint": policy.policy_fingerprint,
+            "broker_id": policy.broker_id,
+            "account_id": policy.account_id,
+            "environment": policy.environment,
+            "live_authorisation_id": policy.live_authorisation_id,
+            "symbol": plan.symbol,
+            "side": plan.side,
+            "order_type": plan.order_type,
+            "time_in_force": plan.time_in_force,
+            "limit_price": plan.limit_price,
+            "quantity_quantum": plan.quantity_quantum,
+            "quantity": plan.quantity,
+            "planned_notional": plan.planned_notional,
+            "authorised_at_utc": authorised_at_utc,
+            "paper_only": False,
+            "live_execution_allowed": True,
+            "market_price_discovery_allowed": False,
+            "portfolio_mutation_authority": False,
+            "lifecycle_authority": False,
+        }
+        fingerprint = semantic_fingerprint(payload)
+        return LivePlacementIntent.model_validate(
+            {
+                **payload,
+                "intent_id": f"live-placement-intent:{fingerprint[:24]}",
+                "semantic_fingerprint": fingerprint,
+            }
         )
 
     def execute(self, intent: PlacementIntent, port: ExecutionPort, *, executed_at_utc: datetime):

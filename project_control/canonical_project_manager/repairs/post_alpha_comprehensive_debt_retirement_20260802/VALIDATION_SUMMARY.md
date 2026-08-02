@@ -31,3 +31,26 @@
 - M01 non-admission and M02 withheld/rejected outcomes are terminal before M03.
 - M03 carries M02 projection references; existing no-projection fingerprints remain stable.
 - CLI and ASGI contain translation only.
+
+## Unit 3 — M06 owner-fact completeness
+
+- Exact M11 concentration/inventory and M01/provider liquidity owner facts were added.
+- Current facts yield typed observations; absent/stale facts remain explicit unknown.
+- Affected proof passed before commit `e7926a6`.
+
+## Unit 4 — durable state and restart recovery
+
+- SQLite state/receipt and typed evidence ports preserve atomicity, idempotency and restart truth.
+- M11 and M12 bounded paper/replay surfaces restore from durable evidence.
+- Unit proof: 10 passed; affected proof: 237 passed.
+- Commit: `24cc97a`.
+
+## Unit 5 — live provider and broker boundary
+
+- Expected-red: eight missing-surface failures, followed by two guardrail failures for byte canonicalisation and blocker ordering.
+- Unit proof: 10 passed.
+- Affected M10/M00/entry and control proof: 138 passed.
+- Authority reconciliation: 200 families / 202 physical tests / 72 blocks.
+- Current promotion membership: 19 blocks / 19 families / 21 paths.
+- Black, Ruff and diff validation: PASS.
+- No real endpoint, credential, order, fill or live-account claim was used.

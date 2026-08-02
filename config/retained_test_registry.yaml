@@ -4205,6 +4205,21 @@ canonical_admission_model:
     normative_proposition_ids:
     - M10-K15-EXECUTION-GATEWAY-V1
     provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: live_operational_boundaries_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+      - M10-LIVE-001
+      - M10-LIVE-002
+      - OPS-LIVE-001
+      - OPS-LIVE-002
+      - OPS-LIVE-003
+      - OPS-LIVE-004
+      - OPS-LIVE-005
+      - OPS-LIVE-006
+      - M01-LIVE-001
+    provenance: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT5-C-PROOF
+    lifecycle_reason: Explicit external-provider and broker boundaries are offline by default, require injected transports and credentials, fail closed on safety mismatches, and cannot promote acknowledgements into fill or live-account truth.
   - test_family_id: m11_k16_k17_portfolio_lifecycle_contract
     tier: Tier A
     lifecycle: current_blocking
@@ -5166,6 +5181,9 @@ canonical_admission_model:
   - test_path: tests/tier_a/observability/test_observability_reservation_surface.py
     test_family_id: observability_reservation_surface
     source_disposition: BLOCKED_MISSING_NORMATIVE_AUTHORITY
+  - test_path: tests/tier_a/operations/test_live_operational_boundaries.py
+    test_family_id: live_operational_boundaries_contract
+    source_disposition: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT5-C-PROOF
   - test_path: tests/tier_a/options_flow_history/test_options_flow_contract_models.py
     test_family_id: options_flow_contract_models
     source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL

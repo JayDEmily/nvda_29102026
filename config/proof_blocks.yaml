@@ -24,6 +24,7 @@ promotion_sets:
       - m06_owner_fact_completeness_contract
       - m09_k11_k14_capital_authority_contract
       - m10_k15_execution_gateway_contract
+      - live_operational_boundaries_contract
       - m11_k16_k17_portfolio_lifecycle_contract
       - m12_k19_authoritative_replay_contract
       - m00_final_composition_contract
@@ -1334,6 +1335,36 @@ proof_blocks:
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
       - docs/vocabulary/vocabulary_registry.md
       - data/vocabulary/canonical_vocabulary.json
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
+
+  - proof_block_id: live_operational_boundaries_contract
+    tier: Tier A
+    lifecycle: admitted_current_post_alpha_gate_d_accepted
+    test_family_ids:
+      - live_operational_boundaries_contract
+    normative_proposition_ids:
+      - M10-LIVE-001
+      - M10-LIVE-002
+      - OPS-LIVE-001
+      - OPS-LIVE-002
+      - OPS-LIVE-003
+      - OPS-LIVE-004
+      - OPS-LIVE-005
+      - OPS-LIVE-006
+      - M01-LIVE-001
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/operations/test_live_operational_boundaries.py
+    owns:
+      - tests/tier_a/operations/test_live_operational_boundaries.py
+      - src/nvda_desk/operational_boundaries/__init__.py
+      - src/nvda_desk/operational_boundaries/contracts.py
+      - src/nvda_desk/operational_boundaries/adapters.py
+      - src/nvda_desk/m10_execution_gateway/__init__.py
+      - src/nvda_desk/m10_execution_gateway/contracts.py
+      - src/nvda_desk/m10_execution_gateway/service.py
+      - docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
 

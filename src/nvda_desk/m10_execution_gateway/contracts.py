@@ -376,3 +376,122 @@ class ExecutionReceipt(BaseModel):
         if self.receipt_id != expected_id or self.transaction_receipt_id != expected_id:
             raise ValueError("execution_receipt_id_mismatch")
         return self
+
+
+LIVE_PLACEMENT_POLICY_VERSION: Final = "m10.live-placement.v1"
+
+
+class LivePlacementPolicy(BaseModel):
+    """Explicit operational authority layered over one bounded placement plan."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+
+    policy_version: Literal["m10.live-placement.v1"] = LIVE_PLACEMENT_POLICY_VERSION
+    broker_id: str = Field(min_length=1)
+    account_id: str = Field(min_length=1)
+    environment: Literal["live"] = "live"
+    live_authorisation_id: str = Field(min_length=1)
+    symbol: Literal["NVDA"] = "NVDA"
+    side: Literal["buy"] = "buy"
+    order_type: Literal["limit"] = "limit"
+    time_in_force: Literal["day"] = "day"
+    adapter_mode: Literal["live"] = "live"
+    quantity_quantum: Decimal = Field(gt=Decimal("0"))
+
+    @property
+    def policy_fingerprint(self) -> str:
+        return semantic_fingerprint(self.model_dump(mode="python"))
+
+
+class LivePlacementIntent(BaseModel):
+    """Live-submission authority bound to an exact capital-bounded M10 plan."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+
+    intent_id: str = Field(min_length=1)
+    contract_version: Literal["1.0.0"] = "1.0.0"
+    placement_plan: PlacementIntent
+    placement_plan_id: str = Field(min_length=1)
+    placement_plan_fingerprint: str
+    live_policy_version: Literal["m10.live-placement.v1"]
+    live_policy_fingerprint: str
+    broker_id: str = Field(min_length=1)
+    account_id: str = Field(min_length=1)
+    environment: Literal["live"] = "live"
+    live_authorisation_id: str = Field(min_length=1)
+    symbol: Literal["NVDA"]
+    side: Literal["buy"]
+    order_type: Literal["limit"]
+    time_in_force: Literal["day"]
+    limit_price: Decimal = Field(gt=Decimal("0"))
+    quantity_quantum: Decimal = Field(gt=Decimal("0"))
+    quantity: Decimal = Field(gt=Decimal("0"))
+    planned_notional: Decimal = Field(gt=Decimal("0"))
+    authorised_at_utc: datetime
+    paper_only: Literal[False] = False
+    live_execution_allowed: Literal[True] = True
+    market_price_discovery_allowed: Literal[False] = False
+    portfolio_mutation_authority: Literal[False] = False
+    lifecycle_authority: Literal[False] = False
+    semantic_fingerprint: str
+
+    @field_validator("authorised_at_utc")
+    @classmethod
+    def _authorised_utc(cls, value: datetime) -> datetime:
+        return _require_utc(value, "live_authorisation_time_must_be_utc")
+
+    @model_validator(mode="after")
+    def _validate_live_intent(self) -> "LivePlacementIntent":
+        plan = PlacementIntent.model_validate(self.placement_plan.model_dump(mode="python"))
+        if (self.placement_plan_id, self.placement_plan_fingerprint) != (
+            plan.intent_id,
+            plan.semantic_fingerprint,
+        ):
+            raise ValueError("live_placement_plan_binding_mismatch")
+        if self.authorised_at_utc < plan.intent_at_utc:
+            raise ValueError("live_authorisation_precedes_placement_plan")
+        if (
+            self.symbol,
+            self.side,
+            self.order_type,
+            self.time_in_force,
+            self.limit_price,
+            self.quantity_quantum,
+            self.quantity,
+            self.planned_notional,
+        ) != (
+            plan.symbol,
+            plan.side,
+            plan.order_type,
+            plan.time_in_force,
+            plan.limit_price,
+            plan.quantity_quantum,
+            plan.quantity,
+            plan.planned_notional,
+        ):
+            raise ValueError("live_placement_plan_terms_changed")
+        expected_policy = semantic_fingerprint(
+            {
+                "policy_version": self.live_policy_version,
+                "broker_id": self.broker_id,
+                "account_id": self.account_id,
+                "environment": self.environment,
+                "live_authorisation_id": self.live_authorisation_id,
+                "symbol": self.symbol,
+                "side": self.side,
+                "order_type": self.order_type,
+                "time_in_force": self.time_in_force,
+                "adapter_mode": "live",
+                "quantity_quantum": self.quantity_quantum,
+            }
+        )
+        if self.live_policy_fingerprint != expected_policy:
+            raise ValueError("live_placement_policy_fingerprint_mismatch")
+        expected = semantic_fingerprint(
+            _material(self, exclude={"intent_id", "semantic_fingerprint"})
+        )
+        if self.semantic_fingerprint != expected:
+            raise ValueError("live_placement_intent_fingerprint_mismatch")
+        if self.intent_id != f"live-placement-intent:{expected[:24]}":
+            raise ValueError("live_placement_intent_id_mismatch")
+        return self

@@ -69,3 +69,10 @@ tests/tier_a/m06_k10/test_m06_k10_contract.py	Unit 3 M06 owner-fact completeness
 tests/support/m06_k10_contract_harness.py	Unit 3 M06 owner-fact completeness authority and implementation	READ_FULL	MUTABLE	916b869aae23f7f6331d74fc2d1abca1811f7b42d53f77755e00608898fd1b9b
 tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py	Unit 3 M06 owner-fact completeness authority and implementation	READ_FULL	MUTABLE	a8e6e167eab03ee8ad55badc778f4a09da595c0cc2a37661e074cc779bd67489
 tests/tier_a/persistence/test_m13_state_kernel_contract.py	Unit 3 M06 owner-fact completeness authority and implementation	READ_FULL	MUTABLE	a3ad3e8b51e2dd73119ecbec2e546f8d4e594346efaa8bf588c90b67798b8843
+src/nvda_desk/m10_execution_gateway/__init__.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	d23fbec3805d0409336df7dd9ee2aa1031368b5a60cb5b906e1112cafc17e15d
+src/nvda_desk/m10_execution_gateway/contracts.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	322bf03c5edb5a25431ddd0629dd3da6b5f6a550a95c191c45a77dec10d22817
+src/nvda_desk/m10_execution_gateway/service.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	e9f253d283bc24e21c2dfd0e53d81fa21514b3d272ee5b9600f5a57d9b75c8e6
+src/nvda_desk/operational_boundaries/__init__.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
+src/nvda_desk/operational_boundaries/contracts.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
+src/nvda_desk/operational_boundaries/adapters.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
+tests/tier_a/operations/test_live_operational_boundaries.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
