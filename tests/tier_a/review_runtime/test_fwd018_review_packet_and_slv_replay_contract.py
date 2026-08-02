@@ -29,6 +29,10 @@ def test_review_packet_service_builds_module_health_and_daily_packet_with_pnl_fa
     assert health.module_summaries[0].fill_event_count == 1
     assert health.position_snapshot_count == 1
     assert daily.daily_pnl.report_id == "daily-1::pnl-fallback"
+    assert daily.missing_material_ids == ("daily_pnl_report::NVDA::2026-05-15",)
+    assert daily.source_packet_ids == ("daily-1::module-health",)
+    assert daily.source_receipt_ids == ()
+    assert daily.source_artifact_ids == ()
     assert daily.rendering_authority_mutated is False
 
 
@@ -86,3 +90,6 @@ def test_api_exposes_review_packets_and_strategic_ladder_replay_surfaces() -> No
 
     assert health["packet_id"] == "health-api"
     assert daily["daily_pnl"]["report_id"] == "pnl-1"
+    assert daily["missing_material_ids"] == []
+    assert daily["source_packet_ids"] == ["daily-api::module-health"]
+    assert daily["source_receipt_ids"] == ["pnl-1"]

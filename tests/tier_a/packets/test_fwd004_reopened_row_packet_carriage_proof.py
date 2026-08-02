@@ -373,6 +373,13 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
         assert daily.daily_pnl.context == {"fallback": True}
         assert daily.module_health.packet_id == f"{audit_row_id}::module-health"
         assert daily.renderings == (rendering,)
+        assert daily.missing_material_ids == ("daily_pnl_report::NVDA::2026-05-19",)
+        assert daily.source_packet_ids == (
+            f"{audit_row_id}::module-health",
+            f"{audit_row_id}::rendering",
+        )
+        assert daily.source_receipt_ids == ()
+        assert daily.source_artifact_ids == ()
         assert daily.rendering_authority_mutated is False
         return
 

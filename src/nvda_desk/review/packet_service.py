@@ -3,7 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Mapping
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from nvda_desk.contracts.daily_pnl import DailyPnlReport
 from nvda_desk.downstream.daily_pnl import DailyPnlReportService
@@ -58,7 +58,26 @@ class DailyReviewPacket(BaseModel):
     module_health: ModuleHealthPacket
     daily_pnl: DailyPnlReport
     renderings: tuple[ReviewSafeRendering, ...] = Field(default_factory=tuple)
+    missing_material_ids: tuple[str, ...] = Field(default_factory=tuple)
+    source_packet_ids: tuple[str, ...] = Field(default_factory=tuple)
+    source_receipt_ids: tuple[str, ...] = Field(default_factory=tuple)
+    source_artifact_ids: tuple[str, ...] = Field(default_factory=tuple)
     rendering_authority_mutated: bool = False
+
+    @field_validator(
+        "missing_material_ids",
+        "source_packet_ids",
+        "source_receipt_ids",
+        "source_artifact_ids",
+    )
+    @classmethod
+    def _validate_evidence_ids(cls, value: tuple[str, ...]) -> tuple[str, ...]:
+        normalised = tuple(item.strip() for item in value)
+        if any(not item for item in normalised):
+            raise ValueError("review evidence identity must not be blank")
+        if len(normalised) != len(set(normalised)):
+            raise ValueError("review evidence identities must be unique")
+        return normalised
 
     @model_validator(mode="after")
     def _validate_review_only(self) -> "DailyReviewPacket":
@@ -112,22 +131,36 @@ class ReviewPacketService:
         trade_date: str,
         renderings: tuple[ReviewSafeRendering, ...] = (),
     ) -> DailyReviewPacket:
+        normalised_symbol = symbol.strip().upper()
         health = self.build_module_health_packet(packet_id=f"{packet_id}::module-health")
-        pnl = self._daily_pnl_service.find_report(symbol=symbol, trade_date=trade_date)
+        pnl = self._daily_pnl_service.find_report(symbol=normalised_symbol, trade_date=trade_date)
+        missing_material_ids: tuple[str, ...] = ()
+        source_receipt_ids: tuple[str, ...] = ()
         if pnl is None:
+            missing_material_ids = (f"daily_pnl_report::{normalised_symbol}::{trade_date}",)
             pnl = DailyPnlReport(
                 report_id=f"{packet_id}::pnl-fallback",
                 trade_date=trade_date,
-                symbol=symbol,
+                symbol=normalised_symbol,
                 context={"fallback": True},
             )
+        else:
+            source_receipt_ids = (pnl.report_id,)
+        source_packet_ids = tuple(
+            dict.fromkeys((health.packet_id, *(rendering.packet_id for rendering in renderings)))
+        )
+        source_artifact_ids = tuple(dict.fromkeys(pnl.evidence_ids))
         return DailyReviewPacket(
             packet_id=packet_id,
-            symbol=symbol.strip().upper(),
+            symbol=normalised_symbol,
             trade_date=trade_date,
             module_health=health,
             daily_pnl=pnl,
             renderings=renderings,
+            missing_material_ids=missing_material_ids,
+            source_packet_ids=source_packet_ids,
+            source_receipt_ids=source_receipt_ids,
+            source_artifact_ids=source_artifact_ids,
         )
 
     @property

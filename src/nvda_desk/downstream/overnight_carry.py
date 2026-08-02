@@ -9,6 +9,7 @@ from nvda_desk.contracts.exit_close import ExitClosePolicyDecision
 
 CarryAction = Literal["hold", "trim", "close"]
 CarryRecommendation = Literal["hold", "trim", "close"]
+OVERNIGHT_CARRY_POLICY_VERSION = "overnight-carry.market.v1"
 
 
 class CarryHandoffPacket(BaseModel):
@@ -34,6 +35,7 @@ class OvernightCarryEvaluation(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     evaluation_id: str
+    policy_version: str = Field(min_length=1)
     symbol: str
     recommendation: CarryRecommendation
     handoff_id: str
@@ -50,6 +52,7 @@ class OvernightCarryReplayResult(BaseModel):
 
     replay_id: str
     evaluation_id: str
+    next_session_source_id: str = Field(min_length=1)
     recommendation: CarryRecommendation
     path_summary: dict[str, float | None]
     comparator_summary: str
@@ -110,6 +113,7 @@ class OvernightCarryMarketService:
             reasons.append("capped_by_close_state_handoff")
         return OvernightCarryEvaluation(
             evaluation_id=evaluation_id,
+            policy_version=OVERNIGHT_CARRY_POLICY_VERSION,
             symbol=symbol,
             recommendation=recommendation,
             handoff_id=handoff.handoff_id,
@@ -136,8 +140,12 @@ class OvernightCarryReplayService:
         *,
         replay_id: str,
         evaluation: OvernightCarryEvaluation,
+        next_session_source_id: str,
         next_session_reference: Mapping[str, Any],
     ) -> OvernightCarryReplayResult:
+        governed_next_session_source_id = next_session_source_id.strip()
+        if not governed_next_session_source_id:
+            raise ValueError("next_session_source_id_required")
         latest_close = evaluation.latest_close
         open_price = _optional_float(next_session_reference.get("open_price"))
         close_price = _optional_float(next_session_reference.get("close_price"))
@@ -148,6 +156,7 @@ class OvernightCarryReplayService:
         return OvernightCarryReplayResult(
             replay_id=replay_id,
             evaluation_id=evaluation.evaluation_id,
+            next_session_source_id=governed_next_session_source_id,
             recommendation=evaluation.recommendation,
             path_summary=path_summary,
             comparator_summary=f"{evaluation.recommendation}:{path_summary['open_gap_pct']}:{path_summary['close_to_close_pct']}",

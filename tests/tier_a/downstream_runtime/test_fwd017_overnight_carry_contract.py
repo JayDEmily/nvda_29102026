@@ -4,6 +4,7 @@ from nvda_desk.api.app import create_app
 from nvda_desk.contracts.exit_close import ExitCloseInputTrace
 from nvda_desk.downstream.exit_close import evaluate_exit_close_policy
 from nvda_desk.downstream.overnight_carry import (
+    OVERNIGHT_CARRY_POLICY_VERSION,
     CarryHandoffService,
     OvernightCarryMarketService,
     OvernightCarryReplayService,
@@ -64,6 +65,7 @@ def test_market_carry_evaluation_applies_handoff_envelope_and_derives_vwap_dista
         handoff=handoff,
     )
 
+    assert output.policy_version == OVERNIGHT_CARRY_POLICY_VERSION
     assert output.recommendation == "trim"
     assert output.close_distance_to_vwap_pct == 5.0
     assert output.scalar_context["vix_close"] == 22.0
@@ -84,9 +86,11 @@ def test_carry_replay_compares_market_evaluation_against_next_session_reference(
     replay = OvernightCarryReplayService().replay_evaluation(
         replay_id="replay-1",
         evaluation=evaluation,
+        next_session_source_id="market-session::2026-05-18",
         next_session_reference={"open_price": 103.0, "close_price": 101.0},
     )
 
+    assert replay.next_session_source_id == "market-session::2026-05-18"
     assert replay.path_summary["open_gap_pct"] == 3.0
     assert replay.path_summary["close_to_close_pct"] == 1.0
     assert replay.runtime_mutated is False
@@ -113,5 +117,17 @@ def test_api_exposes_overnight_carry_dependency_surfaces() -> None:
             "market_state": {"symbol": "NVDA", "latest_close": 100, "session_vwap": 99},
         }
     )
+    assert result["policy_version"] == OVERNIGHT_CARRY_POLICY_VERSION
     assert result["recommendation"] in {"hold", "trim", "close"}
     assert result["execution_allowed"] is False
+
+    replay = app.replay_overnight_carry_from_market(
+        {
+            "replay_id": "api-replay-1",
+            "next_session_source_id": "market-session::2026-05-18",
+            "evaluation": result,
+            "next_session_reference": {"open_price": 101.0, "close_price": 102.0},
+        }
+    )
+    assert replay["next_session_source_id"] == "market-session::2026-05-18"
+    assert replay["runtime_mutated"] is False

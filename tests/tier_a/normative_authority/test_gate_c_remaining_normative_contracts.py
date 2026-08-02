@@ -12,6 +12,7 @@ from nvda_desk.capital.authority import (
 )
 from nvda_desk.config.coefficient_authority import CoefficientAuthorityService
 from nvda_desk.contracts.capital import CapitalDeploymentAuthorityInput
+from nvda_desk.contracts.daily_pnl import DailyPnlReport
 from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
 from nvda_desk.contracts.eligibility import (
     EligibilityAdmissibilitySurface,
@@ -24,9 +25,13 @@ from nvda_desk.contracts.upstream_signal import (
     UpstreamSignalCoverageEntry,
 )
 from nvda_desk.domain.execution.candidate_expression import evaluate_execution_expression
+from nvda_desk.downstream.daily_pnl import DailyPnlReportService
 from nvda_desk.persistence.durable_sql import DurableSqliteStore
 from nvda_desk.repositories.position_repository import PositionRepository
-from nvda_desk.review.packet_service import DailyReviewPacket, ReviewSafeRendering
+from nvda_desk.review.packet_service import (
+    ReviewPacketService,
+    ReviewSafeRendering,
+)
 from nvda_desk.upstream.raw_signal_coverage import build_upstream_signal_coverage_map
 from nvda_desk.upstream.raw_signal_ingress import ingest_raw_upstream_signal
 
@@ -254,29 +259,66 @@ def test_c042_overnight_carry_contract_carries_policy_version_and_next_session_s
     None
 ):
     from nvda_desk.downstream.overnight_carry import (
-        OvernightCarryEvaluation,
-        OvernightCarryReplayResult,
+        OVERNIGHT_CARRY_POLICY_VERSION,
+        CarryHandoffPacket,
+        OvernightCarryMarketService,
+        OvernightCarryReplayService,
     )
 
-    assert "policy_version" in OvernightCarryEvaluation.model_fields
-    assert {
-        "next_session_source_id",
-        "next_session_source_artifact_id",
-    } & set(OvernightCarryReplayResult.model_fields)
+    evaluation = OvernightCarryMarketService().evaluate_from_market(
+        evaluation_id="carry-c042",
+        market_state={"symbol": "NVDA", "latest_close": 100.0, "session_vwap": 100.0},
+        handoff=CarryHandoffPacket(
+            handoff_id="handoff-c042",
+            decision_id="decision-c042",
+            position_id="position-c042",
+            horizon="overnight",
+            allowed_actions=("hold",),
+            source_exit_state="open",
+        ),
+    )
+    replay = OvernightCarryReplayService().replay_evaluation(
+        replay_id="replay-c042",
+        evaluation=evaluation,
+        next_session_source_id="market-session::2026-05-18",
+        next_session_reference={"open_price": 101.0, "close_price": 102.0},
+    )
+
+    assert evaluation.policy_version == OVERNIGHT_CARRY_POLICY_VERSION
+    assert replay.next_session_source_id == "market-session::2026-05-18"
+    assert replay.runtime_mutated is False
 
 
 def test_c044_review_packets_expose_missing_material_and_source_lineage_without_runtime_authority() -> (
     None
 ):
-    assert {
-        "missing_material_ids",
-        "missing_material_flags",
-    } & set(DailyReviewPacket.model_fields)
-    assert {
-        "source_packet_ids",
-        "source_receipt_ids",
-        "source_artifact_ids",
-    } & set(DailyReviewPacket.model_fields)
+    pnl_service = DailyPnlReportService()
+    service = ReviewPacketService(daily_pnl_service=pnl_service)
+
+    missing = service.build_daily_review_packet(
+        packet_id="review-c044-missing", symbol="NVDA", trade_date="2026-05-15"
+    )
+    assert missing.missing_material_ids == ("daily_pnl_report::NVDA::2026-05-15",)
+    assert missing.source_packet_ids == ("review-c044-missing::module-health",)
+    assert missing.source_receipt_ids == ()
+    assert missing.source_artifact_ids == ()
+
+    pnl_service.record_report(
+        DailyPnlReport(
+            report_id="pnl-c044",
+            trade_date="2026-05-16",
+            symbol="NVDA",
+            evidence_ids=("fill-c044", "position-c044"),
+        )
+    )
+    sourced = service.build_daily_review_packet(
+        packet_id="review-c044-sourced", symbol="NVDA", trade_date="2026-05-16"
+    )
+    assert sourced.missing_material_ids == ()
+    assert sourced.source_packet_ids == ("review-c044-sourced::module-health",)
+    assert sourced.source_receipt_ids == ("pnl-c044",)
+    assert sourced.source_artifact_ids == ("fill-c044", "position-c044")
+    assert sourced.rendering_authority_mutated is False
     assert ReviewSafeRendering.model_fields["runtime_authority_mutated"].default is False
 
 

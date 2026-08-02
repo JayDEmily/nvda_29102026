@@ -338,9 +338,13 @@ class HttpApp:
         replay_id = payload.get("replay_id")
         if not isinstance(replay_id, str) or not replay_id.strip():
             raise ValueError("replay_id_required")
+        next_session_source_id = payload.get("next_session_source_id")
+        if not isinstance(next_session_source_id, str) or not next_session_source_id.strip():
+            raise ValueError("next_session_source_id_required")
         replay = self.overnight_carry_replay_service.replay_evaluation(
             replay_id=replay_id,
             evaluation=evaluation,
+            next_session_source_id=next_session_source_id,
             next_session_reference=dict(payload.get("next_session_reference", {})),
         )
         return _to_plain_dict(replay)
