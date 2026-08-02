@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT8_AGGREGATE_CLOSEOUT`
+**Status:** `COMPLETE:UNIT8_PASS_REPOSITORY_DEBT_RETIRED_EXTERNAL_COMMISSIONING_UNPROVEN`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -197,3 +197,5 @@ acceptance, broad suppression or edited proof evidence.
 - 2026-08-02: Unit 6 exact clean-commit validation passed at `bb44560`: installed-package smoke, Tier C 5/5, alpha promotion 19/19 with 802 tests, Tier B 90/90, Black and Ruff.
 
 - 2026-08-02: Unit 7 passed at working-tree validation: 593 exact human dispositions resolve 751 overlapping scanner candidates across global and 12 module namespaces; all 13 admitted namespace audits are clean and touch stamps current; three stale vocabulary tests and one stale schema category were corrected to match the accepted PM-010 quarantine authority.
+- 2026-08-02: Unit 8 exact clean-commit validation passed at `747d8d3`: offline non-editable install, installed-package smoke, Tier C 5/5, `alpha_current` 19/19 with 802 Tier A tests and zero skips, Tier B 90/90, all 13 vocabulary audits clean, Black/Ruff/compile/diff/proof-authority/Git integrity passed.
+- 2026-08-02: all eight material-debt rows are repository-resolved. External live commissioning remains unproven because no provider entitlement, broker approval, credential, live endpoint or authorised real-order procedure was supplied; no real network effect or order was attempted.

@@ -166,10 +166,12 @@ def test_current_block_requires_exact_normative_proposition_ids() -> None:
         validate_authority_documents(registry, broken, repo_root=REPO_ROOT)
 
 
-def test_live_control_surfaces_identify_comprehensive_debt_pack() -> None:
+def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_debt_closeout() -> (
+    None
+):
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1"
+    assert validate_active_control(REPO_ROOT) == "CANONICAL:ALPHA_CONSOLIDATED"
 
 
 def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(

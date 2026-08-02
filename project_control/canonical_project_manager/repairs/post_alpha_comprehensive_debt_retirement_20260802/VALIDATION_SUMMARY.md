@@ -73,3 +73,17 @@
 - All 13 admitted namespaces (`global`, `m00`, `m02`–`m12` excluding unregistered `m01`/`m13`) rerun with zero candidates and `vocabulary_touched=False`.
 - The clean audit exposed stale proof/schema assertions. PM-010 P1-035/P1-036, P1-066..P1-070 and P1-122/P1-123 explicitly quarantine Mutable Runtime Surface, Baseline-only Surface, five generated temporal-status labels, Candidate Audit and Stage-read State. Tests now assert their absence, and the unused `audit_surface` enum category was removed.
 - Complete Tier A vocabulary suite: 103 passed.
+
+## Unit 8 — aggregate closeout
+
+- Exact pre-transition clean commit: `747d8d3a7cdf20c1e681d2f1af9ef5693a364e2e`.
+- Offline non-editable install: PASS on CPython 3.13.5 with 38 compatible distributions.
+- Installed-package smoke: PASS.
+- Tier C: 5/5 passed and remained outside `alpha_current`.
+- `alpha_current`: 19/19 blocks, 802 Tier A tests, zero skips.
+- Tier B: 90/90 passed.
+- Promotion receipt verification: PASS; evidence hash `d8e9f16279293eeb83f6c9d3cf01492e937803147b1ecb3738274996638c926e`.
+- All 13 vocabulary namespaces: zero candidates, current touch stamps.
+- Proof authority: 201 families / 203 test files / 73 blocks.
+- Black, Ruff, compile, diff, clean-state and Git object-integrity checks: PASS.
+- All eight material-debt rows are repository-resolved. External live commissioning remains unproven because the required entitlement, account approval, credentials, endpoint and authorised side-effect procedure were not supplied; no real order or network effect was attempted.
