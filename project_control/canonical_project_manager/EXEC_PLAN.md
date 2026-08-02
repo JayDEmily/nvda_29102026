@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`
+**Status:** alpha foundation checkpoint superseded; bounded M01–M03 semantic continuity repair active
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`

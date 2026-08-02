@@ -9,6 +9,8 @@ from datetime import UTC, datetime
 from hashlib import sha256
 from typing import Any, Final
 
+from pydantic import BaseModel, ConfigDict
+
 CLOSED_AUTHORITIES: Final = (
     "candidate_expression",
     "risk_posture",
@@ -332,6 +334,151 @@ class ReferenceBuilder:
 
 def _json_key(value: Any) -> str:
     return json.dumps(_canonical(value), sort_keys=True, separators=(",", ":"))
+
+
+class _StrictPreparedSourcePayload(BaseModel):
+    """Typed M01 source payload for packet-surface proof fixtures."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    spot_price: float
+    prior_close: float
+    runtime_bar_time_utc: datetime
+
+
+def strict_production_envelope(
+    *,
+    source_artifact_id: str = "source.market.1",
+    capture_id: str = "capture.market.1",
+    spot_price: float = 100.0,
+    prior_close: float = 90.0,
+    runtime_bar_time_utc: datetime = _EFFECTIVE_AT,
+    limitations: tuple[str, ...] = (),
+):
+    """Build an M03 envelope from exact admitted M01 evidence.
+
+    This helper exists for packet-surface tests whose proposition starts after M03.
+    It deliberately uses the production M01 and M03 seams so those tests cannot
+    recreate the prohibited caller-authored prepared-payload path.
+    """
+
+    from nvda_desk import m01_source_admission as m01
+    from nvda_desk import m03_preparation as m03
+
+    payload = _StrictPreparedSourcePayload(
+        spot_price=spot_price,
+        prior_close=prior_close,
+        runtime_bar_time_utc=runtime_bar_time_utc,
+    )
+    semantic_bindings = (
+        m01.SourceSemanticBinding(
+            semantic_field="spot_price",
+            payload_field="spot_price",
+            value_type="float",
+            unit="USD",
+            requirement=m01.SourceFactRequirement.REQUIRED,
+        ),
+        m01.SourceSemanticBinding(
+            semantic_field="prior_close",
+            payload_field="prior_close",
+            value_type="float",
+            unit="USD",
+            requirement=m01.SourceFactRequirement.REQUIRED,
+        ),
+        m01.SourceSemanticBinding(
+            semantic_field="runtime_bar_time_utc",
+            payload_field="runtime_bar_time_utc",
+            value_type="datetime",
+            unit=None,
+            requirement=m01.SourceFactRequirement.REQUIRED,
+        ),
+    )
+    family_id = f"strict_packet_surface::{source_artifact_id}"
+    service = m01.SourceAdmissionService(
+        registry=m01.SourceFamilyRegistry.build(
+            [
+                m01.SourceFamilyContract(
+                    family_id=family_id,
+                    contract_id=f"{family_id}.v1",
+                    schema_version="1.0.0",
+                    payload_model=_StrictPreparedSourcePayload,
+                    providers=(
+                        m01.SourceProviderContract(
+                            provider_id="market",
+                            acquisition_channels=("recorded_api_response",),
+                        ),
+                    ),
+                    source_identifier=m01.SourceIdentifierContract(
+                        requirement=m01.SourceFactRequirement.REQUIRED,
+                        owner="market",
+                        namespace="market/strict-packet-surface",
+                        uniqueness_scope="market/strict-packet-surface",
+                        stability_rule="stable_for_source_object_lifetime",
+                        generation_rule="issued_by_upstream_provider",
+                    ),
+                    source_time_kind=m01.SourceTimeKind.INSTANT,
+                    downstream_owner=m01.SourceDownstreamOwner.M03,
+                    output_contract=m01.SourceOutputContract.RAW_SIGNAL_BATCH,
+                    signal_family_id=family_id,
+                    permitted_limitations=limitations,
+                    semantic_bindings=semantic_bindings,
+                )
+            ]
+        ),
+        capture_id_factory=lambda _: capture_id,
+        source_artifact_id_factory=lambda *_: source_artifact_id,
+    )
+    result = service.admit(
+        m01.SourceAdmissionRequest(
+            family_id=family_id,
+            contract_id=f"{family_id}.v1",
+            schema_version="1.0.0",
+            provider_id="market",
+            acquisition_channel="recorded_api_response",
+            source_object_id=f"provider::{source_artifact_id}",
+            observed_at_utc=runtime_bar_time_utc,
+            captured_at_utc=runtime_bar_time_utc,
+            captured_material=payload.model_dump_json().encode(),
+            typed_payload=payload,
+            declared_limitations=limitations,
+        )
+    )
+    if result.status != "accepted":
+        raise AssertionError(f"strict_m01_fixture_not_admitted:{result}")
+
+    allow_degraded = bool(limitations)
+    policies = tuple(
+        m03.FieldResolutionPolicy(
+            policy_id=f"m03.policy.{binding.semantic_field}",
+            policy_version="1.0.0",
+            output_contract_version="1.0.0",
+            semantic_field=binding.semantic_field,
+            mandatory=True,
+            admitted_source_roles=("market",),
+            value_type=binding.value_type,
+            unit=binding.unit,
+            temporal_comparison_rule="exact_effective_interval",
+            comparison_rule="exact",
+            authoritative_owner="market",
+            allow_degraded_candidates=allow_degraded,
+            unresolved_consequence="withhold",
+            optional_absence_consequence="unavailable",
+        )
+        for binding in semantic_bindings
+    )
+    return m03.PreparedDataBuilder().build(
+        source_artifacts=(result.source_artifact,),
+        calendar_projections=(),
+        field_resolution_policies=policies,
+        derivation_rules=(),
+        schema_version="1.0.0",
+        preparation_policy_version="prepare.1.0.0",
+        alignment_policy_version="alignment.1.0.0",
+        fingerprint_policy_version="sha256.1.0.0",
+        canonicalisation_version="json.1.0.0",
+        effective_at_utc=runtime_bar_time_utc,
+        payload_schema_version="1.0.0",
+    )
 
 
 def valid_capture_reference(

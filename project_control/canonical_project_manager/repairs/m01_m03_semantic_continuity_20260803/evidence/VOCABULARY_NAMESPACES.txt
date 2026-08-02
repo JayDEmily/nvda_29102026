@@ -1,0 +1,39 @@
+## global
+vocabulary_synonym_audit=PASS candidates=0 namespace=global scanned_files=563 vocabulary_touched=False resolved_occurrences=2179
+
+## m00
+vocabulary_synonym_audit=PASS candidates=0 namespace=m00 scanned_files=20 vocabulary_touched=False resolved_occurrences=400
+
+## m02
+vocabulary_synonym_audit=PASS candidates=0 namespace=m02 scanned_files=23 vocabulary_touched=False resolved_occurrences=116
+
+## m03
+vocabulary_synonym_audit=PASS candidates=0 namespace=m03 scanned_files=16 vocabulary_touched=False resolved_occurrences=186
+
+## m04
+vocabulary_synonym_audit=PASS candidates=0 namespace=m04 scanned_files=96 vocabulary_touched=False resolved_occurrences=491
+
+## m05
+vocabulary_synonym_audit=PASS candidates=0 namespace=m05 scanned_files=43 vocabulary_touched=False resolved_occurrences=317
+
+## m06
+vocabulary_synonym_audit=PASS candidates=0 namespace=m06 scanned_files=62 vocabulary_touched=False resolved_occurrences=307
+
+## m07
+vocabulary_synonym_audit=PASS candidates=0 namespace=m07 scanned_files=16 vocabulary_touched=False resolved_occurrences=98
+
+## m08
+vocabulary_synonym_audit=PASS candidates=0 namespace=m08 scanned_files=25 vocabulary_touched=False resolved_occurrences=162
+
+## m09
+vocabulary_synonym_audit=PASS candidates=0 namespace=m09 scanned_files=28 vocabulary_touched=False resolved_occurrences=547
+
+## m10
+vocabulary_synonym_audit=PASS candidates=0 namespace=m10 scanned_files=16 vocabulary_touched=False resolved_occurrences=158
+
+## m11
+vocabulary_synonym_audit=PASS candidates=0 namespace=m11 scanned_files=12 vocabulary_touched=False resolved_occurrences=218
+
+## m12
+vocabulary_synonym_audit=PASS candidates=0 namespace=m12 scanned_files=19 vocabulary_touched=False resolved_occurrences=107
+

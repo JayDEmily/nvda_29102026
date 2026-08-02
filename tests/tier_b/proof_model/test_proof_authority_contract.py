@@ -171,7 +171,33 @@ def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_deb
 ):
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "CONTINUATION:ALPHA_FOUNDATION_READY"
+    assert validate_active_control(REPO_ROOT) == "M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1"
+
+
+def test_active_control_validation_accepts_m01_m03_semantic_continuity_pack(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        "**Status:** alpha foundation checkpoint superseded; bounded M01–M03 "
+        "semantic continuity repair active\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        "| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |\n",
+        encoding="utf-8",
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(
+        "The current active bounded pack is " "`M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1`.\n",
+        encoding="utf-8",
+    )
+
+    assert validate_active_control(tmp_path) == "M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1"
 
 
 def test_active_control_validation_accepts_foundation_readiness_pack(

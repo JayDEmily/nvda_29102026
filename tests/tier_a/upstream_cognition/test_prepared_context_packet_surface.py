@@ -2,11 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
 
-from tests.support.m03_k05_k06_contract_harness import (
-    production_api,
-    production_capture_payload,
-    valid_capture_reference,
-)
+from tests.support.m03_k05_k06_contract_harness import strict_production_envelope
 
 from nvda_desk.contracts.packets import DmpV3ExecutionContext, PreparedContextIdentity
 from nvda_desk.downstream.checkpoints import PreparedIngressCheckpoint
@@ -48,24 +44,11 @@ def _prepared_snapshot():
 
 
 def _governed_snapshot(*, degraded: bool = False):
-    api = production_api()
-    reference = valid_capture_reference()
-    capture = api["SourceCaptureReference"].model_validate(production_capture_payload(reference))
     limitation = "calendar_reference_projection_missing"
-    envelope = api["PreparedDataBuilder"]().build(
-        source_capture_refs=(capture,),
-        input_schema_versions={"market.snapshot": "1.0.0"},
-        schema_version="1.0.0",
-        preparation_policy_version="prepare.1.0.0",
-        alignment_policy_version="alignment.1.0.0",
-        fingerprint_policy_version="sha256.1.0.0",
-        canonicalisation_version="json.1.0.0",
-        derivation_versions={},
-        effective_at_utc=reference.effective_at_utc,
-        payload=api["PreparedRuntimePayloadV1"](spot_price=100.0, prior_close=90.0),
-        payload_schema_version="1.0.0",
-        validation_state="degraded" if degraded else "valid",
-        completeness_state="degraded" if degraded else "complete",
+    envelope = strict_production_envelope(
+        spot_price=100.0,
+        prior_close=90.0,
+        runtime_bar_time_utc=datetime(2026, 7, 31, 5, 0, tzinfo=UTC),
         limitations=(limitation,) if degraded else (),
     )
     return prepare_runtime_snapshot_from_envelope(envelope), envelope

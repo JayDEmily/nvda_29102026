@@ -507,6 +507,11 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
             "| Active control pack | none — canonical ExecPlan only; continuation-ready checkpoint published |",
             "No subordinate bounded pack is active. The repository is at `CONTINUATION:ALPHA_FOUNDATION_READY`.",
         ),
+        "M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1": (
+            "**Status:** alpha foundation checkpoint superseded; bounded M01–M03 semantic continuity repair active",
+            "| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |",
+            "The current active bounded pack is `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1`.",
+        ),
     }
     matches = [
         state_id

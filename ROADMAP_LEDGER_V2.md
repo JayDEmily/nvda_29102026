@@ -10,9 +10,9 @@
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | M01–M03 semantic continuity repair — implementation green; aggregate acceptance active |
+| Current active slice | M01–M03 semantic continuity repair accepted; next gate is the separately bounded M03→M05 semantic-continuity repair |
 | Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |
-| Current repository claim | M01/M02→M03 semantic continuity is green in the bounded affected cone, but continuation readiness remains suspended until aggregate acceptance and checkpoint publication; the separately verified M03→M05 semantic-continuity defect remains open and out of this slice |
+| Current repository claim | M01/M02→M03 semantic continuity is accepted under exact owner-evidence construction and full physical validation. Continuation readiness remains suspended because the separately verified M03→M05 semantic-continuity defect remains open and was not repaired by this slice. |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -244,6 +244,6 @@ forged-boundary, immutable-policy, scanner and vocabulary gates are green. The
 final signed `alpha_current` result and exact Git checkpoint are published with
 the full-history archive.
 
-Complete `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` under the standard route in `CONTINUATION.md` section 11, then reassess continuation readiness. Donor integration, live operation, production durability,
+Use the accepted `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` checkpoint as the base for a separately bounded M03→M05 semantic-continuity repair, then reassess continuation readiness. Donor integration, live operation, production durability,
 profitability and production replay remain closed unless separately authorised
 and proved.
