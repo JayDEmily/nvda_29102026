@@ -7,6 +7,11 @@ from pathlib import Path
 from typing import get_type_hints
 
 import pytest
+from tests.support.m03_k05_k06_contract_harness import (
+    production_api,
+    production_capture_payload,
+    valid_capture_reference,
+)
 
 from nvda_desk.contracts.packets import DmpV3ExecutionContext
 from nvda_desk.ingress.raw_bundle_loader import load_api_payload
@@ -22,6 +27,7 @@ from nvda_desk.preparation.runtime_preparer import (
     RuntimePreparationService,
     prepare_runtime_dataset,
     prepare_runtime_snapshot,
+    prepare_runtime_snapshot_from_envelope,
 )
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -253,6 +259,58 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
                 parentids=[snapshot.snapshot_id or "snapshot:none"],
                 reviewtraceid=f"review::{audit_row_id}",
             )
+
+        api = production_api()
+        reference = valid_capture_reference(
+            capture_id=f"capture::{audit_row_id}",
+            source_artifact_id=f"source::{audit_row_id}",
+        )
+        source_reference = api["SourceCaptureReference"].model_validate(
+            production_capture_payload(reference)
+        )
+        envelope = api["PreparedDataBuilder"]().build(
+            source_capture_refs=(source_reference,),
+            input_schema_versions={"market.snapshot": "1.0.0"},
+            schema_version="1.0.0",
+            preparation_policy_version="prepare.1.0.0",
+            alignment_policy_version="alignment.1.0.0",
+            fingerprint_policy_version="sha256.1.0.0",
+            canonicalisation_version="json.1.0.0",
+            derivation_versions={},
+            effective_at_utc=reference.effective_at_utc,
+            payload=api["PreparedRuntimePayloadV1"](
+                runtime_bar_time_utc=reference.effective_at_utc,
+                spot_price=100.0,
+            ),
+            payload_schema_version="1.0.0",
+        )
+        canonical_snapshot = prepare_runtime_snapshot_from_envelope(envelope)
+        packet = build_prepared_context_packet(
+            packet_id=audit_row_id,
+            snapshot=canonical_snapshot,
+            emitted_at=datetime(2026, 5, 19, 10, 0, tzinfo=UTC),
+            execution_context=DmpV3ExecutionContext(
+                traceid=f"trace::{audit_row_id}",
+                runid=f"run::{audit_row_id}",
+                scenarioid=f"scenario::{atlas_record_id}",
+            ),
+            module_version="fwd009-current.1",
+            module_instance_id=f"fwd009-current::{audit_row_id}",
+            parentids=[source_reference.source_artifact_id],
+            reviewtraceid=f"review::{audit_row_id}",
+        )
+        assert packet.lineage.inputfingerprint == envelope.prepared_fingerprint
+        assert packet.packetrole == "prepared_context_packet"
+        assert packet.dataschema == "nvda.preparation.PreparedRuntimeContext.v1"
+        assert packet.producer.module_id == "prepared_ingress"
+        assert packet.producer.grammar_role == "prepared_runtime_context"
+        assert packet.producer.behaviour_class == "preparation_output"
+        assert packet.producer.stage_name == "runtime_context_preparation"
+        assert packet.traceid == f"trace::{audit_row_id}"
+        assert packet.runid == f"run::{audit_row_id}"
+        assert packet.scenarioid == f"scenario::{atlas_record_id}"
+        assert packet.lineage.reviewtraceid == f"review::{audit_row_id}"
+        assert packet.data.prepared_id == envelope.prepared_id
         return
 
     if behaviour == "provenance_lineage":

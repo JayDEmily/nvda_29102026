@@ -78,8 +78,16 @@ def test_api_app_exposes_replay_evaluation_without_untyped_authority_event_state
     assert isinstance(app.list_strategy_variants(), list)
     assert app.get_strategy_variant(app.list_strategy_variants()[0]["playbook_id"])["playbook_id"]
 
-    assert "record_veto_event" not in app.route_handlers
-    assert "record_risk_block_event" not in app.route_handlers
+    removed_authority_methods = {
+        "record_veto_event",
+        "list_veto_events",
+        "record_risk_block_event",
+        "list_risk_block_events",
+    }
+    assert removed_authority_methods.isdisjoint(app.route_handlers)
+    assert all(not hasattr(app, method_name) for method_name in removed_authority_methods)
+    assert not hasattr(app, "_veto_events")
+    assert not hasattr(app, "_risk_block_events")
 
     replay = app.replay_strategic_ladder_from_market([{"candidate_id": "a", "score": "0.25"}])
     assert replay["best_stack_id"] == "a"

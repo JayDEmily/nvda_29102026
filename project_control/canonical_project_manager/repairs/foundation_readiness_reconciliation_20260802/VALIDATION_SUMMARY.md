@@ -320,3 +320,21 @@ only the red Tier A route retains raw JUnit for exact node identity.
 Unit 1 control truth is closed. Unit 2 may open on the prepared-context/M04
 owner-identity boundary. Repository-wide readiness remains open because
 physical Tier A is red.
+
+## Units 1–4 retrospective test-preservation audit — 2026-08-03
+
+The repository-wide rule in `AGENTS.md` was applied to every test/support surface changed from accepted base `3876f171...` through Unit 4 `11699fed...`. The exact inventory is 20 files and 47 changed top-level surfaces. No physical test file was deleted or renamed and no skip, xfail or equivalent mechanism was added.
+
+Four under-preserved replacements were corrected: two FWD-004 packet identity/summary branches, FWD-009 prepared packet trace/lineage, and FWD-005 API method/process-state absence. Every changed surface is mapped in `evidence/UNIT1_4_TEST_CHANGE_AUTHORITY_REGISTER.tsv`.
+
+| Surface | Result |
+|---|---:|
+| Altered-file cone | 439 passed; 0 failed; 0 skipped |
+| Physical Tier A | 1,990 passed; 0 failed; 0 skipped |
+| Physical Tier B | 91 passed; 0 failed; 0 skipped |
+| Physical Tier C | 5 passed; 0 failed; 0 skipped |
+| Proof authority | PASS — 201 families, 203 paths, 73 blocks |
+| Proof-block definitions | PASS — 73/73 |
+| Vocabulary | PASS — 13/13 namespaces, 0 candidates |
+
+Verdict: **PASS**. Units 1–4 contain no unrecorded test retirement; the four incomplete proposition replacements have been restored without reopening obsolete compatibility authority.

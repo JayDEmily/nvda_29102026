@@ -193,6 +193,23 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
                 data={"atlas_record_id": atlas_record_id},
                 emitted_at=emitted_at,
             )
+        packet = DmpPacketBuilder.build_reference_packet(
+            packet_id=audit_row_id,
+            dataschema="nvda.test.DefaultedReferencePayload.v1",
+            data={"atlas_record_id": atlas_record_id},
+            **current_packet_kwargs(
+                role="reference_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
+        )
+        assert packet.traceid == f"trace::{audit_row_id}"
+        assert packet.runid == f"run::{audit_row_id}"
+        assert packet.scenarioid == f"scenario::{audit_row_id}"
+        assert packet.validation.status == "valid"
+        assert packet.validation.violations == []
+        assert {
+            "traceid_defaulted_from_packet_id",
+            "runid_defaulted_from_packet_id",
+        }.isdisjoint(packet.summary.keyflags)
         return
 
     if behaviour == "typed_wrapper_projection":
@@ -251,6 +268,22 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
                 traceid=f"trace::{audit_row_id}",
                 runid=f"run::{audit_row_id}",
             )
+        packet = DmpPacketBuilder.build_dmp_v3_packet(
+            packet_id=audit_row_id,
+            dataschema="nvda.test.BuilderDefaultPayload.v1",
+            data={"atlas_record_id": atlas_record_id},
+            packetrole="stage_packet",
+            module_id="builder_default_surface",
+            grammar_role="serial_runtime",
+            behaviour_class="stage_output",
+            **current_packet_kwargs(
+                role="stage_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
+        )
+        assert packet.producer.module_version == "current-test-owner.1"
+        assert packet.producer.module_instance_id == f"current-test-owner::{audit_row_id}"
+        assert packet.summary.headline == "builder_default_surface emitted stage_packet"
+        assert packet.summary.humanstate == "valid"
         return
 
     if behaviour == "stage_payload_carriage":
