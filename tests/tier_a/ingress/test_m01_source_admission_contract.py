@@ -147,7 +147,7 @@ def _production_fixture():
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=b'{"symbol":"NVDA","value":121.5}',
-        typed_payload={"symbol": "NVDA", "value": 121.5},
+        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=121.5),
     )
     return api, service, request
 
@@ -263,7 +263,7 @@ def test_production_public_seam_preserves_date_only_truth_without_fabricated_ins
         source_date=date(2026, 7, 31),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=b'{"symbol":"NVDA","value":0.0}',
-        typed_payload={"symbol": "NVDA", "value": 0.0},
+        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=0.0),
     )
 
     result = service.admit(request)
@@ -359,13 +359,38 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=(b'{"symbol":"NVDA","metadata":{"credential":"must-not-cross"}}'),
-        typed_payload={
-            "symbol": "NVDA",
-            "metadata": {"credential": "must-not-cross"},
-        },
+        typed_payload=NestedAuthorityPayload(
+            symbol="NVDA",
+            metadata={"credential": "must-not-cross"},
+        ),
     )
 
     result = service.admit(request)
 
     assert isinstance(result, api["SourceNonAdmission"])
     assert result.reason == "forbidden_source_payload_authority:credential"
+
+
+def test_unit3_admission_request_rejects_untyped_payload_mapping() -> None:
+    api, _, request = _production_fixture()
+
+    with pytest.raises(ValueError, match="typed_payload_must_be_concrete_pydantic_model"):
+        api["SourceAdmissionRequest"].model_validate(
+            {
+                **request.model_dump(mode="python", exclude={"typed_payload"}),
+                "typed_payload": {"symbol": "NVDA", "value": 121.5},
+            }
+        )
+
+
+def test_unit3_m01_transport_translation_uses_registered_payload_contract() -> None:
+    api, service, request = _production_fixture()
+    payload = request.model_dump(mode="json")
+
+    translated = service.translate_request(payload)
+
+    assert isinstance(translated, api["SourceAdmissionRequest"])
+    assert isinstance(translated.typed_payload, MarketSnapshotPayload)
+    assert translated.typed_payload == request.typed_payload
+    with pytest.raises(ValueError, match="unsupported_family_contract_or_version"):
+        service.translate_request({**payload, "family_id": "unknown_family"})

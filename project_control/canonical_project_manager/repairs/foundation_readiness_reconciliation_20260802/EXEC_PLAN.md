@@ -5,7 +5,7 @@
 **Status:** active
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 2 — prepared identity and packet boundary (validation complete)
+**Current unit:** Unit 3 — typed ingress and canonical composition (C-NORM aligned; C-PROOF open)
 
 ## Objective
 
@@ -140,6 +140,9 @@ declared environment; records, proof control and Git describe the same state.
 - 2026-08-02: all 13 vocabulary namespaces are candidate-clean after exact
   occurrence re-adjudication; no canonical label or alias changed. Tier B,
   proof authority and all 73 proof-block definitions remain green.
+- 2026-08-02: Unit 2 committed at `a7136bf`; Unit 3 opened against accepted M01
+  family-contract and M00 transport/composition law. JSON translation belongs
+  at an injected M01 adapter seam; the M01 admission request itself is typed.
 
 ## Decisions
 

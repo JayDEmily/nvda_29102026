@@ -75,7 +75,7 @@ def _upstream_fixture() -> dict[str, Any]:
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=b'{"symbol":"NVDA","value":121.5}',
-        typed_payload={"symbol": "NVDA", "value": 121.5},
+        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=121.5),
     )
     calendar_request = CalendarProjectionRequest(
         snapshot=m02.FinancialCalendarSnapshot.model_validate(
@@ -227,6 +227,18 @@ def test_cli_upstream_route_translates_only_into_m00_contract() -> None:
 
     assert result["status"] == "prepared"
     assert result["prepared_data"]["prepared_id"].startswith("prepared:")
+
+
+def test_unit3_m00_transport_translation_delegates_typed_payload_to_m01() -> None:
+    fixture = _upstream_fixture()
+    coordinator = _coordinator(fixture)
+
+    command = coordinator.translate_upstream_command(
+        fixture["command"].model_dump(mode="json")
+    )
+
+    assert isinstance(command.source_requests[0].typed_payload, MarketSnapshotPayload)
+    assert command == fixture["command"]
 
 
 def test_asgi_exposes_canonical_upstream_route() -> None:

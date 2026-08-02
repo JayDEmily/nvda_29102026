@@ -10,7 +10,7 @@
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | Unit 2 — prepared identity and packet boundary |
+| Current active slice | Unit 3 — typed ingress and canonical composition |
 | Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |
 | Current repository claim | accepted bounded alpha retained; proof admission and prepared identity/packet boundary reconciled; physical Tier A is 1,916 passed / 49 failed |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
@@ -236,10 +236,11 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The bounded foundation-readiness plan is active at Unit 2. Exact canonical
+The bounded foundation-readiness plan is active at Unit 3. Exact canonical
 admission is reconciled at 203/203 paths and the prepared-context/M04
 owner-identity boundary is green through its 618-test affected cone. Complete
-physical Tier A is now 1,916 passed / 49 failed; close the Unit 2 record, then
-open typed M01 ingress and canonical composition. New planned features,
+physical Tier A is 1,916 passed / 49 failed. Close typed M01 ingress and its
+current M00/transport caller cone without selecting legacy compatibility paths.
+New planned features,
 donor integration, live operation and production claims remain closed until the
 single continuation-readiness checkpoint passes.
