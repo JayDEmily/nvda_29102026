@@ -20,6 +20,7 @@ class MarketRegimeContextOutput(BaseModel):
     """Typed regime output from the bounded regime stage."""
 
     model_config = ConfigDict(extra="forbid")
+    regime_policy_version: str
     volatility_regime: str = "unknown"
     cross_asset_pressure_score: float = 0.0
     vix_level: float | None = None

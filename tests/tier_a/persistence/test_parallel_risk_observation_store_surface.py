@@ -3,6 +3,8 @@ from __future__ import annotations
 import importlib
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.regime import MarketRegimeContextInput
 from nvda_desk.contracts.stage_inputs import StageInputBundle
@@ -30,7 +32,8 @@ def _boundary_packets():
                 nvda_return_pct=0.1, nq_return_pct=0.05, vix_level=20.0
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
-        )
+        ),
+        **serial_runtime_packet_authority("parallel-risk-observation-store"),
     )
     result = ParallelRiskLaneService().run_from_serial_runtime(receipt=receipt)
     return result["bootstrap_input_packet"], result["lane_packet"]

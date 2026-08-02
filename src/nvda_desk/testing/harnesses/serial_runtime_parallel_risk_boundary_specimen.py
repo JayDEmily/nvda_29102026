@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
+from nvda_desk.contracts.packets import DmpV3ExecutionContext
 from nvda_desk.contracts.parallel_risk import (
     ParallelRiskObservationAppendReceipt,
     ParallelRiskObservationRecord,
@@ -26,7 +27,9 @@ from nvda_desk.services.parallel_risk_lane_service import ParallelRiskLaneServic
 DEFAULT_BOUNDARY_SPECIMEN_HOME = Path("var/audit/specimens/serial_runtime_parallel_risk_boundary")
 SPECIMEN_SOURCE_TIME_UTC = datetime(2026, 4, 21, 9, 31, tzinfo=UTC)
 SPECIMEN_PERSISTED_AT_UTC = datetime(2026, 4, 21, 9, 32, tzinfo=UTC)
+SPECIMEN_PACKET_EMITTED_AT_UTC = datetime(2026, 8, 2, 10, 0, tzinfo=UTC)
 SPECIMEN_OBSERVATION_ID = "observation::serial_runtime_parallel_risk_boundary::20260421T093100Z"
+SPECIMEN_SOURCE_ARTIFACT_ID = "source::serial-runtime-parallel-risk-boundary"
 
 
 @dataclass(frozen=True)
@@ -59,7 +62,20 @@ def build_serial_runtime_parallel_risk_boundary_specimen() -> (
 ):
     """Build the deterministic specimen for the admitted boundary path."""
 
-    serial_runtime_receipt = DeskRuntimeOrchestrator().run_once(_specimen_stage_input_bundle())
+    serial_runtime_receipt = DeskRuntimeOrchestrator().run_once(
+        _specimen_stage_input_bundle(),
+        execution_context=DmpV3ExecutionContext(
+            traceid="trace::serial-runtime-parallel-risk-boundary",
+            runid="run::serial-runtime-parallel-risk-boundary",
+            scenarioid="scenario::serial-runtime-parallel-risk-boundary",
+        ),
+        packet_emitted_at=SPECIMEN_PACKET_EMITTED_AT_UTC,
+        module_version="legacy-serial-runtime.1",
+        runtime_instance_id="legacy-serial-runtime::boundary-specimen",
+        upstream_packet_id="prepared-context::boundary-specimen",
+        source_artifact_ids=(SPECIMEN_SOURCE_ARTIFACT_ID,),
+        source_artifact_validator=lambda source_id: source_id == SPECIMEN_SOURCE_ARTIFACT_ID,
+    )
     service_result = ParallelRiskLaneService().run_from_serial_runtime(
         receipt=serial_runtime_receipt
     )

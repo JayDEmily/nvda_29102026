@@ -52,6 +52,7 @@ class TemporalContextInput(SourceTemporalStandard):
 class TemporalContextOutput(SourceTemporalStandard):
     """Typed temporal output from the bounded temporal stage."""
 
+    temporal_policy_version: str
     session_state: str = "unknown"
     active_tags: list[str] = Field(default_factory=list)
     next_event_time_utc: datetime | None = None

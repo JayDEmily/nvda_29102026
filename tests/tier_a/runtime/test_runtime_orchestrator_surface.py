@@ -89,22 +89,15 @@ def test_runtime_orchestrator_executes_the_admitted_six_stage_serial_path_from_s
     )
 
 
-def test_runtime_orchestrator_remains_stateless_and_keeps_partial_mapping_fallback() -> None:
+def test_runtime_orchestrator_remains_stateless_and_rejects_partial_mapping() -> None:
     runtime = _require_module("nvda_desk.runtime.orchestrator")
     assert runtime.__name__ == "nvda_desk.runtime.orchestrator"
     orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
 
     assert orchestrator.__dict__ == {}
-    receipt = orchestrator.run_once({"temporal": {"source_time_utc": "2026-04-21T09:31:00"}})
+    with pytest.raises(ValueError, match="stage_input_bundle_contract_invalid"):
+        orchestrator.run_once({"temporal": {"source_time_utc": "2026-04-21T09:31:00"}})
     assert orchestrator.__dict__ == {}
-    assert receipt["executed_stages"] == ["temporal"]
-    assert receipt["missing_stages"] == [
-        "regime",
-        "options_flow",
-        "posture",
-        "eligibility",
-        "execution",
-    ]
 
 
 def test_runtime_orchestrator_admitted_bundle_fails_closed_without_packet_authority() -> None:
@@ -207,7 +200,14 @@ def test_runtime_live_inventory_attachment_rejects_unsupported_request_keys() ->
 
     with pytest.raises(ValueError, match="unsupported keys: broker_order_id"):
         orchestrator.run_once(
-            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
+            StageInputBundle(
+                temporal=TemporalContextInput(
+                    source_time_utc=datetime(2026, 4, 21, 9, 31, tzinfo=UTC)
+                ),
+                regime=MarketRegimeContextInput(),
+                options_flow=OptionsFlowContextInput(),
+            ),
+            **serial_runtime_packet_authority("runtime-invalid-live-request"),
             live_inventory_service=DownstreamLiveInventoryService(),
             live_inventory_request={"broker_order_id": "broker-1"},
         )
@@ -278,13 +278,27 @@ def test_runtime_live_inventory_attachment_rejects_ambiguous_or_orphaned_inputs(
 
     with pytest.raises(ValueError, match="live_inventory_request requires live_inventory_service"):
         orchestrator.run_once(
-            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
+            StageInputBundle(
+                temporal=TemporalContextInput(
+                    source_time_utc=datetime(2026, 4, 21, 9, 31, tzinfo=UTC)
+                ),
+                regime=MarketRegimeContextInput(),
+                options_flow=OptionsFlowContextInput(),
+            ),
+            **serial_runtime_packet_authority("runtime-orphan-live-request"),
             live_inventory_request={"inventory_id": "orphan"},
         )
 
     with pytest.raises(ValueError, match="cannot both be supplied"):
         orchestrator.run_once(
-            {"temporal": {"source_time_utc": "2026-04-21T09:31:00"}},
+            StageInputBundle(
+                temporal=TemporalContextInput(
+                    source_time_utc=datetime(2026, 4, 21, 9, 31, tzinfo=UTC)
+                ),
+                regime=MarketRegimeContextInput(),
+                options_flow=OptionsFlowContextInput(),
+            ),
+            **serial_runtime_packet_authority("runtime-ambiguous-live-input"),
             live_inventory_service=DownstreamLiveInventoryService(),
             live_inventory_snapshot=DownstreamLiveInventorySnapshot(inventory_id="snapshot"),
         )

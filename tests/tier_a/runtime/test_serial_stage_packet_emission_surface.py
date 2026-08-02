@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+import pytest
 from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
@@ -113,23 +114,12 @@ def test_serial_stage_packet_emission_preserves_order_stage_ownership_and_truthf
         )
 
 
-def test_serial_runtime_mapping_fallback_ignores_extra_trading_authority_keys() -> None:
-    receipt = DeskRuntimeOrchestrator().run_once(
-        {
-            "temporal": {"source_timezone_raw": "America/New_York"},
-            "capital": {"authorised_notional_usd": 1000.0},
-            "live_inventory": {"position_id": "NVDA-LIVE"},
-        }
-    )
-
-    assert receipt["executed_stages"] == ["temporal"]
-    assert "capital" not in receipt["executed_stages"]
-    assert "live_inventory" not in receipt["executed_stages"]
-    assert receipt["missing_stages"] == [
-        "regime",
-        "options_flow",
-        "posture",
-        "eligibility",
-        "execution",
-    ]
-    assert "stage_packets" not in receipt
+def test_serial_runtime_mapping_rejects_extra_trading_authority_keys() -> None:
+    with pytest.raises(ValueError, match="stage_input_bundle_contract_invalid"):
+        DeskRuntimeOrchestrator().run_once(
+            {
+                "temporal": {"source_timezone_raw": "America/New_York"},
+                "capital": {"authorised_notional_usd": 1000.0},
+                "live_inventory": {"position_id": "NVDA-LIVE"},
+            }
+        )

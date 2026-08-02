@@ -10,6 +10,7 @@ from typing import Any, Callable
 
 from pydantic import ValidationError
 
+from nvda_desk.config.playbook_registry import PlaybookRegistryDocument
 from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
 from nvda_desk.contracts.execution import ExecutionExpressionInput, StageLocalHandoffSurface
 from nvda_desk.contracts.packets import (
@@ -95,6 +96,9 @@ class DeskRuntimeOrchestrator:
         upstream_packet_id: str | None = None,
         source_artifact_ids: tuple[str, ...] | None = None,
         source_artifact_validator: Callable[[str], bool] | None = None,
+        candidate_family_ids: tuple[str, ...] | list[str] = (),
+        playbook_registry: PlaybookRegistryDocument | None = None,
+        candidate_id: str | None = None,
         live_inventory_service: Any | None = None,
         live_inventory_request: Mapping[str, Any] | None = None,
         live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any] | None = None,
@@ -102,22 +106,6 @@ class DeskRuntimeOrchestrator:
         """Return one bounded runtime pass from the admitted stage-input boundary."""
 
         bundle = _coerce_admitted_bundle(stage_inputs)
-        if bundle is None:
-            normalised_stage_inputs = _normalise_stage_inputs(stage_inputs)
-            executed = [name for name in self.stage_order if name in normalised_stage_inputs]
-            receipt = {
-                "stage_order": list(self.stage_order),
-                "executed_stages": executed,
-                "missing_stages": [
-                    name for name in self.stage_order if name not in normalised_stage_inputs
-                ],
-            }
-            return _attach_runtime_live_inventory(
-                receipt,
-                live_inventory_service=live_inventory_service,
-                live_inventory_request=live_inventory_request,
-                live_inventory_snapshot=live_inventory_snapshot,
-            )
         receipt = self._run_serial_bundle(
             bundle,
             execution_context=execution_context,
@@ -127,6 +115,9 @@ class DeskRuntimeOrchestrator:
             upstream_packet_id=upstream_packet_id,
             source_artifact_ids=source_artifact_ids,
             source_artifact_validator=source_artifact_validator,
+            candidate_family_ids=candidate_family_ids,
+            playbook_registry=playbook_registry,
+            candidate_id=candidate_id,
         )
         return _attach_runtime_live_inventory(
             receipt,
@@ -146,6 +137,9 @@ class DeskRuntimeOrchestrator:
         upstream_packet_id: str | None,
         source_artifact_ids: tuple[str, ...] | None,
         source_artifact_validator: Callable[[str], bool] | None,
+        candidate_family_ids: tuple[str, ...] | list[str],
+        playbook_registry: PlaybookRegistryDocument | None,
+        candidate_id: str | None,
     ) -> dict[str, Any]:
         source_time_utc = _require_source_time_utc(stage_input_bundle)
         governed_context = _require_execution_context(execution_context)
@@ -171,7 +165,9 @@ class DeskRuntimeOrchestrator:
         options_flow = OptionsFlowContextService().evaluate(stage_input_bundle.options_flow)
         posture = PostureService().evaluate(regime=regime)
         eligibility = PlaybookEligibilityService().evaluate(
-            posture=posture, candidate_family_ids=[]
+            posture=posture,
+            candidate_family_ids=list(candidate_family_ids),
+            registry=playbook_registry,
         )
         execution_input = ExecutionExpressionInput(
             temporal=temporal.model_dump(mode="json"),
@@ -183,6 +179,7 @@ class DeskRuntimeOrchestrator:
         execution = evaluate_execution_expression(
             execution_input=execution_input,
             eligibility_output=eligibility,
+            candidate_id=candidate_id,
         )
 
         stage_outputs = {
@@ -389,23 +386,15 @@ def _coerce_live_inventory_snapshot(
 
 def _coerce_admitted_bundle(
     stage_inputs: Mapping[str, Any] | StageInputBundle,
-) -> StageInputBundle | None:
+) -> StageInputBundle:
     if isinstance(stage_inputs, StageInputBundle):
         return stage_inputs
     if isinstance(stage_inputs, Mapping):
         try:
             return StageInputBundle.model_validate(stage_inputs)
-        except ValidationError:
-            return None
-    return None
-
-
-def _normalise_stage_inputs(
-    stage_inputs: Mapping[str, Any] | StageInputBundle,
-) -> Mapping[str, Any]:
-    if isinstance(stage_inputs, StageInputBundle):
-        return stage_inputs.as_mapping()
-    return stage_inputs
+        except ValidationError as exc:
+            raise ValueError("stage_input_bundle_contract_invalid") from exc
+    raise TypeError("stage_inputs must be a StageInputBundle or compatible mapping")
 
 
 def _require_source_time_utc(stage_input_bundle: StageInputBundle) -> datetime:

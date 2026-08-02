@@ -3,6 +3,8 @@ from __future__ import annotations
 from datetime import UTC, datetime, time
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
+TEMPORAL_CONTEXT_POLICY_VERSION = "temporal-context.session-clock.v1"
+
 
 def classify_session_state(
     source_time_utc: datetime,

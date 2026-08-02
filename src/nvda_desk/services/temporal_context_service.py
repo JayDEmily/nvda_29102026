@@ -8,7 +8,10 @@ from nvda_desk.contracts.temporal import (
     build_source_temporal_payload,
 )
 from nvda_desk.domain.temporal.event_windows import active_window_tags, next_event_time_utc
-from nvda_desk.domain.temporal.session_clock import classify_session_state
+from nvda_desk.domain.temporal.session_clock import (
+    TEMPORAL_CONTEXT_POLICY_VERSION,
+    classify_session_state,
+)
 
 
 class TemporalContextService:
@@ -18,6 +21,7 @@ class TemporalContextService:
         if context.source_time_utc is None:
             raise ValueError("Temporal context requires source_time_utc for stage evaluation.")
         return TemporalContextOutput(
+            temporal_policy_version=TEMPORAL_CONTEXT_POLICY_VERSION,
             **build_source_temporal_payload(
                 source_time_utc=context.source_time_utc,
                 source_date=context.source_date,

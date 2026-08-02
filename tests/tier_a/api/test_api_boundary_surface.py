@@ -53,6 +53,5 @@ def test_api_boundary_wiring_stays_bounded_to_app_shell_and_runtime_orchestrator
     assert "get_runtime_settings" in app.route_handlers
     assert "paths" in app.config_surface.runtime_settings().model_dump()
 
-    receipt = app.run_once({"temporal": {"present": True}})
-    assert receipt["executed_stages"] == ["temporal"]
-    assert receipt["missing_stages"][0] == "regime"
+    with pytest.raises(ValueError, match="stage_input_bundle_contract_invalid"):
+        app.run_once({"temporal": {"present": True}})

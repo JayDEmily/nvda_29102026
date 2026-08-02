@@ -24,6 +24,7 @@ class ExecutionExpressionInput(_DetachedMutableModel):
 
 class ExecutionExpressionOutput(_DetachedMutableModel):
     model_config = ConfigDict(extra="forbid")
+    candidate_id: str | None = None
     lead_playbook_id: str | None = None
     scaling_plan: list[str] = Field(default_factory=list)
     final_risk_join: dict | None = None

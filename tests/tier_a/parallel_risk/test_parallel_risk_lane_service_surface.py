@@ -4,6 +4,7 @@ import importlib
 from datetime import UTC, datetime
 
 import pytest
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -35,7 +36,8 @@ def _serial_runtime_receipt() -> dict[str, object]:
                 nvda_return_pct=0.1, nq_return_pct=0.05, vix_level=20.0
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
-        )
+        ),
+        **serial_runtime_packet_authority("parallel-risk-lane-service"),
     )
 
 
@@ -77,7 +79,8 @@ def test_parallel_risk_lane_service_runs_serial_runtime_boundary_path_without_hi
     assert result["lane_packet"].lineage.dependencyids == [
         "dmp::parallel" "_risk::bootstrap_input::20260421T093100Z"
     ]
-    assert service.__dict__.keys() == {"_service"}
+    assert set(service.__dict__) == {"_service", "_risk_policy_decisions"}
+    assert service.list_risk_decisions() == []
 
 
 def test_parallel_risk_lane_service_fails_closed_on_temporal_packet_id_contract_mismatch() -> None:

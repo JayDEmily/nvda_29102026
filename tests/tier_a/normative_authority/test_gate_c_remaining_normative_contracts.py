@@ -169,10 +169,12 @@ def test_c034_execution_expression_carries_candidate_identity_without_capital_or
             active_family_ids=["momentum_breakout"],
             registry_id="registry-v1",
         ),
+        candidate_id="candidate-c034",
     )
 
     assert "candidate_id" in ExecutionExpressionOutput.model_fields
     payload = output.model_dump(mode="json")
+    assert payload["candidate_id"] == "candidate-c034"
     assert not {
         "authorised_notional_usd",
         "authorised_deployable_pct",

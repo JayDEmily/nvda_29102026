@@ -16,9 +16,12 @@ class ExecutionService:
         *,
         execution_input: ExecutionExpressionInput,
         eligibility_output: PlaybookEligibilityOutput,
+        candidate_id: str | None = None,
     ) -> dict:
         expression = evaluate_execution_expression(
-            execution_input=execution_input, eligibility_output=eligibility_output
+            execution_input=execution_input,
+            eligibility_output=eligibility_output,
+            candidate_id=candidate_id,
         )
         return {
             "expression": expression,

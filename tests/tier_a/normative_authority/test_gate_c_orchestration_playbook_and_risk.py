@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime, timezone
 
 import pytest
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
 
 from nvda_desk.config.playbook_registry import PlaybookRegistryDocument
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
@@ -51,7 +52,9 @@ def test_c020_c035_parallel_risk_policy_state_is_instance_owned_not_module_globa
 
 
 def test_c025_c027_temporal_and_regime_outputs_carry_the_policy_versions_that_define_them() -> None:
-    receipt = DeskRuntimeOrchestrator().run_once(_bundle())
+    receipt = DeskRuntimeOrchestrator().run_once(
+        _bundle(), **serial_runtime_packet_authority("c025-c027")
+    )
     temporal = receipt["stage_outputs"]["temporal"]
     regime = receipt["stage_outputs"]["regime"]
 
@@ -95,3 +98,25 @@ def test_c033_orchestrator_receives_candidate_families_and_registry_as_owned_inp
     signature_fields = set(DeskRuntimeOrchestrator.run_once.__annotations__)
     assert "candidate_family_ids" in signature_fields
     assert "playbook_registry" in signature_fields
+
+    registry = PlaybookRegistryDocument(
+        registry_id="registry-c033",
+        playbooks=(
+            PlaybookDefinition(
+                playbook_id="strategy-a",
+                setup_family="family-a",
+                setup_variant_ids=("family-a.base",),
+            ),
+        ),
+    )
+    receipt = DeskRuntimeOrchestrator().run_once(
+        _bundle(),
+        **serial_runtime_packet_authority("c033"),
+        candidate_family_ids=("family-a",),
+        playbook_registry=registry,
+        candidate_id="candidate-c033",
+    )
+
+    assert receipt["stage_outputs"]["eligibility"]["registry_id"] == "registry-c033"
+    assert receipt["stage_outputs"]["eligibility"]["active_family_ids"] == ["family-a"]
+    assert receipt["stage_outputs"]["execution"]["candidate_id"] == "candidate-c033"

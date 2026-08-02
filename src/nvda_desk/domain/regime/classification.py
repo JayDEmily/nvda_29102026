@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from nvda_desk.contracts.regime import MarketRegimeContextInput, MarketRegimeContextOutput
 
+MARKET_REGIME_POLICY_VERSION = "market-regime.cross-asset.v1"
+
 
 def classify_market_regime(context: MarketRegimeContextInput) -> MarketRegimeContextOutput:
     """Return one bounded regime classification from cross-asset inputs."""
@@ -45,6 +47,7 @@ def classify_market_regime(context: MarketRegimeContextInput) -> MarketRegimeCon
             reasons.append(token)
 
     return MarketRegimeContextOutput(
+        regime_policy_version=MARKET_REGIME_POLICY_VERSION,
         volatility_regime=regime,
         cross_asset_pressure_score=round(score, 3),
         vix_level=context.vix_level,
