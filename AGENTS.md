@@ -147,6 +147,13 @@ Runtime behaviour must follow this order:
 
 Tests govern runtime behaviour, but passing tests alone are not proof of correctness. Do not implement behaviour before governing intent and governing tests exist or are lawfully updated. False-positive resistance and evidence quality matter.
 
+## Test-preservation rule
+
+Do not retire, re-author, weaken, skip, xfail, broaden, or redirect any failing test merely to make a gate, unit, suite, or programme green. Treat every existing assertion as binding unless governing normative authority proves that the test itself is obsolete.
+
+For any proposed test change, preserve the original behavioural proposition and record the old node, governing authority, replacement assertion, and red-to-green evidence. Where authority is ambiguous, stop that semantic unit and report the ambiguity; do not adjudicate by convenience. A renamed, moved, split, merged, or owner-rebound test must remain traceable one-to-one to the original proposition unless explicit higher authority lawfully supersedes it.
+
+
 ## Atlas governance
 Atlas behavioural material is candidate intent only until lawfully admitted. A user-accepted Atlas architecture allocation may govern target ownership and traceability when the active ExecPlan and routed architecture documents explicitly adopt it; that architectural acceptance does not automatically admit every Atlas cohort or source record as runtime behaviour.
 
