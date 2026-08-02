@@ -3,7 +3,7 @@ from __future__ import annotations
 import importlib
 from datetime import datetime, timezone
 from enum import Enum
-from typing import Any
+from typing import Any, get_args
 
 import pytest
 
@@ -389,25 +389,42 @@ def test_c013_stage_bundle_rejects_mismatched_common_context_reference() -> None
 
 # C-024 / N-06 — owner-declared atomic transaction and idempotency boundary.
 def _transaction_contracts():
-    module = _require_module("nvda_desk.persistence.transactions")
+    module = _require_module("nvda_desk.m13_state_kernel")
     return (
         _require_attr(module, "TransactionCommand"),
-        _require_attr(module, "InMemoryTransactionBoundary"),
+        _require_attr(module, "IdempotencyKey"),
+        _require_attr(module, "InMemoryUnitOfWork"),
         _require_attr(module, "IdempotencyConflictError"),
     )
 
 
-def test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation() -> None:
-    command_type, boundary_type, _ = _transaction_contracts()
-    boundary = boundary_type(initial_state={"count": 0})
-    command = command_type(
-        command_type="position_reconciliation",
-        consistency_unit_id="position-1",
-        command_id="command-1",
-        idempotency_key="idem-1",
-        input_fingerprint=_FINGERPRINT_A,
+def _transaction_command(
+    command_type: Any,
+    key_type: Any,
+    *,
+    input_fingerprint: str,
+    command_id: str = "command-1",
+):
+    return command_type(
+        command_id=command_id,
+        idempotency_key=key_type(
+            value="idem-1",
+            command_type="position_reconciliation",
+            consistency_unit_id="position-1",
+        ),
+        input_fingerprint=input_fingerprint,
         expected_state_version=0,
         policy_version="transaction-v1",
+    )
+
+
+def test_c024_same_idempotency_key_and_input_returns_original_without_repeating_mutation() -> None:
+    command_type, key_type, boundary_type, _ = _transaction_contracts()
+    boundary = boundary_type(initial_state={"count": 0})
+    command = _transaction_command(
+        command_type,
+        key_type,
+        input_fingerprint=_FINGERPRINT_A,
     )
 
     def mutate(state: dict[str, Any]) -> dict[str, Any]:
@@ -423,38 +440,34 @@ def test_c024_same_idempotency_key_and_input_returns_original_without_repeating_
 
 
 def test_c024_same_idempotency_key_with_different_input_is_conflict() -> None:
-    command_type, boundary_type, conflict = _transaction_contracts()
+    command_type, key_type, boundary_type, conflict = _transaction_contracts()
     boundary = boundary_type(initial_state={"count": 0})
-    common = dict(
-        command_type="position_reconciliation",
-        consistency_unit_id="position-1",
-        command_id="command-1",
-        idempotency_key="idem-1",
-        expected_state_version=0,
-        policy_version="transaction-v1",
-    )
     boundary.execute(
-        command=command_type(input_fingerprint=_FINGERPRINT_A, **common),
+        command=_transaction_command(
+            command_type,
+            key_type,
+            input_fingerprint=_FINGERPRINT_A,
+        ),
         mutation=lambda state: {"receipt_id": "receipt-1", "result_id": "result-1"},
     )
     with pytest.raises(conflict):
         boundary.execute(
-            command=command_type(input_fingerprint=_FINGERPRINT_B, **common),
+            command=_transaction_command(
+                command_type,
+                key_type,
+                input_fingerprint=_FINGERPRINT_B,
+            ),
             mutation=lambda state: {"receipt_id": "receipt-2", "result_id": "result-2"},
         )
 
 
 def test_c024_failed_mutation_rolls_back_state_and_emits_no_success_receipt() -> None:
-    command_type, boundary_type, _ = _transaction_contracts()
+    command_type, key_type, boundary_type, _ = _transaction_contracts()
     boundary = boundary_type(initial_state={"count": 0})
-    command = command_type(
-        command_type="position_reconciliation",
-        consistency_unit_id="position-1",
-        command_id="command-1",
-        idempotency_key="idem-1",
+    command = _transaction_command(
+        command_type,
+        key_type,
         input_fingerprint=_FINGERPRINT_A,
-        expected_state_version=0,
-        policy_version="transaction-v1",
     )
 
     def fail_after_mutation(state: dict[str, Any]) -> dict[str, Any]:
@@ -633,67 +646,99 @@ def test_c036_missing_branch_cannot_be_reconstructed_or_converted_by_confidence(
 
 
 # C-046 / N-09 — verified replay envelope and comparison-only subordination.
+def _replay_material(*, service: Any, summary: str = "stand_down"):
+    review_contracts = _require_module("nvda_desk.contracts.review")
+    output = _require_attr(review_contracts, "ReviewPacket")(
+        packet_id="capital-decision:1",
+        summary=summary,
+        sections=[summary],
+    )
+    return output, service.build_material(
+        owner_module="M09",
+        contract_version="1.0.0",
+        occurrence_id="decision-occurrence:1",
+        content=output,
+        sequence=0,
+        material_time_utc=_TIME,
+        material_label="original-output",
+    )
+
+
+def _replay_envelope(
+    *,
+    replay_class: str,
+    missing_material: tuple[str, ...] = (),
+    executable_versions: tuple[str, ...] = (),
+):
+    replay = _require_module("nvda_desk.m12_evidence_replay")
+    service = _require_attr(replay, "EvidenceReplayService")()
+    output, material = _replay_material(service=service)
+    output_fingerprint = _require_attr(replay, "semantic_fingerprint")(
+        output.model_dump(mode="python")
+    )
+    envelope = service.build_envelope(
+        replay_run_id="replay-run-1",
+        replay_class=replay_class,
+        target_id="capital-decision:1",
+        original_output_id="capital-decision:1",
+        original_output_occurrence_id="decision-occurrence:1",
+        original_output_fingerprint=output_fingerprint,
+        original_reasons=("stand_down",),
+        materials=(material,),
+        executable_versions=executable_versions,
+        missing_material=missing_material,
+    )
+    return service, envelope
+
+
 def test_c046_authoritative_replay_contract_carries_complete_logical_envelope_and_classes() -> None:
-    contracts = _require_module("nvda_desk.contracts.replay")
+    contracts = _require_module("nvda_desk.m12_evidence_replay.contracts")
     replay_class = _require_attr(contracts, "ReplayClass")
     authority_status = _require_attr(contracts, "ReplayAuthorityStatus")
-    envelope = _require_attr(contracts, "AuthoritativeReplayEnvelope")
-    assert _enum_values(replay_class) == {
+    envelope = _require_attr(contracts, "ReplayEnvelope")
+    assert set(get_args(replay_class)) == {
         "preserved_occurrence_replay",
         "governed_semantic_reexecution",
         "comparison_only",
     }
-    assert "non_authoritative_incomplete" in _enum_values(authority_status)
+    assert "non_authoritative_incomplete" in set(get_args(authority_status))
     assert {
-        "replay_envelope_id",
+        "envelope_id",
         "replay_run_id",
         "replay_class",
-        "target_identity",
-        "source_artifacts",
-        "dataset_identity",
-        "contract_versions",
-        "policy_versions",
-        "executable_meaning",
-        "ordered_state_and_receipt_refs",
-        "original_output_identity",
-        "original_semantic_fingerprint",
+        "target_id",
+        "original_output_id",
+        "original_output_occurrence_id",
+        "original_output_fingerprint",
+        "original_reasons",
+        "materials",
+        "material_ids",
+        "executable_versions",
+        "missing_material",
+        "unverifiable_material",
+        "contradictions",
+        "semantic_domain_fingerprint",
+        "semantic_fingerprint",
     }.issubset(_field_names(envelope))
 
 
 def test_c046_missing_executable_or_artifact_authority_is_non_authoritative_incomplete() -> None:
-    contracts = _require_module("nvda_desk.contracts.replay")
-    service_module = _require_module("nvda_desk.analysis.replay.service")
-    replay_class = _require_attr(contracts, "ReplayClass")
-    envelope_type = _require_attr(contracts, "AuthoritativeReplayEnvelope")
-    service_type = _require_attr(service_module, "AuthoritativeReplayService")
-    envelope = envelope_type(
-        replay_envelope_id="replay-envelope-1",
-        replay_run_id="replay-run-1",
-        replay_class=replay_class.GOVERNED_SEMANTIC_REEXECUTION,
-        target_identity="decision-1",
-        source_artifacts=(),
-        dataset_identity=None,
-        contract_versions={"decision": "v1"},
-        policy_versions={"decision": "v1"},
-        executable_meaning=None,
-        ordered_state_and_receipt_refs=(),
-        original_output_identity="output-1",
-        original_semantic_fingerprint=_FINGERPRINT_A,
-        missing_authority=("source_artifacts", "executable_meaning"),
+    service, envelope = _replay_envelope(
+        replay_class="governed_semantic_reexecution",
+        executable_versions=("m09.capital.v1",),
+        missing_material=("source_artifacts", "executable_meaning"),
     )
-    assessment = service_type().assess(envelope)
-    assert assessment.authority_status.value == "non_authoritative_incomplete"
-    assert set(assessment.missing_authority) == {"source_artifacts", "executable_meaning"}
-    assert assessment.reconstruction_claimed is False
+    assessment = service.assess(envelope)
+    assert assessment.authority_status == "non_authoritative_incomplete"
+    assert {"source_artifacts", "executable_meaning"}.issubset(set(assessment.missing_material))
+    assert assessment.runtime_authority_promoted is False
+    assert assessment.live_side_effects_performed is False
 
 
 def test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_reconstruction() -> None:
-    service_module = _require_module("nvda_desk.analysis.replay.service")
-    comparison = service_module.ReplayEvaluationService().compare_outputs(
-        baseline={"decision_id": "decision-1", "action": "stand_down"},
-        candidate={"decision_id": "decision-1", "action": "stand_down"},
-    )
-    assert comparison.replay_class == "comparison_only"
-    assert comparison.authority_status == "non_authoritative_comparison"
-    assert comparison.reconstruction_claimed is False
-    assert comparison.runtime_authority_promoted is False
+    service, envelope = _replay_envelope(replay_class="comparison_only")
+    assessment = service.assess(envelope)
+    assert assessment.replay_class == "comparison_only"
+    assert assessment.authority_status == "comparison_only"
+    assert assessment.runtime_authority_promoted is False
+    assert assessment.live_side_effects_performed is False
