@@ -261,8 +261,8 @@ every module or require deletion and rewriting of retained evidence.
 
 The immediate sequence is governed in full by `CONTINUATION.md`:
 
-1. reconcile exact physical proof admission and cluster the current failing
-   nodes by authority/common cause;
+1. prove exact canonical-model admission and cluster the current failing nodes
+   by authority/common cause;
 2. close the prepared-context/M04 identity boundary;
 3. close typed M01 ingress with current M00/transport callers;
 4. close confirmed dependency, state-policy, vocabulary-scanner and canonical

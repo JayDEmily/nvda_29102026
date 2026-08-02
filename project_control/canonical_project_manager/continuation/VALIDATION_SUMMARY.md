@@ -13,6 +13,12 @@ No production source or test file was changed. No donor implementation was
 integrated, no feature was started and no claim was made that the known physical
 Tier A failures or proof-admission gaps are closed.
 
+> Execution update, 2026-08-02: readiness Unit 1 supersedes only the
+> present-tense proof-admission claim below. Under the supplied CPython 3.13.5
+> wheelhouses, canonical v4 authority covers all 203 physical test files with
+> zero missing or stale paths; physical Tier A reproduces 1,713/247 and Tier B
+> passes 91/91. The earlier 32-file count selected legacy provenance sections.
+
 ## Semantic validation
 
 - Read the root authority, planning law and execution method in full.
@@ -41,7 +47,7 @@ normal feature development resumes after one exact readiness checkpoint.
 |---|---|
 | Full-read manifest verification against Git objects | PASS — 60 rows, zero hash mismatches |
 | Comparative physical Tier A arithmetic | PASS — 44 partitions, 8 failing, 1,713 passed, 247 failed, 1,960 total |
-| Comparative proof-control arithmetic | PASS — 202 physical files, 145 unique registry paths, 32 unadmitted files |
+| Comparative legacy-section join arithmetic | HISTORICAL PASS — 202 Tier A/B physical files, 145 legacy-section paths, 32 reported gaps; not canonical v4 authority |
 | Required current routes and continuation sections | PASS — all paths and required sections present |
 | Historical process-register preservation | PASS — suffix byte-identical to `68789ff`; file line count unchanged at 464 |
 | Markdown/patch whitespace | PASS — `git diff --check` |
@@ -55,11 +61,11 @@ and M00 20. Exact occurrence dispositions remained effective, including the
 historical process-overlay occurrences whose line identities were deliberately
 preserved.
 
-The current runtime interpreter is CPython 3.12.13 and does not include pytest.
-No environment was created because this assignment authorises strategy rather
-than production/test repair and expressly excludes a full repository
-revalidation exercise. Existing comparative results are reported as evidence,
-not rerun or promoted by this summary.
+At the strategy checkpoint, the available interpreter was CPython 3.12.13 and
+did not include pytest. No environment was created in that assignment because
+it authorised strategy rather than production/test repair. Readiness Unit 1's
+later supplied-environment execution is recorded in the update above and in its
+own validation summary.
 
 ## Changed control surfaces
 
@@ -75,10 +81,9 @@ not rerun or promoted by this summary.
 
 ## Open execution truth
 
-The next worker must still reproduce the exact physical/admission baseline on
-the committed continuation checkpoint and execute the bounded programme in
-`CONTINUATION.md`. In particular, this strategy assignment does not close the
-247 physical Tier A failures, the 32 admission gaps, prepared packet owner
-identity, concrete typed M01 ingress, the forbidden M12-to-M10 dependency,
+Readiness Unit 1 has reproduced the exact physical/admission baseline and
+closed the false 32-path current claim. The execution programme still must
+close the 247 physical Tier A failures, prepared packet owner identity,
+concrete typed M01 ingress, the forbidden M12-to-M10 dependency,
 caller-mutable policy values, vocabulary projection-header observation or
 compatibility API default-identity/process-state findings.

@@ -4,7 +4,7 @@
 
 | Field | Current truth |
 |---|---|
-| Status | canonical strategy; execution not started |
+| Status | canonical strategy; execution active at readiness Unit 1 |
 | Date | 2026-08-02 |
 | Continuation base | primary repository at `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Assurance reference only | secondary repository at `fffb4e31c03a3bc031f28eba89f9a59562484a8f` |
@@ -36,9 +36,8 @@ silently revoked.
    fail-closed operational adapters, Tier C specimens and vocabulary
    reconciliation remain the foundation of the continuation.
 3. Historical Gate D acceptance remains valid for the behaviour and checkpoint
-   it actually proved. It is not, by itself, a claim that every current physical
-   test is admitted or that the later aggregate repository is ready for
-   unrestricted extension.
+   it actually proved. It is not, by itself, a claim that the later aggregate
+   repository is ready for unrestricted extension.
 4. One bounded foundation-readiness programme must reconcile that later
    aggregate state. It must work by common cause and module boundary, not by
    replaying the alpha module programme or repairing 247 test nodes one at a
@@ -63,7 +62,7 @@ architecture. In particular:
   vocabulary dispositions;
 - the current curated `alpha_current` promotion route passed all 19 blocks,
   comprising 802 Tier A tests and 90 Tier B tests;
-- the complete physical Tier B suite passed 90 of 90 tests;
+- the complete physical Tier B suite passed 91 of 91 tests in readiness Unit 1;
 - exact static analysis found 261 internal modules and 417 import edges with no
   exact cycles, syntax errors or unresolved internal imports;
 - fresh-process import probes passed for 258 of 258 importable modules in both
@@ -78,17 +77,17 @@ replacing the project method.
 
 ### 2.2 What is not yet established
 
-The comparative audit also established a material difference between curated
-promotion and the physical repository:
+Readiness Unit 1 reproduced the material difference between curated promotion
+and the physical repository while correcting the audit's stale admission join:
 
 | Surface | Current evidence |
 |---|---:|
 | Complete physical Tier A | 1,713 passed; 247 failed; 1,960 total |
 | Failing Tier A partitions | 8 of 44 |
-| Complete physical Tier B | 90 passed; 0 failed |
-| Physical test files | 202 |
-| Unique registry test paths | 145 |
-| Physical test files outside exact admission | 32 |
+| Complete physical Tier B | 91 passed; 0 failed |
+| Physical test files | 203 |
+| Canonical v4 exact path admissions | 203 |
+| Missing or stale exact admissions | 0 |
 
 The failures are concentrated rather than evenly distributed: runtime 143,
 packets 52, normative authority 22, parallel risk 19, testing harnesses 4,
@@ -116,8 +115,13 @@ reconciliation questions:
   creating false candidates;
 - compatibility API paths fabricate some identity defaults and retain mutable
   process-local event state despite the M00 law that canonical composition must
-  receive identity and state explicitly;
-- exact proof admission does not cover 32 current physical test files.
+  receive identity and state explicitly.
+
+The earlier 32-file admission result joined only retained legacy provenance
+sections in `config/retained_test_registry.yaml`. The canonical v4 model is the
+sole machine-readable admission authority and covers every current physical
+test path exactly once. The historical audit artefact remains useful evidence
+of why joins must select the declared model, but it is not a current gap.
 
 Until these matters are adjudicated on the primary repository, “all repository
 debt retired” and “all current modules are dependable extension foundations”
@@ -281,8 +285,8 @@ must use the following order, one semantically complete unit at a time.
 
 - reproduce the current physical Tier A/Tier B inventory and exact
   registry/proof join on the continuation checkpoint;
-- adjudicate the 32 unadmitted files as retain and admit, merge into an owning
-  proof family, or retire as superseded/non-authoritative;
+- prove that the declared canonical model, rather than retained provenance
+  sections, is selected and that every current physical path is admitted once;
 - resolve duplicate/stale control rows only where the exact join proves a real
   ambiguity;
 - preserve failing-node identity and cluster failures by shared proposition or
@@ -464,19 +468,20 @@ required environment/source is unavailable. Escalate to the user only when the
 choice introduces new product meaning, external authority, destructive action
 or scope outside this strategy.
 
-The continuation does not authorise production code in this strategy task,
-donor implementation integration, live credentials or network execution,
-production claims, a microservice/plugin conversion, wholesale legacy package
-relocation, broad Atlas re-adjudication, or a new retrospective programme.
+The original strategy assignment did not authorise production mutation. The
+current execution instruction authorises only the bounded repairs admitted by
+this programme and its existing gates. Donor implementation integration, live
+credentials or network execution, production claims, a microservice/plugin
+conversion, wholesale legacy package relocation, broad Atlas re-adjudication
+and a new retrospective programme remain excluded.
 
 ## 13. Handover to the next execution worker
 
-Start from the committed continuation checkpoint in the primary repository.
-Read this document, the canonical ExecPlan, the live roadmap and the existing
-Gate C protocol. Open one subordinate foundation-readiness plan and begin with
-section 8.1, not with donor code or a new feature. Preserve all accepted module
-history, use the comparative audit's exact failure/admission artefacts as the
-initial baseline, and reproduce only the narrow facts needed on the new commit.
+Execution started from the committed continuation checkpoint in the primary
+repository. The subordinate foundation-readiness plan is active and section
+8.1 has reproduced current proof truth without donor code or a new feature.
+Preserve all accepted module history and continue from the current unit rather
+than replaying the baseline work.
 
 The first implementation-bearing unit is the prepared identity and packet
 boundary in section 8.2 after proof-universe truth is current. Continue one

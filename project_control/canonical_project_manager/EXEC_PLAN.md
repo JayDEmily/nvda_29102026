@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** alpha delivery accepted; bounded continuation foundation reconciliation ready; no execution unit active
+**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active at Unit 1
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -18,10 +18,10 @@ transcripts are not committed by default when a concise reproducible result and
 node-level failure delta establish the same claim.
 
 The alpha-delivery history governed by this plan is accepted. The 2026-08-02
-continuation amendment preserves that work and opens no implementation unit by
-itself. It corrects the later repository-wide readiness claim after the
-comparative audit and routes one bounded foundation reconciliation before
-ordinary planned feature development resumes.
+continuation amendment preserves that work. Its bounded subordinate plan is
+active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`,
+beginning with proof-universe truth and opening no production implementation in
+Unit 1. Ordinary planned feature development remains closed until readiness.
 
 ## 1. Objective
 
@@ -372,11 +372,13 @@ profitability work is authorised by this completion state.
 
 ### Comparative assurance correction
 
-The integrated comparative audit at primary checkpoint `68789ff` establishes
-that the 19-block curated `alpha_current` route is green at 802 Tier A and 90
-Tier B tests, and that complete physical Tier B is green at 90 tests. It also
-establishes that complete physical Tier A is 1,713 passed and 247 failed across
-1,960 tests, with 32 physical test files outside exact proof admission.
+The integrated comparative audit at primary checkpoint `68789ff` established
+that the 19-block curated `alpha_current` route was green at 802 Tier A and 90
+Tier B tests, and that complete physical Tier B was green at 90 tests. Readiness
+Unit 1 has now reproduced complete physical Tier A at 1,713 passed and 247
+failed across 1,960 tests, and current Tier B at 91 passed. It also corrected
+the audit's legacy-section join: the canonical v4 model exactly admits all 203
+physical test files, with zero missing or stale paths.
 
 Therefore the prior module and post-alpha implementation acceptances remain
 valid within their proven bounds, but a repository-wide dependable-foundation
@@ -386,10 +388,10 @@ foundation standard and resumption checkpoint are governed by
 
 ## 9. Programme sequence
 
-The next execution worker must open one bounded subordinate plan and proceed in
-this order:
+The bounded subordinate plan is active and proceeds in this order:
 
-1. reconcile the exact physical proof universe and the 32 admission gaps;
+1. reconcile the exact physical proof universe and prove canonical-model
+   selection with zero admission gaps — Unit 1 validation complete;
 2. close the prepared-context/M04 owner-identity boundary;
 3. close typed M01 ingress with its current M00 and transport caller cone;
 4. close the confirmed dependency, caller-mutability, vocabulary-scanner and

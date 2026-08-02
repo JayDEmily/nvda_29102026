@@ -497,6 +497,11 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
             "| Active control pack | none — canonical ExecPlan only |",
             "No subordinate bounded pack is active.",
         ),
+        "FOUNDATION-READINESS-RECONCILIATION-V1": (
+            "**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active at Unit 1",
+            "| Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |",
+            "The current active bounded pack is `FOUNDATION-READINESS-RECONCILIATION-V1`.",
+        ),
     }
     matches = [
         state_id

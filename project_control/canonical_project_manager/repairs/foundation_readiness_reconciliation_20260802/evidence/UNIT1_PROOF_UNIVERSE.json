@@ -1,0 +1,57 @@
+{
+  "schema_version": "foundation_readiness_unit1_v1",
+  "baseline_commit": "3876f17108b5c2e42510dff66e7248d622c10e47",
+  "environment": {
+    "python": "CPython 3.13.5",
+    "runtime_wheelhouse_sha256": "6e4459f4e5508303bdb2e03bcca7701ee72e640f36a716c20b3cd6b0c09b0b42",
+    "dev_wheelhouse_sha256": "d71a1f5f22aaaa588a59012833c8d797258ea1505feec37e77d7948c818cc249"
+  },
+  "physical_test_files": {
+    "tier_a": 186,
+    "tier_b": 16,
+    "tier_c": 1,
+    "total": 203
+  },
+  "canonical_admission": {
+    "authority_model": "canonical_admission_model",
+    "family_count": 201,
+    "path_count": 203,
+    "missing_physical_paths": 0,
+    "stale_admission_paths": 0,
+    "proof_block_count": 73,
+    "alpha_current_block_count": 19,
+    "alpha_current_path_count": 21
+  },
+  "physical_results": {
+    "tier_a": {"passed": 1713, "failed": 247, "errors": 0, "skipped": 0, "total": 1960},
+    "tier_b": {"passed": 91, "failed": 0, "errors": 0, "skipped": 0, "total": 91},
+    "tier_c": {"passed": 5, "failed": 0, "errors": 0, "skipped": 0, "total": 5},
+    "alpha_current": {"passed": 802, "failed": 0, "errors": 0, "skipped": 0, "total": 802}
+  },
+  "tier_a_failure_classes": {
+    "runtime": 143,
+    "packets": 52,
+    "normative_authority": 22,
+    "parallel_risk": 19,
+    "testing_harnesses": 4,
+    "persistence": 3,
+    "upstream_cognition": 3,
+    "capital_deployment": 1
+  },
+  "tier_a_traceback_causes": {
+    "caller_owned_scenario_identity": 204,
+    "unadmitted_k07_packet_role": 17,
+    "caller_owned_module_version": 4,
+    "missing_transaction_module": 3,
+    "missing_common_stage_context": 2,
+    "missing_replay_class": 2,
+    "caller_owned_trace_identity": 2,
+    "remaining_distinct_contract_assertions": 13
+  },
+  "audit_32_path_finding": {
+    "status": "superseded_as_current_truth",
+    "cause": "the audit join selected retained legacy provenance sections rather than canonical_admission_model",
+    "historical_evidence_retained": true
+  },
+  "junit_evidence": ["PHYSICAL_TIER_A_JUNIT.xml"]
+}
