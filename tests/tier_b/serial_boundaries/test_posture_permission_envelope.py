@@ -49,15 +49,21 @@ def test_posture_output_keeps_permission_envelope_separate_from_capital_decision
 def test_posture_service_applies_promoted_coefficient_authority_and_bounded_modifiers() -> None:
     posture_contracts = _require_module("nvda_desk.contracts.posture")
     regime_contracts = _require_module("nvda_desk.contracts.regime")
+    regime_classification = _require_module("nvda_desk.domain.regime.classification")
     service_module = _require_module("nvda_desk.services.posture_service")
 
     permission_state = _require_attr(posture_contracts, "PermissionState")
     regime_output = _require_attr(regime_contracts, "MarketRegimeContextOutput")
+    regime_policy_version = _require_attr(regime_classification, "MARKET_REGIME_POLICY_VERSION")
     service_class = _require_attr(service_module, "PostureService")
 
     service = service_class()
     calm_output = service.evaluate(
-        regime=regime_output(volatility_regime="stable", vix_level=20.0),
+        regime=regime_output(
+            regime_policy_version=regime_policy_version,
+            volatility_regime="stable",
+            vix_level=20.0,
+        ),
     )
     assert calm_output.permission_state == permission_state.ALLOW
     assert calm_output.local_envelope["risk_vix_caution_threshold"] == 24.0
@@ -82,7 +88,11 @@ def test_posture_service_applies_promoted_coefficient_authority_and_bounded_modi
     )
 
     stressed_output = service.evaluate(
-        regime=regime_output(volatility_regime="stable", vix_level=33.0),
+        regime=regime_output(
+            regime_policy_version=regime_policy_version,
+            volatility_regime="stable",
+            vix_level=33.0,
+        ),
         active_modifier_ids=["negative_gamma_stress"],
     )
     assert stressed_output.permission_state == permission_state.BLOCK
