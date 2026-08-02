@@ -157,6 +157,11 @@ declared environment; records, proof control and Git describe the same state.
   only the M12 dependency, caller-mutable governed-policy, vocabulary-scanner
   self-observation and canonical API process-local state/identity findings, one
   semantic family at a time.
+- 2026-08-02: Unit 4A expected-red isolated two forbidden M12 imports of
+  M10. M12 now owns an equivalent pure fingerprint primitive; the dependency
+  proof passes 2/2, the complete M12 contract passes 24/24, the M12 proof block
+  passes 24/24, M13 restart proof passes 10/10, and proof control passes at
+  201 families / 203 paths / 73 blocks. Unit 4B is the next gate.
 
 ## Decisions
 
@@ -180,8 +185,7 @@ Units 1, 2 and 3 pass. See `VALIDATION_SUMMARY.md`,
 
 ## Unknowns
 
-- Exact Unit 4 ordering and partition of the four structural-integrity
-  findings; they must not be batched merely because they share a programme unit.
+- Unit 4B–4D remain separately gated; no later family is accepted by Unit 4A evidence.
 - Whether later semantic adjudication changes the retained physical test
   universe; Units 1–3 made no such change.
 

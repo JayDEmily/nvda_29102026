@@ -1411,6 +1411,7 @@ proof_blocks:
       - tests/support/m12_k19_contract_harness.py
       - src/nvda_desk/m12_evidence_replay/__init__.py
       - src/nvda_desk/m12_evidence_replay/contracts.py
+      - src/nvda_desk/m12_evidence_replay/fingerprint.py
       - src/nvda_desk/m12_evidence_replay/service.py
       - tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
       - project_control/canonical_project_manager/modules/M12/M12_AUTHORITY_WORKER_RECORD_V1.md

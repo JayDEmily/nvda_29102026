@@ -8,7 +8,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from nvda_desk.m10_execution_gateway.contracts import semantic_fingerprint
+from .fingerprint import semantic_fingerprint
 
 ReplayClass = Literal[
     "preserved_occurrence_replay",

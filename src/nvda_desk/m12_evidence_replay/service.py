@@ -6,9 +6,8 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
-from nvda_desk.m10_execution_gateway.contracts import semantic_fingerprint
-
 from .contracts import ReplayAssessment, ReplayEnvelope, ReplayMaterial, ReviewProjection
+from .fingerprint import semantic_fingerprint
 
 
 class EvidenceReplayService:

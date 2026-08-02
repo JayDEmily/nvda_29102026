@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import ast
 from datetime import UTC, datetime
+from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
@@ -507,3 +509,35 @@ def test_production_missing_unverifiable_and_contradiction_sets_are_unique_nonbl
     ):
         with pytest.raises(ValueError):
             _envelope(api, **kwargs)
+
+
+def test_unit4a_production_m12_has_no_runtime_dependency_on_m10():
+    package_root = Path("src/nvda_desk/m12_evidence_replay")
+    violations: list[str] = []
+    for path in sorted(package_root.glob("*.py")):
+        tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
+        for node in ast.walk(tree):
+            module = None
+            if isinstance(node, ast.ImportFrom):
+                module = node.module
+            elif isinstance(node, ast.Import):
+                for alias in node.names:
+                    if alias.name.startswith("nvda_desk.m10_execution_gateway"):
+                        violations.append(f"{path.name}:{node.lineno}:{alias.name}")
+            if module and module.startswith("nvda_desk.m10_execution_gateway"):
+                violations.append(f"{path.name}:{node.lineno}:{module}")
+
+    assert violations == [], "M12 must not depend on M10: " + ", ".join(violations)
+
+
+def test_unit4a_m12_fingerprint_semantics_match_retained_replay_identity():
+    from nvda_desk.m12_evidence_replay.contracts import (
+        semantic_fingerprint as m12_semantic_fingerprint,
+    )
+
+    value = {
+        "material": _packet_content().model_dump(mode="python"),
+        "observed_at": datetime(2026, 8, 2, 1, 2, 3, tzinfo=UTC),
+        "ordered": ("a", "b"),
+    }
+    assert m12_semantic_fingerprint(value) == semantic_fingerprint(value)
