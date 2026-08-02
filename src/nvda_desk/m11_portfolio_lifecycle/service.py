@@ -22,13 +22,22 @@ from .contracts import (
 
 
 class PortfolioLifecycleService:
-    """Own one non-durable canonical NVDA portfolio state."""
+    """Own canonical NVDA portfolio meaning over an injected M13 state port."""
 
     def __init__(self, state_port: TransactionalStatePort | None = None) -> None:
         self._uow = state_port or InMemoryUnitOfWork(initial_state={"positions": {}})
         self._fill_receipts: dict[str, FillReconciliationReceipt] = {}
         self._close_receipts: dict[str, CloseReceipt] = {}
-        self._last_transition_at = datetime(1970, 1, 1, tzinfo=UTC)
+        state = self._uow.snapshot_state()
+        current = self._current_position()
+        retained_transition = state.get("last_transition_at_utc")
+        self._last_transition_at = (
+            retained_transition
+            if isinstance(retained_transition, datetime)
+            else (
+                current.updated_at_utc if current is not None else datetime(1970, 1, 1, tzinfo=UTC)
+            )
+        )
 
     @property
     def durability(self) -> str:
@@ -52,7 +61,77 @@ class PortfolioLifecycleService:
                 {**previous.model_dump(mode="python"), "duplicate_replay": True}
             )
 
+        retained = self._uow.snapshot_state().get("fill_history", {}).get(receipt.receipt_id)
+        if retained is not None:
+            if retained.get("execution_receipt_fingerprint") != receipt.semantic_fingerprint:
+                raise ValueError("conflicting_execution_receipt_replay")
+            atomic = self._find_atomic_receipt(f"m11.reconcile:{receipt.receipt_id}")
+            snapshot = PortfolioSnapshot.model_validate(retained["snapshot"])
+            payload = {
+                "execution_receipt_id": receipt.receipt_id,
+                "execution_receipt_fingerprint": receipt.semantic_fingerprint,
+                "fill_id": retained["fill_id"],
+                "snapshot": snapshot,
+                "snapshot_id": snapshot.snapshot_id,
+                "snapshot_fingerprint": snapshot.semantic_fingerprint,
+                "atomic_receipt_id": atomic.receipt_id,
+                "atomic_command_id": atomic.command_id,
+                "atomic_prior_state_version": atomic.prior_state_version,
+                "atomic_resulting_state_version": atomic.resulting_state_version,
+                "atomic_sequence": atomic.sequence,
+                "durability": self._uow.durability,
+            }
+            fp = semantic_fingerprint(payload)
+            recovered = FillReconciliationReceipt.model_validate(
+                {
+                    **payload,
+                    "receipt_id": f"fill-reconciliation:{fp[:24]}",
+                    "semantic_fingerprint": fp,
+                    "duplicate_replay": True,
+                }
+            )
+            self._fill_receipts[receipt.receipt_id] = recovered.model_copy(
+                update={"duplicate_replay": False}
+            )
+            return recovered
+
         current = self._current_position()
+        if current is not None and receipt.receipt_id in current.execution_receipt_ids:
+            index = current.execution_receipt_ids.index(receipt.receipt_id)
+            if current.execution_receipt_fingerprints[index] != receipt.semantic_fingerprint:
+                raise ValueError("conflicting_execution_receipt_replay")
+            atomic = self._find_atomic_receipt(f"m11.reconcile:{receipt.receipt_id}")
+            snapshot = self.snapshot()
+            payload = {
+                "execution_receipt_id": receipt.receipt_id,
+                "execution_receipt_fingerprint": receipt.semantic_fingerprint,
+                "fill_id": receipt.fill_id,
+                "snapshot": snapshot,
+                "snapshot_id": snapshot.snapshot_id,
+                "snapshot_fingerprint": snapshot.semantic_fingerprint,
+                "atomic_receipt_id": atomic.receipt_id,
+                "atomic_command_id": atomic.command_id,
+                "atomic_prior_state_version": atomic.prior_state_version,
+                "atomic_resulting_state_version": atomic.resulting_state_version,
+                "atomic_sequence": atomic.sequence,
+                "duplicate_replay": False,
+                "durability": self._uow.durability,
+            }
+            fp = semantic_fingerprint(
+                {key: value for key, value in payload.items() if key != "duplicate_replay"}
+            )
+            recovered = FillReconciliationReceipt.model_validate(
+                {
+                    **payload,
+                    "receipt_id": f"fill-reconciliation:{fp[:24]}",
+                    "semantic_fingerprint": fp,
+                    "duplicate_replay": True,
+                }
+            )
+            self._fill_receipts[receipt.receipt_id] = recovered.model_copy(
+                update={"duplicate_replay": False}
+            )
+            return recovered
         if current is not None and receipt.executed_at_utc < current.updated_at_utc:
             raise ValueError("fill_precedes_current_position_update")
         next_version = self._uow.state_version + 1
@@ -82,6 +161,12 @@ class PortfolioLifecycleService:
 
         def mutation(state: dict[str, Any]):
             state["positions"] = {position.position_id: position.model_dump(mode="python")}
+            state.setdefault("fill_history", {})[receipt.receipt_id] = {
+                "execution_receipt_fingerprint": receipt.semantic_fingerprint,
+                "fill_id": receipt.fill_id,
+                "snapshot": preview.model_dump(mode="python"),
+            }
+            state["last_transition_at_utc"] = receipt.executed_at_utc
             return {"receipt_id": atomic_receipt_id, "result_id": result_id}
 
         atomic = self._uow.execute(command=command, mutation=mutation)
@@ -99,7 +184,7 @@ class PortfolioLifecycleService:
             "atomic_prior_state_version": atomic.prior_state_version,
             "atomic_resulting_state_version": atomic.resulting_state_version,
             "atomic_sequence": atomic.sequence,
-            "durability": "non_durable_in_memory",
+            "durability": self._uow.durability,
         }
         fp = semantic_fingerprint(payload)
         result = FillReconciliationReceipt.model_validate(
@@ -167,6 +252,46 @@ class PortfolioLifecycleService:
             return CloseReceipt.model_validate(
                 {**previous.model_dump(mode="python"), "duplicate_replay": True}
             )
+        retained = self._uow.snapshot_state().get("lifecycle_history", {}).get(decision.decision_id)
+        if retained is not None:
+            retained_decision = LifecycleDecision.model_validate(retained["decision"])
+            if retained_decision.semantic_fingerprint != decision.semantic_fingerprint:
+                raise ValueError("conflicting_lifecycle_decision_replay")
+            atomic = self._find_atomic_receipt(f"m11.lifecycle:{decision.decision_id}")
+            snapshot = PortfolioSnapshot.model_validate(retained["snapshot"])
+            prior = PositionState.model_validate(retained["prior_position"])
+            resulting_raw = retained.get("resulting_position")
+            resulting = (
+                None if resulting_raw is None else PositionState.model_validate(resulting_raw)
+            )
+            payload = {
+                "decision": retained_decision,
+                "decision_id": retained_decision.decision_id,
+                "decision_fingerprint": retained_decision.semantic_fingerprint,
+                "prior_position": prior,
+                "resulting_position": resulting,
+                "snapshot": snapshot,
+                "atomic_receipt_id": atomic.receipt_id,
+                "atomic_command_id": atomic.command_id,
+                "atomic_prior_state_version": atomic.prior_state_version,
+                "atomic_resulting_state_version": atomic.resulting_state_version,
+                "atomic_sequence": atomic.sequence,
+                "durability": self._uow.durability,
+            }
+            fp = semantic_fingerprint(payload)
+            recovered = CloseReceipt.model_validate(
+                {
+                    **payload,
+                    "receipt_id": f"close-receipt:{fp[:24]}",
+                    "semantic_fingerprint": fp,
+                    "duplicate_replay": True,
+                }
+            )
+            self._close_receipts[decision.decision_id] = recovered.model_copy(
+                update={"duplicate_replay": False}
+            )
+            return recovered
+
         current_snapshot = self.snapshot()
         if (
             current_snapshot.snapshot_id,
@@ -218,6 +343,15 @@ class PortfolioLifecycleService:
                 if resulting is None
                 else {resulting.position_id: resulting.model_dump(mode="python")}
             )
+            state.setdefault("lifecycle_history", {})[decision.decision_id] = {
+                "decision": decision.model_dump(mode="python"),
+                "prior_position": current.model_dump(mode="python"),
+                "resulting_position": (
+                    None if resulting is None else resulting.model_dump(mode="python")
+                ),
+                "snapshot": preview.model_dump(mode="python"),
+            }
+            state["last_transition_at_utc"] = decision.decided_at_utc
             return {
                 "receipt_id": atomic_receipt_id,
                 "result_id": f"lifecycle-result:{result_fp[:24]}",
@@ -238,7 +372,7 @@ class PortfolioLifecycleService:
             "atomic_prior_state_version": atomic.prior_state_version,
             "atomic_resulting_state_version": atomic.resulting_state_version,
             "atomic_sequence": atomic.sequence,
-            "durability": "non_durable_in_memory",
+            "durability": self._uow.durability,
         }
         fp = semantic_fingerprint(payload)
         result = CloseReceipt.model_validate(
@@ -246,6 +380,15 @@ class PortfolioLifecycleService:
         )
         self._close_receipts[decision.decision_id] = result
         return deepcopy(result)
+
+    def _find_atomic_receipt(self, command_id: str):
+        atomic = next(
+            (item for item in self._uow.list_receipts() if item.command_id == command_id),
+            None,
+        )
+        if atomic is None:
+            raise ValueError("durable_owner_atomic_receipt_missing")
+        return atomic
 
     def _current_position(self) -> PositionState | None:
         state = self._uow.snapshot_state()
@@ -280,8 +423,8 @@ class PortfolioLifecycleService:
             state_version=version,
         )
 
-    @staticmethod
     def _build_position(
+        self,
         *,
         quantity: Decimal,
         cost_basis: Decimal,
@@ -302,6 +445,7 @@ class PortfolioLifecycleService:
             "opened_at_utc": opened_at,
             "updated_at_utc": updated_at,
             "state_version": state_version,
+            "durable_commit_proven": self._uow.durability == "durable_sqlite",
         }
         fp = semantic_fingerprint(
             {
@@ -312,7 +456,6 @@ class PortfolioLifecycleService:
                 **payload,
                 "paper_only": True,
                 "live_account_truth": False,
-                "durable_commit_proven": False,
             }
         )
         return PositionState.model_validate({**payload, "semantic_fingerprint": fp})
@@ -328,7 +471,7 @@ class PortfolioLifecycleService:
             "position_ids": tuple(p.position_id for p in positions),
             "state_version": version,
             "as_of_utc": as_of,
-            "durability": "non_durable_in_memory",
+            "durability": self._uow.durability,
             "live_account_truth": False,
         }
         fp = semantic_fingerprint(payload)

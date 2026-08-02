@@ -6,7 +6,9 @@ from abc import ABC, abstractmethod
 from collections.abc import Callable, Mapping
 from typing import Any
 
-from .contracts import AtomicReceipt, TransactionCommand
+from pydantic import BaseModel
+
+from .contracts import AtomicReceipt, DurableEvidenceRecord, TransactionCommand
 
 
 class RepositoryPort(ABC):
@@ -65,3 +67,28 @@ class StateReadPort(ABC):
 
 class TransactionalStatePort(UnitOfWork, StateReadPort):
     """Combined transaction and detached-read port for owner repositories."""
+
+
+class EvidenceRepositoryPort(ABC):
+    """Typed durable evidence store without ownership of domain meaning."""
+
+    @abstractmethod
+    def store(
+        self,
+        *,
+        owner_module: str,
+        occurrence_id: str,
+        content: BaseModel,
+    ) -> DurableEvidenceRecord:
+        """Persist one typed occurrence or return its exact idempotent record."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def load(self, occurrence_id: str) -> BaseModel:
+        """Reload one typed occurrence and validate its retained contract."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def list_records(self) -> tuple[DurableEvidenceRecord, ...]:
+        """Return durable occurrence identities in committed sequence order."""
+        raise NotImplementedError

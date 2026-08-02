@@ -40,6 +40,7 @@ def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
 
     assert promotion.proof_block_ids == (
         "m13_state_kernel_module_local_proof",
+        "m13_sqlite_restart_contract",
         "m04_k07_packet_role_contract",
         "m01_source_admission_contract",
         "m07_k12_coefficient_modifier_contract",
@@ -57,7 +58,7 @@ def test_live_alpha_promotion_resolves_exact_current_module_families() -> None:
         "post_alpha_m00_transport_adapter_contract",
         "m00_upstream_workflow_contract",
     )
-    assert len(promotion.test_paths) == 19
+    assert len(promotion.test_paths) == 20
     assert all(
         model.path_admissions[path].lifecycle == "current_blocking" for path in promotion.test_paths
     )

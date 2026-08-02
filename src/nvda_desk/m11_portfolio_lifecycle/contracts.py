@@ -51,7 +51,7 @@ class PositionState(BaseModel):
     state_version: int = Field(ge=1)
     paper_only: Literal[True] = True
     live_account_truth: Literal[False] = False
-    durable_commit_proven: Literal[False] = False
+    durable_commit_proven: bool = False
     semantic_fingerprint: str
 
     @field_validator("opened_at_utc", "updated_at_utc")
@@ -75,6 +75,8 @@ class PositionState(BaseModel):
             _hash(fp, "execution_receipt_fingerprint_invalid")
         if self.average_cost != self.cost_basis / self.quantity:
             raise ValueError("position_cost_basis_mismatch")
+        if self.durable_commit_proven and self.live_account_truth:
+            raise ValueError("paper_position_cannot_claim_live_account_truth")
         expected = semantic_fingerprint(_material(self, exclude={"semantic_fingerprint"}))
         if self.semantic_fingerprint != expected:
             raise ValueError("position_state_fingerprint_mismatch")
@@ -91,7 +93,7 @@ class PortfolioSnapshot(BaseModel):
     position_ids: tuple[str, ...]
     state_version: int = Field(ge=0)
     as_of_utc: datetime
-    durability: Literal["non_durable_in_memory"] = "non_durable_in_memory"
+    durability: Literal["non_durable_in_memory", "durable_sqlite"] = "non_durable_in_memory"
     live_account_truth: Literal[False] = False
     semantic_fingerprint: str
 
@@ -115,6 +117,9 @@ class PortfolioSnapshot(BaseModel):
             raise ValueError("position_state_version_must_match_portfolio")
         if any(p.updated_at_utc > self.as_of_utc for p in positions):
             raise ValueError("portfolio_snapshot_precedes_position_update")
+        expected_durable = self.durability == "durable_sqlite"
+        if any(p.durable_commit_proven != expected_durable for p in positions):
+            raise ValueError("portfolio_position_durability_mismatch")
         expected = semantic_fingerprint(
             _material(self, exclude={"snapshot_id", "semantic_fingerprint"})
         )
@@ -190,7 +195,7 @@ class FillReconciliationReceipt(BaseModel):
     atomic_resulting_state_version: int = Field(ge=1)
     atomic_sequence: int = Field(ge=1)
     duplicate_replay: bool = False
-    durability: Literal["non_durable_in_memory"] = "non_durable_in_memory"
+    durability: Literal["non_durable_in_memory", "durable_sqlite"] = "non_durable_in_memory"
     semantic_fingerprint: str
 
     @model_validator(mode="after")
@@ -244,7 +249,7 @@ class CloseReceipt(BaseModel):
     atomic_resulting_state_version: int = Field(ge=1)
     atomic_sequence: int = Field(ge=1)
     duplicate_replay: bool = False
-    durability: Literal["non_durable_in_memory"] = "non_durable_in_memory"
+    durability: Literal["non_durable_in_memory", "durable_sqlite"] = "non_durable_in_memory"
     semantic_fingerprint: str
 
     @model_validator(mode="after")

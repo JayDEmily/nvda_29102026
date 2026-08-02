@@ -12,6 +12,7 @@ promotion_sets:
       - TP-CONTROL-001
     proof_block_ids:
       - m13_state_kernel_module_local_proof
+      - m13_sqlite_restart_contract
       - m04_k07_packet_role_contract
       - m01_source_admission_contract
       - m07_k12_coefficient_modifier_contract
@@ -1002,6 +1003,36 @@ proof_blocks:
       - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
       - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
       - docs/vocabulary/vocabulary_registry.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
+
+  - proof_block_id: m13_sqlite_restart_contract
+    tier: Tier A
+    lifecycle: admitted_post_alpha_debt_retirement
+    test_family_ids:
+      - m13_sqlite_restart_contract
+    normative_proposition_ids:
+      - M13-DURABLE-001
+      - M13-DURABLE-002
+      - M13-DURABLE-003
+      - M13-DURABLE-004
+      - M13-DURABLE-005
+      - M13-DURABLE-006
+      - M11-DURABLE-001
+      - M11-DURABLE-002
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_a/persistence/test_m13_sqlite_restart_contract.py
+    owns:
+      - tests/tier_a/persistence/test_m13_sqlite_restart_contract.py
+      - src/nvda_desk/m13_state_kernel/__init__.py
+      - src/nvda_desk/m13_state_kernel/codec.py
+      - src/nvda_desk/m13_state_kernel/contracts.py
+      - src/nvda_desk/m13_state_kernel/ports.py
+      - src/nvda_desk/m13_state_kernel/sqlite.py
+      - src/nvda_desk/m11_portfolio_lifecycle/contracts.py
+      - src/nvda_desk/m11_portfolio_lifecycle/service.py
+      - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+      - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
 

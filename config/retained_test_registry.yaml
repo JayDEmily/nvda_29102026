@@ -2459,6 +2459,23 @@ retained_seed_tier_a:
   admission_reason: M13-PROOF requires one candidate Tier A family for scoped idempotency, expected-version checks, atomic state/result/receipt binding, deterministic sequence, executable repository participation, receipt-write/participant rollback and explicit non-durable memory status.
   forbidden_carry_forward: A receipt append, duplicate receipt-ID check, process insertion order, one global transaction, domain-state ownership, production durability, restart recovery or external-effect completion must not substitute for the N-06 transaction law.
   notes: Original behaviours and later false-positive repairs are retained. The final bounded M13 implementation was independently accepted; production durability and recovery remain outside the alpha claim.
+- test_family_id: m13_sqlite_restart_contract
+  native_status: admitted_tier_a_current
+  bounded_family: persistence
+  native_test_path: tests/tier_a/persistence/test_m13_sqlite_restart_contract.py
+  migration_status: post_alpha_durable_state_and_restart_accepted
+  normative_basis:
+  - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md
+  - docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md
+  architecture_basis:
+  - project_control/canonical_project_manager/repairs/post_alpha_comprehensive_debt_retirement_20260802/EXEC_PLAN.md
+  code_reread_completed: true
+  docstring_reread_completed: true
+  docstring_alignment_status: SQLite implements bounded M13 state/receipt and typed evidence ports; M11 retains portfolio meaning and labels durable paper truth without live-account promotion
+  native_reauthor_required: false
+  admission_reason: proves atomic state/receipt visibility, restart recovery, duplicate replay, conflicting-key rejection, rollback, deterministic safe encoding, typed evidence reload and M11/M12 recovery
+  forbidden_carry_forward: SQLite path presence, one successful write, process-memory replay or a durability label without restart and conflict proof must not satisfy this family.
+  notes: Admitted under POST-ALPHA-COMPREHENSIVE-DEBT-UNIT4-C-PROOF; scope is bounded SQLite durability, not universal persistence, backup policy, live account truth or external-effect recovery.
 tier_b_dispositions:
 - test_family_id: proof_executor_contract
   native_status: retained_tier_b
@@ -4206,6 +4223,20 @@ canonical_admission_model:
     normative_proposition_ids:
     - docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md#N-06
     provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m13_sqlite_restart_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+      - M13-DURABLE-001
+      - M13-DURABLE-002
+      - M13-DURABLE-003
+      - M13-DURABLE-004
+      - M13-DURABLE-005
+      - M13-DURABLE-006
+      - M11-DURABLE-001
+      - M11-DURABLE-002
+    provenance: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT4-C-PROOF
+    lifecycle_reason: Exact SQLite state/receipt and typed evidence ports prove bounded restart-safe durability without promoting live-account or universal persistence claims.
   - test_family_id: migration_lifecycle_surface
     tier: Tier A
     lifecycle: historical
@@ -5282,6 +5313,9 @@ canonical_admission_model:
   - test_path: tests/tier_a/persistence/test_m13_state_kernel_contract.py
     test_family_id: m13_state_kernel_module_local_contract
     source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/persistence/test_m13_sqlite_restart_contract.py
+    test_family_id: m13_sqlite_restart_contract
+    source_disposition: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT4-C-PROOF
   - test_path: tests/tier_a/persistence/test_module_registry_repository_surface.py
     test_family_id: module_registry_repository_surface
     source_disposition: BLOCKED_P3_REPAIR

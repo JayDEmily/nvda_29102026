@@ -97,3 +97,24 @@ class AtomicReceipt:
             raise ValueError("sequence must be a positive integer")
         if type(self.duplicate_replay) is not bool:
             raise TypeError("duplicate_replay must be a bool")
+
+
+@dataclass(frozen=True, slots=True)
+class DurableEvidenceRecord:
+    """Domain-neutral durable identity for one retained typed evidence occurrence."""
+
+    record_id: str
+    owner_module: str
+    occurrence_id: str
+    contract_path: str
+    content_fingerprint: str
+    sequence: int
+
+    def __post_init__(self) -> None:
+        _require_non_empty_string(self.record_id, "record_id")
+        _require_non_empty_string(self.owner_module, "owner_module")
+        _require_non_empty_string(self.occurrence_id, "occurrence_id")
+        _require_non_empty_string(self.contract_path, "contract_path")
+        _require_non_empty_string(self.content_fingerprint, "content_fingerprint")
+        if type(self.sequence) is not int or self.sequence < 0:
+            raise ValueError("sequence must be a non-negative integer")
