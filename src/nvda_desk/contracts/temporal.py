@@ -44,6 +44,7 @@ class TemporalEventWindow(BaseModel):
 class TemporalContextInput(SourceTemporalStandard):
     """Typed temporal input into the deterministic runtime spine."""
 
+    common_context_ref: str | None = None
     next_event_time_utc: datetime | None = None
     windows: list[TemporalEventWindow] = Field(default_factory=list)
 

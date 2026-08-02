@@ -9,6 +9,7 @@ class MarketRegimeContextInput(BaseModel):
     """Typed regime input with explicit completeness state."""
 
     model_config = ConfigDict(extra="forbid")
+    common_context_ref: str | None = None
     nvda_return_pct: float | None = None
     nq_return_pct: float | None = None
     vix_level: float | None = None

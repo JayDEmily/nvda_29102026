@@ -8,7 +8,7 @@ import pytest
 from nvda_desk.adapters.ingress.market_snapshot_feed import adapt_market_snapshot
 from nvda_desk.adapters.ingress.options_surface_feed import adapt_options_surface
 from nvda_desk.contracts.packets import build_dmp_v3_envelope_kwargs
-from nvda_desk.contracts.stage_inputs import StageInputBundle
+from nvda_desk.contracts.stage_inputs import CommonStageContext
 from nvda_desk.ingress.raw_bundle_loader import RawBundleLoader
 from nvda_desk.preparation.runtime_preparer import PreparedRuntimeLineage
 
@@ -53,12 +53,13 @@ def test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_
     None
 ):
     required = {
-        "bundle_id",
-        "source_capture_ids",
-        "input_schema_version",
-        "policy_version",
+        "context_id",
+        "prepared_id",
+        "prepared_fingerprint",
+        "input_schema_versions",
+        "preparation_policy_version",
     }
-    assert required.issubset(StageInputBundle.model_fields)
+    assert required.issubset(CommonStageContext.model_fields)
 
 
 def test_c012_prepared_lineage_names_material_derivation_versions_and_input_provenance() -> None:
@@ -102,8 +103,15 @@ def test_c016_dmp_domain_content_is_reproducible_when_process_metadata_is_explic
         traceid="trace-1",
         runid="run-1",
         scenarioid="scenario-1",
+        parentids=["upstream-packet-1"],
+        derivedfrom="fixture-derived-from",
         sourceartifactids=["capture-1"],
         inputfingerprint="f" * 64,
+        module_version="1.0.0",
+        module_instance_id="fixture-instance-1",
+        source_artifact_validator=lambda value: value == "capture-1",
+        input_fingerprint_validator=lambda value: value == "f" * 64,
+        owner_check_validator=lambda _name, _context: True,
     )
     first = build_dmp_v3_envelope_kwargs(**kwargs)
     second = build_dmp_v3_envelope_kwargs(**kwargs)
