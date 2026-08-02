@@ -82,8 +82,6 @@ class HttpApp:
             execution_records=self.execution_records_service,
             daily_pnl_service=self.daily_pnl_report_service,
         )
-        self._veto_events: list[dict[str, Any]] = []
-        self._risk_block_events: list[dict[str, Any]] = []
 
     def healthcheck(self) -> dict[str, str]:
         """Return the bounded health surface supported by the rebuild-phase shell."""
@@ -276,31 +274,18 @@ class HttpApp:
         return _to_plain_dict(self.daily_pnl_report_service.list_reports().reports)
 
     def _carry_decision_from_payload(self, payload: Mapping[str, Any]):
-        trace_payload = dict(payload.get("input_trace") or {})
-        if not trace_payload:
-            position_id = str(payload.get("position_id") or "position-1")
-            trace_payload = {
-                "live_inventory_receipt_id": str(
-                    payload.get("live_inventory_receipt_id") or "inventory-api"
-                ),
-                "position_id": position_id,
-                "placement_readiness_id": str(
-                    payload.get("placement_readiness_id") or "placement-api"
-                ),
-                "capital_deployment_receipt_id": str(
-                    payload.get("capital_deployment_receipt_id") or "capital-api"
-                ),
-                "parallel_risk_packet_id": str(
-                    payload.get("parallel_risk_packet_id") or "risk-api"
-                ),
-                "close_policy_id": str(payload.get("close_policy_id") or "close-policy-api"),
-            }
-        trace = ExitCloseInputTrace.model_validate(trace_payload)
+        trace_payload = payload.get("input_trace")
+        if not isinstance(trace_payload, Mapping) or not trace_payload:
+            raise ValueError("input_trace_required")
+        decision_id = payload.get("decision_id")
+        if not isinstance(decision_id, str) or not decision_id.strip():
+            raise ValueError("decision_id_required")
+        trace = ExitCloseInputTrace.model_validate(dict(trace_payload))
         return evaluate_exit_close_policy(
             input_trace=trace,
             requested_action=str(payload.get("requested_action", "hold")),
             trigger_ids=tuple(payload.get("trigger_ids", ())),
-            decision_id=str(payload.get("decision_id", "api-carry-decision")),
+            decision_id=decision_id,
         )
 
     def evaluate_overnight_carry(self, payload: Mapping[str, Any]) -> dict[str, Any]:
@@ -321,8 +306,11 @@ class HttpApp:
             horizon=str(payload.get("horizon", "overnight")),
             lifecycle_ceiling=str(payload.get("lifecycle_ceiling", "close")),
         )
+        evaluation_id = payload.get("evaluation_id")
+        if not isinstance(evaluation_id, str) or not evaluation_id.strip():
+            raise ValueError("evaluation_id_required")
         evaluation = self.overnight_carry_market_service.evaluate_from_market(
-            evaluation_id=str(payload.get("evaluation_id", "api-carry")),
+            evaluation_id=evaluation_id,
             market_state=dict(payload.get("market_state", {})),
             handoff=handoff,
         )
@@ -347,8 +335,11 @@ class HttpApp:
             payload
         )
         evaluation = OvernightCarryEvaluation.model_validate(evaluation_payload)
+        replay_id = payload.get("replay_id")
+        if not isinstance(replay_id, str) or not replay_id.strip():
+            raise ValueError("replay_id_required")
         replay = self.overnight_carry_replay_service.replay_evaluation(
-            replay_id=str(payload.get("replay_id", "api-carry-replay")),
+            replay_id=replay_id,
             evaluation=evaluation,
             next_session_reference=dict(payload.get("next_session_reference", {})),
         )
@@ -372,22 +363,6 @@ class HttpApp:
             trade_date=str(payload.get("trade_date")),
         )
         return _to_plain_dict(packet)
-
-    def record_veto_event(self, event_id: str, *, reason: str) -> dict[str, Any]:
-        event = {"event_id": event_id.strip(), "reason": reason}
-        self._veto_events.append(dict(event))
-        return dict(event)
-
-    def list_veto_events(self) -> list[dict[str, Any]]:
-        return [dict(event) for event in self._veto_events]
-
-    def record_risk_block_event(self, event_id: str, *, reason: str) -> dict[str, Any]:
-        event = {"event_id": event_id.strip(), "reason": reason}
-        self._risk_block_events.append(dict(event))
-        return dict(event)
-
-    def list_risk_block_events(self) -> list[dict[str, Any]]:
-        return [dict(event) for event in self._risk_block_events]
 
 
 def register_routes(app: HttpApp) -> HttpApp:
@@ -438,10 +413,6 @@ def register_routes(app: HttpApp) -> HttpApp:
         "get_overnight_verdict_and_score",
         "get_module_health_packet",
         "get_daily_review_packet",
-        "record_veto_event",
-        "list_veto_events",
-        "record_risk_block_event",
-        "list_risk_block_events",
     ]
     app.route_handlers = {name: getattr(app, name) for name in route_names}
     return app

@@ -174,6 +174,13 @@ declared environment; records, proof control and Git describe the same state.
   exact implementation/test occurrences were semantically re-adjudicated without
   admitting a label or alias; all 13 namespaces are clean and stamps current.
   Unit 4D is next.
+- 2026-08-02: Unit 4D expected-red isolated three compatibility authority
+  defects: untyped API-owned veto/risk state, fabricated exit/close input identities,
+  and walk-forward packets without dataset identity. The three defects now fail
+  closed or are absent; the direct proof passes 4/4, the four affected proof files
+  pass 15/15, and the complete API/analysis/downstream/M00/entry cone passes
+  174/174. All 13 vocabulary namespaces remain clean after two exact line-shift
+  renewals. Unit 4 aggregate acceptance is the next gate.
 
 ## Decisions
 

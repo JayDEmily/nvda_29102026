@@ -60,7 +60,16 @@ def test_walk_forward_contracts_reject_chronology_leakage_and_bound_vocabularies
     with pytest.raises(ValueError, match="chronology leakage"):
         WalkForwardHarnessAuthorityPacket(
             packet_id="pkt-001",
+            dataset_id="dataset-001",
+            dataset_fingerprint="a" * 64,
             windows=(ok, WalkForwardWindow("wf-overlap", WalkForwardWindowRole.TEST, 2, 6)),
+        )
+
+    with pytest.raises(ValueError, match="dataset_fingerprint"):
+        WalkForwardHarnessAuthorityPacket(
+            packet_id="pkt-invalid-dataset",
+            dataset_id="dataset-001",
+            dataset_fingerprint="not-a-sha256",
         )
 
 

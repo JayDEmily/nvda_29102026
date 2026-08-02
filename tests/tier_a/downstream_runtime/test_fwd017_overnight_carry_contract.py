@@ -107,7 +107,8 @@ def test_api_exposes_overnight_carry_dependency_surfaces() -> None:
     result = app.evaluate_overnight_carry_from_market(
         {
             "evaluation_id": "api-carry-1",
-            "position_id": "position-1",
+            "decision_id": "api-carry-decision-1",
+            "input_trace": _trace().model_dump(mode="python"),
             "requested_action": "hold",
             "market_state": {"symbol": "NVDA", "latest_close": 100, "session_vwap": 99},
         }

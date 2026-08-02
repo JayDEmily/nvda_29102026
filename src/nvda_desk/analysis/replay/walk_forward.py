@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from collections import Counter
 from dataclasses import dataclass, field
 from decimal import Decimal
@@ -147,12 +148,18 @@ class GroupReviewHorizonResult:
 @dataclass(frozen=True, slots=True)
 class WalkForwardHarnessAuthorityPacket:
     packet_id: str
+    dataset_id: str
+    dataset_fingerprint: str
     windows: tuple[WalkForwardWindow, ...] = ()
     chronology_rule: ChronologyRule = ChronologyRule.NO_OVERLAP
     consumer_mode: DownstreamConsumerMode = DownstreamConsumerMode.REVIEW_ONLY
 
     def __post_init__(self) -> None:
         _require_non_empty(self.packet_id, "packet_id")
+        _require_non_empty(self.dataset_id, "dataset_id")
+        fingerprint = _require_non_empty(self.dataset_fingerprint, "dataset_fingerprint")
+        if re.fullmatch(r"[0-9a-f]{64}", fingerprint) is None:
+            raise ValueError("dataset_fingerprint must be lowercase SHA-256 hex")
         ordered = sorted(self.windows, key=lambda window: (window.start_index, window.end_index))
         for prior, current in zip(ordered, ordered[1:]):
             if prior.end_index >= current.start_index:
@@ -255,12 +262,16 @@ class StrategicLadderExperimentService:
 
 def build_default_walk_forward_authority_packet(
     *,
-    packet_id: str = "walk_forward_authority_default",
+    packet_id: str,
+    dataset_id: str,
+    dataset_fingerprint: str,
     row_count: int = 9,
 ) -> WalkForwardHarnessAuthorityPacket:
     third = max(row_count // 3, 1)
     return WalkForwardHarnessAuthorityPacket(
         packet_id=packet_id,
+        dataset_id=dataset_id,
+        dataset_fingerprint=dataset_fingerprint,
         windows=(
             WalkForwardWindow("train", WalkForwardWindowRole.TRAIN, 0, third - 1),
             WalkForwardWindow("validation", WalkForwardWindowRole.VALIDATION, third, third * 2 - 1),

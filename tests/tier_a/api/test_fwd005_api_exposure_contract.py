@@ -49,13 +49,9 @@ def test_api_app_registers_internal_exposure_routes_and_stateful_crud_surfaces()
         "market_session_clock",
         "market_snapshot",
         "market_temporal_state",
-        "record_risk_block_event",
         "record_strategic_ladder_evaluation",
-        "record_veto_event",
         "replay_session_phases",
         "replay_strategic_ladder_from_market",
-        "list_veto_events",
-        "list_risk_block_events",
     }
     assert expected_routes.issubset(app.route_handlers)
 
@@ -73,7 +69,7 @@ def test_api_app_registers_internal_exposure_routes_and_stateful_crud_surfaces()
     assert app.list_module_specs()[0]["module_id"] == "module-a"
 
 
-def test_api_app_exposes_replay_evaluation_and_authority_event_surfaces() -> None:
+def test_api_app_exposes_replay_evaluation_without_untyped_authority_event_state() -> None:
     app = create_app()
 
     assert "paths" in app.get_runtime_settings()
@@ -82,12 +78,8 @@ def test_api_app_exposes_replay_evaluation_and_authority_event_surfaces() -> Non
     assert isinstance(app.list_strategy_variants(), list)
     assert app.get_strategy_variant(app.list_strategy_variants()[0]["playbook_id"])["playbook_id"]
 
-    veto = app.record_veto_event("veto-1", reason="operator_block")
-    risk_block = app.record_risk_block_event("risk-1", reason="risk_threshold")
-    assert veto["event_id"] == "veto-1"
-    assert risk_block["event_id"] == "risk-1"
-    assert app.list_veto_events()[0]["reason"] == "operator_block"
-    assert app.list_risk_block_events()[0]["reason"] == "risk_threshold"
+    assert "record_veto_event" not in app.route_handlers
+    assert "record_risk_block_event" not in app.route_handlers
 
     replay = app.replay_strategic_ladder_from_market([{"candidate_id": "a", "score": "0.25"}])
     assert replay["best_stack_id"] == "a"
