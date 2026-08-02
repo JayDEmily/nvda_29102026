@@ -29,6 +29,7 @@ class NestedAuthorityPayload(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     symbol: str = Field(min_length=1)
+    value: float
     metadata: dict[str, object]
 
 
@@ -104,6 +105,16 @@ def test_each_false_positive_mutant_is_killed(mutant_name: str) -> None:
     assert mutant != reference
 
 
+def _spot_binding(api, *, payload_field: str = "value"):
+    return api["SourceSemanticBinding"](
+        semantic_field="spot_price",
+        payload_field=payload_field,
+        value_type="float",
+        unit="USD",
+        requirement=api["SourceFactRequirement"].REQUIRED,
+    )
+
+
 def _production_fixture():
     api = production_api()
     source_identifier = api["SourceIdentifierContract"](
@@ -130,6 +141,7 @@ def _production_fixture():
         downstream_owner=api["SourceDownstreamOwner"].M03,
         output_contract=api["SourceOutputContract"].RAW_SIGNAL_BATCH,
         signal_family_id="market_snapshot",
+        semantic_bindings=(_spot_binding(api),),
     )
     registry = api["SourceFamilyRegistry"].build([contract])
     service = api["SourceAdmissionService"](
@@ -305,6 +317,7 @@ def test_production_public_seam_rejects_hash_as_repository_capture_identity() ->
                     downstream_owner=api["SourceDownstreamOwner"].M03,
                     output_contract=api["SourceOutputContract"].RAW_SIGNAL_BATCH,
                     signal_family_id="market_snapshot",
+                    semantic_bindings=(_spot_binding(api),),
                 )
             ]
         ),
@@ -343,6 +356,7 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
         downstream_owner=api["SourceDownstreamOwner"].M03,
         output_contract=api["SourceOutputContract"].RAW_SIGNAL_BATCH,
         signal_family_id="market_snapshot",
+        semantic_bindings=(_spot_binding(api),),
     )
     service = api["SourceAdmissionService"](
         registry=api["SourceFamilyRegistry"].build([contract]),
@@ -358,9 +372,12 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
         source_object_id="provider-observation-17",
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
-        captured_material=(b'{"symbol":"NVDA","metadata":{"credential":"must-not-cross"}}'),
+        captured_material=(
+            b'{"symbol":"NVDA","value":121.5,"metadata":{"credential":"must-not-cross"}}'
+        ),
         typed_payload=NestedAuthorityPayload(
             symbol="NVDA",
+            value=121.5,
             metadata={"credential": "must-not-cross"},
         ),
     )
@@ -394,3 +411,102 @@ def test_unit3_m01_transport_translation_uses_registered_payload_contract() -> N
     assert translated.typed_payload == request.typed_payload
     with pytest.raises(ValueError, match="unsupported_family_contract_or_version"):
         service.translate_request({**payload, "family_id": "unknown_family"})
+
+
+def test_semantic_continuity_m01_emits_registered_payload_bindings() -> None:
+    api = production_api()
+    binding = api["SourceSemanticBinding"](
+        semantic_field="spot_price",
+        payload_field="value",
+        value_type="float",
+        unit="USD",
+        requirement=api["SourceFactRequirement"].REQUIRED,
+    )
+    contract = api["SourceFamilyContract"](
+        family_id="market_snapshot",
+        contract_id="market_snapshot.v1",
+        schema_version="1.0.0",
+        payload_model=MarketSnapshotPayload,
+        providers=(
+            api["SourceProviderContract"](
+                provider_id="recorded-provider",
+                acquisition_channels=("recorded_api_response",),
+            ),
+        ),
+        source_identifier=api["SourceIdentifierContract"](
+            requirement=api["SourceFactRequirement"].REQUIRED,
+            owner="recorded-provider",
+            namespace="recorded-provider/market-observation",
+            uniqueness_scope="recorded-provider/market-observation",
+            stability_rule="stable_for_source_object_lifetime",
+            generation_rule="issued_by_upstream_provider",
+        ),
+        source_time_kind=api["SourceTimeKind"].INSTANT,
+        downstream_owner=api["SourceDownstreamOwner"].M03,
+        output_contract=api["SourceOutputContract"].RAW_SIGNAL_BATCH,
+        signal_family_id="market_snapshot",
+        semantic_bindings=(binding,),
+    )
+    service = api["SourceAdmissionService"](
+        registry=api["SourceFamilyRegistry"].build([contract]),
+        capture_id_factory=lambda _: "capture::m01::semantic-1",
+        source_artifact_id_factory=lambda *_: "source-artifact::m01::semantic-1",
+    )
+    request = api["SourceAdmissionRequest"](
+        family_id="market_snapshot",
+        contract_id="market_snapshot.v1",
+        schema_version="1.0.0",
+        provider_id="recorded-provider",
+        acquisition_channel="recorded_api_response",
+        source_object_id="provider-observation-semantic-1",
+        observed_at_utc=datetime(2026, 8, 3, 0, 0, tzinfo=UTC),
+        captured_at_utc=datetime(2026, 8, 3, 0, 0, 1, tzinfo=UTC),
+        captured_material=b'{"symbol":"NVDA","value":190.0}',
+        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=190.0),
+    )
+
+    result = service.admit(request)
+
+    assert isinstance(result, api["SourceAdmissionAccepted"])
+    assert result.source_artifact.semantic_bindings == (binding,)
+    assert result.raw_signal_batch is not None
+    assert result.raw_signal_batch.semantic_bindings == (binding,)
+
+
+def test_semantic_continuity_m01_rejects_binding_to_unknown_payload_field() -> None:
+    api = production_api()
+
+    with pytest.raises(ValueError, match="semantic_binding_payload_field_not_in_contract"):
+        api["SourceFamilyContract"](
+            family_id="market_snapshot",
+            contract_id="market_snapshot.v1",
+            schema_version="1.0.0",
+            payload_model=MarketSnapshotPayload,
+            providers=(
+                api["SourceProviderContract"](
+                    provider_id="recorded-provider",
+                    acquisition_channels=("recorded_api_response",),
+                ),
+            ),
+            source_identifier=api["SourceIdentifierContract"](
+                requirement=api["SourceFactRequirement"].REQUIRED,
+                owner="recorded-provider",
+                namespace="recorded-provider/market-observation",
+                uniqueness_scope="recorded-provider/market-observation",
+                stability_rule="stable_for_source_object_lifetime",
+                generation_rule="issued_by_upstream_provider",
+            ),
+            source_time_kind=api["SourceTimeKind"].INSTANT,
+            downstream_owner=api["SourceDownstreamOwner"].M03,
+            output_contract=api["SourceOutputContract"].RAW_SIGNAL_BATCH,
+            signal_family_id="market_snapshot",
+            semantic_bindings=(
+                api["SourceSemanticBinding"](
+                    semantic_field="spot_price",
+                    payload_field="not_a_payload_field",
+                    value_type="float",
+                    unit="USD",
+                    requirement=api["SourceFactRequirement"].REQUIRED,
+                ),
+            ),
+        )

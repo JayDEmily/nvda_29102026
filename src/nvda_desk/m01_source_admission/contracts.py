@@ -26,6 +26,27 @@ class SourceFactRequirement(StrEnum):
     NOT_APPLICABLE = "not_applicable"
 
 
+class SourceSemanticBinding(BaseModel):
+    """Contract-owned mapping from one concrete source field to M03 meaning."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    semantic_field: str = Field(min_length=1)
+    payload_field: str = Field(min_length=1)
+    value_type: Literal["float", "int", "str", "bool", "date", "datetime"]
+    unit: str | None = None
+    requirement: SourceFactRequirement
+
+    @model_validator(mode="after")
+    def _binding_law(self) -> "SourceSemanticBinding":
+        if self.requirement not in {
+            SourceFactRequirement.REQUIRED,
+            SourceFactRequirement.OPTIONAL,
+        }:
+            raise ValueError("semantic_binding_must_be_required_or_optional")
+        return self
+
+
 class SourceTimeKind(StrEnum):
     """Original temporal precision admitted by one source family."""
 
@@ -112,6 +133,7 @@ class SourceFamilyContract(BaseModel):
     output_contract: SourceOutputContract
     signal_family_id: str | None = None
     permitted_limitations: tuple[str, ...] = ()
+    semantic_bindings: tuple[SourceSemanticBinding, ...] = ()
 
     @model_validator(mode="after")
     def _validate_output_contract(self) -> "SourceFamilyContract":
@@ -127,6 +149,18 @@ class SourceFamilyContract(BaseModel):
                 raise ValueError("raw_signal_batch must route to M03")
         elif self.signal_family_id is not None:
             raise ValueError("signal_family_id is not applicable to source_artifact output")
+
+        semantic_fields = tuple(item.semantic_field for item in self.semantic_bindings)
+        payload_fields = tuple(item.payload_field for item in self.semantic_bindings)
+        if len(semantic_fields) != len(set(semantic_fields)):
+            raise ValueError("duplicate_source_semantic_binding")
+        if len(payload_fields) != len(set(payload_fields)):
+            raise ValueError("duplicate_source_payload_binding")
+        contract_fields = set(self.payload_model.model_fields)
+        if any(item.payload_field not in contract_fields for item in self.semantic_bindings):
+            raise ValueError("semantic_binding_payload_field_not_in_contract")
+        if self.downstream_owner is SourceDownstreamOwner.M03 and not self.semantic_bindings:
+            raise ValueError("m03_source_family_requires_semantic_bindings")
         return self
 
 
@@ -223,6 +257,7 @@ class RawSignalBatch(BaseModel):
     observed_at_utc: datetime | None = None
     source_date: date | None = None
     payload: BaseModel
+    semantic_bindings: tuple[SourceSemanticBinding, ...] = Field(min_length=1)
 
 
 class SourceArtifactEnvelope(BaseModel):
@@ -251,6 +286,7 @@ class SourceArtifactEnvelope(BaseModel):
     limitations: tuple[str, ...] = ()
     downstream_owner: SourceDownstreamOwner
     typed_payload: BaseModel
+    semantic_bindings: tuple[SourceSemanticBinding, ...] = ()
 
 
 class SourceAdmissionAccepted(BaseModel):

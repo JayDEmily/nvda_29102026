@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Mapping
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from hashlib import sha256
 from typing import Any
 
@@ -24,6 +24,7 @@ from .contracts import (
     SourceFamilyRegistry,
     SourceNonAdmission,
     SourceOutputContract,
+    SourceSemanticBinding,
     SourceTimeKind,
 )
 
@@ -123,6 +124,37 @@ def _validate_source_time(
     return None
 
 
+def _value_matches_binding(value: Any, binding: SourceSemanticBinding) -> bool:
+    if value is None:
+        return binding.requirement is SourceFactRequirement.OPTIONAL
+    if binding.value_type == "float":
+        return isinstance(value, (int, float)) and not isinstance(value, bool)
+    if binding.value_type == "int":
+        return isinstance(value, int) and not isinstance(value, bool)
+    if binding.value_type == "str":
+        return isinstance(value, str)
+    if binding.value_type == "bool":
+        return isinstance(value, bool)
+    if binding.value_type == "date":
+        return isinstance(value, date) and not isinstance(value, datetime)
+    if binding.value_type == "datetime":
+        return isinstance(value, datetime) and _aware(value)
+    return False
+
+
+def _validate_semantic_bindings(
+    contract: SourceFamilyContract,
+    typed_payload: BaseModel,
+) -> str | None:
+    for binding in contract.semantic_bindings:
+        value = getattr(typed_payload, binding.payload_field)
+        if value is None and binding.requirement is SourceFactRequirement.REQUIRED:
+            return f"missing_required_semantic_binding:{binding.semantic_field}"
+        if not _value_matches_binding(value, binding):
+            return f"semantic_binding_type_mismatch:{binding.semantic_field}"
+    return None
+
+
 def _captured_material_matches_payload(
     captured_material: bytes,
     typed_payload: BaseModel,
@@ -218,6 +250,9 @@ class SourceAdmissionService:
                 reason="capture_time_must_be_utc",
                 content_sha256=fingerprint,
             )
+        binding_error = _validate_semantic_bindings(contract, typed_payload)
+        if binding_error is not None:
+            return SourceNonAdmission(reason=binding_error, content_sha256=fingerprint)
         if not _captured_material_matches_payload(
             request.captured_material,
             typed_payload,
@@ -308,6 +343,7 @@ class SourceAdmissionService:
             limitations=request.declared_limitations,
             downstream_owner=contract.downstream_owner,
             typed_payload=typed_payload,
+            semantic_bindings=contract.semantic_bindings,
         )
 
         batch = None
@@ -325,5 +361,6 @@ class SourceAdmissionService:
                 observed_at_utc=request.observed_at_utc,
                 source_date=request.source_date,
                 payload=typed_payload.model_copy(deep=True),
+                semantic_bindings=contract.semantic_bindings,
             )
         return SourceAdmissionAccepted(source_artifact=envelope, raw_signal_batch=batch)

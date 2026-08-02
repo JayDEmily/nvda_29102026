@@ -10,9 +10,9 @@
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | none — standard one-concept incremental route open |
-| Active control pack | none — canonical ExecPlan only; continuation-ready checkpoint published |
-| Current repository claim | alpha continuation readiness established after Units 1–6; retained physical Tier A is 1,990 / 1,990, Tier B is 92 / 92 after the readiness control proof, Tier C is 5 / 5 and `alpha_current` is 811 / 811; exact proof admission, graph/import, state, replay, forged-boundary, policy and vocabulary gates are green |
+| Current active slice | M01–M03 semantic continuity repair — C-NORM active |
+| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |
+| Current repository claim | continuation readiness suspended: direct adversarial evidence proves M01/M02 evidence is not semantically bound to the M03 prepared payload; the prior structural counts remain historical evidence only until this bounded repair is accepted |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -236,7 +236,7 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The bounded foundation-readiness plan is complete. Exact canonical admission
+The published foundation-readiness checkpoint has been invalidated by new semantic-continuity evidence. A bounded M01–M03 repair is active. Exact canonical admission
 covers 203/203 physical paths; the 21 retired predecessor families remain
 provenance-only; physical Tier A passes 1,990/1,990, Tier B passes 92/92 and Tier
 C passes 5/5. The exact module graph, fresh-import, state-isolation, replay,
@@ -244,7 +244,6 @@ forged-boundary, immutable-policy, scanner and vocabulary gates are green. The
 final signed `alpha_current` result and exact Git checkpoint are published with
 the full-history archive.
 
-Select one planned concept and execute the standard route in `CONTINUATION.md`
-section 11. Donor integration, live operation, production durability,
+Complete `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` under the standard route in `CONTINUATION.md` section 11, then reassess continuation readiness. Donor integration, live operation, production durability,
 profitability and production replay remain closed unless separately authorised
 and proved.

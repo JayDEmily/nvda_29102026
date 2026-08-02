@@ -222,6 +222,8 @@ class CalendarResolver:
         selected_field = SelectedCalendarField(
             semantic_key=governed_policy.semantic_key,
             value=selected[0].value,
+            value_type=selected[0].value_type,
+            unit=selected[0].unit,
             candidate_ids=tuple(item.candidate_id for item in selected),
             source_refs=tuple(
                 sorted({(item.source_artifact_id, item.source_version) for item in selected})

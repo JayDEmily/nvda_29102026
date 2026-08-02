@@ -17,6 +17,7 @@ from .contracts import (
     SourceNonAdmission,
     SourceOutputContract,
     SourceProviderContract,
+    SourceSemanticBinding,
     SourceTimeKind,
 )
 from .service import SourceAdmissionService
@@ -39,5 +40,6 @@ __all__ = [
     "SourceNonAdmission",
     "SourceOutputContract",
     "SourceProviderContract",
+    "SourceSemanticBinding",
     "SourceTimeKind",
 ]

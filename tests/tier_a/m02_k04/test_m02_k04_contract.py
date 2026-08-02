@@ -488,3 +488,31 @@ def test_production_projection_declares_and_fingerprints_canonicalisation_versio
     forged["canonicalisation_version"] = "m02-k04-forged"
     with pytest.raises(Exception, match="projection_fingerprint_mismatch"):
         api["CalendarProjection"].model_validate(forged)
+
+
+def test_semantic_continuity_m02_selected_field_preserves_type_and_unit() -> None:
+    first = replace(
+        valid_candidate(candidate_id="session.a", source_artifact_id="source.a"),
+        value="13:30",
+        value_type="local_time",
+        unit="America/New_York",
+    )
+    second = replace(
+        valid_candidate(
+            candidate_id="session.b",
+            layer=LayerCase.OPERATIONAL_CALENDAR_STATE,
+            source_artifact_id="source.b",
+        ),
+        value="13:30",
+        value_type="local_time",
+        unit="America/New_York",
+    )
+    _, snapshot, policy, resolver = _production_subject(
+        valid_snapshot(session_candidates=(first,), operational_candidates=(second,))
+    )
+
+    result = resolver.project(snapshot, policy, projection_id="projection.semantic.typed")
+
+    assert result.status == "projected"
+    assert result.selected_fields[0].value_type == "local_time"
+    assert result.selected_fields[0].unit == "America/New_York"

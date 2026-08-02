@@ -169,6 +169,8 @@ class SelectedCalendarField(BaseModel):
 
     semantic_key: str = Field(min_length=1)
     value: JsonScalar
+    value_type: str = Field(min_length=1)
+    unit: str | None = None
     candidate_ids: tuple[str, ...] = Field(min_length=1)
     source_refs: tuple[tuple[str, str], ...] = Field(min_length=1)
     layers: tuple[FinancialCalendarLayer, ...] = Field(min_length=1)
