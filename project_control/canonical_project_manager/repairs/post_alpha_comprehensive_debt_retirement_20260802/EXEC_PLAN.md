@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT6_TIER_C_OPERATIONAL_ASSURANCE`
+**Status:** `ACTIVE:UNIT7_VOCABULARY_ADJUDICATION`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -137,6 +137,8 @@ endpoint is reported as a hard operational blocker, not bypassed.
 **Required reads:** testing/promotion doctrine and every operational surface
 created in Units 2–5.
 
+**Authorised bounded existing-proof support extension:** `tests/support/m00_application_shell_contract_harness.py` and `tests/support/m09_k11_k14_contract_harness.py` may accept one optional already-validated `PreparedDataEnvelope` so Tier C can prove that the exact M03 owner product enters the existing M00 run. Existing Tier A assertions and default fixture behaviour must remain unchanged.
+
 **Pass:** Tier C has explicitly admitted slow tests for raw-source-to-paper,
 durable restart/recovery, provider substitution, broker safety and installed
 operation; the route is separately executable and cannot enter ordinary Tier A
@@ -191,3 +193,4 @@ acceptance, broad suppression or edited proof evidence.
 - 2026-08-02: Unit 2 passed: the expected-red M00 upstream proof is implemented; M01 issues distinct source-artifact identity, M02 projection lineage enters M03, and canonical CLI/ASGI preparation routes are current-blocking.
 - 2026-08-02: Unit 4 passed: bounded SQLite M13 state/receipt and typed evidence ports survive restart, preserve exact idempotency/conflict/rollback truth, and restore M11 fill/lifecycle history plus M12 replay material; 237 affected tests pass and proof authority resolves 18 blocking blocks.
 - 2026-08-02: Unit 5 passed: explicit live-placement, provider and broker boundaries are offline/fail-closed by default, require injected transports and credentials, retain M00 paper-only semantics, and pass 138 affected tests with 19 current promotion blocks.
+- 2026-08-02: Unit 6 passed at working-tree validation: five separately executable Tier C operational cases pass; the family is current-nonblocking and excluded from `alpha_current`; final clean-commit rerun is recorded in Unit 7 entry validation.

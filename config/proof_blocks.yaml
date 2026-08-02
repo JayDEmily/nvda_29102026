@@ -1507,3 +1507,29 @@ proof_blocks:
       - tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
       - config/retained_test_registry.yaml
       - config/proof_blocks.yaml
+
+  - proof_block_id: tier_c_operational_assurance
+    tier: Tier C
+    lifecycle: admitted_current_nonblocking
+    test_family_ids:
+      - tier_c_operational_assurance
+    normative_proposition_ids:
+      - TC-OPS-001
+      - TC-OPS-002
+      - TC-OPS-003
+      - TC-OPS-004
+      - TC-OPS-005
+    command: >-
+      env PYTHONPATH=src:. python -m pytest tests/tier_c/operational/test_operational_assurance.py
+    owns:
+      - tests/tier_c/operational/test_operational_assurance.py
+      - tests/tier_c/README.md
+      - tests/support/m00_application_shell_contract_harness.py
+      - tests/support/m09_k11_k14_contract_harness.py
+      - src/nvda_desk/m00_application_shell/coordinator.py
+      - src/nvda_desk/m13_state_kernel/sqlite.py
+      - src/nvda_desk/operational_boundaries/adapters.py
+      - docs/08.1_TESTING_AND_PROMOTION_WORKING.md
+      - config/retained_test_registry.yaml
+      - config/proof_blocks.yaml
+      - Makefile

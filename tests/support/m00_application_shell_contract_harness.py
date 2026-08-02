@@ -288,6 +288,7 @@ def production_runtime_fixture(
     terminal_stage: str | None = None,
     kill_switch: bool = False,
     upstream_dependencies: dict[str, Any] | None = None,
+    prepared_data: Any | None = None,
 ) -> dict[str, Any]:
     """Build one lawful M00 command and its injected public owner seams."""
 
@@ -315,7 +316,7 @@ def production_runtime_fixture(
     import nvda_desk.m12_evidence_replay as m12
     from nvda_desk.contracts.packets import DmpV3ExecutionContext
 
-    prepared = make_prepared(vix_level=20.0)
+    prepared = prepared_data if prepared_data is not None else make_prepared(vix_level=20.0)
     source_capture_refs = tuple(
         (item.source_artifact_id, item.capture_id) for item in prepared.source_capture_refs
     )
@@ -374,7 +375,7 @@ def production_runtime_fixture(
         vix_caution_threshold=30.0,
         vix_block_threshold=50.0,
     )
-    parallel_assessment = production_parallel_assessment(vix_level=20.0)
+    parallel_assessment = production_parallel_assessment(vix_level=20.0, prepared_data=prepared)
     parallel_evaluator = FixedParallelEvaluator(parallel_assessment)
     execution_context = DmpV3ExecutionContext(
         traceid=f"trace.m00.{suffix}",

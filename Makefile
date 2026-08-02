@@ -27,6 +27,7 @@ help:
 		"pr-preflight     install and run PR preflight gates" \
 		"test             run pytest suite via .venv" \
 		"test-targeted    run TESTS=\"...\" via .venv" \
+		"tier-c           run admitted current-nonblocking operational assurance" \
 		"format-check     run Black check without modifying files" \
 		"format           run Ruff safe fixes then Black formatting" \
 		"lint             run Ruff lint without modifying files" \
@@ -141,6 +142,10 @@ test: $(INSTALL_STAMP)
 test-targeted: $(INSTALL_STAMP)
 	@test -n "$(strip $(TESTS))" || (echo "Usage: make test-targeted TESTS=\"path/to/test_a.py path/to/test_b.py\"" >&2; exit 2)
 	$(PYTEST) $(TESTS)
+
+.PHONY: tier-c
+tier-c: $(INSTALL_STAMP)
+	$(PYTEST) -q tests/tier_c/operational
 
 .PHONY: format-check
 format-check: $(INSTALL_STAMP)

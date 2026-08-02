@@ -490,7 +490,7 @@ def production_serial_candidate(*, prepared_id: str, prepared_fingerprint: str):
     return runner.run(context=context, stage_inputs=tuple(stage_inputs))
 
 
-def production_parallel_assessment(*, vix_level: float = 20.0):
+def production_parallel_assessment(*, vix_level: float = 20.0, prepared_data=None):
     from tests.support.m06_k10_contract_harness import make_prepared
 
     import nvda_desk.m06_parallel_risk as m06
@@ -500,8 +500,9 @@ def production_parallel_assessment(*, vix_level: float = 20.0):
         parallel_risk_observation_fingerprint,
     )
 
+    prepared = prepared_data if prepared_data is not None else make_prepared(vix_level=vix_level)
     risk_input = m06.ParallelRiskInput.from_prepared(
-        make_prepared(vix_level=vix_level),
+        prepared,
         evaluator_policy_version="parallel-risk.compat.v1",
         aggregation_version="parallel-risk.aggregate.v1",
         threshold_authority_refs=("m07:caution:v1", "m07:block:v1"),

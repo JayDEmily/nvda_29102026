@@ -176,3 +176,13 @@ def test_makefile_exposes_distinct_membership_check_and_executing_gate() -> None
     assert "--check-only" in makefile
     assert "--receipt $(PROMOTION_RECEIPT)" in makefile
     assert "promotion-gate: $(INSTALL_STAMP)" in makefile
+
+
+def test_makefile_exposes_separate_nonpromoting_tier_c_route() -> None:
+    makefile = (REPO_ROOT / "Makefile").read_text(encoding="utf-8")
+
+    assert ".PHONY: tier-c" in makefile
+    assert "tier-c: $(INSTALL_STAMP)" in makefile
+    assert "tests/tier_c/operational" in makefile
+    alpha_section = makefile.split("PROMOTION_SET ?= alpha_current", maxsplit=1)[1]
+    assert "tier_c_operational_assurance" not in alpha_section

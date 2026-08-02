@@ -4973,6 +4973,17 @@ canonical_admission_model:
       - M00-COMP-009
     provenance: M00-FINAL-COMPOSITION-V1-GATE-D-IMPLEMENTED
     lifecycle_reason: The bounded M00 public package and its packetised paper-run composition proof are implemented and current-blocking.
+  - test_family_id: tier_c_operational_assurance
+    tier: Tier C
+    lifecycle: current_nonblocking
+    normative_proposition_ids:
+    - TC-OPS-001
+    - TC-OPS-002
+    - TC-OPS-003
+    - TC-OPS-004
+    - TC-OPS-005
+    provenance: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT6-TIER-C
+    lifecycle_reason: Separately executable operational assurance; explicitly excluded from alpha_current.
   path_admissions:
   - test_path: tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py
     test_family_id: m00_upstream_workflow_contract
@@ -5580,3 +5591,6 @@ canonical_admission_model:
   - test_path: tests/tier_b/upstream_support/test_bounded_trace_scenario_pack.py
     test_family_id: bounded_trace_scenario_pack
     source_disposition: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_path: tests/tier_c/operational/test_operational_assurance.py
+    test_family_id: tier_c_operational_assurance
+    source_disposition: ADMIT_TIER_C_CURRENT_NONBLOCKING

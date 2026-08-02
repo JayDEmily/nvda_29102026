@@ -80,6 +80,23 @@ def test_legacy_promotion_key_is_a_membership_identical_compatibility_alias() ->
     )
 
 
+def test_tier_c_operational_assurance_is_admitted_but_not_promoted() -> None:
+    registry, manifest = _load_live_documents()
+    model = validate_authority_documents(registry, manifest, repo_root=REPO_ROOT)
+
+    family = model.path_admissions["tests/tier_c/operational/test_operational_assurance.py"]
+    block = model.proof_blocks["tier_c_operational_assurance"]
+    promoted_paths = set(model.promotion_sets["alpha_current"].test_paths)
+    promoted_blocks = set(model.promotion_sets["alpha_current"].proof_block_ids)
+
+    assert family.tier == "Tier C"
+    assert family.lifecycle == "current_nonblocking"
+    assert block.tier == "Tier C"
+    assert block.test_paths == ("tests/tier_c/operational/test_operational_assurance.py",)
+    assert family.test_path not in promoted_paths
+    assert block.proof_block_id not in promoted_blocks
+
+
 def test_duplicate_path_admission_is_rejected() -> None:
     registry, manifest = _load_live_documents()
     broken = deepcopy(registry)

@@ -76,3 +76,6 @@ src/nvda_desk/operational_boundaries/__init__.py	Unit 5 live provider/broker bou
 src/nvda_desk/operational_boundaries/contracts.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
 src/nvda_desk/operational_boundaries/adapters.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
 tests/tier_a/operations/test_live_operational_boundaries.py	Unit 5 live provider/broker boundary authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
+tests/tier_c/README.md	Unit 6 Tier C operational assurance authority and implementation	READ_FULL	MUTABLE	4d1a32dc7d7bd159f06867a22b17d20edc49eda39effce494e4e5fb51f718477
+tests/tier_c/operational/test_operational_assurance.py	Unit 6 Tier C operational assurance authority and implementation	READ_FULL	MUTABLE	ABSENT_AT_UNIT_START
+tests/support/m09_k11_k14_contract_harness.py	Unit 6 Tier C operational assurance authority and implementation	READ_FULL	MUTABLE	be06fca14c9dc503e8b86e837af8fe3bc4c111e3cd8b12fffd043cefd15a7f8e

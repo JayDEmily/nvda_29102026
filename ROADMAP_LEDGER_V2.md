@@ -9,7 +9,7 @@
 | Current branch source checkpoint | `d4bffb8f95141e95353182c3e4c6e6ddc8e15472` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | Unit 3 — exact M06 owner-fact completeness |
-| Current active slice | Unit 4 — durable state, evidence and restart recovery |
+| Current active slice | Unit 7 — vocabulary adjudication |
 | Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |
 | Production implementation | accepted alpha retained; comprehensive debt-retirement pack active; no new live/durable/production claim until unit proof closes |
 | Live/paper/production claim | closed |
