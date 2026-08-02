@@ -96,10 +96,19 @@ Routing decisions about native code-structure architecture must use `docs/11_NAT
 For current programme status and mutation authority, use:
 
 - `project_control/canonical_project_manager/EXEC_PLAN.md`;
+- `project_control/canonical_project_manager/CONTINUATION.md` for the current
+  foundation standard, bounded readiness sequence, feature-continuation method
+  and exact point at which normal feature development resumes;
 - `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`;
 - `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md` when the active plan opens parallel lanes;
 - `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md` for PM-owned lane state;
 - `ROADMAP_LEDGER_V2.md`.
+
+The continuation document and live roadmap own present-tense repository status.
+Earlier module plans, closeouts and working-document implementation snapshots
+remain accepted historical evidence within their stated scope; present-tense
+phrases in them do not override the later comparative correction. The numbered
+doctrine continues to own semantic and architectural law.
 
 For the formally accepted `M00`–`M15` ownership allocation, dependency planes, implementation-obligation trace and structural validation, use:
 

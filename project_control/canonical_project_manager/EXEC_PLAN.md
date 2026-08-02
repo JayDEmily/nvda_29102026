@@ -1,12 +1,13 @@
-# NVIDIA 2026 — Canonical Alpha Delivery ExecPlan
+# NVIDIA 2026 — Canonical Alpha and Continuation ExecPlan
 
 ## Status
 
-**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`
+**Status:** alpha delivery accepted; bounded continuation foundation reconciliation ready; no execution unit active
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
 **Gate C protocol:** `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`
+**Continuation strategy:** `project_control/canonical_project_manager/CONTINUATION.md`
 
 The user has directed that the alpha move from control-heavy certification into
 normative, proof and implementation delivery. This plan preserves the accepted
@@ -15,6 +16,12 @@ while removing checkpoints and retained evidence bulk that do not create or
 protect a new semantic state. Required validation still runs; successful raw
 transcripts are not committed by default when a concise reproducible result and
 node-level failure delta establish the same claim.
+
+The alpha-delivery history governed by this plan is accepted. The 2026-08-02
+continuation amendment preserves that work and opens no implementation unit by
+itself. It corrects the later repository-wide readiness claim after the
+comparative audit and routes one bounded foundation reconciliation before
+ordinary planned feature development resumes.
 
 ## 1. Objective
 
@@ -352,19 +359,50 @@ material unresolved debt is separately enumerated in `MATERIAL_DEBT.tsv`.
 
 The accepted alpha remains bounded. The separately authorised `ALPHA-DEBT-001`
 subordinate pack replaced canonical CLI/ASGI selection of the compatibility route
-with thin translation into M00 through explicit coordinator injection. Tier C is
-still empty/deferred, and current M15 vocabulary cleanliness is not established
-beyond namespace `m07`. These facts do not reopen accepted M00–M13 semantics by
-default.
+with thin translation into M00 through explicit coordinator injection. At the
+final-consolidation checkpoint Tier C was empty/deferred and M15 cleanliness had
+not been established beyond namespace `m07`. The later comprehensive post-alpha
+pack then added five non-blocking Tier C specimens, exact M06 owner facts,
+bounded SQLite persistence/restart evidence, fail-closed external boundaries
+and 593 exact vocabulary dispositions. These later facts strengthen rather than
+reopen accepted M00–M13 semantics.
 
-No live brokerage, durable operations, production-readiness or profitability
-work is authorised by this completion state.
+No live brokerage, production-durable operations, production readiness or
+profitability work is authorised by this completion state.
+
+### Comparative assurance correction
+
+The integrated comparative audit at primary checkpoint `68789ff` establishes
+that the 19-block curated `alpha_current` route is green at 802 Tier A and 90
+Tier B tests, and that complete physical Tier B is green at 90 tests. It also
+establishes that complete physical Tier A is 1,713 passed and 247 failed across
+1,960 tests, with 32 physical test files outside exact proof admission.
+
+Therefore the prior module and post-alpha implementation acceptances remain
+valid within their proven bounds, but a repository-wide dependable-foundation
+claim is not current. The exact present-state interpretation, material findings,
+foundation standard and resumption checkpoint are governed by
+`project_control/canonical_project_manager/CONTINUATION.md`.
 
 ## 9. Programme sequence
 
-Recommended sequence from the current state:
+The next execution worker must open one bounded subordinate plan and proceed in
+this order:
 
-1. bounded unresolved-debt reconciliation only where separately authorised.
+1. reconcile the exact physical proof universe and the 32 admission gaps;
+2. close the prepared-context/M04 owner-identity boundary;
+3. close typed M01 ingress with its current M00 and transport caller cone;
+4. close the confirmed dependency, caller-mutability, vocabulary-scanner and
+   canonical API identity/state findings as narrow semantic units;
+5. adjudicate only the residual physical failure families after common causes
+   have been removed; and
+6. publish the exact continuation-readiness checkpoint defined by the canonical
+   continuation strategy.
+
+Normal planned feature development is closed until that checkpoint. The bounded
+reconciliation is not a new module programme: accepted evidence is reused,
+only current deltas are proved, and no module is reopened without a current
+failing or structurally contradictory proposition.
 
 Canonical integration remains serial where shared files overlap. M14 and M15
 continue as proof/promotion and vocabulary governance planes.
@@ -377,9 +415,11 @@ Current control surfaces:
 - `PLANS.md`
 - `00_TASK/PROJECT_EXECUTION_METHOD.md`
 - this ExecPlan
+- `CONTINUATION.md`
 - `GATE_C_COMPLETION_PROTOCOL.md`
 - `ROADMAP_LEDGER_V2.md`
 - accepted architecture report/workbook
+- the integrated comparative audit and its exact physical/admission artefacts
 - existing module records
 - existing validation log
 - Git
@@ -402,7 +442,10 @@ Stop the active behaviour only when:
 Otherwise continue through the three semantic states without asking for a new
 approval at each administrative sub-step.
 
-The programme closes when every accepted module behaviour is implemented or
-explicitly rejected/deferred, Atlas and `D-xxx` lineage is retained, admitted
-proof and full shadow validation are recorded, dependency/vocabulary/state/
-replay boundaries agree, and an explicit alpha checkpoint is published.
+The alpha-delivery programme has already closed within its accepted bounds.
+Normal incremental feature delivery reopens when the continuation strategy's
+single readiness checkpoint proves, on one commit, a green and exactly admitted
+retained physical Tier A/Tier B universe, green curated promotion, lawful
+dependency direction, current import/state/replay/boundary/vocabulary assurance,
+closure or proved quarantine of the named structural findings, and agreement
+among the ExecPlan, roadmap, module records, proof control and Git state.

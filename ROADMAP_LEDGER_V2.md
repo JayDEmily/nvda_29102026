@@ -4,15 +4,30 @@
 
 | Field | Current truth |
 |---|---|
-| Programme | M00–M15 modular-monolith alpha delivery |
-| Branch | `work/post-alpha-comprehensive-debt-retirement-v1` |
-| Current branch source checkpoint | `d4bffb8f95141e95353182c3e4c6e6ddc8e15472` |
+| Programme | accepted M00–M15 modular-monolith alpha; bounded continuation readiness before feature resumption |
+| Branch | `work/canonical-continuation-strategy-v1` |
+| Continuation source checkpoint | `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 |
-| Current active slice | none — canonical alpha state with repository debt retired |
-| Active control pack | none — canonical ExecPlan only |
-| Production implementation | repository-resolvable material debt retired; external live commissioning remains unproven |
-| Live/paper/production claim | closed |
+| Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
+| Latest accepted control evidence | comparative audit integration at `68789ff` |
+| Current active slice | none — strategy complete; later foundation-readiness execution not started |
+| Active control pack | none — next worker must open one bounded subordinate plan under `CONTINUATION.md` |
+| Current repository claim | accepted bounded alpha retained; curated promotion green; complete physical Tier A and proof admission not yet reconciled |
+| Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
+
+## Present-tense correction
+
+`project_control/canonical_project_manager/CONTINUATION.md` is the canonical
+current route. The later comparative audit found 802 green curated Tier A tests,
+90 green Tier B tests and strong graph/import/boundary evidence, but also 247
+failures in the 1,960-test complete physical Tier A universe and 32 physical test
+files outside exact admission. The prior “repository debt retired” statement was
+true only for the bounded material-debt register used by the post-alpha pack; it
+is not a current whole-repository foundation-readiness claim.
+
+The detailed module sections below retain accepted delivery history. They do not
+require wholesale module revalidation and do not override the current readiness
+sequence.
 
 ## Why the route changed
 
@@ -220,4 +235,10 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The comprehensive subordinate pack is active. Units 0–2 are accepted; Unit 3 must add exact concentration, inventory and liquidity owner facts to M06 without fabrication. Durable/live operation, Tier C and vocabulary adjudication remain closed until their later acceptance units.
+No production or test unit is active. The next worker must open the one bounded
+foundation-readiness plan defined by `project_control/canonical_project_manager/CONTINUATION.md`
+and begin with exact physical proof/admission reconciliation. The first
+implementation-bearing unit follows only after that control truth is current and
+closes the prepared-context/M04 owner-identity boundary. New planned features,
+donor integration, live operation and production claims remain closed until the
+single continuation-readiness checkpoint passes.

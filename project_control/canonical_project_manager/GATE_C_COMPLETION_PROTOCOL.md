@@ -2,12 +2,12 @@
 
 ## Status
 
-**Status:** `MVP_FAST_TRACK_ACTIVE_M03_DELIVERY_EVIDENCE_ECONOMY`
-**Amendment date:** `2026-07-31`
+**Status:** retained as the current incremental delivery protocol
+**Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
-**Scope:** alpha normative closure and truthful proof admission before module-local Gate D
+**Scope:** normative closure and truthful proof admission before module-local Gate D
 
 This file is the sole current Gate C operating protocol. The former eight-leaf
 `MLC-A → MLC-R → MLC-O → MLC-D → MLC-P → MLC-T → MLC-V → MLC-I`
@@ -17,6 +17,12 @@ evidence. It is no longer the mandatory execution route.
 Gate C does not contain production implementation. A module that passes this
 protocol opens its bounded Gate D implementation immediately; it does not wait
 for programme-wide Gate C completion.
+
+The accepted alpha module sequence is complete. This protocol is retained for
+the bounded continuation-readiness units and every later concept-sized feature.
+It is not evidence that M03 is still the active module, and it does not add a
+fourth gate. Current sequence and resumption authority live in
+`project_control/canonical_project_manager/CONTINUATION.md`.
 
 ## 1. Governing rule
 
@@ -239,49 +245,58 @@ material diagnostic.
 
 ## 9. Current conversion
 
-| Module | Current state | Next action |
+| Surface | Current state | Treatment |
 |---|---|---|
-| M13 state kernel | accepted implementation checkpoint retained | no repeat Gate C |
-| M04 packet protocol / K07 | `GATE_D_ACCEPTED` | no repeat |
-| M01 source admission | `GATE_D_ACCEPTED` | no repeat |
-| M07 coefficient/modifier authority | `GATE_D_ACCEPTED` | no repeat |
-| M08 playbook catalogue | `GATE_D_ACCEPTED` | no repeat |
-| M02 financial calendar | `GATE_D_ACCEPTED` | no repeat |
-| M03 preparation | `C-NORM` active | close the prepared-envelope and field-resolution proposition, then continue directly through minimum proof and bounded Gate D |
+| Accepted M01–M13 behaviours | historical Gate D evidence retained | do not repeat Gate C without a current failing or contradictory proposition |
+| M00 final composition and later post-alpha slices | accepted within recorded alpha bounds | preserve and use their current public seams |
+| Continuation foundation readiness | strategy defined; execution not started | use this protocol for each behaviour-changing reconciliation unit |
+| Future planned concepts | closed until the readiness checkpoint | reopen one concept at a time after the checkpoint |
+| M14 and M15 | continuing governance planes | maintain exact proof admission and vocabulary projection continuously |
 
 Accepted historical proof and implementation evidence remains valid. The
-evidence-economy amendment does not reopen or downgrade accepted modules and
-does not require deletion or rewriting of their retained raw records.
+comparative audit corrects current repository readiness; it does not downgrade
+every module or require deletion and rewriting of retained evidence.
 
-## 10. Delivery order
+## 10. Continuation delivery order
 
-The immediate delivery sequence is:
+The immediate sequence is governed in full by `CONTINUATION.md`:
 
-1. complete M03 preparation through `C-NORM → C-PROOF → Gate D` as one
-   uninterrupted semantic delivery unit;
-2. continue through the dependency graph with M05 and M06 when ready;
-3. complete M09, M10, M11 and M12 with risk-triggered independent validation
-   where required;
-4. complete final M00 composition;
-5. operate M14 proof promotion and M15 vocabulary governance continuously.
+1. reconcile exact physical proof admission and cluster the current failing
+   nodes by authority/common cause;
+2. close the prepared-context/M04 identity boundary;
+3. close typed M01 ingress with current M00/transport callers;
+4. close confirmed dependency, state-policy, vocabulary-scanner and canonical
+   API identity/state findings as narrow units;
+5. adjudicate only residual failure families; and
+6. publish one current readiness checkpoint.
 
-Dependency readiness may change this order. Numeric module or `D-xxx` order is
-never authority.
+Each behaviour-changing unit uses `C-NORM → C-PROOF → Gate D`. Dependency
+readiness may reorder disjoint narrow units only when the live plan records the
+reason and shared integration remains serial. Numeric module, test or `D-xxx`
+order is never authority.
 
-## 11. Final alpha consolidation
+## 11. Continuation-readiness and later integration
 
-Final consolidation is a milestone check, not a retroactive re-adjudication
-programme. It must:
+The readiness checkpoint is a milestone check, not a retroactive module
+programme. It must establish on one commit:
 
-- reconcile accepted/rejected/deferred Atlas behaviour;
-- retain every `D-xxx` lineage outcome;
-- run admitted targeted/affected proof and the full shadow suite;
-- verify module dependency direction, vocabulary projection, transaction
-  boundaries and replay limitations;
-- record remaining unknowns and explicit alpha exclusions.
+- a green retained physical Tier A/Tier B universe with zero unadmitted or
+  stale physical proof paths;
+- a green current curated promotion route;
+- lawful module dependency direction in addition to cycle/unresolved-import
+  health;
+- current import-order, state, replay, boundary and vocabulary assurance;
+- closure or proved canonical quarantine of the named structural findings; and
+- agreement among the ExecPlan, roadmap, module records, proof control,
+  validation summary and Git state.
 
-It must not require new per-test receipts unless a real contradiction is found.
-Production, paper, live and operational-readiness decisions remain separate.
+It must reuse comparable accepted evidence, work by failure family and avoid
+new per-test receipts unless a real contradiction requires one. After this
+single checkpoint, every feature follows the same protocol as one bounded
+concept; no new repository-wide retrospective is required by default.
+
+Production, paper, live, profitability and operational-readiness decisions
+remain separate.
 
 ## 12. Change control
 
