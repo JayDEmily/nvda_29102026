@@ -74,7 +74,6 @@ def _default_namespaces() -> dict[str, VocabularyNamespace]:
 
 class VocabularyCategory(str, Enum):
     AUDIT_CLASSIFICATION = "audit_classification"
-    AUDIT_SURFACE = "audit_surface"
     AUTHORITY_CLASS = "authority_class"
     AUTHORITY_SURFACE = "authority_surface"
     CARRIER = "carrier"

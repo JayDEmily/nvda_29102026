@@ -36,11 +36,10 @@ def test_required_parallel_risk_protocol_and_calendar_terms_are_present() -> Non
     assert "coefficient_authority" in entries
     assert entries["coefficient_authority"]["maps_to_contract"] == "CoefficientAuthorityDocument"
 
-    assert "mutable_runtime_surface" in entries
-    assert entries["mutable_runtime_surface"]["maps_to_contract"] == "CoefficientAuthorityRecord"
-
-    assert "baseline_only_surface" in entries
-    assert entries["baseline_only_surface"]["maps_to_contract"] == "CoefficientAuthorityRecord"
+    # PM-010 P1-035/P1-036 quarantine these implementation classifications;
+    # bounded_dynamic_coefficient is the admitted coefficient class.
+    assert "mutable_runtime_surface" not in entries
+    assert "baseline_only_surface" not in entries
 
     assert "effective_coefficient_lineage" in entries
     assert (
@@ -132,32 +131,13 @@ def test_required_parallel_risk_protocol_and_calendar_terms_are_present() -> Non
         == "SignalWorkbookTemporalProvenanceRule.field_level_provenance"
     )
 
-    assert "temporal_conformance_inventory" in entries
-    assert (
-        entries["temporal_conformance_inventory"]["maps_to_contract"]
-        == "TemporalConformanceInventory"
-    )
-
-    assert "already_conformant" in entries
-    assert (
-        entries["already_conformant"]["maps_to_contract"]
-        == "TemporalConformanceClassification.already_conformant"
-    )
-
-    assert "needs_proof_test_remediation_only" in entries
-    assert (
-        entries["needs_proof_test_remediation_only"]["maps_to_contract"]
-        == "TemporalConformanceClassification.needs_proof_test_remediation_only"
-    )
-
-    assert "needs_code_persistence_remediation_in_tranche_3" in entries
-    assert (
-        entries["needs_code_persistence_remediation_in_tranche_3"]["maps_to_contract"]
-        == "TemporalConformanceClassification.needs_code_persistence_remediation_in_tranche_3"
-    )
-
-    assert "reserved_blocked" in entries
-    assert (
-        entries["reserved_blocked"]["maps_to_contract"]
-        == "TemporalConformanceClassification.reserved_blocked"
-    )
+    # PM-010 P1-066..P1-070 quarantine these generated audit labels;
+    # they cannot classify current repository truth through vocabulary presence.
+    for quarantined_slug in (
+        "temporal_conformance_inventory",
+        "already_conformant",
+        "needs_proof_test_remediation_only",
+        "needs_code_persistence_remediation_in_tranche_3",
+        "reserved_blocked",
+    ):
+        assert quarantined_slug not in entries

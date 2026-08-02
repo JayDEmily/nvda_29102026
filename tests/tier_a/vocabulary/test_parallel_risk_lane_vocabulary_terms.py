@@ -12,8 +12,6 @@ def test_required_module_8_parallel_risk_terms_are_present() -> None:
 
     expected = {
         "environment_assessment": "ParallelRiskEnvironmentAssessment",
-        "candidate_audit": "ParallelRiskCandidateAuditSurface",
-        "stage_read_state": "ParallelRiskStageReadRecord",
         "dependency_packet_ids": "DmpV3Lineage.dependencyids",
         "parallel_risk_observation_store": "ParallelRiskObservationStore",
         "write_only_persistence": "ParallelRiskObservationStore.append_observation",
@@ -23,3 +21,7 @@ def test_required_module_8_parallel_risk_terms_are_present() -> None:
     for slug, contract in expected.items():
         assert slug in entries
         assert entries[slug]["maps_to_contract"] == contract
+
+    # PM-010 P1-122/P1-123 explicitly quarantine these implementation helpers.
+    assert "candidate_audit" not in entries
+    assert "stage_read_state" not in entries

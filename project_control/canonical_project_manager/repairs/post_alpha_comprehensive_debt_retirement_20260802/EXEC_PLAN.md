@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT7_VOCABULARY_ADJUDICATION`
+**Status:** `ACTIVE:UNIT8_AGGREGATE_CLOSEOUT`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -195,3 +195,5 @@ acceptance, broad suppression or edited proof evidence.
 - 2026-08-02: Unit 5 passed: explicit live-placement, provider and broker boundaries are offline/fail-closed by default, require injected transports and credentials, retain M00 paper-only semantics, and pass 138 affected tests with 19 current promotion blocks.
 - 2026-08-02: Unit 6 passed at working-tree validation: five separately executable Tier C operational cases pass; the family is current-nonblocking and excluded from `alpha_current`; final clean-commit rerun is recorded in Unit 7 entry validation.
 - 2026-08-02: Unit 6 exact clean-commit validation passed at `bb44560`: installed-package smoke, Tier C 5/5, alpha promotion 19/19 with 802 tests, Tier B 90/90, Black and Ruff.
+
+- 2026-08-02: Unit 7 passed at working-tree validation: 593 exact human dispositions resolve 751 overlapping scanner candidates across global and 12 module namespaces; all 13 admitted namespace audits are clean and touch stamps current; three stale vocabulary tests and one stale schema category were corrected to match the accepted PM-010 quarantine authority.

@@ -8,10 +8,10 @@
 | Branch | `work/post-alpha-comprehensive-debt-retirement-v1` |
 | Current branch source checkpoint | `d4bffb8f95141e95353182c3e4c6e6ddc8e15472` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | Unit 3 — exact M06 owner-fact completeness |
-| Current active slice | Unit 7 — vocabulary adjudication |
+| Latest accepted implementation slice | Unit 7 — exact vocabulary adjudication |
+| Current active slice | Unit 8 — aggregate closeout |
 | Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |
-| Production implementation | accepted alpha retained; comprehensive debt-retirement pack active; no new live/durable/production claim until unit proof closes |
+| Production implementation | repository-resolvable debt units complete; aggregate closeout active; external live commissioning remains unproven |
 | Live/paper/production claim | closed |
 
 ## Why the route changed

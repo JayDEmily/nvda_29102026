@@ -54,3 +54,22 @@
 - Current promotion membership: 19 blocks / 19 families / 21 paths.
 - Black, Ruff and diff validation: PASS.
 - No real endpoint, credential, order, fill or live-account claim was used.
+
+
+## Unit 6 — Tier C operational assurance
+
+- Exact clean commit: `bb44560`.
+- Installed-package isolation, cross-process SQLite restart, canonical M01→M02→M03→M00 paper continuity, hermetic provider substitution and broker fail-closed safety: 5 passed.
+- Tier C remains current-nonblocking and excluded from `alpha_current`.
+- Current alpha promotion remained 19/19 with 802 Tier A tests; Tier B 90/90; Black/Ruff passed.
+
+## Unit 7 — vocabulary adjudication
+
+- Unit-start current scan: 751 overlapping candidates across global plus 12 module namespaces.
+- Global-first exact adjudication reduced the residual module set to 373 occurrences by resolving shared contexts once.
+- 593 unique occurrence-scoped dispositions were added after reading each exact path/line/context; no generated semantic acceptance, broad suppression, mass rename or automatic alias admission was used.
+- Disposition source classes: 293 implementation, 211 test, 50 normative and 39 configuration observations.
+- Canonical additions/aliases: none.
+- All 13 admitted namespaces (`global`, `m00`, `m02`–`m12` excluding unregistered `m01`/`m13`) rerun with zero candidates and `vocabulary_touched=False`.
+- The clean audit exposed stale proof/schema assertions. PM-010 P1-035/P1-036, P1-066..P1-070 and P1-122/P1-123 explicitly quarantine Mutable Runtime Surface, Baseline-only Surface, five generated temporal-status labels, Candidate Audit and Stage-read State. Tests now assert their absence, and the unused `audit_surface` enum category was removed.
+- Complete Tier A vocabulary suite: 103 passed.
