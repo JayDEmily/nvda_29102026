@@ -695,6 +695,7 @@ def test_c046_authoritative_replay_contract_carries_complete_logical_envelope_an
     contracts = _require_module("nvda_desk.m12_evidence_replay.contracts")
     replay_class = _require_attr(contracts, "ReplayClass")
     authority_status = _require_attr(contracts, "ReplayAuthorityStatus")
+    material = _require_attr(contracts, "ReplayMaterial")
     envelope = _require_attr(contracts, "ReplayEnvelope")
     assert set(get_args(replay_class)) == {
         "preserved_occurrence_replay",
@@ -702,6 +703,19 @@ def test_c046_authoritative_replay_contract_carries_complete_logical_envelope_an
         "comparison_only",
     }
     assert "non_authoritative_incomplete" in set(get_args(authority_status))
+    assert {
+        "owner_module",
+        "contract_path",
+        "owner_contract_version",
+        "occurrence_id",
+        "content_snapshot",
+        "content_fingerprint",
+        "sequence",
+        "material_time_utc",
+        "verified",
+        "retrievable",
+        "semantic_fingerprint",
+    }.issubset(_field_names(material))
     assert {
         "envelope_id",
         "replay_run_id",
@@ -731,6 +745,8 @@ def test_c046_missing_executable_or_artifact_authority_is_non_authoritative_inco
     assessment = service.assess(envelope)
     assert assessment.authority_status == "non_authoritative_incomplete"
     assert {"source_artifacts", "executable_meaning"}.issubset(set(assessment.missing_material))
+    assert assessment.reproduced_output_id is None
+    assert assessment.reproduced_output_fingerprint is None
     assert assessment.runtime_authority_promoted is False
     assert assessment.live_side_effects_performed is False
 
@@ -740,5 +756,7 @@ def test_c046_mapping_comparison_remains_comparison_only_and_cannot_claim_recons
     assessment = service.assess(envelope)
     assert assessment.replay_class == "comparison_only"
     assert assessment.authority_status == "comparison_only"
+    assert assessment.reproduced_output_id is None
+    assert assessment.reproduced_output_fingerprint is None
     assert assessment.runtime_authority_promoted is False
     assert assessment.live_side_effects_performed is False

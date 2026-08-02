@@ -8,7 +8,7 @@ import pytest
 from nvda_desk.adapters.ingress.market_snapshot_feed import adapt_market_snapshot
 from nvda_desk.adapters.ingress.options_surface_feed import adapt_options_surface
 from nvda_desk.contracts.packets import build_dmp_v3_envelope_kwargs
-from nvda_desk.contracts.stage_inputs import CommonStageContext
+from nvda_desk.contracts.stage_inputs import CommonStageContext, StageInputBundle
 from nvda_desk.ingress.raw_bundle_loader import RawBundleLoader
 from nvda_desk.preparation.runtime_preparer import PreparedRuntimeLineage
 
@@ -59,6 +59,7 @@ def test_c009_stage_bundle_carries_common_identity_and_version_metadata_without_
         "input_schema_versions",
         "preparation_policy_version",
     }
+    assert "common_context" in StageInputBundle.model_fields
     assert required.issubset(CommonStageContext.model_fields)
 
 

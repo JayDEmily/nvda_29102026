@@ -8,6 +8,7 @@ import pytest
 
 from nvda_desk.capital.authority import evaluate_capital_deployment
 from nvda_desk.contracts.capital import (
+    CapitalDeploymentAuthorityAction,
     CapitalDeploymentAuthorityInput,
 )
 from nvda_desk.contracts.packets import K07_ADMITTED_PACKET_ROLES
@@ -37,6 +38,9 @@ def test_sequence9_capital_decision_packet_role_remains_fail_closed_under_k07() 
         receipt_id="capital-deployment-receipt-seq9",
     )
 
+    assert decision.action is CapitalDeploymentAuthorityAction.CONTINUE
+    assert decision.input_trace is not None
+    assert decision.capital_deployment_receipt_id == "capital-deployment-receipt-seq9"
     assert "capital_deployment_decision" not in K07_ADMITTED_PACKET_ROLES
     with pytest.raises(
         ValueError,

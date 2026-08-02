@@ -19,6 +19,14 @@ def test_parallel_risk_packet_builder_surface_is_present() -> None:
 
 
 def test_stage_packet_builder_preserves_explicit_stage_carriage_metadata() -> None:
+    authority = current_packet_kwargs(
+        role="stage_packet",
+        packet_id="stage-1",
+        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        parentids=["prepared-context-1"],
+        derivedfrom="temporal_from_declared_stage_inputs",
+        sourceartifactids=["bundle-input-1"],
+    )
     packet = build_stage_packet(
         packet_id="stage-1",
         dataschema="TemporalContextOutput",
@@ -27,14 +35,7 @@ def test_stage_packet_builder_preserves_explicit_stage_carriage_metadata() -> No
         grammar_role="temporal_context",
         stage_name="temporal",
         summary_headline="session_state=opening",
-        **current_packet_kwargs(
-            role="stage_packet",
-            packet_id="stage-1",
-            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-            parentids=["prepared-context-1"],
-            derivedfrom="temporal_from_declared_stage_inputs",
-            sourceartifactids=["bundle-input-1"],
-        ),
+        **authority,
     )
 
     assert packet.packetrole == "stage_packet"
@@ -43,6 +44,7 @@ def test_stage_packet_builder_preserves_explicit_stage_carriage_metadata() -> No
     assert packet.producer.stage_name == "temporal"
     assert packet.lineage.derivedfrom == "temporal_from_declared_stage_inputs"
     assert packet.lineage.sourceartifactids == ["bundle-input-1"]
+    assert packet.lineage.inputfingerprint == authority["inputfingerprint"]
     assert packet.summary.headline == "session_state=opening"
     assert packet.validation.status == "valid"
 
