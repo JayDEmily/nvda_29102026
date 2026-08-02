@@ -183,7 +183,7 @@ def test_active_control_validation_accepts_foundation_readiness_pack(
     canonical.parent.mkdir(parents=True)
     canonical.write_text(
         "**Status:** alpha delivery accepted; bounded continuation foundation "
-        "reconciliation active at Unit 1\n",
+        "reconciliation active\n",
         encoding="utf-8",
     )
     (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
@@ -195,8 +195,7 @@ def test_active_control_validation_accepts_foundation_readiness_pack(
     process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
     process.parent.mkdir(parents=True)
     process.write_text(
-        "The current active bounded pack is "
-        "`FOUNDATION-READINESS-RECONCILIATION-V1`.\n",
+        "The current active bounded pack is " "`FOUNDATION-READINESS-RECONCILIATION-V1`.\n",
         encoding="utf-8",
     )
 

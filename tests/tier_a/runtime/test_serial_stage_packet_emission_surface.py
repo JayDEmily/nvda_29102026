@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.regime import MarketRegimeContextInput
 from nvda_desk.contracts.stage_inputs import StageInputBundle
@@ -25,7 +27,8 @@ def test_serial_stage_packet_emission_preserves_order_stage_ownership_and_truthf
                 vix_level=20.0,
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
-        )
+        ),
+        **serial_runtime_packet_authority("serial-stage-emission"),
     )
 
     assert receipt["serial_spine_contract"]["architecture_row"] == "5.7 Serial desk-cognition spine"
@@ -49,8 +52,13 @@ def test_serial_stage_packet_emission_preserves_order_stage_ownership_and_truthf
     assert stage_packets["temporal"]["data"]["session_state"] == "opening"
     assert stage_packets["temporal"]["producer"]["module_id"] == "temporal_context"
     assert stage_packets["temporal"]["producer"]["grammar_role"] == "temporal_context"
-    assert stage_packets["temporal"]["lineage"]["parentids"] == []
+    assert stage_packets["temporal"]["lineage"]["parentids"] == [
+        "prepared-context::serial-stage-emission"
+    ]
     assert stage_packets["temporal"]["lineage"]["dependencyids"] == []
+    assert stage_packets["temporal"]["lineage"]["sourceartifactids"] == [
+        "source::serial-stage-emission"
+    ]
     assert (
         stage_packets["temporal"]["lineage"]["derivedfrom"] == "temporal_from_declared_stage_inputs"
     )

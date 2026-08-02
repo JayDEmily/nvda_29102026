@@ -1,4 +1,56 @@
-# Foundation Readiness Reconciliation — Unit 1 Validation
+# Foundation Readiness Reconciliation — Unit Validation
+
+## Unit 2 — prepared identity and packet boundary
+
+### Outcome
+
+Unit 2 passes its bounded gate. The M03/M04 public seam now accepts only a
+revalidated `PreparedDataEnvelope`, projects typed `PreparedContextIdentity`,
+derives packet lineage and fingerprints from that envelope, and requires the
+caller-owned execution, producer and occurrence facts already required by
+DMPV3/K07 law. Raw compatibility snapshots cannot be promoted into governed
+packets. The admitted serial-runtime packet path likewise fails closed when
+caller-owned packet authority is absent; its non-packet compatibility fallback
+remains available.
+
+No normative meaning was added. `UNIT2_C_NORM.md` records the pre-existing M03,
+M04 and K07 authority used for the implementation.
+
+### Proof
+
+| Surface | Result |
+|---|---:|
+| Unit 2 affected Tier A cone | 618 passed; 0 failed |
+| M04 current proof | 271 passed; 0 failed |
+| Physical Tier A | 1,916 passed; 49 failed; 1,965 total |
+| Physical Tier B | 91 passed; 0 failed |
+| Proof authority | PASS — 201 families, 203 paths, 73 blocks |
+| Proof-block manifest | PASS — 73 blocks |
+| Vocabulary namespaces | PASS — 13/13; zero unresolved candidates |
+
+The complete physical Tier A run closes 198 baseline failures and adds five
+positive/fail-closed propositions. Its remaining 49 failures are retained in
+exact JUnit evidence for Units 3–5; they do not fall inside the now-green Unit 2
+dependency cone. The residual families include unadmitted parallel-risk input,
+legacy runtime callers without explicit authority, absent next-gate types,
+remaining scenario/role/version facts and distinct API assertions.
+
+Formatting shifted exact occurrence identities after initial vocabulary
+adjudication. Thirty-two unique final-tree occurrences were therefore
+re-adjudicated in the occurrence-scoped disposition register. Together with the
+earlier Unit 2 adjudications, all 13 namespace scans are clean. No canonical
+vocabulary label or alias changed.
+
+### Evidence and gate
+
+- `UNIT2_C_NORM.md`
+- `evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml`
+- `FULL_READ_MANIFEST.tsv`
+
+Unit 2 may close. Repository-wide readiness remains open at 49 physical Tier A
+failures; Unit 3 may open on typed M01 ingress and canonical composition.
+
+## Unit 1 — exact proof universe and baseline truth
 
 ## Outcome
 

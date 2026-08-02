@@ -8,10 +8,17 @@ from copy import deepcopy
 from datetime import datetime
 from typing import Any
 
-from nvda_desk.contracts.packets import DeskModulePacketV3
+from nvda_desk.contracts.packets import (
+    K07_COMMON_CHECKS,
+    K07_ROLE_CHECKS,
+    DeskModulePacketV3,
+    DmpV3ExecutionContext,
+    PreparedContextIdentity,
+)
 from nvda_desk.contracts.prepared_context import (
     PreparedContextPayload,
 )
+from nvda_desk.contracts.prepared_data import PreparedDataEnvelope
 from nvda_desk.packets.dmp_packets import DmpPacketBuilder
 from nvda_desk.preparation.runtime_preparer import PreparedRuntimeSnapshot
 
@@ -74,49 +81,108 @@ def build_prepared_context_packet(
     *,
     packet_id: str,
     snapshot: PreparedRuntimeSnapshot,
-    emitted_at: datetime | None = None,
-    traceid: str | None = None,
-    runid: str | None = None,
-    scenarioid: str | None = None,
+    emitted_at: datetime,
+    execution_context: DmpV3ExecutionContext,
+    module_version: str,
+    module_instance_id: str,
     parentids: list[str] | None = None,
     dependencyids: list[str] | None = None,
     reviewtraceid: str | None = None,
 ) -> DeskModulePacketV3:
-    """Build the canonical prepared-context DMPV3 handoff packet."""
+    """Build one governed M03 identity handoff from a canonical envelope."""
 
-    payload = build_prepared_context_payload(snapshot)
-    violations = list(payload.failed_enrichments)
-    source_artifact_ids = list(payload.source_artifact_ids)
-    if not source_artifact_ids and payload.source_snapshot_id:
-        source_artifact_ids = [payload.source_snapshot_id]
+    if snapshot.prepared_envelope is None:
+        raise ValueError("canonical_prepared_envelope_required")
+    try:
+        envelope = PreparedDataEnvelope.model_validate(
+            snapshot.prepared_envelope.model_dump(mode="python")
+        )
+    except (TypeError, ValueError) as exc:
+        raise ValueError("prepared_envelope_contract_invalid") from exc
+    if not isinstance(execution_context, DmpV3ExecutionContext):
+        raise TypeError("dmp_v3_execution_context_required")
+    try:
+        governed_context = DmpV3ExecutionContext.model_validate(
+            execution_context.model_dump(mode="python")
+        )
+    except (TypeError, ValueError) as exc:
+        raise ValueError("execution_context_contract_invalid") from exc
+
+    identity = PreparedContextIdentity(
+        prepared_id=envelope.prepared_id,
+        prepared_fingerprint=envelope.prepared_fingerprint,
+        schema_version=envelope.schema_version,
+        preparation_policy_version=envelope.preparation_policy_version,
+    )
+    source_artifact_ids = [
+        reference.source_artifact_id for reference in envelope.source_capture_refs
+    ]
+    admitted_sources = frozenset(source_artifact_ids)
+    limitations = list(
+        dict.fromkeys((*envelope.limitations, *envelope.missing_optional_enrichments))
+    )
+    admitted_limitations = frozenset(limitations)
+    conditional_lineage_fields = {
+        field_name
+        for field_name, value in (
+            ("parentids", parentids),
+            ("dependencyids", dependencyids),
+            ("reviewtraceid", reviewtraceid),
+        )
+        if value
+    }
+    owner_checks = frozenset((*K07_COMMON_CHECKS, *K07_ROLE_CHECKS["prepared_context_packet"]))
+
+    def _owner_check(name: str, context: dict[str, Any]) -> bool:
+        producer = context["producer"]
+        lineage = context["lineage"]
+        packet_context = context["execution_context"]
+        return bool(
+            name in owner_checks
+            and context["packetrole"] == "prepared_context_packet"
+            and context["data"] == identity
+            and producer.module_id == "prepared_ingress"
+            and producer.module_version == module_version
+            and producer.module_instance_id == module_instance_id
+            and packet_context == governed_context.model_dump(mode="python")
+            and lineage.derivedfrom == envelope.prepared_id
+            and lineage.sourceartifactids == source_artifact_ids
+            and lineage.inputfingerprint == envelope.prepared_fingerprint
+            and tuple(context["optional_limitations"]) == tuple(limitations)
+        )
+
     return DmpPacketBuilder.build_prepared_context_packet(
         packet_id=packet_id,
-        data=payload,
+        data=identity,
         emitted_at=emitted_at,
-        traceid=traceid,
-        runid=runid,
-        scenarioid=scenarioid,
+        traceid=governed_context.traceid,
+        runid=governed_context.runid,
+        scenarioid=governed_context.scenarioid,
+        module_version=module_version,
+        module_instance_id=module_instance_id,
         parentids=parentids,
         dependencyids=dependencyids,
+        derivedfrom=envelope.prepared_id,
         sourceartifactids=source_artifact_ids,
-        inputfingerprint=(
-            payload.input_fingerprint or fingerprint_prepared_context_payload(payload)
-        ),
+        inputfingerprint=envelope.prepared_fingerprint,
         reviewtraceid=reviewtraceid,
-        validation_violations=violations,
+        source_artifact_validator=lambda source_id: source_id in admitted_sources,
+        input_fingerprint_validator=lambda fingerprint: (
+            fingerprint == envelope.prepared_fingerprint
+        ),
+        conditional_lineage_fields=conditional_lineage_fields,
+        owner_check_validator=_owner_check,
+        validation_violations=limitations,
+        optional_limitation_validator=(
+            (lambda limitation: limitation in admitted_limitations) if limitations else None
+        ),
+        degraded_consumer_restriction=("non_binding_prepared_context" if limitations else None),
         summary_keyflags=["prepared_context"],
         dmpextensions={
             "nvda": {
                 "source_temporal_standard": {
-                    "source_time_utc": (
-                        payload.source_time_utc.isoformat()
-                        if payload.source_time_utc is not None
-                        else None
-                    ),
-                    "source_date": (
-                        payload.source_date.isoformat() if payload.source_date is not None else None
-                    ),
-                    "alignment_policy": payload.alignment_policy,
+                    "effective_at_utc": envelope.effective_at_utc.isoformat(),
+                    "alignment_policy_version": envelope.alignment_policy_version,
                 }
             }
         },

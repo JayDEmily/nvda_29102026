@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from datetime import UTC, datetime
+
 import pytest
 from tests.support.m03_k05_k06_contract_harness import (
     CLOSED_AUTHORITIES,
@@ -690,3 +692,113 @@ def test_repair_rejects_derivation_receipt_payload_disagreement() -> None:
             derivations=(derivation,),
             derivation_versions={"nvda_return_pct": "1.0.0"},
         )
+
+
+def _unit2_packet(snapshot, *, packet_id: str = "prepared-context-unit2"):
+    from nvda_desk.contracts.packets import DmpV3ExecutionContext
+    from nvda_desk.preparation.context_packet import build_prepared_context_packet
+
+    return build_prepared_context_packet(
+        packet_id=packet_id,
+        snapshot=snapshot,
+        emitted_at=datetime(2026, 8, 2, 10, 0, tzinfo=UTC),
+        execution_context=DmpV3ExecutionContext(
+            traceid="trace-unit2",
+            runid="run-unit2",
+            scenarioid="scenario-unit2",
+        ),
+        module_version="m03-prepared-packet.1",
+        module_instance_id="m03-prepared-packet-instance-1",
+        parentids=["source-capture-packet-1"],
+    )
+
+
+def test_unit2_prepared_packet_projects_exact_m03_identity_and_lineage() -> None:
+    from nvda_desk.contracts.packets import (
+        K07_COMMON_CHECKS,
+        K07_ROLE_CHECKS,
+        PreparedContextIdentity,
+    )
+    from nvda_desk.preparation.runtime_preparer import (
+        prepare_runtime_snapshot_from_envelope,
+    )
+
+    _, _, _, _, _, envelope = _production_envelope()
+    packet = _unit2_packet(prepare_runtime_snapshot_from_envelope(envelope))
+
+    assert packet.data == PreparedContextIdentity(
+        prepared_id=envelope.prepared_id,
+        prepared_fingerprint=envelope.prepared_fingerprint,
+        schema_version=envelope.schema_version,
+        preparation_policy_version=envelope.preparation_policy_version,
+    )
+    assert packet.producer.module_version == "m03-prepared-packet.1"
+    assert packet.producer.module_instance_id == "m03-prepared-packet-instance-1"
+    assert packet.traceid == "trace-unit2"
+    assert packet.runid == "run-unit2"
+    assert packet.scenarioid == "scenario-unit2"
+    assert packet.lineage.parentids == ["source-capture-packet-1"]
+    assert packet.lineage.derivedfrom == envelope.prepared_id
+    assert packet.lineage.sourceartifactids == ["source.market.1"]
+    assert packet.lineage.inputfingerprint == envelope.prepared_fingerprint
+    assert packet.validation.status == "valid"
+    assert tuple(check.name for check in packet.validation.checks) == (
+        *K07_COMMON_CHECKS,
+        *K07_ROLE_CHECKS["prepared_context_packet"],
+    )
+    assert all(check.passed for check in packet.validation.checks)
+
+
+def test_unit2_prepared_packet_degradation_is_envelope_admitted_and_restricted() -> None:
+    from nvda_desk.preparation.runtime_preparer import (
+        prepare_runtime_snapshot_from_envelope,
+    )
+
+    api = production_api()
+    limitation = "calendar_reference_projection_missing"
+    envelope = _repair_build_envelope(
+        refs=(_repair_source_reference(),),
+        payload=api["PreparedRuntimePayloadV1"](spot_price=101.0),
+        validation_state="degraded",
+        completeness_state="degraded",
+        limitations=(limitation,),
+    )
+
+    packet = _unit2_packet(prepare_runtime_snapshot_from_envelope(envelope))
+
+    assert packet.validation.status == "degraded"
+    assert packet.validation.violations == [limitation]
+    assert packet.validation.checks[-1].name == f"optional_quality:{limitation}"
+    assert packet.validation.checks[-1].passed is False
+    assert "consumer_restriction:non_binding_prepared_context" in packet.summary.keyflags
+
+
+def test_unit2_prepared_packet_rejects_noncanonical_compatibility_snapshot() -> None:
+    from nvda_desk.ingress.raw_bundle_loader import load_api_payload
+    from nvda_desk.preparation.runtime_preparer import prepare_runtime_dataset
+
+    snapshot = prepare_runtime_dataset(
+        load_api_payload(
+            {
+                "snapshot_id": "raw-compatibility-only",
+                "source_time_utc": datetime(2026, 8, 2, 9, 30, tzinfo=UTC),
+                "market_snapshot": {"spot_price": 101.0},
+            }
+        )
+    ).primary_snapshot
+
+    with pytest.raises(ValueError, match="canonical_prepared_envelope_required"):
+        _unit2_packet(snapshot)
+
+
+def test_unit2_prepared_packet_revalidates_copied_envelope() -> None:
+    from nvda_desk.preparation.runtime_preparer import (
+        prepare_runtime_snapshot_from_envelope,
+    )
+
+    _, _, _, _, _, envelope = _production_envelope()
+    snapshot = prepare_runtime_snapshot_from_envelope(envelope)
+    snapshot.prepared_envelope = envelope.model_copy(update={"prepared_fingerprint": "f" * 64})
+
+    with pytest.raises(ValueError, match="prepared_envelope_contract_invalid"):
+        _unit2_packet(snapshot)

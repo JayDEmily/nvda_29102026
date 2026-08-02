@@ -8,6 +8,7 @@ from typing import get_type_hints
 
 import pytest
 
+from nvda_desk.contracts.packets import DmpV3ExecutionContext
 from nvda_desk.ingress.raw_bundle_loader import load_api_payload
 from nvda_desk.preparation.context_packet import (
     build_context_payload_mapping,
@@ -236,28 +237,22 @@ def test_fwd009_reopened_rows_have_real_prepared_ingress_runtime_context_behavio
         snapshot = _prepared_snapshot(audit_row_id, atlas_record_id)
         payload = build_prepared_context_payload(snapshot)
         fingerprint = fingerprint_prepared_context_payload(payload)
-        packet = build_prepared_context_packet(
-            packet_id=audit_row_id,
-            snapshot=snapshot,
-            emitted_at=datetime(2026, 5, 19, 10, 0, tzinfo=UTC),
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-            scenarioid=f"scenario::{atlas_record_id}",
-            parentids=[snapshot.snapshot_id or "snapshot:none"],
-            reviewtraceid=f"review::{audit_row_id}",
-        )
-        assert fingerprint == packet.lineage.inputfingerprint
-        assert packet.packetrole == "prepared_context_packet"
-        assert packet.dataschema == "nvda.preparation.PreparedRuntimeContext.v1"
-        assert packet.producer.module_id == "prepared_ingress"
-        assert packet.producer.grammar_role == "prepared_runtime_context"
-        assert packet.producer.behaviour_class == "preparation_output"
-        assert packet.producer.stage_name == "runtime_context_preparation"
-        assert packet.traceid == f"trace::{audit_row_id}"
-        assert packet.runid == f"run::{audit_row_id}"
-        assert packet.scenarioid == f"scenario::{atlas_record_id}"
-        assert packet.lineage.reviewtraceid == f"review::{audit_row_id}"
-        assert packet.data.snapshot_id == audit_row_id
+        assert len(fingerprint) == 64
+        with pytest.raises(ValueError, match="canonical_prepared_envelope_required"):
+            build_prepared_context_packet(
+                packet_id=audit_row_id,
+                snapshot=snapshot,
+                emitted_at=datetime(2026, 5, 19, 10, 0, tzinfo=UTC),
+                execution_context=DmpV3ExecutionContext(
+                    traceid=f"trace::{audit_row_id}",
+                    runid=f"run::{audit_row_id}",
+                    scenarioid=f"scenario::{atlas_record_id}",
+                ),
+                module_version="fwd009-compatibility.1",
+                module_instance_id="fwd009-compatibility-instance-1",
+                parentids=[snapshot.snapshot_id or "snapshot:none"],
+                reviewtraceid=f"review::{audit_row_id}",
+            )
         return
 
     if behaviour == "provenance_lineage":

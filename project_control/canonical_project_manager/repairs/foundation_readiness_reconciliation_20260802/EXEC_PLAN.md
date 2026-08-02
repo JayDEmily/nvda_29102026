@@ -5,7 +5,7 @@
 **Status:** active
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 1 — exact proof universe and baseline truth (validation complete)
+**Current unit:** Unit 2 — prepared identity and packet boundary (validation complete)
 
 ## Objective
 
@@ -131,6 +131,15 @@ declared environment; records, proof control and Git describe the same state.
 - 2026-08-02: 204 Tier A nodes share caller-owned `scenario_id` failure and 17
   share unadmitted K07 packet roles. Unit 2 therefore remains the first lawful
   implementation-bearing cause family.
+- 2026-08-02: Unit 1 committed at `1d48393`; Unit 2 opened against the existing
+  M03 prepared-envelope and M04/K07 packet law. Raw compatibility snapshots are
+  not authoritative prepared identity and may not be promoted into DMPV3.
+- 2026-08-02: Unit 2 implements that existing law at the prepared-context and
+  admitted serial-runtime packet seams. Its affected Tier A cone passes 618/618;
+  complete physical Tier A improves to 1,916 passed / 49 failed / 1,965 total.
+- 2026-08-02: all 13 vocabulary namespaces are candidate-clean after exact
+  occurrence re-adjudication; no canonical label or alias changed. Tier B,
+  proof authority and all 73 proof-block definitions remain green.
 
 ## Decisions
 
@@ -147,13 +156,13 @@ None current.
 
 ## Validation
 
-Unit 1 passes. See `VALIDATION_SUMMARY.md` and
-`evidence/UNIT1_PROOF_UNIVERSE.json`.
+Units 1 and 2 pass. See `VALIDATION_SUMMARY.md`,
+`evidence/UNIT1_PROOF_UNIVERSE.json` and
+`evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml`.
 
 ## Unknowns
 
-- Exact residual failure set after the prepared identity and packet-role causes
-  close.
+- Exact Unit 3 partition of the 49 retained physical Tier A failures.
 - Whether later semantic adjudication changes the retained physical test
   universe; Unit 1 made no such change.
 

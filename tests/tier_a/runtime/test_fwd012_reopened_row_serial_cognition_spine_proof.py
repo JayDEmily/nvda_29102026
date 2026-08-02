@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 from pydantic import ValidationError
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
 
 from nvda_desk.contracts.eligibility import PlaybookEligibilityOutput
 from nvda_desk.contracts.execution import (
@@ -403,7 +404,10 @@ def _stage_input_bundle(audit_row_id: str, atlas_record_id: str) -> StageInputBu
 
 
 def _receipt(audit_row_id: str, atlas_record_id: str) -> dict[str, object]:
-    return DeskRuntimeOrchestrator().run_once(_stage_input_bundle(audit_row_id, atlas_record_id))
+    return DeskRuntimeOrchestrator().run_once(
+        _stage_input_bundle(audit_row_id, atlas_record_id),
+        **serial_runtime_packet_authority(audit_row_id),
+    )
 
 
 def _imports_for(path: Path) -> set[str]:
@@ -546,7 +550,7 @@ def test_fwd012_reopened_rows_have_real_serial_desk_cognition_spine_behaviour(
             "execution": "ExecutionExpressionOutput",
         }
         fingerprints = set()
-        previous_id: str | None = None
+        previous_id = f"prepared-context::{audit_row_id}"
         for stage_name in SERIAL_SPINE_STAGE_ORDER:
             packet = stage_packets[stage_name]
             fingerprints.add(packet["lineage"]["inputfingerprint"])
@@ -554,14 +558,15 @@ def test_fwd012_reopened_rows_have_real_serial_desk_cognition_spine_behaviour(
             assert packet["producer"]["module_id"] == expected_modules[stage_name]
             assert packet["producer"]["grammar_role"] == expected_modules[stage_name]
             assert packet["producer"]["stage_name"] == stage_name
-            assert packet["producer"]["module_version"] == "native"
+            assert packet["producer"]["module_version"] == "legacy-serial-runtime.1"
             assert packet["dataschema"] == expected_schemas[stage_name]
             assert (
                 packet["dmpextensions"]["nvda"]["schema_identifiers"]["output_model_name"]
                 == expected_schemas[stage_name]
             )
             assert packet["validation"]["status"] == "valid"
-            assert packet["lineage"]["parentids"] == ([] if previous_id is None else [previous_id])
+            assert packet["lineage"]["parentids"] == [previous_id]
+            assert packet["lineage"]["sourceartifactids"] == [f"source::{audit_row_id}"]
             assert packet["lineage"]["dependencyids"] == [
                 stage_packet_ids[name] for name in SERIAL_STAGE_DEPENDENCIES[stage_name]
             ]
@@ -584,7 +589,7 @@ def test_fwd012_reopened_rows_have_real_serial_desk_cognition_spine_behaviour(
             assert _defined_symbols(path).isdisjoint(PROHIBITED_DONOR_SYMBOLS)
         assert receipt["serial_spine_contract"]["owner"] == "serial desk-cognition authority"
         assert all(
-            stage_packets[stage_name]["producer"]["module_version"] == "native"
+            stage_packets[stage_name]["producer"]["module_version"] == "legacy-serial-runtime.1"
             for stage_name in SERIAL_SPINE_STAGE_ORDER
         )
         return
@@ -612,9 +617,9 @@ def test_fwd012_reopened_rows_have_real_serial_desk_cognition_spine_behaviour(
     if behaviour == "runtime_service_identity":
         orchestrator = DeskRuntimeOrchestrator()
         assert orchestrator.stage_sequence() == SERIAL_SPINE_STAGE_ORDER
-        assert receipt["stage_packets"]["temporal"]["traceid"].startswith("trace::serial_runtime::")
-        assert receipt["stage_packets"]["temporal"]["runid"].startswith("run::serial_runtime::")
-        assert receipt["stage_packets"]["temporal"]["scenarioid"] == "live"
+        assert receipt["stage_packets"]["temporal"]["traceid"] == f"trace::{audit_row_id}"
+        assert receipt["stage_packets"]["temporal"]["runid"] == f"run::{audit_row_id}"
+        assert receipt["stage_packets"]["temporal"]["scenarioid"] == (f"scenario::{audit_row_id}")
         assert receipt["serial_spine_contract"]["lineage_tags"] == list(SERIAL_STAGE_LINEAGE_TAGS)
         assert "runtime_live_inventory" not in receipt
         assert "capital_deployment_authority" not in receipt["executed_stages"]

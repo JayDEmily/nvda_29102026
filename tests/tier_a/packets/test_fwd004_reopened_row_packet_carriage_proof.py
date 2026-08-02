@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 import pytest
+from tests.support.dmpv3_current_builder import current_packet_kwargs
 
 from nvda_desk.contracts.packets import DeskModulePacketV3, DmpV3Envelope
 from nvda_desk.packets.dmp_packets import DmpPacketBuilder, build_dmp_v3_packet
@@ -93,9 +94,9 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="fwd004_packet_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
+            **current_packet_kwargs(
+                role="stage_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
         )
         assert isinstance(packet, DeskModulePacketV3)
         assert packet.id == audit_row_id
@@ -113,13 +114,15 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="fwd004_packet_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-            parentids=["parent-a"],
-            dependencyids=["dependency-a"],
             summary_headline="primitive packet emitted",
             summary_keyflags=["primitive"],
+            **current_packet_kwargs(
+                role="stage_packet",
+                packet_id=audit_row_id,
+                emitted_at=emitted_at,
+                parentids=["parent-a"],
+                dependencyids=["dependency-a"],
+            ),
         )
         assert packet.producer.module_id == "fwd004_packet_surface"
         assert packet.producer.grammar_role == "serial_runtime"
@@ -140,10 +143,6 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="fwd004_packet_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-            dependencyids=["canonical-dependency"],
             dmpextensions={
                 "nvda": {
                     "schema_identifiers": {"payload_model_name": "Injected"},
@@ -152,6 +151,12 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
                 },
                 "custom": {"leaf": "preserved"},
             },
+            **current_packet_kwargs(
+                role="stage_packet",
+                packet_id=audit_row_id,
+                emitted_at=emitted_at,
+                dependencyids=["canonical-dependency"],
+            ),
         )
         assert packet.dmpextensions["nvda"]["schema_identifiers"]["payload_model_name"] == "dict"
         assert packet.dmpextensions["nvda"]["semantic_dependencies"] == ["canonical-dependency"]
@@ -168,9 +173,9 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="fwd004_packet_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
+            **current_packet_kwargs(
+                role="stage_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
         )
         assert isinstance(packet, DmpV3Envelope)
         assert packet.specversion == "1.0"
@@ -181,20 +186,13 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
         return
 
     if behaviour == "default_degradation":
-        packet = DmpPacketBuilder.build_reference_packet(
-            packet_id=audit_row_id,
-            dataschema="nvda.test.DefaultedReferencePayload.v1",
-            data={"atlas_record_id": atlas_record_id},
-            emitted_at=emitted_at,
-        )
-        assert packet.traceid == f"trace::{audit_row_id}"
-        assert packet.runid == f"run::{audit_row_id}"
-        assert packet.validation.status == "degraded"
-        assert packet.validation.violations == [
-            "traceid_defaulted_from_packet_id",
-            "runid_defaulted_from_packet_id",
-        ]
-        assert set(packet.summary.keyflags) >= set(packet.validation.violations)
+        with pytest.raises(ValueError, match="traceid must be a caller-owned governed identity"):
+            DmpPacketBuilder.build_reference_packet(
+                packet_id=audit_row_id,
+                dataschema="nvda.test.DefaultedReferencePayload.v1",
+                data={"atlas_record_id": atlas_record_id},
+                emitted_at=emitted_at,
+            )
         return
 
     if behaviour == "typed_wrapper_projection":
@@ -206,9 +204,9 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="fwd004_packet_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
+            **current_packet_kwargs(
+                role="stage_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
         )
         reparsed = DeskModulePacketV3.model_validate(packet.model_dump())
         assert reparsed == packet
@@ -226,9 +224,9 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             module_id="payload_family_surface",
             grammar_role="serial_runtime",
             behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
+            **current_packet_kwargs(
+                role="stage_packet", packet_id=audit_row_id, emitted_at=emitted_at
+            ),
         )
         assert packet.data == payload
         assert packet.dataschema == "nvda.test.AdmittedPayloadFamily.v1"
@@ -240,22 +238,19 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
         return
 
     if behaviour == "builder_default_surface":
-        packet = DmpPacketBuilder.build_dmp_v3_packet(
-            packet_id=audit_row_id,
-            dataschema="nvda.test.BuilderDefaultPayload.v1",
-            data={"atlas_record_id": atlas_record_id},
-            packetrole="stage_packet",
-            module_id="builder_default_surface",
-            grammar_role="serial_runtime",
-            behaviour_class="stage_output",
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-        )
-        assert packet.producer.module_version == "native"
-        assert packet.producer.module_instance_id == "builder_default_surface::default"
-        assert packet.summary.headline == "builder_default_surface emitted stage_packet"
-        assert packet.summary.humanstate == "valid"
+        with pytest.raises(ValueError, match="scenarioid must be a caller-owned governed identity"):
+            DmpPacketBuilder.build_dmp_v3_packet(
+                packet_id=audit_row_id,
+                dataschema="nvda.test.BuilderDefaultPayload.v1",
+                data={"atlas_record_id": atlas_record_id},
+                packetrole="stage_packet",
+                module_id="builder_default_surface",
+                grammar_role="serial_runtime",
+                behaviour_class="stage_output",
+                emitted_at=emitted_at,
+                traceid=f"trace::{audit_row_id}",
+                runid=f"run::{audit_row_id}",
+            )
         return
 
     if behaviour == "stage_payload_carriage":
@@ -263,12 +258,14 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             packet_id=audit_row_id,
             dataschema="nvda.test.StagePayload.v1",
             data={"atlas_record_id": atlas_record_id, "stage": "carried"},
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
             module_id="serial_stage_surface",
             stage_name="fwd004_stage_surface",
-            dependencyids=["upstream-packet"],
+            **current_packet_kwargs(
+                role="stage_packet",
+                packet_id=audit_row_id,
+                emitted_at=emitted_at,
+                dependencyids=["upstream-packet"],
+            ),
         )
         assert packet.packetrole == "stage_packet"
         assert packet.producer.stage_name == "fwd004_stage_surface"
@@ -282,10 +279,12 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             packet_id=audit_row_id,
             dataschema="nvda.test.ParallelRiskPayload.v1",
             data={"atlas_record_id": atlas_record_id, "lane": "parallel_risk"},
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-            dependencyids=["temporal-input"],
+            **current_packet_kwargs(
+                role="parallel_risk_packet",
+                packet_id=audit_row_id,
+                emitted_at=emitted_at,
+                dependencyids=["temporal-input"],
+            ),
         )
         assert packet.packetrole == "parallel_risk_packet"
         assert packet.producer.module_id == "parallel_risk_lane"
@@ -299,10 +298,12 @@ def test_fwd004_reopened_rows_have_real_packet_carriage_behaviour(
             packet_id=audit_row_id,
             dataschema="nvda.test.ReferencePayload.v1",
             data={"atlas_record_id": atlas_record_id, "reference": "carried"},
-            emitted_at=emitted_at,
-            traceid=f"trace::{audit_row_id}",
-            runid=f"run::{audit_row_id}",
-            sourceartifactids=["reference-source-artifact"],
+            **current_packet_kwargs(
+                role="reference_packet",
+                packet_id=audit_row_id,
+                emitted_at=emitted_at,
+                sourceartifactids=["reference-source-artifact"],
+            ),
         )
         assert packet.packetrole == "reference_packet"
         assert packet.producer.grammar_role == "reference_data"

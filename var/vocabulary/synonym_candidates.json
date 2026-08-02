@@ -1,36 +1,18 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "m09",
-  "imported_namespaces": [
-    "global",
-    "m05",
-    "m06",
-    "m07"
-  ],
+  "namespace": "global",
+  "imported_namespaces": [],
   "scan_paths": [
-    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
-    "docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md",
-    "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
-    "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
-    "src/nvda_desk/contracts/risk.py",
-    "src/nvda_desk/domain/final_risk",
-    "src/nvda_desk/risk/join",
-    "src/nvda_desk/services/final_risk_service.py",
-    "src/nvda_desk/contracts/capital.py",
-    "src/nvda_desk/capital",
-    "src/nvda_desk/services/capital_deployment_service.py",
-    "src/nvda_desk/m09_capital_authority",
-    "tests/support/m09_k11_k14_contract_harness.py",
-    "tests/tier_a/m09_k11_k14",
-    "tests/tier_a/capital_deployment",
-    "tests/tier_a/normative_authority/test_gate_c_normative_completion_contracts.py",
-    "tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py"
+    "src",
+    "tests",
+    "docs",
+    "config"
   ],
-  "scanned_file_count": 28,
+  "scanned_file_count": 562,
   "vocabulary_touched": false,
-  "fingerprint": "758e06ff0a91d506be92d1d1dd43ff877ec0d45c902b4faa6a62ef6fc7fe3acf",
-  "resolved_occurrence_count": 406,
+  "fingerprint": "62d94aded5eeac852d86eef7a526f28f4d7fad2e12bd4774fbaaf47abefc37d7",
+  "resolved_occurrence_count": 1912,
   "candidates": [],
   "candidate_classifications": []
 }

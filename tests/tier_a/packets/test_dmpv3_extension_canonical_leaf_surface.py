@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import current_packet_kwargs
+
 from nvda_desk.contracts.packets import DmpV3Envelope
 from nvda_desk.packets.dmp_packets import build_dmp_v3_packet
 
@@ -20,16 +22,18 @@ def test_dmpv3_custom_extension_leaf_survives_canonical_merge() -> None:
         module_id="temporal_context",
         grammar_role="serial_runtime",
         behaviour_class="stage_output",
-        emitted_at=datetime(2026, 4, 21, 9, 55, tzinfo=UTC),
-        traceid="trace-extension-leaf",
-        runid="run-extension-leaf",
-        dependencyids=["canonical-dependency-1"],
         dmpextensions={
             "nvda": {
                 "execution_context": {"stack_id": "stack-extension-leaf"},
             },
             "custom": {"reader_hint": "preserve-me"},
         },
+        **current_packet_kwargs(
+            role="stage_packet",
+            packet_id="pkt-extension-leaf-1",
+            emitted_at=datetime(2026, 4, 21, 9, 55, tzinfo=UTC),
+            dependencyids=["canonical-dependency-1"],
+        ),
     )
 
     assert packet.dmpextensions["nvda"]["execution_context"] == {"stack_id": "stack-extension-leaf"}
@@ -45,16 +49,18 @@ def test_dmpv3_extensions_cannot_replace_canonical_semantic_dependencies() -> No
         module_id="temporal_context",
         grammar_role="serial_runtime",
         behaviour_class="stage_output",
-        emitted_at=datetime(2026, 4, 21, 10, 5, tzinfo=UTC),
-        traceid="trace-semantic-dependency-guard",
-        runid="run-semantic-dependency-guard",
-        dependencyids=["canonical-dependency-1", "canonical-dependency-2"],
         dmpextensions={
             "nvda": {
                 "semantic_dependencies": ["injected-dependency"],
                 "execution_context": {"stack_id": "stack-semantic-dependency-guard"},
             }
         },
+        **current_packet_kwargs(
+            role="stage_packet",
+            packet_id="pkt-semantic-dependency-guard-1",
+            emitted_at=datetime(2026, 4, 21, 10, 5, tzinfo=UTC),
+            dependencyids=["canonical-dependency-1", "canonical-dependency-2"],
+        ),
     )
 
     assert packet.lineage.dependencyids == [

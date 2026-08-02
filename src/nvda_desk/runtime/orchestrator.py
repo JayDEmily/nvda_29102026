@@ -6,12 +6,17 @@ import hashlib
 import json
 from collections.abc import Mapping
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, Callable
 
 from pydantic import ValidationError
 
 from nvda_desk.contracts.downstream import DownstreamLiveInventorySnapshot
 from nvda_desk.contracts.execution import ExecutionExpressionInput, StageLocalHandoffSurface
+from nvda_desk.contracts.packets import (
+    K07_COMMON_CHECKS,
+    K07_ROLE_CHECKS,
+    DmpV3ExecutionContext,
+)
 from nvda_desk.contracts.serial_spine import (
     SERIAL_SPINE_STAGE_ORDER,
     SERIAL_STAGE_DEPENDENCIES,
@@ -83,6 +88,13 @@ class DeskRuntimeOrchestrator:
         self,
         stage_inputs: Mapping[str, Any] | StageInputBundle,
         *,
+        execution_context: DmpV3ExecutionContext | None = None,
+        packet_emitted_at: datetime | None = None,
+        module_version: str | None = None,
+        runtime_instance_id: str | None = None,
+        upstream_packet_id: str | None = None,
+        source_artifact_ids: tuple[str, ...] | None = None,
+        source_artifact_validator: Callable[[str], bool] | None = None,
         live_inventory_service: Any | None = None,
         live_inventory_request: Mapping[str, Any] | None = None,
         live_inventory_snapshot: DownstreamLiveInventorySnapshot | Mapping[str, Any] | None = None,
@@ -106,7 +118,16 @@ class DeskRuntimeOrchestrator:
                 live_inventory_request=live_inventory_request,
                 live_inventory_snapshot=live_inventory_snapshot,
             )
-        receipt = self._run_serial_bundle(bundle)
+        receipt = self._run_serial_bundle(
+            bundle,
+            execution_context=execution_context,
+            packet_emitted_at=packet_emitted_at,
+            module_version=module_version,
+            runtime_instance_id=runtime_instance_id,
+            upstream_packet_id=upstream_packet_id,
+            source_artifact_ids=source_artifact_ids,
+            source_artifact_validator=source_artifact_validator,
+        )
         return _attach_runtime_live_inventory(
             receipt,
             live_inventory_service=live_inventory_service,
@@ -114,14 +135,36 @@ class DeskRuntimeOrchestrator:
             live_inventory_snapshot=live_inventory_snapshot,
         )
 
-    def _run_serial_bundle(self, stage_input_bundle: StageInputBundle) -> dict[str, Any]:
+    def _run_serial_bundle(
+        self,
+        stage_input_bundle: StageInputBundle,
+        *,
+        execution_context: DmpV3ExecutionContext | None,
+        packet_emitted_at: datetime | None,
+        module_version: str | None,
+        runtime_instance_id: str | None,
+        upstream_packet_id: str | None,
+        source_artifact_ids: tuple[str, ...] | None,
+        source_artifact_validator: Callable[[str], bool] | None,
+    ) -> dict[str, Any]:
         source_time_utc = _require_source_time_utc(stage_input_bundle)
-        token = _time_token(source_time_utc)
-        traceid = f"trace::serial_runtime::{token}"
-        runid = f"run::serial_runtime::{token}"
-        scenarioid = "live"
+        governed_context = _require_execution_context(execution_context)
+        _require_packet_time(packet_emitted_at)
+        governed_module_version = _require_runtime_identifier(module_version, "module_version")
+        governed_runtime_instance_id = _require_runtime_identifier(
+            runtime_instance_id, "runtime_instance_id"
+        )
+        governed_upstream_packet_id = _require_runtime_identifier(
+            upstream_packet_id, "upstream_packet_id"
+        )
+        governed_source_artifact_ids = tuple(source_artifact_ids or ())
+        if not governed_source_artifact_ids:
+            raise ValueError("source_artifact_ids must be supplied by the runtime caller")
+        if len(governed_source_artifact_ids) != len(set(governed_source_artifact_ids)):
+            raise ValueError("source_artifact_ids must be unique")
+        if source_artifact_validator is None:
+            raise ValueError("source_artifact_validator must be supplied by the source owner")
         inputfingerprint = _input_fingerprint(stage_input_bundle)
-        packet_emitted_at = datetime.now(UTC)
 
         temporal = TemporalContextService().evaluate(stage_input_bundle.temporal)
         regime = RegimeContextService().evaluate(stage_input_bundle.regime)
@@ -154,9 +197,12 @@ class DeskRuntimeOrchestrator:
             stage_outputs=stage_outputs,
             source_time_utc=source_time_utc,
             packet_emitted_at=packet_emitted_at,
-            traceid=traceid,
-            runid=runid,
-            scenarioid=scenarioid,
+            execution_context=governed_context,
+            module_version=governed_module_version,
+            runtime_instance_id=governed_runtime_instance_id,
+            upstream_packet_id=governed_upstream_packet_id,
+            source_artifact_ids=governed_source_artifact_ids,
+            source_artifact_validator=source_artifact_validator,
             inputfingerprint=inputfingerprint,
         )
 
@@ -194,9 +240,12 @@ class DeskRuntimeOrchestrator:
         stage_outputs: dict[str, Any],
         source_time_utc: datetime,
         packet_emitted_at: datetime,
-        traceid: str,
-        runid: str,
-        scenarioid: str,
+        execution_context: DmpV3ExecutionContext,
+        module_version: str,
+        runtime_instance_id: str,
+        upstream_packet_id: str,
+        source_artifact_ids: tuple[str, ...],
+        source_artifact_validator: Callable[[str], bool],
         inputfingerprint: str,
     ) -> dict[str, Any]:
         stage_packet_ids = {
@@ -204,30 +253,56 @@ class DeskRuntimeOrchestrator:
             for stage_name in self.stage_order
         }
         packets: dict[str, Any] = {}
-        previous_packet_id: str | None = None
+        previous_packet_id = upstream_packet_id
+        expected_checks = frozenset((*K07_COMMON_CHECKS, *K07_ROLE_CHECKS["stage_packet"]))
         for stage_name in self.stage_order:
             metadata = self._stage_packet_metadata[stage_name]
             dependencyids = [
                 stage_packet_ids[name] for name in self._stage_dependencies[stage_name]
             ]
+            derivedfrom = _derived_from(stage_name, self._stage_dependencies[stage_name])
+            module_instance_id = f"{runtime_instance_id}::{metadata['module_id']}"
+
+            def owner_check(name: str, context: dict[str, Any]) -> bool:
+                producer = context["producer"]
+                lineage = context["lineage"]
+                return bool(
+                    name in expected_checks
+                    and context["packetrole"] == "stage_packet"
+                    and context["data"] == stage_outputs[stage_name]
+                    and producer.module_id == metadata["module_id"]
+                    and producer.module_version == module_version
+                    and producer.module_instance_id == module_instance_id
+                    and context["execution_context"] == execution_context.model_dump(mode="python")
+                    and lineage.parentids == [previous_packet_id]
+                    and lineage.dependencyids == dependencyids
+                    and lineage.derivedfrom == derivedfrom
+                    and lineage.sourceartifactids == list(source_artifact_ids)
+                    and lineage.inputfingerprint == inputfingerprint
+                )
+
             packet = build_stage_packet(
                 packet_id=stage_packet_ids[stage_name],
                 dataschema=metadata["dataschema"],
                 data=stage_outputs[stage_name],
                 emitted_at=packet_emitted_at,
-                traceid=traceid,
-                runid=runid,
-                scenarioid=scenarioid,
+                traceid=execution_context.traceid,
+                runid=execution_context.runid,
+                scenarioid=execution_context.scenarioid,
                 module_id=metadata["module_id"],
-                module_version="native",
-                module_instance_id=f"{metadata['module_id']}::runtime",
+                module_version=module_version,
+                module_instance_id=module_instance_id,
                 grammar_role=metadata["grammar_role"],
                 stage_name=stage_name,
-                parentids=[previous_packet_id] if previous_packet_id is not None else [],
+                parentids=[previous_packet_id],
                 dependencyids=dependencyids,
-                derivedfrom=_derived_from(stage_name, self._stage_dependencies[stage_name]),
-                sourceartifactids=[],
+                derivedfrom=derivedfrom,
+                sourceartifactids=list(source_artifact_ids),
                 inputfingerprint=inputfingerprint,
+                source_artifact_validator=source_artifact_validator,
+                input_fingerprint_validator=lambda fingerprint: fingerprint == inputfingerprint,
+                conditional_lineage_fields=({"dependencyids"} if dependencyids else set()),
+                owner_check_validator=owner_check,
                 summary_headline=_stage_summary(stage_name, stage_outputs[stage_name]),
                 dmpextensions={
                     "nvda": {
@@ -240,6 +315,38 @@ class DeskRuntimeOrchestrator:
             packets[stage_name] = packet
             previous_packet_id = packet.packet_id
         return packets
+
+
+def _require_execution_context(
+    execution_context: DmpV3ExecutionContext | None,
+) -> DmpV3ExecutionContext:
+    if not isinstance(execution_context, DmpV3ExecutionContext):
+        raise ValueError("execution_context must be supplied by the runtime caller")
+    try:
+        return DmpV3ExecutionContext.model_validate(execution_context.model_dump(mode="python"))
+    except (TypeError, ValueError) as exc:
+        raise ValueError("execution_context_contract_invalid") from exc
+
+
+def _require_packet_time(packet_emitted_at: datetime | None) -> None:
+    if (
+        packet_emitted_at is None
+        or packet_emitted_at.tzinfo is None
+        or packet_emitted_at.utcoffset() is None
+    ):
+        raise ValueError("packet_emitted_at must be supplied as a timezone-aware owner fact")
+
+
+def _require_runtime_identifier(value: str | None, field_name: str) -> str:
+    if (
+        value is None
+        or not value
+        or value.strip() != value
+        or any(character.isspace() for character in value)
+        or value.lower() in {"default", "generated", "live", "placeholder", "unknown"}
+    ):
+        raise ValueError(f"{field_name} must be a caller-owned governed identity")
+    return value
 
 
 def _attach_runtime_live_inventory(

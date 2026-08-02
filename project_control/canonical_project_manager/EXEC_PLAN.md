@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active at Unit 1
+**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -19,9 +19,10 @@ node-level failure delta establish the same claim.
 
 The alpha-delivery history governed by this plan is accepted. The 2026-08-02
 continuation amendment preserves that work. Its bounded subordinate plan is
-active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`,
-beginning with proof-universe truth and opening no production implementation in
-Unit 1. Ordinary planned feature development remains closed until readiness.
+active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`.
+Unit 1 proof-universe truth is complete and Unit 2 is the first bounded
+implementation-bearing repair. Ordinary planned feature development remains
+closed until readiness.
 
 ## 1. Objective
 

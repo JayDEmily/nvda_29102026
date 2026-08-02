@@ -4,6 +4,7 @@ import importlib
 from datetime import UTC, datetime
 
 import pytest
+from tests.support.dmpv3_current_builder import serial_runtime_packet_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -51,7 +52,8 @@ def test_runtime_orchestrator_executes_the_admitted_six_stage_serial_path_from_s
                 vix_level=20.0,
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
-        )
+        ),
+        **serial_runtime_packet_authority("runtime-six-stage"),
     )
 
     assert receipt["stage_order"] == [
@@ -105,6 +107,23 @@ def test_runtime_orchestrator_remains_stateless_and_keeps_partial_mapping_fallba
     ]
 
 
+def test_runtime_orchestrator_admitted_bundle_fails_closed_without_packet_authority() -> None:
+    runtime = _require_module("nvda_desk.runtime.orchestrator")
+    orchestrator = _require_attr(runtime, "DeskRuntimeOrchestrator")()
+
+    with pytest.raises(ValueError, match="execution_context must be supplied"):
+        orchestrator.run_once(
+            StageInputBundle(
+                temporal=TemporalContextInput(
+                    source_time_utc=datetime(2026, 4, 21, 13, 31, tzinfo=UTC),
+                    source_timezone_raw="America/New_York",
+                ),
+                regime=MarketRegimeContextInput(),
+                options_flow=OptionsFlowContextInput(),
+            )
+        )
+
+
 def test_runtime_orchestrator_does_not_treat_utc_wall_clock_as_us_market_opening() -> None:
     runtime = _require_module("nvda_desk.runtime.orchestrator")
     assert runtime.__name__ == "nvda_desk.runtime.orchestrator"
@@ -122,7 +141,8 @@ def test_runtime_orchestrator_does_not_treat_utc_wall_clock_as_us_market_opening
                 vix_level=20.0,
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
-        )
+        ),
+        **serial_runtime_packet_authority("runtime-pre-open"),
     )
 
     assert receipt["stage_outputs"]["temporal"]["source_time_utc"] == "2026-04-21T09:31:00Z"
@@ -154,6 +174,7 @@ def test_runtime_orchestrator_can_attach_live_inventory_snapshot_without_changin
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
         ),
+        **serial_runtime_packet_authority("runtime-live-inventory"),
         live_inventory_service=DownstreamLiveInventoryService(position_repository=positions),
         live_inventory_request={"inventory_id": "runtime-inv", "live_ids": [" pos-1 "]},
     )
@@ -230,6 +251,7 @@ def test_runtime_orchestrator_can_attach_reconciled_inventory_snapshot_without_s
             ),
             options_flow=OptionsFlowContextInput(spot_price=101.0, front_dte=1, next_dte=5),
         ),
+        **serial_runtime_packet_authority("runtime-reconciled-inventory"),
         live_inventory_snapshot=snapshot,
     )
 
