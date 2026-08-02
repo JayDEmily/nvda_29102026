@@ -1945,3 +1945,62 @@ Exact aggregate evidence is retained at
 and its Unit 3 differential at
 `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`.
 Unit 4 closes; Unit 5 opens on the retained physical failure families.
+
+## 2026-08-02 — Foundation readiness Unit 5 residual physical failures
+
+### Disposition
+
+`PASS:FOUNDATION_READINESS_UNIT5_ASSERTION_AUDITED`
+
+Unit 5 closes all 46 physical Tier A failures retained by Unit 4 through five
+separately bounded current-law families. Before acceptance, the user required
+every existing assertion to remain binding unless higher normative authority
+proved the exact test seam obsolete. The provisional acceptance was withdrawn
+and the complete Unit 5 test delta was audited.
+
+The audit found one dropped input-fingerprint assertion in the packet-builder
+proof. It was restored. Replay replacements were strengthened to assert absent
+reproduced-output identity and fingerprint directly. The capital-decision proof
+retains its action, input-trace and receipt-identity assertions before proving
+that the invented packet role remains fail-closed. No ambiguous authority was
+adjudicated by convenience.
+
+| Check | Result |
+|---|---|
+| Changed-test authority register | PASS — all 46 Unit 4 red propositions plus every additional changed test node/helper recorded with old node, authority, original proposition, replacement assertion and red-to-green evidence |
+| Unit 4 red-proposition audit route | PASS — 46 / 46: 45 original node IDs plus 1 authority-mapped replacement |
+| Unit 5A typed options/common context | PASS — 8 / 8 focused; 274 / 274 affected |
+| Unit 5E M13 transaction / M12 replay | PASS — 6 / 6 focused; 176 / 176 owner suites |
+| Unit 5B packet roles / diagnostic compatibility | PASS — 31 / 31 focused; 105 / 105 affected |
+| Unit 5C serial orchestration / candidate identity | PASS — 4 / 4 focused; 319 / 319 affected |
+| Unit 5D carry / review evidence | PASS — 2 / 2 focused; 246 / 246 affected |
+| Signed `alpha_current` at executable commit `35ebb93` | PASS — 19 / 19 blocks; 811 / 811 tests |
+| Complete physical Tier A | PASS — 1,990 / 1,990 |
+| Unit 4 comparison | 45 same-node failures green; 1 authority-mapped failure green; zero new/retained failures; count unchanged; 3 total node-name replacements explicitly mapped |
+| Tier B / Tier C | PASS — 91 / 91; 5 / 5 |
+| Proof authority / block definitions | PASS — 201 families, 203 paths, 73 blocks; 73 / 73 |
+| Vocabulary | PASS — 13 / 13 namespaces; 80 exact Unit 5 dispositions; no label or alias admitted |
+| Unit 5 Python write-set Ruff / Black / byte compilation / diff | PASS |
+
+No test was skipped, xfail-marked, retired, broadened or weakened. Test changes
+are limited to assertion-preserving fixture/owner bindings and explicitly
+recorded normative-supersession cases where governing documents reject the old
+role, seam or direct field location; those records retain the original domain
+proposition before the current-law assertion. One Tier B fixture supplies the
+required regime policy version while preserving its original assertions.
+
+The 42-file Unit 5 Python write set passes Ruff, Black and byte compilation.
+Full-tree Ruff remains at the exact Unit 4 baseline of 138 historical errors;
+Unit 5 introduces zero additional Ruff findings and makes no full-tree lint-clean
+claim. Exact evidence is retained at:
+
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_TEST_CHANGE_AUTHORITY_REGISTER.tsv`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_TEST_CHANGE_AUDIT.md`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_46_NODE_AUTHORITY_AUDIT_JUNIT.xml`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_PHYSICAL_TIER_A_JUNIT.xml`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_PHYSICAL_TIER_B_JUNIT.xml`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_PHYSICAL_TIER_C_JUNIT.xml`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_PHYSICAL_TIER_A_DIFFERENTIAL.json`
+- `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_ALPHA_CURRENT_PROMOTION_RECEIPT.json`
+
+Unit 5 closes; Unit 6 opens only the one-commit continuation-readiness closure.

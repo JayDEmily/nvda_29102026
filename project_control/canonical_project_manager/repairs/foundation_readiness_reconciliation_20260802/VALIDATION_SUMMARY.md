@@ -1,5 +1,93 @@
 # Foundation Readiness Reconciliation — Unit Validation
 
+## Unit 5 — residual physical failure adjudication
+
+### Outcome
+
+Unit 5 passes its bounded gate after a proposition-preservation audit required
+by the user before acceptance. The 46 physical Tier A failures retained by Unit
+4 are green through five current-law families: typed options/common-context
+carriage; explicitly non-binding parallel-risk compatibility; fail-closed serial
+orchestration with caller-owned candidate identity; downstream carry/review
+lineage; and direct M13/M12 transaction/replay ownership.
+
+The physical Tier A count remains exactly 1,990 tests. Three node names changed
+only under explicit authority mappings: the failing capital packet-role proof
+and two formerly green partial-mapping fallback proofs. No test was skipped,
+xfail-marked, retired, broadened or weakened. The audit found one dropped
+input-fingerprint assertion in the provisional Unit 5 tree; that assertion was
+restored before acceptance. Replay replacement assertions were strengthened to
+test absent reproduced-output identity and fingerprint directly. Every changed
+test node is mapped in `evidence/UNIT5_TEST_CHANGE_AUTHORITY_REGISTER.tsv`.
+
+### Test-change audit
+
+The register contains the 46 Unit 4 red nodes plus every additional Unit 5 test
+node or shared test helper changed by the implementation. Each record states the
+old node, governing authority, original behavioural proposition, replacement
+assertion and red-to-green evidence. Only these dispositions occur:
+
+- production repair with the assertion unchanged;
+- authority-complete fixture or current-owner binding with the proposition
+  unchanged or strengthened; and
+- normative supersession of an expressly non-admitted role or direct field
+  location, with the original domain proposition retained before the current-law
+  fail-closed or owned-location assertion.
+
+The authority-audit route passes 46/46: 45 original failing node IDs plus the
+mapped capital-role replacement. No ambiguous authority was
+adjudicated by convenience, and no retirement disposition exists in Unit 5.
+
+### Proof
+
+| Surface | Result |
+|---|---:|
+| Unit 4 red propositions after assertion audit | 46 / 46 passed — 45 original node IDs plus 1 authority-mapped replacement |
+| Unit 5A typed options/common context | 8 / 8 focused; 274 / 274 affected passed |
+| Unit 5E M13 transaction / M12 replay ownership | 6 / 6 focused; 176 / 176 owner suites passed |
+| Unit 5B packet-role and diagnostic compatibility | 31 / 31 focused; 105 / 105 affected passed |
+| Unit 5C serial orchestration/candidate identity | 4 / 4 focused; 319 / 319 affected passed |
+| Unit 5D carry/review evidence | 2 / 2 focused; 246 / 246 affected passed |
+| Signed `alpha_current` at audited commit `35ebb93` | 19 / 19 blocks; 811 / 811 tests passed |
+| Physical Tier A | 1,990 passed; 0 failed; 1,990 total |
+| Unit 4 failure-proposition delta | 45 same-node failures green; 1 authority-mapped failure green; 0 new or retained failures; test count unchanged |
+| Physical Tier B / Tier C | 91 / 91; 5 / 5 passed |
+| Proof authority / block manifest | PASS — 201 families, 203 paths, 73 blocks; 73 / 73 definitions |
+| Vocabulary namespaces | PASS — 13 / 13; zero unresolved candidates; 80 exact Unit 5 dispositions |
+| Unit 5 Python write-set static checks | PASS — Ruff, Black, byte compilation and `git diff --check` |
+
+One Tier B direct-construction fixture supplies the required
+`MARKET_REGIME_POLICY_VERSION`; its original posture/permission assertions are
+unchanged. Eighty vocabulary rows are exact occurrence dispositions only. They
+admit no canonical label or alias; eleven were renewed after restored or
+strengthened assertions shifted line-scoped occurrence identities.
+
+The static PASS is scoped to the 42 Python files changed by Unit 5. Full-tree
+`ruff check .` remains non-green at 138 historical errors with output exactly
+identical to the Unit 4 base `11699fe`; Unit 5 adds no Ruff finding and makes no
+full-tree lint-clean claim.
+
+### Evidence and gate
+
+- `UNIT5_C_NORM.md`
+- `evidence/UNIT5_TEST_CHANGE_AUTHORITY_REGISTER.tsv`
+- `evidence/UNIT5_TEST_CHANGE_AUDIT.md`
+- `evidence/UNIT5_46_NODE_AUTHORITY_AUDIT_JUNIT.xml`
+- `evidence/UNIT5_PHYSICAL_TIER_A_JUNIT.xml`
+- `evidence/UNIT5_PHYSICAL_TIER_B_JUNIT.xml`
+- `evidence/UNIT5_PHYSICAL_TIER_C_JUNIT.xml`
+- `evidence/UNIT5_PHYSICAL_TIER_A_DIFFERENTIAL.json`
+- `evidence/UNIT5_ALPHA_CURRENT_PROMOTION_RECEIPT.json`
+- `evidence/UNIT5_VOCABULARY_NAMESPACES.txt`
+- `evidence/UNIT5_PROOF_AUTHORITY.json`
+- `evidence/UNIT5_PROOF_BLOCK_CHECK_RECEIPT.json`
+- `evidence/UNIT5_STATIC_VALIDATION.json`
+- `FULL_READ_MANIFEST.tsv`
+
+Unit 5 may close. Unit 6 now owns only the one-commit readiness closure in
+`CONTINUATION.md` section 10. New planned feature development remains closed
+until that checkpoint passes.
+
 ## Unit 4 — structural integrity families
 
 ### Outcome

@@ -10,9 +10,9 @@
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | Unit 5 — residual physical failure families |
+| Current active slice | Unit 6 — continuation-readiness closure |
 | Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |
-| Current repository claim | accepted bounded alpha retained; Units 1–4 reconciled; physical Tier A is 1,944 passed / 46 failed / 1,990 total, with three Unit 4 authority failures removed and none added |
+| Current repository claim | accepted bounded alpha retained; Units 1–5 reconciled; physical Tier A is 1,990 / 1,990 green after an assertion audit; three node-name replacements are authority-mapped, Tier B is 91 / 91, Tier C is 5 / 5 and `alpha_current` is 811 / 811; Unit 6 must prove the complete readiness matrix on one clean commit |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -236,15 +236,14 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Units 1–4 of the bounded foundation-readiness plan are complete. Exact canonical
+Units 1–5 of the bounded foundation-readiness plan are complete. Exact canonical
 admission covers 203/203 paths; the prepared-context/M04 boundary, typed
-M01/M00 transport-composition seam and four structural-integrity families are
-green. Complete physical Tier A is 1,944 passed / 46 failed / 1,990 total.
-Relative to Unit 3, exactly three admitted authority failures are removed and no
-failing node is added.
+M01/M00 transport-composition seam, four structural-integrity families and all
+46 residual physical failure nodes are green. The physical Tier A count remains 1,990 and all 1,990 pass; three node-name replacements are explicitly authority-mapped; Tier B passes 91/91; Tier C passes 5/5; and
+`alpha_current` passes 811/811.
 
-Open Unit 5 on the retained 46 nodes, one semantic cause at a time. Do not batch
-unrelated propositions, select legacy compatibility routes or treat retained
-red proof as accepted. New planned features, donor integration, live operation
-and production claims remain closed until the single
-continuation-readiness checkpoint passes.
+Execute Unit 6 only: prove all eight continuation-readiness conditions on one
+clean commit and declared environment, reconcile the exact checkpoint records,
+and publish the full-history checkpoint. New planned features, donor
+integration, live operation and production claims remain closed until that
+single checkpoint passes.

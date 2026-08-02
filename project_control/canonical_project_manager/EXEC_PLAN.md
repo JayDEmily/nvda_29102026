@@ -20,9 +20,9 @@ node-level failure delta establish the same claim.
 The alpha-delivery history governed by this plan is accepted. The 2026-08-02
 continuation amendment preserves that work. Its bounded subordinate plan is
 active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`.
-Units 1–4 are complete; Unit 5 now owns the 46 retained physical Tier A
-failure nodes by semantic cause. Ordinary planned feature development remains
-closed until readiness.
+Units 1–5 are complete; Unit 6 now owns the single continuation-readiness
+checkpoint. Ordinary planned feature development remains closed until that
+checkpoint passes.
 
 ## 1. Objective
 

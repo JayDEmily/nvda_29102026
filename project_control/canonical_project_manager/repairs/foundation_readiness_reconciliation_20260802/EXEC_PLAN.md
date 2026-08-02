@@ -5,7 +5,7 @@
 **Status:** active
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 5 — residual physical failures
+**Current unit:** Unit 6 — readiness closure
 
 ## Objective
 
@@ -97,8 +97,12 @@ are closed as separate narrow units.
 
 ### Unit 5 — residual physical failures
 
-Pass: each remaining failure family is repaired, lawfully re-authored or retired
-against current normative authority, without weakening proof.
+Pass: each remaining failure family is repaired under current normative
+authority. Existing assertions remain binding. Any changed test seam must prove
+normative supersession, preserve the original behavioural proposition and record
+its old node, authority, replacement assertion and red-to-green evidence. No
+retirement, weakening, skip, xfail, broadening or convenience redirection is
+admitted.
 
 ### Unit 6 — readiness closure
 
@@ -188,6 +192,40 @@ declared environment; records, proof control and Git describe the same state.
   and 46 pre-existing nodes remain for Unit 5. Proof authority remains 201
   families / 203 paths / 73 blocks, all 73 block definitions pass and all 13
   vocabulary namespaces are candidate-clean. Unit 5 is now the active gate.
+- 2026-08-02: Unit 5A closes typed options evidence and one bounded common
+  stage context. Its eight admitted propositions and 274-test affected ingress/
+  runtime cone pass without fabricating context for retained legacy constructors.
+- 2026-08-02: Unit 5E binds the unchanged transaction and replay propositions
+  to the existing M13 and M12 owners under explicit authority. Six focused
+  propositions and 176 owner-suite tests pass; replacement assertions are equal
+  or stronger and no duplicate compatibility owner or API is introduced.
+- 2026-08-02: Unit 5B keeps unadmitted packet roles fail-closed and converts the
+  old parallel-risk bootstrap specimen to explicit non-binding diagnostic
+  carriage. The bounded proof passes 31/31 and its affected cone passes 105/105.
+- 2026-08-02: Unit 5C makes invalid stage mappings fail closed, requires owner
+  policy versions, accepts caller-owned registry/candidate inputs and preserves
+  candidate identity without downstream authority. Its focused proof passes 4/4
+  and the affected serial cone passes 319/319.
+- 2026-08-02: Unit 5D records overnight-carry policy/source identity and review
+  missing-material/source lineage while remaining non-authoritative. Its focused
+  proof passes 2/2 and the affected downstream/review cone passes 246/246.
+- 2026-08-02: The user imposed a binding assertion-preservation audit before
+  Unit 5 acceptance. The audit found one dropped input-fingerprint assertion;
+  it was restored. Replay replacements were strengthened to assert absent
+  reproduced-output identity/fingerprint directly. All changed test nodes are
+  mapped in `evidence/UNIT5_TEST_CHANGE_AUTHORITY_REGISTER.tsv`; the 46 Unit 4
+  red propositions pass 46/46 as 45 original node IDs plus one
+  authority-mapped replacement in
+  `evidence/UNIT5_46_NODE_AUTHORITY_AUDIT_JUNIT.xml`.
+- 2026-08-02: The audited executable tree is committed at `35ebb93`. Signed
+  `alpha_current` promotion against that exact clean commit passes 19/19 blocks
+  and 811/811 tests. The physical Tier A count remains 1,990 and all 1,990 pass;
+  three node-name replacements are explicitly authority-mapped in the audit
+  register. Tier B passes 91/91; Tier C passes 5/5; proof authority remains 201
+  families /
+  203 paths / 73 blocks; all 73 definitions validate; and all 13 vocabulary
+  namespaces are candidate-clean after 80 exact Unit 5 occurrence dispositions
+  with no canonical label or alias admission. Unit 6 is now the only active gate.
 
 ## Decisions
 
@@ -204,20 +242,26 @@ None current.
 
 ## Validation
 
-Units 1–4 pass their bounded gates. See `VALIDATION_SUMMARY.md`,
+Units 1–5 pass their bounded gates. See `VALIDATION_SUMMARY.md`,
 `evidence/UNIT1_PROOF_UNIVERSE.json`,
 `evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml`,
 `evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`,
-`evidence/UNIT4_PHYSICAL_TIER_A_JUNIT.xml` and
-`evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`.
+`evidence/UNIT4_PHYSICAL_TIER_A_JUNIT.xml`,
+`evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`,
+`evidence/UNIT5_PHYSICAL_TIER_A_JUNIT.xml`,
+`evidence/UNIT5_PHYSICAL_TIER_A_DIFFERENTIAL.json`,
+`evidence/UNIT5_TEST_CHANGE_AUTHORITY_REGISTER.tsv`,
+`evidence/UNIT5_46_NODE_AUTHORITY_AUDIT_JUNIT.xml` and
+`evidence/UNIT5_ALPHA_CURRENT_PROMOTION_RECEIPT.json`.
 
 ## Unknowns
 
-- The semantic disposition of the 46 retained physical Tier A failures remains
-  open. Unit 4 neither accepts nor repairs those Unit 5 families.
-- Whether Unit 5 adjudication changes the retained physical test universe is
-  Unknown; Units 1–4 made no retirement, skip, xfail or assertion weakening.
+- Whether all eight continuation-readiness conditions remain simultaneously
+  true after final record reconciliation must be proved on one clean Unit 6
+  commit and declared environment.
+- Ordinary planned feature development remains closed until that exact Unit 6
+  checkpoint is published.
 
 ## Closeout
 
-Unit 4 accepted. Programme closeout remains open at Unit 5.
+Unit 5 accepted. Programme closeout remains open only at Unit 6.
