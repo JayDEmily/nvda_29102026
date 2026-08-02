@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from collections import defaultdict
+from collections.abc import Mapping
+from types import MappingProxyType
 
 from nvda_desk.contracts.parallel_risk import (
     ParallelRiskAtomStateValue,
@@ -10,12 +12,14 @@ from nvda_desk.contracts.parallel_risk import (
     RiskFamilyState,
 )
 
-_STATE_RANK: dict[ParallelRiskAtomStateValue, int] = {
-    "inactive": 0,
-    "observe": 1,
-    "caution": 2,
-    "block": 3,
-}
+_STATE_RANK: Mapping[ParallelRiskAtomStateValue, int] = MappingProxyType(
+    {
+        "inactive": 0,
+        "observe": 1,
+        "caution": 2,
+        "block": 3,
+    }
+)
 
 
 def aggregate_risk_family_states(atoms: list[RiskAtomState]) -> list[RiskFamilyState]:

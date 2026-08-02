@@ -12,6 +12,7 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
+from types import MappingProxyType
 from typing import Any
 
 from nvda_desk.schemas.vocabulary import (
@@ -22,7 +23,7 @@ from nvda_desk.schemas.vocabulary import (
 
 REGISTRY_PATH = Path("docs/vocabulary/vocabulary_registry.md")
 OUTPUT_PATH = Path("data/vocabulary/canonical_vocabulary.json")
-GOVERNED_SOURCE_PATHS = [
+GOVERNED_SOURCE_PATHS = (
     Path("docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md"),
     Path("docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md"),
     Path("docs/vocabulary/README.md"),
@@ -33,14 +34,16 @@ GOVERNED_SOURCE_PATHS = [
     Path("src/nvda_desk/vocabulary_builder.py"),
     Path("src/nvda_desk/vocabulary_synonym_audit.py"),
     OUTPUT_PATH,
-]
+)
 
-_HEADER_FIELDS = {
-    "schema_version": "Projection schema version:",
-    "registry_version": "Projection registry version:",
-    "notes": "Projection document notes:",
-    "namespaces": "Projection namespace scopes:",
-}
+_HEADER_FIELDS = MappingProxyType(
+    {
+        "schema_version": "Projection schema version:",
+        "registry_version": "Projection registry version:",
+        "notes": "Projection document notes:",
+        "namespaces": "Projection namespace scopes:",
+    }
+)
 _REQUIRED_HUMAN_FIELDS = (
     "Definition",
     "Scope",
@@ -50,18 +53,20 @@ _REQUIRED_HUMAN_FIELDS = (
     "Disallowed or misleading use",
     "Lifecycle",
 )
-_HUMAN_FIELD_PREFIXES = {
-    "Definition": ("Definition:",),
-    "Scope": ("Scope:",),
-    "Owner": ("Owner:",),
-    "Relationships": ("Relationships:",),
-    "Aliases": ("Aliases:",),
-    "Disallowed or misleading use": (
-        "Disallowed or misleading use:",
-        "Disallowed or misleading uses:",
-    ),
-    "Lifecycle": ("Lifecycle:",),
-}
+_HUMAN_FIELD_PREFIXES = MappingProxyType(
+    {
+        "Definition": ("Definition:",),
+        "Scope": ("Scope:",),
+        "Owner": ("Owner:",),
+        "Relationships": ("Relationships:",),
+        "Aliases": ("Aliases:",),
+        "Disallowed or misleading use": (
+            "Disallowed or misleading use:",
+            "Disallowed or misleading uses:",
+        ),
+        "Lifecycle": ("Lifecycle:",),
+    }
+)
 _METADATA_PREFIX = "Projection metadata:"
 _RECORD_HEADING = re.compile(r"^###\s+(.+?)\s*$", re.MULTILINE)
 

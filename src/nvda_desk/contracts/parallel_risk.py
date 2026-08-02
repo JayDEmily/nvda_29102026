@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from datetime import datetime
+from types import MappingProxyType
 from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
@@ -652,13 +653,15 @@ class ParallelRiskObservationAppendReceipt(BaseModel):
     stored_output_packet_ids: list[str] = Field(default_factory=list)
 
 
-NON_TEMPORAL_STAGE_NOTES = {
-    "regime": "serial runtime regime packet exists in the boundary product but is not admitted for live semantic read in this tranche",
-    "options_flow": "serial runtime options-flow packet exists in the boundary product but is not admitted for live semantic read in this tranche",
-    "posture": "serial runtime posture packet exists in the boundary product but is not admitted for live semantic read in this tranche",
-    "eligibility": "serial runtime eligibility packet exists in the boundary product but is not admitted for live semantic read in this tranche",
-    "execution": "serial runtime execution packet exists in the boundary product but is not admitted for live semantic read in this tranche",
-}
+NON_TEMPORAL_STAGE_NOTES = MappingProxyType(
+    {
+        "regime": "serial runtime regime packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "options_flow": "serial runtime options-flow packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "posture": "serial runtime posture packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "eligibility": "serial runtime eligibility packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+        "execution": "serial runtime execution packet exists in the boundary product but is not admitted for live semantic read in this tranche",
+    }
+)
 
 
 def bootstrap_stage_read_state(

@@ -10,7 +10,7 @@ from nvda_desk.contracts.capital import (
     CapitalDeploymentReceipt,
 )
 
-_CONSUMED_INPUTS = [
+_CONSUMED_INPUTS = (
     "serial_candidate",
     "downstream_pre_deployment_result",
     "parallel_risk_envelope",
@@ -19,7 +19,7 @@ _CONSUMED_INPUTS = [
     "bounded_deployment_policy",
     "coefficient_modifier_authority",
     "temporal_context",
-]
+)
 
 
 class CapitalDeploymentAuthorityService:

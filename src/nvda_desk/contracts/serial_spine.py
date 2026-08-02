@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
 from copy import deepcopy
+from types import MappingProxyType
 from typing import Any
 
 SERIAL_SPINE_STAGE_ORDER: tuple[str, ...] = (
@@ -15,23 +16,27 @@ SERIAL_SPINE_STAGE_ORDER: tuple[str, ...] = (
     "execution",
 )
 
-SERIAL_STAGE_DEPENDENCIES: dict[str, tuple[str, ...]] = {
-    "temporal": (),
-    "regime": (),
-    "options_flow": (),
-    "posture": ("regime",),
-    "eligibility": ("posture",),
-    "execution": ("temporal", "regime", "options_flow", "posture", "eligibility"),
-}
+SERIAL_STAGE_DEPENDENCIES: Mapping[str, tuple[str, ...]] = MappingProxyType(
+    {
+        "temporal": (),
+        "regime": (),
+        "options_flow": (),
+        "posture": ("regime",),
+        "eligibility": ("posture",),
+        "execution": ("temporal", "regime", "options_flow", "posture", "eligibility"),
+    }
+)
 
-SERIAL_STAGE_OUTPUT_SCHEMAS: dict[str, str] = {
-    "temporal": "TemporalContextOutput",
-    "regime": "MarketRegimeContextOutput",
-    "options_flow": "OptionsFlowContextOutput",
-    "posture": "PostureRiskOutput",
-    "eligibility": "PlaybookEligibilityOutput",
-    "execution": "ExecutionExpressionOutput",
-}
+SERIAL_STAGE_OUTPUT_SCHEMAS: Mapping[str, str] = MappingProxyType(
+    {
+        "temporal": "TemporalContextOutput",
+        "regime": "MarketRegimeContextOutput",
+        "options_flow": "OptionsFlowContextOutput",
+        "posture": "PostureRiskOutput",
+        "eligibility": "PlaybookEligibilityOutput",
+        "execution": "ExecutionExpressionOutput",
+    }
+)
 
 SERIAL_SPINE_PROHIBITED_AUTHORITIES: tuple[str, ...] = (
     "parallel_risk_lane",

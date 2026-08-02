@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 
+import pytest
 import yaml
 
 from nvda_desk.capital.authority import (
@@ -275,3 +276,192 @@ def test_c044_review_packets_expose_missing_material_and_source_lineage_without_
         "source_artifact_ids",
     } & set(DailyReviewPacket.model_fields)
     assert ReviewSafeRendering.model_fields["runtime_authority_mutated"].default is False
+
+
+def _unit4_policy_digest(value: object) -> str:
+    import hashlib
+    import json
+    from collections.abc import Mapping
+    from pathlib import Path as FilePath
+
+    def normalise(item: object) -> object:
+        if isinstance(item, Mapping):
+            return {
+                str(key): normalise(member)
+                for key, member in sorted(item.items(), key=lambda pair: str(pair[0]))
+            }
+        if isinstance(item, (set, frozenset)):
+            values = [normalise(member) for member in item]
+            return sorted(values, key=lambda member: json.dumps(member, sort_keys=True))
+        if isinstance(item, (list, tuple)):
+            return [normalise(member) for member in item]
+        if isinstance(item, FilePath):
+            return str(item)
+        return item
+
+    encoded = json.dumps(normalise(value), sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+@pytest.mark.parametrize(
+    ("module_name", "attribute_name", "frozen_kind", "expected_digest"),
+    [
+        pytest.param(
+            "nvda_desk.calendar.operational.events",
+            "_MATERIALITY_RANK",
+            "mapping",
+            "4168a026c8caf40979f2d26a546d821ed0df0c4499aca74d2a343d04d75d6c6a",
+            id="calendar-materiality-rank",
+        ),
+        pytest.param(
+            "nvda_desk.capital.authority",
+            "_CONSUMED_INPUTS",
+            "tuple",
+            "5cc66f28e7852229313fb519bde7dbbc3837d6e1377c4d1be1394f02120da7e3",
+            id="capital-consumed-inputs",
+        ),
+        pytest.param(
+            "nvda_desk.contracts.packets",
+            "K07_LINEAGE_MATRIX",
+            "mapping",
+            "0b85dfa7ec303f8b7214d71a76384e879c4e8d5baa8ec35382dc68b043a571b6",
+            id="k07-lineage-matrix",
+        ),
+        pytest.param(
+            "nvda_desk.contracts.packets",
+            "K07_ROLE_CHECKS",
+            "mapping",
+            "afb950011c1a49ad1bdb4599f107af4f2bc5a29a8407220fd5ab8f4356846e0c",
+            id="k07-role-checks",
+        ),
+        pytest.param(
+            "nvda_desk.contracts.parallel_risk",
+            "NON_TEMPORAL_STAGE_NOTES",
+            "mapping",
+            "3e3b3a8d99d07f5763871b9375b408c65d793c033932defe2ac41d23dadb272c",
+            id="parallel-risk-stage-notes",
+        ),
+        pytest.param(
+            "nvda_desk.contracts.serial_spine",
+            "SERIAL_STAGE_DEPENDENCIES",
+            "mapping",
+            "f6b4c72ed31d56bd5bb9486ada7f65d6b54ccbc7ef0b29800e062aa687c33096",
+            id="serial-spine-dependencies",
+        ),
+        pytest.param(
+            "nvda_desk.contracts.serial_spine",
+            "SERIAL_STAGE_OUTPUT_SCHEMAS",
+            "mapping",
+            "1fe2a3fb7df8ee9b0f07a85309a67eac9c0c693c23ce34382ac29f7dd997ee99",
+            id="serial-spine-output-schemas",
+        ),
+        pytest.param(
+            "nvda_desk.domain.parallel_risk.candidate_audit",
+            "_BLOCK_TAGS",
+            "frozenset",
+            "34a086dd3974ee22c91552d385cf82a5498d016c90ac0b36f692e3b133c04ff4",
+            id="parallel-risk-block-tags",
+        ),
+        pytest.param(
+            "nvda_desk.domain.parallel_risk.candidate_audit",
+            "_CAUTION_TAGS",
+            "frozenset",
+            "8e04275ab183aa55d2c1790b5862557d06290770782df56ec3154a46890cb49b",
+            id="parallel-risk-caution-tags",
+        ),
+        pytest.param(
+            "nvda_desk.domain.parallel_risk.family_aggregation",
+            "_STATE_RANK",
+            "mapping",
+            "92eb696543ba9d4a91276717e5b5458900ef62ca105d6a68f01caa618592e7f5",
+            id="parallel-risk-state-rank",
+        ),
+        pytest.param(
+            "nvda_desk.domain.posture.permission",
+            "DEFAULT_POSTURE_COEFFICIENTS",
+            "mapping",
+            "fd2e8c707d119833b4b45ad3be30158890444f0c7895abc99b62b28230748856",
+            id="posture-default-coefficients",
+        ),
+        pytest.param(
+            "nvda_desk.m05_serial_cognition.contracts",
+            "SERIAL_STAGE_DEPENDENCIES",
+            "mapping",
+            "f6b4c72ed31d56bd5bb9486ada7f65d6b54ccbc7ef0b29800e062aa687c33096",
+            id="m05-stage-dependencies",
+        ),
+        pytest.param(
+            "nvda_desk.m05_serial_cognition.contracts",
+            "STAGE_OWNER_IDS",
+            "mapping",
+            "12cddfe0c6993b10b5dcad1413ba4fe1259d01f5c27df0c8b62229844d17a9bc",
+            id="m05-stage-owner-ids",
+        ),
+        pytest.param(
+            "nvda_desk.m05_serial_cognition.contracts",
+            "ALLOWED_STAGE_AUTHORITY_OWNERS",
+            "mapping",
+            "dbacf5c1685383fdf18fd3d8554619d17ef73fdaac2bfe39071dea580366304f",
+            id="m05-stage-authority-owners",
+        ),
+        pytest.param(
+            "nvda_desk.m05_serial_cognition.contracts",
+            "ALLOWED_STAGE_FACT_IDS",
+            "mapping",
+            "0b704b58459e2aee64aaa20370bba0d703115ab846c73e29cd83bad8dec2a0ef",
+            id="m05-stage-fact-ids",
+        ),
+        pytest.param(
+            "nvda_desk.vocabulary_builder",
+            "GOVERNED_SOURCE_PATHS",
+            "tuple",
+            "3d9065ca376df0abdc2dca944a9bd4ec2d5c8ce5117126bee0975ff83e330199",
+            id="vocabulary-governed-paths",
+        ),
+        pytest.param(
+            "nvda_desk.vocabulary_builder",
+            "_HEADER_FIELDS",
+            "mapping",
+            "808055d94f8ad547b8c08bcf01ae2c39ec5ac246e028bf845878aa4d951a7a74",
+            id="vocabulary-header-fields",
+        ),
+        pytest.param(
+            "nvda_desk.vocabulary_builder",
+            "_HUMAN_FIELD_PREFIXES",
+            "mapping",
+            "2b8c7ad3eb50f13e1bf3de3b0de66a4f2b3c176225b9dedaf2147233951b81ac",
+            id="vocabulary-human-field-prefixes",
+        ),
+        pytest.param(
+            "nvda_desk.vocabulary_synonym_audit",
+            "ALLOWED_EXTENSIONS",
+            "frozenset",
+            "9a028204ad70c1bb91df84227be20a27606c79ff3a90496b0095398b1a619e94",
+            id="vocabulary-audit-extensions",
+        ),
+    ],
+)
+def test_unit4b_governed_process_values_preserve_content_and_reject_caller_mutation(
+    module_name: str,
+    attribute_name: str,
+    frozen_kind: str,
+    expected_digest: str,
+) -> None:
+    import importlib
+    from types import MappingProxyType
+
+    value = getattr(importlib.import_module(module_name), attribute_name)
+    assert _unit4_policy_digest(value) == expected_digest
+
+    if frozen_kind == "mapping":
+        assert isinstance(value, MappingProxyType)
+        with pytest.raises(TypeError):
+            value["__unit4_mutation__"] = object()
+    elif frozen_kind == "tuple":
+        assert isinstance(value, tuple)
+        with pytest.raises(TypeError):
+            value[0] = value[0]
+    else:
+        assert isinstance(value, frozenset)
+        with pytest.raises(AttributeError):
+            value.add("__unit4_mutation__")

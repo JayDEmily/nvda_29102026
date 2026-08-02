@@ -8,6 +8,7 @@ from copy import deepcopy
 from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
+from types import MappingProxyType
 from typing import Any, Callable, Generic, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
@@ -41,18 +42,20 @@ K07_LINEAGE_FIELDS = (
     "decisiontraceid",
 )
 
-K07_LINEAGE_MATRIX = {
-    "reference_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
-    "prepared_context_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
-    "stage_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
-    "parallel_risk_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
-    "review_explanation_packet": ("R", "C", "R", "C", "C", "R", "R", "C", "C"),
-    "replay_request_packet": ("C", "C", "N", "R", "R", "R", "C", "R", "C"),
-    "replay_result_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
-    "replay_comparison_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
-    "diagnostic_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
-    "rejection_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
-}
+K07_LINEAGE_MATRIX = MappingProxyType(
+    {
+        "reference_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
+        "prepared_context_packet": ("C", "C", "R", "C", "R", "R", "C", "C", "N"),
+        "stage_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
+        "parallel_risk_packet": ("R", "C", "R", "C", "R", "R", "C", "C", "C"),
+        "review_explanation_packet": ("R", "C", "R", "C", "C", "R", "R", "C", "C"),
+        "replay_request_packet": ("C", "C", "N", "R", "R", "R", "C", "R", "C"),
+        "replay_result_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
+        "replay_comparison_packet": ("R", "C", "R", "R", "R", "R", "C", "R", "C"),
+        "diagnostic_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
+        "rejection_packet": ("C", "C", "C", "C", "C", "C", "C", "C", "C"),
+    }
+)
 
 K07_COMMON_CHECKS = (
     "canonical_envelope",
@@ -67,87 +70,89 @@ K07_COMMON_CHECKS = (
     "validation_completeness",
 )
 
-K07_ROLE_CHECKS = {
-    "reference_packet": (
-        "reference_identity_and_version",
-        "source_artifact_retrievability",
-        "source_temporal_precision",
-        "reference_material_fingerprint",
-        "no_runtime_decision_authority",
-    ),
-    "prepared_context_packet": (
-        "prepared_identity_and_contract_version",
-        "source_and_capture_lineage",
-        "source_temporal_preservation",
-        "prepared_fingerprint",
-        "completeness_and_limitation_state",
-        "no_domain_decision_authority",
-    ),
-    "stage_packet": (
-        "stage_identity_and_order",
-        "prepared_or_prior_stage_parentage",
-        "material_dependency_closure",
-        "stage_input_fingerprint",
-        "domain_output_identity",
-        "serial_parallel_capital_boundary",
-    ),
-    "parallel_risk_packet": (
-        "parallel_lane_identity",
-        "lawful_input_boundary",
-        "material_dependency_closure",
-        "risk_input_fingerprint",
-        "risk_output_identity",
-        "serial_candidate_and_capital_separation",
-    ),
-    "review_explanation_packet": (
-        "review_trace_identity",
-        "reviewed_evidence_closure",
-        "review_input_fingerprint",
-        "deterministic_explanation",
-        "contradiction_visibility",
-        "no_runtime_decision_authority",
-    ),
-    "replay_request_packet": (
-        "replay_trace_identity",
-        "replay_target_retrievability",
-        "requested_evidence_and_version_completeness",
-        "requested_input_fingerprint",
-        "no_live_side_effect_request",
-    ),
-    "replay_result_packet": (
-        "replay_trace_identity",
-        "original_occurrence_separation",
-        "consumed_evidence_and_version_verification",
-        "isolated_state_and_controlled_time",
-        "semantic_result_fingerprint",
-        "no_live_side_effects",
-        "authoritative_or_incomplete_status",
-    ),
-    "replay_comparison_packet": (
-        "replay_trace_identity",
-        "original_and_result_identity",
-        "comparison_evidence_closure",
-        "comparison_fingerprint",
-        "mismatch_visibility",
-        "no_reconstruction_overclaim",
-    ),
-    "diagnostic_packet": (
-        "diagnostic_contract_and_version",
-        "target_or_rejected_input_identity",
-        "failure_fact_completeness",
-        "non_binding_status",
-        "no_binding_role_substitution",
-        "no_authority_promotion",
-    ),
-    "rejection_packet": (
-        "diagnostic_contract_and_version",
-        "target_or_rejected_input_identity",
-        "failure_fact_completeness",
-        "non_binding_status",
-        "no_binding_role_substitution",
-        "no_authority_promotion",
-    ),
-}
+K07_ROLE_CHECKS = MappingProxyType(
+    {
+        "reference_packet": (
+            "reference_identity_and_version",
+            "source_artifact_retrievability",
+            "source_temporal_precision",
+            "reference_material_fingerprint",
+            "no_runtime_decision_authority",
+        ),
+        "prepared_context_packet": (
+            "prepared_identity_and_contract_version",
+            "source_and_capture_lineage",
+            "source_temporal_preservation",
+            "prepared_fingerprint",
+            "completeness_and_limitation_state",
+            "no_domain_decision_authority",
+        ),
+        "stage_packet": (
+            "stage_identity_and_order",
+            "prepared_or_prior_stage_parentage",
+            "material_dependency_closure",
+            "stage_input_fingerprint",
+            "domain_output_identity",
+            "serial_parallel_capital_boundary",
+        ),
+        "parallel_risk_packet": (
+            "parallel_lane_identity",
+            "lawful_input_boundary",
+            "material_dependency_closure",
+            "risk_input_fingerprint",
+            "risk_output_identity",
+            "serial_candidate_and_capital_separation",
+        ),
+        "review_explanation_packet": (
+            "review_trace_identity",
+            "reviewed_evidence_closure",
+            "review_input_fingerprint",
+            "deterministic_explanation",
+            "contradiction_visibility",
+            "no_runtime_decision_authority",
+        ),
+        "replay_request_packet": (
+            "replay_trace_identity",
+            "replay_target_retrievability",
+            "requested_evidence_and_version_completeness",
+            "requested_input_fingerprint",
+            "no_live_side_effect_request",
+        ),
+        "replay_result_packet": (
+            "replay_trace_identity",
+            "original_occurrence_separation",
+            "consumed_evidence_and_version_verification",
+            "isolated_state_and_controlled_time",
+            "semantic_result_fingerprint",
+            "no_live_side_effects",
+            "authoritative_or_incomplete_status",
+        ),
+        "replay_comparison_packet": (
+            "replay_trace_identity",
+            "original_and_result_identity",
+            "comparison_evidence_closure",
+            "comparison_fingerprint",
+            "mismatch_visibility",
+            "no_reconstruction_overclaim",
+        ),
+        "diagnostic_packet": (
+            "diagnostic_contract_and_version",
+            "target_or_rejected_input_identity",
+            "failure_fact_completeness",
+            "non_binding_status",
+            "no_binding_role_substitution",
+            "no_authority_promotion",
+        ),
+        "rejection_packet": (
+            "diagnostic_contract_and_version",
+            "target_or_rejected_input_identity",
+            "failure_fact_completeness",
+            "non_binding_status",
+            "no_binding_role_substitution",
+            "no_authority_promotion",
+        ),
+    }
+)
 
 K07_DIAGNOSTIC_TARGET_FIELDS = (
     "parentids",

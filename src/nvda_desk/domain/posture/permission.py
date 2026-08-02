@@ -3,16 +3,19 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+from types import MappingProxyType
 
 from nvda_desk.contracts.posture import PermissionState, PostureRiskOutput
 from nvda_desk.contracts.regime import MarketRegimeContextOutput
 
-DEFAULT_POSTURE_COEFFICIENTS: dict[str, float | bool] = {
-    "risk_vix_caution_threshold": 24.0,
-    "risk_vix_hot_threshold": 32.0,
-    "max_risk_per_trade": 0.35,
-    "hedge_required": False,
-}
+DEFAULT_POSTURE_COEFFICIENTS: Mapping[str, float | bool] = MappingProxyType(
+    {
+        "risk_vix_caution_threshold": 24.0,
+        "risk_vix_hot_threshold": 32.0,
+        "max_risk_per_trade": 0.35,
+        "hedge_required": False,
+    }
+)
 
 
 def evaluate_permission(

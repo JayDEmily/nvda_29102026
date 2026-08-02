@@ -162,6 +162,11 @@ declared environment; records, proof control and Git describe the same state.
   proof passes 2/2, the complete M12 contract passes 24/24, the M12 proof block
   passes 24/24, M13 restart proof passes 10/10, and proof control passes at
   201 families / 203 paths / 73 blocks. Unit 4B is the next gate.
+- 2026-08-02: Unit 4B expected-red proved all 19 named process-wide
+  policy exports were caller-mutable. Each export now uses the narrow immutable
+  container appropriate to its accepted content. The 19 digest-and-mutation
+  cases pass; the 685-node affected cone has 662 passes and the same 23
+  pre-existing Unit 3 failure nodes, with zero added failures. Unit 4C is next.
 
 ## Decisions
 

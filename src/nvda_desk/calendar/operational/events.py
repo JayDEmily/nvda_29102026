@@ -4,8 +4,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
+from types import MappingProxyType
 
-_MATERIALITY_RANK = {"low": 1, "medium": 2, "high": 3, "critical": 4}
+_MATERIALITY_RANK = MappingProxyType({"low": 1, "medium": 2, "high": 3, "critical": 4})
 
 
 @dataclass(slots=True)

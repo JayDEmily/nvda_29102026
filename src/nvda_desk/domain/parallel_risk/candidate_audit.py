@@ -10,13 +10,15 @@ from nvda_desk.contracts.parallel_risk import (
     ParallelRiskFragilityDimension,
 )
 
-_BLOCK_TAGS = {"vix_extreme", "hard_block", "liquidity_void"}
-_CAUTION_TAGS = {
-    "earnings",
-    "negative_gamma",
-    "scheduled_event_window_active",
-    "event_gap_risk",
-}
+_BLOCK_TAGS = frozenset({"vix_extreme", "hard_block", "liquidity_void"})
+_CAUTION_TAGS = frozenset(
+    {
+        "earnings",
+        "negative_gamma",
+        "scheduled_event_window_active",
+        "event_gap_risk",
+    }
+)
 
 
 def audit_candidate(

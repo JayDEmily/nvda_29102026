@@ -30,7 +30,7 @@ RESOLVED_OCCURRENCES_PATH = Path(
     "project_control/canonical_project_manager/units/PM-010/"
     "P1_CANDIDATE_SEMANTIC_DISPOSITION_REGISTER.tsv"
 )
-ALLOWED_EXTENSIONS = {".py", ".md", ".yaml", ".yml", ".json", ".toml"}
+ALLOWED_EXTENSIONS = frozenset({".py", ".md", ".yaml", ".yml", ".json", ".toml"})
 IDENTIFIER_PATTERN = re.compile(r"\b[A-Za-z][A-Za-z0-9]*(?:[_-][A-Za-z0-9]+)+\b")
 MARKDOWN_HEADING_PATTERN = re.compile(r"^#{1,6}\s+(.+?)\s*$")
 INLINE_CODE_PATTERN = re.compile(r"`([^`\n]{2,80})`")

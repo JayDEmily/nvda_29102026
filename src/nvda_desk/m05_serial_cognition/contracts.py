@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from hashlib import sha256
 from math import isfinite
+from types import MappingProxyType
 from typing import Any, Final, Literal
 
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator
@@ -34,28 +36,32 @@ SERIAL_STAGE_ORDER: Final[tuple[str, ...]] = (
     "eligibility",
     "execution",
 )
-SERIAL_STAGE_DEPENDENCIES: Final[dict[str, tuple[str, ...]]] = {
-    "temporal": (),
-    "regime": (),
-    "options_flow": (),
-    "posture": ("regime",),
-    "eligibility": ("posture",),
-    "execution": (
-        "temporal",
-        "regime",
-        "options_flow",
-        "posture",
-        "eligibility",
-    ),
-}
-STAGE_OWNER_IDS: Final[dict[str, str]] = {
-    "temporal": "temporal_context",
-    "regime": "market_regime_context",
-    "options_flow": "options_flow",
-    "posture": "posture_permission",
-    "eligibility": "playbook_eligibility",
-    "execution": "candidate_expression",
-}
+SERIAL_STAGE_DEPENDENCIES: Final[Mapping[str, tuple[str, ...]]] = MappingProxyType(
+    {
+        "temporal": (),
+        "regime": (),
+        "options_flow": (),
+        "posture": ("regime",),
+        "eligibility": ("posture",),
+        "execution": (
+            "temporal",
+            "regime",
+            "options_flow",
+            "posture",
+            "eligibility",
+        ),
+    }
+)
+STAGE_OWNER_IDS: Final[Mapping[str, str]] = MappingProxyType(
+    {
+        "temporal": "temporal_context",
+        "regime": "market_regime_context",
+        "options_flow": "options_flow",
+        "posture": "posture_permission",
+        "eligibility": "playbook_eligibility",
+        "execution": "candidate_expression",
+    }
+)
 CLOSED_AUTHORITY_CLASSES: Final[tuple[str, ...]] = (
     "prepared_truth",
     "packet_identity",
@@ -69,37 +75,41 @@ CLOSED_AUTHORITY_CLASSES: Final[tuple[str, ...]] = (
     "transaction",
     "replay",
 )
-ALLOWED_STAGE_AUTHORITY_OWNERS: Final[dict[str, frozenset[str]]] = {
-    "temporal": frozenset({"m03", "temporal_domain"}),
-    "regime": frozenset({"m03"}),
-    "options_flow": frozenset({"m03"}),
-    "posture": frozenset({"m07"}),
-    "eligibility": frozenset({"m08"}),
-    "execution": frozenset({"m08"}),
-}
-ALLOWED_STAGE_FACT_IDS: Final[dict[str, frozenset[str]]] = {
-    "temporal": frozenset(
-        {
-            "effective_at_utc",
-            "session_state",
-            "next_event_time_utc",
-            "intraday_phase",
-            "intraday_phase_authority_state",
-            "intraday_phase_result_id",
-            "intraday_phase_fingerprint",
-            "intraday_phase_policy_version",
-            "intraday_phase_state_version",
-            "intraday_phase_positive_permission",
-        }
-    ),
-    "regime": frozenset({"nvda_return_pct", "nq_return_pct", "vix_level"}),
-    "options_flow": frozenset({"spot_price", "front_dte", "next_dte"}),
-    "posture": frozenset({"modifier_decision_status", "posture_policy_ref"}),
-    "eligibility": frozenset(
-        {"eligibility_status", "eligibility_lead_id", "ordered_eligible_candidate_ids"}
-    ),
-    "execution": frozenset({"eligibility_lead_id", "expression_policy_ref"}),
-}
+ALLOWED_STAGE_AUTHORITY_OWNERS: Final[Mapping[str, frozenset[str]]] = MappingProxyType(
+    {
+        "temporal": frozenset({"m03", "temporal_domain"}),
+        "regime": frozenset({"m03"}),
+        "options_flow": frozenset({"m03"}),
+        "posture": frozenset({"m07"}),
+        "eligibility": frozenset({"m08"}),
+        "execution": frozenset({"m08"}),
+    }
+)
+ALLOWED_STAGE_FACT_IDS: Final[Mapping[str, frozenset[str]]] = MappingProxyType(
+    {
+        "temporal": frozenset(
+            {
+                "effective_at_utc",
+                "session_state",
+                "next_event_time_utc",
+                "intraday_phase",
+                "intraday_phase_authority_state",
+                "intraday_phase_result_id",
+                "intraday_phase_fingerprint",
+                "intraday_phase_policy_version",
+                "intraday_phase_state_version",
+                "intraday_phase_positive_permission",
+            }
+        ),
+        "regime": frozenset({"nvda_return_pct", "nq_return_pct", "vix_level"}),
+        "options_flow": frozenset({"spot_price", "front_dte", "next_dte"}),
+        "posture": frozenset({"modifier_decision_status", "posture_policy_ref"}),
+        "eligibility": frozenset(
+            {"eligibility_status", "eligibility_lead_id", "ordered_eligible_candidate_ids"}
+        ),
+        "execution": frozenset({"eligibility_lead_id", "expression_policy_ref"}),
+    }
+)
 
 
 def _canonical(value: Any) -> Any:
