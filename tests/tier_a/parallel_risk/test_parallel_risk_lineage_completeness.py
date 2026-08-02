@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import (
     EventProximityRegisterEntry,
@@ -89,8 +91,11 @@ def test_service_optional_profile_carries_lineage_without_hidden_authority() -> 
         ),
         input_packet_id="dmp::parallel_risk::bootstrap_input::lineage-service",
         output_packet_id="dmp::parallel_risk::output::lineage-service",
-        sourceartifactids=["service-source-artifact"],
-        inputfingerprint="sha256:service-fixture",
+        **parallel_risk_compatibility_authority(
+            "lineage-service",
+            sourceartifactids=["service-source-artifact"],
+            inputfingerprint="sha256:service-fixture",
+        ),
         include_minute_profile=True,
     )
 

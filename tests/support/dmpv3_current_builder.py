@@ -116,3 +116,27 @@ def serial_runtime_packet_authority(scope_id: str) -> dict[str, Any]:
         "source_artifact_ids": source_artifact_ids,
         "source_artifact_validator": lambda source_id: source_id in source_artifact_ids,
     }
+
+
+def parallel_risk_compatibility_authority(
+    scope_id: str,
+    *,
+    emitted_at: datetime | None = None,
+    sourceartifactids: list[str] | None = None,
+    inputfingerprint: str | None = None,
+) -> dict[str, Any]:
+    """Return explicit facts for one non-binding legacy parallel-risk specimen."""
+
+    resolved_sources = list(sourceartifactids or [f"source::parallel-risk::{scope_id}"])
+    resolved_fingerprint = (
+        inputfingerprint or sha256(f"parallel-risk-input::{scope_id}".encode()).hexdigest()
+    )
+    return {
+        "emitted_at": emitted_at or datetime(2026, 8, 2, 11, 0, tzinfo=UTC),
+        "traceid": f"trace::parallel-risk::{scope_id}",
+        "runid": f"run::parallel-risk::{scope_id}",
+        "scenarioid": f"scenario::parallel-risk::{scope_id}",
+        "derivedfrom": f"test-specimen::parallel-risk::{scope_id}",
+        "sourceartifactids": resolved_sources,
+        "inputfingerprint": resolved_fingerprint,
+    }

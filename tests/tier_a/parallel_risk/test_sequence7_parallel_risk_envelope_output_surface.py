@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import ParallelRiskLanePacket
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -48,9 +50,7 @@ def test_sequence7_parallel_risk_output_contains_independent_risk_envelope() -> 
         stage_input_bundle=_sequence7_stage_input_bundle(),
         input_packet_id="dmp::parallel_risk::bootstrap_input::sequence7-output",
         output_packet_id="dmp::parallel_risk::output::sequence7-output",
-        traceid="trace-sequence7-output",
-        runid="run-sequence7-output",
-        scenarioid="tests-first",
+        **parallel_risk_compatibility_authority("sequence7-output"),
     )
     lane_packet = packets["lane_packet"]
     payload = ParallelRiskLanePacket.model_validate(lane_packet.data)
@@ -80,6 +80,7 @@ def test_sequence7_parallel_risk_output_is_not_capital_or_execution_authority() 
         stage_input_bundle=_sequence7_stage_input_bundle(),
         input_packet_id="dmp::parallel_risk::bootstrap_input::sequence7-forbidden",
         output_packet_id="dmp::parallel_risk::output::sequence7-forbidden",
+        **parallel_risk_compatibility_authority("sequence7-forbidden"),
     )
     payload_text = str(
         ParallelRiskLanePacket.model_validate(packets["lane_packet"].data).model_dump(mode="json")

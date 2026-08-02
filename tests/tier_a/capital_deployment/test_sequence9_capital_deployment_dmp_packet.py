@@ -4,17 +4,18 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+import pytest
+
 from nvda_desk.capital.authority import evaluate_capital_deployment
 from nvda_desk.contracts.capital import (
-    CAPITAL_DEPLOYMENT_DECISION_DATASCHEMA,
-    CapitalDeploymentAuthorityAction,
     CapitalDeploymentAuthorityInput,
 )
+from nvda_desk.contracts.packets import K07_ADMITTED_PACKET_ROLES
 from nvda_desk.packets.dmp_packets import build_capital_deployment_packet
 
 
-def test_sequence9_capital_decision_packet_uses_canonical_dmpv3_shell() -> None:
-    """Capital decision is carried as a canonical downstream DMPV3 packet."""
+def test_sequence9_capital_decision_packet_role_remains_fail_closed_under_k07() -> None:
+    """The legacy helper must not create a new capital-authority packet role."""
     decision = evaluate_capital_deployment(
         CapitalDeploymentAuthorityInput(
             final_risk_action="proceed",
@@ -35,31 +36,20 @@ def test_sequence9_capital_decision_packet_uses_canonical_dmpv3_shell() -> None:
         ),
         receipt_id="capital-deployment-receipt-seq9",
     )
-    packet = build_capital_deployment_packet(
-        packet_id="capital-deployment-decision-seq9",
-        data=decision,
-        emitted_at=datetime(2026, 5, 5, tzinfo=UTC),
-        traceid="trace-seq9",
-        runid="run-seq9",
-        scenarioid="sequence9",
-        parentids=["serial-candidate-packet-seq5", "parallel-risk-envelope-packet-seq7"],
-        dependencyids=["coefficient-authority-seq8", "temporal-context-seq5"],
-        derivedfrom="sequence9_downstream_capital_authority",
-    )
 
-    assert packet.dmpversion == "3.0.0"
-    assert packet.dataschema == CAPITAL_DEPLOYMENT_DECISION_DATASCHEMA
-    assert packet.packetrole == "capital_deployment_decision"
-    assert packet.producer.module_id == "capital_deployment_authority"
-    assert packet.producer.grammar_role == "downstream_capital_authority"
-    assert packet.data.action is CapitalDeploymentAuthorityAction.CONTINUE
-    assert packet.data.input_trace is not None
-    assert packet.data.capital_deployment_receipt_id == "capital-deployment-receipt-seq9"
-    assert packet.lineage.parentids == [
-        "serial-candidate-packet-seq5",
-        "parallel-risk-envelope-packet-seq7",
-    ]
-    assert packet.lineage.dependencyids == [
-        "coefficient-authority-seq8",
-        "temporal-context-seq5",
-    ]
+    assert "capital_deployment_decision" not in K07_ADMITTED_PACKET_ROLES
+    with pytest.raises(
+        ValueError,
+        match="packetrole is not admitted by K07: capital_deployment_decision",
+    ):
+        build_capital_deployment_packet(
+            packet_id="capital-deployment-decision-seq9",
+            data=decision,
+            emitted_at=datetime(2026, 5, 5, tzinfo=UTC),
+            traceid="trace-seq9",
+            runid="run-seq9",
+            scenarioid="sequence9",
+            parentids=["serial-candidate-packet-seq5", "parallel-risk-envelope-packet-seq7"],
+            dependencyids=["coefficient-authority-seq8", "temporal-context-seq5"],
+            derivedfrom="sequence9_downstream_capital_authority",
+        )

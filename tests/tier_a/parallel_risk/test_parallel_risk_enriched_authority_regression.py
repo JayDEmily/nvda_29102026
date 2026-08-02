@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 
 import pytest
 from pydantic import ValidationError
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import AuthorityFlags
@@ -33,6 +34,7 @@ def test_enriched_optional_profile_keeps_every_forbidden_authority_default_false
         ),
         input_packet_id="dmp::parallel_risk::bootstrap_input::authority-regression",
         output_packet_id="dmp::parallel_risk::output::authority-regression",
+        **parallel_risk_compatibility_authority("authority-regression"),
         include_minute_profile=True,
     )
 

@@ -8,7 +8,12 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
-from nvda_desk.contracts.packets import DeskModulePacketV3, _deep_merge_dicts
+from nvda_desk.contracts.packets import (
+    K07_COMMON_CHECKS,
+    K07_ROLE_CHECKS,
+    DeskModulePacketV3,
+    _deep_merge_dicts,
+)
 from nvda_desk.contracts.regime import MarketRegimeContextInput
 from nvda_desk.contracts.stage_inputs import StageInputBundle
 from nvda_desk.contracts.temporal import (
@@ -40,6 +45,25 @@ PARALLEL_RISK_FORBIDDEN_AUTHORITY_KEYS = (
     "review_explanation",
     "coefficient_modifier",
 )
+
+COMPATIBILITY_BOOTSTRAP_MODULE_VERSION = "1.0.0"
+COMPATIBILITY_BOOTSTRAP_MODULE_INSTANCE_ID = "parallel_risk_lane_bootstrap_adapter::compatibility"
+COMPATIBILITY_LANE_MODULE_VERSION = "1.0.0"
+COMPATIBILITY_LANE_MODULE_INSTANCE_ID = "parallel_risk_lane::compatibility"
+
+
+def _compatibility_owner_check(packetrole: str):
+    expected = set(K07_COMMON_CHECKS) | set(K07_ROLE_CHECKS[packetrole])
+    return lambda name, _: name in expected
+
+
+def _exact_artifact_validator(sourceartifactids: list[str]):
+    admitted = frozenset(sourceartifactids)
+    return lambda value: value in admitted
+
+
+def _exact_fingerprint_validator(inputfingerprint: str):
+    return lambda value: value == inputfingerprint
 
 
 class _DetachedMutableModel(BaseModel):
@@ -803,10 +827,12 @@ def build_parallel_risk_bootstrap_input_packet(
         packet_id=packet_id,
         dataschema=PARALLEL_RISK_BOOTSTRAP_INPUT_DATASCHEMA,
         data=payload,
-        packetrole="parallel_risk_bootstrap_input",
+        packetrole="diagnostic_packet",
         module_id="parallel_risk_lane_bootstrap_adapter",
+        module_version=COMPATIBILITY_BOOTSTRAP_MODULE_VERSION,
+        module_instance_id=COMPATIBILITY_BOOTSTRAP_MODULE_INSTANCE_ID,
         grammar_role="parallel_risk_lane",
-        behaviour_class="bootstrap_adapter_output",
+        behaviour_class="non_binding_compatibility_diagnostic",
         stage_name="parallel_risk_lane",
         emitted_at=emitted_at,
         traceid=traceid,
@@ -815,9 +841,25 @@ def build_parallel_risk_bootstrap_input_packet(
         derivedfrom=derivedfrom,
         sourceartifactids=sourceartifactids,
         inputfingerprint=inputfingerprint,
-        summary_headline="parallel-risk bootstrap input emitted",
-        summary_keyflags=["stage_a_bootstrap", "module_8_owned_adapter"],
-        summary_humanstate="bootstrap_ready",
+        source_artifact_validator=(
+            _exact_artifact_validator(sourceartifactids) if sourceartifactids else None
+        ),
+        input_fingerprint_validator=(
+            _exact_fingerprint_validator(inputfingerprint) if inputfingerprint else None
+        ),
+        conditional_lineage_fields={
+            "derivedfrom",
+            "sourceartifactids",
+            "inputfingerprint",
+        },
+        owner_check_validator=_compatibility_owner_check("diagnostic_packet"),
+        summary_headline="parallel-risk compatibility diagnostic emitted",
+        summary_keyflags=[
+            "stage_a_bootstrap_specimen",
+            "non_binding_compatibility",
+            "canonical_m06_route_false",
+        ],
+        summary_humanstate="non_binding_diagnostic",
         dmpextensions=dmpextensions,
     )
 
@@ -850,14 +892,20 @@ def build_parallel_risk_bootstrap_input_packet_from_temporal_stage_packet(
         ),
         bootstrap_source=SERIAL_RUNTIME_TEMPORAL_BOOTSTRAP_SOURCE,
     )
+    resolved_sourceartifactids = sourceartifactids or list(
+        temporal_stage_packet.lineage.sourceartifactids
+    )
+    resolved_inputfingerprint = inputfingerprint or temporal_stage_packet.lineage.inputfingerprint
     return build_dmp_v3_packet(
         packet_id=packet_id,
         dataschema=PARALLEL_RISK_BOOTSTRAP_INPUT_DATASCHEMA,
         data=payload,
-        packetrole="parallel_risk_bootstrap_input",
+        packetrole="diagnostic_packet",
         module_id="parallel_risk_lane_bootstrap_adapter",
+        module_version=COMPATIBILITY_BOOTSTRAP_MODULE_VERSION,
+        module_instance_id=COMPATIBILITY_BOOTSTRAP_MODULE_INSTANCE_ID,
         grammar_role="parallel_risk_lane",
-        behaviour_class="bootstrap_adapter_output",
+        behaviour_class="non_binding_compatibility_diagnostic",
         stage_name="parallel_risk_lane",
         emitted_at=emitted_at or temporal_stage_packet.emitted_at,
         traceid=traceid or temporal_stage_packet.traceid,
@@ -866,12 +914,33 @@ def build_parallel_risk_bootstrap_input_packet_from_temporal_stage_packet(
         parentids=[temporal_stage_packet.packet_id],
         dependencyids=[temporal_stage_packet.packet_id],
         derivedfrom=derivedfrom or "parallel_risk_bootstrap_from_serial_runtime_temporal_packet",
-        sourceartifactids=sourceartifactids
-        or list(temporal_stage_packet.lineage.sourceartifactids),
-        inputfingerprint=inputfingerprint or temporal_stage_packet.lineage.inputfingerprint,
-        summary_headline="parallel-risk bootstrap input emitted",
-        summary_keyflags=["stage_a_bootstrap", "module_8_owned_adapter"],
-        summary_humanstate="bootstrap_ready",
+        sourceartifactids=resolved_sourceartifactids,
+        inputfingerprint=resolved_inputfingerprint,
+        source_artifact_validator=(
+            _exact_artifact_validator(resolved_sourceartifactids)
+            if resolved_sourceartifactids
+            else None
+        ),
+        input_fingerprint_validator=(
+            _exact_fingerprint_validator(resolved_inputfingerprint)
+            if resolved_inputfingerprint
+            else None
+        ),
+        conditional_lineage_fields={
+            "parentids",
+            "dependencyids",
+            "derivedfrom",
+            "sourceartifactids",
+            "inputfingerprint",
+        },
+        owner_check_validator=_compatibility_owner_check("diagnostic_packet"),
+        summary_headline="parallel-risk compatibility diagnostic emitted",
+        summary_keyflags=[
+            "stage_a_bootstrap_specimen",
+            "non_binding_compatibility",
+            "canonical_m06_route_false",
+        ],
+        summary_humanstate="non_binding_diagnostic",
         dmpextensions=dmpextensions,
     )
 
@@ -912,13 +981,28 @@ def build_parallel_risk_lane_output_packet(
         traceid=traceid,
         runid=runid,
         scenarioid=scenarioid,
+        module_id="parallel_risk_lane",
+        module_version=COMPATIBILITY_LANE_MODULE_VERSION,
+        module_instance_id=COMPATIBILITY_LANE_MODULE_INSTANCE_ID,
         parentids=parentids,
         dependencyids=dependencyids,
         derivedfrom=derivedfrom,
         sourceartifactids=sourceartifactids,
         inputfingerprint=inputfingerprint,
-        summary_headline="parallel-risk stage-a output emitted",
-        summary_keyflags=["stage_a_bootstrap", "environment_assessment_only"],
+        source_artifact_validator=(
+            _exact_artifact_validator(sourceartifactids) if sourceartifactids else None
+        ),
+        input_fingerprint_validator=(
+            _exact_fingerprint_validator(inputfingerprint) if inputfingerprint else None
+        ),
+        conditional_lineage_fields={"dependencyids"},
+        owner_check_validator=_compatibility_owner_check("parallel_risk_packet"),
+        summary_headline="parallel-risk compatibility output emitted",
+        summary_keyflags=[
+            "stage_a_bootstrap_specimen",
+            "environment_assessment_only",
+            "non_binding_compatibility",
+        ],
         dmpextensions=merged_extensions,
     )
 

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import current_packet_kwargs
+
 from nvda_desk.contracts.packets import DeskModulePacketV3
 from nvda_desk.packets.dmp_packets import (
     DmpPacketBuilder,
@@ -21,20 +23,18 @@ def test_stage_packet_builder_preserves_explicit_stage_carriage_metadata() -> No
         packet_id="stage-1",
         dataschema="TemporalContextOutput",
         data={"session_state": "opening"},
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-stage-1",
-        runid="run-stage-1",
-        scenarioid="live",
         module_id="temporal_context",
-        module_instance_id="temporal_context::runtime",
         grammar_role="temporal_context",
         stage_name="temporal",
-        parentids=[],
-        dependencyids=[],
-        derivedfrom="temporal_from_declared_stage_inputs",
-        sourceartifactids=["bundle-input-1"],
-        inputfingerprint="abc123",
         summary_headline="session_state=opening",
+        **current_packet_kwargs(
+            role="stage_packet",
+            packet_id="stage-1",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+            parentids=["prepared-context-1"],
+            derivedfrom="temporal_from_declared_stage_inputs",
+            sourceartifactids=["bundle-input-1"],
+        ),
     )
 
     assert packet.packetrole == "stage_packet"
@@ -43,7 +43,6 @@ def test_stage_packet_builder_preserves_explicit_stage_carriage_metadata() -> No
     assert packet.producer.stage_name == "temporal"
     assert packet.lineage.derivedfrom == "temporal_from_declared_stage_inputs"
     assert packet.lineage.sourceartifactids == ["bundle-input-1"]
-    assert packet.lineage.inputfingerprint == "abc123"
     assert packet.summary.headline == "session_state=opening"
     assert packet.validation.status == "valid"
 
@@ -53,11 +52,16 @@ def test_parallel_risk_packet_builder_emits_stable_parallel_risk_carriage() -> N
         packet_id="risk-1",
         dataschema="ParallelRiskLanePacket",
         data={"risk_state": "caution"},
-        emitted_at=datetime(2026, 4, 21, 9, 45, tzinfo=UTC),
-        traceid="trace-risk-1",
-        runid="run-risk-1",
-        dependencyids=["stage-1", "stage-2"],
         summary_headline="parallel risk emitted",
+        **current_packet_kwargs(
+            role="parallel_risk_packet",
+            packet_id="risk-1",
+            emitted_at=datetime(2026, 4, 21, 9, 45, tzinfo=UTC),
+            parentids=["stage-1"],
+            dependencyids=["stage-1", "stage-2"],
+            derivedfrom="parallel-risk-from-stages",
+            sourceartifactids=["bundle-input-1"],
+        ),
     )
 
     assert packet.packetrole == "parallel_risk_packet"

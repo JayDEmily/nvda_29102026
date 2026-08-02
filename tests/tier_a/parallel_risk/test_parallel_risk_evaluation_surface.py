@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import UTC, datetime
 
 import pytest
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import ParallelRiskLanePacket
@@ -41,9 +42,10 @@ def test_parallel_risk_evaluation_surface_emits_lawful_bootstrap_output_packet()
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=_bundle(),
         packet_id="bootstrap-1",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-1",
-        runid="run-1",
+        **parallel_risk_compatibility_authority(
+            "evaluation-1",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
     )
 
     lane_packet = evaluate_parallel_risk(
@@ -71,9 +73,10 @@ def test_parallel_risk_stage_b_reserved_and_stage_c_candidate_semantics_is_audit
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=_bundle(),
         packet_id="bootstrap-2",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-2",
-        runid="run-2",
+        **parallel_risk_compatibility_authority(
+            "evaluation-2",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
     )
 
     with pytest.raises(NotImplementedError, match="Stage B market translation remains reserved"):
@@ -91,9 +94,10 @@ def test_parallel_risk_output_records_lawful_input_trace() -> None:
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=_bundle(),
         packet_id="bootstrap-trace-1",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-input-trace-1",
-        runid="run-input-trace-1",
+        **parallel_risk_compatibility_authority(
+            "input-trace",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
     )
 
     lane_packet = evaluate_parallel_risk(
@@ -118,9 +122,10 @@ def test_parallel_risk_hidden_capital_authority_is_rejected_from_extensions() ->
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=_bundle(),
         packet_id="bootstrap-hidden-authority",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-hidden-authority",
-        runid="run-hidden-authority",
+        **parallel_risk_compatibility_authority(
+            "hidden-authority",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
         dmpextensions={
             "nvda": {
                 "capital": {
@@ -144,9 +149,10 @@ def test_parallel_risk_extreme_volatility_emits_block_without_capital_authority(
     bootstrap_packet = service.build_bootstrap_input_packet(
         stage_input_bundle=bundle,
         packet_id="bootstrap-block-1",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-block-1",
-        runid="run-block-1",
+        **parallel_risk_compatibility_authority(
+            "block-1",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
     )
 
     lane_packet = evaluate_parallel_risk(

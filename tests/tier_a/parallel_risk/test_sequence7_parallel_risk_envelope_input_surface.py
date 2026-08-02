@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import ParallelRiskPreparationPacket
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -47,9 +49,7 @@ def test_sequence7_bootstrap_input_carries_all_allowed_parallel_risk_primitives(
     bootstrap_packet = ParallelRiskLaneService().build_bootstrap_input_packet(
         stage_input_bundle=_sequence7_stage_input_bundle(),
         packet_id="dmp::parallel_risk::bootstrap_input::sequence7",
-        traceid="trace-sequence7",
-        runid="run-sequence7",
-        scenarioid="tests-first",
+        **parallel_risk_compatibility_authority("sequence7-input"),
     )
 
     payload = ParallelRiskPreparationPacket.model_validate(bootstrap_packet.data)
@@ -68,6 +68,7 @@ def test_sequence7_bootstrap_input_excludes_downstream_decision_authority() -> N
     bootstrap_packet = ParallelRiskLaneService().build_bootstrap_input_packet(
         stage_input_bundle=_sequence7_stage_input_bundle(),
         packet_id="dmp::parallel_risk::bootstrap_input::sequence7-boundary",
+        **parallel_risk_compatibility_authority("sequence7-boundary"),
     )
     payload_text = str(
         ParallelRiskPreparationPacket.model_validate(bootstrap_packet.data).model_dump()

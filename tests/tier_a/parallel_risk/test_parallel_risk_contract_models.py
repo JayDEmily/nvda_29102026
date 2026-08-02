@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 
 import pytest
 from pydantic import ValidationError
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
 
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -84,13 +85,15 @@ def test_parallel_risk_bootstrap_builder_wraps_stage_input_bundle_truthfully() -
     packet = build_bootstrap_input_packet(
         stage_input_bundle=bundle,
         packet_id="parallel-risk-bootstrap-1",
-        emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
-        traceid="trace-bootstrap-1",
-        runid="run-bootstrap-1",
+        **parallel_risk_compatibility_authority(
+            "contract-model",
+            emitted_at=datetime(2026, 4, 21, 9, 31, tzinfo=UTC),
+        ),
     )
 
     payload = ParallelRiskPreparationPacket.model_validate(packet.data)
-    assert packet.packetrole == "parallel_risk_bootstrap_input"
+    assert packet.packetrole == "diagnostic_packet"
+    assert "non_binding_compatibility" in packet.summary.keyflags
     assert packet.dataschema == PARALLEL_RISK_BOOTSTRAP_INPUT_DATASCHEMA
     assert packet.producer.module_id == "parallel_risk_lane_bootstrap_adapter"
     assert payload.temporal_input.source_time_utc == bundle.temporal.source_time_utc

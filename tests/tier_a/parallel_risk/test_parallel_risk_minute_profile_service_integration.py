@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
+from tests.support.dmpv3_current_builder import parallel_risk_compatibility_authority
+
 from nvda_desk.contracts.options_flow import OptionsFlowContextInput
 from nvda_desk.contracts.parallel_risk import ParallelRiskMinuteProfile
 from nvda_desk.contracts.regime import MarketRegimeContextInput
@@ -23,6 +25,7 @@ def test_run_bootstrap_default_result_remains_backward_compatible() -> None:
         stage_input_bundle=_bundle(),
         input_packet_id="dmp::parallel_risk::bootstrap_input::service-default",
         output_packet_id="dmp::parallel_risk::output::service-default",
+        **parallel_risk_compatibility_authority("service-default"),
     )
 
     assert set(result) == {"bootstrap_input_packet", "lane_packet"}
@@ -33,8 +36,11 @@ def test_run_bootstrap_can_include_optional_minute_profile_without_changing_lane
         stage_input_bundle=_bundle(),
         input_packet_id="dmp::parallel_risk::bootstrap_input::service-profile",
         output_packet_id="dmp::parallel_risk::output::service-profile",
-        sourceartifactids=["source-artifact-1"],
-        inputfingerprint="sha256:fixture",
+        **parallel_risk_compatibility_authority(
+            "service-profile",
+            sourceartifactids=["source-artifact-1"],
+            inputfingerprint="sha256:fixture",
+        ),
         include_minute_profile=True,
     )
 

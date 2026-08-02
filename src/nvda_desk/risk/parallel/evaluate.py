@@ -183,12 +183,17 @@ def _coerce_preparation_payload(
 def _validate_parallel_risk_packet_authority(preparation_packet: DeskModulePacketV3) -> None:
     """Reject spoofed or authority-smuggling bootstrap packets before evaluation."""
 
-    if preparation_packet.packetrole != "parallel_risk_bootstrap_input":
+    if preparation_packet.packetrole != "diagnostic_packet":
         raise ValueError("parallel_risk_bootstrap_packetrole_mismatch")
     if preparation_packet.producer.module_id != "parallel_risk_lane_bootstrap_adapter":
         raise ValueError("parallel_risk_bootstrap_producer_mismatch")
     if preparation_packet.producer.grammar_role != "parallel_risk_lane":
         raise ValueError("parallel_risk_bootstrap_producer_mismatch")
+    if (
+        preparation_packet.producer.behaviour_class != "non_binding_compatibility_diagnostic"
+        or "non_binding_compatibility" not in preparation_packet.summary.keyflags
+    ):
+        raise ValueError("parallel_risk_bootstrap_binding_status_mismatch")
 
     forbidden_key_paths = _find_forbidden_authority_key_paths(preparation_packet.dmpextensions)
     if forbidden_key_paths:
