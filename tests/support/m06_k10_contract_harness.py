@@ -53,8 +53,8 @@ def make_prepared(
     front_dte: int | None = 5,
     next_dte: int | None = 12,
     degraded: bool = False,
+    now: datetime = datetime(2026, 7, 31, 10, 0, tzinfo=UTC),
 ):
-    now = datetime(2026, 7, 31, 10, 0, tzinfo=UTC)
     windows = ()
     if scheduled_event:
         windows = (

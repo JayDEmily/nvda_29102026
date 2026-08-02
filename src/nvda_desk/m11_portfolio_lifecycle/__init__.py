@@ -7,6 +7,7 @@ from .contracts import (
     PortfolioSnapshot,
     PositionState,
 )
+from .risk_facts import PortfolioRiskFactIssuer
 from .service import PortfolioLifecycleService
 
 __all__ = [
@@ -16,4 +17,5 @@ __all__ = [
     "FillReconciliationReceipt",
     "CloseReceipt",
     "PortfolioLifecycleService",
+    "PortfolioRiskFactIssuer",
 ]

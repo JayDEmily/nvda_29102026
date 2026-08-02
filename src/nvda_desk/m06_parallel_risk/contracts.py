@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import UTC, datetime
+from decimal import Decimal
 from hashlib import sha256
 from math import isfinite
 from typing import Any, Final, Literal, Mapping
@@ -15,6 +16,7 @@ from nvda_desk.contracts.prepared_data import (
     PreparedEventWindow,
     SourceCaptureReference,
 )
+from nvda_desk.m06_parallel_risk.owner_facts import ParallelRiskOwnerFacts
 
 RiskState = Literal["observe", "caution", "block", "unknown"]
 RiskFamily = Literal[
@@ -56,6 +58,10 @@ def _canonical(value: Any) -> Any:
         if value.tzinfo is None or value.utcoffset() is None:
             raise ValueError("datetime_must_be_timezone_aware")
         return value.astimezone(UTC).isoformat().replace("+00:00", "Z")
+    if isinstance(value, Decimal):
+        if not value.is_finite():
+            raise ValueError("decimal_must_be_finite")
+        return "0" if value == 0 else format(value.normalize(), "f")
     if isinstance(value, BaseModel):
         return _canonical(value.model_dump(mode="python"))
     if isinstance(value, Mapping):
@@ -118,6 +124,7 @@ class ParallelRiskInput(BaseModel):
     prepared_limitations: tuple[str, ...]
     missing_optional_enrichments: tuple[str, ...]
     packet_lineage: ParallelRiskPacketLineage | None = None
+    owner_facts: ParallelRiskOwnerFacts | None = None
     windows: tuple[PreparedEventWindow, ...] = ()
     front_dte: int | None = None
     next_dte: int | None = None
@@ -178,6 +185,15 @@ class ParallelRiskInput(BaseModel):
             value.model_dump(mode="python") if isinstance(value, BaseModel) else value
         )
 
+    @field_validator("owner_facts", mode="before")
+    @classmethod
+    def _revalidate_owner_facts(cls, value: Any) -> ParallelRiskOwnerFacts | None:
+        if value is None:
+            return None
+        return ParallelRiskOwnerFacts.model_validate(
+            value.model_dump(mode="python") if isinstance(value, BaseModel) else value
+        )
+
     @model_validator(mode="after")
     def _validate_input(self) -> "ParallelRiskInput":
         if self.effective_at_utc.tzinfo is None or self.effective_at_utc.utcoffset() is None:
@@ -233,6 +249,7 @@ class ParallelRiskInput(BaseModel):
         vix_caution_threshold: float,
         vix_block_threshold: float,
         packet_lineage: ParallelRiskPacketLineage | None = None,
+        owner_facts: ParallelRiskOwnerFacts | None = None,
     ) -> "ParallelRiskInput":
         """Project one revalidated M03 envelope into the bounded K10 input."""
 
@@ -249,6 +266,11 @@ class ParallelRiskInput(BaseModel):
         if packet_lineage is not None:
             lineage = ParallelRiskPacketLineage.model_validate(
                 packet_lineage.model_dump(mode="python")
+            )
+        governed_owner_facts = None
+        if owner_facts is not None:
+            governed_owner_facts = ParallelRiskOwnerFacts.model_validate(
+                owner_facts.model_dump(mode="python")
             )
         payload: dict[str, Any] = {
             "input_id": "pending",
@@ -273,6 +295,7 @@ class ParallelRiskInput(BaseModel):
             "prepared_limitations": governed.limitations,
             "missing_optional_enrichments": governed.missing_optional_enrichments,
             "packet_lineage": lineage,
+            "owner_facts": governed_owner_facts,
             "windows": tuple(
                 sorted(
                     governed.payload.windows,

@@ -46,3 +46,22 @@ class UnitOfWork(ABC):
     ) -> AtomicReceipt:
         """Commit state and receipt truth together or publish neither."""
         raise NotImplementedError
+
+
+class StateReadPort(ABC):
+    """Read-only detached state view; it owns no domain interpretation."""
+
+    @property
+    @abstractmethod
+    def state_version(self) -> int:
+        """Return the current committed state version."""
+        raise NotImplementedError
+
+    @abstractmethod
+    def snapshot_state(self) -> Any:
+        """Return a detached snapshot of current committed state."""
+        raise NotImplementedError
+
+
+class TransactionalStatePort(UnitOfWork, StateReadPort):
+    """Combined transaction and detached-read port for owner repositories."""

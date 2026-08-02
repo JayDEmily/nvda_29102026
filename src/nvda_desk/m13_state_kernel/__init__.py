@@ -8,7 +8,7 @@ from .contracts import (
     TransactionCommand,
 )
 from .in_memory import InMemoryUnitOfWork
-from .ports import RepositoryPort, UnitOfWork
+from .ports import RepositoryPort, StateReadPort, TransactionalStatePort, UnitOfWork
 
 __all__ = [
     "AtomicReceipt",
@@ -17,6 +17,8 @@ __all__ = [
     "InMemoryUnitOfWork",
     "RepositoryPort",
     "StateVersionConflictError",
+    "TransactionalStatePort",
+    "StateReadPort",
     "TransactionCommand",
     "UnitOfWork",
 ]

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT3_M06_OWNER_FACT_COMPLETENESS`
+**Status:** `ACTIVE:UNIT4_DURABLE_STATE_AND_RESTART`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`

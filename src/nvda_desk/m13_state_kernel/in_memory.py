@@ -14,7 +14,7 @@ from .contracts import (
     StateVersionConflictError,
     TransactionCommand,
 )
-from .ports import RepositoryPort, UnitOfWork
+from .ports import RepositoryPort, TransactionalStatePort
 
 _Scope = tuple[str, str, str]
 _CommandIdentity = tuple[str, str, str]
@@ -26,7 +26,7 @@ class _CommittedBinding:
     receipt: AtomicReceipt
 
 
-class InMemoryUnitOfWork(UnitOfWork):
+class InMemoryUnitOfWork(TransactionalStatePort):
     """Detached alpha adapter proving only in-process, non-durable behaviour."""
 
     durability = "non_durable_in_memory"

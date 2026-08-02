@@ -27,24 +27,9 @@ class ParallelRiskEvaluator:
         observations = tuple(
             sorted(
                 (
-                    self._unavailable_observation(
-                        "concentration",
-                        "concentration_context_unavailable",
-                        "concentration_context",
-                        source_references,
-                    ),
-                    self._unavailable_observation(
-                        "inventory_stress",
-                        "inventory_stress_context_unavailable",
-                        "inventory_stress_context",
-                        source_references,
-                    ),
-                    self._unavailable_observation(
-                        "liquidity",
-                        "liquidity_context_unavailable",
-                        "liquidity_context",
-                        source_references,
-                    ),
+                    self._concentration_observation(governed, source_references),
+                    self._inventory_observation(governed, source_references),
+                    self._liquidity_observation(governed, source_references),
                     self._options_observation(governed, source_references),
                     self._event_observation(governed, source_references),
                     self._volatility_observation(governed, source_references),
@@ -116,6 +101,142 @@ class ParallelRiskEvaluator:
             source_fields=(source_field,),
             source_references=source_references,
             limitation=reason,
+        )
+
+    def _owner_fact_unavailable(
+        self,
+        *,
+        family: str,
+        source_field: str,
+        base_reason: str,
+        fact: Any,
+        effective_at_utc: Any,
+        source_references: tuple[str, ...],
+    ) -> ParallelRiskObservation | None:
+        if fact is None:
+            return self._unavailable_observation(
+                family, base_reason, source_field, source_references
+            )
+        if effective_at_utc < fact.as_of_utc:
+            reason = f"{family}_owner_fact_not_yet_effective"
+        elif effective_at_utc > fact.valid_until_utc:
+            reason = f"{family}_owner_fact_stale"
+        else:
+            return None
+        return self._build_observation(
+            family=family,
+            state="unknown",
+            reason=reason,
+            source_fields=(source_field,),
+            source_references=tuple(
+                sorted(set(source_references) | set(fact.authority_references))
+            ),
+            limitation=reason,
+        )
+
+    def _concentration_observation(
+        self, risk_input: ParallelRiskInput, source_references: tuple[str, ...]
+    ) -> ParallelRiskObservation:
+        fact = None if risk_input.owner_facts is None else risk_input.owner_facts.concentration
+        unavailable = self._owner_fact_unavailable(
+            family="concentration",
+            source_field="owner_facts.concentration",
+            base_reason="concentration_context_unavailable",
+            fact=fact,
+            effective_at_utc=risk_input.effective_at_utc,
+            source_references=source_references,
+        )
+        if unavailable is not None:
+            return unavailable
+        assert fact is not None
+        reasons = {
+            "observe": "concentration_within_owner_limit",
+            "caution": "concentration_near_owner_limit",
+            "block": "concentration_owner_limit_breached",
+        }
+        return self._build_observation(
+            family="concentration",
+            state=fact.condition,
+            reason=reasons[fact.condition],
+            source_fields=(
+                "owner_facts.concentration.concentration_ratio",
+                "owner_facts.concentration.warning_ratio",
+                "owner_facts.concentration.block_ratio",
+            ),
+            source_references=tuple(
+                sorted(set(source_references) | set(fact.authority_references))
+            ),
+            limitation=None,
+        )
+
+    def _inventory_observation(
+        self, risk_input: ParallelRiskInput, source_references: tuple[str, ...]
+    ) -> ParallelRiskObservation:
+        fact = None if risk_input.owner_facts is None else risk_input.owner_facts.inventory_stress
+        unavailable = self._owner_fact_unavailable(
+            family="inventory_stress",
+            source_field="owner_facts.inventory_stress",
+            base_reason="inventory_stress_context_unavailable",
+            fact=fact,
+            effective_at_utc=risk_input.effective_at_utc,
+            source_references=source_references,
+        )
+        if unavailable is not None:
+            return unavailable
+        assert fact is not None
+        reasons = {
+            "observe": "inventory_coverage_sufficient",
+            "caution": "inventory_coverage_thin",
+            "block": "inventory_coverage_insufficient",
+        }
+        return self._build_observation(
+            family="inventory_stress",
+            state=fact.condition,
+            reason=reasons[fact.condition],
+            source_fields=(
+                "owner_facts.inventory_stress.coverage_ratio",
+                "owner_facts.inventory_stress.warning_coverage_ratio",
+                "owner_facts.inventory_stress.block_coverage_ratio",
+            ),
+            source_references=tuple(
+                sorted(set(source_references) | set(fact.authority_references))
+            ),
+            limitation=None,
+        )
+
+    def _liquidity_observation(
+        self, risk_input: ParallelRiskInput, source_references: tuple[str, ...]
+    ) -> ParallelRiskObservation:
+        fact = None if risk_input.owner_facts is None else risk_input.owner_facts.liquidity
+        unavailable = self._owner_fact_unavailable(
+            family="liquidity",
+            source_field="owner_facts.liquidity",
+            base_reason="liquidity_context_unavailable",
+            fact=fact,
+            effective_at_utc=risk_input.effective_at_utc,
+            source_references=source_references,
+        )
+        if unavailable is not None:
+            return unavailable
+        assert fact is not None
+        reasons = {
+            "observe": "liquidity_coverage_sufficient",
+            "caution": "liquidity_coverage_thin",
+            "block": "liquidity_coverage_insufficient",
+        }
+        return self._build_observation(
+            family="liquidity",
+            state=fact.condition,
+            reason=reasons[fact.condition],
+            source_fields=(
+                "owner_facts.liquidity.coverage_ratio",
+                "owner_facts.liquidity.warning_coverage_ratio",
+                "owner_facts.liquidity.block_coverage_ratio",
+            ),
+            source_references=tuple(
+                sorted(set(source_references) | set(fact.authority_references))
+            ),
+            limitation=None,
         )
 
     def _event_observation(

@@ -4152,6 +4152,18 @@ canonical_admission_model:
     normative_proposition_ids:
     - M06-K10-NORMATIVE-AUTHORITY-V1
     provenance: accepted_module_local_c_proof_and_gate_d
+  - test_family_id: m06_owner_fact_completeness_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+      - M06-OWNER-001
+      - M06-OWNER-002
+      - M06-OWNER-003
+      - M06-OWNER-004
+      - M06-OWNER-005
+      - M06-OWNER-006
+    provenance: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT3-C-PROOF
+    lifecycle_reason: Exact M11 and M01/provider owner facts complete M06 concentration, inventory and liquidity observations when current; absence or staleness remains explicit unknown.
   - test_family_id: m07_k12_coefficient_modifier_contract
     tier: Tier A
     lifecycle: current_blocking
@@ -5063,6 +5075,9 @@ canonical_admission_model:
   - test_path: tests/tier_a/m05_k08_k09/test_signal_informed_intraday_phase.py
     test_family_id: m05_k08_k09_serial_cognition_contract
     source_disposition: post_p2_module_local_acceptance
+  - test_path: tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py
+    test_family_id: m06_owner_fact_completeness_contract
+    source_disposition: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT3-C-PROOF
   - test_path: tests/tier_a/m06_k10/test_m06_k10_contract.py
     test_family_id: m06_k10_parallel_risk_contract
     source_disposition: post_p2_module_local_acceptance

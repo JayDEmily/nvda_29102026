@@ -10,6 +10,7 @@ from typing import Any, Literal
 from nvda_desk.m10_execution_gateway.contracts import ExecutionReceipt, semantic_fingerprint
 from nvda_desk.m13_state_kernel.contracts import IdempotencyKey, TransactionCommand
 from nvda_desk.m13_state_kernel.in_memory import InMemoryUnitOfWork
+from nvda_desk.m13_state_kernel.ports import TransactionalStatePort
 
 from .contracts import (
     CloseReceipt,
@@ -23,8 +24,8 @@ from .contracts import (
 class PortfolioLifecycleService:
     """Own one non-durable canonical NVDA portfolio state."""
 
-    def __init__(self) -> None:
-        self._uow = InMemoryUnitOfWork(initial_state={"positions": {}})
+    def __init__(self, state_port: TransactionalStatePort | None = None) -> None:
+        self._uow = state_port or InMemoryUnitOfWork(initial_state={"positions": {}})
         self._fill_receipts: dict[str, FillReconciliationReceipt] = {}
         self._close_receipts: dict[str, CloseReceipt] = {}
         self._last_transition_at = datetime(1970, 1, 1, tzinfo=UTC)

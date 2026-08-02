@@ -24,9 +24,9 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 def test_live_alpha_gate_resolves_exact_membership_without_execution() -> None:
     summary = build_check_summary("alpha_current", repo_root=REPO_ROOT)
 
-    assert len(summary["proof_block_ids"]) == 16
-    assert len(summary["test_family_ids"]) == 16
-    assert len(summary["test_paths"]) == 18
+    assert len(summary["proof_block_ids"]) == 17
+    assert len(summary["test_family_ids"]) == 17
+    assert len(summary["test_paths"]) == 19
     assert summary["test_paths"][0].startswith("tests/tier_a/")
 
 
