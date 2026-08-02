@@ -1906,3 +1906,42 @@ or establish live, durable, production or profitability readiness.
 Exact residual-node evidence is retained at
 `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`.
 Unit 3 closes and Unit 4 opens only its separate structural-integrity families.
+
+
+## 2026-08-02 — Foundation readiness Unit 4 structural integrity
+
+### Disposition
+
+`PASS:FOUNDATION_READINESS_UNIT4`
+
+Unit 4 closes four separately gated structural families: M12 now owns its replay
+fingerprint primitive without importing M10; 19 governed process-wide policy
+exports are immutable without content drift; the vocabulary scanner excludes
+its own machine projection headers while preserving human prose; and the
+compatibility API/replay surfaces no longer own untyped veto/risk state,
+fabricate required exit/close identities or default dataset identity.
+
+| Check | Result |
+|---|---|
+| Unit 4A M12 dependency | PASS — focused 2 / 2; full M12 24 / 24; M13 restart 10 / 10 |
+| Unit 4B governed values | expected red 19 / 19 failed; repaired 19 / 19 passed |
+| Unit 4C scanner self-observation | expected red 1 failed; repaired 1 / 1; complete scanner 19 / 19 |
+| Unit 4D API/replay authority | expected red 3 failed + 1 passed; repaired 4 / 4; affected cone 174 / 174 |
+| Exact physical `alpha_current` membership | PASS — 811 / 811 |
+| Complete physical Tier A | 1,944 passed / 46 failed / 1,990 total |
+| Unit 3 comparison | exactly three failing nodes removed; zero added; 46 retained |
+| Tier B / Tier C | PASS — 91 / 91; 5 / 5 |
+| Proof authority / block definitions | PASS — 201 families, 203 paths, 73 blocks; 73 / 73 |
+| Vocabulary | PASS — 13 / 13 namespaces candidate-clean; no label or alias admitted |
+| Ruff / Black / compilation / diff | PASS |
+
+The complete physical universe contains 22 new green Unit 4 tests. The retained
+46 failures remain explicit Unit 5 work and are not accepted by this entry. No
+skip, xfail, assertion weakening, compatibility substitution, live-operation or
+production-readiness claim was introduced.
+
+Exact aggregate evidence is retained at
+`repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT4_PHYSICAL_TIER_A_JUNIT.xml`
+and its Unit 3 differential at
+`repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`.
+Unit 4 closes; Unit 5 opens on the retained physical failure families.

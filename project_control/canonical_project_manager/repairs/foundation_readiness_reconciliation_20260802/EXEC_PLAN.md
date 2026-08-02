@@ -5,7 +5,7 @@
 **Status:** active
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 4 — structural integrity families
+**Current unit:** Unit 5 — residual physical failures
 
 ## Objective
 
@@ -180,7 +180,14 @@ declared environment; records, proof control and Git describe the same state.
   closed or are absent; the direct proof passes 4/4, the four affected proof files
   pass 15/15, and the complete API/analysis/downstream/M00/entry cone passes
   174/174. All 13 vocabulary namespaces remain clean after two exact line-shift
-  renewals. Unit 4 aggregate acceptance is the next gate.
+  renewals.
+- 2026-08-02: Unit 4 aggregate acceptance passes. The current `alpha_current`
+  route passes 811/811, Tier B passes 91/91, Tier C passes 5/5 and complete
+  physical Tier A is 1,944 passed / 46 failed / 1,990 total. Relative to Unit 3,
+  exactly the three Unit 4D authority nodes are removed, no failing node is added,
+  and 46 pre-existing nodes remain for Unit 5. Proof authority remains 201
+  families / 203 paths / 73 blocks, all 73 block definitions pass and all 13
+  vocabulary namespaces are candidate-clean. Unit 5 is now the active gate.
 
 ## Decisions
 
@@ -197,17 +204,20 @@ None current.
 
 ## Validation
 
-Units 1, 2 and 3 pass. See `VALIDATION_SUMMARY.md`,
+Units 1–4 pass their bounded gates. See `VALIDATION_SUMMARY.md`,
 `evidence/UNIT1_PROOF_UNIVERSE.json`,
-`evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml` and
-`evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`.
+`evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml`,
+`evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`,
+`evidence/UNIT4_PHYSICAL_TIER_A_JUNIT.xml` and
+`evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`.
 
 ## Unknowns
 
-- Unit 4B–4D remain separately gated; no later family is accepted by Unit 4A evidence.
-- Whether later semantic adjudication changes the retained physical test
-  universe; Units 1–3 made no such change.
+- The semantic disposition of the 46 retained physical Tier A failures remains
+  open. Unit 4 neither accepts nor repairs those Unit 5 families.
+- Whether Unit 5 adjudication changes the retained physical test universe is
+  Unknown; Units 1–4 made no retirement, skip, xfail or assertion weakening.
 
 ## Closeout
 
-Open.
+Unit 4 accepted. Programme closeout remains open at Unit 5.

@@ -1,5 +1,68 @@
 # Foundation Readiness Reconciliation — Unit Validation
 
+## Unit 4 — structural integrity families
+
+### Outcome
+
+Unit 4 passes its bounded gate as four independently proved semantic slices.
+M12 no longer imports M10 for replay fingerprinting and retains equivalent
+fingerprint semantics through an owner-local primitive. Nineteen named
+process-wide policy exports now expose immutable containers without changing
+their accepted content. The vocabulary scanner no longer observes its own five
+machine projection-header forms while retaining identical human prose. The
+compatibility API no longer owns untyped veto/risk state or fabricates required
+exit/close identities, and walk-forward authority packets require explicit
+dataset identity and fingerprint.
+
+Legacy compatibility loaders and routes were not selected as canonical
+substitutes. No test was skipped, xfailed, weakened or retired, and no residual
+physical failure was accepted by this unit.
+
+### Proof
+
+| Surface | Result |
+|---|---:|
+| Unit 4A expected-red / repaired M12 dependency proof | 1 failed + 1 passed → 2 passed |
+| Complete M12 contract / M12 proof block / M13 restart proof | 24 / 24; 24 / 24; 10 / 10 passed |
+| Unit 4B expected-red / repaired governed-policy proof | 19 failed → 19 passed |
+| Unit 4B affected cone | 662 passed; 23 retained failures; 685 total; zero added failures |
+| Unit 4C expected-red / repaired scanner proof | 1 failed → 1 passed |
+| Complete vocabulary-scanner proof | 19 / 19 passed |
+| Unit 4D expected-red / repaired authority proof | 3 failed + 1 passed → 4 passed |
+| Unit 4D direct affected proof / complete affected cone | 15 / 15; 174 / 174 passed |
+| Curated `alpha_current` physical membership | 811 passed; 0 failed |
+| Physical Tier A | 1,944 passed; 46 failed; 1,990 total |
+| Unit 3 failing-node delta | exactly 3 removed; 0 added; 46 retained |
+| Physical Tier B / Tier C | 91 / 91; 5 / 5 passed |
+| Proof authority / block manifest | PASS — 201 families, 203 paths, 73 blocks; 73 / 73 definitions |
+| Vocabulary namespaces | PASS — 13 / 13; zero unresolved candidates |
+| Static checks | PASS — Ruff, Black, compilation and `git diff --check` |
+
+The physical Tier A universe grows by 22 new green Unit 4 cases. Its only
+failing-node reduction is the three admitted Unit 4D propositions concerning
+untyped API-owned state, fabricated exit/close authority and absent replay
+dataset identity. The exact 46-node residual set remains visible for Unit 5.
+
+The 35 Unit 4C and two Unit 4D vocabulary occurrence changes were exact
+line-identity renewals against unchanged dispositions. No canonical vocabulary
+label or alias changed.
+
+### Evidence and gate
+
+- `UNIT4_C_NORM.md`
+- `evidence/UNIT4_ALPHA_CURRENT_PROMOTION_RECEIPT.json`
+- `evidence/UNIT4_PHYSICAL_TIER_A_JUNIT.xml`
+- `evidence/UNIT4_PHYSICAL_TIER_A_DIFFERENTIAL.json`
+- `evidence/UNIT4B_POLICY_EXPECTED_RED.txt`
+- `evidence/UNIT4C_SCANNER_EXPECTED_RED.txt`
+- `evidence/UNIT4D_API_IDENTITY_EXPECTED_RED.txt`
+- `FULL_READ_MANIFEST.tsv`
+
+Unit 4 may close. Repository-wide readiness remains open at 46 physical Tier A
+failures. Unit 5 may now adjudicate those residual families one semantic cause
+at a time.
+
+
 ## Unit 3 — typed ingress and canonical composition
 
 ### Outcome
