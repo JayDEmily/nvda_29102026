@@ -1,0 +1,871 @@
+{
+  "block_count": 73,
+  "checked_blocks": [
+    {
+      "command": "python -m pytest tests/tier_b/proof_model/test_checkpoint_receipt_contract.py",
+      "proof_block_id": "checkpoint_receipt_contract",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_b/proof_model/test_checkpoint_receipt_contract.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py",
+      "proof_block_id": "dmpv3_extension_canonical_leaf_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/packets/test_dmpv3_extension_canonical_leaf_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py",
+      "proof_block_id": "dmpv3_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/packets/test_dmpv3_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/capital_deployment",
+      "proof_block_id": "downstream_capital_deployment_authority_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+        "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+        "tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py",
+        "tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py",
+        "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py",
+        "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py",
+      "proof_block_id": "downstream_capital_deployment_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py tests/tier_a/config/test_coefficient_modifier_replay_surface.py tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py",
+      "proof_block_id": "dynamic_coefficient_modifier_authority_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/config/test_coefficient_modifier_replay_surface.py",
+        "tests/tier_a/config/test_sequence8_coefficient_modifier_authority_specimen.py",
+        "tests/tier_a/modifiers/test_state_conditioned_modifier_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py",
+      "proof_block_id": "dynamic_modifier_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/modifiers/test_dynamic_modifier_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_b/proof_model/test_environment_control_contract.py",
+      "proof_block_id": "environment_control_contract",
+      "test_family_ids": [
+        "environment_control_contract"
+      ],
+      "test_paths": [
+        "tests/tier_b/proof_model/test_environment_control_contract.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py tests/tier_a/playbook tests/tier_a/capital_deployment",
+      "proof_block_id": "exit_close_architecture_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/capital_deployment/test_capital_authority_service_surface.py",
+        "tests/tier_a/capital_deployment/test_capital_contract_models.py",
+        "tests/tier_a/capital_deployment/test_capital_deployment_fresh_capital_correction.py",
+        "tests/tier_a/capital_deployment/test_capital_downstream_placement_boundary.py",
+        "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_decision_surface.py",
+        "tests/tier_a/capital_deployment/test_sequence9_capital_deployment_dmp_packet.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+        "tests/tier_a/downstream_runtime/test_exit_close_architecture_surface.py",
+        "tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py",
+        "tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py",
+        "tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py",
+        "tests/tier_a/playbook/test_playbook_library_architecture_surface.py",
+        "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py",
+      "proof_block_id": "exit_close_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_exit_close_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/adapters_ingress/test_external_source_contract_surface.py",
+      "proof_block_id": "external_source_contract_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/adapters_ingress/test_external_source_contract_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py",
+      "proof_block_id": "external_source_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/adapters_ingress/test_external_source_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py tests/tier_a/calendar_operational/test_calendar_operational_surface.py tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py",
+      "proof_block_id": "financial_event_calendar_authority_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/calendar_operational/test_calendar_operational_surface.py",
+        "tests/tier_a/calendar_reference/test_calendar_reference_projection_crosswalk.py",
+        "tests/tier_a/financial_calendar/test_financial_calendar_authority_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py",
+      "proof_block_id": "financial_event_calendar_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/financial_calendar/test_financial_calendar_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/analysis/test_fwd002_replay_harness_contract.py tests/tier_a/testing_harnesses/test_fwd002_fixture_and_sidecar_contract.py",
+      "proof_block_id": "fwd002_testing_proof_replay_sidecar_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/analysis/test_fwd002_replay_harness_contract.py",
+        "tests/tier_a/testing_harnesses/test_fwd002_fixture_and_sidecar_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_fwd003_import_registry_contract.py tests/tier_a/persistence/test_fwd003_durable_sql_contract.py",
+      "proof_block_id": "fwd003_import_registry_durable_persistence_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/persistence/test_fwd003_durable_sql_contract.py",
+        "tests/tier_a/persistence/test_fwd003_import_registry_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/api/test_api_boundary_surface.py tests/tier_a/api/test_api_dto_boundary_surface.py tests/tier_a/api/test_fwd005_api_exposure_contract.py",
+      "proof_block_id": "fwd005_api_internal_exposure_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/api/test_api_boundary_surface.py",
+        "tests/tier_a/api/test_api_dto_boundary_surface.py",
+        "tests/tier_a/api/test_fwd005_api_exposure_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py tests/tier_a/config/test_fwd010_coefficient_calibration_contract.py tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py",
+      "proof_block_id": "fwd007_008_010_013_rebuild_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/config/test_fwd010_coefficient_calibration_contract.py",
+        "tests/tier_a/financial_calendar/test_fwd008_runtime_calendar_query_contract.py",
+        "tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py",
+        "tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py tests/tier_a/downstream_runtime/test_fwd016_daily_pnl_reporting_contract.py tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py tests/tier_a/review_runtime/test_fwd018_review_packet_and_slv_replay_contract.py",
+      "proof_block_id": "fwd015_016_017_018_rebuild_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_fwd015_broker_execution_lifecycle_contract.py",
+        "tests/tier_a/downstream_runtime/test_fwd016_daily_pnl_reporting_contract.py",
+        "tests/tier_a/downstream_runtime/test_fwd017_overnight_carry_contract.py",
+        "tests/tier_a/review_runtime/test_fwd018_review_packet_and_slv_replay_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/operations/test_live_operational_boundaries.py",
+      "proof_block_id": "live_operational_boundaries_contract",
+      "test_family_ids": [
+        "live_operational_boundaries_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/operations/test_live_operational_boundaries.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/downstream_runtime/test_downstream_contract_models.py tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py tests/tier_a/persistence/test_position_repository_surface.py tests/tier_a/persistence/test_capital_state_repository_surface.py",
+      "proof_block_id": "live_position_inventory_architecture_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_downstream_contract_models.py",
+        "tests/tier_a/downstream_runtime/test_downstream_live_inventory_service_surface.py",
+        "tests/tier_a/downstream_runtime/test_downstream_state_reader_service_surface.py",
+        "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+        "tests/tier_a/persistence/test_position_repository_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py",
+      "proof_block_id": "live_position_inventory_authority_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_live_inventory_authority_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py",
+      "proof_block_id": "live_position_inventory_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_live_inventory_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py",
+      "proof_block_id": "m00_final_composition_contract",
+      "test_family_ids": [
+        "m00_final_composition_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py",
+      "proof_block_id": "m00_upstream_workflow_contract",
+      "test_family_ids": [
+        "m00_upstream_workflow_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/ingress/test_m01_source_admission_contract.py",
+      "proof_block_id": "m01_source_admission_contract",
+      "test_family_ids": [
+        "m01_source_admission_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/ingress/test_m01_source_admission_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m02_k04/test_m02_k04_contract.py",
+      "proof_block_id": "m02_k04_financial_calendar_contract",
+      "test_family_ids": [
+        "m02_k04_financial_calendar_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m02_k04/test_m02_k04_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py",
+      "proof_block_id": "m03_k05_k06_prepared_data_contract",
+      "test_family_ids": [
+        "m03_k05_k06_prepared_data_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m03_k05_k06/test_m03_k05_k06_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/packets/test_m04_k07_packet_role_contract.py",
+      "proof_block_id": "m04_k07_packet_role_contract",
+      "test_family_ids": [
+        "m04_k07_packet_role_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/packets/test_m04_k07_packet_role_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m05_k08_k09",
+      "proof_block_id": "m05_k08_k09_serial_cognition_contract",
+      "test_family_ids": [
+        "m05_k08_k09_serial_cognition_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+        "tests/tier_a/m05_k08_k09/test_signal_informed_intraday_phase.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_k10_contract.py",
+      "proof_block_id": "m06_k10_parallel_risk_contract",
+      "test_family_ids": [
+        "m06_k10_parallel_risk_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m06_k10/test_m06_k10_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py",
+      "proof_block_id": "m06_owner_fact_completeness_contract",
+      "test_family_ids": [
+        "m06_owner_fact_completeness_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m06_k10/test_m06_owner_fact_completeness.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m07_k12/test_m07_k12_contract.py",
+      "proof_block_id": "m07_k12_coefficient_modifier_contract",
+      "test_family_ids": [
+        "m07_k12_coefficient_modifier_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m07_k12/test_m07_k12_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m08_k13/test_m08_k13_contract.py",
+      "proof_block_id": "m08_k13_playbook_catalogue_contract",
+      "test_family_ids": [
+        "m08_k13_playbook_catalogue_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m08_k13/test_m08_k13_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py",
+      "proof_block_id": "m09_k11_k14_capital_authority_contract",
+      "test_family_ids": [
+        "m09_k11_k14_capital_authority_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m09_k11_k14/test_m05_m06_dmpv3_ingress.py",
+        "tests/tier_a/m09_k11_k14/test_m09_k11_k14_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m10_k15/test_m10_k15_contract.py",
+      "proof_block_id": "m10_k15_execution_gateway_contract",
+      "test_family_ids": [
+        "m10_k15_execution_gateway_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m10_k15/test_m10_k15_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py",
+      "proof_block_id": "m11_k16_k17_portfolio_lifecycle_contract",
+      "test_family_ids": [
+        "m11_k16_k17_portfolio_lifecycle_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m11_k16_k17/test_m11_k16_k17_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/m12_k19/test_m12_k19_contract.py",
+      "proof_block_id": "m12_k19_authoritative_replay_contract",
+      "test_family_ids": [
+        "m12_k19_authoritative_replay_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/m12_k19/test_m12_k19_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/persistence/test_m13_sqlite_restart_contract.py",
+      "proof_block_id": "m13_sqlite_restart_contract",
+      "test_family_ids": [
+        "m13_sqlite_restart_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/persistence/test_m13_sqlite_restart_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py",
+      "proof_block_id": "m13_state_kernel_module_local_proof",
+      "test_family_ids": [
+        "m13_state_kernel_module_local_contract"
+      ],
+      "test_paths": [
+        "tests/tier_a/persistence/test_m13_state_kernel_contract.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py",
+      "proof_block_id": "modifier_contract_authority_boundaries_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/modifiers/test_modifier_contract_authority_boundaries.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/persistence/test_module_registry_repository_surface.py",
+      "proof_block_id": "module_registry_repository_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/persistence/test_module_registry_repository_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py",
+      "proof_block_id": "opening_authority_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_opening_authority_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+      "proof_block_id": "opening_placement_readiness_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+        "tests/tier_a/downstream_runtime/test_downstream_opening_service_surface.py",
+        "tests/tier_a/downstream_runtime/test_opening_placement_readiness_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py",
+      "proof_block_id": "opening_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/downstream_runtime/test_opening_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/parallel_risk tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py",
+      "proof_block_id": "parallel_risk_lane_authority_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/parallel_risk/test_fwd013_parallel_risk_candidate_enrichment_contract.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_atom_authority_semantics.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_contract_models.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_description_contract.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_description_templates.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_dmp_fixture_root.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_enriched_authority_regression.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_evaluation_surface.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_event_proximity_register.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_family_aggregation.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_freshness_register.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_inventory_backed_unavailable_signals.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_lane_service_surface.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_lineage_completeness.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_assembly.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_contracts.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_minute_profile_service_integration.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_missing_signal_register.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_options_dte_preservation.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_packet_builder_surface.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_scheduled_event_preservation.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_promotion.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_signal_inventory_workbook.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_supported_risk_atoms.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_unavailable_signals.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_governance.py",
+        "tests/tier_a/parallel_risk/test_parallel_risk_vix_threshold_preservation.py",
+        "tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_input_surface.py",
+        "tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_output_surface.py",
+        "tests/tier_a/parallel_risk/test_sequence7_parallel_risk_envelope_specimen.py",
+        "tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py",
+        "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_emission_surface.py",
+        "tests/tier_a/testing_harnesses/test_module_8_parallel_risk_workbook_specimen_surface.py",
+        "tests/tier_a/testing_harnesses/test_serial_runtime_parallel_risk_boundary_specimen_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py",
+      "proof_block_id": "parallel_risk_lane_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/parallel_risk/test_parallel_risk_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/persistence tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py tests/tier_a/review_runtime/test_review_repository_surface.py",
+      "proof_block_id": "persistence_ledgers_receipts_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/options_flow_history/test_options_flow_history_repository_surface.py",
+        "tests/tier_a/persistence/test_append_only_repository_surfaces.py",
+        "tests/tier_a/persistence/test_capital_state_repository_surface.py",
+        "tests/tier_a/persistence/test_execution_records_repository_surface.py",
+        "tests/tier_a/persistence/test_fwd003_durable_sql_contract.py",
+        "tests/tier_a/persistence/test_fwd003_import_registry_contract.py",
+        "tests/tier_a/persistence/test_m13_sqlite_restart_contract.py",
+        "tests/tier_a/persistence/test_m13_state_kernel_contract.py",
+        "tests/tier_a/persistence/test_module_registry_repository_surface.py",
+        "tests/tier_a/persistence/test_parallel_risk_observation_store_surface.py",
+        "tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+        "tests/tier_a/persistence/test_position_repository_surface.py",
+        "tests/tier_a/persistence/test_receipt_ledger_surface.py",
+        "tests/tier_a/persistence/test_research_logs_owner_surface.py",
+        "tests/tier_a/review_runtime/test_review_repository_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/persistence/test_persistence_session_boundary_surface.py",
+      "proof_block_id": "persistence_session_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/persistence/test_persistence_session_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/playbook tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+      "proof_block_id": "playbook_library_architecture_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/playbook/test_fwd011_reopened_row_playbook_library_authority_proof.py",
+        "tests/tier_a/playbook/test_playbook_eligibility_registry_surface.py",
+        "tests/tier_a/playbook/test_playbook_library_architecture_surface.py",
+        "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/playbook/test_playbook_transform_boundary_surface.py",
+      "proof_block_id": "playbook_library_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/playbook/test_playbook_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_a/entry/test_entry_boundary_surface.py",
+      "proof_block_id": "post_alpha_m00_transport_adapter_contract",
+      "test_family_ids": [
+        "entry_boundary_surface"
+      ],
+      "test_paths": [
+        "tests/tier_a/entry/test_entry_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py",
+      "proof_block_id": "prepared_runtime_snapshot_contract_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/upstream_cognition/test_prepared_runtime_snapshot_contract_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py",
+      "proof_block_id": "prepared_runtime_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/upstream_cognition/test_prepared_runtime_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_b/proof_model/test_promotion_gate_contract.py",
+      "proof_block_id": "promotion_gate_contract",
+      "test_family_ids": [
+        "promotion_gate_contract"
+      ],
+      "test_paths": [
+        "tests/tier_b/proof_model/test_promotion_gate_contract.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py",
+      "proof_block_id": "proof_executor_contract",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_b/proof_model/test_proof_executor_contract.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+      "proof_block_id": "raw_capture_source_temporal_law_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py",
+      "proof_block_id": "raw_capture_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/temporal/test_raw_capture_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py",
+      "proof_block_id": "raw_signal_contract_copy_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py",
+      "proof_block_id": "raw_signal_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py",
+      "proof_block_id": "review_contract_authority_boundaries_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/review_runtime/test_review_contract_authority_boundaries.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/review_runtime/test_review_transform_boundary_surface.py",
+      "proof_block_id": "review_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/review_runtime/test_review_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py tests/tier_a/adapters_egress/test_broker_boundary_surface.py tests/tier_a/api/test_api_boundary_surface.py tests/tier_a/ingress/test_raw_bundle_loader_surface.py",
+      "proof_block_id": "roadmap_external_source_api_ingress_authority_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/adapters_egress/test_broker_boundary_surface.py",
+        "tests/tier_a/adapters_ingress/test_external_source_interface_boundary.py",
+        "tests/tier_a/api/test_api_boundary_surface.py",
+        "tests/tier_a/ingress/test_raw_bundle_loader_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py tests/tier_a/serial_recommendation tests/tier_b/serial_boundaries",
+      "proof_block_id": "serial_desk_cognition_spine_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+        "tests/tier_a/serial_recommendation/test_execution_contract_models.py",
+        "tests/tier_a/serial_recommendation/test_execution_final_join_boundary.py",
+        "tests/tier_a/serial_recommendation/test_execution_service_surface.py",
+        "tests/tier_a/serial_recommendation/test_serial_spine_contract_surface.py",
+        "tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py",
+        "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+        "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py",
+      "proof_block_id": "serial_desk_cognition_spine_transform_boundary_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/serial_recommendation/test_serial_transform_boundary_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/temporal/test_source_temporal_standard_surface.py",
+      "proof_block_id": "source_temporal_standard_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/temporal/test_source_temporal_standard_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "env PYTHONPATH=src python -m pytest tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py tests/tier_a/packets/test_reference_packet_carriage.py tests/tier_a/review_runtime/test_review_explanation_service_surface.py tests/tier_a/upstream_signal tests/tier_b/review_lineage",
+      "proof_block_id": "support_spine_prepared_packet_review_surface",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/packets/test_reference_packet_carriage.py",
+        "tests/tier_a/review_runtime/test_review_explanation_service_surface.py",
+        "tests/tier_a/seam_boundaries/test_prepared_ingress_checkpoint_surface.py",
+        "tests/tier_a/upstream_cognition/test_prepared_context_packet_surface.py",
+        "tests/tier_a/upstream_cognition/test_prepared_runtime_substrate_surface.py",
+        "tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py",
+        "tests/tier_a/upstream_signal/test_raw_signal_contract_copy_boundaries.py",
+        "tests/tier_a/upstream_signal/test_raw_signal_transform_boundary_surface.py",
+        "tests/tier_a/upstream_signal/test_upstream_non_interference_and_sanity_traces.py",
+        "tests/tier_a/upstream_signal/test_upstream_signal_coverage_map_and_scope_lock.py",
+        "tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py",
+        "tests/tier_b/review_lineage/test_bounded_trace_review_regime.py",
+        "tests/tier_b/review_lineage/test_review_effective_policy_lineage.py",
+        "tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/analysis/test_replay_evaluation_surface.py tests/tier_a/api/test_api_dto_boundary_surface.py tests/tier_a/config/test_config_authority_surface.py tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py tests/tier_a/entry/test_entry_boundary_surface.py tests/tier_a/legacy_imported/test_imported_module_containment_surface.py tests/tier_a/migrations/test_migration_lifecycle_surface.py tests/tier_a/observability/test_observability_reservation_surface.py tests/tier_a/options_flow_history/test_options_flow_contract_models.py tests/tier_a/options_flow_history/test_options_flow_history_persistence_surface.py tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py tests/tier_a/options_flow_history/test_options_flow_history_runtime_authority_separation.py tests/tier_a/options_flow_history/test_options_flow_history_trade_state_separation.py tests/tier_a/reference_data/test_reference_data_contract.py tests/tier_a/review_runtime/test_review_contract_models.py tests/tier_a/review_runtime/test_review_stage_surface.py tests/tier_a/runtime/test_runtime_orchestrator_surface.py tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py tests/tier_a/upstream_cognition/test_cognition_ingress_translation_coordinator.py tests/tier_a/upstream_cognition/test_regime_contract_models.py tests/tier_a/upstream_cognition/test_regime_ingress_surface.py tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py",
+      "proof_block_id": "tier_a_remaining_coverage_inventory",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/analysis/test_replay_evaluation_surface.py",
+        "tests/tier_a/api/test_api_dto_boundary_surface.py",
+        "tests/tier_a/config/test_config_authority_surface.py",
+        "tests/tier_a/downstream_runtime/test_downstream_review_stage_service_surface.py",
+        "tests/tier_a/entry/test_entry_boundary_surface.py",
+        "tests/tier_a/legacy_imported/test_imported_module_containment_surface.py",
+        "tests/tier_a/migrations/test_migration_lifecycle_surface.py",
+        "tests/tier_a/observability/test_observability_reservation_surface.py",
+        "tests/tier_a/options_flow_history/test_options_flow_contract_models.py",
+        "tests/tier_a/options_flow_history/test_options_flow_history_persistence_surface.py",
+        "tests/tier_a/options_flow_history/test_options_flow_history_replay_live_state_separation.py",
+        "tests/tier_a/options_flow_history/test_options_flow_history_replay_surface.py",
+        "tests/tier_a/options_flow_history/test_options_flow_history_runtime_authority_separation.py",
+        "tests/tier_a/options_flow_history/test_options_flow_history_trade_state_separation.py",
+        "tests/tier_a/reference_data/test_reference_data_contract.py",
+        "tests/tier_a/review_runtime/test_review_contract_models.py",
+        "tests/tier_a/review_runtime/test_review_stage_surface.py",
+        "tests/tier_a/runtime/test_runtime_orchestrator_surface.py",
+        "tests/tier_a/testing_harnesses/test_canonical_runtime_specimen_surface.py",
+        "tests/tier_a/upstream_cognition/test_cognition_ingress_mapping_surfaces.py",
+        "tests/tier_a/upstream_cognition/test_cognition_ingress_translation_coordinator.py",
+        "tests/tier_a/upstream_cognition/test_regime_contract_models.py",
+        "tests/tier_a/upstream_cognition/test_regime_ingress_surface.py",
+        "tests/tier_a/vocabulary/test_dmp_v3_vocabulary_terms.py",
+        "tests/tier_a/vocabulary/test_financial_calendar_vocabulary_terms.py",
+        "tests/tier_a/vocabulary/test_parallel_risk_lane_vocabulary_terms.py",
+        "tests/tier_a/vocabulary/test_vocabulary_document_json_helpers.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_b",
+      "proof_block_id": "tier_b_retained_coverage_reconciliation",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_b/capital_deployment/test_capital_deployment_transform_boundary_surface.py",
+        "tests/tier_b/options_flow_support/test_options_flow_history_lane_vocabulary.py",
+        "tests/tier_b/proof_model/test_checkpoint_receipt_contract.py",
+        "tests/tier_b/proof_model/test_environment_control_contract.py",
+        "tests/tier_b/proof_model/test_promotion_gate_contract.py",
+        "tests/tier_b/proof_model/test_proof_authority_contract.py",
+        "tests/tier_b/proof_model/test_proof_executor_contract.py",
+        "tests/tier_b/review_lineage/test_bounded_trace_review_determinism.py",
+        "tests/tier_b/review_lineage/test_bounded_trace_review_regime.py",
+        "tests/tier_b/review_lineage/test_review_effective_policy_lineage.py",
+        "tests/tier_b/review_lineage/test_review_replay_dmp_v3_lineage.py",
+        "tests/tier_b/review_replay/test_tranche_a_review_replay.py",
+        "tests/tier_b/serial_boundaries/test_options_flow_output_contract_isolation.py",
+        "tests/tier_b/serial_boundaries/test_playbook_eligibility_decontamination.py",
+        "tests/tier_b/serial_boundaries/test_posture_permission_envelope.py",
+        "tests/tier_b/upstream_support/test_bounded_trace_scenario_pack.py"
+      ],
+      "tier": "Tier B"
+    },
+    {
+      "command": "env PYTHONPATH=src:. python -m pytest tests/tier_c/operational/test_operational_assurance.py",
+      "proof_block_id": "tier_c_operational_assurance",
+      "test_family_ids": [
+        "tier_c_operational_assurance"
+      ],
+      "test_paths": [
+        "tests/tier_c/operational/test_operational_assurance.py"
+      ],
+      "tier": "Tier C"
+    },
+    {
+      "command": "python scripts/vocabulary_candidate_review.py --candidates tests/fixtures/vocabulary_candidate_review/clean_candidates.json --summary-only --check-clean",
+      "proof_block_id": "vocabulary_candidate_review_clean_check",
+      "test_family_ids": [],
+      "test_paths": [],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python -m pytest tests/tier_a/vocabulary/test_vocabulary_schema_contract.py tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py",
+      "proof_block_id": "vocabulary_governance_conformance_candidate",
+      "test_family_ids": [],
+      "test_paths": [
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_admission_plan_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_admission_review_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_classification_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_payload_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_review_cli_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_candidate_schema_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py",
+        "tests/tier_a/vocabulary/test_vocabulary_json_helper_contracts.py",
+        "tests/tier_a/vocabulary/test_vocabulary_required_baseline_terms.py",
+        "tests/tier_a/vocabulary/test_vocabulary_schema_contract.py",
+        "tests/tier_a/vocabulary/test_vocabulary_synonym_candidate_audit.py",
+        "tests/tier_a/vocabulary/test_vocabulary_workflow_surface.py"
+      ],
+      "tier": "Tier A"
+    },
+    {
+      "command": "python scripts/vocabulary_synonym_audit.py --namespace global --check-clean",
+      "proof_block_id": "vocabulary_synonym_audit_clean_check",
+      "test_family_ids": [],
+      "test_paths": [],
+      "tier": "Tier A"
+    }
+  ],
+  "claim": "All proof-block definitions resolve against current canonical admission authority; commands were not all re-executed by this structural definition check.",
+  "status": "PASS"
+}

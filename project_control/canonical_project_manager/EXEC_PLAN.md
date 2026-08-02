@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active
+**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -18,11 +18,11 @@ transcripts are not committed by default when a concise reproducible result and
 node-level failure delta establish the same claim.
 
 The alpha-delivery history governed by this plan is accepted. The 2026-08-02
-continuation amendment preserves that work. Its bounded subordinate plan is
-active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`.
-Units 1–5 are complete; Unit 6 now owns the single continuation-readiness
-checkpoint. Ordinary planned feature development remains closed until that
-checkpoint passes.
+continuation amendment and its bounded subordinate plan are complete. Units
+1–6 establish the alpha continuation-readiness checkpoint. Normal incremental
+feature development is open under `CONTINUATION.md` section 11; live trading,
+production durability, operational commissioning, profitability and production
+replay remain unproven.
 
 ## 1. Objective
 
@@ -381,15 +381,16 @@ failed across 1,960 tests, and current Tier B at 91 passed. It also corrected
 the audit's legacy-section join: the canonical v4 model exactly admits all 203
 physical test files, with zero missing or stale paths.
 
-Therefore the prior module and post-alpha implementation acceptances remain
-valid within their proven bounds, but a repository-wide dependable-foundation
-claim is not current. The exact present-state interpretation, material findings,
-foundation standard and resumption checkpoint are governed by
+Those were the Unit 1 baseline facts. Units 2–6 have since closed the bounded
+identity, ingress, structural and residual-failure findings and published the
+continuation-ready checkpoint. Prior module and post-alpha implementation
+acceptances remain valid within their proven bounds; the exact present state and
+standard feature route are governed by
 `project_control/canonical_project_manager/CONTINUATION.md`.
 
 ## 9. Programme sequence
 
-The bounded subordinate plan is active and proceeds in this order:
+The bounded subordinate plan is complete. It proceeded in this order:
 
 1. reconcile the exact physical proof universe and prove canonical-model
    selection with zero admission gaps — Unit 1 validation complete;
@@ -402,10 +403,12 @@ The bounded subordinate plan is active and proceeds in this order:
 6. publish the exact continuation-readiness checkpoint defined by the canonical
    continuation strategy.
 
-Normal planned feature development is closed until that checkpoint. The bounded
-reconciliation is not a new module programme: accepted evidence is reused,
-only current deltas are proved, and no module is reopened without a current
-failing or structurally contradictory proposition.
+The checkpoint is published under the completed control state
+`CONTINUATION:ALPHA_FOUNDATION_READY`. Normal incremental feature development
+is open under the one-concept route in `CONTINUATION.md` section 11. The bounded
+reconciliation did not create a new module programme: accepted evidence was
+reused, only current deltas were proved, and no module was reopened without a
+current failing or structurally contradictory proposition.
 
 Canonical integration remains serial where shared files overlap. M14 and M15
 continue as proof/promotion and vocabulary governance planes.
@@ -445,10 +448,10 @@ Stop the active behaviour only when:
 Otherwise continue through the three semantic states without asking for a new
 approval at each administrative sub-step.
 
-The alpha-delivery programme has already closed within its accepted bounds.
-Normal incremental feature delivery reopens when the continuation strategy's
-single readiness checkpoint proves, on one commit, a green and exactly admitted
-retained physical Tier A/Tier B universe, green curated promotion, lawful
-dependency direction, current import/state/replay/boundary/vocabulary assurance,
-closure or proved quarantine of the named structural findings, and agreement
-among the ExecPlan, roadmap, module records, proof control and Git state.
+The alpha-delivery programme and the bounded continuation-readiness programme
+are closed within their accepted bounds. The published checkpoint proves a green
+and exactly admitted retained physical Tier A/Tier B universe, green curated
+promotion, lawful dependency direction, current import/state/replay/boundary/
+vocabulary assurance, closure or proved quarantine of the named structural
+findings, and agreement among the ExecPlan, roadmap, module records, proof
+control and Git state. Normal incremental feature delivery is therefore open.

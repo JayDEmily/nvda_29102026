@@ -4,15 +4,15 @@
 
 | Field | Current truth |
 |---|---|
-| Programme | accepted M00–M15 modular-monolith alpha; bounded continuation readiness before feature resumption |
+| Programme | accepted M00–M15 modular-monolith alpha; continuation-ready baseline published |
 | Branch | `work/foundation-readiness-reconciliation-v1` |
 | Continuation source checkpoint | `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | Unit 6 — continuation-readiness closure |
-| Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |
-| Current repository claim | accepted bounded alpha retained; Units 1–5 reconciled; physical Tier A is 1,990 / 1,990 green after an assertion audit; three node-name replacements are authority-mapped, Tier B is 91 / 91, Tier C is 5 / 5 and `alpha_current` is 811 / 811; Unit 6 must prove the complete readiness matrix on one clean commit |
+| Current active slice | none — standard one-concept incremental route open |
+| Active control pack | none — canonical ExecPlan only; continuation-ready checkpoint published |
+| Current repository claim | alpha continuation readiness established after Units 1–6; retained physical Tier A is 1,990 / 1,990, Tier B is 92 / 92 after the readiness control proof, Tier C is 5 / 5 and `alpha_current` is 811 / 811; exact proof admission, graph/import, state, replay, forged-boundary, policy and vocabulary gates are green |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -236,14 +236,15 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Units 1–5 of the bounded foundation-readiness plan are complete. Exact canonical
-admission covers 203/203 paths; the prepared-context/M04 boundary, typed
-M01/M00 transport-composition seam, four structural-integrity families and all
-46 residual physical failure nodes are green. The physical Tier A count remains 1,990 and all 1,990 pass; three node-name replacements are explicitly authority-mapped; Tier B passes 91/91; Tier C passes 5/5; and
-`alpha_current` passes 811/811.
+The bounded foundation-readiness plan is complete. Exact canonical admission
+covers 203/203 physical paths; the 21 retired predecessor families remain
+provenance-only; physical Tier A passes 1,990/1,990, Tier B passes 92/92 and Tier
+C passes 5/5. The exact module graph, fresh-import, state-isolation, replay,
+forged-boundary, immutable-policy, scanner and vocabulary gates are green. The
+final signed `alpha_current` result and exact Git checkpoint are published with
+the full-history archive.
 
-Execute Unit 6 only: prove all eight continuation-readiness conditions on one
-clean commit and declared environment, reconcile the exact checkpoint records,
-and publish the full-history checkpoint. New planned features, donor
-integration, live operation and production claims remain closed until that
-single checkpoint passes.
+Select one planned concept and execute the standard route in `CONTINUATION.md`
+section 11. Donor integration, live operation, production durability,
+profitability and production replay remain closed unless separately authorised
+and proved.

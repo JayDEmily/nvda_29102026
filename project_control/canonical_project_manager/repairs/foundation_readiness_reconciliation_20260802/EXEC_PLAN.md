@@ -2,10 +2,10 @@
 
 ## Status
 
-**Status:** active
+**Status:** complete
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 6 — readiness closure
+**Current unit:** complete — continuation-ready checkpoint
 
 ## Objective
 
@@ -232,6 +232,8 @@ declared environment; records, proof control and Git describe the same state.
 
 - 2026-08-03: Unit 5 was revalidated after the Units 1–4 proposition audit on clean commit `e66c530`. The exact 46 authority-mapped nodes pass 46/46 and signed `alpha_current` passes 19/19 blocks / 811/811 tests. The same executable tree already passes physical Tier A 1,990/1,990, Tier B 91/91 and Tier C 5/5. Unit 5 remains accepted under the repository-wide preservation rule; Unit 6 remains the only active gate.
 
+- 2026-08-03: Unit 6 candidate validation proves the section 10 matrix: physical Tier A 1,990/1,990, Tier B 92/92, Tier C 5/5; 203 physical paths equal 203 admissions; 21 retired predecessor families remain outside active proof; 259 modules and 421 unique internal edges have zero cycles, syntax errors, unresolved imports or unbounded dependency violations; 259/259 fresh imports pass in both orders; state, replay, forged-boundary, policy/scanner and boundary-quarantine probes pass 3/3, 9/9, 17/17, 20/20 and 15/15. Proof authority remains 201 families / 203 paths / 73 blocks and all 13 vocabulary namespaces are clean. The singular control-state transition is proposition-mapped and expected-red evidence is retained.
+
 ## Decisions
 
 - One subordinate plan governs the complete bounded readiness programme; units
@@ -261,12 +263,13 @@ Units 1–5 pass their bounded gates. See `VALIDATION_SUMMARY.md`,
 
 ## Unknowns
 
-- Whether all eight continuation-readiness conditions remain simultaneously
-  true after final record reconciliation must be proved on one clean Unit 6
-  commit and declared environment.
-- Ordinary planned feature development remains closed until that exact Unit 6
-  checkpoint is published.
+None inside the bounded Unit 6 acceptance matrix. Live trading, production
+durability, operational commissioning, profitability and production replay remain
+explicitly outside the checkpoint claim.
 
 ## Closeout
 
-Unit 5 accepted. Programme closeout remains open only at Unit 6.
+Units 1–6 complete. The repository is at
+`CONTINUATION:ALPHA_FOUNDATION_READY`; normal incremental feature development is
+open under the canonical one-concept route. Final exact-commit validation and the
+full-history archive receipt are published alongside the checkpoint package.

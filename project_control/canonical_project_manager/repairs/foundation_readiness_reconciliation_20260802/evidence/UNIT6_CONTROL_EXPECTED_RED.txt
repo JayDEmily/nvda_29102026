@@ -1,0 +1,109 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_live_control_surfaces_return_to_canonical_state_after_comprehensive_debt_closeout _
+
+    def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_debt_closeout() -> (
+        None
+    ):
+        from scripts.proof_authority import validate_active_control
+    
+>       assert validate_active_control(REPO_ROOT) == "CONTINUATION:ALPHA_FOUNDATION_READY"
+E       AssertionError: assert 'FOUNDATION-R...NCILIATION-V1' == 'CONTINUATION...NDATION_READY'
+E         
+E         - CONTINUATION:ALPHA_FOUNDATION_READY
+E         + FOUNDATION-READINESS-RECONCILIATION-V1
+
+tests/tier_b/proof_model/test_proof_authority_contract.py:174: AssertionError
+_____ test_active_control_validation_accepts_alpha_foundation_ready_state ______
+
+tmp_path = PosixPath('/tmp/pytest-of-root/pytest-6/test_active_control_validation0')
+
+    def test_active_control_validation_accepts_alpha_foundation_ready_state(
+        tmp_path: Path,
+    ) -> None:
+        from scripts.proof_authority import validate_active_control
+    
+        canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+        canonical.parent.mkdir(parents=True)
+        canonical.write_text(
+            "**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`\n",
+            encoding="utf-8",
+        )
+        (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+            "| Active control pack | none — canonical ExecPlan only; "
+            "continuation-ready checkpoint published |\n",
+            encoding="utf-8",
+        )
+        process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+        process.parent.mkdir(parents=True)
+        process.write_text(
+            "No subordinate bounded pack is active. The repository is at "
+            "`CONTINUATION:ALPHA_FOUNDATION_READY`.\n",
+            encoding="utf-8",
+        )
+    
+>       assert validate_active_control(tmp_path) == "CONTINUATION:ALPHA_FOUNDATION_READY"
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/tier_b/proof_model/test_proof_authority_contract.py:229: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repo_root = PosixPath('/tmp/pytest-of-root/pytest-6/test_active_control_validation0')
+
+    def validate_active_control(repo_root: Path = Path(".")) -> str:
+        """Require exactly one reconciled current control state across live surfaces."""
+    
+        resolved_root = repo_root.resolve()
+        canonical = (
+            resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
+        ).read_text(encoding="utf-8")
+        roadmap = (resolved_root / "ROADMAP_LEDGER_V2.md").read_text(encoding="utf-8")
+        process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
+            encoding="utf-8"
+        )
+        states = {
+            "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1": (
+                "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`",
+                "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |",
+                "The current active bounded pack is `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1`",
+            ),
+            "POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1": (
+                "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
+                "| Active control pack | `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1` |",
+                "The current active bounded pack is `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1`",
+            ),
+            "POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1": (
+                "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
+                "| Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |",
+                "The current active bounded pack is `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1`",
+            ),
+            "CANONICAL:ALPHA_CONSOLIDATED": (
+                "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`",
+                "| Active control pack | none — canonical ExecPlan only |",
+                "No subordinate bounded pack is active.",
+            ),
+            "FOUNDATION-READINESS-RECONCILIATION-V1": (
+                "**Status:** alpha delivery accepted; bounded continuation foundation reconciliation active",
+                "| Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |",
+                "The current active bounded pack is `FOUNDATION-READINESS-RECONCILIATION-V1`.",
+            ),
+        }
+        matches = [
+            state_id
+            for state_id, (plan_token, roadmap_token, process_token) in states.items()
+            if plan_token in canonical and roadmap_token in roadmap and process_token in process
+        ]
+        if len(matches) != 1:
+>           raise AuthorityError(
+                "active control state is not singular and reconciled: " f"matched={matches or 'none'}"
+            )
+E           scripts.proof_authority.AuthorityError: active control state is not singular and reconciled: matched=none
+
+scripts/proof_authority.py:512: AuthorityError
+=========================== short test summary info ============================
+FAILED tests/tier_b/proof_model/test_proof_authority_contract.py::test_live_control_surfaces_return_to_canonical_state_after_comprehensive_debt_closeout - AssertionError: assert 'FOUNDATION-R...NCILIATION-V1' == 'CONTINUATION...NDATION_READY'
+  
+  - CONTINUATION:ALPHA_FOUNDATION_READY
+  + FOUNDATION-READINESS-RECONCILIATION-V1
+FAILED tests/tier_b/proof_model/test_proof_authority_contract.py::test_active_control_validation_accepts_alpha_foundation_ready_state - scripts.proof_authority.AuthorityError: active control state is not singular and reconciled: matched=none
+2 failed, 17 deselected in 0.06s

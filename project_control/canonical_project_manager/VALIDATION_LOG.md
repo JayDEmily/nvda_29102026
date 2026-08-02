@@ -2004,3 +2004,27 @@ claim. Exact evidence is retained at:
 - `repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT5_ALPHA_CURRENT_PROMOTION_RECEIPT.json`
 
 Unit 5 closes; Unit 6 opens only the one-commit continuation-readiness closure.
+## 2026-08-03 — Foundation readiness Unit 6 continuation checkpoint
+
+### Disposition
+
+`PASS:CONTINUATION_ALPHA_FOUNDATION_READY`
+
+Unit 6 closes the bounded readiness programme without changing production
+behaviour. The existing singular-control Tier B proposition was preserved and
+transitioned under `CONTINUATION.md` section 10 from the active repair-pack token
+to `CONTINUATION:ALPHA_FOUNDATION_READY`; two intended expected-red failures and
+the exact authority mapping are retained.
+
+Candidate validation records physical Tier A 1,990/1,990, Tier B 92/92 and Tier
+C 5/5 with zero skips; 203/203 exact physical admissions; 21 provenance-only
+retired predecessor families outside active proof; proof authority at 201
+families / 203 paths / 73 blocks; a 259-module, 421-edge graph with zero cycles,
+syntax errors, unresolved imports or unbounded dependency violations; 259/259
+fresh imports in both orders; and green state, replay, forged-boundary, policy,
+scanner, vocabulary and canonical-boundary probes.
+
+The final exact-commit signed promotion receipt, clean Git state and archive
+hash are published alongside the full-history checkpoint. The status is alpha
+continuation readiness only; live, durable, commissioned, profitable and
+production-replay claims remain closed.

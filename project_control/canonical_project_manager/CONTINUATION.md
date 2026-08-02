@@ -4,7 +4,7 @@
 
 | Field | Current truth |
 |---|---|
-| Status | canonical strategy; execution active at readiness Unit 1 |
+| Status | `CONTINUATION:ALPHA_FOUNDATION_READY`; normal incremental feature development open |
 | Date | 2026-08-02 |
 | Continuation base | primary repository at `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Assurance reference only | secondary repository at `fffb4e31c03a3bc031f28eba89f9a59562484a8f` |
@@ -60,27 +60,31 @@ architecture. In particular:
   owner facts, bounded restart-safe SQLite state/evidence, explicit offline/live
   provider boundaries, five non-blocking Tier C tests and 593 recorded
   vocabulary dispositions;
-- the current curated `alpha_current` promotion route passed all 19 blocks,
-  comprising 802 Tier A tests and 90 Tier B tests;
-- the complete physical Tier B suite passed 91 of 91 tests in readiness Unit 1;
-- exact static analysis found 261 internal modules and 417 import edges with no
-  exact cycles, syntax errors or unresolved internal imports;
-- fresh-process import probes passed for 258 of 258 importable modules in both
-  forward and reverse order;
-- replay serialisation, boundary mutation and forged-boundary rejection probes
-  produced useful positive assurance, including rejection of all 17 forged
-  boundary cases.
+- the final retained physical Tier A, Tier B and Tier C universes pass
+  1,990/1,990, 92/92 and 5/5 with zero failures, errors or skips;
+- canonical v4 admission covers all 203 physical test paths exactly once, while
+  21 retired predecessor families remain provenance-only and outside active proof;
+- the final curated `alpha_current` route passes all 19 blocks and its exact
+  clean-checkpoint count is published in the signed checkpoint receipt;
+- exact static analysis finds 259 internal modules and 421 unique internal import
+  edges with zero cycles, syntax errors, unresolved imports or unbounded
+  dependency violations;
+- fresh-process import probes pass for 259 of 259 modules in both forward and
+  reverse order; and
+- state isolation, replay serialisation, governed-policy immutability, scanner
+  metadata exclusion and all 17 selected forged-boundary cases pass.
 
 These facts justify continuation from the primary repository and preservation
 of its architecture. They do not justify discarding the accepted work or
 replacing the project method.
 
-### 2.2 What is not yet established
+### 2.2 Readiness baseline gaps closed by Units 1–6
 
 Readiness Unit 1 reproduced the material difference between curated promotion
-and the physical repository while correcting the audit's stale admission join:
+and the physical repository while correcting the audit's stale admission join.
+The table below is the historical Unit 1 baseline, not the current state:
 
-| Surface | Current evidence |
+| Surface | Historical Unit 1 evidence |
 |---|---:|
 | Complete physical Tier A | 1,713 passed; 247 failed; 1,960 total |
 | Failing Tier A partitions | 8 of 44 |
@@ -96,24 +100,25 @@ consistent with a small number of authority, identity, compatibility and test
 adjudication causes. It is not evidence that every accepted module is generally
 broken.
 
-The current graph evidence proves absence of cycles and unresolved imports. It
-does not prove conformance to the accepted dependency graph. A direct
-M12-to-M10 helper dependency is present even though M12 is allowed to depend on
-M04 and accepted evidence-export contracts, not M10 implementation authority.
+At the Unit 1 baseline, graph evidence proved absence of cycles and unresolved
+imports but did not prove conformance to the accepted dependency graph. A direct
+M12-to-M10 helper dependency was then present even though M12 is allowed to
+depend on M04 and accepted evidence-export contracts, not M10 implementation
+authority.
 
-The current source and existing audit evidence also expose these material
-reconciliation questions:
+The Unit 1 source and audit evidence also exposed these material reconciliation
+questions:
 
-- the prepared-context compatibility builder does not supply the caller-owned
+- the prepared-context compatibility builder did not supply the caller-owned
   producer identity and complete owner validation already required by the
   hardened M04 packet seam;
-- the M01 public admission request still accepts an untyped mapping while its
+- the M01 public admission request accepted an untyped mapping while its
   accepted architecture requires a concrete typed payload;
-- governed process-wide policy tables remain caller-mutable on 19 identified
+- governed process-wide policy tables were caller-mutable on 19 identified
   surfaces;
-- the vocabulary scanner observes some projection-header metadata that it owns,
+- the vocabulary scanner observed some projection-header metadata that it owned,
   creating false candidates;
-- compatibility API paths fabricate some identity defaults and retain mutable
+- compatibility API paths fabricated some identity defaults and retained mutable
   process-local event state despite the M00 law that canonical composition must
   receive identity and state explicitly.
 
@@ -123,11 +128,11 @@ sole machine-readable admission authority and covers every current physical
 test path exactly once. The historical audit artefact remains useful evidence
 of why joins must select the declared model, but it is not a current gap.
 
-Until these matters are adjudicated on the primary repository, “all repository
-debt retired” and “all current modules are dependable extension foundations”
-are overclaims. The correct present status is: accepted bounded alpha retained;
-current continuation readiness open; production, live operation and
-profitability unproven.
+Units 2–6 closed these bounded matters without reopening accepted module meaning
+or promoting compatibility routes. The current status is: accepted bounded
+alpha retained; continuation readiness established; normal incremental feature
+development open; production, live operation, durability, profitability and
+production replay unproven.
 
 ## 3. Feature modularity and architectural modularity
 
@@ -350,10 +355,11 @@ justify a stop if it exposes contradictory authority.
 
 ### 8.6 Readiness closure
 
-Run the section 10 matrix once on the exact final checkpoint, update existing
-module records and the live roadmap, and retain one concise validation summary.
-Do not generate a second retrospective dossier or repeat unchanged module
-histories.
+Completed. The section 10 matrix is proved on the final checkpoint, existing
+module histories remain unchanged because they contain bounded acceptance rather
+than live programme state, and the parent ExecPlan, live roadmap, proof control,
+validation summary and Git checkpoint are reconciled. One concise Unit 6 evidence
+set and the signed archive receipt carry the final claim.
 
 ## 9. Existing gates during continuation
 
@@ -477,15 +483,15 @@ and a new retrospective programme remain excluded.
 
 ## 13. Handover to the next execution worker
 
-Execution started from the committed continuation checkpoint in the primary
-repository. The subordinate foundation-readiness plan is active and section
-8.1 has reproduced current proof truth without donor code or a new feature.
-Preserve all accepted module history and continue from the current unit rather
-than replaying the baseline work.
+The subordinate foundation-readiness plan is complete and no bounded repair pack
+is active. Preserve the published continuation-ready checkpoint and all accepted
+module history. Do not replay the repository-wide baseline or open another
+general assurance programme without new evidence that invalidates it.
 
-The first implementation-bearing unit is the prepared identity and packet
-boundary in section 8.2 after proof-universe truth is current. Continue one
-bounded unit at a time until section 10 passes, publish that checkpoint, and
-then take one planned concept through:
+Select one planned concept and take it through the standard route:
 
 `definition → governing alignment → tests → implementation → validation → gated integration`
+
+Each concept remains bounded by its owner, public seam, dependency cone,
+identity/time/state law and proof authority. Live, production-durable and
+profitability claims remain closed.

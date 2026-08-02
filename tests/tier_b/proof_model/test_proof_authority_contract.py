@@ -171,7 +171,7 @@ def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_deb
 ):
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "FOUNDATION-READINESS-RECONCILIATION-V1"
+    assert validate_active_control(REPO_ROOT) == "CONTINUATION:ALPHA_FOUNDATION_READY"
 
 
 def test_active_control_validation_accepts_foundation_readiness_pack(
@@ -200,6 +200,33 @@ def test_active_control_validation_accepts_foundation_readiness_pack(
     )
 
     assert validate_active_control(tmp_path) == "FOUNDATION-READINESS-RECONCILIATION-V1"
+
+
+def test_active_control_validation_accepts_alpha_foundation_ready_state(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    canonical = tmp_path / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_text(
+        "**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        "| Active control pack | none — canonical ExecPlan only; "
+        "continuation-ready checkpoint published |\n",
+        encoding="utf-8",
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(
+        "No subordinate bounded pack is active. The repository is at "
+        "`CONTINUATION:ALPHA_FOUNDATION_READY`.\n",
+        encoding="utf-8",
+    )
+
+    assert validate_active_control(tmp_path) == "CONTINUATION:ALPHA_FOUNDATION_READY"
 
 
 def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(

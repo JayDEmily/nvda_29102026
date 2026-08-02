@@ -1,5 +1,72 @@
 # Foundation Readiness Reconciliation — Unit Validation
 
+## Unit 6 — continuation-readiness closure
+
+### Outcome
+
+Unit 6 passes the bounded section 10 readiness matrix on the tracked closeout
+tree. The only test-law transition preserves the existing singular-control
+proposition: the live control node now requires
+`CONTINUATION:ALPHA_FOUNDATION_READY` after section 10 publication rather than
+the formerly active repair-pack token. Its old node, authority, replacement
+assertion and expected-red-to-green evidence are recorded in
+`evidence/UNIT6_TEST_CHANGE_AUTHORITY_REGISTER.tsv`. No existing node was
+removed, renamed, skipped, xfailed, weakened, broadened or redirected.
+
+| Surface | Result |
+|---|---:|
+| Physical Tier A | 1,990 passed; 0 failed; 0 errors; 0 skipped |
+| Physical Tier B | 92 passed; 0 failed; 0 errors; 0 skipped |
+| Physical Tier C | 5 passed; 0 failed; 0 errors; 0 skipped |
+| Exact physical/admission join | 203 physical = 203 admitted; 0 missing; 0 stale |
+| Retired predecessor families | 21 provenance-only; 0 active-control conflicts |
+| Proof authority | 201 families; 203 paths; 73 blocks |
+| Proof-block definitions | 73/73 resolve |
+| Module graph | 259 modules; 421 unique internal edges; 0 cycles, syntax errors, unresolved imports or unbounded dependency violations |
+| Fresh import | 259/259 forward; 259/259 reverse |
+| State isolation | 3/3 |
+| Replay serialisation | 9/9 |
+| Forged-boundary rejection | 17/17 |
+| Governed policy and scanner metadata | 20/20 |
+| Prepared ingress/dependency/M00 quarantine | 15/15 |
+| Vocabulary | 13/13 namespaces candidate-clean after current exact dispositions |
+
+The only non-direct dependency edges are bounded and explicit: M09 consumes
+M04-owned packet carriage without acquiring packet meaning; M10 and M11 use M13
+transaction mechanics; and M11 exposes immutable M11-owned owner facts through
+the M06 read contract. The exact graph and import inventory is reproducible via
+`scripts/foundation_readiness_probe.py`. Existing module records remain
+historical bounded acceptance evidence and contain no live repair-pack state, so
+they were not rewritten.
+
+The signed `alpha_current` result, exact final Git commit, clean-worktree proof
+and archive SHA-256 are published in the external checkpoint receipt generated
+after the tracked closeout commit. This avoids a self-referential commit hash
+inside the commit it identifies.
+
+### Evidence
+
+- `evidence/UNIT6_CONTROL_EXPECTED_RED.txt`
+- `evidence/UNIT6_TEST_CHANGE_AUTHORITY_REGISTER.tsv`
+- `evidence/UNIT6_CONTROL_TRANSITION_AUDIT.md`
+- `evidence/UNIT6_READINESS_PROBE.json`
+- `evidence/UNIT6_PHYSICAL_TIER_A_JUNIT.xml`
+- `evidence/UNIT6_PHYSICAL_TIER_B_JUNIT.xml`
+- `evidence/UNIT6_PHYSICAL_TIER_C_JUNIT.xml`
+- `evidence/UNIT6_STATE_ISOLATION_JUNIT.xml`
+- `evidence/UNIT6_REPLAY_SERIALISATION_JUNIT.xml`
+- `evidence/UNIT6_FORGED_BOUNDARY_JUNIT.xml`
+- `evidence/UNIT6_POLICY_SCANNER_JUNIT.xml`
+- `evidence/UNIT6_BOUNDARY_CLOSURE_JUNIT.xml`
+- `evidence/UNIT6_PROOF_AUTHORITY.json`
+- `evidence/UNIT6_PROOF_BLOCK_DEFINITIONS.json`
+- `evidence/UNIT6_VOCABULARY_NAMESPACES.txt`
+
+Verdict: **PASS — `CONTINUATION:ALPHA_FOUNDATION_READY`**. Normal incremental
+feature development is open under `CONTINUATION.md` section 11. This does not
+claim live trading, production durability, operational commissioning,
+profitability or production replay.
+
 ## Unit 5 — residual physical failure adjudication
 
 ### Outcome
