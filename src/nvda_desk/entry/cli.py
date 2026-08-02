@@ -10,7 +10,6 @@ from nvda_desk.m00_application_shell import (
     ApplicationCommand,
     ApplicationQuery,
     RunCoordinator,
-    UpstreamPreparationCommand,
 )
 
 
@@ -24,7 +23,7 @@ def run_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> d
 def prepare_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> dict[str, Any]:
     """Validate one canonical upstream command and return its M01-M03 receipt."""
 
-    command = UpstreamPreparationCommand.model_validate(payload)
+    command = coordinator.translate_upstream_command(payload)
     return coordinator.prepare(command).model_dump(mode="json")
 
 

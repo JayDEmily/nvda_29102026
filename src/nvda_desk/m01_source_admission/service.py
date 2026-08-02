@@ -148,6 +148,36 @@ class SourceAdmissionService:
         self._capture_id_factory = capture_id_factory
         self._source_artifact_id_factory = source_artifact_id_factory
 
+    def translate_request(self, payload: Mapping[str, Any]) -> SourceAdmissionRequest:
+        """Translate JSON-shaped transport material through one registered M01 contract."""
+
+        if not isinstance(payload, Mapping):
+            raise TypeError("source_admission_transport_mapping_required")
+        contract = self._registry.resolve(
+            family_id=payload.get("family_id") if isinstance(payload.get("family_id"), str) else "",
+            contract_id=(
+                payload.get("contract_id") if isinstance(payload.get("contract_id"), str) else ""
+            ),
+            schema_version=(
+                payload.get("schema_version")
+                if isinstance(payload.get("schema_version"), str)
+                else ""
+            ),
+        )
+        if contract is None:
+            raise ValueError("unsupported_family_contract_or_version")
+        try:
+            typed_payload = contract.payload_model.model_validate(payload.get("typed_payload"))
+        except (ValidationError, TypeError, ValueError) as exc:
+            raise ValueError("typed_payload_contract_mismatch") from exc
+
+        translated = dict(payload)
+        translated["typed_payload"] = typed_payload
+        try:
+            return SourceAdmissionRequest.model_validate(translated)
+        except (ValidationError, TypeError, ValueError) as exc:
+            raise ValueError("source_admission_transport_contract_invalid") from exc
+
     def admit(self, request: SourceAdmissionRequest) -> SourceAdmissionResult:
         fingerprint = sha256(request.captured_material).hexdigest()
         contract = self._registry.resolve(
@@ -160,8 +190,15 @@ class SourceAdmissionService:
                 reason="unsupported_family_contract_or_version",
                 content_sha256=fingerprint,
             )
+        if type(request.typed_payload) is not contract.payload_model:
+            return SourceNonAdmission(
+                reason="typed_payload_contract_mismatch",
+                content_sha256=fingerprint,
+            )
         try:
-            typed_payload = contract.payload_model.model_validate(request.typed_payload)
+            typed_payload = contract.payload_model.model_validate(
+                request.typed_payload.model_dump(mode="python")
+            ).model_copy(deep=True)
         except (ValidationError, TypeError, ValueError):
             return SourceNonAdmission(
                 reason="typed_payload_contract_mismatch",
@@ -241,7 +278,6 @@ class SourceAdmissionService:
             captured_at_utc=request.captured_at_utc,
         )
         validation_status = "degraded" if request.declared_limitations else "admitted"
-        payload_copy = typed_payload.model_copy(deep=True)
         envelope = SourceArtifactEnvelope(
             source_artifact_id=source_artifact_id,
             family_id=contract.family_id,
@@ -271,7 +307,7 @@ class SourceAdmissionService:
             ),
             limitations=request.declared_limitations,
             downstream_owner=contract.downstream_owner,
-            typed_payload=payload_copy,
+            typed_payload=typed_payload,
         )
 
         batch = None
@@ -288,6 +324,6 @@ class SourceAdmissionService:
                 source_identifier=contract.source_identifier,
                 observed_at_utc=request.observed_at_utc,
                 source_date=request.source_date,
-                payload=payload_copy.model_copy(deep=True),
+                payload=typed_payload.model_copy(deep=True),
             )
         return SourceAdmissionAccepted(source_artifact=envelope, raw_signal_batch=batch)

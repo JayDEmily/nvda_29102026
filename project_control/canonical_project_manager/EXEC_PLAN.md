@@ -20,9 +20,8 @@ node-level failure delta establish the same claim.
 The alpha-delivery history governed by this plan is accepted. The 2026-08-02
 continuation amendment preserves that work. Its bounded subordinate plan is
 active at `repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md`.
-Unit 1 proof-universe truth is complete and Unit 2 is the first bounded
-implementation-bearing repair. Ordinary planned feature development remains
-closed until readiness.
+Units 1–3 are complete; Unit 4 now owns the separate structural-integrity
+families. Ordinary planned feature development remains closed until readiness.
 
 ## 1. Objective
 

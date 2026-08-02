@@ -7,7 +7,14 @@ from datetime import date, datetime
 from enum import StrEnum
 from typing import Any, Literal, Protocol
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    SerializeAsAny,
+    field_validator,
+    model_validator,
+)
 
 
 class SourceFactRequirement(StrEnum):
@@ -177,8 +184,15 @@ class SourceAdmissionRequest(BaseModel):
     source_timezone_raw: str | None = None
     captured_at_utc: datetime
     captured_material: bytes = Field(min_length=1)
-    typed_payload: dict[str, Any]
+    typed_payload: SerializeAsAny[BaseModel]
     declared_limitations: tuple[str, ...] = ()
+
+    @field_validator("typed_payload", mode="before")
+    @classmethod
+    def _require_concrete_typed_payload(cls, value: Any) -> BaseModel:
+        if not isinstance(value, BaseModel) or type(value) is BaseModel:
+            raise ValueError("typed_payload_must_be_concrete_pydantic_model")
+        return value
 
 
 class CaptureReceipt(BaseModel):

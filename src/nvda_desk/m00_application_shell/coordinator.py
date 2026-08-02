@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import Any, Callable, Protocol
 
 from pydantic import ValidationError
@@ -119,10 +120,36 @@ class RunCoordinator:
     def _upstream_command(value: UpstreamPreparationCommand) -> UpstreamPreparationCommand:
         if not isinstance(value, UpstreamPreparationCommand):
             raise TypeError("typed_upstream_preparation_command_required")
+        material = value.model_dump(mode="python", exclude={"source_requests"})
+        material["source_requests"] = value.source_requests
         try:
-            return UpstreamPreparationCommand.model_validate(value.model_dump(mode="python"))
+            return UpstreamPreparationCommand.model_validate(material)
         except (ValidationError, ValueError, TypeError) as exc:
             raise ValueError("upstream_preparation_command_contract_invalid") from exc
+
+    def translate_upstream_command(
+        self,
+        payload: Mapping[str, Any],
+    ) -> UpstreamPreparationCommand:
+        """Delegate source transport translation to M01, then compose the typed command."""
+
+        source_service = self._source_admission
+        if source_service is None:
+            raise ValueError("m00_upstream_dependency_missing:source_admission")
+        if not isinstance(payload, Mapping):
+            raise TypeError("upstream_preparation_transport_mapping_required")
+        source_requests = payload.get("source_requests")
+        if not isinstance(source_requests, (list, tuple)):
+            raise ValueError("upstream_source_requests_transport_invalid")
+
+        translated = dict(payload)
+        translated["source_requests"] = tuple(
+            source_service.translate_request(item) for item in source_requests
+        )
+        try:
+            return UpstreamPreparationCommand.model_validate(translated)
+        except (ValidationError, ValueError, TypeError) as exc:
+            raise ValueError("upstream_preparation_transport_contract_invalid") from exc
 
     def prepare(self, command: UpstreamPreparationCommand) -> UpstreamPreparationReceipt:
         """Delegate exact M01, M02 and M03 work without acquiring owner semantics."""

@@ -1869,3 +1869,40 @@ checkpoint results are recorded in
 
 No work is active. Open only one separately authorised bounded debt item. Do not
 infer live brokerage, durable operation, production readiness or profitability.
+
+## 2026-08-02 — Foundation readiness Unit 3 typed ingress and canonical composition
+
+### Disposition
+
+`PASS:FOUNDATION_READINESS_UNIT3`
+
+M01 now owns exact registered transport translation into one concrete Pydantic
+payload type and rejects mapping payloads at the admission seam. M00 delegates
+that translation, preserves typed requests during command revalidation and does
+not interpret payload meaning. CLI and ASGI use the canonical delegation path.
+The legacy raw-bundle loader remains executable but unselected.
+
+| Check | Result |
+|---|---|
+| Expected-red proof before implementation | 3 failed / 25 deselected at the dictionary-typed request boundary |
+| Targeted Unit 3 proof | PASS — 3 / 3 |
+| Complete affected M01/M00/entry cone | PASS — 62 / 62 |
+| Admitted M01, M00 upstream, final-composition and adapter blocks | PASS — 20 / 20; 8 / 8; 16 / 16; 15 / 15 |
+| Exact physical `alpha_current` membership | PASS — 809 / 809 across 21 resolved paths |
+| Complete physical Tier A | 1,919 passed / 49 failed / 1,968 total |
+| Unit 2 failing-node delta | exact same 49 nodes; zero added and zero removed |
+| Tier B / Tier C | PASS — 91 / 91; 5 / 5 |
+| Proof authority / block manifest | PASS — 201 families, 203 paths, 73 blocks; 73 / 73 definitions |
+| Vocabulary | PASS — 13 / 13 namespaces candidate-clean; 38 unchanged occurrences renewed after line shifts |
+| Boundary probe | PASS — wrong concrete model rejected; translated payload detached |
+| Ruff / Black / compilation / diff | PASS |
+
+One Tier C fixture was re-authored to pass the concrete payload model it already
+constructs. No production compatibility shim, identity fabrication, test skip,
+xfail or assertion weakening was introduced. The remaining 49 Tier A failures
+belong to later structural and residual units; this entry does not accept them
+or establish live, durable, production or profitability readiness.
+
+Exact residual-node evidence is retained at
+`repairs/foundation_readiness_reconciliation_20260802/evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`.
+Unit 3 closes and Unit 4 opens only its separate structural-integrity families.

@@ -5,7 +5,7 @@
 **Status:** active
 **Baseline:** `3876f17108b5c2e42510dff66e7248d622c10e47`
 **Branch:** `work/foundation-readiness-reconciliation-v1`
-**Current unit:** Unit 3 — typed ingress and canonical composition (C-NORM aligned; C-PROOF open)
+**Current unit:** Unit 4 — structural integrity families
 
 ## Objective
 
@@ -143,6 +143,20 @@ declared environment; records, proof control and Git describe the same state.
 - 2026-08-02: Unit 2 committed at `a7136bf`; Unit 3 opened against accepted M01
   family-contract and M00 transport/composition law. JSON translation belongs
   at an injected M01 adapter seam; the M01 admission request itself is typed.
+- 2026-08-02: Unit 3 closes the typed M01 request and registered transport
+  translation seam, with M00 delegating rather than interpreting payload meaning.
+  The complete affected M01/M00/entry cone passes 62/62; Tier B passes 91/91,
+  Tier C passes 5/5 and the exact 21-path `alpha_current` membership passes
+  809/809.
+- 2026-08-02: complete physical Tier A is 1,919 passed / 49 failed / 1,968
+  total. The 49 failing node IDs are exactly unchanged from Unit 2, while all
+  three Unit 3 expected-red propositions are green. Proof authority remains
+  201 families / 203 paths / 73 blocks and all 13 vocabulary namespaces are
+  candidate-clean after occurrence-only line-shift renewals.
+- 2026-08-02: Unit 3 is ready for its bounded acceptance commit. Unit 4 opens
+  only the M12 dependency, caller-mutable governed-policy, vocabulary-scanner
+  self-observation and canonical API process-local state/identity findings, one
+  semantic family at a time.
 
 ## Decisions
 
@@ -159,15 +173,17 @@ None current.
 
 ## Validation
 
-Units 1 and 2 pass. See `VALIDATION_SUMMARY.md`,
-`evidence/UNIT1_PROOF_UNIVERSE.json` and
-`evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml`.
+Units 1, 2 and 3 pass. See `VALIDATION_SUMMARY.md`,
+`evidence/UNIT1_PROOF_UNIVERSE.json`,
+`evidence/UNIT2_PHYSICAL_TIER_A_JUNIT.xml` and
+`evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`.
 
 ## Unknowns
 
-- Exact Unit 3 partition of the 49 retained physical Tier A failures.
+- Exact Unit 4 ordering and partition of the four structural-integrity
+  findings; they must not be batched merely because they share a programme unit.
 - Whether later semantic adjudication changes the retained physical test
-  universe; Unit 1 made no such change.
+  universe; Units 1–3 made no such change.
 
 ## Closeout
 

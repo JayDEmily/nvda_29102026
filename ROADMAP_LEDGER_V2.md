@@ -10,9 +10,9 @@
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | Unit 3 — typed ingress and canonical composition |
+| Current active slice | Unit 4 — structural integrity families |
 | Active control pack | `project_control/canonical_project_manager/repairs/foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |
-| Current repository claim | accepted bounded alpha retained; proof admission and prepared identity/packet boundary reconciled; physical Tier A is 1,916 passed / 49 failed |
+| Current repository claim | accepted bounded alpha retained; proof admission, prepared identity/packet boundary and typed M01/M00 transport composition reconciled; physical Tier A is 1,919 passed / 49 failed |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -236,11 +236,14 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The bounded foundation-readiness plan is active at Unit 3. Exact canonical
-admission is reconciled at 203/203 paths and the prepared-context/M04
-owner-identity boundary is green through its 618-test affected cone. Complete
-physical Tier A is 1,916 passed / 49 failed. Close typed M01 ingress and its
-current M00/transport caller cone without selecting legacy compatibility paths.
-New planned features,
-donor integration, live operation and production claims remain closed until the
-single continuation-readiness checkpoint passes.
+Units 1–3 of the bounded foundation-readiness plan are complete. Exact canonical
+admission covers 203/203 paths; the prepared-context/M04 boundary and typed
+M01/M00 transport-composition seam are green. Complete physical Tier A is
+1,919 passed / 49 failed, with the same 49 residual node IDs as Unit 2.
+
+Open Unit 4 one structural family at a time: the M12 dependency finding,
+caller-mutable governed-policy values, vocabulary-scanner self-observation, and
+canonical API process-local state/identity. Do not batch these propositions or
+select legacy compatibility routes. New planned features, donor integration,
+live operation and production claims remain closed until the single
+continuation-readiness checkpoint passes.

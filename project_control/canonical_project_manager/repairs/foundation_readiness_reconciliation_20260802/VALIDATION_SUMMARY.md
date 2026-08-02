@@ -1,5 +1,64 @@
 # Foundation Readiness Reconciliation — Unit Validation
 
+## Unit 3 — typed ingress and canonical composition
+
+### Outcome
+
+Unit 3 passes its bounded gate. `SourceAdmissionRequest` now accepts only a
+concrete Pydantic payload model. M01 owns exact family/contract/version lookup,
+constructs the registered payload type from transport JSON, rejects mismatched
+models, and revalidates a detached payload before admission. M00 delegates
+transport translation to the injected M01 owner and preserves typed requests
+while composing the existing upstream command. CLI and ASGI entry routes use
+that delegation.
+
+The legacy raw-bundle compatibility loader remains runnable but is not selected
+by the canonical transport route. No provider, capture, trace, scenario, run,
+packet or domain identity is fabricated. One Tier C direct caller was
+re-authored only to pass the concrete payload model it already constructs; no
+production compatibility shim was added.
+
+### Proof
+
+| Surface | Result |
+|---|---:|
+| Unit 3 expected-red proof before implementation | 3 failed; 25 deselected |
+| Unit 3 targeted proof after implementation | 3 passed; 25 deselected |
+| Complete M01/M00/entry affected cone | 62 passed; 0 failed |
+| M01 admitted proof block | 20 passed; 0 failed |
+| M00 upstream proof block | 8 passed; 0 failed |
+| M00 final-composition proof block | 16 passed; 0 failed |
+| Transport-adapter proof block | 15 passed; 0 failed |
+| Curated `alpha_current` physical membership | 809 passed; 0 failed |
+| Physical Tier A | 1,919 passed; 49 failed; 1,968 total |
+| Physical Tier B | 91 passed; 0 failed |
+| Physical Tier C | 5 passed; 0 failed |
+| Proof authority | PASS — 201 families, 203 paths, 73 blocks |
+| Proof-block manifest | PASS — 73 blocks |
+| Vocabulary namespaces | PASS — 13/13; zero unresolved candidates |
+| Static checks | PASS — Ruff, Black, compilation and `git diff --check` |
+
+The complete physical Tier A run adds and passes the three Unit 3 propositions.
+Its 49 failing node IDs are exactly the same set retained by Unit 2: zero added
+and zero removed. Unit 3 therefore introduces no new Tier A failure family and
+does not claim that the remaining structural or residual families are accepted.
+
+A direct boundary probe also confirms that a forged concrete payload type is
+rejected and transport translation returns detached registered payload state.
+Thirty-eight pre-existing vocabulary occurrences shifted line identity because
+of the bounded implementation; each was renewed against its unchanged semantic
+disposition. No canonical label or alias changed.
+
+### Evidence and gate
+
+- `UNIT3_C_NORM.md`
+- `evidence/UNIT3_PHYSICAL_TIER_A_JUNIT.xml`
+- `FULL_READ_MANIFEST.tsv`
+
+Unit 3 may close. Repository-wide readiness remains open at 49 physical Tier A
+failures. Unit 4 may open only the structural-integrity findings as separate
+narrow semantic units.
+
 ## Unit 2 — prepared identity and packet boundary
 
 ### Outcome

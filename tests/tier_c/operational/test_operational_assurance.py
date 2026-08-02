@@ -106,7 +106,7 @@ def _operational_upstream_fixture() -> dict[str, Any]:
         observed_at_utc=observed_at,
         captured_at_utc=observed_at + timedelta(seconds=1),
         captured_material=payload.model_dump_json().encode(),
-        typed_payload=payload.model_dump(mode="python"),
+        typed_payload=payload,
     )
     calendar_request = CalendarProjectionRequest(
         snapshot=m02.FinancialCalendarSnapshot.model_validate(
