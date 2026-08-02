@@ -7,7 +7,7 @@ from typing import Any, Awaitable, Callable, Mapping
 
 from pydantic import ValidationError
 
-from nvda_desk.entry.cli import query_command, run_command
+from nvda_desk.entry.cli import prepare_command, query_command, run_command
 from nvda_desk.m00_application_shell import RunCoordinator
 
 AsgiReceive = Callable[[], Awaitable[dict[str, Any]]]
@@ -80,6 +80,7 @@ class _ApplicationAsgiApp:
             return
 
         handlers = {
+            "/commands/prepare": (prepare_command, "invalid_upstream_preparation_command"),
             "/commands/run": (run_command, "invalid_application_command"),
             "/queries/review": (query_command, "invalid_application_query"),
         }

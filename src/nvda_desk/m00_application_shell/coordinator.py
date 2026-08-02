@@ -12,6 +12,13 @@ from nvda_desk.contracts.packets import (
     DmpV3ExecutionContext,
     PreparedContextIdentity,
 )
+from nvda_desk.m01_source_admission import SourceAdmissionService
+from nvda_desk.m02_financial_calendar import CalendarResolver
+from nvda_desk.m03_preparation import (
+    CalendarProjectionReference,
+    PreparedDataBuilder,
+    SourceCaptureReference,
+)
 from nvda_desk.m05_serial_cognition import (
     SerialCandidatePacketAdapter,
     SerialRunner,
@@ -25,7 +32,13 @@ from nvda_desk.m10_execution_gateway import ExecutionGateway
 from nvda_desk.m12_evidence_replay import EvidenceReplayService, ReviewProjection
 from nvda_desk.packets.dmp_packets import build_prepared_context_packet
 
-from .contracts import ApplicationCommand, ApplicationQuery, ApplicationRunReceipt
+from .contracts import (
+    ApplicationCommand,
+    ApplicationQuery,
+    ApplicationRunReceipt,
+    UpstreamPreparationCommand,
+    UpstreamPreparationReceipt,
+)
 
 _PREPARED_OWNER_CHECKS = frozenset(
     (*K07_COMMON_CHECKS, *K07_ROLE_CHECKS["prepared_context_packet"])
@@ -55,6 +68,9 @@ class RunCoordinator:
         execution_gateway: ExecutionGateway,
         paper_run_scope_factory: Callable[[DmpV3ExecutionContext], PaperRunScope],
         replay_service: EvidenceReplayService,
+        source_admission: SourceAdmissionService | None = None,
+        calendar_resolver: CalendarResolver | None = None,
+        prepared_data_builder: PreparedDataBuilder | None = None,
     ) -> None:
         dependencies = {
             "serial_runner": serial_runner,
@@ -77,6 +93,9 @@ class RunCoordinator:
         self._execution_gateway = execution_gateway
         self._paper_run_scope_factory = paper_run_scope_factory
         self._replay_service = replay_service
+        self._source_admission = source_admission
+        self._calendar_resolver = calendar_resolver
+        self._prepared_data_builder = prepared_data_builder
 
     @staticmethod
     def _command(value: ApplicationCommand) -> ApplicationCommand:
@@ -95,6 +114,166 @@ class RunCoordinator:
             return ApplicationQuery.model_validate(value.model_dump(mode="python"))
         except (ValidationError, ValueError, TypeError) as exc:
             raise ValueError("application_query_contract_invalid") from exc
+
+    @staticmethod
+    def _upstream_command(value: UpstreamPreparationCommand) -> UpstreamPreparationCommand:
+        if not isinstance(value, UpstreamPreparationCommand):
+            raise TypeError("typed_upstream_preparation_command_required")
+        try:
+            return UpstreamPreparationCommand.model_validate(value.model_dump(mode="python"))
+        except (ValidationError, ValueError, TypeError) as exc:
+            raise ValueError("upstream_preparation_command_contract_invalid") from exc
+
+    def prepare(self, command: UpstreamPreparationCommand) -> UpstreamPreparationReceipt:
+        """Delegate exact M01, M02 and M03 work without acquiring owner semantics."""
+
+        missing = tuple(
+            name
+            for name, value in (
+                ("source_admission", self._source_admission),
+                ("calendar_resolver", self._calendar_resolver),
+                ("prepared_data_builder", self._prepared_data_builder),
+            )
+            if value is None
+        )
+        if missing:
+            raise ValueError(f"m00_upstream_dependency_missing:{','.join(missing)}")
+        governed = self._upstream_command(command)
+        source_service = self._source_admission
+        calendar_resolver = self._calendar_resolver
+        prepared_builder = self._prepared_data_builder
+        assert source_service is not None
+        assert calendar_resolver is not None
+        assert prepared_builder is not None
+
+        source_results = tuple(source_service.admit(item) for item in governed.source_requests)
+        non_admissions = tuple(item for item in source_results if item.status == "not_admitted")
+        if non_admissions:
+            return UpstreamPreparationReceipt.create(
+                command_id=governed.command_id,
+                status="source_not_admitted",
+                source_results=source_results,
+                failure_stage="M01",
+                failure_reason=non_admissions[0].reason,
+            )
+
+        calendar_projections = tuple(
+            calendar_resolver.project(
+                item.snapshot,
+                item.policy,
+                projection_id=item.projection_id,
+            )
+            for item in governed.calendar_requests
+        )
+        unusable = tuple(
+            item for item in calendar_projections if item.status in {"withheld", "rejected"}
+        )
+        if unusable:
+            reason_parts = (
+                *unusable[0].missing_mandatory_authority,
+                *unusable[0].unresolved_conflicts,
+            )
+            return UpstreamPreparationReceipt.create(
+                command_id=governed.command_id,
+                status="calendar_withheld",
+                source_results=source_results,
+                calendar_projections=calendar_projections,
+                failure_stage="M02",
+                failure_reason=":".join(reason_parts) or unusable[0].status,
+            )
+
+        accepted = tuple(item for item in source_results if item.status == "accepted")
+        admitted_ids = {item.source_artifact.source_artifact_id for item in accepted}
+        source_refs = tuple(
+            SourceCaptureReference(
+                capture_id=item.source_artifact.capture_receipt.capture_id,
+                source_artifact_id=item.source_artifact.source_artifact_id,
+                family_id=item.source_artifact.family_id,
+                contract_id=item.source_artifact.contract_id,
+                schema_version=item.source_artifact.schema_version,
+                source_owner=(
+                    item.source_artifact.source_identifier.owner or item.source_artifact.provider_id
+                ),
+                effective_at_utc=(
+                    item.source_artifact.observed_at_utc
+                    or item.source_artifact.capture_receipt.captured_at_utc
+                ),
+                source_time_utc=item.source_artifact.observed_at_utc,
+                source_date=item.source_artifact.source_date,
+                temporal_precision=item.source_artifact.source_time_precision.value,
+                input_fingerprint=item.source_artifact.content_sha256,
+                validation_state=(
+                    "valid" if item.source_artifact.validation_status == "admitted" else "degraded"
+                ),
+                limitations=item.source_artifact.limitations,
+                semantic_fields=tuple(sorted(item.source_artifact.typed_payload.model_dump())),
+                provider_id=item.source_artifact.provider_id,
+                acquisition_method=item.source_artifact.acquisition_channel,
+            )
+            for item in accepted
+        )
+        projection_refs = []
+        for projection in calendar_projections:
+            source_refs_for_projection = tuple(
+                sorted(
+                    {
+                        source_ref
+                        for selected in projection.selected_fields
+                        for source_ref in selected.source_refs
+                    }
+                )
+            )
+            foreign = tuple(
+                source_id
+                for source_id, _ in source_refs_for_projection
+                if source_id not in admitted_ids
+            )
+            if foreign:
+                raise ValueError(
+                    "calendar_projection_source_lineage_not_admitted:" + ",".join(foreign)
+                )
+            projection_refs.append(
+                CalendarProjectionReference(
+                    projection_id=projection.projection_id,
+                    snapshot_id=projection.snapshot_id,
+                    snapshot_version=projection.snapshot_version,
+                    projection_policy_version=projection.projection_policy_version,
+                    status=projection.status,
+                    semantic_fingerprint=projection.semantic_fingerprint,
+                    source_refs=source_refs_for_projection,
+                )
+            )
+
+        spec = governed.preparation
+        prepared = prepared_builder.build(
+            source_capture_refs=source_refs,
+            calendar_projection_refs=tuple(projection_refs),
+            input_schema_versions=dict(spec.input_schema_versions),
+            schema_version=spec.schema_version,
+            preparation_policy_version=spec.preparation_policy_version,
+            alignment_policy_version=spec.alignment_policy_version,
+            fingerprint_policy_version=spec.fingerprint_policy_version,
+            canonicalisation_version=spec.canonicalisation_version,
+            derivation_versions=dict(spec.derivation_versions),
+            effective_at_utc=spec.effective_at_utc,
+            payload=spec.payload,
+            payload_schema_version=spec.payload_schema_version,
+            field_resolution_receipts=spec.field_resolution_receipts,
+            derivation_receipts=spec.derivation_receipts,
+            validation_state=spec.validation_state,
+            completeness_state=spec.completeness_state,
+            limitations=spec.limitations,
+            failed_mandatory_transformations=spec.failed_mandatory_transformations,
+            missing_optional_enrichments=spec.missing_optional_enrichments,
+            parent_prepared_ids=spec.parent_prepared_ids,
+        )
+        return UpstreamPreparationReceipt.create(
+            command_id=governed.command_id,
+            status="prepared",
+            source_results=source_results,
+            calendar_projections=calendar_projections,
+            prepared_data=prepared,
+        )
 
     @staticmethod
     def _prepared_packet(command: ApplicationCommand):

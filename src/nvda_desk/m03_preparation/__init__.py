@@ -1,6 +1,7 @@
 """Public M03 prepared-data authority API."""
 
 from nvda_desk.contracts.prepared_data import (
+    CalendarProjectionReference,
     DerivationReceipt,
     PreparedDataEnvelope,
     PreparedRuntimePayloadV1,
@@ -17,6 +18,7 @@ from nvda_desk.preparation.field_resolution import (
 )
 
 __all__ = [
+    "CalendarProjectionReference",
     "DerivationReceipt",
     "FieldCandidate",
     "FieldResolutionPolicy",

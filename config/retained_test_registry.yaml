@@ -4889,6 +4889,17 @@ canonical_admission_model:
     lifecycle: historical
     normative_proposition_ids: []
     provenance: NON_AUTHORITATIVE_OBSERVATIONAL
+  - test_family_id: m00_upstream_workflow_contract
+    tier: Tier A
+    lifecycle: current_blocking
+    normative_proposition_ids:
+      - M00-UPSTREAM-001
+      - M00-UPSTREAM-002
+      - M00-UPSTREAM-003
+      - M00-UPSTREAM-004
+      - M00-UPSTREAM-005
+    provenance: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT2-C-PROOF
+    lifecycle_reason: Canonical M01 to M02 to M03 application workflow implemented and current-blocking.
   - test_family_id: m00_final_composition_contract
     tier: Tier A
     lifecycle: current_blocking
@@ -4905,6 +4916,9 @@ canonical_admission_model:
     provenance: M00-FINAL-COMPOSITION-V1-GATE-D-IMPLEMENTED
     lifecycle_reason: The bounded M00 public package and its packetised paper-run composition proof are implemented and current-blocking.
   path_admissions:
+  - test_path: tests/tier_a/m00_application_shell/test_m00_upstream_workflow_contract.py
+    test_family_id: m00_upstream_workflow_contract
+    source_disposition: POST-ALPHA-COMPREHENSIVE-DEBT-UNIT2-C-PROOF
   - test_path: tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py
     test_family_id: m00_final_composition_contract
     source_disposition: M00-FINAL-COMPOSITION-V1-C-PROOF

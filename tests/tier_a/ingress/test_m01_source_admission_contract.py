@@ -135,6 +135,7 @@ def _production_fixture():
     service = api["SourceAdmissionService"](
         registry=registry,
         capture_id_factory=lambda _: "capture::m01::0001",
+        source_artifact_id_factory=lambda *_: "source-artifact::m01::0001",
     )
     request = api["SourceAdmissionRequest"](
         family_id="market_snapshot",
@@ -146,7 +147,7 @@ def _production_fixture():
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=b'{"symbol":"NVDA","value":121.5}',
-        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=121.5),
+        typed_payload={"symbol": "NVDA", "value": 121.5},
     )
     return api, service, request
 
@@ -250,6 +251,7 @@ def test_production_public_seam_preserves_date_only_truth_without_fabricated_ins
     service = api["SourceAdmissionService"](
         registry=api["SourceFamilyRegistry"].build([contract]),
         capture_id_factory=lambda _: "capture::m01::calendar-1",
+        source_artifact_id_factory=lambda *_: "source-artifact::m01::calendar-1",
     )
     request = api["SourceAdmissionRequest"](
         family_id="calendar_reference",
@@ -261,7 +263,7 @@ def test_production_public_seam_preserves_date_only_truth_without_fabricated_ins
         source_date=date(2026, 7, 31),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=b'{"symbol":"NVDA","value":0.0}',
-        typed_payload=MarketSnapshotPayload(symbol="NVDA", value=0.0),
+        typed_payload={"symbol": "NVDA", "value": 0.0},
     )
 
     result = service.admit(request)
@@ -307,6 +309,7 @@ def test_production_public_seam_rejects_hash_as_repository_capture_identity() ->
             ]
         ),
         capture_id_factory=lambda fingerprint: fingerprint,
+        source_artifact_id_factory=lambda *_: "source-artifact::m01::hash-test",
     )
     result = service.admit(request)
 
@@ -344,6 +347,7 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
     service = api["SourceAdmissionService"](
         registry=api["SourceFamilyRegistry"].build([contract]),
         capture_id_factory=lambda _: "capture::m01::0001",
+        source_artifact_id_factory=lambda *_: "source-artifact::m01::nested",
     )
     request = api["SourceAdmissionRequest"](
         family_id="market_snapshot",
@@ -355,10 +359,10 @@ def test_production_public_seam_rejects_nested_credential_authority() -> None:
         observed_at_utc=datetime(2026, 7, 31, 1, 15, tzinfo=UTC),
         captured_at_utc=datetime(2026, 7, 31, 1, 16, tzinfo=UTC),
         captured_material=(b'{"symbol":"NVDA","metadata":{"credential":"must-not-cross"}}'),
-        typed_payload=NestedAuthorityPayload(
-            symbol="NVDA",
-            metadata={"credential": "must-not-cross"},
-        ),
+        typed_payload={
+            "symbol": "NVDA",
+            "metadata": {"credential": "must-not-cross"},
+        },
     )
 
     result = service.admit(request)

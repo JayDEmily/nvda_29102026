@@ -19,3 +19,15 @@
 - `scripts/proof_authority.py --check`: PASS.
 - Three retained `pre_m00_current` promotion receipts independently verify after migration.
 - Black, Ruff and `git diff --check`: PASS.
+
+## Unit 2 — canonical raw-source-to-M03 workflow
+
+- Expected-red state: 7 failures, all caused by absent upstream contracts/routes.
+- Affected M01/M02/M03/M00/entry proof: 118 passed.
+- Promotion-control proof: 37 passed.
+- Current promotion membership: 16 blocks / 16 families / 18 paths.
+- Authority reconciliation: 197 families / 199 physical tests / 69 blocks.
+- M01 source, capture, content and repository artefact identities remain distinct.
+- M01 non-admission and M02 withheld/rejected outcomes are terminal before M03.
+- M03 carries M02 projection references; existing no-projection fingerprints remain stable.
+- CLI and ASGI contain translation only.

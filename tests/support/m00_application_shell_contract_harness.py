@@ -287,6 +287,7 @@ def production_runtime_fixture(
     suffix: str = "001",
     terminal_stage: str | None = None,
     kill_switch: bool = False,
+    upstream_dependencies: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build one lawful M00 command and its injected public owner seams."""
 
@@ -444,6 +445,7 @@ def production_runtime_fixture(
         execution_gateway=m10.ExecutionGateway(),
         paper_run_scope_factory=scope_factory,
         replay_service=m12.EvidenceReplayService(),
+        **(upstream_dependencies or {}),
     )
     return {
         "command": command,

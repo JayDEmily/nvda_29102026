@@ -7,6 +7,7 @@ from typing import Mapping
 
 from nvda_desk.contracts.prepared_data import (
     CLOSED_PREPARATION_AUTHORITIES,
+    CalendarProjectionReference,
     DerivationReceipt,
     PreparedDataEnvelope,
     PreparedRuntimePayloadV1,
@@ -25,6 +26,7 @@ class PreparedDataBuilder:
         *,
         source_capture_refs: tuple[SourceCaptureReference, ...],
         input_schema_versions: Mapping[str, str],
+        calendar_projection_refs: tuple[CalendarProjectionReference, ...] = (),
         schema_version: str,
         preparation_policy_version: str,
         alignment_policy_version: str,
@@ -69,6 +71,15 @@ class PreparedDataBuilder:
                 key=lambda item: (item.capture_id, item.source_artifact_id),
             )
         )
+        projection_refs = tuple(
+            sorted(
+                (
+                    CalendarProjectionReference.model_validate(item.model_dump(mode="python"))
+                    for item in calendar_projection_refs
+                ),
+                key=lambda item: item.projection_id,
+            )
+        )
         governed_payload = PreparedRuntimePayloadV1.model_validate(
             payload.model_dump(mode="python")
         )
@@ -101,12 +112,14 @@ class PreparedDataBuilder:
         input_fingerprint = prepared_input_fingerprint(
             refs,
             schema_versions,
+            calendar_projection_refs=projection_refs,
             fingerprint_policy_version=fingerprint_policy_version,
             canonicalisation_version=canonicalisation_version,
         )
         prepared_fingerprint = prepared_envelope_fingerprint(
             schema_version=schema_version,
             source_capture_refs=refs,
+            calendar_projection_refs=projection_refs,
             input_schema_versions=schema_versions,
             preparation_policy_version=preparation_policy_version,
             alignment_policy_version=alignment_policy_version,
@@ -131,6 +144,7 @@ class PreparedDataBuilder:
             prepared_id=f"prepared:{prepared_fingerprint[:24]}",
             schema_version=schema_version,
             source_capture_refs=refs,
+            calendar_projection_refs=projection_refs,
             input_schema_versions=schema_versions,
             preparation_policy_version=preparation_policy_version,
             alignment_policy_version=alignment_policy_version,

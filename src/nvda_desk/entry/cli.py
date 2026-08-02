@@ -10,6 +10,7 @@ from nvda_desk.m00_application_shell import (
     ApplicationCommand,
     ApplicationQuery,
     RunCoordinator,
+    UpstreamPreparationCommand,
 )
 
 
@@ -18,6 +19,13 @@ def run_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> d
 
     command = ApplicationCommand.model_validate(payload)
     return coordinator.run(command).model_dump(mode="json")
+
+
+def prepare_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> dict[str, Any]:
+    """Validate one canonical upstream command and return its M01-M03 receipt."""
+
+    command = UpstreamPreparationCommand.model_validate(payload)
+    return coordinator.prepare(command).model_dump(mode="json")
 
 
 def query_command(payload: Mapping[str, Any], *, coordinator: RunCoordinator) -> dict[str, Any]:
@@ -39,6 +47,15 @@ def build_cli(*, coordinator: RunCoordinator) -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser(prog="nvda-desk")
     subparsers = parser.add_subparsers(dest="operation", required=True)
+
+    prepare_parser = subparsers.add_parser("prepare")
+    prepare_parser.add_argument("--payload-json", required=True)
+    prepare_parser.set_defaults(
+        handler=lambda args: prepare_command(
+            _json_object(args.payload_json),
+            coordinator=coordinator,
+        )
+    )
 
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--payload-json", required=True)

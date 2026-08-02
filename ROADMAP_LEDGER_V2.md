@@ -8,8 +8,8 @@
 | Branch | `work/post-alpha-comprehensive-debt-retirement-v1` |
 | Current branch source checkpoint | `d4bffb8f95141e95353182c3e4c6e6ddc8e15472` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | `ALPHA-DEBT-001` canonical M00 CLI/ASGI transport adapters |
-| Current active slice | Unit 0 — comprehensive material-debt retirement control registration |
+| Latest accepted implementation slice | Unit 2 — canonical M01 → M02 → M03 upstream workflow |
+| Current active slice | Unit 3 — M06 owner-fact completeness |
 | Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |
 | Production implementation | accepted alpha retained; comprehensive debt-retirement pack active; no new live/durable/production claim until unit proof closes |
 | Live/paper/production claim | closed |
@@ -220,4 +220,4 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-Final alpha consolidation is complete under the canonical ExecPlan. The accepted module state and explicit debt are recorded under `project_control/canonical_project_manager/final_alpha_consolidation_20260802/`. No subordinate bounded pack is active. The next lawful work is one separately authorised bounded debt item; accepted module semantics are not reopened by default. Live brokerage, durable operation, production readiness and profitability remain closed.
+The comprehensive subordinate pack is active. Units 0–2 are accepted; Unit 3 must add exact concentration, inventory and liquidity owner facts to M06 without fabrication. Durable/live operation, Tier C and vocabulary adjudication remain closed until their later acceptance units.

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** `ACTIVE:UNIT2_CANONICAL_UPSTREAM_WORKFLOW`
+**Status:** `ACTIVE:UNIT3_M06_OWNER_FACT_COMPLETENESS`
 **Created:** 2026-08-02
 **Owner:** User-authorised worker under the completed canonical alpha plan
 **Canonical parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
@@ -188,3 +188,4 @@ acceptance, broad suppression or edited proof evidence.
 - 2026-08-02: branch `work/post-alpha-comprehensive-debt-retirement-v1` created from `d4bffb8f95141e95353182c3e4c6e6ddc8e15472`.
 - 2026-08-02: Unit 0 passed: exact branch/baseline, singular active control pack, 15 proof-authority contract tests, live authority reconciliation, Black/Ruff and manifest validation.
 - 2026-08-02: Unit 1 passed: `alpha_current` is the canonical promotion key; `pre_m00_current` is a membership-identical compatibility alias; 39 focused control tests pass and all retained legacy receipts verify.
+- 2026-08-02: Unit 2 passed: the expected-red M00 upstream proof is implemented; M01 issues distinct source-artifact identity, M02 projection lineage enters M03, and canonical CLI/ASGI preparation routes are current-blocking.

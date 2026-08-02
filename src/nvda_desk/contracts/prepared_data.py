@@ -94,6 +94,26 @@ class SourceCaptureReference(BaseModel):
         return self
 
 
+class CalendarProjectionReference(BaseModel):
+    """Immutable identity reference to one contributing M02 projection."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    projection_id: str = Field(min_length=1)
+    snapshot_id: str = Field(min_length=1)
+    snapshot_version: str = Field(min_length=1)
+    projection_policy_version: str = Field(min_length=1)
+    status: Literal["projected", "degraded"]
+    semantic_fingerprint: str = Field(pattern=r"^[0-9a-f]{64}$")
+    source_refs: tuple[tuple[str, str], ...] = ()
+
+    @model_validator(mode="after")
+    def _validate_projection_reference(self) -> "CalendarProjectionReference":
+        if len(self.source_refs) != len(set(self.source_refs)):
+            raise ValueError("duplicate_calendar_projection_source_ref")
+        return self
+
+
 class PreparedEventWindow(BaseModel):
     """Typed event-window member admitted into the prepared runtime payload."""
 
@@ -205,6 +225,7 @@ class PreparedDataEnvelope(BaseModel):
     prepared_id: str = Field(min_length=1)
     schema_version: str = Field(min_length=1)
     source_capture_refs: tuple[SourceCaptureReference, ...] = Field(min_length=1)
+    calendar_projection_refs: tuple[CalendarProjectionReference, ...] = ()
     input_schema_versions: tuple[tuple[str, str], ...] = Field(min_length=1)
     preparation_policy_version: str = Field(min_length=1)
     alignment_policy_version: str = Field(min_length=1)
@@ -258,6 +279,9 @@ class PreparedDataEnvelope(BaseModel):
             raise ValueError("degraded_envelope_requires_explicit_gap")
         if len(self.parent_prepared_ids) != len(set(self.parent_prepared_ids)):
             raise ValueError("duplicate_parent_prepared_identity")
+        projection_ids = tuple(item.projection_id for item in self.calendar_projection_refs)
+        if len(projection_ids) != len(set(projection_ids)):
+            raise ValueError("duplicate_calendar_projection_identity")
         receipt_ids = tuple(item.receipt_id for item in self.field_resolution_receipts)
         if len(receipt_ids) != len(set(receipt_ids)):
             raise ValueError("duplicate_field_resolution_receipt")
@@ -317,6 +341,7 @@ class PreparedDataEnvelope(BaseModel):
         expected_input = prepared_input_fingerprint(
             self.source_capture_refs,
             self.input_schema_versions,
+            calendar_projection_refs=self.calendar_projection_refs,
             fingerprint_policy_version=self.fingerprint_policy_version,
             canonicalisation_version=self.canonicalisation_version,
         )
@@ -334,6 +359,7 @@ class PreparedDataEnvelope(BaseModel):
         expected_prepared = prepared_envelope_fingerprint(
             schema_version=self.schema_version,
             source_capture_refs=self.source_capture_refs,
+            calendar_projection_refs=self.calendar_projection_refs,
             input_schema_versions=self.input_schema_versions,
             preparation_policy_version=self.preparation_policy_version,
             alignment_policy_version=self.alignment_policy_version,
@@ -369,31 +395,43 @@ def _sorted_source_refs(
     return tuple(sorted(refs, key=lambda item: (item.capture_id, item.source_artifact_id)))
 
 
+def _sorted_calendar_projection_refs(
+    refs: tuple[CalendarProjectionReference, ...],
+) -> tuple[CalendarProjectionReference, ...]:
+    return tuple(sorted(refs, key=lambda item: item.projection_id))
+
+
 def prepared_input_fingerprint(
     source_capture_refs: tuple[SourceCaptureReference, ...],
     input_schema_versions: tuple[tuple[str, str], ...] | dict[str, str],
     *,
+    calendar_projection_refs: tuple[CalendarProjectionReference, ...] = (),
     fingerprint_policy_version: str,
     canonicalisation_version: str,
 ) -> str:
     """Fingerprint exact admitted source/capture inputs and schema versions."""
 
-    return semantic_fingerprint(
-        {
-            "fingerprint_policy_version": fingerprint_policy_version,
-            "canonicalisation_version": canonicalisation_version,
-            "source_capture_refs": [
-                item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
-            ],
-            "input_schema_versions": _sorted_pairs(input_schema_versions),
-        }
-    )
+    material: dict[str, Any] = {
+        "fingerprint_policy_version": fingerprint_policy_version,
+        "canonicalisation_version": canonicalisation_version,
+        "source_capture_refs": [
+            item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
+        ],
+        "input_schema_versions": _sorted_pairs(input_schema_versions),
+    }
+    if calendar_projection_refs:
+        material["calendar_projection_refs"] = [
+            item.model_dump(mode="python")
+            for item in _sorted_calendar_projection_refs(calendar_projection_refs)
+        ]
+    return semantic_fingerprint(material)
 
 
 def prepared_envelope_fingerprint(
     *,
     schema_version: str,
     source_capture_refs: tuple[SourceCaptureReference, ...],
+    calendar_projection_refs: tuple[CalendarProjectionReference, ...] = (),
     input_schema_versions: tuple[tuple[str, str], ...],
     preparation_policy_version: str,
     alignment_policy_version: str,
@@ -418,49 +456,54 @@ def prepared_envelope_fingerprint(
 ) -> str:
     """Fingerprint one complete semantic prepared-data authority object."""
 
-    return semantic_fingerprint(
-        {
-            "schema_version": schema_version,
-            "source_capture_refs": [
-                item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
-            ],
-            "input_schema_versions": _sorted_pairs(input_schema_versions),
-            "preparation_policy_version": preparation_policy_version,
-            "alignment_policy_version": alignment_policy_version,
-            "fingerprint_policy_version": fingerprint_policy_version,
-            "canonicalisation_version": canonicalisation_version,
-            "derivation_versions": _sorted_pairs(derivation_versions),
-            "effective_at_utc": effective_at_utc,
-            "input_fingerprint": input_fingerprint,
-            "validation_state": validation_state,
-            "completeness_state": completeness_state,
-            "limitations": limitations,
-            "failed_mandatory_transformations": failed_mandatory_transformations,
-            "missing_optional_enrichments": missing_optional_enrichments,
-            "parent_prepared_ids": parent_prepared_ids,
-            "payload_kind": payload_kind,
-            "payload_schema_version": payload_schema_version,
-            "payload": payload,
-            "field_resolution_receipts": tuple(
-                sorted(
-                    field_resolution_receipts,
-                    key=lambda item: (item.semantic_field, item.receipt_id),
-                )
-            ),
-            "derivation_receipts": tuple(
-                sorted(
-                    derivation_receipts,
-                    key=lambda item: (item.semantic_field, item.derivation_id),
-                )
-            ),
-            "closed_authority_classes": closed_authority_classes,
-            "foreign_authority_claimed": foreign_authority_claimed,
-        }
-    )
+    material: dict[str, Any] = {
+        "schema_version": schema_version,
+        "source_capture_refs": [
+            item.model_dump(mode="python") for item in _sorted_source_refs(source_capture_refs)
+        ],
+        "input_schema_versions": _sorted_pairs(input_schema_versions),
+        "preparation_policy_version": preparation_policy_version,
+        "alignment_policy_version": alignment_policy_version,
+        "fingerprint_policy_version": fingerprint_policy_version,
+        "canonicalisation_version": canonicalisation_version,
+        "derivation_versions": _sorted_pairs(derivation_versions),
+        "effective_at_utc": effective_at_utc,
+        "input_fingerprint": input_fingerprint,
+        "validation_state": validation_state,
+        "completeness_state": completeness_state,
+        "limitations": limitations,
+        "failed_mandatory_transformations": failed_mandatory_transformations,
+        "missing_optional_enrichments": missing_optional_enrichments,
+        "parent_prepared_ids": parent_prepared_ids,
+        "payload_kind": payload_kind,
+        "payload_schema_version": payload_schema_version,
+        "payload": payload,
+        "field_resolution_receipts": tuple(
+            sorted(
+                field_resolution_receipts,
+                key=lambda item: (item.semantic_field, item.receipt_id),
+            )
+        ),
+        "derivation_receipts": tuple(
+            sorted(
+                derivation_receipts,
+                key=lambda item: (item.semantic_field, item.derivation_id),
+            )
+        ),
+        "closed_authority_classes": closed_authority_classes,
+        "foreign_authority_claimed": foreign_authority_claimed,
+    }
+    if calendar_projection_refs:
+        material["calendar_projection_refs"] = [
+            item.model_dump(mode="python")
+            for item in _sorted_calendar_projection_refs(calendar_projection_refs)
+        ]
+    return semantic_fingerprint(material)
 
 
 __all__ = [
     "CLOSED_PREPARATION_AUTHORITIES",
+    "CalendarProjectionReference",
     "DerivationReceipt",
     "PreparedDataEnvelope",
     "PreparedEventWindow",

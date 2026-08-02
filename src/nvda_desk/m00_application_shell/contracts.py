@@ -11,7 +11,23 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from nvda_desk.contracts.packets import DeskModulePacketV3, DmpV3ExecutionContext
-from nvda_desk.m03_preparation import PreparedDataEnvelope
+from nvda_desk.m01_source_admission import (
+    SourceAdmissionAccepted,
+    SourceAdmissionRequest,
+    SourceAdmissionResult,
+    SourceNonAdmission,
+)
+from nvda_desk.m02_financial_calendar import (
+    CalendarFieldResolutionPolicy,
+    CalendarProjection,
+    FinancialCalendarSnapshot,
+)
+from nvda_desk.m03_preparation import (
+    DerivationReceipt,
+    FieldResolutionReceipt,
+    PreparedDataEnvelope,
+    PreparedRuntimePayloadV1,
+)
 from nvda_desk.m05_serial_cognition import SerialCandidate, StageContext, StageInput
 from nvda_desk.m06_parallel_risk import ParallelRiskAssessment, ParallelRiskInput
 from nvda_desk.m07_coefficient_modifier_authority import ModifierApplicationReceipt
@@ -53,6 +69,8 @@ def _canonical(value: Any) -> Any:
         if not value.is_finite():
             raise ValueError("decimal_must_be_finite")
         return "0" if value == 0 else format(value.normalize(), "f")
+    if isinstance(value, bytes):
+        return {"sha256": sha256(value).hexdigest(), "length": len(value)}
     if isinstance(value, BaseModel):
         return _canonical(value.model_dump(mode="python"))
     if isinstance(value, dict):
@@ -88,6 +106,153 @@ class PacketEmissionSpec(BaseModel):
     @classmethod
     def _emitted_at_utc(cls, value: datetime) -> datetime:
         return _require_utc(value, "packet_emission_time_must_be_utc")
+
+
+class CalendarProjectionRequest(BaseModel):
+    """Exact M02 projection request carried by one upstream operation."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    snapshot: FinancialCalendarSnapshot
+    policy: CalendarFieldResolutionPolicy
+    projection_id: str = Field(min_length=1)
+
+
+class PreparationSpec(BaseModel):
+    """Exact caller-owned M03 builder facts excluding owner-produced lineage."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True, allow_inf_nan=False)
+
+    input_schema_versions: tuple[tuple[str, str], ...] = Field(min_length=1)
+    schema_version: str = Field(min_length=1)
+    preparation_policy_version: str = Field(min_length=1)
+    alignment_policy_version: str = Field(min_length=1)
+    fingerprint_policy_version: str = Field(min_length=1)
+    canonicalisation_version: str = Field(min_length=1)
+    derivation_versions: tuple[tuple[str, str], ...] = ()
+    effective_at_utc: datetime
+    payload: PreparedRuntimePayloadV1
+    payload_schema_version: Literal["1.0.0"]
+    field_resolution_receipts: tuple[FieldResolutionReceipt, ...] = ()
+    derivation_receipts: tuple[DerivationReceipt, ...] = ()
+    validation_state: Literal["valid", "degraded"] = "valid"
+    completeness_state: Literal["complete", "degraded"] = "complete"
+    limitations: tuple[str, ...] = ()
+    failed_mandatory_transformations: tuple[str, ...] = ()
+    missing_optional_enrichments: tuple[str, ...] = ()
+    parent_prepared_ids: tuple[str, ...] = ()
+
+    @field_validator("input_schema_versions", "derivation_versions", mode="before")
+    @classmethod
+    def _version_pairs(cls, value: Any) -> tuple[tuple[str, str], ...]:
+        pairs = (
+            tuple(value.items())
+            if isinstance(value, dict)
+            else tuple(tuple(item) for item in value)
+        )
+        if any(len(item) != 2 or not item[0] or not item[1] for item in pairs):
+            raise ValueError("upstream_version_mapping_entries_must_be_named")
+        if len({str(item[0]) for item in pairs}) != len(pairs):
+            raise ValueError("duplicate_upstream_version_mapping_key")
+        return tuple(sorted((str(key), str(version)) for key, version in pairs))
+
+    @field_validator("effective_at_utc")
+    @classmethod
+    def _effective_time(cls, value: datetime) -> datetime:
+        return _require_utc(value, "upstream_preparation_time_must_be_utc")
+
+
+class UpstreamPreparationCommand(BaseModel):
+    """One canonical application request delegating M01, M02 and M03 work."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    command_id: str = Field(min_length=1)
+    source_requests: tuple[SourceAdmissionRequest, ...] = Field(min_length=1)
+    calendar_requests: tuple[CalendarProjectionRequest, ...] = Field(min_length=1)
+    preparation: PreparationSpec
+
+
+UpstreamPreparationStatus = Literal[
+    "prepared",
+    "source_not_admitted",
+    "calendar_withheld",
+]
+
+
+class UpstreamPreparationReceipt(BaseModel):
+    """Immutable aggregation of exact M01/M02 owner outputs and optional M03 output."""
+
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    receipt_id: str = Field(min_length=1)
+    contract_version: Literal["1.0.0"] = "1.0.0"
+    semantic_fingerprint: str = Field(pattern=r"^[0-9a-f]{64}$")
+    command_id: str = Field(min_length=1)
+    status: UpstreamPreparationStatus
+    source_results: tuple[SourceAdmissionAccepted | SourceNonAdmission, ...] = Field(min_length=1)
+    calendar_projections: tuple[CalendarProjection, ...] = ()
+    prepared_data: PreparedDataEnvelope | None = None
+    failure_stage: Literal["M01", "M02"] | None = None
+    failure_reason: str | None = None
+
+    @model_validator(mode="after")
+    def _status_law(self) -> "UpstreamPreparationReceipt":
+        if self.status == "prepared":
+            if self.prepared_data is None or self.failure_stage is not None or self.failure_reason:
+                raise ValueError("prepared_upstream_receipt_status_mismatch")
+            if any(item.status != "accepted" for item in self.source_results):
+                raise ValueError("prepared_upstream_receipt_has_non_admission")
+            if any(
+                item.status not in {"projected", "degraded"} for item in self.calendar_projections
+            ):
+                raise ValueError("prepared_upstream_receipt_has_unusable_calendar")
+        elif self.status == "source_not_admitted":
+            if self.failure_stage != "M01" or self.prepared_data is not None:
+                raise ValueError("source_terminal_receipt_status_mismatch")
+            if not any(item.status == "not_admitted" for item in self.source_results):
+                raise ValueError("source_terminal_receipt_requires_non_admission")
+            if self.calendar_projections:
+                raise ValueError("calendar_must_not_run_after_source_non_admission")
+        elif self.status == "calendar_withheld":
+            if self.failure_stage != "M02" or self.prepared_data is not None:
+                raise ValueError("calendar_terminal_receipt_status_mismatch")
+            if any(item.status != "accepted" for item in self.source_results):
+                raise ValueError("calendar_terminal_receipt_requires_accepted_sources")
+            if not any(
+                item.status in {"withheld", "rejected"} for item in self.calendar_projections
+            ):
+                raise ValueError("calendar_terminal_receipt_requires_withheld_projection")
+        return self
+
+    @classmethod
+    def create(
+        cls,
+        *,
+        command_id: str,
+        status: UpstreamPreparationStatus,
+        source_results: tuple[SourceAdmissionResult, ...],
+        calendar_projections: tuple[CalendarProjection, ...] = (),
+        prepared_data: PreparedDataEnvelope | None = None,
+        failure_stage: Literal["M01", "M02"] | None = None,
+        failure_reason: str | None = None,
+    ) -> "UpstreamPreparationReceipt":
+        material = {
+            "contract_version": "1.0.0",
+            "command_id": command_id,
+            "status": status,
+            "source_results": source_results,
+            "calendar_projections": calendar_projections,
+            "prepared_data": prepared_data,
+            "failure_stage": failure_stage,
+            "failure_reason": failure_reason,
+        }
+        fingerprint = semantic_fingerprint(material)
+        return cls(
+            receipt_id=f"upstream-preparation:{fingerprint[:24]}",
+            semantic_fingerprint=fingerprint,
+            **material,
+        )
 
 
 class ApplicationCommand(BaseModel):

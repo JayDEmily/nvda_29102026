@@ -8,7 +8,7 @@ from datetime import UTC, datetime
 from hashlib import sha256
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 from .contracts import (
     CaptureIdFactory,
@@ -18,6 +18,7 @@ from .contracts import (
     SourceAdmissionRequest,
     SourceAdmissionResult,
     SourceArtifactEnvelope,
+    SourceArtifactIdFactory,
     SourceFactRequirement,
     SourceFamilyContract,
     SourceFamilyRegistry,
@@ -141,9 +142,11 @@ class SourceAdmissionService:
         *,
         registry: SourceFamilyRegistry,
         capture_id_factory: CaptureIdFactory,
+        source_artifact_id_factory: SourceArtifactIdFactory,
     ) -> None:
         self._registry = registry
         self._capture_id_factory = capture_id_factory
+        self._source_artifact_id_factory = source_artifact_id_factory
 
     def admit(self, request: SourceAdmissionRequest) -> SourceAdmissionResult:
         fingerprint = sha256(request.captured_material).hexdigest()
@@ -157,7 +160,9 @@ class SourceAdmissionService:
                 reason="unsupported_family_contract_or_version",
                 content_sha256=fingerprint,
             )
-        if not isinstance(request.typed_payload, contract.payload_model):
+        try:
+            typed_payload = contract.payload_model.model_validate(request.typed_payload)
+        except (ValidationError, TypeError, ValueError):
             return SourceNonAdmission(
                 reason="typed_payload_contract_mismatch",
                 content_sha256=fingerprint,
@@ -178,13 +183,13 @@ class SourceAdmissionService:
             )
         if not _captured_material_matches_payload(
             request.captured_material,
-            request.typed_payload,
+            typed_payload,
         ):
             return SourceNonAdmission(
                 reason="captured_material_typed_payload_mismatch",
                 content_sha256=fingerprint,
             )
-        forbidden = _find_forbidden_keys(request.typed_payload.model_dump(mode="python"))
+        forbidden = _find_forbidden_keys(typed_payload.model_dump(mode="python"))
         if forbidden:
             return SourceNonAdmission(
                 reason="forbidden_source_payload_authority:" + ",".join(forbidden),
@@ -212,14 +217,33 @@ class SourceAdmissionService:
                 content_sha256=fingerprint,
             )
 
+        source_artifact_id = self._source_artifact_id_factory(
+            contract.family_id,
+            contract.contract_id,
+            request.source_object_id,
+            fingerprint,
+        )
+        if (
+            not isinstance(source_artifact_id, str)
+            or not source_artifact_id
+            or source_artifact_id.strip() != source_artifact_id
+            or any(character.isspace() for character in source_artifact_id)
+            or source_artifact_id in {request.source_object_id, capture_id, fingerprint}
+        ):
+            return SourceNonAdmission(
+                reason="invalid_repository_source_artifact_identity",
+                content_sha256=fingerprint,
+            )
+
         receipt = CaptureReceipt(
             capture_id=capture_id,
             content_sha256=fingerprint,
             captured_at_utc=request.captured_at_utc,
         )
         validation_status = "degraded" if request.declared_limitations else "admitted"
-        payload_copy = request.typed_payload.model_copy(deep=True)
+        payload_copy = typed_payload.model_copy(deep=True)
         envelope = SourceArtifactEnvelope(
+            source_artifact_id=source_artifact_id,
             family_id=contract.family_id,
             contract_id=contract.contract_id,
             schema_version=contract.schema_version,
@@ -256,6 +280,7 @@ class SourceAdmissionService:
                 signal_family_id=contract.signal_family_id or "",
                 source_object_id=request.source_object_id,
                 capture_id=capture_id,
+                source_artifact_id=source_artifact_id,
                 contract_id=contract.contract_id,
                 schema_version=contract.schema_version,
                 provider_id=request.provider_id,

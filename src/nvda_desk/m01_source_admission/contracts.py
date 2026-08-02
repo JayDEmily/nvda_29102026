@@ -5,7 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable
 from datetime import date, datetime
 from enum import StrEnum
-from typing import Literal, Protocol
+from typing import Any, Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -177,7 +177,7 @@ class SourceAdmissionRequest(BaseModel):
     source_timezone_raw: str | None = None
     captured_at_utc: datetime
     captured_material: bytes = Field(min_length=1)
-    typed_payload: BaseModel
+    typed_payload: dict[str, Any]
     declared_limitations: tuple[str, ...] = ()
 
 
@@ -200,6 +200,7 @@ class RawSignalBatch(BaseModel):
     signal_family_id: str = Field(min_length=1)
     source_object_id: str | None = None
     capture_id: str = Field(min_length=1)
+    source_artifact_id: str = Field(min_length=1)
     contract_id: str = Field(min_length=1)
     schema_version: str = Field(min_length=1)
     provider_id: str = Field(min_length=1)
@@ -215,6 +216,7 @@ class SourceArtifactEnvelope(BaseModel):
 
     model_config = ConfigDict(extra="forbid", frozen=True, arbitrary_types_allowed=True)
 
+    source_artifact_id: str = Field(min_length=1)
     family_id: str = Field(min_length=1)
     contract_id: str = Field(min_length=1)
     schema_version: str = Field(min_length=1)
@@ -260,6 +262,7 @@ class SourceNonAdmission(BaseModel):
 
 SourceAdmissionResult = SourceAdmissionAccepted | SourceNonAdmission
 CaptureIdFactory = Callable[[str], str]
+SourceArtifactIdFactory = Callable[[str, str, str | None, str], str]
 
 
 class SourceAdapter(Protocol):
