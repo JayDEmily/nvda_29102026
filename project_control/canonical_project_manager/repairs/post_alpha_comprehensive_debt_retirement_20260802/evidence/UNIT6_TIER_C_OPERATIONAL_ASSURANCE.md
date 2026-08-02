@@ -2,7 +2,7 @@
 
 ## Outcome
 
-PASS at working-tree validation; an exact clean-commit rerun follows this unit commit before Unit 7 semantic changes.
+PASS at exact clean commit `bb44560`.
 
 ## Admitted claims
 
@@ -31,3 +31,15 @@ The family `tier_c_operational_assurance` is `Tier C/current_nonblocking`, has i
 ## Guardrail retained
 
 The M00/M09 test-support extension accepts an optional already-validated `PreparedDataEnvelope`; default Tier A fixture behaviour is unchanged.
+
+## Exact clean-commit validation
+
+- Commit: `bb44560`
+- Offline non-editable install: PASS, 38 compatible distributions on CPython 3.13.5.
+- Installed-package smoke: PASS.
+- Tier C: 5/5 passed.
+- `alpha_current`: 19/19 blocks, 802 passed, zero skips.
+- Promotion receipt evidence hash: `1380640c9c2ecbafccdeb9d384caa5d46ce54ffc8df79b1835c2719b2efb4d4f`.
+- Tier B: 90/90 passed.
+- Black: 486 scoped files unchanged.
+- Ruff: zero findings.
