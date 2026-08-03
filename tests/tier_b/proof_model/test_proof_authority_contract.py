@@ -171,7 +171,7 @@ def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_deb
 ):
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1"
+    assert validate_active_control(REPO_ROOT) == "CONTINUATION:ALPHA_FOUNDATION_READY"
 
 
 def test_active_control_validation_accepts_m01_m03_semantic_continuity_pack(

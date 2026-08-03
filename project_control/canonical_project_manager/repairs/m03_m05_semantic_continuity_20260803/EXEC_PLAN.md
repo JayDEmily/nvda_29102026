@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** active
+**Status:** acceptance candidate; exact clean-commit promotion and archive verification pending
 **Authority token:** `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1`
 **Base commit:** `62009fce8f16b51a358ac8e5a6219eea3857697a`
 **Branch:** `work/m03-m05-semantic-continuity-repair-v1`
@@ -82,7 +82,8 @@ Every changed existing assertion-bearing test surface must be recorded in `TEST_
 - [x] Unit A expected-red proof.
 - [x] Unit B implementation.
 - [x] Unit C composition and operational proof.
-- [ ] Unit D complete acceptance and downloadable checkpoint (active).
+- [x] Unit D implementation, physical proof and control reconciliation complete.
+- [ ] Exact clean-commit promotion, final receipt and independently verified downloadable checkpoint.
 
 ## Current bounded evidence
 
@@ -92,4 +93,5 @@ Every changed existing assertion-bearing test surface must be recorded in `TEST_
 - Physical Tier A candidate: 2,006 passed.
 - Physical Tier B candidate: 94 passed.
 - Physical Tier C candidate: 5 passed from a non-editable installation.
-- Acceptance, vocabulary, proof-block and signed-promotion gates remain Unit D work until the final control state is reconciled.
+- Vocabulary and proof-control gates are reconciled on the candidate tree.
+- Exact clean-commit signed promotion and archive verification remain before final acceptance is claimed.

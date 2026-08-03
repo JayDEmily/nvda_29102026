@@ -5,8 +5,8 @@
 | Field | Current truth |
 |---|---|
 | Status | `CONTINUATION:ALPHA_FOUNDATION_READY`; normal incremental feature development open |
-| Date | 2026-08-02 |
-| Continuation base | primary repository at `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
+| Date | 2026-08-03 |
+| Continuation base | accepted semantic-continuity implementation at `7ff10db`; exact checkpoint commit is recorded in the final repair receipt |
 | Assurance reference only | secondary repository at `fffb4e31c03a3bc031f28eba89f9a59562484a8f` |
 | Parent plan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Live pointer | `ROADMAP_LEDGER_V2.md` |
@@ -61,7 +61,7 @@ architecture. In particular:
   provider boundaries, five non-blocking Tier C tests and 593 recorded
   vocabulary dispositions;
 - the final retained physical Tier A, Tier B and Tier C universes pass
-  1,990/1,990, 92/92 and 5/5 with zero failures, errors or skips;
+  2,006/2,006, 94/94 and 5/5 with zero failures, errors or skips;
 - canonical v4 admission covers all 203 physical test paths exactly once, while
   21 retired predecessor families remain provenance-only and outside active proof;
 - the final curated `alpha_current` route passes all 19 blocks and its exact
@@ -77,6 +77,16 @@ architecture. In particular:
 These facts justify continuation from the primary repository and preservation
 of its architecture. They do not justify discarding the accepted work or
 replacing the project method.
+
+The later guidance-deviation audit identified two material semantic-continuity
+gaps that the earlier readiness proof did not exercise. Those gaps are now
+closed by bounded repairs: M03 constructs prepared values from exact M01/M02
+owner evidence, M05 projects exact M03 values into actual bounded temporal,
+regime, options, posture, M07 and M08 owner routes, and M00 retains the exact
+typed cognition outcome. The operational proof now checks material values and
+concrete M07/M08 decisions while preserving its original paper-run outcome.
+Caller-authored `190 → 999` substitution fails before the next semantic owner
+executes.
 
 ### 2.2 Readiness baseline gaps closed by Units 1–6
 

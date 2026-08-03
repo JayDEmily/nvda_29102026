@@ -6,13 +6,13 @@
 |---|---|
 | Programme | accepted M00–M15 modular-monolith alpha; continuation-ready baseline published |
 | Branch | `work/m03-m05-semantic-continuity-repair-v1` |
-| Continuation source checkpoint | `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
+| Continuation source checkpoint | accepted M01–M05 semantic-continuity implementation at `7ff10db`; exact final checkpoint commit recorded in the repair receipt |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
-| Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
-| Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | M03→M05 semantic-continuity repair active from accepted M01–M03 checkpoint |
-| Active control pack | `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1` |
-| Current repository claim | M01/M02→M03 semantic continuity remains accepted. M03→M05 semantic continuity is the active bounded repair; continuation readiness remains suspended until exact M03 values and concrete M07/M08 owner products drive the canonical M05 route. |
+| Latest accepted implementation slice | canonical M03→M05 semantic-continuity repair at `7ff10db` |
+| Latest accepted control evidence | M03→M05 repair acceptance and final checkpoint receipt |
+| Current active slice | none — continuation-ready checkpoint published |
+| Active control pack | none — canonical ExecPlan only; continuation-ready checkpoint published |
+| Current repository claim | M01/M02→M03 and M03→M05 semantic continuity are accepted. Exact M03 values drive actual bounded M05 owners, concrete M07/M08 products bind candidate authority, and the strengthened operational proof preserves paper-run behaviour. |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction
@@ -236,14 +236,6 @@ failing node appeared. M04, M05, M06 and M09 namespace audits are clean.
 
 ## Immediate next action
 
-The published foundation-readiness checkpoint has been invalidated by new semantic-continuity evidence. A bounded M01–M03 repair is active. Exact canonical admission
-covers 203/203 physical paths; the 21 retired predecessor families remain
-provenance-only; physical Tier A passes 1,990/1,990, Tier B passes 92/92 and Tier
-C passes 5/5. The exact module graph, fresh-import, state-isolation, replay,
-forged-boundary, immutable-policy, scanner and vocabulary gates are green. The
-final signed `alpha_current` result and exact Git checkpoint are published with
-the full-history archive.
+The direct guidance-deviation audit identified two semantic discontinuities. The bounded M01/M02→M03 and M03→M05 repairs are now accepted: exact owner evidence constructs M03, exact M03 values drive the actual bounded M05 owners, concrete M07/M08 products bind candidate authority, and caller-authored value substitution fails closed. Physical Tier A passes 2,006/2,006, Tier B passes 94/94 and Tier C passes 5/5 on the accepted implementation tree; final exact-commit promotion and archive evidence are recorded by the repair checkpoint receipt.
 
-Use the accepted `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` checkpoint as the base for a separately bounded M03→M05 semantic-continuity repair, then reassess continuation readiness. Donor integration, live operation, production durability,
-profitability and production replay remain closed unless separately authorised
-and proved.
+Normal incremental feature development may resume one concept at a time under `project_control/canonical_project_manager/CONTINUATION.md`. Donor integration, live operation, production durability, profitability and production replay remain closed unless separately authorised and proved.

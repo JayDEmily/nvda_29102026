@@ -51,3 +51,25 @@ Alpha consolidation is complete when the final clean commit reproduces:
 4. complete Tier B shadow;
 5. Black, Ruff and `git diff --check`; and
 6. a full-history checkpoint whose extracted worktree is clean, contains every tracked file and passes `git fsck --full --no-dangling`.
+
+## Semantic-continuity supersession addendum — 2026-08-03
+
+The original closeout remains historical evidence for the bounded alpha it
+accepted, but its canonical-path description did not prove that prepared and
+serial-cognition values were derived from the authority being cited. A later
+guidance-deviation audit demonstrated two concrete substitutions and therefore
+superseded that part of the readiness claim.
+
+The bounded M01/M02→M03 and M03→M05 repairs now establish the current canonical
+path: exact typed M01/M02 owner evidence constructs M03; exact M03 values drive
+the actual bounded temporal, regime, options, posture, M07 and M08 owners; M05
+returns a typed outcome containing the concrete owner products; and M00 retains
+that outcome through the paper-run receipt. The strengthened Tier C specimen
+checks material values and owner decisions while preserving its original
+`paper_filled` and no-live-effect propositions.
+
+This addendum does not alter the original ceilings for live brokerage, durable
+operation, production readiness, autonomous trading, profitability or
+authoritative production replay. Current exact counts, proof-control state and
+checkpoint identity are recorded in the two repair validation summaries and
+the final checkpoint receipt.

@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** alpha foundation checkpoint superseded; bounded M03→M05 semantic continuity repair active
+**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -17,7 +17,7 @@ protect a new semantic state. Required validation still runs; successful raw
 transcripts are not committed by default when a concise reproducible result and
 node-level failure delta establish the same claim.
 
-The alpha-delivery history governed by this plan is accepted. The accepted continuation checkpoint was superseded by direct semantic-continuity evidence. M01/M02→M03 is repaired and accepted. The separately bounded M03→M05 repair is active under `project_control/canonical_project_manager/repairs/m03_m05_semantic_continuity_20260803/EXEC_PLAN.md`; normal incremental feature development remains suspended until that repair is accepted. Live trading, production durability, operational commissioning, profitability and production replay remain unproven.
+The alpha-delivery history governed by this plan is accepted. The direct semantic-continuity audit lawfully superseded the earlier readiness checkpoint; the bounded M01/M02→M03 and M03→M05 repairs are now accepted under their recorded plans. Exact M03 values drive the canonical M05 owner composition, and concrete M07/M08 products bind candidate authority. Normal incremental feature development is reopened under the continuation strategy. Live trading, production durability, operational commissioning, profitability and production replay remain unproven.
 
 ## 1. Objective
 

@@ -1,18 +1,2802 @@
 {
   "schema_version": "v3_namespaced_occurrence_scoped",
   "trigger": "vocabulary_governance",
-  "namespace": "global",
-  "imported_namespaces": [],
-  "scan_paths": [
-    "src",
-    "tests",
-    "docs",
-    "config"
+  "namespace": "m05",
+  "imported_namespaces": [
+    "global",
+    "m03",
+    "m04",
+    "m07",
+    "m08"
   ],
-  "scanned_file_count": 563,
-  "vocabulary_touched": false,
-  "fingerprint": "1532f6d89d80091906d959cfc78488db23b17804e5de4fc702160592090c8edc",
-  "resolved_occurrence_count": 2067,
-  "candidates": [],
-  "candidate_classifications": []
+  "scan_paths": [
+    "docs/02.1_BRIEFING_AND_EXECUTION_OPERATING_MODEL_WORKING.md",
+    "docs/04.2_PREPARED_DATA_CONTRACTS_WORKING.md",
+    "docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md",
+    "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md",
+    "docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md",
+    "src/nvda_desk/contracts/stage_inputs.py",
+    "src/nvda_desk/contracts/serial_spine.py",
+    "src/nvda_desk/cognition/ingress",
+    "src/nvda_desk/cognition/serial",
+    "src/nvda_desk/domain/execution",
+    "src/nvda_desk/runtime/orchestrator.py",
+    "src/nvda_desk/m05_serial_cognition",
+    "tests/support/m05_k08_k09_contract_harness.py",
+    "tests/tier_a/m05_k08_k09",
+    "tests/tier_a/runtime/test_fwd012_reopened_row_serial_cognition_spine_proof.py",
+    "tests/tier_a/runtime/test_serial_stage_packet_emission_surface.py",
+    "tests/tier_a/serial_recommendation",
+    "tests/tier_b/serial_boundaries",
+    "docs/02.2_SIGNAL_INFORMED_INTRADAY_PHASE_WORKING.md",
+    "src/nvda_desk/domain/temporal"
+  ],
+  "scanned_file_count": 44,
+  "vocabulary_touched": true,
+  "fingerprint": "cdf1e6d3cafb45e6bb04dd054fce4407db3f2e22e2a2fbaa7ab738ece9386297",
+  "resolved_occurrence_count": 317,
+  "candidates": [
+    {
+      "phrase": "m08 playbook catalogue",
+      "nearest_slug": "playbook_catalogue",
+      "nearest_label": "Playbook Catalogue",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-61fc36206055e68b",
+      "raw_phrase": "m08_playbook_catalogue",
+      "nearest_identity": "m08.playbook_catalogue",
+      "line": 31,
+      "column": 16,
+      "source_context": "from nvda_desk.m08_playbook_catalogue import (",
+      "context_sha256": "d5150c2006afdce73a32109663b533a88256d3e19a7673b8a29752be0cfa130e",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "m08 playbook catalogue",
+      "nearest_slug": "playbook_catalogue",
+      "nearest_label": "Playbook Catalogue",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-a96d14076fdb3b33",
+      "raw_phrase": "m08_playbook_catalogue",
+      "nearest_identity": "m08.playbook_catalogue",
+      "line": 36,
+      "column": 16,
+      "source_context": "from nvda_desk.m08_playbook_catalogue.contracts import (",
+      "context_sha256": "f0fd9ccc3e0a09dc6a10031aa40e6d062f940fa8b595e29c92620e4c4acc8dbd",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal context service",
+      "nearest_slug": "temporal_context",
+      "nearest_label": "Temporal Context",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-71f82ac172a14519",
+      "raw_phrase": "temporal_context_service",
+      "nearest_identity": "global.temporal_context",
+      "line": 43,
+      "column": 25,
+      "source_context": "from nvda_desk.services.temporal_context_service import TemporalContextService",
+      "context_sha256": "39e452311fb24548b701d0b3ab290793f747f6d7edf43bf7f8e8c3f912097fd7",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "prepared data",
+      "nearest_slug": "prepared_data_envelope",
+      "nearest_label": "Prepared Data Envelope",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-c8f020515d52ed12",
+      "raw_phrase": "prepared_data",
+      "nearest_identity": "m03.prepared_data_envelope",
+      "line": 88,
+      "column": 5,
+      "source_context": "    prepared_data: PreparedDataEnvelope",
+      "context_sha256": "ac187da815c46f454f2380b660db1ba6c0aab1a9d0ec2dbfa495d18702c1170d",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "nearest_slug": "eligibility_decision",
+      "nearest_label": "Eligibility Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-03db89ec1ce5cd15",
+      "raw_phrase": "eligibility_decision_id",
+      "nearest_identity": "m08.eligibility_decision",
+      "line": 98,
+      "column": 5,
+      "source_context": "    eligibility_decision_id: str = Field(min_length=1)",
+      "context_sha256": "068b7dc05ac836636d6c707bb9b8e654e51509c4d463ecf063a1b2134b541c74",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "prepared data",
+      "nearest_slug": "prepared_data_envelope",
+      "nearest_label": "Prepared Data Envelope",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-a7c036f955646699",
+      "raw_phrase": "prepared_data",
+      "nearest_identity": "m03.prepared_data_envelope",
+      "line": 130,
+      "column": 56,
+      "source_context": "        if self.modifier_receipt_emitted_at_utc < self.prepared_data.effective_at_utc:",
+      "context_sha256": "0fa0d8ddcc3b8b26e5fad51444434575af6cb68f3d2aefd60ee3e873d46d8846",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-880a773debc4c6db",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 143,
+      "column": 5,
+      "source_context": "    modifier_receipt: ModifierApplicationReceipt | None",
+      "context_sha256": "28cac925bdc42fd271d36db960a5eeb8a34a6417ff866e09d26be70493a68fd3",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-4864ca37c43f1e9e",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 167,
+      "column": 17,
+      "source_context": "        if self.modifier_receipt is not None:",
+      "context_sha256": "94d6908cd5fb6edc9f60727936f228f07e2206d4bf092e2d00e123adea3b54b0",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-3613639db4dfff53",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 170,
+      "column": 22,
+      "source_context": "                self.modifier_receipt.receipt_id,",
+      "context_sha256": "3068e72f45835f8d9ca659b777dd6ec6e01f3d020010071b5328ed1717f6a2da",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-341d10f04c7cff15",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 171,
+      "column": 22,
+      "source_context": "                self.modifier_receipt.schema_version,",
+      "context_sha256": "47236263e9d53dc21b76836e3cc05154a9166d340966fabe3756d197ea497388",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9e2bec35aa3a3d19",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 172,
+      "column": 43,
+      "source_context": "                semantic_fingerprint(self.modifier_receipt.model_dump(mode=\"python\")),",
+      "context_sha256": "895df2a501ab813e37a4266facce6c9dafd1107b3d255a532f8a0344f1a44890",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-8f1ba196f1de58e1",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 189,
+      "column": 21,
+      "source_context": "            if self.modifier_receipt is None:",
+      "context_sha256": "0e9b044c7de3756100e121ca7faaa635237bf7a2d9218767c75d0e51d077bc24",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "prepared data",
+      "nearest_slug": "prepared_data_envelope",
+      "nearest_label": "Prepared Data Envelope",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-28b1ba78cd29e455",
+      "raw_phrase": "prepared_data",
+      "nearest_identity": "m03.prepared_data_envelope",
+      "line": 216,
+      "column": 29,
+      "source_context": "        prepared = governed.prepared_data",
+      "context_sha256": "6d4226f1e9746e3ecad7414f28c975860e2e72e9437fda7545164ff271188743",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-532fc3c565d37337",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 233,
+      "column": 9,
+      "source_context": "        temporal_stage_input = self._stage_input(",
+      "context_sha256": "b419b1d96890684babe3a4c031c532349a25d8a648aa0917114e58f56c555aba",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-255783a1bba73685",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 246,
+      "column": 9,
+      "source_context": "        regime_stage_input = self._stage_input(",
+      "context_sha256": "e89b77112fac1568ce87afbe2e89f154a63cde808dd5bfe21233449e676aa66f",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-e6bfca9c9cae45fe",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 258,
+      "column": 9,
+      "source_context": "        options_stage_input = self._stage_input(",
+      "context_sha256": "f711fbcf06ba4f3552585f7f5753ac3868e968ad6f425fde8fa5cdac870c42ed",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-03507934aa751f25",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 274,
+      "column": 13,
+      "source_context": "            temporal_stage_input,",
+      "context_sha256": "fed9544995440c89951aea9fea89c7f2a42f0e94104b2e0c98b1ceef163fd38a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-5dee006ffc3419f3",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 290,
+      "column": 13,
+      "source_context": "            regime_stage_input,",
+      "context_sha256": "6d18c21a4cf964cc1c53b9f6889fd497c65db6be1bdb01e44f4d8a85a3c19e0f",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7a06af0908851d7f",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 307,
+      "column": 13,
+      "source_context": "            options_stage_input,",
+      "context_sha256": "790b0bc4c0e4af5afd79aaaf02cd329b0996e87a128d4382c98ba007626f4ff5",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-777b3189ee16bfa7",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 324,
+      "column": 9,
+      "source_context": "        modifier_receipt = build_k12_receipt(",
+      "context_sha256": "385cb6d9f4c8ef7b5b1bc1e91f7e519a3746e7f70f8e683ec913316f1ddfa00b",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-d4dd4212b0a43e32",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 330,
+      "column": 84,
+      "source_context": "        posture_refs = self._m07_refs(governed.modifier_bundle, modifier_decision, modifier_receipt)",
+      "context_sha256": "4e7963264505417601f4ab77d0140edfd8a94b373e25c678a6c89fde6fb80f57",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier decision status",
+      "nearest_slug": "modifier_decision",
+      "nearest_label": "Modifier Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7df6e4d317485ef6",
+      "raw_phrase": "modifier_decision_status",
+      "nearest_identity": "m07.modifier_decision",
+      "line": 336,
+      "column": 18,
+      "source_context": "                \"modifier_decision_status\": modifier_decision.status,",
+      "context_sha256": "d210dc535c5b596277826365c229b6466597ec317cb1d5e2734a38365e4a2765",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-70ad42044deaac86",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 342,
+      "column": 54,
+      "source_context": "        if modifier_decision.status == \"rejected\" or modifier_receipt is None:",
+      "context_sha256": "94a527d31d7fe78ccb9da4003bdc9de05688bd17e7309534fecf32e3853ad98a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-c11cfbf7a92e01b9",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 356,
+      "column": 21,
+      "source_context": "                    temporal_stage_input,",
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-3a5873dfbfa9d158",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 357,
+      "column": 21,
+      "source_context": "                    regime_stage_input,",
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9ea2c0e45500de12",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 358,
+      "column": 21,
+      "source_context": "                    options_stage_input,",
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-5c8b9356c27e5b7a",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 367,
+      "column": 17,
+      "source_context": "                modifier_receipt=None,",
+      "context_sha256": "e787212a134625cf133dd5d4414c1193e39f005cd540de7403b5213ccd568484",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-26b1122943bb1671",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 397,
+      "column": 21,
+      "source_context": "                    temporal_stage_input,",
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-58affb0ee858c10a",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 398,
+      "column": 21,
+      "source_context": "                    regime_stage_input,",
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-e85bf08a3e33e12a",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 399,
+      "column": 21,
+      "source_context": "                    options_stage_input,",
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-624b7a5d6ad3e06e",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 408,
+      "column": 17,
+      "source_context": "                modifier_receipt=modifier_receipt,",
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-1a50cf3dab46b2fa",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 408,
+      "column": 34,
+      "source_context": "                modifier_receipt=modifier_receipt,",
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-79915cad4781f0e6",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 416,
+      "column": 13,
+      "source_context": "            modifier_receipt,",
+      "context_sha256": "54a5c6201f1e4ec23ad2faddd44500ec03b2713c9c028e2a9f2850db0cc9d863",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "nearest_slug": "eligibility_decision",
+      "nearest_label": "Eligibility Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-6ee6dc7bb78d47fe",
+      "raw_phrase": "eligibility_decision_id",
+      "nearest_identity": "m08.eligibility_decision",
+      "line": 432,
+      "column": 34,
+      "source_context": "            decision_id=governed.eligibility_decision_id,",
+      "context_sha256": "050e7ead3b80376083dd740bae02c09b39cabe9bdf3b6c9b4cf9d733a49378b3",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-2ef3627a3806e6a2",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 459,
+      "column": 21,
+      "source_context": "                    temporal_stage_input,",
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-7fe880b65280d2c0",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 460,
+      "column": 21,
+      "source_context": "                    regime_stage_input,",
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-4ff671df558ccac3",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 461,
+      "column": 21,
+      "source_context": "                    options_stage_input,",
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9be2578f8d77dad5",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 471,
+      "column": 17,
+      "source_context": "                modifier_receipt=modifier_receipt,",
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-bf9b1fc15437978c",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 471,
+      "column": 34,
+      "source_context": "                modifier_receipt=modifier_receipt,",
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-d7deadf06a6686ab",
+      "raw_phrase": "temporal_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 510,
+      "column": 13,
+      "source_context": "            temporal_stage_input,",
+      "context_sha256": "fed9544995440c89951aea9fea89c7f2a42f0e94104b2e0c98b1ceef163fd38a",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "regime stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-6a896830fe5648a4",
+      "raw_phrase": "regime_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 511,
+      "column": 13,
+      "source_context": "            regime_stage_input,",
+      "context_sha256": "6d18c21a4cf964cc1c53b9f6889fd497c65db6be1bdb01e44f4d8a85a3c19e0f",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "options stage input",
+      "nearest_slug": "stage_input",
+      "nearest_label": "Stage Input",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-764b9a72d394a9f5",
+      "raw_phrase": "options_stage_input",
+      "nearest_identity": "m05.stage_input",
+      "line": 512,
+      "column": 13,
+      "source_context": "            options_stage_input,",
+      "context_sha256": "790b0bc4c0e4af5afd79aaaf02cd329b0996e87a128d4382c98ba007626f4ff5",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-887d242698280c03",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 524,
+      "column": 13,
+      "source_context": "            modifier_receipt=modifier_receipt,",
+      "context_sha256": "87f91208cd89e64c43be1cfbbea3f96705c05958ce22fc46d13a4c4821cb07d7",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-451facf52f190ba1",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 524,
+      "column": 30,
+      "source_context": "            modifier_receipt=modifier_receipt,",
+      "context_sha256": "87f91208cd89e64c43be1cfbbea3f96705c05958ce22fc46d13a4c4821cb07d7",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "prepared data",
+      "nearest_slug": "prepared_data_envelope",
+      "nearest_label": "Prepared Data Envelope",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-14a7a0900098042e",
+      "raw_phrase": "prepared_data",
+      "nearest_identity": "m03.prepared_data_envelope",
+      "line": 536,
+      "column": 28,
+      "source_context": "        prepared = request.prepared_data",
+      "context_sha256": "42c0168f0c34654c3ee381f6fa6ec18283c44583cf64412e9bb4a5b225b175fb",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "nearest_slug": "eligibility_decision",
+      "nearest_label": "Eligibility Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-00540b0d30c22800",
+      "raw_phrase": "eligibility_decision_id",
+      "nearest_identity": "m08.eligibility_decision",
+      "line": 1030,
+      "column": 14,
+      "source_context": "            \"eligibility_decision_id\": decision.decision_id,",
+      "context_sha256": "1ad64e83a283fe7bd172afa4b57087459359623022e3d60675287417e6d898a1",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "eligibility decision fingerprint",
+      "nearest_slug": "eligibility_decision",
+      "nearest_label": "Eligibility Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-341c002031e6c218",
+      "raw_phrase": "eligibility_decision_fingerprint",
+      "nearest_identity": "m08.eligibility_decision",
+      "line": 1031,
+      "column": 14,
+      "source_context": "            \"eligibility_decision_fingerprint\": decision.semantic_fingerprint,",
+      "context_sha256": "b11271aa79988bb8b7c760d78bc40fabbd9947e589ff506cd13e0c12be6f7b79",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "eligibility decision fingerprint",
+      "nearest_slug": "eligibility_decision",
+      "nearest_label": "Eligibility Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-bd07c099747fc285",
+      "raw_phrase": "eligibility_decision_fingerprint",
+      "nearest_identity": "m08.eligibility_decision",
+      "line": 1044,
+      "column": 14,
+      "source_context": "            \"eligibility_decision_fingerprint\": decision.semantic_fingerprint,",
+      "context_sha256": "b11271aa79988bb8b7c760d78bc40fabbd9947e589ff506cd13e0c12be6f7b79",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "intraday phase authority state",
+      "nearest_slug": "intraday_phase_state",
+      "nearest_label": "Intraday Phase State",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9096ed4ea184c4d3",
+      "raw_phrase": "intraday_phase_authority_state",
+      "nearest_identity": "m05.intraday_phase_state",
+      "line": 99,
+      "column": 18,
+      "source_context": "                \"intraday_phase_authority_state\",",
+      "context_sha256": "4eccd5aaf54f26b16f3feb0724abaebb543e1dac0fbe1b04dc33bfa9824ffa43",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "intraday phase result id",
+      "nearest_slug": "intraday_phase_result",
+      "nearest_label": "Intraday Phase Result",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-474e092c3175ef3e",
+      "raw_phrase": "intraday_phase_result_id",
+      "nearest_identity": "m05.intraday_phase_result",
+      "line": 100,
+      "column": 18,
+      "source_context": "                \"intraday_phase_result_id\",",
+      "context_sha256": "93afadd37229f1884cc43b79f07104cfbc5d88935f1b08fcca30e5b1cb99de87",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "intraday phase fingerprint",
+      "nearest_slug": "intraday_phase",
+      "nearest_label": "Intraday Phase",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-b5a4109fc5eee360",
+      "raw_phrase": "intraday_phase_fingerprint",
+      "nearest_identity": "m05.intraday_phase",
+      "line": 101,
+      "column": 18,
+      "source_context": "                \"intraday_phase_fingerprint\",",
+      "context_sha256": "d5a35736213ed2c9f5e946c77d16942355b4c0acef474ed507cc06bb9e0155fb",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "intraday phase policy version",
+      "nearest_slug": "intraday_phase_policy",
+      "nearest_label": "Intraday Phase Policy",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-4c858b084adaddbf",
+      "raw_phrase": "intraday_phase_policy_version",
+      "nearest_identity": "m05.intraday_phase_policy",
+      "line": 102,
+      "column": 18,
+      "source_context": "                \"intraday_phase_policy_version\",",
+      "context_sha256": "f51361771dc8098bfe569390c45893099d8579a291dc093418c535bda863f6de",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "intraday phase state version",
+      "nearest_slug": "intraday_phase_state",
+      "nearest_label": "Intraday Phase State",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-487d01e2647b3a2e",
+      "raw_phrase": "intraday_phase_state_version",
+      "nearest_identity": "m05.intraday_phase_state",
+      "line": 103,
+      "column": 18,
+      "source_context": "                \"intraday_phase_state_version\",",
+      "context_sha256": "3a08593a8b58a13a0332c352378e4a668927fd6d95a5a4443bb80938276019f0",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier decision status",
+      "nearest_slug": "modifier_decision",
+      "nearest_label": "Modifier Decision",
+      "score": 93,
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-fbac82851500ec96",
+      "raw_phrase": "modifier_decision_status",
+      "nearest_identity": "m07.modifier_decision",
+      "line": 109,
+      "column": 32,
+      "source_context": "        \"posture\": frozenset({\"modifier_decision_status\", \"posture_policy_ref\"}),",
+      "context_sha256": "10d782e97b83f11fefdab70316347d8f143e3927ead12b795e1eb31f600402e1",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "prepared data",
+      "nearest_slug": "prepared_data_envelope",
+      "nearest_label": "Prepared Data Envelope",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-34061fa46f3fe10b",
+      "raw_phrase": "prepared_data",
+      "nearest_identity": "m03.prepared_data_envelope",
+      "line": 847,
+      "column": 13,
+      "source_context": "    assert \"prepared_data\" in fields",
+      "context_sha256": "0dd10587b051f6bad72180eaef2c1fb2c76ff95791fb1657b2fba10b9948eb71",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "temporal context service",
+      "nearest_slug": "temporal_context",
+      "nearest_label": "Temporal Context",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-55fa14ebf9dbff85",
+      "raw_phrase": "temporal_context_service",
+      "nearest_identity": "global.temporal_context",
+      "line": 891,
+      "column": 29,
+      "source_context": "    from nvda_desk.services.temporal_context_service import TemporalContextService",
+      "context_sha256": "17dce592a0ca3a28509fadb79540cd6870598b529b039c46c7a9a620b4820dbb",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-12e44cbec544127b",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 915,
+      "column": 20,
+      "source_context": "    assert outcome.modifier_receipt is not None",
+      "context_sha256": "23bb29d49a28f63cbf5f5da98d519eb42bf281717b6356f2ba2a157c372fd789",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-b9464d87894328a9",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 926,
+      "column": 17,
+      "source_context": "        outcome.modifier_receipt.receipt_id,",
+      "context_sha256": "f2495a49481fe3746f37424d0bdacf79d99ba04b7a231e9e85bf3caec43db926",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-9a0732be4dac8bc5",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 927,
+      "column": 17,
+      "source_context": "        outcome.modifier_receipt.schema_version,",
+      "context_sha256": "fe57717a67c538d6e4a369d83c82efa88c425e8cc656d93dd0d93c322385aaaa",
+      "occurrence_kind": "identifier"
+    },
+    {
+      "phrase": "modifier receipt",
+      "nearest_slug": "modifier_application_receipt",
+      "nearest_label": "Modifier Application Receipt",
+      "score": 93,
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "resolution_required": "llm_escalation",
+      "occurrence_id": "VOC-OCC-5f8d7b9c3c233489",
+      "raw_phrase": "modifier_receipt",
+      "nearest_identity": "m07.modifier_application_receipt",
+      "line": 928,
+      "column": 52,
+      "source_context": "        m05.contracts.semantic_fingerprint(outcome.modifier_receipt.model_dump(mode=\"python\")),",
+      "context_sha256": "7eb1d2b1d7c92f3745159b2dce5da4498b1fabb1cb9391672cb1fa35347eeb78",
+      "occurrence_kind": "identifier"
+    }
+  ],
+  "candidate_classifications": [
+    {
+      "phrase": "m08 playbook catalogue",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "playbook_catalogue",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "m08_playbook_catalogue",
+        "matched_slug": "playbook_catalogue",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "m08_playbook_catalogue",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "m08_playbook_catalogue",
+            "matched_slug": "playbook_catalogue",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-61fc36206055e68b",
+      "line": 31,
+      "context_sha256": "d5150c2006afdce73a32109663b533a88256d3e19a7673b8a29752be0cfa130e"
+    },
+    {
+      "phrase": "m08 playbook catalogue",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "playbook_catalogue",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "m08_playbook_catalogue",
+        "matched_slug": "playbook_catalogue",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "m08_playbook_catalogue",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "m08_playbook_catalogue",
+            "matched_slug": "playbook_catalogue",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-a96d14076fdb3b33",
+      "line": 36,
+      "context_sha256": "f0fd9ccc3e0a09dc6a10031aa40e6d062f940fa8b595e29c92620e4c4acc8dbd"
+    },
+    {
+      "phrase": "temporal context service",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "temporal_context",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_context_service",
+        "matched_slug": "temporal_context",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_context_service",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_context_service",
+            "matched_slug": "temporal_context",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-71f82ac172a14519",
+      "line": 43,
+      "context_sha256": "39e452311fb24548b701d0b3ab290793f747f6d7edf43bf7f8e8c3f912097fd7"
+    },
+    {
+      "phrase": "prepared data",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "prepared_data_envelope",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "prepared_data",
+        "matched_slug": "prepared_data_envelope",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "prepared_data",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "prepared_data",
+            "matched_slug": "prepared_data_envelope",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-c8f020515d52ed12",
+      "line": 88,
+      "context_sha256": "ac187da815c46f454f2380b660db1ba6c0aab1a9d0ec2dbfa495d18702c1170d"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "eligibility_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "eligibility_decision_id",
+        "matched_slug": "eligibility_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "eligibility_decision_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "eligibility_decision_id",
+            "matched_slug": "eligibility_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-03db89ec1ce5cd15",
+      "line": 98,
+      "context_sha256": "068b7dc05ac836636d6c707bb9b8e654e51509c4d463ecf063a1b2134b541c74"
+    },
+    {
+      "phrase": "prepared data",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "prepared_data_envelope",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "prepared_data",
+        "matched_slug": "prepared_data_envelope",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "prepared_data",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "prepared_data",
+            "matched_slug": "prepared_data_envelope",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-a7c036f955646699",
+      "line": 130,
+      "context_sha256": "0fa0d8ddcc3b8b26e5fad51444434575af6cb68f3d2aefd60ee3e873d46d8846"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-880a773debc4c6db",
+      "line": 143,
+      "context_sha256": "28cac925bdc42fd271d36db960a5eeb8a34a6417ff866e09d26be70493a68fd3"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-4864ca37c43f1e9e",
+      "line": 167,
+      "context_sha256": "94d6908cd5fb6edc9f60727936f228f07e2206d4bf092e2d00e123adea3b54b0"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-3613639db4dfff53",
+      "line": 170,
+      "context_sha256": "3068e72f45835f8d9ca659b777dd6ec6e01f3d020010071b5328ed1717f6a2da"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-341d10f04c7cff15",
+      "line": 171,
+      "context_sha256": "47236263e9d53dc21b76836e3cc05154a9166d340966fabe3756d197ea497388"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9e2bec35aa3a3d19",
+      "line": 172,
+      "context_sha256": "895df2a501ab813e37a4266facce6c9dafd1107b3d255a532f8a0344f1a44890"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-8f1ba196f1de58e1",
+      "line": 189,
+      "context_sha256": "0e9b044c7de3756100e121ca7faaa635237bf7a2d9218767c75d0e51d077bc24"
+    },
+    {
+      "phrase": "prepared data",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "prepared_data_envelope",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "prepared_data",
+        "matched_slug": "prepared_data_envelope",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "prepared_data",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "prepared_data",
+            "matched_slug": "prepared_data_envelope",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-28b1ba78cd29e455",
+      "line": 216,
+      "context_sha256": "6d4226f1e9746e3ecad7414f28c975860e2e72e9437fda7545164ff271188743"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-532fc3c565d37337",
+      "line": 233,
+      "context_sha256": "b419b1d96890684babe3a4c031c532349a25d8a648aa0917114e58f56c555aba"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-255783a1bba73685",
+      "line": 246,
+      "context_sha256": "e89b77112fac1568ce87afbe2e89f154a63cde808dd5bfe21233449e676aa66f"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-e6bfca9c9cae45fe",
+      "line": 258,
+      "context_sha256": "f711fbcf06ba4f3552585f7f5753ac3868e968ad6f425fde8fa5cdac870c42ed"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-03507934aa751f25",
+      "line": 274,
+      "context_sha256": "fed9544995440c89951aea9fea89c7f2a42f0e94104b2e0c98b1ceef163fd38a"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-5dee006ffc3419f3",
+      "line": 290,
+      "context_sha256": "6d18c21a4cf964cc1c53b9f6889fd497c65db6be1bdb01e44f4d8a85a3c19e0f"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7a06af0908851d7f",
+      "line": 307,
+      "context_sha256": "790b0bc4c0e4af5afd79aaaf02cd329b0996e87a128d4382c98ba007626f4ff5"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-777b3189ee16bfa7",
+      "line": 324,
+      "context_sha256": "385cb6d9f4c8ef7b5b1bc1e91f7e519a3746e7f70f8e683ec913316f1ddfa00b"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-d4dd4212b0a43e32",
+      "line": 330,
+      "context_sha256": "4e7963264505417601f4ab77d0140edfd8a94b373e25c678a6c89fde6fb80f57"
+    },
+    {
+      "phrase": "modifier decision status",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_decision_status",
+        "matched_slug": "modifier_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_decision_status",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_decision_status",
+            "matched_slug": "modifier_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7df6e4d317485ef6",
+      "line": 336,
+      "context_sha256": "d210dc535c5b596277826365c229b6466597ec317cb1d5e2734a38365e4a2765"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-70ad42044deaac86",
+      "line": 342,
+      "context_sha256": "94a527d31d7fe78ccb9da4003bdc9de05688bd17e7309534fecf32e3853ad98a"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-c11cfbf7a92e01b9",
+      "line": 356,
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-3a5873dfbfa9d158",
+      "line": 357,
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9ea2c0e45500de12",
+      "line": 358,
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-5c8b9356c27e5b7a",
+      "line": 367,
+      "context_sha256": "e787212a134625cf133dd5d4414c1193e39f005cd540de7403b5213ccd568484"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-26b1122943bb1671",
+      "line": 397,
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-58affb0ee858c10a",
+      "line": 398,
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-e85bf08a3e33e12a",
+      "line": 399,
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-624b7a5d6ad3e06e",
+      "line": 408,
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-1a50cf3dab46b2fa",
+      "line": 408,
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-79915cad4781f0e6",
+      "line": 416,
+      "context_sha256": "54a5c6201f1e4ec23ad2faddd44500ec03b2713c9c028e2a9f2850db0cc9d863"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "eligibility_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "eligibility_decision_id",
+        "matched_slug": "eligibility_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "eligibility_decision_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "eligibility_decision_id",
+            "matched_slug": "eligibility_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-6ee6dc7bb78d47fe",
+      "line": 432,
+      "context_sha256": "050e7ead3b80376083dd740bae02c09b39cabe9bdf3b6c9b4cf9d733a49378b3"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-2ef3627a3806e6a2",
+      "line": 459,
+      "context_sha256": "aab74444eaa846b8bba93817fb642033fe6787d536e08cb8c909c253c15aff7a"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-7fe880b65280d2c0",
+      "line": 460,
+      "context_sha256": "84c2303111af2aab58d3047f8799499e14bb85393cc1f024aeba66652aeeb19a"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-4ff671df558ccac3",
+      "line": 461,
+      "context_sha256": "1e4bc076bb7593e7d14f80973ebfacca26a9dd2c674d626187bfa82156d825cd"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9be2578f8d77dad5",
+      "line": 471,
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-bf9b1fc15437978c",
+      "line": 471,
+      "context_sha256": "bef6f8f1efeb80f7347867ecb1d4a05f40f2fc5ab712b8e48a83028a369071b2"
+    },
+    {
+      "phrase": "temporal stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-d7deadf06a6686ab",
+      "line": 510,
+      "context_sha256": "fed9544995440c89951aea9fea89c7f2a42f0e94104b2e0c98b1ceef163fd38a"
+    },
+    {
+      "phrase": "regime stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "regime_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "regime_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "regime_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-6a896830fe5648a4",
+      "line": 511,
+      "context_sha256": "6d18c21a4cf964cc1c53b9f6889fd497c65db6be1bdb01e44f4d8a85a3c19e0f"
+    },
+    {
+      "phrase": "options stage input",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "stage_input",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "options_stage_input",
+        "matched_slug": "stage_input",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "options_stage_input",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "options_stage_input",
+            "matched_slug": "stage_input",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-764b9a72d394a9f5",
+      "line": 512,
+      "context_sha256": "790b0bc4c0e4af5afd79aaaf02cd329b0996e87a128d4382c98ba007626f4ff5"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-887d242698280c03",
+      "line": 524,
+      "context_sha256": "87f91208cd89e64c43be1cfbbea3f96705c05958ce22fc46d13a4c4821cb07d7"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-451facf52f190ba1",
+      "line": 524,
+      "context_sha256": "87f91208cd89e64c43be1cfbbea3f96705c05958ce22fc46d13a4c4821cb07d7"
+    },
+    {
+      "phrase": "prepared data",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "prepared_data_envelope",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "prepared_data",
+        "matched_slug": "prepared_data_envelope",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "prepared_data",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "prepared_data",
+            "matched_slug": "prepared_data_envelope",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-14a7a0900098042e",
+      "line": 536,
+      "context_sha256": "42c0168f0c34654c3ee381f6fa6ec18283c44583cf64412e9bb4a5b225b175fb"
+    },
+    {
+      "phrase": "eligibility decision id",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "eligibility_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "eligibility_decision_id",
+        "matched_slug": "eligibility_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "eligibility_decision_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "eligibility_decision_id",
+            "matched_slug": "eligibility_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-00540b0d30c22800",
+      "line": 1030,
+      "context_sha256": "1ad64e83a283fe7bd172afa4b57087459359623022e3d60675287417e6d898a1"
+    },
+    {
+      "phrase": "eligibility decision fingerprint",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "eligibility_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "eligibility_decision_fingerprint",
+        "matched_slug": "eligibility_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "eligibility_decision_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "eligibility_decision_fingerprint",
+            "matched_slug": "eligibility_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-341c002031e6c218",
+      "line": 1031,
+      "context_sha256": "b11271aa79988bb8b7c760d78bc40fabbd9947e589ff506cd13e0c12be6f7b79"
+    },
+    {
+      "phrase": "eligibility decision fingerprint",
+      "path": "src/nvda_desk/m05_serial_cognition/composition.py",
+      "nearest_slug": "eligibility_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "eligibility_decision_fingerprint",
+        "matched_slug": "eligibility_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "eligibility_decision_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "eligibility_decision_fingerprint",
+            "matched_slug": "eligibility_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-bd07c099747fc285",
+      "line": 1044,
+      "context_sha256": "b11271aa79988bb8b7c760d78bc40fabbd9947e589ff506cd13e0c12be6f7b79"
+    },
+    {
+      "phrase": "intraday phase authority state",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "intraday_phase_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "intraday_phase_authority_state",
+        "matched_slug": "intraday_phase_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "intraday_phase_authority_state",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "intraday_phase_authority_state",
+            "matched_slug": "intraday_phase_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9096ed4ea184c4d3",
+      "line": 99,
+      "context_sha256": "4eccd5aaf54f26b16f3feb0724abaebb543e1dac0fbe1b04dc33bfa9824ffa43"
+    },
+    {
+      "phrase": "intraday phase result id",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "intraday_phase_result",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "intraday_phase_result_id",
+        "matched_slug": "intraday_phase_result",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "intraday_phase_result_id",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "intraday_phase_result_id",
+            "matched_slug": "intraday_phase_result",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-474e092c3175ef3e",
+      "line": 100,
+      "context_sha256": "93afadd37229f1884cc43b79f07104cfbc5d88935f1b08fcca30e5b1cb99de87"
+    },
+    {
+      "phrase": "intraday phase fingerprint",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "intraday_phase",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "intraday_phase_fingerprint",
+        "matched_slug": "intraday_phase",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "intraday_phase_fingerprint",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "intraday_phase_fingerprint",
+            "matched_slug": "intraday_phase",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-b5a4109fc5eee360",
+      "line": 101,
+      "context_sha256": "d5a35736213ed2c9f5e946c77d16942355b4c0acef474ed507cc06bb9e0155fb"
+    },
+    {
+      "phrase": "intraday phase policy version",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "intraday_phase_policy",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "intraday_phase_policy_version",
+        "matched_slug": "intraday_phase_policy",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "intraday_phase_policy_version",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "intraday_phase_policy_version",
+            "matched_slug": "intraday_phase_policy",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-4c858b084adaddbf",
+      "line": 102,
+      "context_sha256": "f51361771dc8098bfe569390c45893099d8579a291dc093418c535bda863f6de"
+    },
+    {
+      "phrase": "intraday phase state version",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "intraday_phase_state",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "intraday_phase_state_version",
+        "matched_slug": "intraday_phase_state",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "intraday_phase_state_version",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "intraday_phase_state_version",
+            "matched_slug": "intraday_phase_state",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-487d01e2647b3a2e",
+      "line": 103,
+      "context_sha256": "3a08593a8b58a13a0332c352378e4a668927fd6d95a5a4443bb80938276019f0"
+    },
+    {
+      "phrase": "modifier decision status",
+      "path": "src/nvda_desk/m05_serial_cognition/contracts.py",
+      "nearest_slug": "modifier_decision",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_decision_status",
+        "matched_slug": "modifier_decision",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_decision_status",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_decision_status",
+            "matched_slug": "modifier_decision",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-fbac82851500ec96",
+      "line": 109,
+      "context_sha256": "10d782e97b83f11fefdab70316347d8f143e3927ead12b795e1eb31f600402e1"
+    },
+    {
+      "phrase": "prepared data",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "prepared_data_envelope",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "prepared_data",
+        "matched_slug": "prepared_data_envelope",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "prepared_data",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "prepared_data",
+            "matched_slug": "prepared_data_envelope",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-34061fa46f3fe10b",
+      "line": 847,
+      "context_sha256": "0dd10587b051f6bad72180eaef2c1fb2c76ff95791fb1657b2fba10b9948eb71"
+    },
+    {
+      "phrase": "temporal context service",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "temporal_context",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "temporal_context_service",
+        "matched_slug": "temporal_context",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "temporal_context_service",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "temporal_context_service",
+            "matched_slug": "temporal_context",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-55fa14ebf9dbff85",
+      "line": 891,
+      "context_sha256": "17dce592a0ca3a28509fadb79540cd6870598b529b039c46c7a9a620b4820dbb"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-12e44cbec544127b",
+      "line": 915,
+      "context_sha256": "23bb29d49a28f63cbf5f5da98d519eb42bf281717b6356f2ba2a157c372fd789"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-b9464d87894328a9",
+      "line": 926,
+      "context_sha256": "f2495a49481fe3746f37424d0bdacf79d99ba04b7a231e9e85bf3caec43db926"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-9a0732be4dac8bc5",
+      "line": 927,
+      "context_sha256": "fe57717a67c538d6e4a369d83c82efa88c425e8cc656d93dd0d93c322385aaaa"
+    },
+    {
+      "phrase": "modifier receipt",
+      "path": "tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py",
+      "nearest_slug": "modifier_application_receipt",
+      "classification": {
+        "action": "quarantine",
+        "candidate_slug": "modifier_receipt",
+        "matched_slug": "modifier_application_receipt",
+        "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "admission_review": {
+        "status": "quarantined",
+        "candidate_slug": "modifier_receipt",
+        "plan": {
+          "classification": {
+            "action": "quarantine",
+            "candidate_slug": "modifier_receipt",
+            "matched_slug": "modifier_application_receipt",
+            "reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+          },
+          "proposed_entry": null,
+          "alias_candidates": [],
+          "quarantine_reason": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+        },
+        "error": "near-match synonym candidate requires LLM escalation before vocabulary admission"
+      },
+      "occurrence_id": "VOC-OCC-5f8d7b9c3c233489",
+      "line": 928,
+      "context_sha256": "7eb1d2b1d7c92f3745159b2dce5da4498b1fabb1cb9391672cb1fa35347eeb78"
+    }
+  ]
 }
