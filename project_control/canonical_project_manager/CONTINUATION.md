@@ -1,30 +1,28 @@
 # NVDA Canonical Continuation Strategy
 
+> **Historical status — completed and retired on 2026-08-03.** This document is retained as accepted programme evidence. It is not current execution authority; use `ROADMAP_LEDGER_V2.md` for present state and the task-specific ExecPlan named there, if any.
+
 ## Status and authority
 
-| Field | Current truth |
+| Field | Final recorded truth |
 |---|---|
-| Status | `CONTINUATION:ALPHA_FOUNDATION_READY`; normal incremental feature development open |
+| Status | `COMPLETED_RETIRED`; continuation objective and repairs complete |
 | Date | 2026-08-03 |
 | Continuation base | accepted semantic-continuity implementation at `7ff10db`; exact checkpoint commit is recorded in the final repair receipt |
 | Assurance reference only | secondary repository at `fffb4e31c03a3bc031f28eba89f9a59562484a8f` |
 | Parent plan | `project_control/canonical_project_manager/EXEC_PLAN.md` |
 | Live pointer | `ROADMAP_LEDGER_V2.md` |
 
-This document is the canonical account of the next programme stage. It was
-authorised to resolve the present-state and continuation question after the
-comparative worker audit. It governs current status, the bounded foundation
-readiness programme, the standard for using a module as a development
-foundation, and the route back to ordinary feature delivery.
+This document was the canonical account of the continuation programme. It
+resolved the then-current state after the comparative worker audit, governed the
+bounded foundation-readiness work, and established the route back to ordinary
+feature delivery. That objective and its bounded semantic-continuity repairs are
+complete.
 
-It does not replace the numbered normative stack, the accepted M00–M15
-allocation, the existing `C-NORM → C-PROOF → Gate D` method, or accepted module
-evidence. Where an older plan, closeout, roadmap paragraph or working-document
-implementation snapshot says that repository debt is wholly retired, that M03
-is the current delivery unit, or that a closed subordinate pack is active, this
-document and the live roadmap supply the later present-tense correction. The
-older record remains historical evidence; its accepted semantic law is not
-silently revoked.
+It did not replace the numbered normative stack, the accepted M00–M15
+allocation, or accepted module evidence. Its retained present-tense wording is
+historical context only. Current execution state and any successor plan are
+selected through `ROADMAP_LEDGER_V2.md` and `PLANS.md`.
 
 ## 1. Canonical decision
 

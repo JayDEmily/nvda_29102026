@@ -1,15 +1,17 @@
 # NVIDIA 2026 — MVP Gate C Completion Protocol
 
+> **Historical status — completed and retired on 2026-08-03.** This document is retained as accepted programme evidence. It is not current execution authority; use `ROADMAP_LEDGER_V2.md` for present state and the task-specific ExecPlan named there, if any.
+
 ## Status
 
-**Status:** retained as the current incremental delivery protocol
+**Status:** `COMPLETED_RETIRED`
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Parent plan:** `project_control/canonical_project_manager/EXEC_PLAN.md`
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
 **Scope:** normative closure and truthful proof admission before module-local Gate D
 
-This file is the sole current Gate C operating protocol. The former eight-leaf
+This file was the Gate C operating protocol for the completed programme. The former eight-leaf
 `MLC-A → MLC-R → MLC-O → MLC-D → MLC-P → MLC-T → MLC-V → MLC-I`
 sequence is retained in Git history and completed module records as historical
 evidence. It is no longer the mandatory execution route.
@@ -18,11 +20,11 @@ Gate C does not contain production implementation. A module that passes this
 protocol opens its bounded Gate D implementation immediately; it does not wait
 for programme-wide Gate C completion.
 
-The accepted alpha module sequence is complete. This protocol is retained for
-the bounded continuation-readiness units and every later concept-sized feature.
-It is not evidence that M03 is still the active module, and it does not add a
-fourth gate. Current sequence and resumption authority live in
-`project_control/canonical_project_manager/CONTINUATION.md`.
+The accepted alpha module sequence, continuation-readiness work and associated
+repairs are complete. This protocol is retained only as historical evidence of
+the completed Gate C route; it does not govern later feature work. Any successor
+execution route must be created through `PLANS.md`, named by
+`ROADMAP_LEDGER_V2.md`, and governed by its own task-specific ExecPlan.
 
 ## 1. Governing rule
 

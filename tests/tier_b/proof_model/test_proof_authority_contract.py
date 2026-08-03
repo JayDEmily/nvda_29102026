@@ -171,7 +171,46 @@ def test_live_control_surfaces_return_to_canonical_state_after_comprehensive_deb
 ):
     from scripts.proof_authority import validate_active_control
 
-    assert validate_active_control(REPO_ROOT) == "CONTINUATION:ALPHA_FOUNDATION_READY"
+    assert validate_active_control(REPO_ROOT) == "none"
+
+
+def test_active_control_validation_accepts_programme_neutral_active_plan(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    active_plan = "project_control/successor_phase/EXEC_PLAN.md"
+    plan = tmp_path / active_plan
+    plan.parent.mkdir(parents=True)
+    plan.write_text("**Status:** active\n", encoding="utf-8")
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        f"| Active ExecPlan | `{active_plan}` |\n", encoding="utf-8"
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text(f"Active task-specific ExecPlan: `{active_plan}`.\n", encoding="utf-8")
+
+    assert validate_active_control(tmp_path) == active_plan
+
+
+def test_active_control_validation_rejects_unreconciled_programme_neutral_route(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    active_plan = "project_control/successor_phase/EXEC_PLAN.md"
+    plan = tmp_path / active_plan
+    plan.parent.mkdir(parents=True)
+    plan.write_text("**Status:** active\n", encoding="utf-8")
+    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+        f"| Active ExecPlan | `{active_plan}` |\n", encoding="utf-8"
+    )
+    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
+    process.parent.mkdir(parents=True)
+    process.write_text("No task-specific ExecPlan is active.\n", encoding="utf-8")
+
+    with pytest.raises(AuthorityError, match="not reconciled"):
+        validate_active_control(tmp_path)
 
 
 def test_active_control_validation_accepts_m01_m03_semantic_continuity_pack(

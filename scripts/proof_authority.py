@@ -466,16 +466,67 @@ def validate_authority_documents(
 
 
 def validate_active_control(repo_root: Path = Path(".")) -> str:
-    """Require exactly one reconciled current control state across live surfaces."""
+    """Require one reconciled current route, including the lawful no-plan state."""
 
     resolved_root = repo_root.resolve()
-    canonical = (
-        resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
-    ).read_text(encoding="utf-8")
     roadmap = (resolved_root / "ROADMAP_LEDGER_V2.md").read_text(encoding="utf-8")
     process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
         encoding="utf-8"
     )
+
+    active_plan_rows: list[str] = []
+    for line in roadmap.splitlines():
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) >= 2 and cells[0] == "Active ExecPlan":
+            active_plan_rows.append(cells[1].strip().strip("`"))
+
+    if active_plan_rows:
+        if len(active_plan_rows) != 1:
+            raise AuthorityError(
+                "live roadmap must contain exactly one Active ExecPlan row: "
+                f"found={active_plan_rows}"
+            )
+        active_plan = active_plan_rows[0]
+        if active_plan == "none":
+            token = "No task-specific ExecPlan is active."
+            if process.count(token) != 1:
+                raise AuthorityError(
+                    "no-plan control state is not reconciled with the process overlay"
+                )
+            return "none"
+
+        candidate = Path(active_plan)
+        if candidate.is_absolute() or ".." in candidate.parts:
+            raise AuthorityError(f"active ExecPlan path is not repo-relative: {active_plan}")
+        plan_path = resolved_root / candidate
+        if not plan_path.is_file():
+            raise AuthorityError(f"active ExecPlan does not exist: {active_plan}")
+        process_token = f"Active task-specific ExecPlan: `{active_plan}`."
+        if process.count(process_token) != 1:
+            raise AuthorityError(
+                "active ExecPlan is not reconciled with the process overlay: " f"{active_plan}"
+            )
+        status_lines = [
+            line
+            for line in plan_path.read_text(encoding="utf-8").splitlines()
+            if line.startswith("**Status:**")
+        ]
+        if len(status_lines) != 1:
+            raise AuthorityError(
+                f"active ExecPlan must contain exactly one status line: {active_plan}"
+            )
+        status = status_lines[0][len("**Status:**") :].strip().strip("`").lower()
+        if not status.startswith("active"):
+            raise AuthorityError(
+                f"roadmap names a non-active ExecPlan: {active_plan} status={status!r}"
+            )
+        return active_plan
+
+    # Compatibility validation for historical control fixtures that predate the
+    # programme-neutral Active ExecPlan row. Live repositories must use the row.
+    canonical = (
+        resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
+    ).read_text(encoding="utf-8")
     states = {
         "PRE-M00-TESTING-GUARDRAIL-REPAIR-V1": (
             "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`",

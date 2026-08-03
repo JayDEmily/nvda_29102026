@@ -1,8 +1,10 @@
 # NVIDIA 2026 — Canonical Alpha and Continuation ExecPlan
 
+> **Historical status — completed and retired on 2026-08-03.** This document is retained as accepted programme evidence. It is not current execution authority; use `ROADMAP_LEDGER_V2.md` for present state and the task-specific ExecPlan named there, if any.
+
 ## Status
 
-**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`
+**Status:** `COMPLETED_RETIRED`
 **Amendment date:** `2026-08-02`
 **Owner:** User and Project Manager thread
 **Live pointer:** `ROADMAP_LEDGER_V2.md`
@@ -17,7 +19,7 @@ protect a new semantic state. Required validation still runs; successful raw
 transcripts are not committed by default when a concise reproducible result and
 node-level failure delta establish the same claim.
 
-The alpha-delivery history governed by this plan is accepted. The direct semantic-continuity audit lawfully superseded the earlier readiness checkpoint; the bounded M01/M02→M03 and M03→M05 repairs are now accepted under their recorded plans. Exact M03 values drive the canonical M05 owner composition, and concrete M07/M08 products bind candidate authority. Normal incremental feature development is reopened under the continuation strategy. Live trading, production durability, operational commissioning, profitability and production replay remain unproven.
+The alpha-delivery history governed by this plan is accepted. The direct semantic-continuity audit lawfully superseded the earlier readiness checkpoint; the bounded M01/M02→M03 and M03→M05 repairs are now accepted under their recorded plans. Exact M03 values drive the canonical M05 owner composition, and concrete M07/M08 products bind candidate authority. The completed programme reopened the possibility of normal incremental feature development. Any actual successor work now requires a new task-specific ExecPlan. Live trading, production durability, operational commissioning, profitability and production replay remain unproven.
 
 ## 1. Objective
 

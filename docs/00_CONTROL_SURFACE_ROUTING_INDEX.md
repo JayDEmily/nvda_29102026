@@ -91,31 +91,34 @@ Vocabulary authority: `docs/vocabulary/vocabulary_registry.md`.
 
 Routing decisions about native code-structure architecture must use `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md` inside that bounded architecture scope. They must not reinterpret `docs/01_NORMATIVE_CORE.md` authority precedence.
 
-## Active programme and accepted architecture routing
+## Current execution routing
 
-For current programme status and mutation authority, use:
+For present execution status and mutation authority:
 
-- `project_control/canonical_project_manager/EXEC_PLAN.md`;
-- `project_control/canonical_project_manager/CONTINUATION.md` for the current
-  foundation standard, bounded readiness sequence, feature-continuation method
-  and exact point at which normal feature development resumes;
-- `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md`;
-- `project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md` when the active plan opens parallel lanes;
-- `project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md` for PM-owned lane state;
-- `ROADMAP_LEDGER_V2.md`.
+1. read `ROADMAP_LEDGER_V2.md`;
+2. follow the single active task-specific ExecPlan named there, if any; and
+3. treat `Active ExecPlan: none` as no active programme, not as permission to select a completed plan.
 
-The continuation document and live roadmap own present-tense repository status.
-Earlier module plans, closeouts and working-document implementation snapshots
-remain accepted historical evidence within their stated scope; present-tense
-phrases in them do not override the later comparative correction. The numbered
-doctrine continues to own semantic and architectural law.
+This index does not permanently name an active programme. `PLANS.md` defines plan selection; the live roadmap names current state.
 
-For the formally accepted `M00`–`M15` ownership allocation, dependency planes, implementation-obligation trace and structural validation, use:
+## Completed programme history
 
-- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md` as the routed normative working authority;
-- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md` as the accepted decision and evidence explanation;
-- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx` and `Atlas_Architecture_Machine_Readable.json` as traceability/control projections;
-- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Dependency_Graph.mmd` as the separated dependency-plane view;
-- `project_control/canonical_project_manager/architecture/Validation_Receipt.md` as validation evidence.
+`project_control/canonical_project_manager/` is a completed and retired programme record. Read it only when a current plan expressly routes historical evidence or when the question is specifically about that programme. Its ExecPlan, continuation strategy, Gate C protocol, lane controls, repairs, receipts and validation logs do not create current mutation authority.
 
-The workbook, JSON, graph and receipt do not override the working architecture document or admit Atlas behavioural content. They project and trace the accepted ownership decision.
+## Accepted architecture routing
+
+For the accepted `M00`–`M15` ownership allocation, dependency planes, implementation-obligation trace and structural law, use:
+
+- `docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md`;
+- `docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md`;
+- `docs/vocabulary/vocabulary_registry.md` where governed architecture terms are material.
+
+When historical decision lineage is required, the following retained evidence may be consulted without treating it as current programme control:
+
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Decision_Report.md`;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Traceability.xlsx`;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Machine_Readable.json`;
+- `project_control/canonical_project_manager/architecture/Atlas_Architecture_Dependency_Graph.mmd`;
+- `project_control/canonical_project_manager/architecture/Validation_Receipt.md`.
+
+The workbook, JSON, graph and receipt are traceability and evidence projections. They do not override the numbered architecture documents or admit Atlas behavioural content.

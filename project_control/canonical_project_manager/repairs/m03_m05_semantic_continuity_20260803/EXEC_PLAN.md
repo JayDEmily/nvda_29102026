@@ -2,7 +2,7 @@
 
 ## Status
 
-**Status:** accepted; exact final-checkpoint archive verification pending
+**Status:** accepted and closed; final-checkpoint archive independently verified
 **Authority token:** `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1`
 **Base commit:** `62009fce8f16b51a358ac8e5a6219eea3857697a`
 **Branch:** `work/m03-m05-semantic-continuity-repair-v1`
@@ -84,7 +84,7 @@ Every changed existing assertion-bearing test surface must be recorded in `TEST_
 - [x] Unit C composition and operational proof.
 - [x] Unit D implementation, physical proof and control reconciliation complete.
 - [x] Exact clean-candidate promotion passed 19/19 blocks and 827/827 tests at `94e21a0`.
-- [ ] Exact final-checkpoint receipt and independently verified downloadable checkpoint.
+- [x] Exact final-checkpoint receipt and independently verified downloadable checkpoint.
 
 ## Current bounded evidence
 
@@ -96,4 +96,4 @@ Every changed existing assertion-bearing test surface must be recorded in `TEST_
 - Physical Tier C candidate: 5 passed from a non-editable installation.
 - Vocabulary and proof-control gates are reconciled on the accepted tree.
 - Signed `alpha_current` passed 19/19 blocks and 827/827 tests on clean commit `94e21a0`.
-- Final-checkpoint exact validation and archive verification remain packaging/receipt work; they do not reopen implementation.
+- Final-checkpoint archive identity and independent extraction verification are recorded in `FINAL_ARCHIVE_RECEIPT.md`; the repair is closed and does not reopen implementation.

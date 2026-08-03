@@ -2,9 +2,7 @@
 
 ## Status and purpose
 
-This standing plan is accepted under the user's 2026-07-20 instruction to establish a Project Manager thread, complete the placeholder plan, and manage later worker threads through bounded standalone briefs.
-
-`PLANS.md` defines how project plans are selected and executed. It is not a mutable progress log and does not define trading-system meaning. Current state belongs in `ROADMAP_LEDGER_V2.md`; task detail belongs in the active task-specific ExecPlan.
+This standing control defines how project plans are selected and executed. It is programme-neutral: it is not a mutable progress log, does not define trading-system meaning, and does not name a permanent active programme. Current state belongs in `ROADMAP_LEDGER_V2.md`; task detail belongs in the single active task-specific ExecPlan, when one exists.
 
 ## Live route
 
@@ -14,18 +12,13 @@ This standing plan is accepted under the user's 2026-07-20 instruction to establ
 4. Follow the single active ExecPlan named by `ROADMAP_LEDGER_V2.md`.
 5. Read every applicable route override, normative document, proof authority, and directly affected file in its lawful order before mutation.
 
-The active programme at acceptance is:
-
-- plan: `project_control/canonical_project_manager/EXEC_PLAN.md`;
-- live pointer: `ROADMAP_LEDGER_V2.md`;
-- full-read evidence: `project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv`;
-- validation evidence: `project_control/canonical_project_manager/VALIDATION_LOG.md`.
+Current execution state is never hard-coded in this file. `ROADMAP_LEDGER_V2.md` must name exactly one active task-specific ExecPlan or state `none`. When it states `none`, no completed plan, historical pack, receipt, branch note or prominent filename may be inferred to be active.
 
 If the live pointer and a task-local plan disagree, stop behavioural mutation, record the conflict, and return to control authority. Historical files that still use the word `active` do not displace the live pointer.
 
 ## Authority and truth order
 
-For the canonical programme, apply:
+For any governed programme, apply:
 
 1. direct user instruction and explicit user acceptance;
 2. the accepted project brief and any explicit user-approved strategy amendment;

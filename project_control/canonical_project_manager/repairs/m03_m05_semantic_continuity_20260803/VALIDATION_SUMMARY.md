@@ -45,10 +45,7 @@ commissioning, profitability or authoritative production replay.
 
 The accepted implementation and control tree passed signed `alpha_current` on
 clean commit `94e21a0`. The final checkpoint commit changes only this acceptance
-record and its governed vocabulary stamps. Complete physical, proof, vocabulary,
-static, Git-integrity and signed-promotion checks are rerun on that exact commit;
-the final receipt and archive-verification receipt remain external exact-commit
-evidence so the repository does not need to self-reference its own commit hash.
+record and its governed vocabulary stamps. Complete physical, proof, vocabulary, static, Git-integrity and signed-promotion results for that exact commit remain recorded here and in the retained evidence. The supplied full-history archive was independently extracted and its exact identity is now recorded in `FINAL_ARCHIVE_RECEIPT.md`.
 
 ## Bounded result
 
@@ -72,7 +69,4 @@ Ruled out:
 
 Next gate:
 
-- freeze this acceptance record in one clean checkpoint commit;
-- rerun physical, proof, vocabulary, static, Git-integrity and signed promotion
-  checks on that exact commit;
-- publish the exact receipt and independently verified full-history archive.
+- none for this repair; implementation, acceptance and archive closeout are complete.
