@@ -27,9 +27,12 @@ from nvda_desk.m03_preparation import (
     PreparedDataEnvelope,
     PreparedDerivationRule,
 )
-from nvda_desk.m05_serial_cognition import SerialCandidate, StageContext, StageInput
+from nvda_desk.m05_serial_cognition import (
+    SerialCandidate,
+    SerialCognitionOutcome,
+    SerialCognitionRequest,
+)
 from nvda_desk.m06_parallel_risk import ParallelRiskAssessment, ParallelRiskInput
-from nvda_desk.m07_coefficient_modifier_authority import ModifierApplicationReceipt
 from nvda_desk.m09_capital_authority import (
     CapitalDeploymentDecision,
     CapitalDeploymentPolicy,
@@ -253,15 +256,13 @@ class ApplicationCommand(BaseModel):
     command_id: str = Field(min_length=1)
     execution_context: DmpV3ExecutionContext
     prepared_data: PreparedDataEnvelope
-    serial_context: StageContext
-    serial_stage_inputs: tuple[StageInput, ...] = Field(min_length=1)
+    serial_cognition: SerialCognitionRequest
     parallel_input: ParallelRiskInput
     prepared_packet: PacketEmissionSpec
     serial_packet: PacketEmissionSpec
     parallel_packet: PacketEmissionSpec
     final_risk_policy: FinalRiskJoinPolicy
     capital_state: CapitalState
-    modifier_receipt: ModifierApplicationReceipt
     capital_policy: CapitalDeploymentPolicy
     capital_receipt_emitted_at_utc: datetime
     placement_policy: PlacementPolicy
@@ -281,20 +282,23 @@ class ApplicationCommand(BaseModel):
     @model_validator(mode="after")
     def _validate_composition_law(self) -> "ApplicationCommand":
         prepared = self.prepared_data
-        serial = self.serial_context
+        serial = self.serial_cognition
         parallel = self.parallel_input
+        serial_prepared = serial.prepared_data
         if (
-            serial.prepared_id,
-            serial.prepared_fingerprint,
-            serial.prepared_schema_version,
-            serial.prepared_input_fingerprint,
+            serial_prepared.prepared_id,
+            serial_prepared.prepared_fingerprint,
+            serial_prepared.schema_version,
+            serial_prepared.input_fingerprint,
         ) != (
             prepared.prepared_id,
             prepared.prepared_fingerprint,
             prepared.schema_version,
             prepared.input_fingerprint,
         ):
-            raise ValueError("serial_context_prepared_lineage_mismatch")
+            raise ValueError("serial_cognition_prepared_lineage_mismatch")
+        if serial_prepared.model_dump(mode="python") != prepared.model_dump(mode="python"):
+            raise ValueError("serial_cognition_prepared_authority_mismatch")
         if (
             parallel.prepared_id,
             parallel.prepared_fingerprint,
@@ -305,44 +309,6 @@ class ApplicationCommand(BaseModel):
             prepared.schema_version,
         ):
             raise ValueError("parallel_input_prepared_lineage_mismatch")
-        expected_source_refs = tuple(
-            sorted(
-                (item.source_artifact_id, item.capture_id) for item in prepared.source_capture_refs
-            )
-        )
-        if tuple(sorted(serial.source_capture_refs)) != expected_source_refs:
-            raise ValueError("serial_context_source_lineage_mismatch")
-        if (
-            serial.preparation_policy_version,
-            serial.alignment_policy_version,
-            serial.fingerprint_policy_version,
-            serial.canonicalisation_version,
-            serial.derivation_versions,
-        ) != (
-            prepared.preparation_policy_version,
-            prepared.alignment_policy_version,
-            prepared.fingerprint_policy_version,
-            prepared.canonicalisation_version,
-            prepared.derivation_versions,
-        ):
-            raise ValueError("serial_context_preparation_policy_mismatch")
-        stages = tuple(item.stage for item in self.serial_stage_inputs)
-        expected_stages = (
-            "temporal",
-            "regime",
-            "options_flow",
-            "posture",
-            "eligibility",
-            "execution",
-        )
-        if tuple(sorted(stages)) != tuple(sorted(expected_stages)) or len(stages) != 6:
-            raise ValueError("serial_stage_input_set_invalid")
-        if any(
-            (item.context_id, item.context_fingerprint)
-            != (serial.context_id, serial.semantic_fingerprint)
-            for item in self.serial_stage_inputs
-        ):
-            raise ValueError("serial_stage_input_context_mismatch")
         packet_ids = (
             self.prepared_packet.packet_id,
             self.serial_packet.packet_id,
@@ -415,6 +381,7 @@ class ApplicationRunReceipt(BaseModel):
     owner_steps: tuple[str, ...] = Field(min_length=1)
     prepared_context_packet: DeskModulePacketV3
     serial_candidate: SerialCandidate
+    serial_cognition_outcome: SerialCognitionOutcome
     parallel_assessment: ParallelRiskAssessment
     serial_packet: DeskModulePacketV3 | None = None
     parallel_packet: DeskModulePacketV3 | None = None
@@ -432,6 +399,8 @@ class ApplicationRunReceipt(BaseModel):
 
     @model_validator(mode="after")
     def _validate_receipt_law(self) -> "ApplicationRunReceipt":
+        if self.serial_cognition_outcome.candidate != self.serial_candidate:
+            raise ValueError("application_receipt_serial_outcome_candidate_mismatch")
         if (
             self.prepared_context_packet.traceid,
             self.prepared_context_packet.runid,

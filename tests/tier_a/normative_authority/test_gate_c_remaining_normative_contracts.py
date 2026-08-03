@@ -452,7 +452,7 @@ def _unit4_policy_digest(value: object) -> str:
             "nvda_desk.m05_serial_cognition.contracts",
             "ALLOWED_STAGE_FACT_IDS",
             "mapping",
-            "0b704b58459e2aee64aaa20370bba0d703115ab846c73e29cd83bad8dec2a0ef",
+            "7dc8e0a2e41f92ac92873d73571a545ded13d29298a491f1810508b3c98bb568",
             id="m05-stage-fact-ids",
         ),
         pytest.param(

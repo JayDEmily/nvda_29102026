@@ -230,10 +230,17 @@ def test_production_command_rejects_cross_run_and_time_mismatch() -> None:
     api = production_api()
     fixture = production_runtime_fixture(api, suffix="401")
     payload = fixture["command"].model_dump(mode="python")
-    payload["serial_context"] = fixture["command"].serial_context.model_copy(
-        update={"prepared_id": "prepared.cross-run"}
+    payload["serial_cognition"] = fixture["command"].serial_cognition.model_copy(
+        update={
+            "prepared_data": fixture["command"].prepared_data.model_copy(
+                update={"prepared_id": "prepared.cross-run"}
+            )
+        }
     )
-    with pytest.raises(ValueError, match="context_fingerprint_mismatch"):
+    with pytest.raises(
+        ValueError,
+        match="prepared_(identity|fingerprint)|serial_cognition_prepared",
+    ):
         api["ApplicationCommand"].model_validate(payload)
 
     payload = fixture["command"].model_dump(mode="python")
@@ -295,3 +302,12 @@ def test_production_m00_quarantines_legacy_routes_and_wall_clock() -> None:
         "src/nvda_desk/entry/asgi.py",
         "src/nvda_desk/entry/cli.py",
     }
+
+
+def test_semantic_continuity_m00_cannot_accept_caller_authored_serial_context_or_inputs() -> None:
+    import nvda_desk.m00_application_shell as m00
+
+    fields = m00.ApplicationCommand.model_fields
+    assert "serial_cognition" in fields
+    assert "serial_context" not in fields
+    assert "serial_stage_inputs" not in fields

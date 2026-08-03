@@ -490,6 +490,28 @@ def test_raw_source_preparation_feeds_the_exact_paper_run() -> None:
         prepared_data=prepared_receipt.prepared_data,
     )
     receipt = runtime["coordinator"].run(runtime["command"])
+    serial_outcome = receipt.serial_cognition_outcome
+    stage_facts = {
+        stage_input.stage: {fact.fact_id: fact.value for fact in stage_input.carrier_facts}
+        for stage_input in serial_outcome.stage_inputs
+    }
+    assert stage_facts["temporal"]["source_time_utc"] == source_payload.source_time_utc
+    assert stage_facts["temporal"]["runtime_bar_time_utc"] == source_payload.runtime_bar_time_utc
+    assert stage_facts["temporal"]["next_event_time_utc"] == source_payload.next_event_time_utc
+    assert stage_facts["regime"]["nvda_return_pct"] == source_payload.nvda_return_pct
+    assert stage_facts["regime"]["nq_return_pct"] == source_payload.nq_return_pct
+    assert stage_facts["regime"]["vix_level"] == source_payload.vix_level
+    assert stage_facts["options_flow"]["spot_price"] == source_payload.spot_price
+    assert stage_facts["options_flow"]["front_dte"] == source_payload.front_dte
+    assert stage_facts["options_flow"]["next_dte"] == source_payload.next_dte
+    assert serial_outcome.modifier_receipt is not None
+    assert serial_outcome.eligibility_decision is not None
+    m08_facts = {
+        item.fact_ref: item.value
+        for item in serial_outcome.eligibility_decision.material_fact_lineage
+    }
+    assert m08_facts["spot_price"] == source_payload.spot_price
+    assert m08_facts["gamma_state"] == "active"
 
     assert (
         runtime["command"].prepared_data.prepared_id == prepared_receipt.prepared_data.prepared_id
@@ -498,6 +520,7 @@ def test_raw_source_preparation_feeds_the_exact_paper_run() -> None:
         receipt.prepared_context_packet.data.prepared_id
         == prepared_receipt.prepared_data.prepared_id
     )
+    assert receipt.serial_candidate == serial_outcome.candidate
     assert receipt.outcome == "paper_filled"
     assert receipt.live_execution_proven is False
 

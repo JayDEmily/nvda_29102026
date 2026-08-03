@@ -5,14 +5,14 @@
 | Field | Current truth |
 |---|---|
 | Programme | accepted M00–M15 modular-monolith alpha; continuation-ready baseline published |
-| Branch | `work/m01-m03-semantic-continuity-repair-v1` |
+| Branch | `work/m03-m05-semantic-continuity-repair-v1` |
 | Continuation source checkpoint | `68789ffa613318b4ae842322a4d5e2f4f9e86ecf` |
 | Gate C protocol | module delivery route: `C-NORM → C-PROOF → Gate D`, with concise evidence retention |
 | Latest accepted implementation slice | comprehensive post-alpha debt retirement through Unit 8 at `617127f` |
 | Latest accepted control evidence | comparative audit integration at `68789ff` |
-| Current active slice | M01–M03 semantic continuity repair accepted; next gate is the separately bounded M03→M05 semantic-continuity repair |
-| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |
-| Current repository claim | M01/M02→M03 semantic continuity is accepted under exact owner-evidence construction and full physical validation. Continuation readiness remains suspended because the separately verified M03→M05 semantic-continuity defect remains open and was not repaired by this slice. |
+| Current active slice | M03→M05 semantic-continuity repair active from accepted M01–M03 checkpoint |
+| Active control pack | `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1` |
+| Current repository claim | M01/M02→M03 semantic continuity remains accepted. M03→M05 semantic continuity is the active bounded repair; continuation readiness remains suspended until exact M03 values and concrete M07/M08 owner products drive the canonical M05 route. |
 | Live/paper/production claim | alpha paper boundaries only; live, production and profitability claims closed |
 
 ## Present-tense correction

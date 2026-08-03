@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from datetime import datetime
+from decimal import Decimal
 from typing import Any
 
 import pytest
@@ -833,3 +834,193 @@ def test_repair_serial_result_identity_rejects_forged_copy() -> None:
     forged = result.model_copy(update={"serial_result_id": result.context_id})
     with pytest.raises(ValueError, match="serial_result_identity_invalid"):
         api["SerialCandidate"].model_validate(forged.model_dump(mode="python"))
+
+
+def test_semantic_continuity_public_service_requires_exact_m03_m07_m08_authority() -> None:
+    import inspect
+
+    import nvda_desk.m05_serial_cognition as m05
+
+    assert hasattr(m05, "SerialCognitionRequest")
+    assert hasattr(m05, "SerialCognitionService")
+    fields = m05.SerialCognitionRequest.model_fields
+    assert "prepared_data" in fields
+    assert "modifier_bundle" in fields
+    assert "playbook_catalogue" in fields
+    assert "serial_context" not in fields
+    assert "stage_inputs" not in fields
+    signature = inspect.signature(m05.SerialCognitionService.run)
+    assert tuple(signature.parameters) == ("self", "request")
+
+
+def test_semantic_continuity_m05_request_cannot_carry_prepared_or_owner_decision_values() -> None:
+    import nvda_desk.m05_serial_cognition as m05
+
+    assert set(m05.SerialCognitionRequest.model_fields).isdisjoint(
+        {
+            "spot_price",
+            "vix_level",
+            "regime_output",
+            "options_flow_output",
+            "modifier_decision",
+            "eligibility_decision",
+            "authority_refs",
+        }
+    )
+
+
+class _RecordingOwnerService:
+    def __init__(self, delegate: Any) -> None:
+        self.delegate = delegate
+        self.calls: list[Any] = []
+
+    def evaluate(self, value: Any) -> Any:
+        self.calls.append(value)
+        return self.delegate.evaluate(value)
+
+
+def test_semantic_continuity_real_owners_receive_exact_m03_values_and_bind_owner_products() -> None:
+    from tests.support.m00_application_shell_contract_harness import (
+        production_serial_cognition_request,
+    )
+    from tests.support.m06_k10_contract_harness import make_prepared
+
+    import nvda_desk.m05_serial_cognition as m05
+    from nvda_desk.services.options_flow_context_service import OptionsFlowContextService
+    from nvda_desk.services.regime_context_service import RegimeContextService
+    from nvda_desk.services.temporal_context_service import TemporalContextService
+
+    prepared = make_prepared(vix_level=20.0)
+    request = production_serial_cognition_request(prepared, suffix="semantic-exact")
+    temporal = _RecordingOwnerService(TemporalContextService())
+    regime = _RecordingOwnerService(RegimeContextService())
+    options = _RecordingOwnerService(OptionsFlowContextService())
+
+    outcome = m05.SerialCognitionService(
+        temporal_service=temporal,
+        regime_service=regime,
+        options_flow_service=options,
+    ).run(request)
+
+    assert len(temporal.calls) == len(regime.calls) == len(options.calls) == 1
+    assert temporal.calls[0].source_time_utc == prepared.payload.source_time_utc
+    assert regime.calls[0].nvda_return_pct == prepared.payload.nvda_return_pct
+    assert regime.calls[0].nq_return_pct == prepared.payload.nq_return_pct
+    assert regime.calls[0].vix_level == prepared.payload.vix_level
+    assert options.calls[0].spot_price == prepared.payload.spot_price == 190.0
+    assert options.calls[0].front_dte == prepared.payload.front_dte
+    assert options.calls[0].next_dte == prepared.payload.next_dte
+
+    assert outcome.candidate.status == "formed"
+    assert outcome.modifier_receipt is not None
+    assert outcome.eligibility_decision is not None
+    assert outcome.eligibility_decision.status == "eligible"
+    assert (
+        "m07",
+        outcome.modifier_decision.decision_id,
+        outcome.modifier_decision.schema_version,
+        outcome.modifier_decision.semantic_fingerprint,
+    ) in outcome.candidate.m07_authority_refs
+    assert (
+        "m07",
+        outcome.modifier_receipt.receipt_id,
+        outcome.modifier_receipt.schema_version,
+        m05.contracts.semantic_fingerprint(outcome.modifier_receipt.model_dump(mode="python")),
+    ) in outcome.candidate.m07_authority_refs
+    assert (
+        "m08",
+        outcome.eligibility_decision.decision_id,
+        outcome.eligibility_decision.decision_schema_version,
+        outcome.eligibility_decision.semantic_fingerprint,
+    ) in outcome.candidate.m08_authority_refs
+    material_facts = {
+        item.fact_ref: item.value for item in outcome.eligibility_decision.material_fact_lineage
+    }
+    assert material_facts["spot_price"] == prepared.payload.spot_price
+    assert material_facts["gamma_state"] == "active"
+
+
+def test_semantic_continuity_caller_value_substitution_fails_before_owner_call() -> None:
+    from tests.support.m00_application_shell_contract_harness import (
+        production_serial_cognition_request,
+    )
+    from tests.support.m06_k10_contract_harness import make_prepared
+
+    import nvda_desk.m05_serial_cognition as m05
+    from nvda_desk.services.options_flow_context_service import OptionsFlowContextService
+
+    prepared = make_prepared(vix_level=20.0)
+    request = production_serial_cognition_request(prepared, suffix="semantic-forgery")
+    options = _RecordingOwnerService(OptionsFlowContextService())
+    service = m05.SerialCognitionService(options_flow_service=options)
+    payload = request.model_dump(mode="python")
+    payload["spot_price"] = 999.0
+
+    with pytest.raises(ValueError, match="spot_price|extra"):
+        forged = m05.SerialCognitionRequest.model_validate(payload)
+        service.run(forged)
+
+    assert options.calls == []
+
+
+def test_semantic_continuity_m05_request_rejects_missing_required_m07_coefficient() -> None:
+    from tests.support.m00_application_shell_contract_harness import (
+        production_serial_cognition_request,
+    )
+    from tests.support.m06_k10_contract_harness import make_prepared
+
+    import nvda_desk.m05_serial_cognition as m05
+
+    request = production_serial_cognition_request(
+        make_prepared(vix_level=20.0),
+        suffix="semantic-missing-coefficient",
+    )
+    bundle = request.modifier_bundle.model_copy(
+        update={
+            "coefficients": tuple(
+                item
+                for item in request.modifier_bundle.coefficients
+                if item.coefficient_id != "hedge_required"
+            )
+        }
+    )
+
+    with pytest.raises(ValueError, match="m07_required_coefficient_missing:hedge_required"):
+        m05.SerialCognitionRequest.model_validate(
+            {
+                **request.model_dump(mode="python"),
+                "modifier_bundle": bundle,
+            }
+        )
+
+
+def test_semantic_continuity_m05_rejects_inverted_effective_vix_thresholds() -> None:
+    from tests.support.m00_application_shell_contract_harness import (
+        production_serial_cognition_request,
+    )
+    from tests.support.m06_k10_contract_harness import make_prepared
+
+    import nvda_desk.m05_serial_cognition as m05
+
+    request = production_serial_cognition_request(
+        make_prepared(vix_level=20.0),
+        suffix="semantic-inverted-thresholds",
+    )
+    coefficients = tuple(
+        (
+            item.model_copy(update={"baseline_value": Decimal("40")})
+            if item.coefficient_id == "risk_vix_caution_threshold"
+            else item
+        )
+        for item in request.modifier_bundle.coefficients
+    )
+    bundle = request.modifier_bundle.model_copy(update={"coefficients": coefficients})
+    inverted = m05.SerialCognitionRequest.model_validate(
+        {
+            **request.model_dump(mode="python"),
+            "modifier_bundle": bundle,
+        }
+    )
+
+    with pytest.raises(ValueError, match="m07_effective_vix_threshold_order_invalid"):
+        m05.SerialCognitionService().run(inverted)

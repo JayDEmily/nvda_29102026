@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 from collections.abc import Mapping
 from datetime import UTC, datetime
+from decimal import Decimal
 from hashlib import sha256
 from math import isfinite
 from types import MappingProxyType
@@ -90,6 +91,8 @@ ALLOWED_STAGE_FACT_IDS: Final[Mapping[str, frozenset[str]]] = MappingProxyType(
         "temporal": frozenset(
             {
                 "effective_at_utc",
+                "source_time_utc",
+                "runtime_bar_time_utc",
                 "session_state",
                 "next_event_time_utc",
                 "intraday_phase",
@@ -117,6 +120,10 @@ def _canonical(value: Any) -> Any:
         if value.tzinfo is None or value.utcoffset() is None:
             raise ValueError("datetime_must_be_timezone_aware")
         return value.astimezone(UTC).isoformat().replace("+00:00", "Z")
+    if isinstance(value, Decimal):
+        if not value.is_finite():
+            raise ValueError("decimal_must_be_finite")
+        return "0" if value == 0 else format(value.normalize(), "f")
     if isinstance(value, BaseModel):
         return _canonical(value.model_dump(mode="python"))
     if isinstance(value, dict):

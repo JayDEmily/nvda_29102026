@@ -1,0 +1,14 @@
+Physical Tier A result before governed policy-digest reconciliation:
+2005 passed, 1 failed.
+
+Failing node:
+tests/tier_a/normative_authority/test_gate_c_remaining_normative_contracts.py::test_unit4b_governed_process_values_preserve_content_and_reject_caller_mutation[m05-stage-fact-ids]
+
+Observed digest:
+7dc8e0a2e41f92ac92873d73571a545ded13d29298a491f1810508b3c98bb568
+
+Prior digest:
+0b704b58459e2aee64aaa20370bba0d703115ab846c73e29cd83bad8dec2a0ef
+
+Authority:
+M03→M05 repair requires exact source_time_utc and runtime_bar_time_utc continuity in the temporal carrier. The immutability proposition remains binding; only the exact approved content digest advances.

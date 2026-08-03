@@ -18,7 +18,8 @@ from nvda_desk.m02_financial_calendar import CalendarResolver
 from nvda_desk.m03_preparation import PreparedDataBuilder
 from nvda_desk.m05_serial_cognition import (
     SerialCandidatePacketAdapter,
-    SerialRunner,
+    SerialCognitionOutcome,
+    SerialCognitionService,
 )
 from nvda_desk.m06_parallel_risk import (
     ParallelRiskEvaluator,
@@ -57,7 +58,7 @@ class RunCoordinator:
     def __init__(
         self,
         *,
-        serial_runner: SerialRunner,
+        serial_cognition: SerialCognitionService,
         parallel_evaluator: ParallelRiskEvaluator,
         serial_packet_adapter: SerialCandidatePacketAdapter,
         parallel_packet_adapter: ParallelRiskPacketAdapter,
@@ -70,7 +71,7 @@ class RunCoordinator:
         prepared_data_builder: PreparedDataBuilder | None = None,
     ) -> None:
         dependencies = {
-            "serial_runner": serial_runner,
+            "serial_cognition": serial_cognition,
             "parallel_evaluator": parallel_evaluator,
             "serial_packet_adapter": serial_packet_adapter,
             "parallel_packet_adapter": parallel_packet_adapter,
@@ -82,7 +83,7 @@ class RunCoordinator:
         missing = tuple(name for name, value in dependencies.items() if value is None)
         if missing:
             raise ValueError(f"m00_dependency_missing:{','.join(missing)}")
-        self._serial_runner = serial_runner
+        self._serial_cognition = serial_cognition
         self._parallel_evaluator = parallel_evaluator
         self._serial_packet_adapter = serial_packet_adapter
         self._parallel_packet_adapter = parallel_packet_adapter
@@ -291,10 +292,13 @@ class RunCoordinator:
 
         prepared_packet = self._prepared_packet(governed)
         steps.append("prepared_context_packet")
-        serial = self._serial_runner.run(
-            context=governed.serial_context,
-            stage_inputs=governed.serial_stage_inputs,
+        raw_serial_outcome = self._serial_cognition.run(governed.serial_cognition)
+        if not isinstance(raw_serial_outcome, SerialCognitionOutcome):
+            raise TypeError("typed_serial_cognition_outcome_required")
+        serial_outcome = SerialCognitionOutcome.model_validate(
+            raw_serial_outcome.model_dump(mode="python")
         )
+        serial = serial_outcome.candidate
         steps.append("serial")
         parallel = self._parallel_evaluator.evaluate(governed.parallel_input)
         steps.append("parallel")
@@ -307,6 +311,7 @@ class RunCoordinator:
             "owner_steps": tuple(steps),
             "prepared_context_packet": prepared_packet,
             "serial_candidate": serial,
+            "serial_cognition_outcome": serial_outcome,
             "parallel_assessment": parallel,
         }
         if serial.status != "formed":
@@ -314,6 +319,10 @@ class RunCoordinator:
                 **base,
                 outcome=f"serial_{serial.status}",
             )
+
+        modifier_receipt = serial_outcome.modifier_receipt
+        if modifier_receipt is None:
+            raise ValueError("formed_m05_outcome_missing_exact_m07_receipt")
 
         serial_spec = governed.serial_packet
         serial_packet = self._serial_packet_adapter.emit(
@@ -346,14 +355,14 @@ class RunCoordinator:
         capital_decision = self._capital_authority.evaluate_capital(
             final_risk,
             governed.capital_state,
-            governed.modifier_receipt,
+            modifier_receipt,
             governed.capital_policy,
         )
         capital_receipt = self._capital_authority.build_receipt(
             capital_decision,
             final_risk,
             governed.capital_state,
-            governed.modifier_receipt,
+            modifier_receipt,
             governed.capital_policy,
             emitted_at_utc=governed.capital_receipt_emitted_at_utc,
         )

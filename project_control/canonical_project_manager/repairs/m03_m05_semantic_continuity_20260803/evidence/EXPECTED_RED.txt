@@ -1,0 +1,50 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_semantic_continuity_public_service_requires_exact_m03_m07_m08_authority _
+
+    def test_semantic_continuity_public_service_requires_exact_m03_m07_m08_authority() -> None:
+        import inspect
+    
+        import nvda_desk.m05_serial_cognition as m05
+    
+>       assert hasattr(m05, "SerialCognitionRequest")
+E       AssertionError: assert False
+E        +  where False = hasattr(<module 'nvda_desk.m05_serial_cognition' from '/mnt/data/m03_m05_repair/Nvda11/src/nvda_desk/m05_serial_cognition/__init__.py'>, 'SerialCognitionRequest')
+
+tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py:843: AssertionError
+_ test_semantic_continuity_m05_request_cannot_carry_prepared_or_owner_decision_values _
+
+    def test_semantic_continuity_m05_request_cannot_carry_prepared_or_owner_decision_values() -> None:
+        import nvda_desk.m05_serial_cognition as m05
+    
+>       assert set(m05.SerialCognitionRequest.model_fields).isdisjoint(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+            {
+                "spot_price",
+                "vix_level",
+                "regime_output",
+                "options_flow_output",
+                "modifier_decision",
+                "eligibility_decision",
+                "authority_refs",
+            }
+        )
+E       AttributeError: module 'nvda_desk.m05_serial_cognition' has no attribute 'SerialCognitionRequest'
+
+tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py:858: AttributeError
+_ test_semantic_continuity_m00_cannot_accept_caller_authored_serial_context_or_inputs _
+
+    def test_semantic_continuity_m00_cannot_accept_caller_authored_serial_context_or_inputs() -> None:
+        import nvda_desk.m00_application_shell as m00
+    
+        fields = m00.ApplicationCommand.model_fields
+>       assert "serial_cognition" in fields
+E       AssertionError: assert 'serial_cognition' in {'capital_policy': FieldInfo(annotation=CapitalDeploymentPolicy, required=True), 'capital_receipt_emitted_at_utc': Fie...talState, required=True), 'command_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)]), ...}
+
+tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py:304: AssertionError
+=========================== short test summary info ============================
+FAILED tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py::test_semantic_continuity_public_service_requires_exact_m03_m07_m08_authority - AssertionError: assert False
+ +  where False = hasattr(<module 'nvda_desk.m05_serial_cognition' from '/mnt/data/m03_m05_repair/Nvda11/src/nvda_desk/m05_serial_cognition/__init__.py'>, 'SerialCognitionRequest')
+FAILED tests/tier_a/m05_k08_k09/test_m05_k08_k09_contract.py::test_semantic_continuity_m05_request_cannot_carry_prepared_or_owner_decision_values - AttributeError: module 'nvda_desk.m05_serial_cognition' has no attribute 'SerialCognitionRequest'
+FAILED tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py::test_semantic_continuity_m00_cannot_accept_caller_authored_serial_context_or_inputs - AssertionError: assert 'serial_cognition' in {'capital_policy': FieldInfo(annotation=CapitalDeploymentPolicy, required=True), 'capital_receipt_emitted_at_utc': Fie...talState, required=True), 'command_id': FieldInfo(annotation=str, required=True, metadata=[MinLen(min_length=1)]), ...}
+3 failed, 53 deselected in 0.40s

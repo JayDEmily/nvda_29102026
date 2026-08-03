@@ -512,6 +512,11 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
             "| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |",
             "The current active bounded pack is `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1`.",
         ),
+        "M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1": (
+            "**Status:** alpha foundation checkpoint superseded; bounded M03→M05 semantic continuity repair active",
+            "| Active control pack | `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1` |",
+            "The current active bounded pack is `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1`.",
+        ),
     }
     matches = [
         state_id

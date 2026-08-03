@@ -281,6 +281,154 @@ class RecordingReplayService:
         return self.projection
 
 
+def _production_modifier_bundle(*, kill_switch: bool):
+    """Build the exact M07 authority used by the canonical M05 service."""
+
+    from nvda_desk.m07_coefficient_modifier_authority.contracts import (
+        CoefficientMember,
+        ModifierMember,
+        PolicyBundle,
+    )
+
+    coefficients = tuple(
+        CoefficientMember(
+            coefficient_id=coefficient_id,
+            coefficient_version="1.0.0",
+            owner_stage="posture",
+            value_type="decimal",
+            units=units,
+            baseline_value=Decimal(baseline),
+            hard_lower_bound=Decimal(lower),
+            hard_upper_bound=Decimal(upper),
+            surface_class="mutable_runtime_surface",
+            transform_family="bounded_decimal_algebra",
+            runtime_mutability_class="runtime_mutable",
+            promotion_lineage=f"authority://m07/{coefficient_id}/1.0.0",
+        )
+        for coefficient_id, units, baseline, lower, upper in (
+            ("risk_vix_caution_threshold", "vix_points", "24", "0", "100"),
+            ("risk_vix_hot_threshold", "vix_points", "32", "0", "100"),
+            ("max_risk_per_trade", "fraction", "0.35", "0", "1"),
+            ("hedge_required", "boolean_decimal", "0", "0", "1"),
+        )
+    )
+    modifiers = ()
+    if kill_switch:
+        modifiers = (
+            ModifierMember(
+                modifier_id="capital_kill_switch",
+                modifier_version="1.0.0",
+                owner_stage="posture",
+                target_coefficient_ids=("max_risk_per_trade",),
+                applicability_fact_refs=("regime_normal",),
+                precedence_rank=1,
+                transform_operator="set",
+                operand=Decimal("0"),
+                combination_law="authority_ordered",
+                kill_switch=True,
+                restrictive_only=True,
+                promotion_lineage="authority://m07/capital-kill-switch/1.0.0",
+            ),
+        )
+    return PolicyBundle(
+        bundle_id="m07.posture.runtime",
+        bundle_version="1.0.0",
+        schema_version="1.0.0",
+        authority_id="m07.k12",
+        authority_version="1.0.0",
+        effective_version_selector="promoted:1.0.0",
+        resolution_law_version="k12.v1",
+        promotion_lineage="authority://m07/posture-runtime/1.0.0",
+        owner_stage="posture",
+        coefficients=coefficients,
+        modifiers=modifiers,
+    )
+
+
+def _production_playbook_catalogue(*, eligibility_terminal: bool):
+    """Build exact M08 authority whose constraint is evaluated from real M05 outputs."""
+
+    from nvda_desk.m08_playbook_catalogue.contracts import (
+        EligibilityConstraint,
+        PlaybookCatalogue,
+        PlaybookDefinition,
+        catalogue_fingerprint,
+    )
+
+    definition = PlaybookDefinition(
+        playbook_id="playbook.breakout",
+        playbook_version="1.0.0",
+        candidate_family_id="family.breakout",
+        candidate_family_version="1.0.0",
+        setup_variant_id="variant.breakout.confirmed",
+        setup_variant_version="1.0.0",
+        selection_priority=10,
+        constraints=(
+            EligibilityConstraint(
+                fact_ref="gamma_state",
+                operator="eq",
+                expected="inactive" if eligibility_terminal else "active",
+            ),
+            EligibilityConstraint(
+                fact_ref="spot_price",
+                operator="eq",
+                expected=999.0 if eligibility_terminal else 190.0,
+            ),
+        ),
+        enabled=True,
+        lifecycle_intent={
+            "horizon_class": "intraday",
+            "handoff_schema": "m05.expression.v1",
+        },
+        lifecycle_schema_version="1.0.0",
+        promotion_lineage="authority://m08/playbook.breakout/1.0.0",
+    )
+    material = {
+        "catalogue_id": "m08.nvda.playbooks",
+        "catalogue_version": "1.0.0",
+        "schema_version": "1.0.0",
+        "authority_id": "m08.k13",
+        "authority_version": "1.0.0",
+        "effective_version_selector": "promoted:1.0.0",
+        "eligibility_law_version": "k13.v1",
+        "promotion_lineage": "authority://m08/catalogue/1.0.0",
+        "definitions": (definition,),
+    }
+    return PlaybookCatalogue(
+        **material,
+        catalogue_fingerprint=catalogue_fingerprint(**material),
+    )
+
+
+def production_serial_cognition_request(
+    prepared: Any,
+    *,
+    suffix: str = "001",
+    kill_switch: bool = False,
+    eligibility_terminal: bool = False,
+    emitted_at_utc: datetime | None = None,
+):
+    """Build one exact M05 request from M03 and concrete M07/M08 authority."""
+
+    import nvda_desk.m05_serial_cognition as m05
+
+    authority_time = emitted_at_utc or max(
+        datetime(2026, 8, 1, 4, 0, tzinfo=UTC),
+        prepared.effective_at_utc,
+    )
+    return m05.SerialCognitionRequest(
+        prepared_data=prepared,
+        modifier_bundle=_production_modifier_bundle(kill_switch=kill_switch),
+        playbook_catalogue=_production_playbook_catalogue(
+            eligibility_terminal=eligibility_terminal
+        ),
+        modifier_receipt_id=f"m07.receipt.m00.{suffix}",
+        modifier_application_id=f"m07.application.m00.{suffix}",
+        modifier_receipt_emitted_at_utc=authority_time,
+        eligibility_decision_id=f"m08.eligibility.m00.{suffix}",
+    )
+
+
 def production_runtime_fixture(
     api: dict[str, Any],
     *,
@@ -290,24 +438,10 @@ def production_runtime_fixture(
     upstream_dependencies: dict[str, Any] | None = None,
     prepared_data: Any | None = None,
 ) -> dict[str, Any]:
-    """Build one lawful M00 command and its injected public owner seams."""
+    """Build one lawful M00 command using actual canonical M05 owner composition."""
 
-    from tests.support.m05_k08_k09_contract_harness import (
-        SERIAL_STAGE_ORDER,
-        production_context_payload,
-        production_handlers,
-        production_stage_input_payload,
-        valid_context,
-        valid_inputs,
-    )
-    from tests.support.m05_k08_k09_contract_harness import (
-        fingerprint as m05_fingerprint,
-    )
     from tests.support.m06_k10_contract_harness import make_prepared
-    from tests.support.m09_k11_k14_contract_harness import (
-        production_modifier_receipt,
-        production_parallel_assessment,
-    )
+    from tests.support.m09_k11_k14_contract_harness import production_parallel_assessment
 
     import nvda_desk.m05_serial_cognition as m05
     import nvda_desk.m06_parallel_risk as m06
@@ -316,57 +450,23 @@ def production_runtime_fixture(
     import nvda_desk.m12_evidence_replay as m12
     from nvda_desk.contracts.packets import DmpV3ExecutionContext
 
+    if terminal_stage not in {None, "eligibility"}:
+        raise ValueError(
+            "production_runtime_fixture_only_supports_owner_driven_eligibility_terminal"
+        )
     prepared = prepared_data if prepared_data is not None else make_prepared(vix_level=20.0)
-    source_capture_refs = tuple(
-        (item.source_artifact_id, item.capture_id) for item in prepared.source_capture_refs
+    base_time = max(
+        datetime(2026, 8, 1, 4, 0, tzinfo=UTC),
+        prepared.effective_at_utc,
     )
-    context_case = valid_context(
-        context_id=f"context.m00.{suffix}",
-        prepared_id=prepared.prepared_id,
-        prepared_schema_version=prepared.schema_version,
-        prepared_fingerprint=prepared.prepared_fingerprint,
-        prepared_input_fingerprint=prepared.input_fingerprint,
-        source_capture_refs=source_capture_refs,
-        preparation_policy_version=prepared.preparation_policy_version,
-        alignment_policy_version=prepared.alignment_policy_version,
-        fingerprint_policy_version=prepared.fingerprint_policy_version,
-        canonicalisation_version=prepared.canonicalisation_version,
-        derivation_versions=prepared.derivation_versions,
-        effective_at_utc=prepared.effective_at_utc,
-        prepared_validation_state=prepared.validation_state,
-        prepared_completeness_state=prepared.completeness_state,
-        limitations=prepared.limitations,
+    serial_request = production_serial_cognition_request(
+        prepared,
+        suffix=suffix,
+        kill_switch=kill_switch,
+        eligibility_terminal=terminal_stage == "eligibility",
+        emitted_at_utc=base_time,
     )
-    context = m05.StageContext.model_validate(production_context_payload(context_case))
-    stage_inputs = []
-    for item in valid_inputs(context_case, order=tuple(reversed(SERIAL_STAGE_ORDER))):
-        if item.stage in {"temporal", "regime", "options_flow"}:
-            authority_refs = (
-                (
-                    "m03",
-                    prepared.prepared_id,
-                    prepared.schema_version,
-                    prepared.prepared_fingerprint,
-                ),
-            )
-            item = dataclass_replace(
-                item,
-                authority_refs=authority_refs,
-                carrier_fingerprint=m05_fingerprint(
-                    {
-                        "stage": item.stage,
-                        "context": context_case.semantic_fingerprint,
-                        "authority_refs": authority_refs,
-                    }
-                ),
-            )
-        stage_inputs.append(m05.StageInput.model_validate(production_stage_input_payload(item)))
-
-    serial_runner = m05.SerialRunner(
-        handlers=production_handlers(m05.__dict__, terminal_stage=terminal_stage),
-        runner_version=context.runner_version,
-        stage_order_version=context.serial_order_version,
-    )
+    serial_cognition = m05.SerialCognitionService()
     parallel_input = m06.ParallelRiskInput.from_prepared(
         prepared,
         evaluator_policy_version="parallel-risk.compat.v1",
@@ -382,7 +482,6 @@ def production_runtime_fixture(
         runid=f"run.m00.{suffix}",
         scenarioid=f"scenario.m00.{suffix}",
     )
-    base_time = datetime(2026, 8, 1, 4, 0, tzinfo=UTC)
     capital_state = m09.CapitalState.create(
         state_id=f"capital.state.m00.{suffix}",
         account_id="paper.account.001",
@@ -393,14 +492,12 @@ def production_runtime_fixture(
         max_fresh_deployable_pct=Decimal("12"),
         source_authority_ref="capital.snapshot.authority.v1",
     )
-    modifier_receipt = production_modifier_receipt(kill_switch=kill_switch)
     command = api["ApplicationCommand"].model_validate(
         {
             "command_id": f"m00.command.{suffix}",
             "execution_context": execution_context,
             "prepared_data": prepared,
-            "serial_context": context,
-            "serial_stage_inputs": tuple(stage_inputs),
+            "serial_cognition": serial_request,
             "parallel_input": parallel_input,
             "prepared_packet": {
                 "packet_id": f"packet.m00.prepared.{suffix}",
@@ -410,35 +507,34 @@ def production_runtime_fixture(
             },
             "serial_packet": {
                 "packet_id": f"packet.m00.serial.{suffix}",
-                "emitted_at_utc": base_time.replace(minute=1),
+                "emitted_at_utc": base_time.replace(minute=base_time.minute + 1),
                 "module_version": "1.0.0",
                 "module_instance_id": f"m05.serial.instance.{suffix}",
             },
             "parallel_packet": {
                 "packet_id": f"packet.m00.parallel.{suffix}",
-                "emitted_at_utc": base_time.replace(minute=1),
+                "emitted_at_utc": base_time.replace(minute=base_time.minute + 1),
                 "module_version": "1.0.0",
                 "module_instance_id": f"m06.parallel.instance.{suffix}",
             },
             "final_risk_policy": m09.FinalRiskJoinPolicy(),
             "capital_state": capital_state,
-            "modifier_receipt": modifier_receipt,
             "capital_policy": m09.CapitalDeploymentPolicy(
                 target_pct=Decimal("10"),
                 hard_max_pct=Decimal("15"),
                 caution_multiplier=Decimal("0.5"),
                 rounding_quantum=Decimal("0.01"),
             ),
-            "capital_receipt_emitted_at_utc": base_time.replace(minute=2),
+            "capital_receipt_emitted_at_utc": base_time.replace(minute=base_time.minute + 2),
             "placement_policy": m10.PlacementPolicy(quantity_quantum=Decimal("0.001")),
             "limit_price": Decimal("100"),
-            "intent_at_utc": base_time.replace(minute=3),
-            "executed_at_utc": base_time.replace(minute=4),
+            "intent_at_utc": base_time.replace(minute=base_time.minute + 3),
+            "executed_at_utc": base_time.replace(minute=base_time.minute + 4),
         }
     )
     scope_factory = RecordingPaperRunScopeFactory()
     coordinator = api["RunCoordinator"](
-        serial_runner=serial_runner,
+        serial_cognition=serial_cognition,
         parallel_evaluator=parallel_evaluator,
         serial_packet_adapter=m05.SerialCandidatePacketAdapter(),
         parallel_packet_adapter=m06.ParallelRiskPacketAdapter(),
@@ -453,6 +549,7 @@ def production_runtime_fixture(
         "coordinator": coordinator,
         "scope_factory": scope_factory,
         "parallel_evaluator": parallel_evaluator,
+        "serial_cognition": serial_cognition,
     }
 
 
