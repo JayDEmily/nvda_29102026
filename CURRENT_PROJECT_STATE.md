@@ -1,6 +1,6 @@
 > **Historical snapshot notice — 2026-07-25**
 >
-> This file records the 2026-05 assembly state and is not the current programme pointer. Current authority and progress are in `project_control/canonical_project_manager/EXEC_PLAN.md`, `project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md` and `ROADMAP_LEDGER_V2.md`.
+> This file records the 2026-05 assembly state and is not the current programme pointer. Current authority and progress are in `ROADMAP_LEDGER.md` and the active ExecPlan it names, when any.
 
 # NVDA10 Current Project State
 

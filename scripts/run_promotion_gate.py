@@ -31,8 +31,8 @@ AUTHORITY_PATHS = (
     Path("docs/08_TESTING_AND_PROMOTION_CORE.md"),
     Path("docs/08.1_TESTING_AND_PROMOTION_WORKING.md"),
     Path("docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"),
-    Path("project_control/canonical_project_manager/EXEC_PLAN.md"),
-    Path("ROADMAP_LEDGER_V2.md"),
+    Path("EXEC_PLAN.md"),
+    Path("ROADMAP_LEDGER.md"),
 )
 ENVIRONMENT_PATHS = (Path("pyproject.toml"), Path("uv.lock"), Path(".python-version"))
 

@@ -23,13 +23,13 @@ Under a lane assignment:
 The ordinary autonomous harness below continues to govern work that has not been issued as a PM-controlled lane assignment.
 
 ## Control-surface freeze
-`AGENTS.md` and `PLANS.md` are frozen standing control surfaces once accepted. Routine execution must not mutate either file for progress tracking, gate bookkeeping, status refreshes, historical cleanup, or ordinary continuation hardening. Use `ROADMAP_LEDGER_V2.md` for mutable live execution state.
+`AGENTS.md` and `PLANS.md` are frozen standing control surfaces once accepted. Routine execution must not mutate either file for progress tracking, gate bookkeeping, status refreshes, historical cleanup, or ordinary continuation hardening. Use `ROADMAP_LEDGER.md` for mutable live execution state.
 
 A future mutation to `AGENTS.md` or `PLANS.md` is lawful only when:
 - the user explicitly opens that exact control surface; or
-- a concrete governance defect cannot be truthfully resolved in `ROADMAP_LEDGER_V2.md`, a receipt, or a report alone.
+- a concrete governance defect cannot be truthfully resolved in `ROADMAP_LEDGER.md`, a receipt, or a report alone.
 
-Any such mutation is one bounded governance-control leaf and must preserve `ROADMAP_LEDGER_V2.md` as the mutable live pointer.
+Any such mutation is one bounded governance-control leaf and must preserve `ROADMAP_LEDGER.md` as the mutable live pointer.
 
 ## Success criteria
 A worker pass is successful only when it:
@@ -67,7 +67,7 @@ Do not stop for checkpoint creation, package creation, proof pass, commit, recei
 
 ## Continuation search
 Failure to immediately identify the next executable leaf is not a stop condition. Before concluding that no lawful executable work remains, inspect at minimum:
-- current `ROADMAP_LEDGER_V2.md` state;
+- current `ROADMAP_LEDGER.md` state;
 - active receipts and manifests;
 - unresolved blockers;
 - unresolved validation gaps;
@@ -105,13 +105,19 @@ Evidence must be reproducible, attributable, bounded, and inspectable.
 Before substantive mutation, fully read:
 - `AGENTS.md`;
 - `PLANS.md`;
-- `ROADMAP_LEDGER.md` retirement pointer and `ROADMAP_LEDGER_V2.md` live state;
+- `ROADMAP_LEDGER.md` live state;
+- the active ExecPlan named by the roadmap, when one is active;
 - applicable route overrides;
-- governing normative documents;
-- governing execution plans or ledgers;
+- every complete normative document named by that ExecPlan, in its stated order;
 - all directly impacted files for the active leaf.
 
-Do not replace required full reading with search, grep, AST parsing, embeddings, summaries, metadata, inventories, line counts, headings, filename inference, or partial sampling.
+`AGENTS.md` does not prescribe one universal normative read set. The active ExecPlan owns the exact normative document list for its bounded work. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md` assists plan construction by locating complete document families; it is not authority and does not replace the ExecPlan's explicit list.
+
+Every nominated prose normative document must be read in full. Search, grep, AST parsing, embeddings, summaries, metadata, inventories, line counts, headings, filename inference, retrieval excerpts, or partial sampling may assist navigation but cannot substitute for that read.
+
+If execution reveals a material dependency outside the nominated set, do not rely on an excerpt or silently broaden authority. Amend the active ExecPlan to name the additional complete document or documents, then read them in full before semantic judgement or mutation continues.
+
+When `Active ExecPlan` is `none` and direct user instruction lawfully opens bounded governance work, record the exact complete normative read set in the current-target `FULL_READ_MANIFEST` before mutation.
 
 If full reading is infeasible, do not fabricate comprehension. Bound the unread material truthfully, avoid unlawful mutation based on unread material, and continue other lawful work where possible.
 

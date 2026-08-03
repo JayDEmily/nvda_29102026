@@ -12,15 +12,15 @@ This file is subordinate to the current user instruction, repo-root `AGENTS.md`,
 
 Before touching a file under `tests/`, read in this order:
 
-1. repo-root `AGENTS.md`
-2. `docs/00_CONTROL_SURFACE_ROUTING_INDEX.md`
-3. `docs/01_NORMATIVE_CORE.md` and any routed `*.1_*_WORKING.md` companion relevant to the question
-4. `docs/10_VOCABULARY_AND_TERM_GOVERNANCE_CORE.md` and `docs/vocabulary/vocabulary_registry.md` when durable terms, fixture names, proof labels, or registry terms are touched
-5. `docs/08_TESTING_AND_PROMOTION_CORE.md` and `docs/08.1_TESTING_AND_PROMOTION_WORKING.md`
-6. `config/retained_test_registry.yaml`
-7. `config/proof_blocks.yaml`
-8. this file
-9. only then the specific native test family, legacy test source, runtime code, fixtures, and retained artefacts in scope
+1. repo-root `AGENTS.md`, `PLANS.md` and `ROADMAP_LEDGER.md`;
+2. the active ExecPlan, when one is active;
+3. every complete normative document named by that ExecPlan, in full and in its stated order, or the exact complete set recorded under direct user authority when no ExecPlan is active;
+4. `config/retained_test_registry.yaml`;
+5. `config/proof_blocks.yaml`;
+6. this file;
+7. only then the specific native test family, legacy test source, runtime code, fixtures and retained artefacts in scope.
+
+This override does not independently choose the normative document set. If test work exposes a missing testing, vocabulary, architecture or domain authority family, amend the governing plan or manifest and complete that read before continuing.
 
 ## Authority hierarchy for tests
 

@@ -469,10 +469,17 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
     """Require one reconciled current route, including the lawful no-plan state."""
 
     resolved_root = repo_root.resolve()
-    roadmap = (resolved_root / "ROADMAP_LEDGER_V2.md").read_text(encoding="utf-8")
-    process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
-        encoding="utf-8"
-    )
+    roadmap = (resolved_root / "ROADMAP_LEDGER.md").read_text(encoding="utf-8")
+
+    def plan_status(plan_path: Path, display_path: str) -> str:
+        status_lines = [
+            line
+            for line in plan_path.read_text(encoding="utf-8").splitlines()
+            if line.startswith("**Status:**")
+        ]
+        if len(status_lines) != 1:
+            raise AuthorityError(f"ExecPlan must contain exactly one status line: {display_path}")
+        return status_lines[0][len("**Status:**") :].strip().strip("`").lower()
 
     active_plan_rows: list[str] = []
     for line in roadmap.splitlines():
@@ -488,10 +495,12 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
             )
         active_plan = active_plan_rows[0]
         if active_plan == "none":
-            token = "No task-specific ExecPlan is active."
-            if process.count(token) != 1:
+            reserved_plan = resolved_root / "EXEC_PLAN.md"
+            if reserved_plan.is_file() and plan_status(reserved_plan, "EXEC_PLAN.md").startswith(
+                "active"
+            ):
                 raise AuthorityError(
-                    "no-plan control state is not reconciled with the process overlay"
+                    "ROADMAP_LEDGER.md states none but reserved EXEC_PLAN.md declares active status"
                 )
             return "none"
 
@@ -501,21 +510,7 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
         plan_path = resolved_root / candidate
         if not plan_path.is_file():
             raise AuthorityError(f"active ExecPlan does not exist: {active_plan}")
-        process_token = f"Active task-specific ExecPlan: `{active_plan}`."
-        if process.count(process_token) != 1:
-            raise AuthorityError(
-                "active ExecPlan is not reconciled with the process overlay: " f"{active_plan}"
-            )
-        status_lines = [
-            line
-            for line in plan_path.read_text(encoding="utf-8").splitlines()
-            if line.startswith("**Status:**")
-        ]
-        if len(status_lines) != 1:
-            raise AuthorityError(
-                f"active ExecPlan must contain exactly one status line: {active_plan}"
-            )
-        status = status_lines[0][len("**Status:**") :].strip().strip("`").lower()
+        status = plan_status(plan_path, active_plan)
         if not status.startswith("active"):
             raise AuthorityError(
                 f"roadmap names a non-active ExecPlan: {active_plan} status={status!r}"
@@ -524,6 +519,9 @@ def validate_active_control(repo_root: Path = Path(".")) -> str:
 
     # Compatibility validation for historical control fixtures that predate the
     # programme-neutral Active ExecPlan row. Live repositories must use the row.
+    process = (resolved_root / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md").read_text(
+        encoding="utf-8"
+    )
     canonical = (
         resolved_root / "project_control/canonical_project_manager/EXEC_PLAN.md"
     ).read_text(encoding="utf-8")

@@ -2,17 +2,19 @@
 
 ## Status and purpose
 
-This standing control defines how project plans are selected and executed. It is programme-neutral: it is not a mutable progress log, does not define trading-system meaning, and does not name a permanent active programme. Current state belongs in `ROADMAP_LEDGER_V2.md`; task detail belongs in the single active task-specific ExecPlan, when one exists.
+This standing control defines how project plans are selected and executed. It is programme-neutral: it is not a mutable progress log, does not define trading-system meaning, and does not name a permanent active programme. Current state belongs in `ROADMAP_LEDGER.md`; task detail belongs in the single active task-specific ExecPlan, when one exists.
 
 ## Live route
 
 1. Read `AGENTS.md` in full.
 2. Read this file in full.
-3. Read the retirement pointer in `ROADMAP_LEDGER.md` and then the live successor `ROADMAP_LEDGER_V2.md` in full.
-4. Follow the single active ExecPlan named by `ROADMAP_LEDGER_V2.md`.
+3. Read `ROADMAP_LEDGER.md` in full.
+4. Follow the single active ExecPlan named by `ROADMAP_LEDGER.md`.
 5. Read every applicable route override, normative document, proof authority, and directly affected file in its lawful order before mutation.
 
-Current execution state is never hard-coded in this file. `ROADMAP_LEDGER_V2.md` must name exactly one active task-specific ExecPlan or state `none`. When it states `none`, no completed plan, historical pack, receipt, branch note or prominent filename may be inferred to be active.
+Current execution state is never hard-coded in this file. `ROADMAP_LEDGER.md` must name exactly one active task-specific ExecPlan or state `none`. When it states `none`, no completed plan, historical pack, receipt, branch note or prominent filename may be inferred to be active.
+
+`EXEC_PLAN.md` is the reserved root plan surface. Its presence does not make it active; only `ROADMAP_LEDGER.md` can activate it. Between phases it may remain an explicit inactive placeholder.
 
 If the live pointer and a task-local plan disagree, stop behavioural mutation, record the conflict, and return to control authority. Historical files that still use the word `active` do not displace the live pointer.
 
@@ -56,7 +58,7 @@ Every active task-specific ExecPlan must record:
 - invariants and prohibited shortcuts;
 - semantic acceptance units, lane allocation where applicable, and prerequisites;
 - pass/fail conditions;
-- exact required reads;
+- exact complete normative document paths to read in full, in order, plus other exact required reads;
 - exact allowed and forbidden files;
 - evidence locations and artefact names;
 - targeted and aggregate validation commands;
@@ -66,6 +68,8 @@ Every active task-specific ExecPlan must record:
 - treatment of any prior active plan and historical evidence.
 
 An ExecPlan may organise work. It may not invent normative meaning, test authority, Atlas admission, or implementation status.
+
+`NVDA_FEATURE_EVOLUTION_TEMPLATE.md` is optional advisory material for preparing substantial feature or cross-module plans. It is not normative authority and is not mandatory for every ExecPlan.
 
 ## Semantic acceptance units
 
@@ -142,6 +146,6 @@ If a command cannot run, record the exact environmental failure and run the next
 
 ## Plan mutation
 
-This file is now a frozen standing control surface. Routine progress must update `ROADMAP_LEDGER_V2.md`, the active ExecPlan, and unit receipts—not this file.
+This file is now a frozen standing control surface. Routine progress must update `ROADMAP_LEDGER.md`, the active ExecPlan, and unit receipts—not this file.
 
 Change `PLANS.md` only when the user explicitly opens it again or a concrete standing-control defect cannot be truthfully resolved elsewhere. Such a change is its own bounded governance unit.

@@ -183,17 +183,13 @@ def test_active_control_validation_accepts_programme_neutral_active_plan(
     plan = tmp_path / active_plan
     plan.parent.mkdir(parents=True)
     plan.write_text("**Status:** active\n", encoding="utf-8")
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         f"| Active ExecPlan | `{active_plan}` |\n", encoding="utf-8"
     )
-    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
-    process.parent.mkdir(parents=True)
-    process.write_text(f"Active task-specific ExecPlan: `{active_plan}`.\n", encoding="utf-8")
-
     assert validate_active_control(tmp_path) == active_plan
 
 
-def test_active_control_validation_rejects_unreconciled_programme_neutral_route(
+def test_active_control_validation_rejects_named_inactive_plan(
     tmp_path: Path,
 ) -> None:
     from scripts.proof_authority import validate_active_control
@@ -201,15 +197,24 @@ def test_active_control_validation_rejects_unreconciled_programme_neutral_route(
     active_plan = "project_control/successor_phase/EXEC_PLAN.md"
     plan = tmp_path / active_plan
     plan.parent.mkdir(parents=True)
-    plan.write_text("**Status:** active\n", encoding="utf-8")
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    plan.write_text("**Status:** placeholder; inactive\n", encoding="utf-8")
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         f"| Active ExecPlan | `{active_plan}` |\n", encoding="utf-8"
     )
-    process = tmp_path / "docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md"
-    process.parent.mkdir(parents=True)
-    process.write_text("No task-specific ExecPlan is active.\n", encoding="utf-8")
 
-    with pytest.raises(AuthorityError, match="not reconciled"):
+    with pytest.raises(AuthorityError, match="non-active ExecPlan"):
+        validate_active_control(tmp_path)
+
+
+def test_active_control_validation_rejects_active_reserved_plan_when_roadmap_is_none(
+    tmp_path: Path,
+) -> None:
+    from scripts.proof_authority import validate_active_control
+
+    (tmp_path / "ROADMAP_LEDGER.md").write_text("| Active ExecPlan | none |\n", encoding="utf-8")
+    (tmp_path / "EXEC_PLAN.md").write_text("**Status:** active\n", encoding="utf-8")
+
+    with pytest.raises(AuthorityError, match="states none"):
         validate_active_control(tmp_path)
 
 
@@ -225,7 +230,7 @@ def test_active_control_validation_accepts_m01_m03_semantic_continuity_pack(
         "semantic continuity repair active\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | `M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1` |\n",
         encoding="utf-8",
     )
@@ -251,7 +256,7 @@ def test_active_control_validation_accepts_m03_m05_semantic_continuity_pack(
         "semantic continuity repair active\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | `M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1` |\n",
         encoding="utf-8",
     )
@@ -277,7 +282,7 @@ def test_active_control_validation_accepts_foundation_readiness_pack(
         "reconciliation active\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | "
         "`project_control/canonical_project_manager/repairs/"
         "foundation_readiness_reconciliation_20260802/EXEC_PLAN.md` |\n",
@@ -304,7 +309,7 @@ def test_active_control_validation_accepts_alpha_foundation_ready_state(
         "**Status:** `CONTINUATION:ALPHA_FOUNDATION_READY`\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | none — canonical ExecPlan only; "
         "continuation-ready checkpoint published |\n",
         encoding="utf-8",
@@ -331,7 +336,7 @@ def test_active_control_validation_accepts_post_alpha_transport_adapter_pack(
         "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | `POST-ALPHA-M00-TRANSPORT-ADAPTERS-V1` |\n",
         encoding="utf-8",
     )
@@ -356,7 +361,7 @@ def test_active_control_validation_accepts_comprehensive_debt_pack(
         "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | `POST-ALPHA-COMPREHENSIVE-DEBT-RETIREMENT-V1` |\n",
         encoding="utf-8",
     )
@@ -381,7 +386,7 @@ def test_active_control_validation_uses_pack_identity_not_gate_wording(
         "**Status:** `ACTIVE:PRE_M00_TESTING_GUARDRAIL_REPAIR`\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Current active slice | any lawful gate progression wording |\n"
         "| Active control pack | `PRE-M00-TESTING-GUARDRAIL-REPAIR-V1` |\n",
         encoding="utf-8",
@@ -407,7 +412,7 @@ def test_active_control_validation_accepts_consolidated_alpha_state(
         "**Status:** `COMPLETE:ALPHA_CONSOLIDATED_WITH_EXPLICIT_DEBT`\n",
         encoding="utf-8",
     )
-    (tmp_path / "ROADMAP_LEDGER_V2.md").write_text(
+    (tmp_path / "ROADMAP_LEDGER.md").write_text(
         "| Active control pack | none — canonical ExecPlan only |\n",
         encoding="utf-8",
     )
