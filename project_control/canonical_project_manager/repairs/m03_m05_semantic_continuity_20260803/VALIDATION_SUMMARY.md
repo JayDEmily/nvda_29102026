@@ -2,7 +2,7 @@
 
 ## Candidate disposition
 
-`PASS:CANDIDATE_PENDING_EXACT_COMMIT_PROMOTION_AND_ARCHIVE_VERIFICATION`
+`PASS:BOUNDED_M03_M05_SEMANTIC_CONTINUITY_ACCEPTED`
 
 The bounded repair closes the verified semantic discontinuity between exact M03
 prepared authority and canonical M05 serial cognition. M00 no longer accepts
@@ -25,7 +25,7 @@ commissioning, profitability or authoritative production replay.
 - Expected-red evidence is retained for the prohibited public seam, the policy
   digest transition and both live-control transitions.
 
-## Candidate-tree validation
+## Accepted-tree validation
 
 | Gate | Command | Result |
 |---|---|---:|
@@ -41,11 +41,14 @@ commissioning, profitability or authoritative production replay.
 | Ruff | `.venv/bin/python -m ruff check src scripts tests` | passed |
 | Compilation | `.venv/bin/python -m compileall -q src scripts tests` | passed |
 | Diff whitespace | `git diff --check` | passed |
+| Signed `alpha_current` candidate | `.venv/bin/python scripts/run_promotion_gate.py --set alpha_current --receipt ... --timeout 300` on clean commit `94e21a0` | 19/19 blocks; 827/827 tests |
 
-The exact clean-commit `alpha_current` promotion, Git integrity check, final
-checkpoint receipt and independent archive extraction are intentionally deferred
-until this candidate tree is committed and clean. Their results are external
-exact-commit evidence and must not be inferred from the candidate checks above.
+The accepted implementation and control tree passed signed `alpha_current` on
+clean commit `94e21a0`. The final checkpoint commit changes only this acceptance
+record and its governed vocabulary stamps. Complete physical, proof, vocabulary,
+static, Git-integrity and signed-promotion checks are rerun on that exact commit;
+the final receipt and archive-verification receipt remain external exact-commit
+evidence so the repository does not need to self-reference its own commit hash.
 
 ## Bounded result
 
@@ -69,7 +72,7 @@ Ruled out:
 
 Next gate:
 
-- commit the candidate tree;
-- execute signed `alpha_current` and final physical/control checks on that exact
-  clean commit;
+- freeze this acceptance record in one clean checkpoint commit;
+- rerun physical, proof, vocabulary, static, Git-integrity and signed promotion
+  checks on that exact commit;
 - publish the exact receipt and independently verified full-history archive.
