@@ -1,0 +1,2319 @@
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/scripts/build_canonical_vocabulary.py:8:1
+   |
+ 6 |   """
+ 7 |
+ 8 | / from __future__ import annotations
+ 9 | |
+10 | | from pathlib import Path
+11 | |
+12 | | from nvda_desk.schemas.playbook_registry import PlaybookHorizon
+13 | | from nvda_desk.schemas.vocabulary import (
+14 | |     RawDerivedTag,
+15 | |     VocabularyCategory,
+16 | |     VocabularyDocument,
+17 | |     VocabularyEntry,
+18 | | )
+19 | | from nvda_desk.services.playbook_registry import PlaybookRegistryService
+   | |________________________________________________________________________^
+20 |
+21 |   OUTPUT_PATH = Path("docs/vocabulary/2026-03-25_CANONICAL_DESK_COGNITION_VOCABULARY.json")
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/schemas/cognition.py:9:1
+   |
+ 7 |   """
+ 8 |
+ 9 | / from __future__ import annotations
+10 | |
+11 | | from datetime import datetime
+12 | | from enum import StrEnum
+13 | | from typing import Literal
+14 | |
+15 | | from pydantic import BaseModel, ConfigDict, Field
+16 | |
+17 | | from nvda_desk.domain.session_clock import SessionClockPhase
+18 | | from nvda_desk.schemas.events import LiveEventSnapshot
+19 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+20 | | from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
+21 | | from nvda_desk.schemas.downstream import DownstreamArchitectureReceipt
+22 | | from nvda_desk.schemas.market import PrecursorRuntimePacket
+23 | | from nvda_desk.schemas.options_units import VolFraction
+24 | | from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
+25 | | from nvda_desk.schemas.review import (
+26 | |     CandidateGovernanceSurface,
+27 | |     EconomicContributionPacket,
+28 | |     EventOptionsStressPolicySurface,
+29 | |     ImportedModuleReviewCitation,
+30 | |     ModifierControlLawSurface,
+31 | |     PhaseCarryoverPolicySurface,
+32 | |     PrecursorGovernanceSurface,
+33 | |     PrecursorRuntimeBindingSurface,
+34 | |     PromotionEvidencePacket,
+35 | |     ReviewEligibilitySurface,
+36 | |     ReviewFailurePacket,
+37 | |     ReviewGovernanceSurface,
+38 | |     ReviewLineagePacket,
+39 | |     TemporalEventWindowSurface,
+40 | | )
+41 | | from nvda_desk.schemas.risk import CarryHorizonState, DayPhaseState, RiskAction, RiskDecision
+42 | | from nvda_desk.schemas.session_clock import DeskCalendarAuthorityPacket
+43 | | from nvda_desk.schemas.state_policy import (
+44 | |     DegradationStep,
+45 | |     EffectiveCoefficientLineage,
+46 | |     ModifierRuntimePacket,
+47 | |     NonActionClass,
+48 | |     OverrideDisposition,
+49 | |     ResolvedRuntimeSurfaceValue,
+50 | |     SignalConflictClass,
+51 | |     SurfaceStabilityScorecard,
+52 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> legacy_import/source/nvda_desk/schemas/dmp.py:8:1
+    |
+  6 |   """
+  7 |
+  8 | / from __future__ import annotations
+  9 | |
+ 10 | | from datetime import datetime
+ 11 | | from enum import StrEnum
+ 12 | | from typing import Any
+ 13 | |
+ 14 | | from pydantic import BaseModel, ConfigDict, Field
+ 15 | |
+ 16 | | from nvda_desk.schemas.dmp_envelope import DmpV3Envelope, build_dmp_v3_envelope_kwargs
+ 17 | |
+ 18 | | from nvda_desk.schemas.calibration import (
+ 19 | |     CoefficientAuditPacket,
+ 20 | |     CoefficientSet,
+ 21 | |     ComparisonReport,
+ 22 | |     ReplayRunResult,
+ 23 | |     StackDefinition,
+ 24 | | )
+ 25 | | from nvda_desk.schemas.cognition import (
+ 26 | |     ExecutionExpressionOutput,
+ 27 | |     MarketRegimeContextOutput,
+ 28 | |     OptionsFlowContextOutput,
+ 29 | |     PlaybookEligibilityOutput,
+ 30 | |     PostureRiskOutput,
+ 31 | |     ReviewExplanationOutput,
+ 32 | |     TemporalContextOutput,
+ 33 | | )
+ 34 | | from nvda_desk.schemas.imported_modules.context_scanners import (
+ 35 | |     AsiaPrecursorContextFilterContractOutput,
+ 36 | |     EngineScoreContractOutput,
+ 37 | |     ExecutionContextScoreContractOutput,
+ 38 | |     MacroAdaptiveWeightingFilterContractOutput,
+ 39 | |     MacroSignalScoreContractOutput,
+ 40 | |     OptionsBehaviourClusterContractOutput,
+ 41 | |     VixSpreadDetectorContractOutput,
+ 42 | |     VolCorridorContractOutput,
+ 43 | | )
+ 44 | | from nvda_desk.schemas.imported_modules.execution_lifecycle import (
+ 45 | |     DynamicPartialExitModelContractOutput,
+ 46 | |     ExecutionLogWriterContractOutput,
+ 47 | |     ExecutionTagsContractOutput,
+ 48 | |     FillFeedbackRouterContractOutput,
+ 49 | |     LadderContinuityTrackerContractOutput,
+ 50 | |     PositionBookContractOutput,
+ 51 | |     TakeProfitContractOutput,
+ 52 | |     TradeLoggerContractOutput,
+ 53 | |     TradeReentryMarkerContractOutput,
+ 54 | |     TrailingStopContractOutput,
+ 55 | |     UnrealizedTrackerContractOutput,
+ 56 | | )
+ 57 | | from nvda_desk.schemas.imported_modules.execution_planning import (
+ 58 | |     BrokerAdapterContractOutput,
+ 59 | |     EntryPlannerContractOutput,
+ 60 | |     OrderSimulatorContractOutput,
+ 61 | |     PositionAllocatorContractOutput,
+ 62 | |     RunTradingBotContractOutput,
+ 63 | | )
+ 64 | | from nvda_desk.schemas.imported_modules.ladder_readiness_overlays import (
+ 65 | |     VvixLadderShaperContractOutput,
+ 66 | | )
+ 67 | | from nvda_desk.schemas.imported_modules.market_context_synthesis import (
+ 68 | |     RunSignalScanContractOutput,
+ 69 | | )
+ 70 | | from nvda_desk.schemas.imported_modules.market_substrate import (
+ 71 | |     MacroDataCaptureContractOutput,
+ 72 | |     OptionsDataCaptureContractOutput,
+ 73 | |     OptionsMetadataCaptureContractOutput,
+ 74 | |     PeerEquityCaptureContractOutput,
+ 75 | |     SpotDataCaptureContractOutput,
+ 76 | |     VwapAccumulatorContractOutput,
+ 77 | |     VwapRocContractOutput,
+ 78 | | )
+ 79 | | from nvda_desk.schemas.imported_modules.posture_enrichers import (
+ 80 | |     ArchetypeTaggerContractOutput,
+ 81 | |     CompressionRegimeDetectorContractOutput,
+ 82 | |     FillBiasAdjusterContractOutput,
+ 83 | |     ObvViFlowConfirmationContractOutput,
+ 84 | |     TailHedgeInjectorContractOutput,
+ 85 | |     VolatilitySentimentIndexContractOutput,
+ 86 | | )
+ 87 | | from nvda_desk.schemas.imported_modules.review_attribution import (
+ 88 | |     ConfidenceDivergenceLoggerContractOutput,
+ 89 | |     DailySummaryContractOutput,
+ 90 | |     FeedbackSummaryWriterContractOutput,
+ 91 | |     MacroAlignmentCheckerContractOutput,
+ 92 | |     ModuleScoreAttributorContractOutput,
+ 93 | |     ModuleTraceAttributionContractOutput,
+ 94 | |     ProfitLossLedgerContractOutput,
+ 95 | |     VariantPerformanceTrackerContractOutput,
+ 96 | |     VariantTraceLoggerContractOutput,
+ 97 | | )
+ 98 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+ 99 | |     ArchetypeMatcherContractOutput,
+100 | |     ConvictionTierAllocatorContractOutput,
+101 | |     EntryGateContractOutput,
+102 | |     EventFlagCaptureContractOutput,
+103 | |     GammaPressureContractOutput,
+104 | |     IvVsRvAnalysisContractOutput,
+105 | |     LadderConstructorContractOutput,
+106 | |     ModelConfidenceScorerContractOutput,
+107 | |     PeerDivergenceContractOutput,
+108 | |     RealizedVolatilityEngineContractOutput,
+109 | |     SignalConflictDetectorContractOutput,
+110 | |     SkewInflectionContractOutput,
+111 | |     VolumeSpikeFilterContractOutput,
+112 | | )
+    | |_^
+    |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/schemas/downstream.py:7:1
+   |
+ 5 |   """
+ 6 |
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | from enum import StrEnum
+10 | |
+11 | | from pydantic import BaseModel, Field
+12 | |
+13 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+14 | |
+15 | | from nvda_desk.schemas.execution_records import (
+16 | |     BrokerFillEventPayload,
+17 | |     BrokerOrderEventPayload,
+18 | |     CapitalStateSnapshotPayload,
+19 | |     ModuleSignalEventPayload,
+20 | |     ModuleVetoEventPayload,
+21 | |     PositionInstanceSnapshotPayload,
+22 | |     PositionSnapshotPayload,
+23 | |     RiskBlockEventPayload,
+24 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/schemas/financial_calendar.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from datetime import date
+ 4 | | from enum import StrEnum
+ 5 | | from typing import TypedDict
+ 6 | |
+ 7 | | from pydantic import BaseModel, ConfigDict, Field
+ 8 | |
+ 9 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+10 | |
+11 | | from nvda_desk.schemas.events import (
+12 | |     DeskEventClass,
+13 | |     EventMaterialityTier,
+14 | |     EventSemanticPhase,
+15 | |     EventSourceClass,
+16 | |     ExpiryEventSubclass,
+17 | |     MacroEventSubclass,
+18 | |     PeerEventSubclass,
+19 | |     PolicyEventSubclass,
+20 | |     SupportedEventSource,
+21 | |     VenueSessionEventSubclass,
+22 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/schemas/parallel_risk.py:9:1
+   |
+ 7 |   """
+ 8 |
+ 9 | / from __future__ import annotations
+10 | |
+11 | | from datetime import datetime
+12 | | from enum import StrEnum
+13 | |
+14 | | from pydantic import BaseModel, ConfigDict, Field
+15 | |
+16 | | from nvda_desk.schemas.dmp_envelope import DmpV3Envelope, build_dmp_v3_envelope_kwargs
+17 | |
+18 | | from nvda_desk.domain.session_clock import SessionClockPhase
+19 | | from nvda_desk.schemas.events import DeskEventClass
+   | |___________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/chain_to_cognition.py:7:1
+   |
+ 5 |   """
+ 6 |
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+10 | | from nvda_desk.schemas.cognition import (
+11 | |     OptionsFlowContextInput,
+12 | |     OptionsFlowMicroSnapshot,
+13 | |     PinProgressionPoint,
+14 | |     StrikeClusterObservation,
+15 | |     TemporalContextInput,
+16 | |     TenorCurvePoint,
+17 | | )
+18 | | from nvda_desk.services.upstream_signal_checkpointing import (
+19 | |     CHECKPOINT_CHAIN_TO_COGNITION_PARTICIPATION_MAPPING,
+20 | |     CHECKPOINT_CHAIN_TO_COGNITION_REGIME_MAPPING,
+21 | |     CHECKPOINT_PARTICIPATION_AVAILABLE_REQUIRES_BASELINE_VOLUME,
+22 | |     append_unique_observation,
+23 | |     checkpoint_observation,
+24 | |     raise_checkpoint_failure,
+25 | | )
+26 | | from nvda_desk.services.upstream_signal_ingress import build_market_regime_input
+27 | | from nvda_desk.schemas.dataset import (
+28 | |     PreparedRuntimeDataset,
+29 | |     PreparedRuntimeSnapshot,
+30 | |     RealDataCognitionInputs,
+31 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+   --> legacy_import/source/nvda_desk/services/cognition_runtime.py:13:1
+    |
+ 11 |   """
+ 12 |
+ 13 | / from __future__ import annotations
+ 14 | |
+ 15 | | from collections import Counter
+ 16 | | from dataclasses import dataclass, field
+ 17 | | from datetime import datetime
+ 18 | | from typing import cast
+ 19 | |
+ 20 | | from nvda_desk.config import Settings
+ 21 | | from nvda_desk.db.session import create_session_factory
+ 22 | | from nvda_desk.schemas.calibration import ParallelRiskLaneEvaluationPreparationPacket
+ 23 | | from nvda_desk.schemas.cognition import (
+ 24 | |     BindingStageName,
+ 25 | |     CapitalDeploymentAuthorityDecision,
+ 26 | |     CapitalDeploymentAuthorityInput,
+ 27 | |     ExecutionExpressionInput,
+ 28 | |     ExecutionExpressionOutput,
+ 29 | |     InventoryState,
+ 30 | |     LifecycleAction,
+ 31 | |     MarketRegimeContextInput,
+ 32 | |     MarketRegimeContextOutput,
+ 33 | |     OptionsFlowContextInput,
+ 34 | |     OptionsFlowContextOutput,
+ 35 | |     PacketLineageSurface,
+ 36 | |     PlaybookEligibilityInput,
+ 37 | |     PlaybookEligibilityOutput,
+ 38 | |     PositionContextInput,
+ 39 | |     PostureRiskInput,
+ 40 | |     PostureRiskOutput,
+ 41 | |     ReviewExplanationInput,
+ 42 | |     ReviewExplanationOutput,
+ 43 | |     StageLocalHandoffSurface,
+ 44 | |     TemporalContextInput,
+ 45 | |     TemporalContextOutput,
+ 46 | |     TradableExpressionFamily,
+ 47 | | )
+ 48 | | from nvda_desk.schemas.dmp import (
+ 49 | |     CognitionStagePayload,
+ 50 | |     DeskModulePacketV3,
+ 51 | |     DmpBehaviourClass,
+ 52 | |     DmpGrammarRole,
+ 53 | |     build_dmp_v3_packet_from_payload,
+ 54 | | )
+ 55 | | from nvda_desk.schemas.dmp_envelope import DmpV3Envelope, build_dmp_v3_envelope_kwargs
+ 56 | | from nvda_desk.schemas.downstream import (
+ 57 | |     DownstreamArchitectureReceipt,
+ 58 | |     DownstreamLiveInventorySnapshot,
+ 59 | |     DownstreamOpeningSnapshot,
+ 60 | | )
+ 61 | | from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
+ 62 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+ 63 | |     ArchetypeMatcherContractOutput,
+ 64 | |     ContractComputationMode,
+ 65 | |     ContractDependencyStatus,
+ 66 | |     ConvictionTierAllocatorContractOutput,
+ 67 | |     EntryGateContractOutput,
+ 68 | |     LadderConstructorContractOutput,
+ 69 | |     ModelConfidenceScorerContractOutput,
+ 70 | |     SignalConflictDetectorContractOutput,
+ 71 | |     TrancheASelectorContext,
+ 72 | |     TrancheAUpstreamContext,
+ 73 | | )
+ 74 | | from nvda_desk.schemas.parallel_risk import ParallelRiskLanePacket
+ 75 | | from nvda_desk.schemas.review import (
+ 76 | |     ImportedModuleDependencySurface,
+ 77 | |     ImportedModuleMaturityState,
+ 78 | |     ImportedModuleReviewCitation,
+ 79 | | )
+ 80 | | from nvda_desk.services.capital_deployment_authority import CapitalDeploymentAuthorityService
+ 81 | | from nvda_desk.services.execution_expression import ExecutionExpressionService
+ 82 | | from nvda_desk.services.execution_records import ExecutionRecordsService
+ 83 | | from nvda_desk.services.downstream_live_inventory import DownstreamLiveInventoryService
+ 84 | | from nvda_desk.services.downstream_opening import DownstreamOpeningService
+ 85 | | from nvda_desk.services.downstream_review import DownstreamReviewService
+ 86 | | from nvda_desk.services.downstream_state import DownstreamStateService
+ 87 | | from nvda_desk.services.imported_modules.tranche_a import (
+ 88 | |     TrancheAContractEmission,
+ 89 | |     TrancheASelectorContractService,
+ 90 | |     TrancheAUpstreamContractService,
+ 91 | | )
+ 92 | | from nvda_desk.services.market_regime_context import MarketRegimeContextService
+ 93 | | from nvda_desk.services.options_flow_context import OptionsFlowContextService
+ 94 | | from nvda_desk.services.options_flow_history import (
+ 95 | |     OptionsFlowHistoryBuilder,
+ 96 | |     OptionsFlowHistoryStore,
+ 97 | |     build_and_persist_options_flow_history,
+ 98 | | )
+ 99 | | from nvda_desk.services.parallel_risk_lane import ParallelRiskLaneService
+100 | | from nvda_desk.services.playbook_eligibility import PlaybookEligibilityService
+101 | | from nvda_desk.services.posture_risk import PostureRiskService
+102 | | from nvda_desk.services.review_explanation import ReviewExplanationService
+103 | | from nvda_desk.services.risk_gateway import RiskGatewayService
+104 | | from nvda_desk.services.state_conditioned_modifier import (
+105 | |     StateConditionedModifierService,
+106 | | )
+107 | | from nvda_desk.services.temporal_context import TemporalContextService
+108 | | from nvda_desk.schemas.options_flow_history import (
+109 | |     OptionsFlowHistoryObservationRecord,
+110 | |     OptionsFlowHistoryWriteResult,
+111 | | )
+    | |_^
+    |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/financial_calendar_import.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import json
+ 4 | | from datetime import UTC, datetime
+ 5 | | from pathlib import Path
+ 6 | |
+ 7 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+ 8 | |
+ 9 | | from nvda_desk.schemas.dmp import DmpV3Packet
+10 | | from nvda_desk.schemas.financial_calendar import (
+11 | |     FinancialCalendarBundleMetadata,
+12 | |     FinancialCalendarImportedBundle,
+13 | |     FinancialCalendarImportedRecord,
+14 | |     FinancialCalendarLayerArtifact,
+15 | |     FinancialCalendarReferenceArtifact,
+16 | |     FinancialCalendarReferenceArtifactKind,
+17 | |     FinancialCalendarReferenceBundlePayload,
+18 | |     FinancialCalendarRepoManifest,
+19 | | )
+20 | | from nvda_desk.services.financial_calendar_reference import (
+21 | |     build_financial_calendar_reference_packet,
+22 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/financial_calendar_reference.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from collections.abc import Sequence
+ 4 | | from datetime import datetime
+ 5 | |
+ 6 | | from nvda_desk.schemas.checkpoints import CheckpointObservation
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import DmpBehaviourClass, DmpGrammarRole, DmpV3Packet
+ 9 | | from nvda_desk.schemas.dmp_envelope import (
+10 | |     DmpV3Lineage,
+11 | |     DmpV3Producer,
+12 | |     DmpV3Summary,
+13 | |     DmpV3Validation,
+14 | |     DmpV3ValidationCheck,
+15 | | )
+16 | | from nvda_desk.schemas.financial_calendar import (
+17 | |     FinancialCalendarBundleMetadata,
+18 | |     FinancialCalendarCrosswalkRecord,
+19 | |     FinancialCalendarReferenceArtifact,
+20 | |     FinancialCalendarReferenceBundlePayload,
+21 | |     default_financial_calendar_crosswalk,
+22 | | )
+   | |_^
+23 |
+24 |   FINANCIAL_CALENDAR_PAYLOAD_CONTRACT_ID = (
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/context_scanners.py:3:1
+   |
+ 1 |   """Gate 19 context and scanner contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | | from statistics import fmean
+ 8 | |
+ 9 | | from nvda_desk.schemas.dmp import (
+10 | |     DmpBehaviourClass,
+11 | |     DmpGrammarRole,
+12 | |     DeskModulePacketV3,
+13 | |     build_dmp_v3_packet_from_payload,
+14 | | )
+15 | | from nvda_desk.schemas.imported_modules.context_scanners import (
+16 | |     AsiaPrecursorContextFilterContractOutput,
+17 | |     ContextScannerContext,
+18 | |     ContextScannerPayload,
+19 | |     EngineScoreContractOutput,
+20 | |     ExecutionContextScoreContractOutput,
+21 | |     MacroAdaptiveWeightingFilterContractOutput,
+22 | |     MacroSignalScoreContractOutput,
+23 | |     OptionsBehaviourClusterContractOutput,
+24 | |     VixSpreadDetectorContractOutput,
+25 | |     VolCorridorContractOutput,
+26 | | )
+27 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+28 | |     ContractComputationMode,
+29 | |     ContractDependencyFence,
+30 | |     ContractDependencyStatus,
+31 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/execution_lifecycle.py:3:1
+   |
+ 1 |   """Gate 22 execution-state, exit, and lifecycle contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | | from hashlib import sha1
+ 8 | |
+ 9 | | from nvda_desk.schemas.dmp import (
+10 | |     DmpBehaviourClass,
+11 | |     DmpGrammarRole,
+12 | |     DeskModulePacketV3,
+13 | |     build_dmp_v3_packet_from_payload,
+14 | | )
+15 | | from nvda_desk.schemas.imported_modules.execution_lifecycle import (
+16 | |     DynamicPartialExitModelContractOutput,
+17 | |     ExecutionLifecycleContext,
+18 | |     ExecutionLifecyclePayload,
+19 | |     ExecutionLogWriterContractOutput,
+20 | |     ExecutionTagsContractOutput,
+21 | |     FillFeedbackRouterContractOutput,
+22 | |     LadderContinuityTrackerContractOutput,
+23 | |     PositionBookContractOutput,
+24 | |     TakeProfitContractOutput,
+25 | |     TradeLoggerContractOutput,
+26 | |     TradeReentryMarkerContractOutput,
+27 | |     TrailingStopContractOutput,
+28 | |     UnrealizedTrackerContractOutput,
+29 | | )
+30 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+31 | |     ContractComputationMode,
+32 | |     ContractDependencyFence,
+33 | |     ContractDependencyStatus,
+34 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/execution_planning.py:3:1
+   |
+ 1 |   """Gate 21 execution-planning and broker-abstraction contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import (
+ 9 | |     DmpBehaviourClass,
+10 | |     DmpGrammarRole,
+11 | |     DeskModulePacketV3,
+12 | |     build_dmp_v3_packet_from_payload,
+13 | | )
+14 | | from nvda_desk.schemas.imported_modules.execution_planning import (
+15 | |     BrokerAdapterContractOutput,
+16 | |     EntryPlannerContractOutput,
+17 | |     ExecutionPlanningContext,
+18 | |     ExecutionPlanningPayload,
+19 | |     OrderSimulatorContractOutput,
+20 | |     PositionAllocatorContractOutput,
+21 | |     RunTradingBotContractOutput,
+22 | | )
+23 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+24 | |     ContractComputationMode,
+25 | |     ContractDependencyFence,
+26 | |     ContractDependencyStatus,
+27 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/ladder_readiness_overlays.py:3:1
+   |
+ 1 |   """Gate 33 ladder-readiness overlay contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import (
+ 9 | |     DmpBehaviourClass,
+10 | |     DmpGrammarRole,
+11 | |     DeskModulePacketV3,
+12 | |     build_dmp_v3_packet_from_payload,
+13 | | )
+14 | | from nvda_desk.schemas.imported_modules.ladder_readiness_overlays import (
+15 | |     LadderReadinessContext,
+16 | |     LadderReadinessPayload,
+17 | |     VvixLadderShaperContractOutput,
+18 | | )
+19 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+20 | |     ContractComputationMode,
+21 | |     ContractDependencyFence,
+22 | |     ContractDependencyStatus,
+23 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/market_context_synthesis.py:3:1
+   |
+ 1 |   """Gate 29 market-context synthesis contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import (
+ 9 | |     DmpBehaviourClass,
+10 | |     DmpGrammarRole,
+11 | |     DeskModulePacketV3,
+12 | |     build_dmp_v3_packet_from_payload,
+13 | | )
+14 | | from nvda_desk.schemas.imported_modules.market_context_synthesis import (
+15 | |     MarketContextSynthesisContext,
+16 | |     MarketContextSynthesisPayload,
+17 | |     RunSignalScanContractOutput,
+18 | | )
+19 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+20 | |     ContractComputationMode,
+21 | |     ContractDependencyFence,
+22 | |     ContractDependencyStatus,
+23 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/market_substrate.py:3:1
+   |
+ 1 |   """Gate 18 shared market-data substrate contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import (
+ 9 | |     DmpBehaviourClass,
+10 | |     DmpGrammarRole,
+11 | |     DeskModulePacketV3,
+12 | |     build_dmp_v3_packet_from_payload,
+13 | | )
+14 | | from nvda_desk.schemas.imported_modules.market_substrate import (
+15 | |     MacroDataCaptureContractOutput,
+16 | |     MarketSubstrateContext,
+17 | |     MarketSubstratePayload,
+18 | |     OptionsDataCaptureContractOutput,
+19 | |     OptionsMetadataCaptureContractOutput,
+20 | |     PeerEquityCaptureContractOutput,
+21 | |     SpotDataCaptureContractOutput,
+22 | |     VwapAccumulatorContractOutput,
+23 | |     VwapRocContractOutput,
+24 | | )
+25 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+26 | |     ContractComputationMode,
+27 | |     ContractDependencyFence,
+28 | |     ContractDependencyStatus,
+29 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/posture_enrichers.py:3:1
+   |
+ 1 |   """Gate 20 posture and eligibility enricher contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | | from statistics import fmean
+ 8 | |
+ 9 | | from nvda_desk.schemas.dmp import (
+10 | |     DmpBehaviourClass,
+11 | |     DmpGrammarRole,
+12 | |     DeskModulePacketV3,
+13 | |     build_dmp_v3_packet_from_payload,
+14 | | )
+15 | | from nvda_desk.schemas.imported_modules.posture_enrichers import (
+16 | |     ArchetypeTaggerContractOutput,
+17 | |     CompressionRegimeDetectorContractOutput,
+18 | |     FillBiasAdjusterContractOutput,
+19 | |     ObvViFlowConfirmationContractOutput,
+20 | |     PostureEnricherContext,
+21 | |     PostureEnricherPayload,
+22 | |     TailHedgeInjectorContractOutput,
+23 | |     VolatilitySentimentIndexContractOutput,
+24 | | )
+25 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+26 | |     ContractComputationMode,
+27 | |     ContractDependencyFence,
+28 | |     ContractDependencyStatus,
+29 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/review_attribution.py:3:1
+   |
+ 1 |   """Gate 23 review, P&L, attribution, and variant-tracking contract services."""
+ 2 |
+ 3 | / from __future__ import annotations
+ 4 | |
+ 5 | | from dataclasses import dataclass
+ 6 | | from datetime import datetime
+ 7 | |
+ 8 | | from nvda_desk.schemas.dmp import (
+ 9 | |     DmpBehaviourClass,
+10 | |     DmpGrammarRole,
+11 | |     DeskModulePacketV3,
+12 | |     build_dmp_v3_packet_from_payload,
+13 | | )
+14 | | from nvda_desk.schemas.imported_modules.review_attribution import (
+15 | |     ConfidenceDivergenceLoggerContractOutput,
+16 | |     DailySummaryContractOutput,
+17 | |     FeedbackSummaryWriterContractOutput,
+18 | |     MacroAlignmentCheckerContractOutput,
+19 | |     ModuleScoreAttributorContractOutput,
+20 | |     ModuleTraceAttributionContractOutput,
+21 | |     ProfitLossLedgerContractOutput,
+22 | |     ReviewAttributionContext,
+23 | |     ReviewAttributionPayload,
+24 | |     VariantPerformanceTrackerContractOutput,
+25 | |     VariantTraceLoggerContractOutput,
+26 | | )
+27 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+28 | |     ContractComputationMode,
+29 | |     ContractDependencyFence,
+30 | |     ContractDependencyStatus,
+31 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/imported_modules/tranche_a.py:8:1
+   |
+ 6 |   """
+ 7 |
+ 8 | / from __future__ import annotations
+ 9 | |
+10 | | from dataclasses import dataclass
+11 | | from datetime import datetime
+12 | | from statistics import fmean
+13 | |
+14 | | from nvda_desk.schemas.dmp import (
+15 | |     DmpBehaviourClass,
+16 | |     DmpGrammarRole,
+17 | |     DeskModulePacketV3,
+18 | |     build_dmp_v3_packet_from_payload,
+19 | | )
+20 | | from nvda_desk.schemas.imported_modules.tranche_a import (
+21 | |     ArchetypeMatcherContractOutput,
+22 | |     ContractComputationMode,
+23 | |     ContractDependencyFence,
+24 | |     ContractDependencyStatus,
+25 | |     ConvictionTierAllocatorContractOutput,
+26 | |     EntryGateContractOutput,
+27 | |     EventFlagCaptureContractOutput,
+28 | |     GammaPressureContractOutput,
+29 | |     IvVsRvAnalysisContractOutput,
+30 | |     LadderConstructorContractOutput,
+31 | |     ModelConfidenceScorerContractOutput,
+32 | |     PeerDivergenceContractOutput,
+33 | |     RealizedVolatilityEngineContractOutput,
+34 | |     SignalConflictDetectorContractOutput,
+35 | |     SkewInflectionContractOutput,
+36 | |     TrancheAImportedPayload,
+37 | |     TrancheASelectorContext,
+38 | |     TrancheAUpstreamContext,
+39 | |     VolumeSpikeFilterContractOutput,
+40 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/options_flow_history.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import json
+ 4 | | from datetime import UTC, date, datetime, timedelta
+ 5 | |
+ 6 | | from sqlalchemy import desc, select
+ 7 | | from sqlalchemy.orm import Session, sessionmaker
+ 8 | |
+ 9 | | from nvda_desk.db.models import Instrument, OptionSnapshot, OptionsFlowHistoryObservation
+10 | | from nvda_desk.schemas.cognition import OptionsFlowContextInput, OptionsFlowContextOutput
+11 | | from nvda_desk.schemas.options import OptionSnapshotPayload, OptionType
+12 | | from nvda_desk.schemas.options_flow_history import (
+13 | |     OptionsFlowHistoryLineage,
+14 | |     OptionsFlowHistoryObservationRecord,
+15 | |     OptionsFlowHistoryObservationStorePayload,
+16 | |     OptionsFlowHistoryWriteResult,
+17 | | )
+   | |_^
+   |
+help: Organize imports
+
+F401 [*] `datetime.date` imported but unused
+ --> legacy_import/source/nvda_desk/services/options_flow_history.py:4:27
+  |
+3 | import json
+4 | from datetime import UTC, date, datetime, timedelta
+  |                           ^^^^
+5 |
+6 | from sqlalchemy import desc, select
+  |
+help: Remove unused import: `datetime.date`
+
+F841 Local variable `eligibility` is assigned to but never used
+   --> legacy_import/source/nvda_desk/services/parallel_risk_lane.py:263:9
+    |
+261 |     ) -> ParallelRiskLanePacket:
+262 |         posture = posture_packet.data
+263 |         eligibility = eligibility_packet.data
+    |         ^^^^^^^^^^^
+264 |         execution = execution_packet.data
+265 |         market_surface = packet.market_translation_surface
+    |
+help: Remove assignment to unused variable `eligibility`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/real_data_loader.py:8:1
+   |
+ 6 |   """
+ 7 |
+ 8 | / from __future__ import annotations
+ 9 | |
+10 | | import json
+11 | | from bisect import bisect_right
+12 | | from collections import Counter
+13 | | from collections.abc import Mapping, Sequence
+14 | | from datetime import UTC, datetime
+15 | | from math import sqrt
+16 | | from pathlib import Path
+17 | |
+18 | | from sqlalchemy import desc, select
+19 | | from sqlalchemy.exc import OperationalError
+20 | | from sqlalchemy.orm import Session, sessionmaker
+21 | |
+22 | | from nvda_desk.config import Settings
+23 | | from nvda_desk.schemas.dataset import (
+24 | |     BarRecord,
+25 | |     EventRecord,
+26 | |     OptionChainSnapshot,
+27 | |     OptionQuote,
+28 | |     PreparedNormalisedFeatureSet,
+29 | |     PreparedPinProgressionPoint,
+30 | |     PreparedRuntimeDataset,
+31 | |     PreparedRuntimeRegimePacket,
+32 | |     PreparedRuntimeFixturePack,
+33 | |     PreparedRuntimeLineage,
+34 | |     PreparedRuntimeSnapshot,
+35 | |     PreparedSequencePoint,
+36 | |     PreparedStrikeCluster,
+37 | |     PreparedTenorPoint,
+38 | |     RealDataBundle,
+39 | |     RuntimeSnapshotSanityReport,
+40 | | )
+41 | | from nvda_desk.db.models import Bar1m, Instrument
+42 | | from nvda_desk.db.session import create_session_factory
+43 | | from nvda_desk.services.event_store import EventStoreService
+44 | | from nvda_desk.services.upstream_signal_ingress import build_participation_baseline_packet
+   | |__________________________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/services/review_explanation.py:7:1
+   |
+ 5 |   """
+ 6 |
+ 7 | / from __future__ import annotations
+ 8 | |
+ 9 | | from nvda_desk.schemas.cognition import (
+10 | |     ContradictionSurface,
+11 | |     EffectivePolicySnapshot,
+12 | |     PlaybookDecision,
+13 | |     RejectedPlaybookReason,
+14 | |     ReviewExplanationInput,
+15 | |     ReviewExplanationOutput,
+16 | |     StageReasonPacket,
+17 | | )
+18 | | from nvda_desk.schemas.market import SessionAlignmentExpectation
+19 | | from nvda_desk.schemas.review import (
+20 | |     CandidateComparisonContext,
+21 | |     CandidateGovernanceSurface,
+22 | |     EconomicContributionPacket,
+23 | |     EconomicContributionTag,
+24 | |     EventOptionsStressPolicySurface,
+25 | |     ModifierControlLawSurface,
+26 | |     PhaseCarryoverPolicySurface,
+27 | |     PrecursorGovernanceSurface,
+28 | |     PrecursorRuntimeBindingSurface,
+29 | |     PromotionEvidencePacket,
+30 | |     ReviewEligibilitySurface,
+31 | |     ReviewFailureClass,
+32 | |     ReviewFailurePacket,
+33 | |     ReviewGovernanceSurface,
+34 | |     ReviewLineagePacket,
+35 | |     ReviewResolutionClass,
+36 | |     TemporalEventWindowSurface,
+37 | | )
+38 | | from nvda_desk.schemas.risk import (
+39 | |     CarryHorizonState,
+40 | |     PhaseBehaviourClass,
+41 | |     PhaseNoActionBias,
+42 | | )
+43 | | from nvda_desk.services.review_packets import ReviewPacketService
+44 | | from nvda_desk.services.downstream_seam_checkpointing import (
+45 | |     CHECKPOINT_REVIEW_PACKET_PRESERVED_SEAM_OBSERVED,
+46 | |     checkpoint_observation,
+47 | | )
+48 | | from nvda_desk.schemas.state_policy import (
+49 | |     AdjudicationDisposition,
+50 | |     BehaviourStabilityState,
+51 | |     CandidateSetShape,
+52 | |     CorridorBounds,
+53 | |     CorridorBreachSeverity,
+54 | |     CoverageSliceClass,
+55 | |     CoverageSliceScore,
+56 | |     EventOptionsBehaviourClass,
+57 | |     EventOptionsStressState,
+58 | |     MetricTriggerMode,
+59 | |     PersistenceHysteresisSpec,
+60 | |     PolicyEffectType,
+61 | |     ReviewChangeBudget,
+62 | |     ReviewEvidenceBlock,
+63 | |     ReviewOutcome,
+64 | |     ReviewSurfaceClass,
+65 | |     ReviewTriggerClass,
+66 | |     RuntimeSurfaceClass,
+67 | |     ScorecardAxis,
+68 | |     StabilityMetricFamily,
+69 | |     StabilityMetricObservation,
+70 | |     SurfaceStabilityScorecard,
+71 | | )
+72 | | from nvda_desk.schemas.temporal_surface import (
+73 | |     EventCarrySensitivity,
+74 | |     EventOverlapClass,
+75 | |     EventProximityState,
+76 | |     EventRiskTimingClass,
+77 | |     EventWindowState,
+78 | | )
+79 | | from nvda_desk.services.state_conditioned_modifier import (
+80 | |     project_carry_horizon_state,
+81 | |     project_day_phase_state,
+82 | |     project_event_option_state_labels,
+83 | | )
+   | |_^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> legacy_import/source/nvda_desk/testing/bounded_trace_review.py:9:1
+   |
+ 7 |   """
+ 8 |
+ 9 | / from __future__ import annotations
+10 | |
+11 | | import json
+12 | | from datetime import UTC, datetime
+13 | | from pathlib import Path
+14 | |
+15 | | from nvda_desk.config import Settings
+16 | | from nvda_desk.schemas.trace_review import (
+17 | |     BoundedTraceFixturePack,
+18 | |     BoundedTraceReviewReport,
+19 | |     BoundedTraceRunResult,
+20 | |     BoundedTraceScenario,
+21 | | )
+22 | | from nvda_desk.schemas.execution_records import CapitalStateSnapshotPayload
+23 | | from nvda_desk.services.cognition_runtime import DeskCognitionRuntime
+24 | | from nvda_desk.testing.canonical_runtime_harness import CanonicalRuntimeHarnessService
+   | |______________________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/P2_RECOVERY_PART1/real_repair/rows/068/IMPLEMENTATION_READ_COPY.py:3:1
+  |
+1 |   """Risk-family aggregation for supported Parallel Risk Lane atoms."""
+2 |
+3 | / from __future__ import annotations
+4 | |
+5 | | from collections import defaultdict
+6 | |
+7 | | from nvda_desk.contracts.parallel_risk import ParallelRiskAtomStateValue, RiskAtomState, RiskFamilyState
+  | |________________________________________________________________________________________________________^
+8 |
+9 |   _STATE_RANK: dict[ParallelRiskAtomStateValue, int] = {
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/real_repair/rows/072/TEST_READ_COPY.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from datetime import UTC, datetime
+ 4 | |
+ 5 | | from nvda_desk.contracts.options_flow import OptionsFlowContextInput
+ 6 | | from nvda_desk.contracts.parallel_risk import EventProximityRegisterEntry, FreshnessRegisterEntry
+ 7 | | from nvda_desk.contracts.parallel_risk import ParallelRiskPreparationPacket
+ 8 | | from nvda_desk.contracts.regime import MarketRegimeContextInput
+ 9 | | from nvda_desk.contracts.temporal import TemporalContextInput
+10 | | from nvda_desk.domain.parallel_risk.minute_profile_assembly import assemble_parallel_risk_minute_profile
+   | |________________________________________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/real_repair/rows/073/TEST_READ_COPY.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | from datetime import UTC, datetime
+ 4 | |
+ 5 | | from nvda_desk.contracts.options_flow import OptionsFlowContextInput
+ 6 | | from nvda_desk.contracts.parallel_risk import FreshnessRegisterEntry, ParallelRiskMinuteProfile
+ 7 | | from nvda_desk.contracts.regime import MarketRegimeContextInput
+ 8 | | from nvda_desk.contracts.temporal import TemporalContextInput, TemporalEventWindow
+ 9 | | from nvda_desk.contracts.parallel_risk import ParallelRiskPreparationPacket
+10 | | from nvda_desk.domain.parallel_risk.minute_profile_assembly import assemble_parallel_risk_minute_profile
+   | |________________________________________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/real_repair/rows/096/TEST_READ_COPY.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import ast
+ 4 | | import importlib
+ 5 | | from pathlib import Path
+ 6 | |
+ 7 | | import pytest
+ 8 | |
+ 9 | | from nvda_desk.downstream.live_inventory import DownstreamLiveInventoryService
+10 | | from nvda_desk.services.downstream_live_inventory_service import (
+11 | |     DownstreamLiveInventoryService as WorkbookDownstreamLiveInventoryService,
+12 | | )
+13 | | from nvda_desk.persistence.receipt_ledger import ReceiptLedger
+14 | | from nvda_desk.repositories.capital_state_repository import CapitalStateRepository
+15 | | from nvda_desk.repositories.position_repository import PositionRepository
+   | |_________________________________________________________________________^
+   |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:2:1
+  |
+1 |   #!/usr/bin/env python3
+2 | / from __future__ import annotations
+3 | | import argparse, ast, csv, hashlib, subprocess
+4 | | from datetime import datetime, timezone
+5 | | from pathlib import Path
+  | |________________________^
+6 |
+7 |   ROOT=Path(__file__).resolve().parents[4]
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:3:1
+  |
+1 | #!/usr/bin/env python3
+2 | from __future__ import annotations
+3 | import argparse, ast, csv, hashlib, subprocess
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4 | from datetime import datetime, timezone
+5 | from pathlib import Path
+  |
+help: Split imports
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:22:53
+   |
+20 |     for n in ast.walk(tree):
+21 |         mods=[]
+22 |         if isinstance(n,ast.ImportFrom) and n.module: mods=[n.module]
+   |                                                     ^
+23 |         elif isinstance(n,ast.Import): mods=[a.name for a in n.names]
+24 |         for m in mods:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:23:38
+   |
+21 |         mods=[]
+22 |         if isinstance(n,ast.ImportFrom) and n.module: mods=[n.module]
+23 |         elif isinstance(n,ast.Import): mods=[a.name for a in n.names]
+   |                                      ^
+24 |         for m in mods:
+25 |             if m.startswith('nvda_desk'):
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:28:35
+   |
+26 |                 base=ROOT/'src'/Path(*m.split('.'))
+27 |                 for c in (base.with_suffix('.py'),base/'__init__.py'):
+28 |                     if c.is_file(): out.append(c); break
+   |                                   ^
+29 |     return sorted(set(out))
+30 | def append(path:Path,line:str,header:str):
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:28:50
+   |
+26 |                 base=ROOT/'src'/Path(*m.split('.'))
+27 |                 for c in (base.with_suffix('.py'),base/'__init__.py'):
+28 |                     if c.is_file(): out.append(c); break
+   |                                                  ^
+29 |     return sorted(set(out))
+30 | def append(path:Path,line:str,header:str):
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:31:25
+   |
+29 |     return sorted(set(out))
+30 | def append(path:Path,line:str,header:str):
+31 |     if not path.exists(): path.write_text(header+'\n',encoding='utf-8')
+   |                         ^
+32 |     with path.open('a',encoding='utf-8') as f:f.write(line+'\n')
+33 | def main():
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:32:46
+   |
+30 | def append(path:Path,line:str,header:str):
+31 |     if not path.exists(): path.write_text(header+'\n',encoding='utf-8')
+32 |     with path.open('a',encoding='utf-8') as f:f.write(line+'\n')
+   |                                              ^
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:34:33
+   |
+32 |     with path.open('a',encoding='utf-8') as f:f.write(line+'\n')
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+   |                                 ^
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+36 |     if a.mode=='start':
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:34:86
+   |
+32 |     with path.open('a',encoding='utf-8') as f:f.write(line+'\n')
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+   |                                                                                      ^
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+36 |     if a.mode=='start':
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:34:114
+   |
+32 |     with path.open('a',encoding='utf-8') as f:f.write(line+'\n')
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+   |                                                                                                                  ^
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+36 |     if a.mode=='start':
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:35:28
+   |
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+   |                            ^
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:35:40
+   |
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+   |                                        ^
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:35:66
+   |
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+   |                                                                  ^
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:35:94
+   |
+33 | def main():
+34 |     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['start','complete']);ap.add_argument('sequence');a=ap.parse_args()
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+   |                                                                                              ^
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:37:40
+   |
+35 |     seq=a.sequence.zfill(3); r=row(seq); test=ROOT/r['TEST_PATH']; rec=ROOT/r['RECEIPT_PATH']; now=datetime.now(timezone.utc).isoforma…
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+   |                                        ^
+38 |         test_text=test.read_text(encoding='utf-8'); rec_text=rec.read_text(encoding='utf-8')
+39 |         # The gate records deterministic evidence only. Human semantic reading is not certified here.
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:38:51
+   |
+36 |     if a.mode=='start':
+37 |         if r['SEMANTICALLY_READ']!='NO': raise SystemExit('row must be NO at start')
+38 |         test_text=test.read_text(encoding='utf-8'); rec_text=rec.read_text(encoding='utf-8')
+   |                                                   ^
+39 |         # The gate records deterministic evidence only. Human semantic reading is not certified here.
+40 |         paths=[test,*imports(test)]
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:44:43
+   |
+42 | …         append(MAN,f'{seq}\t{p.relative_to(ROOT)}\t{sha(p)}\tYES\tcurrent serial cycle full-read claim; requires human accountabilit…
+43 | …                'SEQUENCE\tPATH\tSHA256\tREAD_STATUS\tNOTE')
+44 | …     out=P1/f'serial_repair/rows/{seq}';out.mkdir(parents=True,exist_ok=True)
+   |                                         ^
+45 | …     (out/'LEDGER_BEFORE.tsv').write_bytes(LEDGER.read_bytes())
+46 | …     (out/'TEST_FULL_TEXT.txt').write_text(test_text,encoding='utf-8')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:52:42
+   |
+50 | …     vr=subprocess.run(['python',str(P1/'P2_RECOVERY_PART1_VALIDATE_ROW.py'),'--repo-root',str(ROOT),'--sequence',seq,'--allow-ledger…
+51 | …     (out/'PRE_ADMISSION_VALIDATOR_RAW.txt').write_text(vr.stdout+vr.stderr+f'\nEXIT_CODE={vr.returncode}\n',encoding='utf-8')
+52 | …     if tr.returncode or vr.returncode: raise SystemExit(f'gate failed test={tr.returncode} validator={vr.returncode}')
+   |                                        ^
+53 | …     append(LOG,f'{seq}\tIN_PROGRESS\t{now}\t{r["TEST_PATH"]}\tpre-admission test and structural validator pass; semantic decision re…
+54 | …            'SEQUENCE\tSTATE\tTIMESTAMP_UTC\tTEST_PATH\tNOTE')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:56:41
+   |
+54 |                'SEQUENCE\tSTATE\tTIMESTAMP_UTC\tTEST_PATH\tNOTE')
+55 |     else:
+56 |         if r['SEMANTICALLY_READ']!='YES': raise SystemExit('row must be YES at complete')
+   |                                         ^
+57 |         vr=subprocess.run(['python',str(P1/'P2_RECOVERY_PART1_VALIDATE_ROW.py'),'--repo-root',str(ROOT),'--sequence',seq],cwd=ROOT,tex…
+58 |         out=P1/f'serial_repair/rows/{seq}';out.mkdir(parents=True,exist_ok=True)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:58:43
+   |
+56 | …     if r['SEMANTICALLY_READ']!='YES': raise SystemExit('row must be YES at complete')
+57 | …     vr=subprocess.run(['python',str(P1/'P2_RECOVERY_PART1_VALIDATE_ROW.py'),'--repo-root',str(ROOT),'--sequence',seq],cwd=ROOT,text=…
+58 | …     out=P1/f'serial_repair/rows/{seq}';out.mkdir(parents=True,exist_ok=True)
+   |                                         ^
+59 | …     (out/'POST_ADMISSION_VALIDATOR_RAW.txt').write_text(vr.stdout+vr.stderr+f'\nEXIT_CODE={vr.returncode}\n',encoding='utf-8')
+60 | …     if vr.returncode: raise SystemExit('post validator failed')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:60:25
+   |
+58 |         out=P1/f'serial_repair/rows/{seq}';out.mkdir(parents=True,exist_ok=True)
+59 |         (out/'POST_ADMISSION_VALIDATOR_RAW.txt').write_text(vr.stdout+vr.stderr+f'\nEXIT_CODE={vr.returncode}\n',encoding='utf-8')
+60 |         if vr.returncode: raise SystemExit('post validator failed')
+   |                         ^
+61 |         (out/'LEDGER_AFTER.tsv').write_bytes(LEDGER.read_bytes())
+62 |         before=list(csv.DictReader((out/'LEDGER_BEFORE.tsv').open(),delimiter='\t'))
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:66:20
+   |
+64 |         diffs=[]
+65 |         for b,c in zip(before,after):
+66 |             if b!=c: diffs.append((b['SEQUENCE'],{k:(b[k],c[k]) for k in b if b[k]!=c[k]}))
+   |                    ^
+67 |         expected=[(seq,{'SEMANTICALLY_READ':('NO','YES')})]
+68 |         comparison='RESULT=PASS\n' if diffs==expected else 'RESULT=FAIL\n'+repr(diffs)+'\n'
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:70:27
+   |
+68 |         comparison='RESULT=PASS\n' if diffs==expected else 'RESULT=FAIL\n'+repr(diffs)+'\n'
+69 |         (out/'NO_OTHER_ROW_CHANGE.txt').write_text(comparison,encoding='utf-8')
+70 |         if diffs!=expected: raise SystemExit('more than one ledger field changed')
+   |                           ^
+71 |         append(LOG,f'{seq}\tCOMPLETE\t{now}\t{r["TEST_PATH"]}\tsingle row admitted after current receipt confirmation and validation',
+72 |                'SEQUENCE\tSTATE\tTIMESTAMP_UTC\tTEST_PATH\tNOTE')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/P2_RECOVERY_PART1/serial_repair/serial_row_gate.py:73:24
+   |
+71 |         append(LOG,f'{seq}\tCOMPLETE\t{now}\t{r["TEST_PATH"]}\tsingle row admitted after current receipt confirmation and validation',
+72 |                'SEQUENCE\tSTATE\tTIMESTAMP_UTC\tTEST_PATH\tNOTE')
+73 | if __name__=='__main__':main()
+   |                        ^
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> project_control/canonical_project_manager/modules/M04/raw_validation/mlc_a_v1/validation/validate_locators.py:8:1
+   |
+ 6 |   """
+ 7 |
+ 8 | / from __future__ import annotations
+ 9 | |
+10 | | import csv
+11 | | import json
+12 | | import re
+13 | | import subprocess
+14 | | import sys
+15 | | from collections import Counter
+16 | | from pathlib import Path
+   | |________________________^
+   |
+help: Organize imports
+
+F841 Local variable `internal_before` is assigned to but never used
+   --> project_control/canonical_project_manager/modules/M13/raw_validation/mutant_commit_before_receipt_source.py:179:9
+    |
+177 |         )
+178 |
+179 |         internal_before = (
+    |         ^^^^^^^^^^^^^^^
+180 |             deepcopy(self._state),
+181 |             self._state_version,
+    |
+help: Remove assignment to unused variable `internal_before`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_implementation_v1_review/pm_v1_reentrant_execute_probe.py:3:1
+  |
+1 |   """Independent PM probe for nested/re-entrant UnitOfWork.execute sequencing."""
+2 |
+3 | / from __future__ import annotations
+4 | |
+5 | | from nvda_desk.m13_state_kernel import InMemoryUnitOfWork, IdempotencyKey, TransactionCommand
+  | |_____________________________________________________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | | import argparse, importlib.util, sys
+3 | | from pathlib import Path
+  | |________________________^
+4 |
+5 |   parser=argparse.ArgumentParser(); parser.add_argument('source'); args=parser.parse_args()
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:2:1
+  |
+1 | from __future__ import annotations
+2 | import argparse, importlib.util, sys
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 | from pathlib import Path
+  |
+help: Split imports
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:5:33
+  |
+3 | from pathlib import Path
+4 |
+5 | parser=argparse.ArgumentParser(); parser.add_argument('source'); args=parser.parse_args()
+  |                                 ^
+6 | source=Path(args.source)
+7 | spec=importlib.util.spec_from_file_location('candidate', source); assert spec and spec.loader
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:5:64
+  |
+3 | from pathlib import Path
+4 |
+5 | parser=argparse.ArgumentParser(); parser.add_argument('source'); args=parser.parse_args()
+  |                                                                ^
+6 | source=Path(args.source)
+7 | spec=importlib.util.spec_from_file_location('candidate', source); assert spec and spec.loader
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:7:65
+  |
+5 | parser=argparse.ArgumentParser(); parser.add_argument('source'); args=parser.parse_args()
+6 | source=Path(args.source)
+7 | spec=importlib.util.spec_from_file_location('candidate', source); assert spec and spec.loader
+  |                                                                 ^
+8 | m=importlib.util.module_from_spec(spec); sys.modules['candidate']=m; spec.loader.exec_module(m)
+  |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:8:40
+   |
+ 6 | source=Path(args.source)
+ 7 | spec=importlib.util.spec_from_file_location('candidate', source); assert spec and spec.loader
+ 8 | m=importlib.util.module_from_spec(spec); sys.modules['candidate']=m; spec.loader.exec_module(m)
+   |                                        ^
+ 9 |
+10 | class Participant(m.RepositoryPort):
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:8:68
+   |
+ 6 | source=Path(args.source)
+ 7 | spec=importlib.util.spec_from_file_location('candidate', source); assert spec and spec.loader
+ 8 | m=importlib.util.module_from_spec(spec); sys.modules['candidate']=m; spec.loader.exec_module(m)
+   |                                                                    ^
+ 9 |
+10 | class Participant(m.RepositoryPort):
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:12:23
+   |
+10 | class Participant(m.RepositoryPort):
+11 |     def __init__(self):
+12 |         self.fail=True; self.pending=None; self.rollback_calls=0
+   |                       ^
+13 |     def prepare(self, *, command, working_state, receipt):
+14 |         self.pending=(command.command_id, working_state.copy(), receipt.sequence)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:12:42
+   |
+10 | class Participant(m.RepositoryPort):
+11 |     def __init__(self):
+12 |         self.fail=True; self.pending=None; self.rollback_calls=0
+   |                                          ^
+13 |     def prepare(self, *, command, working_state, receipt):
+14 |         self.pending=(command.command_id, working_state.copy(), receipt.sequence)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:18:49
+   |
+16 |             raise RuntimeError('prepare failed')
+17 |     def commit(self): self.pending=None
+18 |     def rollback(self): self.rollback_calls += 1; self.pending=None
+   |                                                 ^
+19 |
+20 | key=m.IdempotencyKey(value='idem-1', command_type='position_reconciliation', consistency_unit_id='position-1')
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v4_failed_attempt_binding_probe.py:23:16
+   |
+21 | first=m.TransactionCommand(command_id='command-1', idempotency_key=key, input_fingerprint='a'*64, expected_state_version=0, policy_ver…
+22 | second=m.TransactionCommand(command_id='command-2', idempotency_key=key, input_fingerprint='b'*64, expected_state_version=0, policy_ve…
+23 | p=Participant(); uow=m.InMemoryUnitOfWork(initial_state={'count':0}, repository_ports=(p,))
+   |                ^
+24 |
+25 | def mutate(state):
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:1:1
+  |
+1 | / from importlib.util import module_from_spec, spec_from_file_location
+2 | | from pathlib import Path
+3 | | import sys
+  | |__________^
+4 |   source=Path(sys.argv[1]); spec=spec_from_file_location('nvda_desk.m13_state_kernel',source); mod=module_from_spec(spec); sys.modules['n…
+5 |   class P(mod.RepositoryPort):
+  |
+help: Organize imports
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:4:25
+  |
+2 | from pathlib import Path
+3 | import sys
+4 | source=Path(sys.argv[1]); spec=spec_from_file_location('nvda_desk.m13_state_kernel',source); mod=module_from_spec(spec); sys.modules['n…
+  |                         ^
+5 | class P(mod.RepositoryPort):
+6 |     def __init__(self): self.fail=True; self.pending=None
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:4:92
+  |
+2 | from pathlib import Path
+3 | import sys
+4 | source=Path(sys.argv[1]); spec=spec_from_file_location('nvda_desk.m13_state_kernel',source); mod=module_from_spec(spec); sys.modules['n…
+  |                                                                                            ^
+5 | class P(mod.RepositoryPort):
+6 |     def __init__(self): self.fail=True; self.pending=None
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:4:120
+  |
+2 | from pathlib import Path
+3 | import sys
+4 | source=Path(sys.argv[1]); spec=spec_from_file_location('nvda_desk.m13_state_kernel',source); mod=module_from_spec(spec); sys.modules['n…
+  |                                                                                                                        ^
+5 | class P(mod.RepositoryPort):
+6 |     def __init__(self): self.fail=True; self.pending=None
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:4:167
+  |
+2 | …
+3 | …
+4 | …ule_from_spec(spec); sys.modules['nvda_desk.m13_state_kernel']=mod; spec.loader.exec_module(mod)
+  |                                                                    ^
+5 | …
+6 | …
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:6:39
+  |
+4 | source=Path(sys.argv[1]); spec=spec_from_file_location('nvda_desk.m13_state_kernel',source); mod=module_from_spec(spec); sys.modules['n…
+5 | class P(mod.RepositoryPort):
+6 |     def __init__(self): self.fail=True; self.pending=None
+  |                                       ^
+7 |     def prepare(self, *, command, working_state, receipt):
+8 |         self.pending=command.command_id
+  |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:9:21
+   |
+ 7 |     def prepare(self, *, command, working_state, receipt):
+ 8 |         self.pending=command.command_id
+ 9 |         if self.fail: raise RuntimeError('prepare failed')
+   |                     ^
+10 |     def commit(self): self.pending=None
+11 |     def rollback(self): self.pending=None
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:15:6
+   |
+13 | failed=mod.TransactionCommand(command_id='command-1',idempotency_key=key,input_fingerprint='a'*64,expected_state_version=0,policy_vers…
+14 | corrected=mod.TransactionCommand(command_id='command-1',idempotency_key=key,input_fingerprint='b'*64,expected_state_version=0,policy_v…
+15 | p=P(); b=mod.InMemoryUnitOfWork(initial_state={'count':0},repository_ports=(p,))
+   |      ^
+16 | def mutate(state): state['count']+=1; return {'receipt_id':'receipt-2','result_id':'result-2'}
+17 | try: b.execute(command=failed,mutation=mutate)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:16:37
+   |
+14 | corrected=mod.TransactionCommand(command_id='command-1',idempotency_key=key,input_fingerprint='b'*64,expected_state_version=0,policy_v…
+15 | p=P(); b=mod.InMemoryUnitOfWork(initial_state={'count':0},repository_ports=(p,))
+16 | def mutate(state): state['count']+=1; return {'receipt_id':'receipt-2','result_id':'result-2'}
+   |                                     ^
+17 | try: b.execute(command=failed,mutation=mutate)
+18 | except Exception as e: print(f'attempt_1=failed:{type(e).__name__}:{e}')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:17:4
+   |
+15 | p=P(); b=mod.InMemoryUnitOfWork(initial_state={'count':0},repository_ports=(p,))
+16 | def mutate(state): state['count']+=1; return {'receipt_id':'receipt-2','result_id':'result-2'}
+17 | try: b.execute(command=failed,mutation=mutate)
+   |    ^
+18 | except Exception as e: print(f'attempt_1=failed:{type(e).__name__}:{e}')
+19 | p.fail=False
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:18:22
+   |
+16 | def mutate(state): state['count']+=1; return {'receipt_id':'receipt-2','result_id':'result-2'}
+17 | try: b.execute(command=failed,mutation=mutate)
+18 | except Exception as e: print(f'attempt_1=failed:{type(e).__name__}:{e}')
+   |                      ^
+19 | p.fail=False
+20 | try:
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:21:48
+   |
+19 | p.fail=False
+20 | try:
+21 |  r=b.execute(command=corrected,mutation=mutate); print(f'corrected_same_command_id=committed:sequence={r.sequence}')
+   |                                                ^
+22 | except Exception as e: print(f'corrected_same_command_id=failed:{type(e).__name__}:{e}')
+23 | print(f'state_version={b.state_version}')
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_command_identity_binding_probe.py:22:22
+   |
+20 | try:
+21 |  r=b.execute(command=corrected,mutation=mutate); print(f'corrected_same_command_id=committed:sequence={r.sequence}')
+22 | except Exception as e: print(f'corrected_same_command_id=failed:{type(e).__name__}:{e}')
+   |                      ^
+23 | print(f'state_version={b.state_version}')
+24 | print(f'receipts={b.list_receipts()}')
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v5_mutation_failure_binding_probe.py:1:1
+  |
+1 | / from importlib.util import module_from_spec, spec_from_file_location
+2 | | from pathlib import Path
+3 | | import sys
+  | |__________^
+4 |
+5 |   source = Path(sys.argv[1])
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | | import os, subprocess, sys
+3 | | from pathlib import Path
+  | |________________________^
+4 |   repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+5 |   raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:2:1
+  |
+1 | from __future__ import annotations
+2 | import os, subprocess, sys
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |
+help: Split imports
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:4:33
+  |
+2 | import os, subprocess, sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                 ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'
+6 | runner=raw/'v5_run_variant.py'; source=raw/'v5_configurable_failed_binding_mutant_source.py'
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:4:57
+  |
+2 | import os, subprocess, sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                                         ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'
+6 | runner=raw/'v5_run_variant.py'; source=raw/'v5_configurable_failed_binding_mutant_source.py'
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:4:79
+  |
+2 | import os, subprocess, sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                                                               ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'
+6 | runner=raw/'v5_run_variant.py'; source=raw/'v5_configurable_failed_binding_mutant_source.py'
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:6:31
+  |
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'
+6 | runner=raw/'v5_run_variant.py'; source=raw/'v5_configurable_failed_binding_mutant_source.py'
+  |                               ^
+7 | boundaries=(
+8 | 'stale_expected_state_version','owner_mutation_exception','invalid_mutation_result_mapping','invalid_or_empty_receipt_id','invalid_or_e…
+  |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:16:12
+   |
+14 |     suffix='complete-command-identity-corrected-version' if boundary=='stale_expected_state_version' and comparison=='complete_command…
+15 |     items.append((boundary,comparison,f"{labels[boundary]}--{suffix}"))
+16 | passed=True; rows=[]
+   |            ^
+17 | for idx,(boundary,comparison,case_id) in enumerate(items[start:end],start=start):
+18 |   env=os.environ.copy(); env['M13_MUTATION_BOUNDARY']=boundary; env['M13_BINDING_COMPARISON']=comparison
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:18:24
+   |
+16 | passed=True; rows=[]
+17 | for idx,(boundary,comparison,case_id) in enumerate(items[start:end],start=start):
+18 |   env=os.environ.copy(); env['M13_MUTATION_BOUNDARY']=boundary; env['M13_BINDING_COMPARISON']=comparison
+   |                        ^
+19 |   cmd=[sys.executable,str(runner),str(source),'--case',case_id]
+20 |   cp=subprocess.run(cmd,cwd=repo,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:18:63
+   |
+16 | passed=True; rows=[]
+17 | for idx,(boundary,comparison,case_id) in enumerate(items[start:end],start=start):
+18 |   env=os.environ.copy(); env['M13_MUTATION_BOUNDARY']=boundary; env['M13_BINDING_COMPARISON']=comparison
+   |                                                               ^
+19 |   cmd=[sys.executable,str(runner),str(source),'--case',case_id]
+20 |   cp=subprocess.run(cmd,cwd=repo,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,check=False)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:24:24
+   |
+22 |   passed &= ok
+23 |   row=f"{idx+1}\t{boundary}\t{comparison}\t{case_id}\t{cp.returncode}\t{'PASS' if ok else 'FAIL'}"
+24 |   print(row,flush=True); rows.append(row)
+   |                        ^
+25 |   if not ok:
+26 |     print(cp.stdout.decode(errors='replace'),flush=True)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_additional_mutant_batch.py:29:16
+   |
+27 | out.parent.mkdir(parents=True,exist_ok=True)
+28 | with out.open('a',encoding='utf-8') as f:
+29 |   for r in rows:f.write(r+'\n')
+   |                ^
+30 | raise SystemExit(0 if passed else 1)
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | | import subprocess,sys
+3 | | from pathlib import Path
+  | |________________________^
+4 |   repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+5 |   raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'; runner=raw/'v5_run_variant.py'
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:2:1
+  |
+1 | from __future__ import annotations
+2 | import subprocess,sys
+  | ^^^^^^^^^^^^^^^^^^^^^
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |
+help: Split imports
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:4:33
+  |
+2 | import subprocess,sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                 ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'; runner=raw/'v5_run_variant.py'
+6 | mutants=(
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:4:57
+  |
+2 | import subprocess,sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                                         ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'; runner=raw/'v5_run_variant.py'
+6 | mutants=(
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:4:79
+  |
+2 | import subprocess,sys
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+  |                                                                               ^
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'; runner=raw/'v5_run_variant.py'
+6 | mutants=(
+  |
+
+E702 Multiple statements on one line (semicolon)
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:5:80
+  |
+3 | from pathlib import Path
+4 | repo=Path(sys.argv[1]).resolve(); start=int(sys.argv[2]); end=int(sys.argv[3]); out=Path(sys.argv[4])
+5 | raw=repo/'project_control/canonical_project_manager/modules/M13/raw_validation'; runner=raw/'v5_run_variant.py'
+  |                                                                                ^
+6 | mutants=(
+7 | ('durable_label','mutant_durable_label_source.py','exports_the_accepted_public_contract',b"AssertionError: assert 'durable'"),
+  |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:18:8
+   |
+16 | ('rollback_only_failing_prepare_participant','mutant_rollback_only_failing_prepare_participant_source.py','later_prepare_failure_rolls…
+17 | ('pm_v4_failed_attempt_binding','pm_v4_mutant_failed_attempt_reserves_idempotency_source.py','failed_transaction_does_not_bind_idempot…
+18 | rows=[]; passed=True
+   |        ^
+19 | for idx,(mid,src,case,token) in enumerate(mutants[start:end],start=start):
+20 |   source=raw/src
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:26:24
+   |
+24 |   passed &= ok
+25 |   row=f"{idx+1}\t{mid}\t{src}\t{case}\t{full.returncode}\t{target.returncode}\t{'PASS' if ok else 'FAIL'}"
+26 |   print(row,flush=True); rows.append(row)
+   |                        ^
+27 |   if not ok: print(target.stdout.decode(errors='replace'),flush=True)
+28 | out.parent.mkdir(parents=True,exist_ok=True)
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:27:12
+   |
+25 |   row=f"{idx+1}\t{mid}\t{src}\t{case}\t{full.returncode}\t{target.returncode}\t{'PASS' if ok else 'FAIL'}"
+26 |   print(row,flush=True); rows.append(row)
+27 |   if not ok: print(target.stdout.decode(errors='replace'),flush=True)
+   |            ^
+28 | out.parent.mkdir(parents=True,exist_ok=True)
+29 | with out.open('a',encoding='utf-8') as f:
+   |
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v6_review/run_earlier_mutant_batch.py:30:16
+   |
+28 | out.parent.mkdir(parents=True,exist_ok=True)
+29 | with out.open('a',encoding='utf-8') as f:
+30 |   for r in rows:f.write(r+'\n')
+   |                ^
+31 | raise SystemExit(0 if passed else 1)
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | | import importlib.util, sys
+3 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:2:1
+  |
+1 | from __future__ import annotations
+2 | import importlib.util, sys
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 | from pathlib import Path
+  |
+help: Split imports
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:9:43
+   |
+ 7 |     name='nvda_desk.m13_state_kernel'
+ 8 |     spec=importlib.util.spec_from_file_location(name,path)
+ 9 |     if spec is None or spec.loader is None: raise RuntimeError(path)
+   |                                           ^
+10 |     mod=importlib.util.module_from_spec(spec); sys.modules[name]=mod; spec.loader.exec_module(mod); return mod
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:10:46
+   |
+ 8 |     spec=importlib.util.spec_from_file_location(name,path)
+ 9 |     if spec is None or spec.loader is None: raise RuntimeError(path)
+10 |     mod=importlib.util.module_from_spec(spec); sys.modules[name]=mod; spec.loader.exec_module(mod); return mod
+   |                                              ^
+11 |
+12 | source=Path(sys.argv[1])
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:10:69
+   |
+ 8 |     spec=importlib.util.spec_from_file_location(name,path)
+ 9 |     if spec is None or spec.loader is None: raise RuntimeError(path)
+10 |     mod=importlib.util.module_from_spec(spec); sys.modules[name]=mod; spec.loader.exec_module(mod); return mod
+   |                                                                     ^
+11 |
+12 | source=Path(sys.argv[1])
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v7_review/pm_v6_two_instance_guard_probe.py:10:99
+   |
+ 8 |     spec=importlib.util.spec_from_file_location(name,path)
+ 9 |     if spec is None or spec.loader is None: raise RuntimeError(path)
+10 |     mod=importlib.util.module_from_spec(spec); sys.modules[name]=mod; spec.loader.exec_module(mod); return mod
+   |                                                                                                   ^
+11 |
+12 | source=Path(sys.argv[1])
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_run_v7_guard_batch.py:1:1
+  |
+1 | / from concurrent.futures import ThreadPoolExecutor, as_completed
+2 | | from pathlib import Path
+3 | | import os, subprocess, sys
+  | |__________________________^
+4 |   ROOT=Path(__file__).resolve().parents[6]
+5 |   RUNNER=ROOT/'project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py'
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_run_v7_guard_batch.py:3:1
+  |
+1 | from concurrent.futures import ThreadPoolExecutor, as_completed
+2 | from pathlib import Path
+3 | import os, subprocess, sys
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^
+4 | ROOT=Path(__file__).resolve().parents[6]
+5 | RUNNER=ROOT/'project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py'
+  |
+help: Split imports
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_run_v7_guard_batch.py:19:26
+   |
+17 | def run_target(item):
+18 |     m,case=item
+19 |     env=os.environ.copy(); env['M13_V7_GUARD_MUTANT']=m; env['PYTHONPATH']=str(ROOT/'src')
+   |                          ^
+20 |     cmd=[sys.executable,str(RUNNER),str(SOURCE),'--case',case,'--quiet']
+21 |     p=subprocess.run(cmd,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_run_v7_guard_batch.py:19:56
+   |
+17 | def run_target(item):
+18 |     m,case=item
+19 |     env=os.environ.copy(); env['M13_V7_GUARD_MUTANT']=m; env['PYTHONPATH']=str(ROOT/'src')
+   |                                                        ^
+20 |     cmd=[sys.executable,str(RUNNER),str(SOURCE),'--case',case,'--quiet']
+21 |     p=subprocess.run(cmd,cwd=ROOT,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py:1:1
+  |
+1 | / from pathlib import Path
+2 | | import ast, hashlib, subprocess, tempfile, os
+  | |_____________________________________________^
+3 |   ROOT=Path(__file__).resolve().parents[6]
+4 |   BASE='cf44a74385536672237de4747d084faaa7971b47'
+  |
+help: Organize imports
+
+E401 [*] Multiple imports on one line
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py:2:1
+  |
+1 | from pathlib import Path
+2 | import ast, hashlib, subprocess, tempfile, os
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+3 | ROOT=Path(__file__).resolve().parents[6]
+4 | BASE='cf44a74385536672237de4747d084faaa7971b47'
+  |
+help: Split imports
+
+E701 Multiple statements on one line (colon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py:12:20
+   |
+10 | def collect(p):
+11 |     r=subprocess.run([os.sys.executable,'-m','pytest','-c','/dev/null',str(p),'--collect-only','-q'],cwd=ROOT,stdout=subprocess.PIPE,s…
+12 |     if r.returncode: raise AssertionError(r.stdout)
+   |                    ^
+13 |     return tuple(line.split('::',1)[1] for line in r.stdout.splitlines() if '::test_m13_' in line)
+14 | base=subprocess.check_output(['git','show',f'{BASE}:{PATH.as_posix()}'],cwd=ROOT)
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py:18:25
+   |
+16 | bf,cf=funcs(base),funcs(cur)
+17 | with tempfile.TemporaryDirectory() as td:
+18 |     p=Path(td)/PATH.name; p.write_bytes(base); bc=collect(p)
+   |                         ^
+19 | cc=collect(ROOT/PATH)
+20 | changed=[n for n,d in bf.items() if cf.get(n)!=d]
+   |
+
+E702 Multiple statements on one line (semicolon)
+  --> project_control/canonical_project_manager/modules/M13/raw_validation/pm_v8_review/pm_v8_verify_frozen.py:18:46
+   |
+16 | bf,cf=funcs(base),funcs(cur)
+17 | with tempfile.TemporaryDirectory() as td:
+18 |     p=Path(td)/PATH.name; p.write_bytes(base); bc=collect(p)
+   |                                              ^
+19 | cc=collect(ROOT/PATH)
+20 | changed=[n for n,d in bf.items() if cf.get(n)!=d]
+   |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/v5_configurable_failed_binding_mutant_source.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | import os
+4 | | from abc import ABC, abstractmethod
+5 | | from copy import deepcopy
+6 | | from dataclasses import dataclass, replace
+7 | | from typing import Any, Callable, Iterable, Mapping
+  | |___________________________________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_additional_mutants.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | import os
+4 | | import subprocess
+5 | | import sys
+6 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_earlier_mutants.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | import subprocess
+4 | | import sys
+5 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/v5_run_variant.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | import argparse
+4 | | import importlib.util
+5 | | import sys
+6 | | from pathlib import Path
+7 | |
+8 | | import pytest
+  | |_____________^
+  |
+help: Organize imports
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> project_control/canonical_project_manager/modules/M13/raw_validation/v5_verify_fourteen_preservation.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | import ast
+4 | | import hashlib
+5 | | import subprocess
+6 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+E702 Multiple statements on one line (semicolon)
+   --> project_control/canonical_project_manager/parallel_workflow_validation/validate_parallel_cycle_01.py:156:54
+    |
+154 |             add(results, f"{assignment} folder", False, "missing")
+155 |             continue
+156 |         wf = next(folder.glob("*AW_WORKER_BRIEF.md")); tf = next(folder.glob("*AT_TESTER_BRIEF.md"))
+    |                                                      ^
+157 |         wt, tt = wf.read_text(), tf.read_text()
+158 |         try:
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> project_control/canonical_project_manager/parallel_workflow_validation/validate_parallel_cycle_01.py:166:69
+    |
+164 |             }
+165 |         except ValueError as exc:
+166 |             add(results, f"{assignment} identity parse", False, exc); continue
+    |                                                                     ^
+167 |         expected_identity = {
+168 |             "worker_thread": exp["worker_thread"], "tester_thread": exp["tester_thread"],
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> project_control/canonical_project_manager/parallel_workflow_validation/validate_parallel_cycle_01.py:175:84
+    |
+173 |         add(results, f"{assignment} identity", identity == expected_identity, identity)
+174 |         for token in (identity["worker_thread"], identity["tester_thread"]):
+175 |             add(results, f"unique thread {token}", token not in all_threads, token); all_threads.add(token)
+    |                                                                                    ^
+176 |         for token in (identity["worker_branch"], identity["tester_branch"]):
+177 |             add(results, f"unique branch {token}", token not in all_branches, token); all_branches.add(token)
+    |
+
+E702 Multiple statements on one line (semicolon)
+   --> project_control/canonical_project_manager/parallel_workflow_validation/validate_parallel_cycle_01.py:177:85
+    |
+175 |             add(results, f"unique thread {token}", token not in all_threads, token); all_threads.add(token)
+176 |         for token in (identity["worker_branch"], identity["tester_branch"]):
+177 |             add(results, f"unique branch {token}", token not in all_branches, token); all_branches.add(token)
+    |                                                                                     ^
+178 |
+179 |         wp = bullet_paths(wt, "## Exact writable paths", "## Global and cross-lane locks")
+    |
+
+E402 Module level import not at top of file
+  --> project_control/canonical_project_manager/units/PM-010/FINAL_ACCEPTANCE_VALIDATOR.py:19:1
+   |
+17 | sys.path.insert(0, str(ROOT / "src"))
+18 |
+19 | import nvda_desk.vocabulary_synonym_audit as audit
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+20 | from nvda_desk.schemas.vocabulary import vocabulary_document_from_dict
+21 | from nvda_desk.vocabulary_builder import build_canonical_payload, read_registry_admission_records
+   |
+
+E402 Module level import not at top of file
+  --> project_control/canonical_project_manager/units/PM-010/FINAL_ACCEPTANCE_VALIDATOR.py:20:1
+   |
+19 | import nvda_desk.vocabulary_synonym_audit as audit
+20 | from nvda_desk.schemas.vocabulary import vocabulary_document_from_dict
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+21 | from nvda_desk.vocabulary_builder import build_canonical_payload, read_registry_admission_records
+   |
+
+E402 Module level import not at top of file
+  --> project_control/canonical_project_manager/units/PM-010/FINAL_ACCEPTANCE_VALIDATOR.py:21:1
+   |
+19 | import nvda_desk.vocabulary_synonym_audit as audit
+20 | from nvda_desk.schemas.vocabulary import vocabulary_document_from_dict
+21 | from nvda_desk.vocabulary_builder import build_canonical_payload, read_registry_admission_records
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+22 |
+23 | REGISTERS = {
+   |
+
+E731 Do not assign a `lambda` expression, use a `def`
+   --> project_control/canonical_project_manager/units/PM-010/FINAL_ACCEPTANCE_VALIDATOR.py:208:5
+    |
+206 |       dispositions = read_tsv(UNIT_ROOT / "PM-010/P1_CANDIDATE_SEMANTIC_DISPOSITION_REGISTER.tsv")
+207 |       assert len(dispositions) == 499
+208 | /     key = lambda row: (
+209 | |         row["path"], int(row["line"]), int(row["column"]), row["phrase"], row["context_sha256"]
+210 | |     )
+    | |_____^
+211 |       assert len({key(row) for row in dispositions}) == 499
+212 |       normative = [row for row in dispositions if row["source_class"] == "governing_normative_document"]
+    |
+help: Rewrite `key` as a `def`
+
+F401 [*] `sys` imported but unused
+ --> tools/ai_patch_bridge/scripts/check_bridge_hygiene.py:6:8
+  |
+4 | from __future__ import annotations
+5 |
+6 | import sys
+  |        ^^^
+7 | from pathlib import Path
+  |
+help: Remove unused import: `sys`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tools/ai_patch_bridge/scripts/run_bridge_tests.py:4:1
+   |
+ 2 |   """Repo-local wrapper for the stdlib-only bridge test runner."""
+ 3 |
+ 4 | / from __future__ import annotations
+ 5 | |
+ 6 | | from contextlib import suppress
+ 7 | | from pathlib import Path
+ 8 | | import sys
+   | |__________^
+ 9 |
+10 |   SCRIPT_DIR = Path(__file__).resolve().parent
+   |
+help: Organize imports
+
+F401 [*] `sys` imported but unused
+ --> tools/ai_patch_bridge/src/ai_patch_bridge/cli.py:5:8
+  |
+3 | from __future__ import annotations
+4 |
+5 | import sys
+  |        ^^^
+6 |
+7 | from ai_patch_bridge.receipt_failure_hardening import main
+  |
+help: Remove unused import: `sys`
+
+F401 [*] `pathlib.Path` imported but unused
+  --> tools/ai_patch_bridge/src/ai_patch_bridge/scenario_tests.py:11:21
+   |
+10 | import sys
+11 | from pathlib import Path
+   |                     ^^^^
+12 |
+13 | from ai_patch_bridge.core import (
+   |
+help: Remove unused import: `pathlib.Path`
+
+I001 [*] Import block is un-sorted or un-formatted
+  --> tools/ai_patch_bridge/tests/test_ai_patch_bridge.py:1:1
+   |
+ 1 | / from __future__ import annotations
+ 2 | |
+ 3 | | import contextlib
+ 4 | | import io
+ 5 | | import json
+ 6 | | import re
+ 7 | | import tempfile
+ 8 | | from collections.abc import Callable
+ 9 | | from pathlib import Path
+10 | |
+11 | | from ai_patch_bridge import core
+12 | | from ai_patch_bridge.core import (
+13 | |     AiPatchError,
+14 | |     BridgeConfig,
+15 | |     IssueComment,
+16 | |     _parse_gh_api_json_pages,
+17 | |     _prepare_target_branch,
+18 | |     _should_process_comment,
+19 | |     main as bridge_main,
+20 | |     make_ai_patch_comment,
+21 | |     parse_ai_patch_body,
+22 | | )
+23 | | from ai_patch_bridge.scenario_tests import main as scenario_main
+   | |________________________________________________________________^
+   |
+help: Organize imports
+
+F401 [*] `json` imported but unused
+ --> tools/ai_patch_bridge/tests/test_ai_patch_bridge.py:5:8
+  |
+3 | import contextlib
+4 | import io
+5 | import json
+  |        ^^^^
+6 | import re
+7 | import tempfile
+  |
+help: Remove unused import: `json`
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> tools/ai_patch_bridge/tests/test_persistent_worker_assets.py:1:1
+  |
+1 | / from __future__ import annotations
+2 | |
+3 | | from pathlib import Path
+  | |________________________^
+  |
+help: Organize imports
+
+Found 138 errors.
+[*] 58 fixable with the `--fix` option (3 hidden fixes can be enabled with the `--unsafe-fixes` option).

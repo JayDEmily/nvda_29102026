@@ -4,8 +4,8 @@
 
 | Field | Current truth |
 |---|---|
-| Programme state | Vocabulary-governance deduplication and root-control/normative-routing candidate completed; awaiting review and integration |
-| Branch | `work/vocabulary-governance-dedup-v1` |
+| Programme state | Vocabulary-governance deduplication and root-control/normative-routing changes integrated on `main`; repository between authorised phases |
+| Branch | `main` |
 | Accepted predecessor checkpoint | `98c462a4f8fb258b79429ec083565d6f2e2fffd9` |
 | Control-transition checkpoint tag | `control-surface-transition-20260803` |
 | Active ExecPlan | none |
@@ -15,7 +15,8 @@
 | Gate C | completed and closed |
 | Continuation strategy | completed and retired from current authority |
 | Semantic-continuity repairs | M01/M02→M03 accepted at `62009fc`; M03→M05 accepted at `74d2f2c` |
-| Current repository claim | accepted bounded alpha baseline plus unintegrated vocabulary-governance and root-control/normative-routing changes on this branch; no successor feature phase is active |
+| Integrated work | vocabulary-governance deduplication at `3a8e861`; root-control and normative-routing simplification at `9e1d22b` |
+| Current repository claim | accepted bounded alpha baseline plus integrated vocabulary-governance and root-control/normative-routing controls; no successor feature phase is active |
 | Closed claims | live operation, production durability, profitability, operational commissioning and production replay remain unproved |
 
 ## Live execution route
@@ -31,4 +32,4 @@
 
 ## Next authorised action
 
-Review and, if accepted, integrate this branch. A successor feature phase begins only after the administrator populates `EXEC_PLAN.md` and updates `Active ExecPlan` above from `none` to `EXEC_PLAN.md`.
+A successor feature phase begins only after the administrator populates `EXEC_PLAN.md` and updates `Active ExecPlan` above from `none` to `EXEC_PLAN.md`.

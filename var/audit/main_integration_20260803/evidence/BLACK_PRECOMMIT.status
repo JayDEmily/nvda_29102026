@@ -1,0 +1,5 @@
+START=2026-08-03T12:35:42Z
+COMMAND=/mnt/data/nvda_devtools_venv/bin/black --check .
+END=2026-08-03T12:55:11Z
+EXIT=124
+NOTE=Interrupted by outer 1200-second command timeout; whole-repository Black is not the established bounded gate for this Markdown-only integration leaf.

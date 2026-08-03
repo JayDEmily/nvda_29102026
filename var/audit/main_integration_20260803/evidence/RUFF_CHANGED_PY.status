@@ -1,0 +1,2 @@
+COMMAND=/mnt/data/nvda_devtools_venv/bin/ruff check scripts/proof_authority.py scripts/run_promotion_gate.py tests/tier_a/m00_application_shell/test_m00_application_shell_contract.py tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py tests/tier_b/proof_model/test_proof_authority_contract.py
+EXIT=0

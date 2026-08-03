@@ -1,0 +1,4 @@
+START=2026-08-03T12:35:42Z
+COMMAND=.venv/bin/python scripts/proof_authority.py --check
+END=2026-08-03T12:35:42Z
+EXIT=0
