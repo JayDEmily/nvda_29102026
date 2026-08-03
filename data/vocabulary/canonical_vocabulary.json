@@ -1,7 +1,8 @@
 {
   "schema_version": "v2_namespaced",
-  "registry_version": "2026-08-01-m00-final-composition-c-norm-v1",
+  "registry_version": "2026-08-03-vocabulary-governance-dedup-v1",
   "notes": [
+    "The 2026-08-03 vocabulary-governance deduplication retains `10.1` admission sections as stable lineage redirects while this registry remains the sole semantic record for individual terms.",
     "P1 integrated semantic authority remains preserved from accepted PM-003 through PM-009 decisions.",
     "The 2026-07-25 user-accepted module-architecture amendment adds durable ownership, dependency-plane and local-proof control terms.",
     "M13-PROOF admits only the exported alpha state-kernel contract vocabulary; implementation and durability remain unproved.",
@@ -897,7 +898,7 @@
       "canonical_label": "Donor Evidence",
       "category": "carrier",
       "stage_owner": "Vocabulary governance under normative/process authority",
-      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:138-146; docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:669-687",
+      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7; docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:669-687",
       "allowed_aliases": [],
       "disallowed_phrases": [
         "legacy source as live authority"
@@ -920,7 +921,7 @@
       "canonical_label": "Behaviour Block",
       "category": "carrier",
       "stage_owner": "Vocabulary governance under migration/process authority",
-      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:138-146",
+      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7",
       "allowed_aliases": [],
       "disallowed_phrases": [
         "target component or module"
@@ -943,7 +944,7 @@
       "canonical_label": "Intent Unit",
       "category": "carrier",
       "stage_owner": "Vocabulary governance under migration/process authority",
-      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:138-146",
+      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7",
       "allowed_aliases": [
         "Atomic Intent Unit"
       ],
@@ -968,7 +969,7 @@
       "canonical_label": "Target Owner",
       "category": "authority_class",
       "stage_owner": "Native Architecture Blueprint Core",
-      "maps_to_contract": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:490-508; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:142-149",
+      "maps_to_contract": "docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:490-508; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7",
       "allowed_aliases": [],
       "disallowed_phrases": [
         "legacy owner",
@@ -992,7 +993,7 @@
       "canonical_label": "Leaf",
       "category": "carrier",
       "stage_owner": "Repo-root AGENTS and active bounded pack",
-      "maps_to_contract": "AGENTS.md:7-16,145-177; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:147-150",
+      "maps_to_contract": "AGENTS.md:7-16,145-177; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7",
       "allowed_aliases": [],
       "disallowed_phrases": [
         "file, worker, cohort or unbounded batch"
@@ -1015,7 +1016,7 @@
       "canonical_label": "Authority Intake Gate",
       "category": "workflow",
       "stage_owner": "Process and tranche law / active bounded pack",
-      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:147-150; docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:18-31",
+      "maps_to_contract": "docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7; docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:18-31",
       "allowed_aliases": [],
       "disallowed_phrases": [
         "manifest-only proof of semantic read"
@@ -3220,7 +3221,7 @@
       "canonical_label": "Packet Occurrence",
       "category": "protocol_surface",
       "stage_owner": "DMPV3 packet-emission boundary",
-      "maps_to_contract": "docs/09.1_DMPV3_PROTOCOL_WORKING.md:11-23,114-130; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:161-177",
+      "maps_to_contract": "docs/09.1_DMPV3_PROTOCOL_WORKING.md:11-23,114-130; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.8",
       "allowed_aliases": [
         "DMP packet occurrence"
       ],
@@ -3250,7 +3251,7 @@
       "canonical_label": "Provenance",
       "category": "authority_class",
       "stage_owner": "The owner of the underlying evidence/claim, with vocabulary governance over the term",
-      "maps_to_contract": "docs/03.1_DOMAIN_MODEL_WORKING.md:21-55,77-87; docs/09.1_DMPV3_PROTOCOL_WORKING.md:43-70; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:138-159",
+      "maps_to_contract": "docs/03.1_DOMAIN_MODEL_WORKING.md:21-55,77-87; docs/09.1_DMPV3_PROTOCOL_WORKING.md:43-70; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7",
       "allowed_aliases": [
         "evidence provenance"
       ],

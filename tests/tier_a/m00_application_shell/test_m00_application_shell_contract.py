@@ -7,6 +7,7 @@ not yet exist.
 
 from __future__ import annotations
 
+import json
 import os
 import subprocess
 import sys
@@ -37,20 +38,29 @@ def test_normative_propositions_and_vocabulary_are_explicit() -> None:
         encoding="utf-8"
     )
     registry = Path("docs/vocabulary/vocabulary_registry.md").read_text(encoding="utf-8")
+    projection = json.loads(
+        Path("data/vocabulary/canonical_vocabulary.json").read_text(encoding="utf-8")
+    )
+    projected_ids = {entry["canonical_id"] for entry in projection["entries"]}
     for proposition_id in PROPOSITION_IDS:
         assert proposition_id in architecture
-    for term in (
-        "Application Command",
-        "Application Query",
-        "Application Run Receipt",
-        "Run Coordinator",
+
+    assert "## 10.26 M00 final-composition public-contract admission lineage" in vocabulary
+    assert "M00-FINAL-COMPOSITION-V1" in vocabulary
+    for term, canonical_id in (
+        ("Application Command", "m00.application_command"),
+        ("Application Query", "m00.application_query"),
+        ("Application Run Receipt", "m00.application_run_receipt"),
+        ("Run Coordinator", "m00.run_coordinator"),
     ):
         assert f"### {term}" in registry
-        assert term in vocabulary
-    assert "coordinates the admitted M03→M05/M06→M09→M10→M11 public seams" in vocabulary
-    assert "delegates M12 queries separately" in vocabulary
-    assert "leaves M13 participation inside admitted owner services" in vocabulary
-    assert "invokes admitted M01–M13 public seams" not in vocabulary
+        assert f"`{canonical_id}`" in vocabulary
+        assert canonical_id in projected_ids
+
+    assert "coordinates the packetised M03 to M11 paper path" in registry
+    assert "delegates M12 review queries separately" in registry
+    assert "uses M13 only through admitted owner services" in registry
+    assert "invokes admitted M01–M13 public seams" not in registry
 
 
 def test_reference_run_uses_canonical_order_and_fresh_scope() -> None:

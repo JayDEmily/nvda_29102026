@@ -17,7 +17,9 @@ Use these together:
 
 - `docs/vocabulary/README.md`
 - `docs/vocabulary/CONSOLIDATION_WORKFLOW.md`
+- `docs/vocabulary/vocabulary_registry.md`
 - `src/nvda_desk/schemas/vocabulary.py`
+- `src/nvda_desk/vocabulary_builder.py`
 - `scripts/build_canonical_vocabulary.py`
 - `data/vocabulary/canonical_vocabulary.json`
 

@@ -1,0 +1,5 @@
+Command: PYTHONPATH=src:. python -m pytest -q
+Result: no final verdict
+Observed progress: approximately 89% before the 600-second execution ceiling
+Evidence: /tmp/vocab_dedup_full_pytest.log was inspected during this unit; it contained progress output through 89% and no summary line.
+Claim boundary: this attempt is not a pass or failure. The complete repository-suite result remains Unknown.

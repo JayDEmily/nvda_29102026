@@ -315,3 +315,117 @@ def test_disallowed_phrase_guardrails_and_evidence_appendix() -> None:
         "and close architecture",
     }
     assert fragment_like_disallowed <= represented_disallowed
+
+
+def test_normative_admission_lineage_redirects_resolve_to_registry_and_projection() -> None:
+    import re
+
+    overlay = Path("docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md").read_text(
+        encoding="utf-8"
+    )
+    native_builder = _require_module("nvda_desk.vocabulary_builder")
+    payload = native_builder.build_canonical_payload()
+    projected_ids = {entry["canonical_id"] for entry in payload["entries"]}
+    read_records = _require_attr(native_builder, "read_registry_admission_records")
+    *_, records = read_records()
+
+    expected_redirects = {
+        "10.7": (
+            "global",
+            (
+                "PM-003:AMC-017",
+                "PM-003:AMC-018",
+                "PM-003:AMC-019",
+                "PM-003:AMC-020",
+                "PM-003:AMC-021",
+                "PM-006:DIL-021",
+                "PM-003:AMC-022",
+                "PM-003:AMC-023",
+                "PM-003:AMC-024",
+                "PM-003:AMC-025",
+                "PM-003:AMC-026",
+                "PM-004:CME-006",
+                "PM-004:CME-007",
+                "PM-004:CME-008",
+                "PM-004:CME-009",
+                "PM-004:CME-010",
+            ),
+        ),
+        "10.8": (
+            "global",
+            (
+                "PM-003:AMC-027",
+                "PM-003:AMC-028",
+                "PM-003:AMC-029",
+                "PM-003:AMC-030",
+                "PM-006:DIL-020",
+                "PM-003:AMC-031",
+                "PM-003:AMC-032",
+                "PM-005:CTP-002",
+                "PM-005:CTP-003",
+                "PM-005:CTP-004",
+                "PM-005:CTP-005",
+            ),
+        ),
+        "10.12": ("global", ("M13-PROOF:MLC-A",)),
+        "10.13": (
+            "global",
+            (
+                "USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW",
+                "PM-20260729:PARALLEL-CONTROL-REPAIR-1",
+            ),
+        ),
+        "10.14": ("m04", ("M04-K07-NORMATIVE-AUTHORITY-V1",)),
+        "10.16": ("m07", ("M07-K12-NORMATIVE-AUTHORITY-V1",)),
+        "10.17": ("m08", ("M08-K13-NORMATIVE-AUTHORITY-V1",)),
+        "10.18": ("m02", ("M02-K04-NORMATIVE-AUTHORITY-V1",)),
+        "10.19": ("m03", ("M03-K05-K06-NORMATIVE-AUTHORITY-V1",)),
+        "10.20": (
+            "m05",
+            ("M05-K08-K09-NORMATIVE-AUTHORITY-V1", "PM-007:SSC-011"),
+        ),
+        "10.21": ("m06", ("M06-K10-NORMATIVE-AUTHORITY-V1",)),
+        "10.22": (
+            "m09",
+            ("M09-K11-K14-NORMATIVE-AUTHORITY-V1", "PM-007:SSC-012"),
+        ),
+        "10.23": ("m10", ("M10-K15-EXECUTION-GATEWAY-V1",)),
+        "10.24": ("m11", ("M11-K16-K17-PORTFOLIO-LIFECYCLE-V1",)),
+        "10.25": ("m12", ("M12-K19-AUTHORITATIVE-REPLAY-V1",)),
+        "10.26": ("m00", ("M00-FINAL-COMPOSITION-V1",)),
+    }
+
+    headings = list(re.finditer(r"^## (?P<section>10\.\d+)\b.*$", overlay, re.MULTILINE))
+    section_bodies = {}
+    for index, match in enumerate(headings):
+        end = headings[index + 1].start() if index + 1 < len(headings) else len(overlay)
+        section_bodies[match.group("section")] = overlay[match.start() : end]
+
+    redirected_ids: list[str] = []
+    for section, (namespace, expected_decisions) in expected_redirects.items():
+        body = section_bodies[section]
+        assert "stable normative-lineage redirect" in body
+        decision_line = next(
+            line for line in body.splitlines() if line.startswith("Decision lineage: ")
+        )
+        canonical_line = next(
+            line for line in body.splitlines() if line.startswith("Canonical records: ")
+        )
+        actual_decisions = tuple(re.findall(r"`([^`]+)`", decision_line))
+        actual_ids = tuple(re.findall(r"`([a-z][a-z0-9]*\.[a-z0-9_]+)`", canonical_line))
+        expected_ids = {
+            f"{record.projection.get('namespace', 'global')}."
+            f"{record.projection['canonical_slug']}"
+            for record in records
+            if record.projection.get("namespace", "global") == namespace
+            and set(record.semantic_decision_refs) & set(expected_decisions)
+        }
+        assert actual_decisions == expected_decisions
+        assert set(actual_ids) == expected_ids
+        assert len(actual_ids) == len(set(actual_ids))
+        redirected_ids.extend(actual_ids)
+
+    assert len(expected_redirects) == 16
+    assert len(redirected_ids) == 90
+    assert len(redirected_ids) == len(set(redirected_ids))
+    assert set(redirected_ids) <= projected_ids

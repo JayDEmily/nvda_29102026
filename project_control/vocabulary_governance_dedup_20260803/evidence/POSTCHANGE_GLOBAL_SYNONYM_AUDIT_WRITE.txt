@@ -1,0 +1,1 @@
+vocabulary_synonym_audit=PASS candidates=5 namespace=global scanned_files=564 vocabulary_touched=True resolved_occurrences=2367

@@ -1,0 +1,91 @@
+lineage_section	canonical_id	registry_heading	registry_line	registry_present	json_present	semantic_decision_refs	maps_to_contract
+10.7	global.donor_evidence	Donor Evidence	228	true	true	PM-003:AMC-017	docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7; docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:669-687
+10.7	global.behaviour_block	Behaviour Block	238	true	true	PM-003:AMC-018	docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7
+10.7	global.intent_unit	Intent Unit	248	true	true	PM-003:AMC-019;PM-003:AMC-020	docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7
+10.7	global.target_owner	Target Owner	258	true	true	PM-003:AMC-021	docs/11_NATIVE_ARCHITECTURE_BLUEPRINT_CORE.md:490-508; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7
+10.7	global.provenance	Provenance	1110	true	true	PM-006:DIL-021	docs/03.1_DOMAIN_MODEL_WORKING.md:21-55,77-87; docs/09.1_DMPV3_PROTOCOL_WORKING.md:43-70; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7
+10.7	global.leaf	Leaf	268	true	true	PM-003:AMC-022	AGENTS.md:7-16,145-177; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7
+10.7	global.authority_intake_gate	Authority Intake Gate	278	true	true	PM-003:AMC-023	docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.7; docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:18-31
+10.7	global.execution_read_sequence	Execution Read Sequence	288	true	true	PM-003:AMC-024	docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:18-31
+10.7	global.active_bounded_pack	Active Bounded Pack	298	true	true	PM-003:AMC-025	docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:33-51; docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:14-50
+10.7	global.active_bounded_pack_surface	Active Bounded Pack Surface	308	true	true	PM-003:AMC-026	docs/06_PROCESS_AND_TRANCHE_LAW_CORE.md:37-49; docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:14-50
+10.7	global.state_conditioned_modifier	State-conditioned Modifier	408	true	true	PM-004:CME-006	ModifierPolicyRecord
+10.7	global.bounded_dynamic_coefficient	Bounded Dynamic Coefficient	418	true	true	PM-004:CME-007	CoefficientAuthorityRecord
+10.7	global.review_horizon	Review Horizon	630	true	true	PM-004:CME-008	CoefficientReviewHorizon
+10.7	global.champion_challenger_evaluation	Champion/Challenger Evaluation	640	true	true	PM-004:CME-009	CoefficientPromotionEvaluation
+10.7	global.live_paper_historical_evaluation_separation	Live-paper / Historical Evaluation Separation	650	true	true	PM-004:CME-010	CoefficientEvaluationSeparationRule
+10.8	global.semantic_acceptance	Semantic Acceptance	318	true	true	PM-003:AMC-027	PLANS.md:77-97; docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:82-103
+10.8	global.implementation_truth	Implementation Truth	328	true	true	PM-003:AMC-028	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:15-18; docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:103-103; docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:21-66
+10.8	global.normative_baseline	Normative Baseline	338	true	true	PM-003:AMC-029	docs/06.1_PROCESS_AND_TRANCHE_LAW_WORKING.md:24-34; docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:135-148
+10.8	global.alpha_implementation	Alpha Implementation	348	true	true	PM-003:AMC-030	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:21-66; docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:145-145
+10.8	global.packet_occurrence	Packet Occurrence	1100	true	true	PM-006:DIL-020	docs/09.1_DMPV3_PROTOCOL_WORKING.md:11-23,114-130; docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md:10.8
+10.8	global.modular_monolith	Modular Monolith	358	true	true	PM-003:AMC-031	docs/04.1_TECHNICAL_ARCHITECTURE_WORKING.md:94-94,145-145; docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:68-87
+10.8	global.composition_root	Composition Root	368	true	true	PM-003:AMC-032	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:68-98
+10.8	global.market_session_reference	Market Session Reference	670	true	true	PM-005:CTP-002	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:100-146
+10.8	global.financial_event_reference	Financial Event Reference	680	true	true	PM-005:CTP-003	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:100-156
+10.8	global.operational_calendar_state	Operational Calendar State	690	true	true	PM-005:CTP-004	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:100-146
+10.8	global.derived_runtime_calendar_context	Derived Runtime Calendar Context	700	true	true	PM-005:CTP-005	docs/03.2_INPUT_AND_CALENDAR_DOMAIN_WORKING.md:100-156
+10.12	global.state_kernel	State Kernel	1450	true	true	M13-PROOF:MLC-A	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:11.10
+10.12	global.unit_of_work	Unit of Work	1460	true	true	M13-PROOF:MLC-A	docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:17-76
+10.12	global.idempotency_key	Idempotency Key	1470	true	true	M13-PROOF:MLC-A	docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:52-58
+10.12	global.atomic_receipt	Atomic Receipt	1480	true	true	M13-PROOF:MLC-A	docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-46
+10.12	global.repository_port	Repository Port	1490	true	true	M13-PROOF:MLC-A	docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:64-68
+10.12	global.transaction_command	Transaction Command	1500	true	true	M13-PROOF:MLC-A	docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:29-40
+10.13	global.pm_controlled_parallel_workflow	PM-controlled Parallel Workflow	1510	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.parallel_execution_lane	Parallel Execution Lane	1520	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.lane_assignment	Lane Assignment	1530	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.material_read_set	Material Read Set	1540	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.worker_candidate_archive	Worker Candidate Archive	1550	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.tester_approved_portability_artefact	Tester-approved Portability Artefact	1560	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.13	global.independent_control_test	Independent Control Test	1570	true	true	USER-20260728:PM-CONTROLLED-PARALLEL-WORKFLOW;PM-20260729:PARALLEL-CONTROL-REPAIR-1	project_control/canonical_project_manager/PARALLEL_WORKFLOW_ARCHITECTURE.md
+10.14	m04.reference_packet	Reference Packet	1580	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.prepared_context_packet	Prepared Context Packet	1590	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.stage_packet	Stage Packet	1600	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.parallel_risk_packet	Parallel Risk Packet	1610	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.review_explanation_packet	Review Explanation Packet	1620	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.replay_request_packet	Replay Request Packet	1630	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.replay_result_packet	Replay Result Packet	1640	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.replay_comparison_packet	Replay Comparison Packet	1650	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.diagnostic_packet	Diagnostic Packet	1660	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.14	m04.rejection_packet	Rejection Packet	1670	true	true	M04-K07-NORMATIVE-AUTHORITY-V1	docs/09.1_DMPV3_PROTOCOL_WORKING.md:9.10
+10.16	m07.policy_bundle	Policy Bundle	428	true	true	M07-K12-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7
+10.16	m07.modifier_decision	Modifier Decision	438	true	true	M07-K12-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7.5
+10.16	m07.modifier_application_receipt	Modifier Application Receipt	448	true	true	M07-K12-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.7.6
+10.17	m08.playbook_definition	Playbook Definition	458	true	true	M08-K13-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.2
+10.17	m08.playbook_catalogue	Playbook Catalogue	468	true	true	M08-K13-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.2
+10.17	m08.eligibility_decision	Eligibility Decision	478	true	true	M08-K13-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.8.6
+10.18	m02.calendar_fact_candidate	Calendar Fact Candidate	488	true	true	M02-K04-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.2
+10.18	m02.financial_calendar_snapshot	Financial Calendar Snapshot	498	true	true	M02-K04-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.3
+10.18	m02.calendar_projection	Calendar Projection	508	true	true	M02-K04-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.9.5
+10.19	m03.prepared_data_envelope	Prepared Data Envelope	519	true	true	M03-K05-K06-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.4
+10.19	m03.field_resolution_receipt	Field Resolution Receipt	529	true	true	M03-K05-K06-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.3
+10.19	m03.prepared_data_builder	Prepared Data Builder	539	true	true	M03-K05-K06-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.10.1
+10.20	m05.stage_context	Stage Context	549	true	true	M05-K08-K09-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.2
+10.20	m05.stage_input	Stage Input	559	true	true	M05-K08-K09-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.3
+10.20	m05.stage_output	Stage Output	569	true	true	M05-K08-K09-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.3
+10.20	m05.serial_candidate	Serial Candidate	1220	true	true	PM-007:SSC-011;M05-K08-K09-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.5
+10.20	m05.serial_runner	Serial Runner	579	true	true	M05-K08-K09-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.11.1
+10.21	m06.parallel_risk_input	Parallel Risk Input	590	true	true	M06-K10-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.12.2
+10.21	m06.parallel_risk_observation	Parallel Risk Observation	600	true	true	M06-K10-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.12.2
+10.21	m06.parallel_risk_assessment	Parallel Risk Assessment	610	true	true	M06-K10-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.12.3
+10.21	m06.parallel_risk_evaluator	Parallel Risk Evaluator	620	true	true	M06-K10-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.12.1
+10.22	m09.final_risk_decision	Final Risk Decision	1681	true	true	M09-K11-K14-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.13; docs/07.2_STATE_RISK_AND_REPLAY_WORKING.md:07.2.N08
+10.22	m09.capital_state	Capital State	1691	true	true	M09-K11-K14-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.13
+10.22	m09.capital_deployment_decision	Capital Deployment Decision	1230	true	true	M09-K11-K14-NORMATIVE-AUTHORITY-V1;PM-007:SSC-012	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.13
+10.22	m09.capital_deployment_receipt	Capital Deployment Receipt	1701	true	true	M09-K11-K14-NORMATIVE-AUTHORITY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.13
+10.23	m10.placement_intent	Placement Intent	1711	true	true	M10-K15-EXECUTION-GATEWAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14
+10.23	m10.execution_port	Execution Port	1721	true	true	M10-K15-EXECUTION-GATEWAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14
+10.23	m10.execution_event	Execution Event	1731	true	true	M10-K15-EXECUTION-GATEWAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14
+10.23	m10.execution_receipt	Execution Receipt	1741	true	true	M10-K15-EXECUTION-GATEWAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.14
+10.24	m11.position_state	Canonical Portfolio Position	1751	true	true	M11-K16-K17-PORTFOLIO-LIFECYCLE-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15
+10.24	m11.portfolio_snapshot	Portfolio Snapshot	1761	true	true	M11-K16-K17-PORTFOLIO-LIFECYCLE-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15
+10.24	m11.lifecycle_decision	Lifecycle Decision	1771	true	true	M11-K16-K17-PORTFOLIO-LIFECYCLE-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15
+10.24	m11.close_receipt	Close Receipt	1781	true	true	M11-K16-K17-PORTFOLIO-LIFECYCLE-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.15
+10.25	m12.replay_material	Replay Material	1791	true	true	M12-K19-AUTHORITATIVE-REPLAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16
+10.25	m12.replay_envelope	Replay Envelope	1801	true	true	M12-K19-AUTHORITATIVE-REPLAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16
+10.25	m12.replay_assessment	Replay Assessment	1811	true	true	M12-K19-AUTHORITATIVE-REPLAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16
+10.25	m12.review_projection	Review Projection	1821	true	true	M12-K19-AUTHORITATIVE-REPLAY-V1	docs/07.1_RUNTIME_OWNERSHIP_AND_CONSUMER_LEDGER_WORKING.md:7.16
+10.26	m00.application_command	Application Command	1912	true	true	M00-FINAL-COMPOSITION-V1	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-001
+10.26	m00.application_query	Application Query	1922	true	true	M00-FINAL-COMPOSITION-V1	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-007
+10.26	m00.application_run_receipt	Application Run Receipt	1932	true	true	M00-FINAL-COMPOSITION-V1	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-007
+10.26	m00.run_coordinator	Run Coordinator	1942	true	true	M00-FINAL-COMPOSITION-V1	docs/11.1_NATIVE_ARCHITECTURE_BLUEPRINT_WORKING.md:M00-COMP-001

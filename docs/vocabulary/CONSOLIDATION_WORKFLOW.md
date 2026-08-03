@@ -5,17 +5,17 @@ The vocabulary workflow is a **feeder process only**.
 ## Allowed flow
 
 1. select the admitted vocabulary namespace and harvest candidate evidence only from its registered owning surfaces, exported contracts and direct consumers; use the repository-wide `global` scope only for genuinely shared concepts or final consolidation;
-2. read the relevant normative and implementation context in full and compare the candidate with the human-readable registry and explicit normative admissions;
-3. record one human/LLM semantic action under `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`:
+2. read the relevant normative and implementation context in full and compare the candidate with the accepted human-readable registry and any retained admission-lineage redirect;
+3. decide exactly one human/LLM semantic action under the law in `docs/10.1_VOCABULARY_AND_TERM_GOVERNANCE_WORKING.md`:
    - `enrich_existing`
    - `add_new`
    - `alias_only`
    - `quarantine`
-4. update the accepted human-readable meaning and admission record when the action changes governed vocabulary;
+4. record the accepted human-readable meaning, action lineage and projection metadata in the owning registry record when the action changes governed vocabulary; do not duplicate the term definition in `10.1`;
 5. project the accepted decision through the builder into `data/vocabulary/canonical_vocabulary.json`;
 6. run audits, stamp guards and enforcement tests as downstream evidence.
 
-Mechanical classifiers and candidate-review helpers may propose or route these action labels, but they cannot perform step 3 or create semantic admission.
+Mechanical classifiers and candidate-review helpers may propose or route these action labels, but they cannot perform step 3 or create semantic admission. A stable `10.1` redirect may be retained where an admission section already has downstream lineage; new term meaning still lives only in the registry record.
 
 ### Deterministic projection record
 
