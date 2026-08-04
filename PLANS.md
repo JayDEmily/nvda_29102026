@@ -177,10 +177,10 @@ No source document or source manifest may change. Each repair unit is committed 
 - [x] R2 A11 ordered modifier/final-risk transition repair.
 - [x] R3 A12 threshold-edge and prepared/raw outcome repair.
 - [x] R4 B03 conditional reservation authority repair.
-- [ ] R5 canonical proposition field register and validator repair.
+- [x] R5 canonical proposition field register and validator repair.
 - [ ] R6 review/assurance correction, final validation and packaging.
 - [ ] Independent fresh-context re-review of the repaired result.
 
 ## Next authorised action
 
-Execute repair unit R5: create the canonical proposition field register for all 83 propositions, extend mechanical validation to require every AGENTS.md field, and commit before correcting review and assurance status in R6.
+Execute repair unit R6: withdraw same-context PASS claims, record independent-review status truthfully, replace the final assurance report, run final validation, commit and package the repaired full-history repository.

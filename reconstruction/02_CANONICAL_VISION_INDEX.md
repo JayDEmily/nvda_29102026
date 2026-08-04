@@ -1,6 +1,6 @@
 # Canonical Vision Index
 
-This index navigates the current design-intent specification after chronological reconciliation of all 98 admitted sources. The specification is organised by capability, not by historical gate, file or current module boundaries. Proposition records remain the exact lineage authority.
+This index navigates the current design-intent specification after chronological reconciliation of all 98 admitted sources. The specification is organised by capability, not by historical gate, file or current module boundaries. Proposition records remain the exact lineage authority. The mandatory per-proposition semantic fields are populated in [`06_CANONICAL_PROPOSITION_FIELD_REGISTER.md`](06_CANONICAL_PROPOSITION_FIELD_REGISTER.md).
 
 ## Capability documents
 

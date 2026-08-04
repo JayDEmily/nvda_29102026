@@ -26,6 +26,7 @@ REQUIRED_FILES = [
     RECON / "03_SOURCE_RECONCILIATION.md",
     RECON / "04_UNRESOLVED_CONFLICTS_AND_EXTERNAL_REFERENCES.md",
     RECON / "05_FINAL_ASSURANCE_REPORT.md",
+    RECON / "06_CANONICAL_PROPOSITION_FIELD_REGISTER.md",
 ]
 EXPECTED_TRANCHES = [f"A{i:02d}" for i in range(1, 16)] + [f"B{i:02d}" for i in range(1, 11)]
 PROPOSITION_RE = re.compile(r"^## (P-[A-Z]+-\d{3}) — (.+)$", re.MULTILINE)
@@ -35,6 +36,22 @@ SOURCE_CITATION_RE = re.compile(
 SOURCE_ID_RE = re.compile(r"\|\s*([AB]\d{3})\s*\|")
 PROP_ID_RE = re.compile(r"P-[A-Z]+-\d{3}")
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+REGISTER_HEADING_RE = re.compile(r"^## (P-[A-Z]+-\d{3}) — (.+)$", re.MULTILINE)
+REGISTER_FIELDS = [
+    "Proposition record",
+    "Canonical instruction",
+    "Class and current authority state",
+    "Introduction and authority chain",
+    "Historical aliases",
+    "Inputs and validity constraints",
+    "Transformation, calculation, decision or routing semantics",
+    "Outputs and guarantees",
+    "Time and state semantics",
+    "Null, boundary and failure behaviour",
+    "Dependencies and downstream consequences",
+    "Explicit exclusions and non-goals",
+    "Unresolved questions",
+]
 
 
 def fail(message: str) -> None:
@@ -94,11 +111,58 @@ def validate_propositions() -> set[str]:
     return set(definitions)
 
 
+def validate_proposition_field_register(propositions: set[str]) -> None:
+    path = RECON / "06_CANONICAL_PROPOSITION_FIELD_REGISTER.md"
+    text = path.read_text(encoding="utf-8")
+    matches = list(REGISTER_HEADING_RE.finditer(text))
+    ids = [match.group(1) for match in matches]
+    counts = Counter(ids)
+    if set(ids) != propositions:
+        fail(
+            "proposition field-register coverage differs; "
+            f"missing={sorted(propositions-set(ids))}, "
+            f"extra={sorted(set(ids)-propositions)}"
+        )
+    duplicates = sorted(pid for pid, count in counts.items() if count != 1)
+    if duplicates:
+        fail(f"proposition field-register IDs are not unique: {duplicates}")
+
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        block = text[match.end():end]
+        for field in REGISTER_FIELDS:
+            field_match = re.search(
+                rf"^- \*\*{re.escape(field)}:\*\*\s*(.+)$",
+                block,
+                re.MULTILINE,
+            )
+            if not field_match or not field_match.group(1).strip():
+                fail(f"{match.group(1)} lacks populated register field: {field}")
+        record_match = re.search(
+            r"^- \*\*Proposition record:\*\* `([^`]+)`$", block, re.MULTILINE
+        )
+        if not record_match:
+            fail(f"{match.group(1)} has malformed proposition-record reference")
+        record = ROOT / record_match.group(1)
+        if not record.is_file():
+            fail(f"{match.group(1)} references missing proposition record: {record_match.group(1)}")
+        if not re.search(
+            rf"^## {re.escape(match.group(1))} — ",
+            record.read_text(encoding="utf-8"),
+            re.MULTILINE,
+        ):
+            fail(
+                f"{match.group(1)} proposition-record reference does not define that ID: "
+                f"{record_match.group(1)}"
+            )
+
+
 def validate_source_citations() -> None:
     files = list((RECON / "propositions").glob("*.md"))
     files += [
         RECON / "01_CHRONOLOGICAL_AUTHORITY_AND_SUPERSESSION_INDEX.md",
         RECON / "04_UNRESOLVED_CONFLICTS_AND_EXTERNAL_REFERENCES.md",
+        RECON / "06_CANONICAL_PROPOSITION_FIELD_REGISTER.md",
     ]
     checked = 0
     for path in files:
@@ -230,6 +294,7 @@ def main() -> None:
     rows = read_manifest()
     validate_required_outputs()
     propositions = validate_propositions()
+    validate_proposition_field_register(propositions)
     validate_source_citations()
     validate_source_reconciliation(rows)
     validate_reviews()
@@ -239,7 +304,7 @@ def main() -> None:
     validate_source_tree_git_clean()
     print(
         "PASS: reconstruction mechanics validated "
-        "(98 sources, 25 tranche records/reviews, 83 propositions, 10 canonical documents)"
+        "(98 sources, 25 tranche records/reviews, 83 propositions with complete field register, 10 canonical documents)"
     )
     print(
         "NOTE: this script validates artefact presence, identity, coverage and citations; "
