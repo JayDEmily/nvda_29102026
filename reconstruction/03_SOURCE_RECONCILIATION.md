@@ -32,3 +32,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A026 | `source_planning/2026-03-26_GATE55_VOCABULARY_GOVERNANCE_ALIGNMENT.md` | substantive vocabulary extension | P-GOV-002 | `tranches/A07_REVIEW.md` |
 | A027 | `source_planning/2026-03-26_GATE57_DMP_V2_CANONICAL_PROMOTION.md` | explicit replacement authority | P-PROTO-002 | `tranches/A07_REVIEW.md` |
 | A028 | `source_planning/2026-03-26_GATE58_DMP_V1_RETIREMENT.md` | explicit retirement authority | P-PROTO-002 | `tranches/A07_REVIEW.md` |
+| A029 | `source_planning/2026-03-30_GATE101_CANONICAL_RAW_BUNDLE_ADMISSION.md` | bounded raw-data authority; completion claims excluded | P-DAT-004 | `tranches/A08_REVIEW.md` |
+| A030 | `source_planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md` | substantive path/reproducibility authority | P-TRACE-001 | `tranches/A08_REVIEW.md` |
+| A031 | `source_planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md` | substantive bounded-parity authority | P-TRACE-002 | `tranches/A08_REVIEW.md` |
+| A032 | `source_planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md` | behavioural rules extracted; test/process claims excluded | P-TEST-001 | `tranches/A08_REVIEW.md` |
