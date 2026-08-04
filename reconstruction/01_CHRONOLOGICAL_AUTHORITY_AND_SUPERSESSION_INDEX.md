@@ -99,7 +99,7 @@ This is the chronological proposition register for the admitted 61-source origin
 | B02 | [`P-LEG-001`](propositions/B02.md) — Imported legacy material is quarantined evidence unless a bounded advisory bridge is proven necessary | active |
 | B03 | [`P-PERSIST-001`](propositions/B03.md) — Migration lifecycle is explicit and separate from persistence business ownership | active |
 | B03 | [`P-REPLAY-001`](propositions/B03.md) — Replay/evaluation is analysis-only; specimen harnesses are test-only | active |
-| B03 | [`P-RES-001`](propositions/B03.md) — Scenario and observability subsystems remain resolved reserved absences | active |
+| B03 | [`P-RES-001`](propositions/B03.md) — Scenario and observability disposition is conditional and unresolved | unresolved |
 | B04 | [`P-PROTO-003`](propositions/B04.md) — DMPV3 begins at the serial-runtime downstream boundary | active |
 | B04 | [`P-PRISK-002`](propositions/B04.md) — Parallel risk consumes selected serial packets, never serial internals | active |
 | B05 | — | no canonical proposition admitted |
@@ -155,7 +155,7 @@ This is the chronological proposition register for the admitted 61-source origin
 
 ### Reserved absences and missing successor authority
 
-- `P-RES-001` explicitly resolved proposed native scenario-engine and observability homes as reserved absences; bounded scenario metadata, trace evidence and ordinary logging remain lawful.
+- `P-RES-001` preserves a conditional branch law: reserved/containment is the stated default, while bounded admission remains possible only if external admissibility evidence proves an existing lawful owner. Because that branch-selection evidence is outside the admitted corpus, the canonical disposition remains unresolved; the constraints on either branch remain active.
 - `P-ARCH-005` preserves compatibility until explicit retirement. Gates 151–156 are referenced by Gate 150 but absent from the admitted corpus; their content is not reconstructed.
 
 ## Chronology limitations

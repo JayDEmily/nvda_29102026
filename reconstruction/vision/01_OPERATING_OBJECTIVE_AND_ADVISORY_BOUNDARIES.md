@@ -47,7 +47,9 @@ A tail-hedge injector may emit an advisory hedge candidate. It cannot claim that
 
 Historical imported material is evidence, not native runtime authority. It remains quarantined unless a live dependency proves that a bounded native bridge is necessary. Any such bridge must be the smallest advisory, contract or registry bridge required; it cannot recreate the historical subsystem or take ownership of serial runtime behaviour.
 
-No native scenario-engine or observability subsystem is admitted at this authority point. Scenario identifiers and bounded scenario evidence may exist in trace, review, replay or experiment records, and ordinary components may emit operational logs or metrics. Those facts do not create a scenario engine or an observability subsystem. Any later subsystem would need separately admitted ownership and must not own business decisions, packet mutation, persistence policy or orchestration by implication.
+The scenario and observability package-home disposition remains unresolved within the admitted corpus. The successor briefs define a reserved/containment default for each family, but preserve a bounded-admission exception when an external admissibility audit proves that a real bounded owner already exists. The audit, current-code, workbook and report evidence needed to select either branch is not admitted here.
+
+Accordingly, the canonical rule is conditional. A reserved outcome keeps the package absent and records the absence without inventing a placeholder. A bounded scenario admission would remain analysis-only and could not own live trading, broad orchestration or replay/CLI/API expansion. A bounded observability admission would be limited to logging, metrics or correlation helpers and could not own business decisions, packet mutation, persistence rules or runtime orchestration. Scenario identifiers, bounded scenario evidence and ordinary component logging do not by themselves resolve the package-home question.
 
 ## 6. Governing negative rule
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-The admitted corpus contains no remaining direct contradiction that can be resolved merely by chronology. Scoped replacements were applied only where the later source expressly changed the earlier proposition. One substantive ownership decision remains unresolved, and several designs are bounded but not numerically or schematically complete.
+The admitted corpus contains no remaining direct contradiction that can be resolved merely by chronology. Scoped replacements were applied only where the later source expressly changed the earlier proposition. Two substantive authority decisions remain unresolved, and several designs are bounded but not numerically or schematically complete.
 
 ## 1. Unresolved authority decision
 
@@ -11,6 +11,12 @@ The admitted corpus contains no remaining direct contradiction that can be resol
 The preparation-to-regime seam must expose partial regime information explicitly, and supportive fixtures cannot replace the native path. The corpus does not decide whether preparation or cognition ingress finally owns regime-source completeness. See `P-ARCH-010` and `source_successor_briefs/module_4_cognition_ingress_implementation_brief_v2.md:L193-L198`, `source_successor_briefs/module_4_cognition_ingress_implementation_brief_v2.md:L223-L227`, `source_successor_briefs/module_4_cognition_ingress_implementation_brief_v2.md:L256-L259`.
 
 Consequence: an implementation may preserve typed partiality, but cannot claim a final owner from this corpus.
+
+### U-001A — Scenario and observability branch selection
+
+B029 permits either bounded native admission or reserved/containment for `analysis.scenarios` and `observability`. Reserved/containment is the expected default, but each exception branch is lawful when a prior admissibility audit proves an existing bounded owner. B030 and B022 report expected or historical outcomes based on current code, workbooks, reports and audit history that are outside the admitted corpus.
+
+Consequence: this reconstruction may preserve the conditional decision rule and the constraints on both outcomes, but cannot claim that either family was finally admitted or finally reserved. See `P-RES-001`.
 
 ## 2. Incomplete schemas, formulae and policy details
 
@@ -70,4 +76,4 @@ The sources refer to domain-model documents, canonical vocabulary JSON/builders,
 
 ## 4. Explicitly unadmitted, not unresolved by implication
 
-The following are not silent gaps to fill: live brokerage, credentials, network execution, real-money placement, booked inventory, settlement, booked P&L, a native scenario engine, a native observability subsystem, hidden serial state, live read-back from parallel-risk persistence, automatic self-optimisation, portfolio replacement, and a final arbiter beyond the admitted final-risk join. Later authority would have to admit them expressly.
+The following are not silent gaps to fill: live brokerage, credentials, network execution, real-money placement, booked inventory, settlement, booked P&L, hidden serial state, live read-back from parallel-risk persistence, automatic self-optimisation, portfolio replacement, and a final arbiter beyond the admitted final-risk join. Scenario and observability package homes are governed separately by unresolved P-RES-001: neither may be inferred, but either may be boundedly admitted only through the external evidence and ownership constraints stated there.
