@@ -184,7 +184,7 @@ git status --short
 - [x] C1 all 83 propositions clustered and mapped.
 - [x] C2 chapter 1 accepted.
 - [x] C3 chapter 2 accepted.
-- [ ] C4 chapter 3 accepted.
+- [x] C4 chapter 3 accepted.
 - [ ] C5 chapter 4 accepted.
 - [ ] C6 chapter 5 accepted.
 - [ ] C7 chapter 6 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 3, preserving the temporal authority chain, threshold-edge specimen outcomes and scoped alias retirements.
+Draft and semantically review Chapter 4, preserving the six-stage order, statelessness, posture ownership and all five stage-local handoff surfaces.
