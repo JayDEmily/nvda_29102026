@@ -188,7 +188,7 @@ git status --short
 - [x] C5 chapter 4 accepted.
 - [x] C6 chapter 5 accepted.
 - [x] C7 chapter 6 accepted.
-- [ ] C8 chapter 7 accepted.
+- [x] C8 chapter 7 accepted.
 - [ ] C9 chapter 8 accepted.
 - [ ] C10 chapter 9 accepted.
 - [ ] C11 chapter 10 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 7, preserving independent parallel-risk boundaries, Stage-A reservations, overlay/terminal decomposition and bounded capital sizing.
+Draft and semantically review Chapter 8, preserving preview-only execution, carry actions and ceilings, migration ownership separation and append-only write-only parallel-risk persistence.
