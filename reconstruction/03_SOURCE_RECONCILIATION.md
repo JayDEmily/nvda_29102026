@@ -52,3 +52,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A046 | `source_planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md` | substantive temporal-threshold authority | P-TMP-004 | `tranches/A12_REVIEW.md` |
 | A047 | `source_planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md` | substantive replay-lineage authority | P-TRACE-003 | `tranches/A12_REVIEW.md` |
 | A048 | `source_planning/2026-03-31_GATE128_ROUTER_AND_PREDECESSOR_GUARD_MODERNISATION.md` | process_only | — | `tranches/A12_REVIEW.md` |
+| A049 | `source_planning/2026-03-31_GATE129_GOVERNED_PACKET_FIXTURE_ALIGNMENT.md` | historical_implementation_claim / confirms P-GOV-006 | P-GOV-006 | `tranches/A13_REVIEW.md` |
+| A050 | `source_planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md` | clarification of governed stage visibility; specimen outcomes historical | P-ARCH-003 | `tranches/A13_REVIEW.md` |
+| A051 | `source_planning/2026-03-31_GATE132_BOUNDED_TRACE_SCENARIO_PACK.md` | substantive scenario-evidence authority | P-TRACE-004 | `tranches/A13_REVIEW.md` |
+| A052 | `source_planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md` | substantive review-regime authority | P-TRACE-005 | `tranches/A13_REVIEW.md` |
