@@ -44,3 +44,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A038 | `source_planning/2026-03-30_GATE118_MUTABLE_SURFACE_RECONCILIATION.md` | substantive mutable-policy authority | P-GOV-003 | `tranches/A10_REVIEW.md` |
 | A039 | `source_planning/2026-03-30_GATE119_CANDIDATE_ADJUDICATION.md` | explicit candidate-selection replacement | P-PLAY-005 | `tranches/A10_REVIEW.md` |
 | A040 | `source_planning/2026-03-30_GATE120_EXECUTION_GEOMETRY.md` | substantive execution-geometry authority | P-EXE-004 | `tranches/A10_REVIEW.md` |
+| A041 | `source_planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md` | substantive terminal-risk authority | P-RISK-001 | `tranches/A11_REVIEW.md` |
+| A042 | `source_planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md` | substantive scope authority | P-GOV-004 | `tranches/A11_REVIEW.md` |
+| A043 | `source_planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md` | substantive configuration authority | P-GOV-005 | `tranches/A11_REVIEW.md` |
+| A044 | `source_planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md` | substantive policy-resolution authority | P-GOV-006 | `tranches/A11_REVIEW.md` |
