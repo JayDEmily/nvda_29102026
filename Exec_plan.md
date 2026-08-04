@@ -187,7 +187,7 @@ git status --short
 - [x] C4 chapter 3 accepted.
 - [x] C5 chapter 4 accepted.
 - [x] C6 chapter 5 accepted.
-- [ ] C7 chapter 6 accepted.
+- [x] C7 chapter 6 accepted.
 - [ ] C8 chapter 7 accepted.
 - [ ] C9 chapter 8 accepted.
 - [ ] C10 chapter 9 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 6, preserving the v1→v2→bounded-DMPV3 authority chain, native upstream carriers, lawful packetisation and the review-stage/packet-stage distinction.
+Draft and semantically review Chapter 7, preserving independent parallel-risk boundaries, Stage-A reservations, overlay/terminal decomposition and bounded capital sizing.
