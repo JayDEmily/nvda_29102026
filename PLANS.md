@@ -4,7 +4,7 @@
 
 **Active** on branch `work/architecture-kernel-reset-v1`.
 
-Current unit: Unit 1 — authority, brief and baseline activation.
+Current unit: Unit 3 — architecture kernel authority and registries.
 
 ## Objective
 
@@ -130,8 +130,9 @@ Required artefacts:
 ## Progress
 
 - Unit 1: completed; evidence in `docs/evidence/architecture_kernel_reset_20260804/validation/unit1_control_activation.txt`.
-- Unit 2: active.
-- Units 3–5: not started.
+- Unit 2: completed; 5,962-file baseline classified and inherited active implementation removed. Evidence: `docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv` and `validation/unit2_strip_down.txt`.
+- Unit 3: active.
+- Units 4–5: not started.
 
 ## Decisions
 

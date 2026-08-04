@@ -1,3 +1,0 @@
-$ PYTHONPATH=src:. python -m pytest -q tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py
-....                                                                     [100%]
-4 passed in 0.11s

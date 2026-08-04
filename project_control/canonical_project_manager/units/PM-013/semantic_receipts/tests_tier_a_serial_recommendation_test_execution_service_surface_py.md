@@ -1,6 +1,0 @@
-# Semantic receipt — `tests/tier_a/serial_recommendation/test_execution_service_surface.py`
-
-- Sequence `056`, PM-013; SHA `8a295d9e75ed6c2b5d2049d7d2ad156d77df623a2c7452d0afc393712ecc7404`.
-- Read full test `1-31`; full execution service, candidate-expression helper and lifecycle-plan helper; current serial expression/execution authority. Pytest: `1 passed in 0.17s`.
-- G1 `21-31`: three modules import and the `ExecutionService`, `evaluate_execution_expression` and `build_lifecycle_plan` symbols exist. `presence_only` / `structural`; the test calls none of them and proves no candidate-expression inputs, lifecycle semantics, service coordination, stand-down behaviour, downstream boundary or absence of final-risk/capital authority. Direct implementation inspection remains observation evidence and separately shows the service returns the expression helper's serial-owned `final_risk_join`, but this test does not detect that defect.
-- Groups/relationships `1/1`; final `NON_AUTHORITATIVE_OBSERVATIONAL`. Retain as import-surface smoke coverage only. A current Tier-A proof would need to exercise the service over admitted typed inputs, assert the bounded candidate/lifecycle outputs and negative boundaries, and reject downstream final-risk, placement, capital, fill and live-inventory authority. No mutation executed.

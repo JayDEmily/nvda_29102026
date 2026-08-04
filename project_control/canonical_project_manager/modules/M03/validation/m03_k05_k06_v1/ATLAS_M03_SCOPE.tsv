@@ -1,6 +1,0 @@
-source	locator	accepted_truth
-Atlas workbook	Target Modules!A5:Q5	M03 preparation owns typed prepared envelope, field-candidate resolution and enrichment gaps; public interfaces PreparedDataEnvelope, FieldResolutionReceipt and PreparedDataBuilder; runtime dependencies M01 and M02
-Atlas workbook	Contracts!A6:E7	K05 PreparedDataEnvelope = common identity/version/time/fingerprint plus typed payloads; K06 FieldResolutionReceipt = candidate values, equality coalescence and conflict policy
-Atlas workbook	Surface Map!A6:O6	Surface 5.5 is locked/thin_seam; M03 owner; current limitation is incomplete governed composition of all required source families
-Atlas workbook	Work Units!A28:V29	D-051/C-008 typed envelope is immediately executable; D-052/C-011 field resolution follows D-051
-Atlas workbook	Work Units!A9:V10	D-012/C-012 derivation version and provenance; D-015/C-015 source artefact/fingerprint and preparation policy/schema lineage

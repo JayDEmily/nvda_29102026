@@ -1,4 +1,0 @@
-module	evidence_directory	bytes	lines	two_largest_artifacts_bytes
-M07	project_control/canonical_project_manager/modules/M07/raw_validation/gate_d_k12_v1	2393201	44256	GATE_D_TIER_A_BASELINE_92fe7e1.txt:1193730; GATE_D_TIER_A_CURRENT.txt:1182419
-M08	project_control/canonical_project_manager/modules/M08/raw_validation/gate_d_k13_v1	2445671	44897	GATE_D_TIER_A_CURRENT.txt:1196850; GATE_D_TIER_A_BASELINE_c89074f.txt:1193654
-M02	project_control/canonical_project_manager/modules/M02/raw_validation/gate_d_k04_v1	2979828	42555	BASELINE_TIER_A.junit.xml:1467134; GATE_D_TIER_A_FINAL.junit.xml:1452878

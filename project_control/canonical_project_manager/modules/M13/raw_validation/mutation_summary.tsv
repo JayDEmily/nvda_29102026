@@ -1,9 +1,0 @@
-mutant	repaired_family_disposition	original_nine_result	proof_obligation_rejected	evidence
-non_durable_label	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	in-memory adapter must be explicitly non-durable	mutant_durable_label_original_nine.txt
-duplicate_reexecutes_mutation	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	exact duplicate must not re-execute mutation	mutant_duplicate_reexec_original_nine.txt
-raw_key_only_scope	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	idempotency scope includes command type and consistency unit	mutant_scope_value_only_original_nine.txt
-ignore_expected_version	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	stale expected version fails before mutation	mutant_ignore_version_original_nine.txt
-commit_on_mutation_exception	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	mutation failure rolls back state/version/receipt	mutant_commit_on_exception_original_nine.txt
-accept_invalid_receipt	REJECTED by preserved original behaviour	REJECTED: 1 failed, 8 passed, 2 deselected	invalid receipt material cannot commit working state	mutant_accept_invalid_receipt_original_nine.txt
-commit_before_attesting_receipt	REJECTED BY REPAIR: 2 failed, 9 passed	FALSE POSITIVE REPRODUCED: 9 passed, 2 deselected	receipt-write failure rolls back all internal and participant-visible truth	mutant_commit_before_receipt.txt;mutant_commit_before_receipt_original_nine.txt
-omit_repository_participant_rollback	REJECTED BY REPAIR: 2 failed, 9 passed	not applicable to original nine	repository participant failure invokes rollback and leaves no visible participant or internal commit	mutant_no_participant_rollback.txt

@@ -1,2 +1,0 @@
-+ python scripts/run_proof_block.py --check-all --receipt /mnt/data/nvda_p2_final_run/NVDA_P2_SEMANTIC_REVIEW_GROUP_SEQ121_160_20260723/repository/NVIDIA_2026/project_control/canonical_project_manager/units/PM-020/raw_validation/proof_blocks_check_all_receipt.json
-proof_blocks_check_all=PASS count=51

@@ -1,1 +1,0 @@
-.venv/bin/python -m pytest tests/tier_b/proof_model/test_proof_executor_contract.py -q

@@ -1,5 +1,0 @@
-M	ROADMAP_LEDGER_V2.md
-M	project_control/canonical_project_manager/EXEC_PLAN.md
-M	project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md
-M	project_control/canonical_project_manager/VALIDATION_LOG.md
-M	project_control/canonical_project_manager/modules/M13/M13_PROOF_RECORD.md

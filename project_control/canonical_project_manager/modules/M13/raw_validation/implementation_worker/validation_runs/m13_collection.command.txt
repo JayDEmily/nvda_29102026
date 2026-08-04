@@ -1,1 +1,0 @@
-/workspace/scratch/91301e94ac57/m13_impl_clean.jxCJJ0/NVDA_M13_PM_V6_IMPLEMENTATION_OPEN_e8384ad_20260726/.venv/bin/python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py --collect-only -q

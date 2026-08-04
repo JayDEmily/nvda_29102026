@@ -1,1 +1,0 @@
-C:\Users\james\AppData\Local\Temp\nvda_m13_repair_v1_venv\Scripts\python.exe -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py --collect-only -q

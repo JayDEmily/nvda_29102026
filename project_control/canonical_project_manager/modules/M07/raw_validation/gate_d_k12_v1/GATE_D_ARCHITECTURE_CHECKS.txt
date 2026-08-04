@@ -1,8 +1,0 @@
-target_package=src/nvda_desk/m07_coefficient_modifier_authority
-package_files=__init__.py,contracts.py,resolver.py
-public_exports=ModifierApplicationReceipt,ModifierDecision,PolicyBundle,build_k12_receipt,resolve_k12
-prohibited_imports=0
-prohibited_hidden_state_or_io_calls=0
-runtime_dependencies=stdlib,pydantic
-external_mutation_paths=0
-architecture_boundary=PASS

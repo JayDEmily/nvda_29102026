@@ -1,1 +1,0 @@
-env PYTHONPATH=src .venv/bin/python -m pytest tests/tier_a/persistence/test_m13_state_kernel_contract.py -vv

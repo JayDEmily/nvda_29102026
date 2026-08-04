@@ -1,7 +1,0 @@
-surface	deterministic_domain_requirement	exact_byte_requirement	volatile_metadata	gate_c_evidence	status
-raw capture/preparation	same retained source artefacts + schema/policy versions produce equivalent prepared state	retain original source artefact separately	capture/emission time only when declared	C-002/C-012/C-015	red_or_partial
-DMPV3 packet	same explicit context/lineage and domain inputs produce equal domain content	only if emitted_at and packet metadata are supplied explicitly	emitted_at must not define domain equivalence	C-010/C-016	one_green_one_red
-coefficient resolution	same authority document + active policy IDs produce same resolved values/fingerprint	canonical serialisation for replay receipt	none	C-029/C-030	existing_tests_admitted
-capital decision	same complete input trace + policy produces same decision and receipt	receipt reproduction required once admitted	none	C-037	partial
-overnight carry	same handoff + market state + policy version produces same recommendation	not yet required	next-session source identity must be explicit	C-042	partial
-walk-forward analysis	same dataset/window/config produces same ranking	analysis packet reproducibility	none	C-047; C-046 blocked	red_and_partly_blocked

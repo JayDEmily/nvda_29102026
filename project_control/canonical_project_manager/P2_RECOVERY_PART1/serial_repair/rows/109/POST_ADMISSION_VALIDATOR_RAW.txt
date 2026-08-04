@@ -1,4 +1,0 @@
-RESULT=PASS sequence=109 groups=3 relationships=3 disposition=BLOCKED_P3_REPAIR receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_downstream_runtime_test_opening_transform_boundary_surface_py.md
-NOTE=Structural validation does not establish semantic acceptance.
-
-EXIT_CODE=0

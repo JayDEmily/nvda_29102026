@@ -1,1 +1,0 @@
-C:\Users\james\AppData\Local\Temp\nvda_m13_repair_v1_venv\Scripts\python.exe -m pytest -c nul -q tests

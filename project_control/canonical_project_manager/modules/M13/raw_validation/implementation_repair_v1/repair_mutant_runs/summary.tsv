@@ -1,7 +1,0 @@
-mutant_id	full_exit	target_exit	intended_rejection	intended_defect
-no_active_attempt_guard	1	1	PASS	same-instance nested execution is admitted because exclusion is absent
-module_global_active_attempt_guard	1	1	PASS	one module-global flag falsely couples distinct UnitOfWork instances
-active_guard_installed_after_mutation	1	1	PASS	owner mutation begins before the active-attempt guard is installed
-active_guard_cleared_before_participant_commit	1	1	PASS	the guard clears after prepare and admits re-entry during participant commit
-receipt_scope_checks_only_command_type	1	1	PASS	receipt scope validation omits consistency-unit coherence
-resulting_version_accepts_float_and_bool	1	1	PASS	resulting-state version validation accepts float and bool impostors

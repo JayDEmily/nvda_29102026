@@ -1,3 +1,0 @@
-mutant_id	full_exit	target_exit	intended_rejection
-pm_v5_mutation_failure_reserves_idempotency	1	1	PASS
-pm_v5_failed_binding_command_id_only	1	1	PASS

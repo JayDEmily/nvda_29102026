@@ -1,5 +1,0 @@
-cohort_id	disposition	rationale
-SC-PAPER-BROKER-LIFECYCLE-097	admit_bounded	Offline paper acknowledgement/fill lineage only; no live or position authority.
-SC-DOWNSTREAM-OPENING-PLACEMENT-120	admit_bounded	Consume exact M09 receipt and do not recompute capital.
-SC-EXECUTION-RECORDS-PERSISTENCE-269	admit_bounded	Intent-event-receipt lineage; non-durable alpha state only.
-SC-EXECUTION-RECORD-SCHEMA-094	split	M10 owns execution evidence; M11 owns positions and lifecycle.

@@ -1,4 +1,0 @@
-RESULT=PASS sequence=087 groups=2 relationships=2 disposition=ADMIT_TIER_B_SHADOW receipt=project_control/canonical_project_manager/units/PM-014/semantic_receipts/tests_tier_a_parallel_risk_test_sequence7_parallel_risk_envelope_input_surface_py.md
-NOTE=Structural validation does not establish semantic acceptance.
-
-EXIT_CODE=0

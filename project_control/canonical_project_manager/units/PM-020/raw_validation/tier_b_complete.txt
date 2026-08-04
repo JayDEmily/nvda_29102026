@@ -1,3 +1,0 @@
-+ env PYTHONPATH=src pytest -q tests/tier_b
-.................................................                        [100%]
-49 passed in 10.52s

@@ -1,3 +1,0 @@
-
-no tests ran in 0.01s
-TIER_C_EXIT_STATUS=5

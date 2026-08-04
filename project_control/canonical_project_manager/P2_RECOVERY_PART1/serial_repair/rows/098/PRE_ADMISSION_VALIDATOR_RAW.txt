@@ -1,4 +1,0 @@
-RESULT=PASS sequence=098 groups=1 relationships=1 disposition=RETIREMENT_RECOMMENDED_NOT_EXECUTED receipt=project_control/canonical_project_manager/units/PM-015/semantic_receipts/tests_tier_a_downstream_runtime_test_downstream_review_stage_service_surface_py.md
-NOTE=Structural validation does not establish semantic acceptance.
-
-EXIT_CODE=0

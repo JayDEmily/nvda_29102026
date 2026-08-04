@@ -1,8 +1,0 @@
-verification=PASS
-listed_files=7
-passed_files=7
-failed_files=0
-receipt_sha256=6062a4b6a1bc026dff0fc33ab62472675cc7c50418465fb0b135664d41f9b62c
-receipt_encoding=UTF-8_without_BOM
-receipt_line_endings=LF
-receipt_final_newline=one

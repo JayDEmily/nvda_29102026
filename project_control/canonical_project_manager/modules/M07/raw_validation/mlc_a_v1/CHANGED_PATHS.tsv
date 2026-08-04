@@ -1,8 +1,0 @@
-path	change_type	authorised_by
-project_control/canonical_project_manager/modules/M07/M07_AUTHORITY_WORKER_RECORD_V1.md	added	LANE_3AW_WORKER_BRIEF.md:77
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/CHANGED_PATHS.tsv	added	LANE_3AW_WORKER_BRIEF.md:78
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/FILE_SHA256.tsv	added	LANE_3AW_WORKER_BRIEF.md:78
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/FULL_READ_MANIFEST.tsv	added	LANE_3AW_WORKER_BRIEF.md:25,78
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/RAW_VALIDATION.txt	added	LANE_3AW_WORKER_BRIEF.md:78,115-123
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/RECONSTRUCTION.txt	added	LANE_3AW_WORKER_BRIEF.md:78,127-133
-project_control/canonical_project_manager/modules/M07/raw_validation/mlc_a_v1/WORKER_CLAIM.md	added	LANE_3AW_WORKER_BRIEF.md:78,127

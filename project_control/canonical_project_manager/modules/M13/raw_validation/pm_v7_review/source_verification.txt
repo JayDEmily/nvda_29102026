@@ -1,5 +1,0 @@
-archive_sha256=37f54c1d4581b2a30bc7770b4a55cc9acde81832bb98ba2935ad6e8bade5f93a
-source_branch=proof/m13-state-kernel-repair-v6
-source_commit=d01f75813260cae46597ed9d258ee68efb4b6508
-review_branch=review/m13-proof-v7
-worker_parent=92c30ef0f1894e8265242b8a0f229daea7ebb603

@@ -1,7 +1,0 @@
-python_compile=PASS
-line_length_over_100=5
-tests/support/m07_k12_contract_harness.py:164:110
-tests/support/m07_k12_contract_harness.py:215:104
-tests/support/m07_k12_contract_harness.py:386:104
-tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:37:104
-tests/tier_a/vocabulary/test_vocabulary_canonical_builder_parity.py:140:105

@@ -1,5 +1,0 @@
-Tier B validation is partitioned because the proof-executor subprocess family exceeds the single tool-call execution window when combined.
-- non-proof-model directories: 26 passed
-- proof executor contract: 21 passed
-- checkpoint receipt contract: 2 passed
-Total: 49 passed / 0 failed

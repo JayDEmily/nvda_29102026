@@ -1,1 +1,0 @@
-vocabulary_synonym_audit=PASS candidates=0 namespace=m07 scanned_files=16 vocabulary_touched=False resolved_occurrences=20

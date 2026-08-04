@@ -1,5 +1,0 @@
-PASS registry_version=2026-07-31-m08-k13-normative-authority-v1
-PASS namespace_set=global,m04,m07,m08
-PASS m08_entries=m08.eligibility_decision,m08.playbook_catalogue,m08.playbook_definition
-PASS entry_count=153
-PASS projection_sha256=2254989b1e2e9167008a5a6bfc3b4ee8c0fa899f318c8e9789727237e3e3450a

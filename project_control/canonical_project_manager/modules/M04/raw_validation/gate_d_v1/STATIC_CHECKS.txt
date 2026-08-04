@@ -1,6 +1,0 @@
-$ python3.13 -m compileall -q src/nvda_desk/contracts/packets.py src/nvda_desk/packets/dmp_packets.py tests/support/m04_k07_contract_harness.py tests/tier_a/packets/test_m04_k07_packet_role_contract.py
-compileall=PASS
-$ git diff --check
-git_diff_check=PASS
-$ line-length scan (>100 chars)
-over_100=0

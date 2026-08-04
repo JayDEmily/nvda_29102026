@@ -1,9 +1,0 @@
-attempt_1=failed:prepare failed
-after_failure_rollback_calls=1
-after_failure_pending=None
-after_failure_state_version=0
-after_failure_receipts=()
-different_input_retry=failed:IdempotencyConflictError:failed attempt reserved idempotency key
-final_state_version=0
-final_state={'count': 0}
-final_receipts=()

@@ -1,7 +1,0 @@
-diff --git a/mock_target.py b/mock_target.py
---- a/mock_target.py
-+++ b/mock_target.py
-@@ -1,4 +1,4 @@
- def value() -> str:
--    return 'old'
-+    return 'new'

@@ -11,7 +11,7 @@
 | Active ExecPlan | `PLANS.md` |
 | Reserved ExecPlan surface | superseded for this reset; `PLANS.md` is active |
 | Active bounded pack | none |
-| Current semantic unit | Unit 2 — active-tree strip-down |
+| Current semantic unit | Unit 3 — architecture kernel authority and registries |
 | Gate C | completed and closed |
 | Continuation strategy | completed and retired from current authority |
 | Semantic-continuity repairs | M01/M02→M03 accepted at `62009fc`; M03→M05 accepted at `74d2f2c` |

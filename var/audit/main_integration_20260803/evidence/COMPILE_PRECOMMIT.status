@@ -1,2 +1,0 @@
-COMMAND=.venv/bin/python -m compileall -q src scripts tests
-EXIT=0

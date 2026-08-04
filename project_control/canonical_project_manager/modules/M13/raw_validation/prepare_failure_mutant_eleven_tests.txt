@@ -1,9 +1,0 @@
-SOURCE=project_control/canonical_project_manager/modules/M13/raw_validation/mutant_register_after_prepare_source.py
-SOURCE_SHA256=a1a18c2368bfad676c3038990ed4a1c69a468c27f772719104645861399e58de
-TEST_SHA256=f66b8cbe60a70c9dca02b2a65c6f6770273a1be213d5c203cb9fa29dd545d9ee
-COMMAND=PYTHONPATH=/tmp/tmp.nS2jqFKYVQ:/mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/src python -m pytest -q -c /tmp/tmp.nS2jqFKYVQ/pytest.ini /mnt/data/m13_pm_v2_recovery_work/nvda_module_arch_final_clone/tests/tier_a/persistence/test_m13_state_kernel_contract.py
-
-...........                                                              [100%]
-11 passed in 0.04s
-
-EXIT_CODE=0

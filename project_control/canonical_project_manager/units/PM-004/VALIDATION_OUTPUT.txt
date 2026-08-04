@@ -1,9 +1,0 @@
-pm004_corrected_validation=PASS
-concept_rows=10
-canonical_decisions=8
-quarantined_decisions=2
-CME-003=quarantine
-CME-004=quarantine
-normative_candidate_occurrences=1
-normative_candidates_routed_to_P2=0
-source_locator_validation=PASS (see PM-010/VALIDATION_OUTPUT.txt)

@@ -1,4 +1,0 @@
-branch=control/atlas-current-path-rebase-gate-c-continuation-v1
-gate_d_base_commit=92fe7e179dfcc0642cb35325cfaab1133ad978bc
-base_subject=test(m07): close K12 C-PROOF
-expected_worktree_state_before_acceptance_commit=bounded M07 Gate D implementation, proof/control updates, and raw validation evidence only

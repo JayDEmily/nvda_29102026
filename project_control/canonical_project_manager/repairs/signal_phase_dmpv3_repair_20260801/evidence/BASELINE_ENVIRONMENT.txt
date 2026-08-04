@@ -1,6 +1,0 @@
-branch=work/signal-phase-dmpv3-repair-v1
-head=9364b4698f417ab9aaebe9e24d8a4a4e3cb98971
-status_begin
-?? project_control/canonical_project_manager/repairs/signal_phase_dmpv3_repair_20260801/
-status_end
-python=Python 3.13.5

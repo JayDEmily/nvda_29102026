@@ -1,3 +1,0 @@
-=== Tier B non-proof-model ===
-..........................                                               [100%]
-26 passed in 0.65s

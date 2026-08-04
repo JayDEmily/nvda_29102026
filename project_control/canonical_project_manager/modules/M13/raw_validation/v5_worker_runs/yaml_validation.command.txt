@@ -1,1 +1,0 @@
-.venv/bin/python -c YAML_PARSE_CONFIGS

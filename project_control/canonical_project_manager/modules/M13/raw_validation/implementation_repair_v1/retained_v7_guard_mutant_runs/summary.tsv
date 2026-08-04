@@ -1,9 +1,0 @@
-mutant_id	frozen_v6_exit	full_exit	target_exit	frozen_v6_disposition	intended_rejection	intended_case	false_behaviour
-module_global_active_flag	0	1	1	PASS	PASS	phase-owner-mutation--scope-different-command-and-unit--b-succeeds--a-succeeds	one module-global flag falsely blocks every distinct instance
-class_global_static_active_flag	0	1	1	PASS	PASS	phase-owner-mutation--scope-different-command-and-unit--b-succeeds--a-succeeds	one static class flag falsely blocks every distinct instance
-universal_active_marker_registry	0	1	1	PASS	PASS	phase-owner-mutation--scope-different-command-and-unit--b-succeeds--a-succeeds	one universal process-registry marker falsely blocks every distinct instance
-guard_keyed_only_by_command_type	0	1	1	PASS	PASS	phase-owner-mutation--scope-same-command-different-unit--b-succeeds--a-fails	process registry keyed only by command type couples independent instances
-guard_keyed_only_by_consistency_unit_id	0	1	1	PASS	PASS	phase-owner-mutation--scope-different-command-same-unit--b-fails--a-succeeds	process registry keyed only by textual consistency-unit ID couples owners
-guard_keyed_only_by_command_type_and_consistency_unit_id	0	1	1	PASS	PASS	phase-owner-mutation--scope-same-command-and-unit-different-keys--b-fails--a-fails	process registry keyed only by command/unit strings couples distinct instances
-guard_shared_by_concrete_class	0	1	1	PASS	PASS	phase-owner-mutation--scope-different-command-and-unit--b-succeeds--a-succeeds	one marker per concrete class falsely couples every instance of that class
-early_clear_before_participant_commit_with_global_coupling	1	1	1	PASS	PASS	same_instance_rejection_and_distinct_instance_admission_hold_together	guard clears before commit, admitting same-instance re-entry while globally coupled

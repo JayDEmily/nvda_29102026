@@ -1,5 +1,0 @@
-COMMAND=python project_control/canonical_project_manager/modules/M13/raw_validation/v2_run_variant.py project_control/canonical_project_manager/modules/M13/raw_validation/mutant_register_after_prepare_source.py --mode old-eleven
-SOURCE=project_control/canonical_project_manager/modules/M13/raw_validation/mutant_register_after_prepare_source.py
-MODE=old-eleven
-...........                                                              [100%]
-11 passed, 1 deselected in 0.04s

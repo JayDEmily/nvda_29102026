@@ -1,0 +1,167 @@
+{
+  "M00": {
+    "package": "m00_application_shell",
+    "canonical_module_dependencies": [
+      "M01",
+      "M02",
+      "M03",
+      "M05",
+      "M06",
+      "M09",
+      "M10",
+      "M11",
+      "M12"
+    ],
+    "noncanonical_top_level_dependencies": [
+      "contracts",
+      "packets"
+    ],
+    "cross_module_private_imports": []
+  },
+  "M01": {
+    "package": "m01_source_admission",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M02": {
+    "package": "m02_financial_calendar",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M03": {
+    "package": "m03_preparation",
+    "canonical_module_dependencies": [
+      "M01",
+      "M02"
+    ],
+    "noncanonical_top_level_dependencies": [
+      "contracts",
+      "preparation"
+    ],
+    "cross_module_private_imports": []
+  },
+  "M05": {
+    "package": "m05_serial_cognition",
+    "canonical_module_dependencies": [
+      "M03",
+      "M07",
+      "M08"
+    ],
+    "noncanonical_top_level_dependencies": [
+      "cognition",
+      "contracts",
+      "domain",
+      "packets",
+      "services"
+    ],
+    "cross_module_private_imports": [
+      [
+        "src/nvda_desk/m05_serial_cognition/composition.py",
+        30,
+        "nvda_desk.m07_coefficient_modifier_authority.contracts"
+      ],
+      [
+        "src/nvda_desk/m05_serial_cognition/composition.py",
+        36,
+        "nvda_desk.m08_playbook_catalogue.contracts"
+      ]
+    ]
+  },
+  "M06": {
+    "package": "m06_parallel_risk",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [
+      "contracts",
+      "packets"
+    ],
+    "cross_module_private_imports": []
+  },
+  "M07": {
+    "package": "m07_coefficient_modifier_authority",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M08": {
+    "package": "m08_playbook_catalogue",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M09": {
+    "package": "m09_capital_authority",
+    "canonical_module_dependencies": [
+      "M05",
+      "M06",
+      "M07"
+    ],
+    "noncanonical_top_level_dependencies": [
+      "contracts"
+    ],
+    "cross_module_private_imports": []
+  },
+  "M10": {
+    "package": "m10_execution_gateway",
+    "canonical_module_dependencies": [
+      "M09",
+      "M13"
+    ],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M11": {
+    "package": "m11_portfolio_lifecycle",
+    "canonical_module_dependencies": [
+      "M06",
+      "M10",
+      "M13"
+    ],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": [
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/contracts.py",
+        11,
+        "nvda_desk.m10_execution_gateway.contracts"
+      ],
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/risk_facts.py",
+        8,
+        "nvda_desk.m06_parallel_risk.owner_facts"
+      ],
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/service.py",
+        10,
+        "nvda_desk.m10_execution_gateway.contracts"
+      ],
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/service.py",
+        11,
+        "nvda_desk.m13_state_kernel.contracts"
+      ],
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/service.py",
+        12,
+        "nvda_desk.m13_state_kernel.in_memory"
+      ],
+      [
+        "src/nvda_desk/m11_portfolio_lifecycle/service.py",
+        13,
+        "nvda_desk.m13_state_kernel.ports"
+      ]
+    ]
+  },
+  "M12": {
+    "package": "m12_evidence_replay",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  },
+  "M13": {
+    "package": "m13_state_kernel",
+    "canonical_module_dependencies": [],
+    "noncanonical_top_level_dependencies": [],
+    "cross_module_private_imports": []
+  }
+}

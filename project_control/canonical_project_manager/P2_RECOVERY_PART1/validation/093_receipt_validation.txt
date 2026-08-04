@@ -1,2 +1,0 @@
-RESULT=PASS sequence=093 groups=1 relationships=1 disposition=NON_AUTHORITATIVE_OBSERVATIONAL receipt=project_control/canonical_project_manager/units/PM-014/semantic_receipts/tests_tier_a_testing_harnesses_test_module_8_parallel_risk_workbook_specimen_surface_py.md
-NOTE=Structural validation does not establish semantic acceptance.

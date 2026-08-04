@@ -1,7 +1,0 @@
-# Semantic receipt — `tests/tier_a/upstream_signal/test_fwd007_raw_signal_family_rebuild_contract.py`
-
-- Sequence `035`, PM-012; SHA `b6c4770f3d4c13c0d7d4d12232beb066e9c7679a5ba25ab80b1711283e4096e1`.
-- Read full test `1-82`, all four directly exercised market-substrate/strategic-ladder contracts and services, authority and routes. Pytest: `2 passed in 0.22s`.
-- G1 `19-48`: builds two rich observations and asserts sorted family IDs, lookup, a `trace_only_market_substrate` label and an empty side-effect list. No current normative proposition admits `MarketSubstrateSnapshot`, its authority label, field semantics or source requirements. A changed observed value fails `44-48`; fabricated sources and real external side effects still pass. Relation `authority_missing`; strength `specimen_only`.
-- G2 `51-82`: executes a ladder algorithm with exact distance thresholds, gamma overlay, `REVISE`, evidence score and `not_authorised` label. No current normative proposition owns Strategic Ladder, the 2/5-dollar thresholds, scoring, confidence or overlay decisions. Altering outputs fails `76-82`; an unauthorised or economically wrong algorithm can pass if labels match. Relation `authority_missing`; strength `behavioural`.
-- Groups/relationships `2/2`; final `BLOCKED_MISSING_NORMATIVE_AUTHORITY`. These are implementation-created feature families and decision rules, not raw-signal authority proved by current documents. No mutation executed.

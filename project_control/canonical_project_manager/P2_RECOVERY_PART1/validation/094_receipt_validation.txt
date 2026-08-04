@@ -1,2 +1,0 @@
-RESULT=PASS sequence=094 groups=2 relationships=2 disposition=ADMIT_TIER_B_SHADOW receipt=project_control/canonical_project_manager/units/PM-014/semantic_receipts/tests_tier_a_testing_harnesses_test_serial_runtime_parallel_risk_boundary_specimen_surface_py.md
-NOTE=Structural validation does not establish semantic acceptance.

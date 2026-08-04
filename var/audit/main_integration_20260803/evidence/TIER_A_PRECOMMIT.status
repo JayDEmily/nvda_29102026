@@ -1,4 +1,0 @@
-START=2026-08-03T12:35:11Z
-COMMAND=.venv/bin/python -m pytest -q tests/tier_a
-END=2026-08-03T12:35:35Z
-EXIT=0

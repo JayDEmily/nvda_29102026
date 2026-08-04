@@ -1,6 +1,0 @@
-path	status	note
-project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_INDEPENDENT_TESTER_REVIEW_V1.md	READ_FULL	Hard-block evidence preserved and adjudicated.
-project_control/canonical_project_manager/parallel_workflow_validation/independent_control_test_v1/FULL_READ_MANIFEST.tsv	READ_FULL	Confirmed exact unavailable attachment and required hard-block.
-project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR/PARALLEL_CONTROL_T1_INDEPENDENT_TESTER_BRIEF.md	READ_FULL	Historical Repair 1 brief preserved unchanged.
-/mnt/data/NVDA Parallel Workflow — Project-Specific Architecture and Rollout….md	HASH_VERIFIED	SHA-256 e6290bd0a10afe5a1f0e0029464603ae4af11bc850bec3462367a6753ce61f16.
-/mnt/data/MASTER_PARALLEL_WORKFLOW_ARCHITECTURE.md	HASH_VERIFIED	SHA-256 58b812adc77c16a7c4368bc7403857152f67b0e4bde5dba84be79f297b1c700f.

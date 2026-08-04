@@ -1,4 +1,0 @@
-PASS registry_version=2026-07-31-m07-k12-normative-authority-v1
-PASS namespace_set=global,m04,m07
-PASS m07_entries=m07.modifier_application_receipt,m07.modifier_decision,m07.policy_bundle
-PASS projection_sha256=c92fa817cdfb96fcb9ace4abc3f049f2c2d49e0047b70d070e9ec067dd557841

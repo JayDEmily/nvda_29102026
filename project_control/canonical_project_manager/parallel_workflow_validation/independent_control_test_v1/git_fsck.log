@@ -1,2 +1,0 @@
-$ git fsck --full --no-dangling
-EXIT_STATUS=0

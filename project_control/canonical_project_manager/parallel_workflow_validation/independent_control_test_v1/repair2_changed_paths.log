@@ -1,9 +1,0 @@
---- repair2 changed paths ---
-M	project_control/canonical_project_manager/EXEC_PLAN.md
-M	project_control/canonical_project_manager/FULL_READ_MANIFEST.tsv
-M	project_control/canonical_project_manager/GATE_C_COMPLETION_PROTOCOL.md
-M	project_control/canonical_project_manager/MASTER_WORKFLOW_REGISTRY.md
-M	project_control/canonical_project_manager/PARALLEL_CYCLE_01/README.md
-A	project_control/canonical_project_manager/PARALLEL_CYCLE_01_CONTROL_REPAIR_2/PARALLEL_CONTROL_T1_RETEST_BRIEF.md
-A	project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_2_FULL_READ_MANIFEST.tsv
-A	project_control/canonical_project_manager/parallel_workflow_validation/PARALLEL_CONTROL_REPAIR_2_PM_RECORD.md

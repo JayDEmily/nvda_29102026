@@ -1,1 +1,0 @@
-proof_block_check=PASS m02_k04_financial_calendar_contract

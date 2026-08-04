@@ -1,2 +1,0 @@
-$ env PYTHONPATH=src python scripts/build_canonical_vocabulary.py
-EXIT_STATUS=0

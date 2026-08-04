@@ -1,6 +1,0 @@
-schema_version=v2_namespaced
-registry_version=2026-08-03-vocabulary-governance-dedup-v1
-registry_records=194
-json_entries=194
-namespaces=13
-builder_json_exact_parity=true

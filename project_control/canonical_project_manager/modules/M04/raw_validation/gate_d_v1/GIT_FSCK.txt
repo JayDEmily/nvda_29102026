@@ -1,2 +1,0 @@
-$ git fsck --full
-git_fsck_full=PASS

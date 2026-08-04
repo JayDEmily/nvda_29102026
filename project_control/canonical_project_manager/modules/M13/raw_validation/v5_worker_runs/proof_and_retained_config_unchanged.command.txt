@@ -1,1 +1,0 @@
-git diff 479000b512ef74b8134bc11cefc7a3ef13fac0e1 -- config/proof_blocks.yaml config/retained_test_registry.yaml

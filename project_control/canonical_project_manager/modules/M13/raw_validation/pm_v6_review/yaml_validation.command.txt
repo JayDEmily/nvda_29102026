@@ -1,1 +1,0 @@
-python yaml.safe_load(config/proof_blocks.yaml, config/retained_test_registry.yaml)

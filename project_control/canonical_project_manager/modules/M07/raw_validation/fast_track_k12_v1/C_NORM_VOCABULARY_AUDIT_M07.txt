@@ -1,7 +1,0 @@
-vocabulary_synonym_audit=PASS candidates=0 namespace=m07 scanned_files=12 vocabulary_touched=False resolved_occurrences=20
-vocabulary_touch_stamp=UPDATED namespace=m07
-vocabulary_synonym_audit=PASS candidates=0 namespace=m07 scanned_files=12 vocabulary_touched=False resolved_occurrences=20
-PASS candidate_count=0
-PASS scanned_file_count=12
-PASS resolved_occurrence_count=20
-PASS stamp_matches_report=true

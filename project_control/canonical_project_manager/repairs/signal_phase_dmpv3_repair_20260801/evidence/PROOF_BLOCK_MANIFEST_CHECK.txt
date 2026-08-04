@@ -1,2 +1,0 @@
-=== proof manifest ===
-proof_blocks_check_all=PASS count=64

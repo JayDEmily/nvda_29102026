@@ -1,5 +1,0 @@
-Command:
-.venv/bin/python -m pytest -q tests/tier_b/proof_model/test_proof_authority_contract.py::test_live_control_surfaces_return_to_canonical_state_after_comprehensive_debt_closeout
-
-Observed:
-1 failed. The live control surfaces declared M03-M05-SEMANTIC-CONTINUITY-REPAIR-V1, while the validator and existing singular-control assertion still recognised only M01-M03-SEMANTIC-CONTINUITY-REPAIR-V1. Failure: active control state is not singular and reconciled: matched=none.

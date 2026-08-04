@@ -1,8 +1,0 @@
-pm007_reopen_validation=PASS
-fixed_labels_from_brief=13
-assigned_exact_label_rows=15
-serial_desk_cognition_disposition=alias_only_to_serial_desk_cognition_spine
-serial_desk_cognition_spine_disposition=canonical
-spine_normative_occurrences_owned_by_SSC-015=3
-project_manager_acceptance=pending
-p2_status=not_begun

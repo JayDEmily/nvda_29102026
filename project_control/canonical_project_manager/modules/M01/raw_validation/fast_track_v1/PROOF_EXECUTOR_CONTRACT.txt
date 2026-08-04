@@ -1,4 +1,0 @@
-$ PYTHONPATH=src PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3.13 -m pytest -q tests/tier_b/proof_model/test_proof_executor_contract.py
-.....................                                                    [100%]
-21 passed in 10.38s
-EXIT_STATUS=0

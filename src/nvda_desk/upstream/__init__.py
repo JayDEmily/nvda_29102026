@@ -1,1 +1,0 @@
-"""Bounded upstream signal surfaces."""

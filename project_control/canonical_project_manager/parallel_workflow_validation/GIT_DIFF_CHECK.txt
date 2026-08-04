@@ -1,4 +1,0 @@
-COMMAND_1: git diff --check
-EXIT_CODE_1: 0
-COMMAND_2: git diff --cached --check
-EXIT_CODE_2: 0

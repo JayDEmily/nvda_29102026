@@ -1,0 +1,73 @@
+{
+  "canonical_edges": {
+    "m00_application_shell": [
+      "m01_source_admission",
+      "m02_financial_calendar",
+      "m03_preparation",
+      "m05_serial_cognition",
+      "m06_parallel_risk",
+      "m09_capital_authority",
+      "m10_execution_gateway",
+      "m11_portfolio_lifecycle",
+      "m12_evidence_replay"
+    ],
+    "m01_source_admission": [],
+    "m02_financial_calendar": [],
+    "m03_preparation": [
+      "m01_source_admission",
+      "m02_financial_calendar"
+    ],
+    "m05_serial_cognition": [
+      "m03_preparation",
+      "m07_coefficient_modifier_authority",
+      "m08_playbook_catalogue"
+    ],
+    "m06_parallel_risk": [],
+    "m07_coefficient_modifier_authority": [],
+    "m08_playbook_catalogue": [],
+    "m09_capital_authority": [
+      "m05_serial_cognition",
+      "m06_parallel_risk",
+      "m07_coefficient_modifier_authority"
+    ],
+    "m10_execution_gateway": [
+      "m09_capital_authority",
+      "m13_state_kernel"
+    ],
+    "m11_portfolio_lifecycle": [
+      "m06_parallel_risk",
+      "m10_execution_gateway",
+      "m13_state_kernel"
+    ],
+    "m12_evidence_replay": [],
+    "m13_state_kernel": []
+  },
+  "canonical_packages": [
+    "m00_application_shell",
+    "m01_source_admission",
+    "m02_financial_calendar",
+    "m03_preparation",
+    "m05_serial_cognition",
+    "m06_parallel_risk",
+    "m07_coefficient_modifier_authority",
+    "m08_playbook_catalogue",
+    "m09_capital_authority",
+    "m10_execution_gateway",
+    "m11_portfolio_lifecycle",
+    "m12_evidence_replay",
+    "m13_state_kernel"
+  ],
+  "cycles": [
+    [
+      "contracts",
+      "packets",
+      "preparation"
+    ],
+    [
+      "cognition",
+      "domain"
+    ]
+  ],
+  "edge_count": 114,
+  "package_count": 39
+}

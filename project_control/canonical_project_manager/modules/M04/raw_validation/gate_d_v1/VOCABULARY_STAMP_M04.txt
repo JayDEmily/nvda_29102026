@@ -1,2 +1,0 @@
-vocabulary_touch_stamp=UPDATED namespace=m04
-vocabulary_synonym_audit=PASS candidates=0 namespace=m04 scanned_files=96 vocabulary_touched=False resolved_occurrences=213

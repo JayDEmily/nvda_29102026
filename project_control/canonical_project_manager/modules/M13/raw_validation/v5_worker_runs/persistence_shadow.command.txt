@@ -1,1 +1,0 @@
-PYTHONPATH=.venv/lib/python3.13/site-packages /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python -m pytest tests/tier_a/persistence -q -k 'not m13'

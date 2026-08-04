@@ -1,6 +1,0 @@
-$ git diff --check
-git_diff_check_exit=0
-
-$ python3.13 -m compileall -q <M01 changed Python surfaces>
-compileall_exit=0
-line_length_gt_100=0

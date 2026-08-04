@@ -1,2 +1,0 @@
-COMMAND: git fsck --full --no-dangling
-EXIT_CODE: 0

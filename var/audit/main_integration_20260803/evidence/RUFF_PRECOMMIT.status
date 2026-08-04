@@ -1,4 +1,0 @@
-START=2026-08-03T12:35:42Z
-COMMAND=/mnt/data/nvda_devtools_venv/bin/ruff check .
-END=2026-08-03T12:35:42Z
-EXIT=1

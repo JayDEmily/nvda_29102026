@@ -1,3 +1,0 @@
-$ python3.13 scripts/run_proof_block.py --check-all
-proof_blocks_check_all=PASS count=54
-EXIT_STATUS=0

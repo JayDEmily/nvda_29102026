@@ -1,6 +1,0 @@
-branch=review/m13-proof-v8
-head=aded5edc1ad567a1f7d3a4231b918b3af1abd7bd
-source_archive_sha256=1eb29baac7b0e3253c499957d50b85fce1e1440ec43da26b1dc2a6a335bd4d72
-source_worker_branch=proof/m13-state-kernel-repair-v7
-source_worker_commit=aded5edc1ad567a1f7d3a4231b918b3af1abd7bd
-source_worktree=clean
