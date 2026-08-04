@@ -65,3 +65,6 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A059 | `source_planning/2026-04-01_GATE147_OVERLAY_EVALUATION_AND_TERMINAL_RISK_APPLICATION.md` | substantive terminal-risk decomposition | P-RISK-002 | `tranches/A15_REVIEW.md` |
 | A060 | `source_planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md` | substantive downstream review/trace reconciliation | P-REV-004 | `tranches/A15_REVIEW.md` |
 | A061 | `source_planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md` | bounded migration authority plus process-only planning; absent successors unresolved | P-ARCH-005 | `tranches/A15_REVIEW.md` |
+| B024 | `source_successor_briefs/nvda_major_work_brief_next_queue_v2_2026-04-19.md` | `process_only`; external workbook/test governance and migration queue, no independently admitted desk behaviour | — | `tranches/B01_REVIEW.md` |
+| B027 | `source_successor_briefs/nvda_next_continuation_brief_v3_2026-04-19.md` | `bounded_repair`, `clarification` and `new_design_authority`; implementation-completion claims excluded | P-ARCH-006, P-RISK-003, P-PRISK-001 | `tranches/B01_REVIEW.md` |
+| B032 | `source_successor_briefs/nvda_supplemental_continuation_brief_2026-04-19.md` | `process_only` / `historical_implementation_claim`; queue superseded by B027 | — | `tranches/B01_REVIEW.md` |

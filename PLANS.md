@@ -146,9 +146,10 @@ git status --short
 - [x] 61/37 source counts and all 98 manifest hashes validated.
 - [x] Initial plan and evidence receipt prepared.
 - [x] A01–A15 accepted.
-- [ ] B01–B10 accepted.
+- [x] B01 accepted.
+- [ ] B02–B10 accepted.
 - [ ] Final consolidation and assurance accepted.
 
 ## Next authorised action
 
-Begin B01 successor adjudication against the accepted Tranche A proposition set.
+Begin B02 successor adjudication against the accepted Tranche A and B01 proposition set.
