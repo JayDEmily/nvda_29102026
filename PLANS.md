@@ -2,9 +2,9 @@
 
 ## Status
 
-**Active** on branch `work/architecture-kernel-reset-v1`.
+**Closed — PASS** on branch `work/architecture-kernel-reset-v1`.
 
-Current unit: Unit 5 — packaging, environment and closeout.
+Current unit: none. The reset is closed; no capability-development phase is authorised.
 
 ## Objective
 
@@ -133,7 +133,7 @@ Required artefacts:
 - Unit 2: completed; 5,962-file baseline classified and inherited active implementation removed. Evidence: `docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv` and `validation/unit2_strip_down.txt`.
 - Unit 3: completed; architecture authority, schemas, registries, templates, crosswalk and lineage index created. Validation: `docs/evidence/architecture_kernel_reset_20260804/validation/unit3_registry_schema_validation.txt`.
 - Unit 4: completed; generic registry, composition, dependency/public-seam enforcement and exact proof control implemented. Validation: `docs/evidence/architecture_kernel_reset_20260804/validation/unit4_implementation_and_proof.txt`.
-- Unit 5: active.
+- Unit 5: completed; offline lock, clean environment reconstruction, aggregate promotion, wheel/sdist build, isolated installed-artifact proof and Git integrity checks passed. Evidence is under `docs/evidence/architecture_kernel_reset_20260804/validation/`.
 
 ## Decisions
 
@@ -143,12 +143,16 @@ Required artefacts:
 
 ## Roadblocks
 
-- The first offline lock attempt required a Windows-only `colorama` artefact that is absent from the supplied Linux wheelhouse. The minimal lock is therefore explicitly constrained to Linux x86_64, matching the supplied CPython 3.13.5 wheelhouse; final proof remains pending.
+All repairable execution roadblocks were resolved. Their exact disposition is recorded in `docs/evidence/architecture_kernel_reset_20260804/UNIT4_REPAIR_RECORD.md` and `UNIT5_REPAIR_RECORD.md`.
 
-## Unknowns
+## Open boundaries
 
-- Whether any legal or packaging metadata outside the brief must be retained; preserve `LICENSE` and record any additional bounded retention.
+- Portability outside CPython 3.13.5 Linux x86_64 is unproved.
+- Future domain semantics, module allocations, DMPV3 schema/behaviour and state/transaction mechanisms are intentionally unproved and unauthorised.
+- `P01`, `G01`, `G02`, `A00` and `K01` remain non-active identities; none proves an implementation.
 
 ## Closeout
 
-Open. Final verdict pending Units 1–5.
+Verdict: `PASS`.
+
+The repository is a clean, installable, behaviour-neutral architecture kernel within the stated Linux x86_64 boundary. Final commit identity, clean-worktree proof and full-history archive checksum are supplied in the external handoff receipt because a Git commit cannot contain its own hash.

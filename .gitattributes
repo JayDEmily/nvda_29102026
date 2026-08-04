@@ -1,0 +1,13 @@
+# Repository-authored text uses LF.
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.tsv text eol=lf
+*.csv text eol=lf
+
+# Supplied audit evidence is immutable byte evidence, including original CRLF files.
+docs/evidence/architecture_audit_20260804/** binary
