@@ -39,4 +39,5 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 
 | Tranche | Sources | Verdict | Commit |
 |---|---:|---|---|
-| Plan/baseline | 98 inventoried | PASS (mechanical only) | pending |
+| Plan/baseline | 98 inventoried | PASS (mechanical only) | `d9bf965` |
+| A01 | 4 | PASS | pending |
