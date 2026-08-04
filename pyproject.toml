@@ -61,5 +61,7 @@ src = ["src", "tests", "tools"]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
 
 [tool.uv]
+no-index = true
+find-links = ["vendor/wheels"]
 environments = ["sys_platform == 'linux'"]
 required-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
