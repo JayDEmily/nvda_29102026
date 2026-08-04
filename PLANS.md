@@ -147,9 +147,10 @@ git status --short
 - [x] Initial plan and evidence receipt prepared.
 - [x] A01–A15 accepted.
 - [x] B01 accepted.
-- [ ] B02–B10 accepted.
+- [x] B02 accepted.
+- [ ] B03–B10 accepted.
 - [ ] Final consolidation and assurance accepted.
 
 ## Next authorised action
 
-Begin B02 successor adjudication against the accepted Tranche A and B01 proposition set.
+Begin B03 successor adjudication against the accepted Tranche A and B01–B02 proposition set.
