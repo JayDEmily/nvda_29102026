@@ -192,13 +192,15 @@ git status --short
 - [x] C9 chapter 8 accepted.
 - [x] C10 chapter 9 accepted.
 - [x] C11 chapter 10 accepted.
-- [ ] C12 cross-reference, validation, assurance and packaging complete.
+- [x] C12 cross-reference, validation and assurance complete; packaging pending final commit verification.
 
 ## Discoveries and decisions
 
 - 2026-08-04: the environment has no `OPENAI_API_KEY`, `OPENAI_BASE_URL` or Azure OpenAI credential. Embedding-based candidate generation cannot be executed and will not be simulated or claimed. Human-semantic cluster adjudication remains the controlling method.
 - 2026-08-04: the existing ten canonical vision domains are candidate evidence for chapter boundaries, not an automatic chapter assignment. The chapter map must still adjudicate every proposition individually.
+- 2026-08-04: final chapter allocation is 10/11/9/8/7/6/8/8/8/8 propositions across Chapters 1–10 respectively; all 83 have one primary assignment.
+- 2026-08-04: `P-RES-001` and `P-ARCH-010` remain unresolved, and `P-PROTO-002` remains partially superseded; chaptering did not alter those states.
 
 ## Next authorised action
 
-Complete C12: cross-reference coverage, mechanical validator, exact validation receipt, assurance closeout and reproducible full-history packaging.
+Commit C12 closeout, verify the clean committed repository, package full Git history, re-extract the archive and rerun all validators from the packaged copy.

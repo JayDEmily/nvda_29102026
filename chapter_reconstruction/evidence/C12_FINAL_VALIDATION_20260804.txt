@@ -1,0 +1,32 @@
+CHRONOLOGICAL-SEMANTIC CHAPTER RECONSTRUCTION — C12 VALIDATION
+Date: 2026-08-04
+Branch: work/chronological-semantic-chapters-v1
+Authorised base: cebe05a2c1e9159a3239a0f5b7e09ad422c8f091
+
+$ python tools/validate_source_corpus.py
+PASS: 98 immutable source documents validated (61 original + 37 successor); IDs, paths and SHA-256 values are consistent
+NOTE: this script validates corpus identity and completeness, not semantic authority
+[exit 0]
+
+$ python tools/validate_reconstruction.py
+PASS: reconstruction mechanics validated (98 sources, 25 tranche records/reviews, 83 propositions with complete field register, 10 canonical documents)
+NOTE: this script validates artefact presence, identity, coverage and citations; it does not certify semantic losslessness or independent review
+[exit 0]
+
+$ python tools/validate_chapter_reconstruction.py
+PASS: 83 approved propositions assigned exactly once across 10 chapters (Ch01=10, Ch02=11, Ch03=9, Ch04=8, Ch05=7, Ch06=6, Ch07=8, Ch08=8, Ch09=8, Ch10=8)
+PASS: chapter files, primary declarations, mappings, cross-references and visibility controls resolve
+NOTE: this script validates structure and coverage only; it does not certify semantic fidelity or losslessness
+[exit 0]
+
+$ python -m py_compile tools/validate_chapter_reconstruction.py
+[exit 0]
+
+$ git diff --check
+[exit 0]
+
+$ git diff --exit-code cebe05a2c1e9159a3239a0f5b7e09ad422c8f091 -- source_planning source_successor_briefs SOURCE_MANIFEST.tsv reconstruction/propositions reconstruction/vision reconstruction/01_CHRONOLOGICAL_AUTHORITY_AND_SUPERSESSION_INDEX.md reconstruction/03_SOURCE_RECONCILIATION.md reconstruction/04_UNRESOLVED_CONFLICTS_AND_EXTERNAL_REFERENCES.md reconstruction/06_CANONICAL_PROPOSITION_FIELD_REGISTER.md
+[exit 0]
+
+Interpretation: no output from the two git diff commands means no whitespace defect and no change to the admitted source/approved reconstruction substrate.
+Boundary: these checks are mechanical and do not certify semantic fidelity or losslessness.
