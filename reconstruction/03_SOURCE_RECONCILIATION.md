@@ -36,3 +36,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A030 | `source_planning/2026-03-30_GATE102_CANONICAL_RAW_PATH_HARNESS.md` | substantive path/reproducibility authority | P-TRACE-001 | `tranches/A08_REVIEW.md` |
 | A031 | `source_planning/2026-03-30_GATE103_RAW_PREPARED_PARITY.md` | substantive bounded-parity authority | P-TRACE-002 | `tranches/A08_REVIEW.md` |
 | A032 | `source_planning/2026-03-30_GATE104_PROPERTY_STATEFUL.md` | behavioural rules extracted; test/process claims excluded | P-TEST-001 | `tranches/A08_REVIEW.md` |
+| A033 | `source_planning/2026-03-30_GATE105_INGRESS_DB_API.md` | substantive bounded boundary authority | P-ARCH-002 | `tranches/A09_REVIEW.md` |
+| A034 | `source_planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_CLOSEOUT.md` | process_only | — | `tranches/A09_REVIEW.md` |
+| A035 | `source_planning/2026-03-30_GATE115_NORMALISED_PREPARED_RUNTIME_FEATURES.md` | substantive feature-carriage authority; specimen values historical | P-DAT-005 | `tranches/A09_REVIEW.md` |
+| A036 | `source_planning/2026-03-30_GATE116_EVENT_CLASS_TEMPORAL_WINDOWS.md` | substantive temporal-policy authority | P-TMP-003 | `tranches/A09_REVIEW.md` |
