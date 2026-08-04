@@ -23,3 +23,4 @@ This index is chronological. Detailed proposition records are stored by accepted
 | B02 | 2026-04-20 | B020, B021, B023, B025, B026 | [`propositions/B02.md`](propositions/B02.md) | PASS |
 | B03 | 2026-04-20 | B028, B029, B030, B031, B022 | [`propositions/B03.md`](propositions/B03.md) | PASS |
 | B04 | 2026-04-22 | B001, B016, B033 | [`propositions/B04.md`](propositions/B04.md) | PASS |
+| B05 | 2026-04-28 to 2026-05-01 | B005, B003, B004 | [`propositions/B05.md`](propositions/B05.md) | PASS (no canonical proposition) |

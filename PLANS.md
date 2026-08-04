@@ -150,9 +150,10 @@ git status --short
 - [x] B02 accepted.
 - [x] B03 accepted.
 - [x] B04 accepted.
-- [ ] B05–B10 accepted.
+- [x] B05 accepted.
+- [ ] B06–B10 accepted.
 - [ ] Final consolidation and assurance accepted.
 
 ## Next authorised action
 
-Begin B05 successor adjudication against the accepted Tranche A and B01–B04 proposition set.
+Begin B06 successor adjudication against the accepted Tranche A and B01–B05 proposition set.
