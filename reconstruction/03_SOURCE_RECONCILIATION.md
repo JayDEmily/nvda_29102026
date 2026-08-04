@@ -20,3 +20,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A014 | `source_planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md` | substantive data doctrine | P-DAT-002 | `tranches/A04_REVIEW.md` |
 | A015 | `source_planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md` | substantive raw-capture policy | P-DAT-003 | `tranches/A04_REVIEW.md` |
 | A016 | `source_planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md` | substantive playbook addition | P-PLAY-002 | `tranches/A04_REVIEW.md` |
+| A017 | `source_planning/2026-03-25_GATE44_DMP_COMPATIBILITY_AND_PLAYBOOK_AUDIT.md` | substantive protocol boundary; test status excluded | P-PROTO-001 | `tranches/A05_REVIEW.md` |
+| A018 | `source_planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md` | substantive registry design | P-PLAY-003 | `tranches/A05_REVIEW.md` |
+| A019 | `source_planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md` | substantive carry design | P-CARRY-001 | `tranches/A05_REVIEW.md` |
+| A020 | `source_planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md` | explicit compatibility decision | P-TMP-002 | `tranches/A05_REVIEW.md` |
