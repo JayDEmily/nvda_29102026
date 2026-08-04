@@ -8,4 +8,6 @@ if __name__ == "__main__":
     violations = [item for item in analyse_repository(root) if item.code == "PRIVATE_SEAM"]
     for violation in violations:
         print(f"{violation.source_file}:{violation.line}: {violation.message}")
-    raise SystemExit(1 if violations else 0)
+    if violations:
+        raise SystemExit(1)
+    print("PASS: public-seam validation")

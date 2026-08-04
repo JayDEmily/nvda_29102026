@@ -8,4 +8,6 @@ if __name__ == "__main__":
     violations = analyse_repository(root)
     for violation in violations:
         print(f"{violation.code}: {violation.source_file}:{violation.line}: {violation.message}")
-    raise SystemExit(1 if violations else 0)
+    if violations:
+        raise SystemExit(1)
+    print("PASS: dependency direction and cycle validation")
