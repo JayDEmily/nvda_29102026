@@ -1,0 +1,15 @@
+TIMESTAMP_UTC=2026-08-04T09:40:40Z
+BRANCH=work/chronological-semantic-chapters-v1
+HEAD=cebe05a2c1e9159a3239a0f5b7e09ad422c8f091
+BASE_HEAD=cebe05a2c1e9159a3239a0f5b7e09ad422c8f091
+WORKTREE_STATUS_BEGIN
+?? Exec_plan.md
+?? chapter_reconstruction/
+WORKTREE_STATUS_END
+SOURCE_COUNTS planning=61 successor=37
+PASS: 98 immutable source documents validated (61 original + 37 successor); IDs, paths and SHA-256 values are consistent
+NOTE: this script validates corpus identity and completeness, not semantic authority
+PASS: reconstruction mechanics validated (98 sources, 25 tranche records/reviews, 83 propositions with complete field register, 10 canonical documents)
+NOTE: this script validates artefact presence, identity, coverage and citations; it does not certify semantic losslessness or independent review
+SOURCE_AND_SUBSTRATE_DIFF_BEGIN
+SOURCE_AND_SUBSTRATE_DIFF_END
