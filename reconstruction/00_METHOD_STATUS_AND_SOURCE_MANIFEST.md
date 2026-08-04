@@ -63,3 +63,4 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | B06 | 3 | PASS | `6cdeeb7` |
 | B07 | 3 | PASS | `fa0bca7` |
 | B08 | 4 | PASS | `8d8fc1c` |
+| B09 | 3 | PASS | pending this commit |
