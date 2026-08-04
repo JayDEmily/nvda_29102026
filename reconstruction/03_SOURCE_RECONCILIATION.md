@@ -24,3 +24,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A018 | `source_planning/2026-03-25_GATE47_PLAYBOOK_REGISTRY_V2.md` | substantive registry design | P-PLAY-003 | `tranches/A05_REVIEW.md` |
 | A019 | `source_planning/2026-03-25_GATE48_CARRY_HORIZON_HANDOFF.md` | substantive carry design | P-CARRY-001 | `tranches/A05_REVIEW.md` |
 | A020 | `source_planning/2026-03-25_GATE49_TEMPORAL_COMPATIBILITY_SURFACE_DECISION.md` | explicit compatibility decision | P-TMP-002 | `tranches/A05_REVIEW.md` |
+| A021 | `source_planning/2026-03-25_GATE50_VOCABULARY_GOVERNANCE_REBASE.md` | substantive governance design | P-GOV-001 | `tranches/A06_REVIEW.md` |
+| A022 | `source_planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md` | substantive ownership/boundary design | P-ARCH-001 | `tranches/A06_REVIEW.md` |
+| A023 | `source_planning/2026-03-26_GATE52_NATIVE_PLAYBOOK_HIERARCHY_IMPLEMENTATION.md` | substantive hierarchy design | P-PLAY-004 | `tranches/A06_REVIEW.md` |
+| A024 | `source_planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMALISATION.md` | clarification/extension of carry design | P-CARRY-002 | `tranches/A06_REVIEW.md` |
