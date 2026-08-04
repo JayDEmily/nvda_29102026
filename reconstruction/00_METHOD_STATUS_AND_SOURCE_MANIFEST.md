@@ -41,27 +41,28 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 |---|---:|---|---|
 | Plan/baseline | 98 inventoried | PASS (mechanical only) | `d9bf965` |
 | A01 | 4 | PASS | `042b57d` |
-| A02 | 4 | PASS | see Git history |
-| A03 | 4 | PASS | see Git history |
-| A04 | 4 | PASS | see Git history |
-| A05 | 4 | PASS | see Git history |
-| A06 | 4 | PASS | see Git history |
-| A07 | 4 | PASS | see Git history |
-| A08 | 4 | PASS | see Git history |
-| A09 | 4 | PASS | see Git history |
-| A10 | 4 | PASS | see Git history |
-| A11 | 4 | PASS | see Git history |
-| A12 | 4 | PASS | see Git history |
-| A13 | 4 | PASS | see Git history |
-| A14 | 4 | PASS | see Git history |
-| A15 | 5 | PASS | see Git history |
-| B01 | 3 | PASS | see Git history |
-| B02 | 5 | PASS | see Git history |
-| B03 | 5 | PASS | see Git history |
-| B04 | 3 | PASS | see Git history |
-| B05 | 3 | PASS | see Git history |
-| B06 | 3 | PASS | `6cdeeb7` |
-| B07 | 3 | PASS | `fa0bca7` |
-| B08 | 4 | PASS | `8d8fc1c` |
-| B09 | 3 | PASS | `48d5e8d` |
-| B10 | 5 | PASS | `bcdb8da` |
+| A02 | 4 | PASS | `a6ec84b` |
+| A03 | 4 | PASS | `62be887` |
+| A04 | 4 | PASS | `6741dfb` |
+| A05 | 4 | PASS | `f79ec4f` |
+| A06 | 4 | PASS | `d36fe5e` |
+| A07 | 4 | PASS | `f0b016d` |
+| A08 | 4 | PASS | `e9993b4` |
+| A09 | 4 | PASS | `46fb998` |
+| A10 | 4 | PASS | `72037f7` |
+| A11 | 4 | PASS | `c3e79f7` |
+| A12 | 4 | PASS | `243ddd0` |
+| A13 | 4 | PASS | `a95cb07` |
+| A14 | 4 | PASS | `6f70388` |
+| A15 | 5 | PASS | `f585e26` |
+| B01 | 3 | PASS | `0718d95` |
+| B02 | 5 | PASS | `6f32b7d` |
+| B03 | 5 | PASS | `ac95830` |
+| B04 | 3 | PASS | `96a7f27` |
+| B05 | 3 | PASS (no canonical proposition) | `eb96212` |
+| B06 | 3 | PASS | `a8d7a14` |
+| B07 | 3 | PASS | `80224f2` |
+| B08 | 4 | PASS | `75d82f2` |
+| B09 | 3 | PASS | `f9152fb` |
+| B10 | 5 | PASS | `aa0318e` |
+| Final consolidation | 83 propositions / 10 capability documents | in progress | pending |
