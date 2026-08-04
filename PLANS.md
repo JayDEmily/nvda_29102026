@@ -4,7 +4,7 @@
 
 **Active** on branch `work/architecture-kernel-reset-v1`.
 
-Current unit: Unit 4 — minimal implementation and proof framework.
+Current unit: Unit 5 — packaging, environment and closeout.
 
 ## Objective
 
@@ -132,8 +132,8 @@ Required artefacts:
 - Unit 1: completed; evidence in `docs/evidence/architecture_kernel_reset_20260804/validation/unit1_control_activation.txt`.
 - Unit 2: completed; 5,962-file baseline classified and inherited active implementation removed. Evidence: `docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv` and `validation/unit2_strip_down.txt`.
 - Unit 3: completed; architecture authority, schemas, registries, templates, crosswalk and lineage index created. Validation: `docs/evidence/architecture_kernel_reset_20260804/validation/unit3_registry_schema_validation.txt`.
-- Unit 4: active.
-- Unit 5: not started.
+- Unit 4: completed; generic registry, composition, dependency/public-seam enforcement and exact proof control implemented. Validation: `docs/evidence/architecture_kernel_reset_20260804/validation/unit4_implementation_and_proof.txt`.
+- Unit 5: active.
 
 ## Decisions
 
@@ -143,11 +143,10 @@ Required artefacts:
 
 ## Roadblocks
 
-None at activation.
+- The first offline lock attempt required a Windows-only `colorama` artefact that is absent from the supplied Linux wheelhouse. The minimal lock is therefore explicitly constrained to Linux x86_64, matching the supplied CPython 3.13.5 wheelhouse; final proof remains pending.
 
 ## Unknowns
 
-- Whether the existing lock can be regenerated entirely from local wheelhouses without network access; resolve during Unit 5.
 - Whether any legal or packaging metadata outside the brief must be retained; preserve `LICENSE` and record any additional bounded retention.
 
 ## Closeout

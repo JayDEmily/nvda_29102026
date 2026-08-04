@@ -11,7 +11,7 @@
 | Active ExecPlan | `PLANS.md` |
 | Reserved ExecPlan surface | superseded for this reset; `PLANS.md` is active |
 | Active bounded pack | none |
-| Current semantic unit | Unit 4 — minimal implementation and proof framework |
+| Current semantic unit | Unit 5 — packaging, environment and closeout |
 | Gate C | completed and closed |
 | Continuation strategy | completed and retired from current authority |
 | Semantic-continuity repairs | M01/M02→M03 accepted at `62009fc`; M03→M05 accepted at `74d2f2c` |
