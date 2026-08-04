@@ -190,8 +190,8 @@ git status --short
 - [x] C7 chapter 6 accepted.
 - [x] C8 chapter 7 accepted.
 - [x] C9 chapter 8 accepted.
-- [ ] C10 chapter 9 accepted.
-- [ ] C11 chapter 10 accepted.
+- [x] C10 chapter 9 accepted.
+- [x] C11 chapter 10 accepted.
 - [ ] C12 cross-reference, validation, assurance and packaging complete.
 
 ## Discoveries and decisions
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 9, preserving coefficient identity, bounded scenario purpose, native-path workbook specimens, first-class seam review and all high-risk behavioural laws.
+Complete C12: cross-reference coverage, mechanical validator, exact validation receipt, assurance closeout and reproducible full-history packaging.
