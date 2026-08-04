@@ -28,3 +28,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A022 | `source_planning/2026-03-26_GATE51_COGNITIVE_WORKFLOW_IMPLEMENTATION_MAP.md` | substantive ownership/boundary design | P-ARCH-001 | `tranches/A06_REVIEW.md` |
 | A023 | `source_planning/2026-03-26_GATE52_NATIVE_PLAYBOOK_HIERARCHY_IMPLEMENTATION.md` | substantive hierarchy design | P-PLAY-004 | `tranches/A06_REVIEW.md` |
 | A024 | `source_planning/2026-03-26_GATE53_CARRY_WEEKEND_EVENT_FORMALISATION.md` | clarification/extension of carry design | P-CARRY-002 | `tranches/A06_REVIEW.md` |
+| A025 | `source_planning/2026-03-26_GATE54_DMP_BINDING_SURFACE_DECISION.md` | bounded historical authority; v1-live clause explicitly superseded | P-PROTO-002 | `tranches/A07_REVIEW.md` |
+| A026 | `source_planning/2026-03-26_GATE55_VOCABULARY_GOVERNANCE_ALIGNMENT.md` | substantive vocabulary extension | P-GOV-002 | `tranches/A07_REVIEW.md` |
+| A027 | `source_planning/2026-03-26_GATE57_DMP_V2_CANONICAL_PROMOTION.md` | explicit replacement authority | P-PROTO-002 | `tranches/A07_REVIEW.md` |
+| A028 | `source_planning/2026-03-26_GATE58_DMP_V1_RETIREMENT.md` | explicit retirement authority | P-PROTO-002 | `tranches/A07_REVIEW.md` |
