@@ -1,151 +1,153 @@
-# PLANS.md — Governed Execution Standard
+# Architecture Kernel Reset ExecPlan
 
-## Status and purpose
+## Status
 
-This standing control defines how project plans are selected and executed. It is programme-neutral: it is not a mutable progress log, does not define trading-system meaning, and does not name a permanent active programme. Current state belongs in `ROADMAP_LEDGER.md`; task detail belongs in the single active task-specific ExecPlan, when one exists.
+**Active** on branch `work/architecture-kernel-reset-v1`.
 
-## Live route
+Current unit: Unit 1 — authority, brief and baseline activation.
 
-1. Read `AGENTS.md` in full.
-2. Read this file in full.
-3. Read `ROADMAP_LEDGER.md` in full.
-4. Follow the single active ExecPlan named by `ROADMAP_LEDGER.md`.
-5. Read every applicable route override, normative document, proof authority, and directly affected file in its lawful order before mutation.
+## Objective
 
-Current execution state is never hard-coded in this file. `ROADMAP_LEDGER.md` must name exactly one active task-specific ExecPlan or state `none`. When it states `none`, no completed plan, historical pack, receipt, branch note or prominent filename may be inferred to be active.
+Execute `docs/architecture/ARCHITECTURE_KERNEL_RESET_BRIEF.md` from immutable base commit `d24f9626a23b526384668b3cb26ee811b235eb5c` and produce a minimal, behaviour-neutral, extensible architecture kernel while preserving full Git history.
 
-`EXEC_PLAN.md` is the reserved root plan surface. Its presence does not make it active; only `ROADMAP_LEDGER.md` can activate it. Between phases it may remain an explicit inactive placeholder.
+## Authority
 
-If the live pointer and a task-local plan disagree, stop behavioural mutation, record the conflict, and return to control authority. Historical files that still use the word `active` do not displace the live pointer.
+1. Direct user instruction dated 2026-08-04 to create the branch, adopt the rewritten brief and execute it.
+2. `docs/architecture/ARCHITECTURE_KERNEL_RESET_BRIEF.md`.
+3. Applicable existing root and test override authority until replaced by the brief.
+4. Reusable laws extracted from the architecture, testing, vocabulary, protocol and technical-architecture documents listed in the full-read manifest.
+5. The supplied architecture and test-lineage audit as historical evidence only.
 
-## Authority and truth order
+Immutable baseline: `d24f9626a23b526384668b3cb26ee811b235eb5c`.
 
-For any governed programme, apply:
+Current full-read manifest: `docs/evidence/architecture_kernel_reset_20260804/FULL_READ_MANIFEST.tsv`.
 
-1. direct user instruction and explicit user acceptance;
-2. the accepted project brief and any explicit user-approved strategy amendment;
-3. applicable `AGENTS.override.md` and repo-root `AGENTS.md`;
-4. the active task-specific ExecPlan and its live roadmap pointer;
-5. routed normative intent, accepted architecture allocations, semantic vocabulary authority and approved specifications;
-6. admitted test/proof authority;
-7. source, configuration, schemas, fixtures, generated data, comments and docstrings;
-8. ledgers, receipts, reports, manifests, generated projections and historical evidence;
-9. `00_TASK/PROJECT_EXECUTION_METHOD.md` only where higher authority is silent.
+## Scope
 
-This standing plan defines plan-selection and live-pointer conventions; it does not silently alter an accepted brief or applicable repository instruction. Lower surfaces cannot create or override higher authority. Generated artefacts, test location, historical receipts, green tests, Atlas rows and current code are evidence only for the claims they actually prove. An accepted Atlas ownership map governs architecture only to the extent expressly adopted by the active ExecPlan and routed architecture documents; it does not automatically admit Atlas behavioural content.
+In scope:
 
-## Plan selection
+- active-tree reset;
+- architecture taxonomy and registries;
+- schemas and templates;
+- minimal registry/composition code;
+- architecture, bootstrap and promotion-control proof;
+- minimal packaging and lock regeneration;
+- audit and lineage evidence;
+- bounded commits and full-history handoff archive.
 
-Continue an existing active task-specific ExecPlan when its objective, baseline, authority, and acceptance units still govern the requested work.
+Out of scope:
 
-Create and activate a new task-specific ExecPlan when:
+- business capability design;
+- DMPV3 schema or runtime behaviour;
+- state/transaction implementation;
+- migration of historical module behaviour;
+- live trading or production-readiness claims;
+- merging or pushing the branch.
 
-- the user opens a materially new programme or authority class;
-- the current plan is closed or explicitly superseded as a whole;
-- a prior plan cannot lawfully contain the new outcome; or
-- a concrete control defect requires a successor plan.
+## Invariants and prohibited shortcuts
 
-Amend the existing active ExecPlan instead when the user explicitly changes strategy inside the same programme and requires existing control surfaces to remain the single source of authority. The amendment must state which prior decisions and evidence remain valid, which clauses are superseded, and why. Do not silently replace or silently reinterpret an active plan.
+- Preserve Git history; no rebase, squash, orphan branch or history rewrite.
+- Do not archive removed implementation inside the active tree.
+- Do not pre-populate runtime modules or surfaces.
+- Do not create fictional placeholder implementation.
+- Do not claim that registry presence proves implementation.
+- Do not weaken an old assertion to make it green; old behavioural proof is superseded and removed as a whole by direct authority.
+- No fixed object-count limit, identifier enum or identifier-specific dispatch.
+- Python public-seam enforcement must be repository-owned and mechanical.
+- Mechanical proof does not establish future domain semantics.
 
-## Required task-specific ExecPlan content
+## Acceptance units
 
-Every active task-specific ExecPlan must record:
+### Unit 1 — Authority and branch activation
 
-- status and current unit;
-- exact objective and non-goals;
-- authority and immutable baseline;
-- in-scope and out-of-scope surfaces;
-- invariants and prohibited shortcuts;
-- semantic acceptance units, lane allocation where applicable, and prerequisites;
-- pass/fail conditions;
-- exact complete normative document paths to read in full, in order, plus other exact required reads;
-- exact allowed and forbidden files;
-- evidence locations and artefact names;
-- targeted and aggregate validation commands;
-- return gates and stop conditions;
-- progress, decisions, roadblocks, validation, unknowns, and closeout;
-- the current full-read manifest;
-- treatment of any prior active plan and historical evidence.
+Pass: branch, brief, plan, full-read manifest and live pointer identify the exact reset authority and baseline.
 
-An ExecPlan may organise work. It may not invent normative meaning, test authority, Atlas admission, or implementation status.
+Allowed changes: control surfaces and reset evidence only.
 
-`NVDA_FEATURE_EVOLUTION_TEMPLATE.md` is optional advisory material for preparing substantial feature or cross-module plans. It is not normative authority and is not mandatory for every ExecPlan.
+Validation: Git state, hashes, manifest completeness and diff check.
 
-## Semantic acceptance units
+### Unit 2 — Active-tree strip-down
 
-One unit is one governed behaviour and its proof boundary. A unit is not defined merely by a file, folder, class, issue, worker, or Atlas cohort.
+Pass: inherited production, behavioural tests, old admissions, ledgers, receipts, migration artefacts and stale overlays are absent from the active tree; legal and minimal bootstrap assets remain.
 
-The default route permits only one mutating unit. The accepted parallel-workflow amendment may instead open one bounded mutating unit in each PM-controlled lane when the active ExecPlan records dependency readiness, disjoint semantic ownership, exact read/write sets, shared locks and a common canonical base. Unit numbering is a traceability identifier, not automatic execution order.
+Allowed changes: repository-wide deletions and minimal directory scaffolding.
 
-Parallel worker and tester activity does not parallelise canonical authority. The Project Manager accepts and integrates one approved assignment at a time, reruns affected and aggregate proof, then publishes the next canonical checkpoint. A lane may never choose or continue into its own next unit.
+Validation: deleted/retained inventories and forbidden-path scans.
 
-For every unit:
+### Unit 3 — Architecture kernel authority and registries
 
-1. confirm prerequisites, clean preceding checkpoint, and exact authority;
-2. state input → decision/transformation → output in plain English;
-3. confirm owner, identity, time, state, side effects, replay, and prohibited authority;
-4. assess only mapped Atlas evidence and admit nothing automatically;
-5. complete the pre-change semantic vocabulary audit;
-6. establish trustworthy behavioural proof before implementation;
-7. decide retain, refactor, behavioural-reference-only, replace-boundary, replace-core, or remove/quarantine for each affected bounded component;
-8. implement the smallest semantically complete change;
-9. validate in increasing scope;
-10. complete the post-change semantic vocabulary audit from the actual diff;
-11. record evidence and create one bounded checkpoint before opening the next unit.
+Pass: taxonomy, dependency, public-seam, lifecycle and extension laws are explicit; registries and schemas support unbounded identifiers; modules and surfaces are empty; P01/G01/G02/A00/K01 are truthful placeholders/framework identities.
 
-## Worker-thread rules
+Allowed changes: `docs/architecture/**`, `docs/history/**`, `config/**`, `schemas/**`, `templates/**`.
 
-The Project Manager owns scheduling, integration, acceptance, and programme claims.
+Validation: schema and registry checks including M99→M100 and retired-ID non-reuse.
 
-A worker brief must be a standalone Markdown file and must contain only the bounded context necessary for one unit:
+### Unit 4 — Minimal implementation and proof framework
 
-- unit ID and exact outcome;
-- current baseline/branch and active plan;
-- governing propositions and read order;
-- exact inputs, outputs, and pass/fail boundary;
-- exact allowed and forbidden paths;
-- required validation and artefacts;
-- stop/return conditions;
-- a reminder that shared files are live and unrelated changes must be preserved.
+Pass: registry loading, composition rejection, import/dependency/public-seam checking, proof admission and aggregate promotion execute without inherited business behaviour.
 
-A worker must not receive the entire programme as its task, select follow-on work, broaden its unit, alter root control surfaces, or claim programme completion. A PM-issued lane uses the exact thread label `Lane <number><letter>W`; its independent tester uses `Lane <number><letter>T`. Each assignment uses a fresh short-lived branch from the named canonical base. The Project Manager reviews the returned files/diff and tester evidence before acceptance and serial integration. The brief must name the assignment revision, exact Worker Candidate Archive and exact tester verdict artefacts; a PASS tester return must include a reconstructable Git bundle, manifests, hashes, claims, verdict and raw validation rather than an informal archive.
+Allowed changes: `src/**`, `tools/**`, `tests/**`, `Makefile`, minimal CI.
 
-## Vocabulary, tests, and Atlas
+Validation: architecture tests, bootstrap tests, static checks and promotion gate.
 
-- Human-readable accepted vocabulary meaning precedes builder code and generated JSON.
-- Semantic admission cannot be automated from string similarity, a scanner, a builder seed, or Atlas evidence.
-- Test tier and authority require an explicit current route; folder placement is insufficient.
-- A green test proves only its exercised assertion and can still be weak or false-positive.
-- Atlas behavioural content is candidate intent. It enters tests or code only after normative and vocabulary admission and exact current mapping.
-- A formally accepted Atlas ownership/module allocation may govern target placement without admitting every contributing cohort as behaviour.
-- Every accepted Atlas behaviour preserves source-record and cohort traceability; missing evidence blocks only the dependent module or behaviour, not unrelated dependency-ready modules.
+### Unit 5 — Packaging, environment and closeout
 
-## Evidence and validation
+Pass: minimal dependencies and regenerated lock install cleanly; built artefact imports outside repository; no former package is included; all required validation passes; commits, inventories, logs and archive are complete.
 
-Material claims require inspectable evidence: exact paths, hashes, command output, diffs, tests, receipts, manifests, or archives.
+Allowed changes: packaging, lock, evidence, plan closeout and README/AGENTS.
 
-Before a checkpoint, run when relevant and available:
+Validation: exact commands recorded in `docs/evidence/architecture_kernel_reset_20260804/validation/`.
 
-- `git status --short --branch`;
-- `git diff --check`;
-- the unit's targeted positive and prohibited proof;
-- affected admitted Tier A proof;
-- complete admitted Tier A route;
-- Tier B shadow proof;
-- proof-block, registry, manifest, schema, static, substitution, state, replay, and archive checks required by the unit.
+## Required final validation
 
-If a command cannot run, record the exact environmental failure and run the next-best non-equivalent check. Never report `passed` for a command that did not execute.
+- `uv sync --locked --extra dev` in a clean environment;
+- build wheel and sdist;
+- install wheel into an isolated environment outside the repository and import `nvda_desk`;
+- `python tools/validate_architecture.py`;
+- `python tools/check_dependencies.py`;
+- `python tools/check_public_seams.py`;
+- architecture/bootstrap tests;
+- authoritative aggregate promotion gate;
+- forbidden legacy import and package-content checks;
+- `git diff --check d24f9626a23b526384668b3cb26ee811b235eb5c..HEAD`;
+- `git fsck --full`;
+- final clean-worktree check.
 
-## Git and packaging
+## Evidence and artefacts
 
-- Preserve unrelated work and audit history.
-- Do not merge, rebase, rewrite, push, publish, or open a pull request without explicit authority.
-- Prefer one bounded commit per accepted semantic unit.
-- A tarball/checkpoint must have a recorded SHA-256 and exact source commit/status.
-- Packaging is evidence and handoff convenience, not permission to stop or a completion claim.
+Evidence root: `docs/evidence/architecture_kernel_reset_20260804/`.
 
-## Plan mutation
+Required artefacts:
 
-This file is now a frozen standing control surface. Routine progress must update `ROADMAP_LEDGER.md`, the active ExecPlan, and unit receipts—not this file.
+- full-read manifest;
+- retained and deleted inventories;
+- final tree;
+- validation command and output logs;
+- lineage index;
+- commit and Git-state receipt;
+- full-history tarball and SHA-256.
 
-Change `PLANS.md` only when the user explicitly opens it again or a concrete standing-control defect cannot be truthfully resolved elsewhere. Such a change is its own bounded governance unit.
+## Progress
+
+- Unit 1: completed; evidence in `docs/evidence/architecture_kernel_reset_20260804/validation/unit1_control_activation.txt`.
+- Unit 2: active.
+- Units 3–5: not started.
+
+## Decisions
+
+- The direct brief supersedes the former business implementation and proof population on this branch.
+- Existing tests are not edited to fit the reset; they are retired from the active tree and remain intact in Git history.
+- `PLANS.md` is the active task-specific ExecPlan for this reset.
+
+## Roadblocks
+
+None at activation.
+
+## Unknowns
+
+- Whether the existing lock can be regenerated entirely from local wheelhouses without network access; resolve during Unit 5.
+- Whether any legal or packaging metadata outside the brief must be retained; preserve `LICENSE` and record any additional bounded retention.
+
+## Closeout
+
+Open. Final verdict pending Units 1–5.

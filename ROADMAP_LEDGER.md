@@ -4,14 +4,14 @@
 
 | Field | Current truth |
 |---|---|
-| Programme state | Vocabulary-governance deduplication and root-control/normative-routing changes integrated on `main`; repository between authorised phases |
-| Branch | `main` |
+| Programme state | Architecture-kernel reset active under direct user authority |
+| Branch | `work/architecture-kernel-reset-v1` |
 | Accepted predecessor checkpoint | `98c462a4f8fb258b79429ec083565d6f2e2fffd9` |
 | Control-transition checkpoint tag | `control-surface-transition-20260803` |
-| Active ExecPlan | none |
-| Reserved ExecPlan surface | `EXEC_PLAN.md` — placeholder; inactive |
+| Active ExecPlan | `PLANS.md` |
+| Reserved ExecPlan surface | superseded for this reset; `PLANS.md` is active |
 | Active bounded pack | none |
-| Current semantic unit | none |
+| Current semantic unit | Unit 2 — active-tree strip-down |
 | Gate C | completed and closed |
 | Continuation strategy | completed and retired from current authority |
 | Semantic-continuity repairs | M01/M02→M03 accepted at `62009fc`; M03→M05 accepted at `74d2f2c` |
@@ -32,4 +32,4 @@
 
 ## Next authorised action
 
-A successor feature phase begins only after the administrator populates `EXEC_PLAN.md` and updates `Active ExecPlan` above from `none` to `EXEC_PLAN.md`.
+The architecture-kernel reset proceeds under `PLANS.md` until its terminal condition is recorded.

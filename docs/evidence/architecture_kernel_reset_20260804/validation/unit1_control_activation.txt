@@ -1,0 +1,17 @@
+$ git status --short --branch
+## work/architecture-kernel-reset-v1
+ M PLANS.md
+ M ROADMAP_LEDGER.md
+?? docs/architecture/
+?? docs/evidence/
+
+$ git rev-parse HEAD
+d24f9626a23b526384668b3cb26ee811b235eb5c
+
+$ sha256sum docs/architecture/ARCHITECTURE_KERNEL_RESET_BRIEF.md PLANS.md docs/evidence/architecture_kernel_reset_20260804/FULL_READ_MANIFEST.tsv
+5d722717509775df5a52f8a6e3a3ff3ddfe5e31650d56053d39d071b7abbd9df  docs/architecture/ARCHITECTURE_KERNEL_RESET_BRIEF.md
+8eafe2031bc56293e6e3321a0925a95ea253d4c4714aa9d9fd5d661e66b9b05e  PLANS.md
+e268a3d9960ea4b73c20c06bb0fc63320c47510d178d25809e82b8a7ee605f23  docs/evidence/architecture_kernel_reset_20260804/FULL_READ_MANIFEST.tsv
+
+$ git diff --check
+exit=0
