@@ -56,3 +56,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A050 | `source_planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md` | clarification of governed stage visibility; specimen outcomes historical | P-ARCH-003 | `tranches/A13_REVIEW.md` |
 | A051 | `source_planning/2026-03-31_GATE132_BOUNDED_TRACE_SCENARIO_PACK.md` | substantive scenario-evidence authority | P-TRACE-004 | `tranches/A13_REVIEW.md` |
 | A052 | `source_planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md` | substantive review-regime authority | P-TRACE-005 | `tranches/A13_REVIEW.md` |
+| A053 | `source_planning/2026-04-01_GATE141_STAGE_LOCAL_HANDOFF_PACK_BOOTSTRAP.md` | historical workflow baseline / process claims excluded | P-ARCH-004 | `tranches/A14_REVIEW.md` |
+| A054 | `source_planning/2026-04-01_GATE142_OVERWRITE_AND_OWNERSHIP_INVENTORY.md` | substantive ownership inventory and additive requirement | P-ARCH-004 | `tranches/A14_REVIEW.md` |
+| A055 | `source_planning/2026-04-01_GATE143_ADDITIVE_STAGE_LOCAL_HANDOFF.md` | substantive additive carriage authority | P-TRACE-006 | `tranches/A14_REVIEW.md` |
+| A056 | `source_planning/2026-04-01_GATE144_POSTURE_HARD_INVARIANTS_AND_LOCAL_ENVELOPE.md` | substantive posture-ownership authority | P-DEC-002 | `tranches/A14_REVIEW.md` |

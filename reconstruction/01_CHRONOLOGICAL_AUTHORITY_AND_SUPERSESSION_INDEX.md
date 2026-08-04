@@ -17,3 +17,4 @@ This index is chronological. Detailed proposition records are stored by accepted
 | A11 | 2026-03-31 | A041–A044 | [`propositions/A11.md`](propositions/A11.md) | PASS |
 | A12 | 2026-03-31 | A045–A048 | [`propositions/A12.md`](propositions/A12.md) | PASS |
 | A13 | 2026-03-31 | A049–A052 | [`propositions/A13.md`](propositions/A13.md) | PASS |
+| A14 | 2026-04-01 | A053–A056 | [`propositions/A14.md`](propositions/A14.md) | PASS |
