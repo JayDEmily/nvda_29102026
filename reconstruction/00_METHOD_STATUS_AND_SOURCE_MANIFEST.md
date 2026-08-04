@@ -54,3 +54,4 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | A12 | 4 | PASS | see Git history |
 | A13 | 4 | PASS | see Git history |
 | A14 | 4 | PASS | see Git history |
+| A15 | 5 | PASS | see Git history |

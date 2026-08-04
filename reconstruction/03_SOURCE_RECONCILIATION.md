@@ -60,3 +60,8 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A054 | `source_planning/2026-04-01_GATE142_OVERWRITE_AND_OWNERSHIP_INVENTORY.md` | substantive ownership inventory and additive requirement | P-ARCH-004 | `tranches/A14_REVIEW.md` |
 | A055 | `source_planning/2026-04-01_GATE143_ADDITIVE_STAGE_LOCAL_HANDOFF.md` | substantive additive carriage authority | P-TRACE-006 | `tranches/A14_REVIEW.md` |
 | A056 | `source_planning/2026-04-01_GATE144_POSTURE_HARD_INVARIANTS_AND_LOCAL_ENVELOPE.md` | substantive posture-ownership authority | P-DEC-002 | `tranches/A14_REVIEW.md` |
+| A057 | `source_planning/2026-04-01_GATE145_MODIFIER_EMITTED_POLICY_COMPATIBILITY_BRIDGE.md` | substantive modifier-authority clarification | P-GOV-007 | `tranches/A15_REVIEW.md` |
+| A058 | `source_planning/2026-04-01_GATE146_ELIGIBILITY_ADMISSIBILITY_AND_EXECUTION_CANDIDATE_OWNERSHIP.md` | substantive stage-ownership clarification | P-PLAY-006 | `tranches/A15_REVIEW.md` |
+| A059 | `source_planning/2026-04-01_GATE147_OVERLAY_EVALUATION_AND_TERMINAL_RISK_APPLICATION.md` | substantive terminal-risk decomposition | P-RISK-002 | `tranches/A15_REVIEW.md` |
+| A060 | `source_planning/2026-04-01_GATE148_REVIEW_TRACE_REPLAY_AND_LEGACY_EXPECTATION_RECONCILIATION.md` | substantive downstream review/trace reconciliation | P-REV-004 | `tranches/A15_REVIEW.md` |
+| A061 | `source_planning/2026-04-02_GATE150_CORRECTIVE_SUCCESSOR_PACK_BOOTSTRAP.md` | bounded migration authority plus process-only planning; absent successors unresolved | P-ARCH-005 | `tranches/A15_REVIEW.md` |

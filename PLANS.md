@@ -145,10 +145,10 @@ git status --short
 - [x] Branch, HEAD and initial clean worktree verified.
 - [x] 61/37 source counts and all 98 manifest hashes validated.
 - [x] Initial plan and evidence receipt prepared.
-- [ ] A01–A15 accepted.
+- [x] A01–A15 accepted.
 - [ ] B01–B10 accepted.
 - [ ] Final consolidation and assurance accepted.
 
 ## Next authorised action
 
-Commit this plan and the initial mechanical validation evidence, then begin A01.
+Begin B01 successor adjudication against the accepted Tranche A proposition set.
