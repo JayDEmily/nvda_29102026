@@ -181,7 +181,7 @@ git status --short
 - [x] Re-ran reconstruction mechanical validation at the approved base.
 - [x] Created execution branch.
 - [x] C0 plan and baseline committed.
-- [ ] C1 all 83 propositions clustered and mapped.
+- [x] C1 all 83 propositions clustered and mapped.
 - [ ] C2 chapter 1 accepted.
 - [ ] C3 chapter 2 accepted.
 - [ ] C4 chapter 3 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Read and adjudicate all 83 propositions into the chapter map before drafting any chapter prose.
+Draft and semantically review Chapter 1 against its ten primary propositions and material cross-references.
