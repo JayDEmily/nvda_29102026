@@ -134,7 +134,7 @@ git status --short
 - successor repair documents contribute intended behaviour without importing implementation-completion claims;
 - unresolved conflicts and external dependencies remain visible;
 - capability organisation is independent of current module boundaries;
-- every tranche has a recorded review verdict and accepted commit;
+- every tranche has a recorded same-context and independent-review status plus its extraction commit;
 - final validation commands pass;
 - worktree is clean;
 - the assurance report distinguishes proven corpus reconstruction from the unavailable genuinely independent fresh-context review.
@@ -160,27 +160,18 @@ No source document or source manifest may change. Each repair unit is committed 
 - [x] Branch, HEAD and initial clean worktree verified.
 - [x] 61/37 source counts and all 98 manifest hashes validated.
 - [x] Initial plan and evidence receipt prepared.
-- [x] A01–A15 accepted.
-- [x] B01 accepted.
-- [x] B02 accepted.
-- [x] B03 accepted.
-- [x] B04 accepted.
-- [x] B05 accepted.
-- [x] B06 accepted.
-- [x] B07 accepted.
-- [x] B08 accepted.
-- [x] B09 accepted.
-- [x] B10 accepted.
-- [x] Final consolidation and same-context assurance accepted.
+- [x] A01–A15 processed; same-context notes retained as non-independent.
+- [x] B01–B10 processed; same-context notes retained as non-independent.
+- [x] Original final consolidation produced; its same-context acceptance claim was later withdrawn.
 - [x] Independent fresh-context audit completed externally: `FAIL_REPAIRABLE`.
 - [x] R1 A08 bounded raw-path specimen repair.
 - [x] R2 A11 ordered modifier/final-risk transition repair.
 - [x] R3 A12 threshold-edge and prepared/raw outcome repair.
 - [x] R4 B03 conditional reservation authority repair.
 - [x] R5 canonical proposition field register and validator repair.
-- [ ] R6 review/assurance correction, final validation and packaging.
+- [x] R6 review/assurance correction and final validation; packaging follows the R6 commit.
 - [ ] Independent fresh-context re-review of the repaired result.
 
 ## Next authorised action
 
-Execute repair unit R6: withdraw same-context PASS claims, record independent-review status truthfully, replace the final assurance report, run final validation, commit and package the repaired full-history repository.
+Commit repair unit R6, verify the clean post-commit state, package the repaired full-history repository, and submit it to a fresh worker for independent losslessness audit.

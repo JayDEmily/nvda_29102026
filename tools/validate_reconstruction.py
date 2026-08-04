@@ -213,10 +213,29 @@ def validate_reviews() -> None:
             "review set differs; "
             f"missing={sorted(expected-observed)}, extra={sorted(observed-expected)}"
         )
+
+    allowed_same_context = {
+        "COMPLETED_NON_INDEPENDENT",
+        "REPAIRED_NON_INDEPENDENT",
+    }
+    allowed_independent = {
+        "NOT_PERFORMED",
+        "PENDING_FRESH_CONTEXT_REVIEW",
+    }
     for path in reviews:
         text = path.read_text(encoding="utf-8")
-        if not re.search(r"\bPASS\b", text):
-            fail(f"review does not record PASS: {path.relative_to(ROOT)}")
+        if re.search(r"\bPASS\b", text):
+            fail(f"review retains circular PASS claim: {path.relative_to(ROOT)}")
+        same_context = re.search(
+            r"\*\*Same-context review status:\*\* `([^`]+)`", text
+        )
+        independent = re.search(
+            r"\*\*Independent review status:\*\* `([^`]+)`", text
+        )
+        if not same_context or same_context.group(1) not in allowed_same_context:
+            fail(f"review lacks valid same-context status: {path.relative_to(ROOT)}")
+        if not independent or independent.group(1) not in allowed_independent:
+            fail(f"review lacks valid independent status: {path.relative_to(ROOT)}")
 
 
 def validate_canonical_coverage(propositions: set[str]) -> None:

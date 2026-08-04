@@ -1,0 +1,25 @@
+# Repair final validation — 2026-08-04
+
+Scope: R6 candidate worktree before commit. Mechanical checks only; no semantic or independent-review certification.
+
+$ python tools/validate_source_corpus.py
+PASS: 98 immutable source documents validated (61 original + 37 successor); IDs, paths and SHA-256 values are consistent
+NOTE: this script validates corpus identity and completeness, not semantic authority
+exit=0
+
+$ python tools/validate_reconstruction.py
+PASS: reconstruction mechanics validated (98 sources, 25 tranche records/reviews, 83 propositions with complete field register, 10 canonical documents)
+NOTE: this script validates artefact presence, identity, coverage and citations; it does not certify semantic losslessness or independent review
+exit=0
+
+$ python -m compileall tools
+Listing 'tools'...
+Compiling 'tools/validate_reconstruction.py'...
+Compiling 'tools/validate_source_corpus.py'...
+exit=0
+
+$ git diff --exit-code -- source_planning source_successor_briefs SOURCE_MANIFEST.tsv
+exit=0
+
+$ git diff --check
+exit=0

@@ -1,93 +1,76 @@
-# Final Assurance Report
+# Repair Status and Assurance Report
 
-## 1. Scope and result
+## 1. Verdict
 
-This report covers Phase 1 design-intent reconstruction only. The evidence boundary is exactly 61 original planning documents under `source_planning/` and 37 recovered successor briefs under `source_successor_briefs/`.
+**REPAIRED_PENDING_INDEPENDENT_REVIEW**
 
-The reconstruction has produced:
+The externally audited repository returned `FAIL_REPAIRABLE`. Repair changes for D-01 through D-05 have been implemented in the existing full-history branch. D-06 has been corrected at the evidence level by withdrawing all same-context acceptance claims and marking independent review truthfully. The repaired result has not yet received a fresh-context independent verdict, so losslessness and terminal acceptance are not claimed.
 
-- one hash-verified 98-source manifest;
-- 25 chronological tranche records and 25 recorded tranche reviews;
-- 83 stable proposition IDs;
-- one chronological authority/supersession index;
-- one 98-source reconciliation;
-- ten capability-organised canonical vision documents;
-- one explicit unresolved/external-authority register;
+## 2. Evidence boundary and integrity
+
+The semantic evidence boundary remains exactly 61 original planning documents under `source_planning/` and 37 recovered successor briefs under `source_successor_briefs/`. `SOURCE_MANIFEST.tsv` remains unchanged. The original archive SHA-256 is `ac6af01badc5cd2dcc7ce770f7b50fd39d9c1bef026842d5fc545b5a6e103679`.
+
+The independent audit established that the original and executed 98-source trees were byte-identical and that original HEAD `e908d3b072e4b1812e7fd2a1ce56563a1e4c6900` remained an ancestor. The repair has not changed the admitted sources or manifest.
+
+## 3. Repairs implemented
+
+| Defect | Repair surface | Implemented change | Independent verification |
+|---|---|---|---|
+| D-01 | A08 / A030 | Restored the frozen Gate-102 specimen identities, coverage values, states and outcomes, including `75.0`, `116.0`, `same_session_event_window`, `balanced_options_state` and `30.25` | Pending |
+| D-02 | A11 / A044 | Restored the ordered modifier-to-final-risk transition: `20.625` followed by `13.4062` | Pending |
+| D-03 | A12 / A046 and A050 | Restored the threshold-edge and prepared/raw outcomes: `0.95`, `destabilising`, `19.6625`, event-imminent/no-playbook/derisk and `0.0` | Pending |
+| D-04 | B03 / B029, B030 and B022 | Replaced unsupported unconditional retirement with the admitted conditional branch law; `P-RES-001` is now unresolved | Pending |
+| D-05 | All 83 propositions | Added `reconstruction/06_CANONICAL_PROPOSITION_FIELD_REGISTER.md` with every field required by `AGENTS.md:L119-L134`; extended mechanical validation to require complete coverage | Semantic verification pending |
+| D-06 | All tranche reviews and assurance surfaces | Removed circular same-context acceptance status, preserved those notes only as non-independent observations and recorded fresh-context review as outstanding | Not independently resolved |
+
+The exact external findings remain preserved in `reconstruction/evidence/INDEPENDENT_LOSSLESSNESS_AUDIT_20260804.md`.
+
+## 4. Current reconstructed state
+
+The repository contains:
+
+- 98 immutable admitted sources and one hash manifest;
+- 25 proposition records covering 83 stable proposition IDs;
+- 83 complete proposition-field entries;
+- one chronological authority and supersession index;
+- one complete source reconciliation;
+- ten capability-organised canonical design documents;
+- one unresolved/external-authority register;
+- 25 review-status records that no longer claim independent acceptance;
 - mechanical validation tooling.
 
-The current authority population is 81 active propositions, one proposition partially superseded only at a named boundary (`P-PROTO-002`) and one unresolved ownership proposition (`P-ARCH-010`).
+The current authority population is 80 active propositions, one proposition partially superseded only at the expressly admitted DMPV3 boundary (`P-PROTO-002`) and two unresolved propositions (`P-ARCH-010`, `P-RES-001`).
 
-## 2. What is established
+## 5. What the repair does not establish
 
-### 2.1 Corpus identity and coverage
+The repair does not establish:
 
-All 98 admitted source files are present, non-empty and match the SHA-256 values in `SOURCE_MANIFEST.tsv`. The 61/37 split is preserved. Every source ID and path appears exactly once in `reconstruction/03_SOURCE_RECONCILIATION.md`.
+- that every proposition is now lossless;
+- that no additional source-specific omission exists in the remaining corpus;
+- that the decomposed mandatory fields are semantically correct merely because they are populated;
+- that any current implementation conforms to the reconstruction;
+- that historical implementation, test, receipt or Git claims inside the sources were true;
+- the content of external workbooks, protocols, code, tests, reports or absent Gates 151–156;
+- production readiness, trading safety, profitability or live broker authority.
 
-### 2.2 Chronological adjudication
+Mechanical validation cannot supply any of those conclusions.
 
-Tranche A was reconstructed before successor propositions were admitted. Each Tranche B proposition was classified within the allowed successor classes. Later documents were not treated as automatically authoritative. Explicit replacement and partial-supersession chains are recorded in `reconstruction/01_CHRONOLOGICAL_AUTHORITY_AND_SUPERSESSION_INDEX.md` and the proposition records.
+## 6. Validation
 
-### 2.3 Canonical design coverage
-
-All 83 proposition IDs are assigned to exactly one canonical capability document. Exact source lineage remains in `reconstruction/propositions/`. The canonical design preserves explicit lists, formulae and bounded examples where the corpus states them, including:
-
-- the seven prepared normalised features;
-- the eight mutable runtime surfaces;
-- the 8/16/2 coefficient-scope split;
-- the six serial cognitive stages;
-- the three options-first playbooks;
-- the five carry actions;
-- the seven terminal-risk overlap classes;
-- the source-time grammar fields;
-- the bounded capital formula;
-- the DMP v1 -> v2 -> bounded DMPV3 authority chain.
-
-Negative requirements and non-goals remain explicit: no fabricated raw truth, no hidden serial state, no arbitrary mapping seams, no live broker authority, no booked-state theatre, no autonomous feedback loop, no scenario/observability subsystem by implication, and no live read-back from parallel-risk persistence.
-
-### 2.4 Unresolved matters remain visible
-
-The corpus does not resolve every implementation-grade detail. `reconstruction/04_UNRESOLVED_CONFLICTS_AND_EXTERNAL_REFERENCES.md` records one unresolved ownership decision, incomplete schemas/formulae/thresholds and all material classes of external authority. No missing value or owner was harmonised by invention.
-
-## 3. What is not established
-
-This work does **not** establish:
-
-- that any current implementation conforms to the reconstructed vision;
-- that any historical implementation or test claim in the sources was true;
-- current architecture quality, module mapping or production readiness;
-- the content of external workbooks, protocols, code, tests, fixtures, receipts, tags or excluded documents;
-- profitability, alpha quality or live-trading safety;
-- the unresolved details listed in the unresolved register.
-
-No current code, Atlas/cohort material, tests or project documents outside the admitted 98-source corpus were used as semantic authority.
-
-## 4. Review assurance
-
-Every tranche has a recorded `PASS` review artefact. The review passes checked source coverage, lost negative requirements, over-compression, unsupported wording and supersession scope against the untouched tranche sources and prior accepted propositions.
-
-However, the available environment did not provide a fresh independent model/subagent context. The same GPT-5.6 Thinking context performed extraction, procedural review and final consolidation. Therefore:
-
-- **procedural same-context review is established**;
-- **genuinely independent fresh-context acceptance is not established**.
-
-This limitation prevents a claim that the independent-review condition in `AGENTS.md` has been fully satisfied. The semantic reconstruction is ready for external independent review; it is not represented as independently certified.
-
-## 5. Mechanical validation
-
-The complete semantic consolidation at commit `45f696daaa322e9f82927f6daaa3e22888fe848e` passed the required commands. Exact outputs are preserved in `reconstruction/evidence/FINAL_VALIDATION.txt`. A final post-closeout rerun is reported with the delivered archive. The required commands are:
+The final repair validation commands are:
 
 ```bash
 python tools/validate_source_corpus.py
 python tools/validate_reconstruction.py
 python -m compileall tools
 git diff --exit-code -- source_planning source_successor_briefs SOURCE_MANIFEST.tsv
-git status --short
+git diff --check
 ```
 
-Mechanical validators check identity, file/path coverage, proposition uniqueness, citation ranges, internal links, review presence and canonical-index coverage. They do not certify semantic losslessness. The separate same-context consolidation review is recorded in `reconstruction/evidence/FINAL_SEMANTIC_CROSSCHECK.md`.
+Exact final output is preserved in `reconstruction/evidence/REPAIR_FINAL_VALIDATION_20260804.txt`. These commands validate identity, presence, coverage, citation ranges, links, review-status shape and Python syntax only.
 
-## 6. Assurance verdict
+## 7. Required terminal gate
 
-**CONDITIONALLY ACCEPTED FOR PHASE-1 HANDOVER.**
+A fresh worker must independently reread the admitted sources and audit the repaired reconstruction, with particular attention to A08, A11, A12, B03 and the 83-entry field register. The acceptable terminal verdict remains `PASS`, `FAIL_REPAIRABLE` or `HARD_BLOCK`, supported by exact source and reconstruction lines.
 
-The admitted corpus has been fully processed into a bounded, traceable and chronologically resolved design specification, subject to the explicit unresolved register. Mechanical completion and same-context semantic review are established. Independent fresh-context semantic acceptance remains outstanding and must be performed before claiming full compliance with the repository's independent-review terminal condition.
+Until that review returns `PASS`, this repository is a repaired candidate, not a certified lossless reconstruction.
