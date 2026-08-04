@@ -26,7 +26,7 @@ Operating laws:
 Required validation:
 
 ```bash
-uv sync --locked --extra dev
+uv sync --locked --extra dev --offline
 python tools/validate_architecture.py
 python tools/check_dependencies.py
 python tools/check_public_seams.py

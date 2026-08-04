@@ -1,15 +1,10 @@
-# Placeholder blueprint repo
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
 tmp/
-
-
-# AI patch bridge runtime state
-.ai_patch_bridge/
-
-# Codex local runtime state
-.codex
-
-# Local aggregate proof receipts (content-addressed evidence, not repository truth)
 var/proof_receipts/

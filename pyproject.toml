@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nvda-architecture-kernel"
+version = "0.1.0"
+description = "Behaviour-neutral architecture kernel for the NVDA project"
+readme = "README.md"
+requires-python = "==3.13.5"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "NVDA Project" }]
+dependencies = [
+  "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+  "ruff==0.15.11",
+]
+
+[project.scripts]
+nvda-validate-architecture = "nvda_desk.architecture.cli:validate_main"
+nvda-check-dependencies = "nvda_desk.architecture.cli:dependencies_main"
+nvda-check-public-seams = "nvda_desk.architecture.cli:public_seams_main"
+nvda-promotion-gate = "nvda_desk.architecture.cli:promotion_main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/nvda_desk"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src",
+  "/tests",
+  "/tools",
+  "/config",
+  "/schemas",
+  "/templates",
+  "/docs/architecture",
+  "/docs/history",
+  "/AGENTS.md",
+  "/PLANS.md",
+  "/README.md",
+  "/LICENSE",
+  "/pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers --strict-config"
+testpaths = ["tests/architecture", "tests/bootstrap"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+src = ["src", "tests", "tools"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.uv]
+environments = ["sys_platform == 'linux'"]
+required-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
