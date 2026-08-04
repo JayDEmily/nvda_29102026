@@ -11,3 +11,6 @@
 
 # Supplied audit evidence is immutable byte evidence, including original CRLF files.
 docs/evidence/architecture_audit_20260804/** binary
+
+# Command-output receipts are preserved exactly, including tool-emitted whitespace.
+docs/evidence/architecture_kernel_reset_20260804/validation/** binary
