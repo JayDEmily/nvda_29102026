@@ -186,7 +186,7 @@ git status --short
 - [x] C3 chapter 2 accepted.
 - [x] C4 chapter 3 accepted.
 - [x] C5 chapter 4 accepted.
-- [ ] C6 chapter 5 accepted.
+- [x] C6 chapter 5 accepted.
 - [ ] C7 chapter 6 accepted.
 - [ ] C8 chapter 7 accepted.
 - [ ] C9 chapter 8 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 5, preserving the native hierarchy, three options-led playbooks, Stage-5/Stage-6 split, deterministic adjudication, geometry fields and modifier authority.
+Draft and semantically review Chapter 6, preserving the v1→v2→bounded-DMPV3 authority chain, native upstream carriers, lawful packetisation and the review-stage/packet-stage distinction.
