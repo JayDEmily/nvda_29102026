@@ -1,3 +1,4 @@
+# Scope: all final active-tree paths except FINAL_TREE.txt itself.
 .gitattributes
 .github/workflows/architecture-kernel.yml
 .gitignore
@@ -65,6 +66,7 @@ docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv
 docs/evidence/architecture_kernel_reset_20260804/COMMIT_SEQUENCE_PRE_CLOSEOUT.tsv
 docs/evidence/architecture_kernel_reset_20260804/DELETED_FILE_INVENTORY.tsv
 docs/evidence/architecture_kernel_reset_20260804/DEPENDENCY_AND_LOCK_REPORT.md
+docs/evidence/architecture_kernel_reset_20260804/FINAL_ACTIVE_TREE_INVENTORY.tsv
 docs/evidence/architecture_kernel_reset_20260804/FINAL_VALIDATION_SUMMARY.md
 docs/evidence/architecture_kernel_reset_20260804/FULL_READ_MANIFEST.tsv
 docs/evidence/architecture_kernel_reset_20260804/RETAINED_OR_RECONSTRUCTED_BASELINE_INVENTORY.tsv

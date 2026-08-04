@@ -1,5 +1,6 @@
+# Scope: all final active-tree files except this inventory and FINAL_TREE.txt.
 path	size_bytes	sha256
-.gitattributes	337	bbde007ae5881f86751d1366a9206f98f0c60ef082d71e929aa144cc6b16257b
+.gitattributes	492	20968b430ecac8186d6a2aa0bd7db9e0f3060ce010a893ea19b558d4a8ce217b
 .github/workflows/architecture-kernel.yml	445	3c153ea13d59f0ee1ee70fb956b6f76b23179b114365bd75c5e604c611a7149d
 .gitignore	104	e574d6338163275ca87019db02a980ac573982550154bbf085b3e27ba3baeccd
 .python-version	7	e72b03ed5b70312f2782f2b05055c55b24670e126d50e24c4f2c559bf288f810
