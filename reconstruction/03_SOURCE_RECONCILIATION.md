@@ -16,3 +16,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A010 | `source_planning/2026-03-25_GATE37_EXIT_REENTRY_CONTINUITY_CONTRACTS.md` | substantive design authority | P-EXE-003 | `tranches/A03_REVIEW.md` |
 | A011 | `source_planning/2026-03-25_GATE38_REVIEW_LEDGER_ATTRIBUTION_SPINE_CONTRACTS.md` | substantive design authority | P-REV-001 | `tranches/A03_REVIEW.md` |
 | A012 | `source_planning/2026-03-25_GATE39_REVIEW_OVERLAYS_FEEDBACK_CHAIN_CONTRACTS.md` | substantive design authority | P-REV-002 | `tranches/A03_REVIEW.md` |
+| A013 | `source_planning/2026-03-25_GATE40_TEMPORAL_STATE_REPLACEMENT.md` | explicit replacement of hard clock-bucket truth | P-TMP-001 | `tranches/A04_REVIEW.md` |
+| A014 | `source_planning/2026-03-25_GATE41_RAW_DERIVED_SIGNAL_WORKBOOK.md` | substantive data doctrine | P-DAT-002 | `tranches/A04_REVIEW.md` |
+| A015 | `source_planning/2026-03-25_GATE42_VOLUME_BASELINE_AND_OPTIONS_RAW_CAPTURE.md` | substantive raw-capture policy | P-DAT-003 | `tranches/A04_REVIEW.md` |
+| A016 | `source_planning/2026-03-25_GATE43_OPTIONS_FIRST_PLAYBOOK_EXPANSION.md` | substantive playbook addition | P-PLAY-002 | `tranches/A04_REVIEW.md` |
