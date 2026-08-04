@@ -182,7 +182,7 @@ git status --short
 - [x] Created execution branch.
 - [x] C0 plan and baseline committed.
 - [x] C1 all 83 propositions clustered and mapped.
-- [ ] C2 chapter 1 accepted.
+- [x] C2 chapter 1 accepted.
 - [ ] C3 chapter 2 accepted.
 - [ ] C4 chapter 3 accepted.
 - [ ] C5 chapter 4 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 1 against its ten primary propositions and material cross-references.
+Draft and semantically review Chapter 2 against its eleven primary propositions, preserving the frozen raw-path specimen and unresolved regime-completeness ownership.
