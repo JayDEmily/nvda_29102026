@@ -139,6 +139,21 @@ git status --short
 - worktree is clean;
 - the assurance report distinguishes proven corpus reconstruction from the unavailable genuinely independent fresh-context review.
 
+## Independent audit and authorised repair
+
+A fresh-context independent losslessness audit returned `FAIL_REPAIRABLE` on 2026-08-04. The exact reported defects and integrity findings are preserved in `reconstruction/evidence/INDEPENDENT_LOSSLESSNESS_AUDIT_20260804.md`. This external audit is the authority for reopening semantic work after commit `8e2b78d`.
+
+Repair acceptance units:
+
+1. **R1 — A08 bounded raw-path specimen:** restore A030 identity, coverage, state and outcome values without generalising the specimen.
+2. **R2 — A11 ordered modifier/final-risk transition:** restore the A044 `20.625 -> 13.4062` sequence.
+3. **R3 — A12 threshold-edge and prepared/raw outcomes:** restore A046 outcomes and A050 corroboration.
+4. **R4 — B03 conditional reservation authority:** reclassify `P-RES-001` as unresolved because the admitted corpus does not contain the evidence that selects the default branch over the bounded-admission exception.
+5. **R5 — canonical proposition field completion:** add a Markdown semantic register covering every proposition and every mandatory field in `AGENTS.md:L119-L134`; extend mechanical validation to detect omissions, without treating the validator as semantic certification.
+6. **R6 — review and assurance correction:** remove circular `PASS` status from same-context reviews, record repaired tranches as pending independent re-review, rerun mechanical validation, and replace the assurance report with a repair-status report that does not claim independent acceptance.
+
+No source document or source manifest may change. Each repair unit is committed separately. Independent re-review cannot be claimed from the current model context; the repaired repository must be handed to a fresh reviewer for terminal acceptance.
+
 ## Progress
 
 - [x] Archive identity and extraction safety verified.
@@ -157,8 +172,15 @@ git status --short
 - [x] B09 accepted.
 - [x] B10 accepted.
 - [x] Final consolidation and same-context assurance accepted.
-- [ ] Independent fresh-context semantic review (unavailable in this execution environment).
+- [x] Independent fresh-context audit completed externally: `FAIL_REPAIRABLE`.
+- [ ] R1 A08 bounded raw-path specimen repair.
+- [ ] R2 A11 ordered modifier/final-risk transition repair.
+- [ ] R3 A12 threshold-edge and prepared/raw outcome repair.
+- [ ] R4 B03 conditional reservation authority repair.
+- [ ] R5 canonical proposition field register and validator repair.
+- [ ] R6 review/assurance correction, final validation and packaging.
+- [ ] Independent fresh-context re-review of the repaired result.
 
 ## Next authorised action
 
-Submit commit `45f696d` and the canonical reconstruction to a fresh-context independent reviewer. No additional semantic expansion is authorised unless that review identifies a source-grounded omission, over-compression, unsupported harmonisation or incorrect supersession scope.
+Execute repair unit R1 against A030, update all affected canonical and reconciliation surfaces, validate the immutable source tree, and commit the bounded repair before beginning R2.
