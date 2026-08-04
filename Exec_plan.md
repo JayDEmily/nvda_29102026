@@ -183,7 +183,7 @@ git status --short
 - [x] C0 plan and baseline committed.
 - [x] C1 all 83 propositions clustered and mapped.
 - [x] C2 chapter 1 accepted.
-- [ ] C3 chapter 2 accepted.
+- [x] C3 chapter 2 accepted.
 - [ ] C4 chapter 3 accepted.
 - [ ] C5 chapter 4 accepted.
 - [ ] C6 chapter 5 accepted.
@@ -201,4 +201,4 @@ git status --short
 
 ## Next authorised action
 
-Draft and semantically review Chapter 2 against its eleven primary propositions, preserving the frozen raw-path specimen and unresolved regime-completeness ownership.
+Draft and semantically review Chapter 3, preserving the temporal authority chain, threshold-edge specimen outcomes and scoped alias retirements.
