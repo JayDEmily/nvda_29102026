@@ -65,4 +65,14 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | B08 | 4 | PASS | `75d82f2` |
 | B09 | 3 | PASS | `f9152fb` |
 | B10 | 5 | PASS | `aa0318e` |
-| Final consolidation | 83 propositions / 10 capability documents | in progress | pending |
+| Final consolidation | 83 propositions / 10 capability documents | PASS (procedural; independent review outstanding) | `45f696d` |
+
+## Final consolidation status
+
+- Canonical capability documents: 10.
+- Stable proposition IDs: 83.
+- Source reconciliation: 98/98.
+- Final consolidation commit: `45f696daaa322e9f82927f6daaa3e22888fe848e`.
+- Mechanical validation: PASS; exact output in `reconstruction/evidence/FINAL_VALIDATION.txt`.
+- Same-context semantic cross-check: PASS; evidence in `reconstruction/evidence/FINAL_SEMANTIC_CROSSCHECK.md`.
+- Independent fresh-context review: outstanding because no independent subagent/model context was available.

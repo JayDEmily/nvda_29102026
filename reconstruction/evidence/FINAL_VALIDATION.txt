@@ -1,0 +1,26 @@
+FINAL CONSOLIDATION VALIDATION RECEIPT
+======================================
+branch: work/evolved-vision-reconstruction-v1
+validated_commit: 45f696daaa322e9f82927f6daaa3e22888fe848e
+validated_commit_short: 45f696d
+
+$ python tools/validate_source_corpus.py
+PASS: 98 immutable source documents validated (61 original + 37 successor); IDs, paths and SHA-256 values are consistent
+NOTE: this script validates corpus identity and completeness, not semantic authority
+
+$ python tools/validate_reconstruction.py
+PASS: reconstruction mechanics validated (98 sources, 25 tranche records/reviews, 83 propositions, 10 canonical documents)
+NOTE: this script validates artefact presence, identity, coverage and citations; it does not certify semantic losslessness or independent review
+
+$ python -m compileall tools
+Listing 'tools'...
+Compiling 'tools/validate_reconstruction.py'...
+Compiling 'tools/validate_source_corpus.py'...
+
+$ rm -rf tools/__pycache__
+
+$ git diff --exit-code -- source_planning source_successor_briefs SOURCE_MANIFEST.tsv
+PASS: immutable source paths and manifest have no Git diff
+
+$ git status --short
+(no output: clean worktree)

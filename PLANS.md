@@ -156,8 +156,9 @@ git status --short
 - [x] B08 accepted.
 - [x] B09 accepted.
 - [x] B10 accepted.
-- [ ] Final consolidation and assurance accepted.
+- [x] Final consolidation and same-context assurance accepted.
+- [ ] Independent fresh-context semantic review (unavailable in this execution environment).
 
 ## Next authorised action
 
-Consolidate the accepted proposition set into the canonical vision, unresolved-register and final assurance outputs.
+Submit commit `45f696d` and the canonical reconstruction to a fresh-context independent reviewer. No additional semantic expansion is authorised unless that review identifies a source-grounded omission, over-compression, unsupported harmonisation or incorrect supersession scope.

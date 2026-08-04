@@ -74,7 +74,7 @@ This limitation prevents a claim that the independent-review condition in `AGENT
 
 ## 5. Mechanical validation
 
-Final commands and exact outputs are preserved in `reconstruction/evidence/FINAL_VALIDATION.txt` after execution. The required commands are:
+The complete semantic consolidation at commit `45f696daaa322e9f82927f6daaa3e22888fe848e` passed the required commands. Exact outputs are preserved in `reconstruction/evidence/FINAL_VALIDATION.txt`. A final post-closeout rerun is reported with the delivered archive. The required commands are:
 
 ```bash
 python tools/validate_source_corpus.py
@@ -84,7 +84,7 @@ git diff --exit-code -- source_planning source_successor_briefs SOURCE_MANIFEST.
 git status --short
 ```
 
-Mechanical validators check identity, file/path coverage, proposition uniqueness, citation ranges, review presence and canonical-index coverage. They do not certify semantic losslessness.
+Mechanical validators check identity, file/path coverage, proposition uniqueness, citation ranges, internal links, review presence and canonical-index coverage. They do not certify semantic losslessness. The separate same-context consolidation review is recorded in `reconstruction/evidence/FINAL_SEMANTIC_CROSSCHECK.md`.
 
 ## 6. Assurance verdict
 
