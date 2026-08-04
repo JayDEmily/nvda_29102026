@@ -5,3 +5,4 @@ This index is chronological. Detailed proposition records are stored by accepted
 | Tranche | Chronology | Sources | Proposition record | Verdict |
 |---|---|---|---|---|
 | A01 | 2026-03-25 | A001–A004 | [`propositions/A01.md`](propositions/A01.md) | PASS |
+| A02 | 2026-03-25 | A005–A008 | [`propositions/A02.md`](propositions/A02.md) | PASS |
