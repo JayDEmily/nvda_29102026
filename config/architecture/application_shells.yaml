@@ -1,0 +1,12 @@
+schema_version: "1.0"
+application_shells:
+  - id: A00
+    name: application_shell
+    status: bootstrap
+    description: Minimal composition shell with no business capability.
+    package: nvda_desk.composition
+    public_seam: nvda_desk.composition
+    permitted_dependencies: []
+    predecessors: [M00]
+    successors: []
+retired_ids: []

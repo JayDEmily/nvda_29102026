@@ -4,7 +4,7 @@
 
 **Active** on branch `work/architecture-kernel-reset-v1`.
 
-Current unit: Unit 3 — architecture kernel authority and registries.
+Current unit: Unit 4 — minimal implementation and proof framework.
 
 ## Objective
 
@@ -131,8 +131,9 @@ Required artefacts:
 
 - Unit 1: completed; evidence in `docs/evidence/architecture_kernel_reset_20260804/validation/unit1_control_activation.txt`.
 - Unit 2: completed; 5,962-file baseline classified and inherited active implementation removed. Evidence: `docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv` and `validation/unit2_strip_down.txt`.
-- Unit 3: active.
-- Units 4–5: not started.
+- Unit 3: completed; architecture authority, schemas, registries, templates, crosswalk and lineage index created. Validation: `docs/evidence/architecture_kernel_reset_20260804/validation/unit3_registry_schema_validation.txt`.
+- Unit 4: active.
+- Unit 5: not started.
 
 ## Decisions
 

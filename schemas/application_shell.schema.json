@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "application_shells": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "pattern": "^A(?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          },
+          "name": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "package": {
+            "pattern": "^nvda_desk\\.[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "permitted_dependencies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "predecessors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "public_seam": {
+            "pattern": "^nvda_desk\\.[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)?$",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "placeholder",
+              "bootstrap",
+              "framework",
+              "active",
+              "deprecated",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "successors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "status",
+          "description",
+          "package",
+          "public_seam",
+          "permitted_dependencies"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "retired_ids": {
+      "items": {
+        "pattern": "^A(?:0[0-9]|[1-9][0-9]+)$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "application_shells",
+    "retired_ids"
+  ],
+  "type": "object"
+}
