@@ -62,3 +62,4 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | B05 | 3 | PASS | see Git history |
 | B06 | 3 | PASS | `6cdeeb7` |
 | B07 | 3 | PASS | `fa0bca7` |
+| B08 | 4 | PASS | pending this commit |
