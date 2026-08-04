@@ -49,11 +49,11 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A043 | `source_planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md` | substantive configuration authority | P-GOV-005 | `tranches/A11_REVIEW.md` |
 | A044 | `source_planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md` | substantive policy-resolution authority, including the ordered `20.625` post-modifier to `13.4062` post-final-risk transition | P-GOV-006 | `tranches/A11_REVIEW.md` |
 | A045 | `source_planning/2026-03-31_GATE125_REVIEW_VISIBLE_COEFFICIENT_LINEAGE.md` | substantive review-lineage authority | P-REV-003 | `tranches/A12_REVIEW.md` |
-| A046 | `source_planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md` | substantive temporal-threshold authority | P-TMP-004 | `tranches/A12_REVIEW.md` |
+| A046 | `source_planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md` | substantive temporal-threshold authority, including the exact threshold-edge and prepared/raw bounded outcomes | P-TMP-004 | `tranches/A12_REVIEW.md` |
 | A047 | `source_planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md` | substantive replay-lineage authority | P-TRACE-003 | `tranches/A12_REVIEW.md` |
 | A048 | `source_planning/2026-03-31_GATE128_ROUTER_AND_PREDECESSOR_GUARD_MODERNISATION.md` | process_only | — | `tranches/A12_REVIEW.md` |
 | A049 | `source_planning/2026-03-31_GATE129_GOVERNED_PACKET_FIXTURE_ALIGNMENT.md` | historical_implementation_claim / confirms P-GOV-006 | P-GOV-006 | `tranches/A13_REVIEW.md` |
-| A050 | `source_planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md` | clarification of governed stage visibility; specimen outcomes historical | P-ARCH-003 | `tranches/A13_REVIEW.md` |
+| A050 | `source_planning/2026-03-31_GATE130_RUNTIME_EXPECTATION_REFRESH.md` | clarification of governed stage visibility and corroboration of the bounded `event_imminent_window`/final-risk prepared-path outcome | P-ARCH-003, P-TMP-004 | `tranches/A13_REVIEW.md` |
 | A051 | `source_planning/2026-03-31_GATE132_BOUNDED_TRACE_SCENARIO_PACK.md` | substantive scenario-evidence authority | P-TRACE-004 | `tranches/A13_REVIEW.md` |
 | A052 | `source_planning/2026-03-31_GATE133_BOUNDED_TRACE_REVIEW_REGIME.md` | substantive review-regime authority | P-TRACE-005 | `tranches/A13_REVIEW.md` |
 | A053 | `source_planning/2026-04-01_GATE141_STAGE_LOCAL_HANDOFF_PACK_BOOTSTRAP.md` | historical workflow baseline / process claims excluded | P-ARCH-004 | `tranches/A14_REVIEW.md` |

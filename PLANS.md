@@ -175,7 +175,7 @@ No source document or source manifest may change. Each repair unit is committed 
 - [x] Independent fresh-context audit completed externally: `FAIL_REPAIRABLE`.
 - [x] R1 A08 bounded raw-path specimen repair.
 - [x] R2 A11 ordered modifier/final-risk transition repair.
-- [ ] R3 A12 threshold-edge and prepared/raw outcome repair.
+- [x] R3 A12 threshold-edge and prepared/raw outcome repair.
 - [ ] R4 B03 conditional reservation authority repair.
 - [ ] R5 canonical proposition field register and validator repair.
 - [ ] R6 review/assurance correction, final validation and packaging.
@@ -183,4 +183,4 @@ No source document or source manifest may change. Each repair unit is committed 
 
 ## Next authorised action
 
-Execute repair unit R3 against A046 and A050, restore threshold-edge and prepared/raw outcomes across proposition, canonical, reconciliation and review surfaces, then commit before beginning R4.
+Execute repair unit R4 against B029, B030 and B022, replace the unsupported resolved-absence conclusion with the admitted conditional branch law and unresolved authority state, then commit before beginning R5.

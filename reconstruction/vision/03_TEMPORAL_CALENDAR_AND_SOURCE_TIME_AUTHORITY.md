@@ -32,6 +32,14 @@ Admitted temporal thresholds and timing parameters load through governed identif
 
 Non-admitted controls, including break-count floors and selected open-window guards, remain visibly outside the governed set. A workbook is research provenance, not direct runtime law. No Asia/Japan coefficient or other external coefficient may enter by implication.
 
+The admitted bounded outcomes are also part of the temporal authority:
+
+- at the threshold edge, `gamma_pressure_score=0.95` remains `destabilising`, and terminal risk reduces `target_fresh_deployable_pct` to `19.6625`;
+- the canonical prepared and raw harnesses both produce `event_imminent_window`, no active playbooks, `final_risk=derisk`, and `target_fresh_deployable_pct=0.0`;
+- the prepared-runtime expectation applies across all three prepared snapshots.
+
+These are frozen specimen outcomes after event-window and terminal-risk evolution, not general defaults or permission to admit additional coefficients.
+
 ## 4. Canonical source-time grammar
 
 Source-facing and persisted temporal truth uses one provider-agnostic grammar, where applicable:
