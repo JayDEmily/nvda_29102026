@@ -1,0 +1,12 @@
+Archive: /mnt/data/NVDA_EVOLVED_VISION_RECONSTRUCTION_98DOCS_FULL_HISTORY.tar(1).gz
+Archive SHA-256: ac6af01badc5cd2dcc7ce770f7b50fd39d9c1bef026842d5fc545b5a6e103679
+Archive safety check: PASS (no absolute paths, parent traversal, symlinks, or hardlinks)
+Initial branch: main
+Initial HEAD: e908d3b072e4b1812e7fd2a1ce56563a1e4c6900
+Initial worktree: clean
+Tranche A Markdown count: 61
+Tranche B Markdown count: 37
+
+Exact validator output:
+PASS: 98 immutable source documents validated (61 original + 37 successor); IDs, paths and SHA-256 values are consistent
+NOTE: this script validates corpus identity and completeness, not semantic authority
