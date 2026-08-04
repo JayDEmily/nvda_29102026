@@ -42,3 +42,4 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | Plan/baseline | 98 inventoried | PASS (mechanical only) | `d9bf965` |
 | A01 | 4 | PASS | `042b57d` |
 | A02 | 4 | PASS | see Git history |
+| A03 | 4 | PASS | see Git history |

@@ -12,3 +12,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A006 | `source_planning/2026-03-25_GATE33_LADDER_EXECUTION_READINESS_CONTRACTS.md` | substantive design authority | P-EXE-001 | `tranches/A02_REVIEW.md` |
 | A007 | `source_planning/2026-03-25_GATE34_POSTURE_PERMISSION_CORE_CONTRACTS.md` | substantive design authority | P-DEC-001 | `tranches/A02_REVIEW.md` |
 | A008 | `source_planning/2026-03-25_GATE35_EXECUTION_ORCHESTRATION_CORE_CONTRACTS.md` | substantive design authority | P-EXE-002 | `tranches/A02_REVIEW.md` |
+| A009 | `source_planning/2026-03-25_GATE36_EXECUTION_STATE_LEDGER_SPINE_CONTRACTS.md` | substantive design authority | P-STATE-001 | `tranches/A03_REVIEW.md` |
+| A010 | `source_planning/2026-03-25_GATE37_EXIT_REENTRY_CONTINUITY_CONTRACTS.md` | substantive design authority | P-EXE-003 | `tranches/A03_REVIEW.md` |
+| A011 | `source_planning/2026-03-25_GATE38_REVIEW_LEDGER_ATTRIBUTION_SPINE_CONTRACTS.md` | substantive design authority | P-REV-001 | `tranches/A03_REVIEW.md` |
+| A012 | `source_planning/2026-03-25_GATE39_REVIEW_OVERLAYS_FEEDBACK_CHAIN_CONTRACTS.md` | substantive design authority | P-REV-002 | `tranches/A03_REVIEW.md` |
