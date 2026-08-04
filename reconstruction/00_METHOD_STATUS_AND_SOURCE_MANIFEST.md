@@ -64,3 +64,4 @@ Mechanical checks validate source identity, coverage, proposition identifiers an
 | B07 | 3 | PASS | `fa0bca7` |
 | B08 | 4 | PASS | `8d8fc1c` |
 | B09 | 3 | PASS | `48d5e8d` |
+| B10 | 5 | PASS | `bcdb8da` |
