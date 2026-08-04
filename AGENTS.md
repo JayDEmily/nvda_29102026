@@ -1,22 +1,49 @@
-# Original Vision Reconstruction
+# Evolved Vision Reconstruction
 
 ## Mission
 
-Reconstruct, from the 61 immutable planning documents in `source_planning/`, a clean, lossless and chronologically resolved specification of what the user intended the NVDA desk system to do.
+Reconstruct, from the 98 immutable planning documents in the two source tranches, a clean, lossless and chronologically resolved specification of what the user intended the NVDA desk system to do and how that vision lawfully evolved.
 
-This is **Phase 1 only: design-intent reconstruction**. Do not inspect the messy implementation, the Atlas, cohorts, current modular architecture, production code, tests, receipts outside this corpus, or later project documents. Do not design modules, write code, repair code, or judge the current architecture.
+This is **Phase 1 only: design-intent reconstruction**. Do not inspect the messy implementation, the Atlas, cohorts, current modular architecture, production code, tests, receipts outside this corpus, or project documents outside the two admitted source tranches. Do not design modules, write code, repair code, or judge the current architecture.
 
 The final result must be a self-contained English specification from which a competent engineer could later validate an architecture, derive normative obligations and tests, and implement the intended system without needing to rediscover the user’s ideas from these historical briefs.
 
 ## Source boundary
 
-- The sole evidence corpus is the 61 Markdown files under `source_planning/`.
-- Treat those files as immutable evidence. Never edit, rename or reformat them.
-- Verify at the start that exactly 61 source files exist and record their SHA-256 hashes.
-- Do not import claims from memory, prior conversations, the internet, the donor codebase, Atlas records or implementation receipts.
+- The sole evidence corpus is:
+  - **Tranche A — original planning authority:** 61 Markdown gate contracts under `source_planning/`.
+  - **Tranche B — recovered successor briefs:** 37 Markdown implementation, repair, migration and continuation briefs under `source_successor_briefs/`.
+- Treat all 98 files as immutable evidence. Never edit, rename or reformat them.
+- Verify at the start that exactly 61 Tranche A files and exactly 37 Tranche B files exist; record SHA-256 hashes for all 98.
+- Do not import claims from memory, prior conversations, the internet, the donor codebase, Atlas records, Gate 3/4 tables, or implementation receipts outside these admitted documents.
 - Historical references inside a source document may be recorded as unresolved external references, but they are not independently verified in this phase.
 
-The original archive also contained eight administrative or assurance-only gate documents that were intentionally excluded from this design-bearing corpus: Gates 46, 56, 106, 112, 113, 131, 134 and 149. Do not recreate content from them or infer design requirements from their absence.
+The original archive also contained eight administrative or assurance-only gate documents that were intentionally excluded from Tranche A: Gates 46, 56, 106, 112, 113, 131, 134 and 149. Do not recreate content from them or infer design requirements from their absence.
+
+## Two-tranche authority law
+
+Tranche A and Tranche B do not have equal automatic authority.
+
+1. Tranche A is the primary record of the original design vision.
+2. Tranche B is a candidate successor corpus. Every successor brief must be classified before any proposition from it changes the canonical vision.
+3. Classify each successor proposition as exactly one of:
+   - `new_design_authority`
+   - `clarification`
+   - `bounded_amendment`
+   - `bounded_repair`
+   - `explicit_replacement`
+   - `explicit_retirement`
+   - `implementation_specific_instruction`
+   - `historical_implementation_claim`
+   - `process_only`
+   - `derived_from_superseded_premise`
+   - `unresolved`
+4. A successor brief may reveal intended behaviour when it identifies a defect, omission or incorrect implementation. Extract that intended behaviour, but do not inherit the claim that the repair was completed.
+5. A successor brief does not become general architecture authority merely because it is later, more detailed, marked authoritative, or associated with green tests.
+6. A later brief supersedes only the exact proposition it expressly and substantively changes. Every unaffected earlier proposition survives.
+7. If a successor brief depends on an external normative document not included in this corpus, record the dependency. Do not silently import the external document's content.
+8. The 37 successor documents must be reconciled both against earlier accepted propositions and against one another. Later successor documents may themselves be partially superseded.
+9. Documents without a reliable date in their filename must be ordered using internal dates, stated baselines and recovered Git chronology. Any residual chronology ambiguity remains explicit.
 
 ## Operating topology
 
@@ -36,9 +63,10 @@ The Programme Manager must not outsource final authority resolution. Workers ext
 Before semantic extraction:
 
 1. verify branch, HEAD and clean worktree;
-2. verify the 61-file source count and hashes;
+2. verify the 61-file Tranche A count, 37-file Tranche B count and all 98 hashes;
+   - run `python tools/validate_source_corpus.py` and preserve its exact output;
 3. create `PLANS.md` as a living ExecPlan for this entire reconstruction;
-4. create a chronological tranche schedule covering every source document exactly once;
+4. create a chronological tranche schedule covering every one of the 98 source documents exactly once, with Tranche A reconstructed before successor propositions are admitted;
 5. define validation commands and final acceptance criteria in that ExecPlan;
 6. commit the plan and mechanical source manifest before opening the first semantic tranche.
 
@@ -128,7 +156,7 @@ At minimum produce:
    - do not force them into the current M00-M15 architecture during this phase.
 
 5. `reconstruction/03_SOURCE_RECONCILIATION.md`
-   - all 61 source files, each reconciled completely to proposition IDs or explicit `duplicate`, `process_only`, `historical_implementation_claim`, `superseded`, or `unresolved` dispositions;
+   - all 98 source files, each reconciled completely to proposition IDs or explicit `duplicate`, `process_only`, `historical_implementation_claim`, `superseded`, or `unresolved` dispositions;
    - no silent omissions.
 
 6. `reconstruction/04_UNRESOLVED_CONFLICTS_AND_EXTERNAL_REFERENCES.md`
@@ -143,8 +171,8 @@ A generated CSV or JSON index may be added for navigation and mechanical checks,
 
 The reconstruction is complete only when:
 
-- all 61 source files are hash-verified and unchanged;
-- every source file has been semantically read in chronological context;
+- all 98 source files are hash-verified and unchanged, with the 61/37 tranche split preserved;
+- every source file has been semantically read in chronological context, including successor-to-original and successor-to-successor effects;
 - every substantive source instruction has an explicit disposition;
 - every active proposition retains exact source lineage;
 - every supersession is scoped and evidenced, not inferred from date alone;
@@ -182,7 +210,7 @@ The review must identify omissions, over-compression, invented harmonisation, in
 
 Do not:
 
-- mass-summarise the 61 files and call that a specification;
+- mass-summarise the 98 files and call that a specification;
 - infer meaning only from filenames, headings, status labels or gate numbers;
 - treat `complete`, `implemented`, `green`, `closed`, a receipt or a passing test claim as design authority;
 - assume later means better or authoritative;
@@ -198,6 +226,6 @@ Do not:
 
 Continue through all authorised tranches without requesting routine user confirmation. Mark genuinely irresolvable matters as unresolved and continue with unaffected work.
 
-The task ends only when the final assurance report demonstrates a clean, lossless and chronologically resolved statement of the user’s intended system, bounded strictly to the 61 supplied planning documents.
+The task ends only when the final assurance report demonstrates a clean, lossless and chronologically resolved statement of the user’s intended system, bounded strictly to the 61 original planning documents and 37 recovered successor briefs.
 
 No production implementation, architecture validation, test authoring or donor-code audit is authorised by this repository.
