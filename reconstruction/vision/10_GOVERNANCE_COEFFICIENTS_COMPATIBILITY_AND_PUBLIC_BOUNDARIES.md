@@ -55,6 +55,8 @@ Unknown surfaces, absurd ranges and illegal transform families fail validation. 
 
 Runtime services load baselines, floors and caps from governed authority rather than private constants. Resolved values carry owner, authority version, baseline reference and numeric envelope. The governed universe cannot widen by drift.
 
+One bounded late-session specimen freezes the ordered authority transition: the modifier packet resolves `target_fresh_deployable_pct` to `20.625`, then the terminal final-risk join derisks the execution result to `13.4062`. The two values belong to different stage-local states and must remain separately visible in lineage and review.
+
 ## 4. Compatibility law
 
 Compatibility survives until an explicit retirement or replacement names the affected seam. A compatibility field, wrapper or flat representation must be labelled, bounded and delegated to the current authority. It cannot become a second source of truth.

@@ -47,7 +47,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A041 | `source_planning/2026-03-31_GATE121_FINAL_RISK_GATEWAY_JOIN.md` | substantive terminal-risk authority | P-RISK-001 | `tranches/A11_REVIEW.md` |
 | A042 | `source_planning/2026-03-31_GATE122_COEFFICIENT_SCOPE_FREEZE.md` | substantive scope authority | P-GOV-004 | `tranches/A11_REVIEW.md` |
 | A043 | `source_planning/2026-03-31_GATE123_COEFFICIENT_AUTHORITY_CONTRACT.md` | substantive configuration authority | P-GOV-005 | `tranches/A11_REVIEW.md` |
-| A044 | `source_planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md` | substantive policy-resolution authority | P-GOV-006 | `tranches/A11_REVIEW.md` |
+| A044 | `source_planning/2026-03-31_GATE124_EXTERNALISED_MUTABLE_SURFACE_AUTHORITY.md` | substantive policy-resolution authority, including the ordered `20.625` post-modifier to `13.4062` post-final-risk transition | P-GOV-006 | `tranches/A11_REVIEW.md` |
 | A045 | `source_planning/2026-03-31_GATE125_REVIEW_VISIBLE_COEFFICIENT_LINEAGE.md` | substantive review-lineage authority | P-REV-003 | `tranches/A12_REVIEW.md` |
 | A046 | `source_planning/2026-03-31_GATE126_BOUNDED_TEMPORAL_THRESHOLD_AUTHORITY.md` | substantive temporal-threshold authority | P-TMP-004 | `tranches/A12_REVIEW.md` |
 | A047 | `source_planning/2026-03-31_GATE127_REPLAY_COEFFICIENT_VISIBILITY_AND_PACK_CLOSEOUT.md` | substantive replay-lineage authority | P-TRACE-003 | `tranches/A12_REVIEW.md` |
