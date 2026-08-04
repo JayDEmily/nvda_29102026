@@ -40,3 +40,7 @@ Every admitted source must have an explicit semantic disposition. Detailed extra
 | A034 | `source_planning/2026-03-30_GATE114_RESEARCH_MODE_CLARITY_CLOSEOUT.md` | process_only | — | `tranches/A09_REVIEW.md` |
 | A035 | `source_planning/2026-03-30_GATE115_NORMALISED_PREPARED_RUNTIME_FEATURES.md` | substantive feature-carriage authority; specimen values historical | P-DAT-005 | `tranches/A09_REVIEW.md` |
 | A036 | `source_planning/2026-03-30_GATE116_EVENT_CLASS_TEMPORAL_WINDOWS.md` | substantive temporal-policy authority | P-TMP-003 | `tranches/A09_REVIEW.md` |
+| A037 | `source_planning/2026-03-30_GATE117_PRECURSOR_ECONOMICS.md` | substantive context authority | P-CTX-003 | `tranches/A10_REVIEW.md` |
+| A038 | `source_planning/2026-03-30_GATE118_MUTABLE_SURFACE_RECONCILIATION.md` | substantive mutable-policy authority | P-GOV-003 | `tranches/A10_REVIEW.md` |
+| A039 | `source_planning/2026-03-30_GATE119_CANDIDATE_ADJUDICATION.md` | explicit candidate-selection replacement | P-PLAY-005 | `tranches/A10_REVIEW.md` |
+| A040 | `source_planning/2026-03-30_GATE120_EXECUTION_GEOMETRY.md` | substantive execution-geometry authority | P-EXE-004 | `tranches/A10_REVIEW.md` |
