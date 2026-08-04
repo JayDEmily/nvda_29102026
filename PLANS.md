@@ -173,7 +173,7 @@ No source document or source manifest may change. Each repair unit is committed 
 - [x] B10 accepted.
 - [x] Final consolidation and same-context assurance accepted.
 - [x] Independent fresh-context audit completed externally: `FAIL_REPAIRABLE`.
-- [ ] R1 A08 bounded raw-path specimen repair.
+- [x] R1 A08 bounded raw-path specimen repair.
 - [ ] R2 A11 ordered modifier/final-risk transition repair.
 - [ ] R3 A12 threshold-edge and prepared/raw outcome repair.
 - [ ] R4 B03 conditional reservation authority repair.
@@ -183,4 +183,4 @@ No source document or source manifest may change. Each repair unit is committed 
 
 ## Next authorised action
 
-Execute repair unit R1 against A030, update all affected canonical and reconciliation surfaces, validate the immutable source tree, and commit the bounded repair before beginning R2.
+Execute repair unit R2 against A044, restore the ordered modifier-to-final-risk transition across proposition, canonical, reconciliation and review surfaces, then commit before beginning R3.

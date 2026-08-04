@@ -57,6 +57,23 @@ The lawful path is:
 
 Prepared snapshots cannot be hand-injected as the primary ingress for a claim about the raw path. Coverage gaps and orphan rows remain visible. Repeated execution of identical admitted inputs must preserve deterministic packet identifiers, lineage and review output.
 
+The Gate-102 raw-path harness also freezes one bounded deterministic specimen:
+
+- aligned chain coverage `100.0`;
+- aligned bar coverage `75.0`;
+- one visible orphan bar;
+- dataset ID `gate102_canonical_raw_runtime`;
+- three prepared snapshots;
+- first sequence ID `seq-opening-balance`;
+- first spot price `116.0`;
+- event window `same_session_event_window`;
+- options-behaviour cluster `balanced_options_state`;
+- permission `allow`;
+- target fresh deployable percentage `30.25`;
+- add candidates and active playbooks both containing only `continuation_ladder`.
+
+These values identify and freeze the admitted specimen and its bounded companion-fixture outcome. They are not general runtime defaults or evidence of coverage beyond that one run.
+
 ## 5. Raw/prepared parity
 
 Raw-path and prepared-path runs must declare the exact comparable surface. The admitted parity surface includes:
