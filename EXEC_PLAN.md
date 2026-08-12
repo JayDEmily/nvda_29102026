@@ -15,8 +15,8 @@
 ## Units
 
 1. **COMPLETED** — byte-preserved architecture/source baseline. Commit `e137677e8c0f116ba21dadc2e951281820e09916`.
-2. **ACTIVE** — restart governance, instructions, role definitions, provenance.
-3. **PENDING** — minimal Gate 0 authority + adversarial tests only.
+2. **COMPLETED** — restart governance, instructions, role definitions, provenance.
+3. **ACTIVE** — minimal Gate 0 authority + adversarial tests only.
 4. **PENDING** — minimal Gate 0 implementation.
 5. **PENDING** — thin Gate-1+ semantic admission substrate.
 6. **PENDING** — independent audit; builder does not self-accept.

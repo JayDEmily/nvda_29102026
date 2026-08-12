@@ -177,7 +177,7 @@ c0bfa6d	vendor/wheels/pytest-9.0.3-py3-none-any.whl	2c5efc453d45394fdd706ade797c
 c0bfa6d	vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl	0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6	EXACT_PORT	vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl	Copy bytes exactly from c0bfa6d; verify SHA-256 after port.	0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6	PRESENT
 c0bfa6d	vendor/wheels/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl	1bef2cb556d509259f1fe440bb9cd33c756222cf0a7afe90d15edf0866702431	EXACT_PORT	vendor/wheels/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl	Copy bytes exactly from c0bfa6d; verify SHA-256 after port.	1bef2cb556d509259f1fe440bb9cd33c756222cf0a7afe90d15edf0866702431	PRESENT
 c0bfa6d	vendor/wheels/trove_classifiers-2026.4.28.13-py3-none-any.whl	8f4b1eb4e16296b57d612965444f87a83861cc989a0451ac97fe4265ddef03b8	EXACT_PORT	vendor/wheels/trove_classifiers-2026.4.28.13-py3-none-any.whl	Copy bytes exactly from c0bfa6d; verify SHA-256 after port.	8f4b1eb4e16296b57d612965444f87a83861cc989a0451ac97fe4265ddef03b8	PRESENT
-79cbbb9	docs/orchestration/BOOTSTRAP.md	67b99003e0f17ead8142a05602fc78e93a50efcfc4f76520916ad79038ec4700	REWRITE	docs/orchestration/BOOTSTRAP.md	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.		PLANNED
+79cbbb9	docs/orchestration/BOOTSTRAP.md	67b99003e0f17ead8142a05602fc78e93a50efcfc4f76520916ad79038ec4700	REWRITE	docs/orchestration/BOOTSTRAP.md	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.	dd2a35e6d8d258c991ca57fc5ddd58497c07ddda3bba37f2d4afc4e8a7fa99af	PRESENT
 79cbbb9	.codex/hooks.json	dec3caf9ae27af9a627fb3e919b55de2275df89966561ab8c215e9b6a2433f85	REWRITE	.codex/hooks.json	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.		PLANNED
 79cbbb9	.codex/hooks/run_gate0_attest.sh	01ce82da30439bb17700adc822e5b7dff98970d8aa6802eccadd0d6420a3f46a	REWRITE	.codex/hooks/run_gate0_attest.sh	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.		PLANNED
 79cbbb9	.codex/hooks/gate0_attest.py	1d198b791ee70fbf779b531c302e9a78ff55604d2c376947e2c56fd64ca7721d	REWRITE	.codex/hooks/gate0_attest.py	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.		PLANNED
@@ -186,16 +186,16 @@ c0bfa6d	vendor/wheels/trove_classifiers-2026.4.28.13-py3-none-any.whl	8f4b1eb4e1
 79cbbb9	tools/gate0_runtime_evidence.py	75009697b867381b5f03f8e68657b8d0e85875b1fd28289491bccd1ec7d44fb9	REWRITE	tools/gate0_runtime_evidence.py	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.		PLANNED
 79cbbb9	docs/orchestration/CODEX_WSL_ENVIRONMENT_LESSONS_LEARNED.md	540b9b3ab22c2468a10e37d2886b5108cefced67eb2c1013c822d93c2c173299	SOURCE_ONLY_REWRITE	docs/governance/WSL_RUNTIME_REQUIREMENTS.md	Use as implementation source only; do not copy wholesale. Preserve only behaviour admitted by Step 5/6.	c0099b30d886d178407bcc5fbb0d8deb1766fd720650231a9c5a8477c8e7ab09	PRESENT
 NEW			NEW	.agents/skills/nvda-semantic-orchestrator/agents/openai.yaml	Disable implicit skill invocation; explicit Gate-1+ use only.	bc0863f2f309f629d9f116f47884b3f1fe31991b851e0fc3581206f5f90662f5	PRESENT
-NEW			NEW	docs/governance/GATE0_ADMISSION_MANIFEST.json	Small pre-run manifest binding exact commit/control hashes, runtime policy, immediate roles, PASS proposition.		PLANNED
+NEW			NEW	docs/governance/GATE0_ADMISSION_MANIFEST.json	Small pre-run manifest binding exact commit/control hashes, runtime policy, immediate roles, PASS proposition.	4027222a049a2d710f0b83b2a6f149ebd6732732d00c02e8b54d17fcb9b3a47f	PRESENT
 NEW			NEW	docs/governance/ADMITTED_STATE.json	Thin current-state pointer; no narrative history.	1c0844b8aaf0826033ee9465312b99baae103c8f002775129a07b911b2ccd3fe	PRESENT
 NEW			NEW	docs/governance/admissions/.gitkeep	Admission/rejection record directory placeholder.	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	PRESENT
 NEW			NEW	docs/governance/WSL_RUNTIME_REQUIREMENTS.md	Concise current runtime laws distilled from verified 79cbbb9 lessons and Step 4.	c0099b30d886d178407bcc5fbb0d8deb1766fd720650231a9c5a8477c8e7ab09	PRESENT
-NEW			NEW	docs/provenance/RESTART_PORT_MANIFEST.tsv	Repository-local copy of the accepted file-level port manifest with final destination hashes.		PLANNED
-NEW			NEW	schemas/gate0_admission_manifest.schema.json	Minimal schema for Gate 0 manifest.		PLANNED
-NEW			NEW	schemas/admitted_state.schema.json	Minimal schema for thin admitted state.		PLANNED
-NEW			NEW	schemas/admission_record.schema.json	Minimal schema for Gate 0 admission/rejection record.		PLANNED
+NEW			NEW	docs/provenance/RESTART_PORT_MANIFEST.tsv	Repository-local copy of the accepted file-level port manifest with final destination hashes.	61d65445f73f96ef95ae0388006e5a883a010a22f54836c2b07ce3a6cf2d8ab0	PRESENT
+NEW			NEW	schemas/gate0_admission_manifest.schema.json	Minimal schema for Gate 0 manifest.	6060171edd5c2b7ab34c325dff0c2b2d36033677682bcf2a3f18fdd11e34d8af	PRESENT
+NEW			NEW	schemas/admitted_state.schema.json	Minimal schema for thin admitted state.	38a4ae8663b7cb33262937fdeb9115b05959745e9a348cb5fdd2fb76a96d9dbb	PRESENT
+NEW			NEW	schemas/admission_record.schema.json	Minimal schema for Gate 0 admission/rejection record.	7307a06d5635d7d75aaf54f5169c7dd4bea13202c3f4616688ebf6f2721d5e2d	PRESENT
 NEW			NEW	tools/validate_gate0.py	Dedicated Gate-0-only static/runtime validator; must ignore future semantic/recovery machinery.		PLANNED
-NEW			NEW	tests/gate0/test_gate0_control.py	Authoritative negative/positive tests for Gate 0 manifest/evidence/admission invariants.		PLANNED
+NEW			NEW	tests/gate0/test_gate0_control.py	Authoritative negative/positive tests for Gate 0 manifest/evidence/admission invariants.	9351257e8390cfa2a2517c7125e02b4294be788c19bcda0b2fc53b717dfad204	PRESENT
 NEW			NEW	docs/governance/SEMANTIC_INDEX.json	Initial PENDING semantic-index state; Gate 1A only, not a Gate 0 PASS dependency.	e54fe002452e45b97cd34054b6245ccd3702ceeb9b8d7ef44d47a19ad860d3d6	PRESENT
 NEW			NEW	docs/governance/work_orders/.gitkeep	Bounded admitted work-order directory placeholder for Gate 1+.	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	PRESENT
 NEW			NEW	docs/governance/attempts/.gitkeep	Attempt-record directory placeholder for Gate 1+.	e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855	PRESENT
@@ -207,4 +207,4 @@ NEW			NEW	schemas/attempt_record.schema.json	Attempt record binding actor, base,
 NEW			NEW	schemas/review.schema.json	Independent review schema with separate legitimacy and proof-quality verdicts.		PLANNED
 NEW			NEW	tools/validate_governance.py	Gate-1+ relational validator; never part of Gate 0 PASS.		PLANNED
 NEW			NEW	tests/governance/test_governance_admission.py	Authoritative tests for role/attempt/candidate/admission relationships and non-self-promotion.		PLANNED
-NEW			NEW	EXEC_PLAN.md	Bounded construction ExecPlan for the long Step-7 build; cannot create new authority.	f6d34727a821ea388ca1790ff74e85232d59937b8d61e823725971bbff149d6b	PRESENT
+NEW			NEW	EXEC_PLAN.md	Bounded construction ExecPlan for the long Step-7 build; cannot create new authority.	ea75f1abe226c0fa7a730f22a6a493a35bca338b41a12dce843fb43ad0203e7c	PRESENT

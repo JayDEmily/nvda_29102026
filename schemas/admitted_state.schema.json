@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_semantic_foundation_root_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "active_gate": {
+      "type": "string"
+    },
+    "candidate_control_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "current_attempt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "current_work_order": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "first_blocker": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gate0_proven_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operational_status": {
+      "enum": [
+        "CANDIDATE_FOR_INDEPENDENT_AUDIT",
+        "READY_FOR_STATIC_GATE0",
+        "GATE0_ARMED",
+        "GATE0_PASS",
+        "BLOCKED"
+      ]
+    },
+    "programme": {
+      "const": "NVDA_RAW_SIGNAL_CODEX_RESTART"
+    },
+    "schema_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "programme",
+    "operational_status",
+    "active_gate",
+    "accepted_semantic_foundation_root_commit",
+    "candidate_control_commit",
+    "gate0_proven_commit",
+    "current_work_order",
+    "current_attempt",
+    "first_blocker"
+  ],
+  "title": "AdmittedState",
+  "type": "object"
+}

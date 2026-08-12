@@ -1,0 +1,55 @@
+{
+  "automatic_final_subagent_stop_closure": false,
+  "closure_actor": "ordinary_wsl",
+  "forbidden_gate0_dependencies": [
+    "semantic_index_completion",
+    "prompt_cache_calibration",
+    "r2a_rollback",
+    "work_order_graph",
+    "later_role_capability"
+  ],
+  "guarded_paths": [
+    "AGENTS.md",
+    "PLANS.md",
+    "EXEC_PLAN.md",
+    ".codex/config.toml",
+    ".codex/agents/integration-auditor.toml",
+    ".codex/agents/semantic-reviewer.toml",
+    ".codex/hooks.json",
+    ".codex/hooks/run_gate0_attest.sh",
+    ".codex/hooks/gate0_attest.py",
+    "docs/orchestration/BOOTSTRAP.md",
+    "docs/governance/GATE0_ADMISSION_MANIFEST.json",
+    "tools/gate0_probe.py",
+    "tools/gate0_runtime_evidence.py",
+    "tools/validate_gate0.py"
+  ],
+  "hash_algorithm": "sha256",
+  "immediate_roles": [
+    "integration_auditor",
+    "semantic_reviewer"
+  ],
+  "pass_scope": "Gate 0 PASS admits Gate 1A only; it does not prove Raw Signal semantics or later write capabilities.",
+  "proposition_id": "GATE0_MINIMAL_RUNTIME_ADMISSION_V1",
+  "purpose": "Prove only the runtime/control capability required to unlock Gate 1A.",
+  "required_live_sequence": [
+    "SessionStart",
+    "ParentProbePass",
+    "integration_auditor:SubagentStart",
+    "integration_auditor:ProbePass",
+    "integration_auditor:SubagentStop",
+    "semantic_reviewer:SubagentStart",
+    "semantic_reviewer:ProbePass",
+    "semantic_reviewer:SubagentStop"
+  ],
+  "runtime_policy": {
+    "agent_runtime_must_be_wsl": true,
+    "approval_policy": "on-request",
+    "architecture": "x86_64",
+    "integrated_terminal_is_not_runtime_proof": true,
+    "os": "linux",
+    "sandbox_mode": "read-only",
+    "wsl2_required": true
+  },
+  "schema_version": "1.0.0"
+}
