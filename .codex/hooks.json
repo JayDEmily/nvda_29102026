@@ -1,51 +1,56 @@
 {
   "description": "NVDA minimal Gate 0 lifecycle evidence hooks.",
   "hooks": {
-    "SessionStart": [
+    "PostToolUse": [
       {
-        "matcher": "startup",
         "hooks": [
           {
-            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
+            "statusMessage": "Recording NVDA Gate 0 probe result",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
+            "statusMessage": "Checking NVDA Gate 0 command",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "additionalContextLimit": 1200,
             "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Binding NVDA Gate 0 session",
-            "additionalContextLimit": 1200
+            "type": "command"
           }
-        ]
+        ],
+        "matcher": "startup"
       }
     ],
     "SubagentStart": [
       {
         "hooks": [
           {
-            "type": "command",
+            "additionalContextLimit": 1200,
             "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Binding NVDA Gate 0 subagent",
-            "additionalContextLimit": 1200
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
+            "type": "command"
+          },
           {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
-            "statusMessage": "Checking NVDA Gate 0 command"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
-            "statusMessage": "Recording NVDA Gate 0 probe result"
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_runtime_identity_attest.sh\"",
+            "statusMessage": "Recording NVDA authenticated runtime identity",
+            "type": "command"
           }
         ]
       }
@@ -54,9 +59,14 @@
       {
         "hooks": [
           {
-            "type": "command",
             "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
-            "statusMessage": "Recording NVDA Gate 0 subagent stop"
+            "statusMessage": "Recording NVDA Gate 0 subagent stop",
+            "type": "command"
+          },
+          {
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_runtime_identity_attest.sh\"",
+            "statusMessage": "Recording NVDA authenticated runtime identity",
+            "type": "command"
           }
         ]
       }

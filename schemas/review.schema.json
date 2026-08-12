@@ -95,6 +95,24 @@
       "minLength": 1,
       "type": "string"
     },
+    "reviewer_runtime_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "sha256"
+      ],
+      "type": "object"
+    },
     "reviewer_thread_id": {
       "minLength": 1,
       "type": "string"
@@ -115,6 +133,7 @@
     "attempt_id",
     "reviewer_id",
     "reviewer_thread_id",
+    "reviewer_runtime_ref",
     "candidate_commit",
     "candidate_sha256",
     "authority_ref",

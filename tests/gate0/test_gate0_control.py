@@ -429,7 +429,10 @@ def test_hook_commands_resolve_from_git_root_not_session_subdirectory():
     commands = {
         hook["command"] for groups in hooks.values() for group in groups for hook in group["hooks"]
     }
-    assert commands == {'bash "$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh"'}
+    assert commands == {
+        'bash "$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh"',
+        'bash "$(git rev-parse --show-toplevel)/.codex/hooks/run_runtime_identity_attest.sh"',
+    }
 
 
 def test_host_policy_requires_wsl2_and_native_linux_storage():

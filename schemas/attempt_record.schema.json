@@ -30,6 +30,24 @@
       "minLength": 1,
       "type": "string"
     },
+    "actor_runtime_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "receipt_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "receipt_id",
+        "sha256"
+      ],
+      "type": "object"
+    },
     "actor_thread_id": {
       "minLength": 1,
       "type": "string"
@@ -108,6 +126,7 @@
     "actor_id",
     "actor_role",
     "actor_thread_id",
+    "actor_runtime_ref",
     "accepted_base_commit",
     "candidate_commit",
     "candidate_sha256",

@@ -39,6 +39,12 @@ def git_repo(tmp_path: Path) -> tuple[Path, str, str]:
     subprocess.run(["git", "add", "docs/example.md"], cwd=repo, check=True)
     subprocess.run(["git", "commit", "-qm", "candidate"], cwd=repo, check=True)
     candidate = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    runtime_dir = repo / ".git/nvda_runtime_identity"
+    runtime_dir.mkdir(parents=True)
+    receipts = [worker_runtime_receipt(), reviewer_runtime_receipt()]
+    (runtime_dir / "receipts.jsonl").write_text(
+        "".join(json.dumps(item, sort_keys=True, separators=(",", ":")) + "\n" for item in receipts)
+    )
     return repo, base, candidate
 
 
@@ -105,6 +111,48 @@ def semantic_index_repo(tmp_path: Path) -> tuple[Path, dict, dict]:
 def canonical_sha(record: dict) -> str:
     payload = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(payload).hexdigest()
+
+
+def runtime_receipt(
+    *, receipt_id: str, agent_id: str, role: str, transcript: str, turn_id: str
+) -> dict:
+    return {
+        "schema_version": "1.0.0",
+        "source": "CODEX_SUBAGENT_LIFECYCLE_HOOK_V1",
+        "session_id": "session-1",
+        "turn_id": turn_id,
+        "agent_id": agent_id,
+        "agent_type": role,
+        "agent_transcript_path": transcript,
+        "start_event_sha256": "1" * 64,
+        "stop_event_sha256": "2" * 64,
+        "disposition": "COMPLETED",
+        "receipt_id": receipt_id,
+    }
+
+
+def runtime_ref(receipt: dict) -> dict:
+    return {"receipt_id": receipt["receipt_id"], "sha256": canonical_sha(receipt)}
+
+
+def worker_runtime_receipt() -> dict:
+    return runtime_receipt(
+        receipt_id="RID-WORKER",
+        agent_id="agent-worker-1",
+        role="semantic_worker",
+        transcript="/runtime/worker-1.jsonl",
+        turn_id="turn-worker",
+    )
+
+
+def reviewer_runtime_receipt() -> dict:
+    return runtime_receipt(
+        receipt_id="RID-REVIEWER",
+        agent_id="agent-reviewer-2",
+        role="semantic_reviewer",
+        transcript="/runtime/reviewer-2.jsonl",
+        turn_id="turn-reviewer",
+    )
 
 
 def authority(*, proposition_id: str = "PROP-001", admission_id: str = "AUTH-001") -> dict:
@@ -178,9 +226,10 @@ def attempt(*, wo: dict | None = None) -> dict:
         "schema_version": "1.0.0",
         "attempt_id": "ATT-001",
         "work_order_id": item["work_order_id"],
-        "actor_id": "worker-thread-1",
+        "actor_id": "agent-worker-1",
         "actor_role": item["commissioned_role"],
-        "actor_thread_id": "thread-1",
+        "actor_thread_id": "/runtime/worker-1.jsonl",
+        "actor_runtime_ref": runtime_ref(worker_runtime_receipt()),
         "accepted_base_commit": item["accepted_base_commit"],
         "candidate_commit": "b" * 40,
         "candidate_sha256": None,
@@ -199,8 +248,9 @@ def review(*, wo: dict | None = None, att: dict | None = None) -> dict:
         "review_id": "REV-001",
         "work_order_id": item["work_order_id"],
         "attempt_id": candidate["attempt_id"],
-        "reviewer_id": "reviewer-thread-2",
-        "reviewer_thread_id": "thread-2",
+        "reviewer_id": "agent-reviewer-2",
+        "reviewer_thread_id": "/runtime/reviewer-2.jsonl",
+        "reviewer_runtime_ref": runtime_ref(reviewer_runtime_receipt()),
         "candidate_commit": candidate["candidate_commit"],
         "candidate_sha256": candidate["candidate_sha256"],
         "authority_ref": copy.deepcopy(item["authority_ref"]),
@@ -533,6 +583,60 @@ def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
     with pytest.raises(module.GovernanceError, match="candidate commit"):
+        module.validate_admission_transaction(
+            repo,
+            wo,
+            att,
+            rev,
+            adm,
+            admissions=records_for_work_order(auth, wo),
+            accepted_base_commit=base,
+        )
+
+
+def test_canonical_transaction_rejects_self_declared_unreceipted_worker_identity(tmp_path):
+    module = load_validator()
+    repo, base, candidate = git_repo(tmp_path)
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["accepted_base_commit"] = base
+    wo["allowed_mutations"] = ["docs/example.md"]
+    att = attempt(wo=wo)
+    att["accepted_base_commit"] = base
+    att["candidate_commit"] = candidate
+    att["actual_changed_paths"] = ["docs/example.md"]
+    att["actor_id"] = "forged-worker"
+    rev = review(wo=wo, att=att)
+    adm = admission(wo=wo, att=att, rev=rev)
+    with pytest.raises(module.GovernanceError, match="runtime identity"):
+        module.validate_admission_transaction(
+            repo,
+            wo,
+            att,
+            rev,
+            adm,
+            admissions=records_for_work_order(auth, wo),
+            accepted_base_commit=base,
+        )
+
+
+def test_canonical_transaction_requires_distinct_authenticated_runtime_receipts(tmp_path):
+    module = load_validator()
+    repo, base, candidate = git_repo(tmp_path)
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["accepted_base_commit"] = base
+    wo["allowed_mutations"] = ["docs/example.md"]
+    att = attempt(wo=wo)
+    att["accepted_base_commit"] = base
+    att["candidate_commit"] = candidate
+    att["actual_changed_paths"] = ["docs/example.md"]
+    rev = review(wo=wo, att=att)
+    rev["reviewer_id"] = att["actor_id"]
+    rev["reviewer_thread_id"] = att["actor_thread_id"]
+    rev["reviewer_runtime_ref"] = copy.deepcopy(att["actor_runtime_ref"] )
+    adm = admission(wo=wo, att=att, rev=rev)
+    with pytest.raises(module.GovernanceError, match="independent"):
         module.validate_admission_transaction(
             repo,
             wo,

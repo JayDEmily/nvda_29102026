@@ -8,6 +8,11 @@ import sys
 from pathlib import Path
 from typing import Any
 
+TOOLS_DIR = Path(__file__).resolve().parent
+if str(TOOLS_DIR) not in sys.path:
+    sys.path.insert(0, str(TOOLS_DIR))
+import runtime_identity  # noqa: E402
+
 
 class GovernanceError(RuntimeError):
     pass
@@ -252,6 +257,7 @@ def validate_attempt(work_order: dict[str, Any], attempt: dict[str, Any]) -> Non
             "actor_id",
             "actor_role",
             "actor_thread_id",
+            "actor_runtime_ref",
             "accepted_base_commit",
             "candidate_commit",
             "candidate_sha256",
@@ -327,6 +333,36 @@ def git_candidate_facts(repo_root: Path, candidate_commit: str) -> tuple[str, li
     return parent, sorted(path for path in changed if path)
 
 
+def validate_attempt_runtime_identity(
+    attempt: dict[str, Any], receipts: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    try:
+        return runtime_identity.validate_runtime_ref(
+            attempt["actor_runtime_ref"],
+            receipts=receipts,
+            expected_agent_id=attempt["actor_id"],
+            expected_role=attempt["actor_role"],
+            expected_thread_identity=attempt["actor_thread_id"],
+        )
+    except runtime_identity.RuntimeIdentityError as exc:
+        raise GovernanceError(f"attempt runtime identity is not authenticated: {exc}") from exc
+
+
+def validate_review_runtime_identity(
+    review: dict[str, Any], receipts: dict[str, dict[str, Any]]
+) -> dict[str, Any]:
+    try:
+        return runtime_identity.validate_runtime_ref(
+            review["reviewer_runtime_ref"],
+            receipts=receipts,
+            expected_agent_id=review["reviewer_id"],
+            expected_role="semantic_reviewer",
+            expected_thread_identity=review["reviewer_thread_id"],
+        )
+    except runtime_identity.RuntimeIdentityError as exc:
+        raise GovernanceError(f"review runtime identity is not authenticated: {exc}") from exc
+
+
 def validate_review(
     work_order: dict[str, Any], attempt: dict[str, Any], review: dict[str, Any]
 ) -> None:
@@ -338,6 +374,7 @@ def validate_review(
             "attempt_id",
             "reviewer_id",
             "reviewer_thread_id",
+            "reviewer_runtime_ref",
             "candidate_commit",
             "candidate_sha256",
             "authority_ref",
@@ -432,6 +469,11 @@ def validate_admission_transaction(
     """
     validate_work_order(work_order, admissions, accepted_base_commit=accepted_base_commit)
     validate_attempt(work_order, attempt)
+    try:
+        runtime_receipts = runtime_identity.load_runtime_receipts(repo_root)
+    except runtime_identity.RuntimeIdentityError as exc:
+        raise GovernanceError(f"runtime identity receipt store is invalid: {exc}") from exc
+    worker_receipt = validate_attempt_runtime_identity(attempt, runtime_receipts)
     candidate_commit = attempt.get("candidate_commit")
     if not isinstance(candidate_commit, str) or not candidate_commit:
         raise GovernanceError("semantic Git admission requires a candidate commit")
@@ -444,6 +486,11 @@ def validate_admission_transaction(
         changed_paths=changed_paths,
     )
     validate_review(work_order, attempt, review)
+    reviewer_receipt = validate_review_runtime_identity(review, runtime_receipts)
+    if worker_receipt["agent_id"] == reviewer_receipt["agent_id"]:
+        raise GovernanceError("worker and reviewer runtime identities are not independent")
+    if worker_receipt["agent_transcript_path"] == reviewer_receipt["agent_transcript_path"]:
+        raise GovernanceError("worker and reviewer runtime thread identities are not independent")
     validate_admission(work_order, attempt, review, admission)
     return ValidatedAdmission(
         admission=dict(admission),
