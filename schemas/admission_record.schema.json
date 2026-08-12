@@ -247,6 +247,20 @@
           "minLength": 1,
           "type": "string"
         },
+        "artifact_path": {
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "artifact_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
         "attempt_id": {
           "minLength": 1,
           "type": "string"

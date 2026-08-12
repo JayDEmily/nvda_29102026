@@ -66,9 +66,71 @@ def _is_accepted(record: dict[str, Any]) -> bool:
     return record.get("disposition") in ACCEPTED_DISPOSITIONS
 
 
-def accepted_semantic_index_entries(index: dict[str, Any]) -> dict[str, dict[str, Any]]:
+def _git_blob(repo_root: Path, commit: str, path: str) -> bytes:
+    try:
+        return subprocess.check_output(["git", "show", f"{commit}:{path}"], cwd=repo_root)
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError(f"Git candidate does not contain required path: {path}") from exc
+
+
+def _source_authority_hashes(repo_root: Path, commit: str) -> dict[str, str]:
+    text = _git_blob(repo_root, commit, "authority/AUTHORITY_MANIFEST.md").decode()
+    result: dict[str, str] = {}
+    for line in text.splitlines():
+        if not line.startswith("| `"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) != 3:
+            continue
+        path_cell, _, hash_cell = cells
+        if not (path_cell.startswith("`") and path_cell.endswith("`")):
+            continue
+        if not (hash_cell.startswith("`") and hash_cell.endswith("`")):
+            continue
+        path = path_cell[1:-1]
+        digest = hash_cell[1:-1]
+        if len(digest) == 64:
+            result[path] = digest
+    if not result:
+        raise GovernanceError("source authority manifest has no parseable authority entries")
+    return result
+
+
+def accepted_semantic_index_entries(
+    index: dict[str, Any],
+    *,
+    admissions: dict[str, dict[str, Any]] | None = None,
+    repo_root: Path | None = None,
+) -> dict[str, dict[str, Any]]:
     if index.get("status") != "ACCEPTED" or not index.get("admission_id"):
         raise GovernanceError("semantic index is not accepted")
+    if admissions is None or repo_root is None:
+        raise GovernanceError("accepted semantic index requires admission and repository binding")
+    admission = admissions.get(index["admission_id"])
+    if not admission or not _is_accepted(admission):
+        raise GovernanceError("semantic index admission is absent or not accepted")
+    if admission.get("record_type") != "SEMANTIC_RESULT":
+        raise GovernanceError("semantic index admission has wrong record type")
+    if admission.get("proposition_id") != "RAW_SIGNAL_SEMANTIC_INDEX_V1":
+        raise GovernanceError("semantic index admission has wrong proposition")
+    if admission.get("artifact_path") != "docs/governance/SEMANTIC_INDEX.json":
+        raise GovernanceError("semantic index admission has wrong artifact path")
+    candidate_commit = admission.get("candidate_commit")
+    if not isinstance(candidate_commit, str) or not candidate_commit:
+        raise GovernanceError("semantic index admission has no candidate commit")
+    try:
+        candidate_index = json.loads(
+            _git_blob(repo_root, candidate_commit, "docs/governance/SEMANTIC_INDEX.json")
+        )
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise GovernanceError("candidate semantic index JSON is invalid") from exc
+    expected_index_sha = canonical_sha(candidate_index)
+    if admission.get("artifact_sha256") != expected_index_sha:
+        raise GovernanceError("semantic index admission index hash mismatch")
+    if canonical_sha(index) != expected_index_sha:
+        raise GovernanceError("semantic index bytes do not match admitted candidate index")
+
+    source_authorities = _source_authority_hashes(repo_root, candidate_commit)
     entries = index.get("entries")
     if not isinstance(entries, list):
         raise GovernanceError("semantic index entries are malformed")
@@ -77,8 +139,20 @@ def accepted_semantic_index_entries(index: dict[str, Any]) -> dict[str, dict[str
         entry_id = entry.get("entry_id")
         if not entry_id or entry_id in result:
             raise GovernanceError("semantic index has missing or duplicate entry ID")
-        if not entry.get("authority_refs"):
+        refs = entry.get("authority_refs")
+        if not refs:
             raise GovernanceError(f"semantic index entry {entry_id} has no source authority")
+        for ref in refs:
+            path = ref.get("path")
+            digest = ref.get("sha256")
+            admitted_digest = source_authorities.get(path)
+            if not admitted_digest or admitted_digest != digest:
+                raise GovernanceError(
+                    f"semantic index source authority is not admitted or hash-bound: {path}"
+                )
+            actual = hashlib.sha256(_git_blob(repo_root, candidate_commit, path)).hexdigest()
+            if actual != digest:
+                raise GovernanceError(f"semantic index source authority bytes mismatch: {path}")
         result[entry_id] = entry
     for entry_id, entry in result.items():
         for dependency in entry.get("dependencies", []):
@@ -456,7 +530,13 @@ def validate_repository_static(root: Path) -> None:
         if index.get("admission_id") is not None or index.get("entries") != []:
             raise GovernanceError("pending semantic index must be empty and unadmitted")
     elif index.get("status") == "ACCEPTED":
-        accepted_semantic_index_entries(index)
+        admissions: dict[str, dict[str, Any]] = {}
+        for path in sorted((root / "docs/governance/admissions").glob("*.json")):
+            record = json.loads(path.read_text())
+            admission_id = record.get("admission_id")
+            if admission_id:
+                admissions[admission_id] = record
+        accepted_semantic_index_entries(index, admissions=admissions, repo_root=root)
     else:
         raise GovernanceError("semantic index has invalid status")
 

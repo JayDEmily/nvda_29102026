@@ -42,6 +42,66 @@ def git_repo(tmp_path: Path) -> tuple[Path, str, str]:
     return repo, base, candidate
 
 
+def semantic_index_repo(tmp_path: Path) -> tuple[Path, dict, dict]:
+    repo = tmp_path / "index-repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.email", "audit@example.invalid"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "Audit Test"], cwd=repo, check=True)
+    (repo / "authority/source").mkdir(parents=True)
+    source = repo / "authority/source/source.md"
+    source.write_text("authoritative source\n")
+    source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
+    (repo / "authority/AUTHORITY_MANIFEST.md").write_text(
+        "# Authority\n\n| Artefact | Role | SHA-256 |\n|---|---|---|\n"
+        f"| `authority/source/source.md` | Source | `{source_sha}` |\n"
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "authority"], cwd=repo, check=True)
+    base = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    (repo / "docs/governance").mkdir(parents=True)
+    index = {
+        "schema_version": "1.0.0",
+        "status": "ACCEPTED",
+        "admission_id": "ADM-INDEX-001",
+        "note": "accepted",
+        "entries": [
+            {
+                "entry_id": "IDX-1",
+                "proposition": "Bound source proposition",
+                "authority_refs": [
+                    {"path": "authority/source/source.md", "sha256": source_sha}
+                ],
+                "dependencies": [],
+            }
+        ],
+    }
+    (repo / "docs/governance/SEMANTIC_INDEX.json").write_text(
+        json.dumps(index, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "semantic index"], cwd=repo, check=True)
+    candidate = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    admission_record = {
+        "schema_version": "1.0.0",
+        "admission_id": "ADM-INDEX-001",
+        "record_type": "SEMANTIC_RESULT",
+        "disposition": "ACCEPTED",
+        "proposition_id": "RAW_SIGNAL_SEMANTIC_INDEX_V1",
+        "authority_ref": {"admission_id": "AUTH-INDEX", "sha256": "a" * 64},
+        "work_order_id": "WO-INDEX",
+        "attempt_id": "ATT-INDEX",
+        "review_id": "REV-INDEX",
+        "accepted_base_commit": base,
+        "candidate_commit": candidate,
+        "candidate_sha256": None,
+        "artifact_path": "docs/governance/SEMANTIC_INDEX.json",
+        "artifact_sha256": canonical_sha(index),
+        "admitted_at_utc": "2026-08-12T00:00:00Z",
+    }
+    return repo, index, admission_record
+
+
 def canonical_sha(record: dict) -> str:
     payload = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(payload).hexdigest()
@@ -186,6 +246,54 @@ def test_pending_semantic_index_is_not_an_accepted_proposition_source():
     data = json.loads((ROOT / "docs/governance/SEMANTIC_INDEX.json").read_text())
     with pytest.raises(module.GovernanceError, match="not accepted"):
         module.accepted_semantic_index_entries(data)
+
+
+def test_accepted_semantic_index_requires_real_admission_and_exact_source_binding(tmp_path):
+    module = load_validator()
+    repo, index, adm = semantic_index_repo(tmp_path)
+    entries = module.accepted_semantic_index_entries(
+        index, admissions={adm["admission_id"]: adm}, repo_root=repo
+    )
+    assert set(entries) == {"IDX-1"}
+
+
+def test_nonexistent_semantic_index_admission_is_rejected(tmp_path):
+    module = load_validator()
+    repo, index, _ = semantic_index_repo(tmp_path)
+    with pytest.raises(module.GovernanceError, match="semantic index admission"):
+        module.accepted_semantic_index_entries(index, admissions={}, repo_root=repo)
+
+
+def test_semantic_index_admission_must_bind_exact_index_bytes(tmp_path):
+    module = load_validator()
+    repo, index, adm = semantic_index_repo(tmp_path)
+    bad = copy.deepcopy(adm)
+    bad["artifact_sha256"] = "0" * 64
+    with pytest.raises(module.GovernanceError, match="index hash"):
+        module.accepted_semantic_index_entries(
+            index, admissions={bad["admission_id"]: bad}, repo_root=repo
+        )
+
+
+def test_semantic_index_source_ref_must_be_admitted_and_byte_exact(tmp_path):
+    module = load_validator()
+    repo, index, adm = semantic_index_repo(tmp_path)
+    bad_index = copy.deepcopy(index)
+    bad_index["entries"][0]["authority_refs"][0]["sha256"] = "0" * 64
+    (repo / "docs/governance/SEMANTIC_INDEX.json").write_text(
+        json.dumps(bad_index, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(["git", "add", "docs/governance/SEMANTIC_INDEX.json"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "bad source ref"], cwd=repo, check=True)
+    bad_adm = copy.deepcopy(adm)
+    bad_adm["candidate_commit"] = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=repo, text=True
+    ).strip()
+    bad_adm["artifact_sha256"] = canonical_sha(bad_index)
+    with pytest.raises(module.GovernanceError, match="source authority"):
+        module.accepted_semantic_index_entries(
+            bad_index, admissions={bad_adm["admission_id"]: bad_adm}, repo_root=repo
+        )
 
 
 def test_role_mismatch_rejected():
