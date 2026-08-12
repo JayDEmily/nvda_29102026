@@ -26,6 +26,23 @@ KNOWN_ROLES = {
 PROOF_CLASSES = {"MECHANICAL", "SEMANTIC", "BOTH"}
 
 
+class ValidatedAdmission:
+    __slots__ = ("admission", "candidate_commit", "candidate_parent", "changed_paths")
+
+    def __init__(
+        self,
+        *,
+        admission: dict[str, Any],
+        candidate_commit: str,
+        candidate_parent: str,
+        changed_paths: tuple[str, ...],
+    ) -> None:
+        self.admission = admission
+        self.candidate_commit = candidate_commit
+        self.candidate_parent = candidate_parent
+        self.changed_paths = changed_paths
+
+
 def canonical_sha(record: dict[str, Any]) -> str:
     payload = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(payload).hexdigest()
@@ -185,6 +202,33 @@ def validate_git_candidate_binding(
         )
 
 
+def git_candidate_facts(repo_root: Path, candidate_commit: str) -> tuple[str, list[str]]:
+    try:
+        subprocess.run(
+            ["git", "cat-file", "-e", f"{candidate_commit}^{{commit}}"],
+            cwd=repo_root,
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        parents_line = subprocess.check_output(
+            ["git", "rev-list", "--parents", "-n", "1", candidate_commit],
+            cwd=repo_root,
+            text=True,
+        ).strip().split()
+        if len(parents_line) != 2:
+            raise GovernanceError("candidate commit must have exactly one parent")
+        parent = parents_line[1]
+        changed = subprocess.check_output(
+            ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", candidate_commit],
+            cwd=repo_root,
+            text=True,
+        ).splitlines()
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError("candidate commit is not present in the repository") from exc
+    return parent, sorted(path for path in changed if path)
+
+
 def validate_review(
     work_order: dict[str, Any], attempt: dict[str, Any], review: dict[str, Any]
 ) -> None:
@@ -274,15 +318,57 @@ def validate_admission(
             raise GovernanceError("admission cannot overcome unproven proof quality")
 
 
+def validate_admission_transaction(
+    repo_root: Path,
+    work_order: dict[str, Any],
+    attempt: dict[str, Any],
+    review: dict[str, Any],
+    admission: dict[str, Any],
+    *,
+    admissions: dict[str, dict[str, Any]],
+    accepted_base_commit: str,
+) -> ValidatedAdmission:
+    """Validate the only state-advancing semantic admission path.
+
+    Git facts are derived here rather than accepted from caller declarations.
+    """
+    validate_work_order(work_order, admissions, accepted_base_commit=accepted_base_commit)
+    validate_attempt(work_order, attempt)
+    candidate_commit = attempt.get("candidate_commit")
+    if not isinstance(candidate_commit, str) or not candidate_commit:
+        raise GovernanceError("semantic Git admission requires a candidate commit")
+    candidate_parent, changed_paths = git_candidate_facts(repo_root, candidate_commit)
+    validate_git_candidate_binding(
+        work_order,
+        attempt,
+        candidate_commit=candidate_commit,
+        candidate_parent=candidate_parent,
+        changed_paths=changed_paths,
+    )
+    validate_review(work_order, attempt, review)
+    validate_admission(work_order, attempt, review, admission)
+    return ValidatedAdmission(
+        admission=dict(admission),
+        candidate_commit=candidate_commit,
+        candidate_parent=candidate_parent,
+        changed_paths=tuple(changed_paths),
+    )
+
+
 def advance_state_after_admission(
-    state: dict[str, Any], admission: dict[str, Any]
+    state: dict[str, Any], validated: ValidatedAdmission
 ) -> dict[str, Any]:
+    if not isinstance(validated, ValidatedAdmission):
+        raise GovernanceError("state advancement requires a validated transaction")
+    admission = validated.admission
     if not _is_accepted(admission):
         raise GovernanceError("rejected record cannot advance admitted state")
+    if admission.get("candidate_commit") != validated.candidate_commit:
+        raise GovernanceError("validated transaction candidate changed before state advance")
     updated = dict(state)
     updated["latest_admission_id"] = admission["admission_id"]
-    if admission.get("record_type") == "SEMANTIC_RESULT" and admission.get("candidate_commit"):
-        updated["candidate_control_commit"] = admission["candidate_commit"]
+    if admission.get("record_type") == "SEMANTIC_RESULT":
+        updated["candidate_control_commit"] = validated.candidate_commit
     updated["current_work_order"] = None
     updated["current_attempt"] = None
     updated["first_blocker"] = None

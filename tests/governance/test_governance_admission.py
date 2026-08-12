@@ -4,6 +4,7 @@ import copy
 import hashlib
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -19,6 +20,26 @@ def load_validator():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+
+
+def git_repo(tmp_path: Path) -> tuple[Path, str, str]:
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.email", "audit@example.invalid"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "Audit Test"], cwd=repo, check=True)
+    (repo / "base.txt").write_text("base\n")
+    subprocess.run(["git", "add", "base.txt"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "base"], cwd=repo, check=True)
+    base = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    (repo / "docs").mkdir()
+    (repo / "docs/example.md").write_text("candidate\n")
+    subprocess.run(["git", "add", "docs/example.md"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "candidate"], cwd=repo, check=True)
+    candidate = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    return repo, base, candidate
 
 
 def canonical_sha(record: dict) -> str:
@@ -285,7 +306,7 @@ def test_reviewer_thread_must_be_fresh_from_worker_thread():
         module.validate_review(wo, att, rev)
 
 
-def test_rejected_record_cannot_advance_admitted_state():
+def test_raw_admission_record_cannot_advance_admitted_state():
     module = load_validator()
     state = {
         "latest_admission_id": "ADM-OLD",
@@ -294,30 +315,71 @@ def test_rejected_record_cannot_advance_admitted_state():
         "current_attempt": "ATT-001",
         "first_blocker": None,
     }
-    adm = admission()
-    adm["disposition"] = "REJECTED"
-    with pytest.raises(module.GovernanceError, match="cannot advance"):
-        module.advance_state_after_admission(state, adm)
+    with pytest.raises(module.GovernanceError, match="validated transaction"):
+        module.advance_state_after_admission(state, admission())
 
 
-def test_accepted_admission_advances_only_thin_state_pointers():
+def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path):
     module = load_validator()
+    repo, base, candidate = git_repo(tmp_path)
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["accepted_base_commit"] = base
+    wo["allowed_mutations"] = ["docs/example.md"]
+    att = attempt(wo=wo)
+    att["accepted_base_commit"] = base
+    att["candidate_commit"] = candidate
+    att["actual_changed_paths"] = ["docs/example.md"]
+    rev = review(wo=wo, att=att)
+    adm = admission(wo=wo, att=att, rev=rev)
+    records = accepted_records(auth)
+    validated = module.validate_admission_transaction(
+        repo,
+        wo,
+        att,
+        rev,
+        adm,
+        admissions=records,
+        accepted_base_commit=base,
+    )
     state = {
         "latest_admission_id": "ADM-OLD",
-        "candidate_control_commit": "a" * 40,
+        "candidate_control_commit": base,
         "current_work_order": "WO-001",
         "current_attempt": "ATT-001",
         "first_blocker": "DEF-OLD",
         "unrelated": "preserved",
     }
-    adm = admission()
-    updated = module.advance_state_after_admission(state, adm)
+    updated = module.advance_state_after_admission(state, validated)
     assert updated["latest_admission_id"] == adm["admission_id"]
-    assert updated["candidate_control_commit"] == adm["candidate_commit"]
+    assert updated["candidate_control_commit"] == candidate
     assert updated["current_work_order"] is None
     assert updated["current_attempt"] is None
     assert updated["first_blocker"] is None
     assert updated["unrelated"] == "preserved"
+
+
+def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
+    module = load_validator()
+    repo, base, _ = git_repo(tmp_path)
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["accepted_base_commit"] = base
+    att = attempt(wo=wo)
+    att["accepted_base_commit"] = base
+    att["candidate_commit"] = "f" * 40
+    rev = review(wo=wo, att=att)
+    adm = admission(wo=wo, att=att, rev=rev)
+    with pytest.raises(module.GovernanceError, match="candidate commit"):
+        module.validate_admission_transaction(
+            repo,
+            wo,
+            att,
+            rev,
+            adm,
+            admissions=accepted_records(auth),
+            accepted_base_commit=base,
+        )
 
 
 def test_candidate_git_parent_and_actual_diff_are_mechanically_bound():
