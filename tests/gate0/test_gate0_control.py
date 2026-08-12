@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import copy
 import importlib.util
 import json
 from pathlib import Path
@@ -13,7 +12,9 @@ VALIDATOR_PATH = ROOT / "tools/validate_gate0.py"
 
 
 def load_runtime():
-    assert RUNTIME_PATH.is_file(), "Unit 4 seam: tools/gate0_runtime_evidence.py is not implemented yet"
+    assert RUNTIME_PATH.is_file(), (
+        "Unit 4 seam: tools/gate0_runtime_evidence.py is not implemented yet"
+    )
     spec = importlib.util.spec_from_file_location("gate0_runtime_evidence", RUNTIME_PATH)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
@@ -35,12 +36,44 @@ def valid_events():
     return [
         {"type": "SessionStart", "run_nonce": "run-1", "head": "a" * 40},
         {"type": "ProbeResult", "role": "__parent__", "run_nonce": "run-1", "passed": True},
-        {"type": "SubagentStart", "role": "integration_auditor", "agent_id": "agent-a", "run_nonce": "run-1"},
-        {"type": "ProbeResult", "role": "integration_auditor", "agent_id": "agent-a", "run_nonce": "run-1", "passed": True},
-        {"type": "SubagentStop", "role": "integration_auditor", "agent_id": "agent-a", "run_nonce": "run-1"},
-        {"type": "SubagentStart", "role": "semantic_reviewer", "agent_id": "agent-b", "run_nonce": "run-1"},
-        {"type": "ProbeResult", "role": "semantic_reviewer", "agent_id": "agent-b", "run_nonce": "run-1", "passed": True},
-        {"type": "SubagentStop", "role": "semantic_reviewer", "agent_id": "agent-b", "run_nonce": "run-1"},
+        {
+            "type": "SubagentStart",
+            "role": "integration_auditor",
+            "agent_id": "agent-a",
+            "run_nonce": "run-1",
+        },
+        {
+            "type": "ProbeResult",
+            "role": "integration_auditor",
+            "agent_id": "agent-a",
+            "run_nonce": "run-1",
+            "passed": True,
+        },
+        {
+            "type": "SubagentStop",
+            "role": "integration_auditor",
+            "agent_id": "agent-a",
+            "run_nonce": "run-1",
+        },
+        {
+            "type": "SubagentStart",
+            "role": "semantic_reviewer",
+            "agent_id": "agent-b",
+            "run_nonce": "run-1",
+        },
+        {
+            "type": "ProbeResult",
+            "role": "semantic_reviewer",
+            "agent_id": "agent-b",
+            "run_nonce": "run-1",
+            "passed": True,
+        },
+        {
+            "type": "SubagentStop",
+            "role": "semantic_reviewer",
+            "agent_id": "agent-b",
+            "run_nonce": "run-1",
+        },
     ]
 
 
@@ -55,7 +88,9 @@ def test_manifest_fixes_minimal_gate0_policy():
     assert data["immediate_roles"] == ["integration_auditor", "semantic_reviewer"]
     assert data["closure_actor"] == "ordinary_wsl"
     assert data["automatic_final_subagent_stop_closure"] is False
-    assert {"semantic_index_completion", "prompt_cache_calibration", "r2a_rollback"} <= set(data["forbidden_gate0_dependencies"])
+    assert {"semantic_index_completion", "prompt_cache_calibration", "r2a_rollback"} <= set(
+        data["forbidden_gate0_dependencies"]
+    )
 
 
 def test_bootstrap_assigns_final_closure_to_ordinary_wsl():
@@ -91,14 +126,20 @@ def test_missing_parent_probe_fails():
 
 def test_missing_first_subagent_start_fails_at_exact_invariant():
     result = derive(valid_events()[:2])
-    assert result["passed"] is False and result["first_failure"] == "SUBAGENT_START:integration_auditor"
+    assert (
+        result["passed"] is False
+        and result["first_failure"] == "SUBAGENT_START:integration_auditor"
+    )
 
 
 def test_wrong_first_role_fails():
     events = valid_events()
     events[2]["role"] = "semantic_reviewer"
     result = derive(events)
-    assert result["passed"] is False and result["first_failure"] == "SUBAGENT_START:integration_auditor"
+    assert (
+        result["passed"] is False
+        and result["first_failure"] == "SUBAGENT_START:integration_auditor"
+    )
 
 
 def test_duplicate_child_identity_fails():
@@ -121,12 +162,21 @@ def test_missing_subagent_stop_fails():
     events = valid_events()
     del events[4]
     result = derive(events)
-    assert result["passed"] is False and result["first_failure"] == "SUBAGENT_STOP:integration_auditor"
+    assert (
+        result["passed"] is False and result["first_failure"] == "SUBAGENT_STOP:integration_auditor"
+    )
 
 
 def test_unexpected_extra_role_event_fails():
     events = valid_events()
-    events.append({"type": "SubagentStart", "role": "implementation_worker", "agent_id": "extra", "run_nonce": "run-1"})
+    events.append(
+        {
+            "type": "SubagentStart",
+            "role": "implementation_worker",
+            "agent_id": "extra",
+            "run_nonce": "run-1",
+        }
+    )
     result = derive(events)
     assert result["passed"] is False and result["first_failure"] == "UNEXPECTED_EVENT"
 
@@ -146,7 +196,6 @@ def test_model_status_json_cannot_create_pass():
 def test_automatic_closure_is_disabled_in_production_contract():
     module = load_runtime()
     assert module.AUTOMATIC_FINAL_SUBAGENT_STOP_CLOSURE is False
-
 
 
 def test_clean_arm_binds_head_manifest_and_guarded_hashes():
@@ -219,6 +268,7 @@ def test_admission_record_binds_proven_commit_and_evidence_digest():
     assert record["manifest_sha256"] == "b" * 64
     assert record["guarded_hashes"] == {"AGENTS.md": "c" * 64}
     assert record["disposition"] == "GATE0_PASS"
+
 
 def test_runtime_validator_is_dedicated_gate0_surface():
     assert VALIDATOR_PATH.is_file(), "Unit 4 seam: tools/validate_gate0.py is not implemented yet"

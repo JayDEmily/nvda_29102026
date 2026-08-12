@@ -16,7 +16,9 @@ class ValidationError(RuntimeError):
 
 
 def root_path() -> Path:
-    return Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()).resolve()
+    return Path(
+        subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+    ).resolve()
 
 
 def runtime_module(root: Path):
@@ -31,7 +33,9 @@ def runtime_module(root: Path):
 
 def validate_static(root: Path, *, require_clean: bool = True) -> None:
     if require_clean:
-        status = subprocess.check_output(["git", "status", "--porcelain=v1", "--untracked-files=all"], cwd=root, text=True)
+        status = subprocess.check_output(
+            ["git", "status", "--porcelain=v1", "--untracked-files=all"], cwd=root, text=True
+        )
         if status.strip():
             raise ValidationError("worktree is not clean")
     manifest = json.loads((root / "docs/governance/GATE0_ADMISSION_MANIFEST.json").read_text())
@@ -40,7 +44,10 @@ def validate_static(root: Path, *, require_clean: bool = True) -> None:
     policy = manifest.get("runtime_policy", {})
     if policy.get("sandbox_mode") != "read-only" or policy.get("approval_policy") != "on-request":
         raise ValidationError("Gate 0 permission policy mismatch")
-    if manifest.get("closure_actor") != "ordinary_wsl" or manifest.get("automatic_final_subagent_stop_closure") is not False:
+    if (
+        manifest.get("closure_actor") != "ordinary_wsl"
+        or manifest.get("automatic_final_subagent_stop_closure") is not False
+    ):
         raise ValidationError("Gate 0 closure policy mismatch")
     config = tomllib.loads((root / ".codex/config.toml").read_text())
     if config.get("sandbox_mode") != "read-only" or config.get("approval_policy") != "on-request":
@@ -53,7 +60,9 @@ def validate_static(root: Path, *, require_clean: bool = True) -> None:
     for event in ("SessionStart", "SubagentStart", "PreToolUse", "PostToolUse", "SubagentStop"):
         if event not in hooks:
             raise ValidationError(f"missing hook event: {event}")
-    meta = yaml.safe_load((root / ".agents/skills/nvda-semantic-orchestrator/agents/openai.yaml").read_text())
+    meta = yaml.safe_load(
+        (root / ".agents/skills/nvda-semantic-orchestrator/agents/openai.yaml").read_text()
+    )
     if meta.get("policy", {}).get("allow_implicit_invocation") is not False:
         raise ValidationError("semantic skill implicit invocation is not disabled")
     for rel in manifest.get("guarded_paths", []):

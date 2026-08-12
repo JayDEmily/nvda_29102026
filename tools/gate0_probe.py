@@ -5,11 +5,14 @@ import json
 import os
 import platform
 import subprocess
+from contextlib import suppress
 from pathlib import Path
 
 
 def repo_root() -> Path:
-    return Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()).resolve()
+    return Path(
+        subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+    ).resolve()
 
 
 def git_dir(root: Path) -> Path:
@@ -30,10 +33,8 @@ def attempt_write(path: Path) -> dict[str, object]:
         error = f"{type(exc).__name__}:{exc.errno}"
     finally:
         if allowed:
-            try:
+            with suppress(OSError):
                 path.unlink()
-            except OSError:
-                pass
     return {"path": str(path), "write_allowed": allowed, "error": error}
 
 
