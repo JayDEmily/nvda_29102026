@@ -1,6 +1,6 @@
 # NVDA Raw Signal clean restart — programme plan
 
-**Status:** `CANDIDATE_FOR_INDEPENDENT_AUDIT` during construction; no Gate 0 PASS is claimed.
+Current operational status is carried by the current explicitly accepted root `EXEC_PLAN.md`, admitted durable state, and exact Git identity/evidence. This frozen programme plan does not track dynamic execution status.
 
 ## Programme objective
 
@@ -44,7 +44,7 @@ The ordinary semantic admission/delegation mechanism must fail closed if a work 
 
 ## Execution plans
 
-A bounded `EXEC_PLAN.md` may operationalise a genuinely multi-step accepted tranche. It may sequence and record work, validation, blockers, and commits. It may not create new programme law, domain meaning, gate semantics, PASS criteria, role powers, trust roots, or mutation classes.
+When an ExecPlan is required, exactly one explicitly accepted root `EXEC_PLAN.md` is the current bounded execution authority for a genuinely multi-step accepted tranche. It may sequence work, validation, blockers, and commits, but it may not create new programme law, domain meaning, gate semantics, PASS criteria, role powers, trust roots, or mutation classes. Retire completed or superseded ExecPlans as historical evidence and replace the root ExecPlan when the authorised tranche changes materially; do not use it as a history ledger.
 
 ## Universal stop law
 

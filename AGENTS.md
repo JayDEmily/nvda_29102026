@@ -23,6 +23,8 @@ A change to either file is a governance proposal outside the ordinary semantic w
 
 `EXEC_PLAN.md` is not frozen in this sense. It may evolve only within an already-authorised bounded tranche and cannot create or supersede programme law.
 
+When an ExecPlan is required, exactly one explicitly accepted root `EXEC_PLAN.md` is the current bounded execution authority. It operationalises accepted authority and cannot create programme or domain law. Completed or superseded ExecPlans are historical evidence: retire them from the active root role rather than appending to them indefinitely, and replace the root ExecPlan whenever the authorised tranche changes materially.
+
 ## Epistemic law
 
 Keep these distinct: `OBSERVATION`, `HYPOTHESIS`, and `PROPOSAL`. Record `Unknown` when evidence does not establish a fact or cause. Governance may evolve, but it may not self-promote.

@@ -8,6 +8,28 @@
 
 At the first absent or failed invariant: **STOP LIVE EXECUTION**. The protected Gate 0 state records the first failure. After that record exists, every later hook-observable local tool call is denied and the run cannot derive PASS. Do not request the next child, derive downstream evidence, or redesign an unreached stage.
 
+## Failed-arm retirement and authorised repair transition
+
+A fresh Codex chat is not a fresh Gate-0 control state. After a terminal failed arm, the minimum transition is:
+
+```text
+failed armed run
+-> preserve all failed runtime evidence unchanged
+-> ordinary WSL/operator retires the active failed runtime state into a durable .git failure archive
+-> prove no active arm remains
+-> explicit bounded repair authority
+-> repair branch
+-> independent review
+-> accepted repair Git state
+-> renew hook trust if definitions changed
+-> fresh static preflight
+-> NEW arm
+-> NEW nonce
+-> fresh Codex session
+```
+
+This transition is not automatic recovery. It grants no repair authority by itself and does not authorise R2 or R2A machinery. Diagnosis and repair remain bounded by explicit authority, while the failed runtime evidence remains unchanged in its durable archive.
+
 ## Phase A — ordinary WSL static admission and arm
 
 Run from the exact native-WSL repository intended for admission:
@@ -31,6 +53,8 @@ PASS requires native Linux/WSL policy, a clean worktree, parseable admitted cont
 5. Start a fresh Gate 0 chat/run after arm and trust actions.
 6. Select `read-only` sandbox mode with `on-request` approvals.
 
+The required live boundary remains the accepted read-only/on-request proposition. Desktop UI labels and configuration declarations are setup evidence, not conclusive proof of the runtime boundary. The nonce-bound mechanical probe is authoritative for the exact filesystem write-denial boundary it tests; Gate 0 fails if that probe fails, regardless of UI or configuration labels.
+
 The repository configuration disables Codex web search, app/connector tools, the local `view_image` attachment tool, and the remote plugin catalogue for this execution surface. `PreToolUse`/`PostToolUse` match every supported local tool path. During an armed run, the Gate 0 policy denies every hook-observable local tool except the exact nonce-bound mechanical probe, the exact next `spawn_agent` call, and `wait_agent` used only to await an already-authorised child.
 
 The integrated terminal is configured independently from the agent and is not evidence that the agent runtime is WSL.
@@ -41,7 +65,7 @@ The integrated terminal is configured independently from the agent and is not ev
 
 The trusted `SessionStart` hook must bind the session to the protected arm and add one exact nonce-bound parent probe command as developer context. The human approves **only that exact command**.
 
-The parent executes the command exactly once. PASS requires the machine-readable probe result to prove the admitted read-only boundary. If running it requires a broader filesystem capability than the boundary being measured, Gate 0 fails.
+The parent executes the command exactly once. PASS requires the machine-readable probe result to prove the admitted read-only boundary for the exact filesystem locations tested. If the probe reports any required write as allowed, or if running it requires a broader filesystem capability than the boundary being measured, Gate 0 fails regardless of setup evidence.
 
 ### C2 integration_auditor
 
