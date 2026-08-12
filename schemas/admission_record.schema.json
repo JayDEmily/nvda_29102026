@@ -116,6 +116,108 @@
     },
     {
       "additionalProperties": false,
+      "properties": {
+        "accepted_base_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "admitted_at_utc": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "allowed_mutations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "authority_ref": {
+          "additionalProperties": false,
+          "properties": {
+            "admission_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "admission_id",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "commissioned_role": {
+          "enum": [
+            "project_manager",
+            "integration_auditor",
+            "semantic_worker",
+            "semantic_reviewer",
+            "normative_writer",
+            "test_author",
+            "implementation_worker"
+          ]
+        },
+        "disposition": {
+          "enum": [
+            "ACCEPTED",
+            "REJECTED"
+          ]
+        },
+        "proof_class": {
+          "enum": [
+            "MECHANICAL",
+            "SEMANTIC",
+            "BOTH"
+          ]
+        },
+        "proposition_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "record_type": {
+          "const": "WORK_ORDER_DELEGATION"
+        },
+        "schema_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "work_order_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "work_order_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "admission_id",
+        "record_type",
+        "disposition",
+        "proposition_id",
+        "authority_ref",
+        "work_order_id",
+        "work_order_sha256",
+        "accepted_base_commit",
+        "commissioned_role",
+        "allowed_mutations",
+        "proof_class",
+        "admitted_at_utc"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
       "anyOf": [
         {
           "properties": {

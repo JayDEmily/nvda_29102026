@@ -69,6 +69,7 @@ def work_order(*, authority_record: dict | None = None) -> dict:
     return {
         "schema_version": "1.0.0",
         "work_order_id": "WO-001",
+        "work_order_admission_id": "WOADM-001",
         "gate": "GATE1B",
         "stage": "SEMANTIC_DERIVATION",
         "proposition_id": auth["proposition_id"],
@@ -84,6 +85,31 @@ def work_order(*, authority_record: dict | None = None) -> dict:
         "dependencies": [],
         "stop_conditions": ["Stop on any authority conflict or unsupported semantic inference."],
     }
+
+
+def work_order_admission(*, wo: dict | None = None, authority_record: dict | None = None) -> dict:
+    auth = authority_record or authority()
+    item = wo or work_order(authority_record=auth)
+    return {
+        "schema_version": "1.0.0",
+        "admission_id": item["work_order_admission_id"],
+        "record_type": "WORK_ORDER_DELEGATION",
+        "disposition": "ACCEPTED",
+        "proposition_id": item["proposition_id"],
+        "authority_ref": copy.deepcopy(item["authority_ref"]),
+        "work_order_id": item["work_order_id"],
+        "work_order_sha256": canonical_sha(item),
+        "accepted_base_commit": item["accepted_base_commit"],
+        "commissioned_role": item["commissioned_role"],
+        "allowed_mutations": copy.deepcopy(item["allowed_mutations"]),
+        "proof_class": item["proof_class"],
+        "admitted_at_utc": "2026-08-12T00:00:00Z",
+    }
+
+
+def records_for_work_order(auth: dict, wo: dict, *extra: dict) -> dict[str, dict]:
+    delegation = work_order_admission(wo=wo, authority_record=auth)
+    return accepted_records(auth, delegation, *extra)
 
 
 def attempt(*, wo: dict | None = None) -> dict:
@@ -192,7 +218,9 @@ def test_schema_valid_but_unauthorised_work_order_rejected():
     wo = work_order(authority_record=auth)
     wo["authority_status"] = "REQUIRES_ACCEPTANCE"
     with pytest.raises(module.GovernanceError, match="GOVERNED"):
-        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+        module.validate_work_order(
+            wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
+        )
 
 
 def test_proof_quality_pass_cannot_overcome_legitimacy_rejection():
@@ -224,7 +252,9 @@ def test_dependencies_must_reference_accepted_admission_ids():
     wo = work_order(authority_record=auth)
     wo["dependencies"] = ["ADM-MISSING"]
     with pytest.raises(module.GovernanceError, match="dependency"):
-        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+        module.validate_work_order(
+            wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
+        )
 
 
 def test_rejected_record_cannot_become_current_by_active_path_placement():
@@ -235,7 +265,7 @@ def test_rejected_record_cannot_become_current_by_active_path_placement():
     with pytest.raises(module.GovernanceError, match="accepted authority"):
         module.validate_work_order(
             wo,
-            accepted_records(rejected),
+            records_for_work_order(rejected, wo),
             accepted_base_commit="a" * 40,
         )
 
@@ -270,7 +300,9 @@ def test_work_order_cannot_self_promote_new_programme_rule():
     wo = work_order(authority_record=auth)
     wo["proposition_id"] = "NEW-PROGRAMME-RULE"
     with pytest.raises(module.GovernanceError, match="proposition"):
-        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+        module.validate_work_order(
+            wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
+        )
 
 
 def test_authority_hash_must_bind_exact_admitted_record():
@@ -279,7 +311,29 @@ def test_authority_hash_must_bind_exact_admitted_record():
     wo = work_order(authority_record=auth)
     wo["authority_ref"]["sha256"] = "0" * 64
     with pytest.raises(module.GovernanceError, match="hash"):
+        module.validate_work_order(
+            wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
+        )
+
+
+def test_work_order_requires_exact_admitted_delegation():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    with pytest.raises(module.GovernanceError, match="delegation"):
         module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+
+
+def test_work_order_delegation_binds_exact_scope_and_bytes():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    records = records_for_work_order(auth, wo)
+    module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+    widened = copy.deepcopy(wo)
+    widened["allowed_mutations"] = ["AGENTS.md"]
+    with pytest.raises(module.GovernanceError, match=r"work order hash|scope"):
+        module.validate_work_order(widened, records, accepted_base_commit="a" * 40)
 
 
 def test_valid_transaction_is_admissible_only_after_independent_review():
@@ -289,7 +343,7 @@ def test_valid_transaction_is_admissible_only_after_independent_review():
     att = attempt(wo=wo)
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
-    records = accepted_records(auth)
+    records = records_for_work_order(auth, wo)
     module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
     module.validate_attempt(wo, att)
     module.validate_review(wo, att, rev)
@@ -332,7 +386,7 @@ def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path
     att["actual_changed_paths"] = ["docs/example.md"]
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
-    records = accepted_records(auth)
+    records = records_for_work_order(auth, wo)
     validated = module.validate_admission_transaction(
         repo,
         wo,
@@ -377,7 +431,7 @@ def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
             att,
             rev,
             adm,
-            admissions=accepted_records(auth),
+            admissions=records_for_work_order(auth, wo),
             accepted_base_commit=base,
         )
 

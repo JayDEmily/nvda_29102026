@@ -99,6 +99,7 @@ def validate_work_order(
         work_order,
         {
             "work_order_id",
+            "work_order_admission_id",
             "gate",
             "stage",
             "proposition_id",
@@ -138,6 +139,29 @@ def validate_work_order(
         raise GovernanceError("work order authority hash does not bind the admitted record")
     if authority.get("proposition_id") != work_order["proposition_id"]:
         raise GovernanceError("work order proposition is not the admitted authority proposition")
+
+    delegation_id = work_order["work_order_admission_id"]
+    delegation = admissions.get(delegation_id)
+    if not delegation or not _is_accepted(delegation):
+        raise GovernanceError("work order has no accepted delegation")
+    if delegation.get("record_type") != "WORK_ORDER_DELEGATION":
+        raise GovernanceError("work order delegation has wrong record type")
+    if delegation.get("work_order_id") != work_order["work_order_id"]:
+        raise GovernanceError("work order delegation ID does not match work order")
+    if delegation.get("work_order_sha256") != canonical_sha(work_order):
+        raise GovernanceError("work order delegation work order hash mismatch")
+    if delegation.get("proposition_id") != work_order["proposition_id"]:
+        raise GovernanceError("work order delegation proposition mismatch")
+    if delegation.get("authority_ref") != work_order["authority_ref"]:
+        raise GovernanceError("work order delegation authority mismatch")
+    if delegation.get("accepted_base_commit") != work_order["accepted_base_commit"]:
+        raise GovernanceError("work order delegation base mismatch")
+    if delegation.get("commissioned_role") != work_order["commissioned_role"]:
+        raise GovernanceError("work order delegation role mismatch")
+    if delegation.get("allowed_mutations") != work_order["allowed_mutations"]:
+        raise GovernanceError("work order delegation mutation scope mismatch")
+    if delegation.get("proof_class") != work_order["proof_class"]:
+        raise GovernanceError("work order delegation proof scope mismatch")
 
     for dependency_id in work_order["dependencies"]:
         dependency = admissions.get(dependency_id)

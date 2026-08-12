@@ -103,6 +103,10 @@
       "type": "array",
       "uniqueItems": true
     },
+    "work_order_admission_id": {
+      "minLength": 1,
+      "type": "string"
+    },
     "work_order_id": {
       "minLength": 1,
       "type": "string"
@@ -111,6 +115,7 @@
   "required": [
     "schema_version",
     "work_order_id",
+    "work_order_admission_id",
     "gate",
     "stage",
     "proposition_id",
