@@ -31,6 +31,45 @@ def runtime_module(root: Path):
     return module
 
 
+def validate_declared_runtime_policy(manifest: dict, config: dict, hooks: dict) -> None:
+    policy = manifest.get("runtime_policy", {})
+    if policy.get("sandbox_mode") != "read-only" or policy.get("approval_policy") != "on-request":
+        raise ValidationError("Gate 0 permission policy mismatch")
+    if config.get("sandbox_mode") != policy["sandbox_mode"]:
+        raise ValidationError("project Codex sandbox mode does not match Gate 0 policy")
+    if config.get("approval_policy") != policy["approval_policy"]:
+        raise ValidationError("project Codex approval policy does not match Gate 0 policy")
+    if config.get("web_search") != policy.get("web_search"):
+        raise ValidationError("project Codex web-search policy does not match Gate 0 policy")
+    if config.get("tools", {}).get("view_image") is not policy.get("view_image_enabled"):
+        raise ValidationError("project Codex view_image policy does not match Gate 0 policy")
+    if config.get("apps", {}).get("_default", {}).get("enabled") is not policy.get("apps_enabled"):
+        raise ValidationError("project Codex app policy does not match Gate 0 policy")
+    if config.get("features", {}).get("apps") is not policy.get("apps_enabled"):
+        raise ValidationError("project Codex apps feature does not match Gate 0 policy")
+    if config.get("features", {}).get("remote_plugin") is not False:
+        raise ValidationError("remote plugin catalogue must be disabled for Gate 0")
+    if policy.get("pretool_matcher") != "*":
+        raise ValidationError(
+            "Gate 0 policy does not require full supported local-tool hook coverage"
+        )
+    for event in ("PreToolUse", "PostToolUse"):
+        groups = hooks.get(event, [])
+        if not groups or any(group.get("matcher") != "*" for group in groups):
+            raise ValidationError(f"{event} does not match every supported local tool")
+    if policy.get("spawn_must_name_exact_agent_type") is not True:
+        raise ValidationError("Gate 0 policy does not require exact custom agent_type at spawn")
+    if policy.get("known_hook_exempt_specialised_tools_must_be_absent_or_gate0_blocks") is not True:
+        raise ValidationError("Gate 0 policy does not fail closed on hook-exempt specialised tools")
+    expected_live_tools = [
+        "Bash:exact_nonce_bound_probe_only",
+        "spawn_agent:exact_next_agent_type_only",
+        "wait_agent:authorised_child_only",
+    ]
+    if manifest.get("allowed_live_local_tools") != expected_live_tools:
+        raise ValidationError("Gate 0 allowed live local-tool set is not the admitted minimal set")
+
+
 def validate_static(root: Path, *, require_clean: bool = True) -> None:
     if require_clean:
         status = subprocess.check_output(
@@ -41,17 +80,12 @@ def validate_static(root: Path, *, require_clean: bool = True) -> None:
     manifest = json.loads((root / "docs/governance/GATE0_ADMISSION_MANIFEST.json").read_text())
     if manifest.get("immediate_roles") != ["integration_auditor", "semantic_reviewer"]:
         raise ValidationError("immediate role set is not the admitted Gate 0 set")
-    policy = manifest.get("runtime_policy", {})
-    if policy.get("sandbox_mode") != "read-only" or policy.get("approval_policy") != "on-request":
-        raise ValidationError("Gate 0 permission policy mismatch")
     if (
         manifest.get("closure_actor") != "ordinary_wsl"
         or manifest.get("automatic_final_subagent_stop_closure") is not False
     ):
         raise ValidationError("Gate 0 closure policy mismatch")
     config = tomllib.loads((root / ".codex/config.toml").read_text())
-    if config.get("sandbox_mode") != "read-only" or config.get("approval_policy") != "on-request":
-        raise ValidationError("project Codex permission defaults mismatch")
     for role in ("integration-auditor", "semantic-reviewer"):
         data = tomllib.loads((root / ".codex/agents" / f"{role}.toml").read_text())
         if data.get("sandbox_mode") != "read-only":
@@ -60,6 +94,7 @@ def validate_static(root: Path, *, require_clean: bool = True) -> None:
     for event in ("SessionStart", "SubagentStart", "PreToolUse", "PostToolUse", "SubagentStop"):
         if event not in hooks:
             raise ValidationError(f"missing hook event: {event}")
+    validate_declared_runtime_policy(manifest, config, hooks)
     meta = yaml.safe_load(
         (root / ".agents/skills/nvda-semantic-orchestrator/agents/openai.yaml").read_text()
     )

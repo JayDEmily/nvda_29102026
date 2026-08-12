@@ -10,6 +10,8 @@ HOOK_PATH = ROOT / ".codex/hooks/gate0_attest.py"
 HOOKS_PATH = ROOT / ".codex/hooks.json"
 CONFIG_PATH = ROOT / ".codex/config.toml"
 RUNTIME_PATH = ROOT / "tools/gate0_runtime_evidence.py"
+VALIDATOR_PATH = ROOT / "tools/validate_gate0.py"
+MANIFEST_PATH = ROOT / "docs/governance/GATE0_ADMISSION_MANIFEST.json"
 
 
 def load_module(path: Path, name: str):
@@ -26,6 +28,17 @@ def runtime():
 
 def hook():
     return load_module(HOOK_PATH, "gate0_attest_policy_test")
+
+
+def validator():
+    return load_module(VALIDATOR_PATH, "validate_gate0_policy_test")
+
+
+def declared_policy_inputs():
+    manifest = json.loads(MANIFEST_PATH.read_text())
+    config = tomllib.loads(CONFIG_PATH.read_text())
+    hooks = json.loads(HOOKS_PATH.read_text())["hooks"]
+    return manifest, config, hooks
 
 
 def event(type_: str, **kwargs):
@@ -102,3 +115,33 @@ def test_recorded_gate0_failure_is_non_admissible_evidence():
     result = module.derive_attestation(arm, events)
     assert result["passed"] is False
     assert result["first_failure"] == "UNEXPECTED_LOCAL_TOOL:apply_patch"
+
+
+def test_static_validator_composes_full_declared_gate0_tool_policy():
+    module = validator()
+    manifest, config, hooks = declared_policy_inputs()
+    module.validate_declared_runtime_policy(manifest, config, hooks)
+
+
+def test_static_validator_rejects_reenabled_tool_surface():
+    module = validator()
+    manifest, config, hooks = declared_policy_inputs()
+    config["features"]["apps"] = True
+    try:
+        module.validate_declared_runtime_policy(manifest, config, hooks)
+    except module.ValidationError as exc:
+        assert "apps feature" in str(exc)
+    else:
+        raise AssertionError("Gate 0 static validator accepted re-enabled apps")
+
+
+def test_static_validator_rejects_narrowed_pretool_matcher():
+    module = validator()
+    manifest, config, hooks = declared_policy_inputs()
+    hooks["PreToolUse"][0]["matcher"] = "Bash"
+    try:
+        module.validate_declared_runtime_policy(manifest, config, hooks)
+    except module.ValidationError as exc:
+        assert "PreToolUse" in str(exc)
+    else:
+        raise AssertionError("Gate 0 static validator accepted incomplete local-tool coverage")
