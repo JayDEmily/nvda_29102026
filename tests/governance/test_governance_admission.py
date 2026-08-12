@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import importlib.util
+import inspect
 import json
 import subprocess
 from pathlib import Path
@@ -28,11 +29,47 @@ def git_repo(tmp_path: Path) -> tuple[Path, str, str]:
     subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
     subprocess.run(["git", "config", "user.email", "audit@example.invalid"], cwd=repo, check=True)
     subprocess.run(["git", "config", "user.name", "Audit Test"], cwd=repo, check=True)
+    auth = authority()
     (repo / "base.txt").write_text("base\n")
-    subprocess.run(["git", "add", "base.txt"], cwd=repo, check=True)
+    (repo / "docs/governance/admissions").mkdir(parents=True)
+    (repo / "docs/governance/admissions/AUTH-001.json").write_text(
+        json.dumps(auth, indent=2, sort_keys=True) + "\n"
+    )
+    base_state = {
+        "schema_version": "1.0.0",
+        "programme": "TEST",
+        "operational_status": "GATE0_PASS",
+        "accepted_semantic_foundation_root_commit": "0" * 40,
+        "candidate_control_commit": "0" * 40,
+        "gate0_proven_commit": "0" * 40,
+        "active_gate": "GATE1B",
+        "latest_admission_id": "AUTH-001",
+        "current_work_order": None,
+        "current_attempt": None,
+        "first_blocker": None,
+    }
+    (repo / "docs/governance/ADMITTED_STATE.json").write_text(
+        json.dumps(base_state, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
     subprocess.run(["git", "commit", "-qm", "base"], cwd=repo, check=True)
+    prior = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+
+    wo = work_order(authority_record=auth)
+    wo["allowed_mutations"] = ["docs/example.md"]
+    delegation = work_order_admission(wo=wo, authority_record=auth, delegated_from=prior)
+    (repo / f"docs/governance/admissions/{delegation['admission_id']}.json").write_text(
+        json.dumps(delegation, indent=2, sort_keys=True) + "\n"
+    )
+    active_state = copy.deepcopy(base_state)
+    active_state["current_work_order"] = wo["work_order_id"]
+    (repo / "docs/governance/ADMITTED_STATE.json").write_text(
+        json.dumps(active_state, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "admit work order"], cwd=repo, check=True)
     base = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
-    (repo / "docs").mkdir()
+    (repo / "docs").mkdir(exist_ok=True)
     (repo / "docs/example.md").write_text("candidate\n")
     subprocess.run(["git", "add", "docs/example.md"], cwd=repo, check=True)
     subprocess.run(["git", "commit", "-qm", "candidate"], cwd=repo, check=True)
@@ -105,6 +142,17 @@ def semantic_index_repo(tmp_path: Path) -> tuple[Path, dict, dict]:
         ).hexdigest(),
         "admitted_at_utc": "2026-08-12T00:00:00Z",
     }
+    admissions_dir = repo / "docs/governance/admissions"
+    admissions_dir.mkdir(parents=True)
+    (admissions_dir / "ADM-INDEX-001.json").write_text(
+        json.dumps(admission_record, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(
+        ["git", "add", "docs/governance/admissions/ADM-INDEX-001.json"],
+        cwd=repo,
+        check=True,
+    )
+    subprocess.run(["git", "commit", "-qm", "admit semantic index"], cwd=repo, check=True)
     return repo, index, admission_record
 
 
@@ -195,7 +243,12 @@ def work_order(*, authority_record: dict | None = None) -> dict:
     }
 
 
-def work_order_admission(*, wo: dict | None = None, authority_record: dict | None = None) -> dict:
+def work_order_admission(
+    *,
+    wo: dict | None = None,
+    authority_record: dict | None = None,
+    delegated_from: str = "0" * 40,
+) -> dict:
     auth = authority_record or authority()
     item = wo or work_order(authority_record=auth)
     return {
@@ -206,8 +259,8 @@ def work_order_admission(*, wo: dict | None = None, authority_record: dict | Non
         "proposition_id": item["proposition_id"],
         "authority_ref": copy.deepcopy(item["authority_ref"]),
         "work_order_id": item["work_order_id"],
-        "work_order_sha256": canonical_sha(item),
-        "accepted_base_commit": item["accepted_base_commit"],
+        "work_order_scope_sha256": work_order_scope_sha_for_test(item),
+        "delegated_from_commit": delegated_from,
         "commissioned_role": item["commissioned_role"],
         "allowed_mutations": copy.deepcopy(item["allowed_mutations"]),
         "proof_class": item["proof_class"],
@@ -215,9 +268,38 @@ def work_order_admission(*, wo: dict | None = None, authority_record: dict | Non
     }
 
 
+def work_order_scope_sha_for_test(item: dict) -> str:
+    fields = (
+        "work_order_id",
+        "gate",
+        "stage",
+        "proposition_id",
+        "authority_ref",
+        "authority_status",
+        "commissioned_role",
+        "allowed_mutations",
+        "proof_class",
+        "falsifier",
+        "pass_means",
+        "pass_does_not_mean",
+        "dependencies",
+        "stop_conditions",
+    )
+    return canonical_sha({field: item[field] for field in fields})
+
+
 def records_for_work_order(auth: dict, wo: dict, *extra: dict) -> dict[str, dict]:
     delegation = work_order_admission(wo=wo, authority_record=auth)
     return accepted_records(auth, delegation, *extra)
+
+
+def validate_work_order_unit(module, wo: dict, records: dict, *, accepted_base_commit: str):
+    module._validate_work_order_against_admissions(
+        wo,
+        records,
+        accepted_base_commit=accepted_base_commit,
+        accepted_base_parent="0" * 40,
+    )
 
 
 def attempt(*, wo: dict | None = None) -> dict:
@@ -293,25 +375,28 @@ def test_required_governance_schemas_exist_and_are_strict_objects():
 
 def test_pending_semantic_index_is_not_an_accepted_proposition_source():
     module = load_validator()
-    data = json.loads((ROOT / "docs/governance/SEMANTIC_INDEX.json").read_text())
     with pytest.raises(module.GovernanceError, match="not accepted"):
-        module.accepted_semantic_index_entries(data)
+        module.accepted_semantic_index_entries(ROOT)
 
 
 def test_accepted_semantic_index_requires_real_admission_and_exact_source_binding(tmp_path):
     module = load_validator()
-    repo, index, adm = semantic_index_repo(tmp_path)
-    entries = module.accepted_semantic_index_entries(
-        index, admissions={adm["admission_id"]: adm}, repo_root=repo
-    )
+    repo, _, _ = semantic_index_repo(tmp_path)
+    entries = module.accepted_semantic_index_entries(repo)
     assert set(entries) == {"IDX-1"}
 
 
 def test_nonexistent_semantic_index_admission_is_rejected(tmp_path):
     module = load_validator()
     repo, index, _ = semantic_index_repo(tmp_path)
+    index["admission_id"] = "NONEXISTENT-ADMISSION"
+    (repo / "docs/governance/SEMANTIC_INDEX.json").write_text(
+        json.dumps(index, indent=2, sort_keys=True) + "\n"
+    )
+    subprocess.run(["git", "add", "docs/governance/SEMANTIC_INDEX.json"], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "bad admission pointer"], cwd=repo, check=True)
     with pytest.raises(module.GovernanceError, match="semantic index admission"):
-        module.accepted_semantic_index_entries(index, admissions={}, repo_root=repo)
+        module.accepted_semantic_index_entries(repo)
 
 
 def test_semantic_index_same_json_with_different_raw_bytes_is_not_the_admitted_artifact(tmp_path):
@@ -320,7 +405,7 @@ def test_semantic_index_same_json_with_different_raw_bytes_is_not_the_admitted_a
     path = repo / "docs/governance/SEMANTIC_INDEX.json"
     path.write_text(json.dumps(index, separators=(",", ":")) + "\n")
     with pytest.raises(module.GovernanceError, match="bytes"):
-        module.accepted_semantic_index_entries(
+        module._accepted_semantic_index_entries(
             index, admissions={adm["admission_id"]: adm}, repo_root=repo
         )
 
@@ -331,7 +416,7 @@ def test_semantic_index_admission_must_bind_exact_index_bytes(tmp_path):
     bad = copy.deepcopy(adm)
     bad["artifact_sha256"] = "0" * 64
     with pytest.raises(module.GovernanceError, match="hash mismatch"):
-        module.accepted_semantic_index_entries(
+        module._accepted_semantic_index_entries(
             index, admissions={bad["admission_id"]: bad}, repo_root=repo
         )
 
@@ -357,7 +442,7 @@ def test_semantic_index_source_ref_must_be_admitted_and_byte_exact(tmp_path):
         )
     ).hexdigest()
     with pytest.raises(module.GovernanceError, match="source authority"):
-        module.accepted_semantic_index_entries(
+        module._accepted_semantic_index_entries(
             bad_index, admissions={bad_adm["admission_id"]: bad_adm}, repo_root=repo
         )
 
@@ -392,7 +477,7 @@ def test_schema_valid_but_unauthorised_work_order_rejected():
     wo = work_order(authority_record=auth)
     wo["authority_status"] = "REQUIRES_ACCEPTANCE"
     with pytest.raises(module.GovernanceError, match="GOVERNED"):
-        module.validate_work_order(
+        validate_work_order_unit(module,
             wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
         )
 
@@ -426,7 +511,7 @@ def test_dependencies_must_reference_accepted_admission_ids():
     wo = work_order(authority_record=auth)
     wo["dependencies"] = ["ADM-MISSING"]
     with pytest.raises(module.GovernanceError, match="dependency"):
-        module.validate_work_order(
+        validate_work_order_unit(module,
             wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
         )
 
@@ -437,7 +522,7 @@ def test_rejected_record_cannot_become_current_by_active_path_placement():
     rejected["disposition"] = "REJECTED"
     wo = work_order(authority_record=rejected)
     with pytest.raises(module.GovernanceError, match="accepted authority"):
-        module.validate_work_order(
+        validate_work_order_unit(module,
             wo,
             records_for_work_order(rejected, wo),
             accepted_base_commit="a" * 40,
@@ -474,7 +559,7 @@ def test_work_order_cannot_self_promote_new_programme_rule():
     wo = work_order(authority_record=auth)
     wo["proposition_id"] = "NEW-PROGRAMME-RULE"
     with pytest.raises(module.GovernanceError, match="proposition"):
-        module.validate_work_order(
+        validate_work_order_unit(module,
             wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
         )
 
@@ -485,7 +570,7 @@ def test_authority_hash_must_bind_exact_admitted_record():
     wo = work_order(authority_record=auth)
     wo["authority_ref"]["sha256"] = "0" * 64
     with pytest.raises(module.GovernanceError, match="hash"):
-        module.validate_work_order(
+        validate_work_order_unit(module,
             wo, records_for_work_order(auth, wo), accepted_base_commit="a" * 40
         )
 
@@ -495,7 +580,7 @@ def test_work_order_requires_exact_admitted_delegation():
     auth = authority()
     wo = work_order(authority_record=auth)
     with pytest.raises(module.GovernanceError, match="delegation"):
-        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+        validate_work_order_unit(module, wo, accepted_records(auth), accepted_base_commit="a" * 40)
 
 
 def test_work_order_delegation_binds_exact_scope_and_bytes():
@@ -503,11 +588,11 @@ def test_work_order_delegation_binds_exact_scope_and_bytes():
     auth = authority()
     wo = work_order(authority_record=auth)
     records = records_for_work_order(auth, wo)
-    module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+    validate_work_order_unit(module, wo, records, accepted_base_commit="a" * 40)
     widened = copy.deepcopy(wo)
     widened["allowed_mutations"] = ["docs/other.md"]
     with pytest.raises(module.GovernanceError, match=r"work order hash|scope"):
-        module.validate_work_order(widened, records, accepted_base_commit="a" * 40)
+        validate_work_order_unit(module, widened, records, accepted_base_commit="a" * 40)
 
 
 @pytest.mark.parametrize("frozen_path", ["AGENTS.md", "PLANS.md"])
@@ -518,7 +603,7 @@ def test_even_exact_delegation_cannot_authorise_frozen_programme_authority(froze
     wo["allowed_mutations"] = [frozen_path]
     records = records_for_work_order(auth, wo)
     with pytest.raises(module.GovernanceError, match="frozen programme authority"):
-        module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+        validate_work_order_unit(module, wo, records, accepted_base_commit="a" * 40)
 
 
 def test_root_governance_files_declare_frozen_authority_boundary():
@@ -530,6 +615,24 @@ def test_root_governance_files_declare_frozen_authority_boundary():
     assert "must fail closed" in plans
 
 
+def test_public_work_order_validation_loads_delegation_from_git_control_commit(tmp_path):
+    module = load_validator()
+    repo, base, _ = git_repo(tmp_path)
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["accepted_base_commit"] = base
+    wo["allowed_mutations"] = ["docs/example.md"]
+    module.validate_work_order(repo, wo)
+
+
+def test_public_admission_transaction_accepts_no_caller_admission_or_state_map():
+    module = load_validator()
+    parameters = inspect.signature(module.execute_admission_transaction).parameters
+    assert "admissions" not in parameters
+    assert "accepted_base_commit" not in parameters
+    assert "state" not in parameters
+
+
 def test_valid_transaction_is_admissible_only_after_independent_review():
     module = load_validator()
     auth = authority()
@@ -538,7 +641,7 @@ def test_valid_transaction_is_admissible_only_after_independent_review():
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
     records = records_for_work_order(auth, wo)
-    module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+    validate_work_order_unit(module, wo, records, accepted_base_commit="a" * 40)
     module.validate_attempt(wo, att)
     module.validate_review(wo, att, rev)
     module.validate_admission(wo, att, rev, adm)
@@ -573,31 +676,19 @@ def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path
     att["actual_changed_paths"] = ["docs/example.md"]
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
-    records = records_for_work_order(auth, wo)
-    state = {
-        "latest_admission_id": "ADM-OLD",
-        "candidate_control_commit": base,
-        "current_work_order": "WO-001",
-        "current_attempt": "ATT-001",
-        "first_blocker": "DEF-OLD",
-        "unrelated": "preserved",
-    }
     updated = module.execute_admission_transaction(
         repo,
-        state,
         wo,
         att,
         rev,
         adm,
-        admissions=records,
-        accepted_base_commit=base,
     )
     assert updated["latest_admission_id"] == adm["admission_id"]
     assert updated["candidate_control_commit"] == candidate
     assert updated["current_work_order"] is None
     assert updated["current_attempt"] is None
     assert updated["first_blocker"] is None
-    assert updated["unrelated"] == "preserved"
+    assert updated["programme"] == "TEST"
 
 
 def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
@@ -606,6 +697,7 @@ def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
     auth = authority()
     wo = work_order(authority_record=auth)
     wo["accepted_base_commit"] = base
+    wo["allowed_mutations"] = ["docs/example.md"]
     att = attempt(wo=wo)
     att["accepted_base_commit"] = base
     att["candidate_commit"] = "f" * 40
@@ -618,8 +710,6 @@ def test_canonical_transaction_rejects_fictitious_candidate_commit(tmp_path):
             att,
             rev,
             adm,
-            admissions=records_for_work_order(auth, wo),
-            accepted_base_commit=base,
         )
 
 
@@ -644,8 +734,6 @@ def test_canonical_transaction_rejects_self_declared_unreceipted_worker_identity
             att,
             rev,
             adm,
-            admissions=records_for_work_order(auth, wo),
-            accepted_base_commit=base,
         )
 
 
@@ -672,8 +760,6 @@ def test_canonical_transaction_requires_distinct_authenticated_runtime_receipts(
             att,
             rev,
             adm,
-            admissions=records_for_work_order(auth, wo),
-            accepted_base_commit=base,
         )
 
 

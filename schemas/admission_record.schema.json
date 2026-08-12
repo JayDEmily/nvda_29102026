@@ -117,7 +117,7 @@
     {
       "additionalProperties": false,
       "properties": {
-        "accepted_base_commit": {
+        "delegated_from_commit": {
           "pattern": "^[0-9a-f]{40}$",
           "type": "string"
         },
@@ -194,7 +194,8 @@
           "minLength": 1,
           "type": "string"
         },
-        "work_order_sha256": {
+        "work_order_scope_sha256": {
+          "description": "SHA-256 of canonical JSON over all delegated work-order scope fields except the self-referential accepted_base_commit and work_order_admission_id.",
           "pattern": "^[0-9a-f]{64}$",
           "type": "string"
         }
@@ -207,8 +208,8 @@
         "proposition_id",
         "authority_ref",
         "work_order_id",
-        "work_order_sha256",
-        "accepted_base_commit",
+        "work_order_scope_sha256",
+        "delegated_from_commit",
         "commissioned_role",
         "allowed_mutations",
         "proof_class",

@@ -30,6 +30,9 @@ KNOWN_ROLES = {
 }
 PROOF_CLASSES = {"MECHANICAL", "SEMANTIC", "BOTH"}
 FROZEN_AUTHORITY_PATHS = {"AGENTS.md", "PLANS.md"}
+ADMISSIONS_DIR = "docs/governance/admissions"
+ADMITTED_STATE_PATH = "docs/governance/ADMITTED_STATE.json"
+SEMANTIC_INDEX_PATH = "docs/governance/SEMANTIC_INDEX.json"
 
 
 class ValidatedAdmission:
@@ -52,6 +55,37 @@ class ValidatedAdmission:
 def canonical_sha(record: dict[str, Any]) -> str:
     payload = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
     return hashlib.sha256(payload).hexdigest()
+
+
+WORK_ORDER_SCOPE_FIELDS = (
+    "work_order_id",
+    "gate",
+    "stage",
+    "proposition_id",
+    "authority_ref",
+    "authority_status",
+    "commissioned_role",
+    "allowed_mutations",
+    "proof_class",
+    "falsifier",
+    "pass_means",
+    "pass_does_not_mean",
+    "dependencies",
+    "stop_conditions",
+)
+
+
+def work_order_scope_sha(work_order: dict[str, Any]) -> str:
+    """Hash every delegated work-order field except the self-referential execution base.
+
+    The delegation record is committed *before* the worker executes.  Its containing
+    commit becomes ``work_order.accepted_base_commit``.  Hashing that commit inside
+    the delegation record would therefore be circular.  Instead the delegation binds
+    every material execution-scope field and Git containment binds the execution base.
+    """
+    _require(work_order, set(WORK_ORDER_SCOPE_FIELDS), "work order scope")
+    scope = {field: work_order[field] for field in WORK_ORDER_SCOPE_FIELDS}
+    return canonical_sha(scope)
 
 
 def _require(record: dict[str, Any], fields: set[str], label: str) -> None:
@@ -79,6 +113,79 @@ def _git_blob(repo_root: Path, commit: str, path: str) -> bytes:
         raise GovernanceError(f"Git candidate does not contain required path: {path}") from exc
 
 
+def _git_json_blob(repo_root: Path, commit: str, path: str) -> dict[str, Any]:
+    try:
+        data = json.loads(_git_blob(repo_root, commit, path))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise GovernanceError(f"Git JSON is invalid: {path}") from exc
+    if not isinstance(data, dict):
+        raise GovernanceError(f"Git JSON is not an object: {path}")
+    return data
+
+
+def _git_commit_parent(repo_root: Path, commit: str) -> str:
+    try:
+        parts = (
+            subprocess.check_output(
+                ["git", "rev-list", "--parents", "-n", "1", commit],
+                cwd=repo_root,
+                text=True,
+            )
+            .strip()
+            .split()
+        )
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError("Git commit is not present in the repository") from exc
+    if len(parts) != 2:
+        raise GovernanceError("governance control commit must have exactly one parent")
+    return parts[1]
+
+
+def _git_changed_paths(repo_root: Path, commit: str) -> list[str]:
+    try:
+        changed = subprocess.check_output(
+            ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", commit],
+            cwd=repo_root,
+            text=True,
+        ).splitlines()
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError("cannot derive Git changed paths") from exc
+    return sorted(path for path in changed if path)
+
+
+def load_admissions_from_git(repo_root: Path, commit: str) -> dict[str, dict[str, Any]]:
+    """Load admitted records from an immutable Git commit, never caller declarations."""
+    try:
+        paths = subprocess.check_output(
+            ["git", "ls-tree", "-r", "--name-only", commit, "--", ADMISSIONS_DIR],
+            cwd=repo_root,
+            text=True,
+        ).splitlines()
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError("cannot enumerate admitted records from Git") from exc
+    result: dict[str, dict[str, Any]] = {}
+    for path in sorted(paths):
+        if not path.endswith(".json"):
+            continue
+        record = _git_json_blob(repo_root, commit, path)
+        admission_id = record.get("admission_id")
+        if not isinstance(admission_id, str) or not admission_id:
+            raise GovernanceError(f"admission record has no admission ID: {path}")
+        expected_path = f"{ADMISSIONS_DIR}/{admission_id}.json"
+        if path != expected_path:
+            raise GovernanceError(
+                f"admission record path does not match admission ID: {path} != {expected_path}"
+            )
+        if admission_id in result:
+            raise GovernanceError(f"duplicate admission ID in Git: {admission_id}")
+        result[admission_id] = record
+    return result
+
+
+def load_admitted_state_from_git(repo_root: Path, commit: str) -> dict[str, Any]:
+    return _git_json_blob(repo_root, commit, ADMITTED_STATE_PATH)
+
+
 def _source_authority_hashes(repo_root: Path, commit: str) -> dict[str, str]:
     text = _git_blob(repo_root, commit, "authority/AUTHORITY_MANIFEST.md").decode()
     result: dict[str, str] = {}
@@ -102,16 +209,14 @@ def _source_authority_hashes(repo_root: Path, commit: str) -> dict[str, str]:
     return result
 
 
-def accepted_semantic_index_entries(
+def _accepted_semantic_index_entries(
     index: dict[str, Any],
     *,
-    admissions: dict[str, dict[str, Any]] | None = None,
-    repo_root: Path | None = None,
+    admissions: dict[str, dict[str, Any]],
+    repo_root: Path,
 ) -> dict[str, dict[str, Any]]:
     if index.get("status") != "ACCEPTED" or not index.get("admission_id"):
         raise GovernanceError("semantic index is not accepted")
-    if admissions is None or repo_root is None:
-        raise GovernanceError("accepted semantic index requires admission and repository binding")
     admission = admissions.get(index["admission_id"])
     if not admission or not _is_accepted(admission):
         raise GovernanceError("semantic index admission is absent or not accepted")
@@ -176,11 +281,31 @@ def accepted_semantic_index_entries(
     return result
 
 
-def validate_work_order(
+def accepted_semantic_index_entries(repo_root: Path) -> dict[str, dict[str, Any]]:
+    """Return schedulable semantic-index entries only from the current Git HEAD.
+
+    The PM-facing seam does not accept an admissions mapping or a caller-supplied index.
+    The current control commit is the durable source for both the active index and its
+    admission records.  The referenced semantic-result admission still binds the exact
+    candidate index blob that was independently reviewed.
+    """
+    try:
+        head = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=repo_root, text=True
+        ).strip()
+    except (subprocess.CalledProcessError, OSError) as exc:
+        raise GovernanceError("cannot resolve current Git HEAD") from exc
+    index = _git_json_blob(repo_root, head, SEMANTIC_INDEX_PATH)
+    admissions = load_admissions_from_git(repo_root, head)
+    return _accepted_semantic_index_entries(index, admissions=admissions, repo_root=repo_root)
+
+
+def _validate_work_order_against_admissions(
     work_order: dict[str, Any],
     admissions: dict[str, dict[str, Any]],
     *,
     accepted_base_commit: str,
+    accepted_base_parent: str,
 ) -> None:
     _require(
         work_order,
@@ -242,14 +367,14 @@ def validate_work_order(
         raise GovernanceError("work order delegation has wrong record type")
     if delegation.get("work_order_id") != work_order["work_order_id"]:
         raise GovernanceError("work order delegation ID does not match work order")
-    if delegation.get("work_order_sha256") != canonical_sha(work_order):
-        raise GovernanceError("work order delegation work order hash mismatch")
+    if delegation.get("work_order_scope_sha256") != work_order_scope_sha(work_order):
+        raise GovernanceError("work order delegation scope hash mismatch")
     if delegation.get("proposition_id") != work_order["proposition_id"]:
         raise GovernanceError("work order delegation proposition mismatch")
     if delegation.get("authority_ref") != work_order["authority_ref"]:
         raise GovernanceError("work order delegation authority mismatch")
-    if delegation.get("accepted_base_commit") != work_order["accepted_base_commit"]:
-        raise GovernanceError("work order delegation base mismatch")
+    if delegation.get("delegated_from_commit") != accepted_base_parent:
+        raise GovernanceError("work order delegation parent/base provenance mismatch")
     if delegation.get("commissioned_role") != work_order["commissioned_role"]:
         raise GovernanceError("work order delegation role mismatch")
     if delegation.get("allowed_mutations") != work_order["allowed_mutations"]:
@@ -261,6 +386,46 @@ def validate_work_order(
         dependency = admissions.get(dependency_id)
         if not dependency or not _is_accepted(dependency):
             raise GovernanceError(f"work order dependency is not admitted: {dependency_id}")
+
+
+def validate_work_order(repo_root: Path, work_order: dict[str, Any]) -> None:
+    """Validate an executable work order only against Git-rooted admitted state.
+
+    The work-order admission is stored in the exact execution-base commit.  Because a
+    commit cannot contain its own hash, the delegation binds the complete material
+    work-order scope (excluding ``accepted_base_commit``) and records the preceding
+    accepted commit.  Git containment supplies the execution-base identity.
+    """
+    accepted_base = work_order.get("accepted_base_commit")
+    if not isinstance(accepted_base, str) or not accepted_base:
+        raise GovernanceError("work order has no accepted Git base")
+    accepted_base_parent = _git_commit_parent(repo_root, accepted_base)
+    admissions = load_admissions_from_git(repo_root, accepted_base)
+    _validate_work_order_against_admissions(
+        work_order,
+        admissions,
+        accepted_base_commit=accepted_base,
+        accepted_base_parent=accepted_base_parent,
+    )
+
+    delegation_id = work_order["work_order_admission_id"]
+    delegation_path = f"{ADMISSIONS_DIR}/{delegation_id}.json"
+    changed_paths = _git_changed_paths(repo_root, accepted_base)
+    allowed_control_paths = {delegation_path, ADMITTED_STATE_PATH}
+    if delegation_path not in changed_paths:
+        raise GovernanceError("execution-base commit does not add its work-order delegation")
+    unexpected_control_paths = sorted(set(changed_paths) - allowed_control_paths)
+    if unexpected_control_paths:
+        raise GovernanceError(
+            "work-order admission control commit contains unrelated changes: "
+            + ", ".join(unexpected_control_paths)
+        )
+
+    state = load_admitted_state_from_git(repo_root, accepted_base)
+    if state.get("current_work_order") != work_order["work_order_id"]:
+        raise GovernanceError("execution-base admitted state does not activate the work order")
+    if state.get("current_attempt") is not None:
+        raise GovernanceError("execution-base admitted state already contains an active attempt")
 
 
 def validate_attempt(work_order: dict[str, Any], attempt: dict[str, Any]) -> None:
@@ -478,15 +643,13 @@ def validate_admission_transaction(
     attempt: dict[str, Any],
     review: dict[str, Any],
     admission: dict[str, Any],
-    *,
-    admissions: dict[str, dict[str, Any]],
-    accepted_base_commit: str,
 ) -> ValidatedAdmission:
     """Validate the only state-advancing semantic admission path.
 
-    Git facts are derived here rather than accepted from caller declarations.
+    Git facts and admitted authority/delegation state are derived here rather than
+    accepted from caller declarations.
     """
-    validate_work_order(work_order, admissions, accepted_base_commit=accepted_base_commit)
+    validate_work_order(repo_root, work_order)
     validate_attempt(work_order, attempt)
     try:
         runtime_receipts = runtime_identity.load_runtime_receipts(repo_root)
@@ -541,14 +704,10 @@ def _advance_state_after_admission(
 
 def execute_admission_transaction(
     repo_root: Path,
-    state: dict[str, Any],
     work_order: dict[str, Any],
     attempt: dict[str, Any],
     review: dict[str, Any],
     admission: dict[str, Any],
-    *,
-    admissions: dict[str, dict[str, Any]],
-    accepted_base_commit: str,
 ) -> dict[str, Any]:
     """Validate the complete semantic transaction and only then advance state.
 
@@ -556,14 +715,16 @@ def execute_admission_transaction(
     constructed validation wrapper; the public state-advancing seam composes the full
     authority/delegation, runtime-identity, Git, review and admission checks itself.
     """
+    accepted_base = work_order.get("accepted_base_commit")
+    if not isinstance(accepted_base, str) or not accepted_base:
+        raise GovernanceError("work order has no accepted Git base")
+    state = load_admitted_state_from_git(repo_root, accepted_base)
     validated = validate_admission_transaction(
         repo_root,
         work_order,
         attempt,
         review,
         admission,
-        admissions=admissions,
-        accepted_base_commit=accepted_base_commit,
     )
     return _advance_state_after_admission(state, validated)
 
@@ -625,13 +786,7 @@ def validate_repository_static(root: Path) -> None:
         if index.get("admission_id") is not None or index.get("entries") != []:
             raise GovernanceError("pending semantic index must be empty and unadmitted")
     elif index.get("status") == "ACCEPTED":
-        admissions: dict[str, dict[str, Any]] = {}
-        for path in sorted((root / "docs/governance/admissions").glob("*.json")):
-            record = json.loads(path.read_text())
-            admission_id = record.get("admission_id")
-            if admission_id:
-                admissions[admission_id] = record
-        accepted_semantic_index_entries(index, admissions=admissions, repo_root=root)
+        accepted_semantic_index_entries(root)
     else:
         raise GovernanceError("semantic index has invalid status")
 
