@@ -1,0 +1,320 @@
+from __future__ import annotations
+
+import copy
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[2]
+VALIDATOR = ROOT / "tools/validate_governance.py"
+
+
+def load_validator():
+    assert VALIDATOR.is_file(), "Unit 5 seam: tools/validate_governance.py is not implemented yet"
+    spec = importlib.util.spec_from_file_location("validate_governance", VALIDATOR)
+    assert spec and spec.loader
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def canonical_sha(record: dict) -> str:
+    payload = json.dumps(record, sort_keys=True, separators=(",", ":")).encode()
+    return hashlib.sha256(payload).hexdigest()
+
+
+def authority(*, proposition_id: str = "PROP-001", admission_id: str = "AUTH-001") -> dict:
+    return {
+        "schema_version": "1.0.0",
+        "admission_id": admission_id,
+        "record_type": "AUTHORITY",
+        "disposition": "ACCEPTED",
+        "jurisdiction": "DOMAIN_SEMANTICS",
+        "proposition_id": proposition_id,
+        "accepted_git_commit": "a" * 40,
+        "admitted_at_utc": "2026-08-12T00:00:00Z",
+    }
+
+
+def accepted_records(*records: dict) -> dict[str, dict]:
+    return {record["admission_id"]: record for record in records}
+
+
+def work_order(*, authority_record: dict | None = None) -> dict:
+    auth = authority_record or authority()
+    return {
+        "schema_version": "1.0.0",
+        "work_order_id": "WO-001",
+        "gate": "GATE1B",
+        "stage": "SEMANTIC_DERIVATION",
+        "proposition_id": auth["proposition_id"],
+        "authority_ref": {"admission_id": auth["admission_id"], "sha256": canonical_sha(auth)},
+        "authority_status": "GOVERNED",
+        "accepted_base_commit": "a" * 40,
+        "commissioned_role": "semantic_worker",
+        "allowed_mutations": [],
+        "proof_class": "SEMANTIC",
+        "falsifier": "Find accepted source evidence that contradicts the proposition.",
+        "pass_means": "The bounded semantic proposition survives independent falsification.",
+        "pass_does_not_mean": "Any implementation or downstream gate is accepted.",
+        "dependencies": [],
+        "stop_conditions": ["Stop on any authority conflict or unsupported semantic inference."],
+    }
+
+
+def attempt(*, wo: dict | None = None) -> dict:
+    item = wo or work_order()
+    return {
+        "schema_version": "1.0.0",
+        "attempt_id": "ATT-001",
+        "work_order_id": item["work_order_id"],
+        "actor_id": "worker-thread-1",
+        "actor_role": item["commissioned_role"],
+        "actor_thread_id": "thread-1",
+        "accepted_base_commit": item["accepted_base_commit"],
+        "candidate_commit": "b" * 40,
+        "candidate_sha256": None,
+        "actual_changed_paths": [],
+        "proof_results": [
+            {"command": "semantic-falsification", "outcome": "PASS", "evidence_sha256": "c" * 64}
+        ],
+    }
+
+
+def review(*, wo: dict | None = None, att: dict | None = None) -> dict:
+    item = wo or work_order()
+    candidate = att or attempt(wo=item)
+    return {
+        "schema_version": "1.0.0",
+        "review_id": "REV-001",
+        "work_order_id": item["work_order_id"],
+        "attempt_id": candidate["attempt_id"],
+        "reviewer_id": "reviewer-thread-2",
+        "reviewer_thread_id": "thread-2",
+        "candidate_commit": candidate["candidate_commit"],
+        "candidate_sha256": candidate["candidate_sha256"],
+        "authority_ref": copy.deepcopy(item["authority_ref"]),
+        "authority_re_read": True,
+        "legitimacy": "AUTHORISED",
+        "proof_quality": "PROVEN",
+        "falsification_evidence": ["Re-derived authority and attempted a contradiction."],
+        "limitations": [],
+    }
+
+
+def admission(*, wo: dict | None = None, att: dict | None = None, rev: dict | None = None) -> dict:
+    item = wo or work_order()
+    candidate = att or attempt(wo=item)
+    audit = rev or review(wo=item, att=candidate)
+    return {
+        "schema_version": "1.0.0",
+        "admission_id": "ADM-001",
+        "record_type": "SEMANTIC_RESULT",
+        "disposition": "ACCEPTED",
+        "proposition_id": item["proposition_id"],
+        "authority_ref": copy.deepcopy(item["authority_ref"]),
+        "work_order_id": item["work_order_id"],
+        "attempt_id": candidate["attempt_id"],
+        "review_id": audit["review_id"],
+        "accepted_base_commit": item["accepted_base_commit"],
+        "candidate_commit": candidate["candidate_commit"],
+        "candidate_sha256": candidate["candidate_sha256"],
+        "admitted_at_utc": "2026-08-12T00:00:00Z",
+    }
+
+
+def test_required_governance_schemas_exist_and_are_strict_objects():
+    for name in ["semantic_index", "work_order", "attempt_record", "review"]:
+        data = json.loads((ROOT / "schemas" / f"{name}.schema.json").read_text())
+        assert data["type"] == "object"
+        assert data["additionalProperties"] is False
+        assert data["required"]
+
+
+def test_pending_semantic_index_is_not_an_accepted_proposition_source():
+    module = load_validator()
+    data = json.loads((ROOT / "docs/governance/SEMANTIC_INDEX.json").read_text())
+    with pytest.raises(module.GovernanceError, match="not accepted"):
+        module.accepted_semantic_index_entries(data)
+
+
+def test_role_mismatch_rejected():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    att = attempt(wo=wo)
+    att["actor_role"] = "integration_auditor"
+    with pytest.raises(module.GovernanceError, match="role"):
+        module.validate_attempt(wo, att)
+
+
+def test_review_of_attempt_a_cannot_admit_attempt_b():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    att_a = attempt(wo=wo)
+    att_b = copy.deepcopy(att_a)
+    att_b["attempt_id"] = "ATT-002"
+    att_b["candidate_commit"] = "d" * 40
+    rev = review(wo=wo, att=att_a)
+    adm = admission(wo=wo, att=att_b, rev=rev)
+    with pytest.raises(module.GovernanceError, match="attempt"):
+        module.validate_admission(wo, att_b, rev, adm)
+
+
+def test_schema_valid_but_unauthorised_work_order_rejected():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["authority_status"] = "REQUIRES_ACCEPTANCE"
+    with pytest.raises(module.GovernanceError, match="GOVERNED"):
+        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+
+
+def test_proof_quality_pass_cannot_overcome_legitimacy_rejection():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    att = attempt(wo=wo)
+    rev = review(wo=wo, att=att)
+    rev["legitimacy"] = "NOT_AUTHORISED"
+    adm = admission(wo=wo, att=att, rev=rev)
+    with pytest.raises(module.GovernanceError, match="legitimacy"):
+        module.validate_admission(wo, att, rev, adm)
+
+
+def test_candidate_commit_mismatch_rejected():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    att = attempt(wo=wo)
+    rev = review(wo=wo, att=att)
+    rev["candidate_commit"] = "f" * 40
+    with pytest.raises(module.GovernanceError, match="candidate"):
+        module.validate_review(wo, att, rev)
+
+
+def test_dependencies_must_reference_accepted_admission_ids():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["dependencies"] = ["ADM-MISSING"]
+    with pytest.raises(module.GovernanceError, match="dependency"):
+        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+
+
+def test_rejected_record_cannot_become_current_by_active_path_placement():
+    module = load_validator()
+    rejected = authority(admission_id="AUTH-REJECTED")
+    rejected["disposition"] = "REJECTED"
+    wo = work_order(authority_record=rejected)
+    with pytest.raises(module.GovernanceError, match="accepted authority"):
+        module.validate_work_order(
+            wo,
+            accepted_records(rejected),
+            accepted_base_commit="a" * 40,
+        )
+
+
+def test_admitted_state_disagreement_with_git_or_admission_fails_closed():
+    module = load_validator()
+    gate0 = {
+        "admission_id": "GATE0-001",
+        "disposition": "GATE0_PASS",
+        "proven_commit": "a" * 40,
+    }
+    state = {
+        "operational_status": "GATE0_PASS",
+        "candidate_control_commit": "a" * 40,
+        "gate0_proven_commit": "a" * 40,
+        "latest_admission_id": "GATE0-001",
+    }
+    module.validate_admitted_state_binding(
+        state, current_git_parent="a" * 40, admissions={"GATE0-001": gate0}
+    )
+    bad = copy.deepcopy(state)
+    bad["candidate_control_commit"] = "b" * 40
+    with pytest.raises(module.GovernanceError, match="Git"):
+        module.validate_admitted_state_binding(
+            bad, current_git_parent="a" * 40, admissions={"GATE0-001": gate0}
+        )
+
+
+def test_work_order_cannot_self_promote_new_programme_rule():
+    module = load_validator()
+    auth = authority(proposition_id="EXISTING-RULE")
+    wo = work_order(authority_record=auth)
+    wo["proposition_id"] = "NEW-PROGRAMME-RULE"
+    with pytest.raises(module.GovernanceError, match="proposition"):
+        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+
+
+def test_authority_hash_must_bind_exact_admitted_record():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["authority_ref"]["sha256"] = "0" * 64
+    with pytest.raises(module.GovernanceError, match="hash"):
+        module.validate_work_order(wo, accepted_records(auth), accepted_base_commit="a" * 40)
+
+
+def test_valid_transaction_is_admissible_only_after_independent_review():
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    att = attempt(wo=wo)
+    rev = review(wo=wo, att=att)
+    adm = admission(wo=wo, att=att, rev=rev)
+    records = accepted_records(auth)
+    module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+    module.validate_attempt(wo, att)
+    module.validate_review(wo, att, rev)
+    module.validate_admission(wo, att, rev, adm)
+
+
+def test_reviewer_thread_must_be_fresh_from_worker_thread():
+    module = load_validator()
+    wo = work_order()
+    att = attempt(wo=wo)
+    rev = review(wo=wo, att=att)
+    rev["reviewer_thread_id"] = att["actor_thread_id"]
+    with pytest.raises(module.GovernanceError, match="thread"):
+        module.validate_review(wo, att, rev)
+
+
+def test_rejected_record_cannot_advance_admitted_state():
+    module = load_validator()
+    state = {
+        "latest_admission_id": "ADM-OLD",
+        "candidate_control_commit": "a" * 40,
+        "current_work_order": "WO-001",
+        "current_attempt": "ATT-001",
+        "first_blocker": None,
+    }
+    adm = admission()
+    adm["disposition"] = "REJECTED"
+    with pytest.raises(module.GovernanceError, match="cannot advance"):
+        module.advance_state_after_admission(state, adm)
+
+
+def test_accepted_admission_advances_only_thin_state_pointers():
+    module = load_validator()
+    state = {
+        "latest_admission_id": "ADM-OLD",
+        "candidate_control_commit": "a" * 40,
+        "current_work_order": "WO-001",
+        "current_attempt": "ATT-001",
+        "first_blocker": "DEF-OLD",
+        "unrelated": "preserved",
+    }
+    adm = admission()
+    updated = module.advance_state_after_admission(state, adm)
+    assert updated["latest_admission_id"] == adm["admission_id"]
+    assert updated["candidate_control_commit"] == adm["candidate_commit"]
+    assert updated["current_work_order"] is None
+    assert updated["current_attempt"] is None
+    assert updated["first_blocker"] is None
+    assert updated["unrelated"] == "preserved"

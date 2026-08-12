@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "anyOf": [
+    {
+      "properties": {
+        "candidate_commit": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "properties": {
+        "candidate_sha256": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "properties": {
+    "attempt_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "authority_re_read": {
+      "const": true
+    },
+    "authority_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "description": "SHA-256 of canonical JSON: UTF-8, sorted keys, separators comma/colon, no insignificant whitespace.",
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "admission_id",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "candidate_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "candidate_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "falsification_evidence": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "legitimacy": {
+      "enum": [
+        "AUTHORISED",
+        "NOT_AUTHORISED",
+        "BLOCKED"
+      ]
+    },
+    "limitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "proof_quality": {
+      "enum": [
+        "PROVEN",
+        "NOT_PROVEN",
+        "BLOCKED"
+      ]
+    },
+    "review_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "reviewer_thread_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "work_order_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "review_id",
+    "work_order_id",
+    "attempt_id",
+    "reviewer_id",
+    "reviewer_thread_id",
+    "candidate_commit",
+    "candidate_sha256",
+    "authority_ref",
+    "authority_re_read",
+    "legitimacy",
+    "proof_quality",
+    "falsification_evidence",
+    "limitations"
+  ],
+  "title": "IndependentReview",
+  "type": "object"
+}

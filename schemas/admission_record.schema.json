@@ -1,61 +1,230 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "additionalProperties": false,
-  "properties": {
-    "admission_id": {
-      "minLength": 1,
-      "type": "string"
-    },
-    "admitted_at_utc": {
-      "minLength": 1,
-      "type": "string"
-    },
-    "disposition": {
-      "const": "GATE0_PASS"
-    },
-    "evidence_sha256": {
-      "pattern": "^[0-9a-f]{64}$",
-      "type": "string"
-    },
-    "guarded_hashes": {
-      "additionalProperties": {
-        "pattern": "^[0-9a-f]{64}$",
-        "type": "string"
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "admitted_at_utc": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "disposition": {
+          "const": "GATE0_PASS"
+        },
+        "evidence_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "guarded_hashes": {
+          "additionalProperties": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "minProperties": 1,
+          "type": "object"
+        },
+        "manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "proposition_id": {
+          "const": "GATE0_MINIMAL_RUNTIME_ADMISSION_V1"
+        },
+        "proven_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "run_nonce": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "schema_version": {
+          "minLength": 1,
+          "type": "string"
+        }
       },
-      "minProperties": 1,
+      "required": [
+        "schema_version",
+        "admission_id",
+        "proposition_id",
+        "run_nonce",
+        "proven_commit",
+        "manifest_sha256",
+        "guarded_hashes",
+        "evidence_sha256",
+        "disposition",
+        "admitted_at_utc"
+      ],
       "type": "object"
     },
-    "manifest_sha256": {
-      "pattern": "^[0-9a-f]{64}$",
-      "type": "string"
+    {
+      "additionalProperties": false,
+      "properties": {
+        "accepted_git_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "admitted_at_utc": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "ACCEPTED",
+            "REJECTED"
+          ]
+        },
+        "jurisdiction": {
+          "enum": [
+            "PRODUCT_RUNTIME",
+            "PROGRAMME_GOVERNANCE",
+            "EXECUTION_ORCHESTRATION",
+            "DOMAIN_SEMANTICS"
+          ]
+        },
+        "proposition_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "record_type": {
+          "const": "AUTHORITY"
+        },
+        "schema_version": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "admission_id",
+        "record_type",
+        "disposition",
+        "jurisdiction",
+        "proposition_id",
+        "accepted_git_commit",
+        "admitted_at_utc"
+      ],
+      "type": "object"
     },
-    "proposition_id": {
-      "const": "GATE0_MINIMAL_RUNTIME_ADMISSION_V1"
-    },
-    "proven_commit": {
-      "pattern": "^[0-9a-f]{40}$",
-      "type": "string"
-    },
-    "run_nonce": {
-      "minLength": 1,
-      "type": "string"
-    },
-    "schema_version": {
-      "type": "string"
+    {
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "properties": {
+            "candidate_commit": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "properties": {
+            "candidate_sha256": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "accepted_base_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "admitted_at_utc": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "attempt_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "authority_ref": {
+          "additionalProperties": false,
+          "properties": {
+            "admission_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "sha256": {
+              "description": "SHA-256 of canonical JSON: UTF-8, sorted keys, separators comma/colon, no insignificant whitespace.",
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "admission_id",
+            "sha256"
+          ],
+          "type": "object"
+        },
+        "candidate_commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "candidate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "disposition": {
+          "enum": [
+            "ACCEPTED",
+            "REJECTED"
+          ]
+        },
+        "proposition_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "record_type": {
+          "const": "SEMANTIC_RESULT"
+        },
+        "review_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "schema_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "work_order_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "admission_id",
+        "record_type",
+        "disposition",
+        "proposition_id",
+        "authority_ref",
+        "work_order_id",
+        "attempt_id",
+        "review_id",
+        "accepted_base_commit",
+        "candidate_commit",
+        "candidate_sha256",
+        "admitted_at_utc"
+      ],
+      "type": "object"
     }
-  },
-  "required": [
-    "schema_version",
-    "admission_id",
-    "proposition_id",
-    "run_nonce",
-    "proven_commit",
-    "manifest_sha256",
-    "guarded_hashes",
-    "evidence_sha256",
-    "disposition",
-    "admitted_at_utc"
   ],
-  "title": "Gate0AdmissionRecord",
-  "type": "object"
+  "title": "AdmissionRecord"
 }

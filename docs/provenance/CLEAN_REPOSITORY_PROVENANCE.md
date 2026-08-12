@@ -20,7 +20,7 @@ The root baseline contains only `EXACT_PORT` destinations from the Step-6 manife
 ## Construction
 
 - branch: `restart/codex-control-v1`
-- final candidate commit: not yet known at this stage
+- final candidate/accepted commit: deliberately not self-recorded in the candidate; the independent audit binds the exact candidate `HEAD` externally
 - accepted `main`: remains at the root baseline until independent audit accepts the complete candidate
 
 `docs/provenance/RESTART_PORT_MANIFEST.tsv` is the repository-local file disposition/provenance ledger. For exact ports, source and destination hashes must be identical. Rewritten/new destinations receive their final SHA-256 once their unit is committed. The manifest deliberately does not claim its own containing-commit hash.

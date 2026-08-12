@@ -17,8 +17,8 @@
 1. **COMPLETED** — byte-preserved architecture/source baseline. Commit `e137677e8c0f116ba21dadc2e951281820e09916`.
 2. **COMPLETED** — restart governance, instructions, role definitions, provenance.
 3. **COMPLETED** — minimal Gate 0 authority + adversarial tests only.
-4. **ACTIVE** — minimal Gate 0 implementation.
-5. **PENDING** — thin Gate-1+ semantic admission substrate.
+4. **COMPLETED** — minimal Gate 0 implementation. Commit `79e3171242b15f3fdecb622d538ef1fc563cd0f4`.
+5. **COMPLETED** — thin Gate-1+ semantic admission substrate.
 6. **PENDING** — independent audit; builder does not self-accept.
 
 ## Stop conditions

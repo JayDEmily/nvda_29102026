@@ -41,6 +41,12 @@
         "null"
       ]
     },
+    "latest_admission_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
     "operational_status": {
       "enum": [
         "CANDIDATE_FOR_INDEPENDENT_AUDIT",
@@ -67,7 +73,8 @@
     "gate0_proven_commit",
     "current_work_order",
     "current_attempt",
-    "first_blocker"
+    "first_blocker",
+    "latest_admission_id"
   ],
   "title": "AdmittedState",
   "type": "object"

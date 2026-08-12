@@ -3,7 +3,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import os
 import platform
 import secrets
 import subprocess
@@ -38,7 +37,9 @@ def _run(root: Path, *args: str) -> str:
 
 
 def repo_root() -> Path:
-    return Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()).resolve()
+    return Path(
+        subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip()
+    ).resolve()
 
 
 def git_dir(root: Path) -> Path:
@@ -125,12 +126,23 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
     if session.get("run_nonce") != run_nonce or session.get("head") != head:
         return fail("SESSION_START")
     i = 1
-    if i >= len(evidence) or evidence[i].get("type") != "ProbeResult" or evidence[i].get("role") != "__parent__" or evidence[i].get("run_nonce") != run_nonce or evidence[i].get("passed") is not True:
+    if (
+        i >= len(evidence)
+        or evidence[i].get("type") != "ProbeResult"
+        or evidence[i].get("role") != "__parent__"
+        or evidence[i].get("run_nonce") != run_nonce
+        or evidence[i].get("passed") is not True
+    ):
         return fail("PARENT_PROBE")
     i += 1
     identities: set[str] = set()
     for role in EXPECTED_ROLES:
-        if i >= len(evidence) or evidence[i].get("type") != "SubagentStart" or evidence[i].get("role") != role or evidence[i].get("run_nonce") != run_nonce:
+        if (
+            i >= len(evidence)
+            or evidence[i].get("type") != "SubagentStart"
+            or evidence[i].get("role") != role
+            or evidence[i].get("run_nonce") != run_nonce
+        ):
             return fail(f"SUBAGENT_START:{role}")
         agent_id = evidence[i].get("agent_id")
         if not isinstance(agent_id, str) or not agent_id:
@@ -139,10 +151,23 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
             return fail("DISTINCT_CHILD_IDENTITY")
         identities.add(agent_id)
         i += 1
-        if i >= len(evidence) or evidence[i].get("type") != "ProbeResult" or evidence[i].get("role") != role or evidence[i].get("agent_id") != agent_id or evidence[i].get("run_nonce") != run_nonce or evidence[i].get("passed") is not True:
+        if (
+            i >= len(evidence)
+            or evidence[i].get("type") != "ProbeResult"
+            or evidence[i].get("role") != role
+            or evidence[i].get("agent_id") != agent_id
+            or evidence[i].get("run_nonce") != run_nonce
+            or evidence[i].get("passed") is not True
+        ):
             return fail(f"PROBE:{role}")
         i += 1
-        if i >= len(evidence) or evidence[i].get("type") != "SubagentStop" or evidence[i].get("role") != role or evidence[i].get("agent_id") != agent_id or evidence[i].get("run_nonce") != run_nonce:
+        if (
+            i >= len(evidence)
+            or evidence[i].get("type") != "SubagentStop"
+            or evidence[i].get("role") != role
+            or evidence[i].get("agent_id") != agent_id
+            or evidence[i].get("run_nonce") != run_nonce
+        ):
             return fail(f"SUBAGENT_STOP:{role}")
         i += 1
     if i != len(evidence):
@@ -205,14 +230,22 @@ def append_event(root: Path, event: dict[str, Any]) -> None:
 
 def expected_probe_commands(root: Path, arm: dict[str, Any]) -> dict[str, str]:
     py = root / ".venv/bin/python"
+    probe = root / "tools/gate0_probe.py"
+    run_nonce = arm["run_nonce"]
     result = {
-        "__parent__": f"{py} -B {root / 'tools/gate0_probe.py'} --role __parent__ --nonce {arm['run_nonce']} --run-nonce {arm['run_nonce']}"
+        "__parent__": (
+            f"{py} -B {probe} --role __parent__ "
+            f"--nonce {run_nonce} --run-nonce {run_nonce}"
+        )
     }
     nonces_path = state_dir(root) / "agent_nonces.json"
     if nonces_path.is_file():
         data = _read_json(nonces_path)
         for role, item in data.get("roles", {}).items():
-            result[role] = f"{py} -B {root / 'tools/gate0_probe.py'} --role {role} --nonce {item['nonce']} --run-nonce {arm['run_nonce']}"
+            result[role] = (
+                f"{py} -B {probe} --role {role} "
+                f"--nonce {item['nonce']} --run-nonce {run_nonce}"
+            )
     return result
 
 
@@ -235,7 +268,9 @@ def arm_repository() -> dict[str, Any]:
     project_python = root / ".venv/bin/python"
     if not project_python.is_file():
         raise Gate0Error("project .venv/bin/python is required before arming")
-    py_version = subprocess.check_output([str(project_python), "-c", "import platform;print(platform.python_version())"], text=True).strip()
+    py_version = subprocess.check_output(
+        [str(project_python), "-c", "import platform;print(platform.python_version())"], text=True
+    ).strip()
     if py_version != "3.13.5":
         raise Gate0Error(f"expected project Python 3.13.5, got {py_version}")
     record = make_arm_record(
@@ -246,7 +281,9 @@ def arm_repository() -> dict[str, Any]:
         run_nonce=secrets.token_hex(16),
         worktree_clean=clean,
     )
-    record.update({"repo_root": str(root), "armed_at_utc": _utcnow(), "project_python": str(project_python)})
+    record.update(
+        {"repo_root": str(root), "armed_at_utc": _utcnow(), "project_python": str(project_python)}
+    )
     sd = state_dir(root)
     sd.mkdir(parents=True, exist_ok=True)
     _write_json(sd / "arm.json", record)
@@ -311,13 +348,16 @@ def admit_repository() -> dict[str, Any]:
     _write_json(dest, record)
     state_path = root / "docs/governance/ADMITTED_STATE.json"
     state = _read_json(state_path)
-    state.update({
-        "operational_status": "GATE0_PASS",
-        "active_gate": "GATE1A",
-        "candidate_control_commit": arm["head"],
-        "gate0_proven_commit": arm["head"],
-        "first_blocker": None,
-    })
+    state.update(
+        {
+            "operational_status": "GATE0_PASS",
+            "active_gate": "GATE1A",
+            "candidate_control_commit": arm["head"],
+            "gate0_proven_commit": arm["head"],
+            "latest_admission_id": record["admission_id"],
+            "first_blocker": None,
+        }
+    )
     _write_json(state_path, state)
     return record
 

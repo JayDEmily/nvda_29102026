@@ -1,4 +1,5 @@
 {
+  "admission_id": null,
   "entries": [],
   "note": "No Raw Signal semantic propositions are admitted until Gate 1A source-first bootstrap and independent review.",
   "schema_version": "1.0.0",

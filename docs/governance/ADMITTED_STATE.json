@@ -6,6 +6,7 @@
   "current_work_order": null,
   "first_blocker": null,
   "gate0_proven_commit": null,
+  "latest_admission_id": null,
   "operational_status": "CANDIDATE_FOR_INDEPENDENT_AUDIT",
   "programme": "NVDA_RAW_SIGNAL_CODEX_RESTART",
   "schema_version": "1.0.0"

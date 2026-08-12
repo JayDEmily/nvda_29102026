@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accepted_base_commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "allowed_mutations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "authority_ref": {
+      "additionalProperties": false,
+      "properties": {
+        "admission_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "description": "SHA-256 of canonical JSON: UTF-8, sorted keys, separators comma/colon, no insignificant whitespace.",
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "admission_id",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "authority_status": {
+      "enum": [
+        "GOVERNED",
+        "REQUIRES_ACCEPTANCE",
+        "EXPERIMENT_ONLY"
+      ]
+    },
+    "commissioned_role": {
+      "enum": [
+        "project_manager",
+        "integration_auditor",
+        "semantic_worker",
+        "semantic_reviewer",
+        "normative_writer",
+        "test_author",
+        "implementation_worker"
+      ]
+    },
+    "dependencies": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "falsifier": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "gate": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pass_does_not_mean": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "pass_means": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "proof_class": {
+      "enum": [
+        "MECHANICAL",
+        "SEMANTIC",
+        "BOTH"
+      ]
+    },
+    "proposition_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stage": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "stop_conditions": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "work_order_id": {
+      "minLength": 1,
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "work_order_id",
+    "gate",
+    "stage",
+    "proposition_id",
+    "authority_ref",
+    "authority_status",
+    "accepted_base_commit",
+    "commissioned_role",
+    "allowed_mutations",
+    "proof_class",
+    "falsifier",
+    "pass_means",
+    "pass_does_not_mean",
+    "dependencies",
+    "stop_conditions"
+  ],
+  "title": "GovernedWorkOrder",
+  "type": "object"
+}
