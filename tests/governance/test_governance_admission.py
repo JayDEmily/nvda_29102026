@@ -534,17 +534,10 @@ def test_reviewer_thread_must_be_fresh_from_worker_thread():
         module.validate_review(wo, att, rev)
 
 
-def test_raw_admission_record_cannot_advance_admitted_state():
+def test_state_advance_is_not_exposed_as_a_separate_bypass_api():
     module = load_validator()
-    state = {
-        "latest_admission_id": "ADM-OLD",
-        "candidate_control_commit": "a" * 40,
-        "current_work_order": "WO-001",
-        "current_attempt": "ATT-001",
-        "first_blocker": None,
-    }
-    with pytest.raises(module.GovernanceError, match="validated transaction"):
-        module.advance_state_after_admission(state, admission())
+    assert not hasattr(module, "advance_state_after_admission")
+    assert hasattr(module, "execute_admission_transaction")
 
 
 def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path):
@@ -561,15 +554,6 @@ def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path
     rev = review(wo=wo, att=att)
     adm = admission(wo=wo, att=att, rev=rev)
     records = records_for_work_order(auth, wo)
-    validated = module.validate_admission_transaction(
-        repo,
-        wo,
-        att,
-        rev,
-        adm,
-        admissions=records,
-        accepted_base_commit=base,
-    )
     state = {
         "latest_admission_id": "ADM-OLD",
         "candidate_control_commit": base,
@@ -578,7 +562,16 @@ def test_canonical_transaction_derives_git_binding_before_state_advance(tmp_path
         "first_blocker": "DEF-OLD",
         "unrelated": "preserved",
     }
-    updated = module.advance_state_after_admission(state, validated)
+    updated = module.execute_admission_transaction(
+        repo,
+        state,
+        wo,
+        att,
+        rev,
+        adm,
+        admissions=records,
+        accepted_base_commit=base,
+    )
     assert updated["latest_admission_id"] == adm["admission_id"]
     assert updated["candidate_control_commit"] == candidate
     assert updated["current_work_order"] is None

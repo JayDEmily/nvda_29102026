@@ -512,7 +512,7 @@ def validate_admission_transaction(
     )
 
 
-def advance_state_after_admission(
+def _advance_state_after_admission(
     state: dict[str, Any], validated: ValidatedAdmission
 ) -> dict[str, Any]:
     if not isinstance(validated, ValidatedAdmission):
@@ -530,6 +530,35 @@ def advance_state_after_admission(
     updated["current_attempt"] = None
     updated["first_blocker"] = None
     return updated
+
+
+def execute_admission_transaction(
+    repo_root: Path,
+    state: dict[str, Any],
+    work_order: dict[str, Any],
+    attempt: dict[str, Any],
+    review: dict[str, Any],
+    admission: dict[str, Any],
+    *,
+    admissions: dict[str, dict[str, Any]],
+    accepted_base_commit: str,
+) -> dict[str, Any]:
+    """Validate the complete semantic transaction and only then advance state.
+
+    Callers cannot advance admitted state by passing a raw admission or a separately
+    constructed validation wrapper; the public state-advancing seam composes the full
+    authority/delegation, runtime-identity, Git, review and admission checks itself.
+    """
+    validated = validate_admission_transaction(
+        repo_root,
+        work_order,
+        attempt,
+        review,
+        admission,
+        admissions=admissions,
+        accepted_base_commit=accepted_base_commit,
+    )
+    return _advance_state_after_admission(state, validated)
 
 
 def validate_admitted_state_binding(
