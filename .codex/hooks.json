@@ -1,0 +1,65 @@
+{
+  "description": "NVDA minimal Gate 0 lifecycle evidence hooks.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "statusMessage": "Binding NVDA Gate 0 session",
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "statusMessage": "Binding NVDA Gate 0 subagent",
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "statusMessage": "Checking NVDA Gate 0 command"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "statusMessage": "Recording NVDA Gate 0 probe result"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "statusMessage": "Recording NVDA Gate 0 subagent stop"
+          }
+        ]
+      }
+    ]
+  }
+}
