@@ -10,6 +10,11 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import gate0_runtime_evidence as rt  # noqa: E402
 
+NAMESPACED_TOOL_ALIASES = {
+    "collaborationspawn_agent": "spawn_agent",
+    "collaborationwait_agent": "wait_agent",
+}
+
 
 def output(value: dict[str, Any]) -> None:
     print(json.dumps(value, sort_keys=True))
@@ -69,6 +74,12 @@ def spawn_agent_role(tool_input: Any) -> str | None:
         return None
     role = tool_input.get("agent_type")
     return role if isinstance(role, str) and role else None
+
+
+def canonical_tool_name(tool_name: Any) -> str | None:
+    if not isinstance(tool_name, str):
+        return None
+    return NAMESPACED_TOOL_ALIASES.get(tool_name, tool_name)
 
 
 def record_and_deny(root: Path, *, stage: str, reason: str) -> dict[str, Any]:
@@ -140,7 +151,8 @@ def main() -> int:
             )
             return 0
 
-        tool_name = payload.get("tool_name")
+        raw_tool_name = payload.get("tool_name")
+        tool_name = canonical_tool_name(raw_tool_name)
         tool_input = payload.get("tool_input")
         if tool_name == "Bash":
             command = tool_input.get("command") if isinstance(tool_input, dict) else None
@@ -248,7 +260,7 @@ def main() -> int:
         output(
             record_and_deny(
                 root,
-                stage=f"UNEXPECTED_LOCAL_TOOL:{tool_name}",
+                stage=f"UNEXPECTED_LOCAL_TOOL:{raw_tool_name}",
                 reason=(
                     "Armed Gate 0 denies every hook-observable local tool except the exact "
                     "mechanical probe and the next authorised spawn_agent call."
@@ -271,7 +283,8 @@ def main() -> int:
             )
             return 0
 
-        tool_name = payload.get("tool_name")
+        raw_tool_name = payload.get("tool_name")
+        tool_name = canonical_tool_name(raw_tool_name)
         tool_input = payload.get("tool_input")
         if tool_name in {"spawn_agent", "wait_agent"}:
             # SubagentStart/Stop are the authoritative lifecycle proof. Spawn/wait are
@@ -283,7 +296,7 @@ def main() -> int:
             output(
                 record_and_stop(
                     root,
-                    stage=f"UNEXPECTED_POST_TOOL:{tool_name}",
+                    stage=f"UNEXPECTED_POST_TOOL:{raw_tool_name}",
                     reason="Unexpected local tool completed during armed Gate 0.",
                 )
             )

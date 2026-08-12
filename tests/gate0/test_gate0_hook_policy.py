@@ -1,9 +1,12 @@
 from __future__ import annotations
 
 import importlib.util
+import io
 import json
 import tomllib
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 HOOK_PATH = ROOT / ".codex/hooks/gate0_attest.py"
@@ -84,6 +87,160 @@ def test_spawn_policy_requires_explicit_agent_type_not_task_name_alias():
     assert module.spawn_agent_role({"agent_type": "integration_auditor"}) == "integration_auditor"
     assert module.spawn_agent_role({"task_name": "integration_auditor"}) is None
     assert module.spawn_agent_role({"message": "integration_auditor"}) is None
+
+
+def run_pretool(monkeypatch, *, tool_name, tool_input):
+    module = hook()
+    outputs = []
+    failures = []
+    events = []
+    payload = {
+        "hook_event_name": "PreToolUse",
+        "tool_name": tool_name,
+        "tool_input": tool_input,
+        "tool_use_id": "tool-1",
+    }
+    monkeypatch.setattr(module.sys, "stdin", io.StringIO(json.dumps(payload)))
+    monkeypatch.setattr(module, "output", outputs.append)
+    monkeypatch.setattr(module.rt, "repo_root", lambda: Path("/repo"))
+    monkeypatch.setattr(module.rt, "load_active_arm", lambda root: {"run_nonce": "run-1"})
+    monkeypatch.setattr(module.rt, "current_binding", lambda root, arm: (True, None))
+    monkeypatch.setattr(module.rt, "load_failure", lambda root: None)
+    monkeypatch.setattr(module.rt, "load_events", lambda root: [])
+    monkeypatch.setattr(module.rt, "wait_agent_allowed", lambda current_events, run_nonce: True)
+    monkeypatch.setattr(
+        module.rt,
+        "expected_next_spawn_role",
+        lambda current_events, run_nonce: "integration_auditor",
+    )
+    monkeypatch.setattr(module.rt, "append_event", lambda root, value: events.append(value))
+    monkeypatch.setattr(
+        module.rt,
+        "record_failure",
+        lambda root, stage, reason: failures.append((stage, reason)),
+    )
+    assert module.main() == 0
+    return outputs, failures, events
+
+
+def run_posttool(monkeypatch, *, tool_name):
+    module = hook()
+    outputs = []
+    failures = []
+    payload = {
+        "hook_event_name": "PostToolUse",
+        "tool_name": tool_name,
+        "tool_input": {},
+        "tool_use_id": "tool-1",
+    }
+    monkeypatch.setattr(module.sys, "stdin", io.StringIO(json.dumps(payload)))
+    monkeypatch.setattr(module, "output", outputs.append)
+    monkeypatch.setattr(module.rt, "repo_root", lambda: Path("/repo"))
+    monkeypatch.setattr(module.rt, "load_active_arm", lambda root: {"run_nonce": "run-1"})
+    monkeypatch.setattr(module.rt, "current_binding", lambda root, arm: (True, None))
+    monkeypatch.setattr(module.rt, "load_failure", lambda root: None)
+    monkeypatch.setattr(
+        module.rt,
+        "record_failure",
+        lambda root, stage, reason: failures.append((stage, reason)),
+    )
+    assert module.main() == 0
+    return outputs, failures
+
+
+def test_observed_namespaced_spawn_is_canonicalised_and_keeps_exact_role_check(monkeypatch):
+    outputs, failures, events = run_pretool(
+        monkeypatch,
+        tool_name="collaborationspawn_agent",
+        tool_input={"agent_type": "integration_auditor"},
+    )
+    assert failures == []
+    assert events == [
+        {
+            "type": "SpawnRequest",
+            "role": "integration_auditor",
+            "run_nonce": "run-1",
+            "tool_use_id": "tool-1",
+        }
+    ]
+    assert outputs[0]["hookSpecificOutput"]["hookEventName"] == "PreToolUse"
+
+
+def test_namespaced_spawn_with_wrong_role_is_denied(monkeypatch):
+    outputs, failures, events = run_pretool(
+        monkeypatch,
+        tool_name="collaborationspawn_agent",
+        tool_input={"agent_type": "semantic_reviewer"},
+    )
+    assert events == []
+    assert failures[0][0] == "SPAWN_REQUEST:integration_auditor"
+    assert outputs[0]["hookSpecificOutput"]["permissionDecision"] == "deny"
+
+
+def test_current_namespaced_wait_is_canonicalised_without_broadening_policy(monkeypatch):
+    outputs, failures, events = run_pretool(
+        monkeypatch,
+        tool_name="collaborationwait_agent",
+        tool_input={"timeout_ms": 10_000},
+    )
+    assert failures == []
+    assert events == [
+        {
+            "type": "PreToolUse",
+            "role": "__orchestration__",
+            "run_nonce": "run-1",
+            "tool_use_id": "tool-1",
+            "tool_name": "wait_agent",
+        }
+    ]
+    assert outputs[0]["hookSpecificOutput"]["hookEventName"] == "PreToolUse"
+
+
+@pytest.mark.parametrize(
+    "tool_name",
+    [
+        "collaborationfollowup_task",
+        "collaborationinterrupt_agent",
+        "collaborationspawn_agent_extra",
+        "prefix_collaborationspawn_agent",
+        "collaborationspawn_agent_suffix",
+    ],
+)
+def test_arbitrary_collaboration_and_spawn_lookalikes_are_denied(monkeypatch, tool_name):
+    outputs, failures, events = run_pretool(
+        monkeypatch,
+        tool_name=tool_name,
+        tool_input={"agent_type": "integration_auditor"},
+    )
+    assert events == []
+    assert failures[0][0] == f"UNEXPECTED_LOCAL_TOOL:{tool_name}"
+    assert outputs[0]["hookSpecificOutput"]["permissionDecision"] == "deny"
+
+
+def test_namespaced_aliases_are_exact():
+    module = hook()
+    assert module.canonical_tool_name("collaborationspawn_agent") == "spawn_agent"
+    assert module.canonical_tool_name("collaborationwait_agent") == "wait_agent"
+    for lookalike in (
+        "collaborationwait_agent_extra",
+        "prefix_collaborationwait_agent",
+        "collaborationwait_agent_suffix",
+    ):
+        assert module.canonical_tool_name(lookalike) == lookalike
+
+
+@pytest.mark.parametrize("tool_name", ["collaborationspawn_agent", "collaborationwait_agent"])
+def test_posttool_uses_the_same_exact_namespaced_canonicalisation(monkeypatch, tool_name):
+    outputs, failures = run_posttool(monkeypatch, tool_name=tool_name)
+    assert failures == []
+    assert outputs == [{}]
+
+
+def test_posttool_namespaced_lookalike_remains_denied(monkeypatch):
+    tool_name = "collaborationspawn_agent_suffix"
+    outputs, failures = run_posttool(monkeypatch, tool_name=tool_name)
+    assert failures[0][0] == f"UNEXPECTED_POST_TOOL:{tool_name}"
+    assert outputs[0]["continue"] is False
 
 
 def test_spawn_order_has_explicit_pre_spawn_boundary_for_each_role():
