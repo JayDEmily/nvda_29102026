@@ -19,7 +19,16 @@
 3. **COMPLETED** — minimal Gate 0 authority + adversarial tests only.
 4. **COMPLETED** — minimal Gate 0 implementation. Commit `79e3171242b15f3fdecb622d538ef1fc563cd0f4`.
 5. **COMPLETED** — thin Gate-1+ semantic admission substrate.
-6. **PENDING** — independent audit; builder does not self-accept.
+6. **REJECTED_REPAIRABLE** — fresh independent Step-7 audit at candidate `db9a2f11d984d44bc16d1565a680a62fd1555d9a`; report SHA-256 `47c3af43acc3b18eb45abafd333175f2de62ca39db2f8cad31e2f17a6c2f6024`.
+7. **ACTIVE** — bounded Step-7 audit repair, one acceptance unit at a time:
+   - 7.1 compose mandatory Git candidate binding into the only semantic admission/state-advance path;
+   - 7.2 require an explicitly admitted exact work-order delegation;
+   - 7.3 bind accepted semantic index status to a real admission and source-authority bytes;
+   - 7.4 authenticate worker/reviewer runtime provenance with protected Codex lifecycle receipts;
+   - 7.5 repair Gate-0 hook semantics/tool coverage against current official OpenAI hooks behaviour;
+   - 7.6 mark root `AGENTS.md` and programme `PLANS.md` frozen against ordinary Codex self-amendment, under the user-authorised governance-change path.
+8. **PENDING** — full deterministic validation and new same-controller pre-audit.
+9. **PENDING** — fresh independent re-audit; builder does not self-accept.
 
 ## Stop conditions
 
