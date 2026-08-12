@@ -1,0 +1,17 @@
+module_id,name,owns,physical_locus,physical_state,audit_note
+M00,application_shell,transport translation; dependency composition; run lifecycle,m00_application_shell,PRESENT,Composition root; omitted from domain graph.
+M01,source_admission,source identity; admission; raw capture; source time; signal registration,m01_source_admission,PRESENT,No direct runtime dependencies.
+M02,calendar,four calendar layers; fact candidates; coalescence; supersession; projection,m02_financial_calendar,PRESENT,"Target dependency M01; current canonical package has no static canonical import, consistent with progressive thin-seam migration rather than proof of completion."
+M03,preparation,typed prepared truth; field resolution; enrichment gaps,m03_preparation,PRESENT,Imports public M01 and M02 surfaces.
+M04,packet_protocol,DMPV3 envelope validation and carriage,logical owner across packets/contracts,LOGICAL_NO_PACKAGE,Explicit exception permits no cosmetic m04 package until a real M04 change needs one.
+M05,serial_cognition,ordered six-stage cognition and candidate formation,m05_serial_cognition,PRESENT,Confirmed post-law private M07/M08 imports; repair required.
+M06,parallel_risk,independent risk assessment and terminal-join contribution,m06_parallel_risk,PRESENT,Read-only M11 owner-fact contract is an accepted bounded exception.
+M07,coefficient_modifier_authority,versioned coefficient/modifier policy and receipts,m07_coefficient_modifier_authority,PRESENT,Public API does not export InputStateFacts currently consumed privately by M05.
+M08,playbook_catalogue,playbook definitions/catalogue/eligibility,m08_playbook_catalogue,PRESENT,Public API does not export three context types currently consumed privately by M05.
+M09,capital_authority,final-risk join; capital state; sizing; fresh-capital decision,m09_capital_authority,PRESENT,Observed canonical dependencies match M05/M06/M07.
+M10,execution_gateway,placement readiness; execution ports/events/receipts,m10_execution_gateway,PRESENT,Uses M13 transaction mechanics as accepted non-runtime-plane participation.
+M11,portfolio_lifecycle,fills; positions; inventory; exit/close; carry lifecycle,m11_portfolio_lifecycle,PRESENT,Existing private imports predate the extension law or are bounded ports; migration debt remains.
+M12,evidence_replay,review; explanation; comparison; authoritative replay,m12_evidence_replay,PRESENT,Thin seam; no observed canonical static dependency.
+M13,state_kernel,transaction; idempotency; atomic receipt; storage mechanism,m13_state_kernel,PRESENT,Mechanism owner only.
+M14,proof_promotion,test admission; tier/lifecycle; proof blocks; promotion receipts,tests + config + scripts,GOVERNANCE_PLANE_NO_PACKAGE,Physical runtime package not required.
+M15,vocabulary_governance,term admission; registry; projections,docs/vocabulary + scripts + schemas,GOVERNANCE_PLANE_NO_PACKAGE,Physical runtime package not required.

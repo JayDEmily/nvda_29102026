@@ -1,0 +1,10 @@
+tier,lifecycle,family_count,physical_test_path_count,current_meaning
+Tier A,current_blocking,19,21,Blocking current alpha claim
+Tier A,current_nonblocking,32,32,Strong proof retained but not current blocking
+Tier A,historical,66,66,Historical proof; folder does not make it current
+Tier A,next_gate_expected_red,6,6,Declared future red work
+Tier A,superseded_compatibility,61,61,Compatibility/provenance only
+Tier B,current_nonblocking,8,8,Bounded current shadow
+Tier B,historical,7,7,Historical shadow
+Tier B,superseded_compatibility,1,1,Compatibility/provenance only
+Tier C,current_nonblocking,1,1,Slow operational/cross-process assurance

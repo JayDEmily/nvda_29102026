@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "governance_planes": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "id": {
+            "pattern": "^G(?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          },
+          "name": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "predecessors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "runtime_dependency": {
+            "const": false
+          },
+          "status": {
+            "enum": [
+              "placeholder",
+              "bootstrap",
+              "framework",
+              "active",
+              "deprecated",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "successors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "status",
+          "description",
+          "runtime_dependency"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "retired_ids": {
+      "items": {
+        "pattern": "^G(?:0[0-9]|[1-9][0-9]+)$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "governance_planes",
+    "retired_ids"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "category_rules": {
+      "additionalProperties": false,
+      "patternProperties": {},
+      "properties": {
+        "A": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        },
+        "G": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        },
+        "K": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        },
+        "M": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        },
+        "P": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        },
+        "S": {
+          "additionalProperties": false,
+          "properties": {
+            "forbidden": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            },
+            "may_depend_on": {
+              "items": {
+                "enum": [
+                  "A",
+                  "M",
+                  "P",
+                  "K",
+                  "G",
+                  "S"
+                ]
+              },
+              "type": "array",
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "may_depend_on",
+            "forbidden"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "A",
+        "M",
+        "P",
+        "K",
+        "G",
+        "S"
+      ],
+      "type": "object"
+    },
+    "declared_owner_edges": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "source",
+          "target"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "forbid_dynamic_imports_in_runtime_owners": {
+      "type": "boolean"
+    },
+    "framework_packages": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "identifier_pattern": {
+      "type": "string"
+    },
+    "public_seam_exceptions": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "identifier_pattern",
+    "framework_packages",
+    "category_rules",
+    "declared_owner_edges",
+    "public_seam_exceptions",
+    "forbid_dynamic_imports_in_runtime_owners"
+  ],
+  "type": "object"
+}

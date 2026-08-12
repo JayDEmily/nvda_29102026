@@ -1,0 +1,96 @@
+version = 1
+revision = 3
+requires-python = "==3.13.5"
+resolution-markers = [
+    "sys_platform == 'linux'",
+]
+supported-markers = [
+    "sys_platform == 'linux'",
+]
+required-markers = [
+    "platform_machine == 'x86_64' and sys_platform == 'linux'",
+]
+
+[[package]]
+name = "iniconfig"
+version = "2.3.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "iniconfig-2.3.0-py3-none-any.whl" },
+]
+
+[[package]]
+name = "nvda-architecture-kernel"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "pyyaml", marker = "sys_platform == 'linux'" },
+]
+
+[package.optional-dependencies]
+dev = [
+    { name = "pytest", marker = "sys_platform == 'linux'" },
+    { name = "ruff", marker = "sys_platform == 'linux'" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pytest", marker = "extra == 'dev'", specifier = "==9.0.3" },
+    { name = "pyyaml", specifier = "==6.0.3" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = "==0.15.11" },
+]
+provides-extras = ["dev"]
+
+[[package]]
+name = "packaging"
+version = "26.2"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "packaging-26.2-py3-none-any.whl" },
+]
+
+[[package]]
+name = "pluggy"
+version = "1.6.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "pluggy-1.6.0-py3-none-any.whl" },
+]
+
+[[package]]
+name = "pygments"
+version = "2.20.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "pygments-2.20.0-py3-none-any.whl" },
+]
+
+[[package]]
+name = "pytest"
+version = "9.0.3"
+source = { registry = "vendor/wheels" }
+dependencies = [
+    { name = "iniconfig", marker = "sys_platform == 'linux'" },
+    { name = "packaging", marker = "sys_platform == 'linux'" },
+    { name = "pluggy", marker = "sys_platform == 'linux'" },
+    { name = "pygments", marker = "sys_platform == 'linux'" },
+]
+wheels = [
+    { path = "pytest-9.0.3-py3-none-any.whl" },
+]
+
+[[package]]
+name = "pyyaml"
+version = "6.0.3"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl" },
+]
+
+[[package]]
+name = "ruff"
+version = "0.15.11"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" },
+]

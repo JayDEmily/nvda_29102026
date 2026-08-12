@@ -1,0 +1,9 @@
+schema_version: "1.0"
+protocols:
+  - id: P01
+    name: dmp_v3
+    status: placeholder
+    description: Historical identity for the DMPV3 governed information carrier. No schema or runtime behaviour is implemented by this reset.
+    predecessors: [M04]
+    successors: []
+retired_ids: []

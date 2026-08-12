@@ -1,0 +1,65 @@
+$ PYTHONPATH=src python tools/validate_architecture.py
+Traceback (most recent call last):
+  File "/mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK/tools/validate_architecture.py", line 9, in <module>
+    for result in validate_architecture(root):
+                  ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK/src/nvda_desk/architecture/validation.py", line 23, in validate_architecture
+    proof = load_and_validate_proof_state(repository_root)
+  File "/mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK/src/nvda_desk/architecture/proof.py", line 54, in load_and_validate_proof_state
+    validate_proof_state(repository_root, state)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK/src/nvda_desk/architecture/proof.py", line 85, in validate_proof_state
+    raise ValueError(f"test families cite unknown propositions: {unknown_props}")
+ValueError: test families cite unknown propositions: ['AK-COMP-001', 'AK-DEP-001', 'AK-DEP-002', 'AK-EXT-001', 'AK-ID-001', 'AK-LIFE-001', 'AK-PKG-001', 'AK-PKG-002', 'AK-PROOF-001', 'AK-PROOF-002', 'AK-REG-001', 'AK-REG-002', 'AK-SEAM-001', 'AK-TAX-001']
+$ PYTHONPATH=src python -m pytest tests/architecture tests/bootstrap -q
+........................F...........                                     [100%]
+=================================== FAILURES ===================================
+_________ test_current_proof_population_is_exact_and_registry_derived __________
+
+    def test_current_proof_population_is_exact_and_registry_derived() -> None:
+>       state = load_and_validate_proof_state(ROOT)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/architecture/test_proof_control.py:12: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/nvda_desk/architecture/proof.py:54: in load_and_validate_proof_state
+    validate_proof_state(repository_root, state)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repository_root = PosixPath('/mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK')
+state = ProofState(families=({'id': 'registry_schema', 'path': 'tests/architecture/test_registry_schema.py', 'tier': 'Tier A',...r': 'Tier A', 'proof_block_ids': ['architecture_registry', 'architecture_boundaries', 'proof_control', 'bootstrap']},))
+
+    def validate_proof_state(repository_root: Path, state: ProofState) -> None:
+        family_ids = [item["id"] for item in state.families]
+        family_paths = [item["path"] for item in state.families]
+        block_ids = [item["id"] for item in state.blocks]
+        set_ids = [item["id"] for item in state.promotion_sets]
+        for label, values in (("family IDs", family_ids), ("family paths", family_paths), ("block IDs", block_ids), ("set IDs", set_ids)):
+            if len(values) != len(set(values)):
+                raise ValueError(f"duplicate {label}")
+    
+        admitted_paths = set(family_paths)
+        physical_paths = {
+            path.relative_to(repository_root).as_posix()
+            for test_root in (repository_root / "tests" / "architecture", repository_root / "tests" / "bootstrap")
+            if test_root.exists()
+            for path in test_root.glob("test_*.py")
+        }
+        if physical_paths != admitted_paths:
+            raise ValueError(
+                f"test admission mismatch; unadmitted={sorted(physical_paths - admitted_paths)}, "
+                f"missing={sorted(admitted_paths - physical_paths)}"
+            )
+    
+        propositions = set()
+        for path in (repository_root / "docs" / "architecture").glob("*.md"):
+            propositions.update(_PROPOSITION_RE.findall(path.read_text(encoding="utf-8")))
+        unknown_props = sorted({prop for family in state.families for prop in family["proposition_ids"]} - propositions)
+        if unknown_props:
+>           raise ValueError(f"test families cite unknown propositions: {unknown_props}")
+E           ValueError: test families cite unknown propositions: ['AK-COMP-001', 'AK-DEP-001', 'AK-DEP-002', 'AK-EXT-001', 'AK-ID-001', 'AK-LIFE-001', 'AK-PKG-001', 'AK-PKG-002', 'AK-PROOF-001', 'AK-PROOF-002', 'AK-REG-001', 'AK-REG-002', 'AK-SEAM-001', 'AK-TAX-001']
+
+src/nvda_desk/architecture/proof.py:85: ValueError
+=========================== short test summary info ============================
+FAILED tests/architecture/test_proof_control.py::test_current_proof_population_is_exact_and_registry_derived - ValueError: test families cite unknown propositions: ['AK-COMP-001', 'AK-DEP-001', 'AK-DEP-002', 'AK-EXT-001', 'AK-ID-001', 'AK-LIFE-001', 'AK-PKG-001', 'AK-PKG-002', 'AK-PROOF-001', 'AK-PROOF-002', 'AK-REG-001', 'AK-REG-002', 'AK-SEAM-001', 'AK-TAX-001']
+1 failed, 35 passed in 0.19s

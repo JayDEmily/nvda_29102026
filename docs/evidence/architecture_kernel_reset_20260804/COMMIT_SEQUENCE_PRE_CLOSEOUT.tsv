@@ -1,0 +1,9 @@
+commit\tsubject
+f35d81deab7e0f2fbd18f59de6347aac7c538e10	Activate architecture kernel reset brief
+013bddd1fffdc6706ea2f698fc92d3d148a79445	Strip legacy implementation from active tree
+4bd9c9b4484faf536f7d5bf7b9b726c7ceb1b4d0	Define extensible architecture kernel authority
+b9f1dc3a9976c02f17f5898646ae96d52119c35c	Implement architecture kernel controls and proof
+2e75603bae4f070d5e30d3598b17f1cf57aaf7ec	Add minimal offline packaging and lock
+89cb8f3c38e267b1cfda8318df0c01858a5baa40	Make offline wheel source self-contained
+49980d1353435b5e83272e6eefe481752f89831c	Improve structural validation receipts
+eb3f9227873148a70137d06cd3818c7fdb71dd7f	Strengthen dependency-law negative proof

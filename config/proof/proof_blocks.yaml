@@ -1,0 +1,18 @@
+schema_version: "1.0"
+proof_blocks:
+  - id: architecture_registry
+    tier: Tier A
+    lifecycle: current_blocking
+    family_ids: [registry_schema, identifier_taxonomy, object_lifecycle]
+  - id: architecture_boundaries
+    tier: Tier A
+    lifecycle: current_blocking
+    family_ids: [dependency_direction, public_seam_law]
+  - id: proof_control
+    tier: Tier A
+    lifecycle: current_blocking
+    family_ids: [proof_control]
+  - id: bootstrap
+    tier: Tier A
+    lifecycle: current_blocking
+    family_ids: [minimal_imports, legacy_exclusion]

@@ -1,0 +1,58 @@
+schema_version: "1.0"
+test_families:
+  - id: registry_schema
+    path: tests/architecture/test_registry_schema.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-REG-001, AK-REG-002]
+    proof_block_id: architecture_registry
+    promotion_sets: [architecture_kernel]
+  - id: identifier_taxonomy
+    path: tests/architecture/test_identifier_taxonomy.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-TAX-001, AK-ID-001, AK-EXT-001]
+    proof_block_id: architecture_registry
+    promotion_sets: [architecture_kernel]
+  - id: object_lifecycle
+    path: tests/architecture/test_object_lifecycle.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-COMP-001, AK-LIFE-001]
+    proof_block_id: architecture_registry
+    promotion_sets: [architecture_kernel]
+  - id: dependency_direction
+    path: tests/architecture/test_dependency_direction.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-DEP-001, AK-DEP-002]
+    proof_block_id: architecture_boundaries
+    promotion_sets: [architecture_kernel]
+  - id: public_seam_law
+    path: tests/architecture/test_public_seam_law.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-SEAM-001]
+    proof_block_id: architecture_boundaries
+    promotion_sets: [architecture_kernel]
+  - id: proof_control
+    path: tests/architecture/test_proof_control.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-PROOF-001, AK-PROOF-002]
+    proof_block_id: proof_control
+    promotion_sets: [architecture_kernel]
+  - id: minimal_imports
+    path: tests/bootstrap/test_minimal_imports.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-PKG-001]
+    proof_block_id: bootstrap
+    promotion_sets: [architecture_kernel]
+  - id: legacy_exclusion
+    path: tests/bootstrap/test_legacy_exclusion.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-PKG-002]
+    proof_block_id: bootstrap
+    promotion_sets: [architecture_kernel]

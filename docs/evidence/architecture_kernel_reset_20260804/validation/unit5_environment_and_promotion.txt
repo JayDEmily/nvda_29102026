@@ -1,0 +1,107 @@
+$ git status --short --branch
+## work/architecture-kernel-reset-v1
+
+$ (cd vendor/wheels && sha256sum -c SHA256SUMS)
+editables-0.6-py3-none-any.whl: OK
+hatchling-1.29.0-py3-none-any.whl: OK
+iniconfig-2.3.0-py3-none-any.whl: OK
+packaging-26.2-py3-none-any.whl: OK
+pathspec-1.1.1-py3-none-any.whl: OK
+pluggy-1.6.0-py3-none-any.whl: OK
+pygments-2.20.0-py3-none-any.whl: OK
+pytest-9.0.3-py3-none-any.whl: OK
+pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl: OK
+ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl: OK
+trove_classifiers-2026.4.28.13-py3-none-any.whl: OK
+
+$ rm -rf .venv && uv sync --locked --extra dev --offline
+Using CPython 3.13.5 interpreter at: /usr/bin/python3.13
+Creating virtual environment at: .venv
+Resolved 8 packages in 1ms
+Installed 8 packages in 5ms
+ + iniconfig==2.3.0
+ + nvda-architecture-kernel==0.1.0 (from file:///mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK)
+ + packaging==26.2
+ + pluggy==1.6.0
+ + pygments==2.20.0
+ + pytest==9.0.3
+ + pyyaml==6.0.3
+ + ruff==0.15.11
+
+$ uv lock --check --offline
+Resolved 8 packages in 1ms
+
+$ .venv/bin/python -V && uv --version
+Python 3.13.5
+uv 0.10.0
+
+$ .venv/bin/ruff check src tests tools
+All checks passed!
+
+$ .venv/bin/python -m compileall -q src tests tools
+PASS: compileall
+
+$ .venv/bin/python tools/validate_architecture.py
+architecture objects: 5
+active runtime modules: 0
+admitted test families: 8
+promotion sets: 1
+dependency/public-seam violations: 0
+PASS: structural architecture validation
+
+$ .venv/bin/python tools/check_dependencies.py
+PASS: dependency direction and cycle validation
+
+$ .venv/bin/python tools/check_public_seams.py
+PASS: public-seam validation
+
+$ .venv/bin/python -m pytest tests/architecture tests/bootstrap
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK
+configfile: pyproject.toml
+collected 38 items
+
+tests/architecture/test_dependency_direction.py ......                   [ 15%]
+tests/architecture/test_identifier_taxonomy.py .................         [ 60%]
+tests/architecture/test_object_lifecycle.py ...                          [ 68%]
+tests/architecture/test_proof_control.py ..                              [ 73%]
+tests/architecture/test_public_seam_law.py ...                           [ 81%]
+tests/architecture/test_registry_schema.py ..                            [ 86%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 94%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================== 38 passed in 0.10s ==============================
+
+$ .venv/bin/python tools/run_promotion_gate.py --set architecture_kernel
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.0.3, pluggy-1.6.0
+rootdir: /mnt/data/NVDA_ARCHITECTURE_KERNEL_RESET_WORK
+configfile: pyproject.toml
+collected 38 items
+
+tests/architecture/test_dependency_direction.py ......                   [ 15%]
+tests/architecture/test_identifier_taxonomy.py .................         [ 60%]
+tests/architecture/test_object_lifecycle.py ...                          [ 68%]
+tests/architecture/test_proof_control.py ..                              [ 73%]
+tests/architecture/test_public_seam_law.py ...                           [ 81%]
+tests/architecture/test_registry_schema.py ..                            [ 86%]
+tests/bootstrap/test_legacy_exclusion.py ...                             [ 94%]
+tests/bootstrap/test_minimal_imports.py ..                               [100%]
+
+============================== 38 passed in 0.10s ==============================
+architecture objects: 5
+active runtime modules: 0
+admitted test families: 8
+promotion sets: 1
+dependency/public-seam violations: 0
+promotion set: architecture_kernel
+resolved test paths: 8
+  tests/architecture/test_dependency_direction.py
+  tests/architecture/test_identifier_taxonomy.py
+  tests/architecture/test_object_lifecycle.py
+  tests/architecture/test_proof_control.py
+  tests/architecture/test_public_seam_law.py
+  tests/architecture/test_registry_schema.py
+  tests/bootstrap/test_legacy_exclusion.py
+  tests/bootstrap/test_minimal_imports.py

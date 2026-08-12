@@ -1,0 +1,7 @@
+Source: project_control/normative_authority_top_down_alignment/EXTERNAL_SOURCE_DECISIONS.md
+File length: 432 lines
+Case-insensitive mention counts from rg:
+AWS or Amazon Web Services: 0
+Google: 13
+Microsoft: 18
+IBM: 15

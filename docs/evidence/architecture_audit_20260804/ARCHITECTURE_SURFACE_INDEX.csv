@@ -1,0 +1,19 @@
+surface_id,surface_name,structural_status,implementation_truth,primary_modules_nonexclusive,current_physical_locus,physical_presence,audit_note,lineage_ids
+5.1,External source interfaces and API ingress,Locked,thin_seam,M00;M01,canonical M01 admission; operational_boundaries provider adapters; entry composition,PRESENT,Cross-cutting ingress surface; not equivalent to M01 alone.,ARC-02;ARC-03;ARC-04
+5.2,Raw capture and source temporal law,Locked,thin_seam,M01,ingress; temporal domain/contracts,PRESENT,"Source identity, capture and source-time responsibility.",ARC-02;ARC-06
+5.3,Raw signal families,Locked,thin_seam,M01,upstream,PRESENT,Project-specific signal-family allocation behind M01 ownership.,ARC-02;ARC-06;ARC-10
+5.4,Financial and event calendar architecture,Locked,thin_seam,M02,calendar; reference,PRESENT,Four-layer calendar model is project-specific; modular ownership is vendor-grounded.,ARC-01;ARC-02;ARC-10
+5.5,Prepared ingress and runtime context preparation,Locked,thin_seam,M03,preparation,PRESENT,Typed prepared truth and deterministic field resolution.,ARC-03;ARC-06
+5.6,DMPV3 packet carriage,Locked,thin_seam,M04,packets; packet contracts/schemas,PRESENT_LOGICAL_OWNER,M04 is a lawful logical owner without a cosmetic package.,ARC-06;ARC-10
+5.7,Serial desk-cognition spine,Locked,thin_seam,M05,cognition/serial; runtime; canonical m05 package,PRESENT,Six-stage serial sequence is project-specific; orchestration separation is vendor-grounded.,ARC-01;ARC-03;ARC-10
+5.8,Parallel risk lane,Locked,thin_seam,M06,risk/parallel; canonical m06 package,PRESENT,Parallel lane allocation is project-specific.,ARC-01;ARC-10
+5.9,Dynamic coefficient and modifier authority,Locked,thin_seam,M07,cognition/modifiers; governed configuration; canonical m07 package,PRESENT,Policy ownership separated from orchestration.,ARC-01;ARC-02
+5.10,Playbook library architecture,Provisional,thin_seam,M08,playbooks; playbook registry; canonical m08 package,PRESENT,Replaceable business-rule catalogue.,ARC-01;ARC-02
+5.11,Downstream capital deployment authority,Locked,thin_seam,M09,capital; canonical m09 package,PRESENT,Project-specific semantic owner.,ARC-02;ARC-10
+5.12,Opening architecture and placement readiness,Provisional,thin_seam,M10,canonical m10 contracts; operational_boundaries broker adapters,PRESENT,Port/adapter and fail-closed boundary.,ARC-03;ARC-04;ARC-09
+5.13,Live position and inventory architecture,Provisional,thin_seam,M11;M13,canonical m11 lifecycle; m13 storage ports; compatibility position/inventory,PRESENT,M11 owns meaning; M13 owns transaction/storage mechanism.,ARC-02;ARC-05;ARC-08
+5.14,Exit and close architecture,Provisional,thin_seam,M11,downstream/exit_close; lifecycle contracts/services,PRESENT,Project-specific allocation inside M11 lifecycle ownership.,ARC-02;ARC-10
+5.15,Review and explanation layer,Locked,thin_seam,M12,review; replay/review services; contracts,PRESENT,Read-only review/replay projection boundary.,ARC-02;ARC-06
+5.16,"Persistence, ledgers and receipts",Locked,thin_seam,M13 plus semantic owners,m13 state/evidence ports; bounded repositories,PRESENT,Cross-cutting mechanism surface; semantic ownership remains with domain modules.,ARC-03;ARC-05;ARC-08
+5.17,"Testing, proof and checkpoint surfaces",Locked,thin_seam,M14,tests; config; scripts; testing helpers,PRESENT_GOVERNANCE_PLANE,Current row text is partly stale; current machine admission and aggregate gate exist.,TST-01;TST-02;TST-04;TST-05
+5.18,Vocabulary governance interface,Locked,thin_seam,M15,normative vocabulary docs; schema; builder; scripts; projection,PRESENT_GOVERNANCE_PLANE,"Continuous governance plane, not a runtime service dependency.",ARC-15
