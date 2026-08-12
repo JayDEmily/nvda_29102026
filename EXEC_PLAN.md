@@ -27,6 +27,7 @@
    - 7.4 **COMPLETED** — worker/reviewer provenance bound to protected Codex lifecycle receipts; commit `114c7790362af7751e2f6dfbc3f37f21b7a3e6dc`;
    - 7.5 **COMPLETED** — Gate-0 hooks aligned to supported event-specific deny/stop semantics, bounded spawn/wait orchestration, and fail-closed observable-tool policy; commit `ffbf349b6e7429499ffdfb9c27647aac87935d11`;
    - 7.6 **COMPLETED** — root `AGENTS.md` and programme `PLANS.md` are explicitly frozen and ordinary work-order mutation is mechanically rejected; commit `a60c4a239829ba9cc12b8b5ca3ba65a6db70d1fa`.
+   - 7.7 **COMPLETED** — same-controller pre-audit found that F-05 runtime/tool-policy checks existed in tests but were not composed into Gate-0 static validation; the static validator now enforces the manifest/config/hook tool-surface policy; commit `3181e582163a036e4acfdfb5bf0349a27fd590aa`.
 8. **ACTIVE** — full deterministic validation, provenance reconciliation, exact-port source-object re-verification, and new same-controller pre-audit.
 9. **PENDING** — fresh independent re-audit; builder does not self-accept.
 
