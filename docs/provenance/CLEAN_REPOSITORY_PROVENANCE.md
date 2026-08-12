@@ -24,3 +24,11 @@ The root baseline contains only `EXACT_PORT` destinations from the Step-6 manife
 - accepted `main`: remains at the root baseline until independent audit accepts the complete candidate
 
 `docs/provenance/RESTART_PORT_MANIFEST.tsv` is the repository-local file disposition/provenance ledger. For exact ports, source and destination hashes must be identical. Rewritten/new destinations receive their final SHA-256 once their unit is committed. The manifest deliberately does not claim its own containing-commit hash.
+
+## Step-7 independent-audit repair overlay
+
+The first fresh Step-7 audit of candidate `db9a2f11d984d44bc16d1565a680a62fd1555d9a` returned `REJECT_REPAIRABLE`. The repair branch `repair/step7-independent-audit-v1` changes only the clean restart candidate; it does not import forensic Git ancestry or R2/R2A recovery machinery.
+
+The repair authority is the preserved independent audit report SHA-256 `47c3af43acc3b18eb45abafd333175f2de62ca39db2f8cad31e2f17a6c2f6024` plus the user's explicit instruction to proceed and the later explicit programme-authority freeze decision. The repair adds five new tracked files for runtime-identity evidence and Gate-0 adversarial proof, and revises already-rewritten/new control files. Those changes are represented in the repository-local manifest as `STEP7_AUDIT_REPAIR` rather than being mislabelled as exact ports from the forensic source.
+
+The original Step-6 port manifest remains immutable external build authority. This local ledger records the current destination bytes and the Step-7 repair overlay; it does not alter the historical source hashes of `EXACT_PORT` rows.
