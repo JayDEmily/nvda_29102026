@@ -44,6 +44,11 @@ def valid_events():
         },
         {"type": "ProbeResult", "role": "__parent__", "run_nonce": "run-1", "passed": True},
         {
+            "type": "SpawnRequest",
+            "role": "integration_auditor",
+            "run_nonce": "run-1",
+        },
+        {
             "type": "SubagentStart",
             "role": "integration_auditor",
             "agent_id": "agent-a",
@@ -60,6 +65,11 @@ def valid_events():
             "type": "SubagentStop",
             "role": "integration_auditor",
             "agent_id": "agent-a",
+            "run_nonce": "run-1",
+        },
+        {
+            "type": "SpawnRequest",
+            "role": "semantic_reviewer",
             "run_nonce": "run-1",
         },
         {
@@ -131,17 +141,33 @@ def test_missing_parent_probe_fails():
     assert result["passed"] is False and result["first_failure"] == "PARENT_PROBE"
 
 
-def test_missing_first_subagent_start_fails_at_exact_invariant():
+def test_missing_first_spawn_request_fails_at_exact_invariant():
     result = derive(valid_events()[:2])
+    assert (
+        result["passed"] is False and result["first_failure"] == "SPAWN_REQUEST:integration_auditor"
+    )
+
+
+def test_missing_first_subagent_start_fails_after_spawn_request():
+    result = derive(valid_events()[:3])
     assert (
         result["passed"] is False
         and result["first_failure"] == "SUBAGENT_START:integration_auditor"
     )
 
 
-def test_wrong_first_role_fails():
+def test_wrong_first_spawn_role_fails():
     events = valid_events()
     events[2]["role"] = "semantic_reviewer"
+    result = derive(events)
+    assert (
+        result["passed"] is False and result["first_failure"] == "SPAWN_REQUEST:integration_auditor"
+    )
+
+
+def test_wrong_first_started_role_fails():
+    events = valid_events()
+    events[3]["role"] = "semantic_reviewer"
     result = derive(events)
     assert (
         result["passed"] is False
@@ -151,23 +177,23 @@ def test_wrong_first_role_fails():
 
 def test_duplicate_child_identity_fails():
     events = valid_events()
-    events[5]["agent_id"] = "agent-a"
-    events[6]["agent_id"] = "agent-a"
     events[7]["agent_id"] = "agent-a"
+    events[8]["agent_id"] = "agent-a"
+    events[9]["agent_id"] = "agent-a"
     result = derive(events)
     assert result["passed"] is False and result["first_failure"] == "DISTINCT_CHILD_IDENTITY"
 
 
 def test_child_probe_failure_fails():
     events = valid_events()
-    events[3]["passed"] = False
+    events[4]["passed"] = False
     result = derive(events)
     assert result["passed"] is False and result["first_failure"] == "PROBE:integration_auditor"
 
 
 def test_missing_subagent_stop_fails():
     events = valid_events()
-    del events[4]
+    del events[5]
     result = derive(events)
     assert (
         result["passed"] is False and result["first_failure"] == "SUBAGENT_STOP:integration_auditor"
@@ -190,7 +216,7 @@ def test_unexpected_extra_role_event_fails():
 
 def test_duplicate_expected_role_event_fails():
     events = valid_events()
-    events.insert(3, {**events[2], "agent_id": "duplicate-agent"})
+    events.insert(4, {**events[3], "agent_id": "duplicate-agent"})
     result = derive(events)
     assert result["passed"] is False and result["first_failure"] == "PROBE:integration_auditor"
 

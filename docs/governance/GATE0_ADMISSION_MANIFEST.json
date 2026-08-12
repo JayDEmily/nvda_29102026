@@ -1,4 +1,9 @@
 {
+  "allowed_live_local_tools": [
+    "Bash:exact_nonce_bound_probe_only",
+    "spawn_agent:exact_next_agent_type_only",
+    "wait_agent:authorised_child_only"
+  ],
   "automatic_final_subagent_stop_closure": false,
   "closure_actor": "ordinary_wsl",
   "forbidden_gate0_dependencies": [
@@ -38,9 +43,11 @@
   "required_live_sequence": [
     "SessionStart",
     "ParentProbePass",
+    "integration_auditor:SpawnRequest",
     "integration_auditor:SubagentStart",
     "integration_auditor:ProbePass",
     "integration_auditor:SubagentStop",
+    "semantic_reviewer:SpawnRequest",
     "semantic_reviewer:SubagentStart",
     "semantic_reviewer:ProbePass",
     "semantic_reviewer:SubagentStop"
@@ -48,10 +55,16 @@
   "runtime_policy": {
     "agent_runtime_must_be_wsl": true,
     "approval_policy": "on-request",
+    "apps_enabled": false,
     "architecture": "x86_64",
     "integrated_terminal_is_not_runtime_proof": true,
+    "known_hook_exempt_specialised_tools_must_be_absent_or_gate0_blocks": true,
     "os": "linux",
+    "pretool_matcher": "*",
     "sandbox_mode": "read-only",
+    "spawn_must_name_exact_agent_type": true,
+    "view_image_enabled": false,
+    "web_search": "disabled",
     "wsl2_required": true
   },
   "schema_version": "1.0.0"

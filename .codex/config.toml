@@ -1,6 +1,17 @@
 approval_policy = "on-request"
 sandbox_mode = "read-only"
 allow_login_shell = false
+web_search = "disabled"
+
+[tools]
+view_image = false
+
+[apps._default]
+enabled = false
+
+[features]
+apps = false
+remote_plugin = false
 
 [agents]
 enabled = true

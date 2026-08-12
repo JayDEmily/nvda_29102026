@@ -1,5 +1,5 @@
 {
-  "description": "NVDA minimal Gate 0 lifecycle evidence hooks.",
+  "description": "NVDA minimal Gate 0 lifecycle, pre-spawn and probe-only evidence hooks.",
   "hooks": {
     "PostToolUse": [
       {
@@ -10,7 +10,7 @@
             "type": "command"
           }
         ],
-        "matcher": "Bash"
+        "matcher": "*"
       }
     ],
     "PreToolUse": [
@@ -22,7 +22,7 @@
             "type": "command"
           }
         ],
-        "matcher": "Bash"
+        "matcher": "*"
       }
     ],
     "SessionStart": [

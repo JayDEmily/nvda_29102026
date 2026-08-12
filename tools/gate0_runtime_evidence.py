@@ -177,13 +177,78 @@ def _evidence_digest(events: list[dict[str, Any]]) -> str:
     return _sha256_bytes(json.dumps(events, sort_keys=True, separators=(",", ":")).encode())
 
 
+def meaningful_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [e for e in events if e.get("type") not in {"PreToolUse", "PostToolUse"}]
+
+
+def expected_next_spawn_role(events: list[dict[str, Any]], *, run_nonce: str) -> str | None:
+    evidence = meaningful_events(events)
+    if any(e.get("type") == "Gate0Failure" for e in evidence):
+        raise Gate0Error("Gate 0 already has a recorded first failure")
+    if len(evidence) < 2 or not (
+        evidence[0].get("type") == "SessionStart"
+        and evidence[0].get("run_nonce") == run_nonce
+        and evidence[1].get("type") == "ProbeResult"
+        and evidence[1].get("role") == "__parent__"
+        and evidence[1].get("run_nonce") == run_nonce
+        and evidence[1].get("passed") is True
+    ):
+        raise Gate0Error("parent capability proof is not complete")
+
+    cursor = 2
+    for role in EXPECTED_ROLES:
+        if len(evidence) == cursor:
+            return role
+        if len(evidence) < cursor + 4:
+            raise Gate0Error(f"{role} is still in progress")
+        spawn, start, probe, stop = evidence[cursor : cursor + 4]
+        if not (
+            spawn.get("type") == "SpawnRequest"
+            and spawn.get("role") == role
+            and spawn.get("run_nonce") == run_nonce
+            and start.get("type") == "SubagentStart"
+            and start.get("role") == role
+            and start.get("run_nonce") == run_nonce
+            and probe.get("type") == "ProbeResult"
+            and probe.get("role") == role
+            and probe.get("run_nonce") == run_nonce
+            and probe.get("passed") is True
+            and stop.get("type") == "SubagentStop"
+            and stop.get("role") == role
+            and stop.get("run_nonce") == run_nonce
+        ):
+            raise Gate0Error(f"invalid completed Gate 0 sequence for {role}")
+        cursor += 4
+    if len(evidence) == cursor:
+        return None
+    raise Gate0Error("Gate 0 evidence contains an unexpected event")
+
+
+def expected_next_start_role(events: list[dict[str, Any]], *, run_nonce: str) -> str | None:
+    evidence = meaningful_events(events)
+    for role, index in (("integration_auditor", 2), ("semantic_reviewer", 6)):
+        if len(evidence) == index + 1:
+            event = evidence[index]
+            if (
+                event.get("type") == "SpawnRequest"
+                and event.get("role") == role
+                and event.get("run_nonce") == run_nonce
+            ):
+                return role
+    return None
+
+
 def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dict[str, Any]:
     run_nonce = arm.get("run_nonce")
     head = arm.get("head")
-    evidence = [e for e in events if e.get("type") not in {"PreToolUse", "PostToolUse"}]
+    evidence = meaningful_events(events)
 
     def fail(name: str) -> dict[str, Any]:
         return {"passed": False, "first_failure": name, "evidence_sha256": _evidence_digest(events)}
+
+    first_failure = next((e for e in evidence if e.get("type") == "Gate0Failure"), None)
+    if first_failure is not None:
+        return fail(str(first_failure.get("stage") or "GATE0_FAILURE"))
 
     if not evidence or evidence[0].get("type") != "SessionStart":
         return fail("SESSION_START")
@@ -207,6 +272,14 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
     i += 1
     identities: set[str] = set()
     for role in EXPECTED_ROLES:
+        if (
+            i >= len(evidence)
+            or evidence[i].get("type") != "SpawnRequest"
+            or evidence[i].get("role") != role
+            or evidence[i].get("run_nonce") != run_nonce
+        ):
+            return fail(f"SPAWN_REQUEST:{role}")
+        i += 1
         if (
             i >= len(evidence)
             or evidence[i].get("type") != "SubagentStart"
@@ -303,6 +376,44 @@ def load_arm(root: Path) -> dict[str, Any]:
     return _read_json(path)
 
 
+def load_active_arm(root: Path) -> dict[str, Any] | None:
+    path = state_dir(root) / "arm.json"
+    if not path.is_file():
+        return None
+    arm = _read_json(path)
+    return arm if arm.get("state") == "ARMED" else None
+
+
+def load_failure(root: Path) -> dict[str, Any] | None:
+    path = state_dir(root) / "failure.json"
+    return _read_json(path) if path.is_file() else None
+
+
+def record_failure(root: Path, *, stage: str, reason: str) -> dict[str, Any]:
+    existing = load_failure(root)
+    if existing is not None:
+        return existing
+    arm = load_arm(root)
+    record = {
+        "run_nonce": arm.get("run_nonce"),
+        "head": arm.get("head"),
+        "stage": stage,
+        "reason": reason,
+        "recorded_at_utc": _utcnow(),
+    }
+    _write_json(state_dir(root) / "failure.json", record)
+    append_event(
+        root,
+        {
+            "type": "Gate0Failure",
+            "run_nonce": arm.get("run_nonce"),
+            "stage": stage,
+            "reason": reason,
+        },
+    )
+    return record
+
+
 def load_events(root: Path) -> list[dict[str, Any]]:
     path = state_dir(root) / "events.jsonl"
     if not path.exists():
@@ -379,7 +490,7 @@ def arm_repository() -> dict[str, Any]:
     _write_json(sd / "arm.json", record)
     _write_json(sd / "agent_nonces.json", {"run_nonce": record["run_nonce"], "roles": {}})
     (sd / "events.jsonl").write_text("")
-    for stale in (sd / "derived.json",):
+    for stale in (sd / "derived.json", sd / "failure.json"):
         if stale.exists():
             stale.unlink()
     return record
@@ -406,7 +517,17 @@ def derive_repository() -> dict[str, Any]:
     ok, failure = current_binding(root, arm)
     if not ok:
         raise Gate0Error(f"armed binding invalid: {failure}")
-    result = derive_attestation(arm, load_events(root))
+    events = load_events(root)
+    recorded_failure = load_failure(root)
+    if recorded_failure is not None:
+        result = {
+            "passed": False,
+            "first_failure": str(recorded_failure.get("stage") or "GATE0_FAILURE"),
+            "evidence_sha256": _evidence_digest(events),
+            "failure_record_sha256": sha256_file(state_dir(root) / "failure.json"),
+        }
+    else:
+        result = derive_attestation(arm, events)
     _write_json(state_dir(root) / "derived.json", result)
     return result
 
