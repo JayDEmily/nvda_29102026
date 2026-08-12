@@ -318,3 +318,50 @@ def test_accepted_admission_advances_only_thin_state_pointers():
     assert updated["current_attempt"] is None
     assert updated["first_blocker"] is None
     assert updated["unrelated"] == "preserved"
+
+
+def test_candidate_git_parent_and_actual_diff_are_mechanically_bound():
+    module = load_validator()
+    wo = work_order()
+    wo["allowed_mutations"] = ["docs/example.md"]
+    att = attempt(wo=wo)
+    att["actual_changed_paths"] = ["docs/example.md"]
+    module.validate_git_candidate_binding(
+        wo,
+        att,
+        candidate_commit=att["candidate_commit"],
+        candidate_parent=wo["accepted_base_commit"],
+        changed_paths=["docs/example.md"],
+    )
+    with pytest.raises(module.GovernanceError, match="parent"):
+        module.validate_git_candidate_binding(
+            wo,
+            att,
+            candidate_commit=att["candidate_commit"],
+            candidate_parent="f" * 40,
+            changed_paths=["docs/example.md"],
+        )
+    with pytest.raises(module.GovernanceError, match="changed paths"):
+        module.validate_git_candidate_binding(
+            wo,
+            att,
+            candidate_commit=att["candidate_commit"],
+            candidate_parent=wo["accepted_base_commit"],
+            changed_paths=["docs/other.md"],
+        )
+
+
+def test_attempt_declaration_cannot_hide_an_extra_git_changed_path():
+    module = load_validator()
+    wo = work_order()
+    wo["allowed_mutations"] = ["docs/example.md"]
+    att = attempt(wo=wo)
+    att["actual_changed_paths"] = ["docs/example.md"]
+    with pytest.raises(module.GovernanceError, match="changed paths"):
+        module.validate_git_candidate_binding(
+            wo,
+            att,
+            candidate_commit=att["candidate_commit"],
+            candidate_parent=wo["accepted_base_commit"],
+            changed_paths=["docs/example.md", "docs/hidden.md"],
+        )

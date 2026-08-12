@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-ROOT = Path.cwd().resolve()
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import gate0_runtime_evidence as rt  # noqa: E402
 
@@ -61,37 +61,112 @@ def main() -> int:
         return 0
 
     if event == "SessionStart":
-        rt.append_event(root, {"type": "SessionStart", "run_nonce": arm["run_nonce"], "head": arm["head"], "session_id": payload.get("session_id"), "cwd": payload.get("cwd"), "permission_mode": payload.get("permission_mode"), "source": payload.get("source")})
+        rt.append_event(
+            root,
+            {
+                "type": "SessionStart",
+                "run_nonce": arm["run_nonce"],
+                "head": arm["head"],
+                "session_id": payload.get("session_id"),
+                "cwd": payload.get("cwd"),
+                "permission_mode": payload.get("permission_mode"),
+                "source": payload.get("source"),
+            },
+        )
         cmd = rt.expected_probe_commands(root, arm)["__parent__"]
-        output(hook_context("SessionStart", f"NVDA Gate 0 is armed. Execute only this exact mechanical probe command, then report its JSON result: {cmd}"))
+        context = (
+            "NVDA Gate 0 is armed. Execute only this exact mechanical probe command, "
+            f"then report its JSON result: {cmd}"
+        )
+        output(hook_context("SessionStart", context))
         return 0
 
     if event == "SubagentStart":
         role = payload.get("agent_type")
         if role not in rt.EXPECTED_ROLES:
+            rt.append_event(
+                root,
+                {
+                    "type": "SubagentStart",
+                    "role": role,
+                    "agent_id": payload.get("agent_id"),
+                    "run_nonce": arm["run_nonce"],
+                    "unexpected": True,
+                },
+            )
             output({"systemMessage": f"Unexpected Gate 0 subagent type: {role}"})
             return 0
         data_path = rt.state_dir(root) / "agent_nonces.json"
         data = json.loads(data_path.read_text())
         if role in data.get("roles", {}):
+            rt.append_event(
+                root,
+                {
+                    "type": "SubagentStart",
+                    "role": role,
+                    "agent_id": payload.get("agent_id"),
+                    "run_nonce": arm["run_nonce"],
+                    "duplicate": True,
+                },
+            )
             output({"systemMessage": f"Duplicate Gate 0 subagent start for {role}"})
             return 0
         nonce = secrets.token_hex(16)
         data.setdefault("roles", {})[role] = {"nonce": nonce, "agent_id": payload.get("agent_id")}
         data_path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
-        rt.append_event(root, {"type": "SubagentStart", "role": role, "agent_id": payload.get("agent_id"), "run_nonce": arm["run_nonce"], "role_nonce": nonce})
+        rt.append_event(
+            root,
+            {
+                "type": "SubagentStart",
+                "role": role,
+                "agent_id": payload.get("agent_id"),
+                "run_nonce": arm["run_nonce"],
+                "role_nonce": nonce,
+            },
+        )
         cmd = rt.expected_probe_commands(root, arm)[role]
-        output(hook_context("SubagentStart", f"Authenticated NVDA gate capability probe. Do no semantic pre-read/work. Execute only this exact command, report its JSON result, then stop: {cmd}"))
+        context = (
+            "Authenticated NVDA gate capability probe. Do no semantic pre-read/work. "
+            f"Execute only this exact command, report its JSON result, then stop: {cmd}"
+        )
+        output(hook_context("SubagentStart", context))
         return 0
 
     if event == "PreToolUse":
         command = (payload.get("tool_input") or {}).get("command")
         role = rt.command_role(root, arm, command) if isinstance(command, str) else None
         if role is None:
-            output({"hookSpecificOutput": {"hookEventName": "PreToolUse", "permissionDecision": "deny", "permissionDecisionReason": "Gate 0 permits only the exact nonce-bound mechanical probe command."}})
+            output(
+                {
+                    "hookSpecificOutput": {
+                        "hookEventName": "PreToolUse",
+                        "permissionDecision": "deny",
+                        "permissionDecisionReason": (
+                            "Gate 0 permits only the exact nonce-bound mechanical probe command."
+                        ),
+                    }
+                }
+            )
             return 0
-        rt.append_event(root, {"type": "PreToolUse", "role": role, "run_nonce": arm["run_nonce"], "tool_use_id": payload.get("tool_use_id")})
-        output({"hookSpecificOutput": {"hookEventName": "PreToolUse", "additionalContext": "Exact NVDA Gate 0 probe command matched the protected arm."}})
+        rt.append_event(
+            root,
+            {
+                "type": "PreToolUse",
+                "role": role,
+                "run_nonce": arm["run_nonce"],
+                "tool_use_id": payload.get("tool_use_id"),
+            },
+        )
+        output(
+            {
+                "hookSpecificOutput": {
+                    "hookEventName": "PreToolUse",
+                    "additionalContext": (
+                        "Exact NVDA Gate 0 probe command matched the protected arm."
+                    ),
+                }
+            }
+        )
         return 0
 
     if event == "PostToolUse":
@@ -101,23 +176,66 @@ def main() -> int:
             output({"systemMessage": "Unexpected Bash result during armed NVDA Gate 0."})
             return 0
         probe = find_probe(payload.get("tool_response"))
-        if not probe:
-            rt.append_event(root, {"type": "ProbeResult", "role": role, "run_nonce": arm["run_nonce"], "passed": False})
-            output({"decision": "block", "reason": "Gate 0 probe output was not machine-readable."})
-            return 0
         nonces = json.loads((rt.state_dir(root) / "agent_nonces.json").read_text()).get("roles", {})
         agent_id = nonces.get(role, {}).get("agent_id") if role != "__parent__" else None
-        rt.append_event(root, {"type": "PostToolUse", "role": role, "run_nonce": arm["run_nonce"], "tool_use_id": payload.get("tool_use_id")})
-        rt.append_event(root, {"type": "ProbeResult", "role": role, "agent_id": agent_id, "run_nonce": arm["run_nonce"], "passed": probe.get("passed") is True})
-        if probe.get("passed") is not True:
-            output({"decision": "block", "reason": f"NVDA Gate 0 mechanical probe failed for {role}."})
+        expected_nonce = (
+            arm["run_nonce"] if role == "__parent__" else nonces.get(role, {}).get("nonce")
+        )
+        ok = False
+        failure = "MACHINE_READABLE_OUTPUT"
+        if probe and isinstance(expected_nonce, str):
+            ok, failure = rt.validate_probe_payload(
+                arm, role=role, expected_nonce=expected_nonce, probe=probe
+            )
+        rt.append_event(
+            root,
+            {
+                "type": "PostToolUse",
+                "role": role,
+                "run_nonce": arm["run_nonce"],
+                "tool_use_id": payload.get("tool_use_id"),
+            },
+        )
+        rt.append_event(
+            root,
+            {
+                "type": "ProbeResult",
+                "role": role,
+                "agent_id": agent_id,
+                "run_nonce": arm["run_nonce"],
+                "passed": ok,
+                "failure": failure,
+            },
+        )
+        if not ok:
+            output(
+                {
+                    "decision": "block",
+                    "reason": f"NVDA Gate 0 mechanical probe failed for {role}: {failure}.",
+                }
+            )
         else:
-            output({"hookSpecificOutput": {"hookEventName": "PostToolUse", "additionalContext": f"NVDA Gate 0 mechanical probe PASS for {role}."}})
+            output(
+                {
+                    "hookSpecificOutput": {
+                        "hookEventName": "PostToolUse",
+                        "additionalContext": f"NVDA Gate 0 mechanical probe PASS for {role}.",
+                    }
+                }
+            )
         return 0
 
     if event == "SubagentStop":
         role = payload.get("agent_type")
-        rt.append_event(root, {"type": "SubagentStop", "role": role, "agent_id": payload.get("agent_id"), "run_nonce": arm["run_nonce"]})
+        rt.append_event(
+            root,
+            {
+                "type": "SubagentStop",
+                "role": role,
+                "agent_id": payload.get("agent_id"),
+                "run_nonce": arm["run_nonce"],
+            },
+        )
         output({"continue": True})
         return 0
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import platform
 import secrets
 import subprocess
@@ -66,6 +67,28 @@ def guarded_hashes(root: Path, manifest: dict[str, Any]) -> dict[str, str]:
     return result
 
 
+def validate_host_policy(
+    *,
+    system: str,
+    machine: str,
+    wsl_distro: str | None,
+    kernel_release: str,
+    repo_root: str,
+) -> None:
+    if system != "Linux" or machine != "x86_64":
+        raise Gate0Error("Gate 0 programme policy requires Linux x86_64")
+    if not wsl_distro:
+        raise Gate0Error("Gate 0 programme policy requires WSL2")
+    release = kernel_release.lower()
+    if "microsoft" not in release or "wsl2" not in release:
+        raise Gate0Error("Gate 0 programme policy requires a WSL2 kernel")
+    resolved = Path(repo_root).resolve()
+    if resolved == Path("/mnt") or Path("/mnt") in resolved.parents:
+        raise Gate0Error("Gate 0 programme policy requires native WSL storage outside /mnt")
+    if resolved == Path("/") or Path("/home") not in resolved.parents:
+        raise Gate0Error("Gate 0 programme policy requires a repository under /home/...")
+
+
 def make_arm_record(
     *,
     branch: str,
@@ -96,6 +119,7 @@ def validate_arm_binding(
     current_head: str,
     current_manifest_sha256: str,
     current_guarded_hashes: dict[str, str],
+    current_worktree_clean: bool,
 ) -> tuple[bool, str | None]:
     if arm.get("branch") != current_branch:
         return False, "BRANCH"
@@ -105,6 +129,47 @@ def validate_arm_binding(
         return False, "MANIFEST_HASH"
     if arm.get("guarded_hashes") != dict(sorted(current_guarded_hashes.items())):
         return False, "GUARDED_HASHES"
+    if not current_worktree_clean:
+        return False, "WORKTREE_DIRTY"
+    return True, None
+
+
+def validate_probe_payload(
+    arm: dict[str, Any],
+    *,
+    role: str,
+    expected_nonce: str,
+    probe: dict[str, Any],
+) -> tuple[bool, str | None]:
+    if probe.get("gate0_probe") is not True:
+        return False, "PROBE_MARKER"
+    if probe.get("role") != role:
+        return False, "ROLE"
+    if probe.get("nonce") != expected_nonce:
+        return False, "NONCE"
+    if probe.get("run_nonce") != arm.get("run_nonce"):
+        return False, "RUN_NONCE"
+    if probe.get("head") != arm.get("head"):
+        return False, "HEAD"
+    if probe.get("repo_root") != arm.get("repo_root"):
+        return False, "REPO_ROOT"
+    platform_data = probe.get("platform") or {}
+    if (
+        platform_data.get("system") != "Linux"
+        or platform_data.get("machine") != "x86_64"
+        or not platform_data.get("wsl_distro")
+        or "microsoft" not in str(platform_data.get("kernel_release", "")).lower()
+        or "wsl2" not in str(platform_data.get("kernel_release", "")).lower()
+    ):
+        return False, "PLATFORM"
+    probes = probe.get("probes")
+    required = {"repository", "git_metadata", "slash_tmp", "home"}
+    if not isinstance(probes, dict) or set(probes) != required:
+        return False, "PROBE_SET"
+    if any((probes[name] or {}).get("write_allowed") is not False for name in required):
+        return False, "WRITE_BOUNDARY"
+    if probe.get("passed") is not True:
+        return False, "PROBE_REPORTED_FAILURE"
     return True, None
 
 
@@ -123,7 +188,12 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
     if not evidence or evidence[0].get("type") != "SessionStart":
         return fail("SESSION_START")
     session = evidence[0]
-    if session.get("run_nonce") != run_nonce or session.get("head") != head:
+    if (
+        session.get("run_nonce") != run_nonce
+        or session.get("head") != head
+        or session.get("cwd") != arm.get("repo_root")
+        or session.get("source") != "startup"
+    ):
         return fail("SESSION_START")
     i = 1
     if (
@@ -173,6 +243,23 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
     if i != len(evidence):
         return fail("UNEXPECTED_EVENT")
     return {"passed": True, "first_failure": None, "evidence_sha256": _evidence_digest(events)}
+
+
+def validate_final_admission_evidence(
+    arm: dict[str, Any],
+    *,
+    derived: dict[str, Any],
+    recomputed: dict[str, Any],
+    binding_ok: bool,
+) -> None:
+    if arm.get("state") != "SEALED":
+        raise Gate0Error("Gate 0 evidence must be SEALED before admission")
+    if not binding_ok:
+        raise Gate0Error("Gate 0 Git/control binding is no longer valid")
+    if derived != recomputed:
+        raise Gate0Error("stored Gate 0 evidence does not match recomputed evidence")
+    if derived.get("passed") is not True:
+        raise Gate0Error("Gate 0 evidence is not passing")
 
 
 def build_admission_record(
@@ -234,8 +321,7 @@ def expected_probe_commands(root: Path, arm: dict[str, Any]) -> dict[str, str]:
     run_nonce = arm["run_nonce"]
     result = {
         "__parent__": (
-            f"{py} -B {probe} --role __parent__ "
-            f"--nonce {run_nonce} --run-nonce {run_nonce}"
+            f"{py} -B {probe} --role __parent__ --nonce {run_nonce} --run-nonce {run_nonce}"
         )
     }
     nonces_path = state_dir(root) / "agent_nonces.json"
@@ -243,8 +329,7 @@ def expected_probe_commands(root: Path, arm: dict[str, Any]) -> dict[str, str]:
         data = _read_json(nonces_path)
         for role, item in data.get("roles", {}).items():
             result[role] = (
-                f"{py} -B {probe} --role {role} "
-                f"--nonce {item['nonce']} --run-nonce {run_nonce}"
+                f"{py} -B {probe} --role {role} --nonce {item['nonce']} --run-nonce {run_nonce}"
             )
     return result
 
@@ -263,8 +348,13 @@ def arm_repository() -> dict[str, Any]:
     head = _run(root, "git", "rev-parse", "HEAD")
     manifest_path = root / "docs/governance/GATE0_ADMISSION_MANIFEST.json"
     manifest = load_manifest(root)
-    if platform.system() != "Linux" or platform.machine() != "x86_64":
-        raise Gate0Error("Gate 0 programme policy requires Linux x86_64")
+    validate_host_policy(
+        system=platform.system(),
+        machine=platform.machine(),
+        wsl_distro=os.environ.get("WSL_DISTRO_NAME"),
+        kernel_release=platform.release(),
+        repo_root=str(root),
+    )
     project_python = root / ".venv/bin/python"
     if not project_python.is_file():
         raise Gate0Error("project .venv/bin/python is required before arming")
@@ -304,6 +394,9 @@ def current_binding(root: Path, arm: dict[str, Any]) -> tuple[bool, str | None]:
         current_head=_run(root, "git", "rev-parse", "HEAD"),
         current_manifest_sha256=sha256_file(manifest_path),
         current_guarded_hashes=guarded_hashes(root, manifest),
+        current_worktree_clean=not bool(
+            _run(root, "git", "status", "--porcelain=v1", "--untracked-files=all")
+        ),
     )
 
 
@@ -335,9 +428,12 @@ def seal_repository() -> dict[str, Any]:
 def admit_repository() -> dict[str, Any]:
     root = repo_root()
     arm = load_arm(root)
-    if arm.get("state") != "SEALED":
-        raise Gate0Error("Gate 0 must be SEALED before admission")
+    binding_ok, _ = current_binding(root, arm)
     derived = _read_json(state_dir(root) / "derived.json")
+    recomputed = derive_attestation(arm, load_events(root))
+    validate_final_admission_evidence(
+        arm, derived=derived, recomputed=recomputed, binding_ok=binding_ok
+    )
     record = build_admission_record(
         arm=arm,
         derived=derived,

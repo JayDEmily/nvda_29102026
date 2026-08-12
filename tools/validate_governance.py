@@ -157,6 +157,34 @@ def validate_attempt(work_order: dict[str, Any], attempt: dict[str, Any]) -> Non
         raise GovernanceError(f"attempt changed paths outside authority: {sorted(unexpected)}")
 
 
+def validate_git_candidate_binding(
+    work_order: dict[str, Any],
+    attempt: dict[str, Any],
+    *,
+    candidate_commit: str,
+    candidate_parent: str,
+    changed_paths: list[str],
+) -> None:
+    """Bind an attempt declaration to mechanically derived Git candidate facts."""
+    declared_commit = attempt.get("candidate_commit")
+    if not declared_commit or declared_commit != candidate_commit:
+        raise GovernanceError("candidate commit does not match attempt declaration")
+    if candidate_parent != work_order.get("accepted_base_commit"):
+        raise GovernanceError("candidate parent does not match accepted Git base")
+
+    declared_paths = attempt.get("actual_changed_paths")
+    if not isinstance(declared_paths, list):
+        raise GovernanceError("attempt changed paths declaration is malformed")
+    if set(changed_paths) != set(declared_paths):
+        raise GovernanceError("Git changed paths do not match attempt changed paths")
+
+    unexpected = set(changed_paths) - set(work_order.get("allowed_mutations", []))
+    if unexpected:
+        raise GovernanceError(
+            f"Git changed paths exceed work-order authority: {sorted(unexpected)}"
+        )
+
+
 def validate_review(
     work_order: dict[str, Any], attempt: dict[str, Any], review: dict[str, Any]
 ) -> None:

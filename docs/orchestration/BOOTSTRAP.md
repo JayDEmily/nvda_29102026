@@ -17,10 +17,7 @@ pwd -P
 git branch --show-current
 git rev-parse HEAD
 git status --porcelain=v1 --untracked-files=all
-uv sync --locked --extra dev --offline
-uv run python tools/validate_architecture.py
-uv run python tools/validate_gate0.py --static
-uv run python tools/gate0_runtime_evidence.py arm
+bash tools/bootstrap_preflight.sh
 ```
 
 PASS requires native Linux/WSL policy, a clean worktree, parseable admitted control files, exact guarded hashes, and a protected arm record under Git metadata. After arming, do not edit the repository.

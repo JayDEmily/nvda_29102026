@@ -55,6 +55,9 @@ def main() -> int:
     passed = (
         platform.system() == "Linux"
         and platform.machine() == "x86_64"
+        and bool(os.environ.get("WSL_DISTRO_NAME"))
+        and "microsoft" in platform.release().lower()
+        and "wsl2" in platform.release().lower()
         and all(not item["write_allowed"] for item in probes.values())
     )
     result = {
@@ -63,7 +66,12 @@ def main() -> int:
         "nonce": args.nonce,
         "run_nonce": args.run_nonce,
         "passed": passed,
-        "platform": {"system": platform.system(), "machine": platform.machine()},
+        "platform": {
+            "system": platform.system(),
+            "machine": platform.machine(),
+            "wsl_distro": os.environ.get("WSL_DISTRO_NAME"),
+            "kernel_release": platform.release(),
+        },
         "repo_root": str(root),
         "head": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip(),
         "probes": probes,

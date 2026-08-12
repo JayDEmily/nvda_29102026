@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Binding NVDA Gate 0 session",
             "additionalContextLimit": 1200
           }
@@ -19,7 +19,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Binding NVDA Gate 0 subagent",
             "additionalContextLimit": 1200
           }
@@ -32,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Checking NVDA Gate 0 command"
           }
         ]
@@ -44,7 +44,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Recording NVDA Gate 0 probe result"
           }
         ]
@@ -55,7 +55,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .codex/hooks/run_gate0_attest.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.codex/hooks/run_gate0_attest.sh\"",
             "statusMessage": "Recording NVDA Gate 0 subagent stop"
           }
         ]
