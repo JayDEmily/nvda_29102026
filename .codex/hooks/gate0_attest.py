@@ -175,13 +175,14 @@ def main() -> int:
             return 0
 
         if tool_name == "wait_agent":
-            if not any(e.get("type") == "SpawnRequest" for e in rt.load_events(root)):
+            if not rt.wait_agent_allowed(rt.load_events(root), run_nonce=arm["run_nonce"]):
                 output(
                     record_and_deny(
                         root,
-                        stage="WAIT_WITHOUT_SPAWN",
+                        stage="WAIT_OUTSIDE_ACTIVE_CHILD",
                         reason=(
-                            "Gate 0 wait_agent is allowed only after an authorised spawn request."
+                            "Gate 0 wait_agent is allowed only while the one authorised "
+                            "Gate 0 child is still in progress."
                         ),
                     )
                 )

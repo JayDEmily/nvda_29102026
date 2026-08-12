@@ -64,7 +64,7 @@ def validate_declared_runtime_policy(manifest: dict, config: dict, hooks: dict) 
     expected_live_tools = [
         "Bash:exact_nonce_bound_probe_only",
         "spawn_agent:exact_next_agent_type_only",
-        "wait_agent:authorised_child_only",
+        "wait_agent:only_while_exact_authorised_child_in_progress",
     ]
     if manifest.get("allowed_live_local_tools") != expected_live_tools:
         raise ValidationError("Gate 0 allowed live local-tool set is not the admitted minimal set")

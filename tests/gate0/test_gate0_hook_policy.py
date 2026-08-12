@@ -104,6 +104,24 @@ def test_spawn_order_has_explicit_pre_spawn_boundary_for_each_role():
     assert module.expected_next_spawn_role(events, run_nonce="run-1") == "semantic_reviewer"
 
 
+def test_wait_agent_is_allowed_only_while_the_exact_authorised_child_is_in_progress():
+    module = runtime()
+    events = [
+        event("SessionStart", head="a" * 40, cwd="/repo", source="startup"),
+        event("ProbeResult", role="__parent__", passed=True),
+        event("SpawnRequest", role="integration_auditor"),
+    ]
+    assert module.wait_agent_allowed(events, run_nonce="run-1") is True
+    events.extend(
+        [
+            event("SubagentStart", role="integration_auditor", agent_id="a"),
+            event("ProbeResult", role="integration_auditor", agent_id="a", passed=True),
+            event("SubagentStop", role="integration_auditor", agent_id="a"),
+        ]
+    )
+    assert module.wait_agent_allowed(events, run_nonce="run-1") is False
+
+
 def test_recorded_gate0_failure_is_non_admissible_evidence():
     module = runtime()
     arm = {"run_nonce": "run-1", "head": "a" * 40, "repo_root": "/repo"}

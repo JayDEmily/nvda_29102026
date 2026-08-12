@@ -47,7 +47,7 @@ The parent executes the command exactly once. PASS requires the machine-readable
 
 After the parent probe passes, the parent requests exactly one `spawn_agent` call with `agent_type = "integration_auditor"`. The armed `PreToolUse` hook must authenticate that exact next role and persist a `SpawnRequest` before the spawn is allowed.
 
-The subsequent protected `SubagentStart` must match that recorded request. The start hook injects the exact child nonce-bound probe command. Approve only that exact command, require probe PASS, then require a matching clean `SubagentStop`. The parent may use `wait_agent` only to await the already-authorised child; it may not send follow-up work or resume another agent.
+The subsequent protected `SubagentStart` must match that recorded request. The start hook injects the exact child nonce-bound probe command. Approve only that exact command, require probe PASS, then require a matching clean `SubagentStop`. The parent may use `wait_agent` only while that single authorised child is still in progress; it may not send follow-up work or resume another agent. Because the public product documentation does not guarantee a stable `wait_agent` target-input schema, the hook enforces this by the protected sequential lifecycle state rather than claiming an undocumented target-field binding.
 
 No source pre-read or semantic-index work occurs during this capability probe.
 

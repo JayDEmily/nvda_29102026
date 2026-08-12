@@ -224,6 +224,57 @@ def expected_next_spawn_role(events: list[dict[str, Any]], *, run_nonce: str) ->
     raise Gate0Error("Gate 0 evidence contains an unexpected event")
 
 
+def wait_agent_allowed(events: list[dict[str, Any]], *, run_nonce: str) -> bool:
+    """Return true only while one admitted Gate-0 child is in progress.
+
+    The public Codex documentation names `wait_agent` but does not guarantee a stable
+    target-argument schema. Gate 0 therefore constrains the temporal state instead of
+    claiming an undocumented target-input binding. A fresh Gate-0 session is sequential,
+    so exactly one admitted child can be in progress at a time.
+    """
+    evidence = meaningful_events(events)
+    if any(e.get("type") == "Gate0Failure" for e in evidence):
+        return False
+    if len(evidence) < 2 or not (
+        evidence[0].get("type") == "SessionStart"
+        and evidence[0].get("run_nonce") == run_nonce
+        and evidence[1].get("type") == "ProbeResult"
+        and evidence[1].get("role") == "__parent__"
+        and evidence[1].get("run_nonce") == run_nonce
+        and evidence[1].get("passed") is True
+    ):
+        return False
+    cursor = 2
+    for role in EXPECTED_ROLES:
+        if len(evidence) == cursor:
+            return False
+        spawn = evidence[cursor]
+        if not (
+            spawn.get("type") == "SpawnRequest"
+            and spawn.get("role") == role
+            and spawn.get("run_nonce") == run_nonce
+        ):
+            return False
+        if len(evidence) < cursor + 4:
+            return True
+        start, probe, stop = evidence[cursor + 1 : cursor + 4]
+        if not (
+            start.get("type") == "SubagentStart"
+            and start.get("role") == role
+            and start.get("run_nonce") == run_nonce
+            and probe.get("type") == "ProbeResult"
+            and probe.get("role") == role
+            and probe.get("run_nonce") == run_nonce
+            and probe.get("passed") is True
+            and stop.get("type") == "SubagentStop"
+            and stop.get("role") == role
+            and stop.get("run_nonce") == run_nonce
+        ):
+            return False
+        cursor += 4
+    return False
+
+
 def expected_next_start_role(events: list[dict[str, Any]], *, run_nonce: str) -> str | None:
     evidence = meaningful_events(events)
     for role, index in (("integration_auditor", 2), ("semantic_reviewer", 6)):

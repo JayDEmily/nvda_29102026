@@ -2,7 +2,7 @@
   "allowed_live_local_tools": [
     "Bash:exact_nonce_bound_probe_only",
     "spawn_agent:exact_next_agent_type_only",
-    "wait_agent:authorised_child_only"
+    "wait_agent:only_while_exact_authorised_child_in_progress"
   ],
   "automatic_final_subagent_stop_closure": false,
   "closure_actor": "ordinary_wsl",
