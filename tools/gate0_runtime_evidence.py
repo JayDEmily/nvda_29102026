@@ -630,9 +630,185 @@ def admit_repository() -> dict[str, Any]:
     return record
 
 
+def validate_admission_control_commit(
+    root: Path,
+    *,
+    proven_commit: str,
+    control_commit: str,
+    admission_id: str,
+) -> None:
+    """Prove the post-admission Git commit contains only admitted control-state bytes."""
+    parent = _run(root, "git", "rev-parse", f"{control_commit}^")
+    if parent != proven_commit:
+        raise Gate0Error("Gate 0 admission-control commit parent is not the proven commit")
+    admission_path = f"docs/governance/admissions/{admission_id}.json"
+    expected_paths = {"docs/governance/ADMITTED_STATE.json", admission_path}
+    changed_paths = set(
+        subprocess.check_output(
+            ["git", "diff-tree", "--no-commit-id", "--name-only", "-r", control_commit],
+            cwd=root,
+            text=True,
+        ).splitlines()
+    )
+    if changed_paths != expected_paths:
+        raise Gate0Error(
+            "Gate 0 admission-control commit changed unexpected paths: "
+            + ", ".join(sorted(changed_paths ^ expected_paths))
+        )
+    try:
+        state = json.loads(
+            subprocess.check_output(
+                ["git", "show", f"{control_commit}:docs/governance/ADMITTED_STATE.json"],
+                cwd=root,
+            )
+        )
+        admission = json.loads(
+            subprocess.check_output(
+                ["git", "show", f"{control_commit}:{admission_path}"], cwd=root
+            )
+        )
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as exc:
+        raise Gate0Error("Gate 0 admission-control commit contains invalid state") from exc
+    if state.get("operational_status") != "GATE0_PASS":
+        raise Gate0Error("admission-control state does not record GATE0_PASS")
+    if state.get("active_gate") != "GATE1A":
+        raise Gate0Error("admission-control state does not unlock Gate 1A")
+    if state.get("candidate_control_commit") != proven_commit:
+        raise Gate0Error("admission-control state candidate does not bind the proven commit")
+    if state.get("gate0_proven_commit") != proven_commit:
+        raise Gate0Error("admission-control state Gate 0 proof does not bind the proven commit")
+    if state.get("latest_admission_id") != admission_id:
+        raise Gate0Error("admission-control state does not bind the Gate 0 admission ID")
+    if admission.get("admission_id") != admission_id:
+        raise Gate0Error("admission-control record ID mismatch")
+    if admission.get("disposition") != "GATE0_PASS":
+        raise Gate0Error("admission-control record is not a Gate 0 PASS")
+    if admission.get("proven_commit") != proven_commit:
+        raise Gate0Error("admission-control record does not bind the proven commit")
+
+
+def commit_admission_control() -> dict[str, Any]:
+    """Advance accepted Git state after explicit Gate 0 admission, from ordinary WSL only."""
+    root = repo_root()
+    arm = load_arm(root)
+    if arm.get("state") != "SEALED":
+        raise Gate0Error("Gate 0 must be SEALED before admission-control commit")
+    proven_commit = arm["head"]
+    if _run(root, "git", "rev-parse", "HEAD") != proven_commit:
+        raise Gate0Error("Git HEAD changed before Gate 0 admission-control commit")
+    admission_id = f"GATE0-{arm['run_nonce'][:12]}"
+    admission_path = f"docs/governance/admissions/{admission_id}.json"
+    expected_paths = {"docs/governance/ADMITTED_STATE.json", admission_path}
+    status_lines = subprocess.check_output(
+        ["git", "status", "--porcelain=v1", "--untracked-files=all"], cwd=root, text=True
+    ).splitlines()
+    changed_paths = {line[3:] for line in status_lines if len(line) >= 4}
+    if changed_paths != expected_paths:
+        raise Gate0Error(
+            "Gate 0 admission worktree contains unexpected changes before control commit: "
+            + ", ".join(sorted(changed_paths ^ expected_paths))
+        )
+    record = _read_json(root / admission_path)
+    state = _read_json(root / "docs/governance/ADMITTED_STATE.json")
+    manifest = load_manifest(root)
+    binding_ok, binding_failure = validate_arm_binding(
+        arm,
+        current_branch=_run(root, "git", "branch", "--show-current"),
+        current_head=proven_commit,
+        current_manifest_sha256=sha256_file(
+            root / "docs/governance/GATE0_ADMISSION_MANIFEST.json"
+        ),
+        current_guarded_hashes=guarded_hashes(root, manifest),
+        # The only worktree dirtiness at this phase is the expected admission/state pair,
+        # which was checked exactly above.  Do not let that expected transition invalidate
+        # the otherwise unchanged arm binding.
+        current_worktree_clean=True,
+    )
+    if not binding_ok:
+        raise Gate0Error(f"Gate 0 binding changed before control commit: {binding_failure}")
+    derived = _read_json(state_dir(root) / "derived.json")
+    recomputed = derive_attestation(arm, load_events(root))
+    validate_final_admission_evidence(
+        arm, derived=derived, recomputed=recomputed, binding_ok=True
+    )
+    expected_record = build_admission_record(
+        arm=arm,
+        derived=derived,
+        admission_id=admission_id,
+        admitted_at_utc=record.get("admitted_at_utc", ""),
+    )
+    if record != expected_record:
+        raise Gate0Error("Gate 0 admission record changed after evidence admission")
+    try:
+        base_state = json.loads(
+            subprocess.check_output(
+                ["git", "show", f"{proven_commit}:docs/governance/ADMITTED_STATE.json"],
+                cwd=root,
+            )
+        )
+    except (subprocess.CalledProcessError, json.JSONDecodeError) as exc:
+        raise Gate0Error("cannot recover pre-admission ADMITTED_STATE from proven Git") from exc
+    expected_state = dict(base_state)
+    expected_state.update(
+        {
+            "operational_status": "GATE0_PASS",
+            "active_gate": "GATE1A",
+            "candidate_control_commit": proven_commit,
+            "gate0_proven_commit": proven_commit,
+            "latest_admission_id": admission_id,
+            "first_blocker": None,
+        }
+    )
+    if state != expected_state:
+        raise Gate0Error("ADMITTED_STATE changed beyond the authorised Gate 0 transition")
+
+    subprocess.run(["git", "add", "--", *sorted(expected_paths)], cwd=root, check=True)
+    staged = set(
+        subprocess.check_output(
+            ["git", "diff", "--cached", "--name-only"], cwd=root, text=True
+        ).splitlines()
+    )
+    if staged != expected_paths:
+        raise Gate0Error("staged Gate 0 admission-control paths are incomplete or contaminated")
+    subprocess.run(
+        [
+            "git",
+            "-c",
+            "user.name=NVDA Gate 0 Control",
+            "-c",
+            "user.email=nvda-gate0@local.invalid",
+            "commit",
+            "-m",
+            f"governance: admit Gate 0 {admission_id}",
+        ],
+        cwd=root,
+        check=True,
+    )
+    control_commit = _run(root, "git", "rev-parse", "HEAD")
+    validate_admission_control_commit(
+        root,
+        proven_commit=proven_commit,
+        control_commit=control_commit,
+        admission_id=admission_id,
+    )
+    if _run(root, "git", "status", "--porcelain=v1", "--untracked-files=all"):
+        raise Gate0Error("worktree is not clean after Gate 0 admission-control commit")
+    arm["state"] = "ADMITTED"
+    arm["admission_control_commit"] = control_commit
+    arm["admitted_at_utc"] = _utcnow()
+    _write_json(state_dir(root) / "arm.json", arm)
+    return {
+        "admission_id": admission_id,
+        "proven_commit": proven_commit,
+        "admission_control_commit": control_commit,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=["arm", "derive", "seal", "admit"])
+    parser.add_argument(
+        "action", choices=["arm", "derive", "seal", "admit", "commit-admission"]
+    )
     args = parser.parse_args(argv)
     try:
         if args.action == "arm":
@@ -644,8 +820,10 @@ def main(argv: list[str] | None = None) -> int:
                 return 2
         elif args.action == "seal":
             result = seal_repository()
-        else:
+        elif args.action == "admit":
             result = admit_repository()
+        else:
+            result = commit_admission_control()
         print(json.dumps(result, indent=2, sort_keys=True))
         return 0
     except (Gate0Error, subprocess.CalledProcessError, OSError, ValueError, KeyError) as exc:

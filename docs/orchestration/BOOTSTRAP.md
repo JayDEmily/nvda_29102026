@@ -76,9 +76,12 @@ uv run python tools/gate0_runtime_evidence.py derive
 uv run python tools/validate_gate0.py --runtime
 uv run python tools/gate0_runtime_evidence.py seal
 uv run python tools/gate0_runtime_evidence.py admit
+uv run python tools/gate0_runtime_evidence.py commit-admission
 ```
 
-Only these ordinary-WSL operations may turn successful protected lifecycle evidence into an explicit `GATE0_PASS` admission record and advance `ADMITTED_STATE.json` to unlock Gate 1A.
+`admit` creates the explicit `GATE0_PASS` admission record and updates `ADMITTED_STATE.json`; that is not yet an accepted Git-state advance. `commit-admission` then verifies that those two files are the **only** changed paths, creates one ordinary-WSL admission-control commit whose parent is the exact Gate-0 proven commit, re-verifies that commit, and requires a clean worktree. Only after that control commit exists is Gate 1A unlocked in durable Git state.
+
+The admission record continues to bind the exact pre-admission Gate-0 proven commit. The subsequent admission-control commit contains the admission/state transition; it does not attempt the impossible self-reference of storing its own Git hash inside itself.
 
 Hooks are evidence binders/guards. They never implement automatic final-`SubagentStop` closure or final admission.
 

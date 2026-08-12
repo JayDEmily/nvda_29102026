@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 MANIFEST_PATH = ROOT / "docs/governance/GATE0_ADMISSION_MANIFEST.json"
@@ -362,6 +365,73 @@ def test_final_admission_requires_sealed_fresh_rederived_evidence():
         assert "binding" in str(exc).lower()
     else:
         raise AssertionError("stale Git/control binding was admitted")
+
+
+def gate0_admission_control_repo(tmp_path: Path, *, include_unrelated: bool = False):
+    repo = tmp_path / ("gate0-extra" if include_unrelated else "gate0-clean")
+    repo.mkdir()
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "config", "user.name", "Gate0 Test"], cwd=repo, check=True)
+    subprocess.run(
+        ["git", "config", "user.email", "gate0@example.invalid"], cwd=repo, check=True
+    )
+    state_path = repo / "docs/governance/ADMITTED_STATE.json"
+    state_path.parent.mkdir(parents=True)
+    state_path.write_text(json.dumps({"operational_status": "READY_FOR_STATIC_GATE0"}) + "\n")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "proven"], cwd=repo, check=True)
+    proven = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+
+    admission_id = "GATE0-run-1"
+    admissions = repo / "docs/governance/admissions"
+    admissions.mkdir(parents=True)
+    admission = {
+        "admission_id": admission_id,
+        "disposition": "GATE0_PASS",
+        "proven_commit": proven,
+    }
+    (admissions / f"{admission_id}.json").write_text(
+        json.dumps(admission, indent=2, sort_keys=True) + "\n"
+    )
+    state = {
+        "operational_status": "GATE0_PASS",
+        "active_gate": "GATE1A",
+        "candidate_control_commit": proven,
+        "gate0_proven_commit": proven,
+        "latest_admission_id": admission_id,
+    }
+    state_path.write_text(json.dumps(state, indent=2, sort_keys=True) + "\n")
+    if include_unrelated:
+        (repo / "unrelated.txt").write_text("not authorised\n")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "admit"], cwd=repo, check=True)
+    control = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+    return repo, proven, control, admission_id
+
+
+def test_gate0_admission_control_commit_advances_only_admission_state(tmp_path):
+    module = load_runtime()
+    repo, proven, control, admission_id = gate0_admission_control_repo(tmp_path)
+    module.validate_admission_control_commit(
+        repo,
+        proven_commit=proven,
+        control_commit=control,
+        admission_id=admission_id,
+    )
+
+
+def test_gate0_admission_control_commit_rejects_unrelated_change(tmp_path):
+    module = load_runtime()
+    repo, proven, control, admission_id = gate0_admission_control_repo(
+        tmp_path, include_unrelated=True
+    )
+    with pytest.raises(module.Gate0Error, match="unexpected paths"):
+        module.validate_admission_control_commit(
+            repo,
+            proven_commit=proven,
+            control_commit=control,
+            admission_id=admission_id,
+        )
 
 
 def test_runtime_validator_is_dedicated_gate0_surface():
