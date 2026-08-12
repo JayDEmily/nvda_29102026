@@ -28,8 +28,8 @@
    - 7.5 **COMPLETED** — Gate-0 hooks aligned to supported event-specific deny/stop semantics, bounded spawn/wait orchestration, and fail-closed observable-tool policy; commit `ffbf349b6e7429499ffdfb9c27647aac87935d11`;
    - 7.6 **COMPLETED** — root `AGENTS.md` and programme `PLANS.md` are explicitly frozen and ordinary work-order mutation is mechanically rejected; commit `a60c4a239829ba9cc12b8b5ca3ba65a6db70d1fa`.
    - 7.7 **COMPLETED** — same-controller pre-audit found that F-05 runtime/tool-policy checks existed in tests but were not composed into Gate-0 static validation; the static validator now enforces the manifest/config/hook tool-surface policy; commit `3181e582163a036e4acfdfb5bf0349a27fd590aa`.
-8. **ACTIVE** — full deterministic validation, provenance reconciliation, exact-port source-object re-verification, and new same-controller pre-audit.
-9. **PENDING** — fresh independent re-audit; builder does not self-accept.
+8. **COMPLETED** — full deterministic validation, provenance reconciliation, direct exact-port source-object re-verification, and same-controller pre-audit. The current repair surface passed the Step-6 deterministic contract at the pre-handoff repair HEAD, including 115 bounded tests, Gate-0 static validation, Gate-1+ governance static validation, architecture/dependency/public-seam checks, Git checks, syntax parsing, local-manifest inventory/hash checks, all 10 source-authority hashes, and all 162 direct original Git source-object exact-port checks. Same-controller review is supporting evidence only and does not admit the candidate.
+9. **ACTIVE** — fresh independent re-audit of the repaired candidate. No `main` promotion, live Gate 0, or final preservation tarball is authorised unless that re-audit returns `ACCEPT_FOR_MAIN_PROMOTION_AND_STATIC_GATE0_PREPARATION`.
 
 ## Stop conditions
 
