@@ -22,8 +22,6 @@ def load_validator():
     return module
 
 
-
-
 def git_repo(tmp_path: Path) -> tuple[Path, str, str]:
     repo = tmp_path / "repo"
     repo.mkdir()
@@ -75,9 +73,7 @@ def semantic_index_repo(tmp_path: Path) -> tuple[Path, dict, dict]:
             {
                 "entry_id": "IDX-1",
                 "proposition": "Bound source proposition",
-                "authority_refs": [
-                    {"path": "authority/source/source.md", "sha256": source_sha}
-                ],
+                "authority_refs": [{"path": "authority/source/source.md", "sha256": source_sha}],
                 "dependencies": [],
             }
         ],
@@ -489,9 +485,29 @@ def test_work_order_delegation_binds_exact_scope_and_bytes():
     records = records_for_work_order(auth, wo)
     module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
     widened = copy.deepcopy(wo)
-    widened["allowed_mutations"] = ["AGENTS.md"]
+    widened["allowed_mutations"] = ["docs/other.md"]
     with pytest.raises(module.GovernanceError, match=r"work order hash|scope"):
         module.validate_work_order(widened, records, accepted_base_commit="a" * 40)
+
+
+@pytest.mark.parametrize("frozen_path", ["AGENTS.md", "PLANS.md"])
+def test_even_exact_delegation_cannot_authorise_frozen_programme_authority(frozen_path):
+    module = load_validator()
+    auth = authority()
+    wo = work_order(authority_record=auth)
+    wo["allowed_mutations"] = [frozen_path]
+    records = records_for_work_order(auth, wo)
+    with pytest.raises(module.GovernanceError, match="frozen programme authority"):
+        module.validate_work_order(wo, records, accepted_base_commit="a" * 40)
+
+
+def test_root_governance_files_declare_frozen_authority_boundary():
+    agents = (ROOT / "AGENTS.md").read_text()
+    plans = (ROOT / "PLANS.md").read_text()
+    assert "**FROZEN**" in agents
+    assert "**FROZEN**" in plans
+    assert "No work order or delegation may authorise mutation" in agents
+    assert "must fail closed" in plans
 
 
 def test_valid_transaction_is_admissible_only_after_independent_review():
@@ -634,7 +650,7 @@ def test_canonical_transaction_requires_distinct_authenticated_runtime_receipts(
     rev = review(wo=wo, att=att)
     rev["reviewer_id"] = att["actor_id"]
     rev["reviewer_thread_id"] = att["actor_thread_id"]
-    rev["reviewer_runtime_ref"] = copy.deepcopy(att["actor_runtime_ref"] )
+    rev["reviewer_runtime_ref"] = copy.deepcopy(att["actor_runtime_ref"])
     adm = admission(wo=wo, att=att, rev=rev)
     with pytest.raises(module.GovernanceError, match="independent"):
         module.validate_admission_transaction(

@@ -15,6 +15,14 @@ Classify a disputed proposition before resolving it:
 
 A lower layer cannot become authority merely because it is newer, committed, reviewed, schema-valid, or green. Across jurisdictions, stop and reconcile the interface rather than silently letting one jurisdiction legislate another.
 
+## Frozen programme authority
+
+Root `AGENTS.md` and programme `PLANS.md` are **FROZEN** authority surfaces during ordinary Codex execution. Project workers, reviewers, PMs, skills, tests, implementation routines, validators, and recovery routines may read and obey them but must never edit, regenerate, rewrite, auto-maintain, or self-amend them.
+
+A change to either file is a governance proposal outside the ordinary semantic work-order path. It requires current explicit human/programme authority, an exact candidate patch, fresh independent review, explicit human/programme acceptance, authorised control-plane application, and a fresh Codex session where instruction discovery is session-bound. No work order or delegation may authorise mutation of either frozen file.
+
+`EXEC_PLAN.md` is not frozen in this sense. It may evolve only within an already-authorised bounded tranche and cannot create or supersede programme law.
+
 ## Epistemic law
 
 Keep these distinct: `OBSERVATION`, `HYPOTHESIS`, and `PROPOSAL`. Record `Unknown` when evidence does not establish a fact or cause. Governance may evolve, but it may not self-promote.

@@ -29,6 +29,7 @@ KNOWN_ROLES = {
     "implementation_worker",
 }
 PROOF_CLASSES = {"MECHANICAL", "SEMANTIC", "BOTH"}
+FROZEN_AUTHORITY_PATHS = {"AGENTS.md", "PLANS.md"}
 
 
 class ValidatedAdmission:
@@ -209,6 +210,13 @@ def validate_work_order(
     if work_order["pass_means"] == work_order["pass_does_not_mean"]:
         raise GovernanceError("work order PASS boundary is not discriminating")
 
+    frozen_mutations = sorted(FROZEN_AUTHORITY_PATHS.intersection(work_order["allowed_mutations"]))
+    if frozen_mutations:
+        raise GovernanceError(
+            "ordinary work order cannot mutate frozen programme authority: "
+            + ", ".join(frozen_mutations)
+        )
+
     authority_ref = work_order["authority_ref"]
     authority_id = authority_ref.get("admission_id")
     authority = admissions.get(authority_id)
@@ -315,11 +323,15 @@ def git_candidate_facts(repo_root: Path, candidate_commit: str) -> tuple[str, li
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-        parents_line = subprocess.check_output(
-            ["git", "rev-list", "--parents", "-n", "1", candidate_commit],
-            cwd=repo_root,
-            text=True,
-        ).strip().split()
+        parents_line = (
+            subprocess.check_output(
+                ["git", "rev-list", "--parents", "-n", "1", candidate_commit],
+                cwd=repo_root,
+                text=True,
+            )
+            .strip()
+            .split()
+        )
         if len(parents_line) != 2:
             raise GovernanceError("candidate commit must have exactly one parent")
         parent = parents_line[1]

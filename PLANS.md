@@ -36,6 +36,12 @@ A fresh `integration_auditor` reads the complete accepted source surface and pro
 
 Runtime capability for the remaining five roles is admitted immediately before first real use: `semantic_worker`, `project_manager`, `normative_writer`, `test_author`, `implementation_worker`.
 
+## Frozen programme authority
+
+Root `AGENTS.md` and programme `PLANS.md` are **FROZEN** during ordinary Codex execution. No project work order, PM decision, worker, reviewer, skill, test, implementation routine, validator, or recovery routine may mutate them. Their contents may change only through a separate governance-change path: current explicit human/programme instruction -> exact candidate patch -> fresh independent review -> explicit human/programme acceptance -> authorised control-plane application -> fresh Codex session where instruction discovery is session-bound.
+
+The ordinary semantic admission/delegation mechanism must fail closed if a work order lists either frozen file in `allowed_mutations`.
+
 ## Execution plans
 
 A bounded `EXEC_PLAN.md` may operationalise a genuinely multi-step accepted tranche. It may sequence and record work, validation, blockers, and commits. It may not create new programme law, domain meaning, gate semantics, PASS criteria, role powers, trust roots, or mutation classes.
