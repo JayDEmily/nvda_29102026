@@ -124,17 +124,24 @@ def accepted_semantic_index_entries(
     candidate_commit = admission.get("candidate_commit")
     if not isinstance(candidate_commit, str) or not candidate_commit:
         raise GovernanceError("semantic index admission has no candidate commit")
+    candidate_bytes = _git_blob(repo_root, candidate_commit, "docs/governance/SEMANTIC_INDEX.json")
     try:
-        candidate_index = json.loads(
-            _git_blob(repo_root, candidate_commit, "docs/governance/SEMANTIC_INDEX.json")
-        )
+        candidate_index = json.loads(candidate_bytes)
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise GovernanceError("candidate semantic index JSON is invalid") from exc
-    expected_index_sha = canonical_sha(candidate_index)
+    expected_index_sha = hashlib.sha256(candidate_bytes).hexdigest()
     if admission.get("artifact_sha256") != expected_index_sha:
-        raise GovernanceError("semantic index admission index hash mismatch")
-    if canonical_sha(index) != expected_index_sha:
+        raise GovernanceError("semantic index admission raw-byte hash mismatch")
+    active_path = repo_root / "docs/governance/SEMANTIC_INDEX.json"
+    active_bytes = active_path.read_bytes()
+    if hashlib.sha256(active_bytes).hexdigest() != expected_index_sha:
         raise GovernanceError("semantic index bytes do not match admitted candidate index")
+    try:
+        active_index = json.loads(active_bytes)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise GovernanceError("active semantic index JSON is invalid") from exc
+    if index != active_index or index != candidate_index:
+        raise GovernanceError("semantic index object does not match admitted candidate bytes")
 
     source_authorities = _source_authority_hashes(repo_root, candidate_commit)
     entries = index.get("entries")
