@@ -4,6 +4,4 @@ This is a **new Git history** for the NVDA Raw Signal clean restart. Its purpose
 
 The byte-preserved semantic/kernel foundation was ported from forensic commit `c0bfa6d`. Runtime-control concepts may use `79cbbb9` only as evidence; the dirty R2/R2A recovery worktree and history are not the operational baseline.
 
-Current state: construction candidate on `restart/codex-control-v1`; live Gate 0 has not been run.
-
 Start with `AGENTS.md`, `PLANS.md`, `EXEC_PLAN.md`, `docs/provenance/CLEAN_REPOSITORY_PROVENANCE.md`, and (for Gate 0) `docs/orchestration/BOOTSTRAP.md` once present.
