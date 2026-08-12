@@ -32,8 +32,8 @@
    - 7.9 **COMPLETED_PENDING_FINAL_VALIDATION** — accepted semantic-index admission is bound to the raw candidate Git blob, active admitted bytes, and source-authority hashes; commit `7dcbf64`. Its public scheduling seam must also consume Git-rooted admission records as part of 7.8.
    - 7.10 **COMPLETED_PENDING_FINAL_VALIDATION** — `wait_agent` is limited to the documented temporal boundary while the one authorised child is in progress; no undocumented target-input binding is claimed; commit `be32caa`.
    - 7.11 **COMPLETED_PENDING_FINAL_VALIDATION** — Gate-0 `admit` remains the explicit admission action; a separate ordinary-WSL `commit-admission` action now revalidates sealed evidence, permits only the admission record + `ADMITTED_STATE.json`, creates and re-verifies one admission-control Git commit, and requires a clean worktree. Commit `b6486f1`.
-8. **ACTIVE** — rerun full deterministic validation, provenance reconciliation, direct exact-port source-object re-verification, and same-controller pre-audit after 7.8–7.11. Same-controller review remains supporting evidence only and cannot admit the candidate.
-9. **PENDING** — fresh independent re-audit of the repaired candidate. No `main` promotion, live Gate 0, or final preservation tarball is authorised unless that re-audit returns `ACCEPT_FOR_MAIN_PROMOTION_AND_STATIC_GATE0_PREPARATION`.
+8. **COMPLETED** — full deterministic validation, direct original-source-object verification, provenance reconciliation, and same-controller adversarial pre-audit completed after 7.8–7.11. The final candidate handoff must include the exact command logs; these are supporting evidence only and cannot admit the candidate.
+9. **ACTIVE** — fresh independent re-audit of the repaired candidate. No `main` promotion, live Gate 0, or final preservation tarball is authorised unless that re-audit returns `ACCEPT_FOR_MAIN_PROMOTION_AND_STATIC_GATE0_PREPARATION`.
 
 ## Stop conditions
 
