@@ -30,6 +30,12 @@ failed armed run
 
 This transition is not automatic recovery. It grants no repair authority by itself and does not authorise R2 or R2A machinery. Diagnosis and repair remain bounded by explicit authority, while the failed runtime evidence remains unchanged in its durable archive.
 
+### Recovery-lane assessment
+
+`OBSERVATION`: the current tooling has no authenticated ordinary-WSL command that atomically verifies a terminal failure, archives the complete active runtime directory, proves the archive digest/nonce, and proves the active position absent. The live hook cannot provide that lane because a recorded first failure must continue to deny every later hook-observable local tool.
+
+`PROPOSAL — UNIMPLEMENTED`: a future governance decision may authorise a dedicated ordinary-WSL `retire-failed-arm` command with exactly those preconditions and postconditions. It must preserve fail-closed live semantics, must not create repair authority, and must refuse any non-terminal or incomplete state. Adding that mutation command and defining its authorising actor is a new control-plane proposition, so this recovery does not implement it.
+
 ## Phase A — ordinary WSL static admission and arm
 
 Run from the exact native-WSL repository intended for admission:
@@ -51,9 +57,11 @@ PASS requires native Linux/WSL policy, a clean worktree, parseable admitted cont
 3. Review/trust the exact current non-managed project hooks and account for any other matching user/system/plugin hook sources in the Desktop app's actual Codex configuration home.
 4. Confirm the live tool surface does not expose a specialised hook-exempt tool capable of doing the semantic work that Gate 0 forbids. If such a tool is exposed and cannot be disabled, **BLOCK Gate 0 as a product-mechanism Unknown**; do not weaken the proposition.
 5. Start a fresh Gate 0 chat/run after arm and trust actions.
-6. Select `read-only` sandbox mode with `on-request` approvals.
+6. Select the `read-only` permission profile with `on-request` approvals for the fresh task. Do not start from a task whose effective permission profile is full access.
 
-The required live boundary remains the accepted read-only/on-request proposition. Desktop UI labels and configuration declarations are setup evidence, not conclusive proof of the runtime boundary. The nonce-bound mechanical probe is authoritative for the exact filesystem write-denial boundary it tests; Gate 0 fails if that probe fails, regardless of UI or configuration labels.
+Current Codex permission profiles do not compose with the legacy `sandbox_mode` / `sandbox_workspace_write` system. The Gate-0 project uses `default_permissions = ":read-only"`; do not reintroduce legacy sandbox keys in any loaded config layer. A fresh task/session override can still select a different effective profile and outranks project defaults.
+
+The required live boundary remains the accepted read-only/on-request proposition. Desktop UI labels and configuration declarations are setup evidence, not conclusive proof of the runtime boundary. The trusted `SessionStart` hook rejects `dontAsk`, `bypassPermissions`, or an absent permission mode before supplying the probe command. That early check is necessary but not sufficient: the nonce-bound mechanical probe remains authoritative for the exact filesystem write-denial boundary it tests, and Gate 0 fails if that probe fails regardless of UI, configuration, or hook labels.
 
 The repository configuration disables Codex web search, app/connector tools, the local `view_image` attachment tool, and the remote plugin catalogue for this execution surface. `PreToolUse`/`PostToolUse` match every supported local tool path. During an armed run, the Gate 0 policy denies every hook-observable local tool except the exact nonce-bound mechanical probe, the exact next `spawn_agent` call, and `wait_agent` used only to await an already-authorised child.
 

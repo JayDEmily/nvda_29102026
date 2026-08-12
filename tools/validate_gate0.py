@@ -35,8 +35,12 @@ def validate_declared_runtime_policy(manifest: dict, config: dict, hooks: dict) 
     policy = manifest.get("runtime_policy", {})
     if policy.get("sandbox_mode") != "read-only" or policy.get("approval_policy") != "on-request":
         raise ValidationError("Gate 0 permission policy mismatch")
-    if config.get("sandbox_mode") != policy["sandbox_mode"]:
-        raise ValidationError("project Codex sandbox mode does not match Gate 0 policy")
+    if config.get("default_permissions") != ":read-only":
+        raise ValidationError("project Codex permission profile does not match Gate 0 policy")
+    if "sandbox_mode" in config or "sandbox_workspace_write" in config:
+        raise ValidationError(
+            "project Codex config mixes permission profiles and legacy sandbox settings"
+        )
     if config.get("approval_policy") != policy["approval_policy"]:
         raise ValidationError("project Codex approval policy does not match Gate 0 policy")
     if config.get("web_search") != policy.get("web_search"):
@@ -88,8 +92,10 @@ def validate_static(root: Path, *, require_clean: bool = True) -> None:
     config = tomllib.loads((root / ".codex/config.toml").read_text())
     for role in ("integration-auditor", "semantic-reviewer"):
         data = tomllib.loads((root / ".codex/agents" / f"{role}.toml").read_text())
-        if data.get("sandbox_mode") != "read-only":
+        if data.get("default_permissions") != ":read-only":
             raise ValidationError(f"{role} is not read-only")
+        if "sandbox_mode" in data or "sandbox_workspace_write" in data:
+            raise ValidationError(f"{role} mixes permission profiles and legacy sandbox settings")
     hooks = json.loads((root / ".codex/hooks.json").read_text()).get("hooks", {})
     for event in ("SessionStart", "SubagentStart", "PreToolUse", "PostToolUse", "SubagentStop"):
         if event not in hooks:

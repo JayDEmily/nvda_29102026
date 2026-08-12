@@ -309,6 +309,7 @@ def derive_attestation(arm: dict[str, Any], events: list[dict[str, Any]]) -> dic
         or session.get("head") != head
         or session.get("cwd") != arm.get("repo_root")
         or session.get("source") != "startup"
+        or session.get("permission_mode") != "default"
     ):
         return fail("SESSION_START")
     i = 1

@@ -44,6 +44,7 @@ def valid_events():
             "head": "a" * 40,
             "cwd": "/repo",
             "source": "startup",
+            "permission_mode": "default",
         },
         {"type": "ProbeResult", "role": "__parent__", "run_nonce": "run-1", "passed": True},
         {
@@ -135,6 +136,16 @@ def test_stale_nonce_fails():
 
 def test_missing_session_start_fails():
     result = derive(valid_events()[1:])
+    assert result["passed"] is False and result["first_failure"] == "SESSION_START"
+
+
+@pytest.mark.parametrize(
+    "permission_mode", ["acceptEdits", "plan", "dontAsk", "bypassPermissions", None]
+)
+def test_incompatible_session_permission_mode_is_non_admissible(permission_mode):
+    events = valid_events()
+    events[0]["permission_mode"] = permission_mode
+    result = derive(events)
     assert result["passed"] is False and result["first_failure"] == "SESSION_START"
 
 

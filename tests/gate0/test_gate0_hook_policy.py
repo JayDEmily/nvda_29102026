@@ -75,11 +75,75 @@ def test_pre_and_post_tool_hooks_cover_all_supported_local_tools():
 
 def test_gate0_config_removes_known_hosted_and_app_tool_surfaces():
     config = tomllib.loads(CONFIG_PATH.read_text())
+    assert config["default_permissions"] == ":read-only"
+    assert "sandbox_mode" not in config
+    assert "sandbox_workspace_write" not in config
     assert config["web_search"] == "disabled"
     assert config["tools"]["view_image"] is False
     assert config["apps"]["_default"]["enabled"] is False
     assert config["features"]["apps"] is False
     assert config["features"]["remote_plugin"] is False
+    for role in ("integration-auditor", "semantic-reviewer"):
+        agent = tomllib.loads((ROOT / ".codex/agents" / f"{role}.toml").read_text())
+        assert agent["default_permissions"] == ":read-only"
+        assert "sandbox_mode" not in agent
+        assert "sandbox_workspace_write" not in agent
+
+
+def run_sessionstart(monkeypatch, *, permission_mode):
+    module = hook()
+    outputs = []
+    failures = []
+    events = []
+    payload = {
+        "hook_event_name": "SessionStart",
+        "session_id": "session-1",
+        "cwd": "/repo",
+        "permission_mode": permission_mode,
+        "source": "startup",
+    }
+    arm = {"run_nonce": "run-1", "head": "a" * 40}
+    monkeypatch.setattr(module.sys, "stdin", io.StringIO(json.dumps(payload)))
+    monkeypatch.setattr(module, "output", outputs.append)
+    monkeypatch.setattr(module.rt, "repo_root", lambda: Path("/repo"))
+    monkeypatch.setattr(module.rt, "load_active_arm", lambda root: arm)
+    monkeypatch.setattr(module.rt, "current_binding", lambda root, value: (True, None))
+    monkeypatch.setattr(module.rt, "load_failure", lambda root: None)
+    monkeypatch.setattr(module.rt, "append_event", lambda root, value: events.append(value))
+    monkeypatch.setattr(
+        module.rt,
+        "record_failure",
+        lambda root, stage, reason: failures.append((stage, reason)),
+    )
+    monkeypatch.setattr(
+        module.rt,
+        "expected_probe_commands",
+        lambda root, value: {"__parent__": "exact-probe"},
+    )
+    assert module.main() == 0
+    return outputs, failures, events
+
+
+def test_sessionstart_accepts_default_permission_mode_but_still_requires_probe(monkeypatch):
+    outputs, failures, events = run_sessionstart(monkeypatch, permission_mode="default")
+    assert failures == []
+    assert events[0]["permission_mode"] == "default"
+    assert "exact-probe" in outputs[0]["hookSpecificOutput"]["additionalContext"]
+
+
+@pytest.mark.parametrize(
+    "permission_mode", ["acceptEdits", "plan", "dontAsk", "bypassPermissions", None]
+)
+def test_sessionstart_fails_before_probe_for_incompatible_permission_mode(
+    monkeypatch, permission_mode
+):
+    outputs, failures, events = run_sessionstart(
+        monkeypatch, permission_mode=permission_mode
+    )
+    assert events[0]["permission_mode"] == permission_mode
+    assert failures[0][0] == "SESSION_PERMISSION_MODE"
+    assert outputs[0]["continue"] is False
+    assert "exact-probe" not in json.dumps(outputs[0])
 
 
 def test_spawn_policy_requires_explicit_agent_type_not_task_name_alias():
@@ -308,6 +372,14 @@ def test_static_validator_rejects_reenabled_tool_surface():
         assert "apps feature" in str(exc)
     else:
         raise AssertionError("Gate 0 static validator accepted re-enabled apps")
+
+
+def test_static_validator_rejects_mixed_permission_configuration():
+    module = validator()
+    manifest, config, hooks = declared_policy_inputs()
+    config["sandbox_mode"] = "read-only"
+    with pytest.raises(module.ValidationError, match="mixes permission profiles"):
+        module.validate_declared_runtime_policy(manifest, config, hooks)
 
 
 def test_static_validator_rejects_narrowed_pretool_matcher():

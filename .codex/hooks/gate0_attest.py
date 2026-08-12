@@ -116,6 +116,7 @@ def main() -> int:
             reason = f"NVDA Gate 0 already failed at {failure.get('stage')}"
             output({"continue": False, "stopReason": reason, "systemMessage": reason})
             return 0
+        permission_mode = payload.get("permission_mode")
         rt.append_event(
             root,
             {
@@ -124,10 +125,19 @@ def main() -> int:
                 "head": arm["head"],
                 "session_id": payload.get("session_id"),
                 "cwd": payload.get("cwd"),
-                "permission_mode": payload.get("permission_mode"),
+                "permission_mode": permission_mode,
                 "source": payload.get("source"),
             },
         )
+        if permission_mode != "default":
+            reason = (
+                "NVDA Gate 0 requires on-request approvals before the empirical "
+                "read-only probe; SessionStart reported incompatible permission_mode "
+                f"{permission_mode!r}."
+            )
+            rt.record_failure(root, stage="SESSION_PERMISSION_MODE", reason=reason)
+            output({"continue": False, "stopReason": reason, "systemMessage": reason})
+            return 0
         cmd = rt.expected_probe_commands(root, arm)["__parent__"]
         context = (
             "NVDA Gate 0 is armed. Execute only this exact mechanical probe command, "

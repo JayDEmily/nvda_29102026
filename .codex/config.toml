@@ -1,5 +1,5 @@
 approval_policy = "on-request"
-sandbox_mode = "read-only"
+default_permissions = ":read-only"
 allow_login_shell = false
 web_search = "disabled"
 
