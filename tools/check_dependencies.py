@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+from pathlib import Path
+
+from nvda_desk.architecture.dependencies import analyse_repository
+
+if __name__ == "__main__":
+    root = Path(__file__).resolve().parents[1]
+    violations = analyse_repository(root)
+    for violation in violations:
+        print(f"{violation.code}: {violation.source_file}:{violation.line}: {violation.message}")
+    if violations:
+        raise SystemExit(1)
+    print("PASS: dependency direction and cycle validation")

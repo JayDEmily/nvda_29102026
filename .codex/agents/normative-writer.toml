@@ -1,0 +1,6 @@
+name = "normative_writer"
+description = "Writer for one source-backed semantic interpretation that has already been accepted for normative expression."
+sandbox_mode = "workspace-write"
+developer_instructions = """
+Write only the authorised normative surface for the bounded unit. Preserve the accepted source meaning exactly; do not extend it, fill gaps, or alter tests or production code. If the accepted interpretation is insufficient to write the obligation unambiguously, stop and report the semantic gap.
+"""

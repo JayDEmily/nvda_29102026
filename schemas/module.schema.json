@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "modules": {
+      "items": {
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "const": "active"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "semantic_responsibility",
+                "inputs",
+                "outputs",
+                "permitted_dependencies",
+                "package",
+                "public_seam",
+                "exclusions",
+                "state_ownership",
+                "time_ownership",
+                "side_effects"
+              ]
+            }
+          }
+        ],
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "exclusions": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "id": {
+            "pattern": "^M(?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          },
+          "inputs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "name": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "outputs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "package": {
+            "pattern": "^nvda_desk\\.[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "permitted_dependencies": {
+            "items": {
+              "pattern": "^M(?:0[0-9]|[1-9][0-9]+)$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "predecessors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "public_seam": {
+            "pattern": "^nvda_desk\\.[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)?$",
+            "type": "string"
+          },
+          "semantic_responsibility": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "side_effects": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "state_ownership": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "placeholder",
+              "bootstrap",
+              "framework",
+              "active",
+              "deprecated",
+              "retired"
+            ],
+            "type": "string"
+          },
+          "successors": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "time_ownership": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "status",
+          "description"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "retired_ids": {
+      "items": {
+        "pattern": "^M(?:0[0-9]|[1-9][0-9]+)$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "schema_version": {
+      "const": "1.0"
+    }
+  },
+  "required": [
+    "schema_version",
+    "modules",
+    "retired_ids"
+  ],
+  "type": "object"
+}
