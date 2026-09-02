@@ -125,6 +125,28 @@ class ArchitectureRegistry:
                 parse_identifier(dependency)
                 if dependency not in self._by_id:
                     raise ValueError(f"{item.id} declares unknown dependency {dependency}")
+            if len(item.predecessors) != len(set(item.predecessors)):
+                raise ValueError(f"{item.id} has duplicate predecessor identifiers")
+            if len(item.successors) != len(set(item.successors)):
+                raise ValueError(f"{item.id} has duplicate successor identifiers")
+            for predecessor in item.predecessors:
+                parse_identifier(predecessor)
+                if predecessor == item.id:
+                    raise ValueError(f"{item.id} cannot be its own predecessor")
+                current_predecessor = self._by_id.get(predecessor)
+                if current_predecessor and item.id not in current_predecessor.successors:
+                    raise ValueError(
+                        f"current predecessor {predecessor} does not name {item.id} as successor"
+                    )
+            for successor in item.successors:
+                parse_identifier(successor)
+                if successor == item.id:
+                    raise ValueError(f"{item.id} cannot be its own successor")
+                current_successor = self._by_id.get(successor)
+                if current_successor and item.id not in current_successor.predecessors:
+                    raise ValueError(
+                        f"current successor {successor} does not name {item.id} as predecessor"
+                    )
 
     def get(self, object_id: str) -> ArchitectureObject:
         try:

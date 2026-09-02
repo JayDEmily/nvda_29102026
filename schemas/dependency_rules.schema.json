@@ -279,6 +279,26 @@
     },
     "public_seam_exceptions": {
       "items": {
+        "additionalProperties": false,
+        "properties": {
+          "source_owner": {
+            "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          },
+          "target_owner": {
+            "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$",
+            "type": "string"
+          },
+          "import_path": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_owner",
+          "target_owner",
+          "import_path"
+        ],
         "type": "object"
       },
       "type": "array"

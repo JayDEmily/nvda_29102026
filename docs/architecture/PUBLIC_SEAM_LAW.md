@@ -9,9 +9,9 @@ The static checker rejects:
 1. an import of another owner’s undeclared submodule;
 2. a relative import that crosses an owner root;
 3. an undeclared owner edge;
-4. `importlib.import_module`, `__import__` or equivalent dynamic import calls inside registered runtime owners;
+4. direct or import-aliased `importlib.import_module` and `__import__`/`builtins.__import__` call forms inside registered runtime owners;
 5. an exception not explicitly listed in dependency rules.
 
-The checker does not infer semantic ownership from directory names. Owners must be registered before cross-owner validation can recognise them.
+The checker does not infer semantic ownership from directory names. Owners must be registered before cross-owner validation can recognise them. The AST check covers the named direct and import-alias forms; it does not claim to prevent arbitrary metaprogramming, `eval`/`exec`, runtime monkey-patching or every possible dynamic-execution technique.
 
 Typed public seams are a project requirement. Static type annotations describe the contract; Python itself does not guarantee runtime type enforcement.

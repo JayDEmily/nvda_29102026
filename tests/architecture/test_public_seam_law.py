@@ -22,7 +22,7 @@ def _rules() -> dict:
         "category_rules": {
             category: {"may_depend_on": ["M"], "forbidden": []} for category in "MPGAKS"
         },
-        "declared_owner_edges": [["M01", "M02"]],
+        "declared_owner_edges": [{"source": "M01", "target": "M02"}],
         "public_seam_exceptions": [],
         "forbid_dynamic_imports_in_runtime_owners": True,
     }

@@ -21,7 +21,8 @@
           "predecessors": {
             "default": [],
             "items": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$"
             },
             "type": "array",
             "uniqueItems": true
@@ -43,7 +44,8 @@
           "successors": {
             "default": [],
             "items": {
-              "type": "string"
+              "type": "string",
+              "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$"
             },
             "type": "array",
             "uniqueItems": true

@@ -107,7 +107,9 @@ def analyse_source_tree(
 ) -> tuple[ArchitectureViolation, ...]:
     owners = registry.package_owners()
     framework_packages = tuple(rules.get("framework_packages", ()))
-    declared_edges = {tuple(edge) for edge in rules.get("declared_owner_edges", ())}
+    declared_edges = {
+        (edge["source"], edge["target"]) for edge in rules.get("declared_owner_edges", ())
+    }
     seam_exceptions = {
         (item["source_owner"], item["target_owner"], item["import_path"])
         for item in rules.get("public_seam_exceptions", ())
@@ -124,6 +126,27 @@ def analyse_source_tree(
             violations.append(ArchitectureViolation("SYNTAX", str(exc), str(path), exc.lineno))
             continue
 
+        importlib_names = {"importlib"}
+        builtins_names = {"builtins"}
+        dynamic_import_names = {"__import__"}
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                for alias in node.names:
+                    bound_name = alias.asname or alias.name
+                    if alias.name == "importlib":
+                        importlib_names.add(bound_name)
+                    if alias.name == "builtins":
+                        builtins_names.add(bound_name)
+            elif isinstance(node, ast.ImportFrom):
+                if node.module == "importlib":
+                    for alias in node.names:
+                        if alias.name == "import_module":
+                            dynamic_import_names.add(alias.asname or alias.name)
+                elif node.module == "builtins":
+                    for alias in node.names:
+                        if alias.name == "__import__":
+                            dynamic_import_names.add(alias.asname or alias.name)
+
         for node in ast.walk(tree):
             if (
                 isinstance(node, ast.Call)
@@ -131,11 +154,14 @@ def analyse_source_tree(
                 and source_owner
             ):
                 name = None
-                if isinstance(node.func, ast.Name):
+                if isinstance(node.func, ast.Name) and node.func.id in dynamic_import_names:
                     name = node.func.id
                 elif isinstance(node.func, ast.Attribute) and isinstance(node.func.value, ast.Name):
-                    name = f"{node.func.value.id}.{node.func.attr}"
-                if name in {"__import__", "importlib.import_module"}:
+                    if node.func.value.id in importlib_names and node.func.attr == "import_module":
+                        name = f"{node.func.value.id}.import_module"
+                    elif node.func.value.id in builtins_names and node.func.attr == "__import__":
+                        name = f"{node.func.value.id}.__import__"
+                if name is not None:
                     violations.append(
                         ArchitectureViolation(
                             "DYNAMIC_IMPORT",
