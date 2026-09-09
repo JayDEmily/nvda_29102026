@@ -888,17 +888,24 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 - the ingress does not embed the brief, M10, G1-G7, PMB or upstream semantic-reconstruction machinery;
 - revalidation immediately before AKR-5 entry observed structural validation PASS, Ruff PASS, `44 passed` architecture/bootstrap tests and `44 passed` registry-derived architecture promotion.
 
-### AKR-5 — BLOCKED
+### AKR-5 — COMPLETE
 
 - branch: `work/akr-5-dormant-structural-readiness`;
-- entry commit: `fcf2d9a6c8b28ab91a4b90673bfafc261f222d47`;
-- first unmet invariant: no pinned static type checker is available from the admitted offline dependency surface;
-- current vendored wheelhouse and supplied archive payloads contain no mypy/Pyright/basedpyright/pytype/Pyre/`ty` checker distribution, and none is installed in the runtime;
-- a current compatible mypy distribution exists externally, but outbound package retrieval is unavailable in this runtime, so it cannot presently be admitted or reproduced offline;
-- Ruff is not substituted for the required typed-seam checker;
-- downstream AKR-5 repairs were not executed after the blocker was established;
-- exact blocker evidence is recorded in `docs/history/AKR5_BLOCKER_STATIC_TYPE_CHECKER_20260909.md`.
+- initial blocker commit: `3d0f2330f76f54bd4fd0257c35391ed3bee7fa94`;
+- the missing checker dependency was supplied as `NVDA_AKR5_TYPECHECKER_DEPENDENCY_INGRESS_20260909.tar(1).gz`, SHA-256 `3d4e9aa4f7483143f40c30a838f63b6c8b83abcaeee9a8bc8cfdefa5320bd00a`;
+- pinned development-only checker: `mypy==1.20.1`; the required missing wheels are now part of the repository-local offline wheelhouse and the lock resolves with `uv --offline`;
+- functional implementation commit: `c335b33974fb6e4b4ac2e1987697ba4e5fe6cc3b`;
+- the aggregate validator now accepts a lawful first active module instead of enforcing the reset-only empty-module invariant;
+- active Python-visible owners must have a physically present registered package and public seam;
+- the reproduced `ImportFrom` owner/seam bypass is repaired and blocking proof covers it;
+- proof discovery is recursive across the governed architecture/bootstrap jurisdictions;
+- active-module structural projection now makes component-form and state writer/reader/persistence/replay declarations explicit;
+- lawful P/K activation and invalid P/K package/seam states are exercised through the committed schemas/loaders;
+- `make typecheck` is the repository-native static-check entry point; current source passes it and blocking proof demonstrates rejection of an incompatible typed public-seam call;
+- clean-worktree `architecture_kernel` promotion at the functional commit passed `62` tests across `11` admitted families;
+- Ruff, offline lock verification, `git diff --check` and `git fsck --full` completed without reported failure;
+- exact AKR-5 evidence is recorded in `docs/evidence/akr5/AKR5_STRUCTURAL_READINESS.md`.
 
 ### Next action
 
-Supply or otherwise make available a complete pinned static-type-checker wheel set compatible with CPython 3.13.5 / Linux x86-64, then resume AKR-5 from the static typed-seam dependency. Do not begin AKR-6 while AKR-5 is blocked.
+Proceed to AKR-6 only from the final clean AKR-5 state. AKR-6 must rehearse the generic implementation-ready-brief ingress with synthetic/test-only authority and must leave the production module and surface registries behaviour-neutral unless separately authorised.
