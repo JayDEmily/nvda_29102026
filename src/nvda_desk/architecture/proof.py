@@ -81,7 +81,7 @@ def validate_proof_state(repository_root: Path, state: ProofState) -> None:
             repository_root / "tests" / "bootstrap",
         )
         if test_root.exists()
-        for path in test_root.glob("test_*.py")
+        for path in test_root.rglob("test_*.py")
     }
     if physical_paths != admitted_paths:
         raise ValueError(

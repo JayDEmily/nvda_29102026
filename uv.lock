@@ -20,6 +20,36 @@ wheels = [
 ]
 
 [[package]]
+name = "librt"
+version = "0.9.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "librt-0.9.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl" },
+]
+
+[[package]]
+name = "mypy"
+version = "1.20.1"
+source = { registry = "vendor/wheels" }
+dependencies = [
+    { name = "librt", marker = "platform_python_implementation != 'PyPy' and sys_platform == 'linux'" },
+    { name = "mypy-extensions", marker = "sys_platform == 'linux'" },
+    { name = "pathspec", marker = "sys_platform == 'linux'" },
+    { name = "typing-extensions", marker = "sys_platform == 'linux'" },
+]
+wheels = [
+    { path = "mypy-1.20.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl" },
+]
+
+[[package]]
+name = "mypy-extensions"
+version = "1.1.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "mypy_extensions-1.1.0-py3-none-any.whl" },
+]
+
+[[package]]
 name = "nvda-architecture-kernel"
 version = "0.1.0"
 source = { editable = "." }
@@ -29,12 +59,14 @@ dependencies = [
 
 [package.optional-dependencies]
 dev = [
+    { name = "mypy", marker = "sys_platform == 'linux'" },
     { name = "pytest", marker = "sys_platform == 'linux'" },
     { name = "ruff", marker = "sys_platform == 'linux'" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "mypy", marker = "extra == 'dev'", specifier = "==1.20.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = "==9.0.3" },
     { name = "pyyaml", specifier = "==6.0.3" },
     { name = "ruff", marker = "extra == 'dev'", specifier = "==0.15.11" },
@@ -47,6 +79,14 @@ version = "26.2"
 source = { registry = "vendor/wheels" }
 wheels = [
     { path = "packaging-26.2-py3-none-any.whl" },
+]
+
+[[package]]
+name = "pathspec"
+version = "1.1.1"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "pathspec-1.1.1-py3-none-any.whl" },
 ]
 
 [[package]]
@@ -93,4 +133,12 @@ version = "0.15.11"
 source = { registry = "vendor/wheels" }
 wheels = [
     { path = "ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl" },
+]
+
+[[package]]
+name = "typing-extensions"
+version = "4.15.0"
+source = { registry = "vendor/wheels" }
+wheels = [
+    { path = "typing_extensions-4.15.0-py3-none-any.whl" },
 ]

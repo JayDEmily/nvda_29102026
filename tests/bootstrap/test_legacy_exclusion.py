@@ -18,11 +18,7 @@ def test_no_former_runtime_package_is_active() -> None:
         assert not (source_root / name).exists()
 
 
-def test_runtime_registry_and_behavioural_proof_are_empty() -> None:
-    modules = yaml.safe_load(
-        (ROOT / "config/architecture/modules.yaml").read_text(encoding="utf-8")
-    )
-    assert modules["modules"] == []
+def test_blocking_proof_population_remains_within_kernel_jurisdictions() -> None:
     test_families = yaml.safe_load(
         (ROOT / "config/proof/test_families.yaml").read_text(encoding="utf-8")
     )

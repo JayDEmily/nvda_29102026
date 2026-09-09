@@ -25,7 +25,13 @@
                 "exclusions",
                 "state_ownership",
                 "time_ownership",
-                "side_effects"
+                "side_effects",
+                "component_forms",
+                "state_writer_boundary",
+                "state_reader_boundaries",
+                "persistence_mechanisms",
+                "prohibited_state_writers",
+                "replay_obligations"
               ]
             }
           }
@@ -126,6 +132,55 @@
           "time_ownership": {
             "minLength": 1,
             "type": "string"
+          },
+          "component_forms": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "adapter",
+                "contract",
+                "schema",
+                "service",
+                "repository",
+                "orchestrator",
+                "configuration"
+              ]
+            }
+          },
+          "state_writer_boundary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state_reader_boundaries": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "persistence_mechanisms": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "prohibited_state_writers": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "replay_obligations": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [

@@ -19,6 +19,7 @@ dependencies = [
 dev = [
   "pytest==9.0.3",
   "ruff==0.15.11",
+  "mypy==1.20.1",
 ]
 
 [project.scripts]
@@ -61,6 +62,13 @@ src = ["src", "tests", "tools"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.13"
+files = ["src"]
+show_error_codes = true
+warn_unused_configs = true
+follow_untyped_imports = true
 
 [tool.uv]
 no-index = true

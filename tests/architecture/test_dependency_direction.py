@@ -100,6 +100,12 @@ def test_committed_dependency_graph_is_acyclic_and_directionally_valid(tmp_path:
                 "state_ownership": "none",
                 "time_ownership": "none",
                 "side_effects": [],
+                "component_forms": ["service"],
+                "state_writer_boundary": "none",
+                "state_reader_boundaries": [],
+                "persistence_mechanisms": [],
+                "prohibited_state_writers": [],
+                "replay_obligations": [],
                 "predecessors": [],
                 "successors": [],
             }

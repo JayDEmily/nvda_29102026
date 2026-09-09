@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: validate architecture-tests promotion-gate validate-implementation-authority lint
+.PHONY: validate architecture-tests promotion-gate validate-implementation-authority typecheck lint
 
 validate:
 	$(PYTHON) tools/validate_architecture.py
@@ -15,6 +15,9 @@ validate-implementation-authority:
 	@test -n "$(BINDING)" || (echo "BINDING is required" >&2; exit 2)
 	@test -n "$(BRIEF)" || (echo "BRIEF is required" >&2; exit 2)
 	$(PYTHON) tools/validate_implementation_authority.py --binding "$(BINDING)" --brief "$(BRIEF)"
+
+typecheck:
+	$(PYTHON) -m mypy src
 
 lint:
 	ruff check src tests tools

@@ -12,5 +12,11 @@
   state_ownership: {{state_ownership}}
   time_ownership: {{time_ownership}}
   side_effects: {{side_effects}}
+  component_forms: {{component_forms}}
+  state_writer_boundary: {{state_writer_boundary}}
+  state_reader_boundaries: {{state_reader_boundaries}}
+  persistence_mechanisms: {{persistence_mechanisms}}
+  prohibited_state_writers: {{prohibited_state_writers}}
+  replay_obligations: {{replay_obligations}}
   predecessors: []
   successors: []

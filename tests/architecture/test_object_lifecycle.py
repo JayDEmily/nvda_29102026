@@ -8,10 +8,8 @@ from nvda_desk.composition import CompositionPlan
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_reset_registry_has_no_active_runtime_module_or_composable_placeholder() -> None:
+def test_non_active_foundation_identities_are_not_composable() -> None:
     registry = ArchitectureRegistry.from_repository(ROOT)
-    assert registry.active_runtime_modules() == ()
-    assert CompositionPlan.from_registry(registry).object_ids == ()
     for object_id in ("P01", "G01", "G02", "A00", "K01"):
         with pytest.raises(ValueError, match="not composable"):
             registry.require_composable(object_id)

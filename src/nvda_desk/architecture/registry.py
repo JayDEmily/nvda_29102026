@@ -112,6 +112,8 @@ class ArchitectureRegistry:
                 and (not item.package or not item.public_seam)
             ):
                 raise ValueError(f"active executable object {item.id} lacks package/public_seam")
+            if (item.package is None) != (item.public_seam is None):
+                raise ValueError(f"{item.id} must declare package and public_seam together")
             if (
                 item.public_seam
                 and item.package

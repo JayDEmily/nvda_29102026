@@ -51,6 +51,12 @@ def test_all_architecture_registries_conform_to_committed_schemas() -> None:
                 "state_ownership": "none",
                 "time_ownership": "none",
                 "side_effects": [],
+                "component_forms": ["service"],
+                "state_writer_boundary": "none",
+                "state_reader_boundaries": [],
+                "persistence_mechanisms": [],
+                "prohibited_state_writers": [],
+                "replay_obligations": [],
             }
         ],
         "retired_ids": [],

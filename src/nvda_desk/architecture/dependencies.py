@@ -69,6 +69,37 @@ def _owner_for(module: str, owners: Iterable[ArchitectureObject]) -> Architectur
     return max(matches, key=lambda item: len(item.package or ""))
 
 
+def _imported_paths_for_node(
+    module_name: str,
+    node: ast.Import | ast.ImportFrom,
+    *,
+    package_module: bool,
+    owners: Iterable[ArchitectureObject],
+) -> list[str]:
+    if isinstance(node, ast.Import):
+        return [alias.name for alias in node.names]
+
+    resolved = _resolve_from(module_name, node, package_module=package_module)
+    if not resolved:
+        return []
+
+    base_owner = _owner_for(resolved, owners)
+    if base_owner is not None and resolved == base_owner.public_seam:
+        return [resolved]
+
+    imported_paths: list[str] = []
+    for alias in node.names:
+        if alias.name == "*":
+            imported_paths.append(resolved)
+            continue
+        candidate = f"{resolved}.{alias.name}"
+        if _owner_for(candidate, owners) is not None:
+            imported_paths.append(candidate)
+        else:
+            imported_paths.append(resolved)
+    return imported_paths
+
+
 def _contains_cycle(edges: Iterable[tuple[str, str]]) -> bool:
     graph: dict[str, set[str]] = {}
     for source, target in edges:
@@ -171,16 +202,15 @@ def analyse_source_tree(
                         )
                     )
             imported: list[str] = []
-            if isinstance(node, ast.Import):
-                imported = [alias.name for alias in node.names]
-            elif isinstance(node, ast.ImportFrom):
-                resolved = _resolve_from(
+            import_line: int | None = None
+            if isinstance(node, (ast.Import, ast.ImportFrom)):
+                imported = _imported_paths_for_node(
                     module_name,
                     node,
                     package_module=path.name == "__init__.py",
+                    owners=owners,
                 )
-                if resolved:
-                    imported = [resolved]
+                import_line = node.lineno
             for imported_path in imported:
                 if any(
                     imported_path == framework or imported_path.startswith(framework + ".")
@@ -195,7 +225,7 @@ def analyse_source_tree(
                 ):
                     continue
                 edge = ImportEdge(
-                    source_owner.id, target_owner.id, imported_path, str(path), node.lineno
+                    source_owner.id, target_owner.id, imported_path, str(path), import_line or 0
                 )
                 observed_edges.append(edge)
                 if (source_owner.id, target_owner.id) not in declared_edges:
@@ -205,7 +235,7 @@ def analyse_source_tree(
                             f"{source_owner.id} imports {target_owner.id} "
                             "without a declared owner edge",
                             str(path),
-                            node.lineno,
+                            import_line,
                         )
                     )
                 source_rule = rules["category_rules"][source_owner.category]
@@ -215,7 +245,7 @@ def analyse_source_tree(
                             "FORBIDDEN_DIRECTION",
                             f"{source_owner.category} may not depend on {target_owner.category}",
                             str(path),
-                            node.lineno,
+                            import_line,
                         )
                     )
                 exception = (source_owner.id, target_owner.id, imported_path) in seam_exceptions
@@ -226,7 +256,7 @@ def analyse_source_tree(
                             f"{source_owner.id} imports {imported_path}; "
                             f"required seam is {target_owner.public_seam}",
                             str(path),
-                            node.lineno,
+                            import_line,
                         )
                     )
 

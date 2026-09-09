@@ -62,7 +62,33 @@
           "status",
           "description"
         ],
-        "type": "object"
+        "type": "object",
+        "allOf": [
+          {
+            "if": {
+              "required": [
+                "package"
+              ]
+            },
+            "then": {
+              "required": [
+                "public_seam"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "public_seam"
+              ]
+            },
+            "then": {
+              "required": [
+                "package"
+              ]
+            }
+          }
+        ]
       },
       "type": "array"
     },

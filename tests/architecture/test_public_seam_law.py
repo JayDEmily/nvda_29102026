@@ -58,3 +58,12 @@ def test_private_cross_owner_submodule_is_rejected(tmp_path: Path) -> None:
 def test_same_owner_internal_import_is_not_a_false_positive(tmp_path: Path) -> None:
     violations = _analyse(tmp_path, "from nvda_desk.m01.internal.helpers import helper\n")
     assert violations == ()
+
+
+def test_importfrom_owner_member_bypass_is_rejected(tmp_path: Path) -> None:
+    violations = _analyse(tmp_path, "from nvda_desk import m02\n")
+    assert [item.code for item in violations] == ["PRIVATE_SEAM"]
+
+
+def test_importfrom_declared_seam_member_is_accepted(tmp_path: Path) -> None:
+    assert _analyse(tmp_path, "from nvda_desk.m02 import api\n") == ()
