@@ -872,8 +872,33 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 - registry-derived `architecture_kernel` promotion passed on the committed AKR-2 state;
 - `git diff --check` passed and `git fsck --full` reported no repository-integrity defect.
 
-### Next authorised acceptance unit
+### AKR-3 — COMPLETE
 
-`AKR-3 — Reconcile and simplify architecture authority`.
+- branch: `work/akr-3-architecture-authority-reconciliation`;
+- commit: `38ea93e482717180959afea9aa6b19659025368b`;
+- steady-state architecture authority was reconciled without reactivating the historical `M00-M15` product allocation;
+- `OWNERSHIP_AND_COMPONENT_LAW.md` carries forward generic owner/component/state-role separation;
+- the known checker/proof/type-mechanical gaps were explicitly left for AKR-5 rather than being claimed as proved by normative text.
 
-Do not begin AKR-4 or later work until AKR-3 acceptance conditions are established.
+### AKR-4 — COMPLETE
+
+- branch: `work/akr-4-implementation-brief-ingress`;
+- commit: `fcf2d9a6c8b28ab91a4b90673bfafc261f222d47`;
+- a generic implementation-authority ingress binds exact brief bytes, an external implementation-acceptance reference and a bounded create/modify architectural projection;
+- the ingress does not embed the brief, M10, G1-G7, PMB or upstream semantic-reconstruction machinery;
+- revalidation immediately before AKR-5 entry observed structural validation PASS, Ruff PASS, `44 passed` architecture/bootstrap tests and `44 passed` registry-derived architecture promotion.
+
+### AKR-5 — BLOCKED
+
+- branch: `work/akr-5-dormant-structural-readiness`;
+- entry commit: `fcf2d9a6c8b28ab91a4b90673bfafc261f222d47`;
+- first unmet invariant: no pinned static type checker is available from the admitted offline dependency surface;
+- current vendored wheelhouse and supplied archive payloads contain no mypy/Pyright/basedpyright/pytype/Pyre/`ty` checker distribution, and none is installed in the runtime;
+- a current compatible mypy distribution exists externally, but outbound package retrieval is unavailable in this runtime, so it cannot presently be admitted or reproduced offline;
+- Ruff is not substituted for the required typed-seam checker;
+- downstream AKR-5 repairs were not executed after the blocker was established;
+- exact blocker evidence is recorded in `docs/history/AKR5_BLOCKER_STATIC_TYPE_CHECKER_20260909.md`.
+
+### Next action
+
+Supply or otherwise make available a complete pinned static-type-checker wheel set compatible with CPython 3.13.5 / Linux x86-64, then resume AKR-5 from the static typed-seam dependency. Do not begin AKR-6 while AKR-5 is blocked.
