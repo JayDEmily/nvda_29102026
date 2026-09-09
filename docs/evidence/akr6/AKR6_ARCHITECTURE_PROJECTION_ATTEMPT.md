@@ -63,6 +63,18 @@ targets: create:M16, modify:A00
 
 This establishes only exact-byte and current target-state validity. It does not establish semantic completeness or any downstream implementation/proof proposition.
 
-## Next boundary
+## First real unresolved projection field
 
-AKR-6 proceeds to derive the candidate `M16`/`A00` architecture declarations required by the exact brief and challenge them against ownership, dependency and public-seam law. No brief-derived production object is admitted by this rehearsal record.
+The current module schema and registry integrity law require every active executable `M` object to declare both a concrete Python `package` and a concrete `public_seam`.
+
+The exact brief establishes the semantic seam facts needed for architecture judgement: `M16` owns the Raw Signal Occurrence Truth meaning, `A00` is the sole initial caller/consumer, and the seam is typed. The brief does not establish the concrete Python import path. Clause 16 explicitly retains final package naming/version metadata as a Remaining Unknown and directs implementation to stop rather than choose a default when a Remaining Unknown is required.
+
+`AK-NAME-001` constrains naming scope and applicable Python naming conventions; it does not derive a particular package name or public-seam path. The current module template likewise contains placeholders rather than a normative name-allocation rule.
+
+Therefore a complete active `M16` registry projection cannot yet be produced without inventing the concrete package/public-seam name. This is the first unresolved field required for the active candidate path.
+
+## Stop boundary
+
+AKR-6 stops before committing or validating a complete active candidate `M16` registry entry. Dependent dependency/public-seam, proof-derivation and candidate-composition stages have not been claimed as reached.
+
+No production architecture registry was changed by the brief-derived rehearsal and no brief-derived runtime object was admitted.
