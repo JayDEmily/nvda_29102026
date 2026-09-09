@@ -45,4 +45,4 @@ No successor silently inherits implementation status, semantic authority or cons
 
 A deprecated object is unavailable for new composition/admission and carries an explicit retirement path. A retired object is absent from active composition and its identifier remains permanently reserved.
 
-Git history preserves prior implementation. Material that does not belong in the target active tree is `DO_NOT_CARRY_FORWARD`; it is not destroyed merely because it is absent from the target tree.
+Git history preserves prior implementation. Material that does not belong in the target active tree is `DO_NOT_CARRY_FORWARD`; it is not destroyed merely because it is absent from the target tree. `DO_NOT_CARRY_FORWARD` is a target-tree/Git-history disposition, not an architectural lifecycle transition: it does not by itself make an object `retired` or place its identifier in `retired_ids`. Lifecycle retirement requires explicit current authority for that retirement.

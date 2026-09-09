@@ -34,6 +34,8 @@ Understanding the brief sufficiently to choose architecture-object targets is re
 
 A `create` target must not already exist or reuse a retired identity. A `modify` target must already exist. The target list is an architectural projection only; it is not a second normative brief.
 
+An architecture identifier appearing in the brief is not automatically a current projection target. Target status must be established from the exact brief meaning, current higher authority and current kernel law. Where current higher authority explicitly dispositions an inherited structural allocation as `DO_NOT_CARRY_FORWARD`, the projection must not recreate that allocation merely because its historical identifier remains in the unchanged brief bytes. The projection record must state that disposition explicitly; it must not silently rewrite the brief or invent a replacement owner.
+
 All architecture laws continue to apply. The binding cannot waive ownership, dependency, seam, lifecycle, proof, packaging or category rules.
 
 ## Brief handling

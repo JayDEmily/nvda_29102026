@@ -7,4 +7,4 @@ governance_planes:
     runtime_dependency: false
     predecessors: [M14]
     successors: []
-retired_ids: [G02]
+retired_ids: []
