@@ -843,3 +843,37 @@ It does not mean that any product capability has been implemented.
 It does not mean the future brief-to-code implementation worker exists.
 
 It means the repository is structurally ready for that future work.
+
+## 19. Current progress — reconstructed execution
+
+The prior sandbox-local AKR commits were lost and were not recoverable as Git objects. Under explicit user authority, this tranche was re-executed from the preserved source repository rather than recreating lost SHAs from narrative summaries.
+
+### Reconstructed source and governance
+
+- preserved source baseline: `892a6c042f19d19d84a3d1fb2c639033789f9bc1`;
+- reconstructed accepted governance/control-surface commit: `caea0c7bffb5d62b215ae2884f6ab22beaf39406`.
+
+### AKR-1 — COMPLETE
+
+- branch: `work/akr-1-end-state-inventory`;
+- reconstructed AKR-1 commit: `985c9cec866e6690e6268aafa181cc7840602b60`;
+- exact tracked/inventory coverage at close: `218 / 218`;
+- classifications: `KEEP 54`, `REWRITE 39`, `HISTORICAL_ONLY 3`, `DO_NOT_CARRY_FORWARD 122`, `BLOCKED 0`;
+- reproduced challenge findings include the `ImportFrom` public-seam blind spot, reset-only active-module aggregate blocker and non-recursive physical-test discovery.
+
+### AKR-2 — COMPLETE
+
+- branch: `work/akr-2-programme-surface-carry-forward`;
+- programme-surface mutation commit: `ab6641b28bef8307e4e921d0aa4b524050980840`;
+- 63 AKR-1-classified Raw Signal/programme-specific paths are no longer present in the active tree and remain recoverable from prior Git commits;
+- directly affected generic orientation surfaces were rewritten: `README.md`, `tests/AGENTS.override.md`, `docs/provenance/CLEAN_REPOSITORY_PROVENANCE.md`, and the stale `/PLANS.md` sdist reference in `pyproject.toml`;
+- structural validation passed;
+- architecture/bootstrap proof passed: `38 passed` on CPython `3.13.5` / pytest `9.0.3`;
+- registry-derived `architecture_kernel` promotion passed on the committed AKR-2 state;
+- `git diff --check` passed and `git fsck --full` reported no repository-integrity defect.
+
+### Next authorised acceptance unit
+
+`AKR-3 — Reconcile and simplify architecture authority`.
+
+Do not begin AKR-4 or later work until AKR-3 acceptance conditions are established.
