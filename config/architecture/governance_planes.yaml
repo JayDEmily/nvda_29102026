@@ -7,11 +7,4 @@ governance_planes:
     runtime_dependency: false
     predecessors: [M14]
     successors: []
-  - id: G02
-    name: vocabulary
-    status: framework
-    description: Canonical terminology, definitions, aliases, deprecations and generated projections.
-    runtime_dependency: false
-    predecessors: [M15]
-    successors: []
-retired_ids: []
+retired_ids: [G02]

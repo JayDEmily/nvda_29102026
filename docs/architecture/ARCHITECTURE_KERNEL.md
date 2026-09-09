@@ -41,7 +41,7 @@ This document owns only the cross-cutting registry, composition and packaging pr
 
 ## Current-state location
 
-Current object identities and statuses are read from `config/architecture/*.yaml`; proof state is read from `config/proof/*.yaml`; current vocabulary state is read from `config/vocabulary/`.
+Current object identities and statuses are read from `config/architecture/*.yaml`; proof state is read from `config/proof/*.yaml`.
 
 No duplicate current-state table in this document overrides those registries.
 

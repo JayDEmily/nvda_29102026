@@ -4,6 +4,7 @@
 
 - **AK-TAX-001 — Category separation.** Runtime semantic owners (`M`), protocols/carriers (`P`), governance planes (`G`), application shells (`A`), technical kernels (`K`) and architecture surfaces (`S`) are distinct categories. Registration in one category cannot create authority in another.
 - **AK-ID-001 — Unbounded permanent identifiers.** Identifiers use a category prefix and decimal suffix padded to at least two digits. Allocation continues beyond `99`; retired identities are never reused for different meaning.
+- **AK-NAME-001 — Namespace-scoped Python naming.** Architectural object identifiers remain globally unique registry identities, while ordinary Python package, module, class, function, method and variable names follow the Python namespace model and applicable Python naming conventions. A Python symbol need be unique only within the namespace or public interface in which Python resolves or exposes it; repository-global synonym policing or identifier prefixing is not an architectural requirement.
 
 ## Identifier grammar
 
@@ -17,6 +18,14 @@ S00 … S99, S100, …
 ```
 
 `M1`, negative suffixes, mixed prefixes and non-decimal suffixes are invalid. Schemas impose no maximum numeric value. Allocation is monotonic within each category.
+
+## Python naming scope
+
+Official-source basis: the Python language tutorial's namespace model and PEP 8 naming conventions govern Python name resolution and ordinary Python naming style. This kernel law only maps those official rules into the architecture boundary; it does not create a parallel vocabulary system.
+
+Python-visible names follow Python's own namespace model and the applicable Python naming conventions. Module qualification and containing object namespaces disambiguate names across separate namespaces, so a class, function or other symbol is not required to be globally unique across the repository merely because the same unqualified spelling exists elsewhere. Public-interface names must still be unambiguous within the interface that exposes them.
+
+The architecture-object identifier grammar above is separate: `M`, `P`, `G`, `A`, `K` and `S` identifiers are registry identities and remain globally unique within the architecture registry.
 
 ## Categories
 
@@ -34,7 +43,7 @@ A protocol may be declarative or may expose a Python-visible implementation boun
 
 ### G — continuous governance plane
 
-Constrains or evaluates the repository through proof, promotion, vocabulary or similar governance. It is not a runtime business dependency and does not acquire the semantic ownership of the artefacts it evaluates.
+Constrains or evaluates the repository through proof, promotion or similar governance. It is not a runtime business dependency and does not acquire the semantic ownership of the artefacts it evaluates.
 
 ### A — application shell and composition
 

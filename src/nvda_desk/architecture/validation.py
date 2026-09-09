@@ -7,7 +7,6 @@ from pathlib import Path
 from .dependencies import analyse_repository
 from .proof import load_and_validate_proof_state
 from .registry import ArchitectureRegistry
-from .schema import validate_document
 
 
 class ArchitectureValidationError(ValueError):
@@ -38,10 +37,6 @@ def _validate_active_python_visible_objects(
 def validate_architecture(repository_root: Path) -> list[str]:
     registry = ArchitectureRegistry.from_repository(repository_root)
     _validate_active_python_visible_objects(repository_root, registry)
-    validate_document(
-        repository_root / "config" / "vocabulary" / "vocabulary.yaml",
-        repository_root / "schemas" / "vocabulary.schema.json",
-    )
     proof = load_and_validate_proof_state(repository_root)
     violations = analyse_repository(repository_root)
     if violations:

@@ -158,7 +158,7 @@ def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
 
     result = validate_architecture(repository)
 
-    assert "architecture objects: 8" in result
+    assert "architecture objects: 7" in result
     assert "active runtime modules: 0" in result
 
 

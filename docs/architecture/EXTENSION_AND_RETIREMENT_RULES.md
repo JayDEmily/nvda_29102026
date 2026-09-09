@@ -15,7 +15,7 @@ For brief-derived implementation, this sequence begins only after a valid implem
 4. choose lawful component forms and owner-local implementation structure;
 5. declare permitted owner dependencies;
 6. declare one typed Python-visible public seam where Python-visible cross-owner use exists;
-7. admit required vocabulary and normative propositions;
+7. bind the exact normative propositions that govern the implementation;
 8. admit exact architecture and behavioural proof derived from those propositions;
 9. compose the module through the application shell when runtime participation is required;
 10. pass the applicable architecture/promotion proof.
@@ -37,7 +37,7 @@ A replacement, split or merger preserves and explicitly dispositions:
 - compatibility impact;
 - consumer migration;
 - state/persistence ownership effects;
-- proof and vocabulary effects.
+- proof effects.
 
 No successor silently inherits implementation status, semantic authority or consumer acceptance.
 

@@ -98,7 +98,6 @@ The kernel owns only structural and implementation-governance law, including:
 - public seams;
 - composition;
 - object lifecycle;
-- architecture vocabulary;
 - architecture proof admission;
 - architecture promotion;
 - packaging/bootstrap integrity;
@@ -238,7 +237,6 @@ The classification must explicitly cover:
 - architecture documentation;
 - architecture configuration;
 - proof configuration;
-- vocabulary configuration;
 - schemas;
 - templates;
 - source;
@@ -581,9 +579,7 @@ Prove that the pristine architecture is genuinely ready for the next system.
 
 ### Method
 
-Use a bounded synthetic/test-only implementation-ready brief.
-
-It must contain no NVIDIA trading or Raw Signal meaning.
+Use the exact externally accepted implementation-ready brief bound for the AKR-6 rehearsal under current human authority. The kernel treats those bytes as opaque implementation authority and does not import or depend on the process that produced them. The rehearsal remains non-production: it must not leave brief-derived business code or an active brief-derived runtime object in the committed production state.
 
 The rehearsal must demonstrate:
 
@@ -595,6 +591,8 @@ architecture-object projection
 registry/schema validation
         ->
 dependency/public-seam validation
+        ->
+concrete-name validation where names exist
         ->
 proof derivation/admission
         ->
@@ -622,11 +620,12 @@ The rehearsal must also establish failure for at least:
 - structurally invalid object projection;
 - undeclared dependency;
 - unlawful seam;
+- concrete Python name that violates applicable namespace/style/public-interface rules, when the rehearsal reaches a concrete-name surface;
 - attempt to treat upstream methodology metadata as architecture authority.
 
 ### Acceptance condition
 
-AKR-6 passes only when the complete generic ingress path is exercised without domain semantics and without coupling the kernel to the upstream methodology.
+AKR-6 passes only when the complete generic ingress path is exercised without admitting brief-derived domain semantics into the production kernel state and without coupling the kernel to the upstream methodology.
 
 **A new accepted implementation-ready brief must be able to enter without requiring modification of the kernel's foundational architectural laws.**
 
@@ -723,15 +722,13 @@ uv.lock
 config/
   architecture/
   proof/
-  vocabulary/
-
 docs/
   architecture/
   provenance/
 
 schemas/
   architecture-object schemas
-  dependency/proof/vocabulary schemas
+  dependency/proof schemas
   minimal implementation-authority-ingress schema if mechanically required
 
 templates/
@@ -908,4 +905,4 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 
 ### Next action
 
-Proceed to AKR-6 only from the final clean AKR-5 state. AKR-6 must rehearse the generic implementation-ready-brief ingress with synthetic/test-only authority and must leave the production module and surface registries behaviour-neutral unless separately authorised.
+Proceed to AKR-6 only from the final clean AKR-5 state. Under current explicit human authority, AKR-6 uses the exact externally accepted implementation brief bound on the AKR-6 work branch rather than a synthetic specimen. The kernel treats those bytes as opaque implementation authority and must leave the production module and surface registries behaviour-neutral unless separately authorised. During AKR-6, the inherited vocabulary-governance mechanism (`config/vocabulary/vocabulary.yaml`, its dedicated schema/validation/test surface and the `G02` active registration) is `DO_NOT_CARRY_FORWARD`; `G02` remains reserved as a retired identifier so it cannot be reused. Python naming follows `AK-NAME-001`: architecture IDs remain registry-global, while ordinary Python symbols are scoped by their Python namespace/public interface rather than a repository-global synonym registry.

@@ -35,7 +35,7 @@ Do not collapse different dependency questions into one graph:
 
 1. **runtime/contracts plane** — Python/runtime owner dependencies governed by the rules above;
 2. **state/transaction participation plane** — use of a technical persistence/transaction mechanism without transfer of semantic ownership;
-3. **governance/promotion plane** — proof, vocabulary and promotion prerequisites that must not become production imports;
+3. **governance/promotion plane** — proof and promotion prerequisites that must not become production imports;
 4. **build/test plane** — development and proof dependencies used to build or test the repository.
 
 A relation in one plane does not automatically create an edge in another.
