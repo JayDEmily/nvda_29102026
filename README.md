@@ -1,7 +1,9 @@
-# NVDA Raw Signal Codex Restart
+# NVDA Architecture Kernel
 
-This is a **new Git history** for the NVDA Raw Signal clean restart. Its purpose is to turn semantically authoritative briefs into correct code while keeping authority, proof, implementation, runtime evidence, and programme admission distinct.
+This repository is the behaviour-neutral structural kernel for the NVDA codebase. It defines the architectural object taxonomy, registries, ownership/dependency/public-seam laws, lifecycle, composition skeleton, proof admission and promotion machinery required before future product capability is implemented.
 
-The byte-preserved semantic/kernel foundation was ported from forensic commit `c0bfa6d`. Runtime-control concepts may use `79cbbb9` only as evidence; the dirty R2/R2A recovery worktree and history are not the operational baseline.
+It contains no admitted NVIDIA trading/business module. `config/architecture/modules.yaml` and `config/architecture/surfaces.yaml` remain empty unless separately admitted under current authority.
 
-Start with `AGENTS.md`, `PLANS.md`, `EXEC_PLAN.md`, `docs/provenance/CLEAN_REPOSITORY_PROVENANCE.md`, and (for Gate 0) `docs/orchestration/BOOTSTRAP.md` once present.
+The semantic-to-implementation-ready-brief methodology is upstream and separate from this repository. The kernel must accept an explicitly accepted implementation-ready brief without importing or duplicating that upstream methodology.
+
+Start with `GUARDRAILS.md`, `AGENTS.md`, and the explicitly accepted root `EXEC_PLAN.md`.

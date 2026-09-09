@@ -1,5 +1,0 @@
-interface:
-  display_name: "NVDA Semantic Orchestrator"
-  short_description: "Gate 1+ source-first NVDA semantic orchestration"
-policy:
-  allow_implicit_invocation: false

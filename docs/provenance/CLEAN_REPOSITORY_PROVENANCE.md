@@ -1,34 +1,31 @@
-# Clean repository provenance
+# Architecture-kernel repository provenance
 
-This repository has a new Git history. It was not cloned from the R2 forensic repository and does not import that repository's `.git`, branches, reflogs, recovery worktree, or autonomous rollback state.
+## Current repository lineage
 
-## Source identities
+This working repository was reconstructed on 2026-09-09 from the preserved full-Git handoff `nvda83e4_20260903_115327_full_git_handoff.tar.gz`.
 
-- full-history forensic archive SHA-256: `18ec9e5bdce4d1ec53ca8a8a1071c968be6d7876af4982b3da2a4f952d9538d8`
-- byte source for accepted semantic/kernel baseline: Git commit `c0bfa6d`
-- runtime-reference evidence only: Git commit `79cbbb9db4427ff574ffc87dab45036496d99e21`
-- user-accepted Step-5 decision SHA-256: `8eedd78cf1d488ae0dac1842ca119e080b009ae17de9efd56672f67930abf354`
-- Step-6 port authority SHA-256: `3acfe267c2697eef2100fb844bcc1b7b15f5d7339c44edaf75d8cf4a9b483bcd`
+The extracted repository was verified at:
 
-## New root baseline
+```text
+main / HEAD 892a6c042f19d19d84a3d1fb2c639033789f9bc1
+```
 
-- commit: `e137677e8c0f116ba21dadc2e951281820e09916`
-- tree: `4f625f20f8882f3cdb249ac2b38046e28200d769`
+That commit is the source baseline for the current Architecture Kernel Completion and Implementation-Brief Ingress Readiness tranche.
 
-The root baseline contains only `EXACT_PORT` destinations from the Step-6 manifest. Exact-port bytes are required to match the source SHA-256 even where historical formatting is imperfect.
+The earlier sandbox-local AKR governance/AKR-1/AKR-2 Git objects were lost and were not available from GitHub. They were **not** recreated with invented SHA identities. The current tranche was re-executed from the preserved source and accepted authority, producing new commits.
 
-## Construction
+## Historical architecture challenge lineage
 
-- branch: `restart/codex-control-v1`
-- final candidate/accepted commit: deliberately not self-recorded in the candidate; the independent audit binds the exact candidate `HEAD` externally
-- accepted `main`: remains at the root baseline until independent audit accepts the complete candidate
+The separate preserved full-history architecture-reset archive contains the mature historical architecture commit:
 
-`docs/provenance/RESTART_PORT_MANIFEST.tsv` is the repository-local file disposition/provenance ledger. For exact ports, source and destination hashes must be identical. Rewritten/new destinations receive their final SHA-256 once their unit is committed. The manifest deliberately does not claim its own containing-commit hash.
+```text
+d24f9626a23b526384668b3cb26ee811b235eb5c
+```
 
-## Step-7 independent-audit repair overlay
+and the later reset lineage. That separate history is challenge/provenance evidence; it is not automatically active current product authority.
 
-The first fresh Step-7 audit of candidate `db9a2f11d984d44bc16d1565a680a62fd1555d9a` returned `REJECT_REPAIRABLE`. The repair branch `repair/step7-independent-audit-v1` changes only the clean restart candidate; it does not import forensic Git ancestry or R2/R2A recovery machinery.
+## Carry-forward law
 
-The repair authority is the preserved independent audit report SHA-256 `47c3af43acc3b18eb45abafd333175f2de62ca39db2f8cad31e2f17a6c2f6024` plus the user's explicit instruction to proceed and the later explicit programme-authority freeze decision. The repair adds five new tracked files for runtime-identity evidence and Gate-0 adversarial proof, and revises already-rewritten/new control files. Those changes are represented in the repository-local manifest as `STEP7_AUDIT_REPAIR` rather than being mislabelled as exact ports from the forensic source.
+Material classified `DO_NOT_CARRY_FORWARD` is absent from the target active tree only after an ordinary Git commit records that transition. It remains recoverable from prior commits. No Git history is rewritten or pruned by this tranche.
 
-The original Step-6 port manifest remains immutable external build authority. This local ledger records the current destination bytes and the Step-7 repair overlay; it does not alter the historical source hashes of `EXACT_PORT` rows.
+AKR-2 stops carrying the Raw Signal programme/control surface forward. It does not erase that material and does not treat historical architecture evidence as current domain authority.
