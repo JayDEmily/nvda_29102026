@@ -1,0 +1,219 @@
+path	classification	responsibility_or_reason
+.agents/skills/nvda-semantic-orchestrator/SKILL.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.agents/skills/nvda-semantic-orchestrator/agents/openai.yaml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/implementation-worker.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/integration-auditor.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/normative-writer.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/project-manager.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/semantic-reviewer.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/semantic-worker.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/agents/test-author.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/config.toml	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/hooks.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/hooks/gate0_attest.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/hooks/run_gate0_attest.sh	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/hooks/run_runtime_identity_attest.sh	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.codex/hooks/runtime_identity_attest.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+.gitattributes	KEEP	Repository/bootstrap support with no programme/domain responsibility.
+.github/workflows/architecture-kernel.yml	REWRITE	Rewrite later to include the final admitted permanent proof surface, including typed-seam proof when selected.
+.gitignore	KEEP	Repository/bootstrap support with no programme/domain responsibility.
+.python-version	KEEP	Hermetic/minimal development and packaging support.
+AGENTS.md	KEEP	Current kernel governance/planning authority.
+EXEC_PLAN.md	KEEP	Current kernel governance/planning authority.
+GUARDRAILS.md	KEEP	Current kernel governance/planning authority.
+LICENSE	KEEP	Repository/bootstrap support with no programme/domain responsibility.
+Makefile	KEEP	Minimal repository-native entry points for architecture validation, architecture tests, promotion and lint.
+PLANS.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+README.md	REWRITE	Rewrite Raw Signal/reset orientation into pristine-kernel and implementation-brief boundary orientation.
+ROADMAP_LEDGER.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/AUTHORITY_MANIFEST.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/README.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/docs/architecture/RAW_SIGNAL_DATA_UNIVERSE_MAPPING.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/docs/architecture/RAW_SIGNAL_PERSISTENCE_CAPABILITY.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/docs/architecture/data/DERIVED_SIGNAL_REQUIREMENTS.tsv	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/docs/architecture/data/RAW_SIGNAL_CONCEPTS.tsv	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/candidate/raw_signal/docs/architecture/data/SIGNAL_DEPENDENCY_EDGES.tsv	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/01_evidence_audit.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/02_source_register.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/03_method_legend.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/04_summary.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/05_raw_signals.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/06_derived_signals.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/rendered/workbook/07_addendum_evidence_audit.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/source/NVDA_80_STEP_ACADEMIC_EVIDENCE_AUDIT_WITH_SIGNALS_ADDENDUM_81_94.xlsx	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/source/NVDA_CROSS_MODULE_DATA_IDENTITY_AND_DMPV3_GOVERNANCE_20260804.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+authority/source/NVDA_CROSS_MODULE_DATA_IDENTITY_GUIDANCE_20260804.tar.gz	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+config/architecture/application_shells.yaml	REWRITE	Rewrite reset-era descriptions/lineage presentation into steady-state category semantics without reactivating historical M ownership.
+config/architecture/dependency_rules.yaml	KEEP	Generic declarative architecture identity/dependency registry retained; no business semantics admitted.
+config/architecture/governance_planes.yaml	REWRITE	Rewrite reset-era descriptions/lineage presentation into steady-state category semantics without reactivating historical M ownership.
+config/architecture/kernels.yaml	REWRITE	Rewrite reset-era descriptions/lineage presentation into steady-state category semantics without reactivating historical M ownership.
+config/architecture/modules.yaml	KEEP	Generic declarative architecture identity/dependency registry retained; no business semantics admitted.
+config/architecture/protocols.yaml	REWRITE	Rewrite reset-era descriptions/lineage presentation into steady-state category semantics without reactivating historical M ownership.
+config/architecture/surfaces.yaml	KEEP	Generic declarative architecture identity/dependency registry retained; no business semantics admitted.
+config/proof/promotion_sets.yaml	REWRITE	Rewrite reset-only proof population into permanent kernel proof admission after AKR-3/AKR-5 reconciliation.
+config/proof/proof_blocks.yaml	REWRITE	Rewrite reset-only proof population into permanent kernel proof admission after AKR-3/AKR-5 reconciliation.
+config/proof/test_families.yaml	REWRITE	Rewrite reset-only proof population into permanent kernel proof admission after AKR-3/AKR-5 reconciliation.
+config/vocabulary/vocabulary.yaml	KEEP	Generic architecture vocabulary governance seed.
+docs/architecture/ADR_20260902_ARCHITECTURE_KERNEL_CONFORMANCE_HARDENING.md	HISTORICAL_ONLY	Required historical architecture/reset lineage/challenge evidence during this tranche; not current steady-state product semantics.
+docs/architecture/ARCHITECTURAL_OBJECT_TAXONOMY.md	KEEP	Current kernel architecture authority retained where no rewrite is identified.
+docs/architecture/ARCHITECTURE_KERNEL.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/architecture/ARCHITECTURE_KERNEL_RESET_BRIEF.md	HISTORICAL_ONLY	Required historical architecture/reset lineage/challenge evidence during this tranche; not current steady-state product semantics.
+docs/architecture/DEPENDENCY_LAWS.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/architecture/EXTENSION_AND_RETIREMENT_RULES.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/architecture/EXTERNAL_LINEAGE_INDEX.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/architecture/PUBLIC_SEAM_LAW.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/architecture/TEST_AND_PROMOTION_KERNEL.md	REWRITE	Rewrite reset-state/current-implementation claims into durable steady-state kernel law while preserving the architectural problem each law solves.
+docs/evidence/architecture_audit_20260804/ARCHITECTURE_LINEAGE_INDEX.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/ARCHITECTURE_SURFACE_INDEX.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/DEFECT_AND_FINDING_REGISTER.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/NVDA_ARCHITECTURE_AND_TEST_LINEAGE_AUDIT.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/OWNERSHIP_MODULE_INDEX.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/README.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/SHA256SUMS.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/TEST_FRAMEWORK_INDEX.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/TEST_LINEAGE_INDEX.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/alpha_current_family_proposition_index.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/canonical_dependency_summary.json	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/canonical_import_inventory.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/cross_module_private_imports.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/final_repo_identity.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/foundation_readiness_probe.json	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/foundation_readiness_probe.stderr	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/foundation_readiness_probe.stdout	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/git_lineage_private_import_violation.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/git_status_post.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/git_status_pre.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/promotion_check.err.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/promotion_check.out.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/proof_authority_check.err.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/proof_authority_check.out.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/proof_blocks_check_all.err.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/proof_blocks_check_all.out.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/scaffold_check.err.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/scaffold_check.out.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/static_package_dependency_graph.json	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/static_package_import_evidence.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/surface_physical_presence.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/test_tier_lifecycle_matrix.csv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/test_tier_lifecycle_matrix.json	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_audit_20260804/evidence/vendor_lineage_counts.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/BASELINE_FILE_INVENTORY.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/COMMIT_SEQUENCE_PRE_CLOSEOUT.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/DELETED_FILE_INVENTORY.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/DEPENDENCY_AND_LOCK_REPORT.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/FINAL_ACTIVE_TREE_INVENTORY.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/FINAL_TREE.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/FINAL_VALIDATION_SUMMARY.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/FULL_READ_MANIFEST.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/RETAINED_OR_RECONSTRUCTED_BASELINE_INVENTORY.tsv	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/UNIT4_REPAIR_RECORD.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/UNIT5_REPAIR_RECORD.md	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/intermediate/unit4_initial_lint_failure.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/intermediate/unit4_initial_syntax_failure.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/intermediate/unit4_proposition_regex_failure.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/intermediate/unit5_initial_offline_source_failure.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/intermediate/unit5_metadata_assertion_failure.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit1_control_activation.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit2_strip_down.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit3_registry_schema_validation.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit4_implementation_and_proof.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit5_build_and_isolated_install.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit5_environment_and_promotion.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/evidence/architecture_kernel_reset_20260804/validation/unit5_git_precloseout.txt	DO_NOT_CARRY_FORWARD	Reset/audit evidence already preserved by Git history; not permanent active-tree kernel authority.
+docs/governance/ADMITTED_STATE.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/GATE0_ADMISSION_MANIFEST.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/SEMANTIC_INDEX.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/WSL_RUNTIME_REQUIREMENTS.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/admissions/.gitkeep	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/attempts/.gitkeep	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/defects/.gitkeep	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/reviews/.gitkeep	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/governance/work_orders/.gitkeep	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/history/LEGACY_IDENTIFIER_CROSSWALK.md	HISTORICAL_ONLY	Required historical architecture/reset lineage/challenge evidence during this tranche; not current steady-state product semantics.
+docs/history/exec_plans/EXEC_PLAN_RESTART_CONSTRUCTION_COMPLETED_20260812.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/orchestration/BOOTSTRAP.md	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+docs/provenance/CLEAN_REPOSITORY_PROVENANCE.md	REWRITE	Rewrite provenance to describe the reconstructed/current kernel lineage and carry-forward boundary accurately.
+docs/provenance/RESTART_PORT_MANIFEST.tsv	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+pyproject.toml	REWRITE	Rewrite target package/control surface: remove superseded PLANS packaging reference and later admit final type/proof tooling only when justified.
+schemas/admission_record.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/admitted_state.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/application_shell.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/attempt_record.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/dependency_rules.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/gate0_admission_manifest.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/governance_plane.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/kernel.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/module.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/promotion_set.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/proof_block.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/protocol.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/review.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/semantic_index.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+schemas/surface.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/test_family.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/vocabulary.schema.json	KEEP	Generic architecture/proof/vocabulary schema required for declarative validation.
+schemas/work_order.schema.json	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+src/nvda_desk/__init__.py	KEEP	Repository/bootstrap support with no programme/domain responsibility.
+src/nvda_desk/architecture/__init__.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/cli.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/dependencies.py	REWRITE	Rewrite public-seam/import analysis: reproduced ImportFrom owner bypass must be closed without weakening declared-edge/category law.
+src/nvda_desk/architecture/identifiers.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/promotion.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/proof.py	REWRITE	Rewrite physical-test discovery/proposition claims: current discovery is non-recursive and textual proposition binding is not semantic entailment.
+src/nvda_desk/architecture/registry.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/schema.py	KEEP	Generic architecture framework implementation; retained where no known rewrite is required.
+src/nvda_desk/architecture/validation.py	REWRITE	Rewrite reset-only empty-active-module invariant so a lawful first active M can be admitted under permanent architecture law.
+src/nvda_desk/composition/__init__.py	KEEP	Behaviour-neutral A00 composition bootstrap.
+templates/application_shell/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/application_shell/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/governance_plane/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/governance_plane/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/kernel/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/kernel/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/module/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/module/__init__.py.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/module/api.py.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/module/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/protocol/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/protocol/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/surface/README.md.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+templates/surface/registry-entry.yaml.template	REWRITE	Rewrite templates for category-complete steady-state admission and clear ownership/component/seam/persistence/proof obligations.
+tests/AGENTS.override.md	REWRITE	Rewrite test-local guidance after Gate-0/governance jurisdictions stop carrying forward.
+tests/architecture/test_dependency_direction.py	KEEP	Architecture proof retained where its proposition and mechanism remain correctly scoped.
+tests/architecture/test_identifier_taxonomy.py	KEEP	Architecture proof retained where its proposition and mechanism remain correctly scoped.
+tests/architecture/test_object_lifecycle.py	KEEP	Architecture proof retained where its proposition and mechanism remain correctly scoped.
+tests/architecture/test_proof_control.py	REWRITE	Rewrite proof-system tests for recursive physical coverage and bounded proposition-binding claims.
+tests/architecture/test_public_seam_law.py	REWRITE	Rewrite proof to include ImportFrom bypass and permanent seam enforcement cases.
+tests/architecture/test_registry_schema.py	KEEP	Architecture proof retained where its proposition and mechanism remain correctly scoped.
+tests/bootstrap/test_legacy_exclusion.py	REWRITE	Rewrite reset/bootstrap-only proof into permanent installed-package/exclusion proof for the pristine kernel.
+tests/bootstrap/test_minimal_imports.py	REWRITE	Rewrite reset/bootstrap-only proof into permanent installed-package/exclusion proof for the pristine kernel.
+tests/gate0/test_gate0_control.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tests/gate0/test_gate0_hook_policy.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tests/governance/test_governance_admission.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tests/governance/test_runtime_identity_receipts.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/bootstrap_preflight.sh	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/check_dependencies.py	KEEP	Generic architecture validation/promotion entry point.
+tools/check_public_seams.py	KEEP	Generic architecture validation/promotion entry point.
+tools/gate0_probe.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/gate0_runtime_evidence.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/run_promotion_gate.py	KEEP	Generic architecture validation/promotion entry point.
+tools/runtime_identity.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/validate_architecture.py	KEEP	Generic architecture validation/promotion entry point.
+tools/validate_gate0.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+tools/validate_governance.py	DO_NOT_CARRY_FORWARD	Raw Signal/programme-specific authority, orchestration, admission, test or control surface; outside behaviour-neutral kernel jurisdiction.
+uv.lock	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/README.md	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/SHA256SUMS	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/editables-0.6-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/hatchling-1.29.0-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/iniconfig-2.3.0-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/packaging-26.2-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/pathspec-1.1.1-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/pluggy-1.6.0-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/pygments-2.20.0-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/pytest-9.0.3-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/ruff-0.15.11-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl	KEEP	Hermetic/minimal development and packaging support.
+vendor/wheels/trove_classifiers-2026.4.28.13-py3-none-any.whl	KEEP	Hermetic/minimal development and packaging support.
+docs/evidence/akr1/AKR1_END_STATE_INVENTORY.tsv	DO_NOT_CARRY_FORWARD	AKR-1 working evidence; preserved in Git history but not part of the target pristine kernel.
+docs/evidence/akr1/AKR1_RATIONALE.md	DO_NOT_CARRY_FORWARD	AKR-1 working evidence; preserved in Git history but not part of the target pristine kernel.
