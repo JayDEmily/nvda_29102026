@@ -3,7 +3,7 @@ kernels:
   - id: K01
     name: state_and_transaction
     status: placeholder
-    description: Historical identity for domain-neutral state and transaction mechanisms. No mechanism is implemented by this reset.
+    description: Reserved technical-kernel identity for domain-neutral state and transaction mechanisms. No runtime mechanism implementation is currently admitted.
     predecessors: [M13]
     successors: []
 retired_ids: []

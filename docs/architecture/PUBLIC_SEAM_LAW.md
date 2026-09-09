@@ -1,17 +1,39 @@
 # Public Seam Law
 
+## Normative proposition
+
+- **AK-SEAM-001 — Public seam only.** Every cross-owner Python-visible dependency must enter through the target owner's declared public seam and a lawful declared dependency edge. Naming conventions alone are not enforcement.
+
+## Seam contract
+
+A public seam is an owned boundary, not merely a convenient import path. Accepted implementation authority must make the relevant boundary facts explicit, including:
+
+- upstream/owning authority;
+- intended consumers or consumer class;
+- interface/carrier shape;
+- required invariants;
+- state or side effects visible across the seam;
+- lawful variants and prohibited forms;
+- traceability to the authority that supplied the meaning.
+
+The seam transports or exposes owned meaning. It does not become the owner of that meaning.
+
+## Python import enforcement
+
 Python does not enforce private package boundaries. Leading underscores, `__all__` and naming conventions communicate intent but do not prevent imports.
 
-The repository therefore treats each active owner’s registry-declared `public_seam` as its only lawful cross-owner import target.
+Repository-owned static analysis must therefore reject, for registered Python-visible owners:
 
-The static checker rejects:
+1. imports of another owner's undeclared submodule or member path;
+2. relative imports that cross an owner root;
+3. undeclared owner edges;
+4. supported direct or aliased dynamic-import forms that would bypass owner/seam validation;
+5. public-seam exceptions that are absent, malformed or broader than their explicit declaration.
 
-1. an import of another owner’s undeclared submodule;
-2. a relative import that crosses an owner root;
-3. an undeclared owner edge;
-4. direct or import-aliased `importlib.import_module` and `__import__`/`builtins.__import__` call forms inside registered runtime owners;
-5. an exception not explicitly listed in dependency rules.
+All ordinary Python import forms that resolve to a registered owner must be judged against the same owner/dependency/seam law. The law is not weakened when the current checker has an implementation gap; the gap must be repaired before the affected proposition is claimed as proved.
 
-The checker does not infer semantic ownership from directory names. Owners must be registered before cross-owner validation can recognise them. The AST check covers the named direct and import-alias forms; it does not claim to prevent arbitrary metaprogramming, `eval`/`exec`, runtime monkey-patching or every possible dynamic-execution technique.
+The checker is not required to claim prevention of arbitrary metaprogramming, `eval`/`exec`, runtime monkey-patching or every possible dynamic-execution technique unless such coverage is separately admitted and proved.
 
-Typed public seams are a project requirement. Static type annotations describe the contract; Python itself does not guarantee runtime type enforcement.
+## Typed boundary
+
+Python-visible public seams are typed project contracts. A pinned static type checker is required for the Python-visible type proposition; Python annotations and Ruff alone do not establish static compatibility, and static typing does not establish semantic correctness or runtime validation.

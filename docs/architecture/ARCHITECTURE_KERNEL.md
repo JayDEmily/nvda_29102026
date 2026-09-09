@@ -2,77 +2,61 @@
 
 ## Status
 
-Accepted authority for the behaviour-neutral architecture kernel created by the 2026-08-04 reset brief.
+Steady-state normative authority for the behaviour-neutral NVDA architecture kernel.
+
+The 2026-08-04 reset brief and the 2026-09-02 conformance ADR are historical evidence explaining how this kernel was reached. They are not the steady-state owner of the laws below.
 
 ## Purpose
 
-This repository provides the structural laws and proof machinery required to admit future capabilities without retaining or implying any former NVDA business behaviour.
+This repository provides the structural laws and proof machinery required to admit future capabilities without pre-selecting or implying NVIDIA business behaviour.
 
-The kernel owns:
+The kernel owns architecture grammar. Accepted implementation authority owns future domain meaning.
 
-- architectural-object taxonomy;
-- declarative object registration;
-- dependency and public-seam validation;
-- composition eligibility;
-- object lifecycle and immutable identifier history;
-- architecture-only test admission and promotion;
-- generic vocabulary governance;
-- package and bootstrap proof.
+The kernel does not own trading, market-data, calendar, risk, capital, execution, portfolio or replay behaviour; it does not own a fixed runtime-module catalogue or a fixed architecture-surface catalogue; and it does not treat registration, code, tests or historical lineage as proof of semantic admission.
 
-The kernel does not own:
+## Authority map
 
-- trading, market-data, calendar, risk, capital, execution, portfolio or replay behaviour;
-- a pre-selected runtime-module catalogue;
-- a pre-selected architecture-surface catalogue;
-- DMPV3 schema or processing behaviour;
-- state or transaction implementation;
-- proof of any future domain semantics.
+Each detailed architectural rule has one semantic owner:
 
-## Normative propositions
+| Concern | Owning authority |
+|---|---|
+| category meanings, identifier grammar and lifecycle statuses | `ARCHITECTURAL_OBJECT_TAXONOMY.md` |
+| semantic ownership, component forms, writer/reader and persistence-role separation | `OWNERSHIP_AND_COMPONENT_LAW.md` |
+| runtime dependency direction and dependency-plane separation | `DEPENDENCY_LAWS.md` |
+| Python-visible public boundaries and seam contracts | `PUBLIC_SEAM_LAW.md` |
+| proof admission, proof scope and promotion | `TEST_AND_PROMOTION_KERNEL.md` |
+| admission, replacement, split, merger, deprecation and retirement | `EXTENSION_AND_RETIREMENT_RULES.md` |
+| external corroboration and historical challenge lineage | `EXTERNAL_LINEAGE_INDEX.md` |
 
-- **AK-TAX-001 — Category separation.** Runtime modules (`M`), protocols (`P`), governance planes (`G`), application shells (`A`), technical kernels (`K`) and architecture surfaces (`S`) are distinct object categories. Registration in one category cannot create authority in another.
-- **AK-REG-001 — Declarative registry authority.** Each object category is governed by one schema-valid YAML registry. Registry rows describe admitted identity and status only; they are not service locators and do not prove implementation.
-- **AK-REG-002 — Truthful initial state.** The runtime module and architecture surface registries are empty. `P01`, `G01`, `G02`, `A00` and `K01` are the only initial non-module identities and carry non-active statuses.
-- **AK-ID-001 — Unbounded permanent identifiers.** Object identifiers use a category prefix and a numeric suffix padded to at least two digits. Allocation continues beyond `99`; retired identifiers are never reused.
-- **AK-DEP-001 — Declared dependencies.** Every cross-owner runtime dependency must be declared before use. Active runtime module dependencies must be acyclic.
-- **AK-DEP-002 — Category direction.** Runtime code must not depend on governance planes or surfaces. Protocols and kernels must not depend on application shells or runtime modules. Application shells compose but do not own domain decisions.
-- **AK-SEAM-001 — Public seam only.** Cross-owner imports must enter through the target owner’s declared public seam. Python naming conventions are documentation only; repository-owned static validation provides enforcement.
-- **AK-COMP-001 — Composition eligibility.** Only objects with status `active` and a declared implementation package/public seam may enter runtime composition. `placeholder`, `bootstrap`, `framework`, `deprecated` and `retired` rows are non-composable.
-- **AK-LIFE-001 — Lifecycle identity integrity.** Retired identities cannot be reused. Predecessor/successor identifiers must be syntactically valid, self-lineage is prohibited, and relationships are reciprocal when both objects are present in the current registry. Historical lineage may point to objects preserved only in Git history; semantic migration, compatibility and consumer-disposition proof remain admission-specific obligations.
-- **AK-EXT-001 — Open-ended identity extension.** Identifier parsing and allocation impose no fixed object-count ceiling or central identifier enumeration; allocation continues beyond two digits. Full object admission remains governed by `EXTENSION_AND_RETIREMENT_RULES.md` and is proved only by the category-specific admission surfaces actually exercised.
-- **AK-PROOF-001 — Exact proof admission.** Every active architecture test has one exact path, tier, lifecycle, normative proposition set, proof block and promotion-set disposition. Folder placement does not admit proof.
-- **AK-PROOF-002 — One aggregate gate.** The `architecture_kernel` promotion set is registry-derived and executes every current blocking proof block. A green result proves only the named structural propositions.
-- **AK-PKG-001 — Minimal installed package.** The built distribution contains the architecture registry and composition skeleton only; it imports outside the repository without path injection.
-- **AK-PKG-002 — Legacy exclusion.** Former runtime packages, behavioural tests, entry points and production dependencies are absent from the active distribution and proof population.
+This document owns only the cross-cutting registry, composition and packaging propositions below. It does not restate the detailed laws owned by those documents.
 
-## Initial registry state
+## Cross-cutting propositions
 
-```yaml
-modules: []
-protocols:
-  - id: P01
-    name: dmp_v3
-    status: placeholder
-governance_planes:
-  - id: G01
-    name: proof_and_promotion
-    status: framework
-  - id: G02
-    name: vocabulary
-    status: framework
-application_shells:
-  - id: A00
-    name: application_shell
-    status: bootstrap
-kernels:
-  - id: K01
-    name: state_and_transaction
-    status: placeholder
-surfaces: []
-```
+- **AK-REG-001 — Declarative registry authority.** Each architectural-object category is governed by one schema-valid registry. Registry rows declare current architectural identity and status; they are not service locators and do not create semantic authority or implementation truth.
+- **AK-REG-002 — Registry-state truth.** The current registries must describe the current admitted architecture truthfully. Empty bootstrap state is historical starting evidence, not a permanent steady-state invariant. Future admitted objects are added through the category-appropriate lifecycle without changing this law.
+- **AK-COMP-001 — Composition eligibility.** Runtime composition may select only objects whose category, status, implementation form and public boundary make them lawfully composable. Registration alone never makes an object composable.
+- **AK-PKG-001 — Truthful installed package.** The built distribution contains only source that belongs to the currently admitted kernel and admitted implementation state, and it must import outside the repository without source-tree path injection.
+- **AK-PKG-002 — Unadmitted-capability exclusion.** Product/runtime packages, behavioural proof, entry points and production dependencies that lack current admission must not enter the active distribution or blocking proof population merely because they exist in history.
 
-No row above is evidence of a completed implementation.
+## Current-state location
+
+Current object identities and statuses are read from `config/architecture/*.yaml`; proof state is read from `config/proof/*.yaml`; current vocabulary state is read from `config/vocabulary/`.
+
+No duplicate current-state table in this document overrides those registries.
+
+## Historical challenge law
+
+Historical architecture may challenge a current design decision when it documents a structural problem that can still occur. It does not reactivate former `M00–M15` ownership, the former eighteen-surface catalogue, product behaviour or historical implementation status.
+
+The generic mature-architecture lessons retained by the current authority are expressed in the owning laws above, including:
+
+- surface is not module and module is not package;
+- carrier/protocol is not semantic owner;
+- shared technical mechanism is not consumer-domain owner;
+- semantic owner, authorised writer, reader, coordinator and reviewer are distinct roles;
+- runtime dependency, transaction participation, governance/proof dependency and build/test dependency are distinct planes;
+- code/test presence and structural status do not establish implementation or semantic truth.
 
 ## Validation boundary
 
-Schema, import-graph, public-seam, proof-admission, packaging and test results establish only the propositions they exercise. They cannot establish a future module’s semantic responsibility, adequacy, business correctness or operational fitness.
+Schema, registry, import-graph, public-seam, proof-admission, packaging and test results establish only the propositions they actually exercise. They cannot establish a future object's semantic responsibility, adequacy, business correctness or operational fitness.

@@ -2,7 +2,7 @@
 
 Review date: 2026-08-04.
 
-The entries below distinguish direct repository authority, external corroboration and project-specific synthesis. Vendor sources inform the kernel only through the accepted reset brief and these recorded adaptations.
+The entries below distinguish external corroboration from project-specific architecture. External sources do not govern current repository semantics; current kernel law is owned by the accepted architecture documents. Historical project architecture may be used as challenge evidence without becoming current authority.
 
 | Kernel feature | Lineage classification | Official source lineage | Project-specific adaptation |
 |---|---|---|---|
