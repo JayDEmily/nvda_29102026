@@ -7,7 +7,7 @@
 
 ## Runtime-module admission
 
-A new runtime semantic owner is admitted only after current authority establishes the boundary. The architecture sequence is:
+For brief-derived implementation, this sequence begins only after a valid implementation-authority ingress under `IMPLEMENTATION_AUTHORITY_INGRESS.md`. A new runtime semantic owner is admitted only after current authority establishes the boundary. The architecture sequence is:
 
 1. allocate the next unused `M` identifier;
 2. define one bounded semantic responsibility and explicit exclusions;

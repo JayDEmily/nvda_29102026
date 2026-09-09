@@ -8,6 +8,10 @@ proof_blocks:
     tier: Tier A
     lifecycle: current_blocking
     family_ids: [dependency_direction, public_seam_law]
+  - id: implementation_ingress
+    tier: Tier A
+    lifecycle: current_blocking
+    family_ids: [implementation_authority_ingress]
   - id: proof_control
     tier: Tier A
     lifecycle: current_blocking

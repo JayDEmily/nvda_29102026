@@ -26,6 +26,7 @@ Each detailed architectural rule has one semantic owner:
 | Python-visible public boundaries and seam contracts | `PUBLIC_SEAM_LAW.md` |
 | proof admission, proof scope and promotion | `TEST_AND_PROMOTION_KERNEL.md` |
 | admission, replacement, split, merger, deprecation and retirement | `EXTENSION_AND_RETIREMENT_RULES.md` |
+| exact implementation-ready-brief binding and implementation-authority ingress | `IMPLEMENTATION_AUTHORITY_INGRESS.md` |
 | external corroboration and historical challenge lineage | `EXTERNAL_LINEAGE_INDEX.md` |
 
 This document owns only the cross-cutting registry, composition and packaging propositions below. It does not restate the detailed laws owned by those documents.

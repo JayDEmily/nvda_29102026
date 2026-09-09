@@ -10,8 +10,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def test_current_proof_population_is_exact_and_registry_derived() -> None:
     state = load_and_validate_proof_state(ROOT)
-    assert len(state.families) == 8
-    assert len(state.paths_for_set("architecture_kernel")) == 8
+    assert len(state.families) == 9
+    assert len(state.paths_for_set("architecture_kernel")) == 9
     assert {family["tier"] for family in state.families} == {"Tier A"}
     assert {family["lifecycle"] for family in state.families} == {"current_blocking"}
 

@@ -35,6 +35,13 @@ test_families:
     proposition_ids: [AK-SEAM-001]
     proof_block_id: architecture_boundaries
     promotion_sets: [architecture_kernel]
+  - id: implementation_authority_ingress
+    path: tests/architecture/test_implementation_authority_ingress.py
+    tier: Tier A
+    lifecycle: current_blocking
+    proposition_ids: [AK-INGRESS-001, AK-INGRESS-002, AK-INGRESS-003, AK-INGRESS-004, AK-INGRESS-005]
+    proof_block_id: implementation_ingress
+    promotion_sets: [architecture_kernel]
   - id: proof_control
     path: tests/architecture/test_proof_control.py
     tier: Tier A

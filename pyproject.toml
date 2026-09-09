@@ -26,6 +26,7 @@ nvda-validate-architecture = "nvda_desk.architecture.cli:validate_main"
 nvda-check-dependencies = "nvda_desk.architecture.cli:dependencies_main"
 nvda-check-public-seams = "nvda_desk.architecture.cli:public_seams_main"
 nvda-promotion-gate = "nvda_desk.architecture.cli:promotion_main"
+nvda-validate-implementation-authority = "nvda_desk.architecture.cli:implementation_authority_main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/nvda_desk"]

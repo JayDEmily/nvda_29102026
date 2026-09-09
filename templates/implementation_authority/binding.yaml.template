@@ -1,0 +1,8 @@
+schema_version: "1.0"
+brief_sha256: {{brief_sha256}}
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: {{acceptance_ref}}
+targets:
+  - object_id: {{object_id}}
+    action: {{create_or_modify}}

@@ -6,6 +6,10 @@ import argparse
 from pathlib import Path
 
 from .dependencies import analyse_repository
+from .implementation_authority import (
+    ImplementationAuthorityError,
+    validate_implementation_authority,
+)
 from .promotion import run_promotion_set
 from .validation import validate_architecture
 
@@ -66,3 +70,22 @@ def promotion_main() -> int:
         args.set,
         check_only=args.check_only,
     )
+
+
+def implementation_authority_main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repository-root")
+    parser.add_argument("--binding", required=True)
+    parser.add_argument("--brief", required=True)
+    args = parser.parse_args()
+    root = _repository_root(args.repository_root)
+    try:
+        binding = validate_implementation_authority(
+            root, Path(args.binding).resolve(), Path(args.brief).resolve()
+        )
+    except ImplementationAuthorityError as exc:
+        print(f"FAIL: {exc}")
+        return 2
+    print(f"PASS: implementation authority brief_sha256={binding.brief_sha256}")
+    print("targets: " + ", ".join(f"{item.action}:{item.object_id}" for item in binding.targets))
+    return 0
