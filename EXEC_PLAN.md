@@ -903,6 +903,10 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 - Ruff, offline lock verification, `git diff --check` and `git fsck --full` completed without reported failure;
 - exact AKR-5 evidence is recorded in `docs/evidence/akr5/AKR5_STRUCTURAL_READINESS.md`.
 
-### Next action
+### AKR-6 — IN PROGRESS
 
-Proceed to AKR-6 only from the final clean AKR-5 state. Under current explicit human authority, AKR-6 uses the exact externally accepted implementation brief bound on the AKR-6 work branch rather than a synthetic specimen. The kernel treats those bytes as opaque implementation authority and must leave the production module and surface registries behaviour-neutral unless separately authorised. During AKR-6, the inherited vocabulary-governance mechanism (`config/vocabulary/vocabulary.yaml`, its dedicated schema/validation/test surface and the `G02` active registration) is `DO_NOT_CARRY_FORWARD`; `G02` remains reserved as a retired identifier so it cannot be reused. Python naming follows `AK-NAME-001`: architecture IDs remain registry-global, while ordinary Python symbols are scoped by their Python namespace/public interface rather than a repository-global synonym registry.
+AKR-6 is executing from the final clean AKR-5 state using the exact externally accepted implementation brief bound on the AKR-6 work branch. The brief remains opaque external implementation authority and the production module/surface registries remain behaviour-neutral.
+
+The first genuine architecture-object projection attempt is recorded in `docs/evidence/akr6/AKR6_ARCHITECTURE_PROJECTION_ATTEMPT.md`. The attempt stopped at the first unmet invariant: the exact brief requires a `G02` governance prerequisite, while current kernel law records `G02` as retired and permanently reserved. Repository-native target-state checks accept the brief-bound `create:M16` / `modify:A00` pair mechanically, reject `create:G02` as retired-identity reuse, and reject `modify:G02` because no current `G02` object exists. No dependent AKR-6 validation stage has been claimed as reached.
+
+Current authority still requires the inherited vocabulary-governance mechanism to remain `DO_NOT_CARRY_FORWARD`; `G02` remains reserved as a retired identifier. Python naming follows `AK-NAME-001`: architecture IDs remain registry-global, while ordinary Python symbols are scoped by their Python namespace/public interface rather than a repository-global synonym registry.
