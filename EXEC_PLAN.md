@@ -571,7 +571,7 @@ Mechanical proposition-reference checks may establish that a proof artefact addr
 
 AKR-5 passes only when the architecture can mechanically reject the representative invalid future states and accept the representative valid states it claims to support, including a lawful first active module, complete physical-test accounting, and the required Python-visible seam/type checks.
 
-## 12. AKR-6 — Rehearse exact implementation-authority ingress and gate-owned candidate resolution without adding business code
+## 12. AKR-6 — COMPLETE — Rehearse exact implementation-authority ingress and gate-owned candidate resolution without adding business code
 
 ### Purpose
 
@@ -1098,12 +1098,38 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 - Ruff, offline lock verification, `git diff --check` and `git fsck --full` completed without reported failure;
 - exact AKR-5 evidence is recorded in `docs/evidence/akr5/AKR5_STRUCTURAL_READINESS.md`.
 
-### AKR-6 — RECOVERY IN PROGRESS
+### AKR-6 — COMPLETE (reconstructed)
 
-The durable recovery point is `38fda5a22ffeade00ac9976ec87d979333a00390`, supplied by the preserved corrected-projection checkpoint whose archive SHA-256 is `bc5f9f5eb573671ea57597bc822bb395e869c529be1d1eecf4c97f162cf949e3`. The bound external brief remains exact SHA-256 `938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342`.
+The durable recovery point was `38fda5a22ffeade00ac9976ec87d979333a00390`, supplied by the preserved corrected-projection checkpoint whose archive SHA-256 is `bc5f9f5eb573671ea57597bc822bb395e869c529be1d1eecf4c97f162cf949e3`. The bound external brief remained exact and unchanged at SHA-256 `938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342`.
 
-The checkpoint already preserves the authorised `DO_NOT_CARRY_FORWARD` disposition of the inherited vocabulary-governance mechanism/`G02` allocation and the law that literal identifiers in an external brief do not automatically become current targets. Its later conclusion `create:M16, modify:A00` and package/public-seam naming blocker are not carried forward as accepted AKR-6 results.
+The reconstruction was planned at `b116445bc0145daa4b8952400809cb029a2de1de` and then executed as bounded semantic units:
 
-Current explicit user authority requires AKR-6 to be reconstructed using the six recovery leaves in Section 12. The critical corrections are: post-reset allocation is based on current post-reset state rather than the historical product catalogue; legacy lineage strings must not alias newly reused post-reset identifiers; a minimal durable allocation history starts empty; create callers supply category plus a distinguishing responsibility name rather than a numeric object ID; the gate owns deterministic candidate-number resolution; candidate resolution is not durable allocation; the active binding template and executable contract must agree; multiple new objects in the same category must be representable; and AKR-6 stops before package/public-seam naming, brief-derived code, behavioural proof admission or runtime composition.
+- AKR-6R1 — post-reset identity/lineage boundary: `d6f23bb58b1aaf1eee8ab6d9a2ce4f4901d4ffdf`;
+- AKR-6R2 — minimal allocation history and non-mutating candidate resolver: `66422b0329460e085637bf16859f63956a4a3f60`;
+- AKR-6R3 — create category/name contract and gate-owned numeric candidate resolution: `c6ab75bbf9412ad7a2c758d44254a568942274a6`;
+- AKR-6R4 — focused proof of the repaired ingress mechanics: `165d5a40ec9a8582c2dbaa5f3a57897226e4d1e4`;
+- AKR-6R4 human-trace correction — repository command output aligned with non-durable candidate semantics: `04ea962ef92edfeff16dca37a981946a541884a2`;
+- AKR-6R5 — exact-brief semantic/executable trace: `ff028950813e3e398a243a2b1252ecf79caa277e`.
 
-AKR-7 is blocked until AKR-6R1 through AKR-6R6 are completed, human-traced, committed cleanly and preserved in a durable full-Git checkpoint.
+The reconstructed path no longer carries the checkpoint's `create:M16, modify:A00` result or package/public-seam naming blocker as current AKR-6 evidence. That stale projection-attempt file is `DO_NOT_CARRY_FORWARD` from the closed active tree and remains recoverable through ordinary Git history. The current non-normative trace is `docs/evidence/akr6/AKR6_HUMAN_TRACE.md`.
+
+The exact brief establishes, for this bounded rehearsal, one coherent new runtime semantic owner named `raw_signal_occurrence_truth`, A00 as the existing sole initial caller/consumer/composer mapping, and P01/K01 as non-active non-consumers. Current higher authority prevents literal historical `M16`/`G02` strings from forcing current post-reset allocation. The minimal projection intent therefore supplies `create {category: M, name: raw_signal_occurrence_truth}` plus `modify:A00`; it does not supply a numbered create target.
+
+Repository-native execution resolves that create intent non-durably from current state and produces:
+
+```text
+PASS: implementation authority brief_sha256=938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+candidate_targets: create:raw_signal_occurrence_truth->M00, modify:A00
+```
+
+Candidate `M00` is not a durable implementation allocation. The rehearsal writes no production object, registry row, package, public seam or allocation record. At close the committed production state remains:
+
+```yaml
+modules: []
+surfaces: []
+implementation_allocations: []
+```
+
+Pre-close proof on the reconstructed R1-R5 state established structural validation with four architecture objects, zero active runtime modules, zero implementation allocations and zero dependency/public-seam violations; mypy reported no issues in 13 source files; the complete architecture/bootstrap proof set passed `74` tests; and the registry-derived `architecture_kernel` promotion set passed the same `74` tests across `11` admitted paths. The exact external brief command produced the candidate result above. These results prove the bounded structural/ingress propositions they exercise; they do not prove downstream domain implementation.
+
+AKR-6R6 closes by carrying the stale projection evidence out of the active tree, reconciling this progress record with the executable path, re-running the required proof on the committed closeout state, and creating a durable full-Git checkpoint before AKR-7 begins. AKR-7 remains blocked until that checkpoint has been created and verified.
