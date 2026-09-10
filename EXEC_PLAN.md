@@ -824,55 +824,96 @@ No `COMPLETE` claim is permitted until the code path, schema, template, normativ
 
 ## 13. AKR-7 — Final pristine-kernel proof
 
-AKR-7 must not begin until AKR-6R6 has closed AKR-6 from executable proof and a durable full-Git checkpoint of that closed state has been created.
+AKR-7 is the terminal proof gate for this ExecPlan. It is not another architecture-design gate and it does not implement the accepted rehearsal brief or the future brief-to-code continuation.
 
-### Required proof classes
+AKR-7 may begin only after AKR-6R6 has closed AKR-6 from executable proof and a durable full-Git checkpoint of that closed state has been created and verified. That prerequisite is now established by the external checkpoint `NVDA_AKR6_HUMAN_REVIEW_CHECKPOINT_20260910.tar.gz`, SHA-256 `631c52a9c5d31418789fb203000f4f60e612b5bdb85690128a0be00027b20f5d`, whose verified bundle records complete history and the closed AKR-6 branch at `85779543684b334515a0b7bed6e1570aa09fbaa0`.
 
-#### Environment
+Work AKR-7 one semantic acceptance unit at a time. A downstream leaf must not proceed past an unmet invariant in an earlier leaf. Tests, validator output, packaging output and clean Git state are evidence for the propositions they actually exercise; none substitutes for the required human semantic review.
 
-Reconstruct the locked development environment from the repository's admitted offline dependency surface.
+### AKR-7.1 — Reconstruct the locked environment from admitted offline material
 
-#### Static architecture
+Establish that the repository can reconstruct the development/proof environment from the dependency authority it actually carries rather than from a pre-existing sandbox environment.
 
-Run the architecture schema/registry validator.
+Before creating the fresh environment, inspect `pyproject.toml`, `uv.lock`, `.python-version`, `vendor/wheels/README.md`, `vendor/wheels/SHA256SUMS` and the repository-native entry points that depend on them. Do not silently use network resolution or an existing `.venv` as proof of reconstruction.
 
-#### Dependency and seam proof
+Reconstruct a fresh environment using the repository's admitted offline dependency surface and establish at minimum:
 
-Run declared dependency and public-seam validation.
+- the required Python interpreter is the one declared by current packaging authority;
+- the lock resolves without network dependency;
+- all packages required by the later AKR-7 proof classes are supplied by the admitted dependency surface;
+- the fresh environment can invoke the repository-native validation, type, test, promotion and build mechanisms needed downstream.
 
-#### Type proof
+If a required build/proof dependency is absent from the admitted offline surface, stop at that first missing dependency. Do not fetch or add it merely to make AKR-7 pass without separate authority.
 
-Run the admitted static type checker.
+Acceptance: a newly reconstructed environment, not inherited sandbox state, is sufficient to execute the remaining AKR-7 proof path.
 
-#### Architecture tests
+### AKR-7.2 — Trace static architecture enforcement and current structural truth
 
-Run the complete admitted architecture/bootstrap blocking set.
+Using the fresh AKR-7.1 environment, run the architecture schema/registry validator, declared dependency validation, public-seam validation and admitted static type checker.
 
-#### Promotion
+Then human-read the active architecture law, registries, schemas and the executable enforcement path together. Trace what each validator actually reads, what it proves, and where its proof boundary stops. Do not infer enforcement from command names or green output.
 
-Run the registry-derived `architecture_kernel` promotion set.
+The human trace must at minimum reconcile:
 
-#### Packaging
+- current object registries and lifecycle state;
+- dependency-plane and public-seam enforcement;
+- active-module/package/seam readiness rules;
+- typed public-seam checking;
+- implementation-authority candidate resolution versus durable allocation;
+- the current empty implementation-allocation ledger and the schema/loader that would govern a future durable allocation.
 
-Build the distribution and install it outside the repository root.
+Reproduce and classify the known observation that `implementation_allocations.implemented_on` has previously accepted an impossible calendar date when it matches the textual `YYYY-MM-DD` shape. Do not silently fix or dismiss it. Determine from current authority whether calendar-validity is required for the final kernel proposition. If it is required, stop and repair that defect as its own semantic acceptance unit before continuing. If current authority does not require that stronger validation, record it explicitly as an unresolved/deferred limitation in AKR-7 closeout.
 
-Verify that the installed package imports without repository path injection.
+Acceptance: the active structural state and each claimed mechanical enforcement proposition are understood from code/configuration as well as validator output, with the first unresolved contradiction or defect surfaced rather than bypassed.
 
-#### Exclusion
+### AKR-7.3 — Execute the complete admitted architecture/bootstrap proof and promotion set
 
-Prove the built artefact contains no:
+Run the complete current architecture/bootstrap blocking proof population and then the registry-derived `architecture_kernel` promotion set from a clean committed state where required by the promotion mechanism.
 
-- historical production modules;
+Before relying on the result, inspect `config/proof/test_families.yaml`, `config/proof/proof_blocks.yaml`, `config/proof/promotion_sets.yaml` and the corresponding proof/promotion loader and runner code. Establish that physical test discovery, admitted families and promotion resolution match the written proof jurisdiction.
+
+Do not add, remove, redirect or weaken a test merely to obtain green. A failure stops dependent downstream proof until its semantic cause is understood and, if authorised, repaired as its own unit.
+
+Acceptance: the complete admitted proof population and the registry-derived aggregate set execute the intended current proof jurisdiction, and their result is semantically consistent with the proposition each set claims to establish.
+
+### AKR-7.4 — Prove truthful packaging and isolated installation
+
+Build the distribution from the current committed repository using its declared packaging authority and admitted dependency surface. Do not rely on source-tree importability as package proof.
+
+Inspect every produced distribution artefact before installation. Establish that wheel/sdist contents correspond to current packaging declarations and do not acquire unadmitted product/runtime material merely because such material remains in Git history.
+
+Install the built distribution into an environment outside the repository root and prove that the installed `nvda_desk` package imports and that the installed architecture command surfaces required by current packaging authority can be resolved without repository `PYTHONPATH`, working-directory leakage or source-tree path injection.
+
+Record the exact distribution filenames, hashes and inspected contents used for the isolated-install proof.
+
+Acceptance: the built artefact is a truthful installable representation of the current kernel and functions as an installed package independently of the source checkout.
+
+### AKR-7.5 — Audit exclusion and behaviour-neutrality from the active tree and built artefact
+
+Establish the exclusion propositions by reading and searching the actual active tree and the built artefact, not merely by checking that known historical filenames are absent.
+
+The audit must determine whether the active repository or distributable contains any active:
+
+- historical production module or historical product ownership allocation;
 - Raw Signal implementation;
-- Raw Signal semantic authority;
-- Raw Signal orchestration;
-- behavioural test population from removed programmes;
-- product console entry point;
-- domain production dependency.
+- Raw Signal semantic authority or programme state;
+- Raw Signal worker/reviewer/orchestration machinery;
+- behavioural test population belonging only to removed programmes;
+- product console/operational entry point;
+- domain production dependency;
+- duplicated upstream semantic-to-brief methodology.
 
-#### Repository integrity
+Also establish positively that current runtime-module, architecture-surface and implementation-allocation state remains behaviour-neutral unless current authority says otherwise.
 
-Run:
+Historical evidence that remains intentionally present must be classified by its actual current role. Do not call historical evidence an active programme merely because domain terms occur in a historical/audit document; equally, do not exempt an active executable or governing surface merely because it sits under a historically named path.
+
+Acceptance: the exclusion and behaviour-neutrality claims are established from semantic inspection of current active surfaces plus the actual built artefact, with historical-only evidence distinguished from active authority/runtime content.
+
+### AKR-7.6 — Reconcile the final assertions, repository integrity and terminal outcome
+
+Re-read the results of AKR-7.1 through AKR-7.5 together with the current normative architecture before making a terminal claim. Establish each final-state assertion below individually from the strongest available evidence and identify any assertion that remains unproved.
+
+Run the repository-integrity checks required by this ExecPlan:
 
 ```text
 git diff --check
@@ -880,7 +921,13 @@ git fsck --full
 git status
 ```
 
-and any additional proof genuinely required by the changed surfaces.
+Run any additional proof genuinely required by changes made during AKR-7, but do not manufacture new acceptance criteria merely to make closeout look comprehensive.
+
+If AKR-7 required a repair, preserve the defect, authority, change and re-proof in the current ExecPlan progress record rather than hiding it inside a final aggregate result.
+
+Before returning a terminal outcome, human-read the retained active control surfaces, the final registry state, the final distribution inventory and the unresolved/deferred list. Create and verify a durable full-Git closeout checkpoint so the terminal state is recoverable outside the volatile worker sandbox.
+
+Acceptance: every final assertion is either established or explicitly unresolved, repository integrity is reported from the final committed state, the durable checkpoint is verified, and exactly one terminal outcome from Section 18 is justified by the evidence.
 
 ### Final state assertions
 
@@ -1132,4 +1179,8 @@ implementation_allocations: []
 
 Pre-close proof on the reconstructed R1-R5 state established structural validation with four architecture objects, zero active runtime modules, zero implementation allocations and zero dependency/public-seam violations; mypy reported no issues in 13 source files; the complete architecture/bootstrap proof set passed `74` tests; and the registry-derived `architecture_kernel` promotion set passed the same `74` tests across `11` admitted paths. The exact external brief command produced the candidate result above. These results prove the bounded structural/ingress propositions they exercise; they do not prove downstream domain implementation.
 
-AKR-6R6 closes by carrying the stale projection evidence out of the active tree, reconciling this progress record with the executable path, re-running the required proof on the committed closeout state, and creating a durable full-Git checkpoint before AKR-7 begins. AKR-7 remains blocked until that checkpoint has been created and verified.
+AKR-6R6 closed at `85779543684b334515a0b7bed6e1570aa09fbaa0` after carrying the stale projection evidence out of the active tree, reconciling this progress record with the executable path and re-running the required proof on the committed closeout state. The external full-Git checkpoint `NVDA_AKR6_HUMAN_REVIEW_CHECKPOINT_20260910.tar.gz`, SHA-256 `631c52a9c5d31418789fb203000f4f60e612b5bdb85690128a0be00027b20f5d`, was subsequently verified to contain complete Git history and that exact closed branch/HEAD. The AKR-7 entry prerequisite is therefore established.
+
+### AKR-7 — READY FOR LEAF EXECUTION
+
+AKR-7 has been decomposed into six semantic acceptance units in Section 13. No AKR-7 proof leaf is recorded complete at this point. Execution begins with AKR-7.1 and must stop at the first unmet invariant before dependent downstream leaves proceed.
