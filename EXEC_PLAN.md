@@ -571,65 +571,260 @@ Mechanical proposition-reference checks may establish that a proof artefact addr
 
 AKR-5 passes only when the architecture can mechanically reject the representative invalid future states and accept the representative valid states it claims to support, including a lawful first active module, complete physical-test accounting, and the required Python-visible seam/type checks.
 
-## 12. AKR-6 — Rehearse brief-to-implementation ingress without adding business code
+## 12. AKR-6 — Rehearse exact implementation-authority ingress and gate-owned candidate resolution without adding business code
 
 ### Purpose
 
-Prove that the pristine architecture is genuinely ready for the next system.
+Prove that one exact externally accepted implementation-ready brief can cross the architecture-kernel boundary, receive only the bounded architectural judgement genuinely required from a worker, and then enter deterministic mechanical validation without importing the upstream methodology, inventing domain meaning, inheriting historical allocation numbers or admitting product behaviour.
 
-### Method
+AKR-6 is an ingress rehearsal, not implementation. It ends after a bounded architecture projection has been mechanically validated and any new-object identifiers have been resolved as candidates. It does **not** choose concrete package/public-seam import paths, derive behavioural proof from the brief, write brief-derived code, durably allocate an implementation identity, compose runtime objects or admit product behaviour.
 
-Use the exact externally accepted implementation-ready brief bound for the AKR-6 rehearsal under current human authority. The kernel treats those bytes as opaque implementation authority and does not import or depend on the process that produced them. The rehearsal remains non-production: it must not leave brief-derived business code or an active brief-derived runtime object in the committed production state.
+### Recovery source and authority
 
-The rehearsal must demonstrate:
+The durable recovery source for this gate is the preserved corrected-projection checkpoint:
 
 ```text
-exact accepted brief binding
-        ->
-architecture-object projection
-        ->
-registry/schema validation
-        ->
-dependency/public-seam validation
-        ->
-concrete-name validation where names exist
-        ->
-proof derivation/admission
-        ->
-candidate composition validation
+source HEAD: 38fda5a22ffeade00ac9976ec87d979333a00390
+checkpoint archive SHA-256: bc5f9f5eb573671ea57597bc822bb395e869c529be1d1eecf4c97f162cf949e3
+external brief SHA-256: 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
 ```
 
-The rehearsal must not leave a synthetic runtime module active in the committed production registry.
+That checkpoint is recovery evidence, not proof that its final AKR-6 projection was correct. In particular, its recorded `create:M16` projection and package/public-seam stop boundary must not be carried forward as current conclusions merely because they were committed.
 
-The repository's final production state remains:
+Later sandbox-local AKR-6 work is not available as recoverable Git objects. Do not recreate missing commit SHAs or treat prior assistant reports as proof. Reconstruct the gate from current explicit user authority, this ExecPlan, current normative architecture law, the exact external brief and executable repository evidence.
 
-```yaml
-modules: []
-surfaces: []
+The following already-established checkpoint dispositions remain governing unless contradicted by higher current authority:
+
+- the exact external brief bytes remain unchanged;
+- the inherited vocabulary-governance mechanism and its former `G02` structural allocation are `DO_NOT_CARRY_FORWARD` from the target active tree, not lifecycle-retired current identities;
+- a literal architecture identifier appearing in the external brief does not automatically become a current architecture target;
+- upstream M10/G1-G7/PMB metadata remains opaque to the kernel.
+
+### Correct ingress boundary
+
+The AKR-6 path is:
+
+```text
+exact accepted external brief bytes
+        ->
+exact-byte + external-acceptance binding
+        ->
+bounded architectural judgement
+        ->
+minimal projection intent
+        ->
+gate-owned candidate identifier resolution
+        ->
+mechanical create/modify validation
+        ->
+ACCEPT or precise REFUSAL
+        ->
+STOP before implementation
 ```
 
-unless separate human authority explicitly changes that invariant.
+The bounded architectural judgement is the only semantic step in this gate. It may read the brief only far enough to establish:
+
+- the architecture category required by each genuinely new responsibility;
+- a concise responsibility name needed to distinguish separate new objects;
+- whether a responsibility maps to an already-current object rather than creating a new one;
+- ownership, consumer/composer and other architecture relationships required to make that projection;
+- whether the projection can be made without inventing meaning or violating kernel law.
+
+It does not judge domain merit and it does not choose numeric identifiers for new objects.
+
+### Current post-reset identifier authority
+
+Current explicit programme authority requires the post-reset allocation namespace to be determined from current post-reset state, not from the former product catalogue. Historical `M00-M16` product allocations do not reserve the same numeric identifiers in the new implementation namespace merely because they existed before the reset.
+
+Permanent non-reuse applies prospectively to identities that are current, retired under current lifecycle authority, or durably recorded as post-reset implementation allocations. Historical pre-reset product numbering remains recoverable evidence and must not silently alias newly allocated current identities.
+
+Therefore any current predecessor/successor values whose only meaning is a former product-number reclassification must not remain as active string-level lineage if reuse of the same post-reset identifier would make that historical string refer to a newly current object. Preserve the generic predecessor/successor lifecycle mechanism; disposition only the legacy current values that would create that alias.
+
+### Minimal implementation-allocation history
+
+Maintain one minimal machine-readable post-reset implementation-allocation history under `config/architecture/`. It is not a second architecture registry and must not duplicate ownership, dependencies, lifecycle status, seams or proof metadata.
+
+Each durable post-reset implementation allocation records only:
+
+```text
+object_id
+name
+implemented_on
+```
+
+The ledger begins empty for the reset kernel and remains empty after AKR-6 because this gate performs no implementation admission. Candidate resolution consults the union of:
+
+```text
+current registered architecture identities
++
+current retired identities
++
+post-reset durable implementation allocations
++
+earlier candidate resolutions within the same binding
+```
+
+For a new `M` responsibility when no current/post-reset `M` identity has been consumed, the first candidate must therefore resolve to `M00`. Two distinct new `M` responsibilities in the same binding must be representable and resolve deterministically to `M00`, then `M01`, rather than collapsing as duplicate identical create records.
+
+Candidate resolution is **not** durable allocation. Re-running the same non-mutating rehearsal against unchanged current state may resolve the same candidate again. The identity becomes consumed only at a later separately authorised implementation/admission step that changes the current architecture/allocation state.
+
+### AKR-6 recovery leaves
+
+Work these leaves one semantic acceptance unit at a time. Commit each proved unit separately. Stop at the first failed required invariant.
+
+#### AKR-6R1 — Reconcile current identifier and lineage authority
+
+Establish the post-reset identity boundary in normative law and current registries before changing ingress mechanics.
+
+Required work:
+
+- reconcile `AK-ID-001` / lifecycle wording with the current post-reset allocation authority;
+- inspect current foundation-object predecessor/successor values individually;
+- disposition only legacy predecessor/lineage values whose sole function is pre-reset product-number reclassification and which could alias a newly current post-reset identifier;
+- preserve generic lifecycle lineage capability for future post-reset replacement/split/merger work;
+- rewrite or disposition any test whose sole proposition is preservation of those legacy active aliases, while retaining generic lifecycle negative/positive proof;
+- ensure historical evidence remains recoverable through normal Git history and does not become a current allocation source.
+
+Acceptance: a newly current `M00` cannot be mistaken for the historical predecessor formerly called `M00`, and the generic lifecycle mechanism still has executable proof.
+
+#### AKR-6R2 — Establish the minimal post-reset allocation history and candidate resolver
+
+Add the minimal `implementation_allocations` configuration/schema/loading surface and one deterministic candidate-resolution mechanism.
+
+Required work:
+
+- ledger fields are only `object_id`, `name`, `implemented_on` unless a further field is proved necessary;
+- the reset ledger starts empty;
+- candidate resolution uses current registered IDs, current retired IDs, durable post-reset allocation IDs and earlier candidates in the same request;
+- no historical crosswalk or former M-number catalogue participates in allocation;
+- category extension remains open-ended beyond `99`;
+- no AKR-6 operation writes the ledger.
+
+Acceptance: the repository mechanically resolves the first presently available `M` candidate as `M00`, supports sequential same-category candidates, and leaves the committed ledger unchanged.
+
+#### AKR-6R3 — Correct the semantic/mechanical contract and make numeric resolution gate-owned
+
+Change the implementation-authority binding contract so the worker supplies only the semantic projection information that cannot be derived mechanically.
+
+For a new object, the projection input must contain a category and a concise responsibility name and must not contain a caller-selected `object_id`. For an existing object, the projection input must contain the existing `object_id` and must not masquerade as a create request.
+
+The gate must itself resolve each create intent to the canonical current candidate identifier before create/modify state validation. The repository-facing template, Python data model, schema, validator and CLI output must all express the same contract.
+
+The responsibility name exists to distinguish multiple independent creates of the same category; it is not a package name, Python import path, public-seam name or new source of domain authority.
+
+Acceptance: a caller cannot force historical `M16` as the numeric create identity; `create {category: M, name: ...}` resolves mechanically from current state, while `modify:A00` remains a bounded semantic mapping whose existence is mechanically checked.
+
+#### AKR-6R4 — Rebuild focused mechanical proof around the real repository-facing path
+
+Derive focused tests from the corrected contract rather than adapting validation merely to obtain green.
+
+Required proof includes at minimum:
+
+```text
+exact brief bytes match bound SHA-256
+changed bytes fail closed
+missing/invalid external acceptance record fails
+upstream methodology metadata cannot become ingress authority
+create forbids caller-supplied object_id
+create requires lawful category and distinguishing name
+first empty-M candidate resolves to M00
+multiple distinct same-category creates resolve M00, M01, ... in order
+current/retired/durable-allocation identities are not reused
+modify requires an existing current object
+invalid/nonexistent modify fails
+production registries are not mutated by rehearsal
+implementation-allocation ledger is not mutated by rehearsal
+repository binding template validates against the same schema/code path it documents
+```
+
+Use the real schemas/loaders/registry state for committed-configuration propositions. Hand-built fixtures may supplement but not replace proof of the actual repository path.
+
+Acceptance: tests falsify the former caller-numbered design and exercise the same path a future worker will actually invoke.
+
+#### AKR-6R5 — Re-run the exact brief and perform a human semantic trace
+
+Use the exact external brief identified above. Do not modify its bytes to make the rehearsal fit the kernel.
+
+Read it only far enough to establish the bounded architecture projection from current authority. For the preserved rehearsal brief, verify directly from the brief rather than from the old projection receipt whether it establishes:
+
+- one new coherent runtime semantic ownership responsibility in category `M`;
+- the concise responsibility name `raw_signal_occurrence_truth`;
+- `A00` as the existing initial caller/consumer/composer mapping;
+- `P01` and `K01` as non-active/non-consumers for this slice;
+- literal historical/upstream identifiers such as `M16` or `G02` that must not themselves force current target allocation.
+
+If any of those propositions is not established by the exact brief plus current higher authority, stop rather than reconstructing the lost conclusion from memory.
+
+Feed only the resulting minimal projection intent into the mechanical gate. The expected candidate is not authority; it must be produced by the resolver from current state.
+
+Then trace the path manually as a future human would: exact input -> template/binding -> parser/schema -> resolver -> registry/ledger state -> result. Inspect active human-facing historical documents that could reasonably mislead a future worker into treating reset-era imperative wording as current authority. Where needed, add a prominent historical/non-governing status notice rather than rewriting the historical substance.
+
+Acceptance: the exact brief traverses the real path without package/public-seam invention, legacy-number inheritance, hidden ledger mutation or upstream-methodology coupling, and the human-facing route agrees with the executable route.
+
+#### AKR-6R6 — Reconcile evidence, close only from executable proof, and preserve a durable checkpoint
+
+Replace/supersede stale AKR-6 projection evidence so it describes the executable contract actually proved. Do not retain `create:M16` or package/public-seam naming as the current AKR-6 result if the corrected path does not produce those propositions.
+
+Before declaring AKR-6 complete:
+
+- rerun all validation that bears on the changed surfaces;
+- run the exact external brief through the repository-native ingress command;
+- record the exact candidate resolutions and the fact that they are non-durable;
+- verify production `modules` and `surfaces` remain empty;
+- verify `implementation_allocations` remains empty;
+- human-read the changed code, schema, template, normative law, evidence and tests as one end-to-end path;
+- run repository-integrity checks required by the ExecPlan;
+- leave a clean committed state;
+- create a durable full-Git checkpoint/bundle of the closed AKR-6 state **before AKR-7 begins** so a volatile sandbox loss cannot require reconstruction again.
 
 ### Negative proof
 
-The rehearsal must also establish failure for at least:
+In addition to the leaf-specific proof above, the rehearsal must fail closed for at least:
 
 - missing brief identity;
 - changed brief bytes under the same claimed binding;
 - absent implementation acceptance;
-- structurally invalid object projection;
-- undeclared dependency;
-- unlawful seam;
-- concrete Python name that violates applicable namespace/style/public-interface rules, when the rehearsal reaches a concrete-name surface;
-- attempt to treat upstream methodology metadata as architecture authority.
+- structurally invalid projection intent;
+- caller attempt to select a numeric create identity;
+- reuse of a current, retired or durably post-reset allocated identity;
+- nonexistent modify target;
+- attempt to treat upstream methodology metadata or literal historical identifiers as current architecture authority.
+
+Do not require package/public-seam naming, behavioural proof derivation, dependency/seam implementation validation or candidate composition merely to close AKR-6. Those are downstream implementation/admission concerns and importing them here recreates the package-naming blocker found in the preserved checkpoint.
 
 ### Acceptance condition
 
-AKR-6 passes only when the complete generic ingress path is exercised without admitting brief-derived domain semantics into the production kernel state and without coupling the kernel to the upstream methodology.
+AKR-6 passes only when all six recovery leaves are established from current evidence and the exact external brief can traverse the corrected boundary as:
 
-**A new accepted implementation-ready brief must be able to enter without requiring modification of the kernel's foundational architectural laws.**
+```text
+external exact bytes
+        ->
+bounded judgement supplies create category/name + existing modify mapping
+        ->
+kernel resolves new numeric candidate(s)
+        ->
+mechanical ingress validation
+        ->
+accepted bounded target projection
+        ->
+STOP
+```
+
+For the preserved rehearsal input, no numbered create target may be preselected by the worker. If the current `M` allocation state is still empty when the exact rehearsal is executed, the kernel must itself resolve `raw_signal_occurrence_truth` to candidate `M00`; that outcome is a consequence to verify, not a value to encode into the semantic projection input.
+
+The committed production state after AKR-6 remains behaviour-neutral:
+
+```yaml
+modules: []
+surfaces: []
+implementation_allocations: []
+```
+
+No `COMPLETE` claim is permitted until the code path, schema, template, normative wording, focused tests, exact-brief rehearsal evidence and human end-to-end trace all agree.
 
 ## 13. AKR-7 — Final pristine-kernel proof
+
+AKR-7 must not begin until AKR-6R6 has closed AKR-6 from executable proof and a durable full-Git checkpoint of that closed state has been created.
 
 ### Required proof classes
 
@@ -903,12 +1098,12 @@ The prior sandbox-local AKR commits were lost and were not recoverable as Git ob
 - Ruff, offline lock verification, `git diff --check` and `git fsck --full` completed without reported failure;
 - exact AKR-5 evidence is recorded in `docs/evidence/akr5/AKR5_STRUCTURAL_READINESS.md`.
 
-### AKR-6 — IN PROGRESS
+### AKR-6 — RECOVERY IN PROGRESS
 
-AKR-6 is executing from the final clean AKR-5 state using the exact externally accepted implementation brief bound on the AKR-6 work branch. The brief remains opaque external implementation authority and the production module/surface registries remain behaviour-neutral.
+The durable recovery point is `38fda5a22ffeade00ac9976ec87d979333a00390`, supplied by the preserved corrected-projection checkpoint whose archive SHA-256 is `bc5f9f5eb573671ea57597bc822bb395e869c529be1d1eecf4c97f162cf949e3`. The bound external brief remains exact SHA-256 `938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342`.
 
-The corrected architecture-object projection is recorded in `docs/evidence/akr6/AKR6_ARCHITECTURE_PROJECTION_ATTEMPT.md`. Current explicit human/programme authority dispositions the inherited vocabulary-governance mechanism and its `G02` structural allocation as `DO_NOT_CARRY_FORWARD`. That disposition is not lifecycle retirement, so `G02` is absent from both the current governance-plane object list and current `retired_ids`; Git history preserves the former mechanism and allocation. The exact external brief remains unchanged.
+The checkpoint already preserves the authorised `DO_NOT_CARRY_FORWARD` disposition of the inherited vocabulary-governance mechanism/`G02` allocation and the law that literal identifiers in an external brief do not automatically become current targets. Its later conclusion `create:M16, modify:A00` and package/public-seam naming blocker are not carried forward as accepted AKR-6 results.
 
-An architecture identifier appearing literally in the brief is not automatically a current projection target. Under the current disposition, the bounded AKR-6 target projection is `create:M16` and `modify:A00`; `P01` and `K01` remain non-active/non-consumers as the brief states, and `G02` is not recreated as a current kernel object. Repository-native implementation-authority validation accepts that exact target projection against the exact brief bytes.
+Current explicit user authority requires AKR-6 to be reconstructed using the six recovery leaves in Section 12. The critical corrections are: post-reset allocation is based on current post-reset state rather than the historical product catalogue; legacy lineage strings must not alias newly reused post-reset identifiers; a minimal durable allocation history starts empty; create callers supply category plus a distinguishing responsibility name rather than a numeric object ID; the gate owns deterministic candidate-number resolution; candidate resolution is not durable allocation; the active binding template and executable contract must agree; multiple new objects in the same category must be representable; and AKR-6 stops before package/public-seam naming, brief-derived code, behavioural proof admission or runtime composition.
 
-The first real unresolved field is now concrete package/public-seam naming for an active `M16`. Current kernel law requires both fields before active executable registration, while the accepted brief explicitly retains final package naming/version metadata as a Remaining Unknown. `AK-NAME-001` constrains scope/style but does not invent the missing concrete import path. AKR-6 therefore stops before complete active candidate registry validation until higher authority supplies that naming decision; no downstream dependency/seam, proof or composition stage is claimed as reached.
+AKR-7 is blocked until AKR-6R1 through AKR-6R6 are completed, human-traced, committed cleanly and preserved in a durable full-Git checkpoint.
