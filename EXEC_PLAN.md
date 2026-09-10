@@ -1181,6 +1181,14 @@ Pre-close proof on the reconstructed R1-R5 state established structural validati
 
 AKR-6R6 closed at `85779543684b334515a0b7bed6e1570aa09fbaa0` after carrying the stale projection evidence out of the active tree, reconciling this progress record with the executable path and re-running the required proof on the committed closeout state. The external full-Git checkpoint `NVDA_AKR6_HUMAN_REVIEW_CHECKPOINT_20260910.tar.gz`, SHA-256 `631c52a9c5d31418789fb203000f4f60e612b5bdb85690128a0be00027b20f5d`, was subsequently verified to contain complete Git history and that exact closed branch/HEAD. The AKR-7 entry prerequisite is therefore established.
 
-### AKR-7 — READY FOR LEAF EXECUTION
+### AKR-7 — IN PROGRESS
 
-AKR-7 has been decomposed into six semantic acceptance units in Section 13. No AKR-7 proof leaf is recorded complete at this point. Execution begins with AKR-7.1 and must stop at the first unmet invariant before dependent downstream leaves proceed.
+#### AKR-7.1 — COMPLETE
+
+AKR-7.1 was executed from `work/akr-7-final-pristine-kernel-proof` starting at `610a66365ce7ce981f6f6702c2062875fd1f4c3b`. The dependency/build authority was read before reconstruction: `pyproject.toml`, `uv.lock`, `.python-version`, the admitted wheelhouse README/hash manifest, repository-native Makefile/console entry points, and the promotion check-only implementation used by the environment probe.
+
+The repository-local wheel manifest verified all 15 retained wheels. With `UV_OFFLINE=1`, `UV_PYTHON_DOWNLOADS=never` and a new external environment path, `uv lock --check --offline` resolved 13 packages and `uv sync --frozen --offline --extra dev --python 3.13.5` created a fresh CPython 3.13.5 environment and installed the locked runtime/development set from the admitted offline surface.
+
+Using that fresh interpreter, repository-native architecture validation and `make typecheck` were invokable; pytest collection found 74 architecture/bootstrap tests; promotion `--check-only` resolved 11 admitted test paths without executing the AKR-7.3 proof set; all declared installed console-script surfaces accepted `--help`. An offline `uv build` probe to an external scratch directory produced the declared wheel and sdist, establishing availability of the Hatchling build path from admitted offline material without treating those artefacts as AKR-7.4 package proof.
+
+Exact AKR-7.1 evidence and proof boundaries are recorded in `docs/evidence/akr7/AKR7_1_ENVIRONMENT_RECONSTRUCTION.md`. No required downstream Python/build dependency was found absent. AKR-7.2 has not been executed.
