@@ -1,5 +1,7 @@
 # Architecture Kernel Reset Brief
 
+> **Historical evidence only — not current governing architecture authority.** This document records the 2026-08-04 reset task and intentionally preserves its then-current imperative wording. Current work is governed by `GUARDRAILS.md`, the accepted `EXEC_PLAN.md` and the steady-state architecture documents. In particular, references here to the former `G02` vocabulary-governance mechanism or former product identifiers must not be used to reactivate or reserve those historical allocations in the current post-reset namespace.
+
 ## Objective
 
 Convert the current repository into a minimal, behaviour-neutral and extensible architecture kernel.
