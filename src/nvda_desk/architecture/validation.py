@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from .allocation import load_implementation_allocations
 from .dependencies import analyse_repository
 from .proof import load_and_validate_proof_state
 from .registry import ArchitectureRegistry
@@ -37,6 +38,7 @@ def _validate_active_python_visible_objects(
 def validate_architecture(repository_root: Path) -> list[str]:
     registry = ArchitectureRegistry.from_repository(repository_root)
     _validate_active_python_visible_objects(repository_root, registry)
+    allocations = load_implementation_allocations(repository_root)
     proof = load_and_validate_proof_state(repository_root)
     violations = analyse_repository(repository_root)
     if violations:
@@ -46,6 +48,7 @@ def validate_architecture(repository_root: Path) -> list[str]:
     return [
         f"architecture objects: {len(registry.objects)}",
         f"active runtime modules: {len(active_runtime_modules)}",
+        f"implementation allocations: {len(allocations)}",
         f"admitted test families: {len(proof.families)}",
         f"promotion sets: {len(proof.promotion_sets)}",
         "dependency/public-seam violations: 0",
