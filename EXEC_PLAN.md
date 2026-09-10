@@ -1192,3 +1192,15 @@ The repository-local wheel manifest verified all 15 retained wheels. With `UV_OF
 Using that fresh interpreter, repository-native architecture validation and `make typecheck` were invokable; pytest collection found 74 architecture/bootstrap tests; promotion `--check-only` resolved 11 admitted test paths without executing the AKR-7.3 proof set; all declared installed console-script surfaces accepted `--help`. An offline `uv build` probe to an external scratch directory produced the declared wheel and sdist, establishing availability of the Hatchling build path from admitted offline material without treating those artefacts as AKR-7.4 package proof.
 
 Exact AKR-7.1 evidence and proof boundaries are recorded in `docs/evidence/akr7/AKR7_1_ENVIRONMENT_RECONSTRUCTION.md`. No required downstream Python/build dependency was found absent. AKR-7.2 has not been executed.
+
+#### AKR-7.2 — COMPLETE
+
+AKR-7.2 used the fresh CPython 3.13.5 environment reconstructed in AKR-7.1. Repository-native structural validation reported four architecture objects, zero active runtime modules, zero implementation allocations and zero dependency/public-seam violations. The dedicated dependency and public-seam commands returned zero exit status, and `make typecheck` reported no issues in 13 source files.
+
+The validator output was reconciled against the steady-state architecture law, all current architecture registries, the relevant category/dependency/allocation schemas and the executable registry/schema/dependency/allocation/implementation-authority paths. Current state is `P01` placeholder, `G01` framework, `A00` bootstrap and `K01` placeholder, with no current modules, surfaces, retired IDs, declared owner edges, public-seam exceptions or durable implementation allocations. Direct external scratch probes through the production registry/readiness code confirmed that an active module missing its required structural projection is rejected and that a complete active Python-visible module is rejected when its registered package/public seam is physically absent.
+
+Current candidate resolution was also traced independently of the external rehearsal brief: resolving `M, M, A` against the committed state produced non-durable candidates `M00, M01, A01`, while the SHA-256 of the empty implementation-allocation ledger remained unchanged.
+
+The required `implemented_on` observation was reproduced through the production allocation loader: `2026-02-31` is accepted because the current schema validates only `YYYY-MM-DD` textual shape, while `2026-2-31` is rejected. Current governing/normative authority specifies `implemented_on` as a minimal allocation field but does not state a calendar-validity invariant. Under the AKR-7.2 decision rule, this is therefore recorded as an unresolved/deferred limitation rather than silently repaired. Exact trace and proof boundaries are recorded in `docs/evidence/akr7/AKR7_2_STATIC_ARCHITECTURE_TRACE.md`.
+
+AKR-7.3 has not been executed.
