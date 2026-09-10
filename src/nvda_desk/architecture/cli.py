@@ -8,6 +8,7 @@ from pathlib import Path
 from .dependencies import analyse_repository
 from .implementation_authority import (
     ImplementationAuthorityError,
+    render_candidate_target,
     validate_implementation_authority,
 )
 from .promotion import run_promotion_set
@@ -87,5 +88,6 @@ def implementation_authority_main() -> int:
         print(f"FAIL: {exc}")
         return 2
     print(f"PASS: implementation authority brief_sha256={binding.brief_sha256}")
-    print("targets: " + ", ".join(f"{item.action}:{item.object_id}" for item in binding.targets))
+    rendered_targets = ", ".join(render_candidate_target(item) for item in binding.targets)
+    print(f"candidate_targets: {rendered_targets}")
     return 0

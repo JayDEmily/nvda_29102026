@@ -34,6 +34,14 @@ class ImplementationAuthorityBinding:
     targets: tuple[ImplementationTarget, ...]
 
 
+def render_candidate_target(target: ImplementationTarget) -> str:
+    """Render a resolved projection target without implying durable allocation."""
+
+    if target.action == "create":
+        return f"create:{target.name}->{target.object_id}"
+    return f"modify:{target.object_id}"
+
+
 def sha256_file(path: Path) -> str:
     """Return SHA-256 over the exact raw bytes at *path*."""
 

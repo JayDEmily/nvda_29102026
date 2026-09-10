@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import hashlib
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -302,3 +304,32 @@ def test_repository_binding_template_matches_executable_contract(tmp_path: Path)
         ("create", "template_owner", "M00"),
         ("modify", None, "A00"),
     ]
+
+
+def test_repository_ingress_command_reports_non_durable_named_candidate(tmp_path: Path) -> None:
+    binding_path, brief_path = _write_binding(
+        tmp_path,
+        b"brief\n",
+        targets=[
+            {"action": "create", "category": "M", "name": "new_owner"},
+            {"action": "modify", "object_id": "A00"},
+        ],
+    )
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(REPO_ROOT / "tools/validate_implementation_authority.py"),
+            "--binding",
+            str(binding_path),
+            "--brief",
+            str(brief_path),
+        ],
+        cwd=REPO_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "candidate_targets: create:new_owner->M00, modify:A00" in result.stdout
