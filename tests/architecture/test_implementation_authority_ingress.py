@@ -34,7 +34,8 @@ def _write_binding(
             "status": "ACCEPTED_FOR_IMPLEMENTATION",
             "authority_ref": acceptance_ref,
         },
-        "targets": targets or [{"object_id": "M100", "action": "create"}],
+        "targets": targets
+        or [{"action": "create", "category": "M", "name": "example_responsibility"}],
     }
     if extras:
         document.update(extras)
@@ -48,8 +49,8 @@ def test_exact_brief_bytes_bind_without_copying_brief(tmp_path: Path) -> None:
         tmp_path,
         b"Implementation-ready instructions.\n",
         targets=[
-            {"object_id": "M100", "action": "create"},
-            {"object_id": "P01", "action": "modify"},
+            {"action": "create", "category": "M", "name": "example_responsibility"},
+            {"action": "modify", "object_id": "P01"},
         ],
     )
 
@@ -58,7 +59,7 @@ def test_exact_brief_bytes_bind_without_copying_brief(tmp_path: Path) -> None:
     assert binding.brief_sha256 == hashlib.sha256(brief_path.read_bytes()).hexdigest()
     assert binding.acceptance_ref == "human-acceptance:test"
     assert [(item.object_id, item.action) for item in binding.targets] == [
-        ("M100", "create"),
+        ("M00", "create"),
         ("P01", "modify"),
     ]
     assert "Implementation-ready instructions" not in binding_path.read_text(encoding="utf-8")
@@ -90,29 +91,21 @@ def test_upstream_methodology_metadata_is_not_part_of_ingress_schema(tmp_path: P
         validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
 
 
-def test_target_projection_rejects_duplicate_object_identity(tmp_path: Path) -> None:
+def test_create_contract_resolves_identifier_without_caller_number(tmp_path: Path) -> None:
     binding_path, brief_path = _write_binding(
         tmp_path,
         b"brief\n",
-        targets=[
-            {"object_id": "M100", "action": "create"},
-            {"object_id": "M100", "action": "modify"},
-        ],
+        targets=[{"action": "create", "category": "M", "name": "new_owner"}],
     )
 
-    with pytest.raises(ImplementationAuthorityError, match="more than once"):
-        validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+    binding = validate_implementation_authority(REPO_ROOT, binding_path, brief_path)
+
+    assert [(item.action, item.name, item.object_id) for item in binding.targets] == [
+        ("create", "new_owner", "M00")
+    ]
 
 
 def test_target_projection_rejects_inconsistent_current_registry_state(tmp_path: Path) -> None:
-    create_existing, brief_path = _write_binding(
-        tmp_path,
-        b"brief\n",
-        targets=[{"object_id": "P01", "action": "create"}],
-    )
-    with pytest.raises(ImplementationAuthorityError, match="already exists"):
-        validate_implementation_authority(REPO_ROOT, create_existing, brief_path)
-
     modify_missing, brief_path = _write_binding(
         tmp_path,
         b"brief\n",

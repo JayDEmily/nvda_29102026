@@ -34,7 +34,7 @@ def validate_instance(instance: Any, schema: Mapping[str, Any], path: str = "$")
 
     Supported keywords are deliberately bounded: type, required, properties,
     patternProperties, additionalProperties, items, enum, const, pattern,
-    minLength, minItems, uniqueItems, allOf, if and then.
+    minLength, minItems, uniqueItems, allOf, if, then and not.
     """
 
     expected = schema.get("type")
@@ -47,6 +47,15 @@ def validate_instance(instance: Any, schema: Mapping[str, Any], path: str = "$")
         _fail(path, f"expected constant {schema['const']!r}, got {instance!r}")
     if "enum" in schema and instance not in schema["enum"]:
         _fail(path, f"value {instance!r} is not in {schema['enum']!r}")
+
+    negated = schema.get("not")
+    if negated is not None:
+        try:
+            validate_instance(instance, negated, path)
+        except SchemaValidationError:
+            pass
+        else:
+            _fail(path, "matched a forbidden schema")
 
     for subschema in schema.get("allOf", []):
         validate_instance(instance, subschema, path)

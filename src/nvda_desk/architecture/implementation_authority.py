@@ -10,6 +10,7 @@ from typing import Any
 
 import yaml
 
+from .allocation import consumed_identifiers, resolve_candidate_identifiers
 from .registry import ArchitectureRegistry
 from .schema import validate_instance
 
@@ -22,6 +23,8 @@ class ImplementationAuthorityError(ValueError):
 class ImplementationTarget:
     object_id: str
     action: str
+    name: str | None = None
+    category: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -58,31 +61,50 @@ def _load_binding_document(repository_root: Path, binding_path: Path) -> dict[st
     return document
 
 
+def _resolve_target_projection(
+    repository_root: Path, raw_targets: list[dict[str, str]]
+) -> tuple[ImplementationTarget, ...]:
+    create_categories = [item["category"] for item in raw_targets if item["action"] == "create"]
+    create_ids = iter(resolve_candidate_identifiers(repository_root, create_categories))
+    targets: list[ImplementationTarget] = []
+    for item in raw_targets:
+        if item["action"] == "create":
+            targets.append(
+                ImplementationTarget(
+                    object_id=next(create_ids),
+                    action="create",
+                    name=item["name"],
+                    category=item["category"],
+                )
+            )
+        else:
+            targets.append(ImplementationTarget(object_id=item["object_id"], action="modify"))
+    return tuple(targets)
+
+
 def _validate_target_projection(
     repository_root: Path, targets: tuple[ImplementationTarget, ...]
 ) -> None:
     try:
         registry = ArchitectureRegistry.from_repository(repository_root)
+        consumed = consumed_identifiers(repository_root)
     except (OSError, ValueError) as exc:
         raise ImplementationAuthorityError(
-            f"cannot validate target projection against architecture registry: {exc}"
+            f"cannot validate target projection against architecture state: {exc}"
         ) from exc
     current_ids = {item.id for item in registry.objects}
     seen: set[str] = set()
     for target in targets:
         if target.object_id in seen:
             raise ImplementationAuthorityError(
-                f"implementation binding names {target.object_id} more than once"
+                f"implementation binding resolves {target.object_id} more than once"
             )
         seen.add(target.object_id)
         if target.action == "create":
-            if target.object_id in current_ids:
+            if target.object_id in consumed:
                 raise ImplementationAuthorityError(
-                    f"create target {target.object_id} already exists in architecture registry"
-                )
-            if target.object_id in registry.retired_ids:
-                raise ImplementationAuthorityError(
-                    f"create target {target.object_id} reuses a retired identifier"
+                    "create target "
+                    f"{target.object_id} is already consumed by current post-reset state"
                 )
         elif target.action == "modify" and target.object_id not in current_ids:
             raise ImplementationAuthorityError(
@@ -111,10 +133,7 @@ def validate_implementation_authority(
             "implementation brief bytes do not match the bound SHA-256"
         )
 
-    targets = tuple(
-        ImplementationTarget(object_id=item["object_id"], action=item["action"])
-        for item in document["targets"]
-    )
+    targets = _resolve_target_projection(repository_root, document["targets"])
     _validate_target_projection(repository_root, targets)
     return ImplementationAuthorityBinding(
         brief_sha256=expected_sha256,

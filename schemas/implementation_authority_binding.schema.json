@@ -37,14 +37,77 @@
             ],
             "type": "string"
           },
+          "category": {
+            "pattern": "^[MPGAKS]$",
+            "type": "string"
+          },
+          "name": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
           "object_id": {
             "pattern": "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$",
             "type": "string"
           }
         },
         "required": [
-          "object_id",
           "action"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "create"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "category",
+                "name"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "object_id"
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": {
+                  "const": "modify"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "object_id"
+              ],
+              "allOf": [
+                {
+                  "not": {
+                    "required": [
+                      "category"
+                    ]
+                  }
+                },
+                {
+                  "not": {
+                    "required": [
+                      "name"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
         ],
         "type": "object"
       },
