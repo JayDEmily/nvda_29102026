@@ -5,6 +5,6 @@ governance_planes:
     status: framework
     description: Test admission, proof blocks, promotion sets and validation receipts.
     runtime_dependency: false
-    predecessors: [M14]
+    predecessors: []
     successors: []
 retired_ids: []

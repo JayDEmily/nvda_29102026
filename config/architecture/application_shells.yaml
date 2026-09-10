@@ -7,6 +7,6 @@ application_shells:
     package: nvda_desk.composition
     public_seam: nvda_desk.composition
     permitted_dependencies: []
-    predecessors: [M00]
+    predecessors: []
     successors: []
 retired_ids: []

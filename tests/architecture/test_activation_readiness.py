@@ -333,7 +333,8 @@ def test_dependency_loader_rejects_malformed_public_seam_exception(tmp_path: Pat
         analyse_repository(repository)
 
 
-def test_current_historical_lineage_is_representable_without_reactivation() -> None:
+def test_current_foundation_objects_do_not_carry_pre_reset_lineage_aliases() -> None:
     registry = ArchitectureRegistry.from_repository(ROOT)
-    assert registry.get("P01").predecessors == ("M04",)
-    assert registry.get("K01").predecessors == ("M13",)
+    for object_id in ("A00", "P01", "K01", "G01"):
+        assert registry.get(object_id).predecessors == ()
+        assert registry.get(object_id).successors == ()

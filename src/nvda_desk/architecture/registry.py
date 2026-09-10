@@ -136,6 +136,10 @@ class ArchitectureRegistry:
                 if predecessor == item.id:
                     raise ValueError(f"{item.id} cannot be its own predecessor")
                 current_predecessor = self._by_id.get(predecessor)
+                if current_predecessor is None and predecessor not in self.retired_ids:
+                    raise ValueError(
+                        f"{item.id} names unregistered lifecycle predecessor {predecessor}"
+                    )
                 if current_predecessor and item.id not in current_predecessor.successors:
                     raise ValueError(
                         f"current predecessor {predecessor} does not name {item.id} as successor"
@@ -145,6 +149,10 @@ class ArchitectureRegistry:
                 if successor == item.id:
                     raise ValueError(f"{item.id} cannot be its own successor")
                 current_successor = self._by_id.get(successor)
+                if current_successor is None and successor not in self.retired_ids:
+                    raise ValueError(
+                        f"{item.id} names unregistered lifecycle successor {successor}"
+                    )
                 if current_successor and item.id not in current_successor.predecessors:
                     raise ValueError(
                         f"current successor {successor} does not name {item.id} as predecessor"

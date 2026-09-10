@@ -2,7 +2,7 @@
 
 ## Normative propositions
 
-- **AK-LIFE-001 — Lifecycle identity integrity.** Retired identities cannot be reused. Predecessor/successor identities must be lawful, self-lineage is prohibited, and current reciprocal relationships must be structurally consistent while historical lineage remains representable without reactivation.
+- **AK-LIFE-001 — Lifecycle identity integrity.** Retired identities cannot be reused. Active predecessor/successor metadata belongs to the current post-reset lifecycle namespace: every lineage endpoint must be either currently registered or retired under current lifecycle authority, self-lineage is prohibited, and current reciprocal relationships must be structurally consistent. Pre-reset product reclassification remains historical evidence and is not represented as active lineage merely by reusing its former identifier string.
 - **AK-EXT-001 — Open-ended category extension.** Adding a new object in an existing category must not require a central identifier enumeration, hard-coded count ceiling or architectural redesign. Admission uses declarative registration plus category-appropriate authority, implementation and proof.
 
 ## Runtime-module admission
@@ -39,7 +39,7 @@ A replacement, split or merger preserves and explicitly dispositions:
 - state/persistence ownership effects;
 - proof effects.
 
-No successor silently inherits implementation status, semantic authority or consumer acceptance.
+No successor silently inherits implementation status, semantic authority or consumer acceptance. A post-reset retired predecessor or successor may remain named without reactivation because its identifier remains reserved by current lifecycle authority; a pre-reset historical identifier that is not current-retired is not a lawful active lineage endpoint.
 
 ## Deprecation and retirement
 

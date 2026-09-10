@@ -26,10 +26,16 @@ def test_retired_identifier_and_lifecycle_lineage_are_validated() -> None:
     with pytest.raises(ValueError, match="invalid architecture identifier"):
         ArchitectureRegistry((malformed,), frozenset())
 
-    historical = ArchitectureObject(
-        "P100", "contract", "placeholder", "contract", predecessors=("M04",)
+    retired_lineage = ArchitectureObject(
+        "P100", "contract", "placeholder", "contract", predecessors=("M104",)
     )
-    ArchitectureRegistry((historical,), frozenset())
+    ArchitectureRegistry((retired_lineage,), frozenset({"M104"}))
+
+    unreserved_lineage = ArchitectureObject(
+        "P101", "contract", "placeholder", "contract", predecessors=("M105",)
+    )
+    with pytest.raises(ValueError, match="unregistered lifecycle predecessor M105"):
+        ArchitectureRegistry((unreserved_lineage,), frozenset())
 
     predecessor = ArchitectureObject("M100", "old", "deprecated", "old", successors=("M101",))
     successor = ArchitectureObject(
@@ -43,11 +49,14 @@ def test_retired_identifier_and_lifecycle_lineage_are_validated() -> None:
     )
     ArchitectureRegistry((predecessor, successor), frozenset())
 
+    current_without_reciprocal = ArchitectureObject(
+        "M100", "old", "deprecated", "old"
+    )
     one_sided = ArchitectureObject(
         "M102", "one_sided", "placeholder", "one-sided", predecessors=("M100",)
     )
     with pytest.raises(ValueError, match="does not name M102 as successor"):
-        ArchitectureRegistry((predecessor, one_sided), frozenset())
+        ArchitectureRegistry((current_without_reciprocal, one_sided), frozenset())
 
 
 def test_active_executable_object_requires_package_and_public_seam() -> None:

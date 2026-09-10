@@ -4,6 +4,6 @@ kernels:
     name: state_and_transaction
     status: placeholder
     description: Reserved technical-kernel identity for domain-neutral state and transaction mechanisms. No runtime mechanism implementation is currently admitted.
-    predecessors: [M13]
+    predecessors: []
     successors: []
 retired_ids: []

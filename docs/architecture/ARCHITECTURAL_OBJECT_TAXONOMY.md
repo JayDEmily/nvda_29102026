@@ -3,7 +3,7 @@
 ## Normative propositions
 
 - **AK-TAX-001 — Category separation.** Runtime semantic owners (`M`), protocols/carriers (`P`), governance planes (`G`), application shells (`A`), technical kernels (`K`) and architecture surfaces (`S`) are distinct categories. Registration in one category cannot create authority in another.
-- **AK-ID-001 — Unbounded permanent identifiers.** Identifiers use a category prefix and decimal suffix padded to at least two digits. Allocation continues beyond `99`; retired identities are never reused for different meaning.
+- **AK-ID-001 — Unbounded post-reset permanent identifiers.** Identifiers use a category prefix and decimal suffix padded to at least two digits. Allocation continues beyond `99`. Within the current post-reset namespace, an identity is consumed when it is currently registered, retired under current lifecycle authority, or durably recorded as a post-reset implementation allocation; consumed identities are never reused for different meaning. Pre-reset historical product identifiers do not reserve current post-reset identifiers merely because the same strings occurred before the reset.
 - **AK-NAME-001 — Namespace-scoped Python naming.** Architectural object identifiers remain globally unique registry identities, while ordinary Python package, module, class, function, method and variable names follow the Python namespace model and applicable Python naming conventions. A Python symbol need be unique only within the namespace or public interface in which Python resolves or exposes it; repository-global synonym policing or identifier prefixing is not an architectural requirement.
 
 ## Identifier grammar
@@ -17,7 +17,7 @@ K00 … K99, K100, …
 S00 … S99, S100, …
 ```
 
-`M1`, negative suffixes, mixed prefixes and non-decimal suffixes are invalid. Schemas impose no maximum numeric value. Allocation is monotonic within each category.
+`M1`, negative suffixes, mixed prefixes and non-decimal suffixes are invalid. Schemas impose no maximum numeric value. Candidate resolution is monotonic within each category over identities consumed by the current post-reset namespace; historical pre-reset numbering is evidence, not an allocation input.
 
 ## Python naming scope
 

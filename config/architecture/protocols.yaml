@@ -4,6 +4,6 @@ protocols:
     name: dmp_v3
     status: placeholder
     description: Reserved protocol identity for the DMPV3 governed information-carrier family. No runtime protocol implementation is currently admitted.
-    predecessors: [M04]
+    predecessors: []
     successors: []
 retired_ids: []
