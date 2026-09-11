@@ -1,5 +1,0 @@
-branch=main
-commit=d24f9626a23b526384668b3cb26ee811b235eb5c
-status_begin
-status_end
-Python 3.13.5

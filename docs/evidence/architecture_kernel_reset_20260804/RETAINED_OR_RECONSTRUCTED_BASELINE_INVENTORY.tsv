@@ -1,9 +1,0 @@
-path	git_blob	disposition
-.gitignore	d50f213a915f869f9110c6254fb1c598f8568556	retain
-.python-version	86f8c02eb210e162e13395323abd0d02e8d7d223	retain
-AGENTS.md	75d1048ce9f06ceea92ba696530c822725eb2943	reconstruct
-LICENSE	8360a3ce0e02fca98a60b9d4669f2a5f58e1ad5d	retain
-Makefile	85803c25c6241f92198ef335cbdb7e286fb1216a	reconstruct
-README.md	c3678d9a463f322f4fafb24c85f9209a6e364220	reconstruct
-pyproject.toml	11652623da40b19becad1b8a89e09567cb8c2848	reconstruct
-uv.lock	dfe8f99eece24f81056c56f5bd07683ae7dfa518	reconstruct
