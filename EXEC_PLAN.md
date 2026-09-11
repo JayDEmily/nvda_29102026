@@ -1203,4 +1203,12 @@ Current candidate resolution was also traced independently of the external rehea
 
 The required `implemented_on` observation was reproduced through the production allocation loader: `2026-02-31` is accepted because the current schema validates only `YYYY-MM-DD` textual shape, while `2026-2-31` is rejected. Current governing/normative authority specifies `implemented_on` as a minimal allocation field but does not state a calendar-validity invariant. Under the AKR-7.2 decision rule, this is therefore recorded as an unresolved/deferred limitation rather than silently repaired. Exact trace and proof boundaries are recorded in `docs/evidence/akr7/AKR7_2_STATIC_ARCHITECTURE_TRACE.md`.
 
-AKR-7.3 has not been executed.
+#### AKR-7.3 — COMPLETE (rehydrated execution)
+
+The earlier volatile AKR-7.3+ worktree was unavailable, so this leaf was re-executed from the durable AKR-7.2 checkpoint rather than reconstructed from manifests or prior summaries. The checkpoint archive SHA-256 is `0fe3d37de9f325508c9e3a15eb9c171c8e268df7bc4ab920163e2e81ea396182`; its complete bundle rehydrated branch `work/akr-7-final-pristine-kernel-proof` at `84e1e284317e66edeb0c3705e6c24a5a9a75d438`, tree `8a6ef3b6a6f501f2197b0bf8fbb2a2487e1bb643`. AKR-7.3 proceeded on independent branch `work/akr-7.3-complete-proof`.
+
+The proof-family, proof-block and promotion-set registries and schemas, recursive proof loader, promotion runner, test-local instructions and all eleven admitted architecture/bootstrap test files were human-read before semantic acceptance. Because the prior external environment had not persisted, all 15 wheelhouse artefacts were reverified against `vendor/wheels/SHA256SUMS`; offline lock resolution again resolved 13 packages and a new external CPython 3.13.5 environment was recreated without network resolution or Python downloads.
+
+Recursive physical discovery found exactly 11 `tests/architecture` / `tests/bootstrap` test files, exactly matching the 11 admitted family paths and the 11 paths resolved by the `architecture_kernel` promotion set. The complete blocking population collected and passed 74 tests. From an empty `git status --porcelain=v1`, the registry-derived promotion runner revalidated current architecture state, resolved the same 11 paths, passed the same 74 tests and left the worktree unchanged.
+
+Exact commands, observed results, human trace and proof boundaries are recorded in `docs/evidence/akr7/AKR7_3_COMPLETE_PROOF_AND_PROMOTION.md`. These results do not substitute for AKR-7.4 packaging, AKR-7.5 semantic exclusion/behaviour-neutrality audit or AKR-7.6 final reconciliation.
