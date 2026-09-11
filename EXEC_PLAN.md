@@ -1212,3 +1212,13 @@ The proof-family, proof-block and promotion-set registries and schemas, recursiv
 Recursive physical discovery found exactly 11 `tests/architecture` / `tests/bootstrap` test files, exactly matching the 11 admitted family paths and the 11 paths resolved by the `architecture_kernel` promotion set. The complete blocking population collected and passed 74 tests. From an empty `git status --porcelain=v1`, the registry-derived promotion runner revalidated current architecture state, resolved the same 11 paths, passed the same 74 tests and left the worktree unchanged.
 
 Exact commands, observed results, human trace and proof boundaries are recorded in `docs/evidence/akr7/AKR7_3_COMPLETE_PROOF_AND_PROMOTION.md`. These results do not substitute for AKR-7.4 packaging, AKR-7.5 semantic exclusion/behaviour-neutrality audit or AKR-7.6 final reconciliation.
+
+#### AKR-7.4 — COMPLETE (rehydrated execution)
+
+AKR-7.4 was executed on independent branch `work/akr-7.4-truthful-packaging` from the accepted rehydrated AKR-7.3 commit `7dc1ee11e7a6336774cc76a9392e1d66c93849b8`. Current packaging authority and the installed CLI path were human-read before interpreting build/install output.
+
+An offline Hatchling build produced `nvda_architecture_kernel-0.1.0-py3-none-any.whl` (SHA-256 `5bc7e5ad6fa7da1fdcc1cb171cbcb85e6ebb761ca25d21d2a14b77139f65d074`) and `nvda_architecture_kernel-0.1.0.tar.gz` (SHA-256 `2d9596841554a592f575c02bdff523aee6e897fa8e07ca4218bcd7690ebaea30`). Both inventories were inspected. The wheel contains exactly the 13 current `src/nvda_desk` Python files plus package metadata/licence; the wheel source paths and bytes exactly match the current source tree. Every sdist file corresponding to a repository path is byte-identical to the current tree; `PKG-INFO` is the sole generated/non-repository path.
+
+The wheel was installed with `--no-index` into a new CPython 3.13.5 environment outside the repository, with the sole runtime dependency supplied from the admitted wheelhouse. From a separate non-repository working directory with `PYTHONPATH` unset, all retained `nvda_desk` modules imported from the isolated environment's `site-packages`, the source repository was not present in `sys.path`, and all five declared architecture console scripts resolved their installed command surfaces.
+
+Exact artefact inventories, hashes, byte-comparison results, installation commands and proof boundaries are recorded in `docs/evidence/akr7/AKR7_4_TRUTHFUL_PACKAGING_AND_ISOLATED_INSTALL.md`. The semantic role/exclusion audit of retained active-tree and built-artefact content remains AKR-7.5.
