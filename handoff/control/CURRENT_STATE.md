@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-08 RECOVERED AND ACCEPTED / VI-09 ACTIVE`
+- **Gate state:** `ACTIVE — VI-09 ACCEPTED / VI-10 ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -14,8 +14,9 @@
 - **Accepted BICP:** `BICP-CANDIDATE-005` at fixed G02 hashes
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
 - **Accepted recovered VI-08 state:** `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`
-- **Current Leaf:** `G03-L05 / VI-09 — Separate product-proof admission/control surface`
-- **Current actor:** `PM` — VI-09 authority/proof-control design and bounded Worker handoff preparation
-- **Worker handoff:** `control/GATE_03_WORKER_001_HANDOFF.md`
+- **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
+- **Current Leaf:** `G03-L06 / VI-10 — Adversarial physical product proof before implementation`
+- **Current actor:** `PM` — VI-10 physical-proof design and bounded proof-author Worker handoff preparation
+- **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** complete the mandatory VI-09 proof-authority/method readback, derive the separate N15/N19 product-proof control surface, and dispatch only that bounded control mutation. No physical product test or production code yet.
+- **Next lawful action:** derive and author VI-10 adversarial physical product proof from the exact accepted BICP/IRB, routed current normatives and admitted proof-control surface. Production implementation remains prohibited until VI-11 proof-adequacy review.

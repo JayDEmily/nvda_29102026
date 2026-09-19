@@ -70,3 +70,16 @@ Current Worker 001 execution binding:
 - PM inline VI-08/VI-09/VI-10 exploratory commits: `DO_NOT_CARRY_FORWARD`.
 
 The original VI-06 binding remains historical provenance; it is not relabelled PASS.
+
+
+## Worker 002 / VI-09 accepted execution binding
+
+- PM handoff source: `c5430957b4316a4d8ab5b903f79008f860bd3dfb` / tree `4bf31f154be32b6eee400c121ab5b93c8a08752a`;
+- Worker final commit: `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`;
+- assignment: VI-09 separate product-proof admission/control surface only;
+- accepted control state: exact 13 current product obligations, zero physical product families, `INCOMPLETE_NO_PHYSICAL_FAMILIES`;
+- fail-closed aggregate evidence: product runner rc `4`, explicitly not a product-proof PASS;
+- architecture regression: separate `architecture_kernel` aggregate 74/74 green;
+- scope closure: no `tests/product/**`, production-source, or `config/proof/**` mutation.
+
+Current successor frontier is VI-10 adversarial physical product proof before any product implementation.

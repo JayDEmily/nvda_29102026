@@ -396,7 +396,8 @@ A terminal PASS requires evidence that:
 - [x] 2026-09-19 — VI-06 review route superseded for this concrete run by explicit Programme Owner execution-routing authority; the historical blocked review remains preserved and is not relabelled PASS.
 - [x] 2026-09-19 — VI-07 PM planning revalidated ingress as `create:raw_signal_occurrence_truth->M00, modify:A00` and derived the exact bounded architecture-admission mutation.
 - [x] 2026-09-20 — VI-08 recovered Worker execution accepted at `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`; the earlier unpreserved sandbox commit identity was not reused. M00 is durably admitted with A00->M00, package/public seam only and no product behaviour. Clean committed-state `architecture_kernel` promotion passed 74/74; structural validation, mypy and Ruff passed.
-- [ ] VI-09 — establish the separate N15/N19 product-proof admission/control surface after the mandatory proof-authority/method readback; no physical product test or production code yet.
+- [x] 2026-09-20 — VI-09 accepted at `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`; separate product-proof authority/family/aggregate control binds exactly 13 current product obligations, admits 0 physical families, and fails closed with runner rc 4 rather than reporting empty-set success. Required adversarial control matrix satisfied 11/11 required rejection dispositions; separate `architecture_kernel` promotion remained green at 74/74; no product test or production code was created.
+- [ ] VI-10 — author adversarial physical product proof from exact accepted authority before implementation; production code remains prohibited.
 
 ## 13. Discoveries / decisions
 
