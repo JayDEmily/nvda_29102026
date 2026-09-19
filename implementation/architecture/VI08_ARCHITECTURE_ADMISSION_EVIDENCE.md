@@ -135,4 +135,31 @@ No product decision logic, persistence implementation, provider/network integrat
 
 ## Clean committed-state promotion
 
-Pending at the time this record is first committed. The recovery execution must run `python tools/run_promotion_gate.py --set architecture_kernel` from the clean committed candidate and record the resulting commit/tree in a successor evidence update before VI-08 recovery is treated as closed.
+Clean candidate executed at:
+
+- commit: `769c9505d931386b0246bda04ac19cefa5471823`;
+- tree: `c92566f70ccb9f65be5ad2f8bff35a56b48b831f`.
+
+Observed from that clean state:
+
+```text
+python tools/run_promotion_gate.py --set architecture_kernel
+PASS — 11 resolved architecture/bootstrap test paths; 74/74 tests passed.
+
+python tools/validate_architecture.py
+PASS — 5 architecture objects; 1 active runtime module; 1 implementation allocation; 0 dependency/public-seam violations.
+
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed
+
+python -m mypy src
+Success: no issues found in 15 source files
+
+ruff check src tests tools
+All checks passed!
+
+git status --porcelain
+<empty>
+```
+
+This successor evidence commit records the clean committed-state result. It does not alter the candidate architecture/test state.
