@@ -125,7 +125,41 @@ Physical-product-test inspection returned no `tests/product/**/test_*.py` path. 
 
 ## Clean committed-state checks
 
-Pending immediately after the candidate commit. The final evidence commit will record the exact candidate commit/tree and clean committed-state product-runner and `architecture_kernel` aggregate results. Until those checks are recorded, this document does not claim VI-09 completion.
+Candidate Git identity:
+
+- commit: `6d7eede672ede38ea0a9afe5acee4157b8b9bf72`
+- tree: `879c609a995ffdba14db761577dbdf0c4000e29f`
+- pre-check worktree: clean
+
+Commands/results from that exact clean committed state:
+
+```text
+python tools/validate_product_proof.py
+PASS — exact authority/control binding; 13 required obligations; 0 physical families; aggregate INCOMPLETE_NO_PHYSICAL_FAMILIES
+
+python tools/run_product_proof_gate.py --aggregate raw_signal_occurrence_truth_product
+rc 4 — FAIL: product-proof aggregate is not ready; state=INCOMPLETE_NO_PHYSICAL_FAMILIES (this is not a product-proof PASS)
+
+python tools/run_promotion_gate.py --set architecture_kernel
+PASS — resolved all 11 admitted architecture/bootstrap paths; 74 passed
+
+python -m pytest tests/architecture tests/bootstrap -q
+74 passed
+
+python -m mypy src
+Success: no issues found in 15 source files
+
+ruff check src tests tools
+All checks passed
+
+git diff --check
+PASS (no output)
+
+git status --porcelain=v1
+clean before and after execution
+```
+
+The product runner's non-zero result is the required VI-09 outcome: the control state is valid, while product proof remains unavailable until physical families are authored and admitted. The separate architecture aggregate remains green and unchanged in membership.
 
 ## Claim boundary
 
