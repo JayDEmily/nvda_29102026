@@ -21,6 +21,8 @@ category_rules:
   S:
     may_depend_on: []
     forbidden: [A, M, P, G, K]
-declared_owner_edges: []
+declared_owner_edges:
+  - source: A00
+    target: M00
 public_seam_exceptions: []
 forbid_dynamic_imports_in_runtime_owners: true

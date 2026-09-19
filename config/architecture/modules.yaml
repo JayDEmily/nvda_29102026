@@ -1,3 +1,49 @@
 schema_version: "1.0"
-modules: []
+modules:
+  - id: M00
+    name: raw_signal_occurrence_truth
+    status: active
+    description: Bounded Raw Signal Occurrence Truth semantic owner admitted by the accepted BICP/IRB.
+    semantic_responsibility: Own Raw Signal Occurrence Truth meaning, including capture-scope and schedule occurrence truth, raw observation occurrence truth, receipt-evidence relation truth, receipt-presence assessment truth, and their semantic persistence/transaction-outcome truth.
+    inputs: []
+    outputs: []
+    permitted_dependencies: []
+    package: nvda_desk.raw_signal_occurrence_truth
+    public_seam: nvda_desk.raw_signal_occurrence_truth.api
+    exclusions:
+      - P01/DMPV3
+      - K01
+      - authoritative replay
+      - provider/network integration
+      - live external effects/accounts
+      - downstream consumers
+      - validation/quarantine
+      - D001+ semantics
+      - exact counts/membership/finality/SLA/performance/retention/recovery semantics
+      - preserved Remaining Unknowns
+    state_ownership: Capture-scope policy versions, scheduled capture occurrences, raw observation occurrences, receipt-evidence relation meaning, receipt-presence assessment meaning, and their semantic persistence state.
+    time_ownership: Configured schedule-slot truth, receipt-time meaning, source-temporal-kind preservation, and assessment system-knowledge time; no invented provider event time.
+    side_effects:
+      - Owner-authorised persistence through the M00 semantic persistence port only.
+    component_forms:
+      - contract
+      - schema
+      - service
+      - repository
+      - adapter
+    state_writer_boundary: M00-owned command/service boundary through the M00 persistence port.
+    state_reader_boundaries:
+      - M00 referential-read facet exposed to A00.
+    persistence_mechanisms:
+      - Direct Psycopg 3.3.4 PostgreSQL adapter as a non-owning technical mechanism.
+    prohibited_state_writers:
+      - A00
+      - PostgreSQL/SQL schema/driver/adapter as semantic owners
+      - P01
+      - K01
+      - downstream consumers
+    replay_obligations:
+      - Original durable facts remain referentially retrievable by domain identity; no authoritative replay/re-identification capability is activated.
+    predecessors: []
+    successors: []
 retired_ids: []

@@ -65,6 +65,11 @@ def _write_modules(repository: Path, modules: list[dict]) -> None:
         ),
         encoding="utf-8",
     )
+    shells_path = repository / "config/architecture/application_shells.yaml"
+    shells = yaml.safe_load(shells_path.read_text(encoding="utf-8"))
+    shells["application_shells"][0]["permitted_dependencies"] = []
+    shells_path.write_text(yaml.safe_dump(shells, sort_keys=False), encoding="utf-8")
+    _write_edges(repository, [])
 
 
 def _write_edges(repository: Path, edges: list[dict[str, str]]) -> None:
@@ -158,8 +163,8 @@ def test_aggregate_validator_accepts_lawful_protocol_and_kernel_activation(
 
     result = validate_architecture(repository)
 
-    assert "architecture objects: 7" in result
-    assert "active runtime modules: 0" in result
+    assert "architecture objects: 8" in result
+    assert "active runtime modules: 1" in result
 
 
 def test_real_config_accepts_declared_m_to_m_and_rejects_undeclared_edge(tmp_path: Path) -> None:

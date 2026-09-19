@@ -74,6 +74,10 @@ def test_committed_dependency_graph_is_acyclic_and_directionally_valid(tmp_path:
     repository = tmp_path / "repository"
     shutil.copytree(ROOT / "schemas", repository / "schemas")
     shutil.copytree(ROOT / "config/architecture", repository / "config/architecture")
+    shells_path = repository / "config/architecture/application_shells.yaml"
+    shells = yaml.safe_load(shells_path.read_text(encoding="utf-8"))
+    shells["application_shells"][0]["permitted_dependencies"] = []
+    shells_path.write_text(yaml.safe_dump(shells, sort_keys=False), encoding="utf-8")
     runtime_source = repository / "src/nvda_desk/m01/impl.py"
     runtime_source.parent.mkdir(parents=True)
     runtime_source.write_text(
