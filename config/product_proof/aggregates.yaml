@@ -1,0 +1,20 @@
+schema_version: "1.0"
+aggregates:
+  - id: raw_signal_occurrence_truth_product
+    implementation_target_id: M00
+    state: INCOMPLETE_NO_PHYSICAL_FAMILIES
+    required_proof_obligation_ids:
+      - IA17-PROD-001
+      - IA17-PROD-002
+      - IA17-PROD-003
+      - IA17-PROD-004
+      - IA17-PROD-005
+      - IA17-PROD-006
+      - IA17-PROD-007
+      - IA17-PROD-008
+      - IA22R01-PROD-009
+      - IA17-PROD-010
+      - IA17-PROD-011
+      - IA17-PROD-012
+      - IA17-PROD-013
+    family_ids: []

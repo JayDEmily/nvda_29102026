@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "families"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "families": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": [
+          "id", "path", "implementation_target_id", "boundary", "proof_level",
+          "proof_obligation_ids", "authority_bindings", "authoritative_inputs",
+          "dependency_substitutions", "case_coverage", "expected_failure_signals",
+          "command", "environment", "material_versions", "limitations",
+          "adjacent_nonclaims", "tier_treatment"
+        ],
+        "properties": {
+          "id": {"pattern": "^[a-z][a-z0-9_]*$", "type": "string"},
+          "path": {"pattern": "^tests/product/[a-z0-9_/]+/test_[a-z0-9_]+\\.py$", "type": "string"},
+          "implementation_target_id": {"pattern": "^M[0-9]{2}$", "type": "string"},
+          "boundary": {"minLength": 1, "type": "string"},
+          "proof_level": {
+            "enum": ["COMPONENT_DETERMINISTIC", "CONTRACT", "INTEGRATION", "STATE", "SEQUENTIAL_END_TO_END", "REPLAY"]
+          },
+          "proof_obligation_ids": {
+            "type": "array", "minItems": 1, "uniqueItems": true,
+            "items": {"pattern": "^(IA17|IA22R01)-PROD-[0-9]{3}$", "type": "string"}
+          },
+          "authority_bindings": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object", "additionalProperties": false,
+              "required": ["authority_id", "proposition_ids"],
+              "properties": {
+                "authority_id": {"minLength": 1, "type": "string"},
+                "proposition_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"minLength": 1, "type": "string"}}
+              }
+            }
+          },
+          "authoritative_inputs": {"type": "array", "items": {"minLength": 1, "type": "string"}},
+          "dependency_substitutions": {"type": "array", "items": {"minLength": 1, "type": "string"}},
+          "case_coverage": {
+            "type": "object", "additionalProperties": false,
+            "required": ["lawful_positive", "prohibited_false_positive", "missing_mandatory_authority", "lawful_optional_absence"],
+            "properties": {
+              "lawful_positive": {"type": "object"},
+              "prohibited_false_positive": {"type": "object"},
+              "missing_mandatory_authority": {"type": "object"},
+              "lawful_optional_absence": {"type": "object"}
+            }
+          },
+          "expected_failure_signals": {"type": "array", "minItems": 1, "items": {"minLength": 1, "type": "string"}},
+          "command": {"minLength": 1, "type": "string"},
+          "environment": {"minLength": 1, "type": "string"},
+          "material_versions": {"type": "array", "minItems": 1, "items": {"minLength": 1, "type": "string"}},
+          "limitations": {"type": "array", "minItems": 1, "items": {"minLength": 1, "type": "string"}},
+          "adjacent_nonclaims": {"type": "array", "minItems": 1, "items": {"minLength": 1, "type": "string"}},
+          "tier_treatment": {"const": "NOT_CLASSIFIED"}
+        }
+      }
+    }
+  }
+}

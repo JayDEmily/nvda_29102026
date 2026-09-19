@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "claim_id", "bicp", "irb", "implementation_target",
+    "routed_authority_ids", "required_product_proof_ids",
+    "forbidden_predecessor_proof_ids", "product_tier_treatment",
+    "architecture_proof_axis"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "claim_id": {"pattern": "^[a-z][a-z0-9_]*$", "type": "string"},
+    "bicp": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "packet_id"],
+      "properties": {
+        "path": {"const": "handoff/authority/BICP_CANDIDATE_005.json"},
+        "sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"},
+        "packet_id": {"const": "BICP-CANDIDATE-005"}
+      }
+    },
+    "irb": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"const": "handoff/authority/IRB_ACCEPTED_IMPLEMENTATION_BRIEF.md"},
+        "sha256": {"pattern": "^[0-9a-f]{64}$", "type": "string"}
+      }
+    },
+    "implementation_target": {
+      "type": "object", "additionalProperties": false,
+      "required": ["object_id", "package", "public_seam"],
+      "properties": {
+        "object_id": {"pattern": "^M[0-9]{2}$", "type": "string"},
+        "package": {"pattern": "^nvda_desk\\.[a-z][a-z0-9_]*$", "type": "string"},
+        "public_seam": {"pattern": "^nvda_desk\\.[a-z][a-z0-9_]*\\.api$", "type": "string"}
+      }
+    },
+    "routed_authority_ids": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"pattern": "^AUTH-[A-Z0-9]+$", "type": "string"}
+    },
+    "required_product_proof_ids": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"pattern": "^(IA17|IA22R01)-PROD-[0-9]{3}$", "type": "string"}
+    },
+    "forbidden_predecessor_proof_ids": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"pattern": "^IA[0-9A-Z]+-PROD-[0-9]{3}$", "type": "string"}
+    },
+    "product_tier_treatment": {"const": "NOT_CLASSIFIED"},
+    "architecture_proof_axis": {"const": "architecture_kernel"}
+  }
+}

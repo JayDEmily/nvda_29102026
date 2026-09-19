@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "aggregates"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "aggregates": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "implementation_target_id", "state", "required_proof_obligation_ids", "family_ids"],
+        "properties": {
+          "id": {"pattern": "^[a-z][a-z0-9_]*$", "type": "string"},
+          "implementation_target_id": {"pattern": "^M[0-9]{2}$", "type": "string"},
+          "state": {"enum": ["INCOMPLETE_NO_PHYSICAL_FAMILIES", "INCOMPLETE_COVERAGE", "READY_FOR_PROOF"]},
+          "required_proof_obligation_ids": {
+            "type": "array", "minItems": 1, "uniqueItems": true,
+            "items": {"pattern": "^(IA17|IA22R01)-PROD-[0-9]{3}$", "type": "string"}
+          },
+          "family_ids": {"type": "array", "uniqueItems": true, "items": {"pattern": "^[a-z][a-z0-9_]*$", "type": "string"}}
+        }
+      }
+    }
+  }
+}
