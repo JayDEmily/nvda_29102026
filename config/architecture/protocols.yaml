@@ -1,0 +1,9 @@
+schema_version: "1.0"
+protocols:
+  - id: P01
+    name: dmp_v3
+    status: placeholder
+    description: Reserved protocol identity for the DMPV3 governed information-carrier family. No runtime protocol implementation is currently admitted.
+    predecessors: []
+    successors: []
+retired_ids: []

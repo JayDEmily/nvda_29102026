@@ -1,0 +1,10 @@
+schema_version: "1.0"
+governance_planes:
+  - id: G01
+    name: proof_and_promotion
+    status: framework
+    description: Test admission, proof blocks, promotion sets and validation receipts.
+    runtime_dependency: false
+    predecessors: []
+    successors: []
+retired_ids: []

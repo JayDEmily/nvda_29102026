@@ -1,0 +1,6 @@
+schema_version: "1.0"
+promotion_sets:
+  - id: architecture_kernel
+    lifecycle: current_blocking
+    required_tier: Tier A
+    proof_block_ids: [architecture_registry, architecture_boundaries, implementation_ingress, proof_control, bootstrap, structural_readiness]

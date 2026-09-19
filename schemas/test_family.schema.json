@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "test_families": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "lifecycle": {
+            "enum": [
+              "current_blocking",
+              "current_nonblocking",
+              "historical"
+            ]
+          },
+          "path": {
+            "pattern": "^tests/(architecture|bootstrap)/test_[a-z0-9_]+\\.py$",
+            "type": "string"
+          },
+          "promotion_sets": {
+            "items": {
+              "pattern": "^[a-z][a-z0-9_]*$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "proof_block_id": {
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "type": "string"
+          },
+          "proposition_ids": {
+            "items": {
+              "pattern": "^AK-[A-Z]+-[0-9]{3}$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "tier": {
+            "enum": [
+              "Tier A",
+              "Tier B",
+              "Tier C"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "path",
+          "tier",
+          "lifecycle",
+          "proposition_ids",
+          "proof_block_id",
+          "promotion_sets"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "test_families"
+  ],
+  "type": "object"
+}

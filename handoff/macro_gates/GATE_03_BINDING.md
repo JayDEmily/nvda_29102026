@@ -1,0 +1,72 @@
+# Gate 03 Execution Binding
+
+## Binding ID
+
+`G03-BIND-001`
+
+## Governing predecessor
+
+- G02 disposition: `ACCEPTED`
+- G02 acceptance record: `control/GATE_02_ACCEPTANCE.md`
+- accepted payload: exact `BICP-CANDIDATE-005`
+- JSON SHA-256: `5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed`
+- Markdown SHA-256: `6b2906b92e11bf09fd7f8b188e8ed6555a0a5ae61636909f676f84827601d21f`
+
+## Exact specialist implementation workspace
+
+Source package:
+
+- `NVDA_VI06_COMPLETE_HANDOFF_20260919.tar(1).gz`
+- package SHA-256: `843dfcd5435e4738d3c7a87a8472207600dce0316306bad3ff18de1960b2f6c6`
+
+Recovery bundle:
+
+- `NVDA_VI06_BLOCKED_FULL_GIT.bundle`
+- SHA-256: `492ce255796b04fe8aa578e95a81d2aa07c4438df81464d76ff49e15bd0fb51b`
+- current branch: `work/vi-06-iwo-independent-challenge`
+- current commit: `d095954c16a9818eadb60d6364148229f2dc4558`
+- current tree: `7fdb0e5308f3af187134bc3ebf633835748e9475`
+
+Independent-review packet:
+
+- `NVDA_VI06_INDEPENDENT_REVIEW_PACKET.tar.gz`
+- SHA-256: `3e4e4059ad1deaa2f009b29cd5100da98cb19d4e21ad05ce7fa81eee3cf59846`
+
+## Accepted specialist-method operationalisation
+
+The bound implementation workspace root `EXEC_PLAN.md` states:
+
+- status: `ACCEPTED — governing successor ExecPlan under explicit human/programme acceptance on 2026-09-19`;
+- purpose: exact accepted BICP -> verified bounded implementation;
+- current root ExecPlan Git blob at the bound workspace state: `4151bb3087401168974b5f599531779cbc6f195f`;
+- current root ExecPlan SHA-256: `1f156c8bc08c45c489d495d1b6ea26047ce0fbaa351e0748564b182370696023`.
+
+The workspace records that VI-00 accepted the successor methodology and that routine continuation was delegated. The Programme Owner has now additionally directed this macro Project not to re-audit CODE-001, but to execute the already-audited/accepted implementation method.
+
+## Provenance caveat
+
+The specialist workspace cites an externally preserved accepted successor-plan commit `d85aa5ff9c03ed585f8ed913e78273aff5995b15`; that Git object is not present in the separately supplied Implementation Admission repository. This macro Gate therefore binds the accepted operational plan actually present in the supplied implementation workspace rather than pretending the missing external object was reverified here.
+
+## Historical specialist frontier at supplied VI-06 source state
+
+At source commit `d095954c16a9818eadb60d6364148229f2dc4558`, accepted specialist progress through VI-05 was preserved and the then-current frontier was VI-06 fresh independent IWO challenge, blocked on a genuinely independent reviewer mechanism. At that historical source state, VI-07 onward was stopped.
+
+That historical frontier was subsequently superseded for this concrete run by the Programme Owner routing recorded below.
+
+## Binding disposition
+
+`CURRENT`
+
+## Current owner-directed worker routing addendum
+
+The Programme Owner subsequently superseded another VI-06 review attempt for this concrete run and clarified that substantive repository mutation is to be delegated to a bounded Worker.
+
+Current Worker 001 execution binding:
+
+- source predecessor: `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`;
+- PM handoff commit: `7795705727d8ac2935949ba9e4acce672fa463a1` / tree `f34d17bfda83e52f58dfe72760e4f286e083355c`;
+- Worker packet SHA-256: `94ad0dc2def4e517aa56e8470b05e2ff378e315c9936c63008034e4d9f964baa`;
+- Worker assignment: VI-08 minimal lawful durable architecture admission only;
+- PM inline VI-08/VI-09/VI-10 exploratory commits: `DO_NOT_CARRY_FORWARD`.
+
+The original VI-06 binding remains historical provenance; it is not relabelled PASS.

@@ -1,0 +1,19 @@
+name: architecture-kernel
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.10.0"
+      - run: uv sync --locked --extra dev
+      - run: uv run ruff check src tests tools
+      - run: uv run python tools/run_promotion_gate.py --set architecture_kernel
+      - run: git diff --check

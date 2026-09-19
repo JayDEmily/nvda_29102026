@@ -1,0 +1,11 @@
+schema_version: "1.0"
+brief_sha256: 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
+acceptance:
+  status: ACCEPTED_FOR_IMPLEMENTATION
+  authority_ref: IA-AUTH-001
+targets:
+  - action: create
+    category: M
+    name: raw_signal_occurrence_truth
+  - action: modify
+    object_id: A00

@@ -1,0 +1,4234 @@
+{
+  "schema_version": "1.3",
+  "packet_id": "BICP-CANDIDATE-005",
+  "packet_version": 5,
+  "packet_status": "CANDIDATE",
+  "packet_byte_identity_manifest_path": "admission/packet/BICP_CANDIDATE_005.sha256",
+  "authority_catalogue": [
+    {
+      "authority_id": "IRB-938DEBE",
+      "authority_kind": "IRB",
+      "description": "Exact authorised Raw Signal Occurrence Truth implementation-ready brief.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      }
+    },
+    {
+      "authority_id": "IA-AUTH-001",
+      "authority_kind": "IMPLEMENTATION_AUTHORISATION",
+      "description": "Current explicit human/programme exact-byte implementation-admission authority.",
+      "file_identity": {
+        "path": "admission/authority/IMPLEMENTATION_AUTHORITY.md",
+        "sha256": "9c4057936d7cbe7f352011a2a6296cdafc2830cbecad88832e150e7ca68c9018",
+        "byte_length": 1796
+      }
+    },
+    {
+      "authority_id": "M10-V004-SEMANTIC-CANDIDATE",
+      "authority_kind": "METHOD_004_PROVENANCE",
+      "description": "Exact accepted M10 semantic candidate V004 bound by the recovered W006 handoff.",
+      "external_reference": "METHOD-004/M10 V004 SHA-256 1b54afea782a5ddfb03463e23995e6eb83f76f5fb34939304f7c078a9dda34d6; exact W006 handoff SHA-256 8f74441102855ddbef814ec63609117dabf1441c76ef8ba951c3916c0ac1efa5."
+    },
+    {
+      "authority_id": "M10-T006-W006-V004-ACCEPTANCE",
+      "authority_kind": "SEMANTIC_ACCEPTANCE",
+      "description": "Independent T006 APPROVE with zero findings for exact W006 handoff and V004; W006 carries the exact current IRB bytes.",
+      "external_reference": "T006 archive SHA-256 d65cda7cf7bbdb4ee7e22b20f4feb85a126ca2faa6463525c0e0f8f3f9f3ea78; reviewed W006 handoff SHA-256 8f74441102855ddbef814ec63609117dabf1441c76ef8ba951c3916c0ac1efa5; V004 SHA-256 1b54afea782a5ddfb03463e23995e6eb83f76f5fb34939304f7c078a9dda34d6; terminal brief SHA-256 938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342."
+    },
+    {
+      "authority_id": "IA-EXECPLAN",
+      "authority_kind": "OTHER_CURRENT_AUTHORITY",
+      "description": "Accepted current Implementation Admission ExecPlan governing tranche scope and stop boundary.",
+      "file_identity": {
+        "path": "EXEC_PLAN.md",
+        "sha256": "6777a990b53ad7b58821277a6d2aa2b03f6033033c87dc5a5de3dd047b765ef3",
+        "byte_length": 48345
+      }
+    },
+    {
+      "authority_id": "METHOD006-BASELINE-IA00",
+      "authority_kind": "METHOD_006_BASELINE",
+      "description": "Accepted METHOD-006 standing-corpus baseline used by the route receipt.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda-normative-corpus-reconciliation",
+        "commit": "7c76b1dc87a9773e92841cae47e34b3b50190614",
+        "tree": "3cf7d5e78a490611076a6317f3b709b692cdf553"
+      }
+    },
+    {
+      "authority_id": "BUILD001-KERNEL-BASELINE",
+      "authority_kind": "KERNEL_BASELINE",
+      "description": "Exact current architecture-kernel checkpoint consumed by the admission projection.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      }
+    },
+    {
+      "authority_id": "AUTH-N04",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-N04 within this bounded context.",
+      "file_identity": {
+        "path": "normative/records/N04_DOMAIN_SOURCE_INPUT_CALENDAR.md",
+        "sha256": "5bbe3c0cd3e813b167241574e22a9791289f481657be590e0c860e5d37549ca3",
+        "byte_length": 10122
+      },
+      "locator": "N04-P01, N04-P02, N04-P03, N04-P04, N04-P05, N04-P12"
+    },
+    {
+      "authority_id": "AUTH-VG",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-VG within this bounded context.",
+      "file_identity": {
+        "path": "normative/governance/VOCABULARY_GOVERNANCE.md",
+        "sha256": "2706f3ae0cb65e548c6acabff710e8d1e53876c76523febe4ccdccf68a0a861f",
+        "byte_length": 13102
+      },
+      "locator": "VG-P01, VG-P02, VG-P03, VG-P04, VG-P05, VG-P06, VG-P07, VG-P08, VG-P09"
+    },
+    {
+      "authority_id": "AUTH-N06",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-N06 within this bounded context.",
+      "file_identity": {
+        "path": "normative/records/N06_PRODUCT_GUARDRAILS.md",
+        "sha256": "de0d1e529d12251e048ac35e8eeedf87d179099d5ba35055d9e10f34c371b9c9",
+        "byte_length": 19337
+      },
+      "locator": "N06-P01, N06-G01, N06-G02, N06-G03, N06-G04"
+    },
+    {
+      "authority_id": "AUTH-N18",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-N18 within this bounded context.",
+      "file_identity": {
+        "path": "normative/records/N18_PRODUCT_ARCHITECTURE_PROJECTION.md",
+        "sha256": "4cbf5bc045a2203639fa10246ee52e9597258a25e992379057ced431b39cf989",
+        "byte_length": 16690
+      },
+      "locator": "N18-P01, N18-P02, N18-P03, N18-P04, N18-P07, N18-P09, N18-P11, N18-P12"
+    },
+    {
+      "authority_id": "AUTH-N15",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-N15 within this bounded context.",
+      "file_identity": {
+        "path": "normative/records/N15_PRODUCT_PROOF.md",
+        "sha256": "62bbaed0306e1cf3e85de3e482284f967a971e5ff806d75e7674dd7c35d8403e",
+        "byte_length": 26647
+      },
+      "locator": "N15-P01, N15-P02, N15-P03, N15-P04, N15-P05, N15-P06, N15-P07, N15-P08, N15-P10, N15-P11, N15-P12"
+    },
+    {
+      "authority_id": "AUTH-N19",
+      "authority_kind": "METHOD_006_RECORD",
+      "description": "Current standing authority for R-N19 within this bounded context.",
+      "file_identity": {
+        "path": "normative/records/N19_ARCHITECTURE_PROOF_PROJECTION.md",
+        "sha256": "d46567a2594657e26c54d3c0bb45e44c4adadca58b8ca349d516f980dc7504fb",
+        "byte_length": 18146
+      },
+      "locator": "N19-P01, N19-P02, N19-P03, N19-P04, N19-P05, N19-P07, N19-P09, N19-P11, N19-P12"
+    },
+    {
+      "authority_id": "IRB-BC001",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-001.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-001"
+    },
+    {
+      "authority_id": "IRB-BC002",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-002.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-002"
+    },
+    {
+      "authority_id": "IRB-BC003",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-003.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-003"
+    },
+    {
+      "authority_id": "IRB-BC004",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-004.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-004"
+    },
+    {
+      "authority_id": "IRB-BC005",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-005.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-005"
+    },
+    {
+      "authority_id": "IRB-BC006",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-006.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-006"
+    },
+    {
+      "authority_id": "IRB-BC007",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-007.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-007"
+    },
+    {
+      "authority_id": "IRB-BC008",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-008.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-008"
+    },
+    {
+      "authority_id": "IRB-BC009",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-009.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-009"
+    },
+    {
+      "authority_id": "IRB-BC010",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-010.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-010"
+    },
+    {
+      "authority_id": "IRB-BC011",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-011.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-011"
+    },
+    {
+      "authority_id": "IRB-BC012",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-012.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-012"
+    },
+    {
+      "authority_id": "IRB-BC013",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-013.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-013"
+    },
+    {
+      "authority_id": "IRB-BC014",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-014.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-014"
+    },
+    {
+      "authority_id": "IRB-BC015",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-015.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015"
+    },
+    {
+      "authority_id": "M16-RSOT-001",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Bounded ownership.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-001"
+    },
+    {
+      "authority_id": "M16-RSOT-002",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Configured schedule truth.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-002"
+    },
+    {
+      "authority_id": "M16-RSOT-003",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Occurrence admission.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-003"
+    },
+    {
+      "authority_id": "M16-RSOT-004",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Native fidelity.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-004"
+    },
+    {
+      "authority_id": "M16-RSOT-005",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Temporal-kind law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-005"
+    },
+    {
+      "authority_id": "M16-RSOT-006",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Receipt-evidence law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-006"
+    },
+    {
+      "authority_id": "M16-RSOT-007",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Assessment law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-007"
+    },
+    {
+      "authority_id": "M16-RSOT-008",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Identity and retry law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-008"
+    },
+    {
+      "authority_id": "M16-RSOT-009",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Persistence/failure law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-009"
+    },
+    {
+      "authority_id": "M16-RSOT-010",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Referential replay law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-010"
+    },
+    {
+      "authority_id": "M16-RSOT-011",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Public governance law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-011"
+    },
+    {
+      "authority_id": "M16-RSOT-012",
+      "authority_kind": "IRB_PROPOSITION",
+      "description": "Exact BC-015 named proof proposition: Compatibility law.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-015 / M16-RSOT-012"
+    },
+    {
+      "authority_id": "IRB-BC016",
+      "authority_kind": "IRB",
+      "description": "Exact task-specific IRB clause BC-016.",
+      "file_identity": {
+        "path": "evidence/challenge_case/AKR6_ACCEPTED_IMPLEMENTATION_BRIEF.md",
+        "sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+        "byte_length": 20559
+      },
+      "locator": "BC-016"
+    },
+    {
+      "authority_id": "KERNEL-ARCHITECTURE-KERNEL",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/ARCHITECTURE_KERNEL.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/ARCHITECTURE_KERNEL.md"
+    },
+    {
+      "authority_id": "KERNEL-ARCHITECTURAL-OBJECT-TAXONOMY",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/ARCHITECTURAL_OBJECT_TAXONOMY.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/ARCHITECTURAL_OBJECT_TAXONOMY.md"
+    },
+    {
+      "authority_id": "KERNEL-OWNERSHIP-AND-COMPONENT-LAW",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/OWNERSHIP_AND_COMPONENT_LAW.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/OWNERSHIP_AND_COMPONENT_LAW.md"
+    },
+    {
+      "authority_id": "KERNEL-DEPENDENCY-LAWS",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/DEPENDENCY_LAWS.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/DEPENDENCY_LAWS.md"
+    },
+    {
+      "authority_id": "KERNEL-PUBLIC-SEAM-LAW",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/PUBLIC_SEAM_LAW.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/PUBLIC_SEAM_LAW.md"
+    },
+    {
+      "authority_id": "KERNEL-EXTENSION-AND-RETIREMENT",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/EXTENSION_AND_RETIREMENT_RULES.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/EXTENSION_AND_RETIREMENT_RULES.md"
+    },
+    {
+      "authority_id": "KERNEL-IMPLEMENTATION-AUTHORITY-INGRESS",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/IMPLEMENTATION_AUTHORITY_INGRESS.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/IMPLEMENTATION_AUTHORITY_INGRESS.md"
+    },
+    {
+      "authority_id": "KERNEL-TEST-AND-PROMOTION",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Current BUILD-001 kernel slice docs/architecture/TEST_AND_PROMOTION_KERNEL.md.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "docs/architecture/TEST_AND_PROMOTION_KERNEL.md"
+    },
+    {
+      "authority_id": "AK-COMP-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-COMP-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-COMP-001"
+    },
+    {
+      "authority_id": "AK-DEP-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-DEP-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-DEP-001"
+    },
+    {
+      "authority_id": "AK-DEP-002",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-DEP-002 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-DEP-002"
+    },
+    {
+      "authority_id": "AK-EXT-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-EXT-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-EXT-001"
+    },
+    {
+      "authority_id": "AK-FORM-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-FORM-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-FORM-001"
+    },
+    {
+      "authority_id": "AK-ID-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-ID-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-ID-001"
+    },
+    {
+      "authority_id": "AK-INGRESS-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-INGRESS-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-INGRESS-001"
+    },
+    {
+      "authority_id": "AK-INGRESS-002",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-INGRESS-002 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-INGRESS-002"
+    },
+    {
+      "authority_id": "AK-INGRESS-003",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-INGRESS-003 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-INGRESS-003"
+    },
+    {
+      "authority_id": "AK-INGRESS-004",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-INGRESS-004 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-INGRESS-004"
+    },
+    {
+      "authority_id": "AK-INGRESS-005",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-INGRESS-005 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-INGRESS-005"
+    },
+    {
+      "authority_id": "AK-LIFE-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-LIFE-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-LIFE-001"
+    },
+    {
+      "authority_id": "AK-OWN-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-OWN-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-OWN-001"
+    },
+    {
+      "authority_id": "AK-PKG-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-PKG-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-PKG-001"
+    },
+    {
+      "authority_id": "AK-PKG-002",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-PKG-002 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-PKG-002"
+    },
+    {
+      "authority_id": "AK-PROOF-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-PROOF-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-PROOF-001"
+    },
+    {
+      "authority_id": "AK-PROOF-002",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-PROOF-002 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-PROOF-002"
+    },
+    {
+      "authority_id": "AK-REG-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-REG-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-REG-001"
+    },
+    {
+      "authority_id": "AK-REG-002",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-REG-002 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-REG-002"
+    },
+    {
+      "authority_id": "AK-SEAM-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-SEAM-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-SEAM-001"
+    },
+    {
+      "authority_id": "AK-STATE-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-STATE-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-STATE-001"
+    },
+    {
+      "authority_id": "AK-TAX-001",
+      "authority_kind": "KERNEL_LAW",
+      "description": "Exact BUILD-001 architecture proposition AK-TAX-001 at the bound kernel checkpoint.",
+      "git_identity": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      },
+      "locator": "AK-TAX-001"
+    }
+  ],
+  "authority_identity": {
+    "irb_authority_ref": "IRB-938DEBE",
+    "semantic_acceptance": {
+      "status": "PRESENT",
+      "authority_ref": "M10-T006-W006-V004-ACCEPTANCE"
+    },
+    "implementation_authorisation": {
+      "status": "PRESENT",
+      "authority_ref": "IA-AUTH-001"
+    },
+    "method_006": {
+      "repository": "JayDEmily/nvda-normative-corpus-reconciliation",
+      "commit": "7c76b1dc87a9773e92841cae47e34b3b50190614",
+      "tree": "3cf7d5e78a490611076a6317f3b709b692cdf553"
+    },
+    "kernel": {
+      "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+      "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+      "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+    }
+  },
+  "route_receipt": {
+    "schema_version": "1.0",
+    "receipt_id": "IA09-RR-001",
+    "task_authority": {
+      "irb_sha256": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342",
+      "implementation_authorisation_ref": "IA-AUTH-001",
+      "method_006": {
+        "repository": "JayDEmily/nvda-normative-corpus-reconciliation",
+        "commit": "7c76b1dc87a9773e92841cae47e34b3b50190614",
+        "tree": "3cf7d5e78a490611076a6317f3b709b692cdf553"
+      },
+      "kernel": {
+        "repository": "JayDEmily/nvda23e0_20260821_235327_architecture_kernel_reset",
+        "commit": "17263909abae9ca8cabb2440db282d12ff492ad6",
+        "tree": "26c421f7cbc75d61ea3e538d79091f4e01136585"
+      }
+    },
+    "selected_route": {
+      "route_id": "R-N04",
+      "owner_authority_id": "AUTH-N04",
+      "route_mode": "PRIMARY",
+      "necessity_reason": "Current N04 owns source admission, source/repository identity and temporal truth, typed input boundaries, source-versus-prepared-versus-carriage separation, and persistence non-ownership exercised by the Raw Signal Occurrence Truth IRB."
+    },
+    "complete_context": [
+      {
+        "authority_id": "AUTH-N04",
+        "route_id": "R-N04",
+        "proposition_locators": [
+          "N04-P01",
+          "N04-P02",
+          "N04-P03",
+          "N04-P04",
+          "N04-P05",
+          "N04-P12"
+        ],
+        "necessity_reason": "These standing propositions constrain the source/input identity, time, typed translation, source-truth separation and persistence-mechanism boundary used by the exact IRB; the owner record was read in full."
+      },
+      {
+        "authority_id": "AUTH-VG",
+        "route_id": "R-VG",
+        "proposition_locators": [
+          "VG-P01",
+          "VG-P02",
+          "VG-P03",
+          "VG-P04",
+          "VG-P05",
+          "VG-P06",
+          "VG-P07",
+          "VG-P08",
+          "VG-P09"
+        ],
+        "necessity_reason": "Durable-language/alias/traceability governance for the IRB-fixed concept and contract names; no historical vocabulary continuity claimed."
+      },
+      {
+        "authority_id": "AUTH-N06",
+        "route_id": "R-N06",
+        "proposition_locators": [
+          "N06-P01",
+          "N06-G01",
+          "N06-G02",
+          "N06-G03",
+          "N06-G04"
+        ],
+        "necessity_reason": "Bounded guardrail overlay for N04-protected identity, temporal, typed source-boundary and unknown/degraded semantics exercised by this implementation claim."
+      },
+      {
+        "authority_id": "AUTH-N18",
+        "route_id": "R-N18",
+        "proposition_locators": [
+          "N18-P01",
+          "N18-P02",
+          "N18-P03",
+          "N18-P04",
+          "N18-P07",
+          "N18-P09",
+          "N18-P11",
+          "N18-P12"
+        ],
+        "necessity_reason": "Bounded stable lookup of current product-to-kernel projection law needed for a new task-specific source-occurrence owner; no historical allocation reuse."
+      },
+      {
+        "authority_id": "AUTH-N15",
+        "route_id": "R-N15",
+        "proposition_locators": [
+          "N15-P01",
+          "N15-P02",
+          "N15-P03",
+          "N15-P04",
+          "N15-P05",
+          "N15-P06",
+          "N15-P07",
+          "N15-P08",
+          "N15-P10",
+          "N15-P11",
+          "N15-P12"
+        ],
+        "necessity_reason": "Exact claim-limited product proof law for N04/IRB semantics, negative guardrails and the IRB durability/restart claim; packet/modifier false states preserved."
+      },
+      {
+        "authority_id": "AUTH-N19",
+        "route_id": "R-N19",
+        "proposition_locators": [
+          "N19-P01",
+          "N19-P02",
+          "N19-P03",
+          "N19-P04",
+          "N19-P05",
+          "N19-P07",
+          "N19-P09",
+          "N19-P11",
+          "N19-P12"
+        ],
+        "necessity_reason": "Dual product/architecture proof projection law; physical runtime-owner blocker remains false until the architecture object/form is projected."
+      }
+    ],
+    "dependencies": [
+      {
+        "dependency_id": "IA09-D-VG",
+        "from_route": "R-N04",
+        "to_route": "R-VG",
+        "kind": "CROSS_CUTTING",
+        "trigger_id": "IA09-T-VG",
+        "necessity_reason": "IRB/N04 meaning supplies the durable concepts that VG governs."
+      },
+      {
+        "dependency_id": "IA09-D-N06",
+        "from_route": "R-N04",
+        "to_route": "R-N06",
+        "kind": "CROSS_CUTTING",
+        "trigger_id": "IA09-T-N06",
+        "necessity_reason": "N06 protects exact N04/task propositions exercised by implementation."
+      },
+      {
+        "dependency_id": "IA09-D-N18",
+        "from_route": "R-N04",
+        "to_route": "R-N18",
+        "kind": "CROSS_CUTTING",
+        "trigger_id": "IA09-T-N18",
+        "necessity_reason": "The bounded product responsibility must be projected under current architecture law."
+      },
+      {
+        "dependency_id": "IA09-D-N15",
+        "from_route": "R-N04",
+        "to_route": "R-N15",
+        "kind": "CROSS_CUTTING",
+        "trigger_id": "IA09-T-N15",
+        "necessity_reason": "Proof obligations derive from exact N04/task propositions."
+      },
+      {
+        "dependency_id": "IA09-D-N19",
+        "from_route": "R-N18",
+        "to_route": "R-N19",
+        "kind": "CROSS_CUTTING",
+        "trigger_id": "IA09-T-N19",
+        "necessity_reason": "Architecture proof projection follows the task-specific architecture projection and product-proof law."
+      }
+    ],
+    "conditional_triggers": [
+      {
+        "trigger_id": "IA08-T-PREPARED",
+        "description": "Prepared-data/cognition contract is part of the Raw Signal task.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC013",
+          "IRB-BC016",
+          "AUTH-N04"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-CALENDAR-RUNTIME",
+        "description": "N04 financial-calendar runtime ownership is required by the task-specific 30-second capture schedule.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC003",
+          "IRB-BC004",
+          "AUTH-N04"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-PACKET",
+        "description": "A named Raw Signal seam is affirmatively packetised or activates DMPV3/P01 carriage.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC013",
+          "IRB-BC016"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-MODIFIER",
+        "description": "A concrete state-conditioned or packet modifier is activated.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-PERSISTENCE",
+        "description": "Semantic durability and persistence transaction-outcome obligations are required.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC011",
+          "IRB-BC013",
+          "IRB-BC016",
+          "AUTH-N04"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-REPLAY",
+        "description": "Authoritative replay or deterministic semantic re-execution is required.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC010",
+          "IRB-BC011",
+          "IRB-BC013",
+          "IRB-BC016"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-EXTERNAL-SIDE-EFFECT",
+        "description": "Live external side-effect authority is part of this Raw Signal task.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC013",
+          "IRB-BC016"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA08-T-EXTERNAL-ACCOUNT",
+        "description": "External account or broker-account authority is required.",
+        "result": "FALSE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ],
+        "activated_routes": []
+      },
+      {
+        "trigger_id": "IA09-T-VG",
+        "description": "Durable canonical concept/contract language and compatibility governance are required.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC012",
+          "AUTH-VG"
+        ],
+        "activated_routes": [
+          "R-VG"
+        ]
+      },
+      {
+        "trigger_id": "IA09-T-N06",
+        "description": "The implementation claim intersects N04-protected identity/time/typed-boundary/unknown semantics.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "AUTH-N04",
+          "AUTH-N06",
+          "IRB-BC009",
+          "IRB-BC010",
+          "IRB-BC013"
+        ],
+        "activated_routes": [
+          "R-N06"
+        ]
+      },
+      {
+        "trigger_id": "IA09-T-N18",
+        "description": "Task-specific current architecture projection is in scope.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "AUTH-N18",
+          "IRB-BC001"
+        ],
+        "activated_routes": [
+          "R-N18"
+        ]
+      },
+      {
+        "trigger_id": "IA09-T-N15",
+        "description": "Exact product proof obligations are required before implementation.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "AUTH-N15",
+          "IRB-BC015"
+        ],
+        "activated_routes": [
+          "R-N15"
+        ]
+      },
+      {
+        "trigger_id": "IA09-T-N19",
+        "description": "Product-facing architecture proof projection is required for the future projected object/boundary.",
+        "result": "TRUE",
+        "blocking": false,
+        "authority_refs": [
+          "AUTH-N19",
+          "AUTH-N18",
+          "AUTH-N15",
+          "IRB-BC015"
+        ],
+        "activated_routes": [
+          "R-N19"
+        ]
+      }
+    ],
+    "kernel_slices": [
+      {
+        "authority_id": "KERNEL-ARCHITECTURE-KERNEL",
+        "necessity_reason": "Kernel/product-meaning boundary and current architecture grammar referenced by VG/N06/N18/N15/N19."
+      },
+      {
+        "authority_id": "KERNEL-ARCHITECTURAL-OBJECT-TAXONOMY",
+        "necessity_reason": "Post-reset category/identity law for later IA-11/12 projection."
+      },
+      {
+        "authority_id": "KERNEL-OWNERSHIP-AND-COMPONENT-LAW",
+        "necessity_reason": "One-owner/component form and mechanism non-ownership law."
+      },
+      {
+        "authority_id": "KERNEL-DEPENDENCY-LAWS",
+        "necessity_reason": "Lawful runtime dependency direction/acyclicity for later projection."
+      },
+      {
+        "authority_id": "KERNEL-PUBLIC-SEAM-LAW",
+        "necessity_reason": "Typed public seam law for Python-visible cross-owner use."
+      },
+      {
+        "authority_id": "KERNEL-EXTENSION-AND-RETIREMENT",
+        "necessity_reason": "Lifecycle/create/modify/replacement law for later projection."
+      },
+      {
+        "authority_id": "KERNEL-IMPLEMENTATION-AUTHORITY-INGRESS",
+        "necessity_reason": "Exact implementation-authority ingress law for IA-12."
+      },
+      {
+        "authority_id": "KERNEL-TEST-AND-PROMOTION",
+        "necessity_reason": "Architecture proof admission/claim-limited proof law for N15/N19 projection."
+      }
+    ],
+    "cross_cutting_routes": [
+      {
+        "route_id": "R-VG",
+        "trigger_ref": "IA09-T-VG",
+        "necessity_reason": "Govern the IRB-fixed durable canonical concept/contract language, aliases and compatibility without creating product meaning."
+      },
+      {
+        "route_id": "R-N06",
+        "trigger_ref": "IA09-T-N06",
+        "necessity_reason": "Protect the exact N04/task identity, temporal, typed-boundary and unknown-state semantics exercised by implementation."
+      },
+      {
+        "route_id": "R-N18",
+        "trigger_ref": "IA09-T-N18",
+        "necessity_reason": "Current product-to-kernel projection law is required for the task-specific implementation architecture projection."
+      },
+      {
+        "route_id": "R-N15",
+        "trigger_ref": "IA09-T-N15",
+        "necessity_reason": "Claim-limited product proof law is required to derive BC-015 and N04/N06 proof obligations without authoring tests."
+      },
+      {
+        "route_id": "R-N19",
+        "trigger_ref": "IA09-T-N19",
+        "necessity_reason": "Preserve distinct product and architecture proof axes for the later projected implementation object/boundary."
+      }
+    ],
+    "excluded_routes": [
+      {
+        "route_id": "R-N05",
+        "reason": "Prepared-data/cognition-ingress meaning is downstream of the raw source/occurrence responsibility."
+      },
+      {
+        "route_id": "R-N08",
+        "reason": "Prepared-runtime transformation is not the Raw Signal source-occurrence owner."
+      },
+      {
+        "route_id": "R-SCC01",
+        "reason": "Serial/parallel/downstream operating order is outside the bounded IRB responsibility."
+      },
+      {
+        "route_id": "R-SCC02",
+        "reason": "Serial candidate and parallel environmental-risk semantics are downstream and outside the IRB."
+      },
+      {
+        "route_id": "R-N11",
+        "reason": "Terminal risk/capital authority is downstream and outside the IRB."
+      },
+      {
+        "route_id": "R-N12",
+        "reason": "Execution intent/event/receipt semantics are outside the IRB."
+      },
+      {
+        "route_id": "R-N13",
+        "reason": "Portfolio/inventory/lifecycle state is outside the IRB."
+      },
+      {
+        "route_id": "R-N03",
+        "reason": "Signal-informed intraday temporal-phase semantics are not part of Raw Signal occurrence truth."
+      },
+      {
+        "route_id": "R-N21",
+        "reason": "No concrete state-conditioned modifier is activated by the IRB."
+      },
+      {
+        "route_id": "R-N14",
+        "reason": "Authoritative replay/deterministic semantic re-execution trigger is FALSE; referential retrieval alone does not activate R-N14."
+      }
+    ],
+    "stop_conditions": [
+      {
+        "stop_id": "IA06-STOP-OWNER",
+        "status": "RESOLVED",
+        "reason": "A current smallest primary semantic route was required; R-N04 was established from current routing metadata and the complete N04 owner record.",
+        "authority_refs": [
+          "AUTH-N04"
+        ]
+      },
+      {
+        "stop_id": "IA06-STOP-DECOMPOSITION",
+        "status": "RESOLVED",
+        "reason": "No second independent primary semantic owner is required; specific new Raw Signal meanings are supplied by the exact task-specific IRB rather than by unrelated standing routes.",
+        "authority_refs": [
+          "AUTH-N04",
+          "IRB-938DEBE"
+        ]
+      },
+      {
+        "stop_id": "IA07-STOP-UNIVERSAL-CLOSURE",
+        "status": "RESOLVED",
+        "reason": "R-N04 has no universal product-semantic predecessor; recursive closure therefore terminates at the primary owner record and is finite/acyclic.",
+        "authority_refs": [
+          "AUTH-N04"
+        ]
+      },
+      {
+        "stop_id": "IA08-STOP-CONDITIONAL-UNKNOWN",
+        "status": "RESOLVED",
+        "reason": "No material conditional semantic-route trigger required for the bounded context remains UNKNOWN; explicit implementation Remaining Unknowns are preserved separately and not defaulted.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016",
+          "AUTH-N04"
+        ]
+      },
+      {
+        "stop_id": "IA09-STOP-CROSS-CUTTING",
+        "status": "RESOLVED",
+        "reason": "All five relevant cross-cutting planes have evidence-backed triggers and bounded proposition sets; none is used to create Raw Signal meaning or activate a false conditional capability.",
+        "authority_refs": [
+          "AUTH-VG",
+          "AUTH-N06",
+          "AUTH-N18",
+          "AUTH-N15",
+          "AUTH-N19",
+          "AUTH-N04"
+        ]
+      }
+    ]
+  },
+  "architecture_projection": {
+    "unit_disposition": "ONE_BOUNDED_UNIT",
+    "bounded_unit": {
+      "unit_id": "BICP-UNIT-RSOT-001",
+      "responsibility": "Raw Signal Occurrence Truth",
+      "owner_target_ids": [
+        "IA11-TARGET-001"
+      ],
+      "authority_refs": [
+        "IRB-BC001",
+        "AUTH-N18",
+        "AK-OWN-001"
+      ]
+    },
+    "targets": [
+      {
+        "target_id": "IA11-TARGET-001",
+        "intent": "create",
+        "category": "M",
+        "responsibility_name": "raw_signal_occurrence_truth",
+        "resolved_candidate_id": "M00",
+        "candidate_resolution_status": "KERNEL_RESOLVED_NON_DURABLE",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-TAX-001",
+          "AK-OWN-001",
+          "AK-EXT-001"
+        ]
+      },
+      {
+        "target_id": "IA11-TARGET-002",
+        "intent": "modify",
+        "existing_object_id": "A00",
+        "candidate_resolution_status": "NOT_APPLICABLE",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-TAX-001",
+          "AK-DEP-001",
+          "AK-SEAM-001"
+        ]
+      }
+    ],
+    "responsibility_clauses": [
+      {
+        "claim_id": "BICP-RSP-001",
+        "statement": "Own configured capture-scope policy versions.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC003"
+        ]
+      },
+      {
+        "claim_id": "BICP-RSP-002",
+        "statement": "Own owed nominal 30-second scheduled capture occurrences.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC004"
+        ]
+      },
+      {
+        "claim_id": "BICP-RSP-003",
+        "statement": "Own actually received raw-observation occurrences with native/delivery/receipt-time fidelity.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC005",
+          "IRB-BC006"
+        ]
+      },
+      {
+        "claim_id": "BICP-RSP-004",
+        "statement": "Own capture-receipt evidence relations under active eligibility.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC007"
+        ]
+      },
+      {
+        "claim_id": "BICP-RSP-005",
+        "statement": "Own append-only three-state receipt-presence assessments.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC008"
+        ]
+      },
+      {
+        "claim_id": "BICP-RSP-006",
+        "statement": "Own semantic persistence and transaction-outcome truth for the bounded Raw Signal facts.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC011",
+          "AK-STATE-001"
+        ]
+      }
+    ],
+    "exclusions": [
+      {
+        "claim_id": "BICP-EXC-001",
+        "statement": "A00 owns construction, translation and top-level lifecycle only; it does not own Raw Signal decisions.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-OWN-001"
+        ]
+      },
+      {
+        "claim_id": "BICP-EXC-002",
+        "statement": "PostgreSQL, drivers, schemas, repositories and adapters are non-owning mechanisms and cannot define Raw Signal meaning.",
+        "authority_refs": [
+          "IRB-BC013",
+          "AUTH-N04",
+          "AK-OWN-001"
+        ]
+      },
+      {
+        "claim_id": "BICP-EXC-003",
+        "statement": "No downstream business consumer is admitted.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "BICP-EXC-004",
+        "statement": "P01/DMPV3 carriage and K01 mechanism ownership are inactive.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "BICP-EXC-005",
+        "statement": "Authoritative replay, external effects/accounts and downstream signal/model/trading/risk behaviour are outside this bounded unit.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      }
+    ],
+    "inputs": [
+      {
+        "item_id": "BICP-IN-001",
+        "name": "capture_scope_policy",
+        "description": "Configured capture-scope policy material with exact lineage and active-version semantics.",
+        "authority_refs": [
+          "IRB-BC003",
+          "AUTH-N04"
+        ]
+      },
+      {
+        "item_id": "BICP-IN-002",
+        "name": "schedule_invocation",
+        "description": "A00-composed schedule/lifecycle invocation for nominal 30-second slot generation.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC004",
+          "AUTH-N04"
+        ]
+      },
+      {
+        "item_id": "BICP-IN-003",
+        "name": "provider_source_ingress",
+        "description": "A00-translated provider/source ingress preserving provider record and delivery boundaries.",
+        "authority_refs": [
+          "IRB-BC005",
+          "IRB-BC006",
+          "AUTH-N04"
+        ]
+      },
+      {
+        "item_id": "BICP-IN-004",
+        "name": "eligibility_mapping",
+        "description": "Separately admitted provider eligibility/mapping authority when present.",
+        "authority_refs": [
+          "IRB-BC003",
+          "IRB-BC005",
+          "IRB-BC007"
+        ]
+      },
+      {
+        "item_id": "BICP-IN-005",
+        "name": "prior_durable_owner_facts",
+        "description": "Prior owner-local durable facts required for retry, supersession and restart reconciliation.",
+        "authority_refs": [
+          "IRB-BC008",
+          "IRB-BC010",
+          "IRB-BC011"
+        ]
+      }
+    ],
+    "outputs": [
+      {
+        "item_id": "BICP-OUT-001",
+        "name": "CaptureScopePolicy.v1",
+        "description": "Typed capture-scope policy fact.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC003"
+        ]
+      },
+      {
+        "item_id": "BICP-OUT-002",
+        "name": "ScheduledCaptureOccurrence.v1",
+        "description": "Typed owed-slot occurrence fact.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC004"
+        ]
+      },
+      {
+        "item_id": "BICP-OUT-003",
+        "name": "RawObservationOccurrence.v1",
+        "description": "Typed actually-received raw observation fact.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC005",
+          "IRB-BC006"
+        ]
+      },
+      {
+        "item_id": "BICP-OUT-004",
+        "name": "CaptureReceiptEvidenceRelation.v1",
+        "description": "Typed receipt-presence evidence relation when lawfully derived/materialised.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC007"
+        ]
+      },
+      {
+        "item_id": "BICP-OUT-005",
+        "name": "CaptureReceiptPresenceAssessment.v1",
+        "description": "Typed append-only three-state assessment fact.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC008"
+        ]
+      },
+      {
+        "item_id": "BICP-OUT-006",
+        "name": "referential_owner_fact_read",
+        "description": "Referential reads of original owner facts with identity, lineage and schedule context.",
+        "authority_refs": [
+          "IRB-BC011",
+          "IRB-BC012"
+        ]
+      }
+    ],
+    "ownership": {
+      "state": {
+        "disposition": "OWNED",
+        "description": "M00 owns Raw Signal semantic state, identity/retry/supersession decisions and the semantic write boundary; storage remains non-owning.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC008",
+          "IRB-BC010",
+          "IRB-BC011",
+          "AK-OWN-001",
+          "AK-STATE-001"
+        ]
+      },
+      "time": {
+        "disposition": "OWNED",
+        "description": "M00 owns nominal slot, collector receipt, source temporal-kind and assessment-time semantics; A00 supplies inputs but does not reinterpret them.",
+        "authority_refs": [
+          "IRB-BC004",
+          "IRB-BC005",
+          "IRB-BC008",
+          "IRB-BC009",
+          "AUTH-N04"
+        ]
+      },
+      "side_effect": {
+        "disposition": "OWNED",
+        "description": "The bounded owner may cause persistence only through the M00-owned semantic persistence port after applicable commit; external side effects are not authorised.",
+        "authority_refs": [
+          "IRB-BC011",
+          "IRB-BC013",
+          "AK-STATE-001"
+        ]
+      }
+    },
+    "dependencies": [
+      {
+        "dependency_id": "IA14-DEP-001",
+        "from_target": "IA11-TARGET-002",
+        "to_target": "IA11-TARGET-001",
+        "relation_kind": "RUNTIME",
+        "direction": "A00 -> M00 public seam",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-DEP-001",
+          "AK-DEP-002",
+          "AK-SEAM-001"
+        ]
+      }
+    ],
+    "public_seams": [
+      {
+        "seam_id": "IA15-SEAM-001",
+        "producer_target": "IA11-TARGET-001",
+        "consumer_target": "IA11-TARGET-002",
+        "typing_disposition": "TYPED_REQUIRED",
+        "carrier_disposition": "DIRECT_TYPED_OWNER_SEAM",
+        "boundary_meaning": "Command facet of the M00-owned Raw Signal public boundary: A00 supplies only authority-bounded configured/schedule/source-ingress inputs; M00 alone decides resulting Raw Signal meaning.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC013",
+          "AUTH-N18",
+          "AK-SEAM-001",
+          "AK-DEP-001"
+        ]
+      },
+      {
+        "seam_id": "IA15-SEAM-002",
+        "producer_target": "IA11-TARGET-001",
+        "consumer_target": "IA11-TARGET-002",
+        "typing_disposition": "TYPED_REQUIRED",
+        "carrier_disposition": "DIRECT_TYPED_OWNER_SEAM",
+        "boundary_meaning": "Referential-read facet of the M00-owned Raw Signal public boundary: A00 reads original M00 facts with typed identity, lineage and schedule context without acquiring or inferring additional meaning.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC011",
+          "IRB-BC012",
+          "AUTH-N18",
+          "AK-SEAM-001"
+        ]
+      }
+    ],
+    "lifecycle_constraints": [
+      {
+        "constraint_id": "IA16-LIFE-001",
+        "target_id": "IA11-TARGET-001",
+        "disposition": "CREATE",
+        "statement": "M00 remains a non-durable post-reset create candidate; durable allocation/activation/composition require later lifecycle, implementation and proof admission and do not inherit historical M00/M16 identity or status.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-ID-001",
+          "AK-LIFE-001",
+          "AK-EXT-001",
+          "AK-COMP-001"
+        ]
+      },
+      {
+        "constraint_id": "IA16-LIFE-002",
+        "target_id": "IA11-TARGET-002",
+        "disposition": "MODIFY",
+        "statement": "A00 is the existing supporting application-shell target that must later compose the admitted M00 owner, adapters and lifecycle without acquiring Raw Signal semantics or bypassing the public seam.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-TAX-001",
+          "AK-OWN-001",
+          "AK-COMP-001"
+        ]
+      },
+      {
+        "constraint_id": "IA16-LIFE-003",
+        "target_id": "IA11-TARGET-001",
+        "disposition": "RETAIN",
+        "statement": "Accepted Raw Signal concept/payload meaning remains stable across implementation movement; breaking v1 change requires explicit new schema version, A00 migration and proof disposition, with no retirement authorised in this slice.",
+        "authority_refs": [
+          "IRB-BC012",
+          "AUTH-VG"
+        ]
+      }
+    ],
+    "mechanism_constraints": [
+      {
+        "claim_id": "BICP-MECH-001",
+        "statement": "PostgreSQL-backed semantic durability is required, but physical layout/types/indexes/partitions/pooling/driver remain UNKNOWN_BLOCKING_IF_REQUIRED.",
+        "authority_refs": [
+          "IRB-BC011",
+          "IRB-BC013",
+          "IRB-BC016",
+          "AK-STATE-001"
+        ]
+      },
+      {
+        "claim_id": "BICP-MECH-002",
+        "statement": "M00 owns the semantic persistence port; A00 may construct/inject a non-owning technical adapter.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC011",
+          "AK-OWN-001",
+          "AK-COMP-001"
+        ]
+      },
+      {
+        "claim_id": "BICP-MECH-003",
+        "statement": "K01 is not selected and no M00->K01 dependency is projected.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC013",
+          "IRB-BC016",
+          "AK-DEP-001"
+        ]
+      }
+    ],
+    "composition_constraints": [
+      {
+        "claim_id": "BICP-COMP-001",
+        "statement": "A00 constructs the bounded M00 implementation and required adapters, owns top-level lifecycle, and calls M00 only through its typed public boundary.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-COMP-001",
+          "AK-SEAM-001"
+        ]
+      },
+      {
+        "claim_id": "BICP-COMP-002",
+        "statement": "Runtime direction is A00 -> M00; reverse M00 -> A00 and private-state bypass are prohibited.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-DEP-001",
+          "AK-DEP-002",
+          "AK-SEAM-001"
+        ]
+      }
+    ]
+  },
+  "proof_obligations": [
+    {
+      "proof_id": "IA17-PROD-001",
+      "authority_refs": [
+        "IRB-BC001",
+        "IRB-BC013",
+        "AUTH-N15",
+        "AK-OWN-001",
+        "M16-RSOT-001"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "M00 alone decides the five Raw Signal meanings and semantic durability outcomes; A00 only composes/translates."
+      ],
+      "prohibited_false_positive_cases": [
+        "A00, PostgreSQL, adapter, schema, P01/K01 or test decides a Raw Signal outcome."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Implementation cannot identify the semantic owner or authorised writer boundary."
+      ],
+      "lawful_optional_absence_cases": [
+        "No downstream business consumer is present."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Historical M16 naming does not become current identity; M00 candidate remains separately traced."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-002",
+      "authority_refs": [
+        "IRB-BC003",
+        "IRB-BC004",
+        "AUTH-N15",
+        "M16-RSOT-002"
+      ],
+      "proof_level": "COMPONENT_DETERMINISTIC",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Activation/deactivation and exact :00/:30 slot boundaries generate owed 30-second [start,end) occurrences only for active policy versions."
+      ],
+      "prohibited_false_positive_cases": [
+        "Scheduler wake/receipt/provider-event time is treated as schedule truth; slot before activation or at/after deactivation is owed."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Policy version/activation boundary required by the implementation is absent or contradictory."
+      ],
+      "lawful_optional_absence_cases": [
+        "No deactivation timestamp is present and no perpetual-service claim is inferred."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Same (policy ref, slot start) retry reference preserves one capture occurrence without replacing opaque occurrence identity."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-003",
+      "authority_refs": [
+        "IRB-BC005",
+        "IRB-BC006",
+        "AUTH-N04",
+        "AUTH-N15",
+        "M16-RSOT-003"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "One actually received provider logical record becomes one raw observation; separable records in one delivery become separate observations sharing delivery ref."
+      ],
+      "prohibited_false_positive_cases": [
+        "Separate provider records are coalesced; one provider record is split into repository-created field occurrences; capture and observation fabricate each other."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Mandatory receipt/provenance/temporal discriminant needed for a raw observation is missing."
+      ],
+      "lawful_optional_absence_cases": [
+        "No eligible active capture scope exists; observation remains valid with no capture relation."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Newly received retransmission gets a new observation identity even when native identifiers/values match."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-004",
+      "authority_refs": [
+        "IRB-BC002",
+        "IRB-BC005",
+        "IRB-BC006",
+        "IRB-BC009",
+        "AUTH-N04",
+        "AUTH-N15",
+        "M16-RSOT-004"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Native field names/values/provider-calculated values and applicable units/provenance are preserved unchanged under admitted mapping."
+      ],
+      "prohibited_false_positive_cases": [
+        "Native form is overwritten, optional metadata inferred, provider bad-tick/quarantine validity invented, or payload shape treated as authority."
+      ],
+      "missing_mandatory_authority_cases": [
+        "A mapping makes provider metadata mandatory but it is absent."
+      ],
+      "lawful_optional_absence_cases": [
+        "Optional source product/endpoint/native id/variant/subject/unit/session/status/revision fields are absent when not applicable."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Provider identity and local observation/delivery identities remain separately typed."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-005",
+      "authority_refs": [
+        "IRB-BC005",
+        "IRB-BC009",
+        "AUTH-N04",
+        "AUTH-N06",
+        "AUTH-N15",
+        "M16-RSOT-005"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "true_instant/date_only/receipt_only cases preserve only their authorised source time plus immutable receipt/order evidence."
+      ],
+      "prohibited_false_positive_cases": [
+        "Date converted to midnight UTC; receipt time fills missing provider time/timezone; raw event_ts_utc is fabricated."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Required source_temporal_kind or receipt time/order evidence is missing/contradictory."
+      ],
+      "lawful_optional_absence_cases": [
+        "receipt_only has no source timestamp; optional timezone/session metadata absent lawfully."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Microsecond received_ts_utc and optional genuine received_epoch_ns remain distinct evidence precision."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-006",
+      "authority_refs": [
+        "IRB-BC007",
+        "AUTH-N15",
+        "M16-RSOT-006"
+      ],
+      "proof_level": "COMPONENT_DETERMINISTIC",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Relation is derived only for eligible active policy and received_ts inside [start,end), with role evidences_receipt_presence_only."
+      ],
+      "prohibited_false_positive_cases": [
+        "Relation implies membership/count/validity/completeness/finality/ownership or is created without active eligibility."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Eligibility/policy authority required to decide relation is absent."
+      ],
+      "lawful_optional_absence_cases": [
+        "Materialisation is omitted; no relation exists for no-scope observation."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Observation and capture references plus effective policy and relation-basis receipt time remain exact."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-007",
+      "authority_refs": [
+        "IRB-BC008",
+        "IRB-BC009",
+        "AUTH-N15",
+        "M16-RSOT-007"
+      ],
+      "proof_level": "STATE",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "All three outcomes are exercised; later eligible evidence appends one_or_more_received superseding prior assessment without overwrite."
+      ],
+      "prohibited_false_positive_cases": [
+        "zero means outage/finality/provider-event absence; assessment overwritten; exact count inferred; unknown treated as zero."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Capture ref/outcome/evidence-as-of or required supersession predecessor is invalid/missing."
+      ],
+      "lawful_optional_absence_cases": [
+        "supersedes ref absent for first assessment; no final assessment exists."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Append-only acyclic single-predecessor assessment chain and distinct assessment occurrence IDs are preserved."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-008",
+      "authority_refs": [
+        "IRB-BC002",
+        "IRB-BC004",
+        "IRB-BC010",
+        "AUTH-N04",
+        "AUTH-N15",
+        "M16-RSOT-008"
+      ],
+      "proof_level": "STATE",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Same domain occurrence retry reuses opaque identity only with identical content; all identity layers remain separately typed."
+      ],
+      "prohibited_false_positive_cases": [
+        "Conflicting same-ID content accepted; universal ID substitutes for policy/capture/observation/assessment/provider/delivery/schema/concept/run identities; equal values deduplicated."
+      ],
+      "missing_mandatory_authority_cases": [
+        "A required originating identity/lineage layer is unavailable."
+      ],
+      "lawful_optional_absence_cases": [
+        "Optional revision material absent without implying original."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Provider retransmission keeps new observation identity; source/provider and repository identities remain distinct."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA22R01-PROD-009",
+      "authority_refs": [
+        "IRB-BC011",
+        "IRB-BC013",
+        "AUTH-N15",
+        "AK-STATE-001",
+        "M16-RSOT-009"
+      ],
+      "proof_level": "STATE",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Real PostgreSQL integration later demonstrates own-transaction commit truth, append/readback and failed-write non-fabrication.",
+        "After restart, reconcile the declared schedule universe against durable capture occurrences; for an owed slot missing from durable capture state, create the missing capture occurrence with an initial unknown_not_established assessment and never infer zero_received merely from restart absence."
+      ],
+      "prohibited_false_positive_cases": [
+        "Success claimed before commit; failed write masked as empty/unknown/zero; cross-kind atomicity claimed; same-process memory used as durability proof."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Implementation claims durable/restart behaviour without an authorised persistence realisation or real persistence evidence."
+      ],
+      "lawful_optional_absence_cases": [
+        "No bounded recovery/RTO/RPO/catch-up guarantee is asserted."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "M00 remains semantic owner/write boundary while technical storage mechanism remains non-owning."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-010",
+      "authority_refs": [
+        "IRB-BC011",
+        "IRB-BC016",
+        "AUTH-N15",
+        "M16-RSOT-010"
+      ],
+      "proof_level": "STATE",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Original policy/capture/assessment/observation facts remain referentially retrievable by domain identity with lineage/schedule context."
+      ],
+      "prohibited_false_positive_cases": [
+        "Later run/replay/packet rewrites or re-identifies originals; deterministic recomputation/equivalence/SLA is claimed."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Required original identity/lineage cannot be retrieved for a claimed readback."
+      ],
+      "lawful_optional_absence_cases": [
+        "No replay execution capability is present; proof remains referential-read only."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Original domain identities survive later execution/run/replay context identities."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-011",
+      "authority_refs": [
+        "IRB-BC001",
+        "IRB-BC002",
+        "IRB-BC013",
+        "AUTH-VG",
+        "AUTH-N18",
+        "AUTH-N15",
+        "AK-SEAM-001",
+        "M16-RSOT-011"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "A00 alone uses typed command/read facets; canonical concepts and v1 contracts remain exact and payload shape creates no extra meaning."
+      ],
+      "prohibited_false_positive_cases": [
+        "Private-state bypass, unnamed consumer, DMPV3/P01 activation, SQL/Python/provider shape authority or adapter semantic ownership."
+      ],
+      "missing_mandatory_authority_cases": [
+        "A consumer or boundary is required but lacks named authority/compatibility disposition."
+      ],
+      "lawful_optional_absence_cases": [
+        "No downstream business consumer or packet carrier is present."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Concept/schema/domain occurrence identifiers and owner identity remain separately governed."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-012",
+      "authority_refs": [
+        "IRB-BC012",
+        "AUTH-VG",
+        "AUTH-N15",
+        "M16-RSOT-012"
+      ],
+      "proof_level": "CONTRACT",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Compatible optional field addition cannot alter interpretation of existing v1 payload; breaking changes require new schema version, A00 migration and proof disposition."
+      ],
+      "prohibited_false_positive_cases": [
+        "Field removal, optional->required, enum/discriminant/time/null/identity/provenance weakening occurs silently in v1."
+      ],
+      "missing_mandatory_authority_cases": [
+        "A breaking change is needed but successor/version/migration/proof authority is absent."
+      ],
+      "lawful_optional_absence_cases": [
+        "No retirement/deletion occurs in this slice."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Accepted concept meaning remains stable across implementation movement; aliases/deprecations are explicit."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-PROD-013",
+      "authority_refs": [
+        "IRB-BC001",
+        "IRB-BC014",
+        "IRB-BC015",
+        "AUTH-N18",
+        "AUTH-N15",
+        "AUTH-N19",
+        "AK-DEP-001",
+        "AK-SEAM-001"
+      ],
+      "proof_level": "SEQUENTIAL_END_TO_END",
+      "tier_treatment": "NOT_CLASSIFIED",
+      "positive_cases": [
+        "Later governed composition exercises A00 -> typed M00 command/read boundary with A00 adapters/composition and M00 semantic ownership preserved."
+      ],
+      "prohibited_false_positive_cases": [
+        "A00 bypasses M00 seam/private state; M00 depends on A00; adapter/storage acquires meaning; inactive P01/K01 used as though admitted."
+      ],
+      "missing_mandatory_authority_cases": [
+        "Composition claim is made without lawful M00 allocation/active form, A00 modification, dependency/seam declaration or applicable proof authority."
+      ],
+      "lawful_optional_absence_cases": [
+        "No downstream consumer, packet carrier or K mechanism is composed."
+      ],
+      "lineage_identity_status_extension_cases": [
+        "Exact IRB, current target identities and declared dependency/seam lineage remain attributable through the run."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-001",
+      "authority_refs": [
+        "AK-INGRESS-001",
+        "AK-INGRESS-002",
+        "AK-INGRESS-003",
+        "AK-INGRESS-004",
+        "AK-INGRESS-005",
+        "IRB-BC001"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "Exact authorised IRB digest and current acceptance ref validate; create M target resolves mechanically and A00 modify target resolves as current."
+      ],
+      "prohibited_false_positive_cases": [
+        "Changed brief inherits authority; caller chooses create ID; unknown/non-current modify target accepted; binding invents semantic content."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "M00 remains non-durable candidate; exact brief digest remains fixed."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-002",
+      "authority_refs": [
+        "AK-TAX-001",
+        "AK-ID-001",
+        "AK-LIFE-001",
+        "AK-EXT-001",
+        "AK-REG-001",
+        "AK-REG-002",
+        "IRB-BC012"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "Future allocation uses next lawful current post-reset M identity, preserves category/lifecycle truth and does not revive historical M16/pre-reset M00 lineage."
+      ],
+      "prohibited_false_positive_cases": [
+        "Retired/consumed identity reused; historical identifier treated as current lineage; registration alone asserted as semantic/implementation truth."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "A00 existing identity is modified; M00 candidate becomes durable only through future admitted lifecycle."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-003",
+      "authority_refs": [
+        "AK-OWN-001",
+        "AK-FORM-001",
+        "AK-STATE-001",
+        "IRB-BC001",
+        "IRB-BC011",
+        "IRB-BC013"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "M00 retains one semantic owner/write boundary while A00/adapters/repository/PostgreSQL remain category-appropriate non-owning forms."
+      ],
+      "prohibited_false_positive_cases": [
+        "Mechanism/coordinator/reader/repository/test takes Raw Signal semantic ownership or writes outside authorised boundary."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "Read projections/technical mechanisms may differ physically while preserving owned meaning."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-004",
+      "authority_refs": [
+        "AK-DEP-001",
+        "AK-DEP-002",
+        "IRB-BC001",
+        "AUTH-N18"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "Declared runtime edge is A00 -> M00 through public boundary; active M graph remains acyclic."
+      ],
+      "prohibited_false_positive_cases": [
+        "M00 -> A00; undeclared/private cross-owner import; governance/surface runtime dependency; invented K/P edge."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "Transaction participation and proof/evidence dependency planes need not create runtime edges."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-005",
+      "authority_refs": [
+        "AK-SEAM-001",
+        "IRB-BC001",
+        "IRB-BC002",
+        "IRB-BC012",
+        "AUTH-N18"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "Python-visible command/read facets are typed and restricted to declared A00/M00 public boundary with exact meaning/invariants."
+      ],
+      "prohibited_false_positive_cases": [
+        "Private submodule/table/repository bypass; supported dynamic-import bypass; packet carrier substituted without authority."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "Physical function/class signature remains later implementation choice while boundary meaning is fixed."
+      ],
+      "physical_tests_authored": false
+    },
+    {
+      "proof_id": "IA17-ARCH-006",
+      "authority_refs": [
+        "AK-COMP-001",
+        "AK-PROOF-001",
+        "AK-PROOF-002",
+        "AK-PKG-001",
+        "AK-PKG-002",
+        "AUTH-N19"
+      ],
+      "proof_level": "OTHER_CURRENT_AUTHORITY",
+      "tier_treatment": "A",
+      "positive_cases": [
+        "Later composition selects only lawfully admitted active object/form/boundary and applicable architecture proof remains green for exact claimed state."
+      ],
+      "prohibited_false_positive_cases": [
+        "Bootstrap/placeholder/registration alone treated as composable; unadmitted product capability enters distribution; green proof escalates semantic/product status."
+      ],
+      "missing_mandatory_authority_cases": [],
+      "lawful_optional_absence_cases": [],
+      "lineage_identity_status_extension_cases": [
+        "No product code/package/composition exists in this tranche; obligation activates with later implementation/promotion claim."
+      ],
+      "physical_tests_authored": false
+    }
+  ],
+  "implementation_freedom": {
+    "source_fixed": [
+      {
+        "claim_id": "IF-SRC-001",
+        "statement": "The five Raw Signal concepts plus semantic persistence/transaction-outcome truth remain one bounded semantic responsibility.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-002",
+        "statement": "Canonical concept IDs and five .v1 payload contract IDs are exact and separately typed from occurrence/provider/delivery/schema/run identities.",
+        "authority_refs": [
+          "IRB-BC002",
+          "IRB-BC012"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-003",
+        "statement": "Capture scope policy and scheduled occurrence semantics use active immutable policy versions and exact half-open 30-second UTC slots.",
+        "authority_refs": [
+          "IRB-BC003",
+          "IRB-BC004"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-004",
+        "statement": "Raw observations preserve provider logical record/delivery boundaries, native fidelity, temporal kind and receipt/local-order evidence without synthesised provider time.",
+        "authority_refs": [
+          "IRB-BC005",
+          "IRB-BC006",
+          "IRB-BC009"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-005",
+        "statement": "Receipt evidence means receipt presence only under active eligibility; it does not establish membership, containment, count, completeness or finality.",
+        "authority_refs": [
+          "IRB-BC007"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-006",
+        "statement": "Assessments are append-only, three-state, as-of transaction-visible evidence and have no final assessment.",
+        "authority_refs": [
+          "IRB-BC008"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-007",
+        "statement": "Identity/retry/retransmission/null/invalidity rules remain exact; conflicting same-ID content is invalid.",
+        "authority_refs": [
+          "IRB-BC009",
+          "IRB-BC010"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-008",
+        "statement": "PostgreSQL-backed durability semantics, own-transaction success-after-commit truth, restart unknown-not-zero and referential readback are fixed.",
+        "authority_refs": [
+          "IRB-BC011"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-009",
+        "statement": "Compatibility/breaking-change/retirement law is explicit and cannot be weakened by implementation movement.",
+        "authority_refs": [
+          "IRB-BC012"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-010",
+        "statement": "The twelve named M16-RSOT-001 through M16-RSOT-012 proposition identities and adversarial proof surface are fixed proof claims.",
+        "authority_refs": [
+          "IRB-BC014",
+          "IRB-BC015"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-011",
+        "statement": "Every BC-016 Remaining Unknown stays unresolved unless separately authorised; if implementation requires one, stop and seek authority.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-SRC-012",
+        "statement": "Final package naming/version metadata remains a BC-016 Remaining Unknown; it is not implementation-free, and implementation requiring it must stop and seek authority rather than choose a default.",
+        "authority_refs": [
+          "IRB-BC016"
+        ]
+      }
+    ],
+    "standing_authority_fixed": [
+      {
+        "claim_id": "IF-STAND-001",
+        "statement": "Source/repository identity, temporal truth and typed source-boundary separation remain governed by current N04.",
+        "authority_refs": [
+          "AUTH-N04"
+        ]
+      },
+      {
+        "claim_id": "IF-STAND-002",
+        "statement": "Canonical vocabulary/alias/compatibility governance remains current vocabulary law, not historical-name continuity.",
+        "authority_refs": [
+          "AUTH-VG"
+        ]
+      },
+      {
+        "claim_id": "IF-STAND-003",
+        "statement": "N04-protected identity/time/typed-boundary/Unknown semantics remain under product guardrails.",
+        "authority_refs": [
+          "AUTH-N06"
+        ]
+      },
+      {
+        "claim_id": "IF-STAND-004",
+        "statement": "Product meaning is projected through current architecture law; historical object IDs are not revived by resemblance.",
+        "authority_refs": [
+          "AUTH-N18"
+        ]
+      },
+      {
+        "claim_id": "IF-STAND-005",
+        "statement": "Product proof remains exact-claim-limited; proof does not manufacture semantic authority.",
+        "authority_refs": [
+          "AUTH-N15"
+        ]
+      },
+      {
+        "claim_id": "IF-STAND-006",
+        "statement": "Product and architecture proof remain separate axes with claim-limited architecture projection.",
+        "authority_refs": [
+          "AUTH-N19"
+        ]
+      }
+    ],
+    "architecture_fixed": [
+      {
+        "claim_id": "IF-ARCH-001",
+        "statement": "One semantic owner create target exists: current post-reset non-durable candidate M00.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-TAX-001",
+          "AK-OWN-001",
+          "AK-EXT-001"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-002",
+        "statement": "Existing A00 is supporting application-shell caller/composer only, not a second semantic owner.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-TAX-001",
+          "AK-OWN-001",
+          "AK-COMP-001"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-003",
+        "statement": "Runtime dependency direction is A00 -> M00; reverse M00 -> A00 is prohibited.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AUTH-N18",
+          "AK-DEP-001",
+          "AK-DEP-002"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-004",
+        "statement": "Cross-owner use occurs through the M00-owned typed command and referential-read boundary; private-state bypass is forbidden.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC011",
+          "AK-SEAM-001"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-005",
+        "statement": "M00 owns its semantic persistence port; A00 may construct/inject a non-owning PostgreSQL adapter.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC011",
+          "AK-OWN-001",
+          "AK-STATE-001"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-006",
+        "statement": "P01/DMPV3 is inactive; K01 is not selected; no downstream business consumer is admitted.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-ARCH-007",
+        "statement": "M00 remains non-durable until a later lawful lifecycle/allocation/promotion action; this tranche performs no registry mutation.",
+        "authority_refs": [
+          "AUTH-N18",
+          "AK-ID-001",
+          "AK-LIFE-001",
+          "AK-REG-001",
+          "AK-REG-002"
+        ]
+      }
+    ],
+    "implementation_free": [
+      {
+        "claim_id": "IF-FREE-001",
+        "statement": "Private module/class/function/helper naming and internal decomposition inside the M00 owner, excluding final package naming/version metadata reserved by BC-016.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC016",
+          "AK-OWN-001",
+          "AK-FORM-001"
+        ]
+      },
+      {
+        "claim_id": "IF-FREE-002",
+        "statement": "Internal algorithms/data structures may vary where the same admitted observable semantics are preserved and no Remaining Unknown is chosen.",
+        "authority_refs": [
+          "IRB-BC003",
+          "IRB-BC004",
+          "IRB-BC007",
+          "IRB-BC008",
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-FREE-003",
+        "statement": "CaptureReceiptEvidenceRelation.v1 may be physically materialised or derived on demand.",
+        "authority_refs": [
+          "IRB-BC007"
+        ]
+      },
+      {
+        "claim_id": "IF-FREE-004",
+        "statement": "Private error/exception plumbing and adapter exception mechanics may vary but cannot define Raw Signal meaning or fabricate semantic outcomes.",
+        "authority_refs": [
+          "IRB-BC013"
+        ]
+      },
+      {
+        "claim_id": "IF-FREE-005",
+        "statement": "Constructor/wiring details for A00 composition may vary while explicit dependencies and non-ownership remain preserved.",
+        "authority_refs": [
+          "IRB-BC001",
+          "AK-COMP-001",
+          "AK-DEP-001"
+        ]
+      },
+      {
+        "claim_id": "IF-FREE-006",
+        "statement": "Later physical test tooling/fixture organisation may vary only under a separately authorised test tranche and exact proof obligations.",
+        "authority_refs": [
+          "IRB-BC015",
+          "AUTH-N15",
+          "AUTH-N19",
+          "IA-EXECPLAN"
+        ]
+      }
+    ],
+    "prohibited": [
+      {
+        "claim_id": "IF-PROH-001",
+        "statement": "Do not choose any BC-016 Remaining Unknown as a conventional default when implementation requires it.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-002",
+        "statement": "Do not select physical PostgreSQL tables/types/indexes/partitions/pooling/driver without separate authority if required.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-003",
+        "statement": "Do not synthesise provider event time/timezone, reinterpret scheduled time, or promote date-only/receipt-only data to true instant.",
+        "authority_refs": [
+          "IRB-BC004",
+          "IRB-BC005",
+          "IRB-BC009"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-004",
+        "statement": "Do not infer exact membership/count/finality, duplicate equivalence/exactly-once, provider health or market silence from receipt/assessment semantics.",
+        "authority_refs": [
+          "IRB-BC007",
+          "IRB-BC008",
+          "IRB-BC010",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-005",
+        "statement": "Do not coalesce distinct provider records/deliveries, split a provider logical record into repository-created field occurrences, or deduplicate equal values by convenience.",
+        "authority_refs": [
+          "IRB-BC006",
+          "IRB-BC010",
+          "IRB-BC014"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-006",
+        "statement": "Do not let SQL/Python/schema/adapter shape decide product semantics or move Raw Signal ownership to A00/storage/mechanisms.",
+        "authority_refs": [
+          "IRB-BC013",
+          "AUTH-N04",
+          "AK-OWN-001"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-007",
+        "statement": "Do not activate P01/DMPV3, K01, authoritative replay, external effects/accounts or a downstream consumer without separate authority.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-PROH-008",
+        "statement": "Do not create an Implementation Work Order, physical product tests, product code or durable allocation/registry mutation in this ExecPlan.",
+        "authority_refs": [
+          "IA-EXECPLAN"
+        ]
+      }
+    ],
+    "inactive_capabilities": [
+      {
+        "claim_id": "IF-INACTIVE-001",
+        "statement": "P01/DMPV3 packet carriage is inactive.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC002",
+          "IRB-BC013"
+        ]
+      },
+      {
+        "claim_id": "IF-INACTIVE-002",
+        "statement": "K01 runtime mechanism dependency is inactive because K01 is not selected.",
+        "authority_refs": [
+          "IRB-BC001",
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-INACTIVE-003",
+        "statement": "Authoritative replay/deterministic re-execution is inactive; only referential retrieval is required.",
+        "authority_refs": [
+          "IRB-BC010",
+          "IRB-BC011",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-INACTIVE-004",
+        "statement": "Live external side effects and external account authority are inactive.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016"
+        ]
+      },
+      {
+        "claim_id": "IF-INACTIVE-005",
+        "statement": "Prepared/signal/risk/execution/portfolio downstream semantic owners are outside this bounded unit.",
+        "authority_refs": [
+          "IRB-BC013",
+          "IRB-BC016",
+          "AUTH-N04"
+        ]
+      },
+      {
+        "claim_id": "IF-INACTIVE-006",
+        "statement": "Product proof Tier A/B/C classification remains NOT_CLASSIFIED in this packet.",
+        "authority_refs": [
+          "AUTH-N15"
+        ]
+      }
+    ]
+  },
+  "packet_exclusions": [
+    {
+      "claim_id": "PKT-EXC-001",
+      "statement": "No Implementation Work Order is created by this packet.",
+      "authority_refs": [
+        "IA-EXECPLAN"
+      ]
+    },
+    {
+      "claim_id": "PKT-EXC-002",
+      "statement": "No physical product test is authored by this packet; IA-17 carries obligations only.",
+      "authority_refs": [
+        "IA-EXECPLAN",
+        "AUTH-N15",
+        "AUTH-N19"
+      ]
+    },
+    {
+      "claim_id": "PKT-EXC-003",
+      "statement": "No product code is created by this packet.",
+      "authority_refs": [
+        "IA-EXECPLAN"
+      ]
+    },
+    {
+      "claim_id": "PKT-EXC-004",
+      "statement": "No durable architecture allocation, registry mutation or implementation-status claim is made.",
+      "authority_refs": [
+        "IA-EXECPLAN",
+        "AUTH-N18",
+        "AK-REG-001",
+        "AK-REG-002"
+      ]
+    },
+    {
+      "claim_id": "PKT-EXC-005",
+      "statement": "Historical M16 identity is not revived as current architecture continuity; current M00 is non-durable post-reset candidate identity.",
+      "authority_refs": [
+        "AUTH-N18",
+        "AK-ID-001",
+        "AK-EXT-001"
+      ]
+    },
+    {
+      "claim_id": "PKT-EXC-006",
+      "statement": "Physical PostgreSQL realisation remains unresolved and is not selected by this packet.",
+      "authority_refs": [
+        "IRB-BC013",
+        "IRB-BC016"
+      ]
+    }
+  ],
+  "lineage": {
+    "nodes": [
+      {
+        "node_id": "LN-M10-V004",
+        "kind": "METHOD_004_PROVENANCE",
+        "ref_id": "M10-V004-SEMANTIC-CANDIDATE",
+        "digest": "1b54afea782a5ddfb03463e23995e6eb83f76f5fb34939304f7c078a9dda34d6"
+      },
+      {
+        "node_id": "LN-M10-T006",
+        "kind": "SEMANTIC_ACCEPTANCE",
+        "ref_id": "M10-T006-W006-V004-ACCEPTANCE",
+        "digest": "d65cda7cf7bbdb4ee7e22b20f4feb85a126ca2faa6463525c0e0f8f3f9f3ea78"
+      },
+      {
+        "node_id": "LN-IRB",
+        "kind": "IRB",
+        "ref_id": "IRB-938DEBE",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IA-AUTH-001",
+        "kind": "IMPLEMENTATION_AUTHORISATION",
+        "ref_id": "IA-AUTH-001",
+        "digest": "366f13f81aa9716fce3ece68da019a18590eba9584dd6aefe21b72085822d288"
+      },
+      {
+        "node_id": "LN-AK-COMP-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-COMP-001"
+      },
+      {
+        "node_id": "LN-AK-DEP-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-DEP-001"
+      },
+      {
+        "node_id": "LN-AK-DEP-002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-DEP-002"
+      },
+      {
+        "node_id": "LN-AK-EXT-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-EXT-001"
+      },
+      {
+        "node_id": "LN-AK-FORM-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-FORM-001"
+      },
+      {
+        "node_id": "LN-AK-ID-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-ID-001"
+      },
+      {
+        "node_id": "LN-AK-INGRESS-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-INGRESS-001"
+      },
+      {
+        "node_id": "LN-AK-INGRESS-002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-INGRESS-002"
+      },
+      {
+        "node_id": "LN-AK-INGRESS-003",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-INGRESS-003"
+      },
+      {
+        "node_id": "LN-AK-INGRESS-004",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-INGRESS-004"
+      },
+      {
+        "node_id": "LN-AK-INGRESS-005",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-INGRESS-005"
+      },
+      {
+        "node_id": "LN-AK-LIFE-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-LIFE-001"
+      },
+      {
+        "node_id": "LN-AK-OWN-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-OWN-001"
+      },
+      {
+        "node_id": "LN-AK-PKG-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-PKG-001"
+      },
+      {
+        "node_id": "LN-AK-PKG-002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-PKG-002"
+      },
+      {
+        "node_id": "LN-AK-PROOF-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-PROOF-001"
+      },
+      {
+        "node_id": "LN-AK-PROOF-002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-PROOF-002"
+      },
+      {
+        "node_id": "LN-AK-REG-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-REG-001"
+      },
+      {
+        "node_id": "LN-AK-REG-002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-REG-002"
+      },
+      {
+        "node_id": "LN-AK-SEAM-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-SEAM-001"
+      },
+      {
+        "node_id": "LN-AK-STATE-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-STATE-001"
+      },
+      {
+        "node_id": "LN-AK-TAX-001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AK-TAX-001"
+      },
+      {
+        "node_id": "LN-AUTH-N04",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-N04",
+        "digest": "5bbe3c0cd3e813b167241574e22a9791289f481657be590e0c860e5d37549ca3"
+      },
+      {
+        "node_id": "LN-AUTH-N06",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-N06",
+        "digest": "de0d1e529d12251e048ac35e8eeedf87d179099d5ba35055d9e10f34c371b9c9"
+      },
+      {
+        "node_id": "LN-AUTH-N15",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-N15",
+        "digest": "62bbaed0306e1cf3e85de3e482284f967a971e5ff806d75e7674dd7c35d8403e"
+      },
+      {
+        "node_id": "LN-AUTH-N18",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-N18",
+        "digest": "4cbf5bc045a2203639fa10246ee52e9597258a25e992379057ced431b39cf989"
+      },
+      {
+        "node_id": "LN-AUTH-N19",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-N19",
+        "digest": "d46567a2594657e26c54d3c0bb45e44c4adadca58b8ca349d516f980dc7504fb"
+      },
+      {
+        "node_id": "LN-AUTH-VG",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "AUTH-VG",
+        "digest": "2706f3ae0cb65e548c6acabff710e8d1e53876c76523febe4ccdccf68a0a861f"
+      },
+      {
+        "node_id": "LN-IRB-BC001",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC001",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC002",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC002",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC003",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC003",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC004",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC004",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC005",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC005",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC006",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC006",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC007",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC007",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC008",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC008",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC009",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC009",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC010",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC010",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC011",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC011",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC012",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC012",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC013",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC013",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC014",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC014",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC015",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC015",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-001",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-001",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-002",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-002",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-003",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-003",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-004",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-004",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-005",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-005",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-006",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-006",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-007",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-007",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-008",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-008",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-009",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-009",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-010",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-010",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-011",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-011",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-M16-RSOT-012",
+        "kind": "IRB_PROPOSITION",
+        "ref_id": "M16-RSOT-012",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IRB-BC016",
+        "kind": "NORMATIVE_AUTHORITY",
+        "ref_id": "IRB-BC016",
+        "digest": "938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342"
+      },
+      {
+        "node_id": "LN-IA11-TARGET-001",
+        "kind": "ARCHITECTURE_TARGET",
+        "ref_id": "IA11-TARGET-001"
+      },
+      {
+        "node_id": "LN-IA11-TARGET-002",
+        "kind": "ARCHITECTURE_TARGET",
+        "ref_id": "IA11-TARGET-002"
+      },
+      {
+        "node_id": "LN-IA17-PROD-001",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-001"
+      },
+      {
+        "node_id": "LN-IA17-PROD-002",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-002"
+      },
+      {
+        "node_id": "LN-IA17-PROD-003",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-003"
+      },
+      {
+        "node_id": "LN-IA17-PROD-004",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-004"
+      },
+      {
+        "node_id": "LN-IA17-PROD-005",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-005"
+      },
+      {
+        "node_id": "LN-IA17-PROD-006",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-006"
+      },
+      {
+        "node_id": "LN-IA17-PROD-007",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-007"
+      },
+      {
+        "node_id": "LN-IA17-PROD-008",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-008"
+      },
+      {
+        "node_id": "LN-IA22R01-PROD-009",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA22R01-PROD-009"
+      },
+      {
+        "node_id": "LN-IA17-PROD-010",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-010"
+      },
+      {
+        "node_id": "LN-IA17-PROD-011",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-011"
+      },
+      {
+        "node_id": "LN-IA17-PROD-012",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-012"
+      },
+      {
+        "node_id": "LN-IA17-PROD-013",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-PROD-013"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-001",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-001"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-002",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-002"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-003",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-003"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-004",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-004"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-005",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-005"
+      },
+      {
+        "node_id": "LN-IA17-ARCH-006",
+        "kind": "PROOF_OBLIGATION",
+        "ref_id": "IA17-ARCH-006"
+      },
+      {
+        "node_id": "LN-PACKET",
+        "kind": "PACKET",
+        "ref_id": "BICP-CANDIDATE-005"
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "LE-001",
+        "from_node": "LN-M10-V004",
+        "to_node": "LN-IRB",
+        "relation": "RENDERED_AS_W006_D010_EXACT_TERMINAL_BRIEF"
+      },
+      {
+        "edge_id": "LE-002",
+        "from_node": "LN-M10-T006",
+        "to_node": "LN-IRB",
+        "relation": "APPROVES_EXACT_W006_HANDOFF_CONTAINING_IRB"
+      },
+      {
+        "edge_id": "LE-003",
+        "from_node": "LN-IA-AUTH-001",
+        "to_node": "LN-IRB",
+        "relation": "AUTHORISES_CURRENT_IMPLEMENTATION_ADMISSION_OF"
+      },
+      {
+        "edge_id": "LE-004",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC001",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-005",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC002",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-006",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC003",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-007",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC004",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-008",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC005",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-009",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC006",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-010",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC007",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-011",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC008",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-012",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC009",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-013",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC010",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-014",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC011",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-015",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC012",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-016",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC013",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-017",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC014",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-018",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC015",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-019",
+        "from_node": "LN-IRB",
+        "to_node": "LN-IRB-BC016",
+        "relation": "CONTAINS_TASK_SPECIFIC_CLAUSE"
+      },
+      {
+        "edge_id": "LE-020",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-N04",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-021",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-VG",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-022",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-N06",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-023",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-N18",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-024",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-N15",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-025",
+        "from_node": "LN-IRB",
+        "to_node": "LN-AUTH-N19",
+        "relation": "ROUTED_UNDER_CURRENT_STANDING_AUTHORITY"
+      },
+      {
+        "edge_id": "LE-026",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA11-TARGET-001",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-027",
+        "from_node": "LN-AUTH-N18",
+        "to_node": "LN-IA11-TARGET-001",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-028",
+        "from_node": "LN-AK-TAX-001",
+        "to_node": "LN-IA11-TARGET-001",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-029",
+        "from_node": "LN-AK-OWN-001",
+        "to_node": "LN-IA11-TARGET-001",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-030",
+        "from_node": "LN-AK-EXT-001",
+        "to_node": "LN-IA11-TARGET-001",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-031",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA11-TARGET-002",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-032",
+        "from_node": "LN-AK-TAX-001",
+        "to_node": "LN-IA11-TARGET-002",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-033",
+        "from_node": "LN-AK-DEP-001",
+        "to_node": "LN-IA11-TARGET-002",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-034",
+        "from_node": "LN-AK-SEAM-001",
+        "to_node": "LN-IA11-TARGET-002",
+        "relation": "GOVERNS_ARCHITECTURE_TARGET"
+      },
+      {
+        "edge_id": "LE-035",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-036",
+        "from_node": "LN-IRB-BC013",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-037",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-038",
+        "from_node": "LN-AK-OWN-001",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-039",
+        "from_node": "LN-IRB-BC003",
+        "to_node": "LN-IA17-PROD-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-040",
+        "from_node": "LN-IRB-BC004",
+        "to_node": "LN-IA17-PROD-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-041",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-042",
+        "from_node": "LN-IRB-BC005",
+        "to_node": "LN-IA17-PROD-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-043",
+        "from_node": "LN-IRB-BC006",
+        "to_node": "LN-IA17-PROD-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-044",
+        "from_node": "LN-AUTH-N04",
+        "to_node": "LN-IA17-PROD-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-045",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-046",
+        "from_node": "LN-IRB-BC002",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-047",
+        "from_node": "LN-IRB-BC005",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-048",
+        "from_node": "LN-IRB-BC006",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-049",
+        "from_node": "LN-IRB-BC009",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-050",
+        "from_node": "LN-AUTH-N04",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-051",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-052",
+        "from_node": "LN-IRB-BC005",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-053",
+        "from_node": "LN-IRB-BC009",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-054",
+        "from_node": "LN-AUTH-N04",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-055",
+        "from_node": "LN-AUTH-N06",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-056",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-057",
+        "from_node": "LN-IRB-BC007",
+        "to_node": "LN-IA17-PROD-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-058",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-059",
+        "from_node": "LN-IRB-BC008",
+        "to_node": "LN-IA17-PROD-007",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-060",
+        "from_node": "LN-IRB-BC009",
+        "to_node": "LN-IA17-PROD-007",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-061",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-007",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-062",
+        "from_node": "LN-IRB-BC002",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-063",
+        "from_node": "LN-IRB-BC004",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-064",
+        "from_node": "LN-IRB-BC010",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-065",
+        "from_node": "LN-AUTH-N04",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-066",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-067",
+        "from_node": "LN-IRB-BC011",
+        "to_node": "LN-IA22R01-PROD-009",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-068",
+        "from_node": "LN-IRB-BC013",
+        "to_node": "LN-IA22R01-PROD-009",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-069",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA22R01-PROD-009",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-070",
+        "from_node": "LN-AK-STATE-001",
+        "to_node": "LN-IA22R01-PROD-009",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-071",
+        "from_node": "LN-IRB-BC011",
+        "to_node": "LN-IA17-PROD-010",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-072",
+        "from_node": "LN-IRB-BC016",
+        "to_node": "LN-IA17-PROD-010",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-073",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-010",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-074",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-075",
+        "from_node": "LN-IRB-BC002",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-076",
+        "from_node": "LN-IRB-BC013",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-077",
+        "from_node": "LN-AUTH-VG",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-078",
+        "from_node": "LN-AUTH-N18",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-079",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-080",
+        "from_node": "LN-AK-SEAM-001",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-081",
+        "from_node": "LN-IRB-BC012",
+        "to_node": "LN-IA17-PROD-012",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-082",
+        "from_node": "LN-AUTH-VG",
+        "to_node": "LN-IA17-PROD-012",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-083",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-012",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-084",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-085",
+        "from_node": "LN-IRB-BC014",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-086",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-087",
+        "from_node": "LN-AUTH-N18",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-088",
+        "from_node": "LN-AUTH-N15",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-089",
+        "from_node": "LN-AUTH-N19",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-090",
+        "from_node": "LN-AK-DEP-001",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-091",
+        "from_node": "LN-AK-SEAM-001",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-092",
+        "from_node": "LN-AK-INGRESS-001",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-093",
+        "from_node": "LN-AK-INGRESS-002",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-094",
+        "from_node": "LN-AK-INGRESS-003",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-095",
+        "from_node": "LN-AK-INGRESS-004",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-096",
+        "from_node": "LN-AK-INGRESS-005",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-097",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-ARCH-001",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-098",
+        "from_node": "LN-AK-TAX-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-099",
+        "from_node": "LN-AK-ID-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-100",
+        "from_node": "LN-AK-LIFE-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-101",
+        "from_node": "LN-AK-EXT-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-102",
+        "from_node": "LN-AK-REG-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-103",
+        "from_node": "LN-AK-REG-002",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-104",
+        "from_node": "LN-IRB-BC012",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-105",
+        "from_node": "LN-AK-OWN-001",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-106",
+        "from_node": "LN-AK-FORM-001",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-107",
+        "from_node": "LN-AK-STATE-001",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-108",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-109",
+        "from_node": "LN-IRB-BC011",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-110",
+        "from_node": "LN-IRB-BC013",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-111",
+        "from_node": "LN-AK-DEP-001",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-112",
+        "from_node": "LN-AK-DEP-002",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-113",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-114",
+        "from_node": "LN-AUTH-N18",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-115",
+        "from_node": "LN-AK-SEAM-001",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-116",
+        "from_node": "LN-IRB-BC001",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-117",
+        "from_node": "LN-IRB-BC002",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-118",
+        "from_node": "LN-IRB-BC012",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-119",
+        "from_node": "LN-AUTH-N18",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-120",
+        "from_node": "LN-AK-COMP-001",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-121",
+        "from_node": "LN-AK-PROOF-001",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-122",
+        "from_node": "LN-AK-PROOF-002",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-123",
+        "from_node": "LN-AK-PKG-001",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-124",
+        "from_node": "LN-AK-PKG-002",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-125",
+        "from_node": "LN-AUTH-N19",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "GOVERNS_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-126",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-127",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-128",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-ARCH-002",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-129",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-ARCH-003",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-130",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-131",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-132",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "PROJECTED_OWNER_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-133",
+        "from_node": "LN-IA11-TARGET-002",
+        "to_node": "LN-IA17-PROD-013",
+        "relation": "PROJECTED_SUPPORTING_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-134",
+        "from_node": "LN-IA11-TARGET-002",
+        "to_node": "LN-IA17-ARCH-004",
+        "relation": "PROJECTED_SUPPORTING_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-135",
+        "from_node": "LN-IA11-TARGET-002",
+        "to_node": "LN-IA17-ARCH-005",
+        "relation": "PROJECTED_SUPPORTING_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-136",
+        "from_node": "LN-IA11-TARGET-002",
+        "to_node": "LN-IA17-ARCH-006",
+        "relation": "PROJECTED_SUPPORTING_TARGET_DISPOSITION"
+      },
+      {
+        "edge_id": "LE-137",
+        "from_node": "LN-IRB",
+        "to_node": "LN-PACKET",
+        "relation": "RECOMPOSED_INTO_BOUNDED_PACKET"
+      },
+      {
+        "edge_id": "LE-138",
+        "from_node": "LN-IA-AUTH-001",
+        "to_node": "LN-PACKET",
+        "relation": "RECOMPOSED_INTO_BOUNDED_PACKET"
+      },
+      {
+        "edge_id": "LE-139",
+        "from_node": "LN-M10-T006",
+        "to_node": "LN-PACKET",
+        "relation": "RECOMPOSED_INTO_BOUNDED_PACKET"
+      },
+      {
+        "edge_id": "LE-140",
+        "from_node": "LN-IA11-TARGET-001",
+        "to_node": "LN-PACKET",
+        "relation": "RECOMPOSED_INTO_BOUNDED_PACKET"
+      },
+      {
+        "edge_id": "LE-141",
+        "from_node": "LN-IA11-TARGET-002",
+        "to_node": "LN-PACKET",
+        "relation": "RECOMPOSED_INTO_BOUNDED_PACKET"
+      },
+      {
+        "edge_id": "LE-142",
+        "from_node": "LN-IA17-PROD-001",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-143",
+        "from_node": "LN-IA17-PROD-002",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-144",
+        "from_node": "LN-IA17-PROD-003",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-145",
+        "from_node": "LN-IA17-PROD-004",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-146",
+        "from_node": "LN-IA17-PROD-005",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-147",
+        "from_node": "LN-IA17-PROD-006",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-148",
+        "from_node": "LN-IA17-PROD-007",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-149",
+        "from_node": "LN-IA17-PROD-008",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-150",
+        "from_node": "LN-IA22R01-PROD-009",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-151",
+        "from_node": "LN-IA17-PROD-010",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-152",
+        "from_node": "LN-IA17-PROD-011",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-153",
+        "from_node": "LN-IA17-PROD-012",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-154",
+        "from_node": "LN-IA17-PROD-013",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-155",
+        "from_node": "LN-IA17-ARCH-001",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-156",
+        "from_node": "LN-IA17-ARCH-002",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-157",
+        "from_node": "LN-IA17-ARCH-003",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-158",
+        "from_node": "LN-IA17-ARCH-004",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-159",
+        "from_node": "LN-IA17-ARCH-005",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-160",
+        "from_node": "LN-IA17-ARCH-006",
+        "to_node": "LN-PACKET",
+        "relation": "PROOF_OBLIGATION_INCLUDED_IN_PACKET"
+      },
+      {
+        "edge_id": "LE-161",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-001",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-162",
+        "from_node": "LN-M16-RSOT-001",
+        "to_node": "LN-IA17-PROD-001",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-163",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-002",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-164",
+        "from_node": "LN-M16-RSOT-002",
+        "to_node": "LN-IA17-PROD-002",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-165",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-003",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-166",
+        "from_node": "LN-M16-RSOT-003",
+        "to_node": "LN-IA17-PROD-003",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-167",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-004",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-168",
+        "from_node": "LN-M16-RSOT-004",
+        "to_node": "LN-IA17-PROD-004",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-169",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-005",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-170",
+        "from_node": "LN-M16-RSOT-005",
+        "to_node": "LN-IA17-PROD-005",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-171",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-006",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-172",
+        "from_node": "LN-M16-RSOT-006",
+        "to_node": "LN-IA17-PROD-006",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-173",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-007",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-174",
+        "from_node": "LN-M16-RSOT-007",
+        "to_node": "LN-IA17-PROD-007",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-175",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-008",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-176",
+        "from_node": "LN-M16-RSOT-008",
+        "to_node": "LN-IA17-PROD-008",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-177",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-009",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-178",
+        "from_node": "LN-M16-RSOT-009",
+        "to_node": "LN-IA22R01-PROD-009",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-179",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-010",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-180",
+        "from_node": "LN-M16-RSOT-010",
+        "to_node": "LN-IA17-PROD-010",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-181",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-011",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-182",
+        "from_node": "LN-M16-RSOT-011",
+        "to_node": "LN-IA17-PROD-011",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      },
+      {
+        "edge_id": "LE-183",
+        "from_node": "LN-IRB-BC015",
+        "to_node": "LN-M16-RSOT-012",
+        "relation": "DECLARES_NAMED_PROOF_PROPOSITION"
+      },
+      {
+        "edge_id": "LE-184",
+        "from_node": "LN-M16-RSOT-012",
+        "to_node": "LN-IA17-PROD-012",
+        "relation": "BINDS_EXACT_PROPOSITION_TO_PROOF_OBLIGATION"
+      }
+    ]
+  },
+  "scope_assertions": {
+    "implementation_work_order_created": false,
+    "physical_product_tests_authored": false,
+    "product_code_created": false,
+    "proof_obligations_only": true
+  }
+}

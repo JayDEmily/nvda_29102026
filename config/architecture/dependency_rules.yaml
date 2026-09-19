@@ -1,0 +1,26 @@
+schema_version: "1.0"
+identifier_pattern: "^[MPGAKS](?:0[0-9]|[1-9][0-9]+)$"
+framework_packages:
+  - nvda_desk.architecture
+category_rules:
+  A:
+    may_depend_on: [M, P, K]
+    forbidden: [G, S]
+  M:
+    may_depend_on: [M, P, K]
+    forbidden: [A, G, S]
+  P:
+    may_depend_on: []
+    forbidden: [A, M, G, K, S]
+  K:
+    may_depend_on: []
+    forbidden: [A, M, P, G, S]
+  G:
+    may_depend_on: []
+    forbidden: [A, M, P, K, S]
+  S:
+    may_depend_on: []
+    forbidden: [A, M, P, G, K]
+declared_owner_edges: []
+public_seam_exceptions: []
+forbid_dynamic_imports_in_runtime_owners: true
