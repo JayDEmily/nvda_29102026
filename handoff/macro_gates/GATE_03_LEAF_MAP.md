@@ -7,8 +7,8 @@ This file exposes the accepted successor method's stages as explicit PLM/PCM Lea
 | `G03-L01` | Existing VI-00..VI-05 reconciliation | `ACCEPTED` | bind accepted prior specialist progress; no rerun |
 | `G03-L02` | VI-06 | `SUPERSEDED_FOR_THIS_RUN` | blocked review evidence preserved; no PASS claimed; owner directed execution onward |
 | `G03-L03` | VI-07 | `ACCEPTED` | PM revalidated architecture and derived exact admission design |
-| `G03-L04` | VI-08 | `HANDOFF_SPEC_READY / PACKET_REBUILD_REQUIRED` | PM rebuilds thin handoff without dependency payloads; Worker 001 then performs minimal lawful durable architecture admission |
-| `G03-L05` | VI-09 | `PENDING` | product-proof admission/control surface |
+| `G03-L04` | VI-08 | `ACCEPTED` | recovered Worker 001 execution established minimal lawful durable architecture admission at `c3cda85...`; prior lost sandbox commit identity is not reused |
+| `G03-L05` | VI-09 | `ACTIVE` | establish separate product-proof admission/control surface; no physical product test or production code yet |
 | `G03-L06` | VI-10 | `PENDING` | adversarial physical product proof authored before implementation |
 | `G03-L07` | VI-11 | `PENDING` | fresh proof-adequacy review |
 | `G03-L08` | VI-12R | `PENDING` | controlled risk-adaptive implementation |

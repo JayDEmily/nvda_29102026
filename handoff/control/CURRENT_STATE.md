@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — WORKER 001 HANDOFF SPEC READY / PACKET REBUILD REQUIRED`
+- **Gate state:** `ACTIVE — VI-08 RECOVERED AND ACCEPTED / VI-09 ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -13,9 +13,9 @@
 - **Macro methodology:** PLM commit `443e4870df9fe8b63f6ad6471e02508d78be6974`
 - **Accepted BICP:** `BICP-CANDIDATE-005` at fixed G02 hashes
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
-- **Current Worker handoff state:** `7795705727d8ac2935949ba9e4acce672fa463a1` / tree `f34d17bfda83e52f58dfe72760e4f286e083355c`
-- **Current Leaf:** `G03-L04 / VI-08 — Minimal lawful durable architecture admission`
-- **Current actor:** `PM` — handoff specification correction only; substantive Worker mutation not yet executed
+- **Accepted recovered VI-08 state:** `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`
+- **Current Leaf:** `G03-L05 / VI-09 — Separate product-proof admission/control surface`
+- **Current actor:** `PM` — VI-09 authority/proof-control design and bounded Worker handoff preparation
 - **Worker handoff:** `control/GATE_03_WORKER_001_HANDOFF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** when authorised to proceed, rebuild the thin Worker 001 packet without wheelhouses/dependency payloads; then hand it to Worker 001. Worker 001 owns environment setup using separately attached Project dependency artefacts.
+- **Next lawful action:** complete the mandatory VI-09 proof-authority/method readback, derive the separate N15/N19 product-proof control surface, and dispatch only that bounded control mutation. No physical product test or production code yet.

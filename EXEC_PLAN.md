@@ -305,6 +305,8 @@ Execute only accepted VI-07 mutation. Consume the resolver-selected identity thr
 
 ### VI-09 — Establish separate product-proof admission/control surface
 
+Before VI-09/VI-10 proof work, perform the current Programme Owner-directed readback in this order: current `GUARDRAILS.md`; root `AGENTS.md`; this accepted `EXEC_PLAN.md`; the exact routed current architecture/product normative authorities; `tests/AGENTS.override.md`; then the complete current admitted architecture/bootstrap proof corpus and the preserved Tier A/B/C testing-method evidence needed to understand the proof matrix. Historical Tier A/B/C identities, admissions and green states remain evidence only and are not reactivated.
+
 Create the minimum N15/N19 product-proof family/manifest/aggregate surface. Each family binds exact propositions, implementation identity, boundary, proof level, fixtures/substitutions, positive/negative/missing-authority/optional-absence cases, failure signal, command/environment/versions and limitations. Existing kernel architecture proof remains separate.
 
 ### VI-10 — Author adversarial physical product proof before implementation
@@ -393,7 +395,8 @@ A terminal PASS requires evidence that:
 - [x] 2026-09-19 — VI-05 IWO Candidate 001 derived from exact accepted authority; six risk/coupling units; no product test/code authored.
 - [x] 2026-09-19 — VI-06 review route superseded for this concrete run by explicit Programme Owner execution-routing authority; the historical blocked review remains preserved and is not relabelled PASS.
 - [x] 2026-09-19 — VI-07 PM planning revalidated ingress as `create:raw_signal_occurrence_truth->M00, modify:A00` and derived the exact bounded architecture-admission mutation.
-- [ ] VI-08 Worker execution of the accepted VI-07 architecture-admission plan; downstream leaves remain unexecuted.
+- [x] 2026-09-20 — VI-08 recovered Worker execution accepted at `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`; the earlier unpreserved sandbox commit identity was not reused. M00 is durably admitted with A00->M00, package/public seam only and no product behaviour. Clean committed-state `architecture_kernel` promotion passed 74/74; structural validation, mypy and Ruff passed.
+- [ ] VI-09 — establish the separate N15/N19 product-proof admission/control surface after the mandatory proof-authority/method readback; no physical product test or production code yet.
 
 ## 13. Discoveries / decisions
 
