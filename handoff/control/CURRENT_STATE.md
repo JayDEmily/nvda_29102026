@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-09 ACCEPTED / VI-10 ACTIVE`
+- **Gate state:** `ACTIVE — VI-10 ACCEPTED / VI-11 ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -15,8 +15,10 @@
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
 - **Accepted recovered VI-08 state:** `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
-- **Current Leaf:** `G03-L06 / VI-10 — Adversarial physical product proof before implementation`
-- **Current actor:** `PM` — VI-10 physical-proof design and bounded proof-author Worker handoff preparation
+- **Accepted VI-10 Worker state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`
+- **Current Leaf:** `G03-L07 / VI-11 — Fresh proof-adequacy review`
+- **Current actor:** fresh independent reviewer required by VI-11
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
+- **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** derive and author VI-10 adversarial physical product proof from the exact accepted BICP/IRB, routed current normatives and admitted proof-control surface. Production implementation remains prohibited until VI-11 proof-adequacy review.
+- **Next lawful action:** execute VI-11 fresh proof-adequacy review against exact authority and the committed VI-10 physical proof, without production code. Production implementation remains prohibited until VI-11 returns an accepted disposition.

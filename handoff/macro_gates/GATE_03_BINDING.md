@@ -82,4 +82,14 @@ The original VI-06 binding remains historical provenance; it is not relabelled P
 - architecture regression: separate `architecture_kernel` aggregate 74/74 green;
 - scope closure: no `tests/product/**`, production-source, or `config/proof/**` mutation.
 
-Current successor frontier is VI-10 adversarial physical product proof before any product implementation.
+## Worker 003 / VI-10 accepted execution binding
+
+- PM handoff source: `a2a3578aee21f2b3ab5412e2244284ba59c895f6` / tree `061534297b1879477200e8215b1ce04b6e31de21`;
+- Worker final commit: `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`;
+- assignment: VI-10 adversarial physical product proof before implementation only;
+- accepted proof-control state: six physical families, 58 collected tests, exact 13/13 current product-obligation coverage, `READY_FOR_PROOF`;
+- pre-implementation product aggregate: expected-red, rc `1`, 55 failed / 3 passed because required product implementation and real PostgreSQL DSN are not yet present in this execution;
+- architecture regression: separate `architecture_kernel` aggregate 74/74 green;
+- scope closure: no production-source or `config/proof/**` mutation.
+
+Current successor frontier is VI-11 fresh proof-adequacy review. Production implementation remains prohibited.

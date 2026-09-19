@@ -9,8 +9,8 @@ This file exposes the accepted successor method's stages as explicit PLM/PCM Lea
 | `G03-L03` | VI-07 | `ACCEPTED` | PM revalidated architecture and derived exact admission design |
 | `G03-L04` | VI-08 | `ACCEPTED` | recovered Worker 001 execution established minimal lawful durable architecture admission at `c3cda85...`; prior lost sandbox commit identity is not reused |
 | `G03-L05` | VI-09 | `ACCEPTED` | separate exact-authority-bound product-proof control accepted at `956fab3...`; 13 current obligations, zero physical families, empty aggregate fails closed |
-| `G03-L06` | VI-10 | `ACTIVE` | adversarial physical product proof authored before implementation |
-| `G03-L07` | VI-11 | `PENDING` | fresh proof-adequacy review |
+| `G03-L06` | VI-10 | `ACCEPTED` | six physical product-proof families admitted; 58 tests collect; pre-implementation aggregate expected-red; no production code |
+| `G03-L07` | VI-11 | `ACTIVE` | fresh proof-adequacy review |
 | `G03-L08` | VI-12R | `PENDING` | controlled risk-adaptive implementation |
 | `G03-L09` | VI-13R | `PENDING` | fresh post-implementation review per unit |
 | `G03-L10` | VI-14 | `PENDING` | material interaction/direct-boundary closure |
