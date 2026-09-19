@@ -2,7 +2,7 @@ schema_version: "1.0"
 aggregates:
   - id: raw_signal_occurrence_truth_product
     implementation_target_id: M00
-    state: INCOMPLETE_NO_PHYSICAL_FAMILIES
+    state: READY_FOR_PROOF
     required_proof_obligation_ids:
       - IA17-PROD-001
       - IA17-PROD-002
@@ -17,4 +17,10 @@ aggregates:
       - IA17-PROD-011
       - IA17-PROD-012
       - IA17-PROD-013
-    family_ids: []
+    family_ids:
+      - rsot_u01_contract_owner
+      - rsot_u02_capture_schedule
+      - rsot_u03_observation_native_temporal
+      - rsot_u04_receipt_assessment
+      - rsot_u05_postgresql_durability
+      - rsot_u06_a00_composition
