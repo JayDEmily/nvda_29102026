@@ -92,4 +92,4 @@ The original VI-06 binding remains historical provenance; it is not relabelled P
 - architecture regression: separate `architecture_kernel` aggregate 74/74 green;
 - scope closure: no production-source or `config/proof/**` mutation.
 
-Current successor frontier is VI-11 fresh proof-adequacy review. Production implementation remains prohibited.
+Current successor frontier is VI-11 fresh proof-adequacy review. The bounded review handoff is prepared, but execution is blocked in the current session because no independent reviewer-dispatch primitive is exposed. Production implementation remains prohibited.

@@ -399,6 +399,7 @@ A terminal PASS requires evidence that:
 - [x] 2026-09-20 — VI-09 accepted at `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`; separate product-proof authority/family/aggregate control binds exactly 13 current product obligations, admits 0 physical families, and fails closed with runner rc 4 rather than reporting empty-set success. Required adversarial control matrix satisfied 11/11 required rejection dispositions; separate `architecture_kernel` promotion remained green at 74/74; no product test or production code was created.
 - [x] 2026-09-20 — VI-10 accepted at `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`; six physical product-proof families cover exactly 13/13 current product obligations and collect 58 tests. Clean-state product aggregate is expected-red (`55 failed, 3 passed`) before implementation; separate `architecture_kernel` promotion remains green at 74/74; no production code or architecture-proof configuration changed.
 - [ ] VI-11 — fresh proof-adequacy review of exact authority against the committed VI-10 physical proof; production code remains prohibited pending accepted disposition.
+- [!] 2026-09-20 — VI-11 review handoff prepared, but execution is `BLOCKED_BEFORE_SUBSTANTIVE_REVIEW`: installed review methodology requires a fresh isolated reviewer, while the current callable tool catalogue exposes no reviewer/subagent inference-dispatch primitive. No same-context self-review is substituted and VI-12R remains prohibited.
 
 ## 13. Discoveries / decisions
 
@@ -462,3 +463,10 @@ Observed: the installed Superpowers review skills require dispatch of a fresh is
 Historical disposition: VI-06 was `BLOCKED` before substantive review because the required fresh-review execution primitive was unavailable.
 
 Superseding current disposition: explicit Programme Owner direction authorises this concrete run to proceed from the fixed VI-05 IWO without another VI-06 review attempt and requires substantive mutation to be routed to a bounded Worker rather than performed inline by the PM. Preserve the blocked record as history; do not relabel it `PASS`.
+
+
+### D-VI11-001 — Fresh VI-11 reviewer cannot be dispatched in the current session
+
+Observed on 2026-09-20 after VI-10 acceptance: the installed Superpowers `requesting-code-review` method requires dispatch of a fresh `general-purpose` reviewer subagent. Inspection of the current callable tool catalogue found no subagent/model-inference dispatch action. OpenAI Platform actions are key-setup/target-management only; GitHub review actions manage review records or human reviewer requests and do not execute an independent semantic reviewer.
+
+Disposition: VI-11 is `BLOCKED_BEFORE_SUBSTANTIVE_REVIEW`. Preserve `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md`; do not substitute same-context review and do not advance to VI-12R without a fresh reviewer disposition.

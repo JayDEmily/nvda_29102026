@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10 ACCEPTED / VI-11 ACTIVE`
+- **Gate state:** `ACTIVE — VI-10 ACCEPTED / VI-11 BLOCKED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -17,8 +17,8 @@
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
 - **Accepted VI-10 Worker state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`
 - **Current Leaf:** `G03-L07 / VI-11 — Fresh proof-adequacy review`
-- **Current actor:** fresh independent reviewer required by VI-11
+- **Current actor:** `BLOCKED` — fresh independent reviewer required by VI-11; no reviewer-dispatch primitive is exposed in this session
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** execute VI-11 fresh proof-adequacy review against exact authority and the committed VI-10 physical proof, without production code. Production implementation remains prohibited until VI-11 returns an accepted disposition.
+- **Next lawful action:** hand `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md` to a fresh independent reviewer context with actual reviewer-dispatch capability. Production implementation remains prohibited until VI-11 returns an accepted disposition.
