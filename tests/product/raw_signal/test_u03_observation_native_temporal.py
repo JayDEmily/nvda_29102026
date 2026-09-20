@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from typing import Any
 
 import pytest
 from tests.product.raw_signal._support import (
@@ -8,6 +9,23 @@ from tests.product.raw_signal._support import (
     build_owner,
     copy_with,
     observation,
+    typed_identity,
+)
+
+OPTIONAL_METADATA_CASES: tuple[tuple[str, Any], ...] = (
+    ("source_product_api", "product-api::distinctive"),
+    ("source_endpoint_callback", "callback::distinctive"),
+    ("native_identifier", "native-id::distinctive"),
+    ("native_tick_series_identifier", "tick-series::distinctive"),
+    ("source_variant", "variant::distinctive"),
+    ("subject_instrument", "NVDA::distinctive"),
+    ("native_units", "USD::native-distinctive"),
+    ("availability_session", "regular::distinctive"),
+    ("source_status_native", "published::distinctive"),
+    ("revision_vintage_native", "rev::distinctive"),
+    ("source_timezone_native", "+00:00::native"),
+    ("market_timezone_iana", "America/New_York"),
+    ("market_session_native", "regular-market::distinctive"),
 )
 
 
@@ -22,7 +40,8 @@ def test_two_separable_records_share_delivery_but_remain_two_observations() -> N
             ingestion_sequence=2,
         ),
     )
-    assert first.delivery_artifact_ref == second.delivery_artifact_ref == "delivery-001"
+    assert first.delivery_artifact_ref == second.delivery_artifact_ref
+    assert str(first.delivery_artifact_ref) == "delivery-001"
     assert first.observation_occurrence_id != second.observation_occurrence_id
 
 
@@ -40,6 +59,17 @@ def test_native_record_names_values_and_provider_null_round_trip_unchanged() -> 
     stored = admit_observation(owner, observation(native_record=native))
     assert stored.native_record == native
     assert stored.native_units == "USD"
+
+
+@pytest.mark.parametrize(("field", "value"), OPTIONAL_METADATA_CASES)
+def test_each_optional_provider_metadata_field_round_trips_exactly_when_present(
+    field: str, value: Any
+) -> None:
+    owner = build_owner()
+    stored = admit_observation(owner, observation(**{field: value}))
+    assert getattr(stored, field) == value
+    reread = owner.reads.get_raw_observation_occurrence(stored.observation_occurrence_id)
+    assert getattr(reread, field) == value
 
 
 @pytest.mark.parametrize(
@@ -106,10 +136,17 @@ def test_receipt_time_does_not_fill_missing_provider_time_or_timezone() -> None:
 
 def test_optional_provider_metadata_remains_absent_when_not_applicable() -> None:
     owner = build_owner()
-    stored = admit_observation(owner, observation(native_identifier=None, native_units=None))
-    assert stored.native_identifier is None
-    assert stored.native_units is None
-    assert getattr(stored, "revision_vintage_native", None) is None
+    kwargs = {field: None for field, _ in OPTIONAL_METADATA_CASES}
+    stored = admit_observation(
+        owner,
+        observation(
+            **kwargs,
+            source_temporal_kind="receipt_only",
+            source_timestamp_raw=None,
+        ),
+    )
+    for field, _ in OPTIONAL_METADATA_CASES:
+        assert getattr(stored, field) is None
     assert not hasattr(stored, "is_original_revision")
 
 
@@ -136,6 +173,53 @@ def test_missing_required_receipt_order_or_provenance_fails_closed() -> None:
             admit_observation(owner, copy_with(base, **{field: None}))
 
 
+def test_same_scope_ingestion_sequence_must_be_monotonic() -> None:
+    owner = build_owner()
+    scope = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-A")
+    admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-seq-2",
+            ingestion_sequence=2,
+            ingestion_sequence_scope=scope,
+        ),
+    )
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(
+            owner,
+            observation(
+                observation_occurrence_id="obs-seq-1-late",
+                ingestion_sequence=1,
+                ingestion_sequence_scope=scope,
+            ),
+        )
+
+
+def test_ingestion_sequence_is_local_to_scope_not_global() -> None:
+    owner = build_owner()
+    scope_a = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-A")
+    scope_b = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-B")
+    first = admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-scope-a-10",
+            ingestion_sequence=10,
+            ingestion_sequence_scope=scope_a,
+        ),
+    )
+    second = admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-scope-b-1",
+            ingestion_sequence=1,
+            ingestion_sequence_scope=scope_b,
+        ),
+    )
+    assert first.ingestion_sequence == 10
+    assert second.ingestion_sequence == 1
+    assert first.ingestion_sequence_scope != second.ingestion_sequence_scope
+
+
 def test_same_observation_identity_is_idempotent_only_for_identical_content() -> None:
     owner = build_owner()
     value = observation()
@@ -151,10 +235,7 @@ def test_newly_received_retransmission_keeps_new_observation_identity() -> None:
     first = admit_observation(owner, observation(observation_occurrence_id="obs-1"))
     second = admit_observation(
         owner,
-        observation(
-            observation_occurrence_id="obs-2",
-            ingestion_sequence=2,
-        ),
+        observation(observation_occurrence_id="obs-2", ingestion_sequence=2),
     )
     assert first.native_identifier == second.native_identifier
     assert first.native_record == second.native_record
@@ -168,19 +249,15 @@ def test_no_scope_observation_remains_valid_without_capture_relation() -> None:
     assert getattr(stored, "capture_occurrence_ref", None) is None
 
 
-@pytest.mark.parametrize(
-    ("field", "substitute"),
-    [
-        ("observation_occurrence_id", "delivery-001"),
-        ("delivery_artifact_ref", "observation-001"),
-        ("source_provider", "observation-001"),
-        ("native_identifier", "provider.fixture"),
-        ("ingestion_sequence_scope", "delivery-001"),
-    ],
-)
-def test_observation_command_boundary_rejects_cross_layer_identity_substitution(
-    field: str, substitute: str
-) -> None:
+def test_observation_command_rejects_typed_cross_layer_identity_substitution() -> None:
     owner = build_owner()
+    observation_id = typed_identity(
+        "RawObservationOccurrenceV1", "observation_occurrence_id", "same-opaque-payload"
+    )
+    delivery_id = typed_identity(
+        "RawObservationOccurrenceV1", "delivery_artifact_ref", "same-opaque-payload"
+    )
     with pytest.raises((TypeError, ValueError)):
-        admit_observation(owner, copy_with(observation(), **{field: substitute}))
+        admit_observation(owner, observation(observation_occurrence_id=delivery_id))
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(owner, observation(delivery_artifact_ref=observation_id))

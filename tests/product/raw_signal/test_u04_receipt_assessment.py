@@ -9,39 +9,116 @@ from tests.product.raw_signal._support import (
     append_assessment,
     assessment_contract,
     build_owner,
-    eligible,
-    ineligible,
     observation,
+    policy,
+    policy_ref,
     realise_capture,
     register_policy,
 )
 
 
-def _capture_fixture(*, eligibility_resolver=eligible) -> tuple[Any, Any]:
-    owner = build_owner(eligibility_resolver=eligibility_resolver)
-    register_policy(owner)
+class _RecordingEligibilityAuthority:
+    def __init__(self, *, result: bool = True) -> None:
+        self.result = result
+        self.expected_observation: Any | None = None
+        self.expected_policy: Any | None = None
+        self.calls: list[tuple[Any, Any]] = []
+
+    def __call__(self, observed: Any, effective_policy: Any) -> bool:
+        self.calls.append((observed, effective_policy))
+        assert observed is self.expected_observation
+        assert effective_policy is self.expected_policy
+        return self.result
+
+
+class _TechnicalPersistencePort:
+    """Proof technical port: stores owner-decided facts and has no decision methods."""
+
+    def __init__(self) -> None:
+        self.policies: dict[tuple[Any, int], Any] = {}
+        self.captures: dict[Any, Any] = {}
+        self.observations: dict[Any, Any] = {}
+        self.assessments: dict[Any, Any] = {}
+        self.assessment_order: dict[Any, list[Any]] = {}
+        self.appended_assessment_outcomes: list[str] = []
+
+    def append_policy(self, value: Any) -> Any:
+        self.policies[(value.scope_policy_id, value.scope_policy_version)] = value
+        return value
+
+    def get_policy(self, policy_id: Any, version: int) -> Any | None:
+        return self.policies.get((policy_id, version))
+
+    def append_capture(self, value: Any) -> Any:
+        self.captures[value.capture_occurrence_id] = value
+        return value
+
+    def get_capture(self, capture_id: Any) -> Any | None:
+        return self.captures.get(capture_id)
+
+    def append_observation(self, value: Any) -> Any:
+        self.observations[value.observation_occurrence_id] = value
+        return value
+
+    def get_observation(self, observation_id: Any) -> Any | None:
+        return self.observations.get(observation_id)
+
+    def append_assessment(self, value: Any) -> Any:
+        assert value.outcome in {
+            "unknown_not_established",
+            "zero_received",
+            "one_or_more_received",
+        }, "M00 must decide the assessment outcome before persistence"
+        self.appended_assessment_outcomes.append(value.outcome)
+        self.assessments[value.assessment_occurrence_id] = value
+        self.assessment_order.setdefault(value.capture_occurrence_ref, []).append(
+            value.assessment_occurrence_id
+        )
+        return value
+
+    def get_assessment(self, assessment_id: Any) -> Any | None:
+        return self.assessments.get(assessment_id)
+
+    def list_assessments(self, capture_id: Any) -> list[Any]:
+        return [self.assessments[item] for item in self.assessment_order.get(capture_id, [])]
+
+
+def _capture_fixture(
+    *, result: bool = True, persistence_port: Any | None = None
+) -> tuple[Any, Any, Any, _RecordingEligibilityAuthority]:
+    resolver = _RecordingEligibilityAuthority(result=result)
+    owner = build_owner(
+        eligibility_resolver=resolver,
+        **({"persistence_port": persistence_port} if persistence_port is not None else {}),
+    )
+    stored_policy = register_policy(owner)
     capture = realise_capture(owner)
-    return owner, capture
+    resolver.expected_policy = stored_policy
+    return owner, capture, stored_policy, resolver
 
 
 def _add_observation(
     owner: Any,
     capture: Any,
+    resolver: _RecordingEligibilityAuthority,
     *,
     observed: Any | None = None,
+    scope_policy_ref: Any | None = None,
 ) -> tuple[Any, Any]:
     obs = admit_observation(owner, observed or observation())
+    resolver.expected_observation = obs
     relation = owner.commands.derive_capture_receipt_evidence_relation(
         observation_occurrence_ref=obs.observation_occurrence_id,
         capture_occurrence_ref=capture.capture_occurrence_id,
-        scope_policy_ref=capture.scope_policy_ref,
+        scope_policy_ref=capture.scope_policy_ref if scope_policy_ref is None else scope_policy_ref,
     )
     return obs, relation
 
 
-def test_relation_requires_eligibility_active_policy_and_in_slot_receipt() -> None:
-    owner, capture = _capture_fixture()
-    obs, relation = _add_observation(owner, capture)
+def test_relation_requires_exact_observation_effective_policy_and_in_slot_receipt() -> None:
+    owner, capture, stored_policy, resolver = _capture_fixture()
+    obs, relation = _add_observation(owner, capture, resolver)
+    assert resolver.calls == [(obs, stored_policy)]
     assert relation.relation_role == "evidences_receipt_presence_only"
     assert relation.received_ts_utc == obs.received_ts_utc
     assert relation.observation_occurrence_ref == obs.observation_occurrence_id
@@ -50,34 +127,58 @@ def test_relation_requires_eligibility_active_policy_and_in_slot_receipt() -> No
 
 
 def test_ineligible_observation_has_lawful_no_relation_state() -> None:
-    owner, capture = _capture_fixture(eligibility_resolver=ineligible)
-    obs, relation = _add_observation(owner, capture)
+    owner, capture, stored_policy, resolver = _capture_fixture(result=False)
+    obs, relation = _add_observation(owner, capture, resolver)
+    assert resolver.calls == [(obs, stored_policy)]
     assert relation is None
     assert owner.reads.get_raw_observation_occurrence(obs.observation_occurrence_id) == obs
 
 
 def test_out_of_slot_receipt_has_lawful_no_relation_state() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, resolver = _capture_fixture()
     observed = observation(received_ts_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC))
-    obs, relation = _add_observation(owner, capture, observed=observed)
+    obs, relation = _add_observation(owner, capture, resolver, observed=observed)
     assert relation is None
     assert owner.reads.get_raw_observation_occurrence(obs.observation_occurrence_id) == obs
 
 
+def test_mismatched_existing_policy_reference_cannot_authorise_or_mislineage_relation() -> None:
+    owner, capture, _, resolver = _capture_fixture()
+    register_policy(
+        owner,
+        policy(
+            scope_policy_version=2,
+            activation_ts_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+            deactivation_ts_utc=None,
+        ),
+    )
+    obs = admit_observation(owner, observation())
+    resolver.expected_observation = obs
+    with pytest.raises((TypeError, ValueError, KeyError, AssertionError)):
+        owner.commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=obs.observation_occurrence_id,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            scope_policy_ref=policy_ref("scope-policy-001", 2),
+        )
+    assert resolver.calls == [] or all(
+        call[1] is resolver.expected_policy for call in resolver.calls
+    )
+
+
 def test_missing_capture_authority_cannot_create_relation() -> None:
-    owner, _ = _capture_fixture()
+    owner, _, _, _ = _capture_fixture()
     obs = admit_observation(owner)
     with pytest.raises((TypeError, ValueError, KeyError)):
         owner.commands.derive_capture_receipt_evidence_relation(
             observation_occurrence_ref=obs.observation_occurrence_id,
             capture_occurrence_ref="missing-capture",
-            scope_policy_ref="scope-policy-001@1",
+            scope_policy_ref=policy_ref(),
         )
 
 
 def test_relation_does_not_expose_membership_count_validity_or_finality() -> None:
-    owner, capture = _capture_fixture()
-    _, relation = _add_observation(owner, capture)
+    owner, capture, _, resolver = _capture_fixture()
+    _, relation = _add_observation(owner, capture, resolver)
     for forbidden in (
         "contains",
         "member",
@@ -94,15 +195,14 @@ def test_relation_does_not_expose_membership_count_validity_or_finality() -> Non
 
 
 @pytest.mark.parametrize(
-    "outcome",
-    ["unknown_not_established", "zero_received", "one_or_more_received"],
+    "outcome", ["unknown_not_established", "zero_received", "one_or_more_received"]
 )
 def test_assessment_contract_discriminant_accepts_exact_three_outcomes(outcome: str) -> None:
     assert assessment_contract(outcome=outcome).outcome == outcome
 
 
 def test_zero_is_derived_when_no_eligible_committed_receipt_is_visible() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, _ = _capture_fixture()
     stored = append_assessment(
         owner,
         assessment_occurrence_id="assessment-zero",
@@ -113,8 +213,8 @@ def test_zero_is_derived_when_no_eligible_committed_receipt_is_visible() -> None
 
 
 def test_one_or_more_is_derived_when_eligible_committed_receipt_is_visible() -> None:
-    owner, capture = _capture_fixture()
-    _add_observation(owner, capture)
+    owner, capture, _, resolver = _capture_fixture()
+    _add_observation(owner, capture, resolver)
     stored = append_assessment(
         owner,
         assessment_occurrence_id="assessment-one-plus",
@@ -124,8 +224,39 @@ def test_one_or_more_is_derived_when_eligible_committed_receipt_is_visible() -> 
     assert stored.outcome == "one_or_more_received"
 
 
+def test_persistence_port_receives_already_decided_semantics_and_has_no_decision_capability(
+) -> None:
+    port = _TechnicalPersistencePort()
+    owner, capture, _, resolver = _capture_fixture(persistence_port=port)
+    zero = append_assessment(
+        owner,
+        assessment_occurrence_id="assessment-zero-port",
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+    )
+    _add_observation(owner, capture, resolver)
+    one = append_assessment(
+        owner,
+        assessment_occurrence_id="assessment-one-port",
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 20, tzinfo=UTC),
+        supersedes_assessment_ref=zero.assessment_occurrence_id,
+    )
+    assert [zero.outcome, one.outcome] == ["zero_received", "one_or_more_received"]
+    assert port.appended_assessment_outcomes == ["zero_received", "one_or_more_received"]
+    for semantic_method in (
+        "derive_relation",
+        "decide_relation",
+        "assess_outcome",
+        "decide_outcome",
+        "is_eligible",
+        "classify",
+    ):
+        assert not hasattr(port, semantic_method)
+
+
 def test_caller_cannot_supply_assessment_outcome() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, _ = _capture_fixture()
     with pytest.raises((TypeError, ValueError)):
         append_assessment(
             owner,
@@ -137,7 +268,7 @@ def test_caller_cannot_supply_assessment_outcome() -> None:
 
 
 def test_late_evidence_appends_superseding_one_or_more_without_overwrite() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, resolver = _capture_fixture()
     zero = append_assessment(
         owner,
         assessment_occurrence_id="assessment-zero",
@@ -147,6 +278,7 @@ def test_late_evidence_appends_superseding_one_or_more_without_overwrite() -> No
     _add_observation(
         owner,
         capture,
+        resolver,
         observed=observation(
             observation_occurrence_id="observation-late",
             received_ts_utc=datetime(2026, 9, 20, 12, 0, 20, tzinfo=UTC),
@@ -161,17 +293,19 @@ def test_late_evidence_appends_superseding_one_or_more_without_overwrite() -> No
         supersedes_assessment_ref=zero.assessment_occurrence_id,
     )
     chain = owner.reads.list_receipt_presence_assessments(capture.capture_occurrence_id)
-    assert [item.assessment_occurrence_id for item in chain] == [
+    assert [str(item.assessment_occurrence_id) for item in chain] == [
         "assessment-zero",
         "assessment-one-plus",
     ]
     assert [item.outcome for item in chain] == ["zero_received", "one_or_more_received"]
     assert later.supersedes_assessment_ref == zero.assessment_occurrence_id
-    assert owner.reads.get_receipt_presence_assessment("assessment-zero").outcome == "zero_received"
+    assert owner.reads.get_receipt_presence_assessment(zero.assessment_occurrence_id).outcome == (
+        "zero_received"
+    )
 
 
 def test_assessment_same_id_retry_is_idempotent_but_evidence_change_conflicts() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, resolver = _capture_fixture()
     kwargs = {
         "assessment_occurrence_id": "assessment-retry",
         "capture_occurrence_ref": capture.capture_occurrence_id,
@@ -179,7 +313,7 @@ def test_assessment_same_id_retry_is_idempotent_but_evidence_change_conflicts() 
     }
     first = append_assessment(owner, **kwargs)
     assert append_assessment(owner, **kwargs) == first
-    _add_observation(owner, capture)
+    _add_observation(owner, capture, resolver)
     with pytest.raises((TypeError, ValueError)):
         append_assessment(
             owner,
@@ -190,7 +324,7 @@ def test_assessment_same_id_retry_is_idempotent_but_evidence_change_conflicts() 
 
 
 def test_assessment_does_not_claim_exact_count_finality_health_or_provider_absence() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, _ = _capture_fixture()
     stored = append_assessment(
         owner,
         assessment_occurrence_id="assessment-nonclaims",
@@ -203,7 +337,7 @@ def test_assessment_does_not_claim_exact_count_finality_health_or_provider_absen
 
 @pytest.mark.parametrize("supersedes", ["missing-assessment", "assessment-self"])
 def test_broken_or_self_supersession_fails_closed(supersedes: str) -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, _ = _capture_fixture()
     with pytest.raises((TypeError, ValueError, KeyError)):
         append_assessment(
             owner,
@@ -215,14 +349,14 @@ def test_broken_or_self_supersession_fails_closed(supersedes: str) -> None:
 
 
 def test_non_immediate_supersession_fails_closed() -> None:
-    owner, capture = _capture_fixture()
+    owner, capture, _, resolver = _capture_fixture()
     first = append_assessment(
         owner,
         assessment_occurrence_id="assessment-first",
         capture_occurrence_ref=capture.capture_occurrence_id,
         evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
     )
-    _add_observation(owner, capture)
+    _add_observation(owner, capture, resolver)
     append_assessment(
         owner,
         assessment_occurrence_id="assessment-second",

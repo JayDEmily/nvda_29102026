@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import ast
+from datetime import UTC, datetime
 from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
 import pytest
 import yaml
-from tests.product.raw_signal._support import observation, policy
+from tests.product.raw_signal._support import observation, policy, policy_ref
 
 import nvda_desk.composition as composition
 
@@ -94,16 +95,22 @@ class _SpyOwner:
         self.reads = _SpyReads(calls, sentinels)
 
 
-def test_a00_delegates_to_m00_facets_and_returns_exact_m00_results() -> None:
+def test_a00_delegates_full_semantic_argument_trace_to_exact_m00_results() -> None:
     builder = getattr(composition, "create_application", None)
     if builder is None:
         pytest.fail("A00 production composition symbol create_application is not implemented")
 
     calls: list[tuple[str, Any]] = []
+    returned_capture_id = object()
+    returned_observation_id = object()
+    effective_policy_ref = object()
     sentinels = {
         "policy": object(),
-        "capture": SimpleNamespace(capture_occurrence_id="m00-capture"),
-        "observation": SimpleNamespace(observation_occurrence_id="m00-observation"),
+        "capture": SimpleNamespace(
+            capture_occurrence_id=returned_capture_id,
+            scope_policy_ref=effective_policy_ref,
+        ),
+        "observation": SimpleNamespace(observation_occurrence_id=returned_observation_id),
         "relation": object(),
         "assessment": SimpleNamespace(outcome="m00-owned-outcome"),
         "readback": object(),
@@ -116,12 +123,22 @@ def test_a00_delegates_to_m00_facets_and_returns_exact_m00_results() -> None:
     app = builder(raw_signal_owner_factory=owner_factory)
     raw_policy = policy()
     raw_observation = observation(observation_occurrence_id="a00-observation-input")
+    authoritative_policy_ref = policy_ref()
+    authoritative_slot = datetime(2026, 9, 20, 12, 0, tzinfo=UTC)
+    authoritative_capture_id = "a00-capture-input"
+    authoritative_assessment_id = "a00-assessment-input"
+    authoritative_as_of = datetime(2026, 9, 20, 12, 0, 10, 777777, tzinfo=UTC)
+    authoritative_supersedes = None
+
     result = app.run_raw_signal_proof_sequence(
         capture_scope_policy=raw_policy,
-        slot_start_utc="2026-09-20T12:00:00Z",
-        capture_occurrence_id="a00-capture-input",
+        scope_policy_ref=authoritative_policy_ref,
+        slot_start_utc=authoritative_slot,
+        capture_occurrence_id=authoritative_capture_id,
         raw_observation=raw_observation,
-        assessment_occurrence_id="a00-assessment-input",
+        assessment_occurrence_id=authoritative_assessment_id,
+        assessment_evidence_as_of_ts_utc=authoritative_as_of,
+        supersedes_assessment_ref=authoritative_supersedes,
     )
 
     assert [name for name, _ in calls] == [
@@ -134,13 +151,46 @@ def test_a00_delegates_to_m00_facets_and_returns_exact_m00_results() -> None:
         "read_observation",
     ]
     assert calls[1][1] is raw_policy
+    assert calls[2][1] == {
+        "scope_policy_ref": authoritative_policy_ref,
+        "slot_start_utc": authoritative_slot,
+        "capture_occurrence_id": authoritative_capture_id,
+    }
     assert calls[3][1] is raw_observation
+    assert calls[4][1] == {
+        "observation_occurrence_ref": returned_observation_id,
+        "capture_occurrence_ref": returned_capture_id,
+        "scope_policy_ref": effective_policy_ref,
+    }
+    assert calls[5][1] == {
+        "assessment_occurrence_id": authoritative_assessment_id,
+        "capture_occurrence_ref": returned_capture_id,
+        "evidence_as_of_ts_utc": authoritative_as_of,
+        "supersedes_assessment_ref": authoritative_supersedes,
+    }
+    assert calls[6][1] is returned_observation_id
     assert result.capture is sentinels["capture"]
     assert result.observation is sentinels["observation"]
     assert result.relation is sentinels["relation"]
     assert result.assessment is sentinels["assessment"]
     assert result.readback is sentinels["readback"]
     assert result.assessment.outcome == "m00-owned-outcome"
+
+
+def test_a00_wrong_downstream_identity_or_policy_wiring_cannot_hide_behind_correct_call_order(
+) -> None:
+    """The preceding spy asserts every material kwarg, not only the ordered method names."""
+
+    source = Path(__file__).read_text(encoding="utf-8")
+    for required_trace in (
+        '"scope_policy_ref": authoritative_policy_ref',
+        '"observation_occurrence_ref": returned_observation_id',
+        '"capture_occurrence_ref": returned_capture_id',
+        '"scope_policy_ref": effective_policy_ref',
+        '"evidence_as_of_ts_utc": authoritative_as_of',
+        "assert calls[6][1] is returned_observation_id",
+    ):
+        assert required_trace in source
 
 
 def test_a00_has_no_private_m00_state_table_repository_or_unadmitted_consumer_bypass() -> None:

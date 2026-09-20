@@ -34,12 +34,15 @@ families:
       lawful_positive:
         cases:
           - all five v1 constructors preserve accepted requiredness and permit no new required field
-          - compatibility discriminator accepts a synthetic genuinely optional additive field
+          - every v1 UTC/null/provenance/finite-discriminant dimension is physically discriminated
+          - compatibility discriminator accepts only genuinely optional additive fields
+          - all active identity layers use runtime-distinct opaque types with same-payload substitution rejection
           - production public create_owner exposes separate typed command/read facets
       prohibited_false_positive:
         cases:
           - requiredness, discriminant, allowed-value, time/null, identity or provenance law drifts
-          - actual values from distinct identity layers are substituted across contract positions
+          - string-prefix or otherwise runtime-collapsed identities stand in for opaque typed identities
+          - actual same-payload values from distinct identity layers are substituted across contract positions
           - run/replay/packet/workbook/lineage/universal identities enter as unadmitted authority fields
           - private test-only owner construction or packet/kernel/downstream capability appears
       missing_mandatory_authority:
@@ -99,6 +102,7 @@ families:
         cases:
           - slot before activation, at deactivation or off-boundary is treated as owed
           - two policy versions overlap at any instant
+          - the same immutable policy identity/version is re-registered with changed activation, deactivation or eligibility lineage
           - scheduler wake time is treated as schedule truth
           - conflicting content reuses one capture identity
       missing_mandatory_authority:
@@ -157,11 +161,14 @@ families:
         cases:
           - two separable records in one delivery remain two observations sharing only delivery identity
           - native record and units/provenance round-trip unchanged
+          - each optional provider metadata field round-trips exactly when present and remains absent when not applicable
           - true_instant/date_only/receipt_only and genuine optional nanosecond receipt evidence remain distinct
+          - ingestion sequence is monotonic within one scope while remaining independent across scopes
       prohibited_false_positive:
         cases:
           - date becomes midnight UTC, receipt time fills provider time/timezone, or raw event_ts_utc is fabricated
           - equal native values/provider ID cause deduplication or retransmission identity reuse
+          - same-scope ingestion sequence regresses while a different scope is incorrectly forced into global ordering
           - separate records coalesce or repository-created field occurrences split one record
           - observation/delivery/provider/native/scope identity values substitute across command positions
       missing_mandatory_authority:
@@ -209,18 +216,20 @@ families:
       - capture and observation specimen references
       - exact three assessment outcome literals
     dependency_substitutions:
-      - eligibility resolver is a controlled proof input and does not decide assessment outcome
+      - eligibility resolver records the exact observation and stored effective policy presented by M00 and does not decide assessment outcome
+      - injected technical persistence port stores already-decided facts and exposes no Raw Signal decision capability
     case_coverage:
       lawful_positive:
         cases:
-          - eligible in-slot receipt yields only evidences_receipt_presence_only relation
+          - eligible in-slot receipt is decided against the exact stored effective policy and yields only evidences_receipt_presence_only relation
           - zero_received is derived when no eligible committed receipt is visible at evidence_as_of
           - one_or_more_received is derived when eligible committed receipt evidence is visible
           - late eligible evidence appends one_or_more superseding but not overwriting prior zero
           - all three exact outcome literals remain valid contract discriminants
       prohibited_false_positive:
         cases:
-          - caller supplies assessment outcome instead of M00 deriving it from visible evidence
+          - caller or persistence mechanism supplies/derives assessment outcome instead of M00 deriving it from visible evidence
+          - relation eligibility is evaluated against a substituted or mismatched policy identity/lineage
           - relation implies membership/count/validity/completeness/finality/ownership
           - broken, self or non-immediate supersession is accepted
           - unknown is treated as zero or one_or_more as exact count
@@ -277,18 +286,23 @@ families:
     dependency_substitutions:
       - fail_before_commit is proof-only fault injection around the public real-PostgreSQL owner path
       - fresh subprocess driver calls the same public create_owner path and contains no product decisions
+      - subprocesses run with isolated ephemeral local filesystems while PostgreSQL remains the only durable cross-process state channel
     case_coverage:
       lawful_positive:
         cases:
-          - one process writes PostgreSQL state and a later fresh process reads by domain identity
-          - append-only zero then one-or-more assessment chain survives a fresh process boundary
+          - filesystem-isolated writer/read processes require PostgreSQL for semantic state transfer
+          - PostgreSQL itself contains correlated markers spanning policy, capture, observation, delivery, eligibility lineage and native/revision facts, and deleting correlated observation state prevents exact fresh-process reproduction
+          - each occurrence and assessment command is committed and exactly readable from a later fresh process before the next command
+          - append-only zero then one-or-more assessment chain survives fresh process boundaries
           - durable same-ID identical-content retry is idempotent across processes
           - restart reconciliation crosses processes and persists missing owed slot as unknown_not_established
       prohibited_false_positive:
         cases:
-          - same-process/module-global memory or local substitute stands in for PostgreSQL durability
+          - same-process/module-global memory, SQLite or shared local filesystem state stands in for PostgreSQL semantic durability
+          - PostgreSQL merely participates while a different persistence mechanism remains the semantic durable store
           - semantic read succeeds through a deliberately invalid PostgreSQL DSN
-          - failed write leaves a durable fact or semantic fallback visible from a fresh process
+          - failed per-command occurrence or assessment write leaves a durable fact or semantic fallback visible from a fresh process
+          - persistence/repository/adapter mechanism contains Raw Signal outcome or eligibility decision logic
           - restart absence is interpreted as zero_received
           - cross-kind atomicity/replay/SLA/RTO/RPO/retention claim appears
       missing_mandatory_authority:
@@ -353,12 +367,14 @@ families:
         cases:
           - production create_application constructs M00 through an injected owner factory and command/read facets
           - A00 call order covers policy, capture, observation, relation, assessment and referential readback
+          - every material downstream identity, policy reference, timestamp and supersession argument is wired from the exact authorised input or preceding M00 result
           - A00 returns the exact opaque objects returned by M00 rather than recreating semantic results
           - declared runtime edge remains exactly A00 -> M00
       prohibited_false_positive:
         cases:
           - private test application or M00 private-state/table/repository bypass appears
           - A00 calculates assessment outcome or substitutes its own semantic result objects
+          - A00 preserves method order while wiring a wrong observation ID, capture ID, effective policy ref, assessment ID, evidence timestamp or supersession ref
           - M00 -> A00, P01/K01, packet or downstream-consumer path appears
       missing_mandatory_authority:
         cases:

@@ -1,7 +1,7 @@
 """Fresh-process probe for Raw Signal PostgreSQL proof.
 
-This helper contains no product decisions. It invokes the same public production factory and
-fixed proof specimens used by the ordinary product tests, then reports only observable results.
+The probe contains no Raw Signal outcome logic. It invokes the public production owner and
+serialises observable committed facts for process-boundary comparison.
 """
 
 from __future__ import annotations
@@ -9,7 +9,9 @@ from __future__ import annotations
 import json
 import os
 import sys
+from dataclasses import is_dataclass
 from datetime import UTC, datetime
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
@@ -20,9 +22,11 @@ sys.path.insert(0, str(ROOT / "src"))
 from tests.product.raw_signal._support import (  # noqa: E402
     admit_observation,
     append_assessment,
+    as_mapping,
     build_owner,
     observation,
     policy,
+    policy_ref,
     realise_capture,
     register_policy,
 )
@@ -30,174 +34,258 @@ from tests.product.raw_signal._support import (  # noqa: E402
 
 def _ids(token: str) -> dict[str, str]:
     return {
-        "policy_id": f"scope-{token}",
-        "policy_ref": f"scope-{token}@1",
-        "capture_id": f"capture-{token}",
-        "observation_id": f"observation-{token}",
-        "delivery_id": f"delivery-{token}",
-        "assessment_zero_id": f"assessment-zero-{token}",
-        "assessment_one_id": f"assessment-one-{token}",
-        "recovered_capture_id": f"recovered-capture-{token}",
-        "recovered_assessment_id": f"recovered-assessment-{token}",
+        "policy_id": f"scope::{token}",
+        "capture_id": f"capture::{token}",
+        "observation_id": f"observation::{token}",
+        "fault_observation_id": f"observation-fault::{token}",
+        "delivery_id": f"delivery::{token}",
+        "assessment_zero_id": f"assessment-zero::{token}",
+        "assessment_one_id": f"assessment-one::{token}",
+        "assessment_fault_id": f"assessment-fault::{token}",
+        "recovered_capture_id": f"recovered-capture::{token}",
+        "recovered_assessment_id": f"recovered-assessment::{token}",
     }
 
 
+def _eligibility(_: Any, __: Any) -> bool:
+    return True
+
+
 def _owner(payload: dict[str, Any], **extra: Any) -> Any:
-    return build_owner(postgres_dsn=payload["dsn"], **extra)
+    return build_owner(
+        postgres_dsn=payload["dsn"],
+        eligibility_resolver=_eligibility,
+        **extra,
+    )
 
 
 def _policy(token: str) -> Any:
     ids = _ids(token)
-    return policy(scope_policy_id=ids["policy_id"])
+    return policy(
+        scope_policy_id=ids["policy_id"],
+        eligibility_policy_ref=f"eligibility-lineage::{token}",
+    )
 
 
-def _observation(token: str, *, native_record: dict[str, Any] | None = None) -> Any:
+def _observation(token: str, *, fault: bool = False, native_record: Any = None) -> Any:
     ids = _ids(token)
+    observation_id = ids["fault_observation_id"] if fault else ids["observation_id"]
     return observation(
-        observation_occurrence_id=ids["observation_id"],
+        observation_occurrence_id=observation_id,
         delivery_artifact_ref=ids["delivery_id"],
-        native_identifier=f"native-{token}",
-        native_record=native_record,
-        ingestion_sequence_scope=f"collector-{token}",
+        source_provider=f"provider::{token}",
+        native_identifier=f"native-id::{token}",
+        native_record=native_record
+        if native_record is not None
+        else {
+            "Bid Price": f"bid::{token}",
+            "Provider Null": None,
+            "High Entropy": f"native-record::{token}",
+        },
+        source_product_api=f"product-api::{token}",
+        source_endpoint_callback=f"callback::{token}",
+        native_tick_series_identifier=f"tick-series::{token}",
+        source_variant=f"variant::{token}",
+        subject_instrument=f"NVDA::{token}",
+        native_units=f"USD::{token}",
+        availability_session=f"regular::{token}",
+        source_status_native=f"published::{token}",
+        revision_vintage_native=f"revision::{token}",
+        received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, 654321, tzinfo=UTC),
+        received_epoch_ns=1_758_369_605_654_321_987,
+        ingestion_sequence=41 if not fault else 42,
+        ingestion_sequence_scope=f"collector::{token}",
+        source_temporal_kind="true_instant",
+        source_timestamp_raw="2026-09-20T12:00:04.123456Z",
+        source_timezone_native=f"UTC-native::{token}",
+        market_timezone_iana="America/New_York",
+        market_session_native=f"market-session::{token}",
     )
 
 
-def write_core(payload: dict[str, Any]) -> dict[str, Any]:
-    token = payload["token"]
-    ids = _ids(token)
-    owner = _owner(payload)
-    stored_policy = register_policy(owner, _policy(token))
-    capture = realise_capture(
-        owner,
-        scope_policy_ref=ids["policy_ref"],
-        capture_occurrence_id=ids["capture_id"],
-    )
-    obs = admit_observation(owner, _observation(token))
-    return {
-        "policy_id": stored_policy.scope_policy_id,
-        "capture_id": capture.capture_occurrence_id,
-        "observation_id": obs.observation_occurrence_id,
-    }
+def _normalise(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return {"__datetime__": value.isoformat()}
+    if isinstance(value, Enum):
+        return {"__enum_type__": type(value).__qualname__, "value": _normalise(value.value)}
+    if type(value) is not str and isinstance(value, str):
+        return {"__identity_type__": type(value).__qualname__, "value": str(value)}
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    if isinstance(value, dict):
+        return {
+            str(key): _normalise(item)
+            for key, item in sorted(value.items(), key=lambda x: str(x[0]))
+        }
+    if isinstance(value, (list, tuple)):
+        return [_normalise(item) for item in value]
+    if hasattr(value, "model_dump") or is_dataclass(value) or hasattr(value, "__dict__"):
+        return {key: _normalise(item) for key, item in sorted(as_mapping(value).items())}
+    return {"__type__": type(value).__qualname__, "value": str(value)}
 
 
-def read_core(payload: dict[str, Any]) -> dict[str, Any]:
+def _policy_ref(token: str) -> Any:
+    return policy_ref(f"scope::{token}", 1)
+
+
+def write_policy_only(payload: dict[str, Any]) -> dict[str, Any]:
+    stored = register_policy(_owner(payload), _policy(payload["token"]))
+    return {"record": _normalise(stored)}
+
+
+def read_policy(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    owner = _owner(payload)
-    stored_policy = owner.reads.get_capture_scope_policy(ids["policy_id"], 1)
-    capture = owner.reads.get_scheduled_capture_occurrence(ids["capture_id"])
-    obs = owner.reads.get_raw_observation_occurrence(ids["observation_id"])
-    return {
-        "policy": stored_policy is not None,
-        "capture": capture is not None,
-        "observation": obs is not None,
-        "observation_id": None if obs is None else obs.observation_occurrence_id,
-    }
+    stored = _owner(payload).reads.get_capture_scope_policy(
+        _policy(payload["token"]).scope_policy_id, 1
+    )
+    return {"record": _normalise(stored), "policy_id": ids["policy_id"]}
+
+
+def write_capture_only(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = realise_capture(
+        _owner(payload),
+        scope_policy_ref=_policy_ref(payload["token"]),
+        capture_occurrence_id=ids["capture_id"],
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+    )
+    return {"record": _normalise(stored)}
+
+
+def read_capture(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = _owner(payload).reads.get_scheduled_capture_occurrence(ids["capture_id"])
+    return {"record": _normalise(stored)}
+
+
+def write_observation_only(payload: dict[str, Any]) -> dict[str, Any]:
+    stored = admit_observation(_owner(payload), _observation(payload["token"]))
+    return {"record": _normalise(stored)}
+
+
+def read_observation(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = _owner(payload).reads.get_raw_observation_occurrence(ids["observation_id"])
+    return {"record": _normalise(stored)}
 
 
 def retry_observation(payload: dict[str, Any]) -> dict[str, Any]:
-    obs = admit_observation(_owner(payload), _observation(payload["token"]))
-    return {"observation_id": obs.observation_occurrence_id}
+    stored = admit_observation(_owner(payload), _observation(payload["token"]))
+    return {"record": _normalise(stored)}
 
 
 def conflict_observation(payload: dict[str, Any]) -> dict[str, Any]:
     try:
         admit_observation(
             _owner(payload),
-            _observation(payload["token"], native_record={"Bid Price": "999.00"}),
+            _observation(payload["token"], native_record={"Bid Price": "conflict"}),
         )
     except (TypeError, ValueError):
         return {"rejected": True}
     raise AssertionError("conflicting durable same-ID observation was accepted")
 
 
-def write_assessment_chain(payload: dict[str, Any]) -> dict[str, Any]:
+def write_zero_assessment_only(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = append_assessment(
+        _owner(payload),
+        assessment_occurrence_id=ids["assessment_zero_id"],
+        capture_occurrence_ref=ids["capture_id"],
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC),
+    )
+    return {"record": _normalise(stored)}
+
+
+def write_relation_and_one_assessment(payload: dict[str, Any]) -> dict[str, Any]:
     token = payload["token"]
     ids = _ids(token)
     owner = _owner(payload)
-    register_policy(owner, _policy(token))
-    capture = realise_capture(
-        owner,
-        scope_policy_ref=ids["policy_ref"],
-        capture_occurrence_id=ids["capture_id"],
-    )
-    zero = append_assessment(
-        owner,
-        assessment_occurrence_id=ids["assessment_zero_id"],
-        capture_occurrence_ref=capture.capture_occurrence_id,
-        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
-    )
-    obs = admit_observation(
-        owner,
-        observation(
-            observation_occurrence_id=ids["observation_id"],
-            delivery_artifact_ref=ids["delivery_id"],
-            native_identifier=f"native-{token}",
-            received_ts_utc=datetime(2026, 9, 20, 12, 0, 20, tzinfo=UTC),
-            ingestion_sequence=2,
-            ingestion_sequence_scope=f"collector-{token}",
-        ),
-    )
+    capture = owner.reads.get_scheduled_capture_occurrence(ids["capture_id"])
+    obs = owner.reads.get_raw_observation_occurrence(ids["observation_id"])
+    zero = owner.reads.get_receipt_presence_assessment(ids["assessment_zero_id"])
     relation = owner.commands.derive_capture_receipt_evidence_relation(
         observation_occurrence_ref=obs.observation_occurrence_id,
         capture_occurrence_ref=capture.capture_occurrence_id,
         scope_policy_ref=capture.scope_policy_ref,
     )
     assert relation is not None
-    one = append_assessment(
+    stored = append_assessment(
         owner,
         assessment_occurrence_id=ids["assessment_one_id"],
         capture_occurrence_ref=capture.capture_occurrence_id,
-        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, tzinfo=UTC),
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, 222222, tzinfo=UTC),
         supersedes_assessment_ref=zero.assessment_occurrence_id,
     )
-    return {"zero": zero.outcome, "one": one.outcome}
+    return {"record": _normalise(stored), "relation": _normalise(relation)}
+
+
+def read_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    which = payload.get("which", "zero")
+    assessment_id = ids["assessment_zero_id"] if which == "zero" else ids["assessment_one_id"]
+    stored = _owner(payload).reads.get_receipt_presence_assessment(assessment_id)
+    return {"record": _normalise(stored)}
 
 
 def read_assessment_chain(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    owner = _owner(payload)
-    chain = owner.reads.list_receipt_presence_assessments(ids["capture_id"])
-    return {
-        "ids": [item.assessment_occurrence_id for item in chain],
-        "outcomes": [item.outcome for item in chain],
-        "supersedes": [item.supersedes_assessment_ref for item in chain],
-    }
+    chain = _owner(payload).reads.list_receipt_presence_assessments(ids["capture_id"])
+    return {"records": [_normalise(item) for item in chain]}
 
 
-def fault_write(payload: dict[str, Any]) -> dict[str, Any]:
+def fault_observation(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload, fault_mode="fail_before_commit")
     try:
-        admit_observation(owner, _observation(payload["token"]))
+        admit_observation(owner, _observation(payload["token"], fault=True))
     except Exception:
-        return {"failed": True, "observation_id": ids["observation_id"]}
-    raise AssertionError("proof fault injection did not interrupt the transaction")
+        return {"failed": True, "observation_id": ids["fault_observation_id"]}
+    raise AssertionError("proof fault injection did not interrupt the observation transaction")
 
 
-def read_absent(payload: dict[str, Any]) -> dict[str, Any]:
+def read_fault_observation_absent(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    owner = _owner(payload)
-    return {
-        "absent": owner.reads.get_raw_observation_occurrence(ids["observation_id"]) is None
-    }
+    stored = _owner(payload).reads.get_raw_observation_occurrence(ids["fault_observation_id"])
+    return {"absent": stored is None}
 
 
-def write_policy(payload: dict[str, Any]) -> dict[str, Any]:
-    value = register_policy(_owner(payload), _policy(payload["token"]))
-    return {"policy_id": value.scope_policy_id}
+def fault_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload, fault_mode="fail_before_commit")
+    try:
+        append_assessment(
+            owner,
+            assessment_occurrence_id=ids["assessment_fault_id"],
+            capture_occurrence_ref=ids["capture_id"],
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 27, tzinfo=UTC),
+            supersedes_assessment_ref=ids["assessment_one_id"],
+        )
+    except Exception:
+        return {"failed": True, "assessment_id": ids["assessment_fault_id"]}
+    raise AssertionError("proof fault injection did not interrupt the assessment transaction")
+
+
+def read_fault_assessment_absent(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = _owner(payload).reads.get_receipt_presence_assessment(ids["assessment_fault_id"])
+    return {"absent": stored is None}
+
+
+def write_policy_for_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
+    return write_policy_only(payload)
 
 
 def reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
     result = owner.commands.reconcile_owed_slots(
-        scope_policy_ref=ids["policy_ref"],
+        scope_policy_ref=_policy_ref(payload["token"]),
         slot_starts_utc=[datetime(2026, 9, 20, 12, 0, tzinfo=UTC)],
         capture_occurrence_ids=[ids["recovered_capture_id"]],
         assessment_occurrence_ids=[ids["recovered_assessment_id"]],
     )
     assessment = owner.reads.get_receipt_presence_assessment(ids["recovered_assessment_id"])
-    return {"count": len(result), "outcome": assessment.outcome}
+    return {"count": len(result), "assessment": _normalise(assessment)}
 
 
 def read_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
@@ -205,32 +293,50 @@ def read_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     owner = _owner(payload)
     capture = owner.reads.get_scheduled_capture_occurrence(ids["recovered_capture_id"])
     assessment = owner.reads.get_receipt_presence_assessment(ids["recovered_assessment_id"])
-    return {
-        "capture": capture is not None,
-        "assessment": assessment is not None,
-        "outcome": None if assessment is None else assessment.outcome,
-    }
+    return {"capture": _normalise(capture), "assessment": _normalise(assessment)}
+
+
+def filesystem_boundary(payload: dict[str, Any]) -> dict[str, Any]:
+    host_path = Path(payload["host_path"])
+    try:
+        host_path.write_text("should-not-write", encoding="utf-8")
+    except OSError:
+        blocked = True
+    else:
+        blocked = False
+        host_path.unlink(missing_ok=True)
+    ephemeral = Path("/tmp/nvda-proof-ephemeral")
+    ephemeral.write_text("ephemeral", encoding="utf-8")
+    return {"host_write_blocked": blocked, "ephemeral_write_ok": ephemeral.exists()}
 
 
 ACTIONS = {
-    "write_core": write_core,
-    "read_core": read_core,
+    "write_policy_only": write_policy_only,
+    "read_policy": read_policy,
+    "write_capture_only": write_capture_only,
+    "read_capture": read_capture,
+    "write_observation_only": write_observation_only,
+    "read_observation": read_observation,
     "retry_observation": retry_observation,
     "conflict_observation": conflict_observation,
-    "write_assessment_chain": write_assessment_chain,
+    "write_zero_assessment_only": write_zero_assessment_only,
+    "write_relation_and_one_assessment": write_relation_and_one_assessment,
+    "read_assessment": read_assessment,
     "read_assessment_chain": read_assessment_chain,
-    "fault_write": fault_write,
-    "read_absent": read_absent,
-    "write_policy": write_policy,
+    "fault_observation": fault_observation,
+    "read_fault_observation_absent": read_fault_observation_absent,
+    "fault_assessment": fault_assessment,
+    "read_fault_assessment_absent": read_fault_assessment_absent,
+    "write_policy_for_reconcile": write_policy_for_reconcile,
     "reconcile": reconcile,
     "read_reconcile": read_reconcile,
+    "filesystem_boundary": filesystem_boundary,
 }
 
 
 def main() -> None:
     payload = json.loads(sys.stdin.read())
-    action = payload["action"]
-    result = {**ACTIONS[action](payload), "_pid": os.getpid()}
+    result = {**ACTIONS[payload["action"]](payload), "_pid": os.getpid()}
     print(json.dumps(result, sort_keys=True))
 
 

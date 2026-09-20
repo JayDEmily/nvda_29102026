@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import inspect
-from dataclasses import MISSING, fields, is_dataclass
+from dataclasses import MISSING, dataclass, fields, is_dataclass
 from datetime import datetime
-from typing import Any
+from enum import Enum
+from itertools import permutations
+from typing import Any, Literal, get_args, get_origin
 
 import pytest
 from tests.product.raw_signal._support import (
@@ -21,10 +23,13 @@ from tests.product.raw_signal._support import (
     assessment_contract,
     build_owner,
     capture_contract,
+    field_annotation,
+    identity_type,
     observation,
     policy,
     relation_contract,
     required_symbol,
+    typed_identity,
 )
 
 from nvda_desk.raw_signal_occurrence_truth import api
@@ -98,7 +103,6 @@ CONTRACT_SHAPES: dict[str, dict[str, bool]] = {
     },
 }
 
-
 REQUIRED_FIELD_CASES = [
     (name, field)
     for name, shape in CONTRACT_SHAPES.items()
@@ -108,12 +112,96 @@ REQUIRED_FIELD_CASES = [
 
 UTC_FIELD_CASES = [
     ("CaptureScopePolicyV1", "activation_ts_utc"),
+    ("CaptureScopePolicyV1", "deactivation_ts_utc"),
     ("ScheduledCaptureOccurrenceV1", "slot_start_utc"),
     ("ScheduledCaptureOccurrenceV1", "slot_end_utc"),
     ("RawObservationOccurrenceV1", "received_ts_utc"),
     ("CaptureReceiptEvidenceRelationV1", "received_ts_utc"),
     ("CaptureReceiptPresenceAssessmentV1", "evidence_as_of_ts_utc"),
 ]
+
+LITERAL_LAW: dict[tuple[str, str], frozenset[str]] = {
+    ("CaptureScopePolicyV1", "units"): frozenset({"not_applicable"}),
+    ("ScheduledCaptureOccurrenceV1", "units"): frozenset({"not_applicable"}),
+    ("RawObservationOccurrenceV1", "source_temporal_kind"): frozenset(
+        {"true_instant", "date_only", "receipt_only"}
+    ),
+    ("CaptureReceiptEvidenceRelationV1", "units"): frozenset({"not_applicable"}),
+    ("CaptureReceiptEvidenceRelationV1", "relation_role"): frozenset(
+        {"evidences_receipt_presence_only"}
+    ),
+    ("CaptureReceiptPresenceAssessmentV1", "units"): frozenset({"not_applicable"}),
+    ("CaptureReceiptPresenceAssessmentV1", "outcome"): frozenset(
+        {"unknown_not_established", "zero_received", "one_or_more_received"}
+    ),
+}
+
+IDENTITY_GROUPS: dict[str, tuple[tuple[str, str], ...]] = {
+    "concept": tuple((name, "concept_id") for name in CONTRACT_SHAPES),
+    "contract": tuple((name, "contract_id") for name in CONTRACT_SHAPES),
+    "policy_id": (("CaptureScopePolicyV1", "scope_policy_id"),),
+    "eligibility_policy": (("CaptureScopePolicyV1", "eligibility_policy_ref"),),
+    "policy_ref": (
+        ("ScheduledCaptureOccurrenceV1", "scope_policy_ref"),
+        ("CaptureReceiptEvidenceRelationV1", "scope_policy_ref"),
+    ),
+    "capture": (
+        ("ScheduledCaptureOccurrenceV1", "capture_occurrence_id"),
+        ("CaptureReceiptEvidenceRelationV1", "capture_occurrence_ref"),
+        ("CaptureReceiptPresenceAssessmentV1", "capture_occurrence_ref"),
+    ),
+    "observation": (
+        ("RawObservationOccurrenceV1", "observation_occurrence_id"),
+        ("CaptureReceiptEvidenceRelationV1", "observation_occurrence_ref"),
+    ),
+    "assessment": (
+        ("CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"),
+        ("CaptureReceiptPresenceAssessmentV1", "supersedes_assessment_ref"),
+    ),
+    "provider": (("RawObservationOccurrenceV1", "source_provider"),),
+    "delivery": (("RawObservationOccurrenceV1", "delivery_artifact_ref"),),
+    "ingestion_scope": (("RawObservationOccurrenceV1", "ingestion_sequence_scope"),),
+}
+
+ACTIVE_IDENTITY_TARGETS = tuple(
+    (group, symbol, field)
+    for group, members in IDENTITY_GROUPS.items()
+    for symbol, field in members[:1]
+)
+
+
+@dataclass(frozen=True)
+class _ForeignRunId:
+    value: str
+
+
+@dataclass(frozen=True)
+class _ForeignReplayId:
+    value: str
+
+
+@dataclass(frozen=True)
+class _ForeignPacketOccurrenceId:
+    value: str
+
+
+@dataclass(frozen=True)
+class _ForeignWorkbookAlias:
+    value: str
+
+
+@dataclass(frozen=True)
+class _ForeignLineageId:
+    value: str
+
+
+FOREIGN_IDENTITY_TYPES = (
+    _ForeignRunId,
+    _ForeignReplayId,
+    _ForeignPacketOccurrenceId,
+    _ForeignWorkbookAlias,
+    _ForeignLineageId,
+)
 
 
 def _constructor_shape(cls: type[Any]) -> dict[str, bool]:
@@ -156,6 +244,25 @@ def _specimens() -> dict[str, Any]:
         "CaptureReceiptEvidenceRelationV1": relation_contract(),
         "CaptureReceiptPresenceAssessmentV1": assessment_contract(),
     }
+
+
+def _declared_finite_values(symbol: str, field: str) -> frozenset[str]:
+    annotation = field_annotation(symbol, field)
+    origin = get_origin(annotation)
+    if origin is Literal:
+        return frozenset(str(value) for value in get_args(annotation))
+    if isinstance(annotation, type) and issubclass(annotation, Enum):
+        return frozenset(str(item.value) for item in annotation)
+    pytest.fail(
+        f"{symbol}.{field} must expose its finite v1 allowed set through Literal/Enum typing"
+    )
+
+
+def _construct(symbol: str, field: str, value: Any) -> Any:
+    cls = required_symbol(symbol)
+    payload = as_mapping(_specimens()[symbol])
+    payload[field] = value
+    return cls(**payload)
 
 
 def test_exact_five_v1_contract_symbols_are_public_and_distinct() -> None:
@@ -204,41 +311,132 @@ def test_required_field_rejects_null(name: str, field: str) -> None:
 
 
 @pytest.mark.parametrize(("name", "field"), UTC_FIELD_CASES)
-def test_utc_time_field_rejects_naive_datetime(name: str, field: str) -> None:
-    cls = required_symbol(name)
+def test_every_v1_utc_field_rejects_naive_datetime(name: str, field: str) -> None:
     baseline = as_mapping(_specimens()[name])
+    if field == "deactivation_ts_utc":
+        assert baseline[field] is not None
     with pytest.raises((TypeError, ValueError)):
-        cls(**{**baseline, field: datetime(2026, 9, 20, 12, 0)})
+        required_symbol(name)(**{**baseline, field: datetime(2026, 9, 20, 12, 0)})
 
 
-def test_lawful_optional_absence_remains_explicit() -> None:
-    assert policy(deactivation_ts_utc=None).deactivation_ts_utc is None
-    observed = observation(native_identifier=None, native_units=None, source_timezone_native=None)
-    assert observed.native_identifier is None
-    assert observed.native_units is None
-    assert observed.source_timezone_native is None
-    assert assessment_contract(supersedes_assessment_ref=None).supersedes_assessment_ref is None
+@pytest.mark.parametrize(("symbol", "field", "expected"), [
+    (symbol, field, expected) for (symbol, field), expected in LITERAL_LAW.items()
+])
+def test_finite_v1_discriminant_sets_are_exact(
+    symbol: str, field: str, expected: frozenset[str]
+) -> None:
+    assert _declared_finite_values(symbol, field) == expected
+
+
+@pytest.mark.parametrize(("symbol", "field", "expected"), [
+    (symbol, field, expected)
+    for (symbol, field), values in LITERAL_LAW.items()
+    for expected in sorted(values)
+])
+def test_every_allowed_v1_discriminant_value_is_accepted(
+    symbol: str, field: str, expected: str
+) -> None:
+    assert str(getattr(_construct(symbol, field, expected), field)) == expected
 
 
 @pytest.mark.parametrize(
-    ("name", "mutations"),
+    ("name", "field", "invalid"),
     [
-        ("CaptureScopePolicyV1", {"scope_policy_version": 0}),
-        ("CaptureScopePolicyV1", {"units": "USD"}),
-        ("ScheduledCaptureOccurrenceV1", {"units": "USD"}),
-        ("RawObservationOccurrenceV1", {"source_temporal_kind": "fabricated"}),
-        ("CaptureReceiptEvidenceRelationV1", {"relation_role": "contains_member"}),
-        ("CaptureReceiptEvidenceRelationV1", {"units": "USD"}),
-        ("CaptureReceiptPresenceAssessmentV1", {"outcome": "exactly_one"}),
-        ("CaptureReceiptPresenceAssessmentV1", {"units": "USD"}),
+        ("CaptureScopePolicyV1", "units", "USD"),
+        ("ScheduledCaptureOccurrenceV1", "units", "USD"),
+        ("RawObservationOccurrenceV1", "source_temporal_kind", "fabricated"),
+        ("CaptureReceiptEvidenceRelationV1", "units", "USD"),
+        ("CaptureReceiptEvidenceRelationV1", "relation_role", "contains_member"),
+        ("CaptureReceiptPresenceAssessmentV1", "units", "USD"),
+        ("CaptureReceiptPresenceAssessmentV1", "outcome", "exactly_one"),
     ],
 )
-def test_v1_discriminants_and_allowed_values_fail_closed(
-    name: str, mutations: dict[str, Any]
+def test_values_outside_v1_discriminant_sets_fail_closed(
+    name: str, field: str, invalid: str
 ) -> None:
-    cls = required_symbol(name)
     with pytest.raises((TypeError, ValueError)):
-        cls(**{**as_mapping(_specimens()[name]), **mutations})
+        _construct(name, field, invalid)
+
+
+def test_policy_version_must_be_positive() -> None:
+    with pytest.raises((TypeError, ValueError)):
+        _construct("CaptureScopePolicyV1", "scope_policy_version", 0)
+
+
+@pytest.mark.parametrize(
+    ("symbol", "field", "exact_value"),
+    [
+        ("CaptureScopePolicyV1", "concept_id", POLICY_CONCEPT),
+        ("CaptureScopePolicyV1", "contract_id", POLICY_CONTRACT),
+        ("ScheduledCaptureOccurrenceV1", "concept_id", CAPTURE_CONCEPT),
+        ("ScheduledCaptureOccurrenceV1", "contract_id", CAPTURE_CONTRACT),
+        ("RawObservationOccurrenceV1", "concept_id", OBSERVATION_CONCEPT),
+        ("RawObservationOccurrenceV1", "contract_id", OBSERVATION_CONTRACT),
+        ("CaptureReceiptEvidenceRelationV1", "concept_id", RELATION_CONCEPT),
+        ("CaptureReceiptEvidenceRelationV1", "contract_id", RELATION_CONTRACT),
+        ("CaptureReceiptPresenceAssessmentV1", "concept_id", ASSESSMENT_CONCEPT),
+        ("CaptureReceiptPresenceAssessmentV1", "contract_id", ASSESSMENT_CONTRACT),
+    ],
+)
+def test_concept_and_contract_discriminants_reject_same_type_wrong_value(
+    symbol: str, field: str, exact_value: str
+) -> None:
+    wrong = typed_identity(symbol, field, f"wrong::{exact_value}")
+    with pytest.raises((TypeError, ValueError)):
+        _construct(symbol, field, wrong)
+
+
+def test_all_active_identity_layers_use_runtime_distinct_opaque_types() -> None:
+    representative_types: dict[str, type[Any]] = {}
+    for group, members in IDENTITY_GROUPS.items():
+        member_types = {identity_type(symbol, field) for symbol, field in members}
+        assert len(member_types) == 1, (group, member_types)
+        identity_cls = next(iter(member_types))
+        assert identity_cls is not str
+        representative_types[group] = identity_cls
+    assert len(set(representative_types.values())) == len(representative_types)
+
+
+@pytest.mark.parametrize(
+    (
+        "target_group",
+        "target_symbol",
+        "target_field",
+        "source_group",
+        "source_symbol",
+        "source_field",
+    ),
+    [
+        (*target, *source)
+        for target, source in permutations(ACTIVE_IDENTITY_TARGETS, 2)
+        if target[0] != source[0]
+    ],
+)
+def test_same_opaque_payload_rejects_every_active_cross_layer_identity_substitution(
+    target_group: str,
+    target_symbol: str,
+    target_field: str,
+    source_group: str,
+    source_symbol: str,
+    source_field: str,
+) -> None:
+    del target_group, source_group
+    substitute = typed_identity(source_symbol, source_field, "same-opaque-payload")
+    with pytest.raises((TypeError, ValueError)):
+        _construct(target_symbol, target_field, substitute)
+
+
+@pytest.mark.parametrize(("target_group", "target_symbol", "target_field"), ACTIVE_IDENTITY_TARGETS)
+@pytest.mark.parametrize("foreign_type", FOREIGN_IDENTITY_TYPES)
+def test_inactive_identity_layer_value_cannot_substitute_for_active_identity(
+    target_group: str,
+    target_symbol: str,
+    target_field: str,
+    foreign_type: type[Any],
+) -> None:
+    del target_group
+    with pytest.raises((TypeError, ValueError)):
+        _construct(target_symbol, target_field, foreign_type("same-opaque-payload"))
 
 
 @pytest.mark.parametrize(
@@ -260,49 +458,41 @@ def test_observation_provenance_requiredness_cannot_be_weakened(field: str) -> N
         cls(**{**baseline, field: None})
 
 
+def test_lawful_optional_absence_and_conditional_null_law_are_explicit() -> None:
+    assert policy(deactivation_ts_utc=None).deactivation_ts_utc is None
+    observed = observation(
+        native_identifier=None,
+        native_units=None,
+        source_product_api=None,
+        source_endpoint_callback=None,
+        native_tick_series_identifier=None,
+        source_variant=None,
+        subject_instrument=None,
+        availability_session=None,
+        source_status_native=None,
+        revision_vintage_native=None,
+        received_epoch_ns=None,
+        source_temporal_kind="receipt_only",
+        source_timestamp_raw=None,
+        source_timezone_native=None,
+        market_timezone_iana=None,
+        market_session_native=None,
+    )
+    for field in CONTRACT_SHAPES["RawObservationOccurrenceV1"]:
+        if CONTRACT_SHAPES["RawObservationOccurrenceV1"][field] is False:
+            assert getattr(observed, field) is None
+    assert assessment_contract(supersedes_assessment_ref=None).supersedes_assessment_ref is None
+
+
 @pytest.mark.parametrize(
-    ("name", "field", "substitute"),
-    [
-        ("CaptureScopePolicyV1", "concept_id", POLICY_CONTRACT),
-        ("CaptureScopePolicyV1", "contract_id", POLICY_CONCEPT),
-        ("CaptureScopePolicyV1", "scope_policy_id", "capture-001"),
-        ("ScheduledCaptureOccurrenceV1", "capture_occurrence_id", "scope-policy-001"),
-        ("ScheduledCaptureOccurrenceV1", "scope_policy_ref", "capture-001"),
-        ("RawObservationOccurrenceV1", "observation_occurrence_id", "delivery-001"),
-        ("RawObservationOccurrenceV1", "delivery_artifact_ref", "observation-001"),
-        ("RawObservationOccurrenceV1", "source_provider", "provider-native-001"),
-        ("RawObservationOccurrenceV1", "native_identifier", "provider.fixture"),
-        ("CaptureReceiptEvidenceRelationV1", "observation_occurrence_ref", "capture-001"),
-        ("CaptureReceiptEvidenceRelationV1", "capture_occurrence_ref", "observation-001"),
-        ("CaptureReceiptEvidenceRelationV1", "scope_policy_ref", "capture-001"),
-        ("CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id", "capture-001"),
-        ("CaptureReceiptPresenceAssessmentV1", "capture_occurrence_ref", "assessment-001"),
-        ("CaptureReceiptPresenceAssessmentV1", "supersedes_assessment_ref", "capture-001"),
-    ],
+    ("kind", "raw"),
+    [("true_instant", None), ("date_only", None), ("receipt_only", "not-absent")],
 )
-def test_identity_layers_reject_cross_layer_substitution(
-    name: str, field: str, substitute: str
+def test_temporal_discriminant_controls_source_timestamp_null_law(
+    kind: str, raw: str | None
 ) -> None:
-    cls = required_symbol(name)
     with pytest.raises((TypeError, ValueError)):
-        cls(**{**as_mapping(_specimens()[name]), field: substitute})
-
-
-@pytest.mark.parametrize(
-    "field",
-    [
-        "workbook_alias",
-        "run_id",
-        "replay_id",
-        "lineage_id",
-        "packet_occurrence_id",
-        "universal_id",
-    ],
-)
-def test_unadmitted_identity_authority_fields_are_rejected(field: str) -> None:
-    cls = required_symbol("CaptureScopePolicyV1")
-    with pytest.raises((TypeError, ValueError)):
-        cls(**{**as_mapping(policy()), field: f"unadmitted-{field}"})
+        observation(source_temporal_kind=kind, source_timestamp_raw=raw)
 
 
 def test_owner_uses_public_production_factory_with_separate_command_and_read_facets() -> None:
@@ -335,10 +525,11 @@ def test_owner_uses_public_production_factory_with_separate_command_and_read_fac
 
 def test_policy_payload_keeps_concept_contract_and_occurrence_identity_separate() -> None:
     value = policy()
-    assert value.concept_id == POLICY_CONCEPT
-    assert value.contract_id == POLICY_CONTRACT
-    assert value.scope_policy_id == "scope-policy-001"
-    assert value.concept_id != value.contract_id != value.scope_policy_id
+    assert str(value.concept_id) == POLICY_CONCEPT
+    assert str(value.contract_id) == POLICY_CONTRACT
+    assert str(value.scope_policy_id) == "scope-policy-001"
+    assert type(value.concept_id) is not type(value.contract_id)
+    assert type(value.contract_id) is not type(value.scope_policy_id)
     assert value.units == "not_applicable"
 
 

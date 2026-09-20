@@ -1,9 +1,17 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
+from typing import Any
 
 import pytest
-from tests.product.raw_signal._support import build_owner, policy, realise_capture, register_policy
+from tests.product.raw_signal._support import (
+    build_owner,
+    copy_with,
+    policy,
+    realise_capture,
+    register_policy,
+    typed_identity,
+)
 
 
 def test_exact_half_minute_slots_are_owed_inside_active_policy() -> None:
@@ -19,7 +27,7 @@ def test_exact_half_minute_slots_are_owed_inside_active_policy() -> None:
     assert second.slot_end_utc - second.slot_start_utc == timedelta(seconds=30)
     assert first.slot_start_utc.second == 0
     assert second.slot_start_utc.second == 30
-    assert first.scope_policy_ref == second.scope_policy_ref == "scope-policy-001@1"
+    assert str(first.scope_policy_ref) == str(second.scope_policy_ref) == "scope-policy-001@1"
 
 
 @pytest.mark.parametrize(
@@ -97,8 +105,8 @@ def test_policy_version_boundary_is_non_overlapping_and_does_not_rewrite_history
             deactivation_ts_utc=None,
         ),
     )
-    assert owner.reads.get_scheduled_capture_occurrence("capture-v1") == earlier
-    assert earlier.scope_policy_ref == "scope-policy-001@1"
+    assert owner.reads.get_scheduled_capture_occurrence(earlier.capture_occurrence_id) == earlier
+    assert str(earlier.scope_policy_ref) == "scope-policy-001@1"
 
 
 def test_overlapping_policy_versions_fail_closed() -> None:
@@ -113,6 +121,49 @@ def test_overlapping_policy_versions_fail_closed() -> None:
                 deactivation_ts_utc=None,
             ),
         )
+
+
+def _policy_conflict(field: str) -> Any:
+    changes: dict[str, Any] = {
+        "activation_ts_utc": datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+        "deactivation_ts_utc": datetime(2026, 9, 20, 12, 1, 30, tzinfo=UTC),
+        "eligibility_policy_ref": typed_identity(
+            "CaptureScopePolicyV1", "eligibility_policy_ref", "eligibility-policy:changed:v1"
+        ),
+    }
+    return copy_with(policy(), **{field: changes[field]})
+
+
+@pytest.mark.parametrize(
+    "field", ["activation_ts_utc", "deactivation_ts_utc", "eligibility_policy_ref"]
+)
+def test_same_policy_identity_and_version_cannot_be_reregistered_with_changed_content(
+    field: str,
+) -> None:
+    owner = build_owner()
+    original = register_policy(owner, policy())
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(owner, _policy_conflict(field))
+    reread = owner.reads.get_capture_scope_policy(
+        original.scope_policy_id, original.scope_policy_version
+    )
+    assert reread == original
+
+
+def test_identical_policy_reregistration_is_idempotent_or_rejected_without_mutation() -> None:
+    owner = build_owner()
+    original_value = policy()
+    original = register_policy(owner, original_value)
+    try:
+        retry = register_policy(owner, original_value)
+    except (TypeError, ValueError):
+        retry = None
+    if retry is not None:
+        assert retry == original
+    reread = owner.reads.get_capture_scope_policy(
+        original.scope_policy_id, original.scope_policy_version
+    )
+    assert reread == original
 
 
 def test_absent_deactivation_is_preserved_as_absence() -> None:
