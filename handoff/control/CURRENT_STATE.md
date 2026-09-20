@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R2 SUCCESSOR FROZEN / VI-11R2 FRESH REVIEW REQUIRED`
+- **Gate state:** `ACTIVE — VI-11R2 FAIL / VI-10R3 PROOF REPAIR ACTIVE`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -19,9 +19,11 @@
 - **VI-10R successor physical proof candidate:** `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4` — 155 tests, six families, 13/13 obligations; pending fresh VI-11 review
 - **VI-11R Iteration 004 result:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T004-F001..F011`), 5 Critical / 6 Important; reviewed wrapper `12096688...`, physical proof `375e61b7...`
 - **VI-10R2 successor physical proof candidate:** `56ea445d4bb5055b9fc39114bcd3c529b7f0bae5` / tree `b925e086a734492457dd9633a04743aa0c3c0471` — six families, 13/13 obligations, 353 collected tests; pending fresh VI-11R2 review
-- **Current Leaf:** `G03-L07 / VI-11R2 — Fresh proof-adequacy rechallenge`
-- **Current actor:** fresh independent reviewer required; Worker 007 proof candidate is frozen
+- **Current Leaf:** `G03-L06 / VI-10R3 — Proof-only repair after Tester Iteration 005`
+- **Current actor:** bounded proof-repair Worker; production implementation prohibited
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** fresh independent VI-11R2 rechallenge of physical proof `56ea445d...`; production implementation remains prohibited pending accepted reviewer disposition.
+- **Next lawful action:** repair `T005-F001..F011` in the proof layer, freeze a successor physical proof, then route it to fresh independent VI-11R3 review; production implementation remains prohibited.
+
+- **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.

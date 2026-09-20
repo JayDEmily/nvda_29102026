@@ -9,8 +9,8 @@ This file exposes the accepted successor method's stages as explicit PLM/PCM Lea
 | `G03-L03` | VI-07 | `ACCEPTED` | PM revalidated architecture and derived exact admission design |
 | `G03-L04` | VI-08 | `ACCEPTED / INDEPENDENT PASS` | Worker 001 admission repaired to `544624b...` and independently PASS-reviewed in Tester Iteration 002 with zero findings |
 | `G03-L05` | VI-09 | `ACCEPTED` | separate exact-authority-bound product-proof control accepted at `956fab3...`; 13 current obligations, zero physical families, empty aggregate fails closed |
-| `G03-L06` | VI-10 / VI-10R / VI-10R2 | `FROZEN — SUCCESSOR PENDING RECHALLENGE` | VI-10R2 physical proof `56ea445d...` / tree `b925e086...` frozen after proof-only repair; six families, 13/13 obligations, 353 tests; no production-source mutation |
-| `G03-L07` | VI-11 / VI-11R2 | `ACTIVE — FRESH RECHALLENGE REQUIRED` | Reviewer 008 must independently challenge frozen VI-10R2 proof `56ea445d...`; VI-12R remains blocked pending accepted PASS |
+| `G03-L06` | VI-10 / VI-10R / VI-10R2 / VI-10R3 | `ACTIVE — RETURNED TO PROOF REPAIR` | Tester Iteration 005 returned eleven proof-adequacy findings against VI-10R2; VI-10R3 proof-only repair active |
+| `G03-L07` | VI-11 / VI-11R2 / VI-11R3 | `BLOCKED ON VI-10R3 REPAIR` | Tester Iteration 005 returned `FAIL`; fresh VI-11R3 review follows only after successor proof freezes; VI-12R remains blocked |
 | `G03-L08` | VI-12R | `PENDING` | controlled risk-adaptive implementation |
 | `G03-L09` | VI-13R | `PENDING` | fresh post-implementation review per unit |
 | `G03-L10` | VI-14 | `PENDING` | material interaction/direct-boundary closure |
