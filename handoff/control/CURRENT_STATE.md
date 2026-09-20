@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R SUCCESSOR PROOF FROZEN / VI-11 RECHALLENGE READY`
+- **Gate state:** `ACTIVE — VI-11R ITERATION 004 FAILED / VI-10R2 PROOF REPAIR AUTHORISED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -17,9 +17,10 @@
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
 - **Failed VI-10 proof state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd` — VI-11 Tester Iteration 003 `FAIL`
 - **VI-10R successor physical proof candidate:** `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4` — 155 tests, six families, 13/13 obligations; pending fresh VI-11 review
-- **Current Leaf:** `G03-L07 / VI-11R — Fresh proof-adequacy rechallenge of the VI-10R successor`
-- **Current actor:** fresh independent tester/reviewer required; Worker 005 successor proof is frozen
+- **VI-11R Iteration 004 result:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T004-F001..F011`), 5 Critical / 6 Important; reviewed wrapper `12096688...`, physical proof `375e61b7...`
+- **Current Leaf:** `G03-L06 / VI-10R2 — Successor adversarial product-proof repair`
+- **Current actor:** bounded Worker 007; proof layer only
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** independently rechallenge exact VI-10R physical proof candidate `375e61b7...` against the unchanged IRB/BICP/IWO and the six Tester Iteration 003 findings. Production implementation remains prohibited pending accepted VI-11 disposition.
+- **Next lawful action:** repair all eleven Tester Iteration 004 proof findings under `VI10R2_ADVERSARIAL_PRODUCT_PROOF_REPAIR_DESIGN.md`, freeze a successor physical proof candidate, then submit it to a fresh independent VI-11R rechallenge. Production implementation remains prohibited.
