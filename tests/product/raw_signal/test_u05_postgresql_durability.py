@@ -71,6 +71,7 @@ exec "$1" "$2"
         "--user",
         "--map-root-user",
         "--mount",
+        "--net",
         "--fork",
         "sh",
         "-c",
@@ -197,6 +198,13 @@ def _release_hold_probe(process: subprocess.Popen[str]) -> None:
     assert process.returncode == 0, stdout + stderr
 
 
+def _kill_hold_probe(process: subprocess.Popen[str]) -> None:
+    process.kill()
+    stdout, stderr = process.communicate(timeout=10)
+    assert process.returncode is not None
+    assert process.returncode != 0, stdout + stderr
+
+
 def _dsn_with_application_name(dsn: str, application_name: str) -> str:
     conninfo = importlib.import_module("psycopg.conninfo")
     values = conninfo.conninfo_to_dict(dsn)
@@ -217,6 +225,47 @@ def _assert_no_open_writer_transaction(dsn: str, application_name: str) -> None:
         )
         rows = cursor.fetchall()
     assert not any(xact_start is not None for _, xact_start in rows), rows
+
+
+def _dsn_with_database(dsn: str, dbname: str) -> str:
+    conninfo = importlib.import_module("psycopg.conninfo")
+    values = conninfo.conninfo_to_dict(dsn)
+    values["dbname"] = dbname
+    return conninfo.make_conninfo(**values)
+
+
+def _admin_dsn(dsn: str) -> str:
+    return _dsn_with_database(dsn, "postgres")
+
+
+def _terminate_database_connections(admin_dsn: str, dbname: str) -> None:
+    psycopg = _psycopg()
+    with psycopg.connect(admin_dsn, autocommit=True) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            "select pg_terminate_backend(pid) from pg_stat_activity "
+            "where datname = %s and pid <> pg_backend_pid()",
+            (dbname,),
+        )
+
+
+def _create_database(admin_dsn: str, dbname: str, *, template: str = "template0") -> None:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    with psycopg.connect(admin_dsn, autocommit=True) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            sql.SQL("create database {} template {}").format(
+                sql.Identifier(dbname),
+                sql.Identifier(template),
+            )
+        )
+
+
+def _drop_database(admin_dsn: str, dbname: str) -> None:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    _terminate_database_connections(admin_dsn, dbname)
+    with psycopg.connect(admin_dsn, autocommit=True) as connection, connection.cursor() as cursor:
+        cursor.execute(sql.SQL("drop database if exists {}").format(sql.Identifier(dbname)))
 
 
 def _canonical(value: Any) -> Any:
@@ -437,6 +486,112 @@ def test_process_boundary_forbids_shared_local_file_persistence(tmp_path: Path) 
     assert not host_path.exists()
 
 
+def test_semantic_state_moves_with_postgresql_database_clone_and_not_original_process_state(
+    tmp_path: Path,
+) -> None:
+    base_dsn = _dsn()
+    admin_dsn = _admin_dsn(base_dsn)
+    source_db = f"nvda_proof_src_{uuid.uuid4().hex}"
+    clone_db = f"nvda_proof_clone_{uuid.uuid4().hex}"
+    source_dsn = _dsn_with_database(base_dsn, source_db)
+    clone_dsn = _dsn_with_database(base_dsn, clone_db)
+    token = _token("pg-clone")
+    facts = _authoritative_facts()
+    expected = _expected_records(token, facts)
+
+    _create_database(admin_dsn, source_db)
+    try:
+        _run_probe(tmp_path, "write_policy_only", dsn=source_dsn, token=token, facts=facts)
+        _run_probe(tmp_path, "write_capture_only", dsn=source_dsn, token=token)
+        _run_probe(tmp_path, "write_zero_assessment_only", dsn=source_dsn, token=token)
+        _run_probe(tmp_path, "write_observation_only", dsn=source_dsn, token=token, facts=facts)
+        _run_probe(tmp_path, "derive_relation_only", dsn=source_dsn, token=token)
+        _run_probe(tmp_path, "write_one_assessment_only", dsn=source_dsn, token=token)
+
+        _terminate_database_connections(admin_dsn, source_db)
+        _create_database(admin_dsn, clone_db, template=source_db)
+        _drop_database(admin_dsn, source_db)
+
+        assert _run_probe(tmp_path, "read_policy", dsn=clone_dsn, token=token)["record"] == (
+            expected["policy"]
+        )
+        assert _run_probe(tmp_path, "read_capture", dsn=clone_dsn, token=token)["record"] == (
+            expected["capture"]
+        )
+        assert _run_probe(tmp_path, "read_observation", dsn=clone_dsn, token=token)["record"] == (
+            expected["observation"]
+        )
+        chain = _run_probe(tmp_path, "read_assessment_chain", dsn=clone_dsn, token=token)
+        assert chain["records"] == [expected["zero"], expected["one"]]
+
+        source_read = _probe_process(tmp_path, "read_observation", dsn=source_dsn, token=token)
+        assert source_read.returncode != 0
+    finally:
+        _drop_database(admin_dsn, clone_db)
+        _drop_database(admin_dsn, source_db)
+
+
+def test_command_return_is_durable_if_writer_is_killed_immediately_after_success(
+    tmp_path: Path,
+) -> None:
+    dsn = _dsn()
+    token = _token("kill-after-return")
+    facts = _authoritative_facts()
+    expected = _expected_records(token, facts)
+
+    def kill_then_read(
+        action: str,
+        read_action: str,
+        expected_key: str,
+        *,
+        read_extra: dict[str, Any] | None = None,
+        write_extra: dict[str, Any] | None = None,
+    ) -> None:
+        process, _ = _start_hold_probe(
+            tmp_path,
+            action,
+            dsn=dsn,
+            token=token,
+            **(write_extra or {}),
+        )
+        _kill_hold_probe(process)
+        fresh = _run_probe(
+            tmp_path,
+            read_action,
+            dsn=dsn,
+            token=token,
+            **(read_extra or {}),
+        )
+        assert fresh["record"] == expected[expected_key]
+
+    kill_then_read(
+        "write_policy_only",
+        "read_policy",
+        "policy",
+        write_extra={"facts": facts},
+    )
+    kill_then_read("write_capture_only", "read_capture", "capture")
+    kill_then_read(
+        "write_zero_assessment_only",
+        "read_assessment",
+        "zero",
+        read_extra={"which": "zero"},
+    )
+    kill_then_read(
+        "write_observation_only",
+        "read_observation",
+        "observation",
+        write_extra={"facts": facts},
+    )
+    _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
+    kill_then_read(
+        "write_one_assessment_only",
+        "read_assessment",
+        "one",
+        read_extra={"which": "one"},
+    )
+
+
 def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority(
     tmp_path: Path,
 ) -> None:
@@ -614,6 +769,67 @@ def test_append_only_assessment_chain_is_exact_across_fresh_processes(tmp_path: 
     assert chain["records"] == [zero["record"], one["record"]]
 
 
+def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invariants(
+    tmp_path: Path,
+) -> None:
+    dsn = _dsn()
+    token = _token("restart-invariants")
+    _run_probe(tmp_path, "write_policy_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "write_one_assessment_only", dsn=dsn, token=token)
+
+    assert _run_probe(tmp_path, "read_policy", dsn=dsn, token=token)["record"] is not None
+    assert _run_probe(tmp_path, "read_capture", dsn=dsn, token=token)["record"] is not None
+    assert _without_pid(
+        _run_probe(tmp_path, "reregister_policy_conflict", dsn=dsn, token=token)
+    ) == {"rejected": True}
+
+    capture_conflict = _run_probe(
+        tmp_path,
+        "realise_conflicting_capture_for_existing_slot",
+        dsn=dsn,
+        token=token,
+    )
+    assert capture_conflict["rejected"] is True or (
+        capture_conflict["capture_id"] == capture_conflict["original_id"]
+    )
+
+    immediate = _run_probe(
+        tmp_path,
+        "append_immediate_predecessor_assessment",
+        dsn=dsn,
+        token=token,
+    )
+    assert immediate["record"]["supersedes_assessment_ref"]["value"] == (
+        f"assessment-one::{token}"
+    )
+    assert _without_pid(
+        _run_probe(tmp_path, "append_stale_predecessor_assessment", dsn=dsn, token=token)
+    ) == {"rejected": True}
+
+    high_same_scope = _run_probe(
+        tmp_path,
+        "admit_high_sequence_same_scope",
+        dsn=dsn,
+        token=token,
+    )
+    assert high_same_scope["record"]["ingestion_sequence"] == 42
+    assert _without_pid(
+        _run_probe(tmp_path, "admit_low_sequence_same_scope", dsn=dsn, token=token)
+    ) == {"rejected": True}
+
+    other_scope = _run_probe(
+        tmp_path,
+        "admit_low_sequence_other_scope",
+        dsn=dsn,
+        token=token,
+    )
+    assert other_scope["record"]["ingestion_sequence"] == 1
+
+
 def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts(
     tmp_path: Path,
 ) -> None:
@@ -648,14 +864,8 @@ def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_e
     )
     assert reconciled["_pid"] != fresh["_pid"]
     assert fresh["capture"] == expected_capture
-    assert fresh["assessment"]["assessment_occurrence_id"] == assessment_shape[
-        "assessment_occurrence_id"
-    ]
-    assert fresh["assessment"]["capture_occurrence_ref"] == assessment_shape[
-        "capture_occurrence_ref"
-    ]
-    assert fresh["assessment"]["outcome"] == "unknown_not_established"
-    assert reconciled["assessment"] == fresh["assessment"]
+    assert fresh["assessment"] == assessment_shape
+    assert reconciled["assessment"] == assessment_shape
 
 
 def test_public_owner_accepts_explicit_technical_persistence_port_injection() -> None:
@@ -698,7 +908,37 @@ def _technical_module_closure() -> dict[str, tuple[Path, ast.AST]]:
     for path in OWNER_PACKAGE.rglob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"))
         modules[_module_name(path)] = (path, tree)
-    seeds = {
+
+    owner = build_owner(postgres_dsn=_dsn())
+    ports = _find_default_persistence_ports(owner)
+    assert ports, "default PostgreSQL owner path hides its technical persistence port"
+    prefix = "nvda_desk.raw_signal_occurrence_truth"
+    runtime_seed_modules: set[str] = set()
+    seen: set[int] = set()
+
+    def visit_runtime(value: Any, depth: int) -> None:
+        if depth > 6 or id(value) in seen:
+            return
+        seen.add(id(value))
+        module = getattr(value, "__module__", type(value).__module__)
+        if module == prefix:
+            runtime_seed_modules.add("")
+        elif module.startswith(prefix + "."):
+            runtime_seed_modules.add(module[len(prefix) + 1 :])
+        if depth == 6 or isinstance(value, (str, bytes, int, float, bool, type(None))):
+            return
+        try:
+            children = vars(value).values()
+        except TypeError:
+            return
+        for child in children:
+            if callable(child) or type(child).__module__.startswith(prefix):
+                visit_runtime(child, depth + 1)
+
+    for port in ports:
+        visit_runtime(port, 0)
+
+    psycopg_seeds = {
         name
         for name, (path, tree) in modules.items()
         if any(
@@ -712,6 +952,7 @@ def _technical_module_closure() -> dict[str, tuple[Path, ast.AST]]:
         )
         or "psycopg" in path.read_text(encoding="utf-8")
     }
+    seeds = {name for name in runtime_seed_modules | psycopg_seeds if name in modules}
     assert seeds, "default PostgreSQL technical mechanism is not present"
     closure = set(seeds)
     frontier = list(seeds)
@@ -757,6 +998,15 @@ def test_complete_technical_persistence_closure_contains_no_semantic_decision_lo
         }
         assert not forbidden_function_names.intersection(function_names), path
         for node in ast.walk(tree):
+            if isinstance(node, ast.Call):
+                if isinstance(node.func, ast.Name):
+                    assert node.func.id not in {"__import__", "import_module"}, path
+                if isinstance(node.func, ast.Attribute):
+                    assert not (
+                        isinstance(node.func.value, ast.Name)
+                        and node.func.value.id == "importlib"
+                        and node.func.attr == "import_module"
+                    ), path
             if isinstance(node, (ast.If, ast.Match, ast.Compare)):
                 literals = {
                     child.value
@@ -784,6 +1034,11 @@ def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_ser
         "aiohttp",
         "urllib",
         "socket",
+        "subprocess",
+        "multiprocessing",
+        "mmap",
+        "ctypes",
+        "importlib",
     }
     for path in OWNER_PACKAGE.rglob("*.py"):
         tree = ast.parse(path.read_text(encoding="utf-8"))
@@ -805,6 +1060,17 @@ def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_ser
                         assert not any(flag in mode for flag in ("w", "a", "x", "+")), path
                 if isinstance(node.func, ast.Attribute):
                     assert node.func.attr not in {"write_text", "write_bytes"}, path
+                    if isinstance(node.func.value, ast.Name) and node.func.value.id == "os":
+                        assert node.func.attr not in {"open", "write", "pwrite"}, path
+                    if node.func.attr == "open":
+                        mode = None
+                        if len(node.args) >= 2 and isinstance(node.args[1], ast.Constant):
+                            mode = node.args[1].value
+                        for keyword in node.keywords:
+                            if keyword.arg == "mode" and isinstance(keyword.value, ast.Constant):
+                                mode = keyword.value.value
+                        if isinstance(mode, str):
+                            assert not any(flag in mode for flag in ("w", "a", "x", "+")), path
         assert not disallowed_import_roots.intersection(imported), (path, imported)
 
 

@@ -46,6 +46,22 @@ def test_before_activation_at_deactivation_and_unaligned_slots_fail(slot: dateti
         realise_capture(owner, slot_start_utc=slot)
 
 
+@pytest.mark.parametrize(
+    "slot",
+    [
+        datetime(2026, 9, 20, 12, 0, 0, 1, tzinfo=UTC),
+        datetime(2026, 9, 20, 12, 0, 29, 999999, tzinfo=UTC),
+        datetime(2026, 9, 20, 12, 0, 30, 1, tzinfo=UTC),
+        datetime(2026, 9, 20, 12, 1, 59, 999999, tzinfo=UTC),
+    ],
+)
+def test_capture_slot_grid_rejects_one_microsecond_off_exact_boundaries(slot: datetime) -> None:
+    owner = build_owner()
+    register_policy(owner)
+    with pytest.raises((TypeError, ValueError)):
+        realise_capture(owner, slot_start_utc=slot)
+
+
 def test_scheduler_wake_time_cannot_become_schedule_truth() -> None:
     owner = build_owner()
     register_policy(owner)
@@ -207,6 +223,30 @@ def test_policy_validity_timestamps_are_aligned_and_strictly_ordered(
                 activation_ts_utc=activation,
                 deactivation_ts_utc=deactivation,
             ),
+        )
+
+
+@pytest.mark.parametrize(
+    ("activation", "deactivation"),
+    [
+        (
+            datetime(2026, 9, 20, 12, 0, 0, 1, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 2, 0, tzinfo=UTC),
+        ),
+        (
+            datetime(2026, 9, 20, 12, 0, 0, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 2, 0, 1, tzinfo=UTC),
+        ),
+    ],
+)
+def test_policy_grid_rejects_one_microsecond_off_activation_or_deactivation(
+    activation: datetime, deactivation: datetime
+) -> None:
+    owner = build_owner()
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(
+            owner,
+            policy(activation_ts_utc=activation, deactivation_ts_utc=deactivation),
         )
 
 

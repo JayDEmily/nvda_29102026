@@ -44,6 +44,12 @@ def _ids(token: str) -> dict[str, str]:
         "assessment_fault_id": f"assessment-fault::{token}",
         "recovered_capture_id": f"recovered-capture::{token}",
         "recovered_assessment_id": f"recovered-assessment::{token}",
+        "assessment_stale_id": f"assessment-stale::{token}",
+        "capture_conflict_id": f"capture-conflict::{token}",
+        "observation_high_same_scope_id": f"observation-high-same::{token}",
+        "observation_low_same_scope_id": f"observation-low-same::{token}",
+        "observation_low_other_scope_id": f"observation-low-other::{token}",
+        "assessment_immediate_id": f"assessment-immediate::{token}",
     }
 
 
@@ -93,7 +99,8 @@ def _observation(
 ) -> Any:
     token = payload["token"]
     ids = _ids(token)
-    observation_id = ids["fault_observation_id"] if fault else ids["observation_id"]
+    default_observation_id = ids["fault_observation_id"] if fault else ids["observation_id"]
+    observation_id = _fact(payload, "observation_occurrence_id", default_observation_id)
     return observation(
         observation_occurrence_id=observation_id,
         delivery_artifact_ref=_fact(payload, "delivery_artifact_ref", ids["delivery_id"]),
@@ -123,7 +130,7 @@ def _observation(
         revision_vintage_native=_fact(payload, "revision_vintage_native", f"revision::{token}"),
         received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, 654321, tzinfo=UTC),
         received_epoch_ns=1_758_369_605_654_321_987,
-        ingestion_sequence=41 if not fault else 42,
+        ingestion_sequence=_fact(payload, "ingestion_sequence", 41 if not fault else 42),
         ingestion_sequence_scope=_fact(payload, "ingestion_sequence_scope", f"collector::{token}"),
         source_temporal_kind="true_instant",
         source_timestamp_raw=_fact(payload, "source_timestamp_raw", "2026-09-20T12:00:04.123456Z"),
@@ -370,6 +377,131 @@ def read_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     return {"capture": _normalise(capture), "assessment": _normalise(assessment)}
 
 
+
+
+def reregister_policy_conflict(payload: dict[str, Any]) -> dict[str, Any]:
+    token = payload["token"]
+    owner = _owner(payload)
+    changed = policy(
+        scope_policy_id=_ids(token)["policy_id"],
+        activation_ts_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        deactivation_ts_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+        eligibility_policy_ref=f"changed-eligibility::{token}",
+    )
+    try:
+        register_policy(owner, changed)
+    except (TypeError, ValueError):
+        return {"rejected": True}
+    return {"rejected": False}
+
+
+def realise_conflicting_capture_for_existing_slot(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload)
+    try:
+        value = realise_capture(
+            owner,
+            scope_policy_ref=_policy_ref(payload["token"]),
+            capture_occurrence_id=ids["capture_conflict_id"],
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        )
+    except (TypeError, ValueError):
+        return {"rejected": True}
+    return {
+        "rejected": False,
+        "capture_id": str(value.capture_occurrence_id),
+        "original_id": ids["capture_id"],
+    }
+
+
+def append_stale_predecessor_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload)
+    try:
+        append_assessment(
+            owner,
+            assessment_occurrence_id=ids["assessment_stale_id"],
+            capture_occurrence_ref=ids["capture_id"],
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 28, tzinfo=UTC),
+            supersedes_assessment_ref=ids["assessment_zero_id"],
+        )
+    except (TypeError, ValueError, KeyError):
+        return {"rejected": True}
+    return {"rejected": False}
+
+
+
+
+def admit_high_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    value = admit_observation(
+        _owner(payload),
+        _observation(
+            {
+                **payload,
+                "facts": {
+                    **payload.get("facts", {}),
+                    "observation_occurrence_id": ids["observation_high_same_scope_id"],
+                    "ingestion_sequence": 42,
+                },
+            }
+        ),
+    )
+    return {"record": _normalise(value)}
+
+
+def append_immediate_predecessor_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    value = append_assessment(
+        _owner(payload),
+        assessment_occurrence_id=ids["assessment_immediate_id"],
+        capture_occurrence_ref=ids["capture_id"],
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 27, tzinfo=UTC),
+        supersedes_assessment_ref=ids["assessment_one_id"],
+    )
+    return {"record": _normalise(value)}
+
+
+def admit_low_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    try:
+        admit_observation(
+            _owner(payload),
+            _observation(
+                {
+                    **payload,
+                    "facts": {
+                        **payload.get("facts", {}),
+                        "observation_occurrence_id": ids["observation_low_same_scope_id"],
+                        "ingestion_sequence": 40,
+                    },
+                }
+            ),
+        )
+    except (TypeError, ValueError):
+        return {"rejected": True}
+    return {"rejected": False}
+
+
+def admit_low_sequence_other_scope(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    value = admit_observation(
+        _owner(payload),
+        _observation(
+            {
+                **payload,
+                "facts": {
+                    **payload.get("facts", {}),
+                    "observation_occurrence_id": ids["observation_low_other_scope_id"],
+                    "ingestion_sequence": 1,
+                    "ingestion_sequence_scope": f"independent-scope::{payload['token']}",
+                },
+            }
+        ),
+    )
+    return {"record": _normalise(value)}
+
+
 def filesystem_boundary(payload: dict[str, Any]) -> dict[str, Any]:
     host_path = Path(payload["host_path"])
     try:
@@ -407,6 +539,13 @@ ACTIONS = {
     "reconcile": reconcile,
     "reconcile_fault_after_capture": reconcile_fault_after_capture,
     "read_reconcile": read_reconcile,
+    "reregister_policy_conflict": reregister_policy_conflict,
+    "realise_conflicting_capture_for_existing_slot": realise_conflicting_capture_for_existing_slot,
+    "append_stale_predecessor_assessment": append_stale_predecessor_assessment,
+    "append_immediate_predecessor_assessment": append_immediate_predecessor_assessment,
+    "admit_high_sequence_same_scope": admit_high_sequence_same_scope,
+    "admit_low_sequence_same_scope": admit_low_sequence_same_scope,
+    "admit_low_sequence_other_scope": admit_low_sequence_other_scope,
     "filesystem_boundary": filesystem_boundary,
 }
 

@@ -305,6 +305,14 @@ def test_compatibility_rule_fails_closed_on_unproved_v1_additions() -> None:
     )
 
 
+@pytest.mark.parametrize("name", tuple(CONTRACT_SHAPES))
+def test_every_v1_contract_rejects_unproved_extra_keyword_material(name: str) -> None:
+    cls = required_symbol(name)
+    baseline = as_mapping(_specimens()[name])
+    with pytest.raises((TypeError, ValueError)):
+        cls(**{**baseline, "__unproved_v1_extension__": "must-not-be-accepted"})
+
+
 @pytest.mark.parametrize(("name", "field"), REQUIRED_FIELD_CASES)
 def test_required_field_rejects_null(name: str, field: str) -> None:
     cls = required_symbol(name)

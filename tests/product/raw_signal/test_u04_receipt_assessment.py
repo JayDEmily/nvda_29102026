@@ -172,6 +172,22 @@ def test_mismatched_existing_policy_reference_cannot_authorise_or_mislineage_rel
     )
 
 
+def test_typed_but_nonexistent_observation_authority_cannot_create_relation() -> None:
+    owner, capture, _, resolver = _capture_fixture()
+    missing_observation = typed_identity(
+        "RawObservationOccurrenceV1",
+        "observation_occurrence_id",
+        "missing-observation",
+    )
+    with pytest.raises((TypeError, ValueError, KeyError)):
+        owner.commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=missing_observation,
+            capture_occurrence_ref=capture.capture_occurrence_id,
+            scope_policy_ref=capture.scope_policy_ref,
+        )
+    assert resolver.calls == []
+
+
 def test_missing_capture_authority_cannot_create_relation() -> None:
     owner, _, _, _ = _capture_fixture()
     obs = admit_observation(owner)
@@ -184,6 +200,27 @@ def test_missing_capture_authority_cannot_create_relation() -> None:
             capture_occurrence_ref=missing_capture,
             scope_policy_ref=policy_ref(),
         )
+
+
+@pytest.mark.parametrize(
+    ("received_ts_utc", "expect_relation"),
+    [
+        (datetime(2026, 9, 20, 11, 59, 59, 999999, tzinfo=UTC), False),
+        (datetime(2026, 9, 20, 12, 0, 0, 0, tzinfo=UTC), True),
+        (datetime(2026, 9, 20, 12, 0, 29, 999999, tzinfo=UTC), True),
+        (datetime(2026, 9, 20, 12, 0, 30, 0, tzinfo=UTC), False),
+    ],
+)
+def test_receipt_presence_uses_exact_microsecond_half_open_interval_edges(
+    received_ts_utc: datetime, expect_relation: bool
+) -> None:
+    owner, capture, _, resolver = _capture_fixture()
+    observed = observation(
+        observation_occurrence_id=f"observation-edge-{received_ts_utc.isoformat()}",
+        received_ts_utc=received_ts_utc,
+    )
+    _, relation = _add_observation(owner, capture, resolver, observed=observed)
+    assert (relation is not None) is expect_relation
 
 
 def test_relation_does_not_expose_membership_count_validity_or_finality() -> None:
@@ -251,6 +288,53 @@ def test_ineligible_or_out_of_slot_raw_observation_does_not_make_one_or_more(
         evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 40, tzinfo=UTC),
     )
     assert assessment.outcome == "zero_received"
+
+
+def test_assessment_receipt_evidence_is_capture_local_not_owner_global() -> None:
+    resolver = _RecordingEligibilityAuthority(result=True)
+    owner = build_owner(eligibility_resolver=resolver)
+    stored_policy = register_policy(owner)
+    capture_a = realise_capture(
+        owner,
+        capture_occurrence_id="capture-local-a",
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, 0, tzinfo=UTC),
+    )
+    capture_b = realise_capture(
+        owner,
+        capture_occurrence_id="capture-local-b",
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+    )
+    resolver.expected_policy = stored_policy
+    observed = admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="observation-capture-a-only",
+            received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
+        ),
+    )
+    resolver.expected_observation = observed
+    relation = owner.commands.derive_capture_receipt_evidence_relation(
+        observation_occurrence_ref=observed.observation_occurrence_id,
+        capture_occurrence_ref=capture_a.capture_occurrence_id,
+        scope_policy_ref=capture_a.scope_policy_ref,
+    )
+    assert relation is not None
+
+    as_of = datetime(2026, 9, 20, 12, 0, 45, tzinfo=UTC)
+    assessment_a = append_assessment(
+        owner,
+        assessment_occurrence_id="assessment-capture-a",
+        capture_occurrence_ref=capture_a.capture_occurrence_id,
+        evidence_as_of_ts_utc=as_of,
+    )
+    assessment_b = append_assessment(
+        owner,
+        assessment_occurrence_id="assessment-capture-b",
+        capture_occurrence_ref=capture_b.capture_occurrence_id,
+        evidence_as_of_ts_utc=as_of,
+    )
+    assert assessment_a.outcome == "one_or_more_received"
+    assert assessment_b.outcome == "zero_received"
 
 
 def test_one_or_more_is_derived_when_eligible_committed_receipt_is_visible() -> None:
