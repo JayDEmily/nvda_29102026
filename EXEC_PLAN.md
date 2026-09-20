@@ -404,7 +404,8 @@ A terminal PASS requires evidence that:
 - [x] VI-11R Iteration 004 — `FAIL / RETURN_TO_WORKER`: independent rechallenge of `375e61b7...` returned eleven proof-layer findings (`T004-F001..F011`, 5 Critical / 6 Important).
 - [x] VI-10R2 — successor physical proof frozen at `56ea445d4bb5055b9fc39114bcd3c529b7f0bae5` / tree `b925e086a734492457dd9633a04743aa0c3c0471`; six families / 13 obligations / 353 collected tests; clean-state product aggregate remains expected-red `347 failed / 6 passed`; architecture promotion remains 74/74 green; no production-source mutation.
 - [x] VI-11R2 Tester Iteration 005 — `FAIL / RETURN_TO_WORKER`: independent rechallenge of `56ea445d...` returned eleven proof-layer findings (`T005-F001..F011`, 4 Critical / 7 Important).
-- [ ] VI-10R3 — `ACTIVE`: successor proof-only repair of Tester Iteration 005 findings; production code remains prohibited.
+- [x] VI-10R3 — `FROZEN / INDEPENDENT FAIL`: successor physical proof `ffcbc64b...` was reviewed in Tester Iteration 006 and returned `FAIL / RETURN_TO_WORKER` with nine proof-layer findings.
+- [ ] VI-10R4 — `ACTIVE`: successor proof-only repair of Tester Iteration 006 findings; production code remains prohibited.
 - [!] The current PM/Worker session still exposes no fresh-reviewer dispatch primitive. This is no longer treated as a reason to alter the proof or advance inline; the prepared VI-11 package must be handed to a separate independent tester/reviewer context.
 
 ## 13. Discoveries / decisions
@@ -500,3 +501,8 @@ Fresh independent review of wrapper `c164facaf011f2dc2da7ebcb2d90790b755c8782` /
 ### 2026-09-20 — VI-10R3 successor frozen for VI-11R3 rechallenge
 
 Tester Iteration 005's eleven proof-adequacy findings were repaired in the proof layer without changing IRB/BICP/IWO/METHOD-006 meaning, product obligations, tier treatment, architecture proof configuration or production source. The frozen VI-10R3 physical proof candidate is `ffcbc64b77b66f96c91926b423622281f125d757` / tree `7884c38a5edf6a3538bc2acc6a3bc57a079ea888`. Worker validation records 373 collected physical product tests; with real PostgreSQL 17.9 the still-unimplemented product remains expected-red at 364 failed / 9 passed, while the separate architecture promotion remains 74/74 green. These are Worker claims pending fresh independent VI-11R3 proof-adequacy review. VI-12R remains prohibited unless that review returns PASS.
+
+
+### 2026-09-20 — VI-11R3 Tester Iteration 006 disposition
+
+Fresh independent review of wrapper `d50bc2393078b584b722fb2bf4ba692f055c40ad` / tree `212f739dcb218611c89e010a9966b201beb880f1` and physical proof `ffcbc64b77b66f96c91926b423622281f125d757` / tree `7884c38a5edf6a3538bc2acc6a3bc57a079ea888` returned `FAIL / RETURN_TO_WORKER` with nine proof-layer findings (`T006-F001..F009`, five Critical and four Important). The reviewed candidate and archive identity remain preserved and must not be resubmitted unchanged. Under the owning-layer rule, all nine findings route to VI-10R4 proof repair. IRB/BICP/IWO/METHOD-006 meaning, the six-family decomposition, thirteen current product obligations, tier treatment and production source remain unchanged. VI-12R remains prohibited until a fresh independent Tester Iteration 007 accepts a genuinely new successor proof.
