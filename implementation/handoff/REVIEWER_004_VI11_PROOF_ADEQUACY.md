@@ -6,6 +6,15 @@ Execute **VI-11 only** as a genuinely fresh independent reviewer.
 
 The reviewer must not inherit the VI-10 proof author's reasoning/history and must not inspect or author production implementation. Review the exact accepted authority against the committed physical proof and decide whether materially wrong implementations could still pass.
 
+
+## Prerequisite state for this review round
+
+VI-08 has now independently passed Tester Iteration 002 at `544624b5e2ede33501335af93be6ee1cafb3d55f` / tree `6b870fd8ff2204a603b5619d247ababad578f441`, with zero findings. The Programme Owner then directed continuation under the original accepted ExecPlan until the next independent-test boundary.
+
+The tester-approved VI-08 successor is evidence-only relative to the prior VI-08 base. It has been reconciled into the preserved forward history; the VI-09 and VI-10 product-proof files/tests were not changed by that merge. Their current proof state was rerun after reconciliation and remained: product control 6 families / 13 obligations / 58 tests; pre-implementation aggregate 55 failed / 3 passed as expected; architecture promotion 74/74; mypy/Ruff/dependency/public-seam checks green.
+
+This VI-11 review remains an independent review of proof adequacy. Do not treat the VI-08 PASS as evidence that VI-10 proof is adequate.
+
 ## Exact review target
 
 VI-10 Worker state:

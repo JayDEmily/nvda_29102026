@@ -92,4 +92,16 @@ The original VI-06 binding remains historical provenance; it is not relabelled P
 - architecture regression: separate `architecture_kernel` aggregate 74/74 green;
 - scope closure: no production-source or `config/proof/**` mutation.
 
-Current successor frontier is VI-11 fresh proof-adequacy review. The bounded review handoff is prepared, but execution is blocked in the current session because no independent reviewer-dispatch primitive is exposed. Production implementation remains prohibited.
+Current successor frontier is VI-11 fresh proof-adequacy review. The bounded review handoff is prepared for delivery to a separate independent reviewer context. Production implementation remains prohibited pending an accepted VI-11 disposition.
+## VI-08 independent tester disposition and forward reconciliation
+
+- Tester Iteration 002 verdict: `PASS`; findings: `0`;
+- tested VI-08 candidate: `544624b5e2ede33501335af93be6ee1cafb3d55f` / tree `6b870fd8ff2204a603b5619d247ababad578f441`;
+- tested Worker-return archive SHA-256: `295b936a84661ed8089ef94e3e2c9a11f0875401ce0024380ddffab4199622c1`;
+- tester archive SHA-256: `5e455418a6a6eb94b6aba2239b30c53b1b6f479aff2f21f501eea12270a86fd7`;
+- baseline ancestry from `8133432ba8a07e4d04d83b14af5c3c4bd12e6b0e` was independently verified by the tester;
+- current Programme Owner direction after the PASS is to continue under the original accepted ExecPlan until the next independent-test boundary.
+
+The tester-approved VI-08 successor changes only the VI-08 evidence document relative to `c3cda85...`. It has been merged into the preserved forward VI-09/VI-10 history without rewriting or dropping later commits. Revalidation after that merge preserved the VI-09/VI-10 proof state: product control validates at 6 families / 13 obligations / 58 collected tests; the product aggregate remains expected-red before implementation at 55 failed / 3 passed; architecture promotion remains 74/74 green; mypy, Ruff, dependency and public-seam validation remain green.
+
+Current successor frontier: VI-11 fresh independent proof-adequacy review. VI-12R production implementation remains prohibited pending an accepted VI-11 disposition.

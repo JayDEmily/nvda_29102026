@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10 ACCEPTED / VI-11 BLOCKED`
+- **Gate state:** `ACTIVE — VI-10 REVALIDATED / VI-11 READY FOR INDEPENDENT REVIEW`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -13,12 +13,12 @@
 - **Macro methodology:** PLM commit `443e4870df9fe8b63f6ad6471e02508d78be6974`
 - **Accepted BICP:** `BICP-CANDIDATE-005` at fixed G02 hashes
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
-- **Accepted recovered VI-08 state:** `c3cda85fe32e43a88292a80c38de3a4e696e2240` / tree `c13b1cb10eec5ef6076c386a1fd2a3b41005aa6b`
+- **Independently tested VI-08 state:** `544624b5e2ede33501335af93be6ee1cafb3d55f` / tree `6b870fd8ff2204a603b5619d247ababad578f441` — Tester Iteration 002 `PASS`, zero findings
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
 - **Accepted VI-10 Worker state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`
 - **Current Leaf:** `G03-L07 / VI-11 — Fresh proof-adequacy review`
-- **Current actor:** `BLOCKED` — fresh independent reviewer required by VI-11; no reviewer-dispatch primitive is exposed in this session
+- **Current actor:** external fresh independent reviewer required by VI-11; same-context PM/Worker review remains prohibited
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** hand `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md` to a fresh independent reviewer context with actual reviewer-dispatch capability. Production implementation remains prohibited until VI-11 returns an accepted disposition.
+- **Next lawful action:** submit `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md` and the bound VI-11 tester package to a fresh independent reviewer. Production implementation remains prohibited until VI-11 returns an accepted disposition.
