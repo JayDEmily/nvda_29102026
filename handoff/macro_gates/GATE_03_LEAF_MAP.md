@@ -9,8 +9,8 @@ This file exposes the accepted successor method's stages as explicit PLM/PCM Lea
 | `G03-L03` | VI-07 | `ACCEPTED` | PM revalidated architecture and derived exact admission design |
 | `G03-L04` | VI-08 | `ACCEPTED / INDEPENDENT PASS` | Worker 001 admission repaired to `544624b...` and independently PASS-reviewed in Tester Iteration 002 with zero findings |
 | `G03-L05` | VI-09 | `ACCEPTED` | separate exact-authority-bound product-proof control accepted at `956fab3...`; 13 current obligations, zero physical families, empty aggregate fails closed |
-| `G03-L06` | VI-10 / VI-10R / VI-10R2 / VI-10R3 / VI-10R4 | `FROZEN — WORKER CANDIDATE` | VI-10R4 successor frozen at `0c626fb...`; nine Iteration-006 findings are Worker repair claims pending fresh independent review |
-| `G03-L07` | VI-11 / VI-11R2 / VI-11R3 / VI-11R4 | `ACTIVE — TESTER ITERATION 007` | Fresh independent review of physical candidate `0c626fb...`; VI-12R remains blocked unless PASS |
+| `G03-L06` | VI-10 / VI-10R / VI-10R2 / VI-10R3 / VI-10R4 / VI-10R5 | `FROZEN — WORKER CANDIDATE` | VI-10R5 successor frozen at `e39740c...`; seven Iteration-007 findings are Worker repair claims pending fresh independent review |
+| `G03-L07` | VI-11 / VI-11R2 / VI-11R3 / VI-11R4 / VI-11R5 | `ACTIVE — TESTER ITERATION 008` | Fresh independent review of physical candidate `e39740c...`; VI-12R remains blocked unless PASS |
 | `G03-L08` | VI-12R | `PENDING` | controlled risk-adaptive implementation |
 | `G03-L09` | VI-13R | `PENDING` | fresh post-implementation review per unit |
 | `G03-L10` | VI-14 | `PENDING` | material interaction/direct-boundary closure |

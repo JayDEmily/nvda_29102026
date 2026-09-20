@@ -406,7 +406,8 @@ A terminal PASS requires evidence that:
 - [x] VI-11R2 Tester Iteration 005 — `FAIL / RETURN_TO_WORKER`: independent rechallenge of `56ea445d...` returned eleven proof-layer findings (`T005-F001..F011`, 4 Critical / 7 Important).
 - [x] VI-10R3 — `FROZEN / INDEPENDENT FAIL`: successor physical proof `ffcbc64b...` was reviewed in Tester Iteration 006 and returned `FAIL / RETURN_TO_WORKER` with nine proof-layer findings.
 - [x] VI-10R4 — `FROZEN / INDEPENDENT FAIL`: physical proof `0c626fb7...` was reviewed in Tester Iteration 007 and returned `FAIL / RETURN_TO_WORKER` with seven proof-layer findings.
-- [ ] VI-10R5 — `ACTIVE`: successor proof-only repair of Tester Iteration 007 findings; production code remains prohibited.
+- [x] VI-10R5 — `FROZEN / PENDING INDEPENDENT REVIEW`: successor physical proof `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee`; seven Tester Iteration 007 findings are Worker repair claims only.
+- [ ] VI-11R5 — `ACTIVE / TESTER ITERATION 008`: fresh independent proof-adequacy review of the VI-10R5 physical candidate; VI-12R remains prohibited unless PASS.
 - [!] The current PM/Worker session still exposes no fresh-reviewer dispatch primitive. This is no longer treated as a reason to alter the proof or advance inline; the prepared VI-11 package must be handed to a separate independent tester/reviewer context.
 
 ## 13. Discoveries / decisions
@@ -518,3 +519,8 @@ Tester Iteration 006's nine proof-adequacy findings were repaired in the proof l
 Fresh independent review of wrapper `30db3d00f1b9f32215ce1f06b156647e92f1e505` / tree `d19d42277c8ed95b1b645edc973d6f0e51e6f629` and physical proof `0c626fb78fa7317fa265bd5ff871dd398c68404d` / tree `df10fd0e42178dfb7e6fabe0fd9a8e3a3a3249f6` returned `FAIL / RETURN_TO_WORKER` with seven proof-layer findings (`T007-F001..F007`, six Critical and one Important). Under section 6.7, all seven route to VI-10R5 proof repair; VI-12R remains prohibited.
 
 Current Programme Owner direction additionally preserves `NVDA_80_STEP_ACADEMIC_EVIDENCE_AUDIT_WITH_SIGNALS_ADDENDUM_81_94.xlsx` with SHA-256 `519ea9449297d564ae4a02afc1bf4e60e4471631c81a0842620f9fb60bb4f9ae` in the implementation repository as the canonical source catalogue for established `R001–R323` and `D001–D209` identifiers/definitions. This direction does not admit workbook min/max/bounds material as validation law, does not resolve concrete provider mappings, and does not bring `D001+` implementation into this tranche.
+
+
+### 2026-09-21 — VI-10R5 successor frozen for Tester Iteration 008
+
+Tester Iteration 007's seven proof-adequacy findings were repaired in the proof layer without changing IRB/BICP/IWO/METHOD-006 meaning, product obligations, tier treatment, architecture proof configuration or production source. The frozen VI-10R5 physical proof candidate is `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee`, parent `96550e119e64d1145d057d98fbdcaed3f9e049b9`. Worker clean-state validation records 397 collected physical product tests; with real PostgreSQL 17.9 the still-unimplemented product remains expected-red at 388 failed / 9 passed, while the separate architecture promotion remains 74/74 green. The physical candidate changes exactly seven proof/config paths and no `src/**`. These are Worker claims pending fresh independent VI-11R5 / Tester Iteration 008 proof-adequacy review. VI-12R remains prohibited unless that review returns PASS.
