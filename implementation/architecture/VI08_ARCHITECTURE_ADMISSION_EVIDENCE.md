@@ -57,7 +57,7 @@ The VI-07 architecture design was applied:
 
 The lawful admission made five architecture test files stale because they encoded the historical empty-module/empty-allocation state or constructed synthetic module registries while retaining the now-real A00 -> M00 dependency.
 
-The following files were updated under explicit Programme Owner authority to preserve their existing propositions against the newly admitted architecture state:
+The following files were updated under the VI-07 out-of-list exception rule to preserve their existing propositions against the newly admitted architecture state. The separately recorded reason is an actually failing current invariant: after lawful M00 admission, the baseline forms of these five files produced 22 failures because they encoded the historical empty-module/empty-allocation state or constructed synthetic module registries while retaining the now-real `A00 -> M00` dependency.
 
 - `tests/architecture/test_activation_readiness.py`
 - `tests/architecture/test_dependency_direction.py`
@@ -114,7 +114,7 @@ src/nvda_desk/raw_signal_occurrence_truth/api.py
 implementation/architecture/VI08_ARCHITECTURE_ADMISSION_EVIDENCE.md
 ```
 
-Separately authorised proof-fixture/current-state updates:
+Proof-fixture/current-state updates admitted under the VI-07 out-of-list exception rule after those current-state failures were demonstrated:
 
 ```text
 tests/architecture/test_activation_readiness.py
@@ -123,6 +123,12 @@ tests/architecture/test_identifier_taxonomy.py
 tests/architecture/test_implementation_authority_ingress.py
 tests/architecture/test_registry_schema.py
 ```
+
+## Tester Iteration 001 provenance repair
+
+Tester Iteration 001 independently reproduced the stale-state coupling by running the baseline forms of the five modified test files against the admitted VI-08 state, yielding `22 failed, 33 passed`. The tester found no technical defect in the five changes, but returned the candidate because this evidence previously attributed them to explicit Programme Owner authority that was not established by the submitted authority chain.
+
+This successor evidence-only repair removes that unsupported authority attribution. It does not change the admitted architecture, the five test files, or their semantics. The basis recorded here is limited to what the VI-07 design and Worker handoff actually establish: an out-of-list path requires a separately recorded reason tied to an actually failing current invariant, and those failures were demonstrated.
 
 ## Product-behaviour boundary
 
