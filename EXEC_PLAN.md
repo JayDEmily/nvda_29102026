@@ -402,8 +402,8 @@ A terminal PASS requires evidence that:
 - [x] 2026-09-20 — the tester-approved VI-08 evidence-only successor was merged into the preserved VI-09/VI-10 forward history; VI-09/VI-10 proof state was revalidated unchanged: 6 families / 13 obligations / 58 collected product tests, expected-red 55 failed / 3 passed before implementation, architecture promotion 74/74 green, mypy/Ruff/dependency/seam checks green.
 - [x] 2026-09-20 — VI-10R successor proof candidate frozen at `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4`; all six VI-11 Tester Iteration 003 findings were repaired in the proof layer only. Product control remains six families / 13 obligations; 155 tests collect; clean-state product aggregate remains expected-red `150 failed / 5 passed`; architecture promotion remains 74/74 green; no `src/nvda_desk/**` production mutation occurred.
 - [x] VI-11R Iteration 004 — `FAIL / RETURN_TO_WORKER`: independent rechallenge of `375e61b7...` returned eleven proof-layer findings (`T004-F001..F011`, 5 Critical / 6 Important).
-- [ ] VI-10R2 — `ACTIVE`: repair those eleven proof findings only; no production source mutation.
-- [ ] VI-11R2 — fresh independent proof-adequacy rechallenge of the frozen VI-10R2 successor; production code remains prohibited pending accepted disposition.
+- [x] VI-10R2 — successor physical proof frozen at `56ea445d4bb5055b9fc39114bcd3c529b7f0bae5` / tree `b925e086a734492457dd9633a04743aa0c3c0471`; six families / 13 obligations / 353 collected tests; clean-state product aggregate remains expected-red `347 failed / 6 passed`; architecture promotion remains 74/74 green; no production-source mutation.
+- [ ] VI-11R2 — `ACTIVE`: fresh independent proof-adequacy rechallenge of frozen physical proof `56ea445d...`; production code remains prohibited pending accepted disposition.
 - [!] The current PM/Worker session still exposes no fresh-reviewer dispatch primitive. This is no longer treated as a reason to alter the proof or advance inline; the prepared VI-11 package must be handed to a separate independent tester/reviewer context.
 
 ## 13. Discoveries / decisions
