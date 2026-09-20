@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-11 FAILED PROOF ADEQUACY / VI-10R PROOF REPAIR`
+- **Gate state:** `ACTIVE — VI-10R SUCCESSOR PROOF FROZEN / VI-11 RECHALLENGE READY`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -15,10 +15,11 @@
 - **Pre-implementation source state:** `d095954c16a9818eadb60d6364148229f2dc4558` / tree `7fdb0e5308f3af187134bc3ebf633835748e9475`
 - **Independently tested VI-08 state:** `544624b5e2ede33501335af93be6ee1cafb3d55f` / tree `6b870fd8ff2204a603b5619d247ababad578f441` — Tester Iteration 002 `PASS`, zero findings
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
-- **Accepted VI-10 Worker state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`
-- **Current Leaf:** `G03-L06 / VI-10R — Successor adversarial product-proof repair after VI-11 findings`
-- **Current actor:** bounded proof-repair Worker; fresh independent reviewer required again after successor proof candidate is frozen
+- **Failed VI-10 proof state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd` — VI-11 Tester Iteration 003 `FAIL`
+- **VI-10R successor physical proof candidate:** `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4` — 155 tests, six families, 13/13 obligations; pending fresh VI-11 review
+- **Current Leaf:** `G03-L07 / VI-11R — Fresh proof-adequacy rechallenge of the VI-10R successor`
+- **Current actor:** fresh independent tester/reviewer required; Worker 005 successor proof is frozen
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** repair `T003-F001` through `T003-F006` in the proof layer only, freeze a successor VI-10 proof candidate, then submit it to a fresh VI-11 reviewer. Production implementation remains prohibited.
+- **Next lawful action:** independently rechallenge exact VI-10R physical proof candidate `375e61b7...` against the unchanged IRB/BICP/IWO and the six Tester Iteration 003 findings. Production implementation remains prohibited pending accepted VI-11 disposition.

@@ -9,8 +9,8 @@ This file exposes the accepted successor method's stages as explicit PLM/PCM Lea
 | `G03-L03` | VI-07 | `ACCEPTED` | PM revalidated architecture and derived exact admission design |
 | `G03-L04` | VI-08 | `ACCEPTED / INDEPENDENT PASS` | Worker 001 admission repaired to `544624b...` and independently PASS-reviewed in Tester Iteration 002 with zero findings |
 | `G03-L05` | VI-09 | `ACCEPTED` | separate exact-authority-bound product-proof control accepted at `956fab3...`; 13 current obligations, zero physical families, empty aggregate fails closed |
-| `G03-L06` | VI-10 / VI-10R | `RETURNED_FOR_PROOF_REPAIR` | Tester Iteration 003 found six material proof-adequacy defects; failed VI-10 candidate preserved; successor proof repair in progress |
-| `G03-L07` | VI-11 | `FAIL — RECHALLENGE REQUIRED` | Tester Iteration 003 returned six findings; fresh rechallenge required after VI-10R successor proof is frozen |
+| `G03-L06` | VI-10 / VI-10R | `SUCCESSOR CANDIDATE FROZEN — PENDING RECHALLENGE` | failed VI-10 candidate preserved; Worker 005 repaired all six returned proof findings in successor `375e61b7...` with 155 physical tests and unchanged 13/13 obligations |
+| `G03-L07` | VI-11 | `RECHALLENGE READY` | fresh independent reviewer must test exact VI-10R successor `375e61b7...`; VI-12R remains blocked until accepted disposition |
 | `G03-L08` | VI-12R | `PENDING` | controlled risk-adaptive implementation |
 | `G03-L09` | VI-13R | `PENDING` | fresh post-implementation review per unit |
 | `G03-L10` | VI-14 | `PENDING` | material interaction/direct-boundary closure |

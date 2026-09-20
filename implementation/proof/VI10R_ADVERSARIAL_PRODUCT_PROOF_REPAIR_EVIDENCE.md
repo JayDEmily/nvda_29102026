@@ -185,3 +185,27 @@ IRB/BICP/IWO/METHOD-006 bytes and the 13 accepted product obligations are unchan
 Commit the successor proof candidate, rerun clean-worktree product and architecture aggregate
 checks against that exact Git state, bind the final commit/tree in a successor evidence/control
 record, and hand the candidate to a fresh independent VI-11 reviewer. VI-12R remains prohibited.
+
+## Clean committed-state candidate validation
+
+Physical proof candidate:
+
+- commit: `375e61b73c219a40c9fc2e9684cf3f3e26d25d54`;
+- tree: `a45d5678aedea4e116f5e5a390b2bb6a128c33e4`;
+- worktree before gates: clean.
+
+On that exact committed state:
+
+- `python tools/run_product_proof_gate.py --aggregate raw_signal_occurrence_truth_product`
+  resolved exactly six physical paths and returned rc `1` with `150 failed, 5 passed`; this is
+  the required pre-implementation red state, not a product-proof PASS;
+- `python tools/run_promotion_gate.py --set architecture_kernel` — PASS, `74 passed`;
+- `python tools/validate_product_proof.py` — PASS, six families / 13 of 13 obligations;
+- `python tools/validate_architecture.py` — PASS;
+- `python -m mypy src` — PASS;
+- `ruff check src tests tools` — PASS;
+- `nvda-check-dependencies` — PASS;
+- `nvda-check-public-seams` — PASS;
+- worktree after gates: clean.
+
+The next required evidence is a fresh independent VI-11 proof-adequacy disposition.

@@ -400,7 +400,8 @@ A terminal PASS requires evidence that:
 - [x] 2026-09-20 — VI-10 accepted at `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`; six physical product-proof families cover exactly 13/13 current product obligations and collect 58 tests. Clean-state product aggregate is expected-red (`55 failed, 3 passed`) before implementation; separate `architecture_kernel` promotion remains green at 74/74; no production code or architecture-proof configuration changed.
 - [x] 2026-09-20 — VI-08 Tester Iteration 002 independently returned `PASS` with zero findings on `544624b5...` / tree `6b870fd8...`; Programme Owner then directed continuation under this original plan to the next independent-test boundary.
 - [x] 2026-09-20 — the tester-approved VI-08 evidence-only successor was merged into the preserved VI-09/VI-10 forward history; VI-09/VI-10 proof state was revalidated unchanged: 6 families / 13 obligations / 58 collected product tests, expected-red 55 failed / 3 passed before implementation, architecture promotion 74/74 green, mypy/Ruff/dependency/seam checks green.
-- [ ] VI-11 — `READY_FOR_INDEPENDENT_REVIEW`: fresh proof-adequacy review of exact authority against the committed VI-10 physical proof; production code remains prohibited pending accepted disposition.
+- [x] 2026-09-20 — VI-10R successor proof candidate frozen at `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4`; all six VI-11 Tester Iteration 003 findings were repaired in the proof layer only. Product control remains six families / 13 obligations; 155 tests collect; clean-state product aggregate remains expected-red `150 failed / 5 passed`; architecture promotion remains 74/74 green; no `src/nvda_desk/**` production mutation occurred.
+- [ ] VI-11 — `RECHALLENGE READY`: fresh proof-adequacy review of exact authority against VI-10R successor `375e61b73c219a40c9fc2e9684cf3f3e26d25d54`; production code remains prohibited pending accepted disposition.
 - [!] The current PM/Worker session still exposes no fresh-reviewer dispatch primitive. This is no longer treated as a reason to alter the proof or advance inline; the prepared VI-11 package must be handed to a separate independent tester/reviewer context.
 
 ## 13. Discoveries / decisions
@@ -476,3 +477,8 @@ Disposition: VI-11 is `BLOCKED_BEFORE_SUBSTANTIVE_REVIEW`. Preserve `implementat
 ### 2026-09-20 — VI-11 Tester Iteration 003 disposition
 
 Fresh independent VI-11 review of the VI-10 proof returned `FAIL` with six material proof-layer findings: `T003-F001` through `T003-F006` (four Critical, two Important). The reviewed VI-10 candidate remains preserved in Git history. Under section 6.7, the findings are routed to a successor VI-10R proof repair; VI-12R remains prohibited until a fresh VI-11 rechallenge accepts that successor. See `implementation/proof/VI11_TESTER_ITERATION_003_DISPOSITION.md` and `implementation/proof/VI10R_ADVERSARIAL_PRODUCT_PROOF_REPAIR_DESIGN.md`.
+
+
+### 2026-09-20 — VI-10R successor frozen for VI-11 rechallenge
+
+Tester Iteration 003's six proof-adequacy findings were repaired without changing IRB/BICP/IWO, product obligations, product tier treatment, architecture proof configuration or production source. The successor physical proof candidate is `375e61b73c219a40c9fc2e9684cf3f3e26d25d54` / tree `a45d5678aedea4e116f5e5a390b2bb6a128c33e4`. The next lawful action is fresh independent VI-11 proof-adequacy review; VI-12R remains prohibited.
