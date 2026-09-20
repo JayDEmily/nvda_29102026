@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10 REVALIDATED / VI-11 READY FOR INDEPENDENT REVIEW`
+- **Gate state:** `ACTIVE — VI-11 FAILED PROOF ADEQUACY / VI-10R PROOF REPAIR`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -16,9 +16,9 @@
 - **Independently tested VI-08 state:** `544624b5e2ede33501335af93be6ee1cafb3d55f` / tree `6b870fd8ff2204a603b5619d247ababad578f441` — Tester Iteration 002 `PASS`, zero findings
 - **Accepted VI-09 state:** `956fab361825acb4a0563803ce03d419997748a1` / tree `de47a6976be2617f23d17feebeffcbadb13b8ae5`
 - **Accepted VI-10 Worker state:** `f83efd9b489dbe7072da8c96320504a468c55a1a` / tree `beba36d889696915bbcecccd861dab9ab0c1a4cd`
-- **Current Leaf:** `G03-L07 / VI-11 — Fresh proof-adequacy review`
-- **Current actor:** external fresh independent reviewer required by VI-11; same-context PM/Worker review remains prohibited
+- **Current Leaf:** `G03-L06 / VI-10R — Successor adversarial product-proof repair after VI-11 findings`
+- **Current actor:** bounded proof-repair Worker; fresh independent reviewer required again after successor proof candidate is frozen
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** submit `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md` and the bound VI-11 tester package to a fresh independent reviewer. Production implementation remains prohibited until VI-11 returns an accepted disposition.
+- **Next lawful action:** repair `T003-F001` through `T003-F006` in the proof layer only, freeze a successor VI-10 proof candidate, then submit it to a fresh VI-11 reviewer. Production implementation remains prohibited.

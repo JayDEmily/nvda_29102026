@@ -472,3 +472,7 @@ Superseding current disposition: explicit Programme Owner direction authorises t
 Observed on 2026-09-20 after VI-10 acceptance: the installed Superpowers `requesting-code-review` method requires dispatch of a fresh `general-purpose` reviewer subagent. Inspection of the current callable tool catalogue found no subagent/model-inference dispatch action. OpenAI Platform actions are key-setup/target-management only; GitHub review actions manage review records or human reviewer requests and do not execute an independent semantic reviewer.
 
 Disposition: VI-11 is `BLOCKED_BEFORE_SUBSTANTIVE_REVIEW`. Preserve `implementation/handoff/REVIEWER_004_VI11_PROOF_ADEQUACY.md`; do not substitute same-context review and do not advance to VI-12R without a fresh reviewer disposition.
+
+### 2026-09-20 — VI-11 Tester Iteration 003 disposition
+
+Fresh independent VI-11 review of the VI-10 proof returned `FAIL` with six material proof-layer findings: `T003-F001` through `T003-F006` (four Critical, two Important). The reviewed VI-10 candidate remains preserved in Git history. Under section 6.7, the findings are routed to a successor VI-10R proof repair; VI-12R remains prohibited until a fresh VI-11 rechallenge accepts that successor. See `implementation/proof/VI11_TESTER_ITERATION_003_DISPOSITION.md` and `implementation/proof/VI10R_ADVERSARIAL_PRODUCT_PROOF_REPAIR_DESIGN.md`.
