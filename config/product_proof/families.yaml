@@ -38,6 +38,7 @@ families:
           - v1 field set fails closed on every unproved addition; no optional addition is presumed compatible
           - all active identity layers use runtime-distinct opaque types with same-payload substitution rejection
           - production public create_owner exposes separate typed command/read facets
+          - mypy 1.20.1 proves every public command/read facet is non-Any on lawful calls and rejects cross-layer type substitutions across all eleven facets
       prohibited_false_positive:
         cases:
           - requiredness, discriminant, allowed-value, time/null, identity or provenance law drifts
@@ -45,6 +46,7 @@ families:
           - actual same-payload values from distinct identity layers are substituted across contract positions
           - run/replay/packet/workbook/lineage/universal identities enter as unadmitted authority fields
           - private test-only owner construction or packet/kernel/downstream capability appears
+          - any public command/read facet collapses accepted contract or identity inputs/outputs to Any
       missing_mandatory_authority:
         cases:
           - required contract symbol, required field or public production owner factory is absent
@@ -55,8 +57,9 @@ families:
     expected_failure_signals:
       - explicit pytest failure for missing public-seam symbol or construction facet
       - TypeError/ValueError for contract violation or unadmitted authority field
+      - mypy failure for lawful seam specimen or missing expected static error for any cross-layer negative specimen
     command: python -m pytest tests/product/raw_signal/test_u01_contract_owner_boundary.py
-    environment: Python 3.13.5; pytest 9.0.3; hermetic component/contract proof; no network
+    environment: Python 3.13.5; pytest 9.0.3; mypy 1.20.1; hermetic component/contract proof; no network
     material_versions:
       - BICP-CANDIDATE-005 sha256=5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
       - IRB sha256=938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
@@ -97,11 +100,12 @@ families:
         cases:
           - :00 and :30 slots inside active policy yield exactly 30-second half-open occurrences; activation/deactivation are aligned and strictly ordered
           - v2 starts exactly at v1 exclusive deactivation boundary and preserves earlier facts
+          - a distinct scope_policy_id may follow only at a non-overlapping boundary
           - identical stable slot retry preserves one opaque capture identity
       prohibited_false_positive:
         cases:
           - slot before activation, at deactivation or any one-microsecond displacement from the exact :00/:30 grid is treated as owed
-          - two policy versions overlap at any instant or one version claims the other version's activation-boundary slot
+          - two policy versions or two distinct scope_policy_id values overlap at any instant, or one policy claims another policy's activation-boundary slot
           - the same immutable policy identity/version is re-registered with changed activation, deactivation or eligibility lineage; unaligned/ill-ordered policy validity is rejected
           - scheduler wake time is treated as schedule truth
           - conflicting content reuses one capture identity
@@ -288,23 +292,25 @@ families:
     dependency_substitutions:
       - fail_before_commit and fail_after_occurrence_commit are proof-only fault injection around the public real-PostgreSQL owner path
       - fresh subprocess driver calls the same public create_owner path and contains no product decisions
-      - subprocesses run with isolated ephemeral local filesystems and stripped environments while PostgreSQL remains the only configured durable cross-process state channel
+      - subprocesses run in a chrooted private mount/network namespace whose only writable filesystems are tmpfs/proc and whose host interpreter/source/PostgreSQL socket mounts are read-only
     case_coverage:
       lawful_positive:
         cases:
-          - filesystem-isolated writer/read processes require PostgreSQL for semantic state transfer
+          - exclusive chrooted writer/read processes expose only read-only host interpreter/source/PostgreSQL-socket mounts plus ephemeral tmpfs/proc, so no writable durable host path is reachable
           - fresh readers receive only PostgreSQL DSN plus query identity and recover complete parent-held pre-write high-entropy policy/capture/observation facts; correlated PostgreSQL facts are directly observable and deleting them prevents exact reproduction
-          - each occurrence and assessment command is exactly readable from a fresh process while the writer remains alive after reporting success, with no open PostgreSQL transaction at that success boundary
+          - a proof-owned profiler blocks at the exact Python public-command return event before caller-side result inspection; policy/capture/observation/assessment facts are already committed/readable and no writer transaction remains open at that boundary
           - append-only zero then one-or-more assessment chain survives fresh process boundaries
-          - durable same-ID identical-content retry is idempotent across processes
+          - durable same-ID identical-content observation and assessment retry is idempotent across fresh processes while conflicting content is rejected
+          - per-scope ingestion high-water survives an A:high -> B:low -> A:lower/A:higher fresh-process sequence
+          - the default PostgreSQL adapter exposes a record-only storage protocol and preserves an owner-supplied counterfactual assessment outcome without re-deriving semantic meaning
           - restart reconciliation commits the exact recovered capture before assessment, then persists unknown_not_established bound to that exact capture
       prohibited_false_positive:
         cases:
           - same-process/module-global memory, SQLite or shared local filesystem state stands in for PostgreSQL semantic durability
           - PostgreSQL merely gates/audits while another local/network persistence mechanism remains the semantic durable store or facts are reconstructed from IDs
           - semantic read succeeds through a deliberately invalid PostgreSQL DSN
-          - failed per-command occurrence or assessment write leaves a durable fact or semantic fallback visible from a fresh process
-          - the complete Psycopg technical-module closure or default technical persistence port contains Raw Signal outcome/eligibility decision logic
+          - failed scheduled-capture, raw-observation or assessment write leaves a durable fact or semantic fallback visible from a fresh process
+          - the default PostgreSQL storage protocol receives raw decision inputs or re-derives/changes an already owner-decided semantic record
           - restart absence is interpreted as zero_received
           - cross-kind atomicity/replay/SLA/RTO/RPO/retention claim appears
       missing_mandatory_authority:

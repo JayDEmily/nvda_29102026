@@ -289,3 +289,42 @@ def test_v2_owns_first_slot_at_activation_boundary_and_v1_stops_before_it() -> N
             capture_occurrence_id="capture-v2-too-early",
             slot_start_utc=datetime(2026, 9, 20, 12, 1, 30, tzinfo=UTC),
         )
+
+
+def test_distinct_policy_identity_cannot_overlap_existing_active_policy() -> None:
+    owner = build_owner()
+    register_policy(owner, policy())
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(
+            owner,
+            policy(
+                scope_policy_id="scope-policy-002",
+                scope_policy_version=1,
+                activation_ts_utc=datetime(2026, 9, 20, 12, 1, tzinfo=UTC),
+                deactivation_ts_utc=datetime(2026, 9, 20, 12, 3, tzinfo=UTC),
+                eligibility_policy_ref="eligibility-policy:fixture-002:v1",
+            ),
+        )
+
+
+def test_distinct_policy_identity_may_follow_without_active_interval_overlap() -> None:
+    owner = build_owner()
+    register_policy(owner, policy())
+    successor = register_policy(
+        owner,
+        policy(
+            scope_policy_id="scope-policy-002",
+            scope_policy_version=1,
+            activation_ts_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+            deactivation_ts_utc=None,
+            eligibility_policy_ref="eligibility-policy:fixture-002:v1",
+        ),
+    )
+    assert str(successor.scope_policy_id) == "scope-policy-002"
+    capture = realise_capture(
+        owner,
+        scope_policy_ref=policy_ref("scope-policy-002", 1),
+        capture_occurrence_id="capture-policy-002-first",
+        slot_start_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+    )
+    assert str(capture.scope_policy_ref) == "scope-policy-002@1"

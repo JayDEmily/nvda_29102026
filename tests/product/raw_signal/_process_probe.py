@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import signal
 import sys
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
@@ -29,6 +30,7 @@ from tests.product.raw_signal._support import (  # noqa: E402
     policy_ref,
     realise_capture,
     register_policy,
+    typed_identity,
 )
 
 
@@ -38,10 +40,12 @@ def _ids(token: str) -> dict[str, str]:
         "capture_id": f"capture::{token}",
         "observation_id": f"observation::{token}",
         "fault_observation_id": f"observation-fault::{token}",
+        "fault_capture_id": f"capture-fault::{token}",
         "delivery_id": f"delivery::{token}",
         "assessment_zero_id": f"assessment-zero::{token}",
         "assessment_one_id": f"assessment-one::{token}",
         "assessment_fault_id": f"assessment-fault::{token}",
+        "assessment_retry_id": f"assessment-retry::{token}",
         "recovered_capture_id": f"recovered-capture::{token}",
         "recovered_assessment_id": f"recovered-assessment::{token}",
         "assessment_stale_id": f"assessment-stale::{token}",
@@ -49,6 +53,7 @@ def _ids(token: str) -> dict[str, str]:
         "observation_high_same_scope_id": f"observation-high-same::{token}",
         "observation_low_same_scope_id": f"observation-low-same::{token}",
         "observation_low_other_scope_id": f"observation-low-other::{token}",
+        "observation_next_same_scope_id": f"observation-next-same::{token}",
         "assessment_immediate_id": f"assessment-immediate::{token}",
     }
 
@@ -161,8 +166,125 @@ def _normalise(value: Any) -> Any:
     return {"__type__": type(value).__qualname__, "value": str(value)}
 
 
+
+def _observe_public_method_return(method: Any, *args: Any, **kwargs: Any) -> Any:
+    """Block at the Python public-method return event before caller-side result inspection.
+
+    The profiler is proof-owned. It emits only a constant boundary marker while the returned
+    object remains untouched, then waits for the parent proof process to inspect PostgreSQL
+    state or kill this process before allowing caller execution to continue.
+    """
+
+    target = getattr(method, "__func__", method)
+    code = getattr(target, "__code__", None)
+    if code is None:
+        raise AssertionError("public command must expose an inspectable Python return boundary")
+    observed = False
+
+    def profiler(frame: Any, event: str, arg: Any) -> Any:
+        nonlocal observed
+        if not observed and event == "return" and frame.f_code is code:
+            observed = True
+            print(
+                json.dumps({"event": "public_method_return", "_pid": os.getpid()}),
+                flush=True,
+            )
+            # Freeze the entire child process at the exact Python return event. A stdin
+            # barrier would release the GIL and permit a background/lazy commit thread to
+            # advance after the public command had already returned. SIGSTOP prevents every
+            # thread in this process from running until the parent proof explicitly resumes it.
+            os.kill(os.getpid(), signal.SIGSTOP)
+        return profiler
+
+    sys.setprofile(profiler)
+    try:
+        result = method(*args, **kwargs)
+    finally:
+        sys.setprofile(None)
+    if not observed:
+        raise AssertionError("public command return boundary was not observed")
+    return result
+
+
 def _policy_ref(token: str) -> Any:
     return policy_ref(f"scope::{token}", 1)
+
+
+
+def boundary_write_policy(payload: dict[str, Any]) -> dict[str, Any]:
+    owner = _owner(payload)
+    value = _observe_public_method_return(
+        owner.commands.register_capture_scope_policy, _policy(payload)
+    )
+    return {"record": _normalise(value)}
+
+
+def boundary_write_capture(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload)
+    value = _observe_public_method_return(
+        owner.commands.realise_scheduled_capture_occurrence,
+        scope_policy_ref=_policy_ref(payload["token"]),
+        capture_occurrence_id=typed_identity(
+            "ScheduledCaptureOccurrenceV1", "capture_occurrence_id", ids["capture_id"]
+        ),
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+    )
+    return {"record": _normalise(value)}
+
+
+def boundary_write_observation(payload: dict[str, Any]) -> dict[str, Any]:
+    owner = _owner(payload)
+    value = _observe_public_method_return(
+        owner.commands.admit_raw_observation_occurrence, _observation(payload)
+    )
+    return {"record": _normalise(value)}
+
+
+def boundary_write_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload)
+    value = _observe_public_method_return(
+        owner.commands.append_capture_receipt_presence_assessment,
+        assessment_occurrence_id=typed_identity(
+            "CaptureReceiptPresenceAssessmentV1",
+            "assessment_occurrence_id",
+            ids["assessment_zero_id"],
+        ),
+        capture_occurrence_ref=typed_identity(
+            "CaptureReceiptPresenceAssessmentV1",
+            "capture_occurrence_ref",
+            ids["capture_id"],
+        ),
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC),
+        supersedes_assessment_ref=None,
+    )
+    return {"record": _normalise(value)}
+
+
+def boundary_write_one_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload)
+    value = _observe_public_method_return(
+        owner.commands.append_capture_receipt_presence_assessment,
+        assessment_occurrence_id=typed_identity(
+            "CaptureReceiptPresenceAssessmentV1",
+            "assessment_occurrence_id",
+            ids["assessment_one_id"],
+        ),
+        capture_occurrence_ref=typed_identity(
+            "CaptureReceiptPresenceAssessmentV1",
+            "capture_occurrence_ref",
+            ids["capture_id"],
+        ),
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, 222222, tzinfo=UTC),
+        supersedes_assessment_ref=typed_identity(
+            "CaptureReceiptPresenceAssessmentV1",
+            "supersedes_assessment_ref",
+            ids["assessment_zero_id"],
+        ),
+    )
+    return {"record": _normalise(value)}
 
 
 def write_policy_only(payload: dict[str, Any]) -> dict[str, Any]:
@@ -297,6 +419,54 @@ def read_assessment_chain(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     chain = _owner(payload).reads.list_receipt_presence_assessments(ids["capture_id"])
     return {"records": [_normalise(item) for item in chain]}
+
+
+
+
+def retry_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = append_assessment(
+        _owner(payload),
+        assessment_occurrence_id=ids["assessment_zero_id"],
+        capture_occurrence_ref=ids["capture_id"],
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC),
+    )
+    return {"record": _normalise(stored)}
+
+
+def conflict_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    try:
+        append_assessment(
+            _owner(payload),
+            assessment_occurrence_id=ids["assessment_zero_id"],
+            capture_occurrence_ref=ids["capture_id"],
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 11, 111111, tzinfo=UTC),
+        )
+    except (TypeError, ValueError, KeyError):
+        return {"rejected": True}
+    return {"rejected": False}
+
+
+def fault_capture(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    owner = _owner(payload, fault_mode="fail_before_commit")
+    try:
+        realise_capture(
+            owner,
+            scope_policy_ref=_policy_ref(payload["token"]),
+            capture_occurrence_id=ids["fault_capture_id"],
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+        )
+    except Exception:
+        return {"failed": True, "capture_id": ids["fault_capture_id"]}
+    raise AssertionError("proof fault injection did not interrupt the capture transaction")
+
+
+def read_fault_capture_absent(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    stored = _owner(payload).reads.get_scheduled_capture_occurrence(ids["fault_capture_id"])
+    return {"absent": stored is None}
 
 
 def fault_observation(payload: dict[str, Any]) -> dict[str, Any]:
@@ -502,6 +672,25 @@ def admit_low_sequence_other_scope(payload: dict[str, Any]) -> dict[str, Any]:
     return {"record": _normalise(value)}
 
 
+
+def admit_next_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
+    ids = _ids(payload["token"])
+    value = admit_observation(
+        _owner(payload),
+        _observation(
+            {
+                **payload,
+                "facts": {
+                    **payload.get("facts", {}),
+                    "observation_occurrence_id": ids["observation_next_same_scope_id"],
+                    "ingestion_sequence": 43,
+                },
+            }
+        ),
+    )
+    return {"record": _normalise(value)}
+
+
 def filesystem_boundary(payload: dict[str, Any]) -> dict[str, Any]:
     host_path = Path(payload["host_path"])
     try:
@@ -511,12 +700,36 @@ def filesystem_boundary(payload: dict[str, Any]) -> dict[str, Any]:
     else:
         blocked = False
         host_path.unlink(missing_ok=True)
-    ephemeral = Path("/tmp/nvda-proof-ephemeral")
+
+    ephemeral = Path("/run/proof-tmp/nvda-proof-ephemeral")
     ephemeral.write_text("ephemeral", encoding="utf-8")
-    return {"host_write_blocked": blocked, "ephemeral_write_ok": ephemeral.exists()}
+
+    writable_mounts: list[dict[str, str]] = []
+    rootfs = os.environ["NVDA_PROOF_ROOTFS"]
+    for line in Path("/run/proof-mountinfo").read_text(encoding="utf-8").splitlines():
+        pre, post = line.split(" - ", 1)
+        fields = pre.split()
+        mount_target = fields[4]
+        if mount_target != rootfs and not mount_target.startswith(rootfs + "/"):
+            continue
+        options = fields[5].split(",")
+        if "rw" not in options:
+            continue
+        target = mount_target[len(rootfs) :] or "/"
+        writable_mounts.append({"target": target, "filesystem": post.split()[0]})
+    return {
+        "host_write_blocked": blocked,
+        "ephemeral_write_ok": ephemeral.exists(),
+        "writable_mounts": writable_mounts,
+    }
 
 
 ACTIONS = {
+    "boundary_write_policy": boundary_write_policy,
+    "boundary_write_capture": boundary_write_capture,
+    "boundary_write_observation": boundary_write_observation,
+    "boundary_write_zero_assessment": boundary_write_zero_assessment,
+    "boundary_write_one_assessment": boundary_write_one_assessment,
     "write_policy_only": write_policy_only,
     "read_policy": read_policy,
     "write_capture_only": write_capture_only,
@@ -531,6 +744,10 @@ ACTIONS = {
     "write_one_assessment_only": write_one_assessment_only,
     "read_assessment": read_assessment,
     "read_assessment_chain": read_assessment_chain,
+    "retry_zero_assessment": retry_zero_assessment,
+    "conflict_zero_assessment": conflict_zero_assessment,
+    "fault_capture": fault_capture,
+    "read_fault_capture_absent": read_fault_capture_absent,
     "fault_observation": fault_observation,
     "read_fault_observation_absent": read_fault_observation_absent,
     "fault_assessment": fault_assessment,
@@ -546,6 +763,7 @@ ACTIONS = {
     "admit_high_sequence_same_scope": admit_high_sequence_same_scope,
     "admit_low_sequence_same_scope": admit_low_sequence_same_scope,
     "admit_low_sequence_other_scope": admit_low_sequence_other_scope,
+    "admit_next_sequence_same_scope": admit_next_sequence_same_scope,
     "filesystem_boundary": filesystem_boundary,
 }
 

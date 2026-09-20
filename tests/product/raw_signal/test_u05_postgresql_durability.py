@@ -6,8 +6,10 @@ import inspect
 import json
 import os
 import shutil
+import signal
 import subprocess
 import sys
+import time
 import uuid
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
@@ -17,12 +19,15 @@ from typing import Any
 
 import pytest
 from tests.product.raw_signal._support import (
+    admit_observation,
     as_mapping,
     assessment_contract,
     build_owner,
     capture_contract,
     observation,
     policy,
+    realise_capture,
+    register_policy,
     required_symbol,
 )
 
@@ -51,20 +56,64 @@ def _token(prefix: str) -> str:
     return f"{prefix}-{uuid.uuid4().hex}"
 
 
-def _isolated_command() -> list[str]:
+def _postgres_socket_dir(dsn: str) -> str:
+    conninfo = importlib.import_module("psycopg.conninfo")
+    values = conninfo.conninfo_to_dict(dsn)
+    host = values.get("host")
+    if not host or not host.startswith("/"):
+        pytest.fail(
+            "exclusive persistence proof requires a PostgreSQL Unix-domain socket DSN; "
+            f"received host={host!r}"
+        )
+    return host
+
+
+def _isolated_command(dsn: str) -> list[str]:
     unshare = shutil.which("unshare")
     if unshare is None:
-        pytest.fail("unshare is required for the no-shared-local-persistence proof boundary")
+        pytest.fail("unshare is required for the exclusive persistence proof boundary")
+    socket_dir = _postgres_socket_dir(dsn)
     script = r"""
 set -eu
-mount --bind /mnt/data /mnt/data
-mount -o remount,ro,bind /mnt/data
-mount -t tmpfs tmpfs /tmp
-mount -t tmpfs tmpfs /var/tmp
-mount -t tmpfs tmpfs /dev/shm
-mkdir -p /tmp/proof-home /tmp/proof-xdg /tmp/proof-work
-cd /tmp/proof-work
-exec "$1" "$2"
+ROOTFS="$(mktemp -d /tmp/nvda-proof-root.XXXXXX)"
+mount -t tmpfs -o mode=0755 tmpfs "$ROOTFS"
+for d in usr lib lib64 opt etc mnt/data tmp var/tmp dev dev/shm proc run home root; do
+    mkdir -p "$ROOTFS/$d"
+done
+for d in /usr /lib /lib64 /opt /etc /mnt/data; do
+    if [ -e "$d" ]; then
+        mount --rbind "$d" "$ROOTFS$d"
+        mount --make-rslave "$ROOTFS$d"
+        findmnt -Rrn -o TARGET "$ROOTFS$d" | while IFS= read -r target; do
+            mount -o remount,ro,bind "$target"
+        done
+    fi
+done
+mount -t tmpfs -o mode=1777 tmpfs "$ROOTFS/tmp"
+mount -t tmpfs -o mode=1777 tmpfs "$ROOTFS/var/tmp"
+mount -t tmpfs -o mode=1777 tmpfs "$ROOTFS/dev/shm"
+mount -t tmpfs -o mode=0755 tmpfs "$ROOTFS/run"
+for node in null zero random urandom; do
+    : > "$ROOTFS/dev/$node"
+    mount --bind "/dev/$node" "$ROOTFS/dev/$node"
+    mount -o remount,ro,bind "$ROOTFS/dev/$node"
+done
+SOCKET_DIR="$3"
+case "$SOCKET_DIR" in
+    /mnt/data|/mnt/data/*)
+        ;;
+    *)
+        mkdir -p "$ROOTFS$SOCKET_DIR"
+        mount --bind "$SOCKET_DIR" "$ROOTFS$SOCKET_DIR"
+        mount -o remount,ro,bind "$ROOTFS$SOCKET_DIR"
+        ;;
+esac
+mkdir -p "$ROOTFS/run/proof-home" "$ROOTFS/run/proof-xdg" \
+    "$ROOTFS/run/proof-tmp" "$ROOTFS/run/proof-work"
+cat /proc/self/mountinfo > "$ROOTFS/run/proof-mountinfo"
+export NVDA_PROOF_ROOTFS="$ROOTFS"
+cd "$ROOTFS/run/proof-work"
+exec chroot "$ROOTFS" "$1" "$2"
 """
     return [
         unshare,
@@ -79,6 +128,7 @@ exec "$1" "$2"
         "sh",
         sys.executable,
         str(PROBE),
+        socket_dir,
     ]
 
 
@@ -102,9 +152,9 @@ def _probe_env(workdir: Path) -> dict[str, str]:
     env = {key: os.environ[key] for key in allowed if key in os.environ}
     env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "src"), str(ROOT)])
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    env["HOME"] = "/tmp/proof-home"
-    env["TMPDIR"] = "/tmp"
-    env["XDG_DATA_HOME"] = "/tmp/proof-xdg"
+    env["HOME"] = "/run/proof-home"
+    env["TMPDIR"] = "/run/proof-tmp"
+    env["XDG_DATA_HOME"] = "/run/proof-xdg"
     return env
 
 
@@ -120,7 +170,7 @@ def _probe_process(
     payload = json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n"
     workdir = tmp_path / f"{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
-    command = _isolated_command() if isolated_filesystem else [sys.executable, str(PROBE)]
+    command = _isolated_command(dsn) if isolated_filesystem else [sys.executable, str(PROBE)]
     return subprocess.run(
         command,
         cwd=ROOT,
@@ -166,7 +216,7 @@ def _start_hold_probe(
     workdir = tmp_path / f"hold-{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
     process = subprocess.Popen(
-        _isolated_command(),
+        _isolated_command(dsn),
         cwd=ROOT,
         env=_probe_env(workdir),
         stdin=subprocess.PIPE,
@@ -188,6 +238,77 @@ def _start_hold_probe(
     result = json.loads(first)
     assert process.poll() is None, "writer exited before command-success visibility check"
     return process, result
+
+
+def _start_return_boundary_probe(
+    tmp_path: Path,
+    action: str,
+    *,
+    dsn: str,
+    token: str,
+    **extra: Any,
+) -> tuple[subprocess.Popen[str], dict[str, Any]]:
+    """Pause the child at the proof-owned profile hook for the public method return event."""
+
+    workdir = tmp_path / f"return-{action}-{uuid.uuid4().hex}"
+    workdir.mkdir()
+    process = subprocess.Popen(
+        _isolated_command(dsn),
+        cwd=ROOT,
+        env=_probe_env(workdir),
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    assert process.stdin is not None
+    assert process.stdout is not None
+    process.stdin.write(json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n")
+    process.stdin.flush()
+    first = process.stdout.readline().strip()
+    if not first:
+        stderr = process.stderr.read() if process.stderr is not None else ""
+        raise AssertionError(f"return-boundary probe produced no marker: {stderr}")
+    marker = json.loads(first)
+    assert marker["event"] == "public_method_return"
+    assert process.poll() is None, "writer exited before public-return boundary inspection"
+    _wait_for_stopped_process(int(marker["_pid"]))
+    return process, marker
+
+
+def _wait_for_stopped_process(pid: int, *, timeout: float = 5.0) -> None:
+    deadline = time.monotonic() + timeout
+    status_path = Path(f"/proc/{pid}/status")
+    while time.monotonic() < deadline:
+        try:
+            status = status_path.read_text(encoding="utf-8")
+        except FileNotFoundError:
+            pytest.fail(f"return-boundary child {pid} exited before it could be frozen")
+        state = next((line for line in status.splitlines() if line.startswith("State:")), "")
+        if "T (stopped)" in state or "t (tracing stop)" in state:
+            return
+        time.sleep(0.01)
+    pytest.fail(f"return-boundary child {pid} did not enter whole-process SIGSTOP")
+
+
+def _release_return_boundary_probe(
+    process: subprocess.Popen[str], marker: dict[str, Any]
+) -> dict[str, Any]:
+    os.kill(int(marker["_pid"]), signal.SIGCONT)
+    stdout, stderr = process.communicate(timeout=10)
+    assert process.returncode == 0, stdout + stderr
+    lines = [line for line in stdout.splitlines() if line.strip()]
+    assert lines, "return-boundary probe produced no post-release record"
+    return json.loads(lines[-1])
+
+
+def _kill_return_boundary_probe(
+    process: subprocess.Popen[str], marker: dict[str, Any]
+) -> None:
+    os.kill(int(marker["_pid"]), signal.SIGKILL)
+    stdout, stderr = process.communicate(timeout=10)
+    assert process.returncode is not None
+    assert process.returncode != 0, stdout + stderr
 
 
 def _release_hold_probe(process: subprocess.Popen[str]) -> None:
@@ -479,10 +600,11 @@ def test_process_boundary_forbids_shared_local_file_persistence(tmp_path: Path) 
         token=_token("fs-boundary"),
         host_path=str(host_path),
     )
-    assert _without_pid(result) == {
-        "ephemeral_write_ok": True,
-        "host_write_blocked": True,
-    }
+    boundary = _without_pid(result)
+    assert boundary["ephemeral_write_ok"] is True
+    assert boundary["host_write_blocked"] is True
+    assert boundary["writable_mounts"], "exclusive process root must expose ephemeral mounts"
+    assert {item["filesystem"] for item in boundary["writable_mounts"]} <= {"tmpfs", "proc"}
     assert not host_path.exists()
 
 
@@ -547,14 +669,14 @@ def test_command_return_is_durable_if_writer_is_killed_immediately_after_success
         read_extra: dict[str, Any] | None = None,
         write_extra: dict[str, Any] | None = None,
     ) -> None:
-        process, _ = _start_hold_probe(
+        process, marker = _start_return_boundary_probe(
             tmp_path,
             action,
             dsn=dsn,
             token=token,
             **(write_extra or {}),
         )
-        _kill_hold_probe(process)
+        _kill_return_boundary_probe(process, marker)
         fresh = _run_probe(
             tmp_path,
             read_action,
@@ -565,27 +687,27 @@ def test_command_return_is_durable_if_writer_is_killed_immediately_after_success
         assert fresh["record"] == expected[expected_key]
 
     kill_then_read(
-        "write_policy_only",
+        "boundary_write_policy",
         "read_policy",
         "policy",
         write_extra={"facts": facts},
     )
-    kill_then_read("write_capture_only", "read_capture", "capture")
+    kill_then_read("boundary_write_capture", "read_capture", "capture")
     kill_then_read(
-        "write_zero_assessment_only",
+        "boundary_write_zero_assessment",
         "read_assessment",
         "zero",
         read_extra={"which": "zero"},
     )
     kill_then_read(
-        "write_observation_only",
+        "boundary_write_observation",
         "read_observation",
         "observation",
         write_extra={"facts": facts},
     )
     _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
     kill_then_read(
-        "write_one_assessment_only",
+        "boundary_write_one_assessment",
         "read_assessment",
         "one",
         read_extra={"which": "one"},
@@ -610,44 +732,44 @@ def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_aut
     ) -> dict[str, Any]:
         application_name = f"nvda-proof-{action}-{uuid.uuid4().hex}"
         writer_dsn = _dsn_with_application_name(dsn, application_name)
-        process, result = _start_hold_probe(
+        process, marker = _start_return_boundary_probe(
             tmp_path,
             action,
             dsn=writer_dsn,
             token=token,
             **(write_extra or {}),
         )
-        try:
-            assert process.poll() is None
-            _assert_no_open_writer_transaction(dsn, application_name)
-            fresh = _run_probe(
-                tmp_path,
-                read_action,
-                dsn=dsn,
-                token=token,
-                **(read_extra or {}),
-            )
-            assert fresh["record"] == expected[expected_key]
-            assert process.poll() is None, "writer exited before fresh read completed"
-            return result
-        finally:
-            _release_hold_probe(process)
+        assert marker["event"] == "public_method_return"
+        assert process.poll() is None
+        _assert_no_open_writer_transaction(dsn, application_name)
+        fresh = _run_probe(
+            tmp_path,
+            read_action,
+            dsn=dsn,
+            token=token,
+            **(read_extra or {}),
+        )
+        assert fresh["record"] == expected[expected_key]
+        assert process.poll() is None, "writer resumed before proof released the return boundary"
+        result = _release_return_boundary_probe(process, marker)
+        assert result["record"] == expected[expected_key]
+        return result
 
     hold_and_read(
-        "write_policy_only",
+        "boundary_write_policy",
         "read_policy",
         "policy",
         write_extra={"facts": facts},
     )
-    hold_and_read("write_capture_only", "read_capture", "capture")
+    hold_and_read("boundary_write_capture", "read_capture", "capture")
     hold_and_read(
-        "write_zero_assessment_only",
+        "boundary_write_zero_assessment",
         "read_assessment",
         "zero",
         read_extra={"which": "zero"},
     )
     hold_and_read(
-        "write_observation_only",
+        "boundary_write_observation",
         "read_observation",
         "observation",
         write_extra={"facts": facts},
@@ -667,11 +789,17 @@ def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_aut
         _release_hold_probe(relation_process)
 
     hold_and_read(
-        "write_one_assessment_only",
+        "boundary_write_one_assessment",
         "read_assessment",
         "one",
         read_extra={"which": "one"},
     )
+
+    faulted_capture = _run_probe(tmp_path, "fault_capture", dsn=dsn, token=token)
+    assert faulted_capture["failed"] is True
+    assert _without_pid(
+        _run_probe(tmp_path, "read_fault_capture_absent", dsn=dsn, token=token)
+    ) == {"absent": True}
 
     faulted_observation = _run_probe(tmp_path, "fault_observation", dsn=dsn, token=token)
     assert faulted_observation["failed"] is True
@@ -776,7 +904,12 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
     token = _token("restart-invariants")
     _run_probe(tmp_path, "write_policy_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
-    _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
+    zero = _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
+    zero_retry = _run_probe(tmp_path, "retry_zero_assessment", dsn=dsn, token=token)
+    assert zero_retry["record"] == zero["record"]
+    assert _without_pid(
+        _run_probe(tmp_path, "conflict_zero_assessment", dsn=dsn, token=token)
+    ) == {"rejected": True}
     _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "write_one_assessment_only", dsn=dsn, token=token)
@@ -817,9 +950,6 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         token=token,
     )
     assert high_same_scope["record"]["ingestion_sequence"] == 42
-    assert _without_pid(
-        _run_probe(tmp_path, "admit_low_sequence_same_scope", dsn=dsn, token=token)
-    ) == {"rejected": True}
 
     other_scope = _run_probe(
         tmp_path,
@@ -828,6 +958,17 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         token=token,
     )
     assert other_scope["record"]["ingestion_sequence"] == 1
+
+    assert _without_pid(
+        _run_probe(tmp_path, "admit_low_sequence_same_scope", dsn=dsn, token=token)
+    ) == {"rejected": True}
+    next_same_scope = _run_probe(
+        tmp_path,
+        "admit_next_sequence_same_scope",
+        dsn=dsn,
+        token=token,
+    )
+    assert next_same_scope["record"]["ingestion_sequence"] == 43
 
 
 def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts(
@@ -873,151 +1014,103 @@ def test_public_owner_accepts_explicit_technical_persistence_port_injection() ->
     assert "persistence_port" in inspect.signature(builder).parameters
 
 
-def _module_name(path: Path) -> str:
-    rel = path.relative_to(OWNER_PACKAGE).with_suffix("")
-    if rel.name == "__init__":
-        rel = rel.parent
-    return ".".join(rel.parts)
+_STORAGE_PROTOCOL_BOUND_ARITY = {
+    "append_policy": 1,
+    "get_policy": 2,
+    "append_capture": 1,
+    "get_capture": 1,
+    "append_observation": 1,
+    "get_observation": 1,
+    "append_assessment": 1,
+    "get_assessment": 1,
+    "list_assessments": 1,
+}
 
 
-def _local_import_targets(tree: ast.AST) -> set[str]:
-    targets: set[str] = set()
-    prefix = "nvda_desk.raw_signal_occurrence_truth"
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Import):
-            for alias in node.names:
-                if alias.name == prefix:
-                    targets.add("")
-                elif alias.name.startswith(prefix + "."):
-                    targets.add(alias.name[len(prefix) + 1 :])
-        elif isinstance(node, ast.ImportFrom):
-            if node.level:
-                if node.module:
-                    targets.add(node.module)
-                else:
-                    targets.update(alias.name for alias in node.names)
-            elif node.module == prefix:
-                targets.update(alias.name for alias in node.names)
-            elif node.module and node.module.startswith(prefix + "."):
-                targets.add(node.module[len(prefix) + 1 :])
-    return targets
-
-
-def _technical_module_closure() -> dict[str, tuple[Path, ast.AST]]:
-    modules: dict[str, tuple[Path, ast.AST]] = {}
-    for path in OWNER_PACKAGE.rglob("*.py"):
-        tree = ast.parse(path.read_text(encoding="utf-8"))
-        modules[_module_name(path)] = (path, tree)
-
+def test_default_postgresql_path_exposes_exact_record_only_storage_protocol() -> None:
     owner = build_owner(postgres_dsn=_dsn())
     ports = _find_default_persistence_ports(owner)
     assert ports, "default PostgreSQL owner path hides its technical persistence port"
-    prefix = "nvda_desk.raw_signal_occurrence_truth"
-    runtime_seed_modules: set[str] = set()
-    seen: set[int] = set()
-
-    def visit_runtime(value: Any, depth: int) -> None:
-        if depth > 6 or id(value) in seen:
-            return
-        seen.add(id(value))
-        module = getattr(value, "__module__", type(value).__module__)
-        if module == prefix:
-            runtime_seed_modules.add("")
-        elif module.startswith(prefix + "."):
-            runtime_seed_modules.add(module[len(prefix) + 1 :])
-        if depth == 6 or isinstance(value, (str, bytes, int, float, bool, type(None))):
-            return
-        try:
-            children = vars(value).values()
-        except TypeError:
-            return
-        for child in children:
-            if callable(child) or type(child).__module__.startswith(prefix):
-                visit_runtime(child, depth + 1)
-
     for port in ports:
-        visit_runtime(port, 0)
-
-    psycopg_seeds = {
-        name
-        for name, (path, tree) in modules.items()
-        if any(
-            (isinstance(node, ast.Import) and any(a.name.startswith("psycopg") for a in node.names))
-            or (
-                isinstance(node, ast.ImportFrom)
-                and node.module is not None
-                and node.module.startswith("psycopg")
-            )
-            for node in ast.walk(tree)
-        )
-        or "psycopg" in path.read_text(encoding="utf-8")
-    }
-    seeds = {name for name in runtime_seed_modules | psycopg_seeds if name in modules}
-    assert seeds, "default PostgreSQL technical mechanism is not present"
-    closure = set(seeds)
-    frontier = list(seeds)
-    while frontier:
-        current = frontier.pop()
-        _, tree = modules[current]
-        for target in _local_import_targets(tree):
-            matches = [
-                name
-                for name in modules
-                if name == target or name.startswith(target + ".")
-            ]
-            for match in matches:
-                if match not in closure:
-                    closure.add(match)
-                    frontier.append(match)
-    return {name: modules[name] for name in closure}
-
-
-def test_complete_technical_persistence_closure_contains_no_semantic_decision_logic() -> None:
-    required_symbol("create_owner")
-    closure = _technical_module_closure()
-    forbidden_function_names = {
-        "derive_capture_receipt_evidence_relation",
-        "derive_relation",
-        "decide_relation",
-        "decide_outcome",
-        "assess_outcome",
-        "classify_outcome",
-        "is_eligible",
-    }
-    forbidden_semantic_literals = {
-        "zero_received",
-        "one_or_more_received",
-        "unknown_not_established",
-        "evidences_receipt_presence_only",
-    }
-    for _, (path, tree) in closure.items():
-        function_names = {
-            node.name
-            for node in ast.walk(tree)
-            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+        public_callables = {
+            name
+            for name in dir(port)
+            if not name.startswith("_") and callable(getattr(port, name))
         }
-        assert not forbidden_function_names.intersection(function_names), path
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Call):
-                if isinstance(node.func, ast.Name):
-                    assert node.func.id not in {"__import__", "import_module"}, path
-                if isinstance(node.func, ast.Attribute):
-                    assert not (
-                        isinstance(node.func.value, ast.Name)
-                        and node.func.value.id == "importlib"
-                        and node.func.attr == "import_module"
-                    ), path
-            if isinstance(node, (ast.If, ast.Match, ast.Compare)):
-                literals = {
-                    child.value
-                    for child in ast.walk(node)
-                    if isinstance(child, ast.Constant) and isinstance(child.value, str)
-                }
-                assert not forbidden_semantic_literals.intersection(literals), path
-            if isinstance(node, ast.Name):
-                assert node.id != "eligibility_resolver", path
-            if isinstance(node, ast.Attribute):
-                assert node.attr != "eligibility_resolver", path
+        assert public_callables == set(_STORAGE_PROTOCOL_BOUND_ARITY), (
+            type(port),
+            public_callables,
+        )
+        for name, arity in _STORAGE_PROTOCOL_BOUND_ARITY.items():
+            signature = inspect.signature(getattr(port, name))
+            parameters = tuple(signature.parameters.values())
+            assert len(parameters) == arity, (type(port), name, signature)
+            assert all(
+                parameter.kind
+                not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
+                for parameter in parameters
+            ), (type(port), name, signature)
+
+
+def test_default_postgresql_storage_port_preserves_owner_decided_assessment_without_rederiving(
+    tmp_path: Path,
+) -> None:
+    del tmp_path  # signature keeps this proof visibly in the real-PostgreSQL family
+    token = _token("storage-only")
+    owner = build_owner(postgres_dsn=_dsn(), eligibility_resolver=lambda _o, _p: True)
+    stored_policy = register_policy(
+        owner,
+        policy(
+            scope_policy_id=f"scope::{token}",
+            eligibility_policy_ref=f"eligibility::{token}",
+        ),
+    )
+    capture = realise_capture(
+        owner,
+        scope_policy_ref=f"{stored_policy.scope_policy_id}@{stored_policy.scope_policy_version}",
+        capture_occurrence_id=f"capture::{token}",
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+    )
+    admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id=f"observation::{token}",
+            delivery_artifact_ref=f"delivery::{token}",
+            source_provider=f"provider::{token}",
+            ingestion_sequence_scope=f"collector::{token}",
+            received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
+        ),
+    )
+
+    # This canary deliberately supplies storage with a complete semantic assessment record whose
+    # outcome disagrees with what an owner would derive from the visible eligible observation.
+    # A technical storage translator must preserve that already-decided field exactly rather than
+    # inspecting observations/eligibility and choosing Raw Signal meaning itself.
+    canary = assessment_contract(
+        assessment_occurrence_id=f"assessment-storage-canary::{token}",
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        outcome="zero_received",
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+    )
+    ports = _find_default_persistence_ports(owner)
+    assert len(ports) == 1, "proof requires one inspectable default PostgreSQL storage protocol"
+    port = ports[0]
+    stored = port.append_assessment(canary)
+    reread = port.get_assessment(canary.assessment_occurrence_id)
+    assert stored == canary
+    assert reread == canary
+    assert reread.outcome == "zero_received"
+
+    # Discard the entire owner/adapter object graph and read the same record through a newly
+    # constructed default PostgreSQL storage port. This prevents a technically named adapter
+    # from returning the owner-decided canary from process memory while persisting a re-derived
+    # outcome underneath it.
+    fresh_owner = build_owner(postgres_dsn=_dsn(), eligibility_resolver=lambda _o, _p: False)
+    fresh_ports = _find_default_persistence_ports(fresh_owner)
+    assert len(fresh_ports) == 1
+    fresh = fresh_ports[0].get_assessment(canary.assessment_occurrence_id)
+    assert fresh == canary
+    assert fresh.outcome == "zero_received"
 
 
 def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service() -> None:
@@ -1107,22 +1200,6 @@ def _find_default_persistence_ports(owner: Any) -> list[Any]:
 
     visit(owner, 0)
     return found
-
-
-def test_default_postgresql_path_exposes_same_semantic_free_storage_protocol() -> None:
-    owner = build_owner(postgres_dsn=_dsn())
-    ports = _find_default_persistence_ports(owner)
-    assert ports, "default PostgreSQL owner path hides its technical persistence port"
-    forbidden = {
-        "derive_relation",
-        "decide_relation",
-        "decide_outcome",
-        "assess_outcome",
-        "is_eligible",
-        "classify",
-    }
-    for port in ports:
-        assert not any(hasattr(port, name) for name in forbidden), type(port)
 
 
 def test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla() -> None:

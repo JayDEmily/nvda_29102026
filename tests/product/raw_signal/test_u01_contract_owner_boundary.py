@@ -1,10 +1,14 @@
 from __future__ import annotations
 
 import inspect
+import os
+import subprocess
+import sys
 from dataclasses import MISSING, dataclass, fields, is_dataclass
 from datetime import datetime, timedelta, timezone
 from enum import Enum
 from itertools import permutations
+from pathlib import Path
 from typing import Any, Literal, get_args, get_origin
 
 import pytest
@@ -549,6 +553,65 @@ def test_owner_uses_public_production_factory_with_separate_command_and_read_fac
         "list_receipt_presence_assessments",
     ):
         assert callable(getattr(owner.reads, name, None)), name
+
+
+
+TYPECHECK_DIR = Path(__file__).resolve().parent / "typecheck"
+TYPECHECK_POSITIVE = TYPECHECK_DIR / "public_seam_positive.py"
+TYPECHECK_NEGATIVE = TYPECHECK_DIR / "public_seam_negative.py"
+
+
+def _run_public_seam_mypy(path: Path) -> subprocess.CompletedProcess[str]:
+    env = os.environ.copy()
+    root = Path(__file__).resolve().parents[3]
+    env["MYPYPATH"] = str(root / "src")
+    return subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "mypy",
+            "--strict",
+            "--disallow-any-expr",
+            "--show-error-codes",
+            "--no-error-summary",
+            str(path),
+        ],
+        cwd=root,
+        env=env,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+
+def test_public_command_and_read_facets_are_statically_typed_without_any() -> None:
+    result = _run_public_seam_mypy(TYPECHECK_POSITIVE)
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> None:
+    source_lines = TYPECHECK_NEGATIVE.read_text(encoding="utf-8").splitlines()
+    expected_lines = {
+        number
+        for number, line in enumerate(source_lines, start=1)
+        if "STATIC_NEGATIVE" in line
+    }
+    assert len(expected_lines) == 11
+
+    result = _run_public_seam_mypy(TYPECHECK_NEGATIVE)
+    assert result.returncode != 0, "negative static-type specimen unexpectedly type-checked"
+    reported_lines: set[int] = set()
+    for line in (result.stdout + result.stderr).splitlines():
+        prefix = f"{TYPECHECK_NEGATIVE}:"
+        if not line.startswith(prefix):
+            continue
+        remainder = line[len(prefix) :]
+        try:
+            reported_lines.add(int(remainder.split(":", 1)[0]))
+        except ValueError:
+            continue
+    missing = expected_lines - reported_lines
+    assert not missing, (missing, result.stdout, result.stderr)
 
 
 def test_policy_payload_keeps_concept_contract_and_occurrence_identity_separate() -> None:
