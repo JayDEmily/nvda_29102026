@@ -220,6 +220,47 @@ def test_ingestion_sequence_is_local_to_scope_not_global() -> None:
     assert first.ingestion_sequence_scope != second.ingestion_sequence_scope
 
 
+
+def test_ingestion_sequence_high_water_survives_scope_interleaving() -> None:
+    owner = build_owner()
+    scope_a = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-A")
+    scope_b = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-B")
+    admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-a-10",
+            ingestion_sequence=10,
+            ingestion_sequence_scope=scope_a,
+        ),
+    )
+    admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-b-1",
+            ingestion_sequence=1,
+            ingestion_sequence_scope=scope_b,
+        ),
+    )
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(
+            owner,
+            observation(
+                observation_occurrence_id="obs-a-9-after-b",
+                ingestion_sequence=9,
+                ingestion_sequence_scope=scope_a,
+            ),
+        )
+    accepted = admit_observation(
+        owner,
+        observation(
+            observation_occurrence_id="obs-a-11-after-b",
+            ingestion_sequence=11,
+            ingestion_sequence_scope=scope_a,
+        ),
+    )
+    assert accepted.ingestion_sequence == 11
+    assert accepted.ingestion_sequence_scope == scope_a
+
 def test_same_observation_identity_is_idempotent_only_for_identical_content() -> None:
     owner = build_owner()
     value = observation()

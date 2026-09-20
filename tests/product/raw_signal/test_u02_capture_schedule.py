@@ -8,6 +8,7 @@ from tests.product.raw_signal._support import (
     build_owner,
     copy_with,
     policy,
+    policy_ref,
     realise_capture,
     register_policy,
     typed_identity,
@@ -172,3 +173,79 @@ def test_absent_deactivation_is_preserved_as_absence() -> None:
     stored = register_policy(owner, value)
     assert stored.deactivation_ts_utc is None
     assert not getattr(stored, "perpetual_service", False)
+
+
+@pytest.mark.parametrize(
+    ("activation", "deactivation"),
+    [
+        (
+            datetime(2026, 9, 20, 12, 0, 15, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+        ),
+        (
+            datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 2, 15, tzinfo=UTC),
+        ),
+        (
+            datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        ),
+        (
+            datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+            datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        ),
+    ],
+)
+def test_policy_validity_timestamps_are_aligned_and_strictly_ordered(
+    activation: datetime, deactivation: datetime
+) -> None:
+    owner = build_owner()
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(
+            owner,
+            policy(
+                activation_ts_utc=activation,
+                deactivation_ts_utc=deactivation,
+            ),
+        )
+
+
+def test_v2_owns_first_slot_at_activation_boundary_and_v1_stops_before_it() -> None:
+    owner = build_owner()
+    register_policy(owner, policy())
+    v1_last = realise_capture(
+        owner,
+        scope_policy_ref=policy_ref("scope-policy-001", 1),
+        capture_occurrence_id="capture-v1-last",
+        slot_start_utc=datetime(2026, 9, 20, 12, 1, 30, tzinfo=UTC),
+    )
+    register_policy(
+        owner,
+        policy(
+            scope_policy_version=2,
+            activation_ts_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+            deactivation_ts_utc=None,
+        ),
+    )
+    v2_first = realise_capture(
+        owner,
+        scope_policy_ref=policy_ref("scope-policy-001", 2),
+        capture_occurrence_id="capture-v2-first",
+        slot_start_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+    )
+    assert str(v1_last.scope_policy_ref) == "scope-policy-001@1"
+    assert str(v2_first.scope_policy_ref) == "scope-policy-001@2"
+    with pytest.raises((TypeError, ValueError)):
+        realise_capture(
+            owner,
+            scope_policy_ref=policy_ref("scope-policy-001", 1),
+            capture_occurrence_id="capture-v1-illegal-boundary",
+            slot_start_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
+        )
+    with pytest.raises((TypeError, ValueError)):
+        realise_capture(
+            owner,
+            scope_policy_ref=policy_ref("scope-policy-001", 2),
+            capture_occurrence_id="capture-v2-too-early",
+            slot_start_utc=datetime(2026, 9, 20, 12, 1, 30, tzinfo=UTC),
+        )

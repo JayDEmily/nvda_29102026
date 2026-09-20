@@ -14,6 +14,7 @@ from tests.product.raw_signal._support import (
     policy_ref,
     realise_capture,
     register_policy,
+    typed_identity,
 )
 
 
@@ -40,7 +41,7 @@ class _TechnicalPersistencePort:
         self.observations: dict[Any, Any] = {}
         self.assessments: dict[Any, Any] = {}
         self.assessment_order: dict[Any, list[Any]] = {}
-        self.appended_assessment_outcomes: list[str] = []
+        self.appended_assessments: list[Any] = []
 
     def append_policy(self, value: Any) -> Any:
         self.policies[(value.scope_policy_id, value.scope_policy_version)] = value
@@ -64,12 +65,7 @@ class _TechnicalPersistencePort:
         return self.observations.get(observation_id)
 
     def append_assessment(self, value: Any) -> Any:
-        assert value.outcome in {
-            "unknown_not_established",
-            "zero_received",
-            "one_or_more_received",
-        }, "M00 must decide the assessment outcome before persistence"
-        self.appended_assessment_outcomes.append(value.outcome)
+        self.appended_assessments.append(value)
         self.assessments[value.assessment_occurrence_id] = value
         self.assessment_order.setdefault(value.capture_occurrence_ref, []).append(
             value.assessment_occurrence_id
@@ -142,6 +138,17 @@ def test_out_of_slot_receipt_has_lawful_no_relation_state() -> None:
     assert owner.reads.get_raw_observation_occurrence(obs.observation_occurrence_id) == obs
 
 
+def test_receipt_immediately_before_slot_start_has_lawful_no_relation_state() -> None:
+    owner, capture, _, resolver = _capture_fixture()
+    observed = observation(
+        observation_occurrence_id="observation-pre-start",
+        received_ts_utc=datetime(2026, 9, 20, 11, 59, 59, 999999, tzinfo=UTC),
+    )
+    obs, relation = _add_observation(owner, capture, resolver, observed=observed)
+    assert relation is None
+    assert owner.reads.get_raw_observation_occurrence(obs.observation_occurrence_id) == obs
+
+
 def test_mismatched_existing_policy_reference_cannot_authorise_or_mislineage_relation() -> None:
     owner, capture, _, resolver = _capture_fixture()
     register_policy(
@@ -168,10 +175,13 @@ def test_mismatched_existing_policy_reference_cannot_authorise_or_mislineage_rel
 def test_missing_capture_authority_cannot_create_relation() -> None:
     owner, _, _, _ = _capture_fixture()
     obs = admit_observation(owner)
+    missing_capture = typed_identity(
+        "ScheduledCaptureOccurrenceV1", "capture_occurrence_id", "missing-capture"
+    )
     with pytest.raises((TypeError, ValueError, KeyError)):
         owner.commands.derive_capture_receipt_evidence_relation(
             observation_occurrence_ref=obs.observation_occurrence_id,
-            capture_occurrence_ref="missing-capture",
+            capture_occurrence_ref=missing_capture,
             scope_policy_ref=policy_ref(),
         )
 
@@ -212,6 +222,37 @@ def test_zero_is_derived_when_no_eligible_committed_receipt_is_visible() -> None
     assert stored.outcome == "zero_received"
 
 
+@pytest.mark.parametrize(
+    ("eligibility", "received_ts", "observation_id"),
+    [
+        (False, datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC), "observation-ineligible"),
+        (True, datetime(2026, 9, 20, 11, 59, 59, tzinfo=UTC), "observation-pre-slot"),
+        (True, datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC), "observation-at-end"),
+    ],
+)
+def test_ineligible_or_out_of_slot_raw_observation_does_not_make_one_or_more(
+    eligibility: bool, received_ts: datetime, observation_id: str
+) -> None:
+    owner, capture, _, resolver = _capture_fixture(result=eligibility)
+    _, relation = _add_observation(
+        owner,
+        capture,
+        resolver,
+        observed=observation(
+            observation_occurrence_id=observation_id,
+            received_ts_utc=received_ts,
+        ),
+    )
+    assert relation is None
+    assessment = append_assessment(
+        owner,
+        assessment_occurrence_id=f"assessment-{observation_id}",
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 40, tzinfo=UTC),
+    )
+    assert assessment.outcome == "zero_received"
+
+
 def test_one_or_more_is_derived_when_eligible_committed_receipt_is_visible() -> None:
     owner, capture, _, resolver = _capture_fixture()
     _add_observation(owner, capture, resolver)
@@ -243,7 +284,10 @@ def test_persistence_port_receives_already_decided_semantics_and_has_no_decision
         supersedes_assessment_ref=zero.assessment_occurrence_id,
     )
     assert [zero.outcome, one.outcome] == ["zero_received", "one_or_more_received"]
-    assert port.appended_assessment_outcomes == ["zero_received", "one_or_more_received"]
+    assert [item.outcome for item in port.appended_assessments] == [
+        "zero_received",
+        "one_or_more_received",
+    ]
     for semantic_method in (
         "derive_relation",
         "decide_relation",

@@ -177,6 +177,48 @@ def test_a00_delegates_full_semantic_argument_trace_to_exact_m00_results() -> No
     assert result.assessment.outcome == "m00-owned-outcome"
 
 
+
+def test_a00_rejects_caller_policy_ref_that_disagrees_with_registered_policy() -> None:
+    builder = getattr(composition, "create_application", None)
+    if builder is None:
+        pytest.fail("A00 production composition symbol create_application is not implemented")
+
+    calls: list[tuple[str, Any]] = []
+    registered = policy()
+    sentinels = {
+        "policy": registered,
+        "capture": SimpleNamespace(
+            capture_occurrence_id=object(),
+            scope_policy_ref=policy_ref(),
+        ),
+        "observation": SimpleNamespace(observation_occurrence_id=object()),
+        "relation": object(),
+        "assessment": SimpleNamespace(outcome="m00-owned-outcome"),
+        "readback": object(),
+    }
+
+    def owner_factory(**kwargs: Any) -> _SpyOwner:
+        calls.append(("construct_owner", kwargs))
+        return _SpyOwner(calls, sentinels)
+
+    app = builder(raw_signal_owner_factory=owner_factory)
+    mismatched_ref = policy_ref("different-policy", 1)
+    with pytest.raises((TypeError, ValueError)):
+        app.run_raw_signal_proof_sequence(
+            capture_scope_policy=registered,
+            scope_policy_ref=mismatched_ref,
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+            capture_occurrence_id="a00-mismatch-capture",
+            raw_observation=observation(observation_occurrence_id="a00-mismatch-observation"),
+            assessment_occurrence_id="a00-mismatch-assessment",
+            assessment_evidence_as_of_ts_utc=datetime(
+                2026, 9, 20, 12, 0, 10, tzinfo=UTC
+            ),
+            supersedes_assessment_ref=None,
+        )
+    assert any(name == "register_policy" for name, _ in calls)
+    assert not any(name == "realise_capture" for name, _ in calls)
+
 def test_a00_wrong_downstream_identity_or_policy_wiring_cannot_hide_behind_correct_call_order(
 ) -> None:
     """The preceding spy asserts every material kwarg, not only the ordered method names."""

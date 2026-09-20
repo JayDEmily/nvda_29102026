@@ -9,11 +9,22 @@ import shutil
 import subprocess
 import sys
 import uuid
+from dataclasses import is_dataclass
+from datetime import UTC, datetime
+from enum import Enum
 from pathlib import Path
 from typing import Any
 
 import pytest
-from tests.product.raw_signal._support import build_owner, required_symbol
+from tests.product.raw_signal._support import (
+    as_mapping,
+    assessment_contract,
+    build_owner,
+    capture_contract,
+    observation,
+    policy,
+    required_symbol,
+)
 
 ROOT = Path(__file__).resolve().parents[3]
 PROBE = ROOT / "tests/product/raw_signal/_process_probe.py"
@@ -46,8 +57,8 @@ def _isolated_command() -> list[str]:
         pytest.fail("unshare is required for the no-shared-local-persistence proof boundary")
     script = r"""
 set -eu
-mount --bind / /
-mount -o remount,ro,bind /
+mount --bind /mnt/data /mnt/data
+mount -o remount,ro,bind /mnt/data
 mount -t tmpfs tmpfs /tmp
 mount -t tmpfs tmpfs /var/tmp
 mount -t tmpfs tmpfs /dev/shm
@@ -70,6 +81,32 @@ exec "$1" "$2"
     ]
 
 
+def _probe_env(workdir: Path) -> dict[str, str]:
+    """Return a deliberately narrow child environment.
+
+    The child receives no cloud/service credentials or alternate database configuration. The
+    PostgreSQL DSN is delivered only in the JSON payload, while the local filesystem is made
+    ephemeral/read-only by `_isolated_command`.
+    """
+
+    allowed = (
+        "PATH",
+        "LANG",
+        "LC_ALL",
+        "LD_LIBRARY_PATH",
+        "VIRTUAL_ENV",
+        "SSL_CERT_FILE",
+        "SSL_CERT_DIR",
+    )
+    env = {key: os.environ[key] for key in allowed if key in os.environ}
+    env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "src"), str(ROOT)])
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["HOME"] = "/tmp/proof-home"
+    env["TMPDIR"] = "/tmp"
+    env["XDG_DATA_HOME"] = "/tmp/proof-xdg"
+    return env
+
+
 def _probe_process(
     tmp_path: Path,
     action: str,
@@ -79,20 +116,14 @@ def _probe_process(
     isolated_filesystem: bool = True,
     **extra: Any,
 ) -> subprocess.CompletedProcess[str]:
-    payload = json.dumps({"action": action, "dsn": dsn, "token": token, **extra})
+    payload = json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n"
     workdir = tmp_path / f"{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
-    env = os.environ.copy()
-    env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "src"), str(ROOT)])
-    env["PYTHONDONTWRITEBYTECODE"] = "1"
-    env["HOME"] = str(workdir)
-    env["TMPDIR"] = str(workdir)
-    env["XDG_DATA_HOME"] = str(workdir / "xdg-data")
     command = _isolated_command() if isolated_filesystem else [sys.executable, str(PROBE)]
     return subprocess.run(
         command,
         cwd=ROOT,
-        env=env,
+        env=_probe_env(workdir),
         input=payload,
         text=True,
         capture_output=True,
@@ -122,6 +153,178 @@ def _run_probe(
     assert lines, "fresh-process probe produced no JSON result"
     return json.loads(lines[-1])
 
+
+def _start_hold_probe(
+    tmp_path: Path,
+    action: str,
+    *,
+    dsn: str,
+    token: str,
+    **extra: Any,
+) -> tuple[subprocess.Popen[str], dict[str, Any]]:
+    workdir = tmp_path / f"hold-{action}-{uuid.uuid4().hex}"
+    workdir.mkdir()
+    process = subprocess.Popen(
+        _isolated_command(),
+        cwd=ROOT,
+        env=_probe_env(workdir),
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    assert process.stdin is not None
+    assert process.stdout is not None
+    payload = json.dumps(
+        {"action": action, "dsn": dsn, "token": token, "hold_open": True, **extra}
+    )
+    process.stdin.write(payload + "\n")
+    process.stdin.flush()
+    first = process.stdout.readline().strip()
+    if not first:
+        stderr = process.stderr.read() if process.stderr is not None else ""
+        raise AssertionError(f"hold-open probe produced no success result: {stderr}")
+    result = json.loads(first)
+    assert process.poll() is None, "writer exited before command-success visibility check"
+    return process, result
+
+
+def _release_hold_probe(process: subprocess.Popen[str]) -> None:
+    assert process.stdin is not None
+    process.stdin.write("release\n")
+    process.stdin.flush()
+    stdout, stderr = process.communicate(timeout=10)
+    assert process.returncode == 0, stdout + stderr
+
+
+def _dsn_with_application_name(dsn: str, application_name: str) -> str:
+    conninfo = importlib.import_module("psycopg.conninfo")
+    values = conninfo.conninfo_to_dict(dsn)
+    values["application_name"] = application_name
+    return conninfo.make_conninfo(**values)
+
+
+def _assert_no_open_writer_transaction(dsn: str, application_name: str) -> None:
+    psycopg = _psycopg()
+    with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            """
+            select state, xact_start
+            from pg_stat_activity
+            where application_name = %s and pid <> pg_backend_pid()
+            """,
+            (application_name,),
+        )
+        rows = cursor.fetchall()
+    assert not any(xact_start is not None for _, xact_start in rows), rows
+
+
+def _canonical(value: Any) -> Any:
+    if isinstance(value, datetime):
+        return {"__datetime__": value.isoformat()}
+    if isinstance(value, Enum):
+        return {"__enum_type__": type(value).__qualname__, "value": _canonical(value.value)}
+    if type(value) is not str and isinstance(value, str):
+        return {"__identity_type__": type(value).__qualname__, "value": str(value)}
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    if isinstance(value, dict):
+        return {
+            str(k): _canonical(v)
+            for k, v in sorted(value.items(), key=lambda item: str(item[0]))
+        }
+    if isinstance(value, (list, tuple)):
+        return [_canonical(item) for item in value]
+    if hasattr(value, "model_dump") or is_dataclass(value) or hasattr(value, "__dict__"):
+        return {key: _canonical(item) for key, item in sorted(as_mapping(value).items())}
+    return {"__type__": type(value).__qualname__, "value": str(value)}
+
+
+def _authoritative_facts() -> dict[str, Any]:
+    entropy = uuid.uuid4().hex
+    return {
+        "eligibility_policy_ref": f"eligibility-authority-{uuid.uuid4().hex}",
+        "delivery_artifact_ref": f"delivery-authority-{uuid.uuid4().hex}",
+        "source_provider": f"provider-authority-{uuid.uuid4().hex}",
+        "native_identifier": f"native-authority-{uuid.uuid4().hex}",
+        "native_record": {
+            "High Entropy Alpha": uuid.uuid4().hex,
+            "High Entropy Beta": uuid.uuid4().hex,
+            "Provider Null": None,
+        },
+        "source_product_api": f"api-authority-{uuid.uuid4().hex}",
+        "source_endpoint_callback": f"callback-authority-{uuid.uuid4().hex}",
+        "native_tick_series_identifier": f"tick-authority-{uuid.uuid4().hex}",
+        "source_variant": f"variant-authority-{uuid.uuid4().hex}",
+        "subject_instrument": f"NVDA-authority-{entropy}",
+        "native_units": f"units-authority-{uuid.uuid4().hex}",
+        "availability_session": f"session-authority-{uuid.uuid4().hex}",
+        "source_status_native": f"status-authority-{uuid.uuid4().hex}",
+        "revision_vintage_native": f"revision-authority-{uuid.uuid4().hex}",
+        "ingestion_sequence_scope": f"scope-authority-{uuid.uuid4().hex}",
+        "source_timestamp_raw": f"provider-time-{uuid.uuid4().hex}",
+        "source_timezone_native": f"timezone-authority-{uuid.uuid4().hex}",
+        "market_timezone_iana": "America/New_York",
+        "market_session_native": f"market-session-authority-{uuid.uuid4().hex}",
+    }
+
+
+def _expected_records(token: str, facts: dict[str, Any]) -> dict[str, Any]:
+    policy_value = policy(
+        scope_policy_id=f"scope::{token}",
+        eligibility_policy_ref=facts["eligibility_policy_ref"],
+    )
+    capture_value = capture_contract(
+        capture_occurrence_id=f"capture::{token}",
+        scope_policy_ref=f"scope::{token}@1",
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        slot_end_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+    )
+    observation_value = observation(
+        observation_occurrence_id=f"observation::{token}",
+        delivery_artifact_ref=facts["delivery_artifact_ref"],
+        source_provider=facts["source_provider"],
+        native_identifier=facts["native_identifier"],
+        native_record=facts["native_record"],
+        source_product_api=facts["source_product_api"],
+        source_endpoint_callback=facts["source_endpoint_callback"],
+        native_tick_series_identifier=facts["native_tick_series_identifier"],
+        source_variant=facts["source_variant"],
+        subject_instrument=facts["subject_instrument"],
+        native_units=facts["native_units"],
+        availability_session=facts["availability_session"],
+        source_status_native=facts["source_status_native"],
+        revision_vintage_native=facts["revision_vintage_native"],
+        received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, 654321, tzinfo=UTC),
+        received_epoch_ns=1_758_369_605_654_321_987,
+        ingestion_sequence=41,
+        ingestion_sequence_scope=facts["ingestion_sequence_scope"],
+        source_temporal_kind="true_instant",
+        source_timestamp_raw=facts["source_timestamp_raw"],
+        source_timezone_native=facts["source_timezone_native"],
+        market_timezone_iana=facts["market_timezone_iana"],
+        market_session_native=facts["market_session_native"],
+    )
+    zero_value = assessment_contract(
+        assessment_occurrence_id=f"assessment-zero::{token}",
+        capture_occurrence_ref=f"capture::{token}",
+        outcome="zero_received",
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC),
+    )
+    one_value = assessment_contract(
+        assessment_occurrence_id=f"assessment-one::{token}",
+        capture_occurrence_ref=f"capture::{token}",
+        outcome="one_or_more_received",
+        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, 222222, tzinfo=UTC),
+        supersedes_assessment_ref=f"assessment-zero::{token}",
+    )
+    return {
+        "policy": _canonical(policy_value),
+        "capture": _canonical(capture_value),
+        "observation": _canonical(observation_value),
+        "zero": _canonical(zero_value),
+        "one": _canonical(one_value),
+    }
 
 def _without_pid(result: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in result.items() if key != "_pid"}
@@ -234,31 +437,86 @@ def test_process_boundary_forbids_shared_local_file_persistence(tmp_path: Path) 
     assert not host_path.exists()
 
 
-def test_each_occurrence_and_assessment_is_independently_committed_and_exactly_readable(
+def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_authority(
     tmp_path: Path,
 ) -> None:
     dsn = _dsn()
     token = _token("own-tx")
+    facts = _authoritative_facts()
+    expected = _expected_records(token, facts)
 
-    policy_written = _run_probe(tmp_path, "write_policy_only", dsn=dsn, token=token)
-    policy_read = _run_probe(tmp_path, "read_policy", dsn=dsn, token=token)
-    assert policy_written["_pid"] != policy_read["_pid"]
-    assert policy_read["record"] == policy_written["record"]
+    def hold_and_read(
+        action: str,
+        read_action: str,
+        expected_key: str,
+        *,
+        read_extra: dict[str, Any] | None = None,
+        write_extra: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
+        application_name = f"nvda-proof-{action}-{uuid.uuid4().hex}"
+        writer_dsn = _dsn_with_application_name(dsn, application_name)
+        process, result = _start_hold_probe(
+            tmp_path,
+            action,
+            dsn=writer_dsn,
+            token=token,
+            **(write_extra or {}),
+        )
+        try:
+            assert process.poll() is None
+            _assert_no_open_writer_transaction(dsn, application_name)
+            fresh = _run_probe(
+                tmp_path,
+                read_action,
+                dsn=dsn,
+                token=token,
+                **(read_extra or {}),
+            )
+            assert fresh["record"] == expected[expected_key]
+            assert process.poll() is None, "writer exited before fresh read completed"
+            return result
+        finally:
+            _release_hold_probe(process)
 
-    capture_written = _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
-    capture_read = _run_probe(tmp_path, "read_capture", dsn=dsn, token=token)
-    assert capture_written["_pid"] != capture_read["_pid"]
-    assert capture_read["record"] == capture_written["record"]
+    hold_and_read(
+        "write_policy_only",
+        "read_policy",
+        "policy",
+        write_extra={"facts": facts},
+    )
+    hold_and_read("write_capture_only", "read_capture", "capture")
+    hold_and_read(
+        "write_zero_assessment_only",
+        "read_assessment",
+        "zero",
+        read_extra={"which": "zero"},
+    )
+    hold_and_read(
+        "write_observation_only",
+        "read_observation",
+        "observation",
+        write_extra={"facts": facts},
+    )
 
-    zero_written = _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
-    zero_read = _run_probe(tmp_path, "read_assessment", dsn=dsn, token=token, which="zero")
-    assert zero_written["_pid"] != zero_read["_pid"]
-    assert zero_read["record"] == zero_written["record"]
+    relation_app = f"nvda-proof-relation-{uuid.uuid4().hex}"
+    relation_process, relation_result = _start_hold_probe(
+        tmp_path,
+        "derive_relation_only",
+        dsn=_dsn_with_application_name(dsn, relation_app),
+        token=token,
+    )
+    try:
+        assert relation_result["relation"] is not None
+        _assert_no_open_writer_transaction(dsn, relation_app)
+    finally:
+        _release_hold_probe(relation_process)
 
-    observation_written = _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
-    observation_read = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
-    assert observation_written["_pid"] != observation_read["_pid"]
-    assert observation_read["record"] == observation_written["record"]
+    hold_and_read(
+        "write_one_assessment_only",
+        "read_assessment",
+        "one",
+        read_extra={"which": "one"},
+    )
 
     faulted_observation = _run_probe(tmp_path, "fault_observation", dsn=dsn, token=token)
     assert faulted_observation["failed"] is True
@@ -266,15 +524,8 @@ def test_each_occurrence_and_assessment_is_independently_committed_and_exactly_r
         _run_probe(tmp_path, "read_fault_observation_absent", dsn=dsn, token=token)
     ) == {"absent": True}
     assert _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)["record"] == (
-        observation_written["record"]
+        expected["observation"]
     )
-
-    one_written = _run_probe(
-        tmp_path, "write_relation_and_one_assessment", dsn=dsn, token=token
-    )
-    one_read = _run_probe(tmp_path, "read_assessment", dsn=dsn, token=token, which="one")
-    assert one_written["_pid"] != one_read["_pid"]
-    assert one_read["record"] == one_written["record"]
 
     faulted_assessment = _run_probe(tmp_path, "fault_assessment", dsn=dsn, token=token)
     assert faulted_assessment["failed"] is True
@@ -283,50 +534,58 @@ def test_each_occurrence_and_assessment_is_independently_committed_and_exactly_r
     ) == {"absent": True}
     assert _run_probe(tmp_path, "read_assessment", dsn=dsn, token=token, which="one")[
         "record"
-    ] == one_written["record"]
+    ] == expected["one"]
 
 
-def test_postgresql_contains_correlated_semantic_facts_and_is_required_for_fresh_read(
+def test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts(
     tmp_path: Path,
 ) -> None:
     dsn = _dsn()
     token = _token("semantic-source")
-    _run_probe(tmp_path, "write_policy_only", dsn=dsn, token=token)
-    _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
-    observation_written = _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
+    facts = _authoritative_facts()
+    expected = _expected_records(token, facts)
 
-    hits = _postgres_fact_hits(dsn, _semantic_markers(token))
+    _run_probe(tmp_path, "write_policy_only", dsn=dsn, token=token, facts=facts)
+    _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
+    _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token, facts=facts)
+
+    high_entropy_markers = [
+        facts["eligibility_policy_ref"],
+        facts["delivery_artifact_ref"],
+        facts["source_provider"],
+        facts["native_identifier"],
+        *facts["native_record"].values(),
+        facts["revision_vintage_native"],
+        facts["ingestion_sequence_scope"],
+    ]
+    high_entropy_markers = [item for item in high_entropy_markers if isinstance(item, str)]
+    hits = _postgres_fact_hits(dsn, high_entropy_markers)
     assert all(count > 0 for count in hits.values()), hits
 
-    fresh = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
-    assert fresh["record"] == observation_written["record"]
+    # The reader receives only the DSN + domain query identity. It does not receive `facts` or
+    # any writer-returned semantic object, so exact recovery cannot be reconstructed from the
+    # opaque ID/token convention.
+    fresh_policy = _run_probe(tmp_path, "read_policy", dsn=dsn, token=token)
+    fresh_capture = _run_probe(tmp_path, "read_capture", dsn=dsn, token=token)
+    fresh_observation = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
+    assert fresh_policy["record"] == expected["policy"]
+    assert fresh_capture["record"] == expected["capture"]
+    assert fresh_observation["record"] == expected["observation"]
 
-    deleted = _delete_postgres_rows_containing_marker(dsn, f"native-record::{token}")
-    assert deleted > 0, "no correlated PostgreSQL semantic row could be invalidated"
-    after_semantic_delete = _probe_process(
-        tmp_path,
-        "read_observation",
-        dsn=dsn,
-        token=token,
+    deleted = _delete_postgres_rows_containing_marker(
+        dsn, facts["native_record"]["High Entropy Alpha"]
     )
-    if after_semantic_delete.returncode == 0:
-        result = json.loads(
-            [line for line in after_semantic_delete.stdout.splitlines() if line.strip()][-1]
-        )
-        assert result["record"] != observation_written["record"], (
-            "fresh reader reproduced the exact semantic fact after its correlated PostgreSQL "
-            "state was deleted; PostgreSQL participation is not proven to be the semantic source"
+    assert deleted > 0, "no PostgreSQL row carrying authoritative observation facts was found"
+    after_delete = _probe_process(tmp_path, "read_observation", dsn=dsn, token=token)
+    if after_delete.returncode == 0:
+        result = json.loads([line for line in after_delete.stdout.splitlines() if line.strip()][-1])
+        assert result["record"] != expected["observation"], (
+            "fresh reader reproduced complete authoritative observation facts after the "
+            "correlated PostgreSQL state was removed"
         )
 
-    poisoned = _probe_process(
-        tmp_path,
-        "read_observation",
-        dsn=_poisoned_dsn(dsn),
-        token=token,
-    )
-    assert poisoned.returncode != 0, (
-        "fresh semantic read unexpectedly succeeded when PostgreSQL was unavailable"
-    )
+    poisoned = _probe_process(tmp_path, "read_observation", dsn=_poisoned_dsn(dsn), token=token)
+    assert poisoned.returncode != 0
 
 
 def test_durable_retry_and_conflicting_reuse_cross_process_boundaries(tmp_path: Path) -> None:
@@ -349,23 +608,54 @@ def test_append_only_assessment_chain_is_exact_across_fresh_processes(tmp_path: 
     _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=token)
     zero = _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
-    one = _run_probe(tmp_path, "write_relation_and_one_assessment", dsn=dsn, token=token)
+    _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
+    one = _run_probe(tmp_path, "write_one_assessment_only", dsn=dsn, token=token)
     chain = _run_probe(tmp_path, "read_assessment_chain", dsn=dsn, token=token)
     assert chain["records"] == [zero["record"], one["record"]]
 
 
-def test_restart_reconciliation_crosses_processes_and_yields_unknown_not_zero(
+def test_restart_reconciliation_commits_capture_before_assessment_and_recovers_exact_facts(
     tmp_path: Path,
 ) -> None:
     dsn = _dsn()
     token = _token("restart")
     _run_probe(tmp_path, "write_policy_for_reconcile", dsn=dsn, token=token)
+
+    faulted = _run_probe(tmp_path, "reconcile_fault_after_capture", dsn=dsn, token=token)
+    assert faulted["failed"] is True
+    after_fault = _run_probe(tmp_path, "read_reconcile", dsn=dsn, token=token)
+
+    expected_capture = _canonical(
+        capture_contract(
+            capture_occurrence_id=f"recovered-capture::{token}",
+            scope_policy_ref=f"scope::{token}@1",
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+            slot_end_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+        )
+    )
+    assert after_fault["capture"] == expected_capture
+    assert after_fault["assessment"] is None
+
     reconciled = _run_probe(tmp_path, "reconcile", dsn=dsn, token=token)
     fresh = _run_probe(tmp_path, "read_reconcile", dsn=dsn, token=token)
+    assessment_shape = _canonical(
+        assessment_contract(
+            assessment_occurrence_id=f"recovered-assessment::{token}",
+            capture_occurrence_ref=f"recovered-capture::{token}",
+            outcome="unknown_not_established",
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        )
+    )
     assert reconciled["_pid"] != fresh["_pid"]
-    assert "unknown_not_established" in json.dumps(reconciled["assessment"])
-    assert fresh["capture"] is not None
-    assert fresh["assessment"] == reconciled["assessment"]
+    assert fresh["capture"] == expected_capture
+    assert fresh["assessment"]["assessment_occurrence_id"] == assessment_shape[
+        "assessment_occurrence_id"
+    ]
+    assert fresh["assessment"]["capture_occurrence_ref"] == assessment_shape[
+        "capture_occurrence_ref"
+    ]
+    assert fresh["assessment"]["outcome"] == "unknown_not_established"
+    assert reconciled["assessment"] == fresh["assessment"]
 
 
 def test_public_owner_accepts_explicit_technical_persistence_port_injection() -> None:
@@ -373,51 +663,200 @@ def test_public_owner_accepts_explicit_technical_persistence_port_injection() ->
     assert "persistence_port" in inspect.signature(builder).parameters
 
 
-def test_production_persistence_mechanisms_contain_no_raw_signal_decision_logic() -> None:
-    required_symbol("create_owner")
-    candidates = [
-        path
-        for path in OWNER_PACKAGE.rglob("*.py")
+def _module_name(path: Path) -> str:
+    rel = path.relative_to(OWNER_PACKAGE).with_suffix("")
+    if rel.name == "__init__":
+        rel = rel.parent
+    return ".".join(rel.parts)
+
+
+def _local_import_targets(tree: ast.AST) -> set[str]:
+    targets: set[str] = set()
+    prefix = "nvda_desk.raw_signal_occurrence_truth"
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                if alias.name == prefix:
+                    targets.add("")
+                elif alias.name.startswith(prefix + "."):
+                    targets.add(alias.name[len(prefix) + 1 :])
+        elif isinstance(node, ast.ImportFrom):
+            if node.level:
+                if node.module:
+                    targets.add(node.module)
+                else:
+                    targets.update(alias.name for alias in node.names)
+            elif node.module == prefix:
+                targets.update(alias.name for alias in node.names)
+            elif node.module and node.module.startswith(prefix + "."):
+                targets.add(node.module[len(prefix) + 1 :])
+    return targets
+
+
+def _technical_module_closure() -> dict[str, tuple[Path, ast.AST]]:
+    modules: dict[str, tuple[Path, ast.AST]] = {}
+    for path in OWNER_PACKAGE.rglob("*.py"):
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        modules[_module_name(path)] = (path, tree)
+    seeds = {
+        name
+        for name, (path, tree) in modules.items()
         if any(
-            token in path.stem.lower()
-            for token in ("persist", "postgres", "repository", "adapter")
+            (isinstance(node, ast.Import) and any(a.name.startswith("psycopg") for a in node.names))
+            or (
+                isinstance(node, ast.ImportFrom)
+                and node.module is not None
+                and node.module.startswith("psycopg")
+            )
+            for node in ast.walk(tree)
         )
-    ]
-    assert candidates, "production persistence/adapter implementation is not present"
-    forbidden_literals = {
-        "zero_received",
-        "one_or_more_received",
-        "unknown_not_established",
-        "evidences_receipt_presence_only",
+        or "psycopg" in path.read_text(encoding="utf-8")
     }
-    forbidden_names = {
+    assert seeds, "default PostgreSQL technical mechanism is not present"
+    closure = set(seeds)
+    frontier = list(seeds)
+    while frontier:
+        current = frontier.pop()
+        _, tree = modules[current]
+        for target in _local_import_targets(tree):
+            matches = [
+                name
+                for name in modules
+                if name == target or name.startswith(target + ".")
+            ]
+            for match in matches:
+                if match not in closure:
+                    closure.add(match)
+                    frontier.append(match)
+    return {name: modules[name] for name in closure}
+
+
+def test_complete_technical_persistence_closure_contains_no_semantic_decision_logic() -> None:
+    required_symbol("create_owner")
+    closure = _technical_module_closure()
+    forbidden_function_names = {
         "derive_capture_receipt_evidence_relation",
         "derive_relation",
         "decide_relation",
         "decide_outcome",
         "assess_outcome",
-        "eligibility_resolver",
         "classify_outcome",
+        "is_eligible",
     }
-    for path in candidates:
-        source = path.read_text(encoding="utf-8")
-        tree = ast.parse(source)
-        string_literals = {
-            node.value
-            for node in ast.walk(tree)
-            if isinstance(node, ast.Constant) and isinstance(node.value, str)
-        }
-        names = {
-            node.id for node in ast.walk(tree) if isinstance(node, ast.Name)
-        } | {
-            node.attr for node in ast.walk(tree) if isinstance(node, ast.Attribute)
-        } | {
+    forbidden_semantic_literals = {
+        "zero_received",
+        "one_or_more_received",
+        "unknown_not_established",
+        "evidences_receipt_presence_only",
+    }
+    for _, (path, tree) in closure.items():
+        function_names = {
             node.name
             for node in ast.walk(tree)
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
         }
-        assert not forbidden_literals.intersection(string_literals), path
-        assert not forbidden_names.intersection(names), path
+        assert not forbidden_function_names.intersection(function_names), path
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.If, ast.Match, ast.Compare)):
+                literals = {
+                    child.value
+                    for child in ast.walk(node)
+                    if isinstance(child, ast.Constant) and isinstance(child.value, str)
+                }
+                assert not forbidden_semantic_literals.intersection(literals), path
+            if isinstance(node, ast.Name):
+                assert node.id != "eligibility_resolver", path
+            if isinstance(node, ast.Attribute):
+                assert node.attr != "eligibility_resolver", path
+
+
+def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service() -> None:
+    disallowed_import_roots = {
+        "sqlite3",
+        "shelve",
+        "dbm",
+        "redis",
+        "sqlalchemy",
+        "asyncpg",
+        "boto3",
+        "requests",
+        "httpx",
+        "aiohttp",
+        "urllib",
+        "socket",
+    }
+    for path in OWNER_PACKAGE.rglob("*.py"):
+        tree = ast.parse(path.read_text(encoding="utf-8"))
+        imported: set[str] = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Import):
+                imported.update(alias.name.split(".")[0] for alias in node.names)
+            elif isinstance(node, ast.ImportFrom) and node.module:
+                imported.add(node.module.split(".")[0])
+            elif isinstance(node, ast.Call):
+                if isinstance(node.func, ast.Name) and node.func.id == "open":
+                    mode = None
+                    if len(node.args) >= 2 and isinstance(node.args[1], ast.Constant):
+                        mode = node.args[1].value
+                    for keyword in node.keywords:
+                        if keyword.arg == "mode" and isinstance(keyword.value, ast.Constant):
+                            mode = keyword.value.value
+                    if isinstance(mode, str):
+                        assert not any(flag in mode for flag in ("w", "a", "x", "+")), path
+                if isinstance(node.func, ast.Attribute):
+                    assert node.func.attr not in {"write_text", "write_bytes"}, path
+        assert not disallowed_import_roots.intersection(imported), (path, imported)
+
+
+def _find_default_persistence_ports(owner: Any) -> list[Any]:
+    required_methods = {
+        "append_policy",
+        "get_policy",
+        "append_capture",
+        "get_capture",
+        "append_observation",
+        "get_observation",
+        "append_assessment",
+        "get_assessment",
+        "list_assessments",
+    }
+    found: list[Any] = []
+    seen: set[int] = set()
+
+    def visit(value: Any, depth: int) -> None:
+        if depth > 4 or id(value) in seen:
+            return
+        seen.add(id(value))
+        if all(hasattr(value, name) for name in required_methods):
+            found.append(value)
+        if depth == 4 or isinstance(value, (str, bytes, int, float, bool, type(None))):
+            return
+        try:
+            children = vars(value).values()
+        except TypeError:
+            return
+        for child in children:
+            if type(child).__module__.startswith("nvda_desk.raw_signal_occurrence_truth"):
+                visit(child, depth + 1)
+
+    visit(owner, 0)
+    return found
+
+
+def test_default_postgresql_path_exposes_same_semantic_free_storage_protocol() -> None:
+    owner = build_owner(postgres_dsn=_dsn())
+    ports = _find_default_persistence_ports(owner)
+    assert ports, "default PostgreSQL owner path hides its technical persistence port"
+    forbidden = {
+        "derive_relation",
+        "decide_relation",
+        "decide_outcome",
+        "assess_outcome",
+        "is_eligible",
+        "classify",
+    }
+    for port in ports:
+        assert not any(hasattr(port, name) for name in forbidden), type(port)
 
 
 def test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla() -> None:

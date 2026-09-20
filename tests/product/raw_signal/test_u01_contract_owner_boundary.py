@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import inspect
 from dataclasses import MISSING, dataclass, fields, is_dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from enum import Enum
 from itertools import permutations
 from typing import Any, Literal, get_args, get_origin
@@ -230,9 +230,9 @@ def _compatibility_violations(
             violations.append(f"removed:{name}")
         elif candidate[name] is not required:
             violations.append(f"requiredness:{name}")
-    for name, required in candidate.items():
-        if name not in baseline and required:
-            violations.append(f"new-required:{name}")
+    for name in candidate:
+        if name not in baseline:
+            violations.append(f"unproved-extra:{name}")
     return tuple(violations)
 
 
@@ -281,17 +281,20 @@ def test_exact_five_v1_contract_symbols_are_public_and_distinct() -> None:
 
 
 @pytest.mark.parametrize("name", list(CONTRACT_SHAPES))
-def test_each_v1_contract_preserves_requiredness_and_only_adds_optional_fields(name: str) -> None:
+def test_each_v1_contract_preserves_exact_v1_field_set_and_requiredness(name: str) -> None:
     baseline = CONTRACT_SHAPES[name]
     actual = _constructor_shape(required_symbol(name))
     assert _compatibility_violations(baseline, actual) == (), (name, baseline, actual)
 
 
-def test_compatibility_rule_accepts_only_genuinely_optional_addition() -> None:
+def test_compatibility_rule_fails_closed_on_unproved_v1_additions() -> None:
     baseline = {"required": True, "optional": False}
-    assert _compatibility_violations(baseline, {**baseline, "new_optional": False}) == ()
+    assert _compatibility_violations(baseline, baseline.copy()) == ()
+    assert _compatibility_violations(baseline, {**baseline, "new_optional": False}) == (
+        "unproved-extra:new_optional",
+    )
     assert _compatibility_violations(baseline, {**baseline, "new_required": True}) == (
-        "new-required:new_required",
+        "unproved-extra:new_required",
     )
     assert _compatibility_violations(baseline, {"required": True}) == ("removed:optional",)
     assert _compatibility_violations(baseline, {"required": False, "optional": False}) == (
@@ -317,6 +320,23 @@ def test_every_v1_utc_field_rejects_naive_datetime(name: str, field: str) -> Non
         assert baseline[field] is not None
     with pytest.raises((TypeError, ValueError)):
         required_symbol(name)(**{**baseline, field: datetime(2026, 9, 20, 12, 0)})
+
+
+@pytest.mark.parametrize(("name", "field"), UTC_FIELD_CASES)
+def test_every_v1_utc_field_rejects_aware_non_utc_offset(name: str, field: str) -> None:
+    baseline = as_mapping(_specimens()[name])
+    if field == "deactivation_ts_utc":
+        assert baseline[field] is not None
+    non_utc = datetime(
+        2026,
+        9,
+        20,
+        22,
+        0,
+        tzinfo=timezone(timedelta(hours=10)),
+    )
+    with pytest.raises((TypeError, ValueError)):
+        required_symbol(name)(**{**baseline, field: non_utc})
 
 
 @pytest.mark.parametrize(("symbol", "field", "expected"), [
