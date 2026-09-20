@@ -1,7 +1,7 @@
 """Proof-only fixtures for Raw Signal Occurrence Truth.
 
 This module constructs authority-fixed specimen inputs and locates the production public seam.
-It must not decide Raw Signal outcomes.
+It may inject technical proof dependencies, but it must not decide Raw Signal outcomes.
 """
 
 from __future__ import annotations
@@ -34,11 +34,27 @@ def required_symbol(name: str) -> Any:
 
 
 def build_owner(**kwargs: Any) -> Any:
-    builder = required_symbol("_build_test_owner")
+    """Construct the real production owner through its public factory.
+
+    This helper is test-side glue only. It deliberately has no semantic fallback and no
+    private production test-builder path.
+    """
+
+    builder = required_symbol("create_owner")
     owner = builder(**kwargs)
     if not hasattr(owner, "commands") or not hasattr(owner, "reads"):
-        pytest.fail("_build_test_owner must return separate commands and reads facets")
+        pytest.fail("create_owner must return separate commands and reads facets")
     return owner
+
+
+def as_mapping(value: Any) -> dict[str, Any]:
+    if hasattr(value, "model_dump"):
+        return value.model_dump()
+    if is_dataclass(value):
+        return {field: getattr(value, field) for field in value.__dataclass_fields__}
+    if hasattr(value, "__dict__"):
+        return dict(vars(value))
+    pytest.fail(f"proof fixture cannot inspect contract payload for {type(value)!r}")
 
 
 def copy_with(value: Any, **changes: Any) -> Any:
@@ -70,15 +86,36 @@ def policy(
     )
 
 
+def capture_contract(
+    *,
+    capture_occurrence_id: str = "capture-001",
+    scope_policy_ref: str = "scope-policy-001@1",
+    slot_start_utc: datetime = datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+    slot_end_utc: datetime = datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+) -> Any:
+    cls = required_symbol("ScheduledCaptureOccurrenceV1")
+    return cls(
+        concept_id=CAPTURE_CONCEPT,
+        contract_id=CAPTURE_CONTRACT,
+        units="not_applicable",
+        capture_occurrence_id=capture_occurrence_id,
+        scope_policy_ref=scope_policy_ref,
+        slot_start_utc=slot_start_utc,
+        slot_end_utc=slot_end_utc,
+    )
+
+
 def observation(
     *,
     observation_occurrence_id: str = "observation-001",
     delivery_artifact_ref: str = "delivery-001",
+    source_provider: str = "provider.fixture",
     native_identifier: str | None = "provider-native-001",
     native_record: dict[str, Any] | None = None,
     received_ts_utc: datetime = datetime(2026, 9, 20, 12, 0, 5, 123456, tzinfo=UTC),
     received_epoch_ns: int | None = None,
     ingestion_sequence: int = 1,
+    ingestion_sequence_scope: str = "collector.fixture",
     source_temporal_kind: str = "true_instant",
     source_timestamp_raw: str | None = "2026-09-20T12:00:04.900000Z",
     source_timezone_native: str | None = "UTC",
@@ -90,7 +127,7 @@ def observation(
         contract_id=OBSERVATION_CONTRACT,
         observation_occurrence_id=observation_occurrence_id,
         delivery_artifact_ref=delivery_artifact_ref,
-        source_provider="provider.fixture",
+        source_provider=source_provider,
         native_record=native_record
         if native_record is not None
         else {"Bid Price": "123.45", "Provider Null": None},
@@ -107,12 +144,54 @@ def observation(
         received_ts_utc=received_ts_utc,
         received_epoch_ns=received_epoch_ns,
         ingestion_sequence=ingestion_sequence,
-        ingestion_sequence_scope="collector.fixture",
+        ingestion_sequence_scope=ingestion_sequence_scope,
         source_temporal_kind=source_temporal_kind,
         source_timestamp_raw=source_timestamp_raw,
         source_timezone_native=source_timezone_native,
         market_timezone_iana=None,
         market_session_native=None,
+    )
+
+
+def relation_contract(
+    *,
+    observation_occurrence_ref: str = "observation-001",
+    capture_occurrence_ref: str = "capture-001",
+    scope_policy_ref: str = "scope-policy-001@1",
+    received_ts_utc: datetime = datetime(2026, 9, 20, 12, 0, 5, 123456, tzinfo=UTC),
+    relation_role: str = "evidences_receipt_presence_only",
+) -> Any:
+    cls = required_symbol("CaptureReceiptEvidenceRelationV1")
+    return cls(
+        concept_id=RELATION_CONCEPT,
+        contract_id=RELATION_CONTRACT,
+        units="not_applicable",
+        observation_occurrence_ref=observation_occurrence_ref,
+        capture_occurrence_ref=capture_occurrence_ref,
+        scope_policy_ref=scope_policy_ref,
+        received_ts_utc=received_ts_utc,
+        relation_role=relation_role,
+    )
+
+
+def assessment_contract(
+    *,
+    assessment_occurrence_id: str = "assessment-001",
+    capture_occurrence_ref: str = "capture-001",
+    outcome: str = "zero_received",
+    evidence_as_of_ts_utc: datetime = datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+    supersedes_assessment_ref: str | None = None,
+) -> Any:
+    cls = required_symbol("CaptureReceiptPresenceAssessmentV1")
+    return cls(
+        concept_id=ASSESSMENT_CONCEPT,
+        contract_id=ASSESSMENT_CONTRACT,
+        units="not_applicable",
+        assessment_occurrence_id=assessment_occurrence_id,
+        capture_occurrence_ref=capture_occurrence_ref,
+        outcome=outcome,
+        evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+        supersedes_assessment_ref=supersedes_assessment_ref,
     )
 
 
@@ -138,6 +217,26 @@ def realise_capture(
 
 def admit_observation(owner: Any, value: Any | None = None) -> Any:
     return owner.commands.admit_raw_observation_occurrence(value or observation())
+
+
+def append_assessment(
+    owner: Any,
+    *,
+    assessment_occurrence_id: str,
+    capture_occurrence_ref: Any,
+    evidence_as_of_ts_utc: datetime,
+    supersedes_assessment_ref: Any | None = None,
+    **unexpected: Any,
+) -> Any:
+    """Ask M00 to derive and append the assessment outcome from visible evidence."""
+
+    return owner.commands.append_capture_receipt_presence_assessment(
+        assessment_occurrence_id=assessment_occurrence_id,
+        capture_occurrence_ref=capture_occurrence_ref,
+        evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+        supersedes_assessment_ref=supersedes_assessment_ref,
+        **unexpected,
+    )
 
 
 def eligible(_: Any, __: Any) -> bool:

@@ -85,7 +85,7 @@ def test_missing_policy_authority_cannot_create_owed_slot() -> None:
         realise_capture(owner)
 
 
-def test_policy_version_boundaries_do_not_rewrite_earlier_schedule_universe() -> None:
+def test_policy_version_boundary_is_non_overlapping_and_does_not_rewrite_history() -> None:
     owner = build_owner()
     register_policy(owner)
     earlier = realise_capture(owner, capture_occurrence_id="capture-v1")
@@ -93,12 +93,26 @@ def test_policy_version_boundaries_do_not_rewrite_earlier_schedule_universe() ->
         owner,
         policy(
             scope_policy_version=2,
-            activation_ts_utc=datetime(2026, 9, 20, 12, 1, tzinfo=UTC),
+            activation_ts_utc=datetime(2026, 9, 20, 12, 2, tzinfo=UTC),
             deactivation_ts_utc=None,
         ),
     )
     assert owner.reads.get_scheduled_capture_occurrence("capture-v1") == earlier
     assert earlier.scope_policy_ref == "scope-policy-001@1"
+
+
+def test_overlapping_policy_versions_fail_closed() -> None:
+    owner = build_owner()
+    register_policy(owner)
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(
+            owner,
+            policy(
+                scope_policy_version=2,
+                activation_ts_utc=datetime(2026, 9, 20, 12, 1, tzinfo=UTC),
+                deactivation_ts_utc=None,
+            ),
+        )
 
 
 def test_absent_deactivation_is_preserved_as_absence() -> None:

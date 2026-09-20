@@ -1,18 +1,19 @@
 from __future__ import annotations
 
 import importlib
+import json
 import os
-from datetime import UTC, datetime
+import subprocess
+import sys
+import uuid
+from pathlib import Path
+from typing import Any
 
 import pytest
-from tests.product.raw_signal._support import (
-    admit_observation,
-    build_owner,
-    observation,
-    realise_capture,
-    register_policy,
-    required_symbol,
-)
+from tests.product.raw_signal._support import build_owner
+
+ROOT = Path(__file__).resolve().parents[3]
+PROBE = ROOT / "tests/product/raw_signal/_process_probe.py"
 
 
 def _dsn() -> str:
@@ -22,7 +23,7 @@ def _dsn() -> str:
     return value
 
 
-def _psycopg():
+def _psycopg() -> Any:
     try:
         module = importlib.import_module("psycopg")
     except ModuleNotFoundError as exc:
@@ -31,18 +32,78 @@ def _psycopg():
     return module
 
 
-def _assessment(*, assessment_id: str, capture_id: str, outcome: str, supersedes=None):
-    cls = required_symbol("CaptureReceiptPresenceAssessmentV1")
-    return cls(
-        concept_id="raw_signal.capture_receipt_presence_assessment",
-        contract_id="nvda.raw_signal.CaptureReceiptPresenceAssessment.v1",
-        units="not_applicable",
-        assessment_occurrence_id=assessment_id,
-        capture_occurrence_ref=capture_id,
-        outcome=outcome,
-        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, tzinfo=UTC),
-        supersedes_assessment_ref=supersedes,
+def _token(prefix: str) -> str:
+    return f"{prefix}-{uuid.uuid4().hex[:12]}"
+
+
+def _probe_process(
+    tmp_path: Path,
+    action: str,
+    *,
+    dsn: str,
+    token: str,
+) -> subprocess.CompletedProcess[str]:
+    payload = json.dumps({"action": action, "dsn": dsn, "token": token})
+    workdir = tmp_path / f"{action}-{uuid.uuid4().hex}"
+    workdir.mkdir()
+    env = os.environ.copy()
+    env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "src"), str(ROOT)])
+    env["HOME"] = str(workdir)
+    env["TMPDIR"] = str(workdir)
+    env["XDG_DATA_HOME"] = str(workdir / "xdg-data")
+    return subprocess.run(
+        [sys.executable, str(PROBE)],
+        cwd=workdir,
+        env=env,
+        input=payload,
+        text=True,
+        capture_output=True,
+        check=False,
     )
+
+
+def _run_probe(tmp_path: Path, action: str, *, dsn: str, token: str) -> dict[str, Any]:
+    completed = _probe_process(tmp_path, action, dsn=dsn, token=token)
+    assert completed.returncode == 0, completed.stdout + completed.stderr
+    lines = [line for line in completed.stdout.splitlines() if line.strip()]
+    assert lines, "fresh-process probe produced no JSON result"
+    return json.loads(lines[-1])
+
+
+def _without_pid(result: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in result.items() if key != "_pid"}
+
+
+def _user_row_count(dsn: str) -> int:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    total = 0
+    with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            """
+            select table_schema, table_name
+            from information_schema.tables
+            where table_type = 'BASE TABLE'
+              and table_schema not in ('pg_catalog', 'information_schema')
+            order by table_schema, table_name
+            """
+        )
+        tables = cursor.fetchall()
+        for schema, table in tables:
+            cursor.execute(
+                sql.SQL("select count(*) from {}.{}").format(
+                    sql.Identifier(schema), sql.Identifier(table)
+                )
+            )
+            total += int(cursor.fetchone()[0])
+    return total
+
+
+def _poisoned_dsn(dsn: str) -> str:
+    conninfo = importlib.import_module("psycopg.conninfo")
+    values = conninfo.conninfo_to_dict(dsn)
+    values["dbname"] = f"nvda_missing_{uuid.uuid4().hex}"
+    return conninfo.make_conninfo(**values)
 
 
 def test_proof_environment_is_real_postgresql_17_9() -> None:
@@ -53,106 +114,91 @@ def test_proof_environment_is_real_postgresql_17_9() -> None:
     assert version.startswith("17.9")
 
 
-def test_committed_facts_survive_fresh_owner_and_read_back_by_domain_identity() -> None:
+def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
+    assert type(build_owner()) is type(build_owner(postgres_dsn=_dsn()))
+
+
+def test_committed_facts_cross_process_boundary_and_mutate_postgresql(tmp_path: Path) -> None:
     dsn = _dsn()
-    first = build_owner(postgres_dsn=dsn)
-    policy = register_policy(first)
-    capture = realise_capture(first)
-    obs = admit_observation(first, observation())
+    token = _token("core")
+    before = _user_row_count(dsn)
+    written = _run_probe(tmp_path, "write_core", dsn=dsn, token=token)
+    after = _user_row_count(dsn)
+    readback = _run_probe(tmp_path, "read_core", dsn=dsn, token=token)
 
-    second = build_owner(postgres_dsn=dsn)
-    assert (
-        second.reads.get_capture_scope_policy(policy.scope_policy_id, policy.scope_policy_version)
-        == policy
+    assert written["observation_id"] == f"observation-{token}"
+    assert written["_pid"] != readback["_pid"]
+    assert after > before
+    assert _without_pid(readback) == {
+        "capture": True,
+        "observation": True,
+        "observation_id": f"observation-{token}",
+        "policy": True,
+    }
+
+    poisoned = _probe_process(
+        tmp_path,
+        "read_core",
+        dsn=_poisoned_dsn(dsn),
+        token=token,
     )
-    assert second.reads.get_scheduled_capture_occurrence(capture.capture_occurrence_id) == capture
-    assert second.reads.get_raw_observation_occurrence(obs.observation_occurrence_id) == obs
+    assert poisoned.returncode != 0, (
+        "fresh semantic read unexpectedly succeeded with deliberately invalid PostgreSQL DSN"
+    )
 
 
-def test_assessment_history_is_append_only_and_durable_across_fresh_owner() -> None:
+def test_assessment_history_is_append_only_across_separate_processes(tmp_path: Path) -> None:
     dsn = _dsn()
-    first = build_owner(postgres_dsn=dsn)
-    register_policy(first)
-    capture = realise_capture(first)
-    initial = first.commands.append_capture_receipt_presence_assessment(
-        _assessment(
-            assessment_id="pg-assessment-zero",
-            capture_id=capture.capture_occurrence_id,
-            outcome="zero_received",
-        )
-    )
-    later = first.commands.append_capture_receipt_presence_assessment(
-        _assessment(
-            assessment_id="pg-assessment-one-plus",
-            capture_id=capture.capture_occurrence_id,
-            outcome="one_or_more_received",
-            supersedes=initial.assessment_occurrence_id,
-        )
-    )
+    token = _token("assessment")
+    written = _run_probe(tmp_path, "write_assessment_chain", dsn=dsn, token=token)
+    assert _without_pid(written) == {"one": "one_or_more_received", "zero": "zero_received"}
 
-    fresh = build_owner(postgres_dsn=dsn)
-    chain = fresh.reads.list_receipt_presence_assessments(capture.capture_occurrence_id)
-    assert [item.assessment_occurrence_id for item in chain] == [
-        initial.assessment_occurrence_id,
-        later.assessment_occurrence_id,
+    chain = _run_probe(tmp_path, "read_assessment_chain", dsn=dsn, token=token)
+    assert written["_pid"] != chain["_pid"]
+    assert chain["ids"] == [
+        f"assessment-zero-{token}",
+        f"assessment-one-{token}",
     ]
-    assert fresh.reads.get_receipt_presence_assessment(initial.assessment_occurrence_id) == initial
-    assert fresh.reads.get_receipt_presence_assessment(later.assessment_occurrence_id) == later
+    assert chain["outcomes"] == ["zero_received", "one_or_more_received"]
+    assert chain["supersedes"] == [None, f"assessment-zero-{token}"]
 
 
-def test_durable_retry_is_idempotent_and_conflicting_same_id_fails_closed() -> None:
+def test_durable_retry_and_conflicting_reuse_cross_process_boundaries(tmp_path: Path) -> None:
     dsn = _dsn()
-    owner = build_owner(postgres_dsn=dsn)
-    value = observation(observation_occurrence_id="pg-observation-retry")
-    first = admit_observation(owner, value)
-    fresh = build_owner(postgres_dsn=dsn)
-    assert admit_observation(fresh, value) == first
-    with pytest.raises((TypeError, ValueError)):
-        admit_observation(
-            fresh,
-            observation(
-                observation_occurrence_id="pg-observation-retry",
-                native_record={"Bid Price": "999.00"},
-            ),
-        )
+    token = _token("retry")
+    written = _run_probe(tmp_path, "write_core", dsn=dsn, token=token)
+    retry = _run_probe(tmp_path, "retry_observation", dsn=dsn, token=token)
+    conflict = _run_probe(tmp_path, "conflict_observation", dsn=dsn, token=token)
+    assert retry["observation_id"] == f"observation-{token}"
+    assert len({written["_pid"], retry["_pid"], conflict["_pid"]}) == 3
+    assert _without_pid(conflict) == {"rejected": True}
 
 
-def test_failed_commit_produces_no_durable_fact_or_semantic_fallback() -> None:
+def test_failed_commit_is_absent_from_postgresql_and_fresh_process(tmp_path: Path) -> None:
     dsn = _dsn()
-    faulted = build_owner(postgres_dsn=dsn, fault_mode="fail_before_commit")
-    # Exact technical exception type is intentionally not product-semantic authority.
-    with pytest.raises(Exception):  # noqa: B017
-        admit_observation(
-            faulted,
-            observation(observation_occurrence_id="pg-observation-failed-write"),
-        )
-    fresh = build_owner(postgres_dsn=dsn)
-    assert fresh.reads.get_raw_observation_occurrence("pg-observation-failed-write") is None
+    token = _token("fault")
+    fault = _run_probe(tmp_path, "fault_write", dsn=dsn, token=token)
+    fresh = _run_probe(tmp_path, "read_absent", dsn=dsn, token=token)
+    assert fault["failed"] is True
+    assert fault["_pid"] != fresh["_pid"]
+    assert _without_pid(fresh) == {"absent": True}
 
 
-def test_restart_reconciliation_creates_missing_owed_slot_as_unknown_not_zero() -> None:
+def test_restart_reconciliation_crosses_processes_and_yields_unknown_not_zero(
+    tmp_path: Path,
+) -> None:
     dsn = _dsn()
-    first = build_owner(postgres_dsn=dsn)
-    register_policy(first)
-
-    restarted = build_owner(postgres_dsn=dsn)
-    result = restarted.commands.reconcile_owed_slots(
-        scope_policy_ref="scope-policy-001@1",
-        slot_starts_utc=[datetime(2026, 9, 20, 12, 0, tzinfo=UTC)],
-        capture_occurrence_ids=["pg-recovered-capture-001"],
-        assessment_occurrence_ids=["pg-recovered-assessment-001"],
-    )
-    assert len(result) == 1
-    capture = restarted.reads.get_scheduled_capture_occurrence("pg-recovered-capture-001")
-    chain = restarted.reads.list_receipt_presence_assessments(capture.capture_occurrence_id)
-    assert chain[0].outcome == "unknown_not_established"
-    assert all(item.outcome != "zero_received" for item in chain)
-
-    fresh = build_owner(postgres_dsn=dsn)
-    assert fresh.reads.get_scheduled_capture_occurrence(capture.capture_occurrence_id) == capture
-    assert fresh.reads.get_receipt_presence_assessment(
-        "pg-recovered-assessment-001"
-    ).outcome == "unknown_not_established"
+    token = _token("restart")
+    _run_probe(tmp_path, "write_policy", dsn=dsn, token=token)
+    reconciled = _run_probe(tmp_path, "reconcile", dsn=dsn, token=token)
+    fresh = _run_probe(tmp_path, "read_reconcile", dsn=dsn, token=token)
+    assert _without_pid(reconciled) == {"count": 1, "outcome": "unknown_not_established"}
+    assert reconciled["_pid"] != fresh["_pid"]
+    assert _without_pid(fresh) == {
+        "assessment": True,
+        "capture": True,
+        "outcome": "unknown_not_established",
+    }
 
 
 def test_persistence_proof_does_not_claim_cross_kind_atomicity_or_replay_sla() -> None:

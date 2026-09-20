@@ -3,7 +3,7 @@ families:
   - id: rsot_u01_contract_owner
     path: tests/product/raw_signal/test_u01_contract_owner_boundary.py
     implementation_target_id: M00
-    boundary: M00 typed v1 contracts, command/read public seam, semantic-owner and compatibility boundary
+    boundary: exact five v1 contracts, typed identity separation and public production owner construction
     proof_level: CONTRACT
     proof_obligation_ids:
       - IA17-PROD-001
@@ -25,26 +25,30 @@ families:
       - authority_id: AUTH-N18
         proposition_ids: [N18-P01, N18-P03]
     authoritative_inputs:
-      - exact IRB BC-001/002/012/013
-      - exact five v1 canonical concept and payload identities
-      - BICP M00 target and A00 sole-consumer boundary
+      - accepted BC-002/010/012 field, identity, requiredness and compatibility law
+      - exact five v1 public contract symbols
+      - production public create_owner factory
     dependency_substitutions:
-      - proof-only _build_test_owner construction glue; no semantic substitution
+      - no semantic substitution; tests call the public production owner factory directly
     case_coverage:
       lawful_positive:
         cases:
-          - exact five v1 contract types are public and M00 exposes distinct command/read facets
-          - canonical concept, contract and occurrence identity roles remain distinct
+          - all five v1 constructors preserve accepted requiredness and permit no new required field
+          - compatibility discriminator accepts a synthetic genuinely optional additive field
+          - production public create_owner exposes separate typed command/read facets
       prohibited_false_positive:
         cases:
-          - DMPV3/P01/K01/downstream consumer or universal-ID authority appears in the M00 public seam
-          - breaking v1 identity/null/provenance semantics are silently accepted
+          - requiredness, discriminant, allowed-value, time/null, identity or provenance law drifts
+          - actual values from distinct identity layers are substituted across contract positions
+          - run/replay/packet/workbook/lineage/universal identities enter as unadmitted authority fields
+          - private test-only owner construction or packet/kernel/downstream capability appears
       missing_mandatory_authority:
         cases:
-          - mandatory structural identity is null or a required named seam/consumer authority is absent
+          - required contract symbol, required field or public production owner factory is absent
       lawful_optional_absence:
         cases:
-          - no downstream business consumer or packet carrier is present
+          - accepted optional fields remain optional/absent without inferred meaning
+          - a new optional field is compatible only when existing v1 interpretation is unchanged
     expected_failure_signals:
       - explicit pytest failure for missing public-seam symbol or construction facet
       - TypeError/ValueError for contract violation or unadmitted authority field
@@ -54,6 +58,7 @@ families:
       - BICP-CANDIDATE-005 sha256=5b99cead41fd8d3d372b5ed2ef4558065328b814e0a94c3680162fc6594df5ed
       - IRB sha256=938debe255d68668b0ae60f021d679fc8e3022be6eb050e7f3cd6112818fd342
     limitations:
+      - compatibility helper proves the accepted structural rule; no unadmitted v2 schema is invented
       - does not prove PostgreSQL durability, A00 sequential composition, provider integration or downstream behaviour
     adjacent_nonclaims:
       - no P01/DMPV3/K01 activation
@@ -88,10 +93,12 @@ families:
       lawful_positive:
         cases:
           - :00 and :30 slots inside active policy yield exactly 30-second half-open occurrences
+          - v2 starts exactly at v1 exclusive deactivation boundary and preserves earlier facts
           - identical stable slot retry preserves one opaque capture identity
       prohibited_false_positive:
         cases:
           - slot before activation, at deactivation or off-boundary is treated as owed
+          - two policy versions overlap at any instant
           - scheduler wake time is treated as schedule truth
           - conflicting content reuses one capture identity
       missing_mandatory_authority:
@@ -156,6 +163,7 @@ families:
           - date becomes midnight UTC, receipt time fills provider time/timezone, or raw event_ts_utc is fabricated
           - equal native values/provider ID cause deduplication or retransmission identity reuse
           - separate records coalesce or repository-created field occurrences split one record
+          - observation/delivery/provider/native/scope identity values substitute across command positions
       missing_mandatory_authority:
         cases:
           - required receipt/order/provenance/temporal discriminant is absent or contradictory
@@ -201,24 +209,28 @@ families:
       - capture and observation specimen references
       - exact three assessment outcome literals
     dependency_substitutions:
-      - eligibility resolver is a controlled proof input and does not define new Raw Signal meaning
+      - eligibility resolver is a controlled proof input and does not decide assessment outcome
     case_coverage:
       lawful_positive:
         cases:
           - eligible in-slot receipt yields only evidences_receipt_presence_only relation
-          - zero assessment is retained when later one_or_more_received appends a superseding assessment
-          - all three outcomes are separately exercised
+          - zero_received is derived when no eligible committed receipt is visible at evidence_as_of
+          - one_or_more_received is derived when eligible committed receipt evidence is visible
+          - late eligible evidence appends one_or_more superseding but not overwriting prior zero
+          - all three exact outcome literals remain valid contract discriminants
       prohibited_false_positive:
         cases:
+          - caller supplies assessment outcome instead of M00 deriving it from visible evidence
           - relation implies membership/count/validity/completeness/finality/ownership
+          - broken, self or non-immediate supersession is accepted
           - unknown is treated as zero or one_or_more as exact count
-          - assessment history is overwritten or broken supersession is accepted
       missing_mandatory_authority:
         cases:
-          - required predecessor or eligibility/policy authority is absent
+          - required capture/predecessor or eligibility/policy authority is absent
       lawful_optional_absence:
         cases:
-          - ineligible/no-scope observation has no relation and first assessment has no supersedes reference
+          - ineligible or out-of-slot observation remains valid with no relation
+          - first assessment has no supersedes reference
     expected_failure_signals:
       - TypeError/ValueError/KeyError for broken supersession or missing authority
       - relation is None for lawful no-relation state
@@ -228,6 +240,7 @@ families:
       - IRB BC-007/008/010
       - IWO-U04
     limitations:
+      - unknown_not_established runtime creation is proven by the authorised restart path in U05
       - no exact membership/count/finality/health or provider-event-absence claim
     adjacent_nonclaims:
       - relation materialisation is not required
@@ -262,17 +275,20 @@ families:
       - psycopg 3.3.4
       - explicitly requested owed schedule slot for restart reconciliation
     dependency_substitutions:
-      - fail_before_commit is proof-only fault injection around the real PostgreSQL transaction path
+      - fail_before_commit is proof-only fault injection around the public real-PostgreSQL owner path
+      - fresh subprocess driver calls the same public create_owner path and contains no product decisions
     case_coverage:
       lawful_positive:
         cases:
-          - committed facts survive fresh-owner reconstruction over the same PostgreSQL database and read back by domain identity
-          - durable same-ID identical-content retry is idempotent
-          - restart missing owed slot creates capture plus initial unknown_not_established
+          - one process writes PostgreSQL state and a later fresh process reads by domain identity
+          - append-only zero then one-or-more assessment chain survives a fresh process boundary
+          - durable same-ID identical-content retry is idempotent across processes
+          - restart reconciliation crosses processes and persists missing owed slot as unknown_not_established
       prohibited_false_positive:
         cases:
-          - failed write yields semantic empty/unknown/zero fallback or durable fact
-          - same-process memory stands in for durability or restart evidence
+          - same-process/module-global memory or local substitute stands in for PostgreSQL durability
+          - semantic read succeeds through a deliberately invalid PostgreSQL DSN
+          - failed write leaves a durable fact or semantic fallback visible from a fresh process
           - restart absence is interpreted as zero_received
           - cross-kind atomicity/replay/SLA/RTO/RPO/retention claim appears
       missing_mandatory_authority:
@@ -283,7 +299,8 @@ families:
           - no bounded recovery, catch-up deadline, RTO/RPO, replay-equivalence or retention guarantee is asserted
     expected_failure_signals:
       - explicit pytest failure when mandatory real PostgreSQL proof environment is absent/wrong
-      - transaction exception followed by durable readback absence
+      - fresh subprocess nonzero result for a deliberately invalid PostgreSQL DSN
+      - faulted transaction followed by fresh-process durable readback absence
       - TypeError/ValueError for conflicting durable same-ID reuse
     command: python -m pytest tests/product/raw_signal/test_u05_postgresql_durability.py
     environment: Python 3.13.5; pytest 9.0.3; psycopg[binary]==3.3.4; real PostgreSQL 17.9 via NVDA_TEST_POSTGRES_DSN
@@ -330,24 +347,28 @@ families:
       - exact M00 public seam
       - one bounded proof specimen using accepted v1 facts only
     dependency_substitutions:
-      - A00-private _build_test_application construction glue only
+      - spy owner factory observes A00 delegation only; opaque sentinels make no Raw Signal decisions
     case_coverage:
       lawful_positive:
         cases:
-          - A00 composition uses only M00 public seam and runs one bounded policy/slot/observation/assessment/read sequence
+          - production create_application constructs M00 through an injected owner factory and command/read facets
+          - A00 call order covers policy, capture, observation, relation, assessment and referential readback
+          - A00 returns the exact opaque objects returned by M00 rather than recreating semantic results
           - declared runtime edge remains exactly A00 -> M00
       prohibited_false_positive:
         cases:
-          - M00 -> A00/private-state/table/repository bypass or P01/K01/downstream-consumer path appears
-          - A00 construction helper contains Raw Signal outcome decisions
+          - private test application or M00 private-state/table/repository bypass appears
+          - A00 calculates assessment outcome or substitutes its own semantic result objects
+          - M00 -> A00, P01/K01, packet or downstream-consumer path appears
       missing_mandatory_authority:
         cases:
-          - composition construction symbol or lawful M00 seam/dependency is absent
+          - production create_application, lawful M00 seam or declared dependency is absent
       lawful_optional_absence:
         cases:
           - no downstream consumer, packet carrier or K mechanism is composed
     expected_failure_signals:
-      - explicit pytest failure for absent A00 proof construction path
+      - explicit pytest failure for absent production A00 create_application path
+      - call-order/object-identity assertion failure for A00-owned semantics or bypass
       - static import/dependency assertion failure for private/reverse/unadmitted composition
     command: python -m pytest tests/product/raw_signal/test_u06_a00_composition.py
     environment: Python 3.13.5; pytest 9.0.3; sequential composition proof; no live provider/network/downstream capability

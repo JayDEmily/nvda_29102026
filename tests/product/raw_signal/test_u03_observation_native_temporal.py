@@ -166,3 +166,21 @@ def test_no_scope_observation_remains_valid_without_capture_relation() -> None:
     stored = admit_observation(owner)
     assert owner.reads.get_raw_observation_occurrence(stored.observation_occurrence_id) == stored
     assert getattr(stored, "capture_occurrence_ref", None) is None
+
+
+@pytest.mark.parametrize(
+    ("field", "substitute"),
+    [
+        ("observation_occurrence_id", "delivery-001"),
+        ("delivery_artifact_ref", "observation-001"),
+        ("source_provider", "observation-001"),
+        ("native_identifier", "provider.fixture"),
+        ("ingestion_sequence_scope", "delivery-001"),
+    ],
+)
+def test_observation_command_boundary_rejects_cross_layer_identity_substitution(
+    field: str, substitute: str
+) -> None:
+    owner = build_owner()
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(owner, copy_with(observation(), **{field: substitute}))
