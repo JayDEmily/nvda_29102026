@@ -1041,27 +1041,77 @@ def test_public_return_barrier_stops_separate_session_descendant_process(
             _kill_return_boundary_probe(process, marker)
 
 
+@pytest.mark.parametrize(
+    ("action", "expected_key", "read_action", "assessment_which"),
+    [
+        ("boundary_write_policy", "policy", "read_policy", None),
+        ("boundary_write_capture", "capture", "read_capture", None),
+        ("boundary_write_observation", "observation", "read_observation", None),
+        ("boundary_write_zero_assessment", "zero", "read_assessment", "zero"),
+        ("boundary_write_one_assessment", "one", "read_assessment", "one"),
+    ],
+)
 def test_public_success_return_requires_postgresql_commit_acknowledgement(
     tmp_path: Path,
+    action: str,
+    expected_key: str,
+    read_action: str,
+    assessment_which: str | None,
 ) -> None:
     dsn = _dsn()
-    token = _token("commit-ack")
+    token = _token(f"commit-ack-{expected_key}")
     facts = _authoritative_facts()
     expected = _expected_records(token, facts)
 
-    # Warm the production PostgreSQL path before installing the server-side barrier so schema
-    # bootstrap or unrelated first-use work cannot satisfy this discriminator.
-    _run_probe(
-        tmp_path,
-        "write_observation_only",
-        dsn=dsn,
-        token=_token("commit-ack-warm"),
-        facts=_authoritative_facts(),
-    )
+    def establish_prerequisites(case_token: str, case_facts: dict[str, Any]) -> None:
+        if action in {
+            "boundary_write_capture",
+            "boundary_write_zero_assessment",
+            "boundary_write_one_assessment",
+        }:
+            _run_probe(
+                tmp_path,
+                "write_policy_only",
+                dsn=dsn,
+                token=case_token,
+                facts=case_facts,
+            )
+        if action in {"boundary_write_zero_assessment", "boundary_write_one_assessment"}:
+            _run_probe(tmp_path, "write_capture_only", dsn=dsn, token=case_token)
+        if action == "boundary_write_one_assessment":
+            _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=case_token)
+            _run_probe(
+                tmp_path,
+                "write_observation_only",
+                dsn=dsn,
+                token=case_token,
+                facts=case_facts,
+            )
+            _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=case_token)
+
+    # Warm the same public command path selected for the discriminator. Warming only the
+    # observation path would let a command-specific first-use COMMIT satisfy SyncRep before the
+    # selected durable write executes.
+    warm_token = _token(f"commit-ack-{expected_key}-warm")
+    warm_facts = _authoritative_facts()
+    establish_prerequisites(warm_token, warm_facts)
+    warm_action = {
+        "boundary_write_policy": "write_policy_only",
+        "boundary_write_capture": "write_capture_only",
+        "boundary_write_observation": "write_observation_only",
+        "boundary_write_zero_assessment": "write_zero_assessment_only",
+        "boundary_write_one_assessment": "write_one_assessment_only",
+    }[action]
+    warm_extra = {"facts": warm_facts} if expected_key in {"policy", "observation"} else {}
+    _run_probe(tmp_path, warm_action, dsn=dsn, token=warm_token, **warm_extra)
+
+    # Establish only semantic prerequisites that must pre-exist for the command under test.
+    # The command named by ``action`` remains the sole write performed under the SyncRep barrier.
+    establish_prerequisites(token, facts)
 
     original_setting = _current_synchronous_standby_names(dsn)
     barrier_name = f"nvda_proof_no_standby_{uuid.uuid4().hex}"
-    application_name = f"nvda-proof-commit-ack-{uuid.uuid4().hex}"
+    application_name = f"nvda-proof-commit-ack-{expected_key}-{uuid.uuid4().hex}"
     writer_dsn = _dsn_with_application_name(dsn, application_name)
     process: subprocess.Popen[str] | None = None
     marker: dict[str, Any] | None = None
@@ -1071,12 +1121,13 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
         _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
         barrier_active = True
 
+        write_extra = {"facts": facts} if expected_key in {"policy", "observation"} else {}
         process = _spawn_return_boundary_probe(
             tmp_path,
-            "boundary_write_observation",
+            action,
             dsn=writer_dsn,
             token=token,
-            facts=facts,
+            **write_extra,
         )
         _wait_for_sync_rep_without_public_return(
             process, dsn=dsn, application_name=application_name
@@ -1091,10 +1142,17 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
         assert isinstance(namespace_pid, int), marker
         _wait_for_stopped_process_tree(process, namespace_pid)
         _assert_no_open_writer_transaction(dsn, application_name)
-        fresh = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
-        assert fresh["record"] == expected["observation"]
+        read_extra = {"which": assessment_which} if assessment_which is not None else {}
+        fresh = _run_probe(
+            tmp_path,
+            read_action,
+            dsn=dsn,
+            token=token,
+            **read_extra,
+        )
+        assert fresh["record"] == expected[expected_key]
         result = _release_return_boundary_probe(process, marker)
-        assert result["record"] == expected["observation"]
+        assert result["record"] == expected[expected_key]
     finally:
         if barrier_active:
             _set_synchronous_standby_names(dsn, original_setting or None)
@@ -1581,7 +1639,7 @@ class _RecordOnlyPersistenceProxy:
 
 
 def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any) -> int:
-    """Replace the concrete adapter while rejecting cached private semantic capabilities."""
+    """Replace concrete-adapter capabilities throughout the reachable owner object graph."""
 
     replaced = 0
     seen: set[int] = set()
@@ -1591,29 +1649,74 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
             return str(value.__name__)
         return None
 
-    def function_captures_forbidden_target(value: Any) -> bool:
-        closure = getattr(value, "__closure__", None)
-        if not closure:
-            return False
-        for cell in closure:
-            try:
-                captured = cell.cell_contents
-            except ValueError:
-                continue
-            if captured is target:
-                return True
-            method_name = bound_target_method(captured)
-            if method_name is not None and method_name not in _STORAGE_PROTOCOL_BOUND_ARITY:
-                return True
-        return False
+    def contains_target_capability(value: Any, local_seen: set[int] | None = None) -> bool:
+        """Detect concrete adapter identity/capability through admitted caching forms."""
 
-    def rewrite_child(child: Any) -> tuple[Any, bool]:
+        if value is target:
+            return True
+        if isinstance(value, _RecordOnlyPersistenceProxy):
+            return False
+        if bound_target_method(value) is not None:
+            return True
+
+        if local_seen is None:
+            local_seen = set()
+        value_id = id(value)
+        if value_id in local_seen:
+            return False
+        local_seen.add(value_id)
+
+        if isinstance(value, functools.partial):
+            return (
+                contains_target_capability(value.func, local_seen)
+                or any(contains_target_capability(item, local_seen) for item in value.args)
+                or any(
+                    contains_target_capability(item, local_seen)
+                    for item in (value.keywords or {}).values()
+                )
+            )
+        if isinstance(value, dict):
+            return any(
+                contains_target_capability(key, local_seen)
+                or contains_target_capability(child, local_seen)
+                for key, child in value.items()
+            )
+        if isinstance(value, (list, tuple, set, frozenset)):
+            return any(contains_target_capability(child, local_seen) for child in value)
+        if inspect.isfunction(value):
+            defaults = value.__defaults__ or ()
+            kwdefaults = (value.__kwdefaults__ or {}).values()
+            closure = value.__closure__ or ()
+            if any(contains_target_capability(item, local_seen) for item in defaults):
+                return True
+            if any(contains_target_capability(item, local_seen) for item in kwdefaults):
+                return True
+            for cell in closure:
+                try:
+                    captured = cell.cell_contents
+                except ValueError:
+                    continue
+                if contains_target_capability(captured, local_seen):
+                    return True
+            return False
+        if inspect.ismodule(value) or inspect.isclass(value):
+            return False
+        try:
+            children = vars(value).values()
+        except TypeError:
+            return False
+        return any(contains_target_capability(child, local_seen) for child in children)
+
+    def rewrite(value: Any) -> tuple[Any, bool]:
         nonlocal replaced
-        if child is target:
+
+        if value is replacement:
+            return value, False
+        if value is target:
             replaced += 1
             return replacement, True
 
-        method_name = bound_target_method(child)
+        method_name = bound_target_method(value)
         if method_name is not None:
             assert method_name in _STORAGE_PROTOCOL_BOUND_ARITY, (
                 "owner cached a private PostgreSQL adapter capability",
@@ -1622,111 +1725,163 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
             replaced += 1
             return getattr(replacement, method_name), True
 
-        if isinstance(child, functools.partial):
-            partial_method = bound_target_method(child.func)
-            assert child.func is not target, "owner partial captures concrete PostgreSQL adapter"
-            assert all(item is not target for item in child.args), (
-                "owner partial captures concrete PostgreSQL adapter",
-                child,
-            )
-            assert all(item is not target for item in (child.keywords or {}).values()), (
-                "owner partial captures concrete PostgreSQL adapter",
-                child,
-            )
-            if partial_method is not None:
-                assert partial_method in _STORAGE_PROTOCOL_BOUND_ARITY, (
-                    "owner cached a private PostgreSQL adapter capability",
-                    partial_method,
-                )
-                replaced += 1
-                return (
-                    functools.partial(
-                        getattr(replacement, partial_method),
-                        *child.args,
-                        **(child.keywords or {}),
-                    ),
-                    True,
-                )
+        value_id = id(value)
+        if value_id in seen:
+            return value, False
+        seen.add(value_id)
 
-        assert not function_captures_forbidden_target(child), (
-            "owner closure captures concrete/private PostgreSQL adapter capability",
-            child,
-        )
-        return child, False
+        if inspect.isfunction(value):
+            assert not contains_target_capability(value), (
+                "owner closure/default captures concrete/private PostgreSQL adapter capability",
+                value,
+            )
+            return value, False
 
-    def visit(value: Any) -> None:
-        if value is replacement or id(value) in seen:
-            return
-        seen.add(id(value))
+        if isinstance(value, functools.partial):
+            new_func, func_changed = rewrite(value.func)
+            new_args: list[Any] = []
+            args_changed = False
+            for child in value.args:
+                new_child, changed = rewrite(child)
+                new_args.append(new_child)
+                args_changed = args_changed or changed
+            new_keywords: dict[str, Any] = {}
+            keywords_changed = False
+            for key, child in (value.keywords or {}).items():
+                new_child, changed = rewrite(child)
+                new_keywords[key] = new_child
+                keywords_changed = keywords_changed or changed
+            if func_changed or args_changed or keywords_changed:
+                rebuilt = functools.partial(new_func, *new_args, **new_keywords)
+                rebuilt.__dict__.update(value.__dict__)
+                return rebuilt, True
+            return value, False
 
         if isinstance(value, list):
+            changed_any = False
             for index, child in enumerate(tuple(value)):
-                new_child, changed = rewrite_child(child)
+                new_child, changed = rewrite(child)
                 if changed:
                     value[index] = new_child
-                else:
-                    visit(child)
-            return
-        if isinstance(value, dict):
-            for key, child in tuple(value.items()):
-                new_child, changed = rewrite_child(child)
-                if changed:
-                    value[key] = new_child
-                else:
-                    visit(child)
-            return
-        if isinstance(value, tuple):
-            for child in value:
-                assert child is not target, "immutable owner tuple captures concrete adapter"
-                method_name = bound_target_method(child)
-                assert method_name is None or method_name in _STORAGE_PROTOCOL_BOUND_ARITY, (
-                    "immutable owner tuple captures private adapter capability",
-                    method_name,
-                )
-                assert not function_captures_forbidden_target(child)
-            return
+                    changed_any = True
+            return value, changed_any
 
+        if isinstance(value, dict):
+            rewritten: list[tuple[Any, Any]] = []
+            changed_any = False
+            for key, child in tuple(value.items()):
+                new_key, key_changed = rewrite(key)
+                new_child, child_changed = rewrite(child)
+                rewritten.append((new_key, new_child))
+                changed_any = changed_any or key_changed or child_changed
+            if changed_any:
+                value.clear()
+                value.update(rewritten)
+            return value, changed_any
+
+        if isinstance(value, tuple):
+            rewritten_items: list[Any] = []
+            changed_any = False
+            for child in value:
+                new_child, changed = rewrite(child)
+                rewritten_items.append(new_child)
+                changed_any = changed_any or changed
+            return (tuple(rewritten_items), True) if changed_any else (value, False)
+
+        if isinstance(value, set):
+            rewritten_items: list[Any] = []
+            changed_any = False
+            for child in value:
+                new_child, changed = rewrite(child)
+                rewritten_items.append(new_child)
+                changed_any = changed_any or changed
+            if changed_any:
+                value.clear()
+                value.update(rewritten_items)
+            return value, changed_any
+
+        if isinstance(value, frozenset):
+            rewritten_items = []
+            changed_any = False
+            for child in value:
+                new_child, changed = rewrite(child)
+                rewritten_items.append(new_child)
+                changed_any = changed_any or changed
+            return (frozenset(rewritten_items), True) if changed_any else (value, False)
+
+        if inspect.ismodule(value) or inspect.isclass(value):
+            return value, False
         try:
             items = list(vars(value).items())
         except TypeError:
-            return
+            return value, False
+
+        changed_any = False
         for name, child in items:
-            new_child, changed = rewrite_child(child)
+            new_child, changed = rewrite(child)
             if changed:
                 object.__setattr__(value, name, new_child)
-                continue
-            if type(child).__module__.startswith("nvda_desk.raw_signal_occurrence_truth"):
-                visit(child)
+                changed_any = True
+        return value, changed_any
 
-    visit(root)
+    rewrite(root)
     return replaced
 
 
 def _production_graph_contains_identity(root: Any, target: Any) -> bool:
+    """Detect concrete adapter identity/capability through the reachable owner graph."""
+
     seen: set[int] = set()
 
     def visit(value: Any) -> bool:
-        if id(value) in seen:
+        if value is target:
+            return True
+        if isinstance(value, _RecordOnlyPersistenceProxy):
             return False
-        seen.add(id(value))
+        if inspect.ismethod(value) and value.__self__ is target:
+            return True
+
+        value_id = id(value)
+        if value_id in seen:
+            return False
+        seen.add(value_id)
+
+        if isinstance(value, functools.partial):
+            return (
+                visit(value.func)
+                or any(visit(item) for item in value.args)
+                or any(visit(item) for item in (value.keywords or {}).values())
+            )
+        if isinstance(value, dict):
+            return any(visit(key) or visit(child) for key, child in value.items())
+        if isinstance(value, (list, tuple, set, frozenset)):
+            return any(visit(child) for child in value)
+        if inspect.isfunction(value):
+            if any(visit(item) for item in value.__defaults__ or ()):
+                return True
+            if any(visit(item) for item in (value.__kwdefaults__ or {}).values()):
+                return True
+            for cell in value.__closure__ or ():
+                try:
+                    captured = cell.cell_contents
+                except ValueError:
+                    continue
+                if visit(captured):
+                    return True
+            return False
+        if inspect.ismodule(value) or inspect.isclass(value):
+            return False
         try:
-            children = list(vars(value).values())
+            children = vars(value).values()
         except TypeError:
             return False
-        for child in children:
-            if child is target:
-                return True
-            if type(child).__module__.startswith("nvda_desk.raw_signal_occurrence_truth") and visit(
-                child
-            ):
-                return True
-        return False
+        return any(visit(child) for child in children)
 
     return visit(root)
 
 
 def test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability() -> None:
-    """Canary the exact T009-F002 escape before exercising the production owner graph."""
+    """Canary the direct private-capability escape before exercising the production graph."""
 
     class AdapterCanary:
         def _semantic_decision(self) -> bool:
@@ -1742,6 +1897,101 @@ def test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability() -
     proxy = _RecordOnlyPersistenceProxy(adapter)
     with pytest.raises(AssertionError, match="private PostgreSQL adapter capability"):
         _rewire_production_graph_reference(owner, adapter, proxy)
+
+
+@pytest.mark.parametrize(
+    "cache_kind",
+    [
+        "list",
+        "dict",
+        "tuple",
+        "partial_function",
+        "partial_argument",
+        "partial_keyword",
+        "closure",
+    ],
+)
+def test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability(
+    cache_kind: str,
+) -> None:
+    """Canary T010-F002 across ordinary containers and unrewritable closure caching."""
+
+    class AdapterCanary:
+        def _semantic_decision(self) -> bool:
+            return True
+
+    class OwnerCanary:
+        def __init__(self, adapter: AdapterCanary, cached: Any) -> None:
+            self._port = adapter
+            self._cached = cached
+
+    adapter = AdapterCanary()
+    private_capability = adapter._semantic_decision
+    if cache_kind == "list":
+        cached: Any = [{"nested": (private_capability,)}]
+    elif cache_kind == "dict":
+        cached = {"nested": [private_capability]}
+    elif cache_kind == "tuple":
+        cached = ({"nested": [private_capability]},)
+    elif cache_kind == "partial_function":
+        cached = functools.partial(private_capability)
+    elif cache_kind == "partial_argument":
+        cached = functools.partial(lambda capability: capability, private_capability)
+    elif cache_kind == "partial_keyword":
+        cached = functools.partial(lambda **kwargs: kwargs, capability=private_capability)
+    else:
+        captured = {"nested": [private_capability]}
+
+        def cached_closure() -> bool:
+            return captured["nested"][0]()
+
+        cached = cached_closure
+
+    owner = OwnerCanary(adapter, cached)
+    proxy = _RecordOnlyPersistenceProxy(adapter)
+    with pytest.raises(AssertionError, match="PostgreSQL adapter capability"):
+        _rewire_production_graph_reference(owner, adapter, proxy)
+
+
+def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities() -> None:
+    """Prove admitted bound methods cannot retain a hidden concrete-adapter receiver."""
+
+    class AdapterCanary:
+        def append_policy(self, value: Any) -> Any:
+            return value
+
+        def get_policy(self, policy_id: Any, version: int) -> tuple[Any, int]:
+            return policy_id, version
+
+        def append_capture(self, value: Any) -> Any:
+            return value
+
+        def get_capture(self, capture_id: Any) -> Any:
+            return capture_id
+
+    class OwnerCanary:
+        def __init__(self, adapter: AdapterCanary) -> None:
+            self._port = adapter
+            self._nested = [
+                adapter.append_policy,
+                {"reader": adapter.get_policy},
+                (adapter.append_capture,),
+                functools.partial(adapter.get_capture, "capture-id"),
+            ]
+
+    adapter = AdapterCanary()
+    owner = OwnerCanary(adapter)
+    proxy = _RecordOnlyPersistenceProxy(adapter)
+    replaced = _rewire_production_graph_reference(owner, adapter, proxy)
+
+    assert replaced == 5
+    assert owner._port is proxy
+    assert owner._nested[0].__self__ is proxy
+    assert owner._nested[1]["reader"].__self__ is proxy
+    assert owner._nested[2][0].__self__ is proxy
+    assert isinstance(owner._nested[3], functools.partial)
+    assert owner._nested[3].func.__self__ is proxy
+    assert not _production_graph_contains_identity(owner, adapter)
 
 
 def test_default_postgresql_path_exposes_exact_record_only_storage_protocol() -> None:
