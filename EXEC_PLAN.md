@@ -576,3 +576,32 @@ Tester Iteration 011 audit, not proof that the accepted namespace boundary was e
 authority to begin VI-12R. See
 `implementation/proof/VI10R8_ADVERSARIAL_PRODUCT_PROOF_REPAIR_EVIDENCE.md` and
 `implementation/handoff/REVIEWER_017_VI11R8_PROOF_ADEQUACY.md`.
+
+### 2026-09-22 — VI-11R8 Tester Iteration 011 disposition
+
+Fresh independent review of submitted archive SHA-256
+`4921897beb1cab9598854edfeae5cd8f3f39ab21309d62926c29ca9cbf473135`, handoff
+`d1bad95bddd8b868449f2566b40d38126d50a789` / tree
+`160153440bbc0edc37cdc00387cb917737262dfb`, and physical proof
+`7dc7ce0bb4d162d785bac5b0f431bdab77d954e7` / tree
+`134ddc76e61f9751e46cb1990c762ee028f86719` returned `FAIL / RETURN_TO_WORKER` with two
+Critical proof-layer findings (`T011-F001..F002`). The tester accepted the degraded-TCP caveat as
+truthful for review: nine namespace/filesystem propositions remain `UNPROVED` and were not the
+rejection basis. Both findings route to VI-10R9; no production or semantic-authority change is
+authorised. See `implementation/proof/VI11R8_TESTER_ITERATION_011_DISPOSITION.md`.
+
+### 2026-09-22 — VI-10R9 successor prepared for Tester Iteration 012
+
+Physical proof `0917e0319a460a6d7ffb40b776b716f80f8f8684` / tree
+`fd5a1cb626f1fb7c41602f989d5f900c080f9537` binds the SyncRep discriminator to the
+post-owner-construction semantic write through a proof-owned READY/GO handshake and rejects
+concrete adapter capability through class/MRO, slots, referenced globals and module storage. The
+physical commit changes two proof paths and zero `src/**` bytes. Product control remains six
+families / 13 of 13 obligations; 444 tests collect. Against fresh real PostgreSQL 17.9 loopback
+TCP, U05 records 24 failed / 22 passed and the complete product suite 416 failed / 28 passed; the
+same nine boundary cases remain explicit `DEGRADED TCP VALIDATION: UNPROVED`. Structural
+architecture, Ruff, dependency/public-seam and diff checks pass. The reset workspace lacks the
+exact Python 3.13.5 runtime required by the preserved mypy 1.20.1 wheels, so exact typechecker and
+aggregate promotion execution is deferred explicitly to the fresh tester; the entire architecture
+axis is byte-unchanged from the reviewed parent. VI-12R remains prohibited pending Tester
+Iteration 012.
