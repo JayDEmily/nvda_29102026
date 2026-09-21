@@ -406,9 +406,13 @@ A terminal PASS requires evidence that:
 - [x] VI-11R2 Tester Iteration 005 — `FAIL / RETURN_TO_WORKER`: independent rechallenge of `56ea445d...` returned eleven proof-layer findings (`T005-F001..F011`, 4 Critical / 7 Important).
 - [x] VI-10R3 — `FROZEN / INDEPENDENT FAIL`: successor physical proof `ffcbc64b...` was reviewed in Tester Iteration 006 and returned `FAIL / RETURN_TO_WORKER` with nine proof-layer findings.
 - [x] VI-10R4 — `FROZEN / INDEPENDENT FAIL`: physical proof `0c626fb7...` was reviewed in Tester Iteration 007 and returned `FAIL / RETURN_TO_WORKER` with seven proof-layer findings.
-- [x] VI-10R5 — `FROZEN / PENDING INDEPENDENT REVIEW`: successor physical proof `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee`; seven Tester Iteration 007 findings are Worker repair claims only.
-- [ ] VI-11R5 — `ACTIVE / TESTER ITERATION 008`: fresh independent proof-adequacy review of the VI-10R5 physical candidate; VI-12R remains prohibited unless PASS.
-- [!] The current PM/Worker session still exposes no fresh-reviewer dispatch primitive. This is no longer treated as a reason to alter the proof or advance inline; the prepared VI-11 package must be handed to a separate independent tester/reviewer context.
+- [x] VI-10R5 — `FROZEN / INDEPENDENT FAIL`: physical proof `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee` was reviewed in Tester Iteration 008 and returned `FAIL / RETURN_TO_WORKER` with five findings (`T008-F001..F005`, four Critical / one Important).
+- [x] VI-11R5 Tester Iteration 008 — `FAIL / RETURN_TO_WORKER`: `T008-F001..F004` routed to VI-10R6 proof repair; `T008-F005` was closed upstream for this tranche by Programme Owner direction plus BC-010/BC-012 as recorded below.
+- [x] VI-10R6 — `FROZEN / INDEPENDENT FAIL`: physical proof `355497c8db9cd1f615539634ddb5fa5bea5d405d` / tree `1798b78addf2d81cfd08e1de42944afc94910b92` was reviewed in Tester Iteration 009 and returned `FAIL / RETURN_TO_WORKER` with four findings (`T009-F001..F004`, three Critical / one Important).
+- [x] VI-11R6 Tester Iteration 009 — `FAIL / RETURN_TO_WORKER`: remaining defects routed to VI-10R7 proof repair; no IRB/BICP/IWO/METHOD-006 meaning or production-source change was admitted.
+- [x] VI-10R7 — `FROZEN / PENDING INDEPENDENT REVIEW`: successor physical proof `816696590912bfac22d9397bef19dc1eb5315f17` / tree `561d8610e98c965d43aac02f296b8cee39f02129`; four Tester Iteration 009 findings are Worker repair claims only pending fresh independent review.
+- [ ] VI-11R7 — `ACTIVE / TESTER ITERATION 010`: fresh independent proof-adequacy review of the VI-10R7 physical candidate; VI-12R remains prohibited unless PASS.
+- [!] Tester Iteration 010 must remain a fresh independent reviewer context. The prepared VI-11R7 package is the review boundary; do not advance to VI-12R inline or relabel Worker validation as independent acceptance.
 
 ## 13. Discoveries / decisions
 
