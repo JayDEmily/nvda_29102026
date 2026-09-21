@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R7 FROZEN / VI-11R7 TESTER ITERATION 010 PENDING`
+- **Gate state:** `ACTIVE — VI-10R8 AMENDED / REQUIRED WORKER VALIDATION BLOCKED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -28,11 +28,13 @@
 - **VI-10R6 rejected physical proof candidate:** `355497c8db9cd1f615539634ddb5fa5bea5d405d` / tree `1798b78addf2d81cfd08e1de42944afc94910b92` — rejected by Tester Iteration 009 with four findings.
 - **VI-11R6 Tester Iteration 009:** `FAIL / RETURN_TO_WORKER` — four findings (`T009-F001..F004`, three Critical / one Important); reviewed wrapper `ffa57057...`, physical proof `355497c8...`.
 - **VI-10R7 frozen physical proof candidate:** `816696590912bfac22d9397bef19dc1eb5315f17` / tree `561d8610e98c965d43aac02f296b8cee39f02129` — six families, 13/13 obligations, 422 collected tests; Worker validation against real PostgreSQL 17.9 is expected-red at 410 failed / 12 passed; U05 18 failed / 6 passed; architecture/bootstrap and promotion 74/74; pending fresh Tester Iteration 010.
-- **Current Leaf:** `G03-L07 / VI-11R7 — fresh independent Tester Iteration 010 proof-adequacy review`
-- **Current actor:** next fresh independent proof reviewer/tester; production implementation prohibited
+- **VI-11R7 Tester Iteration 010:** `FAIL / RETURN_TO_WORKER` — two Critical proof-layer findings (`T010-F001..F002`); reviewed wrapper `d1b59a8...`, physical proof `8166965...`.
+- **VI-10R8 amended checkpoint:** `09a6fd77829838522b0a7b037f068c5d1f30f3e1` / tree `c57b13a513397f6ff23dbd62eb9350484fdaa411` — one U05 proof path, zero `src/**`; 434 collected tests; nine graph canaries and separate architecture/static controls green. Required real PostgreSQL namespace execution is blocked by the current sandbox and no frozen physical candidate is claimed.
+- **Current Leaf:** `G03-L06 / VI-10R8 — proof repair validation`
+- **Current actor:** Worker; production implementation prohibited
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** fresh independent Tester Iteration 010 review of physical candidate `8166965...`; production implementation remains prohibited until independent PASS.
+- **Next lawful action:** resume exact checkpoint `09a6fd7...` in the preserved namespace-capable PostgreSQL 17.9 worker environment; run U05 and complete product expected-red proof; freeze and hand to fresh Tester Iteration 011 only if all acceptance evidence is established. Production implementation remains prohibited.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
