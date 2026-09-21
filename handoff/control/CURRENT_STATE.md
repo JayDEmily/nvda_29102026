@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R5 FROZEN / VI-11R5 TESTER ITERATION 008 PENDING`
+- **Gate state:** `ACTIVE — VI-10R6 FROZEN / VI-11R6 TESTER ITERATION 009 PENDING`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -23,12 +23,14 @@
 - **VI-11R3 Tester Iteration 006:** `FAIL / RETURN_TO_WORKER` — nine proof-layer findings (`T006-F001..F009`, five Critical / four Important); reviewed wrapper `d50bc239...`, physical proof `ffcbc64b...`.
 - **VI-10R4 rejected physical proof candidate:** `0c626fb78fa7317fa265bd5ff871dd398c68404d` / tree `df10fd0e42178dfb7e6fabe0fd9a8e3a3a3249f6` — rejected by Tester Iteration 007 with seven findings.
 - **VI-11R4 Tester Iteration 007:** `FAIL / RETURN_TO_WORKER` — seven proof-layer findings (`T007-F001..F007`, six Critical / one Important); reviewed wrapper `30db3d00...`, physical proof `0c626fb7...`.
-- **VI-10R5 frozen physical proof candidate:** `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee` — six families, 13/13 obligations, 397 collected tests; Worker validation against real PostgreSQL 17.9 is expected-red at 388 failed / 9 passed; pending fresh Tester Iteration 008.
-- **Current Leaf:** `G03-L07 / VI-11R5 — fresh independent Tester Iteration 008 proof-adequacy review`
+- **VI-10R5 rejected physical proof candidate:** `e39740c6ddd24fa1372bde6ca630245285a807d7` / tree `dabf8fe94cfc14e74131604a42030514791c10ee` — rejected by Tester Iteration 008 with five findings.
+- **VI-11R5 Tester Iteration 008:** `FAIL / RETURN_TO_WORKER` — five findings (`T008-F001..F005`, four Critical / one Important); reviewed wrapper `432a5268...`, physical proof `e39740c...`.
+- **VI-10R6 frozen physical proof candidate:** `355497c8db9cd1f615539634ddb5fa5bea5d405d` / tree `1798b78addf2d81cfd08e1de42944afc94910b92` — six families, 13/13 obligations, 417 collected tests; Worker validation against real PostgreSQL 17.9 is expected-red at 407 failed / 10 passed; pending fresh Tester Iteration 009.
+- **Current Leaf:** `G03-L07 / VI-11R6 — fresh independent Tester Iteration 009 proof-adequacy review`
 - **Current actor:** next fresh independent proof reviewer/tester; production implementation prohibited
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** fresh independent Tester Iteration 008 review of physical candidate `e39740c...`; production implementation remains prohibited until independent PASS.
+- **Next lawful action:** fresh independent Tester Iteration 009 review of physical candidate `355497c...`; production implementation remains prohibited until independent PASS.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
