@@ -6,10 +6,12 @@ serialises observable committed facts for process-boundary comparison.
 
 from __future__ import annotations
 
+import contextlib
 import json
 import os
 import signal
 import sys
+import time
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
 from enum import Enum
@@ -99,9 +101,7 @@ def _policy(payload: dict[str, Any]) -> Any:
     )
 
 
-def _observation(
-    payload: dict[str, Any], *, fault: bool = False, native_record: Any = None
-) -> Any:
+def _observation(payload: dict[str, Any], *, fault: bool = False, native_record: Any = None) -> Any:
     token = payload["token"]
     ids = _ids(token)
     default_observation_id = ids["fault_observation_id"] if fault else ids["observation_id"]
@@ -110,6 +110,7 @@ def _observation(
         observation_occurrence_id=observation_id,
         delivery_artifact_ref=_fact(payload, "delivery_artifact_ref", ids["delivery_id"]),
         source_provider=_fact(payload, "source_provider", f"provider::{token}"),
+        raw_signal_catalogue_ids=tuple(_fact(payload, "raw_signal_catalogue_ids", ())) or None,
         native_identifier=_fact(payload, "native_identifier", f"native-id::{token}"),
         native_record=native_record
         if native_record is not None
@@ -137,7 +138,7 @@ def _observation(
         received_epoch_ns=1_758_369_605_654_321_987,
         ingestion_sequence=_fact(payload, "ingestion_sequence", 41 if not fault else 42),
         ingestion_sequence_scope=_fact(payload, "ingestion_sequence_scope", f"collector::{token}"),
-        source_temporal_kind="true_instant",
+        source_temporal_kind=_fact(payload, "source_temporal_kind", "true_instant"),
         source_timestamp_raw=_fact(payload, "source_timestamp_raw", "2026-09-20T12:00:04.123456Z"),
         source_timezone_native=_fact(payload, "source_timezone_native", f"UTC-native::{token}"),
         market_timezone_iana=_fact(payload, "market_timezone_iana", "America/New_York"),
@@ -152,8 +153,12 @@ def _normalise(value: Any) -> Any:
         return {"__enum_type__": type(value).__qualname__, "value": _normalise(value.value)}
     if type(value) is not str and isinstance(value, str):
         return {"__identity_type__": type(value).__qualname__, "value": str(value)}
-    if value is None or isinstance(value, (str, int, float, bool)):
+    if value is None or isinstance(value, (str, bool)):
         return value
+    if type(value) is int:
+        return {"__numeric_type__": "int", "value": value}
+    if type(value) is float:
+        return {"__numeric_type__": "float", "value": repr(value)}
     if isinstance(value, dict):
         return {
             str(key): _normalise(item)
@@ -164,7 +169,6 @@ def _normalise(value: Any) -> Any:
     if hasattr(value, "model_dump") or is_dataclass(value) or hasattr(value, "__dict__"):
         return {key: _normalise(item) for key, item in sorted(as_mapping(value).items())}
     return {"__type__": type(value).__qualname__, "value": str(value)}
-
 
 
 def _observe_public_method_return(method: Any, *args: Any, **kwargs: Any) -> Any:
@@ -185,14 +189,18 @@ def _observe_public_method_return(method: Any, *args: Any, **kwargs: Any) -> Any
         nonlocal observed
         if not observed and event == "return" and frame.f_code is code:
             observed = True
+            if os.environ.get("NVDA_PROOF_PID_NAMESPACE") != "1":
+                raise AssertionError("return-boundary proof requires a dedicated PID namespace")
+            # Stop every descendant in the dedicated PID namespace before exposing the
+            # public-return marker. kill(-1, ...) reaches descendants regardless of process
+            # group/session changes; PID 1 is excluded and stops itself immediately after
+            # emitting the marker. This prevents a forked/setsid lazy writer from advancing
+            # after the public command has returned.
+            os.kill(-1, signal.SIGSTOP)
             print(
                 json.dumps({"event": "public_method_return", "_pid": os.getpid()}),
                 flush=True,
             )
-            # Freeze the entire child process at the exact Python return event. A stdin
-            # barrier would release the GIL and permit a background/lazy commit thread to
-            # advance after the public command had already returned. SIGSTOP prevents every
-            # thread in this process from running until the parent proof explicitly resumes it.
             os.kill(os.getpid(), signal.SIGSTOP)
         return profiler
 
@@ -208,7 +216,6 @@ def _observe_public_method_return(method: Any, *args: Any, **kwargs: Any) -> Any
 
 def _policy_ref(token: str) -> Any:
     return policy_ref(f"scope::{token}", 1)
-
 
 
 def boundary_write_policy(payload: dict[str, Any]) -> dict[str, Any]:
@@ -294,9 +301,7 @@ def write_policy_only(payload: dict[str, Any]) -> dict[str, Any]:
 
 def read_policy(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
-    stored = _owner(payload).reads.get_capture_scope_policy(
-        _policy(payload).scope_policy_id, 1
-    )
+    stored = _owner(payload).reads.get_capture_scope_policy(_policy(payload).scope_policy_id, 1)
     return {"record": _normalise(stored), "policy_id": ids["policy_id"]}
 
 
@@ -419,8 +424,6 @@ def read_assessment_chain(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     chain = _owner(payload).reads.list_receipt_presence_assessments(ids["capture_id"])
     return {"records": [_normalise(item) for item in chain]}
-
-
 
 
 def retry_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
@@ -547,8 +550,6 @@ def read_reconcile(payload: dict[str, Any]) -> dict[str, Any]:
     return {"capture": _normalise(capture), "assessment": _normalise(assessment)}
 
 
-
-
 def reregister_policy_conflict(payload: dict[str, Any]) -> dict[str, Any]:
     token = payload["token"]
     owner = _owner(payload)
@@ -598,8 +599,6 @@ def append_stale_predecessor_assessment(payload: dict[str, Any]) -> dict[str, An
     except (TypeError, ValueError, KeyError):
         return {"rejected": True}
     return {"rejected": False}
-
-
 
 
 def admit_high_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
@@ -672,7 +671,6 @@ def admit_low_sequence_other_scope(payload: dict[str, Any]) -> dict[str, Any]:
     return {"record": _normalise(value)}
 
 
-
 def admit_next_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     value = admit_observation(
@@ -689,6 +687,32 @@ def admit_next_sequence_same_scope(payload: dict[str, Any]) -> dict[str, Any]:
         ),
     )
     return {"record": _normalise(value)}
+
+
+def boundary_descendant_canary(payload: dict[str, Any]) -> dict[str, Any]:
+    """Prove the return barrier stops a descendant that escapes the caller session."""
+
+    child = os.fork()
+    if child == 0:  # pragma: no cover - exercised in the isolated child process
+        os.setsid()
+        try:
+            while True:
+                print(json.dumps({"event": "descendant_tick"}), flush=True)
+                time.sleep(0.01)
+        finally:
+            os._exit(0)
+
+    def immediate_return() -> str:
+        return "returned"
+
+    try:
+        value = _observe_public_method_return(immediate_return)
+    finally:
+        with contextlib.suppress(ProcessLookupError):
+            os.kill(child, signal.SIGKILL)
+        with contextlib.suppress(ChildProcessError):
+            os.waitpid(child, 0)
+    return {"value": value}
 
 
 def filesystem_boundary(payload: dict[str, Any]) -> dict[str, Any]:
@@ -730,6 +754,7 @@ ACTIONS = {
     "boundary_write_observation": boundary_write_observation,
     "boundary_write_zero_assessment": boundary_write_zero_assessment,
     "boundary_write_one_assessment": boundary_write_one_assessment,
+    "boundary_descendant_canary": boundary_descendant_canary,
     "write_policy_only": write_policy_only,
     "read_policy": read_policy,
     "write_capture_only": write_capture_only,

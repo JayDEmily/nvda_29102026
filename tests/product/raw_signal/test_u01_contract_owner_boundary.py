@@ -4,12 +4,13 @@ import inspect
 import os
 import subprocess
 import sys
+import types
 from dataclasses import MISSING, dataclass, fields, is_dataclass
 from datetime import datetime, timedelta, timezone
 from enum import Enum
 from itertools import permutations
 from pathlib import Path
-from typing import Any, Literal, get_args, get_origin
+from typing import Annotated, Any, Literal, Union, get_args, get_origin, get_type_hints
 
 import pytest
 from tests.product.raw_signal._support import (
@@ -31,6 +32,7 @@ from tests.product.raw_signal._support import (
     identity_type,
     observation,
     policy,
+    raw_signal_catalogue_id,
     relation_contract,
     required_symbol,
     typed_identity,
@@ -64,6 +66,7 @@ CONTRACT_SHAPES: dict[str, dict[str, bool]] = {
         "observation_occurrence_id": True,
         "delivery_artifact_ref": True,
         "source_provider": True,
+        "raw_signal_catalogue_ids": False,
         "native_record": True,
         "source_product_api": False,
         "source_endpoint_callback": False,
@@ -351,20 +354,24 @@ def test_every_v1_utc_field_rejects_aware_non_utc_offset(name: str, field: str) 
         required_symbol(name)(**{**baseline, field: non_utc})
 
 
-@pytest.mark.parametrize(("symbol", "field", "expected"), [
-    (symbol, field, expected) for (symbol, field), expected in LITERAL_LAW.items()
-])
+@pytest.mark.parametrize(
+    ("symbol", "field", "expected"),
+    [(symbol, field, expected) for (symbol, field), expected in LITERAL_LAW.items()],
+)
 def test_finite_v1_discriminant_sets_are_exact(
     symbol: str, field: str, expected: frozenset[str]
 ) -> None:
     assert _declared_finite_values(symbol, field) == expected
 
 
-@pytest.mark.parametrize(("symbol", "field", "expected"), [
-    (symbol, field, expected)
-    for (symbol, field), values in LITERAL_LAW.items()
-    for expected in sorted(values)
-])
+@pytest.mark.parametrize(
+    ("symbol", "field", "expected"),
+    [
+        (symbol, field, expected)
+        for (symbol, field), values in LITERAL_LAW.items()
+        for expected in sorted(values)
+    ],
+)
 def test_every_allowed_v1_discriminant_value_is_accepted(
     symbol: str, field: str, expected: str
 ) -> None:
@@ -471,6 +478,205 @@ def test_inactive_identity_layer_value_cannot_substitute_for_active_identity(
         _construct(target_symbol, target_field, foreign_type("same-opaque-payload"))
 
 
+def _annotation_leaf_types(annotation: Any) -> set[Any]:
+    """Collect semantic leaf types while ignoring container/optional wrappers."""
+
+    origin = get_origin(annotation)
+    if origin is Annotated:
+        return _annotation_leaf_types(get_args(annotation)[0])
+    if origin in (Union, types.UnionType):
+        leaves: set[Any] = set()
+        for item in get_args(annotation):
+            if item is not type(None):
+                leaves.update(_annotation_leaf_types(item))
+        return leaves
+    if origin is not None:
+        leaves: set[Any] = set()
+        for item in get_args(annotation):
+            if item not in (type(None), Ellipsis):
+                leaves.update(_annotation_leaf_types(item))
+        return leaves
+    return {annotation}
+
+
+def test_every_public_facet_declares_exact_contract_and_identity_parameter_types() -> None:
+    owner = build_owner()
+    expected: list[tuple[Any, dict[str, type[Any]]]] = [
+        (
+            owner.commands.register_capture_scope_policy,
+            {"value": required_symbol("CaptureScopePolicyV1")},
+        ),
+        (
+            owner.commands.realise_scheduled_capture_occurrence,
+            {
+                "scope_policy_ref": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "scope_policy_ref"
+                ),
+                "capture_occurrence_id": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
+                ),
+            },
+        ),
+        (
+            owner.commands.admit_raw_observation_occurrence,
+            {"value": required_symbol("RawObservationOccurrenceV1")},
+        ),
+        (
+            owner.commands.derive_capture_receipt_evidence_relation,
+            {
+                "observation_occurrence_ref": identity_type(
+                    "CaptureReceiptEvidenceRelationV1", "observation_occurrence_ref"
+                ),
+                "capture_occurrence_ref": identity_type(
+                    "CaptureReceiptEvidenceRelationV1", "capture_occurrence_ref"
+                ),
+                "scope_policy_ref": identity_type(
+                    "CaptureReceiptEvidenceRelationV1", "scope_policy_ref"
+                ),
+            },
+        ),
+        (
+            owner.commands.append_capture_receipt_presence_assessment,
+            {
+                "assessment_occurrence_id": identity_type(
+                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
+                ),
+                "capture_occurrence_ref": identity_type(
+                    "CaptureReceiptPresenceAssessmentV1", "capture_occurrence_ref"
+                ),
+                "supersedes_assessment_ref": identity_type(
+                    "CaptureReceiptPresenceAssessmentV1", "supersedes_assessment_ref"
+                ),
+            },
+        ),
+        (
+            owner.commands.reconcile_owed_slots,
+            {
+                "scope_policy_ref": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "scope_policy_ref"
+                ),
+                "capture_occurrence_ids": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
+                ),
+                "assessment_occurrence_ids": identity_type(
+                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
+                ),
+            },
+        ),
+        (
+            owner.reads.get_capture_scope_policy,
+            {"scope_policy_id": identity_type("CaptureScopePolicyV1", "scope_policy_id")},
+        ),
+        (
+            owner.reads.get_scheduled_capture_occurrence,
+            {
+                "capture_occurrence_id": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
+                )
+            },
+        ),
+        (
+            owner.reads.get_raw_observation_occurrence,
+            {
+                "observation_occurrence_id": identity_type(
+                    "RawObservationOccurrenceV1", "observation_occurrence_id"
+                )
+            },
+        ),
+        (
+            owner.reads.get_receipt_presence_assessment,
+            {
+                "assessment_occurrence_id": identity_type(
+                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
+                )
+            },
+        ),
+        (
+            owner.reads.list_receipt_presence_assessments,
+            {
+                "capture_occurrence_id": identity_type(
+                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
+                )
+            },
+        ),
+    ]
+
+    for method, parameter_types in expected:
+        hints = get_type_hints(method)
+        for parameter, expected_type in parameter_types.items():
+            assert parameter in hints, (method, parameter, hints)
+            leaves = _annotation_leaf_types(hints[parameter])
+            assert leaves == {expected_type}, (method, parameter, hints[parameter], leaves)
+            assert not leaves.intersection({Any, object, str}), (method, parameter, leaves)
+
+
+def test_catalogue_id_field_annotation_contains_only_catalogue_identity() -> None:
+    annotation = field_annotation("RawObservationOccurrenceV1", "raw_signal_catalogue_ids")
+    assert _annotation_leaf_types(annotation) == {required_symbol("RawSignalCatalogueId")}
+
+
+def test_raw_signal_catalogue_identity_is_separately_typed_and_range_bound() -> None:
+    catalogue_cls = required_symbol("RawSignalCatalogueId")
+    assert isinstance(catalogue_cls, type)
+    assert type(raw_signal_catalogue_id("R001")) is catalogue_cls
+    assert str(raw_signal_catalogue_id("R001")) == "R001"
+    assert str(raw_signal_catalogue_id("R323")) == "R323"
+    assert catalogue_cls is not identity_type(
+        "RawObservationOccurrenceV1", "observation_occurrence_id"
+    )
+    assert catalogue_cls is not identity_type("RawObservationOccurrenceV1", "source_provider")
+    assert catalogue_cls is not identity_type("RawObservationOccurrenceV1", "delivery_artifact_ref")
+
+
+@pytest.mark.parametrize("bad_id", ["R000", "R324", "D001", "r001", "R01", "R001 "])
+def test_raw_signal_catalogue_identity_rejects_noncanonical_values(bad_id: str) -> None:
+    identity_cls = required_symbol("RawSignalCatalogueId")
+    with pytest.raises((TypeError, ValueError)):
+        identity_cls(bad_id)
+
+
+def test_observation_can_carry_multiple_catalogue_ids_without_conflating_native_identity() -> None:
+    value = observation(
+        raw_signal_catalogue_ids=("R033", "R034"),
+        native_identifier="provider-native-book-record-001",
+        native_record={"Bid Size": 0, "Bid Price": 123.45678901234567},
+    )
+    assert tuple(str(item) for item in value.raw_signal_catalogue_ids) == ("R033", "R034")
+    assert value.native_identifier == "provider-native-book-record-001"
+    assert all(
+        type(item) is required_symbol("RawSignalCatalogueId")
+        for item in value.raw_signal_catalogue_ids
+    )
+    assert type(value.raw_signal_catalogue_ids[0]) is not type(value.observation_occurrence_id)
+    assert type(value.raw_signal_catalogue_ids[0]) is not type(value.delivery_artifact_ref)
+
+
+def test_catalogue_id_carriage_uses_absence_not_empty_or_duplicate_collections() -> None:
+    assert observation(raw_signal_catalogue_ids=None).raw_signal_catalogue_ids is None
+    cls = required_symbol("RawObservationOccurrenceV1")
+    baseline = as_mapping(observation())
+    with pytest.raises((TypeError, ValueError)):
+        cls(**{**baseline, "raw_signal_catalogue_ids": ()})
+    duplicate = raw_signal_catalogue_id("R034")
+    with pytest.raises((TypeError, ValueError)):
+        cls(**{**baseline, "raw_signal_catalogue_ids": (duplicate, duplicate)})
+
+
+def test_catalogue_identity_cannot_substitute_for_provider_or_occurrence_identity_and_reverse() -> (
+    None
+):
+    catalogue = raw_signal_catalogue_id("R034")
+    with pytest.raises((TypeError, ValueError)):
+        observation(observation_occurrence_id=catalogue)
+    with pytest.raises((TypeError, ValueError)):
+        observation(source_provider=catalogue)
+    wrong = typed_identity("RawObservationOccurrenceV1", "observation_occurrence_id", "R034")
+    cls = required_symbol("RawObservationOccurrenceV1")
+    baseline = as_mapping(observation())
+    with pytest.raises((TypeError, ValueError)):
+        cls(**{**baseline, "raw_signal_catalogue_ids": (wrong,)})
+
+
 @pytest.mark.parametrize(
     "field",
     [
@@ -555,7 +761,6 @@ def test_owner_uses_public_production_factory_with_separate_command_and_read_fac
         assert callable(getattr(owner.reads, name, None)), name
 
 
-
 TYPECHECK_DIR = Path(__file__).resolve().parent / "typecheck"
 TYPECHECK_POSITIVE = TYPECHECK_DIR / "public_seam_positive.py"
 TYPECHECK_NEGATIVE = TYPECHECK_DIR / "public_seam_negative.py"
@@ -592,9 +797,7 @@ def test_public_command_and_read_facets_are_statically_typed_without_any() -> No
 def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> None:
     source_lines = TYPECHECK_NEGATIVE.read_text(encoding="utf-8").splitlines()
     expected_lines = {
-        number
-        for number, line in enumerate(source_lines, start=1)
-        if "STATIC_NEGATIVE" in line
+        number for number, line in enumerate(source_lines, start=1) if "STATIC_NEGATIVE" in line
     }
     assert len(expected_lines) == 11
 

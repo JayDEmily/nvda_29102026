@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import ast
+import contextlib
 import importlib
 import inspect
 import json
 import os
+import select
 import shutil
 import signal
 import subprocess
@@ -20,6 +22,7 @@ from typing import Any
 import pytest
 from tests.product.raw_signal._support import (
     admit_observation,
+    append_assessment,
     as_mapping,
     assessment_contract,
     build_owner,
@@ -68,7 +71,7 @@ def _postgres_socket_dir(dsn: str) -> str:
     return host
 
 
-def _isolated_command(dsn: str) -> list[str]:
+def _isolated_command(dsn: str, *, pid_namespace: bool = False) -> list[str]:
     unshare = shutil.which("unshare")
     if unshare is None:
         pytest.fail("unshare is required for the exclusive persistence proof boundary")
@@ -112,24 +115,39 @@ mkdir -p "$ROOTFS/run/proof-home" "$ROOTFS/run/proof-xdg" \
     "$ROOTFS/run/proof-tmp" "$ROOTFS/run/proof-work"
 cat /proc/self/mountinfo > "$ROOTFS/run/proof-mountinfo"
 export NVDA_PROOF_ROOTFS="$ROOTFS"
+export NVDA_PROOF_PID_NAMESPACE="$4"
 cd "$ROOTFS/run/proof-work"
-exec chroot "$ROOTFS" "$1" "$2"
+if [ "$4" = "1" ]; then
+    # Keep PID 1 as a proof supervisor. The Python writer runs as a non-init child so
+    # SIGSTOP has ordinary semantics at the exact public-return boundary.
+    chroot "$ROOTFS" "$1" "$2"
+else
+    exec chroot "$ROOTFS" "$1" "$2"
+fi
 """
-    return [
+    command = [
         unshare,
         "--user",
         "--map-root-user",
         "--mount",
         "--net",
-        "--fork",
-        "sh",
-        "-c",
-        script,
-        "sh",
-        sys.executable,
-        str(PROBE),
-        socket_dir,
     ]
+    if pid_namespace:
+        command.append("--pid")
+    command.extend(
+        [
+            "--fork",
+            "sh",
+            "-c",
+            script,
+            "sh",
+            sys.executable,
+            str(PROBE),
+            socket_dir,
+            "1" if pid_namespace else "0",
+        ]
+    )
+    return command
 
 
 def _probe_env(workdir: Path) -> dict[str, str]:
@@ -226,9 +244,7 @@ def _start_hold_probe(
     )
     assert process.stdin is not None
     assert process.stdout is not None
-    payload = json.dumps(
-        {"action": action, "dsn": dsn, "token": token, "hold_open": True, **extra}
-    )
+    payload = json.dumps({"action": action, "dsn": dsn, "token": token, "hold_open": True, **extra})
     process.stdin.write(payload + "\n")
     process.stdin.flush()
     first = process.stdout.readline().strip()
@@ -253,7 +269,7 @@ def _start_return_boundary_probe(
     workdir = tmp_path / f"return-{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
     process = subprocess.Popen(
-        _isolated_command(dsn),
+        _isolated_command(dsn, pid_namespace=True),
         cwd=ROOT,
         env=_probe_env(workdir),
         stdin=subprocess.PIPE,
@@ -265,36 +281,122 @@ def _start_return_boundary_probe(
     assert process.stdout is not None
     process.stdin.write(json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n")
     process.stdin.flush()
-    first = process.stdout.readline().strip()
-    if not first:
-        stderr = process.stderr.read() if process.stderr is not None else ""
-        raise AssertionError(f"return-boundary probe produced no marker: {stderr}")
-    marker = json.loads(first)
-    assert marker["event"] == "public_method_return"
+    marker: dict[str, Any] | None = None
+    while marker is None:
+        line = process.stdout.readline().strip()
+        if not line:
+            stderr = process.stderr.read() if process.stderr is not None else ""
+            raise AssertionError(f"return-boundary probe produced no marker: {stderr}")
+        candidate = json.loads(line)
+        if candidate.get("event") == "public_method_return":
+            marker = candidate
     assert process.poll() is None, "writer exited before public-return boundary inspection"
-    _wait_for_stopped_process(int(marker["_pid"]))
+    namespace_pid = marker.get("_pid")
+    assert isinstance(namespace_pid, int), marker
+    _wait_for_stopped_process_tree(process, namespace_pid)
     return process, marker
 
 
-def _wait_for_stopped_process(pid: int, *, timeout: float = 5.0) -> None:
-    deadline = time.monotonic() + timeout
-    status_path = Path(f"/proc/{pid}/status")
-    while time.monotonic() < deadline:
+def _direct_child_pids(parent_pid: int) -> list[int]:
+    """Return host-visible children by PPid, including across a nested PID namespace."""
+
+    children: list[int] = []
+    for proc_dir in Path("/proc").iterdir():
+        if not proc_dir.name.isdigit():
+            continue
         try:
-            status = status_path.read_text(encoding="utf-8")
-        except FileNotFoundError:
-            pytest.fail(f"return-boundary child {pid} exited before it could be frozen")
-        state = next((line for line in status.splitlines() if line.startswith("State:")), "")
-        if "T (stopped)" in state or "t (tracing stop)" in state:
-            return
+            status = (proc_dir / "status").read_text(encoding="utf-8")
+            ppid_line = next(line for line in status.splitlines() if line.startswith("PPid:"))
+        except (FileNotFoundError, ProcessLookupError, StopIteration, PermissionError):
+            continue
+        if int(ppid_line.split()[1]) == parent_pid:
+            children.append(int(proc_dir.name))
+    return children
+
+
+def _descendant_pids(root_pid: int) -> list[int]:
+    """Return all live descendants of a host-visible process, depth first."""
+
+    found: list[int] = []
+    pending = [root_pid]
+    seen = {root_pid}
+    while pending:
+        parent = pending.pop()
+        for child in _direct_child_pids(parent):
+            if child in seen:
+                continue
+            seen.add(child)
+            found.append(child)
+            pending.append(child)
+    return found
+
+
+def _process_is_stopped(pid: int) -> bool:
+    try:
+        status = Path(f"/proc/{pid}/status").read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return False
+    state = next((line for line in status.splitlines() if line.startswith("State:")), "")
+    return "T (stopped)" in state or "t (tracing stop)" in state
+
+
+def _namespace_pid(pid: int) -> int | None:
+    try:
+        status = Path(f"/proc/{pid}/status").read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return None
+    nspid = next((line for line in status.splitlines() if line.startswith("NSpid:")), "")
+    values = nspid.split()[1:]
+    return int(values[-1]) if values else None
+
+
+def _writer_pid(process: subprocess.Popen[str], namespace_pid: int) -> int | None:
+    for pid in _descendant_pids(process.pid):
+        if _namespace_pid(pid) == namespace_pid:
+            return pid
+    return None
+
+
+def _writer_process_tree(process: subprocess.Popen[str], namespace_pid: int) -> list[int]:
+    writer = _writer_pid(process, namespace_pid)
+    if writer is None:
+        return []
+    return [writer, *_descendant_pids(writer)]
+
+
+def _wait_for_stopped_process_tree(
+    process: subprocess.Popen[str], namespace_pid: int, *, timeout: float = 5.0
+) -> list[int]:
+    deadline = time.monotonic() + timeout
+    last_tree: list[int] = []
+    while time.monotonic() < deadline:
+        last_tree = _writer_process_tree(process, namespace_pid)
+        if last_tree and all(_process_is_stopped(pid) for pid in last_tree):
+            return last_tree
+        if process.poll() is not None:
+            pytest.fail("return-boundary writer tree exited before it could be frozen")
         time.sleep(0.01)
-    pytest.fail(f"return-boundary child {pid} did not enter whole-process SIGSTOP")
+    states = {pid: _process_is_stopped(pid) for pid in last_tree}
+    pytest.fail(
+        "return-boundary writer tree did not enter whole-tree SIGSTOP: "
+        f"namespace_pid={namespace_pid}, tree={last_tree}, stopped={states}"
+    )
+
+
+def _signal_writer_tree(
+    process: subprocess.Popen[str], namespace_pid: int, sig: signal.Signals
+) -> None:
+    for pid in reversed(_writer_process_tree(process, namespace_pid)):
+        with contextlib.suppress(ProcessLookupError):
+            os.kill(pid, sig)
 
 
 def _release_return_boundary_probe(
     process: subprocess.Popen[str], marker: dict[str, Any]
 ) -> dict[str, Any]:
-    os.kill(int(marker["_pid"]), signal.SIGCONT)
+    namespace_pid = marker.get("_pid")
+    assert isinstance(namespace_pid, int), marker
+    _signal_writer_tree(process, namespace_pid, signal.SIGCONT)
     stdout, stderr = process.communicate(timeout=10)
     assert process.returncode == 0, stdout + stderr
     lines = [line for line in stdout.splitlines() if line.strip()]
@@ -302,10 +404,10 @@ def _release_return_boundary_probe(
     return json.loads(lines[-1])
 
 
-def _kill_return_boundary_probe(
-    process: subprocess.Popen[str], marker: dict[str, Any]
-) -> None:
-    os.kill(int(marker["_pid"]), signal.SIGKILL)
+def _kill_return_boundary_probe(process: subprocess.Popen[str], marker: dict[str, Any]) -> None:
+    namespace_pid = marker.get("_pid")
+    assert isinstance(namespace_pid, int), marker
+    _signal_writer_tree(process, namespace_pid, signal.SIGKILL)
     stdout, stderr = process.communicate(timeout=10)
     assert process.returncode is not None
     assert process.returncode != 0, stdout + stderr
@@ -396,12 +498,15 @@ def _canonical(value: Any) -> Any:
         return {"__enum_type__": type(value).__qualname__, "value": _canonical(value.value)}
     if type(value) is not str and isinstance(value, str):
         return {"__identity_type__": type(value).__qualname__, "value": str(value)}
-    if value is None or isinstance(value, (str, int, float, bool)):
+    if value is None or isinstance(value, (str, bool)):
         return value
+    if type(value) is int:
+        return {"__numeric_type__": "int", "value": value}
+    if type(value) is float:
+        return {"__numeric_type__": "float", "value": repr(value)}
     if isinstance(value, dict):
         return {
-            str(k): _canonical(v)
-            for k, v in sorted(value.items(), key=lambda item: str(item[0]))
+            str(k): _canonical(v) for k, v in sorted(value.items(), key=lambda item: str(item[0]))
         }
     if isinstance(value, (list, tuple)):
         return [_canonical(item) for item in value]
@@ -417,7 +522,10 @@ def _authoritative_facts() -> dict[str, Any]:
         "delivery_artifact_ref": f"delivery-authority-{uuid.uuid4().hex}",
         "source_provider": f"provider-authority-{uuid.uuid4().hex}",
         "native_identifier": f"native-authority-{uuid.uuid4().hex}",
+        "raw_signal_catalogue_ids": ["R033", "R034"],
         "native_record": {
+            "Bid Size": 0,
+            "Bid Price": 123.45678901234567,
             "High Entropy Alpha": uuid.uuid4().hex,
             "High Entropy Beta": uuid.uuid4().hex,
             "Provider Null": None,
@@ -454,6 +562,7 @@ def _expected_records(token: str, facts: dict[str, Any]) -> dict[str, Any]:
         observation_occurrence_id=f"observation::{token}",
         delivery_artifact_ref=facts["delivery_artifact_ref"],
         source_provider=facts["source_provider"],
+        raw_signal_catalogue_ids=tuple(facts["raw_signal_catalogue_ids"]),
         native_identifier=facts["native_identifier"],
         native_record=facts["native_record"],
         source_product_api=facts["source_product_api"],
@@ -495,6 +604,7 @@ def _expected_records(token: str, facts: dict[str, Any]) -> dict[str, Any]:
         "zero": _canonical(zero_value),
         "one": _canonical(one_value),
     }
+
 
 def _without_pid(result: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in result.items() if key != "_pid"}
@@ -634,14 +744,17 @@ def test_semantic_state_moves_with_postgresql_database_clone_and_not_original_pr
         _create_database(admin_dsn, clone_db, template=source_db)
         _drop_database(admin_dsn, source_db)
 
-        assert _run_probe(tmp_path, "read_policy", dsn=clone_dsn, token=token)["record"] == (
-            expected["policy"]
+        assert (
+            _run_probe(tmp_path, "read_policy", dsn=clone_dsn, token=token)["record"]
+            == (expected["policy"])
         )
-        assert _run_probe(tmp_path, "read_capture", dsn=clone_dsn, token=token)["record"] == (
-            expected["capture"]
+        assert (
+            _run_probe(tmp_path, "read_capture", dsn=clone_dsn, token=token)["record"]
+            == (expected["capture"])
         )
-        assert _run_probe(tmp_path, "read_observation", dsn=clone_dsn, token=token)["record"] == (
-            expected["observation"]
+        assert (
+            _run_probe(tmp_path, "read_observation", dsn=clone_dsn, token=token)["record"]
+            == (expected["observation"])
         )
         chain = _run_probe(tmp_path, "read_assessment_chain", dsn=clone_dsn, token=token)
         assert chain["records"] == [expected["zero"], expected["one"]]
@@ -651,6 +764,36 @@ def test_semantic_state_moves_with_postgresql_database_clone_and_not_original_pr
     finally:
         _drop_database(admin_dsn, clone_db)
         _drop_database(admin_dsn, source_db)
+
+
+def test_public_return_barrier_stops_separate_session_descendant_process(
+    tmp_path: Path,
+) -> None:
+    process, marker = _start_return_boundary_probe(
+        tmp_path,
+        "boundary_descendant_canary",
+        dsn=_dsn(),
+        token=_token("descendant-canary"),
+    )
+    try:
+        namespace_pid = marker.get("_pid")
+        assert isinstance(namespace_pid, int), marker
+        descendants = _wait_for_stopped_process_tree(process, namespace_pid)
+        assert len(descendants) >= 2, (
+            "canary requires both the PID-namespace probe and its separate-session descendant",
+            descendants,
+        )
+        assert process.stdout is not None
+        readable, _, _ = select.select([process.stdout], [], [], 0.25)
+        assert not readable, (
+            "separate-session descendant emitted output after the public-return boundary; "
+            "whole execution tree was not frozen"
+        )
+        result = _release_return_boundary_probe(process, marker)
+        assert result["value"] == "returned"
+    finally:
+        if process.poll() is None:
+            _kill_return_boundary_probe(process, marker)
 
 
 def test_command_return_is_durable_if_writer_is_killed_immediately_after_success(
@@ -806,8 +949,9 @@ def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_aut
     assert _without_pid(
         _run_probe(tmp_path, "read_fault_observation_absent", dsn=dsn, token=token)
     ) == {"absent": True}
-    assert _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)["record"] == (
-        expected["observation"]
+    assert (
+        _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)["record"]
+        == (expected["observation"])
     )
 
     faulted_assessment = _run_probe(tmp_path, "fault_assessment", dsn=dsn, token=token)
@@ -815,9 +959,10 @@ def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_aut
     assert _without_pid(
         _run_probe(tmp_path, "read_fault_assessment_absent", dsn=dsn, token=token)
     ) == {"absent": True}
-    assert _run_probe(tmp_path, "read_assessment", dsn=dsn, token=token, which="one")[
-        "record"
-    ] == expected["one"]
+    assert (
+        _run_probe(tmp_path, "read_assessment", dsn=dsn, token=token, which="one")["record"]
+        == expected["one"]
+    )
 
 
 def test_postgresql_is_only_configured_cross_process_semantic_source_for_complete_facts(
@@ -871,6 +1016,49 @@ def test_postgresql_is_only_configured_cross_process_semantic_source_for_complet
     assert poisoned.returncode != 0
 
 
+@pytest.mark.parametrize(
+    ("catalogue_id", "field", "value", "units"),
+    [
+        ("R084", "Bid Option Computation.impliedVolatility", -0.000000000123456789, "volatility"),
+        ("R246", "DGS3MO", -0.375, "Percent"),
+    ],
+)
+def test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_and_null(
+    tmp_path: Path,
+    catalogue_id: str,
+    field: str,
+    value: float,
+    units: str,
+) -> None:
+    token = _token(f"numeric-{catalogue_id.lower()}")
+    facts = _authoritative_facts()
+    facts.update(
+        {
+            "raw_signal_catalogue_ids": [catalogue_id],
+            "native_record": {field: value, "Provider Null": None},
+            "native_units": units,
+        }
+    )
+    if catalogue_id == "R246":
+        facts.update(
+            {
+                "source_temporal_kind": "date_only",
+                "source_timestamp_raw": "2026-09-20",
+                "source_timezone_native": None,
+            }
+        )
+    written = _run_probe(tmp_path, "write_observation_only", dsn=_dsn(), token=token, facts=facts)
+    reread = _run_probe(tmp_path, "read_observation", dsn=_dsn(), token=token)
+    expected = _expected_records(token, facts)["observation"]
+    assert written["record"] == expected
+    assert reread["record"] == expected
+    assert reread["record"]["native_record"][field] == {
+        "__numeric_type__": "float",
+        "value": repr(value),
+    }
+    assert reread["record"]["native_record"]["Provider Null"] is None
+
+
 def test_durable_retry_and_conflicting_reuse_cross_process_boundaries(tmp_path: Path) -> None:
     dsn = _dsn()
     token = _token("retry")
@@ -907,9 +1095,9 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
     zero = _run_probe(tmp_path, "write_zero_assessment_only", dsn=dsn, token=token)
     zero_retry = _run_probe(tmp_path, "retry_zero_assessment", dsn=dsn, token=token)
     assert zero_retry["record"] == zero["record"]
-    assert _without_pid(
-        _run_probe(tmp_path, "conflict_zero_assessment", dsn=dsn, token=token)
-    ) == {"rejected": True}
+    assert _without_pid(_run_probe(tmp_path, "conflict_zero_assessment", dsn=dsn, token=token)) == {
+        "rejected": True
+    }
     _run_probe(tmp_path, "write_observation_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "derive_relation_only", dsn=dsn, token=token)
     _run_probe(tmp_path, "write_one_assessment_only", dsn=dsn, token=token)
@@ -936,9 +1124,7 @@ def test_restart_preserves_policy_capture_assessment_and_scope_high_water_invari
         dsn=dsn,
         token=token,
     )
-    assert immediate["record"]["supersedes_assessment_ref"]["value"] == (
-        f"assessment-one::{token}"
-    )
+    assert immediate["record"]["supersedes_assessment_ref"]["value"] == (f"assessment-one::{token}")
     assert _without_pid(
         _run_probe(tmp_path, "append_stale_predecessor_assessment", dsn=dsn, token=token)
     ) == {"rejected": True}
@@ -1033,9 +1219,7 @@ def test_default_postgresql_path_exposes_exact_record_only_storage_protocol() ->
     assert ports, "default PostgreSQL owner path hides its technical persistence port"
     for port in ports:
         public_callables = {
-            name
-            for name in dir(port)
-            if not name.startswith("_") and callable(getattr(port, name))
+            name for name in dir(port) if not name.startswith("_") and callable(getattr(port, name))
         }
         assert public_callables == set(_STORAGE_PROTOCOL_BOUND_ARITY), (
             type(port),
@@ -1113,6 +1297,117 @@ def test_default_postgresql_storage_port_preserves_owner_decided_assessment_with
     assert fresh.outcome == "zero_received"
 
 
+def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_authority(
+    tmp_path: Path,
+) -> None:
+    del tmp_path
+    base_dsn = _dsn()
+    admin_dsn = _admin_dsn(base_dsn)
+    suffix = uuid.uuid4().hex[:12]
+    source_db = f"nvda_i9_src_{suffix}"
+    true_db = f"nvda_i9_true_{suffix}"
+    false_db = f"nvda_i9_false_{suffix}"
+    source_dsn = _dsn_with_database(base_dsn, source_db)
+    true_dsn = _dsn_with_database(base_dsn, true_db)
+    false_dsn = _dsn_with_database(base_dsn, false_db)
+    token = _token("eligibility-invariance")
+    facts = _authoritative_facts()
+
+    _create_database(admin_dsn, source_db)
+    try:
+        source_owner = build_owner(
+            postgres_dsn=source_dsn, eligibility_resolver=lambda _o, _p: True
+        )
+        stored_policy = register_policy(
+            source_owner,
+            policy(
+                scope_policy_id=f"scope::{token}",
+                eligibility_policy_ref=facts["eligibility_policy_ref"],
+            ),
+        )
+        stored_capture = realise_capture(
+            source_owner,
+            scope_policy_ref=f"scope::{token}@1",
+            capture_occurrence_id=f"capture::{token}",
+            slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        )
+        stored_observation = admit_observation(
+            source_owner,
+            observation(
+                observation_occurrence_id=f"observation::{token}",
+                delivery_artifact_ref=facts["delivery_artifact_ref"],
+                source_provider=facts["source_provider"],
+                raw_signal_catalogue_ids=tuple(facts["raw_signal_catalogue_ids"]),
+                native_identifier=facts["native_identifier"],
+                native_record=facts["native_record"],
+                native_units=facts["native_units"],
+                received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
+                ingestion_sequence=41,
+                ingestion_sequence_scope=facts["ingestion_sequence_scope"],
+            ),
+        )
+        _terminate_database_connections(admin_dsn, source_db)
+        _create_database(admin_dsn, true_db, template=source_db)
+        _create_database(admin_dsn, false_db, template=source_db)
+
+        true_owner = build_owner(postgres_dsn=true_dsn, eligibility_resolver=lambda _o, _p: True)
+        false_owner = build_owner(postgres_dsn=false_dsn, eligibility_resolver=lambda _o, _p: False)
+        true_ports = _find_default_persistence_ports(true_owner)
+        false_ports = _find_default_persistence_ports(false_owner)
+        assert len(true_ports) == len(false_ports) == 1
+
+        def storage_state(port: Any) -> dict[str, Any]:
+            return {
+                "policy": _canonical(
+                    port.get_policy(
+                        stored_policy.scope_policy_id, stored_policy.scope_policy_version
+                    )
+                ),
+                "capture": _canonical(port.get_capture(stored_capture.capture_occurrence_id)),
+                "observation": _canonical(
+                    port.get_observation(stored_observation.observation_occurrence_id)
+                ),
+            }
+
+        before_true = storage_state(true_ports[0])
+        before_false = storage_state(false_ports[0])
+        assert before_true == before_false
+
+        true_relation = true_owner.commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=stored_observation.observation_occurrence_id,
+            capture_occurrence_ref=stored_capture.capture_occurrence_id,
+            scope_policy_ref=stored_capture.scope_policy_ref,
+        )
+        false_relation = false_owner.commands.derive_capture_receipt_evidence_relation(
+            observation_occurrence_ref=stored_observation.observation_occurrence_id,
+            capture_occurrence_ref=stored_capture.capture_occurrence_id,
+            scope_policy_ref=stored_capture.scope_policy_ref,
+        )
+        assert true_relation is not None
+        assert false_relation is None
+
+        true_assessment = append_assessment(
+            true_owner,
+            assessment_occurrence_id=f"assessment-eligibility::{token}",
+            capture_occurrence_ref=stored_capture.capture_occurrence_id,
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+        )
+        false_assessment = append_assessment(
+            false_owner,
+            assessment_occurrence_id=f"assessment-eligibility::{token}",
+            capture_occurrence_ref=stored_capture.capture_occurrence_id,
+            evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, tzinfo=UTC),
+        )
+        assert str(true_assessment.outcome) == "one_or_more_received"
+        assert str(false_assessment.outcome) == "zero_received"
+        assert storage_state(true_ports[0]) == before_true
+        assert storage_state(false_ports[0]) == before_false
+        assert storage_state(true_ports[0]) == storage_state(false_ports[0])
+    finally:
+        for dbname in (false_db, true_db, source_db):
+            _drop_database(admin_dsn, dbname)
+
+
 def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_service() -> None:
     disallowed_import_roots = {
         "sqlite3",
@@ -1129,6 +1424,9 @@ def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_ser
         "socket",
         "subprocess",
         "multiprocessing",
+        "concurrent",
+        "posix",
+        "pty",
         "mmap",
         "ctypes",
         "importlib",
@@ -1154,7 +1452,18 @@ def test_owner_package_has_no_alternate_durable_backend_or_external_semantic_ser
                 if isinstance(node.func, ast.Attribute):
                     assert node.func.attr not in {"write_text", "write_bytes"}, path
                     if isinstance(node.func.value, ast.Name) and node.func.value.id == "os":
-                        assert node.func.attr not in {"open", "write", "pwrite"}, path
+                        assert node.func.attr not in {
+                            "open",
+                            "write",
+                            "pwrite",
+                            "fork",
+                            "forkpty",
+                            "posix_spawn",
+                            "posix_spawnp",
+                            "system",
+                            "popen",
+                        }, path
+                    assert node.func.attr != "ProcessPoolExecutor", path
                     if node.func.attr == "open":
                         mode = None
                         if len(node.args) >= 2 and isinstance(node.args[1], ast.Constant):

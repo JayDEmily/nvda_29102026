@@ -110,9 +110,7 @@ def typed_identity(symbol: str, field: str, opaque_payload: str) -> Any:
     try:
         value = identity_cls(opaque_payload)
     except Exception as exc:  # pragma: no cover - error detail belongs to implementation
-        pytest.fail(
-            f"cannot construct {symbol}.{field} identity from opaque payload: {exc}"
-        )
+        pytest.fail(f"cannot construct {symbol}.{field} identity from opaque payload: {exc}")
     if type(value) is str:
         pytest.fail(f"{symbol}.{field} collapses to the universal runtime str type")
     return value
@@ -178,11 +176,25 @@ def capture_contract(
     )
 
 
+def raw_signal_catalogue_id(value: str) -> Any:
+    """Construct one separately typed canonical Raw Signal catalogue identity."""
+
+    identity_cls = required_symbol("RawSignalCatalogueId")
+    try:
+        result = identity_cls(value)
+    except Exception as exc:  # pragma: no cover - implementation supplies error detail
+        pytest.fail(f"cannot construct RawSignalCatalogueId from {value!r}: {exc}")
+    if type(result) is str:
+        pytest.fail("RawSignalCatalogueId collapses to the universal runtime str type")
+    return result
+
+
 def observation(
     *,
     observation_occurrence_id: Any = "observation-001",
     delivery_artifact_ref: Any = "delivery-001",
     source_provider: Any = "provider.fixture",
+    raw_signal_catalogue_ids: tuple[Any, ...] | None = None,
     native_identifier: str | None = "provider-native-001",
     native_record: dict[str, Any] | None = None,
     source_product_api: str | None = None,
@@ -207,9 +219,7 @@ def observation(
     cls = required_symbol("RawObservationOccurrenceV1")
     return cls(
         concept_id=_identity("RawObservationOccurrenceV1", "concept_id", OBSERVATION_CONCEPT),
-        contract_id=_identity(
-            "RawObservationOccurrenceV1", "contract_id", OBSERVATION_CONTRACT
-        ),
+        contract_id=_identity("RawObservationOccurrenceV1", "contract_id", OBSERVATION_CONTRACT),
         observation_occurrence_id=_identity(
             "RawObservationOccurrenceV1", "observation_occurrence_id", observation_occurrence_id
         ),
@@ -217,6 +227,12 @@ def observation(
             "RawObservationOccurrenceV1", "delivery_artifact_ref", delivery_artifact_ref
         ),
         source_provider=_identity("RawObservationOccurrenceV1", "source_provider", source_provider),
+        raw_signal_catalogue_ids=None
+        if raw_signal_catalogue_ids is None
+        else tuple(
+            raw_signal_catalogue_id(item) if isinstance(item, str) else item
+            for item in raw_signal_catalogue_ids
+        ),
         native_record=native_record
         if native_record is not None
         else {"Bid Price": "123.45", "Provider Null": None},
@@ -254,12 +270,8 @@ def relation_contract(
 ) -> Any:
     cls = required_symbol("CaptureReceiptEvidenceRelationV1")
     return cls(
-        concept_id=_identity(
-            "CaptureReceiptEvidenceRelationV1", "concept_id", RELATION_CONCEPT
-        ),
-        contract_id=_identity(
-            "CaptureReceiptEvidenceRelationV1", "contract_id", RELATION_CONTRACT
-        ),
+        concept_id=_identity("CaptureReceiptEvidenceRelationV1", "concept_id", RELATION_CONCEPT),
+        contract_id=_identity("CaptureReceiptEvidenceRelationV1", "contract_id", RELATION_CONTRACT),
         units="not_applicable",
         observation_occurrence_ref=_identity(
             "CaptureReceiptEvidenceRelationV1",

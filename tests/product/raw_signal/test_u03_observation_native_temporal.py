@@ -220,7 +220,6 @@ def test_ingestion_sequence_is_local_to_scope_not_global() -> None:
     assert first.ingestion_sequence_scope != second.ingestion_sequence_scope
 
 
-
 def test_ingestion_sequence_high_water_survives_scope_interleaving() -> None:
     owner = build_owner()
     scope_a = typed_identity("RawObservationOccurrenceV1", "ingestion_sequence_scope", "scope-A")
@@ -260,6 +259,7 @@ def test_ingestion_sequence_high_water_survives_scope_interleaving() -> None:
     )
     assert accepted.ingestion_sequence == 11
     assert accepted.ingestion_sequence_scope == scope_a
+
 
 def test_same_observation_identity_is_idempotent_only_for_identical_content() -> None:
     owner = build_owner()
@@ -302,3 +302,41 @@ def test_observation_command_rejects_typed_cross_layer_identity_substitution() -
         admit_observation(owner, observation(observation_occurrence_id=delivery_id))
     with pytest.raises((TypeError, ValueError)):
         admit_observation(owner, observation(delivery_artifact_ref=observation_id))
+
+
+@pytest.mark.parametrize(
+    ("catalogue_id", "field", "value", "units"),
+    [
+        ("R033", "Bid Size", 0, "contracts/shares"),
+        ("R034", "Bid Price", 123.45678901234567, "price"),
+        (
+            "R084",
+            "Bid Option Computation.impliedVolatility",
+            -0.000000000123456789,
+            "volatility",
+        ),
+        ("R246", "DGS3MO", -0.375, "Percent"),
+    ],
+)
+def test_catalogue_backed_native_numeric_values_preserve_exact_value_and_runtime_type(
+    catalogue_id: str, field: str, value: int | float, units: str
+) -> None:
+    """Numeric specimens are fidelity canaries, not admitted range/bounds validation."""
+
+    owner = build_owner()
+    stored = admit_observation(
+        owner,
+        observation(
+            raw_signal_catalogue_ids=(catalogue_id,),
+            native_record={field: value, "Provider Null": None},
+            native_units=units,
+        ),
+    )
+    reread = owner.reads.get_raw_observation_occurrence(stored.observation_occurrence_id)
+    assert tuple(str(item) for item in stored.raw_signal_catalogue_ids) == (catalogue_id,)
+    assert stored.native_record[field] == value
+    assert type(stored.native_record[field]) is type(value)
+    assert stored.native_record["Provider Null"] is None
+    assert reread.native_record[field] == value
+    assert type(reread.native_record[field]) is type(value)
+    assert reread.native_units == units
