@@ -14,6 +14,7 @@ import subprocess
 import sys
 import threading
 import time
+import types
 import uuid
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
@@ -42,6 +43,7 @@ PROBE = ROOT / "tests/product/raw_signal/_process_probe.py"
 OWNER_PACKAGE = ROOT / "src/nvda_desk/raw_signal_occurrence_truth"
 DEGRADED_TCP_ENV = "NVDA_U05_DEGRADED_TCP"
 DEGRADED_TCP_BOUNDARY = "DEGRADED TCP VALIDATION"
+_EXTERNAL_CAPABILITY_CANARY: Any = None
 
 
 def _dsn() -> str:
@@ -270,6 +272,43 @@ def test_degraded_tcp_probe_uses_confined_work_directories(
     assert all(Path(env[key]).is_dir() for key in ("HOME", "TMPDIR", "XDG_DATA_HOME"))
 
 
+def test_each_commit_ack_action_prepares_owner_before_ready_and_write() -> None:
+    """Bind every durable-success probe to owner construction, READY/GO, then semantic write."""
+
+    module = ast.parse(PROBE.read_text(encoding="utf-8"))
+    functions = {
+        node.name: node
+        for node in module.body
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef))
+    }
+    for action in (
+        "boundary_write_policy",
+        "boundary_write_capture",
+        "boundary_write_observation",
+        "boundary_write_zero_assessment",
+        "boundary_write_one_assessment",
+    ):
+        function = functions[action]
+        calls = {
+            node.func.id: node.lineno
+            for node in ast.walk(function)
+            if isinstance(node, ast.Call)
+            and isinstance(node.func, ast.Name)
+            and node.func.id
+            in {"_owner", "_await_semantic_write_release", "_observe_public_method_return"}
+        }
+        assert calls.keys() == {
+            "_owner",
+            "_await_semantic_write_release",
+            "_observe_public_method_return",
+        }, (action, calls)
+        assert (
+            calls["_owner"]
+            < calls["_await_semantic_write_release"]
+            < calls["_observe_public_method_return"]
+        ), (action, calls)
+
+
 def _json_transport_default(value: Any) -> Any:
     if isinstance(value, Decimal):
         return {"__nvda_proof_decimal__": str(value)}
@@ -398,6 +437,12 @@ def _spawn_return_boundary_probe(
 def _read_return_boundary_marker(
     process: subprocess.Popen[str], *, timeout: float = 10.0
 ) -> dict[str, Any]:
+    return _read_probe_event(process, "public_method_return", timeout=timeout)
+
+
+def _read_probe_event(
+    process: subprocess.Popen[str], event: str, *, timeout: float = 10.0
+) -> dict[str, Any]:
     assert process.stdout is not None
     deadline = time.monotonic() + timeout
     while time.monotonic() < deadline:
@@ -408,15 +453,21 @@ def _read_return_boundary_marker(
             if not line:
                 continue
             candidate = json.loads(line)
-            if candidate.get("event") == "public_method_return":
+            if candidate.get("event") == event:
                 return candidate
         if process.poll() is not None:
             stderr = process.stderr.read() if process.stderr is not None else ""
-            raise AssertionError(f"return-boundary probe exited before marker: {stderr}")
+            raise AssertionError(f"probe exited before {event!r} marker: {stderr}")
     stderr = ""
     if process.poll() is not None and process.stderr is not None:
         stderr = process.stderr.read()
-    raise AssertionError(f"return-boundary probe produced no marker before timeout: {stderr}")
+    raise AssertionError(f"probe produced no {event!r} marker before timeout: {stderr}")
+
+
+def _release_semantic_write(process: subprocess.Popen[str]) -> None:
+    assert process.stdin is not None
+    process.stdin.write("go\n")
+    process.stdin.flush()
 
 
 def _start_return_boundary_probe(
@@ -1033,6 +1084,95 @@ def test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement(
             cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
 
 
+def test_semantic_write_handshake_excludes_owner_setup_transaction(tmp_path: Path) -> None:
+    """Prove only the post-READY/GO transaction can satisfy the SyncRep discriminator."""
+
+    dsn = _dsn()
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    table = f"nvda_semantic_handshake_{uuid.uuid4().hex}"
+    application_name = f"nvda-proof-semantic-handshake-{uuid.uuid4().hex}"
+    writer_dsn = _dsn_with_application_name(dsn, application_name)
+    original_setting = _current_synchronous_standby_names(dsn)
+    barrier_name = f"nvda_proof_no_standby_{uuid.uuid4().hex}"
+    barrier_active = False
+    process: subprocess.Popen[str] | None = None
+
+    with (
+        psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute(
+            sql.SQL("create table {} (phase text not null)").format(sql.Identifier(table))
+        )
+
+    try:
+        workdir = tmp_path / f"semantic-handshake-{uuid.uuid4().hex}"
+        workdir.mkdir()
+        process = subprocess.Popen(
+            _isolated_command(writer_dsn),
+            cwd=_probe_cwd(workdir),
+            env=_probe_env(workdir),
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        assert process.stdin is not None
+        process.stdin.write(
+            json.dumps(
+                {
+                    "action": "sync_rep_handshake_canary",
+                    "dsn": writer_dsn,
+                    "token": _token("semantic-handshake"),
+                    "table": table,
+                    "semantic_write_handshake": True,
+                }
+            )
+            + "\n"
+        )
+        process.stdin.flush()
+        _read_probe_event(process, "semantic_write_ready")
+
+        with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+            cursor.execute(sql.SQL("select phase from {}").format(sql.Identifier(table)))
+            assert cursor.fetchall() == [("owner_setup",)]
+
+        _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
+        _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
+        barrier_active = True
+        _release_semantic_write(process)
+        _wait_for_sync_rep_without_public_return(
+            process, dsn=dsn, application_name=application_name
+        )
+
+        _set_synchronous_standby_names(dsn, original_setting or None)
+        _wait_for_synchronous_standby_setting(dsn, original_setting)
+        barrier_active = False
+        stdout, stderr = process.communicate(timeout=10)
+        assert process.returncode == 0, stdout + stderr
+        result = json.loads([line for line in stdout.splitlines() if line.strip()][-1])
+        assert result["phase"] == "semantic_write_committed"
+
+        with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+            cursor.execute(
+                sql.SQL("select phase from {} order by phase").format(sql.Identifier(table))
+            )
+            assert cursor.fetchall() == [("owner_setup",), ("semantic_write",)]
+    finally:
+        if barrier_active:
+            _set_synchronous_standby_names(dsn, original_setting or None)
+            _wait_for_synchronous_standby_setting(dsn, original_setting)
+        if process is not None and process.poll() is None:
+            process.kill()
+            process.communicate(timeout=10)
+        with (
+            psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+            connection.cursor() as cursor,
+        ):
+            cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
+
+
 def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
     assert type(build_owner()) is type(build_owner(postgres_dsn=_dsn()))
 
@@ -1216,18 +1356,21 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
     marker: dict[str, Any] | None = None
     barrier_active = False
     try:
-        _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
-        _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
-        barrier_active = True
-
         write_extra = {"facts": facts} if expected_key in {"policy", "observation"} else {}
         process = _spawn_return_boundary_probe(
             tmp_path,
             action,
             dsn=writer_dsn,
             token=token,
+            semantic_write_handshake=True,
             **write_extra,
         )
+        _read_probe_event(process, "semantic_write_ready")
+
+        _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
+        _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
+        barrier_active = True
+        _release_semantic_write(process)
         _wait_for_sync_rep_without_public_return(
             process, dsn=dsn, application_name=application_name
         )
@@ -1750,6 +1893,24 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
             return str(value.__name__)
         return None
 
+    def object_state_items(value: Any) -> list[tuple[str, Any]]:
+        """Return instance dictionary and slot state without invoking descriptors."""
+
+        items: dict[str, Any] = {}
+        with contextlib.suppress(TypeError):
+            items.update(vars(value))
+        for owner_type in type(value).__mro__:
+            declared = vars(owner_type).get("__slots__", ())
+            slot_names = (declared,) if isinstance(declared, str) else declared
+            for name in slot_names:
+                if name in {"__dict__", "__weakref__"} or name in items:
+                    continue
+                try:
+                    items[name] = object.__getattribute__(value, name)
+                except (AttributeError, TypeError):
+                    continue
+        return list(items.items())
+
     def contains_target_capability(value: Any, local_seen: set[int] | None = None) -> bool:
         """Detect concrete adapter identity/capability through admitted caching forms."""
 
@@ -1799,14 +1960,30 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
                     continue
                 if contains_target_capability(captured, local_seen):
                     return True
+            for name in value.__code__.co_names:
+                if name in value.__globals__ and contains_target_capability(
+                    value.__globals__[name], local_seen
+                ):
+                    return True
             return False
-        if inspect.ismodule(value) or inspect.isclass(value):
-            return False
-        try:
-            children = vars(value).values()
-        except TypeError:
-            return False
-        return any(contains_target_capability(child, local_seen) for child in children)
+        if inspect.ismodule(value):
+            return any(
+                contains_target_capability(child, local_seen)
+                for child in vars(value).values()
+                if not inspect.ismodule(child)
+            )
+        if inspect.isclass(value):
+            return any(
+                contains_target_capability(child, local_seen)
+                for owner_type in value.__mro__
+                for name, child in vars(owner_type).items()
+                if name not in {"__dict__", "__weakref__"}
+            )
+        if contains_target_capability(type(value), local_seen):
+            return True
+        return any(
+            contains_target_capability(child, local_seen) for _, child in object_state_items(value)
+        )
 
     def rewrite(value: Any) -> tuple[Any, bool]:
         nonlocal replaced
@@ -1911,11 +2088,16 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
             return (frozenset(rewritten_items), True) if changed_any else (value, False)
 
         if inspect.ismodule(value) or inspect.isclass(value):
+            assert not contains_target_capability(value), (
+                "owner class/module retains concrete/private PostgreSQL adapter capability",
+                value,
+            )
             return value, False
-        try:
-            items = list(vars(value).items())
-        except TypeError:
-            return value, False
+        assert not contains_target_capability(type(value)), (
+            "owner class/global retains concrete/private PostgreSQL adapter capability",
+            type(value),
+        )
+        items = object_state_items(value)
 
         changed_any = False
         for name, child in items:
@@ -1933,6 +2115,22 @@ def _production_graph_contains_identity(root: Any, target: Any) -> bool:
     """Detect concrete adapter identity/capability through the reachable owner graph."""
 
     seen: set[int] = set()
+
+    def object_state(value: Any) -> list[Any]:
+        children: dict[str, Any] = {}
+        with contextlib.suppress(TypeError):
+            children.update(vars(value))
+        for owner_type in type(value).__mro__:
+            declared = vars(owner_type).get("__slots__", ())
+            slot_names = (declared,) if isinstance(declared, str) else declared
+            for name in slot_names:
+                if name in {"__dict__", "__weakref__"} or name in children:
+                    continue
+                try:
+                    children[name] = object.__getattribute__(value, name)
+                except (AttributeError, TypeError):
+                    continue
+        return list(children.values())
 
     def visit(value: Any) -> bool:
         if value is target:
@@ -1969,14 +2167,23 @@ def _production_graph_contains_identity(root: Any, target: Any) -> bool:
                     continue
                 if visit(captured):
                     return True
-            return False
-        if inspect.ismodule(value) or inspect.isclass(value):
-            return False
-        try:
-            children = vars(value).values()
-        except TypeError:
-            return False
-        return any(visit(child) for child in children)
+            return any(
+                visit(value.__globals__[name])
+                for name in value.__code__.co_names
+                if name in value.__globals__
+            )
+        if inspect.ismodule(value):
+            return any(
+                visit(child) for child in vars(value).values() if not inspect.ismodule(child)
+            )
+        if inspect.isclass(value):
+            return any(
+                visit(child)
+                for owner_type in value.__mro__
+                for name, child in vars(owner_type).items()
+                if name not in {"__dict__", "__weakref__"}
+            )
+        return visit(type(value)) or any(visit(child) for child in object_state(value))
 
     return visit(root)
 
@@ -2052,6 +2259,72 @@ def test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability(
     proxy = _RecordOnlyPersistenceProxy(adapter)
     with pytest.raises(AssertionError, match="PostgreSQL adapter capability"):
         _rewire_production_graph_reference(owner, adapter, proxy)
+
+
+@pytest.mark.parametrize("cache_kind", ["class", "slots", "global", "module"])
+def test_record_only_proxy_rewrite_rejects_external_private_adapter_capability(
+    cache_kind: str,
+) -> None:
+    """Canary T011-F002 outside the ordinary instance ``__dict__`` graph."""
+
+    class AdapterCanary:
+        def _semantic_decision(self) -> bool:
+            return True
+
+    adapter = AdapterCanary()
+
+    if cache_kind == "class":
+
+        class OwnerCanary:
+            def __init__(self, concrete: AdapterCanary) -> None:
+                self._port = concrete
+                type(self)._cached = concrete._semantic_decision
+
+        owner: Any = OwnerCanary(adapter)
+    elif cache_kind == "slots":
+
+        class OwnerCanary:
+            __slots__ = ("_cached", "_port")
+
+            def __init__(self, concrete: AdapterCanary) -> None:
+                self._port = concrete
+                self._cached = concrete._semantic_decision
+
+        owner = OwnerCanary(adapter)
+    elif cache_kind == "global":
+        global _EXTERNAL_CAPABILITY_CANARY
+        _EXTERNAL_CAPABILITY_CANARY = adapter._semantic_decision
+
+        def cached_global() -> bool:
+            assert _EXTERNAL_CAPABILITY_CANARY is not None
+            return _EXTERNAL_CAPABILITY_CANARY()
+
+        class OwnerCanary:
+            def __init__(self, concrete: AdapterCanary) -> None:
+                self._port = concrete
+                self._cached = cached_global
+
+        owner = OwnerCanary(adapter)
+    else:
+        cache_module = types.ModuleType("nvda_adapter_capability_canary")
+        cache_module._cached = adapter._semantic_decision
+
+        class OwnerCanary:
+            def __init__(self, concrete: AdapterCanary) -> None:
+                self._port = concrete
+                self._cache_module = cache_module
+
+        owner = OwnerCanary(adapter)
+
+    proxy = _RecordOnlyPersistenceProxy(adapter)
+    try:
+        with pytest.raises(AssertionError, match="PostgreSQL adapter capability"):
+            _rewire_production_graph_reference(owner, adapter, proxy)
+    finally:
+        if cache_kind == "class":
+            delattr(type(owner), "_cached")
+        if cache_kind == "global":
+            _EXTERNAL_CAPABILITY_CANARY = None
 
 
 def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities() -> None:

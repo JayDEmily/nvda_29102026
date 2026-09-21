@@ -7,6 +7,7 @@ serialises observable committed facts for process-boundary comparison.
 from __future__ import annotations
 
 import contextlib
+import importlib
 import json
 import os
 import signal
@@ -242,52 +243,75 @@ def _policy_ref(token: str) -> Any:
     return policy_ref(f"scope::{token}", 1)
 
 
+def _await_semantic_write_release(payload: dict[str, Any]) -> None:
+    """Expose an owner-ready boundary and wait for the parent to arm its commit barrier."""
+
+    if not payload.get("semantic_write_handshake"):
+        return
+    print(json.dumps({"event": "semantic_write_ready", "_pid": os.getpid()}), flush=True)
+    release = sys.stdin.readline().strip()
+    if release != "go":
+        raise RuntimeError("semantic-write probe proceeded without explicit go release")
+
+
 def boundary_write_policy(payload: dict[str, Any]) -> dict[str, Any]:
     owner = _owner(payload)
-    value = _observe_public_method_return(
-        owner.commands.register_capture_scope_policy, _policy(payload)
-    )
+    command = owner.commands.register_capture_scope_policy
+    value_to_write = _policy(payload)
+    _await_semantic_write_release(payload)
+    value = _observe_public_method_return(command, value_to_write)
     return {"record": _normalise(value)}
 
 
 def boundary_write_capture(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
+    command = owner.commands.realise_scheduled_capture_occurrence
+    scope_policy_ref = _policy_ref(payload["token"])
+    capture_occurrence_id = typed_identity(
+        "ScheduledCaptureOccurrenceV1", "capture_occurrence_id", ids["capture_id"]
+    )
+    slot_start_utc = datetime(2026, 9, 20, 12, 0, tzinfo=UTC)
+    _await_semantic_write_release(payload)
     value = _observe_public_method_return(
-        owner.commands.realise_scheduled_capture_occurrence,
-        scope_policy_ref=_policy_ref(payload["token"]),
-        capture_occurrence_id=typed_identity(
-            "ScheduledCaptureOccurrenceV1", "capture_occurrence_id", ids["capture_id"]
-        ),
-        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        command,
+        scope_policy_ref=scope_policy_ref,
+        capture_occurrence_id=capture_occurrence_id,
+        slot_start_utc=slot_start_utc,
     )
     return {"record": _normalise(value)}
 
 
 def boundary_write_observation(payload: dict[str, Any]) -> dict[str, Any]:
     owner = _owner(payload)
-    value = _observe_public_method_return(
-        owner.commands.admit_raw_observation_occurrence, _observation(payload)
-    )
+    command = owner.commands.admit_raw_observation_occurrence
+    value_to_write = _observation(payload)
+    _await_semantic_write_release(payload)
+    value = _observe_public_method_return(command, value_to_write)
     return {"record": _normalise(value)}
 
 
 def boundary_write_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
+    command = owner.commands.append_capture_receipt_presence_assessment
+    assessment_occurrence_id = typed_identity(
+        "CaptureReceiptPresenceAssessmentV1",
+        "assessment_occurrence_id",
+        ids["assessment_zero_id"],
+    )
+    capture_occurrence_ref = typed_identity(
+        "CaptureReceiptPresenceAssessmentV1",
+        "capture_occurrence_ref",
+        ids["capture_id"],
+    )
+    evidence_as_of_ts_utc = datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC)
+    _await_semantic_write_release(payload)
     value = _observe_public_method_return(
-        owner.commands.append_capture_receipt_presence_assessment,
-        assessment_occurrence_id=typed_identity(
-            "CaptureReceiptPresenceAssessmentV1",
-            "assessment_occurrence_id",
-            ids["assessment_zero_id"],
-        ),
-        capture_occurrence_ref=typed_identity(
-            "CaptureReceiptPresenceAssessmentV1",
-            "capture_occurrence_ref",
-            ids["capture_id"],
-        ),
-        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 10, 111111, tzinfo=UTC),
+        command,
+        assessment_occurrence_id=assessment_occurrence_id,
+        capture_occurrence_ref=capture_occurrence_ref,
+        evidence_as_of_ts_utc=evidence_as_of_ts_utc,
         supersedes_assessment_ref=None,
     )
     return {"record": _normalise(value)}
@@ -296,26 +320,54 @@ def boundary_write_zero_assessment(payload: dict[str, Any]) -> dict[str, Any]:
 def boundary_write_one_assessment(payload: dict[str, Any]) -> dict[str, Any]:
     ids = _ids(payload["token"])
     owner = _owner(payload)
+    command = owner.commands.append_capture_receipt_presence_assessment
+    assessment_occurrence_id = typed_identity(
+        "CaptureReceiptPresenceAssessmentV1",
+        "assessment_occurrence_id",
+        ids["assessment_one_id"],
+    )
+    capture_occurrence_ref = typed_identity(
+        "CaptureReceiptPresenceAssessmentV1",
+        "capture_occurrence_ref",
+        ids["capture_id"],
+    )
+    evidence_as_of_ts_utc = datetime(2026, 9, 20, 12, 0, 25, 222222, tzinfo=UTC)
+    supersedes_assessment_ref = typed_identity(
+        "CaptureReceiptPresenceAssessmentV1",
+        "supersedes_assessment_ref",
+        ids["assessment_zero_id"],
+    )
+    _await_semantic_write_release(payload)
     value = _observe_public_method_return(
-        owner.commands.append_capture_receipt_presence_assessment,
-        assessment_occurrence_id=typed_identity(
-            "CaptureReceiptPresenceAssessmentV1",
-            "assessment_occurrence_id",
-            ids["assessment_one_id"],
-        ),
-        capture_occurrence_ref=typed_identity(
-            "CaptureReceiptPresenceAssessmentV1",
-            "capture_occurrence_ref",
-            ids["capture_id"],
-        ),
-        evidence_as_of_ts_utc=datetime(2026, 9, 20, 12, 0, 25, 222222, tzinfo=UTC),
-        supersedes_assessment_ref=typed_identity(
-            "CaptureReceiptPresenceAssessmentV1",
-            "supersedes_assessment_ref",
-            ids["assessment_zero_id"],
-        ),
+        command,
+        assessment_occurrence_id=assessment_occurrence_id,
+        capture_occurrence_ref=capture_occurrence_ref,
+        evidence_as_of_ts_utc=evidence_as_of_ts_utc,
+        supersedes_assessment_ref=supersedes_assessment_ref,
     )
     return {"record": _normalise(value)}
+
+
+def sync_rep_handshake_canary(payload: dict[str, Any]) -> dict[str, Any]:
+    """Commit setup before READY, then reserve the post-GO transaction for semantic write."""
+
+    psycopg = importlib.import_module("psycopg")
+    sql = importlib.import_module("psycopg.sql")
+    relation = sql.Identifier(payload["table"])
+    with psycopg.connect(payload["dsn"]) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            sql.SQL("insert into {} (phase) values (%s)").format(relation),
+            ("owner_setup",),
+        )
+        connection.commit()
+    _await_semantic_write_release(payload)
+    with psycopg.connect(payload["dsn"]) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            sql.SQL("insert into {} (phase) values (%s)").format(relation),
+            ("semantic_write",),
+        )
+        connection.commit()
+    return {"phase": "semantic_write_committed"}
 
 
 def write_policy_only(payload: dict[str, Any]) -> dict[str, Any]:
@@ -778,6 +830,7 @@ ACTIONS = {
     "boundary_write_observation": boundary_write_observation,
     "boundary_write_zero_assessment": boundary_write_zero_assessment,
     "boundary_write_one_assessment": boundary_write_one_assessment,
+    "sync_rep_handshake_canary": sync_rep_handshake_canary,
     "boundary_descendant_canary": boundary_descendant_canary,
     "write_policy_only": write_policy_only,
     "read_policy": read_policy,
