@@ -14,6 +14,7 @@ import sys
 import time
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
+from decimal import Decimal
 from enum import Enum
 from pathlib import Path
 from typing import Any
@@ -72,8 +73,20 @@ def _owner(payload: dict[str, Any], **extra: Any) -> Any:
     )
 
 
+def _decode_proof_value(value: Any) -> Any:
+    """Decode proof-transport markers without changing product-native meaning."""
+
+    if isinstance(value, dict):
+        if set(value) == {"__nvda_proof_decimal__"}:
+            return Decimal(value["__nvda_proof_decimal__"])
+        return {key: _decode_proof_value(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_decode_proof_value(item) for item in value]
+    return value
+
+
 def _fact(payload: dict[str, Any], key: str, default: Any) -> Any:
-    return payload.get("facts", {}).get(key, default)
+    return _decode_proof_value(payload.get("facts", {}).get(key, default))
 
 
 def _parse_ts(value: str | None, default: datetime | None) -> datetime | None:
@@ -159,6 +172,17 @@ def _normalise(value: Any) -> Any:
         return {"__numeric_type__": "int", "value": value}
     if type(value) is float:
         return {"__numeric_type__": "float", "value": repr(value)}
+    if isinstance(value, Decimal):
+        decimal_tuple = value.as_tuple()
+        return {
+            "__numeric_type__": "Decimal",
+            "value": str(value),
+            "tuple": [
+                decimal_tuple.sign,
+                list(decimal_tuple.digits),
+                decimal_tuple.exponent,
+            ],
+        }
     if isinstance(value, dict):
         return {
             str(key): _normalise(item)

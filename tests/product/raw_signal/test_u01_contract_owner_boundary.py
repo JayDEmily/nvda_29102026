@@ -5,6 +5,7 @@ import os
 import subprocess
 import sys
 import types
+from collections.abc import Sequence
 from dataclasses import MISSING, dataclass, fields, is_dataclass
 from datetime import datetime, timedelta, timezone
 from enum import Enum
@@ -499,27 +500,42 @@ def _annotation_leaf_types(annotation: Any) -> set[Any]:
     return {annotation}
 
 
-def test_every_public_facet_declares_exact_contract_and_identity_parameter_types() -> None:
+def _assert_exact_public_annotation(actual: Any, expected: Any, *, label: str) -> None:
+    assert actual == expected, (label, actual, expected)
+    leaves = _annotation_leaf_types(actual)
+    assert not leaves.intersection({Any, object, str}), (label, actual, leaves)
+
+
+def test_every_public_facet_declares_complete_exact_parameter_and_return_types() -> None:
     owner = build_owner()
-    expected: list[tuple[Any, dict[str, type[Any]]]] = [
+    policy_cls = required_symbol("CaptureScopePolicyV1")
+    capture_cls = required_symbol("ScheduledCaptureOccurrenceV1")
+    observation_cls = required_symbol("RawObservationOccurrenceV1")
+    relation_cls = required_symbol("CaptureReceiptEvidenceRelationV1")
+    assessment_cls = required_symbol("CaptureReceiptPresenceAssessmentV1")
+    capture_policy_ref = identity_type("ScheduledCaptureOccurrenceV1", "scope_policy_ref")
+    capture_id = identity_type("ScheduledCaptureOccurrenceV1", "capture_occurrence_id")
+    observation_id = identity_type("RawObservationOccurrenceV1", "observation_occurrence_id")
+    assessment_id = identity_type("CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id")
+    policy_id = identity_type("CaptureScopePolicyV1", "scope_policy_id")
+
+    expected: list[tuple[Any, dict[str, Any]]] = [
         (
             owner.commands.register_capture_scope_policy,
-            {"value": required_symbol("CaptureScopePolicyV1")},
+            {"value": policy_cls, "return": policy_cls},
         ),
         (
             owner.commands.realise_scheduled_capture_occurrence,
             {
-                "scope_policy_ref": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "scope_policy_ref"
-                ),
-                "capture_occurrence_id": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
-                ),
+                "scope_policy_ref": capture_policy_ref,
+                "capture_occurrence_id": capture_id,
+                "slot_start_utc": datetime,
+                "return": capture_cls,
             },
         ),
         (
             owner.commands.admit_raw_observation_occurrence,
-            {"value": required_symbol("RawObservationOccurrenceV1")},
+            {"value": observation_cls, "return": observation_cls},
         ),
         (
             owner.commands.derive_capture_receipt_evidence_relation,
@@ -533,81 +549,80 @@ def test_every_public_facet_declares_exact_contract_and_identity_parameter_types
                 "scope_policy_ref": identity_type(
                     "CaptureReceiptEvidenceRelationV1", "scope_policy_ref"
                 ),
+                "return": relation_cls | None,
             },
         ),
         (
             owner.commands.append_capture_receipt_presence_assessment,
             {
-                "assessment_occurrence_id": identity_type(
-                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
-                ),
+                "assessment_occurrence_id": assessment_id,
                 "capture_occurrence_ref": identity_type(
                     "CaptureReceiptPresenceAssessmentV1", "capture_occurrence_ref"
                 ),
+                "evidence_as_of_ts_utc": datetime,
                 "supersedes_assessment_ref": identity_type(
                     "CaptureReceiptPresenceAssessmentV1", "supersedes_assessment_ref"
-                ),
+                )
+                | None,
+                "return": assessment_cls,
             },
         ),
         (
             owner.commands.reconcile_owed_slots,
             {
-                "scope_policy_ref": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "scope_policy_ref"
-                ),
-                "capture_occurrence_ids": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
-                ),
-                "assessment_occurrence_ids": identity_type(
-                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
-                ),
+                "scope_policy_ref": capture_policy_ref,
+                "slot_starts_utc": Sequence[datetime],
+                "capture_occurrence_ids": Sequence[capture_id],
+                "assessment_occurrence_ids": Sequence[assessment_id],
+                "return": Sequence[assessment_cls],
             },
         ),
         (
             owner.reads.get_capture_scope_policy,
-            {"scope_policy_id": identity_type("CaptureScopePolicyV1", "scope_policy_id")},
+            {
+                "scope_policy_id": policy_id,
+                "scope_policy_version": int,
+                "return": policy_cls | None,
+            },
         ),
         (
             owner.reads.get_scheduled_capture_occurrence,
-            {
-                "capture_occurrence_id": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
-                )
-            },
+            {"capture_occurrence_id": capture_id, "return": capture_cls | None},
         ),
         (
             owner.reads.get_raw_observation_occurrence,
-            {
-                "observation_occurrence_id": identity_type(
-                    "RawObservationOccurrenceV1", "observation_occurrence_id"
-                )
-            },
+            {"observation_occurrence_id": observation_id, "return": observation_cls | None},
         ),
         (
             owner.reads.get_receipt_presence_assessment,
-            {
-                "assessment_occurrence_id": identity_type(
-                    "CaptureReceiptPresenceAssessmentV1", "assessment_occurrence_id"
-                )
-            },
+            {"assessment_occurrence_id": assessment_id, "return": assessment_cls | None},
         ),
         (
             owner.reads.list_receipt_presence_assessments,
             {
-                "capture_occurrence_id": identity_type(
-                    "ScheduledCaptureOccurrenceV1", "capture_occurrence_id"
-                )
+                "capture_occurrence_id": capture_id,
+                "return": Sequence[assessment_cls],
             },
         ),
     ]
 
-    for method, parameter_types in expected:
+    for method, expected_hints in expected:
+        signature = inspect.signature(method)
+        assert all(
+            parameter.kind not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD)
+            for parameter in signature.parameters.values()
+        ), (method, signature)
         hints = get_type_hints(method)
-        for parameter, expected_type in parameter_types.items():
-            assert parameter in hints, (method, parameter, hints)
-            leaves = _annotation_leaf_types(hints[parameter])
-            assert leaves == {expected_type}, (method, parameter, hints[parameter], leaves)
-            assert not leaves.intersection({Any, object, str}), (method, parameter, leaves)
+        assert set(hints) == set(expected_hints), (method, hints, expected_hints)
+        assert set(signature.parameters) == set(expected_hints) - {"return"}, (
+            method,
+            signature,
+            expected_hints,
+        )
+        for name, expected_annotation in expected_hints.items():
+            _assert_exact_public_annotation(
+                hints[name], expected_annotation, label=f"{method}.{name}"
+            )
 
 
 def test_catalogue_id_field_annotation_contains_only_catalogue_identity() -> None:
@@ -799,7 +814,7 @@ def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> No
     expected_lines = {
         number for number, line in enumerate(source_lines, start=1) if "STATIC_NEGATIVE" in line
     }
-    assert len(expected_lines) == 11
+    assert len(expected_lines) == 15
 
     result = _run_public_seam_mypy(TYPECHECK_NEGATIVE)
     assert result.returncode != 0, "negative static-type specimen unexpectedly type-checked"

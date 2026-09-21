@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import ast
 import contextlib
+import functools
 import importlib
 import inspect
 import json
@@ -11,10 +12,12 @@ import shutil
 import signal
 import subprocess
 import sys
+import threading
 import time
 import uuid
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
+from decimal import Decimal
 from enum import Enum
 from pathlib import Path
 from typing import Any
@@ -176,6 +179,12 @@ def _probe_env(workdir: Path) -> dict[str, str]:
     return env
 
 
+def _json_transport_default(value: Any) -> Any:
+    if isinstance(value, Decimal):
+        return {"__nvda_proof_decimal__": str(value)}
+    raise TypeError(f"proof transport cannot JSON-encode {type(value)!r}")
+
+
 def _probe_process(
     tmp_path: Path,
     action: str,
@@ -185,7 +194,12 @@ def _probe_process(
     isolated_filesystem: bool = True,
     **extra: Any,
 ) -> subprocess.CompletedProcess[str]:
-    payload = json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n"
+    payload = (
+        json.dumps(
+            {"action": action, "dsn": dsn, "token": token, **extra}, default=_json_transport_default
+        )
+        + "\n"
+    )
     workdir = tmp_path / f"{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
     command = _isolated_command(dsn) if isolated_filesystem else [sys.executable, str(PROBE)]
@@ -256,15 +270,15 @@ def _start_hold_probe(
     return process, result
 
 
-def _start_return_boundary_probe(
+def _spawn_return_boundary_probe(
     tmp_path: Path,
     action: str,
     *,
     dsn: str,
     token: str,
     **extra: Any,
-) -> tuple[subprocess.Popen[str], dict[str, Any]]:
-    """Pause the child at the proof-owned profile hook for the public method return event."""
+) -> subprocess.Popen[str]:
+    """Start a PID-isolated public-return probe without consuming its return marker."""
 
     workdir = tmp_path / f"return-{action}-{uuid.uuid4().hex}"
     workdir.mkdir()
@@ -279,17 +293,53 @@ def _start_return_boundary_probe(
     )
     assert process.stdin is not None
     assert process.stdout is not None
-    process.stdin.write(json.dumps({"action": action, "dsn": dsn, "token": token, **extra}) + "\n")
+    process.stdin.write(
+        json.dumps(
+            {"action": action, "dsn": dsn, "token": token, **extra},
+            default=_json_transport_default,
+        )
+        + "\n"
+    )
     process.stdin.flush()
-    marker: dict[str, Any] | None = None
-    while marker is None:
-        line = process.stdout.readline().strip()
-        if not line:
+    return process
+
+
+def _read_return_boundary_marker(
+    process: subprocess.Popen[str], *, timeout: float = 10.0
+) -> dict[str, Any]:
+    assert process.stdout is not None
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        remaining = max(0.0, deadline - time.monotonic())
+        readable, _, _ = select.select([process.stdout], [], [], min(0.1, remaining))
+        if readable:
+            line = process.stdout.readline().strip()
+            if not line:
+                continue
+            candidate = json.loads(line)
+            if candidate.get("event") == "public_method_return":
+                return candidate
+        if process.poll() is not None:
             stderr = process.stderr.read() if process.stderr is not None else ""
-            raise AssertionError(f"return-boundary probe produced no marker: {stderr}")
-        candidate = json.loads(line)
-        if candidate.get("event") == "public_method_return":
-            marker = candidate
+            raise AssertionError(f"return-boundary probe exited before marker: {stderr}")
+    stderr = ""
+    if process.poll() is not None and process.stderr is not None:
+        stderr = process.stderr.read()
+    raise AssertionError(f"return-boundary probe produced no marker before timeout: {stderr}")
+
+
+def _start_return_boundary_probe(
+    tmp_path: Path,
+    action: str,
+    *,
+    dsn: str,
+    token: str,
+    **extra: Any,
+) -> tuple[subprocess.Popen[str], dict[str, Any]]:
+    """Pause the child at the proof-owned profile hook for the public method return event."""
+
+    process = _spawn_return_boundary_probe(tmp_path, action, dsn=dsn, token=token, **extra)
+    marker = _read_return_boundary_marker(process)
     assert process.poll() is None, "writer exited before public-return boundary inspection"
     namespace_pid = marker.get("_pid")
     assert isinstance(namespace_pid, int), marker
@@ -450,6 +500,107 @@ def _assert_no_open_writer_transaction(dsn: str, application_name: str) -> None:
     assert not any(xact_start is not None for _, xact_start in rows), rows
 
 
+def _set_synchronous_standby_names(dsn: str, value: str | None) -> None:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    admin_dsn = _admin_dsn(dsn)
+    with psycopg.connect(admin_dsn, autocommit=True) as connection, connection.cursor() as cursor:
+        if value is None:
+            cursor.execute("alter system reset synchronous_standby_names")
+        else:
+            cursor.execute(
+                sql.SQL("alter system set synchronous_standby_names = {}").format(
+                    sql.Literal(value)
+                )
+            )
+        cursor.execute("select pg_reload_conf()")
+        assert cursor.fetchone()[0] is True
+
+
+def _current_synchronous_standby_names(dsn: str) -> str:
+    psycopg = _psycopg()
+    with (
+        psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute("show synchronous_standby_names")
+        return str(cursor.fetchone()[0])
+
+
+def _wait_for_synchronous_standby_setting(dsn: str, expected: str, *, timeout: float = 5.0) -> None:
+    deadline = time.monotonic() + timeout
+    observed = ""
+    while time.monotonic() < deadline:
+        observed = _current_synchronous_standby_names(dsn)
+        if observed == expected:
+            return
+        time.sleep(0.02)
+    pytest.fail(
+        f"PostgreSQL did not reload synchronous_standby_names={expected!r}; observed {observed!r}"
+    )
+
+
+def _backend_wait_event(dsn: str, application_name: str) -> tuple[str | None, str | None] | None:
+    psycopg = _psycopg()
+    with (
+        psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute(
+            """
+            select wait_event_type, wait_event
+            from pg_stat_activity
+            where application_name = %s and pid <> pg_backend_pid()
+            """,
+            (application_name,),
+        )
+        row = cursor.fetchone()
+    if row is None:
+        return None
+    return row[0], row[1]
+
+
+def _wait_for_sync_rep_without_public_return(
+    process: subprocess.Popen[str],
+    *,
+    dsn: str,
+    application_name: str,
+    timeout: float = 10.0,
+) -> None:
+    """Observe server-side SyncRep wait while proving the public return marker is absent."""
+
+    assert process.stdout is not None
+    deadline = time.monotonic() + timeout
+    last_wait: tuple[str | None, str | None] | None = None
+    while time.monotonic() < deadline:
+        readable, _, _ = select.select([process.stdout], [], [], 0)
+        if readable:
+            line = process.stdout.readline().strip()
+            raise AssertionError(
+                "public method returned before PostgreSQL COMMIT acknowledgement; "
+                f"marker={line!r}, last_wait={last_wait!r}"
+            )
+        if process.poll() is not None:
+            stderr = process.stderr.read() if process.stderr is not None else ""
+            raise AssertionError(
+                f"commit-barrier writer exited before server SyncRep wait: {stderr}"
+            )
+        last_wait = _backend_wait_event(dsn, application_name)
+        if last_wait == ("IPC", "SyncRep"):
+            readable, _, _ = select.select([process.stdout], [], [], 0.1)
+            assert not readable, (
+                "public method return became visible while PostgreSQL backend was still "
+                "waiting for synchronous commit acknowledgement",
+                last_wait,
+            )
+            return
+        time.sleep(0.01)
+    pytest.fail(
+        "writer backend did not enter PostgreSQL SyncRep wait under proof commit barrier; "
+        f"last_wait={last_wait!r}"
+    )
+
+
 def _dsn_with_database(dsn: str, dbname: str) -> str:
     conninfo = importlib.import_module("psycopg.conninfo")
     values = conninfo.conninfo_to_dict(dsn)
@@ -504,6 +655,17 @@ def _canonical(value: Any) -> Any:
         return {"__numeric_type__": "int", "value": value}
     if type(value) is float:
         return {"__numeric_type__": "float", "value": repr(value)}
+    if isinstance(value, Decimal):
+        decimal_tuple = value.as_tuple()
+        return {
+            "__numeric_type__": "Decimal",
+            "value": str(value),
+            "tuple": [
+                decimal_tuple.sign,
+                list(decimal_tuple.digits),
+                decimal_tuple.exponent,
+            ],
+        }
     if isinstance(value, dict):
         return {
             str(k): _canonical(v) for k, v in sorted(value.items(), key=lambda item: str(item[0]))
@@ -697,6 +859,89 @@ def test_proof_environment_is_real_postgresql_17_9() -> None:
     assert version.startswith("17.9")
 
 
+def test_postgresql_sync_commit_barrier_itself_waits_for_server_acknowledgement() -> None:
+    """Canary the proof-owned server barrier independently of absent product symbols."""
+
+    dsn = _dsn()
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    table = f"nvda_sync_barrier_{uuid.uuid4().hex}"
+    application_name = f"nvda-proof-sync-canary-{uuid.uuid4().hex}"
+    writer_dsn = _dsn_with_application_name(dsn, application_name)
+    original_setting = _current_synchronous_standby_names(dsn)
+    barrier_name = f"nvda_proof_no_standby_{uuid.uuid4().hex}"
+    returned = threading.Event()
+    errors: list[BaseException] = []
+    thread: threading.Thread | None = None
+    barrier_active = False
+
+    with (
+        psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute(
+            sql.SQL("create table {} (value text not null)").format(sql.Identifier(table))
+        )
+
+    def writer() -> None:
+        try:
+            with psycopg.connect(writer_dsn) as connection, connection.cursor() as cursor:
+                cursor.execute(
+                    sql.SQL("insert into {} (value) values (%s)").format(sql.Identifier(table)),
+                    ("commit-ack-canary",),
+                )
+                connection.commit()
+        except BaseException as exc:  # pragma: no cover - surfaced in parent assertion
+            errors.append(exc)
+        finally:
+            returned.set()
+
+    try:
+        _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
+        _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
+        barrier_active = True
+        thread = threading.Thread(target=writer, name="nvda-sync-commit-canary", daemon=True)
+        thread.start()
+
+        deadline = time.monotonic() + 10.0
+        observed: tuple[str | None, str | None] | None = None
+        while time.monotonic() < deadline:
+            assert not returned.is_set(), (
+                "client observed commit completion before the server-side SyncRep barrier",
+                observed,
+                errors,
+            )
+            observed = _backend_wait_event(dsn, application_name)
+            if observed == ("IPC", "SyncRep"):
+                break
+            time.sleep(0.01)
+        assert observed == ("IPC", "SyncRep"), observed
+        assert not returned.is_set()
+
+        _set_synchronous_standby_names(dsn, original_setting or None)
+        _wait_for_synchronous_standby_setting(dsn, original_setting)
+        barrier_active = False
+        thread.join(timeout=10)
+        assert not thread.is_alive()
+        assert not errors, errors
+        assert returned.is_set()
+
+        with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+            cursor.execute(sql.SQL("select value from {}").format(sql.Identifier(table)))
+            assert cursor.fetchall() == [("commit-ack-canary",)]
+    finally:
+        if barrier_active:
+            _set_synchronous_standby_names(dsn, original_setting or None)
+            _wait_for_synchronous_standby_setting(dsn, original_setting)
+        if thread is not None and thread.is_alive():
+            thread.join(timeout=10)
+        with (
+            psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+            connection.cursor() as cursor,
+        ):
+            cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
+
+
 def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
     assert type(build_owner()) is type(build_owner(postgres_dsn=_dsn()))
 
@@ -794,6 +1039,72 @@ def test_public_return_barrier_stops_separate_session_descendant_process(
     finally:
         if process.poll() is None:
             _kill_return_boundary_probe(process, marker)
+
+
+def test_public_success_return_requires_postgresql_commit_acknowledgement(
+    tmp_path: Path,
+) -> None:
+    dsn = _dsn()
+    token = _token("commit-ack")
+    facts = _authoritative_facts()
+    expected = _expected_records(token, facts)
+
+    # Warm the production PostgreSQL path before installing the server-side barrier so schema
+    # bootstrap or unrelated first-use work cannot satisfy this discriminator.
+    _run_probe(
+        tmp_path,
+        "write_observation_only",
+        dsn=dsn,
+        token=_token("commit-ack-warm"),
+        facts=_authoritative_facts(),
+    )
+
+    original_setting = _current_synchronous_standby_names(dsn)
+    barrier_name = f"nvda_proof_no_standby_{uuid.uuid4().hex}"
+    application_name = f"nvda-proof-commit-ack-{uuid.uuid4().hex}"
+    writer_dsn = _dsn_with_application_name(dsn, application_name)
+    process: subprocess.Popen[str] | None = None
+    marker: dict[str, Any] | None = None
+    barrier_active = False
+    try:
+        _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
+        _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
+        barrier_active = True
+
+        process = _spawn_return_boundary_probe(
+            tmp_path,
+            "boundary_write_observation",
+            dsn=writer_dsn,
+            token=token,
+            facts=facts,
+        )
+        _wait_for_sync_rep_without_public_return(
+            process, dsn=dsn, application_name=application_name
+        )
+
+        # Release server-side COMMIT, then and only then may the profiled public return appear.
+        _set_synchronous_standby_names(dsn, original_setting or None)
+        _wait_for_synchronous_standby_setting(dsn, original_setting)
+        barrier_active = False
+        marker = _read_return_boundary_marker(process)
+        namespace_pid = marker.get("_pid")
+        assert isinstance(namespace_pid, int), marker
+        _wait_for_stopped_process_tree(process, namespace_pid)
+        _assert_no_open_writer_transaction(dsn, application_name)
+        fresh = _run_probe(tmp_path, "read_observation", dsn=dsn, token=token)
+        assert fresh["record"] == expected["observation"]
+        result = _release_return_boundary_probe(process, marker)
+        assert result["record"] == expected["observation"]
+    finally:
+        if barrier_active:
+            _set_synchronous_standby_names(dsn, original_setting or None)
+            _wait_for_synchronous_standby_setting(dsn, original_setting)
+        if process is not None and process.poll() is None:
+            if marker is not None:
+                _kill_return_boundary_probe(process, marker)
+            else:
+                process.kill()
+                process.communicate(timeout=10)
 
 
 def test_command_return_is_durable_if_writer_is_killed_immediately_after_success(
@@ -1019,6 +1330,7 @@ def test_postgresql_is_only_configured_cross_process_semantic_source_for_complet
 @pytest.mark.parametrize(
     ("catalogue_id", "field", "value", "units"),
     [
+        ("R038", "Last Size", Decimal("0.00100"), "contracts/shares"),
         ("R084", "Bid Option Computation.impliedVolatility", -0.000000000123456789, "volatility"),
         ("R246", "DGS3MO", -0.375, "Percent"),
     ],
@@ -1027,7 +1339,7 @@ def test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_a
     tmp_path: Path,
     catalogue_id: str,
     field: str,
-    value: float,
+    value: float | Decimal,
     units: str,
 ) -> None:
     token = _token(f"numeric-{catalogue_id.lower()}")
@@ -1052,10 +1364,14 @@ def test_postgresql_restart_preserves_catalogue_id_numeric_sign_precision_type_a
     expected = _expected_records(token, facts)["observation"]
     assert written["record"] == expected
     assert reread["record"] == expected
-    assert reread["record"]["native_record"][field] == {
-        "__numeric_type__": "float",
-        "value": repr(value),
-    }
+    expected_numeric = _canonical(value)
+    assert reread["record"]["native_record"][field] == expected_numeric
+    if isinstance(value, Decimal):
+        assert expected_numeric == {
+            "__numeric_type__": "Decimal",
+            "value": "0.00100",
+            "tuple": [0, [1, 0, 0], -5],
+        }
     assert reread["record"]["native_record"]["Provider Null"] is None
 
 
@@ -1213,6 +1529,221 @@ _STORAGE_PROTOCOL_BOUND_ARITY = {
 }
 
 
+class _RecordOnlyPersistenceProxy:
+    """Expose only the admitted record protocol while forwarding to real PostgreSQL storage."""
+
+    def __init__(self, inner: Any) -> None:
+        self._inner = inner
+        self._calls: list[str] = []
+
+    @property
+    def calls(self) -> tuple[str, ...]:
+        return tuple(self._calls)
+
+    def clear_calls(self) -> None:
+        self._calls.clear()
+
+    def append_policy(self, value: Any) -> Any:
+        self._calls.append("append_policy")
+        return self._inner.append_policy(value)
+
+    def get_policy(self, policy_id: Any, version: int) -> Any:
+        self._calls.append("get_policy")
+        return self._inner.get_policy(policy_id, version)
+
+    def append_capture(self, value: Any) -> Any:
+        self._calls.append("append_capture")
+        return self._inner.append_capture(value)
+
+    def get_capture(self, capture_id: Any) -> Any:
+        self._calls.append("get_capture")
+        return self._inner.get_capture(capture_id)
+
+    def append_observation(self, value: Any) -> Any:
+        self._calls.append("append_observation")
+        return self._inner.append_observation(value)
+
+    def get_observation(self, observation_id: Any) -> Any:
+        self._calls.append("get_observation")
+        return self._inner.get_observation(observation_id)
+
+    def append_assessment(self, value: Any) -> Any:
+        self._calls.append("append_assessment")
+        return self._inner.append_assessment(value)
+
+    def get_assessment(self, assessment_id: Any) -> Any:
+        self._calls.append("get_assessment")
+        return self._inner.get_assessment(assessment_id)
+
+    def list_assessments(self, capture_id: Any) -> Any:
+        self._calls.append("list_assessments")
+        return self._inner.list_assessments(capture_id)
+
+
+def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any) -> int:
+    """Replace the concrete adapter while rejecting cached private semantic capabilities."""
+
+    replaced = 0
+    seen: set[int] = set()
+
+    def bound_target_method(value: Any) -> str | None:
+        if inspect.ismethod(value) and value.__self__ is target:
+            return str(value.__name__)
+        return None
+
+    def function_captures_forbidden_target(value: Any) -> bool:
+        closure = getattr(value, "__closure__", None)
+        if not closure:
+            return False
+        for cell in closure:
+            try:
+                captured = cell.cell_contents
+            except ValueError:
+                continue
+            if captured is target:
+                return True
+            method_name = bound_target_method(captured)
+            if method_name is not None and method_name not in _STORAGE_PROTOCOL_BOUND_ARITY:
+                return True
+        return False
+
+    def rewrite_child(child: Any) -> tuple[Any, bool]:
+        nonlocal replaced
+        if child is target:
+            replaced += 1
+            return replacement, True
+
+        method_name = bound_target_method(child)
+        if method_name is not None:
+            assert method_name in _STORAGE_PROTOCOL_BOUND_ARITY, (
+                "owner cached a private PostgreSQL adapter capability",
+                method_name,
+            )
+            replaced += 1
+            return getattr(replacement, method_name), True
+
+        if isinstance(child, functools.partial):
+            partial_method = bound_target_method(child.func)
+            assert child.func is not target, "owner partial captures concrete PostgreSQL adapter"
+            assert all(item is not target for item in child.args), (
+                "owner partial captures concrete PostgreSQL adapter",
+                child,
+            )
+            assert all(item is not target for item in (child.keywords or {}).values()), (
+                "owner partial captures concrete PostgreSQL adapter",
+                child,
+            )
+            if partial_method is not None:
+                assert partial_method in _STORAGE_PROTOCOL_BOUND_ARITY, (
+                    "owner cached a private PostgreSQL adapter capability",
+                    partial_method,
+                )
+                replaced += 1
+                return (
+                    functools.partial(
+                        getattr(replacement, partial_method),
+                        *child.args,
+                        **(child.keywords or {}),
+                    ),
+                    True,
+                )
+
+        assert not function_captures_forbidden_target(child), (
+            "owner closure captures concrete/private PostgreSQL adapter capability",
+            child,
+        )
+        return child, False
+
+    def visit(value: Any) -> None:
+        if value is replacement or id(value) in seen:
+            return
+        seen.add(id(value))
+
+        if isinstance(value, list):
+            for index, child in enumerate(tuple(value)):
+                new_child, changed = rewrite_child(child)
+                if changed:
+                    value[index] = new_child
+                else:
+                    visit(child)
+            return
+        if isinstance(value, dict):
+            for key, child in tuple(value.items()):
+                new_child, changed = rewrite_child(child)
+                if changed:
+                    value[key] = new_child
+                else:
+                    visit(child)
+            return
+        if isinstance(value, tuple):
+            for child in value:
+                assert child is not target, "immutable owner tuple captures concrete adapter"
+                method_name = bound_target_method(child)
+                assert method_name is None or method_name in _STORAGE_PROTOCOL_BOUND_ARITY, (
+                    "immutable owner tuple captures private adapter capability",
+                    method_name,
+                )
+                assert not function_captures_forbidden_target(child)
+            return
+
+        try:
+            items = list(vars(value).items())
+        except TypeError:
+            return
+        for name, child in items:
+            new_child, changed = rewrite_child(child)
+            if changed:
+                object.__setattr__(value, name, new_child)
+                continue
+            if type(child).__module__.startswith("nvda_desk.raw_signal_occurrence_truth"):
+                visit(child)
+
+    visit(root)
+    return replaced
+
+
+def _production_graph_contains_identity(root: Any, target: Any) -> bool:
+    seen: set[int] = set()
+
+    def visit(value: Any) -> bool:
+        if id(value) in seen:
+            return False
+        seen.add(id(value))
+        try:
+            children = list(vars(value).values())
+        except TypeError:
+            return False
+        for child in children:
+            if child is target:
+                return True
+            if type(child).__module__.startswith("nvda_desk.raw_signal_occurrence_truth") and visit(
+                child
+            ):
+                return True
+        return False
+
+    return visit(root)
+
+
+def test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability() -> None:
+    """Canary the exact T009-F002 escape before exercising the production owner graph."""
+
+    class AdapterCanary:
+        def _semantic_decision(self) -> bool:
+            return True
+
+    class OwnerCanary:
+        def __init__(self, adapter: AdapterCanary) -> None:
+            self._port = adapter
+            self._cached_private = adapter._semantic_decision
+
+    adapter = AdapterCanary()
+    owner = OwnerCanary(adapter)
+    proxy = _RecordOnlyPersistenceProxy(adapter)
+    with pytest.raises(AssertionError, match="private PostgreSQL adapter capability"):
+        _rewire_production_graph_reference(owner, adapter, proxy)
+
+
 def test_default_postgresql_path_exposes_exact_record_only_storage_protocol() -> None:
     owner = build_owner(postgres_dsn=_dsn())
     ports = _find_default_persistence_ports(owner)
@@ -1355,6 +1886,14 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
         true_ports = _find_default_persistence_ports(true_owner)
         false_ports = _find_default_persistence_ports(false_owner)
         assert len(true_ports) == len(false_ports) == 1
+        true_concrete_port = true_ports[0]
+        false_concrete_port = false_ports[0]
+        true_proxy = _RecordOnlyPersistenceProxy(true_concrete_port)
+        false_proxy = _RecordOnlyPersistenceProxy(false_concrete_port)
+        assert _rewire_production_graph_reference(true_owner, true_concrete_port, true_proxy) > 0
+        assert _rewire_production_graph_reference(false_owner, false_concrete_port, false_proxy) > 0
+        assert not _production_graph_contains_identity(true_owner, true_concrete_port)
+        assert not _production_graph_contains_identity(false_owner, false_concrete_port)
 
         def storage_state(port: Any) -> dict[str, Any]:
             return {
@@ -1369,9 +1908,11 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
                 ),
             }
 
-        before_true = storage_state(true_ports[0])
-        before_false = storage_state(false_ports[0])
+        before_true = storage_state(true_proxy)
+        before_false = storage_state(false_proxy)
         assert before_true == before_false
+        true_proxy.clear_calls()
+        false_proxy.clear_calls()
 
         true_relation = true_owner.commands.derive_capture_receipt_evidence_relation(
             observation_occurrence_ref=stored_observation.observation_occurrence_id,
@@ -1400,9 +1941,13 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
         )
         assert str(true_assessment.outcome) == "one_or_more_received"
         assert str(false_assessment.outcome) == "zero_received"
-        assert storage_state(true_ports[0]) == before_true
-        assert storage_state(false_ports[0]) == before_false
-        assert storage_state(true_ports[0]) == storage_state(false_ports[0])
+        assert true_proxy.calls
+        assert false_proxy.calls
+        assert set(true_proxy.calls).issubset(_STORAGE_PROTOCOL_BOUND_ARITY)
+        assert set(false_proxy.calls).issubset(_STORAGE_PROTOCOL_BOUND_ARITY)
+        assert storage_state(true_proxy) == before_true
+        assert storage_state(false_proxy) == before_false
+        assert storage_state(true_proxy) == storage_state(false_proxy)
     finally:
         for dbname in (false_db, true_db, source_db):
             _drop_database(admin_dsn, dbname)

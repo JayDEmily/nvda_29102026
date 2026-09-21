@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from decimal import Decimal
 from typing import Any
 
 import pytest
@@ -309,6 +310,7 @@ def test_observation_command_rejects_typed_cross_layer_identity_substitution() -
     [
         ("R033", "Bid Size", 0, "contracts/shares"),
         ("R034", "Bid Price", 123.45678901234567, "price"),
+        ("R038", "Last Size", Decimal("0.00100"), "contracts/shares"),
         (
             "R084",
             "Bid Option Computation.impliedVolatility",
@@ -319,7 +321,7 @@ def test_observation_command_rejects_typed_cross_layer_identity_substitution() -
     ],
 )
 def test_catalogue_backed_native_numeric_values_preserve_exact_value_and_runtime_type(
-    catalogue_id: str, field: str, value: int | float, units: str
+    catalogue_id: str, field: str, value: int | float | Decimal, units: str
 ) -> None:
     """Numeric specimens are fidelity canaries, not admitted range/bounds validation."""
 
@@ -339,4 +341,6 @@ def test_catalogue_backed_native_numeric_values_preserve_exact_value_and_runtime
     assert stored.native_record["Provider Null"] is None
     assert reread.native_record[field] == value
     assert type(reread.native_record[field]) is type(value)
+    if isinstance(value, Decimal):
+        assert reread.native_record[field].as_tuple() == value.as_tuple()
     assert reread.native_units == units

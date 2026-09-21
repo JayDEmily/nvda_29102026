@@ -39,11 +39,13 @@ def exercise_public_seam(
             supersedes_assessment_ref=assessment.supersedes_assessment_ref,
         )
     )
-    owner.commands.reconcile_owed_slots(
-        scope_policy_ref=stored_capture.scope_policy_ref,
-        slot_starts_utc=[stored_capture.slot_start_utc],
-        capture_occurrence_ids=[stored_capture.capture_occurrence_id],
-        assessment_occurrence_ids=[stored_assessment.assessment_occurrence_id],
+    reconciled: Sequence[api.CaptureReceiptPresenceAssessmentV1] = (
+        owner.commands.reconcile_owed_slots(
+            scope_policy_ref=stored_capture.scope_policy_ref,
+            slot_starts_utc=[stored_capture.slot_start_utc],
+            capture_occurrence_ids=[stored_capture.capture_occurrence_id],
+            assessment_occurrence_ids=[stored_assessment.assessment_occurrence_id],
+        )
     )
 
     read_policy: api.CaptureScopePolicyV1 | None = owner.reads.get_capture_scope_policy(
@@ -71,4 +73,5 @@ def exercise_public_seam(
         read_observation,
         read_assessment,
         read_chain,
+        reconciled,
     )
