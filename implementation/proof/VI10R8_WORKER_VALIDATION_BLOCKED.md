@@ -2,7 +2,7 @@
 
 ## Status
 
-`AMENDED CHECKPOINT — REQUIRED REAL-POSTGRESQL VALIDATION BLOCKED`
+`AMENDED CHECKPOINT — REQUIRED ISOLATED REAL-POSTGRESQL VALIDATION BLOCKED`
 
 This record does not freeze a VI-10R8 physical proof candidate, claim proof adequacy, start
 Tester Iteration 011 or authorise VI-12R.
@@ -80,6 +80,32 @@ git fsck --full --strict              PASS
 physical diff                         one tests/** path; zero src/** paths
 ```
 
+### Portable PostgreSQL runtime readback
+
+The later-supplied transfer archive
+`NVDA_POSTGRESQL_17_9_PORTABLE_RUNTIME_20260921.tar.gz`, outer SHA-256
+`59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf`, was read back
+independently in this worker sandbox:
+
+```text
+gzip integrity                         PASS
+internal SHA256SUMS                    PASS; 1,937/1,937 files
+postgres --version                     PostgreSQL 17.9
+initdb --version                       PostgreSQL 17.9
+pg_ctl --version                       PostgreSQL 17.9
+pg_config --version                    PostgreSQL 17.9
+postgres/initdb/pg_ctl/psql/pg_config  no missing shared libraries
+GNU m4 fallback                        1.4.19
+```
+
+A fresh cluster was initialised and started through an unmapped user namespace, in which the
+server process ran as effective OS user `nobody`. Over loopback TCP, direct readback established
+PostgreSQL `17.9` with `fsync=on`, `synchronous_commit=on` and `full_page_writes=on`. The repository
+environment discriminator
+`test_proof_environment_is_real_postgresql_17_9` then passed against a fresh server before clean
+shutdown. This establishes runtime availability and the narrow real-server/version proposition
+only; it is not the required isolated U05 execution.
+
 ## First unmet invariant
 
 The current worker sandbox rejects the mandatory U05 namespace boundary:
@@ -90,10 +116,14 @@ unshare: write failed /proc/self/uid_map: Operation not permitted
 rc=1
 ```
 
-The current attachment set supplies the pinned Python wheelhouses but no preserved PostgreSQL
-17.9 runtime. Even if PostgreSQL were rebuilt, this sandbox cannot execute the required
-mount/network/PID namespace proof. Replacing that boundary with a weaker same-process, mock,
-non-namespaced or client-only check is prohibited by the accepted proof design.
+The portable PostgreSQL 17.9 runtime is now present and executable, so runtime availability is no
+longer a blocker. The remaining blocker is the accepted isolation boundary itself. In this
+sandbox an unmapped non-root user namespace can initialise PostgreSQL and serve over loopback TCP,
+but filesystem Unix-socket creation fails with `Operation not permitted`; every attempted UID map
+fails at `/proc/self/uid_map`; and mount/network/PID namespace creation remains denied. U05
+requires both a filesystem Unix-domain-socket DSN and the mapped mount/network/PID boundary.
+Replacing that boundary with the weaker TCP, same-process, mock, non-namespaced or client-only
+execution is prohibited by the accepted proof design.
 
 Consequently, the following required evidence is not established for checkpoint `09a6fd7...`:
 
