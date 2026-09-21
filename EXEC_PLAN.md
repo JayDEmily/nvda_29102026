@@ -554,3 +554,25 @@ Fresh independent review of submitted archive SHA-256 `20d5d9ec8eeb604a576291679
 ### 2026-09-21 — VI-10R8 amended checkpoint; required PostgreSQL proof blocked
 
 Worker checkpoint `09a6fd77829838522b0a7b037f068c5d1f30f3e1` / tree `c57b13a513397f6ff23dbd62eb9350484fdaa411` amends only `tests/product/raw_signal/test_u05_postgresql_durability.py`: server COMMIT-ack discrimination covers all five durable-success command paths with command-specific warm-up and readback, while nested concrete-adapter capability restriction covers recursive containers, partial function/argument/keyword captures and closures with nine green implementation-independent canaries. Product control remains 6 families / 13 obligations and 434 tests collect; architecture/bootstrap and promotion remain 74/74 green; mypy, Ruff, dependency/public-seam and Git checks pass. Portable PostgreSQL archive SHA-256 `59822410ac6855365c90765de5071182ab382e87d9e9a2622424e7787c4e5caf` passed its 1,937-file internal manifest; its PostgreSQL 17.9 runtime and dependency closure execute in this sandbox, and a fresh non-root TCP server passed the repository version discriminator with the required durability settings on. The current sandbox still cannot create the required U05 mapped user/mount/network/PID namespace (`/proc/self/uid_map: Operation not permitted`) or the required non-root filesystem Unix socket, so isolated U05 execution and complete expected-red classification were not obtained. The checkpoint is not frozen, Tester Iteration 011 has not started, and VI-12R remains prohibited. See `implementation/proof/VI10R8_WORKER_VALIDATION_BLOCKED.md`.
+
+### 2026-09-21 — VI-10R8 degraded-TCP audit target prepared
+
+Current Programme Owner direction authorised forward progress with an explicit TCP caveat. Physical
+commit `7dc7ce0bb4d162d785bac5b0f431bdab77d954e7` / tree
+`134ddc76e61f9751e46cb1990c762ee028f86719` adds an exact
+`NVDA_U05_DEGRADED_TCP=1` opt-in while leaving the authoritative Unix-socket/mapped-namespace path
+unchanged. Direct fresh-process probes receive a narrow environment and task-local writable
+directories. The mapped mount/network/exclusive-filesystem case and every dedicated-PID-namespace
+return-boundary case fail explicitly as `DEGRADED TCP VALIDATION: UNPROVED`; none is skipped,
+xfailed or counted as passing.
+
+Against a fresh real PostgreSQL 17.9 loopback-TCP cluster, U05 recorded 24 failed / 16 passed:
+nine explicit boundary failures and fifteen deliberately absent-production failures. The complete
+438-test product suite recorded 416 failed / 22 passed: the same nine boundary failures and 407
+absent-production/static failures. Product-proof control remains six families / 13 of 13
+obligations; architecture/bootstrap and clean-state promotion remain 74/74 green; mypy, Ruff,
+dependency/public-seam and Git controls pass. These are degraded Worker observations for fresh
+Tester Iteration 011 audit, not proof that the accepted namespace boundary was established and not
+authority to begin VI-12R. See
+`implementation/proof/VI10R8_ADVERSARIAL_PRODUCT_PROOF_REPAIR_EVIDENCE.md` and
+`implementation/handoff/REVIEWER_017_VI11R8_PROOF_ADEQUACY.md`.
