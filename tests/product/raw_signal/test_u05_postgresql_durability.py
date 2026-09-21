@@ -40,6 +40,8 @@ from tests.product.raw_signal._support import (
 ROOT = Path(__file__).resolve().parents[3]
 PROBE = ROOT / "tests/product/raw_signal/_process_probe.py"
 OWNER_PACKAGE = ROOT / "src/nvda_desk/raw_signal_occurrence_truth"
+DEGRADED_TCP_ENV = "NVDA_U05_DEGRADED_TCP"
+DEGRADED_TCP_BOUNDARY = "DEGRADED TCP VALIDATION"
 
 
 def _dsn() -> str:
@@ -74,7 +76,31 @@ def _postgres_socket_dir(dsn: str) -> str:
     return host
 
 
+def _degraded_tcp_enabled() -> bool:
+    return os.environ.get(DEGRADED_TCP_ENV) == "1"
+
+
+def _degraded_tcp_active(dsn: str) -> bool:
+    if not _degraded_tcp_enabled():
+        return False
+    conninfo = importlib.import_module("psycopg.conninfo")
+    host = conninfo.conninfo_to_dict(dsn).get("host")
+    return bool(host and not host.startswith("/"))
+
+
+def _require_pid_namespace_boundary(dsn: str) -> None:
+    if _degraded_tcp_active(dsn):
+        pytest.fail(
+            f"{DEGRADED_TCP_BOUNDARY}: UNPROVED dedicated PID namespace at the "
+            "public-return boundary; TCP execution cannot satisfy this proposition"
+        )
+
+
 def _isolated_command(dsn: str, *, pid_namespace: bool = False) -> list[str]:
+    if _degraded_tcp_active(dsn):
+        if pid_namespace:
+            _require_pid_namespace_boundary(dsn)
+        return [sys.executable, str(PROBE)]
     unshare = shutil.which("unshare")
     if unshare is None:
         pytest.fail("unshare is required for the exclusive persistence proof boundary")
@@ -157,8 +183,9 @@ def _probe_env(workdir: Path) -> dict[str, str]:
     """Return a deliberately narrow child environment.
 
     The child receives no cloud/service credentials or alternate database configuration. The
-    PostgreSQL DSN is delivered only in the JSON payload, while the local filesystem is made
-    ephemeral/read-only by `_isolated_command`.
+    PostgreSQL DSN is delivered only in the JSON payload. The authoritative path makes the local
+    filesystem ephemeral/read-only; explicitly degraded TCP execution receives task-local
+    writable directories without claiming filesystem isolation.
     """
 
     allowed = (
@@ -173,10 +200,74 @@ def _probe_env(workdir: Path) -> dict[str, str]:
     env = {key: os.environ[key] for key in allowed if key in os.environ}
     env["PYTHONPATH"] = os.pathsep.join([str(ROOT / "src"), str(ROOT)])
     env["PYTHONDONTWRITEBYTECODE"] = "1"
-    env["HOME"] = "/run/proof-home"
-    env["TMPDIR"] = "/run/proof-tmp"
-    env["XDG_DATA_HOME"] = "/run/proof-xdg"
+    if _degraded_tcp_enabled():
+        locations = {
+            "HOME": workdir / "proof-home",
+            "TMPDIR": workdir / "proof-tmp",
+            "XDG_DATA_HOME": workdir / "proof-xdg",
+        }
+        for location in locations.values():
+            location.mkdir()
+        env.update({key: str(value) for key, value in locations.items()})
+    else:
+        env["HOME"] = "/run/proof-home"
+        env["TMPDIR"] = "/run/proof-tmp"
+        env["XDG_DATA_HOME"] = "/run/proof-xdg"
     return env
+
+
+def _probe_cwd(workdir: Path) -> Path:
+    return workdir if _degraded_tcp_enabled() else ROOT
+
+
+def test_tcp_probe_requires_explicit_degraded_opt_in(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.delenv("NVDA_U05_DEGRADED_TCP", raising=False)
+    with pytest.raises(
+        pytest.fail.Exception,
+        match="exclusive persistence proof requires a PostgreSQL Unix-domain socket DSN",
+    ):
+        _isolated_command("host=127.0.0.1 port=55444 dbname=postgres user=nobody")
+
+
+def test_tcp_probe_uses_direct_process_only_under_explicit_degraded_opt_in(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("NVDA_U05_DEGRADED_TCP", "1")
+    command = _isolated_command("host=127.0.0.1 port=55444 dbname=postgres user=nobody")
+    assert command == [sys.executable, str(PROBE)]
+
+
+def test_degraded_tcp_pid_namespace_probe_is_explicitly_unproved(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setenv("NVDA_U05_DEGRADED_TCP", "1")
+    with pytest.raises(
+        pytest.fail.Exception,
+        match=(
+            "DEGRADED TCP VALIDATION: UNPROVED dedicated PID namespace at the "
+            "public-return boundary"
+        ),
+    ):
+        _isolated_command(
+            "host=127.0.0.1 port=55444 dbname=postgres user=nobody",
+            pid_namespace=True,
+        )
+
+
+def test_degraded_tcp_probe_uses_confined_work_directories(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    monkeypatch.setenv("NVDA_U05_DEGRADED_TCP", "1")
+    workdir = tmp_path / "probe"
+    workdir.mkdir()
+    env = _probe_env(workdir)
+    assert env["HOME"] == str(workdir / "proof-home")
+    assert env["TMPDIR"] == str(workdir / "proof-tmp")
+    assert env["XDG_DATA_HOME"] == str(workdir / "proof-xdg")
+    assert all(Path(env[key]).is_dir() for key in ("HOME", "TMPDIR", "XDG_DATA_HOME"))
 
 
 def _json_transport_default(value: Any) -> Any:
@@ -205,7 +296,7 @@ def _probe_process(
     command = _isolated_command(dsn) if isolated_filesystem else [sys.executable, str(PROBE)]
     return subprocess.run(
         command,
-        cwd=ROOT,
+        cwd=_probe_cwd(workdir),
         env=_probe_env(workdir),
         input=payload,
         text=True,
@@ -249,7 +340,7 @@ def _start_hold_probe(
     workdir.mkdir()
     process = subprocess.Popen(
         _isolated_command(dsn),
-        cwd=ROOT,
+        cwd=_probe_cwd(workdir),
         env=_probe_env(workdir),
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -284,7 +375,7 @@ def _spawn_return_boundary_probe(
     workdir.mkdir()
     process = subprocess.Popen(
         _isolated_command(dsn, pid_namespace=True),
-        cwd=ROOT,
+        cwd=_probe_cwd(workdir),
         env=_probe_env(workdir),
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -947,11 +1038,17 @@ def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresq
 
 
 def test_process_boundary_forbids_shared_local_file_persistence(tmp_path: Path) -> None:
+    dsn = _dsn()
+    if _degraded_tcp_active(dsn):
+        pytest.fail(
+            f"{DEGRADED_TCP_BOUNDARY}: UNPROVED mapped mount/network namespace and "
+            "exclusive filesystem boundary; TCP execution cannot satisfy this proposition"
+        )
     host_path = ROOT / f".forbidden-proof-store-{uuid.uuid4().hex}"
     result = _run_probe(
         tmp_path,
         "filesystem_boundary",
-        dsn=_dsn(),
+        dsn=dsn,
         token=_token("fs-boundary"),
         host_path=str(host_path),
     )
@@ -1014,6 +1111,7 @@ def test_semantic_state_moves_with_postgresql_database_clone_and_not_original_pr
 def test_public_return_barrier_stops_separate_session_descendant_process(
     tmp_path: Path,
 ) -> None:
+    _require_pid_namespace_boundary(_dsn())
     process, marker = _start_return_boundary_probe(
         tmp_path,
         "boundary_descendant_canary",
@@ -1059,6 +1157,7 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
     assessment_which: str | None,
 ) -> None:
     dsn = _dsn()
+    _require_pid_namespace_boundary(dsn)
     token = _token(f"commit-ack-{expected_key}")
     facts = _authoritative_facts()
     expected = _expected_records(token, facts)
@@ -1169,6 +1268,7 @@ def test_command_return_is_durable_if_writer_is_killed_immediately_after_success
     tmp_path: Path,
 ) -> None:
     dsn = _dsn()
+    _require_pid_namespace_boundary(dsn)
     token = _token("kill-after-return")
     facts = _authoritative_facts()
     expected = _expected_records(token, facts)
@@ -1230,6 +1330,7 @@ def test_each_command_is_visible_before_writer_shutdown_and_matches_prewrite_aut
     tmp_path: Path,
 ) -> None:
     dsn = _dsn()
+    _require_pid_namespace_boundary(dsn)
     token = _token("own-tx")
     facts = _authoritative_facts()
     expected = _expected_records(token, facts)
