@@ -1,0 +1,60 @@
+{
+  "iteration": 13,
+  "gate": "G03/VI-11R10",
+  "verdict": "FAIL",
+  "disposition": "RETURN_TO_WORKER",
+  "vi12r_authorised": false,
+  "submitted_archive_sha256": "f67ef9c88c9b6470f46200815f5ac4b29505f3ce309a6a3ca482eeb6832280b3",
+  "submitted_head": "2b17c3b545242475889b85aa158000f443f4ca65",
+  "submitted_tree": "1cc95061579ffb2aad4743490ac38f2eb10685cb",
+  "physical_candidate": "548a61107fda52e643142542ddb60dee584bd46e",
+  "physical_tree": "e4e0850990545b46d57bb8241596fa1e51c60451",
+  "physical_parent": "36bba0d26b988881812d2333f7e1eb3e8e63786b",
+  "counts": {
+    "critical": 2,
+    "important": 0,
+    "total": 2
+  },
+  "prior_finding_status": {
+    "T012-F001": "PARTIALLY_CLOSED",
+    "T012-F002": "PARTIALLY_CLOSED"
+  },
+  "new_unrelated_proof_categories": 0,
+  "environment": {
+    "degraded_tcp_or_namespace_is_rejection_basis": false,
+    "namespace_filesystem_propositions": "UNPROVED",
+    "namespace_filesystem_proposition_count": 9
+  },
+  "findings": [
+    {
+      "id": "T013-F001",
+      "severity": "CRITICAL",
+      "prior": "T012-F001",
+      "title": "Literal-marker XID correlation can bind SyncRep to an audit/identity transaction while semantic state is committed separately",
+      "authority": "IRB BC-011/BC-015; IA22R01-PROD-009; IWO-U05",
+      "proof_location": [
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:967-999",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:1225-1261",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:1380-1507"
+      ],
+      "independent_canary": "PostgreSQL 17.9: waited audit XID 779, later semantic payload XID 780, marker helper returned only 779, predicate accepted true after fresh joined semantic readback.",
+      "repair": "Bind transaction identity at the actual semantic persistence operation and require all writes constituting that semantic append to occur in the observed SyncRep transaction; add a split-marker/surrogate-join rejection canary."
+    },
+    {
+      "id": "T013-F002",
+      "severity": "CRITICAL",
+      "prior": "T012-F002",
+      "title": "The injected record-only proxy itself exposes the concrete adapter capability",
+      "authority": "IRB BC-001/BC-013/BC-015; IA17-PROD-001/IA17-PROD-011; IWO persistence ownership boundary",
+      "proof_location": [
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:1946-1994",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:2039-2045",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:2115-2119",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:2246-2271",
+        "tests/product/raw_signal/test_u05_postgresql_durability.py:2675-2695"
+      ],
+      "independent_canary": "Owner built with submitted proxy recovered exact adapter through _port._inner and executed a private semantic method while precheck/postcheck were false and rewire_count was zero.",
+      "repair": "Inject a genuinely record-only persistence capability whose reachable state contains no concrete adapter, and add a direct injected-port recovery canary."
+    }
+  ]
+}
