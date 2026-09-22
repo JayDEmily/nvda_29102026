@@ -6,6 +6,7 @@ import functools
 import importlib
 import inspect
 import json
+import multiprocessing
 import os
 import select
 import shutil
@@ -999,6 +1000,149 @@ def _semantic_marker_xids_are_transaction_bound(
     return marker_xids == {synchronous_wait_xid}
 
 
+def _semantic_write_xids_are_transaction_bound(
+    synchronous_wait_xid: str, write_xids: set[str]
+) -> bool:
+    """Require every post-GO database write to use the transaction seen in SyncRep."""
+
+    return write_xids == {synchronous_wait_xid}
+
+
+def _install_postgresql_write_trace(dsn: str) -> str:
+    """Trace every existing non-system table and record the exact covered relation set."""
+
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    suffix = uuid.uuid4().hex[:16]
+    schema_name = f"nvda_proof_trace_{suffix}"
+    trigger_name = f"nvda_proof_capture_{suffix}"
+
+    schema = sql.Identifier(schema_name)
+    capture_function = sql.SQL("{}.capture_write").format(schema)
+    with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+        cursor.execute(sql.SQL("create schema {}").format(schema))
+        cursor.execute(
+            sql.SQL(
+                """
+                create table {}.events (
+                    application_name text not null,
+                    transaction_id text not null,
+                    table_schema text not null,
+                    table_name text not null,
+                    operation text not null
+                )
+                """
+            ).format(schema)
+        )
+        cursor.execute(
+            sql.SQL(
+                "create table {}.relations (relation_oid oid primary key, "
+                "table_schema text not null, table_name text not null)"
+            ).format(schema)
+        )
+        cursor.execute(
+            sql.SQL(
+                """
+                create function {}() returns trigger language plpgsql as $$
+                begin
+                    insert into {}.events (
+                        application_name,
+                        transaction_id,
+                        table_schema,
+                        table_name,
+                        operation
+                    ) values (
+                        current_setting('application_name', true),
+                        pg_current_xact_id()::text,
+                        TG_TABLE_SCHEMA,
+                        TG_TABLE_NAME,
+                        TG_OP
+                    );
+                    return null;
+                end
+                $$
+                """
+            ).format(capture_function, schema)
+        )
+        cursor.execute(
+            """
+            select relation.oid, namespace.nspname, relation.relname
+            from pg_catalog.pg_class as relation
+            join pg_catalog.pg_namespace as namespace
+              on namespace.oid = relation.relnamespace
+            where relation.relkind = 'r'
+              and namespace.nspname not in ('pg_catalog', 'information_schema', %s)
+              and namespace.nspname not like 'pg_toast%%'
+            order by namespace.nspname, relation.relname
+            """,
+            (schema_name,),
+        )
+        tables = cursor.fetchall()
+        assert tables, "semantic-write tracing requires an existing durable product relation"
+        for relation_oid, table_schema, table_name in tables:
+            relation = sql.SQL("{}.{}").format(
+                sql.Identifier(table_schema), sql.Identifier(table_name)
+            )
+            cursor.execute(
+                sql.SQL(
+                    "create trigger {} after insert or update or delete on {} "
+                    "for each row execute function {}()"
+                ).format(sql.Identifier(trigger_name), relation, capture_function)
+            )
+            cursor.execute(
+                sql.SQL(
+                    "insert into {}.relations (relation_oid, table_schema, table_name) "
+                    "values (%s, %s, %s)"
+                ).format(schema),
+                (relation_oid, table_schema, table_name),
+            )
+    return schema_name
+
+
+def _postgresql_write_trace_xids(dsn: str, schema_name: str) -> set[str]:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            sql.SQL(
+                """
+                select namespace.nspname, relation.relname
+                from pg_catalog.pg_class as relation
+                join pg_catalog.pg_namespace as namespace
+                  on namespace.oid = relation.relnamespace
+                where relation.relkind = 'r'
+                  and namespace.nspname not in ('pg_catalog', 'information_schema', {})
+                  and namespace.nspname not like 'pg_toast%%'
+                  and not exists (
+                      select 1 from {}.relations as traced
+                      where traced.relation_oid = relation.oid
+                  )
+                order by namespace.nspname, relation.relname
+                """
+            ).format(sql.Literal(schema_name), sql.Identifier(schema_name))
+        )
+        untraced = cursor.fetchall()
+        assert not untraced, (
+            "post-GO semantic command created untraced durable relations",
+            untraced,
+        )
+        cursor.execute(
+            sql.SQL("select distinct transaction_id from {}.events").format(
+                sql.Identifier(schema_name)
+            )
+        )
+        return {str(row[0]) for row in cursor.fetchall()}
+
+
+def _drop_postgresql_write_trace(dsn: str, schema_name: str) -> None:
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    with psycopg.connect(dsn, autocommit=True) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            sql.SQL("drop schema if exists {} cascade").format(sql.Identifier(schema_name))
+        )
+
+
 def _semantic_markers(token: str) -> list[str]:
     return [
         f"scope::{token}",
@@ -1222,53 +1366,108 @@ def test_semantic_write_handshake_excludes_owner_setup_transaction(tmp_path: Pat
             cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
 
 
-def test_semantic_marker_xids_expose_prior_audit_transaction_false_positive() -> None:
-    """Canary T012-F001: the expected identity must not span setup and semantic commits."""
+def test_semantic_write_trace_rejects_split_marker_surrogate_payload_in_postgresql() -> None:
+    """T013-F001: trace both commits when only the audit row contains the identity marker."""
 
     dsn = _dsn()
     psycopg = _psycopg()
     sql = importlib.import_module("psycopg.sql")
-    table = f"nvda_semantic_xid_canary_{uuid.uuid4().hex}"
+    suffix = uuid.uuid4().hex
+    audit_table = f"nvda_semantic_audit_{suffix}"
+    payload_table = f"nvda_semantic_payload_{suffix}"
     marker = f"semantic-record::{uuid.uuid4().hex}"
+    application_name = f"nvda-proof-split-semantic-{uuid.uuid4().hex}"
+    writer_dsn = _dsn_with_application_name(dsn, application_name)
     observed_xids: list[str] = []
+    audit_id: int | None = None
+    trace_schema: str | None = None
 
     with (
         psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
         connection.cursor() as cursor,
     ):
         cursor.execute(
-            sql.SQL("create table {} (phase text not null, marker text not null)").format(
-                sql.Identifier(table)
-            )
+            sql.SQL(
+                "create table {} ("
+                "audit_id bigint generated always as identity, "
+                "marker text not null, primary key (audit_id))"
+            ).format(sql.Identifier(audit_table))
+        )
+        cursor.execute(
+            sql.SQL(
+                "create table {} ("
+                "audit_id bigint not null references {} (audit_id), "
+                "payload text not null)"
+            ).format(sql.Identifier(payload_table), sql.Identifier(audit_table))
         )
 
     try:
-        for phase in ("command_audit", "semantic_write"):
-            with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
-                cursor.execute("select txid_current()::text")
-                observed_xids.append(str(cursor.fetchone()[0]))
-                cursor.execute(
-                    sql.SQL("insert into {} (phase, marker) values (%s, %s)").format(
-                        sql.Identifier(table)
-                    ),
-                    (phase, marker),
-                )
-                connection.commit()
+        trace_schema = _install_postgresql_write_trace(dsn)
+        with psycopg.connect(writer_dsn) as connection, connection.cursor() as cursor:
+            cursor.execute("select pg_current_xact_id()::text")
+            observed_xids.append(str(cursor.fetchone()[0]))
+            cursor.execute(
+                sql.SQL("insert into {} (marker) values (%s) returning audit_id").format(
+                    sql.Identifier(audit_table)
+                ),
+                (marker,),
+            )
+            audit_id = int(cursor.fetchone()[0])
+            connection.commit()
+
+        with psycopg.connect(writer_dsn) as connection, connection.cursor() as cursor:
+            cursor.execute("select pg_current_xact_id()::text")
+            observed_xids.append(str(cursor.fetchone()[0]))
+            cursor.execute(
+                sql.SQL("insert into {} (audit_id, payload) values (%s, %s)").format(
+                    sql.Identifier(payload_table)
+                ),
+                (audit_id, "SEMANTIC_PAYLOAD"),
+            )
+            connection.commit()
 
         assert len(set(observed_xids)) == 2
         marker_xids = _postgres_marker_xids(dsn, marker)
-        assert marker_xids == set(observed_xids)
-        assert not _semantic_marker_xids_are_transaction_bound(observed_xids[0], marker_xids)
+        assert marker_xids == {observed_xids[0]}, (
+            "canary requires the prior literal-marker discriminator to miss the payload commit",
+            marker_xids,
+            observed_xids,
+        )
+        assert _semantic_marker_xids_are_transaction_bound(observed_xids[0], marker_xids)
+        trace_xids = _postgresql_write_trace_xids(dsn, trace_schema)
+        assert trace_xids == set(observed_xids)
+        assert not _semantic_write_xids_are_transaction_bound(observed_xids[0], trace_xids)
+
+        with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+            cursor.execute(
+                sql.SQL(
+                    "select a.marker, p.payload from {} as a join {} as p using (audit_id)"
+                ).format(sql.Identifier(audit_table), sql.Identifier(payload_table))
+            )
+            assert cursor.fetchall() == [(marker, "SEMANTIC_PAYLOAD")]
     finally:
+        if trace_schema is not None:
+            _drop_postgresql_write_trace(dsn, trace_schema)
         with (
             psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
             connection.cursor() as cursor,
         ):
-            cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
+            cursor.execute(
+                sql.SQL("drop table if exists {}").format(sql.Identifier(payload_table))
+            )
+            cursor.execute(
+                sql.SQL("drop table if exists {}").format(sql.Identifier(audit_table))
+            )
 
 
 def test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits() -> None:
     assert not _semantic_marker_xids_are_transaction_bound("4101", {"4101", "4102"})
+
+
+def test_semantic_write_trace_rejects_split_marker_surrogate_payload_transactions() -> None:
+    """T013-F001: post-GO database writes may not span the waited and later XIDs."""
+
+    assert not _semantic_write_xids_are_transaction_bound("779", {"779", "780"})
 
 
 def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
@@ -1452,6 +1651,7 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
     writer_dsn = _dsn_with_application_name(dsn, application_name)
     process: subprocess.Popen[str] | None = None
     marker: dict[str, Any] | None = None
+    trace_schema: str | None = None
     barrier_active = False
     try:
         write_extra = {"facts": facts} if expected_key in {"policy", "observation"} else {}
@@ -1464,6 +1664,11 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
             **write_extra,
         )
         _read_probe_event(process, "semantic_write_ready")
+
+        # Install the trace only after READY, so owner/schema setup is excluded. Row triggers on
+        # every existing user relation cover normalised/surrogate-linked rows; the readback helper
+        # fails closed if the command creates any new untraced durable relation after GO.
+        trace_schema = _install_postgresql_write_trace(dsn)
 
         _set_synchronous_standby_names(dsn, f"FIRST 1 ({barrier_name})")
         _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
@@ -1491,19 +1696,12 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
             **read_extra,
         )
         assert fresh["record"] == expected[expected_key]
-        semantic_marker = {
-            "policy": f"scope::{token}",
-            "capture": f"capture::{token}",
-            "observation": f"observation::{token}",
-            "zero": f"assessment-zero::{token}",
-            "one": f"assessment-one::{token}",
-        }[expected_key]
-        marker_xids = _postgres_marker_xids(dsn, semantic_marker)
-        assert _semantic_marker_xids_are_transaction_bound(semantic_write_xid, marker_xids), (
-            "SyncRep wait was not transaction-bound to the expected semantic record",
-            semantic_marker,
+        assert trace_schema is not None
+        write_xids = _postgresql_write_trace_xids(dsn, trace_schema)
+        assert _semantic_write_xids_are_transaction_bound(semantic_write_xid, write_xids), (
+            "post-GO database writes were not confined to the transaction observed in SyncRep",
             semantic_write_xid,
-            marker_xids,
+            write_xids,
         )
         result = _release_return_boundary_probe(process, marker)
         assert result["record"] == expected[expected_key]
@@ -1517,6 +1715,8 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
             else:
                 process.kill()
                 process.communicate(timeout=10)
+        if trace_schema is not None:
+            _drop_postgresql_write_trace(dsn, trace_schema)
 
 
 def test_command_return_is_durable_if_writer_is_killed_immediately_after_success(
@@ -1944,10 +2144,9 @@ _STORAGE_PROTOCOL_BOUND_ARITY = {
 
 
 class _RecordOnlyPersistenceProxy:
-    """Expose only the admitted record protocol while forwarding to real PostgreSQL storage."""
+    """Capability-free replacement used only by graph-rewrite unit canaries."""
 
-    def __init__(self, inner: Any) -> None:
-        self._inner = inner
+    def __init__(self) -> None:
         self._calls: list[str] = []
 
     @property
@@ -1959,39 +2158,171 @@ class _RecordOnlyPersistenceProxy:
 
     def append_policy(self, value: Any) -> Any:
         self._calls.append("append_policy")
-        return self._inner.append_policy(value)
+        return value
 
     def get_policy(self, policy_id: Any, version: int) -> Any:
         self._calls.append("get_policy")
-        return self._inner.get_policy(policy_id, version)
+        return policy_id, version
 
     def append_capture(self, value: Any) -> Any:
         self._calls.append("append_capture")
-        return self._inner.append_capture(value)
+        return value
 
     def get_capture(self, capture_id: Any) -> Any:
         self._calls.append("get_capture")
-        return self._inner.get_capture(capture_id)
+        return capture_id
 
     def append_observation(self, value: Any) -> Any:
         self._calls.append("append_observation")
-        return self._inner.append_observation(value)
+        return value
 
     def get_observation(self, observation_id: Any) -> Any:
         self._calls.append("get_observation")
-        return self._inner.get_observation(observation_id)
+        return observation_id
 
     def append_assessment(self, value: Any) -> Any:
         self._calls.append("append_assessment")
-        return self._inner.append_assessment(value)
+        return value
 
     def get_assessment(self, assessment_id: Any) -> Any:
         self._calls.append("get_assessment")
-        return self._inner.get_assessment(assessment_id)
+        return assessment_id
 
     def list_assessments(self, capture_id: Any) -> Any:
         self._calls.append("list_assessments")
-        return self._inner.list_assessments(capture_id)
+        return (capture_id,)
+
+
+def _record_only_persistence_server(connection: Any, adapter_factory: Any) -> None:
+    """Own the concrete adapter in a separate address space behind a strict allowlist."""
+
+    try:
+        adapter = adapter_factory()
+        missing = [
+            name
+            for name in _STORAGE_PROTOCOL_BOUND_ARITY
+            if not callable(getattr(adapter, name, None))
+        ]
+        if missing:
+            raise AssertionError(
+                f"record-only server adapter is missing protocol methods: {missing}"
+            )
+        connection.send(("ready", None))
+        while True:
+            request = connection.recv()
+            operation = request[0]
+            if operation == "stop":
+                connection.send(("stopped", None))
+                return
+            _, method_name, args, kwargs = request
+            if method_name not in _STORAGE_PROTOCOL_BOUND_ARITY:
+                connection.send(
+                    (
+                        "forbidden",
+                        f"{method_name!r} is outside the record-only persistence protocol",
+                    )
+                )
+                continue
+            try:
+                result = getattr(adapter, method_name)(*args, **kwargs)
+            except BaseException as exc:  # pragma: no cover - surfaced in the parent process
+                connection.send(("error", type(exc).__qualname__, str(exc)))
+            else:
+                connection.send(("result", result))
+    except EOFError:
+        return
+    finally:
+        connection.close()
+
+
+class _ForkedRecordOnlyPersistencePort:
+    """Expose only record operations while the concrete adapter exists in a child process."""
+
+    def __init__(self, adapter_factory: Any) -> None:
+        assert "fork" in multiprocessing.get_all_start_methods(), (
+            "record-only proof requires a forked address-space boundary"
+        )
+        context = multiprocessing.get_context("fork")
+        parent_connection, child_connection = context.Pipe()
+        process = context.Process(
+            target=_record_only_persistence_server,
+            args=(child_connection, adapter_factory),
+            name=f"nvda-record-only-{uuid.uuid4().hex}",
+            daemon=True,
+        )
+        process.start()
+        child_connection.close()
+        status = parent_connection.recv()
+        assert status == ("ready", None), status
+        self._connection = parent_connection
+        self._process = process
+        self._calls: list[str] = []
+
+    @property
+    def calls(self) -> tuple[str, ...]:
+        return tuple(self._calls)
+
+    def _clear_calls(self) -> None:
+        self._calls.clear()
+
+    def _request(self, method_name: str, *args: Any, **kwargs: Any) -> Any:
+        self._connection.send(("call", method_name, args, kwargs))
+        response = self._connection.recv()
+        if response[0] == "result":
+            self._calls.append(method_name)
+            return response[1]
+        if response[0] == "forbidden":
+            raise AssertionError(response[1])
+        if response[0] == "error":
+            raise RuntimeError(f"remote {response[1]}: {response[2]}")
+        raise AssertionError(f"unexpected record-only server response: {response!r}")
+
+    def _close(self) -> None:
+        if self._connection.closed:
+            return
+        if self._process.is_alive():
+            self._connection.send(("stop",))
+            assert self._connection.recv() == ("stopped", None)
+        self._connection.close()
+        self._process.join(timeout=10)
+        assert not self._process.is_alive()
+
+    def append_policy(self, value: Any) -> Any:
+        return self._request("append_policy", value)
+
+    def get_policy(self, policy_id: Any, version: int) -> Any:
+        return self._request("get_policy", policy_id, version)
+
+    def append_capture(self, value: Any) -> Any:
+        return self._request("append_capture", value)
+
+    def get_capture(self, capture_id: Any) -> Any:
+        return self._request("get_capture", capture_id)
+
+    def append_observation(self, value: Any) -> Any:
+        return self._request("append_observation", value)
+
+    def get_observation(self, observation_id: Any) -> Any:
+        return self._request("get_observation", observation_id)
+
+    def append_assessment(self, value: Any) -> Any:
+        return self._request("append_assessment", value)
+
+    def get_assessment(self, assessment_id: Any) -> Any:
+        return self._request("get_assessment", assessment_id)
+
+    def list_assessments(self, capture_id: Any) -> Any:
+        return self._request("list_assessments", capture_id)
+
+
+def _forked_postgresql_record_only_port(dsn: str) -> _ForkedRecordOnlyPersistencePort:
+    def adapter_factory() -> Any:
+        donor_owner = build_owner(postgres_dsn=dsn)
+        ports = _find_default_persistence_ports(donor_owner)
+        assert len(ports) == 1, ports
+        return ports[0]
+
+    return _ForkedRecordOnlyPersistencePort(adapter_factory)
 
 
 def _is_weak_target_capability(value: Any, target: Any) -> bool:
@@ -2041,8 +2372,6 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
 
         if value is target:
             return True
-        if isinstance(value, _RecordOnlyPersistenceProxy):
-            return False
         if bound_target_method(value) is not None:
             return True
         if _is_weak_target_capability(value, target):
@@ -2239,6 +2568,10 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
                 changed_any = True
         return value, changed_any
 
+    assert not contains_target_capability(replacement), (
+        "record-only replacement retains concrete/private PostgreSQL adapter capability",
+        replacement,
+    )
     rewrite(root)
     return replaced
 
@@ -2267,8 +2600,6 @@ def _production_graph_contains_identity(root: Any, target: Any) -> bool:
     def visit(value: Any) -> bool:
         if value is target:
             return True
-        if isinstance(value, _RecordOnlyPersistenceProxy):
-            return False
         if inspect.ismethod(value) and value.__self__ is target:
             return True
         if _is_weak_target_capability(value, target):
@@ -2336,7 +2667,7 @@ def test_record_only_proxy_rewrite_rejects_cached_private_adapter_capability() -
 
     adapter = AdapterCanary()
     owner = OwnerCanary(adapter)
-    proxy = _RecordOnlyPersistenceProxy(adapter)
+    proxy = _RecordOnlyPersistenceProxy()
     with pytest.raises(AssertionError, match="private PostgreSQL adapter capability"):
         _rewire_production_graph_reference(owner, adapter, proxy)
 
@@ -2390,7 +2721,7 @@ def test_record_only_proxy_rewrite_rejects_nested_private_adapter_capability(
         cached = cached_closure
 
     owner = OwnerCanary(adapter, cached)
-    proxy = _RecordOnlyPersistenceProxy(adapter)
+    proxy = _RecordOnlyPersistenceProxy()
     with pytest.raises(AssertionError, match="PostgreSQL adapter capability"):
         _rewire_production_graph_reference(owner, adapter, proxy)
 
@@ -2450,7 +2781,7 @@ def test_record_only_proxy_rewrite_rejects_external_private_adapter_capability(
 
         owner = OwnerCanary(adapter)
 
-    proxy = _RecordOnlyPersistenceProxy(adapter)
+    proxy = _RecordOnlyPersistenceProxy()
     try:
         with pytest.raises(AssertionError, match="PostgreSQL adapter capability"):
             _rewire_production_graph_reference(owner, adapter, proxy)
@@ -2487,11 +2818,81 @@ def test_record_only_proxy_rewrite_rejects_weak_adapter_capability(weak_kind: st
         cached = weakref.proxy(adapter)
 
     owner = OwnerCanary(adapter, cached)
-    proxy = _RecordOnlyPersistenceProxy(adapter)
+    proxy = _RecordOnlyPersistenceProxy()
     owner._port = proxy
     assert _production_graph_contains_identity(owner, adapter)
     with pytest.raises(AssertionError, match="weak PostgreSQL adapter capability"):
         _rewire_production_graph_reference(owner, adapter, proxy)
+
+
+def test_injected_record_only_port_rejects_private_adapter_recovery() -> None:
+    """T013-F002: the injected capability cannot reveal or dispatch private adapter state."""
+
+    class AdapterCanary:
+        def append_policy(self, value: Any) -> Any:
+            return value
+
+        def get_policy(self, policy_id: Any, version: int) -> tuple[Any, int]:
+            return policy_id, version
+
+        def append_capture(self, value: Any) -> Any:
+            return value
+
+        def get_capture(self, capture_id: Any) -> Any:
+            return capture_id
+
+        def append_observation(self, value: Any) -> Any:
+            return value
+
+        def get_observation(self, observation_id: Any) -> Any:
+            return observation_id
+
+        def append_assessment(self, value: Any) -> Any:
+            return value
+
+        def get_assessment(self, assessment_id: Any) -> Any:
+            return assessment_id
+
+        def list_assessments(self, capture_id: Any) -> tuple[Any, ...]:
+            return (capture_id,)
+
+        def _semantic_decision(self) -> str:
+            return "adapter-owned-semantic-decision"
+
+    port = _ForkedRecordOnlyPersistencePort(AdapterCanary)
+    try:
+        public_callables = {
+            name for name in dir(port) if not name.startswith("_") and callable(getattr(port, name))
+        }
+        assert public_callables == set(_STORAGE_PROTOCOL_BOUND_ARITY)
+        assert port.append_policy("record") == "record"
+        with pytest.raises(AttributeError):
+            object.__getattribute__(port, "_inner")
+        with pytest.raises(AssertionError, match="outside the record-only persistence protocol"):
+            port._request("_semantic_decision")
+    finally:
+        port._close()
+
+
+def test_graph_checker_does_not_treat_adapter_holding_record_proxy_as_opaque() -> None:
+    """T013-F002: the exact prior ``proxy._inner`` escape is visible and rejected."""
+
+    class AdapterCanary:
+        def _semantic_decision(self) -> str:
+            return "adapter-owned-semantic-decision"
+
+    class OwnerCanary:
+        def __init__(self, port: Any) -> None:
+            self._port = port
+
+    adapter = AdapterCanary()
+    unsafe_proxy = _RecordOnlyPersistenceProxy()
+    unsafe_proxy._inner = adapter
+    owner = OwnerCanary(unsafe_proxy)
+
+    assert _production_graph_contains_identity(owner, adapter)
+    with pytest.raises(AssertionError, match="replacement retains concrete/private"):
+        _rewire_production_graph_reference(owner, adapter, unsafe_proxy)
 
 
 def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities() -> None:
@@ -2522,7 +2923,7 @@ def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities()
 
     adapter = AdapterCanary()
     owner = OwnerCanary(adapter)
-    proxy = _RecordOnlyPersistenceProxy(adapter)
+    proxy = _RecordOnlyPersistenceProxy()
     replaced = _rewire_production_graph_reference(owner, adapter, proxy)
 
     assert replaced == 5
@@ -2634,11 +3035,15 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
     false_dsn = _dsn_with_database(base_dsn, false_db)
     token = _token("eligibility-invariance")
     facts = _authoritative_facts()
+    source_proxy: _ForkedRecordOnlyPersistencePort | None = None
+    true_proxy: _ForkedRecordOnlyPersistencePort | None = None
+    false_proxy: _ForkedRecordOnlyPersistencePort | None = None
 
     _create_database(admin_dsn, source_db)
     try:
+        source_proxy = _forked_postgresql_record_only_port(source_dsn)
         source_owner = build_owner(
-            postgres_dsn=source_dsn, eligibility_resolver=lambda _o, _p: True
+            persistence_port=source_proxy, eligibility_resolver=lambda _o, _p: True
         )
         stored_policy = register_policy(
             source_owner,
@@ -2668,31 +3073,29 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
                 ingestion_sequence_scope=facts["ingestion_sequence_scope"],
             ),
         )
+        source_proxy._close()
+        source_proxy = None
         _terminate_database_connections(admin_dsn, source_db)
         _create_database(admin_dsn, true_db, template=source_db)
         _create_database(admin_dsn, false_db, template=source_db)
 
-        true_default_owner = build_owner(
-            postgres_dsn=true_dsn, eligibility_resolver=lambda _o, _p: True
-        )
-        false_default_owner = build_owner(
-            postgres_dsn=false_dsn, eligibility_resolver=lambda _o, _p: False
-        )
-        true_ports = _find_default_persistence_ports(true_default_owner)
-        false_ports = _find_default_persistence_ports(false_default_owner)
-        assert len(true_ports) == len(false_ports) == 1
-        true_concrete_port = true_ports[0]
-        false_concrete_port = false_ports[0]
-        true_proxy = _RecordOnlyPersistenceProxy(true_concrete_port)
-        false_proxy = _RecordOnlyPersistenceProxy(false_concrete_port)
+        # Each concrete default adapter is created only inside its own child process. The
+        # semantic owner receives an allowlisted record protocol whose reachable state contains
+        # no adapter object and whose server rejects every private/non-protocol dispatch.
+        true_proxy = _forked_postgresql_record_only_port(true_dsn)
+        false_proxy = _forked_postgresql_record_only_port(false_dsn)
         true_owner = build_owner(
             persistence_port=true_proxy, eligibility_resolver=lambda _o, _p: True
         )
         false_owner = build_owner(
             persistence_port=false_proxy, eligibility_resolver=lambda _o, _p: False
         )
-        assert not _production_graph_contains_identity(true_owner, true_concrete_port)
-        assert not _production_graph_contains_identity(false_owner, false_concrete_port)
+        assert not hasattr(true_proxy, "_inner")
+        assert not hasattr(false_proxy, "_inner")
+        with pytest.raises(AssertionError, match="outside the record-only persistence protocol"):
+            true_proxy._request("_semantic_decision")
+        with pytest.raises(AssertionError, match="outside the record-only persistence protocol"):
+            false_proxy._request("_semantic_decision")
 
         def storage_state(port: Any) -> dict[str, Any]:
             return {
@@ -2710,8 +3113,8 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
         before_true = storage_state(true_proxy)
         before_false = storage_state(false_proxy)
         assert before_true == before_false
-        true_proxy.clear_calls()
-        false_proxy.clear_calls()
+        true_proxy._clear_calls()
+        false_proxy._clear_calls()
 
         true_relation = true_owner.commands.derive_capture_receipt_evidence_relation(
             observation_occurrence_ref=stored_observation.observation_occurrence_id,
@@ -2748,6 +3151,12 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
         assert storage_state(false_proxy) == before_false
         assert storage_state(true_proxy) == storage_state(false_proxy)
     finally:
+        if false_proxy is not None:
+            false_proxy._close()
+        if true_proxy is not None:
+            true_proxy._close()
+        if source_proxy is not None:
+            source_proxy._close()
         for dbname in (false_db, true_db, source_db):
             _drop_database(admin_dsn, dbname)
 
