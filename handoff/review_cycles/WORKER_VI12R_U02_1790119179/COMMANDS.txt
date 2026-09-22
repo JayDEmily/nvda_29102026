@@ -1,0 +1,1 @@
+PENDING — Worker records commands actually executed during this cycle.
