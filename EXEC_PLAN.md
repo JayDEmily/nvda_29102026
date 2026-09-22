@@ -638,3 +638,36 @@ startup is unavailable in this UID-0-only sandbox. The new database-backed trans
 the nine mapped namespace/filesystem propositions, and the exact Python-3.13.5 mypy/promotion axis
 remain expressly unproved here. Fresh Tester Iteration 013 must run those axes independently.
 VI-12R remains prohibited pending its disposition.
+
+### 2026-09-22 — VI-11R10 Tester Iteration 013 disposition
+
+Fresh independent review of submitted archive SHA-256
+`f67ef9c88c9b6470f46200815f5ac4b29505f3ce309a6a3ca482eeb6832280b3`, handoff
+`2b17c3b545242475889b85aa158000f443f4ca65` / tree
+`1cc95061579ffb2aad4743490ac38f2eb10685cb`, and physical proof
+`548a61107fda52e643142542ddb60dee584bd46e` / tree
+`e4e0850990545b46d57bb8241596fa1e51c60451` returned `FAIL / RETURN_TO_WORKER` with
+two Critical proof-layer findings (`T013-F001..F002`). Literal-marker XID correlation did not
+cover a surrogate-linked payload committed separately, and the injected in-process record proxy
+directly exposed its concrete adapter as `_inner`. The nine namespace/filesystem propositions
+remain `UNPROVED` and were not the rejection basis. Both findings route to VI-10R11; no production
+or semantic-authority change is authorised. See
+`implementation/proof/VI11R10_TESTER_ITERATION_013_DISPOSITION.md`.
+
+### 2026-09-22 — VI-10R11 successor prepared for Tester Iteration 014
+
+Physical proof `cca84de4ce2e9df52647352237c8a64e52a10db5` / tree
+`6b7881fc045345eef357248f4fa8f75f38599923`, parent Tester Iteration 013 continuity
+`39b5ca75e74ecd5cdee50c66c3a26fe3f34aec65`, traces every post-`GO` write XID across
+the complete predeclared durable relation set and rejects a new untraced relation. The
+opposing-eligibility proof injects a process-isolated nine-method record port whose reachable
+parent state contains no concrete adapter and whose server rejects private dispatch. The physical
+commit changes one test path and zero `src/**` bytes. Product control remains six families / 13 of
+13 obligations; 453 tests collect; 20 focused non-database canaries, the 71-test available
+architecture axis, structural validation, Ruff, dependency/public-seam, diff and strict Git
+integrity checks pass.
+
+Live PostgreSQL execution and the exact Python-3.13.5 mypy/promotion axis remain explicitly
+Worker-`UNPROVED` in the UID-0-only sandbox. The nine namespace/filesystem propositions also remain
+`UNPROVED`. Fresh Tester Iteration 014 must run those axes independently. VI-12R remains prohibited
+pending its disposition.
