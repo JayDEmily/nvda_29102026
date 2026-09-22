@@ -16,6 +16,7 @@ import threading
 import time
 import types
 import uuid
+import weakref
 from dataclasses import is_dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
@@ -683,6 +684,15 @@ def _wait_for_synchronous_standby_setting(dsn: str, expected: str, *, timeout: f
 
 
 def _backend_wait_event(dsn: str, application_name: str) -> tuple[str | None, str | None] | None:
+    state = _backend_wait_state(dsn, application_name)
+    return None if state is None else state[:2]
+
+
+def _backend_wait_state(
+    dsn: str, application_name: str
+) -> tuple[str | None, str | None, str | None] | None:
+    """Return the unique writer wait state and its server transaction identity."""
+
     psycopg = _psycopg()
     with (
         psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
@@ -690,16 +700,18 @@ def _backend_wait_event(dsn: str, application_name: str) -> tuple[str | None, st
     ):
         cursor.execute(
             """
-            select wait_event_type, wait_event
+            select wait_event_type, wait_event, backend_xid::text
             from pg_stat_activity
             where application_name = %s and pid <> pg_backend_pid()
             """,
             (application_name,),
         )
-        row = cursor.fetchone()
-    if row is None:
+        rows = cursor.fetchall()
+    if not rows:
         return None
-    return row[0], row[1]
+    assert len(rows) == 1, (application_name, rows)
+    row = rows[0]
+    return row[0], row[1], row[2]
 
 
 def _wait_for_sync_rep_without_public_return(
@@ -708,7 +720,7 @@ def _wait_for_sync_rep_without_public_return(
     dsn: str,
     application_name: str,
     timeout: float = 10.0,
-) -> None:
+) -> str:
     """Observe server-side SyncRep wait while proving the public return marker is absent."""
 
     assert process.stdout is not None
@@ -727,7 +739,8 @@ def _wait_for_sync_rep_without_public_return(
             raise AssertionError(
                 f"commit-barrier writer exited before server SyncRep wait: {stderr}"
             )
-        last_wait = _backend_wait_event(dsn, application_name)
+        state = _backend_wait_state(dsn, application_name)
+        last_wait = None if state is None else state[:2]
         if last_wait == ("IPC", "SyncRep"):
             readable, _, _ = select.select([process.stdout], [], [], 0.1)
             assert not readable, (
@@ -735,7 +748,8 @@ def _wait_for_sync_rep_without_public_return(
                 "waiting for synchronous commit acknowledgement",
                 last_wait,
             )
-            return
+            assert state is not None and state[2] is not None, state
+            return state[2]
         time.sleep(0.01)
     pytest.fail(
         "writer backend did not enter PostgreSQL SyncRep wait under proof commit barrier; "
@@ -948,6 +962,41 @@ def _postgres_fact_hits(dsn: str, markers: list[str]) -> dict[str, int]:
                 cursor.execute(query, (f"%{marker}%",))
                 hits[marker] += int(cursor.fetchone()[0])
     return hits
+
+
+def _postgres_marker_xids(dsn: str, marker: str) -> set[str]:
+    """Return PostgreSQL transaction identities for every row carrying one exact marker."""
+
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    xids: set[str] = set()
+    with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+        cursor.execute(
+            """
+            select table_schema, table_name
+            from information_schema.tables
+            where table_type = 'BASE TABLE'
+              and table_schema not in ('pg_catalog', 'information_schema')
+            order by table_schema, table_name
+            """
+        )
+        tables = cursor.fetchall()
+        for schema, table in tables:
+            relation = sql.SQL("{}.{}").format(sql.Identifier(schema), sql.Identifier(table))
+            query = sql.SQL(
+                "select distinct t.xmin::text from {} as t where row_to_json(t)::text like %s"
+            ).format(relation)
+            cursor.execute(query, (f"%{marker}%",))
+            xids.update(str(row[0]) for row in cursor.fetchall())
+    return xids
+
+
+def _semantic_marker_xids_are_transaction_bound(
+    synchronous_wait_xid: str, marker_xids: set[str]
+) -> bool:
+    """Require the expected semantic identity to originate only in the waited transaction."""
+
+    return marker_xids == {synchronous_wait_xid}
 
 
 def _semantic_markers(token: str) -> list[str]:
@@ -1173,6 +1222,55 @@ def test_semantic_write_handshake_excludes_owner_setup_transaction(tmp_path: Pat
             cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
 
 
+def test_semantic_marker_xids_expose_prior_audit_transaction_false_positive() -> None:
+    """Canary T012-F001: the expected identity must not span setup and semantic commits."""
+
+    dsn = _dsn()
+    psycopg = _psycopg()
+    sql = importlib.import_module("psycopg.sql")
+    table = f"nvda_semantic_xid_canary_{uuid.uuid4().hex}"
+    marker = f"semantic-record::{uuid.uuid4().hex}"
+    observed_xids: list[str] = []
+
+    with (
+        psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+        connection.cursor() as cursor,
+    ):
+        cursor.execute(
+            sql.SQL("create table {} (phase text not null, marker text not null)").format(
+                sql.Identifier(table)
+            )
+        )
+
+    try:
+        for phase in ("command_audit", "semantic_write"):
+            with psycopg.connect(dsn) as connection, connection.cursor() as cursor:
+                cursor.execute("select txid_current()::text")
+                observed_xids.append(str(cursor.fetchone()[0]))
+                cursor.execute(
+                    sql.SQL("insert into {} (phase, marker) values (%s, %s)").format(
+                        sql.Identifier(table)
+                    ),
+                    (phase, marker),
+                )
+                connection.commit()
+
+        assert len(set(observed_xids)) == 2
+        marker_xids = _postgres_marker_xids(dsn, marker)
+        assert marker_xids == set(observed_xids)
+        assert not _semantic_marker_xids_are_transaction_bound(observed_xids[0], marker_xids)
+    finally:
+        with (
+            psycopg.connect(_admin_dsn(dsn), autocommit=True) as connection,
+            connection.cursor() as cursor,
+        ):
+            cursor.execute(sql.SQL("drop table if exists {}").format(sql.Identifier(table)))
+
+
+def test_semantic_marker_xid_binding_rejects_setup_then_semantic_commits() -> None:
+    assert not _semantic_marker_xids_are_transaction_bound("4101", {"4101", "4102"})
+
+
 def test_public_factory_uses_same_semantic_owner_type_with_and_without_postgresql() -> None:
     assert type(build_owner()) is type(build_owner(postgres_dsn=_dsn()))
 
@@ -1371,7 +1469,7 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
         _wait_for_synchronous_standby_setting(dsn, f"FIRST 1 ({barrier_name})")
         barrier_active = True
         _release_semantic_write(process)
-        _wait_for_sync_rep_without_public_return(
+        semantic_write_xid = _wait_for_sync_rep_without_public_return(
             process, dsn=dsn, application_name=application_name
         )
 
@@ -1393,6 +1491,20 @@ def test_public_success_return_requires_postgresql_commit_acknowledgement(
             **read_extra,
         )
         assert fresh["record"] == expected[expected_key]
+        semantic_marker = {
+            "policy": f"scope::{token}",
+            "capture": f"capture::{token}",
+            "observation": f"observation::{token}",
+            "zero": f"assessment-zero::{token}",
+            "one": f"assessment-one::{token}",
+        }[expected_key]
+        marker_xids = _postgres_marker_xids(dsn, semantic_marker)
+        assert _semantic_marker_xids_are_transaction_bound(semantic_write_xid, marker_xids), (
+            "SyncRep wait was not transaction-bound to the expected semantic record",
+            semantic_marker,
+            semantic_write_xid,
+            marker_xids,
+        )
         result = _release_return_boundary_probe(process, marker)
         assert result["record"] == expected[expected_key]
     finally:
@@ -1882,6 +1994,19 @@ class _RecordOnlyPersistenceProxy:
         return self._inner.list_assessments(capture_id)
 
 
+def _is_weak_target_capability(value: Any, target: Any) -> bool:
+    """Detect live weak references, weak methods and weak proxies to the adapter."""
+
+    if isinstance(value, weakref.ReferenceType):
+        referenced = value()
+        return referenced is target or (
+            inspect.ismethod(referenced) and referenced.__self__ is target
+        )
+    if isinstance(value, weakref.ProxyTypes):
+        return any(value is candidate for candidate in weakref.getweakrefs(target))
+    return False
+
+
 def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any) -> int:
     """Replace concrete-adapter capabilities throughout the reachable owner object graph."""
 
@@ -1919,6 +2044,8 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
         if isinstance(value, _RecordOnlyPersistenceProxy):
             return False
         if bound_target_method(value) is not None:
+            return True
+        if _is_weak_target_capability(value, target):
             return True
 
         if local_seen is None:
@@ -2002,6 +2129,11 @@ def _rewire_production_graph_reference(root: Any, target: Any, replacement: Any)
             )
             replaced += 1
             return getattr(replacement, method_name), True
+
+        assert not _is_weak_target_capability(value, target), (
+            "owner retains a weak PostgreSQL adapter capability",
+            value,
+        )
 
         value_id = id(value)
         if value_id in seen:
@@ -2138,6 +2270,8 @@ def _production_graph_contains_identity(root: Any, target: Any) -> bool:
         if isinstance(value, _RecordOnlyPersistenceProxy):
             return False
         if inspect.ismethod(value) and value.__self__ is target:
+            return True
+        if _is_weak_target_capability(value, target):
             return True
 
         value_id = id(value)
@@ -2327,6 +2461,39 @@ def test_record_only_proxy_rewrite_rejects_external_private_adapter_capability(
             _EXTERNAL_CAPABILITY_CANARY = None
 
 
+@pytest.mark.parametrize("weak_kind", ["ref", "method", "proxy", "callable_proxy"])
+def test_record_only_proxy_rewrite_rejects_weak_adapter_capability(weak_kind: str) -> None:
+    """Canary T012-F002 across dereferenceable weak references and proxies."""
+
+    class AdapterCanary:
+        def _semantic_decision(self) -> bool:
+            return True
+
+    class CallableAdapterCanary(AdapterCanary):
+        def __call__(self) -> bool:
+            return True
+
+    class OwnerCanary:
+        def __init__(self, adapter: AdapterCanary, cached: Any) -> None:
+            self._port = adapter
+            self._cached = cached
+
+    adapter = CallableAdapterCanary() if weak_kind == "callable_proxy" else AdapterCanary()
+    if weak_kind == "ref":
+        cached: Any = weakref.ref(adapter)
+    elif weak_kind == "method":
+        cached = weakref.WeakMethod(adapter._semantic_decision)
+    else:
+        cached = weakref.proxy(adapter)
+
+    owner = OwnerCanary(adapter, cached)
+    proxy = _RecordOnlyPersistenceProxy(adapter)
+    owner._port = proxy
+    assert _production_graph_contains_identity(owner, adapter)
+    with pytest.raises(AssertionError, match="weak PostgreSQL adapter capability"):
+        _rewire_production_graph_reference(owner, adapter, proxy)
+
+
 def test_record_only_proxy_rewrite_rewrites_nested_public_storage_capabilities() -> None:
     """Prove admitted bound methods cannot retain a hidden concrete-adapter receiver."""
 
@@ -2505,17 +2672,25 @@ def test_default_postgresql_storage_is_invariant_under_opposing_eligibility_auth
         _create_database(admin_dsn, true_db, template=source_db)
         _create_database(admin_dsn, false_db, template=source_db)
 
-        true_owner = build_owner(postgres_dsn=true_dsn, eligibility_resolver=lambda _o, _p: True)
-        false_owner = build_owner(postgres_dsn=false_dsn, eligibility_resolver=lambda _o, _p: False)
-        true_ports = _find_default_persistence_ports(true_owner)
-        false_ports = _find_default_persistence_ports(false_owner)
+        true_default_owner = build_owner(
+            postgres_dsn=true_dsn, eligibility_resolver=lambda _o, _p: True
+        )
+        false_default_owner = build_owner(
+            postgres_dsn=false_dsn, eligibility_resolver=lambda _o, _p: False
+        )
+        true_ports = _find_default_persistence_ports(true_default_owner)
+        false_ports = _find_default_persistence_ports(false_default_owner)
         assert len(true_ports) == len(false_ports) == 1
         true_concrete_port = true_ports[0]
         false_concrete_port = false_ports[0]
         true_proxy = _RecordOnlyPersistenceProxy(true_concrete_port)
         false_proxy = _RecordOnlyPersistenceProxy(false_concrete_port)
-        assert _rewire_production_graph_reference(true_owner, true_concrete_port, true_proxy) > 0
-        assert _rewire_production_graph_reference(false_owner, false_concrete_port, false_proxy) > 0
+        true_owner = build_owner(
+            persistence_port=true_proxy, eligibility_resolver=lambda _o, _p: True
+        )
+        false_owner = build_owner(
+            persistence_port=false_proxy, eligibility_resolver=lambda _o, _p: False
+        )
         assert not _production_graph_contains_identity(true_owner, true_concrete_port)
         assert not _production_graph_contains_identity(false_owner, false_concrete_port)
 
