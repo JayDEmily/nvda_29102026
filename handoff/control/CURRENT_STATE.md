@@ -42,7 +42,10 @@
 - **VI-13R Reviewer 021 U01 result:** `FAIL / RETURN_TO_WORKER` — Worker discrepancies `W-U01-F001` and `W-U01-F002` are confirmed proof-harness defects; new realised-U01 findings `R021-U01-F003` (mutable/aliased `native_record`) and `R021-U01-F004` (no lawful public construction path for required private identity-bearing payloads) require bounded U01 production/proof repair. See `implementation/proof/VI13R_U01_REVIEWER_021_DISPOSITION.md`.
 - **VI-12R U01 Reviewer-021 repair candidate:** `e8b659d7849d2f95b64ba32bed8090a8290358d4` / tree `62b074c0e94215a75fb64c5eb934af55be1ded3a` on `work/vi12r-u01-reviewer021-repair`; focused U01 proof 297/297 with mypy 1.20.1, pending fresh Reviewer 022.
 - **Current Leaf:** `G03 / VI-13R — IWO-U01 repaired candidate pending Reviewer 022`
-- **Current actor:** Fresh independent Reviewer 022; U02 remains prohibited
+- **Current actor:** `TESTER` — Fresh independent Reviewer 022; U02 remains prohibited
+- **Active review cycle:** `handoff/review_cycles/TESTER_VI13R_U01_R022_1790117393/`
+- **Active cycle request:** `handoff/review_cycles/TESTER_VI13R_U01_R022_1790117393/REQUEST.md`
+- **Role-consistency rule:** if `Current actor`, active-cycle prefix, or active-cycle request disagree, stop `BLOCKED` rather than guessing
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`

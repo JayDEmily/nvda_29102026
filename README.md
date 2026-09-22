@@ -1,10 +1,7 @@
-# NVDA Architecture Kernel
+# NVDA Repository
 
-This repository is the behaviour-neutral structural kernel for the NVDA codebase. It defines the architectural object taxonomy, registries, ownership/dependency/public-seam laws, lifecycle, composition skeleton, proof admission and promotion machinery required before future product capability is implemented.
-
-It contains no admitted NVIDIA trading/business module. `config/architecture/modules.yaml` and `config/architecture/surfaces.yaml` remain empty unless separately admitted under current authority.
-
-The semantic-to-implementation-ready-brief methodology is upstream and separate from this repository. The kernel must accept an explicitly accepted implementation-ready brief without importing or duplicating that upstream methodology.
-The generic ingress boundary binds exact brief bytes by SHA-256, records external implementation acceptance and a bounded create/modify architecture projection, and fails closed rather than repairing missing domain meaning.
-
-Start with `GUARDRAILS.md`, `AGENTS.md`, and the explicitly accepted root `EXEC_PLAN.md`.
+Before substantive work, read `GUARDRAILS.md`, `AGENTS.md`, and the complete current `EXEC_PLAN.md` in full.
+Then read `handoff/control/CURRENT_STATE.md`; it names the current actor and the active cycle under `handoff/review_cycles/`.
+The active cycle prefix (`WORKER_` or `TESTER_`) identifies who acts next; read that cycle's `REQUEST.md` before acting.
+Record the result/evidence in the same active cycle, then create the opposite-role cycle for the next authorised action; completed cycles are immutable.
+If `CURRENT_STATE.md`, the active-cycle prefix, or the cycle request disagree about role or candidate identity, stop as `BLOCKED` rather than guessing.
