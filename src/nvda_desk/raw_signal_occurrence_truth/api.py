@@ -1,6 +1,7 @@
 """Typed public seam for the admitted Raw Signal Occurrence Truth owner."""
 
-from collections.abc import Sequence
+from collections.abc import Iterator, Mapping, Sequence
+from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from typing import Literal, NoReturn
@@ -131,6 +132,74 @@ def _not_implemented(unit: str) -> NoReturn:
     raise NotImplementedError(f"behaviour belongs to {unit} and is not implemented by IWO-U01")
 
 
+class _NativeRecordSnapshot(Mapping[str, object]):
+    """Alias-safe read-only snapshot of one provider-logical native record."""
+
+    __slots__ = ("__data",)
+
+    def __init__(self, source: Mapping[str, object]) -> None:
+        if any(type(key) is not str for key in source):
+            raise TypeError("native_record field names must be strings")
+        self.__data = deepcopy(dict(source))
+
+    def __getitem__(self, key: str) -> object:
+        return deepcopy(self.__data[key])
+
+    def __iter__(self) -> Iterator[str]:
+        return iter(self.__data)
+
+    def __len__(self) -> int:
+        return len(self.__data)
+
+
+def concept_id(value: str) -> _ConceptId:
+    """Construct a canonical-concept identity value for a public v1 payload."""
+
+    return _ConceptId(value)
+
+
+def contract_id(value: str) -> _ContractId:
+    """Construct a payload-contract identity value for a public v1 payload."""
+
+    return _ContractId(value)
+
+
+def scope_policy_id(value: str) -> _ScopePolicyId:
+    return _ScopePolicyId(value)
+
+
+def eligibility_policy_ref(value: str) -> _EligibilityPolicyRef:
+    return _EligibilityPolicyRef(value)
+
+
+def scope_policy_ref(value: str) -> _ScopePolicyRef:
+    return _ScopePolicyRef(value)
+
+
+def capture_occurrence_id(value: str) -> _CaptureOccurrenceId:
+    return _CaptureOccurrenceId(value)
+
+
+def observation_occurrence_id(value: str) -> _ObservationOccurrenceId:
+    return _ObservationOccurrenceId(value)
+
+
+def assessment_occurrence_id(value: str) -> _AssessmentOccurrenceId:
+    return _AssessmentOccurrenceId(value)
+
+
+def provider_id(value: str) -> _ProviderId:
+    return _ProviderId(value)
+
+
+def delivery_artifact_ref(value: str) -> _DeliveryArtifactRef:
+    return _DeliveryArtifactRef(value)
+
+
+def ingestion_sequence_scope(value: str) -> _IngestionSequenceScope:
+    return _IngestionSequenceScope(value)
+
+
 @dataclass(frozen=True, slots=True)
 class CaptureScopePolicyV1:
     concept_id: _ConceptId
@@ -198,7 +267,7 @@ class RawObservationOccurrenceV1:
     observation_occurrence_id: _ObservationOccurrenceId
     delivery_artifact_ref: _DeliveryArtifactRef
     source_provider: _ProviderId
-    native_record: dict[str, object]
+    native_record: Mapping[str, object]
     received_ts_utc: datetime
     ingestion_sequence: int
     ingestion_sequence_scope: _IngestionSequenceScope
@@ -248,8 +317,9 @@ class RawObservationOccurrenceV1:
                 raise TypeError("raw_signal_catalogue_ids must contain RawSignalCatalogueId values")
             if len(set(self.raw_signal_catalogue_ids)) != len(self.raw_signal_catalogue_ids):
                 raise ValueError("raw_signal_catalogue_ids must not contain duplicates")
-        if type(self.native_record) is not dict:
+        if not isinstance(self.native_record, Mapping):
             raise TypeError("native_record must be a provider-native mapping")
+        object.__setattr__(self, "native_record", _NativeRecordSnapshot(self.native_record))
         _require_utc(self.received_ts_utc, "received_ts_utc")
         if self.received_epoch_ns is not None and type(self.received_epoch_ns) is not int:
             raise TypeError("received_epoch_ns must be an integer or absent")
@@ -267,23 +337,23 @@ class RawObservationOccurrenceV1:
                 raise ValueError("receipt_only must not fabricate a source timestamp")
         elif self.source_timestamp_raw is None:
             raise ValueError(f"{self.source_temporal_kind} requires source_timestamp_raw")
-        for field_name in (
-            "source_product_api",
-            "source_endpoint_callback",
-            "native_identifier",
-            "native_tick_series_identifier",
-            "source_variant",
-            "subject_instrument",
-            "native_units",
-            "availability_session",
-            "source_status_native",
-            "revision_vintage_native",
-            "source_timestamp_raw",
-            "source_timezone_native",
-            "market_timezone_iana",
-            "market_session_native",
+        for field_value, field_name in (
+            (self.source_product_api, "source_product_api"),
+            (self.source_endpoint_callback, "source_endpoint_callback"),
+            (self.native_identifier, "native_identifier"),
+            (self.native_tick_series_identifier, "native_tick_series_identifier"),
+            (self.source_variant, "source_variant"),
+            (self.subject_instrument, "subject_instrument"),
+            (self.native_units, "native_units"),
+            (self.availability_session, "availability_session"),
+            (self.source_status_native, "source_status_native"),
+            (self.revision_vintage_native, "revision_vintage_native"),
+            (self.source_timestamp_raw, "source_timestamp_raw"),
+            (self.source_timezone_native, "source_timezone_native"),
+            (self.market_timezone_iana, "market_timezone_iana"),
+            (self.market_session_native, "market_session_native"),
         ):
-            _require_optional_string(getattr(self, field_name), field_name)
+            _require_optional_string(field_value, field_name)
 
 
 @dataclass(frozen=True, slots=True)
@@ -457,5 +527,16 @@ __all__ = [
     "RawObservationOccurrenceV1",
     "RawSignalCatalogueId",
     "ScheduledCaptureOccurrenceV1",
+    "assessment_occurrence_id",
+    "capture_occurrence_id",
+    "concept_id",
+    "contract_id",
     "create_owner",
+    "delivery_artifact_ref",
+    "eligibility_policy_ref",
+    "ingestion_sequence_scope",
+    "observation_occurrence_id",
+    "provider_id",
+    "scope_policy_id",
+    "scope_policy_ref",
 ]

@@ -270,6 +270,12 @@ def _construct(symbol: str, field: str, value: Any) -> Any:
     cls = required_symbol(symbol)
     payload = as_mapping(_specimens()[symbol])
     payload[field] = value
+    if (symbol, field, value) == (
+        "RawObservationOccurrenceV1",
+        "source_temporal_kind",
+        "receipt_only",
+    ):
+        payload["source_timestamp_raw"] = None
     return cls(**payload)
 
 
@@ -748,6 +754,90 @@ def test_temporal_discriminant_controls_source_timestamp_null_law(
         observation(source_temporal_kind=kind, source_timestamp_raw=raw)
 
 
+def test_native_record_is_alias_safe_read_only_snapshot() -> None:
+    source = {
+        "Bid Price": "123.45",
+        "Provider Null": None,
+        "Nested": {"Levels": [1, 2]},
+    }
+    observed = observation(native_record=source)
+
+    source["Bid Price"] = "999.99"
+    source["Injected"] = "later"
+    nested_source = source["Nested"]
+    assert isinstance(nested_source, dict)
+    nested_source["Levels"].append(3)
+
+    assert observed.native_record["Bid Price"] == "123.45"
+    assert "Injected" not in observed.native_record
+    assert observed.native_record["Nested"] == {"Levels": [1, 2]}
+
+    nested_read = observed.native_record["Nested"]
+    assert isinstance(nested_read, dict)
+    nested_read["Levels"].append(99)
+    assert observed.native_record["Nested"] == {"Levels": [1, 2]}
+
+    with pytest.raises(TypeError):
+        observed.native_record["Bid Price"] = "888.88"
+
+
+def test_public_identity_factories_construct_every_required_identity_layer() -> None:
+    cases = (
+        ("concept_id", "CaptureScopePolicyV1", "concept_id", POLICY_CONCEPT),
+        ("contract_id", "CaptureScopePolicyV1", "contract_id", POLICY_CONTRACT),
+        ("scope_policy_id", "CaptureScopePolicyV1", "scope_policy_id", "scope-policy-001"),
+        (
+            "eligibility_policy_ref",
+            "CaptureScopePolicyV1",
+            "eligibility_policy_ref",
+            "eligibility-policy:fixture:v1",
+        ),
+        (
+            "scope_policy_ref",
+            "ScheduledCaptureOccurrenceV1",
+            "scope_policy_ref",
+            "scope-policy-001@1",
+        ),
+        (
+            "capture_occurrence_id",
+            "ScheduledCaptureOccurrenceV1",
+            "capture_occurrence_id",
+            "capture-001",
+        ),
+        (
+            "observation_occurrence_id",
+            "RawObservationOccurrenceV1",
+            "observation_occurrence_id",
+            "observation-001",
+        ),
+        (
+            "assessment_occurrence_id",
+            "CaptureReceiptPresenceAssessmentV1",
+            "assessment_occurrence_id",
+            "assessment-001",
+        ),
+        ("provider_id", "RawObservationOccurrenceV1", "source_provider", "provider.fixture"),
+        (
+            "delivery_artifact_ref",
+            "RawObservationOccurrenceV1",
+            "delivery_artifact_ref",
+            "delivery-001",
+        ),
+        (
+            "ingestion_sequence_scope",
+            "RawObservationOccurrenceV1",
+            "ingestion_sequence_scope",
+            "collector.fixture",
+        ),
+    )
+
+    for factory_name, symbol, field, opaque_value in cases:
+        factory = required_symbol(factory_name)
+        value = factory(opaque_value)
+        assert type(value) is identity_type(symbol, field)
+        assert str(value) == opaque_value
+
+
 def test_owner_uses_public_production_factory_with_separate_command_and_read_facets() -> None:
     assert not hasattr(api, "_build_test_owner")
     builder = required_symbol("create_owner")
@@ -819,13 +909,19 @@ def test_every_public_facet_rejects_cross_layer_static_type_substitution() -> No
     result = _run_public_seam_mypy(TYPECHECK_NEGATIVE)
     assert result.returncode != 0, "negative static-type specimen unexpectedly type-checked"
     reported_lines: set[int] = set()
+    root = Path(__file__).resolve().parents[3]
+    expected_path = TYPECHECK_NEGATIVE.resolve()
     for line in (result.stdout + result.stderr).splitlines():
-        prefix = f"{TYPECHECK_NEGATIVE}:"
-        if not line.startswith(prefix):
+        parts = line.split(":", 2)
+        if len(parts) < 3:
             continue
-        remainder = line[len(prefix) :]
+        reported_path = Path(parts[0])
+        if not reported_path.is_absolute():
+            reported_path = root / reported_path
+        if reported_path.resolve() != expected_path:
+            continue
         try:
-            reported_lines.add(int(remainder.split(":", 1)[0]))
+            reported_lines.add(int(parts[1]))
         except ValueError:
             continue
     missing = expected_lines - reported_lines

@@ -1,16 +1,61 @@
 from collections.abc import Sequence
-from datetime import datetime
+from datetime import UTC, datetime
 
 from nvda_desk.raw_signal_occurrence_truth import api
 
 
-def exercise_public_seam(
-    policy: api.CaptureScopePolicyV1,
-    capture: api.ScheduledCaptureOccurrenceV1,
-    observation: api.RawObservationOccurrenceV1,
-    assessment: api.CaptureReceiptPresenceAssessmentV1,
-    when: datetime,
-) -> None:
+def exercise_public_seam(when: datetime) -> None:
+    policy = api.CaptureScopePolicyV1(
+        concept_id=api.concept_id("raw_signal.capture_scope_policy"),
+        contract_id=api.contract_id("nvda.raw_signal.CaptureScopePolicy.v1"),
+        units="not_applicable",
+        scope_policy_id=api.scope_policy_id("scope-policy-001"),
+        scope_policy_version=1,
+        activation_ts_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        eligibility_policy_ref=api.eligibility_policy_ref("eligibility-policy:fixture:v1"),
+    )
+    capture = api.ScheduledCaptureOccurrenceV1(
+        concept_id=api.concept_id("raw_signal.scheduled_capture_occurrence"),
+        contract_id=api.contract_id("nvda.raw_signal.ScheduledCaptureOccurrence.v1"),
+        units="not_applicable",
+        capture_occurrence_id=api.capture_occurrence_id("capture-001"),
+        scope_policy_ref=api.scope_policy_ref("scope-policy-001@1"),
+        slot_start_utc=datetime(2026, 9, 20, 12, 0, tzinfo=UTC),
+        slot_end_utc=datetime(2026, 9, 20, 12, 0, 30, tzinfo=UTC),
+    )
+    observation = api.RawObservationOccurrenceV1(
+        concept_id=api.concept_id("raw_signal.raw_observation_occurrence"),
+        contract_id=api.contract_id("nvda.raw_signal.RawObservationOccurrence.v1"),
+        observation_occurrence_id=api.observation_occurrence_id("observation-001"),
+        delivery_artifact_ref=api.delivery_artifact_ref("delivery-001"),
+        source_provider=api.provider_id("provider.fixture"),
+        native_record={"Bid Price": "123.45", "Provider Null": None},
+        received_ts_utc=datetime(2026, 9, 20, 12, 0, 5, tzinfo=UTC),
+        ingestion_sequence=1,
+        ingestion_sequence_scope=api.ingestion_sequence_scope("collector.fixture"),
+        source_temporal_kind="true_instant",
+        source_timestamp_raw="2026-09-20T12:00:04.900000Z",
+    )
+    relation_payload = api.CaptureReceiptEvidenceRelationV1(
+        concept_id=api.concept_id("raw_signal.capture_receipt_evidence_relation"),
+        contract_id=api.contract_id("nvda.raw_signal.CaptureReceiptEvidenceRelation.v1"),
+        units="not_applicable",
+        observation_occurrence_ref=observation.observation_occurrence_id,
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        scope_policy_ref=capture.scope_policy_ref,
+        received_ts_utc=observation.received_ts_utc,
+        relation_role="evidences_receipt_presence_only",
+    )
+    assessment = api.CaptureReceiptPresenceAssessmentV1(
+        concept_id=api.concept_id("raw_signal.capture_receipt_presence_assessment"),
+        contract_id=api.contract_id("nvda.raw_signal.CaptureReceiptPresenceAssessment.v1"),
+        units="not_applicable",
+        assessment_occurrence_id=api.assessment_occurrence_id("assessment-001"),
+        capture_occurrence_ref=capture.capture_occurrence_id,
+        outcome="zero_received",
+        evidence_as_of_ts_utc=when,
+    )
+
     owner = api.create_owner()
 
     stored_policy: api.CaptureScopePolicyV1 = owner.commands.register_capture_scope_policy(policy)
@@ -65,8 +110,8 @@ def exercise_public_seam(
         owner.reads.list_receipt_presence_assessments(stored_capture.capture_occurrence_id)
     )
 
-    # Keep every inferred expression live so --disallow-any-expr checks the whole seam.
     _ = (
+        relation_payload,
         relation,
         read_policy,
         read_capture,
