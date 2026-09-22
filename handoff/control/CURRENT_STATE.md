@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R9 DEGRADED TCP EVIDENCE / TESTER ITERATION 012 AUDIT READY`
+- **Gate state:** `ACTIVE — VI-10R10 WORKER EVIDENCE / TESTER ITERATION 013 AUDIT READY`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -32,11 +32,13 @@
 - **VI-10R8 degraded-TCP audit target:** `7dc7ce0bb4d162d785bac5b0f431bdab77d954e7` / tree `134ddc76e61f9751e46cb1990c762ee028f86719` — one U05 proof path, zero `src/**`; 438 collected tests. A fresh real PostgreSQL 17.9 loopback-TCP run recorded U05 at 24 failed / 16 passed and the complete product suite at 416 failed / 22 passed. Nine U05 failures are explicitly labelled `DEGRADED TCP VALIDATION: UNPROVED` for mapped namespace/filesystem propositions; they are not passes or skips. Architecture/bootstrap and clean-state promotion remain 74/74 green. This is an audit target under the user's TCP caveat, not a claim that the accepted isolated boundary was established.
 - **VI-11R8 Tester Iteration 011:** `FAIL / RETURN_TO_WORKER` — two Critical proof-layer findings (`T011-F001..F002`); the degraded-TCP caveat was accepted as truthful and was not the rejection basis.
 - **VI-10R9 physical proof candidate:** `0917e0319a460a6d7ffb40b776b716f80f8f8684` / tree `fd5a1cb626f1fb7c41602f989d5f900c080f9537` — READY/GO semantic-write binding plus class/MRO/slots/global/module capability controls; two test paths and zero `src/**`; 444 collected product tests; real PostgreSQL 17.9 degraded execution at U05 24 failed / 22 passed and complete product 416 failed / 28 passed. Nine boundary propositions remain explicit `UNPROVED`.
-- **Current Leaf:** `G03-L06 / VI-11R9 — Tester Iteration 012 proof-adequacy audit`
-- **Current actor:** fresh Tester Iteration 012 requested; production implementation prohibited
+- **VI-11R9 Tester Iteration 012:** `FAIL / RETURN_TO_WORKER` — two Critical proof-layer findings (`T012-F001..F002`); the degraded-TCP caveat was accepted and was not the rejection basis.
+- **VI-10R10 physical proof candidate:** `548a61107fda52e643142542ddb60dee584bd46e` / tree `e4e0850990545b46d57bb8241596fa1e51c60451` — SyncRep `backend_xid` to semantic-row `xmin` correlation, injected record-only owner construction and weak-reference/proxy fail-closed controls; one test path and zero `src/**`; 450 collected product tests. Live PostgreSQL execution is Worker-`UNPROVED` because this sandbox maps only UID 0; the attached runtime manifest and 17.9 binary identity are verified.
+- **Current Leaf:** `G03-L06 / VI-11R10 — Tester Iteration 013 proof-adequacy audit`
+- **Current actor:** fresh Tester Iteration 013 requested; production implementation prohibited
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** fresh Tester Iteration 012 audits physical proof `0917e03...`, separately dispositions `T011-F001` / `T011-F002`, independently reruns the unchanged exact Python-3.13.5 architecture axis, and preserves the nine degraded-TCP namespace/filesystem propositions as `UNPROVED`. Production implementation remains prohibited.
+- **Next lawful action:** fresh Tester Iteration 013 audits physical proof `548a611...`, separately dispositions `T012-F001` / `T012-F002`, runs the unavailable PostgreSQL-17.9 and exact Python-3.13.5 axes, and preserves the nine degraded-TCP namespace/filesystem propositions as `UNPROVED`. Production implementation remains prohibited.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.

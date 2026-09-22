@@ -605,3 +605,36 @@ exact Python 3.13.5 runtime required by the preserved mypy 1.20.1 wheels, so exa
 aggregate promotion execution is deferred explicitly to the fresh tester; the entire architecture
 axis is byte-unchanged from the reviewed parent. VI-12R remains prohibited pending Tester
 Iteration 012.
+
+### 2026-09-22 — VI-11R9 Tester Iteration 012 disposition
+
+Fresh independent review of submitted archive SHA-256
+`d3d4f8000f2e7ee6e00ddef2973551a37ca680ea49112796be82d31fe88b7538`, handoff
+`36bba0d26b988881812d2333f7e1eb3e8e63786b` / tree
+`05a281546277125afa4361d8ec1eac3767d23022`, and physical proof
+`0917e0319a460a6d7ffb40b776b716f80f8f8684` / tree
+`fd5a1cb626f1fb7c41602f989d5f900c080f9537` returned `FAIL / RETURN_TO_WORKER` with two
+Critical proof-layer findings (`T012-F001..F002`). The first post-`GO` SyncRep wait remained
+unbound to the transaction making the expected semantic record durable; concrete adapter
+capability remained recoverable through weak references. The nine degraded namespace/filesystem
+propositions remain `UNPROVED` and were not the rejection basis. Both findings route to VI-10R10;
+no production or semantic-authority change is authorised. See
+`implementation/proof/VI11R9_TESTER_ITERATION_012_DISPOSITION.md`.
+
+### 2026-09-22 — VI-10R10 successor prepared for Tester Iteration 013
+
+Physical proof `548a61107fda52e643142542ddb60dee584bd46e` / tree
+`e4e0850990545b46d57bb8241596fa1e51c60451` binds the SyncRep discriminator's
+`backend_xid` to the `xmin` of every PostgreSQL row carrying the expected semantic identity,
+constructs the opposing-eligibility semantic owners with an injected record-only persistence
+capability, and rejects live weak references, weak methods and weak proxies to the concrete
+adapter. The physical commit changes one proof path and zero `src/**` bytes. Product control
+remains six families / 13 of 13 obligations; 450 tests collect; 18 focused canaries pass;
+structural architecture, the 71-test available architecture axis, Ruff, dependency/public-seam,
+diff and strict Git-integrity checks pass.
+
+The attached PostgreSQL 17.9 runtime manifest and binary identities verify, but live cluster
+startup is unavailable in this UID-0-only sandbox. The new database-backed transaction canary,
+the nine mapped namespace/filesystem propositions, and the exact Python-3.13.5 mypy/promotion axis
+remain expressly unproved here. Fresh Tester Iteration 013 must run those axes independently.
+VI-12R remains prohibited pending its disposition.
