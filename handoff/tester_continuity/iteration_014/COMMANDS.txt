@@ -1,0 +1,31 @@
+# Tester Iteration 014 — operations summary
+
+- SHA-256 hashed and extracted the exact uploaded archive.
+- Read current GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md and root EXEC_PLAN.md in full.
+- Read the bounded Iteration 014 directive, Iteration 013 continuity/disposition, VI-10R11 repair design/evidence and Reviewer 020 historical brief.
+- Rebound accepted IRB, BICP and IWO authority and hashes.
+- Verified clean transport repository, exact HEAD/tree, submitted handoff/tree, physical proof/tree/parent, ancestry and one-path physical diff.
+- Ran `git fsck --full --strict`.
+- Rebuilt an offline exact Python 3.13.5 environment from preserved project wheels with pytest 9.0.3, PyYAML 6.0.3, psycopg 3.3.4, mypy 1.20.1 and Ruff 0.15.11.
+- Independently verified the preserved PostgreSQL 17.9 package manifest and started a fresh non-root Unix-socket cluster as UID/GID 65534.
+- Verified PostgreSQL 17.9 with `fsync=on`, `synchronous_commit=on`, `full_page_writes=on`.
+- Verified user/mount/PID namespace creation is available in this tester sandbox.
+- Ran the four exact VI-10R11 repair tests: 4 passed.
+- Ran focused transaction/graph canaries: 22 passed / 33 deselected.
+- Ran live PostgreSQL environment, SyncRep, READY/GO and split-marker/surrogate canaries: 4 passed.
+- Ran an independent multi-table INSERT/UPDATE/DELETE tracer challenge: all four transaction XIDs captured.
+- Ran an independent post-trace new-regular-relation challenge: failed closed as untraced.
+- Ran an independent forked-capability PID/state/allowlist challenge: adapter child-only, exact nine methods, no `_inner`, private dispatch rejected.
+- Invoked all five product commit-ack parametrisations: 5 expected-red because `CaptureScopePolicyV1` is intentionally not implemented yet.
+- Ran two namespace/filesystem harness canaries: 2 passed; did not relabel nine realised-product propositions PASS.
+- Ran product-proof validator: PASS, 6 families / 13 of 13 obligations.
+- Independently collected 453 product tests.
+- Ran structural architecture validation: PASS.
+- Ran architecture/bootstrap: 74 passed.
+- Ran `architecture_kernel` promotion: 74/74 passed.
+- Ran mypy 1.20.1 on `src`: PASS, 15 source files.
+- Ran dependency direction and public-seam validators: PASS.
+- Ran Ruff 0.15.11 over `src tests tools`: PASS.
+- Ran `git diff --check`: PASS.
+- Stopped the fresh PostgreSQL cluster after evidence collection.
+- Disposition: PASS for bounded VI-11; next lawful programme step VI-12R; later implementation-coupled and milestone axes preserved.
