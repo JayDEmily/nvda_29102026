@@ -37,10 +37,11 @@
 - **VI-11R10 Tester Iteration 013:** `FAIL / RETURN_TO_WORKER` — two Critical proof-layer findings (`T013-F001..F002`); the degraded-TCP/namespace caveat was not the rejection basis. The exact tester continuity commit is `39b5ca75e74ecd5cdee50c66c3a26fe3f34aec65`.
 - **VI-10R11 physical proof candidate:** `cca84de4ce2e9df52647352237c8a64e52a10db5` / tree `6b7881fc045345eef357248f4fa8f75f38599923` — post-`GO` all-relation database-write XID tracing plus process-isolated record-only adapter capability; one test path and zero `src/**`; 453 collected product tests. Live PostgreSQL execution remains Worker-`UNPROVED` in the UID-0-only sandbox.
 - **Current Leaf:** `G03-L06 / VI-11R11 — Tester Iteration 014 proof-adequacy audit`
-- **Current actor:** fresh Tester Iteration 014 requested; production implementation prohibited
+- **Current actor:** fresh Tester Iteration 014 requested under `implementation/handoff/TESTER_ITERATION_014_BOUNDED_REVIEW_DIRECTIVE.md`; production implementation prohibited pending bounded VI-11 disposition
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Next lawful action:** fresh Tester Iteration 014 audits physical proof `cca84de...`, separately dispositions `T013-F001` / `T013-F002`, runs the unavailable PostgreSQL-17.9 and exact Python-3.13.5 axes, and preserves the nine degraded-TCP namespace/filesystem propositions as `UNPROVED`. Production implementation remains prohibited.
+- **Current tester authority note:** root `EXEC_PLAN.md` sections 6.3-6.4C and the VI-11 current-tranche transition rule govern Tester Iteration 014. `implementation/handoff/REVIEWER_020_VI11R11_PROOF_ADEQUACY.md` is preserved historical assignment evidence and does not restore the superseded open-ended proof-harness loop.
+- **Next lawful action:** fresh Tester Iteration 014 audits physical proof `cca84de...` under `implementation/handoff/TESTER_ITERATION_014_BOUNDED_REVIEW_DIRECTIVE.md`, separately dispositions `T013-F001` / `T013-F002`, classifies every material finding as pre-implementation contract, implementation-coupled adversarial or milestone real-boundary proof, and preserves unavailable environment-heavy axes as `UNPROVED` unless they are necessary to decide the bounded VI-11 contract. Production implementation remains prohibited pending that bounded disposition.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
