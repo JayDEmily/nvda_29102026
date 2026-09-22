@@ -3,8 +3,15 @@
   "actor": "TESTER",
   "candidate_commit": "e8b659d7849d2f95b64ba32bed8090a8290358d4",
   "candidate_tree": "62b074c0e94215a75fb64c5eb934af55be1ded3a",
-  "status": "PENDING",
-  "disposition": null,
-  "findings": null,
-  "next_authorised_step": null
+  "status": "COMPLETE",
+  "disposition": "PASS",
+  "findings": [],
+  "reviewed_findings": {
+    "W-U01-F001": "CLOSED",
+    "W-U01-F002": "CLOSED",
+    "R021-U01-F003": "CLOSED",
+    "R021-U01-F004": "CLOSED"
+  },
+  "u02_authority": "AUTHORISED_ONLY_AFTER_LAWFUL_U01_PROMOTION",
+  "next_authorised_step": "WORKER promotes the accepted U01 candidate plus Reviewer-022 disposition into forward main without squash/rebase/history rewrite; do not begin U02 before that promotion is complete."
 }
