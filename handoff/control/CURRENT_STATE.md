@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-10R11 WORKER EVIDENCE / TESTER ITERATION 014 AUDIT READY`
+- **Gate state:** `ACTIVE — VI-12R U01 WORKER CANDIDATE / VI-13R REVIEW READY`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -36,12 +36,15 @@
 - **VI-10R10 physical proof candidate:** `548a61107fda52e643142542ddb60dee584bd46e` / tree `e4e0850990545b46d57bb8241596fa1e51c60451` — SyncRep `backend_xid` to semantic-row `xmin` correlation, injected record-only owner construction and weak-reference/proxy fail-closed controls; one test path and zero `src/**`; 450 collected product tests. Live PostgreSQL execution is Worker-`UNPROVED` because this sandbox maps only UID 0; the attached runtime manifest and 17.9 binary identity are verified.
 - **VI-11R10 Tester Iteration 013:** `FAIL / RETURN_TO_WORKER` — two Critical proof-layer findings (`T013-F001..F002`); the degraded-TCP/namespace caveat was not the rejection basis. The exact tester continuity commit is `39b5ca75e74ecd5cdee50c66c3a26fe3f34aec65`.
 - **VI-10R11 physical proof candidate:** `cca84de4ce2e9df52647352237c8a64e52a10db5` / tree `6b7881fc045345eef357248f4fa8f75f38599923` — post-`GO` all-relation database-write XID tracing plus process-isolated record-only adapter capability; one test path and zero `src/**`; 453 collected product tests. Live PostgreSQL execution remains Worker-`UNPROVED` in the UID-0-only sandbox.
-- **Current Leaf:** `G03-L06 / VI-11R11 — Tester Iteration 014 proof-adequacy audit`
-- **Current actor:** fresh Tester Iteration 014 requested under `implementation/handoff/TESTER_ITERATION_014_BOUNDED_REVIEW_DIRECTIVE.md`; production implementation prohibited pending bounded VI-11 disposition
+- **Tester Iteration 014 bounded VI-11 result:** `PASS` — continuity commit `86744106d0c9f868d2c37f24b3d3a155a9d3fe68`; merged to forward `main` at `95c0aea`; no unresolved `PRE_IMPLEMENTATION_CONTRACT_PROOF` blocker remains.
+- **VI-12R IWO-U01 production candidate:** `d14190cdfe845fdd60629ca9b1eed8d1d2704d44` / tree `00f036fcd22a6e3ec6f79c5ddfeb9d210d1418b9` on `work/vi12r-u01-contract-owner-boundary`; only `src/nvda_desk/raw_signal_occurrence_truth/api.py` changed in the production commit.
+- **VI-12R U01 Worker evidence:** `implementation/proof/VI12R_U01_IMPLEMENTATION_EVIDENCE.md`; complete U01 proof observed `293 passed / 2 failed`, with both failures recorded as concrete candidate proof-harness discrepancies requiring independent VI-13R disposition rather than semantic workarounds.
+- **Current Leaf:** `G03 / VI-13R — IWO-U01 post-implementation review and implementation-coupled hardening`
+- **Current actor:** fresh independent Reviewer 021 under `implementation/handoff/REVIEWER_021_VI13R_U01_IMPLEMENTATION_REVIEW.md`; U02 is prohibited pending U01 disposition
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current tester authority note:** root `EXEC_PLAN.md` sections 6.3-6.4C and the VI-11 current-tranche transition rule govern Tester Iteration 014. `implementation/handoff/REVIEWER_020_VI11R11_PROOF_ADEQUACY.md` is preserved historical assignment evidence and does not restore the superseded open-ended proof-harness loop.
-- **Next lawful action:** fresh Tester Iteration 014 audits physical proof `cca84de...` under `implementation/handoff/TESTER_ITERATION_014_BOUNDED_REVIEW_DIRECTIVE.md`, separately dispositions `T013-F001` / `T013-F002`, classifies every material finding as pre-implementation contract, implementation-coupled adversarial or milestone real-boundary proof, and preserves unavailable environment-heavy axes as `UNPROVED` unless they are necessary to decide the bounded VI-11 contract. Production implementation remains prohibited pending that bounded disposition.
+- **Current review authority note:** root `EXEC_PLAN.md` sections 6.4A-6.4C, 6.7, VI-12R and VI-13R govern the U01 review. Reviewer 020 and the Tester Iteration 014 bounded directive are preserved history; current review must challenge the realised U01 candidate and route proof defects to their owning layer without reopening an implementation-independent infinite hardening loop.
+- **Next lawful action:** fresh Reviewer 021 audits exact U01 production commit `d14190cd...` against the accepted IRB/BICP/IWO, the bounded U01 proof and the complete implementation diff; independently dispositions `W-U01-F001` / `W-U01-F002`; returns `PASS|FAIL / RETURN_TO_WORKER|BLOCKED`. U02 remains prohibited until U01 is lawfully accepted/promoted.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
