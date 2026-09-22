@@ -31,11 +31,11 @@ EXACT ACCEPTED BICP
   -> Remaining-Unknown impact closure
   -> independently challenged Implementation Work Order
   -> current architecture identity/lifecycle admission
-  -> exact product-proof authority + physical adversarial proof
-  -> fresh proof-adequacy review
+  -> exact product-proof authority + bounded pre-implementation contract proof
+  -> fresh bounded proof-adequacy review
   -> bounded product implementation
-  -> per-unit product + architecture proof / fresh review
-  -> A00 -> M / persistence interaction closure
+  -> per-unit implementation-coupled adversarial proof / fresh review
+  -> A00 -> M / persistence and real-boundary closure
   -> separate product + architecture aggregate promotion
   -> package / isolated-install proof
   -> whole-BICP semantic review
@@ -185,13 +185,39 @@ IRB SHA-256
   -> physical proof / implementation artefact
 ```
 
-### 6.3 Proof before candidate implementation
+### 6.3 Bounded contract proof before candidate implementation
 
-For each material implementation unit, adversarial proof is authored from accepted authority before the implementation worker receives a candidate implementation.
+For each material implementation unit, pre-implementation proof is authored from accepted authority before the implementation worker receives a candidate implementation. That proof must cover the accepted externally observable semantic contract, required negative/unknown/absence cases, identity/time/value fidelity, public seam and any real boundary that is already necessary to make the unit meaningfully evaluable.
 
-### 6.4 Fresh proof-adequacy review before implementation
+Pre-implementation proof is **bounded**. It is not required to anticipate or defeat every hypothetical hostile implementation topology, Python object-graph escape, process arrangement or proof-harness exploit before production code exists. A proof-only hardening step is blocking before implementation only when the identified escape defeats a currently accepted semantic proposition or would allow the first implementation unit to satisfy its contract materially incorrectly.
 
-A fresh reviewer receives exact authority, exact obligation(s), necessary current normative/architecture authority and proposed proof, but no production candidate before verdict. The reviewer asks whether a plausible materially violating implementation could still pass.
+### 6.4 Fresh bounded proof-adequacy review before implementation
+
+A fresh reviewer receives exact authority, exact obligation(s), necessary current normative/architecture authority and the bounded proposed proof, but no production candidate before verdict. The reviewer asks whether the proof faithfully represents accepted meaning, whether the contract is materially discriminating, and whether a trivial or semantically wrong implementation could satisfy the bounded contract.
+
+This review does not require implementation-independent closure of every implementation-specific or environment-heavy adversarial proposition. Such propositions remain explicit and are routed to the proof class that can actually establish them. `UNPROVED` remains `UNPROVED`; deferral is never relabelled `PASS`.
+
+### 6.4A Three proof classes
+
+Every product-proof obligation used during realisation is classified by the proposition actually being established:
+
+1. **PRE_IMPLEMENTATION_CONTRACT_PROOF** — accepted semantic obligations that must be physically represented before code: ownership/write boundary, schedule rules, zero/one+/unknown, logical-record identity, temporal/native-value fidelity, no-scope/optional/null law, assessment rules, prohibited claims, compatibility and typed public seam. Real PostgreSQL is included here only where the bounded contract itself cannot be meaningfully evaluated without it.
+2. **IMPLEMENTATION_COUPLED_ADVERSARIAL_PROOF** — additional discrimination derived from the actual candidate implementation, its concrete state/object graph, dependency topology, transaction behaviour, process structure or an observed false-positive path. This is hardened with the implementation and independently reviewed under VI-13R rather than being exhaustively invented before the first production line exists.
+3. **MILESTONE_REAL_BOUNDARY_PROOF** — heavyweight real-environment evidence needed for interaction/final acceptance, including PostgreSQL durability/restart/commit-acknowledgement semantics, process/namespace/isolation boundaries, clean package/install and other propositions whose truth depends on the realised system and execution environment. These are closed at VI-14/VI-15 before any terminal PASS that depends on them.
+
+Classification changes must be reasoned from the proposition and recorded. Classification may change *when* a proposition is proved; it may not weaken the proposition or convert missing evidence into acceptance.
+
+### 6.4B Environment preflight and evidence law
+
+At the start of a fresh Worker or Tester environment, perform one bounded preflight for the tools required by the current leaf: repository-configured Python, required type/lint/test tooling, UID/user-namespace capability and PostgreSQL/runtime capability where relevant. The repository configuration remains the source of truth for exact versions; do not create a competing version declaration in this plan.
+
+Do not repeatedly rebuild or emulate unavailable infrastructure merely to continue semantic reasoning. If an environment cannot establish a required proof axis, record the exact axis as `UNPROVED` or `BLOCKED` and continue only with independent in-scope axes that do not depend on it. The unresolved axis must still be closed at its designated acceptance milestone before any claim that depends on it.
+
+### 6.4C Pre-implementation proof growth control
+
+Before production implementation exists, a new blocking proof case must trace directly to an accepted semantic proposition or demonstrate a material false-positive in the bounded contract. A test whose sole purpose is to defend the test harness against another hypothetical future implementation technique is routed to implementation-coupled adversarial proof unless the escape defeats the current bounded contract itself.
+
+This control does not authorise deleting, weakening or skipping a still-valid test. Existing proof history remains ordinary Git evidence and later hardening may reuse it where it bears on an actual implementation.
 
 ### 6.5 Risk/coupling-derived realisation units
 
@@ -253,12 +279,12 @@ Stop dependent work at the first unmet invariant, including:
 - candidate identity materially differs without re-adjudication;
 - architecture law cannot represent the required state;
 - product proof cannot be admitted without inventing authority;
-- proof cannot discriminate the governed semantic distinction;
-- real PostgreSQL evidence is required but only a mock/in-memory/same-process surrogate is available;
+- proof at the level required by the current leaf cannot discriminate the governed semantic distinction;
+- the current leaf requires real PostgreSQL evidence for its acceptance claim but only a mock/in-memory/same-process surrogate is available;
 - code would activate P01/K01/replay/external effects/accounts/downstream semantics;
 - proof or code needs an unauthorised default;
-- independent review has unresolved material findings;
-- aggregate proof is red/incomplete/skipped without authority;
+- independent review has unresolved material findings against the current leaf's acceptance criteria; an implementation-independent proof-harness finding explicitly routed under 6.4A does not by itself block the first implementation unit unless it defeats the bounded semantic contract;
+- aggregate proof required by the current leaf is red/incomplete/skipped without authority;
 - final authority/lineage cannot be rebound from a fresh context.
 
 Preserve the last proved state and first unmet invariant. Do not execute downstream leaves.
@@ -309,25 +335,27 @@ Before VI-09/VI-10 proof work, perform the current Programme Owner-directed read
 
 Create the minimum N15/N19 product-proof family/manifest/aggregate surface. Each family binds exact propositions, implementation identity, boundary, proof level, fixtures/substitutions, positive/negative/missing-authority/optional-absence cases, failure signal, command/environment/versions and limitations. Existing kernel architecture proof remains separate.
 
-### VI-10 — Author adversarial physical product proof before implementation
+### VI-10 — Author bounded physical product contract proof before implementation
 
-Proof author sees accepted authority/IWO/interfaces but no production candidate. Required coverage includes schedule boundaries, zero/one+/unknown, provider logical records, temporal-kind/native fidelity, no-scope observations, retry/conflict/retransmission, assessment supersession, restart unknown-not-zero, failed-write non-claim, null/optional law, identity substitutions, prohibited containment/count/finality/event-time/D001 claims, compatibility and typed seam. Real PostgreSQL proof must use the actual authorised mechanism for durability/restart claims.
+Proof author sees accepted authority/IWO/interfaces but no production candidate. Required pre-implementation coverage includes schedule boundaries, zero/one+/unknown, provider logical records, temporal-kind/native fidelity, no-scope observations, retry/conflict/retransmission contract, assessment supersession, restart unknown-not-zero contract, failed-write non-claim, null/optional law, identity substitutions, prohibited containment/count/finality/event-time/D001 claims, compatibility and typed seam. Apply 6.4A: implementation-specific hardening and heavyweight real-boundary evidence are not required to become exhaustive before code exists unless the bounded contract itself depends on them.
 
-### VI-11 — Fresh proof-adequacy review
+### VI-11 — Fresh bounded proof-adequacy review
 
-Reviewer sees exact authority and physical proof, not production code. Ask whether plausible violations could pass, whether real boundaries are observed, whether a mock substitutes for a required real boundary, whether negative/unknown/absence/identity cases exist and whether proof levels/claims are exact. Verdict `PASS|FAIL|BLOCKED`.
+Reviewer sees exact authority and physical proof, not production code. Ask whether the bounded proof faithfully represents accepted meaning; whether material semantic violations could pass the contract; whether negative/unknown/absence/identity cases exist; and whether proof levels/claims are truthful. Verdict `PASS|FAIL|BLOCKED` for the bounded pre-implementation contract, with separately classified implementation-coupled or milestone findings where applicable.
+
+**Current-tranche transition rule — Programme Owner direction, 2026-09-22:** Tester Iteration 014 remains a required fresh review of the exact already-submitted VI-10R11 candidate. After Iteration 014 is dispositioned, do **not** automatically create VI-10R12 solely to close another implementation-independent harness escape. Record every finding. A finding blocks VI-12R only if it establishes that accepted semantic meaning is missing/misrepresented in the bounded contract, that the first implementation unit could satisfy that contract materially incorrectly, or that another governing invariant explicitly requires closure before implementation. Other proof-harness findings are preserved and routed to VI-13R or VI-14 according to 6.4A. A VI-11 PASS advances directly to VI-12R.
 
 ### VI-12R — Implement risk-adaptive realisation units
 
-One branch per accepted IWO unit in dependency order. Worker receives exact authority, accepted unit, accepted proof, required interfaces and implementation freedoms/prohibitions. Must not weaken proof, choose Unknowns, broaden scope, activate inactive capability, bypass owner seams, move semantic ownership or create undeclared dependencies.
+One branch per accepted IWO unit in dependency order. Worker receives exact authority, accepted unit, bounded pre-implementation proof, required interfaces and implementation freedoms/prohibitions. Must not weaken proof, choose Unknowns, broaden scope, activate inactive capability, bypass owner seams, move semantic ownership or create undeclared dependencies. Implement one unit, then expose its actual state/object/dependency/transaction/process shape to implementation-coupled adversarial review before proceeding to the next dependent unit.
 
-### VI-13R — Fresh post-implementation review per unit
+### VI-13R — Fresh post-implementation review and implementation-coupled hardening per unit
 
-Fresh reviewer compares authority + accepted proof + final code/diff + mechanical results. Review meaning conservation, false positives, ownership, state/time/identity, dependency/seam legality, persistence-role separation, hidden defaults, proof-to-final-code bearing and inactive-capability closure. Verdict `PASS|FAIL|BLOCKED`.
+Fresh reviewer compares authority + bounded proof + final code/diff + mechanical results. Review meaning conservation, false positives, ownership, state/time/identity, dependency/seam legality, persistence-role separation, hidden defaults, proof-to-final-code bearing and inactive-capability closure. Where the actual implementation exposes a material escape or insufficient discriminator, route the smallest necessary proof hardening and implementation repair against that concrete candidate, then re-review. Verdict `PASS|FAIL|BLOCKED`.
 
-### VI-14 — Material interaction/direct-boundary closure
+### VI-14 — Material interaction / heavyweight real-boundary closure
 
-Prove A00 construction/injection, declared A00->M dependency, typed public boundary, no reverse dependency, non-owning PostgreSQL adapter behind M-owned persistence port, real transaction/readback/failure semantics, restart reconciliation, referential readback and required sequential/end-to-end A00->M composition. Do not overclaim atomicity/SLA/recovery/replay.
+Prove A00 construction/injection, declared A00->M dependency, typed public boundary, no reverse dependency, non-owning PostgreSQL adapter behind M-owned persistence port, real transaction/readback/failure semantics, restart reconciliation, commit/durability claims actually made, referential readback and required sequential/end-to-end A00->M composition. Close required process/namespace/isolation propositions here when they bear on the realised system. Do not overclaim atomicity/SLA/recovery/replay, and do not convert an unavailable real-boundary axis into a mock-equivalent PASS.
 
 ### VI-15 — Exact aggregate promotion and truthful packaging
 
@@ -414,8 +442,18 @@ A terminal PASS requires evidence that:
 - [x] VI-11R7 Tester Iteration 010 — `FAIL / RETURN_TO_WORKER`: `T009-F003` and `T009-F004` closed; `T009-F001` and `T009-F002` only partially closed and routed as `T010-F001..F002` to VI-10R8 proof repair. VI-12R remains prohibited.
 - [!] VI-10R8 — `AMENDED CHECKPOINT / REQUIRED VALIDATION BLOCKED`: proof-only checkpoint `09a6fd77829838522b0a7b037f068c5d1f30f3e1` / tree `c57b13a513397f6ff23dbd62eb9350484fdaa411` changes only U05 and addresses `T010-F001..F002`. Product control remains 6 families / 13 obligations; 434 tests collect; nine graph canaries, architecture/bootstrap 74/74, architecture promotion 74/74, mypy, Ruff, dependency/public-seam and Git integrity checks pass. A later-supplied portable PostgreSQL 17.9 runtime was integrity-checked and executed here; a fresh non-root TCP server satisfied the repository's version discriminator with `fsync`, `synchronous_commit` and `full_page_writes` on. The current worker sandbox still rejects the mandatory U05 mapped mount/network/PID namespace at `/proc/self/uid_map` and denies the required non-root filesystem Unix socket, so isolated U05 execution and attributable expected-red classification are not established. This checkpoint is not frozen and is not eligible for Tester Iteration 011. See `implementation/proof/VI10R8_WORKER_VALIDATION_BLOCKED.md`.
 - [!] Tester Iteration 011 must remain a fresh independent reviewer context. Do not advance to VI-12R inline or relabel Worker validation as independent acceptance.
+- [x] 2026-09-22 — Programme Owner accepted a governance correction preserving the independent Worker/Tester model and test-before-code discipline while bounding the pre-implementation proof loop. Proof is now classified as pre-implementation contract, implementation-coupled adversarial, or milestone real-boundary proof; environment-heavy unavailable axes remain explicit rather than blocking unrelated semantic work.
+- [!] 2026-09-22 — Tester Iteration 014 remains pending against exact submitted branch `work/vi10r11-proof-repair` at `8c87fef8ed38a6ebbbd1ec65eb34618df3834bbf` with physical proof commit `cca84de4ce2e9df52647352237c8a64e52a10db5`. This governance amendment does not constitute a Tester PASS, VI-11 acceptance or production implementation. After Iteration 014 disposition, apply the VI-11 transition rule above rather than automatically opening VI-10R12.
 
 ## 13. Discoveries / decisions
+
+### DEC-VI11-002 — Bound proof-only hardening after Tester Iteration 014
+
+Observed from the preserved VI-11 repair history: repeated independent reviews continued to find real proof-layer false-positive paths while production implementation remained absent. The proof surface therefore accumulated implementation-independent adversarial machinery whose later findings increasingly concerned hypothetical object graphs, process arrangements and transaction-correlation strategies rather than defects observed in an actual candidate implementation. Environment capability also varied between fresh sandboxes, so PostgreSQL/namespace execution availability could not reliably serve as a universal prerequisite for unrelated semantic work.
+
+Programme Owner direction on 2026-09-22 accepts the following correction without weakening accepted semantic obligations: keep independent Worker/Tester separation; keep bounded tests before code; run Tester Iteration 014 exactly as already submitted; then stop automatic proof-only successor iteration. Route further proof work according to 6.4A and ground implementation-coupled adversarial hardening in the actual implementation. Heavyweight required PostgreSQL/process/namespace evidence remains mandatory before the acceptance milestone whose claim depends on it.
+
+This decision changes execution sequencing, not BICP/IRB/METHOD-006/BUILD-001 meaning. It does not delete or invalidate prior proof history and does not relabel any prior independent `FAIL` or `UNPROVED` state.
 
 ### D-VI01-001 — GitHub connector cannot directly import the bundle
 
