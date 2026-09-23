@@ -3,8 +3,25 @@
   "actor": "TESTER",
   "candidate_commit": "06735b3682d79387ebaa4da70002e6685d52740a",
   "candidate_tree": "b73b6ba4486eba9ae3aa4c1facc626579c8b8ee5",
-  "status": "PENDING",
-  "disposition": null,
-  "review_target": "R027-U03-F001 repair plus bounded realised U03 review",
-  "u04_authority": "PROHIBITED_PENDING_U03_PASS_AND_PROMOTION"
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "reviewed_predecessor_findings": [
+    {
+      "finding_id": "R027-U03-F001",
+      "status": "NOT_FULLY_CLOSED",
+      "note": "The two concrete Reviewer-027 witnesses are closed, but the required exactness across admitted standard sequence values remains false."
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "R028-U03-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Generic native retry fallback still collapses distinct admitted same-type standard sequence representations",
+      "owning_layer": "U03 M-owner native retry comparator plus bounded implementation-coupled U03 proof"
+    }
+  ],
+  "u03_promotion": "PROHIBITED",
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only the bounded Reviewer-028 U03 native-comparator repair; U04 remains prohibited."
 }
