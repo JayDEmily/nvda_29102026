@@ -6,6 +6,7 @@
 - **Current actor:** `WORKER`
 - **Predecessor review cycle:** `TESTER_VI13R_U02_R023_1790125061`
 - **Reviewer-023 disposition:** `FAIL / RETURN_TO_WORKER`
+- **Reviewer-023 disposition commit:** `b7a5389d361172d33e3033b209ba5c67350c6fee`
 - **Rejected U02 candidate:** `a77dc596b7cbc3f248097df94d8dd0bef4491bec`
 - **Rejected U02 candidate tree:** `1b8672a851f63c1bab8da02fb75de8357e4fad3c`
 - **Accepted/promoted U01 main:** `b806447eb440a016826728af075e714beee23d31`
