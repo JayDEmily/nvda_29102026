@@ -3,8 +3,29 @@
   "actor": "TESTER",
   "candidate_commit": "6316735eb22bdbe243b02637f09376bf1200e43d",
   "candidate_tree": "a9cc881f50b7a6adf021ce80fce52a330e9d203d",
-  "status": "PENDING",
-  "disposition": null,
-  "review_target": "R025-U03-F001 repair plus bounded realised U03 review",
-  "u04_authority": "PROHIBITED_PENDING_U03_PASS_AND_PROMOTION"
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "reviewed_predecessor_finding": {
+    "finding_id": "R025-U03-F001",
+    "status": "NOT_FULLY_CLOSED"
+  },
+  "findings": [
+    {
+      "finding_id": "R026-U03-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Separately reconstructed identical NaN native retry is falsely rejected",
+      "owning_layer": "U03 M-owner retry comparison plus bounded implementation-coupled U03 proof"
+    },
+    {
+      "finding_id": "R026-U03-F002",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Complex signed-zero native conflict is falsely accepted",
+      "owning_layer": "U03 M-owner retry comparison plus bounded implementation-coupled U03 proof"
+    }
+  ],
+  "u03_promotion": "PROHIBITED",
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only the bounded Reviewer-026 U03 comparator repair; U04 remains prohibited."
 }
