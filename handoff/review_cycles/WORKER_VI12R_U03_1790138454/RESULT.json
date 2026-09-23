@@ -1,0 +1,13 @@
+{
+  "review_cycle": "WORKER_VI12R_U03_1790138454",
+  "actor": "WORKER",
+  "predecessor_review_commit": "df45c5e93e7c4c19cb1cca75de5cd1c64b15537c",
+  "accepted_u02_candidate": "5c62ec5147da718297b251b5a287405ebf3b4755",
+  "accepted_u02_tree": "dc1293d2c3d7e234e53a8d663f25eac51f7086ab",
+  "status": "PENDING",
+  "disposition": null,
+  "u02_promotion": "REQUIRED_BEFORE_U03",
+  "u03_authority": "AUTHORISED_ONLY_AFTER_LAWFUL_U02_PROMOTION",
+  "u04_authority": "PROHIBITED",
+  "next_authorised_step": "Promote accepted U02 plus Reviewer-024 PASS/evidence to forward main with preserved ancestry; only after verified promotion begin bounded IWO-U03."
+}

@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-13R REVIEWER 024 PASS / U02 PROMOTION REQUIRED`
+- **Gate state:** `ACTIVE — VI-12R U02 PROMOTION THEN IWO-U03 WORKER`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -46,15 +46,16 @@
 - **VI-12R IWO-U02 production candidate:** `a77dc596b7cbc3f248097df94d8dd0bef4491bec` / tree `1b8672a851f63c1bab8da02fb75de8357e4fad3c` on `work/vi12r-u02-capture-policy-owed-slot`; changed production path is only `src/nvda_desk/raw_signal_occurrence_truth/api.py`; Worker focused U01+U02 proof is 326/326 with exact pinned Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11, and architecture promotion is 74/74. Fresh Reviewer 023 required; U03 prohibited pending disposition and promotion.
 - **VI-13R Reviewer 023 U02 result:** `FAIL / RETURN_TO_WORKER` at review commit `b7a5389d361172d33e3033b209ba5c67350c6fee` — `R023-U02-F001` proves the realised public command/read facets expose the same ordinary reachable mutable semantic `_state`; direct mutation bypasses overlap enforcement and can erase referential policy truth. U02 is not promotable; U03 remains prohibited pending bounded U02 repair and fresh independent re-review. See `implementation/proof/VI13R_U02_REVIEWER_023_DISPOSITION.md`.
 - **VI-12R U02 Reviewer-023 repair candidate:** `5c62ec5147da718297b251b5a287405ebf3b4755` / tree `dc1293d2c3d7e234e53a8d663f25eac51f7086ab` on `work/vi12r-u02-r023-repair`; repair paths are only `src/nvda_desk/raw_signal_occurrence_truth/api.py` and `tests/product/raw_signal/test_u02_capture_schedule.py`; exact pinned Worker validation is U01+U02 328/328, concrete bypass regressions 2/2, mypy/Ruff/product/architecture/dependency/public-seam green and architecture promotion 74/74. Fresh Reviewer 024 required; U03 remains prohibited.
-- **Current Leaf:** `G03 / VI-13R — Reviewer 024 repaired-U02 review COMPLETE; Worker routing next`
-- **Current actor:** `TESTER` — Reviewer 024 disposition complete; must route the opposite-role Worker cycle; U03 remains prohibited until U02 promotion
-- **Active review cycle:** `handoff/review_cycles/TESTER_VI13R_U02_R024_1790131803/`
-- **Active cycle request:** `handoff/review_cycles/TESTER_VI13R_U02_R024_1790131803/REQUEST.md`
+- **VI-13R Reviewer 024 U02 result:** `PASS` at review commit `df45c5e93e7c4c19cb1cca75de5cd1c64b15537c` / tree `bcca17d646b67c27e76197c486324e69c688c648` — `R023-U02-F001` is CLOSED under the bounded review contract; exact pinned U01+U02 proof 328/328, bypass regressions 2/2, static/source/Ruff/product/architecture/dependency/public-seam and Git controls green. U02 is accepted for lawful promotion; U03 is authorised only after that promotion completes. See `implementation/proof/VI13R_U02_REVIEWER_024_DISPOSITION.md`.
+- **Current Leaf:** `G03 / VI-12R — U02 promotion then IWO-U03 Worker`
+- **Current actor:** `WORKER` — first promote accepted U02 plus Reviewer-024 PASS; only after verified promotion implement bounded IWO-U03
+- **Active review cycle:** `handoff/review_cycles/WORKER_VI12R_U03_1790138454/`
+- **Active cycle request:** `handoff/review_cycles/WORKER_VI12R_U03_1790138454/REQUEST.md`
 - **Role-consistency rule:** if `Current actor`, active-cycle prefix, or active-cycle request disagree, stop `BLOCKED` rather than guessing
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Reviewer 024 independently returned `PASS` on repaired U02 candidate `5c62ec5147da718297b251b5a287405ebf3b4755` / tree `dc1293d2c3d7e234e53a8d663f25eac51f7086ab`; `R023-U02-F001` is CLOSED under the bounded review contract. Accepted U01 remains promoted on forward `main` at `b806447eb440a016826728af075e714beee23d31`. U02 is accepted for lawful promotion; U03 remains prohibited until that promotion completes.
-- **Next lawful action:** Create the opposite-role Worker cycle. That Worker must first promote accepted repaired U02 candidate `5c62ec5147da718297b251b5a287405ebf3b4755` plus Reviewer-024 PASS/evidence to forward `main` with preserved ancestry. Only after verified promotion may IWO-U03 begin on a fresh unit branch.
+- **Current authority note:** Reviewer 024 PASS commit `df45c5e93e7c4c19cb1cca75de5cd1c64b15537c` independently accepts repaired U02 candidate `5c62ec5147da718297b251b5a287405ebf3b4755` / tree `dc1293d2c3d7e234e53a8d663f25eac51f7086ab`. Forward `main` is still `b806447eb440a016826728af075e714beee23d31` until the Worker performs lawful U02 promotion. U03 may begin only after that promotion is verified.
+- **Next lawful action:** Worker cycle `WORKER_VI12R_U03_1790138454` first promotes accepted repaired U02 candidate `5c62ec5147da718297b251b5a287405ebf3b4755` plus Reviewer-024 PASS commit `df45c5e93e7c4c19cb1cca75de5cd1c64b15537c` to forward `main` with preserved ancestry and verifies integrity/cleanliness. Only then may it branch and implement bounded IWO-U03.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
