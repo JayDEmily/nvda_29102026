@@ -2,7 +2,7 @@
 
 from collections.abc import Iterator, Mapping, Sequence
 from copy import deepcopy
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Literal, NoReturn
 
@@ -128,8 +128,27 @@ def _require_optional_string(value: str | None, field_name: str) -> None:
         raise TypeError(f"{field_name} must be a string or absent")
 
 
+def _require_half_minute_boundary(value: datetime, field_name: str) -> None:
+    _require_utc(value, field_name)
+    if value.microsecond != 0 or value.second not in (0, 30):
+        raise ValueError(f"{field_name} must be aligned to a nominal :00 or :30 UTC boundary")
+
+
+def _intervals_overlap(
+    left_start: datetime,
+    left_end: datetime | None,
+    right_start: datetime,
+    right_end: datetime | None,
+) -> bool:
+    left_before_right_end = right_end is None or left_start < right_end
+    right_before_left_end = left_end is None or right_start < left_end
+    return left_before_right_end and right_before_left_end
+
+
 def _not_implemented(unit: str) -> NoReturn:
-    raise NotImplementedError(f"behaviour belongs to {unit} and is not implemented by IWO-U01")
+    raise NotImplementedError(
+        f"behaviour belongs to {unit} and is not implemented by the current realised boundary"
+    )
 
 
 class _NativeRecordSnapshot(Mapping[str, object]):
@@ -223,9 +242,11 @@ class CaptureScopePolicyV1:
         _require_exact_type(self.scope_policy_id, _ScopePolicyId, "scope_policy_id")
         if type(self.scope_policy_version) is not int or self.scope_policy_version <= 0:
             raise ValueError("scope_policy_version must be a positive integer")
-        _require_utc(self.activation_ts_utc, "activation_ts_utc")
+        _require_half_minute_boundary(self.activation_ts_utc, "activation_ts_utc")
         if self.deactivation_ts_utc is not None:
-            _require_utc(self.deactivation_ts_utc, "deactivation_ts_utc")
+            _require_half_minute_boundary(self.deactivation_ts_utc, "deactivation_ts_utc")
+            if self.deactivation_ts_utc <= self.activation_ts_utc:
+                raise ValueError("deactivation_ts_utc must be later than activation_ts_utc")
         _require_exact_type(
             self.eligibility_policy_ref,
             _EligibilityPolicyRef,
@@ -256,8 +277,10 @@ class ScheduledCaptureOccurrenceV1:
             self.capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
         )
         _require_exact_type(self.scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
-        _require_utc(self.slot_start_utc, "slot_start_utc")
-        _require_utc(self.slot_end_utc, "slot_end_utc")
+        _require_half_minute_boundary(self.slot_start_utc, "slot_start_utc")
+        _require_half_minute_boundary(self.slot_end_utc, "slot_end_utc")
+        if self.slot_end_utc != self.slot_start_utc + timedelta(seconds=30):
+            raise ValueError("slot_end_utc must be exactly 30 seconds after slot_start_utc")
 
 
 @dataclass(frozen=True, slots=True)
@@ -435,11 +458,59 @@ class CaptureReceiptPresenceAssessmentV1:
             )
 
 
+@dataclass(slots=True)
+class _U02State:
+    policies_by_identity: dict[tuple[_ScopePolicyId, int], CaptureScopePolicyV1] = field(
+        default_factory=dict
+    )
+    policies_by_ref: dict[_ScopePolicyRef, CaptureScopePolicyV1] = field(default_factory=dict)
+    captures_by_identity: dict[_CaptureOccurrenceId, ScheduledCaptureOccurrenceV1] = field(
+        default_factory=dict
+    )
+    captures_by_slot: dict[tuple[_ScopePolicyRef, datetime], ScheduledCaptureOccurrenceV1] = field(
+        default_factory=dict
+    )
+
+
+def _scope_ref_for_policy(value: CaptureScopePolicyV1) -> _ScopePolicyRef:
+    return _ScopePolicyRef(f"{value.scope_policy_id.value}@{value.scope_policy_version}")
+
+
 class _CommandsV1:
-    def register_capture_scope_policy(
-        self, value: CaptureScopePolicyV1
-    ) -> CaptureScopePolicyV1:
-        _not_implemented("IWO-U02")
+    __slots__ = ("_state",)
+
+    def __init__(self, state: _U02State) -> None:
+        self._state = state
+
+    def register_capture_scope_policy(self, value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
+        if type(value) is not CaptureScopePolicyV1:
+            raise TypeError("value must be CaptureScopePolicyV1")
+
+        identity_key = (value.scope_policy_id, value.scope_policy_version)
+        existing = self._state.policies_by_identity.get(identity_key)
+        if existing is not None:
+            if existing != value:
+                raise ValueError(
+                    "policy identity/version is already registered with different content"
+                )
+            return existing
+
+        for admitted in self._state.policies_by_identity.values():
+            if _intervals_overlap(
+                value.activation_ts_utc,
+                value.deactivation_ts_utc,
+                admitted.activation_ts_utc,
+                admitted.deactivation_ts_utc,
+            ):
+                raise ValueError("capture-scope policy active intervals must not overlap")
+
+        scope_ref = _scope_ref_for_policy(value)
+        if scope_ref in self._state.policies_by_ref:
+            raise ValueError("scope policy reference is already registered")
+
+        self._state.policies_by_identity[identity_key] = value
+        self._state.policies_by_ref[scope_ref] = value
+        return value
 
     def realise_scheduled_capture_occurrence(
         self,
@@ -447,7 +518,43 @@ class _CommandsV1:
         capture_occurrence_id: _CaptureOccurrenceId,
         slot_start_utc: datetime,
     ) -> ScheduledCaptureOccurrenceV1:
-        _not_implemented("IWO-U02")
+        _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
+        _require_exact_type(capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id")
+        _require_half_minute_boundary(slot_start_utc, "slot_start_utc")
+
+        policy = self._state.policies_by_ref.get(scope_policy_ref)
+        if policy is None:
+            raise KeyError("scope_policy_ref is not registered")
+        if slot_start_utc < policy.activation_ts_utc:
+            raise ValueError("slot_start_utc is before policy activation")
+        if policy.deactivation_ts_utc is not None and slot_start_utc >= policy.deactivation_ts_utc:
+            raise ValueError("slot_start_utc is at or after policy deactivation")
+
+        slot_key = (scope_policy_ref, slot_start_utc)
+        existing_for_slot = self._state.captures_by_slot.get(slot_key)
+        if existing_for_slot is not None:
+            if existing_for_slot.capture_occurrence_id != capture_occurrence_id:
+                raise ValueError("owed slot is already realised under a different capture identity")
+            return existing_for_slot
+
+        existing_for_identity = self._state.captures_by_identity.get(capture_occurrence_id)
+        if existing_for_identity is not None:
+            raise ValueError(
+                "capture occurrence identity is already bound to a different owed slot"
+            )
+
+        value = ScheduledCaptureOccurrenceV1(
+            concept_id=_ConceptId(_CAPTURE_CONCEPT),
+            contract_id=_ContractId(_CAPTURE_CONTRACT),
+            units="not_applicable",
+            capture_occurrence_id=capture_occurrence_id,
+            scope_policy_ref=scope_policy_ref,
+            slot_start_utc=slot_start_utc,
+            slot_end_utc=slot_start_utc + timedelta(seconds=30),
+        )
+        self._state.captures_by_identity[capture_occurrence_id] = value
+        self._state.captures_by_slot[slot_key] = value
+        return value
 
     def admit_raw_observation_occurrence(
         self, value: RawObservationOccurrenceV1
@@ -482,15 +589,24 @@ class _CommandsV1:
 
 
 class _ReadsV1:
+    __slots__ = ("_state",)
+
+    def __init__(self, state: _U02State) -> None:
+        self._state = state
+
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
     ) -> CaptureScopePolicyV1 | None:
-        _not_implemented("IWO-U02")
+        _require_exact_type(scope_policy_id, _ScopePolicyId, "scope_policy_id")
+        if type(scope_policy_version) is not int or scope_policy_version <= 0:
+            raise ValueError("scope_policy_version must be a positive integer")
+        return self._state.policies_by_identity.get((scope_policy_id, scope_policy_version))
 
     def get_scheduled_capture_occurrence(
         self, capture_occurrence_id: _CaptureOccurrenceId
     ) -> ScheduledCaptureOccurrenceV1 | None:
-        _not_implemented("IWO-U02")
+        _require_exact_type(capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id")
+        return self._state.captures_by_identity.get(capture_occurrence_id)
 
     def get_raw_observation_occurrence(
         self, observation_occurrence_id: _ObservationOccurrenceId
@@ -515,9 +631,10 @@ class _OwnerV1:
 
 
 def create_owner() -> _OwnerV1:
-    """Construct the admitted owner boundary without implementing later-unit behaviour."""
+    """Construct the admitted owner boundary with U01-U02 in-memory semantics."""
 
-    return _OwnerV1(commands=_CommandsV1(), reads=_ReadsV1())
+    state = _U02State()
+    return _OwnerV1(commands=_CommandsV1(state), reads=_ReadsV1(state))
 
 
 __all__ = [
