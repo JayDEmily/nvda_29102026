@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-12R U03 REVIEWER-026 REPAIR FROZEN / VI-13R REVIEWER 027 REQUIRED`
+- **Gate state:** `ACTIVE — VI-13R U03 REVIEWER 027 FAIL / VI-12R R027 REPAIR REQUIRED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -53,15 +53,16 @@
 - **VI-12R U03 Reviewer-025 repair candidate:** `6316735eb22bdbe243b02637f09376bf1200e43d` / tree `a9cc881f50b7a6adf021ce80fce52a330e9d203d` on `work/vi12r-u03-r025-repair`; repair paths are only `src/nvda_desk/raw_signal_occurrence_truth/api.py` and `tests/product/raw_signal/test_u03_observation_native_temporal.py`; exact pinned Worker validation is U01+U02+U03 368/368 with 15 intended negative mypy diagnostics, mypy/Ruff/product/architecture/dependency/public-seam green and architecture promotion 74/74. Fresh Reviewer 026 required; U04 remains prohibited.
 - **VI-13R Reviewer 026 U03 result:** `FAIL / RETURN_TO_WORKER` at review commit `f58aa8b9cd21f1ebd9b01b80a71213bd5d16c63b` — the original int/float and Decimal-scale conflicts are closed, but `R025-U03-F001` is not fully closed. `R026-U03-F001` proves separately reconstructed identical NaN native values are falsely rejected; `R026-U03-F002` proves complex signed-zero native conflicts are falsely accepted. U03 is not promotable; U04 remains prohibited pending bounded U03 repair and fresh independent re-review. See `implementation/proof/VI13R_U03_REVIEWER_026_DISPOSITION.md`.
 - **VI-12R U03 Reviewer-026 repair candidate:** `758060930b015c23bf63a5de4d71c4d318760393` / tree `b819ffa1795e97e40374a59cedd42834233d2225` on `work/vi12r-u03-r026-repair`; physical repair remains confined to `src/nvda_desk/raw_signal_occurrence_truth/api.py` and `tests/product/raw_signal/test_u03_observation_native_temporal.py`. Exact pinned Worker validation is Reviewer-026 regressions 3/3, U01+U02+U03 371/371, source mypy/Ruff/product/architecture/dependency/public-seam green and architecture promotion 74/74. Fresh Reviewer 027 is required; U04 remains prohibited. See `implementation/proof/VI12R_U03_REVIEWER026_REPAIR_EVIDENCE.md`.
-- **Current Leaf:** `G03 / VI-13R — fresh independent U03 Reviewer 027`
-- **Current actor:** `TESTER` — independently review only repaired U03; U04 remains prohibited
-- **Active review cycle:** `handoff/review_cycles/TESTER_VI13R_U03_R027_1790155140/`
-- **Active cycle request:** `handoff/review_cycles/TESTER_VI13R_U03_R027_1790155140/REQUEST.md`
+- **VI-13R Reviewer 027 U03 result:** `FAIL / RETURN_TO_WORKER` at review commit `31b76489b1ec32fa38921bd3f5e97e40f544e23e` — `R026-U03-F001` and `R026-U03-F002` are closed, but `R027-U03-F001` proves generic native retry equality still collapses distinct admitted content (`bytes` vs `bytearray`; nested mapping key `int(1)` vs `float(1.0)`). U03 is not promotable; U04 remains prohibited pending bounded U03 repair and fresh independent re-review. See `implementation/proof/VI13R_U03_REVIEWER_027_DISPOSITION.md`.
+- **Current Leaf:** `G03 / VI-12R — bounded IWO-U03 repair after Reviewer 027`
+- **Current actor:** `WORKER` — repair only `R027-U03-F001`; U04 remains prohibited
+- **Active review cycle:** `handoff/review_cycles/WORKER_VI12R_U03_R027_REPAIR_1790166643/`
+- **Active cycle request:** `handoff/review_cycles/WORKER_VI12R_U03_R027_REPAIR_1790166643/REQUEST.md`
 - **Role-consistency rule:** if `Current actor`, active-cycle prefix, or active-cycle request disagree, stop `BLOCKED` rather than guessing
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Worker repair candidate `758060930b015c23bf63a5de4d71c4d318760393` addresses only `R026-U03-F001` / `R026-U03-F002` on preserved Reviewer-026 FAIL continuity. Accepted U02 remains promoted on forward `main` at `a78ae7b5515c2e482a2656cebeebae3fa5a6d584`. Worker evidence is not independent acceptance; U04 remains prohibited.
-- **Next lawful action:** Fresh Reviewer 027 independently reviews only repaired U03 under `TESTER_VI13R_U03_R027_1790155140`. If and only if U03 receives PASS, it may be lawfully promoted; U04 becomes authorised only after that promotion.
+- **Current authority note:** Reviewer 027 rejected repaired U03 candidate `758060930b015c23bf63a5de4d71c4d318760393`; the concrete Reviewer-026 findings are closed, but `R027-U03-F001` establishes remaining generic native-content equality collapse. Accepted U02 remains promoted on forward `main` at `a78ae7b5515c2e482a2656cebeebae3fa5a6d584`. Only the bounded Reviewer-027 U03 repair is authorised; U04 remains prohibited.
+- **Next lawful action:** Worker executes only the bounded `R027-U03-F001` repair under `WORKER_VI12R_U03_R027_REPAIR_1790166643` from preserved Reviewer-027 FAIL continuity, freezes a repaired U03 candidate with focused regression evidence, and creates a fresh Tester cycle. U04 and later remain prohibited pending U03 PASS and lawful promotion.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
