@@ -459,7 +459,7 @@ class CaptureReceiptPresenceAssessmentV1:
 
 
 @dataclass(slots=True)
-class _U02State:
+class _OwnerState:
     policies_by_identity: dict[tuple[_ScopePolicyId, int], CaptureScopePolicyV1] = field(
         default_factory=dict
     )
@@ -468,6 +468,12 @@ class _U02State:
         default_factory=dict
     )
     captures_by_slot: dict[tuple[_ScopePolicyRef, datetime], ScheduledCaptureOccurrenceV1] = field(
+        default_factory=dict
+    )
+    observations_by_identity: dict[
+        _ObservationOccurrenceId, RawObservationOccurrenceV1
+    ] = field(default_factory=dict)
+    ingestion_high_water_by_scope: dict[_IngestionSequenceScope, int] = field(
         default_factory=dict
     )
 
@@ -482,18 +488,22 @@ _RealiseCapture = Callable[
 ]
 _ReadPolicy = Callable[[_ScopePolicyId, int], CaptureScopePolicyV1 | None]
 _ReadCapture = Callable[[_CaptureOccurrenceId], ScheduledCaptureOccurrenceV1 | None]
+_AdmitObservation = Callable[[RawObservationOccurrenceV1], RawObservationOccurrenceV1]
+_ReadObservation = Callable[[_ObservationOccurrenceId], RawObservationOccurrenceV1 | None]
 
 
 class _CommandsV1:
-    __slots__ = ("__realise_capture", "__register_policy")
+    __slots__ = ("__admit_observation", "__realise_capture", "__register_policy")
 
     def __init__(
         self,
         register_policy: _RegisterPolicy,
         realise_capture: _RealiseCapture,
+        admit_observation: _AdmitObservation,
     ) -> None:
         self.__register_policy = register_policy
         self.__realise_capture = realise_capture
+        self.__admit_observation = admit_observation
 
     def register_capture_scope_policy(self, value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
         return self.__register_policy(value)
@@ -511,7 +521,7 @@ class _CommandsV1:
     def admit_raw_observation_occurrence(
         self, value: RawObservationOccurrenceV1
     ) -> RawObservationOccurrenceV1:
-        _not_implemented("IWO-U03")
+        return self.__admit_observation(value)
 
     def derive_capture_receipt_evidence_relation(
         self,
@@ -541,11 +551,17 @@ class _CommandsV1:
 
 
 class _ReadsV1:
-    __slots__ = ("__read_capture", "__read_policy")
+    __slots__ = ("__read_capture", "__read_observation", "__read_policy")
 
-    def __init__(self, read_policy: _ReadPolicy, read_capture: _ReadCapture) -> None:
+    def __init__(
+        self,
+        read_policy: _ReadPolicy,
+        read_capture: _ReadCapture,
+        read_observation: _ReadObservation,
+    ) -> None:
         self.__read_policy = read_policy
         self.__read_capture = read_capture
+        self.__read_observation = read_observation
 
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
@@ -560,7 +576,7 @@ class _ReadsV1:
     def get_raw_observation_occurrence(
         self, observation_occurrence_id: _ObservationOccurrenceId
     ) -> RawObservationOccurrenceV1 | None:
-        _not_implemented("IWO-U03")
+        return self.__read_observation(observation_occurrence_id)
 
     def get_receipt_presence_assessment(
         self, assessment_occurrence_id: _AssessmentOccurrenceId
@@ -573,8 +589,8 @@ class _ReadsV1:
         _not_implemented("IWO-U04")
 
 
-def _build_u02_facets() -> tuple[_CommandsV1, _ReadsV1]:
-    state = _U02State()
+def _build_owner_facets() -> tuple[_CommandsV1, _ReadsV1]:
+    state = _OwnerState()
 
     def register_policy(value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
         if type(value) is not CaptureScopePolicyV1:
@@ -669,9 +685,54 @@ def _build_u02_facets() -> tuple[_CommandsV1, _ReadsV1]:
         )
         return state.captures_by_identity.get(capture_occurrence_id)
 
+    def admit_observation(value: RawObservationOccurrenceV1) -> RawObservationOccurrenceV1:
+        if type(value) is not RawObservationOccurrenceV1:
+            raise TypeError("value must be RawObservationOccurrenceV1")
+
+        existing = state.observations_by_identity.get(value.observation_occurrence_id)
+        if existing is not None:
+            if existing != value:
+                raise ValueError(
+                    "observation occurrence identity is already admitted with different content"
+                )
+            return existing
+
+        previous_high_water = state.ingestion_high_water_by_scope.get(
+            value.ingestion_sequence_scope
+        )
+        if previous_high_water is not None and value.ingestion_sequence < previous_high_water:
+            raise ValueError(
+                "ingestion_sequence must not decrease within one ingestion_sequence_scope"
+            )
+
+        state.observations_by_identity[value.observation_occurrence_id] = value
+        if previous_high_water is None or value.ingestion_sequence > previous_high_water:
+            state.ingestion_high_water_by_scope[value.ingestion_sequence_scope] = (
+                value.ingestion_sequence
+            )
+        return value
+
+    def read_observation(
+        observation_occurrence_id: _ObservationOccurrenceId,
+    ) -> RawObservationOccurrenceV1 | None:
+        _require_exact_type(
+            observation_occurrence_id,
+            _ObservationOccurrenceId,
+            "observation_occurrence_id",
+        )
+        return state.observations_by_identity.get(observation_occurrence_id)
+
     return (
-        _CommandsV1(register_policy=register_policy, realise_capture=realise_capture),
-        _ReadsV1(read_policy=read_policy, read_capture=read_capture),
+        _CommandsV1(
+            register_policy=register_policy,
+            realise_capture=realise_capture,
+            admit_observation=admit_observation,
+        ),
+        _ReadsV1(
+            read_policy=read_policy,
+            read_capture=read_capture,
+            read_observation=read_observation,
+        ),
     )
 
 
@@ -682,9 +743,9 @@ class _OwnerV1:
 
 
 def create_owner() -> _OwnerV1:
-    """Construct the admitted owner boundary with U01-U02 in-memory semantics."""
+    """Construct the admitted owner boundary with U01-U03 in-memory semantics."""
 
-    commands, reads = _build_u02_facets()
+    commands, reads = _build_owner_facets()
     return _OwnerV1(commands=commands, reads=reads)
 
 
