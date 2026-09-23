@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-13R REVIEWER 025 FAIL / VI-12R U03 REPAIR REQUIRED`
+- **Gate state:** `ACTIVE — VI-13R REVIEWER 026 U03 REPAIR REVIEW REQUIRED`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -50,15 +50,16 @@
 - **U02 promotion complete:** forward `main` fast-forwarded with preserved ancestry to `a78ae7b5515c2e482a2656cebeebae3fa5a6d584`; accepted repaired U02 `5c62ec5147da718297b251b5a287405ebf3b4755` and Reviewer-024 PASS `df45c5e93e7c4c19cb1cca75de5cd1c64b15537c` are ancestors of that `main`.
 - **VI-12R IWO-U03 production candidate:** `7cf8936f854fbed952a468ce06c2f2a0320d9291` / tree `b63aac7fb538ea6a38ce3dea5aab719fc7be0ee0` on `work/vi12r-u03-observation-fidelity`; production change is confined to `src/nvda_desk/raw_signal_occurrence_truth/api.py`; exact pinned Worker validation is U01+U02+U03 366/366 with mypy/Ruff/product/architecture/public-seam green and architecture promotion 74/74. Fresh Reviewer 025 required; U04 prohibited.
 - **VI-13R Reviewer 025 U03 result:** `FAIL / RETURN_TO_WORKER` at review commit `04daa3c20773680bfab97a747e88778f276e188e` — `R025-U03-F001` proves same-occurrence retry comparison collapses exact native numeric content (`int 1` vs `float 1.0`; `Decimal("1.0")` vs `Decimal("1.00")`) and accepts conflicting reuse as idempotent. U03 is not promotable; U04 remains prohibited pending bounded U03 repair and fresh independent re-review. See `implementation/proof/VI13R_U03_REVIEWER_025_DISPOSITION.md`.
-- **Current Leaf:** `G03 / VI-12R — bounded IWO-U03 repair after Reviewer 025`
-- **Current actor:** `WORKER` — repair only `R025-U03-F001`; U04 remains prohibited
-- **Active review cycle:** `handoff/review_cycles/WORKER_VI12R_U03_R025_REPAIR_1790140749/`
-- **Active cycle request:** `handoff/review_cycles/WORKER_VI12R_U03_R025_REPAIR_1790140749/REQUEST.md`
+- **VI-12R U03 Reviewer-025 repair candidate:** `6316735eb22bdbe243b02637f09376bf1200e43d` / tree `a9cc881f50b7a6adf021ce80fce52a330e9d203d` on `work/vi12r-u03-r025-repair`; repair paths are only `src/nvda_desk/raw_signal_occurrence_truth/api.py` and `tests/product/raw_signal/test_u03_observation_native_temporal.py`; exact pinned Worker validation is U01+U02+U03 368/368 with 15 intended negative mypy diagnostics, mypy/Ruff/product/architecture/dependency/public-seam green and architecture promotion 74/74. Fresh Reviewer 026 required; U04 remains prohibited.
+- **Current Leaf:** `G03 / VI-13R — Reviewer 026 bounded U03 repair review`
+- **Current actor:** `TESTER` — review repaired U03 candidate only; U04 remains prohibited
+- **Active review cycle:** `handoff/review_cycles/TESTER_VI13R_U03_R026_1790143078/`
+- **Active cycle request:** `handoff/review_cycles/TESTER_VI13R_U03_R026_1790143078/REQUEST.md`
 - **Role-consistency rule:** if `Current actor`, active-cycle prefix, or active-cycle request disagree, stop `BLOCKED` rather than guessing
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Reviewer 025 rejected frozen U03 candidate `7cf8936f854fbed952a468ce06c2f2a0320d9291` on `R025-U03-F001`. Accepted U02 remains promoted on forward `main` at `a78ae7b5515c2e482a2656cebeebae3fa5a6d584`. Only the bounded U03 repair is authorised; U04 remains prohibited.
-- **Next lawful action:** Worker executes only `R025-U03-F001` under `WORKER_VI12R_U03_R025_REPAIR_1790140749` on a fresh repair branch preserving ancestry, freezes a repaired U03 candidate with bounded regression evidence, and creates a fresh Tester cycle. U04 and later remain prohibited pending U03 PASS and lawful promotion.
+- **Current authority note:** Reviewer 025 rejected U03 candidate `7cf8936f854fbed952a468ce06c2f2a0320d9291` on `R025-U03-F001`; bounded Worker repair is frozen at `6316735eb22bdbe243b02637f09376bf1200e43d`. Accepted U02 remains promoted on forward `main` at `a78ae7b5515c2e482a2656cebeebae3fa5a6d584`. U04 remains prohibited.
+- **Next lawful action:** Fresh Reviewer 026 independently reviews only repaired U03 under `TESTER_VI13R_U03_R026_1790143078`. PASS may authorise lawful U03 promotion; FAIL returns only the bounded defeated proposition to Worker. U04 and later remain prohibited until U03 PASS and promotion.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.

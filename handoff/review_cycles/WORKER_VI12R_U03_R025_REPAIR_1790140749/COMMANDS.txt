@@ -1,1 +1,38 @@
-Worker command record — PENDING
+Worker U03 Reviewer-025 repair command record
+
+GOVERNANCE / ROUTING
+- read README.md, GUARDRAILS.md, root AGENTS.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active Worker REQUEST.md
+- read Reviewer-025 RESPONSE/RESULT/EVIDENCE/COMMANDS, accepted IRB BC-005/006/009/010,
+  IWO-U03, current api.py and bounded U03 proof
+- created fresh branch work/vi12r-u03-r025-repair from routed Reviewer-025 FAIL continuity
+
+REPAIR
+- replaced ordinary same-occurrence retry equality with full observation equality plus
+  fidelity-aware native numeric comparison
+- preserve numeric runtime type; preserve Decimal tuple/scale; compare float representation by hex
+- added bounded regressions for int/float and Decimal-scale conflicts plus reconstructed-identical
+  idempotency and unchanged readback after rejection
+- U04 and later behaviour unchanged
+
+EXACT TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+
+COMMITTED-CANDIDATE VALIDATION
+- pytest U01+U02+U03 -> 368 passed
+- strict positive mypy public-seam specimen -> pass
+- strict negative mypy public-seam specimen -> expected rc 1, 15 diagnostics
+- mypy src --show-error-codes -> success, 15 source files
+- ruff check src tests tools -> pass
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS, zero dependency/public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff --check -> pass
+- git fsck --full --strict -> pass
+- worktree clean
