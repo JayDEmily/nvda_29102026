@@ -3,9 +3,9 @@
   "actor": "WORKER",
   "accepted_u01_candidate": "e8b659d7849d2f95b64ba32bed8090a8290358d4",
   "reviewer_022_commit": "4db58e9091083500a2505023a302f36447185029",
-  "status": "PENDING",
-  "promotion_commit": null,
-  "u02_candidate_commit": null,
-  "u02_candidate_tree": null,
-  "next_authorised_step": null
+  "status": "COMPLETE",
+  "promotion_commit": "b806447eb440a016826728af075e714beee23d31",
+  "u02_candidate_commit": "a77dc596b7cbc3f248097df94d8dd0bef4491bec",
+  "u02_candidate_tree": "1b8672a851f63c1bab8da02fb75de8357e4fad3c",
+  "next_authorised_step": "Fresh VI-13R Reviewer 023 reviews U02 only; U03 remains prohibited pending PASS and promotion."
 }

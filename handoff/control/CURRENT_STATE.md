@@ -5,7 +5,7 @@
 - **Previous Gate:** `G02 — Existing Implementation Admission Handoff Adoption` — `ACCEPTED`
 - **G02 acceptance record:** `control/GATE_02_ACCEPTANCE.md`
 - **Current Gate:** `G03 — Verified Bounded Implementation`
-- **Gate state:** `ACTIVE — VI-13R U01 PASS / PROMOTION THEN U02 WORKER AUTHORISED`
+- **Gate state:** `ACTIVE — VI-12R U02 WORKER CANDIDATE / VI-13R REVIEWER 023 PENDING`
 - **Gate contract:** `control/GATE_03_VERIFIED_BOUNDED_IMPLEMENTATION.md`, revision `G03-R1`
 - **Execution binding:** `control/GATE_03_BINDING.md` (`G03-BIND-001`)
 - **Leaf map:** `control/GATE_03_LEAF_MAP.md`
@@ -42,15 +42,17 @@
 - **VI-13R Reviewer 021 U01 result:** `FAIL / RETURN_TO_WORKER` — Worker discrepancies `W-U01-F001` and `W-U01-F002` are confirmed proof-harness defects; new realised-U01 findings `R021-U01-F003` (mutable/aliased `native_record`) and `R021-U01-F004` (no lawful public construction path for required private identity-bearing payloads) require bounded U01 production/proof repair. See `implementation/proof/VI13R_U01_REVIEWER_021_DISPOSITION.md`.
 - **VI-12R U01 Reviewer-021 repair candidate:** `e8b659d7849d2f95b64ba32bed8090a8290358d4` / tree `62b074c0e94215a75fb64c5eb934af55be1ded3a` on `work/vi12r-u01-reviewer021-repair`; focused U01 proof 297/297 with mypy 1.20.1; submitted to fresh Reviewer 022.
 - **VI-13R Reviewer 022 U01 result:** `PASS` at review commit `4db58e9091083500a2505023a302f36447185029`; all four Reviewer-021 findings closed; exact pinned focused U01 proof 297/297, static/source/Ruff/product/architecture checks green. U01 is accepted for lawful promotion. U02 is authorised only after that promotion is complete. See `implementation/proof/VI13R_U01_REVIEWER_022_DISPOSITION.md`.
-- **Current Leaf:** `G03 / VI-12R — promote accepted U01, then implement IWO-U02`
-- **Current actor:** `WORKER` — Promote Reviewer-022-accepted U01 first; only then implement IWO-U02
-- **Active review cycle:** `handoff/review_cycles/WORKER_VI12R_U02_1790119179/`
-- **Active cycle request:** `handoff/review_cycles/WORKER_VI12R_U02_1790119179/REQUEST.md`
+- **U01 promotion complete:** forward `main` fast-forwarded with preserved ancestry to `b806447eb440a016826728af075e714beee23d31`; accepted U01 `e8b659d7849d2f95b64ba32bed8090a8290358d4` and Reviewer-022 PASS `4db58e9091083500a2505023a302f36447185029` are ancestors of that `main`.
+- **VI-12R IWO-U02 production candidate:** `a77dc596b7cbc3f248097df94d8dd0bef4491bec` / tree `1b8672a851f63c1bab8da02fb75de8357e4fad3c` on `work/vi12r-u02-capture-policy-owed-slot`; changed production path is only `src/nvda_desk/raw_signal_occurrence_truth/api.py`; Worker focused U01+U02 proof is 326/326 with exact pinned Python 3.13.5 / pytest 9.0.3 / mypy 1.20.1 / Ruff 0.15.11, and architecture promotion is 74/74. Fresh Reviewer 023 required; U03 prohibited pending disposition and promotion.
+- **Current Leaf:** `G03 / VI-13R — fresh post-implementation review of IWO-U02`
+- **Current actor:** `TESTER` — Fresh Reviewer 023 reviews frozen IWO-U02 candidate only
+- **Active review cycle:** `handoff/review_cycles/TESTER_VI13R_U02_R023_1790125061/`
+- **Active cycle request:** `handoff/review_cycles/TESTER_VI13R_U02_R023_1790125061/REQUEST.md`
 - **Role-consistency rule:** if `Current actor`, active-cycle prefix, or active-cycle request disagree, stop `BLOCKED` rather than guessing
 - **Completed VI-09 Worker handoff:** `implementation/handoff/WORKER_002_VI09_PRODUCT_PROOF_CONTROL.md`
 - **Completed VI-10 Worker handoff:** `implementation/handoff/WORKER_003_VI10_ADVERSARIAL_PRODUCT_PROOF.md`
 - **PM inline VI-08/09/10 attempts:** `DO_NOT_CARRY_FORWARD`
-- **Current authority note:** Reviewer 022 has accepted U01 under VI-13R. Root `EXEC_PLAN.md` branch/promotion discipline and VI-12R now govern the Worker sequence: preserve ancestry while promoting accepted U01 to forward `main`, then branch the next single unit IWO-U02 from that accepted `main`.
-- **Next lawful action:** Worker lawfully promotes accepted U01 candidate `e8b659d7849d2f95b64ba32bed8090a8290358d4` plus Reviewer-022 PASS `4db58e9091083500a2505023a302f36447185029` to forward `main` with preserved ancestry. Only after successful promotion may the Worker create a fresh branch from that `main` and implement IWO-U02. IWO-U03 and later remain prohibited.
+- **Current authority note:** Reviewer 022 accepted U01 and the returned accepted lineage was fast-forward promoted to forward `main` at `b806447eb440a016826728af075e714beee23d31`. IWO-U02 is frozen at `a77dc596b7cbc3f248097df94d8dd0bef4491bec` for fresh VI-13R review. U03 remains prohibited.
+- **Next lawful action:** Fresh Reviewer 023 independently reviews IWO-U02 candidate `a77dc596b7cbc3f248097df94d8dd0bef4491bec` / tree `1b8672a851f63c1bab8da02fb75de8357e4fad3c`. If PASS, U02 may be lawfully promoted and U03 becomes authorised only after that promotion. If FAIL/BLOCKED, route only the owning-layer U02 repair/blocker. U03 and later remain prohibited.
 
 - **VI-11R2 Tester Iteration 005:** `FAIL / RETURN_TO_WORKER` — 11 proof findings (`T005-F001..F011`), 4 Critical / 7 Important; reviewed wrapper `c164fac...`, physical proof `56ea445d...`.
