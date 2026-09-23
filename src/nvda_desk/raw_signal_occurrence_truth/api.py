@@ -485,7 +485,7 @@ _ReadCapture = Callable[[_CaptureOccurrenceId], ScheduledCaptureOccurrenceV1 | N
 
 
 class _CommandsV1:
-    __slots__ = ("__register_policy", "__realise_capture")
+    __slots__ = ("__realise_capture", "__register_policy")
 
     def __init__(
         self,
@@ -541,7 +541,7 @@ class _CommandsV1:
 
 
 class _ReadsV1:
-    __slots__ = ("__read_policy", "__read_capture")
+    __slots__ = ("__read_capture", "__read_policy")
 
     def __init__(self, read_policy: _ReadPolicy, read_capture: _ReadCapture) -> None:
         self.__read_policy = read_policy

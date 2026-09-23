@@ -49,10 +49,10 @@ def test_public_facets_do_not_expose_mutable_owner_semantic_state() -> None:
                     resolved = slot
                     if slot.startswith("__") and not slot.endswith("__"):
                         resolved = f"_{cls.__name__.lstrip('_')}{slot}"
-                    try:
-                        pending.append(getattr(current, resolved))
-                    except AttributeError:
-                        pass
+                    missing = object()
+                    child = getattr(current, resolved, missing)
+                    if child is not missing:
+                        pending.append(child)
 
     reread = owner.reads.get_capture_scope_policy(
         original.scope_policy_id, original.scope_policy_version
@@ -73,9 +73,9 @@ def test_reviewer023_direct_state_bypass_is_closed() -> None:
         register_policy(owner, overlapping)
 
     with pytest.raises(AttributeError):
-        getattr(owner.commands, "_state")
+        owner.commands._state  # type: ignore[attr-defined]
     with pytest.raises(AttributeError):
-        getattr(owner.reads, "_state")
+        owner.reads._state  # type: ignore[attr-defined]
 
     assert owner.reads.get_capture_scope_policy(
         original.scope_policy_id, original.scope_policy_version
