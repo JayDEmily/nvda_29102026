@@ -1,6 +1,6 @@
 """Typed public seam for the admitted Raw Signal Occurrence Truth owner."""
 
-from collections.abc import Iterator, Mapping, Sequence
+from collections.abc import Callable, Iterator, Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -476,41 +476,27 @@ def _scope_ref_for_policy(value: CaptureScopePolicyV1) -> _ScopePolicyRef:
     return _ScopePolicyRef(f"{value.scope_policy_id.value}@{value.scope_policy_version}")
 
 
-class _CommandsV1:
-    __slots__ = ("_state",)
+_RegisterPolicy = Callable[[CaptureScopePolicyV1], CaptureScopePolicyV1]
+_RealiseCapture = Callable[
+    [_ScopePolicyRef, _CaptureOccurrenceId, datetime], ScheduledCaptureOccurrenceV1
+]
+_ReadPolicy = Callable[[_ScopePolicyId, int], CaptureScopePolicyV1 | None]
+_ReadCapture = Callable[[_CaptureOccurrenceId], ScheduledCaptureOccurrenceV1 | None]
 
-    def __init__(self, state: _U02State) -> None:
-        self._state = state
+
+class _CommandsV1:
+    __slots__ = ("__register_policy", "__realise_capture")
+
+    def __init__(
+        self,
+        register_policy: _RegisterPolicy,
+        realise_capture: _RealiseCapture,
+    ) -> None:
+        self.__register_policy = register_policy
+        self.__realise_capture = realise_capture
 
     def register_capture_scope_policy(self, value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
-        if type(value) is not CaptureScopePolicyV1:
-            raise TypeError("value must be CaptureScopePolicyV1")
-
-        identity_key = (value.scope_policy_id, value.scope_policy_version)
-        existing = self._state.policies_by_identity.get(identity_key)
-        if existing is not None:
-            if existing != value:
-                raise ValueError(
-                    "policy identity/version is already registered with different content"
-                )
-            return existing
-
-        for admitted in self._state.policies_by_identity.values():
-            if _intervals_overlap(
-                value.activation_ts_utc,
-                value.deactivation_ts_utc,
-                admitted.activation_ts_utc,
-                admitted.deactivation_ts_utc,
-            ):
-                raise ValueError("capture-scope policy active intervals must not overlap")
-
-        scope_ref = _scope_ref_for_policy(value)
-        if scope_ref in self._state.policies_by_ref:
-            raise ValueError("scope policy reference is already registered")
-
-        self._state.policies_by_identity[identity_key] = value
-        self._state.policies_by_ref[scope_ref] = value
-        return value
+        return self.__register_policy(value)
 
     def realise_scheduled_capture_occurrence(
         self,
@@ -518,43 +504,9 @@ class _CommandsV1:
         capture_occurrence_id: _CaptureOccurrenceId,
         slot_start_utc: datetime,
     ) -> ScheduledCaptureOccurrenceV1:
-        _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
-        _require_exact_type(capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id")
-        _require_half_minute_boundary(slot_start_utc, "slot_start_utc")
-
-        policy = self._state.policies_by_ref.get(scope_policy_ref)
-        if policy is None:
-            raise KeyError("scope_policy_ref is not registered")
-        if slot_start_utc < policy.activation_ts_utc:
-            raise ValueError("slot_start_utc is before policy activation")
-        if policy.deactivation_ts_utc is not None and slot_start_utc >= policy.deactivation_ts_utc:
-            raise ValueError("slot_start_utc is at or after policy deactivation")
-
-        slot_key = (scope_policy_ref, slot_start_utc)
-        existing_for_slot = self._state.captures_by_slot.get(slot_key)
-        if existing_for_slot is not None:
-            if existing_for_slot.capture_occurrence_id != capture_occurrence_id:
-                raise ValueError("owed slot is already realised under a different capture identity")
-            return existing_for_slot
-
-        existing_for_identity = self._state.captures_by_identity.get(capture_occurrence_id)
-        if existing_for_identity is not None:
-            raise ValueError(
-                "capture occurrence identity is already bound to a different owed slot"
-            )
-
-        value = ScheduledCaptureOccurrenceV1(
-            concept_id=_ConceptId(_CAPTURE_CONCEPT),
-            contract_id=_ContractId(_CAPTURE_CONTRACT),
-            units="not_applicable",
-            capture_occurrence_id=capture_occurrence_id,
-            scope_policy_ref=scope_policy_ref,
-            slot_start_utc=slot_start_utc,
-            slot_end_utc=slot_start_utc + timedelta(seconds=30),
+        return self.__realise_capture(
+            scope_policy_ref, capture_occurrence_id, slot_start_utc
         )
-        self._state.captures_by_identity[capture_occurrence_id] = value
-        self._state.captures_by_slot[slot_key] = value
-        return value
 
     def admit_raw_observation_occurrence(
         self, value: RawObservationOccurrenceV1
@@ -589,24 +541,21 @@ class _CommandsV1:
 
 
 class _ReadsV1:
-    __slots__ = ("_state",)
+    __slots__ = ("__read_policy", "__read_capture")
 
-    def __init__(self, state: _U02State) -> None:
-        self._state = state
+    def __init__(self, read_policy: _ReadPolicy, read_capture: _ReadCapture) -> None:
+        self.__read_policy = read_policy
+        self.__read_capture = read_capture
 
     def get_capture_scope_policy(
         self, scope_policy_id: _ScopePolicyId, scope_policy_version: int
     ) -> CaptureScopePolicyV1 | None:
-        _require_exact_type(scope_policy_id, _ScopePolicyId, "scope_policy_id")
-        if type(scope_policy_version) is not int or scope_policy_version <= 0:
-            raise ValueError("scope_policy_version must be a positive integer")
-        return self._state.policies_by_identity.get((scope_policy_id, scope_policy_version))
+        return self.__read_policy(scope_policy_id, scope_policy_version)
 
     def get_scheduled_capture_occurrence(
         self, capture_occurrence_id: _CaptureOccurrenceId
     ) -> ScheduledCaptureOccurrenceV1 | None:
-        _require_exact_type(capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id")
-        return self._state.captures_by_identity.get(capture_occurrence_id)
+        return self.__read_capture(capture_occurrence_id)
 
     def get_raw_observation_occurrence(
         self, observation_occurrence_id: _ObservationOccurrenceId
@@ -624,6 +573,108 @@ class _ReadsV1:
         _not_implemented("IWO-U04")
 
 
+def _build_u02_facets() -> tuple[_CommandsV1, _ReadsV1]:
+    state = _U02State()
+
+    def register_policy(value: CaptureScopePolicyV1) -> CaptureScopePolicyV1:
+        if type(value) is not CaptureScopePolicyV1:
+            raise TypeError("value must be CaptureScopePolicyV1")
+
+        identity_key = (value.scope_policy_id, value.scope_policy_version)
+        existing = state.policies_by_identity.get(identity_key)
+        if existing is not None:
+            if existing != value:
+                raise ValueError(
+                    "policy identity/version is already registered with different content"
+                )
+            return existing
+
+        for admitted in state.policies_by_identity.values():
+            if _intervals_overlap(
+                value.activation_ts_utc,
+                value.deactivation_ts_utc,
+                admitted.activation_ts_utc,
+                admitted.deactivation_ts_utc,
+            ):
+                raise ValueError("capture-scope policy active intervals must not overlap")
+
+        scope_ref = _scope_ref_for_policy(value)
+        if scope_ref in state.policies_by_ref:
+            raise ValueError("scope policy reference is already registered")
+
+        state.policies_by_identity[identity_key] = value
+        state.policies_by_ref[scope_ref] = value
+        return value
+
+    def realise_capture(
+        scope_policy_ref: _ScopePolicyRef,
+        capture_occurrence_id: _CaptureOccurrenceId,
+        slot_start_utc: datetime,
+    ) -> ScheduledCaptureOccurrenceV1:
+        _require_exact_type(scope_policy_ref, _ScopePolicyRef, "scope_policy_ref")
+        _require_exact_type(
+            capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
+        )
+        _require_half_minute_boundary(slot_start_utc, "slot_start_utc")
+
+        policy = state.policies_by_ref.get(scope_policy_ref)
+        if policy is None:
+            raise KeyError("scope_policy_ref is not registered")
+        if slot_start_utc < policy.activation_ts_utc:
+            raise ValueError("slot_start_utc is before policy activation")
+        if policy.deactivation_ts_utc is not None and slot_start_utc >= policy.deactivation_ts_utc:
+            raise ValueError("slot_start_utc is at or after policy deactivation")
+
+        slot_key = (scope_policy_ref, slot_start_utc)
+        existing_for_slot = state.captures_by_slot.get(slot_key)
+        if existing_for_slot is not None:
+            if existing_for_slot.capture_occurrence_id != capture_occurrence_id:
+                raise ValueError(
+                    "owed slot is already realised under a different capture identity"
+                )
+            return existing_for_slot
+
+        existing_for_identity = state.captures_by_identity.get(capture_occurrence_id)
+        if existing_for_identity is not None:
+            raise ValueError(
+                "capture occurrence identity is already bound to a different owed slot"
+            )
+
+        value = ScheduledCaptureOccurrenceV1(
+            concept_id=_ConceptId(_CAPTURE_CONCEPT),
+            contract_id=_ContractId(_CAPTURE_CONTRACT),
+            units="not_applicable",
+            capture_occurrence_id=capture_occurrence_id,
+            scope_policy_ref=scope_policy_ref,
+            slot_start_utc=slot_start_utc,
+            slot_end_utc=slot_start_utc + timedelta(seconds=30),
+        )
+        state.captures_by_identity[capture_occurrence_id] = value
+        state.captures_by_slot[slot_key] = value
+        return value
+
+    def read_policy(
+        scope_policy_id: _ScopePolicyId, scope_policy_version: int
+    ) -> CaptureScopePolicyV1 | None:
+        _require_exact_type(scope_policy_id, _ScopePolicyId, "scope_policy_id")
+        if type(scope_policy_version) is not int or scope_policy_version <= 0:
+            raise ValueError("scope_policy_version must be a positive integer")
+        return state.policies_by_identity.get((scope_policy_id, scope_policy_version))
+
+    def read_capture(
+        capture_occurrence_id: _CaptureOccurrenceId,
+    ) -> ScheduledCaptureOccurrenceV1 | None:
+        _require_exact_type(
+            capture_occurrence_id, _CaptureOccurrenceId, "capture_occurrence_id"
+        )
+        return state.captures_by_identity.get(capture_occurrence_id)
+
+    return (
+        _CommandsV1(register_policy=register_policy, realise_capture=realise_capture),
+        _ReadsV1(read_policy=read_policy, read_capture=read_capture),
+    )
+
+
 @dataclass(frozen=True, slots=True)
 class _OwnerV1:
     commands: _CommandsV1
@@ -633,8 +684,8 @@ class _OwnerV1:
 def create_owner() -> _OwnerV1:
     """Construct the admitted owner boundary with U01-U02 in-memory semantics."""
 
-    state = _U02State()
-    return _OwnerV1(commands=_CommandsV1(state), reads=_ReadsV1(state))
+    commands, reads = _build_u02_facets()
+    return _OwnerV1(commands=commands, reads=reads)
 
 
 __all__ = [

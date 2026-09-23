@@ -15,6 +15,76 @@ from tests.product.raw_signal._support import (
 )
 
 
+def test_public_facets_do_not_expose_mutable_owner_semantic_state() -> None:
+    owner = build_owner()
+    original = register_policy(owner)
+
+    for facet in (owner.commands, owner.reads):
+        assert not hasattr(facet, "_state")
+
+        pending = [facet]
+        seen: set[int] = set()
+        while pending:
+            current = pending.pop()
+            marker = id(current)
+            if marker in seen:
+                continue
+            seen.add(marker)
+
+            if callable(current):
+                continue
+            assert not isinstance(current, (dict, list, set))
+
+            namespace = getattr(current, "__dict__", None)
+            if isinstance(namespace, dict):
+                pending.extend(namespace.values())
+
+            for cls in type(current).__mro__:
+                slots = getattr(cls, "__slots__", ())
+                if isinstance(slots, str):
+                    slots = (slots,)
+                for slot in slots:
+                    if slot in {"__dict__", "__weakref__"}:
+                        continue
+                    resolved = slot
+                    if slot.startswith("__") and not slot.endswith("__"):
+                        resolved = f"_{cls.__name__.lstrip('_')}{slot}"
+                    try:
+                        pending.append(getattr(current, resolved))
+                    except AttributeError:
+                        pass
+
+    reread = owner.reads.get_capture_scope_policy(
+        original.scope_policy_id, original.scope_policy_version
+    )
+    assert reread == original
+
+
+def test_reviewer023_direct_state_bypass_is_closed() -> None:
+    owner = build_owner()
+    original = register_policy(owner)
+
+    overlapping = policy(
+        scope_policy_version=2,
+        activation_ts_utc=datetime(2026, 9, 20, 12, 1, tzinfo=UTC),
+        deactivation_ts_utc=None,
+    )
+    with pytest.raises((TypeError, ValueError)):
+        register_policy(owner, overlapping)
+
+    with pytest.raises(AttributeError):
+        getattr(owner.commands, "_state")
+    with pytest.raises(AttributeError):
+        getattr(owner.reads, "_state")
+
+    assert owner.reads.get_capture_scope_policy(
+        original.scope_policy_id, original.scope_policy_version
+    ) == original
+    assert owner.reads.get_capture_scope_policy(
+        overlapping.scope_policy_id, overlapping.scope_policy_version
+    ) is None
+
+
 def test_exact_half_minute_slots_are_owed_inside_active_policy() -> None:
     owner = build_owner()
     register_policy(owner)
