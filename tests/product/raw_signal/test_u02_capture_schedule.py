@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
+from operator import attrgetter
 from typing import Any
 
 import pytest
@@ -72,10 +73,11 @@ def test_reviewer023_direct_state_bypass_is_closed() -> None:
     with pytest.raises((TypeError, ValueError)):
         register_policy(owner, overlapping)
 
+    state_getter = attrgetter("_state")
     with pytest.raises(AttributeError):
-        owner.commands._state  # type: ignore[attr-defined]
+        state_getter(owner.commands)
     with pytest.raises(AttributeError):
-        owner.reads._state  # type: ignore[attr-defined]
+        state_getter(owner.reads)
 
     assert owner.reads.get_capture_scope_policy(
         original.scope_policy_id, original.scope_policy_version
