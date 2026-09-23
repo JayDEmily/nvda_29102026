@@ -272,6 +272,37 @@ def test_same_observation_identity_is_idempotent_only_for_identical_content() ->
         admit_observation(owner, copy_with(value, native_record={"Bid Price": "999.00"}))
 
 
+@pytest.mark.parametrize(
+    ("first_native", "retry_native"),
+    [
+        ({"Native": 1}, {"Native": 1.0}),
+        ({"Native": Decimal("1.0")}, {"Native": Decimal("1.00")}),
+    ],
+)
+def test_same_observation_identity_rejects_native_numeric_representation_change(
+    first_native: dict[str, Any], retry_native: dict[str, Any]
+) -> None:
+    owner = build_owner()
+    value = observation(native_record=first_native)
+    first = admit_observation(owner, value)
+    reconstructed = observation(native_record=dict(first_native))
+    assert admit_observation(owner, reconstructed) is first
+
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(owner, copy_with(value, native_record=retry_native))
+
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    stored_value = reread.native_record["Native"]
+    original_value = first_native["Native"]
+    assert type(stored_value) is type(original_value)
+    if isinstance(original_value, Decimal):
+        assert isinstance(stored_value, Decimal)
+        assert stored_value.as_tuple() == original_value.as_tuple()
+    else:
+        assert stored_value == original_value
+
+
 def test_newly_received_retransmission_keeps_new_observation_identity() -> None:
     owner = build_owner()
     first = admit_observation(owner, observation(observation_occurrence_id="obs-1"))

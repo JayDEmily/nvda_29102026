@@ -4,6 +4,7 @@ from collections.abc import Callable, Iterator, Mapping, Sequence
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
+from decimal import Decimal
 from typing import Literal, NoReturn
 
 
@@ -169,6 +170,44 @@ class _NativeRecordSnapshot(Mapping[str, object]):
 
     def __len__(self) -> int:
         return len(self.__data)
+
+
+def _native_values_exactly_equal(left: object, right: object) -> bool:
+    """Compare native values without collapsing fidelity-bearing numeric distinctions."""
+
+    numeric_types = (bool, int, float, complex, Decimal)
+    if isinstance(left, numeric_types) or isinstance(right, numeric_types):
+        if type(left) is not type(right):
+            return False
+        if isinstance(left, Decimal):
+            assert isinstance(right, Decimal)
+            return left.as_tuple() == right.as_tuple()
+        if isinstance(left, float):
+            assert isinstance(right, float)
+            return left.hex() == right.hex()
+        return left == right
+    if isinstance(left, Mapping) and isinstance(right, Mapping):
+        if set(left) != set(right):
+            return False
+        return all(_native_values_exactly_equal(left[key], right[key]) for key in left)
+    if isinstance(left, (list, tuple)) or isinstance(right, (list, tuple)):
+        if type(left) is not type(right):
+            return False
+        assert isinstance(left, (list, tuple))
+        assert isinstance(right, (list, tuple))
+        return len(left) == len(right) and all(
+            _native_values_exactly_equal(left_item, right_item)
+            for left_item, right_item in zip(left, right, strict=True)
+        )
+    return left == right
+
+
+def _observations_exactly_equal(
+    left: "RawObservationOccurrenceV1", right: "RawObservationOccurrenceV1"
+) -> bool:
+    return left == right and _native_values_exactly_equal(
+        left.native_record, right.native_record
+    )
 
 
 def concept_id(value: str) -> _ConceptId:
@@ -691,7 +730,7 @@ def _build_owner_facets() -> tuple[_CommandsV1, _ReadsV1]:
 
         existing = state.observations_by_identity.get(value.observation_occurrence_id)
         if existing is not None:
-            if existing != value:
+            if not _observations_exactly_equal(existing, value):
                 raise ValueError(
                     "observation occurrence identity is already admitted with different content"
                 )
