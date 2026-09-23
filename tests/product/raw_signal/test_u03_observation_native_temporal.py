@@ -344,6 +344,41 @@ def test_same_observation_identity_rejects_complex_signed_zero_change() -> None:
     assert stored_value.imag.hex() == "0x0.0p+0"
 
 
+def test_same_observation_identity_rejects_bytes_to_bytearray_change() -> None:
+    owner = build_owner()
+    first = admit_observation(owner, observation(native_record={"Native": b"abc"}))
+
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(
+            owner,
+            observation(native_record={"Native": bytearray(b"abc")}),
+        )
+
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    assert type(reread.native_record["Native"]) is bytes
+    assert reread.native_record["Native"] == b"abc"
+
+
+def test_same_observation_identity_rejects_nested_mapping_key_type_change() -> None:
+    owner = build_owner()
+    first = admit_observation(owner, observation(native_record={"Native": {1: "x"}}))
+
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(
+            owner,
+            observation(native_record={"Native": {1.0: "x"}}),
+        )
+
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    nested = reread.native_record["Native"]
+    assert isinstance(nested, dict)
+    key = next(iter(nested))
+    assert type(key) is int
+    assert key == 1
+
+
 def test_newly_received_retransmission_keeps_new_observation_identity() -> None:
     owner = build_owner()
     first = admit_observation(owner, observation(observation_occurrence_id="obs-1"))

@@ -180,42 +180,59 @@ def _native_float_exactly_equal(left: float, right: float) -> bool:
 
 
 def _native_values_exactly_equal(left: object, right: object) -> bool:
-    """Compare native values without collapsing fidelity-bearing numeric distinctions."""
+    """Compare admitted native values without collapsing runtime representation."""
 
-    numeric_types = (bool, int, float, complex, Decimal)
-    if isinstance(left, numeric_types) or isinstance(right, numeric_types):
-        if type(left) is not type(right):
-            return False
-        if isinstance(left, Decimal):
-            assert isinstance(right, Decimal)
-            return left.as_tuple() == right.as_tuple()
-        if isinstance(left, float):
-            assert isinstance(right, float)
-            return _native_float_exactly_equal(left, right)
-        if isinstance(left, complex):
-            assert isinstance(right, complex)
-            return _native_float_exactly_equal(
-                left.real, right.real
-            ) and _native_float_exactly_equal(left.imag, right.imag)
-        return left == right
-    if isinstance(left, Mapping) and isinstance(right, Mapping):
+    if type(left) is not type(right):
+        return False
+    if isinstance(left, Decimal):
+        assert isinstance(right, Decimal)
+        return left.as_tuple() == right.as_tuple()
+    if isinstance(left, float):
+        assert isinstance(right, float)
+        return _native_float_exactly_equal(left, right)
+    if isinstance(left, complex):
+        assert isinstance(right, complex)
+        return _native_float_exactly_equal(
+            left.real, right.real
+        ) and _native_float_exactly_equal(left.imag, right.imag)
+    if isinstance(left, Mapping):
+        assert isinstance(right, Mapping)
         left_mapping = cast(Mapping[object, object], left)
         right_mapping = cast(Mapping[object, object], right)
-        if set(left_mapping) != set(right_mapping):
+        if len(left_mapping) != len(right_mapping):
             return False
-        return all(
-            _native_values_exactly_equal(left_mapping[key], right_mapping[key])
-            for key in left_mapping
-        )
-    if isinstance(left, (list, tuple)) or isinstance(right, (list, tuple)):
-        if type(left) is not type(right):
-            return False
+        unmatched_right_items = list(right_mapping.items())
+        for left_key, left_value in left_mapping.items():
+            for index, (right_key, right_value) in enumerate(unmatched_right_items):
+                if _native_values_exactly_equal(
+                    left_key, right_key
+                ) and _native_values_exactly_equal(left_value, right_value):
+                    del unmatched_right_items[index]
+                    break
+            else:
+                return False
+        return True
+    if isinstance(left, (list, tuple)):
+        assert isinstance(right, (list, tuple))
         left_sequence = cast(Sequence[object], left)
         right_sequence = cast(Sequence[object], right)
         return len(left_sequence) == len(right_sequence) and all(
             _native_values_exactly_equal(left_item, right_item)
             for left_item, right_item in zip(left_sequence, right_sequence, strict=True)
         )
+    if isinstance(left, (set, frozenset)):
+        assert isinstance(right, (set, frozenset))
+        if len(left) != len(right):
+            return False
+        unmatched_right_items = list(right)
+        for left_item in left:
+            for index, right_item in enumerate(unmatched_right_items):
+                if _native_values_exactly_equal(left_item, right_item):
+                    del unmatched_right_items[index]
+                    break
+            else:
+                return False
+        return True
     return left == right
 
 
