@@ -1,0 +1,10 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R027_1790155140",
+  "actor": "TESTER",
+  "candidate_commit": "758060930b015c23bf63a5de4d71c4d318760393",
+  "candidate_tree": "b819ffa1795e97e40374a59cedd42834233d2225",
+  "status": "PENDING",
+  "disposition": null,
+  "review_target": "R026-U03-F001 and R026-U03-F002 repair plus bounded realised U03 review",
+  "u04_authority": "PROHIBITED_PENDING_U03_PASS_AND_PROMOTION"
+}

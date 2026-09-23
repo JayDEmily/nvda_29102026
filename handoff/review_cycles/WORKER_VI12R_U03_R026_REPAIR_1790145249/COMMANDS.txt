@@ -1,1 +1,54 @@
-Worker command record — PENDING
+Worker U03 Reviewer-026 repair command record
+
+GOVERNANCE / ROUTING
+- read README.md, GUARDRAILS.md, root AGENTS.md, complete current EXEC_PLAN.md,
+  tests/AGENTS.override.md, CURRENT_STATE.md and active Worker REQUEST.md
+- read Reviewer-026 disposition/evidence/commands, accepted IRB BC-005/006/009/010,
+  IWO-U03, prior Reviewer-025 repair evidence, current api.py and complete U03 proof
+- verified current actor/cycle/request all route to WORKER U03 Reviewer-026 repair only
+- created fresh branch work/vi12r-u03-r026-repair from routed Reviewer-026 FAIL continuity
+
+SOURCE RECEIPT
+- sha256sum NVDA_G03_TESTER_VI13R_U03_R026_FAIL_FULL_GIT_20260923.tar(1).gz
+  -> e3ab1c014e4c46298a5d50ee67a5536e6979d7c8e95963ebc4b1d591588d0577
+
+REPAIR
+- removed ordinary full-observation/native equality coupling from retry comparison
+- preserved existing equality semantics for every non-native RawObservationOccurrenceV1 field
+- compare float values by exact IEEE-754 bytes; Decimal by exact tuple/sign/scale
+- compare complex real/imaginary components by exact IEEE-754 bytes
+- added only the concrete Reviewer-026 NaN-idempotency and complex-signed-zero regressions
+- U04 and later behaviour unchanged
+
+EXACT TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+- exact wheels provisioned outside the repository from preserved project artefacts
+
+PRE-FREEZE DEVELOPMENT OBSERVATIONS
+- initial exact U01+U02+U03 run exposed strict-mypy Any leakage in a generic comparator traversal;
+  comparator implementation was made explicitly typed before candidate freeze
+- one validator attempt omitted repo/src from PYTHONPATH and failed import; rerun correctly
+- one promotion attempt before commit refused the dirty worktree as designed; rerun after freeze
+
+FROZEN CANDIDATE
+- commit 758060930b015c23bf63a5de4d71c4d318760393
+- tree b819ffa1795e97e40374a59cedd42834233d2225
+- physical changed paths: api.py + U03 proof only
+
+COMMITTED-CANDIDATE VALIDATION
+- focused Reviewer-026 regressions -> 3 passed
+- pytest U01+U02+U03 -> 371 passed
+- mypy src --show-error-codes -> success, 15 source files
+- ruff check src tests tools -> pass
+- validate_product_proof.py -> PASS, six families, 13/13 obligations
+- validate_architecture.py -> PASS, zero dependency/public-seam violations
+- check_dependencies.py -> PASS
+- check_public_seams.py -> PASS
+- pytest tests/architecture tests/bootstrap -> 74 passed
+- run_promotion_gate.py --set architecture_kernel -> 74 passed
+- git diff HEAD^ HEAD --check -> pass
+- git fsck --full --strict -> pass
+- candidate worktree clean
