@@ -3,8 +3,18 @@
   "actor": "TESTER",
   "candidate_commit": "7cf8936f854fbed952a468ce06c2f2a0320d9291",
   "candidate_tree": "b63aac7fb538ea6a38ce3dea5aab719fc7be0ee0",
-  "status": "PENDING",
-  "disposition": null,
-  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION",
-  "next_authorised_step": "Independently review the frozen U03 candidate under the bounded VI-13R contract."
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "findings": [
+    {
+      "finding_id": "R025-U03-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Retry equality collapses exact native numeric content",
+      "owning_layer": "U03 M-owner implementation plus bounded implementation-coupled U03 proof"
+    }
+  ],
+  "u03_promotion": "PROHIBITED",
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only R025-U03-F001 repair under WORKER_VI12R_U03_R025_REPAIR_1790140749; U04 remains prohibited."
 }
