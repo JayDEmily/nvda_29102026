@@ -1,0 +1,10 @@
+{
+  "review_cycle": "TESTER_VI13R_U03_R025_1790139709",
+  "actor": "TESTER",
+  "candidate_commit": "7cf8936f854fbed952a468ce06c2f2a0320d9291",
+  "candidate_tree": "b63aac7fb538ea6a38ce3dea5aab719fc7be0ee0",
+  "status": "PENDING",
+  "disposition": null,
+  "u04_authority": "PROHIBITED_PENDING_U03_REVIEW_AND_PROMOTION",
+  "next_authorised_step": "Independently review the frozen U03 candidate under the bounded VI-13R contract."
+}
