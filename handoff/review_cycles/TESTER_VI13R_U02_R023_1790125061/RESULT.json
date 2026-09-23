@@ -3,8 +3,18 @@
   "actor": "TESTER",
   "candidate_commit": "a77dc596b7cbc3f248097df94d8dd0bef4491bec",
   "candidate_tree": "1b8672a851f63c1bab8da02fb75de8357e4fad3c",
-  "status": "PENDING",
-  "disposition": null,
-  "findings": [],
-  "next_authorised_step": null
+  "status": "COMPLETE",
+  "disposition": "FAIL / RETURN_TO_WORKER",
+  "findings": [
+    {
+      "finding_id": "R023-U02-F001",
+      "status": "OPEN",
+      "severity": "CRITICAL",
+      "title": "Public command/read facets expose mutable semantic owner state",
+      "owning_layer": "U02 M-owner implementation plus bounded implementation-coupled U02 proof"
+    }
+  ],
+  "u02_promotion": "PROHIBITED",
+  "u03_authority": "PROHIBITED_PENDING_U02_REPAIR_AND_FRESH_REVIEW",
+  "next_authorised_step": "WORKER executes only R023-U02-F001 repair under WORKER_VI12R_U02_R023_REPAIR_1790127347; U03 remains prohibited."
 }

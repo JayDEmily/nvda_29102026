@@ -1,0 +1,12 @@
+{
+  "review_cycle": "WORKER_VI12R_U02_R023_REPAIR_1790127347",
+  "actor": "WORKER",
+  "predecessor_review_cycle": "TESTER_VI13R_U02_R023_1790125061",
+  "rejected_candidate_commit": "a77dc596b7cbc3f248097df94d8dd0bef4491bec",
+  "rejected_candidate_tree": "1b8672a851f63c1bab8da02fb75de8357e4fad3c",
+  "status": "PENDING",
+  "open_findings": [
+    "R023-U02-F001"
+  ],
+  "next_authorised_step": "Repair only R023-U02-F001; freeze repaired U02 candidate; create fresh TESTER cycle. U03 prohibited."
+}

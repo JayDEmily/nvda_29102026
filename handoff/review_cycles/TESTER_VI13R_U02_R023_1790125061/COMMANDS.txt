@@ -1,1 +1,84 @@
-Reviewer 023 command record — PENDING
+Reviewer 023 command record — commands materially bearing on disposition
+
+SOURCE / GOVERNANCE / GIT BINDING
+- sha256sum 'NVDA_G03_TESTER_VI13R_U02_R023_1790125061_FULL_GIT_20260923.tar(1).gz'
+  -> a9d0a8b302db9bad5812f8ffff43c97dfafa25b8a80e6d92f89d64d6a57c2522
+- read README.md in full and followed its role/cycle routing
+- read GUARDRAILS.md in full before substantive work and again before project responses/actions
+- read root AGENTS.md, complete current EXEC_PLAN.md, tests/AGENTS.override.md,
+  handoff/control/CURRENT_STATE.md and active REQUEST.md
+- read accepted IRB, BICP authority, current IWO U01/U02 scope, accepted U01 seam authority,
+  Worker U02 evidence, complete candidate api.py and complete U02 product proof
+- transported repository HEAD before review:
+  828b04e48632f11317bed544fb795702af167dad / tree
+  177cdf30c965acecda4c870ed0cfada93ae1ba4e
+- git rev-parse a77dc596b7cbc3f248097df94d8dd0bef4491bec^{tree}
+  -> 1b8672a851f63c1bab8da02fb75de8357e4fad3c
+- git rev-parse a77dc596b7cbc3f248097df94d8dd0bef4491bec^
+  -> b806447eb440a016826728af075e714beee23d31
+- candidate production diff changed exactly:
+  src/nvda_desk/raw_signal_occurrence_truth/api.py
+- SHA-256 of complete main..candidate production diff
+  -> 6770e58da79510651a7b704ca4e43dbfc3d3ede21da9d0455e419fd210d77a98
+
+EXACT REVIEW TOOLCHAIN
+- Python 3.13.5
+- pytest 9.0.3
+- mypy 1.20.1 (compiled)
+- Ruff 0.15.11
+- exact project-pinned tooling was provisioned outside the repository; candidate bytes were not changed
+
+EXACT CANDIDATE VALIDATION
+- pytest U01+U02
+  -> 326 passed in 1.17s; rc=0
+- strict positive mypy public-seam specimen
+  -> rc=0
+- strict negative mypy public-seam specimen
+  -> rc=1 as intended; exactly all 15 STATIC_NEGATIVE sites diagnosed at
+     15,18,21,23,28,34,43,48,53,59,64,67,70,73,76
+- mypy src --show-error-codes
+  -> Success: no issues found in 15 source files; rc=0
+- Ruff src tests tools
+  -> All checks passed; rc=0
+- validate_product_proof.py
+  -> PASS; six product families; 13/13 obligations; rc=0
+- validate_architecture.py
+  -> PASS; dependency/public-seam violations: 0; rc=0
+- check_dependencies.py
+  -> PASS; rc=0
+- check_public_seams.py
+  -> PASS; rc=0
+- pytest tests/architecture tests/bootstrap
+  -> 74 passed; rc=0
+- run_promotion_gate.py --set architecture_kernel
+  -> 74 passed; rc=0
+- git diff --check main..candidate
+  -> rc=0
+- git fsck --full --strict
+  -> rc=0
+
+IMPLEMENTATION-COUPLED ADVERSARIAL CHALLENGE — R023-U02-F001
+Using only nvda_desk.raw_signal_occurrence_truth.api public imports/factories plus ordinary attribute
+access on the object returned by api.create_owner():
+- register non-overlapping base policy through owner.commands -> success
+- construct a second overlapping policy through public typed constructors
+- register second policy through owner.commands -> ValueError as expected:
+  'capture-scope policy active intervals must not overlap'
+- hasattr(owner.commands, '_state') -> True
+- hasattr(owner.reads, '_state') -> True
+- owner.commands._state is owner.reads._state -> True
+- assign the overlapping policy directly into owner.commands._state.policies_by_identity and
+  owner.commands._state.policies_by_ref
+- call the public realise_scheduled_capture_occurrence command at the overlapping 12:01 UTC slot
+  -> capture admitted under scope-b@1
+- read the forged overlapping policy through the public read facet -> True
+- clear policies_by_identity through owner.reads._state and reread original policy
+  -> None
+
+The challenge used no private-module import, eval/exec, arbitrary metaprogramming or monkey-patching.
+It exercised the concrete ordinary mutable-state capability carried on both public facets.
+
+DISPOSITION
+- R023-U02-F001: OPEN / MATERIAL
+- final: FAIL / RETURN_TO_WORKER
+- U03 remains prohibited
