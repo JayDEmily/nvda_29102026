@@ -1,0 +1,9 @@
+{
+  "review_cycle": "WORKER_VI12R_U03_R026_REPAIR_1790145249",
+  "actor": "WORKER",
+  "status": "PENDING",
+  "disposition": null,
+  "predecessor_finding": "R025-U03-F001_NOT_FULLY_CLOSED",
+  "open_findings": ["R026-U03-F001", "R026-U03-F002"],
+  "u04_authority": "PROHIBITED_PENDING_U03_REPAIR_AND_FRESH_REVIEW"
+}
