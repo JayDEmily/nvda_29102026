@@ -5,7 +5,8 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from decimal import Decimal
-from typing import Literal, NoReturn
+from struct import pack
+from typing import Literal, NoReturn, cast
 
 
 @dataclass(frozen=True, slots=True)
@@ -172,6 +173,12 @@ class _NativeRecordSnapshot(Mapping[str, object]):
         return len(self.__data)
 
 
+def _native_float_exactly_equal(left: float, right: float) -> bool:
+    """Compare the exact IEEE-754 representation of two native float values."""
+
+    return pack("!d", left) == pack("!d", right)
+
+
 def _native_values_exactly_equal(left: object, right: object) -> bool:
     """Compare native values without collapsing fidelity-bearing numeric distinctions."""
 
@@ -184,20 +191,30 @@ def _native_values_exactly_equal(left: object, right: object) -> bool:
             return left.as_tuple() == right.as_tuple()
         if isinstance(left, float):
             assert isinstance(right, float)
-            return left.hex() == right.hex()
+            return _native_float_exactly_equal(left, right)
+        if isinstance(left, complex):
+            assert isinstance(right, complex)
+            return _native_float_exactly_equal(
+                left.real, right.real
+            ) and _native_float_exactly_equal(left.imag, right.imag)
         return left == right
     if isinstance(left, Mapping) and isinstance(right, Mapping):
-        if set(left) != set(right):
+        left_mapping = cast(Mapping[object, object], left)
+        right_mapping = cast(Mapping[object, object], right)
+        if set(left_mapping) != set(right_mapping):
             return False
-        return all(_native_values_exactly_equal(left[key], right[key]) for key in left)
+        return all(
+            _native_values_exactly_equal(left_mapping[key], right_mapping[key])
+            for key in left_mapping
+        )
     if isinstance(left, (list, tuple)) or isinstance(right, (list, tuple)):
         if type(left) is not type(right):
             return False
-        assert isinstance(left, (list, tuple))
-        assert isinstance(right, (list, tuple))
-        return len(left) == len(right) and all(
+        left_sequence = cast(Sequence[object], left)
+        right_sequence = cast(Sequence[object], right)
+        return len(left_sequence) == len(right_sequence) and all(
             _native_values_exactly_equal(left_item, right_item)
-            for left_item, right_item in zip(left, right, strict=True)
+            for left_item, right_item in zip(left_sequence, right_sequence, strict=True)
         )
     return left == right
 
@@ -205,7 +222,34 @@ def _native_values_exactly_equal(left: object, right: object) -> bool:
 def _observations_exactly_equal(
     left: "RawObservationOccurrenceV1", right: "RawObservationOccurrenceV1"
 ) -> bool:
-    return left == right and _native_values_exactly_equal(
+    non_native_equal = (
+        left.concept_id == right.concept_id
+        and left.contract_id == right.contract_id
+        and left.observation_occurrence_id == right.observation_occurrence_id
+        and left.delivery_artifact_ref == right.delivery_artifact_ref
+        and left.source_provider == right.source_provider
+        and left.received_ts_utc == right.received_ts_utc
+        and left.ingestion_sequence == right.ingestion_sequence
+        and left.ingestion_sequence_scope == right.ingestion_sequence_scope
+        and left.source_temporal_kind == right.source_temporal_kind
+        and left.raw_signal_catalogue_ids == right.raw_signal_catalogue_ids
+        and left.source_product_api == right.source_product_api
+        and left.source_endpoint_callback == right.source_endpoint_callback
+        and left.native_identifier == right.native_identifier
+        and left.native_tick_series_identifier == right.native_tick_series_identifier
+        and left.source_variant == right.source_variant
+        and left.subject_instrument == right.subject_instrument
+        and left.native_units == right.native_units
+        and left.availability_session == right.availability_session
+        and left.source_status_native == right.source_status_native
+        and left.revision_vintage_native == right.revision_vintage_native
+        and left.received_epoch_ns == right.received_epoch_ns
+        and left.source_timestamp_raw == right.source_timestamp_raw
+        and left.source_timezone_native == right.source_timezone_native
+        and left.market_timezone_iana == right.market_timezone_iana
+        and left.market_session_native == right.market_session_native
+    )
+    return non_native_equal and _native_values_exactly_equal(
         left.native_record, right.native_record
     )
 

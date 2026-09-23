@@ -303,6 +303,47 @@ def test_same_observation_identity_rejects_native_numeric_representation_change(
         assert stored_value == original_value
 
 
+@pytest.mark.parametrize("native_kind", ["float_nan", "decimal_nan"])
+def test_same_observation_identity_accepts_reconstructed_identical_nan(
+    native_kind: str,
+) -> None:
+    owner = build_owner()
+    first_native: object
+    retry_native: object
+    if native_kind == "float_nan":
+        first_native = float("nan")
+        retry_native = float("nan")
+    else:
+        first_native = Decimal("NaN")
+        retry_native = Decimal("NaN")
+
+    first = admit_observation(owner, observation(native_record={"Native": first_native}))
+    retry = observation(native_record={"Native": retry_native})
+
+    assert admit_observation(owner, retry) is first
+    assert owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id) is first
+
+
+def test_same_observation_identity_rejects_complex_signed_zero_change() -> None:
+    owner = build_owner()
+    first = admit_observation(
+        owner, observation(native_record={"Native": complex(-0.0, 0.0)})
+    )
+
+    with pytest.raises((TypeError, ValueError)):
+        admit_observation(
+            owner,
+            observation(native_record={"Native": complex(0.0, 0.0)}),
+        )
+
+    reread = owner.reads.get_raw_observation_occurrence(first.observation_occurrence_id)
+    assert reread is first
+    stored_value = reread.native_record["Native"]
+    assert isinstance(stored_value, complex)
+    assert stored_value.real.hex() == "-0x0.0p+0"
+    assert stored_value.imag.hex() == "0x0.0p+0"
+
+
 def test_newly_received_retransmission_keeps_new_observation_identity() -> None:
     owner = build_owner()
     first = admit_observation(owner, observation(observation_occurrence_id="obs-1"))
