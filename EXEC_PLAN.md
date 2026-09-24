@@ -805,3 +805,15 @@ Live PostgreSQL execution and the exact Python-3.13.5 mypy/promotion axis remain
 Worker-`UNPROVED` in the UID-0-only sandbox. The nine namespace/filesystem propositions also remain
 `UNPROVED`. Fresh Tester Iteration 014 must run those axes independently. VI-12R remains prohibited
 pending its disposition.
+
+### 2026-09-24 — VI-13R Reviewer 031 U04 disposition
+
+Fresh independent review of exact U04 candidate `e7eb44119bdf7fb22abacae8291788619792c96a` /
+tree `ea104900fcaf8e2db4177df3909956f464d6a918` returned `FAIL / RETURN_TO_WORKER` with one Critical
+implementation-coupled finding, `R031-U04-F001`. Assessment derivation depends on optional materialised
+receipt-relation state and uses observation `received_ts_utc` as its visibility filter, allowing an
+in-slot admitted observation under positive eligibility authority to produce `zero_received` when the
+optional relation command was not first invoked; missing eligibility authority is likewise masked as
+zero. The finding is `ISOLATED` under section 6.11 because this is U04's first VI-13R rejection/repair
+cycle. U04 is not promotable and U05 remains prohibited pending bounded repair and fresh re-review.
+See `implementation/proof/VI13R_U04_REVIEWER_031_DISPOSITION.md`.

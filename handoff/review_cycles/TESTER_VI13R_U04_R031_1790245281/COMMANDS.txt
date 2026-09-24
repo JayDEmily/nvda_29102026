@@ -1,1 +1,45 @@
-PENDING
+Reviewer 031 material command/evidence record
+
+SOURCE / GOVERNANCE / LINEAGE
+- sha256sum received TAR
+  -> 5263abf8b66351ae0bc4aa52c79c09b070ac2248a286f1715c5b37e801c3e785
+- read README.md, GUARDRAILS.md, root AGENTS.md, tests/AGENTS.override.md, complete EXEC_PLAN.md
+- read CURRENT_STATE.md and active TESTER_VI13R_U04_R031_1790245281/REQUEST.md
+- read IRB BC-007/008/009/010, IWO-U04, admitted U04 product-proof family and U04 physical proof
+- read Worker U04 evidence/commands and exact candidate source/diff
+- candidate: e7eb44119bdf7fb22abacae8291788619792c96a
+- candidate tree: ea104900fcaf8e2db4177df3909956f464d6a918
+- promoted U03 parent: 63bbeee9cec14f38ed6da6260095ccf0d8e8e6ec
+- candidate-to-handoff governed-path diff -> empty
+
+INDEPENDENT EXACT-CANDIDATE EXECUTION
+- detached worktree at exact candidate e7eb44119bdf7fb22abacae8291788619792c96a
+- python --version -> Python 3.13.5
+- python -m pytest -q tests/product/raw_signal/test_u04_receipt_assessment.py -> 29 passed
+- U01-U04 excluding exactly three mypy-invoking test bodies -> 410 passed, 3 deselected
+- unfiltered U01-U04 -> 410 passed, 3 failed; all failures are missing `python -m mypy`
+- PYTHONPATH=src python tools/validate_product_proof.py -> PASS, 6 families / 13 obligations
+- PYTHONPATH=src python tools/validate_architecture.py -> PASS
+- PYTHONPATH=src python tools/check_dependencies.py -> PASS
+- PYTHONPATH=src python tools/check_public_seams.py -> PASS
+- tests/architecture + tests/bootstrap -> 72 passed, 2 failed solely because mypy is unavailable
+- git diff candidate^..candidate --check -> rc 0
+- git fsck --full --strict -> rc 0; five dangling blobs diagnosed
+
+ADVERSARIAL PUBLIC-SEAM CHALLENGE
+- admitted in-slot observation + exact-True eligibility authority
+- did not materialise CaptureReceiptEvidenceRelationV1
+- append assessment
+  -> eligibility calls = 0
+  -> outcome = zero_received
+  -> canary assertion failed: `eligibility was never evaluated: 0`
+- repeated with no eligibility authority injected and an in-slot admitted observation
+  -> outcome = zero_received rather than fail-closed missing-authority behaviour
+- inspected candidate assessment visibility predicate
+  -> `relation.received_ts_utc <= evidence_as_of_ts_utc`
+
+DISPOSITION
+- finding: R031-U04-F001
+- recurrence classification: ISOLATED
+- final: FAIL / RETURN_TO_WORKER
+- U04 promotion prohibited; U05 prohibited
