@@ -1,2 +1,3 @@
-PENDING_RECEIVER_READBACK
-The receiving Tester must record the SHA-256 and exact filename of the TAR actually received.
+de9c6dcbe8cef3fcb31ab2c9141ed949f8bc0ba2349d794917085272ffc5739e  NVDA_G03_WORKER_VI12R_U03_R028_REPAIR_R029_HANDOFF_FULL_GIT_20260924.tar(2).gz
+
+Receiver readback performed independently before review.
